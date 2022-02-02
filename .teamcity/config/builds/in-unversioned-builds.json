@@ -1,0 +1,301 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "ConsumerServicePortalReleaseNotes20211.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "incsp20211rn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "ConsumerServicePortalReleaseNotesV4.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "incsp4rn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "ConsumerServicePortalReleaseNotesV326.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "incsp326rn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "ConsumerServicePortalReleaseNotesV325.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "incsp325rn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "ConsumerServicePortalReleaseNotesV324.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "incsp324rn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "ConsumerServicePortalReleaseNotesV323.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "incsp323rn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "DevelopersGuide_Java11.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "indevguidejava11ext",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft-Guidewire.ditaval",
+      "root": "DevelopersGuide_Java11.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "indevguidejava11draft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "DevelopersGuide_Java8.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "indevguidejava8draft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
+      "root": "ExcelDesignedRating23.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "inexcelrating23draft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
+      "root": "ExcelDesignedRating30.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "inexcelrating30draft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "ExcelDesignedRating30.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "inexcelrating30",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "INStudioReleaseNotes20212.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20212xstudiorndraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "INStudioReleaseNotes20212.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20212studiorn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
+      "root": "INStudioReleaseNotes20211.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20211xstudiorndraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "INStudioReleaseNotes20211.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20211studiorn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
+      "root": "INStudioReleaseNotes20202.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20202xstudiorndraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "INStudioReleaseNotes20202.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20202studiorn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
+      "root": "INStudioReleaseNotes20201.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20201xstudiorndraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "INStudioReleaseNotes20201.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20201studiorn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
+      "root": "InsuranceNow_InstallAssist_5.0.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "ininstallassistdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "InsuranceNowReleaseNotes20212.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20212rn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2021.2.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2021.2",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
+      "root": "InsuranceNowReleaseNotes20212.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20212xrndraft",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2021.2.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2021.2",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "InsuranceNowReleaseNotes20211.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20211rn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2021.1.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2021.1",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
+      "root": "InsuranceNowReleaseNotes20211.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20211xrndraft",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2021.1.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2021.1",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "InsuranceNowReleaseNotes20202.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20202rn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2020.2.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2020.2",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
+      "root": "InsuranceNowReleaseNotes20202.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20202xrndraft",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2020.2.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2020.2",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "InsuranceNowReleaseNotes20201.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20201rn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2020.1",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
+      "root": "InsuranceNowReleaseNotes20201.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20201xrndraft",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2020.1",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
+      "root": "UpgradeTools.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "inupgradetoolsdraft",
+      "indexRedirect": true
+    }
+  ]
+}

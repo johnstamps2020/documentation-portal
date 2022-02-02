@@ -22,7 +22,7 @@
         },
         {
           "label": "Consumer Service Portal Release Notes",
-          "id": "in20212xcsprndraft"
+          "id": "incsp4rn"
         }
       ]
     },
@@ -134,7 +134,7 @@
         },
         {
           "label": "Developer Setup",
-          "id": "indevguidejava11draftext"
+          "id": "indevguidejava11ext"
         },
         {
           "label": "Payment Service Migration (Internal)",

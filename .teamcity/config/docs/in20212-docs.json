@@ -2,38 +2,6 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "in20212rn",
-      "title": "Core Release Notes",
-      "url": "cloud/in/20212/releasenotes",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Release notes"],
-        "release": ["Dobson"]
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20212studiorn",
-      "title": "Studio Release Notes",
-      "url": "cloud/in/20212/studiorn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Release notes"],
-        "release": ["Dobson"]
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "in20212app",
       "title": "Application Guide",
       "url": "cloud/in/20212/app",
@@ -74,22 +42,6 @@
         "product": ["InsuranceNow"],
         "version": ["2021.2"],
         "subject": ["Features and functionality"],
-        "release": ["Dobson"]
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20212csprn",
-      "title": "Consumer Service Portal Release Notes",
-      "url": "cloud/in/20212/csprn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Release Notes"],
         "release": ["Dobson"]
       },
       "environments": ["staging", "prod"],
@@ -155,22 +107,6 @@
         "version": ["2021.2"],
         "subject": ["Configuration"],
         "release": ["Dobson"]
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "indevguidejava11ext",
-      "title": "Developers Setup",
-      "url": "cloud/in/devsetupjava11ext",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1", "2021.2"],
-        "subject": ["Installation"],
-        "release": ["Cortina", "Dobson"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

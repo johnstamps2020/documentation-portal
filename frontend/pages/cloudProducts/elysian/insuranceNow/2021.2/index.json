@@ -22,7 +22,7 @@
         },
         {
           "label": "Consumer Service Portal Release Notes",
-          "id": "in20212xcsprndraft"
+          "id": "incsp4rn"
         }
       ]
     },
@@ -126,7 +126,7 @@
         },
         {
           "label": "Developers Setup",
-          "id": "indevguidejava11draftext"
+          "id": "indevguidejava11ext"
         },
         {
           "label": "Upgrade Tools (Internal)",
