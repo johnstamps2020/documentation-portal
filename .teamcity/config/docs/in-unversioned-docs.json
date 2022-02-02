@@ -2,7 +2,7 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "incsp4rn",
+      "id": "incsp20211rn",
       "title": "Consumer Service Portal 2021.1 Release Notes",
       "url": "cloud/in/csp20211rn",
       "metadata": {
@@ -104,11 +104,11 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.1", "2021.2"],
+        "version": ["2021.2"],
         "subject": ["Installation"],
-        "release": ["Cortina", "Dobson"]
+        "release": ["Dobson"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
