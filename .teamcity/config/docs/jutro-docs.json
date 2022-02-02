@@ -801,7 +801,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["7.2.0"],
+        "version": ["7.2.0 (latest)"],
         "subject": ["Best practices"]
       },
       "environments": ["dev", "staging", "int", "prod"],
