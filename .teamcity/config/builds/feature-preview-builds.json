@@ -117,7 +117,8 @@
       "buildType": "yarn",
       "docId": "webhooksapinext",
       "srcId": "webhooksapinextsrc",
-      "nodeImageVersion": "14.14.0"
+      "nodeImageVersion": "14.14.0",
+      "workingDir": "docs"
     }
   ]
 }
