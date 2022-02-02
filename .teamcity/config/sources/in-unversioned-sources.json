@@ -2,11 +2,11 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
-      "id": "in20212",
-      "title": "InsuranceNow 2021.2",
+      "id": "inunversionedsrc",
+      "title": "InsuranceNow Unversioned",
       "sourceType": "xdocs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "release/2021.2"
+      "branch": "main"
     }
   ]
 }

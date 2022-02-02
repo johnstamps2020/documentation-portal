@@ -963,28 +963,6 @@
       ]
     },
     {
-      "id": "in20211rnsrc",
-      "title": "InsuranceNow 2021.1 Core Release Notes",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "2021.1",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/Content/doc/insuranceNow/InsuranceNowReleaseNotes20211.ditamap"
-      ]
-    },
-    {
-      "id": "in20211studiornsrc",
-      "title": "InsuranceNow 2021.1 Studio Release Notes",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "2021.1",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/Content/doc/insuranceNow/INStudioReleaseNotes20211.ditamap"
-      ]
-    },
-    {
       "id": "in20211appsrc",
       "title": "InsuranceNow 2021.1 Application",
       "sourceType": "xdocs",
@@ -1106,28 +1084,6 @@
       ]
     },
     {
-      "id": "in20202rnsrc",
-      "title": "InsuranceNow 2020.2 Core Release Notes",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "2020.2",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/Content/doc/insuranceNow/InsuranceNowReleaseNotes20202.ditamap"
-      ]
-    },
-    {
-      "id": "in20202studiornsrc",
-      "title": "InsuranceNow 2020.2 Studio Release Notes",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "2020.2",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/Content/doc/insuranceNow/INStudioReleaseNotes20202.ditamap"
-      ]
-    },
-    {
       "id": "in20202bisrc",
       "title": "InsuranceNow 2020.2 BI Getting Started",
       "sourceType": "xdocs",
@@ -1227,39 +1183,6 @@
       ]
     },
     {
-      "id": "in20202excelrating23src",
-      "title": "InsuranceNow 2020.2 Excel Designed Rating",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "2020.2",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/Content/doc/insuranceNow/ExcelDesignedRating23.ditamap"
-      ]
-    },
-    {
-      "id": "in20201rnsrc",
-      "title": "InsuranceNow 2020.1 Core Release Notes",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "2020.1",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/Content/doc/insuranceNow/InsuranceNowReleaseNotes20201.ditamap"
-      ]
-    },
-    {
-      "id": "in20201studiornsrc",
-      "title": "InsuranceNow 2020.1 Studio Release Notes",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "2020.1",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/Content/doc/insuranceNow/INStudioReleaseNotes20201.ditamap"
-      ]
-    },
-    {
       "id": "in20201bisrc",
       "title": "InsuranceNow 2020.1 BI Getting Started",
       "sourceType": "xdocs",
@@ -1334,40 +1257,6 @@
       "xdocsPathIds": [
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
         "/Content/doc/insuranceNow/PortalDevelopment20201x.ditamap"
-      ]
-    },
-    {
-      "id": "in20201excelrating23src",
-      "title": "InsuranceNow 2020.1 Excel Designed Rating",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "2020.1",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/Content/doc/insuranceNow/ExcelDesignedRating23.ditamap"
-      ]
-    },
-    {
-      "id": "in20211xrndraftsrc",
-      "title": "InsuranceNow 2021.1 Core Release Notes Draft",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/InsuranceNowReleaseNotes20211.ditamap"
-      ]
-    },
-    {
-      "id": "in20211xstudiorndraftsrc",
-      "title": "InsuranceNow 2021.1 Studio Release Notes Draft",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/INStudioReleaseNotes20211.ditamap"
       ]
     },
     {
@@ -1563,66 +1452,6 @@
       ]
     },
     {
-      "id": "in20202xrndraftsrc",
-      "title": "InsuranceNow 2020.2 Core Release Notes Draft",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/InsuranceNowReleaseNotes20202.ditamap"
-      ]
-    },
-    {
-      "id": "incsp326rnsrc",
-      "title": "InsuranceNow CSP 326 Release Notes",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/ConsumerServicePortalReleaseNotesV326.ditamap"
-      ]
-    },
-    {
-      "id": "incsp325rnsrc",
-      "title": "InsuranceNow CSP 325 Release Notes",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/ConsumerServicePortalReleaseNotesV325.ditamap"
-      ]
-    },
-    {
-      "id": "incsp324rnsrc",
-      "title": "InsuranceNow CSP 324 Release Notes",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/ConsumerServicePortalReleaseNotesV324.ditamap"
-      ]
-    },
-    {
-      "id": "incsp323rnsrc",
-      "title": "InsuranceNow CSP 323 Release Notes",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/ConsumerServicePortalReleaseNotesV323.ditamap"
-      ]
-    },
-    {
       "id": "inpaymentservicemigrationsrc",
       "title": "InsuranceNow Payment Service Migration",
       "sourceType": "xdocs",
@@ -1632,18 +1461,6 @@
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
         "/Content/doc/insuranceNow/PaymentServiceMigration.ditamap"
-      ]
-    },
-    {
-      "id": "in20202xstudiorndraftsrc",
-      "title": "InsuranceNow 2020.2 Studio Release Notes Draft",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/INStudioReleaseNotes20202.ditamap"
       ]
     },
     {
@@ -1815,55 +1632,6 @@
       ]
     },
     {
-      "id": "inupgradetoolsdraftsrc",
-      "title": "InsuranceNow Upgrade Tools Draft",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/UpgradeTools.ditamap"
-      ]
-    },
-    {
-      "id": "ininstallassistdraftsrc",
-      "title": "InsuranceNow Install Assist Draft",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/InsuranceNow_InstallAssist_5.0.ditamap"
-      ]
-    },
-    {
-      "id": "indevguidejava8draftsrc",
-      "title": "InsuranceNow Developers Java 8 Draft",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/DevelopersGuide_Java8.ditamap"
-      ]
-    },
-    {
-      "id": "indevguidejava11draftsrc",
-      "title": "InsuranceNow Developers Java 11",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft-External.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft-Guidewire.ditaval",
-        "/Content/doc/insuranceNow/DevelopersGuide_Java11.ditamap"
-      ]
-    },
-    {
       "id": "in20202xprodattrefdraftsrc",
       "title": "InsuranceNow 2020.2 Product Attribute Reference Draft",
       "sourceType": "xdocs",
@@ -1873,63 +1641,6 @@
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
         "/Content/doc/insuranceNow/ProductAttributeReference20202.ditamap"
-      ]
-    },
-    {
-      "id": "in20201xrndraftsrc",
-      "title": "InsuranceNow 2020.1 Core Release Notes Draft",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/InsuranceNowReleaseNotes20201.ditamap"
-      ]
-    },
-    {
-      "id": "inexcelrating23draftsrc",
-      "title": "InsuranceNow Excel Designed Rating 2.3 Draft",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/ExcelDesignedRating23.ditamap"
-      ]
-    },
-    {
-      "id": "inexcelrating30draftsrc",
-      "title": "InsuranceNow Excel Designed Rating 3.0 Draft",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/ExcelDesignedRating30.ditamap"
-      ]
-    },
-    {
-      "id": "inexcelrating30src",
-      "title": "InsuranceNow Excel Designed Rating 3.0",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/Content/doc/insuranceNow/ExcelDesignedRating30.ditamap"
-      ]
-    },
-    {
-      "id": "in20201xstudiorndraftsrc",
-      "title": "InsuranceNow 2020.1 Studio Release Notes Draft",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/Content/doc/insuranceNow/INStudioReleaseNotes20201.ditamap"
       ]
     },
     {

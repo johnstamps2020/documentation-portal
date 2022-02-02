@@ -2,22 +2,6 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "in20212xrndraft",
-      "title": "Core Release Notes Draft",
-      "url": "cloud/in/20212x/releasenotes",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Release notes"],
-        "release": ["Dobson"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
       "id": "inbillrefdraft",
       "title": "Billing Configuration Reference Draft",
       "url": "cloud/in/billref",
@@ -26,22 +10,6 @@
         "product": ["InsuranceNow"],
         "version": ["2021.2"],
         "subject": ["Configuration"],
-        "release": ["Dobson"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20212xstudiorndraft",
-      "title": "Studio Release Notes Draft",
-      "url": "cloud/in/20212x/studiorn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Release notes"],
         "release": ["Dobson"]
       },
       "environments": ["int"],
@@ -106,22 +74,6 @@
         "product": ["InsuranceNow"],
         "version": ["2021.2"],
         "subject": ["Features and functionality"],
-        "release": ["Dobson"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20212xcsprndraft",
-      "title": "Consumer Service Portal Release Notes Draft",
-      "url": "cloud/in/20212x/csprn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Release Notes"],
         "release": ["Dobson"]
       },
       "environments": ["int"],
@@ -219,22 +171,6 @@
         "version": ["2021.2"],
         "subject": ["Configuration"],
         "release": ["Dobson"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "indevguidejava11draftext",
-      "title": "Developers Setup (External) Draft",
-      "url": "cloud/in/devsetupjava11ext",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1", "2021.2"],
-        "subject": ["Installation"],
-        "release": ["Cortina", "Dobson"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
