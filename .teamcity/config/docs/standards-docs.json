@@ -9,7 +9,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "displayOnLandingPages": true,
       "indexForSearch": true,
