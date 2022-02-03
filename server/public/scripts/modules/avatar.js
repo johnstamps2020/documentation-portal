@@ -14,24 +14,23 @@ function closeAvatarMenu(event) {
   }
 }
 
-export function createAvatarButton(fullName, username) {
+function createAvatarButton(fullName, username) {
   const button = document.createElement('button');
   button.setAttribute('id', 'avatarButton');
+  button.setAttribute('class', 'headerButtonsButton');
   button.setAttribute('aria-label', 'user information');
+  button.setAttribute('type', 'button');
   button.addEventListener('click', showAvatarMenu);
   window.addEventListener('click', closeAvatarMenu);
   button.innerHTML = `
-    <div class="avatarMenu" id="avatarMenu">
-        <div class="avatarMenuHeader">
-        <div class="avatarMenuIcon">&nbsp;</div>
-        <div class="avatarMenuInfo">
+    <div id="avatarMenu" class="headerButtonsMenu">
+        <div class="headerButtonsMenuHeader">
             <div class="avatarMenuName">${fullName}</div>
             <div class="avatarMenuEmail">${username}</div>
         </div>
-        </div>
-        <hr class="avatarMenuDivider"/>
-        <div class="avatarMenuActions">
-        <a class="avatarMenuLogout" href="/gw-logout">Log out</a>
+        <hr class="headerButtonsMenuDivider"/>
+        <div class="headerButtonsMenuActions">
+            <a class="avatarMenuLogout" href="/gw-logout">Log out</a>
         </div>
     </div>`;
 

@@ -1,9 +1,9 @@
 <div id="headerButtons">
     <% const loginButton = typeof showLoginButton !== 'undefined' ? showLoginButton : true %>
     <% const localUserInfo = typeof userInfo !== 'undefined' ? userInfo : {isLoggedIn: false} %>
-    <button id="externalSitesButton" class="headerButtonsButton" aria-label="external sites">
+    <button id="externalSitesButton" class="headerButtonsButton" aria-label="external sites" type="button">
         <div id="externalSitesMenu" class="headerButtonsMenu">
-            <div class="headerButtonsMenuHeader">Guidewire Sites</div>
+            <div class="headerButtonsMenuHeader">Guidewire sites</div>
             <hr class="headerButtonsMenuDivider">
             <div class="headerButtonsMenuActions">
                 <%
@@ -39,9 +39,13 @@
         </div>
     </button>
     <% if (localUserInfo.isLoggedIn) { %>
-        <a id="guidewireGlossaryButton" class="headerButtonsButton" href="/glossary" target="_blank" role="button" tabindex="0"></a>
-        <button id="translatedDocsButton" class="headerButtonsButton" aria-label="translated documentation" role="button">
+        <a id="guidewireGlossaryButton" class="headerButtonsButton" href="/glossary" target="_blank" type="button"
+           tabindex="0"></a>
+        <button id="translatedDocsButton" class="headerButtonsButton" aria-label="translated documentation"
+                role="button">
             <div id="translatedDocsMenu" class="headerButtonsMenu">
+                <div class="headerButtonsMenuHeader">Translated documentation</div>
+                <hr class="headerButtonsMenuDivider">
                 <div class="headerButtonsMenuActions">
                     <% translatedPages.forEach(p => { %>
                         <div><a href="<%= p.pageUrl %>"><%= p.label %></a></div>
@@ -49,17 +53,14 @@
                 </div>
             </div>
         </button>
-        <button id="avatarButton" aria-label="user information">
-            <div id="avatarMenu" class="avatarMenu">
-                <div class="avatarMenuHeader">
-                    <div class="avatarMenuIcon">&nbsp;</div>
-                    <div class="avatarMenuInfo">
-                        <div class="avatarMenuName"><%= userInfo.name %></div>
-                        <div class="avatarMenuEmail"><%= userInfo.preferred_username %></div>
-                    </div>
+        <button id="avatarButton" class="headerButtonsButton" aria-label="user information" type="button">
+            <div id="avatarMenu" class="headerButtonsMenu">
+                <div class="headerButtonsMenuHeader">
+                    <div class="avatarMenuName"><%= userInfo.name %></div>
+                    <div class="avatarMenuEmail"><%= userInfo.preferred_username %></div>
                 </div>
-                <div class="avatarMenuDivider"></div>
-                <div class="avatarMenuActions">
+                <hr class="headerButtonsMenuDivider"/>
+                <div class="headerButtonsMenuActions">
                     <a class="avatarMenuLogout" href="/gw-logout">Log out</a>
                 </div>
             </div>
