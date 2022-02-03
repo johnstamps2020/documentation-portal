@@ -451,7 +451,7 @@
     },
     {
       "id": "iscc202111integ",
-      "title": "Integration",
+      "title": "Plugins, Prebuilt Integrations, and SOAP APIs",
       "url": "cloud/cc/202111/integration",
       "metadata": {
         "platform": ["Cloud"],
