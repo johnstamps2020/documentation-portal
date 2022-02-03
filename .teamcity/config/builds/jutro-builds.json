@@ -284,7 +284,8 @@
     {
       "buildType": "yarn",
       "docId": "storyboobizpatterns652zip",
-      "srcId": "srcjutrosbbizpatterns652downloadable"
+      "srcId": "srcjutrosbbizpatterns652downloadable",
+      "outputPath": "out"
     },
     {
       "buildType": "source-zip",
