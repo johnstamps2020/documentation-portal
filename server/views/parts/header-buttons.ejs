@@ -1,11 +1,11 @@
 <div id="headerButtons">
     <% const loginButton = typeof showLoginButton !== 'undefined' ? showLoginButton : true %>
     <% const localUserInfo = typeof userInfo !== 'undefined' ? userInfo : {isLoggedIn: false} %>
-    <button id="externalSitesButton" aria-label="external sites">
-        <div class="externalSitesMenu" id="externalSitesMenu">
-            <div class="externalSitesHeader">Guidewire Sites</div>
-            <hr class="externalSitesDivider">
-            <div class="externalSitesMenuActions">
+    <button id="externalSitesButton" class="headerButtonsButton" aria-label="external sites">
+        <div id="externalSitesMenu" class="headerButtonsMenu">
+            <div class="headerButtonsMenuHeader">Guidewire Sites</div>
+            <hr class="headerButtonsMenuDivider">
+            <div class="headerButtonsMenuActions">
                 <%
                 const availableExternalSites = [
                     {
@@ -30,7 +30,7 @@
                     },
                 ];
                 availableExternalSites.forEach(s => { %>
-                    <div class="externalSite">
+                    <div>
                         <a href="<%= s.url %>" rel="noopener noreferrer"
                            target="_blank"><%= s.label %></a>
                     </div>
@@ -39,12 +39,12 @@
         </div>
     </button>
     <% if (localUserInfo.isLoggedIn) { %>
-        <a id="guidewireGlossaryButton" href="/glossary" target="_blank" role="button" tabindex="0"></a>
-        <button id="translatedDocsButton" aria-label="translated documentation" role="button">
-            <div class="translatedDocsMenu" id="translatedDocsMenu">
-                <div class="translatedDocsMenuActions">
+        <a id="guidewireGlossaryButton" class="headerButtonsButton" href="/glossary" target="_blank" role="button" tabindex="0"></a>
+        <button id="translatedDocsButton" class="headerButtonsButton" aria-label="translated documentation" role="button">
+            <div id="translatedDocsMenu" class="headerButtonsMenu">
+                <div class="headerButtonsMenuActions">
                     <% translatedPages.forEach(p => { %>
-                        <div class="translatedPage"><a href="<%= p.pageUrl %>"><%= p.label %></a></div>
+                        <div><a href="<%= p.pageUrl %>"><%= p.label %></a></div>
                     <% }) %>
                 </div>
             </div>
