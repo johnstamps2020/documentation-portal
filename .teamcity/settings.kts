@@ -446,13 +446,20 @@ object Docs {
                 output_dir,
                 index_for_search
             )
-            val zipUpSourcesBuildStep = GwBuildSteps.createZipUpSourcesStep(
-                working_dir,
-                output_dir,
-                zip_filename
-            )
-            docBuildType.steps.step(zipUpSourcesBuildStep)
-            docBuildType.steps.stepsOrder.add(0, zipUpSourcesBuildStep.id.toString())
+
+            if (env == GwDeployEnvs.PROD.env_name) {
+                val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publish_path)
+                docBuildType.steps.step(copyFromStagingToProdStep)
+                docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
+            } else {
+                val zipUpSourcesBuildStep = GwBuildSteps.createZipUpSourcesStep(
+                    working_dir,
+                    output_dir,
+                    zip_filename
+                )
+                docBuildType.steps.step(zipUpSourcesBuildStep)
+                docBuildType.steps.stepsOrder.add(0, zipUpSourcesBuildStep.id.toString())
+            }
             sourceZipBuildTypes.add(docBuildType)
         }
         return sourceZipBuildTypes
@@ -2956,7 +2963,7 @@ object Helpers {
 
     fun getNonDitaTriggerRules(workingDir: String): String {
 
-        return when(workingDir) {
+        return when (workingDir) {
             "%teamcity.build.checkoutDir%" -> {
                 """
                     -:user=doctools:**
