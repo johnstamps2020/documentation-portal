@@ -193,6 +193,8 @@ nav.miniToc {
   padding: 0 4px 0 16px;
   margin-top: 1rem;
   border-left: 1px solid lightgray;
+  height: var(--main-height);
+  overflow: scroll;
 }
 
 nav .miniTocLink {
@@ -204,8 +206,6 @@ nav .miniTocLink {
   font-size: 16px;
   font-family: var(--guidewire-font);
   text-align: left;
-  height: var(--main-height);
-  overflow: scroll;
 }
 
 .scrollToTopButton {
