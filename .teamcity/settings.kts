@@ -3648,7 +3648,7 @@ object GwBuildSteps {
                 commandParams.add(Pair("--git.url", git_url))
                 commandParams.add(Pair("--git.branch", git_branch))
                 commandParams.add(Pair("-f", "html5-Guidewire"))
-                ditaCommandParams.add(Pair("--args.rellinks", "nofamily"))
+                commandParams.add(Pair("--args.rellinks", "nofamily"))
 
             }
         }
