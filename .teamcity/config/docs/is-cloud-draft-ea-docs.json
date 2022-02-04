@@ -147,7 +147,7 @@
     },
     {
       "id": "isbccloudeainteg",
-      "title": "Integration",
+      "title": "Plugins, Prebuilt Integrations, and SOAP APIs",
       "url": "cloud/bc/ea/integration",
       "metadata": {
         "platform": ["Cloud"],
@@ -355,7 +355,7 @@
     },
     {
       "id": "iscccloudeainteg",
-      "title": "Integration",
+      "title": "Plugins, Prebuilt Integrations, and SOAP APIs",
       "url": "cloud/cc/ea/integration",
       "metadata": {
         "platform": ["Cloud"],
