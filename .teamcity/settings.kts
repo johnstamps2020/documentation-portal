@@ -3514,6 +3514,7 @@ object GwBuildSteps {
             }
             GwDitaOutputFormats.HTML5.format_name -> {
                 ditaCommandParams.add(Pair("-f", "html5-Guidewire"))
+                ditaCommandParams.add(Pair("--args.rellinks", "nofamily"))
                 ditaCommandParams.add(Pair("--generate.build.data", "yes"))
                 ditaCommandParams.add(Pair("--git.url", "gitUrl"))
                 ditaCommandParams.add(Pair("--git.branch", "gitBranch"))
@@ -3647,6 +3648,7 @@ object GwBuildSteps {
                 commandParams.add(Pair("--git.url", git_url))
                 commandParams.add(Pair("--git.branch", git_branch))
                 commandParams.add(Pair("-f", "html5-Guidewire"))
+                commandParams.add(Pair("--args.rellinks", "nofamily"))
 
             }
         }
