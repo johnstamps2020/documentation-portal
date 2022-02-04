@@ -96,7 +96,7 @@
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-EA.ditaval",
-      "root": "TestingGuide.ditamap",
+      "root": "GUnitTestingGuide.ditamap",
       "srcId": "is2021112src",
       "docId": "isbccloudeatesting",
       "indexRedirect": true
@@ -204,7 +204,7 @@
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-EA.ditaval",
-      "root": "TestingGuide.ditamap",
+      "root": "GUnitTestingGuide.ditamap",
       "srcId": "is2021112src",
       "docId": "iscccloudeatesting",
       "indexRedirect": true
@@ -336,7 +336,7 @@
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-EA.ditaval",
-      "root": "TestingGuide.ditamap",
+      "root": "GUnitTestingGuide.ditamap",
       "srcId": "is2021112src",
       "docId": "ispccloudeatesting",
       "indexRedirect": true
