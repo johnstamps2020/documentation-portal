@@ -244,7 +244,7 @@
       "title": "Jutro App Template Sample App 6.5.2",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/jut/jutro-app-template-sampleapp.git",
-      "branch": "master"
+      "branch": "release/6.5.0"
     },
     {
       "id": "srcjutro660",
