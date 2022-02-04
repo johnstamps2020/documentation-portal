@@ -58,7 +58,6 @@ enum class GwDitaOutputFormats(val format_name: String) {
     WEBHELP_WITH_PDF("webhelp_with_pdf"),
     SINGLEHTML("singlehtml"),
     DITA("dita"),
-    VALIDATE("validate"),
     HTML5("html5")
 }
 
@@ -3469,20 +3468,20 @@ object GwBuildSteps {
         dita_ot_logs_dir: String,
         normalized_dita_dir: String,
         schematron_reports_dir: String,
-        build_filter: String = "",
+        build_filter: String? = null,
         index_redirect: Boolean = false,
     ): ScriptBuildStep {
         val logFile = "${output_format}_build.log"
         val fullOutputPath = "${output_dir}/${output_format}"
 
-        val ditaCommandParams = mutableListOf(
+        val ditaCommandParams = mutableListOf<Pair<String, String?>>(
             Pair("-i", "${working_dir}/${root_map}"),
             Pair("-o", "${working_dir}/${fullOutputPath}"),
             Pair("-l", "${working_dir}/${logFile}"),
             Pair("--processing-mode", "strict")
         )
 
-        if (build_filter.isNotEmpty()) {
+        if (build_filter != null) {
             ditaCommandParams.add(Pair("--filter", "${working_dir}/${build_filter}"))
         }
 
@@ -3559,7 +3558,7 @@ object GwBuildSteps {
         }
     }
 
-    private fun getCommandString(command: String, params: List<Pair<String, String>>): String {
+    private fun getCommandString(command: String, params: List<Pair<String, String?>>): String {
         val commandStringBuilder = StringBuilder()
         commandStringBuilder.append(command)
         val commandIterator = params.iterator()
@@ -3567,8 +3566,12 @@ object GwBuildSteps {
             val nextPair = commandIterator.next()
             val param = nextPair.first
             val value = nextPair.second
-            if (value.isNotEmpty()) {
-                commandStringBuilder.append(" $param \"$value\"")
+            if (value != null) {
+                if (value.isEmpty()) {
+                    commandStringBuilder.append(" $param")
+                } else {
+                    commandStringBuilder.append(" $param \"$value\"")
+                }
             }
         }
 
@@ -3582,18 +3585,18 @@ object GwBuildSteps {
         working_dir: String,
         output_dir: String,
         publish_path: String,
-        build_filter: String = "",
-        doc_id: String = "",
-        git_url: String = "",
-        git_branch: String = "",
+        build_filter: String? = null,
+        doc_id: String? = null,
+        git_url: String? = null,
+        git_branch: String? = null,
         for_offline_use: Boolean = false,
     ): ScriptBuildStep {
-        val commandParams = mutableListOf(
+        val commandParams = mutableListOf<Pair<String, String?>>(
             Pair("-i", "${working_dir}/${root_map}"),
             Pair("-o", "${working_dir}/${output_dir}"),
         )
 
-        if (build_filter.isNotEmpty()) {
+        if (build_filter != null) {
             commandParams.add(Pair("--filter", "${working_dir}/${build_filter}"))
         }
 
