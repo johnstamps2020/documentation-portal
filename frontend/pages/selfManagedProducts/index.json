@@ -55,6 +55,10 @@
         {
           "label": "Guidewire InsuranceSuite Package for Germany",
           "page": "ipg/latest"
+        },
+        {
+          "label": "Global Solutions - Australia",
+          "page": "ipa/latest"
         }
       ]
     },
