@@ -255,6 +255,10 @@ const redirectUrls = [
     from: 'portal/secure/upgradediff/index.html',
     to: 'upgradediffs'
   },
+  {
+    from: 'cloud/testingframeworks/202111/api/gw-api/topics/c_overview.html%20',
+    to: 'cloud/testingframeworks/202111/api/gw-api/topics/c_overview.html'
+  },
 ];
 
 function getRedirectUrl(originUrl) {
