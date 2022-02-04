@@ -1,38 +1,3 @@
-import { createAvatarButton } from './modules/avatar.js';
-
-async function setLogInButton(attemptNumber = 1, retryTimeout = 10) {
-  const retryAttempts = 5;
-
-  if (window.location.pathname.endsWith('gw-login')) {
-    return;
-  }
-  // /userInformation is not available for a few milliseconds
-  // after login, so if fetching the response fails, try again
-  // in 10ms.
-  try {
-    const loginButton = document.querySelector('#loginButton');
-    const response = await fetch('/userInformation');
-    const { isLoggedIn, name, preferred_username } = await response.json();
-    if (isLoggedIn && loginButton) {
-      const userButton = createAvatarButton(name, preferred_username);
-      loginButton.parentElement.replaceChild(userButton, loginButton);
-    } else if (loginButton) {
-      loginButton.classList.remove('invisible');
-    }
-  } catch (error) {
-    if (attemptNumber >= retryAttempts) {
-      console.log('Could not access user information endpoint. ' + error);
-      return;
-    }
-    attemptNumber++;
-    retryTimeout += 100;
-    setTimeout(
-      async () => setLogInButton(attemptNumber, retryTimeout),
-      retryTimeout
-    );
-  }
-}
-
 function selectToggleButton() {
   const toggleButtons = document.querySelectorAll(
     '#platformToggle > .toggleButton'
@@ -86,19 +51,6 @@ async function addReleaseBadge() {
   }
 }
 
-function markDocsAsNotPrivate() {
-  const privateDocs = document.querySelectorAll('.private');
-  for (const privateDoc of privateDocs) {
-    privateDoc.removeAttribute('href');
-
-    const span = document.createElement('span');
-    span.className = 'lockTooltipText';
-    span.innerHTML = 'Log in to view this content';
-
-    privateDoc.appendChild(span);
-  }
-}
-
 function setSearchFilterCSS() {
   if (window.location.pathname.startsWith('/search')) {
     const header = document.querySelector('.header-search');
@@ -140,8 +92,6 @@ function setSearchFilterCSS() {
 }
 
 window.onload = function() {
-  // markDocsAsNotPrivate();
-  setLogInButton();
   selectToggleButton();
   addReleaseBadge();
   setSearchFilterCSS();

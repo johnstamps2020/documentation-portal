@@ -1,15 +1,15 @@
 {
-  "$schema": "/frontend/page-schema.json",
-  "title": "Developer Resources",
+  "$schema": "../../../page-schema.json",
+  "title": "API references",
   "template": "page",
-  "class": "blue-theme cortina threeCards",
+  "class": "blue-theme dobson threeCards",
   "selector": {
     "label": "Select release",
-    "selectedItem": "Cortina",
+    "selectedItem": "Dobson",
     "items": [
       {
-        "label": "Dobson",
-        "page": "../dobson"
+        "label": "Cortina",
+        "page": "../cortina"
       },
       {
         "label": "Banff",
@@ -21,17 +21,23 @@
     {
       "label": "InsuranceNow API reference",
       "class": "productFamily cardShadow",
-      "id": "in20211apiref"
+      "id": "in20212apiref"
     },
     {
       "label": "ClaimCenter API reference",
       "class": "productFamily cardShadow",
-      "id": "cc202104apiref"
+      "id": "ccapirefdobson"
     },
     {
       "label": "PolicyCenter API reference",
       "class": "productFamily cardShadow",
-      "id": "pc202104apiref"
+      "id": "pcapirefdobson"
+    },
+    {
+      "label": "APD API reference",
+      "class": "productFamily cardShadow",
+      "id": "apdmaindoc",
+      "env": ["int"]
     }
   ]
 }

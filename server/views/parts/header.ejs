@@ -9,7 +9,6 @@
 </noscript>
 <!-- End Google Tag Manager (noscript) -->
 <% const searchBox = typeof showSearchBox !== 'undefined' ? showSearchBox : true
-const loginButton = typeof showLoginButton !== 'undefined' ? showLoginButton : true
 const placeholderText = typeof localizationInfo !== 'undefined' ? localizationInfo.placeholder : 'Search'
 %>
 <% if (typeof headerClass !== 'undefined') { %>
@@ -48,12 +47,7 @@ const placeholderText = typeof localizationInfo !== 'undefined' ? localizationIn
             </div>
         <% } %>
         <div id="headerRight">
-            <% include links-menu %>
-            <% if (loginButton) { %>
-                <div id="loginContainer">
-                    <a class="button invisible" id="loginButton" href="/gw-login">Log in</a>
-                </div>
-            <% } %>
+            <%- include('header-buttons') %>
         </div>
     </header>
 </header>

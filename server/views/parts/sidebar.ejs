@@ -1,11 +1,10 @@
 <div class="sidebar">
-    <div class="usefulLinks">
-        <% if (pageContent.title.toLowerCase() !== 'developer resources') { %>
-            <a href="/developerResources">Developer Resources</a>
-        <% } %>
-        <a href="/cloud/standards/latest">Guidewire Cloud Standards</a>
-        <a href="/l10n">Translated Documentation</a>
-        <a href="/upgradediffs">Upgrade Diff Reports</a>
-        <a href="/glossary">Guidewire Glossary</a>
+    <div class="categoryCard cardShadow">
+        <div class="label">Developer Resources</div>
+            <% if (pageContent.title.toLowerCase() !== 'api references') { %>
+                <a href="/apiReferences">API references</a>
+            <% } %>
+            <a href="/cloud/standards/latest">Guidewire Cloud Standards</a>
+            <a href="/upgradediffs">Upgrade Diff Reports</a>
     </div>
 </div>

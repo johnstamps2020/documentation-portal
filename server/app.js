@@ -96,7 +96,6 @@ app.use('/alive', (req, res, next) => {
   res.sendStatus(200);
 });
 
-app.use('/support', supportRouter);
 app.use('/gw-login', gwLoginRouter);
 app.use('/gw-logout', gwLogoutRouter);
 app.use('/partners-login', partnersLoginRouter);
@@ -145,6 +144,7 @@ app.use('/safeConfig', configRouter);
 app.use('/jira', jiraRouter);
 app.use('/lrs', lrsRouter);
 app.use('/recommendations', recommendationsRouter);
+app.use('/support', supportRouter);
 
 const portal2ProxyOptions = {
   target: `${process.env.PORTAL2_S3_URL}`,

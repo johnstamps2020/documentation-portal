@@ -283,68 +283,48 @@ function closeAvatarMenu(event) {
 function createAvatarButton(fullName, username) {
   const button = document.createElement('button');
   button.setAttribute('id', 'avatarButton');
+  button.setAttribute('class', 'headerButtonsButton');
   button.setAttribute('aria-label', 'user information');
+  button.setAttribute('type', 'button');
   button.addEventListener('click', showAvatarMenu);
   window.addEventListener('click', closeAvatarMenu);
   button.innerHTML = `
-    <div class="avatarMenu" id="avatarMenu">
-        <div class="avatarMenuHeader">
-        <div class="avatarMenuIcon">&nbsp;</div>
-        <div class="avatarMenuInfo">
+    <div id="avatarMenu" class="headerButtonsMenu">
+        <div class="headerButtonsMenuHeader">
             <div class="avatarMenuName">${fullName}</div>
             <div class="avatarMenuEmail">${username}</div>
         </div>
-        </div>
-        <div class="avatarMenuDivider"></div>
-        <div class="avatarMenuActions">
-        <a class="avatarMenuLogout" href="/gw-logout">Log out</a>
+        <hr class="headerButtonsMenuDivider"/>
+        <div class="headerButtonsMenuActions">
+            <a class="avatarMenuLogout" href="/gw-logout">Log out</a>
         </div>
     </div>`;
 
-  const avatar = document.createElement('div');
-  avatar.setAttribute('id', 'avatar');
-  avatar.appendChild(button);
-  return avatar;
+  return button;
 }
 
-async function createUserButton(attemptNumber = 1, retryTimeout = 10) {
-  const retryAttempts = 5;
+async function getLoginButtonOrAvatar() {
+  let userButton;
+  const response = await fetch('/userInformation');
+  const { isLoggedIn, name, preferred_username } = await response.json();
 
-  if (window.location.pathname.endsWith('gw-login')) {
-    return;
+  if (isLoggedIn) {
+    userButton = createAvatarButton(name, preferred_username);
+  } else {
+    userButton = document.createElement('a');
+    userButton.setAttribute('id', 'loginButton');
+    userButton.setAttribute('href', '/gw-login');
+    userButton.innerText = 'Log in';
   }
-  // /userInformation is not available for a few milliseconds
-  // after login, so if fetching the response fails, try again
-  // in 10ms.
-  try {
-    const buttonWrapper = document.createElement('div');
-    let userButton;
-    const response = await fetch('/userInformation');
-    const { isLoggedIn, name, preferred_username } = await response.json();
+  return userButton;
+}
 
-    if (isLoggedIn) {
-      buttonWrapper.setAttribute('class', 'loginLogoutButtonWrapper');
-      userButton = createAvatarButton(name, preferred_username);
-    } else {
-      buttonWrapper.setAttribute('id', 'loginContainer');
-      userButton = document.createElement('a');
-      userButton.setAttribute('id', 'loginButton');
-      userButton.setAttribute('href', '/gw-login');
-      userButton.innerText = 'Log in';
-    }
-    buttonWrapper.appendChild(userButton);
-    document.getElementById('customHeaderElements').appendChild(buttonWrapper);
+async function addAvatar() {
+  try {
+    const userButton = await getLoginButtonOrAvatar();
+    document.getElementById('customHeaderElements').appendChild(userButton);
   } catch (error) {
-    if (attemptNumber >= retryAttempts) {
-      console.log('Could not access user information endpoint. ' + error);
-      return;
-    }
-    attemptNumber++;
-    retryTimeout += 100;
-    setTimeout(
-      async () => createUserButton(attemptNumber, retryTimeout),
-      retryTimeout
-    );
+    console.log(error);
   }
 }
 
@@ -378,7 +358,7 @@ async function addCustomElements() {
   const customHeaderElements = document.getElementById('customHeaderElements');
   if (customHeaderElements != null) {
     await createVersionSelector();
-    await createUserButton();
+    await addAvatar();
     customHeaderElements.classList.remove('invisible');
   }
 }
