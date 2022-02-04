@@ -2,6 +2,15 @@ const fs = require('fs');
 const path = require('path');
 const staticPagesDir = path.join(__dirname, '..', 'static', 'pages');
 
+function getMockLanguages() {
+  return ['Dothraki', 'Klingon', 'Fremeni', 'Minion', 'Polish'].map(
+    language => ({
+      label: language,
+      pageUrl: '/',
+    })
+  );
+}
+
 function setL10nParams(pageClass) {
   let l10n = {};
   l10n.placeholder = 'Search';
@@ -82,17 +91,20 @@ function getTranslatedPages() {
     'l10n',
     'index.json'
   );
-  const fileContents = fs.readFileSync(
-    rootTranslatedPageConfigFilePath,
-    'utf-8'
-  );
-  const fileContentsJson = JSON.parse(fileContents);
-  return fileContentsJson.items.map(o => {
-    return {
+  const pagesFileExists = fs.existsSync(rootTranslatedPageConfigFilePath);
+  if (pagesFileExists) {
+    const fileContents = fs.readFileSync(
+      rootTranslatedPageConfigFilePath,
+      'utf-8'
+    );
+    const fileContentsJson = JSON.parse(fileContents);
+    return fileContentsJson.items.map(o => ({
       label: o.label,
       pageUrl: `/l10n/${o.page}`,
-    };
-  });
+    }));
+  } else {
+    return getMockLanguages();
+  }
 }
 
 module.exports = { getPage, getTranslatedPages };

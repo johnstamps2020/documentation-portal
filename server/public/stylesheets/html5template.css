@@ -57,7 +57,6 @@ body {
   --guidewire-font: 'Source Sans Pro', sans-serif;
   margin: 0;
   font-family: var(--guidewire-font);
-  line-height: 1.8;
   color: var(--GW-COLOR-TEXT-1);
   font-size: 18px;
   font-weight: 400;
@@ -174,6 +173,7 @@ main {
   overflow-y: scroll;
   padding: 32px;
   scroll-behavior: smooth;
+  line-height: 1.8;
 }
 
 @media (prefers-reduced-motion: reduce) {
