@@ -3502,6 +3502,7 @@ object GwBuildSteps {
                 }
             }
             GwDitaOutputFormats.HTML5.format_name -> {
+                val tempDir = "tmp/${output_format}"
                 ditaCommandParams.add(Pair("-f", "html5-Guidewire"))
                 ditaCommandParams.add(Pair("--args.rellinks", "nofamily"))
                 ditaCommandParams.add(Pair("--generate.build.data", "yes"))
