@@ -1250,13 +1250,15 @@ object Frontend {
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 
-            triggers {
-                vcs {
-                    triggerRules = """
+            if (deploy_env == GwDeployEnvs.DEV.env_name) {
+                triggers {
+                    vcs {
+                        triggerRules = """
                             +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:frontend/pages/**
                             +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
                             -:user=doctools:**
                             """.trimIndent()
+                    }
                 }
             }
         }
