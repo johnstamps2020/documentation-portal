@@ -179,7 +179,7 @@
     },
     {
       "id": "isbccloudeatesting",
-      "title": "ISBTF and GUnit Testing",
+      "title": "GUnit Testing",
       "url": "cloud/bc/ea/testing",
       "metadata": {
         "platform": ["Cloud"],
@@ -387,7 +387,7 @@
     },
     {
       "id": "iscccloudeatesting",
-      "title": "ISBTF and GUnit Testing",
+      "title": "GUnit Testing",
       "url": "cloud/cc/ea/testing",
       "metadata": {
         "platform": ["Cloud"],
@@ -659,7 +659,7 @@
     },
     {
       "id": "ispccloudeatesting",
-      "title": "ISBTF and GUnit Testing",
+      "title": "GUnit Testing",
       "url": "cloud/pc/ea/testing",
       "metadata": {
         "platform": ["Cloud"],
