@@ -104,7 +104,7 @@
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
-      "root": "TestingGuide.ditamap",
+      "root": "GUnitTestingGuide.ditamap",
       "srcId": "is2021112src",
       "docId": "isbcclouddrafttesting",
       "indexRedirect": true
@@ -244,7 +244,7 @@
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
-      "root": "TestingGuide.ditamap",
+      "root": "GUnitTestingGuide.ditamap",
       "srcId": "is2021112src",
       "docId": "isccclouddrafttesting",
       "indexRedirect": true
@@ -400,7 +400,7 @@
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
-      "root": "TestingGuide.ditamap",
+      "root": "GUnitTestingGuide.ditamap",
       "srcId": "is2021112src",
       "docId": "ispcclouddrafttesting",
       "indexRedirect": true

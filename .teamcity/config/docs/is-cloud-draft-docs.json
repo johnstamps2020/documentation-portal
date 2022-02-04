@@ -195,7 +195,7 @@
     },
     {
       "id": "isbcclouddrafttesting",
-      "title": "Test Automation Guide",
+      "title": "GUnit Testing",
       "url": "cloud/bc/latest/testing",
       "metadata": {
         "platform": ["Cloud"],
@@ -451,7 +451,7 @@
     },
     {
       "id": "isccclouddrafttesting",
-      "title": "Test Automation Guide",
+      "title": "GUnit Testing",
       "url": "cloud/cc/latest/testing",
       "metadata": {
         "platform": ["Cloud"],
@@ -739,7 +739,7 @@
     },
     {
       "id": "ispcclouddrafttesting",
-      "title": "Test Automation Guide",
+      "title": "GUnit Testing",
       "url": "cloud/pc/latest/testing",
       "metadata": {
         "platform": ["Cloud"],
