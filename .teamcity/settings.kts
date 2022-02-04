@@ -2427,19 +2427,8 @@ object Sources {
                             publishPath,
                             ditaOtLogsDir,
                             normalizedDitaDir,
-                            schematronReportsDir
-                        )
-                    )
-                    step(
-                        GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                            GwDitaOutputFormats.VALIDATE.format_name,
-                            rootMap,
-                            workingDir,
-                            outputDir,
-                            publishPath,
-                            ditaOtLogsDir,
-                            normalizedDitaDir,
-                            schematronReportsDir
+                            schematronReportsDir,
+                            buildFilter
                         )
                     )
                     step(
@@ -3513,25 +3502,23 @@ object GwBuildSteps {
                 }
             }
             GwDitaOutputFormats.HTML5.format_name -> {
+                val tempDir = "tmp/${output_format}"
                 ditaCommandParams.add(Pair("-f", "html5-Guidewire"))
                 ditaCommandParams.add(Pair("--args.rellinks", "nofamily"))
                 ditaCommandParams.add(Pair("--generate.build.data", "yes"))
                 ditaCommandParams.add(Pair("--git.url", "gitUrl"))
                 ditaCommandParams.add(Pair("--git.branch", "gitBranch"))
                 ditaCommandParams.add(Pair("--gw-base-url", publish_path))
+                ditaCommandParams.add(Pair("--temp", "${working_dir}/${tempDir}"))
+                ditaCommandParams.add(Pair("--clean.temp", "no"))
+                ditaCommandParams.add(Pair("--schematron.validate", "yes"))
+                resourcesCopyCommand =
+                    "mkdir -p \"${working_dir}/${schematron_reports_dir}\" && cp \"${working_dir}/${tempDir}/validation-report.xml\" \"${working_dir}/${schematron_reports_dir}/\""
             }
             GwDitaOutputFormats.DITA.format_name -> {
                 ditaCommandParams.add(Pair("-f", "gw_dita"))
                 resourcesCopyCommand =
                     "mkdir -p \"${working_dir}/${normalized_dita_dir}\" && cp -R \"${working_dir}/${fullOutputPath}/\"* \"${working_dir}/${normalized_dita_dir}/\""
-            }
-            GwDitaOutputFormats.VALIDATE.format_name -> {
-                val tempDir = "tmp/${output_format}"
-                ditaCommandParams.add(Pair("-f", "validate"))
-                ditaCommandParams.add(Pair("--clean.temp", "no"))
-                ditaCommandParams.add(Pair("--temp", "${working_dir}/${tempDir}"))
-                resourcesCopyCommand =
-                    "mkdir -p \"${working_dir}/${schematron_reports_dir}\" && cp \"${working_dir}/${tempDir}/validation-report.xml\" \"${working_dir}/${schematron_reports_dir}/\""
             }
         }
 
