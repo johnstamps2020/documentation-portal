@@ -204,6 +204,8 @@ nav .miniTocLink {
   font-size: 16px;
   font-family: var(--guidewire-font);
   text-align: left;
+  height: var(--main-height);
+  overflow: scroll;
 }
 
 .scrollToTopButton {
