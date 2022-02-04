@@ -12,7 +12,7 @@
   --clr-GW-BLUE: hsl(196, 100%, 31%);
   --clr-GW-BLUE-HOVER: hsl(196, 100%, 26%);
   /* --clr-GW-BLUE-LIGHTER and --clr-GW-BLUE-LIGHTER-HOVER are not approved colors,
-                        but are derived from GW Blue. */
+                                              but are derived from GW Blue. */
   --clr-GW-BLUE-LIGHTER: hsl(196, 100%, 60%);
   --clr-GW-BLUE-LIGHTER-HOVER: hsl(196, 100%, 45%);
   --clr-GW-BLUE-LIGHTEST: hsl(196, 100%, 90%);
@@ -36,9 +36,10 @@
   --login-page-hero-graphic-height: 400px;
   --body-height: calc(100vh - var(--estimated-header-height));
   --footer-height: 74px;
-  --content-width: 950px;
-  --sidebar-width: 300px;
+  --items-width: 950px;
+  --sidebar-width: 350px;
   --search-filter-width: 300px;
+  --content-width: calc(var(--items-width) + var(--sidebar-width) + 2rem);
 }
 
 *,
@@ -114,37 +115,33 @@ main.loginPage {
 }
 
 main:not(.fullWidth):not(.loginPage):not(.pageNotFound):not(.support) {
+}
+
+main:not(.fullWidth) .content {
+  padding: 2rem 0;
   display: flex;
-  flex-wrap: wrap-reverse;
-  column-gap: 2rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
 }
 
-main:not(.fullWidth) > .content {
-  max-width: var(--content-width);
-  margin-left: auto;
-  margin-right: auto;
-  flex-grow: 1;
-}
-
-main:not(.fullWidth) > .sidebar {
+main:not(.fullWidth) .sidebar {
   width: var(--sidebar-width);
-  flex-grow: 0;
-  flex-shrink: 0;
-}
-
-main.fullWidth > .sidebar {
-  display: none;
 }
 
 .sidebar {
-  padding-top: 260px;
-  padding-bottom: 32px;
+  display: none;
 }
 
 @media screen and (max-width: 750px) {
-  .sidebar {
-    padding-top: 0;
+  main:not(.fullWidth) .sidebar {
+    width: 100%;
   }
+}
+
+.pageBody {
+  max-width: var(--content-width);
+  margin: auto;
 }
 
 main.blue-theme {
@@ -203,6 +200,11 @@ main.blue-theme .docBreadcrumb a:hover {
   color: var(--clr-GW-BLUE-LIGHTER-HOVER);
 }
 
+main.blue-theme .sidebar,
+main.self-managed .sidebar {
+  display: block;
+}
+
 a {
   color: var(--clr-GW-BLUE);
   text-decoration: none;
@@ -239,14 +241,17 @@ label,
 }
 
 div.items {
-  padding: 2rem 0;
+  max-width: var(--items-width);
 }
 
 .threeCards div.items {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 0.5fr));
-  column-gap: 16px;
-  row-gap: 16px;
+  /*display: grid;*/
+  /*grid-template-columns: repeat(auto-fit, minmax(300px, 0.5fr));*/
+  /*column-gap: 16px;*/
+  /*row-gap: 16px;*/
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .twoCards div.items {
@@ -271,11 +276,24 @@ div.items {
   width: calc(50% - 8px);
 }
 
+.threeCards div.items > .categoryCard {
+  width: 300px;
+}
+
 .productFamily {
   height: 100px;
   font-size: 1.25rem;
   font-weight: 600;
   background-color: hsl(0, 0%, 100%);
+  width: 300px;
+}
+
+@media screen and (max-width: 750px) {
+  .threeCards div.items > .categoryCard,
+  .productFamily,
+  .subject {
+    width: 100%;
+  }
 }
 
 .upgradediffs .productFamily {
@@ -327,6 +345,7 @@ div.group > div:not(.label) {
   break-inside: avoid;
   padding-bottom: 32px;
   padding-left: 16px;
+  width: 450px;
 }
 
 .subject::before {

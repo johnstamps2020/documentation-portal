@@ -4,39 +4,42 @@
 <body>
 <%- include('parts/header') %>
 <main class="<%= pageContent.class || '' %>">
-    <div class="content">
-        <%- include('parts/platform-toggle') %>
-        <div class="pageHero">
-            <%- include('parts/breadcrumbs') %>
-            <h1><%= pageContent.title %></h1>
-        </div>
-        <%- include('parts/page-selector') %>
-        <% function create_block(label, className, items, doc_url, page, link, publiclyAvailable) { %>
-            <div class="<%= className || '' %>">
-                <% if (doc_url || page || link) {
-                    let itemHref = doc_url || link;
-                    if (page) {
-                        itemHref = encodeURI(pagePath + page)
-                    } %>
-                <a href="<%= itemHref %>"<%= !publiclyAvailable ? ' class="private"' : '' %>><%= label %></a>
-                <% } else { %>
-                    <div class="label"<%= !publiclyAvailable ? ' class="private"' : '' %>><%= label %></div>
-                <% } %>
-                <% if (items && items.length > 0) { -%>
-                    <% items.forEach(item => { -%>
-                        <%= create_block(item.label, item.class, item.items, item.doc_url, item.page, item.link, item.public) %>
-                    <% }) %>
-                <% } %>
+    <div class="pageBody">
+        <div class="pageControllers">
+            <%- include('parts/platform-toggle') %>
+            <div class="pageHero">
+                <%- include('parts/breadcrumbs') %>
+                <h1><%= pageContent.title %></h1>
             </div>
-        <% } %>
-
-        <div class="items">
-            <% pageContent.items.forEach(item => { %>
-                <%= create_block(item.label, item.class, item.items, item.doc_url, item.page, item.link, item.public) %>
-            <% }) %>
+            <%- include('parts/page-selector') %>
+        </div>
+        <div class="content">
+            <% function create_block(label, className, items, doc_url, page, link, publiclyAvailable) { %>
+                <div class="<%= className || '' %>">
+                    <% if (doc_url || page || link) {
+                        let itemHref = doc_url || link;
+                        if (page) {
+                            itemHref = encodeURI(pagePath + page)
+                        } %>
+                    <a href="<%= itemHref %>"<%= !publiclyAvailable ? ' class="private"' : '' %>><%= label %></a>
+                    <% } else { %>
+                        <div class="label"<%= !publiclyAvailable ? ' class="private"' : '' %>><%= label %></div>
+                    <% } %>
+                    <% if (items && items.length > 0) { -%>
+                        <% items.forEach(item => { -%>
+                            <%= create_block(item.label, item.class, item.items, item.doc_url, item.page, item.link, item.public) %>
+                        <% }) %>
+                    <% } %>
+                </div>
+            <% } %>
+            <div class="items">
+                <% pageContent.items.forEach(item => { %>
+                    <%= create_block(item.label, item.class, item.items, item.doc_url, item.page, item.link, item.public) %>
+                <% }) %>
+            </div>
+            <%- include('parts/sidebar') %>
         </div>
     </div>
-    <%- include('parts/sidebar') %>
 </main>
 <%- include('parts/footer') %>
 <script src="/scripts/main.js" type="module"></script>
