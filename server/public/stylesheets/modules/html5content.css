@@ -58,7 +58,7 @@ a:active {
 }
 
 .note {
-  padding: 16px;
+  padding: 0.25rem 1rem;
   margin: 15px auto;
   border-radius: 16px;
   box-shadow: var(--GW-BOX-SHADOW-DIAGONAL-3);
@@ -173,4 +173,11 @@ iframe {
 *:hover > .hashLink,
 .hashLink:focus {
   opacity: 1;
+}
+
+.p {
+  margin-top: 0;
+}
+.stepexpand {
+  margin-bottom: 0.5em;
 }
