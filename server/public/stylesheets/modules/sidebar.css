@@ -5,7 +5,7 @@ nav[role='toc'] {
   grid-area: toc;
   padding: 16px 1rem 16px 4px;
   height: var(--main-height);
-  overflow: scroll;
+  overflow-y: auto;
   border-right: 1px solid lightgray;
 }
 
