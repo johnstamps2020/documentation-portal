@@ -10,6 +10,7 @@
 @import 'modules/print.css';
 @import 'modules/fonts.css';
 @import 'modules/typography.css';
+@import 'modules/tables.css';
 
 @media screen and (max-width: 1700px) {
   html body {
@@ -193,7 +194,7 @@ main {
   overflow-y: scroll;
   padding: 32px;
   scroll-behavior: smooth;
-  line-height: 1.8;
+  line-height: 1.5;
 }
 
 @media (prefers-reduced-motion: reduce) {
