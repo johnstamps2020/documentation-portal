@@ -147,7 +147,7 @@
     },
     {
       "id": "isbcclouddraftinteg",
-      "title": "Integration",
+      "title": "Plugins, Prebuilt Integrations, and SOAP APIs",
       "url": "cloud/bc/latest/integration",
       "metadata": {
         "platform": ["Cloud"],
@@ -387,7 +387,7 @@
     },
     {
       "id": "isccclouddraftinteg",
-      "title": "Integration",
+      "title": "Plugins, Prebuilt Integrations, and SOAP APIs",
       "url": "cloud/cc/latest/integration",
       "metadata": {
         "platform": ["Cloud"],
