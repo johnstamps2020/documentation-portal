@@ -9,6 +9,7 @@
 @import 'modules/html5content.css';
 @import 'modules/print.css';
 @import 'modules/fonts.css';
+@import 'modules/typography.css';
 
 @media screen and (max-width: 1700px) {
   html body {
