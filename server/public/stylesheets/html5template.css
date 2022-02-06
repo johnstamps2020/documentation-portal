@@ -207,6 +207,7 @@ nav.miniToc {
   align-self: start;
   padding: 0 4px 0 16px;
   margin-top: 1rem;
+  margin-right: 0.15vw;
   border-left: 1px solid lightgray;
   height: var(--main-height);
   overflow-y: auto;
