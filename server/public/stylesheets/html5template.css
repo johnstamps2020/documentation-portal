@@ -28,6 +28,10 @@
     overflow: auto;
   }
 
+  main {
+    margin-right: 0.2vw;
+  }
+
   .miniToc .miniTocLink::before {
     content: '#';
     padding-right: 4px;
