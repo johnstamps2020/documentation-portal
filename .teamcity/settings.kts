@@ -2326,7 +2326,7 @@ object Sources {
             name = "Validate $docTitle ($docId)"
             id = Helpers.resolveRelativeIdFromIdString("${this.name}${src_id}")
 
-            artifactRules = "$previewUrlFile\n"
+            artifactRules = "$previewUrlFile\ndoc_validator.log\n"
 
             vcs {
                 root(teamcityGitRepoId)
