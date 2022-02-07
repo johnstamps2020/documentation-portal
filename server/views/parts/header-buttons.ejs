@@ -39,10 +39,16 @@
         </div>
     </button>
     <% if (localUserInfo.isLoggedIn) { %>
-        <a id="guidewireGlossaryButton" class="headerButtonsButton" href="/glossary" target="_blank" type="button"
-           tabindex="0"></a>
+        <button id="guidewireGlossaryButton" class="headerButtonsButton" aria-label="Guidewire glossary"
+                type="button">
+            <div id="guidewireGlossaryMenu" class="headerButtonsMenu">
+                <div class="headerButtonsMenuActions">
+                    <div><a href="/glossary">Guidewire Glossary</a></div>
+                </div>
+            </div>
+        </button>
         <button id="translatedDocsButton" class="headerButtonsButton" aria-label="translated documentation"
-                role="button">
+                type="button">
             <div id="translatedDocsMenu" class="headerButtonsMenu">
                 <div class="headerButtonsMenuHeader">Translated documentation</div>
                 <hr class="headerButtonsMenuDivider">
@@ -97,6 +103,10 @@
             {
                 buttonId: 'avatarButton',
                 menuId: 'avatarMenu'
+            },
+            {
+                buttonId: 'guidewireGlossaryButton',
+                menuId: 'guidewireGlossaryMenu'
             }
         ].forEach(o => {
             const buttonElement = document.getElementById(o.buttonId);
