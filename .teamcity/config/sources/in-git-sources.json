@@ -1,7 +1,6 @@
 {
   "$schema": "../config-schema.json",
   "sources": [
-    ,
     {
       "id": "in20221",
       "title": "InsuranceNow 2022.1",
