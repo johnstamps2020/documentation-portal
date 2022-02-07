@@ -8,6 +8,10 @@
     "selectedItem": "Aspen",
     "items": [
       {
+        "label": "Elysian",
+        "page": "../elysian"
+      },
+      {
         "label": "Dobson",
         "page": "../dobson"
       },
