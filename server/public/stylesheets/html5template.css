@@ -12,6 +12,7 @@
 @import 'modules/typography.css';
 @import 'modules/tables.css';
 @import 'modules/recommendations.css';
+@import 'modules/skipNav.css';
 
 @media screen and (max-width: 1700px) {
   html body {
