@@ -30,3 +30,7 @@ th {
 .choicetableborder th {
   border-right: 1px solid #999;
 }
+
+.entry > *:last-child {
+  margin-bottom: 0;
+}
