@@ -2381,13 +2381,6 @@ object Sources {
                         )
                     )
                     step(
-                        GwBuildSteps.createUploadContentToS3BucketStep(
-                            GwDeployEnvs.INT.env_name,
-                            "${workingDir}/${outputDir}/${GwDitaOutputFormats.WEBHELP.format_name}",
-                            publishPath,
-                        )
-                    )
-                    step(
                         GwBuildSteps.createPreviewUrlFile(
                             publishPath,
                             previewUrlFile
@@ -2405,6 +2398,13 @@ object Sources {
                             schematronReportsDir,
                             buildFilter,
                             indexRedirect
+                        )
+                    )
+                    step(
+                        GwBuildSteps.createUploadContentToS3BucketStep(
+                            GwDeployEnvs.INT.env_name,
+                            "${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.format_name}",
+                            publishPath,
                         )
                     )
                     step(
