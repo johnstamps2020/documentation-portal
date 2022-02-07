@@ -2381,20 +2381,6 @@ object Sources {
                         )
                     )
                     step(
-                        GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                            GwDitaOutputFormats.WEBHELP.format_name,
-                            rootMap,
-                            workingDir,
-                            outputDir,
-                            publishPath,
-                            ditaOtLogsDir,
-                            normalizedDitaDir,
-                            schematronReportsDir,
-                            buildFilter,
-                            indexRedirect
-                        )
-                    )
-                    step(
                         GwBuildSteps.createUploadContentToS3BucketStep(
                             GwDeployEnvs.INT.env_name,
                             "${workingDir}/${outputDir}/${GwDitaOutputFormats.WEBHELP.format_name}",
@@ -3494,16 +3480,6 @@ object GwBuildSteps {
         when (output_format) {
             // --git-url and --git-branch are required by the DITA OT plugin to generate build data.
             // There are not needed in this build, so they have fake values
-            GwDitaOutputFormats.WEBHELP.format_name -> {
-                ditaCommandParams.add(Pair("-f", "webhelp_Guidewire"))
-                ditaCommandParams.add(Pair("--generate.build.data", "yes"))
-                ditaCommandParams.add(Pair("--git.url", "gitUrl"))
-                ditaCommandParams.add(Pair("--git.branch", "gitBranch"))
-                if (index_redirect) {
-                    ditaCommandParams.add(Pair("--create-index-redirect", "yes"))
-                    ditaCommandParams.add(Pair("--webhelp.publication.toc.links", "all"))
-                }
-            }
             GwDitaOutputFormats.HTML5.format_name -> {
                 val tempDir = "tmp/${output_format}"
                 ditaCommandParams.add(Pair("-f", "html5-Guidewire"))
