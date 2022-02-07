@@ -213,6 +213,38 @@
       "public": false
     },
     {
+      "id": "in20221studiorn",
+      "title": "Studio 2022.1 Release Notes",
+      "url": "cloud/in/20221/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.1"],
+        "subject": ["Release notes"],
+        "release": ["Elysian"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20221xstudiorndraft",
+      "title": "Studio 2022.1 Release Notes Draft",
+      "url": "cloud/in/20221x/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.1"],
+        "subject": ["Release notes"],
+        "release": ["Elysian"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "in20212studiorn",
       "title": "Studio 2021.2 Release Notes",
       "url": "cloud/in/20212/studiorn",
@@ -350,6 +382,38 @@
         "version": ["latest"],
         "subject": ["Installation"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20221rn",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20221/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.1"],
+        "subject": ["Release notes"],
+        "release": ["Elysian"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20221xrndraft",
+      "title": "Core Release Notes Draft",
+      "url": "cloud/in/20221x/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.1"],
+        "subject": ["Release notes"],
+        "release": ["Elysian"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
