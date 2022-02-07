@@ -4,7 +4,7 @@
     {
       "id": "in20212",
       "title": "InsuranceNow 2021.2",
-      "sourceType": "xdocs",
+      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
       "branch": "release/2021.2"
     },
@@ -14,6 +14,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurance-now-api-ref.git",
       "branch": "release/dobson"
+    },
+    {
+      "id": "in20221",
+      "title": "InsuranceNow 2022.1",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "develop/elysian"
     }
   ]
 }
