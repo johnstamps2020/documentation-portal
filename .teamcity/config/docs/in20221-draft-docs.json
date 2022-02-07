@@ -2,9 +2,9 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "inbillrefdraft",
+      "id": "in20221xbillrefdraft",
       "title": "Billing Configuration Reference Draft",
-      "url": "cloud/in/billref",
+      "url": "cloud/in//20221/billref",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],

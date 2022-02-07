@@ -6,7 +6,7 @@
       "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "BillingConfigurationReference.ditamap",
       "srcId": "in20212",
-      "docId": "inbillrefdraft",
+      "docId": "in20212xbillrefdraft",
       "indexRedirect": true
     },
     {
