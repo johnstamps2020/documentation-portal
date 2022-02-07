@@ -1,3 +1,21 @@
 .p.seealso {
-  font-weight: bold;
+  font-weight: 500;
+}
+
+.uicontrol,
+.wintitle {
+  font-weight: 600;
+}
+
+.title .apiname,
+.title .cmdname,
+.title .codeph,
+.title .filepath,
+.title .msgph,
+.title .parmname,
+.title .uicontrol,
+.title .wintitle {
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
 }

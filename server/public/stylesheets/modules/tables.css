@@ -5,7 +5,10 @@ table {
 
 .simpletable td:not([valign]),
 .table td:not([valign]),
-.choicetable td:not([valign]) {
+.choicetable td:not([valign]),
+.simpletable th:not([valign]),
+.table th:not([valign]),
+.choicetable th:not([valign]) {
   vertical-align: top;
 }
 
@@ -18,7 +21,6 @@ th {
 }
 
 th {
-  border-bottom: 2px solid #999;
   font-weight: 600;
 }
 
