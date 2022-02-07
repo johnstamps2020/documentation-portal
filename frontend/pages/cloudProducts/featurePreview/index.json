@@ -39,6 +39,10 @@
           "page": "../datastudio"
         },
         {
+          "label": "Cloud Console Root Doc Early Access",
+          "id": "guidewirecloudconsolerootearlyaccess"
+        },
+        {
           "label": "Submission Intake",
           "id": "submissionintakedraft"
         }

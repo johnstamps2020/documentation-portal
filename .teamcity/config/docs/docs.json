@@ -323,7 +323,7 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"],
-        "release": ["Banff", "Cortina", "Dobson"]
+        "release": ["Elysian"]
       },
       "environments": ["int"],
       "public": false
