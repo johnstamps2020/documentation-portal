@@ -52,7 +52,7 @@ pre.pre {
 .pre .tt,
 .filepath {
   font-family: var(--code-font-family);
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .codeblock,
@@ -75,4 +75,5 @@ pre.pre {
   border: none;
   border-radius: 0;
   padding: 0;
+  font-size: 14px;
 }
