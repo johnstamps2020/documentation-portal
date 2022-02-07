@@ -71,6 +71,10 @@
       "class": "subject configuration",
       "items": [
         {
+          "label": "Billing Configuration Reference",
+          "id": "in20221billref"
+        },
+        {
           "label": "Core Configuration",
           "id": "in20221config"
         },

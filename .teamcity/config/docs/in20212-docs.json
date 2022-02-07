@@ -18,6 +18,22 @@
       "public": false
     },
     {
+      "id": "in20212billref",
+      "title": "Billing Configuration Reference",
+      "url": "cloud/in/20212/billref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Configuration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "in20212csalesp",
       "title": "Consumer Sales Portal Features",
       "url": "cloud/in/20212/csalesp",
