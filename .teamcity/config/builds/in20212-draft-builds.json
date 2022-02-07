@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft-Guidewire.ditaval",
       "root": "BillingConfigurationReference.ditamap",
       "srcId": "in20212",
       "docId": "in20212xbillrefdraft",
