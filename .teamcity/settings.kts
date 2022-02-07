@@ -3889,6 +3889,7 @@ object GwBuildSteps {
             name = "Run the doc validator"
             id = Helpers.createIdStringFromName(this.name)
             executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
+            workingDir = working_dir
             scriptContent = """
                 #!/bin/bash
                 set -xe
