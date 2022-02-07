@@ -11,6 +11,7 @@
 @import 'modules/fonts.css';
 @import 'modules/typography.css';
 @import 'modules/tables.css';
+@import 'modules/recommendations.css';
 
 @media screen and (max-width: 1700px) {
   html body {
