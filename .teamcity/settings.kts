@@ -2381,12 +2381,6 @@ object Sources {
                         )
                     )
                     step(
-                        GwBuildSteps.createPreviewUrlFile(
-                            publishPath,
-                            previewUrlFile
-                        )
-                    )
-                    step(
                         GwBuildSteps.createBuildDitaProjectForValidationsStep(
                             GwDitaOutputFormats.HTML5.format_name,
                             rootMap,
@@ -2405,6 +2399,12 @@ object Sources {
                             GwDeployEnvs.INT.env_name,
                             "${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.format_name}",
                             publishPath,
+                        )
+                    )
+                    step(
+                        GwBuildSteps.createPreviewUrlFile(
+                            publishPath,
+                            previewUrlFile
                         )
                     )
                     step(
