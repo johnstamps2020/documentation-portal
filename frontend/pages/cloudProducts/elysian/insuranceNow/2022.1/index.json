@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "InsuranceNow 2021.2",
+  "title": "InsuranceNow 2022.1",
   "template": "page",
   "class": "twoColumns",
   "items": [
@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Core Release Notes",
-          "id": "in20212xrndraft"
+          "id": "in20221rn"
         },
         {
           "label": "Release Video",
@@ -18,7 +18,7 @@
         },
         {
           "label": "Studio Release Notes",
-          "id": "in20212xstudiorndraft"
+          "id": "in20221studiorn"
         },
         {
           "label": "Consumer Service Portal Release Notes",
@@ -32,19 +32,19 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "in20212xappdraft"
+          "id": "in20221app"
         },
         {
           "label": "Consumer Sales Portal Features",
-          "id": "in20212xcsalespdraft"
+          "id": "in20221csalesp"
         },
         {
           "label": "Consumer Service Portal Features",
-          "id": "in20212xcservicepdraft"
+          "id": "in20221cservicep"
         },
         {
           "label": "Excel Designed Rating",
-          "id": "inexcelrating30draft"
+          "id": "inexcelrating30"
         }
       ]
     },
@@ -54,19 +54,15 @@
       "items": [
         {
           "label": "AppReader Integration",
-          "id": "in20212xappreaderintegdraft"
-        },
-        {
-          "label": "Business Intelligence Integration (Internal)",
-          "id": "in20212xbiintegdraft"
+          "id": "in20221appreaderinteg"
         },
         {
           "label": "Live Predict Integration",
-          "id": "in20212xpadraft"
+          "id": "in20221pa"
         },
         {
           "label": "API Reference",
-          "id": "in20212apiref"
+          "id": "in20221apiref"
         }
       ]
     },
@@ -76,47 +72,31 @@
       "items": [
         {
           "label": "Billing Configuration Reference",
-          "id": "in20212xbillrefdraft"
+          "id": "in20221billref"
         },
         {
           "label": "Core Configuration",
-          "id": "in20212xconfigdraft"
-        },
-        {
-          "label": "Common Functionality Configuration Reference (Internal)",
-          "id": "in20212xcommonconfigdraft"
-        },
-        {
-          "label": "Consumer Sales Portal Configuration (Internal)",
-          "id": "in20212xcsalespconfigdraft"
-        },
-        {
-          "label": "Consumer Service Portal Configuration (Internal)",
-          "id": "in20212xcservicepconfigdraft"
-        },
-        {
-          "label": "Studio Configuration",
-          "id": "in20212xstudiodraft"
-        },
-        {
-          "label": "Provisioning Portal (Internal)",
-          "id": "in20212xprovportaldraft"
-        },
-        {
-          "label": "Portal Development",
-          "id": "in20212xportaldevdraft"
-        },
-        {
-          "label": "Product Attribute Reference",
-          "id": "in20212xprodattrefdraft"
-        },
-        {
-          "label": "Underwriting Configuration Reference",
-          "id": "in20212xuwconfigdraft"
+          "id": "in20221config"
         },
         {
           "label": "Claims Configuration Reference",
-          "id": "in20212xclaimsconfigdraft"
+          "id": "in20221claimsconfig"
+        },
+        {
+          "label": "Studio Configuration",
+          "id": "in20221studio"
+        },
+        {
+          "label": "Portal Development",
+          "id": "in20221portaldev"
+        },
+        {
+          "label": "Product Attribute Reference",
+          "id": "in20221prodattref"
+        },
+        {
+          "label": "Underwriting Configuration Reference",
+          "id": "in20221uwconfig"
         }
       ]
     },
@@ -125,24 +105,8 @@
       "class": "subject installation",
       "items": [
         {
-          "label": "Install Assist (Internal)",
-          "id": "ininstallassistdraft"
-        },
-        {
-          "label": "Developer Setup (Internal)",
-          "id": "indevguidejava11draft"
-        },
-        {
           "label": "Developer Setup",
           "id": "indevguidejava11ext"
-        },
-        {
-          "label": "Payment Service Migration (Internal)",
-          "id": "inpaymentservicemigrationdraft"
-        },
-        {
-          "label": "Upgrade Tools (Internal)",
-          "id": "inupgradetoolsdraft"
         }
       ]
     }

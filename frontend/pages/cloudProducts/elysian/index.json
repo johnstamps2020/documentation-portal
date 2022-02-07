@@ -44,7 +44,11 @@
         },
         {
           "label": "InsuranceNow",
-          "page": "insuranceNow/2021.2"
+          "page": "insuranceNow/2022.1"
+        },
+        {
+          "label": "InsuranceNow",
+          "page": "insuranceNow/latest"
         },
         {
           "label": "Guidewire for Salesforce",

@@ -2,31 +2,15 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "in20212app",
+      "id": "in20221app",
       "title": "Application Guide",
-      "url": "cloud/in/20212/app",
+      "url": "cloud/in/20221/app",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.2"],
+        "version": ["2022.1"],
         "subject": ["Features and functionality"],
-        "release": ["Dobson"]
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20212billref",
-      "title": "Billing Configuration Reference",
-      "url": "cloud/in/20212/billref",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Configuration"],
-        "release": ["Dobson"]
+        "release": ["Elysian"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -34,193 +18,209 @@
       "public": false
     },
     {
-      "id": "in20212csalesp",
+      "id": "in20221billref",
+      "title": "Billing Configuration Reference",
+      "url": "cloud/in/20221/billref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.1"],
+        "subject": ["Configuration"],
+        "release": ["Elysian"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "in20221csalesp",
       "title": "Consumer Sales Portal Features",
-      "url": "cloud/in/20212/csalesp",
+      "url": "cloud/in/20221/csalesp",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.2"],
+        "version": ["2022.1"],
         "subject": ["Features and functionality"],
-        "release": ["Dobson"]
+        "release": ["Elysian"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212cservicep",
+      "id": "in20221cservicep",
       "title": "Consumer Service Portal Features",
-      "url": "cloud/in/20212/cservicep",
+      "url": "cloud/in/20221/cservicep",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.2"],
+        "version": ["2022.1"],
         "subject": ["Features and functionality"],
-        "release": ["Dobson"]
+        "release": ["Elysian"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212appreaderinteg",
+      "id": "in20221appreaderinteg",
       "title": "AppReader Integration",
-      "url": "cloud/in/20212/appreaderinteg",
+      "url": "cloud/in/20221/appreaderinteg",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.2"],
+        "version": ["2022.1"],
         "subject": ["Integration"],
-        "release": ["Dobson"]
+        "release": ["Elysian"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212pa",
+      "id": "in20221pa",
       "title": "Live Predict Integration",
-      "url": "cloud/in/20212/pa",
+      "url": "cloud/in/20221/pa",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.2"],
+        "version": ["2022.1"],
         "subject": ["Integration"],
-        "release": ["Dobson"]
+        "release": ["Elysian"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212config",
+      "id": "in20221config",
       "title": "Core Configuration Guide",
-      "url": "cloud/in/20212/config",
+      "url": "cloud/in/20221/config",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.2"],
+        "version": ["2022.1"],
         "subject": ["Configuration"],
-        "release": ["Dobson"]
+        "release": ["Elysian"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212commonconfig",
+      "id": "in20221commonconfig",
       "title": "Common Functionality Configuration Reference",
-      "url": "cloud/in/20212/commonconfig",
+      "url": "cloud/in/20221/commonconfig",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.2"],
+        "version": ["2022.1"],
         "subject": ["Configuration"],
-        "release": ["Dobson"]
+        "release": ["Elysian"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212studio",
+      "id": "in20221studio",
       "title": "Studio Configuration Guide",
-      "url": "cloud/in/20212/studioconfig",
+      "url": "cloud/in/20221/studioconfig",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.2"],
+        "version": ["2022.1"],
         "subject": ["Configuration"],
-        "release": ["Dobson"]
+        "release": ["Elysian"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212portaldev",
+      "id": "in20221portaldev",
       "title": "Portal Development Guide",
-      "url": "cloud/in/20212/portaldev",
+      "url": "cloud/in/20221/portaldev",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.2"],
+        "version": ["2022.1"],
         "subject": ["Configuration"],
-        "release": ["Dobson"]
+        "release": ["Elysian"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
     },
     {
-      "id": "in20212prodattref",
+      "id": "in20221prodattref",
       "title": "Product Attribute Reference",
-      "url": "cloud/in/20212/prodattref",
+      "url": "cloud/in/20221/prodattref",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.2"],
+        "version": ["2022.1"],
         "subject": ["Configuration"],
-        "release": ["Dobson"]
+        "release": ["Elysian"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212uwconfig",
+      "id": "in20221uwconfig",
       "title": "Underwriting Configuration Reference",
-      "url": "cloud/in/20212/uwconfig",
+      "url": "cloud/in/20221/uwconfig",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.2"],
+        "version": ["2022.1"],
         "subject": ["Configuration"],
-        "release": ["Dobson"]
+        "release": ["Elysian"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212claimsconfig",
+      "id": "in20221claimsconfig",
       "title": "Claims Configuration Reference",
-      "url": "cloud/in/20212/claimsconfig",
+      "url": "cloud/in/20221/claimsconfig",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.2"],
+        "version": ["2022.1"],
         "subject": ["Configuration"],
-        "release": ["Dobson"]
+        "release": ["Elysian"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "in20212apiref",
+      "id": "in20221apiref",
       "title": "API Reference",
-      "url": "cloud/in/20212/apiref",
+      "url": "cloud/in/20221/apiref",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.2"],
+        "version": ["2022.1"],
         "subject": ["Integration"],
-        "release": ["Dobson"]
+        "release": ["Elysian"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
