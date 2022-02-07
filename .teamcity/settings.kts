@@ -2328,7 +2328,7 @@ object Sources {
             name = "Validate $docTitle ($docId)"
             id = Helpers.resolveRelativeIdFromIdString("${this.name}${src_id}")
 
-            artifactRules = "$previewUrlFile\ndoc_validator.log\n"
+            artifactRules = "$previewUrlFile\n"
 
             vcs {
                 root(teamcityGitRepoId)
@@ -2342,6 +2342,7 @@ object Sources {
         when (gw_build_type) {
             GwBuildTypes.DITA.build_type_name -> {
                 val ditaOtLogsDir = "dita_ot_logs"
+                val docValidatorLogs = "doc_validator_logs"
                 val normalizedDitaDir = "normalized_dita_dir"
                 val schematronReportsDir = "schematron_reports_dir"
                 val docInfoFile = "doc-info.json"
@@ -2365,7 +2366,8 @@ object Sources {
                 }
 
                 validationBuildType.artifactRules += """
-                    ${workingDir}/${ditaOtLogsDir} => logs
+                    ${workingDir}/${ditaOtLogsDir} => dita_ot_logs
+                    ${workingDir}/${docValidatorLogs} => doc_validator_logs
                     ${workingDir}/${outputDir}/${GwDitaOutputFormats.WEBHELP.format_name}/${GwConfigParams.BUILD_DATA_FILE.param_value} => ${GwConfigParams.BUILD_DATA_DIR.param_value}
                 """.trimIndent()
 
