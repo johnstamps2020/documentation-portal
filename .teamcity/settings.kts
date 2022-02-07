@@ -3483,7 +3483,6 @@ object GwBuildSteps {
             Pair("-o", "${working_dir}/${fullOutputPath}"),
             Pair("-l", "${working_dir}/${logFile}"),
             Pair("--processing-mode", "strict"),
-            Pair("--verbose", "")
         )
 
         if (build_filter != null) {
