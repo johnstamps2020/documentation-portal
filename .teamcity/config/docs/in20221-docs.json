@@ -220,7 +220,7 @@
         "subject": ["Integration"],
         "release": ["Elysian"]
       },
-      "environments": ["dev", "staging", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true
