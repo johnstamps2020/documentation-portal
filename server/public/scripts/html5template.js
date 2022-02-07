@@ -9,11 +9,13 @@ import { addAvatar } from './modules/avatar.js';
 import { addSearchBox } from './modules/searchBox.js';
 import { addCopyButton, normalizeCode } from './modules/code.js';
 import { setUpSidebar } from './modules/sidebar.js';
+import { showTopicRecommendations } from './modules/recommendations.js';
 import './prism.js';
 import '../stylesheets/html5template.css';
 import '../stylesheets/prism.css';
 
 docReady(async function() {
+  showTopicRecommendations();
   setUpSidebar();
   normalizeCode();
   await setMetadata();
