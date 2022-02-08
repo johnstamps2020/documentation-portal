@@ -14,7 +14,7 @@
 @import 'modules/recommendations.css';
 @import 'modules/skipNav.css';
 
-@media screen and (max-width: 1700px) {
+@media screen and (max-width: 1500px) {
   html body {
     grid-template-areas:
       'header header header'
@@ -86,7 +86,7 @@ body {
   background-color: white;
   min-height: var(--main-height);
   display: grid;
-  grid-template-columns: 350px 1fr 250px;
+  grid-template-columns: 350px 3fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
     'header header header'
