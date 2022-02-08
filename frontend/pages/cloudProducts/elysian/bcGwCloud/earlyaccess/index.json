@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "BillingCenter for Guidewire Cloud earlyaccess",
+  "title": "BillingCenter for Guidewire Cloud - Elysian Early Access",
   "template": "page",
   "class": "twoColumns",
   "selector": {
@@ -8,8 +8,8 @@
     "selectedItem": "earlyaccess",
     "items": [
       {
-        "label": "latest",
-        "page": "../latest"
+        "label": "2022.05",
+        "page": "../2022.05"
       }
     ]
   },
@@ -20,11 +20,11 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "isbccloudeareleasenotes"
+          "id": "isbcelysianeareleasenotes"
         },
         {
           "label": "New and Changed",
-          "id": "isbccloudeanewandchanged"
+          "id": "isbcelysianeanewandchanged"
         }
       ]
     },
@@ -34,11 +34,11 @@
       "items": [
         {
           "label": "Developer Setup",
-          "id": "isbccloudeadevsetup"
+          "id": "isbcelysianeadevsetup"
         },
         {
           "label": "Upgrade",
-          "id": "isbccloudeaupgrade"
+          "id": "isbcelysianeaupgrade"
         }
       ]
     },
@@ -48,11 +48,11 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "isbccloudeaapp"
+          "id": "isbcelysianeaapp"
         },
         {
           "label": "Contact Management",
-          "id": "iscloudeacontact"
+          "id": "iselysianeacontact"
         }
       ]
     },
@@ -62,11 +62,11 @@
       "items": [
         {
           "label": "Administration",
-          "id": "isbccloudeaadmin"
+          "id": "isbcelysianeaadmin"
         },
         {
           "label": "Data Archiving",
-          "id": "isbccloudeadataarchiving"
+          "id": "isbcelysianeadataarchiving"
         }
       ]
     },
@@ -76,15 +76,15 @@
       "items": [
         {
           "label": "Configuration",
-          "id": "isbccloudeaconfig"
+          "id": "isbcelysianeaconfig"
         },
         {
           "label": "Globalization",
-          "id": "isbccloudeaglobal"
+          "id": "isbcelysianeaglobal"
         },
         {
           "label": "Gosu Rules",
-          "id": "isbccloudearules"
+          "id": "isbcelysianearules"
         }
       ]
     },
@@ -94,7 +94,7 @@
       "items": [
         {
           "label": "Plugins, Pre-built Integrations, and SOAP APIs",
-          "id": "isbccloudeainteg"
+          "id": "isbcelysianeainteg"
         }
       ]
     },
@@ -104,11 +104,11 @@
       "items": [
         {
           "label": "Gosu Reference",
-          "id": "iscloudeagosu"
+          "id": "iselysianeagosu"
         },
         {
           "label": "ISBTF and GUnit Testing",
-          "id": "isbccloudeatesting"
+          "id": "isbcelysianeatesting"
         }
       ]
     },

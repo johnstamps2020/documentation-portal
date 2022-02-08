@@ -38,14 +38,14 @@
     },
     {
       "id": "srcccapirefdobson",
-      "title": "CC API ref preview",
+      "title": "CC API ref preview 2021.11",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cc-api-ref.git",
       "branch": "release/dobson"
     },
     {
       "id": "srcpcapirefdobson",
-      "title": "PC API ref preview",
+      "title": "PC API ref preview 2021.11",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/pc-api-ref.git",
       "branch": "release/dobson"

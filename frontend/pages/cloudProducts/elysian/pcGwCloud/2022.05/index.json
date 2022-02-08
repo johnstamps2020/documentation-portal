@@ -1,0 +1,293 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "PolicyCenter for Guidewire Cloud 2022.05",
+  "template": "page",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select version",
+    "selectedItem": "latest",
+    "items": [
+      {
+        "label": "earlyaccess",
+        "page": "../earlyaccess"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ispcelysiandraftreleasenotes"
+        },
+        {
+          "label": "Release Notes",
+          "id": "ispc202205releasenotes"
+        },
+        {
+          "label": "New and Changed",
+          "id": "ispcelysiandraftnewandchanged"
+        },
+        {
+          "label": "New and Changed",
+          "id": "ispc202205newandchanged"
+        },
+        {
+          "label": "REST API Client Release Notes",
+          "id": "isdraftrestapiclientrn"
+        },
+        {
+          "label": "REST API Client Release Notes",
+          "id": "isrestapiclientrn",
+          "env": ["staging"]
+        },
+        {
+          "label": "The Guidewire Testing Framework Release Notes",
+          "id": "testingframeworksrnelysian"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Developer Setup",
+          "id": "ispcelysiandraftdevsetup"
+        },
+        {
+          "label": "Developer Setup",
+          "id": "ispc202205devsetup"
+        },
+        {
+          "label": "Developer Setup (Internal only)",
+          "id": "ispcelysiangwdevsetup"
+        },
+        {
+          "label": "Upgrade",
+          "id": "ispcelysiandraftupgrade"
+        },
+        {
+          "label": "Upgrade",
+          "id": "ispc202205upgrade"
+        },
+        {
+          "label": "Upgrade (Internal only)",
+          "id": "ispcelysiangwupgrade"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetoolsdraft"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools410",
+          "env": ["staging"]
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "ispcelysiandraftapp"
+        },
+        {
+          "label": "Application Guide",
+          "id": "ispc202205app"
+        },
+        {
+          "label": "Contact Management",
+          "id": "iselysiandraftcontact"
+        },
+        {
+          "label": "Contact Management",
+          "id": "is202205contact"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "ispcelysiandraftadmin"
+        },
+        {
+          "label": "Administration",
+          "id": "ispc202205admin"
+        },
+        {
+          "label": "Administration (Internal only)",
+          "id": "ispcelysiangwadmin"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "ispcelysiandraftdataarchiving"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "ispc202205dataarchiving"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Advanced Product Designer",
+          "id": "ispc202205apd"
+        },
+        {
+          "label": "Configuration",
+          "id": "ispcelysiandraftconfig"
+        },
+        {
+          "label": "Configuration",
+          "id": "ispc202205config"
+        },
+        {
+          "label": "Globalization",
+          "id": "ispcelysiandraftglobal"
+        },
+        {
+          "label": "Globalization",
+          "id": "ispc202205global"
+        },
+        {
+          "label": "Gosu Rules",
+          "id": "ispcelysiandraftrules"
+        },
+        {
+          "label": "Gosu Rules",
+          "id": "ispc202205rules"
+        },
+        {
+          "label": "Product Designer",
+          "id": "ispcelysiandraftpd"
+        },
+        {
+          "label": "Product Designer",
+          "id": "ispc202205pd"
+        },
+        {
+          "label": "Product Model",
+          "id": "ispcelysiandraftpm"
+        },
+        {
+          "label": "Product Model",
+          "id": "ispc202205pm"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Overview of Cloud Integration",
+          "id": "iselysiandraftintegoverview"
+        },
+        {
+          "label": "Overview of Cloud Integration",
+          "id": "is202205integoverview"
+        },
+        {
+          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
+          "id": "ispcelysiandraftinteg"
+        },
+        {
+          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
+          "id": "ispc202205integ"
+        },
+        {
+          "label": "Cloud API Business Flows",
+          "id": "ispcelysiandraftapibf"
+        },
+        {
+          "label": "Cloud API Business Flows",
+          "id": "ispc202205apibf"
+        },
+        {
+          "label": "Cloud API ContactManager",
+          "id": "ispcelysiandraftapicm"
+        },
+        {
+          "label": "Cloud API ContactManager",
+          "id": "ispc202205apicm"
+        },
+        {
+          "label": "Cloud API Authentication",
+          "id": "ispcelysiandraftapica"
+        },
+        {
+          "label": "Cloud API Authentication",
+          "id": "ispc202205apica"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "ispcelysiandraftrestapifw"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "ispc202205restapifw"
+        },
+        {
+          "label": "REST API Client",
+          "id": "isdraftrestapiclientguide"
+        },
+        {
+          "label": "REST API Client",
+          "id": "isrestapiclientguide",
+          "env": ["staging"]
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "iselysiandraftgosu"
+        },
+        {
+          "label": "Gosu Reference",
+          "id": "is202205gosu"
+        },
+        {
+          "label": "GUnit Testing",
+          "id": "ispcelysiandrafttesting"
+        },
+        {
+          "label": "GUnit Testing",
+          "id": "ispc202205testing"
+        },
+        {
+          "label": "API Testing (GT: API)",
+          "id": "testingframeworksapielysian"
+        },
+        {
+          "label": "User Interface Testing (GT: UI)",
+          "id": "testingframeworksuielysian"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "gwglossary"
+        }
+      ]
+    }
+  ]
+}
