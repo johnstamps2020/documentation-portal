@@ -44,7 +44,7 @@
         "release": ["Elysian"],
         "subject": ["Installation"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -252,7 +252,7 @@
         "release": ["Elysian"],
         "subject": ["Installation"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -476,7 +476,7 @@
         "release": ["Elysian"],
         "subject": ["Installation"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false

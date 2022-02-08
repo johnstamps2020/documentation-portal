@@ -123,7 +123,7 @@
           "id": "iselysianeagosu"
         },
         {
-          "label": "ISBTF and GUnit Testing",
+          "label": "GUnit Testing",
           "id": "ispcelysianeatesting"
         }
       ]
@@ -134,7 +134,8 @@
       "items": [
         {
           "label": "Glossary",
-          "id": "gwglossary"
+          "id": "gwglossary",
+          "env": ["int", "staging"]
         }
       ]
     }
