@@ -249,6 +249,14 @@ object Runners {
             dependencies {
                 doc_ids.forEach {
                     snapshot(Helpers.resolveRelativeIdFromIdString("Publish to ${deploy_env}${it}")) {
+                        // Build runners reuse doc builds to avoid unnecessary build runs.
+                        // This feature can't be used in runners for prod doc builds because the prod doc builds
+                        // don’t use a VCS Root - they only copy from staging to prod.
+                        // Therefore, runners can’t discover any changes in the VCS Root from which the staging output
+                        // was built and as a result they don’t trigger the dependent doc build for prod.
+                        if (deploy_env == GwDeployEnvs.PROD.env_name) {
+                            reuseBuilds = ReuseBuilds.NO
+                        }
                         onDependencyFailure = FailureAction.FAIL_TO_START
                     }
                 }
