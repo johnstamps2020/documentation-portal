@@ -32,15 +32,15 @@
       "items": [
         {
           "label": "PolicyCenter",
-          "page": "pcGwCloud/latest"
+          "page": "pcGwCloud/2022.05"
         },
         {
           "label": "ClaimCenter",
-          "page": "ccGwCloud/latest"
+          "page": "ccGwCloud/2022.05"
         },
         {
           "label": "BillingCenter",
-          "page": "bcGwCloud/latest"
+          "page": "bcGwCloud/2022.05"
         },
         {
           "label": "InsuranceNow",

@@ -2052,14 +2052,9 @@
     {
       "id": "gwglossarysrc",
       "title": "Guidewire Glossary",
-      "sourceType": "xdocs",
+      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/glossary.git",
-      "branch": "main",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/glossary/Glossary.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
-      ]
+      "branch": "main"
     },
     {
       "id": "learninganalyticssrc",

@@ -1,11 +1,11 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "PolicyCenter for Guidewire Cloud latest",
+  "title": "BillingCenter for Guidewire Cloud 2022.05",
   "template": "page",
   "class": "twoColumns",
   "selector": {
     "label": "Select version",
-    "selectedItem": "latest",
+    "selectedItem": "2022.05 ",
     "items": [
       {
         "label": "earlyaccess",
@@ -20,19 +20,32 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "ispcclouddraftreleasenotes"
+          "id": "isbcelysiandraftreleasenotes"
+        },
+        {
+          "label": "Release Notes",
+          "id": "isbc202205releasenotes"
         },
         {
           "label": "New and Changed",
-          "id": "ispcclouddraftnewandchanged"
+          "id": "isbcelysiandraftnewandchanged"
+        },
+        {
+          "label": "New and Changed",
+          "id": "isbc202205newandchanged"
         },
         {
           "label": "REST API Client Release Notes",
           "id": "isdraftrestapiclientrn"
         },
         {
+          "label": "REST API Client Release Notes",
+          "id": "isrestapiclientrn",
+          "env": ["staging"]
+        },
+        {
           "label": "The Guidewire Testing Framework Release Notes",
-          "id": "testingframeworksrndobson"
+          "id": "testingframeworksrnelysian"
         }
       ]
     },
@@ -42,23 +55,36 @@
       "items": [
         {
           "label": "Developer Setup",
-          "id": "ispcclouddraftdevsetup"
+          "id": "isbcelysiandraftdevsetup"
+        },
+        {
+          "label": "Developer Setup",
+          "id": "isbc202205devsetup"
         },
         {
           "label": "Developer Setup (Internal only)",
-          "id": "ispccloudgwdevsetup"
+          "id": "isbcelysiangwdevsetup"
         },
         {
           "label": "Upgrade",
-          "id": "ispcclouddraftupgrade"
+          "id": "isbcelysiandraftupgrade"
+        },
+        {
+          "label": "Upgrade",
+          "id": "isbc202205upgrade"
         },
         {
           "label": "Upgrade (Internal only)",
-          "id": "ispccloudgwupgrade"
+          "id": "isbcelysiangwupgrade"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
           "id": "isconfigupgradetoolsdraft"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools410",
+          "env": ["staging"]
         }
       ]
     },
@@ -68,11 +94,19 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "ispcclouddraftapp"
+          "id": "isbcelysiandraftapp"
+        },
+        {
+          "label": "Application Guide",
+          "id": "isbc202205app"
         },
         {
           "label": "Contact Management",
-          "id": "isclouddraftcontact"
+          "id": "iselysiandraftcontact"
+        },
+        {
+          "label": "Contact Management",
+          "id": "is202205contact"
         }
       ]
     },
@@ -82,15 +116,23 @@
       "items": [
         {
           "label": "Administration",
-          "id": "ispcclouddraftadmin"
+          "id": "isbcelysiandraftadmin"
+        },
+        {
+          "label": "Administration",
+          "id": "isbc202205admin"
         },
         {
           "label": "Administration (Internal only)",
-          "id": "ispccloudgwadmin"
+          "id": "isbcelysiangwadmin"
         },
         {
           "label": "Data Archiving",
-          "id": "ispcclouddraftdataarchiving"
+          "id": "isbcelysiandraftdataarchiving"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "isbc202205dataarchiving"
         }
       ]
     },
@@ -99,28 +141,28 @@
       "class": "subject configuration",
       "items": [
         {
-          "label": "Advanced Product Designer",
-          "id": "ispc202111apd"
+          "label": "Configuration",
+          "id": "isbcelysiandraftconfig"
         },
         {
           "label": "Configuration",
-          "id": "ispcclouddraftconfig"
+          "id": "isbc202205config"
         },
         {
           "label": "Globalization",
-          "id": "ispcclouddraftglobal"
+          "id": "isbcelysiandraftglobal"
+        },
+        {
+          "label": "Globalization",
+          "id": "isbc202205global"
         },
         {
           "label": "Gosu Rules",
-          "id": "ispcclouddraftrules"
+          "id": "isbcelysiandraftrules"
         },
         {
-          "label": "Product Designer",
-          "id": "ispcclouddraftpd"
-        },
-        {
-          "label": "Product Model",
-          "id": "ispcclouddraftpm"
+          "label": "Gosu Rules",
+          "id": "isbc202205rules"
         }
       ]
     },
@@ -130,31 +172,44 @@
       "items": [
         {
           "label": "Overview of Cloud Integration",
-          "id": "isclouddraftintegoverview"
+          "id": "iselysiandraftintegoverview"
+        },
+        {
+          "label": "Overview of Cloud Integration",
+          "id": "is202205integoverview"
         },
         {
           "label": "Plugins, Pre-built Integrations, and SOAP APIs",
-          "id": "ispcclouddraftinteg"
+          "id": "isbcelysiandraftinteg"
+        },
+        {
+          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
+          "id": "isbc202205integ"
         },
         {
           "label": "Cloud API Business Flows",
-          "id": "ispcclouddraftapibf"
+          "id": "isbcelysiandraftapibf"
         },
         {
-          "label": "Cloud API ContactManager",
-          "id": "ispcclouddraftapicm"
-        },
-        {
-          "label": "Cloud API Authentication",
-          "id": "ispcclouddraftapica"
+          "label": "Cloud API Business Flows",
+          "id": "isbc202205apibf"
         },
         {
           "label": "REST API Framework",
-          "id": "ispcclouddraftrestapifw"
+          "id": "isbcelysiandraftrestapifw"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "isbc202205restapifw"
         },
         {
           "label": "REST API Client",
           "id": "isdraftrestapiclientguide"
+        },
+        {
+          "label": "REST API Client",
+          "id": "isrestapiclientguide",
+          "env": ["staging"]
         }
       ]
     },
@@ -164,19 +219,27 @@
       "items": [
         {
           "label": "Gosu Reference",
-          "id": "isclouddraftgosu"
+          "id": "iselysiandraftgosu"
+        },
+        {
+          "label": "Gosu Reference",
+          "id": "is202205gosu"
         },
         {
           "label": "GUnit Testing",
-          "id": "ispcclouddrafttesting"
+          "id": "isbcelysiandrafttesting"
+        },
+        {
+          "label": "GUnit Testing",
+          "id": "isbc202205testing"
         },
         {
           "label": "API Testing (GT: API)",
-          "id": "testingframeworksapidobson"
+          "id": "testingframeworksapielysian"
         },
         {
           "label": "User Interface Testing (GT: UI)",
-          "id": "testingframeworksuidobson"
+          "id": "testingframeworksuielysian"
         }
       ]
     },
