@@ -9,7 +9,8 @@
     "items": [
       {
         "label": "earlyaccess",
-        "page": "../earlyaccess"
+        "page": "../earlyaccess",
+        "env": ["int"]
       }
     ]
   },
@@ -285,7 +286,8 @@
       "items": [
         {
           "label": "Glossary",
-          "id": "gwglossary"
+          "id": "gwglossary",
+          "env": ["int", "staging"]
         }
       ]
     }
