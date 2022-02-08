@@ -534,6 +534,7 @@ object Docs {
                                 working_dir,
                                 localOutputDir,
                                 publish_path,
+                                build_filter,
                                 for_offline_use = true
                             )
                         docBuildType.steps.step(buildDitaProjectForOfflineUseStep)
