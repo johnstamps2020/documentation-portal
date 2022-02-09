@@ -2375,8 +2375,7 @@ object Sources {
                 }
 
                 validationBuildType.artifactRules += """
-                    ${workingDir}/${ditaOtLogsDir} => dita_ot_logs
-                    ${workingDir}/${docValidatorLogs} => doc_validator_logs
+                    ${workingDir}/${docValidatorLogs} => build_logs
                     ${workingDir}/${outputDir}/${GwDitaOutputFormats.WEBHELP.format_name}/${GwConfigParams.BUILD_DATA_FILE.param_value} => ${GwConfigParams.BUILD_DATA_DIR.param_value}
                 """.trimIndent()
 
@@ -2429,10 +2428,11 @@ object Sources {
                             buildFilter
                         )
                     )
+                    // For now, content and image validations are disabled.
+                    // These validations need improvements.
                     arrayOf(
                         GwValidationModules.VALIDATORS_DITA.validation_name,
                         GwValidationModules.VALIDATORS_FILES.validation_name,
-                        GwValidationModules.VALIDATORS_IMAGES.validation_name,
                         GwValidationModules.EXTRACTORS_DITA_OT_LOGS.validation_name,
                         GwValidationModules.EXTRACTORS_SCHEMATRON_REPORTS.validation_name
                     ).forEach {
