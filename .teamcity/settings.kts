@@ -52,6 +52,15 @@ enum class GwBuildTypes(val build_type_name: String) {
     SOURCE_ZIP("source-zip"),
 }
 
+enum class GwValidationModules(val validation_name: String) {
+    VALIDATORS_DITA("validators_dita"),
+    VALIDATORS_FILES("validators_files"),
+    VALIDATORS_IMAGES("validators_images"),
+    VALIDATORS_CONTENT("validators_content"),
+    EXTRACTORS_DITA_OT_LOGS("extractors_dita_ot_logs"),
+    EXTRACTORS_SCHEMATRON_REPORTS("extractors_schematron_reports")
+}
+
 enum class GwDitaOutputFormats(val format_name: String) {
     WEBHELP("webhelp"),
     PDF("pdf"),
@@ -2375,8 +2384,7 @@ object Sources {
                 }
 
                 validationBuildType.artifactRules += """
-                    ${workingDir}/${ditaOtLogsDir} => dita_ot_logs
-                    ${workingDir}/${docValidatorLogs} => doc_validator_logs
+                    ${workingDir}/${docValidatorLogs} => build_logs
                     ${workingDir}/${outputDir}/${GwDitaOutputFormats.WEBHELP.format_name}/${GwConfigParams.BUILD_DATA_FILE.param_value} => ${GwConfigParams.BUILD_DATA_DIR.param_value}
                 """.trimIndent()
 
@@ -2429,15 +2437,25 @@ object Sources {
                             buildFilter
                         )
                     )
-                    step(
-                        GwBuildSteps.createRunDocValidatorStep(
-                            workingDir,
-                            ditaOtLogsDir,
-                            normalizedDitaDir,
-                            schematronReportsDir,
-                            docInfoFile
+                    // For now, content and image validations are disabled.
+                    // These validations need improvements.
+                    arrayOf(
+                        GwValidationModules.VALIDATORS_DITA.validation_name,
+                        GwValidationModules.VALIDATORS_FILES.validation_name,
+                        GwValidationModules.EXTRACTORS_DITA_OT_LOGS.validation_name,
+                        GwValidationModules.EXTRACTORS_SCHEMATRON_REPORTS.validation_name
+                    ).forEach {
+                        this.step(
+                            GwBuildSteps.createRunDocValidatorStep(
+                                it,
+                                workingDir,
+                                ditaOtLogsDir,
+                                normalizedDitaDir,
+                                schematronReportsDir,
+                                docInfoFile
+                            )
                         )
-                    )
+                    }
                 }
             }
             GwBuildTypes.YARN.build_type_name -> {
@@ -2965,6 +2983,26 @@ object Helpers {
         }
     }
 
+    fun getCommandString(command: String, params: List<Pair<String, String?>>): String {
+        val commandStringBuilder = StringBuilder()
+        commandStringBuilder.append(command)
+        val commandIterator = params.iterator()
+        while (commandIterator.hasNext()) {
+            val nextPair = commandIterator.next()
+            val param = nextPair.first
+            val value = nextPair.second
+            if (value != null) {
+                if (value.isEmpty()) {
+                    commandStringBuilder.append(" $param")
+                } else {
+                    commandStringBuilder.append(" $param \"$value\"")
+                }
+            }
+        }
+
+        return commandStringBuilder.toString()
+    }
+
 }
 
 object GwBuildSteps {
@@ -3477,7 +3515,6 @@ object GwBuildSteps {
             Pair("-i", "${working_dir}/${root_map}"),
             Pair("-o", "${working_dir}/${fullOutputPath}"),
             Pair("-l", "${working_dir}/${logFile}"),
-            Pair("--processing-mode", "strict"),
         )
 
         if (build_filter != null) {
@@ -3510,7 +3547,7 @@ object GwBuildSteps {
             }
         }
 
-        val ditaBuildCommand = getCommandString("dita", ditaCommandParams)
+        val ditaBuildCommand = Helpers.getCommandString("dita", ditaCommandParams)
 
         val buildCommand = if (resourcesCopyCommand.isNotEmpty()) {
             "$ditaBuildCommand && $resourcesCopyCommand"
@@ -3533,38 +3570,16 @@ object GwBuildSteps {
                 SECONDS=0
 
                 echo "Building output"
-                export EXIT_CODE=0
-                $buildCommand || EXIT_CODE=${'$'}?
-                mkdir -p "${working_dir}/${dita_ot_logs_dir}" || EXIT_CODE=${'$'}?
-                cp "${working_dir}/${logFile}" "${working_dir}/${dita_ot_logs_dir}/" || EXIT_CODE=${'$'}?
+                $buildCommand
+                mkdir -p "${working_dir}/${dita_ot_logs_dir}"
+                cp "${working_dir}/${logFile}" "${working_dir}/${dita_ot_logs_dir}/"
                 
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
-                exit ${'$'}EXIT_CODE
             """.trimIndent()
             dockerImage = dockerImageName
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
-    }
-
-    private fun getCommandString(command: String, params: List<Pair<String, String?>>): String {
-        val commandStringBuilder = StringBuilder()
-        commandStringBuilder.append(command)
-        val commandIterator = params.iterator()
-        while (commandIterator.hasNext()) {
-            val nextPair = commandIterator.next()
-            val param = nextPair.first
-            val value = nextPair.second
-            if (value != null) {
-                if (value.isEmpty()) {
-                    commandStringBuilder.append(" $param")
-                } else {
-                    commandStringBuilder.append(" $param \"$value\"")
-                }
-            }
-        }
-
-        return commandStringBuilder.toString()
     }
 
     fun createBuildDitaProjectForBuildsStep(
@@ -3639,7 +3654,7 @@ object GwBuildSteps {
             commandParams.add(Pair("--webhelp.publication.toc.links", "all"))
         }
 
-        val ditaBuildCommand = getCommandString("dita", commandParams)
+        val ditaBuildCommand = Helpers.getCommandString("dita", commandParams)
 
         val dockerImageName = when (output_format) {
             GwDitaOutputFormats.HTML5.format_name -> GwDockerImages.DITA_OT_3_6_1.image_url
@@ -3865,16 +3880,56 @@ object GwBuildSteps {
     }
 
     fun createRunDocValidatorStep(
+        validation_module: String,
         working_dir: String,
         dita_ot_logs_dir: String,
         normalized_dita_dir: String,
         schematron_reports_dir: String,
         doc_info_file: String,
     ): ScriptBuildStep {
+        var stepName = ""
         val docInfoFileFullPath = "${working_dir}/${doc_info_file}"
         val elasticsearchUrl = Helpers.getElasticsearchUrl(GwDeployEnvs.INT.env_name)
+        val validationCommandParams = mutableListOf<Pair<String, String?>>(
+            Pair("--elasticsearch-urls", elasticsearchUrl),
+            Pair("--doc-info", docInfoFileFullPath),
+        )
+
+        when (validation_module) {
+            GwValidationModules.VALIDATORS_CONTENT.validation_name -> {
+                validationCommandParams.add(Pair("validators", "${working_dir}/${normalized_dita_dir}"))
+                validationCommandParams.add(Pair("content", ""))
+                stepName = "Run GW validations for content readability"
+            }
+            GwValidationModules.VALIDATORS_DITA.validation_name -> {
+                validationCommandParams.add(Pair("validators", "${working_dir}/${normalized_dita_dir}"))
+                validationCommandParams.add(Pair("dita", ""))
+                stepName = "Run GW validations for issues in DITA files"
+            }
+            GwValidationModules.VALIDATORS_FILES.validation_name -> {
+                validationCommandParams.add(Pair("validators", "${working_dir}/${normalized_dita_dir}"))
+                validationCommandParams.add(Pair("files", ""))
+                stepName = "Run GW validations for miscellaneous issues, like missing file extensions"
+            }
+            GwValidationModules.VALIDATORS_IMAGES.validation_name -> {
+                validationCommandParams.add(Pair("validators", "${working_dir}/${normalized_dita_dir}"))
+                validationCommandParams.add(Pair("images", ""))
+                stepName = "Run GW validations for images and <img> tags in DITA files"
+            }
+            GwValidationModules.EXTRACTORS_DITA_OT_LOGS.validation_name -> {
+                validationCommandParams.add(Pair("extractors", "${working_dir}/${dita_ot_logs_dir}"))
+                validationCommandParams.add(Pair("dita-ot-logs", ""))
+                stepName = "Get issues from log files generated by DITA OT builds"
+            }
+            GwValidationModules.EXTRACTORS_SCHEMATRON_REPORTS.validation_name -> {
+                validationCommandParams.add(Pair("extractors", "${working_dir}/${schematron_reports_dir}"))
+                validationCommandParams.add(Pair("schematron-reports", ""))
+                stepName = "Get issues from reports generated by Schematron validations"
+            }
+        }
+        val validationCommand = Helpers.getCommandString("doc_validator", validationCommandParams)
         return ScriptBuildStep {
-            name = "Run the doc validator"
+            name = stepName
             id = Helpers.createIdStringFromName(this.name)
             executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
             workingDir = working_dir
@@ -3882,13 +3937,7 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                 
-                export ELASTICSEARCH_URLS="$elasticsearchUrl"
-                
-                doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" validators "${working_dir}/${normalized_dita_dir}" dita \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" validators "${working_dir}/${normalized_dita_dir}" images \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" validators "${working_dir}/${normalized_dita_dir}" files \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" extractors "${working_dir}/${dita_ot_logs_dir}" dita-ot-logs \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" extractors "${working_dir}/${schematron_reports_dir}" schematron-reports
+                $validationCommand
             """.trimIndent()
             dockerImage = GwDockerImages.DOC_VALIDATOR_LATEST.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
