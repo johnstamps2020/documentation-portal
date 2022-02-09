@@ -3506,7 +3506,6 @@ object GwBuildSteps {
             Pair("-i", "${working_dir}/${root_map}"),
             Pair("-o", "${working_dir}/${fullOutputPath}"),
             Pair("-l", "${working_dir}/${logFile}"),
-            Pair("--processing-mode", "strict"),
         )
 
         if (build_filter != null) {
@@ -3562,14 +3561,12 @@ object GwBuildSteps {
                 SECONDS=0
 
                 echo "Building output"
-                export EXIT_CODE=0
-                $buildCommand || EXIT_CODE=${'$'}?
-                mkdir -p "${working_dir}/${dita_ot_logs_dir}" || EXIT_CODE=${'$'}?
-                cp "${working_dir}/${logFile}" "${working_dir}/${dita_ot_logs_dir}/" || EXIT_CODE=${'$'}?
+                $buildCommand
+                mkdir -p "${working_dir}/${dita_ot_logs_dir}"
+                cp "${working_dir}/${logFile}" "${working_dir}/${dita_ot_logs_dir}/"
                 
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
-                exit ${'$'}EXIT_CODE
             """.trimIndent()
             dockerImage = dockerImageName
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
