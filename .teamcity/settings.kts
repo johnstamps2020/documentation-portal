@@ -2356,15 +2356,6 @@ object Sources {
                 val schematronReportsDir = "schematron_reports_dir"
                 val docInfoFile = "doc-info.json"
                 val rootMap = build_config.getString("root")
-                val indexRedirect = when (build_config.has("indexRedirect")) {
-                    true -> {
-                        build_config.getBoolean("indexRedirect")
-                    }
-                    else -> {
-                        false
-                    }
-
-                }
                 val buildFilter = when (build_config.has("filter")) {
                     true -> {
                         build_config.getString("filter")
@@ -2398,8 +2389,7 @@ object Sources {
                             ditaOtLogsDir,
                             normalizedDitaDir,
                             schematronReportsDir,
-                            buildFilter,
-                            indexRedirect
+                            buildFilter
                         )
                     )
                     step(
@@ -3497,7 +3487,6 @@ object GwBuildSteps {
         normalized_dita_dir: String,
         schematron_reports_dir: String,
         build_filter: String? = null,
-        index_redirect: Boolean = false,
     ): ScriptBuildStep {
         val logFile = "${output_format}_build.log"
         val fullOutputPath = "${output_dir}/${output_format}"
