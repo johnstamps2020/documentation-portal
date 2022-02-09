@@ -3521,7 +3521,7 @@ object GwBuildSteps {
             ditaCommandParams.add(Pair("--filter", "${working_dir}/${build_filter}"))
         }
 
-        var resourcesCopyCommand = ""
+        var buildCommand = ""
 
         when (output_format) {
             // --git-url and --git-branch are required by the DITA OT plugin to generate build data.
@@ -3537,22 +3537,23 @@ object GwBuildSteps {
                 ditaCommandParams.add(Pair("--temp", "${working_dir}/${tempDir}"))
                 ditaCommandParams.add(Pair("--clean.temp", "no"))
                 ditaCommandParams.add(Pair("--schematron.validate", "yes"))
-                resourcesCopyCommand =
+                val ditaBuildCommand = Helpers.getCommandString("dita", ditaCommandParams)
+                val resourcesCopyCommand =
                     "mkdir -p \"${working_dir}/${schematron_reports_dir}\" && cp \"${working_dir}/${tempDir}/validation-report.xml\" \"${working_dir}/${schematron_reports_dir}/\""
+                val logsCopyCommand =
+                    "mkdir -p \"${working_dir}/${dita_ot_logs_dir}\" && cp \"${working_dir}/${logFile}\" \"${working_dir}/${dita_ot_logs_dir}/\""
+                buildCommand = """
+                    $ditaBuildCommand && $resourcesCopyCommand
+                    $logsCopyCommand
+                """.trimIndent()
             }
             GwDitaOutputFormats.DITA.format_name -> {
                 ditaCommandParams.add(Pair("-f", "gw_dita"))
-                resourcesCopyCommand =
+                val ditaBuildCommand = Helpers.getCommandString("dita", ditaCommandParams)
+                val resourcesCopyCommand =
                     "mkdir -p \"${working_dir}/${normalized_dita_dir}\" && cp -R \"${working_dir}/${fullOutputPath}/\"* \"${working_dir}/${normalized_dita_dir}/\""
+                buildCommand = "$ditaBuildCommand && $resourcesCopyCommand"
             }
-        }
-
-        val ditaBuildCommand = Helpers.getCommandString("dita", ditaCommandParams)
-
-        val buildCommand = if (resourcesCopyCommand.isNotEmpty()) {
-            "$ditaBuildCommand && $resourcesCopyCommand"
-        } else {
-            ditaBuildCommand
         }
 
         val dockerImageName = when (output_format) {
@@ -3571,8 +3572,6 @@ object GwBuildSteps {
 
                 echo "Building output"
                 $buildCommand
-                mkdir -p "${working_dir}/${dita_ot_logs_dir}"
-                cp "${working_dir}/${logFile}" "${working_dir}/${dita_ot_logs_dir}/"
                 
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
