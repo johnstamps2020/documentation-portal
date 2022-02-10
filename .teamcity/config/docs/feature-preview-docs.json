@@ -66,9 +66,9 @@
       "public": false
     },
     {
-      "id": "datastudioappdraft",
-      "title": "Data Studio Application Guide",
-      "url": "cloud/datastudio/app",
+      "id": "datastudiodraft",
+      "title": "Data Studio",
+      "url": "cloud/datastudio",
       "metadata": {
         "product": ["Data Studio"],
         "platform": ["Cloud"],
