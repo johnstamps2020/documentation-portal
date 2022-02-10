@@ -27,3 +27,8 @@
   font-size: inherit;
   font-family: inherit;
 }
+
+#footerCenter {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
