@@ -36,7 +36,7 @@
         },
         {
           "label": "Data Studio",
-          "page": "../datastudio"
+          "id": "dhqueryguidedraft"
         },
         {
           "label": "Cloud Console Root Doc Early Access",
