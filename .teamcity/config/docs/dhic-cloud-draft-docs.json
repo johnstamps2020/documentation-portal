@@ -130,6 +130,22 @@
       "public": false
     },
     {
+      "id": "dhqueryguidedraft",
+      "title": "Data Studio Query Guide",
+      "url": "cloud/datastudio/qg",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Data Studio"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "iccloudrndraft",
       "title": "Release Notes",
       "url": "cloud/ic/latest/releasenotes",
