@@ -32,6 +32,14 @@
     overflow: auto;
   }
 
+  nav.miniToc::before {
+    content: 'On this page';
+    color: black;
+    font-size: 1rem;
+    padding: 4px 0;
+    margin-bottom: 0;
+  }
+
   main {
     margin-right: 0.2vw;
   }
@@ -225,10 +233,9 @@ nav.miniToc {
   overflow-y: auto;
 }
 
-a.miniTocLink:first-child::before {
+nav.miniToc::before {
   content: 'On this page';
   color: black;
-  font-size: 1.2em;
   margin-bottom: 1em;
   display: block;
 }
