@@ -225,6 +225,14 @@ nav.miniToc {
   overflow-y: auto;
 }
 
+a.miniTocLink:first-child::before {
+  content: 'On this page';
+  color: black;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+  display: block;
+}
+
 nav .miniTocLink {
   display: block;
   color: var(--GW-COLOR-TEXT-2);
@@ -234,6 +242,10 @@ nav .miniTocLink {
   font-size: 16px;
   font-family: var(--guidewire-font);
   text-align: left;
+}
+
+nav a.miniTocLink:hover {
+  color: var(--GW-COLOR-BRAND-1);
 }
 
 .scrollToTopButton {
