@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "API references",
+  "title": "API References",
   "template": "page",
   "class": "blue-theme cortina threeCards",
   "selector": {
