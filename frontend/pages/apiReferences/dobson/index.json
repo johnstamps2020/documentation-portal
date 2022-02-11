@@ -19,22 +19,22 @@
   },
   "items": [
     {
-      "label": "InsuranceNow API reference",
+      "label": "InsuranceNow API Reference",
       "class": "productFamily cardShadow",
       "id": "in20212apiref"
     },
     {
-      "label": "ClaimCenter API reference",
+      "label": "ClaimCenter API Reference",
       "class": "productFamily cardShadow",
       "id": "ccapirefdobson"
     },
     {
-      "label": "PolicyCenter API reference",
+      "label": "PolicyCenter API Reference",
       "class": "productFamily cardShadow",
       "id": "pcapirefdobson"
     },
     {
-      "label": "APD API reference",
+      "label": "APD API Reference",
       "class": "productFamily cardShadow",
       "id": "apdmaindoc",
       "env": ["int"]
