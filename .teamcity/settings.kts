@@ -2461,6 +2461,12 @@ object Sources {
                 val buildCommand =
                     if (build_config.has("yarnBuildCustomCommand")) build_config.getString("yarnBuildCustomCommand") else null
                 val customEnv = if (build_config.has("customEnv")) build_config.getJSONArray("customEnv") else null
+
+                validationBuildType.artifactRules += """
+                    ${workingDir}/*.log => build_logs
+                """.trimIndent()
+
+
                 validationBuildType.steps {
                     step(
                         GwBuildSteps.createBuildYarnProjectStep(
@@ -2473,7 +2479,8 @@ object Sources {
                             gwPlatformsString,
                             gwVersionsString,
                             workingDir,
-                            customEnv
+                            customEnv,
+                            validation_mode = true
                         )
                     )
                     step(
@@ -3699,12 +3706,19 @@ object GwBuildSteps {
         gw_versions: String,
         working_dir: String,
         custom_env: JSONArray?,
+        validation_mode: Boolean = false,
     ): ScriptBuildStep {
         val nodeImage = when (node_image_version) {
             null -> GwDockerImages.NODE_12_14_1.image_url
             else -> "${GwDockerImages.NODE_DEVEX_BASE.image_url}:${node_image_version}"
         }
         val buildCommand = build_command ?: "build"
+        var redirectToLogFileCommand = ""
+        if (validation_mode) {
+            val logFile = "yarn_build.log"
+            redirectToLogFileCommand =
+                "&> \"${working_dir}/${logFile}\" || printf \"VALIDATION FAILED: High severity issues found.\nCheck \"$logFile\" in the build artifacts for more details.\""
+        }
         val targetUrl = Helpers.getTargetUrl(deploy_env)
         var customEnvExportVars = ""
         custom_env?.forEach {
@@ -3717,7 +3731,6 @@ object GwBuildSteps {
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                     #!/bin/bash
-                    set -xe
                     
                     export DEPLOY_ENV="$deploy_env"
                     export GW_DOC_ID="$doc_id"
@@ -3748,7 +3761,7 @@ object GwBuildSteps {
                                         
                     cd "$working_dir"
                     yarn
-                    yarn $buildCommand
+                    yarn $buildCommand $redirectToLogFileCommand
                 """.trimIndent()
             dockerImage = nodeImage
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
