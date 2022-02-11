@@ -29,6 +29,7 @@
     {
       "label": "Applications",
       "class": "categoryCard cardShadow",
+      "env": ["int", "staging"],
       "items": [
         {
           "label": "PolicyCenter",
@@ -59,6 +60,7 @@
     {
       "label": "Data and Analytics",
       "class": "categoryCard cardShadow",
+      "env": ["int", "staging"],
       "items": [
         {
           "label": "Cloud Data Access",
@@ -103,6 +105,7 @@
     {
       "label": "Digital",
       "class": "categoryCard cardShadow",
+      "env": ["int", "staging"],
       "items": [
         {
           "label": "Digital Applications",
@@ -163,6 +166,7 @@
     {
       "label": "Cyence",
       "class": "categoryCard cardShadow",
+      "env": ["int", "staging"],
       "items": [
         {
           "label": "Cyence Cyber",
@@ -201,6 +205,7 @@
     {
       "label": "Guidewire Cloud Platform",
       "class": "categoryCard cardShadow",
+      "env": ["int", "staging"],
       "items": [
         {
           "label": "Cloud Platform Release Notes",
