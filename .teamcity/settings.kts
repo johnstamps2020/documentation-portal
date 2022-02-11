@@ -3716,14 +3716,15 @@ object GwBuildSteps {
         val logFile = "yarn_build.log"
         val buildCommandBlock = if (validation_mode) {
             """
-                    export EXIT_CODE=0
-                    yarn $buildCommand &> \"${working_dir}/${logFile}\" || EXIT_CODE=${'$'}?
+                export EXIT_CODE=0
+                yarn $buildCommand &> "${working_dir}/${logFile}" || EXIT_CODE=${'$'}?
+                
+                if [[ ${'$'}EXIT_CODE != 0 ]]; then
+                    echo VALIDATION FAILED: High severity issues found.
+                    echo Check "$logFile" in the build artifacts for more details.
+                fi
                     
-                    if [[ ${'$'}EXIT_CODE != 0 ]]; then
-                        printf \"VALIDATION FAILED: High severity issues found.\nCheck \"$logFile\" in the build artifacts for more details.\"
-                    fi
-                    
-                    exit ${'$'}EXIT_CODE
+                exit ${'$'}EXIT_CODE
                 """.trimIndent()
         } else {
             "yarn $buildCommand"
