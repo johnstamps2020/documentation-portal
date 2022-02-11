@@ -1829,7 +1829,7 @@ object Server {
             )
             if (deploy_env == GwDeployEnvs.PROD.env_name) {
                 val publishServerDockerImageToEcrStep =
-                    GwBuildSteps.createPublishServerDockerImageToEcrStep(GwDockerImages.DOC_PORTAL.image_url,
+                    GwBuildSteps.createPublishServerDockerImageToEcrStep(deploy_env, GwDockerImages.DOC_PORTAL.image_url,
                         tagVersion)
                 deployServerBuildType.steps.step(publishServerDockerImageToEcrStep)
                 deployServerBuildType.steps.stepsOrder.add(0, publishServerDockerImageToEcrStep.id.toString())
@@ -3217,13 +3217,18 @@ object GwBuildSteps {
         }
     }
 
-    fun createPublishServerDockerImageToEcrStep(package_name: String, tag_version: String): ScriptBuildStep {
+    fun createPublishServerDockerImageToEcrStep(deploy_env: String, package_name: String, tag_version: String): ScriptBuildStep {
         val ecrPackageName = "710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal"
+        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
         return ScriptBuildStep {
             name = "Publish server Docker Image to ECR"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 set -xe
+                
+                export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
+                export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
+                export AWS_DEFAULT_REGION="$awsDefaultRegion"
                 
                 docker pull ${package_name}:${tag_version}
                 docker tag ${package_name}:${tag_version} ${ecrPackageName}:${tag_version}
