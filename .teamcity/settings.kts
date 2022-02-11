@@ -3713,11 +3713,20 @@ object GwBuildSteps {
             else -> "${GwDockerImages.NODE_DEVEX_BASE.image_url}:${node_image_version}"
         }
         val buildCommand = build_command ?: "build"
-        var redirectToLogFileCommand = ""
-        if (validation_mode) {
-            val logFile = "yarn_build.log"
-            redirectToLogFileCommand =
-                "&> \"${working_dir}/${logFile}\" || printf \"VALIDATION FAILED: High severity issues found.\nCheck \"$logFile\" in the build artifacts for more details.\""
+        val logFile = "yarn_build.log"
+        val buildCommandBlock = if (validation_mode) {
+            """
+                    export EXIT_CODE=0
+                    yarn $buildCommand &> \"${working_dir}/${logFile}\" || EXIT_CODE=${'$'}?
+                    
+                    if [[ ${'$'}EXIT_CODE != 0 ]]; then
+                        printf \"VALIDATION FAILED: High severity issues found.\nCheck \"$logFile\" in the build artifacts for more details.\"
+                    fi
+                    
+                    exit ${'$'}EXIT_CODE
+                """.trimIndent()
+        } else {
+            "yarn $buildCommand"
         }
         val targetUrl = Helpers.getTargetUrl(deploy_env)
         var customEnvExportVars = ""
@@ -3761,7 +3770,7 @@ object GwBuildSteps {
                                         
                     cd "$working_dir"
                     yarn
-                    yarn $buildCommand $redirectToLogFileCommand
+                    $buildCommandBlock
                 """.trimIndent()
             dockerImage = nodeImage
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
