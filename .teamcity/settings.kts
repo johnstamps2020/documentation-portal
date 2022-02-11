@@ -3720,8 +3720,8 @@ object GwBuildSteps {
                 yarn $buildCommand &> "${working_dir}/${logFile}" || EXIT_CODE=${'$'}?
                 
                 if [[ ${'$'}EXIT_CODE != 0 ]]; then
-                    echo VALIDATION FAILED: High severity issues found.
-                    echo Check "$logFile" in the build artifacts for more details.
+                    echo "VALIDATION FAILED: High severity issues found."
+                    echo "Check "$logFile" in the build artifacts for more details."
                 fi
                     
                 exit ${'$'}EXIT_CODE
