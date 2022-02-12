@@ -31,7 +31,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Other/IS-BC-Cloud-EA.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-EA.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide202111src",
@@ -255,7 +255,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Other/IS-PC-Cloud-EA.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-EA.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide202111src",
