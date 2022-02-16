@@ -22,7 +22,20 @@ def page_has_items(index_file: Path) -> bool:
     return bool(page_items)
 
 
-def filter_by_env(deploy_env: str, current_page_dir: Path, items: list, docs: list) -> Tuple[list, list]:
+def filter_by_env(deploy_env: str, current_page_dir: Path, items: list, docs: list) -> Tuple[
+    list, list]:
+    def get_inner_pages_for_removal(sub_items: dict):
+        pages_for_removal = []
+        for sub_item in sub_items:
+            if sub_item.get('page'):
+                pages_for_removal.append(current_page_dir / sub_item['page'])
+            sub_item_items = sub_item.get('items')
+            if sub_item_items:
+                sub_pages_for_removal = get_inner_pages_for_removal(sub_item_items)
+                pages_for_removal += sub_pages_for_removal
+
+        return pages_for_removal
+
     filtered_items = []
     filtered_pages_to_remove = []
     for item in items:
@@ -30,11 +43,12 @@ def filter_by_env(deploy_env: str, current_page_dir: Path, items: list, docs: li
         if not item_envs and item.get('id'):
             matching_doc_object = get_doc_object(item['id'], docs)
             item_envs = matching_doc_object['environments']
+        item_items = item.get('items')
         if include_item(deploy_env, item_envs):
             item_to_include = copy.deepcopy(item)
-            if item_to_include.get('items'):
+            if item_items:
                 inner_items, inner_pages_to_remove = filter_by_env(
-                    deploy_env, current_page_dir, item['items'], docs)
+                    deploy_env, current_page_dir, item_items, docs)
                 if inner_items:
                     item_to_include['items'] = inner_items
                     filtered_items.append(item_to_include)
@@ -45,9 +59,8 @@ def filter_by_env(deploy_env: str, current_page_dir: Path, items: list, docs: li
         elif item.get('page'):
             page_path = current_page_dir / item['page']
             filtered_pages_to_remove.append(page_path)
-        elif item.get('items'):
-            inner_pages_for_removal = [current_page_dir / inner_item['page'] for inner_item in item['items'] if
-                                       inner_item.get('page')]
+        elif item_items:
+            inner_pages_for_removal = get_inner_pages_for_removal(item_items)
             filtered_pages_to_remove += inner_pages_for_removal
 
     return filtered_items, filtered_pages_to_remove

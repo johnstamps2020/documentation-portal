@@ -1,0 +1,150 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "InsuranceNow 2021.2",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Core Release Notes",
+          "id": "in20212xrndraft"
+        },
+        {
+          "label": "Release Video",
+          "link": "https://www.brainshark.com/guidewire/vu?pi=zIPzgjRufzM6iUz0"
+        },
+        {
+          "label": "Studio Release Notes",
+          "id": "in20212xstudiorndraft"
+        },
+        {
+          "label": "Consumer Service Portal Release Notes",
+          "id": "incsp4rn"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "in20212xappdraft"
+        },
+        {
+          "label": "Consumer Sales Portal Features",
+          "id": "in20212xcsalespdraft"
+        },
+        {
+          "label": "Consumer Service Portal Features",
+          "id": "in20212xcservicepdraft"
+        },
+        {
+          "label": "Excel Designed Rating",
+          "id": "inexcelrating30draft"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "AppReader Integration",
+          "id": "in20212xappreaderintegdraft"
+        },
+        {
+          "label": "Business Intelligence Integration (Internal)",
+          "id": "in20212xbiintegdraft"
+        },
+        {
+          "label": "Live Predict Integration",
+          "id": "in20212xpadraft"
+        },
+        {
+          "label": "API Reference",
+          "id": "in20212apiref"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Billing Configuration Reference",
+          "id": "in20212xbillrefdraft"
+        },
+        {
+          "label": "Core Configuration",
+          "id": "in20212xconfigdraft"
+        },
+        {
+          "label": "Common Functionality Configuration Reference (Internal)",
+          "id": "in20212xcommonconfigdraft"
+        },
+        {
+          "label": "Consumer Sales Portal Configuration (Internal)",
+          "id": "in20212xcsalespconfigdraft"
+        },
+        {
+          "label": "Consumer Service Portal Configuration (Internal)",
+          "id": "in20212xcservicepconfigdraft"
+        },
+        {
+          "label": "Studio Configuration",
+          "id": "in20212xstudiodraft"
+        },
+        {
+          "label": "Provisioning Portal (Internal)",
+          "id": "in20212xprovportaldraft"
+        },
+        {
+          "label": "Portal Development",
+          "id": "in20212xportaldevdraft"
+        },
+        {
+          "label": "Product Attribute Reference",
+          "id": "in20212xprodattrefdraft"
+        },
+        {
+          "label": "Underwriting Configuration Reference",
+          "id": "in20212xuwconfigdraft"
+        },
+        {
+          "label": "Claims Configuration Reference",
+          "id": "in20212xclaimsconfigdraft"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Install Assist (Internal)",
+          "id": "ininstallassistdraft"
+        },
+        {
+          "label": "Developer Setup (Internal)",
+          "id": "indevguidejava11draft"
+        },
+        {
+          "label": "Developer Setup",
+          "id": "indevguidejava11ext"
+        },
+        {
+          "label": "Payment Service Migration (Internal)",
+          "id": "inpaymentservicemigrationdraft"
+        },
+        {
+          "label": "Upgrade Tools (Internal)",
+          "id": "inupgradetoolsdraft"
+        }
+      ]
+    }
+  ]
+}
