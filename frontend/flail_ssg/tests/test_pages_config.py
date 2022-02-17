@@ -46,11 +46,21 @@ def prepare_paths_for_comparison(root_dir: Path, paths: list[Path]):
     return [str(p).replace(f'{root_dir}/', '') for p in paths]
 
 
-def test_filtering_by_env():
+@pytest.fixture(scope='module')
+def load_docs_from_main_config():
+    return load_json_file(TestConfig.resources_input_dir / 'config' / 'docs' / 'docs.json')['docs']
+
+
+@pytest.fixture(scope='module')
+def load_docs_from_incorrect_pages_config():
+    return load_json_file(TestConfig.incorrect_pages_docs_config_file)['docs']
+
+
+def test_filtering_by_env(load_docs_from_main_config):
     def test_filtering_items(filtered_items: list, filtered_pages_to_remove: list, expected_items: list,
-                             expected_filtered_pages_to_remove: list, tmp_test_dir: Path):
+                             expected_filtered_pages_to_remove: list, test_dir: Path):
         assert filtered_items == expected_items
-        filtered_pages_to_remove_str = prepare_paths_for_comparison(tmp_test_dir, filtered_pages_to_remove)
+        filtered_pages_to_remove_str = prepare_paths_for_comparison(test_dir, filtered_pages_to_remove)
         assert len(filtered_pages_to_remove_str) == len(expected_filtered_pages_to_remove)
         assert sorted(filtered_pages_to_remove_str) == sorted(expected_filtered_pages_to_remove)
 
@@ -77,122 +87,127 @@ def test_filtering_by_env():
         test_failed_removals_are_expected()
         test_removed_dirs_are_correct()
 
-    docs = load_json_file(TestConfig.resources_input_dir / 'config' / 'docs' / 'docs.json')['docs']
+    def test_filtering_by_env_self_managed():
+        input_items = \
+            load_json_file(
+                TestConfig.resources_input_dir / 'pages' / 'filter-by-env' / 'selfManagedProducts' / 'index.json')[
+                'items']
+        tmp_test_dir = TestConfig.resources_input_dir / 'tmp-test-dir-filter-env-self-managed'
+        shutil.copytree(TestConfig.resources_input_dir / 'pages' / 'filter-by-env' / 'selfManagedProducts',
+                        tmp_test_dir, dirs_exist_ok=True)
 
-    input_items_1 = \
-        load_json_file(
-            TestConfig.resources_input_dir / 'pages' / 'filter-by-env' / 'selfManagedProducts' / 'index.json')[
-            'items']
-    tmp_test_dir_1 = TestConfig.resources_input_dir / 'tmpTestDir1'
-    shutil.copytree(TestConfig.resources_input_dir / 'pages' / 'filter-by-env' / 'selfManagedProducts',
-                    tmp_test_dir_1, dirs_exist_ok=True)
+        items_after_filtering, pages_to_remove_after_filtering = filter_by_env(deploy_env='staging',
+                                                                               current_page_dir=tmp_test_dir,
+                                                                               items=input_items,
+                                                                               docs=load_docs_from_main_config)
+        removed_dirs, removal_failures = remove_page_dirs(pages_to_remove_after_filtering)
+        expected_file = (
+                TestConfig.resources_expected_dir / 'pages' / 'filter-by-env' / 'selfManagedProducts' / 'index.json')
+        expected_items = load_json_file(expected_file)['items']
+        expected_filtered_pages_to_remove = [
+            'dataHub/10.x',
+            'infoCenter/10.x',
+            'customerEngageAccountManagement/latest',
+            'customerEngageAccountManagementCc/latest',
+            'customerEngageQuoteAndBuy/latest',
+            'producerEngage/latest',
+            'producerEngageCc/latest',
+            'serviceRepEngage/latest',
+            'vendorEngage/latest'
+        ]
+        test_filtering_items(items_after_filtering, pages_to_remove_after_filtering,
+                             expected_items, expected_filtered_pages_to_remove, tmp_test_dir)
+        # There are no dirs to remove so failures are expected
+        assert len(removed_dirs) == 0
+        assert len(removal_failures) == len(pages_to_remove_after_filtering)
+        shutil.rmtree(tmp_test_dir)
 
-    items_after_filtering_1, pages_to_remove_after_filtering_1 = filter_by_env(deploy_env='staging',
-                                                                               current_page_dir=tmp_test_dir_1,
-                                                                               items=input_items_1,
-                                                                               docs=docs)
-    removed_dirs_1, removal_failures_1 = remove_page_dirs(pages_to_remove_after_filtering_1)
-    expected_file_1 = (
-            TestConfig.resources_expected_dir / 'pages' / 'filter-by-env' / 'selfManagedProducts' / 'index.json')
-    expected_items_1 = load_json_file(expected_file_1)['items']
-    expected_filtered_pages_to_remove_1 = [
-        'dataHub/10.x',
-        'infoCenter/10.x',
-        'customerEngageAccountManagement/latest',
-        'customerEngageAccountManagementCc/latest',
-        'customerEngageQuoteAndBuy/latest',
-        'producerEngage/latest',
-        'producerEngageCc/latest',
-        'serviceRepEngage/latest',
-        'vendorEngage/latest'
-    ]
-    test_filtering_items(items_after_filtering_1, pages_to_remove_after_filtering_1,
-                         expected_items_1, expected_filtered_pages_to_remove_1, tmp_test_dir_1)
-    # There are no dirs to remove so failures are expected
-    assert len(removed_dirs_1) == 0
-    assert len(removal_failures_1) == len(pages_to_remove_after_filtering_1)
-    shutil.rmtree(tmp_test_dir_1)
+    def test_filtering_by_env_dobson():
+        input_items = \
+            load_json_file(
+                TestConfig.resources_input_dir / 'pages' / 'filter-by-env' / 'cloudProducts' / 'dobson' / 'index.json')[
+                'items']
+        tmp_test_dir = TestConfig.resources_input_dir / 'tmp-test-dir-filter-env-dobson'
+        shutil.copytree(TestConfig.resources_input_dir / 'pages' / 'filter-by-env' / 'cloudProducts' / 'dobson',
+                        tmp_test_dir, dirs_exist_ok=True)
 
-    input_items_2 = \
-        load_json_file(
-            TestConfig.resources_input_dir / 'pages' / 'filter-by-env' / 'cloudProducts' / 'dobson' / 'index.json')[
-            'items']
-    tmp_test_dir_2 = TestConfig.resources_input_dir / 'tmpTestDir2'
-    shutil.copytree(TestConfig.resources_input_dir / 'pages' / 'filter-by-env' / 'cloudProducts' / 'dobson',
-                    tmp_test_dir_2, dirs_exist_ok=True)
+        items_after_filtering, pages_to_remove_after_filtering = filter_by_env(deploy_env='int',
+                                                                               current_page_dir=tmp_test_dir,
+                                                                               items=input_items,
+                                                                               docs=load_docs_from_main_config)
+        removed_dirs, failed_removals = remove_page_dirs(pages_to_remove_after_filtering)
+        expected_file = (
+                TestConfig.resources_expected_dir / 'pages' / 'filter-by-env' / 'cloudProducts' / 'dobson' / 'index.json')
+        expected_items = load_json_file(expected_file)['items']
+        expected_filtered_pages_to_remove = [
+            'pcGwCloud/2021.11',
+            'ccGwCloud/2021.11',
+            'bcGwCloud/2021.11',
+            'dhGwCloud/2021.11',
+            'icGwCloud/2021.11',
+            'ceAccountMgmt/2021.11',
+            'ceAccountMgmtCc/2021.11',
+            'ceQuoteAndBuy/2021.11',
+            'producerEngage/2021.11',
+            'producerEngageCc/2021.11',
+            'serviceRepEngage/2021.11',
+            'vendorEngage/2021.11'
+        ]
+        expected_failed_removals = []
 
-    items_after_filtering_2, pages_to_remove_after_filtering_2 = filter_by_env(deploy_env='int',
-                                                                               current_page_dir=tmp_test_dir_2,
-                                                                               items=input_items_2,
-                                                                               docs=docs)
-    removed_dirs_2, failed_removals_2 = remove_page_dirs(pages_to_remove_after_filtering_2)
-    expected_file_2 = (
-            TestConfig.resources_expected_dir / 'pages' / 'filter-by-env' / 'cloudProducts' / 'dobson' / 'index.json')
-    expected_items_2 = load_json_file(expected_file_2)['items']
-    expected_filtered_pages_to_remove_2 = [
-        'pcGwCloud/2021.11',
-        'ccGwCloud/2021.11',
-        'bcGwCloud/2021.11',
-        'dhGwCloud/2021.11',
-        'icGwCloud/2021.11',
-        'ceAccountMgmt/2021.11',
-        'ceAccountMgmtCc/2021.11',
-        'ceQuoteAndBuy/2021.11',
-        'producerEngage/2021.11',
-        'producerEngageCc/2021.11',
-        'serviceRepEngage/2021.11',
-        'vendorEngage/2021.11'
-    ]
-    expected_failed_removals_2 = []
+        test_filtering_items(items_after_filtering, pages_to_remove_after_filtering,
+                             expected_items, expected_filtered_pages_to_remove, tmp_test_dir)
+        test_removing_filtered_out_pages(removed_dirs, failed_removals, pages_to_remove_after_filtering,
+                                         expected_failed_removals, tmp_test_dir)
+        shutil.rmtree(tmp_test_dir)
 
-    test_filtering_items(items_after_filtering_2, pages_to_remove_after_filtering_2,
-                         expected_items_2, expected_filtered_pages_to_remove_2, tmp_test_dir_2)
-    test_removing_filtered_out_pages(removed_dirs_2, failed_removals_2, pages_to_remove_after_filtering_2,
-                                     expected_failed_removals_2, tmp_test_dir_2)
-    shutil.rmtree(tmp_test_dir_2)
+    def test_filtering_by_env_elysian():
+        input_items = \
+            load_json_file(
+                TestConfig.resources_input_dir / 'pages' / 'filter-by-env' / 'cloudProducts' / 'elysian' / 'index.json')[
+                'items']
+        tmp_test_dir = TestConfig.resources_input_dir / 'tmp-test-dir-filter-env-elysian'
+        shutil.copytree(TestConfig.resources_input_dir / 'pages' / 'filter-by-env' / 'cloudProducts' / 'elysian',
+                        tmp_test_dir, dirs_exist_ok=True)
 
-    input_items_3 = \
-        load_json_file(
-            TestConfig.resources_input_dir / 'pages' / 'filter-by-env' / 'cloudProducts' / 'elysian' / 'index.json')[
-            'items']
-    tmp_test_dir_3 = TestConfig.resources_input_dir / 'tmpTestDir3'
-    shutil.copytree(TestConfig.resources_input_dir / 'pages' / 'filter-by-env' / 'cloudProducts' / 'elysian',
-                    tmp_test_dir_3, dirs_exist_ok=True)
+        items_after_filtering, pages_to_remove_after_filtering = filter_by_env(deploy_env='prod',
+                                                                               current_page_dir=tmp_test_dir,
+                                                                               items=input_items,
+                                                                               docs=load_docs_from_main_config)
+        removed_dirs, failed_removals = remove_page_dirs(pages_to_remove_after_filtering)
+        expected_file = (
+                TestConfig.resources_expected_dir / 'pages' / 'filter-by-env' / 'cloudProducts' / 'elysian' / 'index.json')
+        expected_items = load_json_file(expected_file)['items']
+        expected_filtered_pages_to_remove = [
+            '../cloudDataAccess/latest',
+            'dhGwCloud/latest',
+            'icGwCloud/latest',
+            'assess',
+            '../explore/latest',
+            'ceAccountMgmt/latest',
+            'ceAccountMgmtCc/latest',
+            'ceQuoteAndBuy/latest',
+            'producerEngage/latest',
+            'producerEngageCc/latest',
+            'serviceRepEngage/latest',
+            'vendorEngage/latest',
+            '../../jutroDesignSystem/6.5.1'
+        ]
+        expected_failed_removals = [
+            '../cloudDataAccess/latest',
+            '../explore/latest',
+            '../../jutroDesignSystem/6.5.1'
+        ]
 
-    items_after_filtering_3, pages_to_remove_after_filtering_3 = filter_by_env(deploy_env='prod',
-                                                                               current_page_dir=tmp_test_dir_3,
-                                                                               items=input_items_3,
-                                                                               docs=docs)
-    removed_dirs_3, failed_removals_3 = remove_page_dirs(pages_to_remove_after_filtering_3)
-    expected_file_3 = (
-            TestConfig.resources_expected_dir / 'pages' / 'filter-by-env' / 'cloudProducts' / 'elysian' / 'index.json')
-    expected_items_3 = load_json_file(expected_file_3)['items']
-    expected_filtered_pages_to_remove_3 = [
-        '../cloudDataAccess/latest',
-        'dhGwCloud/latest',
-        'icGwCloud/latest',
-        'assess',
-        '../explore/latest',
-        'ceAccountMgmt/latest',
-        'ceAccountMgmtCc/latest',
-        'ceQuoteAndBuy/latest',
-        'producerEngage/latest',
-        'producerEngageCc/latest',
-        'serviceRepEngage/latest',
-        'vendorEngage/latest',
-        '../../jutroDesignSystem/6.5.1'
-    ]
-    expected_failed_removals_3 = [
-        '../cloudDataAccess/latest',
-        '../explore/latest',
-        '../../jutroDesignSystem/6.5.1'
-    ]
+        test_filtering_items(items_after_filtering, pages_to_remove_after_filtering,
+                             expected_items, expected_filtered_pages_to_remove, tmp_test_dir)
+        test_removing_filtered_out_pages(removed_dirs, failed_removals, pages_to_remove_after_filtering,
+                                         expected_failed_removals, tmp_test_dir)
+        shutil.rmtree(tmp_test_dir)
 
-    test_filtering_items(items_after_filtering_3, pages_to_remove_after_filtering_3,
-                         expected_items_3, expected_filtered_pages_to_remove_3, tmp_test_dir_3)
-    test_removing_filtered_out_pages(removed_dirs_3, failed_removals_3, pages_to_remove_after_filtering_3,
-                                     expected_failed_removals_3, tmp_test_dir_3)
-    shutil.rmtree(tmp_test_dir_3)
+    test_filtering_by_env_self_managed()
+    test_filtering_by_env_dobson()
+    test_filtering_by_env_elysian()
 
 
 def test_creating_search_filters():
@@ -201,7 +216,7 @@ def test_creating_search_filters():
     expected_dir = TestConfig.resources_expected_dir / 'pages' / 'create-search-filters' / 'cloudProducts' / 'cortina' / 'policyCenterCloud'
     for index_json_file in input_dir.rglob('*.json'):
         index_file_json = load_json_file(index_json_file)
-        tmp_test_dir = TestConfig.resources_input_dir / 'tmpTestDirCreateSearchFilters'
+        tmp_test_dir = TestConfig.resources_input_dir / 'tmp-test-dir-search-filters'
         shutil.copytree(input_dir, tmp_test_dir, dirs_exist_ok=True)
 
         search_filters = generate_search_filters(
@@ -221,13 +236,8 @@ def test_all_pages_are_valid():
                   TestConfig.page_schema_file)
 
 
-@pytest.fixture(scope='module')
-def load_docs_from_json():
-    return load_json_file(TestConfig.incorrect_pages_docs_config_file)['docs']
-
-
-def test_validation_for_incorrect_items(load_docs_from_json):
-    docs = load_docs_from_json
+def test_validation_for_incorrect_items(load_docs_from_incorrect_pages_config):
+    docs = load_docs_from_incorrect_pages_config
     results = []
     for index_json_file in TestConfig.incorrect_pages_items_dir.rglob('*.json'):
         results += validate_page(index_json_file, docs)
@@ -237,8 +247,8 @@ def test_validation_for_incorrect_items(load_docs_from_json):
     assert len(incorrect_pages) == 4
 
 
-def test_validation_for_incorrect_env_settings(load_docs_from_json):
-    docs = load_docs_from_json
+def test_validation_for_incorrect_env_settings(load_docs_from_incorrect_pages_config):
+    docs = load_docs_from_incorrect_pages_config
     all_validated_pages = []
     all_envs_validation_results = []
     for index_json_file in TestConfig.incorrect_pages_env_settings_dir.rglob('*.json'):
@@ -384,7 +394,7 @@ def test_removing_items_with_empty_child_items():
 def test_cleaning_pages():
     input_dir = TestConfig.incorrect_pages_clean_pages
     expected_dir = TestConfig.expected_incorrect_pages_clean_pages
-    tmp_test_dir = TestConfig.incorrect_pages_dir / 'tmpTestDirCleanPages'
+    tmp_test_dir = TestConfig.incorrect_pages_dir / 'tmp-test-dir-clean-pages'
 
     def check_dirs_have_the_same_files():
         tmp_test_dir_files = sorted(f.relative_to(tmp_test_dir) for f in tmp_test_dir.rglob('*.json'))
