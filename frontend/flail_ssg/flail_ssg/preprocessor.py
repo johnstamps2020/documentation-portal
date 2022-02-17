@@ -106,8 +106,9 @@ def remove_items_with_empty_child_items(items: list) -> list:
         elif len(inner_items) > 0:
             updated_item = copy.deepcopy(item)
             updated_inner_items = remove_items_with_empty_child_items(inner_items)
-            updated_item['items'] = updated_inner_items
-            updated_items.append(updated_item)
+            if len(updated_inner_items) > 0:
+                updated_item['items'] = updated_inner_items
+                updated_items.append(updated_item)
 
     return updated_items
 
