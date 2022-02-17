@@ -1,4 +1,5 @@
 import json
+import json
 import os
 import shutil
 from collections import namedtuple
@@ -8,9 +9,8 @@ import pytest
 
 import flail_ssg.validator
 from flail_ssg.generator import generate_search_filters
-from flail_ssg.preprocessor import clean_pages, filter_by_env, find_refs_to_empty_pages, \
-    remove_items_with_empty_child_items, \
-    remove_page_dirs
+from flail_ssg.preprocessor import clean_pages, filter_by_env, find_refs_to_empty_pages, process_pages, \
+    remove_empty_dirs, remove_items_with_empty_child_items, remove_page_dirs
 from flail_ssg.validator import DocIdNotFoundError, PageNotFoundError, run_validator, validate_env_settings, \
     validate_page
 
@@ -391,27 +391,51 @@ def test_removing_items_with_empty_child_items():
                 assert items_with_no_empty_child_items == expected_file_items
 
 
+def check_dirs_have_the_same_files(output_dir: Path, expected_dir: Path):
+    output_dir_files = sorted(f.relative_to(output_dir) for f in output_dir.rglob('*.json'))
+    expected_files = sorted(f.relative_to(expected_dir) for f in expected_dir.rglob('*.json'))
+    assert output_dir_files == expected_files
+
+
+def check_files_have_the_same_content(output_dir: Path, expected_dir: Path):
+    for output_file in output_dir.rglob('*.json'):
+        for expected_file in expected_dir.rglob('*.json'):
+            if output_file.relative_to(output_dir) == expected_file.relative_to(expected_dir):
+                tmp_test_file_json = load_json_file(output_file)
+                expected_file_json = load_json_file(expected_file)
+                assert tmp_test_file_json == expected_file_json
+
+
 def test_cleaning_pages():
     input_dir = TestConfig.incorrect_pages_clean_pages
     expected_dir = TestConfig.expected_incorrect_pages_clean_pages
     tmp_test_dir = TestConfig.incorrect_pages_dir / 'tmp-test-dir-clean-pages'
 
-    def check_dirs_have_the_same_files():
-        tmp_test_dir_files = sorted(f.relative_to(tmp_test_dir) for f in tmp_test_dir.rglob('*.json'))
-        expected_files = sorted(f.relative_to(expected_dir) for f in expected_dir.rglob('*.json'))
-        assert tmp_test_dir_files == expected_files
-
-    def check_files_have_the_same_content():
-        for tmp_test_file in tmp_test_dir.rglob('*.json'):
-            for expected_file in expected_dir.rglob('*.json'):
-                if tmp_test_file.relative_to(tmp_test_dir) == expected_file.relative_to(expected_dir):
-                    tmp_test_file_json = load_json_file(tmp_test_file)
-                    expected_file_json = load_json_file(expected_file)
-                    assert tmp_test_file_json == expected_file_json
-
     shutil.copytree(input_dir, tmp_test_dir, dirs_exist_ok=True)
     clean_pages(tmp_test_dir, send_bouncer_home=False)
 
-    check_dirs_have_the_same_files()
-    check_files_have_the_same_content()
+    check_dirs_have_the_same_files(tmp_test_dir, expected_dir)
+    check_files_have_the_same_content(tmp_test_dir, expected_dir)
+    shutil.rmtree(tmp_test_dir)
+
+
+def test_processing_pages(load_docs_from_main_config):
+    """Both pages link to the same set of pages and documents but they have different env settings.
+    Expected behaviour: Linked pages are removed if they don't match the env settings.
+    If one page has env settings that include a linked page and the other page has env settings that exclude the same
+    linked page, the linked page is removed.
+    IMPORTANT: This test doesn't contain the step for cleaning pages. Therefore, the Dobson expected file contains
+    links to pages that were removed (Cloud Data Access, Explore, Feature Preview)."""
+    input_dir = TestConfig.resources_input_dir / 'pages' / 'process-pages'
+    expected_dir = TestConfig.resources_expected_dir / 'pages' / 'process-pages'
+
+    tmp_test_dir = TestConfig.resources_input_dir / 'tmp-test-dir-process-pages'
+    shutil.copytree(input_dir,
+                    tmp_test_dir, dirs_exist_ok=True)
+
+    process_pages(tmp_test_dir, 'prod', load_docs_from_main_config, False)
+    remove_empty_dirs(tmp_test_dir, removed_dirs=[], failed_removals=[])
+
+    check_dirs_have_the_same_files(tmp_test_dir, expected_dir)
+    check_files_have_the_same_content(tmp_test_dir, expected_dir)
     shutil.rmtree(tmp_test_dir)

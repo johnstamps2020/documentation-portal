@@ -2,6 +2,44 @@
   "$schema": "./config-schema.json",
   "docs": [
     {
+      "id": "dxpractices",
+      "title": "Digital Best Practices",
+      "url": "cloud/dx/services/latest",
+      "metadata": {
+        "release": ["Dobson"],
+        "platform": ["Cloud", "Self-managed"],
+        "product": [
+          "CustomerEngage Account Management",
+          "CustomerEngage Account Management for ClaimCenter",
+          "CustomerEngage Quote and Buy",
+          "ProducerEngage",
+          "ProducerEngage for ClaimCenter",
+          "ServiceRepEngage",
+          "VendorEngage"
+        ],
+        "subject": ["Best Practices"],
+        "version": ["latest"]
+      },
+      "environments": ["dev", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "canvas",
+      "title": "Canvas",
+      "url": "cloud/canvas/latest",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["Canvas"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "respond",
       "title": "Respond",
       "url": "cloud/respond/latest",
@@ -45,22 +83,6 @@
       "indexForSearch": true,
       "public": false
     },
-    {
-      "id": "gwcpreleasenotes",
-      "title": "Cloud Platform Release Notes",
-      "url": "cloud/gwcprelnotes/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Platform"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-
     {
       "id": "isconfigupgradetools310",
       "title": "InsuranceSuite Configuration Upgrade Tools 3.1.0",
