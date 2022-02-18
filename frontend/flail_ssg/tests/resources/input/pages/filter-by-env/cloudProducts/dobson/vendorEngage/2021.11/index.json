@@ -1,0 +1,56 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "VendorEngage 2021.11",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dx202111verelnotes"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dx202111veinstall"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "dx202111veapp"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer's Guide",
+          "id": "dx202111vedev"
+        },
+        {
+          "label": "Digital Services Reference Guides",
+          "id": "dx202111verefguides"
+        },
+        {
+          "label": "Digital Frontend API Documentation",
+          "id": "dxjsdocs202111"
+        }
+      ]
+    }
+  ]
+}

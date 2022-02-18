@@ -1,0 +1,143 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "PolicyCenter for Guidewire Cloud - Elysian Early Access",
+  "template": "page",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select version",
+    "selectedItem": "earlyaccess",
+    "items": [
+      {
+        "label": "2022.05",
+        "page": "../2022.05"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ispcelysianeareleasenotes"
+        },
+        {
+          "label": "New and Changed",
+          "id": "ispcelysianeanewandchanged"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Developer Setup",
+          "id": "ispcelysianeadevsetup"
+        },
+        {
+          "label": "Upgrade",
+          "id": "ispcelysianeaupgrade"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "ispcelysianeaapp"
+        },
+        {
+          "label": "Contact Management",
+          "id": "iselysianeacontact"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "ispcelysianeaadmin"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "ispcelysianeadataarchiving"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration",
+          "id": "ispcelysianeaconfig"
+        },
+        {
+          "label": "Globalization",
+          "id": "ispcelysianeaglobal"
+        },
+        {
+          "label": "Gosu Rules",
+          "id": "ispcelysianearules"
+        },
+        {
+          "label": "Product Designer",
+          "id": "ispcelysianeapd"
+        },
+        {
+          "label": "Product Model",
+          "id": "ispcelysianeapm"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
+          "id": "ispcelysianeainteg"
+        },
+        {
+          "label": "Cloud API Developer Guide",
+          "id": "ispcelysianeacloudapi"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "ispcelysianearestapifw"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "iselysianeagosu"
+        },
+        {
+          "label": "GUnit Testing",
+          "id": "ispcelysianeatesting"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "gwglossary",
+          "env": ["int", "staging"]
+        }
+      ]
+    }
+  ]
+}

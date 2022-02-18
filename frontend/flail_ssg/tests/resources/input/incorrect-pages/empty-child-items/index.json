@@ -26,6 +26,20 @@
           "label": "Live",
           "class": "group",
           "items": []
+        },
+        {
+          "label": "Nested empty children",
+          "items": [
+            {
+              "label": "Nested empty child 1",
+              "items": [
+                {
+                  "label": "Nested empty child 2",
+                  "items": []
+                }
+              ]
+            }
+          ]
         }
       ]
     },

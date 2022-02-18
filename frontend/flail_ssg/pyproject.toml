@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "flail_ssg"
-version = "1.0.0"
+version = "1.1.0"
 description = "A super simple generator for building doc portal pages"
 authors = ["Guidewire <doctools@guidewire.com>"]
 readme = "README.md"

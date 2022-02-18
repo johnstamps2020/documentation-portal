@@ -2,6 +2,92 @@
   "$schema": "./config-schema.json",
   "docs": [
     {
+      "id": "appeventsccrndraft",
+      "title": "Application Events for Claims Release Notes",
+      "url": "cloud/gw-feature-preview/ccappeventsrn",
+      "metadata": {
+        "product": ["Feature Preview"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Release Notes"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "rulesrndraft",
+      "title": "Rules Release Notes",
+      "url": "cloud/rules/relnotes",
+      "metadata": {
+        "product": ["Rules"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina", "Dobson"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "integgatewayrndraft",
+      "title": "Integration Gateway Release Notes",
+      "url": "cloud/gw-feature-preview/igrelnotes",
+      "metadata": {
+        "product": ["Feature Preview"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dxpractices",
+      "title": "Digital Best Practices",
+      "url": "cloud/dx/services/latest",
+      "metadata": {
+        "release": ["Dobson"],
+        "platform": ["Cloud", "Self-managed"],
+        "product": [
+          "CustomerEngage Account Management",
+          "CustomerEngage Account Management for ClaimCenter",
+          "CustomerEngage Quote and Buy",
+          "ProducerEngage",
+          "ProducerEngage for ClaimCenter",
+          "ServiceRepEngage",
+          "VendorEngage"
+        ],
+        "subject": ["Best Practices"],
+        "version": ["latest"]
+      },
+      "environments": ["dev", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "canvas",
+      "title": "Canvas",
+      "url": "cloud/canvas/latest",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["Canvas"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "respond",
       "title": "Respond",
       "url": "cloud/respond/latest",
@@ -48,23 +134,6 @@
       "public": false,
       "internal": false
     },
-    {
-      "id": "gwcpreleasenotes",
-      "title": "Cloud Platform Release Notes",
-      "url": "cloud/gwcprelnotes/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Platform"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-
     {
       "id": "isconfigupgradetools310",
       "title": "InsuranceSuite Configuration Upgrade Tools 3.1.0",
@@ -2537,6 +2606,39 @@
       "internal": false
     },
     {
+      "id": "clouddataaccessguide",
+      "title": "Application Guide",
+      "url": "cloud/cda/guide/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Data Access"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "clouddataaccessrn",
+      "title": "Release Notes",
+      "url": "cloud/cda/rn/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Data Access"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "comparelatest",
       "title": "Compare+",
       "url": "cloud/compare/latest",
@@ -2553,22 +2655,6 @@
       "internal": false
     },
     {
-      "id": "explorerelease",
-      "title": "Explore",
-      "url": "cloud/explore/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Explore"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff"]
-      },
-      "environments": ["prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
       "id": "explorernrelease",
       "title": "Release Notes",
       "url": "cloud/explore/relnotes",
@@ -2576,10 +2662,10 @@
         "platform": ["Cloud"],
         "product": ["Explore"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2587,16 +2673,16 @@
     },
     {
       "id": "exploreusingrelease",
-      "title": "Using Explore",
-      "url": "cloud/explore/using",
+      "title": "Application Guide",
+      "url": "cloud/explore/app",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Explore"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2610,10 +2696,10 @@
         "platform": ["Cloud"],
         "product": ["Explore"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -11261,6 +11347,22 @@
       "indexForSearch": true,
       "public": false,
       "internal": false
+    },
+    {
+      "id": "dhqueryguidedraft",
+      "title": "Data Studio Query Guide",
+      "url": "cloud/datastudio/qg",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Data Studio"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
     },
     {
       "id": "dhcloudrndraft",
