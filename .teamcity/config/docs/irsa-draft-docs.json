@@ -14,7 +14,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "midipfadjusterdraft",
@@ -29,7 +30,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "midipfadmindraft",
@@ -44,7 +46,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "midipfrndraft",
@@ -59,7 +62,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "midipfsupermapdraft",
@@ -73,7 +77,8 @@
       "environments": ["dev"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
-      "public": false
+      "public": false,
+      "internal": false
     }
   ]
 }

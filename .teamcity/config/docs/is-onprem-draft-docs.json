@@ -13,7 +13,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "cc10xdraft",
@@ -27,7 +28,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "pc10xdraft",
@@ -41,7 +43,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedbcupgradeguide10x",
@@ -55,7 +58,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradeguide10x",
@@ -69,7 +73,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcupgradeguide10x",
@@ -83,7 +88,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedbcupgradetools1x",
@@ -97,7 +103,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradetools1x",
@@ -111,7 +118,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcupgradetools1x",
@@ -125,7 +133,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedbcxcoxibeoa",
@@ -139,7 +148,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccxgfurvaqu",
@@ -153,7 +163,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcxxbkttzbb",
@@ -167,7 +178,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     }
   ]
 }

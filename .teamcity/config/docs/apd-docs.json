@@ -10,7 +10,8 @@
         "product": ["PolicyCenter"],
         "version": ["latest"]
       },
-      "environments": ["int"]
+      "environments": ["int"],
+      "internal": false
     }
   ]
 }

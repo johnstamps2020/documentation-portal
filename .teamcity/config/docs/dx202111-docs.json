@@ -15,7 +15,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111ceaminstall",
@@ -31,7 +32,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111ceamdev",
@@ -47,7 +49,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111ceamrefguides",
@@ -63,7 +66,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111ceamrelnotes",
@@ -79,7 +83,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111ceclaimsapp",
@@ -95,7 +100,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111ceclaimsinstall",
@@ -111,7 +117,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111ceclaimsdev",
@@ -127,7 +134,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111ceclaimsrefguides",
@@ -143,7 +151,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111ceclaimsrelnotes",
@@ -159,7 +168,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111ceqbapp",
@@ -175,7 +185,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111ceqbinstall",
@@ -191,7 +202,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111ceqbdev",
@@ -207,7 +219,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111ceqbrefguides",
@@ -223,7 +236,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111ceqbrelnotes",
@@ -239,7 +253,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111peapp",
@@ -255,7 +270,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111peinstall",
@@ -271,7 +287,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111pedev",
@@ -287,7 +304,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111perefguides",
@@ -303,7 +321,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111perelnotes",
@@ -319,7 +338,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111peclaimsapp",
@@ -335,7 +355,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111peclaimsinstall",
@@ -351,7 +372,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111peclaimsdev",
@@ -367,7 +389,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111peclaimsrefguides",
@@ -383,7 +406,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111peclaimsrelnotes",
@@ -399,7 +423,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111sreapp",
@@ -415,7 +440,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111sreinstall",
@@ -431,7 +457,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111sredev",
@@ -447,7 +474,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111srerefguides",
@@ -463,7 +491,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111srerelnotes",
@@ -479,7 +508,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111veapp",
@@ -495,7 +525,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111veinstall",
@@ -511,7 +542,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111vedev",
@@ -527,7 +559,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111verefguides",
@@ -543,7 +576,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111verelnotes",
@@ -559,7 +593,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dx202111dcg",
@@ -575,7 +610,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dxjsdocs202111",
@@ -597,6 +633,7 @@
       },
       "displayOnLandingPages": false,
       "public": false,
+      "internal": false,
       "indexForSearch": false,
       "environments": ["staging", "prod"]
     }

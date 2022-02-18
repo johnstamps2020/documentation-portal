@@ -13,7 +13,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcupgradeguide10x",
@@ -27,7 +28,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcupgradetools1450",
@@ -41,7 +43,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcupgradetools1x",
@@ -55,7 +58,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcupgradetoolspiteqdgk",
@@ -69,7 +73,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcupgradetoolsqwertyui",
@@ -83,7 +88,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     }
   ]
 }

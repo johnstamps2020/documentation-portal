@@ -13,7 +13,8 @@
       },
       "environments": ["int", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "comparelatest",
@@ -28,7 +29,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "livepredictlatest",
@@ -43,7 +45,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "gwcpreleasenotes",
@@ -58,7 +61,8 @@
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
 
     {
@@ -74,7 +78,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isconfigupgradetools3x",
@@ -89,7 +94,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "palatest",
@@ -104,7 +110,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dx202104ceqbinstall",
@@ -120,7 +127,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dx202104dcg",
@@ -136,7 +144,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dx202104ceqbapp",
@@ -152,7 +161,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dx202104ceqbdev",
@@ -168,7 +178,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dx202104ceqbrefguides",
@@ -184,7 +195,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dx202104ceqbrelnotes",
@@ -200,7 +212,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxjsdocs202104",
@@ -222,6 +235,7 @@
       },
       "displayOnLandingPages": false,
       "public": false,
+"internal": false
       "indexForSearch": false,
       "environments": ["dev", "int", "staging", "prod"]
     },
@@ -239,7 +253,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dx202104sreinstall",
@@ -255,7 +270,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dx202104sreapp",
@@ -271,7 +287,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dx202104sredev",
@@ -287,7 +304,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dx202104srerefguides",
@@ -303,7 +321,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202104releasenotes",
@@ -319,7 +338,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202104newandchanged",
@@ -335,7 +355,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isrestapiclientrn",
@@ -351,7 +372,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202104install",
@@ -367,7 +389,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202104upgrade",
@@ -383,7 +406,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202104app",
@@ -399,7 +423,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "is202104contact",
@@ -415,7 +440,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202104admin",
@@ -431,7 +457,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202104bestpractice",
@@ -447,7 +474,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202104apd",
@@ -463,7 +491,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202104config",
@@ -479,7 +508,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202104global",
@@ -495,7 +525,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202104rules",
@@ -511,7 +542,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202104pd",
@@ -527,7 +559,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202104pm",
@@ -543,7 +576,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202104integ",
@@ -559,7 +593,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202104cloudapibf",
@@ -575,7 +610,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202104cloudapicm",
@@ -591,7 +627,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202104cloudapica",
@@ -607,7 +644,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "pc202104apiref",
@@ -623,7 +661,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "ispc202104restapifw",
@@ -639,7 +678,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isrestapiclientguide",
@@ -655,7 +695,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "is202104gosu",
@@ -671,7 +712,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202104testing",
@@ -687,7 +729,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "testingframeworksapicortina",
@@ -703,7 +746,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "testingframeworksuicortina",
@@ -719,7 +763,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "gwglossary",
@@ -733,7 +778,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxonpremdraftceamapp",
@@ -748,7 +794,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftceaminstall",
@@ -763,7 +810,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftceamadmin",
@@ -778,7 +826,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftceamdev",
@@ -793,7 +842,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftceamrefguides",
@@ -808,7 +858,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftceamrelnotes",
@@ -823,7 +874,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftceclaimsapp",
@@ -838,7 +890,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftceclaimsinstall",
@@ -853,7 +906,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftceclaimsadmin",
@@ -868,7 +922,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftceclaimsdev",
@@ -883,7 +938,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftceclaimsrefguides",
@@ -898,7 +954,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftceclaimsrelnotes",
@@ -913,7 +970,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftceqbapp",
@@ -928,7 +986,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftceqbinstall",
@@ -943,7 +1002,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftceqbadmin",
@@ -958,7 +1018,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftceqbdev",
@@ -973,7 +1034,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftceqbrefguides",
@@ -988,7 +1050,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftceqbrelnotes",
@@ -1003,7 +1066,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftpeapp",
@@ -1018,7 +1082,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftpeinstall",
@@ -1033,7 +1098,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftpeadmin",
@@ -1048,7 +1114,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftpedev",
@@ -1063,7 +1130,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftperefguides",
@@ -1078,7 +1146,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftperelnotes",
@@ -1093,7 +1162,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftpeclaimsapp",
@@ -1108,7 +1178,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftpeclaimsinstall",
@@ -1123,7 +1194,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftpeclaimsadmin",
@@ -1138,7 +1210,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftpeclaimsdev",
@@ -1153,7 +1226,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftpeclaimsrefguides",
@@ -1168,7 +1242,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftpeclaimsrelnotes",
@@ -1183,7 +1258,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftsreapp",
@@ -1198,7 +1274,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftsreinstall",
@@ -1213,7 +1290,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftsreadmin",
@@ -1228,7 +1306,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftsredev",
@@ -1243,7 +1322,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftsrerefguides",
@@ -1258,7 +1338,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftsrerelnotes",
@@ -1273,7 +1354,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftveapp",
@@ -1288,7 +1370,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftveinstall",
@@ -1303,7 +1386,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftveadmin",
@@ -1318,7 +1402,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftvedev",
@@ -1333,7 +1418,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftverefguides",
@@ -1348,7 +1434,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "dxonpremdraftverelnotes",
@@ -1363,7 +1450,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+"internal": false
     },
     {
       "id": "guidewireidentityfederationhub",
@@ -1378,7 +1466,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "guidewireidentityfederationhubdraft",
@@ -1393,7 +1482,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedbcxufesxuwl",
@@ -1407,7 +1497,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedccxbvqtoakg",
@@ -1421,7 +1512,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedpcxrwjcdamu",
@@ -1435,7 +1527,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedbcupgradeguide10x",
@@ -1449,7 +1542,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedccupgradeguide10x",
@@ -1463,7 +1557,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedpcupgradeguide10x",
@@ -1477,7 +1572,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedbcupgradetools1x",
@@ -1491,7 +1587,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedccupgradetools1x",
@@ -1505,7 +1602,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedpcupgradetools1x",
@@ -1519,7 +1617,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedbcxcoxibeoa",
@@ -1533,7 +1632,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedccxgfurvaqu",
@@ -1547,7 +1647,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedpcxxbkttzbb",
@@ -1561,7 +1662,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanageddxdixowqwwrfu",
@@ -1575,7 +1677,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanageddxdicxyhksqnkf",
@@ -1589,7 +1692,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanageddxedxqqjwvkln",
@@ -1603,7 +1707,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanageddxedcxvpeswwmn",
@@ -1617,7 +1722,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanageddxvodxqjomllcj",
@@ -1631,7 +1737,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanageddxvodcxeajkygfs",
@@ -1645,7 +1752,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "gwfeaturepreviewearlyaccess",
@@ -1660,7 +1768,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "gwfeaturepreviewdraft",
@@ -1675,7 +1784,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "stringmanagerlatest",
@@ -1690,7 +1800,8 @@
       "environments": ["int"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "cloudbc202005",
@@ -1705,7 +1816,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "cloudcc202005",
@@ -1720,7 +1832,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "cloudpc202005",
@@ -1735,7 +1848,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "cloudbcupgradeguide202005",
@@ -1750,7 +1864,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "cloudccupgradeguide202005",
@@ -1765,7 +1880,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "cloudpcupgradeguide202005",
@@ -1780,7 +1896,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "midipg2x",
@@ -1795,7 +1912,8 @@
       "environments": ["dev", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "guidewirecloudconsoleguideinsurerdev",
@@ -1810,7 +1928,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "gwcpreleasenotes",
@@ -1825,7 +1944,8 @@
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "cloudplatformdraft",
@@ -1840,7 +1960,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "cloudplatformrelease",
@@ -1855,7 +1976,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "guidewirecloudconsolerninsurerdev",
@@ -1870,7 +1992,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "guidewirecloudconsolerootinsurerdev",
@@ -1885,7 +2008,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "guidewirecloudconsoleguideinsurerdevdraft",
@@ -1900,7 +2024,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "guidewirecloudconsolerninsurerdevdraft",
@@ -1915,7 +2040,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "guidewirecloudconsolerootinsurerdevdraft",
@@ -1930,7 +2056,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "guidewirecloudconsolerootgwadmin",
@@ -1945,7 +2072,8 @@
         "release": ["Banff", "Cortina"]
       },
       "environments": ["int"],
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedbcupgradeguide1011",
@@ -1959,7 +2087,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedccupgradeguide1011",
@@ -1973,7 +2102,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedpcupgradeguide1011",
@@ -1987,7 +2117,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedbcupgradeguide1010",
@@ -2001,7 +2132,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedccupgradeguide1010",
@@ -2015,7 +2147,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedpcupgradeguide1010",
@@ -2029,7 +2162,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "bc1011",
@@ -2043,7 +2177,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "cc1011",
@@ -2057,7 +2192,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "pc1011",
@@ -2071,7 +2207,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "bc1010staging",
@@ -2085,7 +2222,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "cc1010staging",
@@ -2099,7 +2237,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "pc1010staging",
@@ -2113,7 +2252,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "bc909",
@@ -2127,7 +2267,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "cc909",
@@ -2141,7 +2282,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "pc909",
@@ -2155,7 +2297,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedbcupgradetoolsqwertyui",
@@ -2169,7 +2312,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedccupgradetoolsqwertyui",
@@ -2183,7 +2327,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedpcupgradetoolsqwertyui",
@@ -2197,7 +2342,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedbcupgradetools1450",
@@ -2211,7 +2357,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedccupgradetools1450",
@@ -2225,7 +2372,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedpcupgradetools1450",
@@ -2239,7 +2387,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dh202011",
@@ -2254,7 +2403,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ic202011",
@@ -2269,7 +2419,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "palatest",
@@ -2284,7 +2435,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dh202005",
@@ -2299,7 +2451,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ic202005",
@@ -2314,7 +2467,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "clouddataaccessaspen",
@@ -2329,7 +2483,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "clouddataaccessbanff",
@@ -2344,7 +2499,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "clouddataaccessguidedraft",
@@ -2360,7 +2516,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "clouddataaccessrndraft",
@@ -2376,7 +2533,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "comparelatest",
@@ -2391,7 +2549,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "explorerelease",
@@ -2406,7 +2565,8 @@
       "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "explorernrelease",
@@ -2422,7 +2582,8 @@
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "exploreusingrelease",
@@ -2438,7 +2599,8 @@
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "exploredatadictrelease",
@@ -2454,7 +2616,8 @@
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxceam202011",
@@ -2469,7 +2632,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxceclaims202011",
@@ -2484,7 +2648,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxceqb202011",
@@ -2499,7 +2664,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "jutro411",
@@ -2515,7 +2681,8 @@
       "environments": ["dev", "staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "storybook411",
@@ -2531,7 +2698,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "jutro421",
@@ -2546,7 +2714,8 @@
       "environments": ["dev", "staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "storybook421",
@@ -2561,7 +2730,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "jutro430",
@@ -2576,7 +2746,8 @@
       "environments": ["dev", "staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "storybook430",
@@ -2591,7 +2762,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "jutro500",
@@ -2606,7 +2778,8 @@
       "environments": ["dev", "staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "storybook500",
@@ -2621,7 +2794,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "jutro510",
@@ -2636,7 +2810,8 @@
       "environments": ["dev", "staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "storybook510",
@@ -2651,7 +2826,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "jutro520",
@@ -2666,7 +2842,8 @@
       "environments": ["dev", "staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "storybook520",
@@ -2681,7 +2858,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "jutro530",
@@ -2696,7 +2874,8 @@
       "environments": ["dev", "staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "storybook530",
@@ -2711,7 +2890,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "jutronext",
@@ -2726,7 +2906,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "storybooknext",
@@ -2741,7 +2922,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxapd202011",
@@ -2756,7 +2938,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxpe202011",
@@ -2771,7 +2954,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxpeclaims202011",
@@ -2786,7 +2970,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxsre202011",
@@ -2801,7 +2986,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxve202011",
@@ -2816,7 +3002,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxceam202010",
@@ -2831,7 +3018,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxceclaims202010",
@@ -2846,7 +3034,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxceqb202010",
@@ -2861,7 +3050,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxpe202010",
@@ -2876,7 +3066,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxpeclaims202010",
@@ -2891,7 +3082,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxsre202010",
@@ -2906,7 +3098,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxve202010",
@@ -2921,7 +3114,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxceam202008",
@@ -2936,7 +3130,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxceqb202008",
@@ -2951,7 +3146,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxpe202008",
@@ -2966,7 +3162,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxsre202008",
@@ -2981,7 +3178,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxceqb202005",
@@ -2996,7 +3194,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxapd202005",
@@ -3011,7 +3210,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxpe202005",
@@ -3026,7 +3226,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxsre202005",
@@ -3041,7 +3242,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedbcfxhglseu",
@@ -3055,7 +3257,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedccahrgbyin",
@@ -3069,7 +3272,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedpcuytrolxz",
@@ -3083,7 +3287,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isconfigupgradetools310",
@@ -3098,7 +3303,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isconfigupgradetools300",
@@ -3113,7 +3319,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "lobbopguidebanff",
@@ -3129,7 +3336,8 @@
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "lobbopsbtrnbanff",
@@ -3145,7 +3353,8 @@
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "lobcaguidebanff",
@@ -3161,7 +3370,8 @@
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "lobcasbtrnbanff",
@@ -3177,7 +3387,8 @@
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "lobcrimeguidebanff",
@@ -3193,7 +3404,8 @@
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "lobcrimesbtrnbanff",
@@ -3209,7 +3421,8 @@
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "lobglguidebanff",
@@ -3225,7 +3438,8 @@
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "lobglsbtrnbanff",
@@ -3241,7 +3455,8 @@
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "lobbopguideaspen",
@@ -3257,7 +3472,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "lobbopsbtrnaspen",
@@ -3273,7 +3489,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "lobcaguideaspen",
@@ -3289,7 +3506,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "lobcasbtrnaspen",
@@ -3305,7 +3523,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "lobcrimeguideaspen",
@@ -3321,7 +3540,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "lobcrimesbtrnaspen",
@@ -3337,7 +3557,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "lobglguideaspen",
@@ -3353,7 +3574,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "lobglsbtrnaspen",
@@ -3369,7 +3591,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedbcupgradetoolspiteqdgk",
@@ -3383,7 +3606,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedccupgradetoolspiteqdgk",
@@ -3397,7 +3621,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedpcupgradetoolspiteqdgk",
@@ -3411,7 +3636,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dh1040",
@@ -3425,7 +3651,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ic1040",
@@ -3439,7 +3666,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dh1030",
@@ -3453,7 +3681,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ic1030",
@@ -3467,7 +3696,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dh1020",
@@ -3481,7 +3711,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ic1020",
@@ -3495,7 +3726,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxceam1130",
@@ -3509,7 +3741,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxceclaims1130",
@@ -3523,7 +3756,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxceqb1130",
@@ -3537,7 +3771,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxpe1130",
@@ -3551,7 +3786,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxpeclaims1130",
@@ -3565,7 +3801,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxsre1130",
@@ -3579,7 +3816,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxve1130",
@@ -3593,7 +3831,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxceam1120onpremstaging",
@@ -3607,7 +3846,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxceqb1120onpremstaging",
@@ -3621,7 +3861,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxpe1120onpremstaging",
@@ -3635,7 +3876,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxsre1120onpremstaging",
@@ -3649,7 +3891,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "restapidraft",
@@ -3664,7 +3907,8 @@
       "environments": ["dev", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "configmgrhelpdraft",
@@ -3679,7 +3923,8 @@
       "displayOnLandingPages": false,
       "environments": ["int"],
       "indexForSearch": false,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "configmgrhelpcortina",
@@ -3694,7 +3939,8 @@
       "displayOnLandingPages": false,
       "environments": ["dev", "staging"],
       "indexForSearch": false,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "configmgrhelpbanff",
@@ -3709,7 +3955,8 @@
       "displayOnLandingPages": false,
       "environments": ["staging", "prod"],
       "indexForSearch": false,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "standardslatest",
@@ -3724,7 +3971,8 @@
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "environments": ["dev", "staging", "prod"],
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "standards202102",
@@ -3739,7 +3987,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "standards202101",
@@ -3754,7 +4003,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "standards202011",
@@ -3769,7 +4019,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "standards202010",
@@ -3784,7 +4035,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "standardsdraft",
@@ -3799,7 +4051,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxceqb1110onpremstaging",
@@ -3813,7 +4066,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxpe1110onpremstaging",
@@ -3827,7 +4081,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxsre1110onpremstaging",
@@ -3841,7 +4096,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanageddxceamagmqaagu",
@@ -3855,7 +4111,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanageddxvebjvtkgov",
@@ -3869,7 +4126,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxdionprem320",
@@ -3883,7 +4141,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxdionprem310",
@@ -3897,7 +4156,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxdiconprem310",
@@ -3911,7 +4171,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxedonprem320",
@@ -3925,7 +4186,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxedonprem310",
@@ -3939,7 +4201,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxedconprem310",
@@ -3953,7 +4216,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxvodonprem320",
@@ -3967,7 +4231,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxvodonprem310",
@@ -3981,7 +4246,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dxvodconprem310",
@@ -3995,7 +4261,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanageddxceqbphivypaz",
@@ -4009,7 +4276,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanageddxpemlefekrm",
@@ -4023,7 +4291,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanageddxsreaqsojbmv",
@@ -4037,7 +4306,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingentercqsywzuj",
@@ -4051,7 +4321,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingentervdugkpgr",
@@ -4065,7 +4336,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterlhkdzceb",
@@ -4079,7 +4351,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedbchggrerca",
@@ -4093,7 +4366,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterkqqanxwh",
@@ -4107,7 +4381,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterkxubulyh",
@@ -4121,7 +4396,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterlmkrswrz",
@@ -4135,7 +4411,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocicbeksro",
@@ -4149,7 +4426,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocfcmljyqa",
@@ -4163,7 +4441,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocjoxldmbo",
@@ -4177,7 +4456,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocfmnupekf",
@@ -4191,7 +4471,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocyoyphgem",
@@ -4205,7 +4486,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdockdppxpda",
@@ -4219,7 +4501,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoczxmrlibm",
@@ -4233,7 +4516,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocccsrmkdc",
@@ -4247,7 +4531,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoceiifgxcw",
@@ -4261,7 +4546,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocffmmswgf",
@@ -4275,7 +4561,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocqfdehuey",
@@ -4289,7 +4576,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoccjtmugit",
@@ -4303,7 +4591,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocammzblnv",
@@ -4317,7 +4606,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocyftpvcaw",
@@ -4331,7 +4621,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocxlzchxhu",
@@ -4345,7 +4636,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocgrobvbee",
@@ -4359,7 +4651,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoccmauxbba",
@@ -4373,7 +4666,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdochpillvww",
@@ -4387,7 +4681,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocjlfsfdfd",
@@ -4401,7 +4696,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocbkjcnzwz",
@@ -4415,7 +4711,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocgnjtyazg",
@@ -4429,7 +4726,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocncmwqrli",
@@ -4443,7 +4741,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocutiqttau",
@@ -4457,7 +4756,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocwhxoullx",
@@ -4471,7 +4771,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoconjiqcsc",
@@ -4485,7 +4786,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocedtrwltv",
@@ -4499,7 +4801,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdoccdfgarry",
@@ -4513,7 +4816,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdocnzoixxnr",
@@ -4527,7 +4831,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterfjbyhawz",
@@ -4541,7 +4846,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterysfwgwsw",
@@ -4555,7 +4861,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocbcillingenterdockzksesmd",
@@ -4569,7 +4876,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterbfthnlvf",
@@ -4583,7 +4891,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenteruhhqohgq",
@@ -4597,7 +4906,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterqqxmyzex",
@@ -4611,7 +4921,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedccaaforoxt",
@@ -4625,7 +4936,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterelmxqvai",
@@ -4639,7 +4951,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterwtigvtxy",
@@ -4653,7 +4966,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimentercxzeemjp",
@@ -4667,7 +4981,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocidesewcj",
@@ -4681,7 +4996,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocvqlyczrv",
@@ -4695,7 +5011,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocnlrfsben",
@@ -4709,7 +5026,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdoceytmuoui",
@@ -4723,7 +5041,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocxjnxnozc",
@@ -4737,7 +5056,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocnhpuynwc",
@@ -4751,7 +5071,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocmypqavjm",
@@ -4765,7 +5086,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocbapuerjf",
@@ -4779,7 +5101,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocqeuxmcrz",
@@ -4793,7 +5116,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocpfaqnsti",
@@ -4807,7 +5131,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdochpprlkbr",
@@ -4821,7 +5146,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocaxxmkayt",
@@ -4835,7 +5161,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocuwuokkoq",
@@ -4849,7 +5176,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdococjxqzog",
@@ -4863,7 +5191,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocswjfurfe",
@@ -4877,7 +5206,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocubdkstsc",
@@ -4891,7 +5221,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocydpzhmah",
@@ -4905,7 +5236,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocgkfnzidi",
@@ -4919,7 +5251,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocwmlaqcal",
@@ -4933,7 +5266,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocaumilntg",
@@ -4947,7 +5281,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocojirlrtn",
@@ -4961,7 +5296,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocpeofahzc",
@@ -4975,7 +5311,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocdojgivnl",
@@ -4989,7 +5326,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdoculwlmrqc",
@@ -5003,7 +5341,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocpahymdbb",
@@ -5017,7 +5356,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocgpkucyfr",
@@ -5031,7 +5371,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdockjixkity",
@@ -5045,7 +5386,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocqalxtzlg",
@@ -5059,7 +5401,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimentereejtoxhw",
@@ -5073,7 +5416,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterjzkkauje",
@@ -5087,7 +5431,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdoclpvcofpk",
@@ -5101,7 +5446,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocvjecaxdc",
@@ -5115,7 +5461,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocwgkxuleb",
@@ -5129,7 +5476,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimentergyvfjncd",
@@ -5143,7 +5491,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenternjdtrfxa",
@@ -5157,7 +5506,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterpkcaesiy",
@@ -5171,7 +5521,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterphlqkcmc",
@@ -5185,7 +5536,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterlsomiapi",
@@ -5199,7 +5551,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterawscafqo",
@@ -5213,7 +5566,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimenterlomzguhc",
@@ -5227,7 +5581,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredoccclaimentervrjxjhjn",
@@ -5241,7 +5596,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterzvxwgqku",
@@ -5255,7 +5611,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyentergcxbllrp",
@@ -5269,7 +5626,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterxdtwvycu",
@@ -5283,7 +5641,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "selfmanagedpchmmjfhlm",
@@ -5297,7 +5656,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterrtwztpfk",
@@ -5311,7 +5671,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterhzpxxvwz",
@@ -5325,7 +5686,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterwlvmqlps",
@@ -5339,7 +5701,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocnzfemwar",
@@ -5353,7 +5716,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocsetccnkr",
@@ -5367,7 +5731,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoclzhtwoyw",
@@ -5381,7 +5746,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocfwxqxxjo",
@@ -5395,7 +5761,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocrbuikbrg",
@@ -5409,7 +5776,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocmeibkklu",
@@ -5423,7 +5791,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocucydlhvx",
@@ -5437,7 +5806,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoclxmhamjs",
@@ -5451,7 +5821,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocafqpzdwd",
@@ -5465,7 +5836,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocpaqllgoi",
@@ -5479,7 +5851,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocfnbhhrvy",
@@ -5493,7 +5866,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocojaabfwj",
@@ -5507,7 +5881,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocewdbghur",
@@ -5521,7 +5896,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocjninxbqx",
@@ -5535,7 +5911,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocmdiceask",
@@ -5549,7 +5926,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoccmpgocpi",
@@ -5563,7 +5941,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocdgcpumzg",
@@ -5577,7 +5956,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoczbopvdeg",
@@ -5591,7 +5971,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocyqwcdrnp",
@@ -5605,7 +5986,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocuuvupheu",
@@ -5619,7 +6001,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocaazeaxkq",
@@ -5633,7 +6016,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocijpuiydy",
@@ -5647,7 +6031,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocmehjueat",
@@ -5661,7 +6046,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocowemuyjf",
@@ -5675,7 +6061,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocemkhxjqy",
@@ -5689,7 +6076,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoczsrkqubl",
@@ -5703,7 +6091,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocsqxndtgn",
@@ -5717,7 +6106,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocwarptbie",
@@ -5731,7 +6121,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyentertrzuzdki",
@@ -5745,7 +6136,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoczmtfkxvn",
@@ -5759,7 +6151,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocpcolicyenteromjhnper",
@@ -5773,7 +6166,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubyluzrolx",
@@ -5787,7 +6181,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubuesxagrn",
@@ -5801,7 +6196,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubthgnbdfg",
@@ -5815,7 +6211,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubrzwdsixl",
@@ -5829,7 +6226,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubhsutrtnu",
@@ -5843,7 +6241,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubzmzzotex",
@@ -5857,7 +6256,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubsupynnah",
@@ -5871,7 +6271,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataublvbraqby",
@@ -5885,7 +6286,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubguacpbha",
@@ -5899,7 +6301,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementdatahubvfzvhptq",
@@ -5913,7 +6316,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoentereiscelti",
@@ -5927,7 +6331,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterowudqgnv",
@@ -5941,7 +6346,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterrowgmanb",
@@ -5955,7 +6361,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoentertuykkfbw",
@@ -5969,7 +6376,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterbzhtclos",
@@ -5983,7 +6391,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterzjwxvdgn",
@@ -5997,7 +6406,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterxnghccvc",
@@ -6011,7 +6421,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterqtbtcudr",
@@ -6025,7 +6436,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterlgrrnrtz",
@@ -6039,7 +6451,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterfuqlhtcv",
@@ -6053,7 +6466,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdatamanagementinfocentergkwxcgth",
@@ -6067,7 +6481,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsimqfvska",
@@ -6081,7 +6496,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocswtwqtyvt",
@@ -6095,7 +6511,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocskaceffks",
@@ -6109,7 +6526,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsvvjeexxr",
@@ -6123,7 +6541,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsdixvkiug",
@@ -6137,7 +6556,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocswhokisuk",
@@ -6151,7 +6571,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocsxqghmido",
@@ -6165,7 +6586,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocssvsmobif",
@@ -6179,7 +6601,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocswnmqkwxj",
@@ -6193,7 +6616,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocsmoleigkn",
@@ -6207,7 +6631,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsamzzpbvt",
@@ -6221,7 +6646,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsnoryczgm",
@@ -6235,7 +6661,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsvhcgqwst",
@@ -6249,7 +6676,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocseucuheur",
@@ -6263,7 +6691,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsneawmwlb",
@@ -6277,7 +6706,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocstyghellr",
@@ -6291,7 +6721,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsdemyrpoh",
@@ -6305,7 +6736,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsqarbsbtn",
@@ -6319,7 +6751,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsrtlpihpc",
@@ -6333,7 +6766,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsugutdoki",
@@ -6347,7 +6781,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocsqblntzzp",
@@ -6361,7 +6796,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocshfhoxxya",
@@ -6375,7 +6811,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocsyrmcgnnq",
@@ -6389,7 +6826,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocsgehgsaei",
@@ -6403,7 +6841,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "httpsportalguidewirecomportalsecuredocdigitalendorngageocsjkkjagrp",
@@ -6417,7 +6856,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbc202011releasenotes",
@@ -6433,7 +6873,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbc202011newandchanged",
@@ -6449,7 +6890,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbc202011upgrade",
@@ -6465,7 +6907,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbc202011app",
@@ -6481,7 +6924,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbc202011admin",
@@ -6497,7 +6941,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbc202011bestpractice",
@@ -6513,7 +6958,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbc202011config",
@@ -6529,7 +6975,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbc202011global",
@@ -6545,7 +6992,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbc202011rules",
@@ -6561,7 +7009,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbc202011integ",
@@ -6577,7 +7026,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbc202011gosu",
@@ -6593,7 +7043,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbc202011testing",
@@ -6609,7 +7060,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbc202011install",
@@ -6625,7 +7077,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscc202011releasenotes",
@@ -6641,7 +7094,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscc202011newandchanged",
@@ -6657,7 +7111,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscc202011upgrade",
@@ -6673,7 +7128,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscc202011app",
@@ -6689,7 +7145,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscc202011admin",
@@ -6705,7 +7162,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscc202011bestpractice",
@@ -6721,7 +7179,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscc202011config",
@@ -6737,7 +7196,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscc202011global",
@@ -6753,7 +7213,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscc202011rules",
@@ -6769,7 +7230,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscc202011integ",
@@ -6785,7 +7247,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscc202011cloudapi",
@@ -6801,7 +7264,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "is202011apisecretbuild",
@@ -6817,7 +7281,8 @@
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscc202011apiref",
@@ -6833,7 +7298,8 @@
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscc202011gosu",
@@ -6849,7 +7315,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscc202011testing",
@@ -6865,7 +7332,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscc202011restapifw",
@@ -6881,7 +7349,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscc202011install",
@@ -6897,7 +7366,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202011releasenotes",
@@ -6913,7 +7383,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202011newandchanged",
@@ -6929,7 +7400,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202011upgrade",
@@ -6945,7 +7417,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202011app",
@@ -6961,7 +7434,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202011admin",
@@ -6977,7 +7451,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202011bestpractice",
@@ -6993,7 +7468,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202011apd",
@@ -7009,7 +7485,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202011config",
@@ -7025,7 +7502,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202011global",
@@ -7041,7 +7519,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202011rules",
@@ -7057,7 +7536,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202011pd",
@@ -7073,7 +7553,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202011pm",
@@ -7089,7 +7570,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202011integ",
@@ -7105,7 +7587,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202011cloudapi",
@@ -7121,7 +7604,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202011gosu",
@@ -7137,7 +7621,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202011testing",
@@ -7153,7 +7638,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202011restapifw",
@@ -7169,7 +7655,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispc202011install",
@@ -7185,7 +7672,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "is202011contact",
@@ -7205,7 +7693,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "testingframeworksapibanff",
@@ -7225,7 +7714,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "testingframeworksuibanff",
@@ -7245,7 +7735,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "testingframeworksrnbanff",
@@ -7265,7 +7756,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "is202011glossary",
@@ -7285,7 +7777,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isrestapiclientrn202011",
@@ -7305,7 +7798,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "is202011restapiclient",
@@ -7325,7 +7819,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "is202011contactapi",
@@ -7345,7 +7840,8 @@
       "environments": ["dev", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "apiekdfksmds",
@@ -7360,7 +7856,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "pcappciekdfpcksmds",
@@ -7375,7 +7872,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ccapcciekdfccksmds",
@@ -7390,7 +7888,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbcclouddraftreleasenotes",
@@ -7406,7 +7905,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbcclouddraftnewandchanged",
@@ -7422,7 +7922,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbcclouddraftupgrade",
@@ -7438,7 +7939,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbcclouddraftapp",
@@ -7454,7 +7956,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbcclouddraftadmin",
@@ -7470,7 +7973,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbcclouddraftbestpractice",
@@ -7486,7 +7990,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbcclouddraftconfig",
@@ -7502,7 +8007,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbcclouddraftglobal",
@@ -7518,7 +8024,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbcclouddraftrules",
@@ -7534,7 +8041,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbcclouddraftinteg",
@@ -7550,7 +8058,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbcclouddraftgosu",
@@ -7566,7 +8075,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbcclouddrafttesting",
@@ -7582,7 +8092,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbcclouddraftinstall",
@@ -7598,7 +8109,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isccclouddraftreleasenotes",
@@ -7614,7 +8126,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isccclouddraftnewandchanged",
@@ -7630,7 +8143,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isccclouddraftupgrade",
@@ -7646,7 +8160,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isccclouddraftapp",
@@ -7662,7 +8177,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isccclouddraftadmin",
@@ -7678,7 +8194,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isccclouddraftbestpractice",
@@ -7694,7 +8211,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isccclouddraftconfig",
@@ -7710,7 +8228,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isccclouddraftglobal",
@@ -7726,7 +8245,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isccclouddraftrules",
@@ -7742,7 +8262,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isccclouddraftinteg",
@@ -7758,7 +8279,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isccclouddraftcloudapi",
@@ -7774,7 +8296,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isccclouddraftgosu",
@@ -7790,7 +8313,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isccclouddrafttesting",
@@ -7806,7 +8330,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isccclouddraftrestapifw",
@@ -7822,7 +8347,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isccclouddraftinstall",
@@ -7838,7 +8364,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispcclouddraftreleasenotes",
@@ -7854,7 +8381,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispcclouddraftnewandchanged",
@@ -7870,7 +8398,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispcclouddraftupgrade",
@@ -7886,7 +8415,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispcclouddraftapp",
@@ -7902,7 +8432,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispcclouddraftadmin",
@@ -7918,7 +8449,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispcclouddraftbestpractice",
@@ -7934,7 +8466,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispcclouddraftapd",
@@ -7950,7 +8483,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispcclouddraftconfig",
@@ -7966,7 +8500,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispcclouddraftglobal",
@@ -7982,7 +8517,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispcclouddraftrules",
@@ -7998,7 +8534,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispcclouddraftpd",
@@ -8014,7 +8551,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispcclouddraftpm",
@@ -8030,7 +8568,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispcclouddraftinteg",
@@ -8046,7 +8585,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispcclouddraftcloudapi",
@@ -8062,7 +8602,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispcclouddraftgosu",
@@ -8078,7 +8619,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispcclouddrafttesting",
@@ -8094,7 +8636,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispcclouddraftrestapifw",
@@ -8110,7 +8653,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispcclouddraftinstall",
@@ -8126,7 +8670,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isclouddraftrestapiclient",
@@ -8146,7 +8691,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isclouddraftcontact",
@@ -8166,7 +8712,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isclouddraftglossary",
@@ -8186,7 +8733,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbccloudeareleasenotes",
@@ -8202,7 +8750,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbccloudeanewandchanged",
@@ -8218,7 +8767,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbccloudeaupgrade",
@@ -8234,7 +8784,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbccloudeaapp",
@@ -8250,7 +8801,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbccloudeaadmin",
@@ -8266,7 +8818,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbccloudeabestpractice",
@@ -8282,7 +8835,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbccloudeaconfig",
@@ -8298,7 +8852,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbccloudeaglobal",
@@ -8314,7 +8869,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbccloudearules",
@@ -8330,7 +8886,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbccloudeainteg",
@@ -8346,7 +8903,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbccloudeagosu",
@@ -8362,7 +8920,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbccloudeatesting",
@@ -8378,7 +8937,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "isbccloudeainstall",
@@ -8394,7 +8954,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscccloudeareleasenotes",
@@ -8410,7 +8971,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscccloudeanewandchanged",
@@ -8426,7 +8988,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscccloudeaupgrade",
@@ -8442,7 +9005,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscccloudeaapp",
@@ -8458,7 +9022,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscccloudeaadmin",
@@ -8474,7 +9039,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscccloudeabestpractice",
@@ -8490,7 +9056,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscccloudeaconfig",
@@ -8506,7 +9073,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscccloudeaglobal",
@@ -8522,7 +9090,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscccloudearules",
@@ -8538,7 +9107,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscccloudeainteg",
@@ -8554,7 +9124,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscccloudeacloudapi",
@@ -8570,7 +9141,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscccloudeagosu",
@@ -8586,7 +9158,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscccloudeatesting",
@@ -8602,7 +9175,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscccloudearestapifw",
@@ -8618,7 +9192,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscccloudeainstall",
@@ -8634,7 +9209,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispccloudeareleasenotes",
@@ -8650,7 +9226,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispccloudeanewandchanged",
@@ -8666,7 +9243,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispccloudeaupgrade",
@@ -8682,7 +9260,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispccloudeaapp",
@@ -8698,7 +9277,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispccloudeaadmin",
@@ -8714,7 +9294,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispccloudeabestpractice",
@@ -8730,7 +9311,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispccloudeaapd",
@@ -8746,7 +9328,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispccloudeaconfig",
@@ -8762,7 +9345,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispccloudeaglobal",
@@ -8778,7 +9362,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispccloudearules",
@@ -8794,7 +9379,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispccloudeapd",
@@ -8810,7 +9396,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispccloudeapm",
@@ -8826,7 +9413,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispccloudeainteg",
@@ -8842,7 +9430,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispccloudeacloudapi",
@@ -8858,7 +9447,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispccloudeagosu",
@@ -8874,7 +9464,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispccloudeatesting",
@@ -8890,7 +9481,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispccloudearestapifw",
@@ -8906,7 +9498,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ispccloudeainstall",
@@ -8922,7 +9515,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscloudearestapiclient",
@@ -8942,7 +9536,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscloudeacontact",
@@ -8962,7 +9557,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iscloudeaglossary",
@@ -8982,7 +9578,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202xrndraft",
@@ -9001,7 +9598,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211xrndraft",
@@ -9020,7 +9618,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211xreleaseviddraft",
@@ -9039,7 +9638,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211xstudiorndraft",
@@ -9058,7 +9658,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211xappdraft",
@@ -9074,7 +9675,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211xbidraft",
@@ -9093,7 +9695,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211xcsalespdraft",
@@ -9112,7 +9715,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211xcservicepdraft",
@@ -9131,7 +9735,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211xappreaderintegdraft",
@@ -9150,7 +9755,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211xpadraft",
@@ -9169,7 +9775,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211xbiintegdraft",
@@ -9185,7 +9792,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211xconfigdraft",
@@ -9204,7 +9812,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211xcservicepconfigdraft",
@@ -9220,7 +9829,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211xstudiodraft",
@@ -9239,7 +9849,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211xprovportaldraft",
@@ -9255,7 +9866,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211xportaldevdraft",
@@ -9274,7 +9886,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211xprodattrefdraft",
@@ -9293,7 +9906,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211xuwconfigdraft",
@@ -9309,7 +9923,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211xclaimsconfigdraft",
@@ -9325,7 +9940,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202xreleaseviddraft",
@@ -9344,7 +9960,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202xstudiorndraft",
@@ -9363,7 +9980,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202xappdraft",
@@ -9379,7 +9997,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202xbidraft",
@@ -9398,7 +10017,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202xcsalespdraft",
@@ -9417,7 +10037,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202xcservicepdraft",
@@ -9436,7 +10057,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202xappreaderintegdraft",
@@ -9455,7 +10077,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202xpadraft",
@@ -9474,7 +10097,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202xbiintegdraft",
@@ -9490,7 +10114,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202xconfigdraft",
@@ -9509,7 +10134,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202xcservicepconfigdraft",
@@ -9525,7 +10151,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202xstudiodraft",
@@ -9544,7 +10171,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202xprovportaldraft",
@@ -9560,7 +10188,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202xportaldevdraft",
@@ -9579,7 +10208,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202xprodattrefdraft",
@@ -9598,7 +10228,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202xuwconfigdraft",
@@ -9614,7 +10245,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202xclaimsconfigdraft",
@@ -9630,7 +10262,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201xrndraft",
@@ -9649,7 +10282,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201xreleaseviddraft",
@@ -9668,7 +10302,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201xstudiorndraft",
@@ -9687,7 +10322,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201xappdraft",
@@ -9703,7 +10339,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201xbidraft",
@@ -9722,7 +10359,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201xcservicepdraft",
@@ -9741,7 +10379,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201xappreaderintegdraft",
@@ -9760,7 +10399,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201xbiintegdraft",
@@ -9776,7 +10416,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201xpaymentapiintegdraft",
@@ -9792,7 +10433,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201xpadraft",
@@ -9811,7 +10453,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201xconfigdraft",
@@ -9830,7 +10473,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201xstudiodraft",
@@ -9849,7 +10493,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201xportaldevdraft",
@@ -9868,7 +10513,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201xuwconfigdraft",
@@ -9884,7 +10530,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "inupgradetoolsdraft",
@@ -9903,7 +10550,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "incsp324rndraft",
@@ -9924,7 +10572,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "incsp323rndraft",
@@ -9947,7 +10596,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211rn",
@@ -9963,7 +10613,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211releasevid",
@@ -9979,7 +10630,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211studiorn",
@@ -9995,7 +10647,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211csp324rn",
@@ -10011,7 +10664,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211csp323rn",
@@ -10027,7 +10681,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211bi",
@@ -10043,7 +10698,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211csalesp",
@@ -10059,7 +10715,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211cservicep",
@@ -10075,7 +10732,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211appreaderinteg",
@@ -10091,7 +10749,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211pa",
@@ -10107,7 +10766,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211config",
@@ -10123,7 +10783,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211studio",
@@ -10139,7 +10800,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211portaldev",
@@ -10155,7 +10817,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20211prodattref",
@@ -10171,7 +10834,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202rn",
@@ -10187,7 +10851,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202releasevid",
@@ -10203,7 +10868,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202studiorn",
@@ -10219,7 +10885,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202csp324rn",
@@ -10235,7 +10902,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202csp323rn",
@@ -10251,7 +10919,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202bi",
@@ -10267,7 +10936,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202csalesp",
@@ -10283,7 +10953,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202cservicep",
@@ -10299,7 +10970,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202appreaderinteg",
@@ -10315,7 +10987,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202pa",
@@ -10331,7 +11004,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202config",
@@ -10347,7 +11021,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202studio",
@@ -10363,7 +11038,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202portaldev",
@@ -10379,7 +11055,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20202prodattref",
@@ -10395,7 +11072,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201rn",
@@ -10411,7 +11089,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201releasevid",
@@ -10427,7 +11106,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201studiorn",
@@ -10443,7 +11123,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201csp323rn",
@@ -10459,7 +11140,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201bi",
@@ -10475,7 +11157,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201cservicep",
@@ -10491,7 +11174,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201appreaderinteg",
@@ -10507,7 +11191,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201pa",
@@ -10523,7 +11208,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201config",
@@ -10539,7 +11225,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201studio",
@@ -10555,7 +11242,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "in20201portaldev",
@@ -10571,7 +11259,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhcloudrndraft",
@@ -10587,7 +11276,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhcloudproductdraft",
@@ -10603,7 +11293,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhcloudinstalldraft",
@@ -10619,7 +11310,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhcloudupgradedraft",
@@ -10635,7 +11327,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhcloudconfigdraft",
@@ -10651,7 +11344,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhclouddataspecdraft",
@@ -10667,7 +11361,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhcloudadmindraft",
@@ -10683,7 +11378,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhclouddevrefdraft",
@@ -10699,7 +11395,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iccloudrndraft",
@@ -10715,7 +11412,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iccloudproductdraft",
@@ -10731,7 +11429,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iccloudinstalldraft",
@@ -10747,7 +11446,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iccloudupgradedraft",
@@ -10763,7 +11463,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iccloudconfigdraft",
@@ -10779,7 +11480,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "icclouddataspecdraft",
@@ -10795,7 +11497,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iccloudadmindraft",
@@ -10811,7 +11514,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iccloudbiappdraft",
@@ -10827,7 +11531,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iccloudreportsdraft",
@@ -10843,7 +11548,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "icclouddevrefdraft",
@@ -10859,7 +11565,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhcloudrncortina",
@@ -10875,7 +11582,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhcloudproductcortina",
@@ -10891,7 +11599,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhcloudinstallcortina",
@@ -10907,7 +11616,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhcloudupgradecortina",
@@ -10923,7 +11633,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhcloudconfigcortina",
@@ -10939,7 +11650,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhclouddataspeccortina",
@@ -10955,7 +11667,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhcloudadmincortina",
@@ -10971,7 +11684,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhclouddevrefcortina",
@@ -10987,7 +11701,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iccloudrncortina",
@@ -11003,7 +11718,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iccloudproductcortina",
@@ -11019,7 +11735,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iccloudinstallcortina",
@@ -11035,7 +11752,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iccloudupgradecortina",
@@ -11051,7 +11769,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iccloudconfigcortina",
@@ -11067,7 +11786,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "icclouddataspeccortina",
@@ -11083,7 +11803,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iccloudadmincortina",
@@ -11099,7 +11820,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iccloudbiappcortina",
@@ -11115,7 +11837,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iccloudreportscortina",
@@ -11131,7 +11854,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "icclouddevrefcortina",
@@ -11147,7 +11871,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhonpremdraftrn",
@@ -11162,7 +11887,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhonpremdraftproduct",
@@ -11177,7 +11903,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhonpremdraftinstall",
@@ -11192,7 +11919,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhonpremdraftupgrade",
@@ -11207,7 +11935,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhonpremdraftconfig",
@@ -11222,7 +11951,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhonpremdraftdataspec",
@@ -11237,7 +11967,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhonpremdraftadmin",
@@ -11252,7 +11983,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dhonpremdraftdevref",
@@ -11268,7 +12000,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iconpremdraftrn",
@@ -11283,7 +12016,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iconpremdraftproduct",
@@ -11298,7 +12032,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iconpremdraftinstall",
@@ -11313,7 +12048,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iconpremdraftupgrade",
@@ -11328,7 +12064,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iconpremdraftconfig",
@@ -11343,7 +12080,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iconpremdraftdataspec",
@@ -11358,7 +12096,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iconpremdraftadmin",
@@ -11373,7 +12112,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iconpremdraftbiapp",
@@ -11388,7 +12128,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iconpremdraftreports",
@@ -11403,7 +12144,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "iconpremdraftdevref",
@@ -11419,7 +12161,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dh1050rn",
@@ -11434,7 +12177,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dh1050product",
@@ -11449,7 +12193,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dh1050install",
@@ -11464,7 +12209,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dh1050upgrade",
@@ -11479,7 +12225,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dh1050config",
@@ -11494,7 +12241,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dh1050dataspec",
@@ -11509,7 +12257,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dh1050admin",
@@ -11524,7 +12273,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "dh1050devref",
@@ -11539,7 +12289,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ic1050rn",
@@ -11554,7 +12305,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ic1050product",
@@ -11569,7 +12321,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ic1050install",
@@ -11584,7 +12337,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ic1050upgrade",
@@ -11599,7 +12353,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ic1050config",
@@ -11614,7 +12369,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ic1050dataspec",
@@ -11629,7 +12385,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ic1050admin",
@@ -11644,7 +12401,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ic1050biapp",
@@ -11659,7 +12417,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ic1050reports",
@@ -11674,7 +12433,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "ic1050devref",
@@ -11689,7 +12449,8 @@
       "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     },
     {
       "id": "checksums",
@@ -11702,6 +12463,7 @@
       },
       "displayOnLandingPages": false,
       "public": false,
+"internal": false
       "indexForSearch": true,
       "environments": ["dev", "int", "staging"]
     },
@@ -11717,7 +12479,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+"internal": false
     }
   ]
 }
