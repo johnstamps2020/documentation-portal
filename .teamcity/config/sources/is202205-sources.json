@@ -13,7 +13,7 @@
       "title": "IS 2022.05 Advanced Product Designer for PolicyCenter",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
-      "branch": "release/2022.05"
+      "branch": "release/pc/2022.05"
     },
     {
       "id": "testingframeworks202205src",
