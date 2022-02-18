@@ -10,14 +10,14 @@ RUN poetry build -f wheel
 
 FROM artifactory.guidewire.com/hub-docker-remote/python:3.9-slim-buster
 
-COPY --from=app-builder /opt/app/dist/flail_ssg-1.0.0-py3-none-any.whl /opt/app/
+COPY --from=app-builder /opt/app/dist/flail_ssg-1.1.0-py3-none-any.whl /opt/app/
 RUN apt-get update \
     && apt-get install build-essential -y \
     && apt-get install curl -y \
     && apt-get clean
 WORKDIR /opt/app
-RUN pip install flail_ssg-1.0.0-py3-none-any.whl
+RUN pip install flail_ssg-1.1.0-py3-none-any.whl
 
-RUN rm -rf flail_ssg-1.0.0-py3-none-any.whl
+RUN rm -rf flail_ssg-1.1.0-py3-none-any.whl
 RUN apt-get remove -y build-essential \
     && apt-get -y autoremove
