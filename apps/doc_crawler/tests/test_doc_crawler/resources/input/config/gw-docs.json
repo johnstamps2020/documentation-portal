@@ -14,7 +14,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-"internal": false
+      "internal": false,
       "environments": ["dev", "staging", "prod"]
     },
     {
@@ -31,7 +31,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-"internal": false
+      "internal": false
     },
     {
       "id": "ispccloudlatest",
@@ -47,7 +47,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-"internal": false
+      "internal": false
     },
     {
       "id": "isconfigupgradetools320",
@@ -63,7 +63,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-"internal": false
+      "internal": false
     }
   ]
 }

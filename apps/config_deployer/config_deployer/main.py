@@ -237,7 +237,8 @@ def create_new_objects(root_key_name: str, number_of_objects: int, id_prefix: st
         "environments": [],
         "displayOnLandingPages": True,
         "indexForSearch": True,
-        "public": False
+        "public": False,
+        "internal": False
     }
     sources_template = {
         "id": "",
