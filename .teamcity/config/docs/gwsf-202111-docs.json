@@ -14,7 +14,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dxgwsfinstall202111",
@@ -29,7 +30,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dxgwsfadmin202111",
@@ -44,7 +46,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dxgwsfrelnotes202111",
@@ -59,7 +62,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     }
   ]
 }

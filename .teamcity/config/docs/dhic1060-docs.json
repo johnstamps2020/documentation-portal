@@ -14,7 +14,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dh1060product",
@@ -29,7 +30,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dh1060install",
@@ -44,7 +46,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dh1060upgrade",
@@ -59,7 +62,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dh1060config",
@@ -74,7 +78,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dh1060dataspec",
@@ -89,7 +94,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dh1060admin",
@@ -104,7 +110,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dh1060devref",
@@ -119,7 +126,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ic1060rn",
@@ -134,7 +142,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ic1060product",
@@ -149,7 +158,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ic1060install",
@@ -164,7 +174,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ic1060upgrade",
@@ -179,7 +190,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ic1060config",
@@ -194,7 +206,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ic1060dataspec",
@@ -209,7 +222,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ic1060admin",
@@ -224,7 +238,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ic1060biapp",
@@ -239,7 +254,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ic1060reports",
@@ -254,7 +270,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ic1060devref",
@@ -269,7 +286,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     }
   ]
 }

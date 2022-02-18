@@ -15,7 +15,8 @@
       "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "testingframeworksapielysian",
@@ -31,7 +32,8 @@
       "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "testingframeworksuielysian",
@@ -47,7 +49,8 @@
       "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "testingframeworksrnelysian",
@@ -63,7 +66,8 @@
       "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "isbc202205releasenotes",
@@ -79,7 +83,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "isbc202205newandchanged",
@@ -95,7 +100,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "isbc202205upgrade",
@@ -111,7 +117,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "isbc202205app",
@@ -127,7 +134,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "isbc202205admin",
@@ -143,7 +151,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "isbc202205config",
@@ -159,7 +168,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "isbc202205dataarchiving",
@@ -175,7 +185,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "isbc202205global",
@@ -191,7 +202,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "isbc202205rules",
@@ -207,7 +219,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "isbc202205integ",
@@ -223,7 +236,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "isbc202205apibf",
@@ -239,7 +253,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+      "internal": false
     },
     {
       "id": "is202205gosu",
@@ -255,7 +270,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "isbc202205testing",
@@ -271,7 +287,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "isbc202205restapifw",
@@ -287,7 +304,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "isbc202205devsetup",
@@ -303,7 +321,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "iscc202205releasenotes",
@@ -319,7 +338,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "iscc202205newandchanged",
@@ -335,7 +355,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "iscc202205upgrade",
@@ -351,7 +372,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "iscc202205app",
@@ -367,7 +389,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "iscc202205admin",
@@ -383,7 +406,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "iscc202205config",
@@ -399,7 +423,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "iscc202205dataarchiving",
@@ -415,7 +440,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "iscc202205global",
@@ -431,7 +457,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "iscc202205rules",
@@ -447,7 +474,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "iscc202205integ",
@@ -463,7 +491,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "iscc202205apibf",
@@ -479,7 +508,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+      "internal": false
     },
     {
       "id": "iscc202205apica",
@@ -495,7 +525,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "iscc202205apicm",
@@ -511,7 +542,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "iscc202205testing",
@@ -527,7 +559,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "iscc202205restapifw",
@@ -543,7 +576,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "iscc202205devsetup",
@@ -559,7 +593,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispc202205releasenotes",
@@ -575,7 +610,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispc202205newandchanged",
@@ -591,7 +627,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispc202205upgrade",
@@ -607,7 +644,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispc202205app",
@@ -623,7 +661,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispc202205admin",
@@ -639,7 +678,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispc202205config",
@@ -655,7 +695,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispc202205dataarchiving",
@@ -671,7 +712,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispc202205global",
@@ -687,7 +729,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispc202205rules",
@@ -703,7 +746,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispc202205pd",
@@ -719,7 +763,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispc202205pm",
@@ -735,7 +780,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispc202205integ",
@@ -751,7 +797,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispc202205apibf",
@@ -767,7 +814,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+      "internal": false
     },
     {
       "id": "ispc202205apica",
@@ -783,7 +831,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispc202205apicm",
@@ -799,7 +848,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispc202205testing",
@@ -815,7 +865,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispc202205restapifw",
@@ -831,7 +882,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispc202205devsetup",
@@ -847,7 +899,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "is202205integoverview",
@@ -863,7 +916,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "is202205contact",
@@ -879,7 +933,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ccapirefelysian",
@@ -895,7 +950,8 @@
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+      "internal": false
     },
     {
       "id": "pcapirefelysian",
@@ -911,7 +967,8 @@
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+      "internal": false
     }
   ]
 }

@@ -15,7 +15,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221billref",
@@ -31,7 +32,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221csalesp",
@@ -47,7 +49,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221cservicep",
@@ -63,7 +66,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221appreaderinteg",
@@ -79,7 +83,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221pa",
@@ -95,7 +100,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221config",
@@ -111,7 +117,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221commonconfig",
@@ -127,7 +134,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221studio",
@@ -143,7 +151,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221portaldev",
@@ -159,7 +168,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+      "internal": false
     },
     {
       "id": "in20221prodattref",
@@ -175,7 +185,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221uwconfig",
@@ -191,7 +202,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221claimsconfig",
@@ -207,7 +219,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221apiref",
@@ -223,7 +236,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": true
+      "public": true,
+      "internal": false
     }
   ]
 }

@@ -15,7 +15,8 @@
       "environments": ["dev", "staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro421",
@@ -30,7 +31,8 @@
       "environments": ["dev", "staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro430",
@@ -45,7 +47,8 @@
       "environments": ["dev", "staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro500",
@@ -60,7 +63,8 @@
       "environments": ["dev", "staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro510",
@@ -75,7 +79,8 @@
       "environments": ["dev", "staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro520",
@@ -90,7 +95,8 @@
       "environments": ["dev", "staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro531",
@@ -105,7 +111,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro532",
@@ -121,7 +128,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro540",
@@ -136,7 +144,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro600",
@@ -151,7 +160,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro610",
@@ -166,7 +176,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro620",
@@ -181,7 +192,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro630",
@@ -196,7 +208,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro640",
@@ -211,7 +224,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro650",
@@ -226,7 +240,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro651",
@@ -242,7 +257,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro652",
@@ -258,7 +274,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutrohackathon",
@@ -273,7 +290,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutronext",
@@ -288,7 +306,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutrorewards",
@@ -302,7 +321,8 @@
       "environments": ["dev", "staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
-      "public": true
+      "public": true,
+      "internal": false
     },
     {
       "id": "storybook411",
@@ -318,7 +338,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook421",
@@ -333,7 +354,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook430",
@@ -348,7 +370,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook500",
@@ -363,7 +386,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook510",
@@ -378,7 +402,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook520",
@@ -393,7 +418,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook531",
@@ -408,7 +434,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook532",
@@ -424,7 +451,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook540",
@@ -439,7 +467,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook600",
@@ -454,7 +483,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook610",
@@ -469,7 +499,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook620",
@@ -484,7 +515,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook630",
@@ -499,7 +531,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook640",
@@ -514,7 +547,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook650",
@@ -529,7 +563,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook651",
@@ -545,7 +580,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook652",
@@ -561,7 +597,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybooknext",
@@ -576,7 +613,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storyboobizpatterns651",
@@ -592,7 +630,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storyboobizpatterns652",
@@ -608,7 +647,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storyboobizpatterns651zip",
@@ -624,7 +664,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storyboobizpatterns652zip",
@@ -640,7 +681,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutroapptemplatesampleapp651zip",
@@ -656,7 +698,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutroapptemplatesampleapp652zip",
@@ -672,7 +715,8 @@
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro660",
@@ -687,7 +731,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook660",
@@ -702,7 +747,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro700",
@@ -717,7 +763,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook700",
@@ -732,7 +779,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro711",
@@ -747,7 +795,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook711",
@@ -762,7 +811,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro720",
@@ -777,7 +827,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook720",
@@ -792,7 +843,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutro730",
@@ -807,7 +859,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybook730",
@@ -822,7 +875,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "jutrolatest",
@@ -837,7 +891,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "storybooklatest",
@@ -852,7 +907,8 @@
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     }
   ]
 }

@@ -14,7 +14,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradeguide1010",
@@ -28,7 +29,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradeguide1011",
@@ -42,7 +44,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradeguide1012",
@@ -56,7 +59,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradeguide10x",
@@ -70,7 +74,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradetools1450",
@@ -84,7 +89,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradetools1x",
@@ -98,7 +104,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradetoolspiteqdgk",
@@ -112,7 +119,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradetoolsqwertyui",
@@ -126,7 +134,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     }
   ]
 }

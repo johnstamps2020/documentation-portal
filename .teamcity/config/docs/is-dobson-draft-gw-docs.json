@@ -15,7 +15,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "isbccloudgwdevsetup",
@@ -31,7 +32,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "isbccloudgwupgrade",
@@ -47,7 +49,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "iscccloudgwadmin",
@@ -63,7 +66,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "iscccloudgwdevsetup",
@@ -79,7 +83,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "iscccloudgwupgrade",
@@ -95,7 +100,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispccloudgwadmin",
@@ -111,7 +117,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispccloudgwdevsetup",
@@ -127,7 +134,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispccloudgwupgrade",
@@ -143,7 +151,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     }
   ]
 }

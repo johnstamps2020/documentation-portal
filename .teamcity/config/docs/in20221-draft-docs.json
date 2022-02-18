@@ -15,7 +15,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221xappdraft",
@@ -31,7 +32,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221xcsalespconfigdraft",
@@ -47,7 +49,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221xcsalespdraft",
@@ -63,7 +66,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221xcservicepdraft",
@@ -79,7 +83,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221xappreaderintegdraft",
@@ -95,7 +100,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221xpadraft",
@@ -111,7 +117,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221xbiintegdraft",
@@ -127,7 +134,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221xconfigdraft",
@@ -143,7 +151,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221xcommonconfigdraft",
@@ -159,7 +168,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221xcservicepconfigdraft",
@@ -175,7 +185,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221xstudiodraft",
@@ -191,7 +202,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221xprovportaldraft",
@@ -207,7 +219,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221xportaldevdraft",
@@ -223,7 +236,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221xprodattrefdraft",
@@ -239,7 +253,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221xuwconfigdraft",
@@ -255,7 +270,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20221xclaimsconfigdraft",
@@ -271,7 +287,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     }
   ]
 }

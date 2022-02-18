@@ -1,3 +1,5 @@
+const mockUserData = require('./utils/mockUserData');
+
 function belongsToGuidewire(email) {
   try {
     return email.endsWith('@guidewire.com');
@@ -9,13 +11,10 @@ function belongsToGuidewire(email) {
 
 function getUserInfo(req) {
   if (process.env.ENABLE_AUTH === 'no') {
-    return {
-      isLoggedIn: true,
-      hasGuidewireEmail: true,
-      name: 'Alfred Lord Tennyson',
-      preferred_username: 'atennyson@guidewire.com',
-      locale: 'en-US',
-    };
+    if (process.env.PRETEND_TO_BE_EXTERNAL === 'yes') {
+      return mockUserData.external;
+    }
+    return mockUserData.internal;
   }
 
   const isLoggedIn = req.session.requestIsAuthenticated;

@@ -14,7 +14,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "midipfadjuster11",
@@ -29,7 +30,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "midipfadmin11",
@@ -44,7 +46,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "midipfrn11",
@@ -59,7 +62,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "midipfsupermap11",
@@ -73,7 +77,8 @@
       "environments": ["dev"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "midipfadjusterfrFR11",
@@ -88,7 +93,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "midipfrnfrFR11",
@@ -103,7 +109,8 @@
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     }
   ]
 }
