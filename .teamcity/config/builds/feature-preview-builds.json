@@ -43,6 +43,14 @@
     },
     {
       "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "root": "b_data-studio.ditamap",
+      "srcId": "datastudioreleasesrc",
+      "docId": "datastudiorelease",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
       "filter": "GW-Generic-Cloud-Draft.ditaval",
       "root": "ExperienceManager.ditamap",
       "srcId": "experiencemgrdraftsrc",

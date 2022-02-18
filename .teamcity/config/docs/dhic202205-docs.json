@@ -2,135 +2,7 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "dhcloudrndraft",
-      "title": "Release Notes",
-      "url": "cloud/dh/latest/releasenotes",
-      "metadata": {
-        "product": ["DataHub"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Dobson"],
-        "subject": ["Release notes"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "dhcloudproductdraft",
-      "title": "Product Guide",
-      "url": "cloud/dh/latest/product",
-      "metadata": {
-        "product": ["DataHub"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Dobson"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "dhcloudinstalldraft",
-      "title": "Installation Guide",
-      "url": "cloud/dh/latest/install",
-      "metadata": {
-        "product": ["DataHub"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Dobson"],
-        "subject": ["Installation"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "dhcloudupgradedraft",
-      "title": "Upgrade Guide",
-      "url": "cloud/dh/latest/upgrade",
-      "metadata": {
-        "product": ["DataHub"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Dobson"],
-        "subject": ["Installation"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "dhcloudconfigdraft",
-      "title": "Configuration Guide",
-      "url": "cloud/dh/latest/config",
-      "metadata": {
-        "product": ["DataHub"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Dobson"],
-        "subject": ["Configuration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "dhclouddataspecdraft",
-      "title": "Data Specifications Guide",
-      "url": "cloud/dh/latest/dataspec",
-      "metadata": {
-        "product": ["DataHub"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Dobson"],
-        "subject": ["Configuration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "dhcloudadmindraft",
-      "title": "Administration Guide",
-      "url": "cloud/dh/latest/admin",
-      "metadata": {
-        "product": ["DataHub"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Dobson"],
-        "subject": ["Administration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "dhclouddevrefdraft",
-      "title": "Developer Reference",
-      "url": "cloud/dh/latest/devref",
-      "metadata": {
-        "product": ["DataHub"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Dobson"],
-        "subject": ["Development"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "dhqueryguidedraft",
+      "id": "dhqueryguiderelease",
       "title": "Data Studio Query Guide",
       "url": "cloud/datastudio/qg",
       "metadata": {
@@ -140,167 +12,295 @@
         "release": ["Elysian"],
         "subject": ["Development"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "iccloudrndraft",
+      "id": "dhrn202205",
       "title": "Release Notes",
-      "url": "cloud/ic/latest/releasenotes",
+      "url": "cloud/dh/202205/releasenotes",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["DataHub"],
         "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Dobson"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
         "subject": ["Release notes"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "iccloudproductdraft",
+      "id": "dhproduct202205",
       "title": "Product Guide",
-      "url": "cloud/ic/latest/product",
+      "url": "cloud/dh/202205/product",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["DataHub"],
         "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Dobson"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "iccloudinstalldraft",
+      "id": "dhinstall202205",
       "title": "Installation Guide",
-      "url": "cloud/ic/latest/install",
+      "url": "cloud/dh/202205/install",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["DataHub"],
         "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Dobson"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
         "subject": ["Installation"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "iccloudupgradedraft",
+      "id": "dhupgrade202205",
       "title": "Upgrade Guide",
-      "url": "cloud/ic/latest/upgrade",
+      "url": "cloud/dh/202205/upgrade",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["DataHub"],
         "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Dobson"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
         "subject": ["Installation"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "iccloudconfigdraft",
+      "id": "dhconfig202205",
       "title": "Configuration Guide",
-      "url": "cloud/ic/latest/config",
+      "url": "cloud/dh/202205/config",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["DataHub"],
         "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Dobson"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
         "subject": ["Configuration"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "icclouddataspecdraft",
+      "id": "dhdataspec202205",
       "title": "Data Specifications Guide",
-      "url": "cloud/ic/latest/dataspec",
+      "url": "cloud/dh/202205/dataspec",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["DataHub"],
         "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Dobson"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
         "subject": ["Configuration"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "iccloudadmindraft",
+      "id": "dhadmin202205",
       "title": "Administration Guide",
-      "url": "cloud/ic/latest/admin",
+      "url": "cloud/dh/202205/admin",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["DataHub"],
         "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Dobson"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
         "subject": ["Administration"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "iccloudbiappdraft",
-      "title": "BI Applications Guide",
-      "url": "cloud/ic/latest/biapp",
-      "metadata": {
-        "product": ["InfoCenter"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Dobson"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "iccloudreportsdraft",
-      "title": "Reports Guide",
-      "url": "cloud/ic/latest/reports",
-      "metadata": {
-        "product": ["InfoCenter"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Dobson"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "icclouddevrefdraft",
+      "id": "dhdevref202205",
       "title": "Developer Reference",
-      "url": "cloud/ic/latest/devref",
+      "url": "cloud/dh/202205/devref",
       "metadata": {
-        "product": ["InfoCenter"],
+        "product": ["DataHub"],
         "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Dobson"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
         "subject": ["Development"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icrn202205",
+      "title": "Release Notes",
+      "url": "cloud/ic/202205/releasenotes",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icproduct202205",
+      "title": "Product Guide",
+      "url": "cloud/ic/202205/product",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icinstall202205",
+      "title": "Installation Guide",
+      "url": "cloud/ic/202205/install",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icupgrade202205",
+      "title": "Upgrade Guide",
+      "url": "cloud/ic/202205/upgrade",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icconfig202205",
+      "title": "Configuration Guide",
+      "url": "cloud/ic/202205/config",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icdataspec202205",
+      "title": "Data Specifications Guide",
+      "url": "cloud/ic/202205/dataspec",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icadmin202205",
+      "title": "Administration Guide",
+      "url": "cloud/ic/202205/admin",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Administration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icbiapp202205",
+      "title": "BI Applications Guide",
+      "url": "cloud/ic/202205/biapp",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icreports202205",
+      "title": "Reports Guide",
+      "url": "cloud/ic/202205/reports",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "icdevref202205",
+      "title": "Developer Reference",
+      "url": "cloud/ic/202205/devref",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
