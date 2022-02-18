@@ -2,6 +2,54 @@
   "$schema": "./config-schema.json",
   "docs": [
     {
+      "id": "appeventsccrndraft",
+      "title": "Application Events for Claims Release Notes",
+      "url": "cloud/gw-feature-preview/ccappeventsrn",
+      "metadata": {
+        "product": ["Feature Preview"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Release Notes"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "rulesrndraft",
+      "title": "Rules Release Notes",
+      "url": "cloud/rules/relnotes",
+      "metadata": {
+        "product": ["Rules"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Cortina", "Dobson"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "integgatewayrndraft",
+      "title": "Integration Gateway Release Notes",
+      "url": "cloud/gw-feature-preview/igrelnotes",
+      "metadata": {
+        "product": ["Feature Preview"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
       "id": "dxpractices",
       "title": "Digital Best Practices",
       "url": "cloud/dx/services/latest",
@@ -2396,6 +2444,38 @@
         "subject": ["Release notes"]
       },
       "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "clouddataaccessguide",
+      "title": "Application Guide",
+      "url": "cloud/cda/guide/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Data Access"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "clouddataaccessrn",
+      "title": "Release Notes",
+      "url": "cloud/cda/rn/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Data Access"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false
@@ -10576,6 +10656,22 @@
         "release": ["Aspen"]
       },
       "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "dhqueryguidedraft",
+      "title": "Data Studio Query Guide",
+      "url": "cloud/datastudio/qg",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Data Studio"],
+        "version": ["latest"],
+        "release": ["Dobson"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false

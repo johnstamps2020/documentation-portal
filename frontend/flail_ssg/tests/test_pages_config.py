@@ -9,8 +9,8 @@ import pytest
 
 import flail_ssg.validator
 from flail_ssg.generator import generate_search_filters
-from flail_ssg.preprocessor import clean_pages, filter_by_env, process_pages, remove_empty_dirs, \
-    remove_items_with_empty_child_items, remove_page_dirs, remove_refs_to_empty_and_non_existent_pages
+from flail_ssg.preprocessor import clean_pages, filter_by_env, remove_items_with_empty_child_items, remove_page_dirs, \
+    remove_refs_to_empty_and_non_existent_pages, run_preprocessor
 from flail_ssg.validator import DocIdNotFoundError, PageNotFoundError, run_validator, validate_env_settings, \
     validate_page
 
@@ -419,22 +419,21 @@ def test_cleaning_pages():
     shutil.rmtree(tmp_test_dir)
 
 
-def test_processing_pages(load_docs_from_main_config):
+def test_running_preprocessor(load_docs_from_main_config):
     """
-    Both page configs have the same set of references to pages, docs and websites but they have different env settings.
+    Some of the references in Dobson and Elysian page configs point to the same pages.
     Expected behaviour: References to pages are removed from page configs if they don't match the env settings.
     If a page config has a page reference with env settings that include the referenced page and the other page config
     has env settings that exclude the same referenced page, the referenced page is NOT removed.
     """
-    input_dir = TestConfig.resources_input_dir / 'pages' / 'process-pages'
-    expected_dir = TestConfig.resources_expected_dir / 'pages' / 'process-pages'
 
-    tmp_test_dir = TestConfig.resources_input_dir / 'tmp-test-dir-process-pages'
-    shutil.copytree(input_dir,
-                    tmp_test_dir, dirs_exist_ok=True)
+    input_dir = TestConfig.resources_input_dir / 'pages' / 'run-preprocessor'
+    expected_dir = TestConfig.resources_expected_dir / 'pages' / 'run-preprocessor'
 
-    process_pages(tmp_test_dir, 'prod', load_docs_from_main_config, False)
-    remove_empty_dirs(tmp_test_dir, removed_dirs=[], failed_removals=[])
+    tmp_test_dir = TestConfig.resources_input_dir / 'tmp-test-run-preprocessor'
+
+    run_preprocessor(False, 'prod', input_dir, tmp_test_dir,
+                     TestConfig.resources_input_dir / 'config' / 'docs' / 'docs.json')
 
     check_dirs_have_the_same_files(tmp_test_dir, expected_dir)
     check_files_have_the_same_content(tmp_test_dir, expected_dir)
