@@ -9,8 +9,8 @@ import pytest
 
 import flail_ssg.validator
 from flail_ssg.generator import generate_search_filters
-from flail_ssg.preprocessor import clean_pages, filter_by_env, remove_refs_to_empty_and_non_existent_pages, process_pages, \
-    remove_empty_dirs, remove_items_with_empty_child_items, remove_page_dirs
+from flail_ssg.preprocessor import clean_pages, filter_by_env, process_pages, remove_empty_dirs, \
+    remove_items_with_empty_child_items, remove_page_dirs, remove_refs_to_empty_and_non_existent_pages
 from flail_ssg.validator import DocIdNotFoundError, PageNotFoundError, run_validator, validate_env_settings, \
     validate_page
 
@@ -420,12 +420,12 @@ def test_cleaning_pages():
 
 
 def test_processing_pages(load_docs_from_main_config):
-    """Both pages link to the same set of pages and documents but they have different env settings.
-    Expected behaviour: Linked pages are removed if they don't match the env settings.
-    If one page has env settings that include a linked page and the other page has env settings that exclude the same
-    linked page, the linked page is removed.
-    IMPORTANT: This test doesn't contain the step for cleaning pages. Therefore, the Dobson expected file contains
-    links to pages that were removed (Cloud Data Access, Explore, Feature Preview)."""
+    """
+    Both page configs have the same set of references to pages, docs and websites but they have different env settings.
+    Expected behaviour: References to pages are removed from page configs if they don't match the env settings.
+    If a page config has a page reference with env settings that include the referenced page and the other page config
+    has env settings that exclude the same referenced page, the referenced page is NOT removed.
+    """
     input_dir = TestConfig.resources_input_dir / 'pages' / 'process-pages'
     expected_dir = TestConfig.resources_expected_dir / 'pages' / 'process-pages'
 

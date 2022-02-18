@@ -1,0 +1,28 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Cloud Data Access",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "clouddataaccessrn"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "clouddataaccessguide"
+        }
+      ]
+    }
+  ]
+}
