@@ -24,9 +24,12 @@ def add_schema_reference(obj: dict):
         }
 
 
-def load_json_file(json_file: Path):
-    with open(json_file) as json_file:
-        return json.load(json_file)
+def load_json_file(json_file_path: Path):
+    try:
+        with open(json_file_path) as json_file:
+            return json.load(json_file)
+    except ValueError:
+        print(f'----ERROR: Problem reading JSON {json_file_path}')
 
 
 def save_json_file(save_path: Path, obj_to_save: dict, add_schema_ref: bool = True):
@@ -75,9 +78,11 @@ def set_object_property(obj: dict, property_name: str, property_value: str) -> d
 
 def get_root_object(json_file_path: Path) -> tuple:
     json_data = load_json_file(json_file_path)
-    root_key_name = next((key for key in json_data.keys() if not key.startswith('$')), None)
+    root_key_name = next((key for key in json_data.keys()
+                         if not key.startswith('$')), None)
     root_key_items = json_data[root_key_name]
-    root_key_items_sorted_by_id = sort_list_of_objects(root_key_items, root_key_name)
+    root_key_items_sorted_by_id = sort_list_of_objects(
+        root_key_items, root_key_name)
     return root_key_name, root_key_items_sorted_by_id
 
 
@@ -187,7 +192,8 @@ def split_objects_by_property(key_name: str, objects_to_split: list, property_na
 
 def remove_objects_by_property(key_name: str, all_objects: list, property_name: str,
                                property_value: str) -> dict:
-    objects_to_remove = filter_objects_by_property_value(all_objects, property_name, property_value)
+    objects_to_remove = filter_objects_by_property_value(
+        all_objects, property_name, property_value)
     return {
         key_name: [obj for obj in all_objects if obj not in objects_to_remove]
     }
@@ -196,15 +202,18 @@ def remove_objects_by_property(key_name: str, all_objects: list, property_name: 
 def copy_objects_by_property(key_name: str, all_objects: list, property_name: str,
                              property_value: str) -> dict:
     return {
-        key_name: filter_objects_by_property_value(all_objects, property_name, property_value)
+        key_name: filter_objects_by_property_value(
+            all_objects, property_name, property_value)
     }
 
 
 def update_property_for_objects(key_name: str, all_objects: list, property_name: str, current_property_value: str,
                                 new_property_value: str) -> dict:
-    objects_to_update = add_missing_property_to_objects(all_objects, property_name)
+    objects_to_update = add_missing_property_to_objects(
+        all_objects, property_name)
     if current_property_value:
-        objects_to_update = filter_objects_by_property_value(all_objects, property_name, current_property_value)
+        objects_to_update = filter_objects_by_property_value(
+            all_objects, property_name, current_property_value)
 
     updated_objects = [set_object_property(obj, property_name, new_property_value) if
                        obj in objects_to_update else obj for obj in all_objects]
@@ -270,11 +279,13 @@ def create_new_objects(root_key_name: str, number_of_objects: int, id_prefix: st
 
 def check_for_duplicated_ids(objects_to_check: list):
     property_name = 'id'
-    property_values_counter = Counter([obj[property_name] for obj in objects_to_check])
+    property_values_counter = Counter(
+        [obj[property_name] for obj in objects_to_check])
     duplicates = [property_value for property_value in property_values_counter if
                   property_values_counter[property_value] > 1]
     if duplicates:
-        raise ValueError(f'Found duplicated values for the {property_name} property: {", ".join(duplicates)}')
+        raise ValueError(
+            f'Found duplicated values for the {property_name} property: {", ".join(duplicates)}')
 
 
 def validate_against_schema(config_file_path: Path, schema_path: Path):
@@ -286,17 +297,21 @@ def validate_against_schema(config_file_path: Path, schema_path: Path):
 def check_for_broken_id_references(builds_objects: list, sources_objects: list, docs_objects: list):
     source_ids = [source['id'] for source in sources_objects]
     referenced_source_ids = [build['srcId'] for build in builds_objects]
-    refs_to_missing_sources = [id for id in referenced_source_ids if id not in source_ids]
+    refs_to_missing_sources = [
+        id for id in referenced_source_ids if id not in source_ids]
 
     doc_ids = [doc['id'] for doc in docs_objects]
     referenced_doc_ids = [build['docId'] for build in builds_objects]
-    refs_to_missing_docs = [id for id in referenced_doc_ids if id not in doc_ids]
+    refs_to_missing_docs = [
+        id for id in referenced_doc_ids if id not in doc_ids]
 
     error_messages = []
     if refs_to_missing_sources:
-        error_messages.append(f'Found builds that reference missing source IDs: {", ".join(refs_to_missing_sources)}')
+        error_messages.append(
+            f'Found builds that reference missing source IDs: {", ".join(refs_to_missing_sources)}')
     if refs_to_missing_docs:
-        error_messages.append(f'Found builds that reference missing doc IDs: {", ".join(refs_to_missing_docs)}')
+        error_messages.append(
+            f'Found builds that reference missing doc IDs: {", ".join(refs_to_missing_docs)}')
 
     if error_messages:
         raise ValueError(f'{os.linesep}{os.linesep.join(error_messages)}')
@@ -342,7 +357,8 @@ def run_command(args: argparse.Namespace()):
         logger.info(
             f'Creating a new config file with {args.number_of_items} {args.type}.')
         file_name = create_file_name(f'{args.command}-{args.type}-new')
-        new_items = create_new_objects(args.type, args.number_of_items, args.id_prefix)
+        new_items = create_new_objects(
+            args.type, args.number_of_items, args.id_prefix)
         logger.info(f'Saving output to {out_dir / file_name}')
         save_json_file(out_dir / file_name, new_items)
 
@@ -357,22 +373,28 @@ def run_command(args: argparse.Namespace()):
         logger.info(
             f'Filtering items in {input_path} for the "{args.deploy_env}" environment.')
         file_name = 'config.json'
-        filtered_items = get_objects_for_deploy_env(prepare_input(), args.deploy_env)
+        filtered_items = get_objects_for_deploy_env(
+            prepare_input(), args.deploy_env)
         logger.info(f'Saving output to {out_dir / file_name}')
-        save_json_file(out_dir / file_name, filtered_items, add_schema_ref=False)
+        save_json_file(out_dir / file_name, filtered_items,
+                       add_schema_ref=False)
 
     def run_split_command():
         root_key_name, root_key_objects = prepare_input()
         if args.chunk_size:
-            logger.info(f'Splitting "{input_path}" into chunks of {args.chunk_size}.')
-            chunked_items = split_objects_into_chunks(root_key_name, root_key_objects, args.chunk_size)
+            logger.info(
+                f'Splitting "{input_path}" into chunks of {args.chunk_size}.')
+            chunked_items = split_objects_into_chunks(
+                root_key_name, root_key_objects, args.chunk_size)
             for chunk_number, chunk in enumerate(chunked_items):
-                file_name = create_file_name(f'{args.command}-chunk-{chunk_number}')
+                file_name = create_file_name(
+                    f'{args.command}-chunk-{chunk_number}')
                 logger.info(f'Saving output to {out_dir / file_name}')
                 save_json_file(out_dir / file_name, chunk)
         elif args.prop_name:
             logger.info(f'Splitting "{input_path}" by "{args.prop_name}".')
-            split_items = split_objects_by_property(root_key_name, root_key_objects, args.prop_name)
+            split_items = split_objects_by_property(
+                root_key_name, root_key_objects, args.prop_name)
             for item in split_items:
                 file_name = create_file_name(
                     f'{args.command}-{item["property_name"].casefold()}-{item["property_value"].casefold()}')
@@ -384,7 +406,8 @@ def run_command(args: argparse.Namespace()):
             f'Removing items that have "{args.prop_name}" set to "{args.prop_value}" from "{input_path}".')
         cleaned_items = remove_objects_by_property(*prepare_input(), args.prop_name,
                                                    args.prop_value)
-        file_name = create_file_name(f'{args.command}-{args.prop_name}-{args.prop_value}')
+        file_name = create_file_name(
+            f'{args.command}-{args.prop_name}-{args.prop_value}')
         logger.info(f'Saving output to {out_dir / file_name}')
         save_json_file(out_dir / file_name, cleaned_items)
 
@@ -397,7 +420,8 @@ def run_command(args: argparse.Namespace()):
         else:
             logger.info(
                 f'Updating "{args.prop_name}" to "{args.new_prop_value}" in all items in "{input_path}".')
-            file_name = create_file_name(f'{args.command}-{args.prop_name}-{args.new_prop_value}-all')
+            file_name = create_file_name(
+                f'{args.command}-{args.prop_name}-{args.new_prop_value}-all')
 
         updated_items = update_property_for_objects(*prepare_input(),
                                                     args.prop_name,
@@ -410,21 +434,25 @@ def run_command(args: argparse.Namespace()):
         logger.info(
             f'Extracting items that have "{args.prop_name}" set to "{args.prop_value}" from "{input_path}".')
         root_key_name, root_key_objects = prepare_input()
-        extracted_items = copy_objects_by_property(root_key_name, root_key_objects, args.prop_name, args.prop_value)
+        extracted_items = copy_objects_by_property(
+            root_key_name, root_key_objects, args.prop_name, args.prop_value)
         updated_items = remove_objects_by_property(root_key_name, root_key_objects,
                                                    args.prop_name,
                                                    args.prop_value)
-        file_name_updated_items = create_file_name(f'{args.command}-removed-{args.prop_name}-{args.prop_value}')
+        file_name_updated_items = create_file_name(
+            f'{args.command}-removed-{args.prop_name}-{args.prop_value}')
         logger.info(f'Saving output to {out_dir / file_name_updated_items}')
         save_json_file(out_dir / file_name_updated_items, updated_items)
-        file_name_extracted_items = create_file_name(f'{args.command}-{args.prop_name}-{args.prop_value}')
+        file_name_extracted_items = create_file_name(
+            f'{args.command}-{args.prop_name}-{args.prop_value}')
         logger.info(f'Saving output to {out_dir / file_name_extracted_items}')
         save_json_file(out_dir / file_name_extracted_items, extracted_items)
 
     def run_clone_command():
         logger.info(
             f'Cloning items that have "{args.prop_name}" set to "{args.prop_value}" from "{input_path}" and updating the property value to "{args.new_prop_value}".')
-        file_name = create_file_name(f'{args.command}-{args.prop_name}-{args.prop_value}-to-{args.new_prop_value}')
+        file_name = create_file_name(
+            f'{args.command}-{args.prop_name}-{args.prop_value}-to-{args.new_prop_value}')
         root_key_name, root_key_objects = prepare_input()
         copied_items = copy_objects_by_property(root_key_name, root_key_objects, args.prop_name,
                                                 args.prop_value)
@@ -448,7 +476,8 @@ def run_command(args: argparse.Namespace()):
             _, sources_objects = prepare_input(args.sources_path)
             _, docs_objects = prepare_input(args.docs_path)
             logger.info(f'Checking for broken ID references.')
-            check_for_broken_id_references(root_key_objects, sources_objects, docs_objects)
+            check_for_broken_id_references(
+                root_key_objects, sources_objects, docs_objects)
             logger.info(f'OK')
 
     return {
@@ -475,9 +504,11 @@ def main():
     _parser_main_out_dir.add_argument('-o', '--out-dir', dest='out_dir', type=pathlib.Path,
                                       help='Path to a directory where the output files are saved.',
                                       default=f'{Path.cwd() / "out"}')
-    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    subparsers = parser.add_subparsers(help='Commands', dest='command', required=True)
+    subparsers = parser.add_subparsers(
+        help='Commands', dest='command', required=True)
     parser_create = subparsers.add_parser('create',
                                           help='Create a new config file',
                                           formatter_class=argparse.ArgumentDefaultsHelpFormatter,
@@ -565,7 +596,8 @@ def main():
     parser_test.add_argument('--docs-path', dest="docs_path", type=pathlib.Path,
                              help='Path to the docs config file. Required only for builds validation.')
     parser_test.add_argument('--schema-path', dest="schema_path", type=pathlib.Path,
-                             default=Path(__file__).parent / 'config-schema.json',
+                             default=Path(__file__).parent /
+                             'config-schema.json',
                              help='Path to the JSON schema file against which config files are validated.')
 
     cli_args = parser.parse_args()
