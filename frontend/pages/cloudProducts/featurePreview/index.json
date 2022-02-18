@@ -35,8 +35,12 @@
           "id": "cloudratingdraft"
         },
         {
-          "label": "Data Studio",
+          "label": "Data Studio (Draft)",
           "id": "datastudiodraft"
+        },
+        {
+          "label": "Data Studio (Release)",
+          "id": "datastudiorelease"
         },
         {
           "label": "Cloud Console Root Doc Early Access",

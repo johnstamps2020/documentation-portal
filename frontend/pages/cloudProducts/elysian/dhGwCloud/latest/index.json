@@ -81,8 +81,12 @@
           "id": "dhclouddevrefdraft"
         },
         {
-          "label": "Data Studio Query Guide",
+          "label": "Data Studio Query Guide (Draft)",
           "id": "dhqueryguidedraft"
+        },
+        {
+          "label": "Data Studio Query Guide (Release)",
+          "id": "dhqueryguiderelease"
         }
       ]
     }

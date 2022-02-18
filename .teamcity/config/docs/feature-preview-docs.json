@@ -77,10 +77,26 @@
         "product": ["Data Studio"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Dobson"],
+        "release": ["Elysian"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false
+    },
+    {
+      "id": "datastudiorelease",
+      "title": "Data Studio",
+      "url": "cloud/datastudio/app",
+      "metadata": {
+        "product": ["Data Studio"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
