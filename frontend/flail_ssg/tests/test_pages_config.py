@@ -9,7 +9,7 @@ import pytest
 
 import flail_ssg.validator
 from flail_ssg.generator import generate_search_filters
-from flail_ssg.preprocessor import clean_pages, filter_by_env, find_refs_to_empty_or_non_existent_pages, process_pages, \
+from flail_ssg.preprocessor import clean_pages, filter_by_env, remove_refs_to_empty_and_non_existent_pages, process_pages, \
     remove_empty_dirs, remove_items_with_empty_child_items, remove_page_dirs
 from flail_ssg.validator import DocIdNotFoundError, PageNotFoundError, run_validator, validate_env_settings, \
     validate_page
@@ -370,7 +370,7 @@ def test_removing_refs_to_empty_pages():
             if input_file.relative_to(input_dir) == expected_file.relative_to(expected_dir):
                 input_file_items = load_json_file(input_file)['items']
                 expected_file_items = load_json_file(expected_file)['items']
-                items_with_no_refs_to_empty_pages, empty_pages_to_remove = find_refs_to_empty_or_non_existent_pages(
+                items_with_no_refs_to_empty_pages, empty_pages_to_remove = remove_refs_to_empty_and_non_existent_pages(
                     input_file.parent, input_file_items)
                 all_pages_to_remove += empty_pages_to_remove
                 assert items_with_no_refs_to_empty_pages == expected_file_items

@@ -15,11 +15,12 @@ def include_item(env: str, item_envs: list) -> bool:
 
 
 def page_has_items(index_file: Path) -> bool:
-    if not index_file.exists():
-        return False
-    page_config = load_json_file(index_file)
-    page_items = page_config.json_object.get('items')
-    return bool(page_items)
+    if index_file.exists():
+        page_config = load_json_file(index_file)
+        page_items = page_config.json_object.get('items')
+        return bool(page_items)
+
+    return False
 
 
 def filter_by_env(deploy_env: str, current_page_dir: Path, items: list, docs: list) -> Tuple[list, list]:
@@ -66,7 +67,7 @@ def filter_by_env(deploy_env: str, current_page_dir: Path, items: list, docs: li
     return filtered_items, filtered_pages_to_remove
 
 
-def find_refs_to_empty_or_non_existent_pages(current_page_dir: Path, items: list) -> Tuple[list, list]:
+def remove_refs_to_empty_and_non_existent_pages(current_page_dir: Path, items: list) -> Tuple[list, list]:
     updated_items = []
     empty_pages_to_remove = []
     for item in items:
@@ -82,7 +83,7 @@ def find_refs_to_empty_or_non_existent_pages(current_page_dir: Path, items: list
             updated_items.append(item)
         inner_items = item.get('items')
         if inner_items:
-            updated_inner_items, inner_empty_pages_to_remove = find_refs_to_empty_or_non_existent_pages(
+            updated_inner_items, inner_empty_pages_to_remove = remove_refs_to_empty_and_non_existent_pages(
                 current_page_dir,
                 inner_items)
             item['items'] = updated_inner_items
@@ -90,7 +91,7 @@ def find_refs_to_empty_or_non_existent_pages(current_page_dir: Path, items: list
     return updated_items, empty_pages_to_remove
 
 
-def find_empty_or_non_existent_pages(root_path: Path) -> list[Path]:
+def find_empty_and_non_existent_pages(root_path: Path) -> list[Path]:
     return [index_json_file for index_json_file in root_path.rglob('*.json') if not page_has_items(index_json_file)]
 
 
@@ -110,7 +111,7 @@ def remove_items_with_empty_child_items(items: list) -> list:
     return updated_items
 
 
-def remove_duplicated_paths(paths: list[Path]) -> list:
+def resolve_paths_and_remove_duplicates(paths: list[Path]) -> list:
     return list({path.resolve() for path in paths})
 
 
@@ -214,40 +215,35 @@ def process_page(index_file: Path, deploy_env: str, docs: list, send_bouncer_hom
 
 def process_pages(root_path: Path, deploy_env: str, docs: list, send_bouncer_home: bool):
     def get_page_refs_from_items(page_dir: Path, items: list[dict]):
-        page_refs = []
+        page_refs = [page_dir / item['page'] for item in items if item.get('page')]
         for item in items:
-            page_ref = item.get('page')
-            if page_ref:
-                page_refs.append(page_dir / page_ref)
             inner_items = item.get('items')
             if inner_items:
-                inner_page_refs = get_page_refs_from_items(page_dir, inner_items)
-                page_refs += inner_page_refs
+                page_refs += get_page_refs_from_items(page_dir, inner_items)
 
         return page_refs
 
-    # This function removes page dirs
-    # because the env property applies to the entire page dir, not only the page config file
-    included_page_refs_from_all_pages = []
+    page_refs_from_all_pages = []
     filtered_pages_to_remove_from_all_pages = []
     for index_json_file in root_path.rglob('*.json'):
         _preprocessor_logger.info(f'Processing page {index_json_file}')
         filtered_items, filtered_pages_to_remove = process_page(index_json_file, deploy_env, docs,
                                                                 send_bouncer_home)
         page_config_dir = index_json_file.parent
-        included_page_refs_from_all_pages += get_page_refs_from_items(page_config_dir, filtered_items)
+        page_refs_from_all_pages += get_page_refs_from_items(page_config_dir, filtered_items)
         filtered_pages_to_remove_from_all_pages += filtered_pages_to_remove
 
-    unique_all_page_refs = remove_duplicated_paths(included_page_refs_from_all_pages)
-    unique_filtered_pages_to_remove = remove_duplicated_paths(filtered_pages_to_remove_from_all_pages)
+    unique_page_refs = resolve_paths_and_remove_duplicates(page_refs_from_all_pages)
+    unique_filtered_pages_to_remove = resolve_paths_and_remove_duplicates(filtered_pages_to_remove_from_all_pages)
     filtered_pages_safe_for_removal = [page for page in unique_filtered_pages_to_remove if
-                                       page not in unique_all_page_refs]
+                                       page not in unique_page_refs]
     filtered_pages_not_safe_for_removal = [page for page in unique_filtered_pages_to_remove if
-                                           page in unique_all_page_refs]
-    _preprocessor_logger.info(f'Page directories referenced from multiple configs that cannot be removed'
+                                           page in unique_page_refs]
+    _preprocessor_logger.info(f'Filtered page directories referenced from multiple configs that cannot be removed'
                               f'\nNumber of items: {len(filtered_pages_not_safe_for_removal)}')
     for i, page_not_for_removal in enumerate(filtered_pages_not_safe_for_removal, start=1):
         _preprocessor_logger.info(f'\t{i} {page_not_for_removal}')
+
     removed_dirs, failed_removals = remove_page_dirs(filtered_pages_safe_for_removal)
     log_remove_operation_result(removed_dirs, failed_removals, 'Finished removing filtered out page directories')
 
@@ -258,7 +254,7 @@ def clean_page(index_file: Path, send_bouncer_home: bool) -> list[Path]:
     all_empty_pages_to_remove = []
     try:
         page_items = page_config.json_object.get('items', [])
-        items_with_no_refs_to_empty_pages, empty_pages_to_remove = find_refs_to_empty_or_non_existent_pages(
+        items_with_no_refs_to_empty_pages, empty_pages_to_remove = remove_refs_to_empty_and_non_existent_pages(
             page_config.dir, page_items)
         items_with_no_empty_child_items = remove_items_with_empty_child_items(items_with_no_refs_to_empty_pages)
         cleaned_page_config.json_object['items'] = items_with_no_empty_child_items
@@ -267,7 +263,7 @@ def clean_page(index_file: Path, send_bouncer_home: bool) -> list[Path]:
         selector = page_config.json_object.get('selector')
         if selector:
             selector_items = selector.get('items', [])
-            selector_items_with_no_refs_to_empty_pages, empty_selector_pages_to_remove = find_refs_to_empty_or_non_existent_pages(
+            selector_items_with_no_refs_to_empty_pages, empty_selector_pages_to_remove = remove_refs_to_empty_and_non_existent_pages(
                 page_config.dir, selector_items)
             selector_items_with_no_empty_child_items = remove_items_with_empty_child_items(
                 selector_items_with_no_refs_to_empty_pages)
@@ -298,15 +294,15 @@ def clean_pages(root_path: Path, send_bouncer_home: bool):
         _preprocessor_logger.info(f'Cleaning page {index_json_file}')
         empty_pages_to_remove += clean_page(index_json_file, send_bouncer_home)
 
-    unique_empty_pages_to_remove = remove_duplicated_paths(empty_pages_to_remove)
+    unique_empty_pages_to_remove = resolve_paths_and_remove_duplicates(empty_pages_to_remove)
     removed_configs_with_links, failed_removals_configs_with_links = remove_page_configs(unique_empty_pages_to_remove)
     log_remove_operation_result(removed_configs_with_links, failed_removals_configs_with_links,
                                 'Finished removing linked empty pages')
     # Step 2
-    pages_with_empty_items = find_empty_or_non_existent_pages(root_path)
-    unique_pages_with_empty_items = remove_duplicated_paths(pages_with_empty_items)
+    empty_and_non_existent_pages = find_empty_and_non_existent_pages(root_path)
+    unique_empty_and_non_existent_pages = resolve_paths_and_remove_duplicates(empty_and_non_existent_pages)
     removed_configs_with_no_links, failed_removals_configs_with_no_links = remove_page_configs(
-        remove_duplicated_paths(unique_pages_with_empty_items))
+        unique_empty_and_non_existent_pages)
     log_remove_operation_result(removed_configs_with_no_links, failed_removals_configs_with_no_links,
                                 'Finished removing empty pages not linked from anywhere')
 
