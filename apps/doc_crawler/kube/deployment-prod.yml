@@ -103,7 +103,7 @@ spec:
       port: 9300
       protocol: TCP
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   namespace: doctools
@@ -114,9 +114,12 @@ spec:
       http:
         paths:
           - backend:
-              serviceName: docsearch-${DEPLOY_ENV}
-              servicePort: 9200
+              service:
+                name: docsearch-${DEPLOY_ENV}
+                port:
+                  number: 9200
             path: /
+            pathType: Prefix
 ---
 apiVersion: v1
 kind: Service
@@ -162,7 +165,7 @@ spec:
           ports:
             - containerPort: 5601
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   namespace: doctools
@@ -173,6 +176,9 @@ spec:
       http:
         paths:
           - backend:
-              serviceName: kibana-doctools-${DEPLOY_ENV}
-              servicePort: 5601
+              service:
+                name: kibana-doctools-${DEPLOY_ENV}
+                port:
+                  number: 5601
             path: /
+            pathType: Prefix
