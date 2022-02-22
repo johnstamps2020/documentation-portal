@@ -16,8 +16,9 @@ flail_ssg = "flail_ssg.main:main"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-jinja2 = "^2.11.3"
 jsonschema = "^3.2.0"
+jinja2 = "2.11.3"
+MarkupSafe = "2.0.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.2"
