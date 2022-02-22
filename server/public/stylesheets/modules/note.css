@@ -1,0 +1,32 @@
+.note {
+  padding: 0.25rem 1rem;
+  margin: 15px auto;
+  border-radius: 16px;
+  box-shadow: var(--GW-BOX-SHADOW-DIAGONAL-3);
+}
+
+.note_note {
+  box-shadow: none;
+  padding: 0 1rem;
+}
+
+.note_note .note__title {
+  text-transform: none;
+}
+
+.note_important {
+  border-left: 5px solid #e6a700;
+  background-color: #fff8ef;
+}
+
+.note_warning {
+  border-left: 5px solid #e13238;
+  background-color: #ffebec;
+}
+
+span.note__title {
+  display: inline;
+  font-size: 1.25rem;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+}

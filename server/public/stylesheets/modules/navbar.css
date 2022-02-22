@@ -1,5 +1,5 @@
 .navbar {
-  --navbar-button-size: 20px;
+  --navbar-button-size: 24px;
   --navbar-gap: 16px;
   --navbar-button-disabled-opacity: 0.4;
   grid-area: navbar;
@@ -46,7 +46,7 @@
 }
 
 .crumb {
-  font-size: 15px;
+  font-size: 1rem;
   color: rgb(40, 51, 63);
 }
 
