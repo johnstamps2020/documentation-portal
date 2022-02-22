@@ -1,0 +1,46 @@
+footer {
+  grid-area: footer;
+  height: var(--footer-height);
+  background-color: var(--clr-GW-HEADER-FOOTER-BKG);
+  color: white;
+  padding: 16px 32px;
+  font-size: 0.625rem;
+}
+
+.footerContents {
+  display: flex;
+}
+
+#footerLeft {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#footerCenter {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#footerRight {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+footer a {
+  display: block;
+  font-size: 0.875rem;
+  color: hsl(0, 0%, 100%);
+  font-weight: 600;
+}
+
+footer .releaseInfo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

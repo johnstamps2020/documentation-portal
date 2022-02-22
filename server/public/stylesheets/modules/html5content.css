@@ -6,22 +6,23 @@ h5,
 h6,
 .sectiontitle {
   font-weight: 500 !important;
-  padding-top: 16px;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 h1.topictitle1,
 h1.sectiontitle {
-  font-size: 36px;
+  font-size: 2.25rem;
 }
 
 h2.topictitle2,
 h2.sectiontitle {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 h3.topictitle3,
 h3.sectiontitle {
-  font-size: 24px;
+  font-size: 1.25rem;
 }
 
 h4.topictitle4,
@@ -30,7 +31,7 @@ h5.topictitle5,
 h5.sectiontitle,
 h6.topictitle6,
 h6.sectiontitle {
-  font-size: 20px;
+  font-size: 1.125rem;
   font-weight: 500;
   font-style: normal;
 }
@@ -48,8 +49,14 @@ a:active {
   color: var(--GW-COLOR-LINK-1-ACTIVE);
 }
 
+dl ul,
+dl ol {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
 .dt.dlterm {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .dd {
@@ -57,37 +64,12 @@ a:active {
   margin-left: 40px;
 }
 
-.note {
-  padding: 0.25rem 1rem;
-  margin: 15px auto;
-  border-radius: 16px;
-  box-shadow: var(--GW-BOX-SHADOW-DIAGONAL-3);
+.p > ul {
+  margin-top: 0.25rem;
 }
 
-.note_note {
-  box-shadow: none;
-  padding: 0 1rem;
-}
-
-.note_note .note__title {
-  text-transform: none;
-}
-
-.note_important {
-  border-left: 5px solid #e6a700;
-  background-color: #fff8ef;
-}
-
-.note_warning {
-  border-left: 5px solid #e13238;
-  background-color: #ffebec;
-}
-
-span.note__title {
-  display: inline;
-  font-size: 1.25rem;
-  font-weight: 600 !important;
-  text-transform: uppercase;
+.p > ul:last-child {
+  margin-bottom: 0.25rem;
 }
 
 ul.col2 {
@@ -118,12 +100,6 @@ strong {
 .varname {
   word-break: keep-all;
   font-style: italic;
-}
-
-dl ul,
-dl ol {
-  margin-block-start: 0;
-  margin-block-end: 0;
 }
 
 .ph.yes-in-table {
@@ -157,6 +133,10 @@ iframe {
 
 .p > *:last-child {
   margin-bottom: 0;
+}
+
+.p + .ul {
+  margin-top: 0.5rem;
 }
 
 .stepexpand {

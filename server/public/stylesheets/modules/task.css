@@ -1,0 +1,12 @@
+.tasklabel {
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+h4.sectiontitle.tasklabel {
+  font-weight: 600 !important;
+}
+
+ol.steps {
+  margin-top: 0.25rem;
+}
