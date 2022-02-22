@@ -96,7 +96,7 @@
         "release": ["Elysian"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
