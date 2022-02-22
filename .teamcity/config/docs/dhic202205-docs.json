@@ -15,7 +15,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dhrn202205",
@@ -31,7 +32,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dhproduct202205",
@@ -47,7 +49,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dhinstall202205",
@@ -63,7 +66,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dhupgrade202205",
@@ -79,7 +83,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dhconfig202205",
@@ -95,7 +100,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dhdataspec202205",
@@ -111,7 +117,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dhadmin202205",
@@ -127,7 +134,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "dhdevref202205",
@@ -143,7 +151,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "icrn202205",
@@ -159,7 +168,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "icproduct202205",
@@ -175,7 +185,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "icinstall202205",
@@ -191,7 +202,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "icupgrade202205",
@@ -207,7 +219,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "icconfig202205",
@@ -223,7 +236,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "icdataspec202205",
@@ -239,7 +253,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "icadmin202205",
@@ -255,7 +270,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "icbiapp202205",
@@ -271,7 +287,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "icreports202205",
@@ -287,7 +304,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "icdevref202205",
@@ -303,7 +321,8 @@
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     }
   ]
 }
