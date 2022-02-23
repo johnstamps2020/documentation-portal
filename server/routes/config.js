@@ -7,6 +7,8 @@ const {
   getDocumentMetadata,
   getDocId,
 } = require('../controllers/configController');
+const ejs = require('ejs');
+const fs = require('fs');
 
 router.get('/', async function(req, res) {
   const config = await getConfig(req);
@@ -23,6 +25,20 @@ router.get('/versionSelectors', async function(req, res) {
   const { docId } = req.query;
   const allVersions = await getVersionSelector(docId, req);
   res.send(allVersions);
+});
+
+router.get('/versionSelectors/component', async function(req, res) {
+  const { docId } = req.query;
+  const selectorObject = await getVersionSelector(docId, req);
+  const allVersions = selectorObject.matchingVersionSelector.allVersions;
+  const versionSelectorTemplate = fs.readFileSync(
+    `${__dirname}/../views/parts/version-selector.ejs`,
+    { encoding: 'utf-8' }
+  );
+  const versionSelectorComponent = ejs.render(versionSelectorTemplate, {
+    allVersions: allVersions,
+  });
+  res.send(versionSelectorComponent);
 });
 
 router.get('/docMetadata/:docId', async function(req, res) {
