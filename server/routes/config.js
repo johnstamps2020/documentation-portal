@@ -5,6 +5,7 @@ const {
   getRootBreadcrumb,
   getVersionSelector,
   getDocumentMetadata,
+  getDocId,
 } = require('../controllers/configController');
 
 router.get('/', async function(req, res) {
@@ -19,21 +20,21 @@ router.get('/breadcrumbs', async function(req, res) {
 });
 
 router.get('/versionSelectors', async function(req, res) {
-  const { platform, product, version, title } = req.query;
-  const otherVersions = await getVersionSelector(
-    platform,
-    product,
-    version,
-    title,
-    req
-  );
-  res.send(otherVersions);
+  const { docId } = req.query;
+  const allVersions = await getVersionSelector(docId, req);
+  res.send(allVersions);
 });
 
 router.get('/docMetadata/:docId', async function(req, res) {
   const { docId } = req.params;
   const docMetadata = await getDocumentMetadata(docId, req);
   res.send(docMetadata);
+});
+
+router.get('/docId', async function(req, res) {
+  const { platforms, products, versions, title, url } = req.query;
+  const docId = await getDocId(products, platforms, versions, title, url, req);
+  res.send(docId);
 });
 
 module.exports = router;

@@ -1,48 +1,44 @@
+async function findBestMatchingTopic(searchQuery, targetDocVersion) {
+  try {
+    const baseUrl = window.location.protocol + '//' + window.location.host;
+    const searchUrl = new URL('/search', baseUrl);
+    searchUrl.searchParams.append('rawJSON', 'true');
+    searchUrl.searchParams.append('q', `${searchQuery}`);
+    searchUrl.searchParams.append('product', `${window.docProduct}`);
+    searchUrl.searchParams.append('version', `${targetDocVersion}`);
+    if (window.docTitle) {
+      searchUrl.searchParams.append('title', `${window.docTitle}`);
+    }
+    const response = await fetch(searchUrl.href);
+    const responseBody = await response.json();
+    return responseBody[0]?.href;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+}
+
 export async function addVersionSelector() {
   try {
     const matchingVersionSelector = window.matchingVersionSelector;
-    if (matchingVersionSelector?.otherVersions?.length > 0) {
-      const currentlySelectedVersion = {
-        label: matchingVersionSelector.version,
-        currentlySelected: true,
-      };
-      const allVersions = [
-        currentlySelectedVersion,
-        ...matchingVersionSelector.otherVersions,
-      ];
-      const sortedVersions = allVersions
-        .sort(function(a, b) {
-          const verNum = label =>
-            label
-              .split('.')
-              .map(n => +n + 100000)
-              .join('.');
-          const verNumA = verNum(a.label);
-          const verNumB = verNum(b.label);
-          let comparison = 0;
-          if (verNumA > verNumB) {
-            comparison = 1;
-          } else if (verNumA < verNumB) {
-            comparison = -1;
-          }
-          return comparison;
-        })
-        .reverse();
+    if (Object.keys(matchingVersionSelector).length > 0) {
+      const allVersions = matchingVersionSelector.allVersions;
       const select = document.createElement('select');
       select.id = 'versionSelector';
       select.onchange = async function(e) {
         let linkToOpen = document.getElementById('versionSelector').value;
-        const isTopic = document.querySelector("meta[name = 'wh-toc-id']");
-        if (isTopic) {
+        const mainElement = document.querySelector('main');
+        if (mainElement) {
           const topicTitle = document.querySelector('head > title')
             ?.textContent;
-          const topicDesc = document.querySelector("meta[name = 'description']")
-            ?.content;
+          const topicContents = mainElement.innerText
+            .replace(/[\n\r\t]+|[\s]{2,}/g, ' ')
+            .trim()
+            .split('.')[0];
           const targetDocVersion =
             e.target.options[e.target.selectedIndex].innerHTML;
-          const searchQuery = [topicTitle, topicDesc].filter(Boolean).join(' ');
           const bestMatchingTopic = await findBestMatchingTopic(
-            searchQuery,
+            topicContents,
             targetDocVersion
           );
           if (bestMatchingTopic) {
@@ -62,13 +58,11 @@ export async function addVersionSelector() {
         window.location.assign(linkToOpen);
       };
 
-      for (const val of sortedVersions) {
+      for (const val of allVersions) {
         const option = document.createElement('option');
-        option.text = val.label;
-        const value = val.fallbackPaths ? val.fallbackPaths[0] : val.path;
-        if (value) {
-          option.value = value;
-        }
+        option.text = val.versions[0];
+        option.label = val.label;
+        option.value = `/${val.url}`;
         if (val.currentlySelected) {
           option.setAttribute('selected', 'selected');
         }

@@ -105,41 +105,23 @@ async function createVersionSelector() {
     if (!docProduct) {
       return null;
     }
-
-    const response = await fetch(
-      `/safeConfig/versionSelectors?platform=${docPlatform}&product=${docProduct}&version=${docVersion}${
-        docTitle ? `&title=${docTitle}` : ''
-      }`
-    );
+    let docId = document
+      .querySelector('[name="gw-doc-id"]')
+      ?.getAttribute('content');
+    if (docId == null) {
+      const docIdResponse = await fetch(
+        `/safeConfig/docId?platforms=${docPlatform}&products=${docProduct}&versions=${docVersion}&url=${topicId}${
+          docTitle ? `&title=${docTitle}` : ''
+        }`
+      );
+      const docIdResponseJson = await docIdResponse.json();
+      docId = docIdResponseJson.docId;
+    }
+    const response = await fetch(`/safeConfig/versionSelectors?docId=${docId}`);
     const jsonResponse = await response.json();
     const matchingVersionSelector = jsonResponse.matchingVersionSelector;
-    if (matchingVersionSelector?.otherVersions.length > 0) {
-      const currentlySelectedVersion = {
-        label: matchingVersionSelector.version,
-        currentlySelected: true,
-      };
-      const allVersions = [
-        currentlySelectedVersion,
-        ...matchingVersionSelector.otherVersions,
-      ];
-      const sortedVersions = allVersions
-        .sort(function(a, b) {
-          const verNum = label =>
-            label
-              .split('.')
-              .map(n => +n + 100000)
-              .join('.');
-          const verNumA = verNum(a.label);
-          const verNumB = verNum(b.label);
-          let comparison = 0;
-          if (verNumA > verNumB) {
-            comparison = 1;
-          } else if (verNumA < verNumB) {
-            comparison = -1;
-          }
-          return comparison;
-        })
-        .reverse();
+    if (Object.keys(matchingVersionSelector).length > 0) {
+      const allVersions = matchingVersionSelector.allVersions;
       const select = document.createElement('select');
       select.id = 'versionSelector';
       select.onchange = async function(e) {
@@ -174,13 +156,11 @@ async function createVersionSelector() {
         window.location.assign(linkToOpen);
       };
 
-      for (const val of sortedVersions) {
+      for (const val of allVersions) {
         const option = document.createElement('option');
-        option.text = val.label;
-        const value = val.fallbackPaths ? val.fallbackPaths[0] : val.path;
-        if (value) {
-          option.value = value;
-        }
+        option.text = val.versions[0];
+        option.label = val.label;
+        option.value = `/${val.url}`;
         if (val.currentlySelected) {
           option.setAttribute('selected', 'selected');
         }

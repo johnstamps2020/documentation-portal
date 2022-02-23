@@ -178,7 +178,7 @@
       "id": "cloudbcupgradeguide202005",
       "title": "BillingCenter Upgrade Guide",
       "url": "cloud/bc/upgrade/202005",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
@@ -194,7 +194,7 @@
       "id": "cloudccupgradeguide202005",
       "title": "ClaimCenter Upgrade Guide",
       "url": "cloud/cc/upgrade/202005",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
@@ -210,7 +210,7 @@
       "id": "cloudpcupgradeguide202005",
       "title": "PolicyCenter Upgrade Guide",
       "url": "cloud/pc/upgrade/202005",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
@@ -354,7 +354,7 @@
       "id": "selfmanagedbcupgradeguide1020",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/1020",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
@@ -369,7 +369,7 @@
       "id": "selfmanagedccupgradeguide1020",
       "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/1020",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
@@ -384,7 +384,7 @@
       "id": "selfmanagedpcupgradeguide1020",
       "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/1020",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
@@ -399,7 +399,7 @@
       "id": "selfmanagedbcupgradeguide1012",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/1012",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
@@ -414,7 +414,7 @@
       "id": "selfmanagedccupgradeguide1012",
       "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/1012",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
@@ -429,7 +429,7 @@
       "id": "selfmanagedpcupgradeguide1012",
       "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/1012",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
@@ -444,7 +444,7 @@
       "id": "selfmanagedbcupgradeguide1011",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/1011",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
@@ -459,7 +459,7 @@
       "id": "selfmanagedccupgradeguide1011",
       "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/1011",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
@@ -474,7 +474,7 @@
       "id": "selfmanagedpcupgradeguide1011",
       "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/1011",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
@@ -489,7 +489,7 @@
       "id": "selfmanagedbcupgradeguide1010",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/1010",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
@@ -504,7 +504,7 @@
       "id": "selfmanagedccupgradeguide1010",
       "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/1010",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
@@ -519,7 +519,7 @@
       "id": "selfmanagedpcupgradeguide1010",
       "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/1010",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
@@ -804,7 +804,7 @@
       "id": "selfmanagedbcupgradetoolsqwertyui",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/1440",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
@@ -819,7 +819,7 @@
       "id": "selfmanagedccupgradetoolsqwertyui",
       "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/1440",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
@@ -834,7 +834,7 @@
       "id": "selfmanagedpcupgradetoolsqwertyui",
       "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/1440",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
@@ -849,7 +849,7 @@
       "id": "selfmanagedbcupgradetools1450",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/1450",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
@@ -864,7 +864,7 @@
       "id": "selfmanagedccupgradetools1450",
       "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/1450",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
@@ -879,7 +879,7 @@
       "id": "selfmanagedpcupgradetools1450",
       "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/1450",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
@@ -1788,7 +1788,7 @@
       "id": "selfmanagedbcupgradetoolspiteqdgk",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/230",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
@@ -1803,7 +1803,7 @@
       "id": "selfmanagedccupgradetoolspiteqdgk",
       "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/230",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
@@ -1818,7 +1818,7 @@
       "id": "selfmanagedpcupgradetoolspiteqdgk",
       "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/230",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
