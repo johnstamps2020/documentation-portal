@@ -30,15 +30,19 @@ router.get('/versionSelectors', async function(req, res) {
 router.get('/versionSelectors/component', async function(req, res) {
   const { docId } = req.query;
   const selectorObject = await getVersionSelector(docId, req);
-  const allVersions = selectorObject.matchingVersionSelector.allVersions;
-  const versionSelectorTemplate = fs.readFileSync(
-    `${__dirname}/../views/parts/version-selector.ejs`,
-    { encoding: 'utf-8' }
-  );
-  const versionSelectorComponent = ejs.render(versionSelectorTemplate, {
-    allVersions: allVersions,
-  });
-  res.send(versionSelectorComponent);
+  const allVersions = selectorObject.matchingVersionSelector?.allVersions;
+  if (!allVersions || allVersions.length === 0) {
+    res.send(undefined);
+  } else {
+    const versionSelectorTemplate = fs.readFileSync(
+      `${__dirname}/../views/parts/version-selector.ejs`,
+      { encoding: 'utf-8' }
+    );
+    const versionSelectorComponent = ejs.render(versionSelectorTemplate, {
+      allVersions: allVersions,
+    });
+    res.send(versionSelectorComponent);
+  }
 });
 
 router.get('/docMetadata/:docId', async function(req, res) {
