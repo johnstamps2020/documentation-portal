@@ -71,7 +71,7 @@
     },
     {
       "id": "datastudiodraft",
-      "title": "Data Studio",
+      "title": "Data Studio Draft",
       "url": "cloud/datastudio/app",
       "metadata": {
         "product": ["Data Studio"],
@@ -88,7 +88,7 @@
     },
     {
       "id": "datastudiorelease",
-      "title": "Data Studio",
+      "title": "Data Studio Release",
       "url": "cloud/datastudio/app",
       "metadata": {
         "product": ["Data Studio"],
