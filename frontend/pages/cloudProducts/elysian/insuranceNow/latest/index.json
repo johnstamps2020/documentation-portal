@@ -137,10 +137,6 @@
           "id": "indevguidejava11ext"
         },
         {
-          "label": "Payment Service Migration (Internal)",
-          "id": "inpaymentservicemigrationdraft"
-        },
-        {
           "label": "Upgrade Tools (Internal)",
           "id": "inupgradetoolsdraft"
         }
