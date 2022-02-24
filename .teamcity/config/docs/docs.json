@@ -7109,23 +7109,6 @@
       "internal": false
     },
     {
-      "id": "inpaymentservicemigrationdraft",
-      "title": "Payment Service Migration Draft",
-      "url": "cloud/in/paymentservicemigration",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2", "2021.1", "2020.2"],
-        "subject": ["Release notes"],
-        "release": ["Banff", "Cortina", "Dobson"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
       "id": "in20211app",
       "title": "Application Guide",
       "url": "cloud/in/20211/app",
