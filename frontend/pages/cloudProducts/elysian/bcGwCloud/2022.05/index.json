@@ -43,10 +43,6 @@
           "label": "REST API Client Release Notes",
           "id": "isrestapiclientrn",
           "env": ["staging"]
-        },
-        {
-          "label": "The Guidewire Testing Framework Release Notes",
-          "id": "testingframeworksrnelysian"
         }
       ]
     },
@@ -233,14 +229,6 @@
         {
           "label": "GUnit Testing",
           "id": "isbc202205testing"
-        },
-        {
-          "label": "API Testing (GT: API)",
-          "id": "testingframeworksapielysian"
-        },
-        {
-          "label": "User Interface Testing (GT: UI)",
-          "id": "testingframeworksuielysian"
         }
       ]
     },
