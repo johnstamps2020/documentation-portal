@@ -3,11 +3,13 @@
     <label for="pageSelector"><%= pageSelector.label %></label>
     <select id="pageSelector">
         <script>
-            function selectPage(selectedPage) {
+            function selectPage(e) {
+                const selectedPage = e.target.value;
                 if (selectedPage) {
                     window.location = selectedPage;
                 }
             }
+            document.querySelector('#pageSelector').addEventListener('change', selectPage)
         </script>
 
         <% const allItems = [
@@ -36,7 +38,7 @@
                     itemHref = encodeURI(pagePath + item.page)
                 }
             %>
-            <option value="<%= itemHref %>" onclick="selectPage('<%= itemHref %>')">
+            <option value="<%= itemHref %>">
                 <%= item.label %>
             </option>
         <% }}) %>
