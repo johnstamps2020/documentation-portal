@@ -45,20 +45,26 @@
           "id": "isdraftrestapiclientguide"
         },
         {
-          "label": "IRSA Integration for ClaimCenter (version 1.1)",
-          "page": "ipf/1.1"
-        },
-        {
-          "label": "IRSA Integration for ClaimCenter (version 1.1)",
-          "page": "ipf/latest"
-        },
-        {
-          "label": "Guidewire InsuranceSuite Package for Germany",
-          "page": "ipg/latest"
-        },
-        {
-          "label": "Global Solutions - Australia",
-          "page": "ipa/latest"
+          "label": "Global Solutions",
+          "class": "group",
+          "items": [
+            {
+              "label": "Australia",
+              "page": "../globalSolutions/ipa/latest"
+            },
+            {
+              "label": "France",
+              "page": "../globalSolutions/ipf/1.1"
+            },
+            {
+              "label": "France",
+              "page": "../globalSolutions/ipf/latest"
+            },
+            {
+              "label": "Germany",
+              "page": "../globalSolutions/ipg/latest"
+            }
+          ]
         }
       ]
     },
