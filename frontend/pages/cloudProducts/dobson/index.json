@@ -306,7 +306,7 @@
       "items": [
         {
           "label": "Australia",
-          "page": "../globalSolutions/ipa/latest"
+          "page": "../../globalSolutions/ipa/latest"
         }
       ]
     },
