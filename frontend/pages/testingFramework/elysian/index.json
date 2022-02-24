@@ -1,0 +1,32 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Guidewire Testing Framework 2022.05",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "The Guidewire Testing Framework Release Notes",
+          "id": "testingframeworksrnelysian"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "API Testing (GT: API)",
+          "id": "testingframeworksapielysian"
+        },
+        {
+          "label": "User Interface Testing (GT: UI)",
+          "id": "testingframeworksuielysian"
+        }
+      ]
+    }
+  ]
+}
