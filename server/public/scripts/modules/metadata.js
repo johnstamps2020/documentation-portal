@@ -51,11 +51,7 @@ export async function setMetadata() {
   sendUserId(userInformation);
 
   const selectorResponse = await fetch(
-    `/safeConfig/versionSelectors?platform=${window.docPlatform}&product=${
-      window.docProduct
-    }&version=${window.docVersion}${
-      window.docTitle ? `&title=${window.docTitle}` : ''
-    }`
+    `/safeConfig/versionSelectors?docId=${docId}`
   );
   const jsonResponse = await selectorResponse.json();
   window.matchingVersionSelector = jsonResponse.matchingVersionSelector;

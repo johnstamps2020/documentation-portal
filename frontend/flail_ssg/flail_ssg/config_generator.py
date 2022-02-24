@@ -1,7 +1,9 @@
+import copy
 import shutil
 from pathlib import Path, PurePosixPath
 from typing import Callable
-from urllib.parse import urlparse
+
+from packaging import version as packaging_version
 
 from flail_ssg.helpers import configure_logger
 from flail_ssg.helpers import load_json_file
@@ -65,83 +67,85 @@ def get_visible_docs_for_env(docs: list, env: str):
     return [
         doc
         for doc in docs
-        if doc.get('displayOnLandingPages')
-           and any(value for value in doc.get('environments') if value == env)
+        if doc.get('displayOnLandingPages') and any(value for value in doc.get('environments') if value == env)
     ]
 
 
-def create_version_selector_mapping(pages_build_dir: Path, config_build_dir: Path, docs: list, deploy_env: str):
+def create_version_selector_mapping(config_build_dir: Path, docs: list, deploy_env: str):
+    def get_data_for_comparison(doc_object: dict) -> dict:
+        item_metadata = doc_object['metadata']
+        return {
+            'products': sorted([product.casefold() for product in item_metadata['product']]),
+            'platforms': sorted([platform.casefold() for platform in item_metadata['platform']]),
+            'versions': sorted([version.casefold() for version in item_metadata['version']]),
+            'title': doc_object['title'].casefold()
+        }
+
+    def is_other_version(first_doc_object: dict, second_doc_object: dict) -> bool:
+        first_doc_data_for_comparison = get_data_for_comparison(first_doc_object)
+        second_doc_data_for_comparison = get_data_for_comparison(second_doc_object)
+
+        products_match = any(
+            pr in first_doc_data_for_comparison['products'] for pr in second_doc_data_for_comparison['products'])
+        platforms_match = any(
+            pl in first_doc_data_for_comparison['platforms'] for pl in second_doc_data_for_comparison['platforms'])
+        titles_match = first_doc_data_for_comparison['title'] == second_doc_data_for_comparison['title']
+        versions_are_different = any(
+            v not in first_doc_data_for_comparison['versions'] for v in second_doc_data_for_comparison[
+                'versions'])
+
+        return products_match and platforms_match and titles_match and versions_are_different
+
+    def sort_and_add_labels(version_objects: list[dict]):
+        use_release = all(v.get('releases') and len(v['releases']) == 1 for v in version_objects)
+        updated_version_objects = copy.deepcopy(version_objects)
+        if use_release:
+            for version_object in updated_version_objects:
+                version_object['label'] = f'{version_object["releases"][0]} ({version_object["versions"][0]})'
+            return sorted(updated_version_objects, key=lambda x: x['releases'][0], reverse=True)
+        else:
+            for version_object in updated_version_objects:
+                version_object['label'] = ','.join(version_object['versions'])
+            return sorted(updated_version_objects, key=lambda x: packaging_version.parse(','.join(x['versions'])),
+                          reverse=True)
+
+    def create_version_selector_objects(main_doc_object: dict, matching_doc_objects: list[dict]) -> list[dict]:
+        version_selector_objects = []
+        if matching_doc_objects:
+            all_versions = []
+            for doc_object in matching_doc_objects:
+                doc_object_metadata = doc_object['metadata']
+                all_versions.append({
+                    'versions': doc_object_metadata['version'],
+                    'releases': doc_object_metadata.get('release'),
+                    'url': doc_object['url'],
+                })
+            main_doc_object_metadata = main_doc_object['metadata']
+            all_versions.append(
+                {
+                    'versions': main_doc_object_metadata['version'],
+                    'releases': main_doc_object_metadata.get('release'),
+                    'url': main_doc_object['url'],
+                    'currentlySelected': True,
+                }
+            )
+            version_selector_objects.append(
+                {
+                    'docId': main_doc_object['id'],
+                    'allVersions': sort_and_add_labels(all_versions)
+                }
+            )
+        return version_selector_objects
+
     version_selectors = []
     visible_docs_for_env = get_visible_docs_for_env(docs, deploy_env)
     for doc in visible_docs_for_env:
-        doc_products = doc.get('metadata').get('product')
-        doc_platforms = doc.get('metadata').get('platform')
-        doc_versions = doc.get('metadata').get('version')
-        doc_title = doc.get('title')
-        for product in doc_products:
-            for platform in doc_platforms:
-                for version in doc_versions:
-                    matching_version_selector_object = next((
-                        item for item in version_selectors if
-                        item.get('product') == product and item.get('platform') == platform and item.get(
-                            'version') == version and item.get('title') == doc_title), None
-                    )
-                    if not matching_version_selector_object:
-                        version_selectors.append(
-                            {
-                                'product': product,
-                                'platform': platform,
-                                'version': version,
-                                'title': doc_title,
-                                'otherVersions': []
-                            }
-                        )
-
-    doc_urls_with_root_pages = create_breadcrumbs_mapping(pages_build_dir, config_build_dir)
-    for doc in visible_docs_for_env:
-        doc_products = doc.get('metadata').get('product')
-        doc_platforms = doc.get('metadata').get('platform')
-        doc_versions = doc.get('metadata').get('version')
-        doc_title = doc.get('title')
-        for product in doc_products:
-            for platform in doc_platforms:
-                for version in doc_versions:
-                    selector_objects_to_update = [
-                        item for item in version_selectors if
-                        item.get('product') == product and item.get('platform') == platform and item.get(
-                            'version') != version and item.get('title') == doc_title]
-                    for obj in selector_objects_to_update:
-                        matching_other_version = next((
-                            item for item in obj.get('otherVersions') if item.get('label') == version
-                        ), None)
-                        if matching_other_version:
-                            matching_item = next(
-                                (item for item in doc_urls_with_root_pages if
-                                 item['docUrl'] == matching_other_version['path']), None
-                            )
-
-                            if matching_item:
-                                root_pages = matching_item['rootPages']
-                                fallback_paths = matching_other_version.get('fallbackPaths')
-                                if not fallback_paths:
-                                    matching_other_version['fallbackPaths'] = []
-                                matching_other_version['fallbackPaths'] += [item['path'] for item in root_pages]
-                        else:
-                            doc_url = doc.get("url")
-                            path = doc_url if bool(urlparse(doc_url).netloc) else f'/{doc_url}'
-                            obj['otherVersions'].append(
-                                {
-                                    "label": version,
-                                    "path": path,
-                                }
-
-                            )
-
-    for selector in version_selectors:
-        for other_ver in selector['otherVersions']:
-            if other_ver.get('fallbackPaths'):
-                unique_fallback_paths = set(other_ver['fallbackPaths'])
-                other_ver['fallbackPaths'] = sorted(list(unique_fallback_paths))
+        matching_docs = []
+        for env_doc in visible_docs_for_env:
+            if is_other_version(doc, env_doc) and env_doc not in matching_docs:
+                matching_docs.append(env_doc)
+        doc_version_selectors = create_version_selector_objects(doc, matching_docs)
+        version_selectors += doc_version_selectors
 
     write_json_object_to_file(
         version_selectors, config_build_dir / 'versionSelectors.json')
@@ -170,7 +174,7 @@ def run_config_generator(send_bouncer_home: bool, deploy_env: str, pages_build_d
     config_build_dir.mkdir(parents=True)
 
     run_process(create_breadcrumbs_mapping, pages_build_dir, config_build_dir)
-    run_process(create_version_selector_mapping, pages_build_dir, config_build_dir, docs, deploy_env)
+    run_process(create_version_selector_mapping, config_build_dir, docs, deploy_env)
 
     _config_generator_logger.info(
         'PROCESS ENDED: Generate frontend configuration')

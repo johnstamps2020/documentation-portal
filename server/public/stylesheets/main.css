@@ -12,7 +12,7 @@
   --clr-GW-BLUE: hsl(196, 100%, 31%);
   --clr-GW-BLUE-HOVER: hsl(196, 100%, 26%);
   /* --clr-GW-BLUE-LIGHTER and --clr-GW-BLUE-LIGHTER-HOVER are not approved colors,
-                                              but are derived from GW Blue. */
+                                                but are derived from GW Blue. */
   --clr-GW-BLUE-LIGHTER: hsl(196, 100%, 60%);
   --clr-GW-BLUE-LIGHTER-HOVER: hsl(196, 100%, 45%);
   --clr-GW-BLUE-LIGHTEST: hsl(196, 100%, 90%);
@@ -878,16 +878,6 @@ main.support h2 {
   content: none;
 }
 
-#pageSelectorContainer {
-  padding: 2rem 0;
-  height: 120px;
-  position: relative;
-}
-
-.blue-theme #pageSelectorContainer .selectorLabel {
-  color: hsl(0, 0%, 100%);
-}
-
 #pageSelector {
   display: block;
   width: 306px;
@@ -904,20 +894,6 @@ main.support h2 {
   background-repeat: no-repeat;
   background-color: hsl(0, 0%, 100%);
   cursor: pointer;
-}
-
-.pageSelectorDropdown {
-  display: none;
-}
-
-.pageSelectorDropdown.visible {
-  display: block;
-  background-color: hsl(0, 0%, 100%);
-  isolation: isolate;
-}
-
-.dropdownOption:hover {
-  background-color: var(--clr-GW-BLUE-LIGHTEST);
 }
 
 .expandableSection {

@@ -1,0 +1,7 @@
+<select id="docVersionSelector">
+  <% allVersions.forEach(function(version){ %>
+  <option value="<%= version.url %>" <% if (version.currentlySelected) { %>
+    selected <% } %> ><%= version.label %>
+  </option>
+  <% }); %>
+</select>
