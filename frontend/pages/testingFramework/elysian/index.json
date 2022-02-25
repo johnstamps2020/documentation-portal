@@ -9,7 +9,7 @@
       "class": "subject releaseNotes",
       "items": [
         {
-          "label": "The Guidewire Testing Framework Release Notes",
+          "label": "Guidewire Testing Framework Release Notes",
           "id": "testingframeworksrnelysian"
         }
       ]
@@ -19,11 +19,11 @@
       "class": "subject development",
       "items": [
         {
-          "label": "API Testing (GT: API)",
+          "label": "GT: API",
           "id": "testingframeworksapielysian"
         },
         {
-          "label": "User Interface Testing (GT: UI)",
+          "label": "GT: UI",
           "id": "testingframeworksuielysian"
         }
       ]
