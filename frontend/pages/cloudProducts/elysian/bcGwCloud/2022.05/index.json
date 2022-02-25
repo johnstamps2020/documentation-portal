@@ -36,6 +36,14 @@
           "id": "isbc202205newandchanged"
         },
         {
+          "label": "Integration Gateway Release Notes",
+          "id": "integgatewayrndraft"
+        },
+        {
+          "label": "Integration Gateway Release Notes",
+          "id": "integgatewayrn202205"
+        },
+        {
           "label": "REST API Client Release Notes",
           "id": "isdraftrestapiclientrn"
         },
@@ -192,6 +200,14 @@
           "id": "isbc202205apibf"
         },
         {
+          "label": "Integration Gateway for Developers",
+          "id": "integgatewaydevdraft"
+        },
+        {
+          "label": "Integration Gateway for Developers",
+          "id": "integgatewaydev202205"
+        },
+        {
           "label": "REST API Framework",
           "id": "isbcelysiandraftrestapifw"
         },
@@ -229,6 +245,10 @@
         {
           "label": "GUnit Testing",
           "id": "isbc202205testing"
+        },
+        {
+          "label": "Webhooks API Reference",
+          "id": "webhooksapinext"
         }
       ]
     },

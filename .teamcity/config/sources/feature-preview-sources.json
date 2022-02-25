@@ -68,13 +68,6 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/submission-intake.git",
       "branch": "main"
-    },
-    {
-      "id": "webhooksapinextsrc",
-      "title": "WebHooks API",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/mde/subscriptions.git",
-      "branch": "main"
     }
   ]
 }
