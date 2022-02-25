@@ -9,12 +9,12 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "BillingCenter",
-          "id": "bc1020"
+          "label": "PolicyCenter",
+          "id": "pc1020"
         },
         {
-          "label": "BillingCenter",
-          "id": "bc10xdraft"
+          "label": "PolicyCenter",
+          "id": "pc10xdraft"
         },
         {
           "label": "ClaimCenter",
@@ -25,12 +25,12 @@
           "id": "cc10xdraft"
         },
         {
-          "label": "PolicyCenter",
-          "id": "pc1020"
+          "label": "BillingCenter",
+          "id": "bc1020"
         },
         {
-          "label": "PolicyCenter",
-          "id": "pc10xdraft"
+          "label": "BillingCenter",
+          "id": "bc10xdraft"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
