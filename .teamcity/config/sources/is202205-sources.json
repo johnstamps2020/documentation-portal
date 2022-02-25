@@ -28,6 +28,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
       "branch": "release/2022.05.0"
+    },
+    {
+      "id": "webhooksapinextsrc",
+      "title": "WebHooks API",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/mde/subscriptions.git",
+      "branch": "main"
     }
   ]
 }

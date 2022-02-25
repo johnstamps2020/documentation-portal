@@ -476,6 +476,53 @@
       "srcId": "is202205src",
       "docId": "is202205integoverview",
       "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Release.ditaval",
+      "root": "ApplicationEventsForDevelopers.ditamap",
+      "indexRedirect": true,
+      "srcId": "restapisrc",
+      "docId": "ccappeventsdev202205"
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
+      "root": "ApplicationEventsForDevelopers.ditamap",
+      "indexRedirect": true,
+      "srcId": "restapisrc",
+      "docId": "pcappeventsdev202205"
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "IntegrationGatewayForDevelopers.ditamap",
+      "indexRedirect": true,
+      "srcId": "restapisrc",
+      "docId": "integgatewaydev202205"
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "IntegrationGatewayReleaseNotes.ditamap",
+      "indexRedirect": true,
+      "srcId": "restapisrc",
+      "docId": "integgatewayrn202205"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "webhooksapinext",
+      "srcId": "webhooksapinextsrc",
+      "nodeImageVersion": "14.14.0",
+      "workingDir": "docs"
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "root": "appevents-releasenotes-cc.ditamap",
+      "indexRedirect": true,
+      "srcId": "restapisrc",
+      "docId": "appeventsrn202205"
     }
   ]
 }

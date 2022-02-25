@@ -969,6 +969,108 @@
       "indexForSearch": true,
       "public": true,
       "internal": false
+    },
+    {
+      "id": "appeventsrn202205",
+      "title": "ClaimCenter App Events Release Notes",
+      "url": "cloud/is/202205/appeventsrn",
+      "metadata": {
+        "product": ["ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Release Notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ccappeventsdev202205",
+      "title": "ClaimCenter App Events for Developers",
+      "url": "cloud/cc/202205/ccappevents",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Integration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "pcappeventsdev202205",
+      "title": "PolicyCenter App Events for Developers",
+      "url": "cloud/pc/202205/pcappevents",
+      "metadata": {
+        "product": ["PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Integration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "integgatewaydev202205",
+      "title": "Integration Gateway for Developers",
+      "url": "cloud/is/integgateway",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Integration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "integgatewayrn202205",
+      "title": "Integration Gateway Release Notes",
+      "url": "cloud/is/igrelnotes",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "webhooksapinext",
+      "title": "Webhooks API Reference",
+      "url": "cloud/is/webhooksapi",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Elysian"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
     }
   ]
 }
