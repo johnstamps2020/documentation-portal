@@ -463,19 +463,11 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
       "root": "appevents-releasenotes-cc.ditamap",
       "indexRedirect": true,
       "srcId": "restapisrc",
-      "docId": "appeventsccrndraft"
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
-      "root": "appevents-releasenotes-cc.ditamap",
-      "indexRedirect": true,
-      "srcId": "restapisrc",
-      "docId": "appeventspcrndraft"
+      "docId": "appeventsrndraft"
     },
     {
       "buildType": "dita",

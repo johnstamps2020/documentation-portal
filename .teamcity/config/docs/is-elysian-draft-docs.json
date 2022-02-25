@@ -869,28 +869,11 @@
       "internal": false
     },
     {
-      "id": "appeventsccrndraft",
-      "title": "ClaimCenter App Events Release Notes",
-      "url": "cloud/cc/202205/appeventsrn",
+      "id": "appeventsrndraft",
+      "title": "App Events Release Notes",
+      "url": "cloud/is/202205/appeventsrn",
       "metadata": {
-        "product": ["ClaimCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Release Notes"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "appeventspcrndraft",
-      "title": "PolicyCenter App Events Release Notes",
-      "url": "cloud/pc/202205/appeventsrn",
-      "metadata": {
-        "product": ["PolicyCenter"],
+        "product": ["ClaimCenter", "PolicyCenter"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
