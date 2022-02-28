@@ -300,17 +300,6 @@
       ]
     },
     {
-      "label": "Global Solutions",
-      "class": "categoryCard cardShadow",
-      "env": ["int"],
-      "items": [
-        {
-          "label": "Australia",
-          "page": "../../globalSolutions/ipa/latest"
-        }
-      ]
-    },
-    {
       "label": "Feature Preview",
       "class": "categoryCard cardShadow",
       "env": ["int"],
