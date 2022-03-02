@@ -53,6 +53,57 @@
       "internal": false
     },
     {
+      "id": "testingframeworksdataelysian",
+      "title": "Test Data Management",
+      "url": "cloud/testingframeworks/202205/data",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "testingframeworksloadelysian",
+      "title": "Load and Performance Testing",
+      "url": "cloud/testingframeworks/202205/load",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "testingframeworksmgmtelysian",
+      "title": "Test Case Management",
+      "url": "cloud/testingframeworks/202205/mgmt",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
       "id": "testingframeworksrnelysian",
       "title": "Guidewire Testing Framework Release Notes",
       "url": "cloud/testingframeworks/202205/releasenotes",
