@@ -1,4 +1,5 @@
 import { highlightTextFromUrl, addHighlightToggle } from './highlight.js';
+import { addPdfLink } from './pdflink.js';
 
 function addMiniToc() {
   const hashLinks = document.querySelectorAll('.hashLink');
@@ -266,6 +267,7 @@ function addScrollToTop() {
 function addNavbar() {
   addNavigationLinks();
   addVerticalDivider();
+  addPdfLink();
   addShareButton();
   addPrintButton();
   addHighlightToggle();
