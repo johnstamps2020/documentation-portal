@@ -8,7 +8,8 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-release-notes.git",
       "branch": "main",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/releasenotes/ReleaseNotesBook-dobson.ditamap"
+        "/Content/doc/insuranceSuite/core/releasenotes/ReleaseNotesBook-dobson.ditamap",
+        "/Content/doc/insuranceSuite/core/releasenotes/ReleaseNotesBook-elysian.ditamap"
       ]
     }
   ]
