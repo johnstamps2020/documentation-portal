@@ -69,5 +69,8 @@
       "class": "productFamily cardShadow",
       "id": "isdraftrestapiclientguide"
     }
-  ]
+  ],
+  "search_filters": {
+    "platform": ["Cloud"]
+  }
 }
