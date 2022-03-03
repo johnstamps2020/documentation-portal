@@ -311,5 +311,8 @@
         }
       ]
     }
-  ]
+  ],
+  "search_filters": {
+    "platform": ["Cloud"]
+  }
 }
