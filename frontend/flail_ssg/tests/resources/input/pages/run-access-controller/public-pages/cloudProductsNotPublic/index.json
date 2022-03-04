@@ -1,0 +1,17 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Guidewire Cloud Releases NOT Public",
+  "includeInBreadcrumbs": false,
+  "template": "redirect",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "API References NOT Public",
+      "page": "../apiReferencesNotPublic"
+    },
+    {
+      "label": "_redirect",
+      "link": "/cloudProducts/dobson"
+    }
+  ]
+}

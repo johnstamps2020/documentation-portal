@@ -1,0 +1,216 @@
+{
+  "$schema": "./config-schema.json",
+  "docs": [
+    {
+      "id": "cc202011apiref",
+      "title": "Cloud API Reference",
+      "url": "cloud/cc/202011/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20211apiref",
+      "title": "API Reference",
+      "url": "cloud/in/20211/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
+        "subject": ["Integration"],
+        "release": ["Cortina"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false
+    },
+    {
+      "id": "cc202104apiref",
+      "title": "Cloud API Reference",
+      "url": "cloud/cc/202104/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false
+    },
+    {
+      "id": "pc202104apiref",
+      "title": "Cloud API Reference",
+      "url": "cloud/pc/202104/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.04"],
+        "release": ["Cortina"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false
+    },
+    {
+      "id": "in20212apiref",
+      "title": "API Reference",
+      "url": "cloud/in/20212/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Integration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false
+    },
+    {
+      "id": "ccapirefdobson",
+      "title": "Cloud API Reference",
+      "url": "cloud/cc/202111/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false
+    },
+    {
+      "id": "pcapirefdobson",
+      "title": "Cloud API Reference",
+      "url": "cloud/pc/202111/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false
+    },
+    {
+      "id": "apdmaindoc",
+      "title": "APD API docs",
+      "url": "apd/api/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["latest"]
+      },
+      "environments": ["int"],
+      "internal": false
+    },
+    {
+      "id": "supersecretgwidentityfederationhub",
+      "title": "Authentication with Guidewire Identity Federation Hub Draft",
+      "url": "cloud/auth/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Identity Federation Hub"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true
+    },
+    {
+      "id": "supersecretcloudplatform",
+      "title": "Cloud Platform Draft",
+      "url": "cloud/gwcp/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Platform"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true
+    },
+    {
+      "id": "supersecretgwcloudplatformreleasenotes",
+      "title": "Cloud Platform Release Notes",
+      "url": "cloud/gwcprelnotes/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Platform"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true
+    },
+    {
+      "id": "supersecretgwcloudconsoleguideinsurerdev",
+      "title": "Cloud Console Guide",
+      "url": "cloud/gcc-guide/insurer-developer/latest/topics/c_initial-provisioning.html",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true
+    },
+    {
+      "id": "isconfigupgradetoolsdraft",
+      "title": "InsuranceSuite Configuration Upgrade Tools",
+      "url": "isconfigupgradetools/draft",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": ["4.x.x"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    }
+  ]
+}

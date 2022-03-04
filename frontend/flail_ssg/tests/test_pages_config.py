@@ -1,5 +1,4 @@
 import json
-import json
 import os
 import shutil
 from collections import namedtuple
@@ -8,6 +7,7 @@ from pathlib import Path
 import pytest
 
 import flail_ssg.validator
+from flail_ssg.access_controller import run_access_controller
 from flail_ssg.generator import generate_search_filters
 from flail_ssg.preprocessor import clean_pages, filter_by_env, remove_items_with_empty_child_items, remove_page_dirs, \
     remove_refs_to_empty_and_non_existent_pages, run_preprocessor
@@ -438,3 +438,24 @@ def test_running_preprocessor(load_docs_from_main_config):
     check_dirs_have_the_same_files(tmp_test_dir, expected_dir)
     check_files_have_the_same_content(tmp_test_dir, expected_dir)
     shutil.rmtree(tmp_test_dir)
+
+
+def test_running_access_controller():
+    root_input_dir = TestConfig.resources_input_dir / 'pages' / 'run-access-controller'
+    root_expected_dir = TestConfig.resources_expected_dir / 'pages' / 'run-access-controller'
+    docs_config_file = TestConfig.resources_input_dir / 'config' / 'public-and-internal-docs' / 'docs.json'
+
+    def test_pages(test_dir_name: str):
+        input_dir = root_input_dir / test_dir_name
+        expected_dir = root_expected_dir / test_dir_name
+        tmp_test_dir = TestConfig.resources_input_dir / f'tmp-test-{test_dir_name}'
+        shutil.copytree(input_dir, tmp_test_dir, dirs_exist_ok=True)
+
+        run_access_controller(False, tmp_test_dir, docs_config_file)
+        check_dirs_have_the_same_files(tmp_test_dir, expected_dir)
+        check_files_have_the_same_content(tmp_test_dir, expected_dir)
+
+        # shutil.rmtree(tmp_test_dir)
+
+    for dir_name in ['internal-pages', 'public-pages']:
+        test_pages(dir_name)

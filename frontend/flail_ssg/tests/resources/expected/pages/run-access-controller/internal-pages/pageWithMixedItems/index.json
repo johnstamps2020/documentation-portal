@@ -1,0 +1,30 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Page with mixed items",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "InsuranceSuite Configuration Upgrade Tools",
+      "id": "isconfigupgradetoolsdraft",
+      "public": false,
+      "internal": false
+    },
+    {
+      "label": "Feature Preview",
+      "class": "categoryCard cardShadow",
+      "env": ["int"],
+      "items": [
+        {
+          "label": "Page with only internal docs",
+          "page": "../pageWithOnlyInternalDocs",
+          "env": ["int"],
+          "public": false,
+          "internal": true
+        }
+      ]
+    }
+  ],
+  "public": false,
+  "internal": false
+}
