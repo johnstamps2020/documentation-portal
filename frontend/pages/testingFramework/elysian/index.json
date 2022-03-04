@@ -1,0 +1,44 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Guidewire Testing Framework 2022.05",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Guidewire Testing Framework Release Notes",
+          "id": "testingframeworksrnelysian"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "GT: API",
+          "id": "testingframeworksapielysian"
+        },
+        {
+          "label": "GT: UI",
+          "id": "testingframeworksuielysian"
+        },
+        {
+          "label": "GT: Load",
+          "id": "testingframeworksloadelysian"
+        },
+        {
+          "label": "GT: Data",
+          "id": "testingframeworksdataelysian"
+        },
+        {
+          "label": "GT: Management",
+          "id": "testingframeworksmgmtelysian"
+        }
+      ]
+    }
+  ]
+}

@@ -2376,7 +2376,7 @@ object Sources {
 
                 validationBuildType.artifactRules += """
                     ${workingDir}/${docValidatorLogs} => build_logs
-                    ${workingDir}/${outputDir}/${GwDitaOutputFormats.WEBHELP.format_name}/${GwConfigParams.BUILD_DATA_FILE.param_value} => ${GwConfigParams.BUILD_DATA_DIR.param_value}
+                    ${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.format_name}/${GwConfigParams.BUILD_DATA_FILE.param_value} => ${GwConfigParams.BUILD_DATA_DIR.param_value}
                 """.trimIndent()
 
                 validationBuildType.steps {

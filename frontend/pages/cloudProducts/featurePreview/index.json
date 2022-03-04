@@ -9,16 +9,8 @@
       "class": "subject releaseNotes",
       "items": [
         {
-          "label": "Application Events for Claims",
-          "id": "appeventsccrndraft"
-        },
-        {
           "label": "Rules",
           "id": "rulesrndraft"
-        },
-        {
-          "label": "Integration Gateway",
-          "id": "integgatewayrndraft"
         }
       ]
     },
@@ -57,7 +49,7 @@
       "class": "subject configuration",
       "items": [
         {
-          "label": "Advanced Product Designer",
+          "label": "Advanced Product Designer App",
           "id": "apddraft"
         },
         {
@@ -79,28 +71,6 @@
         {
           "label": "Workset Manager",
           "id": "worksetmgrdraft"
-        }
-      ]
-    },
-    {
-      "label": "Integration",
-      "class": "subject integration",
-      "items": [
-        {
-          "label": "ClaimCenter App Events for Developers",
-          "id": "ccappeventsdevdraft"
-        },
-        {
-          "label": "PolicyCenter App Events for Developers",
-          "id": "pcappeventsdevdraft"
-        },
-        {
-          "label": "Integration Gateway for Developers",
-          "id": "integgatewaydevdraft"
-        },
-        {
-          "label": "Webhooks API Reference",
-          "id": "webhooksapinext"
         }
       ]
     }

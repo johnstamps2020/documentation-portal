@@ -1,19 +1,26 @@
 import { highlightTextFromUrl, addHighlightToggle } from './highlight.js';
+import { addPdfLink } from './pdflink.js';
 
 function addMiniToc() {
   const hashLinks = document.querySelectorAll('.hashLink');
-  if (hashLinks.length > 0) {
+  if (hashLinks.length > 1) {
     const miniToc = document.createElement('nav');
     miniToc.setAttribute('class', 'miniToc');
 
     hashLinks.forEach(hashLink => {
       const title = hashLink.parentElement.textContent;
       const href = hashLink.getAttribute('href');
+      const parentClasses = hashLink.parentElement.classList;
 
       if (title && href) {
         const navLink = document.createElement('a');
         navLink.setAttribute('href', href);
         navLink.classList.add('miniTocLink');
+        parentClasses.forEach(className => {
+          if (!className.match('^title$')) {
+            navLink.classList.add(className);
+          }
+        });
         navLink.textContent = title;
 
         miniToc.appendChild(navLink);
@@ -260,6 +267,7 @@ function addScrollToTop() {
 function addNavbar() {
   addNavigationLinks();
   addVerticalDivider();
+  addPdfLink();
   addShareButton();
   addPrintButton();
   addHighlightToggle();

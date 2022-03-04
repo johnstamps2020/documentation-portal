@@ -1,0 +1,69 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dxdiapp34",
+      "title": "Application Guide",
+      "url": "self-managed/dx/di/34/app",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Data Integrations"],
+        "platform": ["Self-managed"],
+        "version": ["3.4"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dxdiinstall34",
+      "title": "Installation Guide",
+      "url": "self-managed/dx/di/34/install",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Data Integrations"],
+        "platform": ["Self-managed"],
+        "version": ["3.4"],
+        "subject": ["Installation"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dxdiadmin34",
+      "title": "Administration Guide",
+      "url": "self-managed/dx/di/34/admin",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Data Integrations"],
+        "platform": ["Self-managed"],
+        "version": ["3.4"],
+        "subject": ["Administration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dxdirelnotes34",
+      "title": "Release Notes",
+      "url": "self-managed/dx/di/34/relnotes",
+      "metadata": {
+        "product": ["Guidewire for Salesforce Data Integrations"],
+        "platform": ["Self-managed"],
+        "version": ["3.4"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    }
+  ]
+}

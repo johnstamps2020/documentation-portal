@@ -177,7 +177,7 @@
               "link": "/cyence/cyber/HelpCenterAccum"
             },
             {
-              "label": "Model 5 Documentation",
+              "label": "Model 5 Technical Reference",
               "link": "/cyence/cyber/Model5/CyenceCyberRiskModel5.pdf"
             },
             {
@@ -225,6 +225,17 @@
       ]
     },
     {
+      "label": "Global Solutions",
+      "class": "categoryCard cardShadow",
+      "env": ["int"],
+      "items": [
+        {
+          "label": "Australia",
+          "page": "../../globalSolutions/ipa/latest"
+        }
+      ]
+    },
+    {
       "label": "Feature Preview",
       "class": "categoryCard cardShadow",
       "env": ["int"],
@@ -236,5 +247,8 @@
         }
       ]
     }
-  ]
+  ],
+  "search_filters": {
+    "platform": ["Cloud"]
+  }
 }

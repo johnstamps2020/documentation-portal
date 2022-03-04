@@ -9,12 +9,12 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "BillingCenter",
-          "id": "bc1020"
+          "label": "PolicyCenter",
+          "id": "pc1020"
         },
         {
-          "label": "BillingCenter",
-          "id": "bc10xdraft"
+          "label": "PolicyCenter",
+          "id": "pc10xdraft"
         },
         {
           "label": "ClaimCenter",
@@ -25,12 +25,12 @@
           "id": "cc10xdraft"
         },
         {
-          "label": "PolicyCenter",
-          "id": "pc1020"
+          "label": "BillingCenter",
+          "id": "bc1020"
         },
         {
-          "label": "PolicyCenter",
-          "id": "pc10xdraft"
+          "label": "BillingCenter",
+          "id": "bc10xdraft"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
@@ -45,20 +45,26 @@
           "id": "isdraftrestapiclientguide"
         },
         {
-          "label": "IRSA Integration for ClaimCenter (version 1.1)",
-          "page": "ipf/1.1"
-        },
-        {
-          "label": "IRSA Integration for ClaimCenter (version 1.1)",
-          "page": "ipf/latest"
-        },
-        {
-          "label": "Guidewire InsuranceSuite Package for Germany",
-          "page": "ipg/latest"
-        },
-        {
-          "label": "Global Solutions - Australia",
-          "page": "ipa/latest"
+          "label": "Global Solutions",
+          "class": "group",
+          "items": [
+            {
+              "label": "Australia",
+              "page": "../globalSolutions/ipa/latest"
+            },
+            {
+              "label": "France",
+              "page": "../globalSolutions/ipf/1.1"
+            },
+            {
+              "label": "France",
+              "page": "../globalSolutions/ipf/latest"
+            },
+            {
+              "label": "Germany",
+              "page": "../globalSolutions/ipg/latest"
+            }
+          ]
         }
       ]
     },
@@ -126,8 +132,8 @@
           "id": "dxve1141"
         },
         {
-          "label": "Guidewire for Salesforce Data Integrations",
-          "page": "gwsf/di/3.3.1"
+          "label": "Guidewire for Salesforce for Financial Services Cloud",
+          "page": "gwsf/di/3.4"
         },
         {
           "label": "Guidewire for Salesforce Data Integrations for Claims",
@@ -154,5 +160,8 @@
         }
       ]
     }
-  ]
+  ],
+  "search_filters": {
+    "platform": ["Self-managed"]
+  }
 }

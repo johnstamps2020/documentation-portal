@@ -28,6 +28,22 @@
           "id": "isccelysiandraftnewandchanged"
         },
         {
+          "label": "App Events Release Notes",
+          "id": "appeventsrndraft"
+        },
+        {
+          "label": "App Events Release Notes",
+          "id": "appeventsrn202205"
+        },
+        {
+          "label": "Integration Gateway Release Notes",
+          "id": "integgatewayrndraft"
+        },
+        {
+          "label": "Integration Gateway Release Notes",
+          "id": "integgatewayrn202205"
+        },
+        {
           "label": "REST API Client Release Notes",
           "id": "isdraftrestapiclientrn"
         },
@@ -35,10 +51,6 @@
           "label": "REST API Client Release Notes",
           "id": "isrestapiclientrn",
           "env": ["staging"]
-        },
-        {
-          "label": "The Guidewire Testing Framework Release Notes",
-          "id": "testingframeworksrnelysian"
         }
       ]
     },
@@ -204,6 +216,22 @@
           "id": "iscc202205apica"
         },
         {
+          "label": "ClaimCenter App Events for Developers",
+          "id": "ccappeventsdevdraft"
+        },
+        {
+          "label": "ClaimCenter App Events for Developers",
+          "id": "ccappeventsdev202205"
+        },
+        {
+          "label": "Integration Gateway for Developers",
+          "id": "integgatewaydevdraft"
+        },
+        {
+          "label": "Integration Gateway for Developers",
+          "id": "integgatewaydev202205"
+        },
+        {
           "label": "REST API Framework",
           "id": "isccelysiandraftrestapifw"
         },
@@ -243,12 +271,8 @@
           "id": "iscc202205testing"
         },
         {
-          "label": "API Testing (GT: API)",
-          "id": "testingframeworksapielysian"
-        },
-        {
-          "label": "User Interface Testing (GT: UI)",
-          "id": "testingframeworksuielysian"
+          "label": "Webhooks API Reference",
+          "id": "webhooksapinext"
         }
       ]
     },

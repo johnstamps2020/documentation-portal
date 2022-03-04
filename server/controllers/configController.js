@@ -92,7 +92,7 @@ async function getRootBreadcrumb(pagePathname) {
   }
 }
 
-async function getVersionSelector(platform, product, version, title, reqObj) {
+async function getVersionSelector(docId, reqObj) {
   try {
     const versionSelectorsFile = fs.readFileSync(
       versionSelectorsConfigPath,
@@ -100,22 +100,22 @@ async function getVersionSelector(platform, product, version, title, reqObj) {
     );
     const versionSelectorMapping = JSON.parse(versionSelectorsFile);
     const matchingVersionSelector = versionSelectorMapping.find(
-      s =>
-        product.split(',').some(p => p === s.product) &&
-        platform.split(',').some(pl => pl === s.platform) &&
-        version.split(',').some(v => v === s.version) &&
-        (title === s.title || !title)
+      s => docId === s.docId
     );
     //The getConfig function checks if request is authenticated and filters the returned docs accordingly.
     //Therefore, for the selector it's enough to check if a particular version has a doc in the returned config.
     const config = await getConfig(reqObj);
     const docs = config.docs;
-    matchingVersionSelector[
-      'otherVersions'
-    ] = matchingVersionSelector.otherVersions.filter(v =>
-      docs.find(d => `/${d.url}` === v.path)
-    );
-    return { matchingVersionSelector: matchingVersionSelector };
+    if (matchingVersionSelector) {
+      matchingVersionSelector[
+        'allVersions'
+      ] = matchingVersionSelector.allVersions.filter(v =>
+        docs.find(d => d.url === v.url)
+      );
+      return { matchingVersionSelector: matchingVersionSelector };
+    } else {
+      return { matchingVersionSelector: {} };
+    }
   } catch (err) {
     console.log(err);
     return { matchingVersionSelector: {} };
@@ -138,10 +138,33 @@ async function getDocumentMetadata(docId, reqObj) {
   }
 }
 
+async function getDocId(products, platforms, versions, title, url, reqObj) {
+  const config = await getConfig(reqObj);
+  const doc = config.docs.find(
+    s =>
+      products.split(',').some(p => s.metadata.product.includes(p)) &&
+      platforms.split(',').some(pl => s.metadata.platform.includes(pl)) &&
+      versions.split(',').some(v => s.metadata.version.includes(v)) &&
+      (title === s.title || !title) &&
+      url.includes(s.url)
+  );
+  if (doc) {
+    return {
+      docId: doc.id,
+    };
+  } else {
+    return {
+      error: true,
+      message: `Did not find a doc matching the provided info: ${products}, ${platforms}, ${versions}, ${title}, ${url}`,
+    };
+  }
+}
+
 module.exports = {
   getConfig,
   isPublicDoc,
   getRootBreadcrumb,
   getVersionSelector,
   getDocumentMetadata,
+  getDocId,
 };

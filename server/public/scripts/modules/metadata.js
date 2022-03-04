@@ -2,10 +2,7 @@ async function getHash(string) {
   const utf8 = new TextEncoder().encode(string);
   const hashBuffer = await crypto.subtle.digest('SHA-256', utf8);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
-  const hashHex = hashArray
-    .map(bytes => bytes.toString(16).padStart(2, '0'))
-    .join('');
-  return hashHex;
+  return hashArray.map(bytes => bytes.toString(16).padStart(2, '0')).join('');
 }
 
 async function sendUserId(userInformation) {
@@ -54,11 +51,7 @@ export async function setMetadata() {
   sendUserId(userInformation);
 
   const selectorResponse = await fetch(
-    `/safeConfig/versionSelectors?platform=${window.docPlatform}&product=${
-      window.docProduct
-    }&version=${window.docVersion}${
-      window.docTitle ? `&title=${window.docTitle}` : ''
-    }`
+    `/safeConfig/versionSelectors?docId=${docId}`
   );
   const jsonResponse = await selectorResponse.json();
   window.matchingVersionSelector = jsonResponse.matchingVersionSelector;

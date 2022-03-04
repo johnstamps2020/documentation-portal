@@ -1,3 +1,6 @@
+import { installAndInitializePendo } from './modules/pendo.js';
+import { setMetadata } from './modules/metadata.js';
+
 function selectToggleButton() {
   const toggleButtons = document.querySelectorAll(
     '#platformToggle > .toggleButton'
@@ -91,8 +94,10 @@ function setSearchFilterCSS() {
   }
 }
 
-window.onload = function() {
+window.onload = async function() {
   selectToggleButton();
   addReleaseBadge();
   setSearchFilterCSS();
+  await setMetadata();
+  installAndInitializePendo();
 };

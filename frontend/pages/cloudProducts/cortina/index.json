@@ -51,5 +51,8 @@
       "class": "productFamily cardShadow",
       "page": "../guidewireCloudPlatform"
     }
-  ]
+  ],
+  "search_filters": {
+    "platform": ["Cloud"]
+  }
 }

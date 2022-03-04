@@ -92,7 +92,7 @@ async function isLoggedInOrHasValidToken(req) {
   try {
     const rawJsonRequest = req.query.rawJSON === 'true';
     return rawJsonRequest
-      ? !!(await verifyToken(req))
+      ? !!(req.isAuthenticated() || (await verifyToken(req)))
       : !!req.isAuthenticated();
   } catch (err) {
     console.log(err.message);

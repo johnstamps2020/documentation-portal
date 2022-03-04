@@ -1,8 +1,8 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Guidewire InsuranceSuite Package for Germany",
-  "template": "page",
+  "title": "Guidewire for Salesforce for Financial Services Cloud 3.4",
   "class": "twoColumns",
+  "template": "page",
   "items": [
     {
       "label": "Release Notes",
@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "iparndraft"
+          "id": "dxdirelnotes34"
         }
       ]
     },
@@ -20,7 +20,7 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "ipaappdraft"
+          "id": "dxdiapp34"
         }
       ]
     },
@@ -29,8 +29,18 @@
       "class": "subject installation",
       "items": [
         {
-          "label": "Installation",
-          "id": "ipainstalldraft"
+          "label": "Installation Guide",
+          "id": "dxdiinstall34"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "dxdiadmin34"
         }
       ]
     }

@@ -71,7 +71,7 @@
     },
     {
       "id": "datastudiodraft",
-      "title": "Data Studio",
+      "title": "Data Studio Draft",
       "url": "cloud/datastudio/app",
       "metadata": {
         "product": ["Data Studio"],
@@ -88,7 +88,7 @@
     },
     {
       "id": "datastudiorelease",
-      "title": "Data Studio",
+      "title": "Data Studio Release",
       "url": "cloud/datastudio/app",
       "metadata": {
         "product": ["Data Studio"],
@@ -113,91 +113,6 @@
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Configuration"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "appeventsccrndraft",
-      "title": "Application Events for Claims Release Notes",
-      "url": "cloud/gw-feature-preview/ccappeventsrn",
-      "metadata": {
-        "product": ["Feature Preview"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
-        "subject": ["Release Notes"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "ccappeventsdevdraft",
-      "title": "ClaimCenter App Events for Developers",
-      "url": "cloud/gw-feature-preview/ccappevents",
-      "metadata": {
-        "product": ["Feature Preview"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
-        "subject": ["Integration"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "pcappeventsdevdraft",
-      "title": "PolicyCenter App Events for Developers",
-      "url": "cloud/gw-feature-preview/pcappevents",
-      "metadata": {
-        "product": ["Feature Preview"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
-        "subject": ["Integration"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "integgatewaydevdraft",
-      "title": "Integration Gateway for Developers",
-      "url": "cloud/gw-feature-preview/integgateway",
-      "metadata": {
-        "product": ["Feature Preview"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
-        "subject": ["Integration"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "integgatewayrndraft",
-      "title": "Integration Gateway Release Notes",
-      "url": "cloud/gw-feature-preview/igrelnotes",
-      "metadata": {
-        "product": ["Feature Preview"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
-        "subject": ["Release notes"]
       },
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
@@ -249,23 +164,6 @@
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Configuration"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "webhooksapinext",
-      "title": "Webhooks API Reference",
-      "url": "cloud/gw-feature-preview/webhooksapi",
-      "metadata": {
-        "product": ["Feature Preview"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
-        "subject": ["Integration"]
       },
       "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
