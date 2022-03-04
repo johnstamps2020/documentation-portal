@@ -1,0 +1,25 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Automated redirect",
+  "includeInBreadcrumbs": false,
+  "class": "threeCards",
+  "template": "redirect",
+  "items": [
+    {
+      "label": "Banff",
+      "page": "banff"
+    },
+    {
+      "label": "Cortina",
+      "page": "cortina"
+    },
+    {
+      "label": "Dobson",
+      "page": "dobson"
+    },
+    {
+      "label": "_redirect",
+      "link": "/apiReferences/dobson"
+    }
+  ]
+}
