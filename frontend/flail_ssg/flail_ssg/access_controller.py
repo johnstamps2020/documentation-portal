@@ -51,7 +51,6 @@ def add_public_and_internal_props_to_page_configs(build_dir: Path):
         items = page_config.json_object.get('items')
         updated_page_config = copy.deepcopy(page_config)
         if items:
-            # Add the internal and public properties to page configs to mark pages that aren't referenced from anywhere
             doc_and_page_items = get_items_on_page(items, 'page') + get_items_on_page(items, 'id')
             updated_page_config.json_object['public'] = check_page_contains_public_items(doc_and_page_items)
             updated_page_config.json_object['internal'] = check_page_contains_only_internal_items(doc_and_page_items)
@@ -66,11 +65,6 @@ def set_public_and_internal_props_on_all_page_refs(build_dir: Path, public_paths
             if item_path := item.get('page'):
                 absolute_page_ref = (page_config_dir / item_path).resolve()
                 item['public'] = False
-                # EXAMPLE: apiReferences contains three dirs:
-                #     banff -> not public, linked from apiReferences
-                #     cortina -> public, not linked from apiReferences
-                #     dobson -> public, not linked from apiReferences
-                # apiReferences should not be public
                 if any(absolute_page_ref == page_path.parent for page_path in public_paths):
                     item['public'] = True
                 item['internal'] = False
@@ -121,8 +115,10 @@ def set_public_and_internal_props_on_doc_refs(build_dir: Path, docs: list[dict])
         return any(item.get('public') for item in doc_items) if doc_items else False
 
     def check_page_contains_only_internal_docs(doc_items: list[dict], page_items: list[dict]) -> bool:
-        # Page items are checked later and they can be internal or not. Here, we only check if the page has only
-        # internal doc references
+        """
+        Page items are checked later and they can be internal or not. Here, we only check if the page has only
+        internal doc references
+        """
         if page_items:
             return False
         return all(item.get('internal') for item in doc_items) if doc_items else False
@@ -166,19 +162,21 @@ def run_access_controller(send_bouncer_home: bool, build_dir: Path, docs_config_
 
     _access_controller_logger.info('PROCESS STARTED: Mark pages as public and internal')
     # Step 1:
-    # a) Mark doc refs in page configs with the 'public' and 'internal' props,
-    # b) After doc refs are marked, check which pages contain public docs and only internal docs
-    # c) Write modified pages
-    # RESULT: list of pages that contain public docs and list of pages that contain only internal docs
+    # 1. Mark doc refs in page configs with the 'public' and 'internal' props.
+    # 2. After doc refs are marked, check which pages contain public docs and only internal docs.
+    # 3. Save modified pages.
     pages_with_public_docs, pages_with_only_internal_docs = run_process(set_public_and_internal_props_on_doc_refs,
                                                                         build_dir,
                                                                         docs)
     # Step 2:
-    # a) Mark all page refs with the public and internal props
-    # b) Write modified pages
+    # 1. Mark all page refs with the 'public' and 'internal' props
+    # 2. Save modified pages.
     run_process(set_public_and_internal_props_on_all_page_refs, build_dir,
                 pages_with_public_docs, pages_with_only_internal_docs)
-    # Step 3 - add the public and internal props to all page configs
+    # Step 3:
+    # 1. Add the 'public' and 'internal' props to all page configs.
+    # 2. Save modified pages.
     add_public_and_internal_props_to_page_configs(build_dir)
+    # Step 4 - validate pages
     validate_items_are_not_public_and_internal(build_dir)
     _access_controller_logger.info('PROCESS ENDED: Mark pages as public and internal')

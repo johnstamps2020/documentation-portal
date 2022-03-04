@@ -441,6 +441,13 @@ def test_running_preprocessor(load_docs_from_main_config):
 
 
 def test_running_access_controller():
+    """
+    EXAMPLE TEST: apiReferences contains three dirs:
+        - banff -> not public, linked from apiReferences
+        - cortina -> public, not linked from apiReferences
+        - dobson -> public, not linked from apiReferences
+    apiReferences should not be public
+    """
     root_input_dir = TestConfig.resources_input_dir / 'pages' / 'run-access-controller'
     root_expected_dir = TestConfig.resources_expected_dir / 'pages' / 'run-access-controller'
     docs_config_file = TestConfig.resources_input_dir / 'config' / 'public-and-internal-docs' / 'docs.json'
@@ -455,7 +462,7 @@ def test_running_access_controller():
         check_dirs_have_the_same_files(tmp_test_dir, expected_dir)
         check_files_have_the_same_content(tmp_test_dir, expected_dir)
 
-        # shutil.rmtree(tmp_test_dir)
+        shutil.rmtree(tmp_test_dir)
 
     for dir_name in ['internal-pages', 'public-pages']:
         test_pages(dir_name)
