@@ -27,16 +27,16 @@
           "id": "testingframeworksuielysian"
         },
         {
-          "label": "Load and Performance Testing",
+          "label": "GT: Load",
           "id": "testingframeworksloadelysian"
         },
         {
-          "label": "Test Case Management",
-          "id": "testingframeworksmgmtelysian"
+          "label": "GT: Data",
+          "id": "testingframeworksdataelysian"
         },
         {
-          "label": "Test Data Management",
-          "id": "testingframeworksdataelysian"
+          "label": "GT: Management",
+          "id": "testingframeworksmgmtelysian"
         }
       ]
     }
