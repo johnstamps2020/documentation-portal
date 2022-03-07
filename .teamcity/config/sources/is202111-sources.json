@@ -24,13 +24,6 @@
     },
     {
       "id": "is202111src",
-      "title": "IS 2021.11.1",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
-      "branch": "release/2021.11.1"
-    },
-    {
-      "id": "is2021112src",
       "title": "IS 2021.11.2",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
