@@ -266,8 +266,7 @@
       "items": [
         {
           "label": "Cloud Platform Release Notes",
-          "id": "gwcpreleasenotes",
-          "env": ["int"]
+          "id": "gwcpreleasenotes"
         },
         {
           "label": "Cloud Console Release Notes",
