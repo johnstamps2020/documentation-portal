@@ -5,6 +5,7 @@
 @import 'modules/guidewireGlossary.css';
 @import 'modules/searchBox.css';
 @import 'modules/highlight.css';
+@import 'modules/internal.css';
 
 :root {
   --ff-GW: 'Source Sans Pro', Helvetica, Arial, sans-serif;
