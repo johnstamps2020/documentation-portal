@@ -1,0 +1,56 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "explorees419rnrelease",
+      "title": "Release Notes",
+      "url": "cloud/explorees419/relnotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Explore"],
+        "version": ["es-419"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "explorees419usingrelease",
+      "title": "Application Guide",
+      "url": "cloud/explorees419/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Explore"],
+        "version": ["es-419"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "explorees419datadictrelease",
+      "title": "Data Dictionaries",
+      "url": "cloud/explorees419/datadict",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Explore"],
+        "version": ["es-419"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    }
+  ]
+}

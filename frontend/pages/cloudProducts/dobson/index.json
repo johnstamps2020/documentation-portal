@@ -125,6 +125,10 @@
               "page": "../explore/latest"
             },
             {
+              "label": "Explore (Spanish)",
+              "page": "../explore/es-419"
+            },
+            {
               "label": "Predict",
               "id": "livepredictlatest"
             }
