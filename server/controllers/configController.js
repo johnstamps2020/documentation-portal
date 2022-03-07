@@ -54,18 +54,24 @@ async function getConfig(reqObj) {
   }
 }
 
-async function isPublicDoc(url, reqObj) {
+async function getDocByUrl(url, reqObj) {
   let relativeUrl = url + '/';
   if (relativeUrl.startsWith('/')) {
     relativeUrl = relativeUrl.substring(1);
   }
 
   const config = await getConfig(reqObj);
-  const matchingDoc = config.docs.find(d =>
-    relativeUrl.startsWith(d.url + '/')
-  );
+  return config.docs.find(d => relativeUrl.startsWith(d.url + '/'));
+}
 
+async function isPublicDoc(url, reqObj) {
+  const matchingDoc = await getDocByUrl(url, reqObj);
   return !!(matchingDoc && matchingDoc.public);
+}
+
+async function isInternalDoc(url, reqObj) {
+  const matchingDoc = await getDocByUrl(url, reqObj);
+  return !!(matchingDoc && matchingDoc.internal);
 }
 
 async function getRootBreadcrumb(pagePathname) {
@@ -163,6 +169,7 @@ async function getDocId(products, platforms, versions, title, url, reqObj) {
 module.exports = {
   getConfig,
   isPublicDoc,
+  isInternalDoc,
   getRootBreadcrumb,
   getVersionSelector,
   getDocumentMetadata,
