@@ -75,7 +75,7 @@
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
