@@ -10,7 +10,9 @@
 <!-- End Google Tag Manager (noscript) -->
 <% const searchBox = typeof showSearchBox !== 'undefined' ? showSearchBox : true
 const placeholderText = typeof localizationInfo !== 'undefined' ? localizationInfo.placeholder : 'Search'
-const searchFilters = typeof pageContent !== 'undefined' && typeof pageContent.search_filters !== 'undefined' ? pageContent.search_filters : false
+const pageContentLocal = typeof pageContent !== 'undefined' ? pageContent : false
+const searchFilters = pageContentLocal && typeof pageContent.search_filters !== 'undefined' ? pageContent.search_filters : false
+const internalBadge = pageContentLocal && pageContentLocal.internal;
 %>
 <% if (typeof headerClass !== 'undefined') { %>
 <header class="<%= headerClass %>">
@@ -54,6 +56,9 @@ const searchFilters = typeof pageContent !== 'undefined' && typeof pageContent.s
             </div>
         <% } %>
         <div id="headerRight">
+            <% if (internalBadge) { %>
+                <%- include('internal-badge') %>
+            <% } %>
             <%- include('header-buttons') %>
         </div>
     </header>

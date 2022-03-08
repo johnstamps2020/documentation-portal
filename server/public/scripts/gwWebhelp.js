@@ -18,7 +18,7 @@ let docId = document
   .querySelector('[name="gw-doc-id"]')
   ?.getAttribute('content');
 let docTitle = undefined;
-let docInternal = true;
+let docInternal = undefined;
 const topicId = window.location.pathname;
 
 async function showTopicRecommendations() {
@@ -109,6 +109,30 @@ function createContainerForCustomHeaderElements() {
   document
     .getElementById('wh_top_menu_and_indexterms_link')
     .appendChild(container);
+}
+
+function addInternalBadge() {
+  try {
+    if (docInternal) {
+      const internalBadge = document.createElement('div');
+      internalBadge.setAttribute('id', 'internalBadge');
+      const internalBadgeText = document.createElement('span');
+      internalBadgeText.innerHTML = 'internal doc';
+      internalBadgeText.setAttribute('class', 'internalBadgeText');
+      const internalBadgeTooltip = document.createElement('span');
+      internalBadgeTooltip.innerHTML =
+        'This document is available only to people with a Guidewire email. Do not share the link with external stakeholders because they will not be able to see the contents.';
+      internalBadgeTooltip.setAttribute('class', 'internalBadgeTooltip');
+      internalBadge.appendChild(internalBadgeText);
+      internalBadge.appendChild(internalBadgeTooltip);
+      document
+        .getElementById('customHeaderElements')
+        .appendChild(internalBadge);
+    }
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
 }
 
 async function createVersionSelector() {
@@ -336,6 +360,7 @@ function hideByCssClass(cssClass) {
 async function addCustomElements() {
   const customHeaderElements = document.getElementById('customHeaderElements');
   if (customHeaderElements != null) {
+    addInternalBadge();
     await createVersionSelector();
     await addAvatar();
     customHeaderElements.classList.remove('invisible');

@@ -12,6 +12,7 @@ import { setUpSidebar } from './modules/sidebar.js';
 import { showTopicRecommendations } from './modules/recommendations.js';
 import { addSkipNav } from './modules/skipNav.js';
 import { installAndInitializePendo } from './modules/pendo.js';
+import { addInternalBadge } from './modules/internal';
 import './prism.js';
 import '../stylesheets/html5template.css';
 import '../stylesheets/prism.css';
@@ -22,6 +23,7 @@ docReady(async function() {
   setUpSidebar();
   normalizeCode();
   await setMetadata();
+  addInternalBadge();
   addLogo();
   addSearchBox();
   await addVersionSelector();
