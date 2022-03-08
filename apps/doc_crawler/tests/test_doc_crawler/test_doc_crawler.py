@@ -1,12 +1,9 @@
-import ast
 import json
 import os
-from string import Template
-
-import time
 from pathlib import Path
 
 import pytest
+import time
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 
@@ -29,7 +26,7 @@ doc_objects_to_crawl = doc_portal_spider.get_portal_config(
 main_index_settings = ElasticClient.main_index_settings
 
 
-def load_json_file(file_path: Path()):
+def load_json_file(file_path: Path):
     with open(file_path, 'r') as f:
         return [json.loads(line) for line in f]
 
@@ -70,19 +67,29 @@ def test_index_was_created(elastic_client):
 
 def test_index_has_entries(elastic_client):
     number_of_index_entries = elastic_client.count(index=index_name)['count']
-    assert number_of_index_entries == 52
+    assert number_of_index_entries == 157
 
 
 def test_topic_has_internal_property(elastic_client):
-    search_results = elastic_client.search(index=index_name, body={
+    search_results_not_internal = elastic_client.search(index=index_name, body={
         "query": {
             "match": {
                 "id": "/isconfigupgradetools/320/topics/c_error-log-files.html"
             }
         }
     })
-    found_doc = search_results['hits']['hits'][0]['_source']
-    assert found_doc['internal'] is True
+    found_not_internal_doc = search_results_not_internal['hits']['hits'][0]['_source']
+    assert found_not_internal_doc['internal'] is False
+
+    search_results_internal = elastic_client.search(index=index_name, body={
+        "query": {
+            "match": {
+                "id": "/isconfigupgradetools/draft/topics/r_smart-diff-commands.html"
+            }
+        }
+    })
+    found_internal_doc = search_results_internal['hits']['hits'][0]['_source']
+    assert found_internal_doc['internal'] is True
 
 
 def test_exact_match(elastic_client):
@@ -110,7 +117,7 @@ def test_exact_match(elastic_client):
         search_results = elastic_client.search(index=index_name,
                                                body=prepare_search_query(search_string, True))
 
-        assert search_results['hits']['total']['value'] == 6
+        assert search_results['hits']['total']['value'] == 19
         found_docs = (hit['_source'] for hit in search_results['hits']['hits'])
         for doc in found_docs:
             assert search_string.casefold() in doc['body'].casefold()
@@ -137,10 +144,6 @@ def test_exact_match(elastic_client):
 
 
 def test_delete_entries_by_query(elastic_client):
-    entries_with_id_existed = False
-    entries_with_id_deleted = False
-    number_of_existing_eq_number_of_deleted = False
-
     elastic_del_query = elastic_client.prepare_del_query(elastic_client.elastic_del_query_template,
                                                          id_to_delete='isconfigupgradetools320')
 
@@ -149,9 +152,7 @@ def test_delete_entries_by_query(elastic_client):
     number_of_existing_entries_before_delete = search_doc_id_before_delete[
         'hits']['total']['value']
 
-    if number_of_existing_entries_before_delete > 0:
-        entries_with_id_existed = True
-
+    entries_with_id_existed = number_of_existing_entries_before_delete > 0
     delete_operation_result = elastic_client.delete_entries_by_query(
         index_name, elastic_del_query)
     number_of_deleted_entries = delete_operation_result.get('deleted')
@@ -163,11 +164,10 @@ def test_delete_entries_by_query(elastic_client):
     number_of_existing_entries_after_delete = search_doc_id_after_delete[
         'hits']['total']['value']
 
-    if number_of_existing_entries_after_delete == 0:
-        entries_with_id_deleted = True
-
-    if number_of_existing_entries_before_delete == number_of_deleted_entries:
-        number_of_existing_eq_number_of_deleted = True
+    entries_with_id_deleted = number_of_existing_entries_after_delete == 0
+    number_of_existing_eq_number_of_deleted = (
+            number_of_existing_entries_before_delete == number_of_deleted_entries
+    )
 
     assert (
             entries_with_id_existed
