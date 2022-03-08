@@ -38,6 +38,7 @@ export async function setMetadata() {
           window.docSubject = docInfo.subject?.join(',');
           window.docRelease = docInfo.release?.join(',');
           window.docTitle = docInfo.docTitle;
+          window.docInternal = docInfo.docInternal;
         }
       } catch (err) {
         console.error(err);

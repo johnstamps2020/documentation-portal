@@ -14,7 +14,11 @@ let docProduct = docProductElement
 let docPlatform = document.querySelector("meta[name = 'gw-platform']")?.content;
 let docVersion = document.querySelector("meta[name = 'gw-version']")?.content;
 let docCategory = document.querySelector("meta[name = 'DC.coverage']")?.content;
+let docId = document
+  .querySelector('[name="gw-doc-id"]')
+  ?.getAttribute('content');
 let docTitle = undefined;
+let docInternal = true;
 const topicId = window.location.pathname;
 
 async function showTopicRecommendations() {
@@ -46,9 +50,15 @@ async function showTopicRecommendations() {
 }
 
 async function fetchMetadata() {
-  const docId = document
-    .querySelector('[name="gw-doc-id"]')
-    ?.getAttribute('content');
+  if (docId == null) {
+    const docIdResponse = await fetch(
+      `/safeConfig/docId?platforms=${docPlatform}&products=${docProduct}&versions=${docVersion}&url=${topicId}${
+        docTitle ? `&title=${docTitle}` : ''
+      }`
+    );
+    const docIdResponseJson = await docIdResponse.json();
+    docId = docIdResponseJson.docId;
+  }
   if (docId) {
     const response = await fetch(`/safeConfig/docMetadata/${docId}`);
     if (response.ok) {
@@ -60,6 +70,7 @@ async function fetchMetadata() {
           docVersion = docInfo.version?.join(',') || docVersion;
           docCategory = docInfo.category?.join(',') || docCategory;
           docTitle = docInfo.docTitle;
+          docInternal = docInfo.docInternal;
           return docInfo;
         }
       } catch (err) {
@@ -104,18 +115,6 @@ async function createVersionSelector() {
   try {
     if (!docProduct) {
       return null;
-    }
-    let docId = document
-      .querySelector('[name="gw-doc-id"]')
-      ?.getAttribute('content');
-    if (docId == null) {
-      const docIdResponse = await fetch(
-        `/safeConfig/docId?platforms=${docPlatform}&products=${docProduct}&versions=${docVersion}&url=${topicId}${
-          docTitle ? `&title=${docTitle}` : ''
-        }`
-      );
-      const docIdResponseJson = await docIdResponse.json();
-      docId = docIdResponseJson.docId;
     }
     const response = await fetch(`/safeConfig/versionSelectors?docId=${docId}`);
     const jsonResponse = await response.json();

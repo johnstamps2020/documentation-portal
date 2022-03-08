@@ -134,6 +134,7 @@ async function getDocumentMetadata(docId, reqObj) {
   if (doc) {
     return {
       docTitle: doc.title,
+      docInternal: doc.internal,
       ...doc.metadata,
     };
   } else {
