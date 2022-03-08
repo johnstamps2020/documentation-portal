@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { Client } = require('@elastic/elasticsearch');
+const { getUserInfo } = require('./userController');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const searchIndexName = 'gw-docs';
 
@@ -232,6 +233,8 @@ async function searchController(req, res, next) {
     const currentPage = req.query.page || 1;
     const startIndex = resultsPerPage * (currentPage - 1);
     const requestIsAuthenticated = req.session.requestIsAuthenticated;
+    const userInfo = await getUserInfo(req);
+    const hasGuidewireEmail = userInfo.hasGuidewireEmail;
     const mappings = await getFieldMappings();
     const filtersFromUrl = getFiltersFromUrl(mappings, urlQueryParameters);
 
@@ -253,6 +256,14 @@ async function searchController(req, res, next) {
         {
           term: {
             public: true,
+          },
+        },
+      ];
+    } else if (requestIsAuthenticated && !hasGuidewireEmail) {
+      queryBody.bool.filter = [
+        {
+          term: {
+            internal: false,
           },
         },
       ];
