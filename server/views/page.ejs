@@ -14,27 +14,40 @@
             <%- include('parts/page-selector') %>
         </div>
         <div class="content">
-            <% function create_block(label, className, items, doc_url, page, link, publiclyAvailable) { %>
-                <div class="<%= className || '' %>">
-                    <% if (doc_url || page || link) {
-                        let itemHref = doc_url || link;
-                        if (page) {
-                            itemHref = encodeURI(pagePath + page)
-                        } %>
-                    <a href="<%= itemHref %>"<%= !publiclyAvailable ? ' class="private"' : '' %>><%= label %></a>
-                    <% } else { %>
-                        <div class="label"<%= !publiclyAvailable ? ' class="private"' : '' %>><%= label %></div>
+            <% function createItemElement(className, href, label, itemItems, isPubliclyAvailable) { %>
+                <% if (href || itemItems.length > 0) { %>
+                    <div class="<%= className || '' %>">
+                        <% if (href) { %>
+                            <a href="<%= href %>"<%= !isPubliclyAvailable ? ' class="private"' : '' %>><%= label %></a>
+                        <% } else { %>
+                            <div class="label"<%= !isPubliclyAvailable ? ' class="private"' : '' %>><%= label %></div>
+                            <% itemItems.forEach(i => { -%>
+                                <%= createBlock(i) %>
+                            <% }) %>
+                        <% } %>
+                    </div>
+                <% } %>
+            <% } %>
+            <% function createBlock(item) { %>
+                <% const itemLabel = item.label
+                    const itemHref = item.page ? encodeURI(pagePath + item.page) : item.doc_url || item.link
+                    const itemIsPublic = item.public
+                    const itemClass = item.class
+                %>
+                <% if (hasGuidewireEmail) { %>
+                    <% const innerItems = item.items ? item.items : [] %>
+                    <%= createItemElement(itemClass, itemHref, itemLabel, innerItems, itemIsPublic) %>
+                <% } else if (!hasGuidewireEmail) { %>
+                    <% const itemIsInternal = item.internal %>
+                    <% const itemRegularInnerItems = item.items ? item.items.filter(i => !i.internal) : [] %>
+                    <% if (!itemIsInternal) { %>
+                        <%= createItemElement(itemClass, itemHref, itemLabel, itemRegularInnerItems, itemIsPublic) %>
                     <% } %>
-                    <% if (items && items.length > 0) { -%>
-                        <% items.forEach(item => { -%>
-                            <%= create_block(item.label, item.class, item.items, item.doc_url, item.page, item.link, item.public) %>
-                        <% }) %>
-                    <% } %>
-                </div>
+                <% } %>
             <% } %>
             <div class="items">
-                <% pageContent.items.forEach(item => { %>
-                    <%= create_block(item.label, item.class, item.items, item.doc_url, item.page, item.link, item.public) %>
+                <% pageContent.items.forEach(pageItem => { %>
+                    <%= createBlock(pageItem) %>
                 <% }) %>
             </div>
             <%- include('parts/sidebar') %>
@@ -42,6 +55,5 @@
     </div>
 </main>
 <%- include('parts/footer') %>
-</main>
 </body>
 </html>
