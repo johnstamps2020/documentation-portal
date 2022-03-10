@@ -15,6 +15,7 @@ let docPlatform = document.querySelector("meta[name = 'gw-platform']")?.content;
 let docVersion = document.querySelector("meta[name = 'gw-version']")?.content;
 let docCategory = document.querySelector("meta[name = 'DC.coverage']")?.content;
 let docTitle = undefined;
+let docSubject = undefined;
 const topicId = window.location.pathname;
 
 async function showTopicRecommendations() {
@@ -59,17 +60,19 @@ async function fetchMetadata() {
           docPlatform = docInfo.platform?.join(',') || docPlatform;
           docVersion = docInfo.version?.join(',') || docVersion;
           docCategory = docInfo.category?.join(',') || docCategory;
+          docSubject = docInfo.subject;
           docTitle = docInfo.docTitle;
-          return docInfo;
+          return true;
         }
       } catch (err) {
         console.error(err);
+        return null;
       }
     }
   }
 }
 
-let metadata = undefined;
+let metadataIsAvailable = undefined;
 
 async function findBestMatchingTopic(searchQuery, targetDocVersion) {
   try {
@@ -567,25 +570,24 @@ async function addFeedbackElements() {
   body.appendChild(renderThanksMessage());
 }
 
+function createInput(name, value, isHidden = true) {
+  const input = document.createElement('input');
+  if (isHidden) {
+    input.setAttribute('type', 'hidden');
+  }
+  input.setAttribute('name', name);
+  input.setAttribute('value', value);
+
+  return input;
+}
+
 async function configureSearch() {
-  if (metadata) {
+  if (metadataIsAvailable) {
     const searchForms = document.querySelectorAll(
       '#searchForm, #searchFormNav'
     );
     if (searchForms.length > 0) {
       for (const searchForm of searchForms) {
-        let hiddenInputsToAdd = [];
-        for (const metadataKey of Object.keys(metadata)) {
-          const input = document.createElement('input');
-          input.setAttribute('type', 'hidden');
-          input.setAttribute('name', metadataKey);
-          if (typeof metadata[metadataKey] === 'string') {
-            input.setAttribute('value', metadata[metadataKey]);
-          } else {
-            input.setAttribute('value', metadata[metadataKey].join(','));
-          }
-          hiddenInputsToAdd.push(input);
-        }
         const existingHiddenInputs = searchForm.querySelectorAll(
           'div > [type="hidden"]'
         );
@@ -595,9 +597,13 @@ async function configureSearch() {
           }
         }
 
-        for (const newInput of hiddenInputsToAdd) {
-          searchForm.firstChild.appendChild(newInput);
-        }
+        // Filters and their names must match filters in the displayOrder variable in searchController.js
+        searchForm.firstChild.appendChild(createInput('doc_title', docTitle));
+        searchForm.firstChild.appendChild(createInput('platform', docPlatform));
+        searchForm.firstChild.appendChild(createInput('product', docProduct));
+        searchForm.firstChild.appendChild(createInput('version', docVersion));
+        docSubject &&
+          searchForm.firstChild.appendChild(createInput('subject', docSubject));
       }
     }
   } else {
@@ -705,7 +711,7 @@ async function installAndInitializePendo() {
 }
 
 docReady(async function() {
-  metadata = await fetchMetadata();
+  metadataIsAvailable = await fetchMetadata();
   await createContainerForCustomHeaderElements();
   addCustomElements();
   addTopLinkToBreadcrumbs();
