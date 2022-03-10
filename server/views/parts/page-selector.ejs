@@ -9,6 +9,7 @@
                     window.location = selectedPage;
                 }
             }
+
             document.querySelector('#pageSelector').addEventListener('change', selectPage)
         </script>
 
@@ -33,14 +34,13 @@
         if (item.label === pageSelector.selectedItem) { %>
             <option selected="selected"><%= item.label %></option>
         <% } else { %>
-            <% let itemHref = item.doc_url || item.link;
-                if (item.page) {
-                    itemHref = encodeURI(pagePath + item.page)
-                }
-            %>
-            <option value="<%= itemHref %>">
-                <%= item.label %>
-            </option>
+            <% const itemHref = item.page ? encodeURI(pagePath + item.page) : item.doc_url || item.link %>
+            <% const itemIsInternal = item.internal %>
+            <% if (!hasGuidewireEmail && !itemIsInternal) { %>
+                <option value="<%= itemHref %>">
+                    <%= item.label %>
+                </option>
+            <% } %>
         <% }}) %>
     </select>
 <% } %>
