@@ -22,6 +22,10 @@
   gap: var(--navbar-gap);
 }
 
+#navbarLeft {
+  max-width: calc(100% - 250px - var(--navbar-gap));
+}
+
 .navbarButton {
   width: var(--navbar-button-size);
   height: var(--navbar-button-size);
