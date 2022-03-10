@@ -646,6 +646,25 @@ function setFooter() {
   resizeObserver.observe(whTopicBody);
 }
 
+function scramble(phrase) {
+  var hash = 0,
+    i,
+    chr;
+  if (phrase.length === 0) return hash;
+  for (i = 0; i < phrase.length; i++) {
+    chr = phrase.charCodeAt(i);
+    hash = (hash << 5) - hash + chr;
+    hash |= 0;
+  }
+  return hash;
+}
+
+function getScrambledEmail(email) {
+  const parts = email.split('@');
+  const scrambledLogin = scramble(parts[0]);
+  return `${scrambledLogin}@${parts[1]}`;
+}
+
 async function installAndInitializePendo() {
   (function(apiKey) {
     (function(p, e, n, d, o) {
@@ -674,18 +693,20 @@ async function installAndInitializePendo() {
   const response = await fetch('/userInformation');
   if (response.ok) {
     const userInformation = await response.json();
-    const email = userInformation.preferred_username;
-    const domain = email.split('@')[1] || 'unknown';
+    const isEmployee = userInformation.hasGuidewireEmail;
+    const domain =
+      userInformation.preferred_username.split('@')[1] || 'unknown';
+    const email = isEmployee
+      ? userInformation.preferred_username
+      : getScrambledEmail(userInformation.preferred_username);
     const name = userInformation.name;
 
     pendo.initialize({
       visitor: {
         id: email,
         email: email,
-        full_name: name,
-        role: userInformation.hasGuidewireEmail
-          ? 'employee'
-          : 'customer/partner',
+        full_name: isEmployee ? name : 'Anonymous User',
+        role: isEmployee ? 'employee' : 'customer/partner',
       },
 
       account: {
