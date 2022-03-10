@@ -78,9 +78,8 @@ def set_public_and_internal_props_on_all_page_refs(build_dir: Path, public_paths
     updated_internal_paths = copy.deepcopy(internal_paths)
     for index_json_file in build_dir.rglob('*.json'):
         page_config = load_json_file(index_json_file)
-        items = page_config.json_object.get('items')
         updated_page_config = copy.deepcopy(page_config)
-        if items:
+        if items := page_config.json_object.get('items'):
             marked_items = mark_page_refs_with_public_and_internal_props(page_config.dir, items)
             updated_page_config.json_object['items'] = marked_items
             marked_doc_and_page_items = get_items_on_page(marked_items, 'page') + get_items_on_page(marked_items, 'id')
@@ -91,6 +90,10 @@ def set_public_and_internal_props_on_all_page_refs(build_dir: Path, public_paths
             if page_contains_only_internal_items and (
                     updated_page_config.absolute_path not in updated_internal_paths):
                 updated_internal_paths.append(updated_page_config.absolute_path)
+        if selector := page_config.json_object.get('selector'):
+            selector_items = selector['items']
+            marked_selector_items = mark_page_refs_with_public_and_internal_props(page_config.dir, selector_items)
+            updated_page_config.json_object['selector']['items'] = marked_selector_items
         write_json_object_to_file(updated_page_config.json_object, updated_page_config.absolute_path)
     if sorted(updated_internal_paths) != sorted(internal_paths):
         set_public_and_internal_props_on_all_page_refs(build_dir, updated_public_paths, updated_internal_paths)
@@ -127,9 +130,8 @@ def set_public_and_internal_props_on_doc_refs(build_dir: Path, docs: list[dict])
     pages_with_only_internal_docs = []
     for index_json_file in build_dir.rglob('*.json'):
         page_config = load_json_file(index_json_file)
-        items = page_config.json_object.get('items')
         updated_page_config = copy.deepcopy(page_config)
-        if items:
+        if items := page_config.json_object.get('items'):
             marked_items = mark_doc_refs_with_public_and_internal_props(items)
             updated_page_config.json_object['items'] = marked_items
             marked_doc_items = get_items_on_page(marked_items, 'id')
@@ -141,6 +143,10 @@ def set_public_and_internal_props_on_doc_refs(build_dir: Path, docs: list[dict])
                 pages_with_public_docs.append(updated_page_config.absolute_path)
             if page_contains_only_internal_docs and updated_page_config.absolute_path not in pages_with_only_internal_docs:
                 pages_with_only_internal_docs.append(updated_page_config.absolute_path)
+        if selector := page_config.json_object.get('selector'):
+            selector_items = selector['items']
+            marked_selector_items = mark_doc_refs_with_public_and_internal_props(selector_items)
+            updated_page_config.json_object['selector']['items'] = marked_selector_items
 
         write_json_object_to_file(updated_page_config.json_object, updated_page_config.absolute_path)
     return pages_with_public_docs, pages_with_only_internal_docs

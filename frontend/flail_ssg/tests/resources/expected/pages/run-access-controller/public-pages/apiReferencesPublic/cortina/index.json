@@ -9,11 +9,15 @@
     "items": [
       {
         "label": "Dobson",
-        "page": "../dobson"
+        "page": "../dobson",
+        "public": true,
+        "internal": false
       },
       {
         "label": "Banff",
-        "page": "../banff"
+        "page": "../banff",
+        "public": false,
+        "internal": false
       }
     ]
   },

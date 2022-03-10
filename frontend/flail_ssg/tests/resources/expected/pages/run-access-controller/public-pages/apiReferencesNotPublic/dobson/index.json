@@ -9,11 +9,15 @@
     "items": [
       {
         "label": "Cortina",
-        "page": "../cortina"
+        "page": "../cortina",
+        "public": true,
+        "internal": false
       },
       {
         "label": "Banff",
-        "page": "../banff"
+        "page": "../banff",
+        "public": false,
+        "internal": false
       }
     ]
   },

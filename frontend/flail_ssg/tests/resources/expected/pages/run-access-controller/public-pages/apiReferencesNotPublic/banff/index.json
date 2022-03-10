@@ -9,11 +9,15 @@
     "items": [
       {
         "label": "Dobson",
-        "page": "../dobson"
+        "page": "../dobson",
+        "public": true,
+        "internal": false
       },
       {
         "label": "Cortina",
-        "page": "../cortina"
+        "page": "../cortina",
+        "public": true,
+        "internal": false
       }
     ]
   },
