@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
 const path = require('path');
+const { getUserInfo } = require('./userController');
 
 const localConfigDir = path.resolve(`${__dirname}/../../.teamcity/config/docs`);
 const breadcrumbsConfigPath = path.resolve(
@@ -44,8 +45,13 @@ async function getConfig(reqObj) {
       );
       config = await result.json();
     }
+    const userInfo = await getUserInfo();
+    const hasGuidewireEmail = userInfo.hasGuidewireEmail;
     if (!reqObj.session.requestIsAuthenticated) {
       config['docs'] = config.docs.filter(d => d.public === true);
+    }
+    if (!hasGuidewireEmail) {
+      config['docs'] = config.docs.filter(d => d.internal === false);
     }
     return config;
   } catch (err) {
