@@ -29,14 +29,13 @@ export function addSearchBox() {
   searchInput.setAttribute('aria-label', 'Search phrase');
   searchWrapper.appendChild(searchInput);
 
-  searchWrapper.appendChild(createInput('docTitle', window.docTitle));
+  // Filters and their names must match filters in the displayOrder variable in searchController.js
+  searchWrapper.appendChild(createInput('doc_title', window.docTitle));
   searchWrapper.appendChild(createInput('platform', window.docPlatform));
   searchWrapper.appendChild(createInput('product', window.docProduct));
   searchWrapper.appendChild(createInput('version', window.docVersion));
   window.docSubject &&
     searchWrapper.appendChild(createInput('subject', window.docSubject));
-  window.docRelease &&
-    searchWrapper.appendChild(createInput('release', window.docRelease));
 
   const button = document.createElement('button');
   button.innerText = 'Search';
