@@ -44,14 +44,6 @@
           "id": "appeventsrn202205"
         },
         {
-          "label": "Integration Gateway Release Notes",
-          "id": "integgatewayrndraft"
-        },
-        {
-          "label": "Integration Gateway Release Notes",
-          "id": "integgatewayrn202205"
-        },
-        {
           "label": "REST API Client Release Notes",
           "id": "isdraftrestapiclientrn"
         },
@@ -242,14 +234,6 @@
         {
           "label": "Cloud API Authentication",
           "id": "ispc202205apica"
-        },
-        {
-          "label": "Integration Gateway for Developers",
-          "id": "integgatewaydevdraft"
-        },
-        {
-          "label": "Integration Gateway for Developers",
-          "id": "integgatewaydev202205"
         },
         {
           "label": "PolicyCenter App Events for Developers",
