@@ -3,6 +3,24 @@
   "title": "Page with only internal docs",
   "template": "page",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select page",
+    "selectedItem": "Page with only internal docs",
+    "items": [
+      {
+        "label": "Page with only internal items",
+        "page": "../pageWithOnlyInternalItems",
+        "public": false,
+        "internal": true
+      },
+      {
+        "label": "Page with mixed items",
+        "page": "../pageWithMixedItems",
+        "public": false,
+        "internal": false
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",
