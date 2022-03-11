@@ -146,9 +146,16 @@ app.use('/lrs', lrsRouter);
 app.use('/recommendations', recommendationsRouter);
 app.use('/support', supportRouter);
 
+function setResCacheControlHeader(proxyRes, req, res) {
+  if (proxyRes.headers['content-type']?.includes('html')) {
+    proxyRes.headers['Cache-Control'] = 'no-cache no-store must-revalidate';
+  }
+}
+
 const portal2ProxyOptions = {
   target: `${process.env.PORTAL2_S3_URL}`,
   changeOrigin: true,
+  onProxyRes: setResCacheControlHeader,
   onOpen: proxySocket => {
     proxySocket.on('data', hybiParseAndLogMessage);
   },
@@ -159,6 +166,7 @@ app.use('/portal', portal2Proxy);
 const s3ProxyOptions = {
   target: `${process.env.DOC_S3_URL}`,
   changeOrigin: true,
+  onProxyRes: setResCacheControlHeader,
   onOpen: proxySocket => {
     proxySocket.on('data', hybiParseAndLogMessage);
   },
