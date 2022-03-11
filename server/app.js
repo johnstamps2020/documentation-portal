@@ -148,7 +148,7 @@ app.use('/support', supportRouter);
 
 function setResCacheControlHeader(proxyRes, req, res) {
   if (proxyRes.headers['content-type']?.includes('html')) {
-    proxyRes.headers['Cache-Control'] = 'no-cache no-store must-revalidate';
+    proxyRes.headers['Cache-Control'] = 'no-store';
   }
 }
 
