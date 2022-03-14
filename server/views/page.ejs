@@ -14,13 +14,19 @@
             <%- include('parts/page-selector') %>
         </div>
         <div class="content">
-            <% function createItemElement(className, href, label, itemItems, isPubliclyAvailable) { %>
+            <% function createItemElement(className, href, label, itemItems, isPubliclyAvailable, isInternal) { %>
                 <% if (href || itemItems.length > 0) { %>
                     <div class="<%= className || '' %>">
                         <% if (href) { %>
-                            <a href="<%= href %>"<%= !isPubliclyAvailable ? ' class="private"' : '' %>><%= label %></a>
+                            <a href="<%= href %>"><%= label %></a>
+                            <% if (isInternal) { %>
+                                <span class="internalItem">internal</span>
+                            <% } %>
                         <% } else { %>
-                            <div class="label"<%= !isPubliclyAvailable ? ' class="private"' : '' %>><%= label %></div>
+                            <div class="label"><%= label %></div>
+                            <% if (isInternal) { %>
+                                <span class="internalItem">internal</span>
+                            <% } %>
                             <% itemItems.forEach(i => { -%>
                                 <%= createBlock(i) %>
                             <% }) %>
@@ -32,16 +38,17 @@
                 <% const itemLabel = item.label
                     const itemHref = item.page ? encodeURI(pagePath + item.page) : item.doc_url || item.link
                     const itemIsPublic = item.public
+                    const itemIsInternal = item.internal
                     const itemClass = item.class
                 %>
                 <% if (hasGuidewireEmail) { %>
                     <% const innerItems = item.items ? item.items : [] %>
-                    <%= createItemElement(itemClass, itemHref, itemLabel, innerItems, itemIsPublic) %>
+                    <%= createItemElement(itemClass, itemHref, itemLabel, innerItems, itemIsPublic, itemIsInternal) %>
                 <% } else if (!hasGuidewireEmail) { %>
                     <% const itemIsInternal = item.internal %>
                     <% const itemRegularInnerItems = item.items ? item.items.filter(i => !i.internal) : [] %>
                     <% if (!itemIsInternal) { %>
-                        <%= createItemElement(itemClass, itemHref, itemLabel, itemRegularInnerItems, itemIsPublic) %>
+                        <%= createItemElement(itemClass, itemHref, itemLabel, itemRegularInnerItems, itemIsPublic, itemIsInternal) %>
                     <% } %>
                 <% } %>
             <% } %>

@@ -52,3 +52,14 @@
 #internalBadge:hover .internalBadgeTooltip {
   visibility: visible;
 }
+
+.internalItem {
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 10px;
+  background-color: rgb(255, 186, 0);
+  color: black;
+  position: relative;
+  bottom: 2px;
+}
