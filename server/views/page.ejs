@@ -20,13 +20,13 @@
                         <% if (href) { %>
                             <a href="<%= href %>"><%= label %></a>
                             <% if (isInternal) { %>
-                                <span class="internalItem">internal</span>
+                                <span class="internalItem">
+                                    <img class="internalItemIcon" src="/images/info_orange_24dp.svg" role="img"/>
+                                    <span class="internalItemTooltip">Guidewire internal content</span>
+                                </span>
                             <% } %>
                         <% } else { %>
                             <div class="label"><%= label %></div>
-                            <% if (isInternal) { %>
-                                <span class="internalItem">internal</span>
-                            <% } %>
                             <% itemItems.forEach(i => { -%>
                                 <%= createBlock(i) %>
                             <% }) %>

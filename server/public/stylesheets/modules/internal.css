@@ -33,7 +33,8 @@
   font-weight: 600;
 }
 
-.internalBadgeTooltip {
+.internalBadgeTooltip,
+.internalItemTooltip {
   background-color: #000;
   border-radius: 6px;
   color: #fff;
@@ -42,24 +43,33 @@
   text-align: center;
   line-height: 1rem;
   padding: 8px;
-  position: absolute;
   visibility: hidden;
-  width: 200px;
   z-index: 1;
+  position: absolute;
+}
+
+.internalBadgeTooltip {
+  width: 200px;
   transform: translate(-155%, -5%);
 }
 
-#internalBadge:hover .internalBadgeTooltip {
+.internalItemTooltip {
+  margin-left: 5px;
+}
+
+#internalBadge:hover .internalBadgeTooltip,
+.internalItem:hover .internalItemTooltip {
   visibility: visible;
 }
 
 .internalItem {
-  font-weight: 600;
-  padding: 2px 7px;
-  border-radius: 4px;
-  font-size: 10px;
-  background-color: rgb(255, 186, 0);
-  color: black;
+  cursor: pointer;
+}
+
+.internalItemIcon {
   position: relative;
-  bottom: 2px;
+  top: 5px;
+  width: 20px;
+  background-color: black;
+  border-radius: 50%;
 }
