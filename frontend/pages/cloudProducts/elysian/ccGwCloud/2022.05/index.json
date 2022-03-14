@@ -36,14 +36,6 @@
           "id": "appeventsrn202205"
         },
         {
-          "label": "Integration Gateway Release Notes",
-          "id": "integgatewayrndraft"
-        },
-        {
-          "label": "Integration Gateway Release Notes",
-          "id": "integgatewayrn202205"
-        },
-        {
           "label": "REST API Client Release Notes",
           "id": "isdraftrestapiclientrn"
         },
@@ -222,14 +214,6 @@
         {
           "label": "ClaimCenter App Events for Developers",
           "id": "ccappeventsdev202205"
-        },
-        {
-          "label": "Integration Gateway for Developers",
-          "id": "integgatewaydevdraft"
-        },
-        {
-          "label": "Integration Gateway for Developers",
-          "id": "integgatewaydev202205"
         },
         {
           "label": "REST API Framework",

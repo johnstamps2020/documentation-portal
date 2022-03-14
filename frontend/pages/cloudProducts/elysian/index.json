@@ -211,12 +211,44 @@
           "id": "guidewirecloudconsolerninsurerdev"
         },
         {
+          "label": "Cloud Console Release Notes",
+          "id": "guidewirecloudconsolerninsurerdevdraft"
+        },
+        {
+          "label": "Integration Gateway Release Notes",
+          "id": "integgatewayrndraft"
+        },
+        {
+          "label": "Integration Gateway Release Notes",
+          "id": "integgatewayrn202205"
+        },
+        {
+          "label": "Integration Gateway for Developers",
+          "id": "integgatewaydevdraft"
+        },
+        {
+          "label": "Integration Gateway for Developers",
+          "id": "integgatewaydev202205"
+        },
+        {
+          "label": "Working with Guidewire Cloud Platform",
+          "id": "cloudplatformdraft"
+        },
+        {
           "label": "Working with Guidewire Cloud Platform",
           "id": "cloudplatformrelease"
         },
         {
           "label": "Authentication with Guidewire Identity Federation Hub",
+          "id": "guidewireidentityfederationhubdraft"
+        },
+        {
+          "label": "Authentication with Guidewire Identity Federation Hub",
           "id": "guidewireidentityfederationhub"
+        },
+        {
+          "label": "Cloud Console",
+          "id": "guidewirecloudconsoleguideinsurerdevdraft"
         },
         {
           "label": "Cloud Console",

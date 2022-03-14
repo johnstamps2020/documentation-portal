@@ -22,44 +22,68 @@ function installPendo(apiKey) {
   })(window, document, 'script', 'pendo');
 }
 
-function getUserEmailOrFail() {
+function scramble(phrase) {
+  var hash = 0,
+    i,
+    chr;
+  if (phrase.length === 0) return hash;
+  for (i = 0; i < phrase.length; i++) {
+    chr = phrase.charCodeAt(i);
+    hash = (hash << 5) - hash + chr;
+    hash |= 0;
+  }
+  return hash;
+}
+
+function getScrambledEmail(email) {
+  const parts = email.split('@');
+  const scrambledLogin = scramble(parts[0]);
+  return `${scrambledLogin}@${parts[1]}`;
+}
+
+function getUserDetailsOrFail() {
   const userInfo = window.userInformation;
-  if (userInfo) {
-    if (userInfo.isLoggedIn) {
-      return userInfo.preferred_username;
-    } else {
-      return 'no.email@no.domain.com';
-    }
+
+  if (userInfo?.isLoggedIn) {
+    const isEmployee = userInfo.hasGuidewireEmail;
+    const domain = userInfo.preferred_username.split('@')[1];
+    const email = isEmployee
+      ? userInfo.preferred_username
+      : getScrambledEmail(userInfo.preferred_username);
+    const name = isEmployee
+      ? userInfo.name || 'Unknown Name'
+      : 'Anonymous User';
+    return {
+      domain,
+      email,
+      name,
+    };
   } else {
-    return undefined;
+    return {
+      email: 'no.email@no.domain.com',
+      domain: 'no.domain.com',
+      name: 'Not Logged In',
+    };
   }
 }
 
 export function installAndInitializePendo() {
   installPendo('f254cb71-32f1-4247-546f-fe9159040603');
 
-  const email = getUserEmailOrFail();
-  if (!email) {
-    console.error(
-      'Cannot initialize Pendo because user information is missing!'
-    );
-  } else {
-    const domain = email.split('@')[1] || 'unknown';
-    const name = window.userInformation?.name || 'Unknown Person';
+  const { email, domain, name } = getUserDetailsOrFail();
 
-    pendo.initialize({
-      visitor: {
-        id: email,
-        email: email,
-        full_name: name,
-        role: window.userInformation.hasGuidewireEmail
-          ? 'employee'
-          : 'customer/partner',
-      },
+  pendo.initialize({
+    visitor: {
+      id: email,
+      email: email,
+      full_name: name,
+      role: window.userInformation.hasGuidewireEmail
+        ? 'employee'
+        : 'customer/partner',
+    },
 
-      account: {
-        id: domain,
-      },
-    });
-  }
+    account: {
+      id: domain,
+    },
+  });
 }

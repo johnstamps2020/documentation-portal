@@ -945,6 +945,13 @@
       "branch": "main"
     },
     {
+      "id": "explorees419src",
+      "title": "Explore",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
+      "branch": "es-419/2022Mar"
+    },
+    {
       "id": "in20211appsrc",
       "title": "InsuranceNow 2021.1 Application",
       "sourceType": "xdocs",

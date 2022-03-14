@@ -1,0 +1,38 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Explore - Spanish",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "explorees419rnrelease"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Guía de la aplicación",
+          "id": "explorees419usingrelease"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Data Dictionaries",
+          "id": "explorees419datadictrelease"
+        }
+      ]
+    }
+  ]
+}

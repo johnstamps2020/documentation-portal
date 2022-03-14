@@ -14,10 +14,8 @@ let docProduct = docProductElement
 let docPlatform = document.querySelector("meta[name = 'gw-platform']")?.content;
 let docVersion = document.querySelector("meta[name = 'gw-version']")?.content;
 let docCategory = document.querySelector("meta[name = 'DC.coverage']")?.content;
-let docId = document
-  .querySelector('[name="gw-doc-id"]')
-  ?.getAttribute('content');
 let docTitle = undefined;
+let docSubject = undefined;
 let docInternal = undefined;
 const topicId = window.location.pathname;
 
@@ -50,15 +48,9 @@ async function showTopicRecommendations() {
 }
 
 async function fetchMetadata() {
-  if (docId == null) {
-    const docIdResponse = await fetch(
-      `/safeConfig/docId?platforms=${docPlatform}&products=${docProduct}&versions=${docVersion}&url=${topicId}${
-        docTitle ? `&title=${docTitle}` : ''
-      }`
-    );
-    const docIdResponseJson = await docIdResponse.json();
-    docId = docIdResponseJson.docId;
-  }
+  const docId = document
+    .querySelector('[name="gw-doc-id"]')
+    ?.getAttribute('content');
   if (docId) {
     const response = await fetch(`/safeConfig/docMetadata/${docId}`);
     if (response.ok) {
@@ -70,17 +62,19 @@ async function fetchMetadata() {
           docVersion = docInfo.version?.join(',') || docVersion;
           docCategory = docInfo.category?.join(',') || docCategory;
           docTitle = docInfo.docTitle;
+          docSubject = docInfo.subject;
           docInternal = docInfo.docInternal;
-          return docInfo;
+          return true;
         }
       } catch (err) {
         console.error(err);
+        return null;
       }
     }
   }
 }
 
-let metadata = undefined;
+let metadataIsAvailable = undefined;
 
 async function findBestMatchingTopic(searchQuery, targetDocVersion) {
   try {
@@ -139,6 +133,18 @@ async function createVersionSelector() {
   try {
     if (!docProduct) {
       return null;
+    }
+    let docId = document
+      .querySelector('[name="gw-doc-id"]')
+      ?.getAttribute('content');
+    if (docId == null) {
+      const docIdResponse = await fetch(
+        `/safeConfig/docId?platforms=${docPlatform}&products=${docProduct}&versions=${docVersion}&url=${topicId}${
+          docTitle ? `&title=${docTitle}` : ''
+        }`
+      );
+      const docIdResponseJson = await docIdResponse.json();
+      docId = docIdResponseJson.docId;
     }
     const response = await fetch(`/safeConfig/versionSelectors?docId=${docId}`);
     const jsonResponse = await response.json();
@@ -591,25 +597,24 @@ async function addFeedbackElements() {
   body.appendChild(renderThanksMessage());
 }
 
+function createInput(name, value, isHidden = true) {
+  const input = document.createElement('input');
+  if (isHidden) {
+    input.setAttribute('type', 'hidden');
+  }
+  input.setAttribute('name', name);
+  input.setAttribute('value', value);
+
+  return input;
+}
+
 async function configureSearch() {
-  if (metadata) {
+  if (metadataIsAvailable) {
     const searchForms = document.querySelectorAll(
       '#searchForm, #searchFormNav'
     );
     if (searchForms.length > 0) {
       for (const searchForm of searchForms) {
-        let hiddenInputsToAdd = [];
-        for (const metadataKey of Object.keys(metadata)) {
-          const input = document.createElement('input');
-          input.setAttribute('type', 'hidden');
-          input.setAttribute('name', metadataKey);
-          if (typeof metadata[metadataKey] === 'string') {
-            input.setAttribute('value', metadata[metadataKey]);
-          } else {
-            input.setAttribute('value', metadata[metadataKey].join(','));
-          }
-          hiddenInputsToAdd.push(input);
-        }
         const existingHiddenInputs = searchForm.querySelectorAll(
           'div > [type="hidden"]'
         );
@@ -619,9 +624,13 @@ async function configureSearch() {
           }
         }
 
-        for (const newInput of hiddenInputsToAdd) {
-          searchForm.firstChild.appendChild(newInput);
-        }
+        // Filters and their names must match filters in the displayOrder variable in searchController.js
+        searchForm.firstChild.appendChild(createInput('doc_title', docTitle));
+        searchForm.firstChild.appendChild(createInput('platform', docPlatform));
+        searchForm.firstChild.appendChild(createInput('product', docProduct));
+        searchForm.firstChild.appendChild(createInput('version', docVersion));
+        docSubject &&
+          searchForm.firstChild.appendChild(createInput('subject', docSubject));
       }
     }
   } else {
@@ -670,6 +679,25 @@ function setFooter() {
   resizeObserver.observe(whTopicBody);
 }
 
+function scramble(phrase) {
+  var hash = 0,
+    i,
+    chr;
+  if (phrase.length === 0) return hash;
+  for (i = 0; i < phrase.length; i++) {
+    chr = phrase.charCodeAt(i);
+    hash = (hash << 5) - hash + chr;
+    hash |= 0;
+  }
+  return hash;
+}
+
+function getScrambledEmail(email) {
+  const parts = email.split('@');
+  const scrambledLogin = scramble(parts[0]);
+  return `${scrambledLogin}@${parts[1]}`;
+}
+
 async function installAndInitializePendo() {
   (function(apiKey) {
     (function(p, e, n, d, o) {
@@ -698,18 +726,20 @@ async function installAndInitializePendo() {
   const response = await fetch('/userInformation');
   if (response.ok) {
     const userInformation = await response.json();
-    const email = userInformation.preferred_username;
-    const domain = email.split('@')[1] || 'unknown';
+    const isEmployee = userInformation.hasGuidewireEmail;
+    const domain =
+      userInformation.preferred_username.split('@')[1] || 'unknown';
+    const email = isEmployee
+      ? userInformation.preferred_username
+      : getScrambledEmail(userInformation.preferred_username);
     const name = userInformation.name;
 
     pendo.initialize({
       visitor: {
         id: email,
         email: email,
-        full_name: name,
-        role: userInformation.hasGuidewireEmail
-          ? 'employee'
-          : 'customer/partner',
+        full_name: isEmployee ? name : 'Anonymous User',
+        role: isEmployee ? 'employee' : 'customer/partner',
       },
 
       account: {
@@ -729,7 +759,7 @@ async function installAndInitializePendo() {
 }
 
 docReady(async function() {
-  metadata = await fetchMetadata();
+  metadataIsAvailable = await fetchMetadata();
   await createContainerForCustomHeaderElements();
   addCustomElements();
   addTopLinkToBreadcrumbs();
