@@ -11,7 +11,7 @@ const versionSelectorsConfigPath = path.resolve(
   `${__dirname}/../static/pages/versionSelectors.json`
 );
 
-async function getConfig(reqObj) {
+async function loadConfig() {
   try {
     let config;
     if (process.env.LOCAL_CONFIG === 'yes') {
@@ -45,6 +45,16 @@ async function getConfig(reqObj) {
       );
       config = await result.json();
     }
+    return config;
+  } catch (err) {
+    console.log(err);
+    return { docs: [] };
+  }
+}
+
+async function getConfig(reqObj) {
+  try {
+    const config = await loadConfig();
     const userInfo = await getUserInfo();
     const hasGuidewireEmail = userInfo.hasGuidewireEmail;
     if (!reqObj.session.requestIsAuthenticated) {
@@ -66,7 +76,7 @@ async function getDocByUrl(url, reqObj) {
     relativeUrl = relativeUrl.substring(1);
   }
 
-  const config = await getConfig(reqObj);
+  const config = await loadConfig();
   return config.docs.find(d => relativeUrl.startsWith(d.url + '/'));
 }
 
@@ -84,7 +94,7 @@ async function getRootBreadcrumb(pagePathname) {
   try {
     const breadcrumbsFile = fs.readFileSync(breadcrumbsConfigPath, 'utf-8');
     const breadcrumbsMapping = JSON.parse(breadcrumbsFile);
-    for (breadcrumb of breadcrumbsMapping) {
+    for (const breadcrumb of breadcrumbsMapping) {
       if (
         pagePathname.startsWith(breadcrumb.docUrl) &&
         breadcrumb.rootPages.length === 1
@@ -114,8 +124,9 @@ async function getVersionSelector(docId, reqObj) {
     const matchingVersionSelector = versionSelectorMapping.find(
       s => docId === s.docId
     );
-    //The getConfig function checks if request is authenticated and filters the returned docs accordingly.
-    //Therefore, for the selector it's enough to check if a particular version has a doc in the returned config.
+    // The getConfig function checks if the request is authenticated and if the user has the Guidewire email,
+    // and filters the returned docs accordingly.
+    // Therefore, for the selector it's enough to check if a particular version has a doc in the returned config.
     const config = await getConfig(reqObj);
     const docs = config.docs;
     if (matchingVersionSelector) {
