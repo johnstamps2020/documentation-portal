@@ -18,13 +18,15 @@
                 <% if (href || itemItems.length > 0) { %>
                     <div class="<%= className || '' %>">
                         <% if (href) { %>
-                            <a href="<%= href %>"><%= label %></a>
-                            <% if (isInternal) { %>
-                                <span class="internalItem">
-                                    <img class="internalItemIcon" src="/images/info_orange_24dp.svg" role="img"/>
+                            <a href="<%= href %>"><%= label %>
+                                <% if (isInternal) { %>
+                                    <span class="internalItem">
+                                    <img class="internalItemIcon" src="/images/info_orange_24dp.svg"
+                                         alt="Guidewire internal content"/>
                                     <span class="internalItemTooltip">Guidewire internal content</span>
                                 </span>
-                            <% } %>
+                                <% } %>
+                            </a>
                         <% } else { %>
                             <div class="label"><%= label %></div>
                             <% itemItems.forEach(i => { -%>
