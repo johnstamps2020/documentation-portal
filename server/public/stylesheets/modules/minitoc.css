@@ -41,3 +41,17 @@ nav a.miniTocLink:hover {
 .miniTocLink.topictitle2 + .miniTocLink.topictitle3 ~ .miniTocLink.topictitle3 {
   margin-left: 1ch;
 }
+
+.miniTocLink.topictitle3 + .miniTocLink.sectiontitle,
+.miniTocLink.topictitle3 + .miniTocLink.topictitle4,
+.miniTocLink.topictitle3 + .miniTocLink.sectiontitle ~ .miniTocLink.sectiontitle,
+.miniTocLink.topictitle3 + .miniTocLink.topictitle4 ~ .miniTocLink.topictitle4 {
+    margin-left: 2ch;
+}
+
+.miniTocLink.topictitle4 + .miniTocLink.sectiontitle,
+.miniTocLink.topictitle4 + .miniTocLink.topictitle5,
+.miniTocLink.topictitle4 + .miniTocLink.sectiontitle ~ .miniTocLink.sectiontitle,
+.miniTocLink.topictitle4 + .miniTocLink.topictitle5 ~ .miniTocLink.topictitle5 {
+    margin-left: 3ch;
+}
