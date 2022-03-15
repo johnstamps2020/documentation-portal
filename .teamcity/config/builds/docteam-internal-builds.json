@@ -24,6 +24,14 @@
       "srcId": "writingwithgitsrc",
       "docId": "writingwithgit",
       "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "Element-Rendering.ditamap",
+      "srcId": "elemrendsrc",
+      "docId": "elemrend",
+      "indexRedirect": true
     }
   ]
 }
