@@ -43,6 +43,20 @@
       "indexForSearch": true,
       "public": false,
       "internal": false
+    },
+    {
+      "id": "elemrend",
+      "title": "Element Rendering",
+      "url": "elementrendering",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["DocTools"],
+        "version": ["latest"]
+      },
+      "environments": ["int"],
+      "indexForSearch": false,
+      "public": false,
+      "internal": false
     }
   ]
 }
