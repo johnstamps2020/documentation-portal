@@ -2,7 +2,7 @@ const mockUserData = require('./utils/mockUserData');
 
 function belongsToGuidewire(email) {
   try {
-    return email.endsWith('@guidewire.com');
+    return !!email?.endsWith('@guidewire.com');
   } catch (err) {
     console.error(err);
     return false;
@@ -24,7 +24,7 @@ function getUserInfo(req) {
   const user = req.user;
   if (user) {
     const { name, preferred_username, locale } = user;
-    userInfo.hasGuidewireEmail = belongsToGuidewire(preferred_username);
+    userInfo.hasGuidewireEmail = belongsToGuidewire(undefined);
     userInfo.name = name;
     userInfo.preferred_username = preferred_username;
     userInfo.locale = locale;
