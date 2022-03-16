@@ -1829,7 +1829,8 @@ object Server {
             )
             if (deploy_env == GwDeployEnvs.PROD.env_name) {
                 val publishServerDockerImageToEcrStep =
-                    GwBuildSteps.createPublishServerDockerImageToEcrStep(deploy_env, GwDockerImages.DOC_PORTAL.image_url,
+                    GwBuildSteps.createPublishServerDockerImageToEcrStep(deploy_env,
+                        GwDockerImages.DOC_PORTAL.image_url,
                         tagVersion)
                 deployServerBuildType.steps.step(publishServerDockerImageToEcrStep)
                 deployServerBuildType.steps.stepsOrder.add(0, publishServerDockerImageToEcrStep.id.toString())
@@ -2374,8 +2375,16 @@ object Sources {
                     }
                 }
 
+                validationBuildType.params {
+                    select("env.ENABLE_DEBUG_MODE",
+                        "No",
+                        label = "Enable debug mode",
+                        options = listOf("Yes" to "--verbose", "No" to ""))
+                }
+
                 validationBuildType.artifactRules += """
                     ${workingDir}/${docValidatorLogs} => build_logs
+                    ${workingDir}/${ditaOtLogsDir} => admin_logs
                     ${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.format_name}/${GwConfigParams.BUILD_DATA_FILE.param_value} => ${GwConfigParams.BUILD_DATA_DIR.param_value}
                 """.trimIndent()
 
@@ -3217,7 +3226,11 @@ object GwBuildSteps {
         }
     }
 
-    fun createPublishServerDockerImageToEcrStep(deploy_env: String, package_name: String, tag_version: String): ScriptBuildStep {
+    fun createPublishServerDockerImageToEcrStep(
+        deploy_env: String,
+        package_name: String,
+        tag_version: String,
+    ): ScriptBuildStep {
         val ecrPackageName = "710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal"
         val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
         return ScriptBuildStep {
@@ -3538,6 +3551,7 @@ object GwBuildSteps {
                 ditaCommandParams.add(Pair("--temp", "${working_dir}/${tempDir}"))
                 ditaCommandParams.add(Pair("--clean.temp", "no"))
                 ditaCommandParams.add(Pair("--schematron.validate", "yes"))
+                ditaCommandParams.add(Pair("%env.ENABLE_DEBUG_MODE%", ""))
                 val ditaBuildCommand = Helpers.getCommandString("dita", ditaCommandParams)
                 val resourcesCopyCommand =
                     "mkdir -p \"${working_dir}/${schematron_reports_dir}\" && cp \"${working_dir}/${tempDir}/validation-report.xml\" \"${working_dir}/${schematron_reports_dir}/\""
