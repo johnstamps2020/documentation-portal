@@ -188,8 +188,7 @@ const authGateway = async (req, res, next) => {
     addCommonDataToSessionLocals(req, res);
     const isOpenRoute = await checkIfRouteIsOpen();
     const isInternalRoute = await checkIfRouteIsInternal();
-    const userInfo = await getUserInfo(req);
-    const hasGuidewireEmail = userInfo.hasGuidewireEmail;
+    const hasGuidewireEmail = res.locals.userInfo.hasGuidewireEmail;
 
     if (requestIsAuthenticated && !isInternalRoute) {
       openRequestedPage();

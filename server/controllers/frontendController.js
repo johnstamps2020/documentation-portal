@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { getUserInfo } = require('./userController');
 const staticPagesDir = path.join(__dirname, '..', 'static', 'pages');
 
 function getMockLanguages() {
@@ -73,8 +72,7 @@ async function getPage(req, res, next) {
   );
   const configFileExists = fs.existsSync(configFilePath);
   if (configFileExists) {
-    const userInfo = await getUserInfo(req);
-    const hasGuidewireEmail = userInfo.hasGuidewireEmail;
+    const hasGuidewireEmail = res.locals.userInfo.hasGuidewireEmail;
     const fileContents = fs.readFileSync(configFilePath, 'utf-8');
     const fileContentsJson = JSON.parse(fileContents);
     const templateName = fileContentsJson.template;

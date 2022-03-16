@@ -1,7 +1,6 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
 const path = require('path');
-const { getUserInfo } = require('./userController');
 
 const localConfigDir = path.resolve(`${__dirname}/../../.teamcity/config/docs`);
 const breadcrumbsConfigPath = path.resolve(
@@ -52,11 +51,10 @@ async function loadConfig() {
   }
 }
 
-async function getConfig(reqObj) {
+async function getConfig(reqObj, resObj) {
   try {
     const config = await loadConfig();
-    const userInfo = await getUserInfo();
-    const hasGuidewireEmail = userInfo.hasGuidewireEmail;
+    const hasGuidewireEmail = resObj.locals.userInfo.hasGuidewireEmail;
     if (!reqObj.session.requestIsAuthenticated) {
       config['docs'] = config.docs.filter(d => d.public === true);
     }
@@ -70,7 +68,7 @@ async function getConfig(reqObj) {
   }
 }
 
-async function getDocByUrl(url, reqObj) {
+async function getDocByUrl(url) {
   let relativeUrl = url + '/';
   if (relativeUrl.startsWith('/')) {
     relativeUrl = relativeUrl.substring(1);
@@ -114,7 +112,7 @@ async function getRootBreadcrumb(pagePathname) {
   }
 }
 
-async function getVersionSelector(docId, reqObj) {
+async function getVersionSelector(docId, reqObj, resObj) {
   try {
     const versionSelectorsFile = fs.readFileSync(
       versionSelectorsConfigPath,
@@ -127,7 +125,7 @@ async function getVersionSelector(docId, reqObj) {
     // The getConfig function checks if the request is authenticated and if the user has the Guidewire email,
     // and filters the returned docs accordingly.
     // Therefore, for the selector it's enough to check if a particular version has a doc in the returned config.
-    const config = await getConfig(reqObj);
+    const config = await getConfig(reqObj, resObj);
     const docs = config.docs;
     if (matchingVersionSelector) {
       matchingVersionSelector[
@@ -145,8 +143,8 @@ async function getVersionSelector(docId, reqObj) {
   }
 }
 
-async function getDocumentMetadata(docId, reqObj) {
-  const config = await getConfig(reqObj);
+async function getDocumentMetadata(docId, reqObj, resObj) {
+  const config = await getConfig(reqObj, resObj);
   const doc = config.docs.find(d => d.id === docId);
   if (doc) {
     return {
@@ -162,8 +160,16 @@ async function getDocumentMetadata(docId, reqObj) {
   }
 }
 
-async function getDocId(products, platforms, versions, title, url, reqObj) {
-  const config = await getConfig(reqObj);
+async function getDocId(
+  products,
+  platforms,
+  versions,
+  title,
+  url,
+  reqObj,
+  resObj
+) {
+  const config = await getConfig(reqObj, resObj);
   const doc = config.docs.find(
     s =>
       products.split(',').some(p => s.metadata.product.includes(p)) &&
