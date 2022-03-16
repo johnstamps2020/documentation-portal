@@ -24,7 +24,7 @@ function getUserInfo(req) {
   const user = req.user;
   if (user) {
     const { name, preferred_username, locale } = user;
-    userInfo.hasGuidewireEmail = belongsToGuidewire(undefined);
+    userInfo.hasGuidewireEmail = belongsToGuidewire(preferred_username);
     userInfo.name = name;
     userInfo.preferred_username = preferred_username;
     userInfo.locale = locale;
