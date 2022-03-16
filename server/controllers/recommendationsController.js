@@ -21,6 +21,15 @@ async function showOnlyPublicRecommendations(reqObj, recommendations) {
 
 async function getTopicRecommendations(topicId, reqObj) {
   try {
+    const indexExists = await elasticClient.indices.exists({
+      index: recommendationsIndexName,
+    });
+    if (!indexExists.body) {
+      return {
+        body: `Cannot get recommendations for topic with ID "${topicId}". Index "${recommendationsIndexName}" does not exist.`,
+        status: 404,
+      };
+    }
     const queryBody = {
       match: {
         id: {

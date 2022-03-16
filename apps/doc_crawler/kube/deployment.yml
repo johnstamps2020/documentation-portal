@@ -5,6 +5,7 @@ metadata:
   namespace: doctools
 data:
   discovery_type: single-node
+  xpack_security_enabled: 'false'
   cluster_name: es-${DEPLOY_ENV}
   elasticsearch.yml: |
     cluster.name: es-${DEPLOY_ENV}
@@ -54,6 +55,11 @@ spec:
                 configMapKeyRef:
                   name: docsearch-app-config-${DEPLOY_ENV}
                   key: discovery_type
+            - name: xpack.security.enabled
+              valueFrom:
+                configMapKeyRef:
+                  name: docsearch-app-config-${DEPLOY_ENV}
+                  key: xpack_security_enabled
             - name: cluster_name
               valueFrom:
                 configMapKeyRef:
