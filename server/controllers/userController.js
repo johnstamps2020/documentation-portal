@@ -2,7 +2,7 @@ const mockUserData = require('./utils/mockUserData');
 
 function belongsToGuidewire(email) {
   try {
-    return email.endsWith('@guidewire.com');
+    return !!email?.endsWith('@guidewire.com');
   } catch (err) {
     console.error(err);
     return false;
