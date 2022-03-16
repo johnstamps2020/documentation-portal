@@ -14,6 +14,14 @@
       "filter": "Other/GW-Generic-Release.ditaval",
       "root": "_supermap.ditamap",
       "indexRedirect": true,
+      "srcId": "isconfigupgradetools420src",
+      "docId": "isconfigupgradetools420"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Other/GW-Generic-Release.ditaval",
+      "root": "_supermap.ditamap",
+      "indexRedirect": true,
       "srcId": "isconfigupgradetools410src",
       "docId": "isconfigupgradetools410"
     },
