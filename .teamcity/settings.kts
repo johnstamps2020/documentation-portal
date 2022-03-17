@@ -490,6 +490,7 @@ object Docs {
         publish_path: String,
         working_dir: String,
         output_dir: String,
+        doc_title: String,
         index_for_search: Boolean,
         root_map: String,
         index_redirect: Boolean,
@@ -574,6 +575,7 @@ object Docs {
                         publish_path,
                         build_filter,
                         doc_id,
+                        doc_title,
                         git_url,
                         git_branch
                     )
@@ -863,6 +865,7 @@ object Docs {
                     publishPath,
                     workingDir,
                     outputDir,
+                    docTitle,
                     indexForSearch,
                     rootMap,
                     indexRedirect,
@@ -3604,6 +3607,7 @@ object GwBuildSteps {
         publish_path: String,
         build_filter: String? = null,
         doc_id: String? = null,
+        doc_title: String? = null,
         git_url: String? = null,
         git_branch: String? = null,
         for_offline_use: Boolean = false,
@@ -3650,6 +3654,7 @@ object GwBuildSteps {
             GwDitaOutputFormats.HTML5.format_name -> {
                 commandParams.add(Pair("--gw-base-url", publish_path))
                 commandParams.add(Pair("--gw-doc-id", doc_id))
+                commandParams.add(Pair("--gw-doc-title", doc_title))
                 commandParams.add(Pair("--generate.build.data", "yes"))
                 commandParams.add(Pair("--git.url", git_url))
                 commandParams.add(Pair("--git.branch", git_branch))
