@@ -3,6 +3,20 @@
   "title": "Page with mixed items",
   "template": "page",
   "class": "threeCards",
+  "selector": {
+    "label": "Select page",
+    "selectedItem": "Page with mixed items",
+    "items": [
+      {
+        "label": "Page with only internal docs",
+        "page": "../pageWithOnlyInternalDocs"
+      },
+      {
+        "label": "Page with only internal items",
+        "page": "../pageWithOnlyInternalItems"
+      }
+    ]
+  },
   "items": [
     {
       "label": "InsuranceSuite Configuration Upgrade Tools",

@@ -10,7 +10,7 @@ const versionSelectorsConfigPath = path.resolve(
   `${__dirname}/../static/pages/versionSelectors.json`
 );
 
-async function getConfig(reqObj) {
+async function loadConfig() {
   try {
     let config;
     if (process.env.LOCAL_CONFIG === 'yes') {
@@ -44,8 +44,22 @@ async function getConfig(reqObj) {
       );
       config = await result.json();
     }
+    return config;
+  } catch (err) {
+    console.log(err);
+    return { docs: [] };
+  }
+}
+
+async function getConfig(reqObj, resObj) {
+  try {
+    const config = await loadConfig();
+    const hasGuidewireEmail = resObj.locals.userInfo.hasGuidewireEmail;
     if (!reqObj.session.requestIsAuthenticated) {
       config['docs'] = config.docs.filter(d => d.public === true);
+    }
+    if (!hasGuidewireEmail) {
+      config['docs'] = config.docs.filter(d => d.internal === false);
     }
     return config;
   } catch (err) {
@@ -54,25 +68,31 @@ async function getConfig(reqObj) {
   }
 }
 
-async function isPublicDoc(url, reqObj) {
+async function getDocByUrl(url) {
   let relativeUrl = url + '/';
   if (relativeUrl.startsWith('/')) {
     relativeUrl = relativeUrl.substring(1);
   }
 
-  const config = await getConfig(reqObj);
-  const matchingDoc = config.docs.find(d =>
-    relativeUrl.startsWith(d.url + '/')
-  );
+  const config = await loadConfig();
+  return config.docs.find(d => relativeUrl.startsWith(d.url + '/'));
+}
 
+async function isPublicDoc(url, reqObj) {
+  const matchingDoc = await getDocByUrl(url, reqObj);
   return !!(matchingDoc && matchingDoc.public);
+}
+
+async function isInternalDoc(url, reqObj) {
+  const matchingDoc = await getDocByUrl(url, reqObj);
+  return !!(matchingDoc && matchingDoc.internal);
 }
 
 async function getRootBreadcrumb(pagePathname) {
   try {
     const breadcrumbsFile = fs.readFileSync(breadcrumbsConfigPath, 'utf-8');
     const breadcrumbsMapping = JSON.parse(breadcrumbsFile);
-    for (breadcrumb of breadcrumbsMapping) {
+    for (const breadcrumb of breadcrumbsMapping) {
       if (
         pagePathname.startsWith(breadcrumb.docUrl) &&
         breadcrumb.rootPages.length === 1
@@ -92,7 +112,7 @@ async function getRootBreadcrumb(pagePathname) {
   }
 }
 
-async function getVersionSelector(docId, reqObj) {
+async function getVersionSelector(docId, reqObj, resObj) {
   try {
     const versionSelectorsFile = fs.readFileSync(
       versionSelectorsConfigPath,
@@ -102,9 +122,10 @@ async function getVersionSelector(docId, reqObj) {
     const matchingVersionSelector = versionSelectorMapping.find(
       s => docId === s.docId
     );
-    //The getConfig function checks if request is authenticated and filters the returned docs accordingly.
-    //Therefore, for the selector it's enough to check if a particular version has a doc in the returned config.
-    const config = await getConfig(reqObj);
+    // The getConfig function checks if the request is authenticated and if the user has the Guidewire email,
+    // and filters the returned docs accordingly.
+    // Therefore, for the selector it's enough to check if a particular version has a doc in the returned config.
+    const config = await getConfig(reqObj, resObj);
     const docs = config.docs;
     if (matchingVersionSelector) {
       matchingVersionSelector[
@@ -122,12 +143,13 @@ async function getVersionSelector(docId, reqObj) {
   }
 }
 
-async function getDocumentMetadata(docId, reqObj) {
-  const config = await getConfig(reqObj);
+async function getDocumentMetadata(docId, reqObj, resObj) {
+  const config = await getConfig(reqObj, resObj);
   const doc = config.docs.find(d => d.id === docId);
   if (doc) {
     return {
       docTitle: doc.title,
+      docInternal: doc.internal,
       ...doc.metadata,
     };
   } else {
@@ -138,8 +160,16 @@ async function getDocumentMetadata(docId, reqObj) {
   }
 }
 
-async function getDocId(products, platforms, versions, title, url, reqObj) {
-  const config = await getConfig(reqObj);
+async function getDocId(
+  products,
+  platforms,
+  versions,
+  title,
+  url,
+  reqObj,
+  resObj
+) {
+  const config = await getConfig(reqObj, resObj);
   const doc = config.docs.find(
     s =>
       products.split(',').some(p => s.metadata.product.includes(p)) &&
@@ -163,6 +193,7 @@ async function getDocId(products, platforms, versions, title, url, reqObj) {
 module.exports = {
   getConfig,
   isPublicDoc,
+  isInternalDoc,
   getRootBreadcrumb,
   getVersionSelector,
   getDocumentMetadata,

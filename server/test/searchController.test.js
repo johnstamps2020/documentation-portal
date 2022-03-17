@@ -2,6 +2,7 @@ console.log('Elastic node setting:', process.env.ELASTIC_SEARCH_URL);
 const searchController = require('../controllers/searchController');
 const httpMocks = require('node-mocks-http');
 const assert = require('assert');
+const mockUserData = require('../controllers/utils/mockUserData');
 
 const queryPhrase = 'configuring merge tracker';
 describe(`Search for phrase ${queryPhrase}`, async function() {
@@ -18,7 +19,9 @@ describe(`Search for phrase ${queryPhrase}`, async function() {
         },
         session: { requestIsAuthenticated: () => true },
       });
-      response = httpMocks.createResponse();
+      response = httpMocks.createResponse({
+        locals: { userInfo: () => mockUserData.internal },
+      });
       await searchController(request, response);
       results = response._getRenderData();
     } catch (err) {

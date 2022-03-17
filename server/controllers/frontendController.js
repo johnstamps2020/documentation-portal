@@ -72,11 +72,13 @@ async function getPage(req, res, next) {
   );
   const configFileExists = fs.existsSync(configFilePath);
   if (configFileExists) {
+    const hasGuidewireEmail = res.locals.userInfo.hasGuidewireEmail;
     const fileContents = fs.readFileSync(configFilePath, 'utf-8');
     const fileContentsJson = JSON.parse(fileContents);
     const templateName = fileContentsJson.template;
     res.render(templateName, {
       pageContent: fileContentsJson,
+      hasGuidewireEmail: hasGuidewireEmail,
       pagePath: req.path.endsWith('/') ? req.path : `${req.path}/`,
       localizationInfo: setL10nParams(fileContentsJson.class),
     });

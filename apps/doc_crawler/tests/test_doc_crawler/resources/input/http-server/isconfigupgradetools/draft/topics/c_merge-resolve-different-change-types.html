@@ -1,0 +1,220 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2022"><meta name="generator" content="DITA-OT"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>Merging and resolving different types of changes</title>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PLXG9H5');</script>
+    <!-- End Google Tag Manager -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/scripts/html5.css">
+    <meta name="gw-doc-id" content="isconfigupgradetoolsdraft"><meta name="gw-base-url" content="isconfigupgradetools/draft">
+</head><body id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a"><header role="banner"><div>
+  <div class="headerBar">
+    <div id="headerLeft"></div>
+    <div id="headerCenter"></div>
+    <div id="headerRight"></div>
+  </div>
+  <div class="navbar">
+    <div id="navbarLeft"></div>
+    <div id="navbarRight"></div>
+  </div>
+</div></header><nav role="toc"><ul><li><span>InsuranceSuite Configuration Upgrade Tools</span><ul><li><a href="../topics/c_release-notes.html">Release notes</a></li><li><a href="../topics/c_overview-upgrade-tools.html">Overview of the InsuranceSuite Configuration Upgrade Tools</a></li><li><a href="../topics/c_how-upgrade-tools-work.html">How the InsuranceSuite Configuration Upgrade Tools work</a></li><li><a href="../topics/c_handling-changes-during-upgrade.html">Handling changes to the configuration during an upgrade</a></li><li><a href="../topics/t_download-install-upgrade-tools.html">Download and install the InsuranceSuite Configuration Upgrade Tools</a></li><li><a href="../topics/c_extend-upgrade-tools.html">Extending the InsuranceSuite Configuration Upgrade Tools</a><ul><li><a href="../topics/t_add-override-upgrade-step.html">Add or override an upgrade step</a></li><li><a href="../topics/t_test-upgrade-step.html">Test an upgrade step</a></li><li><a href="../topics/c_listing-available-upgrade-steps.html">Listing available upgrade steps</a></li><li><a href="../topics/r_upgrade-steps-properties.html">Upgrade steps properties</a></li></ul></li><li><a href="../topics/c_preupgrade.html">Preupgrade tool</a><ul><li><a href="../topics/t_run-preupgrade-steps.html">Run preupgrade steps</a></li><li><a href="../topics/r_preupgrade-commands.html">Preupgrade command line options</a></li><li><a href="../topics/r_preupgrade-steps.html">Preupgrade steps reference</a></li></ul></li><li><a href="../topics/c_upgrade.html">Upgrade tool</a><ul><li><a href="../topics/t_run-upgrade-steps.html">Run upgrade steps</a></li><li><a href="../topics/r_upgrade-commands.html">Upgrade command line options</a></li><li><a href="../topics/c_upgrade-tool-modes.html">Upgrade tool modes</a></li><li><a href="../topics/t_partial-upgrade.html">Upgrade part of the configuration</a></li><li><a href="../topics/c_upgrade-steps.html">Upgrade steps reference</a><ul><li><a href="../topics/c_8.0.0-upgrade_steps.html#c_8.0.0-upgrade_steps">8.0.0 upgrade steps</a><ul><li><a href="../topics/c_8.0.0-upgrade_steps.html#r_replace-covterm-in-lookuptables">Replace covTerm in lookuptables</a></li><li><a href="../topics/c_8.0.0-upgrade_steps.html#r_replace-com-guidewire-commons-entity-bean">Replace com.guidewire.commons.entity.Bean</a></li><li><a href="../topics/c_8.0.0-upgrade_steps.html#r_replace-entityvalidationexception">Replace EntityValidationException</a></li><li><a href="../topics/c_8.0.0-upgrade_steps.html#r_replace-loggercategory">Replace LoggerCategory</a></li><li><a href="../topics/c_8.0.0-upgrade_steps.html#r_replace-old-bundle">Replace transaction.Bundle</a></li></ul></li><li><a href="../topics/c_8.0.1-upgrade-steps.html#c_8.0.1-upgrade-steps">8.0.1 upgrade steps</a><ul><li><a href="../topics/c_8.0.1-upgrade-steps.html#r_replace-effdatedversionlist">Replace EffDatedVersionList</a></li></ul></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_e76242a2ce4bf3cb--31dc41d3-16c278eb9e0--7ea1">9.0.0 upgrade steps</a><ul><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_88692ccd77b0a96e--c1a9526-16231d1d963--7dcf">Classes to adjust phone numbers</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_2c26781f923214da--57c95620-166042831dc--7e2f">Copy schemalocations to gwxmlmodule</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983670">Disabled PCF elements</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983672">Fix broken Emerald trigger</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--795b">Fix display key case sensitivity</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983675">Flatten config locale</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983677">Move abstract PanelDef outside of PanelRef</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983690">PCF API</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983692">PCF relative packages</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983694">Reformat rules</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983696">Remove AddressBookUID</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983698">Remove autoupgrade attribute</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983700">Remove DA params</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983702">Remove DisplayNameColumn</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983704">Remove JGroups params from config.xml</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983706">Remove ondelete attribute</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983708">Remove subpackage</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_504e31f8b81492d5-4e0a438e-16207abbcd3--7f97">Remove unreachable rules</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983710">Replace effdatedOnly</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983712">Replace FK owner</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983717">Replace implementsEntity  adapter</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983719">Replace maxActive attribute</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_1e45d90e5ccf36cc--7c5412a1-1667694b428--7fff">Replace old display key calls</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983721">Scriptability</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--6dc2">Script parameters enhancement</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_2c26781f923214da--57c95620-166042831dc--7e31">Update data types</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983723">Upgrade messaging-config.xml</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983725">Upgrade scheduler-config.xml</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983727">Upgrade work-queue.xml</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#r_9_0_0_cc_upgrade_steps">ClaimCenter upgrade steps</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#r_9_0_0_pc_upgrade_steps">PolicyCenter upgrade steps</a></li></ul></li><li><a href="../topics/c_9.0.1-upgrade-steps.html#xd_e76242a2ce4bf3cb--31dc41d3-16c278eb9e0--7e9f">9.0.1 upgrade steps</a><ul><li><a href="../topics/c_9.0.1-upgrade-steps.html#c_ai1983024">Remove indexstatistics</a></li></ul></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_e76242a2ce4bf3cb--31dc41d3-16c278eb9e0--7e9e">10.0.0 upgrade steps</a><ul><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f18">Add attribute desc to workflow files</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f16">appendListViewPaging</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#big-decimal-util-replace-upgrade">BigDecimalUtil replace upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#r_change-array-cast-enhancement-10">Change array casts to enhancement</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f19">Change structure of systables</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#equals-replace-upgrade">Equals replace upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--6cee">Fix edgeForeignKey extractable or overlap</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#get-by-code-replace-upgrade">getByCode replace upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_2c26781f923214da--57c95620-166042831dc--7e2d">Inbound integration config</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--6cf0">JurisdictionMappingUtil upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f17">PanelIteratorRemoveLink</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f1d">PCF charts</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f1c">Remove obsolete PCF properties</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f1a">Rename US English properties</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_69cc1a420393be91--7307de47-1668f33e05f--7d97">Replace CurrentDate</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#r_replace-documentcontents">Replace DocumentContents</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#schedule-package-upgrade">Schedule package upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#simple-value-populator-replace-upgrade">SimpleValuePopulator replace upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#string-date-replace-upgrade">String  Date replace upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f1b">Update default PCF properties</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#r_10_0_0_bc_upgrade_steps">BillingCenter upgrade steps</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#r_10_0_0_cc_upgrade_steps">ClaimCenter upgrade steps</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#r_10_0_0_pc_upgrade_steps">PolicyCenter upgrade steps</a></li></ul></li><li><a href="../topics/c_10.0.2-upgrade-steps.html#xd_e76242a2ce4bf3cb--31dc41d3-16c278eb9e0--7e9d">10.0.2 upgrade steps</a><ul><li><a href="../topics/c_10.0.2-upgrade-steps.html#remove-gosu-coercion-failures-parameter">Remove Gosu coercion failures parameter</a></li><li><a href="../topics/c_10.0.2-upgrade-steps.html#remove-obsolete-pcf-properties-2">Remove obsolete PCF properties 2</a></li><li><a href="../topics/c_10.0.2-upgrade-steps.html#targeted-post-on-change">Targeted post on change</a></li></ul></li><li><a href="../topics/c_general-upgrade-steps.html#xd_e76242a2ce4bf3cb--31dc41d3-16c278eb9e0--7ea0">General upgrade steps</a><ul><li><a href="../topics/c_general-upgrade-steps.html#xd_2c26781f923214da--57c95620-166042831dc--7e2e">Copy annotation class for deprecated API</a></li><li><a href="../topics/c_general-upgrade-steps.html#xd_2c26781f923214da--57c95620-166042831dc--7e32">Reformat XML</a></li><li><a href="../topics/c_general-upgrade-steps.html#xd_2c26781f923214da--57c95620-166042831dc--7e30">Rename display key</a></li><li><a href="../topics/c_general-upgrade-steps.html#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--65b4">Rename files differ case sensitivity</a></li></ul></li></ul></li></ul></li><li><a href="../topics/c_merge-tracker-tool.html#c_aj1930528">Merge Tracker tool</a><ul><li><a href="../topics/t_launch-merge-tracker.html">Launch Merge Tracker in Guidewire Studio</a></li><li><a href="../topics/r_merge-tracker-commands.html">Merge Tracker command line options</a></li><li><a href="../topics/r_merge-tracker-toolbar.html">Merge Tracker toolbar</a></li><li><a href="../topics/c_use-merge-tracker-filters.html">Merge Tracker filters</a><ul><li><a href="../topics/r_available-merge-tracker-filters.html">Available Merge Tracker filters</a></li><li><a href="../topics/c_manage-custom-filters.html#xd_92acc29907e0d13b-723d5fe2-16d561f2b31--7f15">Manage filters</a><ul><li><a href="../topics/c_manage-custom-filters.html#t_add_a_directory">Add a directory</a></li><li><a href="../topics/c_manage-custom-filters.html#t_create-gw-custom-filter">Edit a Guidewire filter</a></li><li><a href="../topics/c_manage-custom-filters.html#t_create-custom-filter">Add a custom filter</a></li><li><a href="../topics/c_manage-custom-filters.html#t_delete-custom-filter">Delete a custom filter</a></li></ul></li></ul></li><li><a href="../topics/c_merging-resolving-files.html">Merging and resolving files</a></li><li class="active"><a href="../topics/c_merge-resolve-different-change-types.html">Merging and resolving different types of changes</a></li><li><a href="../topics/r_merge-progress-tracking.html">Merge progress tracking</a></li><li><a href="../topics/t_export-file-details.html">Export file details</a><ul><li><a href="../topics/r_contents-exported-file.html">Contents of an exported file</a></li></ul></li><li><a href="../topics/c_merge-tracker-configuration.html">Configuring Merge Tracker</a></li></ul></li><li><a href="../topics/c_smart-merge-smart-diff-tools.html#c_aj1926787">Smart Merge and Smart Diff tools</a><ul><li><a href="../topics/c_smart-merge-supported-file-types.html">Smart Merge supported file types</a></li><li><a href="../topics/r_smart-diff-commands.html">Smart Diff command line options</a></li><li><a href="../topics/r_smart-merge-commands.html">Smart Merge command line options</a></li><li><a href="../topics/r_smart-merge-toolbar.html">Smart Merge toolbar</a></li><li><a href="../topics/t_move-element-smart-merge.html">Move an element in an XML file</a></li><li><a href="../topics/c_smart-merge-configuration.html">Configuring Smart Merge and Smart Diff</a></li></ul></li><li><a href="../topics/c_upgrade-inspections-tool.html">Upgrade inspections tool</a><ul><li><a href="../topics/t_use-upgrade-inspections.html">Use upgrade inspections</a></li><li><a href="../topics/r_upgrade-inspections-commands.html">Command line options for inspections</a></li><li><a href="../topics/r_upgrade-inspections-reference.html">Upgrade inspections reference</a></li></ul></li><li><a href="../topics/c_error-log-files.html">Error log files</a></li></ul></li></ul></nav><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+  <h1 class="title topictitle1" id="ariaid-title1">Merging and resolving different types of changes</h1>
+  <div class="body conbody"><p class="p">When merging and resolving files you can handle changes in different
+      ways depending on their type. Here are the steps that you can perform in Merge Tracker.
+      Procedures that involve the <span class="ph uicontrol">Merge and resolve files automatically</span>
+      option can be also performed from the command prompt. For more information, see <a class="xref" href="c_merging-resolving-files.html#xd_5aa56bb131da4909-2a869cc4-1661181dc22--7833">Merging and resolving files</a>.</p>
+    <section class="section" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__d174e24"><h2 class="title sectiontitle">Added by Customer (CUSTOMER_ADD)</h2>
+      
+      <p class="p">By default, the file does not exist in the new customized configuration.</p>
+      <dl class="dl">
+        
+          <dt class="dt dlterm">Single action</dt>
+          <dd class="dd">To copy the added file from the upgraded customized configuration to the new
+            customized configuration:<ol class="ol" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__ol_dpn_jdh_43b">
+              <li class="li">Select the file.</li>
+              <li class="li">Click <img class="image" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__image_zrb_vxg_t2b" src="../graphics/copyOldCustomerFile.png" alt=""> (<span class="ph uicontrol">Copy original customized file</span>) and then <img class="image" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__image_qxb_jfc_r2b" src="../graphics/resolve.png" alt=""> (<span class="ph uicontrol">Resolve</span>) in the toolbar.</li>
+            </ol></dd>
+        
+        
+          <dt class="dt dlterm">Bulk action</dt>
+          <dd class="dd">To copy all CUSTOMER_ADD and CUSTOMER_EDIT files from the upgraded customized
+            configuration to the new customized configuration:
+            <ol class="ol" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__ol_x23_34s_d3b">
+              <li class="li">Select all files in the file tree.</li>
+              <li class="li">Click <img class="image" src="../graphics/mergeAndResolveAutomatically.png" alt=""> (<span class="ph uicontrol">Merge and resolve files automatically</span>).</li>
+              <li class="li">Select <span class="ph uicontrol">Copy the customized version of the file and resolve the file for
+                  CUSTOMER_ADD and CUSTOMER_EDIT</span>.</li>
+              <li class="li">Run the merge and resolve process.</li>
+            </ol></dd>
+        
+      </dl>
+    </section>
+    <section class="section" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__d174e103"><h2 class="title sectiontitle">Edited by Customer (CUSTOMER_EDIT)</h2>
+      
+      <p class="p">By default, the new base version of the file already exists in the new customized
+        configuration.</p>
+      <dl class="dl">
+        
+          <dt class="dt dlterm">Single action</dt>
+          <dd class="dd">To copy the customized file from the upgraded customized configuration to the new
+            customized configuration:<ol class="ol" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__ol_rpc_g2h_43b">
+              <li class="li">Select the file.</li>
+              <li class="li">Click <img class="image" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__image_k5q_qyg_t2b" src="../graphics/copyOldCustomerFile.png" alt=""> (<span class="ph uicontrol">Copy original customized file</span>) and then <img class="image" src="../graphics/resolve.png" alt=""> (<span class="ph uicontrol">Resolve</span>) in the toolbar.</li>
+            </ol></dd>
+        
+        
+          <dt class="dt dlterm">Bulk action</dt>
+          <dd class="dd">To copy all CUSTOMER_ADD and CUSTOMER_EDIT files from the upgraded customized
+            configuration to the new customized configuration:<ol class="ol" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__ol_j3p_z4s_d3b">
+              <li class="li">Select all files in the file tree.</li>
+              <li class="li">Click <img class="image" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__image_lnb_wyg_t2b" src="../graphics/mergeAndResolveAutomatically.png" alt=""> (<span class="ph uicontrol">Merge and resolve files automatically</span>).</li>
+              <li class="li">Select <span class="ph uicontrol">Copy the customized version of the file and resolve the file for
+                  CUSTOMER_ADD and CUSTOMER_EDIT</span>.</li>
+              <li class="li">Run the merge and resolve process.</li>
+            </ol></dd>
+        
+      </dl>
+    </section>
+    <section class="section" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__d174e180"><h2 class="title sectiontitle">Deleted by Customer (CUSTOMER_DELETE)</h2>
+      
+      <div class="p">By default, the new base version of the file already exists in the new customized configuration.<dl class="dl">
+          
+            <dt class="dt dlterm">Bulk action</dt>
+            <dd class="dd">To remove all CUSTOMER_DELETE files from the new customized configuration:<ol class="ol" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__ol_op2_vps_d3b">
+                <li class="li">Select all files in the file tree.</li>
+                <li class="li">Click <img class="image" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__image_ksg_c3v_q2b" src="../graphics/mergeAndResolveAutomatically.png" alt=""> (<span class="ph uicontrol">Merge and resolve files automatically</span>).</li>
+                <li class="li">Select <span class="ph uicontrol">Delete the file for CUSTOMER_DELETE</span>.</li>
+                <li class="li">Run the merge and resolve process.</li>
+              </ol></dd>
+          
+        </dl></div>
+    </section>
+    <section class="section" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__d174e225"><h2 class="title sectiontitle">Added by both Customer and Guidewire (BOTH_ADD)</h2>
+      
+      <p class="p">By default, the new base version of the file already exists in the new customized
+        configuration.</p>
+      <dl class="dl">
+        
+          <dt class="dt dlterm">Single action</dt>
+          <dd class="dd">
+            <div class="p">To merge the file from the customized configuration with the file from the new base
+                configuration:<ol class="ol" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__ol_ypd_f4h_43b">
+                <li class="li">Select the file.</li>
+                <li class="li">Click <img class="image" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__image_qqd_f4h_43b" src="../graphics/merge.png" alt=""> (<span class="ph uicontrol">Merge file</span>) in the toolbar to run a merge
+                  tool.</li>
+                <li class="li">Merge changes and save the result.</li>
+              </ol></div>
+            <div class="p">To copy the file from the upgraded customized configuration to the new customized
+                configuration:<ol class="ol" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__ol_xqd_f4h_43b">
+                <li class="li">Select the file.</li>
+                <li class="li">Click <img class="image" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__image_nrd_f4h_43b" src="../graphics/copyOldCustomerFile.png" alt=""> (<span class="ph uicontrol">Copy original customized file</span>) and then <img class="image" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__image_yrd_f4h_43b" src="../graphics/resolve.png" alt=""> (<span class="ph uicontrol">Resolve</span>) in the toolbar.</li>
+              </ol></div>
+          </dd>
+        
+        
+          <dt class="dt dlterm">Bulk action</dt>
+          <dd class="dd">To copy all BOTH_ADD files from the upgraded customized configuration to the new
+            customized configuration:<ol class="ol" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__ol_msy_nss_d3b">
+              <li class="li">Select all files in the file tree.</li>
+              <li class="li">Click <img class="image" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__image_rty_nss_d3b" src="../graphics/mergeAndResolveAutomatically.png" alt=""> (<span class="ph uicontrol">Merge and resolve files automatically</span>).</li>
+              <li class="li">Select one of the options:<ul class="ul" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__ul_vll_pss_d3b">
+                  <li class="li"><span class="ph uicontrol">Copy the customized version of the file and resolve the file for
+                      BOTH_ADD and BOTH_EDIT</span> if you want to copy all files added and
+                    edited by you</li>
+                  <li class="li"><span class="ph uicontrol">Copy the customized version of the file if the same as the new base
+                      version and resolve the file for BOTH_ADD</span> if you want to copy all
+                    files added by you that are the same as the files added by Guidewire</li>
+                </ul></li>
+              <li class="li">Run the merge and resolve process.</li>
+            </ol></dd>
+        
+      </dl>
+    </section>
+    <section class="section" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__d174e338"><h2 class="title sectiontitle">Edited by both Customer and Guidewire (BOTH_EDIT)</h2>
+      
+      <p class="p">By default, the new base version of the file already exists in the new customized
+        configuration.</p>
+      <dl class="dl">
+        
+          <dt class="dt dlterm">Single action</dt>
+          <dd class="dd">
+              <div class="p">To merge the file from the customized configuration with the file from the new base
+                configuration:<ol class="ol" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__ol_tzm_jfh_43b">
+                <li class="li">Select the file.</li>
+                <li class="li">Click <img class="image" src="../graphics/merge.png" alt=""> (<span class="ph uicontrol">Merge file</span>) in the toolbar to run a merge
+                  tool.</li>
+                <li class="li">Merge changes and save the result.</li>
+              </ol></div>
+              <div class="p">To copy the file from the upgraded customized configuration to the new customized
+                  configuration:<ol class="ol" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__ol_qbp_2fh_43b">
+                    <li class="li">Select the file.</li>
+                    <li class="li">Click <img class="image" src="../graphics/copyOldCustomerFile.png" alt=""> (<span class="ph uicontrol">Copy original customized file</span>) and then <img class="image" src="../graphics/resolve.png" alt=""> (<span class="ph uicontrol">Resolve</span>) in the toolbar.</li>
+                </ol></div>
+          </dd>
+        
+        
+          <dt class="dt dlterm">Bulk action</dt>
+          <dd class="dd">To merge or copy all BOTH_EDIT files from the upgraded customized configuration to the
+            new customized configuration:
+            <ol class="ol" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__ol_y4k_vvq_m3b">
+              <li class="li">Select all files in the file tree.</li>
+              <li class="li">Click <img class="image" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__image_ypk_vvq_m3b" src="../graphics/mergeAndResolveAutomatically.png" alt=""> (<span class="ph uicontrol">Merge and resolve files automatically</span>).</li>
+              <li class="li">Select one of the options:<ul class="ul" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__ul_lqk_vvq_m3b">
+                <li class="li"><span class="ph uicontrol">Automatically merge changes if there are no conflicts and resolve the
+                  file for BOTH_EDIT</span> if you want to automatically merge all
+                  <span class="ph uicontrol">BOTH_EDIT</span> files without conflicts</li>
+                <li class="li"><span class="ph uicontrol">Automatically merge changes if there are resolvable conflicts and
+                  resolve the file for BOTH_EDIT</span> if you want to automatically merge
+                  all <span class="ph uicontrol">BOTH_EDIT</span> files that contain resolvable conflicts</li>
+                <li class="li"><span class="ph uicontrol">Copy the customized version of the file and resolve the file for
+                  BOTH_ADD and BOTH_EDIT</span> if you want to copy all files added and
+                  edited by you</li>
+              </ul></li>
+              <li class="li">Run the merge and resolve process.</li>
+            </ol></dd>
+        
+      </dl>
+    </section>
+    <section class="section" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__d174e463"><h2 class="title sectiontitle">Edited by Customer and deleted by Guidewire (CUST_EDIT_GW_DELETE)</h2>
+      
+      <p class="p">There are two possible reasons why the file does not exist in the new base
+        configuration:</p>
+      <ol class="ol" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__ol_gbk_ldh_t2b">
+        <li class="li">Guidewire removed the file from the InsuranceSuite application.</li>
+        <li class="li">Guidewire moved the file to a different folder.</li>
+      </ol>
+      <p class="p">If Guidewire has completely removed the file, review the <cite class="cite">New and Changed
+        Guide</cite>, release notes, and the <cite class="cite">Upgrade Diff</cite> report for descriptions of
+        the change affecting the deleted file. Then determine if you want to continue moving your
+        customization to the new or changed feature. If not, then the customization will be
+        lost.</p>
+      <p class="p">For the second scenario, find where the file has been moved by searching the target
+        environment. Move your customized file to the same location in the working directory and
+        make sure to match any case changes in the file name. When you refresh the merge status in
+        Merge Tracker, the file now appears under the <span class="ph uicontrol">CUSTOMER_EDIT</span> filter.
+        You can now proceed with the merge. If you do not move the file over, you can instead
+        perform the merge manually by opening both files and incorporating the changes.</p>
+      <div class="p">
+        <dl class="dl">
+          
+            <dt class="dt dlterm">Single action</dt>
+            <dd class="dd">To copy the customized file from the upgraded customized configuration to the new
+              customized configuration:<ol class="ol" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__ol_pzv_t2h_43b">
+                <li class="li">Select the file.</li>
+                <li class="li">Click <img class="image" id="xd_cbf71cca2a001a1b-5cb01498-16b6f1a733f--7f6a__image_vx5_qch_t2b" src="../graphics/copyOldCustomerFile.png" alt=""> (<span class="ph uicontrol">Copy original customized file</span>) and then <img class="image" src="../graphics/resolve.png" alt=""> (<span class="ph uicontrol">Resolve</span>) in the toolbar.</li>
+              </ol></dd>
+          
+        </dl>
+      </div>
+    </section></div>
+<nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../topics/c_merge-tracker-tool.html#c_aj1930528">Merge Tracker tool</a></div></div></nav></article></main><footer role="contentinfo"><div class="footerContents">
+  <div id="footerLeft"></div>
+  <div id="footerCenter"></div>
+  <div id="footerRight"></div>
+  <script type="module" src="/scripts/html5.js"></script>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PLXG9H5" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+</div></footer></body></html>

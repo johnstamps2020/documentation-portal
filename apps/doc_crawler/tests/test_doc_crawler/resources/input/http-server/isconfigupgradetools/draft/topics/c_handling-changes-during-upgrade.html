@@ -1,0 +1,131 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2022"><meta name="generator" content="DITA-OT"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>Handling changes to the configuration during an upgrade</title>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PLXG9H5');</script>
+    <!-- End Google Tag Manager -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/scripts/html5.css">
+    <meta name="gw-doc-id" content="isconfigupgradetoolsdraft"><meta name="gw-base-url" content="isconfigupgradetools/draft">
+</head><body id="xd_5aa56bb131da4909-2a869cc4-1661181dc22--7bf1"><header role="banner"><div>
+  <div class="headerBar">
+    <div id="headerLeft"></div>
+    <div id="headerCenter"></div>
+    <div id="headerRight"></div>
+  </div>
+  <div class="navbar">
+    <div id="navbarLeft"></div>
+    <div id="navbarRight"></div>
+  </div>
+</div></header><nav role="toc"><ul><li><span>InsuranceSuite Configuration Upgrade Tools</span><ul><li><a href="../topics/c_release-notes.html">Release notes</a></li><li><a href="../topics/c_overview-upgrade-tools.html">Overview of the InsuranceSuite Configuration Upgrade Tools</a></li><li><a href="../topics/c_how-upgrade-tools-work.html">How the InsuranceSuite Configuration Upgrade Tools work</a></li><li class="active"><a href="../topics/c_handling-changes-during-upgrade.html">Handling changes to the configuration during an upgrade</a></li><li><a href="../topics/t_download-install-upgrade-tools.html">Download and install the InsuranceSuite Configuration Upgrade Tools</a></li><li><a href="../topics/c_extend-upgrade-tools.html">Extending the InsuranceSuite Configuration Upgrade Tools</a><ul><li><a href="../topics/t_add-override-upgrade-step.html">Add or override an upgrade step</a></li><li><a href="../topics/t_test-upgrade-step.html">Test an upgrade step</a></li><li><a href="../topics/c_listing-available-upgrade-steps.html">Listing available upgrade steps</a></li><li><a href="../topics/r_upgrade-steps-properties.html">Upgrade steps properties</a></li></ul></li><li><a href="../topics/c_preupgrade.html">Preupgrade tool</a><ul><li><a href="../topics/t_run-preupgrade-steps.html">Run preupgrade steps</a></li><li><a href="../topics/r_preupgrade-commands.html">Preupgrade command line options</a></li><li><a href="../topics/r_preupgrade-steps.html">Preupgrade steps reference</a></li></ul></li><li><a href="../topics/c_upgrade.html">Upgrade tool</a><ul><li><a href="../topics/t_run-upgrade-steps.html">Run upgrade steps</a></li><li><a href="../topics/r_upgrade-commands.html">Upgrade command line options</a></li><li><a href="../topics/c_upgrade-tool-modes.html">Upgrade tool modes</a></li><li><a href="../topics/t_partial-upgrade.html">Upgrade part of the configuration</a></li><li><a href="../topics/c_upgrade-steps.html">Upgrade steps reference</a><ul><li><a href="../topics/c_8.0.0-upgrade_steps.html#c_8.0.0-upgrade_steps">8.0.0 upgrade steps</a><ul><li><a href="../topics/c_8.0.0-upgrade_steps.html#r_replace-covterm-in-lookuptables">Replace covTerm in lookuptables</a></li><li><a href="../topics/c_8.0.0-upgrade_steps.html#r_replace-com-guidewire-commons-entity-bean">Replace com.guidewire.commons.entity.Bean</a></li><li><a href="../topics/c_8.0.0-upgrade_steps.html#r_replace-entityvalidationexception">Replace EntityValidationException</a></li><li><a href="../topics/c_8.0.0-upgrade_steps.html#r_replace-loggercategory">Replace LoggerCategory</a></li><li><a href="../topics/c_8.0.0-upgrade_steps.html#r_replace-old-bundle">Replace transaction.Bundle</a></li></ul></li><li><a href="../topics/c_8.0.1-upgrade-steps.html#c_8.0.1-upgrade-steps">8.0.1 upgrade steps</a><ul><li><a href="../topics/c_8.0.1-upgrade-steps.html#r_replace-effdatedversionlist">Replace EffDatedVersionList</a></li></ul></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_e76242a2ce4bf3cb--31dc41d3-16c278eb9e0--7ea1">9.0.0 upgrade steps</a><ul><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_88692ccd77b0a96e--c1a9526-16231d1d963--7dcf">Classes to adjust phone numbers</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_2c26781f923214da--57c95620-166042831dc--7e2f">Copy schemalocations to gwxmlmodule</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983670">Disabled PCF elements</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983672">Fix broken Emerald trigger</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--795b">Fix display key case sensitivity</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983675">Flatten config locale</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983677">Move abstract PanelDef outside of PanelRef</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983690">PCF API</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983692">PCF relative packages</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983694">Reformat rules</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983696">Remove AddressBookUID</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983698">Remove autoupgrade attribute</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983700">Remove DA params</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983702">Remove DisplayNameColumn</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983704">Remove JGroups params from config.xml</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983706">Remove ondelete attribute</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983708">Remove subpackage</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_504e31f8b81492d5-4e0a438e-16207abbcd3--7f97">Remove unreachable rules</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983710">Replace effdatedOnly</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983712">Replace FK owner</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983717">Replace implementsEntity  adapter</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983719">Replace maxActive attribute</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_1e45d90e5ccf36cc--7c5412a1-1667694b428--7fff">Replace old display key calls</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983721">Scriptability</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--6dc2">Script parameters enhancement</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_2c26781f923214da--57c95620-166042831dc--7e31">Update data types</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983723">Upgrade messaging-config.xml</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983725">Upgrade scheduler-config.xml</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983727">Upgrade work-queue.xml</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#r_9_0_0_cc_upgrade_steps">ClaimCenter upgrade steps</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#r_9_0_0_pc_upgrade_steps">PolicyCenter upgrade steps</a></li></ul></li><li><a href="../topics/c_9.0.1-upgrade-steps.html#xd_e76242a2ce4bf3cb--31dc41d3-16c278eb9e0--7e9f">9.0.1 upgrade steps</a><ul><li><a href="../topics/c_9.0.1-upgrade-steps.html#c_ai1983024">Remove indexstatistics</a></li></ul></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_e76242a2ce4bf3cb--31dc41d3-16c278eb9e0--7e9e">10.0.0 upgrade steps</a><ul><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f18">Add attribute desc to workflow files</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f16">appendListViewPaging</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#big-decimal-util-replace-upgrade">BigDecimalUtil replace upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#r_change-array-cast-enhancement-10">Change array casts to enhancement</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f19">Change structure of systables</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#equals-replace-upgrade">Equals replace upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--6cee">Fix edgeForeignKey extractable or overlap</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#get-by-code-replace-upgrade">getByCode replace upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_2c26781f923214da--57c95620-166042831dc--7e2d">Inbound integration config</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--6cf0">JurisdictionMappingUtil upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f17">PanelIteratorRemoveLink</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f1d">PCF charts</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f1c">Remove obsolete PCF properties</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f1a">Rename US English properties</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_69cc1a420393be91--7307de47-1668f33e05f--7d97">Replace CurrentDate</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#r_replace-documentcontents">Replace DocumentContents</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#schedule-package-upgrade">Schedule package upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#simple-value-populator-replace-upgrade">SimpleValuePopulator replace upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#string-date-replace-upgrade">String  Date replace upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f1b">Update default PCF properties</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#r_10_0_0_bc_upgrade_steps">BillingCenter upgrade steps</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#r_10_0_0_cc_upgrade_steps">ClaimCenter upgrade steps</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#r_10_0_0_pc_upgrade_steps">PolicyCenter upgrade steps</a></li></ul></li><li><a href="../topics/c_10.0.2-upgrade-steps.html#xd_e76242a2ce4bf3cb--31dc41d3-16c278eb9e0--7e9d">10.0.2 upgrade steps</a><ul><li><a href="../topics/c_10.0.2-upgrade-steps.html#remove-gosu-coercion-failures-parameter">Remove Gosu coercion failures parameter</a></li><li><a href="../topics/c_10.0.2-upgrade-steps.html#remove-obsolete-pcf-properties-2">Remove obsolete PCF properties 2</a></li><li><a href="../topics/c_10.0.2-upgrade-steps.html#targeted-post-on-change">Targeted post on change</a></li></ul></li><li><a href="../topics/c_general-upgrade-steps.html#xd_e76242a2ce4bf3cb--31dc41d3-16c278eb9e0--7ea0">General upgrade steps</a><ul><li><a href="../topics/c_general-upgrade-steps.html#xd_2c26781f923214da--57c95620-166042831dc--7e2e">Copy annotation class for deprecated API</a></li><li><a href="../topics/c_general-upgrade-steps.html#xd_2c26781f923214da--57c95620-166042831dc--7e32">Reformat XML</a></li><li><a href="../topics/c_general-upgrade-steps.html#xd_2c26781f923214da--57c95620-166042831dc--7e30">Rename display key</a></li><li><a href="../topics/c_general-upgrade-steps.html#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--65b4">Rename files differ case sensitivity</a></li></ul></li></ul></li></ul></li><li><a href="../topics/c_merge-tracker-tool.html#c_aj1930528">Merge Tracker tool</a><ul><li><a href="../topics/t_launch-merge-tracker.html">Launch Merge Tracker in Guidewire Studio</a></li><li><a href="../topics/r_merge-tracker-commands.html">Merge Tracker command line options</a></li><li><a href="../topics/r_merge-tracker-toolbar.html">Merge Tracker toolbar</a></li><li><a href="../topics/c_use-merge-tracker-filters.html">Merge Tracker filters</a><ul><li><a href="../topics/r_available-merge-tracker-filters.html">Available Merge Tracker filters</a></li><li><a href="../topics/c_manage-custom-filters.html#xd_92acc29907e0d13b-723d5fe2-16d561f2b31--7f15">Manage filters</a><ul><li><a href="../topics/c_manage-custom-filters.html#t_add_a_directory">Add a directory</a></li><li><a href="../topics/c_manage-custom-filters.html#t_create-gw-custom-filter">Edit a Guidewire filter</a></li><li><a href="../topics/c_manage-custom-filters.html#t_create-custom-filter">Add a custom filter</a></li><li><a href="../topics/c_manage-custom-filters.html#t_delete-custom-filter">Delete a custom filter</a></li></ul></li></ul></li><li><a href="../topics/c_merging-resolving-files.html">Merging and resolving files</a></li><li><a href="../topics/c_merge-resolve-different-change-types.html">Merging and resolving different types of changes</a></li><li><a href="../topics/r_merge-progress-tracking.html">Merge progress tracking</a></li><li><a href="../topics/t_export-file-details.html">Export file details</a><ul><li><a href="../topics/r_contents-exported-file.html">Contents of an exported file</a></li></ul></li><li><a href="../topics/c_merge-tracker-configuration.html">Configuring Merge Tracker</a></li></ul></li><li><a href="../topics/c_smart-merge-smart-diff-tools.html#c_aj1926787">Smart Merge and Smart Diff tools</a><ul><li><a href="../topics/c_smart-merge-supported-file-types.html">Smart Merge supported file types</a></li><li><a href="../topics/r_smart-diff-commands.html">Smart Diff command line options</a></li><li><a href="../topics/r_smart-merge-commands.html">Smart Merge command line options</a></li><li><a href="../topics/r_smart-merge-toolbar.html">Smart Merge toolbar</a></li><li><a href="../topics/t_move-element-smart-merge.html">Move an element in an XML file</a></li><li><a href="../topics/c_smart-merge-configuration.html">Configuring Smart Merge and Smart Diff</a></li></ul></li><li><a href="../topics/c_upgrade-inspections-tool.html">Upgrade inspections tool</a><ul><li><a href="../topics/t_use-upgrade-inspections.html">Use upgrade inspections</a></li><li><a href="../topics/r_upgrade-inspections-commands.html">Command line options for inspections</a></li><li><a href="../topics/r_upgrade-inspections-reference.html">Upgrade inspections reference</a></li></ul></li><li><a href="../topics/c_error-log-files.html">Error log files</a></li></ul></li></ul></nav><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+  <h1 class="title topictitle1" id="ariaid-title1">Handling changes to the configuration during an upgrade</h1>
+  <div class="body conbody"><p class="p">This topic describes how to handle changes to the customized
+      configuration during the configuration upgrade process.</p>
+    <section class="section" id="xd_5aa56bb131da4909-2a869cc4-1661181dc22--7bf1__d175e18"><h2 class="title sectiontitle">Process overview</h2>
+      
+      <ol class="ol" id="xd_5aa56bb131da4909-2a869cc4-1661181dc22--7bf1__ol_wzr_bgk_3fb">
+        <li class="li">You run upgrade steps. A temporary directory is created.</li>
+        <li class="li">You launch Merge Tracker and then merge and resolve files. In the meantime, the
+          customized configuration changes.</li>
+        <li class="li">You run the upgrade steps again. The existing temporary directory is deleted and then a
+          new one is created.</li>
+        <li class="li">You go back to merging and resolving files in Merge Tracker.</li>
+      </ol>
+      <p class="p">You may need to repeat steps 3 and 4 because the customized configuration can change
+        multiple times during the upgrade process.</p>
+      <br><div class="imagecenter"><img class="image imagecenter" id="xd_5aa56bb131da4909-2a869cc4-1661181dc22--7bf1__image_jyj_1js_3fb" src="../graphics/handling-changes-configuration.svg" alt="The process of applying changes to the customized configuration when the configuration upgrade is in progress."></div><br>
+    </section>
+    <section class="section" id="xd_5aa56bb131da4909-2a869cc4-1661181dc22--7bf1__d175e48"><h2 class="title sectiontitle">Tools</h2>
+      
+      <p class="p">The <span class="keyword">InsuranceSuite Configuration Upgrade Tools</span> allow you to run upgrade steps again
+        without losing your merging progress. Each configuration file in the upgraded customized
+        configuration has a status file that contains a CRC32 checksum of the file content. The
+        status files are located outside the temporary directory. When you launch Merge Tracker, it
+        compares the checksums in the status files with current checksums. If the
+          <span class="ph uicontrol">Unresolve file when changes in upgraded customized configuration are
+          detected</span> is enabled in Merge Tracker settings, all the resolved files that
+        changed are unresolved automatically and tagged as
+          <span class="ph uicontrol">changed-after-resolution</span> in Merge Tracker. For more information on
+        status files, see <a class="xref" href="r_merge-progress-tracking.html#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--75e1">Merge progress tracking</a>.</p>
+      <p class="p">Optionally, you can add the temporary directory to a version control system, such as Git,
+        to have more control over changes made to the customized configuration. When files in the
+        temporary directory are tracked, you can identify changes that happened between subsequent
+        runs of upgrade steps.</p>
+    </section>
+    <section class="section" id="xd_5aa56bb131da4909-2a869cc4-1661181dc22--7bf1__d175e70"><h2 class="title sectiontitle">Example</h2>
+      
+      <div class="p">The process described in this section is an example of handling changes to the customized
+        configuration that are made during the upgrade. The procedure assumes that the <span class="keyword">InsuranceSuite Configuration Upgrade Tools</span> are installed in the target environment and configured,
+        the <span class="ph uicontrol">Unresolve file when changes in upgraded customized configuration are
+          detected</span> is enabled in Merge Tracker settings, and Git is used as the source
+        control system.<ol class="ol" id="xd_5aa56bb131da4909-2a869cc4-1661181dc22--7bf1__ol_zg1_wxk_3fb">
+          <li class="li">Run the <span class="keyword cmdname">upgrade</span> command. The temporary directory is created in the
+            target environment.</li>
+          <li class="li">Go to the target environment and add the <span class="ph filepath">tmp</span> directory to
+            Git.<pre class="pre codeblock"><code>git init
+git add tmp
+git commit -m 'Upgraded configuration initial version'</code></pre></li>
+          <li class="li">Run Guidewire Studio in the target environment. When it starts, open Merge
+            Tracker.</li>
+          <li class="li">Merge and resolve files as needed. The files are marked as
+              <span class="ph uicontrol">Resolved</span> in Merge Tracker.<br><img class="image" id="xd_5aa56bb131da4909-2a869cc4-1661181dc22--7bf1__image_atw_h1l_3fb" src="../graphics/merge-tracker-resolved-files.png" alt=""><br></li>
+          <li class="li">After changes are made in the customized configuration, run the
+              <span class="keyword cmdname">upgrade</span> command with the <span class="keyword parmname">--mode clean</span>
+            parameter to delete the existing temporary directory and create a new one.</li>
+          <li class="li">Open Merge Tracker. All the resolved files that changed in the customized
+            configuration are automatically unresolved and tagged as
+              <span class="ph uicontrol">changed-after-resolution</span>.<br><img class="image" id="xd_5aa56bb131da4909-2a869cc4-1661181dc22--7bf1__image_o5x_wdl_3fb" src="../graphics/merge-tracker-changed-after-resolution.png" alt=""><br></li>
+          <li class="li">If you want to merge a file with the <span class="ph uicontrol">changed-after-resolution</span>
+            tag, see <a class="xref" href="c_merging-resolving-files.html#xd_5aa56bb131da4909-2a869cc4-1661181dc22--7833__merging-resolving-modified-files-merge-tracker">Merging and resolving modified files from Merge Tracker</a>.</li>
+          <li class="li">If you want to get more information about the changes in the temporary directory, run
+            the following Git commands.<dl class="dl">
+              
+                <dt class="dt dlterm"><span class="keyword cmdname">git status</span></dt>
+                <dd class="dd">Lists all changed
+                  files.<pre class="pre codeblock"><code>On branch master
+Changes not staged for commit:
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
+  
+      modified:  tmp/cfg-upgrade/modules/configuration/config/web/pcf/accounting/ChargesLV.pcf</code></pre></dd>
+              
+              
+                <dt class="dt dlterm"><span class="keyword cmdname">git diff</span></dt>
+                <dd class="dd">Shows changes made to
+                  files.<pre class="pre codeblock"><code>--- a/tmp/cfg-upgrade/modules/configuration/config/web/pcf/accounting/ChargesLV.pcf 
++++ b/tmp/cfg-upgrade/modules/configuration/config/web/pcf/accounting/ChargesLV.pcf
+@@ -80,12 +80,12 @@
+        name="IsReversible"/&gt;
+      &lt;Row&gt;
+        &lt;ButtonCell
+          hideIfDisabled="false"
+          hideIfDisabled="true"
+          id="ActionButton"
+          value="DisplayKey.get(&amp;quot;Web.AccountPaymentsLV.Actions&amp;quot;)"&gt;
+          &lt;MenuItem
+            action="ChargeT ransactionDetailsForward.push(charge)"
+            hideIfDisabled="true"
+            hideIfDisabled="false"
+            id="ViewTransaction"
+            label="DisplayKey.get(&amp;quot;Web.AccountPaymentsLV.Transaction&amp;quot;)"/&gt;
+        &lt;/ButtonCell&gt;</code></pre></dd>
+              
+              
+                <dt class="dt dlterm"><span class="keyword cmdname">git difftool</span></dt>
+                <dd class="dd">Shows changes made to files in the default diff tool from the Git
+                    configuration.<br><img class="image" id="xd_5aa56bb131da4909-2a869cc4-1661181dc22--7bf1__image_ucs_x4l_3fb" src="../graphics/git-diff-tool.png" width="600" alt=""><br></dd>
+              
+            </dl></li>
+        </ol></div>
+    </section></div>
+</article></main><footer role="contentinfo"><div class="footerContents">
+  <div id="footerLeft"></div>
+  <div id="footerCenter"></div>
+  <div id="footerRight"></div>
+  <script type="module" src="/scripts/html5.js"></script>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PLXG9H5" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+</div></footer></body></html>

@@ -232,6 +232,7 @@ async function searchController(req, res, next) {
     const currentPage = req.query.page || 1;
     const startIndex = resultsPerPage * (currentPage - 1);
     const requestIsAuthenticated = req.session.requestIsAuthenticated;
+    const hasGuidewireEmail = res.locals.userInfo.hasGuidewireEmail;
     const mappings = await getFieldMappings();
     const filtersFromUrl = getFiltersFromUrl(mappings, urlQueryParameters);
 
@@ -253,6 +254,14 @@ async function searchController(req, res, next) {
         {
           term: {
             public: true,
+          },
+        },
+      ];
+    } else if (requestIsAuthenticated && !hasGuidewireEmail) {
+      queryBody.bool.filter = [
+        {
+          term: {
+            internal: false,
           },
         },
       ];

@@ -3,28 +3,6 @@
   "title": "Intermediate page with only internal items",
   "template": "page",
   "class": "blue-theme dobson threeCards",
-  "selector": {
-    "label": "Select release",
-    "selectedItem": "Dobson",
-    "items": [
-      {
-        "label": "Elysian",
-        "page": "../elysian"
-      },
-      {
-        "label": "Cortina",
-        "page": "../cortina"
-      },
-      {
-        "label": "Banff",
-        "page": "../banff"
-      },
-      {
-        "label": "Aspen",
-        "page": "../aspen"
-      }
-    ]
-  },
   "items": [
     {
       "label": "Internal link",

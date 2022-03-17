@@ -79,6 +79,7 @@ const customersLoginRouter = require('./routes/customers-login');
 const oidcLoginRouter = require('./routes/authorization-code');
 const searchRouter = require('./routes/search');
 const unauthorizedRouter = require('./routes/unauthorized');
+const internalRouter = require('./routes/internal');
 const supportRouter = require('./routes/support');
 const missingPageRouter = require('./routes/404');
 const userRouter = require('./routes/user');
@@ -137,6 +138,7 @@ app.use(
 app.use(httpContext.middleware);
 
 app.use('/unauthorized', unauthorizedRouter);
+app.use('/internal', internalRouter);
 app.use('/search', searchRouter);
 app.use('/404', missingPageRouter);
 app.use('/userInformation', userRouter);

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('parts/head', { pageTitle: `Internal page`}) %>
+<body>
+<%- include('parts/header') %>
+<main>
+    <div class="internalInfo">
+        <img src="/images/internal-page.svg">
+        <h1>
+            This content is available to Guidewire employees only
+        </h1>
+        <p>
+            You are logged in as <strong><%= pageInfo.userName %></strong> (<%= pageInfo.userEmail %>) and you do not
+            have access.
+        </p>
+        <p>
+            To view this page, you must log in with your Guidewire employee account. If you need further help, please
+            contact your administrator.
+        </p>
+        <div class="internalButtons">
+            <a class="button" id="loginButton" href="/gw-logout">Log out</a>
+        </div>
+    </div>
+</main>
+<% include parts/footer %>
+</body>
+</html>
