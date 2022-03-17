@@ -12,7 +12,8 @@ import { setUpSidebar } from './modules/sidebar.js';
 import { showTopicRecommendations } from './modules/recommendations.js';
 import { addSkipNav } from './modules/skipNav.js';
 import { installAndInitializePendo } from './modules/pendo.js';
-import { addInternalBadge } from './modules/internal';
+import { addInternalBadge } from './modules/internal.js';
+import { addLightbox } from './modules/lightbox.js';
 import './prism.js';
 import '../stylesheets/html5template.css';
 import '../stylesheets/prism.css';
@@ -32,5 +33,6 @@ docReady(async function() {
   addFooterContents();
   addFeedbackElements();
   addCopyButton();
+  addLightbox();
   installAndInitializePendo();
 });
