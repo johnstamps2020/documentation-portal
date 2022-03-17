@@ -2377,9 +2377,9 @@ object Sources {
 
                 validationBuildType.params {
                     select("env.ENABLE_DEBUG_MODE",
-                        "No",
+                        "",
                         label = "Enable debug mode",
-                        options = listOf("Yes" to "--verbose", "No" to ""))
+                        options = listOf("Yes" to "--debug", "No" to ""))
                 }
 
                 validationBuildType.artifactRules += """
