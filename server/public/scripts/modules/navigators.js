@@ -79,13 +79,34 @@ function getCurrentLink() {
   return document.querySelector('nav[role="toc"] a.current');
 }
 
+function getDocTitleBreadcrumb() {
+  const docTitle = document.querySelector("meta[name='gw-doc-title']")?.content;
+  const docBaseUrl = document.querySelector("meta[name='gw-base-url']")?.content;
+
+  if (!docTitle || !docBaseUrl) {
+    return;
+  }
+  
+  const docTitleBreadcrumb = {
+    text: docTitle,
+    href: docBaseUrl
+  }
+
+  return docTitleBreadcrumb;
+}
+
 async function addBreadCrumbs() {
   let currentLink = getCurrentLink();
   if (currentLink) {
     const linkTrail = getParentNavItems(currentLink).flat();
-    const firstBreadcrumb = await getTopBreadcrumb();
-    if (firstBreadcrumb) {
-      linkTrail.push(firstBreadcrumb);
+
+    const docTitleBreadcrumb = getDocTitleBreadcrumb();
+    if(docTitleBreadcrumb) {
+      linkTrail.push(docTitleBreadcrumb);
+    }
+    const topBreadcrumb = await getTopBreadcrumb();
+    if (topBreadcrumb) {
+      linkTrail.push(topBreadcrumb);
     }
 
     linkTrail.reverse();
