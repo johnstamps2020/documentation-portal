@@ -298,7 +298,7 @@
       "docId": "jutronext",
       "srcId": "srcjutronext",
       "workingDir": "website",
-      "nodeImageVersion": "14.14.0"
+      "nodeImageVersion": "14.18.3"
     },
     {
       "buildType": "yarn",
@@ -416,7 +416,7 @@
       "docId": "jutro740",
       "srcId": "srcjutro740",
       "workingDir": "website",
-      "nodeImageVersion": "14.14.0"
+      "nodeImageVersion": "14.18.3"
     },
     {
       "buildType": "yarn",
@@ -435,7 +435,7 @@
       "docId": "jutrolatest",
       "srcId": "srcjutro740",
       "workingDir": "website",
-      "nodeImageVersion": "14.14.0"
+      "nodeImageVersion": "14.18.3"
     },
     {
       "buildType": "yarn",
