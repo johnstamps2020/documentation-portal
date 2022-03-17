@@ -105,8 +105,7 @@ enum class GwDockerImages(val image_url: String) {
     SITEMAP_GENERATOR_LATEST("artifactory.guidewire.com/doctools-docker-dev/sitemap-generator:latest"),
     DOC_VALIDATOR_LATEST("artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"),
     PYTHON_3_9_SLIM_BUSTER("artifactory.guidewire.com/hub-docker-remote/python:3.9-slim-buster"),
-    NODE_DEVEX_BASE("artifactory.guidewire.com/devex-docker-dev/node"),
-    NODE_12_14_1("${NODE_DEVEX_BASE.image_url}:12.14.1"),
+    NODE_REMOTE_BASE("artifactory.guidewire.com/hub-docker-remote/node"),
     NODE_14_ALPINE("artifactory.guidewire.com/hub-docker-remote/node:14-alpine"),
     GENERIC_14_14_0_YARN_CHROME("artifactory.guidewire.com/jutro-docker-dev/generic:14.14.0-yarn-chrome")
 }
@@ -3706,7 +3705,7 @@ object GwBuildSteps {
                 npm i
                 npm run build-html5-dependencies
             """.trimIndent()
-            dockerImage = "${GwDockerImages.NODE_DEVEX_BASE.image_url}:14.14.0"
+            dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.image_url}:14.14.0"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "--user 1000:1000"
@@ -3727,8 +3726,8 @@ object GwBuildSteps {
         validation_mode: Boolean = false,
     ): ScriptBuildStep {
         val nodeImage = when (node_image_version) {
-            null -> GwDockerImages.NODE_12_14_1.image_url
-            else -> "${GwDockerImages.NODE_DEVEX_BASE.image_url}:${node_image_version}"
+            null -> "${GwDockerImages.NODE_REMOTE_BASE.image_url}:12.14.1"
+            else -> "${GwDockerImages.NODE_REMOTE_BASE.image_url}:${node_image_version}"
         }
         val buildCommand = build_command ?: "build"
         val logFile = "yarn_build.log"
