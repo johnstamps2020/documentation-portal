@@ -71,21 +71,17 @@ def test_index_has_entries(elastic_client):
 
 
 def test_topic_has_internal_property(elastic_client):
-    search_results_not_internal = elastic_client.search(index=index_name, body={
-        "query": {
-            "match": {
-                "id": "/isconfigupgradetools/320/topics/c_error-log-files.html"
-            }
+    search_results_not_internal = elastic_client.search(index=index_name, query={
+        "match": {
+            "id": "/isconfigupgradetools/320/topics/c_error-log-files.html"
         }
     })
     found_not_internal_doc = search_results_not_internal['hits']['hits'][0]['_source']
     assert found_not_internal_doc['internal'] is False
 
-    search_results_internal = elastic_client.search(index=index_name, body={
-        "query": {
-            "match": {
-                "id": "/isconfigupgradetools/draft/topics/r_smart-diff-commands.html"
-            }
+    search_results_internal = elastic_client.search(index=index_name, query={
+        "match": {
+            "id": "/isconfigupgradetools/draft/topics/r_smart-diff-commands.html"
         }
     })
     found_internal_doc = search_results_internal['hits']['hits'][0]['_source']
@@ -97,25 +93,22 @@ def test_exact_match(elastic_client):
         if quoted_phrase:
             search_phrase = f"\"{search_phrase}\""
         return {
-            "query":
-                {
-                    "bool": {
-                        "must": {
-                            "simple_query_string": {
-                                "query": search_phrase,
-                                "fields": ["title^12", "body"],
-                                "quote_field_suffix": ".exact",
-                                "default_operator": "AND",
-                            },
-                        },
-                    }
+            "bool": {
+                "must": {
+                    "simple_query_string": {
+                        "query": search_phrase,
+                        "fields": ["title^12", "body"],
+                        "quote_field_suffix": ".exact",
+                        "default_operator": "AND",
+                    },
                 },
+            }
         }
 
     def test_matches_exist():
         search_string = 'configuring merge tracker'
         search_results = elastic_client.search(index=index_name,
-                                               body=prepare_search_query(search_string, True))
+                                               query=prepare_search_query(search_string, True))
 
         assert search_results['hits']['total']['value'] == 19
         found_docs = (hit['_source'] for hit in search_results['hits']['hits'])
@@ -125,15 +118,15 @@ def test_exact_match(elastic_client):
     def test_matches_do_not_exist():
         search_string = 'configure merge tracker'
         no_search_results = elastic_client.search(index=index_name,
-                                                  body=prepare_search_query(search_string, True))
+                                                  query=prepare_search_query(search_string, True))
         assert no_search_results['hits']['total']['value'] == 0
 
     def test_number_of_matches():
         search_string = 'upgrade.steps.general.pl.TransformDocumentUpgradeStep'
         exact_match_search_results = elastic_client.search(index=index_name,
-                                                           body=prepare_search_query(search_string, True))
+                                                           query=prepare_search_query(search_string, True))
         regular_match_search_results = elastic_client.search(index=index_name,
-                                                             body=prepare_search_query(search_string, False))
+                                                             query=prepare_search_query(search_string, False))
 
         assert regular_match_search_results['hits']['total']['value'] > exact_match_search_results['hits']['total'][
             'value'] == 0

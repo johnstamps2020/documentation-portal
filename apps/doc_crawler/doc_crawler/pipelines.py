@@ -63,7 +63,7 @@ class ElasticsearchPipeline:
 
         index_entry = dict(item)
         create_operation_result = self.elastic_client.index(
-            index=index_name, body=index_entry)
+            index=index_name, document=index_entry)
         if create_operation_result.get('result') == 'created':
             self.number_of_created_entries += 1
         elif create_operation_result.get('result') != 'created':
