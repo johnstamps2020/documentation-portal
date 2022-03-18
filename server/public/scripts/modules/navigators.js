@@ -254,7 +254,7 @@ function addShareButton() {
 
   shareButton.setAttribute(
     'href',
-    `mailto:?subject=${title}&amp;body=Check out Guidewire documentation page ${window.location}`
+    `mailto:?subject=${title}&body=Check out Guidewire documentation page ${window.location}.`
   );
 
   document.querySelector('#navbarRight').appendChild(shareButton);
