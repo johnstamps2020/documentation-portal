@@ -7966,13 +7966,13 @@
       "internal": false
     },
     {
-      "id": "assess",
-      "title": "Assess",
-      "url": "assess",
+      "id": "hazardhub",
+      "title": "HazardHub",
+      "url": "hazardhub",
       "metadata": {
-        "product": ["Assess"],
+        "product": ["HazardHub Casualty"],
         "platform": ["Cloud"],
-        "release": ["Dobson"],
+        "release": ["Dobson", "Elysian"],
         "version": ["latest"]
       },
       "environments": ["dev", "int", "staging", "prod"],
