@@ -28,14 +28,6 @@
           "id": "isccelysiandraftnewandchanged"
         },
         {
-          "label": "App Events Release Notes",
-          "id": "appeventsrndraft"
-        },
-        {
-          "label": "App Events Release Notes",
-          "id": "appeventsrn202205"
-        },
-        {
           "label": "REST API Client Release Notes",
           "id": "isdraftrestapiclientrn"
         },
@@ -208,14 +200,6 @@
           "id": "iscc202205apica"
         },
         {
-          "label": "ClaimCenter App Events for Developers",
-          "id": "ccappeventsdevdraft"
-        },
-        {
-          "label": "ClaimCenter App Events for Developers",
-          "id": "ccappeventsdev202205"
-        },
-        {
           "label": "REST API Framework",
           "id": "isccelysiandraftrestapifw"
         },
@@ -253,10 +237,6 @@
         {
           "label": "GUnit Testing",
           "id": "iscc202205testing"
-        },
-        {
-          "label": "Webhooks API Reference",
-          "id": "webhooksapinext"
         }
       ]
     },
