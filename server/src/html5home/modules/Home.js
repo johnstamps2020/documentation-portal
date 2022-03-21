@@ -10,13 +10,15 @@ export default function Home() {
 
   return (
     <div className={styles.home}>
-      <h1>{title}</h1>
-      <div className={styles.nav}>
-        {topNavItems.map((link, key) => (
-          <a href={link.href} key={key} className={styles.tile}>
-            {link.innerText}
-          </a>
-        ))}
+      <div className={styles.content}>
+        <h1>{title}</h1>
+        <div className={styles.nav}>
+          {topNavItems.map((link, key) => (
+            <a href={link.href} key={key} className={styles.tile}>
+              {link.innerText}
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );

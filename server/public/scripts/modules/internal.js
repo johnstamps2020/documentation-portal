@@ -1,6 +1,6 @@
 export function addInternalBadge() {
   try {
-    if (docInternal) {
+    if (window.docInternal) {
       const internalBadge = document.createElement('div');
       internalBadge.setAttribute('id', 'internalBadge');
       const internalBadgeText = document.createElement('span');

@@ -1,3 +1,21 @@
+@import '../../public/stylesheets//modules/header.css';
+@import '../../public/stylesheets/modules/html5vars.css';
+@import '../../public/stylesheets/modules/fonts.css';
+@import '../../public/stylesheets/modules/avatar.css';
+@import '../../public/stylesheets/modules/feedback.css';
+@import '../../public/stylesheets/modules/footer.css';
+@import '../../public/stylesheets/modules/print.css';
+@import '../../public/stylesheets/modules/searchBox.css';
+@import '../../public/stylesheets/modules/skipNav.css';
+@import '../../public/stylesheets/modules/versionSelector.css';
+@import '../../public/stylesheets/modules/internal.css';
+@import '../../public/stylesheets/modules/lightbox.css';
+
 body {
-  background-color: blue;
+  --header-height: 32px;
+}
+
+#home_page_container {
+  min-height: calc(100vh - var(--header-height));
+  padding: 2rem 1rem;
 }
