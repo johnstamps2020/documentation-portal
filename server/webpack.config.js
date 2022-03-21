@@ -9,7 +9,7 @@ module.exports = {
       filename: 'html5.js',
     },
     html5Home: {
-      import: './out/html5home/html5homeTemplate.js',
+      import: './src/html5home/html5homeTemplate.js',
       filename: 'html5home.js',
     },
   },
@@ -23,6 +23,16 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.m?js$/,
+        exclude: [/node_modules/, /static/, /out/],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [['@babel/preset-react']],
+          },
+        },
+      },
       {
         test: /\.module\.css$/,
         use: [

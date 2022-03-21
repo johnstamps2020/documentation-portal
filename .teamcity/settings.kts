@@ -3712,7 +3712,6 @@ object GwBuildSteps {
                 set -xe
                 
                 npm i
-                npm run babel-html5-home
                 npm run build-html5-dependencies
             """.trimIndent()
             dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.image_url}:14.14.0"
