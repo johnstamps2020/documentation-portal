@@ -6,7 +6,7 @@ export default function Home() {
     i.querySelector('a')
   );
 
-  const title = document.querySelector('h1').innerText;
+  const title = document.title;
 
   return (
     <div className={styles.home}>
