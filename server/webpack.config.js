@@ -15,7 +15,12 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'html5.css',
+      filename: (pathData, assetInfo) => {
+        if (pathData.chunk.filenameTemplate === 'html5home.js') {
+          return 'html5home.css';
+        }
+        return 'html5.css';
+      },
     }),
   ],
   output: {
