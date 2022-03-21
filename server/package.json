@@ -6,8 +6,6 @@
     "start": "node ./bin/www",
     "start:dev": "nodemon ./bin/www -e js,ejs,css,html,jpg,png",
     "test": "mocha",
-    "babel-html5-home": "NODE_ENV=production BABEL_ENV=production babel src/html5home --out-dir out/html5home --copy-files",
-    "babel-html5-home-watch": "NODE_ENV=development BABEL_ENV=development babel --watch src/html5home --out-dir out/html5home --copy-files",
     "build-html5-dependencies": "webpack",
     "html5-watch": "webpack --watch"
   },
