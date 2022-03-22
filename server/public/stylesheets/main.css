@@ -6,6 +6,7 @@
 @import 'modules/searchBox.css';
 @import 'modules/highlight.css';
 @import 'modules/internal.css';
+@import 'modules/subjects.css';
 
 :root {
   --ff-GW: 'Source Sans Pro', Helvetica, Arial, sans-serif;
@@ -340,83 +341,6 @@ div.group > div:not(.label) {
 .categoryCard a {
   display: inline-block;
   padding: 4px 0;
-}
-
-.subject {
-  break-inside: avoid;
-  padding-bottom: 32px;
-  padding-left: 16px;
-  width: 450px;
-}
-
-.subject::before {
-  content: 'icon';
-  color: transparent;
-  width: 22px;
-  height: 22px;
-  background-image: url(/images/book-solid.svg);
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
-  float: left;
-}
-
-.featuresAndFunctionality::before {
-  background-image: url(/images/object-group-regular.svg);
-}
-
-.installation::before {
-  background-image: url(/images/wrench-solid.svg);
-}
-
-.releaseNotes::before {
-  background-image: url(/images/file-alt-regular.svg);
-}
-
-.administration::before {
-  background-image: url(/images/users-cog-solid.svg);
-}
-
-.development::before {
-  background-image: url(/images/code-solid.svg);
-}
-
-.integration::before {
-  background-image: url(/images/puzzle-piece-solid.svg);
-}
-
-.configuration::before {
-  background-image: url(/images/cogs-solid.svg);
-}
-
-.bestPractices::before {
-  background-image: url(/images/lightbulb-regular.svg);
-}
-
-.glossary::before {
-  background-image: url(/images/book-open-solid.svg);
-}
-
-.aboutThisDocumentation::before {
-  background-image: url(/images/book-solid.svg);
-}
-
-.subject .label {
-  font-weight: 700;
-  font-size: 1.25rem;
-  padding-bottom: 12px;
-}
-
-.subject > div {
-  margin-left: 42px;
-}
-
-.subject div > .label {
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.subject > div:not(.label):not(:first-child) {
-  padding-top: 8px;
 }
 
 footer {
