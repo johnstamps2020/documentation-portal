@@ -17,7 +17,6 @@
 #lightbox img {
   max-width: 90%;
   max-height: 80%;
-  padding: 4px;
-  background-color: black;
+  background-color: darkgray;
   border: 2px solid white;
 }
