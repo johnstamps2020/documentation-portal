@@ -1,7 +1,7 @@
 body {
   --code-font-family: 'Source Code Pro', monospace;
-  --copy-button-text-color: white;
-  --copy-button-background-color: black;
+  --copy-button-text-color: black;
+  --copy-button-background-color: white;
 }
 
 .codeBlockWrapper {
