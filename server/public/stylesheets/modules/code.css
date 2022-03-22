@@ -1,7 +1,7 @@
 body {
   --code-font-family: 'Source Code Pro', monospace;
-  --code-text-color: black;
-  --code-background-color: #f5f2f0;
+  --copy-button-text-color: black;
+  --copy-button-background-color: white;
 }
 
 .codeBlockWrapper {
@@ -10,7 +10,7 @@ body {
 }
 
 pre.pre {
-  padding: 1em 1em !important;
+  padding: 1em 1em;
   font-size: 0.875rem !important;
   font-family: var(--code-font-family) !important;
   text-shadow: none !important;
@@ -21,8 +21,8 @@ pre.pre {
   top: 8px;
   right: 8px;
   background-color: transparent;
-  border: 1px solid var(--code-text-color);
-  color: var(--code-text-color);
+  border: 1px solid var(--copy-button-text-color);
+  color: var(--copy-button-text-color);
   padding: 4px 6px;
   border-radius: 4px;
   cursor: pointer;
@@ -31,8 +31,8 @@ pre.pre {
 
 .copyToClipboardButton:hover,
 .copyToClipboardButton:focus {
-  background-color: var(--code-text-color);
-  color: var(--code-background-color);
+  background-color: var(--copy-button-text-color);
+  color: var(--copy-button-background-color);
 }
 
 .copyToClipboardButton:active,
@@ -48,7 +48,6 @@ pre.pre {
 .msgph,
 .codeph,
 .cmdname,
-.codeblock,
 .pre,
 .tt,
 .filepath {
@@ -56,25 +55,6 @@ pre.pre {
   font-size: 1rem;
 }
 
-.codeblock,
-.pre {
-  background-color: var(--code-background-color);
-  border: 0.1rem solid rgba(0, 0, 0, 0.1);
+.codeblock {
   border-radius: 6px;
-  padding: 2px 6px;
-}
-
-.codeblock .codeph,
-.codeblock .userinput,
-.codeblock .filepath,
-.codeblock .apiname,
-.codeblock .cmdname,
-.codeblock .varname,
-.codeblock .parmname,
-.codeblock .option {
-  background-color: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 0;
-  font-size: 0.875rem;
 }

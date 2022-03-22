@@ -5,10 +5,11 @@ function containsLanguageClass(arr) {
 }
 
 export function normalizeCode() {
-  const preBlocks = document.querySelectorAll('pre');
-  for (const pre of preBlocks) {
-    if (!containsLanguageClass([...pre.classList])) {
-      pre.classList.add('language-java');
+  const codeBlocks = document.querySelectorAll('pre > code');
+  for (const codeBlock of codeBlocks) {
+    codeBlock.parentElement.classList.add('line-numbers');
+    if (!containsLanguageClass([...codeBlock.classList])) {
+      codeBlock.classList.add('language-java');
     }
   }
 }

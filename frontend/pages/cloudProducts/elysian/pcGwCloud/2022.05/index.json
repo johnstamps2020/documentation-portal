@@ -36,14 +36,6 @@
           "id": "ispc202205newandchanged"
         },
         {
-          "label": "App Events Release Notes",
-          "id": "appeventsrndraft"
-        },
-        {
-          "label": "App Events Release Notes",
-          "id": "appeventsrn202205"
-        },
-        {
           "label": "REST API Client Release Notes",
           "id": "isdraftrestapiclientrn"
         },
@@ -236,14 +228,6 @@
           "id": "ispc202205apica"
         },
         {
-          "label": "PolicyCenter App Events for Developers",
-          "id": "pcappeventsdevdraft"
-        },
-        {
-          "label": "PolicyCenter App Events for Developers",
-          "id": "pcappeventsdev202205"
-        },
-        {
           "label": "REST API Framework",
           "id": "ispcelysiandraftrestapifw"
         },
@@ -281,10 +265,6 @@
         {
           "label": "GUnit Testing",
           "id": "ispc202205testing"
-        },
-        {
-          "label": "Webhooks API Reference",
-          "id": "webhooksapinext"
         }
       ]
     },

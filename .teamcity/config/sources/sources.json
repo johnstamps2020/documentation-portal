@@ -2072,10 +2072,10 @@
       "branch": "main"
     },
     {
-      "id": "assesssrc",
-      "title": "Assess",
+      "id": "hazardhubsrc",
+      "title": "HazardHub",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/assess.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/hazardhub.git",
       "branch": "main"
     },
     {

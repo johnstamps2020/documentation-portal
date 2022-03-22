@@ -109,8 +109,8 @@
           "class": "group",
           "items": [
             {
-              "label": "Assess",
-              "page": "assess"
+              "label": "HazardHub Casualty",
+              "page": "../hazardhub"
             },
             {
               "label": "Canvas",
