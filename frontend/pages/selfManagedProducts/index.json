@@ -45,6 +45,10 @@
           "id": "isdraftrestapiclientguide"
         },
         {
+          "label": "Guidewire for Salesforce",
+          "page": "gwsf/di/3.4"
+        },
+        {
           "label": "Global Solutions",
           "class": "group",
           "items": [
@@ -130,33 +134,6 @@
         {
           "label": "VendorEngage",
           "id": "dxve1141"
-        },
-        {
-          "label": "Guidewire for Salesforce for Financial Services Cloud",
-          "page": "gwsf/di/3.4"
-        },
-        {
-          "label": "Guidewire for Salesforce Data Integrations for Claims",
-          "id": "dxdiconprem310",
-          "env": ["prod"]
-        },
-        {
-          "label": "Guidewire for Salesforce Digital Gateway",
-          "page": "gwsf/ed/3.3.1"
-        },
-        {
-          "label": "Guidewire for Salesforce Digital Gateway for Claims",
-          "id": "dxedconprem310",
-          "env": ["prod"]
-        },
-        {
-          "label": "Guidewire for Salesforce View on Demand",
-          "page": "gwsf/vod/3.3.1"
-        },
-        {
-          "label": "Guidewire for Salesforce View on Demand for Claims",
-          "id": "dxvodconprem310",
-          "env": ["prod"]
         }
       ]
     }
