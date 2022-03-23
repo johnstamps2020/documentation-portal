@@ -3664,7 +3664,11 @@ object GwBuildSteps {
             }
         }
 
-        if (arrayOf(GwDitaOutputFormats.WEBHELP.format_name, GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name).contains(
+        if (arrayOf(
+                GwDitaOutputFormats.WEBHELP.format_name,
+                GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name,
+                GwDitaOutputFormats.HTML5.format_name
+            ).contains(
                 output_format) && index_redirect
         ) {
             commandParams.add(Pair("--create-index-redirect", "yes"))

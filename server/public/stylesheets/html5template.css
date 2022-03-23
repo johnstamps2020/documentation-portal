@@ -20,6 +20,7 @@
 @import 'modules/versionSelector.css';
 @import 'modules/internal.css';
 @import 'modules/lightbox.css';
+@import './modules/html5vars.css';
 
 @media screen and (max-width: 1500px) {
   html body {
@@ -81,31 +82,6 @@ html {
 }
 
 body {
-  --GW-COLOR-BRAND-1: #00739d;
-  --GW-COLOR-BRAND-2: #3c4c5e;
-  --GW-COLOR-TEXT-1: #28333f;
-  --GW-COLOR-TEXT-2: #657580;
-  --GW-COLOR-TEXT-3-HOVER: #f2f2f2;
-  --GW-COLOR-TEXT-3-ACTIVE: #e6e6e6;
-  --GW-COLOR-LINK-1: #00739d;
-  --GW-COLOR-LINK-1-HOVER: #006083;
-  --GW-COLOR-LINK-1-ACTIVE: #004e6a;
-  --clr-GW-HEADER-FOOTER-BKG: rgb(19, 30, 46);
-  --GW-BOX-SHADOW-VERTICAL-2: 0 2px 4px 0px rgba(40, 51, 63, 0.16);
-  --GW-BOX-SHADOW-VERTICAL-3: 0 4px 3px 0px rgba(40, 51, 63, 0.16);
-  --GW-BOX-SHADOW-DIAGONAL-3: 4px 4px 6px 0px rgba(66, 68, 90, 0.24);
-  --header-height: 64px;
-  --navbar-height: 54px;
-  --footer-height: 86px;
-  --main-height: calc(100vh - var(--header-height) - var(--navbar-height));
-  --guidewire-font: 'Source Sans Pro', sans-serif;
-  margin: 0;
-  font-family: var(--guidewire-font);
-  color: var(--GW-COLOR-TEXT-1);
-  font-size: 1.125rem;
-  font-weight: 400;
-  background-color: white;
-  min-height: var(--main-height);
   display: grid;
   grid-template-columns: 350px 3fr 1fr;
   grid-template-rows: auto;

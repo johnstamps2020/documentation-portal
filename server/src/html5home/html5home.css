@@ -1,0 +1,28 @@
+@import '../../public/stylesheets//modules/header.css';
+@import '../../public/stylesheets/modules/html5vars.css';
+@import '../../public/stylesheets/modules/fonts.css';
+@import '../../public/stylesheets/modules/avatar.css';
+@import '../../public/stylesheets/modules/feedback.css';
+@import '../../public/stylesheets/modules/footer.css';
+@import '../../public/stylesheets/modules/searchBox.css';
+@import '../../public/stylesheets/modules/skipNav.css';
+@import '../../public/stylesheets/modules/versionSelector.css';
+@import '../../public/stylesheets/modules/internal.css';
+@import '../../public/stylesheets/modules/lightbox.css';
+@import '../../public/stylesheets/modules/subjects.css';
+@import '../../public/stylesheets//modules/twoColumns.css';
+
+body {
+  --header-height: 32px;
+}
+
+#mainContent {
+  min-height: calc(100vh - var(--header-height));
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.topicCategory {
+  background-color: yellow;
+}
