@@ -21,6 +21,7 @@
 @import 'modules/internal.css';
 @import 'modules/lightbox.css';
 @import './modules/html5vars.css';
+@import '../../node_modules/highlight.js/styles/a11y-light.css';
 
 @media screen and (max-width: 1500px) {
   html body {

@@ -42,6 +42,7 @@
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
     "dotenv": "^8.2.0",
+    "highlight.js": "^11.5.0",
     "mini-css-extract-plugin": "^2.4.5",
     "mocha": "^8.2.1",
     "nodemon": "^2.0.6",
