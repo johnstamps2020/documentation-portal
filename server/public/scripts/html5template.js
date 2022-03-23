@@ -14,13 +14,10 @@ import { addSkipNav } from './modules/skipNav.js';
 import { installAndInitializePendo } from './modules/pendo.js';
 import { addInternalBadge } from './modules/internal.js';
 import { addLightbox } from './modules/lightbox.js';
-import { loadPrism } from './prism.js';
 import '../stylesheets/html5template.css';
-import '../stylesheets/prism.css';
 
 docReady(async function() {
   normalizeCode();
-  loadPrism();
   addSkipNav();
   showTopicRecommendations();
   setUpSidebar();
