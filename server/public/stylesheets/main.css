@@ -7,6 +7,8 @@
 @import 'modules/highlight.css';
 @import 'modules/internal.css';
 @import 'modules/subjects.css';
+@import 'modules/twoCards.css';
+@import 'modules/twoColumns.css';
 
 :root {
   --ff-GW: 'Source Sans Pro', Helvetica, Arial, sans-serif;
@@ -254,28 +256,6 @@ div.items {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-}
-
-.twoCards div.items {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  flex: 1 1 auto;
-}
-
-.twoColumns div.items {
-  columns: 2;
-}
-
-@media screen and (max-width: 750px) {
-  .twoColumns div.items {
-    columns: 1;
-  }
-}
-
-.twoCards div.items > .categoryCard {
-  min-width: 300px;
-  width: calc(50% - 8px);
 }
 
 .threeCards div.items > .categoryCard {
