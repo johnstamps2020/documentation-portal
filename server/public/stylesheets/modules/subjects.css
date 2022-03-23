@@ -16,7 +16,8 @@
   float: left;
 }
 
-.featuresAndFunctionality::before {
+.featuresAndFunctionality::before,
+.featuresandfunctionality::before {
   background-image: url(../../images/object-group-regular.svg);
 }
 
@@ -24,7 +25,8 @@
   background-image: url(../../images/wrench-solid.svg);
 }
 
-.releaseNotes::before {
+.releaseNotes::before,
+.releasenotes::before {
   background-image: url(../../images/file-alt-regular.svg);
 }
 
@@ -44,7 +46,8 @@
   background-image: url(../../images/cogs-solid.svg);
 }
 
-.bestPractices::before {
+.bestPractices::before,
+.bestpractices::before {
   background-image: url(../../images/lightbulb-regular.svg);
 }
 
@@ -52,7 +55,8 @@
   background-image: url(../../images/book-open-solid.svg);
 }
 
-.aboutThisDocumentation::before {
+.aboutThisDocumentation::before,
+.aboutthisdocumentation::before {
   background-image: url(../../images/book-solid.svg);
 }
 
