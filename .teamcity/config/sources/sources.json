@@ -1875,7 +1875,7 @@
       "id": "testingframeworksapibanffsrc",
       "title": "API Testing Banff",
       "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gw-testing.git",
       "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/testing_frameworks/2020.11/GT-API.ditamap",
@@ -1886,7 +1886,7 @@
       "id": "testingframeworksuibanffsrc",
       "title": "User Interface Testing Banff",
       "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gw-testing.git",
       "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/testing_frameworks/2020.11/GT-UI.ditamap",
@@ -1897,7 +1897,7 @@
       "id": "testingframeworksrnbanffsrc",
       "title": "Test Automation Release Notes Banff",
       "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gw-testing.git",
       "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/testing_frameworks/releasenotes/Guidewire_Test_Automation_ReleaseNotes.ditamap",
