@@ -21,6 +21,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/mid-ipf.git",
       "branch": "release/fr-FR/1.1"
+    },
+    {
+      "id": "irsa20src",
+      "title": "IRSA Integration for ClaimCenter 2.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/mid-ipf.git",
+      "branch": "release/2.0"
     }
   ]
 }

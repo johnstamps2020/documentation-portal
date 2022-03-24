@@ -1,0 +1,84 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "midipfoverview20",
+      "title": "Overview",
+      "url": "self-managed/ipf/2.0/overview",
+      "metadata": {
+        "product": ["IRSA Integration for ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": ["2.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "midipfadjuster20",
+      "title": "Adjuster Guide",
+      "url": "self-managed/ipf/2.0/adjuster",
+      "metadata": {
+        "product": ["IRSA Integration for ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": ["2.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "midipfadmin20",
+      "title": "Administration Guide",
+      "url": "self-managed/ipf/2.0/admin",
+      "metadata": {
+        "product": ["IRSA Integration for ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": ["2.0"],
+        "subject": ["Administration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "midipfrn20",
+      "title": "Release Notes",
+      "url": "self-managed/ipf/2.0/releasenotes",
+      "metadata": {
+        "product": ["IRSA Integration for ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": ["2.0"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "midipfsupermap20",
+      "title": "Supermap for downloadable output",
+      "url": "self-managed/ipf/2.0/all",
+      "metadata": {
+        "product": ["IRSA Integration for ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": ["2.0"]
+      },
+      "environments": ["dev"],
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false
+    }
+  ]
+}
