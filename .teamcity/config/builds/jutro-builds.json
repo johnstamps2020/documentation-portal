@@ -304,6 +304,7 @@
       "buildType": "yarn",
       "docId": "storybooknext",
       "srcId": "srcjutrostorybooknext",
+      "nodeImageVersion": "17.6.0",
       "workingDir": "storybook",
       "customEnv": [
         {
@@ -422,6 +423,7 @@
       "buildType": "yarn",
       "docId": "storybook740",
       "srcId": "srcjutrostorybook740",
+      "nodeImageVersion": "17.6.0",
       "workingDir": "storybook",
       "customEnv": [
         {
@@ -441,6 +443,7 @@
       "buildType": "yarn",
       "docId": "storybooklatest",
       "srcId": "srcjutrostorybook740",
+      "nodeImageVersion": "17.6.0",
       "workingDir": "storybook",
       "customEnv": [
         {
