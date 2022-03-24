@@ -3778,7 +3778,6 @@ object GwBuildSteps {
                     $customEnvExportVars
                     
                     cd "$working_dir"
-                    chmod -R 777 ./
                     yarn install
                     $buildCommandBlock
                 """.trimIndent()
