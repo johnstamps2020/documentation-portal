@@ -41,13 +41,13 @@ export function addCopyButton() {
 
       copyButton.addEventListener('click', copyToClipBoard);
 
-      block.appendChild(copyButton);
+      block.before(copyButton);
     }
   }
 }
 
 export function highlightCode() {
-  const codeBlocks = document.querySelectorAll('pre code');
+  const codeBlocks = document.querySelectorAll('pre');
 
   if (codeBlocks.length > 0) {
     hljs.configure({
