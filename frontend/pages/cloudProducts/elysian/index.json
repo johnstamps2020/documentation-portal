@@ -110,31 +110,31 @@
           "items": [
             {
               "label": "CustomerEngage Account Management",
-              "page": "ceAccountMgmt/latest"
+              "page": "ceAccountMgmt/2022.05"
             },
             {
               "label": "CustomerEngage Account Management for ClaimCenter",
-              "page": "ceAccountMgmtCc/latest"
+              "page": "ceAccountMgmtCc/2022.05"
             },
             {
               "label": "CustomerEngage Quote and Buy",
-              "page": "ceQuoteAndBuy/latest"
+              "page": "ceQuoteAndBuy/2022.05"
             },
             {
               "label": "ProducerEngage",
-              "page": "producerEngage/latest"
+              "page": "producerEngage/2022.05"
             },
             {
               "label": "ProducerEngage for ClaimCenter",
-              "page": "producerEngageCc/latest"
+              "page": "producerEngageCc/2022.05"
             },
             {
               "label": "ServiceRepEngage",
-              "page": "serviceRepEngage/latest"
+              "page": "serviceRepEngage/2022.05"
             },
             {
               "label": "VendorEngage",
-              "page": "vendorEngage/latest"
+              "page": "vendorEngage/2022.05"
             }
           ]
         },
