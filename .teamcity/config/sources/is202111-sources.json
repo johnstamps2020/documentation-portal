@@ -19,7 +19,7 @@
       "id": "testingframeworks202111src",
       "title": "Testing Framework 2021.11",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gw-testing.git",
       "branch": "release/2021.11"
     },
     {

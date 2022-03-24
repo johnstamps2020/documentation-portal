@@ -17,9 +17,9 @@
     },
     {
       "id": "testingframeworks202205src",
-      "title": "Testing Framework 2022.05",
+      "title": "Guidewire Testing 2022.05",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gw-testing.git",
       "branch": "release/2022.05"
     },
     {
