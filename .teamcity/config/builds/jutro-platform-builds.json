@@ -4,8 +4,7 @@
     {
       "buildType": "yarn",
       "docId": "jutroplatformnext",
-      "srcId": "srcjutroplatformnext",
-      "nodeImageVersion": "14.14.0"
+      "srcId": "srcjutroplatformnext"
     }
   ]
 }
