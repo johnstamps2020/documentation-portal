@@ -1,0 +1,641 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dx202205ceamapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/ce-am/202205/app",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205ceaminstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/ce-am/202205/install",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205ceamdev",
+      "title": "Development Guide",
+      "url": "cloud/dx/ce-am/202205/dev",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205ceamrefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/ce-am/202205/ref",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205ceamrelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/ce-am/202205/relnotes",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205ceclaimsapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/ce-claims/202205/app",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205ceclaimsinstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/ce-claims/202205/install",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205ceclaimsdev",
+      "title": "Development Guide",
+      "url": "cloud/dx/ce-claims/202205/dev",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205ceclaimsrefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/ce-claims/202205/ref",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205ceclaimsrelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/ce-claims/202205/relnotes",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205ceqbapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/ce-qb/202205/app",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205ceqbinstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/ce-qb/202205/install",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205ceqbdev",
+      "title": "Development Guide",
+      "url": "cloud/dx/ce-qb/202205/dev",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205ceqbrefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/ce-qb/202205/ref",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205ceqbrelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/ce-qb/202205/relnotes",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205peapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/pe/202205/app",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205peinstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/pe/202205/install",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205pedev",
+      "title": "Development Guide",
+      "url": "cloud/dx/pe/202205/dev",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205perefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/pe/202205/ref",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205perelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/pe/202205/relnotes",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205peclaimsapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/pe-claims/202205/app",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205peclaimsinstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/pe-claims/202205/install",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205peclaimsdev",
+      "title": "Development Guide",
+      "url": "cloud/dx/pe-claims/202205/dev",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205peclaimsrefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/pe-claims/202205/ref",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205peclaimsrelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/pe-claims/202205/relnotes",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205sreapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/sre/202205/app",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205sreinstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/sre/202205/install",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205sredev",
+      "title": "Development Guide",
+      "url": "cloud/dx/sre/202205/dev",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205srerefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/sre/202205/ref",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205srerelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/sre/202205/relnotes",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205veapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/ve/202205/app",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205veinstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/ve/202205/install",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205vedev",
+      "title": "Development Guide",
+      "url": "cloud/dx/ve/202205/dev",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205verefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/ve/202205/ref",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205verelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/ve/202205/relnotes",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dx202205dcg",
+      "title": "Digital Code Generation Guide",
+      "url": "cloud/dx/dcg/202205/guide",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy", "ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging", "int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "dxjsdocs202205",
+      "title": "Digital Frontend API Documentation",
+      "url": "dx/js-docs/202205",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": [
+          "CustomerEngage Account Management",
+          "CustomerEngage Account Management for ClaimCenter",
+          "CustomerEngage Quote and Buy",
+          "ProducerEngage",
+          "ProducerEngage for ClaimCenter",
+          "ServiceRepEngage",
+          "VendorEngage"
+        ],
+        "version": ["2022.05"],
+        "release": ["Elysian"]
+      },
+      "displayOnLandingPages": false,
+      "public": false,
+      "internal": false,
+      "indexForSearch": false,
+      "environments": ["staging", "int"]
+    }
+  ]
+}

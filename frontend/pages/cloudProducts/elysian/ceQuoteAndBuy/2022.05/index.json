@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "CustomerEngage Account Management latest",
+  "title": "CustomerEngage Quote and Buy 2022.05",
   "template": "page",
   "class": "twoColumns",
   "items": [
@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "dxclouddraftceamrelnotes"
+          "id": "dx202205ceqbrelnotes"
         }
       ]
     },
@@ -20,7 +20,17 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "dxclouddraftceaminstall"
+          "id": "dx202205ceqbinstall"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Digital Code Generation Guide",
+          "id": "dx202205dcg"
         }
       ]
     },
@@ -30,7 +40,7 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "dxclouddraftceamapp"
+          "id": "dx202205ceqbapp"
         }
       ]
     },
@@ -40,11 +50,11 @@
       "items": [
         {
           "label": "Developer's Guide",
-          "id": "dxclouddraftceamdev"
+          "id": "dx202205ceqbdev"
         },
         {
           "label": "Digital Services Reference Guides",
-          "id": "dxclouddraftceamrefguides"
+          "id": "dx202205ceqbrefguides"
         }
       ]
     }

@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "ProducerEngage for ClaimCenter latest",
+  "title": "ServiceRepEngage 2022.05",
   "template": "page",
   "class": "twoColumns",
   "items": [
@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "dxclouddraftpeclaimsrelnotes"
+          "id": "dx202205srerelnotes"
         }
       ]
     },
@@ -20,7 +20,7 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "dxclouddraftpeclaimsinstall"
+          "id": "dx202205sreinstall"
         }
       ]
     },
@@ -30,7 +30,7 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "dxclouddraftpeclaimsapp"
+          "id": "dx202205sreapp"
         }
       ]
     },
@@ -40,11 +40,11 @@
       "items": [
         {
           "label": "Developer's Guide",
-          "id": "dxclouddraftpeclaimsdev"
+          "id": "dx202205sredev"
         },
         {
           "label": "Digital Services Reference Guides",
-          "id": "dxclouddraftpeclaimsrefguides"
+          "id": "dx202205srerefguides"
         }
       ]
     }
