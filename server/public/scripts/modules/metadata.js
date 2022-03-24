@@ -29,14 +29,15 @@ export async function setMetadata() {
     const response = await fetch(`/safeConfig/docMetadata/${docId}`);
     if (response.ok) {
       try {
+        const valueSeparator = ';;';
         const docInfo = await response.json();
         if (!docInfo.error) {
-          window.docProduct = docInfo.product?.join(',');
-          window.docPlatform = docInfo.platform?.join(',');
-          window.docVersion = docInfo.version?.join(',');
-          window.docCategory = docInfo.category?.join(',');
-          window.docSubject = docInfo.subject?.join(',');
-          window.docRelease = docInfo.release?.join(',');
+          window.docProduct = docInfo.product?.join(valueSeparator);
+          window.docPlatform = docInfo.platform?.join(valueSeparator);
+          window.docVersion = docInfo.version?.join(valueSeparator);
+          window.docCategory = docInfo.category?.join(valueSeparator);
+          window.docSubject = docInfo.subject?.join(valueSeparator);
+          window.docRelease = docInfo.release?.join(valueSeparator);
           window.docTitle = docInfo.docTitle;
           window.docInternal = docInfo.docInternal;
         }

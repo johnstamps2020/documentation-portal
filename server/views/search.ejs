@@ -303,7 +303,7 @@
             }
         });
 
-        setUrlParam(e.target.name, encodeURI(selectedValues.join(',')));
+        setUrlParam(e.target.name, encodeURI(selectedValues.join(';;')));
     }
 
     const pagination = document.getElementById('pagination');

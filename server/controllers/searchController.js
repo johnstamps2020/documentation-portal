@@ -14,7 +14,7 @@ function getFiltersFromUrl(fieldMappings, queryParams) {
   let filtersFromUrl = {};
   for (const param in queryParams) {
     if (fieldMappings[param] && fieldMappings[param].type === 'keyword') {
-      filtersFromUrl[param] = decodeURI(queryParams[param]).split(',');
+      filtersFromUrl[param] = decodeURI(queryParams[param]).split(';;');
     }
   }
   return filtersFromUrl;

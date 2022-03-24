@@ -55,12 +55,13 @@ async function fetchMetadata() {
     const response = await fetch(`/safeConfig/docMetadata/${docId}`);
     if (response.ok) {
       try {
+        const valueSeparator = ';;';
         const docInfo = await response.json();
         if (!docInfo.error) {
-          docProduct = docInfo.product?.join(',') || docProduct;
-          docPlatform = docInfo.platform?.join(',') || docPlatform;
-          docVersion = docInfo.version?.join(',') || docVersion;
-          docCategory = docInfo.category?.join(',') || docCategory;
+          docProduct = docInfo.product?.join(valueSeparator) || docProduct;
+          docPlatform = docInfo.platform?.join(valueSeparator) || docPlatform;
+          docVersion = docInfo.version?.join(valueSeparator) || docVersion;
+          docCategory = docInfo.category?.join(valueSeparator) || docCategory;
           docTitle = docInfo.docTitle;
           docSubject = docInfo.subject;
           docInternal = docInfo.docInternal;
