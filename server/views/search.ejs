@@ -294,6 +294,9 @@
         window.location.href = url.toString();
     }
 
+    // Filter values are passed around as strings that use commas to separate values. To avoid issues with splitting,
+    // values that contain commas must be wrapped in quotes.
+    // Filter values are parsed by the getFiltersFromUrl function in searchController.js.
     function updateFilters(e) {
         const neighbors = document.getElementsByName(e.target.name);
         let selectedValues = [];
@@ -303,7 +306,7 @@
             }
         });
 
-        setUrlParam(e.target.name, encodeURI(selectedValues.join(';;')));
+        setUrlParam(e.target.name, encodeURI(selectedValues.map(v => v.includes(',') ? '"' + v + '"' : v).join(',')));
     }
 
     const pagination = document.getElementById('pagination');

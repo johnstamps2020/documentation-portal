@@ -10,11 +10,29 @@ async function getFieldMappings() {
   return mappingResults.body[searchIndexName].mappings.properties;
 }
 
+// Filter values are passed around as strings that use commas to separate values. To avoid issues with splitting,
+// values that contain commas are wrapped in quotes by:
+// - the fetchMetadata function in gwWebhelp.js
+// - the setMetadata function in metadata.js
+// - the updateFilters function in search.ejs
+// Therefore, filter values must be parsed here taking quotes into account.
 function getFiltersFromUrl(fieldMappings, queryParams) {
   let filtersFromUrl = {};
   for (const param in queryParams) {
     if (fieldMappings[param] && fieldMappings[param].type === 'keyword') {
-      filtersFromUrl[param] = decodeURI(queryParams[param]).split(';;');
+      const paramValues = decodeURI(queryParams[param]);
+      const matches = paramValues.matchAll(/"(.+?)"/g);
+      let quotedParamValues = [];
+      let nonQuotedParamValues = paramValues;
+      for (const match of matches) {
+        nonQuotedParamValues = nonQuotedParamValues.replace(match[0], ''); // Remove the entire quoted string from params
+        quotedParamValues.push(match[1]); // Add the string without the quotes to the list of quoted parameters
+      }
+      const allParamValues = [
+        ...quotedParamValues,
+        ...nonQuotedParamValues.split(','),
+      ].filter(v => v);
+      filtersFromUrl[param] = allParamValues;
     }
   }
   return filtersFromUrl;
