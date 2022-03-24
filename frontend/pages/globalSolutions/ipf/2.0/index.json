@@ -1,0 +1,42 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Global Solutions - France",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "midipfrn20"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Overview",
+          "id": "midipfoverview20"
+        },
+        {
+          "label": "Adjuster Guide",
+          "id": "midipfadjuster20"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "midipfadmin20"
+        }
+      ]
+    }
+  ]
+}
