@@ -528,10 +528,10 @@ object Docs {
                         working_dir,
                         output_dir,
                         publish_path,
-                        build_filter,
-                        doc_id,
-                        git_url,
-                        git_branch
+                        build_filter = build_filter,
+                        doc_id = doc_id,
+                        git_url = git_url,
+                        git_branch = git_branch
                     )
                     if (gw_platforms.lowercase(Locale.getDefault()).contains("self-managed")) {
                         val localOutputDir = "${output_dir}/zip"
@@ -543,7 +543,7 @@ object Docs {
                                 working_dir,
                                 localOutputDir,
                                 publish_path,
-                                build_filter,
+                                build_filter = build_filter,
                                 for_offline_use = true
                             )
                         docBuildType.steps.step(buildDitaProjectForOfflineUseStep)
@@ -573,11 +573,11 @@ object Docs {
                         working_dir,
                         output_dir,
                         publish_path,
-                        build_filter,
-                        doc_id,
-                        doc_title,
-                        git_url,
-                        git_branch
+                        build_filter = build_filter,
+                        doc_id = doc_id,
+                        doc_title = doc_title,
+                        git_url = git_url,
+                        git_branch = git_branch
                     )
                 }
                 docBuildType.steps.step(buildDitaProjectStep)
