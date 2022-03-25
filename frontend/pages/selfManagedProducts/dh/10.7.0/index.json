@@ -1,12 +1,16 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "DataHub 10.6.0",
+  "title": "DataHub 10.7.0",
   "class": "twoColumns",
   "template": "page",
   "selector": {
     "label": "Select release",
-    "selectedItem": "10.6.0",
+    "selectedItem": "10.7.0",
     "items": [
+      {
+        "label": "10.6.0",
+        "page": "../10.6.0"
+      },
       {
         "label": "10.5.0",
         "page": "../10.5.0"
@@ -32,7 +36,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "dh1060rn"
+          "id": "dh1070rn"
         }
       ]
     },
@@ -42,7 +46,7 @@
       "items": [
         {
           "label": "Product Guide",
-          "id": "dh1060product"
+          "id": "dh1070product"
         }
       ]
     },
@@ -52,11 +56,11 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "dh1060install"
+          "id": "dh1070install"
         },
         {
           "label": "Upgrade Guide",
-          "id": "dh1060upgrade"
+          "id": "dh1070upgrade"
         }
       ]
     },
@@ -66,11 +70,11 @@
       "items": [
         {
           "label": "Configuration Guide",
-          "id": "dh1060config"
+          "id": "dh1070config"
         },
         {
           "label": "Data Specifications Guide",
-          "id": "dh1060dataspec"
+          "id": "dh1070dataspec"
         }
       ]
     },
@@ -80,7 +84,7 @@
       "items": [
         {
           "label": "Administration Guide",
-          "id": "dh1060admin"
+          "id": "dh1070admin"
         }
       ]
     },
@@ -90,7 +94,7 @@
       "items": [
         {
           "label": "Developer Reference",
-          "id": "dh1060devref"
+          "id": "dh1070devref"
         }
       ]
     }
