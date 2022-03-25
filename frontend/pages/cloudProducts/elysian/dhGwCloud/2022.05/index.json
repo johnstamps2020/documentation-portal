@@ -1,15 +1,15 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "DataHub for Guidewire Cloud latest",
+  "title": "DataHub for Guidewire Cloud 2022.05",
   "template": "page",
   "class": "twoColumns",
   "selector": {
     "label": "Select product",
-    "selectedItem": "DataHub for Guidewire Cloud latest",
+    "selectedItem": "DataHub for Guidewire Cloud 2022.05",
     "items": [
       {
-        "label": "InfoCenter for Guidewire Cloud latest",
-        "page": "../../icGwCloud/latest"
+        "label": "InfoCenter for Guidewire Cloud 2022.05",
+        "page": "../../icGwCloud/2022.05"
       }
     ]
   },
@@ -20,7 +20,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "dhcloudrndraft"
+          "id": "dhrn202205"
         }
       ]
     },
@@ -30,7 +30,7 @@
       "items": [
         {
           "label": "Product Guide",
-          "id": "dhcloudproductdraft"
+          "id": "dhproduct202205"
         }
       ]
     },
@@ -40,11 +40,11 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "dhcloudinstalldraft"
+          "id": "dhinstall202205"
         },
         {
           "label": "Upgrade Guide",
-          "id": "dhcloudupgradedraft"
+          "id": "dhupgrade202205"
         }
       ]
     },
@@ -54,11 +54,11 @@
       "items": [
         {
           "label": "Configuration Guide",
-          "id": "dhcloudconfigdraft"
+          "id": "dhconfig202205"
         },
         {
           "label": "Data Specifications Guide",
-          "id": "dhclouddataspecdraft"
+          "id": "dhdataspec202205"
         }
       ]
     },
@@ -68,7 +68,7 @@
       "items": [
         {
           "label": "Administration Guide",
-          "id": "dhcloudadmindraft"
+          "id": "dhadmin202205"
         }
       ]
     },
@@ -78,7 +78,7 @@
       "items": [
         {
           "label": "Developer Reference",
-          "id": "dhclouddevrefdraft"
+          "id": "dhdevref202205"
         },
         {
           "label": "Data Studio Query Guide (Draft)",

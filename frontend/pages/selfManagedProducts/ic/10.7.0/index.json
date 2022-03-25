@@ -1,8 +1,34 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "InfoCenter 10.x",
+  "title": "InfoCenter 10.7.0",
   "class": "twoColumns",
   "template": "page",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "10.7.0",
+    "items": [
+      {
+        "label": "10.6.0",
+        "page": "../10.6.0"
+      },
+      {
+        "label": "10.5.0",
+        "page": "../10.5.0"
+      },
+      {
+        "label": "10.4.0",
+        "id": "ic1040"
+      },
+      {
+        "label": "10.3.0",
+        "id": "ic1030"
+      },
+      {
+        "label": "10.2.0",
+        "id": "ic1020"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",
@@ -10,7 +36,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "iconpremdraftrn"
+          "id": "ic1070rn"
         }
       ]
     },
@@ -20,15 +46,15 @@
       "items": [
         {
           "label": "Product Guide",
-          "id": "iconpremdraftproduct"
+          "id": "ic1070product"
         },
         {
           "label": "BI Applications Guide",
-          "id": "iconpremdraftbiapp"
+          "id": "ic1070biapp"
         },
         {
           "label": "Reports Guide",
-          "id": "iconpremdraftreports"
+          "id": "ic1070reports"
         }
       ]
     },
@@ -38,11 +64,11 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "iconpremdraftinstall"
+          "id": "ic1070install"
         },
         {
           "label": "Upgrade Guide",
-          "id": "iconpremdraftupgrade"
+          "id": "ic1070upgrade"
         }
       ]
     },
@@ -52,11 +78,11 @@
       "items": [
         {
           "label": "Configuration Guide",
-          "id": "iconpremdraftconfig"
+          "id": "ic1070config"
         },
         {
           "label": "Data Specifications Guide",
-          "id": "iconpremdraftdataspec"
+          "id": "ic1070dataspec"
         }
       ]
     },
@@ -66,7 +92,7 @@
       "items": [
         {
           "label": "Administration Guide",
-          "id": "iconpremdraftadmin"
+          "id": "ic1070admin"
         }
       ]
     },
@@ -76,7 +102,7 @@
       "items": [
         {
           "label": "Developer Reference",
-          "id": "iconpremdraftdevref"
+          "id": "ic1070devref"
         }
       ]
     }

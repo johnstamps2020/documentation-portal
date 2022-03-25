@@ -1,0 +1,177 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dm202205107src",
+      "docId": "dh1070rn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Elysian-10.7/DataHub",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dm202205107src",
+      "docId": "dh1070product",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dm202205107src",
+      "docId": "dh1070install",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dm202205107src",
+      "docId": "dh1070upgrade",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dm202205107src",
+      "docId": "dh1070config",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dm202205107src",
+      "docId": "dh1070dataspec",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dm202205107src",
+      "docId": "dh1070admin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
+      "root": "developer-ref.ditamap",
+      "srcId": "dm202205107src",
+      "docId": "dh1070devref",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "srcId": "dhicextrassrc",
+          "sourceFolder": "Elysian-10.7/DataHub/autoGenFiles/onPrem",
+          "targetFolder": "extras/autoGenFiles/onPrem"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dm202205107src",
+      "docId": "ic1070rn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Dobson-10.6/InfoCenter",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dm202205107src",
+      "docId": "ic1070product",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dm202205107src",
+      "docId": "ic1070install",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dm202205107src",
+      "docId": "ic1070upgrade",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dm202205107src",
+      "docId": "ic1070config",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dm202205107src",
+      "docId": "ic1070dataspec",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dm202205107src",
+      "docId": "ic1070admin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "root": "bi-applications.ditamap",
+      "srcId": "dm202205107src",
+      "docId": "ic1070biapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "root": "reports.ditamap",
+      "srcId": "dm202205107src",
+      "docId": "ic1070reports",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "root": "developer-ref.ditamap",
+      "srcId": "dm202205107src",
+      "docId": "ic1070devref",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "srcId": "dhicextrassrc",
+          "sourceFolder": "Dobson-10.6/InfoCenter/autoGenFiles/onPrem",
+          "targetFolder": "extras/autoGenFiles/onPrem"
+        }
+      ]
+    }
+  ]
+}

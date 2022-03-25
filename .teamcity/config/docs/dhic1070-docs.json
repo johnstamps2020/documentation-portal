@@ -2,31 +2,13 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "dhqueryguiderelease",
-      "title": "Data Studio Query Guide",
-      "url": "cloud/datastudio/qg",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Data Studio"],
-        "version": ["latest"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "dhrn202205",
+      "id": "dh1070rn",
       "title": "Release Notes",
-      "url": "cloud/dh/202205/releasenotes",
+      "url": "self-managed/dh/1070/releasenotes",
       "metadata": {
         "product": ["DataHub"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "platform": ["Self-managed"],
+        "version": ["10.7.0"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -36,14 +18,13 @@
       "internal": false
     },
     {
-      "id": "dhproduct202205",
+      "id": "dh1070product",
       "title": "Product Guide",
-      "url": "cloud/dh/202205/product",
+      "url": "self-managed/dh/1070/product",
       "metadata": {
         "product": ["DataHub"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "platform": ["Self-managed"],
+        "version": ["10.7.0"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -53,14 +34,13 @@
       "internal": false
     },
     {
-      "id": "dhinstall202205",
+      "id": "dh1070install",
       "title": "Installation Guide",
-      "url": "cloud/dh/202205/install",
+      "url": "self-managed/dh/1070/install",
       "metadata": {
         "product": ["DataHub"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "platform": ["Self-managed"],
+        "version": ["10.7.0"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -70,14 +50,13 @@
       "internal": false
     },
     {
-      "id": "dhupgrade202205",
+      "id": "dh1070upgrade",
       "title": "Upgrade Guide",
-      "url": "cloud/dh/202205/upgrade",
+      "url": "self-managed/dh/1070/upgrade",
       "metadata": {
         "product": ["DataHub"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "platform": ["Self-managed"],
+        "version": ["10.7.0"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -87,14 +66,13 @@
       "internal": false
     },
     {
-      "id": "dhconfig202205",
+      "id": "dh1070config",
       "title": "Configuration Guide",
-      "url": "cloud/dh/202205/config",
+      "url": "self-managed/dh/1070/config",
       "metadata": {
         "product": ["DataHub"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "platform": ["Self-managed"],
+        "version": ["10.7.0"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -104,14 +82,13 @@
       "internal": false
     },
     {
-      "id": "dhdataspec202205",
+      "id": "dh1070dataspec",
       "title": "Data Specifications Guide",
-      "url": "cloud/dh/202205/dataspec",
+      "url": "self-managed/dh/1070/dataspec",
       "metadata": {
         "product": ["DataHub"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "platform": ["Self-managed"],
+        "version": ["10.7.0"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -121,14 +98,13 @@
       "internal": false
     },
     {
-      "id": "dhadmin202205",
+      "id": "dh1070admin",
       "title": "Administration Guide",
-      "url": "cloud/dh/202205/admin",
+      "url": "self-managed/dh/1070/admin",
       "metadata": {
         "product": ["DataHub"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "platform": ["Self-managed"],
+        "version": ["10.7.0"],
         "subject": ["Administration"]
       },
       "environments": ["int"],
@@ -138,14 +114,13 @@
       "internal": false
     },
     {
-      "id": "dhdevref202205",
+      "id": "dh1070devref",
       "title": "Developer Reference",
-      "url": "cloud/dh/202205/devref",
+      "url": "self-managed/dh/1070/devref",
       "metadata": {
         "product": ["DataHub"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "platform": ["Self-managed"],
+        "version": ["10.7.0"],
         "subject": ["Development"]
       },
       "environments": ["int"],
@@ -155,14 +130,13 @@
       "internal": false
     },
     {
-      "id": "icrn202205",
+      "id": "ic1070rn",
       "title": "Release Notes",
-      "url": "cloud/ic/202205/releasenotes",
+      "url": "self-managed/ic/1070/releasenotes",
       "metadata": {
         "product": ["InfoCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "platform": ["Self-managed"],
+        "version": ["10.7.0"],
         "subject": ["Release notes"]
       },
       "environments": ["int"],
@@ -172,14 +146,13 @@
       "internal": false
     },
     {
-      "id": "icproduct202205",
+      "id": "ic1070product",
       "title": "Product Guide",
-      "url": "cloud/ic/202205/product",
+      "url": "self-managed/ic/1070/product",
       "metadata": {
         "product": ["InfoCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "platform": ["Self-managed"],
+        "version": ["10.7.0"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -189,14 +162,13 @@
       "internal": false
     },
     {
-      "id": "icinstall202205",
+      "id": "ic1070install",
       "title": "Installation Guide",
-      "url": "cloud/ic/202205/install",
+      "url": "self-managed/ic/1070/install",
       "metadata": {
         "product": ["InfoCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "platform": ["Self-managed"],
+        "version": ["10.7.0"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -206,14 +178,13 @@
       "internal": false
     },
     {
-      "id": "icupgrade202205",
+      "id": "ic1070upgrade",
       "title": "Upgrade Guide",
-      "url": "cloud/ic/202205/upgrade",
+      "url": "self-managed/ic/1070/upgrade",
       "metadata": {
         "product": ["InfoCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "platform": ["Self-managed"],
+        "version": ["10.7.0"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -223,14 +194,13 @@
       "internal": false
     },
     {
-      "id": "icconfig202205",
+      "id": "ic1070config",
       "title": "Configuration Guide",
-      "url": "cloud/ic/202205/config",
+      "url": "self-managed/ic/1070/config",
       "metadata": {
         "product": ["InfoCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "platform": ["Self-managed"],
+        "version": ["10.7.0"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -240,14 +210,13 @@
       "internal": false
     },
     {
-      "id": "icdataspec202205",
+      "id": "ic1070dataspec",
       "title": "Data Specifications Guide",
-      "url": "cloud/ic/202205/dataspec",
+      "url": "self-managed/ic/1070/dataspec",
       "metadata": {
         "product": ["InfoCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "platform": ["Self-managed"],
+        "version": ["10.7.0"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -257,14 +226,13 @@
       "internal": false
     },
     {
-      "id": "icadmin202205",
+      "id": "ic1070admin",
       "title": "Administration Guide",
-      "url": "cloud/ic/202205/admin",
+      "url": "self-managed/ic/1070/admin",
       "metadata": {
         "product": ["InfoCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "platform": ["Self-managed"],
+        "version": ["10.7.0"],
         "subject": ["Administration"]
       },
       "environments": ["int"],
@@ -274,14 +242,13 @@
       "internal": false
     },
     {
-      "id": "icbiapp202205",
+      "id": "ic1070biapp",
       "title": "BI Applications Guide",
-      "url": "cloud/ic/202205/biapp",
+      "url": "self-managed/ic/1070/biapp",
       "metadata": {
         "product": ["InfoCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "platform": ["Self-managed"],
+        "version": ["10.7.0"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -291,14 +258,13 @@
       "internal": false
     },
     {
-      "id": "icreports202205",
+      "id": "ic1070reports",
       "title": "Reports Guide",
-      "url": "cloud/ic/202205/reports",
+      "url": "self-managed/ic/1070/reports",
       "metadata": {
         "product": ["InfoCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "platform": ["Self-managed"],
+        "version": ["10.7.0"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -308,14 +274,13 @@
       "internal": false
     },
     {
-      "id": "icdevref202205",
+      "id": "ic1070devref",
       "title": "Developer Reference",
-      "url": "cloud/ic/202205/devref",
+      "url": "self-managed/ic/1070/devref",
       "metadata": {
         "product": ["InfoCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "platform": ["Self-managed"],
+        "version": ["10.7.0"],
         "subject": ["Development"]
       },
       "environments": ["int"],
