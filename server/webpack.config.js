@@ -15,7 +15,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: (pathData, assetInfo) => {
+      filename: pathData => {
         if (pathData.chunk.filenameTemplate === 'html5home.js') {
           return 'html5home.css';
         }
@@ -35,6 +35,52 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [['@babel/preset-react']],
+            plugins: [
+              [
+                'prismjs',
+                {
+                  languages: [
+                    'apacheconf',
+                    'bash',
+                    'batch',
+                    'clike',
+                    'css',
+                    'csv',
+                    'docker',
+                    'dockerfile',
+                    'gherkin',
+                    'git',
+                    'java',
+                    'javastacktrace',
+                    'js',
+                    'kotlin',
+                    'markdown',
+                    'plsql',
+                    'powershell',
+                    'python',
+                    'jsx',
+                    'tsx',
+                    'sass',
+                    'scss',
+                    'sql',
+                    'ts',
+                    'typescript',
+                    'uri',
+                    'url',
+                    'yml',
+                  ],
+                  plugins: [
+                    'line-numbers',
+                    'keep-markup',
+                    'toolbar',
+                    'copy-to-clipboard',
+                    'match-braces',
+                  ],
+                  theme: 'tomorrow',
+                  css: true,
+                },
+              ],
+            ],
           },
         },
       },

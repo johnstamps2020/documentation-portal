@@ -4,7 +4,7 @@ footer {
   background-color: var(--clr-GW-HEADER-FOOTER-BKG);
   color: white;
   padding: 16px 32px;
-  font-size: 0.625rem;
+  font-size: 0.9rem;
 }
 
 .footerContents {
@@ -37,6 +37,11 @@ footer a {
   font-size: 0.875rem;
   color: hsl(0, 0%, 100%);
   font-weight: 600;
+  text-decoration: underline;
+}
+
+footer a:hover {
+  color: white;
 }
 
 footer .releaseInfo {

@@ -1,43 +1,41 @@
 body {
   --code-font-family: 'Source Code Pro', monospace;
-  --copy-button-text-color: black;
-  --copy-button-background-color: white;
-}
-
-.codeBlockWrapper {
-  position: relative;
-  margin-bottom: 1em;
 }
 
 pre.pre {
-  padding: 1em 1em;
+  position: relative;
+  margin-bottom: 1em;
+  margin-top: 0;
+  padding: 1rem;
   font-size: 0.875rem !important;
   font-family: var(--code-font-family) !important;
   text-shadow: none !important;
+  border: 1px solid gray;
+  border-radius: 6px;
+  overflow-x: auto;
+  background-color: rgb(41, 45, 62);
 }
 
-.copyToClipboardButton {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background-color: transparent;
-  border: 1px solid var(--copy-button-text-color);
-  color: var(--copy-button-text-color);
-  padding: 4px 6px;
-  border-radius: 4px;
+div.code-toolbar > .toolbar > .toolbar-item > button.copy-to-clipboard-button {
+  display: block;
+  margin-left: auto;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
+  padding: 6px;
+  border-radius: 6px;
   cursor: pointer;
   font-family: var(--code-font-family);
 }
 
-.copyToClipboardButton:hover,
-.copyToClipboardButton:focus {
-  background-color: var(--copy-button-text-color);
-  color: var(--copy-button-background-color);
+.copy-to-clipboard-button:hover,
+.copy-to-clipboard-button:focus {
+  transform: scale(1.2);
 }
 
-.copyToClipboardButton:active,
-.copyToClipboardButton.active {
+.copy-to-clipboard-button:active,
+.copy-to-clipboard-button.active {
   transform: scale(1.1);
+  filter: invert(1);
 }
 
 .varname,
@@ -48,16 +46,25 @@ pre.pre {
 .msgph,
 .codeph,
 .cmdname,
-.pre,
 .tt,
 .filepath {
-  background-color: #f5f2f0;
+  background-color: #f6f7f8;
   font-family: var(--code-font-family);
   font-size: 1rem;
   padding: 2px 4px;
+  border: 0.1rem solid rgba(0, 0, 0, 0.1);
   border-radius: 6px;
 }
 
-.codeblock {
-  border-radius: 6px;
+pre.pre .varname,
+pre.pre .apiname,
+pre.pre .userinput,
+pre.pre .option,
+pre.pre .parmname,
+pre.pre .msgph,
+pre.pre .codeph,
+pre.pre .cmdname,
+pre.pre .tt,
+pre.pre .filepath {
+  background-color: transparent;
 }
