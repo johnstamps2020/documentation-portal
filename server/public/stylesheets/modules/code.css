@@ -1,6 +1,5 @@
 body {
   --code-font-family: 'Source Code Pro', monospace;
-  --code-background-color: #2b2b2b;
 }
 
 pre.pre {
@@ -16,11 +15,10 @@ pre.pre {
   overflow-x: auto;
 }
 
-.copyToClipboardButton {
+div.code-toolbar > .toolbar > .toolbar-item > button.copy-to-clipboard-button {
   display: block;
   margin-left: auto;
-  background-color: var(--code-background-color);
-  border: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.1);
   color: white;
   padding: 6px;
   border-radius: 6px;
@@ -28,13 +26,13 @@ pre.pre {
   font-family: var(--code-font-family);
 }
 
-.copyToClipboardButton:hover,
-.copyToClipboardButton:focus {
+.copy-to-clipboard-button:hover,
+.copy-to-clipboard-button:focus {
   transform: scale(1.2);
 }
 
-.copyToClipboardButton:active,
-.copyToClipboardButton.active {
+.copy-to-clipboard-button:active,
+.copy-to-clipboard-button.active {
   transform: scale(1.1);
   filter: invert(1);
 }
@@ -55,4 +53,17 @@ pre.pre {
   padding: 2px 4px;
   border: 0.1rem solid rgba(0, 0, 0, 0.1);
   border-radius: 6px;
+}
+
+pre.pre .varname,
+pre.pre .apiname,
+pre.pre .userinput,
+pre.pre .option,
+pre.pre .parmname,
+pre.pre .msgph,
+pre.pre .codeph,
+pre.pre .cmdname,
+pre.pre .tt,
+pre.pre .filepath {
+  background-color: transparent;
 }

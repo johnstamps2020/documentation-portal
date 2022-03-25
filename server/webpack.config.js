@@ -69,7 +69,13 @@ module.exports = {
                     'url',
                     'yml',
                   ],
-                  plugins: ['line-numbers', 'keep-markup'],
+                  plugins: [
+                    'line-numbers',
+                    'keep-markup',
+                    'toolbar',
+                    'copy-to-clipboard',
+                    'match-braces'
+                  ],
                   theme: 'tomorrow',
                   css: true,
                 },

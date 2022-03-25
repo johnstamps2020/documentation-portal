@@ -7,7 +7,7 @@ import { setMetadata } from './modules/metadata.js';
 import { addVersionSelector } from './modules/versionSelector.js';
 import { addAvatar } from './modules/avatar.js';
 import { addSearchBox } from './modules/searchBox.js';
-import { addCopyButton, normalizeCode, highlightCode } from './modules/code.js';
+import { normalizeCode, highlightCode } from './modules/code.js';
 import { setUpSidebar } from './modules/sidebar.js';
 import { showTopicRecommendations } from './modules/recommendations.js';
 import { addSkipNav } from './modules/skipNav.js';
@@ -30,7 +30,6 @@ docReady(async function() {
   await addPageNavigators();
   addFooterContents();
   addFeedbackElements();
-  addCopyButton();
   addLightbox();
   highlightCode();
   installAndInitializePendo();
