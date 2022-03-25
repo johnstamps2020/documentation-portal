@@ -2337,7 +2337,7 @@
         "subject": ["Features and functionality"]
       },
       "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
       "internal": false
@@ -2353,7 +2353,7 @@
         "subject": ["Installation"]
       },
       "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
       "internal": false
@@ -2369,7 +2369,7 @@
         "subject": ["Administration"]
       },
       "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
       "internal": false
@@ -2385,7 +2385,7 @@
         "subject": ["Release notes"]
       },
       "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
       "internal": false
@@ -2513,7 +2513,7 @@
         "subject": ["Features and functionality"]
       },
       "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
       "internal": false
@@ -2529,7 +2529,7 @@
         "subject": ["Installation"]
       },
       "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
       "internal": false
@@ -2545,7 +2545,7 @@
         "subject": ["Administration"]
       },
       "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
       "internal": false
@@ -2561,7 +2561,7 @@
         "subject": ["Release notes"]
       },
       "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
       "internal": false
