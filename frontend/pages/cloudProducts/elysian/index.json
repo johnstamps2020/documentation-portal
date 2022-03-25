@@ -66,11 +66,11 @@
         },
         {
           "label": "DataHub",
-          "page": "dhGwCloud/latest"
+          "page": "dhGwCloud/2022.05"
         },
         {
           "label": "InfoCenter",
-          "page": "icGwCloud/latest"
+          "page": "icGwCloud/2022.05"
         },
         {
           "label": "Guidewire Live",

@@ -1,8 +1,30 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "InfoCenter 10.x",
+  "title": "DataHub 10.6.0",
   "class": "twoColumns",
   "template": "page",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "10.6.0",
+    "items": [
+      {
+        "label": "10.5.0",
+        "page": "../10.5.0"
+      },
+      {
+        "label": "10.4.0",
+        "id": "dh1040"
+      },
+      {
+        "label": "10.3.0",
+        "id": "dh1030"
+      },
+      {
+        "label": "10.2.0",
+        "id": "dh1020"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",
@@ -10,7 +32,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "iconpremdraftrn"
+          "id": "dh1060rn"
         }
       ]
     },
@@ -20,15 +42,7 @@
       "items": [
         {
           "label": "Product Guide",
-          "id": "iconpremdraftproduct"
-        },
-        {
-          "label": "BI Applications Guide",
-          "id": "iconpremdraftbiapp"
-        },
-        {
-          "label": "Reports Guide",
-          "id": "iconpremdraftreports"
+          "id": "dh1060product"
         }
       ]
     },
@@ -38,11 +52,11 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "iconpremdraftinstall"
+          "id": "dh1060install"
         },
         {
           "label": "Upgrade Guide",
-          "id": "iconpremdraftupgrade"
+          "id": "dh1060upgrade"
         }
       ]
     },
@@ -52,11 +66,11 @@
       "items": [
         {
           "label": "Configuration Guide",
-          "id": "iconpremdraftconfig"
+          "id": "dh1060config"
         },
         {
           "label": "Data Specifications Guide",
-          "id": "iconpremdraftdataspec"
+          "id": "dh1060dataspec"
         }
       ]
     },
@@ -66,7 +80,7 @@
       "items": [
         {
           "label": "Administration Guide",
-          "id": "iconpremdraftadmin"
+          "id": "dh1060admin"
         }
       ]
     },
@@ -76,7 +90,7 @@
       "items": [
         {
           "label": "Developer Reference",
-          "id": "iconpremdraftdevref"
+          "id": "dh1060devref"
         }
       ]
     }

@@ -95,16 +95,6 @@
           "env": ["staging", "prod"]
         },
         {
-          "label": "DataHub",
-          "page": "dhGwCloud/latest",
-          "env": ["int"]
-        },
-        {
-          "label": "InfoCenter",
-          "page": "icGwCloud/latest",
-          "env": ["int"]
-        },
-        {
           "label": "Guidewire Live",
           "class": "group",
           "items": [

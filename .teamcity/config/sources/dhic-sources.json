@@ -2,18 +2,18 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
-      "id": "dmdraftsrc",
-      "title": "DataManagement Draft",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-      "branch": "main"
-    },
-    {
       "id": "dm2021111060src",
       "title": "DataManagement 2021.11 and 10.6.0",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "release/2021.11-10.6.0"
+    },
+    {
+      "id": "dm202205107src",
+      "title": "DataManagement 2022.05 and 10.7.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "release/2022.05-10.7"
     }
   ]
 }

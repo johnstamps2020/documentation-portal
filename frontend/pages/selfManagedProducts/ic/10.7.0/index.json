@@ -1,15 +1,31 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "DataHub for Guidewire Cloud latest",
-  "template": "page",
+  "title": "InfoCenter 10.7.0",
   "class": "twoColumns",
+  "template": "page",
   "selector": {
-    "label": "Select product",
-    "selectedItem": "DataHub for Guidewire Cloud latest",
+    "label": "Select release",
+    "selectedItem": "10.7.0",
     "items": [
       {
-        "label": "InfoCenter for Guidewire Cloud latest",
-        "page": "../../icGwCloud/latest"
+        "label": "10.6.0",
+        "page": "../10.6.0"
+      },
+      {
+        "label": "10.5.0",
+        "page": "../10.5.0"
+      },
+      {
+        "label": "10.4.0",
+        "id": "ic1040"
+      },
+      {
+        "label": "10.3.0",
+        "id": "ic1030"
+      },
+      {
+        "label": "10.2.0",
+        "id": "ic1020"
       }
     ]
   },
@@ -20,7 +36,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "dhcloudrndraft"
+          "id": "ic1070rn"
         }
       ]
     },
@@ -30,7 +46,15 @@
       "items": [
         {
           "label": "Product Guide",
-          "id": "dhcloudproductdraft"
+          "id": "ic1070product"
+        },
+        {
+          "label": "BI Applications Guide",
+          "id": "ic1070biapp"
+        },
+        {
+          "label": "Reports Guide",
+          "id": "ic1070reports"
         }
       ]
     },
@@ -40,11 +64,11 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "dhcloudinstalldraft"
+          "id": "ic1070install"
         },
         {
           "label": "Upgrade Guide",
-          "id": "dhcloudupgradedraft"
+          "id": "ic1070upgrade"
         }
       ]
     },
@@ -54,11 +78,11 @@
       "items": [
         {
           "label": "Configuration Guide",
-          "id": "dhcloudconfigdraft"
+          "id": "ic1070config"
         },
         {
           "label": "Data Specifications Guide",
-          "id": "dhclouddataspecdraft"
+          "id": "ic1070dataspec"
         }
       ]
     },
@@ -68,7 +92,7 @@
       "items": [
         {
           "label": "Administration Guide",
-          "id": "dhcloudadmindraft"
+          "id": "ic1070admin"
         }
       ]
     },
@@ -78,15 +102,7 @@
       "items": [
         {
           "label": "Developer Reference",
-          "id": "dhclouddevrefdraft"
-        },
-        {
-          "label": "Data Studio Query Guide (Draft)",
-          "id": "dhqueryguidedraft"
-        },
-        {
-          "label": "Data Studio Query Guide (Release)",
-          "id": "dhqueryguiderelease"
+          "id": "ic1070devref"
         }
       ]
     }
