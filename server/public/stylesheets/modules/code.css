@@ -13,6 +13,7 @@ pre.pre {
   border: 1px solid gray;
   border-radius: 6px;
   overflow-x: auto;
+  background-color: rgb(41, 45, 62);
 }
 
 div.code-toolbar > .toolbar > .toolbar-item > button.copy-to-clipboard-button {

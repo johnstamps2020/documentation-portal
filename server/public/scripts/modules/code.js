@@ -9,7 +9,6 @@ function containsLanguageClass(arr) {
 export function normalizeCode() {
   const codeBlocks = document.querySelectorAll('pre.pre');
   for (const codeBlock of codeBlocks) {
-    codeBlock.parentElement.classList.add('line-numbers');
     codeBlock.parentElement.classList.add('match-braces');
     if (!containsLanguageClass([...codeBlock.classList])) {
       codeBlock.classList.add('language-java');

@@ -74,7 +74,7 @@ module.exports = {
                     'keep-markup',
                     'toolbar',
                     'copy-to-clipboard',
-                    'match-braces'
+                    'match-braces',
                   ],
                   theme: 'tomorrow',
                   css: true,
