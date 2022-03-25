@@ -2368,6 +2368,15 @@ object Sources {
                 val schematronReportsDir = "schematron_reports_dir"
                 val docInfoFile = "doc-info.json"
                 val rootMap = build_config.getString("root")
+                val indexRedirect = when (build_config.has("indexRedirect")) {
+                    true -> {
+                        build_config.getBoolean("indexRedirect")
+                    }
+                    else -> {
+                        false
+                    }
+
+                }
                 val buildFilter = when (build_config.has("filter")) {
                     true -> {
                         build_config.getString("filter")
@@ -2409,6 +2418,7 @@ object Sources {
                             ditaOtLogsDir,
                             normalizedDitaDir,
                             schematronReportsDir,
+                            indexRedirect,
                             buildFilter
                         )
                     )
@@ -2435,6 +2445,7 @@ object Sources {
                             ditaOtLogsDir,
                             normalizedDitaDir,
                             schematronReportsDir,
+                            indexRedirect,
                             buildFilter
                         )
                     )
@@ -3522,6 +3533,7 @@ object GwBuildSteps {
         dita_ot_logs_dir: String,
         normalized_dita_dir: String,
         schematron_reports_dir: String,
+        index_redirect: Boolean,
         build_filter: String? = null,
     ): ScriptBuildStep {
         val logFile = "${output_format}_build.log"
@@ -3554,6 +3566,10 @@ object GwBuildSteps {
                 ditaCommandParams.add(Pair("--clean.temp", "no"))
                 ditaCommandParams.add(Pair("--schematron.validate", "yes"))
                 ditaCommandParams.add(Pair("%env.ENABLE_DEBUG_MODE%", ""))
+                if (index_redirect) {
+                    ditaCommandParams.add(Pair("--create-index-redirect", "yes"))
+                    ditaCommandParams.add(Pair("--webhelp.publication.toc.links", "all"))
+                }
                 val ditaBuildCommand = Helpers.getCommandString("dita", ditaCommandParams)
                 val resourcesCopyCommand =
                     "mkdir -p \"${working_dir}/${schematron_reports_dir}\" && cp \"${working_dir}/${tempDir}/validation-report.xml\" \"${working_dir}/${schematron_reports_dir}/\""
