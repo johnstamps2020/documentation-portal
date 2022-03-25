@@ -1,4 +1,4 @@
-import hljs from 'highlight.js';
+import Prism from 'prismjs';
 
 function containsLanguageClass(arr) {
   return arr.some(
@@ -50,11 +50,6 @@ export function highlightCode() {
   const codeBlocks = document.querySelectorAll('pre');
 
   if (codeBlocks.length > 0) {
-    hljs.configure({
-      ignoreUnescapedHTML: true,
-    });
-    codeBlocks.forEach(el => {
-      hljs.highlightElement(el);
-    });
+    Prism.highlightAll();
   }
 }
