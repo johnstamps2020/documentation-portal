@@ -21,6 +21,25 @@ async function sendUserId(userInformation) {
   }
 }
 
+function wrapInQuotes(stringsToWrap) {
+  function addQuotes(stringToModify) {
+    return stringToModify.includes(',')
+      ? '"' + stringToModify + '"'
+      : stringToModify;
+  }
+
+  if (Array.isArray(stringsToWrap)) {
+    return stringsToWrap.map(s => addQuotes(s));
+  } else if (typeof stringsToWrap === 'string') {
+    return addQuotes(stringsToWrap);
+  } else {
+    return stringsToWrap;
+  }
+}
+
+// Filter values are passed around as strings that use commas to separate values. To avoid issues with splitting,
+// values that contain commas must be wrapped in quotes.
+// Filter values are parsed by the getFiltersFromUrl function in searchController.js.
 export async function setMetadata() {
   const docId = document
     .querySelector('[name="gw-doc-id"]')
@@ -29,15 +48,28 @@ export async function setMetadata() {
     const response = await fetch(`/safeConfig/docMetadata/${docId}`);
     if (response.ok) {
       try {
+        const valueSeparator = ',';
         const docInfo = await response.json();
         if (!docInfo.error) {
-          window.docProduct = docInfo.product?.join(',');
-          window.docPlatform = docInfo.platform?.join(',');
-          window.docVersion = docInfo.version?.join(',');
-          window.docCategory = docInfo.category?.join(',');
-          window.docSubject = docInfo.subject?.join(',');
-          window.docRelease = docInfo.release?.join(',');
-          window.docTitle = docInfo.docTitle;
+          window.docProduct = wrapInQuotes(docInfo.product)?.join(
+            valueSeparator
+          );
+          window.docPlatform = wrapInQuotes(docInfo.platform)?.join(
+            valueSeparator
+          );
+          window.docVersion = wrapInQuotes(docInfo.version)?.join(
+            valueSeparator
+          );
+          window.docCategory = wrapInQuotes(docInfo.category)?.join(
+            valueSeparator
+          );
+          window.docSubject = wrapInQuotes(docInfo.subject)?.join(
+            valueSeparator
+          );
+          window.docRelease = wrapInQuotes(docInfo.release)?.join(
+            valueSeparator
+          );
+          window.docTitle = wrapInQuotes(docInfo.docTitle);
           window.docInternal = docInfo.docInternal;
         }
       } catch (err) {

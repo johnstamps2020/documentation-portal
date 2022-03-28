@@ -47,6 +47,25 @@ async function showTopicRecommendations() {
   }
 }
 
+function wrapInQuotes(stringsToWrap) {
+  function addQuotes(stringToModify) {
+    return stringToModify.includes(',')
+      ? '"' + stringToModify + '"'
+      : stringToModify;
+  }
+
+  if (Array.isArray(stringsToWrap)) {
+    return stringsToWrap.map(s => addQuotes(s));
+  } else if (typeof stringsToWrap === 'string') {
+    return addQuotes(stringsToWrap);
+  } else {
+    return stringsToWrap;
+  }
+}
+
+// Filter values are passed around as strings that use commas to separate values. To avoid issues with splitting,
+// values that contain commas must be wrapped in quotes.
+// Filter values are parsed by the getFiltersFromUrl function in searchController.js.
 async function fetchMetadata() {
   const docId = document
     .querySelector('[name="gw-doc-id"]')
@@ -55,14 +74,19 @@ async function fetchMetadata() {
     const response = await fetch(`/safeConfig/docMetadata/${docId}`);
     if (response.ok) {
       try {
+        const valueSeparator = ',';
         const docInfo = await response.json();
         if (!docInfo.error) {
-          docProduct = docInfo.product?.join(',') || docProduct;
-          docPlatform = docInfo.platform?.join(',') || docPlatform;
-          docVersion = docInfo.version?.join(',') || docVersion;
-          docCategory = docInfo.category?.join(',') || docCategory;
-          docTitle = docInfo.docTitle;
-          docSubject = docInfo.subject;
+          docProduct =
+            wrapInQuotes(docInfo.product)?.join(valueSeparator) || docProduct;
+          docPlatform =
+            wrapInQuotes(docInfo.platform)?.join(valueSeparator) || docPlatform;
+          docVersion =
+            wrapInQuotes(docInfo.version)?.join(valueSeparator) || docVersion;
+          docCategory =
+            wrapInQuotes(docInfo.category)?.join(valueSeparator) || docCategory;
+          docTitle = wrapInQuotes(docInfo.docTitle);
+          docSubject = wrapInQuotes(docInfo.subject);
           docInternal = docInfo.docInternal;
           return true;
         }
