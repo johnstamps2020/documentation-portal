@@ -54,7 +54,7 @@ function Lightbox({ imgAttributes }) {
 export function addLightbox() {
   const images = document.querySelectorAll('img');
   images.forEach((image, i) => {
-    const lightboxContainer = document.createElement('div');
+    const lightboxContainer = document.createElement('span');
     lightboxContainer.id = `lightbox${i}`;
     image.before(lightboxContainer);
     ReactDOM.render(
