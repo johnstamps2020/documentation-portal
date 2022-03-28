@@ -19,6 +19,16 @@
       ]
     },
     {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Guidewire Testing Framework Installation",
+          "id": "testingframeworksinstallelysian"
+        }
+      ]
+    },
+    {
       "label": "Application-specific Capabilities",
       "class": "subject featuresAndFunctionality",
       "items": [

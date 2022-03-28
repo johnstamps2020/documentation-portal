@@ -121,6 +121,23 @@
       "internal": false
     },
     {
+      "id": "testingframeworksinstallelysian",
+      "title": "Guidewire Testing Framework Installation",
+      "url": "cloud/testing/202205/install",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
       "id": "is202205testing",
       "title": "InsuranceSuite Unit Testing",
       "url": "cloud/testing/202205/isunittesting",
