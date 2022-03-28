@@ -257,14 +257,6 @@
         {
           "label": "Gosu Reference",
           "id": "is202205gosu"
-        },
-        {
-          "label": "GUnit Testing",
-          "id": "ispcelysiandrafttesting"
-        },
-        {
-          "label": "GUnit Testing",
-          "id": "ispc202205testing"
         }
       ]
     },

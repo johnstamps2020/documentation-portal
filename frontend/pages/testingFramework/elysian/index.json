@@ -1,13 +1,41 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Guidewire Testing Framework 2022.05",
+  "title": "Guidewire Testing",
   "template": "page",
   "class": "twoColumns",
   "items": [
     {
-      "label": "Release Notes",
+      "label": "Application-specific Capabilities",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "InsuranceSuite Unit Testing",
+          "id": "is202205testing"
+        }
+      ]
+    },
+    {
+      "label": "Test Process Capabilities",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Test Data Management",
+          "id": "testingframeworksdataelysian"
+        },
+        {
+          "label": "Test Management",
+          "id": "testingframeworksmgmtelysian"
+        }
+      ]
+    },
+    {
+      "label": "Release Documentation",
       "class": "subject releaseNotes",
       "items": [
+        {
+          "label": "Guidewire Testing Framework Supported Software Components (Support Matrix)",
+          "id": "testingframeworksmatrixelysian"
+        },
         {
           "label": "Guidewire Testing Framework Release Notes",
           "id": "testingframeworksrnelysian"
@@ -15,28 +43,20 @@
       ]
     },
     {
-      "label": "Development",
+      "label": "Cross-application Capabiities",
       "class": "subject development",
       "items": [
         {
-          "label": "GT: API",
+          "label": "API Testing",
           "id": "testingframeworksapielysian"
         },
         {
-          "label": "GT: UI",
+          "label": "UI Testing",
           "id": "testingframeworksuielysian"
         },
         {
-          "label": "GT: Load",
+          "label": "Load and Peformance Testing",
           "id": "testingframeworksloadelysian"
-        },
-        {
-          "label": "GT: Data",
-          "id": "testingframeworksdataelysian"
-        },
-        {
-          "label": "GT: Management",
-          "id": "testingframeworksmgmtelysian"
         }
       ]
     }

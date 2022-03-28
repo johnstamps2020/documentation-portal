@@ -206,23 +206,6 @@
       "internal": false
     },
     {
-      "id": "isbcelysiandrafttesting",
-      "title": "GUnit Testing",
-      "url": "cloud/bc/202205/testing",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
       "id": "isbcelysiandraftrestapifw",
       "title": "REST API Framework",
       "url": "cloud/bc/202205/restapiframework",
@@ -470,23 +453,6 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Integration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "isccelysiandrafttesting",
-      "title": "GUnit Testing",
-      "url": "cloud/cc/202205/testing",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -776,23 +742,6 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Integration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "ispcelysiandrafttesting",
-      "title": "GUnit Testing",
-      "url": "cloud/pc/202205/testing",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,

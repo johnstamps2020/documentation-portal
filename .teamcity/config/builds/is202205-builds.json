@@ -11,54 +11,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
-      "root": "GT-API.ditamap",
-      "srcId": "testingframeworks202205src",
-      "docId": "testingframeworksapielysian",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
-      "root": "GT-UI.ditamap",
-      "srcId": "testingframeworks202205src",
-      "docId": "testingframeworksuielysian",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
-      "root": "GT-Data.ditamap",
-      "srcId": "testingframeworks202205src",
-      "docId": "testingframeworksdataelysian",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
-      "root": "GT-Load.ditamap",
-      "srcId": "testingframeworks202205src",
-      "docId": "testingframeworksloadelysian",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
-      "root": "GT-Management.ditamap",
-      "srcId": "testingframeworks202205src",
-      "docId": "testingframeworksmgmtelysian",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
-      "root": "Guidewire_Test_Automation202205_ReleaseNotes.ditamap",
-      "srcId": "testingframeworks202205src",
-      "docId": "testingframeworksrnelysian",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
       "root": "ReleaseNotesBook-dobson.ditamap",
       "srcId": "cloudisrnsrc",
@@ -155,14 +107,6 @@
       "root": "CloudAPIGuide-BusinessFlows.ditamap",
       "srcId": "is202205src",
       "docId": "isbc202205apibf",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
-      "root": "GUnitTestingGuide.ditamap",
-      "srcId": "is202205src",
-      "docId": "isbc202205testing",
       "indexRedirect": true
     },
     {
@@ -295,14 +239,6 @@
       "root": "CloudAPIGuide-ContactManager.ditamap",
       "srcId": "is202205src",
       "docId": "iscc202205apicm",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-Release.ditaval",
-      "root": "GUnitTestingGuide.ditamap",
-      "srcId": "is202205src",
-      "docId": "iscc202205testing",
       "indexRedirect": true
     },
     {
@@ -451,14 +387,6 @@
       "root": "CloudAPIGuide-ContactManager.ditamap",
       "srcId": "is202205src",
       "docId": "ispc202205apicm",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
-      "root": "GUnitTestingGuide.ditamap",
-      "srcId": "is202205src",
-      "docId": "ispc202205testing",
       "indexRedirect": true
     },
     {
