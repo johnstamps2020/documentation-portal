@@ -17,7 +17,9 @@ pre.pre {
 }
 
 .pre.pre .b {
-  font-weight: 700;
+  --emphasis-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid white;
 }
 
 div.code-toolbar > .toolbar > .toolbar-item > button.copy-to-clipboard-button {
