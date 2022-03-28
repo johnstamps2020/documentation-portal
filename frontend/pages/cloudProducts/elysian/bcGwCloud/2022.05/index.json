@@ -223,14 +223,6 @@
           "id": "is202205gosu"
         },
         {
-          "label": "GUnit Testing",
-          "id": "isbcelysiandrafttesting"
-        },
-        {
-          "label": "GUnit Testing",
-          "id": "isbc202205testing"
-        },
-        {
           "label": "Webhooks API Reference",
           "id": "webhooksapinext"
         }

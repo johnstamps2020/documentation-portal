@@ -19,108 +19,6 @@
       "internal": false
     },
     {
-      "id": "testingframeworksapielysian",
-      "title": "API Testing",
-      "url": "cloud/testingframeworks/202205/api",
-      "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "testingframeworksuielysian",
-      "title": "User Interface Testing",
-      "url": "cloud/testingframeworks/202205/ui",
-      "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "testingframeworksdataelysian",
-      "title": "Test Data Management",
-      "url": "cloud/testingframeworks/202205/data",
-      "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "testingframeworksloadelysian",
-      "title": "Load and Performance Testing",
-      "url": "cloud/testingframeworks/202205/load",
-      "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "testingframeworksmgmtelysian",
-      "title": "Test Case Management",
-      "url": "cloud/testingframeworks/202205/mgmt",
-      "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "testingframeworksrnelysian",
-      "title": "Guidewire Testing Framework Release Notes",
-      "url": "cloud/testingframeworks/202205/releasenotes",
-      "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Release notes"]
-      },
-      "environments": ["int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
       "id": "isbc202205releasenotes",
       "title": "Release Notes",
       "url": "cloud/bc/202205/releasenotes",
@@ -314,23 +212,6 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "isbc202205testing",
-      "title": "GUnit Testing",
-      "url": "cloud/bc/202205/testing",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Development"]
@@ -589,23 +470,6 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Integration"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "iscc202205testing",
-      "title": "GUnit Testing",
-      "url": "cloud/cc/202205/testing",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -895,23 +759,6 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Integration"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "ispc202205testing",
-      "title": "GUnit Testing",
-      "url": "cloud/pc/202205/testing",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

@@ -1,0 +1,69 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "GT-API.ditamap",
+      "srcId": "testingframeworks202205src",
+      "docId": "testingframeworksapielysian",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "GT-UI.ditamap",
+      "srcId": "testingframeworks202205src",
+      "docId": "testingframeworksuielysian",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "GT-Data.ditamap",
+      "srcId": "testingframeworks202205src",
+      "docId": "testingframeworksdataelysian",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "GT-Load.ditamap",
+      "srcId": "testingframeworks202205src",
+      "docId": "testingframeworksloadelysian",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "GT-Management.ditamap",
+      "srcId": "testingframeworks202205src",
+      "docId": "testingframeworksmgmtelysian",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "GT-Matrix.ditamap",
+      "srcId": "testingframeworks202205src",
+      "docId": "testingframeworksmatrixelysian",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "Guidewire_Test_Automation202205_ReleaseNotes.ditamap",
+      "srcId": "testingframeworks202205src",
+      "docId": "testingframeworksrnelysian",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "ISUnitTesting.ditamap",
+      "srcId": "testingframeworks202205src",
+      "docId": "is202205testing",
+      "indexRedirect": true
+    }
+  ]
+}

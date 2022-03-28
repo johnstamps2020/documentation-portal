@@ -189,23 +189,6 @@
       "internal": false
     },
     {
-      "id": "isbcelysianeatesting",
-      "title": "GUnit Testing",
-      "url": "cloud/bc/elysian-ea/testing",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["earlyaccess-Elysian"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
       "id": "isbcelysianeadevsetup",
       "title": "Developer Setup",
       "url": "cloud/bc/elysian-ea/devsetup",
@@ -402,23 +385,6 @@
         "version": ["earlyaccess-Elysian"],
         "release": ["Elysian"],
         "subject": ["Integration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "isccelysianeatesting",
-      "title": "GUnit Testing",
-      "url": "cloud/cc/elysian-ea/testing",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["earlyaccess-Elysian"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -691,23 +657,6 @@
         "version": ["earlyaccess-Elysian"],
         "release": ["Elysian"],
         "subject": ["Integration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false
-    },
-    {
-      "id": "ispcelysianeatesting",
-      "title": "GUnit Testing",
-      "url": "cloud/pc/elysian-ea/testing",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["earlyaccess-Elysian"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,

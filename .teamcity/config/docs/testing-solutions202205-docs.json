@@ -1,0 +1,141 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "testingframeworksapielysian",
+      "title": "API Testing",
+      "url": "cloud/testing/202205/api",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "testingframeworksuielysian",
+      "title": "User Interface Testing",
+      "url": "cloud/testing/202205/ui",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "testingframeworksdataelysian",
+      "title": "Test Data Management",
+      "url": "cloud/testing/202205/data",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "testingframeworksloadelysian",
+      "title": "Load and Performance Testing",
+      "url": "cloud/testing/202205/load",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "testingframeworksmgmtelysian",
+      "title": "Test Management",
+      "url": "cloud/testing/202205/mgmt",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "testingframeworksrnelysian",
+      "title": "Guidewire Testing Framework Release Notes",
+      "url": "cloud/testing/202205/releasenotes",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "testingframeworksmatrixelysian",
+      "title": "Guidewire Testing Framework Supported Software Components",
+      "url": "cloud/testing/202205/matrix",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "is202205testing",
+      "title": "InsuranceSuite Unit Testing",
+      "url": "cloud/testing/202205/isunittesting",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    }
+  ]
+}
