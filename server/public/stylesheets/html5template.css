@@ -19,7 +19,6 @@
 @import 'modules/typography.css';
 @import 'modules/versionSelector.css';
 @import 'modules/internal.css';
-@import 'modules/lightbox.css';
 @import './modules/html5vars.css';
 
 @media screen and (max-width: 1500px) {
@@ -94,8 +93,6 @@ body {
 
 img {
   max-width: 100%;
-  height: auto;
-  cursor: pointer;
 }
 
 p.p img:first-child {
