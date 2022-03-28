@@ -49,9 +49,17 @@ nav a.miniTocLink:hover {
     margin-left: 2ch;
 }
 
+.miniTocLink.topictitle3 + .miniTocLink.sectiontitle {
+    margin-left: 2ch !important;
+}
+
 .miniTocLink.topictitle4 + .miniTocLink.sectiontitle,
 .miniTocLink.topictitle4 + .miniTocLink.topictitle5,
 .miniTocLink.topictitle4 + .miniTocLink.sectiontitle ~ .miniTocLink.sectiontitle,
 .miniTocLink.topictitle4 + .miniTocLink.topictitle5 ~ .miniTocLink.topictitle5 {
     margin-left: 3ch;
+}
+
+.miniTocLink.topictitle4 + .miniTocLink.sectiontitle {
+    margin-left: 3ch !important;
 }
