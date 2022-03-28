@@ -112,14 +112,6 @@
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
-      "root": "GUnitTestingGuide.ditamap",
-      "srcId": "is202205src",
-      "docId": "isbc202205testing",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
       "root": "RESTAPIFramework.ditamap",
       "srcId": "is202205src",
       "docId": "isbc202205restapifw",
@@ -247,14 +239,6 @@
       "root": "CloudAPIGuide-ContactManager.ditamap",
       "srcId": "is202205src",
       "docId": "iscc202205apicm",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-Release.ditaval",
-      "root": "GUnitTestingGuide.ditamap",
-      "srcId": "is202205src",
-      "docId": "iscc202205testing",
       "indexRedirect": true
     },
     {
@@ -403,14 +387,6 @@
       "root": "CloudAPIGuide-ContactManager.ditamap",
       "srcId": "is202205src",
       "docId": "ispc202205apicm",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
-      "root": "GUnitTestingGuide.ditamap",
-      "srcId": "is202205src",
-      "docId": "ispc202205testing",
       "indexRedirect": true
     },
     {

@@ -96,14 +96,6 @@
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-EA.ditaval",
-      "root": "GUnitTestingGuide.ditamap",
-      "srcId": "is202205src",
-      "docId": "isbcelysianeatesting",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-Cloud-EA.ditaval",
       "root": "DeveloperSetupGuide.ditamap",
       "srcId": "is202205src",
       "docId": "isbcelysianeadevsetup",
@@ -199,14 +191,6 @@
       "root": "IntegrationGuide.ditamap",
       "srcId": "is202205src",
       "docId": "isccelysianeainteg",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-EA.ditaval",
-      "root": "GUnitTestingGuide.ditamap",
-      "srcId": "is202205src",
-      "docId": "isccelysianeatesting",
       "indexRedirect": true
     },
     {
@@ -331,14 +315,6 @@
       "root": "IntegrationGuide.ditamap",
       "srcId": "is202205src",
       "docId": "ispcelysianeainteg",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-EA.ditaval",
-      "root": "GUnitTestingGuide.ditamap",
-      "srcId": "is202205src",
-      "docId": "ispcelysianeatesting",
       "indexRedirect": true
     },
     {

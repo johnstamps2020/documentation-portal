@@ -104,14 +104,6 @@
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
-      "root": "GUnitTestingGuide.ditamap",
-      "srcId": "is202205src",
-      "docId": "isbcelysiandrafttesting",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
       "root": "RESTAPIFramework.ditamap",
       "srcId": "is202205src",
       "docId": "isbcelysiandraftrestapifw",
@@ -239,14 +231,6 @@
       "root": "CloudAPIGuide-ContactManager.ditamap",
       "srcId": "is202205src",
       "docId": "isccelysiandraftapicm",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
-      "root": "GUnitTestingGuide.ditamap",
-      "srcId": "is202205src",
-      "docId": "isccelysiandrafttesting",
       "indexRedirect": true
     },
     {
@@ -395,14 +379,6 @@
       "root": "CloudAPIGuide-ContactManager.ditamap",
       "srcId": "is202205src",
       "docId": "ispcelysiandraftapicm",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
-      "root": "GUnitTestingGuide.ditamap",
-      "srcId": "is202205src",
-      "docId": "ispcelysiandrafttesting",
       "indexRedirect": true
     },
     {
