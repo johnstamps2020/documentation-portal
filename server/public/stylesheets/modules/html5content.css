@@ -5,9 +5,9 @@ h4,
 h5,
 h6,
 .sectiontitle {
-  font-weight: 500 !important;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
+  font-weight: 600 !important;
+  margin-top: 1em !important;
+  margin-bottom: 0.5em !important;
 }
 
 h1.topictitle1,
