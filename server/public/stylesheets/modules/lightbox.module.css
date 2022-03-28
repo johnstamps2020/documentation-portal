@@ -4,6 +4,11 @@
   cursor: zoom-in;
 }
 
+.dialog {
+  padding: 2rem;
+  border-radius: 8px;
+}
+
 .dialog::backdrop {
   position: relative;
   background: black;
