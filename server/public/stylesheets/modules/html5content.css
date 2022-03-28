@@ -4,7 +4,7 @@ h3,
 h4,
 h5,
 h6,
-.sectiontitle {
+.sectiontitle:not(.miniTocLink) {
   font-weight: 600 !important;
   margin-top: 1em !important;
   margin-bottom: 0.5em !important;
