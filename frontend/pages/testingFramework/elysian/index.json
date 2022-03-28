@@ -5,6 +5,20 @@
   "class": "twoColumns",
   "items": [
     {
+      "label": "Release Documentation",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Guidewire Testing Framework Supported Software Components (Support Matrix)",
+          "id": "testingframeworksmatrixelysian"
+        },
+        {
+          "label": "Guidewire Testing Framework Release Notes",
+          "id": "testingframeworksrnelysian"
+        }
+      ]
+    },
+    {
       "label": "Application-specific Capabilities",
       "class": "subject featuresAndFunctionality",
       "items": [
@@ -25,20 +39,6 @@
         {
           "label": "Test Management",
           "id": "testingframeworksmgmtelysian"
-        }
-      ]
-    },
-    {
-      "label": "Release Documentation",
-      "class": "subject releaseNotes",
-      "items": [
-        {
-          "label": "Guidewire Testing Framework Supported Software Components (Support Matrix)",
-          "id": "testingframeworksmatrixelysian"
-        },
-        {
-          "label": "Guidewire Testing Framework Release Notes",
-          "id": "testingframeworksrnelysian"
         }
       ]
     },
