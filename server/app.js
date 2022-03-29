@@ -24,14 +24,20 @@ app.use((req, res, next) => {
     .active()
     .context();
   const { _parentId, _spanId, _traceId } = span;
-  const parentIdString = Buffer.from(_parentId._buffer).readBigUInt64BE();
+  const parentIdString = Buffer.from(_parentId._buffer)
+    .readBigUInt64BE()
+    .toString();
   const spanIdString = Buffer.from(_spanId._buffer)
     .readBigUInt64BE()
     .toString();
   const traceIdString = Buffer.from(_traceId._buffer)
     .readBigUInt64BE()
     .toString();
-  console.log(span);
+  console.log(
+    `parentIdString: ${parentIdString}`,
+    `spanIdString: ${spanIdString}`,
+    `traceIdString: ${traceIdString}`
+  );
   next();
 });
 app.use(morgan(':method :url', { stream: loggerController.stream }));
