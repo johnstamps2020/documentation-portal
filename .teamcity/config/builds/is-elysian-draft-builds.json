@@ -1,0 +1,465 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
+      "root": "ReleaseNotesBook-elysian.ditamap",
+      "srcId": "cloudisrnsrc",
+      "docId": "isbcelysiandraftreleasenotes",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/bc/2021.11",
+          "targetFolder": "extras/ReleaseNotes-files/bc/2021.11",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "sourceFolder": "ReleaseNotes-files/cm/2021.11",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2021.11",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
+      "root": "NewAndChangedGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "isbcelysiandraftnewandchanged",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguide202205src",
+      "docId": "isbcelysiandraftupgrade"
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
+      "root": "BC-AppGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "isbcelysiandraftapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "isbcelysiandraftadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
+      "root": "ConfigGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "isbcelysiandraftconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
+      "root": "DataArchiving.ditamap",
+      "srcId": "is202205src",
+      "docId": "isbcelysiandraftdataarchiving",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
+      "root": "GlobalizationGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "isbcelysiandraftglobal",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
+      "root": "GosuRules.ditamap",
+      "srcId": "is202205src",
+      "docId": "isbcelysiandraftrules",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
+      "root": "IntegrationGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "isbcelysiandraftinteg",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-BusinessFlows.ditamap",
+      "srcId": "is202205src",
+      "docId": "isbcelysiandraftapibf",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
+      "root": "RESTAPIFramework.ditamap",
+      "srcId": "is202205src",
+      "docId": "isbcelysiandraftrestapifw",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Draft.ditaval",
+      "root": "DeveloperSetupGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "isbcelysiandraftdevsetup",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
+      "root": "ReleaseNotesBook-elysian.ditamap",
+      "srcId": "cloudisrnsrc",
+      "docId": "isccelysiandraftreleasenotes",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/cc/2021.11",
+          "targetFolder": "extras/ReleaseNotes-files/cc/2021.11",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "sourceFolder": "ReleaseNotes-files/cm/2021.11",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2021.11",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
+      "root": "NewAndChangedGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "isccelysiandraftnewandchanged",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguide202205src",
+      "docId": "isccelysiandraftupgrade"
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
+      "root": "CC-AppGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "isccelysiandraftapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "isccelysiandraftadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
+      "root": "ConfigGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "isccelysiandraftconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
+      "root": "DataArchiving.ditamap",
+      "srcId": "is202205src",
+      "docId": "isccelysiandraftdataarchiving",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
+      "root": "GlobalizationGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "isccelysiandraftglobal",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
+      "root": "GosuRules.ditamap",
+      "srcId": "is202205src",
+      "docId": "isccelysiandraftrules",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
+      "root": "IntegrationGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "isccelysiandraftinteg",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-BusinessFlows.ditamap",
+      "srcId": "is202205src",
+      "docId": "isccelysiandraftapibf",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-Auth.ditamap",
+      "srcId": "is202205src",
+      "docId": "isccelysiandraftapica",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-ContactManager.ditamap",
+      "srcId": "is202205src",
+      "docId": "isccelysiandraftapicm",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
+      "root": "RESTAPIFramework.ditamap",
+      "srcId": "is202205src",
+      "docId": "isccelysiandraftrestapifw",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
+      "root": "DeveloperSetupGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "isccelysiandraftdevsetup",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
+      "root": "ReleaseNotesBook-elysian.ditamap",
+      "srcId": "cloudisrnsrc",
+      "docId": "ispcelysiandraftreleasenotes",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/pc/2021.11",
+          "targetFolder": "extras/ReleaseNotes-files/pc/2021.11",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "sourceFolder": "ReleaseNotes-files/cm/2021.11",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2021.11",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
+      "root": "NewAndChangedGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "ispcelysiandraftnewandchanged",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguide202205src",
+      "docId": "ispcelysiandraftupgrade"
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
+      "root": "PC-AppGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "ispcelysiandraftapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "ispcelysiandraftadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
+      "root": "ConfigGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "ispcelysiandraftconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
+      "root": "DataArchiving.ditamap",
+      "srcId": "is202205src",
+      "docId": "ispcelysiandraftdataarchiving",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
+      "root": "GlobalizationGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "ispcelysiandraftglobal",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
+      "root": "GosuRules.ditamap",
+      "srcId": "is202205src",
+      "docId": "ispcelysiandraftrules",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
+      "root": "ProductDesignerGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "ispcelysiandraftpd",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
+      "root": "ProductModelGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "ispcelysiandraftpm",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
+      "root": "IntegrationGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "ispcelysiandraftinteg",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-BusinessFlows.ditamap",
+      "srcId": "is202205src",
+      "docId": "ispcelysiandraftapibf",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-Auth.ditamap",
+      "srcId": "is202205src",
+      "docId": "ispcelysiandraftapica",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-ContactManager.ditamap",
+      "srcId": "is202205src",
+      "docId": "ispcelysiandraftapicm",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
+      "root": "RESTAPIFramework.ditamap",
+      "srcId": "is202205src",
+      "docId": "ispcelysiandraftrestapifw",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
+      "root": "DeveloperSetupGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "ispcelysiandraftdevsetup",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CM-Cloud-Draft.ditaval",
+      "root": "ContactMgmtGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "iselysiandraftcontact",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
+      "root": "GosuRefGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "iselysiandraftgosu",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
+      "root": "OverviewCloudIntegration.ditamap",
+      "srcId": "is202205src",
+      "docId": "iselysiandraftintegoverview",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
+      "root": "ApplicationEventsForDevelopers.ditamap",
+      "indexRedirect": true,
+      "srcId": "restapisrc",
+      "docId": "ccappeventsdevdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
+      "root": "ApplicationEventsForDevelopers.ditamap",
+      "indexRedirect": true,
+      "srcId": "restapisrc",
+      "docId": "pcappeventsdevdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
+      "root": "appevents-releasenotes-cc.ditamap",
+      "indexRedirect": true,
+      "srcId": "restapisrc",
+      "docId": "appeventsrndraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
+      "root": "IntegrationGatewayForDevelopers.ditamap",
+      "indexRedirect": true,
+      "srcId": "restapisrc",
+      "docId": "integgatewaydevdraft"
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
+      "root": "IntegrationGatewayReleaseNotes.ditamap",
+      "indexRedirect": true,
+      "srcId": "restapisrc",
+      "docId": "integgatewayrndraft"
+    }
+  ]
+}

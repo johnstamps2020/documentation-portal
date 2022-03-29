@@ -52,13 +52,21 @@ enum class GwBuildTypes(val build_type_name: String) {
     SOURCE_ZIP("source-zip"),
 }
 
+enum class GwValidationModules(val validation_name: String) {
+    VALIDATORS_DITA("validators_dita"),
+    VALIDATORS_FILES("validators_files"),
+    VALIDATORS_IMAGES("validators_images"),
+    VALIDATORS_CONTENT("validators_content"),
+    EXTRACTORS_DITA_OT_LOGS("extractors_dita_ot_logs"),
+    EXTRACTORS_SCHEMATRON_REPORTS("extractors_schematron_reports")
+}
+
 enum class GwDitaOutputFormats(val format_name: String) {
     WEBHELP("webhelp"),
     PDF("pdf"),
     WEBHELP_WITH_PDF("webhelp_with_pdf"),
     SINGLEHTML("singlehtml"),
     DITA("dita"),
-    VALIDATE("validate"),
     HTML5("html5")
 }
 
@@ -97,8 +105,7 @@ enum class GwDockerImages(val image_url: String) {
     SITEMAP_GENERATOR_LATEST("artifactory.guidewire.com/doctools-docker-dev/sitemap-generator:latest"),
     DOC_VALIDATOR_LATEST("artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"),
     PYTHON_3_9_SLIM_BUSTER("artifactory.guidewire.com/hub-docker-remote/python:3.9-slim-buster"),
-    NODE_DEVEX_BASE("artifactory.guidewire.com/devex-docker-dev/node"),
-    NODE_12_14_1("${NODE_DEVEX_BASE.image_url}:12.14.1"),
+    NODE_REMOTE_BASE("artifactory.guidewire.com/hub-docker-remote/node"),
     NODE_14_ALPINE("artifactory.guidewire.com/hub-docker-remote/node:14-alpine"),
     GENERIC_14_14_0_YARN_CHROME("artifactory.guidewire.com/jutro-docker-dev/generic:14.14.0-yarn-chrome")
 }
@@ -250,6 +257,14 @@ object Runners {
             dependencies {
                 doc_ids.forEach {
                     snapshot(Helpers.resolveRelativeIdFromIdString("Publish to ${deploy_env}${it}")) {
+                        // Build runners reuse doc builds to avoid unnecessary build runs.
+                        // This feature can't be used in runners for prod doc builds because the prod doc builds
+                        // don’t use a VCS Root - they only copy from staging to prod.
+                        // Therefore, runners can’t discover any changes in the VCS Root from which the staging output
+                        // was built and as a result they don’t trigger the dependent doc build for prod.
+                        if (deploy_env == GwDeployEnvs.PROD.env_name) {
+                            reuseBuilds = ReuseBuilds.NO
+                        }
                         onDependencyFailure = FailureAction.FAIL_TO_START
                     }
                 }
@@ -446,13 +461,20 @@ object Docs {
                 output_dir,
                 index_for_search
             )
-            val zipUpSourcesBuildStep = GwBuildSteps.createZipUpSourcesStep(
-                working_dir,
-                output_dir,
-                zip_filename
-            )
-            docBuildType.steps.step(zipUpSourcesBuildStep)
-            docBuildType.steps.stepsOrder.add(0, zipUpSourcesBuildStep.id.toString())
+
+            if (env == GwDeployEnvs.PROD.env_name) {
+                val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publish_path)
+                docBuildType.steps.step(copyFromStagingToProdStep)
+                docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
+            } else {
+                val zipUpSourcesBuildStep = GwBuildSteps.createZipUpSourcesStep(
+                    working_dir,
+                    output_dir,
+                    zip_filename
+                )
+                docBuildType.steps.step(zipUpSourcesBuildStep)
+                docBuildType.steps.stepsOrder.add(0, zipUpSourcesBuildStep.id.toString())
+            }
             sourceZipBuildTypes.add(docBuildType)
         }
         return sourceZipBuildTypes
@@ -468,6 +490,7 @@ object Docs {
         publish_path: String,
         working_dir: String,
         output_dir: String,
+        doc_title: String,
         index_for_search: Boolean,
         root_map: String,
         index_redirect: Boolean,
@@ -505,10 +528,10 @@ object Docs {
                         working_dir,
                         output_dir,
                         publish_path,
-                        build_filter,
-                        doc_id,
-                        git_url,
-                        git_branch
+                        build_filter = build_filter,
+                        doc_id = doc_id,
+                        git_url = git_url,
+                        git_branch = git_branch
                     )
                     if (gw_platforms.lowercase(Locale.getDefault()).contains("self-managed")) {
                         val localOutputDir = "${output_dir}/zip"
@@ -520,6 +543,7 @@ object Docs {
                                 working_dir,
                                 localOutputDir,
                                 publish_path,
+                                build_filter = build_filter,
                                 for_offline_use = true
                             )
                         docBuildType.steps.step(buildDitaProjectForOfflineUseStep)
@@ -549,10 +573,11 @@ object Docs {
                         working_dir,
                         output_dir,
                         publish_path,
-                        build_filter,
-                        doc_id,
-                        git_url,
-                        git_branch
+                        build_filter = build_filter,
+                        doc_id = doc_id,
+                        doc_title = doc_title,
+                        git_url = git_url,
+                        git_branch = git_branch
                     )
                 }
                 docBuildType.steps.step(buildDitaProjectStep)
@@ -613,7 +638,8 @@ object Docs {
                         index_redirect,
                         working_dir,
                         localOutputDir,
-                        build_filter,
+                        publish_path = "",
+                        build_filter = build_filter,
                         git_url = git_url,
                         git_branch = git_branch,
                         for_offline_use = true
@@ -720,7 +746,9 @@ object Docs {
                         }
                     }
                     else -> {
-                        triggers.vcs {}
+                        triggers.vcs {
+                            triggerRules = Helpers.getNonDitaTriggerRules(working_dir)
+                        }
                     }
                 }
             }
@@ -738,14 +766,7 @@ object Docs {
         val docTitle = docConfig.getString("title")
         val docEnvironments = docConfig.getJSONArray("environments")
         val docEnvironmentsList = Helpers.convertJsonArrayWithStringsToList(docEnvironments)
-        val workingDir = when (build_config.has("workingDir")) {
-            false -> {
-                "%teamcity.build.checkoutDir%"
-            }
-            true -> {
-                "%teamcity.build.checkoutDir%/${build_config.getString("workingDir")}"
-            }
-        }
+        val workingDir = Helpers.getWorkingDir(build_config)
         val outputDir = when (build_config.has("outputPath")) {
             true -> build_config.getString("outputPath")
             false -> {
@@ -844,6 +865,7 @@ object Docs {
                     publishPath,
                     workingDir,
                     outputDir,
+                    docTitle,
                     indexForSearch,
                     rootMap,
                     indexRedirect,
@@ -1247,13 +1269,15 @@ object Frontend {
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 
-            triggers {
-                vcs {
-                    triggerRules = """
+            if (deploy_env == GwDeployEnvs.DEV.env_name) {
+                triggers {
+                    vcs {
+                        triggerRules = """
                             +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:frontend/pages/**
                             +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
                             -:user=doctools:**
                             """.trimIndent()
+                    }
                 }
             }
         }
@@ -1807,7 +1831,8 @@ object Server {
             )
             if (deploy_env == GwDeployEnvs.PROD.env_name) {
                 val publishServerDockerImageToEcrStep =
-                    GwBuildSteps.createPublishServerDockerImageToEcrStep(GwDockerImages.DOC_PORTAL.image_url,
+                    GwBuildSteps.createPublishServerDockerImageToEcrStep(deploy_env,
+                        GwDockerImages.DOC_PORTAL.image_url,
                         tagVersion)
                 deployServerBuildType.steps.step(publishServerDockerImageToEcrStep)
                 deployServerBuildType.steps.stepsOrder.add(0, publishServerDockerImageToEcrStep.id.toString())
@@ -2073,7 +2098,11 @@ object Exports {
                     #!/bin/bash
                     sed -i "s/ORP-XDOCS-WDB03/%EXPORT_SERVER%/" ../../../conf/LocClientConfig.xml
                     chmod 777 runExport.sh
-                    for path in %EXPORT_PATH_IDS%; do ./runExport.sh "${'$'}path" %XDOCS_EXPORT_DIR%; done
+                    export EXIT_CODE=0                    
+                    
+                    for path in %EXPORT_PATH_IDS%; do ./runExport.sh "${'$'}path" %XDOCS_EXPORT_DIR% || EXIT_CODE=${'$'}?; done
+                    
+                    exit ${'$'}EXIT_CODE
                     """.trimIndent()
             }
             script {
@@ -2294,14 +2323,7 @@ object Sources {
         val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
         val docTitle = docConfig.getString("title")
 
-        val workingDir = when (build_config.has("workingDir")) {
-            false -> {
-                "%teamcity.build.checkoutDir%"
-            }
-            true -> {
-                "%teamcity.build.checkoutDir%/${build_config.getString("workingDir")}"
-            }
-        }
+        val workingDir = Helpers.getWorkingDir(build_config)
         val outputDir = when (build_config.has("outputPath")) {
             true -> build_config.getString("outputPath")
             false -> {
@@ -2341,6 +2363,7 @@ object Sources {
         when (gw_build_type) {
             GwBuildTypes.DITA.build_type_name -> {
                 val ditaOtLogsDir = "dita_ot_logs"
+                val docValidatorLogs = "doc_validator_logs"
                 val normalizedDitaDir = "normalized_dita_dir"
                 val schematronReportsDir = "schematron_reports_dir"
                 val docInfoFile = "doc-info.json"
@@ -2363,9 +2386,17 @@ object Sources {
                     }
                 }
 
+                validationBuildType.params {
+                    select("env.ENABLE_DEBUG_MODE",
+                        "",
+                        label = "Enable debug mode",
+                        options = listOf("Yes" to "--debug", "No" to ""))
+                }
+
                 validationBuildType.artifactRules += """
-                    ${workingDir}/${ditaOtLogsDir} => logs
-                    ${workingDir}/${outputDir}/${GwDitaOutputFormats.WEBHELP.format_name}/${GwConfigParams.BUILD_DATA_FILE.param_value} => ${GwConfigParams.BUILD_DATA_DIR.param_value}
+                    ${workingDir}/${docValidatorLogs} => build_logs
+                    ${workingDir}/${ditaOtLogsDir} => admin_logs
+                    ${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.format_name}/${GwConfigParams.BUILD_DATA_FILE.param_value} => ${GwConfigParams.BUILD_DATA_DIR.param_value}
                 """.trimIndent()
 
                 validationBuildType.steps {
@@ -2379,7 +2410,7 @@ object Sources {
                     )
                     step(
                         GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                            GwDitaOutputFormats.WEBHELP.format_name,
+                            GwDitaOutputFormats.HTML5.format_name,
                             rootMap,
                             workingDir,
                             outputDir,
@@ -2387,14 +2418,14 @@ object Sources {
                             ditaOtLogsDir,
                             normalizedDitaDir,
                             schematronReportsDir,
-                            buildFilter,
-                            indexRedirect
+                            indexRedirect,
+                            buildFilter
                         )
                     )
                     step(
                         GwBuildSteps.createUploadContentToS3BucketStep(
                             GwDeployEnvs.INT.env_name,
-                            "${workingDir}/${outputDir}/${GwDitaOutputFormats.WEBHELP.format_name}",
+                            "${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.format_name}",
                             publishPath,
                         )
                     )
@@ -2406,20 +2437,6 @@ object Sources {
                     )
                     step(
                         GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                            GwDitaOutputFormats.HTML5.format_name,
-                            rootMap,
-                            workingDir,
-                            outputDir,
-                            publishPath,
-                            ditaOtLogsDir,
-                            normalizedDitaDir,
-                            schematronReportsDir,
-                            buildFilter,
-                            indexRedirect
-                        )
-                    )
-                    step(
-                        GwBuildSteps.createBuildDitaProjectForValidationsStep(
                             GwDitaOutputFormats.DITA.format_name,
                             rootMap,
                             workingDir,
@@ -2427,30 +2444,30 @@ object Sources {
                             publishPath,
                             ditaOtLogsDir,
                             normalizedDitaDir,
-                            schematronReportsDir
-                        )
-                    )
-                    step(
-                        GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                            GwDitaOutputFormats.VALIDATE.format_name,
-                            rootMap,
-                            workingDir,
-                            outputDir,
-                            publishPath,
-                            ditaOtLogsDir,
-                            normalizedDitaDir,
-                            schematronReportsDir
-                        )
-                    )
-                    step(
-                        GwBuildSteps.createRunDocValidatorStep(
-                            workingDir,
-                            ditaOtLogsDir,
-                            normalizedDitaDir,
                             schematronReportsDir,
-                            docInfoFile
+                            indexRedirect,
+                            buildFilter
                         )
                     )
+                    // For now, content and image validations are disabled.
+                    // These validations need improvements.
+                    arrayOf(
+                        GwValidationModules.VALIDATORS_DITA.validation_name,
+                        GwValidationModules.VALIDATORS_FILES.validation_name,
+                        GwValidationModules.EXTRACTORS_DITA_OT_LOGS.validation_name,
+                        GwValidationModules.EXTRACTORS_SCHEMATRON_REPORTS.validation_name
+                    ).forEach {
+                        this.step(
+                            GwBuildSteps.createRunDocValidatorStep(
+                                it,
+                                workingDir,
+                                ditaOtLogsDir,
+                                normalizedDitaDir,
+                                schematronReportsDir,
+                                docInfoFile
+                            )
+                        )
+                    }
                 }
             }
             GwBuildTypes.YARN.build_type_name -> {
@@ -2466,6 +2483,12 @@ object Sources {
                 val buildCommand =
                     if (build_config.has("yarnBuildCustomCommand")) build_config.getString("yarnBuildCustomCommand") else null
                 val customEnv = if (build_config.has("customEnv")) build_config.getJSONArray("customEnv") else null
+
+                validationBuildType.artifactRules += """
+                    ${workingDir}/*.log => build_logs
+                """.trimIndent()
+
+
                 validationBuildType.steps {
                     step(
                         GwBuildSteps.createBuildYarnProjectStep(
@@ -2478,7 +2501,8 @@ object Sources {
                             gwPlatformsString,
                             gwVersionsString,
                             workingDir,
-                            customEnv
+                            customEnv,
+                            validation_mode = true
                         )
                     )
                     step(
@@ -2513,7 +2537,9 @@ object Sources {
                 validationBuildType.templates(GwTemplates.ValidationListenerTemplate)
             }
             GwBuildTypes.YARN.build_type_name -> {
-                validationBuildType.triggers.vcs {}
+                validationBuildType.triggers.vcs {
+                    triggerRules = Helpers.getNonDitaTriggerRules(workingDir)
+                }
             }
         }
 
@@ -2836,6 +2862,17 @@ object Apps {
 }
 
 object Helpers {
+    fun getWorkingDir(build_config: JSONObject): String {
+        return when (build_config.has("workingDir")) {
+            false -> {
+                "%teamcity.build.checkoutDir%"
+            }
+            true -> {
+                "%teamcity.build.checkoutDir%/${build_config.getString("workingDir")}"
+            }
+        }
+    }
+
     fun convertJsonArrayWithStringsToList(json_array: JSONArray): List<String> {
         if (json_array.all { it is String }) {
             return json_array.joinToString(",").split(",")
@@ -2946,6 +2983,43 @@ object Helpers {
 
     fun getAppBaseAndElasticsearchUrls(deploy_env: String): Pair<String, String> {
         return Pair(getTargetUrl(deploy_env), getElasticsearchUrl(deploy_env))
+    }
+
+    fun getNonDitaTriggerRules(workingDir: String): String {
+
+        return when (workingDir) {
+            "%teamcity.build.checkoutDir%" -> {
+                """
+                    -:user=doctools:**
+                """.trimIndent()
+            }
+            else -> {
+                """
+                    +:${workingDir.replace("%teamcity.build.checkoutDir%/", "")}/**
+                    -:user=doctools:**
+                """.trimIndent()
+            }
+        }
+    }
+
+    fun getCommandString(command: String, params: List<Pair<String, String?>>): String {
+        val commandStringBuilder = StringBuilder()
+        commandStringBuilder.append(command)
+        val commandIterator = params.iterator()
+        while (commandIterator.hasNext()) {
+            val nextPair = commandIterator.next()
+            val param = nextPair.first
+            val value = nextPair.second
+            if (value != null) {
+                if (value.isEmpty()) {
+                    commandStringBuilder.append(" $param")
+                } else {
+                    commandStringBuilder.append(" $param \"$value\"")
+                }
+            }
+        }
+
+        return commandStringBuilder.toString()
     }
 
 }
@@ -3165,13 +3239,22 @@ object GwBuildSteps {
         }
     }
 
-    fun createPublishServerDockerImageToEcrStep(package_name: String, tag_version: String): ScriptBuildStep {
+    fun createPublishServerDockerImageToEcrStep(
+        deploy_env: String,
+        package_name: String,
+        tag_version: String,
+    ): ScriptBuildStep {
         val ecrPackageName = "710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal"
+        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
         return ScriptBuildStep {
             name = "Publish server Docker Image to ECR"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 set -xe
+                
+                export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
+                export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
+                export AWS_DEFAULT_REGION="$awsDefaultRegion"
                 
                 docker pull ${package_name}:${tag_version}
                 docker tag ${package_name}:${tag_version} ${ecrPackageName}:${tag_version}
@@ -3450,65 +3533,60 @@ object GwBuildSteps {
         dita_ot_logs_dir: String,
         normalized_dita_dir: String,
         schematron_reports_dir: String,
-        build_filter: String = "",
-        index_redirect: Boolean = false,
+        index_redirect: Boolean,
+        build_filter: String? = null,
     ): ScriptBuildStep {
         val logFile = "${output_format}_build.log"
         val fullOutputPath = "${output_dir}/${output_format}"
 
-        val ditaCommandParams = mutableListOf(
+        val ditaCommandParams = mutableListOf<Pair<String, String?>>(
             Pair("-i", "${working_dir}/${root_map}"),
-        Pair("-o", "${working_dir}/${fullOutputPath}"),
-            Pair("-l", "${working_dir}/${logFile}")
+            Pair("-o", "${working_dir}/${fullOutputPath}"),
+            Pair("-l", "${working_dir}/${logFile}"),
         )
 
-        if (build_filter.isNotEmpty()) {
+        if (build_filter != null) {
             ditaCommandParams.add(Pair("--filter", "${working_dir}/${build_filter}"))
         }
 
-        var resourcesCopyCommand = ""
+        var buildCommand = ""
 
         when (output_format) {
             // --git-url and --git-branch are required by the DITA OT plugin to generate build data.
             // There are not needed in this build, so they have fake values
-            GwDitaOutputFormats.WEBHELP.format_name -> {
-                ditaCommandParams.add(Pair("-f", "webhelp_Guidewire"))
-                ditaCommandParams.add(Pair("--generate.build.data", "yes"))
-                ditaCommandParams.add(Pair("--git.url", "gitUrl"))
-                ditaCommandParams.add(Pair("--git.branch", "gitBranch"))
-                if (index_redirect) {
-                    ditaCommandParams.add(Pair("--create-index-redirect", "yes"))
-                    ditaCommandParams.add(Pair("--webhelp.publication.toc.links", "all"))
-                }
-            }
             GwDitaOutputFormats.HTML5.format_name -> {
+                val tempDir = "tmp/${output_format}"
                 ditaCommandParams.add(Pair("-f", "html5-Guidewire"))
+                ditaCommandParams.add(Pair("--args.rellinks", "nofamily"))
                 ditaCommandParams.add(Pair("--generate.build.data", "yes"))
                 ditaCommandParams.add(Pair("--git.url", "gitUrl"))
                 ditaCommandParams.add(Pair("--git.branch", "gitBranch"))
                 ditaCommandParams.add(Pair("--gw-base-url", publish_path))
+                ditaCommandParams.add(Pair("--temp", "${working_dir}/${tempDir}"))
+                ditaCommandParams.add(Pair("--clean.temp", "no"))
+                ditaCommandParams.add(Pair("--schematron.validate", "yes"))
+                ditaCommandParams.add(Pair("%env.ENABLE_DEBUG_MODE%", ""))
+                if (index_redirect) {
+                    ditaCommandParams.add(Pair("--create-index-redirect", "yes"))
+                    ditaCommandParams.add(Pair("--webhelp.publication.toc.links", "all"))
+                }
+                val ditaBuildCommand = Helpers.getCommandString("dita", ditaCommandParams)
+                val resourcesCopyCommand =
+                    "mkdir -p \"${working_dir}/${schematron_reports_dir}\" && cp \"${working_dir}/${tempDir}/validation-report.xml\" \"${working_dir}/${schematron_reports_dir}/\""
+                val logsCopyCommand =
+                    "mkdir -p \"${working_dir}/${dita_ot_logs_dir}\" && cp \"${working_dir}/${logFile}\" \"${working_dir}/${dita_ot_logs_dir}/\""
+                buildCommand = """
+                    $ditaBuildCommand && $resourcesCopyCommand
+                    $logsCopyCommand
+                """.trimIndent()
             }
             GwDitaOutputFormats.DITA.format_name -> {
                 ditaCommandParams.add(Pair("-f", "gw_dita"))
-                resourcesCopyCommand =
+                val ditaBuildCommand = Helpers.getCommandString("dita", ditaCommandParams)
+                val resourcesCopyCommand =
                     "mkdir -p \"${working_dir}/${normalized_dita_dir}\" && cp -R \"${working_dir}/${fullOutputPath}/\"* \"${working_dir}/${normalized_dita_dir}/\""
+                buildCommand = "$ditaBuildCommand && $resourcesCopyCommand"
             }
-            GwDitaOutputFormats.VALIDATE.format_name -> {
-                val tempDir = "tmp/${output_format}"
-                ditaCommandParams.add(Pair("-f", "validate"))
-                ditaCommandParams.add(Pair("--clean.temp", "no"))
-                ditaCommandParams.add(Pair("--temp", "${working_dir}/${tempDir}"))
-                resourcesCopyCommand =
-                    "mkdir -p \"${working_dir}/${schematron_reports_dir}\" && cp \"${working_dir}/${tempDir}/validation-report.xml\" \"${working_dir}/${schematron_reports_dir}/\""
-            }
-        }
-
-        val ditaBuildCommand = getCommandString("dita", ditaCommandParams)
-
-        val buildCommand = if (resourcesCopyCommand.isNotEmpty()) {
-            "$ditaBuildCommand && $resourcesCopyCommand"
-        } else {
-            ditaBuildCommand
         }
 
         val dockerImageName = when (output_format) {
@@ -3526,34 +3604,14 @@ object GwBuildSteps {
                 SECONDS=0
 
                 echo "Building output"
-                export EXIT_CODE=0
-                $buildCommand || EXIT_CODE=${'$'}?
-                mkdir -p "${working_dir}/${dita_ot_logs_dir}" || EXIT_CODE=${'$'}?
-                cp "${working_dir}/${logFile}" "${working_dir}/${dita_ot_logs_dir}/" || EXIT_CODE=${'$'}?
+                $buildCommand
                 
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
-                exit ${'$'}EXIT_CODE
             """.trimIndent()
             dockerImage = dockerImageName
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
-    }
-
-    private fun getCommandString(command: String, params: List<Pair<String, String>>): String {
-        val commandStringBuilder = StringBuilder()
-        commandStringBuilder.append(command)
-        val commandIterator = params.iterator()
-        while (commandIterator.hasNext()) {
-            val nextPair = commandIterator.next()
-            val param = nextPair.first
-            val value = nextPair.second
-            if (value.isNotEmpty()) {
-                commandStringBuilder.append(" $param \"$value\"")
-            }
-        }
-
-        return commandStringBuilder.toString()
     }
 
     fun createBuildDitaProjectForBuildsStep(
@@ -3563,18 +3621,19 @@ object GwBuildSteps {
         working_dir: String,
         output_dir: String,
         publish_path: String,
-        build_filter: String = "",
-        doc_id: String = "",
-        git_url: String = "",
-        git_branch: String = "",
+        build_filter: String? = null,
+        doc_id: String? = null,
+        doc_title: String? = null,
+        git_url: String? = null,
+        git_branch: String? = null,
         for_offline_use: Boolean = false,
     ): ScriptBuildStep {
-        val commandParams = mutableListOf(
+        val commandParams = mutableListOf<Pair<String, String?>>(
             Pair("-i", "${working_dir}/${root_map}"),
             Pair("-o", "${working_dir}/${output_dir}"),
         )
 
-        if (build_filter.isNotEmpty()) {
+        if (build_filter != null) {
             commandParams.add(Pair("--filter", "${working_dir}/${build_filter}"))
         }
 
@@ -3594,7 +3653,6 @@ object GwBuildSteps {
             }
             GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name -> {
                 commandParams.add(Pair("-f", "wh-pdf"))
-                commandParams.add(Pair("--dita.ot.pdf.format", "pdf5_Guidewire"))
                 commandParams.add(Pair("--use-doc-portal-params", "yes"))
                 commandParams.add(Pair("--gw-doc-id", doc_id))
                 commandParams.add(Pair("--generate.build.data", "yes"))
@@ -3612,22 +3670,28 @@ object GwBuildSteps {
             GwDitaOutputFormats.HTML5.format_name -> {
                 commandParams.add(Pair("--gw-base-url", publish_path))
                 commandParams.add(Pair("--gw-doc-id", doc_id))
+                commandParams.add(Pair("--gw-doc-title", doc_title))
                 commandParams.add(Pair("--generate.build.data", "yes"))
                 commandParams.add(Pair("--git.url", git_url))
                 commandParams.add(Pair("--git.branch", git_branch))
                 commandParams.add(Pair("-f", "html5-Guidewire"))
+                commandParams.add(Pair("--args.rellinks", "nofamily"))
 
             }
         }
 
-        if (arrayOf(GwDitaOutputFormats.WEBHELP.format_name, GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name).contains(
+        if (arrayOf(
+                GwDitaOutputFormats.WEBHELP.format_name,
+                GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name,
+                GwDitaOutputFormats.HTML5.format_name
+            ).contains(
                 output_format) && index_redirect
         ) {
             commandParams.add(Pair("--create-index-redirect", "yes"))
             commandParams.add(Pair("--webhelp.publication.toc.links", "all"))
         }
 
-        val ditaBuildCommand = getCommandString("dita", commandParams)
+        val ditaBuildCommand = Helpers.getCommandString("dita", commandParams)
 
         val dockerImageName = when (output_format) {
             GwDitaOutputFormats.HTML5.format_name -> GwDockerImages.DITA_OT_3_6_1.image_url
@@ -3666,7 +3730,7 @@ object GwBuildSteps {
                 npm i
                 npm run build-html5-dependencies
             """.trimIndent()
-            dockerImage = "${GwDockerImages.NODE_DEVEX_BASE.image_url}:14.14.0"
+            dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.image_url}:14.14.0"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "--user 1000:1000"
@@ -3684,12 +3748,29 @@ object GwBuildSteps {
         gw_versions: String,
         working_dir: String,
         custom_env: JSONArray?,
+        validation_mode: Boolean = false,
     ): ScriptBuildStep {
         val nodeImage = when (node_image_version) {
-            null -> GwDockerImages.NODE_12_14_1.image_url
-            else -> "${GwDockerImages.NODE_DEVEX_BASE.image_url}:${node_image_version}"
+            null -> "${GwDockerImages.NODE_REMOTE_BASE.image_url}:17.6.0"
+            else -> "${GwDockerImages.NODE_REMOTE_BASE.image_url}:${node_image_version}"
         }
         val buildCommand = build_command ?: "build"
+        val logFile = "yarn_build.log"
+        val buildCommandBlock = if (validation_mode) {
+            """
+                export EXIT_CODE=0
+                yarn $buildCommand &> "${working_dir}/${logFile}" || EXIT_CODE=${'$'}?
+                
+                if [[ ${'$'}EXIT_CODE != 0 ]]; then
+                    echo "VALIDATION FAILED: High severity issues found."
+                    echo "Check "$logFile" in the build artifacts for more details."
+                fi
+                    
+                exit ${'$'}EXIT_CODE
+                """.trimIndent()
+        } else {
+            "yarn $buildCommand"
+        }
         val targetUrl = Helpers.getTargetUrl(deploy_env)
         var customEnvExportVars = ""
         custom_env?.forEach {
@@ -3702,7 +3783,6 @@ object GwBuildSteps {
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                     #!/bin/bash
-                    set -xe
                     
                     export DEPLOY_ENV="$deploy_env"
                     export GW_DOC_ID="$doc_id"
@@ -3713,27 +3793,9 @@ object GwBuildSteps {
                     export BASE_URL="/${publish_path}/"
                     $customEnvExportVars
                     
-                    # legacy Jutro repos
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-npm-dev -s @jutro
-                    npm config set @jutro:registry https://artifactory.guidewire.com/api/npm/jutro-npm-dev/
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/globalization-npm-release -s @gwre-g11n
-                    npm config set @gwre-g11n:registry https://artifactory.guidewire.com/api/npm/globalization-npm-release/
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/elixir -s @elixir
-                    npm config set @elixir:registry https://artifactory.guidewire.com/api/npm/elixir/
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/portfoliomunster-npm-dev -s @gtui
-                    npm config set @gtui:registry https://artifactory.guidewire.com/api/npm/portfoliomunster-npm-dev/
-                                        
-                    # new Jutro proxy repo
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev
-                    npm config set registry https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev/
-
-                    # Doctools repo
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev -s @doctools
-                    npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
-                                        
                     cd "$working_dir"
-                    yarn
-                    yarn $buildCommand
+                    yarn install
+                    $buildCommandBlock
                 """.trimIndent()
             dockerImage = nodeImage
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -3776,22 +3838,22 @@ object GwBuildSteps {
                     $customEnvExportVars
                     
                     # legacy Jutro repos
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-npm-dev -s @jutro
-                    npm config set @jutro:registry https://artifactory.guidewire.com/api/npm/jutro-npm-dev/
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/globalization-npm-release -s @gwre-g11n
-                    npm config set @gwre-g11n:registry https://artifactory.guidewire.com/api/npm/globalization-npm-release/
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/elixir -s @elixir
-                    npm config set @elixir:registry https://artifactory.guidewire.com/api/npm/elixir/
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/portfoliomunster-npm-dev -s @gtui
-                    npm config set @gtui:registry https://artifactory.guidewire.com/api/npm/portfoliomunster-npm-dev/
+                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/artifactory/api/npm/jutro-npm-dev -s @jutro
+                    npm config set @jutro:registry https://artifactory.guidewire.com/artifactory/api/npm/jutro-npm-dev/
+                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/artifactory/api/npm/globalization-npm-release -s @gwre-g11n
+                    npm config set @gwre-g11n:registry https://artifactory.guidewire.com/artifactory/api/npm/globalization-npm-release/
+                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/artifactory/api/npm/elixir -s @elixir
+                    npm config set @elixir:registry https://artifactory.guidewire.com/artifactory/api/npm/elixir/
+                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/artifactory/api/npm/portfoliomunster-npm-dev -s @gtui
+                    npm config set @gtui:registry https://artifactory.guidewire.com/artifactory/api/npm/portfoliomunster-npm-dev/
                                         
                     # new Jutro proxy repo
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev
-                    npm config set registry https://artifactory.guidewire.com/api/npm/jutro-suite-npm-dev/
+                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/artifactory/api/npm/jutro-suite-npm-dev
+                    npm config set registry https://artifactory.guidewire.com/artifactory/api/npm/jutro-suite-npm-dev/
 
                     # Doctools repo
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev -s @doctools
-                    npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
+                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/artifactory/api/npm/doctools-npm-dev -s @doctools
+                    npm config set @doctools:registry https://artifactory.guidewire.com/artifactory/api/npm/doctools-npm-dev/
                                         
                     cd "$working_dir"
                     yarn
@@ -3853,29 +3915,64 @@ object GwBuildSteps {
     }
 
     fun createRunDocValidatorStep(
+        validation_module: String,
         working_dir: String,
         dita_ot_logs_dir: String,
         normalized_dita_dir: String,
         schematron_reports_dir: String,
         doc_info_file: String,
     ): ScriptBuildStep {
+        var stepName = ""
         val docInfoFileFullPath = "${working_dir}/${doc_info_file}"
         val elasticsearchUrl = Helpers.getElasticsearchUrl(GwDeployEnvs.INT.env_name)
+        val validationCommandParams = mutableListOf<Pair<String, String?>>(
+            Pair("--elasticsearch-urls", elasticsearchUrl),
+            Pair("--doc-info", docInfoFileFullPath),
+        )
+
+        when (validation_module) {
+            GwValidationModules.VALIDATORS_CONTENT.validation_name -> {
+                validationCommandParams.add(Pair("validators", "${working_dir}/${normalized_dita_dir}"))
+                validationCommandParams.add(Pair("content", ""))
+                stepName = "Run GW validations for content readability"
+            }
+            GwValidationModules.VALIDATORS_DITA.validation_name -> {
+                validationCommandParams.add(Pair("validators", "${working_dir}/${normalized_dita_dir}"))
+                validationCommandParams.add(Pair("dita", ""))
+                stepName = "Run GW validations for issues in DITA files"
+            }
+            GwValidationModules.VALIDATORS_FILES.validation_name -> {
+                validationCommandParams.add(Pair("validators", "${working_dir}/${normalized_dita_dir}"))
+                validationCommandParams.add(Pair("files", ""))
+                stepName = "Run GW validations for miscellaneous issues, like missing file extensions"
+            }
+            GwValidationModules.VALIDATORS_IMAGES.validation_name -> {
+                validationCommandParams.add(Pair("validators", "${working_dir}/${normalized_dita_dir}"))
+                validationCommandParams.add(Pair("images", ""))
+                stepName = "Run GW validations for images and <img> tags in DITA files"
+            }
+            GwValidationModules.EXTRACTORS_DITA_OT_LOGS.validation_name -> {
+                validationCommandParams.add(Pair("extractors", "${working_dir}/${dita_ot_logs_dir}"))
+                validationCommandParams.add(Pair("dita-ot-logs", ""))
+                stepName = "Get issues from log files generated by DITA OT builds"
+            }
+            GwValidationModules.EXTRACTORS_SCHEMATRON_REPORTS.validation_name -> {
+                validationCommandParams.add(Pair("extractors", "${working_dir}/${schematron_reports_dir}"))
+                validationCommandParams.add(Pair("schematron-reports", ""))
+                stepName = "Get issues from reports generated by Schematron validations"
+            }
+        }
+        val validationCommand = Helpers.getCommandString("doc_validator", validationCommandParams)
         return ScriptBuildStep {
-            name = "Run the doc validator"
+            name = stepName
             id = Helpers.createIdStringFromName(this.name)
             executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
+            workingDir = working_dir
             scriptContent = """
                 #!/bin/bash
                 set -xe
                 
-                export ELASTICSEARCH_URLS="$elasticsearchUrl"
-                
-                doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" validators "${working_dir}/${normalized_dita_dir}" dita \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" validators "${working_dir}/${normalized_dita_dir}" images \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" validators "${working_dir}/${normalized_dita_dir}" files \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" extractors "${working_dir}/${dita_ot_logs_dir}" dita-ot-logs \
-                  && doc_validator --elasticsearch-urls "${'$'}ELASTICSEARCH_URLS" --doc-info "$docInfoFileFullPath" extractors "${working_dir}/${schematron_reports_dir}" schematron-reports
+                $validationCommand
             """.trimIndent()
             dockerImage = GwDockerImages.DOC_VALIDATOR_LATEST.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux

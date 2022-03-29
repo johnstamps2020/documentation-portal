@@ -69,11 +69,8 @@ class DocPortalSpider(scrapy.Spider):
             index_entry_subject = doc_object.get('metadata').get('subject')
             index_entry_doc_title = doc_object['title']
             index_entry_public = doc_object['public']
+            index_entry_internal = doc_object['internal']
             index_entry_date = date.today().isoformat()
-
-            is_index_entry_internal = response.xpath(
-                '/html/head/meta[@name="internal" and @content="true"]').get()
-            index_entry_internal = bool(is_index_entry_internal)
 
             selectors = {
                 'webhelp_selector': response.xpath(

@@ -1,0 +1,28 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Intermediate page with only internal items",
+  "template": "page",
+  "class": "blue-theme dobson threeCards",
+  "items": [
+    {
+      "label": "Internal link",
+      "link": "https://guidewire.secret.link.com"
+    },
+    {
+      "label": "Feature Preview",
+      "class": "categoryCard cardShadow",
+      "env": ["int"],
+      "items": [
+        {
+          "label": "Child page with only internal docs",
+          "page": "childPageWithOnlyInternalItems",
+          "env": ["int"],
+          "public": false,
+          "internal": true
+        }
+      ]
+    }
+  ],
+  "public": false,
+  "internal": true
+}

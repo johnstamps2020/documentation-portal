@@ -9,12 +9,12 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "BillingCenter",
-          "id": "bc1020"
+          "label": "PolicyCenter",
+          "id": "pc1020"
         },
         {
-          "label": "BillingCenter",
-          "id": "selfmanagedbcxufesxuwl"
+          "label": "PolicyCenter",
+          "id": "pc10xdraft"
         },
         {
           "label": "ClaimCenter",
@@ -22,19 +22,19 @@
         },
         {
           "label": "ClaimCenter",
-          "id": "selfmanagedccxbvqtoakg"
+          "id": "cc10xdraft"
         },
         {
-          "label": "PolicyCenter",
-          "id": "pc1020"
+          "label": "BillingCenter",
+          "id": "bc1020"
         },
         {
-          "label": "PolicyCenter",
-          "id": "selfmanagedpcxrwjcdamu"
+          "label": "BillingCenter",
+          "id": "bc10xdraft"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools400"
+          "id": "isconfigupgradetools420"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
@@ -45,16 +45,34 @@
           "id": "isdraftrestapiclientguide"
         },
         {
-          "label": "IRSA Integration for ClaimCenter (version 1.1)",
-          "page": "ipf/1.1"
+          "label": "Guidewire for Salesforce",
+          "page": "gwsf/di/3.4"
         },
         {
-          "label": "IRSA Integration for ClaimCenter (version 1.1)",
-          "page": "ipf/latest"
-        },
-        {
-          "label": "Guidewire InsuranceSuite Package for Germany",
-          "page": "ipg/latest"
+          "label": "Global Solutions",
+          "class": "group",
+          "items": [
+            {
+              "label": "Australia",
+              "page": "../globalSolutions/ipa/latest"
+            },
+            {
+              "label": "France",
+              "page": "../globalSolutions/ipf/2.0"
+            },
+            {
+              "label": "France",
+              "page": "../globalSolutions/ipf/1.1"
+            },
+            {
+              "label": "France",
+              "page": "../globalSolutions/ipf/latest"
+            },
+            {
+              "label": "Germany",
+              "page": "../globalSolutions/ipg/latest"
+            }
+          ]
         }
       ]
     },
@@ -64,23 +82,21 @@
       "items": [
         {
           "label": "DataHub",
+          "page": "dh/10.7.0"
+        },
+        {
+          "label": "DataHub",
           "page": "dh/10.6.0",
           "env": ["staging", "prod"]
         },
         {
-          "label": "DataHub",
-          "page": "dh/10.x",
-          "env": ["int"]
+          "label": "InfoCenter",
+          "page": "ic/10.7.0"
         },
         {
           "label": "InfoCenter",
           "page": "ic/10.6.0",
           "env": ["staging", "prod"]
-        },
-        {
-          "label": "InfoCenter",
-          "page": "ic/10.x",
-          "env": ["int"]
         }
       ]
     },
@@ -120,35 +136,11 @@
         {
           "label": "VendorEngage",
           "id": "dxve1141"
-        },
-        {
-          "label": "Guidewire for Salesforce Data Integrations",
-          "page": "gwsf/di/3.3.1"
-        },
-        {
-          "label": "Guidewire for Salesforce Data Integrations for Claims",
-          "id": "dxdiconprem310",
-          "env": ["prod"]
-        },
-        {
-          "label": "Guidewire for Salesforce Digital Gateway",
-          "page": "gwsf/ed/3.3.1"
-        },
-        {
-          "label": "Guidewire for Salesforce Digital Gateway for Claims",
-          "id": "dxedconprem310",
-          "env": ["prod"]
-        },
-        {
-          "label": "Guidewire for Salesforce View on Demand",
-          "page": "gwsf/vod/3.3.1"
-        },
-        {
-          "label": "Guidewire for Salesforce View on Demand for Claims",
-          "id": "dxvodconprem310",
-          "env": ["prod"]
         }
       ]
     }
-  ]
+  ],
+  "search_filters": {
+    "platform": ["Self-managed"]
+  }
 }

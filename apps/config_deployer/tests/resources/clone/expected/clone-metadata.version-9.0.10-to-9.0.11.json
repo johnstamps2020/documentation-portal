@@ -13,7 +13,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradetools1450",
@@ -27,7 +28,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcupgradetools1450",
@@ -41,7 +43,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     }
   ]
 }

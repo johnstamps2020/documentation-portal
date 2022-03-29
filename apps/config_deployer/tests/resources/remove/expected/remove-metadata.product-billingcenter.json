@@ -14,7 +14,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "cloudpcupgradeguide202005",
@@ -29,7 +30,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradeguide1010",
@@ -43,7 +45,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradeguide1011",
@@ -57,7 +60,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradeguide1012",
@@ -71,7 +75,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradeguide10x",
@@ -85,7 +90,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradetools1450",
@@ -99,7 +105,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradetools1x",
@@ -113,7 +120,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradetoolspiteqdgk",
@@ -127,7 +135,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradetoolsqwertyui",
@@ -141,7 +150,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcupgradeguide1010",
@@ -155,7 +165,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcupgradeguide1011",
@@ -169,7 +180,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcupgradeguide1012",
@@ -183,7 +195,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcupgradeguide10x",
@@ -197,7 +210,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcupgradetools1450",
@@ -211,7 +225,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcupgradetools1x",
@@ -225,7 +240,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcupgradetoolspiteqdgk",
@@ -239,7 +255,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcupgradetoolsqwertyui",
@@ -253,7 +270,8 @@
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     }
   ]
 }

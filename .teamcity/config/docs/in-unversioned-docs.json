@@ -1,0 +1,603 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "incsp20211rn",
+      "title": "Consumer Service Portal 2021.1 Release Notes",
+      "url": "cloud/in/csp20211rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
+        "subject": ["Release Notes"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "incsp4rn",
+      "title": "Consumer Service Portal 4 Release Notes",
+      "url": "cloud/in/csp4rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["4"],
+        "subject": ["Release Notes"],
+        "release": ["Dobson"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "incsp326rn",
+      "title": "Consumer Service Portal 3.26 Release Notes",
+      "url": "cloud/in/csp326rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow Consumer Service Portal"],
+        "version": ["3.26"],
+        "subject": ["Release notes"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "incsp325rn",
+      "title": "Consumer Service Portal 3.25 Release Notes",
+      "url": "cloud/in/csp325rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow Consumer Service Portal"],
+        "version": ["3.25"],
+        "subject": ["Release notes"],
+        "release": ["Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "incsp324rn",
+      "title": "Consumer Service Portal 3.24 Release Notes",
+      "url": "cloud/in/csp324rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow Consumer Service Portal"],
+        "version": ["3.24"],
+        "subject": ["Release notes"],
+        "release": ["Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "incsp323rn",
+      "title": "Consumer Service Portal 3.23 Release Notes",
+      "url": "cloud/in/csp323rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow Consumer Service Portal"],
+        "version": ["3.23"],
+        "subject": ["Release notes"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "indevguidejava11ext",
+      "title": "Developers Setup",
+      "url": "cloud/in/devsetupjava11ext",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Installation"],
+        "release": ["Dobson"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "indevguidejava11draft",
+      "title": "Developers Setup (Internal) Draft",
+      "url": "cloud/in/devsetupjava11",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1", "2021.2"],
+        "subject": ["Installation"],
+        "release": ["Cortina", "Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "indevguidejava8draft",
+      "title": "Developers Setup",
+      "url": "cloud/in/devsetupjava8",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": [
+          "InsuranceNow 2020.2x - Internal Audience",
+          "InsuranceNow 2020.1x - Internal Audience"
+        ],
+        "version": ["latest"],
+        "subject": ["Installation"],
+        "release": ["Aspen", "Banff"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "inexcelrating30draft",
+      "title": "Excel Designed Rating 3.0 Draft",
+      "url": "cloud/in/excelrating30",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2", "2021.1"],
+        "subject": ["Features and functionality"],
+        "release": ["Cortina", "Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "inexcelrating30",
+      "title": "Excel Designed Rating 3.0",
+      "url": "cloud/in/excelrating30",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2", "2021.1"],
+        "subject": ["Features and functionality"],
+        "release": ["Cortina", "Dobson"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "inexcelrating23",
+      "title": "Excel Designed Rating 2.3",
+      "url": "cloud/in/excelrating23",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2020.2", "2020.1"],
+        "subject": ["Features and functionality"],
+        "release": ["Aspen", "Banff"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "inexcelrating23draft",
+      "title": "Excel Designed Rating 2.3 Draft",
+      "url": "cloud/in/excelrating23",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2020.2", "2020.1"],
+        "subject": ["Features and functionality"],
+        "release": ["Aspen", "Banff"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20221studiorn",
+      "title": "Studio 2022.1 Release Notes",
+      "url": "cloud/in/20221/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.1"],
+        "subject": ["Release notes"],
+        "release": ["Elysian"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20221xstudiorndraft",
+      "title": "Studio 2022.1 Release Notes Draft",
+      "url": "cloud/in/20221x/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.1"],
+        "subject": ["Release notes"],
+        "release": ["Elysian"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20212studiorn",
+      "title": "Studio 2021.2 Release Notes",
+      "url": "cloud/in/20212/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Release notes"],
+        "release": ["Dobson"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20212xstudiorndraft",
+      "title": "Studio 2021.2 Release Notes Draft",
+      "url": "cloud/in/20212x/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Release notes"],
+        "release": ["Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20211studiorn",
+      "title": "Studio 2021.1 Release Notes",
+      "url": "cloud/in/20211/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
+        "subject": ["Release notes"],
+        "release": ["Cortina"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20211xstudiorndraft",
+      "title": "Studio 2021.1 Release Notes Draft",
+      "url": "cloud/in/20211x/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
+        "subject": ["Release notes"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20202studiorn",
+      "title": "Studio 2020.2 Release Notes",
+      "url": "cloud/in/20202/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2020.2"],
+        "subject": ["Release notes"],
+        "release": ["Banff"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20202xstudiorndraft",
+      "title": "Studio 2020.2 Release Notes Draft",
+      "url": "cloud/in/20202x/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "release": ["Banff"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20201studiorn",
+      "title": "Studio 2020.1 Release Notes",
+      "url": "cloud/in/20201/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2020.1"],
+        "subject": ["Release notes"],
+        "release": ["Aspen"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20201xstudiorndraft",
+      "title": "Studio 2020.1 Release Notes Draft",
+      "url": "cloud/in/20201x/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "release": ["Aspen"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ininstallassistdraft",
+      "title": "Install Assist",
+      "url": "cloud/in/installassist",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["latest"],
+        "subject": ["Installation"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20221rn",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20221/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.1"],
+        "subject": ["Release notes"],
+        "release": ["Elysian"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20221xrndraft",
+      "title": "Core Release Notes Draft",
+      "url": "cloud/in/20221x/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.1"],
+        "subject": ["Release notes"],
+        "release": ["Elysian"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20212rn",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20212/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Release notes"],
+        "release": ["Dobson"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20212xrndraft",
+      "title": "Core Release Notes Draft",
+      "url": "cloud/in/20212x/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Release notes"],
+        "release": ["Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20211rn",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20211/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
+        "subject": ["Release notes"],
+        "release": ["Cortina"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20211xrndraft",
+      "title": "Core Release Notes Draft",
+      "url": "cloud/in/20211x/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.1"],
+        "subject": ["Release notes"],
+        "release": ["Cortina"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20202rn",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20202/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2020.2"],
+        "subject": ["Release notes"],
+        "release": ["Banff"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20202xrndraft",
+      "title": "Core Release Notes Draft",
+      "url": "cloud/in/20202x/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2020.2"],
+        "subject": ["Release notes"],
+        "release": ["Banff"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20201rn",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20201/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2020.1"],
+        "subject": ["Release notes"],
+        "release": ["Aspen"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "in20201xrndraft",
+      "title": "Core Release Notes Draft",
+      "url": "cloud/in/20201x/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "release": ["Aspen"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "inupgradetoolsdraft",
+      "title": "Upgrade Tools Draft",
+      "url": "cloud/in/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2", "2021.1", "2020.2", "2020.1"],
+        "subject": ["Installation"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    }
+  ]
+}

@@ -13,7 +13,8 @@
       },
       "environments": ["int", "staging", "prod"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     }
   ]
 }

@@ -2,25 +2,9 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "in20212xrndraft",
-      "title": "Core Release Notes Draft",
-      "url": "cloud/in/20212x/releasenotes",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Release notes"],
-        "release": ["Dobson"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "inbillrefdraft",
+      "id": "in20212xbillrefdraft",
       "title": "Billing Configuration Reference Draft",
-      "url": "cloud/in/billref",
+      "url": "cloud/in/20212x/billref",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
@@ -31,23 +15,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20212xstudiorndraft",
-      "title": "Studio Release Notes Draft",
-      "url": "cloud/in/20212x/studiorn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Release notes"],
-        "release": ["Dobson"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20212xappdraft",
@@ -63,7 +32,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20212xcsalespconfigdraft",
@@ -79,7 +49,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20212xcsalespdraft",
@@ -95,7 +66,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20212xcservicepdraft",
@@ -111,23 +83,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "in20212xcsprndraft",
-      "title": "Consumer Service Portal Release Notes Draft",
-      "url": "cloud/in/20212x/csprn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Release Notes"],
-        "release": ["Dobson"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20212xappreaderintegdraft",
@@ -143,7 +100,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20212xpadraft",
@@ -159,7 +117,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20212xbiintegdraft",
@@ -175,7 +134,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20212xconfigdraft",
@@ -191,7 +151,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20212xcommonconfigdraft",
@@ -207,7 +168,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20212xcservicepconfigdraft",
@@ -223,23 +185,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
-    },
-    {
-      "id": "indevguidejava11draftext",
-      "title": "Developers Setup (External) Draft",
-      "url": "cloud/in/devsetupjava11ext",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1", "2021.2"],
-        "subject": ["Installation"],
-        "release": ["Cortina", "Dobson"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20212xstudiodraft",
@@ -255,7 +202,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20212xprovportaldraft",
@@ -271,7 +219,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20212xportaldevdraft",
@@ -287,7 +236,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20212xprodattrefdraft",
@@ -303,7 +253,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20212xuwconfigdraft",
@@ -319,7 +270,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "in20212xclaimsconfigdraft",
@@ -335,7 +287,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     }
   ]
 }

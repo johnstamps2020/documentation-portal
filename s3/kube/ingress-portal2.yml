@@ -12,7 +12,7 @@ spec:
       protocol: TCP
       targetPort: 80
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   namespace: doctools
@@ -26,6 +26,9 @@ spec:
       http:
         paths:
           - backend:
-              serviceName: portal2-content-us-east-2
-              servicePort: 80
+              service:
+                name: portal2-content-us-east-2
+                port:
+                  number: 80
             path: /
+            pathType: Prefix

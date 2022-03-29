@@ -1,0 +1,40 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "isupgradeguide202205src",
+      "title": "InsuranceSuite Upgrade Guide 2022.05",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
+      "branch": "release/2022.05"
+    },
+    {
+      "id": "cloudisapd202205src",
+      "title": "IS 2022.05 Advanced Product Designer for PolicyCenter",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
+      "branch": "release/pc/2022.05"
+    },
+    {
+      "id": "testingframeworks202205src",
+      "title": "Testing Solutions 2022.05",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-solutions.git",
+      "branch": "release/2022.05"
+    },
+    {
+      "id": "is202205src",
+      "title": "IS 2022.05.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/2022.05.0"
+    },
+    {
+      "id": "webhooksapinextsrc",
+      "title": "WebHooks API",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/mde/subscriptions.git",
+      "branch": "main"
+    }
+  ]
+}

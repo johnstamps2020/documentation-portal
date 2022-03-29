@@ -1,0 +1,158 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "isbcelysiangwadmin",
+      "title": "Administration",
+      "url": "cloud/bc/elysian-gw/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["GW-internal-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isbcelysiangwdevsetup",
+      "title": "Developer Setup",
+      "url": "cloud/bc/elysian-gw/devsetup",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["GW-internal-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isbcelysiangwupgrade",
+      "title": "Upgrade",
+      "url": "cloud/bc/elysian-gw/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["GW-internal-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isccelysiangwadmin",
+      "title": "Administration",
+      "url": "cloud/cc/elysian-gw/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["GW-internal-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isccelysiangwdevsetup",
+      "title": "Developer Setup",
+      "url": "cloud/cc/elysian-gw/devsetup",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["GW-internal-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isccelysiangwupgrade",
+      "title": "Upgrade",
+      "url": "cloud/cc/elysian-gw/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["GW-internal-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ispcelysiangwadmin",
+      "title": "Administration",
+      "url": "cloud/pc/elysian-gw/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["GW-internal-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ispcelysiangwdevsetup",
+      "title": "Developer Setup",
+      "url": "cloud/pc/elysian-gw/devsetup",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["GW-internal-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ispcelysiangwupgrade",
+      "title": "Upgrade",
+      "url": "cloud/pc/elysian-gw/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["GW-internal-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   namespace: doctools
@@ -16,6 +16,9 @@ spec:
       http:
         paths:
           - backend:
-              serviceName: docportal-app
-              servicePort: 8081
+              service:
+                name: docportal-app
+                port:
+                  number: 8081
             path: /
+            pathType: Prefix

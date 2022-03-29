@@ -1,0 +1,45 @@
+.headerButtonsButton {
+  position: relative;
+  border: none;
+  height: 28px;
+  width: 28px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.headerButtonsMenu {
+  display: none;
+}
+
+.headerButtonsMenu.show {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: absolute;
+  top: 36px;
+  right: 0;
+  background-color: #fafafa;
+  padding: 24px;
+  text-align: left;
+  border-radius: 4px;
+  box-shadow: var(--GW-BOX-SHADOW-DIAGONAL-3);
+  cursor: default;
+  border: 1px solid lightgray;
+  width: max-content;
+}
+
+.headerButtonsMenuHeader {
+  padding: 0 6px;
+  color: var(--clr-GW-BLACK);
+  font-size: 1rem;
+}
+
+.headerButtonsMenuDivider {
+  width: 100%;
+  border-bottom: 1px solid var(--clr-GW-HEADER-BORDER);
+}
+
+.headerButtonsMenuActions {
+  padding: 0 6px;
+  line-height: 1.5rem;
+}

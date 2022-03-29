@@ -19,18 +19,11 @@
       "id": "testingframeworks202111src",
       "title": "Testing Framework 2021.11",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-solutions.git",
       "branch": "release/2021.11"
     },
     {
       "id": "is202111src",
-      "title": "IS 2021.11.1",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
-      "branch": "release/2021.11.1"
-    },
-    {
-      "id": "is2021112src",
       "title": "IS 2021.11.2",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
@@ -38,14 +31,14 @@
     },
     {
       "id": "srcccapirefdobson",
-      "title": "CC API ref preview",
+      "title": "CC API ref preview 2021.11",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cc-api-ref.git",
       "branch": "release/dobson"
     },
     {
       "id": "srcpcapirefdobson",
-      "title": "PC API ref preview",
+      "title": "PC API ref preview 2021.11",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/pc-api-ref.git",
       "branch": "release/dobson"

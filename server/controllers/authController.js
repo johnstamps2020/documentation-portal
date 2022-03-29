@@ -1,7 +1,12 @@
 require('dotenv').config();
 const OktaJwtVerifier = require('@okta/jwt-verifier');
 const jsonwebtoken = require('jsonwebtoken');
-const { isPublicDoc } = require('../controllers/configController');
+const { isPublicDoc, isInternalDoc } = require('./configController');
+const { addCommonDataToSessionLocals } = require('./localsController');
+const { getUserInfo } = require('./userController');
+const path = require('path');
+const fs = require('fs');
+const staticPagesDir = path.join(__dirname, '..', 'static', 'pages');
 
 const loginGatewayRoute = '/gw-login';
 const gwCommunityCustomerParam = 'guidewire-customer';
@@ -91,7 +96,7 @@ async function isLoggedInOrHasValidToken(req) {
   try {
     const rawJsonRequest = req.query.rawJSON === 'true';
     return rawJsonRequest
-      ? !!(await verifyToken(req))
+      ? !!(req.isAuthenticated() || (await verifyToken(req)))
       : !!req.isAuthenticated();
   } catch (err) {
     console.log(err.message);
@@ -107,9 +112,11 @@ const majorOpenRoutes = [
   '/userInformation',
   '/safeConfig',
   '/search',
-  '/developerResources',
+  '/apiReferences',
   '/recommendations',
 ];
+
+const majorInternalRoutes = [];
 
 const authGateway = async (req, res, next) => {
   try {
@@ -145,13 +152,31 @@ const authGateway = async (req, res, next) => {
       req.next();
     }
 
-    async function checkIfRouteIsOpen(pathname) {
-      if (majorOpenRoutes.some(r => pathname.startsWith(r))) {
+    async function checkIfRouteIsOpen() {
+      if (majorOpenRoutes.some(r => reqUrl.startsWith(r))) {
         return true;
       }
 
       const isPublicInConfig = await isPublicDoc(reqUrl, req);
       return isPublicInConfig === true;
+    }
+
+    async function checkIfRouteIsInternal() {
+      if (majorInternalRoutes.some(r => reqUrl.startsWith(r))) {
+        return true;
+      }
+
+      const configFilePath = decodeURI(
+        path.join(staticPagesDir, req.path, 'index.json')
+      );
+      const configFileExists = fs.existsSync(configFilePath);
+      if (configFileExists) {
+        const fileContents = fs.readFileSync(configFilePath, 'utf-8');
+        const fileContentsJson = JSON.parse(fileContents);
+        return fileContentsJson.internal;
+      }
+      const isInternalInConfig = await isInternalDoc(reqUrl, req);
+      return isInternalInConfig === true;
     }
 
     const publicDocsAllowed = process.env.ALLOW_PUBLIC_DOCS === 'yes';
@@ -160,10 +185,21 @@ const authGateway = async (req, res, next) => {
     const requestIsAuthenticated =
       authenticationIsDisabled || loggedInOrHasValidToken;
     req.session.requestIsAuthenticated = requestIsAuthenticated;
-    const isOpenRoute = await checkIfRouteIsOpen(reqUrl);
+    addCommonDataToSessionLocals(req, res);
+    const isOpenRoute = await checkIfRouteIsOpen();
+    const isInternalRoute = await checkIfRouteIsInternal();
+    const hasGuidewireEmail = res.locals.userInfo.hasGuidewireEmail;
 
-    if (requestIsAuthenticated) {
+    if (requestIsAuthenticated && !isInternalRoute) {
       openRequestedPage();
+    } else if (requestIsAuthenticated && isInternalRoute && hasGuidewireEmail) {
+      openRequestedPage();
+    } else if (
+      requestIsAuthenticated &&
+      isInternalRoute &&
+      !hasGuidewireEmail
+    ) {
+      res.redirect('/internal');
     } else if (!requestIsAuthenticated && publicDocsAllowed && isOpenRoute) {
       openPublicPage();
     } else {

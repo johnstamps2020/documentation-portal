@@ -9,16 +9,12 @@
       "class": "subject releaseNotes",
       "items": [
         {
-          "label": "Application Events for Claims",
-          "id": "appeventsccrndraft"
+          "label": "App Events Release Notes",
+          "id": "appeventsrndraft"
         },
         {
           "label": "Rules",
           "id": "rulesrndraft"
-        },
-        {
-          "label": "Integration Gateway",
-          "id": "integgatewayrndraft"
         }
       ]
     },
@@ -35,8 +31,16 @@
           "id": "cloudratingdraft"
         },
         {
-          "label": "Data Studio",
-          "page": "../datastudio"
+          "label": "Data Studio (Draft)",
+          "id": "datastudiodraft"
+        },
+        {
+          "label": "Data Studio (Release)",
+          "id": "datastudiorelease"
+        },
+        {
+          "label": "Cloud Console Root Doc Early Access",
+          "id": "guidewirecloudconsolerootearlyaccess"
         },
         {
           "label": "Submission Intake",
@@ -49,7 +53,7 @@
       "class": "subject configuration",
       "items": [
         {
-          "label": "Advanced Product Designer",
+          "label": "Advanced Product Designer App",
           "id": "apddraft"
         },
         {
@@ -85,11 +89,13 @@
         {
           "label": "PolicyCenter App Events for Developers",
           "id": "pcappeventsdevdraft"
-        },
-        {
-          "label": "Integration Gateway for Developers",
-          "id": "integgatewaydevdraft"
-        },
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
         {
           "label": "Webhooks API Reference",
           "id": "webhooksapinext"

@@ -5,7 +5,7 @@ nav[role='toc'] {
   grid-area: toc;
   padding: 16px 1rem 16px 4px;
   height: var(--main-height);
-  overflow: scroll;
+  overflow-y: auto;
   border-right: 1px solid lightgray;
 }
 
@@ -63,11 +63,11 @@ nav[role='toc'] li {
 nav[role='toc'] a,
 nav[role='toc'] .listLabel {
   display: block;
-  padding: 8px 4px;
+  padding: 2px 4px;
   width: 100%;
   color: var(--nav-font-color) !important;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: 500;
   margin: 4px 0;
   border-radius: 3px;

@@ -2,6 +2,7 @@
 @import 'modules/common.css';
 @import 'modules/avatar.css';
 @import 'modules/feedback.css';
+@import 'modules/recommendations.css';
 
 @media only screen and (max-width: 580px) {
   /* leaving this here if we need it later */
@@ -344,16 +345,6 @@ span.openNav {
   visibility: hidden;
 }
 
-.recommendations {
-  margin-top: 3rem;
-}
-
-.recommendations span:first-of-type {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
 #loginButton {
   background: linear-gradient(
     194.81deg,
@@ -370,4 +361,39 @@ span.openNav {
 #loginButton:hover {
   background: hsl(196, 100%, 26%);
   text-decoration: none;
+}
+
+#internalBadge {
+  background-color: rgb(255, 186, 0);
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px var(--GW-COLOR-BRAND-2);
+  margin: 0 16px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.internalBadgeText {
+  color: var(--GW-COLOR-TEXT-1);
+  font-weight: 600;
+}
+
+.internalBadgeTooltip {
+  background-color: #000;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1rem;
+  padding: 8px;
+  position: absolute;
+  visibility: hidden;
+  width: 200px;
+  z-index: 1;
+  transform: translate(-150%, -5%);
+}
+
+#internalBadge:hover .internalBadgeTooltip {
+  visibility: visible;
 }

@@ -3,6 +3,9 @@
 }
 
 #highlightToggle {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 544 512' style='enable-background:new 0 0 544 512;' fill='%23000000'%3E%3Cpath class='st0' d='M0,480l99.9,32l35.4-35.5l-67-67L0,480z M124.6,240c-10.8,9.5-17.6,16-10.8,38.1l13.1,42.8l-50.9,50.9 l96.2,96.2l50.9-50.9l42.7,13.1c28.2,6.7,28.6,0,38.1-10.8l35.5-41.6L166.1,204.5L124.6,240L124.6,240z M527.9,79.3 M394.1,6 L190.6,179.8l173.6,173.6L538,149.9'/%3E%3C/svg%3E")
     no-repeat;
   background-size: cover;

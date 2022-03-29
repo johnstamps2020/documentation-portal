@@ -1,5 +1,5 @@
 {
-  "title": "Jutro Design System 6.5.1",
+  "title": "Jutro Design System 6.5.2 (Dobson)",
   "template": "page",
   "class": "twoColumns",
   "items": [
@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "Jutro Design System and UI Framework",
-          "id": "jutro651"
+          "id": "jutro652"
         }
       ]
     },
@@ -19,7 +19,7 @@
       "items": [
         {
           "label": "Jutro Storybook",
-          "id": "storybook651"
+          "id": "storybook652"
         }
       ]
     }

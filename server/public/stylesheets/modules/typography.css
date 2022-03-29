@@ -1,0 +1,34 @@
+.p.seealso {
+  font-weight: 500;
+}
+
+.uicontrol,
+.wintitle {
+  font-weight: 600;
+}
+
+.stepsection {
+  font-weight: 600;
+}
+
+.parmname {
+  font-weight: normal;
+}
+
+.title .apiname,
+.title .cmdname,
+.title .codeph,
+.title .filepath,
+.title .msgph,
+.title .parmname,
+.title .uicontrol,
+.title .wintitle {
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+#footerCenter {
+  font-size: 0.875rem;
+  font-weight: 600;
+}

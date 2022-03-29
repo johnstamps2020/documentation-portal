@@ -1,0 +1,247 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "ClaimCenter for Guidewire Cloud 2022.05",
+  "template": "page",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select version",
+    "selectedItem": "2022.05",
+    "items": [
+      {
+        "label": "earlyaccess",
+        "page": "../earlyaccess",
+        "env": ["int"]
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "isccelysiandraftreleasenotes"
+        },
+        {
+          "label": "New and Changed",
+          "id": "isccelysiandraftnewandchanged"
+        },
+        {
+          "label": "REST API Client Release Notes",
+          "id": "isdraftrestapiclientrn"
+        },
+        {
+          "label": "REST API Client Release Notes",
+          "id": "isrestapiclientrn",
+          "env": ["staging"]
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Developer Setup",
+          "id": "isccelysiandraftdevsetup"
+        },
+        {
+          "label": "Developer Setup",
+          "id": "iscc202205devsetup"
+        },
+        {
+          "label": "Developer Setup (Internal only)",
+          "id": "isccelysiangwdevsetup"
+        },
+        {
+          "label": "Upgrade",
+          "id": "isccelysiandraftupgrade"
+        },
+        {
+          "label": "Upgrade",
+          "id": "iscc202205upgrade"
+        },
+        {
+          "label": "Upgrade (Internal only)",
+          "id": "isccelysiangwupgrade"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetoolsdraft"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools420",
+          "env": ["staging"]
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "isccelysiandraftapp"
+        },
+        {
+          "label": "Application Guide",
+          "id": "iscc202205app"
+        },
+        {
+          "label": "Contact Management",
+          "id": "iselysiandraftcontact"
+        },
+        {
+          "label": "Contact Management",
+          "id": "is202205contact"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "isccelysiandraftadmin"
+        },
+        {
+          "label": "Administration",
+          "id": "iscc202205admin"
+        },
+        {
+          "label": "Administration (Internal only)",
+          "id": "isccelysiangwadmin"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "isccelysiandraftdataarchiving"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "iscc202205dataarchiving"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration",
+          "id": "isccelysiandraftconfig"
+        },
+        {
+          "label": "Configuration",
+          "id": "iscc202205config"
+        },
+        {
+          "label": "Globalization",
+          "id": "isccelysiandraftglobal"
+        },
+        {
+          "label": "Globalization",
+          "id": "iscc202205global"
+        },
+        {
+          "label": "Gosu Rules",
+          "id": "isccelysiandraftrules"
+        },
+        {
+          "label": "Gosu Rules",
+          "id": "iscc202205rules"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Overview of Cloud Integration",
+          "id": "iselysiandraftintegoverview"
+        },
+        {
+          "label": "Overview of Cloud Integration",
+          "id": "is202205integoverview"
+        },
+        {
+          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
+          "id": "isccelysiandraftinteg"
+        },
+        {
+          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
+          "id": "iscc202205integ"
+        },
+        {
+          "label": "Cloud API Business Flows",
+          "id": "isccelysiandraftapibf"
+        },
+        {
+          "label": "Cloud API Business Flows",
+          "id": "iscc202205apibf"
+        },
+        {
+          "label": "Cloud API ContactManager",
+          "id": "isccelysiandraftapicm"
+        },
+        {
+          "label": "Cloud API ContactManager",
+          "id": "iscc202205apicm"
+        },
+        {
+          "label": "Cloud API Authentication",
+          "id": "isccelysiandraftapica"
+        },
+        {
+          "label": "Cloud API Authentication",
+          "id": "iscc202205apica"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "isccelysiandraftrestapifw"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "iscc202205restapifw"
+        },
+        {
+          "label": "REST API Client",
+          "id": "isdraftrestapiclientguide"
+        },
+        {
+          "label": "REST API Client",
+          "id": "isrestapiclientguide",
+          "env": ["staging"]
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "iselysiandraftgosu"
+        },
+        {
+          "label": "Gosu Reference",
+          "id": "is202205gosu"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "gwglossary",
+          "env": ["int", "staging"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-GW.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "isbcelysiangwadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-GW.ditaval",
+      "root": "DeveloperSetupGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "isbcelysiangwdevsetup",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-GW.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguide202205src",
+      "docId": "isbcelysiangwupgrade"
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-GW.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "isccelysiangwadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-GW.ditaval",
+      "root": "DeveloperSetupGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "isccelysiangwdevsetup",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-GW.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguide202205src",
+      "docId": "isccelysiangwupgrade"
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-GW.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "ispcelysiangwadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-GW.ditaval",
+      "root": "DeveloperSetupGuide.ditamap",
+      "srcId": "is202205src",
+      "docId": "ispcelysiangwdevsetup",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-GW.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguide202205src",
+      "docId": "ispcelysiangwupgrade"
+    }
+  ]
+}

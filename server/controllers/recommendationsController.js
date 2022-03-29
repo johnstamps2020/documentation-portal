@@ -4,9 +4,9 @@ const { getConfig } = require('./configController');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const recommendationsIndexName = 'gw-recommendations';
 
-async function showOnlyPublicRecommendations(reqObj, recommendations) {
+async function showOnlyPublicRecommendations(reqObj, resObj, recommendations) {
   const publicRecommendations = [];
-  const config = await getConfig(reqObj);
+  const config = await getConfig(reqObj, resObj);
   for (const recommendation of recommendations) {
     const matchingDoc = config.docs.find(
       d => d.doc_id === recommendation.doc_id
@@ -19,8 +19,17 @@ async function showOnlyPublicRecommendations(reqObj, recommendations) {
   return publicRecommendations;
 }
 
-async function getTopicRecommendations(topicId, reqObj) {
+async function getTopicRecommendations(topicId, reqObj, resObj) {
   try {
+    const indexExists = await elasticClient.indices.exists({
+      index: recommendationsIndexName,
+    });
+    if (!indexExists.body) {
+      return {
+        body: `Cannot get recommendations for topic with ID "${topicId}". Index "${recommendationsIndexName}" does not exist.`,
+        status: 404,
+      };
+    }
     const queryBody = {
       match: {
         id: {
@@ -44,6 +53,7 @@ async function getTopicRecommendations(topicId, reqObj) {
       if (!reqIsAuthenticated) {
         topicRecommendations = await showOnlyPublicRecommendations(
           reqObj,
+          resObj,
           topicRecommendations
         );
       }

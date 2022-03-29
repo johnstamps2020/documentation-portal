@@ -1,0 +1,26 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Feature Preview",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Application Events for Claims",
+          "id": "appeventsccrndraft"
+        },
+        {
+          "label": "Rules",
+          "id": "rulesrndraft"
+        },
+        {
+          "label": "Integration Gateway",
+          "id": "integgatewayrndraft"
+        }
+      ]
+    }
+  ]
+}

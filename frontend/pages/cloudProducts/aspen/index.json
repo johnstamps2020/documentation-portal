@@ -8,6 +8,10 @@
     "selectedItem": "Aspen",
     "items": [
       {
+        "label": "Elysian",
+        "page": "../elysian"
+      },
+      {
         "label": "Dobson",
         "page": "../dobson"
       },
@@ -60,5 +64,8 @@
       "class": "productFamily cardShadow",
       "page": "../guidewireCloudPlatform"
     }
-  ]
+  ],
+  "search_filters": {
+    "platform": ["Cloud"]
+  }
 }

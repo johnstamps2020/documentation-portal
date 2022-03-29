@@ -1,0 +1,65 @@
+nav.miniToc {
+  grid-area: miniToc;
+  align-self: start;
+  padding: 0 4px 0 16px;
+  margin-top: 1rem;
+  margin-right: 0.15vw;
+  border-left: 1px solid lightgray;
+  height: var(--main-height);
+  overflow-y: auto;
+}
+
+nav.miniToc::before {
+  content: 'On this page';
+  color: black;
+  margin-bottom: 1em;
+  display: block;
+}
+
+nav .miniTocLink {
+  display: block;
+  color: var(--GW-COLOR-TEXT-2);
+  text-decoration: none;
+  padding: 4px 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--guidewire-font);
+  font-weight: 400;
+  text-align: left;
+  margin: 0;
+}
+
+nav a.miniTocLink:hover {
+  color: var(--GW-COLOR-BRAND-1);
+}
+
+.miniTocLink.topictitle2 + .miniTocLink.sectiontitle,
+.miniTocLink.topictitle2 + .miniTocLink.topictitle3,
+.miniTocLink.topictitle2
+  + .miniTocLink.sectiontitle
+  ~ .miniTocLink.sectiontitle,
+.miniTocLink.topictitle2 + .miniTocLink.topictitle3 ~ .miniTocLink.topictitle3 {
+  margin-left: 1ch;
+}
+
+.miniTocLink.topictitle3 + .miniTocLink.sectiontitle,
+.miniTocLink.topictitle3 + .miniTocLink.topictitle4,
+.miniTocLink.topictitle3 + .miniTocLink.sectiontitle ~ .miniTocLink.sectiontitle,
+.miniTocLink.topictitle3 + .miniTocLink.topictitle4 ~ .miniTocLink.topictitle4 {
+    margin-left: 2ch;
+}
+
+.miniTocLink.topictitle3 + .miniTocLink.sectiontitle {
+    margin-left: 2ch !important;
+}
+
+.miniTocLink.topictitle4 + .miniTocLink.sectiontitle,
+.miniTocLink.topictitle4 + .miniTocLink.topictitle5,
+.miniTocLink.topictitle4 + .miniTocLink.sectiontitle ~ .miniTocLink.sectiontitle,
+.miniTocLink.topictitle4 + .miniTocLink.topictitle5 ~ .miniTocLink.topictitle5 {
+    margin-left: 3ch;
+}
+
+.miniTocLink.topictitle4 + .miniTocLink.sectiontitle {
+    margin-left: 3ch !important;
+}

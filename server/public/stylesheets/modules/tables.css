@@ -1,0 +1,38 @@
+table {
+  border-collapse: collapse;
+  margin-top: 0.5em;
+}
+
+.simpletable td:not([valign]),
+.table td:not([valign]),
+.choicetable td:not([valign]),
+.simpletable th:not([valign]),
+.table th:not([valign]),
+.choicetable th:not([valign]) {
+  vertical-align: top;
+}
+
+td,
+th {
+  border-bottom: 1px solid #999;
+  border-top: 1px solid #999;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+th {
+  font-weight: 600;
+}
+
+.choicetable {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.choicetableborder th {
+  border-right: 1px solid #999;
+}
+
+.entry > *:last-child {
+  margin-bottom: 0;
+}

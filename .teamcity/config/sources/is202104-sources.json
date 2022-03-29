@@ -302,7 +302,7 @@
       "id": "testingframeworksapicortinasrc",
       "title": "API Testing Cortina",
       "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-solutions.git",
       "branch": "Cortina",
       "xdocsPathIds": [
         "/Content/doc/testing_frameworks/2021.04/GT-API.ditamap",
@@ -313,7 +313,7 @@
       "id": "testingframeworksuicortinasrc",
       "title": "User Interface Testing Cortina",
       "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-solutions.git",
       "branch": "Cortina",
       "xdocsPathIds": [
         "/Content/doc/testing_frameworks/2021.04/GT-UI.ditamap",
@@ -324,7 +324,7 @@
       "id": "testingframeworksrncortinasrc",
       "title": "Guidewire Testing Framework Release Notes Cortina",
       "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-frameworks.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-solutions.git",
       "branch": "Cortina",
       "xdocsPathIds": [
         "/Content/doc/testing_frameworks/releasenotes/Guidewire_Testing_Framework_202104_ReleaseNotes.ditamap",

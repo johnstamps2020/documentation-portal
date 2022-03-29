@@ -1,0 +1,40 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Page with only internal items",
+  "template": "page",
+  "class": "threeCards",
+  "selector": {
+    "label": "Select page",
+    "selectedItem": "Page with only internal items",
+    "items": [
+      {
+        "label": "Page with only internal docs",
+        "page": "../pageWithOnlyInternalDocs",
+        "public": false,
+        "internal": true
+      },
+      {
+        "label": "Page with mixed items",
+        "page": "../pageWithMixedItems",
+        "public": false,
+        "internal": false
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Intermediate page with only internal items",
+      "page": "intermediatePageWithOnlyInternalItems",
+      "public": false,
+      "internal": true
+    },
+    {
+      "label": "Cloud Console Guide",
+      "id": "supersecretgwcloudconsoleguideinsurerdev",
+      "public": false,
+      "internal": true
+    }
+  ],
+  "public": false,
+  "internal": true
+}

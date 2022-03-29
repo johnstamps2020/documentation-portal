@@ -21,6 +21,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/writing-with-git.git",
       "branch": "main"
+    },
+    {
+      "id": "elemrendsrc",
+      "title": "Element Rendering",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/doctools/element-rendering.git",
+      "branch": "master"
     }
   ]
 }

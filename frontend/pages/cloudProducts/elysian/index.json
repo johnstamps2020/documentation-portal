@@ -32,19 +32,23 @@
       "items": [
         {
           "label": "PolicyCenter",
-          "page": "pcGwCloud/latest"
+          "page": "pcGwCloud/2022.05"
         },
         {
           "label": "ClaimCenter",
-          "page": "ccGwCloud/latest"
+          "page": "ccGwCloud/2022.05"
         },
         {
           "label": "BillingCenter",
-          "page": "bcGwCloud/latest"
+          "page": "bcGwCloud/2022.05"
         },
         {
           "label": "InsuranceNow",
-          "page": "insuranceNow/2021.2"
+          "page": "insuranceNow/2022.1"
+        },
+        {
+          "label": "InsuranceNow",
+          "page": "insuranceNow/latest"
         },
         {
           "label": "Guidewire for Salesforce",
@@ -62,19 +66,19 @@
         },
         {
           "label": "DataHub",
-          "page": "dhGwCloud/latest"
+          "page": "dhGwCloud/2022.05"
         },
         {
           "label": "InfoCenter",
-          "page": "icGwCloud/latest"
+          "page": "icGwCloud/2022.05"
         },
         {
           "label": "Guidewire Live",
           "class": "group",
           "items": [
             {
-              "label": "Assess",
-              "page": "assess"
+              "label": "HazardHub Casualty",
+              "page": "../hazardhub"
             },
             {
               "label": "Canvas",
@@ -106,31 +110,31 @@
           "items": [
             {
               "label": "CustomerEngage Account Management",
-              "page": "ceAccountMgmt/latest"
+              "page": "ceAccountMgmt/2022.05"
             },
             {
               "label": "CustomerEngage Account Management for ClaimCenter",
-              "page": "ceAccountMgmtCc/latest"
+              "page": "ceAccountMgmtCc/2022.05"
             },
             {
               "label": "CustomerEngage Quote and Buy",
-              "page": "ceQuoteAndBuy/latest"
+              "page": "ceQuoteAndBuy/2022.05"
             },
             {
               "label": "ProducerEngage",
-              "page": "producerEngage/latest"
+              "page": "producerEngage/2022.05"
             },
             {
               "label": "ProducerEngage for ClaimCenter",
-              "page": "producerEngageCc/latest"
+              "page": "producerEngageCc/2022.05"
             },
             {
               "label": "ServiceRepEngage",
-              "page": "serviceRepEngage/latest"
+              "page": "serviceRepEngage/2022.05"
             },
             {
               "label": "VendorEngage",
-              "page": "vendorEngage/latest"
+              "page": "vendorEngage/2022.05"
             }
           ]
         },
@@ -140,7 +144,7 @@
           "items": [
             {
               "label": "Jutro Design System",
-              "page": "../../jutroDesignSystem/6.5.1"
+              "page": "../../jutroDesignSystem/7.4.0"
             }
           ]
         },
@@ -173,7 +177,7 @@
               "link": "/cyence/cyber/HelpCenterAccum"
             },
             {
-              "label": "Model 5 Documentation",
+              "label": "Model 5 Technical Reference",
               "link": "/cyence/cyber/Model5/CyenceCyberRiskModel5.pdf"
             },
             {
@@ -207,8 +211,36 @@
           "id": "guidewirecloudconsolerninsurerdev"
         },
         {
+          "label": "Cloud Console Release Notes",
+          "id": "guidewirecloudconsolerninsurerdevdraft"
+        },
+        {
+          "label": "Integration Gateway Release Notes",
+          "id": "integgatewayrndraft"
+        },
+        {
+          "label": "Integration Gateway Release Notes",
+          "id": "integgatewayrn202205"
+        },
+        {
+          "label": "Integration Gateway for Developers",
+          "id": "integgatewaydevdraft"
+        },
+        {
+          "label": "Integration Gateway for Developers",
+          "id": "integgatewaydev202205"
+        },
+        {
+          "label": "Working with Guidewire Cloud Platform",
+          "id": "cloudplatformdraft"
+        },
+        {
           "label": "Working with Guidewire Cloud Platform",
           "id": "cloudplatformrelease"
+        },
+        {
+          "label": "Authentication with Guidewire Identity Federation Hub",
+          "id": "guidewireidentityfederationhubdraft"
         },
         {
           "label": "Authentication with Guidewire Identity Federation Hub",
@@ -216,7 +248,22 @@
         },
         {
           "label": "Cloud Console",
+          "id": "guidewirecloudconsoleguideinsurerdevdraft"
+        },
+        {
+          "label": "Cloud Console",
           "id": "guidewirecloudconsoleguideinsurerdev"
+        }
+      ]
+    },
+    {
+      "label": "Global Solutions",
+      "class": "categoryCard cardShadow",
+      "env": ["int"],
+      "items": [
+        {
+          "label": "Australia",
+          "page": "../../globalSolutions/ipa/latest"
         }
       ]
     },
@@ -232,5 +279,8 @@
         }
       ]
     }
-  ]
+  ],
+  "search_filters": {
+    "platform": ["Cloud"]
+  }
 }

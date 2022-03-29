@@ -1,0 +1,52 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Page with only internal docs",
+  "template": "page",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select page",
+    "selectedItem": "Page with only internal docs",
+    "items": [
+      {
+        "label": "Page with only internal items",
+        "page": "../pageWithOnlyInternalItems"
+      },
+      {
+        "label": "Page with mixed items",
+        "page": "../pageWithMixedItems"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Guidewire Cloud Platform Release Notes",
+          "id": "supersecretgwcloudplatformreleasenotes"
+        }
+      ]
+    },
+    {
+      "label": "Getting Started",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Working with Guidewire Cloud Platform",
+          "id": "supersecretcloudplatform"
+        }
+      ]
+    },
+    {
+      "label": "Authentication",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Authentication with Guidewire Identity Federation Hub",
+          "id": "supersecretgwidentityfederationhub"
+        }
+      ]
+    }
+  ]
+}

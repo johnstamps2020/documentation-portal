@@ -14,6 +14,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
+      "internal": false,
       "environments": ["dev", "staging", "prod"]
     },
     {
@@ -29,7 +30,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "ispccloudlatest",
@@ -44,7 +46,8 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "isconfigupgradetools320",
@@ -59,7 +62,40 @@
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isconfigupgradetools400",
+      "title": "InsuranceSuite Configuration Upgrade Tools 4.0.0",
+      "url": "isconfigupgradetools/400",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": ["4.0.0"],
+        "release": ["Aspen", "Banff", "Cortina"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isconfigupgradetoolsdraft",
+      "title": "InsuranceSuite Configuration Upgrade Tools Draft",
+      "url": "isconfigupgradetools/draft",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": ["Draft"],
+        "release": ["Aspen", "Banff", "Cortina"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true
     }
   ]
 }

@@ -1,0 +1,12 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "ipadraftsrc",
+      "title": "Global Solutions - Australia Draft",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/mid-ipa.git",
+      "branch": "main"
+    }
+  ]
+}

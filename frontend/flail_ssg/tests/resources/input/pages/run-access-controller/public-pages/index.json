@@ -1,0 +1,20 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Automated redirect",
+  "class": "",
+  "template": "redirect",
+  "items": [
+    {
+      "label": "cloudNotPublic",
+      "page": "cloudProductsNotPublic"
+    },
+    {
+      "label": "cloudPublic",
+      "page": "cloudProductsPublic"
+    },
+    {
+      "label": "_redirect",
+      "link": "/cloudProducts/dobson"
+    }
+  ]
+}

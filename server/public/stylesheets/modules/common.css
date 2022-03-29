@@ -88,7 +88,7 @@ div.searchBoxPusher {
   border-style: solid;
   border-width: 1px;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 0.875rem;
   padding-left: 14px;
   padding-right: 14px;
   width: var(--search-field-width);
@@ -140,7 +140,7 @@ div.searchBoxPusher {
 
 .footerCopyright {
   display: block;
-  font-size: 10px;
+  font-size: 0.625rem;
   padding-top: 4px;
   padding-bottom: 4px;
 }
@@ -153,7 +153,7 @@ div.searchBoxPusher {
 
 .footerLink a {
   margin-right: 32px;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--GW-COLOR-TEXT-3) !important;
 }
@@ -187,7 +187,7 @@ a:active svg {
   fill: var(--GW-COLOR-BRAND-1-ACTIVE) !important;
 }
 .loginButtonSmall {
-  font-size: 14px;
+  font-size: 0.875rem;
   margin: auto;
 }
 

@@ -38,6 +38,13 @@
       "branch": "main"
     },
     {
+      "id": "datastudioreleasesrc",
+      "title": "Data Studio Release",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/data-studio.git",
+      "branch": "release/latest"
+    },
+    {
       "id": "experiencemgrdraftsrc",
       "title": "Experience Manager Draft",
       "sourceType": "git",
@@ -60,13 +67,6 @@
       "title": "Submission Intake Draft",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/submission-intake.git",
-      "branch": "main"
-    },
-    {
-      "id": "webhooksapinextsrc",
-      "title": "WebHooks API",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/app-events-api.git",
       "branch": "main"
     }
   ]

@@ -38,7 +38,15 @@
       "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
       "root": "b_data-studio.ditamap",
       "srcId": "datastudiodraftsrc",
-      "docId": "datastudioappdraft",
+      "docId": "datastudiodraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "root": "b_data-studio.ditamap",
+      "srcId": "datastudioreleasesrc",
+      "docId": "datastudiorelease",
       "indexRedirect": true
     },
     {
@@ -48,46 +56,6 @@
       "srcId": "experiencemgrdraftsrc",
       "docId": "experiencemgrdraft",
       "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
-      "root": "appevents-releasenotes-cc.ditamap",
-      "indexRedirect": true,
-      "srcId": "restapisrc",
-      "docId": "appeventsccrndraft"
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
-      "root": "ApplicationEventsForDevelopers.ditamap",
-      "indexRedirect": true,
-      "srcId": "restapisrc",
-      "docId": "ccappeventsdevdraft"
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
-      "root": "ApplicationEventsForDevelopers.ditamap",
-      "indexRedirect": true,
-      "srcId": "restapisrc",
-      "docId": "pcappeventsdevdraft"
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
-      "root": "IntegrationGatewayForDevelopers.ditamap",
-      "indexRedirect": true,
-      "srcId": "restapisrc",
-      "docId": "integgatewaydevdraft"
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
-      "root": "IntegrationGatewayReleaseNotes.ditamap",
-      "indexRedirect": true,
-      "srcId": "restapisrc",
-      "docId": "integgatewayrndraft"
     },
     {
       "buildType": "dita",
@@ -112,12 +80,6 @@
       "srcId": "submissionintakesrc",
       "docId": "submissionintakeconfigdraft",
       "indexRedirect": true
-    },
-    {
-      "buildType": "yarn",
-      "docId": "webhooksapinext",
-      "srcId": "webhooksapinextsrc",
-      "nodeImageVersion": "14.14.0"
     }
   ]
 }

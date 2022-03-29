@@ -7,16 +7,22 @@ import { setMetadata } from './modules/metadata.js';
 import { addVersionSelector } from './modules/versionSelector.js';
 import { addAvatar } from './modules/avatar.js';
 import { addSearchBox } from './modules/searchBox.js';
-import { addCopyButton, normalizeCode } from './modules/code.js';
+import { normalizeCode, highlightCode } from './modules/code.js';
 import { setUpSidebar } from './modules/sidebar.js';
-import './prism.js';
+import { showTopicRecommendations } from './modules/recommendations.js';
+import { addSkipNav } from './modules/skipNav.js';
+import { installAndInitializePendo } from './modules/pendo.js';
+import { addInternalBadge } from './modules/internal.js';
+import { addLightbox } from './modules/lightbox.js';
 import '../stylesheets/html5template.css';
-import '../stylesheets/prism.css';
 
 docReady(async function() {
-  setUpSidebar();
   normalizeCode();
+  addSkipNav();
+  showTopicRecommendations();
+  setUpSidebar();
   await setMetadata();
+  addInternalBadge();
   addLogo();
   addSearchBox();
   await addVersionSelector();
@@ -24,5 +30,7 @@ docReady(async function() {
   await addPageNavigators();
   addFooterContents();
   addFeedbackElements();
-  addCopyButton();
+  addLightbox();
+  highlightCode();
+  installAndInitializePendo();
 });

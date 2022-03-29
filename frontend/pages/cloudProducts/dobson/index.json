@@ -8,6 +8,10 @@
     "selectedItem": "Dobson",
     "items": [
       {
+        "label": "Elysian",
+        "page": "../elysian"
+      },
+      {
         "label": "Cortina",
         "page": "../cortina"
       },
@@ -91,22 +95,12 @@
           "env": ["staging", "prod"]
         },
         {
-          "label": "DataHub",
-          "page": "dhGwCloud/latest",
-          "env": ["int"]
-        },
-        {
-          "label": "InfoCenter",
-          "page": "icGwCloud/latest",
-          "env": ["int"]
-        },
-        {
           "label": "Guidewire Live",
           "class": "group",
           "items": [
             {
-              "label": "Assess",
-              "page": "assess"
+              "label": "HazardHub Casualty",
+              "page": "../hazardhub"
             },
             {
               "label": "Canvas",
@@ -119,6 +113,10 @@
             {
               "label": "Explore",
               "page": "../explore/latest"
+            },
+            {
+              "label": "Explore (Spanish)",
+              "page": "../explore/es-419"
             },
             {
               "label": "Predict",
@@ -231,7 +229,7 @@
               "link": "/cyence/cyber/HelpCenterAccum"
             },
             {
-              "label": "Model 5 Documentation",
+              "label": "Model 5 Technical Reference",
               "link": "/cyence/cyber/Model5/CyenceCyberRiskModel5.pdf"
             },
             {
@@ -258,8 +256,7 @@
       "items": [
         {
           "label": "Cloud Platform Release Notes",
-          "id": "gwcpreleasenotes",
-          "env": ["int"]
+          "id": "gwcpreleasenotes"
         },
         {
           "label": "Cloud Console Release Notes",
@@ -307,5 +304,8 @@
         }
       ]
     }
-  ]
+  ],
+  "search_filters": {
+    "platform": ["Cloud"]
+  }
 }

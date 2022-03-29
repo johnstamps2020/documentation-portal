@@ -15,6 +15,8 @@ let docPlatform = document.querySelector("meta[name = 'gw-platform']")?.content;
 let docVersion = document.querySelector("meta[name = 'gw-version']")?.content;
 let docCategory = document.querySelector("meta[name = 'DC.coverage']")?.content;
 let docTitle = undefined;
+let docSubject = undefined;
+let docInternal = undefined;
 const topicId = window.location.pathname;
 
 async function showTopicRecommendations() {
@@ -45,6 +47,25 @@ async function showTopicRecommendations() {
   }
 }
 
+function wrapInQuotes(stringsToWrap) {
+  function addQuotes(stringToModify) {
+    return stringToModify.includes(',')
+      ? '"' + stringToModify + '"'
+      : stringToModify;
+  }
+
+  if (Array.isArray(stringsToWrap)) {
+    return stringsToWrap.map(s => addQuotes(s));
+  } else if (typeof stringsToWrap === 'string') {
+    return addQuotes(stringsToWrap);
+  } else {
+    return stringsToWrap;
+  }
+}
+
+// Filter values are passed around as strings that use commas to separate values. To avoid issues with splitting,
+// values that contain commas must be wrapped in quotes.
+// Filter values are parsed by the getFiltersFromUrl function in searchController.js.
 async function fetchMetadata() {
   const docId = document
     .querySelector('[name="gw-doc-id"]')
@@ -53,23 +74,31 @@ async function fetchMetadata() {
     const response = await fetch(`/safeConfig/docMetadata/${docId}`);
     if (response.ok) {
       try {
+        const valueSeparator = ',';
         const docInfo = await response.json();
         if (!docInfo.error) {
-          docProduct = docInfo.product?.join(',') || docProduct;
-          docPlatform = docInfo.platform?.join(',') || docPlatform;
-          docVersion = docInfo.version?.join(',') || docVersion;
-          docCategory = docInfo.category?.join(',') || docCategory;
-          docTitle = docInfo.docTitle;
-          return docInfo;
+          docProduct =
+            wrapInQuotes(docInfo.product)?.join(valueSeparator) || docProduct;
+          docPlatform =
+            wrapInQuotes(docInfo.platform)?.join(valueSeparator) || docPlatform;
+          docVersion =
+            wrapInQuotes(docInfo.version)?.join(valueSeparator) || docVersion;
+          docCategory =
+            wrapInQuotes(docInfo.category)?.join(valueSeparator) || docCategory;
+          docTitle = wrapInQuotes(docInfo.docTitle);
+          docSubject = wrapInQuotes(docInfo.subject);
+          docInternal = docInfo.docInternal;
+          return true;
         }
       } catch (err) {
         console.error(err);
+        return null;
       }
     }
   }
 }
 
-let metadata = undefined;
+let metadataIsAvailable = undefined;
 
 async function findBestMatchingTopic(searchQuery, targetDocVersion) {
   try {
@@ -100,46 +129,52 @@ function createContainerForCustomHeaderElements() {
     .appendChild(container);
 }
 
+function addInternalBadge() {
+  try {
+    if (docInternal) {
+      const internalBadge = document.createElement('div');
+      internalBadge.setAttribute('id', 'internalBadge');
+      const internalBadgeText = document.createElement('span');
+      internalBadgeText.innerHTML = 'internal doc';
+      internalBadgeText.setAttribute('class', 'internalBadgeText');
+      const internalBadgeTooltip = document.createElement('span');
+      internalBadgeTooltip.innerHTML =
+        'This document is available only to people with a Guidewire email. Do not share the link with external stakeholders because they will not be able to see the contents.';
+      internalBadgeTooltip.setAttribute('class', 'internalBadgeTooltip');
+      internalBadge.appendChild(internalBadgeText);
+      internalBadge.appendChild(internalBadgeTooltip);
+      document
+        .getElementById('customHeaderElements')
+        .appendChild(internalBadge);
+    }
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+}
+
 async function createVersionSelector() {
   try {
     if (!docProduct) {
       return null;
     }
-
-    const response = await fetch(
-      `/safeConfig/versionSelectors?platform=${docPlatform}&product=${docProduct}&version=${docVersion}${
-        docTitle ? `&title=${docTitle}` : ''
-      }`
-    );
+    let docId = document
+      .querySelector('[name="gw-doc-id"]')
+      ?.getAttribute('content');
+    if (docId == null) {
+      const docIdResponse = await fetch(
+        `/safeConfig/docId?platforms=${docPlatform}&products=${docProduct}&versions=${docVersion}&url=${topicId}${
+          docTitle ? `&title=${docTitle}` : ''
+        }`
+      );
+      const docIdResponseJson = await docIdResponse.json();
+      docId = docIdResponseJson.docId;
+    }
+    const response = await fetch(`/safeConfig/versionSelectors?docId=${docId}`);
     const jsonResponse = await response.json();
     const matchingVersionSelector = jsonResponse.matchingVersionSelector;
-    if (matchingVersionSelector?.otherVersions.length > 0) {
-      const currentlySelectedVersion = {
-        label: matchingVersionSelector.version,
-        currentlySelected: true,
-      };
-      const allVersions = [
-        currentlySelectedVersion,
-        ...matchingVersionSelector.otherVersions,
-      ];
-      const sortedVersions = allVersions
-        .sort(function(a, b) {
-          const verNum = label =>
-            label
-              .split('.')
-              .map(n => +n + 100000)
-              .join('.');
-          const verNumA = verNum(a.label);
-          const verNumB = verNum(b.label);
-          let comparison = 0;
-          if (verNumA > verNumB) {
-            comparison = 1;
-          } else if (verNumA < verNumB) {
-            comparison = -1;
-          }
-          return comparison;
-        })
-        .reverse();
+    if (Object.keys(matchingVersionSelector).length > 0) {
+      const allVersions = matchingVersionSelector.allVersions;
       const select = document.createElement('select');
       select.id = 'versionSelector';
       select.onchange = async function(e) {
@@ -174,13 +209,11 @@ async function createVersionSelector() {
         window.location.assign(linkToOpen);
       };
 
-      for (const val of sortedVersions) {
+      for (const val of allVersions) {
         const option = document.createElement('option');
-        option.text = val.label;
-        const value = val.fallbackPaths ? val.fallbackPaths[0] : val.path;
-        if (value) {
-          option.value = value;
-        }
+        option.text = val.versions[0];
+        option.label = val.label;
+        option.value = `/${val.url}`;
         if (val.currentlySelected) {
           option.setAttribute('selected', 'selected');
         }
@@ -283,68 +316,48 @@ function closeAvatarMenu(event) {
 function createAvatarButton(fullName, username) {
   const button = document.createElement('button');
   button.setAttribute('id', 'avatarButton');
+  button.setAttribute('class', 'headerButtonsButton');
   button.setAttribute('aria-label', 'user information');
+  button.setAttribute('type', 'button');
   button.addEventListener('click', showAvatarMenu);
   window.addEventListener('click', closeAvatarMenu);
   button.innerHTML = `
-    <div class="avatarMenu" id="avatarMenu">
-        <div class="avatarMenuHeader">
-        <div class="avatarMenuIcon">&nbsp;</div>
-        <div class="avatarMenuInfo">
+    <div id="avatarMenu" class="headerButtonsMenu">
+        <div class="headerButtonsMenuHeader">
             <div class="avatarMenuName">${fullName}</div>
             <div class="avatarMenuEmail">${username}</div>
         </div>
-        </div>
-        <div class="avatarMenuDivider"></div>
-        <div class="avatarMenuActions">
-        <a class="avatarMenuLogout" href="/gw-logout">Log out</a>
+        <hr class="headerButtonsMenuDivider"/>
+        <div class="headerButtonsMenuActions">
+            <a class="avatarMenuLogout" href="/gw-logout">Log out</a>
         </div>
     </div>`;
 
-  const avatar = document.createElement('div');
-  avatar.setAttribute('id', 'avatar');
-  avatar.appendChild(button);
-  return avatar;
+  return button;
 }
 
-async function createUserButton(attemptNumber = 1, retryTimeout = 10) {
-  const retryAttempts = 5;
+async function getLoginButtonOrAvatar() {
+  let userButton;
+  const response = await fetch('/userInformation');
+  const { isLoggedIn, name, preferred_username } = await response.json();
 
-  if (window.location.pathname.endsWith('gw-login')) {
-    return;
+  if (isLoggedIn) {
+    userButton = createAvatarButton(name, preferred_username);
+  } else {
+    userButton = document.createElement('a');
+    userButton.setAttribute('id', 'loginButton');
+    userButton.setAttribute('href', '/gw-login');
+    userButton.innerText = 'Log in';
   }
-  // /userInformation is not available for a few milliseconds
-  // after login, so if fetching the response fails, try again
-  // in 10ms.
-  try {
-    const buttonWrapper = document.createElement('div');
-    let userButton;
-    const response = await fetch('/userInformation');
-    const { isLoggedIn, name, preferred_username } = await response.json();
+  return userButton;
+}
 
-    if (isLoggedIn) {
-      buttonWrapper.setAttribute('class', 'loginLogoutButtonWrapper');
-      userButton = createAvatarButton(name, preferred_username);
-    } else {
-      buttonWrapper.setAttribute('id', 'loginContainer');
-      userButton = document.createElement('a');
-      userButton.setAttribute('id', 'loginButton');
-      userButton.setAttribute('href', '/gw-login');
-      userButton.innerText = 'Log in';
-    }
-    buttonWrapper.appendChild(userButton);
-    document.getElementById('customHeaderElements').appendChild(buttonWrapper);
+async function addAvatar() {
+  try {
+    const userButton = await getLoginButtonOrAvatar();
+    document.getElementById('customHeaderElements').appendChild(userButton);
   } catch (error) {
-    if (attemptNumber >= retryAttempts) {
-      console.log('Could not access user information endpoint. ' + error);
-      return;
-    }
-    attemptNumber++;
-    retryTimeout += 100;
-    setTimeout(
-      async () => createUserButton(attemptNumber, retryTimeout),
-      retryTimeout
-    );
+    console.log(error);
   }
 }
 
@@ -377,8 +390,9 @@ function hideByCssClass(cssClass) {
 async function addCustomElements() {
   const customHeaderElements = document.getElementById('customHeaderElements');
   if (customHeaderElements != null) {
+    addInternalBadge();
     await createVersionSelector();
-    await createUserButton();
+    await addAvatar();
     customHeaderElements.classList.remove('invisible');
   }
 }
@@ -607,25 +621,24 @@ async function addFeedbackElements() {
   body.appendChild(renderThanksMessage());
 }
 
+function createInput(name, value, isHidden = true) {
+  const input = document.createElement('input');
+  if (isHidden) {
+    input.setAttribute('type', 'hidden');
+  }
+  input.setAttribute('name', name);
+  input.setAttribute('value', value);
+
+  return input;
+}
+
 async function configureSearch() {
-  if (metadata) {
+  if (metadataIsAvailable) {
     const searchForms = document.querySelectorAll(
       '#searchForm, #searchFormNav'
     );
     if (searchForms.length > 0) {
       for (const searchForm of searchForms) {
-        let hiddenInputsToAdd = [];
-        for (const metadataKey of Object.keys(metadata)) {
-          const input = document.createElement('input');
-          input.setAttribute('type', 'hidden');
-          input.setAttribute('name', metadataKey);
-          if (typeof metadata[metadataKey] === 'string') {
-            input.setAttribute('value', metadata[metadataKey]);
-          } else {
-            input.setAttribute('value', metadata[metadataKey].join(','));
-          }
-          hiddenInputsToAdd.push(input);
-        }
         const existingHiddenInputs = searchForm.querySelectorAll(
           'div > [type="hidden"]'
         );
@@ -635,9 +648,13 @@ async function configureSearch() {
           }
         }
 
-        for (const newInput of hiddenInputsToAdd) {
-          searchForm.firstChild.appendChild(newInput);
-        }
+        // Filters and their names must match filters in the displayOrder variable in searchController.js
+        searchForm.firstChild.appendChild(createInput('doc_title', docTitle));
+        searchForm.firstChild.appendChild(createInput('platform', docPlatform));
+        searchForm.firstChild.appendChild(createInput('product', docProduct));
+        searchForm.firstChild.appendChild(createInput('version', docVersion));
+        docSubject &&
+          searchForm.firstChild.appendChild(createInput('subject', docSubject));
       }
     }
   } else {
@@ -686,8 +703,87 @@ function setFooter() {
   resizeObserver.observe(whTopicBody);
 }
 
+function scramble(phrase) {
+  var hash = 0,
+    i,
+    chr;
+  if (phrase.length === 0) return hash;
+  for (i = 0; i < phrase.length; i++) {
+    chr = phrase.charCodeAt(i);
+    hash = (hash << 5) - hash + chr;
+    hash |= 0;
+  }
+  return hash;
+}
+
+function getScrambledEmail(email) {
+  const parts = email.split('@');
+  const scrambledLogin = scramble(parts[0]);
+  return `${scrambledLogin}@${parts[1]}`;
+}
+
+async function installAndInitializePendo() {
+  (function(apiKey) {
+    (function(p, e, n, d, o) {
+      var v, w, x, y, z;
+      o = p[d] = p[d] || {};
+      o._q = o._q || [];
+      v = ['initialize', 'identify', 'updateOptions', 'pageLoad', 'track'];
+      for (w = 0, x = v.length; w < x; ++w)
+        (function(m) {
+          o[m] =
+            o[m] ||
+            function() {
+              o._q[m === v[0] ? 'unshift' : 'push'](
+                [m].concat([].slice.call(arguments, 0))
+              );
+            };
+        })(v[w]);
+      y = e.createElement(n);
+      y.async = !0;
+      y.src = 'https://cdn.pendo.io/agent/static/' + apiKey + '/pendo.js';
+      z = e.getElementsByTagName(n)[0];
+      z.parentNode.insertBefore(y, z);
+    })(window, document, 'script', 'pendo');
+  })('f254cb71-32f1-4247-546f-fe9159040603');
+
+  const response = await fetch('/userInformation');
+  if (response.ok) {
+    const userInformation = await response.json();
+    const isEmployee = userInformation.hasGuidewireEmail;
+    const domain =
+      userInformation.preferred_username.split('@')[1] || 'unknown';
+    const email = isEmployee
+      ? userInformation.preferred_username
+      : getScrambledEmail(userInformation.preferred_username);
+    const name = userInformation.name;
+
+    pendo.initialize({
+      visitor: {
+        id: email,
+        email: email,
+        full_name: isEmployee ? name : 'Anonymous User',
+        role: isEmployee ? 'employee' : 'customer/partner',
+      },
+
+      account: {
+        id: domain, // Required if using Pendo Feedback
+        // name:         // Optional
+        // is_paying:    // Recommended if using Pendo Feedback
+        // monthly_value:// Recommended if using Pendo Feedback
+        // planLevel:    // Optional
+        // planPrice:    // Optional
+        // creationDate: // Optional
+
+        // You can add any additional account level key-values here,
+        // as long as it's not one of the above reserved names.
+      },
+    });
+  }
+}
+
 docReady(async function() {
-  metadata = await fetchMetadata();
+  metadataIsAvailable = await fetchMetadata();
   await createContainerForCustomHeaderElements();
   addCustomElements();
   addTopLinkToBreadcrumbs();
@@ -700,4 +796,5 @@ docReady(async function() {
   addFeedbackElements();
   setFooter();
   showTopicRecommendations();
+  installAndInitializePendo();
 });

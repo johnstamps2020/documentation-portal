@@ -15,7 +15,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "environments": ["staging"],
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "um1447rn",
@@ -31,7 +32,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "environments": ["staging"],
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "um1447agentuser",
@@ -47,7 +49,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "environments": ["staging"],
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "um1447outlook",
@@ -63,7 +66,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "environments": ["staging"],
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "um1447studio",
@@ -79,7 +83,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "environments": ["staging"],
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "um1447user",
@@ -95,7 +100,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "environments": ["staging"],
-      "public": false
+      "public": false,
+      "internal": false
     }
   ]
 }

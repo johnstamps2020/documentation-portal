@@ -208,6 +208,7 @@
           "Feature Preview",
           "Guidewire Identity Federation Hub",
           "Guidewire InsuranceSuite Package for Germany",
+          "Global Solutions - Australia",
           "InsuranceNow",
           "InsuranceNow Consumer Service Portal",
           "InsuranceNow 2020.1x - Internal Audience",
@@ -231,7 +232,7 @@
           "Workset Manager",
           "Canvas",
           "Cyence",
-          "Assess",
+          "HazardHub Casualty",
           "Underwriting Management",
           "Portfolio Assembly"
         ]
@@ -240,7 +241,7 @@
     "doc": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "url", "metadata", "environments"],
+      "required": ["id", "url", "metadata", "environments", "internal"],
       "properties": {
         "id": {
           "$ref": "#/definitions/id"
@@ -262,6 +263,10 @@
         },
         "public": {
           "description": "If set to true, users do not have to authenticate to view the document. Defaults to false if not set.",
+          "type": "boolean"
+        },
+        "internal": {
+          "description": "If set to true, the document is available to Guidewire employees only.",
           "type": "boolean"
         },
         "metadata": {

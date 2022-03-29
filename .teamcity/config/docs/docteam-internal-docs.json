@@ -12,7 +12,8 @@
       },
       "environments": ["int"],
       "indexForSearch": false,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "doctoolsadmin",
@@ -25,7 +26,8 @@
       },
       "environments": ["int"],
       "indexForSearch": false,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "writingwithgit",
@@ -39,7 +41,22 @@
       "environments": ["int"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "elemrend",
+      "title": "Element Rendering",
+      "url": "elementrendering",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["DocTools"],
+        "version": ["latest"]
+      },
+      "environments": ["int"],
+      "indexForSearch": false,
+      "public": false,
+      "internal": false
     }
   ]
 }

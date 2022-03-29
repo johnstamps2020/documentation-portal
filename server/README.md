@@ -33,6 +33,12 @@ This is a simple Node.js app which enforces Okta authentication.
    ENABLE_AUTH=yes
    LOCALHOST_SESSION_SETTINGS=yes
    ```
+4. You can also "pretend" to be an external user. This
+   allows you to view the site locally as somebody without
+   a Guidewire email. Set the following optional variable:
+   ```
+   PRETEND_TO_BE_EXTERNAL=yes
+   ```
 
 ## Keti
 

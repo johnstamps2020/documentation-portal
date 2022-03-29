@@ -22,7 +22,7 @@
         },
         {
           "label": "Consumer Service Portal Release Notes",
-          "id": "in20212xcsprndraft"
+          "id": "incsp4rn"
         }
       ]
     },
@@ -75,8 +75,8 @@
       "class": "subject configuration",
       "items": [
         {
-          "label": "Billing Configuration Reference (Internal)",
-          "id": "inbillrefdraft"
+          "label": "Billing Configuration Reference",
+          "id": "in20212xbillrefdraft"
         },
         {
           "label": "Core Configuration",
@@ -134,11 +134,7 @@
         },
         {
           "label": "Developer Setup",
-          "id": "indevguidejava11draftext"
-        },
-        {
-          "label": "Payment Service Migration (Internal)",
-          "id": "inpaymentservicemigrationdraft"
+          "id": "indevguidejava11ext"
         },
         {
           "label": "Upgrade Tools (Internal)",

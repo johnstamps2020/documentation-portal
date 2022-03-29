@@ -1,42 +1,47 @@
 body {
   --code-font-family: 'Source Code Pro', monospace;
-  --code-text-color: black;
-  --code-background-color: #f5f2f0;
-}
-
-.codeBlockWrapper {
-  position: relative;
 }
 
 pre.pre {
-  padding: 38px 16px !important;
-  font-size: 14px !important;
+  position: relative;
+  margin-bottom: 1em;
+  margin-top: 0;
+  padding: 1rem;
+  font-size: 0.875rem !important;
   font-family: var(--code-font-family) !important;
   text-shadow: none !important;
+  border: 1px solid gray;
+  border-radius: 6px;
+  overflow-x: auto;
+  background-color: rgb(41, 45, 62);
 }
 
-.copyToClipboardButton {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background-color: transparent;
-  border: 1px solid var(--code-text-color);
-  color: var(--code-text-color);
-  padding: 4px 6px;
-  border-radius: 4px;
+.pre.pre .b {
+  --emphasis-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid white;
+}
+
+div.code-toolbar > .toolbar > .toolbar-item > button.copy-to-clipboard-button {
+  display: block;
+  margin-left: auto;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
+  padding: 6px;
+  border-radius: 6px;
   cursor: pointer;
   font-family: var(--code-font-family);
 }
 
-.copyToClipboardButton:hover,
-.copyToClipboardButton:focus {
-  background-color: var(--code-text-color);
-  color: var(--code-background-color);
+.copy-to-clipboard-button:hover,
+.copy-to-clipboard-button:focus {
+  transform: scale(1.2);
 }
 
-.copyToClipboardButton:active,
-.copyToClipboardButton.active {
+.copy-to-clipboard-button:active,
+.copy-to-clipboard-button.active {
   transform: scale(1.1);
+  filter: invert(1);
 }
 
 .varname,
@@ -47,27 +52,25 @@ pre.pre {
 .msgph,
 .codeph,
 .cmdname,
-.codeblock,
-.pre .tt,
+.tt,
 .filepath {
+  background-color: #f6f7f8;
   font-family: var(--code-font-family);
-  font-size: 14px;
-  background-color: var(--code-background-color);
+  font-size: 1rem;
+  padding: 2px 4px;
   border: 0.1rem solid rgba(0, 0, 0, 0.1);
   border-radius: 6px;
-  padding: 2px 6px;
 }
 
-.codeblock .codeph,
-.codeblock .userinput,
-.codeblock .filepath,
-.codeblock .apiname,
-.codeblock .cmdname,
-.codeblock .varname,
-.codeblock .parmname,
-.codeblock .option {
+pre.pre .varname,
+pre.pre .apiname,
+pre.pre .userinput,
+pre.pre .option,
+pre.pre .parmname,
+pre.pre .msgph,
+pre.pre .codeph,
+pre.pre .cmdname,
+pre.pre .tt,
+pre.pre .filepath {
   background-color: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 0;
 }

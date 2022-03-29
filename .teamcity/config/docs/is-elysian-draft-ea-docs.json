@@ -1,0 +1,719 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "isbcelysianeareleasenotes",
+      "title": "Release Notes",
+      "url": "cloud/bc/elysian-ea/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isbcelysianeanewandchanged",
+      "title": "New and Changed",
+      "url": "cloud/bc/elysian-ea/newandchanged",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isbcelysianeaupgrade",
+      "title": "Upgrade",
+      "url": "cloud/bc/elysian-ea/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isbcelysianeaapp",
+      "title": "Application Guide",
+      "url": "cloud/bc/elysian-ea/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isbcelysianeaadmin",
+      "title": "Administration",
+      "url": "cloud/bc/elysian-ea/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isbcelysianeaconfig",
+      "title": "Configuration",
+      "url": "cloud/bc/elysian-ea/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isbcelysianeadataarchiving",
+      "title": "Data Archiving",
+      "url": "cloud/bc/elysian-ea/dataarchiving",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isbcelysianeaglobal",
+      "title": "Globalization",
+      "url": "cloud/bc/elysian-ea/global",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isbcelysianearules",
+      "title": "Gosu Rules",
+      "url": "cloud/bc/elysian-ea/rules",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isbcelysianeainteg",
+      "title": "Plugins, Prebuilt Integrations, and SOAP APIs",
+      "url": "cloud/bc/elysian-ea/integration",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "iselysianeagosu",
+      "title": "Gosu Reference",
+      "url": "cloud/is/elysian-ea/gosu",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isbcelysianeadevsetup",
+      "title": "Developer Setup",
+      "url": "cloud/bc/elysian-ea/devsetup",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isccelysianeareleasenotes",
+      "title": "Release Notes",
+      "url": "cloud/cc/elysian-ea/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isccelysianeanewandchanged",
+      "title": "New and Changed",
+      "url": "cloud/cc/elysian-ea/newandchanged",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isccelysianeaupgrade",
+      "title": "Upgrade",
+      "url": "cloud/cc/elysian-ea/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isccelysianeaapp",
+      "title": "Application Guide",
+      "url": "cloud/cc/elysian-ea/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isccelysianeaadmin",
+      "title": "Administration",
+      "url": "cloud/cc/elysian-ea/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isccelysianeaconfig",
+      "title": "Configuration",
+      "url": "cloud/cc/elysian-ea/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isccelysianeadataarchiving",
+      "title": "Data Archiving",
+      "url": "cloud/cc/elysian-ea/dataarchiving",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isccelysianeaglobal",
+      "title": "Globalization",
+      "url": "cloud/cc/elysian-ea/global",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isccelysianearules",
+      "title": "Gosu Rules",
+      "url": "cloud/cc/elysian-ea/rules",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isccelysianeainteg",
+      "title": "Plugins, Prebuilt Integrations, and SOAP APIs",
+      "url": "cloud/cc/elysian-ea/integration",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isccelysianeacloudapi",
+      "title": "Cloud API Developer Guide",
+      "url": "cloud/cc/elysian-ea/cloudapi",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isccelysianearestapifw",
+      "title": "REST API Framework",
+      "url": "cloud/cc/elysian-ea/restapiframework",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "isccelysianeadevsetup",
+      "title": "Developer Setup",
+      "url": "cloud/cc/elysian-ea/devsetup",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ispcelysianeareleasenotes",
+      "title": "Release Notes",
+      "url": "cloud/pc/elysian-ea/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ispcelysianeanewandchanged",
+      "title": "New and Changed",
+      "url": "cloud/pc/elysian-ea/newandchanged",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ispcelysianeaupgrade",
+      "title": "Upgrade",
+      "url": "cloud/pc/elysian-ea/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ispcelysianeaapp",
+      "title": "Application Guide",
+      "url": "cloud/pc/elysian-ea/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ispcelysianeaadmin",
+      "title": "Administration",
+      "url": "cloud/pc/elysian-ea/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ispcelysianeaapd",
+      "title": "Advanced Product Designer",
+      "url": "cloud/pc/elysian-ea/apd",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ispcelysianeaconfig",
+      "title": "Configuration",
+      "url": "cloud/pc/elysian-ea/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ispcelysianeadataarchiving",
+      "title": "Data Archiving",
+      "url": "cloud/pc/elysian-ea/dataarchiving",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ispcelysianeaglobal",
+      "title": "Globalization",
+      "url": "cloud/pc/elysian-ea/global",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ispcelysianearules",
+      "title": "Gosu Rules",
+      "url": "cloud/pc/elysian-ea/rules",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ispcelysianeapd",
+      "title": "Product Designer",
+      "url": "cloud/pc/elysian-ea/pd",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ispcelysianeapm",
+      "title": "Product Model",
+      "url": "cloud/pc/elysian-ea/productmodel",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ispcelysianeainteg",
+      "title": "Plugins, Prebuilt Integrations, and SOAP APIs",
+      "url": "cloud/pc/elysian-ea/integration",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ispcelysianeacloudapi",
+      "title": "Cloud API Developer Guide",
+      "url": "cloud/pc/elysian-ea/cloudapi",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ispcelysianearestapifw",
+      "title": "REST API Framework",
+      "url": "cloud/pc/elysian-ea/restapiframework",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "ispcelysianeadevsetup",
+      "title": "Developer Setup",
+      "url": "cloud/pc/elysian-ea/devsetup",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "iselysianeacontact",
+      "title": "Contact Management",
+      "url": "cloud/is/elysian-ea/contact",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["earlyaccess-Elysian"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    }
+  ]
+}

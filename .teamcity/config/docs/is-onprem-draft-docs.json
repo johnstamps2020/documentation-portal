@@ -2,7 +2,7 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "selfmanagedbcxufesxuwl",
+      "id": "bc10xdraft",
       "title": "BillingCenter",
       "url": "self-managed/bc/10x",
       "metadata": {
@@ -13,10 +13,11 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
-      "id": "selfmanagedccxbvqtoakg",
+      "id": "cc10xdraft",
       "title": "ClaimCenter",
       "url": "self-managed/cc/10x",
       "metadata": {
@@ -27,10 +28,11 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
-      "id": "selfmanagedpcxrwjcdamu",
+      "id": "pc10xdraft",
       "title": "PolicyCenter",
       "url": "self-managed/pc/10x",
       "metadata": {
@@ -41,13 +43,14 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedbcupgradeguide10x",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/10x",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "product": ["BillingCenter"],
         "platform": ["Self-managed"],
@@ -55,13 +58,14 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradeguide10x",
       "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/10x",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "product": ["ClaimCenter"],
         "platform": ["Self-managed"],
@@ -69,13 +73,14 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcupgradeguide10x",
       "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/10x",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "product": ["PolicyCenter"],
         "platform": ["Self-managed"],
@@ -83,13 +88,14 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedbcupgradetools1x",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/1x",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "product": ["BillingCenter"],
         "platform": ["Self-managed"],
@@ -97,13 +103,14 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccupgradetools1x",
       "title": "ClaimCenter Upgrade Guide",
       "url": "self-managed/cc/upgrade/1x",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "product": ["ClaimCenter"],
         "platform": ["Self-managed"],
@@ -111,13 +118,14 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcupgradetools1x",
       "title": "PolicyCenter Upgrade Guide",
       "url": "self-managed/pc/upgrade/1x",
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "metadata": {
         "product": ["PolicyCenter"],
         "platform": ["Self-managed"],
@@ -125,7 +133,8 @@
       },
       "environments": ["int"],
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedbcxcoxibeoa",
@@ -139,7 +148,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedccxgfurvaqu",
@@ -153,7 +163,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     },
     {
       "id": "selfmanagedpcxxbkttzbb",
@@ -167,7 +178,8 @@
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "internal": false
     }
   ]
 }

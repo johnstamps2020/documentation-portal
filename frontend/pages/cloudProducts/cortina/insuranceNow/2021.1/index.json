@@ -29,36 +29,24 @@
           "id": "in20211xstudiorndraft"
         },
         {
-          "label": "Consumer Service Portal 3.26 Release Notes",
-          "id": "incsp326rn"
+          "label": "Consumer Service Portal 2021.1 Release Notes",
+          "id": "incsp20211rn"
         },
         {
           "label": "Consumer Service Portal 3.26 Release Notes",
-          "id": "incsp326rndraft"
+          "id": "incsp326rn"
         },
         {
           "label": "Consumer Service Portal 3.25 Release Notes",
           "id": "incsp325rn"
         },
         {
-          "label": "Consumer Service Portal 3.25 Release Notes",
-          "id": "incsp325rndraft"
-        },
-        {
           "label": "Consumer Service Portal 3.24 Release Notes",
           "id": "incsp324rn"
         },
         {
-          "label": "Consumer Service Portal 3.24 Release Notes",
-          "id": "incsp324rndraft"
-        },
-        {
           "label": "Consumer Service Portal 3.23 Release Notes",
           "id": "incsp323rn"
-        },
-        {
-          "label": "Consumer Service Portal 3.23 Release Notes",
-          "id": "incsp323rndraft"
         }
       ]
     },
@@ -212,11 +200,7 @@
         },
         {
           "label": "Developers Setup",
-          "id": "indevguidejava11draftext"
-        },
-        {
-          "label": "Payment Service Migration (Internal)",
-          "id": "inpaymentservicemigrationdraft"
+          "id": "indevguidejava11ext"
         },
         {
           "label": "Upgrade Tools (Internal)",

@@ -6,7 +6,7 @@ const {
 
 router.get('/', async function(req, res) {
   const topicId = req.query.topicId;
-  const result = await getTopicRecommendations(topicId, req);
+  const result = await getTopicRecommendations(topicId, req, res);
   res.status(result.status).send(result.body);
 });
 

@@ -1,0 +1,298 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ce-am-MgSvcs.ditaval",
+      "root": "CustomerEngage_AccountManagement_AppGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205ceamapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ce-am-MgSvcs.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205ceaminstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ce-am-MgSvcs.ditaval",
+      "root": "DevelopersGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205ceamdev",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ce-am-MgSvcs.ditaval",
+      "root": "DigitalServicesRefGuides.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205ceamrefguides",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ce-am-MgSvcs.ditaval",
+      "root": "cloud_digital-release-notes.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205ceamrelnotes",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ce-claims-MgSvcs.ditaval",
+      "root": "CustomerEngage_Claims_AppGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205ceclaimsapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ce-claims-MgSvcs.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205ceclaimsinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ce-claims-MgSvcs.ditaval",
+      "root": "DevelopersGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205ceclaimsdev",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ce-claims-MgSvcs.ditaval",
+      "root": "DigitalServicesRefGuides.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205ceclaimsrefguides",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ce-claims-MgSvcs.ditaval",
+      "root": "cloud_digital-release-notes.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205ceclaimsrelnotes",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ce-qb-MgSvcs.ditaval",
+      "root": "CustomerEngage_QuoteAndBuy_AppGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205ceqbapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ce-qb-MgSvcs.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205ceqbinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ce-qb-MgSvcs.ditaval",
+      "root": "DevelopersGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205ceqbdev",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ce-qb-MgSvcs.ditaval",
+      "root": "DigitalServicesRefGuides.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205ceqbrefguides",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ce-qb-MgSvcs.ditaval",
+      "root": "cloud_digital-release-notes.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205ceqbrelnotes",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-pe-MgSvcs.ditaval",
+      "root": "ProducerEngage_AppGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205peapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-pe-MgSvcs.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205peinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-pe-MgSvcs.ditaval",
+      "root": "DevelopersGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205pedev",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-pe-MgSvcs.ditaval",
+      "root": "DigitalServicesRefGuides.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205perefguides",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-pe-MgSvcs.ditaval",
+      "root": "cloud_digital-release-notes.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205perelnotes",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-pe-claims-MgSvcs.ditaval",
+      "root": "ProducerEngage_Claims_AppGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205peclaimsapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-pe-claims-MgSvcs.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205peclaimsinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-pe-claims-MgSvcs.ditaval",
+      "root": "DevelopersGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205peclaimsdev",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-pe-claims-MgSvcs.ditaval",
+      "root": "DigitalServicesRefGuides.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205peclaimsrefguides",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-pe-claims-MgSvcs.ditaval",
+      "root": "cloud_digital-release-notes.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205peclaimsrelnotes",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-sre-MgSvcs.ditaval",
+      "root": "ServiceRepEngage_AppGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205sreapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-sre-MgSvcs.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205sreinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-sre-MgSvcs.ditaval",
+      "root": "DevelopersGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205sredev",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-sre-MgSvcs.ditaval",
+      "root": "DigitalServicesRefGuides.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205srerefguides",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-sre-MgSvcs.ditaval",
+      "root": "cloud_digital-release-notes.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205srerelnotes",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ve-MgSvcs.ditaval",
+      "root": "VendorEngage_AppGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205veapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ve-MgSvcs.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205veinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ve-MgSvcs.ditaval",
+      "root": "DevelopersGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205vedev",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ve-MgSvcs.ditaval",
+      "root": "DigitalServicesRefGuides.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205verefguides",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-ve-MgSvcs.ditaval",
+      "root": "cloud_digital-release-notes.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205verelnotes",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/Digital-apd-MgSvcs.ditaval",
+      "root": "DigitalCodeGenerationGuide.ditamap",
+      "srcId": "dx202205src",
+      "docId": "dx202205dcg",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "yarn",
+      "srcId": "dxjsdocs202205src",
+      "docId": "dxjsdocs202205"
+    }
+  ]
+}

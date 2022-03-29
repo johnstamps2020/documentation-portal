@@ -66,7 +66,7 @@
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools400"
+          "id": "isconfigupgradetools420"
         }
       ]
     },
@@ -155,7 +155,7 @@
           "id": "is202111gosu"
         },
         {
-          "label": "ISBTF and GUnit Testing",
+          "label": "GUnit Testing",
           "id": "isbc202111testing"
         },
         {

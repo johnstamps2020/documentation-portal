@@ -1,0 +1,126 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2022"><meta name="generator" content="DITA-OT"><link rel="stylesheet" type="text/css" href="../commonltr.css"><title>Use upgrade inspections</title>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PLXG9H5');</script>
+    <!-- End Google Tag Manager -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/scripts/html5.css">
+    <meta name="gw-doc-id" content="isconfigupgradetoolsdraft"><meta name="gw-base-url" content="isconfigupgradetools/draft">
+</head><body id="xd_bb38eb49f78d6f40--5746b46d-16ac884f3be--7c79"><header role="banner"><div>
+  <div class="headerBar">
+    <div id="headerLeft"></div>
+    <div id="headerCenter"></div>
+    <div id="headerRight"></div>
+  </div>
+  <div class="navbar">
+    <div id="navbarLeft"></div>
+    <div id="navbarRight"></div>
+  </div>
+</div></header><nav role="toc"><ul><li><span>InsuranceSuite Configuration Upgrade Tools</span><ul><li><a href="../topics/c_release-notes.html">Release notes</a></li><li><a href="../topics/c_overview-upgrade-tools.html">Overview of the InsuranceSuite Configuration Upgrade Tools</a></li><li><a href="../topics/c_how-upgrade-tools-work.html">How the InsuranceSuite Configuration Upgrade Tools work</a></li><li><a href="../topics/c_handling-changes-during-upgrade.html">Handling changes to the configuration during an upgrade</a></li><li><a href="../topics/t_download-install-upgrade-tools.html">Download and install the InsuranceSuite Configuration Upgrade Tools</a></li><li><a href="../topics/c_extend-upgrade-tools.html">Extending the InsuranceSuite Configuration Upgrade Tools</a><ul><li><a href="../topics/t_add-override-upgrade-step.html">Add or override an upgrade step</a></li><li><a href="../topics/t_test-upgrade-step.html">Test an upgrade step</a></li><li><a href="../topics/c_listing-available-upgrade-steps.html">Listing available upgrade steps</a></li><li><a href="../topics/r_upgrade-steps-properties.html">Upgrade steps properties</a></li></ul></li><li><a href="../topics/c_preupgrade.html">Preupgrade tool</a><ul><li><a href="../topics/t_run-preupgrade-steps.html">Run preupgrade steps</a></li><li><a href="../topics/r_preupgrade-commands.html">Preupgrade command line options</a></li><li><a href="../topics/r_preupgrade-steps.html">Preupgrade steps reference</a></li></ul></li><li><a href="../topics/c_upgrade.html">Upgrade tool</a><ul><li><a href="../topics/t_run-upgrade-steps.html">Run upgrade steps</a></li><li><a href="../topics/r_upgrade-commands.html">Upgrade command line options</a></li><li><a href="../topics/c_upgrade-tool-modes.html">Upgrade tool modes</a></li><li><a href="../topics/t_partial-upgrade.html">Upgrade part of the configuration</a></li><li><a href="../topics/c_upgrade-steps.html">Upgrade steps reference</a><ul><li><a href="../topics/c_8.0.0-upgrade_steps.html#c_8.0.0-upgrade_steps">8.0.0 upgrade steps</a><ul><li><a href="../topics/c_8.0.0-upgrade_steps.html#r_replace-covterm-in-lookuptables">Replace covTerm in lookuptables</a></li><li><a href="../topics/c_8.0.0-upgrade_steps.html#r_replace-com-guidewire-commons-entity-bean">Replace com.guidewire.commons.entity.Bean</a></li><li><a href="../topics/c_8.0.0-upgrade_steps.html#r_replace-entityvalidationexception">Replace EntityValidationException</a></li><li><a href="../topics/c_8.0.0-upgrade_steps.html#r_replace-loggercategory">Replace LoggerCategory</a></li><li><a href="../topics/c_8.0.0-upgrade_steps.html#r_replace-old-bundle">Replace transaction.Bundle</a></li></ul></li><li><a href="../topics/c_8.0.1-upgrade-steps.html#c_8.0.1-upgrade-steps">8.0.1 upgrade steps</a><ul><li><a href="../topics/c_8.0.1-upgrade-steps.html#r_replace-effdatedversionlist">Replace EffDatedVersionList</a></li></ul></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_e76242a2ce4bf3cb--31dc41d3-16c278eb9e0--7ea1">9.0.0 upgrade steps</a><ul><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_88692ccd77b0a96e--c1a9526-16231d1d963--7dcf">Classes to adjust phone numbers</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_2c26781f923214da--57c95620-166042831dc--7e2f">Copy schemalocations to gwxmlmodule</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983670">Disabled PCF elements</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983672">Fix broken Emerald trigger</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--795b">Fix display key case sensitivity</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983675">Flatten config locale</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983677">Move abstract PanelDef outside of PanelRef</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983690">PCF API</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983692">PCF relative packages</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983694">Reformat rules</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983696">Remove AddressBookUID</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983698">Remove autoupgrade attribute</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983700">Remove DA params</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983702">Remove DisplayNameColumn</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983704">Remove JGroups params from config.xml</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983706">Remove ondelete attribute</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983708">Remove subpackage</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_504e31f8b81492d5-4e0a438e-16207abbcd3--7f97">Remove unreachable rules</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983710">Replace effdatedOnly</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983712">Replace FK owner</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983717">Replace implementsEntity  adapter</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983719">Replace maxActive attribute</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_1e45d90e5ccf36cc--7c5412a1-1667694b428--7fff">Replace old display key calls</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983721">Scriptability</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--6dc2">Script parameters enhancement</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#xd_2c26781f923214da--57c95620-166042831dc--7e31">Update data types</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983723">Upgrade messaging-config.xml</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983725">Upgrade scheduler-config.xml</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#c_ai1983727">Upgrade work-queue.xml</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#r_9_0_0_cc_upgrade_steps">ClaimCenter upgrade steps</a></li><li><a href="../topics/c_9.0.0-upgrade-steps.html#r_9_0_0_pc_upgrade_steps">PolicyCenter upgrade steps</a></li></ul></li><li><a href="../topics/c_9.0.1-upgrade-steps.html#xd_e76242a2ce4bf3cb--31dc41d3-16c278eb9e0--7e9f">9.0.1 upgrade steps</a><ul><li><a href="../topics/c_9.0.1-upgrade-steps.html#c_ai1983024">Remove indexstatistics</a></li></ul></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_e76242a2ce4bf3cb--31dc41d3-16c278eb9e0--7e9e">10.0.0 upgrade steps</a><ul><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f18">Add attribute desc to workflow files</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f16">appendListViewPaging</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#big-decimal-util-replace-upgrade">BigDecimalUtil replace upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#r_change-array-cast-enhancement-10">Change array casts to enhancement</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f19">Change structure of systables</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#equals-replace-upgrade">Equals replace upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--6cee">Fix edgeForeignKey extractable or overlap</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#get-by-code-replace-upgrade">getByCode replace upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_2c26781f923214da--57c95620-166042831dc--7e2d">Inbound integration config</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--6cf0">JurisdictionMappingUtil upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f17">PanelIteratorRemoveLink</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f1d">PCF charts</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f1c">Remove obsolete PCF properties</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f1a">Rename US English properties</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_69cc1a420393be91--7307de47-1668f33e05f--7d97">Replace CurrentDate</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#r_replace-documentcontents">Replace DocumentContents</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#schedule-package-upgrade">Schedule package upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#simple-value-populator-replace-upgrade">SimpleValuePopulator replace upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#string-date-replace-upgrade">String  Date replace upgrade</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#xd_013e2d0a3d599b47-73554158-164aec2cad0--7f1b">Update default PCF properties</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#r_10_0_0_bc_upgrade_steps">BillingCenter upgrade steps</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#r_10_0_0_cc_upgrade_steps">ClaimCenter upgrade steps</a></li><li><a href="../topics/c_10.0.0-upgrade-steps.html#r_10_0_0_pc_upgrade_steps">PolicyCenter upgrade steps</a></li></ul></li><li><a href="../topics/c_10.0.2-upgrade-steps.html#xd_e76242a2ce4bf3cb--31dc41d3-16c278eb9e0--7e9d">10.0.2 upgrade steps</a><ul><li><a href="../topics/c_10.0.2-upgrade-steps.html#remove-gosu-coercion-failures-parameter">Remove Gosu coercion failures parameter</a></li><li><a href="../topics/c_10.0.2-upgrade-steps.html#remove-obsolete-pcf-properties-2">Remove obsolete PCF properties 2</a></li><li><a href="../topics/c_10.0.2-upgrade-steps.html#targeted-post-on-change">Targeted post on change</a></li></ul></li><li><a href="../topics/c_general-upgrade-steps.html#xd_e76242a2ce4bf3cb--31dc41d3-16c278eb9e0--7ea0">General upgrade steps</a><ul><li><a href="../topics/c_general-upgrade-steps.html#xd_2c26781f923214da--57c95620-166042831dc--7e2e">Copy annotation class for deprecated API</a></li><li><a href="../topics/c_general-upgrade-steps.html#xd_2c26781f923214da--57c95620-166042831dc--7e32">Reformat XML</a></li><li><a href="../topics/c_general-upgrade-steps.html#xd_2c26781f923214da--57c95620-166042831dc--7e30">Rename display key</a></li><li><a href="../topics/c_general-upgrade-steps.html#xd_5a76679976f54a56-7e307aff-1654fe9d0e2--65b4">Rename files differ case sensitivity</a></li></ul></li></ul></li></ul></li><li><a href="../topics/c_merge-tracker-tool.html#c_aj1930528">Merge Tracker tool</a><ul><li><a href="../topics/t_launch-merge-tracker.html">Launch Merge Tracker in Guidewire Studio</a></li><li><a href="../topics/r_merge-tracker-commands.html">Merge Tracker command line options</a></li><li><a href="../topics/r_merge-tracker-toolbar.html">Merge Tracker toolbar</a></li><li><a href="../topics/c_use-merge-tracker-filters.html">Merge Tracker filters</a><ul><li><a href="../topics/r_available-merge-tracker-filters.html">Available Merge Tracker filters</a></li><li><a href="../topics/c_manage-custom-filters.html#xd_92acc29907e0d13b-723d5fe2-16d561f2b31--7f15">Manage filters</a><ul><li><a href="../topics/c_manage-custom-filters.html#t_add_a_directory">Add a directory</a></li><li><a href="../topics/c_manage-custom-filters.html#t_create-gw-custom-filter">Edit a Guidewire filter</a></li><li><a href="../topics/c_manage-custom-filters.html#t_create-custom-filter">Add a custom filter</a></li><li><a href="../topics/c_manage-custom-filters.html#t_delete-custom-filter">Delete a custom filter</a></li></ul></li></ul></li><li><a href="../topics/c_merging-resolving-files.html">Merging and resolving files</a></li><li><a href="../topics/c_merge-resolve-different-change-types.html">Merging and resolving different types of changes</a></li><li><a href="../topics/r_merge-progress-tracking.html">Merge progress tracking</a></li><li><a href="../topics/t_export-file-details.html">Export file details</a><ul><li><a href="../topics/r_contents-exported-file.html">Contents of an exported file</a></li></ul></li><li><a href="../topics/c_merge-tracker-configuration.html">Configuring Merge Tracker</a></li></ul></li><li><a href="../topics/c_smart-merge-smart-diff-tools.html#c_aj1926787">Smart Merge and Smart Diff tools</a><ul><li><a href="../topics/c_smart-merge-supported-file-types.html">Smart Merge supported file types</a></li><li><a href="../topics/r_smart-diff-commands.html">Smart Diff command line options</a></li><li><a href="../topics/r_smart-merge-commands.html">Smart Merge command line options</a></li><li><a href="../topics/r_smart-merge-toolbar.html">Smart Merge toolbar</a></li><li><a href="../topics/t_move-element-smart-merge.html">Move an element in an XML file</a></li><li><a href="../topics/c_smart-merge-configuration.html">Configuring Smart Merge and Smart Diff</a></li></ul></li><li><a href="../topics/c_upgrade-inspections-tool.html">Upgrade inspections tool</a><ul><li class="active"><a href="../topics/t_use-upgrade-inspections.html">Use upgrade inspections</a></li><li><a href="../topics/r_upgrade-inspections-commands.html">Command line options for inspections</a></li><li><a href="../topics/r_upgrade-inspections-reference.html">Upgrade inspections reference</a></li></ul></li><li><a href="../topics/c_error-log-files.html">Error log files</a></li></ul></li></ul></nav><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+  <h1 class="title topictitle1" id="ariaid-title1">Use upgrade inspections</h1>
+  <nav role="navigation" class="related-links"><div class="familylinks"><div class="parentlink"><strong>Parent topic:</strong> <a class="link" href="../topics/c_upgrade-inspections-tool.html">Upgrade inspections tool</a></div></div></nav><article class="topic task nested1" aria-labelledby="ariaid-title2" id="run-upgrade-inspections-merge-tracker">
+    <h2 class="title topictitle2" id="ariaid-title2">Run upgrade inspections and apply fixes manually from Merge Tracker</h2>
+    <div class="body taskbody">
+      <section class="section context"><p class="p">Use the <span class="ph uicontrol">Run upgrade inspections</span> option from Merge Tracker in Guidewire
+          Studio to find issues and, optionally, apply fixes.</p>    
+      </section>
+      <section><ol class="ol steps"><li class="li step">
+          <span class="ph cmd">In the Merge Tracker file tree, select the files that you want to inspect.
+            Selecting a directory selects all files within that directory and its
+            subdirectories. If any filters are enabled in the filter pane, only files that
+            match these filters are selected.</span>
+        </li><li class="li step">
+          <span class="ph cmd">Click <span class="ph menucascade"><span class="ph uicontrol"><img class="image" id="run-upgrade-inspections-merge-tracker__image_fcq_d3v_q2b" src="../graphics/toolWindowInspection.png" alt=""> (Upgrade inspections)</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Run upgrade inspections</span></span> in the Merge Tracker toolbar.</span>
+        </li><li class="li step"><span class="ph cmd">Correct errors. You can defer fixing warnings.</span></li></ol></section>
+      <section class="section postreq">
+        <div class="note important note_important"><span class="note__title">Important:</span> Fixing initial errors and warnings may reveal more problems. Run the upgrade inspections repeatedly until no more errors are found.</div></section>
+    </div>
+  </article>
+  <article class="topic task nested1" aria-labelledby="ariaid-title3" id="apply-upgrade-inspection-fixes-merge-tracker">
+    <h2 class="title topictitle2" id="ariaid-title3">Run upgrade inspections with automatic fixes from Merge Tracker</h2>
+    <div class="body taskbody">
+      <section class="section context"><p class="p">Run the <span class="ph uicontrol">Apply automatic upgrade inspection fixes</span> option from Merge Tracker
+          in Guidewire Studio to find issues and apply fixes automatically. This option allows you
+          to automatically apply inspection fixes iteratively until all errors have been found and
+          fixed.</p>      
+      </section>
+      <section><ol class="ol steps"><li class="li step stepexpand">
+          <span class="ph cmd">In the Merge Tracker file tree, select the files that you want to inspect and
+            update. Selecting a directory selects all files within that directory and its
+            subdirectories. If any filters are enabled in the filter pane, only files that
+            match these filters are selected.</span>
+        </li><li class="li step stepexpand">
+          <span class="ph cmd">Click <span class="ph menucascade"><span class="ph uicontrol"><img class="image" id="apply-upgrade-inspection-fixes-merge-tracker__image_fcq_d3v_q2b" src="../graphics/toolWindowInspection.png" alt=""> (Upgrade inspections)</span><abbr title="and then"> &gt; </abbr><span class="ph uicontrol">Apply automatic upgrade inspection fixes</span></span> in the Merge Tracker toolbar. All upgrade inspections run and
+            inspection fixes are automatically applied. The upgrade inspections will run
+            iteratively until all changes have been found and applied.</span>
+        </li><li class="li step stepexpand">
+          <span class="ph cmd">Verify that the <span class="ph uicontrol">Apply automatic upgrade inspection fixes</span>
+            process is complete by checking the Studio Event Log. When the process is
+            complete, Merge Tracker will write a message to the Event Log indicating the
+            number of fixes applied.</span>
+          <div class="itemgroup stepxmp">For example:<p class="p"><kbd class="ph userinput">2:53:03 PM Automatic Upgrade Inspection Fixes
+            applied 97 fixes in 1 pass in 6 minutes</kbd></p></div>
+        </li></ol></section>
+    </div>
+  </article>
+  <article class="topic task nested1" aria-labelledby="ariaid-title4" id="apply-upgrade-inspection-fixes-command-prompt">
+    <h2 class="title topictitle2" id="ariaid-title4">Run inspections from the command prompt</h2>
+    <div class="body taskbody">
+      <section class="section context"><p class="p">Run code and upgrade inspections from the command prompt to find issues and save the results to a
+          CSV file. You cannot apply fixes from the command prompt.</p>
+        <div class="p">You have the following options:<ul class="ul" id="apply-upgrade-inspection-fixes-command-prompt__ul_lhz_qz2_53b">
+            <li class="li">Run the default set of upgrade inspections</li>
+            <li class="li">Run a custom set of inspections by using an inspection profile</li>
+            <li class="li">Run inspections individually by providing their IDs</li>
+          </ul></div>
+        <p class="p">The command line tool saves the results to
+            <span class="ph filepath">inspectionResults/inspectionReport.csv</span>. If the
+            <span class="ph filepath">inspectionResults</span> directory exists, the tool deletes it before
+          generating the CSV file.</p>      
+      </section>
+      <section><ol class="ol steps"><li class="li step stepexpand">
+          <span class="ph cmd">Go to the <span class="ph filepath">upgrade/bin</span> directory.</span>
+        </li><li class="li step stepexpand">
+          <span class="ph cmd">If you want to run the default set of upgrade inspections, execute the following
+            command.</span>
+          <div class="itemgroup info">
+            <pre class="pre codeblock"><code>upgrade-inspections --source <var class="keyword varname">&lt;InsuranceSuiteAppDir&gt;</var></code></pre>
+          </div>
+          <div class="itemgroup stepxmp">For example (the <span class="ph filepath">upgrade</span> directory is in the <span class="keyword">InsuranceSuite Configuration Upgrade Tools</span> installation
+            directory):<pre class="pre codeblock"><code>upgrade-inspections --source ../../</code></pre></div>
+        </li><li class="li step stepexpand">
+          <span class="ph cmd">If you want to run a custom set of inspections, execute the following command.</span>
+          <div class="itemgroup info">
+            <pre class="pre codeblock"><code>upgrade-inspections --source <var class="keyword varname">&lt;InsuranceSuiteAppDir&gt;</var> --profile-path <var class="keyword varname">&lt;inspectionProfileFile&gt;</var> </code></pre>
+          </div>
+          <div class="itemgroup stepxmp">For example (the <span class="ph filepath">upgrade</span> directory is in the <span class="keyword">InsuranceSuite Configuration Upgrade Tools</span> installation
+            directory):<pre class="pre codeblock"><code>upgrade-inspections --source ../../ --profile-path /ConfigUpgrade/CustomInspectionProfile.xml</code></pre></div>
+        </li><li class="li step stepexpand">
+          <span class="ph cmd">If you want to run inspections individually, execute the following command.</span>
+          <div class="itemgroup info">
+            <pre class="pre codeblock"><code>upgrade-inspections --source <var class="keyword varname">&lt;InsuranceSuiteAppDir&gt;</var> --inspection <var class="keyword varname">&lt;inspectionId&gt;</var> </code></pre>
+          </div>
+          <div class="itemgroup stepxmp">For example (the <span class="ph filepath">upgrade</span> directory is in the <span class="keyword">InsuranceSuite Configuration Upgrade Tools</span> installation
+            directory)<pre class="pre codeblock"><code>upgrade-inspections --source ../../ --inspection AddMissingReifiedKeyword</code></pre></div>
+          <div class="itemgroup info">
+            <div class="note note note_note"><span class="note__title">Note:</span> You can use the <span class="keyword parmname">--inspection</span> argument multiple times with
+              different IDs to run a set of inspections. For IDs of upgrade inspections, see <a class="xref" href="r_upgrade-inspections-reference.html#upgrade-inspections-reference">Upgrade inspections reference</a>.</div>
+          </div>
+        </li><li class="li step stepexpand">
+          <span class="ph cmd">Analyze the results in
+            <span class="ph filepath">inspectionResults/inspectionReport.csv</span>.</span>
+        </li></ol></section>
+    </div>
+  </article>
+</article></main><footer role="contentinfo"><div class="footerContents">
+  <div id="footerLeft"></div>
+  <div id="footerCenter"></div>
+  <div id="footerRight"></div>
+  <script type="module" src="/scripts/html5.js"></script>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PLXG9H5" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+</div></footer></body></html>

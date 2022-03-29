@@ -1,40 +1,48 @@
-<div id="pageSelectorContainer">
-    <% let pageSelector = pageContent.selector;
-    if (pageSelector) { %>
+<% let pageSelector = pageContent.selector %>
+<% if (pageSelector) { %>
+    <label for="pageSelector"><%= pageSelector.label %></label>
+    <select id="pageSelector">
         <script>
-            function selectPage(selectedPage) {
+            function selectPage(e) {
+                const selectedPage = e.target.value;
                 if (selectedPage) {
                     window.location = selectedPage;
                 }
             }
 
-            function toggleDropdown() {
-                const dropdown = document.querySelector('.pageSelectorDropdown');
-                if (dropdown) {
-                    dropdown.classList.toggle('visible');
-                }
-            }
+            document.querySelector('#pageSelector').addEventListener('change', selectPage)
         </script>
 
-        <% if (pageSelector.label) { %>
-            <span class="selectorLabel"><%= pageSelector.label %></span>
-        <% } %>
-        <div onchange="selectPage(this.value)" id="pageSelector">
-            <div selected="selectedOption" onclick="toggleDropdown()"
-                 aria-haspopup="listbox"><%= pageSelector.selectedItem %></div>
-            <div class="pageSelectorDropdown" role="listbox">
-                <% pageSelector.items.forEach(item => {
-                    let itemHref = item.doc_url || item.link;
-                    if (item.page) {
-                        itemHref = encodeURI(pagePath + item.page)
-                    }
-                %>
-                <div onclick="selectPage('<%= itemHref %>')"
-                     class="dropdownOption" role="option">
+        <% const allItems = [
+            {label: pageSelector.selectedItem},
+            ...pageSelector.items
+        ];
+            const sortedItems = allItems
+                    .sort(function (a, b) {
+                        var labelA = a.label.toUpperCase();
+                        var labelB = b.label.toUpperCase();
+                        if (labelA < labelB) {
+                            return -1;
+                        }
+                        if (labelA > labelB) {
+                            return 1;
+                        }
+                        return 0;
+                    })
+                    .reverse();
+        sortedItems.forEach(item => {
+        if (item.label === pageSelector.selectedItem) { %>
+            <option selected="selected"><%= item.label %></option>
+        <% } else { %>
+            <% const itemHref = item.page ? encodeURI(pagePath + item.page) : item.doc_url || item.link %>
+            <% const itemIsInternal = item.internal %>
+            <% if (hasGuidewireEmail || (!hasGuidewireEmail && !itemIsInternal)) { %>
+                <option value="<%= itemHref %>">
                     <%= item.label %>
-                </div>
-                <% }) %>
-            </div>
-        </div>
-    <% } %>
-</div>
+                </option>
+            <% } %>
+        <% }}) %>
+    </select>
+<% } %>
+
+

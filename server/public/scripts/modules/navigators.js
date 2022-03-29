@@ -1,19 +1,26 @@
 import { highlightTextFromUrl, addHighlightToggle } from './highlight.js';
+import { addPdfLink } from './pdflink.js';
 
 function addMiniToc() {
   const hashLinks = document.querySelectorAll('.hashLink');
-  if (hashLinks.length > 0) {
+  if (hashLinks.length > 1) {
     const miniToc = document.createElement('nav');
     miniToc.setAttribute('class', 'miniToc');
 
     hashLinks.forEach(hashLink => {
       const title = hashLink.parentElement.textContent;
       const href = hashLink.getAttribute('href');
+      const parentClasses = hashLink.parentElement.classList;
 
       if (title && href) {
         const navLink = document.createElement('a');
         navLink.setAttribute('href', href);
         navLink.classList.add('miniTocLink');
+        parentClasses.forEach(className => {
+          if (!className.match('^title$')) {
+            navLink.classList.add(className);
+          }
+        });
         navLink.textContent = title;
 
         miniToc.appendChild(navLink);
@@ -72,13 +79,34 @@ function getCurrentLink() {
   return document.querySelector('nav[role="toc"] a.current');
 }
 
+function getDocTitleBreadcrumb() {
+  const docTitle = document.querySelector("meta[name='gw-doc-title']")?.content;
+  const docBaseUrl = document.querySelector("meta[name='gw-base-url']")?.content;
+
+  if (!docTitle || !docBaseUrl) {
+    return;
+  }
+  
+  const docTitleBreadcrumb = {
+    text: docTitle,
+    href: docBaseUrl
+  }
+
+  return docTitleBreadcrumb;
+}
+
 async function addBreadCrumbs() {
   let currentLink = getCurrentLink();
   if (currentLink) {
     const linkTrail = getParentNavItems(currentLink).flat();
-    const firstBreadcrumb = await getTopBreadcrumb();
-    if (firstBreadcrumb) {
-      linkTrail.push(firstBreadcrumb);
+
+    const docTitleBreadcrumb = getDocTitleBreadcrumb();
+    if(docTitleBreadcrumb) {
+      linkTrail.push(docTitleBreadcrumb);
+    }
+    const topBreadcrumb = await getTopBreadcrumb();
+    if (topBreadcrumb) {
+      linkTrail.push(topBreadcrumb);
     }
 
     linkTrail.reverse();
@@ -226,7 +254,7 @@ function addShareButton() {
 
   shareButton.setAttribute(
     'href',
-    `mailto:?subject=${title}&amp;body=Check out Guidewire documentation page ${window.location}`
+    `mailto:?subject=${title}&body=Check out Guidewire documentation page ${window.location}.`
   );
 
   document.querySelector('#navbarRight').appendChild(shareButton);
@@ -260,6 +288,7 @@ function addScrollToTop() {
 function addNavbar() {
   addNavigationLinks();
   addVerticalDivider();
+  addPdfLink();
   addShareButton();
   addPrintButton();
   addHighlightToggle();
