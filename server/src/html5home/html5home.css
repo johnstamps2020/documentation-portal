@@ -21,6 +21,13 @@ body {
   margin: 2rem auto;
 }
 
+.subject .topicref a {
+    text-decoration: none;
+    color: var(--GW-COLOR-BRAND-1);
+    font-family: var(--guidewire-font);
+    font-size: 1rem;
+}
+
 .topicCategory {
   background-color: yellow;
 }
