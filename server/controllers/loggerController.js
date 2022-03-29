@@ -23,8 +23,8 @@ const loggerOptions = {
 const myFormatter = format(info => {
   info.contextMap = {
     'X-B3-ParentSpanId': 'TBD',
-    'X-B3-SpanId': 'TBD',
-    'X-B3-TraceId': 'TBD',
+    'X-B3-SpanId': info.dd.span_id,
+    'X-B3-TraceId': info.dd.trace_id,
     'X-B3-Sampled': 'false',
   };
   return info;
