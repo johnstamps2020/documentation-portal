@@ -1232,6 +1232,7 @@ object Frontend {
                             +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/public/scripts/**
                             +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/public/stylesheets/**
                             +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/public/fonts/**
+                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/src/html5home/**
                             -:user=doctools:**
                             """.trimIndent()
                 }
