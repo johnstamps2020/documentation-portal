@@ -13,6 +13,11 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    tags.datadoghq.com/env: atmos-${DEPLOY_ENV}
+    tags.datadoghq.com/service: docportal
+    tags.datadoghq.com/version: ${TAG_VERSION}
+    app: docportal-app
   name: docportal-app-deployment
   namespace: doctools
 spec:
@@ -25,6 +30,9 @@ spec:
   template:
     metadata:
       labels:
+        tags.datadoghq.com/env: atmos-${DEPLOY_ENV}
+        tags.datadoghq.com/service: docportal-app
+        tags.datadoghq.com/version: ${TAG_VERSION}
         app: docportal-app
       annotations:
         iam.amazonaws.com/role: arn:aws:iam::710503867599:role/aws_gwre-ccs-prod_tenant_doctools_developer
@@ -106,6 +114,38 @@ spec:
               value: 'yes'
             - name: JIRA_AUTH_TOKEN
               value: 'c3lzLWVzLXBvcnRhbEBndWlkZXdpcmUuY29tOnJRd2l4WVZuTEtMNmZVY0x0Zjk2OEMxNw=='
+            - name: DD_ENV
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/env']
+            - name: DD_SERVICE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/service']
+            - name: DD_VERSION
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/version']
+            - name: DD_HTTP_CLIENT_TAG_QUERY_STRING
+              value: 'true'
+            - name: DD_HTTP_SERVER_TAG_QUERY_STRING
+              value: 'true'
+            - name: DD_SERVICE_MAPPING
+              value: "nodejs:atmos-${DEPLOY_ENV}-docportal-app"
+            - name: DD_LOGS_INJECTION
+              value: 'true'
+            - name: DD_PROFILING_ENABLED
+              value: 'true'
+            - name: DD_TAGS
+              value: layer:webapp, team:doctools
+            - name: DD_TRACE_ANALYTICS_ENABLED
+              value: 'true'
+            - name: DD_AGENT_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+            - name: DD_PROPAGATION_STYLE_INJECT
+              value: "Datadog,B3"
           resources:
             requests:
               memory: "1Gi"
