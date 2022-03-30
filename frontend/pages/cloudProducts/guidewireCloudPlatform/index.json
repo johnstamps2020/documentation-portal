@@ -27,11 +27,11 @@
       "class": "subject featuresAndFunctionality",
       "items": [
         {
-          "label": "Working with Guidewire Cloud Platform",
+          "label": "Network Connectivity with Guidewire Cloud Platform",
           "id": "cloudplatformdraft"
         },
         {
-          "label": "Working with Guidewire Cloud Platform",
+          "label": "Network Connectivity with Guidewire Cloud Platform",
           "id": "cloudplatformrelease"
         }
       ]
