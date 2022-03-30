@@ -1,8 +1,9 @@
-const { createLogger, format, config, transports } = require('winston');
-const { combine, timestamp, label, printf, json, transform } = format;
+const { createLogger, format, config, transports, level } = require('winston');
+const { combine, timestamp, json } = format;
 const path = require('path');
+const morgan = require('morgan');
 
-const loggerOptions = {
+const winstonLoggerOptions = {
   file: {
     level: 'info',
     filename: path.resolve(`${__dirname}/../logs/datadog.log`),
@@ -20,30 +21,27 @@ const loggerOptions = {
   },
 };
 
-const myFormatter = format(info => {
-  info.contextMap = {
-    'X-B3-ParentSpanId': 'TBD',
-    'X-B3-SpanId': info.dd.span_id,
-    'X-B3-TraceId': info.dd.trace_id,
-    'X-B3-Sampled': 'false',
-  };
-  return info;
-});
-
 const winstonLogger = createLogger({
   levels: config.syslog.levels,
-  format: combine(timestamp(), myFormatter(), json()),
+  format: combine(timestamp(), json()),
   exitOnError: false,
   transports: [
-    new transports.File(loggerOptions.file),
-    new transports.Console(loggerOptions.console),
+    new transports.File(winstonLoggerOptions.file),
+    new transports.Console(winstonLoggerOptions.console),
   ],
 });
 
 winstonLogger.stream = {
   write: function(message, encoding) {
-    winstonLogger.info(message);
+    winstonLogger.log({
+      level: level,
+      message: message,
+    });
   },
 };
 
-module.exports = winstonLogger;
+const morganMiddleware = morgan(':method :url :status', {
+  stream: winstonLogger.stream,
+});
+
+module.exports = { morganMiddleware };

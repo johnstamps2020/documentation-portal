@@ -5,8 +5,8 @@ process.on('unhandledRejection', function(reason, p) {
 
 require('dotenv').config();
 const tracer = require('dd-trace').init();
-const morgan = require('morgan');
-const loggerController = require('./controllers/loggerController');
+const morganMiddleware = require('./controllers/loggerController')
+  .morganMiddleware;
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -18,29 +18,7 @@ const httpContext = require('express-http-context');
 const port = process.env.PORT || 8081;
 
 const app = express();
-app.use((req, res, next) => {
-  const span = tracer
-    .scope()
-    .active()
-    .context();
-  const { _parentId, _spanId, _traceId } = span;
-  const parentIdString = Buffer.from(_parentId._buffer)
-    .readBigUInt64BE()
-    .toString();
-  const spanIdString = Buffer.from(_spanId._buffer)
-    .readBigUInt64BE()
-    .toString();
-  const traceIdString = Buffer.from(_traceId._buffer)
-    .readBigUInt64BE()
-    .toString();
-  console.log(
-    `parentIdString: ${parentIdString}`,
-    `spanIdString: ${spanIdString}`,
-    `traceIdString: ${traceIdString}`
-  );
-  next();
-});
-app.use(morgan(':method :url', { stream: loggerController.stream }));
+app.use(morganMiddleware);
 app.use(function(req, res, next) {
   const hostnamesToReplace = ['portal2.guidewire.com'];
   if (hostnamesToReplace.includes(req.hostname)) {
