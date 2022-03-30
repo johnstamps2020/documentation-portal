@@ -1,5 +1,6 @@
 import { highlightTextFromUrl, addHighlightToggle } from './highlight.js';
 import { addPdfLink } from './pdflink.js';
+import '../../stylesheets/modules/minitoc.css';
 
 function addMiniToc() {
   const hashLinks = document.querySelectorAll('.hashLink');
@@ -81,16 +82,17 @@ function getCurrentLink() {
 
 function getDocTitleBreadcrumb() {
   const docTitle = document.querySelector("meta[name='gw-doc-title']")?.content;
-  const docBaseUrl = document.querySelector("meta[name='gw-base-url']")?.content;
+  const docBaseUrl = document.querySelector("meta[name='gw-base-url']")
+    ?.content;
 
   if (!docTitle || !docBaseUrl) {
     return;
   }
-  
+
   const docTitleBreadcrumb = {
     text: docTitle,
-    href: docBaseUrl
-  }
+    href: docBaseUrl,
+  };
 
   return docTitleBreadcrumb;
 }
@@ -101,7 +103,7 @@ async function addBreadCrumbs() {
     const linkTrail = getParentNavItems(currentLink).flat();
 
     const docTitleBreadcrumb = getDocTitleBreadcrumb();
-    if(docTitleBreadcrumb) {
+    if (docTitleBreadcrumb) {
       linkTrail.push(docTitleBreadcrumb);
     }
     const topBreadcrumb = await getTopBreadcrumb();
@@ -216,15 +218,6 @@ function addVerticalDivider() {
   verticalDivider.classList.add('verticalDivider');
 
   document.querySelector('#navbarRight').appendChild(verticalDivider);
-}
-
-function removeElementsByQuery(selectedDocument, listOfQueries) {
-  for (const query of listOfQueries) {
-    const matchedElement = selectedDocument.querySelector(query);
-    if (matchedElement) {
-      matchedElement.remove();
-    }
-  }
 }
 
 function addPrintButton() {

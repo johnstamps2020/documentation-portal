@@ -1,3 +1,5 @@
+import '../../stylesheets/modules/recommendations.css';
+
 export async function showTopicRecommendations() {
   const response = await fetch(
     `/recommendations?topicId=${window.location.pathname}`

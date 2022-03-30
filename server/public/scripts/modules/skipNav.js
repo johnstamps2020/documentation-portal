@@ -1,3 +1,5 @@
+import '../../stylesheets/modules/skipNav.css';
+
 export function addSkipNav() {
   let mainId = 'mainContent';
   const main = document.querySelector('main');

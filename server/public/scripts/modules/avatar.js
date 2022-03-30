@@ -1,3 +1,5 @@
+import '../../stylesheets/modules/avatar.css';
+
 function showAvatarMenu(event) {
   if (event.target.id === 'avatarButton') {
     const avatarMenu = document.getElementById('avatarMenu');

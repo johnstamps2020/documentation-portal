@@ -10,6 +10,7 @@ function getSearchParams() {
 export function addHighlightToggle() {
   const params = getSearchParams();
   if (params.has('hl')) {
+    import('../../stylesheets/modules/highlight.css');
     const toggleDescription = 'Toggle search highlights';
     const highlightButton = document.createElement('button');
     highlightButton.setAttribute('id', 'highlightToggle');

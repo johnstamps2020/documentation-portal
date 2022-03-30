@@ -1,3 +1,5 @@
+import '../../stylesheets/modules/internal.css';
+
 export function addInternalBadge() {
   try {
     if (window.docInternal) {

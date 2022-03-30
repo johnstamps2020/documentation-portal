@@ -1,3 +1,4 @@
+import '../../stylesheets/modules/feedback.css';
 window.dataLayer = window.dataLayer || [];
 
 function gtag() {
