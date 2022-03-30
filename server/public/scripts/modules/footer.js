@@ -1,3 +1,5 @@
+import '../../stylesheets/modules/footer.css';
+
 const footerTemplate = `<div>
     <div class="footerLinks">
         <span class="footerLink">

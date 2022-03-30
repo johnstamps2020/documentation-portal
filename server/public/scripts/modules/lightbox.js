@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom';
 import React, { useRef } from 'react';
 import styles from '../../stylesheets/modules/lightbox.module.css';
 
@@ -51,16 +50,16 @@ function Lightbox({ imgAttributes }) {
   );
 }
 
-export function addLightbox() {
+export async function addLightbox() {
   const images = document.querySelectorAll('img');
-  images.forEach((image, i) => {
-    const lightboxContainer = document.createElement('span');
-    lightboxContainer.id = `lightbox${i}`;
-    image.before(lightboxContainer);
-    ReactDOM.render(
-      <Lightbox imgAttributes={image.attributes} />,
-      lightboxContainer
-    );
-    image.remove();
-  });
+  if (images) {
+    const { render } = await import('react-dom');
+    images.forEach((image, i) => {
+      const lightboxContainer = document.createElement('span');
+      lightboxContainer.id = `lightbox${i}`;
+      image.before(lightboxContainer);
+      render(<Lightbox imgAttributes={image.attributes} />, lightboxContainer);
+      image.remove();
+    });
+  }
 }

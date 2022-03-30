@@ -1,3 +1,5 @@
+import '../../stylesheets/modules/versionSelector.css';
+
 async function findBestMatchingTopic(searchQuery, targetDocVersion) {
   try {
     const baseUrl = window.location.protocol + '//' + window.location.host;

@@ -1,24 +1,12 @@
-@import 'modules/avatar.css';
-@import 'modules/code.css';
-@import 'modules/feedback.css';
 @import 'modules/fonts.css';
-@import 'modules/footer.css';
 @import 'modules/header.css';
-@import 'modules/highlight.css';
 @import 'modules/html5content.css';
-@import 'modules/minitoc.css';
 @import 'modules/navbar.css';
 @import 'modules/note.css';
 @import 'modules/print.css';
-@import 'modules/recommendations.css';
-@import 'modules/searchBox.css';
-@import 'modules/sidebar.css';
-@import 'modules/skipNav.css';
 @import 'modules/tables.css';
 @import 'modules/task.css';
 @import 'modules/typography.css';
-@import 'modules/versionSelector.css';
-@import 'modules/internal.css';
 @import './modules/html5vars.css';
 
 @media screen and (max-width: 1500px) {

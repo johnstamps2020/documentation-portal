@@ -1,3 +1,5 @@
+import '../../stylesheets/modules/sidebar.css';
+
 function bubbleUpExpanded(element) {
   const closest = element.parentElement?.closest('ul');
   if (closest) {

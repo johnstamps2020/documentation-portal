@@ -1,5 +1,3 @@
-import Prism from 'prismjs';
-
 function containsLanguageClass(arr) {
   return arr.some(
     item => item.startsWith('language-') || item.startsWith('lang-')
@@ -16,10 +14,12 @@ export function normalizeCode() {
   }
 }
 
-export function highlightCode() {
+export async function highlightCode() {
   const codeBlocks = document.querySelectorAll('pre');
 
   if (codeBlocks.length > 0) {
+    const Prism = await import('prismjs');
+    import('../../stylesheets/modules/code.css');
     Prism.highlightAll();
   }
 }
