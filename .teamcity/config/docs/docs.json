@@ -35,7 +35,7 @@
     },
     {
       "id": "cloudplatformdraft",
-      "title": "Cloud Platform Draft",
+      "title": "Network connectivity with Guidewire Cloud Platform",
       "url": "cloud/gwcp/latest",
       "metadata": {
         "platform": ["Cloud"],
@@ -51,7 +51,7 @@
     },
     {
       "id": "cloudplatformrelease",
-      "title": "Cloud Platform Release",
+      "title": "Network connectivity with Guidewire Cloud Platform",
       "url": "cloud/gwcp/latest",
       "metadata": {
         "platform": ["Cloud"],
