@@ -53,10 +53,6 @@
           "class": "group",
           "items": [
             {
-              "label": "Australia",
-              "page": "../globalSolutions/ipa/latest"
-            },
-            {
               "label": "France",
               "page": "../globalSolutions/ipf/2.0"
             },
