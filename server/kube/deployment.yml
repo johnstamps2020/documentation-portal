@@ -116,6 +116,8 @@ spec:
                   fieldPath: metadata.labels['tags.datadoghq.com/version']
             - name: DD_HTTP_CLIENT_TAG_QUERY_STRING
               value: "true"
+            - name: DD_HTTP_SERVER_TAG_QUERY_STRING
+              value: "true"
             - name: DD_SERVICE_MAPPING
               value: "nodejs:atmos-${DEPLOY_ENV}-docportal-app"
             - name: DD_LOGS_INJECTION
