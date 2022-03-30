@@ -5,7 +5,7 @@ const morgan = require('morgan');
 
 const winstonLoggerOptions = {
   file: {
-    level: 'info',
+    level: 'warning',
     filename: path.resolve(`${__dirname}/../logs/datadog.log`),
     handleExceptions: true,
     json: true,
@@ -14,7 +14,7 @@ const winstonLoggerOptions = {
     colorize: false,
   },
   console: {
-    level: 'info',
+    level: 'warning',
     handleExceptions: true,
     json: false,
     colorize: true,
