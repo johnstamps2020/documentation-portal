@@ -119,6 +119,7 @@ async function getFilters(query, fieldMappings, urlFilters) {
 }
 
 async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
+  mch;
   const queryWithFiltersFromUrl = JSON.parse(JSON.stringify(query));
   if (urlFilters) {
     let queryFilters = queryWithFiltersFromUrl.bool.hasOwnProperty('filter')
