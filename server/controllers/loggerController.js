@@ -24,14 +24,27 @@ const winstonLoggerOptions = {
   },
 };
 
+const reformatUncaughtException = format((info, opts) => {
+  const infoDate = info.date;
+  if (info.exception === true && infoDate) {
+    delete info.date;
+    info.timestamp = new Date(infoDate).toISOString();
+  }
+  return info;
+});
+
 const winstonLogger = createLogger({
   levels: config.syslog.levels,
-  level: 'info',
+  level: 'warning',
   // If no format is provided in timestamp(), "new Date().toISOString()" is used.
   // Empty format causes an issue with the timezone - winston logs in the UTC timezone.
   // If you pass a custom format without creating a new datetime object, winston logs using the local timezone.
   // Issue described here: https://github.com/winstonjs/winston/issues/421
-  format: combine(timestamp({ format: 'YYYY-MM-DD HH:mm:ss.SSSZZ' }), json()),
+  format: combine(
+    timestamp({ format: 'YYYY-MM-DD HH:mm:ss.SSSZZ' }),
+    reformatUncaughtException(),
+    json()
+  ),
   exitOnError: false,
   transports: [
     new transports.File(winstonLoggerOptions.file),
