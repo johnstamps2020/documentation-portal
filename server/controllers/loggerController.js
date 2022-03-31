@@ -3,21 +3,22 @@ const expressWinston = require('express-winston');
 const { combine, timestamp, json } = format;
 const path = require('path');
 
+const commonWinstonOptions = {
+  handleExceptions: true,
+  handleRejections: true,
+};
+
 const winstonLoggerOptions = {
   file: {
-    level: 'warning',
+    ...commonWinstonOptions,
     filename: path.resolve(`${__dirname}/../logs/server.log`),
-    handleExceptions: true,
-    handleRejections: true,
     json: true,
     maxsize: 5242880, //5MB
     maxFiles: 5,
     colorize: false,
   },
   console: {
-    level: 'warning',
-    handleExceptions: true,
-    handleRejections: true,
+    ...commonWinstonOptions,
     json: false,
     colorize: true,
   },
@@ -25,7 +26,12 @@ const winstonLoggerOptions = {
 
 const winstonLogger = createLogger({
   levels: config.syslog.levels,
-  format: combine(timestamp(), json()),
+  level: 'info',
+  // If no format is provided in timestamp(), "new Date().toISOString()" is used.
+  // Empty format causes an issue with the timezone - winston logs in the UTC timezone.
+  // If you pass a custom format without creating a new datetime object, winston logs using the local timezone.
+  // Issue described here: https://github.com/winstonjs/winston/issues/421
+  format: combine(timestamp({ format: 'YYYY-MM-DD HH:mm:ss.SSSZZ' }), json()),
   exitOnError: false,
   transports: [
     new transports.File(winstonLoggerOptions.file),
