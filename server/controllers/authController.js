@@ -3,9 +3,9 @@ const OktaJwtVerifier = require('@okta/jwt-verifier');
 const jsonwebtoken = require('jsonwebtoken');
 const { isPublicDoc, isInternalDoc } = require('./configController');
 const { addCommonDataToSessionLocals } = require('./localsController');
-const { getUserInfo } = require('./userController');
 const path = require('path');
 const fs = require('fs');
+const { winstonLogger } = require('./loggerController');
 const staticPagesDir = path.join(__dirname, '..', 'static', 'pages');
 
 const loginGatewayRoute = '/gw-login';
@@ -99,7 +99,7 @@ async function isLoggedInOrHasValidToken(req) {
       ? !!(req.isAuthenticated() || (await verifyToken(req)))
       : !!req.isAuthenticated();
   } catch (err) {
-    console.log(err.message);
+    winstonLogger.error(err.stack);
     return false;
   }
 }

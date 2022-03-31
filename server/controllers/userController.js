@@ -1,10 +1,11 @@
 const mockUserData = require('./utils/mockUserData');
+const { winstonLogger } = require('./loggerController');
 
 function belongsToGuidewire(email) {
   try {
     return !!email?.endsWith('@guidewire.com');
   } catch (err) {
-    console.error(err);
+    winstonLogger.error(err.stack);
     return false;
   }
 }
