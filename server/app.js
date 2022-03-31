@@ -1,12 +1,9 @@
-process.on('unhandledRejection', function(reason, p) {
-  loggerController.info(reason, p);
-  process.exit(1);
-});
-
 require('dotenv').config();
 const tracer = require('dd-trace').init();
-const morganMiddleware = require('./controllers/loggerController')
-  .morganMiddleware;
+const {
+  expressWinstonLogger,
+  expressWinstonErrorLogger,
+} = require('./controllers/loggerController');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -18,7 +15,7 @@ const httpContext = require('express-http-context');
 const port = process.env.PORT || 8081;
 
 const app = express();
-app.use(morganMiddleware);
+app.use(expressWinstonLogger);
 app.use(function(req, res, next) {
   const hostnamesToReplace = ['portal2.guidewire.com'];
   if (hostnamesToReplace.includes(req.hostname)) {
@@ -184,6 +181,7 @@ app.use('/portal-config/*', (req, res) => {
 });
 
 // handles unauthorized errors
+app.use(expressWinstonErrorLogger);
 app.use((err, req, res, next) => {
   if (err.httpStatusCode === 304) {
     res.status(304).redirect('/unauthorized');
@@ -191,7 +189,13 @@ app.use((err, req, res, next) => {
   if (err.httpStatusCode === 404) {
     res.status(404).redirect('/404');
   }
-  next(err);
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
 });
 
 app.listen(port, () => {

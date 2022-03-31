@@ -1,13 +1,14 @@
-const { createLogger, format, config, transports, level } = require('winston');
+const { createLogger, format, config, transports } = require('winston');
+const expressWinston = require('express-winston');
 const { combine, timestamp, json } = format;
 const path = require('path');
-const morgan = require('morgan');
 
 const winstonLoggerOptions = {
   file: {
     level: 'warning',
-    filename: path.resolve(`${__dirname}/../logs/datadog.log`),
+    filename: path.resolve(`${__dirname}/../logs/server.log`),
     handleExceptions: true,
+    handleRejections: true,
     json: true,
     maxsize: 5242880, //5MB
     maxFiles: 5,
@@ -16,6 +17,7 @@ const winstonLoggerOptions = {
   console: {
     level: 'warning',
     handleExceptions: true,
+    handleRejections: true,
     json: false,
     colorize: true,
   },
@@ -31,17 +33,18 @@ const winstonLogger = createLogger({
   ],
 });
 
-winstonLogger.stream = {
-  write: function(message, encoding) {
-    winstonLogger.log({
-      level: level,
-      message: message,
-    });
-  },
-};
-
-const morganMiddleware = morgan(':method :url :status', {
-  stream: winstonLogger.stream,
+const expressWinstonLogger = expressWinston.logger({
+  winstonInstance: winstonLogger,
+  msg: 'HTTP {{req.method}} {{req.url}}',
 });
 
-module.exports = { morganMiddleware };
+const expressWinstonErrorLogger = expressWinston.errorLogger({
+  winstonInstance: winstonLogger,
+  msg: '{{err.message}} {{res.statusCode}} {{req.method}}',
+});
+
+module.exports = {
+  winstonLogger,
+  expressWinstonLogger,
+  expressWinstonErrorLogger,
+};
