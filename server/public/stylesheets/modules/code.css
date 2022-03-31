@@ -22,15 +22,37 @@ pre.pre {
   border: 1px solid white;
 }
 
-div.code-toolbar > .toolbar > .toolbar-item > button.copy-to-clipboard-button {
-  display: block;
-  margin-left: auto;
+div.code-toolbar > .toolbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+div.code-toolbar > .toolbar > .toolbar-item {
+  color: white;
+}
+
+div.code-toolbar > .toolbar > .toolbar-item:hover {
+  color: white;
+}
+
+div.code-toolbar > .toolbar > .toolbar-item > button.copy-to-clipboard-button,
+div.code-toolbar > div.toolbar > div.toolbar-item > span {
   background-color: rgba(0, 0, 0, 0.1);
   color: white;
-  padding: 6px;
   border-radius: 6px;
+  padding: 6px;
   cursor: pointer;
   font-family: var(--code-font-family);
+}
+
+div.code-toolbar > div.toolbar > div.toolbar-item > span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  color: white;
+  background: transparent;
+  cursor: default;
 }
 
 .copy-to-clipboard-button:hover,
