@@ -22,6 +22,13 @@ pre.pre {
   border: 1px solid white;
 }
 
+code[class*="language-"] a, pre[class*="language-"] a {
+    text-decoration-line: underline;
+}
+code[class*="language-"] a:not(:hover), pre[class*="language-"] a:not(:hover) {
+    color: #ccc;
+}
+
 div.code-toolbar > .toolbar {
   display: flex;
   gap: 8px;
