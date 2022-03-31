@@ -40,17 +40,6 @@ const options = {
 
 console.log('Server app instantiated!');
 
-// error handler
-app.use((err, req, res, next) => {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
-
 const sessionSettings = {
   secret: `${process.env.SESSION_KEY}`,
   resave: true,
@@ -189,13 +178,8 @@ app.use((err, req, res, next) => {
   if (err.httpStatusCode === 404) {
     res.status(404).redirect('/404');
   }
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  err.status = err.status || 500;
+  res.render('error', { err });
 });
 
 app.listen(port, () => {
