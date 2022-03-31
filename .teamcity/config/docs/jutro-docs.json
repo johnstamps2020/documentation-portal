@@ -884,7 +884,41 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["7.4.0 LTS"],
+        "version": ["7.4.0"],
+        "subject": ["Best practices"],
+        "release": ["Elysian"]
+      },
+      "environments": ["dev", "staging", "int", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true
+    },
+    {
+      "id": "storybook740",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/7.4.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["7.4.0"],
+        "subject": ["Development"],
+        "release": ["Elysian"]
+      },
+      "environments": ["dev", "staging", "int", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true
+    },
+    {
+      "id": "jutro741",
+      "title": "Jutro Design System and UI Framework",
+      "url": "jutro/documentation/7.4.1",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["7.4.1 LTS"],
         "subject": ["Best practices"],
         "release": ["Elysian"]
       },
@@ -895,13 +929,13 @@
       "internal": false
     },
     {
-      "id": "storybook740",
+      "id": "storybook741",
       "title": "Jutro Storybook",
-      "url": "jutro/storybook/7.4.0",
+      "url": "jutro/storybook/7.4.1",
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["7.4.0 LTS"],
+        "version": ["7.4.1 LTS"],
         "subject": ["Development"],
         "release": ["Elysian"]
       },
@@ -918,7 +952,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["7.4.0 (latest)"],
+        "version": ["7.4.1 (latest)"],
         "subject": ["Best practices"]
       },
       "environments": ["dev", "staging", "int", "prod"],
