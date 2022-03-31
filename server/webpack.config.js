@@ -73,6 +73,7 @@ module.exports = {
                     'line-numbers',
                     'keep-markup',
                     'toolbar',
+                    'show-language',
                     'copy-to-clipboard',
                     'match-braces',
                   ],
