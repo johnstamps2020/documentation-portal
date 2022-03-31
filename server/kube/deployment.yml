@@ -31,7 +31,7 @@ spec:
     metadata:
       labels:
         tags.datadoghq.com/env: atmos-${DEPLOY_ENV}
-        tags.datadoghq.com/service: docportal-app
+        tags.datadoghq.com/service: docportal
         tags.datadoghq.com/version: ${TAG_VERSION}
         app: docportal-app
       annotations:
