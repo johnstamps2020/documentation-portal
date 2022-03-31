@@ -11,7 +11,7 @@
         "version": ["2.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["staging"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -27,7 +27,7 @@
         "version": ["2.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["staging"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -43,7 +43,7 @@
         "version": ["2.0"],
         "subject": ["Administration"]
       },
-      "environments": ["staging"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -59,7 +59,7 @@
         "version": ["2.0"],
         "subject": ["Release notes"]
       },
-      "environments": ["staging"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
