@@ -1,0 +1,12 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "lm32src",
+      "title": "London Markets 3.2",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/london-markets.git",
+      "branch": "release/3.2"
+    }
+  ]
+}

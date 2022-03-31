@@ -264,6 +264,10 @@
         {
           "label": "Australia",
           "page": "../../globalSolutions/ipa/latest"
+        },
+        {
+          "label": "London",
+          "page": "../../globalSolutions/iplm/3.2"
         }
       ]
     },
