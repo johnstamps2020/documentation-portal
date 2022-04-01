@@ -885,8 +885,7 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["7.4.0"],
-        "subject": ["Best practices"],
-        "release": ["Elysian"]
+        "subject": ["Best practices"]
       },
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
@@ -902,8 +901,7 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["7.4.0"],
-        "subject": ["Development"],
-        "release": ["Elysian"]
+        "subject": ["Development"]
       },
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
