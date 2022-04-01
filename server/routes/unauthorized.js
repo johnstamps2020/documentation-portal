@@ -3,7 +3,10 @@ const router = express.Router();
 
 /* GET unauthorized page. */
 router.get('/', function(req, res, next) {
-  res.render('unauthorized');
+  const pageInfo = {
+    cameFrom: req.headers.referer,
+  };
+  res.render('unauthorized', { pageInfo });
 });
 
 module.exports = router;
