@@ -5,7 +5,7 @@ const { getRedirectUrl } = require('../controllers/404');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   const cameFrom = req.headers.referer;
-  const redirectUrl = getRedirectUrl(cameFrom);
+  const redirectUrl = cameFrom ? getRedirectUrl(cameFrom) : undefined;
   if (redirectUrl) {
     res.redirect(redirectUrl);
   } else {

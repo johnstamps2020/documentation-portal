@@ -7,10 +7,12 @@
       <section class="infoSection">
         <div class="infoSplashImage splash404"></div>
         <h1 class="infoTitle">404: page not found</h1>
+        <% if (pageInfo.cameFrom) { %>
         <p>
           Sorry, we couldn't find:
         </p>
         <pre class="infoPre"><%= pageInfo.cameFrom %></pre>
+        <% } %>
         <p>
           We weren't able to find what you are looking for. You may have an old
           link. We'll make a note of it and, if it's an error on our site, we
