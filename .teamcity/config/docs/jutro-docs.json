@@ -32,7 +32,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": true
     },
     {
       "id": "jutro430",
@@ -48,7 +48,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": true
     },
     {
       "id": "jutro500",
@@ -64,7 +64,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": true
     },
     {
       "id": "jutro510",
@@ -80,7 +80,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": true
     },
     {
       "id": "jutro520",
@@ -96,7 +96,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": true
     },
     {
       "id": "jutro531",
@@ -241,7 +241,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": false,
-      "internal": false
+      "internal": true
     },
     {
       "id": "jutro651",
@@ -257,7 +257,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": false,
-      "internal": false
+      "internal": true
     },
     {
       "id": "jutro652",
@@ -563,7 +563,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": false,
-      "internal": false
+      "internal": true
     },
     {
       "id": "storybook651",
@@ -580,7 +580,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": false,
-      "internal": false
+      "internal": true
     },
     {
       "id": "storybook652",
