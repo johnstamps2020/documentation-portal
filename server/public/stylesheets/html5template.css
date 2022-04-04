@@ -71,7 +71,7 @@ main > article {
   padding-right: 1rem;
 }
 
-.spacer {
+main > .spacer {
     flex-grow: 1;
     border-right: 1px solid lightgray;
 }
@@ -108,20 +108,27 @@ main > article {
 @media screen and (max-width: 1400px) {
 
   body nav.miniToc {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    column-gap: .75rem;
+    row-gap: 0;
     height: auto;
     overflow: auto;
-    padding: 0;
+    padding: 0 0 1rem 0;
     width: 100%;
     border: none;
-
   }
 
   nav.miniToc::before {
     padding: 4px 0;
     margin-bottom: 0;
+    font-size: 1rem;
+  }
+
+  .miniToc .miniTocLink::before {
+    content: '#';
+    padding-right: 4px;
   }
 
   main {
@@ -134,17 +141,8 @@ main > article {
     padding-right: none;
   }
 
-  .spacer {
+  main > .spacer {
     flex-grow: 0;
     border-right: none;
-  }
-
-  nav.miniToc {
-    position: relative;
-  }
-
-  .miniToc .miniTocLink::before {
-    content: '#';
-    padding-right: 4px;
   }
 }

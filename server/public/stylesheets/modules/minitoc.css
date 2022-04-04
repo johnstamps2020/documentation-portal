@@ -20,7 +20,7 @@ nav .miniTocLink {
   text-decoration: none;
   padding: 4px 0;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1rem;
   font-family: var(--guidewire-font);
   font-weight: 400;
   text-align: left;
