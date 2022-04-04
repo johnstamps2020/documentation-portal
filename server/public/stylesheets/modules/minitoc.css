@@ -1,12 +1,10 @@
 nav.miniToc {
-  grid-area: miniToc;
-  align-self: start;
-  padding: 0 4px 0 16px;
-  margin-top: 1rem;
-  margin-right: 0.15vw;
-  border-left: 1px solid lightgray;
-  height: var(--main-height);
+  padding: 0 4px var(--footer-height) 16px;
   overflow-y: auto;
+  width: clamp(200px, 300px, 350px);
+  top: 0;
+  position: sticky;
+  align-self: flex-start;
 }
 
 nav.miniToc::before {

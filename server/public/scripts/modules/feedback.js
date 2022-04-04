@@ -268,11 +268,11 @@ export function addFeedbackElements() {
   feedbackButtons.appendChild(feedbackLabel);
   feedbackButtons.appendChild(thumbsWrapper);
 
-  const topicBody = document.querySelector('main');
+  const topicBody = document.querySelector('article');
   if (topicBody) {
     topicBody.appendChild(feedbackButtons);
   } else {
-    console.log('no main');
+    console.log('no article');
   }
   const body = document.querySelector('body');
   body.appendChild(renderThanksMessage());

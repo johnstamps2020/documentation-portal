@@ -34,7 +34,13 @@ function addMiniToc() {
       footer.parentNode.insertBefore(sidebar, footer);
     }
 
-    document.querySelector('main').after(miniToc);
+    const main = document.querySelector('main');
+    main.appendChild(miniToc);
+
+    const spacer = document.createElement('div');
+    spacer.classList.add('spacer');
+    const mainArticle = document.querySelector('article');
+    mainArticle.after(spacer);
   }
 }
 
@@ -125,7 +131,7 @@ async function addBreadCrumbs() {
       breadCrumbLink.textContent = link.text;
       breadCrumbs.appendChild(breadCrumbLink);
     }
-    document.querySelector('#navbarLeft').appendChild(breadCrumbs);
+    document.querySelector('#navbarLeft').prepend(breadCrumbs);
   }
 }
 
