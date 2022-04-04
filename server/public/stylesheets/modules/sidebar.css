@@ -3,10 +3,13 @@ nav[role='toc'] {
   --caret-closed: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='18px' viewBox='0 0 24 24' width='18px' fill='%23000000'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z'/%3E%3C/svg%3E");
   --caret-open: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='18px' viewBox='0 0 24 24' width='18px' fill='%23000000'%3E%3Cpath d='M24 24H0V0h24v24z' fill='none' opacity='.87'/%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z'/%3E%3C/svg%3E");
   grid-area: toc;
-  padding: 16px 1rem 16px 4px;
-  height: var(--main-height);
+  padding: 16px 1rem var(--footer-height) 4px;
+  height: 100vh; 
   overflow-y: auto;
   border-right: 1px solid lightgray;
+  position: sticky;
+  top: 0;
+  
 }
 
 nav[role='toc'] ul {

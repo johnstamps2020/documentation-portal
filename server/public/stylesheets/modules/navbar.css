@@ -46,17 +46,18 @@
 .breadCrumbs {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--navbar-gap);
+  --breadcrumb-gap: .5rem;
+  gap: var(--breadcrumb-gap);
 }
 
 .crumb {
-  font-size: 1rem;
+  font-size: .875rem;
   color: rgb(40, 51, 63);
 }
 
 .crumb:not(:last-child)::after {
   content: '>';
-  padding-left: var(--navbar-gap);
+  padding-left: var(--breadcrumb-gap);
 }
 
 .navLinks {
