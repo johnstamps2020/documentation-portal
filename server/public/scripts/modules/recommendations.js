@@ -15,7 +15,7 @@ export async function showTopicRecommendations() {
       `;
 
     const feedbackContainer = document.querySelector('.feedback');
-    const topicBody = document.querySelector('main');
+    const topicBody = document.querySelector('article');
     if (feedbackContainer) {
       feedbackContainer.parentElement.insertBefore(
         recommendationsContainer,
