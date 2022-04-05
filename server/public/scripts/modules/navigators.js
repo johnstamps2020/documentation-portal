@@ -1,48 +1,5 @@
 import { highlightTextFromUrl, addHighlightToggle } from './highlight.js';
 import { addPdfLink } from './pdflink.js';
-import '../../stylesheets/modules/minitoc.css';
-
-function addMiniToc() {
-  const hashLinks = document.querySelectorAll('.hashLink');
-  if (hashLinks.length > 1) {
-    const miniToc = document.createElement('nav');
-    miniToc.setAttribute('class', 'miniToc');
-
-    hashLinks.forEach(hashLink => {
-      const title = hashLink.parentElement.textContent;
-      const href = hashLink.getAttribute('href');
-      const parentClasses = hashLink.parentElement.classList;
-
-      if (title && href) {
-        const navLink = document.createElement('a');
-        navLink.setAttribute('href', href);
-        navLink.classList.add('miniTocLink');
-        parentClasses.forEach(className => {
-          if (!className.match('^title$')) {
-            navLink.classList.add(className);
-          }
-        });
-        navLink.textContent = title;
-
-        miniToc.appendChild(navLink);
-      }
-    });
-
-    const sidebar = document.querySelector('.sidebar');
-    if (sidebar) {
-      const footer = document.querySelector('footer');
-      footer.parentNode.insertBefore(sidebar, footer);
-    }
-
-    const main = document.querySelector('main');
-    main.appendChild(miniToc);
-
-    const spacer = document.createElement('div');
-    spacer.classList.add('spacer');
-    const mainArticle = document.querySelector('article');
-    mainArticle.after(spacer);
-  }
-}
 
 async function getTopBreadcrumb() {
   try {
@@ -295,8 +252,15 @@ function addNavbar() {
 }
 
 export async function addPageNavigators() {
-  addHashLinks();
-  addMiniToc();
+  await addHashLinks();
+
+  // add minitoc only if hash links have been added
+  const hashLinks = document.querySelectorAll('.hashLink');
+  if (hashLinks.length > 1) {
+    const addMiniToc = await require('./minitoc.js').default;
+    addMiniToc(hashLinks);
+  }
+
   addNavbar();
   await addBreadCrumbs();
   highlightTextFromUrl();
