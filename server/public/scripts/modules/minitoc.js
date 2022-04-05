@@ -38,11 +38,11 @@ function MiniToc({ hashLinks }) {
   const handleWindowResize = () => setWidth(window.innerWidth);
   useEffect(function() {
     window.addEventListener('resize', handleWindowResize);
-
+    console.log(width);
     return () => window.removeEventListener('resize', handleWindowResize);
   }, []);
 
-  if (width < breakpoint) {
+  if (width <= breakpoint) {
     return (
       <div id="mobileMiniTocWrapper">
         <button
@@ -87,11 +87,11 @@ export default function addMiniToc(hashLinks) {
   }
 
   const main = document.querySelector('main');
-  main.appendChild(miniTocContainer);
+  main.prepend(miniTocContainer);
   render(<MiniToc hashLinks={hashLinks} />, miniTocContainer);
 
   const spacer = document.createElement('div');
   spacer.classList.add('spacer');
   const mainArticle = document.querySelector('article');
-  mainArticle.after(spacer);
+  mainArticle.before(spacer);
 }

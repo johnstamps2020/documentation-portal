@@ -57,7 +57,8 @@ main {
   scroll-behavior: smooth;
   line-height: 1.5;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -109,7 +110,8 @@ main > .spacer {
 
   main {
     margin-right: 0.2vw;
-    flex-wrap: wrap-reverse;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 
   main > article {
@@ -120,5 +122,6 @@ main > .spacer {
   main > .spacer {
     flex-grow: 0;
     border-right: none;
+    height: 1rem;
   }
 }
