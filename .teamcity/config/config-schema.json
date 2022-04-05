@@ -241,7 +241,14 @@
     "doc": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "url", "metadata", "environments", "internal"],
+      "required": [
+        "id",
+        "url",
+        "metadata",
+        "environments",
+        "internal",
+        "earlyAccess"
+      ],
       "properties": {
         "id": {
           "$ref": "#/definitions/id"
@@ -267,6 +274,10 @@
         },
         "internal": {
           "description": "If set to true, the document is available to Guidewire employees only.",
+          "type": "boolean"
+        },
+        "earlyAccess": {
+          "description": "If set to true, the document is marked with the Early Access disclaimer.",
           "type": "boolean"
         },
         "metadata": {

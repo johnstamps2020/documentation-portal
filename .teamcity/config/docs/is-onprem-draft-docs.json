@@ -14,7 +14,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "cc10xdraft",
@@ -29,7 +30,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "pc10xdraft",
@@ -44,7 +46,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "selfmanagedbcupgradeguide10x",
@@ -59,7 +62,8 @@
       "environments": ["int"],
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "selfmanagedccupgradeguide10x",
@@ -74,7 +78,8 @@
       "environments": ["int"],
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "selfmanagedpcupgradeguide10x",
@@ -89,7 +94,8 @@
       "environments": ["int"],
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "selfmanagedbcupgradetools1x",
@@ -104,7 +110,8 @@
       "environments": ["int"],
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "selfmanagedccupgradetools1x",
@@ -119,7 +126,8 @@
       "environments": ["int"],
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "selfmanagedpcupgradetools1x",
@@ -134,7 +142,8 @@
       "environments": ["int"],
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "selfmanagedbcxcoxibeoa",
@@ -149,7 +158,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "selfmanagedccxgfurvaqu",
@@ -164,7 +174,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "selfmanagedpcxxbkttzbb",
@@ -179,7 +190,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }

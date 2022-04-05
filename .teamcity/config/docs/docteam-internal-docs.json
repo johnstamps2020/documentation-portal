@@ -13,7 +13,8 @@
       "environments": ["int"],
       "indexForSearch": false,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "doctoolsadmin",
@@ -27,7 +28,8 @@
       "environments": ["int"],
       "indexForSearch": false,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "writingwithgit",
@@ -42,7 +44,8 @@
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "elemrend",
@@ -56,7 +59,8 @@
       "environments": ["int"],
       "indexForSearch": false,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }

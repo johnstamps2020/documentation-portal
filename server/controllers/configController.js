@@ -150,6 +150,7 @@ async function getDocumentMetadata(docId, reqObj, resObj) {
     return {
       docTitle: doc.title,
       docInternal: doc.internal,
+      docEarlyAccess: doc.earlyAccess,
       ...doc.metadata,
     };
   } else {

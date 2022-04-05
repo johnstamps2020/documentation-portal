@@ -11,7 +11,8 @@
         "version": ["latest"]
       },
       "environments": ["int"],
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }
