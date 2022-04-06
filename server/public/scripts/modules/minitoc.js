@@ -38,7 +38,6 @@ function MiniToc({ hashLinks }) {
   const handleWindowResize = () => setWidth(window.innerWidth);
   useEffect(function() {
     window.addEventListener('resize', handleWindowResize);
-    console.log(width);
     return () => window.removeEventListener('resize', handleWindowResize);
   }, []);
 
