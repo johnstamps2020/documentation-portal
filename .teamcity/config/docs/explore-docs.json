@@ -16,7 +16,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "exploreusingrelease",
@@ -33,7 +34,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "exploredatadictrelease",
@@ -50,7 +52,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }

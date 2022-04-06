@@ -295,12 +295,11 @@
     {
       "label": "Feature Preview",
       "class": "categoryCard cardShadow",
-      "env": ["int"],
+      "env": ["int", "staging"],
       "items": [
         {
           "label": "Feature Preview",
-          "page": "../featurePreview",
-          "env": ["int"]
+          "page": "../featurePreview"
         }
       ]
     }

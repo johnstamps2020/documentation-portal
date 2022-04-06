@@ -16,7 +16,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "isbcelysiangwdevsetup",
@@ -33,7 +34,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "isbcelysiangwupgrade",
@@ -50,7 +52,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "isccelysiangwadmin",
@@ -67,7 +70,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "isccelysiangwdevsetup",
@@ -84,7 +88,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "isccelysiangwupgrade",
@@ -101,7 +106,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "ispcelysiangwadmin",
@@ -118,7 +124,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "ispcelysiangwdevsetup",
@@ -135,7 +142,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "ispcelysiangwupgrade",
@@ -152,7 +160,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }

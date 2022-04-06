@@ -17,6 +17,7 @@ let docCategory = document.querySelector("meta[name = 'DC.coverage']")?.content;
 let docTitle = undefined;
 let docSubject = undefined;
 let docInternal = undefined;
+let docEarlyAccess = undefined;
 const topicId = window.location.pathname;
 
 async function showTopicRecommendations() {
@@ -88,6 +89,7 @@ async function fetchMetadata() {
           docTitle = wrapInQuotes(docInfo.docTitle);
           docSubject = wrapInQuotes(docInfo.subject);
           docInternal = docInfo.docInternal;
+          docEarlyAccess = docInfo.docEarlyAccess;
           return true;
         }
       } catch (err) {
@@ -150,6 +152,19 @@ function addInternalBadge() {
   } catch (err) {
     console.log(err);
     return null;
+  }
+}
+
+function addEarlyAccessMark() {
+  if (docEarlyAccess) {
+    const warningContainer = document.createElement('div');
+    const article = document.querySelector('article');
+    const earlyAccessWarning = document.createElement('div');
+    earlyAccessWarning.classList.add('earlyAccessWarning');
+    earlyAccessWarning.innerHTML =
+      'This functionality is available only to customers who have signed up for our Early Access (EA) program. Talk to your Guidewire representative to learn more about our eligibility criteria for EA programs. Note that EA capabilities may or may not become part of our future offerings.';
+    warningContainer.append(earlyAccessWarning);
+    article.prepend(warningContainer);
   }
 }
 
@@ -391,6 +406,7 @@ async function addCustomElements() {
   const customHeaderElements = document.getElementById('customHeaderElements');
   if (customHeaderElements != null) {
     addInternalBadge();
+    addEarlyAccessMark();
     await createVersionSelector();
     await addAvatar();
     customHeaderElements.classList.remove('invisible');

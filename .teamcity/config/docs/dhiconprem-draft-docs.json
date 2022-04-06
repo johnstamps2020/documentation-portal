@@ -15,7 +15,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dhonpremdraftproduct",
@@ -31,7 +32,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dhonpremdraftinstall",
@@ -47,7 +49,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dhonpremdraftupgrade",
@@ -63,7 +66,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dhonpremdraftconfig",
@@ -79,7 +83,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dhonpremdraftdataspec",
@@ -95,7 +100,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dhonpremdraftadmin",
@@ -111,7 +117,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dhonpremdraftdevref",
@@ -127,7 +134,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "iconpremdraftrn",
@@ -143,7 +151,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "iconpremdraftproduct",
@@ -159,7 +168,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "iconpremdraftinstall",
@@ -175,7 +185,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "iconpremdraftupgrade",
@@ -191,7 +202,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "iconpremdraftconfig",
@@ -207,7 +219,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "iconpremdraftdataspec",
@@ -223,7 +236,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "iconpremdraftadmin",
@@ -239,7 +253,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "iconpremdraftbiapp",
@@ -255,7 +270,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "iconpremdraftreports",
@@ -271,7 +287,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "iconpremdraftdevref",
@@ -287,7 +304,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }

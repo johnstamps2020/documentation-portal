@@ -16,7 +16,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dhcloudproductcortina",
@@ -33,7 +34,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dhcloudinstallcortina",
@@ -50,7 +52,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dhcloudupgradecortina",
@@ -67,7 +70,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dhcloudconfigcortina",
@@ -84,7 +88,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dhclouddataspeccortina",
@@ -101,7 +106,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dhcloudadmincortina",
@@ -118,7 +124,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dhclouddevrefcortina",
@@ -135,7 +142,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "iccloudrncortina",
@@ -152,7 +160,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "iccloudproductcortina",
@@ -169,7 +178,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "iccloudinstallcortina",
@@ -186,7 +196,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "iccloudupgradecortina",
@@ -203,7 +214,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "iccloudconfigcortina",
@@ -220,7 +232,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "icclouddataspeccortina",
@@ -237,7 +250,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "iccloudadmincortina",
@@ -254,7 +268,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "iccloudbiappcortina",
@@ -271,7 +286,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "iccloudreportscortina",
@@ -288,7 +304,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "icclouddevrefcortina",
@@ -305,7 +322,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }

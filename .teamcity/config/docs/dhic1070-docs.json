@@ -15,7 +15,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dh1070product",
@@ -31,7 +32,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dh1070install",
@@ -47,7 +49,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dh1070upgrade",
@@ -63,7 +66,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dh1070config",
@@ -79,7 +83,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dh1070dataspec",
@@ -95,7 +100,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dh1070admin",
@@ -111,7 +117,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "dh1070devref",
@@ -127,7 +134,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "ic1070rn",
@@ -143,7 +151,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "ic1070product",
@@ -159,7 +168,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "ic1070install",
@@ -175,7 +185,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "ic1070upgrade",
@@ -191,7 +202,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "ic1070config",
@@ -207,7 +219,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "ic1070dataspec",
@@ -223,7 +236,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "ic1070admin",
@@ -239,7 +253,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "ic1070biapp",
@@ -255,7 +270,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "ic1070reports",
@@ -271,7 +287,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "ic1070devref",
@@ -287,7 +304,8 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }

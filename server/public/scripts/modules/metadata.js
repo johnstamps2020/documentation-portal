@@ -71,6 +71,7 @@ export async function setMetadata() {
           );
           window.docTitle = wrapInQuotes(docInfo.docTitle);
           window.docInternal = docInfo.docInternal;
+          window.docEarlyAccess = docInfo.docEarlyAccess;
         }
       } catch (err) {
         console.error(err);

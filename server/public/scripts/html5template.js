@@ -14,6 +14,7 @@ import { addSkipNav } from './modules/skipNav.js';
 import { installAndInitializePendo } from './modules/pendo.js';
 import { addInternalBadge } from './modules/internal.js';
 import { addLightbox } from './modules/lightbox.js';
+import { addEarlyAccessMark } from './modules/earlyAccess.js';
 import '../stylesheets/html5template.css';
 
 docReady(async function() {
@@ -23,6 +24,7 @@ docReady(async function() {
   setUpSidebar();
   await setMetadata();
   addInternalBadge();
+  addEarlyAccessMark();
   addLogo();
   addSearchBox();
   await addVersionSelector();

@@ -16,7 +16,8 @@
       "indexForSearch": false,
       "environments": ["staging"],
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "um1447rn",
@@ -33,7 +34,8 @@
       "indexForSearch": false,
       "environments": ["staging"],
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "um1447agentuser",
@@ -50,7 +52,8 @@
       "indexForSearch": false,
       "environments": ["staging"],
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "um1447outlook",
@@ -67,7 +70,8 @@
       "indexForSearch": false,
       "environments": ["staging"],
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "um1447studio",
@@ -84,7 +88,8 @@
       "indexForSearch": false,
       "environments": ["staging"],
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     },
     {
       "id": "um1447user",
@@ -101,7 +106,8 @@
       "indexForSearch": false,
       "environments": ["staging"],
       "public": false,
-      "internal": false
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }
