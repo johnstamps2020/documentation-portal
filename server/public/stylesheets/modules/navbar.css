@@ -35,10 +35,7 @@
   border-radius: 4px;
 }
 
-.navbarButton:hover {
-  filter: invert(1);
-}
-
+.navbarButton:hover,
 .navbarButton:active {
   transform: scale(1.4);
 }
@@ -46,7 +43,7 @@
 .breadCrumbs {
   display: flex;
   flex-wrap: wrap;
-  --breadcrumb-gap: .5rem;
+  --breadcrumb-gap: 0.5rem;
   gap: var(--breadcrumb-gap);
 }
 
