@@ -719,7 +719,7 @@ object Docs {
 
             if (index_for_search) {
                 artifactRules = """
-                    ${working_dir}/*.log => build_logs
+                    %teamcity.build.workingDir%/*.log => build_logs
                 """.trimIndent()
                 val configFile = "%teamcity.build.workingDir%/config.json"
                 val configFileStep = GwBuildSteps.createGetConfigFileStep(deploy_env, configFile)
