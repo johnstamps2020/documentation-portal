@@ -881,7 +881,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
       "id": "ccappeventsdevdraft",
@@ -899,7 +899,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
       "id": "pcappeventsdevdraft",
@@ -917,7 +917,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
       "id": "integgatewaydevdraft",

@@ -370,7 +370,7 @@
       "environments": ["int"],
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
       "id": "selfmanagedbcupgradeguide1020",
