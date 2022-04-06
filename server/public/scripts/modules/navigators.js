@@ -1,3 +1,4 @@
+import { addHashLinks } from './hashLink.js';
 import { highlightTextFromUrl, addHighlightToggle } from './highlight.js';
 import { addPdfLink } from './pdflink.js';
 
@@ -89,47 +90,6 @@ async function addBreadCrumbs() {
       breadCrumbs.appendChild(breadCrumbLink);
     }
     document.querySelector('#navbarLeft').prepend(breadCrumbs);
-  }
-}
-
-function isHidden(element) {
-  return element.offsetParent === null;
-}
-
-function addHashLinks() {
-  const idsInDoc = [];
-
-  function generateId(element) {
-    let idString =
-      element.parentElement.getAttribute('id') ||
-      element.getAttribute('id') ||
-      element.textContent.replace(/[^a-zA-Z0-9]/g, '');
-    if (idsInDoc.includes(idString)) {
-      idString = idString + +new Date().getTime();
-    }
-    idsInDoc.push(idString);
-
-    return idString;
-  }
-  document.querySelectorAll('.title').forEach((title, index) => {
-    if (!isHidden(title) && index !== 0) {
-      const id = generateId(title);
-      if (!document.getElementById(id)) {
-        title.setAttribute('id', id);
-      }
-
-      const hashLink = document.createElement('a');
-      hashLink.setAttribute('href', `#${id}`);
-      hashLink.setAttribute('title', 'Direct link to heading');
-      hashLink.setAttribute('class', 'hashLink');
-
-      title.appendChild(hashLink);
-    }
-  });
-
-  const idFromUrl = window.location.href.split('#').at(-1);
-  if (idFromUrl && idsInDoc.includes(idFromUrl)) {
-    document.getElementById(idFromUrl).scrollIntoView({ behavior: 'smooth' });
   }
 }
 
