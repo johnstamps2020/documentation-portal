@@ -158,13 +158,13 @@ function addInternalBadge() {
 function addEarlyAccessMark() {
   if (docEarlyAccess) {
     const warningContainer = document.createElement('div');
-    const main = document.querySelector('main');
+    const article = document.querySelector('article');
     const earlyAccessWarning = document.createElement('div');
     earlyAccessWarning.classList.add('earlyAccessWarning');
     earlyAccessWarning.innerHTML =
       'This functionality is available only to customers who have signed up for our Early Access (EA) program. Talk to your Guidewire representative to learn more about our eligibility criteria for EA programs. Note that EA capabilities may or may not become part of our future offerings.';
     warningContainer.append(earlyAccessWarning);
-    main.prepend(warningContainer);
+    article.prepend(warningContainer);
   }
 }
 
