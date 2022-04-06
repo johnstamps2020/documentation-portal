@@ -439,7 +439,6 @@ async function searchController(req, res, next) {
       res.render('search', searchData);
     }
   } catch (err) {
-    console.error(err);
     next(err);
   }
 }

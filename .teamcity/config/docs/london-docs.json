@@ -1,0 +1,37 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "londonpcapp32",
+      "title": "PolicyCenter for London Market Application Guide",
+      "url": "london/3.2/pcapp",
+      "metadata": {
+        "product": ["Global Solutions - London"],
+        "platform": ["Cloud"],
+        "version": ["3.2"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    },
+    {
+      "id": "londonrn32",
+      "title": "London Market Release Notes",
+      "url": "london/3.2/releasenotes",
+      "metadata": {
+        "product": ["Global Solutions - London"],
+        "platform": ["Cloud"],
+        "version": ["3.2"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false
+    }
+  ]
+}

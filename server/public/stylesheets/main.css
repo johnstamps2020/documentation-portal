@@ -9,6 +9,7 @@
 @import 'modules/subjects.css';
 @import 'modules/twoCards.css';
 @import 'modules/twoColumns.css';
+@import 'modules/infoPage.css';
 
 :root {
   --ff-GW: 'Source Sans Pro', Helvetica, Arial, sans-serif;

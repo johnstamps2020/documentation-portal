@@ -1,6 +1,7 @@
 require('dotenv').config();
 const { Client } = require('@elastic/elasticsearch');
 const { getConfig } = require('./configController');
+const { winstonLogger } = require('./loggerController');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const recommendationsIndexName = 'gw-recommendations';
 
@@ -82,7 +83,7 @@ async function getTopicRecommendations(topicId, reqObj, resObj) {
       };
     }
   } catch (err) {
-    console.error(err);
+    winstonLogger.error(err.stack);
     return {
       body: err.message,
       status: 500,

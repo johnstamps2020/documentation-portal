@@ -3,6 +3,7 @@ const { Client } = require('@elastic/elasticsearch');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const indexName = 'lrs';
 const { getSampleRecords } = require('./utils/lrsUtils');
+const { winstonLogger } = require('./loggerController');
 
 function formalizeError(err) {
   return {
@@ -21,7 +22,7 @@ async function createIndex() {
     console.log('CREATED INDEX', JSON.stringify(result, null, 2));
     return result;
   } catch (err) {
-    console.error(err);
+    winstonLogger.error(err.stack);
     return formalizeError(err);
   }
 }
@@ -55,12 +56,8 @@ async function createTestRecords() {
       }
     }
   } catch (err) {
-    const errorMessage = formalizeError(err);
-    console.error(
-      'ERROR CREATING RECORD',
-      JSON.stringify(errorMessage, null, 2)
-    );
-    return formalizeError(errorMessage);
+    winstonLogger.error(err.stack);
+    return formalizeError(err);
   }
 }
 

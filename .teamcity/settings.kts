@@ -1232,6 +1232,7 @@ object Frontend {
                             +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/public/scripts/**
                             +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/public/stylesheets/**
                             +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/public/fonts/**
+                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/src/html5home/**
                             -:user=doctools:**
                             """.trimIndent()
                 }
@@ -3676,6 +3677,7 @@ object GwBuildSteps {
                 commandParams.add(Pair("--git.branch", git_branch))
                 commandParams.add(Pair("-f", "html5-Guidewire"))
                 commandParams.add(Pair("--args.rellinks", "nofamily"))
+                commandParams.add(Pair("--build.pdfs", "yes"))
 
             }
         }

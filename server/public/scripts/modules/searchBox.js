@@ -1,3 +1,5 @@
+import '../../stylesheets/modules/searchBox.css';
+
 function createInput(name, value, isHidden = true) {
   const input = document.createElement('input');
   if (isHidden) {

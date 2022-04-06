@@ -1,3 +1,5 @@
+import '../../stylesheets/modules/recommendations.css';
+
 export async function showTopicRecommendations() {
   const response = await fetch(
     `/recommendations?topicId=${window.location.pathname}`
@@ -13,7 +15,7 @@ export async function showTopicRecommendations() {
       `;
 
     const feedbackContainer = document.querySelector('.feedback');
-    const topicBody = document.querySelector('main');
+    const topicBody = document.querySelector('article');
     if (feedbackContainer) {
       feedbackContainer.parentElement.insertBefore(
         recommendationsContainer,

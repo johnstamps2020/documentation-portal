@@ -1,6 +1,22 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const postCss = {
+  loader: 'postcss-loader',
+  options: {
+    postcssOptions: {
+      plugins: [
+        [
+          'postcss-preset-env',
+          {
+            // Options
+          },
+        ],
+      ],
+    },
+  },
+};
+
 module.exports = {
   mode: 'production',
   entry: {
@@ -50,9 +66,13 @@ module.exports = {
                     'dockerfile',
                     'gherkin',
                     'git',
+                    'html',
                     'java',
                     'javastacktrace',
                     'js',
+                    'json',
+                    'json5',
+                    'jsonp',
                     'kotlin',
                     'markdown',
                     'plsql',
@@ -67,12 +87,14 @@ module.exports = {
                     'typescript',
                     'uri',
                     'url',
+                    'xml',
                     'yml',
                   ],
                   plugins: [
                     'line-numbers',
                     'keep-markup',
                     'toolbar',
+                    'show-language',
                     'copy-to-clipboard',
                     'match-braces',
                   ],
@@ -100,11 +122,12 @@ module.exports = {
               },
             },
           },
+          postCss,
         ],
       },
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', postCss],
         exclude: /\.module\.css$/,
       },
       {

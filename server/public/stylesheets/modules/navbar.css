@@ -46,7 +46,8 @@
 .breadCrumbs {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--navbar-gap);
+  --breadcrumb-gap: .5rem;
+  gap: var(--breadcrumb-gap);
 }
 
 .crumb {
@@ -56,7 +57,7 @@
 
 .crumb:not(:last-child)::after {
   content: '>';
-  padding-left: var(--navbar-gap);
+  padding-left: var(--breadcrumb-gap);
 }
 
 .navLinks {

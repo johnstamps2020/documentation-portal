@@ -1,5 +1,5 @@
 {
-  "title": "Jutro Design System 7.4.0 (Elysian)",
+  "title": "Jutro Design System 7.4.2 (Elysian)",
   "template": "page",
   "class": "twoColumns",
   "items": [
@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "Jutro Design System and UI Framework",
-          "id": "jutro740"
+          "id": "jutro742"
         }
       ]
     },
@@ -19,7 +19,7 @@
       "items": [
         {
           "label": "Jutro Storybook",
-          "id": "storybook740"
+          "id": "storybook742"
         }
       ]
     }

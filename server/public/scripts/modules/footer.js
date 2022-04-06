@@ -1,3 +1,5 @@
+import '../../stylesheets/modules/footer.css';
+
 const footerTemplate = `<div>
     <div class="footerLinks">
         <span class="footerLink">
@@ -5,7 +7,7 @@ const footerTemplate = `<div>
         </span>
     </div>
     <div class="footerCopyright">
-        Copyright © 2001-${new Date().getFullYear()}
+        Copyright ©${new Date().getFullYear()}
         Guidewire Software, Inc.
     </div>
 </div>`;

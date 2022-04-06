@@ -14,7 +14,13 @@
     },
     {
       "label": "_redirect",
-      "link": "/cloudProducts/dobson"
+      "link": "/cloudProducts/dobson",
+      "env": ["dev", "prod"]
+    },
+    {
+      "label": "_redirect",
+      "link": "/cloudProducts/elysian",
+      "env": ["int", "staging"]
     }
   ]
 }

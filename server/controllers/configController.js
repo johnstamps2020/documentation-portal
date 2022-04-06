@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
 const path = require('path');
+const { winstonLogger } = require('./loggerController');
 
 const localConfigDir = path.resolve(`${__dirname}/../../.teamcity/config/docs`);
 const breadcrumbsConfigPath = path.resolve(
@@ -46,7 +47,7 @@ async function loadConfig() {
     }
     return config;
   } catch (err) {
-    console.log(err);
+    winstonLogger.error(err.stack);
     return { docs: [] };
   }
 }
@@ -63,7 +64,7 @@ async function getConfig(reqObj, resObj) {
     }
     return config;
   } catch (err) {
-    console.log(err);
+    winstonLogger.error(err.stack);
     return { docs: [] };
   }
 }
@@ -107,7 +108,7 @@ async function getRootBreadcrumb(pagePathname) {
     }
     return { rootPage: {} };
   } catch (err) {
-    console.log(err);
+    winstonLogger.error(err.stack);
     return { rootPage: {} };
   }
 }
@@ -138,7 +139,7 @@ async function getVersionSelector(docId, reqObj, resObj) {
       return { matchingVersionSelector: {} };
     }
   } catch (err) {
-    console.log(err);
+    winstonLogger.error(err.stack);
     return { matchingVersionSelector: {} };
   }
 }

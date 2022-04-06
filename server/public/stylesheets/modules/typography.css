@@ -1,3 +1,9 @@
+main > article:first-of-type > h1:first-of-type,
+main > article:first-of-type > article.nested0:first-of-type > h1:first-of-type,
+main > article:first-of-type > article.nested0:first-of-type {
+    margin-top: 0 !important;
+}
+
 .p.seealso {
   font-weight: 500;
 }

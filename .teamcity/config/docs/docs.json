@@ -37,7 +37,7 @@
     },
     {
       "id": "cloudplatformdraft",
-      "title": "Cloud Platform Draft",
+      "title": "Network connectivity with Guidewire Cloud Platform",
       "url": "cloud/gwcp/latest",
       "metadata": {
         "platform": ["Cloud"],
@@ -54,7 +54,7 @@
     },
     {
       "id": "cloudplatformrelease",
-      "title": "Cloud Platform Release",
+      "title": "Network connectivity with Guidewire Cloud Platform",
       "url": "cloud/gwcp/latest",
       "metadata": {
         "platform": ["Cloud"],
@@ -239,7 +239,7 @@
     {
       "id": "guidewirecloudconsoleguideinsurerdev",
       "title": "Cloud Console Guide",
-      "url": "cloud/gcc-guide/insurer-developer/latest/topics/c_initial-provisioning.html",
+      "url": "cloud/gcc-guide/insurer-developer/latest/topics/c_provisioning-cloud-console.html",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
@@ -290,7 +290,7 @@
     {
       "id": "guidewirecloudconsoleguideinsurerdevdraft",
       "title": "Cloud Console Guide",
-      "url": "cloud/gcc-guide/insurer-developer/latest/topics/c_initial-provisioning.html",
+      "url": "cloud/gcc-guide/insurer-developer/latest/topics/c_provisioning-cloud-console.html",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],

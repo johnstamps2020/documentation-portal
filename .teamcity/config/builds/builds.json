@@ -916,28 +916,32 @@
       "filter": "GW-Generic-Draft.ditaval",
       "root": "GuidewireCloud.ditamap",
       "srcId": "gchhelpsrc",
-      "docId": "gchhelpdraft"
+      "docId": "gchhelpdraft",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "GuidewireCloud.ditamap",
       "srcId": "gchhelpsrc",
-      "docId": "gchhelprelease"
+      "docId": "gchhelprelease",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "GuidewireCloud.ditamap",
       "srcId": "configmgrhelpcortinasrc",
-      "docId": "configmgrhelpcortina"
+      "docId": "configmgrhelpcortina",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "GuidewireCloudPlatform.ditamap",
       "srcId": "configmgrhelpbanffsrc",
-      "docId": "configmgrhelpbanff"
+      "docId": "configmgrhelpbanff",
+      "indexRedirect": true
     },
     {
       "buildType": "dita",

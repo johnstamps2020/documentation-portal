@@ -1,9 +1,9 @@
-process.on('unhandledRejection', function(reason, p) {
-  console.log(reason, p);
-  process.exit(1);
-});
-
 require('dotenv').config();
+const tracer = require('dd-trace').init();
+const {
+  expressWinstonLogger,
+  expressWinstonErrorLogger,
+} = require('./controllers/loggerController');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -12,10 +12,10 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const favicon = require('serve-favicon');
 const session = require('express-session');
 const httpContext = require('express-http-context');
-
 const port = process.env.PORT || 8081;
-const app = express();
 
+const app = express();
+app.use(expressWinstonLogger);
 app.use(function(req, res, next) {
   const hostnamesToReplace = ['portal2.guidewire.com'];
   if (hostnamesToReplace.includes(req.hostname)) {
@@ -39,17 +39,6 @@ const options = {
 };
 
 console.log('Server app instantiated!');
-
-// error handler
-app.use((err, req, res, next) => {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
 
 const sessionSettings = {
   secret: `${process.env.SESSION_KEY}`,
@@ -181,6 +170,7 @@ app.use('/portal-config/*', (req, res) => {
 });
 
 // handles unauthorized errors
+app.use(expressWinstonErrorLogger);
 app.use((err, req, res, next) => {
   if (err.httpStatusCode === 304) {
     res.status(304).redirect('/unauthorized');
@@ -188,7 +178,8 @@ app.use((err, req, res, next) => {
   if (err.httpStatusCode === 404) {
     res.status(404).redirect('/404');
   }
-  next(err);
+  err.status = err.status || 500;
+  res.render('error', { err });
 });
 
 app.listen(port, () => {

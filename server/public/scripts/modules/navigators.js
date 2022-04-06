@@ -1,42 +1,6 @@
 import { highlightTextFromUrl, addHighlightToggle } from './highlight.js';
 import { addPdfLink } from './pdflink.js';
 
-function addMiniToc() {
-  const hashLinks = document.querySelectorAll('.hashLink');
-  if (hashLinks.length > 1) {
-    const miniToc = document.createElement('nav');
-    miniToc.setAttribute('class', 'miniToc');
-
-    hashLinks.forEach(hashLink => {
-      const title = hashLink.parentElement.textContent;
-      const href = hashLink.getAttribute('href');
-      const parentClasses = hashLink.parentElement.classList;
-
-      if (title && href) {
-        const navLink = document.createElement('a');
-        navLink.setAttribute('href', href);
-        navLink.classList.add('miniTocLink');
-        parentClasses.forEach(className => {
-          if (!className.match('^title$')) {
-            navLink.classList.add(className);
-          }
-        });
-        navLink.textContent = title;
-
-        miniToc.appendChild(navLink);
-      }
-    });
-
-    const sidebar = document.querySelector('.sidebar');
-    if (sidebar) {
-      const footer = document.querySelector('footer');
-      footer.parentNode.insertBefore(sidebar, footer);
-    }
-
-    document.querySelector('main').after(miniToc);
-  }
-}
-
 async function getTopBreadcrumb() {
   try {
     const currentPagePathname = window.location.pathname;
@@ -81,16 +45,17 @@ function getCurrentLink() {
 
 function getDocTitleBreadcrumb() {
   const docTitle = document.querySelector("meta[name='gw-doc-title']")?.content;
-  const docBaseUrl = document.querySelector("meta[name='gw-base-url']")?.content;
+  const docBaseUrl = document.querySelector("meta[name='gw-base-url']")
+    ?.content;
 
   if (!docTitle || !docBaseUrl) {
     return;
   }
-  
+
   const docTitleBreadcrumb = {
     text: docTitle,
-    href: docBaseUrl
-  }
+    href: docBaseUrl,
+  };
 
   return docTitleBreadcrumb;
 }
@@ -101,7 +66,7 @@ async function addBreadCrumbs() {
     const linkTrail = getParentNavItems(currentLink).flat();
 
     const docTitleBreadcrumb = getDocTitleBreadcrumb();
-    if(docTitleBreadcrumb) {
+    if (docTitleBreadcrumb) {
       linkTrail.push(docTitleBreadcrumb);
     }
     const topBreadcrumb = await getTopBreadcrumb();
@@ -123,7 +88,7 @@ async function addBreadCrumbs() {
       breadCrumbLink.textContent = link.text;
       breadCrumbs.appendChild(breadCrumbLink);
     }
-    document.querySelector('#navbarLeft').appendChild(breadCrumbs);
+    document.querySelector('#navbarLeft').prepend(breadCrumbs);
   }
 }
 
@@ -218,15 +183,6 @@ function addVerticalDivider() {
   document.querySelector('#navbarRight').appendChild(verticalDivider);
 }
 
-function removeElementsByQuery(selectedDocument, listOfQueries) {
-  for (const query of listOfQueries) {
-    const matchedElement = selectedDocument.querySelector(query);
-    if (matchedElement) {
-      matchedElement.remove();
-    }
-  }
-}
-
 function addPrintButton() {
   const printButton = document.createElement('button');
   printButton.setAttribute('type', 'button');
@@ -296,8 +252,15 @@ function addNavbar() {
 }
 
 export async function addPageNavigators() {
-  addHashLinks();
-  addMiniToc();
+  await addHashLinks();
+
+  // add minitoc only if hash links have been added
+  const hashLinks = document.querySelectorAll('.hashLink');
+  if (hashLinks.length > 1) {
+    const addMiniToc = await require('./minitoc.js').default;
+    addMiniToc(hashLinks);
+  }
+
   addNavbar();
   await addBreadCrumbs();
   highlightTextFromUrl();
