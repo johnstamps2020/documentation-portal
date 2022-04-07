@@ -25,7 +25,7 @@
       "metadata": {
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
-        "version": ["2022.02"],
+        "version": ["2022.03"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["dev", "staging", "prod"],
