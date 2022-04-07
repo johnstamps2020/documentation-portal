@@ -2,6 +2,9 @@
   "name": "documentation-portal",
   "version": "2.19.1",
   "private": true,
+  "engines": {
+    "node": "16.14.2"
+  },
   "scripts": {
     "start": "node ./bin/www",
     "start:dev": "nodemon ./bin/www -e js,ejs,css,html,jpg,png",
