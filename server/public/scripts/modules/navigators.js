@@ -201,13 +201,15 @@ function addScrollToTop() {
 
   function handleScroll() {
     if (html.scrollTop >= 200) {
+      let articleRect = article.getBoundingClientRect();
+      scrollToTopButton.style.left = parseInt(articleRect.right + 4) + 'px';
       scrollToTopButton.classList.add('visible');
     } else {
       scrollToTopButton.classList.remove('visible');
     }
   }
 
-  function debounce(fn, delay = 200) {
+  function debounce(fn, delay = 100) {
     let timeout;
 
     return (...args) => {
