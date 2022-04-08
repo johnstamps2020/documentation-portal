@@ -65,11 +65,14 @@ main {
   main {
     scroll-behavior: auto;
   }
+  .scrollToTopButton:active {
+    transform: none;
+  }
 }
 
 main > article {
   max-width: 90ch; 
-  padding-right: 1rem;
+  margin-right: 3rem;
 }
 
 main > .spacer {
@@ -80,7 +83,6 @@ main > .spacer {
 .scrollToTopButton {
   position: fixed;
   bottom: calc(8px + var(--footer-height));
-  right: 40px;
   display: none;
   width: 40px;
   height: 40px;
