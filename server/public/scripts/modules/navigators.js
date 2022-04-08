@@ -205,7 +205,6 @@ function addScrollToTop() {
     } else {
       scrollToTopButton.classList.remove('visible');
     }
-    console.log('html.scrollTop ' + html.scrollTop);
   }
 
   function debounce(fn, delay = 200) {
