@@ -1,16 +1,29 @@
 import '../../stylesheets/modules/skipNav.css';
 
 export function addSkipNav() {
-  let articleId = 'articleContent';
+  let contentId = 'contentStart';
   const article = document.querySelector('article');
-  if (article.id) {
-    articleId = article.id;
-  } else {
-    article.setAttribute('id', articleId);
+
+  if(article) {
+    if (article.id) {
+      contentId = article.id;
+    } else {
+      article.setAttribute('id', contentId);
+    }
+  }
+  else {
+    const heading1 = document.querySelector('h1');
+    if(heading1) {
+      if (heading1.id) {
+        contentId = heading1.id;
+      } else {
+        heading1.setAttribute('id', contentId);
+      }
+    }
   }
 
   const skipNav = document.createElement('a');
-  skipNav.setAttribute('href', `#${articleId}`);
+  skipNav.setAttribute('href', `#${contentId}`);
   skipNav.classList.add('skipNav');
   skipNav.innerText = 'Skip to main content';
 
