@@ -12,6 +12,9 @@
 
 body {
   --header-height: 32px;
+  --items-width: 950px;
+  --sidebar-width: 350px;
+  --content-width: calc(var(--items-width) + var(--sidebar-width) + 2rem);
 }
 
 #mainContent {
@@ -19,6 +22,25 @@ body {
   padding: 2rem 1rem;
   max-width: 800px;
   margin: 2rem auto;
+}
+
+main {
+  padding: 64px 32px;
+  background-color: var(--clr-GW-WHITE);
+  min-height: var(--body-height);
+}
+
+main:not(.fullWidth) .content {
+  padding: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.pageBody {
+  max-width: var(--content-width);
+  margin: auto;
 }
 
 .subject .topicref a {
