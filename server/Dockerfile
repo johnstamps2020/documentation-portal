@@ -1,4 +1,4 @@
-FROM artifactory.guidewire.com/hub-docker-remote/node:14-alpine
+FROM artifactory.guidewire.com/hub-docker-remote/node:16.14.2-alpine
 
 # Create app directory
 WORKDIR /usr/src/app
