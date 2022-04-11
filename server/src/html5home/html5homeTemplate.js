@@ -8,7 +8,6 @@ import { addVersionSelector } from '../../public/scripts/modules/versionSelector
 import { addAvatar } from '../../public/scripts/modules/avatar.js';
 import { addSearchBox } from '../../public/scripts/modules/searchBox.js';
 import { addSkipNav } from '../../public/scripts/modules/skipNav.js';
-import { installAndInitializePendo } from '../../public/scripts/modules/pendo.js';
 import { addInternalBadge } from '../../public/scripts/modules/internal.js';
 
 docReady(async function() {
@@ -20,5 +19,4 @@ docReady(async function() {
   await addVersionSelector();
   await addAvatar();
   addFooterContents();
-  installAndInitializePendo();
 });

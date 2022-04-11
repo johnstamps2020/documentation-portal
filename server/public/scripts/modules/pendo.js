@@ -41,45 +41,40 @@ function getScrambledEmail(email) {
   return `${scrambledLogin}@${parts[1]}`;
 }
 
-function getUserDetailsOrFail() {
-  const userInfo = window.userInformation;
-
-  if (userInfo?.isLoggedIn) {
+function getUserData(userInfo) {
+  if (userInfo.isLoggedIn) {
     const isEmployee = userInfo.hasGuidewireEmail;
-    const domain = userInfo.preferred_username.split('@')[1];
+    const role = isEmployee ? 'employee' : 'customer/partner';
     const email = isEmployee
       ? userInfo.preferred_username
       : getScrambledEmail(userInfo.preferred_username);
     const name = isEmployee
-      ? userInfo.name || 'Unknown Name'
+      ? userInfo.name || 'Employee Name Not Set'
       : 'Anonymous User';
-    return {
-      domain,
-      email,
-      name,
-    };
-  } else {
-    return {
-      email: 'no.email@no.domain.com',
-      domain: 'no.domain.com',
-      name: 'Not Logged In',
-    };
+    const domain = email.split('@')[1];
+
+    return { email, name, role, domain };
   }
+
+  return {
+    email: 'anonymous@user.com',
+    name: 'User Not Logged In',
+    role: 'Not Logged In',
+    domain: 'Not Logged In',
+  };
 }
 
 export function installAndInitializePendo() {
   installPendo('f254cb71-32f1-4247-546f-fe9159040603');
 
-  const { email, domain, name } = getUserDetailsOrFail();
+  const { email, name, role, domain } = getUserData(window.userInformation);
 
   pendo.initialize({
     visitor: {
       id: email,
       email: email,
       full_name: name,
-      role: window.userInformation.hasGuidewireEmail
-        ? 'employee'
-        : 'customer/partner',
+      role: role,
     },
 
     account: {
