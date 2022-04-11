@@ -114,12 +114,16 @@ function getScrambledEmail(email) {
   return 'cannot.get.email@unkown.com';
 }
 
+function getEmployeeEmail(email) {
+  return email.replace('guidewire.com', 'gw.employee.io');
+}
+
 function getUserData(userInfo) {
   if (userInfo.isLoggedIn) {
     const isEmployee = userInfo.hasGuidewireEmail;
     const role = isEmployee ? 'employee' : 'customer/partner';
     const email = isEmployee
-      ? userInfo.preferred_username
+      ? getEmployeeEmail(userInfo.preferred_username)
       : getScrambledEmail(userInfo.preferred_username);
     const name = isEmployee
       ? userInfo.name || 'Employee Name Not Set'
