@@ -357,6 +357,20 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
       "branch": "release/7.4.2"
+    },
+    {
+      "id": "srcjutro743",
+      "title": "Jutro Design System 7.4.3",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
+      "branch": "release/7.4.3"
+    },
+    {
+      "id": "srcjutrostorybook743",
+      "title": "Jutro Storybook 7.4.3",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
+      "branch": "release/7.4.3"
     }
   ]
 }
