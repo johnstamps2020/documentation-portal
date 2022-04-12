@@ -23,6 +23,7 @@
     </div>
   </footer>
   <script src="/scripts/main.js" type="module"></script>
+  <% if (locals.analytics) { %>
   <!-- Google Tag Manager (noscript, server-side) -->
   <noscript>
     <%- analytics.tagManagerBody %>
@@ -33,4 +34,5 @@
     <%- analytics.pendoInitializeScript %>
   </script>
   <!-- End Pendo INITIALIZE (server-side) -->
+  <% } %>
 </footer>
