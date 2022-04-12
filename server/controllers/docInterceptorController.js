@@ -1,8 +1,14 @@
 const JSDOM = require('jsdom').JSDOM;
 
-function containsHtml(str) {
-  const match = str.match(/<html/i);
-  return match;
+function containsHtml(proxyResObject) {
+  if (
+    proxyResObject &&
+    proxyResObject.headers['content-type'] === 'text/html'
+  ) {
+    return true;
+  }
+
+  return false;
 }
 
 function removeTagsWithMatchingText(tagName, strToMatch, document) {
@@ -38,8 +44,8 @@ function insertTagWithContent(
 }
 
 async function interceptAndUpdateDocPage(responseBuffer, proxyRes, req, res) {
-  const response = responseBuffer.toString('utf8');
-  if (containsHtml(response)) {
+  if (containsHtml(proxyRes)) {
+    const response = responseBuffer.toString('utf8');
     const {
       tagManagerHeadScript,
       tagManagerBody,
