@@ -184,19 +184,41 @@ function addScrollToTop() {
   scrollToTopButton.setAttribute('aria-label', title);
   scrollToTopButton.classList.add('scrollToTopButton');
 
-  const main = document.querySelector('main');
+  const html = document.querySelector('html');
+  const article = document.querySelector('article');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 
   scrollToTopButton.addEventListener('click', function() {
-    main.scrollTop = 0;
+    if(!prefersReducedMotion || prefersReducedMotion.matches) {
+      article.scrollIntoView();
+    }
+    else {
+      article.scrollIntoView({behavior: "smooth"});
+    }
   });
 
-  main.addEventListener('scroll', function() {
-    if (main.scrollTop > 100) {
+  window.addEventListener('scroll', debounce(handleScroll));
+
+  function handleScroll() {
+    if (html.scrollTop >= 200) {
+      let articleRect = article.getBoundingClientRect();
+      scrollToTopButton.style.left = parseInt(articleRect.right + 4) + 'px';
       scrollToTopButton.classList.add('visible');
     } else {
       scrollToTopButton.classList.remove('visible');
     }
-  });
+  }
+
+  function debounce(fn, delay = 100) {
+    let timeout;
+
+    return (...args) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        fn(...args)
+      }, delay);
+    }
+  }
 
   document.querySelector('footer').appendChild(scrollToTopButton);
 }

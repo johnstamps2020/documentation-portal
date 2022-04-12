@@ -20,10 +20,12 @@ function Lightbox({ imgAttributes }) {
   }, {});
 
   function showDialog() {
+    document.body.style.overflow = 'hidden';
     dialogRef.current.showModal();
   }
 
   function closeDialog() {
+    document.body.style.overflow = null;
     dialogRef.current.close();
   }
 

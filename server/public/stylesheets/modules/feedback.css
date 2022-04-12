@@ -246,3 +246,13 @@
     opacity: 0;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .feedbackButton:hover {
+    transform: none;
+  }
+  
+  .feedbackButton.selected {
+    transform: none;
+  }
+}

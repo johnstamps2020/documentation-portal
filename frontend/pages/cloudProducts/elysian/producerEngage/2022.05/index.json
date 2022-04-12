@@ -55,6 +55,10 @@
         {
           "label": "Digital Services Reference Guides",
           "id": "dx202205perefguides"
+        },
+        {
+          "label": "Digital Frontend API Documentation",
+          "id": "dxjsdocs202205"
         }
       ]
     }
