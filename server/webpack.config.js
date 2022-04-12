@@ -41,6 +41,7 @@ module.exports = {
   ],
   output: {
     path: path.resolve(__dirname, 'static', 'html5', 'scripts'),
+    publicPath: '',
   },
   module: {
     rules: [

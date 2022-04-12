@@ -8,7 +8,10 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const sassMiddleware = require('node-sass-middleware');
-const { createProxyMiddleware } = require('http-proxy-middleware');
+const {
+  createProxyMiddleware,
+  responseInterceptor,
+} = require('http-proxy-middleware');
 const favicon = require('serve-favicon');
 const session = require('express-session');
 const httpContext = require('express-http-context');
@@ -143,6 +146,13 @@ function setResCacheControlHeader(proxyRes, req, res) {
   }
 }
 
+const interceptAndUpdateDocPage = require('./controllers/docInterceptorController');
+
+const proxyInterceptorOptions = {
+  selfHandleResponse: true,
+  onProxyRes: responseInterceptor(interceptAndUpdateDocPage),
+};
+
 const portal2ProxyOptions = {
   target: `${process.env.PORTAL2_S3_URL}`,
   changeOrigin: true,
@@ -150,6 +160,7 @@ const portal2ProxyOptions = {
   onOpen: proxySocket => {
     proxySocket.on('data', hybiParseAndLogMessage);
   },
+  ...proxyInterceptorOptions,
 };
 const portal2Proxy = createProxyMiddleware(portal2ProxyOptions);
 app.use('/portal', portal2Proxy);
@@ -161,6 +172,7 @@ const s3ProxyOptions = {
   onOpen: proxySocket => {
     proxySocket.on('data', hybiParseAndLogMessage);
   },
+  ...proxyInterceptorOptions,
 };
 const s3Proxy = createProxyMiddleware(s3ProxyOptions);
 app.use(s3Proxy);
