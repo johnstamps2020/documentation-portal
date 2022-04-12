@@ -20,7 +20,7 @@ function bubbleUpExpanded(element) {
 function getNodeByTitle() {
   const pageTitle = document.querySelector('title').textContent;
   const navLinks = document.querySelectorAll("nav[role='toc'] a");
-  for (var i = 0, len = navLinks.length; i < len; i++) {
+  for (let i = 0, len = navLinks.length; i < len; i++) {
     const a = navLinks[i];
     if (a.textContent.trim() === pageTitle) {
       return a;
@@ -31,7 +31,7 @@ function getNodeByTitle() {
 function expandCurrent() {
   const baseUrl =
     document
-      .querySelector('meta[name="gw-base-url"')
+      .querySelector('meta[name="gw-base-url"]')
       ?.getAttribute('content') || '';
 
   const relativePathname = `${window.location.pathname}.html`.replace(
