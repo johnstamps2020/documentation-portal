@@ -66,7 +66,7 @@ nav a.miniTocLink:hover {
 }
 
 #mobileMiniTocWrapper {
-  max-width: 90ch;
+  max-width: var(--line-width);
 }
 
 #miniTocButton {
@@ -117,7 +117,7 @@ nav a.miniTocLink:hover {
 
 @media screen and (max-width: 1400px) {
   body nav.miniToc {
-    --mobile-toc-max-width: 90ch;
+    --mobile-toc-max-width: var(--line-width);
     position: relative;
     width: 100%;
     margin: 0;
