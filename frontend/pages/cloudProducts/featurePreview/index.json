@@ -65,7 +65,7 @@
           "id": "rulesea"
         },
         {
-          "label": "String Manager (for PolicyCenter)",
+          "label": "String Manager",
           "id": "stringmanagerpcdraft"
         },
         {
@@ -96,6 +96,10 @@
       "label": "Development",
       "class": "subject development",
       "items": [
+        {
+          "label": "Load and Performance Testing",
+          "id": "testingframeworksloadelysian"
+        },
         {
           "label": "Webhooks API Reference",
           "id": "webhooksapinext"
