@@ -61,10 +61,6 @@ function expandCurrent() {
     if (childList) {
       childList.classList.add('expanded');
     }
-
-    currentNode.scrollIntoView({
-      block: 'center',
-    });
   }
 }
 
