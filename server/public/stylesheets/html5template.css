@@ -71,13 +71,12 @@ main {
 }
 
 main > article {
-  max-width: 90ch; 
+  max-width: var(--line-width);
   margin-right: 3rem;
 }
 
 main > .spacer {
-    flex-grow: 1;
-    border-right: 1px solid lightgray;
+  border-right: 1px solid lightgray;
 }
 
 .scrollToTopButton {
@@ -109,7 +108,6 @@ main > .spacer {
 }
 
 @media screen and (max-width: 1400px) {
-
   main {
     margin-right: 0.2vw;
     flex-direction: column;
@@ -117,7 +115,7 @@ main > .spacer {
   }
 
   main > article {
-    border-right: none; 
+    border-right: none;
     padding-right: none;
   }
 
