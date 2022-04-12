@@ -63,8 +63,6 @@ app.use(session(sessionSettings));
 
 const gwLoginRouter = require('./routes/gw-login');
 const gwLogoutRouter = require('./routes/gw-logout');
-const partnersLoginRouter = require('./routes/partners-login');
-const customersLoginRouter = require('./routes/customers-login');
 const oidcLoginRouter = require('./routes/authorization-code');
 const searchRouter = require('./routes/search');
 const unauthorizedRouter = require('./routes/unauthorized');
@@ -88,8 +86,6 @@ app.use('/alive', (req, res, next) => {
 
 app.use('/gw-login', gwLoginRouter);
 app.use('/gw-logout', gwLogoutRouter);
-app.use('/partners-login', partnersLoginRouter);
-app.use('/customers-login', customersLoginRouter);
 app.use('/authorization-code', oidcLoginRouter);
 
 // serve static assets from the public folder

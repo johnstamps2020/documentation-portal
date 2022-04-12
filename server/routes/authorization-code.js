@@ -43,8 +43,8 @@ Issuer.discover(process.env.OKTA_DOMAIN).then(oktaIssuer => {
       delete oidcStrategy._params.idp;
       const idpId = {
         okta: process.env.OKTA_IDP,
-        gw_community_customer: process.env.GW_COMMUNITY_CUSTOMER_IDP,
-        gw_community_partner: process.env.GW_COMMUNITY_PARTNER_IDP,
+        gwCommunityCustomer: process.env.GW_COMMUNITY_CUSTOMER_IDP,
+        gwCommunityPartner: process.env.GW_COMMUNITY_PARTNER_IDP,
       }[req.query.idp];
       if (idpId) {
         oidcStrategy._params.idp = idpId;

@@ -125,9 +125,9 @@ const authGateway = async (req, res, next) => {
     function redirectToLoginPage() {
       req.session.redirectTo = reqUrl;
       if (req.query.authSource === gwCommunityCustomerParam) {
-        res.redirect('/customers-login');
+        res.redirect('/authorization-code?idp=gwCommunityCustomer');
       } else if (req.query.authSource === gwCommunityPartnerParam) {
-        res.redirect('/partners-login');
+        res.redirect('/authorization-code?idp=gwCommunityPartner');
       } else {
         res.redirect(loginGatewayRoute);
       }

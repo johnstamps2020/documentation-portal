@@ -1710,18 +1710,6 @@ object Server {
             else -> "v%TAG_VERSION%"
         }
         val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
-        val partnersLoginUrl: String
-        val customersLoginUrl: String
-        if (arrayOf(GwDeployEnvs.DEV.env_name, GwDeployEnvs.INT.env_name).contains(deploy_env)) {
-            partnersLoginUrl = "https://qaint-guidewire.cs172.force.com/partners/idp/endpoint/HttpRedirect"
-            customersLoginUrl = "https://qaint-guidewire.cs172.force.com/customers/idp/endpoint/HttpRedirect"
-        } else if (deploy_env == GwDeployEnvs.STAGING.env_name) {
-            partnersLoginUrl = "https://uat-guidewire.cs166.force.com/partners/idp/endpoint/HttpRedirect"
-            customersLoginUrl = "https://uat-guidewire.cs166.force.com/customers/idp/endpoint/HttpRedirect"
-        } else {
-            partnersLoginUrl = "https://partner.guidewire.com/idp/endpoint/HttpRedirect"
-            customersLoginUrl = "https://community.guidewire.com/idp/endpoint/HttpRedirect"
-        }
 
         val deploymentFile: String
         val ingressFile: String
@@ -1757,8 +1745,6 @@ object Server {
                         export AWS_DEFAULT_REGION="$awsDefaultRegion"
                         
                         # Environment variables needed for Kubernetes config files
-                        export PARTNERS_LOGIN_URL="$partnersLoginUrl"
-                        export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
                         export TAG_VERSION="$tagVersion"
                         export DEPLOY_ENV="$serverBuildTypeDeployEnv"
                         ###
