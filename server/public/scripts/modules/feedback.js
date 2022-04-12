@@ -58,7 +58,7 @@ async function sendFeedback(formId) {
     body.classList.add('wait');
     const feedbackRequest = {
       summaryText:
-        'User feedback: ' + document.querySelector('title').innerHTML,
+        'Doc: user feedback: ' + document.querySelector('title').innerHTML,
       descriptionText: {
         //The key is also the label
         Product: docProduct,
