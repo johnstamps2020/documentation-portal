@@ -49,7 +49,7 @@ function scramble(phrase) {
 }
 
 function getScrambledEmail(email) {
-  const parts = email.split('@');
+  const parts = email?.includes('@') ? email.split('@') : [];
   if (parts.length === 2) {
     const scrambledLogin = scramble(parts[0]);
     return `${scrambledLogin}@${parts[1]}`;
