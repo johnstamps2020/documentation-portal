@@ -68,7 +68,7 @@ main {
 }
 
 main > article {
-  max-width: 105ch;
+  max-width: var(--line-width);
   margin-right: 3rem;
 }
 
