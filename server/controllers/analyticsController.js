@@ -1,3 +1,14 @@
+const tagManagerHeadScript = `
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PLXG9H5');
+`;
+
+const tagManagerBody = `
+<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PLXG9H5" height="0" width="0" style="display: none; visibility: hidden"></iframe>
+`;
+
+const pendoInstallScript = `
 function installPendo(apiKey) {
   (function(p, e, n, d, o) {
     var v, w, x, y, z;
@@ -21,6 +32,8 @@ function installPendo(apiKey) {
     z.parentNode.insertBefore(y, z);
   })(window, document, 'script', 'pendo');
 }
+installPendo('f254cb71-32f1-4247-546f-fe9159040603');
+`;
 
 function scramble(phrase) {
   var hash = 0,
@@ -37,8 +50,12 @@ function scramble(phrase) {
 
 function getScrambledEmail(email) {
   const parts = email.split('@');
-  const scrambledLogin = scramble(parts[0]);
-  return `${scrambledLogin}@${parts[1]}`;
+  if (parts.length === 2) {
+    const scrambledLogin = scramble(parts[0]);
+    return `${scrambledLogin}@${parts[1]}`;
+  }
+
+  return 'cannot.get.email@unkown.com';
 }
 
 function getEmployeeEmail(email) {
@@ -68,21 +85,28 @@ function getUserData(userInfo) {
   };
 }
 
-export function installAndInitializePendo() {
-  installPendo('f254cb71-32f1-4247-546f-fe9159040603');
+function getPendoInitializeScript(userInfo) {
+  const { email, name, role, domain } = getUserData(userInfo);
 
-  const { email, name, role, domain } = getUserData(window.userInformation);
-
+  return `
   pendo.initialize({
     visitor: {
-      id: email,
-      email: email,
-      full_name: name,
-      role: role,
+      id: "${email}",
+      email: "${email}",
+      full_name: "${name}",
+      role: "${role}",
     },
 
     account: {
-      id: domain,
+      id: "${domain}",
     },
   });
+  `;
 }
+
+module.exports = {
+  tagManagerHeadScript,
+  tagManagerBody,
+  pendoInstallScript,
+  getPendoInitializeScript,
+};

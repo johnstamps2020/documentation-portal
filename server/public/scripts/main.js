@@ -1,4 +1,3 @@
-import { installAndInitializePendo } from './modules/pendo.js';
 import { setMetadata } from './modules/metadata.js';
 
 function selectToggleButton() {
@@ -99,5 +98,4 @@ window.onload = async function() {
   addReleaseBadge();
   setSearchFilterCSS();
   await setMetadata();
-  installAndInitializePendo();
 };
