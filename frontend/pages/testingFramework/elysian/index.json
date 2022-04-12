@@ -63,10 +63,6 @@
         {
           "label": "UI Testing",
           "id": "testingframeworksuielysian"
-        },
-        {
-          "label": "Load and Peformance Testing",
-          "id": "testingframeworksloadelysian"
         }
       ]
     }

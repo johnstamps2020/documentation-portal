@@ -78,7 +78,11 @@
           "items": [
             {
               "label": "HazardHub Casualty",
-              "page": "../hazardhub"
+              "page": "../hazardhubcasualty"
+            },
+            {
+              "label": "HazardHub Property",
+              "link": "/hazardhub/property/HazardHub_Property_Intro_gw.pdf"
             },
             {
               "label": "Canvas",
