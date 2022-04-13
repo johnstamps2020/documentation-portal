@@ -75,6 +75,11 @@ main > article {
   margin-right: 3rem;
 }
 
+main > article table {
+  display: block;
+  overflow-x: scroll;
+}
+
 main > .spacer {
   border-right: 1px solid lightgray;
 }
