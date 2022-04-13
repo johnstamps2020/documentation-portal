@@ -55,7 +55,7 @@ function getScrambledEmail(email) {
     return `${scrambledLogin}@${parts[1]}`;
   }
 
-  return 'cannot.get.email@unkown.com';
+  return 'cannot.get.email@unknown.com';
 }
 
 function getEmployeeEmail(email) {
