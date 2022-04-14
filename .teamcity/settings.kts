@@ -3680,7 +3680,7 @@ object GwBuildSteps {
                 commandParams.add(Pair("--git.branch", git_branch))
                 commandParams.add(Pair("-f", "html5-Guidewire"))
                 commandParams.add(Pair("--args.rellinks", "nofamily"))
-                commandParams.add(Pair("--build.pdfs", "yes"))
+                commandParams.add(Pair("--build.pdfs", "no"))
 
             }
         }
