@@ -1,6 +1,5 @@
 table {
   border-collapse: collapse;
-  margin-top: 0.5em;
 }
 
 .simpletable td:not([valign]),
