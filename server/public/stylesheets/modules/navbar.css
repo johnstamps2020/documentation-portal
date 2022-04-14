@@ -23,7 +23,7 @@
 }
 
 #navbarLeft {
-  max-width: calc(100% - 250px - var(--navbar-gap));
+  max-width: calc(100% - 300px - var(--navbar-gap));
 }
 
 .navbarButton {
