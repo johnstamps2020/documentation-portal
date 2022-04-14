@@ -35,8 +35,7 @@ async function redirectToId(contextId) {
             else {
                 console.log("ERROR: Invalid contextId")
                 return false;
-            }
-            
+            } 
         }
     }
     catch(e) {
