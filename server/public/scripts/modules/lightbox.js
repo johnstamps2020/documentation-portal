@@ -50,13 +50,15 @@ function Lightbox({ thumbnail, fullSizeElement, clickToEnlarge }) {
         />
       )}
       <dialog ref={dialogRef} className={styles.dialog}>
-        <div
-          onClick={closeDialog}
-          className={
-            clickToEnlarge ? styles.embiggenedImage : styles.embiggenedTable
-          }
-          dangerouslySetInnerHTML={{ __html: fullSizeElement }}
-        />
+        {clickToEnlarge ? (
+          <div
+            onClick={closeDialog}
+            className={styles.embiggenedImage}
+            dangerouslySetInnerHTML={{ __html: fullSizeElement }}
+          />
+        ) : (
+          <div dangerouslySetInnerHTML={{ __html: fullSizeElement }} />
+        )}
         <button
           onClick={closeDialog}
           className={styles.closeButton}
