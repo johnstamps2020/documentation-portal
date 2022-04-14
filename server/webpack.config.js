@@ -28,12 +28,19 @@ module.exports = {
       import: './src/html5home/html5homeTemplate.js',
       filename: 'html5home.js',
     },
+    html5Skip: {
+      import: './src/html5home/html5skipTemplate.js',
+      filename: 'html5skip.js',
+    },
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: pathData => {
         if (pathData.chunk.filenameTemplate === 'html5home.js') {
           return 'html5home.css';
+        }
+        if (pathData.chunk.filenameTemplate === 'html5skip.js') {
+          return 'html5skip.css';
         }
         return 'html5.css';
       },

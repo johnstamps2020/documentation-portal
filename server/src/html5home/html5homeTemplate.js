@@ -9,8 +9,11 @@ import { addAvatar } from '../../public/scripts/modules/avatar.js';
 import { addSearchBox } from '../../public/scripts/modules/searchBox.js';
 import { addSkipNav } from '../../public/scripts/modules/skipNav.js';
 import { addInternalBadge } from '../../public/scripts/modules/internal.js';
+import { handleContextId } from '../../public/scripts/modules/redirect.js';
+  
 
 docReady(async function() {
+  await handleContextId();
   addSkipNav();
   await setMetadata();
   addInternalBadge();
