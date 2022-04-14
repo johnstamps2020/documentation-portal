@@ -87,7 +87,7 @@ div.code-toolbar > div.toolbar > div.toolbar-item > span {
   background-color: #f6f7f8;
   font-family: var(--code-font-family);
   font-size: 1rem;
-  padding: 2px 4px;
+  padding: .1rem;
   border: 0.1rem solid rgba(0, 0, 0, 0.1);
   border-radius: 6px;
 }
