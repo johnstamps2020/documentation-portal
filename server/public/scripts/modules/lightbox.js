@@ -4,17 +4,17 @@ import styles from '../../stylesheets/modules/lightbox.module.css';
 function ThumbnailWithExternalButton({ thumbnail, showDialog }) {
   return (
     <>
-      <div>
+      <div className={styles.thumbnailWithExternalButtonWrapper}>
         <button
           onClick={showDialog}
           className={styles.expandButton}
           title="Open full-size view"
         />
+        <div
+          className={styles.scrollBox}
+          dangerouslySetInnerHTML={{ __html: thumbnail }}
+        />
       </div>
-      <div
-        className={styles.scrollBox}
-        dangerouslySetInnerHTML={{ __html: thumbnail }}
-      />
     </>
   );
 }
