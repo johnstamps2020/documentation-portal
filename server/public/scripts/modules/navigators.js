@@ -41,7 +41,9 @@ function getParentNavItems(linkElement) {
 }
 
 function getCurrentLink() {
-  return document.querySelector('nav[role="toc"] a.current');
+  return document.querySelector('nav[role="toc"] a.current')
+    ? document.querySelector('nav[role="toc"] a.current')
+    : document.querySelector('nav.toc a.current');
 }
 
 function getDocTitleBreadcrumb() {
@@ -116,7 +118,9 @@ function createNavLink(isPrevious, linkObject) {
 }
 
 function addNavigationLinks() {
-  const flatLinkList = document.querySelectorAll('nav[role="toc"] a');
+  const flatLinkList = document.querySelectorAll("nav[role='toc'] a").length > 0
+    ? document.querySelectorAll("nav[role='toc'] a")
+    : document.querySelectorAll("nav.toc a");
   const currentLink = getCurrentLink();
   let matchingIndex = undefined;
   flatLinkList.forEach((link, index) => {
