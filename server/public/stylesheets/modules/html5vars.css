@@ -17,7 +17,15 @@ body {
   --footer-height: 86px;
   --main-height: calc(100vh - var(--header-height) - var(--navbar-height));
   --guidewire-font: 'Source Sans Pro', sans-serif;
-  --line-width: 105ch;
+  --main-padding-large: 2rem;
+  --article-margin-right: 3rem;
+  --article-width: 105ch;
+  --left-nav-width: 350px;
+  --mini-toc-width: 300px;
+  --large-screen-width: calc(
+    var(--main-padding-large) + var(--article-margin-right) +
+      var(--article-width) + var(--left-nav-width) + var(--mini-toc-width)
+  );
   margin: 0;
   font-family: var(--guidewire-font);
   color: var(--GW-COLOR-TEXT-1);

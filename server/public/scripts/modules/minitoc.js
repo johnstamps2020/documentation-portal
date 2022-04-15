@@ -32,7 +32,7 @@ function LinkList({ links }) {
 function MiniToc({ hashLinks }) {
   const [width, setWidth] = useState(window.innerWidth);
   const [expanded, setExpanded] = useState(false);
-  const breakpoint = 1400;
+  const breakpoint = 1670;
   const miniTocTitle = 'On this page';
 
   const handleWindowResize = () => setWidth(window.innerWidth);

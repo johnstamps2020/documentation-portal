@@ -34,7 +34,7 @@ html {
 
 body {
   display: grid;
-  grid-template-columns: 350px 3fr 1fr;
+  grid-template-columns: var(--left-nav-width) 3fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
     'header header header'
@@ -53,7 +53,7 @@ p.p img:first-child {
 
 main {
   grid-area: main;
-  padding: 1rem 0 2rem 2rem;
+  padding: 1rem 0 var(--main-padding-large) var(--main-padding-large);
   scroll-behavior: smooth;
   line-height: 1.5;
   display: flex;
@@ -72,8 +72,8 @@ main {
 }
 
 main > article {
-  max-width: var(--line-width);
-  margin-right: 3rem;
+  width: var(--article-width);
+  margin-right: var(--article-margin-right);
 }
 
 main > .spacer {
@@ -108,7 +108,7 @@ main > .spacer {
   display: block;
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1670px) {
   main {
     margin-right: 0.2vw;
     flex-direction: column;
@@ -117,12 +117,19 @@ main > .spacer {
 
   main > article {
     border-right: none;
-    padding-right: none;
+    padding-right: 0;
   }
 
   main > .spacer {
     flex-grow: 0;
     border-right: none;
     height: 1rem;
+  }
+}
+
+@media screen and (max-width: 1370px) {
+  main > article {
+    width: 100%;
+    margin-right: 1rem;
   }
 }
