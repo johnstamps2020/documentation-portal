@@ -39,7 +39,7 @@
       "root": "IPGReleaseNotes.ditamap",
       "srcId": "midipgrnensrc",
       "docId": "midipgrnen",
-      "indexRedirect": false
+      "indexRedirect": true
     },
     {
       "buildType": "dita",
