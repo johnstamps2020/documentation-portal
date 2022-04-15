@@ -190,10 +190,10 @@ function addScrollToTop() {
 
   scrollToTopButton.addEventListener('click', function() {
     if(!prefersReducedMotion || prefersReducedMotion.matches) {
-      article.scrollIntoView();
+      html.scrollIntoView();
     }
     else {
-      article.scrollIntoView({behavior: "smooth"});
+      html.scrollIntoView({behavior: "smooth"});
     }
   });
 
