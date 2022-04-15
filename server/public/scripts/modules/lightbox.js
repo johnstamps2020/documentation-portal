@@ -60,7 +60,10 @@ function Lightbox({ thumbnail, fullSizeElement, clickToEnlarge }) {
             dangerouslySetInnerHTML={{ __html: fullSizeElement }}
           />
         ) : (
-          <div dangerouslySetInnerHTML={{ __html: fullSizeElement }} />
+          <div
+            className={styles.scrollBox}
+            dangerouslySetInnerHTML={{ __html: fullSizeElement }}
+          />
         )}
         <button
           onClick={closeDialog}
