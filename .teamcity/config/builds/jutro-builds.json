@@ -494,23 +494,31 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutro750",
+      "srcId": "srcjutro750",
+      "workingDir": "website",
+      "nodeImageVersion": "14.18.3"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storybook750",
+      "srcId": "srcjutrostorybook750",
+      "nodeImageVersion": "17.6.0",
+      "workingDir": "storybook"
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutrolatest",
-      "srcId": "srcjutro743",
+      "srcId": "srcjutro750",
       "workingDir": "website",
       "nodeImageVersion": "14.18.3"
     },
     {
       "buildType": "yarn",
       "docId": "storybooklatest",
-      "srcId": "srcjutrostorybook743",
+      "srcId": "srcjutrostorybook750",
       "nodeImageVersion": "17.6.0",
-      "workingDir": "storybook",
-      "customEnv": [
-        {
-          "name": "STORYBOOK_GA_ID",
-          "value": "UA-129148666-1"
-        }
-      ]
+      "workingDir": "storybook"
     }
   ]
 }
