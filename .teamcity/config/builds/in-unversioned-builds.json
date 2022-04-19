@@ -4,7 +4,7 @@
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
-      "root": "ConsumerServicePortalReleaseNotes20221x.ditamap",
+      "root": "ConsumerServicePReleaseNotes20221x.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp20221rn",
       "indexRedirect": true
