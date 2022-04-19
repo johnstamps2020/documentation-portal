@@ -10,10 +10,7 @@ function ThumbnailWithExternalButton({ thumbnail, showDialog }) {
           className={styles.expandButton}
           title="Open full-size view"
         />
-        <div
-          className={styles.scrollBox}
-          dangerouslySetInnerHTML={{ __html: thumbnail }}
-        />
+        <div dangerouslySetInnerHTML={{ __html: thumbnail }} />
       </div>
     </>
   );
