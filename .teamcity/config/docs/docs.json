@@ -2330,22 +2330,6 @@
       "earlyAccess": false
     },
     {
-      "id": "gchhelpdraft",
-      "title": "Guidewire Cloud Home Help",
-      "url": "help/GCH",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Home"],
-        "version": ["draft"]
-      },
-      "displayOnLandingPages": false,
-      "environments": ["int"],
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "gchhelprelease",
       "title": "Guidewire Cloud Home Help",
       "url": "help/GCH",
@@ -2354,8 +2338,7 @@
         "product": ["Guidewire Cloud Home"],
         "version": ["latest"]
       },
-      "displayOnLandingPages": false,
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,

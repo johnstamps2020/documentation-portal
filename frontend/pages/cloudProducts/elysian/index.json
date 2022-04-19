@@ -221,6 +221,10 @@
           "id": "guidewirecloudconsolerninsurerdevdraft"
         },
         {
+          "label": "Cloud Home",
+          "id": "gchhelprelease"
+        },
+        {
           "label": "Integration Gateway Release Notes",
           "id": "integgatewayrndraft"
         },
