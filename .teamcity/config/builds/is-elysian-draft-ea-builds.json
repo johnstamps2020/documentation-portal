@@ -4,8 +4,8 @@
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-EA.ditaval",
-      "root": "ReleaseNotesBook-elysian.ditamap",
-      "srcId": "cloudisrnsrc",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "is202205src",
       "docId": "isbcelysianeareleasenotes",
       "indexRedirect": true,
       "resources": [
@@ -104,8 +104,8 @@
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-EA.ditaval",
-      "root": "ReleaseNotesBook-elysian.ditamap",
-      "srcId": "cloudisrnsrc",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "is202205src",
       "docId": "isccelysianeareleasenotes",
       "indexRedirect": true,
       "resources": [
@@ -212,8 +212,8 @@
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-EA.ditaval",
-      "root": "ReleaseNotesBook-elysian.ditamap",
-      "srcId": "cloudisrnsrc",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "is202205src",
       "docId": "ispcelysianeareleasenotes",
       "indexRedirect": true,
       "resources": [
