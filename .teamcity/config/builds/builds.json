@@ -58,6 +58,11 @@
       "docId": "guidewirecloudconsolerootinsurerdevdraft"
     },
     {
+      "buildType": "yarn",
+      "docId": "cicdmanagerapirefdraft",
+      "srcId": "cicdmanagerapirefsrc"
+    },
+    {
       "buildType": "dita",
       "root": "guidewire_cloud_platform_guide.ditamap",
       "filter": "assets/gw-admin.ditaval",

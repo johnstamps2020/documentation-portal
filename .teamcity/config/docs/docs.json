@@ -373,6 +373,23 @@
       "earlyAccess": true
     },
     {
+      "id": "cicdmanagerapirefdraft",
+      "title": "CI/CD Manager",
+      "url": "cloud/cicd-manager-api-ref/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"],
+        "release": ["Elysian"]
+      },
+      "environments": ["int"],
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "selfmanagedbcupgradeguide1020",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/1020",
