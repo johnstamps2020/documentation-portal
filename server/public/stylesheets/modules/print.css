@@ -11,7 +11,8 @@
   .thanksMessage,
   .miniToc,
   button.copyToClipboardButton,
-  .spacer {
+  .spacer,
+  button[class*='expandButton'] {
     display: none;
   }
 
