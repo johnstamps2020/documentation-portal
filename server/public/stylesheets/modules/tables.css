@@ -4,7 +4,7 @@ table {
   overflow: auto;
   max-width: 100%;
   width: fit-content;
-  margin-top: 0.75rem;
+  margin-top: 2.25rem;
   margin-bottom: 1.5rem;
   background-image: linear-gradient(to right, white, white),
     linear-gradient(to right, white, white),
@@ -15,6 +15,10 @@ table {
   background-color: white;
   background-size: 40px 100%, 40px 100%, 30px 100%, 30px 100%;
   background-attachment: local, local, scroll, scroll;
+}
+
+span[id^='lightbox'] table {
+  margin-top: 0.75rem;
 }
 
 .simpletable td:not([valign]),
