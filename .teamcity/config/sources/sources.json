@@ -667,12 +667,7 @@
       "title": "Guidewire Cloud Home Help",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gch-help.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/Content/doc/help/GCH/GuidewireCloud.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
+      "branch": "main"
     },
     {
       "id": "configmgrhelpcortinasrc",
