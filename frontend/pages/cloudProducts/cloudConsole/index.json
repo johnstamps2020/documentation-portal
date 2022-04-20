@@ -1,0 +1,28 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Cloud Console",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Cloud Console Guide",
+          "id": "guidewirecloudconsoleguideinsurerdevdraft"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "CI/CD Manager",
+          "id": "cicdmanagerapirefdraft"
+        }
+      ]
+    }
+  ]
+}

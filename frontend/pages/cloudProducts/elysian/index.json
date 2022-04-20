@@ -258,7 +258,8 @@
         },
         {
           "label": "Cloud Console",
-          "id": "guidewirecloudconsoleguideinsurerdevdraft"
+          "page": "../cloudConsole",
+          "env": ["int"]
         },
         {
           "label": "Cloud Console",
