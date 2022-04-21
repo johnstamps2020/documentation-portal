@@ -11,7 +11,9 @@
   .feedback,
   .thanksMessage,
   .miniToc,
-  button.copyToClipboardButton {
+  button.copyToClipboardButton,
+  .spacer,
+  button[class*='expandButton'] {
     display: none;
   }
 
@@ -21,6 +23,13 @@
     width: 100%;
     overflow-y: auto;
     padding: 16px;
+    display: block;
+  }
+
+  main[role='main'] > article {
+    width: 100%;
+    margin-right: 0;
+    display: block;
   }
 
   main[role='main']::before,
@@ -28,10 +37,12 @@
     display: block;
     font-size: 0.875rem;
     text-align: center;
+    width: 100%;
   }
 
   main[role='main']::before {
     content: 'Copyright © Guidewire Software, Inc., confidential and proprietary. Latest documentation at docs.guidewire.com.';
+    margin-bottom: 16px;
   }
 
   main[role='main']::after {
@@ -39,7 +50,8 @@
     content: 'Legal information at https://www.guidewire.com/legal-notices/';
   }
 
-  pre {
+  pre,
+  code {
     white-space: pre-wrap !important;
     word-wrap: break-word !important;
   }
