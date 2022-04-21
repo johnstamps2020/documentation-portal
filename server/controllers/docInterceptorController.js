@@ -1,14 +1,24 @@
 const JSDOM = require('jsdom').JSDOM;
 
-function containsHtml(proxyResObject) {
+function getDOM(responseBuffer, proxyResObject) {
   if (
     proxyResObject &&
     proxyResObject.headers['content-type'] === 'text/html'
   ) {
-    return true;
+    const response = responseBuffer.toString('utf8');
+    const responseDOM = new JSDOM(response);
+    const { document } = responseDOM.window;
+    if (document) {
+      const html = document.querySelector('html');
+      const head = document.querySelector('head');
+      const body = document.querySelector('body');
+      if (html && head && body) {
+        return { responseDOM, document };
+      }
+    }
   }
 
-  return false;
+  return undefined;
 }
 
 function removeTagsWithMatchingText(tagName, strToMatch, document) {
@@ -32,28 +42,29 @@ function insertTagWithContent(
 ) {
   const parent = document.querySelector(parentName);
 
-  const startingComment = document.createComment(comment);
-  parent.appendChild(startingComment);
+  if (parent) {
+    const startingComment = document.createComment(comment);
+    parent.appendChild(startingComment);
 
-  const tagToInsert = document.createElement(tagName);
-  tagToInsert.textContent = strContent;
-  parent.appendChild(tagToInsert);
+    const tagToInsert = document.createElement(tagName);
+    tagToInsert.textContent = strContent;
+    parent.appendChild(tagToInsert);
 
-  const endComment = document.createComment(`End ${comment}`);
-  parent.appendChild(endComment);
+    const endComment = document.createComment(`End ${comment}`);
+    parent.appendChild(endComment);
+  }
 }
 
 async function interceptAndUpdateDocPage(responseBuffer, proxyRes, req, res) {
-  if (containsHtml(proxyRes)) {
-    const response = responseBuffer.toString('utf8');
+  const dom = getDOM(responseBuffer, proxyRes);
+  if (dom) {
+    const { responseDOM, document } = dom;
     const {
       tagManagerHeadScript,
       tagManagerBody,
       pendoInstallScript,
       pendoInitializeScript,
     } = res.locals.analytics;
-    const responseDOM = new JSDOM(response);
-    const { document } = responseDOM.window;
 
     // Remove GTM script, if it exists
     removeTagsWithMatchingText('script', 'gtm.start', document);
