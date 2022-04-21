@@ -24,14 +24,6 @@
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-EA.ditaval",
-      "root": "NewAndChangedGuide.ditamap",
-      "srcId": "is202205src",
-      "docId": "isbcelysianeanewandchanged",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-Cloud-EA.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide202205src",
@@ -120,14 +112,6 @@
           "srcId": "insurancesuiteextrassrc"
         }
       ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-EA.ditaval",
-      "root": "NewAndChangedGuide.ditamap",
-      "srcId": "is202205src",
-      "docId": "isccelysianeanewandchanged",
-      "indexRedirect": true
     },
     {
       "buildType": "dita",
@@ -228,14 +212,6 @@
           "srcId": "insurancesuiteextrassrc"
         }
       ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-EA.ditaval",
-      "root": "NewAndChangedGuide.ditamap",
-      "srcId": "is202205src",
-      "docId": "ispcelysianeanewandchanged",
-      "indexRedirect": true
     },
     {
       "buildType": "dita",
