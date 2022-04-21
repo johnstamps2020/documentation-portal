@@ -1,5 +1,9 @@
 export async function redirectToFirstTopic() {
     const firstLink = document.querySelector(".topicref > a");
+    if(firstLink === null) {
+        console.error('Error: No first topic reference to redirect to.');
+        return;
+    }
     window.location.href = firstLink.getAttribute("href");
 }
 
