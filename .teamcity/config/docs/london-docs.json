@@ -6,7 +6,7 @@
       "title": "PolicyCenter for London Market Application Guide",
       "url": "london/3.2/pcapp",
       "metadata": {
-        "product": ["Global Solutions - London"],
+        "product": ["London Market"],
         "platform": ["Cloud"],
         "version": ["3.2"],
         "subject": ["Features and functionality"]
@@ -23,7 +23,7 @@
       "title": "London Market Release Notes",
       "url": "london/3.2/releasenotes",
       "metadata": {
-        "product": ["Global Solutions - London"],
+        "product": ["London Market"],
         "platform": ["Cloud"],
         "version": ["3.2"],
         "subject": ["Release notes"]
