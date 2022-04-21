@@ -2,6 +2,24 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "incsp20221rn",
+      "title": "Consumer Service Portal 2022.1 Release Notes",
+      "url": "cloud/in/csp20221rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.1"],
+        "subject": ["Release Notes"],
+        "release": ["Elysian"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "incsp20211rn",
       "title": "Consumer Service Portal 2021.1 Release Notes",
       "url": "cloud/in/csp20211rn",

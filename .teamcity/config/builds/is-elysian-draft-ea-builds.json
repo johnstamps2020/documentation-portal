@@ -4,8 +4,8 @@
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-EA.ditaval",
-      "root": "ReleaseNotesBook-elysian.ditamap",
-      "srcId": "cloudisrnsrc",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "is202205src",
       "docId": "isbcelysianeareleasenotes",
       "indexRedirect": true,
       "resources": [
@@ -15,8 +15,8 @@
           "srcId": "insurancesuiteextrassrc"
         },
         {
-          "sourceFolder": "ReleaseNotes-files/cm/2021.11",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2021.11",
+          "sourceFolder": "ReleaseNotes-files/cm/2022.05",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2022.05",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
@@ -104,19 +104,19 @@
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-EA.ditaval",
-      "root": "ReleaseNotesBook-elysian.ditamap",
-      "srcId": "cloudisrnsrc",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "is202205src",
       "docId": "isccelysianeareleasenotes",
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "ReleaseNotes-files/cc/2021.11",
-          "targetFolder": "extras/ReleaseNotes-files/cc/2021.11",
+          "sourceFolder": "ReleaseNotes-files/cc/2022.05",
+          "targetFolder": "extras/ReleaseNotes-files/cc/2022.05",
           "srcId": "insurancesuiteextrassrc"
         },
         {
-          "sourceFolder": "ReleaseNotes-files/cm/2021.11",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2021.11",
+          "sourceFolder": "ReleaseNotes-files/cm/2022.05",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2022.05",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
@@ -212,19 +212,19 @@
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-EA.ditaval",
-      "root": "ReleaseNotesBook-elysian.ditamap",
-      "srcId": "cloudisrnsrc",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "is202205src",
       "docId": "ispcelysianeareleasenotes",
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "ReleaseNotes-files/pc/2021.11",
-          "targetFolder": "extras/ReleaseNotes-files/pc/2021.11",
+          "sourceFolder": "ReleaseNotes-files/pc/2022.05",
+          "targetFolder": "extras/ReleaseNotes-files/pc/2022.05",
           "srcId": "insurancesuiteextrassrc"
         },
         {
-          "sourceFolder": "ReleaseNotes-files/cm/2021.11",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2021.11",
+          "sourceFolder": "ReleaseNotes-files/cm/2022.05",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2022.05",
           "srcId": "insurancesuiteextrassrc"
         }
       ]

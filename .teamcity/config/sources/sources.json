@@ -1800,6 +1800,13 @@
       "branch": "master"
     },
     {
+      "id": "cicdmanagerapirefsrc",
+      "title": "CI/CD Manager",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cicd-api-ref.git",
+      "branch": "master"
+    },
+    {
       "id": "selfmanagedis1012src",
       "title": "InsuranceSuite 10.1.2",
       "sourceType": "xdocs",

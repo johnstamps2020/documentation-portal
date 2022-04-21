@@ -21,8 +21,8 @@
           "id": "in20221studiorn"
         },
         {
-          "label": "Consumer Service Portal Release Notes",
-          "id": "incsp4rn"
+          "label": "Consumer Service Portal v2022.1 Release Notes",
+          "id": "incsp20221rn"
         }
       ]
     },
@@ -93,6 +93,10 @@
         {
           "label": "Product Attribute Reference",
           "id": "in20221prodattref"
+        },
+        {
+          "label": "Provisioning Portal",
+          "id": "in20221provportal"
         },
         {
           "label": "Underwriting Configuration Reference",

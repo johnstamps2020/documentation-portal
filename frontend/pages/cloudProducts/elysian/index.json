@@ -44,11 +44,13 @@
         },
         {
           "label": "InsuranceNow",
-          "page": "insuranceNow/2022.1"
+          "page": "insuranceNow/2022.1",
+          "env": ["staging"]
         },
         {
           "label": "InsuranceNow",
-          "page": "insuranceNow/latest"
+          "page": "insuranceNow/latest",
+          "env": ["int"]
         },
         {
           "label": "Guidewire for Salesforce",
@@ -219,6 +221,10 @@
           "id": "guidewirecloudconsolerninsurerdevdraft"
         },
         {
+          "label": "Cloud Home",
+          "id": "gchhelprelease"
+        },
+        {
           "label": "Integration Gateway Release Notes",
           "id": "integgatewayrndraft"
         },
@@ -252,7 +258,8 @@
         },
         {
           "label": "Cloud Console",
-          "id": "guidewirecloudconsoleguideinsurerdevdraft"
+          "page": "../cloudConsole",
+          "env": ["int"]
         },
         {
           "label": "Cloud Console",
