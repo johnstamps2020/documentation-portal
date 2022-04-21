@@ -10,8 +10,8 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "ReleaseNotes-files/bc/2021.11",
-          "targetFolder": "extras/ReleaseNotes-files/bc/2021.11",
+          "sourceFolder": "ReleaseNotes-files/bc/2022.05",
+          "targetFolder": "extras/ReleaseNotes-files/bc/2022.05",
           "srcId": "insurancesuiteextrassrc"
         },
         {
