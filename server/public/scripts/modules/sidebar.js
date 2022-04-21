@@ -19,7 +19,9 @@ function bubbleUpExpanded(element) {
 
 function getNodeByTitle() {
   const pageTitle = document.querySelector('title').textContent;
-  const navLinks = document.querySelectorAll("nav[role='toc'] a");
+  const navLinks = document.querySelectorAll("nav[role='toc'] a").length > 0
+    ? document.querySelectorAll("nav[role='toc'] a")
+    : document.querySelectorAll("nav.toc a");
   for (let i = 0, len = navLinks.length; i < len; i++) {
     const a = navLinks[i];
     if (a.textContent.trim() === pageTitle) {
@@ -41,9 +43,13 @@ function expandCurrent() {
 
   const fullPathQuery = `nav[role='toc'] a[href$='${relativePathname}${window.location.hash}']`;
   const filenameQuery = `nav[role='toc'] a[href$='${relativePathname}']`;
+  const fullPathQuery371 = `nav.toc a[href$='${relativePathname}${window.location.hash}']`;
+  const filenameQuery371 = `nav.toc a[href$='${relativePathname}']`;
   const currentNode =
     document.querySelector(fullPathQuery) ||
     document.querySelector(filenameQuery) ||
+    document.querySelector(fullPathQuery371) ||
+    document.querySelector(filenameQuery371) ||
     getNodeByTitle() ||
     document.querySelector('.active a');
 
@@ -65,7 +71,10 @@ function expandCurrent() {
 }
 
 function addCaret() {
-  document.querySelectorAll("nav[role='toc'] li > ul").forEach(nestedList => {
+  const navUls = document.querySelectorAll("nav[role='toc'] li > ul").length > 0
+    ? document.querySelectorAll("nav[role='toc'] li > ul")
+    : document.querySelectorAll("nav.toc li > ul");
+  navUls.forEach(nestedList => {
     nestedList.classList.add('nestedList');
     const caret = document.createElement('button');
     caret.setAttribute('type', 'button');

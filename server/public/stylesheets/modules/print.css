@@ -5,7 +5,8 @@
 
   header,
   .navbar,
-  nav[role='toc'],
+  nav[role='toc'], /* for OT 3.6.1 */
+  nav.toc, /* for OT 3.7.1 */
   footer,
   .feedback,
   .thanksMessage,
