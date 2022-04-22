@@ -41,10 +41,10 @@ function expandCurrent() {
     ''
   );
 
-  const fullPathQuery = `nav[role='toc'] a[href$='${relativePathname}${window.location.hash}']`;
-  const filenameQuery = `nav[role='toc'] a[href$='${relativePathname}']`;
-  const fullPathQuery371 = `nav.toc a[href$='${relativePathname}${window.location.hash}']`;
-  const filenameQuery371 = `nav.toc a[href$='${relativePathname}']`;
+  const fullPathQuery = `nav[role='toc'] a[href\$='${relativePathname}${window.location.hash}']`;
+  const filenameQuery = `nav[role='toc'] a[href\$='${relativePathname}']`;
+  const fullPathQuery371 = `nav.toc a[href\$='${relativePathname}${window.location.hash}']`;
+  const filenameQuery371 = `nav.toc a[href\$='${relativePathname}']`;
   const currentNode =
     document.querySelector(fullPathQuery) ||
     document.querySelector(filenameQuery) ||
