@@ -36,10 +36,14 @@ function expandCurrent() {
       .querySelector('meta[name="gw-base-url"]')
       ?.getAttribute('content') || '';
 
-  const relativePathname = `${window.location.pathname}.html`.replace(
+  let relativePathname = `${window.location.pathname}`.replace(
     baseUrl,
     ''
   );
+
+  if (!relativePathname.endsWith('.html')) {
+    relativePathname = relativePathname.concat(relativePathname, '.html');
+  }
   console.debug(baseUrl);
   console.debug(window.location.pathname);
   console.debug(relativePathname);
