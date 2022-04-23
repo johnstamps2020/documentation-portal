@@ -37,7 +37,7 @@ function expandCurrent() {
       ?.getAttribute('content') || '';
 
   const relativePathname = `${window.location.pathname}.html`.replace(
-    `/${baseUrl}/`,
+    baseUrl,
     ''
   );
 
