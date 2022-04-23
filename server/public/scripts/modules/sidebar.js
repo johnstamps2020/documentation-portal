@@ -37,14 +37,18 @@ function expandCurrent() {
       ?.getAttribute('content') || '';
 
   const relativePathname = `${window.location.pathname}.html`.replace(
-    `/${baseUrl}/`,
+    baseUrl,
     ''
   );
+  console.debug(baseUrl);
+  console.debug(window.location.pathname);
+  console.debug(relativePathname);
 
   const fullPathQuery = `nav[role='toc'] a[href\$='${relativePathname}${window.location.hash}']`;
   const filenameQuery = `nav[role='toc'] a[href\$='${relativePathname}']`;
   const fullPathQuery371 = `nav.toc a[href\$='${relativePathname}${window.location.hash}']`;
   const filenameQuery371 = `nav.toc a[href\$='${relativePathname}']`;
+  console.debug(fullPathQuery371);
   const currentNode =
     document.querySelector(fullPathQuery) ||
     document.querySelector(filenameQuery) ||
@@ -52,7 +56,7 @@ function expandCurrent() {
     document.querySelector(filenameQuery371) ||
     getNodeByTitle() ||
     document.querySelector('.active a');
-
+console.debug(currentNode);
   if (currentNode) {
     currentNode.classList.add('current');
 
