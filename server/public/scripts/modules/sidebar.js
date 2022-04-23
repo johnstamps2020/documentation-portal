@@ -42,7 +42,7 @@ function expandCurrent() {
   );
 
   if (!relativePathname.endsWith('.html')) {
-    relativePathname = relativePathname.concat(relativePathname, '.html');
+    relativePathname = relativePathname.concat('.html');
   }
 
   const fullPathQuery = `nav[role='toc'] a[href\$='${relativePathname}${window.location.hash}']`;
