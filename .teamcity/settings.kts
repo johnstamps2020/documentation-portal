@@ -3621,6 +3621,7 @@ object GwBuildSteps {
         val commandParams = mutableListOf<Pair<String, String?>>(
             Pair("-i", "${working_dir}/${root_map}"),
             Pair("-o", "${working_dir}/${output_dir}"),
+            Pair("--processing-mode", "strict")
         )
 
         if (build_filter != null) {
