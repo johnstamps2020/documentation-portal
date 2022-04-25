@@ -3695,14 +3695,16 @@ object GwBuildSteps {
             scriptContent = """
                 #!/bin/bash
                 set -xe
-                                
+                
+                export EXIT_CODE=0
                 SECONDS=0
 
                 echo "Building output"
-                $ditaBuildCommand
+                $ditaBuildCommand || EXIT_CODE=${'$'}?
                 
                 duration=${'$'}SECONDS
                 echo "BUILD FINISHED AFTER ${'$'}((${'$'}duration / 60)) minutes and ${'$'}((${'$'}duration % 60)) seconds"
+                exit ${'$'}EXIT_CODE
             """.trimIndent()
             dockerImage = dockerImageName
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -3760,7 +3762,11 @@ object GwBuildSteps {
                 exit ${'$'}EXIT_CODE
                 """.trimIndent()
         } else {
-            "yarn $buildCommand"
+            """
+                export EXIT_CODE=0
+                yarn $buildCommand" || EXIT_CODE=${'$'}?
+                exit ${'$'}EXIT_CODE
+            """.trimIndent()
         }
         val targetUrl = Helpers.getTargetUrl(deploy_env)
         var customEnvExportVars = ""
@@ -3845,10 +3851,12 @@ object GwBuildSteps {
                     # Doctools repo
                     npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/artifactory/api/npm/doctools-npm-dev -s @doctools
                     npm config set @doctools:registry https://artifactory.guidewire.com/artifactory/api/npm/doctools-npm-dev/
-                                        
+                    
                     cd "$working_dir"
                     yarn
-                    NODE_OPTIONS=--max_old_space_size=4096 CI=true yarn build
+                    export EXIT_CODE=0
+                    NODE_OPTIONS=--max_old_space_size=4096 CI=true yarn build || EXIT_CODE=${'$'}?
+                    exit ${'$'}EXIT_CODE
                 """.trimIndent()
             dockerImage = GwDockerImages.GENERIC_14_14_0_YARN_CHROME.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
