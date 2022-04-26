@@ -63,7 +63,7 @@
       "filter": "assets/insurer-developer.ditaval",
       "indexRedirect": true,
       "srcId": "guidewirecloudconsolelatestes419src",
-      "docId": "guidewirecloudconsolerootesinsurerdeves419"
+      "docId": "guidewirecloudconsolerootinsurerdeves419"
     },
     {
       "buildType": "yarn",
