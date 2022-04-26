@@ -101,6 +101,10 @@
           "id": "testingframeworksloadelysian"
         },
         {
+          "label": "InsuranceSuite User Interface Accessibility Testing",
+          "id": "is202205access"
+        },
+        {
           "label": "Webhooks API Reference",
           "id": "webhooksapinext"
         }
