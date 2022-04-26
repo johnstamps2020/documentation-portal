@@ -137,6 +137,26 @@ function addNavigationLinks() {
   navigationLinks.appendChild(previousLink);
   navigationLinks.appendChild(nextLink);
 
+  navigationLinks.addEventListener("click", e => {
+    if(e.target.matches('a')) {
+      const toc = document.querySelector('nav[role="toc"]')
+        ? document.querySelector('nav[role="toc"]')
+        : document.querySelector('nav.toc');
+      sessionStorage.setItem("tocPos", toc.scrollTop);
+      const navUls = toc.querySelectorAll('li > ul');
+      let expandedUls = [];
+      navUls.forEach((nestedList, index) => {
+        if(!nestedList.classList.contains('expanded')) {
+          return;
+        }
+        else {
+          expandedUls.push(index);
+        }
+      })
+      sessionStorage.setItem("tocExpandedItems", expandedUls);
+    }
+  })
+
   document.querySelector('#navbarRight').appendChild(navigationLinks);
 }
 

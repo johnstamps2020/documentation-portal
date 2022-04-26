@@ -78,6 +78,7 @@ function addCaret() {
   const navUls = document.querySelectorAll("nav[role='toc'] li > ul").length > 0
     ? document.querySelectorAll("nav[role='toc'] li > ul")
     : document.querySelectorAll("nav.toc li > ul");
+
   navUls.forEach(nestedList => {
     nestedList.classList.add('nestedList');
     const caret = document.createElement('button');
@@ -110,9 +111,75 @@ function addCaret() {
     const parentListItem = nestedList.parentElement;
     parentListItem.prepend(listHeading);
   });
+
 }
 
-export function setUpSidebar() {
+async function addNavListeners() {
+  const toc = document.querySelector('nav[role="toc"]')
+  ? document.querySelector('nav[role="toc"]')
+  : document.querySelector('nav.toc');
+
+  if(sessionStorage.getItem("tocPos")) {
+    sessionStorage.removeItem("tocPos");
+  }
+  if(sessionStorage.getItem("tocExpandedItems")) {
+    sessionStorage.removeItem("tocExpandedItems");
+  }
+  toc.addEventListener("click", e => {
+    if(e.target.matches('a')) {
+      sessionStorage.setItem("tocPos", e.target.closest('nav').scrollTop);
+      const navUls = toc.querySelectorAll('li > ul');
+      let expandedUls = [];
+      navUls.forEach((nestedList, index) => {
+        if(!nestedList.classList.contains('expanded')) {
+          return;
+        }
+        else {
+          expandedUls.push(index);
+        }
+      })
+      sessionStorage.setItem("tocExpandedItems", expandedUls);
+    }
+  })
+}
+
+async function setTocPositionAndState() {
+  const toc = document.querySelector('nav[role="toc"]') ? document.querySelector('nav[role="toc"]') : document.querySelector('nav.toc');
+
+  if(sessionStorage.getItem("tocExpandedItems")) {
+    const navUls = toc.querySelectorAll('li > ul');
+    navUls.forEach((nestedList, index) => {
+
+      if(sessionStorage.getItem("tocExpandedItems").split(",").includes(index.toString())) {
+        nestedList.classList.add('expanded');
+        const listHeading = nestedList.parentElement.firstChild;
+        const caret = listHeading.querySelector('.caret');
+        caret.classList.add('open');
+      }
+    })
+  }
+  if(sessionStorage.getItem("tocPos")) {
+      toc.scrollTop = sessionStorage.getItem("tocPos");
+  }
+}
+
+async function trimHrefAnchors() {
+  const toc = document.querySelector('nav[role="toc"]') ? document.querySelector('nav[role="toc"]') : document.querySelector('nav.toc');
+  const tocLinks = toc.getElementsByTagName('a');
+  for(let i = 0; i < tocLinks.length; i++) {
+    const href = tocLinks.item(i).getAttribute('href');
+    
+    if(href.includes('#')) {
+      const trimmedHref = href.substring(0, href.indexOf('#'));
+      tocLinks.item(i).setAttribute('href', trimmedHref);
+    }
+  }
+}
+
+export async function setUpSidebar() {
   addCaret();
+  await trimHrefAnchors();
+  await setTocPositionAndState();
   expandCurrent();
+  await addNavListeners();
 }
