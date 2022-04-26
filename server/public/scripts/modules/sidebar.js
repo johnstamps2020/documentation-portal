@@ -111,10 +111,9 @@ function addCaret() {
     const parentListItem = nestedList.parentElement;
     parentListItem.prepend(listHeading);
   });
-
 }
 
-async function addNavListeners() {
+async function addTocListener() {
   const toc = document.querySelector('nav[role="toc"]')
   ? document.querySelector('nav[role="toc"]')
   : document.querySelector('nav.toc');
@@ -181,5 +180,5 @@ export async function setUpSidebar() {
   await trimHrefAnchors();
   await setTocPositionAndState();
   expandCurrent();
-  await addNavListeners();
+  await addTocListener();
 }

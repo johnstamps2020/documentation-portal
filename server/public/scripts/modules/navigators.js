@@ -156,7 +156,6 @@ function addNavigationLinks() {
       sessionStorage.setItem("tocExpandedItems", expandedUls);
     }
   })
-
   document.querySelector('#navbarRight').appendChild(navigationLinks);
 }
 
