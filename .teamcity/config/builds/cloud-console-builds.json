@@ -1,0 +1,15 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "yarn",
+      "docId": "cloudconsoleapi",
+      "srcId": "cloudconsoleapisrc"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "dbserviceapi",
+      "srcId": "dbserviceapisrc"
+    }
+  ]
+}
