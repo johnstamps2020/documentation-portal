@@ -933,6 +933,13 @@
       "branch": "main"
     },
     {
+      "id": "clouddataaccesses419src",
+      "title": "Cloud Data Access Guide es419",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-access.git",
+      "branch": "release/es-419/2021.11"
+    },
+    {
       "id": "exploresrc",
       "title": "Explore",
       "sourceType": "git",
@@ -941,7 +948,7 @@
     },
     {
       "id": "explorees419src",
-      "title": "Explore",
+      "title": "Explore es419",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
       "branch": "es-419/2022Mar"
@@ -1793,6 +1800,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-cloud-console.git",
       "branch": "master"
+    },
+    {
+      "id": "guidewirecloudconsolelatestes419src",
+      "title": "Guidewire Cloud Console",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-cloud-console.git",
+      "branch": "release/es-419/2021.11"
     },
     {
       "id": "cicdmanagerapirefsrc",
