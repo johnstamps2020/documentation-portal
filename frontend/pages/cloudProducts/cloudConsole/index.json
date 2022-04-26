@@ -21,6 +21,14 @@
         {
           "label": "CI/CD Manager",
           "id": "cicdmanagerapirefdraft"
+        },
+        {
+          "label": "Cloud Console API",
+          "id": "cloudconsoleapi"
+        },
+        {
+          "label": "Database Service API",
+          "id": "dbserviceapi"
         }
       ]
     }
