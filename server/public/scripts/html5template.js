@@ -20,7 +20,7 @@ docReady(async function() {
   normalizeCode();
   addSkipNav();
   showTopicRecommendations();
-  setUpSidebar();
+  await setUpSidebar();
   await setMetadata();
   addInternalBadge();
   addEarlyAccessMark();
