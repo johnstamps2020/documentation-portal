@@ -3765,7 +3765,7 @@ object GwBuildSteps {
         } else {
             """
                 export EXIT_CODE=0
-                yarn $buildCommand" || EXIT_CODE=${'$'}?
+                yarn $buildCommand || EXIT_CODE=${'$'}?
                 exit ${'$'}EXIT_CODE
             """.trimIndent()
         }
