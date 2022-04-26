@@ -305,6 +305,23 @@
       "earlyAccess": false
     },
     {
+      "id": "guidewirecloudconsolerootinsurerdeves419",
+      "title": "Cloud Console Root Doc Insurer Developer es-419",
+      "url": "cloud/es-419/gcc-guide/insurer-developer/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "staging"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "guidewirecloudconsolerninsurerdevdraft",
       "title": "Cloud Console Release Notes",
       "url": "cloud/gcc-guide/insurer-developer/latest/topics/release-notes/c_new-and-changed.html",
@@ -1062,6 +1079,24 @@
         "subject": ["Features and functionality"]
       },
       "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "clouddataaccessguidees419",
+      "title": "Application Guide es-419",
+      "url": "cloud/es-419/cda/guide/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Data Access"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
