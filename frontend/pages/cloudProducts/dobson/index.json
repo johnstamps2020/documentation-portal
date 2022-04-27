@@ -32,33 +32,15 @@
       "items": [
         {
           "label": "PolicyCenter",
-          "page": "pcGwCloud/2021.11",
-          "env": ["staging", "prod"]
+          "page": "pcGwCloud/2021.11"
         },
         {
           "label": "ClaimCenter",
-          "page": "ccGwCloud/2021.11",
-          "env": ["staging", "prod"]
+          "page": "ccGwCloud/2021.11"
         },
         {
           "label": "BillingCenter",
-          "page": "bcGwCloud/2021.11",
-          "env": ["staging", "prod"]
-        },
-        {
-          "label": "PolicyCenter",
-          "page": "pcGwCloud/latest",
-          "env": ["int"]
-        },
-        {
-          "label": "ClaimCenter",
-          "page": "ccGwCloud/latest",
-          "env": ["int"]
-        },
-        {
-          "label": "BillingCenter",
-          "page": "bcGwCloud/latest",
-          "env": ["int"]
+          "page": "bcGwCloud/2021.11"
         },
         {
           "label": "InsuranceNow",
@@ -304,17 +286,6 @@
         {
           "label": "London Market",
           "page": "../../globalSolutions/iplm/3.2"
-        }
-      ]
-    },
-    {
-      "label": "Feature Preview",
-      "class": "categoryCard cardShadow",
-      "env": ["int", "staging"],
-      "items": [
-        {
-          "label": "Feature Preview",
-          "page": "../featurePreview"
         }
       ]
     }
