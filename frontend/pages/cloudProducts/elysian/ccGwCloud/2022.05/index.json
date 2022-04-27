@@ -28,6 +28,14 @@
           "id": "iscc202205releasenotes"
         },
         {
+          "label": "Integration Gateway Release Notes",
+          "id": "integgatewayrndraft"
+        },
+        {
+          "label": "Integration Gateway Release Notes",
+          "id": "integgatewayrn202205"
+        },
+        {
           "label": "REST API Client Release Notes",
           "id": "isdraftrestapiclientrn"
         },
@@ -160,20 +168,12 @@
       "class": "subject integration",
       "items": [
         {
-          "label": "Overview of Cloud Integration",
-          "id": "iselysiandraftintegoverview"
+          "label": "Cloud API Authentication",
+          "id": "isccelysiandraftapica"
         },
         {
-          "label": "Overview of Cloud Integration",
-          "id": "is202205integoverview"
-        },
-        {
-          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
-          "id": "isccelysiandraftinteg"
-        },
-        {
-          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
-          "id": "iscc202205integ"
+          "label": "Cloud API Authentication",
+          "id": "iscc202205apica"
         },
         {
           "label": "Cloud API Business Flows",
@@ -192,12 +192,28 @@
           "id": "iscc202205apicm"
         },
         {
-          "label": "Cloud API Authentication",
-          "id": "isccelysiandraftapica"
+          "label": "Integration Gateway for Developers",
+          "id": "integgatewaydevdraft"
         },
         {
-          "label": "Cloud API Authentication",
-          "id": "iscc202205apica"
+          "label": "Integration Gateway for Developers",
+          "id": "integgatewaydev202205"
+        },
+        {
+          "label": "Overview of Cloud Integration",
+          "id": "iselysiandraftintegoverview"
+        },
+        {
+          "label": "Overview of Cloud Integration",
+          "id": "is202205integoverview"
+        },
+        {
+          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
+          "id": "isccelysiandraftinteg"
+        },
+        {
+          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
+          "id": "iscc202205integ"
         },
         {
           "label": "REST API Framework",

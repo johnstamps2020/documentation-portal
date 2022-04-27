@@ -28,6 +28,14 @@
           "id": "isbc202205releasenotes"
         },
         {
+          "label": "Integration Gateway Release Notes",
+          "id": "integgatewayrndraft"
+        },
+        {
+          "label": "Integration Gateway Release Notes",
+          "id": "integgatewayrn202205"
+        },
+        {
           "label": "REST API Client Release Notes",
           "id": "isdraftrestapiclientrn"
         },
@@ -160,6 +168,22 @@
       "class": "subject integration",
       "items": [
         {
+          "label": "Cloud API Business Flows",
+          "id": "isbcelysiandraftapibf"
+        },
+        {
+          "label": "Cloud API Business Flows",
+          "id": "isbc202205apibf"
+        },
+        {
+          "label": "Integration Gateway for Developers",
+          "id": "integgatewaydevdraft"
+        },
+        {
+          "label": "Integration Gateway for Developers",
+          "id": "integgatewaydev202205"
+        },
+        {
           "label": "Overview of Cloud Integration",
           "id": "iselysiandraftintegoverview"
         },
@@ -174,14 +198,6 @@
         {
           "label": "Plugins, Pre-built Integrations, and SOAP APIs",
           "id": "isbc202205integ"
-        },
-        {
-          "label": "Cloud API Business Flows",
-          "id": "isbcelysiandraftapibf"
-        },
-        {
-          "label": "Cloud API Business Flows",
-          "id": "isbc202205apibf"
         },
         {
           "label": "REST API Framework",
