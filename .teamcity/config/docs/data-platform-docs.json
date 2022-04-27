@@ -4,7 +4,7 @@
     {
       "id": "dataplatform",
       "title": "Data Platform",
-      "url": "docguide",
+      "url": "cloud/dataplatform",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Data Platform"],
