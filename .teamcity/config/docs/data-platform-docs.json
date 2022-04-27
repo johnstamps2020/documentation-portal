@@ -1,0 +1,20 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dataplatform",
+      "title": "Data Platform",
+      "url": "docguide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Data Platform"],
+        "version": ["latest"]
+      },
+      "environments": ["int", "staging"],
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

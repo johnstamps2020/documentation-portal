@@ -67,6 +67,10 @@
           "page": "../cloudDataAccess/latest"
         },
         {
+          "label": "Data Platform",
+          "id": "dataplatform"
+        },
+        {
           "label": "DataHub",
           "page": "dhGwCloud/2022.05"
         },
