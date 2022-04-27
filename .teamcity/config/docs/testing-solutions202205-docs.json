@@ -165,7 +165,7 @@
     },
     {
       "id": "is202205access",
-      "title": "InsuranceSuite User Interface Accessibility Testing",
+      "title": "User Interface Accessibility Testing",
       "url": "cloud/testing/202205/isuiaccesstesting",
       "metadata": {
         "platform": ["Cloud"],
