@@ -150,10 +150,10 @@
       "title": "Submission Intake",
       "url": "cloud/gw-feature-preview/subintake",
       "metadata": {
-        "product": ["Feature Preview"],
+        "product": ["Submission Intake"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "release": ["Elysian"],
         "subject": ["Features and functionality"]
       },
       "environments": ["dev", "int", "staging"],
@@ -168,10 +168,10 @@
       "title": "Submission Intake Configuration",
       "url": "cloud/gw-feature-preview/subintakeconfig",
       "metadata": {
-        "product": ["Feature Preview"],
+        "product": ["Submission Intake"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "release": ["Elysian"],
         "subject": ["Configuration"]
       },
       "environments": ["dev", "int", "staging"],
