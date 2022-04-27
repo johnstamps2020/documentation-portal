@@ -59,10 +59,6 @@
         {
           "label": "Upgrade",
           "id": "ispc202111upgrade"
-        },
-        {
-          "label": "Upgrade (Internal only)",
-          "id": "ispccloudgwupgrade"
         }
       ]
     },
