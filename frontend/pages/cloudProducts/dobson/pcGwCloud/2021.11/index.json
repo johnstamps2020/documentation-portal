@@ -57,16 +57,8 @@
           "id": "ispc202111devsetup"
         },
         {
-          "label": "Developer Setup (Internal only)",
-          "id": "ispccloudgwdevsetup"
-        },
-        {
           "label": "Upgrade",
           "id": "ispc202111upgrade"
-        },
-        {
-          "label": "Upgrade (Internal only)",
-          "id": "ispccloudgwupgrade"
         }
       ]
     },
@@ -91,10 +83,6 @@
         {
           "label": "Administration",
           "id": "ispc202111admin"
-        },
-        {
-          "label": "Administration (Internal only)",
-          "id": "ispccloudgwadmin"
         },
         {
           "label": "Data Archiving",
@@ -137,12 +125,8 @@
       "class": "subject integration",
       "items": [
         {
-          "label": "Overview of Cloud Integration",
-          "id": "is202111integoverview"
-        },
-        {
-          "label": "Plugins, Prebuilt Integrations, and SOAP APIs",
-          "id": "ispc202111integ"
+          "label": "Cloud API Authentication",
+          "id": "ispc202111apica"
         },
         {
           "label": "Cloud API Business Flows and Configuration",
@@ -153,12 +137,16 @@
           "id": "ispc202111apicm"
         },
         {
-          "label": "Cloud API Authentication",
-          "id": "ispc202111apica"
-        },
-        {
           "label": "Cloud API Reference",
           "id": "pcapirefdobson"
+        },
+        {
+          "label": "Overview of Cloud Integration",
+          "id": "is202111integoverview"
+        },
+        {
+          "label": "Plugins, Prebuilt Integrations, and SOAP APIs",
+          "id": "ispc202111integ"
         },
         {
           "label": "REST API Framework",
