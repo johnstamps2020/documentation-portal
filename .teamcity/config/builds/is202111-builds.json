@@ -37,7 +37,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
       "root": "ReleaseNotesBook-dobson.ditamap",
-      "srcId": "cloudisrnsrc",
+      "srcId": "is202111rnsrc",
       "docId": "isbc202111releasenotes",
       "indexRedirect": true,
       "resources": [
@@ -161,7 +161,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-CC-Cloud-Release.ditaval",
       "root": "ReleaseNotesBook-dobson.ditamap",
-      "srcId": "cloudisrnsrc",
+      "srcId": "is202111rnsrc",
       "docId": "iscc202111releasenotes",
       "indexRedirect": true,
       "resources": [
@@ -301,7 +301,7 @@
       "buildType": "dita",
       "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "ReleaseNotesBook-dobson.ditamap",
-      "srcId": "cloudisrnsrc",
+      "srcId": "is202111rnsrc",
       "docId": "ispc202111releasenotes",
       "indexRedirect": true,
       "resources": [
