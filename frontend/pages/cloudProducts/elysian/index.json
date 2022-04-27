@@ -229,22 +229,6 @@
           "id": "gchhelprelease"
         },
         {
-          "label": "Integration Gateway Release Notes",
-          "id": "integgatewayrndraft"
-        },
-        {
-          "label": "Integration Gateway Release Notes",
-          "id": "integgatewayrn202205"
-        },
-        {
-          "label": "Integration Gateway for Developers",
-          "id": "integgatewaydevdraft"
-        },
-        {
-          "label": "Integration Gateway for Developers",
-          "id": "integgatewaydev202205"
-        },
-        {
           "label": "Network Connectivity with Guidewire Cloud Platform",
           "id": "cloudplatformdraft"
         },
@@ -268,6 +252,28 @@
         {
           "label": "Cloud Console",
           "id": "guidewirecloudconsoleguideinsurerdev"
+        },
+        {
+          "label": "Integration Framework",
+          "class": "group",
+          "items": [
+            {
+              "label": "Integration Gateway Release Notes",
+              "id": "integgatewayrndraft"
+            },
+            {
+              "label": "Integration Gateway Release Notes",
+              "id": "integgatewayrn202205"
+            },
+            {
+              "label": "Integration Gateway for Developers",
+              "id": "integgatewaydevdraft"
+            },
+            {
+              "label": "Integration Gateway for Developers",
+              "id": "integgatewaydev202205"
+            }
+          ]
         }
       ]
     },
