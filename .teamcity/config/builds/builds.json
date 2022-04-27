@@ -59,11 +59,19 @@
     },
     {
       "buildType": "dita",
-      "root": "guidewire_cloud_platform_guide.ditamap",
+      "root": "gcc.ditamap",
       "filter": "assets/insurer-developer.ditaval",
       "indexRedirect": true,
       "srcId": "guidewirecloudconsolelatestes419src",
       "docId": "guidewirecloudconsolerootinsurerdeves419"
+    },
+    {
+      "buildType": "dita",
+      "root": "gcc_release_notes.ditamap",
+      "filter": "assets/insurer-developer.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewirecloudconsolelatestes419src",
+      "docId": "guidewirecloudconsolerootinsurerdevrnes419"
     },
     {
       "buildType": "yarn",
