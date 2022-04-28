@@ -112,11 +112,14 @@ nav a.miniTocLink:hover {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   padding: 0.5rem;
+  height: 25vh;
+  overflow-y: auto;
 }
 
 @media screen and (max-width: 1670px) {
   body nav.miniToc {
     --mobile-toc-max-width: var(--article-width);
+    height: auto;
     position: relative;
     width: 100%;
     margin: 0;
