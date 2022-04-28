@@ -902,6 +902,24 @@
       "earlyAccess": false
     },
     {
+      "id": "bcapirefelysian",
+      "title": "Cloud API Reference",
+      "url": "cloud/bc/202205/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "pcapirefelysian",
       "title": "Cloud API Reference",
       "url": "cloud/pc/202205/apiref",
