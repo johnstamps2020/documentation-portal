@@ -1,7 +1,10 @@
 nav.miniToc {
   padding: 0 4px var(--footer-height) 16px;
   overflow-y: auto;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
   width: var(--mini-toc-width);
+  height: var(--left-nav-mini-toc-height);
   top: 0;
   position: sticky;
   align-self: flex-start;
