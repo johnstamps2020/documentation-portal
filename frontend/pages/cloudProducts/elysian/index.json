@@ -287,17 +287,6 @@
           "page": "../../globalSolutions/ipa/latest"
         }
       ]
-    },
-    {
-      "label": "Feature Preview",
-      "class": "categoryCard cardShadow",
-      "env": ["int", "staging"],
-      "items": [
-        {
-          "label": "Feature Preview",
-          "page": "featurePreview"
-        }
-      ]
     }
   ],
   "search_filters": {
