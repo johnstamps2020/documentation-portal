@@ -21,11 +21,11 @@ function selectToggleButton() {
 
 async function addReleaseBadge() {
   const cloudReleaseMatch = window.location.href.match(
-    /\/cloudProducts\/([^/]+)\//
+    /\/cloudProducts\/([^/]+)(\/|$)/
   );
+
   if (cloudReleaseMatch) {
     const releaseName = cloudReleaseMatch[1];
-
     const p = document.createElement('p');
     p.innerHTML = `${releaseName.charAt(0).toUpperCase() +
       releaseName.slice(1)} Release`;
