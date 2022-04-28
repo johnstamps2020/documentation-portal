@@ -35,6 +35,27 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/mde/subscriptions.git",
       "branch": "main"
+    },
+    {
+      "id": "srcpcapirefelysian",
+      "title": "PC API ref preview 2022.05",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/pc-api-ref.git",
+      "branch": "release/elysian"
+    },
+    {
+      "id": "srcccapirefelysian",
+      "title": "CC API ref preview 2022.05",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cc-api-ref.git",
+      "branch": "release/elysian"
+    },
+    {
+      "id": "srcbcapirefelysian",
+      "title": "BC API ref preview 2022.05",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/bc-api-ref.git",
+      "branch": "release/elysian"
     }
   ]
 }

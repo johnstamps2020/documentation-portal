@@ -1,0 +1,52 @@
+{
+  "$schema": "../../../page-schema.json",
+  "title": "API References",
+  "template": "page",
+  "class": "blue-theme elysian threeCards",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Elysian",
+    "items": [
+      {
+        "label": "Dobson",
+        "page": "../dobson"
+      },
+      {
+        "label": "Cortina",
+        "page": "../cortina"
+      },
+      {
+        "label": "Banff",
+        "page": "../banff"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "InsuranceNow API Reference",
+      "class": "productFamily cardShadow",
+      "id": "in20212apiref"
+    },
+    {
+      "label": "BillingCenter API Reference",
+      "class": "productFamily cardShadow",
+      "id": "bcapirefelysian"
+    },
+    {
+      "label": "ClaimCenter API Reference",
+      "class": "productFamily cardShadow",
+      "id": "ccapirefelysian"
+    },
+    {
+      "label": "PolicyCenter API Reference",
+      "class": "productFamily cardShadow",
+      "id": "pcapirefelysian"
+    },
+    {
+      "label": "APD API Reference",
+      "class": "productFamily cardShadow",
+      "id": "apdmaindoc",
+      "env": ["int"]
+    }
+  ]
+}
