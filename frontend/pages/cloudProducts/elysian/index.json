@@ -295,7 +295,7 @@
       "items": [
         {
           "label": "Feature Preview",
-          "page": "../featurePreview"
+          "page": "featurePreview"
         }
       ]
     }
