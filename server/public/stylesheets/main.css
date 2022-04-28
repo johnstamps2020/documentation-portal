@@ -215,6 +215,10 @@ main.self-managed .sidebar {
   display: block;
 }
 
+.sidebar .categoryCard {
+  margin-bottom: 1rem;
+}
+
 a {
   color: var(--clr-GW-BLUE);
   text-decoration: none;
