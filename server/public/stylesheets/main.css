@@ -159,6 +159,11 @@ main.blue-theme {
 }
 
 @media screen and (min-width: 750px) {
+  main.elysian {
+    background-image: url(/images/background-elysian.svg);
+    background-position: bottom right;
+  }
+
   main.dobson {
     background-image: url(/images/background-dobson.svg);
     background-position: center right;
