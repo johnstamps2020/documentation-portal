@@ -438,7 +438,9 @@ div.pageHero {
   border-radius: 0 4px 4px 0;
 }
 
-.l10n #platformToggle {
+.featurePreview #platformToggle,
+.l10n #platformToggle,
+.upgradediffs #platformToggle {
   display: none;
 }
 

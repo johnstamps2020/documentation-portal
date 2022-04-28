@@ -2,7 +2,7 @@
   "$schema": "/frontend/page-schema.json",
   "title": "Feature Preview - Early Access Documentation",
   "template": "page",
-  "class": "twoColumns",
+  "class": "twoColumns featurePreview",
   "items": [
     {
       "label": "Release notes",
