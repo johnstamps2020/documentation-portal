@@ -3913,7 +3913,6 @@ object GwBuildSteps {
                 
                 export CHANGED_FILES_FILE="%system.teamcity.build.changedFiles.file%"
                 export TEAMCITY_API_ROOT_URL="https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/" 
-                export TEAMCITY_API_AUTH_TOKEN="%env.TEAMCITY_API_ACCESS_TOKEN%"
                 export TEAMCITY_RESOURCES_ARTIFACT_PATH="${GwConfigParams.BUILD_DATA_DIR.param_value}/${GwConfigParams.BUILD_DATA_FILE.param_value}"
                 export TEAMCITY_AFFECTED_PROJECT="$teamcity_affected_project"
                 export TEAMCITY_TEMPLATE="$teamcity_template"
