@@ -2529,6 +2529,12 @@
       "srcId": "portasrc",
       "docId": "portalatest",
       "workingDir": "website"
+    },
+    {
+      "buildType": "yarn",
+      "srcId": "gwcpinternalsrc",
+      "docId": "gwcpinternal",
+      "workingDir": "doc-poc"
     }
   ]
 }

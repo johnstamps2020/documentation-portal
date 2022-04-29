@@ -2100,6 +2100,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/porta/porta-docs.git",
       "branch": "master"
+    },
+    {
+      "id": "gwcpinternalsrc",
+      "title": "Network Permissions Service",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-internal-doc-poc.git",
+      "branch": "master"
     }
   ]
 }
