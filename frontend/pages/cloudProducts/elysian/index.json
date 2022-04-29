@@ -229,15 +229,15 @@
           "id": "gchhelprelease"
         },
         {
-          "label": "Network Connectivity with Guidewire Cloud Platform",
+          "label": "Network Connectivity",
           "id": "cloudplatformdraft"
         },
         {
-          "label": "Network Connectivity with Guidewire Cloud Platform",
+          "label": "Network Connectivity",
           "id": "cloudplatformrelease"
         },
         {
-          "label": "Authentication with Guidewire Identity Federation Hub",
+          "label": "Authentication",
           "id": "guidewireidentityfederationhubdraft"
         },
         {
