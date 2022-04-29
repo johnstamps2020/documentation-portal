@@ -238,16 +238,16 @@
           "id": "guidewirecloudconsolerninsurerdevdraft"
         },
         {
-          "label": "Cloud Platform Release Notes",
-          "id": "gwcpreleasenotes"
-        },
-        {
           "label": "Cloud Home",
           "id": "gchhelprelease"
         },
         {
           "label": "Cloud Home Release Notes",
           "id": "gchhelprnrelease"
+        },
+        {
+          "label": "Cloud Platform Release Notes",
+          "id": "gwcpreleasenotes"
         },
         {
           "label": "Network Connectivity",
