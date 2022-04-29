@@ -3,7 +3,7 @@
   "docs": [
     {
       "id": "guidewireidentityfederationhubdraft",
-      "title": "Authentication with Guidewire Identity Federation Hub Draft",
+      "title": "Authentication Draft",
       "url": "cloud/auth/latest",
       "metadata": {
         "platform": ["Cloud"],
@@ -20,7 +20,7 @@
     },
     {
       "id": "guidewireidentityfederationhub",
-      "title": "Authentication with Guidewire Identity Federation Hub",
+      "title": "Authentication",
       "url": "cloud/auth/latest",
       "metadata": {
         "platform": ["Cloud"],
@@ -37,7 +37,7 @@
     },
     {
       "id": "cloudplatformdraft",
-      "title": "Network connectivity with Guidewire Cloud Platform",
+      "title": "Network Connectivity",
       "url": "cloud/gwcp/latest",
       "metadata": {
         "platform": ["Cloud"],
@@ -54,7 +54,7 @@
     },
     {
       "id": "cloudplatformrelease",
-      "title": "Network connectivity with Guidewire Cloud Platform",
+      "title": "Network Connectivity",
       "url": "cloud/gwcp/latest",
       "metadata": {
         "platform": ["Cloud"],

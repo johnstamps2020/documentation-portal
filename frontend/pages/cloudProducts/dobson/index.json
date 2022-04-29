@@ -253,15 +253,15 @@
           "id": "guidewirecloudconsolerninsurerdevdraft"
         },
         {
-          "label": "Network Connectivity with Guidewire Cloud Platform",
+          "label": "Network Connectivity",
           "id": "cloudplatformrelease"
         },
         {
-          "label": "Network Connectivity with Guidewire Cloud Platform",
+          "label": "Network Connectivity",
           "id": "cloudplatformdraft"
         },
         {
-          "label": "Authentication with Guidewire Identity Federation Hub",
+          "label": "Authentication",
           "id": "guidewireidentityfederationhub"
         },
         {
