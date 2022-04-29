@@ -239,7 +239,7 @@ def get_matching_build_resources(app_config: AppConfig, build_type_id: str, buil
             type=logging.INFO,
             message=f'Latest build ({build_id}) for {build_type_id} does not have the {app_config.teamcity_resources_artifact_path} artifact')
 
-    build_resources = json.loads(latest_build_resources.text)['resources']
+    build_resources = latest_build_resources.json()['resources']
     return bool(next((build_resource for build_resource in build_resources if
                       build_resource in changed_resources), False))
 
@@ -423,8 +423,8 @@ def watch_builds(app_config: AppConfig, build_pipeline: BuildPipeline) -> Proces
 
 def main():
     build_manager_config = AppConfig().get_app_config()
-    is_validation_listener = build_manager_config.teamcity_build_branch != build_manager_config.git_branch
-    changed_files = (is_validation_listener and get_changes_from_pull_request(
+    is_validation_listener_for_pr = 'pull-requests' in build_manager_config.teamcity_build_branch
+    changed_files = (is_validation_listener_for_pr and get_changes_from_pull_request(
         build_manager_config)) or get_changed_files(build_manager_config)
     build_ids_to_start = get_build_ids(build_manager_config, changed_files)
     started_builds = start_all_builds(build_manager_config, build_ids_to_start)
