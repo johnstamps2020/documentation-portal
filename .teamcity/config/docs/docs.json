@@ -8549,6 +8549,22 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "gwcpinternal",
+      "title": "Network Permissions Service",
+      "url": "cloud/internal/nps",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Platform"],
+        "version": ["latest"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": true
     }
   ]
 }
