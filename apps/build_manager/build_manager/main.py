@@ -22,13 +22,13 @@ _logger.addHandler(_console_handler)
 class AppConfig:
     git_url: str = os.environ.get('GIT_URL')
     git_branch: str = os.environ.get('GIT_BRANCH')
-    teamcity_build_branch: str = os.environ.get('TEAMCITY_BUILD_BRANCH')
     _teamcity_api_access_token: str = os.environ.get('TEAMCITY_API_ACCESS_TOKEN')
+    teamcity_build_branch: str = os.environ.get('TEAMCITY_BUILD_BRANCH')
     teamcity_resources_artifact_path: str = os.environ.get(
         'TEAMCITY_RESOURCES_ARTIFACT_PATH')
     teamcity_affected_project: str = os.environ.get('TEAMCITY_AFFECTED_PROJECT')
     teamcity_template: str = os.environ.get('TEAMCITY_TEMPLATE')
-    _bitbucket_access_token: str = os.environ.get("BITBUCKET_ACCESS_TOKEN")
+    _bitbucket_access_token: str = os.environ.get('BITBUCKET_ACCESS_TOKEN')
 
     # The trailing / is necessary for API root urls because the URLs are joined
     _teamcity_api_root_url = 'https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/'
