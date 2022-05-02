@@ -940,6 +940,13 @@
       "branch": "release/es-419/2021.11"
     },
     {
+      "id": "clouddataaccessitITsrc",
+      "title": "Cloud Data Access Guide it-IT",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-access.git",
+      "branch": "release/it-IT/2021.11"
+    },
+    {
       "id": "exploresrc",
       "title": "Explore",
       "sourceType": "git",
