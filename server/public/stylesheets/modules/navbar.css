@@ -8,7 +8,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 16px;
+  padding: 0 16px;
   box-shadow: var(--GW-BOX-SHADOW-VERTICAL-3);
   gap: var(--navbar-gap);
 }
@@ -48,7 +48,7 @@
 }
 
 .crumb {
-  font-size: 1rem;
+  font-size: clamp(.875rem, 1vw, 1rem);
   color: rgb(40, 51, 63);
 }
 
