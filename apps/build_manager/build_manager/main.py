@@ -23,25 +23,26 @@ class AppConfig:
     git_url: str = os.environ.get('GIT_URL')
     git_branch: str = os.environ.get('GIT_BRANCH')
     teamcity_build_branch: str = os.environ.get('TEAMCITY_BUILD_BRANCH')
-    # The trailing / is necessary for API root urls because the URLs are joined
     _teamcity_api_access_token: str = os.environ.get('TEAMCITY_API_ACCESS_TOKEN')
-    _teamcity_api_root_url: str = 'https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/'
-    teamcity_build_queue_url: str = urllib.parse.urljoin(
-        _teamcity_api_root_url, 'buildQueue')
-    teamcity_build_types_url: str = urllib.parse.urljoin(
-        _teamcity_api_root_url, 'buildTypes')
-    teamcity_builds_url: str = urllib.parse.urljoin(_teamcity_api_root_url, 'builds')
-    teamcity_resources_artifact_path = os.environ.get(
+    teamcity_resources_artifact_path: str = os.environ.get(
         'TEAMCITY_RESOURCES_ARTIFACT_PATH')
     teamcity_affected_project: str = os.environ.get('TEAMCITY_AFFECTED_PROJECT')
     teamcity_template: str = os.environ.get('TEAMCITY_TEMPLATE')
+    _bitbucket_access_token: str = os.environ.get("BITBUCKET_ACCESS_TOKEN")
+
+    # The trailing / is necessary for API root urls because the URLs are joined
+    _teamcity_api_root_url = 'https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/'
+    teamcity_build_queue_url = urllib.parse.urljoin(
+        _teamcity_api_root_url, 'buildQueue')
+    teamcity_build_types_url = urllib.parse.urljoin(
+        _teamcity_api_root_url, 'buildTypes')
+    teamcity_builds_url = urllib.parse.urljoin(_teamcity_api_root_url, 'builds')
     teamcity_api_headers = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'Authorization': f'Bearer {_teamcity_api_access_token}'
     }
-    _bitbucket_access_token: str = os.environ.get("BITBUCKET_ACCESS_TOKEN")
-    _bitbucket_api_root_url: str = 'https://stash.guidewire.com/rest/api/1.0/projects/'
+    _bitbucket_api_root_url = 'https://stash.guidewire.com/rest/api/1.0/projects/'
     bitbucket_api_headers = {
         'Authorization': f'Bearer {_bitbucket_access_token}'
     }
@@ -226,6 +227,12 @@ def get_build_types(app_config: AppConfig) -> Union[list[str], ProcessingRecord]
         headers=app_config.teamcity_api_headers,
         params=payload
     )
+    if build_types_response.status_code == 404:
+        return ProcessingRecord(
+            type=logging.ERROR,
+            message=build_types_response.text,
+            exit_code=1
+        )
     if build_types_ids := sorted(
             build_type['id']
             for build_type in build_types_response.json()['buildType']
@@ -240,6 +247,7 @@ def get_build_types(app_config: AppConfig) -> Union[list[str], ProcessingRecord]
 
 @check_processing_result
 def get_build_type_builds(app_config: AppConfig, build_type_id: str) -> Union[list[str], ProcessingRecord]:
+    @check_processing_result
     def run_request(branch_locator: str):
         default_filter_locator = 'defaultFilter:false'
         status_locator = 'status:success'
@@ -248,6 +256,13 @@ def get_build_type_builds(app_config: AppConfig, build_type_id: str) -> Union[li
             f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds?locator={branch_locator},'
             f'{default_filter_locator},{status_locator},{count_locator}',
             headers=app_config.teamcity_api_headers)
+        if builds_response.status_code == 404:
+            return ProcessingRecord(
+                type=logging.ERROR,
+                message=builds_response.text,
+                exit_code=1
+            )
+
         return builds_response.json()['build']
 
     builds_for_build_branch = run_request(f'branch:{app_config.teamcity_build_branch}')

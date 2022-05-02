@@ -1,43 +1,45 @@
-import os
-from dataclasses import dataclass
-
 import pytest
 
 import build_manager.main as build_manager
-from pathlib import Path
-
-resources_dir = Path.absolute(Path(__file__)).parent / 'resources'
-os.environ['CHANGED_FILES_FILE'] = str(resources_dir / 'input' / 'changed_files.txt')
 
 
-@pytest.fixture(scope='session')
-def create_build_manager_config():
-    @dataclass
-    class AppConfig:
-        _changed_files_file = os.environ.get('CHANGED_FILES_FILE')
+@pytest.fixture(scope='module')
+def build_manager_config():
+    return build_manager.AppConfig(
+        git_url='ssh://git@stash.guidewire.com/docsources/writing-with-git.git',
+        git_branch='refs/heads/release/test-1',
+        teamcity_resources_artifact_path='json/build-data.json',
+        teamcity_affected_project='DocumentationTools_DocumentationPortal_writingwithgitsrc',
+        teamcity_template='DocumentationTools_DocumentationPortal_Validationlistener',
+        teamcity_build_branch='pull-requests/1',
+    )
 
-        @property
-        def changed_files_file(self):
-            return Path(self._changed_files_file)
 
-    return AppConfig()
+def test_app_config(build_manager_config):
+    bitbucket_root_api_url = 'https://stash.guidewire.com/rest/api/1.0/projects'
+    bitbucket_project_key = 'docsources'
+    bitbucket_repository_name = 'writing-with-git'
+    bitbucket_base_url = f'{bitbucket_root_api_url}/{bitbucket_project_key}/repos/{bitbucket_repository_name}'
+    bitbucket_branch_name = 'refs%2Fheads%2Frelease%2Ftest-1'
+    commit_id = 'c53c01e16d4bccfe6db31a170a7ca1d055afbfd1'
+    assert build_manager_config.bitbucket_branch_commits_url == f'{bitbucket_base_url}' \
+                                                                f'/commits?until={bitbucket_branch_name}' \
+                                                                '&merges=exclude&limit=1'
+    assert build_manager_config.bitbucket_pull_request_changes_url == f'{bitbucket_base_url}' \
+                                                                      f'/{build_manager_config.teamcity_build_branch}/changes'
+    assert build_manager_config.get_bitbucket_commit_changes_url(
+        commit_id=commit_id) == f'{bitbucket_base_url}' \
+                                f'/commits/{commit_id}' \
+                                '/changes'
 
 
-def test_get_changed_files(create_build_manager_config):
-    expected_changed_files = [
-        'admin/common/c_admin-import-warning-inset.dita',
-        'admin/common/c_inset-specify-server-roles.dita',
-        'admin/common/c_logging-reports-inset.dita',
-        'admin/common/c_rolling-upgrade-backout.dita',
-        'admin/common/c_upgrade-full.dita',
-        'admin/common/c_upgrade-rolling-inset.dita',
-        'admin/common/c_upgrade-rolling.dita',
-        'admin/common/t_upgrade-rolling-backout.dita',
-        'admin/common_files/guide_intro.dita',
-        'admin/topics/c_hv1199521-1.dita',
-        'admin/topics/c_hv1199521.dita',
-        'admin/topics/c_hv1615492.dita',
-        'README.md',
-    ]
-    changed_files = build_manager.get_changed_files(create_build_manager_config)
-    assert sorted(expected_changed_files) == sorted(changed_files)
+def test_validations_build_manager(build_manager_config):
+    # Pull request doesn't exist so a ProcessingRecord should be returned and the app should exit with code 0
+    with pytest.raises(SystemExit) as e:
+        build_manager.get_changed_files(build_manager_config)
+    assert e.value.code == 0
+
+    # Git branch doesn't exist so a ProcessingRecord should be returned and the app should exit with code 0
+    with pytest.raises(SystemExit) as e:
+        build_manager.get_build_types(build_manager_config)
+    assert e.value.code == 0
