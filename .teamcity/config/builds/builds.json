@@ -74,6 +74,22 @@
       "docId": "guidewirecloudconsolerootinsurerdevrnes419"
     },
     {
+      "buildType": "dita",
+      "root": "gcc.ditamap",
+      "filter": "assets/insurer-developer.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewirecloudconsolelatestitITsrc",
+      "docId": "guidewirecloudconsolerootinsurerdevitIT"
+    },
+    {
+      "buildType": "dita",
+      "root": "gcc_release_notes.ditamap",
+      "filter": "assets/insurer-developer.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewirecloudconsolelatestitITsrc",
+      "docId": "guidewirecloudconsolerootinsurerdevrnitIT"
+    },
+    {
       "buildType": "yarn",
       "docId": "cicdmanagerapirefdraft",
       "srcId": "cicdmanagerapirefsrc"
