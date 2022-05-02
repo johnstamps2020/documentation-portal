@@ -1,0 +1,171 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "What's New in Elysian",
+  "template": "page",
+  "class": "blue-theme elysian threeCards",
+  "items": [
+    {
+      "label": "Applications",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Elysian Release Highlights",
+          "link": "https://www.brainshark.com/1/player/guidewire?pi=zISzx7slszM6iUz0&r3f1=&fb=0"
+        },
+        {
+          "label": "InsuranceSuite",
+          "class": "group",
+          "items": [
+            {
+              "label": "PolicyCenter Release Notes",
+              "id": "ispc202205releasenotes"
+            },
+            {
+              "label": "ClaimCenter Release Notes",
+              "id": "iscc202205releasenotes"
+            },
+            {
+              "label": "BillingCenter Release Notes",
+              "id": "isbc202205releasenotes"
+            }
+          ]
+        },
+        {
+          "label": "InsuranceNow",
+          "class": "group",
+          "items": [
+            {
+              "label": "Core Release Notes",
+              "id": "in20221rn"
+            },
+            {
+              "label": "Release Video",
+              "link": "https://www.brainshark.com/guidewire/vu?pi=zGCzZHe5LzcT3Fz0"
+            },
+            {
+              "label": "Studio Release Notes",
+              "id": "in20221studiorn"
+            },
+            {
+              "label": "Consumer Service Portal Release Notes",
+              "id": "incsp20221rn"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Data and Analytics",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud Data Access Release Notes",
+          "id": "clouddataaccessrn"
+        },
+        {
+          "label": "Data Platform Release Notes",
+          "link": "/cloud/dataplatform/topics/c_rn-new-changed.html"
+        },
+        {
+          "label": "DataHub Release Notes",
+          "id": "dhrn202205"
+        },
+        {
+          "label": "InfoCenter Release Notes",
+          "id": "icrn202205"
+        },
+        {
+          "label": "Explore Release Notes",
+          "id": "explorernrelease"
+        }
+      ]
+    },
+    {
+      "label": "Digital",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Digital Applications",
+          "class": "group",
+          "items": [
+            {
+              "label": "CustomerEngage Account Management Release Notes",
+              "id": "dx202205ceamrelnotes"
+            },
+            {
+              "label": "CustomerEngage Account Management for ClaimCenter Release Notes",
+              "id": "dx202205ceclaimsrelnotes"
+            },
+            {
+              "label": "CustomerEngage Quote and Buy Release Notes",
+              "id": "dx202205ceqbrelnotes"
+            },
+            {
+              "label": "ProducerEngage Release Notes",
+              "id": "dx202205ceperelnotes"
+            },
+            {
+              "label": "ProducerEngage for ClaimCenter Release Notes",
+              "id": "dx202205peclaimsrelnotes"
+            },
+            {
+              "label": "ServiceRepEngage Release Notes",
+              "id": "dx202205srerelnotes"
+            },
+            {
+              "label": "VendorEngage Release Notes",
+              "id": "dx202205verelnotes"
+            }
+          ]
+        },
+        {
+          "label": "Digital Framework",
+          "class": "group",
+          "items": [
+            {
+              "label": "Jutro Release Notes",
+              "page": "/jutro/documentation/7.4.3/relnotes/r-elysian/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Guidewire Cloud Platform",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud Infrastructure",
+          "class": "group",
+          "items": [
+            {
+              "label": "Cloud Platform Release Notes",
+              "id": "gwcpreleasenotes"
+            },
+            {
+              "label": "Cloud Console Release Notes",
+              "id": "guidewirecloudconsolerninsurerdev"
+            }
+          ]
+        },
+        {
+          "label": "Integration Framework",
+          "class": "group",
+          "items": [
+            {
+              "label": "Integration Gateway Release Notes",
+              "id": "integgatewayrn202205"
+            },
+            {
+              "label": "REST API Client Release Notes",
+              "id": "isrestapiclientrn"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "search_filters": {
+    "platform": ["Cloud"]
+  }
+}
