@@ -4,7 +4,6 @@ import logging
 import os
 import urllib.parse
 from dataclasses import dataclass
-from pathlib import Path
 from typing import Optional, Union
 
 import requests
@@ -23,39 +22,70 @@ _logger.addHandler(_console_handler)
 class AppConfig:
     git_url: str = os.environ.get('GIT_URL')
     git_branch: str = os.environ.get('GIT_BRANCH')
+    _teamcity_api_access_token: str = os.environ.get('TEAMCITY_API_ACCESS_TOKEN')
     teamcity_build_branch: str = os.environ.get('TEAMCITY_BUILD_BRANCH')
-    teamcity_api_root_url: str = os.environ.get('TEAMCITY_API_ROOT_URL')
-    teamcity_build_queue_url: str = urllib.parse.urljoin(
-        teamcity_api_root_url, 'buildQueue')
-    teamcity_build_types_url: str = urllib.parse.urljoin(
-        teamcity_api_root_url, 'buildTypes')
-    teamcity_builds_url: str = urllib.parse.urljoin(teamcity_api_root_url, 'builds')
-    teamcity_resources_artifact_path = os.environ.get(
+    teamcity_resources_artifact_path: str = os.environ.get(
         'TEAMCITY_RESOURCES_ARTIFACT_PATH')
     teamcity_affected_project: str = os.environ.get('TEAMCITY_AFFECTED_PROJECT')
     teamcity_template: str = os.environ.get('TEAMCITY_TEMPLATE')
-    _teamcity_api_access_token: str = os.environ.get('TEAMCITY_API_ACCESS_TOKEN')
-    _bitbucket_access_token: str = os.environ.get("BITBUCKET_ACCESS_TOKEN")
-    _changed_files_file: str = os.environ.get('CHANGED_FILES_FILE')
+    _bitbucket_access_token: str = os.environ.get('BITBUCKET_ACCESS_TOKEN')
+
+    # The trailing / is necessary for API root urls because the URLs are joined
+    _teamcity_api_root_url = 'https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/'
+    teamcity_build_queue_url = urllib.parse.urljoin(
+        _teamcity_api_root_url, 'buildQueue')
+    teamcity_build_types_url = urllib.parse.urljoin(
+        _teamcity_api_root_url, 'buildTypes')
+    teamcity_builds_url = urllib.parse.urljoin(_teamcity_api_root_url, 'builds')
     teamcity_api_headers = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'Authorization': f'Bearer {_teamcity_api_access_token}'
     }
+    _bitbucket_api_root_url = 'https://stash.guidewire.com/rest/api/1.0/projects/'
     bitbucket_api_headers = {
         'Authorization': f'Bearer {_bitbucket_access_token}'
     }
 
     @property
-    def changed_files_file(self):
-        return Path(self._changed_files_file)
+    def _bitbucket_git_url_path(self):
+        return urllib.parse.urlparse(self.git_url).path
+
+    @property
+    def _bitbucket_project_key(self):
+        return self._bitbucket_git_url_path.split('/')[1]
+
+    @property
+    def _bitbucket_repository_name(self):
+        return self._bitbucket_git_url_path.split('/')[2].replace('.git', '')
+
+    @property
+    def _bitbucket_branch_name(self):
+        return urllib.parse.quote(self.git_branch, safe='')
+
+    @property
+    def bitbucket_branch_commits_url(self):
+        return urllib.parse.urljoin(self._bitbucket_api_root_url,
+                                    f'{self._bitbucket_project_key}/repos/{self._bitbucket_repository_name}'
+                                    f'/commits?until={self._bitbucket_branch_name}&merges=exclude&limit=1')
+
+    @property
+    def bitbucket_pull_request_changes_url(self):
+        return urllib.parse.urljoin(self._bitbucket_api_root_url,
+                                    f'{self._bitbucket_project_key}/repos/{self._bitbucket_repository_name}'
+                                    f'/{self.teamcity_build_branch}/changes')
+
+    def get_bitbucket_commit_changes_url(self, commit_id: str):
+        return urllib.parse.urljoin(self._bitbucket_api_root_url,
+                                    f'{self._bitbucket_project_key}/repos/{self._bitbucket_repository_name}'
+                                    f'/commits/{commit_id}/changes')
 
     def get_app_config(self):
-        missing_parameters = [
-            field.name.upper().lstrip('_') for field in dataclasses.fields(self)
+        if missing_parameters := [
+            field.name.upper().lstrip('_')
+            for field in dataclasses.fields(self)
             if not getattr(self, field.name)
-        ]
-        if missing_parameters:
+        ]:
             raise SystemError(f'Missing environment variables:'
                               f'\n{", ".join(missing_parameters)}')
         return self
@@ -147,41 +177,46 @@ def check_processing_result(func):
     return wrapper
 
 
-@check_processing_result
-def get_changes_from_pull_request(app_config: AppConfig) -> Union[list[str], ProcessingRecord]:
-    git_url_path = urllib.parse.urlparse(app_config.git_url).path
-    project_key = git_url_path.split('/')[1]
-    repository_name = git_url_path.split('/')[2].replace('.git', '')
-    url = f'https://stash.guidewire.com/rest/api/1.0/projects/{project_key}/repos/{repository_name}/{app_config.teamcity_build_branch}/changes'
-    response = requests.get(
-        url,
-        headers=app_config.bitbucket_api_headers,
-    )
-    changes = response.json().get('values', [])
-    return (changes and [change['path']['toString'] for change in changes]) or ProcessingRecord(
-        type=logging.INFO,
-        message='No changes found in the pull request history. Nothing more to do here.',
-        exit_code=0
-    )
+def get_changed_files(app_config: AppConfig):
+    @check_processing_result
+    def get_changes_from_pull_request() -> Union[list[str], ProcessingRecord]:
+        pull_request_changes = requests.get(
+            app_config.bitbucket_pull_request_changes_url,
+            headers=app_config.bitbucket_api_headers,
+        )
+        changes = pull_request_changes.json().get('values', [])
+        return (changes and [change['path']['toString'] for change in changes]) or ProcessingRecord(
+            type=logging.INFO,
+            message='No changes found in the pull request history. Nothing more to do here.',
+            exit_code=0
+        )
 
+    @check_processing_result
+    def get_latest_change_from_branch() -> Union[list[str], ProcessingRecord]:
+        branch_commits = requests.get(
+            app_config.bitbucket_branch_commits_url,
+            headers=app_config.bitbucket_api_headers,
+        )
+        latest_commit_id = branch_commits.json()['values'][0]['id']
+        latest_commit_changes = requests.get(
+            app_config.get_bitbucket_commit_changes_url(latest_commit_id),
+            headers=app_config.bitbucket_api_headers,
+        )
+        changes = latest_commit_changes.json().get('values', [])
+        return (changes and [change['path']['toString'] for change in changes]) or ProcessingRecord(
+            type=logging.INFO,
+            message='No changes found in the branch latest commit. Nothing more to do here.',
+            exit_code=0
+        )
 
-@check_processing_result
-def get_changed_files(app_config: AppConfig) -> Union[list[str], ProcessingRecord]:
-    changed_files_file_content = app_config.changed_files_file.open().readlines()
-    changed_files = [line.split(':')[0] for line in changed_files_file_content]
-    _logger.info(f'Number of VCS changes: {len(changed_files)}')
-    if changed_files:
-        return changed_files
-    return ProcessingRecord(
-        type=logging.INFO,
-        message='No changes found in the VCS history. Nothing more to do here.',
-        exit_code=0
-    )
+    is_validation_listener_for_pr = 'pull-requests' in app_config.teamcity_build_branch
+    return (is_validation_listener_for_pr and get_changes_from_pull_request()) or get_latest_change_from_branch()
 
 
 @check_processing_result
 def get_build_types(app_config: AppConfig) -> Union[list[str], ProcessingRecord]:
-    vcs_root_instance_locator = f'vcsRootInstance:(property:(name:url,value:{app_config.git_url}),property:(name:branch,value:{app_config.git_branch}))'
+    vcs_root_instance_locator = f'vcsRootInstance:(property:(name:url,value:{app_config.git_url}),' \
+                                f'property:(name:branch,value:{app_config.git_branch}))'
     template_locator = f'template:(id:{app_config.teamcity_template})'
     affected_project_locator = f'affectedProject:(id:{app_config.teamcity_affected_project})'
     payload = {
@@ -192,9 +227,16 @@ def get_build_types(app_config: AppConfig) -> Union[list[str], ProcessingRecord]
         headers=app_config.teamcity_api_headers,
         params=payload
     )
-    build_types_ids = sorted(
-        build_type['id'] for build_type in build_types_response.json()['buildType'])
-    if build_types_ids:
+    if build_types_response.status_code == 404:
+        return ProcessingRecord(
+            type=logging.ERROR,
+            message=build_types_response.text,
+            exit_code=1
+        )
+    if build_types_ids := sorted(
+            build_type['id']
+            for build_type in build_types_response.json()['buildType']
+    ):
         return build_types_ids
     return ProcessingRecord(
         type=logging.INFO,
@@ -205,13 +247,22 @@ def get_build_types(app_config: AppConfig) -> Union[list[str], ProcessingRecord]
 
 @check_processing_result
 def get_build_type_builds(app_config: AppConfig, build_type_id: str) -> Union[list[str], ProcessingRecord]:
+    @check_processing_result
     def run_request(branch_locator: str):
         default_filter_locator = 'defaultFilter:false'
         status_locator = 'status:success'
         count_locator = 'count:1'
         builds_response = requests.get(
-            f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds?locator={branch_locator},{default_filter_locator},{status_locator},{count_locator}',
+            f'{app_config.teamcity_build_types_url}/id:{build_type_id}/builds?locator={branch_locator},'
+            f'{default_filter_locator},{status_locator},{count_locator}',
             headers=app_config.teamcity_api_headers)
+        if builds_response.status_code == 404:
+            return ProcessingRecord(
+                type=logging.ERROR,
+                message=builds_response.text,
+                exit_code=1
+            )
+
         return builds_response.json()['build']
 
     builds_for_build_branch = run_request(f'branch:{app_config.teamcity_build_branch}')
@@ -230,14 +281,16 @@ def get_matching_build_resources(app_config: AppConfig, build_type_id: str, buil
                                  changed_resources: list[str]) -> \
         Union[bool, ProcessingRecord]:
     latest_build_resources = requests.get(
-        f'{app_config.teamcity_builds_url}/id:{build_id}/artifacts/content/{app_config.teamcity_resources_artifact_path}',
+        f'{app_config.teamcity_builds_url}/id:{build_id}/artifacts/content'
+        f'/{app_config.teamcity_resources_artifact_path}',
         headers=app_config.teamcity_api_headers,
         allow_redirects=True
     )
     if latest_build_resources.status_code == 404:
         return ProcessingRecord(
             type=logging.INFO,
-            message=f'Latest build ({build_id}) for {build_type_id} does not have the {app_config.teamcity_resources_artifact_path} artifact')
+            message=f'Latest build ({build_id}) for {build_type_id} does not have '
+                    f'the {app_config.teamcity_resources_artifact_path} artifact')
 
     build_resources = latest_build_resources.json()['resources']
     return bool(next((build_resource for build_resource in build_resources if
@@ -250,8 +303,7 @@ def get_build_ids(app_config: AppConfig, changed_resources: list[str]) -> Union[
     all_builds = []
     for build_type_id in build_types_ids:
         builds = get_build_type_builds(app_config, build_type_id)
-        builds_found = builds and type(builds) is not ProcessingRecord
-        if builds_found:
+        if builds and type(builds) is not ProcessingRecord:
             latest_build_id = builds[0]['id']
             matching_resources = get_matching_build_resources(app_config, build_type_id, latest_build_id,
                                                               changed_resources)
@@ -306,10 +358,11 @@ def start_build(app_config: AppConfig, build_id: str) -> Union[BuildInfo or Proc
 def start_all_builds(app_config: AppConfig, build_type_ids: list[str]) -> Union[list[BuildInfo] or ProcessingRecord]:
     started_builds_results = (start_build(app_config, build_type_id)
                               for build_type_id in build_type_ids)
-    started_builds = [
-        result for result in started_builds_results if type(result) is BuildInfo]
-
-    if started_builds:
+    if started_builds := [
+        result
+        for result in started_builds_results
+        if type(result) is BuildInfo
+    ]:
         started_builds_ids = '\n\t'.join(
             f"{build.id} (build type: {build.build_type['id']})" for build in started_builds)
         _logger.info(
@@ -356,10 +409,11 @@ def update_build(app_config: AppConfig, build: BuildInfo) -> Union[BuildInfo, Pr
 def update_all_builds(app_config: AppConfig, builds: list[BuildInfo]) -> Union[list[BuildInfo], ProcessingRecord]:
     updated_builds_results = (update_build(app_config, build)
                               for build in builds)
-    updated_builds = [
-        result for result in updated_builds_results if type(result) is BuildInfo]
-
-    if updated_builds:
+    if updated_builds := [
+        result
+        for result in updated_builds_results
+        if type(result) is BuildInfo
+    ]:
         updated_builds_ids = '\n\t'.join(build.id for build in updated_builds)
         _logger.info(
             f'Updated info for builds: {len(updated_builds)} '
@@ -423,9 +477,7 @@ def watch_builds(app_config: AppConfig, build_pipeline: BuildPipeline) -> Proces
 
 def main():
     build_manager_config = AppConfig().get_app_config()
-    is_validation_listener_for_pr = 'pull-requests' in build_manager_config.teamcity_build_branch
-    changed_files = (is_validation_listener_for_pr and get_changes_from_pull_request(
-        build_manager_config)) or get_changed_files(build_manager_config)
+    changed_files = get_changed_files(build_manager_config)
     build_ids_to_start = get_build_ids(build_manager_config, changed_files)
     started_builds = start_all_builds(build_manager_config, build_ids_to_start)
     watch_builds(build_manager_config, BuildPipeline(started_builds))
