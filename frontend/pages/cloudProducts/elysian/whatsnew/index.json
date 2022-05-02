@@ -124,7 +124,7 @@
           "items": [
             {
               "label": "Jutro Release Notes",
-              "page": "/jutro/documentation/7.4.3/relnotes/r-elysian/"
+              "link": "/jutro/documentation/7.4.3/relnotes/r-elysian/"
             }
           ]
         }
