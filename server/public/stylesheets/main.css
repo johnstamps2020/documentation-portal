@@ -215,6 +215,21 @@ main.self-managed .sidebar {
   display: block;
 }
 
+.notice {
+  background-color: hsl(0, 0%, 100%);
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  width: 932px;
+}
+
+@media screen and (max-width: 1015px) {
+  .notice {
+    max-width: 616px;
+  }
+}
+
 .sidebar .categoryCard {
   margin-bottom: 1rem;
 }

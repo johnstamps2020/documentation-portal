@@ -2,77 +2,77 @@
   "$schema": "/frontend/page-schema.json",
   "title": "What's New in Elysian",
   "template": "page",
-  "class": "blue-theme elysian threeCards",
+  "class": "twoColumns",
   "items": [
     {
-      "label": "Applications",
-      "class": "categoryCard cardShadow",
+      "label": "Elysian Release Highlights",
+      "class": "subject",
       "items": [
         {
-          "label": "Elysian Release Highlights",
+          "label": "Highlights Video",
           "link": "https://www.brainshark.com/1/player/guidewire?pi=zISzx7slszM6iUz0&r3f1=&fb=0"
+        }
+      ]
+    },
+    {
+      "label": "InsuranceSuite",
+      "class": "subject",
+      "items": [
+        {
+          "label": "PolicyCenter Release Notes",
+          "id": "ispc202205releasenotes"
         },
         {
-          "label": "InsuranceSuite",
-          "class": "group",
-          "items": [
-            {
-              "label": "PolicyCenter Release Notes",
-              "id": "ispc202205releasenotes"
-            },
-            {
-              "label": "ClaimCenter Release Notes",
-              "id": "iscc202205releasenotes"
-            },
-            {
-              "label": "BillingCenter Release Notes",
-              "id": "isbc202205releasenotes"
-            },
-            {
-              "label": "PolicyCenter Release Notes",
-              "id": "ispcelysiandraftreleasenotes"
-            },
-            {
-              "label": "ClaimCenter Release Notes",
-              "id": "isccelysiandraftreleasenotes"
-            },
-            {
-              "label": "BillingCenter Release Notes",
-              "id": "isbcelysiandraftreleasenotes"
-            }
-          ]
+          "label": "ClaimCenter Release Notes",
+          "id": "iscc202205releasenotes"
         },
         {
-          "label": "InsuranceNow",
-          "class": "group",
-          "items": [
-            {
-              "label": "Core Release Notes",
-              "id": "in20221rn"
-            },
-            {
-              "label": "Release Video",
-              "link": "https://www.brainshark.com/guidewire/vu?pi=zGCzZHe5LzcT3Fz0"
-            },
-            {
-              "label": "Studio Release Notes",
-              "id": "in20221studiorn"
-            },
-            {
-              "label": "Studio Release Notes",
-              "id": "in20221xstudiorndraft"
-            },
-            {
-              "label": "Consumer Service Portal Release Notes",
-              "id": "incsp20221rn"
-            }
-          ]
+          "label": "BillingCenter Release Notes",
+          "id": "isbc202205releasenotes"
+        },
+        {
+          "label": "PolicyCenter Release Notes",
+          "id": "ispcelysiandraftreleasenotes"
+        },
+        {
+          "label": "ClaimCenter Release Notes",
+          "id": "isccelysiandraftreleasenotes"
+        },
+        {
+          "label": "BillingCenter Release Notes",
+          "id": "isbcelysiandraftreleasenotes"
+        }
+      ]
+    },
+    {
+      "label": "InsuranceNow",
+      "class": "subject",
+      "items": [
+        {
+          "label": "Core Release Notes",
+          "id": "in20221rn"
+        },
+        {
+          "label": "Release Video",
+          "link": "https://www.brainshark.com/guidewire/vu?pi=zGCzZHe5LzcT3Fz0"
+        },
+        {
+          "label": "Studio Release Notes",
+          "id": "in20221studiorn"
+        },
+        {
+          "label": "Studio Release Notes",
+          "id": "in20221xstudiorndraft"
+        },
+        {
+          "label": "Consumer Service Portal Release Notes",
+          "id": "incsp20221rn"
         }
       ]
     },
     {
       "label": "Data and Analytics",
-      "class": "categoryCard cardShadow",
+      "class": "subject",
       "items": [
         {
           "label": "Cloud Data Access Release Notes",
@@ -98,93 +98,75 @@
     },
     {
       "label": "Digital",
-      "class": "categoryCard cardShadow",
+      "class": "subject",
       "items": [
         {
-          "label": "Digital Applications",
-          "class": "group",
-          "items": [
-            {
-              "label": "CustomerEngage Account Management Release Notes",
-              "id": "dx202205ceamrelnotes"
-            },
-            {
-              "label": "CustomerEngage Account Management for ClaimCenter Release Notes",
-              "id": "dx202205ceclaimsrelnotes"
-            },
-            {
-              "label": "CustomerEngage Quote and Buy Release Notes",
-              "id": "dx202205ceqbrelnotes"
-            },
-            {
-              "label": "ProducerEngage Release Notes",
-              "id": "dx202205perelnotes"
-            },
-            {
-              "label": "ProducerEngage for ClaimCenter Release Notes",
-              "id": "dx202205peclaimsrelnotes"
-            },
-            {
-              "label": "ServiceRepEngage Release Notes",
-              "id": "dx202205srerelnotes"
-            },
-            {
-              "label": "VendorEngage Release Notes",
-              "id": "dx202205verelnotes"
-            }
-          ]
+          "label": "CustomerEngage Account Management Release Notes",
+          "id": "dx202205ceamrelnotes"
         },
         {
-          "label": "Digital Framework",
-          "class": "group",
-          "items": [
-            {
-              "label": "Jutro Release Notes",
-              "link": "/jutro/documentation/7.4.3/relnotes/r-elysian/"
-            }
-          ]
+          "label": "CustomerEngage Account Management for ClaimCenter Release Notes",
+          "id": "dx202205ceclaimsrelnotes"
+        },
+        {
+          "label": "CustomerEngage Quote and Buy Release Notes",
+          "id": "dx202205ceqbrelnotes"
+        },
+        {
+          "label": "ProducerEngage Release Notes",
+          "id": "dx202205perelnotes"
+        },
+        {
+          "label": "ProducerEngage for ClaimCenter Release Notes",
+          "id": "dx202205peclaimsrelnotes"
+        },
+        {
+          "label": "ServiceRepEngage Release Notes",
+          "id": "dx202205srerelnotes"
+        },
+        {
+          "label": "VendorEngage Release Notes",
+          "id": "dx202205verelnotes"
+        },
+        {
+          "label": "Jutro Release Notes",
+          "link": "/jutro/documentation/7.4.3/relnotes/r-elysian/"
         }
       ]
     },
     {
-      "label": "Guidewire Cloud Platform",
-      "class": "categoryCard cardShadow",
+      "label": "Cloud Infrastructure",
+      "class": "subject",
       "items": [
         {
-          "label": "Cloud Infrastructure",
-          "class": "group",
-          "items": [
-            {
-              "label": "Cloud Platform Release Notes",
-              "id": "gwcpreleasenotes"
-            },
-            {
-              "label": "Cloud Console Release Notes",
-              "id": "guidewirecloudconsolerninsurerdev"
-            },
-            {
-              "label": "Cloud Console Release Notes",
-              "id": "guidewirecloudconsolerninsurerdevdraft"
-            }
-          ]
+          "label": "Cloud Platform Release Notes",
+          "id": "gwcpreleasenotes"
         },
         {
-          "label": "Integration Framework",
-          "class": "group",
-          "items": [
-            {
-              "label": "Integration Gateway Release Notes",
-              "id": "integgatewayrn202205"
-            },
-            {
-              "label": "Integration Gateway Release Notes",
-              "id": "integgatewayrndraft"
-            },
-            {
-              "label": "REST API Client Release Notes",
-              "id": "isrestapiclientrn"
-            }
-          ]
+          "label": "Cloud Console Release Notes",
+          "id": "guidewirecloudconsolerninsurerdev"
+        },
+        {
+          "label": "Cloud Console Release Notes",
+          "id": "guidewirecloudconsolerninsurerdevdraft"
+        }
+      ]
+    },
+    {
+      "label": "Integration Framework",
+      "class": "subject",
+      "items": [
+        {
+          "label": "Integration Gateway Release Notes",
+          "id": "integgatewayrn202205"
+        },
+        {
+          "label": "Integration Gateway Release Notes",
+          "id": "integgatewayrndraft"
+        },
+        {
+          "label": "REST API Client Release Notes",
+          "id": "isrestapiclientrn"
         }
       ]
     }

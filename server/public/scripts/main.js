@@ -15,6 +15,10 @@ function selectToggleButton() {
       matchingButton = button;
     }
   });
+  // temporary patch
+  if (currentPath.startsWith('/globalSolutions/ipf/')) {
+    matchingButton = document.querySelector('#platformToggle > #selfManagedButton');
+  }
   matchingButton.classList.toggle('selected');
   matchingButton.removeAttribute('href');
 }
@@ -93,9 +97,29 @@ function setSearchFilterCSS() {
   }
 }
 
+function addElysianNotice() {
+  if(window.location.pathname != '/cloudProducts/elysian' &&
+     window.location.pathname != '/cloudProducts/elysian/') {
+       return;
+  }
+  const content = document.querySelector('.content');
+  const notice = document.createElement('div');
+  notice.classList.add('notice', 'cardShadow');
+  const link = document.createElement('a');
+  link.textContent = "What's new in Elysian";
+  link.setAttribute('href', '/cloudProducts/elysian/whatsnew');
+  notice.appendChild(link);
+  content.prepend(notice);
+}
+
+function addNotices() {
+  addElysianNotice();
+}
+
 window.onload = async function() {
   selectToggleButton();
   addReleaseBadge();
+  addNotices()
   setSearchFilterCSS();
   await setMetadata();
 };
