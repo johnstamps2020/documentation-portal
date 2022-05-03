@@ -113,12 +113,12 @@
       "class": "subject integration",
       "items": [
         {
-          "label": "Cloud API Business Flows and Configuration",
-          "id": "isbc202111apibf"
-        },
-        {
           "label": "Overview of Cloud Integration",
           "id": "is202111integoverview"
+        },
+        {
+          "label": "Cloud API Business Flows and Configuration",
+          "id": "isbc202111apibf"
         },
         {
           "label": "Plugins, Prebuilt Integrations, and SOAP APIs",
