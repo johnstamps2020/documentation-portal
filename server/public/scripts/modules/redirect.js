@@ -11,7 +11,11 @@ export async function handleContextId() {
     const queryString = window.location.search;
     if (queryString) {
         const urlParams = new URLSearchParams(queryString);
-        const contextId = urlParams.get('contextId');
+        const urlParamsLower = new URLSearchParams();
+        for(const [name, value] of urlParams) {
+            urlParamsLower.append(name.toLowerCase(), value);
+        }
+        const contextId = urlParamsLower.get('contextid');
         if (contextId) {
             const redirected = await redirectToId(contextId);
             return redirected;
