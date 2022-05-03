@@ -92,6 +92,12 @@ div.code-toolbar > div.toolbar > div.toolbar-item > span {
   border-radius: 6px;
 }
 
+.codeph *,
+.codeblock *,
+.pre * {
+  border: none;
+}
+
 pre.pre .varname,
 pre.pre .apiname,
 pre.pre .userinput,
