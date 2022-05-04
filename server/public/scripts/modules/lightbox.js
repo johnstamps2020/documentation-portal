@@ -29,13 +29,21 @@ function ClickableThumbnail({ showDialog, thumbnail }) {
 function Lightbox({ thumbnail, fullSizeElement, clickToEnlarge }) {
   const dialogRef = useRef();
 
+  function closeDialogWithEscapeButton(event) {
+    if (event.key === 'Escape') {
+      closeDialog();
+    }
+  }
+
   function showDialog() {
     document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', closeDialogWithEscapeButton);
     dialogRef.current.showModal();
   }
 
   function closeDialog() {
     document.body.style.overflow = null;
+    document.removeEventListener('keydown', closeDialogWithEscapeButton);
     dialogRef.current.close();
   }
 
