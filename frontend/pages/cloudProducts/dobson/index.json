@@ -270,11 +270,7 @@
         },
         {
           "label": "Cloud Console",
-          "id": "guidewirecloudconsoleguideinsurerdev"
-        },
-        {
-          "label": "Cloud Console",
-          "id": "guidewirecloudconsoleguideinsurerdevdraft"
+          "page": "../cloudConsole"
         }
       ]
     },

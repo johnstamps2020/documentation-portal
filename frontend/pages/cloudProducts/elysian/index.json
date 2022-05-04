@@ -222,12 +222,7 @@
         },
         {
           "label": "Cloud Console",
-          "page": "../cloudConsole",
-          "env": ["int"]
-        },
-        {
-          "label": "Cloud Console",
-          "id": "guidewirecloudconsoleguideinsurerdev"
+          "page": "../cloudConsole"
         },
         {
           "label": "Cloud Console Release Notes",
