@@ -41,6 +41,7 @@
     <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-swabra:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-ant:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-perforce:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-sbt-runner:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-mercurial:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-golang:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-ssh-manager:1.0-SNAPSHOT" level="project" />
