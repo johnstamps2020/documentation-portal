@@ -23,6 +23,13 @@
       "branch": "main"
     },
     {
+      "id": "writingwithgitworkshopsrc",
+      "title": "Writing with Git",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/writing-with-git.git",
+      "branch": "workshop"
+    },
+    {
       "id": "elemrendsrc",
       "title": "Element Rendering",
       "sourceType": "git",
