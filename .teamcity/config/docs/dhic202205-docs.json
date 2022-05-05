@@ -2,42 +2,6 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "dhqueryguiderelease",
-      "title": "Data Studio Query Guide",
-      "url": "cloud/datastudio/qg",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Data Studio"],
-        "version": ["latest"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dhqueryguidedraft",
-      "title": "Data Studio Query Guide Draft",
-      "url": "cloud/datastudio/qgdraft",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Data Studio"],
-        "version": ["latest"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "dhrn202205",
       "title": "Release Notes",
       "url": "cloud/dh/202205/releasenotes",

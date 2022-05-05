@@ -79,14 +79,6 @@
         {
           "label": "Developer Reference",
           "id": "dhdevref202205"
-        },
-        {
-          "label": "Data Studio Query Guide (Draft)",
-          "id": "dhqueryguidedraft"
-        },
-        {
-          "label": "Data Studio Query Guide (Release)",
-          "id": "dhqueryguiderelease"
         }
       ]
     }
