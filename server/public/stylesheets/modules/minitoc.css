@@ -8,6 +8,7 @@ nav.miniToc {
   top: 0;
   position: sticky;
   align-self: flex-start;
+  line-height: 16px;
 }
 
 .miniTocTitle {
@@ -39,7 +40,7 @@ nav a.miniTocLink:hover {
   + .miniTocLink.sectiontitle
   ~ .miniTocLink.sectiontitle,
 .miniTocLink.topictitle2 + .miniTocLink.topictitle3 ~ .miniTocLink.topictitle3 {
-  margin-left: 1ch;
+  margin-left: 2ch;
 }
 
 .miniTocLink.topictitle3 + .miniTocLink.sectiontitle,
@@ -48,11 +49,11 @@ nav a.miniTocLink:hover {
   + .miniTocLink.sectiontitle
   ~ .miniTocLink.sectiontitle,
 .miniTocLink.topictitle3 + .miniTocLink.topictitle4 ~ .miniTocLink.topictitle4 {
-  margin-left: 2ch;
+  margin-left: 4ch;
 }
 
 .miniTocLink.topictitle3 + .miniTocLink.sectiontitle {
-  margin-left: 2ch !important;
+  margin-left: 4ch !important;
 }
 
 .miniTocLink.topictitle4 + .miniTocLink.sectiontitle,
@@ -61,11 +62,11 @@ nav a.miniTocLink:hover {
   + .miniTocLink.sectiontitle
   ~ .miniTocLink.sectiontitle,
 .miniTocLink.topictitle4 + .miniTocLink.topictitle5 ~ .miniTocLink.topictitle5 {
-  margin-left: 3ch;
+  margin-left: 6ch;
 }
 
 .miniTocLink.topictitle4 + .miniTocLink.sectiontitle {
-  margin-left: 3ch !important;
+  margin-left: 6ch !important;
 }
 
 #mobileMiniTocWrapper {
