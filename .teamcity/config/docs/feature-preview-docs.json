@@ -2,17 +2,17 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "apddraft",
+      "id": "apdapp",
       "title": "Advanced Product Designer",
       "url": "cloud/apd/latest",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Advanced Product Designer"],
         "version": ["latest"],
-        "release": ["Dobson"],
+        "release": ["Elysian"],
         "subject": ["Configuration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -27,10 +27,10 @@
         "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "release": ["Elysian"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -45,10 +45,10 @@
         "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "release": ["Elysian"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -99,7 +99,7 @@
         "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "release": ["Elysian"],
         "subject": ["Configuration"]
       },
       "environments": ["dev", "int", "staging"],
