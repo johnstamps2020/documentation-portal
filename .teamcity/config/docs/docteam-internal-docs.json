@@ -49,12 +49,12 @@
     },
     {
       "id": "writingwithgitworkshop",
-      "title": "Writing with Git",
+      "title": "Writing with Git for the Workshop",
       "url": "writing-with-git-workshop",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Writing with Git"],
-        "version": ["latest"]
+        "version": ["next"]
       },
       "environments": ["int"],
       "displayOnLandingPages": false,
