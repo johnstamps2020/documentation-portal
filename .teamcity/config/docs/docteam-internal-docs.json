@@ -48,6 +48,22 @@
       "earlyAccess": false
     },
     {
+      "id": "writingwithgitworkshop",
+      "title": "Writing with Git",
+      "url": "writing-with-git-workshop",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Writing with Git"],
+        "version": ["latest"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "elemrend",
       "title": "Element Rendering",
       "url": "elementrendering",
