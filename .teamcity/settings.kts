@@ -519,67 +519,57 @@ object Docs {
                 docBuildType.artifactRules =
                     "${working_dir}/${output_dir}/${GwConfigParams.BUILD_DATA_FILE.param_value} => ${GwConfigParams.BUILD_DATA_DIR.param_value}"
                 val buildDitaProjectStep: ScriptBuildStep
-                if (env == GwDeployEnvs.STAGING.env_name) {
-                    docBuildType.features.feature(GwBuildFeatures.GwOxygenWebhelpLicenseBuildFeature)
-                    buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
-                        GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name,
-                        root_map,
-                        index_redirect,
-                        working_dir,
-                        output_dir,
-                        publish_path,
-                        build_filter = build_filter,
-                        doc_id = doc_id,
-                        git_url = git_url,
-                        git_branch = git_branch
-                    )
-                    if (gw_platforms.lowercase(Locale.getDefault()).contains("self-managed")) {
-                        val localOutputDir = "${output_dir}/zip"
-                        val buildDitaProjectForOfflineUseStep =
-                            GwBuildSteps.createBuildDitaProjectForBuildsStep(
-                                GwDitaOutputFormats.WEBHELP.format_name,
-                                root_map,
-                                index_redirect,
-                                working_dir,
-                                localOutputDir,
-                                publish_path,
-                                build_filter = build_filter,
-                                for_offline_use = true
-                            )
-                        docBuildType.steps.step(buildDitaProjectForOfflineUseStep)
-                        docBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
-                        val copyPdfToOfflineOutputStep = GwBuildSteps.createCopyPdfFromOnlineToOfflineOutputStep(
-                            "${working_dir}/${output_dir}",
-                            "${working_dir}/${localOutputDir}"
-                        )
-                        docBuildType.steps.step(copyPdfToOfflineOutputStep)
-                        docBuildType.steps.stepsOrder.add(1, copyPdfToOfflineOutputStep.id.toString())
-                        val zipPackageStep = GwBuildSteps.createZipPackageStep(
-                            "${working_dir}/${localOutputDir}",
-                            "${working_dir}/${output_dir}"
-                        )
-                        docBuildType.steps.step(zipPackageStep)
-                        docBuildType.steps.stepsOrder.add(2, zipPackageStep.id.toString())
-                    }
-                } else {
-                    val outputFormat = when (env) {
-                        GwDeployEnvs.INT.env_name -> GwDitaOutputFormats.HTML5.format_name
-                        else -> GwDitaOutputFormats.WEBHELP.format_name
-                    }
-                    buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
-                        outputFormat,
-                        root_map,
-                        index_redirect,
-                        working_dir,
-                        output_dir,
-                        publish_path,
-                        build_filter = build_filter,
-                        doc_id = doc_id,
-                        doc_title = doc_title,
-                        git_url = git_url,
-                        git_branch = git_branch
-                    )
+                val buildPdfs = when (env) {
+                    GwDeployEnvs.STAGING.env_name -> true
+                    else -> false
                 }
+                val buildOutputForOfflineUse =
+                    env == GwDeployEnvs.STAGING.env_name && gw_platforms.lowercase(Locale.getDefault())
+                        .contains("self-managed")
+                buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
+                    GwDitaOutputFormats.HTML5.format_name,
+                    root_map,
+                    index_redirect,
+                    working_dir,
+                    output_dir,
+                    publish_path,
+                    build_filter = build_filter,
+                    doc_id = doc_id,
+                    doc_title = doc_title,
+                    git_url = git_url,
+                    git_branch = git_branch,
+                    build_pdfs = buildPdfs
+                )
+                if (buildOutputForOfflineUse) {
+                    docBuildType.features.feature(GwBuildFeatures.GwOxygenWebhelpLicenseBuildFeature)
+                    val localOutputDir = "${output_dir}/zip"
+                    val buildDitaProjectForOfflineUseStep =
+                        GwBuildSteps.createBuildDitaProjectForBuildsStep(
+                            GwDitaOutputFormats.WEBHELP.format_name,
+                            root_map,
+                            index_redirect,
+                            working_dir,
+                            localOutputDir,
+                            publish_path,
+                            build_filter = build_filter,
+                            for_offline_use = true
+                        )
+                    docBuildType.steps.step(buildDitaProjectForOfflineUseStep)
+                    docBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
+                    val copyPdfToOfflineOutputStep = GwBuildSteps.createCopyPdfFromOnlineToOfflineOutputStep(
+                        "${working_dir}/${output_dir}",
+                        "${working_dir}/${localOutputDir}"
+                    )
+                    docBuildType.steps.step(copyPdfToOfflineOutputStep)
+                    docBuildType.steps.stepsOrder.add(1, copyPdfToOfflineOutputStep.id.toString())
+                    val zipPackageStep = GwBuildSteps.createZipPackageStep(
+                        "${working_dir}/${localOutputDir}",
+                        "${working_dir}/${output_dir}"
+                    )
+                    docBuildType.steps.step(zipPackageStep)
+                    docBuildType.steps.stepsOrder.add(2, zipPackageStep.id.toString())
+                }
+
                 docBuildType.steps.step(buildDitaProjectStep)
                 docBuildType.steps.stepsOrder.add(0, buildDitaProjectStep.id.toString())
                 if (!resources_to_copy.isEmpty) {
@@ -3572,7 +3562,6 @@ object GwBuildSteps {
                 ditaCommandParams.add(Pair("%env.ENABLE_DEBUG_MODE%", ""))
                 if (index_redirect) {
                     ditaCommandParams.add(Pair("--create-index-redirect", "yes"))
-                    ditaCommandParams.add(Pair("--webhelp.publication.toc.links", "all"))
                 }
                 val ditaBuildCommand = Helpers.getCommandString("dita", ditaCommandParams)
                 val resourcesCopyCommand =
@@ -3631,6 +3620,7 @@ object GwBuildSteps {
         git_url: String? = null,
         git_branch: String? = null,
         for_offline_use: Boolean = false,
+        build_pdfs: Boolean = false,
     ): ScriptBuildStep {
         val commandParams = mutableListOf<Pair<String, String?>>(
             Pair("-i", "${working_dir}/${root_map}"),
@@ -3658,7 +3648,7 @@ object GwBuildSteps {
             }
             GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name -> {
                 commandParams.add(Pair("-f", "wh-pdf"))
-                commandParams.add(Pair("--use-doc-portal-params", "yes"))
+                commandParams.add(Pair("--use-doc-portal-params", if (for_offline_use) "no" else "yes"))
                 commandParams.add(Pair("--gw-doc-id", doc_id))
                 commandParams.add(Pair("--generate.build.data", "yes"))
                 commandParams.add(Pair("--git.url", git_url))
@@ -3681,20 +3671,22 @@ object GwBuildSteps {
                 commandParams.add(Pair("--git.branch", git_branch))
                 commandParams.add(Pair("-f", "html5-Guidewire"))
                 commandParams.add(Pair("--args.rellinks", "nofamily"))
-                commandParams.add(Pair("--build.pdfs", "no"))
+                commandParams.add(Pair("--build-pdfs", if (build_pdfs) "yes" else "no"))
 
             }
         }
 
-        if (arrayOf(
-                GwDitaOutputFormats.WEBHELP.format_name,
-                GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name,
-                GwDitaOutputFormats.HTML5.format_name
-            ).contains(
-                output_format) && index_redirect
-        ) {
-            commandParams.add(Pair("--create-index-redirect", "yes"))
-            commandParams.add(Pair("--webhelp.publication.toc.links", "all"))
+        if (index_redirect) {
+            if (arrayOf(
+                    GwDitaOutputFormats.WEBHELP.format_name,
+                    GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name,
+                ).contains(output_format)
+            ) {
+                commandParams.add(Pair("--create-index-redirect", "yes"))
+                commandParams.add(Pair("--webhelp.publication.toc.links", "all"))
+            } else if (output_format == GwDitaOutputFormats.HTML5.format_name) {
+                commandParams.add(Pair("--create-index-redirect", "yes"))
+            }
         }
 
         val ditaBuildCommand = Helpers.getCommandString("dita", commandParams)
