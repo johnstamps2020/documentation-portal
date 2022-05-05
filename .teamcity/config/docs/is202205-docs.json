@@ -20,6 +20,60 @@
       "earlyAccess": false
     },
     {
+      "id": "appeventsrn",
+      "title": "App Events Release Notes",
+      "url": "cloud/is/202205/appeventsrn",
+      "metadata": {
+        "product": ["ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Release Notes"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "ccappeventsdev",
+      "title": "ClaimCenter App Events for Developers",
+      "url": "cloud/cc/202205/ccappevents",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "pcappeventsdev",
+      "title": "PolicyCenter App Events for Developers",
+      "url": "cloud/pc/202205/pcappevents",
+      "metadata": {
+        "product": ["PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
       "id": "isbc202205releasenotes",
       "title": "Release Notes",
       "url": "cloud/bc/202205/releasenotes",
