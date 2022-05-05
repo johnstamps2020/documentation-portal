@@ -13,8 +13,8 @@
           "id": "appeventsrndraft"
         },
         {
-          "label": "Rules",
-          "id": "rulesrndraft"
+          "label": "Guidewire Rules Release Notes",
+          "id": "gwrulesrn"
         }
       ]
     },
@@ -44,7 +44,7 @@
         },
         {
           "label": "Submission Intake",
-          "id": "submissionintakedraft"
+          "id": "submissionintake"
         }
       ]
     },
@@ -61,8 +61,8 @@
           "id": "experiencemgrdraft"
         },
         {
-          "label": "Rules (Early Access)",
-          "id": "rulesea"
+          "label": "Guidewire Rules",
+          "id": "gwrules"
         },
         {
           "label": "String Manager",
@@ -70,11 +70,11 @@
         },
         {
           "label": "Submission Intake Configuration",
-          "id": "submissionintakeconfigdraft"
+          "id": "submissionintakeconfig"
         },
         {
           "label": "Workset Manager",
-          "id": "worksetmgrdraft"
+          "id": "worksetmgr"
         }
       ]
     },

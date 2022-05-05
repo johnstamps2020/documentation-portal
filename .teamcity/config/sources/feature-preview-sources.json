@@ -61,13 +61,6 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/string-manager.git",
       "branch": "main"
-    },
-    {
-      "id": "submissionintakesrc",
-      "title": "Submission Intake Draft",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/submission-intake.git",
-      "branch": "main"
     }
   ]
 }

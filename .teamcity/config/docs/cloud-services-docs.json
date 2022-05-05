@@ -1,0 +1,95 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "gwrulesrn",
+      "title": "Rules Release Notes",
+      "url": "cloud/gwrulesrn",
+      "metadata": {
+        "product": ["Rules"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "gwrules",
+      "title": "Guidewire Rules",
+      "url": "cloud/gwrules",
+      "metadata": {
+        "product": ["Rules"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+        {
+      "id": "submissionintake",
+      "title": "Submission Intake",
+      "url": "cloud/subintake",
+      "metadata": {
+        "product": ["Submission Intake"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "submissionintakeconfig",
+      "title": "Submission Intake Configuration",
+      "url": "cloud/subintakeconfig",
+      "metadata": {
+        "product": ["Submission Intake"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "worksetmgr",
+      "title": "Workset Manager",
+      "url": "cloud/worksetmgr",
+      "metadata": {
+        "product": ["Workset Manager"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    }
+  ]
+}
