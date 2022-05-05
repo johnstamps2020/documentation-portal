@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "App Events Release Notes",
-          "id": "appeventsrndraft"
+          "id": "appeventsrn"
         },
         {
           "label": "Guidewire Rules Release Notes",
@@ -84,11 +84,11 @@
       "items": [
         {
           "label": "ClaimCenter App Events for Developers",
-          "id": "ccappeventsdevdraft"
+          "id": "ccappeventsdev"
         },
         {
           "label": "PolicyCenter App Events for Developers",
-          "id": "pcappeventsdevdraft"
+          "id": "pcappeventsdev"
         }
       ]
     },

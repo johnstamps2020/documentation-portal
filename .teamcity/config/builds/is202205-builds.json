@@ -11,6 +11,30 @@
     },
     {
       "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Draft.ditaval",
+      "root": "ApplicationEventsForDevelopers.ditamap",
+      "indexRedirect": true,
+      "srcId": "restapisrc",
+      "docId": "ccappeventsdev"
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
+      "root": "ApplicationEventsForDevelopers.ditamap",
+      "indexRedirect": true,
+      "srcId": "restapisrc",
+      "docId": "pcappeventsdev"
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Release.ditaval",
+      "root": "appevents-releasenotes-cc.ditamap",
+      "indexRedirect": true,
+      "srcId": "restapisrc",
+      "docId": "appeventsrn"
+    },
+    {
+      "buildType": "dita",
       "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
       "root": "ReleaseNotes.ditamap",
       "srcId": "is202205src",
