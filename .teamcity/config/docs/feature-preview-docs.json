@@ -56,24 +56,6 @@
       "earlyAccess": true
     },
     {
-      "id": "rulesea",
-      "title": "Rules Early Access",
-      "url": "cloud/gw-feature-preview/rules",
-      "metadata": {
-        "product": ["Rules"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Cortina", "Dobson"],
-        "subject": ["Configuration"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
       "id": "datastudiodraft",
       "title": "Data Studio Draft",
       "url": "cloud/datastudio/app",
@@ -136,42 +118,6 @@
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"],
-        "subject": ["Configuration"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
-      "id": "submissionintakedraft",
-      "title": "Submission Intake",
-      "url": "cloud/gw-feature-preview/subintake",
-      "metadata": {
-        "product": ["Submission Intake"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Elysian"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
-      "id": "submissionintakeconfigdraft",
-      "title": "Submission Intake Configuration",
-      "url": "cloud/gw-feature-preview/subintakeconfig",
-      "metadata": {
-        "product": ["Submission Intake"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Elysian"],
         "subject": ["Configuration"]
       },
       "environments": ["dev", "int", "staging"],

@@ -9,8 +9,15 @@
       "branch": "main"
     },
     {
-      "id": "worksetmgrdraftsrc",
-      "title": "Workset Manager Draft",
+      "id": "submissionintakesrc",
+      "title": "Submission Intake",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/submission-intake.git",
+      "branch": "main"
+    },
+    {
+      "id": "worksetmgrsrc",
+      "title": "Workset Manager",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/workset-manager.git",
       "branch": "main"

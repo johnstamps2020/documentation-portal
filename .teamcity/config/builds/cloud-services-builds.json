@@ -1,0 +1,45 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "root": "Rules.ditamap",
+      "srcId": "rulessrc",
+      "docId": "gwrules",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "root": "RulesReleaseNotes.ditamap",
+      "srcId": "rulessrc",
+      "docId": "gwrulesrn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "root": "SubmissionIntake.ditamap",
+      "srcId": "submissionintakesrc",
+      "docId": "submissionintake",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "root": "SubmissionIntakeConfiguration.ditamap",
+      "srcId": "submissionintakesrc",
+      "docId": "submissionintakeconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "root": "WorksetManager.ditamap",
+      "srcId": "worksetmgrsrc",
+      "docId": "worksetmgr",
+      "indexRedirect": true
+    }
+  ]
+}
