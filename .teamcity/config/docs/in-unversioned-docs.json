@@ -267,25 +267,7 @@
         "subject": ["Release notes"],
         "release": ["Elysian"]
       },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20221xstudiorndraft",
-      "title": "Studio 2022.1 Release Notes Draft",
-      "url": "cloud/in/20221x/studiorn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2022.1"],
-        "subject": ["Release notes"],
-        "release": ["Elysian"]
-      },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -465,25 +447,7 @@
         "subject": ["Release notes"],
         "release": ["Elysian"]
       },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20221xrndraft",
-      "title": "Core Release Notes Draft",
-      "url": "cloud/in/20221x/releasenotes",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2022.1"],
-        "subject": ["Release notes"],
-        "release": ["Elysian"]
-      },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

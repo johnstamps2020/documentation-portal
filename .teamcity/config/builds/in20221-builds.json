@@ -118,6 +118,38 @@
       "docId": "in20221apiref",
       "srcId": "srcin20221apiref",
       "nodeImageVersion": "14.14.0"
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "BusinessIntelligenceIntegrationGuide.ditamap",
+      "srcId": "in20221",
+      "docId": "in20221xbiintegdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "CommonFunctionalityConfigurationReference.ditamap",
+      "srcId": "in20221",
+      "docId": "in20221xcommonconfigdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "ConsumersSalesPortalConfig.ditamap",
+      "srcId": "in20221",
+      "docId": "in20221xcsalespconfigdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "ConsumerServicePortalConfigGuide.ditamap",
+      "srcId": "in20221",
+      "docId": "in20221xcservicepconfigdraft",
+      "indexRedirect": true
     }
   ]
 }
