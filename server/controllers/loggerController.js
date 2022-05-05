@@ -1,6 +1,6 @@
 const { createLogger, format, config, transports } = require('winston');
 const expressWinston = require('express-winston');
-const { combine, timestamp, json, prettyPrint } = format;
+const { combine, timestamp, json } = format;
 const path = require('path');
 
 const commonWinstonOptions = {
@@ -43,8 +43,7 @@ const winstonLogger = createLogger({
   format: combine(
     timestamp({ format: 'YYYY-MM-DD HH:mm:ss.SSSZZ' }),
     reformatUncaughtException(),
-    json(),
-    prettyPrint()
+    json()
   ),
   exitOnError: false,
   transports: [
