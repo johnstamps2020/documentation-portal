@@ -74,7 +74,7 @@
       "resources": [
         {
           "srcId": "dhicextrassrc",
-          "sourceFolder": "Dobson-10.6/DataHub/autoGenFiles/cloud",
+          "sourceFolder": "Elysian-10.7/DataHub/autoGenFiles/cloud",
           "targetFolder": "extras/autoGenFiles/cloud"
         }
       ]
@@ -168,7 +168,7 @@
       "resources": [
         {
           "srcId": "dhicextrassrc",
-          "sourceFolder": "Dobson-10.6/InfoCenter/autoGenFiles/cloud",
+          "sourceFolder": "Elysian-10.7/InfoCenter/autoGenFiles/cloud",
           "targetFolder": "extras/autoGenFiles/cloud"
         }
       ]

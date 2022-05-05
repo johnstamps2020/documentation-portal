@@ -168,7 +168,7 @@
       "resources": [
         {
           "srcId": "dhicextrassrc",
-          "sourceFolder": "Dobson-10.6/InfoCenter/autoGenFiles/onPrem",
+          "sourceFolder": "Elysian-10.7/InfoCenter/autoGenFiles/onPrem",
           "targetFolder": "extras/autoGenFiles/onPrem"
         }
       ]
