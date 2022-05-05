@@ -2324,18 +2324,6 @@
       "indexRedirect": true
     },
     {
-      "buildType": "yarn",
-      "docId": "dhqueryguidedraft",
-      "srcId": "datastudiodraftsrc",
-      "workingDir": "query_guide"
-    },
-    {
-      "buildType": "yarn",
-      "docId": "dhqueryguiderelease",
-      "srcId": "datastudioreleasesrc",
-      "workingDir": "query_guide"
-    },
-    {
       "buildType": "dita",
       "filter": "DataHub-RELEASE.ditaval",
       "root": "releasenotes.ditamap",
