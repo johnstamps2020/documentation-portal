@@ -1,6 +1,6 @@
 const { createLogger, format, config, transports } = require('winston');
 const expressWinston = require('express-winston');
-const { combine, timestamp, json } = format;
+const { combine, timestamp, json, prettyPrint } = format;
 const path = require('path');
 
 const commonWinstonOptions = {
@@ -12,15 +12,11 @@ const winstonLoggerOptions = {
   file: {
     ...commonWinstonOptions,
     filename: path.resolve(`${__dirname}/../logs/server.log`),
-    json: true,
     maxsize: 5242880, //5MB
     maxFiles: 5,
-    colorize: false,
   },
   console: {
     ...commonWinstonOptions,
-    json: false,
-    colorize: true,
   },
 };
 
@@ -43,7 +39,8 @@ const winstonLogger = createLogger({
   format: combine(
     timestamp({ format: 'YYYY-MM-DD HH:mm:ss.SSSZZ' }),
     reformatUncaughtException(),
-    json()
+    json(),
+    prettyPrint()
   ),
   exitOnError: false,
   transports: [
