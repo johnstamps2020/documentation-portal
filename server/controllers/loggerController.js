@@ -36,7 +36,7 @@ const winstonLogger = createLogger({
   // Empty format causes an issue with the timezone - winston logs in the UTC timezone.
   // If you pass a custom format without creating a new datetime object, winston logs using the local timezone.
   // Issue described here: https://github.com/winstonjs/winston/issues/421
-  format: json(),
+  format: combine(timestamp({ format: 'YYYY-MM-DD HH:mm:ss.SSSZZ' }), json()),
   exitOnError: false,
   transports: [
     new transports.File(winstonLoggerOptions.file),
@@ -55,7 +55,6 @@ const expressWinstonErrorLogger = expressWinston.errorLogger({
 });
 
 module.exports = {
-  winstonLogger,
   expressWinstonLogger,
   expressWinstonErrorLogger,
 };
