@@ -1493,6 +1493,7 @@ object Server {
         triggers.vcs {
             triggerRules = """
                 +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/settings.kts
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
                 -:user=doctools:**
             """.trimIndent()
         }
