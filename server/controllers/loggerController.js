@@ -1,6 +1,6 @@
 const { createLogger, format, config, transports } = require('winston');
 const expressWinston = require('express-winston');
-const { combine, timestamp, json, prettyPrint } = format;
+const { combine, timestamp, json } = format;
 const path = require('path');
 
 const commonWinstonOptions = {
@@ -19,15 +19,6 @@ const winstonLoggerOptions = {
     ...commonWinstonOptions,
   },
 };
-
-const reformatUncaughtException = format((info, opts) => {
-  const infoDate = info.date;
-  if (info.exception === true && infoDate) {
-    delete info.date;
-    info.timestamp = new Date(infoDate).toISOString();
-  }
-  return info;
-});
 
 const winstonLogger = createLogger({
   levels: config.syslog.levels,
@@ -51,7 +42,7 @@ const expressWinstonLogger = expressWinston.logger({
 
 const expressWinstonErrorLogger = expressWinston.errorLogger({
   winstonInstance: winstonLogger,
-  msg: '{{err.message}} {{res.statusCode}} {{req.method}}',
+  msg: 'HTTP {{req.method}} {{res.statusCode}} {{err.message}}',
 });
 
 module.exports = {
