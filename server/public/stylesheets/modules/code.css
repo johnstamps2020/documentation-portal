@@ -96,6 +96,7 @@ div.code-toolbar > div.toolbar > div.toolbar-item > span {
 .codeblock *,
 .pre * {
   border: none;
+  background-color: transparent;
 }
 
 pre.pre .varname,
