@@ -277,7 +277,6 @@
     {
       "label": "Global Solutions",
       "class": "categoryCard cardShadow",
-      "env": ["int"],
       "items": [
         {
           "label": "London Market",
