@@ -34,6 +34,7 @@ project {
     subProject(Frontend.rootProject)
 
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
+    features.feature(GwProjectFeatures.GwAntennaHouseFormatterServerProjectFeature)
 }
 
 enum class GwDeployEnvs(val env_name: String) {
@@ -526,6 +527,10 @@ object Docs {
                 val buildOutputForOfflineUse =
                     env == GwDeployEnvs.STAGING.env_name && gw_platforms.lowercase(Locale.getDefault())
                         .contains("self-managed")
+                // Limit the number of HTML5 builds on staging not to overwhelm the PDF server
+                if (env == GwDeployEnvs.STAGING.env_name) {
+                    docBuildType.features.feature(GwBuildFeatures.GwAntennaHouseFormatterServerBuildFeature)
+                }
                 buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
                     GwDitaOutputFormats.HTML5.format_name,
                     root_map,
@@ -4021,6 +4026,14 @@ object GwProjectFeatures {
         param("name", "OxygenWebhelpLicense")
         param("type", "quoted")
     })
+
+    object GwAntennaHouseFormatterServerProjectFeature : ProjectFeature({
+        type = "JetBrains.SharedResources"
+        id = "GW_ANTENNA_HOUSE_FORMATTER_SERVER"
+        param("quota", "3")
+        param("name", "AntennaHouseFormatterServer")
+        param("type", "quoted")
+    })
 }
 
 object GwBuildFeatures {
@@ -4039,6 +4052,12 @@ object GwBuildFeatures {
         id = "GW_OXYGEN_WEBHELP_LICENSE_READ_LOCK"
         type = "JetBrains.SharedResources"
         param("locks-param", "OxygenWebhelpLicense readLock")
+    })
+
+    object GwAntennaHouseFormatterServerBuildFeature : BuildFeature({
+        id = "GW_ANTENNA_HOUSE_FORMATTER_SERVER_READ_LOCK"
+        type = "JetBrains.SharedResources"
+        param("locks-param", "AntennaHouseFormatterServer readLock")
     })
 
     object GwCommitStatusPublisherBuildFeature : CommitStatusPublisher({
