@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Insurance Package for France",
+  "title": "ClaimCenter Package for France",
   "template": "page",
   "class": "twoColumns",
   "items": [
