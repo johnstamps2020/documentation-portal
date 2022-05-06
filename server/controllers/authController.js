@@ -14,15 +14,7 @@ const gwCommunityPartnerParam = 'guidewire-partner';
 
 function getTokenFromRequestHeader(req) {
   const authorizationHeader = req.headers?.authorization;
-  if (authorizationHeader) {
-    const splitAuthorizationHeader = authorizationHeader.split(' ');
-    const token = splitAuthorizationHeader[1];
-    return token;
-  } else {
-    throw new Error(
-      'The request does not contain the "Authorization: Bearer" header.'
-    );
-  }
+  return authorizationHeader ? authorizationHeader.split(' ')[1] : null;
 }
 
 function getAvailableOktaIssuers() {
@@ -48,12 +40,12 @@ function getAvailableOktaIssuers() {
 }
 
 function createOktaJwtVerifier(token, availableIssuers) {
-  const decodedJwt = jsonwebtoken.decode(token);
-  const jwtIssuer = decodedJwt.iss;
-  const issuer = Object.entries(availableIssuers).find(
-    iss => iss[0] === jwtIssuer
-  );
-  if (issuer) {
+  const decodedJwt = jsonwebtoken.decode(token, {});
+  if (decodedJwt) {
+    const jwtIssuer = decodedJwt.iss;
+    const issuer = Object.entries(availableIssuers).find(
+      iss => iss[0] === jwtIssuer
+    );
     return new OktaJwtVerifier({
       issuer: issuer[0],
       clientId: issuer[1],
@@ -62,9 +54,7 @@ function createOktaJwtVerifier(token, availableIssuers) {
       },
     });
   } else {
-    throw new Error(
-      `Unable to verify the token against issuer ${jwtIssuer}. Generate a new token with a correct issuer.`
-    );
+    throw new Error('Invalid JSON Web Token in the Authorization header.');
   }
 }
 
@@ -83,10 +73,20 @@ async function checkTokenInOkta(token, jwtVerifierInstance) {
 async function verifyToken(req) {
   try {
     const bearerToken = getTokenFromRequestHeader(req);
-    const oktaIssuers = getAvailableOktaIssuers();
-    const oktaJwtVerifier = createOktaJwtVerifier(bearerToken, oktaIssuers);
-    const verifiedToken = await checkTokenInOkta(bearerToken, oktaJwtVerifier);
-    return verifiedToken;
+    if (bearerToken) {
+      const oktaIssuers = getAvailableOktaIssuers();
+      const oktaJwtVerifier = createOktaJwtVerifier(bearerToken, oktaIssuers);
+      const verifiedToken = await checkTokenInOkta(
+        bearerToken,
+        oktaJwtVerifier
+      );
+      return verifiedToken;
+    } else {
+      winstonLogger.info(
+        'The request does not contain the "Authorization: Bearer" header.'
+      );
+      return null;
+    }
   } catch (err) {
     throw new Error(err.message);
   }
