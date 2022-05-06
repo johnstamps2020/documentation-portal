@@ -6,7 +6,7 @@
       "title": "Overview",
       "url": "self-managed/ipf/2.0/overview",
       "metadata": {
-        "product": ["Insurance Package for France"],
+        "product": ["ClaimCenter Package for France"],
         "platform": ["Self-managed"],
         "version": ["2.0"],
         "subject": ["Features and functionality"]
@@ -23,7 +23,7 @@
       "title": "Adjuster Guide",
       "url": "self-managed/ipf/2.0/adjuster",
       "metadata": {
-        "product": ["Insurance Package for France"],
+        "product": ["ClaimCenter Package for France"],
         "platform": ["Self-managed"],
         "version": ["2.0"],
         "subject": ["Features and functionality"]
@@ -40,7 +40,7 @@
       "title": "Administration Guide",
       "url": "self-managed/ipf/2.0/admin",
       "metadata": {
-        "product": ["Insurance Package for France"],
+        "product": ["ClaimCenter Package for France"],
         "platform": ["Self-managed"],
         "version": ["2.0"],
         "subject": ["Administration"]
@@ -57,7 +57,7 @@
       "title": "Release Notes",
       "url": "self-managed/ipf/2.0/releasenotes",
       "metadata": {
-        "product": ["Insurance Package for France"],
+        "product": ["ClaimCenter Package for France"],
         "platform": ["Self-managed"],
         "version": ["2.0"],
         "subject": ["Release notes"]
@@ -74,12 +74,12 @@
       "title": "Supermap for downloadable output",
       "url": "self-managed/ipf/2.0/all",
       "metadata": {
-        "product": ["Insurance Package for France"],
+        "product": ["ClaimCenter Package for France"],
         "platform": ["Self-managed"],
         "version": ["2.0"]
       },
       "environments": ["dev"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
       "internal": false,
