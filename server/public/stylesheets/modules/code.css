@@ -94,7 +94,15 @@ div.code-toolbar > div.toolbar > div.toolbar-item > span {
 
 .codeph *,
 .codeblock *,
-.pre * {
+.pre *,
+.filepath *,
+.apiname *,
+.cmdname *,
+.msgblock *,
+.msgph *,
+.option *,
+.parmname *,
+.userinput * {
   border: none;
   background-color: transparent;
 }
