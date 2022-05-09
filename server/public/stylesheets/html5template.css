@@ -8,6 +8,7 @@
 @import 'modules/task.css';
 @import 'modules/typography.css';
 @import './modules/html5vars.css';
+@import './modules/highlight.css';
 
 * {
   box-sizing: border-box;
