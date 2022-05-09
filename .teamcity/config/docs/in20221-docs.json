@@ -218,6 +218,24 @@
       "earlyAccess": false
     },
     {
+      "id": "in20221provportalinternal",
+      "title": "Provisioning Portal - Internal",
+      "url": "cloud/in/20221/provportalinternal",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.1"],
+        "subject": ["Configuration"],
+        "release": ["Elysian"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
       "id": "in20221uwconfig",
       "title": "Underwriting Configuration Reference",
       "url": "cloud/in/20221/uwconfig",
