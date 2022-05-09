@@ -28,14 +28,14 @@ function getDOM(responseBuffer, proxyResObject) {
 function removeTagsWithMatchingText(tagName, strToMatch, document) {
   try {
     const allTags = document.querySelectorAll(tagName);
-    allTags.forEach(tag => {
+    for (const tag of allTags) {
       if (
         !!tag.textContent.match(strToMatch) ||
         !!tag.innerHTML.match(strToMatch)
       ) {
         tag.remove();
       }
-    });
+    }
   } catch (err) {
     console.error('Cannot remove tag', tagName, strToMatch, document);
   }
