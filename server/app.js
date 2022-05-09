@@ -24,6 +24,7 @@ app.use(function(req, res, next) {
   if (hostnamesToReplace.includes(req.hostname)) {
     const fullRequestUrl = new URL(req.url, process.env.APP_BASE_URL);
     res.redirect(fullRequestUrl.href);
+    return;
   } else {
     next();
   }
@@ -146,6 +147,10 @@ function setResCacheControlHeader(proxyRes, req, res) {
   }
 }
 
+app.use('/portal-config/*', (req, res) => {
+  res.redirect('/unauthorized');
+});
+
 const interceptAndUpdateDocPage = require('./controllers/docInterceptorController');
 
 const proxyInterceptorOptions = {
@@ -176,10 +181,6 @@ const s3ProxyOptions = {
 };
 const s3Proxy = createProxyMiddleware(s3ProxyOptions);
 app.use(s3Proxy);
-
-app.use('/portal-config/*', (req, res) => {
-  res.redirect('/unauthorized');
-});
 
 // handles unauthorized errors
 app.use(expressWinstonErrorLogger);
