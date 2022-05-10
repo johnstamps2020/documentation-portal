@@ -88,7 +88,7 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "Dobson-10.6/InfoCenter",
+          "sourceFolder": "Elysian-10.7/InfoCenter",
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
