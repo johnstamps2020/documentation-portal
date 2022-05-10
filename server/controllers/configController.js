@@ -51,6 +51,15 @@ async function loadConfig() {
           `${process.env.DOC_S3_URL}/portal-config/config.json`, { retry: 5, pause: 1000,
           callback: retry => { console.log(`Retrying fetch of config.json: ${retry}`) } }
         );
+        if(result.ok == false) {
+          throw new Error(
+                    `Response status: ${result.status}
+                    Response headers: ${result.headers}
+                    Response type: ${result.type}
+                    Response URL: ${result.url}
+                    Response redirected: ${result.redirected}`
+          );
+        }
         config = await result.json();
       } catch (s3err) {
         throw new Error(
