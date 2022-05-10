@@ -48,7 +48,7 @@ async function loadConfig() {
     } else {
       try {
         const result = await fetch(
-          `${process.env.DOC_S3_URL}/portal-config/config.json`, { retry: 3, pause: 500,
+          `${process.env.DOC_S3_URL}/portal-config/config.json`, { retry: 5, pause: 1000,
           callback: retry => { console.log(`Retrying fetch of config.json: ${retry}`) } }
         );
         config = await result.json();
