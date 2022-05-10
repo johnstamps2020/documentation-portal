@@ -228,7 +228,7 @@
         "subject": ["Configuration"],
         "release": ["Elysian"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
