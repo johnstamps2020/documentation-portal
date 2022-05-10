@@ -20,30 +20,42 @@ async function loadConfig() {
       );
 
       function readFilesInDir(dirPath) {
-        const localConfig = { docs: [] };
-        const itemsInDir = fs.readdirSync(dirPath);
-        for (const item of itemsInDir) {
-          const itemPath = path.join(dirPath, item);
-          if (fs.lstatSync(itemPath).isDirectory()) {
-            localConfig['docs'].push(...readFilesInDir(itemPath));
-          } else {
-            const config = fs.readFileSync(itemPath, 'utf-8');
-            const json = JSON.parse(config);
-            const docs = json.docs.filter(d =>
-              d.environments.includes(process.env.DEPLOY_ENV)
-            );
-            localConfig['docs'].push(...docs);
+        try {
+          const localConfig = { docs: [] };
+          const itemsInDir = fs.readdirSync(dirPath);
+          for (const item of itemsInDir) {
+            const itemPath = path.join(dirPath, item);
+            if (fs.lstatSync(itemPath).isDirectory()) {
+              localConfig['docs'].push(...readFilesInDir(itemPath));
+            } else {
+              const config = fs.readFileSync(itemPath, 'utf-8');
+              const json = JSON.parse(config);
+              const docs = json.docs.filter(d =>
+                d.environments.includes(process.env.DEPLOY_ENV)
+              );
+              localConfig['docs'].push(...docs);
+            }
           }
+          return localConfig;
+        } catch (funcErr) {
+          throw new Error(
+            `Cannot read config file from path: ${dirPath}: ${funcErr}`
+          );
         }
-        return localConfig;
       }
 
       config = readFilesInDir(localConfigDir);
     } else {
-      const result = await fetch(
-        `${process.env.DOC_S3_URL}/portal-config/config.json`
-      );
-      config = await result.json();
+      try {
+        const result = await fetch(
+          `${process.env.DOC_S3_URL}/portal-config/config.json`
+        );
+        config = await result.json();
+      } catch (s3err) {
+        throw new Error(
+          `Problem reading config from S3 ${process.env.DOC_S3_URL}: ${s3err}`
+        );
+      }
     }
     return config;
   } catch (err) {
@@ -92,19 +104,25 @@ async function isInternalDoc(url, reqObj) {
 async function getRootBreadcrumb(pagePathname) {
   try {
     const breadcrumbsFile = fs.readFileSync(breadcrumbsConfigPath, 'utf-8');
-    const breadcrumbsMapping = JSON.parse(breadcrumbsFile);
-    for (const breadcrumb of breadcrumbsMapping) {
-      if (
-        pagePathname.startsWith(breadcrumb.docUrl) &&
-        breadcrumb.rootPages.length === 1
-      ) {
-        return {
-          rootPage: {
-            path: breadcrumb.rootPages[0].path,
-            label: breadcrumb.rootPages[0].label,
-          },
-        };
+    try {
+      const breadcrumbsMapping = JSON.parse(breadcrumbsFile);
+      for (const breadcrumb of breadcrumbsMapping) {
+        if (
+          pagePathname.startsWith(breadcrumb.docUrl) &&
+          breadcrumb.rootPages.length === 1
+        ) {
+          return {
+            rootPage: {
+              path: breadcrumb.rootPages[0].path,
+              label: breadcrumb.rootPages[0].label,
+            },
+          };
+        }
       }
+    } catch (breadErr) {
+      throw new Error(
+        `Problem getting breadcrumb file for page: "${pagePathname}" from file "${breadcrumbsConfigPath}": ${breadErr}`
+      );
     }
     return { rootPage: {} };
   } catch (err) {
@@ -115,28 +133,34 @@ async function getRootBreadcrumb(pagePathname) {
 
 async function getVersionSelector(docId, reqObj, resObj) {
   try {
-    const versionSelectorsFile = fs.readFileSync(
-      versionSelectorsConfigPath,
-      'utf-8'
-    );
-    const versionSelectorMapping = JSON.parse(versionSelectorsFile);
-    const matchingVersionSelector = versionSelectorMapping.find(
-      s => docId === s.docId
-    );
-    // The getConfig function checks if the request is authenticated and if the user has the Guidewire email,
-    // and filters the returned docs accordingly.
-    // Therefore, for the selector it's enough to check if a particular version has a doc in the returned config.
-    const config = await getConfig(reqObj, resObj);
-    const docs = config.docs;
-    if (matchingVersionSelector) {
-      matchingVersionSelector[
-        'allVersions'
-      ] = matchingVersionSelector.allVersions.filter(v =>
-        docs.find(d => d.url === v.url)
+    try {
+      const versionSelectorsFile = fs.readFileSync(
+        versionSelectorsConfigPath,
+        'utf-8'
       );
-      return { matchingVersionSelector: matchingVersionSelector };
-    } else {
-      return { matchingVersionSelector: {} };
+      const versionSelectorMapping = JSON.parse(versionSelectorsFile);
+      const matchingVersionSelector = versionSelectorMapping.find(
+        s => docId === s.docId
+      );
+      // The getConfig function checks if the request is authenticated and if the user has the Guidewire email,
+      // and filters the returned docs accordingly.
+      // Therefore, for the selector it's enough to check if a particular version has a doc in the returned config.
+      const config = await getConfig(reqObj, resObj);
+      const docs = config.docs;
+      if (matchingVersionSelector) {
+        matchingVersionSelector[
+          'allVersions'
+        ] = matchingVersionSelector.allVersions.filter(v =>
+          docs.find(d => d.url === v.url)
+        );
+        return { matchingVersionSelector: matchingVersionSelector };
+      } else {
+        return { matchingVersionSelector: {} };
+      }
+    } catch (verSelectorErr) {
+      throw new Error(
+        `Problem getting version selector for docId: ${docId}: ${verSelectorErr}`
+      );
     }
   } catch (err) {
     winstonLogger.error(err.stack);
