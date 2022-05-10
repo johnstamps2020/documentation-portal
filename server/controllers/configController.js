@@ -54,7 +54,6 @@ async function loadConfig() {
         if(result.ok == false) {
           throw new Error(
                     `Response status: ${result.status}
-                    Response headers: ${result.headers.join('-----')}
                     Response type: ${result.type}
                     Response URL: ${result.url}
                     Response redirected: ${result.redirected}`
