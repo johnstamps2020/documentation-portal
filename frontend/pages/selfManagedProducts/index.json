@@ -75,7 +75,7 @@
         {
           "label": "DataHub",
           "page": "dh/10.6.0",
-          "env": ["staging", "prod"]
+          "env": ["prod"]
         },
         {
           "label": "InfoCenter",
@@ -84,7 +84,7 @@
         {
           "label": "InfoCenter",
           "page": "ic/10.6.0",
-          "env": ["staging", "prod"]
+          "env": ["prod"]
         }
       ]
     },
