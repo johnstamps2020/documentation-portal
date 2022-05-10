@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+const fetch = require('node-fetch-retry');
 const fs = require('fs');
 const path = require('path');
 const { winstonLogger } = require('./loggerController');
@@ -48,7 +48,8 @@ async function loadConfig() {
     } else {
       try {
         const result = await fetch(
-          `${process.env.DOC_S3_URL}/portal-config/config.json`
+          `${process.env.DOC_S3_URL}/portal-config/config.json`, { retry: 3, pause: 500,
+          callback: retry => { console.log(`Retrying fetch of config.json: ${retry}`) } }
         );
         config = await result.json();
       } catch (s3err) {
