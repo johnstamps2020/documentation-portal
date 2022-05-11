@@ -49,7 +49,7 @@ async function loadConfig() {
       config = readFilesInDir(localConfigDir);
     } else {
       try {
-        winstonLogger.info('🐛🐛🐛 FETCHING CONFIG 🐛🐛🐛');
+        winstonLogger.info('WOW!, FETCHING CONFIG, WOW!');
         const result = await fetch(
           `${process.env.DOC_S3_URL}/portal-config/config.json`,
           {
@@ -84,7 +84,7 @@ async function loadConfig() {
 
 async function expensiveLoadConfig() {
   storedConfig = await loadConfig();
-  return !!storedConfig;
+  return storedConfig !== undefined;
 }
 
 expensiveLoadConfig();
@@ -94,7 +94,7 @@ async function getConfig(reqObj, resObj) {
     if (!storedConfig) {
       await expensiveLoadConfig();
     }
-    const config = storedConfig;
+    const config = JSON.parse(JSON.stringify(storedConfig));
     const hasGuidewireEmail = resObj.locals.userInfo.hasGuidewireEmail;
     if (!reqObj.session.requestIsAuthenticated) {
       config['docs'] = config.docs.filter(d => d.public === true);
