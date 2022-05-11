@@ -1076,6 +1076,7 @@ object Content {
                     GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value,
                     "portal-config")
                 )
+                step(GwBuildSteps.createRefreshConfigBuildStep(deploy_env))
             }
 
             triggers {
@@ -3081,6 +3082,20 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = GwDockerImages.FLAIL_SSG_LATEST.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        }
+    }
+
+    fun createRefreshConfigBuildStep(deploy_env: String): ScriptBuildStep {
+        val url = Helpers.getTargetUrl(deploy_env)
+        return ScriptBuildStep {
+            name = "Refresh config for $deploy_env"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                curl $url/safeConfig/refreshConfig
+            """.trimIndent()
         }
     }
 
