@@ -84,7 +84,7 @@ async function loadConfig() {
 
 async function expensiveLoadConfig() {
   storedConfig = await loadConfig();
-  return !!storedConfig;
+  return storedConfig !== undefined;
 }
 
 expensiveLoadConfig();
