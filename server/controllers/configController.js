@@ -11,6 +11,8 @@ const versionSelectorsConfigPath = path.resolve(
   `${__dirname}/../static/pages/versionSelectors.json`
 );
 
+let storedConfig;
+
 async function loadConfig() {
   try {
     let config;
@@ -47,6 +49,7 @@ async function loadConfig() {
       config = readFilesInDir(localConfigDir);
     } else {
       try {
+        winstonLogger.info('🐛🐛🐛 FETCHING CONFIG 🐛🐛🐛');
         const result = await fetch(
           `${process.env.DOC_S3_URL}/portal-config/config.json`,
           {
@@ -79,9 +82,16 @@ async function loadConfig() {
   }
 }
 
+async function expensiveLoadConfig() {
+  storedConfig = await loadConfig();
+  return !!storedConfig;
+}
+
+expensiveLoadConfig();
+
 async function getConfig(reqObj, resObj) {
   try {
-    const config = await loadConfig();
+    const config = storedConfig;
     const hasGuidewireEmail = resObj.locals.userInfo.hasGuidewireEmail;
     if (!reqObj.session.requestIsAuthenticated) {
       config['docs'] = config.docs.filter(d => d.public === true);
@@ -102,7 +112,7 @@ async function getDocByUrl(url) {
     relativeUrl = relativeUrl.substring(1);
   }
 
-  const config = await loadConfig();
+  const config = storedConfig;
   return config.docs.find(d => relativeUrl.startsWith(d.url + '/'));
 }
 
@@ -233,6 +243,7 @@ async function getDocId(
 
 module.exports = {
   getConfig,
+  expensiveLoadConfig,
   isPublicDoc,
   isInternalDoc,
   getRootBreadcrumb,
