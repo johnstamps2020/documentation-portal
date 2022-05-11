@@ -49,7 +49,7 @@ async function loadConfig() {
       config = readFilesInDir(localConfigDir);
     } else {
       try {
-        winstonLogger.info('🐛🐛🐛 FETCHING CONFIG 🐛🐛🐛');
+        winstonLogger.info('WOW!, FETCHING CONFIG, WOW!');
         const result = await fetch(
           `${process.env.DOC_S3_URL}/portal-config/config.json`,
           {
