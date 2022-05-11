@@ -70,7 +70,10 @@ async function getAllowedFilterValues(fieldName, query) {
     );
   } catch (err) {
     winstonLogger.error(
-      `Problem getting allowed filter values for fieldName: ${fieldName}, query: ${query}, ERROR: ${err.message}`
+      `Problem getting allowed filter values for 
+          fieldName: ${fieldName}, 
+          query: ${query}, 
+          ERROR: ${err.message}`
     );
   }
 }
