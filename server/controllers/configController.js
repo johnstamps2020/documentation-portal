@@ -94,7 +94,7 @@ async function getConfig(reqObj, resObj) {
     if (!storedConfig) {
       await expensiveLoadConfig();
     }
-    const config = storedConfig;
+    const config = JSON.parse(JSON.stringify(storedConfig));
     const hasGuidewireEmail = resObj.locals.userInfo.hasGuidewireEmail;
     if (!reqObj.session.requestIsAuthenticated) {
       config['docs'] = config.docs.filter(d => d.public === true);
