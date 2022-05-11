@@ -6,9 +6,11 @@ const {
   getVersionSelector,
   getDocumentMetadata,
   getDocId,
+  expensiveLoadConfig,
 } = require('../controllers/configController');
 const ejs = require('ejs');
 const fs = require('fs');
+const { winstonLogger } = require('../controllers/loggerController');
 
 router.get('/', async function(req, res) {
   const config = await getConfig(req, res);
@@ -63,6 +65,22 @@ router.get('/docId', async function(req, res) {
     res
   );
   res.send(docId);
+});
+
+router.get('/refreshConfig', async function(req, res) {
+  try {
+    const configExists = await expensiveLoadConfig();
+    if (configExists) {
+      res.status(200).send({
+        message:
+          'Config update happened without error, I guess ¯\\_(ツ)_/¯ (we are not sure if it succeeded or not)',
+      });
+    } else {
+      res.status(500).send({ message: 'Config not updated' });
+    }
+  } catch (err) {
+    winstonLogger.error(`Could not update config: ${err.message}`);
+  }
 });
 
 module.exports = router;
