@@ -91,6 +91,9 @@ expensiveLoadConfig();
 
 async function getConfig(reqObj, resObj) {
   try {
+    if (!storedConfig) {
+      await expensiveLoadConfig();
+    }
     const config = storedConfig;
     const hasGuidewireEmail = resObj.locals.userInfo.hasGuidewireEmail;
     if (!reqObj.session.requestIsAuthenticated) {
