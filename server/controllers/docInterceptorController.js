@@ -1,4 +1,5 @@
 const JSDOM = require('jsdom').JSDOM;
+const { winstonLogger } = require('./loggerController');
 
 function getDOM(responseBuffer, proxyResObject) {
   try {
@@ -19,7 +20,11 @@ function getDOM(responseBuffer, proxyResObject) {
       }
     }
   } catch (err) {
-    console.error('Cannot get DOM', responseBuffer, proxyResObject);
+    winstonLogger.error(
+      `error: '[INTERCEPTOR] Cannot get DOM',
+        responseBuffer: ${responseBuffer},
+        proxyResObject: ${proxyResObject},`
+    );
   }
 
   return undefined;
@@ -37,7 +42,12 @@ function removeTagsWithMatchingText(tagName, strToMatch, document) {
       }
     }
   } catch (err) {
-    console.error('Cannot remove tag', tagName, strToMatch, document);
+    winstonLogger.error(
+      `error: '[INTERCEPTOR] Cannot remove tag',
+          tagName: ${tagName},
+          strToMatch: ${strToMatch},
+          document: ${document},`
+    );
   }
 }
 
@@ -63,13 +73,13 @@ function insertTagWithContent(
       parent.appendChild(endComment);
     }
   } catch (err) {
-    console.error(
-      'Cannot insert tag with content',
-      tagName,
-      strContent,
-      comment,
-      parentName,
-      document
+    winstonLogger.error(
+      `message: '[INTERCEPTOR] Cannot insert tag with content',
+        tagName: ${tagName},
+        strContent: ${strContent},
+        comment: ${comment},
+        parentName: ${parentName},
+        document: ${document},`
     );
   }
 }
@@ -130,12 +140,12 @@ async function interceptAndUpdateDocPage(responseBuffer, proxyRes, req, res) {
 
       return responseDOM.serialize();
     } catch (err) {
-      console.error(
-        'Cannot intercept and update page',
-        responseBuffer,
-        proxyRes,
-        req,
-        res
+      winstonLogger.error(
+        `message: '[INTERCEPTOR] Cannot intercept and update page',
+          responseBuffer: ${responseBuffer},
+          proxyRes: ${proxyRes},
+          req: ${req},
+          res: ${res},`
       );
     }
   } else {
