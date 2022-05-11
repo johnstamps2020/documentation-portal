@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { Client } = require('@elastic/elasticsearch');
+const { winstonLogger } = require('./loggerController');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const searchIndexName = 'gw-docs';
 
@@ -39,160 +40,190 @@ function getFiltersFromUrl(fieldMappings, queryParams) {
 }
 
 async function getAllowedFilterValues(fieldName, query) {
-  const requestBody = {
-    index: searchIndexName,
-    size: 0,
-    body: {
-      aggs: {
-        allowedForField: {
-          filter: query,
-          aggs: {
-            keywordFilter: {
-              terms: {
-                field: fieldName,
-                size: 100,
+  try {
+    const requestBody = {
+      index: searchIndexName,
+      size: 0,
+      body: {
+        aggs: {
+          allowedForField: {
+            filter: query,
+            aggs: {
+              keywordFilter: {
+                terms: {
+                  field: fieldName,
+                  size: 100,
+                },
               },
             },
           },
         },
       },
-    },
-  };
+    };
 
-  const result = await elasticClient.search(requestBody);
+    const result = await elasticClient.search(requestBody);
 
-  return result.body.aggregations.allowedForField.keywordFilter.buckets.map(
-    bucket => {
-      return { label: bucket.key, doc_count: bucket.doc_count };
-    }
-  );
+    return result.body.aggregations.allowedForField.keywordFilter.buckets.map(
+      bucket => {
+        return { label: bucket.key, doc_count: bucket.doc_count };
+      }
+    );
+  } catch (err) {
+    winstonLogger.error(
+      `Problem getting allowed filter values for 
+          fieldName: ${fieldName}, 
+          query: ${query}, 
+          ERROR: ${err.message}`
+    );
+  }
 }
 
 async function getFilters(query, fieldMappings, urlFilters) {
-  let filterNamesAndValues = [];
-  for (const field in fieldMappings) {
-    if (fieldMappings[field].type === 'keyword') {
-      const queryWithFiltersFromUrl = JSON.parse(JSON.stringify(query));
+  try {
+    let filterNamesAndValues = [];
+    for (const field in fieldMappings) {
+      if (fieldMappings[field].type === 'keyword') {
+        const queryWithFiltersFromUrl = JSON.parse(JSON.stringify(query));
+        let queryFilters = queryWithFiltersFromUrl.bool.hasOwnProperty('filter')
+          ? [...queryWithFiltersFromUrl.bool.filter]
+          : [];
+        for (const [key, value] of Object.entries(urlFilters)) {
+          if (key !== field) {
+            queryFilters.push({
+              terms: {
+                [key]: value,
+              },
+            });
+          }
+        }
+        queryWithFiltersFromUrl.bool.filter = queryFilters;
+        const allowedFilterValues = await getAllowedFilterValues(
+          field,
+          queryWithFiltersFromUrl
+        );
+
+        const urlFilterValues = urlFilters.hasOwnProperty(field)
+          ? urlFilters[field]
+          : [];
+        const allFilterValues = [
+          ...new Set([
+            ...allowedFilterValues.map(v => v.label),
+            ...urlFilterValues,
+          ]),
+        ];
+        const filterValuesObjects = allFilterValues.map(value => {
+          return {
+            label: value,
+            doc_count:
+              allowedFilterValues.find(v => v.label === value)?.doc_count || 0,
+            checked: !!urlFilterValues.find(v => v === value),
+          };
+        });
+        filterNamesAndValues.push({
+          name: field,
+          values: filterValuesObjects,
+        });
+      }
+    }
+
+    return filterNamesAndValues;
+  } catch (err) {
+    winstonLogger.error(
+      `Problem getting filters for 
+          query: ${query},    
+          fieldMappings: ${fieldMappings},  
+          urlFilters: ${urlFilters},
+          ERROR: ${err.message}`
+    );
+  }
+}
+
+async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
+  try {
+    const queryWithFiltersFromUrl = JSON.parse(JSON.stringify(query));
+    if (urlFilters) {
       let queryFilters = queryWithFiltersFromUrl.bool.hasOwnProperty('filter')
         ? [...queryWithFiltersFromUrl.bool.filter]
         : [];
       for (const [key, value] of Object.entries(urlFilters)) {
-        if (key !== field) {
-          queryFilters.push({
-            terms: {
-              [key]: value,
-            },
-          });
-        }
+        queryFilters.push({
+          terms: {
+            [key]: value,
+          },
+        });
       }
       queryWithFiltersFromUrl.bool.filter = queryFilters;
-      const allowedFilterValues = await getAllowedFilterValues(
-        field,
-        queryWithFiltersFromUrl
-      );
-
-      const urlFilterValues = urlFilters.hasOwnProperty(field)
-        ? urlFilters[field]
-        : [];
-      const allFilterValues = [
-        ...new Set([
-          ...allowedFilterValues.map(v => v.label),
-          ...urlFilterValues,
-        ]),
-      ];
-      const filterValuesObjects = allFilterValues.map(value => {
-        return {
-          label: value,
-          doc_count:
-            allowedFilterValues.find(v => v.label === value)?.doc_count || 0,
-          checked: !!urlFilterValues.find(v => v === value),
-        };
-      });
-      filterNamesAndValues.push({
-        name: field,
-        values: filterValuesObjects,
-      });
     }
-  }
 
-  return filterNamesAndValues;
-}
-
-async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
-  const queryWithFiltersFromUrl = JSON.parse(JSON.stringify(query));
-  if (urlFilters) {
-    let queryFilters = queryWithFiltersFromUrl.bool.hasOwnProperty('filter')
-      ? [...queryWithFiltersFromUrl.bool.filter]
-      : [];
-    for (const [key, value] of Object.entries(urlFilters)) {
-      queryFilters.push({
-        terms: {
-          [key]: value,
+    const highlightParameters = {
+      fragment_size: 0,
+      fields: [
+        {
+          'title*': {
+            number_of_fragments: 0,
+          },
         },
-      });
-    }
-    queryWithFiltersFromUrl.bool.filter = queryFilters;
-  }
+        { 'body*': {} },
+      ],
+      pre_tags: ['<span class="searchResultHighlight highlighted">'],
+      post_tags: ['</span>'],
+    };
 
-  const highlightParameters = {
-    fragment_size: 0,
-    fields: [
-      {
-        'title*': {
-          number_of_fragments: 0,
-        },
-      },
-      { 'body*': {} },
-    ],
-    pre_tags: ['<span class="searchResultHighlight highlighted">'],
-    post_tags: ['</span>'],
-  };
-
-  const searchResultsCount = await elasticClient.search({
-    index: searchIndexName,
-    size: 0,
-    body: {
-      aggs: {
-        totalHits: {
-          filter: queryWithFiltersFromUrl,
-          aggs: {
-            totalCollapsedHits: {
-              cardinality: {
-                field: 'title.raw',
-                precision_threshold: 40000,
+    const searchResultsCount = await elasticClient.search({
+      index: searchIndexName,
+      size: 0,
+      body: {
+        aggs: {
+          totalHits: {
+            filter: queryWithFiltersFromUrl,
+            aggs: {
+              totalCollapsedHits: {
+                cardinality: {
+                  field: 'title.raw',
+                  precision_threshold: 40000,
+                },
               },
             },
           },
         },
       },
-    },
-  });
+    });
 
-  const searchResults = await elasticClient.search({
-    index: searchIndexName,
-    from: startIndex,
-    size: resultsPerPage,
-    body: {
-      query: queryWithFiltersFromUrl,
-      collapse: {
-        field: 'title.raw',
-        inner_hits: {
-          name: 'same_title',
-          size: 1000,
-          highlight: highlightParameters,
+    const searchResults = await elasticClient.search({
+      index: searchIndexName,
+      from: startIndex,
+      size: resultsPerPage,
+      body: {
+        query: queryWithFiltersFromUrl,
+        collapse: {
+          field: 'title.raw',
+          inner_hits: {
+            name: 'same_title',
+            size: 1000,
+            highlight: highlightParameters,
+          },
+          max_concurrent_group_searches: 4,
         },
-        max_concurrent_group_searches: 4,
+        highlight: highlightParameters,
       },
-      highlight: highlightParameters,
-    },
-  });
+    });
 
-  return {
-    numberOfHits: searchResultsCount.body.aggregations.totalHits.doc_count,
-    numberOfCollapsedHits:
-      searchResultsCount.body.aggregations.totalHits.totalCollapsedHits.value,
-    hits: searchResults.body.hits.hits,
-  };
+    return {
+      numberOfHits: searchResultsCount.body.aggregations.totalHits.doc_count,
+      numberOfCollapsedHits:
+        searchResultsCount.body.aggregations.totalHits.totalCollapsedHits.value,
+      hits: searchResults.body.hits.hits,
+    };
+  } catch (err) {
+    winstonLogger.error(
+      `Problem running search for  
+          query: ${query},    
+          startIndex: ${startIndex},  
+          resultsPerPage: ${resultsPerPage},
+          urlFilters: ${urlFilters},
+          ERROR: ${err.message}`
+    );
+  }
 }
 
 function sanitizeTagNames(textToSanitize) {

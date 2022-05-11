@@ -13,8 +13,15 @@ const gwCommunityCustomerParam = 'guidewire-customer';
 const gwCommunityPartnerParam = 'guidewire-partner';
 
 function getTokenFromRequestHeader(req) {
-  const authorizationHeader = req.headers?.authorization;
-  return authorizationHeader ? authorizationHeader.split(' ')[1] : null;
+  try {
+    const authorizationHeader = req.headers?.authorization;
+    return authorizationHeader ? authorizationHeader.split(' ')[1] : null;
+  } catch (err) {
+    winstonLogger.error(
+          `Problem getting token from request header 
+              ERROR: ${err.message}`
+        );
+  }
 }
 
 function getAvailableOktaIssuers() {
@@ -40,21 +47,28 @@ function getAvailableOktaIssuers() {
 }
 
 function createOktaJwtVerifier(token, availableIssuers) {
-  const decodedJwt = jsonwebtoken.decode(token, {});
-  if (decodedJwt) {
-    const jwtIssuer = decodedJwt.iss;
-    const issuer = Object.entries(availableIssuers).find(
-      iss => iss[0] === jwtIssuer
-    );
-    return new OktaJwtVerifier({
-      issuer: issuer[0],
-      clientId: issuer[1],
-      assertClaims: {
-        'scp.includes': process.env.OKTA_ACCESS_TOKEN_SCOPES,
-      },
-    });
-  } else {
-    throw new Error('Invalid JSON Web Token in the Authorization header.');
+  try {
+    const decodedJwt = jsonwebtoken.decode(token, {});
+    if (decodedJwt) {
+      const jwtIssuer = decodedJwt.iss;
+      const issuer = Object.entries(availableIssuers).find(
+        iss => iss[0] === jwtIssuer
+      );
+      return new OktaJwtVerifier({
+        issuer: issuer[0],
+        clientId: issuer[1],
+        assertClaims: {
+          'scp.includes': process.env.OKTA_ACCESS_TOKEN_SCOPES,
+        },
+      });
+    } else {
+      throw new Error('Invalid JSON Web Token in the Authorization header.');
+    }
+  } catch (err) {
+    winstonLogger.error(
+          `Problem creating OKTA JWT verifier 
+              ERROR: ${err.message}`
+        );
   }
 }
 
@@ -123,64 +137,100 @@ const authGateway = async (req, res, next) => {
     const reqUrl = req.url;
 
     function redirectToLoginPage() {
-      req.session.redirectTo = reqUrl;
-      if (req.query.authSource === gwCommunityCustomerParam) {
-        res.redirect('/customers-login');
-      } else if (req.query.authSource === gwCommunityPartnerParam) {
-        res.redirect('/partners-login');
-      } else {
-        res.redirect(loginGatewayRoute);
+      try {
+        req.session.redirectTo = reqUrl;
+        if (req.query.authSource === gwCommunityCustomerParam) {
+          res.redirect('/customers-login');
+        } else if (req.query.authSource === gwCommunityPartnerParam) {
+          res.redirect('/partners-login');
+        } else {
+          res.redirect(loginGatewayRoute);
+        }
+      } catch (err) {
+        winstonLogger.error(
+          `Problem redirecting to login page 
+              ERROR: ${err.message}`
+        );
       }
     }
 
     function openRequestedPage() {
-      if (req.query.authSource) {
-        const fullRequestUrl = new URL(reqUrl, process.env.APP_BASE_URL);
-        fullRequestUrl.searchParams.delete('authSource');
-        res.redirect(fullRequestUrl.href);
-      }
-      if (req.session.redirectTo) {
-        const redirectTo = req.session.redirectTo;
-        delete req.session.redirectTo;
-        res.redirect(redirectTo);
-      } else {
-        next();
+      try {
+        if (req.query.authSource) {
+          const fullRequestUrl = new URL(reqUrl, process.env.APP_BASE_URL);
+          fullRequestUrl.searchParams.delete('authSource');
+          res.redirect(fullRequestUrl.href);
+        }
+        if (req.session.redirectTo) {
+          const redirectTo = req.session.redirectTo;
+          delete req.session.redirectTo;
+          res.redirect(redirectTo);
+        } else {
+          next();
+        }
+      } catch (err) {
+        winstonLogger.error(
+          `Problem opening requested page 
+              ERROR: ${err.message}`
+        );
       }
     }
 
     function openPublicPage() {
-      req.next();
+      try {
+        req.next();
+      } catch (err) {
+        winstonLogger.error(
+          `Problem opening public page 
+              ERROR: ${err.message}`
+        );
+      }
     }
 
     async function checkIfRouteIsOpen() {
-      if (majorOpenRoutes.some(r => reqUrl.startsWith(r))) {
-        return true;
-      }
+      try {
+        if (majorOpenRoutes.some(r => reqUrl.startsWith(r))) {
+          return true;
+        }
 
-      const isPublicInConfig = await isPublicDoc(reqUrl, req);
-      return isPublicInConfig === true;
+        const isPublicInConfig = await isPublicDoc(reqUrl, req);
+        return isPublicInConfig === true;
+      } catch (err) {
+        winstonLogger.error(
+          `Problem checking if route is open 
+              ERROR: ${err.message}`
+        );
+      }
     }
 
     async function checkIfRouteIsInternal() {
-      if (majorInternalRoutes.some(r => reqUrl.startsWith(r))) {
-        return true;
-      }
+      try {
+        if (majorInternalRoutes.some(r => reqUrl.startsWith(r))) {
+          return true;
+        }
 
-      const configFilePath = decodeURI(
-        path.join(staticPagesDir, req.path, 'index.json')
-      );
-      const configFileExists = fs.existsSync(configFilePath);
-      if (configFileExists) {
-        const fileContents = fs.readFileSync(configFilePath, 'utf-8');
-        const fileContentsJson = JSON.parse(fileContents);
-        return fileContentsJson.internal;
+        const configFilePath = decodeURI(
+          path.join(staticPagesDir, req.path, 'index.json')
+        );
+        const configFileExists = fs.existsSync(configFilePath);
+        if (configFileExists) {
+          const fileContents = fs.readFileSync(configFilePath, 'utf-8');
+          const fileContentsJson = JSON.parse(fileContents);
+          return fileContentsJson.internal;
+        }
+        const isInternalInConfig = await isInternalDoc(reqUrl, req);
+        return isInternalInConfig === true;
+      } catch (err) {
+        winstonLogger.error(
+          `Problem checking if route is internal 
+              ERROR: ${err.message}`
+        );
       }
-      const isInternalInConfig = await isInternalDoc(reqUrl, req);
-      return isInternalInConfig === true;
     }
 
     const publicDocsAllowed = process.env.ALLOW_PUBLIC_DOCS === 'yes';
     const authenticationIsDisabled = process.env.ENABLE_AUTH === 'no';
+    
     const loggedInOrHasValidToken = await isLoggedInOrHasValidToken(req);
     const requestIsAuthenticated =
       authenticationIsDisabled || loggedInOrHasValidToken;
