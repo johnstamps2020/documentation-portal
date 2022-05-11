@@ -39,7 +39,7 @@ async function loadConfig() {
           return localConfig;
         } catch (funcErr) {
           throw new Error(
-            `Cannot read config file from path: ${dirPath}: ${funcErr}`
+            `Cannot read local config file from path: ${dirPath}: ${funcErr}`
           );
         }
       }
@@ -48,12 +48,18 @@ async function loadConfig() {
     } else {
       try {
         const result = await fetch(
-          `${process.env.DOC_S3_URL}/portal-config/config.json`, { retry: 5, pause: 1000,
-          callback: retry => { console.log(`Retrying fetch of config.json: ${retry}`) } }
+          `${process.env.DOC_S3_URL}/portal-config/config.json`,
+          {
+            retry: 5,
+            pause: 1000,
+            callback: retry => {
+              console.log(`Retrying fetch of config.json: ${retry}`);
+            },
+          }
         );
-        if(result.ok == false) {
+        if (result.ok == false) {
           throw new Error(
-                    `Response status: ${result.status}
+            `Response status: ${result.status}
                     Response type: ${result.type}
                     Response URL: ${result.url}
                     Response redirected: ${result.redirected}`
