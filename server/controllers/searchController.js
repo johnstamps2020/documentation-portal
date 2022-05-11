@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { Client } = require('@elastic/elasticsearch');
+const { winstonLogger } = require('./loggerController');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const searchIndexName = 'gw-docs';
 
@@ -39,33 +40,39 @@ function getFiltersFromUrl(fieldMappings, queryParams) {
 }
 
 async function getAllowedFilterValues(fieldName, query) {
-  const requestBody = {
-    index: searchIndexName,
-    size: 0,
-    body: {
-      aggs: {
-        allowedForField: {
-          filter: query,
-          aggs: {
-            keywordFilter: {
-              terms: {
-                field: fieldName,
-                size: 100,
+  try {
+    const requestBody = {
+      index: searchIndexName,
+      size: 0,
+      body: {
+        aggs: {
+          allowedForField: {
+            filter: query,
+            aggs: {
+              keywordFilter: {
+                terms: {
+                  field: fieldName,
+                  size: 100,
+                },
               },
             },
           },
         },
       },
-    },
-  };
+    };
 
-  const result = await elasticClient.search(requestBody);
+    const result = await elasticClient.search(requestBody);
 
-  return result.body.aggregations.allowedForField.keywordFilter.buckets.map(
-    bucket => {
-      return { label: bucket.key, doc_count: bucket.doc_count };
-    }
-  );
+    return result.body.aggregations.allowedForField.keywordFilter.buckets.map(
+      bucket => {
+        return { label: bucket.key, doc_count: bucket.doc_count };
+      }
+    );
+  } catch (err) {
+    winstonLogger.error(
+      `Problem getting allowed filter values for fieldName: ${fieldName}, query: ${query}, ERROR: ${err.message}`
+    );
+  }
 }
 
 async function getFilters(query, fieldMappings, urlFilters) {
