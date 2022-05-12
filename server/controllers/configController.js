@@ -77,7 +77,10 @@ async function loadConfig() {
     }
     return config;
   } catch (err) {
-    winstonLogger.error(err.stack);
+    winstonLogger.error(
+      `Error getting config!
+        ERROR: ${err.message}`
+    );
     return { docs: [] };
   }
 }
@@ -87,10 +90,10 @@ async function expensiveLoadConfig() {
     storedConfig = await loadConfig();
     return storedConfig !== undefined;
   } catch (err) {
-        winstonLogger.error(
-          `Problem during expensive load config 
+    winstonLogger.error(
+      `Problem during expensive load config 
               ERROR: ${err.message}`
-        );
+    );
   }
 }
 
@@ -111,7 +114,10 @@ async function getConfig(reqObj, resObj) {
     }
     return config;
   } catch (err) {
-    winstonLogger.error(err.stack);
+    winstonLogger.error(
+      `There was a problem with the getConfig() function
+        ERROR: ${err.message}`
+    );
     return { docs: [] };
   }
 }
@@ -131,11 +137,11 @@ async function isPublicDoc(url, reqObj) {
     const matchingDoc = await getDocByUrl(url, reqObj);
     return !!(matchingDoc && matchingDoc.public);
   } catch (err) {
-        winstonLogger.error(
-          `Problem getting doc by url
+    winstonLogger.error(
+      `Problem getting doc by url
               url: ${url}, 
               ERROR: ${err.message}`
-        );
+    );
   }
 }
 
@@ -144,11 +150,11 @@ async function isInternalDoc(url, reqObj) {
     const matchingDoc = await getDocByUrl(url, reqObj);
     return !!(matchingDoc && matchingDoc.internal);
   } catch (err) {
-        winstonLogger.error(
-          `Problem determining if doc is internal
+    winstonLogger.error(
+      `Problem determining if doc is internal
               url: ${url}, 
               ERROR: ${err.message}`
-        );
+    );
   }
 }
 
@@ -177,7 +183,10 @@ async function getRootBreadcrumb(pagePathname) {
     }
     return { rootPage: {} };
   } catch (err) {
-    winstonLogger.error(err.stack);
+    winstonLogger.error(
+      `Something wrong when trying to get the root breadcrumb
+          ERROR: ${err.message}`
+    );
     return { rootPage: {} };
   }
 }
@@ -214,7 +223,10 @@ async function getVersionSelector(docId, reqObj, resObj) {
       );
     }
   } catch (err) {
-    winstonLogger.error(err.stack);
+    winstonLogger.error(
+      `Holy Moly! Cannot get version selector!
+          ERROR: ${err.message}`
+    );
     return { matchingVersionSelector: {} };
   }
 }
@@ -237,11 +249,11 @@ async function getDocumentMetadata(docId, reqObj, resObj) {
       };
     }
   } catch (err) {
-        winstonLogger.error(
-          `Problem getting document metadata
+    winstonLogger.error(
+      `Problem getting document metadata
               docId: ${docId}, 
               ERROR: ${err.message}`
-        );
+    );
   }
 }
 
@@ -275,12 +287,12 @@ async function getDocId(
       };
     }
   } catch (err) {
-        winstonLogger.error(
-          `Problem getting document id
+    winstonLogger.error(
+      `Problem getting document id
               url: ${url}, 
               title: ${title},
               ERROR: ${err.message}`
-        );
+    );
   }
 }
 

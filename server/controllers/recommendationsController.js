@@ -83,7 +83,10 @@ async function getTopicRecommendations(topicId, reqObj, resObj) {
       };
     }
   } catch (err) {
-    winstonLogger.error(err.stack);
+    winstonLogger.error(
+      `Cannot get recommendations for topic ${topicId}
+          ERROR: ${err.message}`
+    );
     return {
       body: err.message,
       status: 500,

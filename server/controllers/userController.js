@@ -5,7 +5,11 @@ function belongsToGuidewire(email) {
   try {
     return !!email?.endsWith('@guidewire.com');
   } catch (err) {
-    winstonLogger.error(err.stack);
+    winstonLogger.error(
+      `Problem checking if user belongs to Guidewire
+          EMAIL: ${email}
+          ERROR: ${err.message}`
+    );
     return false;
   }
 }

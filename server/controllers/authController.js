@@ -18,9 +18,9 @@ function getTokenFromRequestHeader(req) {
     return authorizationHeader ? authorizationHeader.split(' ')[1] : null;
   } catch (err) {
     winstonLogger.error(
-          `Problem getting token from request header 
+      `Problem getting token from request header 
               ERROR: ${err.message}`
-        );
+    );
   }
 }
 
@@ -66,9 +66,9 @@ function createOktaJwtVerifier(token, availableIssuers) {
     }
   } catch (err) {
     winstonLogger.error(
-          `Problem creating OKTA JWT verifier 
+      `Problem creating OKTA JWT verifier 
               ERROR: ${err.message}`
-        );
+    );
   }
 }
 
@@ -113,7 +113,7 @@ async function isLoggedInOrHasValidToken(req) {
       ? !!(req.isAuthenticated() || (await verifyToken(req)))
       : !!req.isAuthenticated();
   } catch (err) {
-    winstonLogger.error(err.stack);
+    winstonLogger.error(`PROBLEM VERIFYING TOKEN: ${err.message}`);
     return false;
   }
 }
@@ -230,7 +230,7 @@ const authGateway = async (req, res, next) => {
 
     const publicDocsAllowed = process.env.ALLOW_PUBLIC_DOCS === 'yes';
     const authenticationIsDisabled = process.env.ENABLE_AUTH === 'no';
-    
+
     const loggedInOrHasValidToken = await isLoggedInOrHasValidToken(req);
     const requestIsAuthenticated =
       authenticationIsDisabled || loggedInOrHasValidToken;
