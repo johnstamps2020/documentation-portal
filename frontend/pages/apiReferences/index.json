@@ -6,6 +6,10 @@
   "template": "redirect",
   "items": [
     {
+      "label": "Elysian",
+      "page": "elysian"
+    },
+    {
       "label": "Dobson",
       "page": "dobson"
     },
@@ -19,7 +23,7 @@
     },
     {
       "label": "_redirect",
-      "link": "/apiReferences/dobson"
+      "link": "/apiReferences/elysian"
     }
   ]
 }
