@@ -85,6 +85,10 @@ function insertTagWithContent(
 }
 
 async function interceptAndUpdateDocPage(responseBuffer, proxyRes, req, res) {
+  const bufferLength = responseBuffer.length;
+  if (bufferLength > 800000) {
+    return responseBuffer;
+  }
   const dom = getDOM(responseBuffer, proxyRes);
   if (dom) {
     try {
