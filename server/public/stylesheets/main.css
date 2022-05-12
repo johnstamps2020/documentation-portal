@@ -260,8 +260,8 @@ label,
   box-shadow: 2px 2px 6px hsla(0, 0%, 0%, 0.3);
 }
 
-.cardShadow:hover a,
-.cardShadow:focus a {
+.cardShadow a:hover,
+.cardShadow a:focus {
   color: var(--clr-GW-BLUE-HOVER);
 }
 
