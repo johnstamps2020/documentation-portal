@@ -80,7 +80,10 @@ async function checkTokenInOkta(token, jwtVerifierInstance) {
     );
     return jwt;
   } catch (err) {
-    throw new Error(`${err.name}: ${err.userMessage}`);
+    throw new Error(
+      `${err.name}: ${err.userMessage}
+          ERROR: ${err.message}`
+    );
   }
 }
 

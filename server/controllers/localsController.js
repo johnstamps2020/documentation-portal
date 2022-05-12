@@ -6,16 +6,24 @@ const {
   pendoInstallScript,
   getPendoInitializeScript,
 } = require('./analyticsController');
+const { winstonLogger } = require('./loggerController');
 
 function addCommonDataToSessionLocals(req, res) {
-  res.locals.userInfo = getUserInfo(req);
-  res.locals.translatedPages = getTranslatedPages();
-  res.locals.analytics = {
-    tagManagerHeadScript,
-    tagManagerBody,
-    pendoInstallScript,
-    pendoInitializeScript: getPendoInitializeScript(res.locals.userInfo),
-  };
+  try {
+    res.locals.userInfo = getUserInfo(req);
+    res.locals.translatedPages = getTranslatedPages();
+    res.locals.analytics = {
+      tagManagerHeadScript,
+      tagManagerBody,
+      pendoInstallScript,
+      pendoInitializeScript: getPendoInitializeScript(res.locals.userInfo),
+    };
+  } catch (err) {
+    winstonLogger.error(
+      `Problem adding commons to session locals
+          ERROR: ${err.message}`
+    );
+  }
 }
 
 module.exports = { addCommonDataToSessionLocals };
