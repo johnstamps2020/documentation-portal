@@ -5,7 +5,7 @@ function belongsToGuidewire(email) {
   try {
     return !!email?.endsWith('@guidewire.com');
   } catch (err) {
-    winstonLogger.error(err.stack);
+    winstonLogger.error(err.message);
     return false;
   }
 }

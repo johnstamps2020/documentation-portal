@@ -22,7 +22,7 @@ async function createIndex() {
     console.log('CREATED INDEX', JSON.stringify(result, null, 2));
     return result;
   } catch (err) {
-    winstonLogger.error(err.stack);
+    winstonLogger.error(err.message);
     return formalizeError(err);
   }
 }
@@ -56,7 +56,7 @@ async function createTestRecords() {
       }
     }
   } catch (err) {
-    winstonLogger.error(err.stack);
+    winstonLogger.error(err.message);
     return formalizeError(err);
   }
 }

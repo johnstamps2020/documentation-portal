@@ -77,7 +77,7 @@ async function loadConfig() {
     }
     return config;
   } catch (err) {
-    winstonLogger.error(err.stack);
+    winstonLogger.error(err.message);
     return { docs: [] };
   }
 }
@@ -111,7 +111,7 @@ async function getConfig(reqObj, resObj) {
     }
     return config;
   } catch (err) {
-    winstonLogger.error(err.stack);
+    winstonLogger.error(err.message);
     return { docs: [] };
   }
 }
@@ -177,7 +177,7 @@ async function getRootBreadcrumb(pagePathname) {
     }
     return { rootPage: {} };
   } catch (err) {
-    winstonLogger.error(err.stack);
+    winstonLogger.error(err.message);
     return { rootPage: {} };
   }
 }
@@ -214,7 +214,7 @@ async function getVersionSelector(docId, reqObj, resObj) {
       );
     }
   } catch (err) {
-    winstonLogger.error(err.stack);
+    winstonLogger.error(err.message);
     return { matchingVersionSelector: {} };
   }
 }
