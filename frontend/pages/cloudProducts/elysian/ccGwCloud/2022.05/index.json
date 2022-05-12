@@ -254,8 +254,7 @@
       "items": [
         {
           "label": "Glossary",
-          "id": "gwglossary",
-          "env": ["int", "staging"]
+          "id": "gwglossary"
         }
       ]
     }
