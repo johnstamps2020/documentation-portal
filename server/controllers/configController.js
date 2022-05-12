@@ -83,8 +83,15 @@ async function loadConfig() {
 }
 
 async function expensiveLoadConfig() {
-  storedConfig = await loadConfig();
-  return storedConfig !== undefined;
+  try {
+    storedConfig = await loadConfig();
+    return storedConfig !== undefined;
+  } catch (err) {
+        winstonLogger.error(
+          `Problem during expensive load config 
+              ERROR: ${err.message}`
+        );
+  }
 }
 
 expensiveLoadConfig();
@@ -120,13 +127,29 @@ async function getDocByUrl(url) {
 }
 
 async function isPublicDoc(url, reqObj) {
-  const matchingDoc = await getDocByUrl(url, reqObj);
-  return !!(matchingDoc && matchingDoc.public);
+  try {
+    const matchingDoc = await getDocByUrl(url, reqObj);
+    return !!(matchingDoc && matchingDoc.public);
+  } catch (err) {
+        winstonLogger.error(
+          `Problem getting doc by url
+              url: ${url}, 
+              ERROR: ${err.message}`
+        );
+  }
 }
 
 async function isInternalDoc(url, reqObj) {
-  const matchingDoc = await getDocByUrl(url, reqObj);
-  return !!(matchingDoc && matchingDoc.internal);
+  try {
+    const matchingDoc = await getDocByUrl(url, reqObj);
+    return !!(matchingDoc && matchingDoc.internal);
+  } catch (err) {
+        winstonLogger.error(
+          `Problem determining if doc is internal
+              url: ${url}, 
+              ERROR: ${err.message}`
+        );
+  }
 }
 
 async function getRootBreadcrumb(pagePathname) {
@@ -197,20 +220,28 @@ async function getVersionSelector(docId, reqObj, resObj) {
 }
 
 async function getDocumentMetadata(docId, reqObj, resObj) {
-  const config = await getConfig(reqObj, resObj);
-  const doc = config.docs.find(d => d.id === docId);
-  if (doc) {
-    return {
-      docTitle: doc.title,
-      docInternal: doc.internal,
-      docEarlyAccess: doc.earlyAccess,
-      ...doc.metadata,
-    };
-  } else {
-    return {
-      error: true,
-      message: `Did not find a doc matching ID ${docId}`,
-    };
+  try {
+    const config = await getConfig(reqObj, resObj);
+    const doc = config.docs.find(d => d.id === docId);
+    if (doc) {
+      return {
+        docTitle: doc.title,
+        docInternal: doc.internal,
+        docEarlyAccess: doc.earlyAccess,
+        ...doc.metadata,
+      };
+    } else {
+      return {
+        error: true,
+        message: `Did not find a doc matching ID ${docId}`,
+      };
+    }
+  } catch (err) {
+        winstonLogger.error(
+          `Problem getting document metadata
+              docId: ${docId}, 
+              ERROR: ${err.message}`
+        );
   }
 }
 
@@ -223,24 +254,33 @@ async function getDocId(
   reqObj,
   resObj
 ) {
-  const config = await getConfig(reqObj, resObj);
-  const doc = config.docs.find(
-    s =>
-      products.split(',').some(p => s.metadata.product.includes(p)) &&
-      platforms.split(',').some(pl => s.metadata.platform.includes(pl)) &&
-      versions.split(',').some(v => s.metadata.version.includes(v)) &&
-      (title === s.title || !title) &&
-      url.includes(s.url)
-  );
-  if (doc) {
-    return {
-      docId: doc.id,
-    };
-  } else {
-    return {
-      error: true,
-      message: `Did not find a doc matching the provided info: ${products}, ${platforms}, ${versions}, ${title}, ${url}`,
-    };
+  try {
+    const config = await getConfig(reqObj, resObj);
+    const doc = config.docs.find(
+      s =>
+        products.split(',').some(p => s.metadata.product.includes(p)) &&
+        platforms.split(',').some(pl => s.metadata.platform.includes(pl)) &&
+        versions.split(',').some(v => s.metadata.version.includes(v)) &&
+        (title === s.title || !title) &&
+        url.includes(s.url)
+    );
+    if (doc) {
+      return {
+        docId: doc.id,
+      };
+    } else {
+      return {
+        error: true,
+        message: `Did not find a doc matching the provided info: ${products}, ${platforms}, ${versions}, ${title}, ${url}`,
+      };
+    }
+  } catch (err) {
+        winstonLogger.error(
+          `Problem getting document id
+              url: ${url}, 
+              title: ${title},
+              ERROR: ${err.message}`
+        );
   }
 }
 
