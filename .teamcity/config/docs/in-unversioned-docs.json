@@ -12,7 +12,7 @@
         "subject": ["Release Notes"],
         "release": ["Elysian"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -267,7 +267,7 @@
         "subject": ["Release notes"],
         "release": ["Elysian"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -447,7 +447,7 @@
         "subject": ["Release notes"],
         "release": ["Elysian"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

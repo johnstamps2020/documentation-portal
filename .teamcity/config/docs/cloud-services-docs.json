@@ -12,7 +12,7 @@
         "release": ["Elysian"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -30,7 +30,7 @@
         "release": ["Elysian"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -48,7 +48,7 @@
         "release": ["Elysian"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -66,7 +66,7 @@
         "release": ["Elysian"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -84,7 +84,7 @@
         "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

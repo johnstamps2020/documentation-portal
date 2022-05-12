@@ -9,7 +9,7 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["Canvas"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
       },
       "environments": ["int", "staging", "prod"],
       "indexForSearch": true,

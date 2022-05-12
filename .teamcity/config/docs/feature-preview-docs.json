@@ -12,7 +12,7 @@
         "release": ["Elysian"],
         "subject": ["Configuration"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -84,7 +84,7 @@
         "release": ["Elysian"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
