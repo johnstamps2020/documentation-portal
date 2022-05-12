@@ -2470,7 +2470,7 @@
         "product": ["Guidewire Cloud Home"],
         "version": ["latest"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
