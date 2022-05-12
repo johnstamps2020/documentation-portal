@@ -1,3 +1,5 @@
+const { winstonLogger } = require('./loggerController');
+
 const tagManagerHeadScript = `
 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -86,9 +88,10 @@ function getUserData(userInfo) {
 }
 
 function getPendoInitializeScript(userInfo) {
-  const { email, name, role, domain } = getUserData(userInfo);
+  try {
+    const { email, name, role, domain } = getUserData(userInfo);
 
-  return `
+    return `
   pendo.initialize({
     visitor: {
       id: "${email}",
@@ -102,6 +105,12 @@ function getPendoInitializeScript(userInfo) {
     },
   });
   `;
+  } catch (err) {
+    winstonLogger.error(
+      `Problem getting pendo initialize script:
+          ERROR: ${err.message}`
+    );
+  }
 }
 
 module.exports = {

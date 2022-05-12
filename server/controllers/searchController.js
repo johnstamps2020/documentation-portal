@@ -18,25 +18,34 @@ async function getFieldMappings() {
 // - the updateFilters function in search.ejs
 // Therefore, filter values must be parsed here taking quotes into account.
 function getFiltersFromUrl(fieldMappings, queryParams) {
-  let filtersFromUrl = {};
-  for (const param in queryParams) {
-    if (fieldMappings[param] && fieldMappings[param].type === 'keyword') {
-      const paramValues = decodeURI(queryParams[param]);
-      const matches = paramValues.matchAll(/"(.+?)"/g);
-      let quotedParamValues = [];
-      let nonQuotedParamValues = paramValues;
-      for (const match of matches) {
-        nonQuotedParamValues = nonQuotedParamValues.replace(match[0], ''); // Remove the entire quoted string from params
-        quotedParamValues.push(match[1]); // Add the string without the quotes to the list of quoted parameters
+  try {
+    let filtersFromUrl = {};
+    for (const param in queryParams) {
+      if (fieldMappings[param] && fieldMappings[param].type === 'keyword') {
+        const paramValues = decodeURI(queryParams[param]);
+        const matches = paramValues.matchAll(/"(.+?)"/g);
+        let quotedParamValues = [];
+        let nonQuotedParamValues = paramValues;
+        for (const match of matches) {
+          nonQuotedParamValues = nonQuotedParamValues.replace(match[0], ''); // Remove the entire quoted string from params
+          quotedParamValues.push(match[1]); // Add the string without the quotes to the list of quoted parameters
+        }
+        const allParamValues = [
+          ...quotedParamValues,
+          ...nonQuotedParamValues.split(','),
+        ].filter(v => v);
+        filtersFromUrl[param] = allParamValues;
       }
-      const allParamValues = [
-        ...quotedParamValues,
-        ...nonQuotedParamValues.split(','),
-      ].filter(v => v);
-      filtersFromUrl[param] = allParamValues;
     }
+    return filtersFromUrl;
+  } catch (err) {
+    winstonLogger.error(
+      `Problem getting filters from URL
+          FIELD MAPPINGS: ${fieldMappings}
+          QUERY PARAMS: ${queryParams}
+          ERROR: ${err.message}`
+    );
   }
-  return filtersFromUrl;
 }
 
 async function getAllowedFilterValues(fieldName, query) {
@@ -470,6 +479,11 @@ async function searchController(req, res, next) {
       res.render('search', searchData);
     }
   } catch (err) {
+    winstonLogger.error(
+      `Problem performing search
+          QUERY: ${req.query}
+          ERROR: ${err.message}`
+    );
     next(err);
   }
 }

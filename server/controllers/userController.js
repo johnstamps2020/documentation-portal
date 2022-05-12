@@ -5,7 +5,11 @@ function belongsToGuidewire(email) {
   try {
     return !!email?.endsWith('@guidewire.com');
   } catch (err) {
-    winstonLogger.error(err.message);
+    winstonLogger.error(
+      `Problem checking if user belongs to Guidewire
+          EMAIL: ${email}
+          ERROR: ${err.message}`
+    );
     return false;
   }
 }
@@ -33,10 +37,10 @@ function getUserInfo(req) {
     }
     return userInfo;
   } catch (err) {
-        winstonLogger.error(
-          `Problem getting user info 
-              ERROR: ${err.message}`
-        );
+    winstonLogger.error(
+      `Problem getting user info
+          ERROR: ${err.message}`
+    );
   }
 }
 
