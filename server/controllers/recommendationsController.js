@@ -6,18 +6,25 @@ const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const recommendationsIndexName = 'gw-recommendations';
 
 async function showOnlyPublicRecommendations(reqObj, resObj, recommendations) {
-  const publicRecommendations = [];
-  const config = await getConfig(reqObj, resObj);
-  for (const recommendation of recommendations) {
-    const matchingDoc = config.docs.find(
-      d => d.doc_id === recommendation.doc_id
-    );
-    const recommendationIsPublic = matchingDoc ? matchingDoc.public : false;
-    if (recommendationIsPublic) {
-      publicRecommendations.push(recommendation);
+  try {
+    const publicRecommendations = [];
+    const config = await getConfig(reqObj, resObj);
+    for (const recommendation of recommendations) {
+      const matchingDoc = config.docs.find(
+        d => d.doc_id === recommendation.doc_id
+      );
+      const recommendationIsPublic = matchingDoc ? matchingDoc.public : false;
+      if (recommendationIsPublic) {
+        publicRecommendations.push(recommendation);
+      }
     }
+    return publicRecommendations;
+  } catch (err) {
+        winstonLogger.error(
+          `Problem determining public recommendations
+              ERROR: ${err.message}`
+        );
   }
-  return publicRecommendations;
 }
 
 async function getTopicRecommendations(topicId, reqObj, resObj) {
@@ -83,7 +90,7 @@ async function getTopicRecommendations(topicId, reqObj, resObj) {
       };
     }
   } catch (err) {
-    winstonLogger.error(err.stack);
+    winstonLogger.error(err.message);
     return {
       body: err.message,
       status: 500,
