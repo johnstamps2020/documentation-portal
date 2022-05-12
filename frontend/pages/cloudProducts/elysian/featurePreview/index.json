@@ -106,7 +106,8 @@
         },
         {
           "label": "APD API Reference",
-          "id": "apdmaindoc"
+          "id": "apdmaindoc",
+          "env": ["int", "staging"]
         },
         {
           "label": "Webhooks API Reference",
