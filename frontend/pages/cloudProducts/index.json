@@ -23,18 +23,11 @@
     },
     {
       "label": "Elysian",
-      "page": "elysian",
-      "env": ["int", "staging"]
+      "page": "elysian"
     },
     {
       "label": "_redirect",
-      "link": "/cloudProducts/dobson",
-      "env": ["dev", "prod"]
-    },
-    {
-      "label": "_redirect",
-      "link": "/cloudProducts/elysian",
-      "env": ["int", "staging"]
+      "link": "/cloudProducts/elysian"
     }
   ]
 }
