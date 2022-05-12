@@ -2470,7 +2470,7 @@
         "product": ["Guidewire Cloud Home"],
         "version": ["latest"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "int", "staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -6834,42 +6834,6 @@
       "earlyAccess": false
     },
     {
-      "id": "isdraftrestapiclientguide",
-      "title": "REST API Client",
-      "url": "is/restapiclient/guide",
-      "metadata": {
-        "platform": ["Cloud", "Self-managed"],
-        "product": ["REST API Client"],
-        "version": ["draft"],
-        "subject": ["Integration"],
-        "release": ["Dobson"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "isdraftrestapiclientrn",
-      "title": "REST API Client Release Notes",
-      "url": "is/restapiclient/releasenotes",
-      "metadata": {
-        "platform": ["Cloud", "Self-managed"],
-        "product": ["REST API Client"],
-        "version": ["draft"],
-        "subject": ["Integration"],
-        "release": ["Dobson"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "in20211xappdraft",
       "title": "Application Guide Draft",
       "url": "cloud/in/20211x/app",
@@ -8200,7 +8164,7 @@
         "product": ["REST API Client"],
         "version": ["latest"],
         "subject": ["Integration"],
-        "release": ["Banff", "Cortina", "Dobson"]
+        "release": ["Banff", "Cortina", "Dobson", "Elysian"]
       },
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -8218,7 +8182,7 @@
         "product": ["REST API Client"],
         "version": ["latest"],
         "subject": ["Release notes"],
-        "release": ["Banff", "Cortina", "Dobson"]
+        "release": ["Banff", "Cortina", "Dobson", "Elysian"]
       },
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,

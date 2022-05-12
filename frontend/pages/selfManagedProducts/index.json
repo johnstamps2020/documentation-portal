@@ -42,7 +42,11 @@
         },
         {
           "label": "REST API Client",
-          "id": "isdraftrestapiclientguide"
+          "id": "isrestapiclientguide"
+        },
+        {
+          "label": "REST API Client Release Notes",
+          "id": "isrestapiclientrn"
         },
         {
           "label": "Guidewire for Salesforce",

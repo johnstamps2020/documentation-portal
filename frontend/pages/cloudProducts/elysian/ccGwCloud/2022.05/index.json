@@ -37,12 +37,7 @@
         },
         {
           "label": "REST API Client Release Notes",
-          "id": "isdraftrestapiclientrn"
-        },
-        {
-          "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn",
-          "env": ["staging"]
+          "id": "isrestapiclientrn"
         }
       ]
     },
@@ -80,8 +75,7 @@
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools420",
-          "env": ["staging"]
+          "id": "isconfigupgradetools420"
         }
       ]
     },
@@ -225,12 +219,7 @@
         },
         {
           "label": "REST API Client",
-          "id": "isdraftrestapiclientguide"
-        },
-        {
-          "label": "REST API Client",
-          "id": "isrestapiclientguide",
-          "env": ["staging"]
+          "id": "isrestapiclientguide"
         }
       ]
     },
@@ -254,8 +243,7 @@
       "items": [
         {
           "label": "Glossary",
-          "id": "gwglossary",
-          "env": ["int", "staging"]
+          "id": "gwglossary"
         }
       ]
     }

@@ -164,8 +164,9 @@ const portal2ProxyOptions = {
   onProxyRes: setResCacheControlHeader,
   onOpen: proxySocket => {
     proxySocket.on('data', hybiParseAndLogMessage);
-  },
-  ...proxyInterceptorOptions,
+  }
+  // Interceptor disabled until we can determine if it crashes the site
+  // ...proxyInterceptorOptions,
 };
 const portal2Proxy = createProxyMiddleware(portal2ProxyOptions);
 app.use('/portal', portal2Proxy);
@@ -176,8 +177,9 @@ const s3ProxyOptions = {
   onProxyRes: setResCacheControlHeader,
   onOpen: proxySocket => {
     proxySocket.on('data', hybiParseAndLogMessage);
-  },
-  ...proxyInterceptorOptions,
+  }
+  // Interceptor disabled until we can determine if it crashes the site
+  // ...proxyInterceptorOptions,
 };
 const s3Proxy = createProxyMiddleware(s3ProxyOptions);
 app.use(s3Proxy);
