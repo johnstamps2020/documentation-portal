@@ -4,13 +4,24 @@
   "template": "page",
   "class": "twoColumns",
   "selector": {
-    "label": "Select version",
-    "selectedItem": "2022.05",
+    "label": "Select release",
+    "selectedItem": "Elysian (2022.05)",
     "items": [
       {
-        "label": "earlyaccess",
-        "page": "../earlyaccess",
-        "env": ["int"]
+        "label": "Dobson (2021.11)",
+        "page": "../../../dobson/pcGwCloud/2021.11"
+      },
+      {
+        "label": "Cortina (2021.04)",
+        "page": "../../../cortina/policyCenterCloud/pcGwCloud/2021.04"
+      },
+      {
+        "label": "Banff (2020.11)",
+        "page": "../../../banff/policyCenterCloud/pcGwCloud/2020.11"
+      },
+      {
+        "label": "Aspen (2020.05)",
+        "page": "../../../aspen/policyCenterCloud"
       }
     ]
   },

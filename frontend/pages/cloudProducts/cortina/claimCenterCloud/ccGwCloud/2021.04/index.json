@@ -8,6 +8,10 @@
     "selectedItem": "Cortina (2021.04)",
     "items": [
       {
+        "label": "Elysian (2022.05)",
+        "page": "../../../../elysian/ccGwCloud/2022.05"
+      },
+      {
         "label": "Dobson (2021.11)",
         "page": "../../../../dobson/ccGwCloud/2021.11"
       },
