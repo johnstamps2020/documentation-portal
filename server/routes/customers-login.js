@@ -18,6 +18,7 @@ const customersSamlStrategy = new saml.Strategy(
     cert: `${process.env.CUSTOMERS_LOGIN_CERT}`,
     identifierFormat: 'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified',
     validateInResponseTo: true,
+    disableRequestedAuthnContext: true
   },
   function(profile, done) {
     return done(null, profile);

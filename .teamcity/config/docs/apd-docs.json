@@ -10,9 +10,11 @@
         "product": ["PolicyCenter"],
         "version": ["latest"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging", "prod"],
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": true,
+      "indexForSearch": true,
+      "public": false
     }
   ]
 }

@@ -105,6 +105,10 @@
           "id": "is202205access"
         },
         {
+          "label": "APD API Reference",
+          "id": "apdmaindoc"
+        },
+        {
           "label": "Webhooks API Reference",
           "id": "webhooksapinext"
         }
