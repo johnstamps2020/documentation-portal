@@ -13,7 +13,7 @@ create(RelativeId("isupgradeguide202111srcValidationbuilds"), GitVcsRoot({
     id("isupgradeguide202111srcValidationbuilds_DocumentationToolsDocumentationPortalIsupgradeguide202111src")
     name = "DocumentationTools_DocumentationPortal_isupgradeguide202111src"
     url = "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git"
-    branch = "refs/heads/release/2022.05"
+    branch = "refs/heads/release/2021.11"
     checkoutPolicy = GitVcsRoot.AgentCheckoutPolicy.USE_MIRRORS
     authMethod = uploadedKey {
         uploadedKey = "sys-doc.rsa"
