@@ -3,6 +3,7 @@ const tracer = require('dd-trace').init();
 const {
   expressWinstonLogger,
   expressWinstonErrorLogger,
+  winstonLogger,
 } = require('./controllers/loggerController');
 const express = require('express');
 const path = require('path');
@@ -42,7 +43,7 @@ const options = {
   },
 };
 
-console.log('Server app instantiated!');
+winstonLogger.notice('Server app instantiated!');
 
 const sessionSettings = {
   secret: `${process.env.SESSION_KEY}`,
@@ -164,9 +165,8 @@ const portal2ProxyOptions = {
   onProxyRes: setResCacheControlHeader,
   onOpen: proxySocket => {
     proxySocket.on('data', hybiParseAndLogMessage);
-  }
-  // Interceptor disabled until we can determine if it crashes the site
-  // ...proxyInterceptorOptions,
+  },
+  ...proxyInterceptorOptions,
 };
 const portal2Proxy = createProxyMiddleware(portal2ProxyOptions);
 app.use('/portal', portal2Proxy);
@@ -177,9 +177,8 @@ const s3ProxyOptions = {
   onProxyRes: setResCacheControlHeader,
   onOpen: proxySocket => {
     proxySocket.on('data', hybiParseAndLogMessage);
-  }
-  // Interceptor disabled until we can determine if it crashes the site
-  // ...proxyInterceptorOptions,
+  },
+  ...proxyInterceptorOptions,
 };
 const s3Proxy = createProxyMiddleware(s3ProxyOptions);
 app.use(s3Proxy);
@@ -198,7 +197,7 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-  console.log('Running on PORT: ' + port);
+  winstonLogger.notice('Running on PORT: ' + port);
 });
 
 module.exports = app;
