@@ -20,7 +20,7 @@ Issuer.discover(process.env.OKTA_DOMAIN).then(oktaIssuer => {
     {
       client: oktaClient,
       params: {
-        scope: 'openid profile',
+        scope: 'openid profile email',
       },
     },
     function(tokenSet, profile, done) {

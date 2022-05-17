@@ -29,10 +29,10 @@ function getUserInfo(req) {
     };
     const user = req.user;
     if (user) {
-      const { name, preferred_username, locale } = user;
-      userInfo.hasGuidewireEmail = belongsToGuidewire(preferred_username);
+      const { name, locale, email } = user;
+      userInfo.hasGuidewireEmail = belongsToGuidewire(email);
       userInfo.name = name;
-      userInfo.preferred_username = preferred_username;
+      userInfo.preferred_username = email.toLowerCase();
       userInfo.locale = locale;
     }
     return userInfo;
