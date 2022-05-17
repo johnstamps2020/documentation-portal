@@ -90,6 +90,22 @@
       "docId": "guidewirecloudconsolerootinsurerdevrnitIT"
     },
     {
+      "buildType": "dita",
+      "root": "gcc.ditamap",
+      "filter": "assets/insurer-developer.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewirecloudconsolelatestptBRsrc",
+      "docId": "guidewirecloudconsolerootinsurerdevptBR"
+    },
+    {
+      "buildType": "dita",
+      "root": "gcc_release_notes.ditamap",
+      "filter": "assets/insurer-developer.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewirecloudconsolelatestptBRsrc",
+      "docId": "guidewirecloudconsolerootinsurerdevrnptBR"
+    },
+    {
       "buildType": "yarn",
       "docId": "cicdmanagerapirefdraft",
       "srcId": "cicdmanagerapirefsrc"
@@ -539,6 +555,14 @@
       "root": "UnderstandingCloudDataAccess.ditamap",
       "srcId": "clouddataaccessitITsrc",
       "docId": "clouddataaccessguideitIT",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "UnderstandingCloudDataAccess.ditamap",
+      "srcId": "clouddataaccessptBRsrc",
+      "docId": "clouddataaccessguideptBR",
       "indexRedirect": true
     },
     {
