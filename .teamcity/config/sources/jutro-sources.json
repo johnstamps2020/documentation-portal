@@ -222,7 +222,7 @@
       "id": "srcjutrostorybooknext",
       "title": "Jutro Storybook Next",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
       "branch": "main"
     },
     {
