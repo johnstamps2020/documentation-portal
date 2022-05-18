@@ -1,0 +1,290 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "cloudconsoleapi",
+      "title": "Cloud Console API",
+      "url": "cloud/console/cloudconsoleapi",
+      "metadata": {
+        "product": ["Guidewire Cloud Console"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dbserviceapi",
+      "title": "Database Service API",
+      "url": "cloud/console/dbserviceapi",
+      "metadata": {
+        "product": ["Guidewire Cloud Console"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Elysian"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "cicdmanagerapirefdraft",
+      "title": "CI/CD Manager",
+      "url": "cloud/cicd-manager-api-ref/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"],
+        "release": ["Elysian"]
+      },
+      "environments": ["int"],
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "guidewirecloudconsoleguideinsurerdev",
+      "title": "Cloud Console Guide Insurer Developer",
+      "url": "cloud/gcc-guide/insurer-developer/latest/topics/c_provisioning-cloud-console.html",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "guidewirecloudconsolerninsurerdev",
+      "title": "Cloud Console Release Notes Insurer Developer",
+      "url": "cloud/gcc-guide/insurer-developer/latest/topics/release-notes/c_new-and-changed.html",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "guidewirecloudconsolerootinsurerdev",
+      "title": "Cloud Console Guide",
+      "url": "cloud/gcc-guide/insurer-developer/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "guidewirecloudconsoleguideinsurerdevdraft",
+      "title": "Cloud Console Guide Insurer Developer Draft",
+      "url": "cloud/gcc-guide/insurer-developer/latest/topics/c_provisioning-cloud-console.html",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "guidewirecloudconsolerninsurerdevdraft",
+      "title": "Cloud Console Release Notes Insurer Developer Draft",
+      "url": "cloud/gcc-guide/insurer-developer/latest/topics/release-notes/c_new-and-changed.html",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "guidewirecloudconsolerootinsurerdevdraft",
+      "title": "Cloud Console Guide Draft",
+      "url": "cloud/gcc-guide/insurer-developer/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "guidewirecloudconsolerootgwadmin",
+      "title": "Cloud Console Guide GW Admin",
+      "url": "cloud/gcc-guide/gw-admin/latest",
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"],
+        "release": ["Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["int"],
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "guidewirecloudconsolerootearlyaccess",
+      "title": "Cloud Console Guide Early Access",
+      "url": "cloud/gcc-guide/early-access/latest",
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"],
+        "release": ["Elysian"]
+      },
+      "environments": ["int"],
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "guidewirecloudconsolerootinsurerdeves419",
+      "title": "Cloud Console Guide Insurer Developer es-419",
+      "url": "cloud/es-419/gcc-guide/insurer-developer/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"]
+      },
+      "environments": ["dev"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "guidewirecloudconsolerootinsurerdevrnes419",
+      "title": "Cloud Console Release Notes Insurer Developer es-419",
+      "url": "cloud/es-419/gcc-rn/insurer-developer/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"]
+      },
+      "environments": ["dev"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "guidewirecloudconsolerootinsurerdevitIT",
+      "title": "Cloud Console Guide Insurer Developer it-IT",
+      "url": "cloud/it-IT/gcc-guide/insurer-developer/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"]
+      },
+      "environments": ["dev"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "guidewirecloudconsolerootinsurerdevrnitIT",
+      "title": "Cloud Console Release Notes Insurer Developer it-IT",
+      "url": "cloud/it-IT/gcc-rn/insurer-developer/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"]
+      },
+      "environments": ["dev"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "guidewirecloudconsolerootinsurerdevptBR",
+      "title": "Cloud Console Guide Insurer Developer pt-BR",
+      "url": "cloud/pt-BR/gcc-guide/insurer-developer/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"]
+      },
+      "environments": ["dev"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "guidewirecloudconsolerootinsurerdevrnptBR",
+      "title": "Cloud Console Release Notes Insurer Developer pt-BR",
+      "url": "cloud/pt-BR/gcc-rn/insurer-developer/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"]
+      },
+      "environments": ["dev"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
