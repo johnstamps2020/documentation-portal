@@ -65,7 +65,7 @@
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
       "internal": false,
@@ -82,7 +82,7 @@
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
       "internal": false,
@@ -92,7 +92,6 @@
       "id": "guidewirecloudconsolerootinsurerdev",
       "title": "Cloud Console Guide",
       "url": "cloud/gcc-guide/insurer-developer/latest",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
@@ -100,6 +99,7 @@
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -116,7 +116,7 @@
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["int"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
       "internal": false,
@@ -133,7 +133,7 @@
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["int"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
       "internal": false,
@@ -143,7 +143,6 @@
       "id": "guidewirecloudconsolerootinsurerdevdraft",
       "title": "Cloud Console Guide Draft",
       "url": "cloud/gcc-guide/insurer-developer/latest",
-      "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
@@ -151,6 +150,7 @@
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["int"],
+      "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": false,
