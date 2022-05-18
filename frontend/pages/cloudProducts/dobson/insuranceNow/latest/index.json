@@ -57,7 +57,7 @@
           "id": "in20212xappreaderintegdraft"
         },
         {
-          "label": "Business Intelligence Integration (Internal)",
+          "label": "Business Intelligence Integration",
           "id": "in20212xbiintegdraft"
         },
         {
@@ -83,15 +83,15 @@
           "id": "in20212xconfigdraft"
         },
         {
-          "label": "Common Functionality Configuration Reference (Internal)",
+          "label": "Common Functionality Configuration Reference",
           "id": "in20212xcommonconfigdraft"
         },
         {
-          "label": "Consumer Sales Portal Configuration (Internal)",
+          "label": "Consumer Sales Portal Configuration",
           "id": "in20212xcsalespconfigdraft"
         },
         {
-          "label": "Consumer Service Portal Configuration (Internal)",
+          "label": "Consumer Service Portal Configuration",
           "id": "in20212xcservicepconfigdraft"
         },
         {
@@ -99,7 +99,7 @@
           "id": "in20212xstudiodraft"
         },
         {
-          "label": "Provisioning Portal (Internal)",
+          "label": "Provisioning Portal",
           "id": "in20212xprovportaldraft"
         },
         {
@@ -125,11 +125,11 @@
       "class": "subject installation",
       "items": [
         {
-          "label": "Install Assist (Internal)",
+          "label": "Install Assist",
           "id": "ininstallassistdraft"
         },
         {
-          "label": "Developer Setup (Internal)",
+          "label": "Developer Setup",
           "id": "indevguidejava11draft"
         },
         {
@@ -137,7 +137,7 @@
           "id": "indevguidejava11ext"
         },
         {
-          "label": "Upgrade Tools (Internal)",
+          "label": "Upgrade Tools",
           "id": "inupgradetoolsdraft"
         }
       ]
