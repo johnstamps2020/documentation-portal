@@ -20,6 +20,42 @@
       "earlyAccess": true
     },
     {
+      "id": "apdappguide",
+      "title": "Advanced Product Designer Guide",
+      "url": "cloud/apd/latest/topics/c_intro.html",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["latest"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "apdapprn",
+      "title": "Advanced Product Designer Release Notes",
+      "url": "cloud/apd/latest/topics/release-notes/c_new-and-changed.html",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["latest"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
       "id": "claimsautopilotdraft",
       "title": "Claims Autopilot",
       "url": "cloud/gw-feature-preview/autopilot",
