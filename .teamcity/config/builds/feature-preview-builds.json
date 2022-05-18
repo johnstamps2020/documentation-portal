@@ -4,7 +4,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Draft.ditaval",
-      "root": "AdvancedProductDesigner.ditamap",
+      "root": "AdvancedProductDesigner_Guide_RN.ditamap",
       "srcId": "apdappsrc",
       "docId": "apdapp",
       "indexRedirect": true

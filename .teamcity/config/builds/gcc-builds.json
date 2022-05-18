@@ -1,0 +1,95 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "yarn",
+      "docId": "cloudconsoleapi",
+      "srcId": "cloudconsoleapisrc"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "dbserviceapi",
+      "srcId": "dbserviceapisrc"
+    },
+    {
+      "buildType": "dita",
+      "root": "guidewire_cloud_platform_guide.ditamap",
+      "filter": "assets/insurer-developer.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewirecloudconsolelatestsrc",
+      "docId": "guidewirecloudconsolerootinsurerdev"
+    },
+    {
+      "buildType": "dita",
+      "root": "guidewire_cloud_platform_guide.ditamap",
+      "filter": "assets/insurer-developer.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewirecloudconsolelatestsrc",
+      "docId": "guidewirecloudconsolerootinsurerdevdraft"
+    },
+    {
+      "buildType": "dita",
+      "root": "guidewire_cloud_platform_guide.ditamap",
+      "filter": "assets/gw-admin.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewirecloudconsolelatestsrc",
+      "docId": "guidewirecloudconsolerootgwadmin"
+    },
+    {
+      "buildType": "dita",
+      "root": "guidewire_cloud_platform_guide.ditamap",
+      "filter": "assets/early-access.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewirecloudconsolelatestsrc",
+      "docId": "guidewirecloudconsolerootearlyaccess"
+    },
+    {
+      "buildType": "dita",
+      "root": "gcc.ditamap",
+      "filter": "assets/insurer-developer.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewirecloudconsolelatestes419src",
+      "docId": "guidewirecloudconsolerootinsurerdeves419"
+    },
+    {
+      "buildType": "dita",
+      "root": "gcc_release_notes.ditamap",
+      "filter": "assets/insurer-developer.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewirecloudconsolelatestes419src",
+      "docId": "guidewirecloudconsolerootinsurerdevrnes419"
+    },
+    {
+      "buildType": "dita",
+      "root": "gcc.ditamap",
+      "filter": "assets/insurer-developer.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewirecloudconsolelatestitITsrc",
+      "docId": "guidewirecloudconsolerootinsurerdevitIT"
+    },
+    {
+      "buildType": "dita",
+      "root": "gcc_release_notes.ditamap",
+      "filter": "assets/insurer-developer.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewirecloudconsolelatestitITsrc",
+      "docId": "guidewirecloudconsolerootinsurerdevrnitIT"
+    },
+    {
+      "buildType": "dita",
+      "root": "gcc.ditamap",
+      "filter": "assets/insurer-developer.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewirecloudconsolelatestptBRsrc",
+      "docId": "guidewirecloudconsolerootinsurerdevptBR"
+    },
+    {
+      "buildType": "dita",
+      "root": "gcc_release_notes.ditamap",
+      "filter": "assets/insurer-developer.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewirecloudconsolelatestptBRsrc",
+      "docId": "guidewirecloudconsolerootinsurerdevrnptBR"
+    }
+  ]
+}

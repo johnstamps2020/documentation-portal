@@ -107,8 +107,12 @@
       "class": "subject development",
       "items": [
         {
+          "label": "APD App Release Notes",
+          "id": "apdapprn"
+        },
+        {
           "label": "APD App Guide",
-          "id": "apdapp"
+          "id": "apdappguide"
         },
         {
           "label": "APD API Reference",
