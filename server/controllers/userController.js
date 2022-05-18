@@ -23,7 +23,7 @@ function getUserName(user) {
     return user.email.split('@')[0];
   }
 
-  return 'Authenticated User';
+  return 'Unnamed User';
 }
 
 function getUserInfo(req) {
@@ -46,7 +46,7 @@ function getUserInfo(req) {
     const { locale, email } = user;
     userInfo.hasGuidewireEmail = belongsToGuidewire(email);
     userInfo.name = getUserName(user);
-    userInfo.preferred_username = email.toLowerCase() || 'no email';
+    userInfo.preferred_username = email?.toLowerCase() || 'no email';
     userInfo.locale = locale;
 
     return userInfo;
