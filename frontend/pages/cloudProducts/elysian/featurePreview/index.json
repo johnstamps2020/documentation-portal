@@ -5,83 +5,41 @@
   "class": "twoColumns featurePreview",
   "items": [
     {
-      "label": "Release notes",
+      "label": "Rules",
       "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Guidewire Rules Release Notes",
+          "id": "gwrulesrn"
+        },
+        {
+          "label": "Guidewire Rules",
+          "id": "gwrules"
+        }
+      ]
+    },
+    {
+      "label": "Submission Intake",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Submission Intake",
+          "id": "submissionintake"
+        },
+        {
+          "label": "Submission Intake Configuration",
+          "id": "submissionintakeconfig"
+        }
+      ]
+    },
+    {
+      "label": "Integration Framework",
+      "class": "subject development",
       "items": [
         {
           "label": "App Events Release Notes",
           "id": "appeventsrn"
         },
-        {
-          "label": "Guidewire Rules Release Notes",
-          "id": "gwrulesrn"
-        }
-      ]
-    },
-    {
-      "label": "Features and functionality",
-      "class": "subject featuresAndFunctionality",
-      "items": [
-        {
-          "label": "Claims Autopilot",
-          "id": "claimsautopilotdraft"
-        },
-        {
-          "label": "Cloud Rating",
-          "id": "cloudratingdraft"
-        },
-        {
-          "label": "Data Studio",
-          "id": "datastudiodraft"
-        },
-        {
-          "label": "Data Studio",
-          "id": "datastudiorelease"
-        },
-        {
-          "label": "Cloud Console Root Doc Early Access",
-          "id": "guidewirecloudconsolerootearlyaccess"
-        },
-        {
-          "label": "Submission Intake",
-          "id": "submissionintake"
-        }
-      ]
-    },
-    {
-      "label": "Configuration",
-      "class": "subject configuration",
-      "items": [
-        {
-          "label": "Advanced Product Designer App",
-          "id": "apdapp"
-        },
-        {
-          "label": "Experience Manager",
-          "id": "experiencemgrdraft"
-        },
-        {
-          "label": "Guidewire Rules",
-          "id": "gwrules"
-        },
-        {
-          "label": "String Manager",
-          "id": "stringmanagerpcdraft"
-        },
-        {
-          "label": "Submission Intake Configuration",
-          "id": "submissionintakeconfig"
-        },
-        {
-          "label": "Workset Manager",
-          "id": "worksetmgr"
-        }
-      ]
-    },
-    {
-      "label": "Integration",
-      "class": "subject integration",
-      "items": [
         {
           "label": "ClaimCenter App Events for Developers",
           "id": "ccappeventsdev"
@@ -89,12 +47,16 @@
         {
           "label": "PolicyCenter App Events for Developers",
           "id": "pcappeventsdev"
+        },
+        {
+          "label": "Webhooks API Reference",
+          "id": "webhooksapinext"
         }
       ]
     },
     {
-      "label": "Development",
-      "class": "subject development",
+      "label": "Testing",
+      "class": "subject bestPractices",
       "items": [
         {
           "label": "Load and Performance Testing",
@@ -103,14 +65,82 @@
         {
           "label": "User Interface Accessibility Testing",
           "id": "is202205access"
+        }
+      ]
+    },
+    {
+      "label": "Claims Autopilot",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Claims Autopilot",
+          "id": "claimsautopilotdraft"
+        }
+      ]
+    },
+    {
+      "label": "Rating",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Cloud Rating",
+          "id": "cloudratingdraft"
+        }
+      ]
+    },
+    {
+      "label": "Data",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Data Studio",
+          "id": "datastudiorelease"
+        },
+        {
+          "label": "Data Studio",
+          "id": "datastudiodraft"
+        }
+      ]
+    },
+    {
+      "label": "Advanced Product Designer",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "APD App Guide",
+          "id": "apdapp"
         },
         {
           "label": "APD API Reference",
           "id": "apdmaindoc"
+        }
+      ]
+    },
+    {
+      "label": "Cloud Console",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Cloud Console Root Doc Early Access",
+          "id": "guidewirecloudconsolerootearlyaccess"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Experience Manager",
+          "id": "experiencemgrdraft"
         },
         {
-          "label": "Webhooks API Reference",
-          "id": "webhooksapinext"
+          "label": "String Manager",
+          "id": "stringmanagerpcdraft"
+        },
+        {
+          "label": "Workset Manager",
+          "id": "worksetmgr"
         }
       ]
     }
