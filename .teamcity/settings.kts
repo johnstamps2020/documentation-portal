@@ -1511,54 +1511,12 @@ object Server {
         name = "Test doc site server app"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-        params {
-            text("env.TEST_ENVIRONMENT_DOCKER_NETWORK", "host", allowEmpty = false)
-        }
-
         vcs {
             root(GwVcsRoots.DocumentationPortalGitVcsRoot)
             cleanCheckout = true
         }
 
         steps {
-            step(GwBuildSteps.ComposeElasticsearchAndHttpServerStep)
-
-            dockerCommand {
-                name = "Build the doc crawler Docker image locally"
-                commandType = build {
-                    source = file {
-                        path = "apps/doc_crawler/Dockerfile"
-                    }
-                    namesAndTags = "doc-crawler:local"
-                    commandArgs = "--pull"
-                }
-                param("dockerImage.platform", "linux")
-            }
-
-            script {
-                name = "Crawl the document and update the local index"
-                id = Helpers.createIdStringFromName(this.name)
-                scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                    
-                    export APP_BASE_URL="http://localhost/"
-                    export INDEX_NAME="gw-docs"
-                    export ELASTICSEARCH_URLS="http://localhost:9200"
-                    export DOC_S3_URL="http://localhost/"
-                    export CONFIG_FILE="%teamcity.build.workingDir%/apps/doc_crawler/tests/test_doc_crawler/resources/input/config/gw-docs.json"
-    
-                    cat > scrapy.cfg <<- EOM
-                    [settings]
-                    default = doc_crawler.settings
-                    EOM
-    
-                    doc_crawler
-                """.trimIndent()
-                dockerImage = "doc-crawler:local"
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            }
-
             script {
                 name = "Test the doc site server"
                 id = Helpers.createIdStringFromName(this.name)
@@ -1566,9 +1524,30 @@ object Server {
                 scriptContent = """
                     #!/bin/sh
                     set -e
-                    export APP_BASE_URL="http://localhost:8081"
-                    export ELASTIC_SEARCH_URL="http://localhost:9200"
-                    export DOC_S3_URL="http://localhost/"
+                    export  OKTA_DOMAIN=https://guidewire-hub.oktapreview.com
+                    export  OKTA_CLIENT_ID=mock
+                    export  OKTA_CLIENT_SECRET=mock
+                    export  OKTA_IDP=mock
+                    export  OKTA_ACCESS_TOKEN_ISSUER=https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7
+                    export  OKTA_ACCESS_TOKEN_SCOPES=NODE_Hawaii_Docs_Web.read
+                    export  OKTA_ACCESS_TOKEN_AUDIENCE=Guidewire
+                    export  APP_BASE_URL=http://localhost:8081
+                    export  SESSION_KEY=mock
+                    export  DOC_S3_URL=https://ditaot.internal.int.ccs.guidewire.net
+                    export  PORTAL2_S3_URL=https://portal2.internal.us-east-2.service.guidewire.net
+                    export  ELASTIC_SEARCH_URL=https://docsearch-doctools.int.ccs.guidewire.net
+                    export  DEPLOY_ENV=int
+                    export  LOCAL_CONFIG=yes
+                    export  ENABLE_AUTH=no
+                    export  PRETEND_TO_BE_EXTERNAL=no
+                    export  ALLOW_PUBLIC_DOCS=yes
+                    export  LOCALHOST_SESSION_SETTINGS=yes
+                    export  PARTNERS_LOGIN_URL=https://qaint-guidewire.cs172.force.com/partners/idp/endpoint/HttpRedirect
+                    export  PARTNERS_LOGIN_CERT=mock
+                    export  PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/partners-login
+                    export  CUSTOMERS_LOGIN_URL=https://qaint-guidewire.cs172.force.com/customers/idp/endpoint/HttpRedirect
+                    export  CUSTOMERS_LOGIN_CERT=mock
+                    export  CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/customers-login
                     
                     npm install
                     npm test
