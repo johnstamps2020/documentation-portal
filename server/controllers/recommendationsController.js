@@ -20,10 +20,10 @@ async function showOnlyPublicRecommendations(reqObj, resObj, recommendations) {
     }
     return publicRecommendations;
   } catch (err) {
-        winstonLogger.error(
-          `Problem determining public recommendations
-              ERROR: ${err.message}`
-        );
+    winstonLogger.error(
+      `Problem determining public recommendations
+              ERROR: ${JSON.stringify(err)}`
+    );
   }
 }
 
@@ -92,7 +92,7 @@ async function getTopicRecommendations(topicId, reqObj, resObj) {
   } catch (err) {
     winstonLogger.error(
       `Cannot get recommendations for topic ${topicId}
-          ERROR: ${err.message}`
+          ERROR: ${JSON.stringify(err)}`
     );
     return {
       body: err.message,

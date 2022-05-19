@@ -18,7 +18,9 @@ router.get('/', async function(req, res, next) {
     res.send(config);
   } catch (err) {
     winstonLogger.error(
-      `[SAFE CONFIG] Problem sending config from ${req.url}: ${err.message}`
+      `[SAFE CONFIG] Problem sending config from ${req.url}: ${JSON.stringify(
+        err
+      )}`
     );
     next(err);
   }
@@ -31,7 +33,7 @@ router.get('/breadcrumbs', async function(req, res, next) {
     res.send(rootBreadcrumb);
   } catch (err) {
     winstonLogger.error(
-      `[SAFE CONFIG] Problem sending breadcrumbs: ${err.message}`
+      `[SAFE CONFIG] Problem sending breadcrumbs: ${JSON.stringify(err)}`
     );
     next(err);
   }
@@ -44,7 +46,7 @@ router.get('/versionSelectors', async function(req, res, next) {
     res.send(allVersions);
   } catch (err) {
     winstonLogger.error(`[SAFE CONFIG] Problem sending version selectors
-      ERROR: ${err.message}
+      ERROR: ${JSON.stringify(err)}
       REQ: ${JSON.stringify(req)}`);
     next(err);
   }
@@ -69,7 +71,7 @@ router.get('/versionSelectors/component', async function(req, res, next) {
     }
   } catch (err) {
     winstonLogger.error(`[SAFE CONFIG] Problem sending the version selector COMPONENT
-      ERROR: ${err.message}
+      ERROR: ${JSON.stringify(err)}
       REQ: ${JSON.stringify(req)}`);
     next(err);
   }
@@ -82,7 +84,7 @@ router.get('/docMetadata/:docId', async function(req, res, next) {
     res.send(docMetadata);
   } catch (err) {
     winstonLogger.error(`[SAFE CONFIG]: Problem sending doc metadata
-      ERROR: ${err.message}
+      ERROR: ${JSON.stringify(err)}
       DOC ID: ${req.params?.docId}`);
     next(err);
   }
@@ -103,7 +105,7 @@ router.get('/docId', async function(req, res, next) {
     res.send(docId);
   } catch (err) {
     winstonLogger.error(`[SAFE CONFIG] Problem sending doc ID
-    ERROR: ${err.message}
+    ERROR: ${JSON.stringify(err)}
     QUERY: ${req.query}
     REQ: ${JSON.stringify(req)}`);
     next(err);
@@ -123,7 +125,7 @@ router.get('/refreshConfig', async function(req, res, next) {
     }
   } catch (err) {
     winstonLogger.error(
-      `[SAFE CONFIG] Could not update config: ${err.message}
+      `[SAFE CONFIG] Could not update config: ${JSON.stringify(err)}
       REQ: ${JSON.stringify(req)}`
     );
     next(err);

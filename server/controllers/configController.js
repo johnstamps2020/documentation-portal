@@ -79,7 +79,7 @@ async function loadConfig() {
   } catch (err) {
     winstonLogger.error(
       `Error getting config!
-        ERROR: ${err.message}`
+        ERROR: ${JSON.stringify(err)}`
     );
     return { docs: [] };
   }
@@ -92,7 +92,7 @@ async function expensiveLoadConfig() {
   } catch (err) {
     winstonLogger.error(
       `Problem during expensive load config 
-              ERROR: ${err.message}`
+              ERROR: ${JSON.stringify(err)}`
     );
   }
 }
@@ -116,7 +116,7 @@ async function getConfig(reqObj, resObj) {
   } catch (err) {
     winstonLogger.error(
       `There was a problem with the getConfig() function
-        ERROR: ${err.message}`
+        ERROR: ${JSON.stringify(err)}`
     );
     return { docs: [] };
   }
@@ -140,7 +140,7 @@ async function isPublicDoc(url, reqObj) {
     winstonLogger.error(
       `Problem getting doc by url
               url: ${url}, 
-              ERROR: ${err.message}`
+              ERROR: ${JSON.stringify(err)}`
     );
   }
 }
@@ -153,7 +153,7 @@ async function isInternalDoc(url, reqObj) {
     winstonLogger.error(
       `Problem determining if doc is internal
               url: ${url}, 
-              ERROR: ${err.message}`
+              ERROR: ${JSON.stringify(err)}`
     );
   }
 }
@@ -185,7 +185,7 @@ async function getRootBreadcrumb(pagePathname) {
   } catch (err) {
     winstonLogger.error(
       `Something wrong when trying to get the root breadcrumb
-          ERROR: ${err.message}`
+          ERROR: ${JSON.stringify(err)}`
     );
     return { rootPage: {} };
   }
@@ -225,7 +225,7 @@ async function getVersionSelector(docId, reqObj, resObj) {
   } catch (err) {
     winstonLogger.error(
       `Holy Moly! Cannot get version selector!
-          ERROR: ${err.message}`
+          ERROR: ${JSON.stringify(err)}`
     );
     return { matchingVersionSelector: {} };
   }
@@ -252,7 +252,7 @@ async function getDocumentMetadata(docId, reqObj, resObj) {
     winstonLogger.error(
       `Problem getting document metadata
               docId: ${docId}, 
-              ERROR: ${err.message}`
+              ERROR: ${JSON.stringify(err)}`
     );
   }
 }
@@ -291,7 +291,7 @@ async function getDocId(
       `Problem getting document id
               url: ${url}, 
               title: ${title},
-              ERROR: ${err.message}`
+              ERROR: ${JSON.stringify(err)}`
     );
   }
 }

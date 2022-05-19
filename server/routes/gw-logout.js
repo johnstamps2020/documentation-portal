@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
     });
   } catch (err) {
     winstonLogger.error(
-      `Problem logging out: ${err.message}; REQ: ${JSON.stringify(req)}`
+      `Problem logging out: ${JSON.stringify(err)}; REQ: ${JSON.stringify(req)}`
     );
     next(err);
   }

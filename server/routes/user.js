@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
     res.send(userInfo);
   } catch (err) {
     winstonLogger.error(`Problem sending user info
-    ERROR: ${err.message}
+    ERROR: ${JSON.stringify(err)}
     REQ: ${JSON.stringify(req)}`);
     next(err);
   }

@@ -11,7 +11,7 @@ router.post('/', async (req, res, next) => {
     res.send(result);
   } catch (err) {
     winstonLogger.error(`Problem posting to Jira
-    ERROR: ${err.message}
+    ERROR: ${JSON.stringify(err)}
     REQ: ${JSON.stringify(req)}`);
     next(err);
   }

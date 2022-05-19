@@ -43,7 +43,7 @@ function getFiltersFromUrl(fieldMappings, queryParams) {
       `Problem getting filters from URL
           FIELD MAPPINGS: ${fieldMappings}
           QUERY PARAMS: ${queryParams}
-          ERROR: ${err.message}`
+          ERROR: ${JSON.stringify(err)}`
     );
   }
 }
@@ -82,7 +82,7 @@ async function getAllowedFilterValues(fieldName, query) {
       `Problem getting allowed filter values for 
           fieldName: ${fieldName}, 
           query: ${query}, 
-          ERROR: ${err.message}`
+          ERROR: ${JSON.stringify(err)}`
     );
   }
 }
@@ -142,7 +142,7 @@ async function getFilters(query, fieldMappings, urlFilters) {
           query: ${query},    
           fieldMappings: ${fieldMappings},  
           urlFilters: ${urlFilters},
-          ERROR: ${err.message}`
+          ERROR: ${JSON.stringify(err)}`
     );
   }
 }
@@ -230,7 +230,7 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
           startIndex: ${startIndex},  
           resultsPerPage: ${resultsPerPage},
           urlFilters: ${urlFilters},
-          ERROR: ${err.message}`
+          ERROR: ${JSON.stringify(err)}`
     );
   }
 }
@@ -482,7 +482,7 @@ async function searchController(req, res, next) {
     winstonLogger.error(
       `Problem performing search
           QUERY: ${req.query}
-          ERROR: ${err.message}`
+          ERROR: ${JSON.stringify(err)}`
     );
     next(err);
   }

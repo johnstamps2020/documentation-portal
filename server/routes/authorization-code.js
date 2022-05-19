@@ -67,7 +67,7 @@ Issuer.discover(process.env.OKTA_DOMAIN)
     );
   })
   .catch(err => {
-    winstonLogger.error(`Error in Issuer.discover: ${err.message}`);
+    winstonLogger.error(`Error in Issuer.discover: ${JSON.stringify(err)}`);
   });
 
 module.exports = router;

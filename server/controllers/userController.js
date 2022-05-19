@@ -8,7 +8,7 @@ function belongsToGuidewire(email) {
     winstonLogger.error(
       `Problem checking if user belongs to Guidewire
           EMAIL: ${email}
-          ERROR: ${err.message}`
+          ERROR: ${JSON.stringify(err)}`
     );
     return false;
   }
@@ -53,7 +53,7 @@ function getUserInfo(req) {
   } catch (err) {
     winstonLogger.error(
       `Problem getting user info
-          ERROR: ${err.message}`
+          ERROR: ${JSON.stringify(err)}`
     );
   }
 }
