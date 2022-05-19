@@ -1,0 +1,85 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "ipacloud10src",
+      "docId": "ipacloud10rn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "configurationguide.ditamap",
+      "srcId": "ipacloud10src",
+      "docId": "ipacloud10config",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "",
+      "srcId": "ipacloud10src",
+      "docId": "ipacloud10apmp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "",
+      "srcId": "ipacloud10src",
+      "docId": "ipacloud10apmc",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "",
+      "srcId": "ipacloud10src",
+      "docId": "ipacloud10gstc",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "address_lookup_applicationguide.ditamap",
+      "srcId": "ipacloud10src",
+      "docId": "ipacloud10al",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "vehicle_lookup_applicationguide.ditamap",
+      "srcId": "ipacloud10src",
+      "docId": "ipacloud10vl",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "ApplicationGuide.ditamap",
+      "srcId": "ipadraftsrc",
+      "docId": "ipaappdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "ipadraftsrc",
+      "docId": "ipainstalldraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "ipadraftsrc",
+      "docId": "iparndraft",
+      "indexRedirect": true
+    }
+  ]
+}

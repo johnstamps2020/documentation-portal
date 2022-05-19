@@ -7,6 +7,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://stash.guidewire.com/docsources/mid-ipa.git",
       "branch": "main"
+    },
+    {
+      "id": "ipacloud10src",
+      "title": "InsuranceSuite Package for Australia for Guidewire Cloud 1.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://stash.guidewire.com/docsources/mid-ipa.git",
+      "branch": "IPA-1-0-FeatureWork"
     }
   ]
 }
