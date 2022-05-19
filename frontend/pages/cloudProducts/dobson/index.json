@@ -281,6 +281,11 @@
         {
           "label": "London Market",
           "page": "../../globalSolutions/iplm/3.2"
+        },
+        {
+          "label": "Australia",
+          "page": "../../globalSolutions/ipa/1.0",
+          "env": ["int", "staging"]
         }
       ]
     }
