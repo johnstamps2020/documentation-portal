@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
   } catch (err) {
     winstonLogger.error(
       `Problem rendering the 404 page, if you can believe that. 
-        ERROR: ${err.message}
+        ERROR: ${JSON.stringify(err)}
         REQUEST: ${JSON.stringify(req)}`
     );
     next(err);

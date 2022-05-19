@@ -24,7 +24,7 @@ async function createIndex() {
   } catch (err) {
     winstonLogger.error(
       `Cannot create an LRS index!
-          ERROR: ${err.message}`
+          ERROR: ${JSON.stringify(err)}`
     );
     return formalizeError(err);
   }
@@ -61,7 +61,7 @@ async function createTestRecords() {
   } catch (err) {
     winstonLogger.error(
       `Cannot create LRS test records
-          ERROR: ${err.message}`
+          ERROR: ${JSON.stringify(err)}`
     );
     return formalizeError(err);
   }

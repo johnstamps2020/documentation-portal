@@ -108,7 +108,7 @@ function getPendoInitializeScript(userInfo) {
   } catch (err) {
     winstonLogger.error(
       `Problem getting pendo initialize script:
-          ERROR: ${err.message}`
+          ERROR: ${JSON.stringify(err)}`
     );
   }
 }

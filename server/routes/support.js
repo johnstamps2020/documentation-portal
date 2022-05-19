@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
     res.render('support');
   } catch (err) {
     winstonLogger.error(`Problem rendering the support page
-        ERROR: ${err.message}
+        ERROR: ${JSON.stringify(err)}
         REQ: ${JSON.stringify(req)}`);
     next(err);
   }

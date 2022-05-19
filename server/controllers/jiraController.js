@@ -232,7 +232,7 @@ function getParas(items) {
     winstonLogger.error(
       `Problem getting Jira parameters
           ITEMS: ${JSON.stringify(items)}
-          ERROR: ${err.message}`
+          ERROR: ${JSON.stringify(err)}`
     );
   }
 }
@@ -302,7 +302,7 @@ async function sendJiraRequest(requestBody) {
     winstonLogger.error(
       `Problem sending JIRA request
           BODY: ${JSON.stringify(requestBody)}
-          ERROR: ${err.message}`
+          ERROR: ${JSON.stringify(err)}`
     );
   }
 }

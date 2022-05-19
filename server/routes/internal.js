@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
     res.render('internal', { pageInfo });
   } catch (err) {
     winstonLogger.error(`Problem rendering an internal route
-    ERROR: ${err.message}
+    ERROR: ${JSON.stringify(err)}
     REQ: ${JSON.stringify(req)}`);
     next(err);
   }

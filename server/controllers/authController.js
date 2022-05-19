@@ -19,7 +19,7 @@ function getTokenFromRequestHeader(req) {
   } catch (err) {
     winstonLogger.error(
       `Problem getting token from request header 
-              ERROR: ${err.message}`
+              ERROR: ${JSON.stringify(err)}`
     );
   }
 }
@@ -67,7 +67,7 @@ function createOktaJwtVerifier(token, availableIssuers) {
   } catch (err) {
     winstonLogger.error(
       `Problem creating OKTA JWT verifier 
-              ERROR: ${err.message}`
+              ERROR: ${JSON.stringify(err)}`
     );
   }
 }
@@ -82,7 +82,7 @@ async function checkTokenInOkta(token, jwtVerifierInstance) {
   } catch (err) {
     throw new Error(
       `${err.name}: ${err.userMessage}
-          ERROR: ${err.message}`
+          ERROR: ${JSON.stringify(err)}`
     );
   }
 }
@@ -105,7 +105,7 @@ async function verifyToken(req) {
       return null;
     }
   } catch (err) {
-    throw new Error(err.message);
+    throw new Error(JSON.stringify(err));
   }
 }
 
@@ -116,7 +116,7 @@ async function isLoggedInOrHasValidToken(req) {
       ? !!(req.isAuthenticated() || (await verifyToken(req)))
       : !!req.isAuthenticated();
   } catch (err) {
-    winstonLogger.error(`PROBLEM VERIFYING TOKEN: ${err.message}`);
+    winstonLogger.error(`PROBLEM VERIFYING TOKEN: ${JSON.stringify(err)}`);
     return false;
   }
 }
@@ -152,7 +152,7 @@ const authGateway = async (req, res, next) => {
       } catch (err) {
         winstonLogger.error(
           `Problem redirecting to login page 
-              ERROR: ${err.message}`
+              ERROR: ${JSON.stringify(err)}`
         );
       }
     }
@@ -174,7 +174,7 @@ const authGateway = async (req, res, next) => {
       } catch (err) {
         winstonLogger.error(
           `Problem opening requested page 
-              ERROR: ${err.message}`
+              ERROR: ${JSON.stringify(err)}`
         );
       }
     }
@@ -185,7 +185,7 @@ const authGateway = async (req, res, next) => {
       } catch (err) {
         winstonLogger.error(
           `Problem opening public page 
-              ERROR: ${err.message}`
+              ERROR: ${JSON.stringify(err)}`
         );
       }
     }
@@ -201,7 +201,7 @@ const authGateway = async (req, res, next) => {
       } catch (err) {
         winstonLogger.error(
           `Problem checking if route is open 
-              ERROR: ${err.message}`
+              ERROR: ${JSON.stringify(err)}`
         );
       }
     }
@@ -226,7 +226,7 @@ const authGateway = async (req, res, next) => {
       } catch (err) {
         winstonLogger.error(
           `Problem checking if route is internal 
-              ERROR: ${err.message}`
+              ERROR: ${JSON.stringify(err)}`
         );
       }
     }

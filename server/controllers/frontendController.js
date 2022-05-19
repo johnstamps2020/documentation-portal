@@ -90,7 +90,7 @@ async function getPage(req, res, next) {
   } catch (err) {
     winstonLogger.error(
       `Problem getting path for "${req.path}"
-          ERROR: ${err.message}`
+          ERROR: ${JSON.stringify(err)}`
     );
   }
 }
@@ -119,7 +119,7 @@ function getTranslatedPages() {
   } catch (err) {
     winstonLogger.error(
       `Cannot get translated pages
-          ERROR: ${err.message}`
+          ERROR: ${JSON.stringify(err)}`
     );
   }
 }

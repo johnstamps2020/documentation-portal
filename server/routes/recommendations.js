@@ -12,7 +12,7 @@ router.get('/', async function(req, res, next) {
     res.status(result.status).send(result.body);
   } catch (err) {
     winstonLogger.error(`Problem getting recommendations
-    ERROR: ${err.message}
+    ERROR: ${JSON.stringify(err)}
     REQ: ${JSON.stringify(req)}`);
     next(err);
   }

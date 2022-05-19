@@ -21,7 +21,7 @@ function addCommonDataToSessionLocals(req, res) {
   } catch (err) {
     winstonLogger.error(
       `Problem adding commons to session locals
-          ERROR: ${err.message}`
+          ERROR: ${JSON.stringify(err)}`
     );
   }
 }
