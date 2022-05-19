@@ -38,29 +38,11 @@
       "earlyAccess": true
     },
     {
-      "id": "ccappeventsdev",
-      "title": "ClaimCenter App Events for Developers",
-      "url": "cloud/cc/202205/ccappevents",
+      "id": "appeventsdev",
+      "title": "App Events for Developers",
+      "url": "cloud/is/202205/appevents",
       "metadata": {
-        "product": ["ClaimCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Integration"]
-      },
-      "environments": ["int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
-      "id": "pcappeventsdev",
-      "title": "PolicyCenter App Events for Developers",
-      "url": "cloud/pc/202205/pcappevents",
-      "metadata": {
-        "product": ["PolicyCenter"],
+        "product": ["PolicyCenter", "ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
