@@ -41,12 +41,8 @@
           "id": "appeventsrn"
         },
         {
-          "label": "ClaimCenter App Events for Developers",
-          "id": "ccappeventsdev"
-        },
-        {
-          "label": "PolicyCenter App Events for Developers",
-          "id": "pcappeventsdev"
+          "label": "App Events for Developers",
+          "id": "appeventsdev"
         },
         {
           "label": "Webhooks API Reference",
