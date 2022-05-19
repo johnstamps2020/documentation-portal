@@ -10,7 +10,7 @@ function getVirtualDocument(htmlString) {
   return document;
 }
 
-async function getVirtualElementByQuerySelector(url, querySelector) {
+async function querySelectorFromEndpoint(url, querySelector) {
   const response = await appRequest.get(url);
   const htmlString = await response.text;
   const document = getVirtualDocument(htmlString);
@@ -19,6 +19,8 @@ async function getVirtualElementByQuerySelector(url, querySelector) {
 }
 
 module.exports = {
+  app,
+  appRequest,
   getVirtualDocument,
-  getVirtualElementByQuerySelector,
+  querySelectorFromEndpoint,
 };
