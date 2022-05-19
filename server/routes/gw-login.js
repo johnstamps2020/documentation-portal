@@ -1,8 +1,16 @@
 const express = require('express');
+const { winstonLogger } = require('../controllers/loggerController');
 const router = express.Router();
 
-router.get('/', function(req, res) {
-  res.render('gw-login', { showLoginButton: false });
+router.get('/', function(req, res, next) {
+  try {
+    res.render('gw-login', { showLoginButton: false });
+  } catch (err) {
+    winstonLogger.error(`Problem rendering the login page (gw-login):
+    ERROR: ${err.message}
+    REQ: ${JSON.stringify(req)}`);
+    next(err);
+  }
 });
 
 module.exports = router;
