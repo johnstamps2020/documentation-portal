@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('static-okta-poc:server');
 var http = require('http');
+const { winstonLogger } = require('../controllers/loggerController');
 
 /**
  * Get port from environment and store in Express.
@@ -55,7 +56,11 @@ function normalizePort(val) {
 
 function onError(error) {
   if (error.syscall !== 'listen') {
-    throw error;
+    winstonLogger(
+      `Error in top-level application runner (/bin/www): ${
+        error.message
+      }: ${JSON.stringify(error)}`
+    );
   }
 
   var bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;

@@ -186,6 +186,9 @@ app.use(s3Proxy);
 // handles unauthorized errors
 app.use(expressWinstonErrorLogger);
 app.use((err, req, res, next) => {
+  winstonLogger.error(
+    `General error passed to top-level handler in app.js: ${err.message}`
+  );
   if (err.httpStatusCode === 304) {
     res.status(304).redirect('/unauthorized');
   }

@@ -1,4 +1,5 @@
 const express = require('express');
+const { winstonLogger } = require('../controllers/loggerController');
 const {
   getAllRecords,
   getRecordsByObjectId,
@@ -18,6 +19,7 @@ router.get('/', function(req, res, next) {
       status: 200,
     });
   } catch (err) {
+    winstonLogger.error(`Problem getting info from the LRS: ${err.message}`);
     next(err);
   }
 });
@@ -40,6 +42,7 @@ router.get('/records', async function(req, res, next) {
       res.send(allRecords.body.hits.hits.map(h => h._source));
     }
   } catch (err) {
+    winstonLogger.error(`Problem getting records form the LRS: ${err.message}`);
     next(err);
   }
 });
@@ -50,6 +53,7 @@ router.post('/records/add', async function(req, res, next) {
     const result = await addRecord(record);
     res.send(result);
   } catch (err) {
+    winstonLogger.error(`Problem posting to the LRS: ${err.message}`);
     next(err);
   }
 });
@@ -62,6 +66,7 @@ router.delete('/records/delete', async function(req, res, next) {
       res.send(result);
     }
   } catch (err) {
+    winstonLogger.error(`Problem deleting a record in the LRS: ${err.message}`);
     next(err);
   }
 });

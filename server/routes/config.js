@@ -12,62 +12,105 @@ const ejs = require('ejs');
 const fs = require('fs');
 const { winstonLogger } = require('../controllers/loggerController');
 
-router.get('/', async function(req, res) {
-  const config = await getConfig(req, res);
-  res.send(config);
-});
-
-router.get('/breadcrumbs', async function(req, res) {
-  const { pagePathname } = req.query;
-  const rootBreadcrumb = await getRootBreadcrumb(pagePathname);
-  res.send(rootBreadcrumb);
-});
-
-router.get('/versionSelectors', async function(req, res) {
-  const { docId } = req.query;
-  const allVersions = await getVersionSelector(docId, req, res);
-  res.send(allVersions);
-});
-
-router.get('/versionSelectors/component', async function(req, res) {
-  const { docId } = req.query;
-  const selectorObject = await getVersionSelector(docId, req, res);
-  const allVersions = selectorObject.matchingVersionSelector?.allVersions;
-  if (!allVersions || allVersions.length === 0) {
-    res.send(undefined);
-  } else {
-    const versionSelectorTemplate = fs.readFileSync(
-      `${__dirname}/../views/parts/version-selector.ejs`,
-      { encoding: 'utf-8' }
+router.get('/', async function(req, res, next) {
+  try {
+    const config = await getConfig(req, res);
+    res.send(config);
+  } catch (err) {
+    winstonLogger.error(
+      `[SAFE CONFIG] Problem sending config from ${req.url}: ${err.message}`
     );
-    const versionSelectorComponent = ejs.render(versionSelectorTemplate, {
-      allVersions: allVersions,
-    });
-    res.send(versionSelectorComponent);
+    next(err);
   }
 });
 
-router.get('/docMetadata/:docId', async function(req, res) {
-  const { docId } = req.params;
-  const docMetadata = await getDocumentMetadata(docId, req, res);
-  res.send(docMetadata);
+router.get('/breadcrumbs', async function(req, res, next) {
+  try {
+    const { pagePathname } = req.query;
+    const rootBreadcrumb = await getRootBreadcrumb(pagePathname);
+    res.send(rootBreadcrumb);
+  } catch (err) {
+    winstonLogger.error(
+      `[SAFE CONFIG] Problem sending breadcrumbs: ${err.message}`
+    );
+    next(err);
+  }
 });
 
-router.get('/docId', async function(req, res) {
-  const { platforms, products, versions, title, url } = req.query;
-  const docId = await getDocId(
-    products,
-    platforms,
-    versions,
-    title,
-    url,
-    req,
-    res
-  );
-  res.send(docId);
+router.get('/versionSelectors', async function(req, res, next) {
+  try {
+    const { docId } = req.query;
+    const allVersions = await getVersionSelector(docId, req, res);
+    res.send(allVersions);
+  } catch (err) {
+    winstonLogger.error(`[SAFE CONFIG] Problem sending version selectors
+      ERROR: ${err.message}
+      REQ: ${JSON.stringify(req)}`);
+    next(err);
+  }
 });
 
-router.get('/refreshConfig', async function(req, res) {
+router.get('/versionSelectors/component', async function(req, res, next) {
+  try {
+    const { docId } = req.query;
+    const selectorObject = await getVersionSelector(docId, req, res);
+    const allVersions = selectorObject.matchingVersionSelector?.allVersions;
+    if (!allVersions || allVersions.length === 0) {
+      res.send(undefined);
+    } else {
+      const versionSelectorTemplate = fs.readFileSync(
+        `${__dirname}/../views/parts/version-selector.ejs`,
+        { encoding: 'utf-8' }
+      );
+      const versionSelectorComponent = ejs.render(versionSelectorTemplate, {
+        allVersions: allVersions,
+      });
+      res.send(versionSelectorComponent);
+    }
+  } catch (err) {
+    winstonLogger.error(`[SAFE CONFIG] Problem sending the version selector COMPONENT
+      ERROR: ${err.message}
+      REQ: ${JSON.stringify(req)}`);
+    next(err);
+  }
+});
+
+router.get('/docMetadata/:docId', async function(req, res, next) {
+  try {
+    const { docId } = req.params;
+    const docMetadata = await getDocumentMetadata(docId, req, res);
+    res.send(docMetadata);
+  } catch (err) {
+    winstonLogger.error(`[SAFE CONFIG]: Problem sending doc metadata
+      ERROR: ${err.message}
+      DOC ID: ${req.params?.docId}`);
+    next(err);
+  }
+});
+
+router.get('/docId', async function(req, res, next) {
+  try {
+    const { platforms, products, versions, title, url } = req.query;
+    const docId = await getDocId(
+      products,
+      platforms,
+      versions,
+      title,
+      url,
+      req,
+      res
+    );
+    res.send(docId);
+  } catch (err) {
+    winstonLogger.error(`[SAFE CONFIG] Problem sending doc ID
+    ERROR: ${err.message}
+    QUERY: ${req.query}
+    REQ: ${JSON.stringify(req)}`);
+    next(err);
+  }
+});
+
+router.get('/refreshConfig', async function(req, res, next) {
   try {
     const configExists = await expensiveLoadConfig();
     if (configExists) {
@@ -79,7 +122,11 @@ router.get('/refreshConfig', async function(req, res) {
       res.status(500).send({ message: 'Config not updated' });
     }
   } catch (err) {
-    winstonLogger.error(`Could not update config: ${err.message}`);
+    winstonLogger.error(
+      `[SAFE CONFIG] Could not update config: ${err.message}
+      REQ: ${JSON.stringify(req)}`
+    );
+    next(err);
   }
 });
 

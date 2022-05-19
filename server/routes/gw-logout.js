@@ -1,13 +1,21 @@
 const express = require('express');
+const { winstonLogger } = require('../controllers/loggerController');
 const router = express.Router();
 
 router.get('/', function(req, res, next) {
-  req.session.destroy(function(err) {
-    if (err) {
-      next(err);
-    }
-    res.redirect('/');
-  });
+  try {
+    req.session.destroy(function(err) {
+      if (err) {
+        next(err);
+      }
+      res.redirect('/');
+    });
+  } catch (err) {
+    winstonLogger.error(
+      `Problem logging out: ${err.message}; REQ: ${JSON.stringify(req)}`
+    );
+    next(err);
+  }
 });
 
 module.exports = router;
