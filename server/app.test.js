@@ -3,8 +3,10 @@ const { app } = require('./test/helpers');
 
 describe('The server app', () => {
   test('The root route responds to requests', async () => {
-    const response = await request(app).get('/');
-    expect(response.statusCode).toBe(200);
+    setTimeout(() => {
+      const response = await request(app).get('/');
+      expect(response.statusCode).toBe(200);
+    }, 5000)
   });
 
   test('Portal config redirects to unauthorized', async () => {
