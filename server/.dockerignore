@@ -2,7 +2,6 @@
 **
 
 # Allow specific folders
-!bin/
 !controllers/
 !public/
 !routes/
