@@ -2,8 +2,6 @@ const { JSDOM } = require('jsdom');
 const request = require('supertest');
 const app = require('../app');
 
-app.listen();
-
 const appRequest = request(app);
 
 function getVirtualDocument(htmlString) {
