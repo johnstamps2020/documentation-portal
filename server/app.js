@@ -16,7 +16,6 @@ const {
 const favicon = require('serve-favicon');
 const session = require('express-session');
 const httpContext = require('express-http-context');
-const port = process.env.PORT || 8081;
 
 const app = express();
 app.use(expressWinstonLogger);
@@ -199,10 +198,6 @@ app.use((err, req, res, next) => {
   }
   err.status = err.status || 500;
   res.render('error', { err });
-});
-
-app.listen(port, () => {
-  winstonLogger.notice('Running on PORT: ' + port);
 });
 
 module.exports = app;
