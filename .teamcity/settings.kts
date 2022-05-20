@@ -108,6 +108,7 @@ enum class GwDockerImages(val image_url: String) {
     PYTHON_3_9_SLIM_BUSTER("artifactory.guidewire.com/hub-docker-remote/python:3.9-slim-buster"),
     NODE_REMOTE_BASE("artifactory.guidewire.com/hub-docker-remote/node"),
     NODE_14_ALPINE("artifactory.guidewire.com/hub-docker-remote/node:14-alpine"),
+    NODE_16_14_2("artifactory.guidewire.com/hub-docker-remote/node:16.14.2"),
     GENERIC_14_14_0_YARN_CHROME("artifactory.guidewire.com/jutro-docker-dev/generic:14.14.0-yarn-chrome")
 }
 
@@ -1549,10 +1550,10 @@ object Server {
                     export  CUSTOMERS_LOGIN_CERT=mock
                     export  CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/customers-login
                     
-                    npm install
+                    npm ci
                     npm test
                 """.trimIndent()
-                dockerImage = GwDockerImages.NODE_14_ALPINE.image_url
+                dockerImage = GwDockerImages.NODE_16_14_2.image_url
                 dockerPull = true
             }
         }
