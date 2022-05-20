@@ -41,7 +41,7 @@ spec:
         - name: docportal
           image: artifactory.guidewire.com/doctools-docker-dev/docportal:${TAG_VERSION}
           command: [ \"/bin/sh\", \"-c\" ]
-          args: [ \"until wget -qO- http://localhost:15000/server_info | grep '\\\"state\\\": \\\"LIVE\\\"'; do echo 'Waiting for Istio sidecar'; sleep 1 ; done ; echo 'istio sidecar available'; npm start\" ]
+          args: [ \"until wget -qO- http://localhost:15000/server_info | grep '\\\"state\\\": \\\"LIVE\\\"'; do echo 'Waiting for Istio sidecar'; sleep 1 ; done ; echo 'istio sidecar available'; node server.js\" ]
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
@@ -136,11 +136,11 @@ spec:
               value: "Datadog,B3"
           resources:
             requests:
-              memory: "4Gi"
-              cpu: "1"
+              memory: \"4G\"
+              cpu: \"1\"
             limits:
-              memory: "4Gi"
-              cpu: "1"
+              memory: \"8G\"
+              cpu: \"2\"
           volumeMounts:
             - mountPath: "/usr/src/app/static"
               name: static-storage
