@@ -49,6 +49,13 @@ spec:
         - name: docsearch-${DEPLOY_ENV}
           image: docker.elastic.co/elasticsearch/elasticsearch:7.16.3
           imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              memory: \"1G\"
+              cpu: \"0.5\"
+            limits:
+              memory: \"2G\"
+              cpu: \"1\"
           env:
             - name: discovery.type
               valueFrom:
