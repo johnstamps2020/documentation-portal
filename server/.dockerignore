@@ -2,11 +2,11 @@
 **
 
 # Allow specific folders
-!bin/
 !controllers/
 !public/
 !routes/
 !views/
 !app.js
+!server.js
 !package.json
 !package-lock.json
