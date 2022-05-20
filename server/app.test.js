@@ -1,20 +1,21 @@
-const { appRequest } = require('./test/helpers');
+const request = require('supertest');
+const { app } = require('./test/helpers');
 
 describe('The server app', () => {
   test('The root route responds to requests', async () => {
-    const response = await appRequest.get('/');
+    const response = await request(app).get('/');
     expect(response.statusCode).toBe(200);
   });
 
   test('Portal config redirects to unauthorized', async () => {
-    const response = await appRequest.get('/portal-config/');
+    const response = await request(app).get('/portal-config/');
     expect(response.statusCode).toBe(302);
     expect(response.text).toContain('/unauthorized');
   });
 
   test('If authentication is enabled, redirects to the login screen', async () => {
     process.env.ENABLE_AUTH = 'yes';
-    const response = await appRequest.get('/');
+    const response = await request(app).get('/');
     expect(response.statusCode).toBe(302);
     expect(response.text).toContain('Redirecting to /gw-login');
   });
