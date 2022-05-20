@@ -65,16 +65,6 @@
       ]
     },
     {
-      "label": "Claims Autopilot",
-      "class": "subject installation",
-      "items": [
-        {
-          "label": "Claims Autopilot",
-          "id": "claimsautopilotdraft"
-        }
-      ]
-    },
-    {
       "label": "Rating",
       "class": "subject configuration",
       "items": [
