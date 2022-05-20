@@ -1549,7 +1549,7 @@ object Server {
                     export  CUSTOMERS_LOGIN_CERT=mock
                     export  CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/customers-login
                     
-                    npm install
+                    npm ci
                     npm test
                 """.trimIndent()
                 dockerImage = GwDockerImages.NODE_14_ALPINE.image_url
