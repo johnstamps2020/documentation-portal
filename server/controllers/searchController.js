@@ -116,11 +116,11 @@ async function getFilters(query, fieldMappings, urlFilters) {
           : [];
         const allFilterValues = [
           ...new Set([
-            ...allowedFilterValues.map(v => v.label),
+            ...allowedFilterValues?.map(v => v.label),
             ...urlFilterValues,
           ]),
         ];
-        const filterValuesObjects = allFilterValues.map(value => {
+        const filterValuesObjects = allFilterValues?.map(value => {
           return {
             label: value,
             doc_count:
@@ -139,9 +139,9 @@ async function getFilters(query, fieldMappings, urlFilters) {
   } catch (err) {
     winstonLogger.error(
       `Problem getting filters for 
-          query: ${query},    
-          fieldMappings: ${fieldMappings},  
-          urlFilters: ${urlFilters},
+          query: ${JSON.stringify(query)},    
+          fieldMappings: ${JSON.stringify(fieldMappings)},  
+          urlFilters: ${JSON.stringify(urlFilters)},
           ERROR: ${JSON.stringify(err)}`
     );
   }
@@ -260,24 +260,29 @@ function sanitizeTagNames(textToSanitize) {
 }
 
 function sortObjectsFromNewestToOldest(objectsList) {
-  return objectsList
-    .sort(function(a, b) {
-      const verNum = versions =>
-        versions[0]
-          .split('.')
-          .map(n => +n + 100000)
-          .join('.');
-      const verNumA = verNum(a._source.version);
-      const verNumB = verNum(b._source.version);
-      let comparison = 0;
-      if (verNumA > verNumB) {
-        comparison = 1;
-      } else if (verNumA < verNumB) {
-        comparison = -1;
-      }
-      return comparison;
-    })
-    .reverse();
+  try {
+    return objectsList
+      .sort(function(a, b) {
+        const verNum = versions =>
+          versions[0]
+            .split('.')
+            .map(n => +n + 100000)
+            .join('.');
+        const verNumA = verNum(a._source.version);
+        const verNumB = verNum(b._source.version);
+        let comparison = 0;
+        if (verNumA > verNumB) {
+          comparison = 1;
+        } else if (verNumA < verNumB) {
+          comparison = -1;
+        }
+        return comparison;
+      })
+      .reverse();
+  } catch (err) {
+    winstonLogger.error(`Problem sorting objects from newest to oldest
+      objectList: ${JSON.stringify(objectsList)}`);
+  }
 }
 
 async function searchController(req, res, next) {
