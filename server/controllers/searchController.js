@@ -337,7 +337,7 @@ async function searchController(req, res, next) {
 
     const arrangedFilters = [];
     for (const key of displayOrder) {
-      if (filters.some(f => f.name === key)) {
+      if (filters?.some(f => f.name === key)) {
         arrangedFilters.push(filters.find(f => f.name === key));
       }
     }
@@ -481,7 +481,7 @@ async function searchController(req, res, next) {
   } catch (err) {
     winstonLogger.error(
       `Problem performing search
-          QUERY: ${req.query}
+          QUERY: ${JSON.stringify(req.query)}
           ERROR: ${JSON.stringify(err)}`
     );
     next(err);
