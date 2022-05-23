@@ -93,7 +93,7 @@ enum class GwDockerImages(val image_url: String) {
     DOC_PORTAL("artifactory.guidewire.com/doctools-docker-dev/docportal"),
     DITA_OT_LATEST("artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"),
     DITA_OT_3_6_1("artifactory.guidewire.com/doctools-docker-dev/dita-ot:3.6.1"),
-    ATMOS_DEPLOY_0_12_24("artifactory.guidewire.com/devex-docker-dev/atmosdeploy:0.12.24"),
+    ATMOS_DEPLOY_2_6_0("artifactory.guidewire.com/devex-docker-dev/atmosdeploy:2.6.0"),
     CONFIG_DEPLOYER_LATEST("artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"),
     DOC_CRAWLER_LATEST("artifactory.guidewire.com/doctools-docker-dev/doc-crawler:latest"),
     INDEX_CLEANER_LATEST("artifactory.guidewire.com/doctools-docker-dev/index-cleaner:latest"),
@@ -1665,7 +1665,7 @@ object Server {
                 docker build -t ${GwDockerImages.DOC_PORTAL.image_url}:${'$'}{TAG_VERSION} . --build-arg tag_version=${'$'}{TAG_VERSION}
                 docker push ${GwDockerImages.DOC_PORTAL.image_url}:${'$'}{TAG_VERSION}
             """.trimIndent()
-                dockerImage = GwDockerImages.ATMOS_DEPLOY_0_12_24.image_url
+                dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 dockerPull = true
                 dockerRunParameters =
@@ -1756,7 +1756,7 @@ object Server {
                         kubectl apply -f service.yml --namespace=${namespace}
                         kubectl apply -f ingress.yml --namespace=${namespace}                    
                     """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_0_12_24.image_url
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerPull = true
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -1788,7 +1788,7 @@ object Server {
                             TIME=${'$'}[${'$'}TIME+1]
                         done
                     """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_0_12_24.image_url
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerPull = true
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -3256,7 +3256,7 @@ object GwBuildSteps {
                 eval ${'$'}(aws ecr get-login --no-include-email | sed 's|https://||')
                 docker push ${ecrPackageName}:${tag_version}
             """.trimIndent()
-            dockerImage = GwDockerImages.ATMOS_DEPLOY_0_12_24.image_url
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters =
@@ -3278,7 +3278,7 @@ object GwBuildSteps {
                 docker build -t ${package_name}:${tag_version} ./server --build-arg tag_version=${tag_version}
                 docker push ${package_name}:${tag_version}
             """.trimIndent()
-            dockerImage = GwDockerImages.ATMOS_DEPLOY_0_12_24.image_url
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters =
@@ -4005,7 +4005,7 @@ object GwBuildSteps {
                 
                 sh %teamcity.build.workingDir%/ci/deployFilesToPersistentVolume.sh $deployment_mode "$output_dir"
             """.trimIndent()
-            dockerImage = GwDockerImages.ATMOS_DEPLOY_0_12_24.image_url
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
