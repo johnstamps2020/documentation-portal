@@ -3,7 +3,10 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPu
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.DockerComposeStep
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.maven
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.ScheduleTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
@@ -3239,7 +3242,8 @@ object GwBuildSteps {
         package_name: String,
         tag_version: String,
     ): ScriptBuildStep {
-        val ecrPackageName = "710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal"
+        val ecrInstance = "710503867599.dkr.ecr.us-east-2.amazonaws.com"
+        val ecrPackageName = "${ecrInstance}/tenant-doctools-docportal"
         val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
         return ScriptBuildStep {
             name = "Publish server Docker Image to ECR"
@@ -3253,7 +3257,7 @@ object GwBuildSteps {
                 
                 docker pull ${package_name}:${tag_version}
                 docker tag ${package_name}:${tag_version} ${ecrPackageName}:${tag_version}
-                eval ${'$'}(aws ecr get-login --no-include-email | sed 's|https://||')
+                aws ecr get-login-password | docker login --username AWS --password-stdin $ecrInstance
                 docker push ${ecrPackageName}:${tag_version}
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
