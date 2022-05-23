@@ -24,10 +24,10 @@
     },
     {
       "id": "is202205src",
-      "title": "IS 2022.05.0",
+      "title": "IS 2022.05.1",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
-      "branch": "release/2022.05.0"
+      "branch": "release/2022.05.1"
     },
     {
       "id": "webhooksapinextsrc",
