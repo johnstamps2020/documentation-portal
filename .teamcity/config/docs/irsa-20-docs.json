@@ -36,6 +36,23 @@
       "earlyAccess": false
     },
     {
+      "id": "midipfadjuster20frFR",
+      "title": "Adjuster Guide - fr-FR",
+      "url": "self-managed/ipf/fr-FR/2.0/adjuster",
+      "metadata": {
+        "product": ["ClaimCenter Package for France"],
+        "platform": ["Self-managed"],
+        "version": ["2.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "midipfadmin20",
       "title": "Administration Guide",
       "url": "self-managed/ipf/2.0/admin",
@@ -63,6 +80,23 @@
         "subject": ["Release notes"]
       },
       "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipfrn20frFR",
+      "title": "Release Notes - fr-FR",
+      "url": "self-managed/ipf/fr-FR/2.0/releasenotes",
+      "metadata": {
+        "product": ["ClaimCenter Package for France"],
+        "platform": ["Self-managed"],
+        "version": ["2.0"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
