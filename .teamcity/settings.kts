@@ -3242,8 +3242,8 @@ object GwBuildSteps {
         package_name: String,
         tag_version: String,
     ): ScriptBuildStep {
-        val ecrInstance = "710503867599.dkr.ecr.us-east-2.amazonaws.com"
-        val ecrPackageName = "${ecrInstance}/tenant-doctools-docportal"
+        val ecrHost = "710503867599.dkr.ecr.us-east-2.amazonaws.com"
+        val ecrPackageName = "${ecrHost}/tenant-doctools-docportal"
         val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
         return ScriptBuildStep {
             name = "Publish server Docker Image to ECR"
@@ -3257,7 +3257,9 @@ object GwBuildSteps {
                 
                 docker pull ${package_name}:${tag_version}
                 docker tag ${package_name}:${tag_version} ${ecrPackageName}:${tag_version}
-                aws ecr get-login-password | docker login --username AWS --password-stdin $ecrInstance
+                set +x
+                docker login -u AWS -p ${'$'}(aws ecr get-login-password) $ecrHost
+                set -x
                 docker push ${ecrPackageName}:${tag_version}
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
