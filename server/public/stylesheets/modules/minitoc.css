@@ -69,6 +69,10 @@ nav a.miniTocLink:hover {
   margin-left: 6ch !important;
 }
 
+.miniTocLink.current {
+  background-color: hsla(204, 12%, 45%, .15);
+}
+
 #mobileMiniTocWrapper {
   max-width: var(--article-width);
 }
@@ -113,7 +117,7 @@ nav a.miniTocLink:hover {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   padding: 0.5rem;
-  height: 25vh;
+  max-height: 25vh;
   overflow-y: auto;
 }
 

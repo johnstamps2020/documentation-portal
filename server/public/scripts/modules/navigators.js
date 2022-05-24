@@ -1,6 +1,9 @@
 import { addHashLinks } from './hashLink.js';
 import { highlightTextFromUrl, addHighlightToggle } from './highlight.js';
 import { addPdfLink } from './pdflink.js';
+import React, { useEffect, useState } from 'react';
+import { render } from 'react-dom';
+import '../../stylesheets/modules/minitoc.css';
 
 async function getTopBreadcrumb() {
   try {
@@ -223,12 +226,41 @@ function addScrollToTop() {
   window.addEventListener('scroll', debounce(handleScroll));
 
   function handleScroll() {
+    // show or hide scrollToTop button
     if (html.scrollTop >= 200) {
       let articleRect = article.getBoundingClientRect();
       scrollToTopButton.style.left = parseInt(articleRect.right + 4) + 'px';
       scrollToTopButton.classList.add('visible');
     } else {
       scrollToTopButton.classList.remove('visible');
+    }
+
+    // update miniToc to highlight current section and keep in view
+    const hashLinks = document.querySelectorAll('.hashLink');
+    if (hashLinks.length < 1 || document.querySelector('#mobileMiniTocWrapper')) {
+      return;
+    }
+    const miniToc = document.querySelector('nav.miniToc');
+    const links = [...hashLinks];
+    let closestToTop = links.reduce((prev, curr) => {
+      return (Math.abs(prev.getBoundingClientRect().top) < Math.abs(curr.getBoundingClientRect().top)) ? prev : curr;
+    });
+
+    if(closestToTop.getBoundingClientRect().top > (window.innerHeight || document.documentElement.clientHeight) &&
+       links.indexOf(closestToTop) > 0) {
+      closestToTop = links[links.indexOf(closestToTop) - 1];
+    }
+    const href = closestToTop.getAttribute('href');
+    const prevMiniTocLink = miniToc.querySelector('.miniTocLink.current');
+    if(prevMiniTocLink) {
+      prevMiniTocLink.classList.remove('current');
+    }
+    const matchingMiniTocLink = miniToc.querySelector(`[href='${href}']`,'.miniTocLink');
+    matchingMiniTocLink.classList.add('current');
+
+    if((matchingMiniTocLink.getBoundingClientRect().top > parseInt(window.getComputedStyle(miniToc).height)) ||
+        (matchingMiniTocLink.getBoundingClientRect().top < 0)) {
+      matchingMiniTocLink.scrollIntoView();
     }
   }
 
@@ -256,14 +288,108 @@ function addNavbar() {
   addScrollToTop();
 }
 
+// miniToc
+function LinkList({ links }) {
+  return (
+    <>
+      {links.map((hashLink, key) => {
+        const title = hashLink.parentElement.textContent;
+        const href = hashLink.getAttribute('href');
+        const parentClasses = hashLink.parentElement.classList;
+        const applicableClasses = [...parentClasses].filter(
+          className => !className.match('^title$')
+        );
+
+        if (title && href) {
+          return (
+            <a
+              href={href}
+              className={['miniTocLink', ...applicableClasses].join(' ')}
+              key={key}
+            >
+              {title}
+            </a>
+          );
+        }
+      })}
+    </>
+  );
+}
+
+function MiniToc({ hashLinks }) {
+  const [width, setWidth] = useState(window.innerWidth);
+  const [expanded, setExpanded] = useState(false);
+  const breakpoint = 1670;
+  const miniTocTitle = 'On this page';
+
+  const handleWindowResize = () => setWidth(window.innerWidth);
+  useEffect(function() {
+    window.addEventListener('resize', handleWindowResize);
+    return () => window.removeEventListener('resize', handleWindowResize);
+  }, []);
+
+  if (width <= breakpoint) {
+    return (
+      <div id="mobileMiniTocWrapper">
+        <button
+          role="button"
+          aria-controls="mobileLinkList"
+          aria-expanded={expanded}
+          id="miniTocButton"
+          className={expanded && 'expanded'}
+          onClick={() => setExpanded(!expanded)}
+        >
+          {miniTocTitle}
+        </button>
+        {expanded && (
+          <div
+            id="mobileLinkList"
+            role="region"
+            aria-labelledby="miniTocButton"
+          >
+            <LinkList links={[...hashLinks]} />
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <div className="miniTocTitle">{miniTocTitle}</div>
+      <LinkList links={[...hashLinks]} />
+    </>
+  );
+}
+
+function addMiniToc(hashLinks) {
+  const miniTocContainer = document.createElement('nav');
+  miniTocContainer.setAttribute('class', 'miniToc');
+
+  const sidebar = document.querySelector('.sidebar');
+  if (sidebar) {
+    const footer = document.querySelector('footer');
+    footer.parentNode.insertBefore(sidebar, footer);
+  }
+
+  const main = document.querySelector('main');
+  main.prepend(miniTocContainer);
+  render(<MiniToc hashLinks={hashLinks} />, miniTocContainer);
+
+  const spacer = document.createElement('div');
+  spacer.classList.add('spacer');
+  const mainArticle = document.querySelector('article');
+  mainArticle.before(spacer);
+}
+
 export async function addPageNavigators() {
   await addHashLinks();
 
   // add minitoc only if hash links have been added
   const hashLinks = document.querySelectorAll('.hashLink');
   if (hashLinks.length > 1) {
-    const addMiniToc = await require('./minitoc.js').default;
     addMiniToc(hashLinks);
+    //showPlaceInMiniToc(hashLinks);
   }
 
   addNavbar();

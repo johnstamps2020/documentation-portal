@@ -4,7 +4,7 @@ function isHidden(element) {
   return element.offsetParent === null;
 }
 
-export function addHashLinks() {
+export async function addHashLinks() {
   const idsInDoc = [];
 
   function generateId(element) {
