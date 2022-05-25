@@ -26,7 +26,7 @@
     "express-session": "^1.17.0",
     "express-winston": "^4.2.0",
     "http-errors": "~1.6.3",
-    "http-proxy-middleware": "2.0.3",
+    "http-proxy": "^1.18.1",
     "jsdom": "^19.0.0",
     "jsonwebtoken": "^8.5.1",
     "node-fetch": "^2.6.7",

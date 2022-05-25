@@ -3,21 +3,13 @@
 const HttpProxy = require('http-proxy');
 const proxy = new HttpProxy();
 
-function setResCacheControlHeader(proxyRes, req, res) {
-  if (proxyRes.headers['content-type']?.includes('html')) {
-    proxyRes.headers['Cache-Control'] = 'no-store';
-  }
-}
-
-function interveneInBuffer() {}
+proxy.on('error', function(err) {
+  next(err);
+});
 
 const s3ProxyOptions = {
   target: `${process.env.DOC_S3_URL}`,
   changeOrigin: true,
-  onProxyRes: setResCacheControlHeader,
-  onOpen: proxySocket => {
-    proxySocket.on('data', hybiParseAndLogMessage);
-  },
 };
 
 function s3Proxy(req, res, next) {
@@ -25,15 +17,14 @@ function s3Proxy(req, res, next) {
 }
 
 const portal2ProxyOptions = {
-  target: `${process.env.PORTAL2_S3_URL}`,
+  target: `${process.env.PORTAL2_S3_URL}/portal`,
   changeOrigin: true,
-  onProxyRes: setResCacheControlHeader,
-  onOpen: proxySocket => {
-    proxySocket.on('data', hybiParseAndLogMessage);
-  },
 };
 
 function portal2Proxy(req, res, next) {
+  proxy.on('error', function(err) {
+    next(err);
+  });
   proxy.web(req, res, portal2ProxyOptions, next);
 }
 
