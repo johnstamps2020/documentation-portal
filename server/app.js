@@ -143,6 +143,10 @@ app.use('/portal-config/*', (req, res) => {
   res.redirect('/unauthorized');
 });
 
+// overwrite HTML received through proxy
+const { harmonRouter } = require('./routes/proxyHarmonRouter');
+app.use(harmonRouter);
+
 // set up proxies
 const { portal2Proxy, s3Proxy } = require('./controllers/proxyController');
 app.use('/portal', portal2Proxy);
