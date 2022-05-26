@@ -63,6 +63,10 @@
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
           "id": "isconfigupgradetools420"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools Compatibility",
+          "id": "isupgradecompatibility"
         }
       ]
     },
