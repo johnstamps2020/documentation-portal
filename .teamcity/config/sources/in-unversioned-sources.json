@@ -4,7 +4,7 @@
     {
       "id": "inunversionedsrc",
       "title": "InsuranceNow Unversioned",
-      "sourceType": "xdocs",
+      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
       "branch": "main"
     }
