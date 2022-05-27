@@ -4,10 +4,10 @@ FROM artifactory.guidewire.com/hub-docker-remote/node:16.14.2-alpine
 WORKDIR /usr/src/app
 
 RUN mkdir static
-COPY package.json ./
-COPY yarn.lock ./
-COPY .yarn ./
-COPY .yarnrc.yml ./
+COPY package.json .
+COPY yarn.lock .
+COPY .yarn/ .yarn/
+COPY .yarnrc.yml .
 RUN yarn
 
 COPY . .
