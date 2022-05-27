@@ -1519,7 +1519,7 @@ object Server {
 
         steps {
             nodeJS {
-                id = "Run npm audit"
+                id = "Run yarn npm audit"
                 shellScript = """
                     cd server && yarn npm audit --severity high --all --recursive
                 """.trimIndent()
