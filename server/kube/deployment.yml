@@ -183,6 +183,8 @@ spec:
               value: layer:webapp, team:doctools
             - name: DD_TRACE_ANALYTICS_ENABLED
               value: 'true'
+            - name: DD_TRACE_STARTUP_LOGS
+              value: 'true'
             - name: DD_AGENT_HOST
               valueFrom:
                 fieldRef:
