@@ -1523,6 +1523,7 @@ object Server {
                 shellScript = """
                     cd server && yarn npm audit --severity high --all --recursive
                 """.trimIndent()
+                dockerImage = GwDockerImages.NODE_16_14_2.image_url
             }
         }
 
