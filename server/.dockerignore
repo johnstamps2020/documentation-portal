@@ -8,3 +8,7 @@
 !views/
 !app.js
 !server.js
+!package.json
+!yarn.lock
+!.yarn/
+!.yarnrc.yml
