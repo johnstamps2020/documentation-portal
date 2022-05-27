@@ -1,3 +1,5 @@
+'use strict';
+
 require('dotenv').config();
 const tracer = require('dd-trace').init();
 const {
@@ -9,10 +11,6 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const sassMiddleware = require('node-sass-middleware');
-const {
-  createProxyMiddleware,
-  responseInterceptor,
-} = require('http-proxy-middleware');
 const favicon = require('serve-favicon');
 const session = require('express-session');
 const httpContext = require('express-http-context');
@@ -141,45 +139,17 @@ app.use('/lrs', lrsRouter);
 app.use('/recommendations', recommendationsRouter);
 app.use('/support', supportRouter);
 
-function setResCacheControlHeader(proxyRes, req, res) {
-  if (proxyRes.headers['content-type']?.includes('html')) {
-    proxyRes.headers['Cache-Control'] = 'no-store';
-  }
-}
-
 app.use('/portal-config/*', (req, res) => {
   res.redirect('/unauthorized');
 });
 
-const interceptAndUpdateDocPage = require('./controllers/docInterceptorController');
+// overwrite HTML received through proxy
+const { harmonRouter } = require('./routes/proxyHarmonRouter');
+app.use(harmonRouter);
 
-const proxyInterceptorOptions = {
-  selfHandleResponse: true,
-  onProxyRes: responseInterceptor(interceptAndUpdateDocPage),
-};
-
-const portal2ProxyOptions = {
-  target: `${process.env.PORTAL2_S3_URL}`,
-  changeOrigin: true,
-  onProxyRes: setResCacheControlHeader,
-  onOpen: proxySocket => {
-    proxySocket.on('data', hybiParseAndLogMessage);
-  },
-  ...proxyInterceptorOptions,
-};
-const portal2Proxy = createProxyMiddleware(portal2ProxyOptions);
+// set up proxies
+const { portal2Proxy, s3Proxy } = require('./controllers/proxyController');
 app.use('/portal', portal2Proxy);
-
-const s3ProxyOptions = {
-  target: `${process.env.DOC_S3_URL}`,
-  changeOrigin: true,
-  onProxyRes: setResCacheControlHeader,
-  onOpen: proxySocket => {
-    proxySocket.on('data', hybiParseAndLogMessage);
-  },
-  ...proxyInterceptorOptions,
-};
-const s3Proxy = createProxyMiddleware(s3ProxyOptions);
 app.use(s3Proxy);
 
 // handles unauthorized errors

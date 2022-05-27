@@ -49,13 +49,13 @@ The attached `keti.json` contains application configuration. Use if if you want 
 To build the webpack bundle, run:
 
 ```
-npm run build-html5-dependencies
+yarn build-html5-dependencies
 ```
 
 To develop the HTML5 plugin, run:
 
 ```
-npm run html5-watch
+yarn html5-watch
 ```
 
 ## Local preview of webhelp
@@ -72,11 +72,11 @@ npm run html5-watch
 1. In a separate terminal, run the Webpack watch script:
    ```
    cd server
-   npm run html5-watch
+   yarn html5-watch
    ```
 1. In a separate terminal, run the server:
    ```
    cd server
-   npm run start:dev
+   yarn start:dev
    ```
 1. Go to `http://localhost:8081/something.html` to preview your webhelp

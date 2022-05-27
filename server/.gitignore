@@ -99,3 +99,12 @@ typings/
 
 static/
 config.json
+
+# Yarn 3 no Zero-Installs
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
