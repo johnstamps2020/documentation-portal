@@ -113,7 +113,7 @@ spec:
             - name: ENABLE_AUTH
               value: 'yes'
             - name: JIRA_AUTH_TOKEN
-              value: 'c3lzLWVzLXBvcnRhbEBndWlkZXdpcmUuY29tOnJRd2l4WVZuTEtMNmZVY0x0Zjk2OEMxNw=='
+              value: ${JIRA_AUTH_TOKEN}
             - name: DD_ENV
               valueFrom:
                 fieldRef:
