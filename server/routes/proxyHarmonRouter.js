@@ -48,18 +48,15 @@ const harmonRouter = Router();
 harmonRouter.use(function(req, res, next) {
   if (responseSelectors.length === 1 && res.locals?.userInfo) {
     const pendoInitializeScript = getPendoInitializeScript(res.locals.userInfo);
+    const pendoAndGoogleScripts = `
+      <!-- Pendo initialize -->
+      <script>${pendoInitializeScript}</script>
+      <!-- Google tag manager no-script -->
+      <noscript>${tagManagerBody}</noscript>`;
     responseSelectors.push({
       query: 'body',
       func: function(node) {
-        appendToSelectedItem(
-          node,
-          `
-          <!-- Pendo initialize -->
-          <script>${pendoInitializeScript}</script>
-          <!-- Google tag manager no-script -->
-          <noscript>${tagManagerBody}</noscript>
-      `
-        );
+        appendToSelectedItem(node, pendoAndGoogleScripts);
       },
     });
   }
@@ -67,7 +64,7 @@ harmonRouter.use(function(req, res, next) {
   next();
 });
 
-harmonRouter.use(harmon([], responseSelectors, true));
+harmonRouter.use(harmon([], responseSelectors));
 
 module.exports = {
   harmonRouter,
