@@ -53,7 +53,11 @@ product_codes_labels = {
     'pe-claims': {'label': 'ProducerEngage for ClaimCenter'},
     'sre': {'label': 'ServiceRepEngage'},
     've': {'label': 'VendorEngage'},
-    'is-configupgradetools': {'label': 'InsuranceSuite Configuration Upgrade Tools'}
+    'is-configupgradetools': {'label': 'InsuranceSuite Configuration Upgrade Tools'},
+    'gcc': {'label': 'Guidewire Cloud Console'},
+    'cda': {'label': 'Cloud Data Access'},
+    'ipf': {'label': 'ClaimCenter Package for France'},
+    'ipg': {'label': 'Global Solutions - Germany'}
 }
 
 
@@ -133,25 +137,13 @@ def write_locale_index(locale_path, loc_docs_output_path):
         "class": f"threeCards product {locale_path.name} l10n",
         "items": []
     }
-    sibling_paths = get_sibling_paths(locale_path)
-    if sibling_paths:
+    if sibling_paths := get_sibling_paths(locale_path):
         sibling_paths.sort()
-        index_json.update(
-            {"selector":
-                {
-                    "label": get_locale_selector_label_from_code(locale_path.name),
-                    "selectedItem": get_locale_name_from_code(locale_path.name),
-                    "items": []
-                }
-            }
-        )
+        index_json["selector"] = {"label": get_locale_selector_label_from_code(locale_path.name), "selectedItem": get_locale_name_from_code(locale_path.name), "items": []}
+
         for path in sibling_paths:
-            index_json["selector"]["items"].append(
-                {
-                    "label": get_locale_name_from_code(path.name),
-                    "page": "../" + path.name
-                }
-            )
+            index_json["selector"]["items"].append({"label": get_locale_name_from_code(path.name), "page": f"../{path.name}"})
+
 
     product_paths = get_paths(locale_path)
     product_paths.sort()
@@ -178,25 +170,13 @@ def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
         "items": []
     }
 
-    sibling_paths = get_sibling_paths(product_path)
-    if sibling_paths:
+    if sibling_paths := get_sibling_paths(product_path):
         sibling_paths.sort()
-        index_json.update(
-            {
-                "selector": {
-                    "label": get_product_selector_label_from_code(product_path.parent.name),
-                    "selectedItem": get_product_name_from_code(product_path.name),
-                    "items": []
-                }
-            }
-        )
+        index_json["selector"] = {"label": get_product_selector_label_from_code(product_path.parent.name), "selectedItem": get_product_name_from_code(product_path.name), "items": []}
+
         for path in sibling_paths:
-            index_json["selector"]["items"].append(
-                {
-                    "label": get_product_name_from_code(path.name),
-                    "page": "../" + path.name
-                }
-            )
+            index_json["selector"]["items"].append({"label": get_product_name_from_code(path.name), "page": f"../{path.name}"})
+
 
     version_paths = get_paths(product_path)
     version_paths = natsorted(
@@ -218,12 +198,8 @@ def write_product_index(product_path, loc_docs_output_path, loc_docs_root_path):
 
             pdf_link = pdf_file.relative_to(loc_docs_root_path)
 
-            version_json["items"].append(
-                {
-                    "label": short_title,
-                    "link": '/' + loc_docs_output_path.name + '/' + str(pdf_link).replace('\\', '/')
-                }
-            )
+            version_json["items"].append({"label": short_title, "link": f'/{loc_docs_output_path.name}/' + str(pdf_link).replace('\\', '/')})
+
 
         index_json["items"].append(version_json)
 
