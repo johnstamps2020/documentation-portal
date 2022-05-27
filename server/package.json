@@ -1,6 +1,6 @@
 {
   "name": "documentation-portal",
-  "version": "2.25.0",
+  "version": "2.26.0",
   "private": true,
   "engines": {
     "node": "16.14.2"
@@ -18,9 +18,9 @@
     "axios": "^0.21.4",
     "body-parser": "^1.20.0",
     "cookie-parser": "~1.4.6",
-    "dd-trace": "^1.7.0",
+    "dd-trace": "^2.8.0",
     "debug": "~2.6.9",
-    "ejs": "2.7.4",
+    "ejs": "^3.1.8",
     "express": "^4.17.3",
     "express-http-context": "^1.2.3",
     "express-session": "^1.17.0",

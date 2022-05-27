@@ -40,8 +40,8 @@ spec:
       containers:
         - name: docportal
           image: 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:${TAG_VERSION}
-          command: [\"/bin/sh\", \"-c\"]
-          args: [\"until wget -qO- http://localhost:15000/server_info | grep '\\\"state\\\": \\\"LIVE\\\"'; do echo 'Waiting for Istio sidecar'; sleep 1 ; done ; echo 'istio sidecar available'; node server.js\"]
+          command: [ \"/bin/sh\", \"-c\" ]
+          args: [ \"until wget -qO- http://localhost:15000/server_info | grep '\\\"state\\\": \\\"LIVE\\\"'; do echo 'Waiting for Istio sidecar'; sleep 1 ; done ; echo 'istio sidecar available'; node server.js\" ]
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
@@ -113,7 +113,7 @@ spec:
             - name: ENABLE_AUTH
               value: 'yes'
             - name: JIRA_AUTH_TOKEN
-              value: 'c3lzLWVzLXBvcnRhbEBndWlkZXdpcmUuY29tOnJRd2l4WVZuTEtMNmZVY0x0Zjk2OEMxNw=='
+              value: ${JIRA_AUTH_TOKEN}
             - name: DD_ENV
               valueFrom:
                 fieldRef:
@@ -139,6 +139,8 @@ spec:
             - name: DD_TAGS
               value: layer:webapp, team:doctools
             - name: DD_TRACE_ANALYTICS_ENABLED
+              value: 'true'
+            - name: DD_TRACE_STARTUP_LOGS
               value: 'true'
             - name: DD_AGENT_HOST
               valueFrom:

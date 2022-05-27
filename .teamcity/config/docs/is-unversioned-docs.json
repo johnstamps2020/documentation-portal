@@ -1,0 +1,22 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "isupgradecompatibility",
+      "title": "InsuranceSuite Configuration Upgrade Tools Compatibility",
+      "url": "isconfigupgradetools/compatibility",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools Compatibility"],
+        "version": ["latest"],
+        "subject": ["Upgrade Tools Compatibility"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

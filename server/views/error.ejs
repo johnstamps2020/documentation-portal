@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('parts/head', { pageTitle: `Error! "${err.message}" | Guidewire
-  Documentation`}) %>
+  <%- include('parts/head', { pageTitle: `Error! "${err.message}" | Guidewire Documentation`}) %>
   <style>
     body {
       font-size: 18px;
@@ -55,6 +54,6 @@
         <pre class="code"><%= err.stack %></pre>
       </section>
     </main>
-    <% include parts/footer %>
+    <%- include('parts/footer') %>
   </body>
 </html>

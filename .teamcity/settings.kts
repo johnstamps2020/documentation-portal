@@ -3,10 +3,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPu
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.DockerComposeStep
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.maven
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.ScheduleTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
@@ -110,7 +107,6 @@ enum class GwDockerImages(val image_url: String) {
     DOC_VALIDATOR_LATEST("artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"),
     PYTHON_3_9_SLIM_BUSTER("artifactory.guidewire.com/hub-docker-remote/python:3.9-slim-buster"),
     NODE_REMOTE_BASE("artifactory.guidewire.com/hub-docker-remote/node"),
-    NODE_14_ALPINE("artifactory.guidewire.com/hub-docker-remote/node:14-alpine"),
     NODE_16_14_2("artifactory.guidewire.com/hub-docker-remote/node:16.14.2"),
     GENERIC_14_14_0_YARN_CHROME("artifactory.guidewire.com/jutro-docker-dev/generic:14.14.0-yarn-chrome")
 }
@@ -1433,6 +1429,7 @@ object Server {
             buildType(TestDocSiteServerApp)
             buildType(TestConfig)
             buildType(TestSettingsKts)
+            buildType(AuditNpmPackages)
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
@@ -1504,6 +1501,35 @@ object Server {
             triggerRules = """
                 +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/settings.kts
                 +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+
+        features.feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+    })
+
+    private object AuditNpmPackages : BuildType({
+        name = "Audit npm packages"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        vcs {
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            cleanCheckout = true
+        }
+
+        steps {
+            nodeJS {
+                id = "Run npm audit"
+                shellScript = """
+                    npm audit --audit-level=high --prefix server
+                """.trimIndent()
+            }
+        }
+
+        triggers.vcs {
+            triggerRules = """
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/package.json
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/package-lock.json
                 -:user=doctools:**
             """.trimIndent()
         }
