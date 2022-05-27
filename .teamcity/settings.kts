@@ -1521,7 +1521,7 @@ object Server {
             nodeJS {
                 id = "Run npm audit"
                 shellScript = """
-                    npm audit --audit-level=high --prefix server
+                    cd server && yarn npm audit --severity high --all --recursive
                 """.trimIndent()
             }
         }
@@ -1529,7 +1529,7 @@ object Server {
         triggers.vcs {
             triggerRules = """
                 +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/package.json
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/package-lock.json
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/yarn.lock
                 -:user=doctools:**
             """.trimIndent()
         }
@@ -1579,8 +1579,8 @@ object Server {
                     export  CUSTOMERS_LOGIN_CERT=mock
                     export  CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/customers-login
                     
-                    npm ci
-                    npm test
+                    yarn
+                    yarn test
                 """.trimIndent()
                 dockerImage = GwDockerImages.NODE_16_14_2.image_url
                 dockerPull = true
@@ -3760,8 +3760,8 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                 
-                npm i
-                npm run build-html5-dependencies
+                yarn
+                yarn build-html5-dependencies
             """.trimIndent()
             dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.image_url}:14.14.0"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
