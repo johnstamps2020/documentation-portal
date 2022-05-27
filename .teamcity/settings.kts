@@ -1523,6 +1523,7 @@ object Server {
                 shellScript = """
                     npm audit --audit-level=high --prefix server
                 """.trimIndent()
+                dockerImage = GwDockerImages.NODE_16_14_2.image_url
             }
         }
 
