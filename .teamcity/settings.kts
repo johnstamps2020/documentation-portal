@@ -337,6 +337,8 @@ object Docs {
                         """.trimIndent()
                 }
             }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
     }
 
