@@ -1,0 +1,365 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "in20222app",
+      "title": "Application Guide",
+      "url": "cloud/in/20222/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Features and functionality"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222billref",
+      "title": "Billing Configuration Reference",
+      "url": "cloud/in/20222/billref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Configuration"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222csalesp",
+      "title": "Consumer Sales Portal Features",
+      "url": "cloud/in/20222/csalesp",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Features and functionality"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222cservicep",
+      "title": "Consumer Service Portal Features",
+      "url": "cloud/in/20222/cservicep",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Features and functionality"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222appreaderinteg",
+      "title": "AppReader Integration",
+      "url": "cloud/in/20222/appreaderinteg",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Integration"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222pa",
+      "title": "Live Predict Integration",
+      "url": "cloud/in/20222/pa",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Integration"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222config",
+      "title": "Core Configuration Guide",
+      "url": "cloud/in/20222/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Configuration"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222commonconfig",
+      "title": "Common Functionality Configuration Reference",
+      "url": "cloud/in/20222/commonconfig",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Configuration"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222studio",
+      "title": "Studio Configuration Guide",
+      "url": "cloud/in/20222/studioconfig",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Configuration"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222portaldev",
+      "title": "Portal Development Guide",
+      "url": "cloud/in/20222/portaldev",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Configuration"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222prodattref",
+      "title": "Product Attribute Reference",
+      "url": "cloud/in/20222/prodattref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Configuration"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222provportal",
+      "title": "Provisioning Portal",
+      "url": "cloud/in/20222/provportal",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Configuration"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222provportalinternal",
+      "title": "Provisioning Portal - Internal",
+      "url": "cloud/in/20222/provportalinternal",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Configuration"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222uwconfig",
+      "title": "Underwriting Configuration Reference",
+      "url": "cloud/in/20222/uwconfig",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Configuration"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222claimsconfig",
+      "title": "Claims Configuration Reference",
+      "url": "cloud/in/20222/claimsconfig",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Configuration"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222apiref",
+      "title": "API Reference",
+      "url": "cloud/in/20222/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Integration"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222xbiintegdraft",
+      "title": "Business Intelligence Integration - Internal",
+      "url": "cloud/in/20222/biinteg",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Integration"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222xcommonconfigdraft",
+      "title": "Common Functionality Configuration Reference - Internal",
+      "url": "cloud/in/20222/commonconfig",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Configuration"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222xcsalespconfigdraft",
+      "title": "Consumer Sales Portal Configuration - Internal",
+      "url": "cloud/in/20222/csalespconfig",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Configuration"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222xcservicepconfigdraft",
+      "title": "Consumer Service Portal Configuration Guide - Internal",
+      "url": "cloud/in/20222/cservicepconfig",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Configuration"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    }
+  ]
+}

@@ -2,6 +2,24 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "incsp20222rn",
+      "title": "Consumer Service Portal 2022.2 Release Notes",
+      "url": "cloud/in/csp20222rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Release Notes"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "incsp20221rn",
       "title": "Consumer Service Portal 2022.1 Release Notes",
       "url": "cloud/in/csp20221rn",
@@ -257,6 +275,24 @@
       "earlyAccess": false
     },
     {
+      "id": "in20222studiorn",
+      "title": "Studio 2022.2 Release Notes",
+      "url": "cloud/in/20222/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Release notes"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "in20221studiorn",
       "title": "Studio 2022.1 Release Notes",
       "url": "cloud/in/20221/studiorn",
@@ -434,6 +470,24 @@
       "indexForSearch": true,
       "public": false,
       "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20222rn",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20222/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2"],
+        "subject": ["Release notes"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
       "earlyAccess": false
     },
     {
