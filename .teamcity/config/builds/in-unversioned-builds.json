@@ -4,6 +4,14 @@
     {
       "buildType": "dita",
       "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "ConsumerServicePReleaseNotes20222x.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "incsp20222rn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "ConsumerServicePReleaseNotes20221x.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp20221rn",
@@ -103,6 +111,14 @@
       "root": "ExcelDesignedRating30.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "inexcelrating30",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "INStudioReleaseNotes20222.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20222studiorn",
       "indexRedirect": true
     },
     {
@@ -211,6 +227,21 @@
         {
           "targetFolder": "ReleaseNotes/2021.2.x/ChangedFiles",
           "sourceFolder": "ChangedFiles/2021.2",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "root": "InsuranceNowReleaseNotes20222.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20222rn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2022.2.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2022.2",
           "srcId": "insurancenowextrassrc"
         }
       ]

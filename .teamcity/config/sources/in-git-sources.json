@@ -2,11 +2,25 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "in20222",
+      "title": "InsuranceNow 2022.2",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2022.2"
+    },
+    {
       "id": "in20221",
       "title": "InsuranceNow 2022.1",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "develop/elysian"
+      "branch": "release/2022.1"
+    },
+    {
+      "id": "srcin20222apiref",
+      "title": "InsuranceNow API Reference Flaine",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurance-now-api-ref.git",
+      "branch": "release/flaine"
     },
     {
       "id": "srcin20221apiref",

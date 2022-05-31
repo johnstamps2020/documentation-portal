@@ -8,6 +8,10 @@
     "selectedItem": "Dobson",
     "items": [
       {
+        "label": "Flaine",
+        "page": "../flaine"
+      },
+      {
         "label": "Elysian",
         "page": "../elysian"
       },
