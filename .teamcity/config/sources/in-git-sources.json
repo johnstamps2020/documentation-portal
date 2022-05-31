@@ -16,6 +16,13 @@
       "branch": "release/2022.1"
     },
     {
+      "id": "srcin20222apiref",
+      "title": "InsuranceNow API Reference Flaine",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurance-now-api-ref.git",
+      "branch": "release/flaine"
+    },
+    {
       "id": "srcin20221apiref",
       "title": "InsuranceNow API Reference Elysian",
       "sourceType": "git",
