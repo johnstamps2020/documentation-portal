@@ -144,8 +144,8 @@ app.use('/portal-config/*', (req, res) => {
 });
 
 // overwrite HTML received through proxy
-const { harmonRouter } = require('./routes/proxyHarmonRouter');
-app.use(harmonRouter);
+// const { harmonRouter } = require('./routes/proxyHarmonRouter');
+// app.use(harmonRouter);
 
 // set up proxies
 const { portal2Proxy, s3Proxy } = require('./controllers/proxyController');
