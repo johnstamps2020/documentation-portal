@@ -1,0 +1,29 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-BusinessFlows.ditamap",
+      "srcId": "is202111esESsrc",
+      "docId": "isbc202111apibfesES",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-BusinessFlows.ditamap",
+      "srcId": "is202111esESsrc",
+      "docId": "iscc202111apibfesES",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-BusinessFlows.ditamap",
+      "srcId": "is202111esESsrc",
+      "docId": "ispc202111apibfesES",
+      "indexRedirect": true
+    }
+  ]
+}
