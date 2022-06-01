@@ -1,0 +1,59 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "isbc202111apibfesES",
+      "title": "Cloud API Business Flows and Configuration es-ES",
+      "url": "cloud/bc/es-ES/202111/cloudapibf",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202111apibfesES",
+      "title": "Cloud API Business Flows and Configuration es-ES",
+      "url": "cloud/cc/es-ES/202111/cloudapibf",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202111apibfesES",
+      "title": "Cloud API Business Flows and Configuration es-ES",
+      "url": "cloud/pc/es-ES/202111/cloudapibf",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
