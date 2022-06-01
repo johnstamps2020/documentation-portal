@@ -4,7 +4,7 @@
     {
       "id": "explorees419rnrelease",
       "title": "Release Notes",
-      "url": "cloud/explorees419/relnotes",
+      "url": "cloud/explore/es419/relnotes",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Explore"],
@@ -22,7 +22,7 @@
     {
       "id": "explorees419usingrelease",
       "title": "Application Guide",
-      "url": "cloud/explorees419/app",
+      "url": "cloud/explore/es419/app",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Explore"],
@@ -40,13 +40,31 @@
     {
       "id": "explorees419datadictrelease",
       "title": "Data Dictionaries",
-      "url": "cloud/explorees419/datadict",
+      "url": "cloud/explore/es419/datadict",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Explore"],
         "version": ["es-419"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "exploreptBRusingrelease",
+      "title": "Application Guide",
+      "url": "cloud/explore/ptBR/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Explore"],
+        "version": ["pt-BR"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Features and functionality"]
       },
       "environments": ["int", "staging"],
       "displayOnLandingPages": true,
