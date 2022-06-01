@@ -56,6 +56,7 @@ product_codes_labels = {
     'is-configupgradetools': {'label': 'InsuranceSuite Configuration Upgrade Tools'},
     'gcc': {'label': 'Guidewire Cloud Console'},
     'cda': {'label': 'Cloud Data Access'},
+    'explore': {'label': 'Explore'},
     'ipf': {'label': 'ClaimCenter Package for France'},
     'ipg': {'label': 'Global Solutions - Germany'}
 }
