@@ -82,8 +82,7 @@
         },
         {
           "label": "DataHub",
-          "page": "dh/10.6.0",
-          "env": ["prod"]
+          "page": "dh/10.6.0"
         },
         {
           "label": "InfoCenter",
@@ -91,8 +90,7 @@
         },
         {
           "label": "InfoCenter",
-          "page": "ic/10.6.0",
-          "env": ["prod"]
+          "page": "ic/10.6.0"
         }
       ]
     },
