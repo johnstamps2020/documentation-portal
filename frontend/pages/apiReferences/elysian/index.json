@@ -23,30 +23,71 @@
   },
   "items": [
     {
-      "label": "InsuranceNow API Reference",
+      "label": "InsuranceNow",
       "class": "productFamily cardShadow",
-      "id": "in20221apiref"
+      "items": [
+        {
+          "label": "API Reference",
+          "id": "in20221apiref"
+        }
+      ]
     },
     {
-      "label": "BillingCenter API Reference",
+      "label": "BillingCenter",
       "class": "productFamily cardShadow",
-      "id": "bcapirefelysian"
+      "items": [
+        {
+          "label": "API Reference",
+          "id": "bcapirefelysian"
+        }
+      ]
     },
     {
-      "label": "ClaimCenter API Reference",
+      "label": "ClaimCenter",
       "class": "productFamily cardShadow",
-      "id": "ccapirefelysian"
+      "items": [
+        {
+          "label": "API Reference",
+          "id": "ccapirefelysian"
+        },
+        {
+          "label": "Cloud API Authentication",
+          "id": "iscc202205apica"
+        },
+        {
+          "label": "Cloud API Business Flows",
+          "id": "iscc202205apibf"
+        }
+      ]
     },
     {
-      "label": "PolicyCenter API Reference",
+      "label": "PolicyCenter",
       "class": "productFamily cardShadow",
-      "id": "pcapirefelysian"
+      "items": [
+        {
+          "label": "API Reference",
+          "id": "pcapirefelysian"
+        },
+        {
+          "label": "Cloud API Authentication",
+          "id": "ispc202205apica"
+        },
+        {
+          "label": "Cloud API Business Flows",
+          "id": "ispc202205apibf"
+        }
+      ]
     },
     {
       "label": "APD API Reference",
       "class": "productFamily cardShadow",
-      "id": "apdmaindoc",
-      "env": ["int"]
+      "env": ["int"],
+      "items": [
+        {
+          "label": "API Reference",
+          "id": "apdmaindoc"
+        }
+      ]
     }
   ]
 }
