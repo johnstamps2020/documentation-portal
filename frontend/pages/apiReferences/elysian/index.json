@@ -23,16 +23,6 @@
   },
   "items": [
     {
-      "label": "InsuranceNow",
-      "class": "categoryCard cardShadow",
-      "items": [
-        {
-          "label": "API Reference",
-          "id": "in20221apiref"
-        }
-      ]
-    },
-    {
       "label": "BillingCenter",
       "class": "categoryCard cardShadow",
       "items": [
@@ -86,6 +76,16 @@
         {
           "label": "API Reference",
           "id": "apdmaindoc"
+        }
+      ]
+    },
+    {
+      "label": "InsuranceNow",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "API Reference",
+          "id": "in20221apiref"
         }
       ]
     }
