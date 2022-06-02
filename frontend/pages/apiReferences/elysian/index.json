@@ -24,7 +24,7 @@
   "items": [
     {
       "label": "InsuranceNow",
-      "class": "productFamily cardShadow",
+      "class": "categoryCard cardShadow",
       "items": [
         {
           "label": "API Reference",
@@ -34,7 +34,7 @@
     },
     {
       "label": "BillingCenter",
-      "class": "productFamily cardShadow",
+      "class": "categoryCard cardShadow",
       "items": [
         {
           "label": "API Reference",
@@ -44,7 +44,7 @@
     },
     {
       "label": "ClaimCenter",
-      "class": "productFamily cardShadow",
+      "class": "categoryCard cardShadow",
       "items": [
         {
           "label": "API Reference",
@@ -62,7 +62,7 @@
     },
     {
       "label": "PolicyCenter",
-      "class": "productFamily cardShadow",
+      "class": "categoryCard cardShadow",
       "items": [
         {
           "label": "API Reference",
@@ -80,7 +80,7 @@
     },
     {
       "label": "APD API Reference",
-      "class": "productFamily cardShadow",
+      "class": "categoryCard cardShadow",
       "env": ["int"],
       "items": [
         {
