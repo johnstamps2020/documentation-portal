@@ -29,6 +29,10 @@
         {
           "label": "API Reference",
           "id": "bcapirefelysian"
+        },
+        {
+          "label": "Cloud API Business Flows",
+          "id": "isbc202205apibf"
         }
       ]
     },
@@ -86,6 +90,10 @@
         {
           "label": "API Reference",
           "id": "in20221apiref"
+        },
+        {
+          "label": "Portal Development Guide",
+          "id": "in20221portaldev"
         }
       ]
     }
