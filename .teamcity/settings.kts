@@ -918,6 +918,7 @@ object Content {
             subProject(createCleanUpSearchIndexProject())
             subProject(createGenerateSitemapProject())
             subProject(createDeployServerConfigProject())
+            subProject(createDeploySearchServiceProject())
             buildType(UploadPdfsForEscrowBuildType)
         }
     }
@@ -1085,6 +1086,89 @@ object Content {
                 vcs {
                     triggerRules = """
                         +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
+                        -:user=doctools:**
+                        """.trimIndent()
+                }
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+        }
+    }
+
+    private fun createDeploySearchServiceProject(): Project {
+        return Project {
+            name = "Deploy search service"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            arrayOf(GwDeployEnvs.DEV,
+                GwDeployEnvs.INT,
+                GwDeployEnvs.STAGING,
+                GwDeployEnvs.PROD).forEach {
+                buildType(createDeploySearchServiceBuildType(it.env_name))
+            }
+        }
+    }
+
+    private fun createDeploySearchServiceBuildType(deploy_env: String): BuildType {
+        val namespace = "doctools"
+        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
+        val deploymentFile: String
+        if (deploy_env == GwDeployEnvs.PROD.env_name) {
+            deploymentFile = "deployment-prod.yml"
+        } else {
+            deploymentFile = "deployment.yml"
+        }
+
+        val searchServiceBuildTypeDeployEnv =
+            if (deploy_env == GwDeployEnvs.PROD.env_name) GwDeployEnvs.US_EAST_2.env_name else deploy_env
+        return BuildType {
+            name = "Deploy search service to $deploy_env"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                branchFilter = "+:<default>"
+                cleanCheckout = true
+            }
+            steps {
+                script {
+                    name = "Deploy to Kubernetes"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                        #!/bin/bash 
+                        set -eux
+                                              
+                        export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
+                        export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
+                        export AWS_DEFAULT_REGION="$awsDefaultRegion"
+                        
+                        # Environment variables needed for Kubernetes config files
+                        export DEPLOY_ENV="$searchServiceBuildTypeDeployEnv"
+                        ###
+                        
+                        aws eks update-kubeconfig --name atmos-${searchServiceBuildTypeDeployEnv}
+                        
+                        echo ${'$'}(kubectl get pods --namespace=${namespace})
+                        
+                        eval "echo \"${'$'}(cat apps/doc_crawler/kube/${deploymentFile})\"" > deployment.yml
+                        
+                        kubectl get secret artifactory-secret --output="jsonpath={.data.\.dockerconfigjson}" --namespace=${namespace} || \
+                        kubectl create secret docker-registry artifactory-secret --docker-server=artifactory.guidewire.com --docker-username=%env.SERVICE_ACCOUNT_USERNAME% --docker-password=%env.ARTIFACTORY_API_KEY% --namespace=${namespace}
+                        
+                        kubectl apply -f deployment.yml --namespace=${namespace}
+                    """.trimIndent()
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerPull = true
+                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                }
+            }
+
+            triggers {
+                vcs {
+                    triggerRules = """
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:apps/doc_crawler/kube/deployment.yml
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:apps/doc_crawler/kube/deployment-prod.yml
                         -:user=doctools:**
                         """.trimIndent()
                 }
