@@ -8,11 +8,14 @@ proxy.on('error', function(err) {
 });
 
 function s3Proxy(req, res, next) {
+  const proxyTarget = req.path.startsWith('/sitemap')
+    ? `${process.env.DOC_S3_URL}/sitemap`
+    : process.env.DOC_S3_URL;
   proxy.web(
     req,
     res,
     {
-      target: `${process.env.DOC_S3_URL}`,
+      target: proxyTarget,
       changeOrigin: true,
     },
     next

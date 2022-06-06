@@ -3,10 +3,8 @@ const OktaJwtVerifier = require('@okta/jwt-verifier');
 const jsonwebtoken = require('jsonwebtoken');
 const { isPublicDoc, isInternalDoc } = require('./configController');
 const { addCommonDataToSessionLocals } = require('./localsController');
-const path = require('path');
-const fs = require('fs');
+const { fetchConfigFileForLandingPage } = require('./frontendController');
 const { winstonLogger } = require('./loggerController');
-const staticPagesDir = path.join(__dirname, '..', 'static', 'pages');
 
 const loginGatewayRoute = '/gw-login';
 const gwCommunityCustomerParam = 'guidewire-customer';
@@ -211,14 +209,9 @@ const authGateway = async (req, res, next) => {
         if (majorInternalRoutes.some(r => reqUrl.startsWith(r))) {
           return true;
         }
-
-        const configFilePath = decodeURI(
-          path.join(staticPagesDir, req.path, 'index.json')
-        );
-        const configFileExists = fs.existsSync(configFilePath);
-        if (configFileExists) {
-          const fileContents = fs.readFileSync(configFilePath, 'utf-8');
-          const fileContentsJson = JSON.parse(fileContents);
+        const response = await fetchConfigFileForLandingPage(req);
+        if (response.ok) {
+          const fileContentsJson = await response.json();
           return fileContentsJson.internal;
         }
         const isInternalInConfig = await isInternalDoc(reqUrl, req);
@@ -238,7 +231,7 @@ const authGateway = async (req, res, next) => {
     const requestIsAuthenticated =
       authenticationIsDisabled || loggedInOrHasValidToken;
     req.session.requestIsAuthenticated = requestIsAuthenticated;
-    addCommonDataToSessionLocals(req, res);
+    await addCommonDataToSessionLocals(req, res);
     const isOpenRoute = await checkIfRouteIsOpen();
     const isInternalRoute = await checkIfRouteIsInternal();
     const hasGuidewireEmail = res.locals.userInfo.hasGuidewireEmail;
