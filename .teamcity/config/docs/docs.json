@@ -8185,6 +8185,22 @@
       "public": false,
       "internal": true,
       "earlyAccess": true
+    },
+    {
+      "id": "updatedev",
+      "title": "Update Dev",
+      "url": "cloud/updatedev",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Platform"],
+        "version": ["latest"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }

@@ -2121,6 +2121,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-internal-doc-poc.git",
       "branch": "master"
+    },
+    {
+      "id": "updatedevsrc",
+      "title": "Update Dev",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/update-dev-docs.git",
+      "branch": "main"
     }
   ]
 }
