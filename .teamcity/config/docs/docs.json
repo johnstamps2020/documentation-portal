@@ -8189,7 +8189,7 @@
     {
       "id": "updatedev",
       "title": "Update Dev",
-      "url": "cloud/updatedev",
+      "url": "cloud/updatedev/latest",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Platform"],
