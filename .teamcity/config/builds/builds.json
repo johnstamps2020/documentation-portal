@@ -2564,6 +2564,11 @@
       "srcId": "gwcpinternalsrc",
       "docId": "gwcpinternal",
       "workingDir": "doc-poc"
+    },
+    {
+      "buildType": "yarn",
+      "srcId": "updatedevsrc",
+      "docId": "updatedev"
     }
   ]
 }
