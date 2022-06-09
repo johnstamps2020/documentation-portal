@@ -22,6 +22,18 @@ function s3Proxy(req, res, next) {
   );
 }
 
+function html5Proxy(req, res, next) {
+  proxy.web(
+    req,
+    res,
+    {
+      target: `${process.env.DOC_S3_URL}/html5/scripts`,
+      changeOrigin: true,
+    },
+    next
+  );
+}
+
 function portal2Proxy(req, res, next) {
   proxy.web(
     req,
@@ -36,5 +48,6 @@ function portal2Proxy(req, res, next) {
 
 module.exports = {
   s3Proxy,
+  html5Proxy,
   portal2Proxy,
 };

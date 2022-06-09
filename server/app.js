@@ -142,8 +142,13 @@ app.use('/portal-config/*', (req, res) => {
 // app.use(harmonRouter);
 
 // set up proxies
-const { portal2Proxy, s3Proxy } = require('./controllers/proxyController');
+const {
+  portal2Proxy,
+  s3Proxy,
+  html5Proxy,
+} = require('./controllers/proxyController');
 app.use('/portal', portal2Proxy);
+app.use('/scripts', html5Proxy);
 app.use(s3Proxy);
 
 // handles unauthorized errors
