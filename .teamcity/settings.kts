@@ -1314,7 +1314,8 @@ object Frontend {
                 cleanCheckout = true
             }
 
-            val outputDir = "%teamcity.build.checkoutDir%/html5"
+            // It is the output path defined in webpack.config.js
+            val outputDir = "%teamcity.build.checkoutDir%/server/static/html5"
 
             steps {
                 step(GwBuildSteps.createBuildHtml5DependenciesStep())
