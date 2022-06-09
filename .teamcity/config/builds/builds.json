@@ -268,7 +268,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-OnPrem-Release.ditaval",
-      "root": "_supermap-10x-active.ditamap",
+      "root": "_supermap-1020",
       "srcId": "selfmanagedis1020src",
       "docId": "bc1020",
       "resources": [
@@ -287,7 +287,7 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-OnPrem-Release.ditaval",
-      "root": "_supermap-10x-active.ditamap",
+      "root": "_supermap-1020.ditamap",
       "srcId": "selfmanagedis1020src",
       "docId": "cc1020",
       "resources": [
@@ -306,7 +306,7 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-OnPrem-Release.ditaval",
-      "root": "_supermap-10x-active.ditamap",
+      "root": "_supermap-1020.ditamap",
       "srcId": "selfmanagedis1020src",
       "docId": "pc1020",
       "resources": [
