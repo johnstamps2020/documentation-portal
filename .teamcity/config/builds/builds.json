@@ -268,7 +268,7 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-OnPrem-Release.ditaval",
-      "root": "_supermap-1020",
+      "root": "_supermap-1020.ditamap",
       "srcId": "selfmanagedis1020src",
       "docId": "bc1020",
       "resources": [
