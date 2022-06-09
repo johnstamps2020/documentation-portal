@@ -251,6 +251,10 @@
           "id": "cloudplatformrelease"
         },
         {
+          "label": "Cloud Updates",
+          "id": "updatedev"
+        },
+        {
           "label": "Integration Framework",
           "class": "group",
           "items": [
