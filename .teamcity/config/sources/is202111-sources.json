@@ -37,6 +37,13 @@
       "branch": "release/es-ES/2021.11.2"
     },
     {
+      "id": "is202111frFRsrc",
+      "title": "IS 2021.11.2 fr-FR",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/fr-FR/2021.11.2"
+    },
+    {
       "id": "srcccapirefdobson",
       "title": "CC API ref preview 2021.11",
       "sourceType": "git",
