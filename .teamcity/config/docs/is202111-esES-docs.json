@@ -54,6 +54,42 @@
       "public": true,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "iscc202111apicaesES",
+      "title": "Cloud API Authentication es-ES",
+      "url": "cloud/cc/es-ES/202111/cloudapica",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202111apicaesES",
+      "title": "Cloud API Authentication es-ES",
+      "url": "cloud/pc/es-ES/202111/cloudapica",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Integration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }

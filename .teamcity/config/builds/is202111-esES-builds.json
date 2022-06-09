@@ -24,6 +24,22 @@
       "srcId": "is202111esESsrc",
       "docId": "ispc202111apibfesES",
       "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-CC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-Auth.ditamap",
+      "srcId": "is202111esESsrc",
+      "docId": "iscc202111apicaesES",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-Auth.ditamap",
+      "srcId": "is202111esESsrc",
+      "docId": "ispc202111apicaesES",
+      "indexRedirect": true
     }
   ]
 }
