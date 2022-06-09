@@ -1314,7 +1314,7 @@ object Frontend {
                 cleanCheckout = true
             }
 
-            val outputDir = "%teamcity.build.checkoutDir%/server/static/html5"
+            val outputDir = "%teamcity.build.checkoutDir%/html5"
 
             steps {
                 step(GwBuildSteps.createBuildHtml5DependenciesStep())
@@ -4126,6 +4126,7 @@ object GwBuildSteps {
         output_dir: String,
     ): ScriptBuildStep {
         val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
+        var sourceDir = output_dir
         var targetDir = ""
         var excludedPatterns = ""
         when (deployment_mode) {
@@ -4133,13 +4134,19 @@ object GwBuildSteps {
                 targetDir = "pages"
                 excludedPatterns = "--exclude \"*l10n/*\" --exclude \"*upgradediffs/*\""
             }
-            GwStaticFilesModes.LOCALIZED_PAGES.mode_name -> targetDir = "pages/l10n"
-            GwStaticFilesModes.UPGRADE_DIFFS.mode_name -> targetDir = "pages/upgradediffs"
+            GwStaticFilesModes.LOCALIZED_PAGES.mode_name -> {
+                sourceDir = "${output_dir}/l10n"
+                targetDir = "pages/l10n"
+            }
+            GwStaticFilesModes.UPGRADE_DIFFS.mode_name -> {
+                sourceDir = "${output_dir}/upgradediffs"
+                targetDir = "pages/upgradediffs"
+            }
             GwStaticFilesModes.SITEMAP.mode_name -> targetDir = "sitemap"
             GwStaticFilesModes.HTML5.mode_name -> targetDir = "html5"
         }
         val deployCommand =
-            "aws s3 sync \"$output_dir\" s3://tenant-doctools-${deploy_env}-builds/${targetDir} --delete $excludedPatterns".trim()
+            "aws s3 sync \"$sourceDir\" s3://tenant-doctools-${deploy_env}-builds/${targetDir} --delete $excludedPatterns".trim()
 
         return ScriptBuildStep {
             name = "Deploy static files to the S3 bucket"
