@@ -1,7 +1,5 @@
-const fs = require('fs');
-const path = require('path');
-const staticPagesDir = path.join(__dirname, '..', 'static', 'pages');
 const { winstonLogger } = require('./loggerController');
+const fetch = require('node-fetch');
 
 function getMockLanguages() {
   return ['Dothraki', 'Klingon', 'Fremeni', 'Minion', 'Polish'].map(
@@ -67,16 +65,21 @@ function setL10nParams(pageClass) {
   return l10n;
 }
 
+async function fetchConfigFileForLandingPage(req) {
+  const reqPath = req.path === '/' ? '' : req.path;
+  const configFilePath = new URL(
+    `pages${reqPath}/index.json`,
+    process.env.DOC_S3_URL
+  ).href;
+  return await fetch(configFilePath);
+}
+
 async function getPage(req, res, next) {
   try {
-    const configFilePath = decodeURI(
-      path.join(staticPagesDir, req.path, 'index.json')
-    );
-    const configFileExists = fs.existsSync(configFilePath);
-    if (configFileExists) {
+    const response = await fetchConfigFileForLandingPage(req);
+    if (response.ok) {
+      const fileContentsJson = await response.json();
       const hasGuidewireEmail = res.locals.userInfo.hasGuidewireEmail;
-      const fileContents = fs.readFileSync(configFilePath, 'utf-8');
-      const fileContentsJson = JSON.parse(fileContents);
       const templateName = fileContentsJson.template;
       res.render(templateName, {
         pageContent: fileContentsJson,
@@ -95,20 +98,15 @@ async function getPage(req, res, next) {
   }
 }
 
-function getTranslatedPages() {
+async function getTranslatedPages() {
   try {
-    const rootTranslatedPageConfigFilePath = path.join(
-      staticPagesDir,
-      'l10n',
-      'index.json'
-    );
-    const pagesFileExists = fs.existsSync(rootTranslatedPageConfigFilePath);
-    if (pagesFileExists) {
-      const fileContents = fs.readFileSync(
-        rootTranslatedPageConfigFilePath,
-        'utf-8'
-      );
-      const fileContentsJson = JSON.parse(fileContents);
+    const rootTranslatedPageConfigFilePath = new URL(
+      `pages/l10n/index.json`,
+      process.env.DOC_S3_URL
+    ).href;
+    const response = await fetch(rootTranslatedPageConfigFilePath);
+    if (response.ok) {
+      const fileContentsJson = await response.json();
       return fileContentsJson.items.map(o => ({
         label: o.label,
         pageUrl: `/l10n/${o.page}`,
@@ -124,4 +122,8 @@ function getTranslatedPages() {
   }
 }
 
-module.exports = { getPage, getTranslatedPages };
+module.exports = {
+  fetchConfigFileForLandingPage,
+  getPage,
+  getTranslatedPages,
+};

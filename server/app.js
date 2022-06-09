@@ -12,7 +12,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const sassMiddleware = require('node-sass-middleware');
 const favicon = require('serve-favicon');
-const session = require('express-session');
+const session = require('cookie-session');
 const httpContext = require('express-http-context');
 
 const app = express();
@@ -43,20 +43,16 @@ const options = {
 winstonLogger.notice('Server app instantiated!');
 
 const sessionSettings = {
-  secret: `${process.env.SESSION_KEY}`,
-  resave: true,
-  saveUninitialized: false,
-  cookie: {
-    sameSite: 'none',
-    secure: true,
-  },
+  name: 'session',
+  secret: process.env.SESSION_KEY,
+  maxAge: 24 * 60 * 60 * 1000, // 24 hours
+  sameSite: 'none',
+  secure: true,
 };
 
 if (process.env.LOCALHOST_SESSION_SETTINGS === 'yes') {
-  sessionSettings.cookie = {
-    sameSite: 'lax',
-    secure: false,
-  };
+  sessionSettings.sameSite = 'lax';
+  sessionSettings.secure = false;
 }
 
 // session support is required to use ExpressOIDC
@@ -96,8 +92,6 @@ app.use('/authorization-code', oidcLoginRouter);
 
 // serve static assets from the public folder
 app.use(express.static(path.join(__dirname, 'public'), options));
-app.use(express.static(path.join(__dirname, 'static', 'sitemap')));
-app.use(express.static(path.join(__dirname, 'static', 'html5')));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 const authGateway = require('./controllers/authController').authGateway;

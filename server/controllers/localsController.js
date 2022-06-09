@@ -8,10 +8,10 @@ const {
 } = require('./analyticsController');
 const { winstonLogger } = require('./loggerController');
 
-function addCommonDataToSessionLocals(req, res) {
+async function addCommonDataToSessionLocals(req, res) {
   try {
     res.locals.userInfo = getUserInfo(req);
-    res.locals.translatedPages = getTranslatedPages();
+    res.locals.translatedPages = await getTranslatedPages();
     res.locals.analytics = {
       tagManagerHeadScript,
       tagManagerBody,

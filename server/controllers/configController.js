@@ -3,14 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const { winstonLogger } = require('./loggerController');
 
-const localConfigDir = path.resolve(`${__dirname}/../../.teamcity/config/docs`);
-const breadcrumbsConfigPath = path.resolve(
-  `${__dirname}/../static/pages/breadcrumbs.json`
-);
-const versionSelectorsConfigPath = path.resolve(
-  `${__dirname}/../static/pages/versionSelectors.json`
-);
-
 let storedConfig;
 
 async function loadConfig() {
@@ -46,6 +38,9 @@ async function loadConfig() {
         }
       }
 
+      const localConfigDir = path.resolve(
+        `${__dirname}/../../.teamcity/config/docs`
+      );
       config = readFilesInDir(localConfigDir);
     } else {
       try {
@@ -160,26 +155,32 @@ async function isInternalDoc(url, reqObj) {
 
 async function getRootBreadcrumb(pagePathname) {
   try {
-    const breadcrumbsFile = fs.readFileSync(breadcrumbsConfigPath, 'utf-8');
-    try {
-      const breadcrumbsMapping = JSON.parse(breadcrumbsFile);
-      for (const breadcrumb of breadcrumbsMapping) {
-        if (
-          pagePathname.startsWith(breadcrumb.docUrl) &&
-          breadcrumb.rootPages.length === 1
-        ) {
-          return {
-            rootPage: {
-              path: breadcrumb.rootPages[0].path,
-              label: breadcrumb.rootPages[0].label,
-            },
-          };
+    const breadcrumbsConfigPath = new URL(
+      `pages/breadcrumbs.json`,
+      process.env.DOC_S3_URL
+    ).href;
+    const response = await fetch(breadcrumbsConfigPath);
+    if (response.ok) {
+      const breadcrumbsMapping = await response.json();
+      try {
+        for (const breadcrumb of breadcrumbsMapping) {
+          if (
+            pagePathname.startsWith(breadcrumb.docUrl) &&
+            breadcrumb.rootPages.length === 1
+          ) {
+            return {
+              rootPage: {
+                path: breadcrumb.rootPages[0].path,
+                label: breadcrumb.rootPages[0].label,
+              },
+            };
+          }
         }
+      } catch (breadErr) {
+        throw new Error(
+          `Problem getting breadcrumb file for page: "${pagePathname}" from file "${breadcrumbsConfigPath}": ${breadErr}`
+        );
       }
-    } catch (breadErr) {
-      throw new Error(
-        `Problem getting breadcrumb file for page: "${pagePathname}" from file "${breadcrumbsConfigPath}": ${breadErr}`
-      );
     }
     return { rootPage: {} };
   } catch (err) {
@@ -193,34 +194,37 @@ async function getRootBreadcrumb(pagePathname) {
 
 async function getVersionSelector(docId, reqObj, resObj) {
   try {
-    try {
-      const versionSelectorsFile = fs.readFileSync(
-        versionSelectorsConfigPath,
-        'utf-8'
-      );
-      const versionSelectorMapping = JSON.parse(versionSelectorsFile);
-      const matchingVersionSelector = versionSelectorMapping.find(
-        s => docId === s.docId
-      );
-      // The getConfig function checks if the request is authenticated and if the user has the Guidewire email,
-      // and filters the returned docs accordingly.
-      // Therefore, for the selector it's enough to check if a particular version has a doc in the returned config.
-      const config = await getConfig(reqObj, resObj);
-      const docs = config.docs;
-      if (matchingVersionSelector) {
-        matchingVersionSelector[
-          'allVersions'
-        ] = matchingVersionSelector.allVersions.filter(v =>
-          docs.find(d => d.url === v.url)
+    const versionSelectorsConfigPath = new URL(
+      `pages/versionSelectors.json`,
+      process.env.DOC_S3_URL
+    ).href;
+    const response = await fetch(versionSelectorsConfigPath);
+    if (response.ok) {
+      const versionSelectorMapping = await response.json();
+      try {
+        const matchingVersionSelector = versionSelectorMapping.find(
+          s => docId === s.docId
         );
-        return { matchingVersionSelector: matchingVersionSelector };
-      } else {
-        return { matchingVersionSelector: {} };
+        // The getConfig function checks if the request is authenticated and if the user has the Guidewire email,
+        // and filters the returned docs accordingly.
+        // Therefore, for the selector it's enough to check if a particular version has a doc in the returned config.
+        const config = await getConfig(reqObj, resObj);
+        const docs = config.docs;
+        if (matchingVersionSelector) {
+          matchingVersionSelector[
+            'allVersions'
+          ] = matchingVersionSelector.allVersions.filter(v =>
+            docs.find(d => d.url === v.url)
+          );
+          return { matchingVersionSelector: matchingVersionSelector };
+        }
+      } catch (verSelectorErr) {
+        throw new Error(
+          `Problem getting version selector for docId: ${docId}: ${verSelectorErr}`
+        );
       }
-    } catch (verSelectorErr) {
-      throw new Error(
-        `Problem getting version selector for docId: ${docId}: ${verSelectorErr}`
-      );
+    } else {
+      return { matchingVersionSelector: {} };
     }
   } catch (err) {
     winstonLogger.error(

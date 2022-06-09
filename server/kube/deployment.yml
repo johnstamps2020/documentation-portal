@@ -1,15 +1,3 @@
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: docportal-app-static-pv-claim-${DEPLOY_ENV}
-  namespace: doctools
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
----
 apiVersion: external-secrets.io/v1beta1
 kind: SecretStore
 metadata:
@@ -41,6 +29,19 @@ spec:
     - extract:
         key: tenant-doctools-docportal
 ---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: docportal-app-pdb
+  namespace: doctools
+  labels:
+    app: docportal-app
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: docportal-app
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -55,9 +56,11 @@ spec:
   selector:
     matchLabels:
       app: docportal-app
-  replicas: 1
+  replicas: 2
   strategy:
-    type: Recreate
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
   template:
     metadata:
       labels:
@@ -71,6 +74,12 @@ spec:
       containers:
         - name: docportal
           image: artifactory.guidewire.com/doctools-docker-dev/docportal:${TAG_VERSION}
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - /bin/sleep
+                  - '30'
           command: [ \"/bin/sh\", \"-c\" ]
           args: [ \"until wget -qO- http://localhost:15000/server_info | grep '\\\"state\\\": \\\"LIVE\\\"'; do echo 'Waiting for Istio sidecar'; sleep 1 ; done ; echo 'istio sidecar available'; node server.js\" ]
           imagePullPolicy: Always
@@ -198,12 +207,5 @@ spec:
             limits:
               memory: \"8G\"
               cpu: \"2\"
-          volumeMounts:
-            - mountPath: "/usr/src/app/static"
-              name: static-storage
-      volumes:
-        - name: static-storage
-          persistentVolumeClaim:
-            claimName: docportal-app-static-pv-claim-${DEPLOY_ENV}
       imagePullSecrets:
         - name: artifactory-secret

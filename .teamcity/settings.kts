@@ -116,6 +116,14 @@ enum class GwExportFrequencies(val param_value: String) {
     WEEKLY("weekly")
 }
 
+enum class GwStaticFilesModes(val mode_name: String) {
+    LANDING_PAGES("landing_pages"),
+    LOCALIZED_PAGES("localized_pages"),
+    UPGRADE_DIFFS("upgrade_diffs"),
+    SITEMAP("sitemap"),
+    HTML5("html5")
+}
+
 object Runners {
     val rootProject = createRootProjectForRunners()
 
@@ -951,7 +959,9 @@ object Content {
 
             steps {
                 step(GwBuildSteps.createRunSitemapGeneratorStep(deploy_env, outputDir))
-                step(GwBuildSteps.createDeployFilesToPersistentVolumeStep(deploy_env, "sitemap", outputDir))
+                step(GwBuildSteps.createDeployStaticFilesStep(deploy_env,
+                    GwStaticFilesModes.SITEMAP.mode_name,
+                    outputDir))
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -1308,7 +1318,9 @@ object Frontend {
 
             steps {
                 step(GwBuildSteps.createBuildHtml5DependenciesStep())
-                step(GwBuildSteps.createDeployFilesToPersistentVolumeStep(deploy_env, "html5", outputDir))
+                step(GwBuildSteps.createDeployStaticFilesStep(deploy_env,
+                    GwStaticFilesModes.HTML5.mode_name,
+                    outputDir))
             }
 
             triggers {
@@ -1350,7 +1362,9 @@ object Frontend {
                         deploy_env
                     )
                 )
-                step(GwBuildSteps.createDeployFilesToPersistentVolumeStep(deploy_env, "frontend", outputDir))
+                step(GwBuildSteps.createDeployStaticFilesStep(deploy_env,
+                    GwStaticFilesModes.LANDING_PAGES.mode_name,
+                    outputDir))
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -1417,7 +1431,9 @@ object Frontend {
                         deploy_env
                     )
                 )
-                step(GwBuildSteps.createDeployFilesToPersistentVolumeStep(deploy_env, "localizedPages", outputDir))
+                step(GwBuildSteps.createDeployStaticFilesStep(deploy_env,
+                    GwStaticFilesModes.LOCALIZED_PAGES.mode_name,
+                    outputDir))
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -1484,7 +1500,9 @@ object Frontend {
                         deploy_env
                     )
                 )
-                step(GwBuildSteps.createDeployFilesToPersistentVolumeStep(deploy_env, "upgradeDiffs", outputDir))
+                step(GwBuildSteps.createDeployStaticFilesStep(deploy_env,
+                    GwStaticFilesModes.UPGRADE_DIFFS.mode_name,
+                    outputDir))
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -4102,16 +4120,29 @@ object GwBuildSteps {
         }
     }
 
-    fun createDeployFilesToPersistentVolumeStep(
+    fun createDeployStaticFilesStep(
         deploy_env: String,
         deployment_mode: String,
         output_dir: String,
     ): ScriptBuildStep {
         val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
-        val atmosDeployEnv =
-            if (deploy_env == GwDeployEnvs.PROD.env_name) GwDeployEnvs.US_EAST_2.env_name else deploy_env
+        var targetDir = ""
+        var excludedPatterns = ""
+        when (deployment_mode) {
+            GwStaticFilesModes.LANDING_PAGES.mode_name -> {
+                targetDir = "pages"
+                excludedPatterns = "--exclude \"*l10n/*\" --exclude \"*upgradediffs/*\""
+            }
+            GwStaticFilesModes.LOCALIZED_PAGES.mode_name -> targetDir = "pages/l10n"
+            GwStaticFilesModes.UPGRADE_DIFFS.mode_name -> targetDir = "pages/upgradediffs"
+            GwStaticFilesModes.SITEMAP.mode_name -> targetDir = "sitemap"
+            GwStaticFilesModes.HTML5.mode_name -> targetDir = "html5"
+        }
+        val deployCommand =
+            "aws s3 sync \"$output_dir\" s3://tenant-doctools-${deploy_env}-builds/${targetDir} --delete $excludedPatterns".trim()
+
         return ScriptBuildStep {
-            name = "Deploy files to persistent volume"
+            name = "Deploy static files to the S3 bucket"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash 
@@ -4120,9 +4151,8 @@ object GwBuildSteps {
                 export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
                 export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
                 export AWS_DEFAULT_REGION="$awsDefaultRegion"
-                export DEPLOY_ENV="$atmosDeployEnv"
                 
-                sh %teamcity.build.workingDir%/ci/deployFilesToPersistentVolume.sh $deployment_mode "$output_dir"
+                $deployCommand
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
