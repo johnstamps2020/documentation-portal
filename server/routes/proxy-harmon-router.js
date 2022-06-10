@@ -22,7 +22,8 @@ function appendToSelectedItem(node, str) {
     });
   } catch (err) {
     winstonLogger.error(`ERROR overwriting response using Harmon: 
-          ERROR: ${err.message}`);
+          ERROR: ${JSON.stringify(err)}
+          MESSAGE: ${err.message}`);
   }
 }
 
@@ -46,25 +47,33 @@ const responseSelectors = [
 const harmonRouter = Router();
 
 harmonRouter.use(function(req, res, next) {
-  if (responseSelectors.length === 1 && res.locals?.userInfo) {
-    const pendoInitializeScript = getPendoInitializeScript(res.locals.userInfo);
-    const pendoAndGoogleScripts = `
+  try {
+    if (responseSelectors.length === 1 && res.locals?.userInfo) {
+      const pendoInitializeScript = getPendoInitializeScript(
+        res.locals.userInfo
+      );
+      const pendoAndGoogleScripts = `
       <!-- Pendo initialize -->
       <script>${pendoInitializeScript}</script>
       <!-- Google tag manager no-script -->
       <noscript>${tagManagerBody}</noscript>`;
-    responseSelectors.push({
-      query: 'body',
-      func: function(node) {
-        appendToSelectedItem(node, pendoAndGoogleScripts);
-      },
-    });
+      responseSelectors.push({
+        query: 'body > *:last-child',
+        func: function(node) {
+          appendToSelectedItem(node, pendoAndGoogleScripts);
+        },
+      });
+    }
+  } catch (err) {
+    winstonLogger.error(`Problem with the Harmon router:
+      ERROR: ${JSON.stringify(err)}
+      MESSAGE: ${err.message}`);
   }
 
   next();
 });
 
-harmonRouter.use(harmon([], responseSelectors));
+harmonRouter.use(harmon([], responseSelectors, true));
 
 module.exports = {
   harmonRouter,

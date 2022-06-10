@@ -8,6 +8,7 @@
   "scripts": {
     "start": "node server.js",
     "start:dev": "nodemon server.js -e js,ejs,css,html,jpg,png",
+    "dev": "yarn start:dev",
     "build-html5-dependencies": "webpack",
     "html5-watch": "webpack --watch",
     "test": "jest"
@@ -66,7 +67,8 @@
     "webpack-cli": "^4.9.2"
   },
   "resolutions": {
-    "minimist": "^1.2.6"
+    "minimist": "^1.2.6",
+    "html-select": "2.3.24"
   },
   "packageManager": "yarn@3.2.1"
 }
