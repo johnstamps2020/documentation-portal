@@ -4482,7 +4482,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"html-select@npm:^2.3.5":
+"html-select@npm:2.3.24":
   version: 2.3.24
   resolution: "html-select@npm:2.3.24"
   dependencies:
