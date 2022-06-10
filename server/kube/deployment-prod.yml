@@ -73,7 +73,7 @@ spec:
     spec:
       containers:
         - name: docportal
-          image: artifactory.guidewire.com/doctools-docker-dev/docportal:${TAG_VERSION}
+          image: 710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal:${TAG_VERSION}
           lifecycle:
             preStop:
               exec:
