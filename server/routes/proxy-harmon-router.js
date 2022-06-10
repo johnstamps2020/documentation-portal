@@ -58,7 +58,7 @@ harmonRouter.use(function(req, res, next) {
       <!-- Google tag manager no-script -->
       <noscript>${tagManagerBody}</noscript>`;
       responseSelectors.push({
-        query: 'body > *:last-child',
+        query: 'html > body',
         func: function(node) {
           appendToSelectedItem(node, pendoAndGoogleScripts);
         },
@@ -73,7 +73,7 @@ harmonRouter.use(function(req, res, next) {
   next();
 });
 
-harmonRouter.use(harmon([], responseSelectors, true));
+harmonRouter.use(harmon([], responseSelectors));
 
 module.exports = {
   harmonRouter,
