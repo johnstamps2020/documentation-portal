@@ -168,9 +168,9 @@
         "version": ["latest"],
         "release": ["Banff", "Cortina", "Dobson"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int", "staging", "prod"],
       "public": false,
-      "internal": false,
+      "internal": true,
       "earlyAccess": false
     },
     {
