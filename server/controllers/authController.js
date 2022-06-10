@@ -157,15 +157,19 @@ const authGateway = async (req, res, next) => {
 
     function openRequestedPage() {
       try {
-        if (req.query.authSource) {
-          const fullRequestUrl = new URL(reqUrl, process.env.APP_BASE_URL);
-          fullRequestUrl.searchParams.delete('authSource');
-          res.redirect(fullRequestUrl.href);
-        }
+        let targetUrl = reqUrl;
         if (req.session.redirectTo) {
           const redirectTo = req.session.redirectTo;
           delete req.session.redirectTo;
-          res.redirect(redirectTo);
+          targetUrl = redirectTo;
+        }
+        if (req.query.authSource) {
+          const fullRequestUrl = new URL(targetUrl, process.env.APP_BASE_URL);
+          fullRequestUrl.searchParams.delete('authSource');
+          targetUrl = fullRequestUrl.href;
+        }
+        if (targetUrl !== reqUrl) {
+          res.redirect(targetUrl);
         } else {
           next();
         }
