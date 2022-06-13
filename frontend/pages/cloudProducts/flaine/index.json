@@ -177,44 +177,84 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Authentication",
-          "id": "guidewireidentityfederationhubdraft"
-        },
-        {
-          "label": "Authentication",
-          "id": "guidewireidentityfederationhub"
+          "label": "Cloud Home",
+          "class": "group",
+          "items": [
+            {
+              "label": "Release Notes",
+              "id": "gchhelprnrelease"
+            },
+            {
+              "label": "Getting Started with Cloud Home",
+              "id": "gchhelprelease"
+            }
+          ]
         },
         {
           "label": "Cloud Console",
-          "page": "../cloudConsole"
+          "class": "group",
+          "items": [
+            {
+              "label": "Cloud Console Release Notes",
+              "id": "guidewirecloudconsolerninsurerdev"
+            },
+            {
+              "label": "Cloud Console Release Notes",
+              "id": "guidewirecloudconsolerninsurerdevdraft"
+            },
+            {
+              "label": "Cloud Console Documentation",
+              "page": "../cloudConsole"
+            }
+          ]
         },
         {
-          "label": "Cloud Console Release Notes",
-          "id": "guidewirecloudconsolerninsurerdev"
+          "label": "Cloud Infrastructure",
+          "class": "group",
+          "items": [
+            {
+              "label": "Release Notes",
+              "id": "gwcpreleasenotes"
+            },
+            {
+              "label": "Authentication",
+              "id": "guidewireidentityfederationhubdraft"
+            },
+            {
+              "label": "Authentication",
+              "id": "guidewireidentityfederationhub"
+            },
+            {
+              "label": "Network Connectivity",
+              "id": "cloudplatformdraft"
+            },
+            {
+              "label": "Network Connectivity",
+              "id": "cloudplatformrelease"
+            }
+          ]
         },
         {
-          "label": "Cloud Console Release Notes",
-          "id": "guidewirecloudconsolerninsurerdevdraft"
-        },
-        {
-          "label": "Cloud Home",
-          "id": "gchhelprelease"
-        },
-        {
-          "label": "Cloud Home Release Notes",
-          "id": "gchhelprnrelease"
-        },
-        {
-          "label": "Cloud Platform Release Notes",
-          "id": "gwcpreleasenotes"
-        },
-        {
-          "label": "Network Connectivity",
-          "id": "cloudplatformdraft"
-        },
-        {
-          "label": "Network Connectivity",
-          "id": "cloudplatformrelease"
+          "label": "Integration Framework",
+          "class": "group",
+          "items": [
+            {
+              "label": "Integration Gateway Release Notes",
+              "id": "integgatewayrndraft"
+            },
+            {
+              "label": "Integration Gateway Release Notes",
+              "id": "integgatewayrn202205"
+            },
+            {
+              "label": "Integration Gateway Developer Guide",
+              "id": "integgatewaydevdraft"
+            },
+            {
+              "label": "Integration Gateway Developer Guide",
+              "id": "integgatewaydev202205"
+            }
+          ]
         }
       ]
     }
