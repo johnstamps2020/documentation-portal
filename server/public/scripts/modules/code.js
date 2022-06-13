@@ -2,7 +2,7 @@ import '../../stylesheets/modules/code.css';
 import { highlightAll } from 'prismjs';
 
 function languageIsSet(elem) {
-  return !!elem.closest("*[class^='language-'], *[class*=' language-");
+  return !!elem.closest("*[class^='language-'], *[class*=' language-']");
 }
 
 export function normalizeCode() {

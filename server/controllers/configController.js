@@ -217,6 +217,8 @@ async function getVersionSelector(docId, reqObj, resObj) {
             docs.find(d => d.url === v.url)
           );
           return { matchingVersionSelector: matchingVersionSelector };
+        } else {
+          return { matchingVersionSelector: {} };
         }
       } catch (verSelectorErr) {
         throw new Error(
