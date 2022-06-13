@@ -229,11 +229,11 @@
           "class": "group",
           "items": [
             {
-              "label": "Cloud Console Release Notes",
+              "label": "Release Notes",
               "id": "guidewirecloudconsolerninsurerdev"
             },
             {
-              "label": "Cloud Console Release Notes",
+              "label": "Release Notes",
               "id": "guidewirecloudconsolerninsurerdevdraft"
             },
             {
@@ -273,11 +273,11 @@
           "class": "group",
           "items": [
             {
-              "label": "Integration Gateway Release Notes",
+              "label": "Release Notes",
               "id": "integgatewayrndraft"
             },
             {
-              "label": "Integration Gateway Release Notes",
+              "label": "Release Notes",
               "id": "integgatewayrn202205"
             },
             {
