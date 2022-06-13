@@ -9,8 +9,7 @@
     "items": [
       {
         "label": "Flaine",
-        "page": "../flaine",
-        "env": ["int"]
+        "page": "../flaine"
       },
       {
         "label": "Elysian",
