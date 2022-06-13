@@ -26,6 +26,11 @@
       "page": "elysian"
     },
     {
+      "label": "Flaine",
+      "page": "flaine",
+      "env": ["int"]
+    },
+    {
       "label": "_redirect",
       "link": "/cloudProducts/elysian"
     }
