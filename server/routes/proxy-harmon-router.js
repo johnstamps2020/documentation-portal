@@ -58,7 +58,11 @@ harmonRouter.use(function(req, res, next) {
       <!-- Google tag manager no-script -->
       <noscript>${tagManagerBody}</noscript>`;
       responseSelectors.push({
-        query: 'html > body',
+        query:
+          // HTML5 -> div.footerContents
+          // Webhelp -> header.wh_header
+          // Docusaurus -> body.navigation-with-keyboard
+          'div.footerContents, header.wh_header, body.navigation-with-keyboard',
         func: function(node) {
           appendToSelectedItem(node, pendoAndGoogleScripts);
         },
