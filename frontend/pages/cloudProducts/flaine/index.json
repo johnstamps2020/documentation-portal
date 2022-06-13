@@ -153,6 +153,10 @@
             {
               "label": "Getting Started with Cloud Home",
               "id": "gchhelprelease"
+            },
+            {
+              "label": "Cloud Updates",
+              "id": "updatedev"
             }
           ]
         },
