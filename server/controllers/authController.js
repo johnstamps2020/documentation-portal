@@ -19,6 +19,7 @@ function getTokenFromRequestHeader(req) {
       `Problem getting token from request header 
               ERROR: ${JSON.stringify(err)}`
     );
+    return null;
   }
 }
 
@@ -60,13 +61,17 @@ function createOktaJwtVerifier(token, availableIssuers) {
         },
       });
     } else {
-      throw new Error('Invalid JSON Web Token in the Authorization header.');
+      winstonLogger.warning(
+        'Invalid JSON Web Token in the Authorization header'
+      );
+      return null;
     }
   } catch (err) {
     winstonLogger.error(
       `Problem creating OKTA JWT verifier 
               ERROR: ${JSON.stringify(err)}`
     );
+    return null;
   }
 }
 
@@ -78,10 +83,13 @@ async function checkTokenInOkta(token, jwtVerifierInstance) {
     );
     return jwt;
   } catch (err) {
-    throw new Error(
-      `${err.name}: ${err.userMessage}
-          ERROR: ${JSON.stringify(err)}`
-    );
+    if (err.name === 'JwtParseError') {
+      winstonLogger.warning(`Cannot parse JSON Web Token: ${err.userMessage}`);
+      return null;
+    } else {
+      winstonLogger.error(`${err.name}: ${err.stack}`);
+      return null;
+    }
   }
 }
 
@@ -91,11 +99,15 @@ async function verifyToken(req) {
     if (bearerToken) {
       const oktaIssuers = getAvailableOktaIssuers();
       const oktaJwtVerifier = createOktaJwtVerifier(bearerToken, oktaIssuers);
-      const verifiedToken = await checkTokenInOkta(
-        bearerToken,
-        oktaJwtVerifier
-      );
-      return verifiedToken;
+      if (oktaJwtVerifier) {
+        const verifiedToken = await checkTokenInOkta(
+          bearerToken,
+          oktaJwtVerifier
+        );
+        return verifiedToken;
+      } else {
+        return oktaJwtVerifier;
+      }
     } else {
       winstonLogger.info(
         'The request does not contain the "Authorization: Bearer" header.'
@@ -103,7 +115,8 @@ async function verifyToken(req) {
       return null;
     }
   } catch (err) {
-    throw new Error(JSON.stringify(err));
+    winstonLogger.error(JSON.stringify(err));
+    return null;
   }
 }
 
