@@ -9,7 +9,8 @@
     "items": [
       {
         "label": "Flaine",
-        "page": "../flaine"
+        "page": "../flaine",
+        "env": ["int"]
       },
       {
         "label": "Dobson",
