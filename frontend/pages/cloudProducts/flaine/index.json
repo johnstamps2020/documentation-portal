@@ -33,6 +33,7 @@
     {
       "label": "Applications",
       "class": "categoryCard cardShadow",
+      "env": ["int"],
       "items": [
         {
           "label": "InsuranceNow",
@@ -43,6 +44,7 @@
     {
       "label": "Data and Analytics",
       "class": "categoryCard cardShadow",
+      "env": ["int"],
       "items": [
         {
           "label": "Cloud Data Access",
@@ -87,6 +89,7 @@
     {
       "label": "Digital",
       "class": "categoryCard cardShadow",
+      "env": ["int"],
       "items": [
         {
           "label": "Digital Applications",
@@ -137,6 +140,7 @@
     {
       "label": "Cyence",
       "class": "categoryCard cardShadow",
+      "env": ["int"],
       "items": [
         {
           "label": "Cyence Cyber",
@@ -175,6 +179,7 @@
     {
       "label": "Guidewire Cloud Platform",
       "class": "categoryCard cardShadow",
+      "env": ["int"],
       "items": [
         {
           "label": "Cloud Home",
