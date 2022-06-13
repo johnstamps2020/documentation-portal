@@ -1,0 +1,77 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "is202111contactptBR",
+      "title": "Contact Management pt-BR",
+      "url": "cloud/is/pt-BR/202111/contact",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202111appptBR",
+      "title": "Application Guide pt-BR",
+      "url": "cloud/bc/pt-BR/202111/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202111appptBR",
+      "title": "Application Guide pt-BR",
+      "url": "cloud/cc/pt-BR/202111/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202111appptBR",
+      "title": "Application Guide pt-BR",
+      "url": "cloud/pc/pt-BR/202111/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
