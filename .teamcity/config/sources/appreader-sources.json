@@ -1,0 +1,12 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "appreadersrc",
+      "title": "AppReader",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/appreader.git",
+      "branch": "main"
+    }
+  ]
+}
