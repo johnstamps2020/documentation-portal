@@ -1,0 +1,20 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "appreaderrn400",
+      "title": "AppReader Release Notes",
+      "url": "cloud/appreader/400/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire AppReader"],
+        "version": ["4.0.0"]
+      },
+      "environments": ["int", "staging"],
+      "internal": false,
+      "earlyAccess": false,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}

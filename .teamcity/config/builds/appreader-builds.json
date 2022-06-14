@@ -1,0 +1,12 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "root": "AppReaderReleaseNotes.ditamap",
+      "docId": "appreaderrn400",
+      "srcId": "appreadersrc",
+      "indexRedirect": true
+    }
+  ]
+}
