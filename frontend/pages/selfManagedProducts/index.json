@@ -10,13 +10,7 @@
       "items": [
         {
           "label": "PolicyCenter",
-          "id": "pc1021",
-          "env": ["staging"]
-        },
-        {
-          "label": "PolicyCenter",
-          "id": "pc1020",
-          "env": ["prod"]
+          "id": "pc1021"
         },
         {
           "label": "PolicyCenter",
@@ -24,13 +18,7 @@
         },
         {
           "label": "ClaimCenter",
-          "id": "cc1021",
-          "env": ["staging"]
-        },
-        {
-          "label": "ClaimCenter",
-          "id": "cc1020",
-          "env": ["prod"]
+          "id": "cc1021"
         },
         {
           "label": "ClaimCenter",
@@ -38,13 +26,7 @@
         },
         {
           "label": "BillingCenter",
-          "id": "bc1021",
-          "env": ["staging"]
-        },
-        {
-          "label": "BillingCenter",
-          "id": "bc1020",
-          "env": ["prod"]
+          "id": "bc1021"
         },
         {
           "label": "BillingCenter",
@@ -96,23 +78,11 @@
       "items": [
         {
           "label": "DataHub",
-          "page": "dh/10.7.0",
-          "env": ["staging"]
-        },
-        {
-          "label": "DataHub",
-          "page": "dh/10.6.0",
-          "env": ["prod"]
+          "page": "dh/10.7.0"
         },
         {
           "label": "InfoCenter",
-          "page": "ic/10.7.0",
-          "env": ["staging"]
-        },
-        {
-          "label": "InfoCenter",
-          "page": "ic/10.6.0",
-          "env": ["prod"]
+          "page": "ic/10.7.0"
         }
       ]
     },
