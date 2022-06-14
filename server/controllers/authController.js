@@ -142,6 +142,7 @@ const majorOpenRoutes = [
   '/search',
   '/apiReferences',
   '/recommendations',
+  '/scripts',
 ];
 
 const majorInternalRoutes = [];
