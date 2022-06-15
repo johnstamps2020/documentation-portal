@@ -219,7 +219,11 @@ def get_changed_files(app_config: AppConfig):
         )
 
     is_validation_listener_for_pr = 'pull-requests' in app_config.teamcity_build_branch
-    return (is_validation_listener_for_pr and get_changes_from_pull_request()) or get_latest_change_from_branch()
+    changed_files = (
+                            is_validation_listener_for_pr and get_changes_from_pull_request()
+                    ) or get_latest_change_from_branch()
+    _logger.info(f'Number of changes: {len(changed_files)}')
+    return changed_files
 
 
 @check_processing_result
