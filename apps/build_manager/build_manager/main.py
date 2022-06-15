@@ -2,13 +2,13 @@ import dataclasses
 import json
 import logging
 import os
+import sys
+import time
 import urllib.parse
 from dataclasses import dataclass
 from typing import Optional, Union
 
 import requests
-import sys
-import time
 
 _logger = logging.getLogger('build_manager_logger')
 _logger.setLevel(logging.INFO)
@@ -69,16 +69,15 @@ class AppConfig:
                                     f'{self._bitbucket_project_key}/repos/{self._bitbucket_repository_name}'
                                     f'/commits?until={self._bitbucket_branch_name}&merges=exclude&limit=1')
 
-    @property
-    def bitbucket_pull_request_changes_url(self):
+    def get_bitbucket_pull_request_changes_url(self, start: int):
         return urllib.parse.urljoin(self._bitbucket_api_root_url,
                                     f'{self._bitbucket_project_key}/repos/{self._bitbucket_repository_name}'
-                                    f'/{self.teamcity_build_branch}/changes')
+                                    f'/{self.teamcity_build_branch}/changes?start={start}')
 
-    def get_bitbucket_commit_changes_url(self, commit_id: str):
+    def get_bitbucket_commit_changes_url(self, commit_id: str, start: int):
         return urllib.parse.urljoin(self._bitbucket_api_root_url,
                                     f'{self._bitbucket_project_key}/repos/{self._bitbucket_repository_name}'
-                                    f'/commits/{commit_id}/changes')
+                                    f'/commits/{commit_id}/changes?start={start}')
 
     def get_app_config(self):
         if missing_parameters := [
@@ -178,14 +177,28 @@ def check_processing_result(func):
 
 
 def get_changed_files(app_config: AppConfig):
-    @check_processing_result
-    def get_changes_from_pull_request() -> Union[list[str], ProcessingRecord]:
-        pull_request_changes = requests.get(
-            app_config.bitbucket_pull_request_changes_url,
+    def pull_changes(commit_id: Optional[str] = None, start_at: Optional[int] = None):
+        start_number = start_at or 0
+        if commit_id:
+            request_url = app_config.get_bitbucket_commit_changes_url(commit_id, start_number)
+        else:
+            request_url = app_config.get_bitbucket_pull_request_changes_url(start_number)
+        response = requests.get(
+            request_url,
             headers=app_config.bitbucket_api_headers,
         )
-        changes = pull_request_changes.json().get('values', [])
-        return (changes and [change['path']['toString'] for change in changes]) or ProcessingRecord(
+        latest_commit_changes_json = response.json()
+        changed_files = [change['path']['toString'] for change in latest_commit_changes_json.get('values', [])]
+        is_last_page = latest_commit_changes_json.get('isLastPage', True)
+        if not is_last_page:
+            changed_files.extend(
+                pull_changes(commit_id=commit_id, start_at=latest_commit_changes_json.get('nextPageStart')))
+        return changed_files
+
+    @check_processing_result
+    def get_changes_from_pull_request() -> Union[list[str], ProcessingRecord]:
+        changes = pull_changes()
+        return changes or ProcessingRecord(
             type=logging.INFO,
             message='No changes found in the pull request history. Nothing more to do here.',
             exit_code=0
@@ -198,12 +211,8 @@ def get_changed_files(app_config: AppConfig):
             headers=app_config.bitbucket_api_headers,
         )
         latest_commit_id = branch_commits.json()['values'][0]['id']
-        latest_commit_changes = requests.get(
-            app_config.get_bitbucket_commit_changes_url(latest_commit_id),
-            headers=app_config.bitbucket_api_headers,
-        )
-        changes = latest_commit_changes.json().get('values', [])
-        return (changes and [change['path']['toString'] for change in changes]) or ProcessingRecord(
+        changes = pull_changes(commit_id=latest_commit_id)
+        return changes or ProcessingRecord(
             type=logging.INFO,
             message='No changes found in the branch latest commit. Nothing more to do here.',
             exit_code=0

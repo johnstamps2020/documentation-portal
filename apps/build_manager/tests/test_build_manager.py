@@ -25,12 +25,12 @@ def test_app_config(build_manager_config):
     assert build_manager_config.bitbucket_branch_commits_url == f'{bitbucket_base_url}' \
                                                                 f'/commits?until={bitbucket_branch_name}' \
                                                                 '&merges=exclude&limit=1'
-    assert build_manager_config.bitbucket_pull_request_changes_url == f'{bitbucket_base_url}' \
-                                                                      f'/{build_manager_config.teamcity_build_branch}/changes'
+    assert build_manager_config.get_bitbucket_pull_request_changes_url(start=0) == f'{bitbucket_base_url}' \
+                                                                                   f'/{build_manager_config.teamcity_build_branch}/changes?start=0'
     assert build_manager_config.get_bitbucket_commit_changes_url(
-        commit_id=commit_id) == f'{bitbucket_base_url}' \
-                                f'/commits/{commit_id}' \
-                                '/changes'
+        commit_id=commit_id, start=0) == f'{bitbucket_base_url}' \
+                                         f'/commits/{commit_id}' \
+                                         '/changes?start=0'
 
 
 def test_validations_build_manager(build_manager_config):
