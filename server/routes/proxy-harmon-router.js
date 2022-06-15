@@ -27,6 +27,13 @@ function appendToSelectedItem(node, str) {
   }
 }
 
+const pendoInitializeScript = getPendoInitializeScript();
+const pendoAndGoogleScripts = `
+      <!-- Pendo initialize -->
+      <script>${pendoInitializeScript}</script>
+      <!-- Google tag manager no-script -->
+      <noscript>${tagManagerBody}</noscript>`;
+
 const responseSelectors = [
   {
     query: 'head',
@@ -42,40 +49,19 @@ const responseSelectors = [
       );
     },
   },
+  {
+    query:
+      // HTML5 -> div.footerContents
+      // Webhelp -> header.wh_header
+      // Docusaurus -> body.navigation-with-keyboard
+      'div.footerContents, header.wh_header, body.navigation-with-keyboard',
+    func: function(node) {
+      appendToSelectedItem(node, pendoAndGoogleScripts);
+    },
+  },
 ];
 
 const harmonRouter = Router();
-
-harmonRouter.use(function(req, res, next) {
-  try {
-    if (responseSelectors.length === 1 && res.locals?.userInfo) {
-      const pendoInitializeScript = getPendoInitializeScript(
-        res.locals.userInfo
-      );
-      const pendoAndGoogleScripts = `
-      <!-- Pendo initialize -->
-      <script>${pendoInitializeScript}</script>
-      <!-- Google tag manager no-script -->
-      <noscript>${tagManagerBody}</noscript>`;
-      responseSelectors.push({
-        query:
-          // HTML5 -> div.footerContents
-          // Webhelp -> header.wh_header
-          // Docusaurus -> body.navigation-with-keyboard
-          'div.footerContents, header.wh_header, body.navigation-with-keyboard',
-        func: function(node) {
-          appendToSelectedItem(node, pendoAndGoogleScripts);
-        },
-      });
-    }
-  } catch (err) {
-    winstonLogger.error(`Problem with the Harmon router:
-      ERROR: ${JSON.stringify(err)}
-      MESSAGE: ${err.message}`);
-  }
-
-  next();
-});
 
 harmonRouter.use(harmon([], responseSelectors));
 

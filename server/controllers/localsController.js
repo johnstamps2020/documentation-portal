@@ -17,7 +17,7 @@ async function addCommonDataToSessionLocals(req, res) {
       tagManagerHeadScript,
       tagManagerBody,
       pendoInstallScript,
-      pendoInitializeScript: getPendoInitializeScript(userInfo),
+      pendoInitializeScript: getPendoInitializeScript(),
     };
   } catch (err) {
     winstonLogger.error(
