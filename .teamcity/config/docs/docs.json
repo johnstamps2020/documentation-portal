@@ -8171,6 +8171,22 @@
       "earlyAccess": false
     },
     {
+      "id": "internaldocslatest",
+      "title": "Internal Docs",
+      "url": "internal-docs",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["Internal Docs"],
+        "version": ["latest"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
       "id": "gwcpinternal",
       "title": "Network Permissions Service",
       "url": "cloud/internal/nps",

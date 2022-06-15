@@ -2128,6 +2128,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/update-dev-docs.git",
       "branch": "main"
+    },
+    {
+      "id": "internaldocssrc",
+      "title": "Internal Docs",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/doctools/internal-docs-directory.git",
+      "branch": "main"
     }
   ]
 }

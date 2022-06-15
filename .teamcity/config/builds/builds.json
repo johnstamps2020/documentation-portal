@@ -2569,6 +2569,11 @@
       "buildType": "yarn",
       "srcId": "updatedevsrc",
       "docId": "updatedev"
+    },
+    {
+      "buildType": "yarn",
+      "srcId": "internaldocssrc",
+      "docId": "internaldocslatest"
     }
   ]
 }
