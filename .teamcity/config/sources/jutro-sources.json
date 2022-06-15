@@ -373,6 +373,13 @@
       "branch": "release/7.4.3"
     },
     {
+      "id": "srcjutroapptemplatesampleapp743",
+      "title": "Jutro App Template Sample App 7.4.3",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/jut/jutro-app-template-sampleapp.git",
+      "branch": "release/7.4.3"
+    },
+    {
       "id": "srcjutro750",
       "title": "Jutro Design System 7.5.0",
       "sourceType": "git",

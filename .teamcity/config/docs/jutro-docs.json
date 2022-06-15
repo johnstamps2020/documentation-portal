@@ -1070,6 +1070,24 @@
       "earlyAccess": false
     },
     {
+      "id": "jutroapptemplatesampleapp743zip",
+      "title": "Jutro App Template Sandbox App Zip",
+      "url": "jutro/app-template-sampleapp-download/7.4.3",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["7.4.3"],
+        "subject": ["Development"],
+        "release": ["Elysian"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "jutro750",
       "title": "Jutro Design System and UI Framework",
       "url": "jutro/documentation/7.5.0",

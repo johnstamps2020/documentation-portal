@@ -473,6 +473,12 @@
       ]
     },
     {
+      "buildType": "source-zip",
+      "docId": "jutroapptemplatesampleapp743zip",
+      "srcId": "srcjutroapptemplatesampleapp743",
+      "zipFilename": "jutro-app-template-sandboxapp"
+    },
+    {
       "buildType": "yarn",
       "docId": "jutro743",
       "srcId": "srcjutro743",
