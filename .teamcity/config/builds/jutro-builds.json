@@ -525,7 +525,7 @@
       "docId": "jutro810",
       "srcId": "srcjutro810",
       "workingDir": "website",
-      "nodeImageVersion": "14.18.3"
+      "nodeImageVersion": "17.6.0"
     },
     {
       "buildType": "yarn",
