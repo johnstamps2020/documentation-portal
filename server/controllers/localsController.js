@@ -10,13 +10,14 @@ const { winstonLogger } = require('./loggerController');
 
 async function addCommonDataToSessionLocals(req, res) {
   try {
-    res.locals.userInfo = getUserInfo(req);
+    const userInfo = getUserInfo(req);
+    res.locals.userInfo = userInfo;
     res.locals.translatedPages = await getTranslatedPages();
     res.locals.analytics = {
       tagManagerHeadScript,
       tagManagerBody,
       pendoInstallScript,
-      pendoInitializeScript: getPendoInitializeScript(res.locals.userInfo),
+      pendoInitializeScript: getPendoInitializeScript(),
     };
   } catch (err) {
     winstonLogger.error(
