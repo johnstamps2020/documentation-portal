@@ -159,6 +159,7 @@
         "type": "string",
         "enum": [
           "Advanced Product Designer",
+          "Advanced Product Designer for Claims",
           "PolicyCenter",
           "BillingCenter",
           "ClaimCenter",
