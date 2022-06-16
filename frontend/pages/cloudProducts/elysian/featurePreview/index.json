@@ -98,11 +98,21 @@
         },
         {
           "label": "APD App Guide",
-          "id": "apdappguide"
+          "id": "apdapp"
         },
         {
           "label": "APD API Reference",
           "id": "apdmaindoc"
+        }
+      ]
+    },
+    {
+      "label": "Advanced Product Designer for Claims",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "APD for Claims Guide",
+          "id": "apdclaims"
         }
       ]
     },
