@@ -11,7 +11,7 @@
         "version": ["latest"],
         "subject": ["Upgrade Tools Compatibility"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
