@@ -252,7 +252,7 @@
         "subject": ["Best practices"]
       },
       "environments": ["dev", "staging", "int", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
       "internal": true,
@@ -269,7 +269,7 @@
         "subject": ["Best practices"]
       },
       "environments": ["dev", "staging", "int", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
       "internal": true,
@@ -594,7 +594,7 @@
         "subject": ["Development"]
       },
       "environments": ["dev", "staging", "int", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
       "internal": true,
@@ -612,7 +612,7 @@
         "release": ["Dobson"]
       },
       "environments": ["dev", "staging", "int", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
       "internal": true,
@@ -942,7 +942,7 @@
         "subject": ["Best practices"]
       },
       "environments": ["dev", "staging", "int", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
       "internal": true,
@@ -959,7 +959,7 @@
         "subject": ["Development"]
       },
       "environments": ["dev", "staging", "int", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
       "internal": true,
@@ -1010,7 +1010,7 @@
         "subject": ["Best practices"]
       },
       "environments": ["dev", "staging", "int", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
       "internal": true,
@@ -1027,7 +1027,7 @@
         "subject": ["Development"]
       },
       "environments": ["dev", "staging", "int", "prod"],
-      "displayOnLandingPages": true,
+      "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
       "internal": true,
@@ -1098,7 +1098,7 @@
         "subject": ["Best practices"]
       },
       "environments": ["dev", "staging", "int", "prod"],
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": true,
@@ -1115,7 +1115,7 @@
         "subject": ["Development"]
       },
       "environments": ["dev", "staging", "int", "prod"],
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": true,
@@ -1132,7 +1132,7 @@
         "subject": ["Best practices"]
       },
       "environments": ["dev", "staging", "int", "prod"],
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": true,
@@ -1149,7 +1149,7 @@
         "subject": ["Development"]
       },
       "environments": ["dev", "staging", "int", "prod"],
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": true,
@@ -1166,7 +1166,7 @@
         "subject": ["Best practices"]
       },
       "environments": ["dev", "staging", "int", "prod"],
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": true,
@@ -1183,7 +1183,7 @@
         "subject": ["Development"]
       },
       "environments": ["dev", "staging", "int", "prod"],
-      "displayOnLandingPages": false,
+      "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": true,
