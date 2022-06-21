@@ -203,24 +203,6 @@
       "earlyAccess": false
     },
     {
-      "id": "inexcelrating30draft",
-      "title": "Excel Designed Rating 3.0 Draft",
-      "url": "cloud/in/excelrating30",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2", "2021.1"],
-        "subject": ["Features and functionality"],
-        "release": ["Cortina", "Dobson"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "inexcelrating30",
       "title": "Excel Designed Rating 3.0",
       "url": "cloud/in/excelrating30",
@@ -231,7 +213,7 @@
         "subject": ["Features and functionality"],
         "release": ["Cortina", "Dobson"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
