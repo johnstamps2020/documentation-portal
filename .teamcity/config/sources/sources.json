@@ -1809,6 +1809,13 @@
       "branch": "main"
     },
     {
+      "id": "guidewireidentityfederationhubitITsrc",
+      "title": "Guidewire Identity Federation Hub Release it-IT",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
+      "branch": "release/it-IT/2021.04"
+    },
+    {
       "id": "cloudplatformsrc",
       "title": "Cloud Platform",
       "sourceType": "git",
