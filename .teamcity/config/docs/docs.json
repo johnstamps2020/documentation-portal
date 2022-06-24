@@ -36,6 +36,23 @@
       "earlyAccess": false
     },
     {
+      "id": "guidewireidentityfederationhubitIT",
+      "title": "Authentication",
+      "url": "cloud/auth/it-IT/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Identity Federation Hub"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "cloudplatformdraft",
       "title": "Network Connectivity",
       "url": "cloud/gwcp/latest",
