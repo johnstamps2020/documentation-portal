@@ -288,11 +288,6 @@
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITdcg",
       "indexRedirect": true
-    },
-    {
-      "buildType": "yarn",
-      "srcId": "dxjsdocs202205src",
-      "docId": "dxjsdocs202205"
     }
   ]
 }
