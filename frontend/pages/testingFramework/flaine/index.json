@@ -1,0 +1,70 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Guidewire Testing",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Documentation",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Guidewire Testing Framework Supported Software Components (Support Matrix)",
+          "id": "testingframeworksmatrixflaine"
+        },
+        {
+          "label": "Guidewire Testing Framework Release Notes",
+          "id": "testingframeworksrnflaine"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Guidewire Testing Framework Installation",
+          "id": "testingframeworksinstallflaine"
+        }
+      ]
+    },
+    {
+      "label": "Application-specific Capabilities",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "InsuranceSuite Unit Testing",
+          "id": "is202209testing"
+        }
+      ]
+    },
+    {
+      "label": "Test Process Capabilities",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Test Data Management",
+          "id": "testingframeworksdataflaine"
+        },
+        {
+          "label": "Test Management",
+          "id": "testingframeworksmgmtflaine"
+        }
+      ]
+    },
+    {
+      "label": "Cross-application Capabiities",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "API Testing",
+          "id": "testingframeworksapiflaine"
+        },
+        {
+          "label": "UI Testing",
+          "id": "testingframeworksuiflaine"
+        }
+      ]
+    }
+  ]
+}
