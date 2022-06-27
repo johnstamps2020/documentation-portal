@@ -38,60 +38,6 @@
       "earlyAccess": false
     },
     {
-      "id": "dx202205itITceamdev",
-      "title": "Development Guide it-IT",
-      "url": "cloud/dx/it-IT/ce-am/202205/dev",
-      "metadata": {
-        "product": ["CustomerEngage Account Management"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205itITceamrefguides",
-      "title": "Digital Services Reference Guides it-IT",
-      "url": "cloud/dx/it-IT/ce-am/202205/ref",
-      "metadata": {
-        "product": ["CustomerEngage Account Management"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205itITceamrelnotes",
-      "title": "Release Notes it-IT",
-      "url": "cloud/dx/it-IT/ce-am/202205/relnotes",
-      "metadata": {
-        "product": ["CustomerEngage Account Management"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Release notes"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "dx202205itITceclaimsapp",
       "title": "Application Guide it-IT",
       "url": "cloud/dx/it-IT/ce-claims/202205/app",
@@ -119,60 +65,6 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Installation"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205itITceclaimsdev",
-      "title": "Development Guide it-IT",
-      "url": "cloud/dx/it-IT/ce-claims/202205/dev",
-      "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205itITceclaimsrefguides",
-      "title": "Digital Services Reference Guides it-IT",
-      "url": "cloud/dx/it-IT/ce-claims/202205/ref",
-      "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205itITceclaimsrelnotes",
-      "title": "Release Notes it-IT",
-      "url": "cloud/dx/it-IT/ce-claims/202205/relnotes",
-      "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Release notes"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -218,60 +110,6 @@
       "earlyAccess": false
     },
     {
-      "id": "dx202205itITceqbdev",
-      "title": "Development Guide it-IT",
-      "url": "cloud/dx/it-IT/ce-qb/202205/dev",
-      "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205itITceqbrefguides",
-      "title": "Digital Services Reference Guides it-IT",
-      "url": "cloud/dx/it-IT/ce-qb/202205/ref",
-      "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205itITceqbrelnotes",
-      "title": "Release Notes it-IT",
-      "url": "cloud/dx/it-IT/ce-qb/202205/relnotes",
-      "metadata": {
-        "product": ["CustomerEngage Quote and Buy"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Release notes"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "dx202205itITpeapp",
       "title": "Application Guide it-IT",
       "url": "cloud/dx/it-IT/pe/202205/app",
@@ -299,60 +137,6 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Installation"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205itITpedev",
-      "title": "Development Guide it-IT",
-      "url": "cloud/dx/it-IT/pe/202205/dev",
-      "metadata": {
-        "product": ["ProducerEngage"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205itITperefguides",
-      "title": "Digital Services Reference Guides it-IT",
-      "url": "cloud/dx/it-IT/pe/202205/ref",
-      "metadata": {
-        "product": ["ProducerEngage"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205itITperelnotes",
-      "title": "Release Notes it-IT",
-      "url": "cloud/dx/it-IT/pe/202205/relnotes",
-      "metadata": {
-        "product": ["ProducerEngage"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Release notes"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -398,60 +182,6 @@
       "earlyAccess": false
     },
     {
-      "id": "dx202205itITpeclaimsdev",
-      "title": "Development Guide it-IT",
-      "url": "cloud/dx/it-IT/pe-claims/202205/dev",
-      "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205itITpeclaimsrefguides",
-      "title": "Digital Services Reference Guides it-IT",
-      "url": "cloud/dx/it-IT/pe-claims/202205/ref",
-      "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205itITpeclaimsrelnotes",
-      "title": "Release Notes it-IT",
-      "url": "cloud/dx/it-IT/pe-claims/202205/relnotes",
-      "metadata": {
-        "product": ["ProducerEngage for ClaimCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Release notes"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "dx202205itITsreapp",
       "title": "Application Guide it-IT",
       "url": "cloud/dx/it-IT/sre/202205/app",
@@ -488,60 +218,6 @@
       "earlyAccess": false
     },
     {
-      "id": "dx202205itITsredev",
-      "title": "Development Guide it-IT",
-      "url": "cloud/dx/it-IT/sre/202205/dev",
-      "metadata": {
-        "product": ["ServiceRepEngage"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205itITsrerefguides",
-      "title": "Digital Services Reference Guides it-IT",
-      "url": "cloud/dx/it-IT/sre/202205/ref",
-      "metadata": {
-        "product": ["ServiceRepEngage"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205itITsrerelnotes",
-      "title": "Release Notes it-IT",
-      "url": "cloud/dx/it-IT/sre/202205/relnotes",
-      "metadata": {
-        "product": ["ServiceRepEngage"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Release notes"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "dx202205itITveapp",
       "title": "Application Guide it-IT",
       "url": "cloud/dx/it-IT/ve/202205/app",
@@ -569,78 +245,6 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Installation"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205itITvedev",
-      "title": "Development Guide it-IT",
-      "url": "cloud/dx/it-IT/ve/202205/dev",
-      "metadata": {
-        "product": ["VendorEngage"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205itITverefguides",
-      "title": "Digital Services Reference Guides it-IT",
-      "url": "cloud/dx/it-IT/ve/202205/ref",
-      "metadata": {
-        "product": ["VendorEngage"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205itITverelnotes",
-      "title": "Release Notes it-IT",
-      "url": "cloud/dx/it-IT/ve/202205/relnotes",
-      "metadata": {
-        "product": ["VendorEngage"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Release notes"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205itITdcg",
-      "title": "Digital Code Generation Guide it-IT",
-      "url": "cloud/dx/it-IT/dcg/202205/guide",
-      "metadata": {
-        "product": ["CustomerEngage Quote and Buy", "ProducerEngage"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Configuration"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
