@@ -96,7 +96,7 @@ expensiveLoadConfig();
 
 async function getConfig(reqObj, resObj) {
   try {
-    if (!storedConfig) {
+    if (!storedConfig || !storedConfig.docs || storedConfig.docs.length === 0) {
       await expensiveLoadConfig();
     }
     const config = JSON.parse(JSON.stringify(storedConfig));
