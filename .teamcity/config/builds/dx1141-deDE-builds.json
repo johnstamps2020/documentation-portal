@@ -1,0 +1,54 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1141deDE",
+      "docId": "dxceam1141deDE"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1141deDE",
+      "docId": "dxceclaims1141deDE"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1141deDE",
+      "docId": "dxceqb1141deDE"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1141deDE",
+      "docId": "dxpe1141deDE"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-claims-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1141deDE",
+      "docId": "dxpeclaims1141deDE"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1141deDE",
+      "docId": "dxsre1141deDE"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-OnPrem.ditaval",
+      "root": "DX_superbook.ditamap",
+      "srcId": "dx1141deDE",
+      "docId": "dxve1141deDE"
+    }
+  ]
+}
