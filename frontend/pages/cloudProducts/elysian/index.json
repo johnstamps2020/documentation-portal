@@ -77,10 +77,6 @@
           "page": "icGwCloud/2022.05"
         },
         {
-          "label": "Guidewire Live",
-          "class": "group",
-          "items": [
-            {
               "label": "Canvas",
               "id": "canvas"
             },
@@ -104,8 +100,6 @@
               "label": "Predict",
               "id": "livepredictlatest"
             }
-          ]
-        }
       ]
     },
     {
