@@ -68,6 +68,13 @@ spec:
         tags.datadoghq.com/service: docportal
         tags.datadoghq.com/version: ${TAG_VERSION}
         app: docportal-app
+        app.kubernetes.io/name: expressjs
+        app.kubernetes.io/version: ${TAG_VERSION}
+        app.kubernetes.io/component: web-app
+        app.kubernetes.io/part-of: docportal-app
+        app.kubernetes.io/managed-by: doctools
+        app.kubernetes.io/created-by: doctools
+        atmos.guidewire.com/tenancy-scope: shared
       annotations:
         iam.amazonaws.com/role: arn:aws:iam::710503867599:role/aws_gwre-ccs-prod_tenant_doctools_developer
     spec:

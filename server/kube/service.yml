@@ -5,6 +5,13 @@ metadata:
   namespace: doctools
   labels:
     app: docportal-app
+    app.kubernetes.io/name: expressjs
+    app.kubernetes.io/version: ${TAG_VERSION}
+    app.kubernetes.io/component: web-app
+    app.kubernetes.io/part-of: docportal-app
+    app.kubernetes.io/managed-by: doctools
+    app.kubernetes.io/created-by: doctools
+    atmos.guidewire.com/tenancy-scope: shared
 spec:
   ports:
     - name: http
