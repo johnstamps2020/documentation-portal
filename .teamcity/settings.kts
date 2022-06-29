@@ -330,6 +330,23 @@ object Docs {
                         """.trimIndent()
                 }
                 script {
+                    name = "Run the post-build yarn script"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                        #!/bin/bash
+                    
+                        cd "postbuilder"
+                        yarn install
+                        export EXIT_CODE=0
+                        yarn build || EXIT_CODE=${'$'}?
+                        exit ${'$'}EXIT_CODE
+                    """.trimIndent()
+                    dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.image_url}:17.6.0"
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerPull = true
+                    dockerRunParameters = "--user 1000:1000"
+                }
+                script {
                     name = "Build and publish Docker image"
                     id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
