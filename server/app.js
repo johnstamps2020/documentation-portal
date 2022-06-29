@@ -73,6 +73,7 @@ const userRouter = require('./routes/user');
 const configRouter = require('./routes/config');
 const jiraRouter = require('./routes/jira');
 const lrsRouter = require('./routes/lrs');
+const strapiRouter = require('./routes/strapi');
 const recommendationsRouter = require('./routes/recommendations');
 const passport = require('passport');
 
@@ -132,6 +133,7 @@ app.use('/jira', jiraRouter);
 app.use('/lrs', lrsRouter);
 app.use('/recommendations', recommendationsRouter);
 app.use('/support', supportRouter);
+app.use('/strapi', strapiRouter);
 
 app.use('/portal-config/*', (req, res) => {
   res.redirect('/unauthorized');

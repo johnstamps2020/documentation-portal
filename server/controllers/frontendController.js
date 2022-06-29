@@ -1,5 +1,12 @@
-const { winstonLogger } = require('./loggerController');
+const fs = require('fs');
+const path = require('path');
 const fetch = require('node-fetch');
+const staticPagesDir = path.join(__dirname, '..', 'static', 'pages');
+const { winstonLogger } = require('./loggerController');
+
+//const qs = require('qs');
+//const fetch = require('node-fetch-retry');
+const { getPageInfo } = require('./strapiController');
 
 function getMockLanguages() {
   return ['Dothraki', 'Klingon', 'Fremeni', 'Minion', 'Polish'].map(
@@ -76,26 +83,62 @@ async function fetchConfigFileForLandingPage(req) {
 
 async function getPage(req, res, next) {
   try {
-    const response = await fetchConfigFileForLandingPage(req);
-    if (response.ok) {
-      const fileContentsJson = await response.json();
-      const hasGuidewireEmail = res.locals.userInfo.hasGuidewireEmail;
-      const templateName = fileContentsJson.template;
+    const hasGuidewireEmail = res.locals.userInfo.hasGuidewireEmail;
+    const pageInfo = await getStrapiPage(req.path.substring(1));
+
+    if (pageInfo) {
+      const templateName = pageInfo.attributes.template;
       res.render(templateName, {
-        pageContent: fileContentsJson,
-        hasGuidewireEmail: hasGuidewireEmail,
-        pagePath: req.path.endsWith('/') ? req.path : `${req.path}/`,
-        localizationInfo: setL10nParams(fileContentsJson.class),
-      });
-    } else {
-      next();
+          pageContent: pageInfo.attributes,
+          hasGuidewireEmail: hasGuidewireEmail,
+          pagePath: req.path.endsWith('/') ? req.path : `${req.path}/`,
+          localizationInfo: setL10nParams(pageInfo.attributes.class),
+        });
     }
+    else {
+      const response = await fetchConfigFileForLandingPage(req);
+      if (response.ok) {
+        const fileContentsJson = await response.json();
+        const templateName = fileContentsJson.template;
+        res.render(templateName, {
+          pageContent: fileContentsJson,
+          hasGuidewireEmail: hasGuidewireEmail,
+          pagePath: req.path.endsWith('/') ? req.path : `${req.path}/`,
+          localizationInfo: setL10nParams(fileContentsJson.class),
+        });
+      }
+      else {
+          next();
+      }
+    } 
   } catch (err) {
     winstonLogger.error(
       `Problem getting path for "${req.path}"
-          ERROR: ${JSON.stringify(err)}`
+          ERROR: ${JSON.stringify(err)} ${err}`
     );
   }
+}
+
+async function getStrapiPage(url) {
+  const pageInfo = await getPageInfo(url);
+  console.log(pageInfo);
+  
+  if (pageInfo === undefined) {
+    return;
+  }
+  pageInfo.attributes['items'] = pageInfo.attributes['layout'];
+  delete pageInfo.attributes['layout'];
+
+  pageInfo.attributes.items.forEach(function (element) {
+    element.items.forEach((elem) => {
+      elem.id = elem.document.data.attributes.docId;
+      elem.doc_url = `/${elem.document.data.attributes.url}`;
+      elem.public = elem.document.data.attributes.isPublic;
+      elem.internal = elem.document.data.attributes.isInternal;
+    });
+  });
+
+  return pageInfo;
 }
 
 async function getTranslatedPages() {
@@ -117,7 +160,7 @@ async function getTranslatedPages() {
   } catch (err) {
     winstonLogger.error(
       `Cannot get translated pages
-          ERROR: ${JSON.stringify(err)}`
+          ERROR: ${JSON.stringify(err)} ${err}`
     );
   }
 }
