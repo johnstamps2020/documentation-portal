@@ -45,6 +45,8 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: docportal-app-deployment
+  namespace: doctools
   labels:
     tags.datadoghq.com/env: atmos-${DEPLOY_ENV}
     tags.datadoghq.com/service: docportal
@@ -57,8 +59,6 @@ metadata:
     app.kubernetes.io/managed-by: doctools
     app.kubernetes.io/created-by: doctools
     atmos.guidewire.com/tenancy-scope: shared
-  name: docportal-app-deployment
-  namespace: doctools
 spec:
   selector:
     matchLabels:
@@ -70,11 +70,20 @@ spec:
       maxUnavailable: 0
   template:
     metadata:
+      name: docportal-app-deployment
+      namespace: doctools
       labels:
         tags.datadoghq.com/env: atmos-${DEPLOY_ENV}
         tags.datadoghq.com/service: docportal
         tags.datadoghq.com/version: ${TAG_VERSION}
         app: docportal-app
+        app.kubernetes.io/name: expressjs
+        app.kubernetes.io/version: ${TAG_VERSION}
+        app.kubernetes.io/component: web-app
+        app.kubernetes.io/part-of: docportal-app
+        app.kubernetes.io/managed-by: doctools
+        app.kubernetes.io/created-by: doctools
+        atmos.guidewire.com/tenancy-scope: shared
       annotations:
         iam.amazonaws.com/role: arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer
     spec:
