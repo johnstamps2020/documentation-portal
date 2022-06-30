@@ -1790,7 +1790,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "ApplicationGuide20211x.ditamap",
       "srcId": "in20211xappdraftsrc",
       "docId": "in20211xappdraft",
@@ -1798,7 +1798,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "BusinessIntelligenceGettingStartedGuide20211x.ditamap",
       "srcId": "in20211xbidraftsrc",
       "docId": "in20211xbidraft",
@@ -1806,7 +1806,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "ConsumerSalesPortalFeatures20211x.ditamap",
       "srcId": "in20211xcsalespdraftsrc",
       "docId": "in20211xcsalespdraft",
@@ -1814,7 +1814,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalFeatures20211x.ditamap",
       "srcId": "in20211xcservicepdraftsrc",
       "docId": "in20211xcservicepdraft",
@@ -1822,7 +1822,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "PredictiveAnalyticsIntegration20211.ditamap",
       "srcId": "in20211xpadraftsrc",
       "docId": "in20211xpadraft",
@@ -1830,7 +1830,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "AppReaderIntegrationGuide20211x.ditamap",
       "srcId": "in20211xappreaderintegdraftsrc",
       "docId": "in20211xappreaderintegdraft",
@@ -1838,7 +1838,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "BusinessIntelligenceIntegrationGuide20211x.ditamap",
       "srcId": "in20211xbiintegdraftsrc",
       "docId": "in20211xbiintegdraft",
@@ -1846,7 +1846,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "Configuration20211x.ditamap",
       "srcId": "in20211xconfigdraftsrc",
       "docId": "in20211xconfigdraft",
@@ -1854,7 +1854,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "CommonFunctionalityConfigurationReference20211x.ditamap",
       "srcId": "in20211xcommonconfigdraftsrc",
       "docId": "in20211xcommonconfigdraft",
@@ -1862,7 +1862,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalConfigGuide20211x.ditamap",
       "srcId": "in20211xcservicepconfigdraftsrc",
       "docId": "in20211xcservicepconfigdraft",
@@ -1870,7 +1870,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "Studio20211x.ditamap",
       "srcId": "in20211xstudiodraftsrc",
       "docId": "in20211xstudiodraft",
@@ -1878,7 +1878,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "ProvisioningPortal20211x.ditamap",
       "srcId": "in20211xprovportaldraftsrc",
       "docId": "in20211xprovportaldraft",
@@ -1886,7 +1886,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "PortalDevelopment20211x.ditamap",
       "srcId": "in20211xportaldevdraftsrc",
       "docId": "in20211xportaldevdraft",
@@ -1894,7 +1894,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "ProductAttributeReference20211.ditamap",
       "srcId": "in20211xprodattrefdraftsrc",
       "docId": "in20211xprodattrefdraft",
@@ -1902,7 +1902,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "UnderwritingConfigurationReference20211x.ditamap",
       "srcId": "in20211xuwconfigdraftsrc",
       "docId": "in20211xuwconfigdraft",
@@ -1910,7 +1910,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "ClaimsConfigurationReference20211x.ditamap",
       "srcId": "in20211xclaimsconfigdraftsrc",
       "docId": "in20211xclaimsconfigdraft",
@@ -1918,7 +1918,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "ApplicationGuide20202x.ditamap",
       "srcId": "in20202xappdraftsrc",
       "docId": "in20202xappdraft",
@@ -1926,7 +1926,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "BusinessIntelligenceGettingStartedGuide20202x.ditamap",
       "srcId": "in20202xbidraftsrc",
       "docId": "in20202xbidraft",
@@ -1934,7 +1934,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "ConsumerSalesPortalFeatures20202x.ditamap",
       "srcId": "in20202xcsalespdraftsrc",
       "docId": "in20202xcsalespdraft",
@@ -1942,7 +1942,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalFeatures20202x.ditamap",
       "srcId": "in20202xcservicepdraftsrc",
       "docId": "in20202xcservicepdraft",
@@ -1950,7 +1950,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "PredictiveAnalyticsIntegration20202.ditamap",
       "srcId": "in20202xpadraftsrc",
       "docId": "in20202xpadraft",
@@ -1958,7 +1958,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "AppReaderIntegrationGuide20202x.ditamap",
       "srcId": "in20202xappreaderintegdraftsrc",
       "docId": "in20202xappreaderintegdraft",
@@ -1966,7 +1966,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "BusinessIntelligenceIntegrationGuide20202x.ditamap",
       "srcId": "in20202xbiintegdraftsrc",
       "docId": "in20202xbiintegdraft",
@@ -1974,7 +1974,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "Configuration20202x.ditamap",
       "srcId": "in20202xconfigdraftsrc",
       "docId": "in20202xconfigdraft",
@@ -1982,7 +1982,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalConfigGuide20202x.ditamap",
       "srcId": "in20202xcservicepconfigdraftsrc",
       "docId": "in20202xcservicepconfigdraft",
@@ -1990,7 +1990,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "Studio20202x.ditamap",
       "srcId": "in20202xstudiodraftsrc",
       "docId": "in20202xstudiodraft",
@@ -1998,7 +1998,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "ProvisioningPortal20202x.ditamap",
       "srcId": "in20202xprovportaldraftsrc",
       "docId": "in20202xprovportaldraft",
@@ -2006,7 +2006,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "PortalDevelopment20202x.ditamap",
       "srcId": "in20202xportaldevdraftsrc",
       "docId": "in20202xportaldevdraft",
@@ -2014,7 +2014,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "ProductAttributeReference20202.ditamap",
       "srcId": "in20202xprodattrefdraftsrc",
       "docId": "in20202xprodattrefdraft",
@@ -2022,7 +2022,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "UnderwritingProductConfigGuide20202x.ditamap",
       "srcId": "in20202xuwconfigdraftsrc",
       "docId": "in20202xuwconfigdraft",
@@ -2030,7 +2030,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "ClaimsProductConfigGuide20202x.ditamap",
       "srcId": "in20202xclaimsconfigdraftsrc",
       "docId": "in20202xclaimsconfigdraft",
@@ -2038,7 +2038,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "ApplicationGuide20201x.ditamap",
       "srcId": "in20201xappdraftsrc",
       "docId": "in20201xappdraft",
@@ -2046,7 +2046,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "BusinessIntelligenceGettingStartedGuide20201x.ditamap",
       "srcId": "in20201xbidraftsrc",
       "docId": "in20201xbidraft",
@@ -2054,7 +2054,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalFeatures20201x.ditamap",
       "srcId": "in20201xcservicepdraftsrc",
       "docId": "in20201xcservicepdraft",
@@ -2062,7 +2062,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "AppReaderIntegrationGuide20201x.ditamap",
       "srcId": "in20201xappreaderintegdraftsrc",
       "docId": "in20201xappreaderintegdraft",
@@ -2070,7 +2070,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "BusinessIntelligenceIntegrationGuide20201x.ditamap",
       "srcId": "in20201xbiintegdraftsrc",
       "docId": "in20201xbiintegdraft",
@@ -2078,7 +2078,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "GuidewirePaymentsAPIIntegrationGuide20201x.ditamap",
       "srcId": "in20201xpaymentapiintegdraftsrc",
       "docId": "in20201xpaymentapiintegdraft",
@@ -2086,7 +2086,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "PredictiveAnalyticsIntegration20201.ditamap",
       "srcId": "in20201xpadraftsrc",
       "docId": "in20201xpadraft",
@@ -2094,7 +2094,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "Configuration20201x.ditamap",
       "srcId": "in20201xconfigdraftsrc",
       "docId": "in20201xconfigdraft",
@@ -2102,7 +2102,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "StudioConfigurationGuide20201x.ditamap",
       "srcId": "in20201xstudiodraftsrc",
       "docId": "in20201xstudiodraft",
@@ -2110,7 +2110,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "PortalDevelopment20201x.ditamap",
       "srcId": "in20201xportaldevdraftsrc",
       "docId": "in20201xportaldevdraft",
@@ -2118,7 +2118,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Draft.ditaval",
       "root": "UnderwritingProductConfigGuide20201x.ditamap",
       "srcId": "in20201xuwconfigdraftsrc",
       "docId": "in20201xuwconfigdraft",
