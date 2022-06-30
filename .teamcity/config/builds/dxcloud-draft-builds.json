@@ -83,7 +83,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ce-qb-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-ce-qb-MgSvcs.ditaval",
       "root": "CustomerEngage_QuoteAndBuy_AppGuide.ditamap",
       "srcId": "dxdraftceqbapp",
       "docId": "dxclouddraftceqbapp",
@@ -91,7 +91,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ce-qb-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-ce-qb-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "dxdraftinstall",
       "docId": "dxclouddraftceqbinstall",
@@ -99,7 +99,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ce-qb-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-ce-qb-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
       "srcId": "dxdraftdev",
       "docId": "dxclouddraftceqbdev",
@@ -107,7 +107,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ce-qb-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-ce-qb-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dxdraftrefguides",
       "docId": "dxclouddraftceqbrefguides",
@@ -115,7 +115,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ce-qb-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-ce-qb-MgSvcs.ditaval",
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dxclouddraftrelnotes",
       "docId": "dxclouddraftceqbrelnotes",
