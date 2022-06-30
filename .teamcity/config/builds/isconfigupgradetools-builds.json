@@ -51,7 +51,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Draft.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-OnPrem-Draft.ditaval",
       "root": "_superbook.ditamap",
       "indexRedirect": true,
       "srcId": "isconfigupgradetools1xsrc",
@@ -75,7 +75,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Draft.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-OnPrem-Draft.ditaval",
       "root": "_superbook.ditamap",
       "indexRedirect": true,
       "srcId": "isconfigupgradetools1450src",

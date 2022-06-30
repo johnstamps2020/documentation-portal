@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Draft.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-OnPrem-Draft.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis10xdraft",
       "docId": "bc10xdraft",
@@ -84,7 +84,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Draft.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-OnPrem-Draft.ditaval",
       "root": "_supermap-9x-active.ditamap",
       "srcId": "exportisonprem9",
       "docId": "selfmanagedbcxcoxibeoa"
