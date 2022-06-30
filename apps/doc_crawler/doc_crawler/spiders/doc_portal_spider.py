@@ -46,30 +46,45 @@ class DocPortalSpider(scrapy.Spider):
 
         doc_object = cb_kwargs.get('doc_object')
         doc_object_id = doc_object['id']
+        doc_object_title = doc_object['title']
+        doc_object_body = doc_object.get('body')
+        doc_object_metadata = doc_object['metadata']
+        doc_object_product = doc_object_metadata.get('product')
+        doc_object_platform = doc_object_metadata.get('platform')
+        doc_object_version = doc_object_metadata.get('version')
+        doc_object_release = doc_object_metadata.get('release')
+        doc_object_subject = doc_object_metadata.get('subject')
+        doc_object_public = doc_object['public']
+        doc_object_internal = doc_object['internal']
 
         if response.status == 404:
-            broken_link = BrokenLink(
-                doc_id=doc_object_id,
-                origin_url=cb_kwargs.get('origin_url', 'No origin URL'),
-                url=response.url,
-                metadata=doc_object['metadata'],
-                title=doc_object['title'],
-            )
+            yield BrokenLink(doc_id=doc_object_id, origin_url=cb_kwargs.get('origin_url', 'No origin URL'),
+                             url=response.url, metadata=doc_object_metadata, title=doc_object_title, )
 
-            yield broken_link
+        elif doc_object_body:
+            yield IndexEntry(
+                doc_id=doc_object_id,
+                href=doc_object['url'],
+                id=doc_object_id,
+                title=doc_object_title,
+                body=doc_object_body,
+                product=doc_object_product,
+                platform=doc_object_platform,
+                version=doc_object_version,
+                release=doc_object_release,
+                subject=doc_object_subject,
+                doc_title=doc_object_title,
+                public=doc_object_public,
+                internal=doc_object_internal,
+                indexed_date=date.today().isoformat()
+            )
         else:
-            index_entry_href = urljoin(self.app_base_url, urlsplit(response.url).path) if not urlparse(
-                doc_object['url']).hostname else response.url
+            index_entry_href = response.url if urlparse(doc_object['url']).hostname else urljoin(self.app_base_url,
+                                                                                                 urlsplit(
+                                                                                                     response.url).path)
+
             index_entry_id = urlparse(response.url).path
             index_entry_title = response.xpath('/html/head/title/text()').get()
-            index_entry_product = doc_object.get('metadata').get('product')
-            index_entry_platform = doc_object.get('metadata').get('platform')
-            index_entry_version = doc_object.get('metadata').get('version')
-            index_entry_release = doc_object.get('metadata').get('release')
-            index_entry_subject = doc_object.get('metadata').get('subject')
-            index_entry_doc_title = doc_object['title']
-            index_entry_public = doc_object['public']
-            index_entry_internal = doc_object['internal']
             index_entry_date = date.today().isoformat()
 
             selectors = {
@@ -96,24 +111,11 @@ class DocPortalSpider(scrapy.Spider):
                     body_element.xpath('.//*/text()').getall())
                 index_entry_body += f'{normalize_text(body_text)} '
 
-            index_entry = IndexEntry(
-                doc_id=doc_object_id,
-                href=index_entry_href,
-                id=index_entry_id,
-                title=index_entry_title,
-                body=index_entry_body,
-                product=index_entry_product,
-                platform=index_entry_platform,
-                version=index_entry_version,
-                release=index_entry_release,
-                subject=index_entry_subject,
-                doc_title=index_entry_doc_title,
-                public=index_entry_public,
-                internal=index_entry_internal,
-                indexed_date=index_entry_date
-            )
-
-            yield index_entry
+            yield IndexEntry(doc_id=doc_object_id, href=index_entry_href, id=index_entry_id, title=index_entry_title,
+                             body=index_entry_body, product=doc_object_product, platform=doc_object_platform,
+                             version=doc_object_version, release=doc_object_release, subject=doc_object_subject,
+                             doc_title=doc_object_title, public=doc_object_public, internal=doc_object_internal,
+                             indexed_date=index_entry_date)
 
             for next_page in response.xpath('//a[@href]'):
                 next_page_href = next_page.attrib.get('href')
