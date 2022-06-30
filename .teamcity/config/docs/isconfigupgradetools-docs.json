@@ -36,6 +36,23 @@
       "earlyAccess": false
     },
     {
+      "id": "isconfigupgradetools430",
+      "title": "InsuranceSuite Configuration Upgrade Tools",
+      "url": "isconfigupgradetools/430",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": ["4.3.0"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "isconfigupgradetools420",
       "title": "InsuranceSuite Configuration Upgrade Tools",
       "url": "isconfigupgradetools/420",
