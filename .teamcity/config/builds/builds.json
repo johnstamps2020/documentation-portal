@@ -817,7 +817,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
       "root": "DM_all.ditamap",
       "srcId": "dhic1040",
       "docId": "ic1040",
@@ -845,7 +845,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
       "root": "DM_all.ditamap",
       "srcId": "dhic1030",
       "docId": "ic1030",
@@ -866,7 +866,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
       "root": "DM_all.ditamap",
       "srcId": "dhic1020",
       "docId": "ic1020"
@@ -2420,7 +2420,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
       "root": "releasenotes.ditamap",
       "srcId": "dm1050rnsrc",
       "docId": "ic1050rn",
@@ -2435,7 +2435,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
       "root": "product.ditamap",
       "srcId": "dm1050productsrc",
       "docId": "ic1050product",
@@ -2443,7 +2443,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
       "root": "install.ditamap",
       "srcId": "dm1050installsrc",
       "docId": "ic1050install",
@@ -2451,7 +2451,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
       "root": "upgrade.ditamap",
       "srcId": "dm1050upgradesrc",
       "docId": "ic1050upgrade",
@@ -2459,7 +2459,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
       "root": "config.ditamap",
       "srcId": "dm1050configsrc",
       "docId": "ic1050config",
@@ -2467,7 +2467,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
       "root": "dataspec.ditamap",
       "srcId": "dm1050dataspecsrc",
       "docId": "ic1050dataspec",
@@ -2475,7 +2475,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
       "root": "admin.ditamap",
       "srcId": "dm1050adminsrc",
       "docId": "ic1050admin",
@@ -2483,7 +2483,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
       "root": "bi-applications.ditamap",
       "srcId": "ic1050biappsrc",
       "docId": "ic1050biapp",
@@ -2491,7 +2491,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
       "root": "reports.ditamap",
       "srcId": "ic1050reportssrc",
       "docId": "ic1050reports",
@@ -2499,7 +2499,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
       "root": "developer-ref.ditamap",
       "srcId": "dm1050devrefsrc",
       "docId": "ic1050devref",
