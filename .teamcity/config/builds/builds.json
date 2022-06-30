@@ -803,7 +803,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
       "root": "DM_all.ditamap",
       "srcId": "dhic1040",
       "docId": "dh1040",
@@ -831,7 +831,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
       "root": "DM_all.ditamap",
       "srcId": "dhic1030",
       "docId": "dh1030",
@@ -859,7 +859,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
       "root": "DM_all.ditamap",
       "srcId": "dhic1020",
       "docId": "dh1020"
@@ -2342,7 +2342,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
       "root": "releasenotes.ditamap",
       "srcId": "dm1050rnsrc",
       "docId": "dh1050rn",
@@ -2357,7 +2357,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
       "root": "product.ditamap",
       "srcId": "dm1050productsrc",
       "docId": "dh1050product",
@@ -2365,7 +2365,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
       "root": "install.ditamap",
       "srcId": "dm1050installsrc",
       "docId": "dh1050install",
@@ -2373,7 +2373,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
       "root": "upgrade.ditamap",
       "srcId": "dm1050upgradesrc",
       "docId": "dh1050upgrade",
@@ -2381,7 +2381,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
       "root": "config.ditamap",
       "srcId": "dm1050configsrc",
       "docId": "dh1050config",
@@ -2389,7 +2389,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
       "root": "dataspec.ditamap",
       "srcId": "dm1050dataspecsrc",
       "docId": "dh1050dataspec",
@@ -2397,7 +2397,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
       "root": "admin.ditamap",
       "srcId": "dm1050adminsrc",
       "docId": "dh1050admin",
@@ -2405,7 +2405,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
       "root": "developer-ref.ditamap",
       "srcId": "dm1050devrefsrc",
       "docId": "dh1050devref",
