@@ -35,7 +35,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "UM-Not-Agent-Release.ditaval",
+      "filter": "common-gw/ditavals/UM-Not-Agent-Release.ditaval",
       "root": "UMStudioHelp.ditamap",
       "srcId": "ummainsrc",
       "docId": "ummainstudio",
@@ -43,7 +43,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "UM-Not-Agent-Release.ditaval",
+      "filter": "common-gw/ditavals/UM-Not-Agent-Release.ditaval",
       "root": "UserGuide.ditamap",
       "srcId": "ummainsrc",
       "docId": "ummainuser",
