@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "AppReaderReleaseNotes.ditamap",
       "srcId": "ummainsrc",
       "docId": "ummainappreaderrn",
@@ -11,7 +11,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "ReleaseNotes.ditamap",
       "srcId": "ummainsrc",
       "docId": "ummainrn",
@@ -27,7 +27,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "UMOutlookAddinGuide.ditamap",
       "srcId": "ummainsrc",
       "docId": "ummainoutlook",

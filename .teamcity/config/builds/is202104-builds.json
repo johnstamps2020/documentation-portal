@@ -431,7 +431,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "GT-API.ditamap",
       "srcId": "testingframeworksapicortinasrc",
       "docId": "testingframeworksapicortina",
@@ -439,7 +439,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "GT-UI.ditamap",
       "srcId": "testingframeworksuicortinasrc",
       "docId": "testingframeworksuicortina",
@@ -447,7 +447,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "Guidewire_Testing_Framework_202104_ReleaseNotes.ditamap",
       "srcId": "testingframeworksrncortinasrc",
       "docId": "testingframeworksrncortina",

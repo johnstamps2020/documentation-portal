@@ -11,7 +11,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "DocToolsAdminGuide.ditamap",
       "srcId": "doctoolsadminsrc",
       "docId": "doctoolsadmin",
@@ -19,7 +19,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "WritingWithGit.ditamap",
       "srcId": "writingwithgitsrc",
       "docId": "writingwithgit",
