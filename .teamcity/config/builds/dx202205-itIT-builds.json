@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-ce-am-MgSvcs.ditaval",
+      "filter": "Digital-ce-am-MgSvcs.ditaval",
       "root": "CustomerEngage_AccountManagement_AppGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITceamapp",
@@ -11,7 +11,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-ce-am-MgSvcs.ditaval",
+      "filter": "Digital-ce-am-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITceaminstall",
@@ -19,7 +19,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-ce-claims-MgSvcs.ditaval",
+      "filter": "Digital-ce-claims-MgSvcs.ditaval",
       "root": "CustomerEngage_Claims_AppGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITceclaimsapp",
@@ -27,7 +27,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-ce-claims-MgSvcs.ditaval",
+      "filter": "Digital-ce-claims-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITceclaimsinstall",
@@ -35,7 +35,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-ce-qb-MgSvcs.ditaval",
+      "filter": "Digital-ce-qb-MgSvcs.ditaval",
       "root": "CustomerEngage_QuoteAndBuy_AppGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITceqbapp",
@@ -43,7 +43,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-ce-qb-MgSvcs.ditaval",
+      "filter": "Digital-ce-qb-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITceqbinstall",
@@ -51,7 +51,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-pe-MgSvcs.ditaval",
+      "filter": "Digital-pe-MgSvcs.ditaval",
       "root": "ProducerEngage_AppGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITpeapp",
@@ -59,7 +59,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-pe-MgSvcs.ditaval",
+      "filter": "Digital-pe-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITpeinstall",
@@ -67,7 +67,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-pe-claims-MgSvcs.ditaval",
+      "filter": "Digital-pe-claims-MgSvcs.ditaval",
       "root": "ProducerEngage_Claims_AppGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITpeclaimsapp",
@@ -75,7 +75,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-pe-claims-MgSvcs.ditaval",
+      "filter": "Digital-pe-claims-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITpeclaimsinstall",
@@ -83,7 +83,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-sre-MgSvcs.ditaval",
+      "filter": "Digital-sre-MgSvcs.ditaval",
       "root": "ServiceRepEngage_AppGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITsreapp",
@@ -91,7 +91,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-sre-MgSvcs.ditaval",
+      "filter": "Digital-sre-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITsreinstall",
@@ -99,7 +99,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-ve-MgSvcs.ditaval",
+      "filter": "Digital-ve-MgSvcs.ditaval",
       "root": "VendorEngage_AppGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITveapp",
@@ -107,7 +107,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-ve-MgSvcs.ditaval",
+      "filter": "Digital-ve-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITveinstall",

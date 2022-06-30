@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-Cloud-EA.ditaval",
+      "filter": "IS-BC-Cloud-EA.ditaval",
       "root": "ReleaseNotes.ditamap",
       "srcId": "is202205src",
       "docId": "isbcelysianeareleasenotes",
@@ -23,7 +23,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-Cloud-EA.ditaval",
+      "filter": "IS-BC-Cloud-EA.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide202205src",
@@ -31,7 +31,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-Cloud-EA.ditaval",
+      "filter": "IS-BC-Cloud-EA.ditaval",
       "root": "BC-AppGuide.ditamap",
       "srcId": "is202205src",
       "docId": "isbcelysianeaapp",
@@ -39,7 +39,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-Cloud-EA.ditaval",
+      "filter": "IS-BC-Cloud-EA.ditaval",
       "root": "AdminGuide.ditamap",
       "srcId": "is202205src",
       "docId": "isbcelysianeaadmin",
@@ -47,7 +47,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-Cloud-EA.ditaval",
+      "filter": "IS-BC-Cloud-EA.ditaval",
       "root": "ConfigGuide.ditamap",
       "srcId": "is202205src",
       "docId": "isbcelysianeaconfig",
@@ -55,7 +55,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-Cloud-EA.ditaval",
+      "filter": "IS-BC-Cloud-EA.ditaval",
       "root": "DataArchiving.ditamap",
       "srcId": "is202205src",
       "docId": "isbcelysianeadataarchiving",
@@ -63,7 +63,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-Cloud-EA.ditaval",
+      "filter": "IS-BC-Cloud-EA.ditaval",
       "root": "GlobalizationGuide.ditamap",
       "srcId": "is202205src",
       "docId": "isbcelysianeaglobal",
@@ -71,7 +71,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-Cloud-EA.ditaval",
+      "filter": "IS-BC-Cloud-EA.ditaval",
       "root": "GosuRules.ditamap",
       "srcId": "is202205src",
       "docId": "isbcelysianearules",
@@ -79,7 +79,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-Cloud-EA.ditaval",
+      "filter": "IS-BC-Cloud-EA.ditaval",
       "root": "IntegrationGuide.ditamap",
       "srcId": "is202205src",
       "docId": "isbcelysianeainteg",
@@ -87,7 +87,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-Cloud-EA.ditaval",
+      "filter": "IS-BC-Cloud-EA.ditaval",
       "root": "DeveloperSetupGuide.ditamap",
       "srcId": "is202205src",
       "docId": "isbcelysianeadevsetup",
@@ -95,7 +95,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-EA.ditaval",
+      "filter": "IS-CC-Cloud-EA.ditaval",
       "root": "ReleaseNotes.ditamap",
       "srcId": "is202205src",
       "docId": "isccelysianeareleasenotes",
@@ -115,7 +115,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-EA.ditaval",
+      "filter": "IS-CC-Cloud-EA.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide202205src",
@@ -123,7 +123,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-EA.ditaval",
+      "filter": "IS-CC-Cloud-EA.ditaval",
       "root": "CC-AppGuide.ditamap",
       "srcId": "is202205src",
       "docId": "isccelysianeaapp",
@@ -131,7 +131,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-EA.ditaval",
+      "filter": "IS-CC-Cloud-EA.ditaval",
       "root": "AdminGuide.ditamap",
       "srcId": "is202205src",
       "docId": "isccelysianeaadmin",
@@ -139,7 +139,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-EA.ditaval",
+      "filter": "IS-CC-Cloud-EA.ditaval",
       "root": "ConfigGuide.ditamap",
       "srcId": "is202205src",
       "docId": "isccelysianeaconfig",
@@ -147,7 +147,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-EA.ditaval",
+      "filter": "IS-CC-Cloud-EA.ditaval",
       "root": "DataArchiving.ditamap",
       "srcId": "is202205src",
       "docId": "isccelysianeadataarchiving",
@@ -155,7 +155,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-EA.ditaval",
+      "filter": "IS-CC-Cloud-EA.ditaval",
       "root": "GlobalizationGuide.ditamap",
       "srcId": "is202205src",
       "docId": "isccelysianeaglobal",
@@ -163,7 +163,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-EA.ditaval",
+      "filter": "IS-CC-Cloud-EA.ditaval",
       "root": "GosuRules.ditamap",
       "srcId": "is202205src",
       "docId": "isccelysianearules",
@@ -171,7 +171,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-EA.ditaval",
+      "filter": "IS-CC-Cloud-EA.ditaval",
       "root": "IntegrationGuide.ditamap",
       "srcId": "is202205src",
       "docId": "isccelysianeainteg",
@@ -179,7 +179,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-EA.ditaval",
+      "filter": "IS-CC-Cloud-EA.ditaval",
       "root": "RESTAPIFramework.ditamap",
       "srcId": "is202205src",
       "docId": "isccelysianearestapifw",
@@ -187,7 +187,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-EA.ditaval",
+      "filter": "IS-CC-Cloud-EA.ditaval",
       "root": "DeveloperSetupGuide.ditamap",
       "srcId": "is202205src",
       "docId": "isccelysianeadevsetup",
@@ -195,7 +195,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-EA.ditaval",
+      "filter": "IS-PC-Cloud-EA.ditaval",
       "root": "ReleaseNotes.ditamap",
       "srcId": "is202205src",
       "docId": "ispcelysianeareleasenotes",
@@ -215,7 +215,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-EA.ditaval",
+      "filter": "IS-PC-Cloud-EA.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide202205src",
@@ -223,7 +223,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-EA.ditaval",
+      "filter": "IS-PC-Cloud-EA.ditaval",
       "root": "PC-AppGuide.ditamap",
       "srcId": "is202205src",
       "docId": "ispcelysianeaapp",
@@ -231,7 +231,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-EA.ditaval",
+      "filter": "IS-PC-Cloud-EA.ditaval",
       "root": "AdminGuide.ditamap",
       "srcId": "is202205src",
       "docId": "ispcelysianeaadmin",
@@ -239,7 +239,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-EA.ditaval",
+      "filter": "IS-PC-Cloud-EA.ditaval",
       "root": "ConfigGuide.ditamap",
       "srcId": "is202205src",
       "docId": "ispcelysianeaconfig",
@@ -247,7 +247,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-EA.ditaval",
+      "filter": "IS-PC-Cloud-EA.ditaval",
       "root": "DataArchiving.ditamap",
       "srcId": "is202205src",
       "docId": "ispcelysianeadataarchiving",
@@ -255,7 +255,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-EA.ditaval",
+      "filter": "IS-PC-Cloud-EA.ditaval",
       "root": "GlobalizationGuide.ditamap",
       "srcId": "is202205src",
       "docId": "ispcelysianeaglobal",
@@ -263,7 +263,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-EA.ditaval",
+      "filter": "IS-PC-Cloud-EA.ditaval",
       "root": "GosuRules.ditamap",
       "srcId": "is202205src",
       "docId": "ispcelysianearules",
@@ -271,7 +271,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-EA.ditaval",
+      "filter": "IS-PC-Cloud-EA.ditaval",
       "root": "ProductDesignerGuide.ditamap",
       "srcId": "is202205src",
       "docId": "ispcelysianeapd",
@@ -279,7 +279,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-EA.ditaval",
+      "filter": "IS-PC-Cloud-EA.ditaval",
       "root": "ProductModelGuide.ditamap",
       "srcId": "is202205src",
       "docId": "ispcelysianeapm",
@@ -287,7 +287,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-EA.ditaval",
+      "filter": "IS-PC-Cloud-EA.ditaval",
       "root": "IntegrationGuide.ditamap",
       "srcId": "is202205src",
       "docId": "ispcelysianeainteg",
@@ -295,7 +295,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-EA.ditaval",
+      "filter": "IS-PC-Cloud-EA.ditaval",
       "root": "RESTAPIFramework.ditamap",
       "srcId": "is202205src",
       "docId": "ispcelysianearestapifw",
@@ -303,7 +303,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-EA.ditaval",
+      "filter": "IS-PC-Cloud-EA.ditaval",
       "root": "DeveloperSetupGuide.ditamap",
       "srcId": "is202205src",
       "docId": "ispcelysianeadevsetup",
@@ -311,7 +311,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CM-Cloud-EA.ditaval",
+      "filter": "IS-CM-Cloud-EA.ditaval",
       "root": "ContactMgmtGuide.ditamap",
       "srcId": "is202205src",
       "docId": "iselysianeacontact",
@@ -319,7 +319,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Cloud-EA.ditaval",
+      "filter": "GW-Generic-Cloud-EA.ditaval",
       "root": "GosuRefGuide.ditamap",
       "srcId": "is202205src",
       "docId": "iselysianeagosu",

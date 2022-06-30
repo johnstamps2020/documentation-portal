@@ -872,7 +872,7 @@ object Docs {
                 }
                 val buildFilter = when (build_config.has("filter")) {
                     true -> {
-                        build_config.getString("filter")
+                        "common-gw/ditavals/${build_config.getString("filter")}"
                     }
                     else -> {
                         ""
@@ -2512,7 +2512,7 @@ object Sources {
                 }
                 val buildFilter = when (build_config.has("filter")) {
                     true -> {
-                        build_config.getString("filter")
+                        "common-gw/ditavals/${build_config.getString("filter")}"
                     }
                     else -> {
                         ""

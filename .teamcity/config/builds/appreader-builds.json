@@ -4,7 +4,7 @@
     {
       "buildType": "dita",
       "root": "AppReaderReleaseNotes.ditamap",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "docId": "appreaderrn400",
       "srcId": "appreadersrc",
       "indexRedirect": true

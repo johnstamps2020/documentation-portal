@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
+      "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "releasenotes.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dhrn202111",
@@ -18,7 +18,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
+      "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "product.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dhproduct202111",
@@ -26,7 +26,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
+      "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "install.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dhinstall202111",
@@ -34,7 +34,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
+      "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "upgrade.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dhupgrade202111",
@@ -42,7 +42,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
+      "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "config.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dhconfig202111",
@@ -50,7 +50,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
+      "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "dataspec.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dhdataspec202111",
@@ -58,7 +58,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
+      "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "admin.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dhadmin202111",
@@ -66,7 +66,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
+      "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "developer-ref.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dhdevref202111",
@@ -81,7 +81,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "releasenotes.ditamap",
       "srcId": "dm2021111060src",
       "docId": "icrn202111",
@@ -96,7 +96,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "product.ditamap",
       "srcId": "dm2021111060src",
       "docId": "icproduct202111",
@@ -104,7 +104,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "install.ditamap",
       "srcId": "dm2021111060src",
       "docId": "icinstall202111",
@@ -112,7 +112,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "upgrade.ditamap",
       "srcId": "dm2021111060src",
       "docId": "icupgrade202111",
@@ -120,7 +120,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "config.ditamap",
       "srcId": "dm2021111060src",
       "docId": "icconfig202111",
@@ -128,7 +128,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "dataspec.ditamap",
       "srcId": "dm2021111060src",
       "docId": "icdataspec202111",
@@ -136,7 +136,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "admin.ditamap",
       "srcId": "dm2021111060src",
       "docId": "icadmin202111",
@@ -144,7 +144,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "bi-applications.ditamap",
       "srcId": "dm2021111060src",
       "docId": "icbiapp202111",
@@ -152,7 +152,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "reports.ditamap",
       "srcId": "dm2021111060src",
       "docId": "icreports202111",
@@ -160,7 +160,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "developer-ref.ditamap",
       "srcId": "dm2021111060src",
       "docId": "icdevref202111",

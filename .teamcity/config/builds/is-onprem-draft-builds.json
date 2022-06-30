@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-OnPrem-Draft.ditaval",
+      "filter": "IS-BC-OnPrem-Draft.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis10xdraft",
       "docId": "bc10xdraft",
@@ -22,7 +22,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-OnPrem-Draft.ditaval",
+      "filter": "IS-CC-OnPrem-Draft.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis10xdraft",
       "docId": "cc10xdraft",
@@ -41,7 +41,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-OnPrem-Draft.ditaval",
+      "filter": "IS-PC-OnPrem-Draft.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis10xdraft",
       "docId": "pc10xdraft",
@@ -60,7 +60,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-OnPrem-Draft.ditaval",
+      "filter": "IS-BC-OnPrem-Draft.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide202011src",
@@ -68,7 +68,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-OnPrem-Draft.ditaval",
+      "filter": "IS-CC-OnPrem-Draft.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide202011src",
@@ -76,7 +76,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-OnPrem-Draft.ditaval",
+      "filter": "IS-PC-OnPrem-Draft.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide202011src",
@@ -84,21 +84,21 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-OnPrem-Draft.ditaval",
+      "filter": "IS-BC-OnPrem-Draft.ditaval",
       "root": "_supermap-9x-active.ditamap",
       "srcId": "exportisonprem9",
       "docId": "selfmanagedbcxcoxibeoa"
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-OnPrem-Draft.ditaval",
+      "filter": "IS-CC-OnPrem-Draft.ditaval",
       "root": "_supermap-9x-active.ditamap",
       "srcId": "exportisonprem9",
       "docId": "selfmanagedccxgfurvaqu"
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-OnPrem-Draft.ditaval",
+      "filter": "IS-PC-OnPrem-Draft.ditaval",
       "root": "_supermap-9x-active.ditamap",
       "srcId": "exportisonprem9",
       "docId": "selfmanagedpcxxbkttzbb"

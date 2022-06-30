@@ -3,49 +3,49 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-ce-am-OnPrem.ditaval",
+      "filter": "Digital-ce-am-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1141frFR",
       "docId": "dxceam1141frFR"
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-ce-claims-OnPrem.ditaval",
+      "filter": "Digital-ce-claims-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1141frFR",
       "docId": "dxceclaims1141frFR"
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-ce-qb-OnPrem.ditaval",
+      "filter": "Digital-ce-qb-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1141frFR",
       "docId": "dxceqb1141frFR"
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-pe-OnPrem.ditaval",
+      "filter": "Digital-pe-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1141frFR",
       "docId": "dxpe1141frFR"
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-pe-claims-OnPrem.ditaval",
+      "filter": "Digital-pe-claims-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1141frFR",
       "docId": "dxpeclaims1141frFR"
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-sre-OnPrem.ditaval",
+      "filter": "Digital-sre-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1141frFR",
       "docId": "dxsre1141frFR"
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-ve-OnPrem.ditaval",
+      "filter": "Digital-ve-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1141frFR",
       "docId": "dxve1141frFR"

@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-di-MgSvcs.ditaval",
+      "filter": "Digital-di-MgSvcs.ditaval",
       "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
       "srcId": "dxgwsf202111",
       "docId": "dxgwsfapp202111",
@@ -11,7 +11,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-di-MgSvcs.ditaval",
+      "filter": "Digital-di-MgSvcs.ditaval",
       "root": "Guidewire_For_Salesforce_install-guide.ditamap",
       "srcId": "dxgwsf202111",
       "docId": "dxgwsfinstall202111",
@@ -19,7 +19,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-di-MgSvcs.ditaval",
+      "filter": "Digital-di-MgSvcs.ditaval",
       "root": "gw-for-sf-developer-admin-guide.ditamap",
       "srcId": "dxgwsf202111",
       "docId": "dxgwsfadmin202111",
@@ -27,7 +27,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/Digital-di-MgSvcs.ditaval",
+      "filter": "Digital-di-MgSvcs.ditaval",
       "root": "Digital-Salesforce-ReleaseNotes.ditamap",
       "srcId": "dxgwsf202111",
       "docId": "dxgwsfrelnotes202111",

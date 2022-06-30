@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "Rules.ditamap",
       "srcId": "rulessrc",
       "docId": "gwrules",
@@ -11,7 +11,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "RulesReleaseNotes.ditamap",
       "srcId": "rulessrc",
       "docId": "gwrulesrn",
@@ -19,7 +19,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "SubmissionIntake.ditamap",
       "srcId": "submissionintakesrc",
       "docId": "submissionintake",
@@ -27,7 +27,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "SubmissionIntakeConfiguration.ditamap",
       "srcId": "submissionintakesrc",
       "docId": "submissionintakeconfig",
@@ -35,7 +35,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "WorksetManager.ditamap",
       "srcId": "worksetmgrsrc",
       "docId": "worksetmgr",
