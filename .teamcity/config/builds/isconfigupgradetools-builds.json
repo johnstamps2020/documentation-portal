@@ -11,7 +11,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Other/GW-Generic-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "_supermap.ditamap",
       "indexRedirect": true,
       "srcId": "isconfigupgradetools420src",
@@ -19,7 +19,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Other/GW-Generic-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "_supermap.ditamap",
       "indexRedirect": true,
       "srcId": "isconfigupgradetools410src",
@@ -27,7 +27,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Other/GW-Generic-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "_supermap.ditamap",
       "indexRedirect": true,
       "srcId": "isconfigupgradetools400src",
@@ -35,7 +35,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Other/GW-Generic-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "_supermap.ditamap",
       "indexRedirect": true,
       "srcId": "isconfigupgradetools330src",
@@ -43,7 +43,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Other/GW-Generic-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
       "root": "_supermap.ditamap",
       "indexRedirect": true,
       "srcId": "isconfigupgradetools320jaJPsrc",
