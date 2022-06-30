@@ -38,7 +38,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-sre-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-sre-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1141deDE",
       "docId": "dxsre1141deDE"

@@ -908,7 +908,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-sre-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-sre-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1141",
       "docId": "dxsre1141"
@@ -957,7 +957,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-sre-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-sre-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1130",
       "docId": "dxsre1130"
@@ -992,7 +992,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-sre-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-sre-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1120",
       "docId": "dxsre1120onpremstaging"
