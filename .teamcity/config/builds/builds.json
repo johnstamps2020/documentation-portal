@@ -1031,7 +1031,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-di-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-di-OnPrem.ditaval",
       "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
       "srcId": "dxgwsfapp331",
       "docId": "dxdiapp331",
@@ -1039,7 +1039,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-di-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-di-OnPrem.ditaval",
       "root": "Guidewire_For_Salesforce_install-guide.ditamap",
       "srcId": "dxgwsfinstall331",
       "docId": "dxdiinstall331",
@@ -1047,7 +1047,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-di-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-di-OnPrem.ditaval",
       "root": "gw-for-sf-developer-admin-guide.ditamap",
       "srcId": "dxgwsfadmin331",
       "docId": "dxdiadmin331",
@@ -1055,7 +1055,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-di-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-di-OnPrem.ditaval",
       "root": "Digital-Salesforce-ReleaseNotes.ditamap",
       "srcId": "dxgwsfrelnotes331",
       "docId": "dxdirelnotes331",
@@ -1119,7 +1119,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-di-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-di-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dxgwsf320",
       "docId": "dxdionprem320"
