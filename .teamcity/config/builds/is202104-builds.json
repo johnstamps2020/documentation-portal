@@ -423,7 +423,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-CM-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-CM-Cloud-Release.ditaval",
       "root": "ContactMgmtGuide.ditamap",
       "srcId": "cloudiscontact202104src",
       "docId": "is202104contact",
