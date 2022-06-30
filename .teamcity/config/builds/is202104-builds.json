@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
       "root": "ReleaseNotesBook-cortina.ditamap",
       "srcId": "cloudisrn202104src",
       "docId": "isbc202104releasenotes",
@@ -23,7 +23,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
       "root": "NewAndChangedGuide.ditamap",
       "srcId": "cloudisnew202104src",
       "docId": "isbc202104newandchanged",
@@ -39,7 +39,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
       "root": "BC-AppGuide.ditamap",
       "srcId": "cloudisbcapp202104src",
       "docId": "isbc202104app",
@@ -47,7 +47,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
       "root": "AdminGuide.ditamap",
       "srcId": "cloudisadmin202104src",
       "docId": "isbc202104admin",
@@ -55,7 +55,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
       "root": "BestPracticesGuide.ditamap",
       "srcId": "cloudisbp202104src",
       "docId": "isbc202104bestpractice",
@@ -63,7 +63,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
       "root": "ConfigGuide.ditamap",
       "srcId": "cloudisconfig202104src",
       "docId": "isbc202104config",
@@ -71,7 +71,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
       "root": "GlobalizationGuide.ditamap",
       "srcId": "cloudisglobal202104src",
       "docId": "isbc202104global",
@@ -79,7 +79,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
       "root": "RulesGuide.ditamap",
       "srcId": "cloudisrules202104src",
       "docId": "isbc202104rules",
@@ -87,7 +87,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
       "root": "IntegrationGuide.ditamap",
       "srcId": "cloudisinteg202104src",
       "docId": "isbc202104integ",
@@ -103,7 +103,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
       "root": "TestingGuide.ditamap",
       "srcId": "cloudistest202104src",
       "docId": "isbc202104testing",
@@ -111,7 +111,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "cloudisinstall202104src",
       "docId": "isbc202104install",
