@@ -259,7 +259,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "ReleaseNotesBook-cortina.ditamap",
       "srcId": "cloudisrn202104src",
       "docId": "ispc202104releasenotes",
@@ -279,7 +279,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "NewAndChangedGuide.ditamap",
       "srcId": "cloudisnew202104src",
       "docId": "ispc202104newandchanged",
@@ -295,7 +295,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "PC-AppGuide.ditamap",
       "srcId": "cloudispcapp202104src",
       "docId": "ispc202104app",
@@ -303,7 +303,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "AdminGuide.ditamap",
       "srcId": "cloudisadmin202104src",
       "docId": "ispc202104admin",
@@ -311,7 +311,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "BestPracticesGuide.ditamap",
       "srcId": "cloudisbp202104src",
       "docId": "ispc202104bestpractice",
@@ -327,7 +327,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "ConfigGuide.ditamap",
       "srcId": "cloudisconfig202104src",
       "docId": "ispc202104config",
@@ -335,7 +335,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "GlobalizationGuide.ditamap",
       "srcId": "cloudisglobal202104src",
       "docId": "ispc202104global",
@@ -343,7 +343,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "RulesGuide.ditamap",
       "srcId": "cloudisrules202104src",
       "docId": "ispc202104rules",
@@ -351,7 +351,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "ProductDesignerGuide.ditamap",
       "srcId": "cloudispd202104src",
       "docId": "ispc202104pd",
@@ -359,7 +359,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "ProductModelGuide.ditamap",
       "srcId": "cloudispm202104src",
       "docId": "ispc202104pm",
@@ -367,7 +367,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "IntegrationGuide.ditamap",
       "srcId": "cloudisinteg202104src",
       "docId": "ispc202104integ",
@@ -375,7 +375,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide-BusinessFlows.ditamap",
       "srcId": "cloudiscloudapibf202104src",
       "docId": "ispc202104cloudapibf",
@@ -383,7 +383,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide-Auth.ditamap",
       "srcId": "cloudiscloudapica202104src",
       "docId": "ispc202104cloudapica",
@@ -391,7 +391,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide-ContactManager.ditamap",
       "srcId": "cloudiscloudapicm202104src",
       "docId": "ispc202104cloudapicm",
@@ -399,7 +399,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "TestingGuide.ditamap",
       "srcId": "cloudistest202104src",
       "docId": "ispc202104testing",
@@ -407,7 +407,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "RESTAPIFramework.ditamap",
       "srcId": "cloudisrestapifw202104src",
       "docId": "ispc202104restapifw",
@@ -415,7 +415,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "cloudisinstall202104src",
       "docId": "ispc202104install",
