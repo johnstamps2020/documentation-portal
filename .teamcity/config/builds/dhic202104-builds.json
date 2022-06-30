@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "DataHub-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
       "root": "releasenotes.ditamap",
       "srcId": "dmcloudrncortinasrc",
       "docId": "dhcloudrncortina",
@@ -18,7 +18,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
       "root": "product.ditamap",
       "srcId": "dmcloudproductcortinasrc",
       "docId": "dhcloudproductcortina",
@@ -26,7 +26,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
       "root": "install.ditamap",
       "srcId": "dmcloudinstallcortinasrc",
       "docId": "dhcloudinstallcortina",
@@ -34,7 +34,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
       "root": "upgrade.ditamap",
       "srcId": "dmcloudupgradecortinasrc",
       "docId": "dhcloudupgradecortina",
@@ -42,7 +42,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
       "root": "config.ditamap",
       "srcId": "dmcloudconfigcortinasrc",
       "docId": "dhcloudconfigcortina",
@@ -50,7 +50,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
       "root": "dataspec.ditamap",
       "srcId": "dmclouddataspeccortinasrc",
       "docId": "dhclouddataspeccortina",
@@ -58,7 +58,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
       "root": "admin.ditamap",
       "srcId": "dmcloudadmincortinasrc",
       "docId": "dhcloudadmincortina",
@@ -66,7 +66,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/DataHub-MS-RELEASE.ditaval",
       "root": "developer-ref.ditamap",
       "srcId": "dmclouddevrefcortinasrc",
       "docId": "dhclouddevrefcortina",
