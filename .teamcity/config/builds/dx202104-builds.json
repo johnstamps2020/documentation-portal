@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "Digital-ce-am-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-ce-am-MgSvcs.ditaval",
       "root": "CustomerEngage_AccountManagement_AppGuide.ditamap",
       "srcId": "dx202104ceamapp",
       "docId": "dx202104ceamapp",
@@ -11,7 +11,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ce-am-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-ce-am-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "dx202104install",
       "docId": "dx202104ceaminstall",
@@ -19,7 +19,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ce-am-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-ce-am-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
       "srcId": "dx202104dev",
       "docId": "dx202104ceamdev",
@@ -27,7 +27,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ce-am-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-ce-am-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dx202104refguides",
       "docId": "dx202104ceamrefguides",
@@ -35,7 +35,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ce-am-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-ce-am-MgSvcs.ditaval",
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202104relnotes",
       "docId": "dx202104ceamrelnotes",

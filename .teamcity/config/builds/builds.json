@@ -600,7 +600,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ce-am-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-ce-am-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202011",
       "docId": "dxceam202011"
@@ -656,7 +656,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ce-am-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-ce-am-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202010",
       "docId": "dxceam202010"
@@ -705,7 +705,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ce-am-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-ce-am-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202008",
       "docId": "dxceam202008"
