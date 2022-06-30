@@ -10,7 +10,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ce-claims-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-ce-claims-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1141frFR",
       "docId": "dxceclaims1141frFR"
