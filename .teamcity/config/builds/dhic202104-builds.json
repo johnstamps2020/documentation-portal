@@ -81,7 +81,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
       "root": "releasenotes.ditamap",
       "srcId": "dmcloudrncortinasrc",
       "docId": "iccloudrncortina",
@@ -96,7 +96,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
       "root": "product.ditamap",
       "srcId": "dmcloudproductcortinasrc",
       "docId": "iccloudproductcortina",
@@ -104,7 +104,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
       "root": "install.ditamap",
       "srcId": "dmcloudinstallcortinasrc",
       "docId": "iccloudinstallcortina",
@@ -112,7 +112,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
       "root": "upgrade.ditamap",
       "srcId": "dmcloudupgradecortinasrc",
       "docId": "iccloudupgradecortina",
@@ -120,7 +120,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
       "root": "config.ditamap",
       "srcId": "dmcloudconfigcortinasrc",
       "docId": "iccloudconfigcortina",
@@ -128,7 +128,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
       "root": "dataspec.ditamap",
       "srcId": "dmclouddataspeccortinasrc",
       "docId": "icclouddataspeccortina",
@@ -136,7 +136,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
       "root": "admin.ditamap",
       "srcId": "dmcloudadmincortinasrc",
       "docId": "iccloudadmincortina",
@@ -144,7 +144,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
       "root": "bi-applications.ditamap",
       "srcId": "iccloudbiappcortinasrc",
       "docId": "iccloudbiappcortina",
@@ -152,7 +152,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
       "root": "reports.ditamap",
       "srcId": "iccloudreportscortinasrc",
       "docId": "iccloudreportscortina",
@@ -160,7 +160,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
       "root": "developer-ref.ditamap",
       "srcId": "dmclouddevrefcortinasrc",
       "docId": "icclouddevrefcortina",

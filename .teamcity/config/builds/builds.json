@@ -502,7 +502,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
       "root": "DM_all.ditamap",
       "srcId": "dhic202011",
       "docId": "ic202011",
@@ -530,7 +530,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "filter": "common-gw/ditavals/InfoCenter-MS-RELEASE.ditaval",
       "root": "DM_all.ditamap",
       "srcId": "dhic202005",
       "docId": "ic202005",
