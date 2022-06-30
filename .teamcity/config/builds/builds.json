@@ -44,7 +44,7 @@
     {
       "buildType": "dita",
       "root": "GWCP-ReleaseNotes.ditamap",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
       "indexRedirect": true,
       "srcId": "gwcpreleasenotessrc",
       "docId": "gwcpreleasenotes"
@@ -2540,7 +2540,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
       "root": "Glossary.ditamap",
       "srcId": "gwglossarysrc",
       "docId": "gwglossary",

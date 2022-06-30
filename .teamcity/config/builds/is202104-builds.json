@@ -95,7 +95,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
       "root": "GosuRefGuide.ditamap",
       "srcId": "cloudisgosu202104src",
       "docId": "is202104gosu",
@@ -319,7 +319,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
       "root": "AdvancedProductDesigner.ditamap",
       "srcId": "cloudisapd202104src",
       "docId": "ispc202104apd",
