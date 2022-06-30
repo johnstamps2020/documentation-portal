@@ -203,7 +203,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-sre-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-sre-MgSvcs.ditaval",
       "root": "ServiceRepEngage_AppGuide.ditamap",
       "srcId": "dxdraftsreapp",
       "docId": "dxclouddraftsreapp",
@@ -211,7 +211,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-sre-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-sre-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "dxdraftinstall",
       "docId": "dxclouddraftsreinstall",
@@ -219,7 +219,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-sre-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-sre-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
       "srcId": "dxdraftdev",
       "docId": "dxclouddraftsredev",
@@ -227,7 +227,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-sre-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-sre-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dxdraftrefguides",
       "docId": "dxclouddraftsrerefguides",
@@ -235,7 +235,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-sre-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-sre-MgSvcs.ditaval",
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dxclouddraftrelnotes",
       "docId": "dxclouddraftsrerelnotes",

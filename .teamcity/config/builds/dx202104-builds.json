@@ -203,7 +203,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-sre-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-sre-MgSvcs.ditaval",
       "root": "ServiceRepEngage_AppGuide.ditamap",
       "srcId": "dx202104sreapp",
       "docId": "dx202104sreapp",
@@ -211,7 +211,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-sre-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-sre-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "dx202104install",
       "docId": "dx202104sreinstall",
@@ -219,7 +219,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-sre-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-sre-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
       "srcId": "dx202104dev",
       "docId": "dx202104sredev",
@@ -227,7 +227,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-sre-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-sre-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dx202104refguides",
       "docId": "dx202104srerefguides",
@@ -235,7 +235,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-sre-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-sre-MgSvcs.ditaval",
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202104relnotes",
       "docId": "dx202104srerelnotes",
