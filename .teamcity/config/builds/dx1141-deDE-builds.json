@@ -24,7 +24,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-pe-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-pe-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1141deDE",
       "docId": "dxpe1141deDE"
