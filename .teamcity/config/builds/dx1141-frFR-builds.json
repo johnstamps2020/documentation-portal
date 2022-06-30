@@ -17,7 +17,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ce-qb-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-ce-qb-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1141frFR",
       "docId": "dxceqb1141frFR"
