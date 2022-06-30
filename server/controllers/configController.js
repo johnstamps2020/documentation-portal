@@ -26,9 +26,10 @@ async function loadConfig() {
             } else {
               const config = fs.readFileSync(itemPath, 'utf-8');
               const json = JSON.parse(config);
-              const docs = json.docs.filter(d =>
-                d.environments.includes(process.env.DEPLOY_ENV)
-              );
+              const docs = json.docs;
+              // const docs = json.docs.filter(d =>
+              //   d.environments.includes(process.env.DEPLOY_ENV)
+              // );
               localConfig['docs'].push(...docs);
             }
           }

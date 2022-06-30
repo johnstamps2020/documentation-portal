@@ -62,7 +62,7 @@ async function importFlailPageToStrapi(relativeUrl) {
         path.join(staticPagesDir, relativeUrl, 'index.json')
     );
     // TODO add error reporting    
-    await convertFlailPageToStrapi(configFilePath);   
+    return await convertFlailPageToStrapi(configFilePath);   
 }
 
 async function importAllFlailToStrapi() {
@@ -97,19 +97,27 @@ async function convertFlailPageToStrapi(file) {
     strapiJson.template = flailJson.template;
     strapiJson.class = flailJson.class;
     if (flailJson.class.includes('twoColumns')) {
-        //strapiJson.layout = await processTwoColumnLayout(flailJson);
+        strapiJson.layout = await processTwoColumnLayout(flailJson);
         // TODO: see if page exists first
-        postNewPage(strapiJson);  
+        //postNewPage(strapiJson);  
     }
     // add threeCards
-    if (flailJson.class.includes('threeCards')) {
-        //strapiJson.layout = await processThreeCardsLayout(flailJson, relativeUrl);
-        strapiJson.layout = createStrapiLayout(flailJson, relativeUrl, 'category');
+    if (flailJson.class.includes('threeCards') && flailJson.items[0].items) {
+        strapiJson.layout = await processCategoryLayout(flailJson, relativeUrl);
         // TODO: see if page exists first
-        postNewPage(strapiJson);  
+        await postNewPage(strapiJson);  
     }
+
+    if (flailJson.class.includes('threeCards') && !flailJson.items[0].items) {
+        strapiJson.layout = await processProductLayout(flailJson, relativeUrl);
+        //strapiJson.layout = createStrapiLayout(flailJson, relativeUrl, 'category');
+        // TODO: see if page exists first
+        //postNewPage(strapiJson);  
+    }
+    return strapiJson;
 }
 
+// following not likely to be used
 // TODO separate item creation logic to a function that can be used for either
 // subject or category pages. Merge the 'process' functions to make it DRY.
 
@@ -124,73 +132,65 @@ async function createStrapiLayout(flailJson, relativeUrl, layoutType) {
       };
       console.log(topLevelItem);
       if (topLevelItem.items) {
-         strapiTopLevelItem.layout = createStrapiItems(topLevelItem, layoutType = 'category' ? 'categoryItem' : 'items', relativeUrl);
+         strapiTopLevelItem.layout = createStrapiItems(topLevelItem, relativeUrl);
        
       }
-     // strapiTopLevelItem.layout = createStrapiItems(topLevelItem, layoutType = 'category' ? 'categoryItem' : 'items', relativeUrl);
-
-     // strapiTopLevelItem.items = strapiItems;
       strapiJsonLayout.push(strapiTopLevelItem);      
   } 
   return strapiJsonLayout;
 }
 
-async function createStrapiItems(items, itemType, relativeUrl) {
-  const strapiItems = [];
-
-  for (const item of items) {
-    let strapiItem = {};
-    strapiItem.label = item.label;
-    strapiItem.class = item.class;
-    if (item.items) {
-      strapiItem.subcategory = createStrapiItems(item.items, "subcategoryItem");
+async function createStrapiItem(item, relativeUrl) {
+  if( item.class === 'group' ) {
+    return
+  }
+  let strapiItem = {};
+  strapiItem.label = item.label;
+    if ( item.class ) {
+      strapiItem.class = item.class;
     }
-    if(item.class !== 'group') {
+    
+    if ( item.id ) {
+      strapiItem.document = {};
+      await getStrapiDocByDocId(item.id).then(function(response) {
+        if(response == undefined) {
+            return
+        }
+        
+        strapiItem.document.id = response.data.id;
+      });
 
-      if ( item.id ) {
-        strapiItem.document = {};
-        await getStrapiDocByDocId(item.id).then(function(response) {
-          if(response == undefined) {
-              return
-          }
-          
-          strapiItem.document.id = response.data.id;
-          strapiItems.push(strapiItem);
-        });
-
-        if (strapiItem.document.id === undefined) {
-          // TODO add error handling
-          const strapiDoc = await makeStrapiDocObject(item.id);
+      if (strapiItem.document.id === undefined) {
+        // TODO add error handling
+        await makeStrapiDocObject(item.id).then(async response => {
+          const strapiDoc = response;
           if (strapiDoc === undefined) {
               console.error(`Could not find Flail doc with docId ${item.id}.`)
               return;
           }
           strapiItem = Object.assign(strapiItem, strapiDoc);
-          // TODO add error checking and don't add page if there is a problem
-          await postNewDoc(strapiDoc).then(function(response) {
-              if (response) {
-                  strapiItem.document.id = response.data.id;
-                  strapiItems.push(strapiItem);
-              }
+          await postNewDoc(strapiDoc).then(response => {
+            if ( response ) {
+              strapiItem.document.id = response.data.id;
+            }     
           })
           .catch(err => {console.error(err)});
-        }
-
-      }
-      if ( item.link ) {
-        strapiItem.link = item.link; 
-      }
-
-      if ( item.page ) {
-        strapiItem.pageUrl = path.join(relativeUrl, item.page).replace(/\\/g, '/');
+        });       
       }
     }
+    if ( item.link ) {
+      strapiItem.link = item.link; 
+    }
 
-      
-  }
-  return strapiItems;
+    if ( item.page ) {
+      strapiItem.pageUrl = path.join(relativeUrl, item.page).replace(/\\/g, '/');
+    }   
+  
+  return strapiItem;
 }
-async function processThreeCardsLayout(flailJson, relativeUrl) {
+
+async function processCategoryLayout(flailJson, relativeUrl) {
+  console.log('processing category layout');
     const strapiJsonLayout = [];
 
     for (const category of flailJson.items) {
@@ -199,58 +199,35 @@ async function processThreeCardsLayout(flailJson, relativeUrl) {
             "name": category.label,
             "class": category.class
         };
-        const strapiItems = [];
-  
-        for (const item of category.items) {
-          if(item.class !== 'group') {
-            // TODO make separate function for handling document items and use here and in processTwoColumnLayout
-            let strapiItem = {};
-            strapiItem.label = item.label;
+        const categoryItems = [];
+        strapiCategory.subcategory = [];
 
-            if ( item.id ) {
-              strapiItem.document = {};
-              await getStrapiDocByDocId(item.id).then(function(response) {
-                if(response == undefined) {
-                    return
-                }
-                
-                strapiItem.document.id = response.data.id;
-                strapiItems.push(strapiItem);
-              });
-
-              if (strapiItem.document.id === undefined) {
-                // TODO add error handling
-                const strapiDoc = await makeStrapiDocObject(item.id);
-                if (strapiDoc === undefined) {
-                    console.error(`Could not find Flail doc with docId ${item.id}.`)
-                    return;
-                }
-                strapiItem = Object.assign(strapiItem, strapiDoc);
-                // TODO add error checking and don't add page if there is a problem
-                await postNewDoc(strapiDoc).then(function(response) {
-                    if (response) {
-                        strapiItem.document.id = response.data.id;
-                        strapiItems.push(strapiItem);
-                    }
-                })
-                .catch(err => {console.error(err)});
-              }
-
-            }
-            if ( item.link ) {
-              strapiItem.link = item.link; 
-            }
-
-            if ( item.page ) {
-              strapiItem.pageUrl = path.join(relativeUrl, item.page).replace(/\\/g, '/');
-            }
+        for (const categoryItem of category.items) {
+          if (categoryItem.class !== 'group') {
+            const strapiItem = await createStrapiItem(categoryItem, relativeUrl);
+            categoryItems.push(strapiItem);
           }
-          else {
-
-          }
+          if (categoryItem.items) {
+            const subcategory = {
+              label: categoryItem.label,
+              class: categoryItem.class,
+              subcategoryItem: []
+            }
             
+            for (const subItem of categoryItem.items ) {
+              const strapiSubItem = {
+                label: subItem.label,
+              }
+              if ( subItem.class ) {
+                strapiSubItem.class = categoryItem.class;
+              }
+              subcategory.subcategoryItem.push(await createStrapiItem(subItem, relativeUrl));
+            }
+            strapiCategory.subcategory.push(subcategory);
+          }
         }
-        strapiCategory.items = strapiItems;
+        
+        strapiCategory.categoryItem = categoryItems;
         strapiJsonLayout.push(strapiCategory);      
     } 
     return strapiJsonLayout;  
@@ -322,55 +299,55 @@ async function makeStrapiDocObject(docId) {
     const strapiDoc = {};
     await axios.get(`${SAFECONFIG_URL}/docMetadata/${docId}`)
         .then(async function (response) {
-          console.log(response.status);
-          console.log(response.data);
-                if (response.status == '200' && response.data.error !== true) { 
-                    flailDoc = response.data;
-                    strapiDoc.docId = docId;
-                    strapiDoc.title = flailDoc.docTitle;
-                    strapiDoc.url = flailDoc.docUrl;
-                    // TODO Make this DRY
-                    const strapiVersion = [];
-                    flailDoc.version.forEach((version) => {
-                        strapiVersion.push({"name": version});
-                    });
-                    strapiDoc.version = strapiVersion;
-                    const strapiProduct = [];
-                    flailDoc.product.forEach((product) => {
-                        strapiProduct.push({"name": product});
-                    });
-                    strapiDoc.product = strapiProduct;
-                    const strapiSubject = [];
-                    flailDoc.subject?.forEach((subject) => {
-                        strapiSubject.push({"name": subject});
-                    });
-                    strapiDoc.subject = strapiSubject;
-                    const strapiRelease = [];
-                    flailDoc.release?.forEach((release) => {
-                        strapiRelease.push({"name": release});
-                    });
-                    strapiDoc.release = strapiRelease;
-                    // TODO: env is not in the config, so we need to add that
-                    // let isInProduction = false;
-                    // flailDoc.env.forEach((env) => {
-                    //     if(env === "prod") {
-                    //         isInProduction = true;
-                    //     }
-                    // });
-                    // strapiDoc.isInProduction = isInProduction;
-                    strapiDoc.earlyAccess = flailDoc.docEarlyAccess;
-                    strapiDoc.isInternal = flailDoc.docInternal;
-                    strapiDoc.isPublic = flailDoc.docPublic;
-                    strapiDoc.buildType = [];
-                    const strapiBuild = await makeStrapiBuildObject(docId);
-                    strapiDoc.buildType.push(strapiBuild);   
-                    return strapiDoc;
-                }
-            })
+            if (response.status === 200 && response.data.error !== true) {  
+                flailDoc = response.data;
+                strapiDoc.docId = docId;
+                strapiDoc.title = flailDoc.docTitle;
+                strapiDoc.url = flailDoc.docUrl;
+                // TODO Make this DRY
+                const strapiVersion = [];
+                flailDoc.version.forEach((version) => {
+                    strapiVersion.push({"name": version});
+                });
+                strapiDoc.version = strapiVersion;
+                const strapiProduct = [];
+                flailDoc.product.forEach((product) => {
+                    strapiProduct.push({"name": product});
+                });
+                strapiDoc.product = strapiProduct;
+                const strapiSubject = [];
+                flailDoc.subject?.forEach((subject) => {
+                    strapiSubject.push({"name": subject});
+                });
+                strapiDoc.subject = strapiSubject;
+                const strapiRelease = [];
+                flailDoc.release?.forEach((release) => {
+                    strapiRelease.push({"name": release});
+                });
+                strapiDoc.release = strapiRelease;
+                // TODO: env is not in the config, so we need to add that
+                // let isInProduction = false;
+                // flailDoc.env.forEach((env) => {
+                //     if(env === "prod") {
+                //         isInProduction = true;
+                //     }
+                // });
+                // strapiDoc.isInProduction = isInProduction;
+                strapiDoc.earlyAccess = flailDoc.docEarlyAccess;
+                strapiDoc.isInternal = flailDoc.docInternal;
+                strapiDoc.isPublic = flailDoc.docPublic;
+                strapiDoc.buildType = [];
+                const strapiBuild = await makeStrapiBuildObject(docId);
+                if ( Object.keys(strapiBuild).length > 0 ) {
+                  strapiDoc.buildType.push(strapiBuild); 
+                }                    
+            }
+          })
           .catch(err => {
             console.error(`Could not create Strapi doc object. The Flail doc config might not exist. ERROR: ${err}`);
             return;
           });
+          return strapiDoc;
 }
 
 /*
@@ -383,11 +360,14 @@ async function makeStrapiBuildObject(docId) {
     .then(async function (response) {
         if (response.status == '200' && response.error !== true) { 
             const flailBuild = response.data;
+            if ( flailBuild.buildType === undefined ) {
+              return;
+            }
             buildType.__component = `builds.${flailBuild.buildType}`;
             switch(flailBuild.buildType) {
               case 'dita':
                 buildType.rootMap = flailBuild.root;
-                buildType.filter = flailBuild.filter;
+                buildType.filter = flailBuild.filter.replace('common-gw/ditavals/', '');
                 buildType.indexRedirect = flailBuild.indexRedirect;
                 break;
               case 'source-zip':
