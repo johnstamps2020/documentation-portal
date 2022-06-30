@@ -90,7 +90,7 @@
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools420",
+          "id": "isconfigupgradetools430",
           "env": ["staging", "prod"]
         },
         {
