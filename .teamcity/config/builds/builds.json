@@ -218,7 +218,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-OnPrem-Release.ditaval",
       "root": "_supermap-1021.ditamap",
       "srcId": "selfmanagedis1021src",
       "docId": "bc1021",
@@ -275,7 +275,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-OnPrem-Release.ditaval",
       "root": "_supermap-1020.ditamap",
       "srcId": "selfmanagedis1020src",
       "docId": "bc1020",
@@ -332,7 +332,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-OnPrem-Release.ditaval",
       "root": "_supermap-1012.ditamap",
       "srcId": "selfmanagedis1012src",
       "docId": "bc1012",
@@ -389,7 +389,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-OnPrem-Release.ditaval",
       "root": "_supermap-1011.ditamap",
       "srcId": "selfmanagedis1011src",
       "docId": "bc1011",
@@ -446,7 +446,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-OnPrem-Release.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis1010src",
       "docId": "bc1010staging",
@@ -761,7 +761,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-OnPrem-Release.ditaval",
       "root": "_superbook.ditamap",
       "srcId": "selfmanagedis1003src",
       "docId": "selfmanagedbcfxhglseu"
@@ -782,7 +782,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-OnPrem-Release.ditaval",
       "root": "_superbook.ditamap",
       "srcId": "selfmanagedis1002src",
       "docId": "selfmanagedbc1002"
@@ -1140,7 +1140,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-OnPrem-Release.ditaval",
       "root": "_supermap-9x-active.ditamap",
       "srcId": "is9010",
       "docId": "bc9010"
@@ -1168,7 +1168,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-OnPrem-Release.ditaval",
       "root": "_supermap-9x-active.ditamap",
       "srcId": "is909",
       "docId": "bc909"
@@ -1189,7 +1189,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "filter": "common-gw/ditavals/IS-BC-OnPrem-Release.ditaval",
       "root": "_superbook.ditamap",
       "srcId": "exportis908",
       "docId": "selfmanagedbchggrerca"
