@@ -649,7 +649,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ve-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-ve-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202011",
       "docId": "dxve202011"
@@ -698,7 +698,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ve-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-ve-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202010",
       "docId": "dxve202010"
