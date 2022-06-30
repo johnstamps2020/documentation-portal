@@ -1087,7 +1087,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-vod-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-vod-OnPrem.ditaval",
       "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
       "srcId": "dxgwsfapp331",
       "docId": "dxvodapp331",
@@ -1095,7 +1095,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-vod-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-vod-OnPrem.ditaval",
       "root": "Guidewire_For_Salesforce_install-guide.ditamap",
       "srcId": "dxgwsfinstall331",
       "docId": "dxvodinstall331",
@@ -1103,7 +1103,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-vod-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-vod-OnPrem.ditaval",
       "root": "gw-for-sf-developer-admin-guide.ditamap",
       "srcId": "dxgwsfadmin331",
       "docId": "dxvodadmin331",
@@ -1111,7 +1111,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-vod-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-vod-OnPrem.ditaval",
       "root": "Digital-Salesforce-ReleaseNotes.ditamap",
       "srcId": "dxgwsfrelnotes331",
       "docId": "dxvodrelnotes331",
@@ -1133,7 +1133,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-vod-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-vod-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dxgwsf320",
       "docId": "dxvodonprem320"
