@@ -31,7 +31,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-pe-claims-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-pe-claims-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1141deDE",
       "docId": "dxpeclaims1141deDE"

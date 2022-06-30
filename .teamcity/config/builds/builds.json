@@ -901,7 +901,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-pe-claims-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-pe-claims-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1141",
       "docId": "dxpeclaims1141"
@@ -950,7 +950,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-pe-claims-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-pe-claims-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1130",
       "docId": "dxpeclaims1130"
