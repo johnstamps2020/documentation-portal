@@ -283,7 +283,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-apd-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-apd-MgSvcs.ditaval",
       "root": "DigitalCodeGenerationGuide.ditamap",
       "srcId": "dx202104dcg",
       "docId": "dx202104dcg",

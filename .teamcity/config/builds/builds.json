@@ -621,7 +621,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-apd-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-apd-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202011",
       "docId": "dxapd202011"
@@ -733,7 +733,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-apd-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-apd-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202005",
       "docId": "dxapd202005"
