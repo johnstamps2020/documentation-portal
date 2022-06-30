@@ -45,7 +45,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ve-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-ve-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1141deDE",
       "docId": "dxve1141deDE"
