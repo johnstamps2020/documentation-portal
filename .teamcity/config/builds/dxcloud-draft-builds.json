@@ -123,7 +123,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-pe-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-pe-MgSvcs.ditaval",
       "root": "ProducerEngage_AppGuide.ditamap",
       "srcId": "dxdraftpeapp",
       "docId": "dxclouddraftpeapp",
@@ -131,7 +131,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-pe-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-pe-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "dxdraftinstall",
       "docId": "dxclouddraftpeinstall",
@@ -139,7 +139,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-pe-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-pe-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
       "srcId": "dxdraftdev",
       "docId": "dxclouddraftpedev",
@@ -147,7 +147,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-pe-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-pe-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dxdraftrefguides",
       "docId": "dxclouddraftperefguides",
@@ -155,7 +155,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-pe-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-pe-MgSvcs.ditaval",
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dxclouddraftrelnotes",
       "docId": "dxclouddraftperelnotes",
