@@ -16,6 +16,7 @@
       <module fileurl="file://$PROJECT_DIR$/s3/s3.iml" filepath="$PROJECT_DIR$/s3/s3.iml" />
       <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
       <module fileurl="file://$PROJECT_DIR$/apps/sitemap_generator/sitemap_generator.iml" filepath="$PROJECT_DIR$/apps/sitemap_generator/sitemap_generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apps/standarize_ditavals/standarize_ditavals.iml" filepath="$PROJECT_DIR$/apps/standarize_ditavals/standarize_ditavals.iml" />
       <module fileurl="file://$PROJECT_DIR$/apps/upgradediffs_page_builder/upgradediffs_page_builder.iml" filepath="$PROJECT_DIR$/apps/upgradediffs_page_builder/upgradediffs_page_builder.iml" />
     </modules>
   </component>
