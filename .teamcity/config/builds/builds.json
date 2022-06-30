@@ -873,7 +873,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ce-am-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-ce-am-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1141",
       "docId": "dxceam1141"
@@ -922,7 +922,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ce-am-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-ce-am-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1130",
       "docId": "dxceam1130"
@@ -971,7 +971,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ce-am-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-ce-am-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1120",
       "docId": "dxceam1120onpremstaging"

@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "Digital-ce-am-OnPrem.ditaval",
+      "filter": "common-gw/ditavals/Digital-ce-am-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1141frFR",
       "docId": "dxceam1141frFR"
