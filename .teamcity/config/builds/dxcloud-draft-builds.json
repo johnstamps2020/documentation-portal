@@ -163,7 +163,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-pe-claims-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-pe-claims-MgSvcs.ditaval",
       "root": "ProducerEngage_Claims_AppGuide.ditamap",
       "srcId": "dxdraftpeclaimsapp",
       "docId": "dxclouddraftpeclaimsapp",
@@ -171,7 +171,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-pe-claims-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-pe-claims-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "dxdraftinstall",
       "docId": "dxclouddraftpeclaimsinstall",
@@ -179,7 +179,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-pe-claims-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-pe-claims-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
       "srcId": "dxdraftdev",
       "docId": "dxclouddraftpeclaimsdev",
@@ -187,7 +187,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-pe-claims-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-pe-claims-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dxdraftrefguides",
       "docId": "dxclouddraftpeclaimsrefguides",
@@ -195,7 +195,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-pe-claims-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-pe-claims-MgSvcs.ditaval",
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dxclouddraftrelnotes",
       "docId": "dxclouddraftpeclaimsrelnotes",

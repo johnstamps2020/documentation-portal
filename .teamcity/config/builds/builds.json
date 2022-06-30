@@ -635,7 +635,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-pe-claims-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-pe-claims-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202011",
       "docId": "dxpeclaims202011"
@@ -684,7 +684,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-pe-claims-MgSvcs.ditaval",
+      "filter": "common-gw/ditavals/Digital-pe-claims-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202010",
       "docId": "dxpeclaims202010"
