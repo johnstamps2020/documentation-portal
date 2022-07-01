@@ -1923,39 +1923,6 @@
       "branch": "master"
     },
     {
-      "id": "testingframeworksapibanffsrc",
-      "title": "API Testing Banff",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-solutions.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/testing_frameworks/2020.11/GT-API.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
-    },
-    {
-      "id": "testingframeworksuibanffsrc",
-      "title": "User Interface Testing Banff",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-solutions.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/testing_frameworks/2020.11/GT-UI.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
-    },
-    {
-      "id": "testingframeworksrnbanffsrc",
-      "title": "Test Automation Release Notes Banff",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-solutions.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/testing_frameworks/releasenotes/Guidewire_Test_Automation_ReleaseNotes.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
-    },
-    {
       "id": "livepredictsrc",
       "title": "Live Predict",
       "sourceType": "git",
