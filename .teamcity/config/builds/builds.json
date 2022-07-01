@@ -152,30 +152,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "GT-API.ditamap",
-      "srcId": "testingframeworksapibanffsrc",
-      "docId": "testingframeworksapibanff",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "GT-UI.ditamap",
-      "srcId": "testingframeworksuibanffsrc",
-      "docId": "testingframeworksuibanff",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "Guidewire_Test_Automation_ReleaseNotes.ditamap",
-      "srcId": "testingframeworksrnbanffsrc",
-      "docId": "testingframeworksrnbanff",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "_supermap-202005.ditamap",
       "srcId": "cloudis202005src",

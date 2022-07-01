@@ -9,39 +9,11 @@
       "branch": "master"
     },
     {
-      "id": "isconfigupgradetools420src",
-      "title": "InsuranceSuite Configuration Upgrade Tools 4.2.0",
+      "id": "isconfigupgradetools430src",
+      "title": "InsuranceSuite Configuration Upgrade Tools 4.3.0",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools-3x.git",
-      "branch": "release/4.2.0"
-    },
-    {
-      "id": "isconfigupgradetools410src",
-      "title": "InsuranceSuite Configuration Upgrade Tools 4.1.0",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools-3x.git",
-      "branch": "release/4.1.0"
-    },
-    {
-      "id": "isconfigupgradetools400src",
-      "title": "InsuranceSuite Configuration Upgrade Tools 4.0.0",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools-3x.git",
-      "branch": "release/4.0.0"
-    },
-    {
-      "id": "isconfigupgradetools330src",
-      "title": "InsuranceSuite Configuration Upgrade Tools 3.3.0",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools-3x.git",
-      "branch": "release/3.3.0"
-    },
-    {
-      "id": "isconfigupgradetools320jaJPsrc",
-      "title": "InsuranceSuite Configuration Upgrade Tools 3.2.0 ja-JP",
-      "sourceType": "git",
-      "branch": "release/ja-JP/3.2.0",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools-3x.git"
+      "branch": "release/4.3.0"
     },
     {
       "id": "isconfigupgradetools1xsrc",

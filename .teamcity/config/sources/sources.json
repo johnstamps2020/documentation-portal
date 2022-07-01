@@ -716,7 +716,7 @@
       "id": "lobbopguideaspensrc",
       "title": "LOB BOP Guide Aspen",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Aspen",
       "xdocsPathIds": [
         "/Content/doc/LOB/aspen/lob-bop-10x.ditamap",
@@ -729,7 +729,7 @@
       "id": "lobbopsbtrnaspensrc",
       "title": "LOB BOP Countrywide Release Notes Aspen",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Aspen",
       "xdocsPathIds": [
         "/Content/doc/LOB/aspen/BOP_SBT_ReleaseNotes-10x.ditamap",
@@ -742,7 +742,7 @@
       "id": "lobglguideaspensrc",
       "title": "LOB GL Guide Aspen",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Aspen",
       "xdocsPathIds": [
         "/Content/doc/LOB/aspen/lob-gl-9x-1003.ditamap",
@@ -755,7 +755,7 @@
       "id": "lobglsbtrnaspensrc",
       "title": "LOB GL Countrywide Release Notes Aspen",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Aspen",
       "xdocsPathIds": [
         "/Content/doc/LOB/aspen/GL_SBT_ReleaseNotes-9x-1003.ditamap",
@@ -768,7 +768,7 @@
       "id": "lobcaguideaspensrc",
       "title": "LOB CA Guide Aspen",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Aspen",
       "xdocsPathIds": [
         "/Content/doc/LOB/aspen/lob-ca-10x.ditamap",
@@ -781,7 +781,7 @@
       "id": "lobcasbtrnaspensrc",
       "title": "LOB CA Countrywide Release Notes Aspen",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Aspen",
       "xdocsPathIds": [
         "/Content/doc/LOB/aspen/CA_SBT_ReleaseNotesCW2020-10x.ditamap",
@@ -794,7 +794,7 @@
       "id": "lobcrimeguideaspensrc",
       "title": "LOB Crime Guide Aspen",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Aspen",
       "xdocsPathIds": [
         "/Content/doc/LOB/aspen/lob-crime.ditamap",
@@ -807,7 +807,7 @@
       "id": "lobcrimesbtrnaspensrc",
       "title": "LOB Crime Countrywide Release Notes Aspen",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Aspen",
       "xdocsPathIds": [
         "/Content/doc/LOB/aspen/Crime_SBT_ReleaseNotes.ditamap",
@@ -820,7 +820,7 @@
       "id": "lobbopguidebanffsrc",
       "title": "LOB BOP Guide Banff",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/LOB/active/lob-bop-10x.ditamap",
@@ -833,7 +833,7 @@
       "id": "lobbopsbtrnbanffsrc",
       "title": "LOB BOP Countrywide Release Notes Banff",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/LOB/active/BOP_SBT_ReleaseNotes-10x.ditamap",
@@ -846,7 +846,7 @@
       "id": "lobglguidebanffsrc",
       "title": "LOB GL Guide Banff",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/LOB/banff/lob-gl-9x-1003.ditamap",
@@ -859,7 +859,7 @@
       "id": "lobglsbtrnbanffsrc",
       "title": "LOB GL Countrywide Release Notes Banff",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/LOB/banff/GL_SBT_ReleaseNotes-9x-1003.ditamap",
@@ -872,7 +872,7 @@
       "id": "lobcaguidebanffsrc",
       "title": "LOB CA Guide Banff",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/LOB/banff/lob-ca-10x.ditamap",
@@ -885,7 +885,7 @@
       "id": "lobcasbtrnbanffsrc",
       "title": "LOB CA Countrywide Release Notes Banff",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/LOB/banff/CA_SBT_ReleaseNotesCW2020-10x.ditamap",
@@ -898,7 +898,7 @@
       "id": "lobcrimeguidebanffsrc",
       "title": "LOB Crime Guide Banff",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/LOB/banff/lob-crime.ditamap",
@@ -911,7 +911,7 @@
       "id": "lobcrimesbtrnbanffsrc",
       "title": "LOB Crime Countrywide Release Notes Banff",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/LOB/banff/Crime_SBT_ReleaseNotes.ditamap",
@@ -924,7 +924,7 @@
       "id": "lobwcguidebanffsrc",
       "title": "LOB WC Guide Banff",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/LOB/banff/lob-wc.ditamap",
@@ -937,7 +937,7 @@
       "id": "lobwcsbtrnbanffsrc",
       "title": "LOB WC Countrywide Release Notes Banff",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/lines-of-business.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
       "xdocsPathIds": [
         "/Content/doc/LOB/banff/WC_SBT_ReleaseNotes.ditamap",
@@ -1921,39 +1921,6 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-extras.git",
       "branch": "master"
-    },
-    {
-      "id": "testingframeworksapibanffsrc",
-      "title": "API Testing Banff",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-solutions.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/testing_frameworks/2020.11/GT-API.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
-    },
-    {
-      "id": "testingframeworksuibanffsrc",
-      "title": "User Interface Testing Banff",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-solutions.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/testing_frameworks/2020.11/GT-UI.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
-    },
-    {
-      "id": "testingframeworksrnbanffsrc",
-      "title": "Test Automation Release Notes Banff",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-solutions.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/testing_frameworks/releasenotes/Guidewire_Test_Automation_ReleaseNotes.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
     },
     {
       "id": "livepredictsrc",
