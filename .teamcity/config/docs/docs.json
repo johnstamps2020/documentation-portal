@@ -2361,6 +2361,21 @@
       "earlyAccess": false
     },
     {
+      "id": "gchhelpearlyaccess",
+      "title": "Guidewire Cloud Home Help - Early Access",
+      "url": "help/GCH-earlyaccess",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Home"],
+        "version": ["latest"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
       "id": "gchhelprelease",
       "title": "Guidewire Cloud Home Help",
       "url": "help/GCH",
