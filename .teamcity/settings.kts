@@ -86,7 +86,8 @@ enum class GwConfigParams(val param_value: String) {
     STORYBOOK_BUILD_OUT_DIR("dist"),
     SOURCE_ZIP_BUILD_OUT_DIR("out"),
     BUILD_DATA_DIR("json"),
-    BUILD_DATA_FILE("build-data.json")
+    BUILD_DATA_FILE("build-data.json"),
+    COMMON_GW_DITAVALS_DIR("common_gw_ditavals")
 }
 
 enum class GwDockerImages(val image_url: String) {
@@ -602,8 +603,12 @@ object Docs {
                     docBuildType.steps.stepsOrder.add(2, zipPackageStep.id.toString())
                 }
 
+                val getDitavalFromCommonGwRepoStep =
+                    GwBuildSteps.createGetDitavalFromCommonGwRepoStep(working_dir, build_filter)
+                docBuildType.steps.step(getDitavalFromCommonGwRepoStep)
                 docBuildType.steps.step(buildDitaProjectStep)
-                docBuildType.steps.stepsOrder.add(0, buildDitaProjectStep.id.toString())
+                docBuildType.steps.stepsOrder.addAll(0,
+                    arrayListOf(getDitavalFromCommonGwRepoStep.id.toString(), buildDitaProjectStep.id.toString()))
                 if (!resources_to_copy.isEmpty) {
                     val copyResourcesSteps = mutableListOf<ScriptBuildStep>()
                     for (stepId in 0 until resources_to_copy.length()) {
@@ -872,7 +877,7 @@ object Docs {
                 }
                 val buildFilter = when (build_config.has("filter")) {
                     true -> {
-                        "common-gw/ditavals/${build_config.getString("filter")}"
+                        build_config.getString("filter")
                     }
                     else -> {
                         ""
@@ -2512,7 +2517,7 @@ object Sources {
                 }
                 val buildFilter = when (build_config.has("filter")) {
                     true -> {
-                        "common-gw/ditavals/${build_config.getString("filter")}"
+                        build_config.getString("filter")
                     }
                     else -> {
                         ""
@@ -2539,6 +2544,12 @@ object Sources {
                             src_id,
                             docInfoFile,
                             docConfig
+                        )
+                    )
+                    step(
+                        GwBuildSteps.createGetDitavalFromCommonGwRepoStep(
+                            workingDir,
+                            buildFilter
                         )
                     )
                     step(
@@ -3696,7 +3707,8 @@ object GwBuildSteps {
         )
 
         if (build_filter != null) {
-            ditaCommandParams.add(Pair("--filter", "${working_dir}/${build_filter}"))
+            ditaCommandParams.add(Pair("--filter",
+                "${working_dir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}/${build_filter}"))
         }
 
         var buildCommand = ""
@@ -3763,6 +3775,26 @@ object GwBuildSteps {
         }
     }
 
+    fun createGetDitavalFromCommonGwRepoStep(
+        working_dir: String,
+        build_filter: String,
+    ): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Get $build_filter from the common-gw repo"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                                    
+                export COMMON_GW_DITAVALS_DIR="${working_dir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}"
+                mkdir -p ${'$'}COMMON_GW_DITAVALS_DIR && cd ${'$'}COMMON_GW_DITAVALS_DIR 
+                curl -O https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/common-gw/raw/ditavals/${build_filter} \
+                    -H "Accept: application/json" \
+                    -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
+            """.trimIndent()
+        }
+    }
+
     fun createBuildDitaProjectForBuildsStep(
         output_format: String,
         root_map: String,
@@ -3785,7 +3817,8 @@ object GwBuildSteps {
         )
 
         if (build_filter != null) {
-            commandParams.add(Pair("--filter", "${working_dir}/${build_filter}"))
+            commandParams.add(Pair("--filter",
+                "${working_dir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}/${build_filter}"))
         }
 
         when (output_format) {
