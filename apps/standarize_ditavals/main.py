@@ -8,14 +8,42 @@ import requests
 
 CURRENT_DIR = Path(__file__).parent
 CONFIG_DIR = CURRENT_DIR / 'config'
+BITBUCKET_API_ROOT_URL = 'https://stash.guidewire.com/rest/api/1.0/projects'
+BITBUCKET_ACCESS_TOKEN = os.environ.get('BITBUCKET_ACCESS_TOKEN')
+BITBUCKET_API_HEADERS = {
+    'Authorization': f'Bearer {BITBUCKET_ACCESS_TOKEN}'
+}
 
 
-def find_non_existing_sources(src_definitions: list[dict]) -> list or None:
-    def get_branches(git_repo_name: str, start_at: Optional[int] = None):
+def list_common_gw_ditavals(start_at: Optional[int] = None):
+    start_number = start_at or 0
+    common_gw_ditavals_url = f'{BITBUCKET_API_ROOT_URL}/DOCSOURCES/repos/common-gw/browse/ditavals?start={start_number}'
+    response = requests.get(
+        common_gw_ditavals_url,
+        headers=BITBUCKET_API_HEADERS,
+    )
+    response_json = response.json()
+    ditaval_files = []
+    if response_children := response_json.get('children'):
+        ditaval_files = [ditaval_file['path']['toString'] for ditaval_file in response_children.get('values', [])]
+        is_last_page = response_children.get('isLastPage', True)
+        if not is_last_page:
+            ditaval_files.extend(
+                list_common_gw_ditavals(start_at=response_json.get('nextPageStart')))
+    return ditaval_files
+
+
+def find_non_existent_sources(src_definitions: list[dict]):
+    def get_request_url(src_obj: dict) -> str:
+        src_git_url = src_obj['gitUrl']
+        git_project, git_repo = src_git_url.replace('ssh://git@stash.guidewire.com/', '').replace('.git', '').split('/')
+        return f'{BITBUCKET_API_ROOT_URL}/{git_project}/repos/{git_repo}/branches'
+
+    def get_branches(request_url: str, start_at: Optional[int] = None) -> list or None:
         start_number = start_at or 0
         response = requests.get(
-            f'{bitbucket_api_root_url}/DOCSOURCES/repos/{git_repo}/branches?start={start_number}',
-            headers=bitbucket_api_headers,
+            f'{request_url}?start={start_number}',
+            headers=BITBUCKET_API_HEADERS,
         )
         response_json = response.json()
         if response.ok:
@@ -23,33 +51,34 @@ def find_non_existing_sources(src_definitions: list[dict]) -> list or None:
             is_last_page = response_json.get('isLastPage', True)
             if not is_last_page:
                 branches.extend(
-                    get_branches(git_repo_name, start_at=response_json.get('nextPageStart')))
+                    get_branches(request_url, start_at=response_json.get('nextPageStart')))
             return branches
         elif 'NoSuchRepositoryException' in response_json.get('errors')[0].get('exceptionName'):
             return None
 
-    bitbucket_access_token = os.environ.get('BITBUCKET_ACCESS_TOKEN')
-    bitbucket_api_root_url = 'https://stash.guidewire.com/rest/api/1.0/projects'
-    bitbucket_api_headers = {
-        'Authorization': f'Bearer {bitbucket_access_token}'
-    }
-    missing_sources = []
+    non_existent_filters = []
     for src in src_definitions:
         logging.info(f'Checking the {src["id"]} source')
-        src_branch = src['branch']
-        git_repo = src['gitUrl'].split('/')[-1].replace('.git', '')
-        git_branches = get_branches(git_repo)
-        if src not in missing_sources:
-            if not git_branches or (git_branches and src_branch not in git_branches):
-                missing_sources.append(src)
+        branches_request_url = get_request_url(src)
+        git_branches = get_branches(branches_request_url)
+        if src not in non_existent_filters:
+            if not git_branches or src['branch'] not in git_branches:
+                non_existent_filters.append(src)
 
-    (CURRENT_DIR / 'missing_sources.json').open('w').write(json.dumps(missing_sources, indent=2))
-    logging.info(f'Missing sources: {len(missing_sources)}')
+    (CURRENT_DIR / 'non_existent_sources.json').open('w').write(json.dumps(non_existent_filters, indent=2))
+    logging.info(f'Non-existent sources: {len(non_existent_filters)}')
 
 
-def list_common_gw_ditavals():
-    common_gw_ditavals_dir = Path('/Users/mskowron/Documents/GIT-REPOS/common-gw/ditavals')
-    return [f.name for f in common_gw_ditavals_dir.glob('*')]
+def find_non_existent_filters(build_definitions: list[dict]):
+    common_gw_ditavals = list_common_gw_ditavals()
+    non_existent_filters = []
+    for build in build_definitions:
+        if build_filter := build.get('filter'):
+            logging.info(f'Checking the build for doc {build["docId"]}')
+            if build_filter not in common_gw_ditavals:
+                non_existent_filters.append(build)
+    (CURRENT_DIR / 'non_existent_filters.json').open('w').write(json.dumps(non_existent_filters, indent=2))
+    logging.info(f'Non-existent filters: {len(non_existent_filters)}')
 
 
 def load_builds():
@@ -91,9 +120,14 @@ def find_ditavals_for_update(build_definitions: list[dict], src_definitions: lis
     logging.info(f'Ditavals outside the common-gw submodule: {len(ditavals_to_update)}')
 
 
-if __name__ == '__main__':
+def main():
     logging.basicConfig(level=logging.INFO)
     builds = load_builds()
     sources = load_sources()
     # find_ditavals_for_update(builds, sources)
-    find_non_existing_sources(sources)
+    find_non_existent_filters(builds)
+    find_non_existent_sources(sources)
+
+
+if __name__ == '__main__':
+    main()
