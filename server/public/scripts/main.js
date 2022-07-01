@@ -103,13 +103,11 @@ function addElysianNotice() {
        return;
   }
   const content = document.querySelector('.content');
-  const notice = document.createElement('div');
-  notice.classList.add('notice', 'cardShadow');
   const link = document.createElement('a');
+  link.classList.add('notice', 'cardShadow');
   link.textContent = "What's new in Elysian";
   link.setAttribute('href', '/cloudProducts/elysian/whatsnew');
-  notice.appendChild(link);
-  content.prepend(notice);
+  content.prepend(link);
 }
 
 function addNotices() {

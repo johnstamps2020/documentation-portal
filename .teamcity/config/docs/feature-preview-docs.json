@@ -20,19 +20,19 @@
       "earlyAccess": true
     },
     {
-      "id": "apdappguide",
-      "title": "Advanced Product Designer Guide",
-      "url": "cloud/apd/latest/topics/c_intro.html",
+      "id": "apdclaims",
+      "title": "Advanced Product Designer for Claims Guide",
+      "url": "cloud/apdclaims/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Advanced Product Designer"],
+        "product": ["Advanced Product Designer for Claims"],
         "version": ["latest"],
         "release": ["Elysian"],
         "subject": ["Configuration"]
       },
-      "environments": ["int", "staging", "prod"],
-      "displayOnLandingPages": false,
-      "indexForSearch": false,
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
       "public": false,
       "internal": false,
       "earlyAccess": true
@@ -40,7 +40,7 @@
     {
       "id": "apdapprn",
       "title": "Advanced Product Designer Release Notes",
-      "url": "cloud/apd/latest/topics/release-notes/c_new-and-changed.html",
+      "url": "cloud/apd/releasenotes/latest",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Advanced Product Designer"],
