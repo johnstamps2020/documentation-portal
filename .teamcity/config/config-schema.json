@@ -131,7 +131,7 @@
         },
         "gitUrl": {
           "description": "An SSH url to a git repo. For all source types, it is a source of files. For the 'xdocs' type, it is also the target where we commit exported files. The 'git' and 'xdocs' types are used by 'docs' components to generate builds.",
-          "type": "string"
+          "pattern": "^ssh://git@stash\\.guidewire\\.com/"
         },
         "xdocsPathIds": {
           "description": "A list of pathIds to be exported from XDocs",
