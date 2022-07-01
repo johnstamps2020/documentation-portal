@@ -34,9 +34,13 @@ def list_common_gw_ditavals(start_at: Optional[int] = None):
 
 
 def find_non_existent_sources(src_definitions: list[dict]):
-    def get_request_url(src_obj: dict) -> str:
-        src_git_url = src_obj['gitUrl']
-        git_project, git_repo = src_git_url.replace('ssh://git@stash.guidewire.com/', '').replace('.git', '').split('/')
+    git_url_root = 'ssh://git@stash.guidewire.com/'
+
+    def git_url_is_valid(git_url: str) -> bool:
+        return git_url.startswith(git_url_root)
+
+    def get_request_url(git_url: dict) -> str:
+        git_project, git_repo = git_url.replace(git_url_root, '').replace('.git', '').split('/')
         return f'{BITBUCKET_API_ROOT_URL}/{git_project}/repos/{git_repo}/branches'
 
     def get_branches(request_url: str, start_at: Optional[int] = None) -> list or None:
@@ -56,17 +60,23 @@ def find_non_existent_sources(src_definitions: list[dict]):
         elif 'NoSuchRepositoryException' in response_json.get('errors')[0].get('exceptionName'):
             return None
 
-    non_existent_filters = []
+    non_existent_sources = []
+    sources_with_invalid_git_url = []
     for src in src_definitions:
         logging.info(f'Checking the {src["id"]} source')
-        branches_request_url = get_request_url(src)
-        git_branches = get_branches(branches_request_url)
-        if src not in non_existent_filters:
-            if not git_branches or src['branch'] not in git_branches:
-                non_existent_filters.append(src)
+        src_git_url = src['gitUrl']
+        if git_url_is_valid(src_git_url):
+            branches_request_url = get_request_url(src_git_url)
+            git_branches = get_branches(branches_request_url)
+            if src not in non_existent_sources:
+                if not git_branches or src['branch'] not in git_branches:
+                    non_existent_sources.append(src)
+        else:
+            sources_with_invalid_git_url.append(src)
 
-    (CURRENT_DIR / 'non_existent_sources.json').open('w').write(json.dumps(non_existent_filters, indent=2))
-    logging.info(f'Non-existent sources: {len(non_existent_filters)}')
+    (CURRENT_DIR / 'non_existent_sources.json').open('w').write(json.dumps(non_existent_sources, indent=2))
+    (CURRENT_DIR / 'sources_with_invalid_git_url.json').open('w').write(json.dumps(sources_with_invalid_git_url, indent=2))
+    logging.info(f'Non-existent sources: {len(non_existent_sources)}')
 
 
 def find_non_existent_filters(build_definitions: list[dict]):
