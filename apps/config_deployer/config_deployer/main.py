@@ -9,19 +9,21 @@ import pathlib
 import shutil
 from collections import Counter
 from pathlib import Path
+from typing import Optional
 
 import itertools
+import requests
 from jsonschema import validate
+
+BITBUCKET_API_ROOT_URL = 'https://stash.guidewire.com/rest/api/1.0/projects'
+BITBUCKET_ACCESS_TOKEN = os.environ.get('BITBUCKET_ACCESS_TOKEN')
+BITBUCKET_API_HEADERS = {
+    'Authorization': f'Bearer {BITBUCKET_ACCESS_TOKEN}'
+}
 
 
 def add_schema_reference(obj: dict):
-    if "$schema" in obj:
-        return obj
-    else:
-        return {
-            "$schema": "./config-schema.json",
-            **obj
-        }
+    return obj if "$schema" in obj else {"$schema": "./config-schema.json", **obj}
 
 
 def load_json_file(json_file_path: Path):
@@ -29,7 +31,7 @@ def load_json_file(json_file_path: Path):
         with open(json_file_path) as json_file:
             return json.load(json_file)
     except Exception as e:
-        raise Exception(
+        raise OSError(
             f'----ERROR: Problem reading JSON {json_file_path}\n{e.args[0]}'
         ) from e
 
@@ -275,7 +277,8 @@ def create_new_objects(root_key_name: str, number_of_objects: int, id_prefix: st
         for tmp_obj in list(itertools.repeat(object_template, number_of_objects)):
             object_instance = copy.deepcopy(tmp_obj)
             id_hash = hashlib.md5()
-            id_hash.update(str(datetime.datetime.utcnow()).encode("utf-8"))
+            id_hash.update(str(datetime.datetime.now(datetime.timezone.utc)).encode("utf-8"))
+
             object_instance['id'] = f'{id_prefix}{id_hash.hexdigest()[:6]}'
             new_items.append(object_instance)
     else:
@@ -326,6 +329,73 @@ def check_for_broken_id_references(builds_objects: list, sources_objects: list, 
 
     if error_messages:
         raise ValueError(f'{os.linesep}{os.linesep.join(error_messages)}')
+
+
+def list_common_gw_ditavals(start_at: Optional[int] = None):
+    start_number = start_at or 0
+    common_gw_ditavals_url = f'{BITBUCKET_API_ROOT_URL}/DOCSOURCES/repos/common-gw/browse/ditavals?start={start_number}'
+    response = requests.get(
+        common_gw_ditavals_url,
+        headers=BITBUCKET_API_HEADERS,
+    )
+    response_json = response.json()
+    ditaval_files = []
+    if response_children := response_json.get('children'):
+        ditaval_files = [ditaval_file['path']['toString'] for ditaval_file in response_children.get('values', [])]
+        is_last_page = response_children.get('isLastPage', True)
+        if not is_last_page:
+            ditaval_files.extend(
+                list_common_gw_ditavals(start_at=response_json.get('nextPageStart')))
+    return ditaval_files
+
+
+def find_non_existent_sources(sources_objects: list):
+    def get_request_url(git_url: str) -> str:
+        git_project, git_repo = git_url.replace('ssh://git@stash.guidewire.com/', '').replace('.git', '').split('/')
+        return f'{BITBUCKET_API_ROOT_URL}/{git_project}/repos/{git_repo}/branches'
+
+    def get_branches(request_url: str, start_at: Optional[int] = None) -> list or None:
+        start_number = start_at or 0
+        response = requests.get(
+            f'{request_url}?start={start_number}',
+            headers=BITBUCKET_API_HEADERS,
+        )
+        response_json = response.json()
+        if response.ok:
+            branches = [v['displayId'] for v in response_json.get('values', [])]
+            is_last_page = response_json.get('isLastPage', True)
+            if not is_last_page:
+                branches.extend(
+                    get_branches(request_url, start_at=response_json.get('nextPageStart')))
+            return branches
+        elif 'NoSuchRepositoryException' in response_json.get('errors')[0].get('exceptionName'):
+            return None
+
+    non_existent_sources = []
+    for src in sources_objects:
+        src_git_url = src['gitUrl']
+        branches_request_url = get_request_url(src_git_url)
+        git_branches = get_branches(branches_request_url)
+        if src not in non_existent_sources:
+            if not git_branches or src['branch'] not in git_branches:
+                non_existent_sources.append(src['id'])
+
+    if non_existent_sources:
+        raise ValueError(f'The following sources do not exist in Bitbucket: {os.linesep}'
+                         f'{os.linesep.join(non_existent_sources)}')
+
+
+def find_non_existent_filters(builds_objects: list):
+    common_gw_ditavals = list_common_gw_ditavals()
+    non_existent_filters = []
+    for build in builds_objects:
+        if build_filter := build.get('filter'):
+            if build_filter not in common_gw_ditavals:
+                non_existent_filters.append(build)
+    if non_existent_filters:
+        raise ValueError(
+            f'The following builds use a filter that does not exist in the common-gw submodule: {os.linesep}'
+            f'{os.linesep.join(json.dumps(i, indent=2) for i in non_existent_filters)}')
 
 
 def run_command(args: argparse.Namespace()):
@@ -485,12 +555,19 @@ def run_command(args: argparse.Namespace()):
             logger.info('Checking for duplicated IDs.')
             check_for_duplicated_ids(root_key_objects)
             logger.info('OK')
+        if root_key_name == 'sources':
+            logger.info('Validating sources against Bitbucket')
+            find_non_existent_sources(root_key_objects)
+            logger.info('OK')
         if root_key_name == 'builds':
             _, sources_objects = prepare_input(args.sources_path)
             _, docs_objects = prepare_input(args.docs_path)
             logger.info('Checking for broken ID references.')
             check_for_broken_id_references(
                 root_key_objects, sources_objects, docs_objects)
+            logger.info('OK')
+            logger.info('Validating filters against the common-gw submodule')
+            find_non_existent_filters(root_key_objects)
             logger.info('OK')
 
     return {
