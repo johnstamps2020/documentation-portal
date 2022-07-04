@@ -212,6 +212,13 @@
       "branch": "main"
     },
     {
+      "id": "srcjutroplasmicnext",
+      "title": "Jutro Plasmic Next",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-plasmic-docs.git",
+      "branch": "main"
+    },
+    {
       "id": "srcjutrohackathon",
       "title": "Jutro Design System Hackathon",
       "sourceType": "git",
