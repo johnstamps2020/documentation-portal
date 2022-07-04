@@ -308,6 +308,12 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutrosdknext",
+      "srcId": "srcjutrosdknext",
+      "nodeImageVersion": "17.6.0"
+    },
+    {
+      "buildType": "yarn",
       "docId": "storybooknext",
       "srcId": "srcjutrostorybooknext",
       "nodeImageVersion": "17.6.0",

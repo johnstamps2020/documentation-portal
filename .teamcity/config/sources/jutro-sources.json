@@ -219,6 +219,13 @@
       "branch": "main"
     },
     {
+      "id": "srcjutrosdknext",
+      "title": "Jutro SDK Next",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
+      "branch": "main"
+    },
+    {
       "id": "srcjutrohackathon",
       "title": "Jutro Design System Hackathon",
       "sourceType": "git",
