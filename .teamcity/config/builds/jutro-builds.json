@@ -304,7 +304,6 @@
       "buildType": "yarn",
       "docId": "jutroplasmicnext",
       "srcId": "srcjutroplasmicnext",
-      "workingDir": "website",
       "nodeImageVersion": "17.6.0"
     },
     {
