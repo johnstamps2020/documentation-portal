@@ -1,0 +1,14 @@
+{
+  "name": "html2pdf",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "mr-pdf": "^1.1.0",
+    "serve": "^13.0.2"
+  },
+  "scripts": {
+    "build": "node index.js"
+  },
+  "packageManager": "yarn@3.2.1"
+}
