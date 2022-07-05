@@ -328,6 +328,40 @@
       "earlyAccess": false
     },
     {
+      "id": "jutroplasmicnext",
+      "title": "Jutro Plasmic",
+      "url": "jutro/plasmic/next",
+      "metadata": {
+        "product": ["Jutro Plasmic"],
+        "platform": ["Cloud"],
+        "version": ["next"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "jutrosdknext",
+      "title": "Jutro SDK",
+      "url": "jutro/sdk/next",
+      "metadata": {
+        "product": ["Jutro SDK"],
+        "platform": ["Cloud"],
+        "version": ["next"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
       "id": "jutrorewards",
       "title": "Jutro Rewards",
       "url": "jutro/rewards",
