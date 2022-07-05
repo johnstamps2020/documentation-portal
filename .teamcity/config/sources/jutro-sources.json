@@ -420,6 +420,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
       "branch": "release/8.1.0"
+    },
+    {
+      "id": "srcjutro820",
+      "title": "Jutro Design System 8.2.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/8.2.0"
     }
   ]
 }
