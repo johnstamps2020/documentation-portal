@@ -60,21 +60,7 @@ function relinkHtmlFiles(inputDir) {
 
     const document = getDocumentFromFile(filePath);
 
-    function removeNodesByQuery(queries) {
-      queries.forEach((query) => {
-        const matchedNode = document.querySelector(query);
-        matchedNode.remove();
-      });
-    }
-
     addNavigationLink(document, filePath);
-
-    removeNodesByQuery([
-      'script[src="/scripts/html5.js"]',
-      //   "nav.toc",
-      "footer",
-      "header",
-    ]);
 
     fs.writeFileSync(filePath, document.documentElement.outerHTML, {
       encoding: "utf8",
