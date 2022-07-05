@@ -1,7 +1,55 @@
-const { getAllHtmlFiles } = require("./fsHelpers");
+"use strict";
+const {
+  getAllHtmlFiles,
+  getServerLink,
+  getDocumentFromFile,
+} = require("./helpers");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const fs = require("fs");
+const path = require("path");
+
+const navLinkClassName = "nextLink";
+const navLinkAttachmentPointQuery = "body";
+
+function getCurrentLink(document, filePath) {
+  const query = `nav a[href*="${path.basename(filePath)}"]`;
+  const matchingLink = document.querySelector(query);
+
+  return matchingLink;
+}
+
+function createNavLink(linkObject, document) {
+  if (!linkObject) {
+    return;
+  }
+  const navLink = document.createElement("a");
+  navLink.classList.add(navLinkClassName);
+  const href = getServerLink(linkObject.getAttribute("href"));
+  navLink.setAttribute("href", href);
+
+  navLink.textContent = linkObject.textContent || "Unknown";
+
+  return navLink;
+}
+
+function addNavigationLink(document, filePath) {
+  const flatLinkList =
+    document.querySelectorAll("nav[role='toc'] a").length > 0
+      ? document.querySelectorAll("nav[role='toc'] a")
+      : document.querySelectorAll("nav.toc a");
+  const currentLink = getCurrentLink(document, filePath);
+  let matchingIndex = undefined;
+  flatLinkList.forEach((link, index) => {
+    if (link === currentLink) {
+      matchingIndex = index;
+    }
+  });
+  const nextLink = createNavLink(flatLinkList[matchingIndex + 1], document);
+  if (nextLink) {
+    document.querySelector(navLinkAttachmentPointQuery).appendChild(nextLink);
+  }
+}
 
 function relinkHtmlFiles(inputDir) {
   const allHtmlFiles = getAllHtmlFiles(inputDir);
@@ -10,9 +58,7 @@ function relinkHtmlFiles(inputDir) {
       return;
     }
 
-    const contents = fs.readFileSync(filePath, { encoding: "utf8" });
-    const dom = new JSDOM(contents);
-    const { document } = dom.window;
+    const document = getDocumentFromFile(filePath);
 
     function removeNodesByQuery(queries) {
       queries.forEach((query) => {
@@ -21,16 +67,23 @@ function relinkHtmlFiles(inputDir) {
       });
     }
 
+    addNavigationLink(document, filePath);
+
     removeNodesByQuery([
       'script[src="/scripts/html5.js"]',
-      "nav.toc",
+      //   "nav.toc",
       "footer",
       "header",
     ]);
-    fs.writeFileSync(filePath, dom.window.document.documentElement.outerHTML, {
+
+    fs.writeFileSync(filePath, document.documentElement.outerHTML, {
       encoding: "utf8",
     });
   });
 }
 
-module.exports = { relinkHtmlFiles };
+module.exports = {
+  relinkHtmlFiles,
+  navLinkClassName,
+  navLinkAttachmentPointQuery,
+};

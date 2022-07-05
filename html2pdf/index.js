@@ -1,7 +1,12 @@
 const { spawn } = require("node:child_process");
 const path = require("path");
 const fs = require("fs");
-const { relinkHtmlFiles } = require("./scripts/relinkHtml");
+const {
+  relinkHtmlFiles,
+  navLinkClassName,
+  navLinkAttachmentPointQuery,
+} = require("./scripts/relinkHtml");
+const { getServerLink, getFirstTopicPath } = require("./scripts/helpers");
 
 const htmlFilesDir =
   process.env.HTML_FILES_DIR || path.join(process.cwd(), "test-files");
@@ -24,16 +29,46 @@ if (fs.existsSync(inputDir)) {
 fs.cpSync(htmlFilesDir, inputDir, { recursive: true });
 fs.cpSync(scriptsDir, path.join(inputDir, "scripts"), { recursive: true });
 
+console.log("Modifying HTML input files");
 relinkHtmlFiles(inputDir);
+console.log("Input files converted successfully");
 
 if (fs.existsSync(outputDir)) {
   fs.rmSync(outputDir, { recursive: true });
 }
 
+fs.mkdirSync(outputDir, { recursive: true });
+
 const server = spawn("serve", [inputDir]);
 
 server.stdout.on("data", (data) => {
   console.log(`SERVER: ${data}`);
+  if (data.includes("Accepting connections")) {
+    console.log("Convert to PDF!");
+
+    const firstTopicServerPath = getServerLink(getFirstTopicPath(inputDir));
+
+    const converter = spawn("mr-pdf", [
+      `--initialDocURLs=http://localhost:3000${firstTopicServerPath}`,
+      `--paginationSelector=${navLinkAttachmentPointQuery} > a.${navLinkClassName}`,
+      `--contentSelector=main`,
+      `--outputPDFFilename=out/index.pdf`,
+    ]);
+
+    converter.stdout.on("data", (data) => {
+      console.log(`CONVERTER: ${data}`);
+    });
+
+    converter.stderr.on("data", (data) => {
+      console.error(`CONVERTER ERROR: ${data}`);
+    });
+
+    converter.on("close", (code) => {
+      console.log(`Converter process exited with code ${code}`);
+      console.log("Conversion finished");
+      server.kill();
+    });
+  }
 });
 
 server.stderr.on("data", (data) => {
