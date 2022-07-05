@@ -125,6 +125,12 @@ enum class GwStaticFilesModes(val mode_name: String) {
     HTML5("html5")
 }
 
+enum class GwConfigTypes(val type_name: String) {
+    DOCS("docs"),
+    SOURCES("sources"),
+    BUILDS("builds")
+}
+
 object Runners {
     val rootProject = createRootProjectForRunners()
 
@@ -1144,11 +1150,10 @@ object Content {
     private fun createDeploySearchServiceBuildType(deploy_env: String): BuildType {
         val namespace = "doctools"
         val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
-        val deploymentFile: String
-        if (deploy_env == GwDeployEnvs.PROD.env_name) {
-            deploymentFile = "deployment-prod.yml"
+        val deploymentFile = if (deploy_env == GwDeployEnvs.PROD.env_name) {
+            "deployment-prod.yml"
         } else {
-            deploymentFile = "deployment.yml"
+            "deployment.yml"
         }
 
         val searchServiceBuildTypeDeployEnv =
@@ -1545,6 +1550,10 @@ object Frontend {
 }
 
 object Server {
+    private val TestConfigDocs = createTestConfigBuildType(GwConfigTypes.DOCS.type_name)
+    private val TestConfigSources = createTestConfigBuildType(GwConfigTypes.SOURCES.type_name)
+    private val TestConfigBuilds = createTestConfigBuildType(GwConfigTypes.BUILDS.type_name)
+
     val rootProject = createRootProjectForServer()
 
     private fun createRootProjectForServer(): Project {
@@ -1554,7 +1563,9 @@ object Server {
 
             buildType(Checkmarx)
             buildType(TestDocSiteServerApp)
-            buildType(TestConfig)
+            buildType(TestConfigDocs)
+            buildType(TestConfigSources)
+            buildType(TestConfigBuilds)
             buildType(TestSettingsKts)
             buildType(AuditNpmPackages)
             arrayOf(GwDeployEnvs.DEV,
@@ -1730,58 +1741,85 @@ object Server {
         }
     })
 
-    private object TestConfig : BuildType({
-        name = "Test config files"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-        vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            cleanCheckout = true
+    private fun createTestConfigBuildType(config_type: String): BuildType {
+        val scriptStepContent = when (config_type) {
+            GwConfigTypes.DOCS.type_name -> """
+                    #!/bin/bash
+                    set -xe
+                    
+                    # Merge config files
+                    config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}"
+                 
+                    # Test merged config files
+                    config_deployer test "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
+                    --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.param_value}"
+                """.trimIndent()
+            GwConfigTypes.SOURCES.type_name -> """
+                    #!/bin/bash
+                    set -xe
+                    
+                    # Merge config files
+                    config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}"
+                 
+                    # Test merged config files
+                    config_deployer test "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
+                    --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.param_value}"
+                """.trimIndent()
+            GwConfigTypes.BUILDS.type_name -> """
+                    #!/bin/bash
+                    set -xe
+                    
+                    # Merge config files
+                    config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}"
+                    config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}"
+                    config_deployer merge "${GwConfigParams.BUILDS_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.param_value}"
+                 
+                    # Test merged config files                            
+                    config_deployer test "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
+                    --sources-path "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
+                    --docs-path "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
+                    --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.param_value}"  
+                """.trimIndent()
+            else -> "echo Nothing to test here"
         }
+        val vcsTriggerPath = when (config_type) {
+            GwConfigTypes.BUILDS.type_name -> ".teamcity/config/**"
+            else -> ".teamcity/config/${config_type}/**"
+        }
+        return BuildType {
+            name = "Test $config_type config files"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-        steps {
-            script {
-                name = "Run tests for config files"
-                id = Helpers.createIdStringFromName(this.name)
-                scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                # Merge config files
-                
-                config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}"
-                config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}"
-                config_deployer merge "${GwConfigParams.BUILDS_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.param_value}"
-             
-                # Test merged config files
-                
-                config_deployer test "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
-                --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.param_value}"
-                config_deployer test "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
-                --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.param_value}"
-                config_deployer test "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
-                --sources-path "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
-                --docs-path "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
-                --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.param_value}"  
-            """.trimIndent()
-                dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.image_url
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                cleanCheckout = true
             }
-        }
 
-        triggers.vcs {
-            triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
+            steps {
+                script {
+                    name = "Run tests for config files"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = scriptStepContent
+
+                    dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.image_url
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                }
+            }
+
+            triggers.vcs {
+                triggerRules = """
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${vcsTriggerPath}
                 -:user=doctools:**
             """.trimIndent()
-        }
+            }
 
-        features {
-            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            feature(GwBuildFeatures.GwSshAgentBuildFeature)
-            feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            features {
+                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+                feature(GwBuildFeatures.GwSshAgentBuildFeature)
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
         }
-    })
+    }
 
     object ReleaseNewVersion : BuildType({
         name = "Release new version"
@@ -1989,7 +2027,13 @@ object Server {
                 snapshot(TestDocSiteServerApp) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                snapshot(TestConfig) {
+                snapshot(TestConfigDocs) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+                snapshot(TestConfigSources) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+                snapshot(TestConfigBuilds) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
             }
