@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "config_deployer"
-version = "2.0.0"
+version = "2.1.0"
 description = "A tool for managing and deploying config files"
 authors = ["Guidewire <doctools@guidewire.com>"]
 readme = "README.md"
