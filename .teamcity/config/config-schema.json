@@ -41,6 +41,10 @@
       "description": "A human-readable title, for displaying to humans in various human scenarios. All of us humans know what it is. Right, fellow humans?",
       "type": "string"
     },
+    "body": {
+      "description": "Text explaining what the document contains. If this property is used, the doc crawler does not extract body from the document.",
+      "type": "string"
+    },
     "resource": {
       "additionalProperties": false,
       "required": ["targetFolder", "sourceFolder", "srcId"],
@@ -127,7 +131,7 @@
         },
         "gitUrl": {
           "description": "An SSH url to a git repo. For all source types, it is a source of files. For the 'xdocs' type, it is also the target where we commit exported files. The 'git' and 'xdocs' types are used by 'docs' components to generate builds.",
-          "type": "string"
+          "pattern": "^ssh://git@stash\\.guidewire\\.com/"
         },
         "xdocsPathIds": {
           "description": "A list of pathIds to be exported from XDocs",
@@ -250,12 +254,14 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
+        "title",
         "id",
         "url",
         "metadata",
         "environments",
         "internal",
-        "earlyAccess"
+        "earlyAccess",
+        "public"
       ],
       "properties": {
         "id": {
@@ -263,6 +269,9 @@
         },
         "title": {
           "$ref": "#/definitions/title"
+        },
+        "body": {
+          "$ref": "#/definitions/body"
         },
         "url": {
           "description": "The url of the resource we're linking to. Can be relative to the root, or an absolute URL that starts with https://",

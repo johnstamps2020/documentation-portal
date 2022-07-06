@@ -30,6 +30,15 @@ kind: Deployment
 metadata:
   name: docsearch-${DEPLOY_ENV}
   namespace: doctools
+  labels:
+    app: docsearch-${DEPLOY_ENV}
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/version: 7.17.4
+    app.kubernetes.io/component: search-engine
+    app.kubernetes.io/part-of: docportal-app
+    app.kubernetes.io/managed-by: doctools
+    app.kubernetes.io/created-by: doctools
+    atmos.guidewire.com/tenancy-scope: shared
 spec:
   selector:
     matchLabels:
@@ -39,14 +48,23 @@ spec:
     type: Recreate
   template:
     metadata:
+      name: docsearch-${DEPLOY_ENV}
+      namespace: doctools
       labels:
         app: docsearch-${DEPLOY_ENV}
+        app.kubernetes.io/name: elasticsearch
+        app.kubernetes.io/version: 7.17.4
+        app.kubernetes.io/component: search-engine
+        app.kubernetes.io/part-of: docportal-app
+        app.kubernetes.io/managed-by: doctools
+        app.kubernetes.io/created-by: doctools
+        atmos.guidewire.com/tenancy-scope: shared
     spec:
       securityContext:
         runAsUser: 1000
         fsGroup: 1000
       containers:
-        - name: docsearch-${DEPLOY_ENV}
+        - name: elasticsearch
           image: docker.elastic.co/elasticsearch/elasticsearch:7.17.4
           imagePullPolicy: IfNotPresent
           resources:
@@ -104,6 +122,13 @@ metadata:
   namespace: doctools
   labels:
     app: docsearch-${DEPLOY_ENV}
+    app.kubernetes.io/name: elasticsearch
+    app.kubernetes.io/version: 7.17.4
+    app.kubernetes.io/component: search-engine
+    app.kubernetes.io/part-of: docportal-app
+    app.kubernetes.io/managed-by: doctools
+    app.kubernetes.io/created-by: doctools
+    atmos.guidewire.com/tenancy-scope: shared
 spec:
   type: ClusterIP
   selector:
@@ -140,12 +165,19 @@ metadata:
   name: kibana-doctools-${DEPLOY_ENV}
   namespace: doctools
   labels:
-    component: kibana
+    app: kibana-doctools-${DEPLOY_ENV}
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/version: 7.17.4
+    app.kubernetes.io/component: web-app
+    app.kubernetes.io/part-of: docportal-app
+    app.kubernetes.io/managed-by: doctools
+    app.kubernetes.io/created-by: doctools
+    atmos.guidewire.com/tenancy-scope: shared
 spec:
   ports:
     - port: 5601
   selector:
-    component: kibana
+    app: kibana-doctools-${DEPLOY_ENV}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -153,16 +185,32 @@ metadata:
   name: kibana-doctools-${DEPLOY_ENV}
   namespace: doctools
   labels:
-    component: kibana
+    app: kibana-doctools-${DEPLOY_ENV}
+    app.kubernetes.io/name: kibana
+    app.kubernetes.io/version: 7.17.4
+    app.kubernetes.io/component: web-app
+    app.kubernetes.io/part-of: docportal-app
+    app.kubernetes.io/managed-by: doctools
+    app.kubernetes.io/created-by: doctools
+    atmos.guidewire.com/tenancy-scope: shared
 spec:
   replicas: 1
   selector:
     matchLabels:
-      component: kibana
+      app: kibana-doctools-${DEPLOY_ENV}
   template:
     metadata:
+      name: kibana-doctools-${DEPLOY_ENV}
+      namespace: doctools
       labels:
-        component: kibana
+        app: kibana-doctools-${DEPLOY_ENV}
+        app.kubernetes.io/name: kibana
+        app.kubernetes.io/version: 7.17.4
+        app.kubernetes.io/component: web-app
+        app.kubernetes.io/part-of: docportal-app
+        app.kubernetes.io/managed-by: doctools
+        app.kubernetes.io/created-by: doctools
+        atmos.guidewire.com/tenancy-scope: shared
     spec:
       containers:
         - name: kibana

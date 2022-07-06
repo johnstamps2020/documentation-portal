@@ -16,13 +16,6 @@
       "branch": "release/pc/2022.05"
     },
     {
-      "id": "testingframeworks202205src",
-      "title": "Testing Solutions 2022.05",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-solutions.git",
-      "branch": "release/2022.05"
-    },
-    {
       "id": "is202205src",
       "title": "IS 2022.05.1",
       "sourceType": "git",

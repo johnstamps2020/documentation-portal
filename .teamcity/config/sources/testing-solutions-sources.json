@@ -1,0 +1,19 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "testingframeworks202209src",
+      "title": "Testing Solutions 2022.09",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-solutions.git",
+      "branch": "release/2022.09"
+    },
+    {
+      "id": "testingframeworks202205src",
+      "title": "Testing Solutions 2022.05",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/testing-solutions.git",
+      "branch": "release/2022.05"
+    }
+  ]
+}

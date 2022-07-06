@@ -2,14 +2,10 @@ const express = require('express');
 const router = express.Router();
 const {
   getConfig,
-  getBuildsConfig,
-  getSourcesConfig,
   getRootBreadcrumb,
   getVersionSelector,
   getDocumentMetadata,
   getDocId,
-  getFlailBuildConfig,
-  getFlailSourceConfig,
   expensiveLoadConfig,
 } = require('../controllers/configController');
 const ejs = require('ejs');
@@ -112,60 +108,6 @@ router.get('/docId', async function(req, res, next) {
     ERROR: ${JSON.stringify(err)}
     QUERY: ${req.query}
     REQ: ${JSON.stringify(req)}`);
-    next(err);
-  }
-});
-
-router.get('/builds', async function(req, res, next) {
-  try {
-    const config = await getBuildsConfig(req, res);
-    res.send(config);
-  } catch (err) {
-    winstonLogger.error(
-      `[SAFE CONFIG] Problem sending builds config from ${req.url}: ${JSON.stringify(
-        err
-      )}`
-    );
-    next(err);
-  }
-});
-
-router.get('/build/:docId', async function(req, res, next) {
-  try {
-    const { docId } = req.params;
-    const build = await getFlailBuildConfig(docId, req, res);
-    res.send(build);
-  } catch (err) {
-    winstonLogger.error(`[SAFE CONFIG]: Problem sending build data
-      ERROR: ${JSON.stringify(err)}
-      DOC ID: ${req.params?.docId}`);
-    next(err);
-  }
-});
-
-router.get('/sources', async function(req, res, next) {
-  try {
-    const config = await getSourcesConfig(req, res);
-    res.send(config);
-  } catch (err) {
-    winstonLogger.error(
-      `[SAFE CONFIG] Problem sending sources config from ${req.url}: ${JSON.stringify(
-        err
-      )}`
-    );
-    next(err);
-  }
-});
-
-router.get('/source/:srcId', async function(req, res, next) {
-  try {
-    const { srcId } = req.params;
-    const source = await getFlailSourceConfig(srcId, req, res);
-    res.send(source);
-  } catch (err) {
-    winstonLogger.error(`[SAFE CONFIG]: Problem sending source data
-      ERROR: ${JSON.stringify(err)}
-      SRC ID: ${req.params?.srcId}`);
     next(err);
   }
 });

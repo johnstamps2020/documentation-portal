@@ -1,0 +1,117 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dxceam1141deDE",
+      "title": "CustomerEngage Account Management de-DE",
+      "url": "self-managed/dx/de-DE/ce-am/1141",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Self-managed"],
+        "version": ["11.4.1"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxceclaims1141deDE",
+      "title": "CustomerEngage Account Management for ClaimCenter de-DE",
+      "url": "self-managed/dx/de-DE/ce-claims/1141",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": ["11.4.1"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxceqb1141deDE",
+      "title": "CustomerEngage Quote and Buy de-DE",
+      "url": "self-managed/dx/de-DE/ce-qb/1141",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Self-managed"],
+        "version": ["11.4.1"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxpe1141deDE",
+      "title": "ProducerEngage de-DE",
+      "url": "self-managed/dx/de-DE/pe/1141",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Self-managed"],
+        "version": ["11.4.1"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxpeclaims1141deDE",
+      "title": "ProducerEngage for ClaimCenter de-DE",
+      "url": "self-managed/dx/de-DE/pe-claims/1141",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Self-managed"],
+        "version": ["11.4.1"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxsre1141deDE",
+      "title": "ServiceRepEngage de-DE",
+      "url": "self-managed/dx/de-DE/sre/1141",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Self-managed"],
+        "version": ["11.4.1"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxve1141deDE",
+      "title": "VendorEngage de-DE",
+      "url": "self-managed/dx/de-DE/ve/1141",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Self-managed"],
+        "version": ["11.4.1"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
