@@ -535,6 +535,8 @@ object Docs {
     ): List<BuildType> {
         val ditaBuildTypes = mutableListOf<BuildType>()
         val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(src_id)
+        val getDitavalFromCommonGwRepoStep =
+            GwBuildSteps.createGetDitavalFromCommonGwRepoStep(working_dir, build_filter)
         for (env in env_names) {
             val docBuildType = createInitialDocBuildType(
                 GwBuildTypes.DITA.build_type_name,
@@ -609,8 +611,6 @@ object Docs {
                     docBuildType.steps.stepsOrder.add(2, zipPackageStep.id.toString())
                 }
 
-                val getDitavalFromCommonGwRepoStep =
-                    GwBuildSteps.createGetDitavalFromCommonGwRepoStep(working_dir, build_filter)
                 docBuildType.steps.step(getDitavalFromCommonGwRepoStep)
                 docBuildType.steps.step(buildDitaProjectStep)
                 docBuildType.steps.stepsOrder.addAll(0,
@@ -665,6 +665,7 @@ object Docs {
                 }
 
                 steps {
+                    step(getDitavalFromCommonGwRepoStep)
                     step(GwBuildSteps.createBuildDitaProjectForBuildsStep(
                         format,
                         root_map,
