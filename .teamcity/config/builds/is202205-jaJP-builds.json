@@ -1,0 +1,13 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "DeveloperSetupGuide.ditamap",
+      "srcId": "is202205jaJPsrc",
+      "docId": "iscc202205jaJPdevsetup",
+      "indexRedirect": true
+    }
+  ]
+}
