@@ -1,0 +1,29 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-MgSvcs.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "dx202205jaJPsrc",
+      "docId": "dx202205jaJPceclaimsinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-MgSvcs.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "dx202205jaJPsrc",
+      "docId": "dx202205jaJPsreinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-MgSvcs.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "dx202205jaJPsrc",
+      "docId": "dx202205jaJPveinstall",
+      "indexRedirect": true
+    }
+  ]
+}
