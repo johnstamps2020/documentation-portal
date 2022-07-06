@@ -62,8 +62,8 @@ router.get('/importAll', async function(req, res, next) {
 
 router.get('/import/page/:relativeUrl', async function(req, res, next) {
   try {
-    //await importFlailPageToStrapi(req.params.relativeUrl);
-    res.send(await importFlailPageToStrapi(req.params.relativeUrl));
+    await importFlailPageToStrapi(req.params.relativeUrl);
+    res.send('ok');
   } catch (err) {
     winstonLogger.error(
       `[STRAPI] Problem importing static page ${req.url}: ${err}`
