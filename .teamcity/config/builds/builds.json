@@ -27,6 +27,14 @@
     },
     {
       "buildType": "dita",
+      "root": "GuidewireHub.ditamap",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewireidentityfederationhubjaJPsrc",
+      "docId": "guidewireidentityfederationhubjaJP"
+    },
+    {
+      "buildType": "dita",
       "root": "CloudPlatform.ditamap",
       "filter": "GW-Generic-Cloud-Draft.ditaval",
       "indexRedirect": true,
