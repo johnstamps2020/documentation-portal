@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-EA-Release.ditaval",
+      "filter": "GW-Generic-EA-Release.ditaval",
       "root": "AdvancedProductDesigner_Release_Notes.ditamap",
       "srcId": "apdappsrc",
       "docId": "apdapprn",
@@ -11,7 +11,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-EA-Release.ditaval",
+      "filter": "GW-Generic-EA-Release.ditaval",
       "root": "AdvancedProductDesigner.ditamap",
       "srcId": "apdappsrc",
       "docId": "apdapp",
@@ -19,7 +19,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-EA-Release.ditaval",
+      "filter": "GW-Generic-EA-Release.ditaval",
       "root": "AdvancedProductDesignerClaims.ditamap",
       "srcId": "apdappsrc",
       "docId": "apdclaims",
@@ -43,7 +43,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-EA-Release.ditaval",
+      "filter": "GW-Generic-EA-Release.ditaval",
       "root": "b_data-studio.ditamap",
       "srcId": "datastudiodraftsrc",
       "docId": "datastudiodraft",
@@ -51,7 +51,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-EA-Release.ditaval",
+      "filter": "GW-Generic-EA-Release.ditaval",
       "root": "b_data-studio.ditamap",
       "srcId": "datastudioreleasesrc",
       "docId": "datastudiorelease",
@@ -67,7 +67,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-Draft.ditaval",
+      "filter": "IS-PC-Cloud-Draft.ditaval",
       "root": "StringManager.ditamap",
       "srcId": "stringmanagerlatestsrc",
       "docId": "stringmanagerpcdraft",

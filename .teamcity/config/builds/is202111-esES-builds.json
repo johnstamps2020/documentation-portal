@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
+      "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide-BusinessFlows.ditamap",
       "srcId": "is202111esESsrc",
       "docId": "isbc202111apibfesES",
@@ -11,7 +11,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-Release.ditaval",
+      "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide-BusinessFlows.ditamap",
       "srcId": "is202111esESsrc",
       "docId": "iscc202111apibfesES",
@@ -19,7 +19,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
+      "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide-BusinessFlows.ditamap",
       "srcId": "is202111esESsrc",
       "docId": "ispc202111apibfesES",
@@ -27,7 +27,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-Release.ditaval",
+      "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide-Auth.ditamap",
       "srcId": "is202111esESsrc",
       "docId": "iscc202111apicaesES",
@@ -35,7 +35,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
+      "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide-Auth.ditamap",
       "srcId": "is202111esESsrc",
       "docId": "ispc202111apicaesES",

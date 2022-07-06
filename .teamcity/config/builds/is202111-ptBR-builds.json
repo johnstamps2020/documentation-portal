@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CM-Cloud-Release.ditaval",
+      "filter": "IS-CM-Cloud-Release.ditaval",
       "root": "ContactMgmtGuide.ditamap",
       "srcId": "is202111ptBRsrc",
       "docId": "is202111contactptBR",
@@ -11,7 +11,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-Cloud-Release.ditaval",
+      "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "BC-AppGuide.ditamap",
       "srcId": "is202111ptBRsrc",
       "docId": "isbc202111appptBR",
@@ -19,7 +19,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-Cloud-Release.ditaval",
+      "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "CC-AppGuide.ditamap",
       "srcId": "is202111ptBRsrc",
       "docId": "iscc202111appptBR",
@@ -27,7 +27,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-Cloud-Release.ditaval",
+      "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "PC-AppGuide.ditamap",
       "srcId": "is202111ptBRsrc",
       "docId": "ispc202111appptBR",

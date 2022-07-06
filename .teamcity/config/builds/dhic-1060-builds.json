@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
+      "filter": "DataHub-RELEASE.ditaval",
       "root": "releasenotes.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dh1060rn",
@@ -18,7 +18,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
+      "filter": "DataHub-RELEASE.ditaval",
       "root": "product.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dh1060product",
@@ -26,7 +26,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
+      "filter": "DataHub-RELEASE.ditaval",
       "root": "install.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dh1060install",
@@ -34,7 +34,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
+      "filter": "DataHub-RELEASE.ditaval",
       "root": "upgrade.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dh1060upgrade",
@@ -42,7 +42,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
+      "filter": "DataHub-RELEASE.ditaval",
       "root": "config.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dh1060config",
@@ -50,7 +50,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
+      "filter": "DataHub-RELEASE.ditaval",
       "root": "dataspec.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dh1060dataspec",
@@ -58,7 +58,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
+      "filter": "DataHub-RELEASE.ditaval",
       "root": "admin.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dh1060admin",
@@ -66,7 +66,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/DataHub-RELEASE.ditaval",
+      "filter": "DataHub-RELEASE.ditaval",
       "root": "developer-ref.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dh1060devref",
@@ -81,7 +81,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "filter": "InfoCenter-RELEASE.ditaval",
       "root": "releasenotes.ditamap",
       "srcId": "dm2021111060src",
       "docId": "ic1060rn",
@@ -96,7 +96,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "filter": "InfoCenter-RELEASE.ditaval",
       "root": "product.ditamap",
       "srcId": "dm2021111060src",
       "docId": "ic1060product",
@@ -104,7 +104,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "filter": "InfoCenter-RELEASE.ditaval",
       "root": "install.ditamap",
       "srcId": "dm2021111060src",
       "docId": "ic1060install",
@@ -112,7 +112,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "filter": "InfoCenter-RELEASE.ditaval",
       "root": "upgrade.ditamap",
       "srcId": "dm2021111060src",
       "docId": "ic1060upgrade",
@@ -120,7 +120,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "filter": "InfoCenter-RELEASE.ditaval",
       "root": "config.ditamap",
       "srcId": "dm2021111060src",
       "docId": "ic1060config",
@@ -128,7 +128,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "filter": "InfoCenter-RELEASE.ditaval",
       "root": "dataspec.ditamap",
       "srcId": "dm2021111060src",
       "docId": "ic1060dataspec",
@@ -136,7 +136,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "filter": "InfoCenter-RELEASE.ditaval",
       "root": "admin.ditamap",
       "srcId": "dm2021111060src",
       "docId": "ic1060admin",
@@ -144,7 +144,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "filter": "InfoCenter-RELEASE.ditaval",
       "root": "bi-applications.ditamap",
       "srcId": "dm2021111060src",
       "docId": "ic1060biapp",
@@ -152,7 +152,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "filter": "InfoCenter-RELEASE.ditaval",
       "root": "reports.ditamap",
       "srcId": "dm2021111060src",
       "docId": "ic1060reports",
@@ -160,7 +160,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/InfoCenter-RELEASE.ditaval",
+      "filter": "InfoCenter-RELEASE.ditaval",
       "root": "developer-ref.ditamap",
       "srcId": "dm2021111060src",
       "docId": "ic1060devref",

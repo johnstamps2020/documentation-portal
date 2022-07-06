@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "GT-API.ditamap",
       "srcId": "testingframeworks202209src",
       "docId": "testingframeworksapiflaine",
@@ -11,7 +11,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "GT-UI.ditamap",
       "srcId": "testingframeworks202209src",
       "docId": "testingframeworksuiflaine",
@@ -19,7 +19,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "GT-Data.ditamap",
       "srcId": "testingframeworks202209src",
       "docId": "testingframeworksdataflaine",
@@ -27,7 +27,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "GT-Load.ditamap",
       "srcId": "testingframeworks202209src",
       "docId": "testingframeworksloadflaine",
@@ -35,7 +35,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "GT-Management.ditamap",
       "srcId": "testingframeworks202209src",
       "docId": "testingframeworksmgmtflaine",
@@ -43,7 +43,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "GT-Matrix.ditamap",
       "srcId": "testingframeworks202209src",
       "docId": "testingframeworksmatrixflaine",
@@ -51,7 +51,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "Guidewire_Test_Automation202209_ReleaseNotes.ditamap",
       "srcId": "testingframeworks202209src",
       "docId": "testingframeworksrnflaine",
@@ -59,7 +59,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "GT-Framework-Installation.ditamap",
       "srcId": "testingframeworks202209src",
       "docId": "testingframeworksinstallflaine",
@@ -67,7 +67,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "ISUnitTesting.ditamap",
       "srcId": "testingframeworks202209src",
       "docId": "is202209testing",
@@ -75,7 +75,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "GT-Accessibility.ditamap",
       "srcId": "testingframeworks202209src",
       "docId": "is202209access",
