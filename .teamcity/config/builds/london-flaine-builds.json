@@ -1,0 +1,29 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "CCLMAppGuide.ditamap",
+      "srcId": "lmflainesrc",
+      "docId": "londonccappflaine",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "PCLMAppGuide.ditamap",
+      "srcId": "lmflainesrc",
+      "docId": "londonpcappflaine",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "LMReleaseNotes.ditamap",
+      "srcId": "lmflainesrc",
+      "docId": "londonrnflaine",
+      "indexRedirect": true
+    }
+  ]
+}

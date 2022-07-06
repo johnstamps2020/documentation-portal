@@ -255,6 +255,17 @@
           ]
         }
       ]
+    },
+    {
+      "label": "Global Solutions",
+      "class": "categoryCard cardShadow",
+      "env": ["int", "staging"],
+      "items": [
+        {
+          "label": "London Market",
+          "page": "../../globalSolutions/iplm/flaine"
+        }
+      ]
     }
   ],
   "search_filters": {
