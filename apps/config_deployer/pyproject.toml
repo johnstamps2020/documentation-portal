@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "config_deployer"
-version = "2.0.0"
+version = "2.1.0"
 description = "A tool for managing and deploying config files"
 authors = ["Guidewire <doctools@guidewire.com>"]
 readme = "README.md"
@@ -17,6 +17,7 @@ config_deployer = "config_deployer.main:main"
 [tool.poetry.dependencies]
 python = "^3.9"
 jsonschema = "^3.2.0"
+requests = "^2.28.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.0"

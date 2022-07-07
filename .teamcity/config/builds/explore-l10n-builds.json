@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "m_relNotes.ditamap",
       "srcId": "explorees419src",
       "docId": "explorees419rnrelease",
@@ -11,7 +11,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "m_cloud-usingExplore.ditamap",
       "srcId": "explorees419src",
       "docId": "explorees419usingrelease",
@@ -19,7 +19,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "m_dataDictionaries.ditamap",
       "srcId": "explorees419src",
       "docId": "explorees419datadictrelease",
@@ -27,7 +27,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "m_cloud-usingExplore.ditamap",
       "srcId": "exploreptBRsrc",
       "docId": "exploreptBRusingrelease",

@@ -86,7 +86,8 @@ enum class GwConfigParams(val param_value: String) {
     STORYBOOK_BUILD_OUT_DIR("dist"),
     SOURCE_ZIP_BUILD_OUT_DIR("out"),
     BUILD_DATA_DIR("json"),
-    BUILD_DATA_FILE("build-data.json")
+    BUILD_DATA_FILE("build-data.json"),
+    COMMON_GW_DITAVALS_DIR("common_gw_ditavals")
 }
 
 enum class GwDockerImages(val image_url: String) {
@@ -122,6 +123,12 @@ enum class GwStaticFilesModes(val mode_name: String) {
     UPGRADE_DIFFS("upgrade_diffs"),
     SITEMAP("sitemap"),
     HTML5("html5")
+}
+
+enum class GwConfigTypes(val type_name: String) {
+    DOCS("docs"),
+    SOURCES("sources"),
+    BUILDS("builds")
 }
 
 object Runners {
@@ -528,6 +535,8 @@ object Docs {
     ): List<BuildType> {
         val ditaBuildTypes = mutableListOf<BuildType>()
         val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(src_id)
+        val getDitavalFromCommonGwRepoStep =
+            GwBuildSteps.createGetDitavalFromCommonGwRepoStep(working_dir, build_filter)
         for (env in env_names) {
             val docBuildType = createInitialDocBuildType(
                 GwBuildTypes.DITA.build_type_name,
@@ -602,8 +611,10 @@ object Docs {
                     docBuildType.steps.stepsOrder.add(2, zipPackageStep.id.toString())
                 }
 
+                docBuildType.steps.step(getDitavalFromCommonGwRepoStep)
                 docBuildType.steps.step(buildDitaProjectStep)
-                docBuildType.steps.stepsOrder.add(0, buildDitaProjectStep.id.toString())
+                docBuildType.steps.stepsOrder.addAll(0,
+                    arrayListOf(getDitavalFromCommonGwRepoStep.id.toString(), buildDitaProjectStep.id.toString()))
                 if (!resources_to_copy.isEmpty) {
                     val copyResourcesSteps = mutableListOf<ScriptBuildStep>()
                     for (stepId in 0 until resources_to_copy.length()) {
@@ -654,6 +665,7 @@ object Docs {
                 }
 
                 steps {
+                    step(getDitavalFromCommonGwRepoStep)
                     step(GwBuildSteps.createBuildDitaProjectForBuildsStep(
                         format,
                         root_map,
@@ -1139,11 +1151,10 @@ object Content {
     private fun createDeploySearchServiceBuildType(deploy_env: String): BuildType {
         val namespace = "doctools"
         val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
-        val deploymentFile: String
-        if (deploy_env == GwDeployEnvs.PROD.env_name) {
-            deploymentFile = "deployment-prod.yml"
+        val deploymentFile = if (deploy_env == GwDeployEnvs.PROD.env_name) {
+            "deployment-prod.yml"
         } else {
-            deploymentFile = "deployment.yml"
+            "deployment.yml"
         }
 
         val searchServiceBuildTypeDeployEnv =
@@ -1540,6 +1551,10 @@ object Frontend {
 }
 
 object Server {
+    private val TestConfigDocs = createTestConfigBuildType(GwConfigTypes.DOCS.type_name)
+    private val TestConfigSources = createTestConfigBuildType(GwConfigTypes.SOURCES.type_name)
+    private val TestConfigBuilds = createTestConfigBuildType(GwConfigTypes.BUILDS.type_name)
+
     val rootProject = createRootProjectForServer()
 
     private fun createRootProjectForServer(): Project {
@@ -1549,7 +1564,9 @@ object Server {
 
             buildType(Checkmarx)
             buildType(TestDocSiteServerApp)
-            buildType(TestConfig)
+            buildType(TestConfigDocs)
+            buildType(TestConfigSources)
+            buildType(TestConfigBuilds)
             buildType(TestSettingsKts)
             buildType(AuditNpmPackages)
             arrayOf(GwDeployEnvs.DEV,
@@ -1725,58 +1742,85 @@ object Server {
         }
     })
 
-    private object TestConfig : BuildType({
-        name = "Test config files"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-        vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            cleanCheckout = true
+    private fun createTestConfigBuildType(config_type: String): BuildType {
+        val scriptStepContent = when (config_type) {
+            GwConfigTypes.DOCS.type_name -> """
+                    #!/bin/bash
+                    set -xe
+                    
+                    # Merge config files
+                    config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}"
+                 
+                    # Test merged config files
+                    config_deployer test "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
+                    --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.param_value}"
+                """.trimIndent()
+            GwConfigTypes.SOURCES.type_name -> """
+                    #!/bin/bash
+                    set -xe
+                    
+                    # Merge config files
+                    config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}"
+                 
+                    # Test merged config files
+                    config_deployer test "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
+                    --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.param_value}"
+                """.trimIndent()
+            GwConfigTypes.BUILDS.type_name -> """
+                    #!/bin/bash
+                    set -xe
+                    
+                    # Merge config files
+                    config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}"
+                    config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}"
+                    config_deployer merge "${GwConfigParams.BUILDS_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.param_value}"
+                 
+                    # Test merged config files                            
+                    config_deployer test "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
+                    --sources-path "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
+                    --docs-path "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
+                    --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.param_value}"  
+                """.trimIndent()
+            else -> "echo Nothing to test here"
         }
+        val vcsTriggerPath = when (config_type) {
+            GwConfigTypes.BUILDS.type_name -> ".teamcity/config/**"
+            else -> ".teamcity/config/${config_type}/**"
+        }
+        return BuildType {
+            name = "Test $config_type config files"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-        steps {
-            script {
-                name = "Run tests for config files"
-                id = Helpers.createIdStringFromName(this.name)
-                scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                # Merge config files
-                
-                config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}"
-                config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}"
-                config_deployer merge "${GwConfigParams.BUILDS_CONFIG_FILES_DIR.param_value}" -o "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.param_value}"
-             
-                # Test merged config files
-                
-                config_deployer test "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
-                --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.param_value}"
-                config_deployer test "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
-                --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.param_value}"
-                config_deployer test "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
-                --sources-path "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
-                --docs-path "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value}/${GwConfigParams.MERGED_CONFIG_FILE.param_value}" \
-                --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.param_value}"  
-            """.trimIndent()
-                dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.image_url
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                cleanCheckout = true
             }
-        }
 
-        triggers.vcs {
-            triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
+            steps {
+                script {
+                    name = "Run tests for config files"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = scriptStepContent
+
+                    dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.image_url
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                }
+            }
+
+            triggers.vcs {
+                triggerRules = """
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${vcsTriggerPath}
                 -:user=doctools:**
             """.trimIndent()
-        }
+            }
 
-        features {
-            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            feature(GwBuildFeatures.GwSshAgentBuildFeature)
-            feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            features {
+                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+                feature(GwBuildFeatures.GwSshAgentBuildFeature)
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
         }
-    })
+    }
 
     object ReleaseNewVersion : BuildType({
         name = "Release new version"
@@ -1984,7 +2028,13 @@ object Server {
                 snapshot(TestDocSiteServerApp) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                snapshot(TestConfig) {
+                snapshot(TestConfigDocs) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+                snapshot(TestConfigSources) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+                snapshot(TestConfigBuilds) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
             }
@@ -2539,6 +2589,12 @@ object Sources {
                             src_id,
                             docInfoFile,
                             docConfig
+                        )
+                    )
+                    step(
+                        GwBuildSteps.createGetDitavalFromCommonGwRepoStep(
+                            workingDir,
+                            buildFilter
                         )
                     )
                     step(
@@ -3696,7 +3752,8 @@ object GwBuildSteps {
         )
 
         if (build_filter != null) {
-            ditaCommandParams.add(Pair("--filter", "${working_dir}/${build_filter}"))
+            ditaCommandParams.add(Pair("--filter",
+                "${working_dir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}/${build_filter}"))
         }
 
         var buildCommand = ""
@@ -3763,6 +3820,26 @@ object GwBuildSteps {
         }
     }
 
+    fun createGetDitavalFromCommonGwRepoStep(
+        working_dir: String,
+        build_filter: String,
+    ): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Get $build_filter from the common-gw repo"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                                    
+                export COMMON_GW_DITAVALS_DIR="${working_dir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}"
+                mkdir -p ${'$'}COMMON_GW_DITAVALS_DIR && cd ${'$'}COMMON_GW_DITAVALS_DIR 
+                curl -O https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/common-gw/raw/ditavals/${build_filter} \
+                    -H "Accept: application/json" \
+                    -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
+            """.trimIndent()
+        }
+    }
+
     fun createBuildDitaProjectForBuildsStep(
         output_format: String,
         root_map: String,
@@ -3785,7 +3862,8 @@ object GwBuildSteps {
         )
 
         if (build_filter != null) {
-            commandParams.add(Pair("--filter", "${working_dir}/${build_filter}"))
+            commandParams.add(Pair("--filter",
+                "${working_dir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}/${build_filter}"))
         }
 
         when (output_format) {

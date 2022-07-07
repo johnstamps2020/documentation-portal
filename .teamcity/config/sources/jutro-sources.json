@@ -212,6 +212,20 @@
       "branch": "main"
     },
     {
+      "id": "srcjutroplasmicnext",
+      "title": "Jutro Plasmic Next",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-plasmic-docs.git",
+      "branch": "main"
+    },
+    {
+      "id": "srcjutrosdknext",
+      "title": "Jutro SDK Next",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
+      "branch": "main"
+    },
+    {
       "id": "srcjutrohackathon",
       "title": "Jutro Design System Hackathon",
       "sourceType": "git",
@@ -406,6 +420,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
       "branch": "release/8.1.0"
+    },
+    {
+      "id": "srcjutro820",
+      "title": "Jutro Design System 8.2.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/8.2.0"
     }
   ]
 }
