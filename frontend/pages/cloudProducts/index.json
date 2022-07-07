@@ -28,7 +28,7 @@
     {
       "label": "Flaine",
       "page": "flaine",
-      "env": ["int"]
+      "env": ["int", "staging"]
     },
     {
       "label": "_redirect",
