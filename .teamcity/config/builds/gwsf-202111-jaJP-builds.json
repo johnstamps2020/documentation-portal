@@ -1,0 +1,13 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-MgSvcs.ditaval",
+      "root": "Guidewire_For_Salesforce_install-guide.ditamap",
+      "srcId": "dxgwsf202111jaJP",
+      "docId": "dxgwsfinstall202111jaJP",
+      "indexRedirect": true
+    }
+  ]
+}
