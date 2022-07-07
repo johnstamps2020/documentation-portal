@@ -5,7 +5,7 @@
       "id": "lmflainesrc",
       "title": "London Markets Flaine",
       "sourceType": "git",
-      "gitUrl": "ssh://stash.guidewire.com/docsources/london-markets.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/london-markets.git",
       "branch": "release/flaine"
     },
     {
