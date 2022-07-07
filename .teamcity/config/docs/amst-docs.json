@@ -1,0 +1,260 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "amstcccounterfraud",
+      "title": "AMST CC Counter Fraud",
+      "url": "amst/latest/cccounterfraud",
+      "metadata": {
+        "product": ["Analytics Manager Solution Templates"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "amstcccustomersatisfaction",
+      "title": "AMST CC Customer Satisfaction",
+      "url": "amst/latest/cccustomersatisfaction",
+      "metadata": {
+        "product": ["Analytics Manager Solution Templates"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "amstccincidentdamage",
+      "title": "AMST CC Incident Damage",
+      "url": "amst/latest/ccincidentdamage",
+      "metadata": {
+        "product": ["Analytics Manager Solution Templates"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "amstcclitigation",
+      "title": "AMST CC Litigation",
+      "url": "amst/latest/cclitigation",
+      "metadata": {
+        "product": ["Analytics Manager Solution Templates"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "amstccsegmentation",
+      "title": "AMST CC Segmentation",
+      "url": "amst/latest/ccsegmentation",
+      "metadata": {
+        "product": ["Analytics Manager Solution Templates"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "amstccseverityescalation",
+      "title": "AMST CC Severity Escalation",
+      "url": "amst/latest/ccseverityescalation",
+      "metadata": {
+        "product": ["Analytics Manager Solution Templates"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "amstccsubrogation",
+      "title": "AMST CC Subrogation",
+      "url": "amst/latest/ccsubrogation",
+      "metadata": {
+        "product": ["Analytics Manager Solution Templates"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "amstccweatheralert",
+      "title": "AMST CC Weather Alert",
+      "url": "amst/latest/ccweatheralert",
+      "metadata": {
+        "product": ["Analytics Manager Solution Templates"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "amstpcautomatedrateadjustment",
+      "title": "AMST PC Automated Rate Adjustment",
+      "url": "amst/latest/pcautomatedrateadjustment",
+      "metadata": {
+        "product": ["Analytics Manager Solution Templates"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "amstpccyberrisk",
+      "title": "AMST PC Cyber Risk",
+      "url": "amst/latest/pccyberrisk",
+      "metadata": {
+        "product": ["Analytics Manager Solution Templates"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "amstpchazardhubcasualty",
+      "title": "AMST PC HazardHub Casualty",
+      "url": "amst/latest/pchazardhubcasualty",
+      "metadata": {
+        "product": ["Analytics Manager Solution Templates"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "amstpchazardhubproperty",
+      "title": "AMST PC HazardHub Property",
+      "url": "amst/latest/pchazardhubproperty",
+      "metadata": {
+        "product": ["Analytics Manager Solution Templates"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "amstpcsmbcyberrisk",
+      "title": "AMST PC SMB Cyber Risk",
+      "url": "amst/latest/pcsmbcyberrisk",
+      "metadata": {
+        "product": ["Analytics Manager Solution Templates"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "amstpcsubmissionprioritization",
+      "title": "AMST PC Submission Prioritization",
+      "url": "amst/latest/pcsubmissionprioritization",
+      "metadata": {
+        "product": ["Analytics Manager Solution Templates"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "amstpcunderwriterexperience",
+      "title": "AMST PC Underwriter Experience",
+      "url": "amst/latest/pcunderwriterexperience",
+      "metadata": {
+        "product": ["Analytics Manager Solution Templates"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
