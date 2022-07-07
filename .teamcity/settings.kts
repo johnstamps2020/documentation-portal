@@ -535,8 +535,10 @@ object Docs {
     ): List<BuildType> {
         val ditaBuildTypes = mutableListOf<BuildType>()
         val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(src_id)
-        val getDitavalFromCommonGwRepoStep =
-            GwBuildSteps.createGetDitavalFromCommonGwRepoStep(working_dir, build_filter)
+        if (build_filter != null) {
+            val getDitavalFromCommonGwRepoStep =
+                GwBuildSteps.createGetDitavalFromCommonGwRepoStep(working_dir, build_filter)
+        }
         for (env in env_names) {
             val docBuildType = createInitialDocBuildType(
                 GwBuildTypes.DITA.build_type_name,
@@ -611,7 +613,9 @@ object Docs {
                     docBuildType.steps.stepsOrder.add(2, zipPackageStep.id.toString())
                 }
 
-                docBuildType.steps.step(getDitavalFromCommonGwRepoStep)
+                if (build_filter != null) {
+                    docBuildType.steps.step(getDitavalFromCommonGwRepoStep)
+                }
                 docBuildType.steps.step(buildDitaProjectStep)
                 docBuildType.steps.stepsOrder.addAll(0,
                     arrayListOf(getDitavalFromCommonGwRepoStep.id.toString(), buildDitaProjectStep.id.toString()))
@@ -2591,12 +2595,14 @@ object Sources {
                             docConfig
                         )
                     )
-                    step(
-                        GwBuildSteps.createGetDitavalFromCommonGwRepoStep(
-                            workingDir,
-                            buildFilter
+                    if (buildFilter != "") {
+                        step(
+                            GwBuildSteps.createGetDitavalFromCommonGwRepoStep(
+                                workingDir,
+                                buildFilter
+                            )
                         )
-                    )
+                    }
                     step(
                         GwBuildSteps.createBuildDitaProjectForValidationsStep(
                             GwDitaOutputFormats.HTML5.format_name,
@@ -3751,7 +3757,7 @@ object GwBuildSteps {
             Pair("-l", "${working_dir}/${logFile}"),
         )
 
-        if (build_filter != null) {
+        if (build_filter != null && build_filter != "") {
             ditaCommandParams.add(Pair("--filter",
                 "${working_dir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}/${build_filter}"))
         }
