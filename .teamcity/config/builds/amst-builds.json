@@ -1,0 +1,110 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "root": "cc_counter_fraud.ditamap",
+      "srcId": "amstsrc",
+      "docId": "amstcccounterfraud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "root": "cc_customer_satisfaction.ditamap",
+      "srcId": "amstsrc",
+      "docId": "amstcccustomersatisfaction",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "root": "cc_incident_damage.ditamap",
+      "srcId": "amstsrc",
+      "docId": "amstccincidentdamage",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "root": "cc_litigation.ditamap",
+      "srcId": "amstsrc",
+      "docId": "amstcclitigation",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "root": "cc_segmentation.ditamap",
+      "srcId": "amstsrc",
+      "docId": "amstccsegmentation",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "root": "cc_severity_escalation.ditamap",
+      "srcId": "amstsrc",
+      "docId": "amstccseverityescalation",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "root": "cc_subrogation.ditamap",
+      "srcId": "amstsrc",
+      "docId": "amstccsubrogation",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "root": "cc_weather_alert.ditamap",
+      "srcId": "amstsrc",
+      "docId": "amstccweatheralert",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "root": "pc_automated_rate_adjustment.ditamap",
+      "srcId": "amstsrc",
+      "docId": "amstpcautomatedrateadjustment",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "root": "pc_cyber_risk.ditamap",
+      "srcId": "amstsrc",
+      "docId": "amstpccyberrisk",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "root": "pc_hazardhub_casualty.ditamap",
+      "srcId": "amstsrc",
+      "docId": "amstpchazardhubcasualty",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "root": "pc_hazardhub_property.ditamap",
+      "srcId": "amstsrc",
+      "docId": "amstpchazardhubproperty",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "root": "pc_smb_cyber_risk.ditamap",
+      "srcId": "amstsrc",
+      "docId": "amstpcsmbcyberrisk",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "root": "pc_submission_prioritization.ditamap",
+      "srcId": "amstsrc",
+      "docId": "amstpcsubmissionprioritization",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "root": "pc_underwriter_experience.ditamap",
+      "srcId": "amstsrc",
+      "docId": "amstpcunderwriterexperience",
+      "indexRedirect": true
+    }
+  ]
+}
