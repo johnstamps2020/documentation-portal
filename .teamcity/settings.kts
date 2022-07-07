@@ -535,10 +535,9 @@ object Docs {
     ): List<BuildType> {
         val ditaBuildTypes = mutableListOf<BuildType>()
         val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(src_id)
-        if (build_filter != null && build_filter != "") {
-            val getDitavalFromCommonGwRepoStep =
-                GwBuildSteps.createGetDitavalFromCommonGwRepoStep(working_dir, build_filter)
-        }
+        val getDitavalFromCommonGwRepoStep =
+            GwBuildSteps.createGetDitavalFromCommonGwRepoStep(working_dir, build_filter)
+
         for (env in env_names) {
             val docBuildType = createInitialDocBuildType(
                 GwBuildTypes.DITA.build_type_name,
