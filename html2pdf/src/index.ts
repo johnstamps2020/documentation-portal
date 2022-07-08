@@ -1,43 +1,25 @@
 import { spawn } from "node:child_process";
-import {join} from "path";
-import {existsSync, cpSync, rmSync, mkdirSync} from "fs";
+import { existsSync, rmSync, mkdirSync } from "fs";
 import {
   relinkHtmlFiles,
   navLinkClassName,
   navLinkAttachmentPointQuery,
 } from "./scripts/relinkHtml.js";
-import { getServerLink, getFirstTopicPath } from "./scripts/helpers.js";
+import {
+  getServerLink,
+  getFirstTopicPath,
+  getMrPdfCommandLineParameters,
+} from "./scripts/helpers.js";
+import { inputDir } from "./config.js";
+import {
+  createOutputDir,
+  prepareFilesAndFolders,
+} from "./scripts/fileSystem.js";
 
-const htmlFilesDir =
-  process.env.HTML_FILES_DIR || join(process.cwd(), "test-files");
-const scriptsDir =
-  process.env.SCRIPTS_DIR ||
-  join(process.cwd(), "../server/static/html5/scripts");
-
-const inputDir = join(process.cwd(), "in");
-const outputDir = join(process.cwd(), "out");
-
-if (!existsSync(htmlFilesDir) || !existsSync(scriptsDir)) {
-  console.error(`Base input folder does not exist: ${htmlFilesDir}`);
-  process.exit(1);
-}
-
-if (existsSync(inputDir)) {
-  rmSync(inputDir, { recursive: true });
-}
-
-cpSync(htmlFilesDir, inputDir, { recursive: true });
-cpSync(scriptsDir, join(inputDir, "scripts"), { recursive: true });
-
-console.log("Modifying HTML input files");
+prepareFilesAndFolders();
 relinkHtmlFiles(inputDir);
-console.log("Input files converted successfully");
 
-if (existsSync(outputDir)) {
-  rmSync(outputDir, { recursive: true });
-}
-
-mkdirSync(outputDir, { recursive: true });
+createOutputDir();
 
 const server = spawn("serve", [inputDir]);
 
@@ -47,13 +29,16 @@ server.stdout.on("data", (data) => {
     console.log("Convert to PDF!");
 
     const firstTopicServerPath = getServerLink(getFirstTopicPath(inputDir));
+    const parameters = getMrPdfCommandLineParameters({
+      initialDocURLs: `http://localhost:3000${firstTopicServerPath}`,
+      paginationSelector: `${navLinkAttachmentPointQuery} > a.${navLinkClassName}`,
+      contentSelector: `main`,
+      outputPDFFilename: `out/index.pdf`,
+      footerTemplate: `<div><div class='pageNumber'></div> <div>/</div><div class='totalPages'></div></div>`,
+    });
+    console.log(parameters);
 
-    const converter = spawn("mr-pdf", [
-      `--initialDocURLs=http://localhost:3000${firstTopicServerPath}`,
-      `--paginationSelector=${navLinkAttachmentPointQuery} > a.${navLinkClassName}`,
-      `--contentSelector=main`,
-      `--outputPDFFilename=out/index.pdf`,
-    ]);
+    const converter = spawn("mr-pdf", parameters);
 
     converter.stdout.on("data", (data) => {
       console.log(`CONVERTER: ${data}`);

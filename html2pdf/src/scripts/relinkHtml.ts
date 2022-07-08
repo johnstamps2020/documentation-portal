@@ -50,6 +50,7 @@ function addNavigationLink(document, filePath) {
 }
 
 export function relinkHtmlFiles(inputDir) {
+  console.log("Modifying HTML input files");
   const allHtmlFiles = getAllHtmlFiles(inputDir);
   allHtmlFiles.forEach((filePath) => {
     if (filePath.endsWith("index.html")) {
@@ -64,4 +65,5 @@ export function relinkHtmlFiles(inputDir) {
       encoding: "utf8",
     });
   });
+  console.log("Input files converted successfully");
 }
