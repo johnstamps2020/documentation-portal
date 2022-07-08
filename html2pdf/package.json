@@ -10,7 +10,7 @@
     "serve": "^13.0.2"
   },
   "scripts": {
-    "build": "node index.js"
+    "build": "node ./src/index.js"
   },
   "packageManager": "yarn@3.2.1"
 }
