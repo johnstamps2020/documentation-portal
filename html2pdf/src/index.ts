@@ -9,8 +9,9 @@ import {
   getServerLink,
   getFirstTopicPath,
   getMrPdfCommandLineParameters,
+  getFileContents,
 } from "./scripts/helpers.js";
-import { inputDir } from "./config.js";
+import { footerTemplatePath, inputDir } from "./config.js";
 import {
   createOutputDir,
   prepareFilesAndFolders,
@@ -27,16 +28,15 @@ server.stdout.on("data", (data) => {
   console.log(`SERVER: ${data}`);
   if (data.includes("Accepting connections")) {
     console.log("Convert to PDF!");
-
     const firstTopicServerPath = getServerLink(getFirstTopicPath(inputDir));
     const parameters = getMrPdfCommandLineParameters({
       initialDocURLs: `http://localhost:3000${firstTopicServerPath}`,
       paginationSelector: `${navLinkAttachmentPointQuery} > a.${navLinkClassName}`,
       contentSelector: `main`,
       outputPDFFilename: `out/index.pdf`,
-      footerTemplate: `<div><div class='pageNumber'></div> <div>/</div><div class='totalPages'></div></div>`,
+      footerTemplate: getFileContents(footerTemplatePath),
+      pdfMargin: "30,30,30,30",
     });
-    console.log(parameters);
 
     const converter = spawn("mr-pdf", parameters);
 

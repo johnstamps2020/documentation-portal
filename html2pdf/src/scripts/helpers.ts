@@ -1,4 +1,4 @@
-import { readdirSync, statSync, readFileSync } from "fs";
+import { readdirSync, statSync, readFileSync, existsSync } from "fs";
 import * as path from "path";
 import { JSDOM } from "jsdom";
 
@@ -37,6 +37,13 @@ export function getFirstTopicPath(dirPath) {
 
   const firstHref = document.querySelector("a").getAttribute("href");
   return firstHref;
+}
+
+export function getFileContents(filePath: string) {
+  if (!existsSync(filePath)) {
+    throw new Error(`File does not exist: ${filePath}`);
+  }
+  return readFileSync(filePath, { encoding: "utf-8" });
 }
 
 type MrPdfParameters = {

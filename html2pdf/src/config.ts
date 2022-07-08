@@ -8,3 +8,6 @@ export const scriptsDir: string =
 
 export const inputDir: string = join(process.cwd(), "in");
 export const outputDir: string = join(process.cwd(), "out");
+
+const templatesDir = join(process.cwd(), "src/templates");
+export const footerTemplatePath = join(templatesDir, "footer.html");
