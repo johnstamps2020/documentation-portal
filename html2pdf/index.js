@@ -1,12 +1,12 @@
-const { spawn } = require("node:child_process");
-const path = require("path");
-const fs = require("fs");
-const {
+import { spawn } from "node:child_process";
+import path from "path";
+import fs from "fs";
+import {
   relinkHtmlFiles,
   navLinkClassName,
   navLinkAttachmentPointQuery,
-} = require("./scripts/relinkHtml");
-const { getServerLink, getFirstTopicPath } = require("./scripts/helpers");
+} from "./scripts/relinkHtml.js";
+import { getServerLink, getFirstTopicPath } from "./scripts/helpers.js";
 
 const htmlFilesDir =
   process.env.HTML_FILES_DIR || path.join(process.cwd(), "test-files");

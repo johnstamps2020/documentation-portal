@@ -1,16 +1,14 @@
 "use strict";
-const {
+import {
   getAllHtmlFiles,
   getServerLink,
   getDocumentFromFile,
-} = require("./helpers");
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
-const fs = require("fs");
-const path = require("path");
+} from "./helpers.js";
+import fs from "fs";
+import path from "path";
 
-const navLinkClassName = "nextLink";
-const navLinkAttachmentPointQuery = "body";
+export const navLinkClassName = "nextLink";
+export const navLinkAttachmentPointQuery = "body";
 
 function getCurrentLink(document, filePath) {
   const query = `nav a[href*="${path.basename(filePath)}"]`;
@@ -51,7 +49,7 @@ function addNavigationLink(document, filePath) {
   }
 }
 
-function relinkHtmlFiles(inputDir) {
+export function relinkHtmlFiles(inputDir) {
   const allHtmlFiles = getAllHtmlFiles(inputDir);
   allHtmlFiles.forEach((filePath) => {
     if (filePath.endsWith("index.html")) {
@@ -67,9 +65,3 @@ function relinkHtmlFiles(inputDir) {
     });
   });
 }
-
-module.exports = {
-  relinkHtmlFiles,
-  navLinkClassName,
-  navLinkAttachmentPointQuery,
-};

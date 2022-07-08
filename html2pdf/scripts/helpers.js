@@ -1,9 +1,8 @@
-const fs = require("fs");
-const path = require("path");
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
+import fs from "fs";
+import path from "path";
+import { JSDOM } from "jsdom";
 
-function getAllHtmlFiles(dirPath) {
+export function getAllHtmlFiles(dirPath) {
   const namesInDir = fs.readdirSync(dirPath);
   return namesInDir
     .map((fileOrFolderName) => {
@@ -20,11 +19,11 @@ function getAllHtmlFiles(dirPath) {
     .filter(Boolean);
 }
 
-function getServerLink(href) {
+export function getServerLink(href) {
   return "/" + href.replace(/\.\.\//g, "");
 }
 
-function getDocumentFromFile(filePath) {
+export function getDocumentFromFile(filePath) {
   const contents = fs.readFileSync(filePath, { encoding: "utf8" });
   const dom = new JSDOM(contents);
   const { document } = dom.window;
@@ -32,17 +31,10 @@ function getDocumentFromFile(filePath) {
   return document;
 }
 
-function getFirstTopicPath(dirPath) {
+export function getFirstTopicPath(dirPath) {
   const indexFilePath = path.join(dirPath, "index.html");
   const document = getDocumentFromFile(indexFilePath);
 
   const firstHref = document.querySelector("a").getAttribute("href");
   return firstHref;
 }
-
-module.exports = {
-  getAllHtmlFiles,
-  getServerLink,
-  getDocumentFromFile,
-  getFirstTopicPath,
-};
