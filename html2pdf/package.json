@@ -10,7 +10,12 @@
     "serve": "^13.0.2"
   },
   "scripts": {
-    "build": "node ./src/index.js"
+    "compile": "tsc",
+    "build": "yarn compile && node ./lib/index.js"
   },
-  "packageManager": "yarn@3.2.1"
+  "packageManager": "yarn@3.2.1",
+  "devDependencies": {
+    "@types/node": "^18.0.3",
+    "typescript": "^4.7.4"
+  }
 }

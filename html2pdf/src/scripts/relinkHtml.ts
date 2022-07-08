@@ -4,14 +4,14 @@ import {
   getServerLink,
   getDocumentFromFile,
 } from "./helpers.js";
-import fs from "fs";
-import path from "path";
+import { writeFileSync } from "fs";
+import { basename } from "path";
 
 export const navLinkClassName = "nextLink";
 export const navLinkAttachmentPointQuery = "body";
 
 function getCurrentLink(document, filePath) {
-  const query = `nav a[href*="${path.basename(filePath)}"]`;
+  const query = `nav a[href*="${basename(filePath)}"]`;
   const matchingLink = document.querySelector(query);
 
   return matchingLink;
@@ -60,7 +60,7 @@ export function relinkHtmlFiles(inputDir) {
 
     addNavigationLink(document, filePath);
 
-    fs.writeFileSync(filePath, document.documentElement.outerHTML, {
+    writeFileSync(filePath, document.documentElement.outerHTML, {
       encoding: "utf8",
     });
   });

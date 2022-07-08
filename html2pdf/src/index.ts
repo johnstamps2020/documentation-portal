@@ -1,6 +1,6 @@
 import { spawn } from "node:child_process";
-import path from "path";
-import fs from "fs";
+import {join} from "path";
+import {existsSync, cpSync, rmSync, mkdirSync} from "fs";
 import {
   relinkHtmlFiles,
   navLinkClassName,
@@ -9,35 +9,35 @@ import {
 import { getServerLink, getFirstTopicPath } from "./scripts/helpers.js";
 
 const htmlFilesDir =
-  process.env.HTML_FILES_DIR || path.join(process.cwd(), "test-files");
+  process.env.HTML_FILES_DIR || join(process.cwd(), "test-files");
 const scriptsDir =
   process.env.SCRIPTS_DIR ||
-  path.join(process.cwd(), "../server/static/html5/scripts");
+  join(process.cwd(), "../server/static/html5/scripts");
 
-const inputDir = path.join(process.cwd(), "in");
-const outputDir = path.join(process.cwd(), "out");
+const inputDir = join(process.cwd(), "in");
+const outputDir = join(process.cwd(), "out");
 
-if (!fs.existsSync(htmlFilesDir) || !fs.existsSync(scriptsDir)) {
+if (!existsSync(htmlFilesDir) || !existsSync(scriptsDir)) {
   console.error(`Base input folder does not exist: ${htmlFilesDir}`);
   process.exit(1);
 }
 
-if (fs.existsSync(inputDir)) {
-  fs.rmSync(inputDir, { recursive: true });
+if (existsSync(inputDir)) {
+  rmSync(inputDir, { recursive: true });
 }
 
-fs.cpSync(htmlFilesDir, inputDir, { recursive: true });
-fs.cpSync(scriptsDir, path.join(inputDir, "scripts"), { recursive: true });
+cpSync(htmlFilesDir, inputDir, { recursive: true });
+cpSync(scriptsDir, join(inputDir, "scripts"), { recursive: true });
 
 console.log("Modifying HTML input files");
 relinkHtmlFiles(inputDir);
 console.log("Input files converted successfully");
 
-if (fs.existsSync(outputDir)) {
-  fs.rmSync(outputDir, { recursive: true });
+if (existsSync(outputDir)) {
+  rmSync(outputDir, { recursive: true });
 }
 
-fs.mkdirSync(outputDir, { recursive: true });
+mkdirSync(outputDir, { recursive: true });
 
 const server = spawn("serve", [inputDir]);
 

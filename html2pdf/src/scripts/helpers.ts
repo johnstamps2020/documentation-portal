@@ -1,13 +1,13 @@
-import fs from "fs";
-import path from "path";
+import {readdirSync, statSync, readFileSync} from "fs";
+import * as path from "path";
 import { JSDOM } from "jsdom";
 
 export function getAllHtmlFiles(dirPath) {
-  const namesInDir = fs.readdirSync(dirPath);
+  const namesInDir = readdirSync(dirPath);
   return namesInDir
     .map((fileOrFolderName) => {
       const fullPath = path.join(dirPath, fileOrFolderName);
-      if (fs.statSync(fullPath).isDirectory()) {
+      if (statSync(fullPath).isDirectory()) {
         return getAllHtmlFiles(fullPath);
       } else {
         if (fullPath.endsWith(".html")) {
@@ -24,7 +24,7 @@ export function getServerLink(href) {
 }
 
 export function getDocumentFromFile(filePath) {
-  const contents = fs.readFileSync(filePath, { encoding: "utf8" });
+  const contents = readFileSync(filePath, { encoding: "utf8" });
   const dom = new JSDOM(contents);
   const { document } = dom.window;
 
