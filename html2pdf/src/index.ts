@@ -11,7 +11,12 @@ import {
   getFirstTopicPath,
   getMrPdfCommandLineParameters,
 } from "./scripts/helpers.js";
-import { cssTemplate, footerTemplate, inputDir } from "./config.js";
+import {
+  cssTemplate,
+  footerTemplate,
+  headerTemplate,
+  inputDir,
+} from "./config.js";
 import {
   createOutputDir,
   prepareFilesAndFolders,
@@ -35,8 +40,8 @@ server.stdout.on("data", (data) => {
       contentSelector: contentSelector,
       outputPDFFilename: `out/index.pdf`,
       footerTemplate: footerTemplate,
+      headerTemplate: headerTemplate,
       pdfMargin: "50,50,50,50",
-      cssStyle: cssTemplate,
     });
 
     const converter = spawn("mr-pdf", parameters);

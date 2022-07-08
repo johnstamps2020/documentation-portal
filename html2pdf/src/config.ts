@@ -11,8 +11,10 @@ export const inputDir: string = join(process.cwd(), "in");
 export const outputDir: string = join(process.cwd(), "out");
 
 const templatesDir = join(process.cwd(), "src/templates");
-const footerTemplatePath = join(templatesDir, "footer.html");
-const cssTemplatePath = join(templatesDir, "pdfStyle.css");
+const headerPath = join(templatesDir, "header.html");
+const footerPath = join(templatesDir, "footer.html");
+const cssPath = join(templatesDir, "pdfStyle.css");
 
-export const footerTemplate = getFileContents(footerTemplatePath);
-export const cssTemplate = getFileContents(cssTemplatePath);
+export const headerTemplate = getFileContents(headerPath);
+export const footerTemplate = getFileContents(footerPath);
+export const cssTemplate = getFileContents(cssPath);
