@@ -10,7 +10,7 @@
         "product": ["Guidewire AppReader"],
         "version": ["4.0.0"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "internal": false,
       "earlyAccess": false,
       "indexForSearch": true,
