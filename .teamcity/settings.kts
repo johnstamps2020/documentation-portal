@@ -529,14 +529,12 @@ object Docs {
         index_for_search: Boolean,
         root_map: String,
         index_redirect: Boolean,
-        build_filter: String,
+        build_filter: String?,
         gw_platforms: String,
         resources_to_copy: JSONArray,
     ): List<BuildType> {
         val ditaBuildTypes = mutableListOf<BuildType>()
         val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(src_id)
-        val getDitavalFromCommonGwRepoStep =
-            GwBuildSteps.createGetDitavalFromCommonGwRepoStep(working_dir, build_filter)
 
         for (env in env_names) {
             val docBuildType = createInitialDocBuildType(
@@ -612,12 +610,8 @@ object Docs {
                     docBuildType.steps.stepsOrder.add(2, zipPackageStep.id.toString())
                 }
 
-                if (build_filter != null && build_filter != "") {
-                    docBuildType.steps.step(getDitavalFromCommonGwRepoStep)
-                }
                 docBuildType.steps.step(buildDitaProjectStep)
-                docBuildType.steps.stepsOrder.addAll(0,
-                    arrayListOf(getDitavalFromCommonGwRepoStep.id.toString(), buildDitaProjectStep.id.toString()))
+                docBuildType.steps.stepsOrder.add(0, buildDitaProjectStep.id.toString())
                 if (!resources_to_copy.isEmpty) {
                     val copyResourcesSteps = mutableListOf<ScriptBuildStep>()
                     for (stepId in 0 until resources_to_copy.length()) {
@@ -668,7 +662,6 @@ object Docs {
                 }
 
                 steps {
-                    step(getDitavalFromCommonGwRepoStep)
                     step(GwBuildSteps.createBuildDitaProjectForBuildsStep(
                         format,
                         root_map,
@@ -890,7 +883,7 @@ object Docs {
                         build_config.getString("filter")
                     }
                     else -> {
-                        ""
+                        null
                     }
                 }
                 val resourcesToCopy =
@@ -2568,7 +2561,7 @@ object Sources {
                         build_config.getString("filter")
                     }
                     else -> {
-                        ""
+                        null
                     }
                 }
 
@@ -2594,14 +2587,6 @@ object Sources {
                             docConfig
                         )
                     )
-                    if (buildFilter != "") {
-                        step(
-                            GwBuildSteps.createGetDitavalFromCommonGwRepoStep(
-                                workingDir,
-                                buildFilter
-                            )
-                        )
-                    }
                     step(
                         GwBuildSteps.createBuildDitaProjectForValidationsStep(
                             GwDitaOutputFormats.HTML5.format_name,
@@ -3216,6 +3201,25 @@ object Helpers {
         return commandStringBuilder.toString()
     }
 
+    fun createGetDitavalCommandString(
+        working_dir: String,
+        build_filter: String?,
+    ): String {
+        return if (build_filter != null) {
+            """
+                echo "Downloading the ditaval file from common-gw submodule"
+                                    
+                export COMMON_GW_DITAVALS_DIR="${working_dir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}"
+                mkdir -p ${'$'}COMMON_GW_DITAVALS_DIR && cd ${'$'}COMMON_GW_DITAVALS_DIR 
+                curl -O https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/common-gw/raw/ditavals/${build_filter} \
+                    -H "Accept: application/json" \
+                    -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
+            """.trimIndent()
+        } else {
+            "echo \"This build does not use a ditaval file. Skipping download from the common-gw submodule...\""
+        }
+    }
+
 }
 
 object GwBuildSteps {
@@ -3756,11 +3760,12 @@ object GwBuildSteps {
             Pair("-l", "${working_dir}/${logFile}"),
         )
 
-        if (build_filter != null && build_filter != "") {
+        if (build_filter != null) {
             ditaCommandParams.add(Pair("--filter",
                 "${working_dir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}/${build_filter}"))
         }
 
+        val getDitavalCommand = Helpers.createGetDitavalCommandString(working_dir, build_filter)
         var buildCommand = ""
 
         when (output_format) {
@@ -3813,6 +3818,8 @@ object GwBuildSteps {
                 set -xe
                                 
                 SECONDS=0
+                
+                $getDitavalCommand
 
                 echo "Building output"
                 $buildCommand
@@ -3822,26 +3829,6 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = dockerImageName
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
-    }
-
-    fun createGetDitavalFromCommonGwRepoStep(
-        working_dir: String,
-        build_filter: String,
-    ): ScriptBuildStep {
-        return ScriptBuildStep {
-            name = "Get $build_filter from the common-gw repo"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                                    
-                export COMMON_GW_DITAVALS_DIR="${working_dir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}"
-                mkdir -p ${'$'}COMMON_GW_DITAVALS_DIR && cd ${'$'}COMMON_GW_DITAVALS_DIR 
-                curl -O https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/common-gw/raw/ditavals/${build_filter} \
-                    -H "Accept: application/json" \
-                    -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
-            """.trimIndent()
         }
     }
 
@@ -3866,7 +3853,7 @@ object GwBuildSteps {
             Pair("--processing-mode", "strict")
         )
 
-        if (build_filter != null && build_filter != "") {
+        if (build_filter != null) {
             commandParams.add(Pair("--filter",
                 "${working_dir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}/${build_filter}"))
         }
@@ -3928,6 +3915,7 @@ object GwBuildSteps {
             }
         }
 
+        val getDitavalCommand = Helpers.createGetDitavalCommandString(working_dir, build_filter)
         val ditaBuildCommand = Helpers.getCommandString("dita", commandParams)
 
         val dockerImageName = when (output_format) {
@@ -3944,6 +3932,8 @@ object GwBuildSteps {
                 
                 export EXIT_CODE=0
                 SECONDS=0
+                
+                $getDitavalCommand
 
                 echo "Building output"
                 $ditaBuildCommand || EXIT_CODE=${'$'}?
