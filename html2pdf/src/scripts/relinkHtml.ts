@@ -6,9 +6,11 @@ import {
 } from "./helpers.js";
 import { writeFileSync } from "fs";
 import { basename } from "path";
+import { footerTemplate } from "../config.js";
 
 export const navLinkClassName = "nextLink";
 export const navLinkAttachmentPointQuery = "body";
+export const contentSelector = "main";
 
 function getCurrentLink(document, filePath) {
   const query = `nav a[href*="${basename(filePath)}"]`;
@@ -47,6 +49,16 @@ function addNavigationLink(document, filePath) {
   if (nextLink) {
     document.querySelector(navLinkAttachmentPointQuery).appendChild(nextLink);
   }
+}
+
+function htmlElementFromString(
+  document: Document,
+  htmlTemplate: string
+): HTMLElement {
+  const template = document.createElement("template");
+  template.innerHTML = htmlTemplate;
+
+  return template;
 }
 
 export function relinkHtmlFiles(inputDir) {

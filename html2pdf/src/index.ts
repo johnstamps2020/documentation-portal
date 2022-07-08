@@ -4,14 +4,14 @@ import {
   relinkHtmlFiles,
   navLinkClassName,
   navLinkAttachmentPointQuery,
+  contentSelector,
 } from "./scripts/relinkHtml.js";
 import {
   getServerLink,
   getFirstTopicPath,
   getMrPdfCommandLineParameters,
-  getFileContents,
 } from "./scripts/helpers.js";
-import { footerTemplatePath, inputDir } from "./config.js";
+import { cssTemplate, footerTemplate, inputDir } from "./config.js";
 import {
   createOutputDir,
   prepareFilesAndFolders,
@@ -32,10 +32,11 @@ server.stdout.on("data", (data) => {
     const parameters = getMrPdfCommandLineParameters({
       initialDocURLs: `http://localhost:3000${firstTopicServerPath}`,
       paginationSelector: `${navLinkAttachmentPointQuery} > a.${navLinkClassName}`,
-      contentSelector: `main`,
+      contentSelector: contentSelector,
       outputPDFFilename: `out/index.pdf`,
-      footerTemplate: getFileContents(footerTemplatePath),
-      pdfMargin: "30,30,30,30",
+      footerTemplate: footerTemplate,
+      pdfMargin: "50,50,50,50",
+      cssStyle: cssTemplate,
     });
 
     const converter = spawn("mr-pdf", parameters);

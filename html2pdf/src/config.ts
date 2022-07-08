@@ -1,4 +1,5 @@
 import { join } from "path";
+import { getFileContents } from "./scripts/helpers.js";
 
 export const htmlFilesDir: string =
   process.env.HTML_FILES_DIR || join(process.cwd(), "test-files");
@@ -10,4 +11,8 @@ export const inputDir: string = join(process.cwd(), "in");
 export const outputDir: string = join(process.cwd(), "out");
 
 const templatesDir = join(process.cwd(), "src/templates");
-export const footerTemplatePath = join(templatesDir, "footer.html");
+const footerTemplatePath = join(templatesDir, "footer.html");
+const cssTemplatePath = join(templatesDir, "pdfStyle.css");
+
+export const footerTemplate = getFileContents(footerTemplatePath);
+export const cssTemplate = getFileContents(cssTemplatePath);

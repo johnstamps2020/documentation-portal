@@ -1,0 +1,10 @@
+@media print {
+  body {
+    background-color: tomato;
+  }
+  .pdfFooter {
+    background-color: green;
+    font-family: sans-serif;
+    font-size: 12px;
+  }
+}
