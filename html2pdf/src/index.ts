@@ -27,6 +27,14 @@ relinkHtmlFiles(inputDir);
 createOutputDir();
 
 const server = spawn("serve", [inputDir]);
+const currentDate: string = new Date().toLocaleDateString(
+  process.env.PDF_LOCALE || "en-US",
+  {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  }
+);
 
 server.stdout.on("data", (data) => {
   console.log(`SERVER: ${data}`);
@@ -37,11 +45,13 @@ server.stdout.on("data", (data) => {
       initialDocURLs: `http://localhost:3000${firstTopicServerPath}`,
       paginationSelector: `${navLinkAttachmentPointQuery} > a.${navLinkClassName}`,
       contentSelector: contentSelector,
-      outputPDFFilename: `out/index.pdf`,
+      outputPDFFilename: process.env.PDF_OUTPUT_PATH || `out/index.pdf`,
       footerTemplate: footerTemplate,
       headerTemplate: headerTemplate,
       pdfMargin: "100,50,100,50",
-      coverTitle: process.env.DOC_TITLE || "A Tale of Two Cities",
+      coverTitle:
+        process.env.DOC_TITLE || "PolicyCenter 2022.05.1 Release Notes",
+      coverSub: currentDate,
       coverImage: logoPath,
     });
 
