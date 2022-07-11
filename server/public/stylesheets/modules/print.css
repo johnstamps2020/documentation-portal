@@ -1,6 +1,7 @@
 @media print {
   body {
     display: block !important;
+    font-family: Arial, Helvetica, sans-serif !important;
   }
 
   header,
