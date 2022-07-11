@@ -38,7 +38,7 @@
       "earlyAccess": false
     },
     {
-      "id": "cicdmanagerapirefdraft",
+      "id": "cicdmanagerapiref",
       "title": "CI/CD Manager",
       "url": "cloud/cicd-manager-api-ref/latest",
       "displayOnLandingPages": true,
@@ -49,7 +49,7 @@
         "version": ["latest"],
         "release": ["Elysian"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging", "prod"],
       "public": false,
       "internal": false,
       "earlyAccess": false
