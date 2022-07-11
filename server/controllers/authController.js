@@ -143,6 +143,7 @@ const majorOpenRoutes = [
   '/apiReferences',
   '/recommendations',
   '/scripts',
+  '/google6a1282aff702e827.html'
 ];
 
 const majorInternalRoutes = [];
