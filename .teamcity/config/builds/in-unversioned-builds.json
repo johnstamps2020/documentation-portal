@@ -4,6 +4,22 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "CustomAPI.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "inapidevelopment",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "API_Modernization.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "inapimodernization",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "ConsumerServicePReleaseNotes20222x.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp20222rn",
