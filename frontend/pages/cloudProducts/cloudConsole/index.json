@@ -23,8 +23,8 @@
       "class": "subject development",
       "items": [
         {
-          "label": "CI/CD Manager",
-          "id": "cicdmanagerapirefdraft"
+          "label": "CI/CD Manager API",
+          "id": "cicdmanagerapiref"
         },
         {
           "label": "Cloud Console API",
