@@ -9,12 +9,13 @@ export const scriptsDir: string =
 
 export const inputDir: string = join(process.cwd(), "in");
 export const outputDir: string = join(process.cwd(), "out");
+export const resourcesDir: string = join(process.cwd(), "resources");
+export const logoPath: string =
+  "http://localhost:3000/guidewire_logo_color_web.png";
 
 const templatesDir = join(process.cwd(), "src/templates");
 const headerPath = join(templatesDir, "header.html");
 const footerPath = join(templatesDir, "footer.html");
-const cssPath = join(templatesDir, "pdfStyle.css");
 
 export const headerTemplate = getFileContents(headerPath);
 export const footerTemplate = getFileContents(footerPath);
-export const cssTemplate = getFileContents(cssPath);

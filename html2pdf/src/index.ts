@@ -1,5 +1,4 @@
 import { spawn } from "node:child_process";
-import { existsSync, rmSync, mkdirSync } from "fs";
 import {
   relinkHtmlFiles,
   navLinkClassName,
@@ -12,10 +11,10 @@ import {
   getMrPdfCommandLineParameters,
 } from "./scripts/helpers.js";
 import {
-  cssTemplate,
   footerTemplate,
   headerTemplate,
   inputDir,
+  logoPath,
 } from "./config.js";
 import {
   createOutputDir,
@@ -41,7 +40,9 @@ server.stdout.on("data", (data) => {
       outputPDFFilename: `out/index.pdf`,
       footerTemplate: footerTemplate,
       headerTemplate: headerTemplate,
-      pdfMargin: "50,50,50,50",
+      pdfMargin: "100,50,100,50",
+      coverTitle: process.env.DOC_TITLE || "A Tale of Two Cities",
+      coverImage: logoPath,
     });
 
     const converter = spawn("mr-pdf", parameters);
@@ -52,6 +53,8 @@ server.stdout.on("data", (data) => {
 
     converter.stderr.on("data", (data) => {
       console.error(`CONVERTER ERROR: ${data}`);
+      server.kill();
+      throw new Error(`Conversion error: ${data}`);
     });
 
     converter.on("close", (code) => {
@@ -64,6 +67,7 @@ server.stdout.on("data", (data) => {
 
 server.stderr.on("data", (data) => {
   console.error(`SERVER ERROR: ${data}`);
+  throw new Error(`Server error: ${data}`);
 });
 
 server.on("close", (code) => {

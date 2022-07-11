@@ -1,6 +1,12 @@
 import { join } from "path";
 import { existsSync, cpSync, rmSync, mkdirSync } from "fs";
-import { htmlFilesDir, inputDir, scriptsDir, outputDir } from "../config.js";
+import {
+  htmlFilesDir,
+  inputDir,
+  scriptsDir,
+  outputDir,
+  resourcesDir,
+} from "../config.js";
 
 export function prepareFilesAndFolders() {
   if (!existsSync(htmlFilesDir) || !existsSync(scriptsDir)) {
@@ -16,6 +22,7 @@ export function prepareFilesAndFolders() {
   cpSync(scriptsDir, join(inputDir, "scripts"), {
     recursive: true,
   });
+  cpSync(resourcesDir, inputDir, { recursive: true });
 }
 
 export function createOutputDir() {

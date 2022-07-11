@@ -59,4 +59,14 @@
   .filepath {
     word-wrap: break-word;
   }
+
+  table {
+    --table-font-size: 0.8rem;
+    background-image: none !important;
+    font-size: var(--table-font-size);
+  }
+
+  table * {
+    font-size: var(--table-font-size) !important;
+  }
 }
