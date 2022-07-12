@@ -66,7 +66,11 @@ function setL10nParams(pageClass) {
 }
 
 async function fetchConfigFileForLandingPage(req) {
-  const reqPath = req.path === '/' ? '' : req.path;
+  let reqPath = req.path === '/' ? '' : req.path;
+  if ( reqPath.slice(-1) === '/' ) {
+      reqPath = reqPath.slice(0, -1);
+  }
+
   const configFilePath = new URL(
     `pages${reqPath}/index.json`,
     process.env.DOC_S3_URL
