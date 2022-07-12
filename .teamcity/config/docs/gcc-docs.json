@@ -147,7 +147,7 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
