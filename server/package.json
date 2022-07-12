@@ -1,6 +1,6 @@
 {
   "name": "documentation-portal",
-  "version": "2.29.8",
+  "version": "2.29.10",
   "private": true,
   "engines": {
     "node": "16.14.2"

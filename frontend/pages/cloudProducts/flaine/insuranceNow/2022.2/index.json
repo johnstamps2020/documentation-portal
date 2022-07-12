@@ -75,6 +75,32 @@
       ]
     },
     {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "API Development",
+          "id": "inapidevelopment"
+        },
+        {
+          "label": "API Modernization",
+          "id": "inapimodernization"
+        },
+        {
+          "label": "Developer Setup",
+          "id": "indevguidejava11draft"
+        },
+        {
+          "label": "Developer Setup",
+          "id": "indevguidejava11ext"
+        },
+        {
+          "label": "Portal Development",
+          "id": "in20222portaldev"
+        }
+      ]
+    },
+    {
       "label": "Configuration",
       "class": "subject configuration",
       "items": [
@@ -107,10 +133,6 @@
           "id": "in20222studio"
         },
         {
-          "label": "Portal Development",
-          "id": "in20222portaldev"
-        },
-        {
           "label": "Product Attribute Reference",
           "id": "in20222prodattref"
         },
@@ -135,14 +157,6 @@
         {
           "label": "Install Assist",
           "id": "ininstallassistdraft"
-        },
-        {
-          "label": "Developer Setup",
-          "id": "indevguidejava11draft"
-        },
-        {
-          "label": "Developer Setup",
-          "id": "indevguidejava11ext"
         },
         {
           "label": "Upgrade Tools",

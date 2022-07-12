@@ -1,0 +1,56 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "londonccappflaine",
+      "title": "ClaimCenter for London Market Application Guide",
+      "url": "london/flaine/ccapp",
+      "metadata": {
+        "product": ["London Market"],
+        "platform": ["Cloud"],
+        "version": ["Flaine"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "londonpcappflaine",
+      "title": "PolicyCenter for London Market Application Guide",
+      "url": "london/flaine/pcapp",
+      "metadata": {
+        "product": ["London Market"],
+        "platform": ["Cloud"],
+        "version": ["Flaine"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "londonrnflaine",
+      "title": "London Market Release Notes",
+      "url": "london/flaine/releasenotes",
+      "metadata": {
+        "product": ["London Market"],
+        "platform": ["Cloud"],
+        "version": ["Flaine"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

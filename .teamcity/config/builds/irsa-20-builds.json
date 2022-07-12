@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "IRSAOverview.ditamap",
       "srcId": "irsa20src",
       "docId": "midipfoverview20",
@@ -11,7 +11,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "IRSAAdjusterGuide.ditamap",
       "srcId": "irsa20src",
       "docId": "midipfadjuster20",
@@ -19,7 +19,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "IRSAAdjusterGuide.ditamap",
       "srcId": "irsa20frFRsrc",
       "docId": "midipfadjuster20frFR",
@@ -27,7 +27,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "IRSAAdministrationGuide.ditamap",
       "srcId": "irsa20src",
       "docId": "midipfadmin20",
@@ -35,7 +35,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "IRSAReleaseNotes.ditamap",
       "srcId": "irsa20src",
       "docId": "midipfrn20",
@@ -43,7 +43,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "IRSAReleaseNotes.ditamap",
       "srcId": "irsa20frFRsrc",
       "docId": "midipfrn20frFR",
@@ -51,7 +51,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "_supermap.ditamap",
       "srcId": "irsa20src",
       "docId": "midipfsupermap20",

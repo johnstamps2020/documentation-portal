@@ -97,7 +97,7 @@ spec:
                   - /bin/sleep
                   - '30'
           command: [ \"/bin/sh\", \"-c\" ]
-          args: [ \"until wget -qO- http://localhost:15000/server_info | grep '\\\"state\\\": \\\"LIVE\\\"'; do echo 'Waiting for Istio sidecar'; sleep 1 ; done ; echo 'istio sidecar available'; node server.js\" ]
+          args: [ \"until wget -qO- http://127.0.0.1:15000/server_info | grep '\\\"state\\\": \\\"LIVE\\\"'; do echo 'Waiting for Istio sidecar'; sleep 1 ; done ; echo 'istio sidecar available'; node server.js\" ]
           imagePullPolicy: Always
           ports:
             - containerPort: 8081

@@ -4,7 +4,7 @@
     {
       "buildType": "dita",
       "root": "GuidewireHub.ditamap",
-      "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
       "indexRedirect": true,
       "srcId": "guidewireidentityfederationhubsrc",
       "docId": "guidewireidentityfederationhubdraft"
@@ -12,7 +12,7 @@
     {
       "buildType": "dita",
       "root": "GuidewireHub.ditamap",
-      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "indexRedirect": true,
       "srcId": "guidewireidentityfederationhubsrc",
       "docId": "guidewireidentityfederationhub"
@@ -20,15 +20,23 @@
     {
       "buildType": "dita",
       "root": "GuidewireHub.ditamap",
-      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "indexRedirect": true,
       "srcId": "guidewireidentityfederationhubitITsrc",
       "docId": "guidewireidentityfederationhubitIT"
     },
     {
       "buildType": "dita",
+      "root": "GuidewireHub.ditamap",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewireidentityfederationhubjaJPsrc",
+      "docId": "guidewireidentityfederationhubjaJP"
+    },
+    {
+      "buildType": "dita",
       "root": "CloudPlatform.ditamap",
-      "filter": "common-gw/ditavals/GW-Generic-Cloud-Draft.ditaval",
+      "filter": "GW-Generic-Cloud-Draft.ditaval",
       "indexRedirect": true,
       "srcId": "cloudplatformsrc",
       "docId": "cloudplatformdraft"
@@ -36,7 +44,7 @@
     {
       "buildType": "dita",
       "root": "CloudPlatform.ditamap",
-      "filter": "common-gw/ditavals/GW-Generic-Cloud-Release.ditaval",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "indexRedirect": true,
       "srcId": "cloudplatformsrc",
       "docId": "cloudplatformrelease"
@@ -51,12 +59,12 @@
     },
     {
       "buildType": "yarn",
-      "docId": "cicdmanagerapirefdraft",
+      "docId": "cicdmanagerapiref",
       "srcId": "cicdmanagerapirefsrc"
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-OnPrem-Release.ditaval",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1021src",
@@ -64,7 +72,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-OnPrem-Release.ditaval",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1021src",
@@ -72,7 +80,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-OnPrem-Release.ditaval",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1021src",
@@ -80,7 +88,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-BC-OnPrem-Release.ditaval",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1020src",
@@ -88,7 +96,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-CC-OnPrem-Release.ditaval",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1020src",
@@ -96,7 +104,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/IS-PC-OnPrem-Release.ditaval",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1020src",
@@ -104,7 +112,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Other/IS-BillingCenter-Self-managed-Release.ditaval",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1012src",
@@ -112,7 +120,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Other/IS-ClaimCenter-Self-managed-Release.ditaval",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1012src",
@@ -120,7 +128,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Other/IS-PolicyCenter-Self-managed-Release.ditaval",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1012src",
@@ -128,7 +136,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Other/IS-BillingCenter-Self-managed-Release.ditaval",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1011src",
@@ -136,7 +144,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Other/IS-ClaimCenter-Self-managed-Release.ditaval",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1011src",
@@ -144,7 +152,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Other/IS-PolicyCenter-Self-managed-Release.ditaval",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1011src",
@@ -520,7 +528,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "UnderstandingCloudDataAccess.ditamap",
       "srcId": "clouddataaccesssrc",
       "docId": "clouddataaccessguide",
@@ -528,7 +536,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "UnderstandingCloudDataAccess.ditamap",
       "srcId": "clouddataaccesses419src",
       "docId": "clouddataaccessguidees419",
@@ -536,7 +544,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "UnderstandingCloudDataAccess.ditamap",
       "srcId": "clouddataaccessitITsrc",
       "docId": "clouddataaccessguideitIT",
@@ -544,7 +552,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "UnderstandingCloudDataAccess.ditamap",
       "srcId": "clouddataaccessptBRsrc",
       "docId": "clouddataaccessguideptBR",
@@ -552,7 +560,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "b_relNotesCda.ditamap",
       "srcId": "clouddataaccesssrc",
       "docId": "clouddataaccessrn",
@@ -560,7 +568,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "A_Map01.ditamap",
       "indexRedirect": true,
       "srcId": "comparelatestsrc",
@@ -568,7 +576,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "A_Map01_7x.ditamap",
       "indexRedirect": true,
       "srcId": "livepredictsrc",
@@ -975,7 +983,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "GuidewireCloud.ditamap",
       "srcId": "gchhelpsrc",
       "docId": "gchhelprelease",
@@ -983,7 +991,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-EA-Release.ditaval",
+      "filter": "GW-Generic-EA-Release.ditaval",
       "root": "GCH-EarlyAccess.ditamap",
       "srcId": "gchhelpsrc",
       "docId": "gchhelpearlyaccess",
@@ -991,7 +999,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "GCHReleaseNotes.ditamap",
       "srcId": "gchhelpsrc",
       "docId": "gchhelprnrelease",
@@ -1366,7 +1374,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Other/IS-BillingCenter-Cloud-Release.ditaval",
+      "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide202011src",
@@ -1482,7 +1490,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Other/IS-ClaimCenter-Cloud-Release.ditaval",
+      "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide202011src",
@@ -1622,7 +1630,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Other/IS-PolicyCenter-Cloud-Release.ditaval",
+      "filter": "IS-PC-Cloud-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide202011src",
@@ -2508,7 +2516,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "RESTAPIClientGuide.ditamap",
       "srcId": "restapisrc",
       "docId": "isrestapiclientguide",
@@ -2516,7 +2524,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "common-gw/ditavals/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
       "srcId": "restapisrc",
       "docId": "isrestapiclientrn",

@@ -3,7 +3,7 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "Other/GW-Generic-Draft.ditaval",
+      "filter": "GW-Generic-Draft.ditaval",
       "root": "_supermap.ditamap",
       "indexRedirect": true,
       "srcId": "isconfigupgradetoolsdraftsrc",
@@ -11,7 +11,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "Other/GW-Generic-Release.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "_supermap.ditamap",
       "indexRedirect": true,
       "srcId": "isconfigupgradetools430src",
