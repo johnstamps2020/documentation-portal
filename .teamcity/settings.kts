@@ -68,7 +68,8 @@ enum class GwDitaOutputFormats(val format_name: String) {
     WEBHELP_WITH_PDF("webhelp_with_pdf"),
     SINGLEHTML("singlehtml"),
     DITA("dita"),
-    HTML5("html5")
+    HTML5("html5"),
+    HTML_2_PDF("HTML_2_PDF")
 }
 
 enum class GwConfigParams(val param_value: String) {
@@ -684,6 +685,47 @@ object Docs {
             }
             ditaBuildTypes.add(downloadableOutputBuildType)
         }
+
+        val htmlInputDir = "${output_dir}/html-input-files"
+        val html2PDfDir = "${output_dir}/pdf5"
+        val downloadablePdfFromHtmlBuildType = BuildType {
+            name = "Build downloadable PDF from HTML"
+            id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
+
+            artifactRules = "${working_dir}/${output_dir} => /"
+
+            vcs {
+                root(teamcityGitRepoId)
+                cleanCheckout = true
+            }
+
+            steps {
+                step(GwBuildSteps.createBuildDitaProjectForBuildsStep(
+                    GwDitaOutputFormats.HTML5.format_name,
+                    root_map,
+                    true,
+                    working_dir,
+                    htmlInputDir,
+                    publish_path = "",
+                    build_filter = build_filter,
+                    git_url = git_url,
+                    git_branch = git_branch,
+                    for_offline_use = false
+                ))
+                step(GwBuildSteps.createBuildHTML2PDFStep(htmlInputDir,
+                    "en-US",
+                    "${html2PDfDir}/output.pdf",
+                    doc_title))
+                step(GwBuildSteps.createZipPackageStep("${working_dir}/${html2PDfDir}",
+                    "${working_dir}/${output_dir}"))
+            }
+
+            features {
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
+        }
+        ditaBuildTypes.add(downloadablePdfFromHtmlBuildType)
+
         if (env_names.contains(GwDeployEnvs.STAGING.env_name)) {
             val stagingBuildTypeIdString =
                 Helpers.resolveRelativeIdFromIdString("Publish to ${GwDeployEnvs.STAGING.env_name}${doc_id}").toString()
@@ -3960,6 +4002,40 @@ object GwBuildSteps {
                 yarn build-html5-dependencies
             """.trimIndent()
             dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.image_url}:14.14.0"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+            dockerRunParameters = "--user 1000:1000"
+        }
+    }
+
+    fun createBuildHTML2PDFStep(
+        html_files_dir: String,
+        pdf_locale: String,
+        pdf_output_path: String,
+        doc_title: String,
+    ): ScriptBuildStep {
+        val workingDir = "%teamcity.build.checkoutDir%/html2pdf"
+        val scriptsDir = "%teamcity.build.checkoutDir%/server/static/html5/scripts"
+        return ScriptBuildStep {
+            name = "Build HTML2PDF"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                
+                export EXIT_CODE=0
+                export HTML_FILES_DIR="$html_files_dir"
+                export SCRIPTS_DIR="$scriptsDir"
+                export PDF_LOCALE="$pdf_locale"
+                export PDF_OUTPUT_PATH="$pdf_output_path"
+                export DOC_TITLE="$doc_title"
+                
+                cd $workingDir
+                yarn
+                yarn build || EXIT_CODE=${'$'}?
+                
+                exit ${'$'}EXIT_CODE
+            """.trimIndent()
+            dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.image_url}:17.6.0"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "--user 1000:1000"
