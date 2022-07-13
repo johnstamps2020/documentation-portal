@@ -50,7 +50,7 @@
         "release": ["Elysian"]
       },
       "environments": ["int", "staging", "prod"],
-      "public": false,
+      "public": true,
       "internal": false,
       "earlyAccess": false
     },
