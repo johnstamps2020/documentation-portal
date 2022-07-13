@@ -68,8 +68,7 @@ enum class GwDitaOutputFormats(val format_name: String) {
     WEBHELP_WITH_PDF("webhelp_with_pdf"),
     SINGLEHTML("singlehtml"),
     DITA("dita"),
-    HTML5("html5"),
-    HTML_2_PDF("HTML_2_PDF")
+    HTML5("html5")
 }
 
 enum class GwConfigParams(val param_value: String) {
