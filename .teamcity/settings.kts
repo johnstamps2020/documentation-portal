@@ -686,13 +686,14 @@ object Docs {
         }
 
         val docPortalCheckoutDir = "doc-portal"
-        val htmlInputDir = "${output_dir}/html-input-files"
-        val html2PDfDir = "${output_dir}/pdf5"
+        val docPortalAbsoluteDir = "%teamcity.build.workingDir%/$docPortalCheckoutDir"
+        val htmlInputDir = "%teamcity.build.workingDir%/out/html-input-files"
+        val html2pdfOutputDir = "%teamcity.build.workingDir%/pdf5"
         val downloadablePdfFromHtmlBuildType = BuildType {
             name = "Build downloadable PDF from HTML"
             id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
 
-            artifactRules = "${working_dir}/${output_dir} => /"
+            artifactRules = "$html2pdfOutputDir => /"
 
             vcs {
                 root(teamcityGitRepoId)
@@ -713,12 +714,13 @@ object Docs {
                     git_branch = git_branch,
                     for_offline_use = false
                 ))
-                step(GwBuildSteps.createBuildHTML2PDFStep(htmlInputDir,
+                step(GwBuildSteps.createBuildHTML2PDFStep(
+                    htmlInputDir,
                     "en-US",
-                    "${html2PDfDir}/output.pdf",
+                    "${html2pdfOutputDir}/output.pdf",
                     doc_title,
-                    docPortalCheckoutDir))
-                step(GwBuildSteps.createZipPackageStep("${working_dir}/${html2PDfDir}",
+                    docPortalAbsoluteDir))
+                step(GwBuildSteps.createZipPackageStep("${working_dir}/${html2pdfOutputDir}",
                     "${working_dir}/${output_dir}"))
             }
 
@@ -4013,12 +4015,12 @@ object GwBuildSteps {
     fun createBuildHTML2PDFStep(
         html_files_dir: String,
         pdf_locale: String,
-        pdf_output_path: String,
+        pdf_output_absolute_path: String,
         doc_title: String,
-        doc_portal_checkout_dir: String
+        doc_portal_absolute_dir: String,
     ): ScriptBuildStep {
-        val workingDir = "%teamcity.build.workingDir%/$doc_portal_checkout_dir/html2pdf"
-        val scriptsDir = "%teamcity.build.workingDir%/server/static/html5/scripts"
+        val workingDir = "$doc_portal_absolute_dir/html2pdf"
+        val scriptsDir = "$doc_portal_absolute_dir/server/static/html5/scripts"
         return ScriptBuildStep {
             name = "Build HTML2PDF"
             id = Helpers.createIdStringFromName(this.name)
@@ -4029,7 +4031,7 @@ object GwBuildSteps {
                 export HTML_FILES_DIR="$html_files_dir"
                 export SCRIPTS_DIR="$scriptsDir"
                 export PDF_LOCALE="$pdf_locale"
-                export PDF_OUTPUT_PATH="$pdf_output_path"
+                export PDF_OUTPUT_PATH="$pdf_output_absolute_path"
                 export DOC_TITLE="$doc_title"
                 
                 cd "$workingDir"
