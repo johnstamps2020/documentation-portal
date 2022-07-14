@@ -708,7 +708,7 @@ object Docs {
                     true,
                     working_dir,
                     htmlInputDir,
-                    publish_path = ".",
+                    publish_path = "local/build",
                     build_filter = build_filter,
                     doc_id = doc_id,
                     doc_title = doc_title,
