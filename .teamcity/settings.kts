@@ -708,7 +708,7 @@ object Docs {
                     true,
                     working_dir,
                     htmlInputDir,
-                    publish_path = "",
+                    publish_path = ".",
                     build_filter = build_filter,
                     git_url = git_url,
                     git_branch = git_branch,
