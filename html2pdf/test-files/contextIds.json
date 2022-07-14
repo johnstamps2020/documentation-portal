@@ -1,0 +1,131 @@
+{
+  "contextIds": [
+    {
+      "file": "common-gw/keydefs/book-categories.html",
+      "ids": ["book-categories"]
+    },
+    {
+      "file": "common-gw/keydefs/bookmeta.html",
+      "ids": ["xd_c319b8b6b68580e7-567a69d8-1539b5da473--7fed"]
+    },
+    { "file": "common-gw/keydefs/characters.html", "ids": ["characters"] },
+    {
+      "file": "common-gw/keydefs/variables-cloud.html",
+      "ids": ["xd_992ee04c4cdcb76e-2c1763a-1718b14a567--7e4a"]
+    },
+    {
+      "file": "common-gw/topics/front-notice-proprietary.html",
+      "ids": ["concept_ykh_xgh_yr"]
+    },
+    { "file": "common/keydefs/library.html", "ids": ["topic_bnm_g3p_45"] },
+    { "file": "common/keydefs/variables-PC.html", "ids": ["topic_bnm_g3p_45"] },
+    {
+      "file": "common/keydefs/variables-SC.html",
+      "ids": ["xd_1a99d4ba43e7a978--31be4cf3-15d7579cab0--7ecb"]
+    },
+    {
+      "file": "knownissues.html",
+      "ids": [
+        "knownissues",
+        "xd_88692ccd77b0a96e--c1a9526-16231d1d963--7e70",
+        "xd_f2518dff06542463-3559e9f7-1686ebc1ea3--7dcb",
+        "xd_88e49dc2512fc942--26756fde-168f72b9581--7efa",
+        "xd_b924da0483abe1ec-597d9be1-164dd97487b--7eff",
+        "c_aan5146594",
+        "c_aan5146536",
+        "c_aan5146503",
+        "c_aay4351411",
+        "unique_908801652",
+        "unique_588077321",
+        "unique_1192275428",
+        "xd_992ee04c4cdcb76e-2c1763a-1718b14a567--7bf4",
+        "xd_8ec578008298a3f2-6135749c-1721b4749b5--7fd5",
+        "xd_992ee04c4cdcb76e-2c1763a-1718b14a567--7e0f",
+        "xd_992ee04c4cdcb76e-2c1763a-1718b14a567--7e0e",
+        "xd_992ee04c4cdcb76e-2c1763a-1718b14a567--7df1",
+        "xd_992ee04c4cdcb76e-2c1763a-1718b14a567--7e0b",
+        "xd_992ee04c4cdcb76e-2c1763a-1718b14a567--7def",
+        "xd_992ee04c4cdcb76e-2c1763a-1718b14a567--7dee",
+        "xd_992ee04c4cdcb76e-2c1763a-1718b14a567--7c2f",
+        "xd_992ee04c4cdcb76e-2c1763a-1718b14a567--7c27",
+        "xd_174b15458895b51c-efdba54-1722ef318ff--7f1a",
+        "xd_b4f15671056eecc2--294e5c41-172570a26a0--7e07",
+        "xd_8e3446a0f2685980-2725f23a-1735fb711a8--7dab",
+        "xd_6ee8ee39a6a2d9d7--1f71d368-172cf860c85--7e04",
+        "xd_0bcc9c391d360d57--7562d6e8-175768d3b16--7f32",
+        "xd_fb7957adb23d2b00--494cf4be-178dda35d87--7ea1",
+        "xd_7f7150e10581395c--497f1aeb-17cfad3c540--7ff4",
+        "xd_0bcc9c391d360d57--7562d6e8-175768d3b16--7e27",
+        "xd_22b5098c8f8ce53b-70c2ced7-175f79d2215--7d8e",
+        "xd_dadc3687b6e43981--39fd6e37-177093e5e00--7e22",
+        "xd_c180b3707d68f1e7--35b52fb1-17b66845461--7e6d",
+        "unique_1607341548",
+        "unique_1044055702",
+        "unique_389226735",
+        "unique_1209833352",
+        "xd_992ee04c4cdcb76e-2c1763a-1718b14a567--7df4",
+        "xd_88692ccd77b0a96e--c1a9526-16231d1d963--7d9e",
+        "xd_88692ccd77b0a96e--c1a9526-16231d1d963--7d9d",
+        "pl-known-issues-wrapper",
+        "xd_fb7957adb23d2b00--494cf4be-178dda35d87--7e94",
+        "xd_76662e7b96d0c8bd--4c1f0793-17dcb908796--7f3c",
+        "xd_76662e7b96d0c8bd--4c1f0793-17dcb908796--7f02",
+        "ki_lang-demo",
+        "xd_b6e081711d411663-23e3ea83-175345e274d--7eed",
+        "xd_b6e081711d411663-23e3ea83-175345e274d--7eea",
+        "unique_39039717",
+        "xd_0bcc9c391d360d57--7562d6e8-175768d3b16--7f4b",
+        "xd_22238c41dd274eba-4748ced4-16ece8cc24d--7fd5",
+        "xd_4e970ba866a57d5c--5faf93b3-172c9041006--7fe8"
+      ]
+    },
+    {
+      "file": "releaseNotes/topics/c_common-text-for-known-issues.html",
+      "ids": ["xd_88692ccd77b0a96e--c1a9526-16231d1d963--7e6b"]
+    },
+    {
+      "file": "releaseNotes/topics/c_common-text-for-release-notes.html",
+      "ids": ["common-text-for-rn"]
+    },
+    {
+      "file": "releasenotes2022050.html",
+      "ids": [
+        "relnotes2022050",
+        "c_new_and_changed",
+        "xd_22b5098c8f8ce53b-70c2ced7-175f79d2215--7f2f",
+        "Concept",
+        "xd_93fed88b1a4edea4-5734f4e6-17cdc61f4d4--7fa9",
+        "c_changes-to-implementation-of-gw-cloud-jobprocess",
+        "c_changes-to-lines-of-business",
+        "changes_to_configuration_parameters_2022.05.0",
+        "c_pcf-files-2022.05.0",
+        "c_testing-doc-moved",
+        "xd_b6e081711d411663-23e3ea83-175345e274d--7f57",
+        "xd_c841bdff05a6bf61-44694ecd-17f329f2b21--7fef",
+        "c_zt3744290",
+        "pc-issues",
+        "apd-issues",
+        "cm-issues",
+        "pl-issues",
+        "iscloudapi-issues",
+        "r_cc-pc-2022.05.0-embed-analytics-improvements-and-resolved-issues"
+      ]
+    },
+    {
+      "file": "releasenotes2022051.html",
+      "ids": [
+        "relnotes2022051",
+        "c_new_and_changed",
+        "xd_22b5098c8f8ce53b-70c2ced7-175f79d2215--7f2f",
+        "c_hooks-for-rewrite",
+        "xd_b6e081711d411663-23e3ea83-175345e274d--7f57",
+        "xd_c841bdff05a6bf61-44694ecd-17f329f2b21--7fef",
+        "c_zt3744290",
+        "r_pc-2022_05_1_improvements_and_resolved_issues",
+        "apd-issues",
+        "pl-issues",
+        "iscloudapi-issues"
+      ]
+    }
+  ]
+}
