@@ -687,7 +687,7 @@ object Docs {
 
         val docPortalCheckoutDir = "doc-portal"
         val docPortalAbsoluteDir = "%teamcity.build.workingDir%/$docPortalCheckoutDir"
-        val htmlInputDir = "%teamcity.build.workingDir%/out/html-input-files"
+        val htmlInputDir = "/out/html-input-files"
         val html2pdfOutputDir = "%teamcity.build.workingDir%/pdf5"
         val downloadablePdfFromHtmlBuildType = BuildType {
             name = "Build downloadable PDF from HTML"
@@ -715,7 +715,7 @@ object Docs {
                     for_offline_use = false
                 ))
                 step(GwBuildSteps.createBuildHTML2PDFStep(
-                    htmlInputDir,
+                    "%teamcity.build.workingDir%/$htmlInputDir",
                     "en-US",
                     "${html2pdfOutputDir}/output.pdf",
                     doc_title,
