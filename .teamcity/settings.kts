@@ -4028,7 +4028,7 @@ object GwBuildSteps {
                 export PDF_OUTPUT_PATH="$pdf_output_path"
                 export DOC_TITLE="$doc_title"
                 
-                cd $workingDir
+                cd "$workingDir"
                 yarn
                 yarn build || EXIT_CODE=${'$'}?
                 
