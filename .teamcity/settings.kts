@@ -685,6 +685,7 @@ object Docs {
             ditaBuildTypes.add(downloadableOutputBuildType)
         }
 
+        val docPortalCheckoutDir = "doc-portal"
         val htmlInputDir = "${output_dir}/html-input-files"
         val html2PDfDir = "${output_dir}/pdf5"
         val downloadablePdfFromHtmlBuildType = BuildType {
@@ -695,6 +696,7 @@ object Docs {
 
             vcs {
                 root(teamcityGitRepoId)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot, "+:. => $docPortalCheckoutDir")
                 cleanCheckout = true
             }
 
@@ -714,7 +716,8 @@ object Docs {
                 step(GwBuildSteps.createBuildHTML2PDFStep(htmlInputDir,
                     "en-US",
                     "${html2PDfDir}/output.pdf",
-                    doc_title))
+                    doc_title,
+                    docPortalCheckoutDir))
                 step(GwBuildSteps.createZipPackageStep("${working_dir}/${html2PDfDir}",
                     "${working_dir}/${output_dir}"))
             }
@@ -4012,8 +4015,9 @@ object GwBuildSteps {
         pdf_locale: String,
         pdf_output_path: String,
         doc_title: String,
+        doc_portal_checkout_dir: String
     ): ScriptBuildStep {
-        val workingDir = "%teamcity.build.workingDir%/html2pdf"
+        val workingDir = "%teamcity.build.workingDir%/$doc_portal_checkout_dir/html2pdf"
         val scriptsDir = "%teamcity.build.workingDir%/server/static/html5/scripts"
         return ScriptBuildStep {
             name = "Build HTML2PDF"
