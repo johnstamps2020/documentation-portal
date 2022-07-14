@@ -160,48 +160,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
-      "root": "_supermap-202005.ditamap",
-      "srcId": "cloudis202005src",
-      "docId": "cloudbc202005",
-      "resources": [
-        {
-          "sourceFolder": "ReleaseNotes-files/bc/2020.05",
-          "targetFolder": "extras/ReleaseNotes-files/bc/2020.05",
-          "srcId": "insurancesuiteextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-Cloud-Release.ditaval",
-      "root": "_supermap-202005.ditamap",
-      "srcId": "cloudis202005src",
-      "docId": "cloudcc202005",
-      "resources": [
-        {
-          "sourceFolder": "ReleaseNotes-files/cc/2020.05",
-          "targetFolder": "extras/ReleaseNotes-files/cc/2020.05",
-          "srcId": "insurancesuiteextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
-      "root": "_supermap-202005.ditamap",
-      "srcId": "cloudis202005src",
-      "docId": "cloudpc202005",
-      "resources": [
-        {
-          "sourceFolder": "ReleaseNotes-files/pc/2020.05",
-          "targetFolder": "extras/ReleaseNotes-files/pc/2020.05",
-          "srcId": "insurancesuiteextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
       "filter": "IS-BC-OnPrem-Release.ditaval",
       "root": "_supermap-1021.ditamap",
       "srcId": "selfmanagedis1021src",
@@ -500,34 +458,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "DataHub-MS-RELEASE.ditaval",
-      "root": "DM_all.ditamap",
-      "srcId": "dhic202005",
-      "docId": "dh202005",
-      "resources": [
-        {
-          "sourceFolder": "Aspen-10.3/DataHub",
-          "targetFolder": "extras",
-          "srcId": "dhicextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "InfoCenter-MS-RELEASE.ditaval",
-      "root": "DM_all.ditamap",
-      "srcId": "dhic202005",
-      "docId": "ic202005",
-      "resources": [
-        {
-          "sourceFolder": "Aspen-10.3/InfoCenter",
-          "targetFolder": "extras",
-          "srcId": "dhicextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "UnderstandingCloudDataAccess.ditamap",
       "srcId": "clouddataaccesssrc",
@@ -637,111 +567,6 @@
       "root": "DX_superbook.ditamap",
       "srcId": "dx202011",
       "docId": "dxve202011"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-am-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202010",
-      "docId": "dxceam202010"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-claims-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202010",
-      "docId": "dxceclaims202010"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-qb-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202010",
-      "docId": "dxceqb202010"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202010",
-      "docId": "dxpe202010"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-claims-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202010",
-      "docId": "dxpeclaims202010"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-sre-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202010",
-      "docId": "dxsre202010"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ve-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202010",
-      "docId": "dxve202010"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-am-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202008",
-      "docId": "dxceam202008"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-qb-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202008",
-      "docId": "dxceqb202008"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202008",
-      "docId": "dxpe202008"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-sre-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202008",
-      "docId": "dxsre202008"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-apd-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202005",
-      "docId": "dxapd202005"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-qb-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202005",
-      "docId": "dxceqb202005"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202005",
-      "docId": "dxpe202005"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-sre-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202005",
-      "docId": "dxsre202005"
     },
     {
       "buildType": "dita",
