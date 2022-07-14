@@ -37,10 +37,6 @@
         {
           "label": "Release Notes",
           "id": "ic1050rn"
-        },
-        {
-          "label": "Log4j Patch Release Notes",
-          "link": "/dm/ic/log4jPatchReleaseNotes.html"
         }
       ]
     },
