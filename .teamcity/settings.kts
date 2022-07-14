@@ -687,7 +687,7 @@ object Docs {
 
         val docPortalCheckoutDir = "doc-portal"
         val docPortalAbsoluteDir = "%teamcity.build.workingDir%/$docPortalCheckoutDir"
-        val htmlInputDir = "/out/html-input-files"
+        val htmlInputDir = "out/html-input-files"
         val html2pdfOutputDir = "%teamcity.build.workingDir%/pdf5"
         val downloadablePdfFromHtmlBuildType = BuildType {
             name = "Build downloadable PDF from HTML"
@@ -4013,7 +4013,7 @@ object GwBuildSteps {
     }
 
     fun createBuildHTML2PDFStep(
-        html_files_dir: String,
+        html_files_dir_absolute_path: String,
         pdf_locale: String,
         pdf_output_absolute_path: String,
         doc_title: String,
@@ -4028,7 +4028,7 @@ object GwBuildSteps {
                 #!/bin/bash
                 
                 export EXIT_CODE=0
-                export HTML_FILES_DIR="$html_files_dir"
+                export HTML_FILES_DIR="$html_files_dir_absolute_path"
                 export SCRIPTS_DIR="$scriptsDir"
                 export PDF_LOCALE="$pdf_locale"
                 export PDF_OUTPUT_PATH="$pdf_output_absolute_path"
