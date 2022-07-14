@@ -4013,8 +4013,8 @@ object GwBuildSteps {
         pdf_output_path: String,
         doc_title: String,
     ): ScriptBuildStep {
-        val workingDir = "%teamcity.build.checkoutDir%/html2pdf"
-        val scriptsDir = "%teamcity.build.checkoutDir%/server/static/html5/scripts"
+        val workingDir = "%teamcity.build.workingDir%/html2pdf"
+        val scriptsDir = "%teamcity.build.workingDir%/server/static/html5/scripts"
         return ScriptBuildStep {
             name = "Build HTML2PDF"
             id = Helpers.createIdStringFromName(this.name)
