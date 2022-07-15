@@ -15,7 +15,7 @@
       "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false,
+      "public": true,
       "internal": false,
       "earlyAccess": false
     },
