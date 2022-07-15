@@ -708,7 +708,7 @@ object Docs {
                     true,
                     working_dir,
                     htmlInputDir,
-                    publish_path = "local/build",
+                    publish_path = ".",
                     build_filter = build_filter,
                     doc_id = doc_id,
                     doc_title = doc_title,
@@ -716,6 +716,7 @@ object Docs {
                     git_branch = git_branch,
                     build_pdfs = false
                 ))
+                step(GwBuildSteps.createBuildHtml5DependenciesStep())
                 step(GwBuildSteps.createBuildHTML2PDFStep(
                     "%teamcity.build.workingDir%/$htmlInputDir",
                     "en-US",
