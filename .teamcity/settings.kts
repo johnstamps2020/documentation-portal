@@ -687,7 +687,7 @@ object Docs {
 
         val docPortalCheckoutDir = "doc-portal"
         val docPortalAbsoluteDir = "%teamcity.build.workingDir%/$docPortalCheckoutDir"
-        val htmlInputDir = "out/html-input-files"
+        val htmlInputDir = "out"
         val html2pdfOutputDir = "%teamcity.build.workingDir%/pdf9"
         val downloadablePdfFromHtmlBuildType = BuildType {
             name = "Build downloadable PDF from HTML"
