@@ -685,9 +685,9 @@ object Docs {
             ditaBuildTypes.add(downloadableOutputBuildType)
         }
 
-        val docPortalCheckoutDir = "doc-portal"
-        val docPortalAbsoluteDir = "%teamcity.build.workingDir%/$docPortalCheckoutDir"
-        val htmlInputDir = "out"
+        val docCheckoutDir = "doc"
+        val docPortalAbsoluteDir = "%teamcity.build.workingDir%"
+        val htmlInputDir = "$docCheckoutDir/out"
         val html2pdfOutputDir = "%teamcity.build.workingDir%/pdf9"
         val downloadablePdfFromHtmlBuildType = BuildType {
             name = "Build downloadable PDF from HTML"
@@ -696,15 +696,15 @@ object Docs {
             artifactRules = "$html2pdfOutputDir => /"
 
             vcs {
-                root(teamcityGitRepoId)
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot, "+:. => $docPortalCheckoutDir")
+                root(teamcityGitRepoId, "+:. => $docCheckoutDir")
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
                 cleanCheckout = true
             }
 
             steps {
                 step(GwBuildSteps.createBuildDitaProjectForBuildsStep(
                     GwDitaOutputFormats.HTML5.format_name,
-                    root_map,
+                    "$docCheckoutDir/$root_map",
                     true,
                     working_dir,
                     htmlInputDir,
