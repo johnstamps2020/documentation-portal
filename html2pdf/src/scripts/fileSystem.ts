@@ -5,14 +5,14 @@ import {
   inputDir,
   scriptsDir,
   outputDir,
-  resourcesDir,
+  resourcesDir
 } from "../config.js";
 
 export function prepareFilesAndFolders() {
-  if (!existsSync(htmlFilesDir) || !existsSync(scriptsDir)) {
-    console.error(`Base input folder does not exist: ${htmlFilesDir}`);
-    process.exit(1);
-  }
+  // if (!existsSync(htmlFilesDir) || !existsSync(scriptsDir)) {
+  //   console.error(`Base input folder does not exist: ${htmlFilesDir}`);
+  //   process.exit(1);
+  // }
 
   if (existsSync(inputDir)) {
     rmSync(inputDir, { recursive: true });
@@ -20,7 +20,7 @@ export function prepareFilesAndFolders() {
 
   cpSync(htmlFilesDir, inputDir, { recursive: true });
   cpSync(scriptsDir, join(inputDir, "scripts"), {
-    recursive: true,
+    recursive: true
   });
   cpSync(resourcesDir, inputDir, { recursive: true });
 }
