@@ -90,6 +90,10 @@
         {
           "label": "CI/CD Manager API",
           "id": "cicdmanagerapiref"
+        },
+        {
+          "label": "Cloud Console API",
+          "id": "cloudconsoleapi"
         }
       ]
     },
