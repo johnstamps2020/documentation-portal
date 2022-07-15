@@ -685,54 +685,6 @@ object Docs {
             ditaBuildTypes.add(downloadableOutputBuildType)
         }
 
-        val docCheckoutDir = "doc"
-        val docPortalAbsoluteDir = "%teamcity.build.workingDir%"
-        val htmlInputDir = "$docCheckoutDir/out"
-        val html2pdfOutputDir = "%teamcity.build.workingDir%/pdf9"
-        val downloadablePdfFromHtmlBuildType = BuildType {
-            name = "Build downloadable PDF from HTML"
-            id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
-
-            artifactRules = "$html2pdfOutputDir => /"
-
-            vcs {
-                root(teamcityGitRepoId, "+:. => $docCheckoutDir")
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            steps {
-                step(GwBuildSteps.createBuildDitaProjectForBuildsStep(
-                    GwDitaOutputFormats.HTML5.format_name,
-                    "$docCheckoutDir/$root_map",
-                    true,
-                    working_dir,
-                    htmlInputDir,
-                    publish_path = ".",
-                    build_filter = build_filter,
-                    doc_id = doc_id,
-                    doc_title = doc_title,
-                    git_url = git_url,
-                    git_branch = git_branch,
-                    build_pdfs = false
-                ))
-                step(GwBuildSteps.createBuildHtml5DependenciesStep())
-                step(GwBuildSteps.createBuildHTML2PDFStep(
-                    "%teamcity.build.workingDir%/$htmlInputDir",
-                    "en-US",
-                    "${html2pdfOutputDir}/output.pdf",
-                    doc_title,
-                    docPortalAbsoluteDir))
-                step(GwBuildSteps.createZipPackageStep("${working_dir}/${html2pdfOutputDir}",
-                    "${working_dir}/${output_dir}"))
-            }
-
-            features {
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            }
-        }
-        ditaBuildTypes.add(downloadablePdfFromHtmlBuildType)
-
         if (env_names.contains(GwDeployEnvs.STAGING.env_name)) {
             val stagingBuildTypeIdString =
                 Helpers.resolveRelativeIdFromIdString("Publish to ${GwDeployEnvs.STAGING.env_name}${doc_id}").toString()
