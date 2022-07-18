@@ -247,21 +247,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "INowCoreReleaseNotes20211Cortina.ditamap",
-      "srcId": "inunversionedsrc",
-      "docId": "in20211xrndraft",
-      "indexRedirect": true,
-      "resources": [
-        {
-          "targetFolder": "ReleaseNotes/2021.1.x/ChangedFiles",
-          "sourceFolder": "ChangedFiles/2021.1",
-          "srcId": "insurancenowextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "INowCoreReleaseNotes20202Banff.ditamap",
       "srcId": "inunversionedsrc",
