@@ -43,6 +43,10 @@
       "class": "subject featuresAndFunctionality",
       "items": [
         {
+          "label": "Application Guide",
+          "id": "in20202xappdraft"
+        },
+        {
           "label": "Business Intelligence Getting Started Guide",
           "id": "in20202bi"
         },
@@ -69,6 +73,10 @@
           "id": "in20202appreaderinteg"
         },
         {
+          "label": "Business Intelligence Integration",
+          "id": "in20202biinteg"
+        },
+        {
           "label": "Predictive Analytics Integration",
           "id": "in20202pa"
         }
@@ -79,12 +87,24 @@
       "class": "subject configuration",
       "items": [
         {
+          "label": "Claims Product Configuration Guide",
+          "id": "in20202xclaimsconfigdraft"
+        },
+        {
           "label": "Core Configuration Guide",
           "id": "in20202config"
         },
         {
+          "label": "Consumer Service Portal Configuration Guide",
+          "id": "in20202xcservicepconfigdraft"
+        },
+        {
           "label": "Studio Configuration Guide",
           "id": "in20202studio"
+        },
+        {
+          "label": "Provisioning Portal",
+          "id": "in20202xprovportaldraft"
         },
         {
           "label": "Portal Development",
@@ -93,6 +113,10 @@
         {
           "label": "Product Attribute Reference",
           "id": "in20202prodattref"
+        },
+        {
+          "label": "Underwriting Product Configuration Guide",
+          "id": "in20202xuwconfigdraft"
         }
       ]
     }

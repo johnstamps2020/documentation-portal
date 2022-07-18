@@ -48,20 +48,7 @@
     {
       "label": "InsuranceNow",
       "class": "productFamily cardShadow",
-      "page": "insuranceNow/2020.2",
-      "env": ["dev", "staging", "prod"]
-    },
-    {
-      "label": "InsuranceNow Internal Audience",
-      "class": "productFamily cardShadow",
-      "page": "insuranceNow/2020.2xInternalAudience",
-      "env": ["int"]
-    },
-    {
-      "label": "InsuranceNow External Audience",
-      "class": "productFamily cardShadow",
-      "page": "insuranceNow/2020.2xExternalAudience",
-      "env": ["int"]
+      "page": "insuranceNow/2020.2"
     },
     {
       "label": "Guidewire Cloud Platform",
