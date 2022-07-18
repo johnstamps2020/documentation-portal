@@ -144,6 +144,52 @@
       "srcId": "in20201xuwconfigdraftsrc",
       "docId": "in20201xuwconfigdraft",
       "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "INowCoreReleaseNotes20201Aspen.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20201rn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2020.1",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "InsuranceNowReleaseNotes20201.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20201xrndraft",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2020.1",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "INowStudioReleaseNotes20201Aspen.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20201xstudiorndraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "INowStudioReleaseNotes20201Aspen.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20201studiorn",
+      "indexRedirect": true
     }
   ]
 }
