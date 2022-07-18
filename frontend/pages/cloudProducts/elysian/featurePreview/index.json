@@ -55,10 +55,6 @@
       "class": "subject bestPractices",
       "items": [
         {
-          "label": "Load and Performance Testing",
-          "id": "testingframeworksloadelysian"
-        },
-        {
           "label": "User Interface Accessibility Testing",
           "id": "is202205access"
         }
