@@ -53,12 +53,16 @@
       ]
     },
     {
-      "label": "Cross-application Capabiities",
+      "label": "Cross-application Capabilities",
       "class": "subject development",
       "items": [
         {
           "label": "API Testing",
           "id": "testingframeworksapiflaine"
+        },
+        {
+          "label": "Load and Performance Testing",
+          "id": "testingframeworksloadflaine"
         },
         {
           "label": "UI Testing",
