@@ -3,17 +3,24 @@
   "sources": [
     {
       "id": "in20222",
-      "title": "InsuranceNow 2022.2",
+      "title": "InsuranceNow 2022.2 Flaine",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "release/2022.2"
+      "branch": "release/2022.2FLAINE"
     },
     {
       "id": "in20221",
-      "title": "InsuranceNow 2022.1",
+      "title": "InsuranceNow 2022.1 Elysian",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "release/2022.1"
+      "branch": "release/2022.1ELYSIAN"
+    },
+    {
+      "id": "in20212",
+      "title": "InsuranceNow 2021.2 Dobson",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2021.2DOBSON"
     },
     {
       "id": "srcin20222apiref",
@@ -28,13 +35,6 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurance-now-api-ref.git",
       "branch": "release/elysian"
-    },
-    {
-      "id": "in20212",
-      "title": "InsuranceNow 2021.2",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
-      "branch": "release/2021.2"
     },
     {
       "id": "srcin20212apiref",
