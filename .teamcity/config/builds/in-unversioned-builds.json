@@ -263,7 +263,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "InsuranceNowReleaseNotes20202.ditamap",
+      "root": "INowCoreReleaseNotes20202Banff.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20202rn",
       "indexRedirect": true,
@@ -278,7 +278,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "InsuranceNowReleaseNotes20201.ditamap",
+      "root": "INowCoreReleaseNotes20201Aspen.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20201rn",
       "indexRedirect": true,
