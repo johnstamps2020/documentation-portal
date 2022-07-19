@@ -2,6 +2,24 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "in20212appreaderinteg",
+      "title": "AppReader Integration",
+      "url": "cloud/in/20212/appreaderinteg",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Integration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "in20212app",
       "title": "Application Guide",
       "url": "cloud/in/20212/app",
@@ -38,6 +56,42 @@
       "earlyAccess": false
     },
     {
+      "id": "in20212xbiintegdraft",
+      "title": "Business Intelligence Integration - Internal",
+      "url": "cloud/in/20212/biinteg",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Integration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20212xcsalespconfigdraft",
+      "title": "Consumer Sales Portal Configuration - Internal",
+      "url": "cloud/in/20212/csalespconfig",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Configuration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
       "id": "in20212csalesp",
       "title": "Consumer Sales Portal Features",
       "url": "cloud/in/20212/csalesp",
@@ -56,6 +110,24 @@
       "earlyAccess": false
     },
     {
+      "id": "in20212xcservicepconfigdraft",
+      "title": "Consumer Service Portal Configuration Guide - Internal",
+      "url": "cloud/in/20212/cservicepconfig",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Configuration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
       "id": "in20212cservicep",
       "title": "Consumer Service Portal Features",
       "url": "cloud/in/20212/cservicep",
@@ -64,24 +136,6 @@
         "product": ["InsuranceNow"],
         "version": ["2021.2"],
         "subject": ["Features and functionality"],
-        "release": ["Dobson"]
-      },
-      "environments": ["int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20212appreaderinteg",
-      "title": "AppReader Integration",
-      "url": "cloud/in/20212/appreaderinteg",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Integration"],
         "release": ["Dobson"]
       },
       "environments": ["int", "staging", "prod"],
@@ -138,11 +192,11 @@
         "subject": ["Configuration"],
         "release": ["Dobson"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false,
+      "internal": true,
       "earlyAccess": false
     },
     {
@@ -197,6 +251,24 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20212provportalinternal",
+      "title": "Provisioning Portal",
+      "url": "cloud/in/20212/provportalinternal",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2021.2"],
+        "subject": ["Configuration"],
+        "release": ["Dobson"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
       "earlyAccess": false
     },
     {
