@@ -15,6 +15,10 @@
         {
           "label": "Cloud Console Guide",
           "id": "guidewirecloudconsolerootinsurerdev"
+        },
+        {
+          "label": "ReleaseNotes Archive",
+          "id": "guidewirecloudconsolernarchive"
         }
       ]
     },
