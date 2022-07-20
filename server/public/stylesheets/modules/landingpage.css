@@ -1,15 +1,15 @@
 section.card {
-    --height: 350px;
+    --height: 360px;
     --width: 420px;
     --padding-width: 1rem;
     display: inline-block;
-    border: 3px solid #757D82;
+    outline: 3px solid #757D82;
     border-radius: 30px;
     margin-right: 40px;
     margin-bottom: 40px;
     padding: 0 var(--padding-width) var(--padding-width) var(--padding-width);
     width: var(--width);
-    height: var(--height);
+    min-height: var(--height);
     overflow: hidden;
 }
 
@@ -17,16 +17,14 @@ section.card .sectiontitle {
     color: #fff;
     position: relative;
     line-height: 1;
-    margin-bottom: 2.5rem !important;
+    background-color: gray;
+    top: -1.5rem;
+    left: calc(var(--padding-width) * -1);
+    width: var(--width);
+    margin-bottom: 0rem !important;
+    padding: var(--padding-width);
 }
 
-section.card .sectiontitle::before {
-    content:'';
-    background-color: #757D82;
-    position: absolute;
-    z-index: -1;
-    width: var(--width);
-    height: 300%;
-    top: -100%;
-    left: calc(var(--padding-width) * -1)
+.card .sectiontitle + * {
+    margin-top: 0;
 }
