@@ -1919,6 +1919,11 @@
       "buildType": "yarn",
       "srcId": "internaldocssrc",
       "docId": "internaldocslatest"
+    },
+    {
+      "buildType": "yarn",
+      "srcId": "surepathmethodologymainsrc",
+      "docId": "surepathmethodologymain"
     }
   ]
 }

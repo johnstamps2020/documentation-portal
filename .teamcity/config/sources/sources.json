@@ -1220,6 +1220,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/doctools/internal-docs-directory.git",
       "branch": "main"
+    },
+    {
+      "id": "surepathmethodologymainsrc",
+      "title": "SurePath Methodology main",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/surepath-methodology.git",
+      "branch": "main"
     }
   ]
 }

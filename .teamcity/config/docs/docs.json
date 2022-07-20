@@ -7321,6 +7321,22 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "surepathmethodologymain",
+      "title": "SurePath Methodology",
+      "url": "surepath/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["latest"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }
