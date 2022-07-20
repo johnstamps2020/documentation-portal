@@ -1,7 +1,7 @@
 section.card {
     --height: 350px;
     --width: 420px;
-    --padding-width: 1rem
+    --padding-width: 1rem;
     display: inline-block;
     border: 3px solid #757D82;
     border-radius: 30px;
@@ -10,6 +10,7 @@ section.card {
     padding: 0 var(--padding-width) var(--padding-width) var(--padding-width);
     width: var(--width);
     height: var(--height);
+    overflow: hidden;
 }
 
 section.card .sectiontitle {
@@ -27,4 +28,5 @@ section.card .sectiontitle::before {
     width: var(--width);
     height: 300%;
     top: -100%;
+    left: calc(var(--padding-width) * -1)
 }
