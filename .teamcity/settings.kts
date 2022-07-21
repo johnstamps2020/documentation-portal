@@ -660,7 +660,8 @@ object Docs {
                         "PDF" to GwDitaOutputFormats.PDF.format_name,
                         "Webhelp with PDF" to GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name,
                         "Single-page HTML" to GwDitaOutputFormats.SINGLEHTML.format_name
-                    )
+                    ),
+                    display = ParameterDisplay.PROMPT,
                 )
             }
 
