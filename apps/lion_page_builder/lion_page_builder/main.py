@@ -55,6 +55,8 @@ product_codes_labels = {
     've': {'label': 'VendorEngage'},
     'is-configupgradetools': {'label': 'InsuranceSuite Configuration Upgrade Tools'},
     'gcc': {'label': 'Guidewire Cloud Console'},
+    'gwid': {'label': 'Guidewire Identity Federation Hub'},
+    'gwsf': {'label': 'Guidewire for Salesforce'},
     'cda': {'label': 'Cloud Data Access'},
     'explore': {'label': 'Explore'},
     'ipf': {'label': 'ClaimCenter Package for France'},
