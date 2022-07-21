@@ -645,24 +645,38 @@ object Docs {
 
             ditaBuildTypes.add(docBuildType)
         }
-        for (format in arrayListOf(GwDitaOutputFormats.WEBHELP.format_name,
-            GwDitaOutputFormats.PDF.format_name,
-            GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name,
-            GwDitaOutputFormats.SINGLEHTML.format_name)) {
-            val localOutputDir = "${output_dir}/zip"
-            val downloadableOutputBuildType = BuildType {
-                name = "Build downloadable ${format.replace("_", " ")}"
-                id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
 
-                artifactRules = "${working_dir}/${output_dir} => /"
+        val localOutputDir = "${output_dir}/zip"
+        val downloadableOutputBuildType = BuildType {
+            name = "Build downloadable output"
+            id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
 
-                vcs {
-                    root(teamcityGitRepoId)
-                    cleanCheckout = true
-                }
+            params {
+                select(
+                    "OUTPUT_FORMAT",
+                    "",
+                    "Output format",
+                    options = listOf("Webhelp" to GwDitaOutputFormats.WEBHELP.format_name,
+                        "PDF" to GwDitaOutputFormats.PDF.format_name,
+                        "Webhelp with PDF" to GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name,
+                        "Single-page HTML" to GwDitaOutputFormats.SINGLEHTML.format_name
+                    )
+                )
+            }
 
-                steps {
-                    step(GwBuildSteps.createBuildDitaProjectForBuildsStep(
+            artifactRules = "${working_dir}/${output_dir} => /"
+
+            vcs {
+                root(teamcityGitRepoId)
+                cleanCheckout = true
+            }
+
+            steps {
+                for (format in arrayListOf(GwDitaOutputFormats.WEBHELP.format_name,
+                    GwDitaOutputFormats.PDF.format_name,
+                    GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name,
+                    GwDitaOutputFormats.SINGLEHTML.format_name)) {
+                    val step = GwBuildSteps.createBuildDitaProjectForBuildsStep(
                         format,
                         root_map,
                         index_redirect,
@@ -672,18 +686,22 @@ object Docs {
                         build_filter = build_filter,
                         git_url = git_url,
                         git_branch = git_branch,
-                        for_offline_use = true
-                    ))
-                    step(GwBuildSteps.createZipPackageStep("${working_dir}/${localOutputDir}",
-                        "${working_dir}/${output_dir}"))
+                        for_offline_use = true)
+                    step.conditions {
+                        equals("OUTPUT_FORMAT", format)
+                    }
+                    step(step)
                 }
-
-                features {
-                    feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                }
+                step(GwBuildSteps.createZipPackageStep("${working_dir}/${localOutputDir}",
+                    "${working_dir}/${output_dir}"))
             }
-            ditaBuildTypes.add(downloadableOutputBuildType)
+
+            features {
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
         }
+        ditaBuildTypes.add(downloadableOutputBuildType)
+
 
         if (env_names.contains(GwDeployEnvs.STAGING.env_name)) {
             val stagingBuildTypeIdString =
