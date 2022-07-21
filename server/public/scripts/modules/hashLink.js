@@ -20,7 +20,7 @@ export async function addHashLinks() {
     return idString;
   }
 
-  document.querySelectorAll('.title').forEach((title, index) => {
+  document.querySelectorAll(':not(.card) > .title').forEach((title, index) => {
     if (!isHidden(title) && index !== 0) {
       const id = generateId(title);
       if (!document.getElementById(id)) {
