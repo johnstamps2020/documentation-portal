@@ -1,0 +1,13 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "root": "sbtframeworkcustomization.ditamap",
+      "filter": "GW-Generic-Release.ditaval",
+      "docId": "sbtfwcustomization",
+      "srcId": "sbtfwsrc",
+      "indexRedirect": true
+    }
+  ]
+}

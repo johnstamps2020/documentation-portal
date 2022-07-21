@@ -71,6 +71,10 @@
             {
               "label": "Germany",
               "page": "../globalSolutions/ipg/latest"
+            },
+            {
+              "label": "Standards-based Template Customization",
+              "id": "sbtfwcustomization"
             }
           ]
         }
