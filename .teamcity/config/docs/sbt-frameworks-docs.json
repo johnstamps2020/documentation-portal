@@ -1,0 +1,20 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "sbtfwcustomization",
+      "title": "Standards-based Template Customization",
+      "url": "sbtfw/latest/customization",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["Standards-based Template Framework"],
+        "version": ["latest"]
+      },
+      "environments": ["int", "staging"],
+      "internal": false,
+      "earlyAccess": false,
+      "indexForSearch": true,
+      "public": false
+    }
+  ]
+}
