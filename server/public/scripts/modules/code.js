@@ -1,5 +1,7 @@
 import '../../stylesheets/modules/code.css';
-import { highlightAll } from 'prismjs';
+import 'prismjs';
+import './prism-js-fold.css';
+import './prism-js-fold.js';
 
 function languageIsSet(elem) {
   return !!elem.closest("*[class^='language-'], *[class*=' language-']");
@@ -19,6 +21,6 @@ export function highlightCode() {
   const codeBlocks = document.querySelectorAll('pre');
 
   if (codeBlocks.length > 0) {
-    highlightAll();
+    Prism.highlightAll();
   }
 }

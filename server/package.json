@@ -33,7 +33,6 @@
     "jsonwebtoken": "^8.5.1",
     "node-fetch": "^2.6.7",
     "node-fetch-retry": "^2.0.0",
-    "node-sass-middleware": "1.0.1",
     "openid-client": "^4.9.1",
     "passport": "^0.5.2",
     "passport-saml": "^3.2.1",
