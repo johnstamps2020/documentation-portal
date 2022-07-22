@@ -1363,6 +1363,11 @@ object Content {
                 "."
             ))
         }
+
+        features {
+            feature(GwBuildFeatures.GwSshAgentBuildFeature)
+            feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+        }
     })
 
 }
