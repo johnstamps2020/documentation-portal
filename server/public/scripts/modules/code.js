@@ -1,6 +1,7 @@
 import '../../stylesheets/modules/code.css';
 import 'prismjs';
-import 'prism-js-fold';
+import './prism-js-fold.css';
+import './prism-js-fold.js';
 
 function languageIsSet(elem) {
   return !!elem.closest("*[class^='language-'], *[class*=' language-']");
