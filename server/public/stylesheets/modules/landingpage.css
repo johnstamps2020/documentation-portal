@@ -1,9 +1,14 @@
-section.card {
+.landingpage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.landingpage > section {
     --height: 360px;
     --width: 420px;
     --padding-width: 1rem;
-    display: inline-block;
-    outline: 3px solid #757D82;
+    display: block;
+    outline: 3px solid var(--GW-COLOR-BRAND-1);
     border-radius: 30px;
     margin-right: 40px;
     margin-bottom: 40px;
@@ -13,11 +18,11 @@ section.card {
     overflow: hidden;
 }
 
-section.card .sectiontitle {
+.landingpage > section > .sectiontitle {
     color: #fff;
     position: relative;
     line-height: 1;
-    background-color: gray;
+    background-color: var(--GW-COLOR-BRAND-1);
     top: -1.5rem;
     left: calc(var(--padding-width) * -1);
     width: var(--width);
@@ -25,6 +30,6 @@ section.card .sectiontitle {
     padding: var(--padding-width);
 }
 
-.card .sectiontitle + * {
+.landingpage > section > .sectiontitle + * {
     margin-top: 0;
 }
