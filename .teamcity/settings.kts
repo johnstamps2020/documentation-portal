@@ -1368,7 +1368,10 @@ object Content {
                     while read line; do
                       IFS=':' read -r input filter <<< "${'$'}line"
                       echo ${'$'}input ${'$'}filter
-                      dita -i "${'$'}input" --filter "common-gw/${'$'}filter" -f pdf_Guidewire_remote --git.url %env.GIT_URL% --git.branch %env.GIT_BRANCH%
+                      INPUT_NAME=${'$'}{input%.*}
+                      FILTER_NAME=${'$'}{filter%.*}
+                      OUTPUT_BASE="${'$'}{INPUT_NAME}_${'$'}FILTER_NAME"
+                      dita -i "${'$'}input" --filter "common-gw/${'$'}filter" -f pdf_Guidewire_remote --args.output.base "${'$'}OUTPUT_BASE" --git.url %env.GIT_URL% --git.branch %env.GIT_BRANCH%
                       n=${'$'}((n+1))
                     done < %env.BUILDS_FILE_PARSED%
                 """.trimIndent()
