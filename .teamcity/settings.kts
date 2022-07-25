@@ -1334,7 +1334,7 @@ object Content {
 
         steps {
             script {
-                name = "Get the builds configuration and filter files"
+                name = "Get the builds configuration"
                 scriptContent = """
                     #!/bin/bash
                     set -xe
@@ -1348,12 +1348,11 @@ object Content {
                          -H "Content-Type: application/json" \
                          -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
                                                                                            
-                    mkdir -p ${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}
                     declare -a BUILDS
                     while IFS= read -r -d ${'$'}'\n' builds_json; do
                       root=${'$'}(echo "${'$'}builds_json" | jq -r .root)
                       filter=${'$'}(echo "${'$'}builds_json" | jq -r .filter)
-                      echo "${'$'}root:${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}/${'$'}filter" >> %env.BUILDS_FILE_PARSED%
+                      echo "${'$'}root:${'$'}filter" >> %env.BUILDS_FILE_PARSED%
                     done < <(jq -c '.builds[]' ${'$'}BUILDS_FILE)
                 """.trimIndent()
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -1369,7 +1368,7 @@ object Content {
                     while read line; do
                       IFS=':' read -r input filter <<< "${'$'}line"
                       echo ${'$'}input ${'$'}filter
-                      dita -i ${'$'}input --filter ${'$'}filter -f pdf_Guidewire_remote --git.url %env.GIT_URL% --git.branch %env.GIT_BRANCH%
+                      dita -i "${'$'}input" --filter "common-gw/${'$'}filter" -f pdf_Guidewire_remote --git.url %env.GIT_URL% --git.branch %env.GIT_BRANCH%
                       n=${'$'}((n+1))
                     done < %env.BUILDS_FILE_PARSED%
                 """.trimIndent()
