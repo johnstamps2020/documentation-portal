@@ -1310,16 +1310,21 @@ object Content {
 
         params {
             text(
-                "GIT_URL",
+                "env.GIT_URL",
                 "",
                 label = "Git repo URL",
                 display = ParameterDisplay.PROMPT
             )
             text(
-                "GIT_BRANCH",
+                "env.GIT_BRANCH",
                 "",
                 label = "Git branch name",
                 display = ParameterDisplay.PROMPT
+            )
+            text(
+                "env.BUILDS_FILE_PARSED",
+                "builds.txt",
+                display = ParameterDisplay.HIDDEN
             )
         }
 
@@ -1329,32 +1334,45 @@ object Content {
 
         steps {
             script {
+                name = "Get the builds configuration and filter files"
+                scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                                      
+                    export FULL_REPO_NAME=${'$'}{GIT_URL##*/}
+                    export REPO_NAME=${'$'}{FULL_REPO_NAME%.*}
+                    export BUILDS_FILE="builds.json"
+                    
+                    curl -o ${'$'}BUILDS_FILE https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/${'$'}REPO_NAME/raw/${'$'}BUILDS_FILE?at=%env.GIT_BRANCH% \
+                         -H "Accept: application/json" \
+                         -H "Content-Type: application/json" \
+                         -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
+                                                                                           
+                    mkdir -p ${GwConfigParams.COMMON_GW_DITAVALS_DIR}
+                    declare -a BUILDS
+                    while IFS= read -r -d ${'$'}'\n' builds_json; do
+                      root=${'$'}(echo "${'$'}builds_json" | jq -r .root)
+                      filter=${'$'}(echo "${'$'}builds_json" | jq -r .filter)
+                      echo "${'$'}root:/${GwConfigParams.COMMON_GW_DITAVALS_DIR}/${'$'}filter" >> %env.BUILDS_FILE_PARSED%
+                    done < <(jq -c '.builds[]' ${'$'}BUILDS_FILE)
+                """.trimIndent()
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            }
+            script {
                 name = "Build custom DITA output"
                 id = Helpers.createIdStringFromName(this.name)
                 scriptContent = """
                     #!/bin/bash
                     set -xe
-                                      
-                    export WORKING_DIR="%teamcity.build.workingDir%"                                        
-                    export GIT_CLONE_DIR="git_clone_dir"
-                    git clone --single-branch --branch %GIT_BRANCH% %GIT_URL% ${'$'}WORKING_DIR/${'$'}GIT_CLONE_DIR
-                    
-                    export COMMON_GW_DITAVALS_DIR="${'$'}WORKING_DIR/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}"
-                    mkdir ${'$'}COMMON_GW_DITAVALS_DIR
+                                                                                           
                     declare -a BUILDS
-                    while IFS= read -r -d ${'$'}'\n' builds_json; do
-                      root=${'$'}(echo "${'$'}builds_json" | jq -r .root)
-                      filter=${'$'}(echo "${'$'}builds_json" | jq -r .filter)
-                      echo ${'$'}root ${'$'}filter
-                      cd ${'$'}COMMON_GW_DITAVALS_DIR
-                      echo "Downloading the ditaval file from common-gw submodule"
-                      curl -O https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/common-gw/raw/ditavals/${'$'}{filter} \
-                            -H "Accept: application/json" \
-                            -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
-                      cd ${'$'}WORKING_DIR
-                      dita -i ${'$'}WORKING_DIR/${'$'}root -f --filter ${'$'}COMMON_GW_DITAVALS_DIR/${'$'}filter -f pdf_Guidewire_remote --git.url %GIT_URL% --git.branch %GIT_BRANCH 
-                    done < <(jq -c '.builds[]' ${'$'}GIT_CLONE_DIR/builds.json)
-                    """.trimIndent()
+                    while read line; do
+                      IFS=':' read -r input filter <<< "${'$'}line"
+                      echo ${'$'}input ${'$'}filter
+                      dita -i ${'$'}input --filter ${'$'}filter -f pdf_Guidewire_remote --git.url %env.GIT_URL% --git.branch %env.GIT_BRANCH%
+                      n=${'$'}((n+1))
+                    done < %env.BUILDS_FILE_PARSED%
+                """.trimIndent()
                 dockerImage = GwDockerImages.DITA_OT_3_6_1.image_url
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             }
@@ -1365,7 +1383,6 @@ object Content {
         }
 
         features {
-            feature(GwBuildFeatures.GwSshAgentBuildFeature)
             feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
     })
