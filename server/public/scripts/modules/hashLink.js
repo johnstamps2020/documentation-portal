@@ -20,8 +20,8 @@ export async function addHashLinks() {
     return idString;
   }
 
-  document.querySelectorAll(':not(.card) > .title').forEach((title, index) => {
-    if (!isHidden(title) && index !== 0) {
+  document.querySelectorAll('.title').forEach((title, index) => {
+    if (!isHidden(title) && index !== 0 && !title.parentElement.parentElement.classList.contains('landingpage')) {
       const id = generateId(title);
       if (!document.getElementById(id)) {
         title.setAttribute('id', id);
