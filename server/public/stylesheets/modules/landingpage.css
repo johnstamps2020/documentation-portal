@@ -14,7 +14,6 @@
     margin-bottom: 40px;
     padding: 0 var(--padding-width) var(--padding-width) var(--padding-width);
     width: var(--width);
-    min-height: var(--height);
     overflow: hidden;
 }
 
