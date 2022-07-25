@@ -1379,8 +1379,8 @@ object Content {
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             }
             step(GwBuildSteps.createZipPackageStep(
-                localOutputDir,
-                "."
+                "%teamcity.build.workingDir%/$localOutputDir",
+                "%teamcity.build.workingDir%"
             ))
         }
 
