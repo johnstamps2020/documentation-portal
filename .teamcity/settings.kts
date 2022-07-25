@@ -1348,12 +1348,12 @@ object Content {
                          -H "Content-Type: application/json" \
                          -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
                                                                                            
-                    mkdir -p ${GwConfigParams.COMMON_GW_DITAVALS_DIR}
+                    mkdir -p ${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}
                     declare -a BUILDS
                     while IFS= read -r -d ${'$'}'\n' builds_json; do
                       root=${'$'}(echo "${'$'}builds_json" | jq -r .root)
                       filter=${'$'}(echo "${'$'}builds_json" | jq -r .filter)
-                      echo "${'$'}root:/${GwConfigParams.COMMON_GW_DITAVALS_DIR}/${'$'}filter" >> %env.BUILDS_FILE_PARSED%
+                      echo "${'$'}root:/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}/${'$'}filter" >> %env.BUILDS_FILE_PARSED%
                     done < <(jq -c '.builds[]' ${'$'}BUILDS_FILE)
                 """.trimIndent()
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
