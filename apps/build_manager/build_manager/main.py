@@ -177,6 +177,9 @@ def check_processing_result(func):
 
 
 def get_changed_files(app_config: AppConfig):
+    def normalize_paths(paths: list[str]) -> list[str]:
+        return [p.replace(' ', '%20') for p in paths]
+
     def pull_changes(commit_id: Optional[str] = None, start_at: Optional[int] = None):
         start_number = start_at or 0
         if commit_id:
@@ -223,7 +226,7 @@ def get_changed_files(app_config: AppConfig):
                             is_validation_listener_for_pr and get_changes_from_pull_request()
                     ) or get_latest_change_from_branch()
     _logger.info(f'Number of changes: {len(changed_files)}')
-    return changed_files
+    return normalize_paths(changed_files)
 
 
 @check_processing_result
