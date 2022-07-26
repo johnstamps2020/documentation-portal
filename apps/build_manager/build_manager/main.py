@@ -164,6 +164,10 @@ class ProcessingRecord:
     exit_code: Optional[int] = None
 
 
+def normalize_paths(paths: list[str]) -> list[str]:
+    return [urllib.parse.quote(p, safe='/()%') for p in paths]
+
+
 def check_processing_result(func):
     def wrapper(*args, **kwargs):
         result = func(*args, **kwargs)
@@ -177,9 +181,6 @@ def check_processing_result(func):
 
 
 def get_changed_files(app_config: AppConfig):
-    def normalize_paths(paths: list[str]) -> list[str]:
-        return [p.replace(' ', '%20') for p in paths]
-
     def pull_changes(commit_id: Optional[str] = None, start_at: Optional[int] = None):
         start_number = start_at or 0
         if commit_id:
@@ -226,7 +227,8 @@ def get_changed_files(app_config: AppConfig):
                             is_validation_listener_for_pr and get_changes_from_pull_request()
                     ) or get_latest_change_from_branch()
     _logger.info(f'Number of changes: {len(changed_files)}')
-    return normalize_paths(changed_files)
+    normalized_changed_files = normalize_paths(changed_files)
+    return normalized_changed_files
 
 
 @check_processing_result
@@ -309,7 +311,8 @@ def get_matching_build_resources(app_config: AppConfig, build_type_id: str, buil
                     f'the {app_config.teamcity_resources_artifact_path} artifact')
 
     build_resources = latest_build_resources.json()['resources']
-    return bool(next((build_resource for build_resource in build_resources if
+    normalized_build_resources = normalize_paths(build_resources)
+    return bool(next((build_resource for build_resource in normalized_build_resources if
                       build_resource in changed_resources), False))
 
 
