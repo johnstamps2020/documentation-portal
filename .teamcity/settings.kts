@@ -32,6 +32,7 @@ project {
     subProject(Apps.rootProject)
     subProject(Server.rootProject)
     subProject(Frontend.rootProject)
+    subProject(Custom.rootProject)
 
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
     features.feature(GwProjectFeatures.GwAntennaHouseFormatterServerProjectFeature)
@@ -959,6 +960,105 @@ object Docs {
 
 }
 
+object Custom {
+    val rootProject = createRootProjectForCustom()
+
+    private fun createRootProjectForCustom(): Project {
+        return Project {
+            name = "Custom"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            buildType(BuildCustomDitaOutputBuildType)
+        }
+    }
+
+    object BuildCustomDitaOutputBuildType : BuildType({
+        name = "Build custom DITA output"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        params {
+            text(
+                "env.GIT_URL",
+                "",
+                label = "Git repo URL",
+                display = ParameterDisplay.PROMPT
+            )
+            text(
+                "env.GIT_BRANCH",
+                "",
+                label = "Git branch name",
+                display = ParameterDisplay.PROMPT
+            )
+            text(
+                "env.BUILDS_FILE_PARSED",
+                "builds.txt",
+                display = ParameterDisplay.HIDDEN
+            )
+        }
+
+        val localOutputDir = "out"
+
+        artifactRules = "*.zip => /"
+
+        steps {
+            script {
+                name = "Get the builds configuration"
+                scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                                      
+                    export FULL_REPO_NAME=${'$'}{GIT_URL##*/}
+                    export REPO_NAME=${'$'}{FULL_REPO_NAME%.*}
+                    export BUILDS_FILE="builds.json"
+                    
+                    curl -o ${'$'}BUILDS_FILE https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/${'$'}REPO_NAME/raw/${'$'}BUILDS_FILE?at=%env.GIT_BRANCH% \
+                         -H "Accept: application/json" \
+                         -H "Content-Type: application/json" \
+                         -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
+                                                                                           
+                    declare -a BUILDS
+                    while IFS= read -r -d ${'$'}'\n' builds_json; do
+                      root=${'$'}(echo "${'$'}builds_json" | jq -r .root)
+                      filter=${'$'}(echo "${'$'}builds_json" | jq -r .filter)
+                      echo "${'$'}root:${'$'}filter" >> %env.BUILDS_FILE_PARSED%
+                    done < <(jq -c '.builds[]' ${'$'}BUILDS_FILE)
+                """.trimIndent()
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            }
+            script {
+                name = "Build custom DITA output"
+                id = Helpers.createIdStringFromName(this.name)
+                scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                                                                                           
+                    declare -a BUILDS
+                    while read line; do
+                      IFS=':' read -r input filter <<< "${'$'}line"
+                      echo ${'$'}input ${'$'}filter
+                      INPUT_NAME=${'$'}{input%.*}
+                      FILTER_NAME=${'$'}{filter%.*}
+                      OUTPUT_SUBDIR="${'$'}{INPUT_NAME}_${'$'}FILTER_NAME"
+                      dita -i "${'$'}input" --filter "common-gw/${'$'}filter" -f pdf_Guidewire_remote -o "$localOutputDir/${'$'}OUTPUT_SUBDIR" --git.url %env.GIT_URL% --git.branch %env.GIT_BRANCH%
+                      n=${'$'}((n+1))
+                    done < %env.BUILDS_FILE_PARSED%
+                """.trimIndent()
+                dockerImage = GwDockerImages.DITA_OT_3_6_1.image_url
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            }
+            step(GwBuildSteps.createZipPackageStep(
+                "%teamcity.build.workingDir%/$localOutputDir",
+                "%teamcity.build.workingDir%"
+            ))
+        }
+
+        features {
+            feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+        }
+    })
+
+}
+
 object Content {
     val rootProject = createRootProjectForContent()
 
@@ -973,7 +1073,6 @@ object Content {
             subProject(createDeployServerConfigProject())
             subProject(createDeploySearchServiceProject())
             buildType(UploadPdfsForEscrowBuildType)
-            buildType(BuildCustomDitaOutputBuildType)
         }
     }
 
@@ -1301,91 +1400,6 @@ object Content {
                     aws s3 cp "${tmpDir}/${zipArchiveName}" s3://tenant-doctools-int-builds/escrow/%env.RELEASE_NAME%/
             """.trimIndent()
             }
-        }
-    })
-
-    object BuildCustomDitaOutputBuildType : BuildType({
-        name = "Build custom DITA output"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-        params {
-            text(
-                "env.GIT_URL",
-                "",
-                label = "Git repo URL",
-                display = ParameterDisplay.PROMPT
-            )
-            text(
-                "env.GIT_BRANCH",
-                "",
-                label = "Git branch name",
-                display = ParameterDisplay.PROMPT
-            )
-            text(
-                "env.BUILDS_FILE_PARSED",
-                "builds.txt",
-                display = ParameterDisplay.HIDDEN
-            )
-        }
-
-        val localOutputDir = "out"
-
-        artifactRules = "*.zip => /"
-
-        steps {
-            script {
-                name = "Get the builds configuration"
-                scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                                      
-                    export FULL_REPO_NAME=${'$'}{GIT_URL##*/}
-                    export REPO_NAME=${'$'}{FULL_REPO_NAME%.*}
-                    export BUILDS_FILE="builds.json"
-                    
-                    curl -o ${'$'}BUILDS_FILE https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/${'$'}REPO_NAME/raw/${'$'}BUILDS_FILE?at=%env.GIT_BRANCH% \
-                         -H "Accept: application/json" \
-                         -H "Content-Type: application/json" \
-                         -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
-                                                                                           
-                    declare -a BUILDS
-                    while IFS= read -r -d ${'$'}'\n' builds_json; do
-                      root=${'$'}(echo "${'$'}builds_json" | jq -r .root)
-                      filter=${'$'}(echo "${'$'}builds_json" | jq -r .filter)
-                      echo "${'$'}root:${'$'}filter" >> %env.BUILDS_FILE_PARSED%
-                    done < <(jq -c '.builds[]' ${'$'}BUILDS_FILE)
-                """.trimIndent()
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            }
-            script {
-                name = "Build custom DITA output"
-                id = Helpers.createIdStringFromName(this.name)
-                scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                                                                                           
-                    declare -a BUILDS
-                    while read line; do
-                      IFS=':' read -r input filter <<< "${'$'}line"
-                      echo ${'$'}input ${'$'}filter
-                      INPUT_NAME=${'$'}{input%.*}
-                      FILTER_NAME=${'$'}{filter%.*}
-                      OUTPUT_SUBDIR="${'$'}{INPUT_NAME}_${'$'}FILTER_NAME"
-                      dita -i "${'$'}input" --filter "common-gw/${'$'}filter" -f pdf_Guidewire_remote -o "$localOutputDir/${'$'}OUTPUT_SUBDIR" --git.url %env.GIT_URL% --git.branch %env.GIT_BRANCH%
-                      n=${'$'}((n+1))
-                    done < %env.BUILDS_FILE_PARSED%
-                """.trimIndent()
-                dockerImage = GwDockerImages.DITA_OT_3_6_1.image_url
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            }
-            step(GwBuildSteps.createZipPackageStep(
-                "%teamcity.build.workingDir%/$localOutputDir",
-                "%teamcity.build.workingDir%"
-            ))
-        }
-
-        features {
-            feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
     })
 
