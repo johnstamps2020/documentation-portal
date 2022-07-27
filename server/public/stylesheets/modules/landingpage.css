@@ -8,7 +8,7 @@
     --width: 420px;
     --section-padding-top-width: 0;
     --section-padding-right-width: 1rem;
-    --section-padding-bottom-width: 0;
+    --section-padding-bottom-width: .5rem;
     --section-padding-left-width: 1rem;
     display: block;
     outline: 3px solid var(--GW-COLOR-BRAND-1);
