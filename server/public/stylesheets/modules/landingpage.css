@@ -1,6 +1,9 @@
 .landingpage {
+    --card-width: 420px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: var(--card-width) var(--card-width);
+    grid-gap: 2.5rem;
+    
 }
 
 .landingpage > section {
@@ -8,16 +11,15 @@
     --width: 420px;
     --section-padding-top-width: 0;
     --section-padding-right-width: 1rem;
-    --section-padding-bottom-width: .5rem;
+    --section-padding-bottom-width: .75rem;
     --section-padding-left-width: 1rem;
     display: block;
-    outline: 3px solid var(--GW-COLOR-BRAND-1);
+    outline: 2px solid var(--GW-COLOR-BRAND-1);
     outline-offset: -1px;
     border-radius: 30px;
-    margin-right: 40px;
-    margin-bottom: 40px;
+    margin: 0;
     padding: var(--section-padding-top-width) var(--section-padding-right-width) var(--section-padding-bottom-width) var(--section-padding-left-width);
-    width: var(--width);
+    width: var(--card-width);
     overflow: hidden;
 }
 
@@ -28,13 +30,13 @@
     background-color: var(--GW-COLOR-BRAND-1);
     top: -1.5rem;
     left: calc(var(--section-padding-left-width) * -1);
-    width: calc(var(--width) + (var(--section-padding-left-width) + var(--section-padding-right-width)));
+    width: calc(var(--card-width) + (var(--section-padding-left-width) + var(--section-padding-right-width)));
     margin-bottom: -1rem !important;
     padding: 1rem;
 }
 
 .landingpage > section > .sectiontitle + * {
-    margin-top: 0;
+    margin-top: .25rem;
 }
 
 .landingpage .sectiontitle ~ * {
