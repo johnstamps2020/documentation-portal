@@ -27,8 +27,8 @@
     line-height: 1;
     background-color: var(--GW-COLOR-BRAND-1);
     top: -1.5rem;
-    left: calc(var(----section-padding-left-width) * -1);
-    width: calc(var(--width) + (var(----section-padding-left-width) + var(----section-padding-right-width)));
+    left: calc(var(--section-padding-left-width) * -1);
+    width: calc(var(--width) + (var(--section-padding-left-width) + var(--section-padding-right-width)));
     margin-bottom: -1rem !important;
     padding: 1rem;
 }
@@ -38,7 +38,7 @@
 }
 
 .landingpage .sectiontitle ~ * {
-    padding-left: var(----section-padding-left-width);
+    padding-left: var(--section-padding-left-width);
 }
 
 .landingpage > section *:last-child {
