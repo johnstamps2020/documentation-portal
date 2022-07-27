@@ -30,23 +30,23 @@
 }
 
 .landingpage > section > .sectiontitle {
-    color: #fff;
+    --section-title-margin-left: .25rem;
+    --section-title-padding-left: .5rem;
+    color: var(--GW-COLOR-BRAND-1);
     position: relative;
-    line-height: 1;
-    background-color: var(--GW-COLOR-BRAND-1);
-    top: -1.5rem;
-    left: calc(var(--section-padding-left-width) * -1);
-    width: calc(var(--card-width) + (var(--section-padding-left-width) + var(--section-padding-right-width)));
-    margin-bottom: -1rem !important;
-    padding: 1rem;
+    margin-top: 0.5rem !important;
+    margin-right: .25rem;
+    margin-bottom: .5rem !important;
+    margin-left: var(--section-title-margin-left);
+    padding-left: var(--section-title-padding-left);
 }
 
 .landingpage > section > .sectiontitle + * {
-    margin-top: .25rem;
+    margin-top: 0;
 }
 
 .landingpage .sectiontitle ~ * {
-    padding-left: var(--section-padding-left-width);
+    padding-left: calc(var(--section-title-margin-left) + var(--section-padding-left-width) * 2);
 }
 
 .landingpage > section *:last-child {
