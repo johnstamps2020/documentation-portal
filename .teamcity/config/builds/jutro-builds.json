@@ -579,6 +579,12 @@
       "srcId": "srcjutro820",
       "nodeImageVersion": "17.6.0",
       "workingDir": "storybook"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "jutroa11yapp",
+      "srcId": "srcjutroa11yapp",
+      "nodeImageVersion": "16.14.2"
     }
   ]
 }
