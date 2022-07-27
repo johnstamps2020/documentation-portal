@@ -1,6 +1,7 @@
 .landingpage {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 420px 420px;
+    grid-gap: 2.5rem;
 }
 
 .landingpage > section {
@@ -14,8 +15,7 @@
     outline: 2px solid var(--GW-COLOR-BRAND-1);
     outline-offset: -1px;
     border-radius: 30px;
-    margin-right: 40px;
-    margin-bottom: 40px;
+    margin: 0;
     padding: var(--section-padding-top-width) var(--section-padding-right-width) var(--section-padding-bottom-width) var(--section-padding-left-width);
     width: var(--width);
     overflow: hidden;
