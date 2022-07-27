@@ -6,6 +6,12 @@
     
 }
 
+@media screen and (max-width: 1270px) {
+    .landingpage {
+        grid-template-columns: 420px;
+    }
+}
+
 .landingpage > section {
     --height: 360px;
     --width: 420px;
