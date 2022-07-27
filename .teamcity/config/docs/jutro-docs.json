@@ -1290,6 +1290,23 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "jutroa11yapp",
+      "title": "Jutro a11y app",
+      "url": "jutro/a11y/latest",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }
