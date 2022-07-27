@@ -6,14 +6,17 @@
 .landingpage > section {
     --height: 360px;
     --width: 420px;
-    --padding-width: 1rem;
+    --section-padding-top-width: 0;
+    --section-padding-right-width: 1rem;
+    --section-padding-bottom-width: 0;
+    --section-padding-left-width: 1rem;
     display: block;
     outline: 3px solid var(--GW-COLOR-BRAND-1);
     outline-offset: -1px;
     border-radius: 30px;
     margin-right: 40px;
     margin-bottom: 40px;
-    padding: 0 var(--padding-width) var(--padding-width) var(--padding-width);
+    padding: var(--section-padding-top-width) var(--section-padding-right-width) var(--section-padding-bottom-width) var(--section-padding-left-width);
     width: var(--width);
     overflow: hidden;
 }
@@ -24,12 +27,21 @@
     line-height: 1;
     background-color: var(--GW-COLOR-BRAND-1);
     top: -1.5rem;
-    left: calc(var(--padding-width) * -1);
-    width: var(--width);
-    margin-bottom: 0rem !important;
-    padding: var(--padding-width);
+    left: calc(var(----section-padding-left-width) * -1);
+    width: calc(var(--width) + (var(----section-padding-left-width) + var(----section-padding-right-width)));
+    margin-bottom: -1rem !important;
+    padding: 1rem;
 }
 
 .landingpage > section > .sectiontitle + * {
     margin-top: 0;
+}
+
+.landingpage .sectiontitle ~ * {
+    padding-left: var(----section-padding-left-width);
+}
+
+.landingpage > section *:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
