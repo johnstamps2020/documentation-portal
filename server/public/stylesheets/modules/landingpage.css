@@ -13,7 +13,6 @@
 }
 
 .landingpage > section {
-    --height: 360px;
     --width: 420px;
     --section-padding-top-width: 0;
     --section-padding-right-width: 1rem;
@@ -30,15 +29,12 @@
 }
 
 .landingpage > section > .sectiontitle {
-    --section-title-margin-left: .25rem;
-    --section-title-padding-left: .5rem;
     color: var(--GW-COLOR-BRAND-1);
     position: relative;
-    margin-top: 0.5rem !important;
-    margin-right: .25rem;
+    margin-top: .5rem !important;
     margin-bottom: .5rem !important;
-    margin-left: var(--section-title-margin-left);
-    padding-left: var(--section-title-padding-left);
+    padding-left: .5rem;
+    border-bottom: 2px solid var(--GW-COLOR-BRAND-1);
 }
 
 .landingpage > section > .sectiontitle + * {
@@ -46,7 +42,7 @@
 }
 
 .landingpage .sectiontitle ~ * {
-    padding-left: calc(var(--section-title-margin-left) + var(--section-padding-left-width) * 2);
+    padding-left: var(--section-padding-left-width);
 }
 
 .landingpage > section *:last-child {
