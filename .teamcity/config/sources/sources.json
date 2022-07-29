@@ -1017,7 +1017,7 @@
       "title": "InsuranceSuite Extras",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-extras.git",
-      "branch": "master"
+      "branch": "main"
     },
     {
       "id": "livepredictsrc",
