@@ -10,6 +10,11 @@
     <% } %>
     <a href="/cloud/standards/latest">Guidewire Cloud Standards</a>
     <a href="/upgradediffs">Upgrade Diff Reports</a>
+    <% if (deployEnv === 'int') { %>
+      <a href="/implementation-resources/latest"
+      >SurePath Implementation Resources</a
+      >
+    <% } %>
   </div>
   <% if (pageContent.title.toLowerCase() === 'elysian') { %>
   <div class="categoryCard cardShadow">

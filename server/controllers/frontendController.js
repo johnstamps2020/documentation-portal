@@ -67,8 +67,8 @@ function setL10nParams(pageClass) {
 
 async function fetchConfigFileForLandingPage(req) {
   let reqPath = req.path === '/' ? '' : req.path;
-  if ( reqPath.slice(-1) === '/' ) {
-      reqPath = reqPath.slice(0, -1);
+  if (reqPath.slice(-1) === '/') {
+    reqPath = reqPath.slice(0, -1);
   }
 
   const configFilePath = new URL(
@@ -90,6 +90,7 @@ async function getPage(req, res, next) {
         hasGuidewireEmail: hasGuidewireEmail,
         pagePath: req.path.endsWith('/') ? req.path : `${req.path}/`,
         localizationInfo: setL10nParams(fileContentsJson.class),
+        deployEnv: process.env.DEPLOY_ENV.toLowerCase(),
       });
     } else {
       next();
