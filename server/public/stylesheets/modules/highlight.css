@@ -1,3 +1,7 @@
+mark {
+  background-color: #FFFF00 !important;
+}
+
 .noHighlight mark {
   background-color: transparent;
 }
