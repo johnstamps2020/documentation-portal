@@ -53,6 +53,14 @@
           "id": "dataplatform"
         },
         {
+          "label": "DataHub",
+          "page": "dhGwCloud/2022.09"
+        },
+        {
+          "label": "InfoCenter",
+          "page": "icGwCloud/2022.09"
+        },
+        {
           "label": "Canvas",
           "id": "canvas"
         },

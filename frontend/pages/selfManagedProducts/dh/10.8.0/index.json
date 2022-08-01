@@ -1,19 +1,19 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "InfoCenter 10.6.0",
+  "title": "DataHub 10.8.0",
   "class": "twoColumns",
   "template": "page",
   "selector": {
     "label": "Select release",
-    "selectedItem": "10.6.0",
+    "selectedItem": "10.8.0",
     "items": [
-      {
-        "label": "10.8.0",
-        "page": "../10.8.0"
-      },
       {
         "label": "10.7.0",
         "page": "../10.7.0"
+      },
+      {
+        "label": "10.6.0",
+        "page": "../10.6.0"
       },
       {
         "label": "10.5.0",
@@ -21,15 +21,15 @@
       },
       {
         "label": "10.4.0",
-        "id": "ic1040"
+        "id": "dh1040"
       },
       {
         "label": "10.3.0",
-        "id": "ic1030"
+        "id": "dh1030"
       },
       {
         "label": "10.2.0",
-        "id": "ic1020"
+        "id": "dh1020"
       }
     ]
   },
@@ -40,7 +40,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "ic1060rn"
+          "id": "dh1080rn"
         }
       ]
     },
@@ -50,15 +50,7 @@
       "items": [
         {
           "label": "Product Guide",
-          "id": "ic1060product"
-        },
-        {
-          "label": "BI Applications Guide",
-          "id": "ic1060biapp"
-        },
-        {
-          "label": "Reports Guide",
-          "id": "ic1060reports"
+          "id": "dh1080product"
         }
       ]
     },
@@ -68,11 +60,11 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "ic1060install"
+          "id": "dh1080install"
         },
         {
           "label": "Upgrade Guide",
-          "id": "ic1060upgrade"
+          "id": "dh1080upgrade"
         }
       ]
     },
@@ -82,11 +74,11 @@
       "items": [
         {
           "label": "Configuration Guide",
-          "id": "ic1060config"
+          "id": "dh1080config"
         },
         {
           "label": "Data Specifications Guide",
-          "id": "ic1060dataspec"
+          "id": "dh1080dataspec"
         }
       ]
     },
@@ -96,7 +88,7 @@
       "items": [
         {
           "label": "Administration Guide",
-          "id": "ic1060admin"
+          "id": "dh1080admin"
         }
       ]
     },
@@ -106,7 +98,7 @@
       "items": [
         {
           "label": "Developer Reference",
-          "id": "ic1060devref"
+          "id": "dh1080devref"
         }
       ]
     }

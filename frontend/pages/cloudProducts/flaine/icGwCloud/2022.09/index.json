@@ -1,35 +1,15 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "InfoCenter 10.6.0",
-  "class": "twoColumns",
+  "title": "InfoCenter for Guidewire Cloud 2022.09",
   "template": "page",
+  "class": "twoColumns",
   "selector": {
-    "label": "Select release",
-    "selectedItem": "10.6.0",
+    "label": "Select product",
+    "selectedItem": "InfoCenter for Guidewire Cloud 2022.09",
     "items": [
       {
-        "label": "10.8.0",
-        "page": "../10.8.0"
-      },
-      {
-        "label": "10.7.0",
-        "page": "../10.7.0"
-      },
-      {
-        "label": "10.5.0",
-        "page": "../10.5.0"
-      },
-      {
-        "label": "10.4.0",
-        "id": "ic1040"
-      },
-      {
-        "label": "10.3.0",
-        "id": "ic1030"
-      },
-      {
-        "label": "10.2.0",
-        "id": "ic1020"
+        "label": "DataHub for Guidewire Cloud 2022.09",
+        "page": "../../dhGwCloud/2022.09"
       }
     ]
   },
@@ -40,7 +20,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "ic1060rn"
+          "id": "icrn202209"
         }
       ]
     },
@@ -50,15 +30,15 @@
       "items": [
         {
           "label": "Product Guide",
-          "id": "ic1060product"
+          "id": "icproduct202209"
         },
         {
           "label": "BI Applications Guide",
-          "id": "ic1060biapp"
+          "id": "icbiapp202209"
         },
         {
           "label": "Reports Guide",
-          "id": "ic1060reports"
+          "id": "icreports202209"
         }
       ]
     },
@@ -68,11 +48,11 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "ic1060install"
+          "id": "icinstall202209"
         },
         {
           "label": "Upgrade Guide",
-          "id": "ic1060upgrade"
+          "id": "icupgrade202209"
         }
       ]
     },
@@ -82,11 +62,11 @@
       "items": [
         {
           "label": "Configuration Guide",
-          "id": "ic1060config"
+          "id": "icconfig202209"
         },
         {
           "label": "Data Specifications Guide",
-          "id": "ic1060dataspec"
+          "id": "icdataspec202209"
         }
       ]
     },
@@ -96,7 +76,7 @@
       "items": [
         {
           "label": "Administration Guide",
-          "id": "ic1060admin"
+          "id": "icadmin202209"
         }
       ]
     },
@@ -106,7 +86,7 @@
       "items": [
         {
           "label": "Developer Reference",
-          "id": "ic1060devref"
+          "id": "icdevref202209"
         }
       ]
     }
