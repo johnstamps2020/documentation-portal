@@ -1,0 +1,329 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dhrn202209",
+      "title": "Release Notes",
+      "url": "cloud/dh/202209/releasenotes",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dhproduct202209",
+      "title": "Product Guide",
+      "url": "cloud/dh/202209/product",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dhinstall202209",
+      "title": "Installation Guide",
+      "url": "cloud/dh/202209/install",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dhupgrade202209",
+      "title": "Upgrade Guide",
+      "url": "cloud/dh/202209/upgrade",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dhconfig202209",
+      "title": "Configuration Guide",
+      "url": "cloud/dh/202209/config",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dhdataspec202209",
+      "title": "Data Specifications Guide",
+      "url": "cloud/dh/202209/dataspec",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dhadmin202209",
+      "title": "Administration Guide",
+      "url": "cloud/dh/202209/admin",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dhdevref202209",
+      "title": "Developer Reference",
+      "url": "cloud/dh/202209/devref",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icrn202209",
+      "title": "Release Notes",
+      "url": "cloud/ic/202209/releasenotes",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icproduct202209",
+      "title": "Product Guide",
+      "url": "cloud/ic/202209/product",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icinstall202209",
+      "title": "Installation Guide",
+      "url": "cloud/ic/202209/install",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icupgrade202209",
+      "title": "Upgrade Guide",
+      "url": "cloud/ic/202209/upgrade",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icconfig202209",
+      "title": "Configuration Guide",
+      "url": "cloud/ic/202209/config",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icdataspec202209",
+      "title": "Data Specifications Guide",
+      "url": "cloud/ic/202209/dataspec",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icadmin202209",
+      "title": "Administration Guide",
+      "url": "cloud/ic/202209/admin",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icbiapp202209",
+      "title": "BI Applications Guide",
+      "url": "cloud/ic/202209/biapp",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icreports202209",
+      "title": "Reports Guide",
+      "url": "cloud/ic/202209/reports",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "icdevref202209",
+      "title": "Developer Reference",
+      "url": "cloud/ic/202209/devref",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

@@ -1,19 +1,19 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "InfoCenter 10.6.0",
+  "title": "InfoCenter 10.8.0",
   "class": "twoColumns",
   "template": "page",
   "selector": {
     "label": "Select release",
-    "selectedItem": "10.6.0",
+    "selectedItem": "10.8.0",
     "items": [
-      {
-        "label": "10.8.0",
-        "page": "../10.8.0"
-      },
       {
         "label": "10.7.0",
         "page": "../10.7.0"
+      },
+      {
+        "label": "10.6.0",
+        "page": "../10.6.0"
       },
       {
         "label": "10.5.0",
@@ -40,7 +40,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "ic1060rn"
+          "id": "ic1080rn"
         }
       ]
     },
@@ -50,15 +50,15 @@
       "items": [
         {
           "label": "Product Guide",
-          "id": "ic1060product"
+          "id": "ic1080product"
         },
         {
           "label": "BI Applications Guide",
-          "id": "ic1060biapp"
+          "id": "ic1080biapp"
         },
         {
           "label": "Reports Guide",
-          "id": "ic1060reports"
+          "id": "ic1080reports"
         }
       ]
     },
@@ -68,11 +68,11 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "ic1060install"
+          "id": "ic1080install"
         },
         {
           "label": "Upgrade Guide",
-          "id": "ic1060upgrade"
+          "id": "ic1080upgrade"
         }
       ]
     },
@@ -82,11 +82,11 @@
       "items": [
         {
           "label": "Configuration Guide",
-          "id": "ic1060config"
+          "id": "ic1080config"
         },
         {
           "label": "Data Specifications Guide",
-          "id": "ic1060dataspec"
+          "id": "ic1080dataspec"
         }
       ]
     },
@@ -96,7 +96,7 @@
       "items": [
         {
           "label": "Administration Guide",
-          "id": "ic1060admin"
+          "id": "ic1080admin"
         }
       ]
     },
@@ -106,7 +106,7 @@
       "items": [
         {
           "label": "Developer Reference",
-          "id": "ic1060devref"
+          "id": "ic1080devref"
         }
       ]
     }
