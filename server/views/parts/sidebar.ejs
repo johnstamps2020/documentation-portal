@@ -1,27 +1,33 @@
+<%
+const deployEnvLocal = typeof deployEnv !== 'undefined' ? deployEnv : ''
+%>
+
 <div class="sidebar">
-  <div class="categoryCard cardShadow">
-    <div class="label">Developer Resources</div>
-    <% if (pageContent.title.toLowerCase() === 'flaine') { %>
-    <a href="/testingFramework/flaine">Guidewire Testing</a>
-    <% } %> <% if (pageContent.title.toLowerCase() === 'elysian') { %>
-    <a href="/testingFramework/elysian">Guidewire Testing</a>
-    <% } %> <% if (pageContent.title.toLowerCase() !== 'api references') { %>
-    <a href="/apiReferences">API References</a>
+    <div class="categoryCard cardShadow">
+        <div class="label">Developer Resources</div>
+        <% if (pageContent.title.toLowerCase() === 'flaine') { %>
+            <a href="/testingFramework/flaine">Guidewire Testing</a>
+        <% } %>
+        <% if (pageContent.title.toLowerCase() === 'elysian') { %>
+            <a href="/testingFramework/elysian">Guidewire Testing</a>
+        <% } %>
+        <% if (pageContent.title.toLowerCase() !== 'api references') { %>
+            <a href="/apiReferences">API References</a>
+        <% } %>
+        <a href="/cloud/standards/latest">Guidewire Cloud Standards</a>
+        <a href="/upgradediffs">Upgrade Diff Reports</a>
+        <% if (deployEnvLocal === 'int') { %>
+            <a href="/implementation-resources/latest"
+            >SurePath Implementation Resources</a
+            >
+        <% } %>
+    </div>
+    <% if (pageContent.title.toLowerCase() === 'elysian') { %>
+        <div class="categoryCard cardShadow">
+            <div class="label">Feature Preview</div>
+            <a href="/cloudProducts/elysian/featurePreview"
+            >Early Access Documentation</a
+            >
+        </div>
     <% } %>
-    <a href="/cloud/standards/latest">Guidewire Cloud Standards</a>
-    <a href="/upgradediffs">Upgrade Diff Reports</a>
-    <% if (deployEnv === 'int') { %>
-      <a href="/implementation-resources/latest"
-      >SurePath Implementation Resources</a
-      >
-    <% } %>
-  </div>
-  <% if (pageContent.title.toLowerCase() === 'elysian') { %>
-  <div class="categoryCard cardShadow">
-    <div class="label">Feature Preview</div>
-    <a href="/cloudProducts/elysian/featurePreview"
-      >Early Access Documentation</a
-    >
-  </div>
-  <% } %>
 </div>
