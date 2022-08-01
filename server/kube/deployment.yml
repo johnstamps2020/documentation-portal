@@ -177,6 +177,8 @@ spec:
               value: 'yes'
             - name: ENABLE_AUTH
               value: 'yes'
+            - name: DEPLOY_ENV
+              value: '${DEPLOY_ENV}'
             - name: JIRA_AUTH_TOKEN
               valueFrom:
                 secretKeyRef:
