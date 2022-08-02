@@ -1,0 +1,106 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "DataHub 10.8.0",
+  "class": "twoColumns",
+  "template": "page",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "10.8.0",
+    "items": [
+      {
+        "label": "10.7.0",
+        "page": "../10.7.0"
+      },
+      {
+        "label": "10.6.0",
+        "page": "../10.6.0"
+      },
+      {
+        "label": "10.5.0",
+        "page": "../10.5.0"
+      },
+      {
+        "label": "10.4.0",
+        "id": "dh1040"
+      },
+      {
+        "label": "10.3.0",
+        "id": "dh1030"
+      },
+      {
+        "label": "10.2.0",
+        "id": "dh1020"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dh1080rn"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Product Guide",
+          "id": "dh1080product"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dh1080install"
+        },
+        {
+          "label": "Upgrade Guide",
+          "id": "dh1080upgrade"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration Guide",
+          "id": "dh1080config"
+        },
+        {
+          "label": "Data Specifications Guide",
+          "id": "dh1080dataspec"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "dh1080admin"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer Reference",
+          "id": "dh1080devref"
+        }
+      ]
+    }
+  ]
+}

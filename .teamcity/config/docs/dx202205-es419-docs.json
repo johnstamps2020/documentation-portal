@@ -1,0 +1,131 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dx202205es419ceamapp",
+      "title": "Application Guide es-419",
+      "url": "cloud/dx/es-419/ce-am/202205/app",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202205es419ceclaimsapp",
+      "title": "Application Guide es-419",
+      "url": "cloud/dx/es-419/ce-claims/202205/app",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202205es419ceqbapp",
+      "title": "Application Guide es-419",
+      "url": "cloud/dx/es-419/ce-qb/202205/app",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202205es419peapp",
+      "title": "Application Guide es-419",
+      "url": "cloud/dx/es-419/pe/202205/app",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202205es419peclaimsapp",
+      "title": "Application Guide es-419",
+      "url": "cloud/dx/es-419/pe-claims/202205/app",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202205es419sreapp",
+      "title": "Application Guide es-419",
+      "url": "cloud/dx/es-419/sre/202205/app",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202205es419veapp",
+      "title": "Application Guide es-419",
+      "url": "cloud/dx/es-419/ve/202205/app",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

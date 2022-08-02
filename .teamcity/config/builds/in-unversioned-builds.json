@@ -4,7 +4,23 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "ConsumerServicePReleaseNotes20222x.ditamap",
+      "root": "API_Modernization.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "inapimodernization",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "CustomAPI.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "inapidevelopment",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "INowServicePortalReleaseNotes20222Flaine.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp20222rn",
       "indexRedirect": true
@@ -12,7 +28,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "ConsumerServicePReleaseNotes20221x.ditamap",
+      "root": "INowServicePortalReleaseNotes20221Elysian.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp20221rn",
       "indexRedirect": true
@@ -20,17 +36,17 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "ConsumerServicePortalReleaseNotes20211.ditamap",
+      "root": "INowServicePortalReleaseNotes20212Dobson.ditamap",
       "srcId": "inunversionedsrc",
-      "docId": "incsp20211rn",
+      "docId": "incsp4rn",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "ConsumerServicePortalReleaseNotesV4.ditamap",
+      "root": "INowServicePortalReleaseNotes20211Cortina.ditamap",
       "srcId": "inunversionedsrc",
-      "docId": "incsp4rn",
+      "docId": "incsp20211rn",
       "indexRedirect": true
     },
     {
@@ -108,7 +124,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "INStudioReleaseNotes20222.ditamap",
+      "root": "INowStudioReleaseNotes20222Flaine.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20222studiorn",
       "indexRedirect": true
@@ -116,73 +132,33 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "INStudioReleaseNotes20221.ditamap",
+      "root": "INowStudioReleaseNotes20221Elysian.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20221studiorn",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "INStudioReleaseNotes20212.ditamap",
-      "srcId": "inunversionedsrc",
-      "docId": "in20212xstudiorndraft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "INStudioReleaseNotes20212.ditamap",
+      "root": "INowStudioReleaseNotes20212Dobson.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20212studiorn",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "INStudioReleaseNotes20211.ditamap",
-      "srcId": "inunversionedsrc",
-      "docId": "in20211xstudiorndraft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "INStudioReleaseNotes20211.ditamap",
+      "root": "INowStudioReleaseNotes20211Cortina.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20211studiorn",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "INStudioReleaseNotes20202.ditamap",
-      "srcId": "inunversionedsrc",
-      "docId": "in20202xstudiorndraft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "INStudioReleaseNotes20202.ditamap",
+      "root": "INowStudioReleaseNotes20202Banff.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20202studiorn",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "INStudioReleaseNotes20201.ditamap",
-      "srcId": "inunversionedsrc",
-      "docId": "in20201xstudiorndraft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "INStudioReleaseNotes20201.ditamap",
-      "srcId": "inunversionedsrc",
-      "docId": "in20201studiorn",
       "indexRedirect": true
     },
     {
@@ -196,37 +172,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "InsuranceNowReleaseNotes20212.ditamap",
-      "srcId": "inunversionedsrc",
-      "docId": "in20212rn",
-      "indexRedirect": true,
-      "resources": [
-        {
-          "targetFolder": "ReleaseNotes/2021.2.x/ChangedFiles",
-          "sourceFolder": "ChangedFiles/2021.2",
-          "srcId": "insurancenowextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "InsuranceNowReleaseNotes20212.ditamap",
-      "srcId": "inunversionedsrc",
-      "docId": "in20212xrndraft",
-      "indexRedirect": true,
-      "resources": [
-        {
-          "targetFolder": "ReleaseNotes/2021.2.x/ChangedFiles",
-          "sourceFolder": "ChangedFiles/2021.2",
-          "srcId": "insurancenowextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "InsuranceNowReleaseNotes20222.ditamap",
+      "root": "INowCoreReleaseNotes20222Flaine.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20222rn",
       "indexRedirect": true,
@@ -241,7 +187,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "InsuranceNowReleaseNotes20221.ditamap",
+      "root": "INowCoreReleaseNotes20221Elysian.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20221rn",
       "indexRedirect": true,
@@ -256,7 +202,22 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "InsuranceNowReleaseNotes20211.ditamap",
+      "root": "INowCoreReleaseNotes20212Dobson.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20212rn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2021.2.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2021.2",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "INowCoreReleaseNotes20211Cortina.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20211rn",
       "indexRedirect": true,
@@ -270,23 +231,8 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "InsuranceNowReleaseNotes20211.ditamap",
-      "srcId": "inunversionedsrc",
-      "docId": "in20211xrndraft",
-      "indexRedirect": true,
-      "resources": [
-        {
-          "targetFolder": "ReleaseNotes/2021.1.x/ChangedFiles",
-          "sourceFolder": "ChangedFiles/2021.1",
-          "srcId": "insurancenowextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "InsuranceNowReleaseNotes20202.ditamap",
+      "root": "INowCoreReleaseNotes20202Banff.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20202rn",
       "indexRedirect": true,
@@ -294,51 +240,6 @@
         {
           "targetFolder": "ReleaseNotes/2020.2.x/ChangedFiles",
           "sourceFolder": "ChangedFiles/2020.2",
-          "srcId": "insurancenowextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "InsuranceNowReleaseNotes20202.ditamap",
-      "srcId": "inunversionedsrc",
-      "docId": "in20202xrndraft",
-      "indexRedirect": true,
-      "resources": [
-        {
-          "targetFolder": "ReleaseNotes/2020.2.x/ChangedFiles",
-          "sourceFolder": "ChangedFiles/2020.2",
-          "srcId": "insurancenowextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "InsuranceNowReleaseNotes20201.ditamap",
-      "srcId": "inunversionedsrc",
-      "docId": "in20201rn",
-      "indexRedirect": true,
-      "resources": [
-        {
-          "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
-          "sourceFolder": "ChangedFiles/2020.1",
-          "srcId": "insurancenowextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "InsuranceNowReleaseNotes20201.ditamap",
-      "srcId": "inunversionedsrc",
-      "docId": "in20201xrndraft",
-      "indexRedirect": true,
-      "resources": [
-        {
-          "targetFolder": "ReleaseNotes/2020.1.x/ChangedFiles",
-          "sourceFolder": "ChangedFiles/2020.1",
           "srcId": "insurancenowextrassrc"
         }
       ]

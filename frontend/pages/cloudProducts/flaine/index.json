@@ -53,6 +53,14 @@
           "id": "dataplatform"
         },
         {
+          "label": "DataHub",
+          "page": "dhGwCloud/2022.09"
+        },
+        {
+          "label": "InfoCenter",
+          "page": "icGwCloud/2022.09"
+        },
+        {
           "label": "Canvas",
           "id": "canvas"
         },
@@ -117,12 +125,16 @@
           ]
         },
         {
-          "label": "Digital Framework",
+          "label": "Jutro Design System 7.4.3",
           "class": "group",
           "items": [
             {
-              "label": "Jutro Design System",
-              "page": "../../jutroDesignSystem/7.4.3"
+              "label": "Jutro Design System and UI Framework",
+              "id": "jutro743"
+            },
+            {
+              "label": "Jutro Storybook",
+              "id": "storybook743"
             }
           ]
         }
@@ -264,6 +276,10 @@
         {
           "label": "London Market",
           "page": "../../globalSolutions/iplm/flaine"
+        },
+        {
+          "label": "United States (standards-based templates configuration)",
+          "id": "sbtfwcustomization"
         }
       ]
     }

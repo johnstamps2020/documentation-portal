@@ -30,7 +30,7 @@
         "release": ["Elysian"],
         "subject": ["Configuration"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

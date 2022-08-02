@@ -15,7 +15,7 @@
       "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false,
+      "public": true,
       "internal": false,
       "earlyAccess": false
     },
@@ -38,8 +38,8 @@
       "earlyAccess": false
     },
     {
-      "id": "cicdmanagerapirefdraft",
-      "title": "CI/CD Manager",
+      "id": "cicdmanagerapiref",
+      "title": "CI/CD Manager API",
       "url": "cloud/cicd-manager-api-ref/latest",
       "displayOnLandingPages": true,
       "indexForSearch": true,
@@ -49,8 +49,8 @@
         "version": ["latest"],
         "release": ["Elysian"]
       },
-      "environments": ["int"],
-      "public": false,
+      "environments": ["int", "staging", "prod"],
+      "public": true,
       "internal": false,
       "earlyAccess": false
     },
@@ -147,13 +147,30 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "guidewirecloudconsolernarchive",
+      "title": "Cloud Console Release Notes Archive",
+      "url": "cloud/gcc/release-notes-archive",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
       "earlyAccess": false
     },
     {

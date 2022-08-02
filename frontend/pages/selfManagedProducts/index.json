@@ -71,6 +71,10 @@
             {
               "label": "Germany",
               "page": "../globalSolutions/ipg/latest"
+            },
+            {
+              "label": "United States (standards-based templates configuration)",
+              "id": "sbtfwcustomization"
             }
           ]
         }
@@ -82,11 +86,11 @@
       "items": [
         {
           "label": "DataHub",
-          "page": "dh/10.7.0"
+          "page": "dh/10.8.0"
         },
         {
           "label": "InfoCenter",
-          "page": "ic/10.7.0"
+          "page": "ic/10.8.0"
         }
       ]
     },

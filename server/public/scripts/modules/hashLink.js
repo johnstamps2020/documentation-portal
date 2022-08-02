@@ -21,7 +21,7 @@ export async function addHashLinks() {
   }
 
   document.querySelectorAll('.title').forEach((title, index) => {
-    if (!isHidden(title) && index !== 0) {
+    if (!isHidden(title) && index !== 0 && !title.parentElement.parentElement.classList.contains('landingpage')) {
       const id = generateId(title);
       if (!document.getElementById(id)) {
         title.setAttribute('id', id);

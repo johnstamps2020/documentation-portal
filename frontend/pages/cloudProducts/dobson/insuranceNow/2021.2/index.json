@@ -57,6 +57,10 @@
           "id": "in20212appreaderinteg"
         },
         {
+          "label": "Business Intelligence Integration",
+          "id": "in20212xbiintegdraft"
+        },
+        {
           "label": "Live Predict Integration",
           "id": "in20212pa"
         },
@@ -67,32 +71,62 @@
       ]
     },
     {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer Setup",
+          "id": "indevguidejava11draft"
+        },
+        {
+          "label": "Developer Setup",
+          "id": "indevguidejava11ext"
+        },
+        {
+          "label": "Portal Development",
+          "id": "in20212portaldev"
+        }
+      ]
+    },
+    {
       "label": "Configuration",
       "class": "subject configuration",
       "items": [
         {
-          "label": "Billing Configuration Reference",
-          "id": "in20212billref"
-        },
-        {
           "label": "Core Configuration",
           "id": "in20212config"
+        },
+        {
+          "label": "Billing Configuration Reference",
+          "id": "in20212billref"
         },
         {
           "label": "Claims Configuration Reference",
           "id": "in20212claimsconfig"
         },
         {
-          "label": "Studio Configuration",
-          "id": "in20212studio"
+          "label": "Common Functionality Configuration Reference",
+          "id": "in20212commonconfig"
         },
         {
-          "label": "Portal Development",
-          "id": "in20212portaldev"
+          "label": "Consumer Sales Portal Configuration",
+          "id": "in20212xcsalespconfigdraft"
+        },
+        {
+          "label": "Consumer Service Portal Configuration",
+          "id": "in20212xcservicepconfigdraft"
         },
         {
           "label": "Product Attribute Reference",
           "id": "in20212prodattref"
+        },
+        {
+          "label": "Provisioning Portal",
+          "id": "in20212provportalinternal"
+        },
+        {
+          "label": "Studio Configuration",
+          "id": "in20212studio"
         },
         {
           "label": "Underwriting Configuration Reference",
@@ -105,8 +139,12 @@
       "class": "subject installation",
       "items": [
         {
-          "label": "Developer Setup",
-          "id": "indevguidejava11ext"
+          "label": "Install Assist",
+          "id": "ininstallassistdraft"
+        },
+        {
+          "label": "Upgrade Tools",
+          "id": "inupgradetoolsdraft"
         }
       ]
     }

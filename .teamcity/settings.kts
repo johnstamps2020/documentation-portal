@@ -32,6 +32,7 @@ project {
     subProject(Apps.rootProject)
     subProject(Server.rootProject)
     subProject(Frontend.rootProject)
+    subProject(Custom.rootProject)
 
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
     features.feature(GwProjectFeatures.GwAntennaHouseFormatterServerProjectFeature)
@@ -529,14 +530,13 @@ object Docs {
         index_for_search: Boolean,
         root_map: String,
         index_redirect: Boolean,
-        build_filter: String,
+        build_filter: String?,
         gw_platforms: String,
         resources_to_copy: JSONArray,
     ): List<BuildType> {
         val ditaBuildTypes = mutableListOf<BuildType>()
         val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(src_id)
-        val getDitavalFromCommonGwRepoStep =
-            GwBuildSteps.createGetDitavalFromCommonGwRepoStep(working_dir, build_filter)
+
         for (env in env_names) {
             val docBuildType = createInitialDocBuildType(
                 GwBuildTypes.DITA.build_type_name,
@@ -611,10 +611,8 @@ object Docs {
                     docBuildType.steps.stepsOrder.add(2, zipPackageStep.id.toString())
                 }
 
-                docBuildType.steps.step(getDitavalFromCommonGwRepoStep)
                 docBuildType.steps.step(buildDitaProjectStep)
-                docBuildType.steps.stepsOrder.addAll(0,
-                    arrayListOf(getDitavalFromCommonGwRepoStep.id.toString(), buildDitaProjectStep.id.toString()))
+                docBuildType.steps.stepsOrder.add(0, buildDitaProjectStep.id.toString())
                 if (!resources_to_copy.isEmpty) {
                     val copyResourcesSteps = mutableListOf<ScriptBuildStep>()
                     for (stepId in 0 until resources_to_copy.length()) {
@@ -648,25 +646,39 @@ object Docs {
 
             ditaBuildTypes.add(docBuildType)
         }
-        for (format in arrayListOf(GwDitaOutputFormats.WEBHELP.format_name,
-            GwDitaOutputFormats.PDF.format_name,
-            GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name,
-            GwDitaOutputFormats.SINGLEHTML.format_name)) {
-            val localOutputDir = "${output_dir}/zip"
-            val downloadableOutputBuildType = BuildType {
-                name = "Build downloadable ${format.replace("_", " ")}"
-                id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
 
-                artifactRules = "${working_dir}/${output_dir} => /"
+        val localOutputDir = "${output_dir}/zip"
+        val downloadableOutputBuildType = BuildType {
+            name = "Build downloadable output"
+            id = Helpers.resolveRelativeIdFromIdString("${this.name}${doc_id}")
 
-                vcs {
-                    root(teamcityGitRepoId)
-                    cleanCheckout = true
-                }
+            params {
+                select(
+                    "OUTPUT_FORMAT",
+                    "",
+                    "Output format",
+                    options = listOf("Webhelp" to GwDitaOutputFormats.WEBHELP.format_name,
+                        "PDF" to GwDitaOutputFormats.PDF.format_name,
+                        "Webhelp with PDF" to GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name,
+                        "Single-page HTML" to GwDitaOutputFormats.SINGLEHTML.format_name
+                    ),
+                    display = ParameterDisplay.PROMPT,
+                )
+            }
 
-                steps {
-                    step(getDitavalFromCommonGwRepoStep)
-                    step(GwBuildSteps.createBuildDitaProjectForBuildsStep(
+            artifactRules = "${working_dir}/${output_dir} => /"
+
+            vcs {
+                root(teamcityGitRepoId)
+                cleanCheckout = true
+            }
+
+            steps {
+                for (format in arrayListOf(GwDitaOutputFormats.WEBHELP.format_name,
+                    GwDitaOutputFormats.PDF.format_name,
+                    GwDitaOutputFormats.WEBHELP_WITH_PDF.format_name,
+                    GwDitaOutputFormats.SINGLEHTML.format_name)) {
+                    val step = GwBuildSteps.createBuildDitaProjectForBuildsStep(
                         format,
                         root_map,
                         index_redirect,
@@ -676,18 +688,23 @@ object Docs {
                         build_filter = build_filter,
                         git_url = git_url,
                         git_branch = git_branch,
-                        for_offline_use = true
-                    ))
-                    step(GwBuildSteps.createZipPackageStep("${working_dir}/${localOutputDir}",
-                        "${working_dir}/${output_dir}"))
+                        for_offline_use = true)
+                    step.conditions {
+                        equals("OUTPUT_FORMAT", format)
+                    }
+                    step(step)
                 }
-
-                features {
-                    feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                }
+                step(GwBuildSteps.createZipPackageStep("${working_dir}/${localOutputDir}",
+                    "${working_dir}/${output_dir}"))
             }
-            ditaBuildTypes.add(downloadableOutputBuildType)
+
+            features {
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
         }
+        ditaBuildTypes.add(downloadableOutputBuildType)
+
+
         if (env_names.contains(GwDeployEnvs.STAGING.env_name)) {
             val stagingBuildTypeIdString =
                 Helpers.resolveRelativeIdFromIdString("Publish to ${GwDeployEnvs.STAGING.env_name}${doc_id}").toString()
@@ -887,7 +904,7 @@ object Docs {
                         build_config.getString("filter")
                     }
                     else -> {
-                        ""
+                        null
                     }
                 }
                 val resourcesToCopy =
@@ -940,6 +957,105 @@ object Docs {
             }
         }
     }
+
+}
+
+object Custom {
+    val rootProject = createRootProjectForCustom()
+
+    private fun createRootProjectForCustom(): Project {
+        return Project {
+            name = "Custom"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            buildType(BuildCustomDitaOutputBuildType)
+        }
+    }
+
+    object BuildCustomDitaOutputBuildType : BuildType({
+        name = "Build custom DITA output"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        params {
+            text(
+                "env.GIT_URL",
+                "",
+                label = "Git repo URL",
+                display = ParameterDisplay.PROMPT
+            )
+            text(
+                "env.GIT_BRANCH",
+                "",
+                label = "Git branch name",
+                display = ParameterDisplay.PROMPT
+            )
+            text(
+                "env.BUILDS_FILE_PARSED",
+                "builds.txt",
+                display = ParameterDisplay.HIDDEN
+            )
+        }
+
+        val localOutputDir = "out"
+
+        artifactRules = "*.zip => /"
+
+        steps {
+            script {
+                name = "Get the builds configuration"
+                scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                                      
+                    export FULL_REPO_NAME=${'$'}{GIT_URL##*/}
+                    export REPO_NAME=${'$'}{FULL_REPO_NAME%.*}
+                    export BUILDS_FILE="builds.json"
+                    
+                    curl -o ${'$'}BUILDS_FILE https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/${'$'}REPO_NAME/raw/${'$'}BUILDS_FILE?at=%env.GIT_BRANCH% \
+                         -H "Accept: application/json" \
+                         -H "Content-Type: application/json" \
+                         -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
+                                                                                           
+                    declare -a BUILDS
+                    while IFS= read -r -d ${'$'}'\n' builds_json; do
+                      root=${'$'}(echo "${'$'}builds_json" | jq -r .root)
+                      filter=${'$'}(echo "${'$'}builds_json" | jq -r .filter)
+                      echo "${'$'}root:${'$'}filter" >> %env.BUILDS_FILE_PARSED%
+                    done < <(jq -c '.builds[]' ${'$'}BUILDS_FILE)
+                """.trimIndent()
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            }
+            script {
+                name = "Build custom DITA output"
+                id = Helpers.createIdStringFromName(this.name)
+                scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                                                                                           
+                    declare -a BUILDS
+                    while read line; do
+                      IFS=':' read -r input filter <<< "${'$'}line"
+                      echo ${'$'}input ${'$'}filter
+                      INPUT_NAME=${'$'}{input%.*}
+                      FILTER_NAME=${'$'}{filter%.*}
+                      OUTPUT_SUBDIR="${'$'}{INPUT_NAME}_${'$'}FILTER_NAME"
+                      dita -i "${'$'}input" --filter "common-gw/${'$'}filter" -f pdf_Guidewire_remote -o "$localOutputDir/${'$'}OUTPUT_SUBDIR" --git.url %env.GIT_URL% --git.branch %env.GIT_BRANCH%
+                      n=${'$'}((n+1))
+                    done < %env.BUILDS_FILE_PARSED%
+                """.trimIndent()
+                dockerImage = GwDockerImages.DITA_OT_3_6_1.image_url
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            }
+            step(GwBuildSteps.createZipPackageStep(
+                "%teamcity.build.workingDir%/$localOutputDir",
+                "%teamcity.build.workingDir%"
+            ))
+        }
+
+        features {
+            feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+        }
+    })
 
 }
 
@@ -1286,6 +1402,7 @@ object Content {
             }
         }
     })
+
 }
 
 object Frontend {
@@ -2565,7 +2682,7 @@ object Sources {
                         build_config.getString("filter")
                     }
                     else -> {
-                        ""
+                        null
                     }
                 }
 
@@ -2589,12 +2706,6 @@ object Sources {
                             src_id,
                             docInfoFile,
                             docConfig
-                        )
-                    )
-                    step(
-                        GwBuildSteps.createGetDitavalFromCommonGwRepoStep(
-                            workingDir,
-                            buildFilter
                         )
                     )
                     step(
@@ -3211,6 +3322,25 @@ object Helpers {
         return commandStringBuilder.toString()
     }
 
+    fun createGetDitavalCommandString(
+        working_dir: String,
+        build_filter: String?,
+    ): String {
+        return if (build_filter != null) {
+            """
+                echo "Downloading the ditaval file from common-gw submodule"
+                                    
+                export COMMON_GW_DITAVALS_DIR="${working_dir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}"
+                mkdir -p ${'$'}COMMON_GW_DITAVALS_DIR && cd ${'$'}COMMON_GW_DITAVALS_DIR 
+                curl -O https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/common-gw/raw/ditavals/${build_filter} \
+                    -H "Accept: application/json" \
+                    -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
+            """.trimIndent()
+        } else {
+            "echo \"This build does not use a ditaval file. Skipping download from the common-gw submodule...\""
+        }
+    }
+
 }
 
 object GwBuildSteps {
@@ -3756,6 +3886,7 @@ object GwBuildSteps {
                 "${working_dir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}/${build_filter}"))
         }
 
+        val getDitavalCommand = Helpers.createGetDitavalCommandString(working_dir, build_filter)
         var buildCommand = ""
 
         when (output_format) {
@@ -3808,6 +3939,8 @@ object GwBuildSteps {
                 set -xe
                                 
                 SECONDS=0
+                
+                $getDitavalCommand
 
                 echo "Building output"
                 $buildCommand
@@ -3817,26 +3950,6 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = dockerImageName
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
-    }
-
-    fun createGetDitavalFromCommonGwRepoStep(
-        working_dir: String,
-        build_filter: String,
-    ): ScriptBuildStep {
-        return ScriptBuildStep {
-            name = "Get $build_filter from the common-gw repo"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                set -xe
-                                    
-                export COMMON_GW_DITAVALS_DIR="${working_dir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}"
-                mkdir -p ${'$'}COMMON_GW_DITAVALS_DIR && cd ${'$'}COMMON_GW_DITAVALS_DIR 
-                curl -O https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/common-gw/raw/ditavals/${build_filter} \
-                    -H "Accept: application/json" \
-                    -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
-            """.trimIndent()
         }
     }
 
@@ -3923,6 +4036,7 @@ object GwBuildSteps {
             }
         }
 
+        val getDitavalCommand = Helpers.createGetDitavalCommandString(working_dir, build_filter)
         val ditaBuildCommand = Helpers.getCommandString("dita", commandParams)
 
         val dockerImageName = when (output_format) {
@@ -3939,6 +4053,8 @@ object GwBuildSteps {
                 
                 export EXIT_CODE=0
                 SECONDS=0
+                
+                $getDitavalCommand
 
                 echo "Building output"
                 $ditaBuildCommand || EXIT_CODE=${'$'}?
@@ -3965,6 +4081,41 @@ object GwBuildSteps {
                 yarn build-html5-dependencies
             """.trimIndent()
             dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.image_url}:14.14.0"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerPull = true
+            dockerRunParameters = "--user 1000:1000"
+        }
+    }
+
+    fun createBuildHTML2PDFStep(
+        html_files_absolute_dir: String,
+        pdf_locale: String,
+        pdf_output_absolute_path: String,
+        doc_title: String,
+        doc_portal_absolute_dir: String,
+    ): ScriptBuildStep {
+        val workingDir = "$doc_portal_absolute_dir/html2pdf"
+        val scriptsDir = "$doc_portal_absolute_dir/server/static/html5/scripts"
+        return ScriptBuildStep {
+            name = "Build HTML2PDF"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                
+                export EXIT_CODE=0
+                export HTML_FILES_DIR="$html_files_absolute_dir"
+                export SCRIPTS_DIR="$scriptsDir"
+                export PDF_LOCALE="$pdf_locale"
+                export PDF_OUTPUT_PATH="$pdf_output_absolute_path"
+                export DOC_TITLE="$doc_title"
+                
+                cd "$workingDir"
+                yarn
+                yarn build || EXIT_CODE=${'$'}?
+                
+                exit ${'$'}EXIT_CODE
+            """.trimIndent()
+            dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.image_url}:17.6.0"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerRunParameters = "--user 1000:1000"

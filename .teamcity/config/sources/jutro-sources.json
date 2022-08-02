@@ -427,6 +427,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
       "branch": "release/8.2.0"
+    },
+    {
+      "id": "srcjutroa11yapp",
+      "title": "Jutro a11y app source",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-a11y-app.git",
+      "branch": "main"
     }
   ]
 }

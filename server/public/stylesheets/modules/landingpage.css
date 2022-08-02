@@ -1,0 +1,51 @@
+.landingpage {
+    --card-width: 420px;
+    display: grid;
+    grid-template-columns: var(--card-width) var(--card-width);
+    grid-gap: 2.5rem;
+    
+}
+
+@media screen and (max-width: 1270px) {
+    .landingpage {
+        grid-template-columns: 420px;
+    }
+}
+
+.landingpage > section {
+    --width: 420px;
+    --section-padding-top-width: 0;
+    --section-padding-right-width: 1rem;
+    --section-padding-bottom-width: .75rem;
+    --section-padding-left-width: 1rem;
+    display: block;
+    outline: 2px solid var(--GW-COLOR-BRAND-1);
+    outline-offset: -1px;
+    border-radius: 30px;
+    margin: 0;
+    padding: var(--section-padding-top-width) var(--section-padding-right-width) var(--section-padding-bottom-width) var(--section-padding-left-width);
+    width: var(--card-width);
+    overflow: hidden;
+}
+
+.landingpage > section > .sectiontitle {
+    color: var(--GW-COLOR-BRAND-1);
+    position: relative;
+    margin-top: .5rem !important;
+    margin-bottom: .5rem !important;
+    padding-left: .5rem;
+    border-bottom: 2px solid var(--GW-COLOR-BRAND-1);
+}
+
+.landingpage > section > .sectiontitle + * {
+    margin-top: 0;
+}
+
+.landingpage .sectiontitle ~ * {
+    padding-left: var(--section-padding-left-width);
+}
+
+.landingpage > section *:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "DM_all.ditamap",
+      "srcId": "dhic202005",
+      "docId": "dh202005",
+      "resources": [
+        {
+          "sourceFolder": "Aspen-10.3/DataHub",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "DM_all.ditamap",
+      "srcId": "dhic202005",
+      "docId": "ic202005",
+      "resources": [
+        {
+          "sourceFolder": "Aspen-10.3/InfoCenter",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    }
+  ]
+}

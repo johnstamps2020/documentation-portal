@@ -84,6 +84,20 @@
       ]
     },
     {
+      "label": "Cloud Console",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "CI/CD Manager API",
+          "id": "cicdmanagerapiref"
+        },
+        {
+          "label": "Cloud Console API",
+          "id": "cloudconsoleapi"
+        }
+      ]
+    },
+    {
       "label": "InsuranceNow",
       "class": "categoryCard cardShadow",
       "items": [

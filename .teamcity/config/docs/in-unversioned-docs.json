@@ -2,6 +2,42 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "inapidevelopment",
+      "title": "Custom API Development",
+      "url": "cloud/in/apidevelopment",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.1"],
+        "subject": ["Release Notes"],
+        "release": ["Elysian"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "inapimodernization",
+      "title": "API Modernization",
+      "url": "cloud/in/apimodernization",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.1"],
+        "subject": ["Release Notes"],
+        "release": ["Elysian"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "incsp20222rn",
       "title": "Consumer Service Portal 2022.2 Release Notes",
       "url": "cloud/in/csp20222rn",
@@ -188,7 +224,6 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": [
-          "InsuranceNow 2020.2x - Internal Audience",
           "InsuranceNow 2020.1x - Internal Audience"
         ],
         "version": ["latest"],
@@ -303,25 +338,7 @@
         "subject": ["Release notes"],
         "release": ["Dobson"]
       },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20212xstudiorndraft",
-      "title": "Studio 2021.2 Release Notes Draft",
-      "url": "cloud/in/20212x/studiorn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Release notes"],
-        "release": ["Dobson"]
-      },
-      "environments": ["int"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -339,25 +356,7 @@
         "subject": ["Release notes"],
         "release": ["Cortina"]
       },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20211xstudiorndraft",
-      "title": "Studio 2021.1 Release Notes Draft",
-      "url": "cloud/in/20211x/studiorn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Release notes"],
-        "release": ["Cortina"]
-      },
-      "environments": ["int"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -375,25 +374,7 @@
         "subject": ["Release notes"],
         "release": ["Banff"]
       },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20202xstudiorndraft",
-      "title": "Studio 2020.2 Release Notes Draft",
-      "url": "cloud/in/20202x/studiorn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["latest"],
-        "subject": ["Release notes"],
-        "release": ["Banff"]
-      },
-      "environments": ["int"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -501,25 +482,7 @@
         "subject": ["Release notes"],
         "release": ["Dobson"]
       },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20212xrndraft",
-      "title": "Core Release Notes Draft",
-      "url": "cloud/in/20212x/releasenotes",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.2"],
-        "subject": ["Release notes"],
-        "release": ["Dobson"]
-      },
-      "environments": ["int"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -537,25 +500,7 @@
         "subject": ["Release notes"],
         "release": ["Cortina"]
       },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20211xrndraft",
-      "title": "Core Release Notes Draft",
-      "url": "cloud/in/20211x/releasenotes",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2021.1"],
-        "subject": ["Release notes"],
-        "release": ["Cortina"]
-      },
-      "environments": ["int"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -573,25 +518,7 @@
         "subject": ["Release notes"],
         "release": ["Banff"]
       },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20202xrndraft",
-      "title": "Core Release Notes Draft",
-      "url": "cloud/in/20202x/releasenotes",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Release notes"],
-        "release": ["Banff"]
-      },
-      "environments": ["int"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -609,7 +536,7 @@
         "subject": ["Release notes"],
         "release": ["Aspen"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

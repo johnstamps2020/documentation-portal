@@ -1,0 +1,125 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ApplicationGuide20211x.ditamap",
+      "srcId": "in20211appsrc",
+      "docId": "in20211app",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "BusinessIntelligenceGettingStartedGuide20211x.ditamap",
+      "srcId": "in20211bisrc",
+      "docId": "in20211bi",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ConsumerSalesPortalFeatures20211x.ditamap",
+      "srcId": "in20211csalespsrc",
+      "docId": "in20211csalesp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ConsumerServicePortalFeatures20211x.ditamap",
+      "srcId": "in20211cservicepsrc",
+      "docId": "in20211cservicep",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "PredictiveAnalyticsIntegration20211.ditamap",
+      "srcId": "in20211pasrc",
+      "docId": "in20211pa",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "AppReaderIntegrationGuide20211x.ditamap",
+      "srcId": "in20211appreaderintegsrc",
+      "docId": "in20211appreaderinteg",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "Configuration20211x.ditamap",
+      "srcId": "in20211configsrc",
+      "docId": "in20211config",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "Studio20211x.ditamap",
+      "srcId": "in20211studiosrc",
+      "docId": "in20211studio",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "PortalDevelopment20211x.ditamap",
+      "srcId": "in20211portaldevsrc",
+      "docId": "in20211portaldev",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ProductAttributeReference20211.ditamap",
+      "srcId": "in20211prodattrefsrc",
+      "docId": "in20211prodattref",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "UnderwritingConfigurationReference20211x.ditamap",
+      "srcId": "in20211uwconfigsrc",
+      "docId": "in20211uwconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "BusinessIntelligenceIntegrationGuide20211x.ditamap",
+      "srcId": "in20211xbiintegdraftsrc",
+      "docId": "in20211xbiintegdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "CommonFunctionalityConfigurationReference20211x.ditamap",
+      "srcId": "in20211xcommonconfigdraftsrc",
+      "docId": "in20211xcommonconfigdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "ConsumerServicePortalConfigGuide20211x.ditamap",
+      "srcId": "in20211xcservicepconfigdraftsrc",
+      "docId": "in20211xcservicepconfigdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Draft.ditaval",
+      "root": "ProvisioningPortal20211x.ditamap",
+      "srcId": "in20211xprovportaldraftsrc",
+      "docId": "in20211xprovportaldraft",
+      "indexRedirect": true
+    }
+  ]
+}
