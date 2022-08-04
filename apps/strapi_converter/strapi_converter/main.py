@@ -1,32 +1,36 @@
+from email.encoders import encode_noop
 import logging
 import requests
 from jinja2 import Environment
 from jinja2 import FileSystemLoader
 from pathlib import Path
+import re
 
 OUT_DIR = Path('input')
 OUT_DIR.mkdir(exist_ok=True)
 
 links = []
+doc_title = ''
+docId = 'appguide'
 
-
-def convert_files():
-    response = requests.get('http://localhost:1337/api/simple-docs/1?populate=topic',
-                            headers={'Content-Type': 'application/json'})
+def convert_files(docId):
+    path = f'http://localhost:1337/api/simple-docs?filters[docId][$eq]={docId}&populate=topics'
+    response = requests.get(path)
     response_json = response.json()
-    topic = response_json['data']['attributes']['topic']
-    for n, item in enumerate(topic):
-        content = item['content']
-        file_path = f'{n}.md'
+    global doc_title
+    doc_title = response_json['data'][0]['attributes']['title']
+    simple_doc = response_json['data'][0]['attributes']['topics']['data']
+    for i, item in enumerate(simple_doc):
+        content = item['attributes']['content']
+        title = re.sub('[^A-Za-z0-9]+', '-', item['attributes']['title']).lower()
+        file_path = f'{title}.md'
         with open(OUT_DIR / file_path, 'w') as f:
             f.write(content)
         links.append(file_path)
-    logging.info('DONE')
-
 
 def write_to_file():
     jinja2_environment = Environment(
-        loader=FileSystemLoader('template'),
+        loader=FileSystemLoader('apps/strapi_converter/strapi_converter/template'),
         trim_blocks=True,
         lstrip_blocks=True,
         keep_trailing_newline=False,
@@ -36,7 +40,8 @@ def write_to_file():
     )
     jinja2_template = jinja2_environment.get_template('ditamap.j2')
     content = jinja2_template.render(
-        links=links
+        links=links,
+        doc_title=doc_title
     )
 
     new_file = (OUT_DIR / 'main.ditamap').open('w', encoding='utf-8')
@@ -44,7 +49,7 @@ def write_to_file():
 
 
 def main():
-    convert_files()
+    convert_files(docId)
     write_to_file()
 
 

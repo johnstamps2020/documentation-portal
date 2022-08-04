@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<map>
+    <title>Application Guide</title>
+        <topicref href="introduction-to-policycenter.md" format="markdown"/>
+        <topicref href="policycenter-policy-transactions.md" format="markdown"/>
+        <topicref href="policycenter-user-interface.md" format="markdown"/>
+</map>
