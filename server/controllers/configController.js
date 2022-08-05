@@ -9,9 +9,11 @@ async function loadConfig() {
   try {
     let config;
     if (process.env.LOCAL_CONFIG === 'yes') {
-      console.log(
-        `Getting local config for the "${process.env.DEPLOY_ENV}" environment`
-      );
+      const deployEnv =
+        process.env.DEPLOY_ENV === 'us-east-2'
+          ? 'prod'
+          : process.env.DEPLOY_ENV;
+      console.log(`Getting local config for the "${deployEnv}" environment`);
 
       function readFilesInDir(dirPath) {
         try {
@@ -25,7 +27,7 @@ async function loadConfig() {
               const config = fs.readFileSync(itemPath, 'utf-8');
               const json = JSON.parse(config);
               const docs = json.docs.filter(d =>
-                d.environments.includes(process.env.DEPLOY_ENV)
+                d.environments.includes(deployEnv)
               );
               localConfig['docs'].push(...docs);
             }
