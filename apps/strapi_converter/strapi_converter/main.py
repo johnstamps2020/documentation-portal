@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 import os, shutil
 
+
 OUT_DIR = Path('input')
 if os.path.isdir(OUT_DIR):
     shutil.rmtree(OUT_DIR)
