@@ -1039,7 +1039,10 @@ object Custom {
                       INPUT_NAME=${'$'}{input%.*}
                       FILTER_NAME=${'$'}{filter%.*}
                       OUTPUT_SUBDIR="${'$'}{INPUT_NAME}_${'$'}FILTER_NAME"
-                      dita -i "${'$'}input" --filter "common-gw/ditavals/${'$'}filter" -f pdf_Guidewire_remote -o "$localOutputDir/${'$'}OUTPUT_SUBDIR" --git.url %env.GIT_URL% --git.branch %env.GIT_BRANCH%
+                      curl -O https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/common-gw/raw/ditavals/${'$'}filter \
+                        -H "Accept: application/json" \
+                        -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
+                      dita -i "${'$'}input" --git.filter "${'$'}filter" -f pdf_Guidewire_remote -o "$localOutputDir/${'$'}OUTPUT_SUBDIR" --git.url %env.GIT_URL% --git.branch %env.GIT_BRANCH%
                       n=${'$'}((n+1))
                     done < %env.BUILDS_FILE_PARSED%
                 """.trimIndent()
