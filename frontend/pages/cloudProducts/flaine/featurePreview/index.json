@@ -5,6 +5,20 @@
   "class": "twoColumns featurePreview",
   "items": [
     {
+      "label": "Jutro",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Jutro Platform",
+          "id": "jutroplatformnext"
+        },
+        {
+          "label": "Jutro SDK",
+          "id": "jutrosdknext"
+        }
+      ]
+    },
+    {
       "label": "Rules",
       "class": "subject releaseNotes",
       "items": [
