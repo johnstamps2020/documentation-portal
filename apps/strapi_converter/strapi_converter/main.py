@@ -5,24 +5,30 @@ from jinja2 import Environment
 from jinja2 import FileSystemLoader
 from pathlib import Path
 import re
+import os, shutil
 
 OUT_DIR = Path('input')
+if os.path.isdir(OUT_DIR):
+    shutil.rmtree(OUT_DIR)
+else:
+    os.mkdir(OUT_DIR)
 OUT_DIR.mkdir(exist_ok=True)
 
 links = []
 doc_title = ''
-docId = 'appguide'
+doc_ids =['gosuref', 'appguide']
+doc_id = 'appguide'
 
-def convert_files(docId):
-    path = f'http://localhost:1337/api/simple-docs?filters[docId][$eq]={docId}&populate=topics'
+def convert_files(doc_id):
+    path = f'http://localhost:1337/api/simple-doc-configs?docId={doc_id}'
     response = requests.get(path)
     response_json = response.json()
     global doc_title
-    doc_title = response_json['data'][0]['attributes']['title']
-    simple_doc = response_json['data'][0]['attributes']['topics']['data']
+    doc_title = response_json[0]['title']
+    simple_doc = response_json[0]['topics']
     for i, item in enumerate(simple_doc):
-        content = item['attributes']['content']
-        title = re.sub('[^A-Za-z0-9]+', '-', item['attributes']['title']).lower()
+        content = item['content']
+        title = re.sub('[^A-Za-z0-9]+', '-', item['title']).lower()
         file_path = f'{title}.md'
         with open(OUT_DIR / file_path, 'w') as f:
             f.write(content)
@@ -49,7 +55,7 @@ def write_to_file():
 
 
 def main():
-    convert_files(docId)
+    convert_files(doc_id)
     write_to_file()
 
 
