@@ -7,6 +7,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/apd-api-docs.git",
       "branch": "main"
+    },
+    {
+      "id": "apdappsrc",
+      "title": "Advanced Product Designer - Feature Preview",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
+      "branch": "main"
     }
   ]
 }

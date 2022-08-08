@@ -6,6 +6,22 @@
       "srcId": "apdapiintsrc",
       "buildType": "yarn",
       "nodeImageVersion": "14.14.0"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-EA-Release.ditaval",
+      "root": "AdvancedProductDesigner_Release_Notes.ditamap",
+      "srcId": "apdappsrc",
+      "docId": "apdapprn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-EA-Release.ditaval",
+      "root": "AdvancedProductDesigner.ditamap",
+      "srcId": "apdappsrc",
+      "docId": "apdapp",
+      "indexRedirect": true
     }
   ]
 }
