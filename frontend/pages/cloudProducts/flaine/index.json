@@ -35,6 +35,10 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
+          "label": "Advanced Product Designer App",
+          "page": "apd"
+        },
+        {
           "label": "InsuranceNow",
           "page": "insuranceNow/2022.2"
         }

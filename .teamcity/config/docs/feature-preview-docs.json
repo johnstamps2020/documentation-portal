@@ -2,24 +2,6 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "apdapp",
-      "title": "Advanced Product Designer",
-      "url": "cloud/apd/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Advanced Product Designer"],
-        "version": ["latest"],
-        "release": ["Elysian"],
-        "subject": ["Configuration"]
-      },
-      "environments": ["int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
       "id": "apdclaims",
       "title": "Advanced Product Designer for Claims Guide",
       "url": "cloud/apdclaims/latest",
@@ -33,24 +15,6 @@
       "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
-      "id": "apdapprn",
-      "title": "Advanced Product Designer Release Notes",
-      "url": "cloud/apd/releasenotes/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Advanced Product Designer"],
-        "version": ["latest"],
-        "release": ["Elysian"],
-        "subject": ["Configuration"]
-      },
-      "environments": ["int", "staging", "prod"],
-      "displayOnLandingPages": false,
-      "indexForSearch": false,
       "public": false,
       "internal": false,
       "earlyAccess": true

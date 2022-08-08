@@ -15,6 +15,42 @@
       "earlyAccess": true,
       "indexForSearch": true,
       "public": false
+    },
+    {
+      "id": "apdapp",
+      "title": "Advanced Product Designer",
+      "url": "cloud/apd/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["latest"],
+        "release": ["Elysian", "Flaine"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "apdapprn",
+      "title": "Advanced Product Designer Release Notes",
+      "url": "cloud/apd/releasenotes/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["latest"],
+        "release": ["Elysian", "Flaine"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
     }
   ]
 }
