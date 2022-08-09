@@ -238,6 +238,10 @@ function createFeedbackButton(positive) {
     'aria-label',
     positive ? 'This topic was helpful' : 'This topic needs improvement'
   );
+  button.setAttribute(
+    'title',
+    positive ? 'This topic was helpful' : 'This topic needs improvement'
+  );
   button.classList.add('feedbackButton');
   button.classList.add(
     positive ? 'feedbackButtonPositive' : 'feedbackButtonNegative'
@@ -252,9 +256,6 @@ function createFeedbackButton(positive) {
 }
 
 export function addFeedbackElements() {
-  const feedbackLabel = document.createElement('span');
-  feedbackLabel.innerText = 'Was this page helpful? Send us your comments!';
-
   const thumbsUp = createFeedbackButton(true);
   const thumbsDown = createFeedbackButton(false);
 
@@ -265,14 +266,13 @@ export function addFeedbackElements() {
 
   const feedbackButtons = document.createElement('div');
   feedbackButtons.setAttribute('class', 'feedback');
-  feedbackButtons.appendChild(feedbackLabel);
   feedbackButtons.appendChild(thumbsWrapper);
 
-  const topicBody = document.querySelector('article');
-  if (topicBody) {
-    topicBody.appendChild(feedbackButtons);
+  const navLinks = document.querySelector('.navLinks');
+  if (navLinks) {
+    navLinks.prepend(feedbackButtons);
   } else {
-    console.log('no article');
+    console.log('no navLinks');
   }
   const body = document.querySelector('body');
   body.appendChild(renderThanksMessage());
