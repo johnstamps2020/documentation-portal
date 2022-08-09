@@ -120,23 +120,16 @@
 }
 
 .feedback {
-  --feedback-button-size: 1.5rem;
+  --feedback-button-size: 1.25rem;
   display: flex;
   align-content: center;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 1rem;
-  padding-top: 3rem;
-}
-
-.feedback span {
-  display: flex;
-  align-items: center;
 }
 
 .feedbackThumbs {
   display: flex;
   gap: 1rem;
-  transform: translateY(-2px);
 }
 
 .feedbackButtonContainer {
@@ -157,7 +150,7 @@
 }
 
 .feedbackButton:hover {
-  transform: scale(1.4);
+  transform: scale(1.2);
 }
 
 .feedbackButton.selected {
