@@ -18,7 +18,7 @@ main > article:first-of-type > article.nested0:first-of-type {
 }
 
 .parmname {
-  font-weight: normal;
+  font-weight: normal !important;
 }
 
 .title .apiname,
@@ -29,8 +29,8 @@ main > article:first-of-type > article.nested0:first-of-type {
 .title .parmname,
 .title .uicontrol,
 .title .wintitle {
-  font-weight: inherit;
-  font-size: inherit;
+  font-weight: inherit !important;
+  font-size: inherit !important;
   font-family: inherit !important;
 }
 
