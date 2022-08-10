@@ -31,7 +31,7 @@ main > article:first-of-type > article.nested0:first-of-type {
 .title .wintitle {
   font-weight: inherit;
   font-size: inherit;
-  font-family: inherit;
+  font-family: inherit !important;
 }
 
 #footerCenter {
