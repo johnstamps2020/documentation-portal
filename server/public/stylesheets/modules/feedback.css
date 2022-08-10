@@ -120,12 +120,14 @@
 }
 
 .feedback {
-  --feedback-button-size: 1.25rem;
+  --feedback-button-size: 1.5rem;
   display: flex;
   align-content: center;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 1rem;
-  margin-right: 1rem;
+  margin-left: 2rem;
+  flex-grow: 1;
+  opacity: .5;
 }
 
 .feedbackThumbs {
