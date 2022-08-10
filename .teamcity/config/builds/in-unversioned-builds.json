@@ -251,6 +251,14 @@
       "srcId": "inunversionedsrc",
       "docId": "inupgradetoolsdraft",
       "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GWCPOperations.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "ingwcpops",
+      "indexRedirect": true
     }
   ]
 }
