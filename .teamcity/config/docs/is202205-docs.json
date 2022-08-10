@@ -24,7 +24,7 @@
       "title": "App Events Release Notes",
       "url": "cloud/is/202205/appeventsrn",
       "metadata": {
-        "product": ["ClaimCenter", "PolicyCenter"],
+        "product": ["ClaimCenter", "PolicyCenter", "App Events Webhooks"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
@@ -42,7 +42,7 @@
       "title": "App Events for Developers",
       "url": "cloud/is/202205/appevents",
       "metadata": {
-        "product": ["PolicyCenter", "ClaimCenter"],
+        "product": ["PolicyCenter", "ClaimCenter", "App Events Webhooks"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
