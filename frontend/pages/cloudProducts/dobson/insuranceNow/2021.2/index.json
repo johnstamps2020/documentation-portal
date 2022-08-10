@@ -83,6 +83,10 @@
           "id": "indevguidejava11ext"
         },
         {
+          "label": "GWCP Operations for Self-led Customers",
+          "id": "ingwcpops"
+        },
+        {
           "label": "Portal Development",
           "id": "in20212portaldev"
         }

@@ -578,6 +578,24 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "ingwcpops",
+      "title": "GWCP Operations for Self-led Customers",
+      "url": "cloud/in/gwcp-ops",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2022.2", "2022.1", "2021.2"],
+        "subject": ["Installation"],
+        "release": ["Dobson", "Elysian", "Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }
