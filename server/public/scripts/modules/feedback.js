@@ -268,11 +268,11 @@ export function addFeedbackElements() {
   feedbackButtons.setAttribute('class', 'feedback');
   feedbackButtons.appendChild(thumbsWrapper);
 
-  const navLinks = document.querySelector('.navLinks');
-  if (navLinks) {
-    navLinks.prepend(feedbackButtons);
+  const articleTitle = document.querySelector('h1.topictitle1');
+  if (articleTitle) {
+    articleTitle.append(feedbackButtons);
   } else {
-    console.log('no navLinks');
+    console.log('no articleTitle');
   }
   const body = document.querySelector('body');
   body.appendChild(renderThanksMessage());

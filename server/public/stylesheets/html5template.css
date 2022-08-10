@@ -152,3 +152,9 @@ main > .spacer {
   background: hsl(196, 100%, 26%);
   text-decoration: none;
 }
+
+main > article:first-of-type > h1:first-of-type,
+main > article:first-of-type > article.nested0:first-of-type > h1:first-of-type {
+  display: flex;
+  border-bottom: 1px solid gray;
+}
