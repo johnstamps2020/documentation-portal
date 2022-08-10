@@ -51,6 +51,10 @@ th {
   border-right: 1px solid #999;
 }
 
+.entry > .p:first-child {
+  margin-top: 0;
+}
+
 .entry > *:last-child {
   margin-bottom: 0;
 }
