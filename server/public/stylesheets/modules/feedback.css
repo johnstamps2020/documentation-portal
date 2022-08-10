@@ -122,9 +122,10 @@
 .feedback {
   --feedback-button-size: 1.5rem;
   display: flex;
-  align-content: center;
+  align-items: flex-start;
   justify-content: flex-end;
   gap: 1rem;
+  margin-top: 1em;
   margin-left: 2rem;
   flex-grow: 1;
   opacity: .5;
