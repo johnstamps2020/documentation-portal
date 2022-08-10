@@ -94,7 +94,8 @@
       "buildType": "yarn",
       "docId": "jutro532",
       "srcId": "srcjutro532",
-      "workingDir": "website"
+      "workingDir": "website",
+      "nodeImageVersion": "16.15.1"
     },
     {
       "buildType": "yarn",
