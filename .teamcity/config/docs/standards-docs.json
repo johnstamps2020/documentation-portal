@@ -9,11 +9,28 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
       },
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "environments": ["dev", "staging", "prod"],
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "standards202207",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202207",
+      "metadata": {
+        "product": ["Guidewire Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["2022.07"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
       "public": false,
       "internal": false,
       "earlyAccess": false
@@ -26,7 +43,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.06"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
       },
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
