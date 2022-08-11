@@ -1010,7 +1010,7 @@ object Custom {
                     export FULL_REPO_NAME=${'$'}{GIT_URL##*/}
                     export REPO_NAME=${'$'}{FULL_REPO_NAME%.*}
                     export BUILDS_FILE="builds.json"
-                    [[ -z ${'$'}{env.BUILDS_FILE_PARSED}]] && unset env.BUILDS_FILE_PARSED
+                    rm -f ${'$'}BUILDS_FILE_PARSED
 
                     curl -o ${'$'}BUILDS_FILE https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/${'$'}REPO_NAME/raw/${'$'}BUILDS_FILE?at=%env.GIT_BRANCH% \
                          -H "Accept: application/json" \
