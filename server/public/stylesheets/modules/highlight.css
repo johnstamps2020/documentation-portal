@@ -3,7 +3,7 @@ mark {
 }
 
 .noHighlight mark {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 #highlightToggle {
