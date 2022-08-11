@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "start:dev": "nodemon server.js -e js,ejs,css,html,jpg,png",
+    "start:dev": "NODE_ENV=development nodemon server.js -e js,ejs,css,html,jpg,png",
     "dev": "yarn start:dev",
     "build-html5-dependencies": "webpack",
     "html5-watch": "webpack --watch",
@@ -62,12 +62,13 @@
     "react-dom": "^17.0.2",
     "style-loader": "^3.3.1",
     "supertest": "^6.2.3",
-    "webpack": "^5.72.0",
-    "webpack-cli": "^4.9.2"
+    "webpack": "5.74.0",
+    "webpack-cli": "4.10.0"
   },
   "resolutions": {
     "minimist": "^1.2.6",
-    "html-select": "2.3.24"
+    "html-select": "2.3.24",
+    "terser": "5.14.2"
   },
   "packageManager": "yarn@3.2.1"
 }

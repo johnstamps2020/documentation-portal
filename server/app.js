@@ -138,8 +138,18 @@ const {
   s3Proxy,
   html5Proxy,
 } = require('./controllers/proxyController');
+
+// Portal 2: Electric Boogaloo
 app.use('/portal', portal2Proxy);
-app.use('/scripts', html5Proxy);
+
+// HTML5 scripts, local or S3
+if (process.env.NODE_ENV === 'development') {
+  app.use(express.static(path.join(__dirname, 'static/html5'), options));
+} else {
+  app.use('/scripts', html5Proxy);
+}
+
+// All remaining docs from S3
 app.use(s3Proxy);
 
 // handles unauthorized errors
