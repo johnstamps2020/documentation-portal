@@ -51,10 +51,12 @@ th {
   border-right: 1px solid #999;
 }
 
-.entry > .p:first-child {
+.entry > *:first-child,
+.stentry > *:first-child {
   margin-top: 0;
 }
 
-.entry > *:last-child {
+.entry > *:last-child,
+.stentry > *:last-child {
   margin-bottom: 0;
 }
