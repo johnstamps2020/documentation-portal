@@ -160,8 +160,10 @@ main > article:first-of-type > article.nested0:first-of-type > h1:first-of-type 
   padding-bottom: 0.25rem;
 }
 
-h1.topictitle1 > span,
-h1.topictitle1 > mark {
+h1.topictitle1 > code,
+h1.topictitle1 > mark,
+h1.topictitle1 > span
+{
   display: contents;
 }
 
