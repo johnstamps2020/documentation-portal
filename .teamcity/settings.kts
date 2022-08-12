@@ -1011,7 +1011,8 @@ object Custom {
                     export REPO_NAME=${'$'}{FULL_REPO_NAME%.*}
                     export BUILDS_FILE="builds.json"
                     rm -f ${'$'}BUILDS_FILE_PARSED
-                    rm -rfv %teamcity.build.workingDir%/$localOutputDir/*
+                    rm -f %teamcity.build.workingDir%/*.zip
+                    rm -rf %teamcity.build.workingDir%/$localOutputDir/*
 
                     curl -o ${'$'}BUILDS_FILE https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/${'$'}REPO_NAME/raw/${'$'}BUILDS_FILE?at=%env.GIT_BRANCH% \
                          -H "Accept: application/json" \
