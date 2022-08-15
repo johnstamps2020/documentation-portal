@@ -733,7 +733,7 @@ object Docs {
                             set -xe
 
                             mkdir $working_dir/$output_dir/_build-data
-                            jq -n '{"root": "$root_map, "filter": "$build_filter"}' > $working_dir/$output_dir/_build-data/$doc_id.json
+                            jq -n '{"root": "$root_map", "filter": "$build_filter"}' > $working_dir/$output_dir/_build-data/$doc_id.json
                             zip -ur $working_dir/$output_dir/l10n_package.zip $working_dir/$output_dir/_build-data 
                         """.trimIndent()
                         dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
