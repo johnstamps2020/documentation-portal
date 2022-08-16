@@ -3,9 +3,9 @@
   "sources": [
     {
       "id": "standards202207src",
-      "title": "Standards 2022.07",
+      "title": "Standards 2022.07.1",
       "sourceType": "git",
-      "branch": "2022.07",
+      "branch": "2022.07.1",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
