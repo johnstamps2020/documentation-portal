@@ -7328,14 +7328,14 @@
       "url": "implementation-resources/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Advanced Product Designer"],
+        "product": ["SurePath Framework"],
         "version": ["latest"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": true,
+      "internal": false,
       "earlyAccess": false
     }
   ]
