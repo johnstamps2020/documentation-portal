@@ -43,6 +43,8 @@ class DocPortalSpider(scrapy.Spider):
             yield Request(doc['start_url'], self.parse, cb_kwargs={'doc_object': doc})
 
     def parse(self, response, **cb_kwargs):
+        def replace_ditaot_with_deployed_site(url: str):
+            return url.replace('://ditaot.internal.', '://docs.')
 
         doc_object = cb_kwargs.get('doc_object')
         doc_object_id = doc_object['id']
@@ -58,8 +60,8 @@ class DocPortalSpider(scrapy.Spider):
         doc_object_internal = doc_object['internal']
 
         if response.status == 404:
-            yield BrokenLink(doc_id=doc_object_id, origin_url=cb_kwargs.get('origin_url', 'No origin URL'),
-                             url=response.url, metadata=doc_object_metadata, title=doc_object_title, )
+            yield BrokenLink(doc_id=doc_object_id, origin_url=replace_ditaot_with_deployed_site(cb_kwargs.get('origin_url', 'No origin URL')),
+                             url=replace_ditaot_with_deployed_site(response.url), metadata=doc_object_metadata, title=doc_object_title, )
 
         elif doc_object_body:
             yield IndexEntry(
@@ -99,9 +101,11 @@ class DocPortalSpider(scrapy.Spider):
                     '//main')
             }
 
-            body_elements = next((exp for exp in selectors.values() if exp), '')
+            body_elements = next(
+                (exp for exp in selectors.values() if exp), '')
 
-            web_works_output = response.xpath('//body[@onload="WWHHelpFrame_LaunchHelp();"]')
+            web_works_output = response.xpath(
+                '//body[@onload="WWHHelpFrame_LaunchHelp();"]')
             if not body_elements and web_works_output and 'portal/secure/doc' in response.url:
                 yield response.follow(urljoin(response.url, 'all_files.html'), callback=self.parse,
                                       cb_kwargs={'origin_url': response.url, 'doc_object': doc_object})
@@ -123,7 +127,8 @@ class DocPortalSpider(scrapy.Spider):
                     continue
                 next_page_abs_url = response.urljoin(next_page_href)
                 start_url = doc_object['start_url']
-                last_path_element = str(urlparse(start_url).path.split('/')[-1])
+                last_path_element = str(
+                    urlparse(start_url).path.split('/')[-1])
                 if Path(last_path_element).suffix:
                     start_url = f'{start_url.replace(last_path_element, "")}'
                 if start_url in next_page_abs_url:
