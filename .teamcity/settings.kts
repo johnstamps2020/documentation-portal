@@ -1088,6 +1088,7 @@ object Custom {
 
         features {
             feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            feature(GwBuildFeatures.GwSshAgentBuildFeature)
         }
     })
 
