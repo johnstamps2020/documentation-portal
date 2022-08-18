@@ -43,8 +43,8 @@ class DocPortalSpider(scrapy.Spider):
             yield Request(doc['start_url'], self.parse, cb_kwargs={'doc_object': doc})
 
     def parse(self, response, **cb_kwargs):
-        def replace_ditaot_with_deployed_site(url: str):
-            return url.replace('://ditaot.internal.', '://docs.')
+        def replace_s3_url_with_app_base_url(url: str):
+            return url.replace(self.doc_s3_url, self.app_base_url)
 
         doc_object = cb_kwargs.get('doc_object')
         doc_object_id = doc_object['id']
@@ -60,8 +60,10 @@ class DocPortalSpider(scrapy.Spider):
         doc_object_internal = doc_object['internal']
 
         if response.status == 404:
-            yield BrokenLink(doc_id=doc_object_id, origin_url=replace_ditaot_with_deployed_site(cb_kwargs.get('origin_url', 'No origin URL')),
-                             url=replace_ditaot_with_deployed_site(response.url), metadata=doc_object_metadata, title=doc_object_title, )
+            yield BrokenLink(doc_id=doc_object_id,
+                             origin_url=replace_s3_url_with_app_base_url(cb_kwargs.get('origin_url', 'No origin URL')),
+                             url=replace_s3_url_with_app_base_url(response.url), metadata=doc_object_metadata,
+                             title=doc_object_title, )
 
         elif doc_object_body:
             yield IndexEntry(
