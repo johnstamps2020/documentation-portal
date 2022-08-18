@@ -1024,21 +1024,35 @@ object Custom {
                     export FULL_REPO_NAME=${'$'}{GIT_URL##*/}
                     export REPO_NAME=${'$'}{FULL_REPO_NAME%.*}
                     export BUILDS_FILE="builds.json"
+                    export GIT_CLONE_DIR="git_clone_dir"
+                    
                     rm -f ${'$'}BUILDS_FILE_PARSED
                     rm -f %teamcity.build.workingDir%/*.zip
                     rm -rf %teamcity.build.workingDir%/$localOutputDir/*
+                    rm -rf ${'$'}GIT_CLONE_DIR
 
-                    curl -o ${'$'}BUILDS_FILE https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/${'$'}REPO_NAME/raw/${'$'}BUILDS_FILE?at=%env.GIT_BRANCH% \
-                         -H "Accept: application/json" \
-                         -H "Content-Type: application/json" \
-                         -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
-                                                                                           
-                    declare -a BUILDS
-                    while IFS= read -r -d ${'$'}'\n' builds_json; do
-                      root=${'$'}(echo "${'$'}builds_json" | jq -r .root)
-                      filter=${'$'}(echo "${'$'}builds_json" | jq -r .filter)
-                      echo "${'$'}root:${'$'}filter" >> %env.BUILDS_FILE_PARSED%
-                    done < <(jq -c '.builds[]' ${'$'}BUILDS_FILE)
+                    git clone --single-branch --branch %GIT_BRANCH% %GIT_URL% ${'$'}GIT_CLONE_DIR
+
+                    if [ -f ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_FILE ]
+                        then echo "${'$'}BUILDS_FILE found"
+                            declare -a BUILDS
+                            while IFS= read -r -d ${'$'}'\n' builds_json; do
+                            root=${'$'}(echo "${'$'}builds_json" | jq -r .root)
+                            filter=$(echo "${'$'}builds_json" | jq -r .filter)
+                            echo "${'$'}root:${'$'}filter" >> %env.BUILDS_FILE_PARSED%
+                            done < <(jq -c '.builds[]' ${'$'}BUILDS_FILE)
+                        else
+                            echo "${'$'}BUILDS_FILE not found, checking for ${'$'}BUILDS_DIR directory"
+                            if [ -d "${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR" ]
+                                then echo "${'$'}BUILDS_DIR found"
+                                    for FILE in ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR/*; do 
+                                    root=${'$'}(echo "${'$'}builds_json" | jq -r .root ${'$'}FILE);
+                                    filter=${'$'}(echo "${'$'}builds_json" | jq -r .filter ${'$'}FILE);
+                                    echo ${'$'}root:${'$'}filter >> %env.BUILDS_FILE_PARSED%
+                                    done;
+                                else echo "ERROR: Did not find a ${'$'}BUILDS_FILE or ${'$'}BUILDS_DIR directory."
+                        fi
+                    fi
                 """.trimIndent()
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             }
