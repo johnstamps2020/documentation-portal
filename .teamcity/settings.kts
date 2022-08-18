@@ -1024,6 +1024,7 @@ object Custom {
                     export FULL_REPO_NAME=${'$'}{GIT_URL##*/}
                     export REPO_NAME=${'$'}{FULL_REPO_NAME%.*}
                     export BUILDS_FILE="builds.json"
+                    export BUILDS_DIR="_builds"
                     export GIT_CLONE_DIR="git_clone_dir"
                     
                     rm -f ${'$'}BUILDS_FILE_PARSED
