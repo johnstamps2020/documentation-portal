@@ -1040,7 +1040,7 @@ object Custom {
                             root=${'$'}(echo "${'$'}builds_json" | jq -r .root)
                             filter=$(echo "${'$'}builds_json" | jq -r .filter)
                             echo "${'$'}root:${'$'}filter" >> %env.BUILDS_FILE_PARSED%
-                            done < <(jq -c '.builds[]' ${'$'}BUILDS_FILE)
+                            done < <(jq -c '.builds[]' ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_FILE)
                         else
                             echo "${'$'}BUILDS_FILE not found, checking for ${'$'}BUILDS_DIR directory"
                             if [ -d "${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR" ]
