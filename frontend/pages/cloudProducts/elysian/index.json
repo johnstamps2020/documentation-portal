@@ -141,16 +141,16 @@
           ]
         },
         {
-          "label": "Jutro Design System 7.4.3",
+          "label": "Jutro Design System 8.3.0",
           "class": "group",
           "items": [
             {
               "label": "Jutro Design System and UI Framework",
-              "id": "jutro743"
+              "id": "jutro830"
             },
             {
               "label": "Jutro Storybook",
-              "id": "storybook743"
+              "id": "storybook830"
             }
           ]
         },
