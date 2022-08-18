@@ -1031,7 +1031,7 @@ object Custom {
                     rm -rf %teamcity.build.workingDir%/$localOutputDir/*
                     rm -rf ${'$'}GIT_CLONE_DIR
 
-                    git clone --single-branch --branch %GIT_BRANCH% %GIT_URL% ${'$'}GIT_CLONE_DIR
+                    git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% ${'$'}GIT_CLONE_DIR
 
                     if [ -f ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_FILE ]
                         then echo "${'$'}BUILDS_FILE found"
