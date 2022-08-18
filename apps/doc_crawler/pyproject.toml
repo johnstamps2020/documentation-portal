@@ -19,7 +19,7 @@ doc_crawler = "doc_crawler.main:main"
 [tool.poetry.dependencies]
 python = "^3.8"
 jinja2 = "^2.10"
-scrapy = "^2.1.0"
+scrapy = "^2.6"
 elasticsearch = "^7.1"
 
 [tool.poetry.dev-dependencies]
