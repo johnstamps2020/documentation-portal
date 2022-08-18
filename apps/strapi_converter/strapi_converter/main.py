@@ -19,6 +19,25 @@ doc_title = ''
 doc_ids =['gosuref', 'appguide']
 doc_id = 'appguide'
 
+def save_media(url):
+    media_name = url[len('uploads/'):]
+    cms_url = f'http://localhost:1337/{url}'
+    res = requests.get(cms_url, stream = True)
+    if res.status_code == 200:
+        with open(f'img/{media_name}','wb') as f:
+            shutil.copyfileobj(res.raw, f)
+    return 0
+
+def update_media_url(content):
+    reg = re.search('!\[\S*\]\(/uploads\S*\)', content)
+    if (reg): 
+        index = reg.group(0).find('uploads')
+        old_url = reg.group(0)[index:len(reg.group(0))-1]
+        save_media(old_url)
+        new_url = re.sub('uploads', 'img', old_url)
+        content = content.replace(old_url, new_url)
+    return content
+
 def convert_files(doc_id):
     path = f'http://localhost:1337/api/simple-doc-configs?docId={doc_id}'
     response = requests.get(path)
@@ -27,7 +46,7 @@ def convert_files(doc_id):
     doc_title = response_json[0]['title']
     simple_doc = response_json[0]['topics']
     for i, item in enumerate(simple_doc):
-        content = item['content']
+        content = update_media_url(item['content'])
         title = re.sub('[^A-Za-z0-9]+', '-', item['title']).lower()
         file_path = f'{title}.md'
         with open(OUT_DIR / file_path, 'w') as f:
