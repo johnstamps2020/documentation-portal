@@ -2034,13 +2034,13 @@ object Server {
         }
 
         val deploymentFile: String
-        val ingressFile: String
+        val gatewayConfigFile: String
         if (deploy_env == GwDeployEnvs.PROD.env_name) {
             deploymentFile = "deployment-prod.yml"
-            ingressFile = "ingress-prod.yml"
+            gatewayConfigFile = "gateway-config-prod.yml"
         } else {
             deploymentFile = "deployment.yml"
-            ingressFile = "ingress.yml"
+            gatewayConfigFile = "gateway-config.yml"
         }
 
         val serverBuildTypeDeployEnv =
@@ -2073,21 +2073,25 @@ object Server {
                         export DEPLOY_ENV="$serverBuildTypeDeployEnv"
                         ###
                         
+                        export TMP_DEPLOYMENT_FILE="deployment.yml"
+                        export TMP_GATEWAY_CONFIG_FILE="gateway-config.yml"
+                        export TMP_SERVICE_FILE="service.yml"
+                        
                         aws eks update-kubeconfig --name atmos-${serverBuildTypeDeployEnv}
                         
                         echo ${'$'}(kubectl get pods --namespace=${namespace})
                         
-                        eval "echo \"${'$'}(cat server/kube/${deploymentFile})\"" > deployment.yml
-                        eval "echo \"${'$'}(cat server/kube/${ingressFile})\"" > ingress.yml
-                        eval "echo \"${'$'}(cat server/kube/service.yml)\"" > service.yml
+                        eval "echo \"${'$'}(cat server/kube/${deploymentFile})\"" > ${'$'}TMP_DEPLOYMENT_FILE
+                        eval "echo \"${'$'}(cat server/kube/${gatewayConfigFile})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
+                        eval "echo \"${'$'}(cat server/kube/service.yml)\"" > ${'$'}TMP_SERVICE_FILE
                         
                         kubectl get secret artifactory-secret --output="jsonpath={.data.\.dockerconfigjson}" --namespace=${namespace} || \
                         kubectl create secret docker-registry artifactory-secret --docker-server=artifactory.guidewire.com --docker-username=%env.SERVICE_ACCOUNT_USERNAME% --docker-password=%env.ARTIFACTORY_API_KEY% --namespace=${namespace}
                         
-                        sed -ie "s/BUILD_TIME/${'$'}(date)/g" deployment.yml
-                        kubectl apply -f deployment.yml --namespace=${namespace}
-                        kubectl apply -f service.yml --namespace=${namespace}
-                        kubectl apply -f ingress.yml --namespace=${namespace}                    
+                        sed -ie "s/BUILD_TIME/${'$'}(date)/g" ${'$'}TMP_DEPLOYMENT_FILE
+                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${namespace}
+                        kubectl apply -f ${'$'}TMP_SERVICE_FILE --namespace=${namespace}
+                        kubectl apply -f ${'$'}TMP_GATEWAY_CONFIG_FILE --namespace=${namespace}                    
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux

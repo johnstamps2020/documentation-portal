@@ -1,0 +1,25 @@
+apiVersion: oort.ccs.guidewire.com/v1alpha1
+kind: GatewayConfig
+metadata:
+  namespace: doctools
+  name: docportal-gateway-config
+spec:
+  profiles:
+    - name: Default
+      response_transformer:
+        add:
+          headers:
+            - Content-Security-Policy:\"frame-ancestors https://*.guidewire.net https://*.guidewire.com\"
+            - X-Frame-Options:SAMEORIGIN
+            - Access-Control-Allow-Origin:*
+            - Access-Control-Allow-Methods:\"GET, OPTIONS\"
+            - Access-Control-Allow-Headers:*
+  path_configs:
+    - name: Default
+      paths:
+        - /**
+      profiles:
+        - Default
+  service_ref: docportal-app
+  service_alias: docs
+  enable_sub_domain: false
