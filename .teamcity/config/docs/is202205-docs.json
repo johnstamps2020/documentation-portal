@@ -39,7 +39,7 @@
     },
     {
       "id": "appeventsrnsinglehtml",
-      "title": "App Events Release Notes Single HTML",
+      "title": "App Events Release Notes",
       "url": "cloud/is/202205/appevents-singlehtml",
       "metadata": {
         "product": ["ClaimCenter", "PolicyCenter", "App Events Webhooks"],
