@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: doctools
+  name: docportal-ingress
+  annotations:
+    ingress.kubernetes.io/config-backend: |
+      http-response add-header Content-Security-Policy \"frame-ancestors\ https://*.guidewire.net\ https://*.guidewire.com\"
+      http-response add-header X-Frame-Options SAMEORIGIN
+      http-response add-header Access-Control-Allow-Origin *
+      http-response add-header Access-Control-Allow-Methods \"GET, OPTIONS\"
+      http-response add-header Access-Control-Allow-Headers *
+spec:
+  rules:
+    - host: docs.guidewire.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: docportal-app
+                port:
+                  number: 8081
+            path: /
+            pathType: Prefix
+    - host: portal2.guidewire.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: docportal-app
+                port:
+                  number: 8081
+            path: /
+            pathType: Prefix

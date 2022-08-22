@@ -2054,7 +2054,7 @@ object Server {
         val gatewayConfigFile: String
         if (deploy_env == GwDeployEnvs.PROD.env_name) {
             deploymentFile = "deployment-prod.yml"
-            gatewayConfigFile = "gateway-config-prod.yml"
+            gatewayConfigFile = "ingress-prod.yml"
         } else {
             deploymentFile = "deployment.yml"
             gatewayConfigFile = "gateway-config.yml"
