@@ -38,24 +38,6 @@
       "earlyAccess": true
     },
     {
-      "id": "appeventsrnsinglehtml",
-      "title": "App Events Release Notes Single HTML",
-      "url": "cloud/is/202205/appevents-singlehtml",
-      "metadata": {
-        "product": ["ClaimCenter", "PolicyCenter", "App Events Webhooks"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Release Notes"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
       "id": "appeventsdev",
       "title": "App Events for Developers",
       "url": "cloud/is/202205/appevents",

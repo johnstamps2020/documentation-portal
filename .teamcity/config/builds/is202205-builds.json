@@ -26,14 +26,6 @@
       "docId": "appeventsrn"
     },
     {
-      "buildType": "singlehtml",
-      "filter": "IS-CC-Cloud-Release.ditaval",
-      "root": "appevents-releasenotes-cc.ditamap",
-      "indexRedirect": true,
-      "srcId": "restapisrc",
-      "docId": "appeventsrnsinglehtml"
-    },
-    {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "ReleaseNotes.ditamap",

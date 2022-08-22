@@ -317,7 +317,7 @@
         "buildType": {
           "description": "The build type to apply",
           "type": "string",
-          "enum": ["dita", "source-zip", "storybook", "yarn", "singlehtml"]
+          "enum": ["dita", "source-zip", "storybook", "yarn"]
         },
         "filter": {
           "description": "The name of the ditaval file from the common-gw/ditavals submodule to use in the build, including the extension",
