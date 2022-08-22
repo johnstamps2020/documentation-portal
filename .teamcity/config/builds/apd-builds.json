@@ -5,7 +5,7 @@
       "docId": "apdmaindoc",
       "srcId": "apdapiintsrc",
       "buildType": "yarn",
-      "nodeImageVersion": "14.14.0"
+      "nodeImageVersion": "16.17.0"
     },
     {
       "buildType": "dita",
