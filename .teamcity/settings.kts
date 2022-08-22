@@ -1866,10 +1866,10 @@ object Server {
                     export  PRETEND_TO_BE_EXTERNAL=no
                     export  ALLOW_PUBLIC_DOCS=yes
                     export  LOCALHOST_SESSION_SETTINGS=yes
-                    export  PARTNERS_LOGIN_URL=https://qaint-guidewire.cs172.force.com/partners/idp/endpoint/HttpRedirect
+                    export  PARTNERS_LOGIN_URL=https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect
                     export  PARTNERS_LOGIN_CERT=mock
                     export  PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/partners-login
-                    export  CUSTOMERS_LOGIN_URL=https://qaint-guidewire.cs172.force.com/customers/idp/endpoint/HttpRedirect
+                    export  CUSTOMERS_LOGIN_URL=https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect
                     export  CUSTOMERS_LOGIN_CERT=mock
                     export  CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/customers-login
                     
@@ -2040,11 +2040,11 @@ object Server {
         val partnersLoginUrl: String
         val customersLoginUrl: String
         if (arrayOf(GwDeployEnvs.DEV.env_name, GwDeployEnvs.INT.env_name).contains(deploy_env)) {
-            partnersLoginUrl = "https://qaint-guidewire.cs172.force.com/partners/idp/endpoint/HttpRedirect"
-            customersLoginUrl = "https://qaint-guidewire.cs172.force.com/customers/idp/endpoint/HttpRedirect"
+            partnersLoginUrl = "https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
+            customersLoginUrl = "https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
         } else if (deploy_env == GwDeployEnvs.STAGING.env_name) {
-            partnersLoginUrl = "https://uat-guidewire.cs166.force.com/partners/idp/endpoint/HttpRedirect"
-            customersLoginUrl = "https://uat-guidewire.cs166.force.com/customers/idp/endpoint/HttpRedirect"
+            partnersLoginUrl = "https://guidewire--uat.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
+            customersLoginUrl = "https://guidewire--uat.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
         } else {
             partnersLoginUrl = "https://partner.guidewire.com/idp/endpoint/HttpRedirect"
             customersLoginUrl = "https://community.guidewire.com/idp/endpoint/HttpRedirect"
