@@ -48,7 +48,7 @@
         "subject": ["Release Notes"],
         "release": ["Flaine"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -188,9 +188,9 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.2"],
+        "version": ["2021.2", "2022.1"],
         "subject": ["Installation"],
-        "release": ["Dobson"]
+        "release": ["Dobson", "Elysian", "Flaine"]
       },
       "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -244,9 +244,9 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.2", "2021.1"],
+        "version": ["2022.1", "2021.2", "2021.1"],
         "subject": ["Features and functionality"],
-        "release": ["Cortina", "Dobson"]
+        "release": ["Cortina", "Dobson", "Elysian"]
       },
       "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -302,7 +302,7 @@
         "subject": ["Release notes"],
         "release": ["Flaine"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -446,7 +446,7 @@
         "subject": ["Release notes"],
         "release": ["Flaine"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -568,9 +568,9 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.2", "2021.1", "2020.2", "2020.1"],
+        "version": ["2022.1", "2021.2", "2021.1", "2020.2", "2020.1"],
         "subject": ["Installation"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -590,7 +590,7 @@
         "subject": ["Installation"],
         "release": ["Dobson", "Elysian", "Flaine"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
