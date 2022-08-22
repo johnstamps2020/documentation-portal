@@ -88,7 +88,8 @@ enum class GwConfigParams(val param_value: String) {
     SOURCE_ZIP_BUILD_OUT_DIR("out"),
     BUILD_DATA_DIR("json"),
     BUILD_DATA_FILE("build-data.json"),
-    COMMON_GW_DITAVALS_DIR("common_gw_ditavals")
+    COMMON_GW_DITAVALS_DIR("common_gw_ditavals"),
+    BITBUCKET_SSH_KEY("svc-doc-bitbucket")
 }
 
 enum class GwDockerImages(val image_url: String) {
@@ -4483,7 +4484,7 @@ object GwBuildFeatures {
     })
 
     object GwSshAgentBuildFeature : SshAgent({
-        teamcitySshKey = "sys-doc.rsa"
+        teamcitySshKey = GwConfigParams.BITBUCKET_SSH_KEY.param_value
     })
 
     object GwOxygenWebhelpLicenseBuildFeature : BuildFeature({
@@ -4501,7 +4502,7 @@ object GwBuildFeatures {
     object GwCommitStatusPublisherBuildFeature : CommitStatusPublisher({
         publisher = bitbucketServer {
             url = "https://stash.guidewire.com"
-            userName = "%env.SERVICE_ACCOUNT_USERNAME%"
+            userName = "%env.BITBUCKET_SERVICE_ACCOUNT_USERNAME%"
             password =
                 "%env.BITBUCKET_ACCESS_TOKEN%"
         }
@@ -4511,10 +4512,8 @@ object GwBuildFeatures {
         return PullRequests {
             provider = bitbucketServer {
                 serverUrl = "https://stash.guidewire.com"
-                authType = password {
-                    username = "%env.SERVICE_ACCOUNT_USERNAME%"
-                    password =
-                        "%env.BITBUCKET_ACCESS_TOKEN%"
+                authType = token {
+                    token = "%env.BITBUCKET_ACCESS_TOKEN%"
                 }
                 filterTargetBranch = "+:${target_git_branch}"
             }
@@ -4563,7 +4562,7 @@ object GwVcsRoots {
             url = git_url
             branch = Helpers.createFullGitBranchName(default_branch)
             authMethod = uploadedKey {
-                uploadedKey = "sys-doc.rsa"
+                uploadedKey = GwConfigParams.BITBUCKET_SSH_KEY.param_value
             }
             checkoutPolicy = GitVcsRoot.AgentCheckoutPolicy.USE_MIRRORS
 
