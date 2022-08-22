@@ -2001,7 +2001,7 @@ object Server {
                 scriptContent = """
                 set -xe
                 git config --local user.email "doctools@guidewire.com"
-                git config --local user.name "%env.SERVICE_ACCOUNT_USERNAME%"
+                git config --local user.name "%env.BITBUCKET_SERVICE_ACCOUNT_USERNAME%"
                 git fetch --tags
 
                 cd server/
@@ -2459,7 +2459,7 @@ object Exports {
                         
                     cd ${'$'}GIT_CLONE_DIR
                     git config --local user.email "doctools@guidewire.com"
-                    git config --local user.name "%env.SERVICE_ACCOUNT_USERNAME%"
+                    git config --local user.name "%env.BITBUCKET_SERVICE_ACCOUNT_USERNAME%"
                         
                     git add -A
                     if git status | grep "Changes to be committed"
