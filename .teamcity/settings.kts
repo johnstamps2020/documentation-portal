@@ -3969,6 +3969,7 @@ object GwBuildSteps {
 
         val dockerImageName = when (output_format) {
             GwDitaOutputFormats.HTML5.format_name -> GwDockerImages.DITA_OT_3_6_1.image_url
+            GwDitaOutputFormats.SINGLEHTML.format_name -> GwDockerImages.DITA_OT_3_6_1.image_url
             else -> GwDockerImages.DITA_OT_LATEST.image_url
         }
 
@@ -4082,6 +4083,7 @@ object GwBuildSteps {
 
         val dockerImageName = when (output_format) {
             GwDitaOutputFormats.HTML5.format_name -> GwDockerImages.DITA_OT_3_6_1.image_url
+            GwDitaOutputFormats.SINGLEHTML.format_name -> GwDockerImages.DITA_OT_3_6_1.image_url
             else -> GwDockerImages.DITA_OT_LATEST.image_url
         }
 
