@@ -3683,7 +3683,7 @@ object GwBuildSteps {
                 set +x
                 docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.param_value}
                 set -x
-                docker build -t ${GwDockerImages.DOC_PORTAL.image_url}:${tag_version} . --build-arg tag_version=${tag_version}
+                docker build -t ${GwDockerImages.DOC_PORTAL.image_url}:${tag_version} ./server --build-arg tag_version=${tag_version}
                 docker push ${GwDockerImages.DOC_PORTAL.image_url}:${tag_version}
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
