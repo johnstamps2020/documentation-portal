@@ -7324,8 +7324,8 @@
     },
     {
       "id": "surepathmethodologymain",
-      "title": "SurePath Resources",
-      "url": "surepath-resources/latest",
+      "title": "SurePath Framework",
+      "url": "surepath-framework/latest",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["SurePath Framework"],
