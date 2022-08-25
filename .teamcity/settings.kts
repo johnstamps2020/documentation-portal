@@ -1348,7 +1348,7 @@ object Content {
                         eval "echo \"${'$'}(cat apps/doc_crawler/kube/${deploymentFile})\"" > deployment.yml
                         
                         kubectl get secret artifactory-secret --output="jsonpath={.data.\.dockerconfigjson}" --namespace=${namespace} || \
-                        kubectl create secret docker-registry artifactory-secret --docker-server=${GwConfigParams.ARTIFACTORY_HOST.param_value} --docker-username=%env.SERVICE_ACCOUNT_USERNAME% --docker-password=%env.ARTIFACTORY_API_KEY% --namespace=${namespace}
+                        kubectl create secret docker-registry artifactory-secret --docker-server=${GwConfigParams.ARTIFACTORY_HOST.param_value} --docker-username=%env.ARTIFACTORY_SERVICE_ACCOUNT_USERNAME% --docker-password=%env.ARTIFACTORY_API_KEY% --namespace=${namespace}
                         
                         kubectl apply -f deployment.yml --namespace=${namespace}
                     """.trimIndent()
@@ -2116,7 +2116,7 @@ object Server {
                         eval "echo \"${'$'}(cat server/kube/service.yml)\"" > ${'$'}TMP_SERVICE_FILE
                         
                         kubectl get secret artifactory-secret --output="jsonpath={.data.\.dockerconfigjson}" --namespace=${namespace} || \
-                        kubectl create secret docker-registry artifactory-secret --docker-server=${GwConfigParams.ARTIFACTORY_HOST.param_value} --docker-username=%env.SERVICE_ACCOUNT_USERNAME% --docker-password=%env.ARTIFACTORY_API_KEY% --namespace=${namespace}
+                        kubectl create secret docker-registry artifactory-secret --docker-server=${GwConfigParams.ARTIFACTORY_HOST.param_value} --docker-username=%env.ARTIFACTORY_SERVICE_ACCOUNT_USERNAME% --docker-password=%env.ARTIFACTORY_API_KEY% --namespace=${namespace}
                         
                         sed -ie "s/BUILD_TIME/${'$'}(date)/g" ${'$'}TMP_DEPLOYMENT_FILE
                         kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${namespace}
@@ -4296,21 +4296,21 @@ object GwBuildSteps {
                     $customEnvExportVars
                     
                     # legacy Jutro repos
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/jutro-npm-dev -s @jutro
+                    npm-cli-login -u "%env.ARTIFACTORY_SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/jutro-npm-dev -s @jutro
                     npm config set @jutro:registry https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/jutro-npm-dev/
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/globalization-npm-release -s @gwre-g11n
+                    npm-cli-login -u "%env.ARTIFACTORY_SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/globalization-npm-release -s @gwre-g11n
                     npm config set @gwre-g11n:registry https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/globalization-npm-release/
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/elixir -s @elixir
+                    npm-cli-login -u "%env.ARTIFACTORY_SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/elixir -s @elixir
                     npm config set @elixir:registry https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/elixir/
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/portfoliomunster-npm-dev -s @gtui
+                    npm-cli-login -u "%env.ARTIFACTORY_SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/portfoliomunster-npm-dev -s @gtui
                     npm config set @gtui:registry https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/portfoliomunster-npm-dev/
                                         
                     # new Jutro proxy repo
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/jutro-suite-npm-dev
+                    npm-cli-login -u "%env.ARTIFACTORY_SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/jutro-suite-npm-dev
                     npm config set registry https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/jutro-suite-npm-dev/
 
                     # Doctools repo
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/doctools-npm-dev -s @doctools
+                    npm-cli-login -u "%env.ARTIFACTORY_SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/doctools-npm-dev -s @doctools
                     npm config set @doctools:registry https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/doctools-npm-dev/
                     
                     cd "$working_dir"
