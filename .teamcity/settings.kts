@@ -1346,10 +1346,7 @@ object Content {
                         echo ${'$'}(kubectl get pods --namespace=${namespace})
                         
                         eval "echo \"${'$'}(cat apps/doc_crawler/kube/${deploymentFile})\"" > deployment.yml
-                        
-                        kubectl get secret artifactory-secret --output="jsonpath={.data.\.dockerconfigjson}" --namespace=${namespace} || \
-                        kubectl create secret docker-registry artifactory-secret --docker-server=${GwConfigParams.ARTIFACTORY_HOST.param_value} --docker-username=%env.ARTIFACTORY_SERVICE_ACCOUNT_USERNAME% --docker-password=%env.ARTIFACTORY_API_KEY% --namespace=${namespace}
-                        
+                                                
                         kubectl apply -f deployment.yml --namespace=${namespace}
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
@@ -2114,10 +2111,7 @@ object Server {
                         eval "echo \"${'$'}(cat server/kube/${deploymentFile})\"" > ${'$'}TMP_DEPLOYMENT_FILE
                         eval "echo \"${'$'}(cat server/kube/${gatewayConfigFile})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
                         eval "echo \"${'$'}(cat server/kube/service.yml)\"" > ${'$'}TMP_SERVICE_FILE
-                        
-                        kubectl get secret artifactory-secret --output="jsonpath={.data.\.dockerconfigjson}" --namespace=${namespace} || \
-                        kubectl create secret docker-registry artifactory-secret --docker-server=${GwConfigParams.ARTIFACTORY_HOST.param_value} --docker-username=%env.ARTIFACTORY_SERVICE_ACCOUNT_USERNAME% --docker-password=%env.ARTIFACTORY_API_KEY% --namespace=${namespace}
-                        
+                                                
                         sed -ie "s/BUILD_TIME/${'$'}(date)/g" ${'$'}TMP_DEPLOYMENT_FILE
                         kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${namespace}
                         kubectl apply -f ${'$'}TMP_SERVICE_FILE --namespace=${namespace}

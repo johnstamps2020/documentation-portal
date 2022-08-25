@@ -225,5 +225,3 @@ spec:
             limits:
               memory: \"8G\"
               cpu: \"2\"
-      imagePullSecrets:
-        - name: artifactory-secret
