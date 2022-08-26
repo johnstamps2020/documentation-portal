@@ -1215,13 +1215,6 @@
       "branch": "main"
     },
     {
-      "id": "internaldocssrc",
-      "title": "Internal Docs",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/doctools/internal-docs-directory.git",
-      "branch": "main"
-    },
-    {
       "id": "surepathmethodologymainsrc",
       "title": "SurePath Implementation Resources main",
       "sourceType": "git",

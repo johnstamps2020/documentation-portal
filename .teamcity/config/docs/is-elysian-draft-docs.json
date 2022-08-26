@@ -864,42 +864,6 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    },
-    {
-      "id": "integgatewaydevdraft",
-      "title": "Integration Gateway for Developers",
-      "url": "cloud/is/integgateway",
-      "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Integration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "integgatewayrndraft",
-      "title": "Integration Gateway Release Notes",
-      "url": "cloud/is/igrelnotes",
-      "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Release notes"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
     }
   ]
 }

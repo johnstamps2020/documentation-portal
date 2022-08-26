@@ -11,22 +11,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "ApplicationEventsForDevelopers.ditamap",
-      "indexRedirect": true,
-      "srcId": "restapisrc",
-      "docId": "appeventsdev"
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-Cloud-Release.ditaval",
-      "root": "appevents-releasenotes-cc.ditamap",
-      "indexRedirect": true,
-      "srcId": "restapisrc",
-      "docId": "appeventsrn"
-    },
-    {
-      "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "ReleaseNotes.ditamap",
       "srcId": "is202205src",
@@ -408,40 +392,10 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "GosuRefGuide.ditamap",
-      "srcId": "is202205src",
-      "docId": "is202205gosu",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "OverviewCloudIntegration.ditamap",
       "srcId": "is202205src",
       "docId": "is202205integoverview",
       "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "IntegrationGatewayForDevelopers.ditamap",
-      "indexRedirect": true,
-      "srcId": "restapisrc",
-      "docId": "integgatewaydev202205"
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "IntegrationGatewayReleaseNotes.ditamap",
-      "indexRedirect": true,
-      "srcId": "restapisrc",
-      "docId": "integgatewayrn202205"
-    },
-    {
-      "buildType": "yarn",
-      "docId": "webhooksapinext",
-      "srcId": "webhooksapinextsrc",
-      "workingDir": "docs"
     },
     {
       "buildType": "yarn",

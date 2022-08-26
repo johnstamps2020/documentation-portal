@@ -40,11 +40,7 @@
         },
         {
           "label": "Integration Gateway Release Notes",
-          "id": "integgatewayrndraft"
-        },
-        {
-          "label": "Integration Gateway Release Notes",
-          "id": "integgatewayrn202205"
+          "id": "integgatewayrnlatest"
         },
         {
           "label": "REST API Client Release Notes",
@@ -194,11 +190,7 @@
         },
         {
           "label": "Integration Gateway for Developers",
-          "id": "integgatewaydevdraft"
-        },
-        {
-          "label": "Integration Gateway for Developers",
-          "id": "integgatewaydev202205"
+          "id": "integgatewaydevlatest"
         },
         {
           "label": "Plugins, Pre-built Integrations, and SOAP APIs",
@@ -232,7 +224,7 @@
         },
         {
           "label": "Gosu Reference",
-          "id": "is202205gosu"
+          "id": "gosureflatest"
         },
         {
           "label": "Webhooks API Reference",

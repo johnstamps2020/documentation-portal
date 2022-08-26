@@ -154,11 +154,7 @@
       "items": [
         {
           "label": "Integration Gateway Release Notes",
-          "id": "integgatewayrn202205"
-        },
-        {
-          "label": "Integration Gateway Release Notes",
-          "id": "integgatewayrndraft"
+          "id": "integgatewayrnlatest"
         },
         {
           "label": "REST API Client Release Notes",

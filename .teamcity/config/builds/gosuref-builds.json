@@ -1,0 +1,13 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "GosuRefGuide.ditamap",
+      "srcId": "is202209src",
+      "docId": "gosureflatest",
+      "indexRedirect": true
+    }
+  ]
+}

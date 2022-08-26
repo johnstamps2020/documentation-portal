@@ -7157,42 +7157,6 @@
       "earlyAccess": false
     },
     {
-      "id": "isrestapiclientguide",
-      "title": "REST API Client",
-      "url": "is/restapiclient/guide",
-      "metadata": {
-        "platform": ["Cloud", "Self-managed"],
-        "product": ["REST API Client"],
-        "version": ["latest"],
-        "subject": ["Integration"],
-        "release": ["Banff", "Cortina", "Dobson", "Elysian"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "isrestapiclientrn",
-      "title": "REST API Client Release Notes",
-      "url": "is/restapiclient/releasenotes",
-      "metadata": {
-        "platform": ["Cloud", "Self-managed"],
-        "product": ["REST API Client"],
-        "version": ["latest"],
-        "subject": ["Release notes"],
-        "release": ["Banff", "Cortina", "Dobson", "Elysian"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "gwglossary",
       "title": "Glossary",
       "url": "glossary",
@@ -7324,8 +7288,8 @@
     },
     {
       "id": "surepathmethodologymain",
-      "title": "SurePath Implementation Resources",
-      "url": "implementation-resources/latest",
+      "title": "SurePath Resources",
+      "url": "surepath-resources/latest",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["SurePath Framework"],

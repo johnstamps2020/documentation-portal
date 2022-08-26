@@ -1,0 +1,11 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "yarn",
+      "docId": "webhooksapinext",
+      "srcId": "webhooksapinextsrc",
+      "workingDir": "docs"
+    }
+  ]
+}

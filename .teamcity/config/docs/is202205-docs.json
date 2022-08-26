@@ -20,42 +20,6 @@
       "earlyAccess": false
     },
     {
-      "id": "appeventsrn",
-      "title": "App Events Release Notes",
-      "url": "cloud/is/202205/appeventsrn",
-      "metadata": {
-        "product": ["ClaimCenter", "PolicyCenter", "App Events Webhooks"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Release Notes"]
-      },
-      "environments": ["int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
-      "id": "appeventsdev",
-      "title": "App Events for Developers",
-      "url": "cloud/is/202205/appevents",
-      "metadata": {
-        "product": ["PolicyCenter", "ClaimCenter", "App Events Webhooks"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Integration"]
-      },
-      "environments": ["int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
       "id": "isbc202205releasenotes",
       "title": "Release Notes",
       "url": "cloud/bc/202205/releasenotes",
@@ -250,24 +214,6 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "is202205gosu",
-      "title": "Gosu Reference",
-      "url": "cloud/is/202205/gosu",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
       "internal": false,
       "earlyAccess": false
     },
@@ -972,60 +918,6 @@
       "public": true,
       "internal": false,
       "earlyAccess": false
-    },
-    {
-      "id": "integgatewaydev202205",
-      "title": "Integration Gateway for Developers",
-      "url": "cloud/is/integgateway",
-      "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Integration"]
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "integgatewayrn202205",
-      "title": "Integration Gateway Release Notes",
-      "url": "cloud/is/igrelnotes",
-      "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Release notes"]
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "webhooksapinext",
-      "title": "Webhooks API Reference",
-      "url": "cloud/is/webhooksapi",
-      "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Elysian"],
-        "subject": ["Integration"]
-      },
-      "environments": ["int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
     },
     {
       "id": "isobservability202205",

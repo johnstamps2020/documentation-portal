@@ -296,19 +296,11 @@
           "items": [
             {
               "label": "Release Notes",
-              "id": "integgatewayrndraft"
-            },
-            {
-              "label": "Release Notes",
-              "id": "integgatewayrn202205"
+              "id": "integgatewayrnlatest"
             },
             {
               "label": "Integration Gateway Developer Guide",
-              "id": "integgatewaydevdraft"
-            },
-            {
-              "label": "Integration Gateway Developer Guide",
-              "id": "integgatewaydev202205"
+              "id": "integgatewaydevlatest"
             }
           ]
         }
