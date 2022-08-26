@@ -1,10 +1,10 @@
 require('dotenv').config();
 const OktaJwtVerifier = require('@okta/jwt-verifier');
 const jsonwebtoken = require('jsonwebtoken');
-const { isPublicDoc, isInternalDoc } = require('./configController');
-const { addCommonDataToSessionLocals } = require('./localsController');
-const { fetchConfigFileForLandingPage } = require('./frontendController');
-const { winstonLogger } = require('./loggerController');
+const {isPublicDoc, isInternalDoc} = require('./configController');
+const {addCommonDataToSessionLocals} = require('./localsController');
+const {fetchConfigFileForLandingPage} = require('./frontendController');
+const {winstonLogger} = require('./loggerController');
 
 const loginGatewayRoute = '/gw-login';
 const gwCommunityCustomerParam = 'guidewire-customer';
@@ -16,7 +16,7 @@ function getTokenFromRequestHeader(req) {
     return authorizationHeader ? authorizationHeader.split(' ')[1] : null;
   } catch (err) {
     winstonLogger.error(
-      `Problem getting token from request header 
+        `Problem getting token from request header 
               ERROR: ${JSON.stringify(err)}`
     );
     return null;
@@ -28,18 +28,18 @@ function getAvailableOktaIssuers() {
     [process.env.OKTA_ACCESS_TOKEN_ISSUER]: process.env.OKTA_CLIENT_ID,
   };
   if (
-    process.env.OKTA_ACCESS_TOKEN_ISSUER_APAC &&
-    process.env.OKTA_CLIENT_ID_APAC
+      process.env.OKTA_ACCESS_TOKEN_ISSUER_APAC &&
+      process.env.OKTA_CLIENT_ID_APAC
   ) {
     issuers[process.env.OKTA_ACCESS_TOKEN_ISSUER_APAC] =
-      process.env.OKTA_CLIENT_ID_APAC;
+        process.env.OKTA_CLIENT_ID_APAC;
   }
   if (
-    process.env.OKTA_ACCESS_TOKEN_ISSUER_EMEA &&
-    process.env.OKTA_CLIENT_ID_EMEA
+      process.env.OKTA_ACCESS_TOKEN_ISSUER_EMEA &&
+      process.env.OKTA_CLIENT_ID_EMEA
   ) {
     issuers[process.env.OKTA_ACCESS_TOKEN_ISSUER_EMEA] =
-      process.env.OKTA_CLIENT_ID_EMEA;
+        process.env.OKTA_CLIENT_ID_EMEA;
   }
 
   return issuers;
@@ -51,7 +51,7 @@ function createOktaJwtVerifier(token, availableIssuers) {
     if (decodedJwt) {
       const jwtIssuer = decodedJwt.iss;
       const issuer = Object.entries(availableIssuers).find(
-        iss => iss[0] === jwtIssuer
+          iss => iss[0] === jwtIssuer
       );
       return new OktaJwtVerifier({
         issuer: issuer[0],
@@ -62,13 +62,13 @@ function createOktaJwtVerifier(token, availableIssuers) {
       });
     } else {
       winstonLogger.warning(
-        'Invalid JSON Web Token in the Authorization header'
+          'Invalid JSON Web Token in the Authorization header'
       );
       return null;
     }
   } catch (err) {
     winstonLogger.error(
-      `Problem creating OKTA JWT verifier 
+        `Problem creating OKTA JWT verifier 
               ERROR: ${JSON.stringify(err)}`
     );
     return null;
@@ -78,8 +78,8 @@ function createOktaJwtVerifier(token, availableIssuers) {
 async function checkTokenInOkta(token, jwtVerifierInstance) {
   try {
     const jwt = await jwtVerifierInstance.verifyAccessToken(
-      token,
-      process.env.OKTA_ACCESS_TOKEN_AUDIENCE
+        token,
+        process.env.OKTA_ACCESS_TOKEN_AUDIENCE
     );
     return jwt;
   } catch (err) {
@@ -101,8 +101,8 @@ async function verifyToken(req) {
       const oktaJwtVerifier = createOktaJwtVerifier(bearerToken, oktaIssuers);
       if (oktaJwtVerifier) {
         const verifiedToken = await checkTokenInOkta(
-          bearerToken,
-          oktaJwtVerifier
+            bearerToken,
+            oktaJwtVerifier
         );
         return verifiedToken;
       } else {
@@ -110,7 +110,7 @@ async function verifyToken(req) {
       }
     } else {
       winstonLogger.info(
-        'The request does not contain the "Authorization: Bearer" header.'
+          'The request does not contain the "Authorization: Bearer" header.'
       );
       return null;
     }
@@ -124,8 +124,8 @@ async function isLoggedInOrHasValidToken(req) {
   try {
     const rawJsonRequest = req.query.rawJSON === 'true';
     return rawJsonRequest
-      ? !!(req.isAuthenticated() || (await verifyToken(req)))
-      : !!req.isAuthenticated();
+        ? !!(req.isAuthenticated() || (await verifyToken(req)))
+        : !!req.isAuthenticated();
   } catch (err) {
     winstonLogger.error(`PROBLEM VERIFYING TOKEN: ${JSON.stringify(err)}`);
     return false;
@@ -143,6 +143,9 @@ const majorOpenRoutes = [
   '/apiReferences',
   '/recommendations',
   '/scripts',
+  //  DO NOT DELETE google6a1282aff702e827.html, this allows us
+  //  to use Google Search Console and needs to be always available!!!
+  '/google6a1282aff702e827.html',
 ];
 
 const majorInternalRoutes = [];
@@ -163,7 +166,7 @@ const authGateway = async (req, res, next) => {
         }
       } catch (err) {
         winstonLogger.error(
-          `Problem redirecting to login page 
+            `Problem redirecting to login page 
               ERROR: ${JSON.stringify(err)}`
         );
       }
@@ -189,7 +192,7 @@ const authGateway = async (req, res, next) => {
         }
       } catch (err) {
         winstonLogger.error(
-          `Problem opening requested page 
+            `Problem opening requested page 
               ERROR: ${JSON.stringify(err)}`
         );
       }
@@ -200,7 +203,7 @@ const authGateway = async (req, res, next) => {
         req.next();
       } catch (err) {
         winstonLogger.error(
-          `Problem opening public page 
+            `Problem opening public page 
               ERROR: ${JSON.stringify(err)}`
         );
       }
@@ -216,7 +219,7 @@ const authGateway = async (req, res, next) => {
         return isPublicInConfig === true;
       } catch (err) {
         winstonLogger.error(
-          `Problem checking if route is open 
+            `Problem checking if route is open 
               ERROR: ${JSON.stringify(err)}`
         );
       }
@@ -236,7 +239,7 @@ const authGateway = async (req, res, next) => {
         return isInternalInConfig === true;
       } catch (err) {
         winstonLogger.error(
-          `Problem checking if route is internal 
+            `Problem checking if route is internal 
               ERROR: ${JSON.stringify(err)}`
         );
       }
@@ -247,7 +250,7 @@ const authGateway = async (req, res, next) => {
 
     const loggedInOrHasValidToken = await isLoggedInOrHasValidToken(req);
     const requestIsAuthenticated =
-      authenticationIsDisabled || loggedInOrHasValidToken;
+        authenticationIsDisabled || loggedInOrHasValidToken;
     req.session.requestIsAuthenticated = requestIsAuthenticated;
     await addCommonDataToSessionLocals(req, res);
     const isOpenRoute = await checkIfRouteIsOpen();
@@ -259,9 +262,9 @@ const authGateway = async (req, res, next) => {
     } else if (requestIsAuthenticated && isInternalRoute && hasGuidewireEmail) {
       openRequestedPage();
     } else if (
-      requestIsAuthenticated &&
-      isInternalRoute &&
-      !hasGuidewireEmail
+        requestIsAuthenticated &&
+        isInternalRoute &&
+        !hasGuidewireEmail
     ) {
       res.redirect('/internal');
     } else if (!requestIsAuthenticated && publicDocsAllowed && isOpenRoute) {
