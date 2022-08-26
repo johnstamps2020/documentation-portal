@@ -1,0 +1,35 @@
+iframe[src*='brightcove'] {
+    width: 880px;
+    height: 495px;
+}
+
+.substep iframe[src*='brightcove'],
+.li .li iframe[src*='brightcove'],
+.dl .li iframe[src*='brightcove'] {
+    width: 840px;
+    height: 472.5px;
+}
+
+iframe[src*='brightcove'] .vjs-button.vjs-share-control {
+    display: none;
+}
+
+iframe[src*='brightcove'] .video-js .vjs-picture-in-picture-control {
+    display: none;
+}
+
+iframe[src*='brightcove'] .vjs-big-play-button {
+    background-color: rgba(0, 115, 157, .7);
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+iframe[src*='brightcove'] .video-js:hover .vjs-big-play-button {
+    background-color: rgba(0, 115, 157, 1) !important;
+}
+
+iframe[src*='brightcove'] .video-js .vjs-play-progress {
+    background-color: rgba(0, 115, 255, 1);
+    color: rgba(0, 115, 255, 1);
+}
