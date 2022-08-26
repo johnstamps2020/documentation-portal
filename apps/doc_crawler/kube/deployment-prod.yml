@@ -141,23 +141,23 @@ spec:
       port: 9300
       protocol: TCP
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: oort.ccs.guidewire.com/v1alpha1
+kind: GatewayConfig
 metadata:
   namespace: doctools
-  name: docsearch-ingress-${DEPLOY_ENV}
+  name: docsearch-gateway-config-${DEPLOY_ENV}
 spec:
-  rules:
-    - host: docsearch-doctools.internal.${DEPLOY_ENV}.service.guidewire.net
-      http:
-        paths:
-          - backend:
-              service:
-                name: docsearch-${DEPLOY_ENV}
-                port:
-                  number: 9200
-            path: /
-            pathType: Prefix
+  profiles:
+    - name: Default
+  path_configs:
+    - name: Default
+      paths:
+        - /**
+      profiles:
+        - Default
+  service_ref: docsearch-${DEPLOY_ENV}
+  service_alias: docsearch-doctools
+  enable_sub_domain: false
 ---
 apiVersion: v1
 kind: Service
@@ -226,20 +226,20 @@ spec:
           ports:
             - containerPort: 5601
 ---
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: oort.ccs.guidewire.com/v1alpha1
+kind: GatewayConfig
 metadata:
   namespace: doctools
-  name: kibana-doctools-ingress-${DEPLOY_ENV}
+  name: kibana-doctools-gateway-config-${DEPLOY_ENV}
 spec:
-  rules:
-    - host: kibana-doctools.internal.${DEPLOY_ENV}.service.guidewire.net
-      http:
-        paths:
-          - backend:
-              service:
-                name: kibana-doctools-${DEPLOY_ENV}
-                port:
-                  number: 5601
-            path: /
-            pathType: Prefix
+  profiles:
+    - name: Default
+  path_configs:
+    - name: Default
+      paths:
+        - /**
+      profiles:
+        - Default
+  service_ref: kibana-doctools-${DEPLOY_ENV}
+  service_alias: kibana-doctools
+  enable_sub_domain: false

@@ -3321,7 +3321,7 @@ object Helpers {
 
     fun getElasticsearchUrl(deploy_env: String): String {
         return if (arrayOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
-            "https://docsearch-doctools.internal.us-east-2.service.guidewire.net"
+            "https://docsearch-doctools.us-east-2.service.guidewire.net"
         } else {
             "https://docsearch-doctools.${deploy_env}.ccs.guidewire.net"
         }
