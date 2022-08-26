@@ -1137,12 +1137,6 @@ object Content {
             name = "Generate sitemap for $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:<default>"
-                cleanCheckout = true
-            }
-
             steps {
                 step(GwBuildSteps.createRunSitemapGeneratorStep(deploy_env, outputDir))
                 step(GwBuildSteps.createDeployStaticFilesStep(deploy_env,
@@ -1160,6 +1154,7 @@ object Content {
                             minute = 1
                         }
                         triggerBuild = always()
+                        withPendingChangesOnly = false
                     }
                 }
             }
@@ -1198,6 +1193,7 @@ object Content {
                         minute = 1
                     }
                     triggerBuild = always()
+                    withPendingChangesOnly = false
                 }
             }
         }
