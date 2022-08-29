@@ -2158,14 +2158,10 @@ object Server {
         }
 
         if (arrayOf(GwDeployEnvs.STAGING.env_name, GwDeployEnvs.PROD.env_name).contains(deploy_env)) {
-            // Temporarily enable deployment to andromenda-omega2 from a branch
-            // TODO: After the migration from prod-us-east-2 is complete and changes are merged to master
-            //  The branch filter must be restored to the following value
-            //  deployServerBuildType.vcs.branchFilter = "+:<default>"
-            deployServerBuildType.vcs.branchFilter = """
-                +:<default>
-                +:(refs/heads/andromeda-omega2)
-            """.trimIndent()
+            // Temporarily enable deployment to prod from all branches
+            // TODO: After the migration from prod-us-east-2 to andromeda-omega2 is complete and changes are merged to master
+            //  The branch filter must be uncommented
+            // deployServerBuildType.vcs.branchFilter = "+:<default>"
             deployServerBuildType.params.text(
                 "TAG_VERSION",
                 "",
