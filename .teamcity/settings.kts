@@ -89,29 +89,33 @@ enum class GwConfigParams(val param_value: String) {
     BUILD_DATA_DIR("json"),
     BUILD_DATA_FILE("build-data.json"),
     COMMON_GW_DITAVALS_DIR("common_gw_ditavals"),
-    BITBUCKET_SSH_KEY("svc-doc-bitbucket")
+    BITBUCKET_SSH_KEY("svc-doc-bitbucket"),
+    ECR_HOST("627188849628.dkr.ecr.us-west-2.amazonaws.com"),
+    ECR_HOST_PROD("710503867599.dkr.ecr.us-east-2.amazonaws.com"),
+    ARTIFACTORY_HOST("artifactory.guidewire.com")
 }
 
 enum class GwDockerImages(val image_url: String) {
-    DOC_PORTAL("artifactory.guidewire.com/doctools-docker-dev/docportal"),
-    DITA_OT_LATEST("artifactory.guidewire.com/doctools-docker-dev/dita-ot:latest"),
-    DITA_OT_3_6_1("artifactory.guidewire.com/doctools-docker-dev/dita-ot:3.6.1"),
-    ATMOS_DEPLOY_2_6_0("artifactory.guidewire.com/devex-docker-dev/atmosdeploy:2.6.0"),
-    CONFIG_DEPLOYER_LATEST("artifactory.guidewire.com/doctools-docker-dev/config-deployer:latest"),
-    DOC_CRAWLER_LATEST("artifactory.guidewire.com/doctools-docker-dev/doc-crawler:latest"),
-    INDEX_CLEANER_LATEST("artifactory.guidewire.com/doctools-docker-dev/index-cleaner:latest"),
-    BUILD_MANAGER_LATEST("artifactory.guidewire.com/doctools-docker-dev/build-manager:latest"),
-    RECOMMENDATION_ENGINE_LATEST("artifactory.guidewire.com/doctools-docker-dev/recommendation-engine:latest"),
-    FLAIL_SSG_LATEST("artifactory.guidewire.com/doctools-docker-dev/flail-ssg:latest"),
-    LION_PKG_BUILDER_LATEST("artifactory.guidewire.com/doctools-docker-dev/lion-pkg-builder:latest"),
-    LION_PAGE_BUILDER_LATEST("artifactory.guidewire.com/doctools-docker-dev/lion-page-builder:latest"),
-    UPGRADE_DIFFS_PAGE_BUILDER_LATEST("artifactory.guidewire.com/doctools-docker-dev/upgradediffs-page-builder:latest"),
-    SITEMAP_GENERATOR_LATEST("artifactory.guidewire.com/doctools-docker-dev/sitemap-generator:latest"),
-    DOC_VALIDATOR_LATEST("artifactory.guidewire.com/doctools-docker-dev/doc-validator:latest"),
-    PYTHON_3_9_SLIM_BUSTER("artifactory.guidewire.com/hub-docker-remote/python:3.9-slim-buster"),
-    NODE_REMOTE_BASE("artifactory.guidewire.com/hub-docker-remote/node"),
-    NODE_16_14_2("artifactory.guidewire.com/hub-docker-remote/node:16.14.2"),
-    GENERIC_14_14_0_YARN_CHROME("artifactory.guidewire.com/jutro-docker-dev/generic:14.14.0-yarn-chrome")
+    DOC_PORTAL("${GwConfigParams.ECR_HOST.param_value}/tenant-doctools-docportal"),
+    DOC_PORTAL_PROD("${GwConfigParams.ECR_HOST_PROD.param_value}/tenant-doctools-docportal"),
+    DITA_OT_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/dita-ot:latest"),
+    DITA_OT_3_6_1("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/dita-ot:3.6.1"),
+    ATMOS_DEPLOY_2_6_0("${GwConfigParams.ARTIFACTORY_HOST.param_value}/devex-docker-dev/atmosdeploy:2.6.0"),
+    CONFIG_DEPLOYER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/config-deployer:latest"),
+    DOC_CRAWLER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/doc-crawler:latest"),
+    INDEX_CLEANER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/index-cleaner:latest"),
+    BUILD_MANAGER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/build-manager:latest"),
+    RECOMMENDATION_ENGINE_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/recommendation-engine:latest"),
+    FLAIL_SSG_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/flail-ssg:latest"),
+    LION_PKG_BUILDER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/lion-pkg-builder:latest"),
+    LION_PAGE_BUILDER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/lion-page-builder:latest"),
+    UPGRADE_DIFFS_PAGE_BUILDER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/upgradediffs-page-builder:latest"),
+    SITEMAP_GENERATOR_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/sitemap-generator:latest"),
+    DOC_VALIDATOR_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/doc-validator:latest"),
+    PYTHON_3_9_SLIM_BUSTER("${GwConfigParams.ARTIFACTORY_HOST.param_value}/hub-docker-remote/python:3.9-slim-buster"),
+    NODE_REMOTE_BASE("${GwConfigParams.ARTIFACTORY_HOST.param_value}/hub-docker-remote/node"),
+    NODE_16_14_2("${GwConfigParams.ARTIFACTORY_HOST.param_value}/hub-docker-remote/node:16.14.2"),
+    GENERIC_14_14_0_YARN_CHROME("${GwConfigParams.ARTIFACTORY_HOST.param_value}/jutro-docker-dev/generic:14.14.0-yarn-chrome")
 }
 
 enum class GwExportFrequencies(val param_value: String) {
@@ -363,7 +367,7 @@ object Docs {
                         set -xe
                         
                         export PACKAGE_NAME="gccwebhelp"
-                        export IMAGE_URL="artifactory.guidewire.com/doctools-docker-dev/${'$'}PACKAGE_NAME:%DOC_VERSION%"
+                        export IMAGE_URL="${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/${'$'}PACKAGE_NAME:%DOC_VERSION%"
                         
                         docker build -t ${'$'}PACKAGE_NAME .
                         docker tag ${'$'}PACKAGE_NAME ${'$'}IMAGE_URL
@@ -1133,12 +1137,6 @@ object Content {
             name = "Generate sitemap for $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:<default>"
-                cleanCheckout = true
-            }
-
             steps {
                 step(GwBuildSteps.createRunSitemapGeneratorStep(deploy_env, outputDir))
                 step(GwBuildSteps.createDeployStaticFilesStep(deploy_env,
@@ -1156,6 +1154,7 @@ object Content {
                             minute = 1
                         }
                         triggerBuild = always()
+                        withPendingChangesOnly = false
                     }
                 }
             }
@@ -1194,6 +1193,7 @@ object Content {
                         minute = 1
                     }
                     triggerBuild = always()
+                    withPendingChangesOnly = false
                 }
             }
         }
@@ -1342,10 +1342,7 @@ object Content {
                         echo ${'$'}(kubectl get pods --namespace=${namespace})
                         
                         eval "echo \"${'$'}(cat apps/doc_crawler/kube/${deploymentFile})\"" > deployment.yml
-                        
-                        kubectl get secret artifactory-secret --output="jsonpath={.data.\.dockerconfigjson}" --namespace=${namespace} || \
-                        kubectl create secret docker-registry artifactory-secret --docker-server=artifactory.guidewire.com --docker-username=%env.SERVICE_ACCOUNT_USERNAME% --docker-password=%env.ARTIFACTORY_API_KEY% --namespace=${namespace}
-                        
+                                                
                         kubectl apply -f deployment.yml --namespace=${namespace}
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
@@ -1866,10 +1863,10 @@ object Server {
                     export  PRETEND_TO_BE_EXTERNAL=no
                     export  ALLOW_PUBLIC_DOCS=yes
                     export  LOCALHOST_SESSION_SETTINGS=yes
-                    export  PARTNERS_LOGIN_URL=https://qaint-guidewire.cs172.force.com/partners/idp/endpoint/HttpRedirect
+                    export  PARTNERS_LOGIN_URL=https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect
                     export  PARTNERS_LOGIN_CERT=mock
                     export  PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/partners-login
-                    export  CUSTOMERS_LOGIN_URL=https://qaint-guidewire.cs172.force.com/customers/idp/endpoint/HttpRedirect
+                    export  CUSTOMERS_LOGIN_URL=https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect
                     export  CUSTOMERS_LOGIN_CERT=mock
                     export  CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/customers-login
                     
@@ -1994,6 +1991,7 @@ object Server {
             cleanCheckout = true
         }
 
+        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(GwDeployEnvs.DEV.env_name)
         steps {
             script {
                 name = "Bump and tag version"
@@ -2012,6 +2010,14 @@ object Server {
                 git push
                 git push --tags
                 
+                # Log into the dev ECR, build and push the image
+                export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
+                export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
+                export AWS_DEFAULT_REGION="$awsDefaultRegion"
+
+                set +x
+                docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.param_value}
+                set -x
                 docker build -t ${GwDockerImages.DOC_PORTAL.image_url}:${'$'}{TAG_VERSION} . --build-arg tag_version=${'$'}{TAG_VERSION}
                 docker push ${GwDockerImages.DOC_PORTAL.image_url}:${'$'}{TAG_VERSION}
             """.trimIndent()
@@ -2040,11 +2046,11 @@ object Server {
         val partnersLoginUrl: String
         val customersLoginUrl: String
         if (arrayOf(GwDeployEnvs.DEV.env_name, GwDeployEnvs.INT.env_name).contains(deploy_env)) {
-            partnersLoginUrl = "https://qaint-guidewire.cs172.force.com/partners/idp/endpoint/HttpRedirect"
-            customersLoginUrl = "https://qaint-guidewire.cs172.force.com/customers/idp/endpoint/HttpRedirect"
+            partnersLoginUrl = "https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
+            customersLoginUrl = "https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
         } else if (deploy_env == GwDeployEnvs.STAGING.env_name) {
-            partnersLoginUrl = "https://uat-guidewire.cs166.force.com/partners/idp/endpoint/HttpRedirect"
-            customersLoginUrl = "https://uat-guidewire.cs166.force.com/customers/idp/endpoint/HttpRedirect"
+            partnersLoginUrl = "https://guidewire--uat.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
+            customersLoginUrl = "https://guidewire--uat.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
         } else {
             partnersLoginUrl = "https://partner.guidewire.com/idp/endpoint/HttpRedirect"
             customersLoginUrl = "https://community.guidewire.com/idp/endpoint/HttpRedirect"
@@ -2054,7 +2060,7 @@ object Server {
         val gatewayConfigFile: String
         if (deploy_env == GwDeployEnvs.PROD.env_name) {
             deploymentFile = "deployment-prod.yml"
-            gatewayConfigFile = "gateway-config-prod.yml"
+            gatewayConfigFile = "ingress-prod.yml"
         } else {
             deploymentFile = "deployment.yml"
             gatewayConfigFile = "gateway-config.yml"
@@ -2101,10 +2107,7 @@ object Server {
                         eval "echo \"${'$'}(cat server/kube/${deploymentFile})\"" > ${'$'}TMP_DEPLOYMENT_FILE
                         eval "echo \"${'$'}(cat server/kube/${gatewayConfigFile})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
                         eval "echo \"${'$'}(cat server/kube/service.yml)\"" > ${'$'}TMP_SERVICE_FILE
-                        
-                        kubectl get secret artifactory-secret --output="jsonpath={.data.\.dockerconfigjson}" --namespace=${namespace} || \
-                        kubectl create secret docker-registry artifactory-secret --docker-server=artifactory.guidewire.com --docker-username=%env.SERVICE_ACCOUNT_USERNAME% --docker-password=%env.ARTIFACTORY_API_KEY% --namespace=${namespace}
-                        
+                                                
                         sed -ie "s/BUILD_TIME/${'$'}(date)/g" ${'$'}TMP_DEPLOYMENT_FILE
                         kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${namespace}
                         kubectl apply -f ${'$'}TMP_SERVICE_FILE --namespace=${namespace}
@@ -2155,7 +2158,10 @@ object Server {
         }
 
         if (arrayOf(GwDeployEnvs.STAGING.env_name, GwDeployEnvs.PROD.env_name).contains(deploy_env)) {
-            deployServerBuildType.vcs.branchFilter = "+:<default>"
+            // Temporarily enable deployment to prod from all branches
+            // TODO: After the migration from prod-us-east-2 to andromeda-omega2 is complete and changes are merged to master
+            //  The branch filter must be uncommented
+            // deployServerBuildType.vcs.branchFilter = "+:<default>"
             deployServerBuildType.params.text(
                 "TAG_VERSION",
                 "",
@@ -2166,9 +2172,7 @@ object Server {
             )
             if (deploy_env == GwDeployEnvs.PROD.env_name) {
                 val publishServerDockerImageToEcrStep =
-                    GwBuildSteps.createPublishServerDockerImageToEcrStep(deploy_env,
-                        GwDockerImages.DOC_PORTAL.image_url,
-                        tagVersion)
+                    GwBuildSteps.createPublishServerDockerImageToProdEcrStep(tagVersion)
                 deployServerBuildType.steps.step(publishServerDockerImageToEcrStep)
                 deployServerBuildType.steps.stepsOrder.add(0, publishServerDockerImageToEcrStep.id.toString())
             }
@@ -2176,7 +2180,7 @@ object Server {
 
         if (arrayOf(GwDeployEnvs.DEV.env_name, GwDeployEnvs.INT.env_name).contains(deploy_env)) {
             val buildAndPublishServerDockerImageStep =
-                GwBuildSteps.createBuildAndPublishServerDockerImageStep(GwDockerImages.DOC_PORTAL.image_url, tagVersion)
+                GwBuildSteps.createBuildAndPublishServerDockerImageToDevEcrStep(tagVersion)
             deployServerBuildType.steps.step(buildAndPublishServerDockerImageStep)
             deployServerBuildType.steps.stepsOrder.add(0, buildAndPublishServerDockerImageStep.id.toString())
             deployServerBuildType.dependencies {
@@ -3316,7 +3320,7 @@ object Helpers {
 
     fun getElasticsearchUrl(deploy_env: String): String {
         return if (arrayOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
-            "https://docsearch-doctools.internal.us-east-2.service.guidewire.net"
+            "https://docsearch-doctools.us-east-2.service.guidewire.net"
         } else {
             "https://docsearch-doctools.${deploy_env}.ccs.guidewire.net"
         }
@@ -3613,30 +3617,37 @@ object GwBuildSteps {
         }
     }
 
-    fun createPublishServerDockerImageToEcrStep(
-        deploy_env: String,
-        package_name: String,
+    fun createPublishServerDockerImageToProdEcrStep(
         tag_version: String,
     ): ScriptBuildStep {
-        val ecrHost = "710503867599.dkr.ecr.us-east-2.amazonaws.com"
-        val ecrPackageName = "${ecrHost}/tenant-doctools-docportal"
-        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
+        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(GwDeployEnvs.DEV.env_name)
+        val (awsAccessKeyIdProd, awsSecretAccessKeyProd, awsDefaultRegionProd) = Helpers.getAwsSettings(GwDeployEnvs.PROD.env_name)
         return ScriptBuildStep {
-            name = "Publish server Docker Image to ECR"
+            name = "Publish server Docker Image to PROD ECR"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 set -xe
                 
+                # Log into the dev ECR, download the image and tag it
                 export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
                 export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
                 export AWS_DEFAULT_REGION="$awsDefaultRegion"
-                
-                docker pull ${package_name}:${tag_version}
-                docker tag ${package_name}:${tag_version} ${ecrPackageName}:${tag_version}
+
                 set +x
-                docker login -u AWS -p ${'$'}(aws ecr get-login-password) $ecrHost
+                docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.param_value}
                 set -x
-                docker push ${ecrPackageName}:${tag_version}
+                docker pull ${GwDockerImages.DOC_PORTAL.image_url}:${tag_version}
+                docker tag ${GwDockerImages.DOC_PORTAL.image_url}:${tag_version} ${GwDockerImages.DOC_PORTAL_PROD.image_url}:${tag_version}
+                
+                # Log into the prod ECR and push the image
+                export AWS_ACCESS_KEY_ID="$awsAccessKeyIdProd"
+                export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKeyProd"
+                export AWS_DEFAULT_REGION="$awsDefaultRegionProd"
+                
+                set +x
+                docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST_PROD.param_value}
+                set -x
+                docker push ${GwDockerImages.DOC_PORTAL_PROD.image_url}:${tag_version}
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -3646,19 +3657,27 @@ object GwBuildSteps {
         }
     }
 
-    fun createBuildAndPublishServerDockerImageStep(
-        package_name: String,
+    fun createBuildAndPublishServerDockerImageToDevEcrStep(
         tag_version: String,
     ): ScriptBuildStep {
+        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(GwDeployEnvs.DEV.env_name)
         return ScriptBuildStep {
-            name = "Build and publish server Docker Image"
+            name = "Build and publish server Docker Image to DEV ECR"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash 
                 set -xe
                 
-                docker build -t ${package_name}:${tag_version} ./server --build-arg tag_version=${tag_version}
-                docker push ${package_name}:${tag_version}
+                # Log into the dev ECR, build and push the image
+                export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
+                export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
+                export AWS_DEFAULT_REGION="$awsDefaultRegion"
+
+                set +x
+                docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.param_value}
+                set -x
+                docker build -t ${GwDockerImages.DOC_PORTAL.image_url}:${tag_version} ./server --build-arg tag_version=${tag_version}
+                docker push ${GwDockerImages.DOC_PORTAL.image_url}:${tag_version}
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -3969,6 +3988,7 @@ object GwBuildSteps {
 
         val dockerImageName = when (output_format) {
             GwDitaOutputFormats.HTML5.format_name -> GwDockerImages.DITA_OT_3_6_1.image_url
+            GwDitaOutputFormats.SINGLEHTML.format_name -> GwDockerImages.DITA_OT_3_6_1.image_url
             else -> GwDockerImages.DITA_OT_LATEST.image_url
         }
 
@@ -4082,6 +4102,7 @@ object GwBuildSteps {
 
         val dockerImageName = when (output_format) {
             GwDitaOutputFormats.HTML5.format_name -> GwDockerImages.DITA_OT_3_6_1.image_url
+            GwDitaOutputFormats.SINGLEHTML.format_name -> GwDockerImages.DITA_OT_3_6_1.image_url
             else -> GwDockerImages.DITA_OT_LATEST.image_url
         }
 
@@ -4268,22 +4289,22 @@ object GwBuildSteps {
                     $customEnvExportVars
                     
                     # legacy Jutro repos
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/artifactory/api/npm/jutro-npm-dev -s @jutro
-                    npm config set @jutro:registry https://artifactory.guidewire.com/artifactory/api/npm/jutro-npm-dev/
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/artifactory/api/npm/globalization-npm-release -s @gwre-g11n
-                    npm config set @gwre-g11n:registry https://artifactory.guidewire.com/artifactory/api/npm/globalization-npm-release/
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/artifactory/api/npm/elixir -s @elixir
-                    npm config set @elixir:registry https://artifactory.guidewire.com/artifactory/api/npm/elixir/
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/artifactory/api/npm/portfoliomunster-npm-dev -s @gtui
-                    npm config set @gtui:registry https://artifactory.guidewire.com/artifactory/api/npm/portfoliomunster-npm-dev/
+                    npm-cli-login -u "%env.ARTIFACTORY_SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/jutro-npm-dev -s @jutro
+                    npm config set @jutro:registry https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/jutro-npm-dev/
+                    npm-cli-login -u "%env.ARTIFACTORY_SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/globalization-npm-release -s @gwre-g11n
+                    npm config set @gwre-g11n:registry https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/globalization-npm-release/
+                    npm-cli-login -u "%env.ARTIFACTORY_SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/elixir -s @elixir
+                    npm config set @elixir:registry https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/elixir/
+                    npm-cli-login -u "%env.ARTIFACTORY_SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/portfoliomunster-npm-dev -s @gtui
+                    npm config set @gtui:registry https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/portfoliomunster-npm-dev/
                                         
                     # new Jutro proxy repo
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/artifactory/api/npm/jutro-suite-npm-dev
-                    npm config set registry https://artifactory.guidewire.com/artifactory/api/npm/jutro-suite-npm-dev/
+                    npm-cli-login -u "%env.ARTIFACTORY_SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/jutro-suite-npm-dev
+                    npm config set registry https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/jutro-suite-npm-dev/
 
                     # Doctools repo
-                    npm-cli-login -u "%env.SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://artifactory.guidewire.com/artifactory/api/npm/doctools-npm-dev -s @doctools
-                    npm config set @doctools:registry https://artifactory.guidewire.com/artifactory/api/npm/doctools-npm-dev/
+                    npm-cli-login -u "%env.ARTIFACTORY_SERVICE_ACCOUNT_USERNAME%" -p "%env.ARTIFACTORY_API_KEY%" -e doctools@guidewire.com -r https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/doctools-npm-dev -s @doctools
+                    npm config set @doctools:registry https://${GwConfigParams.ARTIFACTORY_HOST.param_value}/artifactory/api/npm/doctools-npm-dev/
                     
                     cd "$working_dir"
                     yarn

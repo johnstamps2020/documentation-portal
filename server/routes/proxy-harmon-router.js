@@ -54,7 +54,8 @@ const responseSelectors = [
       // HTML5 -> div.footerContents
       // Webhelp -> header.wh_header
       // Docusaurus -> body.navigation-with-keyboard
-      'div.footerContents, header.wh_header, body.navigation-with-keyboard',
+      // Storybook -> div[style="position: static !important;"]
+      'div.footerContents, header.wh_header, body.navigation-with-keyboard, div[style="position: static !important;"]',
     func: function(node) {
       appendToSelectedItem(node, pendoAndGoogleScripts);
     },

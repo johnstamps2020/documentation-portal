@@ -1,6 +1,6 @@
 <div class="sidebar">
   <div class="categoryCard cardShadow">
-    <div class="label">Developer Resources</div>
+    <div class="label">Implementation Resources</div>
     <% if (pageContent.title.toLowerCase() === 'flaine') { %>
     <a href="/testingFramework/flaine">Guidewire Testing</a>
     <% } %> <% if (pageContent.title.toLowerCase() === 'elysian') { %>
@@ -11,7 +11,7 @@
     <a href="/cloud/standards/latest">Guidewire Cloud Standards</a>
     <a href="/upgradediffs">Upgrade Diff Reports</a>
     <% if (process.env.DEPLOY_ENV.toLowerCase() === 'int') { %>
-      <a href="/implementation-resources/latest">SurePath Implementation Resources</a>
+      <a href="/surepath-framework/latest">SurePath Framework</a>
     <% } %>
   </div>
   <% if (pageContent.title.toLowerCase() === 'elysian') { %>
