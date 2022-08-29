@@ -1918,7 +1918,8 @@
     {
       "buildType": "yarn",
       "srcId": "internaldocssrc",
-      "docId": "internaldocslatest"
+      "docId": "internaldocslatest",
+      "nodeImageVersion": "16.16.0"
     },
     {
       "buildType": "yarn",
