@@ -1861,22 +1861,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "RESTAPIClientGuide.ditamap",
-      "srcId": "restapisrc",
-      "docId": "isrestapiclientguide",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
-      "srcId": "restapisrc",
-      "docId": "isrestapiclientrn",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "Glossary.ditamap",
       "srcId": "gwglossarysrc",
@@ -1914,11 +1898,6 @@
       "buildType": "yarn",
       "srcId": "updatedevsrc",
       "docId": "updatedev"
-    },
-    {
-      "buildType": "yarn",
-      "srcId": "internaldocssrc",
-      "docId": "internaldocslatest"
     },
     {
       "buildType": "yarn",

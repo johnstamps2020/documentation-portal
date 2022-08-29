@@ -2,6 +2,13 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "datamaskingsrc",
+      "title": "Data Masking",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/data-masking.git",
+      "branch": "main"
+    },
+    {
       "id": "rulessrc",
       "title": "Rules",
       "sourceType": "git",
