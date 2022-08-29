@@ -1218,7 +1218,7 @@
       "id": "internaldocssrc",
       "title": "Internal Docs",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/doctools/internal-docs-directory.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/internal-docs-directory.git",
       "branch": "main"
     },
     {
