@@ -2,17 +2,35 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "isbcelysiandraftreleasenotes",
+      "id": "ispc202209apd",
+      "title": "Advanced Product Designer in PolicyCenter",
+      "url": "cloud/pc/202209/apd",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202209releasenotes",
       "title": "Release Notes",
-      "url": "cloud/bc/202205/releasenotes",
+      "url": "cloud/bc/202209/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Release notes"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -20,17 +38,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isbcelysiandraftnewandchanged",
+      "id": "isbc202209newandchanged",
       "title": "New and Changed",
-      "url": "cloud/bc/202205/newandchanged",
+      "url": "cloud/bc/202209/newandchanged",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Release notes"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -38,17 +56,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isbcelysiandraftupgrade",
+      "id": "isbc202209upgrade",
       "title": "Upgrade",
-      "url": "cloud/bc/202205/upgrade",
+      "url": "cloud/bc/202209/upgrade",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Installation"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -56,17 +74,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isbcelysiandraftapp",
+      "id": "isbc202209app",
       "title": "Application Guide",
-      "url": "cloud/bc/202205/app",
+      "url": "cloud/bc/202209/app",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -74,17 +92,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isbcelysiandraftadmin",
+      "id": "isbc202209admin",
       "title": "Administration",
-      "url": "cloud/bc/202205/admin",
+      "url": "cloud/bc/202209/admin",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Administration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -92,17 +110,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isbcelysiandraftconfig",
+      "id": "isbc202209config",
       "title": "Configuration",
-      "url": "cloud/bc/202205/config",
+      "url": "cloud/bc/202209/config",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Configuration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -110,17 +128,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isbcelysiandraftdataarchiving",
+      "id": "isbc202209dataarchiving",
       "title": "Data Archiving",
-      "url": "cloud/bc/202205/dataarchiving",
+      "url": "cloud/bc/202209/dataarchiving",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Administration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -128,17 +146,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isbcelysiandraftglobal",
+      "id": "isbc202209global",
       "title": "Globalization",
-      "url": "cloud/bc/202205/global",
+      "url": "cloud/bc/202209/global",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Configuration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -146,17 +164,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isbcelysiandraftrules",
+      "id": "isbc202209rules",
       "title": "Gosu Rules",
-      "url": "cloud/bc/202205/rules",
+      "url": "cloud/bc/202209/rules",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Configuration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -164,17 +182,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isbcelysiandraftinteg",
+      "id": "isbc202209integ",
       "title": "Plugins, Prebuilt Integrations, and SOAP APIs",
-      "url": "cloud/bc/202205/integration",
+      "url": "cloud/bc/202209/integration",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -182,17 +200,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isbcelysiandraftapibf",
+      "id": "isbc202209apibf",
       "title": "Cloud API Business Flows and Configuration",
-      "url": "cloud/bc/202205/cloudapibf",
+      "url": "cloud/bc/202209/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -200,35 +218,17 @@
       "earlyAccess": false
     },
     {
-      "id": "iselysiandraftgosu",
-      "title": "Gosu Reference",
-      "url": "cloud/is/202205/gosu",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "isbcelysiandraftrestapifw",
+      "id": "isbc202209restapifw",
       "title": "REST API Framework",
-      "url": "cloud/bc/202205/restapiframework",
+      "url": "cloud/bc/202209/restapiframework",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -236,17 +236,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isbcelysiandraftdevsetup",
+      "id": "isbc202209devsetup",
       "title": "Developer Setup",
-      "url": "cloud/bc/202205/devsetup",
+      "url": "cloud/bc/202209/devsetup",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Installation"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -254,17 +254,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isccelysiandraftreleasenotes",
+      "id": "iscc202209releasenotes",
       "title": "Release Notes",
-      "url": "cloud/cc/202205/releasenotes",
+      "url": "cloud/cc/202209/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Release notes"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -272,17 +272,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isccelysiandraftnewandchanged",
+      "id": "iscc202209newandchanged",
       "title": "New and Changed",
-      "url": "cloud/cc/202205/newandchanged",
+      "url": "cloud/cc/202209/newandchanged",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Release notes"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -290,17 +290,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isccelysiandraftupgrade",
+      "id": "iscc202209upgrade",
       "title": "Upgrade",
-      "url": "cloud/cc/202205/upgrade",
+      "url": "cloud/cc/202209/upgrade",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Installation"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -308,17 +308,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isccelysiandraftapp",
+      "id": "iscc202209app",
       "title": "Application Guide",
-      "url": "cloud/cc/202205/app",
+      "url": "cloud/cc/202209/app",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -326,17 +326,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isccelysiandraftadmin",
+      "id": "iscc202209admin",
       "title": "Administration",
-      "url": "cloud/cc/202205/admin",
+      "url": "cloud/cc/202209/admin",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Administration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -344,17 +344,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isccelysiandraftconfig",
+      "id": "iscc202209config",
       "title": "Configuration",
-      "url": "cloud/cc/202205/config",
+      "url": "cloud/cc/202209/config",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Configuration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -362,17 +362,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isccelysiandraftdataarchiving",
+      "id": "iscc202209dataarchiving",
       "title": "Data Archiving",
-      "url": "cloud/cc/202205/dataarchiving",
+      "url": "cloud/cc/202209/dataarchiving",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Administration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -380,17 +380,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isccelysiandraftglobal",
+      "id": "iscc202209global",
       "title": "Globalization",
-      "url": "cloud/cc/202205/global",
+      "url": "cloud/cc/202209/global",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Configuration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -398,17 +398,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isccelysiandraftrules",
+      "id": "iscc202209rules",
       "title": "Gosu Rules",
-      "url": "cloud/cc/202205/rules",
+      "url": "cloud/cc/202209/rules",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Configuration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -416,17 +416,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isccelysiandraftinteg",
+      "id": "iscc202209integ",
       "title": "Plugins, Prebuilt Integrations, and SOAP APIs",
-      "url": "cloud/cc/202205/integration",
+      "url": "cloud/cc/202209/integration",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -434,17 +434,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isccelysiandraftapibf",
+      "id": "iscc202209apibf",
       "title": "Cloud API Business Flows and Configuration",
-      "url": "cloud/cc/202205/cloudapibf",
+      "url": "cloud/cc/202209/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -452,35 +452,35 @@
       "earlyAccess": false
     },
     {
-      "id": "isccelysiandraftapica",
+      "id": "iscc202209apica",
       "title": "Cloud API Authentication",
-      "url": "cloud/cc/202205/cloudapica",
+      "url": "cloud/cc/202209/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false,
+      "public": true,
       "internal": false,
       "earlyAccess": false
     },
     {
-      "id": "isccelysiandraftapicm",
+      "id": "iscc202209apicm",
       "title": "Cloud API ContactManager",
-      "url": "cloud/cc/202205/cloudapicm",
+      "url": "cloud/cc/202209/cloudapicm",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -488,17 +488,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isccelysiandraftrestapifw",
+      "id": "iscc202209restapifw",
       "title": "REST API Framework",
-      "url": "cloud/cc/202205/restapiframework",
+      "url": "cloud/cc/202209/restapiframework",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -506,17 +506,17 @@
       "earlyAccess": false
     },
     {
-      "id": "isccelysiandraftdevsetup",
+      "id": "iscc202209devsetup",
       "title": "Developer Setup",
-      "url": "cloud/cc/202205/devsetup",
+      "url": "cloud/cc/202209/devsetup",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Installation"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -524,17 +524,17 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiandraftreleasenotes",
+      "id": "ispc202209releasenotes",
       "title": "Release Notes",
-      "url": "cloud/pc/202205/releasenotes",
+      "url": "cloud/pc/202209/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Release notes"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -542,17 +542,17 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiandraftnewandchanged",
+      "id": "ispc202209newandchanged",
       "title": "New and Changed",
-      "url": "cloud/pc/202205/newandchanged",
+      "url": "cloud/pc/202209/newandchanged",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Release notes"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -560,17 +560,17 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiandraftupgrade",
+      "id": "ispc202209upgrade",
       "title": "Upgrade",
-      "url": "cloud/pc/202205/upgrade",
+      "url": "cloud/pc/202209/upgrade",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Installation"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -578,17 +578,17 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiandraftapp",
+      "id": "ispc202209app",
       "title": "Application Guide",
-      "url": "cloud/pc/202205/app",
+      "url": "cloud/pc/202209/app",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -596,17 +596,17 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiandraftadmin",
+      "id": "ispc202209admin",
       "title": "Administration",
-      "url": "cloud/pc/202205/admin",
+      "url": "cloud/pc/202209/admin",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Administration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -614,17 +614,17 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiandraftconfig",
+      "id": "ispc202209config",
       "title": "Configuration",
-      "url": "cloud/pc/202205/config",
+      "url": "cloud/pc/202209/config",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Configuration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -632,17 +632,17 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiandraftdataarchiving",
+      "id": "ispc202209dataarchiving",
       "title": "Data Archiving",
-      "url": "cloud/pc/202205/dataarchiving",
+      "url": "cloud/pc/202209/dataarchiving",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Administration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -650,17 +650,17 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiandraftglobal",
+      "id": "ispc202209global",
       "title": "Globalization",
-      "url": "cloud/pc/202205/global",
+      "url": "cloud/pc/202209/global",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Configuration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -668,17 +668,17 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiandraftrules",
+      "id": "ispc202209rules",
       "title": "Gosu Rules",
-      "url": "cloud/pc/202205/rules",
+      "url": "cloud/pc/202209/rules",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Configuration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -686,17 +686,17 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiandraftpd",
+      "id": "ispc202209pd",
       "title": "Product Designer",
-      "url": "cloud/pc/202205/pd",
+      "url": "cloud/pc/202209/pd",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Configuration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -704,17 +704,17 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiandraftpm",
+      "id": "ispc202209pm",
       "title": "Product Model",
-      "url": "cloud/pc/202205/productmodel",
+      "url": "cloud/pc/202209/productmodel",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Configuration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -722,17 +722,17 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiandraftinteg",
+      "id": "ispc202209integ",
       "title": "Plugins, Prebuilt Integrations, and SOAP APIs",
-      "url": "cloud/pc/202205/integration",
+      "url": "cloud/pc/202209/integration",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -740,17 +740,17 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiandraftapibf",
+      "id": "ispc202209apibf",
       "title": "Cloud API Business Flows and Configuration",
-      "url": "cloud/pc/202205/cloudapibf",
+      "url": "cloud/pc/202209/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -758,35 +758,35 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiandraftapica",
+      "id": "ispc202209apica",
       "title": "Cloud API Authentication",
-      "url": "cloud/pc/202205/cloudapica",
+      "url": "cloud/pc/202209/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false,
+      "public": true,
       "internal": false,
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiandraftapicm",
+      "id": "ispc202209apicm",
       "title": "Cloud API ContactManager",
-      "url": "cloud/pc/202205/cloudapicm",
+      "url": "cloud/pc/202209/cloudapicm",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -794,17 +794,17 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiandraftrestapifw",
+      "id": "ispc202209restapifw",
       "title": "REST API Framework",
-      "url": "cloud/pc/202205/restapiframework",
+      "url": "cloud/pc/202209/restapiframework",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -812,17 +812,17 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiandraftdevsetup",
+      "id": "ispc202209devsetup",
       "title": "Developer Setup",
-      "url": "cloud/pc/202205/devsetup",
+      "url": "cloud/pc/202209/devsetup",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Installation"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -830,17 +830,17 @@
       "earlyAccess": false
     },
     {
-      "id": "iselysiandraftintegoverview",
+      "id": "is202209integoverview",
       "title": "Overview of Cloud Integration",
-      "url": "cloud/202205/integoverview",
+      "url": "cloud/202209/integoverview",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Integration"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -848,22 +848,94 @@
       "earlyAccess": false
     },
     {
-      "id": "iselysiandraftcontact",
+      "id": "is202209contact",
       "title": "Contact Management",
-      "url": "cloud/is/202205/contact",
+      "url": "cloud/is/202209/contact",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "ccapirefflaine",
+      "title": "Cloud API Reference",
+      "url": "cloud/cc/202209/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "bcapirefflaine",
+      "title": "Cloud API Reference",
+      "url": "cloud/bc/202209/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "pcapirefflaine",
+      "title": "Cloud API Reference",
+      "url": "cloud/pc/202209/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Integration"]
+      },
+      "environments": ["dev", "int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isobservability202209",
+      "title": "InsuranceSuite Observability",
+      "url": "cloud/is/202209/observability",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
     }
   ]
 }

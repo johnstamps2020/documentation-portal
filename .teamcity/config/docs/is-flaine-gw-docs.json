@@ -2,14 +2,14 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "isbcelysiangwadmin",
+      "id": "isbcflainegwadmin",
       "title": "Administration",
-      "url": "cloud/bc/elysian-gw/admin",
+      "url": "cloud/bc/flaine-gw/admin",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
-        "version": ["GW-internal-Elysian"],
-        "release": ["Elysian"],
+        "version": ["GW-internal-Flaine"],
+        "release": ["Flaine"],
         "subject": ["Administration"]
       },
       "environments": ["int"],
@@ -20,14 +20,14 @@
       "earlyAccess": false
     },
     {
-      "id": "isbcelysiangwdevsetup",
+      "id": "isbcflainegwdevsetup",
       "title": "Developer Setup",
-      "url": "cloud/bc/elysian-gw/devsetup",
+      "url": "cloud/bc/flaine-gw/devsetup",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
-        "version": ["GW-internal-Elysian"],
-        "release": ["Elysian"],
+        "version": ["GW-internal-Flaine"],
+        "release": ["Flaine"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -38,14 +38,14 @@
       "earlyAccess": false
     },
     {
-      "id": "isbcelysiangwupgrade",
+      "id": "isbcflainegwupgrade",
       "title": "Upgrade",
-      "url": "cloud/bc/elysian-gw/upgrade",
+      "url": "cloud/bc/flaine-gw/upgrade",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
-        "version": ["GW-internal-Elysian"],
-        "release": ["Elysian"],
+        "version": ["GW-internal-Flaine"],
+        "release": ["Flaine"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -56,14 +56,14 @@
       "earlyAccess": false
     },
     {
-      "id": "isccelysiangwadmin",
+      "id": "isccflainegwadmin",
       "title": "Administration",
-      "url": "cloud/cc/elysian-gw/admin",
+      "url": "cloud/cc/flaine-gw/admin",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["GW-internal-Elysian"],
-        "release": ["Elysian"],
+        "version": ["GW-internal-Flaine"],
+        "release": ["Flaine"],
         "subject": ["Administration"]
       },
       "environments": ["int"],
@@ -74,14 +74,14 @@
       "earlyAccess": false
     },
     {
-      "id": "isccelysiangwdevsetup",
+      "id": "isccflainegwdevsetup",
       "title": "Developer Setup",
-      "url": "cloud/cc/elysian-gw/devsetup",
+      "url": "cloud/cc/flaine-gw/devsetup",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["GW-internal-Elysian"],
-        "release": ["Elysian"],
+        "version": ["GW-internal-Flaine"],
+        "release": ["Flaine"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -92,14 +92,14 @@
       "earlyAccess": false
     },
     {
-      "id": "isccelysiangwupgrade",
+      "id": "isccflainegwupgrade",
       "title": "Upgrade",
-      "url": "cloud/cc/elysian-gw/upgrade",
+      "url": "cloud/cc/flaine-gw/upgrade",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["GW-internal-Elysian"],
-        "release": ["Elysian"],
+        "version": ["GW-internal-Flaine"],
+        "release": ["Flaine"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -110,14 +110,14 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiangwadmin",
+      "id": "ispcflainegwadmin",
       "title": "Administration",
-      "url": "cloud/pc/elysian-gw/admin",
+      "url": "cloud/pc/flaine-gw/admin",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["GW-internal-Elysian"],
-        "release": ["Elysian"],
+        "version": ["GW-internal-Flaine"],
+        "release": ["Flaine"],
         "subject": ["Administration"]
       },
       "environments": ["int"],
@@ -128,14 +128,14 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiangwdevsetup",
+      "id": "ispcflainegwdevsetup",
       "title": "Developer Setup",
-      "url": "cloud/pc/elysian-gw/devsetup",
+      "url": "cloud/pc/flaine-gw/devsetup",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["GW-internal-Elysian"],
-        "release": ["Elysian"],
+        "version": ["GW-internal-Flaine"],
+        "release": ["Flaine"],
         "subject": ["Installation"]
       },
       "environments": ["int"],
@@ -146,14 +146,14 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcelysiangwupgrade",
+      "id": "ispcflainegwupgrade",
       "title": "Upgrade",
-      "url": "cloud/pc/elysian-gw/upgrade",
+      "url": "cloud/pc/flaine-gw/upgrade",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["GW-internal-Elysian"],
-        "release": ["Elysian"],
+        "version": ["GW-internal-Flaine"],
+        "release": ["Flaine"],
         "subject": ["Installation"]
       },
       "environments": ["int"],

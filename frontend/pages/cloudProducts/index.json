@@ -28,11 +28,17 @@
     {
       "label": "Flaine",
       "page": "flaine",
-      "env": ["int", "staging"]
+      "env": ["dev", "int", "staging"]
     },
     {
       "label": "_redirect",
-      "link": "/cloudProducts/elysian"
+      "link": "/cloudProducts/elysian",
+      "env": ["prod"]
+    },
+    {
+      "label": "_redirect",
+      "link": "/cloudProducts/flaine",
+      "env": ["dev", "int", "staging"]
     }
   ]
 }

@@ -1,0 +1,13 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "DataMasking.ditamap",
+      "srcId": "datamaskingsrc",
+      "docId": "datamasking",
+      "indexRedirect": true
+    }
+  ]
+}

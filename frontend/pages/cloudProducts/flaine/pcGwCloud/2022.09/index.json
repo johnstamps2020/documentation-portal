@@ -1,27 +1,31 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "BillingCenter for Guidewire Cloud 2022.05",
+  "title": "PolicyCenter for Guidewire Cloud 2022.09",
   "template": "page",
   "class": "twoColumns",
   "selector": {
     "label": "Select release",
-    "selectedItem": "Elysian (2022.05)",
+    "selectedItem": "Flaine (2022.09)",
     "items": [
       {
+        "label": "Elysian (2022.05)",
+        "page": "../../../elysian/pcGwCloud/2022.05"
+      },
+      {
         "label": "Dobson (2021.11)",
-        "page": "../../../dobson/bcGwCloud/2021.11"
+        "page": "../../../dobson/pcGwCloud/2021.11"
       },
       {
         "label": "Cortina (2021.04)",
-        "page": "../../../cortina/billingCenterCloud/bcGwCloud/2021.04"
+        "page": "../../../cortina/policyCenterCloud/pcGwCloud/2021.04"
       },
       {
         "label": "Banff (2020.11)",
-        "page": "../../../banff/billingCenterCloud/bcGwCloud/2020.11"
+        "page": "../../../banff/policyCenterCloud/pcGwCloud/2020.11"
       },
       {
         "label": "Aspen (2020.05)",
-        "page": "../../../aspen/billingCenterCloud"
+        "page": "../../../aspen/policyCenterCloud"
       }
     ]
   },
@@ -32,11 +36,11 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "isbcelysiandraftreleasenotes"
+          "id": "ispc202209releasenotes"
         },
         {
-          "label": "Release Notes",
-          "id": "isbc202205releasenotes"
+          "label": "AppReader Release Notes",
+          "id": "appreaderrn400"
         },
         {
           "label": "Integration Gateway Release Notes",
@@ -54,31 +58,19 @@
       "items": [
         {
           "label": "Developer Setup",
-          "id": "isbcelysiandraftdevsetup"
-        },
-        {
-          "label": "Developer Setup",
-          "id": "isbc202205devsetup"
+          "id": "ispc202209devsetup"
         },
         {
           "label": "Developer Setup (Internal only)",
-          "id": "isbcelysiangwdevsetup"
+          "id": "ispcflainegwdevsetup"
         },
         {
           "label": "Upgrade",
-          "id": "isbcelysiandraftupgrade"
-        },
-        {
-          "label": "Upgrade",
-          "id": "isbc202205upgrade"
+          "id": "ispc202209upgrade"
         },
         {
           "label": "Upgrade (Internal only)",
-          "id": "isbcelysiangwupgrade"
-        },
-        {
-          "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetoolsdraft"
+          "id": "ispcflainegwupgrade"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
@@ -96,19 +88,11 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "isbcelysiandraftapp"
-        },
-        {
-          "label": "Application Guide",
-          "id": "isbc202205app"
+          "id": "ispc202209app"
         },
         {
           "label": "Contact Management",
-          "id": "iselysiandraftcontact"
-        },
-        {
-          "label": "Contact Management",
-          "id": "is202205contact"
+          "id": "is202209contact"
         }
       ]
     },
@@ -118,23 +102,15 @@
       "items": [
         {
           "label": "Administration",
-          "id": "isbcelysiandraftadmin"
-        },
-        {
-          "label": "Administration",
-          "id": "isbc202205admin"
+          "id": "ispc202209admin"
         },
         {
           "label": "Administration (Internal only)",
-          "id": "isbcelysiangwadmin"
+          "id": "ispcflainegwadmin"
         },
         {
           "label": "Data Archiving",
-          "id": "isbcelysiandraftdataarchiving"
-        },
-        {
-          "label": "Data Archiving",
-          "id": "isbc202205dataarchiving"
+          "id": "ispc202209dataarchiving"
         }
       ]
     },
@@ -143,28 +119,28 @@
       "class": "subject configuration",
       "items": [
         {
-          "label": "Configuration",
-          "id": "isbcelysiandraftconfig"
+          "label": "Advanced Product Designer in PolicyCenter",
+          "id": "ispc202209apd"
         },
         {
           "label": "Configuration",
-          "id": "isbc202205config"
+          "id": "ispc202209config"
         },
         {
           "label": "Globalization",
-          "id": "isbcelysiandraftglobal"
-        },
-        {
-          "label": "Globalization",
-          "id": "isbc202205global"
+          "id": "ispc202209global"
         },
         {
           "label": "Gosu Rules",
-          "id": "isbcelysiandraftrules"
+          "id": "ispc202209rules"
         },
         {
-          "label": "Gosu Rules",
-          "id": "isbc202205rules"
+          "label": "Product Designer",
+          "id": "ispc202209pd"
+        },
+        {
+          "label": "Product Model",
+          "id": "ispc202209pm"
         }
       ]
     },
@@ -174,19 +150,19 @@
       "items": [
         {
           "label": "Overview of Cloud Integration",
-          "id": "iselysiandraftintegoverview"
+          "id": "is202209integoverview"
         },
         {
-          "label": "Overview of Cloud Integration",
-          "id": "is202205integoverview"
-        },
-        {
-          "label": "Cloud API Business Flows",
-          "id": "isbcelysiandraftapibf"
+          "label": "Cloud API Authentication",
+          "id": "ispc202209apica"
         },
         {
           "label": "Cloud API Business Flows",
-          "id": "isbc202205apibf"
+          "id": "ispc202209apibf"
+        },
+        {
+          "label": "Cloud API ContactManager",
+          "id": "ispc202209apicm"
         },
         {
           "label": "Integration Gateway for Developers",
@@ -194,19 +170,11 @@
         },
         {
           "label": "Plugins, Pre-built Integrations, and SOAP APIs",
-          "id": "isbcelysiandraftinteg"
-        },
-        {
-          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
-          "id": "isbc202205integ"
+          "id": "ispc202209integ"
         },
         {
           "label": "REST API Framework",
-          "id": "isbcelysiandraftrestapifw"
-        },
-        {
-          "label": "REST API Framework",
-          "id": "isbc202205restapifw"
+          "id": "ispc202209restapifw"
         },
         {
           "label": "REST API Client",
@@ -220,15 +188,7 @@
       "items": [
         {
           "label": "Gosu Reference",
-          "id": "iselysiandraftgosu"
-        },
-        {
-          "label": "Gosu Reference",
           "id": "gosureflatest"
-        },
-        {
-          "label": "Webhooks API Reference",
-          "id": "webhooksapinext"
         }
       ]
     },

@@ -396,22 +396,6 @@
       "srcId": "is202205src",
       "docId": "iselysiandraftintegoverview",
       "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "IntegrationGatewayForDevelopers.ditamap",
-      "indexRedirect": true,
-      "srcId": "restapisrc",
-      "docId": "integgatewaydevdraft"
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "IntegrationGatewayReleaseNotes.ditamap",
-      "indexRedirect": true,
-      "srcId": "restapisrc",
-      "docId": "integgatewayrndraft"
     }
   ]
 }

@@ -1,0 +1,47 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "isupgradeguide202209src",
+      "title": "InsuranceSuite Upgrade Guide 2022.09",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
+      "branch": "release/2022.09"
+    },
+    {
+      "id": "cloudisapd202209src",
+      "title": "IS 2022.09 Advanced Product Designer for PolicyCenter",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
+      "branch": "release/pc/2022.09"
+    },
+    {
+      "id": "is202209src",
+      "title": "IS 2022.09.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/2022.09.0"
+    },
+    {
+      "id": "srcpcapirefflaine",
+      "title": "PC API ref preview 2022.09",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/pc-api-ref.git",
+      "branch": "release/flaine"
+    },
+    {
+      "id": "srcccapirefflaine",
+      "title": "CC API ref preview 2022.09",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cc-api-ref.git",
+      "branch": "release/flaine"
+    },
+    {
+      "id": "srcbcapirefflaine",
+      "title": "BC API ref preview 2022.09",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/bc-api-ref.git",
+      "branch": "release/flaine"
+    }
+  ]
+}
