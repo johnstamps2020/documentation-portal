@@ -35,6 +35,18 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
+          "label": "PolicyCenter",
+          "page": "pcGwCloud/2022.09"
+        },
+        {
+          "label": "ClaimCenter",
+          "page": "ccGwCloud/2022.09"
+        },
+        {
+          "label": "BillingCenter",
+          "page": "bcGwCloud/2022.09"
+        },
+        {
           "label": "Advanced Product Designer App",
           "page": "apd"
         },
@@ -254,19 +266,11 @@
           "items": [
             {
               "label": "Release Notes",
-              "id": "integgatewayrndraft"
-            },
-            {
-              "label": "Release Notes",
-              "id": "integgatewayrn202205"
+              "id": "integgatewayrnlatest"
             },
             {
               "label": "Integration Gateway Developer Guide",
-              "id": "integgatewaydevdraft"
-            },
-            {
-              "label": "Integration Gateway Developer Guide",
-              "id": "integgatewaydev202205"
+              "id": "integgatewaydevlatest"
             }
           ]
         }

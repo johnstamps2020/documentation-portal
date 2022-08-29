@@ -1,0 +1,77 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-GW.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "is202209src",
+      "docId": "isbcflainegwadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-GW.ditaval",
+      "root": "DeveloperSetupGuide.ditamap",
+      "srcId": "is202209src",
+      "docId": "isbcflainegwdevsetup",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-GW.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguide202209src",
+      "docId": "isbcflainegwupgrade"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-GW.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "is202209src",
+      "docId": "isccflainegwadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-GW.ditaval",
+      "root": "DeveloperSetupGuide.ditamap",
+      "srcId": "is202209src",
+      "docId": "isccflainegwdevsetup",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-GW.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguide202209src",
+      "docId": "isccflainegwupgrade"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-GW.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "is202209src",
+      "docId": "ispcflainegwadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-GW.ditaval",
+      "root": "DeveloperSetupGuide.ditamap",
+      "srcId": "is202209src",
+      "docId": "ispcflainegwdevsetup",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-GW.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguide202209src",
+      "docId": "ispcflainegwupgrade"
+    }
+  ]
+}

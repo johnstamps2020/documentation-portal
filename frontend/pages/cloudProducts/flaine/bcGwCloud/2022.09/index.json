@@ -1,0 +1,186 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "BillingCenter for Guidewire Cloud 2022.09",
+  "template": "page",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Flaine (2022.09)",
+    "items": [
+      {
+        "label": "Elysian (2022.05)",
+        "page": "../../../elysian/bcGwCloud/2022.05"
+      },
+      {
+        "label": "Dobson (2021.11)",
+        "page": "../../../dobson/bcGwCloud/2021.11"
+      },
+      {
+        "label": "Cortina (2021.04)",
+        "page": "../../../cortina/billingCenterCloud/bcGwCloud/2021.04"
+      },
+      {
+        "label": "Banff (2020.11)",
+        "page": "../../../banff/billingCenterCloud/bcGwCloud/2020.11"
+      },
+      {
+        "label": "Aspen (2020.05)",
+        "page": "../../../aspen/billingCenterCloud"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "isbc202209releasenotes"
+        },
+        {
+          "label": "Integration Gateway Release Notes",
+          "id": "integgatewayrnlatest"
+        },
+        {
+          "label": "REST API Client Release Notes",
+          "id": "isrestapiclientrn"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Developer Setup",
+          "id": "isbc202209devsetup"
+        },
+        {
+          "label": "Developer Setup (Internal only)",
+          "id": "isbcflainegwdevsetup"
+        },
+        {
+          "label": "Upgrade",
+          "id": "isbc202205upgrade"
+        },
+        {
+          "label": "Upgrade (Internal only)",
+          "id": "isbcflainegwupgrade"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools430"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools Compatibility",
+          "id": "isupgradecompatibility"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "isbc202209app"
+        },
+        {
+          "label": "Contact Management",
+          "id": "is202209contact"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "isbc202209admin"
+        },
+        {
+          "label": "Administration (Internal only)",
+          "id": "isbcflainegwadmin"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "isbc202209dataarchiving"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration",
+          "id": "isbc202209config"
+        },
+        {
+          "label": "Globalization",
+          "id": "isbc202209global"
+        },
+        {
+          "label": "Gosu Rules",
+          "id": "isbc202209rules"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Overview of Cloud Integration",
+          "id": "is202209integoverview"
+        },
+        {
+          "label": "Cloud API Business Flows",
+          "id": "isbc202209apibf"
+        },
+        {
+          "label": "Integration Gateway for Developers",
+          "id": "integgatewaydevlatest"
+        },
+        {
+          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
+          "id": "isbc202209integ"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "isbc202209restapifw"
+        },
+        {
+          "label": "REST API Client",
+          "id": "isrestapiclientguide"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "gosureflatest"
+        },
+        {
+          "label": "Webhooks API Reference",
+          "id": "webhooksapinext"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "gwglossary"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "PolicyCenter for Guidewire Cloud 2022.09",
+  "template": "page",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Flaine (2022.09)",
+    "items": [
+      {
+        "label": "Elysian (2022.05)",
+        "page": "../../../elysian/pcGwCloud/2022.05"
+      },
+      {
+        "label": "Dobson (2021.11)",
+        "page": "../../../dobson/pcGwCloud/2021.11"
+      },
+      {
+        "label": "Cortina (2021.04)",
+        "page": "../../../cortina/policyCenterCloud/pcGwCloud/2021.04"
+      },
+      {
+        "label": "Banff (2020.11)",
+        "page": "../../../banff/policyCenterCloud/pcGwCloud/2020.11"
+      },
+      {
+        "label": "Aspen (2020.05)",
+        "page": "../../../aspen/policyCenterCloud"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ispc202209releasenotes"
+        },
+        {
+          "label": "AppReader Release Notes",
+          "id": "appreaderrn400"
+        },
+        {
+          "label": "Integration Gateway Release Notes",
+          "id": "integgatewayrnlatest"
+        },
+        {
+          "label": "REST API Client Release Notes",
+          "id": "isrestapiclientrn"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Developer Setup",
+          "id": "ispc202209devsetup"
+        },
+        {
+          "label": "Developer Setup (Internal only)",
+          "id": "ispcflainegwdevsetup"
+        },
+        {
+          "label": "Upgrade",
+          "id": "ispc202209upgrade"
+        },
+        {
+          "label": "Upgrade (Internal only)",
+          "id": "ispcflainegwupgrade"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools430"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools Compatibility",
+          "id": "isupgradecompatibility"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "ispc202209app"
+        },
+        {
+          "label": "Contact Management",
+          "id": "is202209contact"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "ispc202209admin"
+        },
+        {
+          "label": "Administration (Internal only)",
+          "id": "ispcflainegwadmin"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "ispc202209dataarchiving"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Advanced Product Designer in PolicyCenter",
+          "id": "ispc202209apd"
+        },
+        {
+          "label": "Configuration",
+          "id": "ispc202209config"
+        },
+        {
+          "label": "Globalization",
+          "id": "ispc202209global"
+        },
+        {
+          "label": "Gosu Rules",
+          "id": "ispc202209rules"
+        },
+        {
+          "label": "Product Designer",
+          "id": "ispc202209pd"
+        },
+        {
+          "label": "Product Model",
+          "id": "ispc202209pm"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Overview of Cloud Integration",
+          "id": "is202209integoverview"
+        },
+        {
+          "label": "Cloud API Authentication",
+          "id": "ispc202209apica"
+        },
+        {
+          "label": "Cloud API Business Flows",
+          "id": "ispc202209apibf"
+        },
+        {
+          "label": "Cloud API ContactManager",
+          "id": "ispc202209apicm"
+        },
+        {
+          "label": "Integration Gateway for Developers",
+          "id": "integgatewaydevlatest"
+        },
+        {
+          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
+          "id": "ispc202209integ"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "ispc202209restapifw"
+        },
+        {
+          "label": "REST API Client",
+          "id": "isrestapiclientguide"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "gosureflatest"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "gwglossary"
+        }
+      ]
+    }
+  ]
+}
