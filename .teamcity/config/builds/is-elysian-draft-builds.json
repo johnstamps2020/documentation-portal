@@ -384,14 +384,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Draft.ditaval",
-      "root": "GosuRefGuide.ditamap",
-      "srcId": "is202205src",
-      "docId": "iselysiandraftgosu",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
       "root": "OverviewCloudIntegration.ditamap",
       "srcId": "is202205src",
       "docId": "iselysiandraftintegoverview",

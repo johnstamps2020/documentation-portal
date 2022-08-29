@@ -316,14 +316,6 @@
       "srcId": "is202205src",
       "docId": "iselysianeacontact",
       "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Cloud-EA.ditaval",
-      "root": "GosuRefGuide.ditamap",
-      "srcId": "is202205src",
-      "docId": "iselysianeagosu",
-      "indexRedirect": true
     }
   ]
 }

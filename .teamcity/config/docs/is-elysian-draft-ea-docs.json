@@ -182,24 +182,6 @@
       "earlyAccess": false
     },
     {
-      "id": "iselysianeagosu",
-      "title": "Gosu Reference",
-      "url": "cloud/is/elysian-ea/gosu",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["earlyaccess-Elysian"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "isbcelysianeadevsetup",
       "title": "Developer Setup",
       "url": "cloud/bc/elysian-ea/devsetup",
