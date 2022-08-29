@@ -200,24 +200,6 @@
       "earlyAccess": false
     },
     {
-      "id": "iselysiandraftgosu",
-      "title": "Gosu Reference",
-      "url": "cloud/is/202205/gosu",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "isbcelysiandraftrestapifw",
       "title": "REST API Framework",
       "url": "cloud/bc/202205/restapiframework",
