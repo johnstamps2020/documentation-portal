@@ -11,6 +11,15 @@ ol.steps {
   margin-top: 0.25rem;
 }
 
+li.stepexpand {
+  margin-bottom: 0.5em !important;
+  margin-top: 0.5em !important;
+}
+
+.itemgroup.stepresult {
+  margin-top: 0.5em;
+}
+
 li.substep,
 li.substepexpand {
   margin-top: 0.5em;
