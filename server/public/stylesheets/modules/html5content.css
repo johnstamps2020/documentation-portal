@@ -124,11 +124,7 @@ iframe {
   margin-top: 0.5rem;
 }
 
-.stepexpand {
-  margin-bottom: 0.5em;
-  margin-top: 0;
+li.li {
+  margin-bottom: .5em;
 }
 
-.itemgroup.stepresult {
-  margin-top: 0.5em;
-}
