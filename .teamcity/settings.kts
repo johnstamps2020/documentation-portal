@@ -2158,10 +2158,7 @@ object Server {
         }
 
         if (arrayOf(GwDeployEnvs.STAGING.env_name, GwDeployEnvs.PROD.env_name).contains(deploy_env)) {
-            // Temporarily enable deployment to prod from all branches
-            // TODO: After the migration from prod-us-east-2 to andromeda-omega2 is complete and changes are merged to master
-            //  The branch filter must be uncommented
-            // deployServerBuildType.vcs.branchFilter = "+:<default>"
+            deployServerBuildType.vcs.branchFilter = "+:<default>"
             deployServerBuildType.params.text(
                 "TAG_VERSION",
                 "",
