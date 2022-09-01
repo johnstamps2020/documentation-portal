@@ -1266,7 +1266,7 @@
         "platform": ["Cloud"],
         "version": ["8.3.0"],
         "subject": ["Best practices"],
-        "release": ["Elysian"]
+        "release": ["Flaine"]
       },
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
@@ -1284,7 +1284,7 @@
         "platform": ["Cloud"],
         "version": ["8.3.0"],
         "subject": ["Development"],
-        "release": ["Elysian"]
+        "release": ["Flaine"]
       },
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
