@@ -1303,15 +1303,10 @@ object Content {
 
     private fun createDeploySearchServiceBuildType(deploy_env: String): BuildType {
         val namespace = "doctools"
-        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
-        val deploymentFile = if (deploy_env == GwDeployEnvs.PROD.env_name) {
-            "deployment-prod.yml"
-        } else {
-            "deployment.yml"
-        }
-
+        val awsEnvs = Helpers.setAwsEnvs(deploy_env)
         val searchServiceBuildTypeDeployEnv =
             if (deploy_env == GwDeployEnvs.PROD.env_name) GwDeployEnvs.US_EAST_2.env_name else deploy_env
+        val searchServiceDeployEnvs = Helpers.setSearchServiceDeployEnvs(deploy_env)
         return BuildType {
             name = "Deploy search service to $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -1329,21 +1324,22 @@ object Content {
                         #!/bin/bash 
                         set -eux
                                               
-                        export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
-                        export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
-                        export AWS_DEFAULT_REGION="$awsDefaultRegion"
+                        # Set AWS credentials
+                        $awsEnvs
                         
-                        # Environment variables needed for Kubernetes config files
-                        export DEPLOY_ENV="$searchServiceBuildTypeDeployEnv"
-                        ###
+                        # Set environment variables needed for Kubernetes config files
+                        $searchServiceDeployEnvs
+                        
+                        # Set other envs
+                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
                         
                         aws eks update-kubeconfig --name atmos-${searchServiceBuildTypeDeployEnv}
                         
                         echo ${'$'}(kubectl get pods --namespace=${namespace})
                         
-                        eval "echo \"${'$'}(cat apps/doc_crawler/kube/${deploymentFile})\"" > deployment.yml
+                        eval "echo \"${'$'}(cat apps/doc_crawler/kube/deployment.yml)\"" > ${'$'}TMP_DEPLOYMENT_FILE
                                                 
-                        kubectl apply -f deployment.yml --namespace=${namespace}
+                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${namespace}
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -1395,8 +1391,8 @@ object Content {
 
         val tmpDir = "%teamcity.build.checkoutDir%/ci/pdfs"
         val zipArchiveName = "%env.RELEASE_NAME%_pdfs.zip"
-        val (awsAccessKeyIdProd, awsSecretAccessKeyProd, awsDefaultRegionProd) = Helpers.getAwsSettings(GwDeployEnvs.PROD.env_name)
-        val (awsAccessKeyIdInt, awsSecretAccessKeyInt, awsDefaultRegionInt) = Helpers.getAwsSettings(GwDeployEnvs.INT.env_name)
+        val awsEnvsProd = Helpers.setAwsEnvs(GwDeployEnvs.PROD.env_name)
+        val awsEnvsInt = Helpers.setAwsEnvs(GwDeployEnvs.INT.env_name)
 
         steps {
             script {
@@ -1410,9 +1406,7 @@ object Content {
                     export ZIP_ARCHIVE_NAME="$zipArchiveName"
                     
                     echo "Setting credentials to access prod"
-                    export AWS_ACCESS_KEY_ID="$awsAccessKeyIdProd"
-                    export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKeyProd"
-                    export AWS_DEFAULT_REGION="$awsDefaultRegionProd"
+                    $awsEnvsProd
                     
                     cd %teamcity.build.checkoutDir%/ci
                     ./downloadPdfsForEscrow.sh
@@ -1426,9 +1420,7 @@ object Content {
                     set -xe
                     
                     echo "Setting credentials to access int"
-                    export AWS_ACCESS_KEY_ID="$awsAccessKeyIdInt"
-                    export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKeyInt"
-                    export AWS_DEFAULT_REGION="$awsDefaultRegionInt"
+                    $awsEnvsInt
                     
                     echo "Uploading the ZIP archive to the S3 bucket"
                     aws s3 cp "${tmpDir}/${zipArchiveName}" s3://tenant-doctools-int-builds/escrow/%env.RELEASE_NAME%/
@@ -1991,7 +1983,7 @@ object Server {
             cleanCheckout = true
         }
 
-        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(GwDeployEnvs.DEV.env_name)
+        val awsEnvs = Helpers.setAwsEnvs(GwDeployEnvs.DEV.env_name)
         steps {
             script {
                 name = "Bump and tag version"
@@ -2011,9 +2003,7 @@ object Server {
                 git push --tags
                 
                 # Log into the dev ECR, build and push the image
-                export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
-                export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
-                export AWS_DEFAULT_REGION="$awsDefaultRegion"
+                $awsEnvs
 
                 set +x
                 docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.param_value}
@@ -2042,32 +2032,16 @@ object Server {
             GwDeployEnvs.INT.env_name -> "latest-int"
             else -> "v%TAG_VERSION%"
         }
-        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
-        val partnersLoginUrl: String
-        val customersLoginUrl: String
-        if (arrayOf(GwDeployEnvs.DEV.env_name, GwDeployEnvs.INT.env_name).contains(deploy_env)) {
-            partnersLoginUrl = "https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
-            customersLoginUrl = "https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
-        } else if (deploy_env == GwDeployEnvs.STAGING.env_name) {
-            partnersLoginUrl = "https://guidewire--uat.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
-            customersLoginUrl = "https://guidewire--uat.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
+        val awsEnvs = Helpers.setAwsEnvs(deploy_env)
+        val gatewayConfigFile = if (deploy_env == GwDeployEnvs.PROD.env_name) {
+            "ingress-prod.yml"
         } else {
-            partnersLoginUrl = "https://partner.guidewire.com/idp/endpoint/HttpRedirect"
-            customersLoginUrl = "https://community.guidewire.com/idp/endpoint/HttpRedirect"
-        }
-
-        val deploymentFile: String
-        val gatewayConfigFile: String
-        if (deploy_env == GwDeployEnvs.PROD.env_name) {
-            deploymentFile = "deployment-prod.yml"
-            gatewayConfigFile = "ingress-prod.yml"
-        } else {
-            deploymentFile = "deployment.yml"
-            gatewayConfigFile = "gateway-config.yml"
+            "gateway-config.yml"
         }
 
         val serverBuildTypeDeployEnv =
             if (deploy_env == GwDeployEnvs.PROD.env_name) GwDeployEnvs.US_EAST_2.env_name else deploy_env
+        val serverDeployEnvs = Helpers.setServerDeployEnvs(deploy_env, tagVersion)
         val deployServerBuildType = BuildType {
             name = "Deploy to $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -2084,33 +2058,26 @@ object Server {
                     scriptContent = """
                         #!/bin/bash 
                         set -eux
-                                              
-                        export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
-                        export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
-                        export AWS_DEFAULT_REGION="$awsDefaultRegion"
+                                
+                        # Set AWS credentials
+                        $awsEnvs
                         
-                        # Environment variables needed for Kubernetes config files
-                        export PARTNERS_LOGIN_URL="$partnersLoginUrl"
-                        export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
-                        export TAG_VERSION="$tagVersion"
-                        export DEPLOY_ENV="$serverBuildTypeDeployEnv"
-                        ###
+                        # Set environment variables needed for Kubernetes config files
+                        $serverDeployEnvs
                         
-                        export TMP_DEPLOYMENT_FILE="deployment.yml"
-                        export TMP_GATEWAY_CONFIG_FILE="gateway-config.yml"
-                        export TMP_SERVICE_FILE="service.yml"
+                        # Set other envs
+                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
+                        export TMP_GATEWAY_CONFIG_FILE="tmp-gateway-config.yml"
                         
                         aws eks update-kubeconfig --name atmos-${serverBuildTypeDeployEnv}
                         
                         echo ${'$'}(kubectl get pods --namespace=${namespace})
                         
-                        eval "echo \"${'$'}(cat server/kube/${deploymentFile})\"" > ${'$'}TMP_DEPLOYMENT_FILE
+                        eval "echo \"${'$'}(cat server/kube/deployment.yml)\"" > ${'$'}TMP_DEPLOYMENT_FILE
                         eval "echo \"${'$'}(cat server/kube/${gatewayConfigFile})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
-                        eval "echo \"${'$'}(cat server/kube/service.yml)\"" > ${'$'}TMP_SERVICE_FILE
                                                 
                         sed -ie "s/BUILD_TIME/${'$'}(date)/g" ${'$'}TMP_DEPLOYMENT_FILE
                         kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${namespace}
-                        kubectl apply -f ${'$'}TMP_SERVICE_FILE --namespace=${namespace}
                         kubectl apply -f ${'$'}TMP_GATEWAY_CONFIG_FILE --namespace=${namespace}                    
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
@@ -2125,9 +2092,8 @@ object Server {
                         #!/bin/bash
                         set -e
                         
-                        export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
-                        export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
-                        export AWS_DEFAULT_REGION="$awsDefaultRegion"
+                        # Set AWS credentials
+                        $awsEnvs
                         
                         aws eks update-kubeconfig --name atmos-${serverBuildTypeDeployEnv}
                         sleep 10
@@ -2988,7 +2954,7 @@ object Recommendations {
         gw_version: String,
     ): BuildType {
         val pretrainedModelFile = "GoogleNews-vectors-negative300.bin"
-        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
+        val awsEnvs = Helpers.setAwsEnvs(deploy_env)
         val elasticsearchUrl = Helpers.getElasticsearchUrl(deploy_env)
 
         return BuildType {
@@ -3004,9 +2970,7 @@ object Recommendations {
                             set -xe
                             
                             echo "Setting credentials to access int"
-                            export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
-                            export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
-                            export AWS_DEFAULT_REGION="$awsDefaultRegion"
+                            $awsEnvs
                             
                             echo "Downloading the pretrained model from the S3 bucket"
                             aws s3 cp s3://tenant-doctools-${deploy_env}-builds/recommendation-engine/${pretrainedModelFile} %teamcity.build.workingDir%/
@@ -3292,8 +3256,8 @@ object Helpers {
         }
     }
 
-    fun getAwsSettings(deploy_env: String): Triple<String, String, String> {
-        return when (deploy_env) {
+    fun setAwsEnvs(deploy_env: String): String {
+        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = when (deploy_env) {
             GwDeployEnvs.PROD.env_name -> Triple(
                 "%env.ATMOS_PROD_AWS_ACCESS_KEY_ID%",
                 "%env.ATMOS_PROD_AWS_SECRET_ACCESS_KEY%",
@@ -3305,6 +3269,11 @@ object Helpers {
                 "%env.ATMOS_DEV_AWS_DEFAULT_REGION%"
             )
         }
+        return """
+            export AWS_ACCESS_KEY="$awsAccessKeyId"
+            export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
+            export AWS_DEFAULT_REGION="$awsDefaultRegion"
+        """.trimIndent()
     }
 
     fun getTargetUrl(deploy_env: String): String {
@@ -3323,8 +3292,110 @@ object Helpers {
         }
     }
 
-    fun getAppBaseAndElasticsearchUrls(deploy_env: String): Pair<String, String> {
-        return Pair(getTargetUrl(deploy_env), getElasticsearchUrl(deploy_env))
+    fun getS3BucketUrl(deploy_env: String): String {
+        return when (deploy_env) {
+            GwDeployEnvs.PROD.env_name -> {
+                "https://ditaot.internal.us-east-2.service.guidewire.net"
+            }
+            GwDeployEnvs.PORTAL2.env_name -> {
+                "https://portal2.internal.us-east-2.service.guidewire.net"
+            }
+            else -> {
+                "https://ditaot.internal.${deploy_env}.ccs.guidewire.net"
+            }
+        }
+    }
+
+    private fun getGwCommunityUrls(deploy_env: String): Pair<String, String> {
+        val partnersLoginUrl: String
+        val customersLoginUrl: String
+        if (arrayOf(GwDeployEnvs.DEV.env_name, GwDeployEnvs.INT.env_name).contains(deploy_env)) {
+            partnersLoginUrl = "https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
+            customersLoginUrl = "https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
+        } else if (deploy_env == GwDeployEnvs.STAGING.env_name) {
+            partnersLoginUrl = "https://guidewire--uat.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
+            customersLoginUrl = "https://guidewire--uat.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
+        } else {
+            partnersLoginUrl = "https://partner.guidewire.com/idp/endpoint/HttpRedirect"
+            customersLoginUrl = "https://community.guidewire.com/idp/endpoint/HttpRedirect"
+        }
+        return Pair(partnersLoginUrl, customersLoginUrl)
+    }
+
+    fun setServerDeployEnvs(deploy_env: String, tag_version: String): String {
+        val (partnersLoginUrl, customersLoginUrl) = getGwCommunityUrls(deploy_env)
+        val appBaseUrl = getTargetUrl(deploy_env)
+        return when (deploy_env) {
+            GwDeployEnvs.PROD.env_name -> """
+                export AWS_ROLE="arn:aws:iam::710503867599:role/aws_gwre-ccs-prod_tenant_doctools_developer"
+                export AWS_ECR_REPO="710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal"
+                export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/partners-login"
+                export PARTNERS_LOGIN_URL="$partnersLoginUrl"
+                export GW_COMMUNITY_PARTNER_IDP="0oa6c4yaoikrU91Hw357"
+                export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/customers-login"
+                export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
+                export GW_COMMUNITY_CUSTOMER_IDP="0oa6c4x5z3fYXUWoE357"
+                export TAG_VERSION="$tag_version"
+                export DEPLOY_ENV="${GwDeployEnvs.US_EAST_2.env_name}"
+                export OKTA_ACCESS_TOKEN_ISSUER="https://guidewire-hub.okta.com/oauth2/aus11vix3uKEpIfSI357"
+                export OKTA_ACCESS_TOKEN_ISSUER_APAC="https://guidewire-hub-apac.okta.com/oauth2/ausbg05gfcTZQ7bpH3l6"
+                export OKTA_ACCESS_TOKEN_ISSUER_EMEA="https://guidewire-hub-eu.okta.com/oauth2/ausc2q01c40dNZII0416"
+                export OKTA_DOMAIN="https://guidewire-hub.okta.com"
+                export OKTA_IDP="0oa25tk18zhGOqMfj357"
+                export APP_BASE_URL="$appBaseUrl"
+                export ELASTIC_SEARCH_URL="${getElasticsearchUrl(deploy_env)}"
+                export DOC_S3_URL="${getS3BucketUrl(deploy_env)}"
+                export PORTAL2_S3_URL="${getS3BucketUrl(GwDeployEnvs.PORTAL2.env_name)}"
+                export REQUESTS_MEMORY="8G"
+                export REQUESTS_CPU="2"
+                export LIMITS_MEMORY="16G"
+                export LIMITS_CPU="4"
+            """.trimIndent()
+            else -> """
+                export AWS_ROLE="arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"
+                export AWS_ECR_REPO="627188849628.dkr.ecr.us-west-2.amazonaws.com/tenant-doctools-docportal"
+                export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/partners-login"
+                export PARTNERS_LOGIN_URL="$partnersLoginUrl"
+                export GW_COMMUNITY_PARTNER_IDP="0oapv9i36yEMFLjxS0h7"
+                export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/customers-login"
+                export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
+                export GW_COMMUNITY_CUSTOMER_IDP="0oau503zlhhFLwTqF0h7"
+                export TAG_VERSION="$tag_version"
+                export DEPLOY_ENV="$deploy_env"
+                export OKTA_ACCESS_TOKEN_ISSUER="https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"
+                export OKTA_ACCESS_TOKEN_ISSUER_APAC="issuerNotConfigured"
+                export OKTA_ACCESS_TOKEN_ISSUER_EMEA="issuerNotConfigured"
+                export OKTA_DOMAIN="https://guidewire-hub.oktapreview.com"
+                export OKTA_IDP="0oamwriqo1E1dOdd70h7"
+                export APP_BASE_URL="$appBaseUrl"
+                export ELASTIC_SEARCH_URL="${getElasticsearchUrl(deploy_env)}"
+                export DOC_S3_URL="${getS3BucketUrl(deploy_env)}"
+                export PORTAL2_S3_URL="${getS3BucketUrl(GwDeployEnvs.PORTAL2.env_name)}"
+                export REQUESTS_MEMORY="4G"
+                export REQUESTS_CPU="1"
+                export LIMITS_MEMORY="8G"
+                export LIMITS_CPU="2"
+            """.trimIndent()
+        }
+    }
+
+    fun setSearchServiceDeployEnvs(deploy_env: String): String {
+        return when (deploy_env) {
+            GwDeployEnvs.PROD.env_name -> """
+                export DEPLOY_ENV="${GwDeployEnvs.US_EAST_2.env_name}
+                export REQUESTS_MEMORY="4G"
+                export REQUESTS_CPU="1"
+                export LIMITS_MEMORY="8G"
+                export LIMITS_CPU="2"
+            """.trimIndent()
+            else -> """
+                export DEPLOY_ENV="$deploy_env"
+                export REQUESTS_MEMORY="1G"
+                export REQUESTS_CPU="0.5"
+                export LIMITS_MEMORY="2G"
+                export LIMITS_CPU="1"
+            """.trimIndent()
+        }
     }
 
     fun getNonDitaTriggerRules(workingDir: String): String {
@@ -3478,7 +3549,7 @@ object GwBuildSteps {
     }
 
     fun createCopyLocalizedPdfsToS3BucketStep(deploy_env: String, loc_docs_src: String): ScriptBuildStep {
-        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
+        val awsEnvs = Helpers.setAwsEnvs(deploy_env)
         return ScriptBuildStep {
             name = "Copy localized PDFs to the S3 bucket"
             id = Helpers.createIdStringFromName(this.name)
@@ -3486,9 +3557,7 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                         
-                export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
-                export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
-                export AWS_DEFAULT_REGION="$awsDefaultRegion"
+                $awsEnvs
                         
                 aws s3 sync "$loc_docs_src" s3://tenant-doctools-${deploy_env}-builds/l10n --exclude ".git/*" --delete
             """.trimIndent()
@@ -3546,7 +3615,7 @@ object GwBuildSteps {
     }
 
     fun createCopyUpgradeDiffsToS3BucketStep(deploy_env: String, upgrade_diffs_docs_src: String): ScriptBuildStep {
-        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
+        val awsEnvs = Helpers.setAwsEnvs(deploy_env)
         var awsS3SyncCommand =
             "aws s3 sync \"${upgrade_diffs_docs_src}\" s3://tenant-doctools-${deploy_env}-builds/upgradediffs --delete"
         if (arrayOf(GwDeployEnvs.STAGING.env_name, GwDeployEnvs.PROD.env_name).contains(deploy_env)) {
@@ -3559,9 +3628,7 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                         
-                export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
-                export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
-                export AWS_DEFAULT_REGION="$awsDefaultRegion"
+                $awsEnvs
                         
                 $awsS3SyncCommand
             """.trimIndent()
@@ -3569,7 +3636,8 @@ object GwBuildSteps {
     }
 
     fun createRunSitemapGeneratorStep(deploy_env: String, output_dir: String): ScriptBuildStep {
-        val (appBaseUrl, elasticsearchUrls) = Helpers.getAppBaseAndElasticsearchUrls(deploy_env)
+        val appBaseUrl = Helpers.getTargetUrl(deploy_env)
+        val elasticsearchUrls = Helpers.getElasticsearchUrl(deploy_env)
         return ScriptBuildStep {
             name = "Run the sitemap generator"
             id = Helpers.createIdStringFromName(this.name)
@@ -3589,7 +3657,7 @@ object GwBuildSteps {
     }
 
     fun createRunIndexCleanerStep(deploy_env: String): ScriptBuildStep {
-        val (_, elasticsearchUrls) = Helpers.getAppBaseAndElasticsearchUrls(deploy_env)
+        val elasticsearchUrls = Helpers.getElasticsearchUrl(deploy_env)
         val configFileUrl = when (deploy_env) {
             GwDeployEnvs.PROD.env_name -> "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json"
             else -> "https://ditaot.internal.${deploy_env}.ccs.guidewire.net/portal-config/config.json"
@@ -3617,8 +3685,8 @@ object GwBuildSteps {
     fun createPublishServerDockerImageToProdEcrStep(
         tag_version: String,
     ): ScriptBuildStep {
-        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(GwDeployEnvs.DEV.env_name)
-        val (awsAccessKeyIdProd, awsSecretAccessKeyProd, awsDefaultRegionProd) = Helpers.getAwsSettings(GwDeployEnvs.PROD.env_name)
+        val awsEnvsDev = Helpers.setAwsEnvs(GwDeployEnvs.DEV.env_name)
+        val awsEnvsProd = Helpers.setAwsEnvs(GwDeployEnvs.PROD.env_name)
         return ScriptBuildStep {
             name = "Publish server Docker Image to PROD ECR"
             id = Helpers.createIdStringFromName(this.name)
@@ -3626,9 +3694,7 @@ object GwBuildSteps {
                 set -xe
                 
                 # Log into the dev ECR, download the image and tag it
-                export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
-                export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
-                export AWS_DEFAULT_REGION="$awsDefaultRegion"
+                $awsEnvsDev
 
                 set +x
                 docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.param_value}
@@ -3637,9 +3703,7 @@ object GwBuildSteps {
                 docker tag ${GwDockerImages.DOC_PORTAL.image_url}:${tag_version} ${GwDockerImages.DOC_PORTAL_PROD.image_url}:${tag_version}
                 
                 # Log into the prod ECR and push the image
-                export AWS_ACCESS_KEY_ID="$awsAccessKeyIdProd"
-                export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKeyProd"
-                export AWS_DEFAULT_REGION="$awsDefaultRegionProd"
+                $awsEnvsProd
                 
                 set +x
                 docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST_PROD.param_value}
@@ -3657,7 +3721,7 @@ object GwBuildSteps {
     fun createBuildAndPublishServerDockerImageToDevEcrStep(
         tag_version: String,
     ): ScriptBuildStep {
-        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(GwDeployEnvs.DEV.env_name)
+        val awsEnvs = Helpers.setAwsEnvs(GwDeployEnvs.DEV.env_name)
         return ScriptBuildStep {
             name = "Build and publish server Docker Image to DEV ECR"
             id = Helpers.createIdStringFromName(this.name)
@@ -3666,9 +3730,7 @@ object GwBuildSteps {
                 set -xe
                 
                 # Log into the dev ECR, build and push the image
-                export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
-                export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
-                export AWS_DEFAULT_REGION="$awsDefaultRegion"
+                $awsEnvs
 
                 set +x
                 docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.param_value}
@@ -3685,18 +3747,9 @@ object GwBuildSteps {
     }
 
     fun createRunDocCrawlerStep(deploy_env: String, doc_id: String, config_file: String): ScriptBuildStep {
-        val docS3Url: String = when (deploy_env) {
-            GwDeployEnvs.PROD.env_name -> {
-                "https://ditaot.internal.us-east-2.service.guidewire.net"
-            }
-            GwDeployEnvs.PORTAL2.env_name -> {
-                "https://portal2.internal.us-east-2.service.guidewire.net"
-            }
-            else -> {
-                "https://ditaot.internal.${deploy_env}.ccs.guidewire.net"
-            }
-        }
-        val (appBaseUrl, elasticsearchUrls) = Helpers.getAppBaseAndElasticsearchUrls(deploy_env)
+        val docS3Url = Helpers.getS3BucketUrl(deploy_env)
+        val appBaseUrl = Helpers.getTargetUrl(deploy_env)
+        val elasticsearchUrls = Helpers.getElasticsearchUrl(deploy_env)
 
         return ScriptBuildStep {
             name = "Run the doc crawler"
@@ -3781,7 +3834,7 @@ object GwBuildSteps {
     }
 
     fun createCopyFromStagingToProdStep(publish_path: String): ScriptBuildStep {
-        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(GwDeployEnvs.PROD.env_name)
+        val awsEnvs = Helpers.setAwsEnvs(GwDeployEnvs.PROD.env_name)
         return ScriptBuildStep {
             name = "Copy from S3 on staging to S3 on Prod"
             id = Helpers.createIdStringFromName(this.name)
@@ -3793,9 +3846,7 @@ object GwBuildSteps {
                     aws s3 sync s3://tenant-doctools-staging-builds/${publish_path} ${publish_path}/ --delete
                     
                     echo "Setting credentials to access prod"
-                    export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
-                    export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
-                    export AWS_DEFAULT_REGION="$awsDefaultRegion"
+                    $awsEnvs
                     
                     echo "Uploading from Teamcity to prod"
                     aws s3 sync ${publish_path}/ s3://tenant-doctools-prod-builds/${publish_path} --delete
@@ -3849,15 +3900,13 @@ object GwBuildSteps {
         }
         when (deploy_env) {
             GwDeployEnvs.PROD.env_name -> {
-                val (awsAccessKeyIdProd, awsSecretAccessKeyProd, awsDefaultRegionProd) = Helpers.getAwsSettings(
+                val awsEnvs = Helpers.setAwsEnvs(
                     GwDeployEnvs.PROD.env_name)
                 scriptBuildStep.scriptContent = """
                     #!/bin/bash
                     set -xe
                     
-                    export AWS_ACCESS_KEY_ID="$awsAccessKeyIdProd"
-                    export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKeyProd"
-                    export AWS_DEFAULT_REGION="$awsDefaultRegionProd"
+                    $awsEnvs
                     
                     aws s3 sync "$output_path" s3://${s3BucketName}/${publish_path} --delete
                 """.trimIndent()
@@ -4431,7 +4480,7 @@ object GwBuildSteps {
         deployment_mode: String,
         output_dir: String,
     ): ScriptBuildStep {
-        val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = Helpers.getAwsSettings(deploy_env)
+        val awsEnvs = Helpers.setAwsEnvs(deploy_env)
         var sourceDir = output_dir
         var targetDir = ""
         var excludedPatterns = ""
@@ -4461,9 +4510,7 @@ object GwBuildSteps {
                 #!/bin/bash 
                 set -xe
                 
-                export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
-                export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
-                export AWS_DEFAULT_REGION="$awsDefaultRegion"
+                $awsEnvs
                 
                 $deployCommand
             """.trimIndent()

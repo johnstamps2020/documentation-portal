@@ -9,9 +9,9 @@ spec:
     retryInterval: \"10s\"
   provider:
     aws:
-      role: arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer
+      role: ${AWS_ROLE}
       service: SecretsManager
-      region: us-west-2
+      region: ${AWS_DEFAULT_REGION}
 ---
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -85,11 +85,11 @@ spec:
         app.kubernetes.io/created-by: doctools
         atmos.guidewire.com/tenancy-scope: shared
       annotations:
-        iam.amazonaws.com/role: arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer
+        iam.amazonaws.com/role: ${AWS_ROLE}
     spec:
       containers:
         - name: docportal
-          image: 627188849628.dkr.ecr.us-west-2.amazonaws.com/tenant-doctools-docportal:${TAG_VERSION}
+          image: ${AWS_ECR_REPO}:${TAG_VERSION}
           lifecycle:
             preStop:
               exec:
@@ -125,13 +125,37 @@ spec:
                 secretKeyRef:
                   name: docportal-app-external-secret
                   key: okta_client_id
+            - name: OKTA_CLIENT_ID_APAC
+              valueFrom:
+                secretKeyRef:
+                  name: docportal-app-external-secret
+                  key: okta_client_id_apac
+            - name: OKTA_CLIENT_ID_EMEA
+              valueFrom:
+                secretKeyRef:
+                  name: docportal-app-external-secret
+                  key: okta_client_id_emea
             - name: OKTA_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
                   name: docportal-app-external-secret
                   key: okta_client_secret
+            - name: OKTA_CLIENT_SECRET_APAC
+              valueFrom:
+                secretKeyRef:
+                  name: docportal-app-external-secret
+                  key: okta_client_secret_apac
+            - name: OKTA_CLIENT_SECRET_EMEA
+              valueFrom:
+                secretKeyRef:
+                  name: docportal-app-external-secret
+                  key: okta_client_secret_emea
             - name: OKTA_ACCESS_TOKEN_ISSUER
               value: ${OKTA_ACCESS_TOKEN_ISSUER}
+            - name: OKTA_ACCESS_TOKEN_ISSUER_APAC
+              value: ${OKTA_ACCESS_TOKEN_ISSUER_APAC}
+            - name: OKTA_ACCESS_TOKEN_ISSUER_EMEA
+              value: ${OKTA_ACCESS_TOKEN_ISSUER_EMEA}
             - name: OKTA_ACCESS_TOKEN_SCOPES
               valueFrom:
                 secretKeyRef:
@@ -143,18 +167,18 @@ spec:
                   name: docportal-app-external-secret
                   key: okta_access_token_audience
             - name: APP_BASE_URL
-              value: https://docs.${DEPLOY_ENV}.ccs.guidewire.net
+              value: ${APP_BASE_URL}
             - name: SESSION_KEY
               valueFrom:
                 secretKeyRef:
                   name: docportal-app-external-secret
                   key: session_key
             - name: ELASTIC_SEARCH_URL
-              value: http://docsearch-${DEPLOY_ENV}.doctools:9200
+              value: ${ELASTIC_SEARCH_URL}
             - name: DOC_S3_URL
-              value: https://ditaot.internal.${DEPLOY_ENV}.ccs.guidewire.net
+              value: ${DOC_S3_URL}
             - name: PORTAL2_S3_URL
-              value: https://portal2.internal.us-east-2.service.guidewire.net
+              value: ${PORTAL2_S3_URL}
             - name: PARTNERS_LOGIN_URL
               value: ${PARTNERS_LOGIN_URL}
             - name: PARTNERS_LOGIN_CERT
@@ -163,7 +187,7 @@ spec:
                   name: docportal-app-external-secret
                   key: partners_login_cert
             - name: PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID
-              value: https://docs.${DEPLOY_ENV}.ccs.guidewire.net/partners-login
+              value: ${PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID}
             - name: CUSTOMERS_LOGIN_URL
               value: ${CUSTOMERS_LOGIN_URL}
             - name: CUSTOMERS_LOGIN_CERT
@@ -172,7 +196,7 @@ spec:
                   name: docportal-app-external-secret
                   key: customers_login_cert
             - name: CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID
-              value: https://docs.${DEPLOY_ENV}.ccs.guidewire.net/customers-login
+              value: ${CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID}
             - name: ALLOW_PUBLIC_DOCS
               value: 'yes'
             - name: ENABLE_AUTH
@@ -220,8 +244,29 @@ spec:
               value: "Datadog,B3"
           resources:
             requests:
-              memory: \"4G\"
-              cpu: \"1\"
+              memory: \"${REQUESTS_MEMORY}\"
+              cpu: \"${REQUESTS_CPU}\"
             limits:
-              memory: \"8G\"
-              cpu: \"2\"
+              memory: \"${LIMITS_MEMORY}\"
+              cpu: \"${LIMITS_CPU}\"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: docportal-app
+  namespace: doctools
+  labels:
+    app: docportal-app
+    app.kubernetes.io/name: expressjs
+    app.kubernetes.io/version: ${TAG_VERSION}
+    app.kubernetes.io/component: web-app
+    app.kubernetes.io/part-of: docportal-app
+    app.kubernetes.io/managed-by: doctools
+    app.kubernetes.io/created-by: doctools
+    atmos.guidewire.com/tenancy-scope: shared
+spec:
+  ports:
+    - name: http
+      port: 8081
+  selector:
+    app: docportal-app
