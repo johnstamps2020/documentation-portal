@@ -1013,7 +1013,7 @@ object Custom {
                 "",
                 label = "Document ids",
                 description = "A comma-separated list of document ids. Each id must have a corresponding <docID>.json file in the __builds folder of the target repo and branch.",
-                display = ParameterDisplay.PROMPT
+                display = ParameterDisplay.NORMAL
             )
             text(
                 "env.BUILDS_FILE_PARSED",
