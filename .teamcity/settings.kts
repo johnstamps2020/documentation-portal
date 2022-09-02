@@ -1009,6 +1009,13 @@ object Custom {
                 display = ParameterDisplay.PROMPT
             )
             text(
+                "env.DOC_IDS",
+                "",
+                label = "Document ids",
+                description = "A comma-separated list of document ids. Each id must have a corresponding <docID>.json file in the __builds folder of the target repo and branch.",
+                display = ParameterDisplay.PROMPT
+            )
+            text(
                 "env.BUILDS_FILE_PARSED",
                 "builds.txt",
                 display = ParameterDisplay.HIDDEN
@@ -1039,25 +1046,42 @@ object Custom {
 
                     git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% ${'$'}GIT_CLONE_DIR
 
-                    if [ -f ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_FILE ]
-                        then echo "${'$'}BUILDS_FILE found"
-                            declare -a BUILDS
-                            while IFS= read -r -d ${'$'}'\n' builds_json; do
-                            root=${'$'}(echo "${'$'}builds_json" | jq -r .root)
-                            filter=$(echo "${'$'}builds_json" | jq -r .filter)
-                            echo "${'$'}root:${'$'}filter" >> %env.BUILDS_FILE_PARSED%
-                            done < <(jq -c '.builds[]' ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_FILE)
+                    if [ ! -z "%env.DOC_IDS%" ]
+                        then while IFS=',' read -ra DOC_BUILD_IDS; do
+                            echo "DOC_IDS specified. Checking for corresponding build files."
+                            for i in "${'$'}{DOC_BUILD_IDS[@]}"; do
+                                DOC_ID="${'$'}(echo -e "${'$'}i" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*${'$'}//')"
+                                FILE="${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR/${'$'}DOC_ID.json"
+                                if [ -f ${'$'}FILE ]
+                                    then echo "Found build file ${'$'}FILE"
+                                        root=$(echo "${'$'}builds_json" | jq -r .root ${'$'}FILE);
+                                        filter=$(echo "${'$'}builds_json" | jq -r .filter ${'$'}FILE);
+                                        echo ${'$'}root:${'$'}filter >> %env.BUILDS_FILE_PARSED%
+                                    else echo "Could not locate build file ${'$'}FILE. Skipping Doc ID ${'$'}DOC_ID"
+                                fi
+                            done
+                        done <<< %env.DOC_IDS%
                         else
-                            echo "${'$'}BUILDS_FILE not found, checking for ${'$'}BUILDS_DIR directory"
-                            if [ -d "${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR" ]
-                                then echo "${'$'}BUILDS_DIR found"
-                                    for FILE in ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR/*; do 
-                                    root=${'$'}(echo "${'$'}builds_json" | jq -r .root ${'$'}FILE);
-                                    filter=${'$'}(echo "${'$'}builds_json" | jq -r .filter ${'$'}FILE);
-                                    echo ${'$'}root:${'$'}filter >> %env.BUILDS_FILE_PARSED%
-                                    done;
-                                else echo "ERROR: Did not find a ${'$'}BUILDS_FILE or ${'$'}BUILDS_DIR directory."
-                        fi
+                            if [ -f ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_FILE ]
+                                then echo "${'$'}BUILDS_FILE found"
+                                    declare -a BUILDS
+                                    while IFS= read -r -d ${'$'}'\n' builds_json; do
+                                    root=${'$'}(echo "${'$'}builds_json" | jq -r .root)
+                                    filter=$(echo "${'$'}builds_json" | jq -r .filter)
+                                    echo "${'$'}root:${'$'}filter" >> %env.BUILDS_FILE_PARSED%
+                                    done < <(jq -c '.builds[]' ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_FILE)
+                                else
+                                    echo "${'$'}BUILDS_FILE not found, checking for ${'$'}BUILDS_DIR directory"
+                                    if [ -d "${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR" ]
+                                        then echo "${'$'}BUILDS_DIR found"
+                                            for FILE in ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR/*; do 
+                                            root=${'$'}(echo "${'$'}builds_json" | jq -r .root ${'$'}FILE);
+                                            filter=${'$'}(echo "${'$'}builds_json" | jq -r .filter ${'$'}FILE);
+                                            echo ${'$'}root:${'$'}filter >> %env.BUILDS_FILE_PARSED%
+                                            done;
+                                        else echo "ERROR: Did not find a ${'$'}BUILDS_FILE or ${'$'}BUILDS_DIR directory."
+                                    fi
+                            fi
                     fi
                 """.trimIndent()
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
