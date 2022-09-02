@@ -1012,7 +1012,7 @@ object Custom {
                 "env.DOC_IDS",
                 "",
                 label = "Document ids",
-                description = "An optional comma-separated list of document ids. Each id must have a corresponding <docID>.json file in the __builds folder of the target repo and branch.",
+                description = "An optional space-separated list of document ids. Each id must have a corresponding <docID>.json file in the __builds folder of the target repo and branch.",
                 display = ParameterDisplay.PROMPT,
                 allowEmpty = true
             )
@@ -1048,20 +1048,19 @@ object Custom {
                     git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% ${'$'}GIT_CLONE_DIR
 
                     if [ ! -z "%env.DOC_IDS%" ]
-                        then while IFS=',' read -ra DOC_BUILD_IDS; do
+                        then 
                             echo "DOC_IDS specified. Checking for corresponding build files."
-                            for i in "${'$'}{DOC_BUILD_IDS[@]}"; do
-                                DOC_ID="${'$'}(echo -e "${'$'}i" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*${'$'}//')"
-                                FILE="${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR/${'$'}DOC_ID.json"
+                            IFS=' '
+                            for id in %env.DOC_IDS%; do
+                                FILE="${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR/${'$'}id.json"
                                 if [ -f ${'$'}FILE ]
                                     then echo "Found build file ${'$'}FILE"
                                         root=$(echo "${'$'}builds_json" | jq -r .root ${'$'}FILE);
                                         filter=$(echo "${'$'}builds_json" | jq -r .filter ${'$'}FILE);
                                         echo ${'$'}root:${'$'}filter >> %env.BUILDS_FILE_PARSED%
-                                    else echo "Could not locate build file ${'$'}FILE. Skipping Doc ID ${'$'}DOC_ID"
+                                    else echo "Could not locate build file ${'$'}FILE. Skipping Doc ID ${'$'}id"
                                 fi
                             done
-                        done < %env.DOC_IDS%
                         else
                             if [ -f ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_FILE ]
                                 then echo "${'$'}BUILDS_FILE found"
