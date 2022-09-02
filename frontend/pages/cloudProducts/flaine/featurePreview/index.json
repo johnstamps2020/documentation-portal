@@ -139,16 +139,6 @@
           "id": "worksetmgr"
         }
       ]
-    },
-    {
-      "label": "Observability",
-      "class": "subject development",
-      "items": [
-        {
-          "label": "InsuranceSuite Observability",
-          "id": "isobservability202209"
-        }
-      ]
     }
   ]
 }

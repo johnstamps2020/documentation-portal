@@ -411,14 +411,6 @@
       "buildType": "yarn",
       "docId": "bcapirefflaine",
       "srcId": "srcbcapirefflaine"
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "ISObservability.ditamap",
-      "srcId": "is202209src",
-      "docId": "isobservability202209",
-      "indexRedirect": true
     }
   ]
 }

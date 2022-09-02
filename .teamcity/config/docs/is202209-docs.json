@@ -918,24 +918,6 @@
       "public": true,
       "internal": false,
       "earlyAccess": false
-    },
-    {
-      "id": "isobservability202209",
-      "title": "InsuranceSuite Observability",
-      "url": "cloud/is/202209/observability",
-      "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.09"],
-        "release": ["Flaine"],
-        "subject": ["Configuration"]
-      },
-      "environments": ["int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
     }
   ]
 }
