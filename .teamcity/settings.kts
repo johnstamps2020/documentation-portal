@@ -1061,7 +1061,7 @@ object Custom {
                                     else echo "Could not locate build file ${'$'}FILE. Skipping Doc ID ${'$'}DOC_ID"
                                 fi
                             done
-                        done <<< %env.DOC_IDS%
+                        done < %env.DOC_IDS%
                         else
                             if [ -f ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_FILE ]
                                 then echo "${'$'}BUILDS_FILE found"
