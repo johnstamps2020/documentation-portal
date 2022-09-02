@@ -1007,14 +1007,14 @@ object Custom {
                 "",
                 label = "Git branch name",
                 display = ParameterDisplay.PROMPT
-            ),
+            )
             text(
                 "env.DOC_IDS",
                 "",
                 label = "Document ids",
                 description = "A comma-separated list of document ids. Each id must have a corresponding <docID>.json file in the __builds folder of the target repo and branch.",
                 display = ParameterDisplay.PROMPT
-            ),
+            )
             text(
                 "env.BUILDS_FILE_PARSED",
                 "builds.txt",
@@ -1050,7 +1050,7 @@ object Custom {
                         then while IFS=',' read -ra DOC_BUILD_IDS; do
                             echo "DOC_IDS specified. Checking for corresponding build files."
                             for i in "${'$'}{DOC_BUILD_IDS[@]}"; do
-                                DOC_ID="${'$'}(echo -e "${i}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*${'$'}//')"
+                                DOC_ID="${'$'}(echo -e "${'$'}i" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*${'$'}//')"
                                 FILE="${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR/${'$'}DOC_ID.json"
                                 if [ -f ${'$'}FILE ]
                                     then echo "Found build file ${'$'}FILE"
