@@ -2883,6 +2883,7 @@ object Sources {
         git_url: String,
     ): BuildType {
         val elasticsearchUrl = Helpers.getElasticsearchUrl(GwDeployEnvs.INT.env_name)
+        val awsEnvs = Helpers.setAwsEnvs(GwDeployEnvs.INT.env_name)
         return BuildType {
             name = "Clean validation results for $src_id"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -2900,6 +2901,8 @@ object Sources {
                     scriptContent = """
                         #!/bin/bash
                         set -xe
+                        
+                        $awsEnvs
                         
                         results_cleaner --elasticsearch-urls "$elasticsearchUrl"  --git-source-id "$src_id" --git-source-url "$git_url" --s3-bucket-name "tenant-doctools-int-builds"
                     """.trimIndent()
