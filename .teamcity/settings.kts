@@ -3367,7 +3367,7 @@ object Helpers {
                 export OKTA_DOMAIN="https://guidewire-hub.okta.com"
                 export OKTA_IDP="0oa25tk18zhGOqMfj357"
                 export APP_BASE_URL="$appBaseUrl"
-                export ELASTIC_SEARCH_URL="${getElasticsearchUrl(deploy_env)}"
+                export ELASTIC_SEARCH_URL="http://docsearch-${GwDeployEnvs.US_EAST_2.env_name}.doctools:9200"
                 export DOC_S3_URL="${getS3BucketUrl(deploy_env)}"
                 export PORTAL2_S3_URL="${getS3BucketUrl(GwDeployEnvs.PORTAL2.env_name)}"
                 export REQUESTS_MEMORY="8G"
@@ -3392,7 +3392,7 @@ object Helpers {
                 export OKTA_DOMAIN="https://guidewire-hub.oktapreview.com"
                 export OKTA_IDP="0oamwriqo1E1dOdd70h7"
                 export APP_BASE_URL="$appBaseUrl"
-                export ELASTIC_SEARCH_URL="${getElasticsearchUrl(deploy_env)}"
+                export ELASTIC_SEARCH_URL="http://docsearch-${deploy_env}.doctools:9200"
                 export DOC_S3_URL="${getS3BucketUrl(deploy_env)}"
                 export PORTAL2_S3_URL="${getS3BucketUrl(GwDeployEnvs.PORTAL2.env_name)}"
                 export REQUESTS_MEMORY="4G"
@@ -3406,7 +3406,7 @@ object Helpers {
     fun setSearchServiceDeployEnvs(deploy_env: String): String {
         return when (deploy_env) {
             GwDeployEnvs.PROD.env_name -> """
-                export DEPLOY_ENV="${GwDeployEnvs.US_EAST_2.env_name}
+                export DEPLOY_ENV="${GwDeployEnvs.US_EAST_2.env_name}"
                 export REQUESTS_MEMORY="4G"
                 export REQUESTS_CPU="1"
                 export LIMITS_MEMORY="8G"
