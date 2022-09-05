@@ -69,11 +69,11 @@ spec:
           imagePullPolicy: IfNotPresent
           resources:
             requests:
-              memory: \"1G\"
-              cpu: \"0.5\"
+              memory: \"${REQUESTS_MEMORY}\"
+              cpu: \"${REQUESTS_CPU}\"
             limits:
-              memory: \"2G\"
-              cpu: \"1\"
+              memory: \"${LIMITS_MEMORY}\"
+              cpu: \"${LIMITS_CPU}\"
           env:
             - name: discovery.type
               valueFrom:
@@ -243,4 +243,3 @@ spec:
   service_ref: kibana-doctools-${DEPLOY_ENV}
   service_alias: kibana-doctools
   enable_sub_domain: false
-
