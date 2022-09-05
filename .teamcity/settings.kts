@@ -3918,15 +3918,11 @@ object GwBuildSteps {
         deploy_env: String, output_path: String, publish_path: String,
     ): ScriptBuildStep {
         val s3BucketName = "tenant-doctools-${deploy_env}-builds"
-        val scriptBuildStep = ScriptBuildStep {
+        val awsEnvs = Helpers.setAwsEnvs(deploy_env)
+        return ScriptBuildStep {
             name = "Upload content to the S3 bucket"
             id = Helpers.createIdStringFromName(this.name)
-        }
-        when (deploy_env) {
-            GwDeployEnvs.PROD.env_name -> {
-                val awsEnvs = Helpers.setAwsEnvs(
-                    GwDeployEnvs.PROD.env_name)
-                scriptBuildStep.scriptContent = """
+            scriptContent = """
                     #!/bin/bash
                     set -xe
                     
@@ -3934,18 +3930,7 @@ object GwBuildSteps {
                     
                     aws s3 sync "$output_path" s3://${s3BucketName}/${publish_path} --delete
                 """.trimIndent()
-            }
-            else -> {
-                scriptBuildStep.scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                    
-                    aws s3 sync "$output_path" s3://${s3BucketName}/${publish_path} --delete
-                """.trimIndent()
-            }
         }
-
-        return scriptBuildStep
     }
 
     fun createPreviewUrlFile(
