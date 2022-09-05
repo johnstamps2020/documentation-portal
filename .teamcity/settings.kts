@@ -3382,7 +3382,7 @@ object Helpers {
     fun setSearchServiceDeployEnvs(deploy_env: String): String {
         return when (deploy_env) {
             GwDeployEnvs.PROD.env_name -> """
-                export DEPLOY_ENV="${GwDeployEnvs.US_EAST_2.env_name}
+                export DEPLOY_ENV="${GwDeployEnvs.US_EAST_2.env_name}"
                 export REQUESTS_MEMORY="4G"
                 export REQUESTS_CPU="1"
                 export LIMITS_MEMORY="8G"
