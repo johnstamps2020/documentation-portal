@@ -3861,7 +3861,8 @@ object GwBuildSteps {
     }
 
     fun createCopyFromStagingToProdStep(publish_path: String): ScriptBuildStep {
-        val awsEnvs = Helpers.setAwsEnvs(GwDeployEnvs.PROD.env_name)
+        val awsEnvsStaging = Helpers.setAwsEnvs(GwDeployEnvs.STAGING.env_name)
+        val awsEnvsProd = Helpers.setAwsEnvs(GwDeployEnvs.PROD.env_name)
         return ScriptBuildStep {
             name = "Copy from S3 on staging to S3 on Prod"
             id = Helpers.createIdStringFromName(this.name)
@@ -3869,11 +3870,14 @@ object GwBuildSteps {
                     #!/bin/bash
                     set -xe
                     
+                    echo "Setting credentials to access staging"
+                    $awsEnvsStaging
+                    
                     echo "Copying from staging to Teamcity"
                     aws s3 sync s3://tenant-doctools-staging-builds/${publish_path} ${publish_path}/ --delete
                     
                     echo "Setting credentials to access prod"
-                    $awsEnvs
+                    $awsEnvsProd
                     
                     echo "Uploading from Teamcity to prod"
                     aws s3 sync ${publish_path}/ s3://tenant-doctools-prod-builds/${publish_path} --delete
