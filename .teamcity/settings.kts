@@ -1196,7 +1196,8 @@ object Content {
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD).forEach {
+                GwDeployEnvs.PROD,
+                GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
                 buildType(createCleanUpSearchIndexBuildType(it.env_name))
             }
         }
@@ -1235,7 +1236,9 @@ object Content {
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
                 GwDeployEnvs.PROD,
-                GwDeployEnvs.PORTAL2).forEach {
+                GwDeployEnvs.PORTAL2,
+                GwDeployEnvs.OMEGA2_ANDROMEDA,
+                GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA).forEach {
                 buildType(createUpdateSearchIndexBuildType(it.env_name))
             }
         }
@@ -1275,7 +1278,8 @@ object Content {
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD).forEach {
+                GwDeployEnvs.PROD,
+                GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
                 buildType(createDeployServerConfigBuildType(it.env_name))
             }
         }
@@ -1292,7 +1296,7 @@ object Content {
                 cleanCheckout = true
             }
             steps {
-                step(GwBuildSteps.createGenerateDocsConfigFilesForEnvStep(deploy_env))
+                step(GwBuildSteps.createGenerateDocsConfigFilesForEnvStep(if (deploy_env == GwDeployEnvs.OMEGA2_ANDROMEDA.env_name) GwDeployEnvs.PROD.env_name else deploy_env))
                 step(GwBuildSteps.createUploadContentToS3BucketStep(
                     deploy_env,
                     GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value,
@@ -1663,7 +1667,7 @@ object Frontend {
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
                 GwDeployEnvs.PROD,
-            GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
+                GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
                 buildType(createDeployUpgradeDiffsBuildType(it.env_name))
             }
         }
@@ -2155,7 +2159,7 @@ object Server {
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
 
-        if (arrayOf(GwDeployEnvs.STAGING.env_name, GwDeployEnvs.PROD.env_name).contains(deploy_env)) {
+        if (arrayOf(GwDeployEnvs.STAGING.env_name, GwDeployEnvs.PROD.env_name, GwDeployEnvs.OMEGA2_ANDROMEDA.env_name).contains(deploy_env)) {
             deployServerBuildType.vcs.branchFilter = "+:<default>"
             deployServerBuildType.params.text(
                 "TAG_VERSION",
@@ -2165,7 +2169,7 @@ object Server {
                 regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""",
                 validationMessage = "Invalid SemVer Format"
             )
-            if (deploy_env == GwDeployEnvs.PROD.env_name) {
+            if (arrayOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.OMEGA2_ANDROMEDA.env_name).contains(deploy_env) ) {
                 val publishServerDockerImageToEcrStep =
                     GwBuildSteps.createPublishServerDockerImageToProdEcrStep(tagVersion)
                 deployServerBuildType.steps.step(publishServerDockerImageToEcrStep)
@@ -3291,6 +3295,18 @@ object Helpers {
         }
     }
 
+    fun getConfigFileUrl(deploy_env: String): String {
+        return if (arrayListOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
+            "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json"
+        } else if (arrayOf(GwDeployEnvs.OMEGA2_ANDROMEDA.env_name,
+                GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA.env_name).contains(deploy_env)
+        ) {
+            "https://docportal-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}.guidewire.net/portal-config/config.json"
+        } else {
+            "https://ditaot.internal.${deploy_env}.ccs.guidewire.net/portal-config/config.json"
+        }
+    }
+
     fun setAwsEnvs(deploy_env: String): String {
         val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = when (deploy_env) {
             GwDeployEnvs.PROD.env_name -> Triple(
@@ -3734,10 +3750,7 @@ object GwBuildSteps {
 
     fun createRunIndexCleanerStep(deploy_env: String): ScriptBuildStep {
         val elasticsearchUrls = Helpers.getElasticsearchUrl(deploy_env)
-        val configFileUrl = when (deploy_env) {
-            GwDeployEnvs.PROD.env_name -> "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json"
-            else -> "https://ditaot.internal.${deploy_env}.ccs.guidewire.net/portal-config/config.json"
-        }
+        val configFileUrl = Helpers.getConfigFileUrl(deploy_env)
         return ScriptBuildStep {
             name = "Run the index cleaner"
             id = Helpers.createIdStringFromName(this.name)
@@ -3855,12 +3868,7 @@ object GwBuildSteps {
 
     fun createGetConfigFileStep(deploy_env: String, config_file: String): ScriptBuildStep {
 
-        val configFileUrl =
-            if (arrayListOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
-                "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json"
-            } else {
-                "https://ditaot.internal.${deploy_env}.ccs.guidewire.net/portal-config/config.json"
-            }
+        val configFileUrl = Helpers.getConfigFileUrl(deploy_env)
 
         return ScriptBuildStep {
             name = "Get config file"
