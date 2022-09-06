@@ -44,7 +44,9 @@ enum class GwDeployEnvs(val env_name: String) {
     STAGING("staging"),
     PROD("prod"),
     US_EAST_2("us-east-2"),
-    PORTAL2("portal2")
+    OMEGA2_ANDROMEDA("omega2-andromeda"),
+    PORTAL2("portal2"),
+    PORTAL2_OMEGA2_ANDROMEDA("portal2-omega2-andromeda")
 }
 
 enum class GwBuildTypes(val build_type_name: String) {
@@ -1149,7 +1151,8 @@ object Content {
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD).forEach {
+                GwDeployEnvs.PROD,
+                GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
                 buildType(createGenerateSitemapBuildType(it.env_name))
             }
         }
@@ -1319,7 +1322,8 @@ object Content {
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD).forEach {
+                GwDeployEnvs.PROD,
+                GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
                 buildType(createDeploySearchServiceBuildType(it.env_name))
             }
         }
@@ -1478,7 +1482,8 @@ object Frontend {
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD).forEach {
+                GwDeployEnvs.PROD,
+                GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
                 buildType(createDeployHtml5DependenciesBuildType(it.env_name))
             }
         }
@@ -1492,7 +1497,8 @@ object Frontend {
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD).forEach {
+                GwDeployEnvs.PROD,
+                GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
                 buildType(createDeployLandingPagesBuildType(it.env_name))
             }
         }
@@ -1555,7 +1561,7 @@ object Frontend {
                     GwBuildSteps.createRunFlailSsgStep(
                         "%teamcity.build.checkoutDir%/frontend/pages",
                         outputDir,
-                        deploy_env
+                        if (deploy_env == GwDeployEnvs.OMEGA2_ANDROMEDA.env_name) GwDeployEnvs.PROD.env_name else deploy_env
                     )
                 )
                 step(GwBuildSteps.createDeployStaticFilesStep(deploy_env,
@@ -1656,7 +1662,8 @@ object Frontend {
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD).forEach {
+                GwDeployEnvs.PROD,
+            GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
                 buildType(createDeployUpgradeDiffsBuildType(it.env_name))
             }
         }
@@ -1682,7 +1689,7 @@ object Frontend {
             steps {
                 step(
                     GwBuildSteps.createRunUpgradeDiffsPageBuilderStep(
-                        deploy_env,
+                        if (deploy_env == GwDeployEnvs.OMEGA2_ANDROMEDA.env_name) GwDeployEnvs.PROD.env_name else deploy_env,
                         upgradeDiffsDocsSrc,
                         upgradeDiffsDocsOut
                     )
@@ -1693,7 +1700,7 @@ object Frontend {
                     GwBuildSteps.createRunFlailSsgStep(
                         pagesDir,
                         outputDir,
-                        deploy_env
+                        if (deploy_env == GwDeployEnvs.OMEGA2_ANDROMEDA.env_name) GwDeployEnvs.PROD.env_name else deploy_env
                     )
                 )
                 step(GwBuildSteps.createDeployStaticFilesStep(deploy_env,
@@ -1739,7 +1746,8 @@ object Server {
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD).forEach {
+                GwDeployEnvs.PROD,
+                GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
                 buildType(createDeployServerBuildType(it.env_name))
             }
             buildType(ReleaseNewVersion)
@@ -2057,10 +2065,10 @@ object Server {
             else -> "v%TAG_VERSION%"
         }
         val awsEnvs = Helpers.setAwsEnvs(deploy_env)
-        val gatewayConfigFile = if (deploy_env == GwDeployEnvs.PROD.env_name) {
-            "ingress-prod.yml"
-        } else {
-            "gateway-config.yml"
+        val gatewayConfigFile = when (deploy_env) {
+            GwDeployEnvs.PROD.env_name -> "ingress-prod.yml"
+            GwDeployEnvs.OMEGA2_ANDROMEDA.env_name -> "gateway-config-prod.yml"
+            else -> "gateway-config.yml"
         }
 
         val serverBuildTypeDeployEnv =
@@ -3290,6 +3298,11 @@ object Helpers {
                 "%env.ATMOS_PROD_AWS_SECRET_ACCESS_KEY%",
                 "%env.ATMOS_PROD_AWS_DEFAULT_REGION%"
             )
+            GwDeployEnvs.OMEGA2_ANDROMEDA.env_name -> Triple(
+                "%env.ATMOS_ORANGE_PROD_AWS_ACCESS_KEY_ID%",
+                "%env.ATMOS_ORANGE_PROD_AWS_SECRET_ACCESS_KEY%",
+                "%env.ATMOS_ORANGE_PROD_AWS_DEFAULT_REGION%"
+            )
             else -> Triple(
                 "%env.ATMOS_DEV_AWS_ACCESS_KEY_ID%",
                 "%env.ATMOS_DEV_AWS_SECRET_ACCESS_KEY%",
@@ -3304,7 +3317,11 @@ object Helpers {
     }
 
     fun getTargetUrl(deploy_env: String): String {
-        return if (arrayOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
+        return if (arrayOf(GwDeployEnvs.PROD.env_name,
+                GwDeployEnvs.OMEGA2_ANDROMEDA.env_name,
+                GwDeployEnvs.PORTAL2.env_name,
+                GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA.env_name).contains(deploy_env)
+        ) {
             "https://docs.guidewire.com"
         } else {
             "https://docs.${deploy_env}.ccs.guidewire.net"
@@ -3314,6 +3331,10 @@ object Helpers {
     fun getElasticsearchUrl(deploy_env: String): String {
         return if (arrayOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
             "https://docsearch-doctools.us-east-2.service.guidewire.net"
+        } else if (arrayOf(GwDeployEnvs.OMEGA2_ANDROMEDA.env_name,
+                GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA.env_name).contains(deploy_env)
+        ) {
+            "https://docsearch-doctools.${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}.guidewire.net"
         } else {
             "https://docsearch-doctools.${deploy_env}.ccs.guidewire.net"
         }
@@ -3321,15 +3342,11 @@ object Helpers {
 
     fun getS3BucketUrl(deploy_env: String): String {
         return when (deploy_env) {
-            GwDeployEnvs.PROD.env_name -> {
-                "https://ditaot.internal.us-east-2.service.guidewire.net"
-            }
-            GwDeployEnvs.PORTAL2.env_name -> {
-                "https://portal2.internal.us-east-2.service.guidewire.net"
-            }
-            else -> {
-                "https://ditaot.internal.${deploy_env}.ccs.guidewire.net"
-            }
+            GwDeployEnvs.PROD.env_name -> "https://ditaot.internal.us-east-2.service.guidewire.net"
+            GwDeployEnvs.OMEGA2_ANDROMEDA.env_name -> "https://docportal-content.${deploy_env}.guidewire.net"
+            GwDeployEnvs.PORTAL2.env_name -> "https://portal2.internal.us-east-2.service.guidewire.net"
+            GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA.env_name -> "https://portal2-content.${deploy_env}.guidewire.net"
+            else -> "https://ditaot.internal.${deploy_env}.ccs.guidewire.net"
         }
     }
 
@@ -3378,6 +3395,31 @@ object Helpers {
                 export LIMITS_MEMORY="16G"
                 export LIMITS_CPU="4"
             """.trimIndent()
+            GwDeployEnvs.OMEGA2_ANDROMEDA.env_name -> """
+                export AWS_ROLE="arn:aws:iam::954920275956:role/aws_orange-prod_tenant_doctools_developer"
+                export AWS_ECR_REPO="954920275956.dkr.ecr.us-east-1.amazonaws.com/tenant-doctools-docportal"
+                export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/partners-login"
+                export PARTNERS_LOGIN_URL="$partnersLoginUrl"
+                export GW_COMMUNITY_PARTNER_IDP="0oa6c4yaoikrU91Hw357"
+                export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/customers-login"
+                export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
+                export GW_COMMUNITY_CUSTOMER_IDP="0oa6c4x5z3fYXUWoE357"
+                export TAG_VERSION="$tag_version"
+                export DEPLOY_ENV="$deploy_env"
+                export OKTA_ACCESS_TOKEN_ISSUER="https://guidewire-hub.okta.com/oauth2/aus11vix3uKEpIfSI357"
+                export OKTA_ACCESS_TOKEN_ISSUER_APAC="https://guidewire-hub-apac.okta.com/oauth2/ausbg05gfcTZQ7bpH3l6"
+                export OKTA_ACCESS_TOKEN_ISSUER_EMEA="https://guidewire-hub-eu.okta.com/oauth2/ausc2q01c40dNZII0416"
+                export OKTA_DOMAIN="https://guidewire-hub.okta.com"
+                export OKTA_IDP="0oa25tk18zhGOqMfj357"
+                export APP_BASE_URL="$appBaseUrl"
+                export ELASTIC_SEARCH_URL="http://docsearch-${deploy_env}.doctools:9200"
+                export DOC_S3_URL="${getS3BucketUrl(deploy_env)}"
+                export PORTAL2_S3_URL="${getS3BucketUrl(GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA.env_name)}"
+                export REQUESTS_MEMORY="8G"
+                export REQUESTS_CPU="2"
+                export LIMITS_MEMORY="16G"
+                export LIMITS_CPU="4"
+            """.trimIndent()
             else -> """
                 export AWS_ROLE="arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"
                 export AWS_ECR_REPO="627188849628.dkr.ecr.us-west-2.amazonaws.com/tenant-doctools-docportal"
@@ -3410,6 +3452,13 @@ object Helpers {
         return when (deploy_env) {
             GwDeployEnvs.PROD.env_name -> """
                 export DEPLOY_ENV="${GwDeployEnvs.US_EAST_2.env_name}"
+                export REQUESTS_MEMORY="4G"
+                export REQUESTS_CPU="1"
+                export LIMITS_MEMORY="8G"
+                export LIMITS_CPU="2"
+            """.trimIndent()
+            GwDeployEnvs.OMEGA2_ANDROMEDA.env_name -> """
+                export DEPLOY_ENV="$deploy_env"
                 export REQUESTS_MEMORY="4G"
                 export REQUESTS_CPU="1"
                 export LIMITS_MEMORY="8G"
