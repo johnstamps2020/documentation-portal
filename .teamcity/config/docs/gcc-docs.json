@@ -302,6 +302,22 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "gccinternallatests",
+      "title": "GCC Internal Docs",
+      "url": "gcc/internal/latest",
+      "displayOnLandingPages": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"]
+      },
+      "environments": ["int"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }

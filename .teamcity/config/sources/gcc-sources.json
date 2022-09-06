@@ -42,6 +42,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-cloud-console.git",
       "branch": "release/pt-BR/2021.11"
+    },
+    {
+      "id": "gccinternalsrc",
+      "title": "GCC Internal Docs",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gcc-internal-docs.git",
+      "branch": "main"
     }
   ]
 }
