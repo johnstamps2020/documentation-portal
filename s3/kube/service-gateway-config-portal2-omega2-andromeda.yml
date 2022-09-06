@@ -6,7 +6,7 @@ metadata:
   namespace: doctools
 spec:
   type: ExternalName
-  externalName: tenant-doctools-portal2-builds.s3-website.us-east-2.amazonaws.com
+  externalName: tenant-doctools-portal2-omega2-andromeda-builds.s3-website-us-east-1.amazonaws.com
   ports:
     - port: 80
       protocol: TCP
@@ -23,7 +23,7 @@ spec:
       request_transformer:
         add:
           headers:
-            - Host:tenant-doctools-portal2-builds.s3-website.us-east-2.amazonaws.com
+            - Host:tenant-doctools-portal2-omega2-andromeda-builds.s3-website-us-east-1.amazonaws.com
   path_configs:
     - name: Default
       paths:
@@ -33,8 +33,3 @@ spec:
   service_ref: portal2-content
   service_alias: portal2-content
   enable_sub_domain: false
-  alt_fqdns:
-    - name: portal2-content-legacy-domain
-      enable_sub_domain: true
-      sub_domain: internal
-      hostname: portal2
