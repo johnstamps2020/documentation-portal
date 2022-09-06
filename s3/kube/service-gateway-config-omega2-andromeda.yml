@@ -1,0 +1,35 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: docportal-content
+  namespace: doctools
+spec:
+  type: ExternalName
+  externalName: tenant-doctools-omega2-andromeda-builds.s3-website-us-east-1.amazonaws.com
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+---
+apiVersion: oort.ccs.guidewire.com/v1alpha1
+kind: GatewayConfig
+metadata:
+  namespace: doctools
+  name: docportal-content-gateway-config
+spec:
+  profiles:
+    - name: Default
+      request_transformer:
+        add:
+          headers:
+            - Host:tenant-doctools-omega2-andromeda-builds.s3-website-us-east-1.amazonaws.com
+  path_configs:
+    - name: Default
+      paths:
+        - /**
+      profiles:
+        - Default
+  service_ref: docportal-content
+  service_alias: docportal-content
+  enable_sub_domain: false
