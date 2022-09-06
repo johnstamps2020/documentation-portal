@@ -3,6 +3,11 @@
   "builds": [
     {
       "buildType": "yarn",
+      "docId": "gccinternallatests",
+      "srcId": "gccinternalsrc"
+    },
+    {
+      "buildType": "yarn",
       "docId": "cloudconsoleapi",
       "srcId": "cloudconsoleapisrc"
     },
