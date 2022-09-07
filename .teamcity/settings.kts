@@ -3372,7 +3372,7 @@ object Helpers {
             GwDeployEnvs.PROD.env_name -> "https://ditaot.internal.us-east-2.service.guidewire.net"
             GwDeployEnvs.OMEGA2_ANDROMEDA.env_name -> "https://docportal-content.${deploy_env}.guidewire.net"
             GwDeployEnvs.PORTAL2.env_name -> "https://portal2.internal.us-east-2.service.guidewire.net"
-            GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA.env_name -> "https://portal2-content.${deploy_env}.guidewire.net"
+            GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA.env_name -> "https://portal2-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}.guidewire.net"
             else -> "https://ditaot.internal.${deploy_env}.ccs.guidewire.net"
         }
     }
