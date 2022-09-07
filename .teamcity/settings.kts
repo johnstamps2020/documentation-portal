@@ -1598,7 +1598,8 @@ object Frontend {
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD).forEach {
+                GwDeployEnvs.PROD,
+            GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
                 buildType(createDeployLocalizedPagesBuildType(it.env_name))
             }
         }
@@ -1634,7 +1635,7 @@ object Frontend {
                     GwBuildSteps.createRunFlailSsgStep(
                         pagesDir,
                         outputDir,
-                        deploy_env
+                        if (deploy_env == GwDeployEnvs.OMEGA2_ANDROMEDA.env_name) GwDeployEnvs.PROD.env_name else deploy_env
                     )
                 )
                 step(GwBuildSteps.createDeployStaticFilesStep(deploy_env,
