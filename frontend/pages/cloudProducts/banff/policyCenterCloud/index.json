@@ -31,10 +31,6 @@
           "id": "isconfigupgradetools310"
         },
         {
-          "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetoolsdraft"
-        },
-        {
           "label": "Lines of business",
           "class": "group",
           "env": ["dev", "int", "staging"],

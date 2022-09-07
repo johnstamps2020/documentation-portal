@@ -2,17 +2,17 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
-      "id": "isconfigupgradetoolsdraftsrc",
-      "title": "InsuranceSuite Configuration Upgrade Tools Draft",
+      "id": "isconfigupgradetools440src",
+      "title": "InsuranceSuite Configuration Upgrade Tools 4.4.0",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools-3x.git",
-      "branch": "master"
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools.git",
+      "branch": "release/4.4.0"
     },
     {
       "id": "isconfigupgradetools430src",
       "title": "InsuranceSuite Configuration Upgrade Tools 4.3.0",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools-3x.git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools.git",
       "branch": "release/4.3.0"
     },
     {
