@@ -82,12 +82,7 @@
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetoolsdraft"
-        },
-        {
-          "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools430",
-          "env": ["staging", "prod"]
+          "id": "isconfigupgradetools430"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools Compatibility",

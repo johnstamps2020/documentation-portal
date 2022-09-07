@@ -41,10 +41,6 @@
           "id": "isconfigupgradetools430"
         },
         {
-          "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetoolsdraft"
-        },
-        {
           "label": "InsuranceSuite Configuration Upgrade Tools Compatibility",
           "id": "isupgradecompatibility"
         },

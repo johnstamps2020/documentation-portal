@@ -24,16 +24,11 @@
       "items": [
         {
           "label": "ClaimCenter for Guidewire Cloud",
-          "page": "ccGwCloud/2021.04",
-          "env": ["dev", "int", "staging", "prod"]
+          "page": "ccGwCloud/2021.04"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
           "id": "isconfigupgradetools330"
-        },
-        {
-          "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetoolsdraft"
         }
       ]
     },
@@ -63,13 +58,11 @@
           "items": [
             {
               "label": "DataHub for Guidewire Cloud",
-              "page": "../dhGwCloud/2021.04",
-              "env": ["dev", "int", "staging", "prod"]
+              "page": "../dhGwCloud/2021.04"
             },
             {
               "label": "InfoCenter for Guidewire Cloud",
-              "page": "../icGwCloud/2021.04",
-              "env": ["dev", "int", "staging", "prod"]
+              "page": "../icGwCloud/2021.04"
             }
           ]
         }
@@ -82,32 +75,26 @@
         {
           "label": "Digital Applications",
           "class": "group",
-          "env": ["dev", "int", "staging", "prod"],
           "items": [
             {
               "label": "CustomerEngage Account Management",
-              "page": "../ceAccountMgmt/2021.04",
-              "env": ["dev", "int", "staging", "prod"]
+              "page": "../ceAccountMgmt/2021.04"
             },
             {
               "label": "CustomerEngage Account Management for ClaimCenter",
-              "page": "ceAccountMgmtCc/2021.04",
-              "env": ["dev", "int", "staging", "prod"]
+              "page": "ceAccountMgmtCc/2021.04"
             },
             {
               "label": "ProducerEngage",
-              "page": "../producerEngage/2021.04",
-              "env": ["dev", "int", "staging", "prod"]
+              "page": "../producerEngage/2021.04"
             },
             {
               "label": "ProducerEngage for ClaimCenter",
-              "page": "producerEngageCc/2021.04",
-              "env": ["dev", "int", "staging", "prod"]
+              "page": "producerEngageCc/2021.04"
             },
             {
               "label": "VendorEngage",
-              "page": "vendorEngage/2021.04",
-              "env": ["dev", "int", "staging", "prod"]
+              "page": "vendorEngage/2021.04"
             }
           ]
         },
@@ -117,8 +104,7 @@
           "items": [
             {
               "label": "Jutro Design System",
-              "page": "../../../jutroDesignSystem/5.3.1",
-              "env": ["dev", "int", "staging", "prod"]
+              "page": "../../../jutroDesignSystem/5.3.1"
             }
           ]
         }
