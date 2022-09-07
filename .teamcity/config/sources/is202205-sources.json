@@ -24,10 +24,10 @@
     },
     {
       "id": "is202205src",
-      "title": "IS 2022.05.1",
+      "title": "IS 2022.05.2",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
-      "branch": "release/2022.05.1"
+      "branch": "release/2022.05.2"
     },
     {
       "id": "srcpcapirefelysian",
