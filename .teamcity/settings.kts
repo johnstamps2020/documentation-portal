@@ -1050,7 +1050,7 @@ object Custom {
                     rm -f ${'$'}BUILDS_FILE_PARSED
                     rm -f %teamcity.build.workingDir%/*.zip
                     rm -rf %teamcity.build.workingDir%/$localOutputDir/*
-                    rm -rf ${'$'}GIT_CLONE_DIR
+                    rm -rf %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR/*
 
                     git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% ${'$'}GIT_CLONE_DIR
 
