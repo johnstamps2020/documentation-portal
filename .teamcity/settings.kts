@@ -794,7 +794,12 @@ object Docs {
                     %teamcity.build.workingDir%/*.log => build_logs
                 """.trimIndent()
                 val configFile = "%teamcity.build.workingDir%/config.json"
-                val configFileStep = GwBuildSteps.createGetConfigFileStep(deploy_env, configFile)
+                val configFileEnv = when (deploy_env) {
+                    GwDeployEnvs.OMEGA2_ANDROMEDA.env_name -> GwDeployEnvs.PROD.env_name
+                    GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA.env_name -> GwDeployEnvs.PORTAL2.env_name
+                    else -> deploy_env
+                }
+                val configFileStep = GwBuildSteps.createGetConfigFileStep(configFileEnv, configFile)
                 steps.step(configFileStep)
                 steps.stepsOrder.add(configFileStep.id.toString())
                 val crawlDocStep = GwBuildSteps.createRunDocCrawlerStep(deploy_env, doc_id, configFile)
@@ -1246,6 +1251,11 @@ object Content {
 
     private fun createUpdateSearchIndexBuildType(deploy_env: String): BuildType {
         val configFile = "%teamcity.build.workingDir%/config.json"
+        val configFileEnv = when (deploy_env) {
+            GwDeployEnvs.OMEGA2_ANDROMEDA.env_name -> GwDeployEnvs.PROD.env_name
+            GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA.env_name -> GwDeployEnvs.PORTAL2.env_name
+            else -> deploy_env
+        }
         return BuildType {
             name = "Update search index on $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -1262,7 +1272,7 @@ object Content {
             }
 
             steps {
-                step(GwBuildSteps.createGetConfigFileStep(deploy_env, configFile))
+                step(GwBuildSteps.createGetConfigFileStep(configFileEnv, configFile))
                 step(GwBuildSteps.createRunDocCrawlerStep(deploy_env, "%DOC_ID%", configFile))
             }
 
@@ -1598,7 +1608,8 @@ object Frontend {
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD).forEach {
+                GwDeployEnvs.PROD,
+            GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
                 buildType(createDeployLocalizedPagesBuildType(it.env_name))
             }
         }
@@ -1634,7 +1645,7 @@ object Frontend {
                     GwBuildSteps.createRunFlailSsgStep(
                         pagesDir,
                         outputDir,
-                        deploy_env
+                        if (deploy_env == GwDeployEnvs.OMEGA2_ANDROMEDA.env_name) GwDeployEnvs.PROD.env_name else deploy_env
                     )
                 )
                 step(GwBuildSteps.createDeployStaticFilesStep(deploy_env,
