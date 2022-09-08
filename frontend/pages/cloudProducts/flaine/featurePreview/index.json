@@ -33,20 +33,6 @@
       ]
     },
     {
-      "label": "Submission Intake",
-      "class": "subject configuration",
-      "items": [
-        {
-          "label": "Submission Intake",
-          "id": "submissionintake"
-        },
-        {
-          "label": "Submission Intake Configuration",
-          "id": "submissionintakeconfig"
-        }
-      ]
-    },
-    {
       "label": "Integration Framework",
       "class": "subject development",
       "items": [

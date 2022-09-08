@@ -93,6 +93,10 @@
         {
           "label": "Contact Management",
           "id": "is202209contact"
+        },
+        {
+          "label": "Submission Intake",
+          "id": "submissionintake"
         }
       ]
     },
@@ -141,6 +145,10 @@
         {
           "label": "Product Model",
           "id": "ispc202209pm"
+        },
+        {
+          "label": "Submission Intake Configuration",
+          "id": "submissionintakeconfig"
         }
       ]
     },
