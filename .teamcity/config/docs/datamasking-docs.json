@@ -9,7 +9,7 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "version": ["2022.05"],
-        "release": ["Elysian"],
+        "release": ["Elysian", "Flaine"],
         "subject": ["Development"]
       },
       "environments": ["int", "staging"],
