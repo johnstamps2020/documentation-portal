@@ -55,6 +55,10 @@
       "class": "subject bestPractices",
       "items": [
         {
+          "label": "Data Masking",
+          "id": "datamasking"
+        },
+        {
           "label": "Load and Performance Testing",
           "id": "testingframeworksloadflaine"
         },
