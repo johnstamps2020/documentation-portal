@@ -84,7 +84,9 @@ async function getPage(req, res, next) {
     if (response.ok) {
       const fileContentsJson = await response.json();
       const hasGuidewireEmail = res.locals.userInfo.hasGuidewireEmail;
-      const templateName = 'react-page';
+      const templateName = hasGuidewireEmail
+        ? 'react-page'
+        : fileContentsJson.template;
       res.render(templateName, {
         pageContent: fileContentsJson,
         hasGuidewireEmail: hasGuidewireEmail,
