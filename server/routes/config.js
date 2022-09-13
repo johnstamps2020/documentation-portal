@@ -7,6 +7,7 @@ const {
   getDocumentMetadata,
   getDocId,
   expensiveLoadConfig,
+  getEnv,
 } = require('../controllers/configController');
 const ejs = require('ejs');
 const fs = require('fs');
@@ -130,6 +131,11 @@ router.get('/refreshConfig', async function(req, res, next) {
     );
     next(err);
   }
+});
+
+router.get('/env', function(req, res) {
+  const env = getEnv();
+  res.send(env);
 });
 
 module.exports = router;

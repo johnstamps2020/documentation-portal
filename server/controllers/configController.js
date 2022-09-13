@@ -304,6 +304,10 @@ async function getDocId(
   }
 }
 
+function getEnv() {
+  return { envName: process.env.DEPLOY_ENV };
+}
+
 module.exports = {
   getConfig,
   expensiveLoadConfig,
@@ -313,4 +317,5 @@ module.exports = {
   getVersionSelector,
   getDocumentMetadata,
   getDocId,
+  getEnv,
 };
