@@ -67,8 +67,8 @@ function setL10nParams(pageClass) {
 
 async function fetchConfigFileForLandingPage(req) {
   let reqPath = req.path === '/' ? '' : req.path;
-  if ( reqPath.slice(-1) === '/' ) {
-      reqPath = reqPath.slice(0, -1);
+  if (reqPath.slice(-1) === '/') {
+    reqPath = reqPath.slice(0, -1);
   }
 
   const configFilePath = new URL(
@@ -84,7 +84,7 @@ async function getPage(req, res, next) {
     if (response.ok) {
       const fileContentsJson = await response.json();
       const hasGuidewireEmail = res.locals.userInfo.hasGuidewireEmail;
-      const templateName = fileContentsJson.template;
+      const templateName = 'react-page';
       res.render(templateName, {
         pageContent: fileContentsJson,
         hasGuidewireEmail: hasGuidewireEmail,
