@@ -2,13 +2,13 @@ import dataclasses
 import json
 import logging
 import os
-import sys
-import time
 import urllib.parse
 from dataclasses import dataclass
-from typing import Optional, Union
+from typing import Callable, Optional, Union
 
 import requests
+import sys
+import time
 
 _logger = logging.getLogger('build_manager_logger')
 _logger.setLevel(logging.INFO)
@@ -67,7 +67,7 @@ class AppConfig:
     def bitbucket_branch_commits_url(self):
         return urllib.parse.urljoin(self._bitbucket_api_root_url,
                                     f'{self._bitbucket_project_key}/repos/{self._bitbucket_repository_name}'
-                                    f'/commits?until={self._bitbucket_branch_name}&merges=exclude&limit=1')
+                                    f'/commits?until={self._bitbucket_branch_name}&merges=include&limit=1')
 
     def get_bitbucket_pull_request_changes_url(self, start: int):
         return urllib.parse.urljoin(self._bitbucket_api_root_url,
@@ -75,9 +75,19 @@ class AppConfig:
                                     f'/{self.teamcity_build_branch}/changes?start={start}')
 
     def get_bitbucket_commit_changes_url(self, commit_id: str, start: int):
-        return urllib.parse.urljoin(self._bitbucket_api_root_url,
-                                    f'{self._bitbucket_project_key}/repos/{self._bitbucket_repository_name}'
-                                    f'/commits/{commit_id}/changes?start={start}')
+        commit_details_url = urllib.parse.urljoin(self._bitbucket_api_root_url,
+                                                  f'{self._bitbucket_project_key}/repos/{self._bitbucket_repository_name}'
+                                                  f'/commits/{commit_id}')
+        commit_details = requests.get(commit_details_url,
+                                      headers=self.bitbucket_api_headers)
+        commit_parents = commit_details.json()['parents']
+        """ 
+        Regular commits have one parent commit. Merge commits have two or more parent commits.
+        To get the list of changes for a merge commit, the since parameter must be set to the commit ID 
+        of the proper parent. For a regular commit, the since parameter is not required but it is used
+        anyway to avoid checking for a condition that does not really matter.
+        """
+        return f'{commit_details_url}/changes?start={start}&since={commit_parents[0]["id"]}'
 
     def get_app_config(self):
         if missing_parameters := [
@@ -168,7 +178,7 @@ def normalize_paths(paths: list[str]) -> list[str]:
     return [urllib.parse.quote(p, safe='/()%') for p in paths]
 
 
-def check_processing_result(func):
+def check_processing_result(func) -> Callable:
     def wrapper(*args, **kwargs):
         result = func(*args, **kwargs)
         if type(result) is ProcessingRecord:
@@ -180,8 +190,8 @@ def check_processing_result(func):
     return wrapper
 
 
-def get_changed_files(app_config: AppConfig):
-    def pull_changes(commit_id: Optional[str] = None, start_at: Optional[int] = None):
+def get_changed_files(app_config: AppConfig) -> list[str]:
+    def pull_changes(commit_id: Optional[str] = None, start_at: Optional[int] = None) -> list[str]:
         start_number = start_at or 0
         if commit_id:
             request_url = app_config.get_bitbucket_commit_changes_url(commit_id, start_number)
@@ -192,12 +202,12 @@ def get_changed_files(app_config: AppConfig):
             headers=app_config.bitbucket_api_headers,
         )
         latest_commit_changes_json = response.json()
-        changed_files = [change['path']['toString'] for change in latest_commit_changes_json.get('values', [])]
+        changes = [change['path']['toString'] for change in latest_commit_changes_json.get('values', [])]
         is_last_page = latest_commit_changes_json.get('isLastPage', True)
         if not is_last_page:
-            changed_files.extend(
+            changes.extend(
                 pull_changes(commit_id=commit_id, start_at=latest_commit_changes_json.get('nextPageStart')))
-        return changed_files
+        return changes
 
     @check_processing_result
     def get_changes_from_pull_request() -> Union[list[str], ProcessingRecord]:
