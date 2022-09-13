@@ -33,7 +33,7 @@ module.exports = {
       filename: 'html5skip.js',
     },
     frontend: {
-      import: './src/frontend/index.js',
+      import: './src/frontend/index.tsx',
       filename: 'frontend/index.js',
     },
   },
@@ -56,6 +56,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
       {
         test: /\.m?js$/,
         exclude: [/node_modules/, /static/, /out/],
@@ -147,5 +152,8 @@ module.exports = {
         type: 'asset/resource',
       },
     ],
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
   },
 };
