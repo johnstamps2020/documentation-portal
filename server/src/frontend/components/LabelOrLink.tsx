@@ -4,10 +4,12 @@ import { LinkProps } from '../../../types/page';
 export default function LabelOrLink({ label, id, link, page }: LinkProps) {
   function getHref(): string | undefined {
     if (id) {
+      // TO DO: Implement functionality
       return id;
     }
 
     if (page) {
+      // FIX: creates a broken link
       return new URL(page, window.location.href).toString();
     }
 
