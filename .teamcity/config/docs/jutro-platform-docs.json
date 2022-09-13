@@ -3,10 +3,10 @@
   "docs": [
     {
       "id": "jutroplatformnext",
-      "title": "Jutro Platform",
+      "title": "Jutro Digital Platform",
       "url": "jutro/platform/next",
       "metadata": {
-        "product": ["Jutro Platform"],
+        "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
         "version": ["next"],
         "subject": ["Administration"]
