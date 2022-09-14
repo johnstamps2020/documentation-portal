@@ -20,13 +20,8 @@ body {
   --main-padding-large: 2rem;
   --article-margin-right: 3rem;
   --article-width: 105ch;
-  --left-nav-width: 350px;
   --mini-toc-width: 300px;
   --left-nav-mini-toc-height: 95vh;
-  --large-screen-width: calc(
-    var(--main-padding-large) + var(--article-margin-right) +
-      var(--article-width) + var(--left-nav-width) + var(--mini-toc-width)
-  );
   margin: 0;
   font-family: var(--guidewire-font);
   color: var(--GW-COLOR-TEXT-1);
