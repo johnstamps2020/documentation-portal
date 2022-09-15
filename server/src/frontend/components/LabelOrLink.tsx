@@ -1,24 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { LinkProps } from '../../../types/page';
 
 export default function LabelOrLink({ label, id, link, page }: LinkProps) {
-  function getHref(): string | undefined {
+  const [href, setHref] = useState<string|undefined>()
+  async function getHref() {
     if (id) {
-      // TO DO: Implement functionality
-      return id;
+      let docPath = window.location.origin
+      if (docPath.slice(-1) !== '/') {
+        docPath = `${window.location.origin}/`
+      }
+      const response = await fetch(`${docPath}safeConfig/docUrl/${id}`)
+      const data = await response.json()
+      const url = data.url
+      setHref(new URL(url, docPath).toString())
     }
 
     if (page) {
-      // FIX: creates a broken link
-      return new URL(page, window.location.href).toString();
+      let pagePath = window.location.href
+      if (pagePath.slice(-1) !== '/') {
+        pagePath = `${window.location.href}/`
+      }
+      setHref(new URL(page, pagePath).toString())
     }
 
     if (link) {
-      return link;
+      setHref(link)
     }
   }
 
-  const href = getHref();
+  useEffect(function () { 
+    getHref()
+   }, [])
 
   if (href) {
     return (
