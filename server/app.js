@@ -1,6 +1,15 @@
 'use strict';
-
 require('dotenv').config();
+
+const AppDataSource = require('./model/connection');
+AppDataSource.initialize()
+  .then(() => {
+    console.log('Data Source has been initialized!');
+  })
+  .catch(err => {
+    console.error('Error during Data Source initialization', err);
+  });
+
 const tracer = require('dd-trace').init();
 const {
   expressWinstonLogger,

@@ -37,8 +37,11 @@
     "openid-client": "^4.9.1",
     "passport": "^0.5.2",
     "passport-saml": "^3.2.1",
+    "pg": "^8.8.0",
     "prettier": "^1.19.1",
+    "reflect-metadata": "^0.1.13",
     "serve-favicon": "^2.5.0",
+    "typeorm": "^0.3.9",
     "winston": "^3.7.2"
   },
   "devDependencies": {
