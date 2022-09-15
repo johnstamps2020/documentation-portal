@@ -1301,8 +1301,7 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.4.0"],
-        "subject": ["Best practices"],
-        "release": ["Flaine"]
+        "subject": ["Best practices"]
       },
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
@@ -1319,8 +1318,7 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.4.0"],
-        "subject": ["Development"],
-        "release": ["Flaine"]
+        "subject": ["Development"]
       },
       "environments": ["dev", "staging", "int", "prod"],
       "displayOnLandingPages": true,
