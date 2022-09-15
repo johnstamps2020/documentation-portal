@@ -239,6 +239,30 @@ async function getVersionSelector(docId, reqObj, resObj) {
   }
 }
 
+async function getDocUrlById (docId, reqObj, resObj) {
+  try {
+    const config = await getConfig(reqObj, resObj);
+    const doc = config.docs.find(d => d.id === docId);
+    if (doc) {
+      return {
+        id: doc.id,
+        url: doc.url
+      }
+    } else {
+      return {
+        error: true,
+        message: `Did not find a doc matching ID ${docId}`,
+      };
+    }
+  }
+  catch (err) {
+  winstonLogger.error(
+    `Problem getting document url  
+              docId: ${docId}, 
+              ERROR: ${JSON.stringify(err)}`
+    );
+  }
+}
 async function getDocumentMetadata(docId, reqObj, resObj) {
   try {
     const config = await getConfig(reqObj, resObj);
@@ -318,4 +342,5 @@ module.exports = {
   getDocumentMetadata,
   getDocId,
   getEnv,
+  getDocUrlById
 };

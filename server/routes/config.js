@@ -8,6 +8,7 @@ const {
   getDocId,
   expensiveLoadConfig,
   getEnv,
+  getDocUrlById
 } = require('../controllers/configController');
 const ejs = require('ejs');
 const fs = require('fs');
@@ -88,6 +89,20 @@ router.get('/docMetadata/:docId', async function(req, res, next) {
       ERROR: ${JSON.stringify(err)}
       DOC ID: ${req.params?.docId}`);
     next(err);
+  }
+});
+
+router.get('/docUrl/:docId', async function(req, res, next) {
+  try {
+    const { docId } = req.params;
+    const docUrl = await getDocUrlById(docId, req, res);
+    res.send(docUrl);
+  }
+  catch (err) {
+  winstonLogger.error(`[SAFE CONFIG]: Problem getting doc url from ID
+    ERROR: ${JSON.stringify(err)}
+    DOC ID: ${req.params?.docId}`);
+  next(err);
   }
 });
 
