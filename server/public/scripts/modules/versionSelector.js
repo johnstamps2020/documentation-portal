@@ -9,7 +9,7 @@ async function findBestMatchingTopic(searchQuery, targetDocVersion) {
     searchUrl.searchParams.append('product', `${window.docProduct}`);
     searchUrl.searchParams.append('version', `${targetDocVersion}`);
     if (window.docTitle) {
-      searchUrl.searchParams.append('title', `${window.docTitle}`);
+      searchUrl.searchParams.append('doc_title', `${window.docTitle}`);
     }
     const response = await fetch(searchUrl.href);
     const responseBody = await response.json();
