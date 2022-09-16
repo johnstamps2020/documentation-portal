@@ -358,7 +358,6 @@ object Docs {
                     """.trimIndent()
                     dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.image_url}:17.6.0"
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerPull = true
                     dockerRunParameters = "--user 1000:1000"
                 }
                 script {
@@ -1385,7 +1384,6 @@ object Content {
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerPull = true
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
                 }
             }
@@ -1453,6 +1451,9 @@ object Content {
                     cd %teamcity.build.checkoutDir%/ci
                     ./downloadPdfsForEscrow.sh
                 """.trimIndent()
+                dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
             }
             script {
                 name = "Upload the ZIP archive to S3"
@@ -1467,6 +1468,9 @@ object Content {
                     echo "Uploading the ZIP archive to the S3 bucket"
                     aws s3 cp "${tmpDir}/${zipArchiveName}" s3://tenant-doctools-int-builds/escrow/%env.RELEASE_NAME%/
             """.trimIndent()
+                dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
             }
         }
     })
@@ -1913,7 +1917,6 @@ object Server {
                     yarn test
                 """.trimIndent()
                 dockerImage = GwDockerImages.NODE_16_14_2.image_url
-                dockerPull = true
             }
         }
 
@@ -2060,7 +2063,6 @@ object Server {
             """.trimIndent()
                 dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                dockerPull = true
                 dockerRunParameters =
                     "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
             }
@@ -2129,7 +2131,6 @@ object Server {
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerPull = true
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
                 }
                 script {
@@ -2160,7 +2161,6 @@ object Server {
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerPull = true
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
                 }
 
@@ -3025,6 +3025,9 @@ object Recommendations {
                             echo "Downloading the pretrained model from the S3 bucket"
                             aws s3 cp s3://tenant-doctools-${deploy_env}-builds/recommendation-engine/${pretrainedModelFile} %teamcity.build.workingDir%/
                         """.trimIndent()
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
                 }
                 script {
                     name = "Run the recommendation engine"
@@ -3664,6 +3667,9 @@ object GwBuildSteps {
                         
                 aws s3 sync "$loc_docs_src" s3://tenant-doctools-${deploy_env}-builds/l10n --exclude ".git/*" --delete
             """.trimIndent()
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
         }
     }
 
@@ -3735,6 +3741,9 @@ object GwBuildSteps {
                         
                 $awsS3SyncCommand
             """.trimIndent()
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
         }
     }
 
@@ -3812,7 +3821,6 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerPull = true
             dockerRunParameters =
                 "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
         }
@@ -3840,7 +3848,6 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerPull = true
             dockerRunParameters =
                 "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
         }
@@ -3950,6 +3957,9 @@ object GwBuildSteps {
                     echo "Uploading from Teamcity to prod"
                     aws s3 sync ${publish_path}/ s3://tenant-doctools-prod-builds/${publish_path} --delete
                 """.trimIndent()
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
         }
     }
 
@@ -4005,6 +4015,9 @@ object GwBuildSteps {
                     
                     aws s3 sync "$output_path" s3://${s3BucketName}/${publish_path} --delete
                 """.trimIndent()
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
         }
     }
 
@@ -4274,7 +4287,6 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.image_url}:14.14.0"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerPull = true
             dockerRunParameters = "--user 1000:1000"
         }
     }
@@ -4309,7 +4321,6 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.image_url}:17.6.0"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerPull = true
             dockerRunParameters = "--user 1000:1000"
         }
     }
@@ -4380,7 +4391,6 @@ object GwBuildSteps {
                 """.trimIndent()
             dockerImage = nodeImage
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerPull = true
             dockerRunParameters = "--user 1000:1000"
         }
     }
@@ -4444,7 +4454,6 @@ object GwBuildSteps {
                 """.trimIndent()
             dockerImage = GwDockerImages.GENERIC_14_14_0_YARN_CHROME.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerPull = true
         }
     }
 
@@ -4600,7 +4609,6 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerPull = true
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
         }
     }
