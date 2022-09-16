@@ -10,10 +10,10 @@ module.exports = new EntitySchema({
       type: 'uuid',
     },
     label: {
-      type: 'string',
+      type: 'varchar',
     },
     class: {
-      type: 'string',
+      type: 'varchar',
     },
   },
   relations: {

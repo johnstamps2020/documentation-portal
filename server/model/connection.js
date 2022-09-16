@@ -7,7 +7,11 @@ const AppDataSource = new DataSource({
   username: 'postgres',
   password: process.env.DOCPORTAL_DB_PASSWORD,
   database: 'postgres',
-  entities: ['./entity/**/*.js'],
+  entities: [
+    require('./entity/page'),
+    require('./entity/item'),
+    require('./entity/selector'),
+  ],
   synchronize: process.env.NODE_ENV === 'development',
 });
 

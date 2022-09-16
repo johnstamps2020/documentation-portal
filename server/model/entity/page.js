@@ -5,16 +5,16 @@ module.exports = new EntitySchema({
   columns: {
     url: {
       primary: true,
-      type: 'string',
+      type: 'varchar',
     },
     title: {
-      type: 'string',
+      type: 'varchar',
     },
     template: {
-      type: 'string',
+      type: 'varchar',
     },
     class: {
-      type: 'string',
+      type: 'varchar',
     },
     includeInBreadcrumbs: {
       type: 'boolean',

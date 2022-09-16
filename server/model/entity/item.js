@@ -10,19 +10,19 @@ module.exports = new EntitySchema({
       type: 'uuid',
     },
     class: {
-      type: 'string',
+      type: 'varchar',
     },
     label: {
-      type: 'string',
+      type: 'varchar',
     },
     id: {
-      type: 'string',
+      type: 'varchar',
     },
     page: {
-      type: 'string',
+      type: 'varchar',
     },
     link: {
-      type: 'string',
+      type: 'varchar',
     },
   },
 });

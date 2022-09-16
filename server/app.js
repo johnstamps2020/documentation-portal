@@ -1,15 +1,6 @@
 'use strict';
 require('dotenv').config();
 
-const AppDataSource = require('./model/connection');
-AppDataSource.initialize()
-  .then(() => {
-    console.log('Data Source has been initialized!');
-  })
-  .catch(err => {
-    console.error('Error during Data Source initialization', err);
-  });
-
 const tracer = require('dd-trace').init();
 const {
   expressWinstonLogger,
@@ -22,6 +13,15 @@ const cookieParser = require('cookie-parser');
 const favicon = require('serve-favicon');
 const session = require('cookie-session');
 const httpContext = require('express-http-context');
+
+const AppDataSource = require('./model/connection.js');
+AppDataSource.initialize()
+  .then(() => {
+    winstonLogger.notice('Data Source has been initialized!');
+  })
+  .catch(err => {
+    winstonLogger.error('Error during Data Source initialization', err);
+  });
 
 const app = express();
 app.use(expressWinstonLogger);
