@@ -8,6 +8,14 @@
       "docId": "sbtfwcustomization",
       "srcId": "sbtfwsrc",
       "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "root": "sbtframeworkguide.ditamap",
+      "filter": "GW-Generic-Release.ditaval",
+      "docId": "sbtfwguide",
+      "srcId": "sbtfwsrc",
+      "indexRedirect": true
     }
   ]
 }
