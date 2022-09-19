@@ -19,7 +19,7 @@
     {
       "id": "sbtfwguide",
       "title": "Standards-based Template Framework Guide",
-      "url": "sbtfw/latest/customization",
+      "url": "sbtfw/latest/guide",
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
         "product": ["Standards-based Template Framework"],
