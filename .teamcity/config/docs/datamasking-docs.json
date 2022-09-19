@@ -12,7 +12,7 @@
         "release": ["Elysian", "Flaine"],
         "subject": ["Development"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
