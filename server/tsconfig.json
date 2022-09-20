@@ -1,13 +1,21 @@
 {
-  "include": ["src/**/*"],
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "noImplicitAny": true,
-    "module": "es6",
     "target": "es5",
+    "outDir": "./dist/",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
     "jsx": "react",
     "allowJs": true,
-    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "outDir": "./dist/"
-  }
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }

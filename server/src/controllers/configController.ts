@@ -1,9 +1,37 @@
-const fetch = require('node-fetch-retry');
-const fs = require('fs');
-const path = require('path');
-const { winstonLogger } = require('./loggerController');
+import fetch from 'node-fetch';
+import { readdirSync, lstatSync, readFileSync } from 'fs';
+import { join, resolve } from 'path';
+import { winstonLogger } from './loggerController';
+import { ServerConfig } from '../types/config';
+import { Request, Response } from 'express';
+import { Environment } from '../types/environment';
+import { VersionSelector } from '../model/entity/VersionSelector';
+import { Product } from '../model/entity/Product';
 
-let storedConfig;
+let storedConfig: ServerConfig;
+
+function readFilesInDir(dirPath: string, deployEnv: Environment): ServerConfig {
+  try {
+    const localConfig: ServerConfig = { docs: [] };
+    const itemsInDir = readdirSync(dirPath);
+    for (const item of itemsInDir) {
+      const itemPath = join(dirPath, item);
+      if (lstatSync(itemPath).isDirectory()) {
+        localConfig['docs'].push(...readFilesInDir(itemPath, deployEnv).docs);
+      } else {
+        const config = readFileSync(itemPath, 'utf-8');
+        const json: ServerConfig = JSON.parse(config);
+        const docs = json.docs.filter(d => d.environments.includes(deployEnv));
+        localConfig['docs'].push(...docs);
+      }
+    }
+    return localConfig;
+  } catch (funcErr) {
+    throw new Error(
+      `Cannot read local config file from path: ${dirPath}: ${funcErr}`
+    );
+  }
+}
 
 async function loadConfig() {
   try {
@@ -15,47 +43,17 @@ async function loadConfig() {
           : process.env.DEPLOY_ENV;
       console.log(`Getting local config for the "${deployEnv}" environment`);
 
-      function readFilesInDir(dirPath) {
-        try {
-          const localConfig = { docs: [] };
-          const itemsInDir = fs.readdirSync(dirPath);
-          for (const item of itemsInDir) {
-            const itemPath = path.join(dirPath, item);
-            if (fs.lstatSync(itemPath).isDirectory()) {
-              localConfig['docs'].push(...readFilesInDir(itemPath));
-            } else {
-              const config = fs.readFileSync(itemPath, 'utf-8');
-              const json = JSON.parse(config);
-              const docs = json.docs.filter(d =>
-                d.environments.includes(deployEnv)
-              );
-              localConfig['docs'].push(...docs);
-            }
-          }
-          return localConfig;
-        } catch (funcErr) {
-          throw new Error(
-            `Cannot read local config file from path: ${dirPath}: ${funcErr}`
-          );
-        }
-      }
+      const selectedEnv = deployEnv as Environment;
 
-      const localConfigDir = path.resolve(
+      const localConfigDir = resolve(
         `${__dirname}/../../.teamcity/config/docs`
       );
-      config = readFilesInDir(localConfigDir);
+      config = readFilesInDir(localConfigDir, selectedEnv);
     } else {
       try {
         winstonLogger.info('WOW!, FETCHING CONFIG, WOW!');
         const result = await fetch(
-          `${process.env.DOC_S3_URL}/portal-config/config.json`,
-          {
-            retry: 5,
-            pause: 1000,
-            callback: retry => {
-              console.log(`Retrying fetch of config.json: ${retry}`);
-            },
-          }
+          `${process.env.DOC_S3_URL}/portal-config/config.json`
         );
         if (result.ok == false) {
           throw new Error(
@@ -82,7 +80,7 @@ async function loadConfig() {
   }
 }
 
-async function expensiveLoadConfig() {
+export async function expensiveLoadConfig() {
   try {
     storedConfig = await loadConfig();
     return storedConfig !== undefined;
@@ -96,14 +94,14 @@ async function expensiveLoadConfig() {
 
 expensiveLoadConfig();
 
-async function getConfig(reqObj, resObj) {
+export async function getConfig(reqObj: Request, resObj: Response) {
   try {
     if (!storedConfig || !storedConfig.docs || storedConfig.docs.length === 0) {
       await expensiveLoadConfig();
     }
-    const config = JSON.parse(JSON.stringify(storedConfig));
+    const config: ServerConfig = JSON.parse(JSON.stringify(storedConfig));
     const hasGuidewireEmail = resObj.locals.userInfo.hasGuidewireEmail;
-    if (!reqObj.session.requestIsAuthenticated) {
+    if (!reqObj.session || !reqObj.session.requestIsAuthenticated) {
       config['docs'] = config.docs.filter(d => d.public === true);
     }
     if (!hasGuidewireEmail) {
@@ -119,7 +117,7 @@ async function getConfig(reqObj, resObj) {
   }
 }
 
-async function getDocByUrl(url) {
+async function getDocByUrl(url: string) {
   let relativeUrl = url + '/';
   if (relativeUrl.startsWith('/')) {
     relativeUrl = relativeUrl.substring(1);
@@ -129,9 +127,9 @@ async function getDocByUrl(url) {
   return config.docs.find(d => relativeUrl.startsWith(d.url + '/'));
 }
 
-async function isPublicDoc(url, reqObj) {
+export async function isPublicDoc(url: string) {
   try {
-    const matchingDoc = await getDocByUrl(url, reqObj);
+    const matchingDoc = await getDocByUrl(url);
     return !!(matchingDoc && matchingDoc.public);
   } catch (err) {
     winstonLogger.error(
@@ -142,9 +140,9 @@ async function isPublicDoc(url, reqObj) {
   }
 }
 
-async function isInternalDoc(url, reqObj) {
+export async function isInternalDoc(url: string) {
   try {
-    const matchingDoc = await getDocByUrl(url, reqObj);
+    const matchingDoc = await getDocByUrl(url);
     return !!(matchingDoc && matchingDoc.internal);
   } catch (err) {
     winstonLogger.error(
@@ -155,7 +153,7 @@ async function isInternalDoc(url, reqObj) {
   }
 }
 
-async function getRootBreadcrumb(pagePathname) {
+export async function getRootBreadcrumb(pagePathname: string) {
   try {
     const breadcrumbsConfigPath = new URL(
       `pages/breadcrumbs.json`,
@@ -194,7 +192,11 @@ async function getRootBreadcrumb(pagePathname) {
   }
 }
 
-async function getVersionSelector(docId, reqObj, resObj) {
+export async function getVersionSelector(
+  docId: string,
+  reqObj: Request,
+  resObj: Response
+) {
   try {
     const versionSelectorsConfigPath = new URL(
       `pages/versionSelectors.json`,
@@ -202,7 +204,7 @@ async function getVersionSelector(docId, reqObj, resObj) {
     ).href;
     const response = await fetch(versionSelectorsConfigPath);
     if (response.ok) {
-      const versionSelectorMapping = await response.json();
+      const versionSelectorMapping: VersionSelector[] = await response.json();
       try {
         const matchingVersionSelector = versionSelectorMapping.find(
           s => docId === s.docId
@@ -239,7 +241,11 @@ async function getVersionSelector(docId, reqObj, resObj) {
   }
 }
 
-async function getDocumentMetadata(docId, reqObj, resObj) {
+export async function getDocumentMetadata(
+  docId: string,
+  reqObj: Request,
+  resObj: Response
+) {
   try {
     const config = await getConfig(reqObj, resObj);
     const doc = config.docs.find(d => d.id === docId);
@@ -265,20 +271,26 @@ async function getDocumentMetadata(docId, reqObj, resObj) {
   }
 }
 
-async function getDocId(
-  products,
-  platforms,
-  versions,
-  title,
-  url,
-  reqObj,
-  resObj
+export async function getDocId(
+  products: string,
+  platforms: string,
+  versions: string,
+  title: string,
+  url: string,
+  reqObj: Request,
+  resObj: Response
 ) {
   try {
     const config = await getConfig(reqObj, resObj);
     const doc = config.docs.find(
       s =>
-        products.split(',').some(p => s.metadata.product.includes(p)) &&
+        products
+          .split(',')
+          .some(p =>
+            s.metadata.product.includes(
+              (prod: Product) => prod.productLabel === p
+            )
+          ) &&
         platforms.split(',').some(pl => s.metadata.platform.includes(pl)) &&
         versions.split(',').some(v => s.metadata.version.includes(v)) &&
         (title === s.title || !title) &&
@@ -304,18 +316,6 @@ async function getDocId(
   }
 }
 
-function getEnv() {
+export function getEnv() {
   return { envName: process.env.DEPLOY_ENV };
 }
-
-module.exports = {
-  getConfig,
-  expensiveLoadConfig,
-  isPublicDoc,
-  isInternalDoc,
-  getRootBreadcrumb,
-  getVersionSelector,
-  getDocumentMetadata,
-  getDocId,
-  getEnv,
-};

@@ -1,7 +1,7 @@
-const { createLogger, format, config, transports } = require('winston');
-const expressWinston = require('express-winston');
+import { createLogger, format, config, transports } from 'winston';
+import { logger, errorLogger } from 'express-winston';
 const { combine, timestamp, json } = format;
-const path = require('path');
+import path from 'path';
 
 const commonWinstonOptions = {
   handleExceptions: true,
@@ -20,7 +20,7 @@ const winstonLoggerOptions = {
   },
 };
 
-const winstonLogger = createLogger({
+export const winstonLogger = createLogger({
   levels: config.syslog.levels,
   level: 'notice',
   // If no format is provided in timestamp(), "new Date().toISOString()" is used.
@@ -35,18 +35,12 @@ const winstonLogger = createLogger({
   ],
 });
 
-const expressWinstonLogger = expressWinston.logger({
+export const expressWinstonLogger = logger({
   winstonInstance: winstonLogger,
   msg: 'HTTP {{req.method}} {{req.url}}',
 });
 
-const expressWinstonErrorLogger = expressWinston.errorLogger({
+export const expressWinstonErrorLogger = errorLogger({
   winstonInstance: winstonLogger,
   msg: 'HTTP {{req.method}} {{res.statusCode}} {{err.message}}',
 });
-
-module.exports = {
-  winstonLogger,
-  expressWinstonLogger,
-  expressWinstonErrorLogger,
-};

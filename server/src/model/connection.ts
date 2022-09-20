@@ -1,18 +1,15 @@
-const { DataSource } = require('typeorm');
+import dotenv from 'dotenv';
+import { DataSource } from 'typeorm';
 
-const AppDataSource = new DataSource({
+dotenv.config();
+
+export const AppDataSource = new DataSource({
   type: 'postgres',
   host: process.env.DOCPORTAL_DB_HOST,
   port: 5432,
   username: 'postgres',
   password: process.env.DOCPORTAL_DB_PASSWORD,
   database: 'postgres',
-  entities: [
-    require('./entity/page'),
-    require('./entity/item'),
-    require('./entity/selector'),
-  ],
+  entities: [require('./entity/*.js')],
   synchronize: process.env.NODE_ENV === 'development',
 });
-
-module.exports = AppDataSource;

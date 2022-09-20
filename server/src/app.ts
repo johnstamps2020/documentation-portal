@@ -1,20 +1,20 @@
-'use strict';
-require('dotenv').config();
-
-const tracer = require('dd-trace').init();
-const {
+import 'reflect-metadata';
+import dotenv from 'dotenv';
+import {
   expressWinstonLogger,
   expressWinstonErrorLogger,
   winstonLogger,
-} = require('./controllers/loggerController');
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const favicon = require('serve-favicon');
-const session = require('cookie-session');
-const httpContext = require('express-http-context');
+} from './controllers/loggerController';
+import express, { Request, Response } from 'express';
+import { join } from 'path';
+import cookieParser from 'cookie-parser';
+import favicon from 'serve-favicon';
+import session from 'cookie-session';
+import httpContext from 'express-http-context';
+import { AppDataSource } from './model/connection';
 
-const AppDataSource = require('./model/connection.js');
+dotenv.config();
+
 AppDataSource.initialize()
   .then(() => {
     winstonLogger.notice('Data Source has been initialized!');
@@ -40,7 +40,7 @@ const options = {
   etag: true,
   maxAge: 3600000,
   redirect: false,
-  setHeaders: function(res, path, stat) {
+  setHeaders: function(res: Response) {
     res.set({
       'x-timestamp': Date.now(),
       'Cache-Control': 'public, max-age: 3600',
@@ -50,7 +50,7 @@ const options = {
 
 winstonLogger.notice('Server app instantiated!');
 
-const sessionSettings = {
+const sessionSettings: CookieSessionInterfaces.CookieSessionOptions = {
   name: 'session',
   secret: process.env.SESSION_KEY,
   maxAge: 24 * 60 * 60 * 1000, // 24 hours
@@ -85,7 +85,7 @@ const recommendationsRouter = require('./routes/recommendations');
 const passport = require('passport');
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use('/alive', (req, res, next) => {
@@ -99,17 +99,17 @@ app.use('/customers-login', customersLoginRouter);
 app.use('/authorization-code', oidcLoginRouter);
 
 // serve static assets from the public folder
-app.use(express.static(path.join(__dirname, 'public'), options));
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(express.static(join(__dirname, 'public'), options));
+app.use(favicon(join(__dirname, 'public', 'favicon.ico')));
 
 const authGateway = require('./controllers/authController').authGateway;
 
 app.use(passport.initialize());
 app.use(passport.session());
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function(user: any, done: any) {
   done(null, user);
 });
-passport.deserializeUser(function(user, done) {
+passport.deserializeUser(function(user: any, done: any) {
   done(null, user);
 });
 app.use(authGateway);
@@ -153,7 +153,7 @@ app.use('/portal', portal2Proxy);
 
 // HTML5 scripts, local or S3
 if (process.env.NODE_ENV === 'development') {
-  app.use(express.static(path.join(__dirname, 'static/html5'), options));
+  app.use(express.static(join(__dirname, 'static/html5'), options));
 } else {
   app.use('/scripts', html5Proxy);
 }
@@ -163,7 +163,7 @@ app.use(s3Proxy);
 
 // handles unauthorized errors
 app.use(expressWinstonErrorLogger);
-app.use((err, req, res, next) => {
+app.use((err: any, req: Request, res: Response) => {
   winstonLogger.error(
     `General error passed to top-level handler in app.js: ${JSON.stringify(
       err

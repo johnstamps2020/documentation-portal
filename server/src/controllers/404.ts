@@ -157,111 +157,117 @@ const redirectUrls = [
   },
   {
     from: 'cloud/bc/202011/cloud/active/config/topics/p-basics.html',
-    to: 'cloud/bc/202104/config'
+    to: 'cloud/bc/202104/config',
   },
   {
     from: 'cloud/cc/202011/cloud/active/config/topics/p-basics.html',
-    to: 'cloud/cc/202104/config'
+    to: 'cloud/cc/202104/config',
   },
   {
     from: 'cloud/pc/202011/cloud/active/config/topics/p-basics.html',
-    to: 'cloud/pc/202104/config'
+    to: 'cloud/pc/202104/config',
   },
   {
     from: 'cloud/bc/config/latest',
-    to: 'cloud/bc/202104/config'
+    to: 'cloud/bc/202104/config',
   },
   {
     from: 'cloud/cc/config/latest',
-    to: 'cloud/cc/202104/config'
+    to: 'cloud/cc/202104/config',
   },
   {
     from: 'cloud/pc/config/latest',
-    to: 'cloud/pc/202104/config'
+    to: 'cloud/pc/202104/config',
   },
   {
-    from: 'cloud/pc/202011/cloud/active/adv-product-designer/topics/c_intro.html',
-    to: 'cloud/pc/202104/apd'
+    from:
+      'cloud/pc/202011/cloud/active/adv-product-designer/topics/c_intro.html',
+    to: 'cloud/pc/202104/apd',
   },
   {
     from: 'cloud/pc/apd/latest',
-    to: 'cloud/pc/202104/apd'
+    to: 'cloud/pc/202104/apd',
   },
   {
     from: 'cloud/in/20202/2020.2.x/active/ConfigurationGuide/c_Overview.html',
-    to: 'cloud/in/20211/config'
+    to: 'cloud/in/20211/config',
   },
   {
     from: 'cloud/in/config/latest',
-    to: 'cloud/in/20211/config'
+    to: 'cloud/in/20211/config',
   },
   {
     from: 'cloud/bc/202011/cloud/active/gosu/topics/c_p-basics.html',
-    to: 'cloud/is/202104/gosu'
+    to: 'cloud/is/202104/gosu',
   },
   {
     from: 'cloud/cc/202011/cloud/active/gosu/topics/c_p-basics.html',
-    to: 'cloud/is/202104/gosu'
+    to: 'cloud/is/202104/gosu',
   },
   {
     from: 'cloud/pc/202011/cloud/active/gosu/topics/c_p-basics.html',
-    to: 'cloud/is/202104/gosu'
+    to: 'cloud/is/202104/gosu',
   },
   {
     from: 'cloud/is/gosu/latest',
-    to: 'cloud/is/202104/gosu'
+    to: 'cloud/is/202104/gosu',
   },
   {
     from: 'cloud/bc/integration/latest',
-    to: 'cloud/bc/202104/integration'
+    to: 'cloud/bc/202104/integration',
   },
   {
     from: 'cloud/cc/integration/latest',
-    to: 'cloud/cc/202104/integration'
+    to: 'cloud/cc/202104/integration',
   },
   {
     from: 'cloud/pc/integration/latest',
-    to: 'cloud/pc/202104/integration'
+    to: 'cloud/pc/202104/integration',
   },
   {
-    from: 'cloud/in/20202/config/2020.2.x/active/ConfigurationGuide/CloudCommonPaymentService/c_CloudCommonPaymentServiceconfiguration.html',
-    to: 'cloud/in/20211/config/2021.1.x/ConfigurationGuide/c_payment-config.html'
+    from:
+      'cloud/in/20202/config/2020.2.x/active/ConfigurationGuide/CloudCommonPaymentService/c_CloudCommonPaymentServiceconfiguration.html',
+    to:
+      'cloud/in/20211/config/2021.1.x/ConfigurationGuide/c_payment-config.html',
   },
   {
     from: 'cloud/in/payment-config/latest',
-    to: 'cloud/in/20211/config/2021.1.x/ConfigurationGuide/c_payment-config.html'
+    to:
+      'cloud/in/20211/config/2021.1.x/ConfigurationGuide/c_payment-config.html',
   },
   {
-    from: 'cloud/in/20202/2020.2.x/active/PortalDevelopment/topics/c_overview_portal_development.html',
-    to: 'cloud/in/20211/portaldev'
+    from:
+      'cloud/in/20202/2020.2.x/active/PortalDevelopment/topics/c_overview_portal_development.html',
+    to: 'cloud/in/20211/portaldev',
   },
   {
     from: 'cloud/in/portaldev/latest',
-    to: 'cloud/in/20211/portaldev'
+    to: 'cloud/in/20211/portaldev',
   },
   {
-    from: 'cloud/is/202011/restapiclient/REST-API-Client/topics/c_overview-rest-client.html',
-    to: 'is/restapiclient/guide'
+    from:
+      'cloud/is/202011/restapiclient/REST-API-Client/topics/c_overview-rest-client.html',
+    to: 'is/restapiclient/guide',
   },
   {
     from: 'jutro/documentation/latest',
-    to: 'jutro/documentation/5.4.0'
+    to: 'jutro/documentation/5.4.0',
   },
   {
     from: 'portal/secure/upgradediff',
-    to: 'upgradediffs'
+    to: 'upgradediffs',
   },
   {
     from: 'portal/secure/upgradediff/index.html',
-    to: 'upgradediffs'
+    to: 'upgradediffs',
   },
   {
     from: 'cloud/testingframeworks/202111/api/gw-api/topics/c_overview.html%20',
-    to: 'cloud/testingframeworks/202111/api/gw-api/topics/c_overview.html'
+    to: 'cloud/testingframeworks/202111/api/gw-api/topics/c_overview.html',
   },
 ];
 
-function getRedirectUrl(originUrl) {
+export function getRedirectUrl(originUrl: string) {
   const originPathname = new URL(originUrl).pathname;
   for (const urlObj of redirectUrls) {
     if (`/${urlObj.from}` === originPathname) {
@@ -270,5 +276,3 @@ function getRedirectUrl(originUrl) {
   }
   return undefined;
 }
-
-module.exports = { getRedirectUrl };

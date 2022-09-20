@@ -94,8 +94,6 @@ const recordVariables = [
   },
 ];
 
-function getSampleRecords() {
+export function getSampleRecords() {
   return recordVariables.map(v => ({ ...recordTemplate, ...v }));
 }
-
-module.exports = { getSampleRecords };

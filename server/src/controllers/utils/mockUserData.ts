@@ -1,4 +1,4 @@
-module.exports = {
+export const mockUserData = {
   internal: {
     name: 'Alfred Lord Tennyson',
     email: 'atennyson@guidewire.com',
