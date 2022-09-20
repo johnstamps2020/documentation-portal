@@ -2551,7 +2551,7 @@ object BuildListeners {
                     triggers.vcs {}
 
                     features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                    features.feature(GwBuildListenerLimitBuildFeature)
+                    features.feature(GwBuildFeatures.GwBuildListenerLimitBuildFeature)
                 }
             }
         }
