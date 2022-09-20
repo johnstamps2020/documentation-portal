@@ -279,7 +279,10 @@
     {
       "label": "Global Solutions",
       "class": "categoryCard cardShadow",
-      "env": ["int", "staging"],
+      "env": [
+        "int",
+        "staging"
+      ],
       "items": [
         {
           "label": "London Market",
@@ -288,11 +291,17 @@
         {
           "label": "United States",
           "id": "sbtfwcustomization"
+        },
+        {
+          "label": "SBT Framework Guide",
+          "id": "sbtfwguide"
         }
       ]
     }
   ],
   "search_filters": {
-    "platform": ["Cloud"]
+    "platform": [
+      "Cloud"
+    ]
   }
 }
