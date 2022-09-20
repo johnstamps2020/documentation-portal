@@ -3311,7 +3311,7 @@ object Helpers {
 
     fun getConfigFileUrl(deploy_env: String): String {
         return if (arrayListOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
-            "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json"
+            "https://docportal-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}.guidewire.net/portal-config/config.json"
         } else if (arrayOf(GwDeployEnvs.OMEGA2_ANDROMEDA.env_name,
                 GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA.env_name).contains(deploy_env)
         ) {
@@ -3360,7 +3360,7 @@ object Helpers {
 
     fun getElasticsearchUrl(deploy_env: String): String {
         return if (arrayOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
-            "https://docsearch-doctools.us-east-2.service.guidewire.net"
+            "https://docsearch-doctools.${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}.guidewire.net"
         } else if (arrayOf(GwDeployEnvs.OMEGA2_ANDROMEDA.env_name,
                 GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA.env_name).contains(deploy_env)
         ) {
@@ -3372,9 +3372,9 @@ object Helpers {
 
     fun getS3BucketUrl(deploy_env: String): String {
         return when (deploy_env) {
-            GwDeployEnvs.PROD.env_name -> "https://ditaot.internal.us-east-2.service.guidewire.net"
+            GwDeployEnvs.PROD.env_name -> "https://docportal-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}.guidewire.net"
             GwDeployEnvs.OMEGA2_ANDROMEDA.env_name -> "https://docportal-content.${deploy_env}.guidewire.net"
-            GwDeployEnvs.PORTAL2.env_name -> "https://portal2.internal.us-east-2.service.guidewire.net"
+            GwDeployEnvs.PORTAL2.env_name -> "https://portal2-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}.guidewire.net"
             GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA.env_name -> "https://portal2-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}.guidewire.net"
             else -> "https://ditaot.internal.${deploy_env}.ccs.guidewire.net"
         }
