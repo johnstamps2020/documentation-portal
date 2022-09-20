@@ -36,14 +36,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "LivePredictIntegration.ditamap",
-      "srcId": "in20222",
-      "docId": "in20222pa",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "AppReaderIntegrationGuide.ditamap",
       "srcId": "in20222",
       "docId": "in20222appreaderinteg",

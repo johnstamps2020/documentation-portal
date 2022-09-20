@@ -92,24 +92,6 @@
       "earlyAccess": false
     },
     {
-      "id": "in20222pa",
-      "title": "Guidewire Predict Integration",
-      "url": "cloud/in/20222/pa",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2022.2"],
-        "subject": ["Integration"],
-        "release": ["Flaine"]
-      },
-      "environments": ["int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "in20222config",
       "title": "Core Configuration Guide",
       "url": "cloud/in/20222/config",
