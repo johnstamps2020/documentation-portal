@@ -3937,7 +3937,7 @@ object GwBuildSteps {
 
     fun createCopyFromStagingToProdStep(publish_path: String): ScriptBuildStep {
         val awsEnvsStaging = Helpers.setAwsEnvs(GwDeployEnvs.STAGING.env_name)
-        val awsEnvsProd = Helpers.setAwsEnvs(GwDeployEnvs.PROD.env_name)
+        val awsEnvsProd = Helpers.setAwsEnvs(GwDeployEnvs.OMEGA2_ANDROMEDA.env_name)
         return ScriptBuildStep {
             name = "Copy from S3 on staging to S3 on Prod"
             id = Helpers.createIdStringFromName(this.name)
@@ -3955,7 +3955,7 @@ object GwBuildSteps {
                     $awsEnvsProd
                     
                     echo "Uploading from Teamcity to prod"
-                    aws s3 sync ${publish_path}/ s3://tenant-doctools-prod-builds/${publish_path} --delete
+                    aws s3 sync ${publish_path}/ s3://tenant-doctools-omega2-andromeda-builds/${publish_path} --delete
                 """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
