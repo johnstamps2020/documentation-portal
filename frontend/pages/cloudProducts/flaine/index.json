@@ -273,6 +273,10 @@
               "id": "integgatewaydevlatest"
             }
           ]
+        },
+        {
+          "label": "Workset Manager",
+          "id": "worksetmgr"
         }
       ]
     },
