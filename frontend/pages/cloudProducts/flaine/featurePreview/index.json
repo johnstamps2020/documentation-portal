@@ -123,10 +123,6 @@
         {
           "label": "String Manager",
           "id": "stringmanagerpcdraft"
-        },
-        {
-          "label": "Workset Manager",
-          "id": "worksetmgr"
         }
       ]
     }
