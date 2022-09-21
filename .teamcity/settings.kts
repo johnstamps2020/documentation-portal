@@ -1327,8 +1327,7 @@ object Content {
     private fun createDeploySearchServiceBuildType(deploy_env: String): BuildType {
         val namespace = "doctools"
         val awsEnvVars = Helpers.setAwsEnvVars(deploy_env)
-        val searchServiceBuildTypeDeployEnv =
-            if (deploy_env == GwDeployEnvs.PROD.env_name) GwDeployEnvs.OMEGA2_ANDROMEDA.env_name else deploy_env
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deploy_env)
         val searchServiceDeployEnvVars = Helpers.setSearchServiceDeployEnvVars(deploy_env)
         return BuildType {
             name = "Deploy search service to $deploy_env"
@@ -1356,7 +1355,7 @@ object Content {
                         # Set other envs
                         export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
                         
-                        aws eks update-kubeconfig --name atmos-${searchServiceBuildTypeDeployEnv}
+                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
                         
                         echo ${'$'}(kubectl get pods --namespace=${namespace})
                         
@@ -2075,8 +2074,7 @@ object Server {
             else -> "gateway-config.yml"
         }
 
-        val serverBuildTypeDeployEnv =
-            if (deploy_env == GwDeployEnvs.PROD.env_name) GwDeployEnvs.OMEGA2_ANDROMEDA.env_name else deploy_env
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deploy_env)
         val serverDeployEnvVars = Helpers.setServerDeployEnvVars(deploy_env, tagVersion)
         val deployServerBuildType = BuildType {
             name = "Deploy to $deploy_env"
@@ -2105,7 +2103,7 @@ object Server {
                         export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
                         export TMP_GATEWAY_CONFIG_FILE="tmp-gateway-config.yml"
                         
-                        aws eks update-kubeconfig --name atmos-${serverBuildTypeDeployEnv}
+                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
                         
                         echo ${'$'}(kubectl get pods --namespace=${namespace})
                         
@@ -2130,7 +2128,7 @@ object Server {
                         # Set AWS credentials
                         $awsEnvVars
                         
-                        aws eks update-kubeconfig --name atmos-${serverBuildTypeDeployEnv}
+                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
                         sleep 10
                         TIME="0"
                         while true; do
@@ -2994,6 +2992,7 @@ object Recommendations {
     ): BuildType {
         val pretrainedModelFile = "GoogleNews-vectors-negative300.bin"
         val awsEnvVars = Helpers.setAwsEnvVars(deploy_env)
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deploy_env)
         val elasticsearchUrl = Helpers.getElasticsearchUrl(deploy_env)
 
         return BuildType {
@@ -3012,7 +3011,7 @@ object Recommendations {
                             $awsEnvVars
                             
                             echo "Downloading the pretrained model from the S3 bucket"
-                            aws s3 cp s3://tenant-doctools-${deploy_env}-builds/recommendation-engine/${pretrainedModelFile} %teamcity.build.workingDir%/
+                            aws s3 cp s3://tenant-doctools-${atmosDeployEnv}-builds/recommendation-engine/${pretrainedModelFile} %teamcity.build.workingDir%/
                         """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -3302,7 +3301,7 @@ object Helpers {
         return if (arrayListOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
             "https://docportal-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}.guidewire.net/portal-config/config.json"
         } else {
-            "https://ditaot.internal.${deploy_env}.ccs.guidewire.net/portal-config/config.json"
+            "https://docportal-content.${deploy_env}.ccs.guidewire.net/portal-config/config.json"
         }
     }
 
@@ -3349,6 +3348,13 @@ object Helpers {
             GwDeployEnvs.PROD.env_name -> "https://docportal-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}.guidewire.net"
             GwDeployEnvs.PORTAL2.env_name -> "https://portal2-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}.guidewire.net"
             else -> "https://docportal-content.${deploy_env}.ccs.guidewire.net"
+        }
+    }
+
+    fun getAtmosDeployEnv(deploy_env: String): String {
+        return when (deploy_env) {
+            GwDeployEnvs.PROD.env_name -> GwDeployEnvs.OMEGA2_ANDROMEDA.env_name
+            else -> deploy_env
         }
     }
 
@@ -3596,6 +3602,7 @@ object GwBuildSteps {
 
     fun createCopyLocalizedPdfsToS3BucketStep(deploy_env: String, loc_docs_src: String): ScriptBuildStep {
         val awsEnvVars = Helpers.setAwsEnvVars(deploy_env)
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deploy_env)
         return ScriptBuildStep {
             name = "Copy localized PDFs to the S3 bucket"
             id = Helpers.createIdStringFromName(this.name)
@@ -3605,7 +3612,7 @@ object GwBuildSteps {
                         
                 $awsEnvVars
                         
-                aws s3 sync "$loc_docs_src" s3://tenant-doctools-${deploy_env}-builds/l10n --exclude ".git/*" --delete
+                aws s3 sync "$loc_docs_src" s3://tenant-doctools-${atmosDeployEnv}-builds/l10n --exclude ".git/*" --delete
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -3665,8 +3672,9 @@ object GwBuildSteps {
 
     fun createCopyUpgradeDiffsToS3BucketStep(deploy_env: String, upgrade_diffs_docs_src: String): ScriptBuildStep {
         val awsEnvVars = Helpers.setAwsEnvVars(deploy_env)
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deploy_env)
         var awsS3SyncCommand =
-            "aws s3 sync \"${upgrade_diffs_docs_src}\" s3://tenant-doctools-${deploy_env}-builds/upgradediffs --delete"
+            "aws s3 sync \"${upgrade_diffs_docs_src}\" s3://tenant-doctools-${atmosDeployEnv}-builds/upgradediffs --delete"
         if (arrayOf(GwDeployEnvs.STAGING.env_name, GwDeployEnvs.PROD.env_name).contains(deploy_env)) {
             awsS3SyncCommand += " --exclude \"*/*-rc/*\""
         }
@@ -3879,7 +3887,7 @@ object GwBuildSteps {
         val awsEnvVarsStaging = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.env_name)
         val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.env_name)
         return ScriptBuildStep {
-            name = "Copy from S3 on staging to S3 on Prod"
+            name = "Copy from S3 on staging to S3 on prod"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                     #!/bin/bash
@@ -3942,7 +3950,7 @@ object GwBuildSteps {
     fun createUploadContentToS3BucketStep(
         deploy_env: String, output_path: String, publish_path: String,
     ): ScriptBuildStep {
-        val s3BucketName = "tenant-doctools-${deploy_env}-builds"
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deploy_env)
         val awsEnvVars = Helpers.setAwsEnvVars(deploy_env)
         return ScriptBuildStep {
             name = "Upload content to the S3 bucket"
@@ -3953,7 +3961,7 @@ object GwBuildSteps {
                     
                     $awsEnvVars
                     
-                    aws s3 sync "$output_path" s3://${s3BucketName}/${publish_path} --delete
+                    aws s3 sync "$output_path" s3://tenant-doctools-${atmosDeployEnv}-builds/${publish_path} --delete
                 """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -4514,6 +4522,7 @@ object GwBuildSteps {
         output_dir: String,
     ): ScriptBuildStep {
         val awsEnvVars = Helpers.setAwsEnvVars(deploy_env)
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deploy_env)
         var sourceDir = output_dir
         var targetDir = ""
         var excludedPatterns = ""
@@ -4534,7 +4543,7 @@ object GwBuildSteps {
             GwStaticFilesModes.HTML5.mode_name -> targetDir = "html5"
         }
         val deployCommand =
-            "aws s3 sync \"$sourceDir\" s3://tenant-doctools-${deploy_env}-builds/${targetDir} --delete $excludedPatterns".trim()
+            "aws s3 sync \"$sourceDir\" s3://tenant-doctools-${atmosDeployEnv}-builds/${targetDir} --delete $excludedPatterns".trim()
 
         return ScriptBuildStep {
             name = "Deploy static files to the S3 bucket"
