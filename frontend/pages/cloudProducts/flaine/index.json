@@ -276,7 +276,13 @@
         },
         {
           "label": "Workset Manager",
-          "id": "worksetmgr"
+          "class": "group",
+          "items": [
+            {
+              "label": "Workset Manager",
+              "id": "worksetmgr"
+            }
+          ]
         }
       ]
     },
