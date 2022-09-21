@@ -7,6 +7,8 @@ import { Request, Response } from 'express';
 import { Environment } from '../types/environment';
 import { VersionSelector } from '../model/entity/VersionSelector';
 import { Product } from '../model/entity/Product';
+import { AppDataSource } from '../model/connection';
+import { DocConfig } from '../model/entity/DocConfig';
 
 let storedConfig: ServerConfig;
 
@@ -276,26 +278,13 @@ export async function getDocId(
   platforms: string,
   versions: string,
   title: string,
-  url: string,
-  reqObj: Request,
-  resObj: Response
+  url: string
 ) {
   try {
-    const config = await getConfig(reqObj, resObj);
-    const doc = config.docs.find(
-      s =>
-        products
-          .split(',')
-          .some(p =>
-            s.metadata.product.includes(
-              (prod: Product) => prod.productLabel === p
-            )
-          ) &&
-        platforms.split(',').some(pl => s.metadata.platform.includes(pl)) &&
-        versions.split(',').some(v => s.metadata.version.includes(v)) &&
-        (title === s.title || !title) &&
-        url.includes(s.url)
-    );
+    const doc = await AppDataSource.manager.findOneBy(DocConfig, {
+      url: url,
+    });
+
     if (doc) {
       return {
         docId: doc.id,

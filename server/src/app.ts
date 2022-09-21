@@ -179,4 +179,4 @@ app.use((err: any, req: Request, res: Response) => {
   res.render('error', { err });
 });
 
-module.exports = app;
+export default app;

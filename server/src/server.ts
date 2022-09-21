@@ -1,8 +1,8 @@
-const app = require('./app');
-const { winstonLogger } = require('./controllers/loggerController');
-const http = require('http');
+import app from './app';
+import { winstonLogger } from './controllers/loggerController';
+import http from 'http';
 
-function normalizePort(val) {
+function normalizePort(val: string) {
   const port = parseInt(val, 10);
 
   if (isNaN(port)) {
@@ -18,7 +18,7 @@ function normalizePort(val) {
   return false;
 }
 
-function getFormattedError(error) {
+function getFormattedError(error: NodeJS.ErrnoException) {
   const intro = 'Error in application runner (server.js):';
   return `${intro}
     CODE: ${error.code}
@@ -26,7 +26,7 @@ function getFormattedError(error) {
     ERROR: ${JSON.stringify(error)}`;
 }
 
-function onError(error) {
+function onError(error: NodeJS.ErrnoException) {
   if (error.syscall !== 'listen') {
     winstonLogger.error(getFormattedError(error));
   }
@@ -53,7 +53,7 @@ function onError(error) {
 
 function onListening() {
   var addr = server.address();
-  var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
+  var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr?.port;
   winstonLogger.notice('Listening on ' + bind);
 }
 

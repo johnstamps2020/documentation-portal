@@ -1,4 +1,5 @@
 import { createLogger, format, config, transports } from 'winston';
+import { resolve } from 'path';
 import { logger, errorLogger } from 'express-winston';
 const { combine, timestamp, json } = format;
 import path from 'path';
@@ -11,7 +12,7 @@ const commonWinstonOptions = {
 const winstonLoggerOptions = {
   file: {
     ...commonWinstonOptions,
-    filename: path.resolve(`${__dirname}/../logs/server.log`),
+    filename: resolve(`${__dirname}/../logs/server.log`),
     maxsize: 5242880, //5MB
     maxFiles: 5,
   },

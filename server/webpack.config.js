@@ -21,7 +21,7 @@ module.exports = {
   mode: 'production',
   entry: {
     html5help: {
-      import: './public/scripts/html5template.js',
+      import: './src/public/scripts/html5template.js',
       filename: 'html5.js',
     },
     html5Home: {

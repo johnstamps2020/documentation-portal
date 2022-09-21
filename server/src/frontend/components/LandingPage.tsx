@@ -27,11 +27,7 @@ export default function LandingPage() {
           <div className="items">
             {pageConfig.items &&
               pageConfig.items.map((item, key) => (
-                <PageItem
-                  key={key}
-                  {...item}
-                  deploymentEnv={deploymentEnv.envName}
-                />
+                <PageItem key={key} {...item} deploymentEnv={deploymentEnv} />
               ))}
           </div>
           {/* <%- include('parts/sidebar') %> */}

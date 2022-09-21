@@ -1,7 +1,7 @@
 import React from 'react';
-import { LinkProps } from '../../../types/page';
+import { PageItem } from '../../model/entity/PageItem';
 
-export default function LabelOrLink({ label, id, link, page }: LinkProps) {
+export default function LabelOrLink({ label, id, link, page }: PageItem) {
   function getHref(): string | undefined {
     if (id) {
       // TO DO: Implement functionality

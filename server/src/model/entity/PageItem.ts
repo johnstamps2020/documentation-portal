@@ -1,6 +1,14 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  Tree,
+  TreeChildren,
+} from 'typeorm';
+import { Environment } from '../../types/environment';
 
 @Entity()
+@Tree('closure-table')
 export class PageItem {
   @PrimaryGeneratedColumn('uuid')
   itemId: number;
@@ -19,4 +27,10 @@ export class PageItem {
 
   @Column()
   link: string;
+
+  @TreeChildren()
+  items: PageItem[];
+
+  @Column()
+  env: Environment;
 }
