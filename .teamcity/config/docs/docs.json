@@ -7288,11 +7288,11 @@
     },
     {
       "id": "surepathmethodologymain",
-      "title": "SurePath Framework",
-      "url": "surepath-framework/latest",
+      "title": "Product Adoption Resources",
+      "url": "product-adoption-resources/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["SurePath Framework"],
+        "product": ["Product Adoption Resources"],
         "version": ["latest"]
       },
       "environments": ["int", "staging", "prod"],
