@@ -1,7 +1,5 @@
-import dotenv from 'dotenv';
 import OktaJwtVerifier from '@okta/jwt-verifier';
 import jsonwebtoken from 'jsonwebtoken';
-
 
 const { isPublicDoc, isInternalDoc } = require('./configController');
 const { addCommonDataToSessionLocals } = require('./localsController');
@@ -11,8 +9,6 @@ const { winstonLogger } = require('./loggerController');
 const loginGatewayRoute = '/gw-login';
 const gwCommunityCustomerParam = 'guidewire-customer';
 const gwCommunityPartnerParam = 'guidewire-partner';
-
-dotenv.config();
 
 function getTokenFromRequestHeader(req) {
   try {

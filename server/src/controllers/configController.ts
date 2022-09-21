@@ -6,7 +6,6 @@ import { ServerConfig } from '../types/config';
 import { Request, Response } from 'express';
 import { Environment } from '../types/environment';
 import { VersionSelector } from '../model/entity/VersionSelector';
-import { Product } from '../model/entity/Product';
 import { AppDataSource } from '../model/connection';
 import { DocConfig } from '../model/entity/DocConfig';
 

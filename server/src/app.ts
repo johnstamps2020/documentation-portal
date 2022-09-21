@@ -1,5 +1,6 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
 import 'reflect-metadata';
-import dotenv from 'dotenv';
 import {
   expressWinstonLogger,
   expressWinstonErrorLogger,
@@ -12,8 +13,6 @@ import favicon from 'serve-favicon';
 import session from 'cookie-session';
 import httpContext from 'express-http-context';
 import { AppDataSource } from './model/connection';
-
-dotenv.config();
 
 AppDataSource.initialize()
   .then(() => {
