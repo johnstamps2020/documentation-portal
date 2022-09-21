@@ -36,6 +36,7 @@ project {
 
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
     features.feature(GwProjectFeatures.GwAntennaHouseFormatterServerProjectFeature)
+    features.feature(GwProjectFeatures.GwBuildListenerLimitProjectFeature)
 }
 
 enum class GwDeployEnvs(val env_name: String) {
@@ -2537,6 +2538,7 @@ object BuildListeners {
                     triggers.vcs {}
 
                     features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                    features.feature(GwBuildFeatures.GwBuildListenerLimitBuildFeature)
                 }
             }
         }
@@ -2651,6 +2653,7 @@ object Sources {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
                 feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
                 feature(GwBuildFeatures.createGwPullRequestsBuildFeature(Helpers.createFullGitBranchName(git_branch)))
+                feature(GwBuildFeatures.GwBuildListenerLimitBuildFeature)
             }
         }
     }
@@ -4578,6 +4581,14 @@ object GwProjectFeatures {
         param("quota", "3")
         param("name", "AntennaHouseFormatterServer")
         param("type", "quoted")
+    })  
+
+    object GwBuildListenerLimitProjectFeature : ProjectFeature({
+        type = "JetBrains.SharedResources"
+        id = "GW_BUILD_LISTENER_LIMIT"
+        param("quota", "5")
+        param("name", "BuildListenerLimit")
+        param("type", "quoted")
     })
 }
 
@@ -4603,6 +4614,12 @@ object GwBuildFeatures {
         id = "GW_ANTENNA_HOUSE_FORMATTER_SERVER_READ_LOCK"
         type = "JetBrains.SharedResources"
         param("locks-param", "AntennaHouseFormatterServer readLock")
+    })
+
+    object GwBuildListenerLimitBuildFeature : BuildFeature({
+        id = "GW_BUILD_LISTENER_LIMIT_READ_LOCK"
+        type = "JetBrains.SharedResources"
+        param("locks-param", "BuildListenerLimit readLock")
     })
 
     object GwCommitStatusPublisherBuildFeature : CommitStatusPublisher({
