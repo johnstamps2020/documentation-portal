@@ -3301,7 +3301,7 @@ object Helpers {
         return if (arrayListOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
             "https://docportal-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}.guidewire.net/portal-config/config.json"
         } else {
-            "https://ditaot.internal.${deploy_env}.ccs.guidewire.net/portal-config/config.json"
+            "https://docportal-content.${deploy_env}.ccs.guidewire.net/portal-config/config.json"
         }
     }
 
