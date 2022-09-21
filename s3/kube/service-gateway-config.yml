@@ -33,8 +33,3 @@ spec:
   service_ref: docportal-content
   service_alias: docportal-content
   enable_sub_domain: false
-  alt_fqdns:
-    - name: docportal-content-legacy-domain
-      enable_sub_domain: true
-      sub_domain: internal
-      hostname: ditaot
