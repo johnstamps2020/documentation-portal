@@ -7,6 +7,7 @@ import {
   getDocId,
   getEnv,
   putConfigInDatabase,
+  getDocUrlById,
 } from '../controllers/configController';
 import { render } from 'ejs';
 import { readFileSync } from 'fs';
@@ -78,6 +79,19 @@ router.get('/docMetadata/:docId', async function(req, res, next) {
     winstonLogger.error(`[SAFE CONFIG]: Problem sending doc metadata
       ERROR: ${JSON.stringify(err)}
       DOC ID: ${req.params?.docId}`);
+    next(err);
+  }
+});
+
+router.get('/docUrl/:docId', async function(req, res, next) {
+  try {
+    const { docId } = req.params;
+    const docUrl = await getDocUrlById(docId, req, res);
+    res.send(docUrl);
+  } catch (err) {
+    winstonLogger.error(`[SAFE CONFIG]: Problem getting doc url from ID
+    ERROR: ${JSON.stringify(err)}
+    DOC ID: ${req.params?.docId}`);
     next(err);
   }
 });

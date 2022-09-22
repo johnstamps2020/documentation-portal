@@ -297,3 +297,31 @@ export async function getDocId(
 export function getEnv() {
   return { envName: process.env.DEPLOY_ENV };
 }
+
+export async function getDocUrlById(
+  docId: string,
+  reqObj: Request,
+  resObj: Response
+) {
+  try {
+    const config = await getConfig(reqObj, resObj);
+    const doc = config.find(d => d.id === docId);
+    if (doc) {
+      return {
+        id: doc.id,
+        url: doc.url,
+      };
+    } else {
+      return {
+        error: true,
+        message: `Did not find a doc matching ID ${docId}`,
+      };
+    }
+  } catch (err) {
+    winstonLogger.error(
+      `Problem getting document url  
+              docId: ${docId}, 
+              ERROR: ${JSON.stringify(err)}`
+    );
+  }
+}
