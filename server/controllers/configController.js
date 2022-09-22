@@ -10,7 +10,7 @@ async function loadConfig() {
     let config;
     if (process.env.LOCAL_CONFIG === 'yes') {
       const deployEnv =
-        process.env.DEPLOY_ENV === 'us-east-2'
+        process.env.DEPLOY_ENV === 'omega2-andromeda'
           ? 'prod'
           : process.env.DEPLOY_ENV;
       console.log(`Getting local config for the "${deployEnv}" environment`);
