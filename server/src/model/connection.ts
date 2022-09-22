@@ -7,9 +7,10 @@ import { PageSelector } from './entity/PageSelector';
 import { Product } from './entity/Product';
 import { Release } from './entity/Release';
 import { VersionSelector } from './entity/VersionSelector';
+import { runningInDevMode } from '../controllers/utils/serverUtils';
 
 const dbHost = process.env.DOCPORTAL_DB_HOST;
-const isDevMode = process.env.NODE_ENV === 'development';
+const isDevMode = runningInDevMode();
 
 winstonLogger.notice(
   `Connecting to database ${dbHost}.${isDevMode &&

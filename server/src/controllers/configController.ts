@@ -96,9 +96,7 @@ export async function getConfig(
   resObj: Response
 ): Promise<DocConfig[]> {
   try {
-    const config = await AppDataSource.getRepository(DocConfig)
-      .createQueryBuilder()
-      .getMany();
+    const config = await AppDataSource.getRepository(DocConfig).find();
 
     const publicOnlyIfNotLoggedIn = getPublicOnlyIfNotLoggedIn(reqObj, config);
     const safeConfig = filterOutInternalDocsIfNotEmployee(
