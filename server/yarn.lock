@@ -3541,6 +3541,7 @@ __metadata:
     react: ^17.0.2
     react-dom: ^17.0.2
     reflect-metadata: ^0.1.13
+    rimraf: ^3.0.2
     serve-favicon: ^2.5.0
     style-loader: ^3.3.1
     supertest: ^6.2.3

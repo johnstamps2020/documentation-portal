@@ -14,7 +14,8 @@
       "indexForSearch": false,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": false,
+      "displayOnLandingPages": true
     }
   ]
 }

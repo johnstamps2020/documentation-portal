@@ -2390,7 +2390,8 @@
       "indexForSearch": false,
       "public": false,
       "internal": false,
-      "earlyAccess": true
+      "earlyAccess": true,
+      "displayOnLandingPages": true
     },
     {
       "id": "gchhelprelease",
@@ -2405,7 +2406,8 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": false,
+      "displayOnLandingPages": true
     },
     {
       "id": "gchhelprnrelease",
@@ -2420,7 +2422,8 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": false,
+      "displayOnLandingPages": true
     },
     {
       "id": "configmgrhelpcortina",

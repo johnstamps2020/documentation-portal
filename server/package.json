@@ -8,6 +8,7 @@
   "main": "./src/server.ts",
   "proxy": "http://localhost:5000",
   "scripts": {
+    "build": "rimraf -r dist && tsc",
     "start": "node dist/server.js",
     "start:dev": "concurrently \"yarn webpack-watch\" \"NODE_ENV=development nodemon src/server.ts -e ts,tsx,js,ejs,css,html,jpg,png,svg\"",
     "dev": "yarn start:dev",
@@ -74,6 +75,7 @@
     "prismjs": "^1.27.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "rimraf": "^3.0.2",
     "style-loader": "^3.3.1",
     "supertest": "^6.2.3",
     "ts-loader": "^9.3.1",

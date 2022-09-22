@@ -8,7 +8,6 @@ import { Environment } from '../types/environment';
 import { VersionSelector } from '../model/entity/VersionSelector';
 import { AppDataSource } from '../model/connection';
 import { DocConfig } from '../model/entity/DocConfig';
-import { Like } from 'typeorm';
 
 function readFilesInDir(dirPath: string, deployEnv: Environment): DocConfig[] {
   try {
@@ -46,6 +45,17 @@ export async function putConfigInDatabase(): Promise<DocConfig[]> {
     );
 
     const localConfig = readFilesInDir(localConfigDir, selectedEnv);
+
+    for await (const doc of localConfig) {
+      console.log(
+        `ABOUT TO SAVE DOC ${localConfig.indexOf(doc) + 1} of ${
+          localConfig.length
+        }`,
+        doc
+      );
+      const saveDoc = await AppDataSource.getRepository(DocConfig).save(doc);
+      console.log('SAVED DOC', saveDoc);
+    }
 
     const saveResult = await AppDataSource.getRepository(DocConfig).save(
       localConfig

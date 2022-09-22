@@ -14,7 +14,8 @@
       "indexForSearch": false,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": false,
+      "displayOnLandingPages": true
     },
     {
       "id": "doctoolsadmin",
@@ -29,7 +30,8 @@
       "indexForSearch": false,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": false,
+      "displayOnLandingPages": true
     },
     {
       "id": "writingwithgit",
@@ -60,7 +62,8 @@
       "indexForSearch": false,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": false,
+      "displayOnLandingPages": true
     }
   ]
 }

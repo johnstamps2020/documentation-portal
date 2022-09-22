@@ -14,7 +14,8 @@
       "internal": false,
       "earlyAccess": true,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "displayOnLandingPages": true
     },
     {
       "id": "apdapp",

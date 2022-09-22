@@ -9,10 +9,11 @@ import { Release } from './entity/Release';
 import { VersionSelector } from './entity/VersionSelector';
 
 const dbHost = process.env.DOCPORTAL_DB_HOST;
-const willSynchronize = process.env.NODE_ENV === 'development';
+const isDevMode = process.env.NODE_ENV === 'development';
 
 winstonLogger.notice(
-  `Connecting to database ${dbHost}. Will synchronize: >>${willSynchronize}<<`
+  `Connecting to database ${dbHost}.${isDevMode &&
+    ' >>WARNING: Running in dev mode<<'}`
 );
 
 export const AppDataSource = new DataSource({
@@ -24,12 +25,13 @@ export const AppDataSource = new DataSource({
   database: 'postgres',
   entities: [
     DocConfig,
-    PageConfig,
-    PageItem,
-    PageSelector,
-    Product,
-    Release,
-    VersionSelector,
+    // PageConfig,
+    // PageItem,
+    // PageSelector,
+    // Product,
+    // Release,
+    // VersionSelector,
   ],
-  synchronize: willSynchronize,
+  synchronize: isDevMode,
+  dropSchema: isDevMode,
 });

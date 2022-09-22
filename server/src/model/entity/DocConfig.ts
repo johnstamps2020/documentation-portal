@@ -1,10 +1,8 @@
-import { Entity, Column, Tree, TreeChildren } from 'typeorm';
-import { Environment } from '../../types/environment';
+import { Entity, Column } from 'typeorm';
 
 @Entity()
-@Tree('closure-table')
 export class DocConfig {
-  @Column({ primary: true })
+  @Column({ primary: true, name: 'docId' })
   id: string;
 
   @Column()
@@ -13,24 +11,24 @@ export class DocConfig {
   @Column()
   url: string;
 
-  @Column('json')
+  @Column('simple-json')
   metadata: string;
 
-  @TreeChildren()
-  environments: Environment[];
+  @Column('simple-json')
+  environments: string;
 
-  @Column()
+  @Column({ default: true })
   displayOnLandingPages: boolean;
 
-  @Column()
+  @Column({ default: true })
   indexForSearch: boolean;
 
-  @Column()
+  @Column({ default: false })
   public: boolean;
 
-  @Column()
+  @Column({ default: false })
   internal: boolean;
 
-  @Column()
+  @Column({ default: false })
   earlyAccess: boolean;
 }
