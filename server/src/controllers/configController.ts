@@ -8,22 +8,21 @@ import { Environment } from '../types/environment';
 import { VersionSelector } from '../model/entity/VersionSelector';
 import { AppDataSource } from '../model/connection';
 import { DocConfig } from '../model/entity/DocConfig';
+import { Like } from 'typeorm';
 
-let storedConfig: ServerConfig;
-
-function readFilesInDir(dirPath: string, deployEnv: Environment): ServerConfig {
+function readFilesInDir(dirPath: string, deployEnv: Environment): DocConfig[] {
   try {
-    const localConfig: ServerConfig = { docs: [] };
+    const localConfig: DocConfig[] = [];
     const itemsInDir = readdirSync(dirPath);
     for (const item of itemsInDir) {
       const itemPath = join(dirPath, item);
       if (lstatSync(itemPath).isDirectory()) {
-        localConfig['docs'].push(...readFilesInDir(itemPath, deployEnv).docs);
+        localConfig.push(...readFilesInDir(itemPath, deployEnv));
       } else {
         const config = readFileSync(itemPath, 'utf-8');
         const json: ServerConfig = JSON.parse(config);
         const docs = json.docs.filter(d => d.environments.includes(deployEnv));
-        localConfig['docs'].push(...docs);
+        localConfig.push(...docs);
       }
     }
     return localConfig;
@@ -34,87 +33,76 @@ function readFilesInDir(dirPath: string, deployEnv: Environment): ServerConfig {
   }
 }
 
-async function loadConfig() {
+export async function putConfigInDatabase(): Promise<DocConfig[]> {
   try {
-    let config;
-    if (process.env.LOCAL_CONFIG === 'yes') {
-      const deployEnv =
-        process.env.DEPLOY_ENV === 'us-east-2'
-          ? 'prod'
-          : process.env.DEPLOY_ENV;
-      console.log(`Getting local config for the "${deployEnv}" environment`);
+    const deployEnv =
+      process.env.DEPLOY_ENV === 'us-east-2' ? 'prod' : process.env.DEPLOY_ENV;
+    console.log(`Getting local config for the "${deployEnv}" environment`);
 
-      const selectedEnv = deployEnv as Environment;
+    const selectedEnv = deployEnv as Environment;
 
-      const localConfigDir = resolve(
-        `${__dirname}/../../.teamcity/config/docs`
-      );
-      config = readFilesInDir(localConfigDir, selectedEnv);
-    } else {
-      try {
-        winstonLogger.info('WOW!, FETCHING CONFIG, WOW!');
-        const result = await fetch(
-          `${process.env.DOC_S3_URL}/portal-config/config.json`
-        );
-        if (result.ok == false) {
-          throw new Error(
-            `Response status: ${result.status}
-                    Response type: ${result.type}
-                    Response URL: ${result.url}
-                    Response redirected: ${result.redirected}`
-          );
-        }
-        config = await result.json();
-      } catch (s3err) {
-        throw new Error(
-          `Problem reading config from S3 ${process.env.DOC_S3_URL}: ${s3err}`
-        );
-      }
-    }
-    return config;
-  } catch (err) {
-    winstonLogger.error(
-      `Error getting config!
-        ERROR: ${JSON.stringify(err)}`
+    const localConfigDir = resolve(
+      `${__dirname}/../../../.teamcity/config/docs`
     );
-    return { docs: [] };
+
+    const localConfig = readFilesInDir(localConfigDir, selectedEnv);
+
+    const saveResult = await AppDataSource.getRepository(DocConfig).save(
+      localConfig
+    );
+    console.log('SAVE RESULT', saveResult);
+    return saveResult;
+  } catch (err) {
+    winstonLogger.error(`ERROR, ERROR: Cannot put config in DB: ${err}`);
+    return [];
   }
 }
 
-export async function expensiveLoadConfig() {
-  try {
-    storedConfig = await loadConfig();
-    return storedConfig !== undefined;
-  } catch (err) {
-    winstonLogger.error(
-      `Problem during expensive load config 
-              ERROR: ${JSON.stringify(err)}`
-    );
+function getPublicOnlyIfNotLoggedIn(
+  reqObj: Request,
+  config: DocConfig[]
+): DocConfig[] {
+  if (!reqObj.session || !reqObj.session.requestIsAuthenticated) {
+    return config.filter(d => d.public === true);
   }
+
+  return config;
 }
 
-expensiveLoadConfig();
+function filterOutInternalDocsIfNotEmployee(
+  resObj: Response,
+  config: DocConfig[]
+): DocConfig[] {
+  const hasGuidewireEmail = resObj.locals.userInfo.hasGuidewireEmail;
+  if (!hasGuidewireEmail) {
+    return config.filter(d => d.internal === false);
+  }
 
-export async function getConfig(reqObj: Request, resObj: Response) {
+  return config;
+}
+
+export async function getConfig(
+  reqObj: Request,
+  resObj: Response
+): Promise<DocConfig[]> {
   try {
-    if (!storedConfig || !storedConfig.docs || storedConfig.docs.length === 0) {
-      await expensiveLoadConfig();
-    }
-    const config: ServerConfig = JSON.parse(JSON.stringify(storedConfig));
-    const hasGuidewireEmail = resObj.locals.userInfo.hasGuidewireEmail;
-    if (!reqObj.session || !reqObj.session.requestIsAuthenticated) {
-      config['docs'] = config.docs.filter(d => d.public === true);
-    }
-    if (!hasGuidewireEmail) {
-      config['docs'] = config.docs.filter(d => d.internal === false);
-    }
-    return config;
+    const config = await AppDataSource.getRepository(DocConfig)
+      .createQueryBuilder()
+      .getMany();
+
+    const publicOnlyIfNotLoggedIn = getPublicOnlyIfNotLoggedIn(reqObj, config);
+    const safeConfig = filterOutInternalDocsIfNotEmployee(
+      resObj,
+      publicOnlyIfNotLoggedIn
+    );
+
+    return safeConfig;
   } catch (err) {
     winstonLogger.error(
       `There was a problem with the getConfig() function
         ERROR: ${JSON.stringify(err)}`
     );
-    return { docs: [] };
+    return [];
   }
 }
 
@@ -124,8 +112,11 @@ async function getDocByUrl(url: string) {
     relativeUrl = relativeUrl.substring(1);
   }
 
-  const config = storedConfig;
-  return config.docs.find(d => relativeUrl.startsWith(d.url + '/'));
+  const matchingDoc = await AppDataSource.getRepository(DocConfig).findOneBy({
+    url: relativeUrl,
+  });
+
+  return matchingDoc;
 }
 
 export async function isPublicDoc(url: string) {
@@ -213,8 +204,7 @@ export async function getVersionSelector(
         // The getConfig function checks if the request is authenticated and if the user has the Guidewire email,
         // and filters the returned docs accordingly.
         // Therefore, for the selector it's enough to check if a particular version has a doc in the returned config.
-        const config = await getConfig(reqObj, resObj);
-        const docs = config.docs;
+        const docs = await getConfig(reqObj, resObj);
         if (matchingVersionSelector) {
           matchingVersionSelector[
             'allVersions'
@@ -248,14 +238,14 @@ export async function getDocumentMetadata(
   resObj: Response
 ) {
   try {
-    const config = await getConfig(reqObj, resObj);
-    const doc = config.docs.find(d => d.id === docId);
+    const docs = await getConfig(reqObj, resObj);
+    const doc = docs.find(d => d.id === docId);
     if (doc) {
       return {
         docTitle: doc.title,
         docInternal: doc.internal,
         docEarlyAccess: doc.earlyAccess,
-        ...doc.metadata,
+        docMetadata: JSON.parse(doc.metadata),
       };
     } else {
       return {

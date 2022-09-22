@@ -1,6 +1,5 @@
 import { Entity, Column, Tree, TreeChildren } from 'typeorm';
 import { Environment } from '../../types/environment';
-import { Metadata } from '../../types/metadata';
 
 @Entity()
 @Tree('closure-table')
@@ -14,8 +13,8 @@ export class DocConfig {
   @Column()
   url: string;
 
-  @TreeChildren()
-  metadata: Metadata;
+  @Column('json')
+  metadata: string;
 
   @TreeChildren()
   environments: Environment[];
