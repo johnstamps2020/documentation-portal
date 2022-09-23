@@ -24,10 +24,10 @@
     },
     {
       "id": "is202111src",
-      "title": "IS 2021.11.2",
+      "title": "IS 2021.11.3",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
-      "branch": "release/2021.11.2"
+      "branch": "release/2021.11.3"
     },
     {
       "id": "is202111deDEsrc",
