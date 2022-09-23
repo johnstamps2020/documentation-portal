@@ -56,6 +56,24 @@
       "earlyAccess": false
     },
     {
+      "id": "isbc202209update",
+      "title": "Update",
+      "url": "cloud/bc/202209/update",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "isbc202209upgrade",
       "title": "Upgrade",
       "url": "cloud/bc/202209/upgrade",
@@ -281,6 +299,24 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Release notes"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202209update",
+      "title": "Update",
+      "url": "cloud/cc/202209/update",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Installation"]
       },
       "environments": ["int", "staging"],
       "displayOnLandingPages": true,
@@ -551,6 +587,24 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Release notes"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202209update",
+      "title": "Update",
+      "url": "cloud/pc/202209/update",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Installation"]
       },
       "environments": ["int", "staging"],
       "displayOnLandingPages": true,
