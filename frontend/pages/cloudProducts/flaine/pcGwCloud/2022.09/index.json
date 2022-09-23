@@ -65,6 +65,10 @@
           "id": "ispcflainegwdevsetup"
         },
         {
+          "label": "Update",
+          "id": "ispc202209update"
+        },
+        {
           "label": "Upgrade",
           "id": "ispc202209upgrade"
         },
