@@ -2,7 +2,7 @@ import { Entity, Column } from 'typeorm';
 
 @Entity()
 export class DocConfig {
-  @Column({ primary: true, name: 'docId' })
+  @Column({ primary: true })
   id: string;
 
   @Column()
