@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEnv } from '../hooks/useEnv';
 import { usePageConfig } from '../hooks/usePageConfig';
+import Breadcrumbs from './Breadcrumbs';
 import PageItem from './PageItem';
 
 export default function LandingPage() {
@@ -18,7 +19,7 @@ export default function LandingPage() {
         <div className="pageControllers">
           {/* <%- include('parts/platform-toggle') %> */}
           <div className="pageHero">
-            {/* <%- include('parts/breadcrumbs') %> */}
+            <Breadcrumbs/>
             <h1>{pageConfig.title}</h1>
           </div>
           {/* <%- include('parts/page-selector') %> */}
