@@ -2,7 +2,6 @@ import { createLogger, format, config, transports } from 'winston';
 import { resolve } from 'path';
 import { logger, errorLogger } from 'express-winston';
 const { combine, timestamp, json } = format;
-import path from 'path';
 
 const commonWinstonOptions = {
   handleExceptions: true,

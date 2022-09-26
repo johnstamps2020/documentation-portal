@@ -1,4 +1,4 @@
-export function scramble(phrase) {
+function scramble(phrase) {
   let hash = 0,
     i,
     chr;
@@ -11,7 +11,7 @@ export function scramble(phrase) {
   return hash;
 }
 
-export function getScrambledEmail(email) {
+function getScrambledEmail(email) {
   const parts = email?.includes('@') ? email.split('@') : [];
   if (parts.length === 2) {
     const scrambledLogin = scramble(parts[0]);
@@ -21,11 +21,11 @@ export function getScrambledEmail(email) {
   return 'cannot.get.email@unknown.com';
 }
 
-export function getEmployeeEmail(email) {
+function getEmployeeEmail(email) {
   return email.replace('guidewire.com', 'gw.employee.io');
 }
 
-export function getUserData(userInfo) {
+function getUserData(userInfo) {
   if (userInfo.isLoggedIn) {
     const isEmployee = userInfo.hasGuidewireEmail;
     const role = isEmployee ? 'employee' : 'customer/partner';
@@ -48,7 +48,7 @@ export function getUserData(userInfo) {
   };
 }
 
-export async function initializePendo() {
+async function initializePendo() {
   const response = await fetch('/userInformation');
   if (response.ok) {
     const userInfo = await response.json();

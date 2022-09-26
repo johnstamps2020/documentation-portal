@@ -1,6 +1,6 @@
-import OktaJwtVerifier from '@okta/jwt-verifier';
-import jsonwebtoken from 'jsonwebtoken';
-
+require('dotenv').config();
+const OktaJwtVerifier = require('@okta/jwt-verifier');
+const jsonwebtoken = require('jsonwebtoken');
 const { isPublicDoc, isInternalDoc } = require('./configController');
 const { addCommonDataToSessionLocals } = require('./localsController');
 const { fetchConfigFileForLandingPage } = require('./frontendController');
