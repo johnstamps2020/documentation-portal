@@ -111,7 +111,7 @@ async function findBestMatchingTopic(searchQuery, targetDocVersion) {
     searchUrl.searchParams.append('product', `${docProduct}`);
     searchUrl.searchParams.append('version', `${targetDocVersion}`);
     if (docTitle) {
-      searchUrl.searchParams.append('title', `${docTitle}`);
+      searchUrl.searchParams.append('doc_title', `${docTitle}`);
     }
     const response = await fetch(searchUrl.href);
     const responseBody = await response.json();
@@ -194,15 +194,16 @@ async function createVersionSelector() {
       select.id = 'versionSelector';
       select.onchange = async function(e) {
         let linkToOpen = document.getElementById('versionSelector').value;
-        const isTopic = document.querySelector("meta[name = 'wh-toc-id']");
-        if (isTopic) {
-          const topicTitle = document.querySelector('head > title')
-            ?.textContent;
-          const topicDesc = document.querySelector("meta[name = 'description']")
-            ?.content;
+        const mainElement = document.querySelector('main');
+        if (mainElement) {
+          const topicContents =
+            document.querySelector('article[role="article"]')?.innerText || '';
+          const searchQuery = topicContents
+            .replace(/[\n\r\t]+|[\s]{2,}/g, ' ')
+            .trim()
+            .split('. ')[0]; // Split at sentence end. Use "dot + space" to avoid splitting at a version number, e.g. 2022.05.01
           const targetDocVersion =
             e.target.options[e.target.selectedIndex].innerHTML;
-          const searchQuery = [topicTitle, topicDesc].filter(Boolean).join(' ');
           const bestMatchingTopic = await findBestMatchingTopic(
             searchQuery,
             targetDocVersion

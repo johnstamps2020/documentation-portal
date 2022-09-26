@@ -9,7 +9,7 @@
       "class": "subject development",
       "items": [
         {
-          "label": "Jutro Platform",
+          "label": "Jutro Digital Platform",
           "id": "jutroplatformnext"
         },
         {
@@ -54,6 +54,10 @@
       "label": "Testing",
       "class": "subject bestPractices",
       "items": [
+        {
+          "label": "Data Masking",
+          "id": "datamasking"
+        },
         {
           "label": "Load and Performance Testing",
           "id": "testingframeworksloadflaine"
@@ -119,10 +123,6 @@
         {
           "label": "String Manager",
           "id": "stringmanagerpcdraft"
-        },
-        {
-          "label": "Workset Manager",
-          "id": "worksetmgr"
         }
       ]
     }

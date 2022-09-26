@@ -35,7 +35,9 @@ function readFilesInDir(dirPath: string, deployEnv: Environment): DocConfig[] {
 export async function putConfigInDatabase(): Promise<DocConfig[]> {
   try {
     const deployEnv =
-      process.env.DEPLOY_ENV === 'us-east-2' ? 'prod' : process.env.DEPLOY_ENV;
+      process.env.DEPLOY_ENV === 'omega2-andromeda'
+        ? 'prod'
+        : process.env.DEPLOY_ENV;
     console.log(`Getting local config for the "${deployEnv}" environment`);
 
     const selectedEnv = deployEnv as Environment;

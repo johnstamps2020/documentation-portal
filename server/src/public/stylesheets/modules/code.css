@@ -22,12 +22,15 @@ pre.pre {
   filter: brightness(1.25);
 }
 
-code[class*="language-"] a, pre[class*="language-"] a {
-    text-decoration-line: underline;
-    color: #fff;
+code[class*='language-'] a,
+pre[class*='language-'] a {
+  text-decoration-line: underline;
+  color: #fff;
 }
-code[class*="language-"] a:hover, pre[class*="language-"] a:hover {
-    color: #ccc;
+
+code[class*='language-'] a:hover,
+pre[class*='language-'] a:hover {
+  color: #ccc;
 }
 
 div.code-toolbar > .toolbar {
@@ -89,6 +92,7 @@ div.code-toolbar > div.toolbar > div.toolbar-item > span {
   font-size: 1rem;
   padding-left: 1px;
   padding-right: 1px;
+  word-break: break-word;
 }
 
 .codeph *,

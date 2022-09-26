@@ -121,9 +121,10 @@ function createNavLink(isPrevious, linkObject) {
 }
 
 function addNavigationLinks() {
-  const flatLinkList = document.querySelectorAll("nav[role='toc'] a").length > 0
-    ? document.querySelectorAll("nav[role='toc'] a")
-    : document.querySelectorAll("nav.toc a");
+  const flatLinkList =
+    document.querySelectorAll("nav[role='toc'] a").length > 0
+      ? document.querySelectorAll("nav[role='toc'] a")
+      : document.querySelectorAll('nav.toc a');
   const currentLink = getCurrentLink();
   let matchingIndex = undefined;
   flatLinkList.forEach((link, index) => {
@@ -140,25 +141,24 @@ function addNavigationLinks() {
   navigationLinks.appendChild(previousLink);
   navigationLinks.appendChild(nextLink);
 
-  navigationLinks.addEventListener("click", e => {
-    if(e.target.matches('a')) {
+  navigationLinks.addEventListener('click', e => {
+    if (e.target.matches('a')) {
       const toc = document.querySelector('nav[role="toc"]')
         ? document.querySelector('nav[role="toc"]')
         : document.querySelector('nav.toc');
-      sessionStorage.setItem("tocPos", toc.scrollTop);
+      sessionStorage.setItem('tocPos', toc.scrollTop);
       const navUls = toc.querySelectorAll('li > ul');
       let expandedUls = [];
       navUls.forEach((nestedList, index) => {
-        if(!nestedList.classList.contains('expanded')) {
+        if (!nestedList.classList.contains('expanded')) {
           return;
-        }
-        else {
+        } else {
           expandedUls.push(index);
         }
-      })
-      sessionStorage.setItem("tocExpandedItems", expandedUls);
+      });
+      sessionStorage.setItem('tocExpandedItems', expandedUls);
     }
-  })
+  });
   document.querySelector('#navbarRight').appendChild(navigationLinks);
 }
 
@@ -212,14 +212,15 @@ function addScrollToTop() {
 
   const html = document.querySelector('html');
   const article = document.querySelector('article');
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+  const prefersReducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  );
 
   scrollToTopButton.addEventListener('click', function() {
-    if(!prefersReducedMotion || prefersReducedMotion.matches) {
+    if (!prefersReducedMotion || prefersReducedMotion.matches) {
       html.scrollIntoView();
-    }
-    else {
-      html.scrollIntoView({behavior: "smooth"});
+    } else {
+      html.scrollIntoView({ behavior: 'smooth' });
     }
   });
 
@@ -237,29 +238,44 @@ function addScrollToTop() {
 
     // update miniToc to highlight current section and keep in view
     const hashLinks = document.querySelectorAll('.hashLink');
-    if (hashLinks.length < 1 || document.querySelector('#mobileMiniTocWrapper')) {
+    if (
+      hashLinks.length < 1 ||
+      document.querySelector('#mobileMiniTocWrapper')
+    ) {
       return;
     }
     const miniToc = document.querySelector('nav.miniToc');
     const links = [...hashLinks];
     let closestToTop = links.reduce((prev, curr) => {
-      return (Math.abs(prev.getBoundingClientRect().top) < Math.abs(curr.getBoundingClientRect().top)) ? prev : curr;
+      return Math.abs(prev.getBoundingClientRect().top) <
+        Math.abs(curr.getBoundingClientRect().top)
+        ? prev
+        : curr;
     });
 
-    if(closestToTop.getBoundingClientRect().top > (window.innerHeight || document.documentElement.clientHeight) &&
-       links.indexOf(closestToTop) > 0) {
+    if (
+      closestToTop.getBoundingClientRect().top >
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      links.indexOf(closestToTop) > 0
+    ) {
       closestToTop = links[links.indexOf(closestToTop) - 1];
     }
     const href = closestToTop.getAttribute('href');
     const prevMiniTocLink = miniToc.querySelector('.miniTocLink.current');
-    if(prevMiniTocLink) {
+    if (prevMiniTocLink) {
       prevMiniTocLink.classList.remove('current');
     }
-    const matchingMiniTocLink = miniToc.querySelector(`[href='${href}']`,'.miniTocLink');
+    const matchingMiniTocLink = miniToc.querySelector(
+      `[href='${href}']`,
+      '.miniTocLink'
+    );
     matchingMiniTocLink.classList.add('current');
 
-    if((matchingMiniTocLink.getBoundingClientRect().top > parseInt(window.getComputedStyle(miniToc).height)) ||
-        (matchingMiniTocLink.getBoundingClientRect().top < 0)) {
+    if (
+      matchingMiniTocLink.getBoundingClientRect().top >
+        parseInt(window.getComputedStyle(miniToc).height) ||
+      matchingMiniTocLink.getBoundingClientRect().top < 0
+    ) {
       matchingMiniTocLink.scrollIntoView();
     }
   }
@@ -270,9 +286,9 @@ function addScrollToTop() {
     return (...args) => {
       clearTimeout(timeout);
       timeout = setTimeout(() => {
-        fn(...args)
+        fn(...args);
       }, delay);
-    }
+    };
   }
 
   document.querySelector('footer').appendChild(scrollToTopButton);
@@ -319,7 +335,7 @@ function LinkList({ links }) {
 function MiniToc({ hashLinks }) {
   const [width, setWidth] = useState(window.innerWidth);
   const [expanded, setExpanded] = useState(false);
-  const breakpoint = 1670;
+  const breakpoint = 1250;
   const miniTocTitle = 'On this page';
 
   const handleWindowResize = () => setWidth(window.innerWidth);

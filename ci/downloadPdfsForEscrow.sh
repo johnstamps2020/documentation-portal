@@ -15,9 +15,9 @@ do
   mkdir "$subDir"
   echo "Downloading files from the S3 bucket"
   if [[ "$subDir" == "digital" ]]; then
-    aws s3 cp s3://tenant-doctools-prod-builds/cloud/dx/ $subDir/ --recursive --exclude "*" --include "**/$RELEASE_NUMBER/*.pdf"
+    aws s3 cp s3://tenant-doctools-omega2-andromeda-builds/cloud/dx/ $subDir/ --recursive --exclude "*" --include "**/$RELEASE_NUMBER/*.pdf"
   else
-    aws s3 cp s3://tenant-doctools-prod-builds/cloud/$subDir/$RELEASE_NUMBER/ $subDir/ --recursive --exclude "*" --include "*.pdf"
+    aws s3 cp s3://tenant-doctools-omega2-andromeda-builds/cloud/$subDir/$RELEASE_NUMBER/ $subDir/ --recursive --exclude "*" --include "*.pdf"
   fi
 done
 

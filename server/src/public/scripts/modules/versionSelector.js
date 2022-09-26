@@ -9,7 +9,7 @@ async function findBestMatchingTopic(searchQuery, targetDocVersion) {
     searchUrl.searchParams.append('product', `${window.docProduct}`);
     searchUrl.searchParams.append('version', `${targetDocVersion}`);
     if (window.docTitle) {
-      searchUrl.searchParams.append('title', `${window.docTitle}`);
+      searchUrl.searchParams.append('doc_title', `${window.docTitle}`);
     }
     const response = await fetch(searchUrl.href);
     const responseBody = await response.json();
@@ -31,16 +31,16 @@ export async function addVersionSelector() {
         let linkToOpen = document.getElementById('versionSelector').value;
         const mainElement = document.querySelector('main');
         if (mainElement) {
-          const topicTitle = document.querySelector('head > title')
-            ?.textContent;
-          const topicContents = mainElement.innerText
+          const topicContents =
+            document.querySelector('article[role="article"]')?.innerText || '';
+          const searchQuery = topicContents
             .replace(/[\n\r\t]+|[\s]{2,}/g, ' ')
             .trim()
-            .split('.')[0];
+            .split('. ')[0]; // Split at sentence end. Use "dot + space" to avoid splitting at a version number, e.g. 2022.05.01
           const targetDocVersion =
             e.target.options[e.target.selectedIndex].innerHTML;
           const bestMatchingTopic = await findBestMatchingTopic(
-            topicContents,
+            searchQuery,
             targetDocVersion
           );
           if (bestMatchingTopic) {

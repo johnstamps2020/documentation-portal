@@ -28,7 +28,7 @@
         "version": ["4.4.0"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

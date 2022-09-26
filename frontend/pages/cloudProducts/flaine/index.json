@@ -141,16 +141,16 @@
           ]
         },
         {
-          "label": "Jutro Design System 7.4.3",
+          "label": "Jutro Design System 8.3.0",
           "class": "group",
           "items": [
             {
               "label": "Jutro Design System and UI Framework",
-              "id": "jutro743"
+              "id": "jutro830"
             },
             {
               "label": "Jutro Storybook",
-              "id": "storybook743"
+              "id": "storybook830"
             }
           ]
         }
@@ -273,13 +273,26 @@
               "id": "integgatewaydevlatest"
             }
           ]
+        },
+        {
+          "label": "Workset Manager",
+          "class": "group",
+          "items": [
+            {
+              "label": "Workset Manager",
+              "id": "worksetmgr"
+            }
+          ]
         }
       ]
     },
     {
       "label": "Global Solutions",
       "class": "categoryCard cardShadow",
-      "env": ["int", "staging"],
+      "env": [
+        "int",
+        "staging"
+      ],
       "items": [
         {
           "label": "London Market",
@@ -287,12 +300,14 @@
         },
         {
           "label": "United States",
-          "id": "sbtfwcustomization"
+          "page": "../../globalSolutions/sbt"
         }
       ]
     }
   ],
   "search_filters": {
-    "platform": ["Cloud"]
+    "platform": [
+      "Cloud"
+    ]
   }
 }

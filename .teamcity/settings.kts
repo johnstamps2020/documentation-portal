@@ -36,6 +36,7 @@ project {
 
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
     features.feature(GwProjectFeatures.GwAntennaHouseFormatterServerProjectFeature)
+    features.feature(GwProjectFeatures.GwBuildListenerLimitProjectFeature)
 }
 
 enum class GwDeployEnvs(val env_name: String) {
@@ -43,10 +44,8 @@ enum class GwDeployEnvs(val env_name: String) {
     INT("int"),
     STAGING("staging"),
     PROD("prod"),
-    US_EAST_2("us-east-2"),
     OMEGA2_ANDROMEDA("omega2-andromeda"),
-    PORTAL2("portal2"),
-    PORTAL2_OMEGA2_ANDROMEDA("portal2-omega2-andromeda")
+    PORTAL2("portal2")
 }
 
 enum class GwBuildTypes(val build_type_name: String) {
@@ -93,7 +92,7 @@ enum class GwConfigParams(val param_value: String) {
     COMMON_GW_DITAVALS_DIR("common_gw_ditavals"),
     BITBUCKET_SSH_KEY("svc-doc-bitbucket"),
     ECR_HOST("627188849628.dkr.ecr.us-west-2.amazonaws.com"),
-    ECR_HOST_PROD("710503867599.dkr.ecr.us-east-2.amazonaws.com"),
+    ECR_HOST_PROD("954920275956.dkr.ecr.us-east-1.amazonaws.com"),
     ARTIFACTORY_HOST("artifactory.guidewire.com")
 }
 
@@ -358,7 +357,6 @@ object Docs {
                     """.trimIndent()
                     dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.image_url}:17.6.0"
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerPull = true
                     dockerRunParameters = "--user 1000:1000"
                 }
                 script {
@@ -794,12 +792,7 @@ object Docs {
                     %teamcity.build.workingDir%/*.log => build_logs
                 """.trimIndent()
                 val configFile = "%teamcity.build.workingDir%/config.json"
-                val configFileEnv = when (deploy_env) {
-                    GwDeployEnvs.OMEGA2_ANDROMEDA.env_name -> GwDeployEnvs.PROD.env_name
-                    GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA.env_name -> GwDeployEnvs.PORTAL2.env_name
-                    else -> deploy_env
-                }
-                val configFileStep = GwBuildSteps.createGetConfigFileStep(configFileEnv, configFile)
+                val configFileStep = GwBuildSteps.createGetConfigFileStep(deploy_env, configFile)
                 steps.step(configFileStep)
                 steps.stepsOrder.add(configFileStep.id.toString())
                 val crawlDocStep = GwBuildSteps.createRunDocCrawlerStep(deploy_env, doc_id, configFile)
@@ -1050,7 +1043,7 @@ object Custom {
                     rm -f ${'$'}BUILDS_FILE_PARSED
                     rm -f %teamcity.build.workingDir%/*.zip
                     rm -rf %teamcity.build.workingDir%/$localOutputDir/*
-                    rm -rf %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR/{*,.*}
+                    rm -rf %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR/{*,.*} 2> /dev/null
 
                     git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% ${'$'}GIT_CLONE_DIR
 
@@ -1156,8 +1149,7 @@ object Content {
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD,
-                GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
+                GwDeployEnvs.PROD).forEach {
                 buildType(createGenerateSitemapBuildType(it.env_name))
             }
         }
@@ -1201,8 +1193,7 @@ object Content {
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD,
-                GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
+                GwDeployEnvs.PROD).forEach {
                 buildType(createCleanUpSearchIndexBuildType(it.env_name))
             }
         }
@@ -1241,9 +1232,7 @@ object Content {
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
                 GwDeployEnvs.PROD,
-                GwDeployEnvs.PORTAL2,
-                GwDeployEnvs.OMEGA2_ANDROMEDA,
-                GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA).forEach {
+                GwDeployEnvs.PORTAL2).forEach {
                 buildType(createUpdateSearchIndexBuildType(it.env_name))
             }
         }
@@ -1251,11 +1240,6 @@ object Content {
 
     private fun createUpdateSearchIndexBuildType(deploy_env: String): BuildType {
         val configFile = "%teamcity.build.workingDir%/config.json"
-        val configFileEnv = when (deploy_env) {
-            GwDeployEnvs.OMEGA2_ANDROMEDA.env_name -> GwDeployEnvs.PROD.env_name
-            GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA.env_name -> GwDeployEnvs.PORTAL2.env_name
-            else -> deploy_env
-        }
         return BuildType {
             name = "Update search index on $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -1272,7 +1256,7 @@ object Content {
             }
 
             steps {
-                step(GwBuildSteps.createGetConfigFileStep(configFileEnv, configFile))
+                step(GwBuildSteps.createGetConfigFileStep(deploy_env, configFile))
                 step(GwBuildSteps.createRunDocCrawlerStep(deploy_env, "%DOC_ID%", configFile))
             }
 
@@ -1288,8 +1272,7 @@ object Content {
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD,
-                GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
+                GwDeployEnvs.PROD).forEach {
                 buildType(createDeployServerConfigBuildType(it.env_name))
             }
         }
@@ -1306,7 +1289,7 @@ object Content {
                 cleanCheckout = true
             }
             steps {
-                step(GwBuildSteps.createGenerateDocsConfigFilesForEnvStep(if (deploy_env == GwDeployEnvs.OMEGA2_ANDROMEDA.env_name) GwDeployEnvs.PROD.env_name else deploy_env))
+                step(GwBuildSteps.createGenerateDocsConfigFilesForEnvStep(deploy_env))
                 step(GwBuildSteps.createUploadContentToS3BucketStep(
                     deploy_env,
                     GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value,
@@ -1336,8 +1319,7 @@ object Content {
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD,
-                GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
+                GwDeployEnvs.PROD).forEach {
                 buildType(createDeploySearchServiceBuildType(it.env_name))
             }
         }
@@ -1345,10 +1327,9 @@ object Content {
 
     private fun createDeploySearchServiceBuildType(deploy_env: String): BuildType {
         val namespace = "doctools"
-        val awsEnvs = Helpers.setAwsEnvs(deploy_env)
-        val searchServiceBuildTypeDeployEnv =
-            if (deploy_env == GwDeployEnvs.PROD.env_name) GwDeployEnvs.US_EAST_2.env_name else deploy_env
-        val searchServiceDeployEnvs = Helpers.setSearchServiceDeployEnvs(deploy_env)
+        val awsEnvVars = Helpers.setAwsEnvVars(deploy_env)
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deploy_env)
+        val searchServiceDeployEnvVars = Helpers.setSearchServiceDeployEnvVars(deploy_env)
         return BuildType {
             name = "Deploy search service to $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -1367,15 +1348,15 @@ object Content {
                         set -eux
                                               
                         # Set AWS credentials
-                        $awsEnvs
+                        $awsEnvVars
                         
                         # Set environment variables needed for Kubernetes config files
-                        $searchServiceDeployEnvs
+                        $searchServiceDeployEnvVars
                         
                         # Set other envs
                         export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
                         
-                        aws eks update-kubeconfig --name atmos-${searchServiceBuildTypeDeployEnv}
+                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
                         
                         echo ${'$'}(kubectl get pods --namespace=${namespace})
                         
@@ -1385,7 +1366,6 @@ object Content {
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerPull = true
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
                 }
             }
@@ -1433,8 +1413,8 @@ object Content {
 
         val tmpDir = "%teamcity.build.checkoutDir%/ci/pdfs"
         val zipArchiveName = "%env.RELEASE_NAME%_pdfs.zip"
-        val awsEnvsProd = Helpers.setAwsEnvs(GwDeployEnvs.PROD.env_name)
-        val awsEnvsInt = Helpers.setAwsEnvs(GwDeployEnvs.INT.env_name)
+        val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.env_name)
+        val awsEnvVarsInt = Helpers.setAwsEnvVars(GwDeployEnvs.INT.env_name)
 
         steps {
             script {
@@ -1448,11 +1428,14 @@ object Content {
                     export ZIP_ARCHIVE_NAME="$zipArchiveName"
                     
                     echo "Setting credentials to access prod"
-                    $awsEnvsProd
+                    $awsEnvVarsProd
                     
                     cd %teamcity.build.checkoutDir%/ci
                     ./downloadPdfsForEscrow.sh
                 """.trimIndent()
+                dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
             }
             script {
                 name = "Upload the ZIP archive to S3"
@@ -1462,11 +1445,14 @@ object Content {
                     set -xe
                     
                     echo "Setting credentials to access int"
-                    $awsEnvsInt
+                    $awsEnvVarsInt
                     
                     echo "Uploading the ZIP archive to the S3 bucket"
                     aws s3 cp "${tmpDir}/${zipArchiveName}" s3://tenant-doctools-int-builds/escrow/%env.RELEASE_NAME%/
             """.trimIndent()
+                dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
             }
         }
     })
@@ -1496,8 +1482,7 @@ object Frontend {
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD,
-                GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
+                GwDeployEnvs.PROD).forEach {
                 buildType(createDeployHtml5DependenciesBuildType(it.env_name))
             }
         }
@@ -1511,8 +1496,7 @@ object Frontend {
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD,
-                GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
+                GwDeployEnvs.PROD).forEach {
                 buildType(createDeployLandingPagesBuildType(it.env_name))
             }
         }
@@ -1575,7 +1559,7 @@ object Frontend {
                     GwBuildSteps.createRunFlailSsgStep(
                         "%teamcity.build.checkoutDir%/frontend/pages",
                         outputDir,
-                        if (deploy_env == GwDeployEnvs.OMEGA2_ANDROMEDA.env_name) GwDeployEnvs.PROD.env_name else deploy_env
+                        deploy_env
                     )
                 )
                 step(GwBuildSteps.createDeployStaticFilesStep(deploy_env,
@@ -1608,8 +1592,7 @@ object Frontend {
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD,
-            GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
+                GwDeployEnvs.PROD).forEach {
                 buildType(createDeployLocalizedPagesBuildType(it.env_name))
             }
         }
@@ -1645,7 +1628,7 @@ object Frontend {
                     GwBuildSteps.createRunFlailSsgStep(
                         pagesDir,
                         outputDir,
-                        if (deploy_env == GwDeployEnvs.OMEGA2_ANDROMEDA.env_name) GwDeployEnvs.PROD.env_name else deploy_env
+                        deploy_env
                     )
                 )
                 step(GwBuildSteps.createDeployStaticFilesStep(deploy_env,
@@ -1677,8 +1660,7 @@ object Frontend {
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD,
-                GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
+                GwDeployEnvs.PROD).forEach {
                 buildType(createDeployUpgradeDiffsBuildType(it.env_name))
             }
         }
@@ -1704,7 +1686,7 @@ object Frontend {
             steps {
                 step(
                     GwBuildSteps.createRunUpgradeDiffsPageBuilderStep(
-                        if (deploy_env == GwDeployEnvs.OMEGA2_ANDROMEDA.env_name) GwDeployEnvs.PROD.env_name else deploy_env,
+                        deploy_env,
                         upgradeDiffsDocsSrc,
                         upgradeDiffsDocsOut
                     )
@@ -1715,7 +1697,7 @@ object Frontend {
                     GwBuildSteps.createRunFlailSsgStep(
                         pagesDir,
                         outputDir,
-                        if (deploy_env == GwDeployEnvs.OMEGA2_ANDROMEDA.env_name) GwDeployEnvs.PROD.env_name else deploy_env
+                        deploy_env
                     )
                 )
                 step(GwBuildSteps.createDeployStaticFilesStep(deploy_env,
@@ -1761,8 +1743,7 @@ object Server {
             arrayOf(GwDeployEnvs.DEV,
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD,
-                GwDeployEnvs.OMEGA2_ANDROMEDA).forEach {
+                GwDeployEnvs.PROD).forEach {
                 buildType(createDeployServerBuildType(it.env_name))
             }
             buildType(ReleaseNewVersion)
@@ -1884,36 +1865,46 @@ object Server {
                 scriptContent = """
                     #!/bin/sh
                     set -e
-                    export  OKTA_DOMAIN=https://guidewire-hub.oktapreview.com
-                    export  OKTA_CLIENT_ID=mock
-                    export  OKTA_CLIENT_SECRET=mock
-                    export  OKTA_IDP=mock
-                    export  OKTA_ACCESS_TOKEN_ISSUER=https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7
-                    export  OKTA_ACCESS_TOKEN_SCOPES=NODE_Hawaii_Docs_Web.read
-                    export  OKTA_ACCESS_TOKEN_AUDIENCE=Guidewire
-                    export  APP_BASE_URL=http://localhost:8081
-                    export  SESSION_KEY=mock
-                    export  DOC_S3_URL=https://ditaot.internal.int.ccs.guidewire.net
-                    export  PORTAL2_S3_URL=https://portal2.internal.us-east-2.service.guidewire.net
-                    export  ELASTIC_SEARCH_URL=https://docsearch-doctools.int.ccs.guidewire.net
-                    export  DEPLOY_ENV=int
-                    export  LOCAL_CONFIG=yes
-                    export  ENABLE_AUTH=no
-                    export  PRETEND_TO_BE_EXTERNAL=no
-                    export  ALLOW_PUBLIC_DOCS=yes
-                    export  LOCALHOST_SESSION_SETTINGS=yes
-                    export  PARTNERS_LOGIN_URL=https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect
-                    export  PARTNERS_LOGIN_CERT=mock
-                    export  PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/partners-login
-                    export  CUSTOMERS_LOGIN_URL=https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect
-                    export  CUSTOMERS_LOGIN_CERT=mock
-                    export  CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/customers-login
+                    export AWS_ROLE="arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"
+                    export AWS_ECR_REPO="627188849628.dkr.ecr.us-west-2.amazonaws.com/tenant-doctools-docportal"
+                    export OKTA_DOMAIN=https://guidewire-hub.oktapreview.com
+                    export OKTA_CLIENT_ID=mock
+                    export OKTA_CLIENT_SECRET=mock
+                    export OKTA_IDP="0oamwriqo1E1dOdd70h7"
+                    export GW_COMMUNITY_PARTNER_IDP="0oapv9i36yEMFLjxS0h7"
+                    export GW_COMMUNITY_CUSTOMER_IDP="0oau503zlhhFLwTqF0h7"
+                    export OKTA_ACCESS_TOKEN_ISSUER=https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7
+                    export OKTA_ACCESS_TOKEN_ISSUER_APAC="issuerNotConfigured"
+                    export OKTA_ACCESS_TOKEN_ISSUER_EMEA="issuerNotConfigured"
+                    export OKTA_ACCESS_TOKEN_SCOPES=mock
+                    export OKTA_ACCESS_TOKEN_AUDIENCE=mock
+                    export TAG_VERSION="latest-int"
+                    export APP_BASE_URL=http://localhost:8081
+                    export SESSION_KEY=mock
+                    export DOC_S3_URL="https://docportal-content.int.ccs.guidewire.net"
+                    export PORTAL2_S3_URL="https://portal2-content.omega2-andromeda.guidewire.net"
+                    export ELASTIC_SEARCH_URL=https://docsearch-doctools.int.ccs.guidewire.net
+                    export DEPLOY_ENV=int
+                    export LOCAL_CONFIG=yes
+                    export ENABLE_AUTH=no
+                    export PRETEND_TO_BE_EXTERNAL=no
+                    export ALLOW_PUBLIC_DOCS=yes
+                    export LOCALHOST_SESSION_SETTINGS=yes
+                    export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="https://docs.int.ccs.guidewire.net/partners-login"
+                    export PARTNERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
+                    export PARTNERS_LOGIN_CERT=mock
+                    export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="https://docs.int.ccs.guidewire.net/customers-login"
+                    export CUSTOMERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
+                    export CUSTOMERS_LOGIN_CERT=mock
+                    export REQUESTS_MEMORY="4G"
+                    export REQUESTS_CPU="1"
+                    export LIMITS_MEMORY="8G"
+                    export LIMITS_CPU="2"
                     
                     yarn
                     yarn test
                 """.trimIndent()
                 dockerImage = GwDockerImages.NODE_16_14_2.image_url
-                dockerPull = true
             }
         }
 
@@ -2030,7 +2021,7 @@ object Server {
             cleanCheckout = true
         }
 
-        val awsEnvs = Helpers.setAwsEnvs(GwDeployEnvs.DEV.env_name)
+        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.env_name)
         steps {
             script {
                 name = "Bump and tag version"
@@ -2050,7 +2041,7 @@ object Server {
                 git push --tags
                 
                 # Log into the dev ECR, build and push the image
-                $awsEnvs
+                $awsEnvVars
 
                 set +x
                 docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.param_value}
@@ -2060,7 +2051,6 @@ object Server {
             """.trimIndent()
                 dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                dockerPull = true
                 dockerRunParameters =
                     "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
             }
@@ -2079,16 +2069,14 @@ object Server {
             GwDeployEnvs.INT.env_name -> "latest-int"
             else -> "v%TAG_VERSION%"
         }
-        val awsEnvs = Helpers.setAwsEnvs(deploy_env)
+        val awsEnvVars = Helpers.setAwsEnvVars(deploy_env)
         val gatewayConfigFile = when (deploy_env) {
-            GwDeployEnvs.PROD.env_name -> "ingress-prod.yml"
-            GwDeployEnvs.OMEGA2_ANDROMEDA.env_name -> "gateway-config-prod.yml"
+            GwDeployEnvs.PROD.env_name -> "gateway-config-prod.yml"
             else -> "gateway-config.yml"
         }
 
-        val serverBuildTypeDeployEnv =
-            if (deploy_env == GwDeployEnvs.PROD.env_name) GwDeployEnvs.US_EAST_2.env_name else deploy_env
-        val serverDeployEnvs = Helpers.setServerDeployEnvs(deploy_env, tagVersion)
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deploy_env)
+        val serverDeployEnvVars = Helpers.setServerDeployEnvVars(deploy_env, tagVersion)
         val deployServerBuildType = BuildType {
             name = "Deploy to $deploy_env"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -2107,16 +2095,16 @@ object Server {
                         set -eux
                                 
                         # Set AWS credentials
-                        $awsEnvs
+                        $awsEnvVars
                         
                         # Set environment variables needed for Kubernetes config files
-                        $serverDeployEnvs
+                        $serverDeployEnvVars
                         
                         # Set other envs
                         export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
                         export TMP_GATEWAY_CONFIG_FILE="tmp-gateway-config.yml"
                         
-                        aws eks update-kubeconfig --name atmos-${serverBuildTypeDeployEnv}
+                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
                         
                         echo ${'$'}(kubectl get pods --namespace=${namespace})
                         
@@ -2129,7 +2117,6 @@ object Server {
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerPull = true
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
                 }
                 script {
@@ -2140,9 +2127,9 @@ object Server {
                         set -e
                         
                         # Set AWS credentials
-                        $awsEnvs
+                        $awsEnvVars
                         
-                        aws eks update-kubeconfig --name atmos-${serverBuildTypeDeployEnv}
+                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
                         sleep 10
                         TIME="0"
                         while true; do
@@ -2160,7 +2147,6 @@ object Server {
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerPull = true
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
                 }
 
@@ -2170,7 +2156,9 @@ object Server {
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
 
-        if (arrayOf(GwDeployEnvs.STAGING.env_name, GwDeployEnvs.PROD.env_name, GwDeployEnvs.OMEGA2_ANDROMEDA.env_name).contains(deploy_env)) {
+        if (arrayOf(GwDeployEnvs.STAGING.env_name,
+                GwDeployEnvs.PROD.env_name).contains(deploy_env)
+        ) {
             deployServerBuildType.vcs.branchFilter = "+:<default>"
             deployServerBuildType.params.text(
                 "TAG_VERSION",
@@ -2180,7 +2168,7 @@ object Server {
                 regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""",
                 validationMessage = "Invalid SemVer Format"
             )
-            if (arrayOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.OMEGA2_ANDROMEDA.env_name).contains(deploy_env) ) {
+            if (arrayOf(GwDeployEnvs.PROD.env_name).contains(deploy_env)) {
                 val publishServerDockerImageToEcrStep =
                     GwBuildSteps.createPublishServerDockerImageToProdEcrStep(tagVersion)
                 deployServerBuildType.steps.step(publishServerDockerImageToEcrStep)
@@ -2550,6 +2538,7 @@ object BuildListeners {
                     triggers.vcs {}
 
                     features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                    features.feature(GwBuildFeatures.GwBuildListenerLimitBuildFeature)
                 }
             }
         }
@@ -2664,6 +2653,7 @@ object Sources {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
                 feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
                 feature(GwBuildFeatures.createGwPullRequestsBuildFeature(Helpers.createFullGitBranchName(git_branch)))
+                feature(GwBuildFeatures.GwBuildListenerLimitBuildFeature)
             }
         }
     }
@@ -2906,7 +2896,7 @@ object Sources {
         git_url: String,
     ): BuildType {
         val elasticsearchUrl = Helpers.getElasticsearchUrl(GwDeployEnvs.INT.env_name)
-        val awsEnvs = Helpers.setAwsEnvs(GwDeployEnvs.INT.env_name)
+        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.INT.env_name)
         return BuildType {
             name = "Clean validation results for $src_id"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -2925,7 +2915,7 @@ object Sources {
                         #!/bin/bash
                         set -xe
                         
-                        $awsEnvs
+                        $awsEnvVars
                         
                         results_cleaner --elasticsearch-urls "$elasticsearchUrl"  --git-source-id "$src_id" --git-source-url "$git_url" --s3-bucket-name "tenant-doctools-int-builds"
                     """.trimIndent()
@@ -3004,7 +2994,8 @@ object Recommendations {
         gw_version: String,
     ): BuildType {
         val pretrainedModelFile = "GoogleNews-vectors-negative300.bin"
-        val awsEnvs = Helpers.setAwsEnvs(deploy_env)
+        val awsEnvVars = Helpers.setAwsEnvVars(deploy_env)
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deploy_env)
         val elasticsearchUrl = Helpers.getElasticsearchUrl(deploy_env)
 
         return BuildType {
@@ -3020,11 +3011,14 @@ object Recommendations {
                             set -xe
                             
                             echo "Setting credentials to access int"
-                            $awsEnvs
+                            $awsEnvVars
                             
                             echo "Downloading the pretrained model from the S3 bucket"
-                            aws s3 cp s3://tenant-doctools-${deploy_env}-builds/recommendation-engine/${pretrainedModelFile} %teamcity.build.workingDir%/
+                            aws s3 cp s3://tenant-doctools-${atmosDeployEnv}-builds/recommendation-engine/${pretrainedModelFile} %teamcity.build.workingDir%/
                         """.trimIndent()
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
                 }
                 script {
                     name = "Run the recommendation engine"
@@ -3308,24 +3302,15 @@ object Helpers {
 
     fun getConfigFileUrl(deploy_env: String): String {
         return if (arrayListOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
-            "https://ditaot.internal.us-east-2.service.guidewire.net/portal-config/config.json"
-        } else if (arrayOf(GwDeployEnvs.OMEGA2_ANDROMEDA.env_name,
-                GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA.env_name).contains(deploy_env)
-        ) {
             "https://docportal-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}.guidewire.net/portal-config/config.json"
         } else {
-            "https://ditaot.internal.${deploy_env}.ccs.guidewire.net/portal-config/config.json"
+            "https://docportal-content.${deploy_env}.ccs.guidewire.net/portal-config/config.json"
         }
     }
 
-    fun setAwsEnvs(deploy_env: String): String {
+    fun setAwsEnvVars(deploy_env: String): String {
         val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = when (deploy_env) {
             GwDeployEnvs.PROD.env_name -> Triple(
-                "%env.ATMOS_PROD_AWS_ACCESS_KEY_ID%",
-                "%env.ATMOS_PROD_AWS_SECRET_ACCESS_KEY%",
-                "%env.ATMOS_PROD_AWS_DEFAULT_REGION%"
-            )
-            GwDeployEnvs.OMEGA2_ANDROMEDA.env_name -> Triple(
                 "%env.ATMOS_ORANGE_PROD_AWS_ACCESS_KEY_ID%",
                 "%env.ATMOS_ORANGE_PROD_AWS_SECRET_ACCESS_KEY%",
                 "%env.ATMOS_ORANGE_PROD_AWS_DEFAULT_REGION%"
@@ -3345,9 +3330,7 @@ object Helpers {
 
     fun getTargetUrl(deploy_env: String): String {
         return if (arrayOf(GwDeployEnvs.PROD.env_name,
-                GwDeployEnvs.OMEGA2_ANDROMEDA.env_name,
-                GwDeployEnvs.PORTAL2.env_name,
-                GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA.env_name).contains(deploy_env)
+                GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)
         ) {
             "https://docs.guidewire.com"
         } else {
@@ -3357,10 +3340,6 @@ object Helpers {
 
     fun getElasticsearchUrl(deploy_env: String): String {
         return if (arrayOf(GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name).contains(deploy_env)) {
-            "https://docsearch-doctools.us-east-2.service.guidewire.net"
-        } else if (arrayOf(GwDeployEnvs.OMEGA2_ANDROMEDA.env_name,
-                GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA.env_name).contains(deploy_env)
-        ) {
             "https://docsearch-doctools.${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}.guidewire.net"
         } else {
             "https://docsearch-doctools.${deploy_env}.ccs.guidewire.net"
@@ -3369,11 +3348,16 @@ object Helpers {
 
     fun getS3BucketUrl(deploy_env: String): String {
         return when (deploy_env) {
-            GwDeployEnvs.PROD.env_name -> "https://ditaot.internal.us-east-2.service.guidewire.net"
-            GwDeployEnvs.OMEGA2_ANDROMEDA.env_name -> "https://docportal-content.${deploy_env}.guidewire.net"
-            GwDeployEnvs.PORTAL2.env_name -> "https://portal2.internal.us-east-2.service.guidewire.net"
-            GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA.env_name -> "https://portal2-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}.guidewire.net"
-            else -> "https://ditaot.internal.${deploy_env}.ccs.guidewire.net"
+            GwDeployEnvs.PROD.env_name -> "https://docportal-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}.guidewire.net"
+            GwDeployEnvs.PORTAL2.env_name -> "https://portal2-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}.guidewire.net"
+            else -> "https://docportal-content.${deploy_env}.ccs.guidewire.net"
+        }
+    }
+
+    fun getAtmosDeployEnv(deploy_env: String): String {
+        return when (deploy_env) {
+            GwDeployEnvs.PROD.env_name -> GwDeployEnvs.OMEGA2_ANDROMEDA.env_name
+            else -> deploy_env
         }
     }
 
@@ -3393,13 +3377,13 @@ object Helpers {
         return Pair(partnersLoginUrl, customersLoginUrl)
     }
 
-    fun setServerDeployEnvs(deploy_env: String, tag_version: String): String {
+    fun setServerDeployEnvVars(deploy_env: String, tag_version: String): String {
         val (partnersLoginUrl, customersLoginUrl) = getGwCommunityUrls(deploy_env)
         val appBaseUrl = getTargetUrl(deploy_env)
         return when (deploy_env) {
             GwDeployEnvs.PROD.env_name -> """
-                export AWS_ROLE="arn:aws:iam::710503867599:role/aws_gwre-ccs-prod_tenant_doctools_developer"
-                export AWS_ECR_REPO="710503867599.dkr.ecr.us-east-2.amazonaws.com/tenant-doctools-docportal"
+                export AWS_ROLE="arn:aws:iam::954920275956:role/aws_orange-prod_tenant_doctools_developer"
+                export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL_PROD.image_url}"
                 export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/partners-login"
                 export PARTNERS_LOGIN_URL="$partnersLoginUrl"
                 export GW_COMMUNITY_PARTNER_IDP="0oa6c4yaoikrU91Hw357"
@@ -3407,14 +3391,14 @@ object Helpers {
                 export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
                 export GW_COMMUNITY_CUSTOMER_IDP="0oa6c4x5z3fYXUWoE357"
                 export TAG_VERSION="$tag_version"
-                export DEPLOY_ENV="${GwDeployEnvs.US_EAST_2.env_name}"
+                export DEPLOY_ENV="${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}"
                 export OKTA_ACCESS_TOKEN_ISSUER="https://guidewire-hub.okta.com/oauth2/aus11vix3uKEpIfSI357"
                 export OKTA_ACCESS_TOKEN_ISSUER_APAC="https://guidewire-hub-apac.okta.com/oauth2/ausbg05gfcTZQ7bpH3l6"
                 export OKTA_ACCESS_TOKEN_ISSUER_EMEA="https://guidewire-hub-eu.okta.com/oauth2/ausc2q01c40dNZII0416"
                 export OKTA_DOMAIN="https://guidewire-hub.okta.com"
                 export OKTA_IDP="0oa25tk18zhGOqMfj357"
                 export APP_BASE_URL="$appBaseUrl"
-                export ELASTIC_SEARCH_URL="http://docsearch-${GwDeployEnvs.US_EAST_2.env_name}.doctools:9200"
+                export ELASTIC_SEARCH_URL="http://docsearch-${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}.doctools:9200"
                 export DOC_S3_URL="${getS3BucketUrl(deploy_env)}"
                 export PORTAL2_S3_URL="${getS3BucketUrl(GwDeployEnvs.PORTAL2.env_name)}"
                 export REQUESTS_MEMORY="8G"
@@ -3422,34 +3406,9 @@ object Helpers {
                 export LIMITS_MEMORY="16G"
                 export LIMITS_CPU="4"
             """.trimIndent()
-            GwDeployEnvs.OMEGA2_ANDROMEDA.env_name -> """
-                export AWS_ROLE="arn:aws:iam::954920275956:role/aws_orange-prod_tenant_doctools_developer"
-                export AWS_ECR_REPO="954920275956.dkr.ecr.us-east-1.amazonaws.com/tenant-doctools-docportal"
-                export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/partners-login"
-                export PARTNERS_LOGIN_URL="$partnersLoginUrl"
-                export GW_COMMUNITY_PARTNER_IDP="0oa6c4yaoikrU91Hw357"
-                export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/customers-login"
-                export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
-                export GW_COMMUNITY_CUSTOMER_IDP="0oa6c4x5z3fYXUWoE357"
-                export TAG_VERSION="$tag_version"
-                export DEPLOY_ENV="$deploy_env"
-                export OKTA_ACCESS_TOKEN_ISSUER="https://guidewire-hub.okta.com/oauth2/aus11vix3uKEpIfSI357"
-                export OKTA_ACCESS_TOKEN_ISSUER_APAC="https://guidewire-hub-apac.okta.com/oauth2/ausbg05gfcTZQ7bpH3l6"
-                export OKTA_ACCESS_TOKEN_ISSUER_EMEA="https://guidewire-hub-eu.okta.com/oauth2/ausc2q01c40dNZII0416"
-                export OKTA_DOMAIN="https://guidewire-hub.okta.com"
-                export OKTA_IDP="0oa25tk18zhGOqMfj357"
-                export APP_BASE_URL="$appBaseUrl"
-                export ELASTIC_SEARCH_URL="http://docsearch-${deploy_env}.doctools:9200"
-                export DOC_S3_URL="${getS3BucketUrl(deploy_env)}"
-                export PORTAL2_S3_URL="${getS3BucketUrl(GwDeployEnvs.PORTAL2_OMEGA2_ANDROMEDA.env_name)}"
-                export REQUESTS_MEMORY="8G"
-                export REQUESTS_CPU="2"
-                export LIMITS_MEMORY="16G"
-                export LIMITS_CPU="4"
-            """.trimIndent()
             else -> """
                 export AWS_ROLE="arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"
-                export AWS_ECR_REPO="627188849628.dkr.ecr.us-west-2.amazonaws.com/tenant-doctools-docportal"
+                export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL.image_url}"
                 export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/partners-login"
                 export PARTNERS_LOGIN_URL="$partnersLoginUrl"
                 export GW_COMMUNITY_PARTNER_IDP="0oapv9i36yEMFLjxS0h7"
@@ -3475,17 +3434,10 @@ object Helpers {
         }
     }
 
-    fun setSearchServiceDeployEnvs(deploy_env: String): String {
+    fun setSearchServiceDeployEnvVars(deploy_env: String): String {
         return when (deploy_env) {
             GwDeployEnvs.PROD.env_name -> """
-                export DEPLOY_ENV="${GwDeployEnvs.US_EAST_2.env_name}"
-                export REQUESTS_MEMORY="4G"
-                export REQUESTS_CPU="1"
-                export LIMITS_MEMORY="8G"
-                export LIMITS_CPU="2"
-            """.trimIndent()
-            GwDeployEnvs.OMEGA2_ANDROMEDA.env_name -> """
-                export DEPLOY_ENV="$deploy_env"
+                export DEPLOY_ENV="${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}"
                 export REQUESTS_MEMORY="4G"
                 export REQUESTS_CPU="1"
                 export LIMITS_MEMORY="8G"
@@ -3652,7 +3604,8 @@ object GwBuildSteps {
     }
 
     fun createCopyLocalizedPdfsToS3BucketStep(deploy_env: String, loc_docs_src: String): ScriptBuildStep {
-        val awsEnvs = Helpers.setAwsEnvs(deploy_env)
+        val awsEnvVars = Helpers.setAwsEnvVars(deploy_env)
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deploy_env)
         return ScriptBuildStep {
             name = "Copy localized PDFs to the S3 bucket"
             id = Helpers.createIdStringFromName(this.name)
@@ -3660,10 +3613,13 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                         
-                $awsEnvs
+                $awsEnvVars
                         
-                aws s3 sync "$loc_docs_src" s3://tenant-doctools-${deploy_env}-builds/l10n --exclude ".git/*" --delete
+                aws s3 sync "$loc_docs_src" s3://tenant-doctools-${atmosDeployEnv}-builds/l10n --exclude ".git/*" --delete
             """.trimIndent()
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
         }
     }
 
@@ -3718,9 +3674,10 @@ object GwBuildSteps {
     }
 
     fun createCopyUpgradeDiffsToS3BucketStep(deploy_env: String, upgrade_diffs_docs_src: String): ScriptBuildStep {
-        val awsEnvs = Helpers.setAwsEnvs(deploy_env)
+        val awsEnvVars = Helpers.setAwsEnvVars(deploy_env)
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deploy_env)
         var awsS3SyncCommand =
-            "aws s3 sync \"${upgrade_diffs_docs_src}\" s3://tenant-doctools-${deploy_env}-builds/upgradediffs --delete"
+            "aws s3 sync \"${upgrade_diffs_docs_src}\" s3://tenant-doctools-${atmosDeployEnv}-builds/upgradediffs --delete"
         if (arrayOf(GwDeployEnvs.STAGING.env_name, GwDeployEnvs.PROD.env_name).contains(deploy_env)) {
             awsS3SyncCommand += " --exclude \"*/*-rc/*\""
         }
@@ -3731,10 +3688,13 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                         
-                $awsEnvs
+                $awsEnvVars
                         
                 $awsS3SyncCommand
             """.trimIndent()
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
         }
     }
 
@@ -3785,8 +3745,8 @@ object GwBuildSteps {
     fun createPublishServerDockerImageToProdEcrStep(
         tag_version: String,
     ): ScriptBuildStep {
-        val awsEnvsDev = Helpers.setAwsEnvs(GwDeployEnvs.DEV.env_name)
-        val awsEnvsProd = Helpers.setAwsEnvs(GwDeployEnvs.PROD.env_name)
+        val awsEnvVarsDev = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.env_name)
+        val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.env_name)
         return ScriptBuildStep {
             name = "Publish server Docker Image to PROD ECR"
             id = Helpers.createIdStringFromName(this.name)
@@ -3794,7 +3754,7 @@ object GwBuildSteps {
                 set -xe
                 
                 # Log into the dev ECR, download the image and tag it
-                $awsEnvsDev
+                $awsEnvVarsDev
 
                 set +x
                 docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.param_value}
@@ -3803,7 +3763,7 @@ object GwBuildSteps {
                 docker tag ${GwDockerImages.DOC_PORTAL.image_url}:${tag_version} ${GwDockerImages.DOC_PORTAL_PROD.image_url}:${tag_version}
                 
                 # Log into the prod ECR and push the image
-                $awsEnvsProd
+                $awsEnvVarsProd
                 
                 set +x
                 docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST_PROD.param_value}
@@ -3812,7 +3772,6 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerPull = true
             dockerRunParameters =
                 "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
         }
@@ -3821,7 +3780,7 @@ object GwBuildSteps {
     fun createBuildAndPublishServerDockerImageToDevEcrStep(
         tag_version: String,
     ): ScriptBuildStep {
-        val awsEnvs = Helpers.setAwsEnvs(GwDeployEnvs.DEV.env_name)
+        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.env_name)
         return ScriptBuildStep {
             name = "Build and publish server Docker Image to DEV ECR"
             id = Helpers.createIdStringFromName(this.name)
@@ -3830,7 +3789,7 @@ object GwBuildSteps {
                 set -xe
                 
                 # Log into the dev ECR, build and push the image
-                $awsEnvs
+                $awsEnvVars
 
                 set +x
                 docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.param_value}
@@ -3840,7 +3799,6 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerPull = true
             dockerRunParameters =
                 "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
         }
@@ -3929,27 +3887,30 @@ object GwBuildSteps {
     }
 
     fun createCopyFromStagingToProdStep(publish_path: String): ScriptBuildStep {
-        val awsEnvsStaging = Helpers.setAwsEnvs(GwDeployEnvs.STAGING.env_name)
-        val awsEnvsProd = Helpers.setAwsEnvs(GwDeployEnvs.PROD.env_name)
+        val awsEnvVarsStaging = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.env_name)
+        val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.env_name)
         return ScriptBuildStep {
-            name = "Copy from S3 on staging to S3 on Prod"
+            name = "Copy from S3 on staging to S3 on prod"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                     #!/bin/bash
                     set -xe
                     
                     echo "Setting credentials to access staging"
-                    $awsEnvsStaging
+                    $awsEnvVarsStaging
                     
                     echo "Copying from staging to Teamcity"
                     aws s3 sync s3://tenant-doctools-staging-builds/${publish_path} ${publish_path}/ --delete
                     
                     echo "Setting credentials to access prod"
-                    $awsEnvsProd
+                    $awsEnvVarsProd
                     
                     echo "Uploading from Teamcity to prod"
-                    aws s3 sync ${publish_path}/ s3://tenant-doctools-prod-builds/${publish_path} --delete
+                    aws s3 sync ${publish_path}/ s3://tenant-doctools-omega2-andromeda-builds/${publish_path} --delete
                 """.trimIndent()
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
         }
     }
 
@@ -3992,8 +3953,8 @@ object GwBuildSteps {
     fun createUploadContentToS3BucketStep(
         deploy_env: String, output_path: String, publish_path: String,
     ): ScriptBuildStep {
-        val s3BucketName = "tenant-doctools-${deploy_env}-builds"
-        val awsEnvs = Helpers.setAwsEnvs(deploy_env)
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deploy_env)
+        val awsEnvVars = Helpers.setAwsEnvVars(deploy_env)
         return ScriptBuildStep {
             name = "Upload content to the S3 bucket"
             id = Helpers.createIdStringFromName(this.name)
@@ -4001,10 +3962,13 @@ object GwBuildSteps {
                     #!/bin/bash
                     set -xe
                     
-                    $awsEnvs
+                    $awsEnvVars
                     
-                    aws s3 sync "$output_path" s3://${s3BucketName}/${publish_path} --delete
+                    aws s3 sync "$output_path" s3://tenant-doctools-${atmosDeployEnv}-builds/${publish_path} --delete
                 """.trimIndent()
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
         }
     }
 
@@ -4274,7 +4238,6 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.image_url}:14.14.0"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerPull = true
             dockerRunParameters = "--user 1000:1000"
         }
     }
@@ -4309,7 +4272,6 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.image_url}:17.6.0"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerPull = true
             dockerRunParameters = "--user 1000:1000"
         }
     }
@@ -4380,7 +4342,6 @@ object GwBuildSteps {
                 """.trimIndent()
             dockerImage = nodeImage
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerPull = true
             dockerRunParameters = "--user 1000:1000"
         }
     }
@@ -4444,7 +4405,6 @@ object GwBuildSteps {
                 """.trimIndent()
             dockerImage = GwDockerImages.GENERIC_14_14_0_YARN_CHROME.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerPull = true
         }
     }
 
@@ -4564,7 +4524,8 @@ object GwBuildSteps {
         deployment_mode: String,
         output_dir: String,
     ): ScriptBuildStep {
-        val awsEnvs = Helpers.setAwsEnvs(deploy_env)
+        val awsEnvVars = Helpers.setAwsEnvVars(deploy_env)
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deploy_env)
         var sourceDir = output_dir
         var targetDir = ""
         var excludedPatterns = ""
@@ -4585,7 +4546,7 @@ object GwBuildSteps {
             GwStaticFilesModes.HTML5.mode_name -> targetDir = "html5"
         }
         val deployCommand =
-            "aws s3 sync \"$sourceDir\" s3://tenant-doctools-${deploy_env}-builds/${targetDir} --delete $excludedPatterns".trim()
+            "aws s3 sync \"$sourceDir\" s3://tenant-doctools-${atmosDeployEnv}-builds/${targetDir} --delete $excludedPatterns".trim()
 
         return ScriptBuildStep {
             name = "Deploy static files to the S3 bucket"
@@ -4594,13 +4555,12 @@ object GwBuildSteps {
                 #!/bin/bash 
                 set -xe
                 
-                $awsEnvs
+                $awsEnvVars
                 
                 $deployCommand
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerPull = true
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
         }
     }
@@ -4620,6 +4580,14 @@ object GwProjectFeatures {
         id = "GW_ANTENNA_HOUSE_FORMATTER_SERVER"
         param("quota", "3")
         param("name", "AntennaHouseFormatterServer")
+        param("type", "quoted")
+    })  
+
+    object GwBuildListenerLimitProjectFeature : ProjectFeature({
+        type = "JetBrains.SharedResources"
+        id = "GW_BUILD_LISTENER_LIMIT"
+        param("quota", "5")
+        param("name", "BuildListenerLimit")
         param("type", "quoted")
     })
 }
@@ -4646,6 +4614,12 @@ object GwBuildFeatures {
         id = "GW_ANTENNA_HOUSE_FORMATTER_SERVER_READ_LOCK"
         type = "JetBrains.SharedResources"
         param("locks-param", "AntennaHouseFormatterServer readLock")
+    })
+
+    object GwBuildListenerLimitBuildFeature : BuildFeature({
+        id = "GW_BUILD_LISTENER_LIMIT_READ_LOCK"
+        type = "JetBrains.SharedResources"
+        param("locks-param", "BuildListenerLimit readLock")
     })
 
     object GwCommitStatusPublisherBuildFeature : CommitStatusPublisher({

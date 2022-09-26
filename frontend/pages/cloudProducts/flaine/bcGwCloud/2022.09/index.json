@@ -61,8 +61,12 @@
           "id": "isbcflainegwdevsetup"
         },
         {
+          "label": "Update",
+          "id": "isbc202209update"
+        },
+        {
           "label": "Upgrade",
-          "id": "isbc202205upgrade"
+          "id": "isbc202209upgrade"
         },
         {
           "label": "Upgrade (Internal only)",

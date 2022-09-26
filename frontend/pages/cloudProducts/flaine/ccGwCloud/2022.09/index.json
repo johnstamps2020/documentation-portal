@@ -61,6 +61,10 @@
           "id": "isccflainegwdevsetup"
         },
         {
+          "label": "Update",
+          "id": "iscc202209update"
+        },
+        {
           "label": "Upgrade",
           "id": "iscc202209upgrade"
         },

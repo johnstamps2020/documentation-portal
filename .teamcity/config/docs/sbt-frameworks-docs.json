@@ -14,8 +14,22 @@
       "internal": false,
       "earlyAccess": false,
       "indexForSearch": true,
-      "public": false,
-      "displayOnLandingPages": true
+      "public": false
+    },
+    {
+      "id": "sbtfwguide",
+      "title": "Standards-based Template Framework Guide",
+      "url": "sbtfw/latest/guide",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["Standards-based Template Framework"],
+        "version": ["latest"]
+      },
+      "environments": ["int", "staging"],
+      "internal": false,
+      "earlyAccess": false,
+      "indexForSearch": true,
+      "public": false
     }
   ]
 }
