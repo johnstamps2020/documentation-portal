@@ -1,5 +1,5 @@
-const request = require('supertest');
-const { app } = require('./test/helpers');
+import request from 'supertest';
+import { app } from './test/helpers';
 
 describe('The server app', () => {
   test('Portal config redirects to unauthorized', async () => {

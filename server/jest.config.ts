@@ -1,5 +1,6 @@
-/** @type {import('@jest/types').Config.InitialOptions} */
-const config = {
+import type {Config} from '@jest/types';
+
+const config: Config.InitialOptions = {
   verbose: true,
   testTimeout: 13006,
   testEnvironment: 'node',
@@ -8,6 +9,9 @@ const config = {
     name: 'DOCUMENTATION PORTAL',
     color: 'magenta',
   },
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest',
+  }
 };
 
-module.exports = config;
+export default config;
