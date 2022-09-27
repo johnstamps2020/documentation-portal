@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
     const pageInfo = {
       cameFrom: req.headers.referer,
     };
-    res.render('unauthorized', { pageInfo });
+    res.status(401).render('unauthorized', { pageInfo });
   } catch (err) {
     winstonLogger.error(`Problem rendering the "unauthorized" page
     ERROR: ${JSON.stringify(err)}

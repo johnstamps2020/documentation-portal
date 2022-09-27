@@ -167,7 +167,7 @@ app.use((err, req, res, next) => {
     res.status(404).redirect('/404');
   }
   err.status = err.status || 500;
-  res.render('error', { err });
+  res.status(err.status || 500).render('error', { err });
 });
 
 module.exports = app;
