@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
         cameFrom: cameFrom,
         appBaseUrl: process.env.APP_BASE_URL,
       };
-      res.render('404', { pageInfo });
+      res.status(404).render('404', { pageInfo });
     }
   } catch (err) {
     winstonLogger.error(
