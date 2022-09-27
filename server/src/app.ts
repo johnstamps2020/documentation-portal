@@ -175,7 +175,7 @@ app.use((err: any, req: Request, res: Response) => {
     res.status(404).redirect('/404');
   }
   err.status = err.status || 500;
-  res.render('error', { err });
+  res.status(err.status).render('error', { err });
 });
 
 export default app;
