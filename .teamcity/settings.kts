@@ -8,6 +8,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.ScheduleTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
+import jetbrains.buildServer.configs.kotlin.v2019_2.ui.add
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -1119,6 +1120,17 @@ object Custom {
         features {
             feature(GwBuildFeatures.GwDockerSupportBuildFeature)
             feature(GwBuildFeatures.GwSshAgentBuildFeature)
+        }
+
+        cleanup {
+            add {
+                keepRule {
+                    id = "KEEP_RULE_CUSTOM_DITA_BUILDS"
+                    keepAtLeast = builds(100)
+                    dataToKeep = everything()
+                    preserveArtifactsDependencies = true
+                }
+            }
         }
     })
 
