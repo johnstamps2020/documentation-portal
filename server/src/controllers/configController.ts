@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { readdirSync, lstatSync, readFileSync } from 'fs';
+import { lstatSync, readdirSync, readFileSync } from 'fs';
 import { join, resolve } from 'path';
 import { winstonLogger } from './loggerController';
 import { ServerConfig } from '../types/config';
@@ -8,6 +8,14 @@ import { Environment } from '../types/environment';
 import { VersionSelector } from '../model/entity/VersionSelector';
 import { AppDataSource } from '../model/connection';
 import { DocConfig } from '../model/entity/DocConfig';
+import { Product } from '../model/entity/Product';
+import { ProductName } from '../model/entity/ProductName';
+import { ProductVersion } from '../model/entity/ProductVersion';
+import { ProductPlatform } from '../model/entity/ProductPlatform';
+import { Release } from '../model/entity/Release';
+import { Build } from '../model/entity/Build';
+import { Source } from '../model/entity/Source';
+import { Resource } from '../model/entity/Resource';
 
 function readFilesInDir(dirPath: string, deployEnv: Environment): DocConfig[] {
   try {
@@ -48,19 +56,110 @@ export async function putConfigInDatabase(): Promise<DocConfig[]> {
 
     const localConfig = readFilesInDir(localConfigDir, selectedEnv);
 
+    // FIXME: Test data, remove after testing
+    const BillingCenterName = new ProductName();
+    BillingCenterName.name = 'BillingCenter';
+    await AppDataSource.getRepository(ProductName).save(BillingCenterName);
+    const BillingCenterVersion = new ProductVersion();
+    BillingCenterVersion.name = '2022.05';
+    await AppDataSource.getRepository(ProductVersion).save(
+      BillingCenterVersion
+    );
+    const BillingCenterPlatform = new ProductPlatform();
+    BillingCenterPlatform.name = 'Cloud';
+    await AppDataSource.getRepository(ProductPlatform).save(
+      BillingCenterPlatform
+    );
+
+    // FIXME: Test data, remove after testing
+    const BillingCenterProduct = new Product();
+    BillingCenterProduct.name = BillingCenterName;
+    BillingCenterProduct.version = BillingCenterVersion;
+    BillingCenterProduct.platform = BillingCenterPlatform;
+    await AppDataSource.getRepository(Product).save(BillingCenterProduct);
+
+    // FIXME: Test data, remove after testing
+    const FlaineRelease = new Release();
+    FlaineRelease.name = 'Flaine';
+    const ElysianRelease = new Release();
+    ElysianRelease.name = 'Elysian';
+    await AppDataSource.getRepository(Release).save([
+      ElysianRelease,
+      FlaineRelease,
+    ]);
+
+    // FIXME: Test data, remove after testing
+    const isSrc = new Source();
+    isSrc.name = 'InsuranceSuite Source';
+    isSrc.type = 'git';
+    isSrc.gitUrl =
+      'ssh://git@stash.guidewire.com/docsources/insurancesuite.git';
+    isSrc.gitBranch = 'release/elysian';
+    const isResourcesSrc = new Source();
+    isResourcesSrc.name = 'InsuranceSuite Resources Source';
+    isResourcesSrc.type = 'git';
+    isResourcesSrc.gitUrl =
+      'ssh://git@stash.guidewire.com/docsources/insurancesuite-resources.git';
+    isResourcesSrc.gitBranch = 'release/elysian';
+    await AppDataSource.getRepository(Source).save([isSrc, isResourcesSrc]);
+
+    // FIXME: Test data, remove after testing
+    const isResource1 = new Resource();
+    isResource1.sourceFolder = 'resource1/src';
+    isResource1.targetFolder = 'resource1/target';
+    isResource1.source = isResourcesSrc;
+    const isResource2 = new Resource();
+    isResource2.sourceFolder = 'resource2/src';
+    isResource2.targetFolder = 'resource2/target';
+    isResource2.source = isResourcesSrc;
+    await AppDataSource.getRepository(Resource).save([
+      isResource1,
+      isResource2,
+    ]);
+
+    let updatedLocalConfig: any[];
+    updatedLocalConfig = [];
     for await (const doc of localConfig) {
-      console.log(
-        `ABOUT TO SAVE DOC ${localConfig.indexOf(doc) + 1} of ${
-          localConfig.length
-        }`,
-        doc
-      );
-      const saveDoc = await AppDataSource.getRepository(DocConfig).save(doc);
-      console.log('SAVED DOC', saveDoc);
+      // console.log(
+      //   `ABOUT TO SAVE DOC ${localConfig.indexOf(doc) + 1} of ${
+      //     localConfig.length
+      //   }`,
+      //   doc
+      // );
+
+      // FIXME: Test data, remove after testing
+      const docBuild = new Build();
+      docBuild.type = 'dita';
+      docBuild.source = isSrc;
+      docBuild.filter = `${doc.id}.ditaval`;
+      docBuild.root = 'main.ditamap';
+      docBuild.indexRedirect = true;
+      docBuild.resources = [isResource1, isResource2];
+      await AppDataSource.getRepository(Build).save(docBuild);
+
+      // FIXME: Test data, remove after testing
+      const docConfig = new DocConfig();
+      docConfig.id = doc.id;
+      docConfig.url = doc.url;
+      docConfig.title = doc.title;
+      docConfig.internal = doc.internal;
+      docConfig.earlyAccess = doc.earlyAccess;
+      docConfig.displayOnLandingPages = doc.displayOnLandingPages;
+      docConfig.environments = doc.environments;
+      docConfig.indexForSearch = doc.indexForSearch;
+      docConfig.releases = [ElysianRelease, FlaineRelease];
+      docConfig.products = [BillingCenterProduct];
+      docConfig.build = docBuild;
+
+      // const saveDoc = await AppDataSource.getRepository(DocConfig).save(
+      //   docConfig
+      // );
+      // console.log('SAVED DOC', saveDoc);
+      updatedLocalConfig.push(docConfig);
     }
 
     const saveResult = await AppDataSource.getRepository(DocConfig).save(
-      localConfig
+      updatedLocalConfig
     );
     console.log('SAVE RESULT', saveResult);
     return saveResult;
@@ -75,7 +174,7 @@ function getPublicOnlyIfNotLoggedIn(
   config: DocConfig[]
 ): DocConfig[] {
   if (!reqObj.session || !reqObj.session.requestIsAuthenticated) {
-    return config.filter(d => d.public === true);
+    return config.filter(d => d.public);
   }
 
   return config;
@@ -87,7 +186,7 @@ function filterOutInternalDocsIfNotEmployee(
 ): DocConfig[] {
   const hasGuidewireEmail = resObj.locals.userInfo.hasGuidewireEmail;
   if (!hasGuidewireEmail) {
-    return config.filter(d => d.internal === false);
+    return config.filter(d => !d.internal);
   }
 
   return config;
@@ -255,7 +354,7 @@ export async function getDocumentMetadata(
         docTitle: doc.title,
         docInternal: doc.internal,
         docEarlyAccess: doc.earlyAccess,
-        docMetadata: JSON.parse(doc.metadata),
+        // docMetadata: JSON.parse(doc.environments),
       };
     } else {
       return {

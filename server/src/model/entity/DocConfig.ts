@@ -1,4 +1,15 @@
-import { Entity, Column } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
+  OneToOne,
+} from 'typeorm';
+import { Product } from './Product';
+import { Build } from './Build';
+import { Release } from './Release';
 
 @Entity()
 export class DocConfig {
@@ -9,13 +20,35 @@ export class DocConfig {
   title: string;
 
   @Column()
+  @Index('docUrls-idx')
   url: string;
 
-  @Column('simple-json')
-  metadata: string;
+  @Column({ nullable: true })
+  body: string;
 
-  @Column('simple-json')
-  environments: string;
+  @ManyToMany(
+    () => Product,
+    product => product.id
+  )
+  @JoinTable()
+  products: Product[];
+
+  @OneToOne(
+    () => Build,
+    build => build.docConfig
+  )
+  @JoinColumn()
+  build: Build;
+
+  @ManyToMany(
+    () => Release,
+    release => release.id
+  )
+  @JoinTable()
+  releases: Release[];
+
+  @Column('simple-array')
+  environments: string[];
 
   @Column({ default: true })
   displayOnLandingPages: boolean;
