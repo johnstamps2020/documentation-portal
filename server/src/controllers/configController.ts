@@ -407,6 +407,11 @@ export function getEnv() {
   return { envName: process.env.DEPLOY_ENV };
 }
 
+export type DocUrlByIdResponse = {
+  id: string;
+  url: string;
+};
+
 export async function getDocUrlById(
   docId: string,
   reqObj: Request,
@@ -416,10 +421,11 @@ export async function getDocUrlById(
     const config = await getConfig(reqObj, resObj);
     const doc = config.find(d => d.id === docId);
     if (doc) {
-      return {
+      const result: DocUrlByIdResponse = {
         id: doc.id,
         url: doc.url,
       };
+      return result;
     } else {
       return {
         error: true,

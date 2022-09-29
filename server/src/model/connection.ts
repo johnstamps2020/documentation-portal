@@ -38,5 +38,4 @@ export const AppDataSource = new DataSource({
     Source,
   ],
   synchronize: isDevMode,
-  dropSchema: isDevMode,
 });
