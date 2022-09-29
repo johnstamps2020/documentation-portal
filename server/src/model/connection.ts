@@ -1,19 +1,21 @@
 import { DataSource } from 'typeorm';
 import { winstonLogger } from '../controllers/loggerController';
-import { PageItem } from './entity/PageItem';
 import { DocConfig } from './entity/DocConfig';
-import { PageConfig } from './entity/PageConfig';
-import { PageSelector } from './entity/PageSelector';
 import { Product } from './entity/Product';
-import { Release } from './entity/Release';
-import { VersionSelector } from './entity/VersionSelector';
 import { runningInDevMode } from '../controllers/utils/serverUtils';
+import { Build } from './entity/Build';
+import { Release } from './entity/Release';
+import { Resource } from './entity/Resource';
+import { Source } from './entity/Source';
+import { ProductPlatform } from './entity/ProductPlatform';
+import { ProductName } from './entity/ProductName';
+import { ProductVersion } from './entity/ProductVersion';
 
 const dbHost = process.env.DOCPORTAL_DB_HOST;
 const isDevMode = runningInDevMode();
 
 winstonLogger.notice(
-  `Connecting to database ${dbHost}.${isDevMode &&
+  `Connecting to database at ${dbHost}.${isDevMode &&
     ' >>WARNING: Running in dev mode<<'}`
 );
 
@@ -25,13 +27,15 @@ export const AppDataSource = new DataSource({
   password: process.env.DOCPORTAL_DB_PASSWORD,
   database: 'postgres',
   entities: [
+    Build,
     DocConfig,
-    // PageConfig,
-    // PageItem,
-    // PageSelector,
-    // Product,
-    // Release,
-    // VersionSelector,
+    Product,
+    ProductName,
+    ProductPlatform,
+    ProductVersion,
+    Release,
+    Resource,
+    Source,
   ],
   synchronize: isDevMode,
   dropSchema: isDevMode,
