@@ -5,36 +5,69 @@ import LabelOrLink, { LabelOrLinkProps } from './LabelOrLink';
 import React from 'react';
 import { DocUrlByIdResponse } from '../../controllers/configController';
 
-const pageItemWithId: LabelOrLinkProps = {
-  id: 'gwcpreleasenotes',
-  label: 'Cloud Platform Release Notes',
-};
+describe('test loading based on id, page and link', () => {
+  const pageItemWithId: LabelOrLinkProps = {
+    id: 'gwcpreleasenotes',
+    label: 'Cloud Platform Release Notes',
+  };
 
-const expectedUrl = 'cloud/gwcprelnotes/latest';
-const mockResponse: DocUrlByIdResponse = {
-  id: 'gwcpreleasenotes',
-  url: expectedUrl,
-};
+  const expectedUrl = 'cloud/gwcprelnotes/latest';
+  const mockResponse: DocUrlByIdResponse = {
+    id: 'gwcpreleasenotes',
+    url: expectedUrl,
+  };
 
-global.fetch = jest.fn(() =>
-  Promise.resolve({
-    json: () => Promise.resolve(mockResponse),
-  })
-) as jest.Mock;
+  global.fetch = jest.fn(() =>
+    Promise.resolve({
+      json: () => Promise.resolve(mockResponse),
+    })
+  ) as jest.Mock;
 
-test('checks behavior on id, link or url', async () => {
-  await act(async () => {
-    render(<LabelOrLink {...pageItemWithId} />);
+  test('response from id', async () => {
+    await act(async () => {
+      render(<LabelOrLink {...pageItemWithId} />);
+    });
+    await waitFor(() => {
+      expect(screen.getByText(pageItemWithId.label)).toHaveAttribute(
+        'href',
+        expectedUrl
+      );
+    });
   });
-  await waitFor(() => {
-    expect(screen.getByText(pageItemWithId.label)).toHaveAttribute(
-      'href',
-      expectedUrl
-    );
+
+  const pageItemWithPage: LabelOrLinkProps = {
+    page: 'cloudProducts/elysian/bcGwCloud/2022.05',
+    label: 'BillingCenter',
+  };
+  const expectedPage = 'cloudProducts/elysian/bcGwCloud/2022.05';
+
+  test('response from page', async () => {
+    await act(async () => {
+      render(<LabelOrLink {...pageItemWithPage} />);
+    });
+    await waitFor(() => {
+      expect(screen.getByText(pageItemWithPage.label)).toHaveAttribute(
+        'href',
+        expectedPage
+      );
+    });
+  });
+
+  const pageItemWithLink: LabelOrLinkProps = {
+    link: 'https://docs.guidewire.com/cloudProducts/elysian',
+    label: 'Guidewire Documentation',
+  };
+  const expectedLink = 'https://docs.guidewire.com/cloudProducts/elysian';
+
+  test('response from link', async () => {
+    await act(async () => {
+      render(<LabelOrLink {...pageItemWithLink} />);
+    });
+    await waitFor(() => {
+      expect(screen.getByText(pageItemWithLink.label)).toHaveAttribute(
+        'href',
+        expectedLink
+      );
+    });
   });
 });
-
-//TODO: test checking behavior when given different props: id, url or link.
-//pass my own variable as an id/link/url and check response (as the most basic
-//example on testing docs site)
-//check response like this: expect(screen.getByRole('heading')).toHaveTextContent('hello there')

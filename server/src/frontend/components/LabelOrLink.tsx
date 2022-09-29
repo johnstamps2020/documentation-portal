@@ -23,11 +23,7 @@ export default function LabelOrLink({
     }
 
     if (page) {
-      let pagePath = window.location.href;
-      if (pagePath.slice(-1) !== '/') {
-        pagePath = `${window.location.href}/`;
-      }
-      setHref(new URL(page, pagePath).toString());
+      setHref(page);
     }
 
     if (link) {
