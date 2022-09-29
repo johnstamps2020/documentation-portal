@@ -1,7 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { PageItem } from '../../model/entity/PageItem';
 
-export default function LabelOrLink({ label, id, link, page }: PageItem) {
+export type LabelOrLinkProps = {
+  label: PageItem['label'];
+  id?: PageItem['id'];
+  link?: PageItem['link'];
+  page?: PageItem['page'];
+};
+
+export default function LabelOrLink({
+  label,
+  id,
+  link,
+  page,
+}: LabelOrLinkProps) {
   const [href, setHref] = useState<string | undefined>();
   async function getHref() {
     if (id) {

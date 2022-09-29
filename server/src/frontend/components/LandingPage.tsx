@@ -19,7 +19,7 @@ export default function LandingPage() {
         <div className="pageControllers">
           {/* <%- include('parts/platform-toggle') %> */}
           <div className="pageHero">
-            <Breadcrumbs/>
+            <Breadcrumbs />
             <h1>{pageConfig.title}</h1>
           </div>
           {/* <%- include('parts/page-selector') %> */}

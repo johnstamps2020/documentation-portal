@@ -1,46 +1,33 @@
 /** @jest-environment jsdom */
 import { act, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import LabelOrLink from './LabelOrLink';
-import { PageItem } from '../../model/entity/PageItem';
-import { Environment } from '../../types/environment';
+import LabelOrLink, { LabelOrLinkProps } from './LabelOrLink';
 import React from 'react';
+import { DocUrlByIdResponse } from '../../controllers/configController';
 
-let pageItemId = new PageItem();
-pageItemId.id = 'gwcpreleasenotes';
-pageItemId.label = 'Cloud Platform Release Notes';
-pageItemId.link = '';
-pageItemId.page = '';
+const pageItemWithId: LabelOrLinkProps = {
+  id: 'gwcpreleasenotes',
+  label: 'Cloud Platform Release Notes',
+};
 
 const expectedUrl = 'cloud/gwcprelnotes/latest';
+const mockResponse: DocUrlByIdResponse = {
+  id: 'gwcpreleasenotes',
+  url: expectedUrl,
+};
 
 global.fetch = jest.fn(() =>
   Promise.resolve({
-    json: () =>
-      Promise.resolve({
-        id: 'gwcpreleasenotes',
-        url: expectedUrl,
-      }),
+    json: () => Promise.resolve(mockResponse),
   })
 ) as jest.Mock;
 
 test('checks behavior on id, link or url', async () => {
   await act(async () => {
-    render(
-      <LabelOrLink
-        id={pageItemId.id}
-        label={pageItemId.label}
-        link={pageItemId.link}
-        page={pageItemId.page}
-        itemId={0}
-        class={''}
-        items={[]}
-        env={Environment.DEV}
-      />
-    );
+    render(<LabelOrLink {...pageItemWithId} />);
   });
   await waitFor(() => {
-    expect(screen.getByText(pageItemId.label)).toHaveAttribute(
+    expect(screen.getByText(pageItemWithId.label)).toHaveAttribute(
       'href',
       expectedUrl
     );
