@@ -1,6 +1,5 @@
 /** @jest-environment jsdom */
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import LabelOrLink from './LabelOrLink';
 import { PageItem } from '../../model/entity/PageItem';
@@ -13,20 +12,39 @@ pageItemId.label = 'Cloud Platform Release Notes';
 pageItemId.link = '';
 pageItemId.page = '';
 
-test('checks behavior on id, link or url', () => {
-  render(
-    <LabelOrLink
-      id={pageItemId.id}
-      label={pageItemId.label}
-      link={pageItemId.link}
-      page={pageItemId.page}
-      itemId={0}
-      class={''}
-      items={[]}
-      env={Environment.DEV}
-    />
-  );
-  screen.debug();
+const expectedUrl = 'cloud/gwcprelnotes/latest';
+
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    json: () =>
+      Promise.resolve({
+        id: 'gwcpreleasenotes',
+        url: expectedUrl,
+      }),
+  })
+) as jest.Mock;
+
+test('checks behavior on id, link or url', async () => {
+  await act(async () => {
+    render(
+      <LabelOrLink
+        id={pageItemId.id}
+        label={pageItemId.label}
+        link={pageItemId.link}
+        page={pageItemId.page}
+        itemId={0}
+        class={''}
+        items={[]}
+        env={Environment.DEV}
+      />
+    );
+  });
+  await waitFor(() => {
+    expect(screen.getByText(pageItemId.label)).toHaveAttribute(
+      'href',
+      expectedUrl
+    );
+  });
 });
 
 //TODO: test checking behavior when given different props: id, url or link.

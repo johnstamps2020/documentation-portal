@@ -2,35 +2,30 @@ import React, { useEffect, useState } from 'react';
 import { PageItem } from '../../model/entity/PageItem';
 
 export default function LabelOrLink({ label, id, link, page }: PageItem) {
-  const [href, setHref] = useState<string|undefined>()
+  const [href, setHref] = useState<string | undefined>();
   async function getHref() {
     if (id) {
-      let docPath = window.location.origin
-      if (docPath.slice(-1) !== '/') {
-        docPath = `${window.location.origin}/`
-      }
-      const response = await fetch(`${docPath}safeConfig/docUrl/${id}`)
-      const data = await response.json()
-      const url = data.url
-      setHref(new URL(url, docPath).toString())
+      const response = await fetch(`/safeConfig/docUrl/${id}`);
+      const data = await response.json();
+      setHref(data.url);
     }
 
     if (page) {
-      let pagePath = window.location.href
+      let pagePath = window.location.href;
       if (pagePath.slice(-1) !== '/') {
-        pagePath = `${window.location.href}/`
+        pagePath = `${window.location.href}/`;
       }
-      setHref(new URL(page, pagePath).toString())
+      setHref(new URL(page, pagePath).toString());
     }
 
     if (link) {
-      setHref(link)
+      setHref(link);
     }
   }
 
-  useEffect(function () { 
-    getHref()
-   }, [])
+  useEffect(function() {
+    getHref();
+  }, []);
 
   if (href) {
     return (
