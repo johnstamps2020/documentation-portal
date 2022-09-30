@@ -125,6 +125,16 @@
           "id": "stringmanagerpcdraft"
         }
       ]
+    },
+    {
+      "label": "InsuranceNow",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Datadog Log Access",
+          "id": "in20222ddlogacc"
+        }
+      ]
     }
   ]
 }
