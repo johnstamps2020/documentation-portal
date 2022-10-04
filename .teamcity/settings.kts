@@ -1041,10 +1041,10 @@ object Custom {
                     export BUILDS_DIR="_builds"
                     export GIT_CLONE_DIR="git_clone_dir"
                     
-                    rm -f ${'$'}BUILDS_FILE_PARSED
-                    rm -f %teamcity.build.workingDir%/*.zip
-                    rm -rf %teamcity.build.workingDir%/$localOutputDir/*
-                    rm -rf %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR/{*,.*} 2> /dev/null
+                    if [ -f ${'$'}BUILDS_FILE_PARSED ]; then rm -f ${'$'}BUILDS_FILE_PARSED; fi
+                    if [ -f %teamcity.build.workingDir%/*.zip ]; then rm -f %teamcity.build.workingDir%/*.zip; fi
+                    if [ -d %teamcity.build.workingDir%/$localOutputDir ]; then rm -rf %teamcity.build.workingDir%/$localOutputDir/* 2> /dev/null; fi
+                    if [ -d %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR ]; then rm -rf %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR/{*,.*} 2> /dev/null; fi
 
                     git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% ${'$'}GIT_CLONE_DIR
 
