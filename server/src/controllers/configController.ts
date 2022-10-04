@@ -16,14 +16,26 @@ import { Release } from '../model/entity/Release';
 import { Build } from '../model/entity/Build';
 import { Source } from '../model/entity/Source';
 import { Resource } from '../model/entity/Resource';
+import { integer } from '@elastic/elasticsearch/api/types';
 
-export async function getEntity(req: Request) {
+export async function getEntity(
+  req: Request
+): Promise<{ status: integer; body: any }> {
   try {
     const { repo } = req.params;
-    const reqBody = req.body;
-    const operationResult = await AppDataSource.manager.find(repo, {
-      where: reqBody,
-    });
+    const findOptions = req.query;
+    if (!findOptions || Object.keys(findOptions).length === 0) {
+      return {
+        status: 400,
+        body: {
+          message: 'Invalid request. Provide query parameters in the URL.',
+        },
+      };
+    }
+    const operationResult = await AppDataSource.manager.findOneBy(
+      repo,
+      findOptions as {}
+    );
     return {
       status: 200,
       body: operationResult ? operationResult : {},
@@ -109,7 +121,9 @@ function readFilesInDir(dirPath: string, deployEnv: Environment): DocConfig[] {
   }
 }
 
-export async function putConfigInDatabase(): Promise<DocConfig[]> {
+export async function putConfigInDatabase(
+  req: Request
+): Promise<{ status: integer; body: any }> {
   try {
     const deployEnv =
       process.env.DEPLOY_ENV === 'omega2-andromeda'
@@ -227,14 +241,17 @@ export async function putConfigInDatabase(): Promise<DocConfig[]> {
       updatedLocalConfig.push(docConfig);
     }
 
-    const saveResult = await AppDataSource.getRepository(DocConfig).save(
-      updatedLocalConfig
-    );
-    console.log('SAVE RESULT', saveResult);
+    req.params.repo = 'DocConfig';
+    req.body = updatedLocalConfig;
+    const saveResult = await createOrUpdateEntity(req);
     return saveResult;
   } catch (err) {
-    winstonLogger.error(`ERROR, ERROR: Cannot put config in DB: ${err}`);
-    return [];
+    return {
+      status: 500,
+      body: {
+        message: `Cannot put config in DB: ${(err as Error).message}`,
+      },
+    };
   }
 }
 
