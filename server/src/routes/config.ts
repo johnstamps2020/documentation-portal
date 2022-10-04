@@ -127,24 +127,8 @@ router.get('/env', function(req, res) {
 });
 
 router.get('/putConfigInDatabase', async function(req, res, next) {
-  try {
-    const result = await putConfigInDatabase();
-    if (result.length === 0) {
-      return res
-        .status(500)
-        .send('Could not put the config into the database, unknown error');
-    } else {
-      return res.send(result);
-    }
-  } catch (err) {
-    winstonLogger.error(
-      `[SAFE CONFIG] Could not put the config into the database: ${JSON.stringify(
-        err
-      )}
-      REQ: ${JSON.stringify(req)}`
-    );
-    next(err);
-  }
+  const { status, body } = await putConfigInDatabase(req);
+  return res.status(status).json(body);
 });
 
 router.get('/entity/:repo', async function(req, res, next) {
