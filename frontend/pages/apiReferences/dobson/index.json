@@ -8,6 +8,11 @@
     "selectedItem": "Dobson",
     "items": [
       {
+        "label": "Flaine",
+        "page": "../flaine",
+        "env": ["int", "staging"]
+      },
+      {
         "label": "Elysian",
         "page": "../elysian"
       },
