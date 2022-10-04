@@ -1,16 +1,17 @@
 import { Router } from 'express';
 import {
+  createOrUpdateEntity,
+  deleteEntity,
   getConfig,
+  getDocId,
+  getDocumentMetadata,
+  getDocUrlById,
+  getEntity,
+  getEnv,
   getRootBreadcrumb,
   getVersionSelector,
-  getDocumentMetadata,
-  getDocId,
-  getEnv,
   putConfigInDatabase,
-  getDocUrlById,
 } from '../controllers/configController';
-import { render } from 'ejs';
-import { readFileSync } from 'fs';
 import { winstonLogger } from '../controllers/loggerController';
 
 const router = Router();
@@ -73,7 +74,7 @@ router.get('/docMetadata/:docId', async function(req, res, next) {
     if (!docId) {
       return res.status(500).send('Provide a docId param to get doc metadata');
     }
-    const docMetadata = await getDocumentMetadata(docId, req, res);
+    const docMetadata = await getDocumentMetadata(docId);
     return res.send(docMetadata);
   } catch (err) {
     winstonLogger.error(`[SAFE CONFIG]: Problem sending doc metadata
@@ -144,6 +145,21 @@ router.get('/putConfigInDatabase', async function(req, res, next) {
     );
     next(err);
   }
+});
+
+router.get('/entity/:repo', async function(req, res, next) {
+  const { status, body } = await getEntity(req);
+  return res.status(status).json(body);
+});
+
+router.post('/entity/:repo', async function(req, res, next) {
+  const { status, body } = await createOrUpdateEntity(req);
+  return res.status(status).json(body);
+});
+
+router.delete('/entity/:repo', async function(req, res, next) {
+  const { status, body } = await deleteEntity(req);
+  return res.status(status).json(body);
 });
 
 module.exports = router;

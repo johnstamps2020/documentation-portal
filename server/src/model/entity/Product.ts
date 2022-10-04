@@ -17,21 +17,24 @@ export class Product {
 
   @ManyToOne(
     () => ProductName,
-    productName => productName.id
+    productName => productName.id,
+    { eager: true }
   )
   @JoinTable()
   name: ProductName;
 
   @ManyToOne(
     () => ProductVersion,
-    productVersion => productVersion.id
+    productVersion => productVersion.id,
+    { eager: true }
   )
   @JoinTable()
   version: ProductVersion;
 
   @ManyToOne(
     () => ProductPlatform,
-    productPlatform => productPlatform.id
+    productPlatform => productPlatform.id,
+    { eager: true }
   )
   @JoinTable()
   platform: ProductPlatform;

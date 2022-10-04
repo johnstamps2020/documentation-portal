@@ -38,4 +38,7 @@ export const AppDataSource = new DataSource({
     Source,
   ],
   synchronize: isDevMode,
+  cache: {
+    duration: 3000, // 3 seconds
+  },
 });

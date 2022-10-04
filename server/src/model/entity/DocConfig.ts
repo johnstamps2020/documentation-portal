@@ -28,7 +28,8 @@ export class DocConfig {
 
   @ManyToMany(
     () => Product,
-    product => product.id
+    product => product.id,
+    { eager: true }
   )
   @JoinTable()
   products: Product[];
@@ -42,7 +43,8 @@ export class DocConfig {
 
   @ManyToMany(
     () => Release,
-    release => release.id
+    release => release.id,
+    { eager: true }
   )
   @JoinTable()
   releases: Release[];

@@ -17,6 +17,75 @@ import { Build } from '../model/entity/Build';
 import { Source } from '../model/entity/Source';
 import { Resource } from '../model/entity/Resource';
 
+export async function getEntity(req: Request) {
+  try {
+    const { repo } = req.params;
+    const reqBody = req.body;
+    const operationResult = await AppDataSource.manager.find(repo, {
+      where: reqBody,
+    });
+    return {
+      status: 200,
+      body: operationResult ? operationResult : {},
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      body: { message: `Operation failed: ${(err as Error).message}` },
+    };
+  }
+}
+
+export async function createOrUpdateEntity(req: Request) {
+  try {
+    const { repo } = req.params;
+    const reqBody = req.body;
+    if (!reqBody) {
+      return {
+        status: 400,
+        body: {
+          message: 'Invalid request body',
+        },
+      };
+    }
+    const operationResult = await AppDataSource.manager.save(repo, reqBody);
+    return {
+      status: 200,
+      body: operationResult ? operationResult : {},
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      body: { message: `Operation failed: ${(err as Error).message}` },
+    };
+  }
+}
+
+export async function deleteEntity(req: Request) {
+  try {
+    const { repo } = req.params;
+    const reqBody = req.body;
+    if (!reqBody) {
+      return {
+        status: 400,
+        body: {
+          message: 'Invalid request body',
+        },
+      };
+    }
+    const operationResult = await AppDataSource.manager.delete(repo, reqBody);
+    return {
+      status: 200,
+      body: operationResult ? operationResult : {},
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      body: { message: `Operation failed: ${(err as Error).message}` },
+    };
+  }
+}
+
 function readFilesInDir(dirPath: string, deployEnv: Environment): DocConfig[] {
   try {
     const localConfig: DocConfig[] = [];
@@ -341,20 +410,18 @@ export async function getVersionSelector(
   }
 }
 
-export async function getDocumentMetadata(
-  docId: string,
-  reqObj: Request,
-  resObj: Response
-) {
+export async function getDocumentMetadata(docId: string) {
   try {
-    const docs = await getConfig(reqObj, resObj);
-    const doc = docs.find(d => d.id === docId);
+    const doc = await AppDataSource.getRepository(DocConfig).findOneBy({
+      id: docId,
+    });
     if (doc) {
       return {
         docTitle: doc.title,
         docInternal: doc.internal,
         docEarlyAccess: doc.earlyAccess,
-        // docMetadata: JSON.parse(doc.environments),
+        docProducts: doc.products,
+        docReleases: doc.releases,
       };
     } else {
       return {
