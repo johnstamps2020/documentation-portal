@@ -127,7 +127,7 @@ router.get('/env', function(req, res) {
 });
 
 router.get('/putConfigInDatabase', async function(req, res, next) {
-  const { status, body } = await putConfigInDatabase(req);
+  const { status, body } = await putConfigInDatabase();
   return res.status(status).json(body);
 });
 
