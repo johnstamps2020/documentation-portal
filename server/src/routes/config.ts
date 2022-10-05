@@ -68,22 +68,6 @@ router.get('/versionSelectors', async function(req, res, next) {
   }
 });
 
-router.get('/docMetadata/:docId', async function(req, res, next) {
-  try {
-    const docId = req.params.docId;
-    if (!docId) {
-      return res.status(500).send('Provide a docId param to get doc metadata');
-    }
-    const docMetadata = await getDocumentMetadata(docId);
-    return res.send(docMetadata);
-  } catch (err) {
-    winstonLogger.error(`[SAFE CONFIG]: Problem sending doc metadata
-      ERROR: ${JSON.stringify(err)}
-      DOC ID: ${req.params?.docId}`);
-    next(err);
-  }
-});
-
 router.get('/docUrl/:docId', async function(req, res, next) {
   try {
     const { docId } = req.params;
@@ -126,23 +110,35 @@ router.get('/env', function(req, res) {
   res.send(env);
 });
 
-router.get('/putConfigInDatabase', async function(req, res, next) {
+router.get('/putConfigInDatabase', async function(req, res) {
   const { status, body } = await putConfigInDatabase();
   return res.status(status).json(body);
 });
 
-router.get('/entity/:repo', async function(req, res, next) {
-  const { status, body } = await getEntity(req);
+router.get('/entity/:repo', async function(req, res) {
+  const { repo } = req.params;
+  const options = req.query;
+  const { status, body } = await getEntity(repo, options);
   return res.status(status).json(body);
 });
 
-router.post('/entity/:repo', async function(req, res, next) {
-  const { status, body } = await createOrUpdateEntity(req);
+router.post('/entity/:repo', async function(req, res) {
+  const { repo } = req.params;
+  const options = req.body;
+  const { status, body } = await createOrUpdateEntity(repo, options);
   return res.status(status).json(body);
 });
 
-router.delete('/entity/:repo', async function(req, res, next) {
-  const { status, body } = await deleteEntity(req);
+router.delete('/entity/:repo', async function(req, res) {
+  const { repo } = req.params;
+  const options = req.body;
+  const { status, body } = await deleteEntity(repo, options);
+  return res.status(status).json(body);
+});
+
+router.get('/entity/docMetadata/:docId', async function(req, res) {
+  const docId = req.params.docId;
+  const { status, body } = await getDocumentMetadata(docId);
   return res.status(status).json(body);
 });
 

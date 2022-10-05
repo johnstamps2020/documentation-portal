@@ -17,7 +17,11 @@ import { Build } from '../model/entity/Build';
 import { Source } from '../model/entity/Source';
 import { Resource } from '../model/entity/Resource';
 import { integer } from '@elastic/elasticsearch/api/types';
-import { FindOptionsWhere } from 'typeorm';
+import {
+  FindOneAndDeleteOptions,
+  FindOptionsWhere,
+  SaveOptions,
+} from 'typeorm';
 
 function optionsAreValid(options: {}) {
   return (
@@ -26,11 +30,10 @@ function optionsAreValid(options: {}) {
 }
 
 export async function getEntity(
-  req: Request
+  repo: string,
+  options: FindOptionsWhere<any>
 ): Promise<{ status: integer; body: any }> {
   try {
-    const { repo } = req.params;
-    const options = req.query;
     if (!optionsAreValid(options)) {
       return {
         status: 400,
@@ -41,8 +44,18 @@ export async function getEntity(
     }
     const operationResult = await AppDataSource.manager.findOneBy(
       repo,
-      options as {}
+      options
     );
+    if (!operationResult) {
+      return {
+        status: 404,
+        body: {
+          message: `Did not find an entity in ${repo} for the following query: ${JSON.stringify(
+            options
+          )}`,
+        },
+      };
+    }
     return {
       status: 200,
       body: operationResult ? operationResult : {},
@@ -55,10 +68,8 @@ export async function getEntity(
   }
 }
 
-export async function createOrUpdateEntity(req: Request) {
+export async function createOrUpdateEntity(repo: string, options: SaveOptions) {
   try {
-    const { repo } = req.params;
-    const options = req.body;
     if (!optionsAreValid(options)) {
       return {
         status: 400,
@@ -80,10 +91,11 @@ export async function createOrUpdateEntity(req: Request) {
   }
 }
 
-export async function deleteEntity(req: Request) {
+export async function deleteEntity(
+  repo: string,
+  options: FindOneAndDeleteOptions
+) {
   try {
-    const { repo } = req.params;
-    const options = req.body;
     if (!optionsAreValid(options)) {
       return {
         status: 400,
@@ -97,6 +109,73 @@ export async function deleteEntity(req: Request) {
       status: 200,
       body: operationResult ? operationResult : {},
     };
+  } catch (err) {
+    return {
+      status: 500,
+      body: { message: `Operation failed: ${(err as Error).message}` },
+    };
+  }
+}
+
+function wrapInQuotes(stringsToWrap: Array<string> | string | undefined) {
+  const valueSeparator = ',';
+
+  function addQuotes(stringToModify: string) {
+    return stringToModify.includes(',')
+      ? '"' + stringToModify + '"'
+      : stringToModify;
+  }
+
+  if (Array.isArray(stringsToWrap)) {
+    return stringsToWrap.map(s => addQuotes(s)).join(valueSeparator);
+  } else if (typeof stringsToWrap === 'string') {
+    return addQuotes(stringsToWrap);
+  } else {
+    return stringsToWrap;
+  }
+}
+
+export async function getDocumentMetadata(docId: string) {
+  // Filter values are passed around as strings that use commas to separate values. To avoid issues with splitting,
+  // values that contain commas must be wrapped in quotes.
+  // Filter values are parsed by the getFiltersFromUrl function in searchController.js.
+  try {
+    if (!docId) {
+      return {
+        status: 400,
+        body: {
+          message:
+            'Invalid request. Provide the docId param to get doc metadata.',
+        },
+      };
+    }
+    const getEntityResponse = await getEntity(DocConfig.name, { id: docId });
+    if (getEntityResponse.status === 200) {
+      const docInfo = getEntityResponse.body;
+      return {
+        status: 200,
+        body: {
+          docTitle: wrapInQuotes(docInfo.title),
+          docInternal: docInfo.internal,
+          docEarlyAccess: docInfo.earlyAccess,
+          docProducts: wrapInQuotes(
+            docInfo.products.map((p: Product) => p.name.name)
+          ),
+          docVersions: wrapInQuotes(
+            docInfo.products.map((p: Product) => p.version.name)
+          ),
+          docPlatforms: wrapInQuotes(
+            docInfo.products.map((p: Product) => p.platform.name)
+          ),
+          docReleases: wrapInQuotes(
+            docInfo.releases.map((r: Release) => r.name)
+          ),
+          docSubjects: wrapInQuotes(docInfo.subjects),
+          docCategories: wrapInQuotes(docInfo.categories),
+        },
+      };
+    }
+    return getEntityResponse;
   } catch (err) {
     return {
       status: 500,
@@ -412,34 +491,6 @@ export async function getVersionSelector(
           ERROR: ${JSON.stringify(err)}`
     );
     return { matchingVersionSelector: {} };
-  }
-}
-
-export async function getDocumentMetadata(docId: string) {
-  try {
-    const doc = await AppDataSource.getRepository(DocConfig).findOneBy({
-      id: docId,
-    });
-    if (doc) {
-      return {
-        docTitle: doc.title,
-        docInternal: doc.internal,
-        docEarlyAccess: doc.earlyAccess,
-        docProducts: doc.products,
-        docReleases: doc.releases,
-      };
-    } else {
-      return {
-        error: true,
-        message: `Did not find a doc matching ID ${docId}`,
-      };
-    }
-  } catch (err) {
-    winstonLogger.error(
-      `Problem getting document metadata
-              docId: ${docId}, 
-              ERROR: ${JSON.stringify(err)}`
-    );
   }
 }
 

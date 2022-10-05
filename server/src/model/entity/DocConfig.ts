@@ -66,4 +66,10 @@ export class DocConfig {
 
   @Column({ default: false })
   earlyAccess: boolean;
+
+  @Column('simple-array', { nullable: true })
+  subjects: string[];
+
+  @Column('simple-array', { nullable: true })
+  categories: string[];
 }
