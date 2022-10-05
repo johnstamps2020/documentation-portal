@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Flaine Demo",
+  "title": "Flaine ",
   "template": "page",
   "class": "blue-theme flaine flainenew threeCards",
   "selector": {
@@ -169,7 +169,7 @@
       ]
     },
     {
-      "label": "Digital xEngage",
+      "label": "Digital Reference Applications",
       "class": "categoryCard cardShadow",
       "items": [
         {
