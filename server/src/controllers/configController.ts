@@ -18,13 +18,19 @@ import { Source } from '../model/entity/Source';
 import { Resource } from '../model/entity/Resource';
 import { integer } from '@elastic/elasticsearch/api/types';
 
+function optionsAreValid(options: {}) {
+  return (
+    options && Object.keys(options)?.length > 0 && !(options instanceof Array)
+  );
+}
+
 export async function getEntity(
   req: Request
 ): Promise<{ status: integer; body: any }> {
   try {
     const { repo } = req.params;
-    const findOptions = req.query;
-    if (!findOptions || Object.keys(findOptions).length === 0) {
+    const options = req.query;
+    if (!optionsAreValid(options)) {
       return {
         status: 400,
         body: {
@@ -34,7 +40,7 @@ export async function getEntity(
     }
     const operationResult = await AppDataSource.manager.findOneBy(
       repo,
-      findOptions as {}
+      options as {}
     );
     return {
       status: 200,
@@ -51,16 +57,16 @@ export async function getEntity(
 export async function createOrUpdateEntity(req: Request) {
   try {
     const { repo } = req.params;
-    const reqBody = req.body;
-    if (!reqBody) {
+    const options = req.body;
+    if (!optionsAreValid(options)) {
       return {
         status: 400,
         body: {
-          message: 'Invalid request body',
+          message: 'Invalid request. Body cannot be empty or an array.',
         },
       };
     }
-    const operationResult = await AppDataSource.manager.save(repo, reqBody);
+    const operationResult = await AppDataSource.manager.save(repo, options);
     return {
       status: 200,
       body: operationResult ? operationResult : {},
@@ -76,16 +82,16 @@ export async function createOrUpdateEntity(req: Request) {
 export async function deleteEntity(req: Request) {
   try {
     const { repo } = req.params;
-    const reqBody = req.body;
-    if (!reqBody) {
+    const options = req.body;
+    if (!optionsAreValid(options)) {
       return {
         status: 400,
         body: {
-          message: 'Invalid request body',
+          message: 'Invalid request. Body cannot be empty or an array.',
         },
       };
     }
-    const operationResult = await AppDataSource.manager.delete(repo, reqBody);
+    const operationResult = await AppDataSource.manager.delete(repo, options);
     return {
       status: 200,
       body: operationResult ? operationResult : {},
@@ -121,9 +127,10 @@ function readFilesInDir(dirPath: string, deployEnv: Environment): DocConfig[] {
   }
 }
 
-export async function putConfigInDatabase(
-  req: Request
-): Promise<{ status: integer; body: any }> {
+export async function putConfigInDatabase(): Promise<{
+  status: integer;
+  body: any;
+}> {
   try {
     const deployEnv =
       process.env.DEPLOY_ENV === 'omega2-andromeda'
@@ -234,17 +241,17 @@ export async function putConfigInDatabase(
       docConfig.products = [BillingCenterProduct];
       docConfig.build = docBuild;
 
-      // const saveDoc = await AppDataSource.getRepository(DocConfig).save(
-      //   docConfig
-      // );
-      // console.log('SAVED DOC', saveDoc);
       updatedLocalConfig.push(docConfig);
     }
 
-    req.params.repo = 'DocConfig';
-    req.body = updatedLocalConfig;
-    const saveResult = await createOrUpdateEntity(req);
-    return saveResult;
+    const saveResult = await AppDataSource.manager.save(
+      DocConfig,
+      updatedLocalConfig
+    );
+    return {
+      status: 200,
+      body: saveResult,
+    };
   } catch (err) {
     return {
       status: 500,
