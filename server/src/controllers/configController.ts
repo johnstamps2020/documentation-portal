@@ -369,22 +369,24 @@ export async function getConfig(
 }
 
 async function getDocByUrl(url: string) {
-  let relativeUrl = url + '/';
-  if (relativeUrl.startsWith('/')) {
-    relativeUrl = relativeUrl.substring(1);
+  let urlToCheck = url;
+  if (url.startsWith('/')) {
+    urlToCheck = url.substring(1);
   }
+  const docUrls = await AppDataSource.getRepository(DocConfig)
+    .createQueryBuilder('doc')
+    .useIndex('docUrl-idx')
+    .select('doc.url')
+    .getMany();
 
-  const matchingDoc = await AppDataSource.getRepository(DocConfig).findOneBy({
-    url: relativeUrl,
-  });
-
+  const matchingDoc = docUrls.find(d => urlToCheck.startsWith(d.url));
   return matchingDoc;
 }
 
 export async function isPublicDoc(url: string) {
   try {
     const matchingDoc = await getDocByUrl(url);
-    return !!(matchingDoc && matchingDoc.public);
+    return matchingDoc && matchingDoc.public;
   } catch (err) {
     winstonLogger.error(
       `Problem getting doc by url
@@ -397,7 +399,7 @@ export async function isPublicDoc(url: string) {
 export async function isInternalDoc(url: string) {
   try {
     const matchingDoc = await getDocByUrl(url);
-    return !!(matchingDoc && matchingDoc.internal);
+    return matchingDoc && matchingDoc.internal;
   } catch (err) {
     winstonLogger.error(
       `Problem determining if doc is internal
