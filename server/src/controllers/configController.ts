@@ -17,6 +17,7 @@ import { Build } from '../model/entity/Build';
 import { Source } from '../model/entity/Source';
 import { Resource } from '../model/entity/Resource';
 import { integer } from '@elastic/elasticsearch/api/types';
+import { FindOptionsWhere } from 'typeorm';
 
 function optionsAreValid(options: {}) {
   return (
@@ -262,43 +263,23 @@ export async function putConfigInDatabase(): Promise<{
   }
 }
 
-function getPublicOnlyIfNotLoggedIn(
-  reqObj: Request,
-  config: DocConfig[]
-): DocConfig[] {
-  if (!reqObj.session || !reqObj.session.requestIsAuthenticated) {
-    return config.filter(d => d.public);
-  }
-
-  return config;
-}
-
-function filterOutInternalDocsIfNotEmployee(
-  resObj: Response,
-  config: DocConfig[]
-): DocConfig[] {
-  const hasGuidewireEmail = resObj.locals.userInfo.hasGuidewireEmail;
-  if (!hasGuidewireEmail) {
-    return config.filter(d => !d.internal);
-  }
-
-  return config;
-}
-
 export async function getConfig(
   reqObj: Request,
   resObj: Response
 ): Promise<DocConfig[]> {
   try {
-    const config = await AppDataSource.getRepository(DocConfig).find();
-
-    const publicOnlyIfNotLoggedIn = getPublicOnlyIfNotLoggedIn(reqObj, config);
-    const safeConfig = filterOutInternalDocsIfNotEmployee(
-      resObj,
-      publicOnlyIfNotLoggedIn
-    );
-
-    return safeConfig;
+    const options: FindOptionsWhere<DocConfig> = {};
+    const isLoggedIn = reqObj.session?.requestIsAuthenticated;
+    const hasGuidewireEmail = resObj.locals.userInfo?.hasGuidewireEmail;
+    if (!isLoggedIn) {
+      options.public = true;
+    }
+    if (!hasGuidewireEmail) {
+      options.internal = false;
+    }
+    return await AppDataSource.getRepository(DocConfig).find({
+      where: options,
+    });
   } catch (err) {
     winstonLogger.error(
       `There was a problem with the getConfig() function
