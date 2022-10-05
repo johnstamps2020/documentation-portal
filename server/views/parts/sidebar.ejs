@@ -5,14 +5,11 @@
     <a href="/testingFramework/flaine">Guidewire Testing</a>
     <% } %> <% if (pageContent.title.toLowerCase() === 'elysian') { %>
     <a href="/testingFramework/elysian">Guidewire Testing</a>
-    <% } %> <% if (pageContent.title.toLowerCase() !== 'api references' && pageContent.title.toLowerCase() !== 'flaine demo') { %>
+    <% } %> <% if (pageContent.title.toLowerCase() !== 'api references' && pageContent.title.toLowerCase() !== 'flaine ') { %>
     <a href="/apiReferences">API References</a>
     <% } %>
     <a href="/product-adoption-resources/latest">Product Adoption</a>
     <a href="/cloud/standards/latest">Cloud Standards</a>
-    <% if (pageContent.title.toLowerCase() === 'flaine demo') { %>
-    <a href="/implementation-resources/latest">Surepath Framework</a>
-    <% } %>
     <a href="/upgradediffs">Upgrade Diff Reports</a>
     <% if (process.env.DEPLOY_ENV.toLowerCase() === 'int') { %>
       <a href="/internal-docs">Internal docs</a>
