@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Flaine",
+  "title": "Flaine Demo",
   "template": "page",
   "class": "blue-theme flaine flainenew threeCards",
   "selector": {
@@ -174,31 +174,31 @@
       "items": [
         {
           "label": "CustomerEngage Account Management",
-          "page": "ceAccountMgmt/2022.09"
+          "page": "../flaine/ceAccountMgmt/2022.09"
         },
         {
           "label": "CustomerEngage Account Management for ClaimCenter",
-          "page": "ceAccountMgmtCc/2022.09"
+          "page": "../flaine/ceAccountMgmtCc/2022.09"
         },
         {
           "label": "CustomerEngage Quote and Buy",
-          "page": "ceQuoteAndBuy/2022.09"
+          "page": "../flaine/ceQuoteAndBuy/2022.09"
         },
         {
           "label": "ProducerEngage",
-          "page": "producerEngage/2022.09"
+          "page": "../flaine/producerEngage/2022.09"
         },
         {
           "label": "ProducerEngage for ClaimCenter",
-          "page": "producerEngageCc/2022.09"
+          "page": "../flaine/producerEngageCc/2022.09"
         },
         {
           "label": "ServiceRepEngage",
-          "page": "serviceRepEngage/2022.09"
+          "page": "../flaine/serviceRepEngage/2022.09"
         },
         {
           "label": "VendorEngage",
-          "page": "vendorEngage/2022.09"
+          "page": "../flaine/vendorEngage/2022.09"
         }
       ]
     }
