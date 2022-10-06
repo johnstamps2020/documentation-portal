@@ -58,7 +58,32 @@ export async function getEntity(
     }
     return {
       status: 200,
-      body: operationResult ? operationResult : {},
+      body: operationResult,
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      body: { message: `Operation failed: ${(err as Error).message}` },
+    };
+  }
+}
+
+export async function getAllEntities(
+  repo: string
+): Promise<{ status: integer; body: any }> {
+  try {
+    const operationResult = await AppDataSource.manager.find(repo);
+    if (!operationResult) {
+      return {
+        status: 404,
+        body: {
+          message: `Did not find any entities in ${repo}`,
+        },
+      };
+    }
+    return {
+      status: 200,
+      body: operationResult,
     };
   } catch (err) {
     return {
@@ -81,7 +106,7 @@ export async function createOrUpdateEntity(repo: string, options: SaveOptions) {
     const operationResult = await AppDataSource.manager.save(repo, options);
     return {
       status: 200,
-      body: operationResult ? operationResult : {},
+      body: operationResult,
     };
   } catch (err) {
     return {
@@ -107,7 +132,7 @@ export async function deleteEntity(
     const operationResult = await AppDataSource.manager.delete(repo, options);
     return {
       status: 200,
-      body: operationResult ? operationResult : {},
+      body: operationResult,
     };
   } catch (err) {
     return {
@@ -512,38 +537,6 @@ export async function getVersionSelector(
   }
 }
 
-export async function getDocId(
-  products: string,
-  platforms: string,
-  versions: string,
-  title: string,
-  url: string
-) {
-  try {
-    const doc = await AppDataSource.manager.findOneBy(DocConfig, {
-      url: url,
-    });
-
-    if (doc) {
-      return {
-        docId: doc.id,
-      };
-    } else {
-      return {
-        error: true,
-        message: `Did not find a doc matching the provided info: ${products}, ${platforms}, ${versions}, ${title}, ${url}`,
-      };
-    }
-  } catch (err) {
-    winstonLogger.error(
-      `Problem getting document id
-              url: ${url}, 
-              title: ${title},
-              ERROR: ${JSON.stringify(err)}`
-    );
-  }
-}
-
 export function getEnv() {
   return { envName: process.env.DEPLOY_ENV };
 }
@@ -552,32 +545,3 @@ export type DocUrlByIdResponse = {
   id: string;
   url: string;
 };
-
-export async function getDocUrlById(
-  docId: string,
-  reqObj: Request,
-  resObj: Response
-) {
-  try {
-    const config = await getConfig(reqObj, resObj);
-    const doc = config.find(d => d.id === docId);
-    if (doc) {
-      const result: DocUrlByIdResponse = {
-        id: doc.id,
-        url: doc.url,
-      };
-      return result;
-    } else {
-      return {
-        error: true,
-        message: `Did not find a doc matching ID ${docId}`,
-      };
-    }
-  } catch (err) {
-    winstonLogger.error(
-      `Problem getting document url  
-              docId: ${docId}, 
-              ERROR: ${JSON.stringify(err)}`
-    );
-  }
-}

@@ -2,10 +2,10 @@ import { Router } from 'express';
 import {
   createOrUpdateEntity,
   deleteEntity,
+  getAllEntities,
   getConfig,
   getDocIdByUrl,
   getDocumentMetadataById,
-  getDocUrlById,
   getEntity,
   getEnv,
   getRootBreadcrumb,
@@ -68,29 +68,6 @@ router.get('/versionSelectors', async function(req, res, next) {
   }
 });
 
-router.get('/docUrl/:docId', async function(req, res, next) {
-  try {
-    const { docId } = req.params;
-    const docUrl = await getDocUrlById(docId, req, res);
-    res.send(docUrl);
-  } catch (err) {
-    winstonLogger.error(`[SAFE CONFIG]: Problem getting doc url from ID
-    ERROR: ${JSON.stringify(err)}
-    DOC ID: ${req.params?.docId}`);
-    next(err);
-  }
-});
-
-type MetadataReq = {
-  query: {
-    products: string;
-    platforms: string;
-    versions: string;
-    title: string;
-    url: string;
-  };
-};
-
 router.get('/env', function(req, res) {
   const env = getEnv();
   res.send(env);
@@ -105,6 +82,12 @@ router.get('/entity/:repo', async function(req, res) {
   const { repo } = req.params;
   const options = req.query;
   const { status, body } = await getEntity(repo, options);
+  return res.status(status).json(body);
+});
+
+router.get('/entity/:repo/all', async function(req, res) {
+  const { repo } = req.params;
+  const { status, body } = await getAllEntities(repo);
   return res.status(status).json(body);
 });
 
@@ -128,7 +111,7 @@ router.get('/entity/doc/metadata', async function(req, res) {
   return res.status(status).json(body);
 });
 
-router.get('/entity/doc/id', async function(req, res, next) {
+router.get('/entity/doc/id', async function(req, res) {
   const { url } = req.query;
   const { status, body } = await getDocIdByUrl(url as string);
   return res.status(status).json(body);
