@@ -3,8 +3,8 @@ import {
   createOrUpdateEntity,
   deleteEntity,
   getConfig,
-  getDocId,
-  getDocumentMetadata,
+  getDocIdByUrl,
+  getDocumentMetadataById,
   getDocUrlById,
   getEntity,
   getEnv,
@@ -91,20 +91,6 @@ type MetadataReq = {
   };
 };
 
-router.get('/docId', async function(req: MetadataReq, res, next) {
-  try {
-    const { platforms, products, versions, title, url } = req.query;
-    const docId = await getDocId(products, platforms, versions, title, url);
-    res.send(docId);
-  } catch (err) {
-    winstonLogger.error(`[SAFE CONFIG] Problem sending doc ID
-    ERROR: ${JSON.stringify(err)}
-    QUERY: ${req.query}
-    REQ: ${JSON.stringify(req)}`);
-    next(err);
-  }
-});
-
 router.get('/env', function(req, res) {
   const env = getEnv();
   res.send(env);
@@ -136,9 +122,15 @@ router.delete('/entity/:repo', async function(req, res) {
   return res.status(status).json(body);
 });
 
-router.get('/entity/docMetadata/:docId', async function(req, res) {
-  const docId = req.params.docId;
-  const { status, body } = await getDocumentMetadata(docId);
+router.get('/entity/doc/metadata', async function(req, res) {
+  const { id } = req.query;
+  const { status, body } = await getDocumentMetadataById(id as string);
+  return res.status(status).json(body);
+});
+
+router.get('/entity/doc/id', async function(req, res, next) {
+  const { url } = req.query;
+  const { status, body } = await getDocIdByUrl(url as string);
   return res.status(status).json(body);
 });
 

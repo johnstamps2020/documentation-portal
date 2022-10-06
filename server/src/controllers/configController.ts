@@ -135,7 +135,7 @@ function wrapInQuotes(stringsToWrap: Array<string> | string | undefined) {
   }
 }
 
-export async function getDocumentMetadata(docId: string) {
+export async function getDocumentMetadataById(docId: string) {
   // Filter values are passed around as strings that use commas to separate values. To avoid issues with splitting,
   // values that contain commas must be wrapped in quotes.
   // Filter values are parsed by the getFiltersFromUrl function in searchController.js.
@@ -368,7 +368,7 @@ export async function getConfig(
   }
 }
 
-async function getDocByUrl(url: string) {
+export async function getDocByUrl(url: string) {
   let urlToCheck = url;
   if (url.startsWith('/')) {
     urlToCheck = url.substring(1);
@@ -376,11 +376,27 @@ async function getDocByUrl(url: string) {
   const docUrls = await AppDataSource.getRepository(DocConfig)
     .createQueryBuilder('doc')
     .useIndex('docUrl-idx')
-    .select('doc.url')
+    .select(['doc.url', 'doc.id', 'doc.public', 'doc.internal'])
     .getMany();
 
   const matchingDoc = docUrls.find(d => urlToCheck.startsWith(d.url));
   return matchingDoc;
+}
+
+export async function getDocIdByUrl(url: string) {
+  const doc = await getDocByUrl(url);
+  if (!doc) {
+    return {
+      status: 404,
+      body: {
+        message: `Doc ID matching the ${url} url was not found.`,
+      },
+    };
+  }
+  return {
+    status: 200,
+    body: { docId: doc.id },
+  };
 }
 
 export async function isPublicDoc(url: string) {

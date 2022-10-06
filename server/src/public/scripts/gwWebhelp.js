@@ -14,6 +14,9 @@ let docProduct = docProductElement
 let docPlatform = document.querySelector("meta[name = 'gw-platform']")?.content;
 let docVersion = document.querySelector("meta[name = 'gw-version']")?.content;
 let docCategory = document.querySelector("meta[name = 'DC.coverage']")?.content;
+let docId = document
+  .querySelector('[name="gw-doc-id"]')
+  ?.getAttribute('content');
 let docTitle = undefined;
 let docSubject = undefined;
 let docInternal = undefined;
@@ -49,11 +52,15 @@ async function showTopicRecommendations() {
 }
 
 async function fetchMetadata() {
-  const docId = document
-    .querySelector('[name="gw-doc-id"]')
-    ?.getAttribute('content');
+  if (!docId) {
+    const docIdResponse = await fetch(
+      `/safeConfig/entity/doc/id?url=${window.location.pathname}`
+    );
+    const docIdResponseJson = await docIdResponse.json();
+    docId = docIdResponseJson?.docId;
+  }
   if (docId) {
-    const response = await fetch(`/safeConfig/entity/docMetadata/${docId}`);
+    const response = await fetch(`/safeConfig/entity/doc/metadata?id=${docId}`);
     if (response.status === 200) {
       try {
         const docInfo = await response.json();
@@ -146,18 +153,6 @@ async function createVersionSelector() {
   try {
     if (!docProduct) {
       return null;
-    }
-    let docId = document
-      .querySelector('[name="gw-doc-id"]')
-      ?.getAttribute('content');
-    if (docId == null) {
-      const docIdResponse = await fetch(
-        `/safeConfig/docId?platforms=${docPlatform}&products=${docProduct}&versions=${docVersion}&url=${topicId}${
-          docTitle ? `&title=${docTitle}` : ''
-        }`
-      );
-      const docIdResponseJson = await docIdResponse.json();
-      docId = docIdResponseJson.docId;
     }
     const response = await fetch(`/safeConfig/versionSelectors?docId=${docId}`);
     const jsonResponse = await response.json();
@@ -582,10 +577,6 @@ async function toggleFeedbackForm(formId) {
 }
 
 async function addFeedbackElements() {
-  const { hostname } = window.location;
-  // if (!['docs.int.ccs.guidewire.net', 'localhost'].includes(hostname)) {
-  //   return;
-  // }
   const feedbackButtons = document.createElement('div');
   feedbackButtons.setAttribute('class', 'feedback');
   feedbackButtons.innerHTML = `

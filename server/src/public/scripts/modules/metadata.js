@@ -22,14 +22,22 @@ async function sendUserId(userInformation) {
 }
 
 export async function setMetadata() {
-  const docId = document
+  let docId = document
     .querySelector('[name="gw-doc-id"]')
     ?.getAttribute('content');
+  if (!docId) {
+    const docIdResponse = await fetch(
+      `/safeConfig/entity/doc/id?url=${window.location.pathname}`
+    );
+    const docIdResponseJson = await docIdResponse.json();
+    docId = docIdResponseJson?.docId;
+  }
   if (docId) {
-    const response = await fetch(`/safeConfig/entity/docMetadata/${docId}`);
+    const response = await fetch(`/safeConfig/entity/doc/metadata?id=${docId}`);
     if (response.status === 200) {
       try {
         const docInfo = await response.json();
+        window.docId = docId;
         window.docTitle = docInfo.docTitle;
         window.docInternal = docInfo.docInternal;
         window.docEarlyAccess = docInfo.docEarlyAccess;
