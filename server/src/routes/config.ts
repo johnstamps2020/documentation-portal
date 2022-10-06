@@ -3,7 +3,6 @@ import {
   createOrUpdateEntity,
   deleteEntity,
   getAllEntities,
-  getConfig,
   getDocIdByUrl,
   getDocumentMetadataById,
   getEntity,
@@ -13,21 +12,13 @@ import {
   putConfigInDatabase,
 } from '../controllers/configController';
 import { winstonLogger } from '../controllers/loggerController';
+import { DocConfig } from '../model/entity/DocConfig';
 
 const router = Router();
 
-router.get('/', async function(req, res, next) {
-  try {
-    const config = await getConfig(req, res);
-    res.send(config);
-  } catch (err) {
-    winstonLogger.error(
-      `[SAFE CONFIG] Problem sending config from ${req.url}: ${JSON.stringify(
-        err
-      )}`
-    );
-    next(err);
-  }
+router.get('/', async function(req, res) {
+  const { status, body } = await getAllEntities(DocConfig.name);
+  res.status(status).json(body);
 });
 
 router.get('/breadcrumbs', async function(req, res, next) {
@@ -51,14 +42,14 @@ router.get('/breadcrumbs', async function(req, res, next) {
 
 router.get('/versionSelectors', async function(req, res, next) {
   try {
-    const docId = req.query.docId as string;
+    const docId = req.query.docId;
     if (!docId) {
       return res
         .status(500)
         .send('Provide a docID query parameter to get a version selector');
     }
 
-    const allVersions = await getVersionSelector(docId.toString(), req, res);
+    const allVersions = await getVersionSelector(docId as string, req, res);
     return res.send(allVersions);
   } catch (err) {
     winstonLogger.error(`[SAFE CONFIG] Problem sending version selectors

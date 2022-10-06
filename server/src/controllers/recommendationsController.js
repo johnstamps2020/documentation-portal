@@ -1,19 +1,20 @@
 require('dotenv').config();
 const { Client } = require('@elastic/elasticsearch');
-const { getConfig } = require('./configController');
+const { getEntity } = require('./configController');
 const { winstonLogger } = require('./loggerController');
+const { DocConfig } = require('../model/entity/DocConfig');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const recommendationsIndexName = 'gw-recommendations';
 
 async function showOnlyPublicRecommendations(reqObj, resObj, recommendations) {
   try {
     const publicRecommendations = [];
-    const config = await getConfig(reqObj, resObj);
     for (const recommendation of recommendations) {
-      const matchingDoc = config.docs.find(
-        d => d.doc_id === recommendation.doc_id
-      );
-      const recommendationIsPublic = matchingDoc ? matchingDoc.public : false;
+      const getEntityResult = await getEntity(DocConfig.name, {
+        id: recommendation.doc_id,
+      });
+      const recommendationIsPublic =
+        getEntityResult.status === 200 ? getEntityResult.body.public : false;
       if (recommendationIsPublic) {
         publicRecommendations.push(recommendation);
       }
