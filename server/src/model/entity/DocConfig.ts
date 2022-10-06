@@ -49,8 +49,8 @@ export class DocConfig {
   @JoinTable()
   releases: Release[];
 
-  @Column('simple-array')
-  environments: string[];
+  @Column({ array: true })
+  environments: string;
 
   @Column({ default: true })
   displayOnLandingPages: boolean;
@@ -66,4 +66,10 @@ export class DocConfig {
 
   @Column({ default: false })
   earlyAccess: boolean;
+
+  @Column({ array: true, nullable: true })
+  subjects: string;
+
+  @Column({ array: true, nullable: true })
+  categories: string;
 }

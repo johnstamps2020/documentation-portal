@@ -21,58 +21,32 @@ async function sendUserId(userInformation) {
   }
 }
 
-function wrapInQuotes(stringsToWrap) {
-  function addQuotes(stringToModify) {
-    return stringToModify.includes(',')
-      ? '"' + stringToModify + '"'
-      : stringToModify;
-  }
-
-  if (Array.isArray(stringsToWrap)) {
-    return stringsToWrap.map(s => addQuotes(s));
-  } else if (typeof stringsToWrap === 'string') {
-    return addQuotes(stringsToWrap);
-  } else {
-    return stringsToWrap;
-  }
-}
-
-// Filter values are passed around as strings that use commas to separate values. To avoid issues with splitting,
-// values that contain commas must be wrapped in quotes.
-// Filter values are parsed by the getFiltersFromUrl function in searchController.js.
 export async function setMetadata() {
-  const docId = document
+  let docId = document
     .querySelector('[name="gw-doc-id"]')
     ?.getAttribute('content');
+  if (!docId) {
+    const docIdResponse = await fetch(
+      `/safeConfig/entity/doc/id?url=${window.location.pathname}`
+    );
+    const docIdResponseJson = await docIdResponse.json();
+    docId = docIdResponseJson?.docId;
+  }
   if (docId) {
-    const response = await fetch(`/safeConfig/docMetadata/${docId}`);
-    if (response.ok) {
+    const response = await fetch(`/safeConfig/entity/doc/metadata?id=${docId}`);
+    if (response.status === 200) {
       try {
-        const valueSeparator = ',';
         const docInfo = await response.json();
-        if (!docInfo.error) {
-          window.docProduct = wrapInQuotes(docInfo.product)?.join(
-            valueSeparator
-          );
-          window.docPlatform = wrapInQuotes(docInfo.platform)?.join(
-            valueSeparator
-          );
-          window.docVersion = wrapInQuotes(docInfo.version)?.join(
-            valueSeparator
-          );
-          window.docCategory = wrapInQuotes(docInfo.category)?.join(
-            valueSeparator
-          );
-          window.docSubject = wrapInQuotes(docInfo.subject)?.join(
-            valueSeparator
-          );
-          window.docRelease = wrapInQuotes(docInfo.release)?.join(
-            valueSeparator
-          );
-          window.docTitle = wrapInQuotes(docInfo.docTitle);
-          window.docInternal = docInfo.docInternal;
-          window.docEarlyAccess = docInfo.docEarlyAccess;
-        }
+        window.docId = docId;
+        window.docTitle = docInfo.docTitle;
+        window.docInternal = docInfo.docInternal;
+        window.docEarlyAccess = docInfo.docEarlyAccess;
+        window.docProduct = docInfo.docProducts;
+        window.docVersion = docInfo.docVersions;
+        window.docPlatform = docInfo.docPlatforms;
+        window.docRelease = docInfo.docReleases;
+        window.docCategory = docInfo.docCategories;
+        window.docSubject = docInfo.docSubjects;
       } catch (err) {
         console.error(err);
       }

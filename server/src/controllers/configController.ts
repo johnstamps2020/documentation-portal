@@ -17,6 +17,11 @@ import { Build } from '../model/entity/Build';
 import { Source } from '../model/entity/Source';
 import { Resource } from '../model/entity/Resource';
 import { integer } from '@elastic/elasticsearch/api/types';
+import {
+  FindOneAndDeleteOptions,
+  FindOptionsWhere,
+  SaveOptions,
+} from 'typeorm';
 
 function optionsAreValid(options: {}) {
   return (
@@ -25,11 +30,10 @@ function optionsAreValid(options: {}) {
 }
 
 export async function getEntity(
-  req: Request
+  repo: string,
+  options: FindOptionsWhere<any>
 ): Promise<{ status: integer; body: any }> {
   try {
-    const { repo } = req.params;
-    const options = req.query;
     if (!optionsAreValid(options)) {
       return {
         status: 400,
@@ -40,11 +44,21 @@ export async function getEntity(
     }
     const operationResult = await AppDataSource.manager.findOneBy(
       repo,
-      options as {}
+      options
     );
+    if (!operationResult) {
+      return {
+        status: 404,
+        body: {
+          message: `Did not find an entity in ${repo} for the following query: ${JSON.stringify(
+            options
+          )}`,
+        },
+      };
+    }
     return {
       status: 200,
-      body: operationResult ? operationResult : {},
+      body: operationResult,
     };
   } catch (err) {
     return {
@@ -54,10 +68,33 @@ export async function getEntity(
   }
 }
 
-export async function createOrUpdateEntity(req: Request) {
+export async function getAllEntities(
+  repo: string
+): Promise<{ status: integer; body: any }> {
   try {
-    const { repo } = req.params;
-    const options = req.body;
+    const operationResult = await AppDataSource.manager.find(repo);
+    if (!operationResult) {
+      return {
+        status: 404,
+        body: {
+          message: `Did not find any entities in ${repo}`,
+        },
+      };
+    }
+    return {
+      status: 200,
+      body: operationResult,
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      body: { message: `Operation failed: ${(err as Error).message}` },
+    };
+  }
+}
+
+export async function createOrUpdateEntity(repo: string, options: SaveOptions) {
+  try {
     if (!optionsAreValid(options)) {
       return {
         status: 400,
@@ -69,7 +106,7 @@ export async function createOrUpdateEntity(req: Request) {
     const operationResult = await AppDataSource.manager.save(repo, options);
     return {
       status: 200,
-      body: operationResult ? operationResult : {},
+      body: operationResult,
     };
   } catch (err) {
     return {
@@ -79,10 +116,11 @@ export async function createOrUpdateEntity(req: Request) {
   }
 }
 
-export async function deleteEntity(req: Request) {
+export async function deleteEntity(
+  repo: string,
+  options: FindOneAndDeleteOptions
+) {
   try {
-    const { repo } = req.params;
-    const options = req.body;
     if (!optionsAreValid(options)) {
       return {
         status: 400,
@@ -94,8 +132,75 @@ export async function deleteEntity(req: Request) {
     const operationResult = await AppDataSource.manager.delete(repo, options);
     return {
       status: 200,
-      body: operationResult ? operationResult : {},
+      body: operationResult,
     };
+  } catch (err) {
+    return {
+      status: 500,
+      body: { message: `Operation failed: ${(err as Error).message}` },
+    };
+  }
+}
+
+function wrapInQuotes(stringsToWrap: Array<string> | string | undefined) {
+  const valueSeparator = ',';
+
+  function addQuotes(stringToModify: string) {
+    return stringToModify.includes(',')
+      ? '"' + stringToModify + '"'
+      : stringToModify;
+  }
+
+  if (Array.isArray(stringsToWrap)) {
+    return stringsToWrap.map(s => addQuotes(s)).join(valueSeparator);
+  } else if (typeof stringsToWrap === 'string') {
+    return addQuotes(stringsToWrap);
+  } else {
+    return stringsToWrap;
+  }
+}
+
+export async function getDocumentMetadataById(docId: string) {
+  // Filter values are passed around as strings that use commas to separate values. To avoid issues with splitting,
+  // values that contain commas must be wrapped in quotes.
+  // Filter values are parsed by the getFiltersFromUrl function in searchController.js.
+  try {
+    if (!docId) {
+      return {
+        status: 400,
+        body: {
+          message:
+            'Invalid request. Provide the docId param to get doc metadata.',
+        },
+      };
+    }
+    const getEntityResponse = await getEntity(DocConfig.name, { id: docId });
+    if (getEntityResponse.status === 200) {
+      const docInfo = getEntityResponse.body;
+      return {
+        status: 200,
+        body: {
+          docTitle: wrapInQuotes(docInfo.title),
+          docInternal: docInfo.internal,
+          docEarlyAccess: docInfo.earlyAccess,
+          docProducts: wrapInQuotes(
+            docInfo.products.map((p: Product) => p.name.name)
+          ),
+          docVersions: wrapInQuotes(
+            docInfo.products.map((p: Product) => p.version.name)
+          ),
+          docPlatforms: wrapInQuotes(
+            docInfo.products.map((p: Product) => p.platform.name)
+          ),
+          docReleases: wrapInQuotes(
+            docInfo.releases.map((r: Release) => r.name)
+          ),
+          docSubjects: wrapInQuotes(docInfo.subjects),
+          docCategories: wrapInQuotes(docInfo.categories),
+        },
+      };
+    }
+    return getEntityResponse;
   } catch (err) {
     return {
       status: 500,
@@ -262,43 +367,23 @@ export async function putConfigInDatabase(): Promise<{
   }
 }
 
-function getPublicOnlyIfNotLoggedIn(
-  reqObj: Request,
-  config: DocConfig[]
-): DocConfig[] {
-  if (!reqObj.session || !reqObj.session.requestIsAuthenticated) {
-    return config.filter(d => d.public);
-  }
-
-  return config;
-}
-
-function filterOutInternalDocsIfNotEmployee(
-  resObj: Response,
-  config: DocConfig[]
-): DocConfig[] {
-  const hasGuidewireEmail = resObj.locals.userInfo.hasGuidewireEmail;
-  if (!hasGuidewireEmail) {
-    return config.filter(d => !d.internal);
-  }
-
-  return config;
-}
-
 export async function getConfig(
   reqObj: Request,
   resObj: Response
 ): Promise<DocConfig[]> {
   try {
-    const config = await AppDataSource.getRepository(DocConfig).find();
-
-    const publicOnlyIfNotLoggedIn = getPublicOnlyIfNotLoggedIn(reqObj, config);
-    const safeConfig = filterOutInternalDocsIfNotEmployee(
-      resObj,
-      publicOnlyIfNotLoggedIn
-    );
-
-    return safeConfig;
+    const options: FindOptionsWhere<DocConfig> = {};
+    const isLoggedIn = reqObj.session?.requestIsAuthenticated;
+    const hasGuidewireEmail = resObj.locals.userInfo?.hasGuidewireEmail;
+    if (!isLoggedIn) {
+      options.public = true;
+    }
+    if (!hasGuidewireEmail) {
+      options.internal = false;
+    }
+    return await AppDataSource.getRepository(DocConfig).find({
+      where: options,
+    });
   } catch (err) {
     winstonLogger.error(
       `There was a problem with the getConfig() function
@@ -308,23 +393,41 @@ export async function getConfig(
   }
 }
 
-async function getDocByUrl(url: string) {
-  let relativeUrl = url + '/';
-  if (relativeUrl.startsWith('/')) {
-    relativeUrl = relativeUrl.substring(1);
+export async function getDocByUrl(url: string) {
+  let urlToCheck = url;
+  if (url.startsWith('/')) {
+    urlToCheck = url.substring(1);
   }
+  const docUrls = await AppDataSource.getRepository(DocConfig)
+    .createQueryBuilder('doc')
+    .useIndex('docUrl-idx')
+    .select(['doc.url', 'doc.id', 'doc.public', 'doc.internal'])
+    .getMany();
 
-  const matchingDoc = await AppDataSource.getRepository(DocConfig).findOneBy({
-    url: relativeUrl,
-  });
-
+  const matchingDoc = docUrls.find(d => urlToCheck.startsWith(d.url));
   return matchingDoc;
+}
+
+export async function getDocIdByUrl(url: string) {
+  const doc = await getDocByUrl(url);
+  if (!doc) {
+    return {
+      status: 404,
+      body: {
+        message: `Doc ID matching the ${url} url was not found.`,
+      },
+    };
+  }
+  return {
+    status: 200,
+    body: { docId: doc.id },
+  };
 }
 
 export async function isPublicDoc(url: string) {
   try {
     const matchingDoc = await getDocByUrl(url);
-    return !!(matchingDoc && matchingDoc.public);
+    return matchingDoc && matchingDoc.public;
   } catch (err) {
     winstonLogger.error(
       `Problem getting doc by url
@@ -337,7 +440,7 @@ export async function isPublicDoc(url: string) {
 export async function isInternalDoc(url: string) {
   try {
     const matchingDoc = await getDocByUrl(url);
-    return !!(matchingDoc && matchingDoc.internal);
+    return matchingDoc && matchingDoc.internal;
   } catch (err) {
     winstonLogger.error(
       `Problem determining if doc is internal
@@ -434,66 +537,6 @@ export async function getVersionSelector(
   }
 }
 
-export async function getDocumentMetadata(docId: string) {
-  try {
-    const doc = await AppDataSource.getRepository(DocConfig).findOneBy({
-      id: docId,
-    });
-    if (doc) {
-      return {
-        docTitle: doc.title,
-        docInternal: doc.internal,
-        docEarlyAccess: doc.earlyAccess,
-        docProducts: doc.products,
-        docReleases: doc.releases,
-      };
-    } else {
-      return {
-        error: true,
-        message: `Did not find a doc matching ID ${docId}`,
-      };
-    }
-  } catch (err) {
-    winstonLogger.error(
-      `Problem getting document metadata
-              docId: ${docId}, 
-              ERROR: ${JSON.stringify(err)}`
-    );
-  }
-}
-
-export async function getDocId(
-  products: string,
-  platforms: string,
-  versions: string,
-  title: string,
-  url: string
-) {
-  try {
-    const doc = await AppDataSource.manager.findOneBy(DocConfig, {
-      url: url,
-    });
-
-    if (doc) {
-      return {
-        docId: doc.id,
-      };
-    } else {
-      return {
-        error: true,
-        message: `Did not find a doc matching the provided info: ${products}, ${platforms}, ${versions}, ${title}, ${url}`,
-      };
-    }
-  } catch (err) {
-    winstonLogger.error(
-      `Problem getting document id
-              url: ${url}, 
-              title: ${title},
-              ERROR: ${JSON.stringify(err)}`
-    );
-  }
-}
-
 export function getEnv() {
   return { envName: process.env.DEPLOY_ENV };
 }
@@ -502,32 +545,3 @@ export type DocUrlByIdResponse = {
   id: string;
   url: string;
 };
-
-export async function getDocUrlById(
-  docId: string,
-  reqObj: Request,
-  resObj: Response
-) {
-  try {
-    const config = await getConfig(reqObj, resObj);
-    const doc = config.find(d => d.id === docId);
-    if (doc) {
-      const result: DocUrlByIdResponse = {
-        id: doc.id,
-        url: doc.url,
-      };
-      return result;
-    } else {
-      return {
-        error: true,
-        message: `Did not find a doc matching ID ${docId}`,
-      };
-    }
-  } catch (err) {
-    winstonLogger.error(
-      `Problem getting document url  
-              docId: ${docId}, 
-              ERROR: ${JSON.stringify(err)}`
-    );
-  }
-}

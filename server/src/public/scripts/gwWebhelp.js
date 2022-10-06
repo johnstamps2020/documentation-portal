@@ -14,6 +14,9 @@ let docProduct = docProductElement
 let docPlatform = document.querySelector("meta[name = 'gw-platform']")?.content;
 let docVersion = document.querySelector("meta[name = 'gw-version']")?.content;
 let docCategory = document.querySelector("meta[name = 'DC.coverage']")?.content;
+let docId = document
+  .querySelector('[name="gw-doc-id"]')
+  ?.getAttribute('content');
 let docTitle = undefined;
 let docSubject = undefined;
 let docInternal = undefined;
@@ -48,50 +51,28 @@ async function showTopicRecommendations() {
   }
 }
 
-function wrapInQuotes(stringsToWrap) {
-  function addQuotes(stringToModify) {
-    return stringToModify.includes(',')
-      ? '"' + stringToModify + '"'
-      : stringToModify;
-  }
-
-  if (Array.isArray(stringsToWrap)) {
-    return stringsToWrap.map(s => addQuotes(s));
-  } else if (typeof stringsToWrap === 'string') {
-    return addQuotes(stringsToWrap);
-  } else {
-    return stringsToWrap;
-  }
-}
-
-// Filter values are passed around as strings that use commas to separate values. To avoid issues with splitting,
-// values that contain commas must be wrapped in quotes.
-// Filter values are parsed by the getFiltersFromUrl function in searchController.js.
 async function fetchMetadata() {
-  const docId = document
-    .querySelector('[name="gw-doc-id"]')
-    ?.getAttribute('content');
+  if (!docId) {
+    const docIdResponse = await fetch(
+      `/safeConfig/entity/doc/id?url=${window.location.pathname}`
+    );
+    const docIdResponseJson = await docIdResponse.json();
+    docId = docIdResponseJson?.docId;
+  }
   if (docId) {
-    const response = await fetch(`/safeConfig/docMetadata/${docId}`);
-    if (response.ok) {
+    const response = await fetch(`/safeConfig/entity/doc/metadata?id=${docId}`);
+    if (response.status === 200) {
       try {
-        const valueSeparator = ',';
         const docInfo = await response.json();
-        if (!docInfo.error) {
-          docProduct =
-            wrapInQuotes(docInfo.product)?.join(valueSeparator) || docProduct;
-          docPlatform =
-            wrapInQuotes(docInfo.platform)?.join(valueSeparator) || docPlatform;
-          docVersion =
-            wrapInQuotes(docInfo.version)?.join(valueSeparator) || docVersion;
-          docCategory =
-            wrapInQuotes(docInfo.category)?.join(valueSeparator) || docCategory;
-          docTitle = wrapInQuotes(docInfo.docTitle);
-          docSubject = wrapInQuotes(docInfo.subject);
-          docInternal = docInfo.docInternal;
-          docEarlyAccess = docInfo.docEarlyAccess;
-          return true;
-        }
+        docTitle = docInfo.docTitle;
+        docInternal = docInfo.docInternal;
+        docEarlyAccess = docInfo.docEarlyAccess;
+        docProduct = docInfo.docProducts || docProduct;
+        docVersion = docInfo.docVersions || docVersion;
+        docPlatform = docInfo.docPlatforms || docPlatform;
+        docCategory = docInfo.docCategories || docCategory;
+        docSubject = docInfo.docSubjects;
+        return true;
       } catch (err) {
         console.error(err);
         return null;
@@ -172,18 +153,6 @@ async function createVersionSelector() {
   try {
     if (!docProduct) {
       return null;
-    }
-    let docId = document
-      .querySelector('[name="gw-doc-id"]')
-      ?.getAttribute('content');
-    if (docId == null) {
-      const docIdResponse = await fetch(
-        `/safeConfig/docId?platforms=${docPlatform}&products=${docProduct}&versions=${docVersion}&url=${topicId}${
-          docTitle ? `&title=${docTitle}` : ''
-        }`
-      );
-      const docIdResponseJson = await docIdResponse.json();
-      docId = docIdResponseJson.docId;
     }
     const response = await fetch(`/safeConfig/versionSelectors?docId=${docId}`);
     const jsonResponse = await response.json();
@@ -608,10 +577,6 @@ async function toggleFeedbackForm(formId) {
 }
 
 async function addFeedbackElements() {
-  const { hostname } = window.location;
-  // if (!['docs.int.ccs.guidewire.net', 'localhost'].includes(hostname)) {
-  //   return;
-  // }
   const feedbackButtons = document.createElement('div');
   feedbackButtons.setAttribute('class', 'feedback');
   feedbackButtons.innerHTML = `

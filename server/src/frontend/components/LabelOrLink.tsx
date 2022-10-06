@@ -15,15 +15,25 @@ export default function LabelOrLink({
   page,
 }: LabelOrLinkProps) {
   const [href, setHref] = useState<string | undefined>();
+
   async function getHref() {
     if (id) {
-      const response = await fetch(`/safeConfig/docUrl/${id}`);
+      let docPath = window.location.origin;
+      if (docPath.slice(-1) !== '/') {
+        docPath = `${window.location.origin}/`;
+      }
+      const response = await fetch(`/safeConfig/entity/DocConfig?id=${id}`);
       const data = await response.json();
-      setHref(data.url);
+      const url = data.url;
+      setHref(new URL(url, docPath).toString());
     }
 
     if (page) {
-      setHref(page);
+      let pagePath = window.location.href;
+      if (pagePath.slice(-1) !== '/') {
+        pagePath = `${window.location.href}/`;
+      }
+      setHref(new URL(page, pagePath).toString());
     }
 
     if (link) {
@@ -32,7 +42,7 @@ export default function LabelOrLink({
   }
 
   useEffect(function() {
-    getHref();
+    getHref().then(r => r);
   }, []);
 
   if (href) {

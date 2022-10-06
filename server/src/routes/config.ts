@@ -2,10 +2,10 @@ import { Router } from 'express';
 import {
   createOrUpdateEntity,
   deleteEntity,
+  getAllEntities,
   getConfig,
-  getDocId,
-  getDocumentMetadata,
-  getDocUrlById,
+  getDocIdByUrl,
+  getDocumentMetadataById,
   getEntity,
   getEnv,
   getRootBreadcrumb,
@@ -68,81 +68,52 @@ router.get('/versionSelectors', async function(req, res, next) {
   }
 });
 
-router.get('/docMetadata/:docId', async function(req, res, next) {
-  try {
-    const docId = req.params.docId;
-    if (!docId) {
-      return res.status(500).send('Provide a docId param to get doc metadata');
-    }
-    const docMetadata = await getDocumentMetadata(docId);
-    return res.send(docMetadata);
-  } catch (err) {
-    winstonLogger.error(`[SAFE CONFIG]: Problem sending doc metadata
-      ERROR: ${JSON.stringify(err)}
-      DOC ID: ${req.params?.docId}`);
-    next(err);
-  }
-});
-
-router.get('/docUrl/:docId', async function(req, res, next) {
-  try {
-    const { docId } = req.params;
-    const docUrl = await getDocUrlById(docId, req, res);
-    res.send(docUrl);
-  } catch (err) {
-    winstonLogger.error(`[SAFE CONFIG]: Problem getting doc url from ID
-    ERROR: ${JSON.stringify(err)}
-    DOC ID: ${req.params?.docId}`);
-    next(err);
-  }
-});
-
-type MetadataReq = {
-  query: {
-    products: string;
-    platforms: string;
-    versions: string;
-    title: string;
-    url: string;
-  };
-};
-
-router.get('/docId', async function(req: MetadataReq, res, next) {
-  try {
-    const { platforms, products, versions, title, url } = req.query;
-    const docId = await getDocId(products, platforms, versions, title, url);
-    res.send(docId);
-  } catch (err) {
-    winstonLogger.error(`[SAFE CONFIG] Problem sending doc ID
-    ERROR: ${JSON.stringify(err)}
-    QUERY: ${req.query}
-    REQ: ${JSON.stringify(req)}`);
-    next(err);
-  }
-});
-
 router.get('/env', function(req, res) {
   const env = getEnv();
   res.send(env);
 });
 
-router.get('/putConfigInDatabase', async function(req, res, next) {
+router.get('/putConfigInDatabase', async function(req, res) {
   const { status, body } = await putConfigInDatabase();
   return res.status(status).json(body);
 });
 
-router.get('/entity/:repo', async function(req, res, next) {
-  const { status, body } = await getEntity(req);
+router.get('/entity/:repo', async function(req, res) {
+  const { repo } = req.params;
+  const options = req.query;
+  const { status, body } = await getEntity(repo, options);
   return res.status(status).json(body);
 });
 
-router.post('/entity/:repo', async function(req, res, next) {
-  const { status, body } = await createOrUpdateEntity(req);
+router.get('/entity/:repo/all', async function(req, res) {
+  const { repo } = req.params;
+  const { status, body } = await getAllEntities(repo);
   return res.status(status).json(body);
 });
 
-router.delete('/entity/:repo', async function(req, res, next) {
-  const { status, body } = await deleteEntity(req);
+router.post('/entity/:repo', async function(req, res) {
+  const { repo } = req.params;
+  const options = req.body;
+  const { status, body } = await createOrUpdateEntity(repo, options);
+  return res.status(status).json(body);
+});
+
+router.delete('/entity/:repo', async function(req, res) {
+  const { repo } = req.params;
+  const options = req.body;
+  const { status, body } = await deleteEntity(repo, options);
+  return res.status(status).json(body);
+});
+
+router.get('/entity/doc/metadata', async function(req, res) {
+  const { id } = req.query;
+  const { status, body } = await getDocumentMetadataById(id as string);
+  return res.status(status).json(body);
+});
+
+router.get('/entity/doc/id', async function(req, res) {
+  const { url } = req.query;
+  const { status, body } = await getDocIdByUrl(url as string);
   return res.status(status).json(body);
 });
 
