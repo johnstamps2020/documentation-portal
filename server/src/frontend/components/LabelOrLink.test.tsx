@@ -11,7 +11,7 @@ describe('test loading based on id, page and link', () => {
     label: 'Cloud Platform Release Notes',
   };
 
-  const expectedUrl = 'cloud/gwcprelnotes/latest';
+  const expectedUrl = 'http://localhost/cloud/gwcprelnotes/latest';
   const mockResponse: DocUrlByIdResponse = {
     id: 'gwcpreleasenotes',
     url: expectedUrl,
@@ -39,7 +39,8 @@ describe('test loading based on id, page and link', () => {
     page: 'cloudProducts/elysian/bcGwCloud/2022.05',
     label: 'BillingCenter',
   };
-  const expectedPage = 'cloudProducts/elysian/bcGwCloud/2022.05';
+  const expectedPage =
+    'http://localhost/cloudProducts/elysian/bcGwCloud/2022.05';
 
   test('response from page', async () => {
     await act(async () => {
