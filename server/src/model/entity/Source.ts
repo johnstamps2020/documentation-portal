@@ -8,8 +8,6 @@ export class Source {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  // Insert missing fields here
-
   @Column()
   name: string;
 
@@ -22,8 +20,8 @@ export class Source {
   @Column()
   gitBranch: string;
 
-  @Column('simple-array', { nullable: true })
-  xdocsPathIds: string[];
+  @Column({ array: true, nullable: true })
+  xdocsPathIds: string;
 
   @Column({ nullable: true })
   exportFrequency: string;
