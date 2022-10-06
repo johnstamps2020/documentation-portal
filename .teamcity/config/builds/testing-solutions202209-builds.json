@@ -20,14 +20,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "GT-Data.ditamap",
-      "srcId": "testingframeworks202209src",
-      "docId": "testingframeworksdataflaine",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "GT-Load.ditamap",
       "srcId": "testingframeworks202209src",
       "docId": "testingframeworksloadflaine",
