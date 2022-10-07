@@ -1,6 +1,6 @@
 FROM artifactory.guidewire.com/hub-docker-remote/node:16.14.2-alpine as app-builder
 
-WORKDIR /usr/src/app
+WORKDIR /usr/app
 COPY . .
 RUN yarn
 RUN yarn build
@@ -8,10 +8,10 @@ RUN mkdir dist/static
 
 FROM artifactory.guidewire.com/hub-docker-remote/node:16.14.2-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /usr/app
 
-COPY --from=app-builder /usr/src/app/node_modules/ node_modules/
-COPY --from=app-builder /usr/src/app/dist/ dist/
+COPY --from=app-builder /usr/app/node_modules/ node_modules/
+COPY --from=app-builder /usr/app/dist/ .
 
 EXPOSE 8081
 ARG tag_version
@@ -24,4 +24,4 @@ LABEL "org.opencontainers.image.title"="docportal" \
       "org.opencontainers.image.vendor"="guidewire" \
       "com.guidewire.dept"="100653"
 
-CMD [ "node", "dist/server.js" ]
+CMD [ "node", "server.js" ]

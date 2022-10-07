@@ -4,6 +4,7 @@
 # Allow specific folders
 !.yarn/
 !src/
+!scripts/copyNonTxFiles.mjs
 !.yarnrc.yml
 !custom.d.ts
 !package.json
