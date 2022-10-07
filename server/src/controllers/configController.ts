@@ -367,32 +367,6 @@ export async function putConfigInDatabase(): Promise<{
   }
 }
 
-export async function getConfig(
-  reqObj: Request,
-  resObj: Response
-): Promise<DocConfig[]> {
-  try {
-    const options: FindOptionsWhere<DocConfig> = {};
-    const isLoggedIn = reqObj.session?.requestIsAuthenticated;
-    const hasGuidewireEmail = resObj.locals.userInfo?.hasGuidewireEmail;
-    if (!isLoggedIn) {
-      options.public = true;
-    }
-    if (!hasGuidewireEmail) {
-      options.internal = false;
-    }
-    return await AppDataSource.getRepository(DocConfig).find({
-      where: options,
-    });
-  } catch (err) {
-    winstonLogger.error(
-      `There was a problem with the getConfig() function
-        ERROR: ${JSON.stringify(err)}`
-    );
-    return [];
-  }
-}
-
 export async function getDocByUrl(url: string) {
   let urlToCheck = url;
   if (url.startsWith('/')) {
@@ -506,15 +480,26 @@ export async function getVersionSelector(
         const matchingVersionSelector = versionSelectorMapping.find(
           s => docId === s.docId
         );
-        // The getConfig function checks if the request is authenticated and if the user has the Guidewire email,
-        // and filters the returned docs accordingly.
-        // Therefore, for the selector it's enough to check if a particular version has a doc in the returned config.
-        const docs = await getConfig(reqObj, resObj);
         if (matchingVersionSelector) {
+          const isLoggedIn = reqObj.session?.requestIsAuthenticated;
+          const hasGuidewireEmail = resObj.locals.userInfo?.hasGuidewireEmail;
+          const options: FindOptionsWhere<DocConfig> = {};
+          if (!isLoggedIn) {
+            options.public = true;
+          }
+          if (!hasGuidewireEmail) {
+            options.internal = false;
+          }
+          const docUrls = await AppDataSource.getRepository(DocConfig)
+            .createQueryBuilder('doc')
+            .useIndex('docUrl-idx')
+            .select(['doc.url'])
+            .where(options)
+            .getMany();
           matchingVersionSelector[
             'allVersions'
           ] = matchingVersionSelector.allVersions.filter(v =>
-            docs.find(d => d.url === v.url)
+            docUrls.find(d => d.url === v.url)
           );
           return { matchingVersionSelector: matchingVersionSelector };
         } else {
