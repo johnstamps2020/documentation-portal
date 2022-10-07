@@ -8,7 +8,7 @@
   "main": "./src/server.ts",
   "proxy": "http://localhost:5000",
   "scripts": {
-    "build": "rimraf -r dist && tsc",
+    "build": "rimraf -r dist && tsc && copyfiles -u 1 ./src/**/*.ico ./src/**/*.ejs ./src/**/*.css ./src/**/*.svg ./dist",
     "start": "node dist/server.js",
     "start:dev": "concurrently \"yarn webpack-watch\" \"NODE_ENV=development nodemon src/server.ts -e ts,tsx,js,ejs,css,html,jpg,png,svg\"",
     "dev": "yarn start:dev",
@@ -31,6 +31,7 @@
     "body-parser": "^1.20.0",
     "cookie-parser": "~1.4.6",
     "cookie-session": "^2.0.0",
+    "copyfiles": "^2.4.1",
     "dd-trace": "^2.8.0",
     "debug": "~2.6.9",
     "ejs": "^3.1.8",

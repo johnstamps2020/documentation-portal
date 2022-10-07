@@ -11,7 +11,7 @@ FROM artifactory.guidewire.com/hub-docker-remote/node:16.14.2-alpine
 WORKDIR /usr/src/app
 
 COPY --from=app-builder /usr/src/app/node_modules/ node_modules/
-COPY --from=app-builder /usr/src/app/dist/ .
+COPY --from=app-builder /usr/src/app/dist/ dist/
 
 EXPOSE 8081
 ARG tag_version
@@ -24,4 +24,4 @@ LABEL "org.opencontainers.image.title"="docportal" \
       "org.opencontainers.image.vendor"="guidewire" \
       "com.guidewire.dept"="100653"
 
-CMD [ "node", "server.js" ]
+CMD [ "node", "dist/server.js" ]
