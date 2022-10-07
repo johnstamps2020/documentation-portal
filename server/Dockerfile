@@ -1,16 +1,17 @@
+FROM artifactory.guidewire.com/hub-docker-remote/node:16.14.2-alpine as app-builder
+
+WORKDIR /usr/src/app
+COPY . .
+RUN yarn
+RUN yarn build
+RUN mkdir dist/static
+
 FROM artifactory.guidewire.com/hub-docker-remote/node:16.14.2-alpine
 
-# Create app directory
 WORKDIR /usr/src/app
 
-RUN mkdir static
-COPY package.json .
-COPY yarn.lock .
-COPY .yarn/ .yarn/
-COPY .yarnrc.yml .
-RUN yarn
-
-COPY . .
+COPY --from=app-builder /usr/src/app/node_modules/ node_modules/
+COPY --from=app-builder /usr/src/app/dist/ .
 
 EXPOSE 8081
 ARG tag_version

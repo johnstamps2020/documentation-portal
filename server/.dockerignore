@@ -2,13 +2,11 @@
 **
 
 # Allow specific folders
-!controllers/
-!public/
-!routes/
-!views/
-!app.js
-!server.js
-!package.json
-!yarn.lock
 !.yarn/
+!src/
 !.yarnrc.yml
+!custom.d.ts
+!package.json
+!tsconfig.json
+!webpack.config.js
+!yarn.lock
