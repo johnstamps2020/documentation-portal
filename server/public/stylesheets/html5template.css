@@ -56,7 +56,7 @@ p.p img:first-child {
 }
 
 main {
-  margin: 0 auto;
+  margin: 0 auto 0 0;
   grid-area: main;
   padding: 1rem 0 var(--main-padding-large) var(--main-padding-large);
   scroll-behavior: smooth;
