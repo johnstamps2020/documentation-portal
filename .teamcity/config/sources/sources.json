@@ -407,10 +407,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
       "branch": "9.0.10",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/_supermap-9x-active.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
+        "/Content/doc/insuranceSuite/core/9.x/releases/9010/_supermap-9010.ditamap"
       ]
     },
     {
@@ -420,10 +417,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
       "branch": "9.0.9",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/9.x/releases/909/_supermap-9x-active.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
+        "/Content/doc/insuranceSuite/core/9.x/releases/909/_supermap-9x-active.ditamap"
       ]
     },
     {
@@ -433,10 +427,7 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
       "branch": "9.0.8",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/9.x/releases/908/_superbook.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
+        "/Content/doc/insuranceSuite/core/9.x/releases/908/_superbook.ditamap"
       ]
     },
     {
