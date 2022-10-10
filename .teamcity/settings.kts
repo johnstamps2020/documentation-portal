@@ -33,6 +33,7 @@ project {
     subProject(Server.rootProject)
     subProject(Frontend.rootProject)
     subProject(Custom.rootProject)
+    subProject(Database.rootProject)
 
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
     features.feature(GwProjectFeatures.GwAntennaHouseFormatterServerProjectFeature)
@@ -2206,6 +2207,90 @@ object Server {
             }
         }
         return deployServerBuildType
+    }
+}
+
+object Database {
+    val rootProject = createRootProjectForDatabase()
+
+    private fun createRootProjectForDatabase(): Project {
+        return Project {
+            name = "Database"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            buildType(createDeployDbBuildType())
+        }
+    }
+
+    fun createDeployDbBuildType(): BuildType {
+        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.INT.env_name)
+        val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.env_name)
+        return BuildType {
+            name = "Deploy doc portal database"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                cleanCheckout = true
+            }
+
+            params {
+                select(
+                    "env.DEPLOY_ENV",
+                    value = "",
+                    label = "Deploy environment",
+                    options = listOf(
+                        "Int" to GwDeployEnvs.INT.env_name,
+                        "Prod" to GwDeployEnvs.PROD.env_name,
+                    ),
+                    display = ParameterDisplay.PROMPT,
+                )
+            }
+
+            steps {
+                script {
+                    name = "Deploy DB with Terraform"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                    #!/bin/bash
+                    set -eux
+
+                    if [[ "%env.DEPLOY_ENV%" == "${GwDeployEnvs.PROD.env_name}" ]]; then
+                      ${awsEnvVarsProd}
+                      export ENV_LEVEL="Prod"
+                    else
+                      ${awsEnvVars}
+                      export ENV_LEVEL="Non-Prod"
+                    fi
+
+                    export S3_BUCKET="tenant-doctools-%env.DEPLOY_ENV%-terraform"
+                    export TFSTATE_KEY="docportal/db/terraform.tfstate"
+
+                    cd server/db
+
+                    terraform init \
+                        -backend-config="bucket=${'$'}{S3_BUCKET}" \
+                        -backend-config="region=${'$'}{AWS_DEFAULT_REGION}" \
+                        -backend-config="key=${'$'}{TFSTATE_KEY}" \
+                        -input=false
+                    terraform apply \
+                        -var="deploy_env=%env.DEPLOY_ENV%" \
+                        -var="region=${'$'}{AWS_DEFAULT_REGION}" \
+                        -var="env_level=${'$'}{ENV_LEVEL}" \
+                        -input=false \
+                        -auto-approve
+                    """.trimIndent()
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                }
+            }
+
+            features {
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                feature(GwBuildFeatures.GwSshAgentBuildFeature)
+            }
+        }
     }
 }
 
@@ -4581,7 +4666,7 @@ object GwProjectFeatures {
         param("quota", "3")
         param("name", "AntennaHouseFormatterServer")
         param("type", "quoted")
-    })  
+    })
 
     object GwBuildListenerLimitProjectFeature : ProjectFeature({
         type = "JetBrains.SharedResources"
