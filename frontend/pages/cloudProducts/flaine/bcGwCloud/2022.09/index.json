@@ -65,14 +65,6 @@
           "id": "isbc202209update"
         },
         {
-          "label": "Upgrade",
-          "id": "isbc202209upgrade"
-        },
-        {
-          "label": "Upgrade (Internal only)",
-          "id": "isbcflainegwupgrade"
-        },
-        {
           "label": "InsuranceSuite Configuration Upgrade Tools",
           "id": "isconfigupgradetools440"
         },

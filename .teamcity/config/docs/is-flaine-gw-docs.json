@@ -38,24 +38,6 @@
       "earlyAccess": false
     },
     {
-      "id": "isbcflainegwupgrade",
-      "title": "Upgrade",
-      "url": "cloud/bc/flaine-gw/upgrade",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["GW-internal-Flaine"],
-        "release": ["Flaine"],
-        "subject": ["Installation"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": true,
-      "earlyAccess": false
-    },
-    {
       "id": "isccflainegwadmin",
       "title": "Administration",
       "url": "cloud/cc/flaine-gw/admin",
@@ -92,24 +74,6 @@
       "earlyAccess": false
     },
     {
-      "id": "isccflainegwupgrade",
-      "title": "Upgrade",
-      "url": "cloud/cc/flaine-gw/upgrade",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["GW-internal-Flaine"],
-        "release": ["Flaine"],
-        "subject": ["Installation"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": true,
-      "earlyAccess": false
-    },
-    {
       "id": "ispcflainegwadmin",
       "title": "Administration",
       "url": "cloud/pc/flaine-gw/admin",
@@ -131,24 +95,6 @@
       "id": "ispcflainegwdevsetup",
       "title": "Developer Setup",
       "url": "cloud/pc/flaine-gw/devsetup",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["GW-internal-Flaine"],
-        "release": ["Flaine"],
-        "subject": ["Installation"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": true,
-      "earlyAccess": false
-    },
-    {
-      "id": "ispcflainegwupgrade",
-      "title": "Upgrade",
-      "url": "cloud/pc/flaine-gw/upgrade",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
