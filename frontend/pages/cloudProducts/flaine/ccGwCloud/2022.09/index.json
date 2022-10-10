@@ -65,14 +65,6 @@
           "id": "iscc202209update"
         },
         {
-          "label": "Upgrade",
-          "id": "iscc202209upgrade"
-        },
-        {
-          "label": "Upgrade (Internal only)",
-          "id": "isccflainegwupgrade"
-        },
-        {
           "label": "InsuranceSuite Configuration Upgrade Tools",
           "id": "isconfigupgradetools440"
         },
