@@ -10,11 +10,10 @@ async function showOnlyPublicRecommendations(reqObj, resObj, recommendations) {
   try {
     const publicRecommendations = [];
     for (const recommendation of recommendations) {
-      const getEntityResult = await getEntity(DocConfig.name, {
+      const { status, body } = await getEntity(DocConfig.name, {
         id: recommendation.doc_id,
       });
-      const recommendationIsPublic =
-        getEntityResult.status === 200 ? getEntityResult.body.public : false;
+      const recommendationIsPublic = status === 200 ? body.public : false;
       if (recommendationIsPublic) {
         publicRecommendations.push(recommendation);
       }
