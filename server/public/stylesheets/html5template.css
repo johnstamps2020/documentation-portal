@@ -64,6 +64,7 @@ main {
   display: flex;
   justify-content: flex-end;
   flex-direction: row-reverse;
+  width: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -83,6 +84,7 @@ main > article {
 
 main > .spacer {
   border-right: 1px solid lightgray;
+  margin-left: auto;
 }
 
 .scrollToTopButton {
