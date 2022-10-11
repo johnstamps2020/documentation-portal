@@ -20,7 +20,7 @@ export default function LandingPage() {
 
   const pageConfig = JSON.parse(pageConfigText) as PageConfig;
 
-  // don't forge tto delete me!
+  // don't forget to delete me!
   console.log({ deploymentEnv, pageConfig });
 
   return (
