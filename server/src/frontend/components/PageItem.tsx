@@ -1,9 +1,9 @@
 import React from 'react';
 import LabelOrLink from './LabelOrLink';
-import { PageItem as Item } from '../../model/entity/PageItem';
+import { LandingPageItem } from '../../model/entity/LandingPageItem';
 import { Environment } from '../../types/environment';
 
-type ItemProps = Item & {
+type ItemProps = LandingPageItem & {
   deploymentEnv: Environment;
 };
 

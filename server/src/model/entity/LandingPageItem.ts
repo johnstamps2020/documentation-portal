@@ -9,7 +9,7 @@ import { Environment } from '../../types/environment';
 
 @Entity()
 @Tree('closure-table')
-export class PageItem {
+export class LandingPageItem {
   @PrimaryGeneratedColumn('uuid')
   itemId: number;
 
@@ -29,7 +29,7 @@ export class PageItem {
   link: string;
 
   @TreeChildren()
-  items: PageItem[];
+  items: LandingPageItem[];
 
   @Column()
   env: Environment;

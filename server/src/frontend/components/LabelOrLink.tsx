@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { PageItem } from '../../model/entity/PageItem';
+import { LandingPageItem } from '../../model/entity/LandingPageItem';
 
 export type LabelOrLinkProps = {
-  label: PageItem['label'];
-  id?: PageItem['id'];
-  link?: PageItem['link'];
-  page?: PageItem['page'];
+  label: LandingPageItem['label'];
+  id?: LandingPageItem['id'];
+  link?: LandingPageItem['link'];
+  page?: LandingPageItem['page'];
 };
 
 export default function LabelOrLink({

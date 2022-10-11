@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageConfig } from '../../model/entity/PageConfig';
-import { PageItem } from '../../model/entity/PageItem';
+import PageItem from './PageItem';
 import Breadcrumbs from './Breadcrumbs';
 import Error from './Error';
 
@@ -38,7 +38,7 @@ export default function LandingPage() {
           <div className="items">
             {pageConfig.items &&
               pageConfig.items.map((item, key) => (
-                <PageItem key={key} {...item} deploymentEnv={deploymentEnv} />
+                <PageItem {...item} key={key} deploymentEnv={deploymentEnv} />
               ))}
           </div>
           {/* <%- include('parts/sidebar') %> */}
