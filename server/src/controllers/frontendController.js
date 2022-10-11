@@ -84,11 +84,13 @@ async function getPage(req, res, next) {
     if (response.ok) {
       const fileContentsJson = await response.json();
       const hasGuidewireEmail = res.locals.userInfo.hasGuidewireEmail;
-      const templateName = hasGuidewireEmail
-        ? 'react-page'
-        : fileContentsJson.template;
+      const templateName =
+        hasGuidewireEmail && fileContentsJson.template === 'page'
+          ? 'react-page'
+          : fileContentsJson.template;
       res.render(templateName, {
         pageContent: fileContentsJson,
+        deploymentEnv: process.env.DEPLOY_ENV,
         hasGuidewireEmail: hasGuidewireEmail,
         pagePath: req.path.endsWith('/') ? req.path : `${req.path}/`,
         localizationInfo: setL10nParams(fileContentsJson.class),

@@ -1,8 +1,3 @@
-export enum Environment {
-  DEV = 'dev',
-  INT = 'int',
-  STAGING = 'staging',
-  PROD = 'prod',
-}
+export type Environment = string;
 
 export type Environments = Environment[];
