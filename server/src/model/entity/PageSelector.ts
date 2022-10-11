@@ -5,7 +5,7 @@ import {
   Tree,
   TreeChildren,
 } from 'typeorm';
-import { PageItem } from './PageItem';
+import { LandingPageItem } from './LandingPageItem';
 
 @Entity()
 @Tree('closure-table')
@@ -20,8 +20,8 @@ export class PageSelector {
   class: string;
 
   @TreeChildren()
-  selectedItem: PageItem;
+  selectedItem: LandingPageItem;
 
   @TreeChildren()
-  items: PageItem[];
+  items: LandingPageItem[];
 }

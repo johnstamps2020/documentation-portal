@@ -1,17 +1,27 @@
 import React from 'react';
-import { useEnv } from '../hooks/useEnv';
-import { usePageConfig } from '../hooks/usePageConfig';
-import Breadcrumbs from './Breadcrumbs';
+import { PageConfig } from '../../model/entity/PageConfig';
 import PageItem from './PageItem';
+import Breadcrumbs from './Breadcrumbs';
+import Error from './Error';
 
 export default function LandingPage() {
-  const pagePath = window.location.pathname;
-  const [pageConfig] = usePageConfig(pagePath);
-  const [deploymentEnv] = useEnv();
+  const pageConfigText = document.getElementById('pageConfig')?.innerText;
+  const deploymentEnv = document
+    .getElementById('deploymentEnv')
+    ?.innerText.trim();
 
-  if (!pageConfig || !deploymentEnv) {
-    return <div style={{ minHeight: '100vh' }}>Loading...</div>;
+  if (!pageConfigText) {
+    return <Error message="Config not provided!" />;
   }
+
+  if (!deploymentEnv) {
+    return <Error message="Deployment env not provided!" />;
+  }
+
+  const pageConfig = JSON.parse(pageConfigText) as PageConfig;
+
+  // don't forge tto delete me!
+  console.log({ deploymentEnv, pageConfig });
 
   return (
     <main className={pageConfig.class}>
@@ -28,7 +38,7 @@ export default function LandingPage() {
           <div className="items">
             {pageConfig.items &&
               pageConfig.items.map((item, key) => (
-                <PageItem key={key} {...item} deploymentEnv={deploymentEnv} />
+                <PageItem {...item} key={key} deploymentEnv={deploymentEnv} />
               ))}
           </div>
           {/* <%- include('parts/sidebar') %> */}
