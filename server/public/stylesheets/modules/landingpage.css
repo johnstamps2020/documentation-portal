@@ -12,6 +12,12 @@
     }
 }
 
+.landingpage > p {
+    grid-column: 1/3;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
 .landingpage > section {
     --width: 420px;
     --section-padding-top-width: 0;
