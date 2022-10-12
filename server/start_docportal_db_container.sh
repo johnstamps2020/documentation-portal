@@ -8,4 +8,4 @@ docker run --name docportal-db --rm \
   -e PGDATA=/var/lib/postgresql/data/pgdata \
   -v /tmp:/var/lib/postgresql/data \
   -p 5432:5432 \
-  -it postgres:14.1-alpine
+  postgres:14.1-alpine

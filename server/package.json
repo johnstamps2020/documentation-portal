@@ -10,7 +10,7 @@
   "scripts": {
     "build": "rimraf -r dist && tsc && node scripts/copyNonTxFiles.mjs",
     "start": "node dist/server.js",
-    "dev": "NODE_ENV=development nodemon src/server.ts -e ts,tsx,js,ejs,css,html,jpg,png,svg",
+    "dev": "concurrently \"./start_docportal_db_container.sh\" \"NODE_ENV=development nodemon src/server.ts -e ts,tsx,js,ejs,css,html,jpg,png,svg\"",
     "dev:webpack": "concurrently \"yarn webpack-watch\" \"yarn dev\"",
     "webpack-build": "webpack",
     "webpack-watch": "webpack --watch",
