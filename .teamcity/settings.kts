@@ -1119,9 +1119,12 @@ object Custom {
                 name = "Clean up agent"
                 scriptContent = """
                     #!/bin/bash
-                    set -xe                                    
+                    set -xe
+
+                    export GIT_CLONE_DIR="git_clone_dir"                                    
                     
                     if [ -f ${'$'}BUILDS_FILE_PARSED ]; then rm -f ${'$'}BUILDS_FILE_PARSED 2> /dev/null || true; fi
+                    if [ -d %teamcity.build.workingDir%/$localOutputDir ]; then rm -rf %teamcity.build.workingDir%/$localOutputDir/* 2> /dev/null || true; fi
                     if [ -d %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR ]; then rm -rf %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR/{*,.*} 2> /dev/null || true; fi
                 """.trimIndent()
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
