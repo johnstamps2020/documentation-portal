@@ -20,6 +20,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "PCLMConfGuide.ditamap",
+      "srcId": "lmflainesrc",
+      "docId": "londonconfigflaine",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "LMReleaseNotes.ditamap",
       "srcId": "lmflainesrc",
       "docId": "londonrnflaine",
