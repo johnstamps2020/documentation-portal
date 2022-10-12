@@ -67,7 +67,7 @@
       "env": ["dev", "staging", "prod"],
       "items": [
         {
-          "label": "Digital Applications",
+          "label": "Digital Reference Applications",
           "class": "group",
           "items": [
             {
