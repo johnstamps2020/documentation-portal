@@ -15,6 +15,16 @@
       ]
     },
     {
+      "label": "Developers",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Configuration Guide",
+          "id": "londonconfigflaine"
+        }
+      ]
+    },
+    {
       "label": "Features and functionality",
       "class": "subject featuresAndFunctionality",
       "items": [

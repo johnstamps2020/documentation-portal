@@ -36,6 +36,23 @@
       "earlyAccess": false
     },
     {
+      "id": "londonconfigflaine",
+      "title": "London Market Configuration Guide",
+      "url": "london/flaine/config",
+      "metadata": {
+        "product": ["London Market"],
+        "platform": ["Cloud"],
+        "version": ["Flaine"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "londonrnflaine",
       "title": "London Market Release Notes",
       "url": "london/flaine/releasenotes",
