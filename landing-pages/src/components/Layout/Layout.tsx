@@ -5,9 +5,14 @@ import styles from "./Layout.module.css";
 type LayoutProps = {
   children: JSX.Element | JSX.Element[];
   title: string;
+  searchFilters?: { [key: string]: string[] };
 };
 
-export default function Layout({ children, title }: LayoutProps) {
+export default function Layout({
+  children,
+  title,
+  searchFilters
+}: LayoutProps) {
   document.title = `${title} | Guidewire Documentation`;
 
   return (
@@ -17,7 +22,7 @@ export default function Layout({ children, title }: LayoutProps) {
           <Logo />
         </div>
         <div className={styles.center}>
-          <SearchBox />
+          <SearchBox {...searchFilters} />
         </div>
         <div className={styles.right}></div>
       </header>

@@ -1801,7 +1801,7 @@ __metadata:
 
 "@documentation-portal@file:../server::locator=landing-pages%40workspace%3Alanding-pages":
   version: 2.29.20
-  resolution: "@documentation-portal@file:../server#../server::hash=b3e323&locator=landing-pages%40workspace%3Alanding-pages"
+  resolution: "@documentation-portal@file:../server#../server::hash=e65506&locator=landing-pages%40workspace%3Alanding-pages"
   dependencies:
     "@elastic/elasticsearch": ^7.17.0
     "@okta/jwt-verifier": ^2.3.0
@@ -1840,7 +1840,7 @@ __metadata:
     serve-favicon: ^2.5.0
     typeorm: ^0.3.9
     winston: ^3.7.2
-  checksum: d98cff1bf5344a74f48bafad30ba27253130bfde6d66604223980b75ed22b1a5e1f311ebc18ff9f3153f18c2189b3997f5ef29e4734ba6410415f987c460d44a
+  checksum: eba7b6fea784d06a298f2abdd564b3eb7f745641e740586b286c91ff3219b6401f6cb8d0f9146502711f742f21af18042c7a4ca806d1930cd83eb39ffc5f1c13
   languageName: node
   linkType: hard
 
@@ -13964,8 +13964,8 @@ __metadata:
 
 "react-native-sqlite-storage@file:../shims/react-native-sqlite-storage::locator=landing-pages%40workspace%3Alanding-pages":
   version: 0.0.0
-  resolution: "react-native-sqlite-storage@file:../shims/react-native-sqlite-storage#../shims/react-native-sqlite-storage::hash=90470a&locator=landing-pages%40workspace%3Alanding-pages"
-  checksum: 9d49d5ccb4cd3c7db56782f3ee9cd9f87e28f98bbe88102585513e49b361f85789576a70148dbf75a45ad2404258398f26b2f68a43b4f7fc7dc09759a2662834
+  resolution: "react-native-sqlite-storage@file:../shims/react-native-sqlite-storage#../shims/react-native-sqlite-storage::hash=c6737d&locator=landing-pages%40workspace%3Alanding-pages"
+  checksum: 6b2c10a733f3539f19d1ce646ef1ffee2574172c4880e4b4fe4406b311c5d3e4c7d8aba4bee8037fcb3312a9f9e712320b7e69b093b614b9f33aed125bd71e98
   languageName: node
   linkType: hard
 
@@ -16336,11 +16336,11 @@ __metadata:
 
 "typescript@patch:typescript@^4.4.2#~builtin<compat/typescript>, typescript@patch:typescript@^4.8.3#~builtin<compat/typescript>":
   version: 4.8.4
-  resolution: "typescript@patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=701156"
+  resolution: "typescript@patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=7ad353"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 301459fc3eb3b1a38fe91bf96d98eb55da88a9cb17b4ef80b4d105d620f4d547ba776cc27b44cc2ef58b66eda23fe0a74142feb5e79a6fb99f54fc018a696afa
+  checksum: 563a0ef47abae6df27a9a3ab38f75fc681f633ccf1a3502b1108e252e187787893de689220f4544aaf95a371a4eb3141e4a337deb9895de5ac3c1ca76430e5f0
   languageName: node
   linkType: hard
 

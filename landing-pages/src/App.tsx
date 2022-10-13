@@ -2,7 +2,7 @@ import "./App.css";
 import {
   createBrowserRouter,
   RouterProvider,
-  Navigate,
+  Navigate
 } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -13,12 +13,12 @@ import DocAdminPage from "./pages/DocAdminPage/DocAdminPage";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#00739d",
+      main: "#00739d"
     },
     secondary: {
-      main: "#3c4c5e",
-    },
-  },
+      main: "#3c4c5e"
+    }
+  }
 });
 
 const router = createBrowserRouter(
@@ -26,24 +26,24 @@ const router = createBrowserRouter(
     {
       path: "/",
 
-      element: <Navigate to="/cloudProducts/elysian" />,
+      element: <Navigate to="/cloudProducts/elysian" />
     },
     {
       path: "/unauthorized",
-      element: <UnauthorizedPage />,
+      element: <UnauthorizedPage />
     },
     {
       path: "/404",
-      element: <FourOhFourPage />,
+      element: <FourOhFourPage />
     },
     {
       path: "/admin/doc",
-      element: <DocAdminPage />,
+      element: <DocAdminPage />
     },
     {
       path: "/*",
-      element: <LandingPage />,
-    },
+      element: <LandingPage />
+    }
   ],
   { basename: "/landing" }
 );

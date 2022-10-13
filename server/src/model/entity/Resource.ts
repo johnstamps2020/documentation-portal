@@ -20,7 +20,8 @@ export class Resource {
 
   @ManyToOne(
     () => Source,
-    source => source.id
+    source => source.id,
+    { eager: true }
   )
   @JoinTable()
   source: Source;

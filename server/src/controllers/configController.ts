@@ -1,28 +1,14 @@
 import fetch from 'node-fetch';
-import { lstatSync, readdirSync, readFileSync } from 'fs';
-import { join, resolve } from 'path';
 import { winstonLogger } from './loggerController';
-import { ServerConfig } from '../types/config';
 import { Request, Response } from 'express';
-import { Environment } from '../types/environment';
 import { VersionSelector } from '../model/entity/VersionSelector';
 import { AppDataSource } from '../model/connection';
-import { DocConfig } from '../model/entity/DocConfig';
+import { Doc } from '../model/entity/Doc';
 import { Product } from '../model/entity/Product';
-import { ProductName } from '../model/entity/ProductName';
-import { ProductVersion } from '../model/entity/ProductVersion';
-import { ProductPlatform } from '../model/entity/ProductPlatform';
 import { Release } from '../model/entity/Release';
-import { Build } from '../model/entity/Build';
-import { Source } from '../model/entity/Source';
-import { Resource } from '../model/entity/Resource';
-import { integer } from '@elastic/elasticsearch/api/types';
-import {
-  FindOneAndDeleteOptions,
-  FindOptionsWhere,
-  SaveOptions,
-} from 'typeorm';
-import { runningInDevMode } from './utils/serverUtils';
+import { FindOneAndDeleteOptions, FindOptionsWhere } from 'typeorm';
+import { ApiResponse } from '../types/apiResponse';
+import { Page } from '../model/entity/Page';
 
 function optionsAreValid(options: {}) {
   return (
@@ -30,10 +16,55 @@ function optionsAreValid(options: {}) {
   );
 }
 
+async function pageExists(pagePath: string) {
+  return (await AppDataSource.manager.countBy(Page, { path: pagePath })) === 1;
+}
+
+export async function getBreadcrumbs(pagePath: string): Promise<ApiResponse> {
+  try {
+    const routes = pagePath.split('/').filter(v => v.length > 0);
+    const breadcrumbs = [];
+    let startPath = '';
+    for (const route of routes) {
+      const breadcrumbRoutePath = startPath ? `/${route}` : route;
+      const breadcrumbPath = startPath + breadcrumbRoutePath;
+      const breadcrumbId = route.replace('/', '_').toLowerCase();
+      const breadcrumbLabel = route
+        .replace(/([A-Z])/g, ' $1')
+        .replace(/^./, (str: string) => str.toUpperCase())
+        .replace(
+          /(policy center | billing center | claim center | insurance now)/gi,
+          (str: string) => str.replace(' ', '')
+        );
+      breadcrumbs.push({
+        label: breadcrumbLabel,
+        path: breadcrumbPath,
+        id: breadcrumbId,
+      });
+      startPath += breadcrumbRoutePath;
+    }
+    const validBreadcrumbs = [];
+    for (const breadcrumb of breadcrumbs.slice(1, -1)) {
+      if (await pageExists(breadcrumb.path)) {
+        validBreadcrumbs.push(breadcrumb);
+      }
+    }
+    return {
+      status: 200,
+      body: validBreadcrumbs,
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      body: { message: `Operation failed: ${(err as Error).message}` },
+    };
+  }
+}
+
 export async function getEntity(
   repo: string,
   options: FindOptionsWhere<any>
-): Promise<{ status: integer; body: any }> {
+): Promise<ApiResponse> {
   try {
     if (!optionsAreValid(options)) {
       return {
@@ -69,9 +100,7 @@ export async function getEntity(
   }
 }
 
-export async function getAllEntities(
-  repo: string
-): Promise<{ status: integer; body: any }> {
+export async function getAllEntities(repo: string): Promise<ApiResponse> {
   try {
     const operationResult = await AppDataSource.manager.find(repo);
     if (!operationResult) {
@@ -94,7 +123,10 @@ export async function getAllEntities(
   }
 }
 
-export async function createOrUpdateEntity(repo: string, options: SaveOptions) {
+export async function createOrUpdateEntity(
+  repo: string,
+  options: {}
+): Promise<ApiResponse> {
   try {
     if (!optionsAreValid(options)) {
       return {
@@ -120,7 +152,7 @@ export async function createOrUpdateEntity(repo: string, options: SaveOptions) {
 export async function deleteEntity(
   repo: string,
   options: FindOneAndDeleteOptions
-) {
+): Promise<ApiResponse> {
   try {
     if (!optionsAreValid(options)) {
       return {
@@ -175,7 +207,7 @@ export async function getDocumentMetadataById(docId: string) {
         },
       };
     }
-    const getEntityResponse = await getEntity(DocConfig.name, { id: docId });
+    const getEntityResponse = await getEntity(Doc.name, { id: docId });
     if (getEntityResponse.status === 200) {
       const docInfo = getEntityResponse.body;
       return {
@@ -210,194 +242,12 @@ export async function getDocumentMetadataById(docId: string) {
   }
 }
 
-function readFilesInDir(dirPath: string, deployEnv: Environment): DocConfig[] {
-  try {
-    const localConfig: DocConfig[] = [];
-    const itemsInDir = readdirSync(dirPath);
-    for (const item of itemsInDir) {
-      const itemPath = join(dirPath, item);
-      if (lstatSync(itemPath).isDirectory()) {
-        localConfig.push(...readFilesInDir(itemPath, deployEnv));
-      } else {
-        const config = readFileSync(itemPath, 'utf-8');
-        const json: ServerConfig = JSON.parse(config);
-        const docs = json.docs.filter(d => d.environments.includes(deployEnv));
-        localConfig.push(...docs);
-      }
-    }
-    return localConfig;
-  } catch (funcErr) {
-    throw new Error(
-      `Cannot read local config file from path: ${dirPath}: ${funcErr}`
-    );
-  }
-}
-
-async function fetchConfig() {
-  const result = await fetch(
-    `${process.env.DOC_S3_URL}/portal-config/config.json`
-  );
-  if (result.ok == false) {
-    throw new Error(
-      `Response status: ${result.status}
-              Response type: ${result.type}
-              Response URL: ${result.url}
-              Response redirected: ${result.redirected}`
-    );
-  }
-  const config = await result.json();
-
-  return config.docs;
-}
-
-export async function putConfigInDatabase(): Promise<{
-  status: integer;
-  body: any;
-}> {
-  try {
-    const deployEnv =
-      process.env.DEPLOY_ENV === 'omega2-andromeda'
-        ? 'prod'
-        : process.env.DEPLOY_ENV;
-    console.log(`Getting local config for the "${deployEnv}" environment`);
-
-    const selectedEnv = deployEnv as Environment;
-
-    const localConfigDir = resolve(
-      `${__dirname}/../../../.teamcity/config/docs`
-    );
-
-    const localConfig = await (async () => {
-      if (runningInDevMode()) {
-        return readFilesInDir(localConfigDir, selectedEnv);
-      }
-
-      const fetchedConfig = await fetchConfig();
-      return fetchedConfig;
-    })();
-
-    // FIXME: Test data, remove after testing
-    const BillingCenterName = new ProductName();
-    BillingCenterName.name = 'BillingCenter';
-    await AppDataSource.getRepository(ProductName).save(BillingCenterName);
-    const BillingCenterVersion = new ProductVersion();
-    BillingCenterVersion.name = '2022.05';
-    await AppDataSource.getRepository(ProductVersion).save(
-      BillingCenterVersion
-    );
-    const BillingCenterPlatform = new ProductPlatform();
-    BillingCenterPlatform.name = 'Cloud';
-    await AppDataSource.getRepository(ProductPlatform).save(
-      BillingCenterPlatform
-    );
-
-    // FIXME: Test data, remove after testing
-    const BillingCenterProduct = new Product();
-    BillingCenterProduct.name = BillingCenterName;
-    BillingCenterProduct.version = BillingCenterVersion;
-    BillingCenterProduct.platform = BillingCenterPlatform;
-    await AppDataSource.getRepository(Product).save(BillingCenterProduct);
-
-    // FIXME: Test data, remove after testing
-    const FlaineRelease = new Release();
-    FlaineRelease.name = 'Flaine';
-    const ElysianRelease = new Release();
-    ElysianRelease.name = 'Elysian';
-    await AppDataSource.getRepository(Release).save([
-      ElysianRelease,
-      FlaineRelease,
-    ]);
-
-    // FIXME: Test data, remove after testing
-    const isSrc = new Source();
-    isSrc.name = 'InsuranceSuite Source';
-    isSrc.type = 'git';
-    isSrc.gitUrl =
-      'ssh://git@stash.guidewire.com/docsources/insurancesuite.git';
-    isSrc.gitBranch = 'release/elysian';
-    const isResourcesSrc = new Source();
-    isResourcesSrc.name = 'InsuranceSuite Resources Source';
-    isResourcesSrc.type = 'git';
-    isResourcesSrc.gitUrl =
-      'ssh://git@stash.guidewire.com/docsources/insurancesuite-resources.git';
-    isResourcesSrc.gitBranch = 'release/elysian';
-    await AppDataSource.getRepository(Source).save([isSrc, isResourcesSrc]);
-
-    // FIXME: Test data, remove after testing
-    const isResource1 = new Resource();
-    isResource1.sourceFolder = 'resource1/src';
-    isResource1.targetFolder = 'resource1/target';
-    isResource1.source = isResourcesSrc;
-    const isResource2 = new Resource();
-    isResource2.sourceFolder = 'resource2/src';
-    isResource2.targetFolder = 'resource2/target';
-    isResource2.source = isResourcesSrc;
-    await AppDataSource.getRepository(Resource).save([
-      isResource1,
-      isResource2,
-    ]);
-
-    let updatedLocalConfig: any[];
-    updatedLocalConfig = [];
-    for await (const doc of localConfig) {
-      // console.log(
-      //   `ABOUT TO SAVE DOC ${localConfig.indexOf(doc) + 1} of ${
-      //     localConfig.length
-      //   }`,
-      //   doc
-      // );
-
-      // FIXME: Test data, remove after testing
-      const docBuild = new Build();
-      docBuild.type = 'dita';
-      docBuild.source = isSrc;
-      docBuild.filter = `${doc.id}.ditaval`;
-      docBuild.root = 'main.ditamap';
-      docBuild.indexRedirect = true;
-      docBuild.resources = [isResource1, isResource2];
-      await AppDataSource.getRepository(Build).save(docBuild);
-
-      // FIXME: Test data, remove after testing
-      const docConfig = new DocConfig();
-      docConfig.id = doc.id;
-      docConfig.url = doc.url;
-      docConfig.title = doc.title;
-      docConfig.internal = doc.internal;
-      docConfig.earlyAccess = doc.earlyAccess;
-      docConfig.displayOnLandingPages = doc.displayOnLandingPages;
-      docConfig.environments = doc.environments;
-      docConfig.indexForSearch = doc.indexForSearch;
-      docConfig.releases = [ElysianRelease, FlaineRelease];
-      docConfig.products = [BillingCenterProduct];
-      docConfig.build = docBuild;
-
-      updatedLocalConfig.push(docConfig);
-    }
-
-    const saveResult = await AppDataSource.manager.save(
-      DocConfig,
-      updatedLocalConfig
-    );
-    return {
-      status: 200,
-      body: saveResult,
-    };
-  } catch (err) {
-    return {
-      status: 500,
-      body: {
-        message: `Cannot put config in DB: ${(err as Error).message}`,
-      },
-    };
-  }
-}
-
 export async function getDocByUrl(url: string) {
   let urlToCheck = url;
   if (url.startsWith('/')) {
     urlToCheck = url.substring(1);
   }
-  const docUrls = await AppDataSource.getRepository(DocConfig)
+  const docUrls = await AppDataSource.getRepository(Doc)
     .createQueryBuilder('doc')
     .useIndex('docUrl-idx')
     .select(['doc.url', 'doc.id', 'doc.public', 'doc.internal'])
@@ -508,14 +358,14 @@ export async function getVersionSelector(
         if (matchingVersionSelector) {
           const isLoggedIn = reqObj.session?.requestIsAuthenticated;
           const hasGuidewireEmail = resObj.locals.userInfo?.hasGuidewireEmail;
-          const options: FindOptionsWhere<DocConfig> = {};
+          const options: FindOptionsWhere<Doc> = {};
           if (!isLoggedIn) {
             options.public = true;
           }
           if (!hasGuidewireEmail) {
             options.internal = false;
           }
-          const docUrls = await AppDataSource.getRepository(DocConfig)
+          const docUrls = await AppDataSource.getRepository(Doc)
             .createQueryBuilder('doc')
             .useIndex('docUrl-idx')
             .select(['doc.url'])

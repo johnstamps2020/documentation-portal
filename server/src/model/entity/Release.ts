@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { DocConfig } from './DocConfig';
+import { Doc } from './Doc';
 
 @Entity()
 export class Release {
@@ -10,8 +10,8 @@ export class Release {
   name: string;
 
   @ManyToMany(
-    () => DocConfig,
-    docConfig => docConfig.id
+    () => Doc,
+    doc => doc.id
   )
-  docConfig: DocConfig[];
+  doc: Doc[];
 }

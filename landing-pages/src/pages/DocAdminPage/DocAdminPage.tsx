@@ -1,183 +1,319 @@
-import { useEffect, useState } from "react";
-import { DocConfig } from "@documentation-portal/dist/model/entity/DocConfig";
+import React, { createContext, useEffect, useState } from "react";
+import { Doc } from "@documentation-portal/dist/model/entity/Doc";
+import { Build } from "@documentation-portal/dist/model/entity/Build";
 import Button from "@mui/material/Button";
 import Layout from "../../components/Layout/Layout";
 import DocForm from "../../components/DocForm/DocForm";
+import { Product } from "@documentation-portal/dist/model/entity/Product";
+import { Release } from "@documentation-portal/dist/model/entity/Release";
+import Modal from "@mui/material/Modal";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
+import Skeleton from "@mui/material/Skeleton";
+import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { adminDocTheme } from "../../themes/adminDocTheme";
+
+const emptyDoc: Doc = {
+  id: "",
+  title: "",
+  url: "",
+  body: "",
+  products: [new Product()],
+  releases: [new Release()],
+  displayOnLandingPages: false,
+  indexForSearch: false,
+  public: false,
+  internal: false,
+  earlyAccess: false,
+  build: new Build(),
+  subjects: [""],
+  isInProduction: false
+};
 
 export default function DocAdminPage() {
-  const [docData, setDocData] = useState<DocConfig[]>();
-  const [docObject, setDocObject] = useState(new DocConfig());
-  const [memorizedDoc, memorizeDoc] = useState<DocConfig>();
+  const [docData, setDocData] = useState<Doc[]>();
+  const [memorizedDoc, memorizeDoc] = useState<Doc>(emptyDoc);
   const [showForm, setShowForm] = useState(false);
+  const [snack, setSnack] = useState({
+    message: "",
+    color: "",
+    open: false
+  });
+  const SnackbarContext = createContext({});
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     getDocData();
   }, []);
 
   const getDocData = async () => {
-    const response = await fetch(`/safeConfig/entity/DocConfig/all`);
+    const response = await fetch(`/safeConfig/entity/Doc/all`);
     const jsonData = await response.json();
     setDocData(await jsonData);
   };
 
   const deleteDoc = async (id: string) => {
+    setSnack({
+      message: "",
+      color: "",
+      open: false
+    });
     const data = {
-      id: id,
+      id: id
     };
-    const response = await fetch(`/safeConfig/entity/DocConfig?id=${id}`, {
+    const response = await fetch(`/safeConfig/entity/Doc?id=${id}`, {
       method: "DELETE",
       headers: {
         Accept: "application/form-data",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data)
     });
-
     if (response.ok) {
-      alert("You did it! We no longer have this document in the database.");
+      setSnack({
+        message: "Successfully deleted document.",
+        color: "green",
+        open: true
+      });
       getDocData();
+    } else {
+      setSnack({
+        message: "Oops, something went wrong while deleting document.",
+        color: "red",
+        open: true
+      });
     }
   };
 
-  const showFormAndSetVar = (doc: DocConfig) => {
-    setShowForm(!showForm);
-    setDocObject(doc);
-    memorizeDoc(doc);
-  };
-
-  const updateDoc = async (doc: DocConfig | undefined) => {
-    setShowForm(!showForm);
+  const updateDoc = async (doc: Doc) => {
+    setSnack({
+      message: "",
+      color: "",
+      open: false
+    });
     //updating document
-    if (doc) {
+    if (doc && docData && docData.find(document => document.id === doc.id)) {
       const data = {
         id: doc.id,
-        title: docObject.title,
-        url: docObject.url,
-        environments: [docObject.environments],
-        displayOnLandingPages: docObject.displayOnLandingPages,
-        indexForSearch: docObject.indexForSearch,
-        public: docObject.public,
-        internal: docObject.internal,
-        earlyAccess: docObject.earlyAccess,
-        products: docObject.products,
-        releases: docObject.releases,
-        subjects: docObject.subjects,
-        categories: docObject.categories,
-        body: docObject.body,
+        title: doc.title,
+        url: doc.url,
+        displayOnLandingPages: doc.displayOnLandingPages,
+        indexForSearch: doc.indexForSearch,
+        public: doc.public,
+        internal: doc.internal,
+        earlyAccess: doc.earlyAccess,
+        products: doc.products,
+        releases: doc.releases,
+        subjects: null,
+        categories: null,
+        body: doc.body
       };
 
-      const response = await fetch(
-        `/safeConfig/entity/DocConfig?id=${doc.id}`,
-        {
-          method: "PUT",
-          body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        }
-      );
-
-      const result = await response.json();
-      console.log("result is: ", JSON.stringify(result, null, 4));
-      if (response.ok) {
-        alert("You successfully updated this document.");
-        getDocData();
-      }
-    }
-    //creating new document
-    else {
-      memorizeDoc(undefined);
-      const data = {
-        id: docObject.id,
-        title: docObject.title,
-        url: docObject.url,
-        environments: docObject.environments,
-        displayOnLandingPages: docObject.displayOnLandingPages,
-        indexForSearch: docObject.indexForSearch,
-        public: docObject.public,
-        internal: docObject.internal,
-        earlyAccess: docObject.earlyAccess,
-        products: docObject.products,
-        releases: docObject.releases,
-        subjects: docObject.subjects,
-        categories: docObject.categories,
-        body: docObject.body,
-      };
-
-      const response = await fetch(`/safeConfig/entity/DocConfig?id=`, {
-        method: "POST",
+      const response = await fetch(`/safeConfig/entity/Doc?id=${doc.id}`, {
+        method: "PUT",
         body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
-        },
+          Accept: "application/json"
+        }
       });
 
       const result = await response.json();
       console.log("result is: ", JSON.stringify(result, null, 4));
       if (response.ok) {
-        alert("You successfully added new document.");
+        setSnack({
+          message: "Successfully updated document.",
+          color: "green",
+          open: true
+        });
         getDocData();
+      } else {
+        setSnack({
+          message: "Oops, something went wrong while updating document.",
+          color: "red",
+          open: true
+        });
+      }
+    }
+    //creating new document
+    else {
+      const data = {
+        id: doc.id,
+        title: doc.title,
+        url: doc.url,
+        displayOnLandingPages: doc.displayOnLandingPages,
+        indexForSearch: doc.indexForSearch,
+        public: doc.public,
+        internal: doc.internal,
+        earlyAccess: doc.earlyAccess,
+        products: doc.products,
+        releases: doc.releases,
+        subjects: null,
+        categories: null,
+        body: doc.body
+      };
+      const response = await fetch(`/safeConfig/entity/Doc?id=`, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        }
+      });
+
+      const result = await response.json();
+      console.log("result is: ", JSON.stringify(result, null, 4));
+      if (response.ok) {
+        setSnack({
+          message: "Successfully added new document.",
+          color: "green",
+          open: true
+        });
+        getDocData();
+      } else {
+        setSnack({
+          message: "Oops, something went wrong while adding new document.",
+          color: "red",
+          open: true
+        });
       }
     }
   };
 
   function handleCreateNew() {
-    memorizeDoc(new DocConfig());
+    handleOpen();
+    memorizeDoc(emptyDoc);
     setShowForm(!showForm);
   }
 
-  //TODO: przeniesc odpowiednio do nowych folderow
+  const showFormAndSetVar = (doc: Doc) => {
+    handleOpen();
+    memorizeDoc(doc);
+  };
 
-  //TODO: zmienic formularz ze stanami na nowy stan i zmienić
-  //form na https://mui.com/material-ui/react-text-field/
-
-  if (docData) {
-    return (
+  return (
+    <ThemeProvider theme={adminDocTheme}>
+      <CssBaseline enableColorScheme />
       <Layout title="Manage docs">
-        <div className="pageBody">
-          <div className="pageControllers">
-            <Button variant="contained" onClick={handleCreateNew}>
-              Add new document
-            </Button>
-          </div>
-          <div className="content">
-            {docData.map((doc: DocConfig) => (
-              <div
-                key={doc.id}
-                className="categoryCard cardShadow"
-                style={{ width: 400, height: "fit-content" }}
-              >
-                <div className="label">{doc.title}</div>
-                <div>ID: {doc.id}</div>
-                <div>URL: {doc.url}</div>
-                <div>
-                  Display on landing pages: {String(doc.displayOnLandingPages)}
+        <div>
+          <Button size={"large"} onClick={handleCreateNew}>
+            Add new document
+          </Button>
+        </div>
+        <div>
+          <div style={{ columns: 3 }}>
+            {docData ? (
+              docData.map((doc: Doc) => (
+                <div
+                  key={doc.id}
+                  style={{
+                    width: 400,
+                    height: 400,
+                    marginBottom: 15,
+                    breakInside: "avoid"
+                  }}
+                >
+                  <div>{doc.title}</div>
+                  <div>ID: {doc.id}</div>
+                  <div>URL: {doc.url}</div>
+                  <div>
+                    Display on landing pages:{" "}
+                    {String(doc.displayOnLandingPages)}
+                  </div>
+                  <div>Index for search: {String(doc.indexForSearch)}</div>
+                  <div>Is public: {String(doc.public)}</div>
+                  <div>Is internal: {String(doc.internal)}</div>
+                  <div>Early access: {String(doc.earlyAccess)}</div>
+                  <div>Subjects: {doc.subjects}</div>
+                  <div>Body: {doc.body}</div>
+                  <Button color="error" onClick={() => deleteDoc(doc.id)}>
+                    Delete
+                  </Button>
+                  <Button
+                    color="success"
+                    onClick={() => showFormAndSetVar(doc)}
+                  >
+                    Update
+                  </Button>
                 </div>
-                <div>Index for search: {String(doc.indexForSearch)}</div>
-                <div>Is public: {String(doc.public)}</div>
-                <div>Is internal: {String(doc.internal)}</div>
-                <div>Early access: {String(doc.earlyAccess)}</div>
-                <div>Subjects: {doc.subjects}</div>
-                <div>Categories: {doc.categories}</div>
-                <div>Body: {doc.body}</div>
-                <Button onClick={() => deleteDoc(doc.id)}>Delete</Button>
-                <Button onClick={() => showFormAndSetVar(doc)}>Update</Button>
-              </div>
-            ))}
-            {showForm && (
-              <DocForm
-                docToDisplay={memorizedDoc}
-                setShowForm={setShowForm}
-                updateDoc={updateDoc}
-              />
+              ))
+            ) : (
+              <Stack>
+                <Skeleton variant="text" width={400} height={40} />
+                <Skeleton variant="rectangular" width={400} height={300} />
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Skeleton
+                    variant="rounded"
+                    width={200}
+                    height={50}
+                    sx={{ margin: "2%" }}
+                  />
+                  <Skeleton
+                    variant="rounded"
+                    width={200}
+                    height={50}
+                    sx={{ margin: "2%" }}
+                  />
+                </Box>
+                <Skeleton variant="text" width={400} height={40} />
+                <Skeleton variant="rectangular" width={400} height={300} />
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Skeleton
+                    variant="rounded"
+                    width={200}
+                    height={50}
+                    sx={{ margin: "2%" }}
+                  />
+                  <Skeleton
+                    variant="rounded"
+                    width={200}
+                    height={50}
+                    sx={{ margin: "2%" }}
+                  />
+                </Box>
+                <Skeleton variant="text" width={400} height={40} />
+                <Skeleton variant="rectangular" width={400} height={300} />
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Skeleton
+                    variant="rounded"
+                    width={200}
+                    height={50}
+                    sx={{ margin: "2%" }}
+                  />
+                  <Skeleton
+                    variant="rounded"
+                    width={200}
+                    height={50}
+                    sx={{ margin: "2%" }}
+                  />
+                </Box>
+              </Stack>
             )}
           </div>
+          <Modal open={open} onClose={handleClose}>
+            <>
+              <DocForm
+                docToDisplay={memorizedDoc}
+                setDocToDisplay={memorizeDoc}
+                updateDoc={updateDoc}
+                handleClose={handleClose}
+              />
+            </>
+          </Modal>
+          <SnackbarContext.Provider value={{ snack }}>
+            <Snackbar
+              open={snack.open}
+              onClose={() => setSnack({ message: "", color: "", open: false })}
+            >
+              <Alert>{snack.message}</Alert>
+            </Snackbar>
+          </SnackbarContext.Provider>
         </div>
       </Layout>
-    );
-  } else {
-    return <div style={{ height: 800 }}>Loading...</div>;
-  }
+    </ThemeProvider>
+  );
 }

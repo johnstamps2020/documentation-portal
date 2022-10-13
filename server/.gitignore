@@ -100,6 +100,7 @@ typings/
 static/
 dist
 config.json
+db/.terraform/
 
 # Yarn 3 no Zero-Installs
 .pnp.*

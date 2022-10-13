@@ -1,27 +1,28 @@
 import {
   Column,
   Entity,
+  JoinTable,
+  ManyToMany,
   PrimaryGeneratedColumn,
-  Tree,
-  TreeChildren,
 } from 'typeorm';
-import { LandingPageItem } from './LandingPageItem';
+import { PageSelectorItem } from './PageSelectorItem';
 
 @Entity()
-@Tree('closure-table')
 export class PageSelector {
-  @PrimaryGeneratedColumn()
-  selectorId: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column()
   label: string;
 
-  @Column()
-  class: string;
+  @Column({ nullable: true })
+  selectedItemLabel: string;
 
-  @TreeChildren()
-  selectedItem: LandingPageItem;
-
-  @TreeChildren()
-  items: LandingPageItem[];
+  @ManyToMany(
+    () => PageSelectorItem,
+    pageSelectorItem => pageSelectorItem.id,
+    { eager: true }
+  )
+  @JoinTable()
+  pageSelectorItems: PageSelectorItem[];
 }

@@ -98,7 +98,7 @@
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -135,23 +135,6 @@
       "environments": ["int"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "guidewirecloudconsolerootinsurerdevdraft",
-      "title": "Cloud Console Guide Draft",
-      "url": "cloud/gcc-guide/insurer-developer/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
       "public": false,
       "internal": false,
       "earlyAccess": false

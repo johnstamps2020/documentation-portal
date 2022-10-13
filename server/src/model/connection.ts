@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
 import { winstonLogger } from '../controllers/loggerController';
-import { DocConfig } from './entity/DocConfig';
+import { Doc } from './entity/Doc';
 import { Product } from './entity/Product';
 import { runningInDevMode } from '../controllers/utils/serverUtils';
 import { Build } from './entity/Build';
@@ -10,6 +10,17 @@ import { Source } from './entity/Source';
 import { ProductPlatform } from './entity/ProductPlatform';
 import { ProductName } from './entity/ProductName';
 import { ProductVersion } from './entity/ProductVersion';
+import { Page } from './entity/Page';
+import { PageSelector } from './entity/PageSelector';
+import { Category } from './entity/Category';
+import { CategoryItem } from './entity/CategoryItem';
+import { Item } from './entity/Item';
+import { SubCategory } from './entity/SubCategory';
+import { SubCategoryItem } from './entity/SubCategoryItem';
+import { Subject } from './entity/Subject';
+import { SubjectItem } from './entity/SubjectItem';
+import { ProductFamilyItem } from './entity/ProductFamilyItem';
+import { PageSelectorItem } from './entity/PageSelectorItem';
 
 const dbHost = process.env.DOCPORTAL_DB_HOST;
 const isDevMode = runningInDevMode();
@@ -28,7 +39,7 @@ export const AppDataSource = new DataSource({
   database: 'postgres',
   entities: [
     Build,
-    DocConfig,
+    Doc,
     Product,
     ProductName,
     ProductPlatform,
@@ -36,6 +47,17 @@ export const AppDataSource = new DataSource({
     Release,
     Resource,
     Source,
+    Page,
+    PageSelector,
+    PageSelectorItem,
+    Item,
+    Category,
+    CategoryItem,
+    SubCategory,
+    SubCategoryItem,
+    Subject,
+    SubjectItem,
+    ProductFamilyItem,
   ],
   synchronize: isDevMode,
   cache: {

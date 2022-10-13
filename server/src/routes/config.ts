@@ -3,21 +3,29 @@ import {
   createOrUpdateEntity,
   deleteEntity,
   getAllEntities,
+  getBreadcrumbs,
   getDocIdByUrl,
   getDocumentMetadataById,
   getEntity,
   getEnv,
   getRootBreadcrumb,
   getVersionSelector,
-  putConfigInDatabase,
 } from '../controllers/configController';
 import { winstonLogger } from '../controllers/loggerController';
-import { DocConfig } from '../model/entity/DocConfig';
+import { Doc } from '../model/entity/Doc';
+import {
+  getLegacyBuildConfigs,
+  getLegacyDocConfigs,
+  getLegacySourceConfigs,
+  putDocConfigsInDatabase,
+  putPageConfigsInDatabase,
+  putSourceConfigsInDatabase,
+} from '../controllers/legacyConfigController';
 
 const router = Router();
 
 router.get('/', async function(req, res) {
-  const { status, body } = await getAllEntities(DocConfig.name);
+  const { status, body } = await getAllEntities(Doc.name);
   res.status(status).json(body);
 });
 
@@ -64,11 +72,6 @@ router.get('/env', function(req, res) {
   res.send(env);
 });
 
-router.get('/putConfigInDatabase', async function(req, res) {
-  const { status, body } = await putConfigInDatabase();
-  return res.status(status).json(body);
-});
-
 router.get('/entity/:repo', async function(req, res) {
   const { repo } = req.params;
   const options = req.query;
@@ -105,6 +108,56 @@ router.get('/entity/doc/metadata', async function(req, res) {
 router.get('/entity/doc/id', async function(req, res) {
   const { url } = req.query;
   const { status, body } = await getDocIdByUrl(url as string);
+  return res.status(status).json(body);
+});
+
+router.get('/entity/page/breadcrumbs', async function(req, res) {
+  const { path } = req.query;
+  const { status, body } = await getBreadcrumbs(path as string);
+  return res.status(status).json(body);
+});
+
+router.get('/entity/legacy/docs', async function(req, res) {
+  const { status, body } = await getLegacyDocConfigs();
+  return res.status(status).json(body);
+});
+
+router.get('/entity/legacy/builds', async function(req, res) {
+  const { status, body } = await getLegacyBuildConfigs();
+  return res.status(status).json(body);
+});
+
+router.get('/entity/legacy/sources', async function(req, res) {
+  const { status, body } = await getLegacySourceConfigs();
+  return res.status(status).json(body);
+});
+
+router.get('/entity/legacy/putConfigInDatabase/:configType', async function(
+  req,
+  res
+) {
+  const { configType } = req.params;
+  let status;
+  let body;
+  if (configType === 'doc') {
+    const response = await putDocConfigsInDatabase();
+    status = response.status;
+    body = response.body;
+  } else if (configType === 'source') {
+    const response = await putSourceConfigsInDatabase();
+    status = response.status;
+    body = response.body;
+  } else if (configType === 'page') {
+    const response = await putPageConfigsInDatabase();
+    status = response.status;
+    body = response.body;
+  } else {
+    status = 400;
+    body = {
+      message:
+        'Incorrect configType parameter. Use "doc", "source", "page". For example: /entity/legacy/putConfigInDatabase/doc',
+    };
+  }
   return res.status(status).json(body);
 });
 
