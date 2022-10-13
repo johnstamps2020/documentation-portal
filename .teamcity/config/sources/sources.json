@@ -404,8 +404,8 @@
       "id": "is9010",
       "title": "InsuranceSuite OnPrem 9.0.10",
       "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
-      "branch": "9.0.10",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/9.0.10",
       "xdocsPathIds": [
         "/Content/doc/insuranceSuite/core/9.x/releases/9010/_supermap-9010.ditamap"
       ]
@@ -414,20 +414,20 @@
       "id": "is909",
       "title": "InsuranceSuite OnPrem 9.0.9",
       "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
-      "branch": "9.0.9",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/9.0.9",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/9.x/releases/909/_supermap-9x-active.ditamap"
+        "/Content/doc/insuranceSuite/core/9.x/releases/909/_supermap-909.ditamap"
       ]
     },
     {
-      "id": "exportis908",
+      "id": "is908",
       "title": "InsuranceSuite OnPrem 9.0.8",
       "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
-      "branch": "9.0.8",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/9.0.8",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/9.x/releases/908/_superbook.ditamap"
+        "/Content/doc/insuranceSuite/core/9.x/releases/908/_supermap-908.ditamap"
       ]
     },
     {

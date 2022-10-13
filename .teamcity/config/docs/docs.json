@@ -3135,7 +3135,7 @@
       "earlyAccess": false
     },
     {
-      "id": "selfmanagedbchggrerca",
+      "id": "bc908",
       "title": "BillingCenter",
       "url": "self-managed/bc/908",
       "metadata": {
@@ -3727,7 +3727,7 @@
       "earlyAccess": false
     },
     {
-      "id": "selfmanagedccaaforoxt",
+      "id": "cc908",
       "title": "ClaimCenter",
       "url": "self-managed/cc/908",
       "metadata": {
@@ -4479,7 +4479,7 @@
       "earlyAccess": false
     },
     {
-      "id": "selfmanagedpchmmjfhlm",
+      "id": "pc908",
       "title": "PolicyCenter",
       "url": "self-managed/pc/908",
       "metadata": {
