@@ -12,7 +12,6 @@ import { Source } from '../model/entity/Source';
 import { join, resolve } from 'path';
 import { AppDataSource } from '../model/connection';
 import {
-  Environment,
   legacyBuildConfig,
   legacyBuildsConfigFile,
   legacyDocConfig,
@@ -29,15 +28,18 @@ import { ProductVersion } from '../model/entity/ProductVersion';
 
 export async function getLegacyDocConfigs() {
   const { status, body } = await getAllEntities(Doc.name);
+  const dbDocs: Doc[] = body;
   const legacyDocs = [];
   if (status === 200) {
-    for (const doc of body) {
+    for (const doc of dbDocs) {
       const legacyDoc = new legacyDocConfig();
       legacyDoc.id = doc.id;
       legacyDoc.title = doc.title;
       legacyDoc.url = doc.url;
       legacyDoc.body = doc.body;
-      legacyDoc.environments = doc.environments;
+      legacyDoc.environments = doc.isInProduction
+        ? ['int', 'staging', 'prod']
+        : ['int', 'staging'];
       legacyDoc.displayOnLandingPages = doc.displayOnLandingPages;
       legacyDoc.indexForSearch = doc.indexForSearch;
       legacyDoc.public = doc.public;
@@ -53,8 +55,10 @@ export async function getLegacyDocConfigs() {
       legacyDoc.metadata.version = doc.products.map(
         (p: Product) => p.version.name
       );
-      legacyDoc.metadata.release = doc.releases.map((r: Release) => r.name);
-      legacyDoc.metadata.subject = doc.subjects;
+      legacyDoc.metadata.release = doc.releases
+        ? doc.releases.map((r: Release) => r.name)
+        : null;
+      legacyDoc.metadata.subject = doc.subjects || null;
 
       legacyDocs.push(legacyDoc);
     }
@@ -125,22 +129,18 @@ export async function getLegacySourceConfigs() {
   };
 }
 
-export function readLocalDocConfigs(
-  dirPath: string,
-  deployEnv: Environment
-): legacyDocConfig[] {
+export function readLocalDocConfigs(dirPath: string): legacyDocConfig[] {
   try {
     const localConfig: legacyDocConfig[] = [];
     const itemsInDir = readdirSync(dirPath);
     for (const item of itemsInDir) {
       const itemPath = join(dirPath, item);
       if (lstatSync(itemPath).isDirectory()) {
-        localConfig.push(...readLocalDocConfigs(itemPath, deployEnv));
+        localConfig.push(...readLocalDocConfigs(itemPath));
       } else {
         const config = readFileSync(itemPath, 'utf-8');
         const json: legacyDocsConfigFile = JSON.parse(config);
-        const docs = json.docs.filter(d => d.environments.includes(deployEnv));
-        localConfig.push(...docs);
+        localConfig.push(...json.docs);
       }
     }
     return localConfig;
@@ -320,14 +320,6 @@ export async function putDocConfigsInDatabase(): Promise<{
   body: any;
 }> {
   try {
-    const deployEnv =
-      process.env.DEPLOY_ENV === 'omega2-andromeda'
-        ? 'prod'
-        : process.env.DEPLOY_ENV;
-    console.log(`Getting local config for the "${deployEnv}" environment`);
-
-    const selectedEnv = deployEnv as Environment;
-
     const localDocsConfigDir = resolve(
       `${__dirname}/../../../.teamcity/config/docs`
     );
@@ -335,10 +327,7 @@ export async function putDocConfigsInDatabase(): Promise<{
       `${__dirname}/../../../.teamcity/config/builds`
     );
 
-    const localDocsConfig = readLocalDocConfigs(
-      localDocsConfigDir,
-      selectedEnv
-    );
+    const localDocsConfig = readLocalDocConfigs(localDocsConfigDir);
     const localBuildsConfig = readLocalBuildConfigs(localBuildsConfigDir);
     const updatedLocalConfig = [];
     for await (const doc of localDocsConfig) {
@@ -349,7 +338,7 @@ export async function putDocConfigsInDatabase(): Promise<{
       dbDoc.internal = doc.internal;
       dbDoc.earlyAccess = doc.earlyAccess;
       dbDoc.displayOnLandingPages = doc.displayOnLandingPages;
-      dbDoc.environments = doc.environments;
+      dbDoc.isInProduction = doc.environments.includes('prod');
       dbDoc.indexForSearch = doc.indexForSearch;
 
       // Find releases and create if needed

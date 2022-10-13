@@ -50,8 +50,8 @@ export class Doc {
   @JoinTable()
   releases: Release[] | null;
 
-  @Column('text', { array: true })
-  environments: string[];
+  @Column()
+  isInProduction: boolean;
 
   @Column({ default: true })
   displayOnLandingPages: boolean;
@@ -68,9 +68,6 @@ export class Doc {
   @Column({ default: false })
   earlyAccess: boolean;
 
-  @Column({ array: true, nullable: true })
-  subjects: string;
-
-  @Column({ array: true, nullable: true })
-  categories: string;
+  @Column('text', { array: true, nullable: true })
+  subjects: string[];
 }

@@ -8,8 +8,8 @@ export class Metadata {
   product: string[];
   platform: string[];
   version: string[];
-  subject: string[];
-  release: string[];
+  subject: string[] | null;
+  release: string[] | null;
 }
 
 export class legacyDocConfig {
