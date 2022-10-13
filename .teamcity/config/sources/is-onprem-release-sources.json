@@ -9,10 +9,7 @@
       "branch": "release/10.2.1",
       "exportFrequency": "daily",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/10.x/active/_supermap-1021.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
+        "/Content/doc/insuranceSuite/core/10.x/active/_supermap-1021.ditamap"
       ]
     },
     {
@@ -23,11 +20,65 @@
       "branch": "release/10.2.0",
       "exportFrequency": "weekly",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/10.x/releases/1020/_supermap-1020.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
+        "/Content/doc/insuranceSuite/core/10.x/releases/1020/_supermap-1020.ditamap"
       ]
+    },
+    {
+      "id": "selfmanagedis1012src",
+      "title": "InsuranceSuite 10.1.2",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
+      "branch": "10.1.2",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/10.x/releases/1012/_supermap-1012.ditamap"
+      ]
+    },
+    {
+      "id": "selfmanagedis1011src",
+      "title": "InsuranceSuite 10.1.1",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
+      "branch": "10.1.1",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/10.x/releases/1011/_supermap-1011.ditamap"
+      ]
+    },
+    {
+      "id": "selfmanagedis1010src",
+      "title": "InsuranceSuite 10.1.0",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
+      "branch": "10.1.0",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/10.x/releases/1010/_supermap-10x-active.ditamap"
+      ]
+    },
+    {
+      "id": "selfmanagedis1003src",
+      "title": "InsuranceSuite 10.0.3",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
+      "branch": "10.0.3",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/10.x/releases/1003/_superbook.ditamap"
+      ]
+    },
+    {
+      "id": "selfmanagedis1002src",
+      "title": "InsuranceSuite 10.0.2",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
+      "branch": "10.0.2",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/10.x/releases/1002/_superbook.ditamap"
+      ]
+    },
+    {
+      "id": "insurancesuiteextrassrc",
+      "title": "InsuranceSuite Extras",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-extras.git",
+      "branch": "main"
     }
   ]
 }

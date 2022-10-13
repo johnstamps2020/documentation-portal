@@ -9,10 +9,7 @@
       "branch": "master",
       "exportFrequency": "daily",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/_supermap-10x-active.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Draft.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Draft.ditaval"
+        "/Content/doc/insuranceSuite/core/_supermap-10x-active.ditamap"
       ]
     }
   ]
