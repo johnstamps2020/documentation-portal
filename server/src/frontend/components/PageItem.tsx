@@ -1,10 +1,9 @@
 import React from 'react';
 import LabelOrLink from './LabelOrLink';
 import { LandingPageItem } from '../../model/entity/LandingPageItem';
-import { Environment } from '../../types/environment';
 
 type ItemProps = LandingPageItem & {
-  deploymentEnv: Environment;
+  deploymentEnv: string;
 };
 
 export default function PageItem(props: ItemProps) {

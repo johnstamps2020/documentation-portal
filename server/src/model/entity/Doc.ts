@@ -12,7 +12,7 @@ import { Build } from './Build';
 import { Release } from './Release';
 
 @Entity()
-export class DocConfig {
+export class Doc {
   @Column({ primary: true })
   id: string;
 
@@ -36,7 +36,8 @@ export class DocConfig {
 
   @OneToOne(
     () => Build,
-    build => build.docConfig
+    build => build.doc,
+    { eager: true }
   )
   @JoinColumn()
   build: Build;
@@ -44,13 +45,13 @@ export class DocConfig {
   @ManyToMany(
     () => Release,
     release => release.id,
-    { eager: true }
+    { eager: true, nullable: true }
   )
   @JoinTable()
-  releases: Release[];
+  releases: Release[] | null;
 
-  @Column({ array: true })
-  environments: string;
+  @Column('text', { array: true })
+  environments: string[];
 
   @Column({ default: true })
   displayOnLandingPages: boolean;

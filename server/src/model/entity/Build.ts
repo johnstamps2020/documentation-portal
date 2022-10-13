@@ -7,7 +7,7 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { DocConfig } from './DocConfig';
+import { Doc } from './Doc';
 import { Source } from './Source';
 import { Resource } from './Resource';
 
@@ -21,7 +21,8 @@ export class Build {
 
   @ManyToOne(
     () => Source,
-    source => source.id
+    source => source.id,
+    { eager: true }
   )
   @JoinTable()
   source: Source;
@@ -44,7 +45,7 @@ export class Build {
   @ManyToMany(
     () => Resource,
     resource => resource.id,
-    { nullable: true }
+    { eager: true, nullable: true }
   )
   @JoinTable()
   resources: Resource[];
@@ -58,15 +59,12 @@ export class Build {
   @Column({ nullable: true })
   zipFilename: string;
 
-  @Column('simple-json', { nullable: true })
-  customEnv: {
-    name: string;
-    value: string;
-  };
+  @Column('json', { nullable: true })
+  customEnv: { name: string; value: string }[];
 
   @OneToOne(
-    () => DocConfig,
-    docConfig => docConfig.build
+    () => Doc,
+    doc => doc.build
   )
-  docConfig: DocConfig;
+  doc: Doc;
 }

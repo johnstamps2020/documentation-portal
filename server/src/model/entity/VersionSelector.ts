@@ -5,7 +5,6 @@ import {
   Tree,
   TreeChildren,
 } from 'typeorm';
-import { Version } from '../../types/version';
 import { Release } from './Release';
 
 @Entity()
@@ -15,7 +14,7 @@ export class VersionObject {
   versionObjectId: string;
 
   @TreeChildren()
-  versions: Version[];
+  versions: string[];
 
   @TreeChildren()
   releases: Release[];

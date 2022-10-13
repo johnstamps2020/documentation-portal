@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
 import { winstonLogger } from '../controllers/loggerController';
-import { DocConfig } from './entity/DocConfig';
+import { Doc } from './entity/Doc';
 import { Product } from './entity/Product';
 import { runningInDevMode } from '../controllers/utils/serverUtils';
 import { Build } from './entity/Build';
@@ -28,7 +28,7 @@ export const AppDataSource = new DataSource({
   database: 'postgres',
   entities: [
     Build,
-    DocConfig,
+    Doc,
     Product,
     ProductName,
     ProductPlatform,

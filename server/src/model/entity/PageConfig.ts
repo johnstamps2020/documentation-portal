@@ -1,5 +1,4 @@
 import { Column, Entity, Tree, TreeChildren } from 'typeorm';
-import { Metadata } from '../../types/metadata';
 import { LandingPageItem } from './LandingPageItem';
 import { PageSelector } from './PageSelector';
 
@@ -25,7 +24,7 @@ export class PageConfig {
   selector: PageSelector;
 
   @TreeChildren()
-  search_filters: Metadata;
+  search_filters: {};
 
   @TreeChildren()
   items: LandingPageItem[];

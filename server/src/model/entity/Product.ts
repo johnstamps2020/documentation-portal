@@ -5,7 +5,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { DocConfig } from './DocConfig';
+import { Doc } from './Doc';
 import { ProductName } from './ProductName';
 import { ProductVersion } from './ProductVersion';
 import { ProductPlatform } from './ProductPlatform';
@@ -40,8 +40,8 @@ export class Product {
   platform: ProductPlatform;
 
   @ManyToMany(
-    () => DocConfig,
-    docConfig => docConfig.id
+    () => Doc,
+    doc => doc.id
   )
-  docConfigs: DocConfig[];
+  docs: Doc[];
 }
