@@ -1,0 +1,21 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "whatsnewflaine",
+      "title": "Wha's new in Flaine",
+      "url": "cloud/flaine/whatsnew",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Ski release overview"],
+        "version": ["latest"],
+        "release": ["2022.09"]
+      },
+      "environments": ["int", "staging"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
