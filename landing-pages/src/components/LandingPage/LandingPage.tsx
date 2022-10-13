@@ -1,18 +1,15 @@
 import { Link, useParams } from "react-router-dom";
-import { useLocaleParams } from "../../hooks/useLocale";
+import Layout from "../Layout/Layout";
 
 export default function LandingPage() {
-  const { lang, placeholder } = useLocaleParams();
   const params = useParams();
   const pagePath = params["*"];
 
   return (
-    <div>
+    <Layout title="Home">
       <Link to="/">home</Link>
       <h1>Welcome to Guidewire, we hope you can have fun here.</h1>
       <p>Selected path: {pagePath}</p>
-      <p>lang: {lang}</p>
-      <p>placeholder: {placeholder}</p>
-    </div>
+    </Layout>
   );
 }
