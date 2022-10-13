@@ -8,8 +8,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Ski release overview"],
-        "version": ["latest"],
-        "release": ["2022.09"]
+        "version": ["2022.09"],
+        "release": ["Flaine"]
       },
       "environments": ["int", "staging"],
       "indexForSearch": true,
