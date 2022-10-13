@@ -90,6 +90,24 @@
       "public": false,
       "internal": false,
       "earlyAccess": true
+    },
+    {
+      "id": "worksetmgrrn",
+      "title": "Workset Manager Release Notes",
+      "url": "cloud/worksetmgrrn",
+      "metadata": {
+        "product": ["Workset Manager"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["dev", "int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
     }
   ]
 }

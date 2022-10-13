@@ -40,6 +40,14 @@
       "srcId": "worksetmgrsrc",
       "docId": "worksetmgr",
       "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "WorksetManagerReleaseNotes.ditamap",
+      "srcId": "worksetmgrsrc",
+      "docId": "worksetmgrrn",
+      "indexRedirect": true
     }
   ]
 }
