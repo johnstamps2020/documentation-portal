@@ -112,8 +112,6 @@ passport.deserializeUser(function(user: any, done: any) {
   done(null, user);
 });
 app.use(authGateway);
-const getPage = require('./controllers/frontendController').getPage;
-app.use(getPage);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -145,10 +143,20 @@ const {
   portal2Proxy,
   s3Proxy,
   html5Proxy,
+  reactAppProxy,
+  reactDevProxy,
 } = require('./controllers/proxyController');
 
 // Portal 2: Electric Boogaloo
 app.use('/portal', portal2Proxy);
+
+// Add landing pages
+const landingPageRoute = '/landing';
+if (process.env.NODE_ENV === 'development') {
+  app.use(landingPageRoute, reactDevProxy);
+} else {
+  app.use(landingPageRoute, reactAppProxy);
+}
 
 // HTML5 scripts, local or S3
 if (process.env.NODE_ENV === 'development') {

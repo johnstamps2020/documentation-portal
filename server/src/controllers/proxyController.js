@@ -54,8 +54,36 @@ function portal2Proxy(req, res, next) {
   );
 }
 
+function reactAppProxy(req, res, next) {
+  console.log('Calling the PROD landing page proxy');
+  proxy.web(
+    req,
+    res,
+    {
+      target: `${process.env.DOC_S3_URL}/landing-page/index.html`,
+      changeOrigin: true,
+    },
+    next
+  );
+}
+
+function reactDevProxy(req, res, next) {
+  console.log('Calling the DEV landing page proxy');
+  proxy.web(
+    req,
+    res,
+    {
+      target: `http://localhost:5000/landing`,
+      changeOrigin: true,
+    },
+    next
+  );
+}
+
 module.exports = {
   s3Proxy,
   html5Proxy,
   portal2Proxy,
+  reactAppProxy,
+  reactDevProxy,
 };

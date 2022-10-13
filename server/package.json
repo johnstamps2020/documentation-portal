@@ -6,7 +6,6 @@
     "node": "16.14.2"
   },
   "main": "./src/server.ts",
-  "proxy": "http://localhost:5000",
   "scripts": {
     "build": "rimraf -r dist && tsc && node scripts/copyNonTxFiles.mjs",
     "start": "node dist/server.js",
