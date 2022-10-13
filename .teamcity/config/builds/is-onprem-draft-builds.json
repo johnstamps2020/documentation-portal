@@ -63,7 +63,7 @@
       "filter": "IS-BC-OnPrem-Draft.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
-      "srcId": "isupgradeguide202011src",
+      "srcId": "isupgradeguide1021src",
       "docId": "selfmanagedbcupgradeguide10x"
     },
     {
@@ -71,7 +71,7 @@
       "filter": "IS-CC-OnPrem-Draft.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
-      "srcId": "isupgradeguide202011src",
+      "srcId": "isupgradeguide1021src",
       "docId": "selfmanagedccupgradeguide10x"
     },
     {
@@ -79,7 +79,7 @@
       "filter": "IS-PC-OnPrem-Draft.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
-      "srcId": "isupgradeguide202011src",
+      "srcId": "isupgradeguide1021src",
       "docId": "selfmanagedpcupgradeguide10x"
     }
   ]
