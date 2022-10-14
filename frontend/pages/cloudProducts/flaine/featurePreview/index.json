@@ -10,11 +10,23 @@
       "items": [
         {
           "label": "Jutro Digital Platform",
-          "id": "jutroplatformnext"
+          "id": "jutroplatformnext",
+          "env": ["int"]
         },
         {
           "label": "Jutro SDK",
-          "id": "jutrosdknext"
+          "id": "jutrosdknext",
+          "env": ["int"]
+        },
+        {
+          "label": "Jutro Digital Platform",
+          "id": "jutroplatformflaine",
+          "env": ["staging", "prod"]
+        },
+        {
+          "label": "Jutro SDK",
+          "id": "jutrosdkflaine",
+          "env": ["staging", "prod"]
         }
       ]
     },
