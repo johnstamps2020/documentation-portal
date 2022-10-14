@@ -226,6 +226,13 @@
       "branch": "main"
     },
     {
+      "id": "srcjutrosdkflaine",
+      "title": "Jutro SDK Flaine",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
+      "branch": "release/flaine"
+    },
+    {
       "id": "srcjutrohackathon",
       "title": "Jutro Design System Hackathon",
       "sourceType": "git",
@@ -427,6 +434,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
       "branch": "release/8.2.0"
+    },
+    {
+      "id": "srcjutro830",
+      "title": "Jutro Design System 8.3.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/8.3.0"
     },
     {
       "id": "srcjutro831",
