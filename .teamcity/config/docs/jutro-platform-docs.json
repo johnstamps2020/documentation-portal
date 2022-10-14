@@ -15,6 +15,24 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
+      "internal": true,
+      "earlyAccess": true
+    },
+    {
+      "id": "jutroplatformflaine",
+      "title": "Jutro Digital Platform",
+      "url": "jutro/platform/flaine",
+      "metadata": {
+        "product": ["Jutro Digital Platform"],
+        "platform": ["Cloud"],
+        "version": ["8.22.0"],
+        "subject": ["Administration"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
       "internal": false,
       "earlyAccess": true
     }

@@ -7,6 +7,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-platform-docs.git",
       "branch": "main"
+    },
+    {
+      "id": "srcjutroplatformflaine",
+      "title": "Jutro Digital Platform Next",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-platform-docs.git",
+      "branch": "main"
     }
   ]
 }
