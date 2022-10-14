@@ -372,7 +372,7 @@
         "subject": ["Best practices"],
         "release": ["Flaine"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
