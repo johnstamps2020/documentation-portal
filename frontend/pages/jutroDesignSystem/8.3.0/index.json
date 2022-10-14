@@ -1,5 +1,5 @@
 {
-  "title": "Jutro Design System 8.3.1 (Flaine)",
+  "title": "Jutro Design System 8.3.0 (Flaine)",
   "template": "page",
   "class": "twoColumns",
   "items": [
@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "Jutro Design System and UI Framework",
-          "id": "jutro831"
+          "id": "jutro830"
         }
       ]
     },
@@ -19,7 +19,7 @@
       "items": [
         {
           "label": "Jutro Storybook",
-          "id": "storybook831"
+          "id": "storybook830"
         }
       ]
     }
