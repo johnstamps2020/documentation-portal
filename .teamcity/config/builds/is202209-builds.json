@@ -18,13 +18,13 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "ReleaseNotes-files/bc/2022.05",
-          "targetFolder": "extras/ReleaseNotes-files/bc/2022.05",
+          "sourceFolder": "ReleaseNotes-files/bc/2022.09",
+          "targetFolder": "extras/ReleaseNotes-files/bc/2022.09",
           "srcId": "insurancesuiteextrassrc"
         },
         {
-          "sourceFolder": "ReleaseNotes-files/cm/2022.05",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2022.05",
+          "sourceFolder": "ReleaseNotes-files/cm/2022.09",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2022.09",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
@@ -131,8 +131,8 @@
           "srcId": "insurancesuiteextrassrc"
         },
         {
-          "sourceFolder": "ReleaseNotes-files/cm/2022.05",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2022.05",
+          "sourceFolder": "ReleaseNotes-files/cm/2022.09",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2022.09",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
@@ -255,8 +255,8 @@
           "srcId": "insurancesuiteextrassrc"
         },
         {
-          "sourceFolder": "ReleaseNotes-files/cm/2022.05",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2022.05",
+          "sourceFolder": "ReleaseNotes-files/cm/2022.09",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2022.09",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
