@@ -5,6 +5,7 @@ const config: Config.InitialOptions = {
   testTimeout: 13006,
   testEnvironment: 'node',
   coveragePathIgnorePatterns: ['/node_modules/'],
+  testPathIgnorePatterns: ['/node_modules/', '<rootDir>/dist/'],
   displayName: {
     name: 'DOCUMENTATION PORTAL',
     color: 'magenta',

@@ -32,10 +32,6 @@ module.exports = {
       import: './src/html5home/html5skipTemplate.js',
       filename: 'html5skip.js',
     },
-    frontend: {
-      import: './src/frontend/index.tsx',
-      filename: 'frontend/index.js',
-    },
   },
   plugins: [
     new MiniCssExtractPlugin({

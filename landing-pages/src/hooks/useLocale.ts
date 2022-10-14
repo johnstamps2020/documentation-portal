@@ -49,8 +49,7 @@ const l10nMappings: l10NMapping = {
 };
 
 export function useLocaleParams(): L10N {
-  const navigatorLanguage = navigator.language;
-  const matchingLocaleParams = l10nMappings[navigatorLanguage];
+  const matchingLocaleParams = l10nMappings[navigator.language];
   if (matchingLocaleParams) {
     return matchingLocaleParams;
   }
