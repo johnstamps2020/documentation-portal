@@ -67,8 +67,6 @@ function reactAppProxy(req: Request, res: Response, next: NextFunction) {
     },
     next
   );
-
-  res.sendFile(`${reactAppRoot}/index.html`);
 }
 
 function reactDevProxy(req: Request, res: Response, next: NextFunction) {
