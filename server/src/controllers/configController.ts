@@ -232,6 +232,23 @@ function readFilesInDir(dirPath: string, deployEnv: Environment): DocConfig[] {
   }
 }
 
+async function fetchConfig() {
+  const result = await fetch(
+    `${process.env.DOC_S3_URL}/portal-config/config.json`
+  );
+  if (result.ok == false) {
+    throw new Error(
+      `Response status: ${result.status}
+              Response type: ${result.type}
+              Response URL: ${result.url}
+              Response redirected: ${result.redirected}`
+    );
+  }
+  const config = await result.json();
+
+  return config.docs;
+}
+
 export async function putConfigInDatabase(): Promise<{
   status: integer;
   body: any;
@@ -249,7 +266,14 @@ export async function putConfigInDatabase(): Promise<{
       `${__dirname}/../../../.teamcity/config/docs`
     );
 
-    const localConfig = readFilesInDir(localConfigDir, selectedEnv);
+    const localConfig = await (async () => {
+      if (process.env.NODE_ENV === 'development') {
+        return readFilesInDir(localConfigDir, selectedEnv);
+      }
+
+      const fetchedConfig = await fetchConfig();
+      return fetchedConfig;
+    })();
 
     // FIXME: Test data, remove after testing
     const BillingCenterName = new ProductName();

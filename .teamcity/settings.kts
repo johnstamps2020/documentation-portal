@@ -1503,6 +1503,50 @@ object Frontend {
         }
     }
 
+    private fun createDeployReactLandingPagesBuildType(deploy_env: String): BuildType {
+        return BuildType {
+            name = "Deploy React landing pages to $deploy_env"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                branchFilter = "+:<default>"
+                cleanCheckout = true
+            }
+
+            val publishPath = "landing-pages-react"
+
+            steps {
+                step(GwBuildSteps.createBuildYarnProjectStep(
+                    deploy_env,
+                    publishPath,
+                    "build",
+                    "16.18.0",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "landing-pages",
+                    null,
+                    false))
+                step(GwBuildSteps.createUploadContentToS3BucketStep(
+                    deploy_env,
+                    "%teamcity.build.checkoutDir%/landing-pages/build",
+                    publishPath
+                ))
+            }
+
+            triggers {
+                vcs {
+                    triggerRules = """
+                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/**
+                            -:user=doctools:**
+                            """.trimIndent()
+                }
+            }
+        }
+    }
+
     private fun createDeployHtml5DependenciesBuildType(deploy_env: String): BuildType {
         return BuildType {
             name = "Deploy HTML5 dependencies to $deploy_env"
