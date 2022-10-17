@@ -265,8 +265,7 @@
         "environments",
         "internal",
         "earlyAccess",
-        "public",
-        "displayOnLandingPages"
+        "public"
       ],
       "properties": {
         "id": {
