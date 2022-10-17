@@ -22,6 +22,7 @@ import {
   FindOptionsWhere,
   SaveOptions,
 } from 'typeorm';
+import { runningInDevMode } from './utils/serverUtils';
 
 function optionsAreValid(options: {}) {
   return (
@@ -267,7 +268,7 @@ export async function putConfigInDatabase(): Promise<{
     );
 
     const localConfig = await (async () => {
-      if (process.env.NODE_ENV === 'development') {
+      if (runningInDevMode()) {
         return readFilesInDir(localConfigDir, selectedEnv);
       }
 

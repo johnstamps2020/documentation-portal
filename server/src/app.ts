@@ -13,6 +13,7 @@ import favicon from 'serve-favicon';
 import session from 'cookie-session';
 import httpContext from 'express-http-context';
 import { AppDataSource } from './model/connection';
+import { runningInDevMode } from './controllers/utils/serverUtils';
 
 AppDataSource.initialize()
   .then(() => {
@@ -150,16 +151,18 @@ const {
 // Portal 2: Electric Boogaloo
 app.use('/portal', portal2Proxy);
 
+const isDevMode = runningInDevMode();
+
 // Add landing pages
 const landingPageRoute = '/landing';
-if (process.env.NODE_ENV === 'development') {
+if (isDevMode) {
   app.use(landingPageRoute, reactDevProxy);
 } else {
   app.use(landingPageRoute, reactAppProxy);
 }
 
 // HTML5 scripts, local or S3
-if (process.env.NODE_ENV === 'development') {
+if (isDevMode) {
   app.use(express.static(join(__dirname, '../static/html5'), options));
 } else {
   app.use('/scripts', html5Proxy);
