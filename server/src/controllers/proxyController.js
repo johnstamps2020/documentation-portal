@@ -60,7 +60,7 @@ function reactAppProxy(req, res, next) {
     req,
     res,
     {
-      target: `${process.env.DOC_S3_URL}/landing-page/index.html`,
+      target: `${process.env.DOC_S3_URL}/landing-pages-react/landing`,
       changeOrigin: true,
     },
     next
