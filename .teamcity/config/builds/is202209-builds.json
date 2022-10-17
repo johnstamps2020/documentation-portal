@@ -126,8 +126,8 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "ReleaseNotes-files/cc/2022.05",
-          "targetFolder": "extras/ReleaseNotes-files/cc/2022.05",
+          "sourceFolder": "ReleaseNotes-files/cc/2022.09",
+          "targetFolder": "extras/ReleaseNotes-files/cc/2022.09",
           "srcId": "insurancesuiteextrassrc"
         },
         {
