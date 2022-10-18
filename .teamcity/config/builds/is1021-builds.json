@@ -114,7 +114,7 @@
       "filter": "IS-BC-OnPrem-Release.ditaval",
       "root": "TestingGuide.ditamap",
       "srcId": "is1021src",
-      "docId": "isbc1021test",
+      "docId": "isbc1021testing",
       "indexRedirect": true
     },
     {
@@ -238,7 +238,7 @@
       "filter": "IS-CC-OnPrem-Release.ditaval",
       "root": "TestingGuide.ditamap",
       "srcId": "is1021src",
-      "docId": "iscc1021test",
+      "docId": "iscc1021testing",
       "indexRedirect": true
     },
     {
@@ -386,7 +386,7 @@
       "filter": "IS-PC-OnPrem-Release.ditaval",
       "root": "TestingGuide.ditamap",
       "srcId": "is1021src",
-      "docId": "ispc1021test",
+      "docId": "ispc1021testing",
       "indexRedirect": true
     },
     {
