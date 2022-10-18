@@ -1,6 +1,5 @@
 import Stack from "@mui/material/Stack";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { type } from "@testing-library/user-event/dist/type";
 import { Link } from "react-router-dom";
 
 type BreadcrumbItem = {
