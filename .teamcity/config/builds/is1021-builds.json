@@ -263,7 +263,7 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-OnPrem-Release.ditaval",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
       "root": "AdvancedProductDesigner.ditamap",
       "srcId": "is1021src",
       "docId": "ispc1021apd",
