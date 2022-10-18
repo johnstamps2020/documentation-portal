@@ -265,12 +265,24 @@
           "class": "group",
           "items": [
             {
-              "label": "Release Notes",
+              "label": "App Events Release Notes",
+              "id": "appeventsrn"
+            },
+            {
+              "label": "App Events for Developers",
+              "id": "appeventsdev"
+            },
+            {
+              "label": "Integration Gateway Release Notes",
               "id": "integgatewayrnlatest"
             },
             {
               "label": "Integration Gateway Developer Guide",
               "id": "integgatewaydevlatest"
+            },
+            {
+              "label": "Webhooks API Reference",
+              "id": "webhooksapinext"
             }
           ]
         },
