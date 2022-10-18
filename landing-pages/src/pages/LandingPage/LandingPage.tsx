@@ -4,11 +4,12 @@ import { mockConfig } from "./mockConfig";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Grid from "@mui/material/Unstable_Grid2";
 import LandingPageItem from "../../components/LandingPageItem/LandingPageItem";
+import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 
 export default function LandingPage() {
   const params = useParams();
   const pagePathFromRouter = params["*"];
-  const { title, pagePath, items } = mockConfig;
+  const { title, pagePath, items, breadcrumbs } = mockConfig;
 
   if (pagePathFromRouter !== pagePath) {
     return (
@@ -27,6 +28,7 @@ export default function LandingPage() {
     <Layout title={title}>
       <Grid container spacing={2}>
         <Grid xs={12}>
+          <Breadcrumbs breadcrumbs={breadcrumbs} />
           <h1>{title}</h1>
         </Grid>
         {items.map((item) => (

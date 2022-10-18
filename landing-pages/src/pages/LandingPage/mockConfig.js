@@ -2,6 +2,16 @@ export const mockConfig = {
   title: "Elysian",
   template: "page",
   pagePath: "cloudProducts/elysian",
+  breadcrumbs: [
+    {
+      label: "Cloud",
+      link: "#",
+    },
+    {
+      label: "Releases",
+      link: "#",
+    },
+  ],
   class: "blue-theme elysian threeCards",
   selector: {
     label: "Select release",
