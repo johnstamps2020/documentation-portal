@@ -1,6 +1,5 @@
-'use strict';
-
 import { NextFunction, Request, Response } from 'express';
+import fetch from 'node-fetch';
 
 const HttpProxy = require('http-proxy');
 const proxy = new HttpProxy();
@@ -58,15 +57,21 @@ function portal2Proxy(req: Request, res: Response, next: NextFunction) {
 
 function reactAppProxy(req: Request, res: Response, next: NextFunction) {
   const reactAppRoot = `${process.env.DOC_S3_URL}/landing-pages-react`;
-  proxy.web(
-    req,
-    res,
-    {
-      target: reactAppRoot,
-      changeOrigin: true,
-    },
-    next
-  );
+  if (!req.url.match(/[a-zA-Z0-9]\.[a-zA-Z0-9]+$/)) {
+    fetch(`${reactAppRoot}/index.html`)
+      .then(response => response.body.pipe(res))
+      .catch(err => res.status(500).send(err));
+  } else {
+    proxy.web(
+      req,
+      res,
+      {
+        target: reactAppRoot,
+        changeOrigin: true,
+      },
+      next
+    );
+  }
 }
 
 function reactDevProxy(req: Request, res: Response, next: NextFunction) {
