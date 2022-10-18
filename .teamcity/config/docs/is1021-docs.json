@@ -80,7 +80,7 @@
         "version": ["10.2.1"],
         "subject": ["Installation"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -318,7 +318,7 @@
         "version": ["10.2.1"],
         "subject": ["Installation"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
