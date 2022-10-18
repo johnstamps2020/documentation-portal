@@ -1,10 +1,9 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import { mockConfig } from "./mockConfig";
-import DoneIcon from "@mui/icons-material/Done";
-import CloseIcon from "@mui/icons-material/Close";
-import Card from "@mui/material/Card";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import Grid from "@mui/material/Unstable_Grid2";
+import LandingPageItem from "../../components/LandingPageItem/LandingPageItem";
 
 export default function LandingPage() {
   const params = useParams();
@@ -26,24 +25,19 @@ export default function LandingPage() {
 
   return (
     <Layout title={title}>
-      <h1>{title}</h1>
-      <div style={{ display: "flex", alignItems: "center", fontSize: "80%" }}>
-        <div>You are here: {pagePathFromRouter} </div>
-        <div>
-          {pagePathFromRouter === pagePath ? (
-            <DoneIcon fontSize="small" />
-          ) : (
-            <CloseIcon fontSize="small" />
-          )}
-        </div>
-      </div>
-      <div>
+      <Grid container spacing={2}>
+        <Grid xs={12}>
+          <h1>{title}</h1>
+        </Grid>
         {items.map((item) => (
-          <Card>
+          <Grid xs={12} md={6} lg={4}>
             <h2>{item.label}</h2>
-          </Card>
+            {item.items.map((subItem) => (
+              <LandingPageItem {...subItem} />
+            ))}
+          </Grid>
         ))}
-      </div>
+      </Grid>
     </Layout>
   );
 }
