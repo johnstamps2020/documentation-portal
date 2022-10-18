@@ -3,7 +3,6 @@ import { NextFunction, Request, Response } from 'express';
 import { decode, JwtPayload } from 'jsonwebtoken';
 import { isPublicDoc, isInternalDoc } from './configController';
 import { addCommonDataToSessionLocals } from './localsController';
-import { isPageAndIsInternal } from './frontendController';
 import { winstonLogger } from './loggerController';
 
 const loginGatewayRoute = '/gw-login';
@@ -249,18 +248,6 @@ async function checkIfRouteIsInternal(req: Request) {
     winstonLogger.error(
       `Problem checking if route in the list of internal routes internal 
           ERROR: ${JSON.stringify(err)}`
-    );
-  }
-
-  try {
-    const result = await isPageAndIsInternal(req);
-    if (result) {
-      return true;
-    }
-  } catch (err) {
-    winstonLogger.error(
-      `Problem checking if route is a page and is internal 
-          ERROR: ${err} ${JSON.stringify(err)}`
     );
   }
 

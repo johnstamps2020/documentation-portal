@@ -12,12 +12,6 @@ function getMockLanguages() {
   );
 }
 
-export async function isPageAndIsInternal(req: Request): Promise<boolean> {
-  // TO DO: check page path, see if it's set to "internal"
-  winstonLogger.error('isPageAndIsInternal: FUNCTION NOT IMPLEMENTED!!!');
-  return new Promise(resolve => resolve(false));
-}
-
 export async function getTranslatedPages() {
   try {
     const rootTranslatedPageConfigFilePath = new URL(
