@@ -4,11 +4,25 @@ import { mockConfig } from "./mockConfig";
 import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
 import Card from "@mui/material/Card";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 export default function LandingPage() {
   const params = useParams();
   const pagePathFromRouter = params["*"];
   const { title, pagePath, items } = mockConfig;
+
+  if (pagePathFromRouter !== pagePath) {
+    return (
+      <ErrorPage
+        code={404}
+        message={
+          <>
+            Page not found <code>{pagePathFromRouter}</code>
+          </>
+        }
+      />
+    );
+  }
 
   return (
     <Layout title={title}>
