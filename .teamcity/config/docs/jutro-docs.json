@@ -1457,7 +1457,7 @@
         "version": ["latest"],
         "subject": ["Best practices"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
