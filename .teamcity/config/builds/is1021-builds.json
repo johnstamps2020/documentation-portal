@@ -126,13 +126,13 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "ReleaseNotes-files/cc/10.X",
-          "targetFolder": "extras/ReleaseNotes-files/cc/10.X",
+          "sourceFolder": "ReleaseNotes-files/cc/10.x",
+          "targetFolder": "extras/ReleaseNotes-files/cc/10.x",
           "srcId": "insurancesuiteextrassrc"
         },
         {
-          "sourceFolder": "ReleaseNotes-files/cm/10.X",
-          "targetFolder": "extras/ReleaseNotes-files/cm/10.X",
+          "sourceFolder": "ReleaseNotes-files/cm/10.x",
+          "targetFolder": "extras/ReleaseNotes-files/cm/10.x",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
@@ -250,13 +250,13 @@
       "indexRedirect": true,
       "resources": [
         {
-          "sourceFolder": "ReleaseNotes-files/pc/10.X",
-          "targetFolder": "extras/ReleaseNotes-files/pc/10.X",
+          "sourceFolder": "ReleaseNotes-files/pc/10.x",
+          "targetFolder": "extras/ReleaseNotes-files/pc/10.x",
           "srcId": "insurancesuiteextrassrc"
         },
         {
-          "sourceFolder": "ReleaseNotes-files/cm/10.X",
-          "targetFolder": "extras/ReleaseNotes-files/cm/10.X",
+          "sourceFolder": "ReleaseNotes-files/cm/10.x",
+          "targetFolder": "extras/ReleaseNotes-files/cm/10.x",
           "srcId": "insurancesuiteextrassrc"
         }
       ]
