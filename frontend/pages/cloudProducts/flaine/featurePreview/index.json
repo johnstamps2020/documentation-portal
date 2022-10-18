@@ -45,24 +45,6 @@
       ]
     },
     {
-      "label": "Integration Framework",
-      "class": "subject development",
-      "items": [
-        {
-          "label": "App Events Release Notes",
-          "id": "appeventsrn"
-        },
-        {
-          "label": "App Events for Developers",
-          "id": "appeventsdev"
-        },
-        {
-          "label": "Webhooks API Reference",
-          "id": "webhooksapinext"
-        }
-      ]
-    },
-    {
       "label": "Testing",
       "class": "subject bestPractices",
       "items": [

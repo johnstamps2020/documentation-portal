@@ -39,6 +39,10 @@
           "id": "ispc202209releasenotes"
         },
         {
+          "label": "App Events Release Notes",
+          "id": "appeventsrn"
+        },
+        {
           "label": "AppReader Release Notes",
           "id": "appreaderrn400"
         },
@@ -157,6 +161,10 @@
           "id": "is202209integoverview"
         },
         {
+          "label": "App Events for Developers",
+          "id": "appeventsdev"
+        },
+        {
           "label": "Cloud API Authentication",
           "id": "ispc202209apica"
         },
@@ -183,6 +191,10 @@
         {
           "label": "REST API Client",
           "id": "isrestapiclientguide"
+        },
+        {
+          "label": "Webhooks API Reference",
+          "id": "webhooksapinext"
         }
       ]
     },
