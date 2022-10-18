@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import UnauthorizedPage from "./pages/UnauthorizedPage/UnauthorizedPage";
+import FourOhFourPage from "./pages/FourOhFourPage/FourOhFourPage";
 
 const router = createBrowserRouter(
   [
@@ -17,6 +18,10 @@ const router = createBrowserRouter(
     {
       path: "/unauthorized",
       element: <UnauthorizedPage />,
+    },
+    {
+      path: "/404",
+      element: <FourOhFourPage />,
     },
     {
       path: "/*",

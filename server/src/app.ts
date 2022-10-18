@@ -75,7 +75,6 @@ const oidcLoginRouter = require('./routes/authorization-code');
 const searchRouter = require('./routes/search');
 const internalRouter = require('./routes/internal');
 const supportRouter = require('./routes/support');
-const missingPageRouter = require('./routes/404');
 const userRouter = require('./routes/user');
 const configRouter = require('./routes/config');
 const jiraRouter = require('./routes/jira');
@@ -121,7 +120,6 @@ app.use(httpContext.middleware);
 
 app.use('/internal', internalRouter);
 app.use('/search', searchRouter);
-app.use('/404', missingPageRouter);
 app.use('/userInformation', userRouter);
 app.use('/safeConfig', configRouter);
 app.use('/jira', jiraRouter);
@@ -171,20 +169,13 @@ app.use(s3Proxy);
 
 // handles unauthorized errors
 app.use(expressWinstonErrorLogger);
-app.use((err: any, req: Request, res: Response) => {
+app.use((err: Error, req: Request, res: Response) => {
   winstonLogger.error(
     `General error passed to top-level handler in app.js: ${JSON.stringify(
       err
     )}`
   );
-  if (err.httpStatusCode === 401) {
-    res.status(401).redirect('/landing/unauthorized');
-  }
-  if (err.httpStatusCode === 404) {
-    res.status(404).redirect('/404');
-  }
-  err.status = err.status || 500;
-  res.status(err.status).render('error', { err });
+  res.status(500).render('error', { err });
 });
 
 export default app;
