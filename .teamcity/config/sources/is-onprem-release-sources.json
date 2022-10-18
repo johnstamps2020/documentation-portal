@@ -2,10 +2,17 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
-      "id": "selfmanagedis1021src",
+      "id": "is1021src",
       "title": "InsuranceSuite 10.2.1",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/10.2.1"
+    },
+    {
+      "id": "isupgradeguide1021src",
+      "title": "InsuranceSuite Upgrade Guide 10.2.1",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
       "branch": "release/10.2.1"
     },
     {

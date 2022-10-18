@@ -1,0 +1,150 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "PolicyCenter 10.2.1",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ispc1021releasenotes"
+        },
+        {
+          "label": "New and Changed",
+          "id": "ispc1021newandchanged"
+        },
+        {
+          "label": "REST API Client Release Notes",
+          "id": "isrestapiclientrn"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation",
+          "id": "ispc1021install"
+        },
+        {
+          "label": "Upgrade",
+          "id": "ispc1021upgrade"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "ispc1021app"
+        },
+        {
+          "label": "Contact Management",
+          "id": "ispc1021contact"
+        },
+        {
+          "label": "InsuranceSuite Guide",
+          "id": "ispc1021isguide"
+        }
+      ]
+    },
+    {
+      "label": "Best Practices",
+      "class": "subject bestPractices",
+      "items": [
+        {
+          "label": "Best Practices",
+          "id": "ispc1021best"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "ispc1021admin"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Advanced Product Designer in PolicyCenter",
+          "id": "ispc1021apd"
+        },
+        {
+          "label": "Configuration",
+          "id": "ispc1021config"
+        },
+        {
+          "label": "Globalization",
+          "id": "ispc1021global"
+        },
+        {
+          "label": "Gosu Rules",
+          "id": "ispc1021rules"
+        },
+        {
+          "label": "Product Designer",
+          "id": "ispc1021pd"
+        },
+        {
+          "label": "Product Model",
+          "id": "ispc1021pm"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Integration",
+          "id": "ispc1021integ"
+        },
+        {
+          "label": "REST API Client",
+          "id": "isrestapiclientguide"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "gosureflatest"
+        },
+        {
+          "label": "ISBTF and GUnit Testing",
+          "id": "ispc1021testing"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "ispc1021restapifw"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "gwglossary"
+        }
+      ]
+    }
+  ]
+}

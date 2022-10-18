@@ -271,54 +271,6 @@
       "earlyAccess": false
     },
     {
-      "id": "selfmanagedbcupgradeguide1021",
-      "title": "BillingCenter Upgrade Guide",
-      "url": "self-managed/bc/upgrade/1021",
-      "displayOnLandingPages": true,
-      "metadata": {
-        "platform": ["Self-managed"],
-        "product": ["BillingCenter"],
-        "version": ["10.2.1"]
-      },
-      "environments": ["staging", "prod"],
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "selfmanagedccupgradeguide1021",
-      "title": "ClaimCenter Upgrade Guide",
-      "url": "self-managed/cc/upgrade/1021",
-      "displayOnLandingPages": true,
-      "metadata": {
-        "platform": ["Self-managed"],
-        "product": ["ClaimCenter"],
-        "version": ["10.2.1"]
-      },
-      "environments": ["staging", "prod"],
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "selfmanagedpcupgradeguide1021",
-      "title": "PolicyCenter Upgrade Guide",
-      "url": "self-managed/pc/upgrade/1021",
-      "displayOnLandingPages": true,
-      "metadata": {
-        "platform": ["Self-managed"],
-        "product": ["PolicyCenter"],
-        "version": ["10.2.1"]
-      },
-      "environments": ["staging", "prod"],
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "selfmanagedbcupgradeguide1020",
       "title": "BillingCenter Upgrade Guide",
       "url": "self-managed/bc/upgrade/1020",
@@ -505,54 +457,6 @@
         "version": ["10.1.0"]
       },
       "environments": ["dev", "staging", "prod"],
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "bc1021",
-      "title": "BillingCenter",
-      "url": "self-managed/bc/1021",
-      "metadata": {
-        "platform": ["Self-managed"],
-        "product": ["BillingCenter"],
-        "version": ["10.2.1"]
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "cc1021",
-      "title": "ClaimCenter",
-      "url": "self-managed/cc/1021",
-      "metadata": {
-        "platform": ["Self-managed"],
-        "product": ["ClaimCenter"],
-        "version": ["10.2.1"]
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "pc1021",
-      "title": "PolicyCenter",
-      "url": "self-managed/pc/1021",
-      "metadata": {
-        "platform": ["Self-managed"],
-        "product": ["PolicyCenter"],
-        "version": ["10.2.1"]
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": false,
