@@ -1,5 +1,9 @@
 import "./App.css";
-import { createBrowserRouter, RouterProvider, Link } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import UnauthorizedPage from "./pages/UnauthorizedPage/UnauthorizedPage";
 
@@ -7,7 +11,8 @@ const router = createBrowserRouter(
   [
     {
       path: "/",
-      element: <Link to="/live-there/befriend-fish">Go into the water</Link>,
+
+      element: <Navigate to="/cloudProducts/elysian" />,
     },
     {
       path: "/unauthorized",
