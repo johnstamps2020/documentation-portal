@@ -148,6 +148,7 @@ async function isLoggedInOrHasValidToken(req: Request) {
 const majorPublicRoutes = [
   '/landing/404',
   '/landing/unauthorized',
+  '/landing/error',
   '/product',
   '/alive',
   '/userInformation',

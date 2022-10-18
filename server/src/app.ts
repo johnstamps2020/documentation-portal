@@ -73,7 +73,6 @@ const partnersLoginRouter = require('./routes/partners-login');
 const customersLoginRouter = require('./routes/customers-login');
 const oidcLoginRouter = require('./routes/authorization-code');
 const searchRouter = require('./routes/search');
-const unauthorizedRouter = require('./routes/unauthorized');
 const internalRouter = require('./routes/internal');
 const supportRouter = require('./routes/support');
 const missingPageRouter = require('./routes/404');
@@ -120,7 +119,6 @@ app.use(cookieParser());
 
 app.use(httpContext.middleware);
 
-app.use('/unauthorized', unauthorizedRouter);
 app.use('/internal', internalRouter);
 app.use('/search', searchRouter);
 app.use('/404', missingPageRouter);
@@ -132,7 +130,7 @@ app.use('/recommendations', recommendationsRouter);
 app.use('/support', supportRouter);
 
 app.use('/portal-config/*', (req, res) => {
-  res.redirect('/unauthorized');
+  res.redirect('/landing/unauthorized');
 });
 
 // overwrite HTML received through proxy
@@ -179,8 +177,8 @@ app.use((err: any, req: Request, res: Response) => {
       err
     )}`
   );
-  if (err.httpStatusCode === 304) {
-    res.status(304).redirect('/unauthorized');
+  if (err.httpStatusCode === 401) {
+    res.status(401).redirect('/landing/unauthorized');
   }
   if (err.httpStatusCode === 404) {
     res.status(404).redirect('/404');

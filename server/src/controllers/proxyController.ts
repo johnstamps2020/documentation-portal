@@ -55,11 +55,45 @@ function portal2Proxy(req: Request, res: Response, next: NextFunction) {
   );
 }
 
+function getStatusCode(reqUrl: string): number {
+  const matches: {
+    snippet: string;
+    code: number;
+  }[] = [
+    {
+      snippet: 'unauthorized',
+      code: 401,
+    },
+    {
+      snippet: '404',
+      code: 404,
+    },
+    {
+      snippet: 'error',
+      code: 500,
+    },
+  ];
+
+  for (const match of matches) {
+    if (
+      reqUrl.endsWith(`/${match.snippet}`) ||
+      reqUrl.endsWith(`/${match.snippet}/`)
+    ) {
+      return match.code;
+    }
+  }
+
+  return 200;
+}
+
 function reactAppProxy(req: Request, res: Response, next: NextFunction) {
   const reactAppRoot = `${process.env.DOC_S3_URL}/landing-pages-react`;
   if (!req.url.match(/[a-zA-Z0-9]\.[a-zA-Z0-9]+$/)) {
     fetch(`${reactAppRoot}/index.html`)
-      .then(response => response.body.pipe(res))
+      .then(response => {
+        res.status(getStatusCode(req.url));
+        response.body.pipe(res);
+      })
       .catch(err => res.status(500).send(err));
   } else {
     proxy.web(

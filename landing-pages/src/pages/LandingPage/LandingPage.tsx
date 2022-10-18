@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import Layout from "../Layout/Layout";
+import Layout from "../../components/Layout/Layout";
 import { mockConfig } from "./mockConfig";
 import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
