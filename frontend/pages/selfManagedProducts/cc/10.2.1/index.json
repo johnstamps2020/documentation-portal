@@ -1,0 +1,138 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "ClaimCenter 10.2.1",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "iscc1021releasenotes"
+        },
+        {
+          "label": "New and Changed",
+          "id": "iscc1021newandchanged"
+        },
+        {
+          "label": "REST API Client Release Notes",
+          "id": "isrestapiclientrn"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation",
+          "id": "iscc1021install"
+        },
+        {
+          "label": "Upgrade",
+          "id": "iscc1021upgrade"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "iscc1021app"
+        },
+        {
+          "label": "Contact Management",
+          "id": "iscc1021contact"
+        },
+        {
+          "label": "InsuranceSuite Guide",
+          "id": "iscc1021isguide"
+        }
+      ]
+    },
+    {
+      "label": "Best Practices",
+      "class": "subject bestPractices",
+      "items": [
+        {
+          "label": "Best Practices",
+          "id": "iscc1021best"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "iscc1021admin"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration",
+          "id": "iscc1021config"
+        },
+        {
+          "label": "Globalization",
+          "id": "iscc1021global"
+        },
+        {
+          "label": "Gosu Rules",
+          "id": "iscc1021rules"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Integration",
+          "id": "iscc1021integ"
+        },
+        {
+          "label": "REST API Client",
+          "id": "isrestapiclientguide"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "gosureflatest"
+        },
+        {
+          "label": "ISBTF and GUnit Testing",
+          "id": "iscc1021testing"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "iscc1021restapifw"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "gwglossary"
+        }
+      ]
+    }
+  ]
+}
