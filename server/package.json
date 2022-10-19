@@ -45,8 +45,8 @@
     "msw": "^0.47.3",
     "node-fetch": "^2.6.7",
     "openid-client": "^4.9.1",
-    "passport": "^0.5.2",
-    "passport-saml": "^3.2.1",
+    "passport": "0.6.0",
+    "passport-saml": "3.2.2",
     "pg": "^8.8.0",
     "prettier": "^1.19.1",
     "process": "^0.11.10",
@@ -96,7 +96,8 @@
   "resolutions": {
     "minimist": "^1.2.6",
     "html-select": "2.3.24",
-    "terser": "5.14.2"
+    "terser": "5.14.2",
+    "@xmldom/xmldom": "0.7.6"
   },
   "packageManager": "yarn@3.2.1"
 }
