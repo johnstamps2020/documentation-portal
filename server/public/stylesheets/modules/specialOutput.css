@@ -1,0 +1,15 @@
+.skiReleaseWhatsNew section.section {
+  margin: 3rem 0;
+}
+
+.skiReleaseWhatsNew section.section h2.sectiontitle {
+  font-size: 32px;
+}
+
+.skiReleaseWhatsNew section.section dt.dt {
+  font-size: 24px;
+}
+
+.skiReleaseWhatsNew section.section dd.dd {
+  margin-left: 0;
+}
