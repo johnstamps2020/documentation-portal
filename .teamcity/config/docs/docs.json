@@ -607,7 +607,7 @@
       "earlyAccess": false
     },
     {
-      "id": "bc1010staging",
+      "id": "bc1010",
       "title": "BillingCenter",
       "url": "self-managed/bc/1010",
       "metadata": {
@@ -623,7 +623,7 @@
       "earlyAccess": false
     },
     {
-      "id": "cc1010staging",
+      "id": "cc1010",
       "title": "ClaimCenter",
       "url": "self-managed/cc/1010",
       "metadata": {
@@ -639,7 +639,7 @@
       "earlyAccess": false
     },
     {
-      "id": "pc1010staging",
+      "id": "pc1010",
       "title": "PolicyCenter",
       "url": "self-managed/pc/1010",
       "metadata": {
