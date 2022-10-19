@@ -13,6 +13,7 @@ import favicon from 'serve-favicon';
 import session from 'cookie-session';
 import httpContext from 'express-http-context';
 import { AppDataSource } from './model/connection';
+import { runningInDevMode } from './controllers/utils/serverUtils';
 
 AppDataSource.initialize()
   .then(() => {
@@ -72,10 +73,8 @@ const partnersLoginRouter = require('./routes/partners-login');
 const customersLoginRouter = require('./routes/customers-login');
 const oidcLoginRouter = require('./routes/authorization-code');
 const searchRouter = require('./routes/search');
-const unauthorizedRouter = require('./routes/unauthorized');
 const internalRouter = require('./routes/internal');
 const supportRouter = require('./routes/support');
-const missingPageRouter = require('./routes/404');
 const userRouter = require('./routes/user');
 const configRouter = require('./routes/config');
 const jiraRouter = require('./routes/jira');
@@ -112,8 +111,6 @@ passport.deserializeUser(function(user: any, done: any) {
   done(null, user);
 });
 app.use(authGateway);
-const getPage = require('./controllers/frontendController').getPage;
-app.use(getPage);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -121,10 +118,8 @@ app.use(cookieParser());
 
 app.use(httpContext.middleware);
 
-app.use('/unauthorized', unauthorizedRouter);
 app.use('/internal', internalRouter);
 app.use('/search', searchRouter);
-app.use('/404', missingPageRouter);
 app.use('/userInformation', userRouter);
 app.use('/safeConfig', configRouter);
 app.use('/jira', jiraRouter);
@@ -133,7 +128,7 @@ app.use('/recommendations', recommendationsRouter);
 app.use('/support', supportRouter);
 
 app.use('/portal-config/*', (req, res) => {
-  res.redirect('/unauthorized');
+  res.redirect('/landing/unauthorized');
 });
 
 // overwrite HTML received through proxy
@@ -145,13 +140,25 @@ const {
   portal2Proxy,
   s3Proxy,
   html5Proxy,
+  reactAppProxy,
+  reactDevProxy,
 } = require('./controllers/proxyController');
 
 // Portal 2: Electric Boogaloo
 app.use('/portal', portal2Proxy);
 
+const isDevMode = runningInDevMode();
+
+// Add landing pages
+const landingPageRoute = '/landing';
+if (isDevMode) {
+  app.use(landingPageRoute, reactDevProxy);
+} else {
+  app.use(landingPageRoute, reactAppProxy);
+}
+
 // HTML5 scripts, local or S3
-if (process.env.NODE_ENV === 'development') {
+if (isDevMode) {
   app.use(express.static(join(__dirname, '../static/html5'), options));
 } else {
   app.use('/scripts', html5Proxy);
@@ -162,20 +169,13 @@ app.use(s3Proxy);
 
 // handles unauthorized errors
 app.use(expressWinstonErrorLogger);
-app.use((err: any, req: Request, res: Response) => {
+app.use((err: Error, req: Request, res: Response) => {
   winstonLogger.error(
     `General error passed to top-level handler in app.js: ${JSON.stringify(
       err
     )}`
   );
-  if (err.httpStatusCode === 304) {
-    res.status(304).redirect('/unauthorized');
-  }
-  if (err.httpStatusCode === 404) {
-    res.status(404).redirect('/404');
-  }
-  err.status = err.status || 500;
-  res.status(err.status).render('error', { err });
+  res.status(500).render('error', { err });
 });
 
 export default app;

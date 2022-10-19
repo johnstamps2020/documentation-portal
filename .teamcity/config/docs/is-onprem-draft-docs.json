@@ -144,54 +144,6 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    },
-    {
-      "id": "selfmanagedbcxcoxibeoa",
-      "title": "BillingCenter 9",
-      "url": "self-managed/bc/9x",
-      "metadata": {
-        "product": ["BillingCenter"],
-        "platform": ["Self-managed"],
-        "version": ["9.x"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "selfmanagedccxgfurvaqu",
-      "title": "ClaimCenter 9",
-      "url": "self-managed/cc/9x",
-      "metadata": {
-        "product": ["ClaimCenter"],
-        "platform": ["Self-managed"],
-        "version": ["9.x"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "selfmanagedpcxxbkttzbb",
-      "title": "PolicyCenter 9",
-      "url": "self-managed/pc/9x",
-      "metadata": {
-        "product": ["PolicyCenter"],
-        "platform": ["Self-managed"],
-        "version": ["9.x"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
     }
   ]
 }

@@ -12,10 +12,6 @@ const redirectUrls = [
     to: 'cloud/gw-feature-preview/igrelnotes',
   },
   {
-    from: 'cloud/restapi/latest/Integration',
-    to: 'cloud/gw-feature-preview/integgateway',
-  },
-  {
     from: 'cloudProducts/Aspen',
     to: 'cloudProducts/aspen',
   },

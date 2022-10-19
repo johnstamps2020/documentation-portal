@@ -107,7 +107,7 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Digital Applications",
+          "label": "Digital Reference Applications",
           "class": "group",
           "items": [
             {
@@ -141,7 +141,7 @@
           ]
         },
         {
-          "label": "Jutro Design System 8.3.0",
+          "label": "Jutro Design System 8.3.0 LTS",
           "class": "group",
           "items": [
             {
@@ -265,12 +265,24 @@
           "class": "group",
           "items": [
             {
-              "label": "Release Notes",
+              "label": "App Events Release Notes",
+              "id": "appeventsrn"
+            },
+            {
+              "label": "App Events for Developers",
+              "id": "appeventsdev"
+            },
+            {
+              "label": "Integration Gateway Release Notes",
               "id": "integgatewayrnlatest"
             },
             {
               "label": "Integration Gateway Developer Guide",
               "id": "integgatewaydevlatest"
+            },
+            {
+              "label": "Webhooks API Reference",
+              "id": "webhooksapinext"
             }
           ]
         },
@@ -281,13 +293,17 @@
             {
               "label": "Workset Manager",
               "id": "worksetmgr"
+            },
+            {
+              "label": "Workset Manager Release Notes",
+              "id": "worksetmgrrn"
             }
           ]
         }
       ]
     },
     {
-      "label": "Global Solutions",
+      "label": "Global Content",
       "class": "categoryCard cardShadow",
       "env": [
         "int",
@@ -296,11 +312,11 @@
       "items": [
         {
           "label": "London Market",
-          "page": "../../globalSolutions/iplm/flaine"
+          "page": "../../globalContent/iplm/flaine"
         },
         {
           "label": "United States",
-          "page": "../../globalSolutions/sbt"
+          "page": "../../globalContent/sbt"
         }
       ]
     }

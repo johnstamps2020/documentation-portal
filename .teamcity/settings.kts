@@ -8,6 +8,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.ScheduleTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
+import jetbrains.buildServer.configs.kotlin.v2019_2.ui.add
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
@@ -1041,10 +1042,10 @@ object Custom {
                     export BUILDS_DIR="_builds"
                     export GIT_CLONE_DIR="git_clone_dir"
                     
-                    rm -f ${'$'}BUILDS_FILE_PARSED
-                    rm -f %teamcity.build.workingDir%/*.zip
-                    rm -rf %teamcity.build.workingDir%/$localOutputDir/*
-                    rm -rf %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR/{*,.*} 2> /dev/null
+                    if [ -f ${'$'}BUILDS_FILE_PARSED ]; then rm -f ${'$'}BUILDS_FILE_PARSED 2> /dev/null || true; fi
+                    if [ -f %teamcity.build.workingDir%/*.zip ]; then rm -f %teamcity.build.workingDir%/*.zip 2> /dev/null || true; fi
+                    if [ -d %teamcity.build.workingDir%/$localOutputDir ]; then rm -rf %teamcity.build.workingDir%/$localOutputDir/* 2> /dev/null || true; fi
+                    if [ -d %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR ]; then rm -rf %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR/{*,.*} 2> /dev/null || true; fi
 
                     git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% ${'$'}GIT_CLONE_DIR
 
@@ -1115,11 +1116,36 @@ object Custom {
                 "%teamcity.build.workingDir%/$localOutputDir",
                 "%teamcity.build.workingDir%"
             ))
+            script {
+                name = "Clean up agent"
+                scriptContent = """
+                    #!/bin/bash
+                    set -xe
+
+                    export GIT_CLONE_DIR="git_clone_dir"                                    
+                    
+                    if [ -f ${'$'}BUILDS_FILE_PARSED ]; then rm -f ${'$'}BUILDS_FILE_PARSED 2> /dev/null || true; fi
+                    if [ -d %teamcity.build.workingDir%/$localOutputDir ]; then rm -rf %teamcity.build.workingDir%/$localOutputDir/* 2> /dev/null || true; fi
+                    if [ -d %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR ]; then rm -rf %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR/{*,.*} 2> /dev/null || true; fi
+                """.trimIndent()
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            }
         }
 
         features {
             feature(GwBuildFeatures.GwDockerSupportBuildFeature)
             feature(GwBuildFeatures.GwSshAgentBuildFeature)
+        }
+
+        cleanup {
+            add {
+                keepRule {
+                    id = "KEEP_RULE_CUSTOM_DITA_BUILDS"
+                    keepAtLeast = builds(100)
+                    dataToKeep = everything()
+                    preserveArtifactsDependencies = true
+                }
+            }
         }
     })
 
@@ -1499,6 +1525,50 @@ object Frontend {
                 GwDeployEnvs.STAGING,
                 GwDeployEnvs.PROD).forEach {
                 buildType(createDeployLandingPagesBuildType(it.env_name))
+            }
+        }
+    }
+
+    private fun createDeployReactLandingPagesBuildType(deploy_env: String): BuildType {
+        return BuildType {
+            name = "Deploy React landing pages to $deploy_env"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                branchFilter = "+:<default>"
+                cleanCheckout = true
+            }
+
+            val publishPath = "landing-pages-react"
+
+            steps {
+                step(GwBuildSteps.createBuildYarnProjectStep(
+                    deploy_env,
+                    publishPath,
+                    "build",
+                    "16.18.0",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "landing-pages",
+                    null,
+                    false))
+                step(GwBuildSteps.createUploadContentToS3BucketStep(
+                    deploy_env,
+                    "%teamcity.build.checkoutDir%/landing-pages/build",
+                    publishPath
+                ))
+            }
+
+            triggers {
+                vcs {
+                    triggerRules = """
+                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/**
+                            -:user=doctools:**
+                            """.trimIndent()
+                }
             }
         }
     }

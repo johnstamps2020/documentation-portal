@@ -109,7 +109,7 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Digital Applications",
+          "label": "Digital Reference Applications",
           "class": "group",
           "env": ["staging", "prod"],
           "items": [
@@ -144,7 +144,7 @@
           ]
         },
         {
-          "label": "Digital Applications",
+          "label": "Digital Reference Applications",
           "class": "group",
           "env": ["int"],
           "items": [
@@ -307,16 +307,16 @@
       ]
     },
     {
-      "label": "Global Solutions",
+      "label": "Global Content",
       "class": "categoryCard cardShadow",
       "items": [
         {
           "label": "London Market",
-          "page": "../../globalSolutions/iplm/3.2"
+          "page": "../../globalContent/iplm/3.2"
         },
         {
           "label": "Australia",
-          "page": "../../globalSolutions/ipa/1.0",
+          "page": "../../globalContent/ipa/1.0",
           "env": ["int", "staging"]
         }
       ]

@@ -107,7 +107,7 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Digital Applications",
+          "label": "Digital Reference Applications",
           "class": "group",
           "items": [
             {
@@ -291,13 +291,13 @@
       ]
     },
     {
-      "label": "Global Solutions",
+      "label": "Global Content",
       "class": "categoryCard cardShadow",
       "env": ["int"],
       "items": [
         {
           "label": "Australia",
-          "page": "../../globalSolutions/ipa/latest"
+          "page": "../../globalContent/ipa/latest"
         }
       ]
     }

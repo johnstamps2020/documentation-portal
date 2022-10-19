@@ -1,0 +1,18 @@
+.wrapper {
+  font-weight: 600;
+  padding: 4rem 3rem;
+}
+
+.code {
+  font-size: 200%;
+  margin-top: 3rem;
+}
+
+.message {
+  margin-top: 1rem;
+}
+
+.message code {
+  background-color: lightgray;
+  padding: 1px 2px;
+}

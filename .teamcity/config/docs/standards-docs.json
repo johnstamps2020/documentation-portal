@@ -19,6 +19,23 @@
       "earlyAccess": false
     },
     {
+      "id": "standards202209",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202209",
+      "metadata": {
+        "product": ["Guidewire Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
+      },
+      "environments": ["dev", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "standards202207",
       "title": "Guidewire Cloud Standards",
       "url": "cloud/standards/202207",

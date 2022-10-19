@@ -250,7 +250,8 @@
           "Underwriting Management",
           "Portfolio Assembly",
           "Standards-based Template Framework",
-          "Product Adoption Resources"
+          "Product Adoption Resources",
+          "Ski release overview"
         ]
       }
     },
@@ -265,8 +266,7 @@
         "environments",
         "internal",
         "earlyAccess",
-        "public",
-        "displayOnLandingPages"
+        "public"
       ],
       "properties": {
         "id": {

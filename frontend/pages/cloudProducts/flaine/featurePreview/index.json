@@ -10,11 +10,23 @@
       "items": [
         {
           "label": "Jutro Digital Platform",
-          "id": "jutroplatformnext"
+          "id": "jutroplatformnext",
+          "env": ["int"]
         },
         {
           "label": "Jutro SDK",
-          "id": "jutrosdknext"
+          "id": "jutrosdknext",
+          "env": ["int"]
+        },
+        {
+          "label": "Jutro Digital Platform",
+          "id": "jutroplatformflaine",
+          "env": ["staging", "prod"]
+        },
+        {
+          "label": "Jutro SDK",
+          "id": "jutrosdkflaine",
+          "env": ["staging", "prod"]
         }
       ]
     },
@@ -29,24 +41,6 @@
         {
           "label": "Guidewire Rules",
           "id": "gwrules"
-        }
-      ]
-    },
-    {
-      "label": "Integration Framework",
-      "class": "subject development",
-      "items": [
-        {
-          "label": "App Events Release Notes",
-          "id": "appeventsrn"
-        },
-        {
-          "label": "App Events for Developers",
-          "id": "appeventsdev"
-        },
-        {
-          "label": "Webhooks API Reference",
-          "id": "webhooksapinext"
         }
       ]
     },
@@ -97,7 +91,7 @@
       "class": "subject development",
       "items": [
         {
-          "label": "APD for Claims Guide",
+          "label": "APD for Claims",
           "id": "apdclaims"
         }
       ]
@@ -123,6 +117,16 @@
         {
           "label": "String Manager",
           "id": "stringmanagerpcdraft"
+        }
+      ]
+    },
+    {
+      "label": "InsuranceNow",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Datadog Log Access",
+          "id": "in20222ddlogacc"
         }
       ]
     }

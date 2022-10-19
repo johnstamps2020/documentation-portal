@@ -67,30 +67,6 @@
       "filter": "IS-BC-OnPrem-Release.ditaval",
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
-      "srcId": "isupgradeguide1021src",
-      "docId": "selfmanagedbcupgradeguide1021"
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-OnPrem-Release.ditaval",
-      "root": "UpgradeGuide.ditamap",
-      "indexRedirect": true,
-      "srcId": "isupgradeguide1021src",
-      "docId": "selfmanagedccupgradeguide1021"
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-OnPrem-Release.ditaval",
-      "root": "UpgradeGuide.ditamap",
-      "indexRedirect": true,
-      "srcId": "isupgradeguide1021src",
-      "docId": "selfmanagedpcupgradeguide1021"
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Release.ditaval",
-      "root": "UpgradeGuide.ditamap",
-      "indexRedirect": true,
       "srcId": "isupgradeguide1020src",
       "docId": "selfmanagedbcupgradeguide1020"
     },
@@ -157,63 +133,6 @@
       "indexRedirect": true,
       "srcId": "isupgradeguide1011src",
       "docId": "selfmanagedpcupgradeguide1011"
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-BC-OnPrem-Release.ditaval",
-      "root": "_supermap-1021.ditamap",
-      "srcId": "selfmanagedis1021src",
-      "docId": "bc1021",
-      "resources": [
-        {
-          "targetFolder": "extras/ReleaseNotes-files/bc/10.x",
-          "sourceFolder": "ReleaseNotes-files/bc/10.x",
-          "srcId": "insurancesuiteextrassrc"
-        },
-        {
-          "targetFolder": "extras/ReleaseNotes-files/cm/10.x",
-          "sourceFolder": "ReleaseNotes-files/cm/10.x",
-          "srcId": "insurancesuiteextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-OnPrem-Release.ditaval",
-      "root": "_supermap-1021.ditamap",
-      "srcId": "selfmanagedis1021src",
-      "docId": "cc1021",
-      "resources": [
-        {
-          "targetFolder": "extras/ReleaseNotes-files/cc/10.x",
-          "sourceFolder": "ReleaseNotes-files/cc/10.x",
-          "srcId": "insurancesuiteextrassrc"
-        },
-        {
-          "targetFolder": "extras/ReleaseNotes-files/cm/10.x",
-          "sourceFolder": "ReleaseNotes-files/cm/10.x",
-          "srcId": "insurancesuiteextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-OnPrem-Release.ditaval",
-      "root": "_supermap-1021.ditamap",
-      "srcId": "selfmanagedis1021src",
-      "docId": "pc1021",
-      "resources": [
-        {
-          "targetFolder": "extras/ReleaseNotes-files/pc/10.x",
-          "sourceFolder": "ReleaseNotes-files/pc/10.x",
-          "srcId": "insurancesuiteextrassrc"
-        },
-        {
-          "targetFolder": "extras/ReleaseNotes-files/cm/10.x",
-          "sourceFolder": "ReleaseNotes-files/cm/10.x",
-          "srcId": "insurancesuiteextrassrc"
-        }
-      ]
     },
     {
       "buildType": "dita",
@@ -958,21 +877,21 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-OnPrem-Release.ditaval",
-      "root": "_supermap-9x-active.ditamap",
+      "root": "_supermap-9010.ditamap",
       "srcId": "is9010",
       "docId": "bc9010"
     },
     {
       "buildType": "dita",
       "filter": "IS-CC-OnPrem-Release.ditaval",
-      "root": "_supermap-9x-active.ditamap",
+      "root": "_supermap-9010.ditamap",
       "srcId": "is9010",
       "docId": "cc9010"
     },
     {
       "buildType": "dita",
       "filter": "IS-PC-OnPrem-Release.ditaval",
-      "root": "_supermap-9x-active.ditamap",
+      "root": "_supermap-9010.ditamap",
       "srcId": "is9010",
       "docId": "pc9010",
       "resources": [
@@ -986,44 +905,44 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-OnPrem-Release.ditaval",
-      "root": "_supermap-9x-active.ditamap",
+      "root": "_supermap-909.ditamap",
       "srcId": "is909",
       "docId": "bc909"
     },
     {
       "buildType": "dita",
       "filter": "IS-CC-OnPrem-Release.ditaval",
-      "root": "_supermap-9x-active.ditamap",
+      "root": "_supermap-909.ditamap",
       "srcId": "is909",
       "docId": "cc909"
     },
     {
       "buildType": "dita",
       "filter": "IS-PC-OnPrem-Release.ditaval",
-      "root": "_supermap-9x-active.ditamap",
+      "root": "_supermap-909.ditamap",
       "srcId": "is909",
       "docId": "pc909"
     },
     {
       "buildType": "dita",
       "filter": "IS-BC-OnPrem-Release.ditaval",
-      "root": "_superbook.ditamap",
-      "srcId": "exportis908",
-      "docId": "selfmanagedbchggrerca"
+      "root": "_supermap-908.ditamap",
+      "srcId": "is908",
+      "docId": "bc908"
     },
     {
       "buildType": "dita",
       "filter": "IS-CC-OnPrem-Release.ditaval",
-      "root": "_superbook.ditamap",
-      "srcId": "exportis908",
-      "docId": "selfmanagedccaaforoxt"
+      "root": "_supermap-908.ditamap",
+      "srcId": "is908",
+      "docId": "cc908"
     },
     {
       "buildType": "dita",
       "filter": "IS-PC-OnPrem-Release.ditaval",
-      "root": "_superbook.ditamap",
-      "srcId": "exportis908",
-      "docId": "selfmanagedpchmmjfhlm"
+      "root": "_supermap-908.ditamap",
+      "srcId": "is908",
+      "docId": "pc908"
     },
     {
       "buildType": "dita",

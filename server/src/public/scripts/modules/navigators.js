@@ -335,7 +335,7 @@ function LinkList({ links }) {
 function MiniToc({ hashLinks }) {
   const [width, setWidth] = useState(window.innerWidth);
   const [expanded, setExpanded] = useState(false);
-  const breakpoint = 1250;
+  const breakpoint = 1405;
   const miniTocTitle = 'On this page';
 
   const handleWindowResize = () => setWidth(window.innerWidth);
@@ -344,7 +344,7 @@ function MiniToc({ hashLinks }) {
     return () => window.removeEventListener('resize', handleWindowResize);
   }, []);
 
-  if (width <= breakpoint) {
+  if (width < breakpoint) {
     return (
       <div id="mobileMiniTocWrapper">
         <button

@@ -19,14 +19,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-BC-Cloud-GW.ditaval",
-      "root": "UpgradeGuide.ditamap",
-      "indexRedirect": true,
-      "srcId": "isupgradeguide202209src",
-      "docId": "isbcflainegwupgrade"
-    },
-    {
-      "buildType": "dita",
       "filter": "IS-CC-Cloud-GW.ditaval",
       "root": "AdminGuide.ditamap",
       "srcId": "is202209src",
@@ -43,14 +35,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-GW.ditaval",
-      "root": "UpgradeGuide.ditamap",
-      "indexRedirect": true,
-      "srcId": "isupgradeguide202209src",
-      "docId": "isccflainegwupgrade"
-    },
-    {
-      "buildType": "dita",
       "filter": "IS-PC-Cloud-GW.ditaval",
       "root": "AdminGuide.ditamap",
       "srcId": "is202209src",
@@ -64,14 +48,6 @@
       "srcId": "is202209src",
       "docId": "ispcflainegwdevsetup",
       "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-GW.ditaval",
-      "root": "UpgradeGuide.ditamap",
-      "indexRedirect": true,
-      "srcId": "isupgradeguide202209src",
-      "docId": "ispcflainegwupgrade"
     }
   ]
 }
