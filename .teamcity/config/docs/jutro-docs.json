@@ -362,6 +362,24 @@
       "earlyAccess": true
     },
     {
+      "id": "jutrosdkflaine",
+      "title": "Jutro SDK",
+      "url": "jutro/sdk/flaine",
+      "metadata": {
+        "product": ["Jutro SDK"],
+        "platform": ["Cloud"],
+        "version": ["Flaine"],
+        "subject": ["Best practices"],
+        "release": ["Flaine"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
       "id": "jutrorewards",
       "title": "Jutro Rewards",
       "url": "jutro/rewards",
@@ -1264,7 +1282,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["8.3.0"],
+        "version": ["8.3.0 LTS"],
         "subject": ["Best practices"],
         "release": ["Flaine"]
       },
@@ -1282,7 +1300,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["8.3.0"],
+        "version": ["8.3.0 LTS"],
         "subject": ["Development"],
         "release": ["Flaine"]
       },
@@ -1291,6 +1309,40 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "jutro831",
+      "title": "Jutro Design System and UI Framework",
+      "url": "jutro/documentation/8.3.1",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["8.3.1"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["dev", "staging", "int", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "storybook831",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/8.3.1",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["8.3.1"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "staging", "int", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
       "earlyAccess": false
     },
     {
@@ -1328,13 +1380,47 @@
       "earlyAccess": false
     },
     {
+      "id": "jutro850",
+      "title": "Jutro Design System and UI Framework",
+      "url": "jutro/documentation/8.5.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["8.5.0"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["dev", "staging", "int", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "storybook850",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/8.5.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["8.5.0"],
+        "subject": ["Development"]
+      },
+      "environments": ["dev", "staging", "int", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
       "id": "jutrolatest",
       "title": "Jutro Design System and UI Framework",
       "url": "jutro/documentation/latest",
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["8.4.0 (latest)"],
+        "version": ["8.5.0 (latest)"],
         "subject": ["Best practices"]
       },
       "environments": ["dev", "staging", "int", "prod"],
@@ -1351,7 +1437,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["8.4.0 (latest)"],
+        "version": ["8.5.0 (latest)"],
         "subject": ["Development"]
       },
       "environments": ["dev", "staging", "int", "prod"],
@@ -1371,7 +1457,7 @@
         "version": ["latest"],
         "subject": ["Best practices"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,

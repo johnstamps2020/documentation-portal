@@ -3,6 +3,11 @@
   "builds": [
     {
       "buildType": "yarn",
+      "docId": "jutroplatformflaine",
+      "srcId": "srcjutroplatformflaine"
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutroplatformnext",
       "srcId": "srcjutroplatformnext"
     }

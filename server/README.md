@@ -24,7 +24,7 @@ This is a simple Node.js app which enforces Okta authentication.
    OKTA_CLIENT_SECRET={{ YOUR CLIENT SECRET }}
    APP_BASE_URL={{ THE URL WHERE YOUR APP WILL BE HOSTED, OR http://localhost:3000 }}
    SESSION_KEY={{ A RANDOM AND SECURE SESSION KEY }}
-   DOC_S3_URL={{ THE PUBLIC URL AVAILABLE TO THE DEPLOYMENT MACHINE, S3 INGRESS e.g., https://ditaot.internal.dev.ccs.guidewire.net }}
+   DOC_S3_URL={{ THE PUBLIC URL AVAILABLE TO THE DEPLOYMENT MACHINE, S3 INGRESS e.g., https://docportal-content.int.ccs.guidewire.net }}
    ALLOW_PUBLIC_DOCS={{ IF YOUR SET IT TO yes, USERS CAN BROWSE THE SITE WITHOUT LOGGING IN, BUT THEY CAN ONLY ACCESS PUBLIC DOCS }}
    ```
 3. To test on localhost, you can set the following environment vars:
@@ -33,6 +33,7 @@ This is a simple Node.js app which enforces Okta authentication.
    ENABLE_AUTH=yes
    LOCALHOST_SESSION_SETTINGS=yes
    ```
+   Note: If running from a VS Code terminal in Windows, start VS Code with Run as Administrator.
 4. You can also "pretend" to be an external user. This
    allows you to view the site locally as somebody without
    a Guidewire email. Set the following optional variable:

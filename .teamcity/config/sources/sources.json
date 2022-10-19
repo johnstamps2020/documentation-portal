@@ -2,13 +2,6 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
-      "id": "isupgradeguide1021src",
-      "title": "InsuranceSuite Upgrade Guide 10.2.1",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
-      "branch": "release/10.2.1"
-    },
-    {
       "id": "isupgradeguide1020src",
       "title": "InsuranceSuite Upgrade Guide 10.2.0",
       "sourceType": "git",
@@ -404,39 +397,30 @@
       "id": "is9010",
       "title": "InsuranceSuite OnPrem 9.0.10",
       "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
-      "branch": "9.0.10",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/9.0.10",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/_supermap-9x-active.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
+        "/Content/doc/insuranceSuite/core/9.x/releases/9010/_supermap-9010.ditamap"
       ]
     },
     {
       "id": "is909",
       "title": "InsuranceSuite OnPrem 9.0.9",
       "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
-      "branch": "9.0.9",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/9.0.9",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/9.x/releases/909/_supermap-9x-active.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
+        "/Content/doc/insuranceSuite/core/9.x/releases/909/_supermap-909.ditamap"
       ]
     },
     {
-      "id": "exportis908",
+      "id": "is908",
       "title": "InsuranceSuite OnPrem 9.0.8",
       "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-9x.git",
-      "branch": "9.0.8",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/9.0.8",
       "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/9.x/releases/908/_superbook.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
+        "/Content/doc/insuranceSuite/core/9.x/releases/908/_supermap-908.ditamap"
       ]
     },
     {
@@ -946,78 +930,6 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cicd-api-ref.git",
       "branch": "master"
-    },
-    {
-      "id": "selfmanagedis1012src",
-      "title": "InsuranceSuite 10.1.2",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
-      "branch": "10.1.2",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/10.x/releases/1012/_supermap-1012.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
-      ]
-    },
-    {
-      "id": "selfmanagedis1011src",
-      "title": "InsuranceSuite 10.1.1",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
-      "branch": "10.1.1",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/10.x/releases/1011/_supermap-1011.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
-      ]
-    },
-    {
-      "id": "selfmanagedis1010src",
-      "title": "InsuranceSuite 10.1.0",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
-      "branch": "10.1.0",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/10.x/releases/1010/_supermap-10x-active.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
-      ]
-    },
-    {
-      "id": "selfmanagedis1003src",
-      "title": "InsuranceSuite 10.0.3",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
-      "branch": "10.0.3",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/10.x/releases/1003/_superbook.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
-      ]
-    },
-    {
-      "id": "selfmanagedis1002src",
-      "title": "InsuranceSuite 10.0.2",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
-      "branch": "10.0.2",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/10.x/releases/1002/_superbook.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-OnPrem-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-OnPrem-Release.ditaval"
-      ]
-    },
-    {
-      "id": "insurancesuiteextrassrc",
-      "title": "InsuranceSuite Extras",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-extras.git",
-      "branch": "main"
     },
     {
       "id": "livepredictsrc",

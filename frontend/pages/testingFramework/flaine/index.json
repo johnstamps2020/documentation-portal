@@ -43,10 +43,6 @@
       "class": "subject development",
       "items": [
         {
-          "label": "Test Data Management",
-          "id": "testingframeworksdataflaine"
-        },
-        {
           "label": "Test Management",
           "id": "testingframeworksmgmtflaine"
         }

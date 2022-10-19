@@ -1,0 +1,211 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Flaine ",
+  "template": "page",
+  "class": "blue-theme flaine flainenew threeCards",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Flaine",
+    "items": [
+      {
+        "label": "Elysian",
+        "page": "../elysian"
+      },
+      {
+        "label": "Dobson",
+        "page": "../dobson"
+      },
+      {
+        "label": "Cortina",
+        "page": "../cortina"
+      },
+      {
+        "label": "Banff",
+        "page": "../banff"
+      },
+      {
+        "label": "Aspen",
+        "page": "../aspen"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Guidewire Platform",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud Home",
+          "id": "gchhelprelease"
+        },
+        {
+          "label": "Cloud Console",
+          "page": "../cloudConsole"
+        },
+        {
+          "label": "Cloud Infrastructure",
+          "page": "../cloudConsole"
+        }
+      ]
+    },
+    {
+      "label": "Digital Platform",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Jutro Design System and UI Framework",
+          "id": "jutro831"
+        },
+        {
+          "label": "Jutro Admin (EA)",
+          "id": "jutro831"
+        }
+      ]
+    },
+    {
+      "label": "Applications",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "PolicyCenter",
+          "page": "../flaine/pcGwCloud/2022.09"
+        },
+        {
+          "label": "ClaimCenter",
+          "page": "../flaine/ccGwCloud/2022.09"
+        },
+        {
+          "label": "BillingCenter",
+          "page": "../flaine/bcGwCloud/2022.09"
+        },
+        {
+          "label": "InsuranceNow",
+          "page": "../flaine/insuranceNow/2022.2"
+        }
+      ]
+    },
+    {
+      "label": "Analytics",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud Data Access",
+          "page": "../cloudDataAccess/latest"
+        },
+        {
+          "label": "Data Platform",
+          "id": "dataplatform"
+        },
+        {
+          "label": "DataHub",
+          "page": "../flaine/dhGwCloud/2022.09"
+        },
+        {
+          "label": "Data Studio (EA)",
+          "id": "datastudiodraft"
+        },
+        {
+          "label": "InfoCenter",
+          "page": "../flaine/icGwCloud/2022.09"
+        },
+        {
+          "label": "Canvas",
+          "id": "canvas"
+        },
+        {
+          "label": "Compare",
+          "id": "comparelatest"
+        },
+        {
+          "label": "Explore",
+          "page": "../explore/latest"
+        },
+        {
+          "label": "HazardHub",
+          "page": "../hazardhubcasualty"
+        },
+        {
+          "label": "Predict",
+          "id": "livepredictlatest"
+        },
+        {
+          "label": "Cyence Cyber",
+          "page": "../explore/latest"
+        }
+      ]
+    },
+        {
+      "label": "Development Experience",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "API References",
+          "page": "../../apiReferences/flaine"
+        },
+        {
+          "label": "Advanced Product Designer App",
+          "page": "../flaine/apd"
+        },
+        {
+          "label": "Integration Gateway",
+          "id": "integgatewaydevlatest"
+        },
+        {
+          "label": "App Events (EA)",
+          "id": "appeventsdev"
+        },
+        {
+          "label": "Cloud Rules (EA)",
+          "id": "gwrules"
+        },
+        {
+          "label": "Guidewire Testing",
+          "page": "../../testingFramework/flaine" 
+        },
+        {
+          "label": "Workset Manager (EA)",
+          "id": "worksetmgr"
+        }
+      ]
+    },
+    {
+      "label": "Digital Reference Applications",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "CustomerEngage Account Management",
+          "page": "../flaine/ceAccountMgmt/2022.09"
+        },
+        {
+          "label": "CustomerEngage Account Management for ClaimCenter",
+          "page": "../flaine/ceAccountMgmtCc/2022.09"
+        },
+        {
+          "label": "CustomerEngage Quote and Buy",
+          "page": "../flaine/ceQuoteAndBuy/2022.09"
+        },
+        {
+          "label": "ProducerEngage",
+          "page": "../flaine/producerEngage/2022.09"
+        },
+        {
+          "label": "ProducerEngage for ClaimCenter",
+          "page": "../flaine/producerEngageCc/2022.09"
+        },
+        {
+          "label": "ServiceRepEngage",
+          "page": "../flaine/serviceRepEngage/2022.09"
+        },
+        {
+          "label": "VendorEngage",
+          "page": "../flaine/vendorEngage/2022.09"
+        }
+      ]
+    }
+  ],
+  "search_filters": {
+    "platform": [
+      "Cloud"
+    ]
+  }
+}

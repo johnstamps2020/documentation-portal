@@ -38,24 +38,6 @@
       "earlyAccess": false
     },
     {
-      "id": "testingframeworksdataflaine",
-      "title": "Test Data Management",
-      "url": "cloud/testing/202209/data",
-      "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.09"],
-        "release": ["Flaine"],
-        "subject": ["Development"]
-      },
-      "environments": ["int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "testingframeworksloadflaine",
       "title": "Load and Performance Testing",
       "url": "cloud/testing/202209/load",

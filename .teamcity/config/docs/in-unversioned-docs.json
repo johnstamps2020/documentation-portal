@@ -590,7 +590,7 @@
         "subject": ["Installation"],
         "release": ["Dobson", "Elysian", "Flaine"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

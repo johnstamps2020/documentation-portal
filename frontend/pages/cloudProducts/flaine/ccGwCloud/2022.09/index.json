@@ -39,6 +39,10 @@
           "id": "iscc202209releasenotes"
         },
         {
+          "label": "App Events Release Notes",
+          "id": "appeventsrn"
+        },
+        {
           "label": "Integration Gateway Release Notes",
           "id": "integgatewayrnlatest"
         },
@@ -63,14 +67,6 @@
         {
           "label": "Update",
           "id": "iscc202209update"
-        },
-        {
-          "label": "Upgrade",
-          "id": "iscc202209upgrade"
-        },
-        {
-          "label": "Upgrade (Internal only)",
-          "id": "isccflainegwupgrade"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
@@ -141,6 +137,10 @@
           "id": "is202209integoverview"
         },
         {
+          "label": "App Events for Developers",
+          "id": "appeventsdev"
+        },
+        {
           "label": "Cloud API Authentication",
           "id": "iscc202209apica"
         },
@@ -167,6 +167,10 @@
         {
           "label": "REST API Client",
           "id": "isrestapiclientguide"
+        },
+        {
+          "label": "Webhooks API Reference",
+          "id": "webhooksapinext"
         }
       ]
     },

@@ -6,6 +6,11 @@
   "template": "redirect",
   "items": [
     {
+      "label": "Flaine",
+      "page": "flaine",
+      "env": ["int", "staging"]
+    },
+    {
       "label": "Elysian",
       "page": "elysian"
     },
@@ -23,7 +28,13 @@
     },
     {
       "label": "_redirect",
-      "link": "/apiReferences/elysian"
+      "link": "/apiReferences/elysian",
+      "env": ["prod"]
+    },
+    {
+      "label": "_redirect",
+      "link": "/apiReferences/flaine",
+      "env": ["int", "staging"]
     }
   ]
 }

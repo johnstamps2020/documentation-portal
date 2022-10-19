@@ -97,9 +97,8 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Digital Applications",
+          "label": "Digital Reference Applications",
           "class": "group",
-          "env": ["dev", "int", "staging", "prod"],
           "items": [
             {
               "label": "CustomerEngage Account Management",
