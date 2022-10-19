@@ -3,6 +3,40 @@
   "title": "ClaimCenter 10.2.1",
   "template": "page",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "10.2.1",
+    "items": [
+      {
+        "label": "10.2.0",
+        "id": "cc1020"
+      },
+      {
+        "label": "10.1.2",
+        "id": "cc1012"
+      },
+      {
+        "label": "10.1.1",
+        "id": "cc1011"
+      },
+      {
+        "label": "10.1.0",
+        "id": "cc1010"
+      },
+      {
+        "label": "9.0.10",
+        "id": "cc9010"
+      },
+      {
+        "label": "9.0.9",
+        "id": "cc909"
+      },
+      {
+        "label": "9.0.8",
+        "id": "cc908"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",

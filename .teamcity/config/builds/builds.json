@@ -310,7 +310,7 @@
       "filter": "IS-BC-OnPrem-Release.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis1010src",
-      "docId": "bc1010staging",
+      "docId": "bc1010",
       "resources": [
         {
           "targetFolder": "releasenotes/ReleaseNotes-files/bc/10.x",
@@ -324,7 +324,7 @@
       "filter": "IS-CC-OnPrem-Release.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis1010src",
-      "docId": "cc1010staging",
+      "docId": "cc1010",
       "resources": [
         {
           "targetFolder": "releasenotes/ReleaseNotes-files/cc/10.x",
@@ -338,7 +338,7 @@
       "filter": "IS-PC-OnPrem-Release.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis1010src",
-      "docId": "pc1010staging",
+      "docId": "pc1010",
       "resources": [
         {
           "targetFolder": "releasenotes/ReleaseNotes-files/pc/10.x",
