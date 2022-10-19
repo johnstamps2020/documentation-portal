@@ -21,7 +21,7 @@
     },
     {
       "id": "appeventsdev",
-      "title": "App Events for Developers",
+      "title": "App Events",
       "url": "cloud/is/appevents/latest",
       "metadata": {
         "product": ["PolicyCenter", "ClaimCenter", "App Events Webhooks"],
@@ -39,7 +39,7 @@
     },
     {
       "id": "integgatewaydevlatest",
-      "title": "Integration Gateway for Developers",
+      "title": "Integration Gateway",
       "url": "cloud/is/integgateway",
       "metadata": {
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
