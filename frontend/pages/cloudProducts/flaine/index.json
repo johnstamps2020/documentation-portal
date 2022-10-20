@@ -285,10 +285,6 @@
             {
               "label": "Workset Manager",
               "id": "worksetmgr"
-            },
-            {
-              "label": "Workset Manager Release Notes",
-              "id": "worksetmgrrn"
             }
           ]
         }
