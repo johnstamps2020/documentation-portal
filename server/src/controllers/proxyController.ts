@@ -113,7 +113,7 @@ function reactDevProxy(req: Request, res: Response, next: NextFunction) {
     req,
     res,
     {
-      target: `http://localhost:5000/landing`,
+      target: `http://localhost:6006/landing`,
       changeOrigin: true,
     },
     next
