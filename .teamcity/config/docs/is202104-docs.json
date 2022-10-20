@@ -182,24 +182,6 @@
       "earlyAccess": false
     },
     {
-      "id": "is202104gosu",
-      "title": "Gosu Reference",
-      "url": "cloud/is/202104/gosu",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2021.04"],
-        "release": ["Cortina"],
-        "subject": ["Development"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "isbc202104testing",
       "title": "ISBTF and GUnit Testing",
       "url": "cloud/bc/202104/testing",

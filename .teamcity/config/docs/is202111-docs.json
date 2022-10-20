@@ -272,24 +272,6 @@
       "earlyAccess": false
     },
     {
-      "id": "is202111gosu",
-      "title": "Gosu Reference",
-      "url": "cloud/is/202111/gosu",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2021.11"],
-        "release": ["Dobson"],
-        "subject": ["Development"]
-      },
-      "environments": ["int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "isbc202111testing",
       "title": "GUnit Testing",
       "url": "cloud/bc/202111/testing",
