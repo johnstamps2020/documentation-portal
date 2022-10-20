@@ -147,20 +147,6 @@
           "id": "guidewirecloudconsolerninsurerdevdraft"
         }
       ]
-    },
-    {
-      "label": "Integration Framework",
-      "class": "subject",
-      "items": [
-        {
-          "label": "Integration Gateway Release Notes",
-          "id": "integgatewayrnlatest"
-        },
-        {
-          "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn"
-        }
-      ]
     }
   ],
   "search_filters": {

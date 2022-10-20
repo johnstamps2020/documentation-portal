@@ -41,14 +41,6 @@
         {
           "label": "AppReader Release Notes",
           "id": "appreaderrn400"
-        },
-        {
-          "label": "Integration Gateway Release Notes",
-          "id": "integgatewayrnlatest"
-        },
-        {
-          "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn"
         }
       ]
     },

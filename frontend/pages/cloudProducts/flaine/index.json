@@ -265,16 +265,8 @@
           "class": "group",
           "items": [
             {
-              "label": "App Events Release Notes",
-              "id": "appeventsrn"
-            },
-            {
               "label": "App Events",
               "id": "appeventsdev"
-            },
-            {
-              "label": "Integration Gateway Release Notes",
-              "id": "integgatewayrnlatest"
             },
             {
               "label": "Integration Gateway",

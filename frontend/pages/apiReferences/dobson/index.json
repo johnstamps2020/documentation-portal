@@ -41,12 +41,6 @@
       "label": "PolicyCenter API Reference",
       "class": "productFamily cardShadow",
       "id": "pcapirefdobson"
-    },
-    {
-      "label": "APD API Reference",
-      "class": "productFamily cardShadow",
-      "id": "apdmaindoc",
-      "env": ["int"]
     }
   ]
 }

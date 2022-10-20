@@ -33,24 +33,6 @@
       ]
     },
     {
-      "label": "Integration Framework",
-      "class": "subject development",
-      "items": [
-        {
-          "label": "App Events Release Notes",
-          "id": "appeventsrn"
-        },
-        {
-          "label": "App Events",
-          "id": "appeventsdev"
-        },
-        {
-          "label": "Webhooks API Reference",
-          "id": "webhooksapinext"
-        }
-      ]
-    },
-    {
       "label": "Testing",
       "class": "subject bestPractices",
       "items": [
@@ -89,24 +71,6 @@
         {
           "label": "Data Studio",
           "id": "datastudiodraft"
-        }
-      ]
-    },
-    {
-      "label": "Advanced Product Designer App",
-      "class": "subject development",
-      "items": [
-        {
-          "label": "APD App Release Notes",
-          "id": "apdapprn"
-        },
-        {
-          "label": "APD App Guide",
-          "id": "apdapp"
-        },
-        {
-          "label": "APD API Reference",
-          "id": "apdmaindoc"
         }
       ]
     },

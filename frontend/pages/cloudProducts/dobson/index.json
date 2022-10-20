@@ -295,10 +295,6 @@
           "class": "group",
           "items": [
             {
-              "label": "Release Notes",
-              "id": "integgatewayrnlatest"
-            },
-            {
               "label": "Integration Gateway",
               "id": "integgatewaydevlatest"
             }
