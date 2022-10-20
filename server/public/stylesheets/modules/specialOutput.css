@@ -6,10 +6,10 @@
   font-size: 24px;
 }
 
-.skiReleaseWhatsNew section.section dt.dt {
+.skiReleaseWhatsNew dt.dt {
   font-size: 18px;
 }
 
-.skiReleaseWhatsNew section.section dd.dd {
+.skiReleaseWhatsNew dd.dd {
   margin-left: 0;
 }
