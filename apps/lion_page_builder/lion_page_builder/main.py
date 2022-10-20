@@ -60,7 +60,9 @@ product_codes_labels = {
     'cda': {'label': 'Cloud Data Access'},
     'explore': {'label': 'Explore'},
     'ipf': {'label': 'ClaimCenter Package for France'},
-    'ipg': {'label': 'Global Solutions - Germany'}
+    'ipg': {'label': 'Global Solutions - Germany'},
+    'cm': {'label': 'IS Contact Manager'},
+    'apd': {'label': 'Advanced Product Designer’}
 }
 
 
