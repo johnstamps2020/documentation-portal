@@ -744,14 +744,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "GCHReleaseNotes.ditamap",
-      "srcId": "gchhelpsrc",
-      "docId": "gchhelprnrelease",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "GuidewireCloud.ditamap",
       "srcId": "configmgrhelpcortinasrc",
       "docId": "configmgrhelpcortina",

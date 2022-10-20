@@ -85,6 +85,10 @@
           "id": "comparelatest"
         },
         {
+          "label": "Cyence",
+          "page": "../cyence"
+        },
+        {
           "label": "Explore",
           "page": "../explore/latest"
         },
@@ -157,44 +161,6 @@
       ]
     },
     {
-      "label": "Cyence",
-      "class": "categoryCard cardShadow",
-      "items": [
-        {
-          "label": "Cyence Cyber",
-          "class": "group",
-          "items": [
-            {
-              "label": "Help Center",
-              "link": "/cyence/cyber/HelpCenter"
-            },
-            {
-              "label": "Help Center - Accumulation Only",
-              "link": "/cyence/cyber/HelpCenterAccum"
-            },
-            {
-              "label": "Model 5 Technical Reference",
-              "link": "/cyence/cyber/Model5/CyenceCyberRiskModel5.pdf"
-            },
-            {
-              "label": "Python SDK and REST API Reference",
-              "link": "/cyence/cyber/SdkApiRef"
-            }
-          ]
-        },
-        {
-          "label": "Cyence Cyber for Small/Medium Business",
-          "class": "group",
-          "items": [
-            {
-              "label": "C#/Python SDKs and REST API Reference",
-              "link": "/cyence/smb/SdkApiRef"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "label": "Guidewire Cloud Platform",
       "class": "categoryCard cardShadow",
       "items": [
@@ -202,10 +168,6 @@
           "label": "Cloud Home",
           "class": "group",
           "items": [
-            {
-              "label": "Release Notes",
-              "id": "gchhelprnrelease"
-            },
             {
               "label": "Getting Started with Cloud Home",
               "id": "gchhelprelease"
@@ -220,14 +182,6 @@
           "label": "Cloud Console",
           "class": "group",
           "items": [
-            {
-              "label": "Release Notes",
-              "id": "guidewirecloudconsolerninsurerdev"
-            },
-            {
-              "label": "Release Notes",
-              "id": "guidewirecloudconsolerninsurerdevdraft"
-            },
             {
               "label": "Cloud Console Documentation",
               "page": "../cloudConsole"
