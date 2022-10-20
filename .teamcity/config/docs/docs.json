@@ -5859,24 +5859,6 @@
       "earlyAccess": false
     },
     {
-      "id": "isbc202011gosu",
-      "title": "Gosu Reference",
-      "url": "cloud/bc/202011/gosu",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2020.11"],
-        "release": ["Banff"],
-        "subject": ["Development"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "isbc202011testing",
       "title": "ISBTF and GUnit Testing",
       "url": "cloud/bc/202011/testing",
@@ -6120,24 +6102,6 @@
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Integration"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "iscc202011gosu",
-      "title": "Gosu Reference",
-      "url": "cloud/cc/202011/gosu",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2020.11"],
-        "release": ["Banff"],
-        "subject": ["Development"]
       },
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -6482,24 +6446,6 @@
         "subject": ["Integration"]
       },
       "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "ispc202011gosu",
-      "title": "Gosu Reference",
-      "url": "cloud/pc/202011/gosu",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2020.11"],
-        "release": ["Banff"],
-        "subject": ["Development"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
