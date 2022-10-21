@@ -469,6 +469,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-a11y-app.git",
       "branch": "main"
+    },
+    {
+      "id": "srcjutrohomeplatformbugstats",
+      "title": "Jutro Platform bug stats feature preview",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/jut/jutro-home-page.git",
+      "branch": "feature/platform-bug-stats"
     }
   ]
 }
