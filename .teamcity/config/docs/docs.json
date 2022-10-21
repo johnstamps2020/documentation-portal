@@ -7106,22 +7106,6 @@
       "earlyAccess": true
     },
     {
-      "id": "updatedev",
-      "title": "Update Dev",
-      "url": "cloud/updatedev/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Platform"],
-        "version": ["latest"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "surepathmethodologymain",
       "title": "Product Adoption Resources",
       "url": "product-adoption-resources/latest",

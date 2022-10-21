@@ -1106,13 +1106,6 @@
       "branch": "master"
     },
     {
-      "id": "updatedevsrc",
-      "title": "Update Dev",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/update-dev-docs.git",
-      "branch": "main"
-    },
-    {
       "id": "internaldocssrc",
       "title": "Internal Docs",
       "sourceType": "git",

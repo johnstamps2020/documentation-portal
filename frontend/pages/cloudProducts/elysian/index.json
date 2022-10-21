@@ -181,10 +181,6 @@
             {
               "label": "Getting Started with Cloud Home",
               "id": "gchhelprelease"
-            },
-            {
-              "label": "Cloud Updates",
-              "id": "updatedev"
             }
           ]
         },
@@ -223,10 +219,6 @@
               "id": "cloudplatformrelease"
             }
           ]
-        },
-        {
-          "label": "Cloud Updates",
-          "id": "updatedev"
         },
         {
           "label": "Integration Framework",
