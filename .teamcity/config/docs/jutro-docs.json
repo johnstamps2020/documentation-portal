@@ -1463,6 +1463,23 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "jutrohomeplatformbugstats",
+      "title": "Jutro Platform bug stats feature preview",
+      "url": "jutro/platform/home-page-preview",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Jutro Digital Platform"],
+        "version": ["latest"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }
