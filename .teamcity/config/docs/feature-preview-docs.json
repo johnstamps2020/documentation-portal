@@ -9,7 +9,6 @@
         "platform": ["Cloud"],
         "product": ["Advanced Product Designer for Claims"],
         "version": ["latest"],
-        "release": ["Elysian"],
         "subject": ["Configuration"]
       },
       "environments": ["int", "staging", "prod"],
@@ -27,7 +26,6 @@
         "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Elysian"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -45,7 +43,6 @@
         "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Elysian"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -63,7 +60,6 @@
         "product": ["Data Studio"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Elysian"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int"],
@@ -81,7 +77,6 @@
         "product": ["Data Studio"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Elysian"],
         "subject": ["Features and functionality"]
       },
       "environments": ["staging", "prod"],
@@ -99,7 +94,6 @@
         "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Elysian"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],
@@ -117,7 +111,6 @@
         "product": ["Feature Preview"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Elysian"],
         "subject": ["Configuration"]
       },
       "environments": ["int"],

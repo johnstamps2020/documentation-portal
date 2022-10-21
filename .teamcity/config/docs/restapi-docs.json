@@ -45,8 +45,7 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["REST API Client"],
         "version": ["latest"],
-        "subject": ["Integration"],
-        "release": ["Banff", "Cortina", "Dobson", "Elysian", "Flaine"]
+        "subject": ["Integration"]
       },
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,

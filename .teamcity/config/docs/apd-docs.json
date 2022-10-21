@@ -24,7 +24,7 @@
         "platform": ["Cloud"],
         "product": ["Advanced Product Designer"],
         "version": ["latest"],
-        "release": ["Elysian", "Flaine"],
+        "release": ["Flaine"],
         "subject": ["Configuration"]
       },
       "environments": ["int", "staging", "prod"],
@@ -32,7 +32,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true
+      "earlyAccess": false
     },
     {
       "id": "apdapprn",
@@ -42,7 +42,7 @@
         "platform": ["Cloud"],
         "product": ["Advanced Product Designer"],
         "version": ["latest"],
-        "release": ["Elysian", "Flaine"],
+        "release": ["Flaine"],
         "subject": ["Configuration"]
       },
       "environments": ["int", "staging", "prod"],
@@ -50,7 +50,7 @@
       "indexForSearch": false,
       "public": false,
       "internal": false,
-      "earlyAccess": true
+      "earlyAccess": false
     }
   ]
 }
