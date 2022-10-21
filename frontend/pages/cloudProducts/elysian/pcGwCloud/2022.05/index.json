@@ -49,16 +49,8 @@
           "id": "ispc202205devsetup"
         },
         {
-          "label": "Developer Setup (Internal only)",
-          "id": "ispcelysiangwdevsetup"
-        },
-        {
           "label": "Upgrade",
           "id": "ispc202205upgrade"
-        },
-        {
-          "label": "Upgrade (Internal only)",
-          "id": "ispcelysiangwupgrade"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
@@ -91,10 +83,6 @@
         {
           "label": "Administration",
           "id": "ispc202205admin"
-        },
-        {
-          "label": "Administration (Internal only)",
-          "id": "ispcelysiangwadmin"
         },
         {
           "label": "Data Archiving",
