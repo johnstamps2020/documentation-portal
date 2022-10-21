@@ -1,15 +1,15 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
-import { DocConfig } from '../../../../server/src/model/entity/DocConfig';
-import { TextField, Box, Button, MenuItem } from '@mui/material';
+import React, { ChangeEvent, useEffect, useState } from "react";
+import { DocConfig } from "@documentation-portal/dist/model/entity/DocConfig";
+import { TextField, Box, Button, MenuItem } from "@mui/material";
 
-export default function AdminPage() {
+export default function DocAdminPage() {
   const [docData, setDocData] = useState<DocConfig[]>();
   const [docObject, setDocObject] = useState(new DocConfig());
   const [memorizedDoc, memorizeDoc] = useState<DocConfig>();
   const [showForm, setShowForm] = useState(false);
 
   function updateField(event: ChangeEvent<HTMLInputElement>) {
-    setDocObject(currentDoc => {
+    setDocObject((currentDoc) => {
       return {
         ...currentDoc,
         [event.target.id]: event.target.value,
@@ -32,16 +32,16 @@ export default function AdminPage() {
       id: id,
     };
     const response = await fetch(`/safeConfig/entity/DocConfig?id=${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        Accept: 'application/form-data',
-        'Content-Type': 'application/json',
+        Accept: "application/form-data",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
 
     if (response.ok) {
-      alert('You did it! We no longer have this document in the database.');
+      alert("You did it! We no longer have this document in the database.");
       getDocData();
     }
   };
@@ -76,19 +76,19 @@ export default function AdminPage() {
       const response = await fetch(
         `/safeConfig/entity/DocConfig?id=${doc.id}`,
         {
-          method: 'PUT',
+          method: "PUT",
           body: JSON.stringify(data),
           headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
+            "Content-Type": "application/json",
+            Accept: "application/json",
           },
         }
       );
 
       const result = await response.json();
-      console.log('result is: ', JSON.stringify(result, null, 4));
+      console.log("result is: ", JSON.stringify(result, null, 4));
       if (response.ok) {
-        alert('You successfully updated this document.');
+        alert("You successfully updated this document.");
         getDocData();
       }
     }
@@ -113,18 +113,18 @@ export default function AdminPage() {
       };
 
       const response = await fetch(`/safeConfig/entity/DocConfig?id=`, {
-        method: 'POST',
+        method: "POST",
         body: JSON.stringify(data),
         headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
       });
 
       const result = await response.json();
-      console.log('result is: ', JSON.stringify(result, null, 4));
+      console.log("result is: ", JSON.stringify(result, null, 4));
       if (response.ok) {
-        alert('You successfully added new document.');
+        alert("You successfully added new document.");
         getDocData();
       }
     }
@@ -139,11 +139,11 @@ export default function AdminPage() {
     const boolean = [
       {
         value: true,
-        label: 'True',
+        label: "True",
       },
       {
         value: false,
-        label: 'False',
+        label: "False",
       },
     ];
     return (
@@ -162,7 +162,7 @@ export default function AdminPage() {
             {docData.map((doc: DocConfig) => (
               <div
                 className="categoryCard cardShadow"
-                style={{ width: 400, height: 'fit-content' }}
+                style={{ width: 400, height: "fit-content" }}
               >
                 <div className="label">{doc.title}</div>
                 <div>ID: {doc.id}</div>
@@ -185,21 +185,21 @@ export default function AdminPage() {
               <Box
                 component="form"
                 sx={{
-                  '& .MuiTextField-root': {
+                  "& .MuiTextField-root": {
                     marginTop: 1,
                     padding: 2,
                   },
-                  '& .MuiFormLabel-root': {
-                    color: 'hsla(211, 22%, 20%, 0.24)',
+                  "& .MuiFormLabel-root": {
+                    color: "hsla(211, 22%, 20%, 0.24)",
                   },
-                  backgroundColor: 'white',
+                  backgroundColor: "white",
                   borderRadius: 2,
                   height: 600,
                   width: 450,
-                  left: '50%',
-                  top: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  overflow: 'scroll',
+                  left: "50%",
+                  top: "50%",
+                  transform: "translate(-50%, -50%)",
+                  overflow: "scroll",
                 }}
                 noValidate
                 autoComplete="off"
@@ -247,7 +247,7 @@ export default function AdminPage() {
                     onChange={updateField}
                     fullWidth
                   >
-                    {boolean.map(option => (
+                    {boolean.map((option) => (
                       <MenuItem
                         key={String(option.value)}
                         value={String(option.value)}
@@ -265,7 +265,7 @@ export default function AdminPage() {
                     onChange={updateField}
                     fullWidth
                   >
-                    {boolean.map(option => (
+                    {boolean.map((option) => (
                       <MenuItem
                         key={String(option.value)}
                         value={String(option.value)}

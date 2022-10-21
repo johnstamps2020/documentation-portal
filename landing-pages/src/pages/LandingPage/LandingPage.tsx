@@ -32,10 +32,10 @@ export default function LandingPage() {
           <h1>{title}</h1>
         </Grid>
         {items.map((item) => (
-          <Grid xs={12} md={6} lg={4}>
+          <Grid xs={12} md={6} lg={4} key={item.id}>
             <h2>{item.label}</h2>
             {item.items.map((subItem) => (
-              <LandingPageItem {...subItem} />
+              <LandingPageItem {...subItem} key={subItem.id} />
             ))}
           </Grid>
         ))}
