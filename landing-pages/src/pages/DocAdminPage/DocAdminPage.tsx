@@ -1,6 +1,10 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { DocConfig } from "@documentation-portal/dist/model/entity/DocConfig";
-import { TextField, Box, Button, MenuItem } from "@mui/material";
+import MenuItem from "@mui/material/MenuItem";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Layout from "../../components/Layout/Layout";
 
 export default function DocAdminPage() {
   const [docData, setDocData] = useState<DocConfig[]>();
@@ -147,20 +151,17 @@ export default function DocAdminPage() {
       },
     ];
     return (
-      <main className="blue-theme elysian threeCards">
+      <Layout title="Manage docs">
         <div className="pageBody">
           <div className="pageControllers">
-            <button
-              className="button cardButton"
-              onClick={() => setShowForm(!showForm)}
-            >
+            <Button variant="contained" onClick={() => setShowForm(!showForm)}>
               Add new document
-            </button>
+            </Button>
           </div>
-          <div className="pageHero"></div>
           <div className="content">
             {docData.map((doc: DocConfig) => (
               <div
+                key={doc.id}
                 className="categoryCard cardShadow"
                 style={{ width: 400, height: "fit-content" }}
               >
@@ -299,7 +300,7 @@ export default function DocAdminPage() {
             )}
           </div>
         </div>
-      </main>
+      </Layout>
     );
   } else {
     return <div style={{ height: 800 }}>Loading...</div>;
