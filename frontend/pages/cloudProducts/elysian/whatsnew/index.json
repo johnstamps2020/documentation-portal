@@ -29,18 +29,6 @@
         {
           "label": "BillingCenter Release Notes",
           "id": "isbc202205releasenotes"
-        },
-        {
-          "label": "PolicyCenter Release Notes",
-          "id": "ispcelysiandraftreleasenotes"
-        },
-        {
-          "label": "ClaimCenter Release Notes",
-          "id": "isccelysiandraftreleasenotes"
-        },
-        {
-          "label": "BillingCenter Release Notes",
-          "id": "isbcelysiandraftreleasenotes"
         }
       ]
     },
