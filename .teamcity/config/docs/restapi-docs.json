@@ -8,8 +8,8 @@
       "metadata": {
         "product": ["PolicyCenter", "ClaimCenter", "App Events Webhooks"],
         "platform": ["Cloud"],
-        "version": ["2022.05", "2022.09"],
-        "release": ["Elysian", "Flaine"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Integration"]
       },
       "environments": ["int", "staging", "prod"],
@@ -17,7 +17,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true
+      "earlyAccess": false
     },
     {
       "id": "integgatewaydevlatest",
@@ -26,8 +26,8 @@
       "metadata": {
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.05", "2022.09"],
+        "release": ["Elysian", "Flaine"],
         "subject": ["Integration"]
       },
       "environments": ["int", "staging", "prod"],
@@ -46,7 +46,7 @@
         "product": ["REST API Client"],
         "version": ["latest"],
         "subject": ["Integration"],
-        "release": ["Banff", "Cortina", "Dobson", "Elysian"]
+        "release": ["Banff", "Cortina", "Dobson", "Elysian", "Flaine"]
       },
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,

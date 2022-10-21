@@ -9,7 +9,7 @@
         "product": ["Rules"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Elysian"],
+        "release": ["Flaine"],
         "subject": ["Release notes"]
       },
       "environments": ["dev", "int", "staging", "prod"],
@@ -27,7 +27,7 @@
         "product": ["Rules"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Elysian"],
+        "release": ["Flaine"],
         "subject": ["Configuration"]
       },
       "environments": ["dev", "int", "staging", "prod"],
@@ -45,7 +45,7 @@
         "product": ["Submission Intake"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Elysian"],
+        "release": ["Flaine"],
         "subject": ["Features and functionality"]
       },
       "environments": ["dev", "int", "staging", "prod"],
@@ -53,7 +53,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true
+      "earlyAccess": false
     },
     {
       "id": "submissionintakeconfig",
@@ -63,7 +63,7 @@
         "product": ["Submission Intake"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Elysian"],
+        "release": ["Flaine"],
         "subject": ["Configuration"]
       },
       "environments": ["dev", "int", "staging", "prod"],
@@ -71,7 +71,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true
+      "earlyAccess": false
     },
     {
       "id": "worksetmgr",
@@ -81,7 +81,7 @@
         "product": ["Workset Manager"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"],
+        "release": ["Flaine"],
         "subject": ["Configuration"]
       },
       "environments": ["dev", "int", "staging", "prod"],
@@ -89,7 +89,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true
+      "earlyAccess": false
     }
   ]
 }

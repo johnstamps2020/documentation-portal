@@ -9,7 +9,7 @@
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Elysian"],
+        "release": ["Flaine"],
         "subject": ["Integration"]
       },
       "environments": ["int", "staging", "prod"],
@@ -17,7 +17,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true
+      "earlyAccess": false
     }
   ]
 }

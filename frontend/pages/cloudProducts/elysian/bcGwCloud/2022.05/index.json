@@ -209,10 +209,6 @@
         {
           "label": "Gosu Reference",
           "id": "gosureflatest"
-        },
-        {
-          "label": "Webhooks API Reference",
-          "id": "webhooksapinext"
         }
       ]
     },
