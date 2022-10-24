@@ -129,6 +129,10 @@
           "id": "is202205integoverview"
         },
         {
+          "label": "API Reference",
+          "id": "pcapirefelysian"
+        },
+        {
           "label": "Cloud API Authentication",
           "id": "ispc202205apica"
         },
