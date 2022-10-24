@@ -1,25 +1,14 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { DocConfig } from "@documentation-portal/dist/model/entity/DocConfig";
-import MenuItem from "@mui/material/MenuItem";
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import Layout from "../../components/Layout/Layout";
+import DocForm from "../../components/DocForm/DocForm";
 
 export default function DocAdminPage() {
   const [docData, setDocData] = useState<DocConfig[]>();
   const [docObject, setDocObject] = useState(new DocConfig());
   const [memorizedDoc, memorizeDoc] = useState<DocConfig>();
   const [showForm, setShowForm] = useState(false);
-
-  function updateField(event: ChangeEvent<HTMLInputElement>) {
-    setDocObject((currentDoc) => {
-      return {
-        ...currentDoc,
-        [event.target.id]: event.target.value,
-      };
-    });
-  }
 
   useEffect(() => {
     getDocData();
@@ -134,27 +123,22 @@ export default function DocAdminPage() {
     }
   };
 
+  function handleCreateNew() {
+    memorizeDoc(new DocConfig());
+    setShowForm(!showForm);
+  }
+
   //TODO: przeniesc odpowiednio do nowych folderow
 
   //TODO: zmienic formularz ze stanami na nowy stan i zmienić
   //form na https://mui.com/material-ui/react-text-field/
 
   if (docData) {
-    const boolean = [
-      {
-        value: true,
-        label: "True",
-      },
-      {
-        value: false,
-        label: "False",
-      },
-    ];
     return (
       <Layout title="Manage docs">
         <div className="pageBody">
           <div className="pageControllers">
-            <Button variant="contained" onClick={() => setShowForm(!showForm)}>
+            <Button variant="contained" onClick={handleCreateNew}>
               Add new document
             </Button>
           </div>
@@ -183,120 +167,11 @@ export default function DocAdminPage() {
               </div>
             ))}
             {showForm && (
-              <Box
-                component="form"
-                sx={{
-                  "& .MuiTextField-root": {
-                    marginTop: 1,
-                    padding: 2,
-                  },
-                  "& .MuiFormLabel-root": {
-                    color: "hsla(211, 22%, 20%, 0.24)",
-                  },
-                  backgroundColor: "white",
-                  borderRadius: 2,
-                  height: 600,
-                  width: 450,
-                  left: "50%",
-                  top: "50%",
-                  transform: "translate(-50%, -50%)",
-                  overflow: "scroll",
-                }}
-                noValidate
-                autoComplete="off"
-                position="fixed"
-              >
-                <div>
-                  <TextField
-                    id="id"
-                    label="ID"
-                    variant="outlined"
-                    value={docObject.id}
-                    onChange={updateField}
-                    fullWidth
-                  />
-                  <TextField
-                    id="title"
-                    label="Title"
-                    variant="outlined"
-                    value={docObject.title}
-                    onChange={updateField}
-                    fullWidth
-                  />
-                  <TextField
-                    id="url"
-                    label="URL"
-                    variant="outlined"
-                    value={docObject.url}
-                    onChange={updateField}
-                    fullWidth
-                  />
-                  <TextField
-                    id="environments"
-                    label="Environments"
-                    variant="outlined"
-                    value={docObject.environments}
-                    onChange={updateField}
-                    fullWidth
-                  />
-                  <TextField
-                    id="displayOnLandingPages"
-                    label="displayOnLandingPages"
-                    variant="outlined"
-                    select
-                    value={docObject.displayOnLandingPages}
-                    onChange={updateField}
-                    fullWidth
-                  >
-                    {boolean.map((option) => (
-                      <MenuItem
-                        key={String(option.value)}
-                        value={String(option.value)}
-                      >
-                        {option.label}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                  <TextField
-                    id="indexForSearch"
-                    label="indexForSearch"
-                    variant="outlined"
-                    select
-                    value={docObject.indexForSearch}
-                    onChange={updateField}
-                    fullWidth
-                  >
-                    {boolean.map((option) => (
-                      <MenuItem
-                        key={String(option.value)}
-                        value={String(option.value)}
-                      >
-                        {option.label}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                  <br />
-                  <div>
-                    <Button
-                      type="submit"
-                      onClick={() => updateDoc(memorizedDoc)}
-                      color="success"
-                      fullWidth
-                    >
-                      Save changes
-                    </Button>
-                    <br />
-                    <Button
-                      type="button"
-                      onClick={() => setShowForm(false)}
-                      color="error"
-                      fullWidth
-                    >
-                      Close
-                    </Button>
-                  </div>
-                </div>
-              </Box>
+              <DocForm
+                docToDisplay={memorizedDoc}
+                setShowForm={setShowForm}
+                updateDoc={updateDoc}
+              />
             )}
           </div>
         </div>
