@@ -9,7 +9,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import UnauthorizedPage from "./pages/UnauthorizedPage/UnauthorizedPage";
 import FourOhFourPage from "./pages/FourOhFourPage/FourOhFourPage";
-
+import DocAdminPage from "./pages/DocAdminPage/DocAdminPage";
 const theme = createTheme({
   palette: {
     primary: {
@@ -35,6 +35,10 @@ const router = createBrowserRouter(
     {
       path: "/404",
       element: <FourOhFourPage />,
+    },
+    {
+      path: "/admin/doc",
+      element: <DocAdminPage />,
     },
     {
       path: "/*",

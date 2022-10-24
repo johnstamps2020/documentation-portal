@@ -1,0 +1,24 @@
+{
+  "name": "documentation-portal-monorepo",
+  "license": "UNLICENSED",
+  "workspaces": [
+    "server",
+    "landing-pages"
+  ],
+  "scripts": {
+    "server-build": "yarn workspace server build",
+    "landing-pages-build": "yarn workspace landing-pages build",
+    "landing-pages-dev": "yarn workspace landing-pages start",
+    "server-dev": "yarn workspace server dev",
+    "dev": "yarn server-build && concurrently --kill-others-on-fail \"yarn server-dev\" \"yarn landing-pages-dev\"",
+    "build": "yarn server-build && yarn landing-pages-build"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "ssh://git@stash.guidewire.com/doctools/server.git",
+  "author": "Doc Tools <doctools@guidewire.com>",
+  "packageManager": "yarn@3.2.4",
+  "dependencies": {
+    "concurrently": "7.4.0"
+  }
+}

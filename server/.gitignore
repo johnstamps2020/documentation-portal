@@ -98,6 +98,7 @@ typings/
 # End of https://www.gitignore.io/api/node
 
 static/
+dist
 config.json
 
 # Yarn 3 no Zero-Installs

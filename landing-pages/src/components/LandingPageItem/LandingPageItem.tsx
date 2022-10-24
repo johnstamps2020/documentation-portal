@@ -1,4 +1,3 @@
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
 import Stack from "@mui/material/Stack";
 import { Link } from "react-router-dom";
 
@@ -27,7 +26,7 @@ export default function LandingPageItem({
         </div>
       )}
       {items?.map((item) => (
-        <Stack>
+        <Stack key={item.id}>
           <LandingPageItem {...item} />
         </Stack>
       ))}
