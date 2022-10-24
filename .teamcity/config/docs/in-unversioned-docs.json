@@ -8,9 +8,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2022.1"],
-        "subject": ["Release Notes"],
-        "release": ["Elysian"]
+        "version": ["2022.1", "2022.2"],
+        "subject": ["Release Notes"]
       },
       "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -26,9 +25,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2022.1"],
-        "subject": ["Release Notes"],
-        "release": ["Elysian"]
+        "version": ["2022.1", "2022.2"],
+        "subject": ["Release Notes"]
       },
       "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -48,7 +46,7 @@
         "subject": ["Release Notes"],
         "release": ["Flaine"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -302,7 +300,7 @@
         "subject": ["Release notes"],
         "release": ["Flaine"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -446,7 +444,7 @@
         "subject": ["Release notes"],
         "release": ["Flaine"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

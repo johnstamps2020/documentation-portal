@@ -11,7 +11,7 @@
         "version": ["latest"]
       },
       "environments": ["int"],
-      "indexForSearch": false,
+      "indexForSearch": true,
       "public": false,
       "internal": false,
       "earlyAccess": false
@@ -26,7 +26,7 @@
         "version": ["latest"]
       },
       "environments": ["int"],
-      "indexForSearch": false,
+      "indexForSearch": true,
       "public": false,
       "internal": false,
       "earlyAccess": false
@@ -42,7 +42,7 @@
       },
       "environments": ["int"],
       "displayOnLandingPages": false,
-      "indexForSearch": true,
+      "indexForSearch": false,
       "public": false,
       "internal": false,
       "earlyAccess": false

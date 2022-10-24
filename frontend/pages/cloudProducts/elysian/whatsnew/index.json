@@ -29,18 +29,6 @@
         {
           "label": "BillingCenter Release Notes",
           "id": "isbc202205releasenotes"
-        },
-        {
-          "label": "PolicyCenter Release Notes",
-          "id": "ispcelysiandraftreleasenotes"
-        },
-        {
-          "label": "ClaimCenter Release Notes",
-          "id": "isccelysiandraftreleasenotes"
-        },
-        {
-          "label": "BillingCenter Release Notes",
-          "id": "isbcelysiandraftreleasenotes"
         }
       ]
     },
@@ -137,28 +125,6 @@
         {
           "label": "Cloud Platform Release Notes",
           "id": "gwcpreleasenotes"
-        },
-        {
-          "label": "Cloud Console Release Notes",
-          "id": "guidewirecloudconsolerninsurerdev"
-        },
-        {
-          "label": "Cloud Console Release Notes",
-          "id": "guidewirecloudconsolerninsurerdevdraft"
-        }
-      ]
-    },
-    {
-      "label": "Integration Framework",
-      "class": "subject",
-      "items": [
-        {
-          "label": "Integration Gateway Release Notes",
-          "id": "integgatewayrnlatest"
-        },
-        {
-          "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn"
         }
       ]
     }

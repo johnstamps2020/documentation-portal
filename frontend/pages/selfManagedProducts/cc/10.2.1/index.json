@@ -49,10 +49,6 @@
         {
           "label": "New and Changed",
           "id": "iscc1021newandchanged"
-        },
-        {
-          "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn"
         }
       ]
     },

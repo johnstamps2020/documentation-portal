@@ -37,18 +37,6 @@
         {
           "label": "Release Notes",
           "id": "iscc202209releasenotes"
-        },
-        {
-          "label": "App Events Release Notes",
-          "id": "appeventsrn"
-        },
-        {
-          "label": "Integration Gateway Release Notes",
-          "id": "integgatewayrnlatest"
-        },
-        {
-          "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn"
         }
       ]
     },
@@ -135,6 +123,10 @@
         {
           "label": "Overview of Cloud Integration",
           "id": "is202209integoverview"
+        },
+        {
+          "label": "API Reference",
+          "id": "ccapirefflaine"
         },
         {
           "label": "App Events",

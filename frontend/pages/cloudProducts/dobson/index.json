@@ -83,6 +83,10 @@
           "id": "comparelatest"
         },
         {
+          "label": "Cyence",
+          "page": "../cyence"
+        },
+        {
           "label": "Explore",
           "page": "../explore/latest"
         },
@@ -111,7 +115,6 @@
         {
           "label": "Digital Reference Applications",
           "class": "group",
-          "env": ["staging", "prod"],
           "items": [
             {
               "label": "CustomerEngage Account Management",
@@ -144,85 +147,12 @@
           ]
         },
         {
-          "label": "Digital Reference Applications",
-          "class": "group",
-          "env": ["int"],
-          "items": [
-            {
-              "label": "CustomerEngage Account Management",
-              "page": "ceAccountMgmt/latest"
-            },
-            {
-              "label": "CustomerEngage Account Management for ClaimCenter",
-              "page": "ceAccountMgmtCc/latest"
-            },
-            {
-              "label": "CustomerEngage Quote and Buy",
-              "page": "ceQuoteAndBuy/latest"
-            },
-            {
-              "label": "ProducerEngage",
-              "page": "producerEngage/latest"
-            },
-            {
-              "label": "ProducerEngage for ClaimCenter",
-              "page": "producerEngageCc/latest"
-            },
-            {
-              "label": "ServiceRepEngage",
-              "page": "serviceRepEngage/latest"
-            },
-            {
-              "label": "VendorEngage",
-              "page": "vendorEngage/latest"
-            }
-          ]
-        },
-        {
           "label": "Digital Framework",
           "class": "group",
           "items": [
             {
               "label": "Jutro Design System",
               "page": "../../jutroDesignSystem/6.5.1"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Cyence",
-      "class": "categoryCard cardShadow",
-      "items": [
-        {
-          "label": "Cyence Cyber",
-          "class": "group",
-          "items": [
-            {
-              "label": "Help Center",
-              "link": "/cyence/cyber/HelpCenter"
-            },
-            {
-              "label": "Help Center - Accumulation Only",
-              "link": "/cyence/cyber/HelpCenterAccum"
-            },
-            {
-              "label": "Model 5 Technical Reference",
-              "link": "/cyence/cyber/Model5/CyenceCyberRiskModel5.pdf"
-            },
-            {
-              "label": "Python SDK and REST API Reference",
-              "link": "/cyence/cyber/SdkApiRef"
-            }
-          ]
-        },
-        {
-          "label": "Cyence Cyber for Small/Medium Business",
-          "class": "group",
-          "items": [
-            {
-              "label": "C#/Python SDKs and REST API Reference",
-              "link": "/cyence/smb/SdkApiRef"
             }
           ]
         }
@@ -237,10 +167,6 @@
           "class": "group",
           "items": [
             {
-              "label": "Release Notes",
-              "id": "gchhelprnrelease"
-            },
-            {
               "label": "Getting Started with Cloud Home",
               "id": "gchhelprelease"
             }
@@ -250,14 +176,6 @@
           "label": "Cloud Console",
           "class": "group",
           "items": [
-            {
-              "label": "Release Notes",
-              "id": "guidewirecloudconsolerninsurerdev"
-            },
-            {
-              "label": "Release Notes",
-              "id": "guidewirecloudconsolerninsurerdevdraft"
-            },
             {
               "label": "Cloud Console Documentation",
               "page": "../cloudConsole"
@@ -294,10 +212,6 @@
           "label": "Integration Framework",
           "class": "group",
           "items": [
-            {
-              "label": "Release Notes",
-              "id": "integgatewayrnlatest"
-            },
             {
               "label": "Integration Gateway",
               "id": "integgatewaydevlatest"

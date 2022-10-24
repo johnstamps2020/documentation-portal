@@ -11,7 +11,7 @@
         "version": ["2022.09"],
         "release": ["Flaine"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,

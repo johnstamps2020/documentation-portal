@@ -32,23 +32,11 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "ispcelysiandraftreleasenotes"
-        },
-        {
-          "label": "Release Notes",
           "id": "ispc202205releasenotes"
         },
         {
           "label": "AppReader Release Notes",
           "id": "appreaderrn400"
-        },
-        {
-          "label": "Integration Gateway Release Notes",
-          "id": "integgatewayrnlatest"
-        },
-        {
-          "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn"
         }
       ]
     },
@@ -58,27 +46,11 @@
       "items": [
         {
           "label": "Developer Setup",
-          "id": "ispcelysiandraftdevsetup"
-        },
-        {
-          "label": "Developer Setup",
           "id": "ispc202205devsetup"
-        },
-        {
-          "label": "Developer Setup (Internal only)",
-          "id": "ispcelysiangwdevsetup"
-        },
-        {
-          "label": "Upgrade",
-          "id": "ispcelysiandraftupgrade"
         },
         {
           "label": "Upgrade",
           "id": "ispc202205upgrade"
-        },
-        {
-          "label": "Upgrade (Internal only)",
-          "id": "ispcelysiangwupgrade"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
@@ -96,15 +68,7 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "ispcelysiandraftapp"
-        },
-        {
-          "label": "Application Guide",
           "id": "ispc202205app"
-        },
-        {
-          "label": "Contact Management",
-          "id": "iselysiandraftcontact"
         },
         {
           "label": "Contact Management",
@@ -118,19 +82,7 @@
       "items": [
         {
           "label": "Administration",
-          "id": "ispcelysiandraftadmin"
-        },
-        {
-          "label": "Administration",
           "id": "ispc202205admin"
-        },
-        {
-          "label": "Administration (Internal only)",
-          "id": "ispcelysiangwadmin"
-        },
-        {
-          "label": "Data Archiving",
-          "id": "ispcelysiandraftdataarchiving"
         },
         {
           "label": "Data Archiving",
@@ -148,15 +100,7 @@
         },
         {
           "label": "Configuration",
-          "id": "ispcelysiandraftconfig"
-        },
-        {
-          "label": "Configuration",
           "id": "ispc202205config"
-        },
-        {
-          "label": "Globalization",
-          "id": "ispcelysiandraftglobal"
         },
         {
           "label": "Globalization",
@@ -164,23 +108,11 @@
         },
         {
           "label": "Gosu Rules",
-          "id": "ispcelysiandraftrules"
-        },
-        {
-          "label": "Gosu Rules",
           "id": "ispc202205rules"
         },
         {
           "label": "Product Designer",
-          "id": "ispcelysiandraftpd"
-        },
-        {
-          "label": "Product Designer",
           "id": "ispc202205pd"
-        },
-        {
-          "label": "Product Model",
-          "id": "ispcelysiandraftpm"
         },
         {
           "label": "Product Model",
@@ -194,15 +126,7 @@
       "items": [
         {
           "label": "Overview of Cloud Integration",
-          "id": "iselysiandraftintegoverview"
-        },
-        {
-          "label": "Overview of Cloud Integration",
           "id": "is202205integoverview"
-        },
-        {
-          "label": "Cloud API Authentication",
-          "id": "ispcelysiandraftapica"
         },
         {
           "label": "Cloud API Authentication",
@@ -210,15 +134,7 @@
         },
         {
           "label": "Cloud API Business Flows",
-          "id": "ispcelysiandraftapibf"
-        },
-        {
-          "label": "Cloud API Business Flows",
           "id": "ispc202205apibf"
-        },
-        {
-          "label": "Cloud API ContactManager",
-          "id": "ispcelysiandraftapicm"
         },
         {
           "label": "Cloud API ContactManager",
@@ -230,15 +146,7 @@
         },
         {
           "label": "Plugins, Pre-built Integrations, and SOAP APIs",
-          "id": "ispcelysiandraftinteg"
-        },
-        {
-          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
           "id": "ispc202205integ"
-        },
-        {
-          "label": "REST API Framework",
-          "id": "ispcelysiandraftrestapifw"
         },
         {
           "label": "REST API Framework",

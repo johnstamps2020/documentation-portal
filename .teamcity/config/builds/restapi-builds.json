@@ -11,14 +11,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "IS-CC-Cloud-Release.ditaval",
-      "root": "appevents-releasenotes-cc.ditamap",
-      "indexRedirect": true,
-      "srcId": "restapisrc",
-      "docId": "appeventsrn"
-    },
-    {
-      "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "IntegrationGatewayForDevelopers.ditamap",
       "indexRedirect": true,
@@ -28,25 +20,9 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "IntegrationGatewayReleaseNotes.ditamap",
-      "indexRedirect": true,
-      "srcId": "restapisrc",
-      "docId": "integgatewayrnlatest"
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "RESTAPIClientGuide.ditamap",
       "srcId": "restapisrc",
       "docId": "isrestapiclientguide",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "Guidewire_REST-API-Client112_ReleaseNotes.ditamap",
-      "srcId": "restapisrc",
-      "docId": "isrestapiclientrn",
       "indexRedirect": true
     }
   ]

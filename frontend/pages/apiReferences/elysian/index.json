@@ -78,17 +78,6 @@
       ]
     },
     {
-      "label": "APD API Reference",
-      "class": "categoryCard cardShadow",
-      "env": ["int"],
-      "items": [
-        {
-          "label": "API Reference",
-          "id": "apdmaindoc"
-        }
-      ]
-    },
-    {
       "label": "Cloud Console",
       "class": "categoryCard cardShadow",
       "items": [

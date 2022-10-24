@@ -196,13 +196,6 @@
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-extras.git",
       "sourceType": "git",
       "branch": "release/2021.04"
-    },
-    {
-      "id": "dxpracticessrc",
-      "title": "Digital Services Docs",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-services-docs.git",
-      "branch": "main"
     }
   ]
 }

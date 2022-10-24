@@ -41,10 +41,6 @@
         {
           "label": "Test Automation Release Notes",
           "id": "testingframeworksrnbanff"
-        },
-        {
-          "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn"
         }
       ]
     },

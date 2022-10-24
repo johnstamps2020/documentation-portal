@@ -1,0 +1,10 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "yarn",
+      "docId": "dxpractices",
+      "srcId": "dxpracticessrc"
+    }
+  ]
+}

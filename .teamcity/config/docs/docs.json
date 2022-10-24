@@ -2312,21 +2312,6 @@
       "earlyAccess": false
     },
     {
-      "id": "gchhelprnrelease",
-      "title": "Guidewire Cloud Home Release Notes",
-      "url": "help/GCHrn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Home"],
-        "version": ["latest"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "configmgrhelpcortina",
       "title": "Configuration Manager Help",
       "url": "help/cortina/configuration-manager",
@@ -7119,22 +7104,6 @@
       "public": false,
       "internal": true,
       "earlyAccess": true
-    },
-    {
-      "id": "updatedev",
-      "title": "Update Dev",
-      "url": "cloud/updatedev/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Platform"],
-        "version": ["latest"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
     },
     {
       "id": "surepathmethodologymain",
