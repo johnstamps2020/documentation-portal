@@ -164,23 +164,11 @@
       "items": [
         {
           "label": "Cloud Home",
-          "class": "group",
-          "items": [
-            {
-              "label": "Getting Started with Cloud Home",
-              "id": "gchhelprelease"
-            }
-          ]
+          "id": "gchhelprelease"
         },
         {
           "label": "Cloud Console",
-          "class": "group",
-          "items": [
-            {
-              "label": "Cloud Console Documentation",
-              "page": "../cloudConsole"
-            }
-          ]
+          "page": "../cloudConsole"
         },
         {
           "label": "Cloud Infrastructure",
