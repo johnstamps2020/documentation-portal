@@ -1,12 +1,32 @@
 import { useEffect, useState } from "react";
 import { DocConfig } from "@documentation-portal/dist/model/entity/DocConfig";
+import { Build } from "@documentation-portal/dist/model/entity/Build";
 import Button from "@mui/material/Button";
 import Layout from "../../components/Layout/Layout";
 import DocForm from "../../components/DocForm/DocForm";
 
+
+const emptyDoc : DocConfig = {
+  id: '',
+  title: "",
+  url: "",
+  body: "",
+  products: [],
+  build: new Build,
+  releases: [],
+  environments: "",
+  displayOnLandingPages: false,
+  indexForSearch: false,
+  public: false,
+  internal: false,
+  earlyAccess: false,
+  subjects: "",
+  categories: ""
+}
+
 export default function DocAdminPage() {
   const [docData, setDocData] = useState<DocConfig[]>();
-  const [docObject, setDocObject] = useState(new DocConfig());
+  const [docObject, setDocObject] = useState(emptyDoc);
   const [memorizedDoc, memorizeDoc] = useState<DocConfig>();
   const [showForm, setShowForm] = useState(false);
 
@@ -32,7 +52,7 @@ export default function DocAdminPage() {
       },
       body: JSON.stringify(data),
     });
-
+    //TODO: change alert to MUI component (snackbar/state)
     if (response.ok) {
       alert("You did it! We no longer have this document in the database.");
       getDocData();
@@ -48,7 +68,7 @@ export default function DocAdminPage() {
   const updateDoc = async (doc: DocConfig | undefined) => {
     setShowForm(!showForm);
     //updating document
-    if (doc) {
+    if (doc && doc!==emptyDoc) {
       const data = {
         id: doc.id,
         title: docObject.title,
@@ -81,13 +101,14 @@ export default function DocAdminPage() {
       const result = await response.json();
       console.log("result is: ", JSON.stringify(result, null, 4));
       if (response.ok) {
+      //TODO: change alert to MUI component (snackbar/state)
         alert("You successfully updated this document.");
         getDocData();
       }
     }
     //creating new document
     else {
-      memorizeDoc(undefined);
+      memorizeDoc(emptyDoc);
       const data = {
         id: docObject.id,
         title: docObject.title,
@@ -117,6 +138,7 @@ export default function DocAdminPage() {
       const result = await response.json();
       console.log("result is: ", JSON.stringify(result, null, 4));
       if (response.ok) {
+      //TODO: change alert to MUI component (snackbar/state)
         alert("You successfully added new document.");
         getDocData();
       }
@@ -124,14 +146,9 @@ export default function DocAdminPage() {
   };
 
   function handleCreateNew() {
-    memorizeDoc(new DocConfig());
+    memorizeDoc(emptyDoc);
     setShowForm(!showForm);
   }
-
-  //TODO: przeniesc odpowiednio do nowych folderow
-
-  //TODO: zmienic formularz ze stanami na nowy stan i zmienić
-  //form na https://mui.com/material-ui/react-text-field/
 
   if (docData) {
     return (
