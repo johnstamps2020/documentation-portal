@@ -104,14 +104,10 @@ export default function DocAdminPage() {
         //TODO: change alert to MUI component (snackbar/state)
         alert("You successfully updated this document.");
         getDocData();
-      } else {
-        alert("You did not successfully update this document.");
-        console.log(response);
       }
     }
     //creating new document
     else {
-      console.log("else");
       const data = {
         id: docObject.id,
         title: docObject.title,
@@ -128,8 +124,6 @@ export default function DocAdminPage() {
         categories: null,
         body: docObject.body,
       };
-      console.log(data);
-      console.log(emptyDoc);
       const response = await fetch(`/safeConfig/entity/DocConfig?id=`, {
         method: "POST",
         body: JSON.stringify(data),
