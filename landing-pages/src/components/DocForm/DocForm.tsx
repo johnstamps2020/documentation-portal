@@ -5,6 +5,9 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import React from "react";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
 
 const style = {
   position: "absolute" as "absolute",
@@ -33,6 +36,16 @@ export default function DocForm({
   setDocObject,
   handleClose,
 }: DocFormProps) {
+  const [switchValues, setSwitchValues] = useState([
+    {
+      switchValue: "on",
+      newValue: true,
+    },
+    {
+      switchValue: "off",
+      newValue: false,
+    },
+  ]);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -80,6 +93,28 @@ export default function DocForm({
           onChange={updateField}
           fullWidth
         />
+        <FormGroup>
+          <FormControlLabel
+            control={
+              <Switch
+                onChange={updateField}
+                id="displayOnLandingPages"
+                checked={docObject.displayOnLandingPages || false}
+              />
+            }
+            label="Display on landing pages"
+          />
+          <FormControlLabel
+            control={
+              <Switch
+                onChange={updateField}
+                id="indexForSearch"
+                checked={docObject.indexForSearch || false}
+              />
+            }
+            label="Index for search"
+          />
+        </FormGroup>
         <br />
         <div>
           <Button type="submit" color="success" fullWidth>
