@@ -4,30 +4,31 @@ import { Build } from "@documentation-portal/dist/model/entity/Build";
 import Button from "@mui/material/Button";
 import Layout from "../../components/Layout/Layout";
 import DocForm from "../../components/DocForm/DocForm";
+import { Product } from "@documentation-portal/dist/model/entity/Product";
+import { Release } from "@documentation-portal/dist/model/entity/Release";
 
-
-const emptyDoc : DocConfig = {
-  id: '',
+const emptyDoc: DocConfig = {
+  id: "",
   title: "",
   url: "",
   body: "",
-  products: [],
-  build: new Build,
-  releases: [],
+  products: [new Product()],
+  releases: [new Release()],
   environments: "",
   displayOnLandingPages: false,
   indexForSearch: false,
   public: false,
   internal: false,
   earlyAccess: false,
+  build: new Build(),
   subjects: "",
-  categories: ""
-}
+  categories: "",
+};
 
 export default function DocAdminPage() {
   const [docData, setDocData] = useState<DocConfig[]>();
   const [docObject, setDocObject] = useState(emptyDoc);
-  const [memorizedDoc, memorizeDoc] = useState<DocConfig>();
+  const [memorizedDoc, memorizeDoc] = useState<DocConfig>(emptyDoc);
   const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
@@ -65,10 +66,9 @@ export default function DocAdminPage() {
     memorizeDoc(doc);
   };
 
-  const updateDoc = async (doc: DocConfig | undefined) => {
-    setShowForm(!showForm);
+  const updateDoc = async (doc: DocConfig) => {
     //updating document
-    if (doc && doc!==emptyDoc) {
+    if (doc && doc !== emptyDoc) {
       const data = {
         id: doc.id,
         title: docObject.title,
@@ -81,8 +81,8 @@ export default function DocAdminPage() {
         earlyAccess: docObject.earlyAccess,
         products: docObject.products,
         releases: docObject.releases,
-        subjects: docObject.subjects,
-        categories: docObject.categories,
+        subjects: null,
+        categories: null,
         body: docObject.body,
       };
 
@@ -101,19 +101,22 @@ export default function DocAdminPage() {
       const result = await response.json();
       console.log("result is: ", JSON.stringify(result, null, 4));
       if (response.ok) {
-      //TODO: change alert to MUI component (snackbar/state)
+        //TODO: change alert to MUI component (snackbar/state)
         alert("You successfully updated this document.");
         getDocData();
+      } else {
+        alert("You did not successfully update this document.");
+        console.log(response);
       }
     }
     //creating new document
     else {
-      memorizeDoc(emptyDoc);
+      console.log("else");
       const data = {
         id: docObject.id,
         title: docObject.title,
         url: docObject.url,
-        environments: docObject.environments,
+        environments: [docObject.environments],
         displayOnLandingPages: docObject.displayOnLandingPages,
         indexForSearch: docObject.indexForSearch,
         public: docObject.public,
@@ -121,11 +124,12 @@ export default function DocAdminPage() {
         earlyAccess: docObject.earlyAccess,
         products: docObject.products,
         releases: docObject.releases,
-        subjects: docObject.subjects,
-        categories: docObject.categories,
+        subjects: null,
+        categories: null,
         body: docObject.body,
       };
-
+      console.log(data);
+      console.log(emptyDoc);
       const response = await fetch(`/safeConfig/entity/DocConfig?id=`, {
         method: "POST",
         body: JSON.stringify(data),
@@ -138,7 +142,7 @@ export default function DocAdminPage() {
       const result = await response.json();
       console.log("result is: ", JSON.stringify(result, null, 4));
       if (response.ok) {
-      //TODO: change alert to MUI component (snackbar/state)
+        //TODO: change alert to MUI component (snackbar/state)
         alert("You successfully added new document.");
         getDocData();
       }
@@ -148,6 +152,7 @@ export default function DocAdminPage() {
   function handleCreateNew() {
     memorizeDoc(emptyDoc);
     setShowForm(!showForm);
+    setDocObject(emptyDoc);
   }
 
   if (docData) {
@@ -188,6 +193,9 @@ export default function DocAdminPage() {
                 docToDisplay={memorizedDoc}
                 setShowForm={setShowForm}
                 updateDoc={updateDoc}
+                emptyDoc={emptyDoc}
+                docObject={docObject}
+                setDocObject={setDocObject}
               />
             )}
           </div>

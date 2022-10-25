@@ -6,18 +6,22 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 
 type DocFormProps = {
-  updateDoc: (doc: DocConfig | undefined) => void;
+  updateDoc: (doc: DocConfig) => Promise<void>;
   setShowForm: React.Dispatch<boolean>;
-  docToDisplay: DocConfig | undefined;
+  docToDisplay: DocConfig;
+  emptyDoc: DocConfig;
+  docObject: DocConfig;
+  setDocObject: React.Dispatch<React.SetStateAction<DocConfig>>;
 };
 
 export default function DocForm({
   updateDoc,
   setShowForm,
   docToDisplay,
+  emptyDoc,
+  docObject,
+  setDocObject
 }: DocFormProps) {
-  const [docObject, setDocObject] = useState(docToDisplay || new DocConfig());
-
   const boolean = [
     {
       value: true,
@@ -28,6 +32,11 @@ export default function DocForm({
       label: "False",
     },
   ];
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    updateDoc(docToDisplay);
+  }
 
   function updateField(event: ChangeEvent<HTMLInputElement>) {
     setDocObject((currentDoc) => {
@@ -41,6 +50,7 @@ export default function DocForm({
   return (
     <Box
       component="form"
+      onSubmit={handleSubmit}
       sx={{
         "& .MuiTextField-root": {
           marginTop: 1,
@@ -88,14 +98,6 @@ export default function DocForm({
           fullWidth
         />
         <TextField
-          id="environments"
-          label="Environments"
-          variant="outlined"
-          value={docObject.environments}
-          onChange={updateField}
-          fullWidth
-        />
-        <TextField
           id="displayOnLandingPages"
           label="displayOnLandingPages"
           variant="outlined"
@@ -127,12 +129,7 @@ export default function DocForm({
         </TextField>
         <br />
         <div>
-          <Button
-            type="submit"
-            onClick={() => updateDoc(docToDisplay)}
-            color="success"
-            fullWidth
-          >
+          <Button type="submit" color="success" fullWidth>
             Save changes
           </Button>
           <br />
