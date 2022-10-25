@@ -40,6 +40,11 @@ export default function DocForm({
     updateDoc(docToDisplay);
   }
 
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    updateDoc(docToDisplay);
+  }
+
   function updateField(event: ChangeEvent<HTMLInputElement>) {
     setDocObject((currentDoc) => {
       return {
