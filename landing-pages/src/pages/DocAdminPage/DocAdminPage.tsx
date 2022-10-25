@@ -6,6 +6,8 @@ import Layout from "../../components/Layout/Layout";
 import DocForm from "../../components/DocForm/DocForm";
 import { Product } from "@documentation-portal/dist/model/entity/Product";
 import { Release } from "@documentation-portal/dist/model/entity/Release";
+import React from "react";
+import Modal from "@mui/material/Modal";
 
 const emptyDoc: DocConfig = {
   id: "",
@@ -30,6 +32,10 @@ export default function DocAdminPage() {
   const [docObject, setDocObject] = useState(emptyDoc);
   const [memorizedDoc, memorizeDoc] = useState<DocConfig>(emptyDoc);
   const [showForm, setShowForm] = useState(false);
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     getDocData();
@@ -58,12 +64,6 @@ export default function DocAdminPage() {
       alert("You did it! We no longer have this document in the database.");
       getDocData();
     }
-  };
-
-  const showFormAndSetVar = (doc: DocConfig) => {
-    setShowForm(!showForm);
-    setDocObject(doc);
-    memorizeDoc(doc);
   };
 
   const updateDoc = async (doc: DocConfig) => {
@@ -144,16 +144,23 @@ export default function DocAdminPage() {
   };
 
   function handleCreateNew() {
+    handleOpen();
     memorizeDoc(emptyDoc);
     setShowForm(!showForm);
     setDocObject(emptyDoc);
   }
 
+  const showFormAndSetVar = (doc: DocConfig) => {
+    handleOpen();
+    setDocObject(doc);
+    memorizeDoc(doc);
+  };
+
   if (docData) {
     return (
       <Layout title="Manage docs">
-        <div className="pageBody">
-          <div className="pageControllers">
+        <div>
+          <div>
             <Button variant="contained" onClick={handleCreateNew}>
               Add new document
             </Button>
@@ -182,16 +189,22 @@ export default function DocAdminPage() {
                 <Button onClick={() => showFormAndSetVar(doc)}>Update</Button>
               </div>
             ))}
-            {showForm && (
-              <DocForm
-                docToDisplay={memorizedDoc}
-                setShowForm={setShowForm}
-                updateDoc={updateDoc}
-                emptyDoc={emptyDoc}
-                docObject={docObject}
-                setDocObject={setDocObject}
-              />
-            )}
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <>
+                <DocForm
+                  docToDisplay={memorizedDoc}
+                  updateDoc={updateDoc}
+                  docObject={docObject}
+                  setDocObject={setDocObject}
+                  handleClose={handleClose}
+                />
+              </>
+            </Modal>
           </div>
         </div>
       </Layout>

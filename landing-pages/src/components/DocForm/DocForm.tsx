@@ -4,34 +4,35 @@ import MenuItem from "@mui/material/MenuItem";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import React from "react";
+
+const style = {
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
 
 type DocFormProps = {
   updateDoc: (doc: DocConfig) => Promise<void>;
-  setShowForm: React.Dispatch<boolean>;
   docToDisplay: DocConfig;
-  emptyDoc: DocConfig;
   docObject: DocConfig;
   setDocObject: React.Dispatch<React.SetStateAction<DocConfig>>;
+  handleClose: () => void;
 };
 
 export default function DocForm({
   updateDoc,
-  setShowForm,
   docToDisplay,
-  emptyDoc,
   docObject,
-  setDocObject
+  setDocObject,
+  handleClose,
 }: DocFormProps) {
-  const boolean = [
-    {
-      value: true,
-      label: "True",
-    },
-    {
-      value: false,
-      label: "False",
-    },
-  ];
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -47,33 +48,13 @@ export default function DocForm({
     });
   }
 
+  const textFieldSize = "small";
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit}
-      sx={{
-        "& .MuiTextField-root": {
-          marginTop: 1,
-          padding: 2,
-        },
-        "& .MuiFormLabel-root": {
-          color: "hsla(211, 22%, 20%, 0.24)",
-        },
-        backgroundColor: "white",
-        borderRadius: 2,
-        height: 600,
-        width: 450,
-        left: "50%",
-        top: "50%",
-        transform: "translate(-50%, -50%)",
-        overflow: "scroll",
-      }}
-      noValidate
-      autoComplete="off"
-      position="fixed"
-    >
+    //TODO: Change switch value from "ON" and "OFF" to true and false
+    <Box component="form" onSubmit={handleSubmit} sx={style}>
       <div>
         <TextField
+          size={textFieldSize}
           id="id"
           label="ID"
           variant="outlined"
@@ -85,6 +66,7 @@ export default function DocForm({
           id="title"
           label="Title"
           variant="outlined"
+          size={textFieldSize}
           value={docObject.title}
           onChange={updateField}
           fullWidth
@@ -93,52 +75,18 @@ export default function DocForm({
           id="url"
           label="URL"
           variant="outlined"
+          size={textFieldSize}
           value={docObject.url}
           onChange={updateField}
           fullWidth
         />
-        <TextField
-          id="displayOnLandingPages"
-          label="displayOnLandingPages"
-          variant="outlined"
-          select
-          value={docObject.displayOnLandingPages}
-          onChange={updateField}
-          fullWidth
-        >
-          {boolean.map((option) => (
-            <MenuItem key={String(option.value)} value={String(option.value)}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-        <TextField
-          id="indexForSearch"
-          label="indexForSearch"
-          variant="outlined"
-          select
-          value={docObject.indexForSearch}
-          onChange={updateField}
-          fullWidth
-        >
-          {boolean.map((option) => (
-            <MenuItem key={String(option.value)} value={String(option.value)}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
         <br />
         <div>
           <Button type="submit" color="success" fullWidth>
             Save changes
           </Button>
           <br />
-          <Button
-            type="button"
-            onClick={() => setShowForm(false)}
-            color="error"
-            fullWidth
-          >
+          <Button type="button" color="error" fullWidth onClick={handleClose}>
             Close
           </Button>
         </div>
