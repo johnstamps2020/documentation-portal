@@ -2715,6 +2715,7 @@ object Sources {
         val teamcityBuildBranch = "%teamcity.build.vcs.branch.${teamcityGitRepoId}%"
         val publishPath = "preview/${src_id}/${teamcityBuildBranch}/${docId}"
         val previewUrlFile = "preview_url.txt"
+        val docInfoFile = "doc-info.json"
 
         val validationBuildType = BuildType {
             name = "Validate $docTitle ($docId)"
@@ -2737,7 +2738,6 @@ object Sources {
                 val docValidatorLogs = "doc_validator_logs"
                 val normalizedDitaDir = "normalized_dita_dir"
                 val schematronReportsDir = "schematron_reports_dir"
-                val docInfoFile = "doc-info.json"
                 val rootMap = build_config.getString("root")
                 val indexRedirect = when (build_config.has("indexRedirect")) {
                     true -> {
@@ -2771,14 +2771,6 @@ object Sources {
                 """.trimIndent()
 
                 validationBuildType.steps {
-                    step(
-                        GwBuildSteps.createGetDocumentDetailsStep(
-                            teamcityBuildBranch,
-                            src_id,
-                            docInfoFile,
-                            docConfig
-                        )
-                    )
                     step(
                         GwBuildSteps.createBuildDitaProjectForValidationsStep(
                             GwDitaOutputFormats.HTML5.format_name,
@@ -2820,13 +2812,23 @@ object Sources {
                             buildFilter
                         )
                     )
-                    // For now, content and image validations are disabled.
+                    step(
+                        GwBuildSteps.createGetDocumentDetailsStep(
+                            workingDir,
+                            teamcityBuildBranch,
+                            src_id,
+                            docInfoFile,
+                            docConfig
+                        )
+                    )
+                    // For now, image validations are disabled.
                     // These validations need improvements.
                     arrayOf(
                         GwValidationModules.VALIDATORS_DITA.validation_name,
                         GwValidationModules.VALIDATORS_FILES.validation_name,
+                        GwValidationModules.VALIDATORS_CONTENT.validation_name,
                         GwValidationModules.EXTRACTORS_DITA_OT_LOGS.validation_name,
-                        GwValidationModules.EXTRACTORS_SCHEMATRON_REPORTS.validation_name
+                        GwValidationModules.EXTRACTORS_SCHEMATRON_REPORTS.validation_name,
                     ).forEach {
                         this.step(
                             GwBuildSteps.createRunDocValidatorStep(
@@ -2834,6 +2836,7 @@ object Sources {
                                 workingDir,
                                 ditaOtLogsDir,
                                 normalizedDitaDir,
+                                "${outputDir}/${GwDitaOutputFormats.HTML5.format_name}",
                                 schematronReportsDir,
                                 docInfoFile
                             )
@@ -2889,7 +2892,31 @@ object Sources {
                             previewUrlFile
                         )
                     )
+                }
 
+                if (!workingDir.contains("storybook")) {
+                    validationBuildType.steps {
+                        step(
+                            GwBuildSteps.createGetDocumentDetailsStep(
+                                workingDir,
+                                teamcityBuildBranch,
+                                src_id,
+                                docInfoFile,
+                                docConfig
+                            )
+                        )
+                        step(
+                            GwBuildSteps.createRunDocValidatorStep(
+                                GwValidationModules.VALIDATORS_CONTENT.validation_name,
+                                workingDir,
+                                "",
+                                "",
+                                outputDir,
+                                "",
+                                docInfoFile
+                            )
+                        )
+                    }
                 }
 
                 validationBuildType.features {
@@ -3890,6 +3917,7 @@ object GwBuildSteps {
     }
 
     fun createGetDocumentDetailsStep(
+        working_dir: String,
         build_branch: String,
         src_id: String,
         doc_info_file: String,
@@ -3907,7 +3935,7 @@ object GwBuildSteps {
                     $doc_config
                     EOF
                  
-                    cat $doc_info_file
+                    cat "${working_dir}/${doc_info_file}"
                 """.trimIndent()
         }
     }
@@ -4486,6 +4514,7 @@ object GwBuildSteps {
         working_dir: String,
         dita_ot_logs_dir: String,
         normalized_dita_dir: String,
+        html5_dir: String,
         schematron_reports_dir: String,
         doc_info_file: String,
     ): ScriptBuildStep {
@@ -4499,9 +4528,9 @@ object GwBuildSteps {
 
         when (validation_module) {
             GwValidationModules.VALIDATORS_CONTENT.validation_name -> {
-                validationCommandParams.add(Pair("validators", "${working_dir}/${normalized_dita_dir}"))
+                validationCommandParams.add(Pair("validators", "${working_dir}/${html5_dir}"))
                 validationCommandParams.add(Pair("content", ""))
-                stepName = "Run GW validations for content readability"
+                stepName = "Run GW validations for content"
             }
             GwValidationModules.VALIDATORS_DITA.validation_name -> {
                 validationCommandParams.add(Pair("validators", "${working_dir}/${normalized_dita_dir}"))
@@ -4608,7 +4637,7 @@ object GwProjectFeatures {
         param("quota", "3")
         param("name", "AntennaHouseFormatterServer")
         param("type", "quoted")
-    })  
+    })
 
     object GwBuildListenerLimitProjectFeature : ProjectFeature({
         type = "JetBrains.SharedResources"
