@@ -3923,6 +3923,7 @@ object GwBuildSteps {
         doc_info_file: String,
         doc_config: JSONObject,
     ): ScriptBuildStep {
+        val docInfoFilePath = "${working_dir}/${doc_info_file}"
         return ScriptBuildStep {
             name = "Get document details"
             id = Helpers.createIdStringFromName(this.name)
@@ -3930,12 +3931,11 @@ object GwBuildSteps {
                     #!/bin/bash
                     set -xe
                     
-                    
-                    cat << EOF | jq '. += {"gitBuildBranch": "$build_branch", "gitSourceId": "$src_id"}' > "$doc_info_file" | jq .
+                    cat << EOF | jq '. += {"gitBuildBranch": "$build_branch", "gitSourceId": "$src_id"}' > "$docInfoFilePath" | jq .
                     $doc_config
                     EOF
                  
-                    cat "${working_dir}/${doc_info_file}"
+                    cat "$docInfoFilePath"
                 """.trimIndent()
         }
     }
