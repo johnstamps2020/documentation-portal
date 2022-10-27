@@ -1524,7 +1524,7 @@ object Frontend {
                 GwDeployEnvs.INT,
                 GwDeployEnvs.STAGING,
                 GwDeployEnvs.PROD).forEach {
-                buildType(createDeployLandingPagesBuildType(it.env_name))
+                buildType(createDeployReactLandingPagesBuildType(it.env_name))
             }
         }
     }
@@ -1608,48 +1608,6 @@ object Frontend {
 
             features {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            }
-        }
-    }
-
-    private fun createDeployLandingPagesBuildType(deploy_env: String): BuildType {
-        val outputDir = "%teamcity.build.checkoutDir%/output"
-        return BuildType {
-            name = "Deploy landing pages to $deploy_env"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:<default>"
-                cleanCheckout = true
-            }
-
-            steps {
-                step(GwBuildSteps.MergeDocsConfigFilesStep)
-                step(
-                    GwBuildSteps.createRunFlailSsgStep(
-                        "%teamcity.build.checkoutDir%/frontend/pages",
-                        outputDir,
-                        deploy_env
-                    )
-                )
-                step(GwBuildSteps.createDeployStaticFilesStep(deploy_env,
-                    GwStaticFilesModes.LANDING_PAGES.mode_name,
-                    outputDir))
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            if (deploy_env == GwDeployEnvs.DEV.env_name) {
-                triggers {
-                    vcs {
-                        triggerRules = """
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:frontend/pages/**
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
-                            -:user=doctools:**
-                            """.trimIndent()
-                    }
-                }
             }
         }
     }
