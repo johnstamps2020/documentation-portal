@@ -8,9 +8,9 @@ from urllib.parse import urlparse
 
 import scrapy
 from scrapy import Request
+from textstat import textstat
 
-from ..items import BrokenLink
-from ..items import IndexEntry
+from ..items import BrokenLink, IndexEntry, ShortTopic
 
 
 def get_portal_config(config_file_path: str):
@@ -86,7 +86,6 @@ class DocPortalSpider(scrapy.Spider):
             index_entry_href = response.url if urlparse(doc_object['url']).hostname else urljoin(self.app_base_url,
                                                                                                  urlsplit(
                                                                                                      response.url).path)
-
             index_entry_id = urlparse(response.url).path
             index_entry_title = response.xpath('/html/head/title/text()').get()
             index_entry_date = date.today().isoformat()
@@ -122,6 +121,11 @@ class DocPortalSpider(scrapy.Spider):
                              version=doc_object_version, release=doc_object_release, subject=doc_object_subject,
                              doc_title=doc_object_title, public=doc_object_public, internal=doc_object_internal,
                              indexed_date=index_entry_date)
+
+            number_of_words = textstat.lexicon_count(index_entry_body)
+            if number_of_words < 100:
+                yield ShortTopic(doc_id=doc_object_id, href=index_entry_href, id=index_entry_id,
+                                 title=index_entry_title, number_of_words=number_of_words)
 
             for next_page in response.xpath('//a[@href]'):
                 next_page_href = next_page.attrib.get('href')

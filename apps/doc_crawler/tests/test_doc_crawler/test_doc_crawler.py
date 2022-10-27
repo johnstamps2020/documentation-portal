@@ -7,7 +7,7 @@ import time
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 
-from doc_crawler.elasticsearch import ElasticClient
+from doc_crawler.elastic_client import ElasticClient
 from doc_crawler.spiders import doc_portal_spider
 
 current_working_dir = Path.cwd()
@@ -154,8 +154,7 @@ def test_delete_entries_by_query(elastic_client):
 
     search_doc_id_after_delete = elastic_client.search(
         index=index_name, body=elastic_del_query)
-    number_of_existing_entries_after_delete = search_doc_id_after_delete[
-        'hits']['total']['value']
+    number_of_existing_entries_after_delete = search_doc_id_after_delete['hits']['total']['value']
 
     entries_with_id_deleted = number_of_existing_entries_after_delete == 0
     number_of_existing_eq_number_of_deleted = (
@@ -170,6 +169,10 @@ def test_delete_entries_by_query(elastic_client):
 
 
 def test_broken_links_in_elastic(elastic_client):
-    number_of_broken_links = elastic_client.count(
-        index='broken-links')['count']
+    number_of_broken_links = elastic_client.count(index='broken-links')['count']
     assert number_of_broken_links == 3
+
+
+def test_short_topics_in_elastic(elastic_client):
+    number_of_short_topics = elastic_client.count(index='short-topics')['count']
+    assert number_of_short_topics == 34

@@ -2,15 +2,15 @@ import os
 
 import urllib3
 
-from .elasticsearch import ElasticClient
-from .items import BrokenLink
-from .items import IndexEntry
+from .elastic_client import ElasticClient
+from .items import BrokenLink, IndexEntry, ShortTopic
 
 
 class ElasticsearchPipeline:
     elastic_client = None
     index_name = ''
     index_name_broken_links = 'broken-links'
+    index_name_short_topics = 'short-topics'
     number_of_created_entries = 0
     failed_entries = []
 
@@ -39,6 +39,8 @@ class ElasticsearchPipeline:
                 self.index_name, elastic_del_query)
             self.elastic_client.delete_entries_by_query(
                 self.index_name_broken_links, elastic_del_query)
+            self.elastic_client.delete_entries_by_query(
+                self.index_name_short_topics, elastic_del_query)
 
     def close_spider(self, spider):
         self.elastic_client.logger_instance.info(
@@ -56,6 +58,8 @@ class ElasticsearchPipeline:
             index_name = self.index_name
         elif item.__class__.__name__ == BrokenLink.__name__:
             index_name = self.index_name_broken_links
+        elif item.__class__.__name__ == ShortTopic.__name__:
+            index_name = self.index_name_short_topics
         else:
             self.elastic_client.logger_instance.warning(
                 f'Item not added to Elasticsearch. Reason: Item of unknown type. Item: {item}, class name: {item.__class__.__name__}')

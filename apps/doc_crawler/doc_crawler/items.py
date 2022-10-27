@@ -24,3 +24,11 @@ class BrokenLink(scrapy.Item):
     url = scrapy.Field()
     metadata = scrapy.Field()
     title = scrapy.Field()
+
+
+class ShortTopic(scrapy.Item):
+    doc_id = scrapy.Field()
+    href = scrapy.Field()
+    id = scrapy.Field()
+    title = scrapy.Field()
+    number_of_words = scrapy.Field()
