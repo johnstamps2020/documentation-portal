@@ -12,7 +12,7 @@
         "release": ["Elysian"],
         "subject": ["Configuration"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -876,7 +876,7 @@
         "release": ["Elysian"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -894,7 +894,7 @@
         "release": ["Elysian"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,

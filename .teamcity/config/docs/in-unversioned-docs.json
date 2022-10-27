@@ -8,9 +8,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2022.1"],
-        "subject": ["Release Notes"],
-        "release": ["Elysian"]
+        "version": ["2022.1", "2022.2"],
+        "subject": ["Release Notes"]
       },
       "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -26,9 +25,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2022.1"],
-        "subject": ["Release Notes"],
-        "release": ["Elysian"]
+        "version": ["2022.1", "2022.2"],
+        "subject": ["Release Notes"]
       },
       "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -48,7 +46,7 @@
         "subject": ["Release Notes"],
         "release": ["Flaine"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -218,26 +216,6 @@
       "earlyAccess": false
     },
     {
-      "id": "indevguidejava8draft",
-      "title": "Developers Setup",
-      "url": "cloud/in/devsetupjava8",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2020.1x - Internal Audience"
-        ],
-        "version": ["latest"],
-        "subject": ["Installation"],
-        "release": ["Aspen", "Banff"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "inexcelrating30",
       "title": "Excel Designed Rating 3.0",
       "url": "cloud/in/excelrating30",
@@ -302,7 +280,7 @@
         "subject": ["Release notes"],
         "release": ["Flaine"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -400,24 +378,6 @@
       "earlyAccess": false
     },
     {
-      "id": "in20201xstudiorndraft",
-      "title": "Studio 2020.1 Release Notes Draft",
-      "url": "cloud/in/20201x/studiorn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["latest"],
-        "subject": ["Release notes"],
-        "release": ["Aspen"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "ininstallassistdraft",
       "title": "Install Assist",
       "url": "cloud/in/installassist",
@@ -446,7 +406,7 @@
         "subject": ["Release notes"],
         "release": ["Flaine"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -537,24 +497,6 @@
         "release": ["Aspen"]
       },
       "environments": ["int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20201xrndraft",
-      "title": "Core Release Notes Draft",
-      "url": "cloud/in/20201x/releasenotes",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["latest"],
-        "subject": ["Release notes"],
-        "release": ["Aspen"]
-      },
-      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

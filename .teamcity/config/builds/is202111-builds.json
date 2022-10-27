@@ -464,14 +464,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "GosuRefGuide.ditamap",
-      "srcId": "is202111src",
-      "docId": "is202111gosu",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "OverviewCloudIntegration.ditamap",
       "srcId": "is202111src",
       "docId": "is202111integoverview",

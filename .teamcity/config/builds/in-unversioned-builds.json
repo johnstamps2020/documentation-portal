@@ -99,14 +99,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "DevelopersGuide_Java8.ditamap",
-      "srcId": "inunversionedsrc",
-      "docId": "indevguidejava8draft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ExcelDesignedRating23.ditamap",
       "srcId": "inunversionedsrc",

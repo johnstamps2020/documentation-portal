@@ -14,13 +14,7 @@
     },
     {
       "label": "_redirect",
-      "link": "/cloudProducts/elysian",
-      "env": ["prod"]
-    },
-    {
-      "label": "_redirect",
-      "link": "/cloudProducts/flaine",
-      "env": ["dev", "int", "staging"]
+      "link": "/cloudProducts/flaine"
     }
   ]
 }

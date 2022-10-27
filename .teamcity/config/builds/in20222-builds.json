@@ -125,7 +125,7 @@
       "buildType": "yarn",
       "docId": "in20222apiref",
       "srcId": "srcin20222apiref",
-      "nodeImageVersion": "14.14.0"
+      "nodeImageVersion": "16.18.0"
     },
     {
       "buildType": "dita",

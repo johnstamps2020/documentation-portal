@@ -7,8 +7,7 @@
   "items": [
     {
       "label": "Flaine",
-      "page": "flaine",
-      "env": ["int", "staging"]
+      "page": "flaine"
     },
     {
       "label": "Elysian",
@@ -28,13 +27,7 @@
     },
     {
       "label": "_redirect",
-      "link": "/apiReferences/elysian",
-      "env": ["prod"]
-    },
-    {
-      "label": "_redirect",
-      "link": "/apiReferences/flaine",
-      "env": ["int", "staging"]
+      "link": "/apiReferences/flaine"
     }
   ]
 }

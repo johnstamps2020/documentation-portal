@@ -4188,6 +4188,7 @@ object GwBuildSteps {
             Pair("-i", "${working_dir}/${root_map}"),
             Pair("-o", "${working_dir}/${fullOutputPath}"),
             Pair("-l", "${working_dir}/${logFile}"),
+            Pair("--args.draft", "yes"),
         )
 
         if (build_filter != null) {

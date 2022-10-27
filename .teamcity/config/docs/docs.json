@@ -607,7 +607,7 @@
       "earlyAccess": false
     },
     {
-      "id": "bc1010staging",
+      "id": "bc1010",
       "title": "BillingCenter",
       "url": "self-managed/bc/1010",
       "metadata": {
@@ -623,7 +623,7 @@
       "earlyAccess": false
     },
     {
-      "id": "cc1010staging",
+      "id": "cc1010",
       "title": "ClaimCenter",
       "url": "self-managed/cc/1010",
       "metadata": {
@@ -639,7 +639,7 @@
       "earlyAccess": false
     },
     {
-      "id": "pc1010staging",
+      "id": "pc1010",
       "title": "PolicyCenter",
       "url": "self-managed/pc/1010",
       "metadata": {
@@ -2326,8 +2326,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false,
-      "displayOnLandingPages": true
+      "earlyAccess": false
     },
     {
       "id": "configmgrhelpcortina",
@@ -5862,24 +5861,6 @@
       "earlyAccess": false
     },
     {
-      "id": "isbc202011gosu",
-      "title": "Gosu Reference",
-      "url": "cloud/bc/202011/gosu",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2020.11"],
-        "release": ["Banff"],
-        "subject": ["Development"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "isbc202011testing",
       "title": "ISBTF and GUnit Testing",
       "url": "cloud/bc/202011/testing",
@@ -6123,24 +6104,6 @@
         "version": ["2020.11"],
         "release": ["Banff"],
         "subject": ["Integration"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "iscc202011gosu",
-      "title": "Gosu Reference",
-      "url": "cloud/cc/202011/gosu",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2020.11"],
-        "release": ["Banff"],
-        "subject": ["Development"]
       },
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -6492,24 +6455,6 @@
       "earlyAccess": false
     },
     {
-      "id": "ispc202011gosu",
-      "title": "Gosu Reference",
-      "url": "cloud/pc/202011/gosu",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2020.11"],
-        "release": ["Banff"],
-        "subject": ["Development"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "ispc202011testing",
       "title": "ISBTF and GUnit Testing",
       "url": "cloud/pc/202011/testing",
@@ -6678,225 +6623,6 @@
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Banff", "Cortina"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20201xappdraft",
-      "title": "Application Guide",
-      "url": "cloud/in/20201x/app",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow 2020.1x - Internal Audience"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
-        "release": ["Aspen"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20201xbidraft",
-      "title": "Business Intelligence Getting Started Guide",
-      "url": "cloud/in/20201x/bi",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2020.1x - Internal Audience",
-          "InsuranceNow 2020.1x - External Audience"
-        ],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
-        "release": ["Aspen"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20201xcservicepdraft",
-      "title": "Consumer Service Portal Features",
-      "url": "cloud/in/20201x/cservicep",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2020.1x - Internal Audience",
-          "InsuranceNow 2020.1x - External Audience"
-        ],
-        "version": ["latest"],
-        "subject": ["Features and functionality"],
-        "release": ["Aspen"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20201xappreaderintegdraft",
-      "title": "AppReader Integration",
-      "url": "cloud/in/20201x/appreaderinteg",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2020.1x - Internal Audience",
-          "InsuranceNow 2020.1x - External Audience"
-        ],
-        "version": ["latest"],
-        "subject": ["Integration"],
-        "release": ["Aspen"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20201xbiintegdraft",
-      "title": "Business Intelligence Integration",
-      "url": "cloud/in/20201x/biinteg",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow 2020.1x - Internal Audience"],
-        "version": ["latest"],
-        "subject": ["Integration"],
-        "release": ["Aspen"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20201xpaymentapiintegdraft",
-      "title": "Guidewire Payments API Integration",
-      "url": "cloud/in/20201x/paymentinteg",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow 2020.1x - Internal Audience"],
-        "version": ["latest"],
-        "subject": ["Integration"],
-        "release": ["Aspen"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20201xpadraft",
-      "title": "Predictive Analytics Integration",
-      "url": "cloud/in/20201x/pa",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2020.1x - Internal Audience",
-          "InsuranceNow 2020.1x - External Audience"
-        ],
-        "version": ["latest"],
-        "subject": ["Integration"],
-        "release": ["Aspen"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20201xconfigdraft",
-      "title": "Core Configuration Guide",
-      "url": "cloud/in/20201x/config",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2020.1x - Internal Audience",
-          "InsuranceNow 2020.1x - External Audience"
-        ],
-        "version": ["latest"],
-        "subject": ["Configuration"],
-        "release": ["Aspen"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20201xstudiodraft",
-      "title": "Studio Configuration Guide",
-      "url": "cloud/in/20201x/studioconfig",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2020.1x - Internal Audience",
-          "InsuranceNow 2020.1x - External Audience"
-        ],
-        "version": ["latest"],
-        "subject": ["Configuration"],
-        "release": ["Aspen"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20201xportaldevdraft",
-      "title": "Portal Development",
-      "url": "cloud/in/20201x/portaldev",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": [
-          "InsuranceNow 2020.1x - Internal Audience",
-          "InsuranceNow 2020.1x - External Audience"
-        ],
-        "version": ["latest"],
-        "subject": ["Configuration"],
-        "release": ["Aspen"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20201xuwconfigdraft",
-      "title": "Underwriting Product Configuration Guide",
-      "url": "cloud/in/20201x/uwconfig",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow 2020.1x - Internal Audience"],
-        "version": ["latest"],
-        "subject": ["Configuration"],
-        "release": ["Aspen"]
       },
       "environments": ["int"],
       "displayOnLandingPages": true,
@@ -7176,22 +6902,6 @@
       "public": false,
       "internal": true,
       "earlyAccess": true
-    },
-    {
-      "id": "updatedev",
-      "title": "Update Dev",
-      "url": "cloud/updatedev/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Platform"],
-        "version": ["latest"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
     },
     {
       "id": "surepathmethodologymain",

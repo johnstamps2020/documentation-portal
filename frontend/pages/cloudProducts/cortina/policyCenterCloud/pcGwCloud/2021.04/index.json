@@ -39,10 +39,6 @@
           "id": "ispc202104newandchanged"
         },
         {
-          "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn"
-        },
-        {
           "label": "Guidewire Testing Framework Release Notes",
           "id": "testingframeworksrncortina"
         }
@@ -166,7 +162,7 @@
       "items": [
         {
           "label": "Gosu Reference",
-          "id": "is202104gosu"
+          "id": "gosureflatest"
         },
         {
           "label": "ISBTF and GUnit Testing",

@@ -39,10 +39,6 @@
           "id": "iscc202111newandchanged"
         },
         {
-          "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn"
-        },
-        {
           "label": "Guidewire Testing Framework Release Notes",
           "id": "testingframeworksrndobson"
         }
@@ -160,7 +156,7 @@
       "items": [
         {
           "label": "Gosu Reference",
-          "id": "is202111gosu"
+          "id": "gosureflatest"
         },
         {
           "label": "GUnit Testing",

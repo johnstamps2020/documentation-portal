@@ -77,29 +77,33 @@
           "page": "icGwCloud/2022.05"
         },
         {
-              "label": "Canvas",
-              "id": "canvas"
-            },
-            {
-              "label": "Compare",
-              "id": "comparelatest"
-            },
-            {
-              "label": "Explore",
-              "page": "../explore/latest"
-            },
-            {
-              "label": "HazardHub Casualty",
-              "page": "../hazardhubcasualty"
-            },
-            {
-              "label": "HazardHub Property",
-              "link": "/hazardhub/property/Intro/HazardHub_Property_Intro_gw.pdf"
-            },
-            {
-              "label": "Predict",
-              "id": "livepredictlatest"
-            }
+          "label": "Canvas",
+          "id": "canvas"
+        },
+        {
+          "label": "Compare",
+          "id": "comparelatest"
+        },
+        {
+          "label": "Cyence",
+          "page": "../cyence"
+        },
+        {
+          "label": "Explore",
+          "page": "../explore/latest"
+        },
+        {
+          "label": "HazardHub Casualty",
+          "page": "../hazardhubcasualty"
+        },
+        {
+          "label": "HazardHub Property",
+          "link": "/hazardhub/property/Intro/HazardHub_Property_Intro_gw.pdf"
+        },
+        {
+          "label": "Predict",
+          "id": "livepredictlatest"
+        }
       ]
     },
     {
@@ -167,82 +171,16 @@
       ]
     },
     {
-      "label": "Cyence",
-      "class": "categoryCard cardShadow",
-      "items": [
-        {
-          "label": "Cyence Cyber",
-          "class": "group",
-          "items": [
-            {
-              "label": "Help Center",
-              "link": "/cyence/cyber/HelpCenter"
-            },
-            {
-              "label": "Help Center - Accumulation Only",
-              "link": "/cyence/cyber/HelpCenterAccum"
-            },
-            {
-              "label": "Model 5 Technical Reference",
-              "link": "/cyence/cyber/Model5/CyenceCyberRiskModel5.pdf"
-            },
-            {
-              "label": "Python SDK and REST API Reference",
-              "link": "/cyence/cyber/SdkApiRef"
-            }
-          ]
-        },
-        {
-          "label": "Cyence Cyber for Small/Medium Business",
-          "class": "group",
-          "items": [
-            {
-              "label": "C#/Python SDKs and REST API Reference",
-              "link": "/cyence/smb/SdkApiRef"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "label": "Guidewire Cloud Platform",
       "class": "categoryCard cardShadow",
       "items": [
         {
           "label": "Cloud Home",
-          "class": "group",
-          "items": [
-            {
-              "label": "Release Notes",
-              "id": "gchhelprnrelease"
-            },
-            {
-              "label": "Getting Started with Cloud Home",
-              "id": "gchhelprelease"
-            },
-            {
-              "label": "Cloud Updates",
-              "id": "updatedev"
-            }
-          ]
+          "id": "gchhelprelease"
         },
         {
           "label": "Cloud Console",
-          "class": "group",
-          "items": [
-            {
-              "label": "Release Notes",
-              "id": "guidewirecloudconsolerninsurerdev"
-            },
-            {
-              "label": "Release Notes",
-              "id": "guidewirecloudconsolerninsurerdevdraft"
-            },
-            {
-              "label": "Cloud Console Documentation",
-              "page": "../cloudConsole"
-            }
-          ]
+          "page": "../cloudConsole"
         },
         {
           "label": "Cloud Infrastructure",
@@ -271,19 +209,11 @@
           ]
         },
         {
-          "label": "Cloud Updates",
-          "id": "updatedev"
-        },
-        {
           "label": "Integration Framework",
           "class": "group",
           "items": [
             {
-              "label": "Release Notes",
-              "id": "integgatewayrnlatest"
-            },
-            {
-              "label": "Integration Gateway Developer Guide",
+              "label": "Integration Gateway",
               "id": "integgatewaydevlatest"
             }
           ]

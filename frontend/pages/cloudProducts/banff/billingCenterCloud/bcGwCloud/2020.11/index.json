@@ -41,10 +41,6 @@
         {
           "label": "Test Automation Release Notes",
           "id": "testingframeworksrnbanff"
-        },
-        {
-          "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn"
         }
       ]
     },
@@ -134,7 +130,7 @@
       "items": [
         {
           "label": "Gosu Reference",
-          "id": "isbc202011gosu"
+          "id": "gosureflatest"
         },
         {
           "label": "ISBTF and GUnit Testing",

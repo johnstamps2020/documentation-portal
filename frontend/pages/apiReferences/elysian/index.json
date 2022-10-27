@@ -9,8 +9,7 @@
     "items": [
       {
         "label": "Flaine",
-        "page": "../flaine",
-        "env": ["int", "staging"]
+        "page": "../flaine"
       },
       {
         "label": "Dobson",
@@ -74,17 +73,6 @@
         {
           "label": "Cloud API Business Flows",
           "id": "ispc202205apibf"
-        }
-      ]
-    },
-    {
-      "label": "APD API Reference",
-      "class": "categoryCard cardShadow",
-      "env": ["int"],
-      "items": [
-        {
-          "label": "API Reference",
-          "id": "apdmaindoc"
         }
       ]
     },
