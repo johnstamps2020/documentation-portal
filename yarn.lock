@@ -1800,8 +1800,8 @@ __metadata:
   linkType: hard
 
 "@documentation-portal@file:../server::locator=landing-pages%40workspace%3Alanding-pages":
-  version: 2.29.20
-  resolution: "@documentation-portal@file:../server#../server::hash=b3e323&locator=landing-pages%40workspace%3Alanding-pages"
+  version: 2.29.22
+  resolution: "@documentation-portal@file:../server#../server::hash=0d5302&locator=landing-pages%40workspace%3Alanding-pages"
   dependencies:
     "@elastic/elasticsearch": ^7.17.0
     "@okta/jwt-verifier": ^2.3.0
@@ -1831,7 +1831,7 @@ __metadata:
     msw: ^0.47.3
     node-fetch: ^2.6.7
     openid-client: ^4.9.1
-    passport: 0.5.0
+    passport: 0.6.0
     passport-saml: 3.2.2
     pg: ^8.8.0
     prettier: ^1.19.1
@@ -1840,7 +1840,7 @@ __metadata:
     serve-favicon: ^2.5.0
     typeorm: ^0.3.9
     winston: ^3.7.2
-  checksum: d98cff1bf5344a74f48bafad30ba27253130bfde6d66604223980b75ed22b1a5e1f311ebc18ff9f3153f18c2189b3997f5ef29e4734ba6410415f987c460d44a
+  checksum: 909c29ffadab8db00c71f7061c4717e9945523f8bc4e0cee74ac6e287d8a0aef07403c9eb17640e8e69d807c493cfc075214a195a4c8803fbc2a2df3fa0260f3
   languageName: node
   linkType: hard
 
@@ -12477,13 +12477,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"passport@npm:0.5.0":
-  version: 0.5.0
-  resolution: "passport@npm:0.5.0"
+"passport@npm:0.6.0":
+  version: 0.6.0
+  resolution: "passport@npm:0.6.0"
   dependencies:
     passport-strategy: 1.x.x
     pause: 0.0.1
-  checksum: 5a3db4b420c0255fb8fdfe26005529582ea5697bff5c566ea02ec7e93c5a542f16b298c5545b0e7b5eb4db04eb4d15885948040adf9a98ed77dafb25ed155b7c
+    utils-merge: ^1.0.1
+  checksum: ef932ad671d50de34765c7a53cd1e058d8331a82a6df09265a9c6c1168911aee4a7b5215803d0101110ab7f317e096b4954ca7e18fb2c33b9929f0bd17dbe159
   languageName: node
   linkType: hard
 
@@ -13964,8 +13965,8 @@ __metadata:
 
 "react-native-sqlite-storage@file:../shims/react-native-sqlite-storage::locator=landing-pages%40workspace%3Alanding-pages":
   version: 0.0.0
-  resolution: "react-native-sqlite-storage@file:../shims/react-native-sqlite-storage#../shims/react-native-sqlite-storage::hash=90470a&locator=landing-pages%40workspace%3Alanding-pages"
-  checksum: 9d49d5ccb4cd3c7db56782f3ee9cd9f87e28f98bbe88102585513e49b361f85789576a70148dbf75a45ad2404258398f26b2f68a43b4f7fc7dc09759a2662834
+  resolution: "react-native-sqlite-storage@file:../shims/react-native-sqlite-storage#../shims/react-native-sqlite-storage::hash=c6737d&locator=landing-pages%40workspace%3Alanding-pages"
+  checksum: 6b2c10a733f3539f19d1ce646ef1ffee2574172c4880e4b4fe4406b311c5d3e4c7d8aba4bee8037fcb3312a9f9e712320b7e69b093b614b9f33aed125bd71e98
   languageName: node
   linkType: hard
 
@@ -14924,7 +14925,7 @@ __metadata:
     node-mocks-http: ^1.11.0
     nodemon: ^2.0.6
     openid-client: ^4.9.1
-    passport: 0.5.0
+    passport: 0.6.0
     passport-saml: 3.2.2
     pg: ^8.8.0
     postcss: ^8.4.12
@@ -16528,7 +16529,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"utils-merge@npm:1.0.1":
+"utils-merge@npm:1.0.1, utils-merge@npm:^1.0.1":
   version: 1.0.1
   resolution: "utils-merge@npm:1.0.1"
   checksum: c81095493225ecfc28add49c106ca4f09cdf56bc66731aa8dabc2edbbccb1e1bfe2de6a115e5c6a380d3ea166d1636410b62ef216bb07b3feb1cfde1d95d5080
