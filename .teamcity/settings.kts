@@ -60,7 +60,6 @@ enum class GwValidationModules(val validation_name: String) {
     VALIDATORS_DITA("validators_dita"),
     VALIDATORS_FILES("validators_files"),
     VALIDATORS_IMAGES("validators_images"),
-    VALIDATORS_CONTENT("validators_content"),
     EXTRACTORS_DITA_OT_LOGS("extractors_dita_ot_logs"),
     EXTRACTORS_SCHEMATRON_REPORTS("extractors_schematron_reports")
 }
@@ -2715,7 +2714,6 @@ object Sources {
         val teamcityBuildBranch = "%teamcity.build.vcs.branch.${teamcityGitRepoId}%"
         val publishPath = "preview/${src_id}/${teamcityBuildBranch}/${docId}"
         val previewUrlFile = "preview_url.txt"
-        val docInfoFile = "doc-info.json"
 
         val validationBuildType = BuildType {
             name = "Validate $docTitle ($docId)"
@@ -2738,6 +2736,7 @@ object Sources {
                 val docValidatorLogs = "doc_validator_logs"
                 val normalizedDitaDir = "normalized_dita_dir"
                 val schematronReportsDir = "schematron_reports_dir"
+                val docInfoFile = "doc-info.json"
                 val rootMap = build_config.getString("root")
                 val indexRedirect = when (build_config.has("indexRedirect")) {
                     true -> {
@@ -2826,7 +2825,6 @@ object Sources {
                     arrayOf(
                         GwValidationModules.VALIDATORS_DITA.validation_name,
                         GwValidationModules.VALIDATORS_FILES.validation_name,
-                        GwValidationModules.VALIDATORS_CONTENT.validation_name,
                         GwValidationModules.EXTRACTORS_DITA_OT_LOGS.validation_name,
                         GwValidationModules.EXTRACTORS_SCHEMATRON_REPORTS.validation_name,
                     ).forEach {
@@ -2836,7 +2834,6 @@ object Sources {
                                 workingDir,
                                 ditaOtLogsDir,
                                 normalizedDitaDir,
-                                "${outputDir}/${GwDitaOutputFormats.HTML5.format_name}",
                                 schematronReportsDir,
                                 docInfoFile
                             )
@@ -2892,31 +2889,6 @@ object Sources {
                             previewUrlFile
                         )
                     )
-                }
-
-                if (!workingDir.contains("storybook")) {
-                    validationBuildType.steps {
-                        step(
-                            GwBuildSteps.createGetDocumentDetailsStep(
-                                workingDir,
-                                teamcityBuildBranch,
-                                src_id,
-                                docInfoFile,
-                                docConfig
-                            )
-                        )
-                        step(
-                            GwBuildSteps.createRunDocValidatorStep(
-                                GwValidationModules.VALIDATORS_CONTENT.validation_name,
-                                workingDir,
-                                "",
-                                "",
-                                outputDir,
-                                "",
-                                docInfoFile
-                            )
-                        )
-                    }
                 }
 
                 validationBuildType.features {
@@ -4514,7 +4486,6 @@ object GwBuildSteps {
         working_dir: String,
         dita_ot_logs_dir: String,
         normalized_dita_dir: String,
-        html5_dir: String,
         schematron_reports_dir: String,
         doc_info_file: String,
     ): ScriptBuildStep {
@@ -4527,11 +4498,6 @@ object GwBuildSteps {
         )
 
         when (validation_module) {
-            GwValidationModules.VALIDATORS_CONTENT.validation_name -> {
-                validationCommandParams.add(Pair("validators", "${working_dir}/${html5_dir}"))
-                validationCommandParams.add(Pair("content", ""))
-                stepName = "Run GW validations for content"
-            }
             GwValidationModules.VALIDATORS_DITA.validation_name -> {
                 validationCommandParams.add(Pair("validators", "${working_dir}/${normalized_dita_dir}"))
                 validationCommandParams.add(Pair("dita", ""))
