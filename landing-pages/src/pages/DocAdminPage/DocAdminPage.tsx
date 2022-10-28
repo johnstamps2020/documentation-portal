@@ -10,6 +10,9 @@ import React from "react";
 import Modal from "@mui/material/Modal";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
+import Skeleton from "@mui/material/Skeleton";
+import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
 
 const emptyDoc: DocConfig = {
   id: "",
@@ -200,17 +203,17 @@ export default function DocAdminPage() {
     memorizeDoc(doc);
   };
 
-  if (docData) {
-    return (
-      <Layout title="Manage docs">
+  return (
+    <Layout title="Manage docs">
+      <div>
         <div>
-          <div>
-            <Button variant="contained" onClick={handleCreateNew}>
-              Add new document
-            </Button>
-          </div>
-          <div>
-            {docData.map((doc: DocConfig) => (
+          <Button variant="contained" onClick={handleCreateNew}>
+            Add new document
+          </Button>
+        </div>
+        <div>
+          {docData ? (
+            docData.map((doc: DocConfig) => (
               <div key={doc.id} style={{ width: 400, height: "fit-content" }}>
                 <div className="label">{doc.title}</div>
                 <div>ID: {doc.id}</div>
@@ -228,39 +231,86 @@ export default function DocAdminPage() {
                 <Button onClick={() => deleteDoc(doc.id)}>Delete</Button>
                 <Button onClick={() => showFormAndSetVar(doc)}>Update</Button>
               </div>
-            ))}
-            <Modal
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-            >
-              <>
-                <DocForm
-                  docToDisplay={memorizedDoc}
-                  updateDoc={updateDoc}
-                  docObject={docObject}
-                  setDocObject={setDocObject}
-                  handleClose={handleClose}
+            ))
+          ) : (
+            <Stack spacing={1}>
+              <Skeleton variant="text" width={400} height={40} />
+              <Skeleton variant="rectangular" width={400} height={300} />
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Skeleton
+                  variant="rounded"
+                  width={200}
+                  height={50}
+                  sx={{ margin: "2%" }}
                 />
-              </>
-            </Modal>
-            <SnackbarContext.Provider value={{ snack }}>
-              <Snackbar
-                open={snack.open}
-                autoHideDuration={3000}
-                onClose={() =>
-                  setSnack({ message: "", color: "", open: false })
-                }
-              >
-                <Alert sx={{ width: "100%" }}>{snack.message}</Alert>
-              </Snackbar>
-            </SnackbarContext.Provider>
-          </div>
+                <Skeleton
+                  variant="rounded"
+                  width={200}
+                  height={50}
+                  sx={{ margin: "2%" }}
+                />
+              </Box>
+              <Skeleton variant="text" width={400} height={40} />
+              <Skeleton variant="rectangular" width={400} height={300} />
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Skeleton
+                  variant="rounded"
+                  width={200}
+                  height={50}
+                  sx={{ margin: "2%" }}
+                />
+                <Skeleton
+                  variant="rounded"
+                  width={200}
+                  height={50}
+                  sx={{ margin: "2%" }}
+                />
+              </Box>
+              <Skeleton variant="text" width={400} height={40} />
+              <Skeleton variant="rectangular" width={400} height={300} />
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Skeleton
+                  variant="rounded"
+                  width={200}
+                  height={50}
+                  sx={{ margin: "2%" }}
+                />
+                <Skeleton
+                  variant="rounded"
+                  width={200}
+                  height={50}
+                  sx={{ margin: "2%" }}
+                />
+              </Box>
+            </Stack>
+          )}
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <>
+              <DocForm
+                docToDisplay={memorizedDoc}
+                updateDoc={updateDoc}
+                docObject={docObject}
+                setDocObject={setDocObject}
+                handleClose={handleClose}
+              />
+            </>
+          </Modal>
+          <SnackbarContext.Provider value={{ snack }}>
+            <Snackbar
+              open={snack.open}
+              autoHideDuration={3000}
+              onClose={() => setSnack({ message: "", color: "", open: false })}
+            >
+              <Alert sx={{ width: "100%" }}>{snack.message}</Alert>
+            </Snackbar>
+          </SnackbarContext.Provider>
         </div>
-      </Layout>
-    );
-  } else {
-    return <div style={{ height: 800 }}>Loading...</div>;
-  }
+      </div>
+    </Layout>
+  );
 }
