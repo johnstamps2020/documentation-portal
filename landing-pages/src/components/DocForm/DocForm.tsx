@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
 import { DocConfig } from "@documentation-portal/dist/model/entity/DocConfig";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -35,16 +35,6 @@ export default function DocForm({
   setDocObject,
   handleClose,
 }: DocFormProps) {
-  const [switchValues, setSwitchValues] = useState([
-    {
-      switchValue: "on",
-      newValue: true,
-    },
-    {
-      switchValue: "off",
-      newValue: false,
-    },
-  ]);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -56,6 +46,15 @@ export default function DocForm({
       return {
         ...currentDoc,
         [event.target.id]: event.target.value,
+      };
+    });
+  }
+  
+  function updateSwitch(event: ChangeEvent<HTMLInputElement>) {
+    setDocObject((currentDoc) => {
+      return {
+        ...currentDoc,
+        [event.target.id]: event.target.checked,
       };
     });
   }
@@ -96,9 +95,9 @@ export default function DocForm({
           <FormControlLabel
             control={
               <Switch
-                onChange={updateField}
+                onChange={updateSwitch}
                 id="displayOnLandingPages"
-                checked={docObject.displayOnLandingPages || false}
+                checked={docObject.displayOnLandingPages}
               />
             }
             label="Display on landing pages"
@@ -106,9 +105,9 @@ export default function DocForm({
           <FormControlLabel
             control={
               <Switch
-                onChange={updateField}
+                onChange={updateSwitch}
                 id="indexForSearch"
-                checked={docObject.indexForSearch || false}
+                checked={docObject.indexForSearch}
               />
             }
             label="Index for search"
