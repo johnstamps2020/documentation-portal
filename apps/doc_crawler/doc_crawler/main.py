@@ -2,7 +2,6 @@ import os
 from multiprocessing import Process, Queue
 from typing import List
 
-import sys
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 
@@ -65,7 +64,7 @@ def check_env_vars():
 
 
 def main():
-    # check_env_vars()
+    check_env_vars()
     config_file = os.environ['CONFIG_FILE']
     app_base_url = os.environ['APP_BASE_URL']
     doc_s3_url = os.environ['DOC_S3_URL']

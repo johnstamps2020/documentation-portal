@@ -16,8 +16,8 @@ class ElasticsearchPipeline:
 
     def open_spider(self, spider):
 
-        search_app_urls = os.environ.get('ELASTICSEARCH_URLS', None).split(' ')
-        self.index_name = os.environ.get('INDEX_NAME', None)
+        search_app_urls = os.environ['ELASTICSEARCH_URLS'].split(' ')
+        self.index_name = os.environ['INDEX_NAME']
         """ We turned off certificate validation in the Elasticsearch client because we don't need it.
         So when you connect to an https link, a warning is issued that your request is insecure.
         We turned off the warning as well.
@@ -42,6 +42,10 @@ class ElasticsearchPipeline:
                                                                       id_to_delete=id_to_delete)
             self.elastic_client.delete_entries_by_query(
                 self.index_name, elastic_del_query)
+            """ Entries for broken links and short topics are always deleted.
+            Even if reporting of broken links or short topics is disabled in the spider, the existing entries
+            should be deleted to keep the indices clean.
+            """
             self.elastic_client.delete_entries_by_query(
                 self.index_name_broken_links, elastic_del_query)
             self.elastic_client.delete_entries_by_query(

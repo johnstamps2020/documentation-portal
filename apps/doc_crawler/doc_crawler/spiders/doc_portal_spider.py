@@ -1,5 +1,6 @@
 import io
 import json
+import os
 import re
 from datetime import date
 from pathlib import Path
@@ -36,6 +37,8 @@ class DocPortalSpider(scrapy.Spider):
     doc_s3_url = ''
     excluded_types = ['.pdf', '.txt', '.xmind', '.xrb']
     handle_httpstatus_list = [404]
+    report_broken_links = os.environ.get('REPORT_BROKEN_LINKS', 'yes').casefold() in ['yes', '']
+    report_short_topics = os.environ.get('REPORT_SHORT_TOPICS', 'yes').casefold() in ['yes', '']
 
     def start_requests(self):
         for doc in self.docs:
@@ -59,7 +62,7 @@ class DocPortalSpider(scrapy.Spider):
         doc_object_public = doc_object['public']
         doc_object_internal = doc_object['internal']
 
-        if response.status == 404:
+        if response.status == 404 and self.report_broken_links:
             yield BrokenLink(doc_id=doc_object_id,
                              origin_url=replace_s3_url_with_app_base_url(cb_kwargs.get('origin_url', 'No origin URL')),
                              url=replace_s3_url_with_app_base_url(response.url), metadata=doc_object_metadata,
@@ -123,7 +126,7 @@ class DocPortalSpider(scrapy.Spider):
                              indexed_date=index_entry_date)
 
             number_of_words = textstat.lexicon_count(index_entry_body)
-            if number_of_words < 100:
+            if number_of_words < 100 and self.report_short_topics:
                 yield ShortTopic(doc_id=doc_object_id,
                                  doc_title=doc_object_title,
                                  href=index_entry_href,
