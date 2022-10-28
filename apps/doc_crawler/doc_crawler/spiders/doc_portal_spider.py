@@ -1,5 +1,6 @@
 import io
 import json
+import os
 import re
 from datetime import date
 from pathlib import Path
@@ -8,9 +9,9 @@ from urllib.parse import urlparse
 
 import scrapy
 from scrapy import Request
+from textstat import textstat
 
-from ..items import BrokenLink
-from ..items import IndexEntry
+from ..items import BrokenLink, IndexEntry, ShortTopic
 
 
 def get_portal_config(config_file_path: str):
@@ -36,6 +37,8 @@ class DocPortalSpider(scrapy.Spider):
     doc_s3_url = ''
     excluded_types = ['.pdf', '.txt', '.xmind', '.xrb']
     handle_httpstatus_list = [404]
+    report_broken_links = os.environ.get('REPORT_BROKEN_LINKS', 'yes').casefold() in ['yes', '']
+    report_short_topics = os.environ.get('REPORT_SHORT_TOPICS', 'yes').casefold() in ['yes', '']
 
     def start_requests(self):
         for doc in self.docs:
@@ -59,7 +62,7 @@ class DocPortalSpider(scrapy.Spider):
         doc_object_public = doc_object['public']
         doc_object_internal = doc_object['internal']
 
-        if response.status == 404:
+        if response.status == 404 and self.report_broken_links:
             yield BrokenLink(doc_id=doc_object_id,
                              origin_url=replace_s3_url_with_app_base_url(cb_kwargs.get('origin_url', 'No origin URL')),
                              url=replace_s3_url_with_app_base_url(response.url), metadata=doc_object_metadata,
@@ -86,7 +89,6 @@ class DocPortalSpider(scrapy.Spider):
             index_entry_href = response.url if urlparse(doc_object['url']).hostname else urljoin(self.app_base_url,
                                                                                                  urlsplit(
                                                                                                      response.url).path)
-
             index_entry_id = urlparse(response.url).path
             index_entry_title = response.xpath('/html/head/title/text()').get()
             index_entry_date = date.today().isoformat()
@@ -122,6 +124,19 @@ class DocPortalSpider(scrapy.Spider):
                              version=doc_object_version, release=doc_object_release, subject=doc_object_subject,
                              doc_title=doc_object_title, public=doc_object_public, internal=doc_object_internal,
                              indexed_date=index_entry_date)
+
+            number_of_words = textstat.lexicon_count(index_entry_body)
+            if number_of_words < 100 and self.report_short_topics:
+                yield ShortTopic(doc_id=doc_object_id,
+                                 doc_title=doc_object_title,
+                                 href=index_entry_href,
+                                 id=index_entry_id,
+                                 title=index_entry_title,
+                                 number_of_words=number_of_words,
+                                 product=doc_object_product,
+                                 platform=doc_object_platform,
+                                 version=doc_object_version,
+                                 release=doc_object_release)
 
             for next_page in response.xpath('//a[@href]'):
                 next_page_href = next_page.attrib.get('href')

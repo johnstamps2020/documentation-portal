@@ -1,10 +1,9 @@
-from multiprocessing import Process, Queue
-
 import os
-import sys
+from multiprocessing import Process, Queue
+from typing import List
+
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
-from typing import List
 
 from doc_crawler.spiders import doc_portal_spider
 
@@ -34,30 +33,45 @@ def run_spiders(spider, docs_to_crawl: List, root_url: str, s3_bucket_url: str):
         process.join()
 
     if [r for r in all_results if r is not None]:
-        raise Exception('Crawling process finished with errors')
+        raise SystemExit('Crawling process finished with errors')
 
 
-def env_is_set():
+def check_env_vars():
     env_list = ['CONFIG_FILE', 'APP_BASE_URL',
-                'DOC_S3_URL', 'ELASTICSEARCH_URLS', 'INDEX_NAME']
+                'DOC_S3_URL', 'ELASTICSEARCH_URLS',
+                'DOCS_INDEX_NAME', 'BROKEN_LINKS_INDEX_NAME', 'SHORT_TOPICS_INDEX_NAME',
+                'REPORT_BROKEN_LINKS', 'REPORT_SHORT_TOPICS']
+    unset_vars = []
+    empty_vars = []
     for env_name in env_list:
-        if env_name not in os.environ:
-            print(
-                f'Environment variable {env_name} is not set. Required variables: {env_list}')
-            return False
-        else:
-            print(f'{env_name}: {os.environ[env_name]}')
-    return True
+        env_value = os.environ.get(env_name, None)
+        if env_value is None:
+            unset_vars.append(env_name)
+        elif env_value == '':
+            empty_vars.append(env_name)
+    exit_with_error = False
+    if unset_vars:
+        print(
+            f'The following environment variables are not set: {", ".join(unset_vars)}. Required variables: {", ".join(env_list)}')
+        exit_with_error = True
+    if empty_vars:
+        print(
+            f'The following environment variables have empty values: {",".join(empty_vars)}')
+        exit_with_error = True
+    if exit_with_error:
+        raise SystemExit(1)
+    print('Environment variables:')
+    for env_name in env_list:
+        print(f'{env_name}: {os.environ[env_name]}')
 
 
 def main():
-    if not env_is_set():
-        sys.exit(1)
-    config_file = os.environ.get('CONFIG_FILE', None)
-    doc_id = os.environ.get('DOC_ID', None)
-    app_base_url = os.environ.get('APP_BASE_URL', None)
-    doc_s3_url = os.environ.get('DOC_S3_URL', None)
+    check_env_vars()
+    config_file = os.environ['CONFIG_FILE']
+    app_base_url = os.environ['APP_BASE_URL']
+    doc_s3_url = os.environ['DOC_S3_URL']
     docs_in_config = doc_portal_spider.get_portal_config(config_file)
+    doc_id = os.environ.get('DOC_ID', None)
     if doc_id:
         doc_objects_to_crawl = [
             doc_object for doc_object in docs_in_config if doc_object.get('id') == doc_id]

@@ -3833,7 +3833,8 @@ object GwBuildSteps {
         val docS3Url = Helpers.getS3BucketUrl(deploy_env)
         val appBaseUrl = Helpers.getTargetUrl(deploy_env)
         val elasticsearchUrls = Helpers.getElasticsearchUrl(deploy_env)
-
+        val reportBrokenLinks = if (deploy_env == GwDeployEnvs.PROD.env_name) "no" else "yes"
+        val reportShortTopics = if (deploy_env == GwDeployEnvs.PROD.env_name) "no" else "yes"
         return ScriptBuildStep {
             name = "Run the doc crawler"
             id = Helpers.createIdStringFromName(this.name)
@@ -3841,12 +3842,16 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                 
-                export INDEX_NAME="gw-docs"
                 export CONFIG_FILE="$config_file"
                 export DOC_ID="$doc_id"
                 export DOC_S3_URL="$docS3Url"
                 export ELASTICSEARCH_URLS="$elasticsearchUrls"
                 export APP_BASE_URL="$appBaseUrl"
+                export DOCS_INDEX_NAME="gw-docs"
+                export BROKEN_LINKS_INDEX_NAME="broken-links"
+                export SHORT_TOPICS_INDEX_NAME="short-topics"
+                export REPORT_BROKEN_LINKS="$reportBrokenLinks"
+                export REPORT_SHORT_TOPICS="$reportShortTopics"
                 
                 cat > scrapy.cfg <<- EOM
                 [settings]
