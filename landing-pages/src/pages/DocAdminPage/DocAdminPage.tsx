@@ -71,7 +71,6 @@ export default function DocAdminPage() {
       },
       body: JSON.stringify(data),
     });
-    //TODO: change alert to MUI component (snackbar/state)
     if (response.ok) {
       setSnack({
         message: "Successfully deleted document.",
@@ -128,7 +127,6 @@ export default function DocAdminPage() {
       const result = await response.json();
       console.log("result is: ", JSON.stringify(result, null, 4));
       if (response.ok) {
-        //TODO: change alert to MUI component (snackbar/state)
         setSnack({
           message: "Successfully updated document.",
           color: "green",
@@ -173,7 +171,6 @@ export default function DocAdminPage() {
       const result = await response.json();
       console.log("result is: ", JSON.stringify(result, null, 4));
       if (response.ok) {
-        //TODO: change alert to MUI component (snackbar/state)
         setSnack({
           message: "Successfully added new document.",
           color: "green",

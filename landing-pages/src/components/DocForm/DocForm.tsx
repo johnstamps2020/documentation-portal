@@ -61,7 +61,6 @@ export default function DocForm({
 
   const textFieldSize = "small";
   return (
-    //TODO: Change switch value from "ON" and "OFF" to true and false
     <Box component="form" onSubmit={handleSubmit} sx={style}>
       <div>
         <TextField
