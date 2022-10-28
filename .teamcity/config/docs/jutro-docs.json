@@ -1390,10 +1390,8 @@
         "subject": ["Best practices"]
       },
       "environments": ["dev", "staging", "int", "prod"],
-      // ==== Set to true when version after 8.5.0 is released ====
-      "displayOnLandingPages": false,
-      // ==== Set to true when version after 8.5.0 is released ====
-      "indexForSearch": false,
+      "displayOnLandingPages": false, // ==== Set to true when version after 8.5.0 is released ====
+      "indexForSearch": false, // ==== Set to true when version after 8.5.0 is released ====
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -1409,10 +1407,8 @@
         "subject": ["Development"]
       },
       "environments": ["dev", "staging", "int", "prod"],
-      // ==== Set to true when version after 8.5.0 is released ====
-      "displayOnLandingPages": false,
-      // ==== Set to true when version after 8.5.0 is released ====
-      "indexForSearch": false,
+      "displayOnLandingPages": false, // ==== Set to true when version after 8.5.0 is released ====
+      "indexForSearch": false, // ==== Set to true when version after 8.5.0 is released ====
       "public": false,
       "internal": true,
       "earlyAccess": false
