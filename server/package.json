@@ -25,6 +25,7 @@
     "debug": "~2.6.9",
     "ejs": "^3.1.8",
     "express": "^4.17.3",
+    "express-fileupload": "^1.4.0",
     "express-http-context": "^1.2.3",
     "express-winston": "^4.2.0",
     "harmon": "^1.4.4",
