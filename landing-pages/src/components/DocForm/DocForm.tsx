@@ -1,6 +1,5 @@
 import { ChangeEvent, useState } from "react";
 import { DocConfig } from "@documentation-portal/dist/model/entity/DocConfig";
-import MenuItem from "@mui/material/MenuItem";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";

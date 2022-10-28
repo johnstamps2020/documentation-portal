@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { DocConfig } from "@documentation-portal/dist/model/entity/DocConfig";
 import { Build } from "@documentation-portal/dist/model/entity/Build";
 import Button from "@mui/material/Button";
@@ -8,6 +8,8 @@ import { Product } from "@documentation-portal/dist/model/entity/Product";
 import { Release } from "@documentation-portal/dist/model/entity/Release";
 import React from "react";
 import Modal from "@mui/material/Modal";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 
 const emptyDoc: DocConfig = {
   id: "",
@@ -32,6 +34,13 @@ export default function DocAdminPage() {
   const [docObject, setDocObject] = useState(emptyDoc);
   const [memorizedDoc, memorizeDoc] = useState<DocConfig>(emptyDoc);
   const [showForm, setShowForm] = useState(false);
+  const [snack, setSnack] = useState({
+    message: "",
+    color: "",
+    open: false,
+  });
+  const SnackbarContext = createContext({});
+  const [showSnack, setShowSnack] = useState(false);
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -48,6 +57,11 @@ export default function DocAdminPage() {
   };
 
   const deleteDoc = async (id: string) => {
+    setSnack({
+      message: "",
+      color: "",
+      open: false,
+    });
     const data = {
       id: id,
     };
@@ -61,12 +75,27 @@ export default function DocAdminPage() {
     });
     //TODO: change alert to MUI component (snackbar/state)
     if (response.ok) {
-      alert("You did it! We no longer have this document in the database.");
+      setSnack({
+        message: "Successfully deleted document.",
+        color: "green",
+        open: true,
+      });
       getDocData();
+    } else {
+      setSnack({
+        message: "Oops, something went wrong while deleting document.",
+        color: "red",
+        open: true,
+      });
     }
   };
 
   const updateDoc = async (doc: DocConfig) => {
+    setSnack({
+      message: "",
+      color: "",
+      open: false,
+    });
     //updating document
     if (doc && doc !== emptyDoc) {
       const data = {
@@ -102,8 +131,18 @@ export default function DocAdminPage() {
       console.log("result is: ", JSON.stringify(result, null, 4));
       if (response.ok) {
         //TODO: change alert to MUI component (snackbar/state)
-        alert("You successfully updated this document.");
+        setSnack({
+          message: "Successfully updated document.",
+          color: "green",
+          open: true,
+        });
         getDocData();
+      } else {
+        setSnack({
+          message: "Oops, something went wrong while updating document.",
+          color: "red",
+          open: true,
+        });
       }
     }
     //creating new document
@@ -137,8 +176,18 @@ export default function DocAdminPage() {
       console.log("result is: ", JSON.stringify(result, null, 4));
       if (response.ok) {
         //TODO: change alert to MUI component (snackbar/state)
-        alert("You successfully added new document.");
+        setSnack({
+          message: "Successfully added new document.",
+          color: "green",
+          open: true,
+        });
         getDocData();
+      } else {
+        setSnack({
+          message: "Oops, something went wrong while adding new document.",
+          color: "red",
+          open: true,
+        });
       }
     }
   };
@@ -165,13 +214,9 @@ export default function DocAdminPage() {
               Add new document
             </Button>
           </div>
-          <div className="content">
+          <div>
             {docData.map((doc: DocConfig) => (
-              <div
-                key={doc.id}
-                className="categoryCard cardShadow"
-                style={{ width: 400, height: "fit-content" }}
-              >
+              <div key={doc.id} style={{ width: 400, height: "fit-content" }}>
                 <div className="label">{doc.title}</div>
                 <div>ID: {doc.id}</div>
                 <div>URL: {doc.url}</div>
@@ -205,6 +250,17 @@ export default function DocAdminPage() {
                 />
               </>
             </Modal>
+            <SnackbarContext.Provider value={{ snack }}>
+              <Snackbar
+                open={snack.open}
+                autoHideDuration={3000}
+                onClose={() =>
+                  setSnack({ message: "", color: "", open: false })
+                }
+              >
+                <Alert sx={{ width: "100%" }}>{snack.message}</Alert>
+              </Snackbar>
+            </SnackbarContext.Provider>
           </div>
         </div>
       </Layout>
