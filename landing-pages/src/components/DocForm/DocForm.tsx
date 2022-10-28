@@ -35,7 +35,6 @@ export default function DocForm({
   setDocObject,
   handleClose,
 }: DocFormProps) {
-
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     updateDoc(docToDisplay);
@@ -49,7 +48,7 @@ export default function DocForm({
       };
     });
   }
-  
+
   function updateSwitch(event: ChangeEvent<HTMLInputElement>) {
     setDocObject((currentDoc) => {
       return {
@@ -59,36 +58,26 @@ export default function DocForm({
     });
   }
 
-  const textFieldSize = "small";
   return (
     <Box component="form" onSubmit={handleSubmit} sx={style}>
       <div>
         <TextField
-          size={textFieldSize}
           id="id"
           label="ID"
-          variant="outlined"
           value={docObject.id}
           onChange={updateField}
-          fullWidth
         />
         <TextField
           id="title"
           label="Title"
-          variant="outlined"
-          size={textFieldSize}
           value={docObject.title}
           onChange={updateField}
-          fullWidth
         />
         <TextField
           id="url"
           label="URL"
-          variant="outlined"
-          size={textFieldSize}
           value={docObject.url}
           onChange={updateField}
-          fullWidth
         />
         <FormGroup>
           <FormControlLabel
@@ -118,7 +107,7 @@ export default function DocForm({
             Save changes
           </Button>
           <br />
-          <Button type="button" color="error" fullWidth onClick={handleClose}>
+          <Button color="error" fullWidth onClick={handleClose}>
             Close
           </Button>
         </div>

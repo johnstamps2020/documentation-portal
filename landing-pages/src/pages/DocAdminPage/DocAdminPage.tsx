@@ -1,3 +1,4 @@
+import React from "react";
 import { createContext, useEffect, useState } from "react";
 import { DocConfig } from "@documentation-portal/dist/model/entity/DocConfig";
 import { Build } from "@documentation-portal/dist/model/entity/Build";
@@ -6,13 +7,14 @@ import Layout from "../../components/Layout/Layout";
 import DocForm from "../../components/DocForm/DocForm";
 import { Product } from "@documentation-portal/dist/model/entity/Product";
 import { Release } from "@documentation-portal/dist/model/entity/Release";
-import React from "react";
 import Modal from "@mui/material/Modal";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { adminDocTheme } from "../../themes/theme";
 
 const emptyDoc: DocConfig = {
   id: "",
@@ -204,92 +206,104 @@ export default function DocAdminPage() {
   };
 
   return (
-    <Layout title="Manage docs">
-      <div>
+    <ThemeProvider theme={adminDocTheme}>
+      <CssBaseline enableColorScheme />
+      <Layout title="Manage docs">
         <div>
-          <Button variant="contained" onClick={handleCreateNew}>
-            Add new document
-          </Button>
+          <Button size={"large"} onClick={handleCreateNew}>Add new document</Button>
         </div>
         <div>
-          {docData ? (
-            docData.map((doc: DocConfig) => (
-              <div key={doc.id} style={{ width: 400, height: "fit-content" }}>
-                <div className="label">{doc.title}</div>
-                <div>ID: {doc.id}</div>
-                <div>URL: {doc.url}</div>
-                <div>
-                  Display on landing pages: {String(doc.displayOnLandingPages)}
+          <div style={{ columns: 3 }}>
+            {docData ? (
+              docData.map((doc: DocConfig) => (
+                <div
+                  key={doc.id}
+                  style={{
+                    width: 400,
+                    height: 400,
+                    marginBottom: 15,
+                    breakInside: "avoid",
+                  }}
+                >
+                  <div>{doc.title}</div>
+                  <div>ID: {doc.id}</div>
+                  <div>URL: {doc.url}</div>
+                  <div>
+                    Display on landing pages:{" "}
+                    {String(doc.displayOnLandingPages)}
+                  </div>
+                  <div>Index for search: {String(doc.indexForSearch)}</div>
+                  <div>Is public: {String(doc.public)}</div>
+                  <div>Is internal: {String(doc.internal)}</div>
+                  <div>Early access: {String(doc.earlyAccess)}</div>
+                  <div>Subjects: {doc.subjects}</div>
+                  <div>Categories: {doc.categories}</div>
+                  <div>Body: {doc.body}</div>
+                  <Button color="error" onClick={() => deleteDoc(doc.id)}>
+                    Delete
+                  </Button>
+                  <Button
+                    color="success"
+                    onClick={() => showFormAndSetVar(doc)}
+                  >
+                    Update
+                  </Button>
                 </div>
-                <div>Index for search: {String(doc.indexForSearch)}</div>
-                <div>Is public: {String(doc.public)}</div>
-                <div>Is internal: {String(doc.internal)}</div>
-                <div>Early access: {String(doc.earlyAccess)}</div>
-                <div>Subjects: {doc.subjects}</div>
-                <div>Categories: {doc.categories}</div>
-                <div>Body: {doc.body}</div>
-                <Button onClick={() => deleteDoc(doc.id)}>Delete</Button>
-                <Button onClick={() => showFormAndSetVar(doc)}>Update</Button>
-              </div>
-            ))
-          ) : (
-            <Stack spacing={1}>
-              <Skeleton variant="text" width={400} height={40} />
-              <Skeleton variant="rectangular" width={400} height={300} />
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Skeleton
-                  variant="rounded"
-                  width={200}
-                  height={50}
-                  sx={{ margin: "2%" }}
-                />
-                <Skeleton
-                  variant="rounded"
-                  width={200}
-                  height={50}
-                  sx={{ margin: "2%" }}
-                />
-              </Box>
-              <Skeleton variant="text" width={400} height={40} />
-              <Skeleton variant="rectangular" width={400} height={300} />
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Skeleton
-                  variant="rounded"
-                  width={200}
-                  height={50}
-                  sx={{ margin: "2%" }}
-                />
-                <Skeleton
-                  variant="rounded"
-                  width={200}
-                  height={50}
-                  sx={{ margin: "2%" }}
-                />
-              </Box>
-              <Skeleton variant="text" width={400} height={40} />
-              <Skeleton variant="rectangular" width={400} height={300} />
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Skeleton
-                  variant="rounded"
-                  width={200}
-                  height={50}
-                  sx={{ margin: "2%" }}
-                />
-                <Skeleton
-                  variant="rounded"
-                  width={200}
-                  height={50}
-                  sx={{ margin: "2%" }}
-                />
-              </Box>
-            </Stack>
-          )}
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
+              ))
+            ) : (
+              <Stack>
+                <Skeleton variant="text" width={400} height={40} />
+                <Skeleton variant="rectangular" width={400} height={300} />
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Skeleton
+                    variant="rounded"
+                    width={200}
+                    height={50}
+                    sx={{ margin: "2%" }}
+                  />
+                  <Skeleton
+                    variant="rounded"
+                    width={200}
+                    height={50}
+                    sx={{ margin: "2%" }}
+                  />
+                </Box>
+                <Skeleton variant="text" width={400} height={40} />
+                <Skeleton variant="rectangular" width={400} height={300} />
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Skeleton
+                    variant="rounded"
+                    width={200}
+                    height={50}
+                    sx={{ margin: "2%" }}
+                  />
+                  <Skeleton
+                    variant="rounded"
+                    width={200}
+                    height={50}
+                    sx={{ margin: "2%" }}
+                  />
+                </Box>
+                <Skeleton variant="text" width={400} height={40} />
+                <Skeleton variant="rectangular" width={400} height={300} />
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Skeleton
+                    variant="rounded"
+                    width={200}
+                    height={50}
+                    sx={{ margin: "2%" }}
+                  />
+                  <Skeleton
+                    variant="rounded"
+                    width={200}
+                    height={50}
+                    sx={{ margin: "2%" }}
+                  />
+                </Box>
+              </Stack>
+            )}
+          </div>
+          <Modal open={open} onClose={handleClose}>
             <>
               <DocForm
                 docToDisplay={memorizedDoc}
@@ -303,14 +317,13 @@ export default function DocAdminPage() {
           <SnackbarContext.Provider value={{ snack }}>
             <Snackbar
               open={snack.open}
-              autoHideDuration={3000}
               onClose={() => setSnack({ message: "", color: "", open: false })}
             >
-              <Alert sx={{ width: "100%" }}>{snack.message}</Alert>
+              <Alert>{snack.message}</Alert>
             </Snackbar>
           </SnackbarContext.Provider>
         </div>
-      </div>
-    </Layout>
+      </Layout>
+    </ThemeProvider>
   );
 }
