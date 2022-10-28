@@ -28,8 +28,13 @@ class ElasticsearchPipeline:
 
         self.elastic_client.create_index(
             self.index_name, self.elastic_client.main_index_settings)
-        self.elastic_client.create_index(
-            self.index_name_broken_links, self.elastic_client.main_index_settings)
+        """ The indices for broken links and short topics don't require custom settings and mappings.
+        Therefore, dynamic mapping is used. Here's the explanation from the Elasticsearch docs
+        (https://www.elastic.co/guide/en/elasticsearch/reference/7.17/dynamic-mapping.html#dynamic-mapping):
+        
+        To index a document, you don’t have to first create an index, define a mapping type, and define your fields 
+        - you can just index a document and the index, type, and fields will display automatically.
+        """
 
         for doc in spider.docs:
             id_to_delete = doc["id"]

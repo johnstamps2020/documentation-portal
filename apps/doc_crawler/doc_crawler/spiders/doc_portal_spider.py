@@ -124,8 +124,16 @@ class DocPortalSpider(scrapy.Spider):
 
             number_of_words = textstat.lexicon_count(index_entry_body)
             if number_of_words < 100:
-                yield ShortTopic(doc_id=doc_object_id, href=index_entry_href, id=index_entry_id,
-                                 title=index_entry_title, number_of_words=number_of_words)
+                yield ShortTopic(doc_id=doc_object_id,
+                                 doc_title=doc_object_title,
+                                 href=index_entry_href,
+                                 id=index_entry_id,
+                                 title=index_entry_title,
+                                 number_of_words=number_of_words,
+                                 product=doc_object_product,
+                                 platform=doc_object_platform,
+                                 version=doc_object_version,
+                                 release=doc_object_release)
 
             for next_page in response.xpath('//a[@href]'):
                 next_page_href = next_page.attrib.get('href')
