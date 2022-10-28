@@ -40,8 +40,6 @@ export default function DocAdminPage() {
     open: false,
   });
   const SnackbarContext = createContext({});
-  const [showSnack, setShowSnack] = useState(false);
-
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
