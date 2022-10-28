@@ -53,7 +53,7 @@ class ElasticsearchPipeline:
             self.elastic_client.delete_entries_by_query(
                 self.short_topics_index_name, elastic_del_query)
 
-    def close_spider(self):
+    def close_spider(self, spider):
         self.elastic_client.logger_instance.info(
             f'\nCreated entries/Failures: {self.number_of_created_entries}/{len(self.failed_entries)}\n')
         if self.failed_entries:
@@ -64,7 +64,7 @@ class ElasticsearchPipeline:
             for failed_entry in self.failed_entries:
                 self.elastic_client.logger_instance.info(f'\t{failed_entry}')
 
-    def process_item(self, item):
+    def process_item(self, item, spider):
         if item.__class__.__name__ == IndexEntry.__name__:
             index_name = self.docs_index_name
         elif item.__class__.__name__ == BrokenLink.__name__:

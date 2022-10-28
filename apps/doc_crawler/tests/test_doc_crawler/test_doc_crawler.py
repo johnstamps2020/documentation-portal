@@ -17,7 +17,7 @@ expected_resources = current_dir / 'resources' / 'expected'
 config = os.environ['CONFIG_FILE']
 app_base_url = os.environ['APP_BASE_URL']
 doc_s3_url = os.environ['DOC_S3_URL']
-elasticsearch_urls = os.environ['ELASTICSEARCH_URLS']
+elasticsearch_urls = os.environ['ELASTICSEARCH_URLS'].split(' ')
 docs_index_name = os.environ['DOCS_INDEX_NAME']
 broken_links_index_name = os.environ['BROKEN_LINKS_INDEX_NAME']
 short_topics_index_name = os.environ['SHORT_TOPICS_INDEX_NAME']
@@ -68,9 +68,11 @@ def test_index_was_created(elastic_client, index_name):
     assert index_exists is True
 
 
-def test_index_has_entries(elastic_client):
-    number_of_index_entries = elastic_client.count(index=docs_index_name)['count']
-    assert number_of_index_entries == 157
+@pytest.mark.parametrize("index_name,expected_number_of_entries",
+                         [(docs_index_name, 157), (broken_links_index_name, 3), (short_topics_index_name, 34)])
+def test_index_has_entries(elastic_client, index_name, expected_number_of_entries):
+    number_of_index_entries = elastic_client.count(index=index_name)['count']
+    assert number_of_index_entries == expected_number_of_entries
 
 
 def test_topic_has_internal_property(elastic_client):
@@ -169,13 +171,3 @@ def test_delete_entries_by_query(elastic_client):
             and entries_with_id_deleted
             and number_of_existing_eq_number_of_deleted
     )
-
-
-def test_broken_links_in_elastic(elastic_client):
-    number_of_broken_links = elastic_client.count(index=broken_links_index_name)['count']
-    assert number_of_broken_links == 3
-
-
-def test_short_topics_in_elastic(elastic_client):
-    number_of_short_topics = elastic_client.count(index=short_topics_index_name)['count']
-    assert number_of_short_topics == 34
