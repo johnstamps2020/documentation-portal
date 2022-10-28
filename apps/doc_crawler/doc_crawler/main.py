@@ -38,7 +38,9 @@ def run_spiders(spider, docs_to_crawl: List, root_url: str, s3_bucket_url: str):
 
 def check_env_vars():
     env_list = ['CONFIG_FILE', 'APP_BASE_URL',
-                'DOC_S3_URL', 'ELASTICSEARCH_URLS', 'INDEX_NAME']
+                'DOC_S3_URL', 'ELASTICSEARCH_URLS',
+                'DOCS_INDEX_NAME', 'BROKEN_LINKS_INDEX_NAME', 'SHORT_TOPICS_INDEX_NAME',
+                'REPORT_BROKEN_LINKS', 'REPORT_SHORT_TOPICS']
     unset_vars = []
     empty_vars = []
     for env_name in env_list:

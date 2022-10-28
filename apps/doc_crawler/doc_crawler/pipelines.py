@@ -8,16 +8,18 @@ from .items import BrokenLink, IndexEntry, ShortTopic
 
 class ElasticsearchPipeline:
     elastic_client = None
-    index_name = ''
-    index_name_broken_links = 'broken-links'
-    index_name_short_topics = 'short-topics'
+    docs_index_name = ''
+    broken_links_index_name = ''
+    short_topics_index_name = ''
     number_of_created_entries = 0
     failed_entries = []
 
     def open_spider(self, spider):
 
         search_app_urls = os.environ['ELASTICSEARCH_URLS'].split(' ')
-        self.index_name = os.environ['INDEX_NAME']
+        self.docs_index_name = os.environ['DOCS_INDEX_NAME']
+        self.broken_links_index_name = os.environ['BROKEN_LINKS_INDEX_NAME']
+        self.short_topics_index_name = os.environ['SHORT_TOPICS_INDEX_NAME']
         """ We turned off certificate validation in the Elasticsearch client because we don't need it.
         So when you connect to an https link, a warning is issued that your request is insecure.
         We turned off the warning as well.
@@ -27,7 +29,7 @@ class ElasticsearchPipeline:
                                             ssl_show_warn=False)
 
         self.elastic_client.create_index(
-            self.index_name, self.elastic_client.main_index_settings)
+            self.docs_index_name, self.elastic_client.main_index_settings)
         """ The indices for broken links and short topics don't require custom settings and mappings.
         Therefore, dynamic mapping is used. Here's the explanation from the Elasticsearch docs
         (https://www.elastic.co/guide/en/elasticsearch/reference/7.17/dynamic-mapping.html#dynamic-mapping):
@@ -41,17 +43,17 @@ class ElasticsearchPipeline:
             elastic_del_query = self.elastic_client.prepare_del_query(self.elastic_client.elastic_del_query_template,
                                                                       id_to_delete=id_to_delete)
             self.elastic_client.delete_entries_by_query(
-                self.index_name, elastic_del_query)
+                self.docs_index_name, elastic_del_query)
             """ Entries for broken links and short topics are always deleted.
             Even if reporting of broken links or short topics is disabled in the spider, the existing entries
             should be deleted to keep the indices clean.
             """
             self.elastic_client.delete_entries_by_query(
-                self.index_name_broken_links, elastic_del_query)
+                self.broken_links_index_name, elastic_del_query)
             self.elastic_client.delete_entries_by_query(
-                self.index_name_short_topics, elastic_del_query)
+                self.short_topics_index_name, elastic_del_query)
 
-    def close_spider(self, spider):
+    def close_spider(self):
         self.elastic_client.logger_instance.info(
             f'\nCreated entries/Failures: {self.number_of_created_entries}/{len(self.failed_entries)}\n')
         if self.failed_entries:
@@ -62,16 +64,17 @@ class ElasticsearchPipeline:
             for failed_entry in self.failed_entries:
                 self.elastic_client.logger_instance.info(f'\t{failed_entry}')
 
-    def process_item(self, item, spider):
+    def process_item(self, item):
         if item.__class__.__name__ == IndexEntry.__name__:
-            index_name = self.index_name
+            index_name = self.docs_index_name
         elif item.__class__.__name__ == BrokenLink.__name__:
-            index_name = self.index_name_broken_links
+            index_name = self.broken_links_index_name
         elif item.__class__.__name__ == ShortTopic.__name__:
-            index_name = self.index_name_short_topics
+            index_name = self.short_topics_index_name
         else:
             self.elastic_client.logger_instance.warning(
-                f'Item not added to Elasticsearch. Reason: Item of unknown type. Item: {item}, class name: {item.__class__.__name__}')
+                f'Item not added to Elasticsearch. Reason: Item of unknown type. '
+                f'Item: {item}, class name: {item.__class__.__name__}')
             return item
 
         index_entry = dict(item)
