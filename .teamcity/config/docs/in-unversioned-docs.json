@@ -296,7 +296,7 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Release notes"],
-        "release": ["Garmish"]
+        "release": ["Garmisch"]
       },
       "environments": ["int", "staging"],
       "displayOnLandingPages": true,
