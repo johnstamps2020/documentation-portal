@@ -12,7 +12,7 @@
         "release": ["Flaine"]
       },
       "environments": ["int", "staging", "prod"],
-      "indexForSearch": true,
+      "indexForSearch": false,
       "public": false,
       "internal": false,
       "earlyAccess": false
