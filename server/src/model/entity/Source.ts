@@ -5,7 +5,7 @@ import { Resource } from './Resource';
 
 @Entity()
 export class Source {
-  @PrimaryGeneratedColumn('uuid')
+  @Column({ primary: true })
   id: string;
 
   @Column()
@@ -20,8 +20,8 @@ export class Source {
   @Column()
   gitBranch: string;
 
-  @Column({ array: true, nullable: true })
-  xdocsPathIds: string;
+  @Column('text', { array: true, nullable: true })
+  xdocsPathIds: string[];
 
   @Column({ nullable: true })
   exportFrequency: string;

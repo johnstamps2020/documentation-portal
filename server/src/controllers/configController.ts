@@ -1,27 +1,13 @@
 import fetch from 'node-fetch';
-import { lstatSync, readdirSync, readFileSync } from 'fs';
-import { join, resolve } from 'path';
 import { winstonLogger } from './loggerController';
-import { ServerConfig } from '../types/config';
 import { Request, Response } from 'express';
-import { Environment } from '../types/environment';
 import { VersionSelector } from '../model/entity/VersionSelector';
 import { AppDataSource } from '../model/connection';
-import { DocConfig } from '../model/entity/DocConfig';
+import { Doc } from '../model/entity/Doc';
 import { Product } from '../model/entity/Product';
-import { ProductName } from '../model/entity/ProductName';
-import { ProductVersion } from '../model/entity/ProductVersion';
-import { ProductPlatform } from '../model/entity/ProductPlatform';
 import { Release } from '../model/entity/Release';
-import { Build } from '../model/entity/Build';
-import { Source } from '../model/entity/Source';
-import { Resource } from '../model/entity/Resource';
 import { integer } from '@elastic/elasticsearch/api/types';
-import {
-  FindOneAndDeleteOptions,
-  FindOptionsWhere,
-  SaveOptions,
-} from 'typeorm';
+import { FindOneAndDeleteOptions, FindOptionsWhere } from 'typeorm';
 import { runningInDevMode } from './utils/serverUtils';
 
 function optionsAreValid(options: {}) {
@@ -94,7 +80,10 @@ export async function getAllEntities(
   }
 }
 
-export async function createOrUpdateEntity(repo: string, options: SaveOptions) {
+export async function createOrUpdateEntity(
+  repo: string,
+  options: {}
+): Promise<{ status: integer; body: any }> {
   try {
     if (!optionsAreValid(options)) {
       return {
@@ -120,7 +109,7 @@ export async function createOrUpdateEntity(repo: string, options: SaveOptions) {
 export async function deleteEntity(
   repo: string,
   options: FindOneAndDeleteOptions
-) {
+): Promise<{ status: integer; body: any }> {
   try {
     if (!optionsAreValid(options)) {
       return {
@@ -175,7 +164,7 @@ export async function getDocumentMetadataById(docId: string) {
         },
       };
     }
-    const getEntityResponse = await getEntity(DocConfig.name, { id: docId });
+    const getEntityResponse = await getEntity(Doc.name, { id: docId });
     if (getEntityResponse.status === 200) {
       const docInfo = getEntityResponse.body;
       return {
@@ -267,14 +256,7 @@ export async function putConfigInDatabase(): Promise<{
       `${__dirname}/../../../.teamcity/config/docs`
     );
 
-    const localConfig = await (async () => {
-      if (runningInDevMode()) {
-        return readFilesInDir(localConfigDir, selectedEnv);
-      }
-
-      const fetchedConfig = await fetchConfig();
-      return fetchedConfig;
-    })();
+    const localConfig = readFilesInDir(localConfigDir, selectedEnv);
 
     // FIXME: Test data, remove after testing
     const BillingCenterName = new ProductName();
@@ -397,7 +379,7 @@ export async function getDocByUrl(url: string) {
   if (url.startsWith('/')) {
     urlToCheck = url.substring(1);
   }
-  const docUrls = await AppDataSource.getRepository(DocConfig)
+  const docUrls = await AppDataSource.getRepository(Doc)
     .createQueryBuilder('doc')
     .useIndex('docUrl-idx')
     .select(['doc.url', 'doc.id', 'doc.public', 'doc.internal'])
@@ -508,14 +490,14 @@ export async function getVersionSelector(
         if (matchingVersionSelector) {
           const isLoggedIn = reqObj.session?.requestIsAuthenticated;
           const hasGuidewireEmail = resObj.locals.userInfo?.hasGuidewireEmail;
-          const options: FindOptionsWhere<DocConfig> = {};
+          const options: FindOptionsWhere<Doc> = {};
           if (!isLoggedIn) {
             options.public = true;
           }
           if (!hasGuidewireEmail) {
             options.internal = false;
           }
-          const docUrls = await AppDataSource.getRepository(DocConfig)
+          const docUrls = await AppDataSource.getRepository(Doc)
             .createQueryBuilder('doc')
             .useIndex('docUrl-idx')
             .select(['doc.url'])

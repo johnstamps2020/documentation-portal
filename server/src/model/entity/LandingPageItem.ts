@@ -5,7 +5,6 @@ import {
   Tree,
   TreeChildren,
 } from 'typeorm';
-import { Environment } from '../../types/environment';
 
 @Entity()
 @Tree('closure-table')
@@ -31,6 +30,6 @@ export class LandingPageItem {
   @TreeChildren()
   items: LandingPageItem[];
 
-  @Column()
-  env: Environment;
+  @Column('text', { array: true })
+  env: string[];
 }
