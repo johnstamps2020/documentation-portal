@@ -97,7 +97,7 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"]
+            "enum": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
           }
         },
         "subject": {

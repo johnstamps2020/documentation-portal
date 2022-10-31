@@ -20,6 +20,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "INowServicePortalReleaseNotes20231Garmisch.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "incsp20231rn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "INowServicePortalReleaseNotes20222Flaine.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp20222rn",
@@ -116,6 +124,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "INowStudioReleaseNotes20231Garmisch.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20231studiorn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "INowStudioReleaseNotes20222Flaine.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20222studiorn",
@@ -160,6 +176,21 @@
       "srcId": "inunversionedsrc",
       "docId": "ininstallassistdraft",
       "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "INowCoreReleaseNotes20231Garmisch.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20231rn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "targetFolder": "ReleaseNotes/2023.1.x/ChangedFiles",
+          "sourceFolder": "ChangedFiles/2023.1",
+          "srcId": "insurancenowextrassrc"
+        }
+      ]
     },
     {
       "buildType": "dita",
