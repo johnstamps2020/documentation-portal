@@ -99,22 +99,22 @@ export default function DocAdminPage() {
       open: false,
     });
     //updating document
-    if (doc && doc !== emptyDoc) {
+    if (doc && docData && docData.find(document => document.id === doc.id)) {
       const data = {
         id: doc.id,
-        title: docObject.title,
-        url: docObject.url,
-        environments: [docObject.environments],
-        displayOnLandingPages: docObject.displayOnLandingPages,
-        indexForSearch: docObject.indexForSearch,
-        public: docObject.public,
-        internal: docObject.internal,
-        earlyAccess: docObject.earlyAccess,
-        products: docObject.products,
-        releases: docObject.releases,
+        title: doc.title,
+        url: doc.url,
+        environments: [doc.environments],
+        displayOnLandingPages: doc.displayOnLandingPages,
+        indexForSearch: doc.indexForSearch,
+        public: doc.public,
+        internal: doc.internal,
+        earlyAccess: doc.earlyAccess,
+        products: doc.products,
+        releases: doc.releases,
         subjects: null,
         categories: null,
-        body: docObject.body,
+        body: doc.body,
       };
 
       const response = await fetch(
@@ -149,20 +149,20 @@ export default function DocAdminPage() {
     //creating new document
     else {
       const data = {
-        id: docObject.id,
-        title: docObject.title,
-        url: docObject.url,
-        environments: [docObject.environments],
-        displayOnLandingPages: docObject.displayOnLandingPages,
-        indexForSearch: docObject.indexForSearch,
-        public: docObject.public,
-        internal: docObject.internal,
-        earlyAccess: docObject.earlyAccess,
-        products: docObject.products,
-        releases: docObject.releases,
+        id: doc.id,
+        title: doc.title,
+        url: doc.url,
+        environments: [doc.environments],
+        displayOnLandingPages: doc.displayOnLandingPages,
+        indexForSearch: doc.indexForSearch,
+        public: doc.public,
+        internal: doc.internal,
+        earlyAccess: doc.earlyAccess,
+        products: doc.products,
+        releases: doc.releases,
         subjects: null,
         categories: null,
-        body: docObject.body,
+        body: doc.body,
       };
       const response = await fetch(`/safeConfig/entity/DocConfig?id=`, {
         method: "POST",
@@ -210,7 +210,9 @@ export default function DocAdminPage() {
       <CssBaseline enableColorScheme />
       <Layout title="Manage docs">
         <div>
-          <Button size={"large"} onClick={handleCreateNew}>Add new document</Button>
+          <Button size={"large"} onClick={handleCreateNew}>
+            Add new document
+          </Button>
         </div>
         <div>
           <div style={{ columns: 3 }}>
@@ -307,9 +309,8 @@ export default function DocAdminPage() {
             <>
               <DocForm
                 docToDisplay={memorizedDoc}
+                setDocToDisplay={memorizeDoc}
                 updateDoc={updateDoc}
-                docObject={docObject}
-                setDocObject={setDocObject}
                 handleClose={handleClose}
               />
             </>

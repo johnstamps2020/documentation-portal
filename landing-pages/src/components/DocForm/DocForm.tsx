@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import { DocConfig } from "@documentation-portal/dist/model/entity/DocConfig";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -23,22 +23,21 @@ const style = {
 type DocFormProps = {
   updateDoc: (doc: DocConfig) => Promise<void>;
   docToDisplay: DocConfig;
-  docObject: DocConfig;
-  setDocObject: React.Dispatch<React.SetStateAction<DocConfig>>;
+  setDocToDisplay: React.Dispatch<React.SetStateAction<DocConfig>>;
   handleClose: () => void;
 };
 
 export default function DocForm({
   updateDoc,
   docToDisplay,
-  docObject,
-  setDocObject,
+  setDocToDisplay,
   handleClose,
 }: DocFormProps) {
+  const [docObject, setDocObject] = useState(docToDisplay);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    updateDoc(docToDisplay);
+    updateDoc(docObject);
   }
 
   function updateField(event: ChangeEvent<HTMLInputElement>) {
