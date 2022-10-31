@@ -9,7 +9,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2022.1", "2022.2"],
-        "subject": ["Release Notes"]
+        "subject": ["Release notes"]
       },
       "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -26,7 +26,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2022.1", "2022.2"],
-        "subject": ["Release Notes"]
+        "subject": ["Release notes"]
       },
       "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -43,7 +43,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Garmisch"]
       },
       "environments": ["int", "staging"],
@@ -61,7 +61,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2022.2"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Flaine"]
       },
       "environments": ["int", "staging", "prod"],
@@ -79,7 +79,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Elysian"]
       },
       "environments": ["int", "staging", "prod"],
@@ -97,7 +97,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2021.1"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Cortina"]
       },
       "environments": ["int", "staging", "prod"],
@@ -115,7 +115,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["4"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Dobson"]
       },
       "environments": ["int", "staging", "prod"],
