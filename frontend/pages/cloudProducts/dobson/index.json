@@ -8,6 +8,11 @@
     "selectedItem": "Dobson",
     "items": [
       {
+        "label": "Garmisch",
+        "page": "../garmisch",
+        "env": ["int", "staging"]
+      },
+      {
         "label": "Flaine",
         "page": "../flaine"
       },

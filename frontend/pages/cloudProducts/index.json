@@ -30,6 +30,11 @@
       "page": "flaine"
     },
     {
+      "label": "Garmisch",
+      "page": "garmisch",
+      "env": ["int", "staging"]
+    },
+    {
       "label": "Flaine New",
       "page": "flainenew",
       "env": ["int"]
