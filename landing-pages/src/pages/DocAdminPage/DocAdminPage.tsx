@@ -36,7 +36,6 @@ const emptyDoc: DocConfig = {
 
 export default function DocAdminPage() {
   const [docData, setDocData] = useState<DocConfig[]>();
-  const [docObject, setDocObject] = useState(emptyDoc);
   const [memorizedDoc, memorizeDoc] = useState<DocConfig>(emptyDoc);
   const [showForm, setShowForm] = useState(false);
   const [snack, setSnack] = useState({
@@ -196,12 +195,10 @@ export default function DocAdminPage() {
     handleOpen();
     memorizeDoc(emptyDoc);
     setShowForm(!showForm);
-    setDocObject(emptyDoc);
   }
 
   const showFormAndSetVar = (doc: DocConfig) => {
     handleOpen();
-    setDocObject(doc);
     memorizeDoc(doc);
   };
 
