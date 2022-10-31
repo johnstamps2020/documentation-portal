@@ -90,6 +90,13 @@ router.post('/entity/:repo', async function(req, res) {
   return res.status(status).json(body);
 });
 
+router.put('/entity/:repo', async function(req, res) {
+  const { repo } = req.params;
+  const options = req.body;
+  const { status, body } = await createOrUpdateEntity(repo, options);
+  return res.status(status).json(body);
+});
+
 router.delete('/entity/:repo', async function(req, res) {
   const { repo } = req.params;
   const options = req.body;
