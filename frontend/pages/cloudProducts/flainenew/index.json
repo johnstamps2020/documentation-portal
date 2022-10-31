@@ -2,7 +2,7 @@
   "$schema": "/frontend/page-schema.json",
   "title": "Flaine ",
   "template": "page",
-  "class": "blue-theme flaine flainenew threeCards",
+  "class": "blue-theme flaine flainenew skiRelease",
   "selector": {
     "label": "Select release",
     "selectedItem": "Flaine",
@@ -31,7 +31,7 @@
   },
   "items": [
     {
-      "label": "Guidewire Platform",
+      "label": "Guidewire Cloud Platform",
       "class": "categoryCard cardShadow",
       "items": [
         {
@@ -45,19 +45,17 @@
         {
           "label": "Cloud Infrastructure",
           "page": "../cloudConsole"
-        }
-      ]
-    },
-    {
-      "label": "Digital Platform",
-      "class": "categoryCard cardShadow",
-      "items": [
-        {
-          "label": "Jutro Design System and UI Framework",
-          "id": "jutro831"
         },
         {
-          "label": "Jutro Admin (EA)",
+          "label": "Data Platform",
+          "id": "dataplatform"
+        },
+        {
+          "label": "Cloud Data Access",
+          "page": "../cloudDataAccess/latest"
+        },
+        {
+          "label": "Jutro Digital Platform",
           "id": "jutro831"
         }
       ]
@@ -81,6 +79,14 @@
         {
           "label": "InsuranceNow",
           "page": "../flaine/insuranceNow/2022.2"
+        },
+        {
+          "label": "Advanced Product Designer App",
+          "page": "../flaine/apd"
+        },
+        {
+          "label": "Digital Reference Applications",
+          "page": "dxrefapps"
         }
       ]
     },
@@ -89,20 +95,8 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Cloud Data Access",
-          "page": "../cloudDataAccess/latest"
-        },
-        {
-          "label": "Data Platform",
-          "id": "dataplatform"
-        },
-        {
           "label": "DataHub",
           "page": "../flaine/dhGwCloud/2022.09"
-        },
-        {
-          "label": "Data Studio (EA)",
-          "id": "datastudiodraft"
         },
         {
           "label": "InfoCenter",
@@ -131,11 +125,15 @@
         {
           "label": "Cyence Cyber",
           "page": "../explore/latest"
+        },
+        {
+          "label": "Data Studio (EA)",
+          "id": "datastudiodraft"
         }
       ]
     },
         {
-      "label": "Development Experience",
+      "label": "Developer Resources",
       "class": "categoryCard cardShadow",
       "items": [
         {
@@ -143,15 +141,15 @@
           "page": "../../apiReferences/flaine"
         },
         {
-          "label": "Advanced Product Designer App",
-          "page": "../flaine/apd"
-        },
-        {
           "label": "Integration Gateway",
           "id": "integgatewaydevlatest"
         },
         {
-          "label": "App Events",
+          "label": "Guidewire Testing",
+          "page": "../../testingFramework/flaine"
+        },
+        {
+          "label": "Application Events",
           "id": "appeventsdev"
         },
         {
@@ -159,46 +157,8 @@
           "id": "gwrules"
         },
         {
-          "label": "Guidewire Testing",
-          "page": "../../testingFramework/flaine" 
-        },
-        {
           "label": "Workset Manager (EA)",
           "id": "worksetmgr"
-        }
-      ]
-    },
-    {
-      "label": "Digital Reference Applications",
-      "class": "categoryCard cardShadow",
-      "items": [
-        {
-          "label": "CustomerEngage Account Management",
-          "page": "../flaine/ceAccountMgmt/2022.09"
-        },
-        {
-          "label": "CustomerEngage Account Management for ClaimCenter",
-          "page": "../flaine/ceAccountMgmtCc/2022.09"
-        },
-        {
-          "label": "CustomerEngage Quote and Buy",
-          "page": "../flaine/ceQuoteAndBuy/2022.09"
-        },
-        {
-          "label": "ProducerEngage",
-          "page": "../flaine/producerEngage/2022.09"
-        },
-        {
-          "label": "ProducerEngage for ClaimCenter",
-          "page": "../flaine/producerEngageCc/2022.09"
-        },
-        {
-          "label": "ServiceRepEngage",
-          "page": "../flaine/serviceRepEngage/2022.09"
-        },
-        {
-          "label": "VendorEngage",
-          "page": "../flaine/vendorEngage/2022.09"
         }
       ]
     }
