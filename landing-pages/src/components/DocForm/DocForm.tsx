@@ -35,10 +35,6 @@ export default function DocForm({
   setDocObject,
   handleClose,
 }: DocFormProps) {
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    updateDoc(docToDisplay);
-  }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
