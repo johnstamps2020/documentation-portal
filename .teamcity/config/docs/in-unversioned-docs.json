@@ -36,6 +36,24 @@
       "earlyAccess": false
     },
     {
+      "id": "incsp20231rn",
+      "title": "Consumer Service Portal 2023.1 Release Notes",
+      "url": "cloud/in/csp20231rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.1"],
+        "subject": ["Release Notes"],
+        "release": ["Garmisch"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "incsp20222rn",
       "title": "Consumer Service Portal 2022.2 Release Notes",
       "url": "cloud/in/csp20222rn",
@@ -270,6 +288,24 @@
       "earlyAccess": false
     },
     {
+      "id": "in20231studiorn",
+      "title": "Studio 2023.1 Release Notes",
+      "url": "cloud/in/20231/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.1"],
+        "subject": ["Release notes"],
+        "release": ["Garmish"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "in20222studiorn",
       "title": "Studio 2022.2 Release Notes",
       "url": "cloud/in/20222/studiorn",
@@ -393,6 +429,24 @@
       "indexForSearch": true,
       "public": false,
       "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20231rn",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20231/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.1"],
+        "subject": ["Release notes"],
+        "release": ["Garmisch"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
       "earlyAccess": false
     },
     {
