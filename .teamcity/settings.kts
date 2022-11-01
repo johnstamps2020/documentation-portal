@@ -15,7 +15,7 @@ import org.json.JSONObject
 import java.io.File
 import java.util.*
 
-version = "2021.2"
+version = "2022.04"
 
 project {
 
