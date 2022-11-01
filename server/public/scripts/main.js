@@ -50,9 +50,9 @@ async function addReleaseBadge() {
 
     div.appendChild(p);
 
-    const footerLeft = document.querySelector('#footerLeft');
-    if (footerLeft) {
-      footerLeft.appendChild(div);
+    const footerRight = document.querySelector('#footerRight');
+    if (footerRight) {
+      footerRight.appendChild(div);
     }
   }
 }

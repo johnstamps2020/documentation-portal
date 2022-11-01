@@ -3,23 +3,26 @@
   <% } else { %>
   <footer>
     <% } %>
-    <div id="footerLeft"></div>
-    <div id="footerCenter"></div>
-    <div id="footerRight">
+    <div id="footerLeft">
+      <div class="footerCopyright">
+          Copyright &#169;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Guidewire Software, Inc.
+      </div>
+    </div>
+    <div id="footerCenter">
       <div>
         <div class="footerLinks">
           <span class="footerLink"
             ><a href="/support">Legal and Support Information</a></span
           >
         </div>
-        <div class="footerCopyright">
-          Copyright &#169;
-          <script>
-            document.write(new Date().getFullYear());
-          </script>
-          Guidewire Software, Inc.
-        </div>
       </div>
+    </div>
+    <div id="footerRight">
+      
     </div>
   </footer>
   <script src="/scripts/main.js" type="module"></script>

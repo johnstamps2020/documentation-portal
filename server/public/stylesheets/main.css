@@ -159,6 +159,11 @@ main.blue-theme {
 }
 
 @media screen and (min-width: 750px) {
+  main.flaine {
+    background-image: url(/images/background-flaine.svg), linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%); 
+    background-position: center center;
+    }
+  
   main.elysian {
     background-image: url(/images/background-elysian.svg);
     background-position: bottom right;
@@ -277,6 +282,11 @@ div.items {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+main.skiRelease {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 .skiRelease .pageIntro {
@@ -484,7 +494,7 @@ footer {
   box-shadow: var(--bs-GW-HEADER-FOOTER);
   color: var(--clr-GW-WHITE);
   padding: 16px 32px;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   display: flex;
 }
 
@@ -527,9 +537,7 @@ footer.footer-search #footerCenter {
 
 footer a {
   display: block;
-  font-size: 0.875rem;
   color: hsl(0, 0%, 100%);
-  font-weight: 600;
   margin-bottom: 12px;
 }
 
