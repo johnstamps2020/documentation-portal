@@ -494,7 +494,7 @@ footer {
   box-shadow: var(--bs-GW-HEADER-FOOTER);
   color: var(--clr-GW-WHITE);
   padding: 16px 32px;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   display: flex;
 }
 
@@ -537,9 +537,7 @@ footer.footer-search #footerCenter {
 
 footer a {
   display: block;
-  font-size: 0.875rem;
   color: hsl(0, 0%, 100%);
-  font-weight: 600;
   margin-bottom: 12px;
 }
 
