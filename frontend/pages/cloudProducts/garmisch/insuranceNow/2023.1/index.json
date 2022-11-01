@@ -36,15 +36,15 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "in20222app"
+          "id": "in20231app"
         },
         {
           "label": "Consumer Sales Portal Features",
-          "id": "in20222csalesp"
+          "id": "in20231csalesp"
         },
         {
           "label": "Consumer Service Portal Features",
-          "id": "in20222cservicep"
+          "id": "in20231cservicep"
         },
         {
           "label": "Excel Designed Rating",
@@ -58,15 +58,15 @@
       "items": [
         {
           "label": "AppReader Integration",
-          "id": "in20222appreaderinteg"
+          "id": "in20231appreaderinteg"
         },
         {
           "label": "Business Intelligence Integration",
-          "id": "in20222xbiintegdraft"
+          "id": "in20231xbiintegdraft"
         },
         {
           "label": "API Reference",
-          "id": "in20222apiref"
+          "id": "in20231apiref"
         }
       ]
     },
@@ -96,7 +96,7 @@
         },
         {
           "label": "Portal Development",
-          "id": "in20222portaldev"
+          "id": "in20231portaldev"
         }
       ]
     },
@@ -106,47 +106,47 @@
       "items": [
         {
           "label": "Billing Configuration Reference",
-          "id": "in20222billref"
+          "id": "in20231billref"
         },
         {
           "label": "Core Configuration",
-          "id": "in20222config"
+          "id": "in20231config"
         },
         {
           "label": "Common Functionality Configuration Reference",
-          "id": "in20222xcommonconfigdraft"
+          "id": "in20231xcommonconfigdraft"
         },
         {
           "label": "Consumer Sales Portal Configuration",
-          "id": "in20222xcsalespconfigdraft"
+          "id": "in20231xcsalespconfigdraft"
         },
         {
           "label": "Consumer Service Portal Configuration",
-          "id": "in20222xcservicepconfigdraft"
+          "id": "in20231xcservicepconfigdraft"
         },
         {
           "label": "Claims Configuration Reference",
-          "id": "in20222claimsconfig"
+          "id": "in20231claimsconfig"
         },
         {
           "label": "Studio Configuration",
-          "id": "in20222studio"
+          "id": "in20231studio"
         },
         {
           "label": "Product Attribute Reference",
-          "id": "in20222prodattref"
+          "id": "in20231prodattref"
         },
         {
           "label": "Provisioning Portal",
-          "id": "in20222provportal"
+          "id": "in20231provportal"
         },
         {
           "label": "Provisioning Portal",
-          "id": "in20222provportalinternal"
+          "id": "in20231provportalinternal"
         },
         {
           "label": "Underwriting Configuration Reference",
-          "id": "in20222uwconfig"
+          "id": "in20231uwconfig"
         }
       ]
     },
