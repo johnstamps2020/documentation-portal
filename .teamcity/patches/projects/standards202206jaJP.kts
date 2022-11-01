@@ -14,8 +14,8 @@ changeProject(RelativeId("standards202206jaJP")) {
     features {
         add {
             activeStorage {
-                id = "PROJECT_EXT_373"
-                activeStorageID = "PROJECT_EXT_53"
+                id = "PROJECT_EXT_368"
+                activeStorageID = "DefaultStorage"
             }
         }
     }
