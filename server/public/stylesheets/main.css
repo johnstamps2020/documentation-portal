@@ -274,13 +274,144 @@ div.items {
 }
 
 .threeCards div.items {
-  /*display: grid;*/
-  /*grid-template-columns: repeat(auto-fit, minmax(300px, 0.5fr));*/
-  /*column-gap: 16px;*/
-  /*row-gap: 16px;*/
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+.skiRelease .pageIntro {
+  max-width: var(--content-width);
+  margin: 0 auto 1.5rem auto;
+}
+
+.skiRelease .skiWelcomeSub {
+  color: #fff;
+  font-size: 14px;
+  margin-top: .5rem
+}
+
+.skiRelease .pageControllers,
+.skiRelease .pageControllers #pageSelector {
+  font-size: .875rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.skiRelease .pageControllers #pageSelector {
+  color: #28333F;
+  margin-bottom: 1.5rem;
+}
+
+.skiRelease .pageControllers a.selfManagedLink {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.skiRelease .pageControllers .skiReleaseOverview {
+  margin-top: 1.5rem;
+  flex-grow: 1;
+  width: 300px;
+}
+
+.skiReleaseOverview.cardShadow.categoryCard {
+  flex-grow: 1;
+}
+
+.skiRelease .pageControllers .skiReleaseOverview img.skiBadgeLg {
+  width: 160px;
+  height: 160px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem;
+}
+
+.skiRelease .skiReleaseOverview.categoryCard .label {
+  border-bottom: none;
+  margin-bottom: 4px;
+}
+
+.skiReleaseDesc ul {
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.skiRelease .skiReleaseOverview.categoryCard a:has(button) {
+  margin-top: auto;
+  width: fit-content;
+}
+.skiRelease .skiReleaseOverview.categoryCard button {
+  padding: .375rem 1.25rem .375rem 1.25rem;
+  background-color: var(--clr-GW-BLUE);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  margin-top: auto;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.skiRelease .skiReleaseOverview.categoryCard button:hover {
+  background-color: var(--clr-GW-BLUE-HOVER);
+
+}
+
+.skiRelease .pageBody {
+  display: flex;
+  /* grid-template-columns: 300px 1fr; */
+  column-gap: 56px;
+}
+
+/* removed in ejs instead
+/* .skiRelease #platformToggle {
+  display: none;
+}
+
+.skiRelease .pageHero {
+  display: none;
+} */
+
+.skiRelease #pageSelector {
+  width: 300px;
+  background-position: right 6px top 0px, 0 0;
+}
+
+.skiRelease div.content {
+  padding: 21px 0 0 0;
+  column-gap: 56px;
+}
+
+.skiRelease div.items {
+  display: grid;
+  grid-template-columns: 288px 288px;
+  column-gap: 24px;
+  row-gap: 32px;
+}
+
+@media screen and (max-width: 1005px) {
+.skiRelease div.items {
+    display: grid;
+    grid-template-columns: 288px;
+    column-gap: 24px;
+    row-gap: 32px;
+  }
+}
+
+.skiRelease .categoryCard .label {
+  font-size: 1.25rem;
+  border-bottom: 1px solid #D1D9E2;
+  padding-bottom: 0.5rem;
+}
+
+.skiRelease .categoryCard a {
+  font-size: .875rem;
+  color: #28333F;
+  font-weight: 600;
+}
+
+main.skiRelease .sidebar,
+main.skiRelease .sidebar .categoryCard {
+  width: 288px;
 }
 
 .threeCards div.items > .categoryCard {

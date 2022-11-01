@@ -4,14 +4,22 @@
 <body>
 <%- include('parts/header') %>
 <main class="<%= pageContent.class || '' %>">
+    <% if (pageContent.title.toLowerCase() === 'flaine ') { %>
+                <%- include('parts/ski/intro') %>
+        <% } %>
     <div class="pageBody">
         <div class="pageControllers">
-            <%- include('parts/platform-toggle') %>
-            <div class="pageHero">
-                <%- include('parts/breadcrumbs') %>
-                <h1><%= pageContent.title %></h1>
-            </div>
+            <% if (pageContent.title.toLowerCase() !== 'flaine ') { %>
+                <%- include('parts/platform-toggle') %>
+                <div class="pageHero">
+                    <%- include('parts/breadcrumbs') %>
+                    <h1><%= pageContent.title %></h1>
+                </div>
+            <% } %>
             <%- include('parts/page-selector') %>
+            <% if (pageContent.title.toLowerCase() === 'flaine ') { %>
+                <%- include('parts/ski/flaine') %>
+            <% } %>
         </div>
         <div class="content">
             <% function createItemElement(className, href, label, itemItems, isPubliclyAvailable, isInternal) { %>

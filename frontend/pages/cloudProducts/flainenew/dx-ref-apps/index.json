@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Flaine ",
+  "title": "Digital Reference Applications",
   "template": "page",
   "class": "blue-theme flaine flainenew threeCards",
   "items": [
