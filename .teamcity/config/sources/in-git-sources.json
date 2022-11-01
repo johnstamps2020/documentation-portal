@@ -30,6 +30,13 @@
       "branch": "release/2021.2DOBSON"
     },
     {
+      "id": "srcin20231apiref",
+      "title": "InsuranceNow API Reference Garmisch",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurance-now-api-ref.git",
+      "branch": "release/garmisch"
+    },
+    {
       "id": "srcin20222apiref",
       "title": "InsuranceNow API Reference Flaine",
       "sourceType": "git",
