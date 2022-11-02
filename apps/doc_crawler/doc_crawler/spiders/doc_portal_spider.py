@@ -35,7 +35,7 @@ class DocPortalSpider(scrapy.Spider):
     docs = []
     app_base_url = ''
     doc_s3_url = ''
-    excluded_types = ['.pdf', '.txt', '.xmind', '.xrb']
+    excluded_types = ['.pdf', '.txt', '.xmind', '.xrb', '.svg']
     handle_httpstatus_list = [404]
     report_broken_links = os.environ.get('REPORT_BROKEN_LINKS', 'yes').casefold() in ['yes', '']
     report_short_topics = os.environ.get('REPORT_SHORT_TOPICS', 'yes').casefold() in ['yes', '']
