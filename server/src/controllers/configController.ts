@@ -9,6 +9,15 @@ import { Release } from '../model/entity/Release';
 import { integer } from '@elastic/elasticsearch/api/types';
 import { FindOneAndDeleteOptions, FindOptionsWhere } from 'typeorm';
 import { runningInDevMode } from './utils/serverUtils';
+import { Environment } from '../types/legacyConfig';
+import { readdirSync, lstatSync, readFileSync } from 'fs';
+import { join, resolve } from 'path';
+import { Build } from '../model/entity/Build';
+import { ProductName } from '../model/entity/ProductName';
+import { ProductPlatform } from '../model/entity/ProductPlatform';
+import { ProductVersion } from '../model/entity/ProductVersion';
+import { Resource } from '../model/entity/Resource';
+import { Source } from '../model/entity/Source';
 
 function optionsAreValid(options: {}) {
   return (
@@ -199,9 +208,9 @@ export async function getDocumentMetadataById(docId: string) {
   }
 }
 
-function readFilesInDir(dirPath: string, deployEnv: Environment): DocConfig[] {
+function readFilesInDir(dirPath: string, deployEnv: Environment): Doc[] {
   try {
-    const localConfig: DocConfig[] = [];
+    const localConfig: Doc[] = [];
     const itemsInDir = readdirSync(dirPath);
     for (const item of itemsInDir) {
       const itemPath = join(dirPath, item);
@@ -209,8 +218,10 @@ function readFilesInDir(dirPath: string, deployEnv: Environment): DocConfig[] {
         localConfig.push(...readFilesInDir(itemPath, deployEnv));
       } else {
         const config = readFileSync(itemPath, 'utf-8');
-        const json: ServerConfig = JSON.parse(config);
-        const docs = json.docs.filter(d => d.environments.includes(deployEnv));
+        const json: any = JSON.parse(config);
+        const docs = json.docs.filter((d: any) =>
+          d.environments.includes(deployEnv)
+        );
         localConfig.push(...docs);
       }
     }
@@ -340,14 +351,14 @@ export async function putConfigInDatabase(): Promise<{
       await AppDataSource.getRepository(Build).save(docBuild);
 
       // FIXME: Test data, remove after testing
-      const docConfig = new DocConfig();
+      const docConfig = new Doc();
       docConfig.id = doc.id;
       docConfig.url = doc.url;
       docConfig.title = doc.title;
       docConfig.internal = doc.internal;
       docConfig.earlyAccess = doc.earlyAccess;
       docConfig.displayOnLandingPages = doc.displayOnLandingPages;
-      docConfig.environments = doc.environments;
+      // docConfig.environments = doc.environments;
       docConfig.indexForSearch = doc.indexForSearch;
       docConfig.releases = [ElysianRelease, FlaineRelease];
       docConfig.products = [BillingCenterProduct];
@@ -357,7 +368,7 @@ export async function putConfigInDatabase(): Promise<{
     }
 
     const saveResult = await AppDataSource.manager.save(
-      DocConfig,
+      docConfig,
       updatedLocalConfig
     );
     return {
