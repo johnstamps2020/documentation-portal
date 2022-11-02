@@ -45,10 +45,7 @@ class DocPortalSpider(scrapy.Spider):
             doc['start_url'] = urljoin(self.doc_s3_url, doc['url'])
             yield Request(doc['start_url'], self.parse, cb_kwargs={'doc_object': doc})
 
-    def parse(self, response, **cb_kwargs):
-        def replace_s3_url_with_app_base_url(url: str):
-            return url.replace(self.doc_s3_url, self.app_base_url)
-
+    def parse(self, response: scrapy.http.Response, **cb_kwargs):
         doc_object = cb_kwargs.get('doc_object')
         doc_object_id = doc_object['id']
         doc_object_title = doc_object['title']
@@ -61,6 +58,16 @@ class DocPortalSpider(scrapy.Spider):
         doc_object_subject = doc_object_metadata.get('subject')
         doc_object_public = doc_object['public']
         doc_object_internal = doc_object['internal']
+
+        def replace_s3_url_with_app_base_url(url: str) -> str:
+            return url.replace(self.doc_s3_url, self.app_base_url)
+
+        def topic_is_short(word_count: int) -> bool:
+            if self.report_short_topics and word_count < 100:
+                contains_redirect_script = response.xpath('//script[@src="/scripts/html5skip.js"]')
+                if not contains_redirect_script:
+                    return True
+            return False
 
         if response.status == 404 and self.report_broken_links:
             yield BrokenLink(doc_id=doc_object_id,
@@ -126,7 +133,7 @@ class DocPortalSpider(scrapy.Spider):
                              indexed_date=index_entry_date)
 
             number_of_words = textstat.lexicon_count(index_entry_body)
-            if number_of_words < 100 and self.report_short_topics:
+            if topic_is_short(number_of_words):
                 yield ShortTopic(doc_id=doc_object_id,
                                  doc_title=doc_object_title,
                                  href=index_entry_href,
