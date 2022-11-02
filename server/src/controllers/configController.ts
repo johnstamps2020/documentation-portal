@@ -8,16 +8,9 @@ import { Product } from '../model/entity/Product';
 import { Release } from '../model/entity/Release';
 import { integer } from '@elastic/elasticsearch/api/types';
 import { FindOneAndDeleteOptions, FindOptionsWhere } from 'typeorm';
-import { runningInDevMode } from './utils/serverUtils';
 import { Environment } from '../types/legacyConfig';
 import { readdirSync, lstatSync, readFileSync } from 'fs';
 import { join, resolve } from 'path';
-import { Build } from '../model/entity/Build';
-import { ProductName } from '../model/entity/ProductName';
-import { ProductPlatform } from '../model/entity/ProductPlatform';
-import { ProductVersion } from '../model/entity/ProductVersion';
-import { Resource } from '../model/entity/Resource';
-import { Source } from '../model/entity/Source';
 
 function optionsAreValid(options: {}) {
   return (
@@ -248,141 +241,6 @@ async function fetchConfig() {
   const config = await result.json();
 
   return config.docs;
-}
-
-export async function putConfigInDatabase(): Promise<{
-  status: integer;
-  body: any;
-}> {
-  try {
-    const deployEnv =
-      process.env.DEPLOY_ENV === 'omega2-andromeda'
-        ? 'prod'
-        : process.env.DEPLOY_ENV;
-    console.log(`Getting local config for the "${deployEnv}" environment`);
-
-    const selectedEnv = deployEnv as Environment;
-
-    const localConfigDir = resolve(
-      `${__dirname}/../../../.teamcity/config/docs`
-    );
-
-    const localConfig = readFilesInDir(localConfigDir, selectedEnv);
-
-    // FIXME: Test data, remove after testing
-    const BillingCenterName = new ProductName();
-    BillingCenterName.name = 'BillingCenter';
-    await AppDataSource.getRepository(ProductName).save(BillingCenterName);
-    const BillingCenterVersion = new ProductVersion();
-    BillingCenterVersion.name = '2022.05';
-    await AppDataSource.getRepository(ProductVersion).save(
-      BillingCenterVersion
-    );
-    const BillingCenterPlatform = new ProductPlatform();
-    BillingCenterPlatform.name = 'Cloud';
-    await AppDataSource.getRepository(ProductPlatform).save(
-      BillingCenterPlatform
-    );
-
-    // FIXME: Test data, remove after testing
-    const BillingCenterProduct = new Product();
-    BillingCenterProduct.name = BillingCenterName;
-    BillingCenterProduct.version = BillingCenterVersion;
-    BillingCenterProduct.platform = BillingCenterPlatform;
-    await AppDataSource.getRepository(Product).save(BillingCenterProduct);
-
-    // FIXME: Test data, remove after testing
-    const FlaineRelease = new Release();
-    FlaineRelease.name = 'Flaine';
-    const ElysianRelease = new Release();
-    ElysianRelease.name = 'Elysian';
-    await AppDataSource.getRepository(Release).save([
-      ElysianRelease,
-      FlaineRelease,
-    ]);
-
-    // FIXME: Test data, remove after testing
-    const isSrc = new Source();
-    isSrc.name = 'InsuranceSuite Source';
-    isSrc.type = 'git';
-    isSrc.gitUrl =
-      'ssh://git@stash.guidewire.com/docsources/insurancesuite.git';
-    isSrc.gitBranch = 'release/elysian';
-    const isResourcesSrc = new Source();
-    isResourcesSrc.name = 'InsuranceSuite Resources Source';
-    isResourcesSrc.type = 'git';
-    isResourcesSrc.gitUrl =
-      'ssh://git@stash.guidewire.com/docsources/insurancesuite-resources.git';
-    isResourcesSrc.gitBranch = 'release/elysian';
-    await AppDataSource.getRepository(Source).save([isSrc, isResourcesSrc]);
-
-    // FIXME: Test data, remove after testing
-    const isResource1 = new Resource();
-    isResource1.sourceFolder = 'resource1/src';
-    isResource1.targetFolder = 'resource1/target';
-    isResource1.source = isResourcesSrc;
-    const isResource2 = new Resource();
-    isResource2.sourceFolder = 'resource2/src';
-    isResource2.targetFolder = 'resource2/target';
-    isResource2.source = isResourcesSrc;
-    await AppDataSource.getRepository(Resource).save([
-      isResource1,
-      isResource2,
-    ]);
-
-    let updatedLocalConfig: any[];
-    updatedLocalConfig = [];
-    for await (const doc of localConfig) {
-      // console.log(
-      //   `ABOUT TO SAVE DOC ${localConfig.indexOf(doc) + 1} of ${
-      //     localConfig.length
-      //   }`,
-      //   doc
-      // );
-
-      // FIXME: Test data, remove after testing
-      const docBuild = new Build();
-      docBuild.type = 'dita';
-      docBuild.source = isSrc;
-      docBuild.filter = `${doc.id}.ditaval`;
-      docBuild.root = 'main.ditamap';
-      docBuild.indexRedirect = true;
-      docBuild.resources = [isResource1, isResource2];
-      await AppDataSource.getRepository(Build).save(docBuild);
-
-      // FIXME: Test data, remove after testing
-      const docConfig = new Doc();
-      docConfig.id = doc.id;
-      docConfig.url = doc.url;
-      docConfig.title = doc.title;
-      docConfig.internal = doc.internal;
-      docConfig.earlyAccess = doc.earlyAccess;
-      docConfig.displayOnLandingPages = doc.displayOnLandingPages;
-      // docConfig.environments = doc.environments;
-      docConfig.indexForSearch = doc.indexForSearch;
-      docConfig.releases = [ElysianRelease, FlaineRelease];
-      docConfig.products = [BillingCenterProduct];
-      docConfig.build = docBuild;
-
-      updatedLocalConfig.push(docConfig);
-    }
-
-    const saveResult = await AppDataSource.manager.save(
-      docConfig,
-      updatedLocalConfig
-    );
-    return {
-      status: 200,
-      body: saveResult,
-    };
-  } catch (err) {
-    return {
-      status: 500,
-      body: {
-        message: `Cannot put config in DB: ${(err as Error).message}`,
-      },
-    };
-  }
 }
 
 export async function getDocByUrl(url: string) {

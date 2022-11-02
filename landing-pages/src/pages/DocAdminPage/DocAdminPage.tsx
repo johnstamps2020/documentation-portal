@@ -1,6 +1,6 @@
 import React from "react";
 import { createContext, useEffect, useState } from "react";
-import { DocConfig } from "@documentation-portal/dist/model/entity/DocConfig";
+import { Doc } from "@documentation-portal/dist/model/entity/Doc";
 import { Build } from "@documentation-portal/dist/model/entity/Build";
 import Button from "@mui/material/Button";
 import Layout from "../../components/Layout/Layout";
@@ -16,27 +16,26 @@ import Box from "@mui/material/Box";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { adminDocTheme } from "../../themes/theme";
 
-const emptyDoc: DocConfig = {
+const emptyDoc: Doc = {
   id: "",
   title: "",
   url: "",
   body: "",
   products: [new Product()],
   releases: [new Release()],
-  environments: "",
   displayOnLandingPages: false,
   indexForSearch: false,
   public: false,
   internal: false,
   earlyAccess: false,
   build: new Build(),
-  subjects: "",
-  categories: "",
+  subjects: [""],
+  isInProduction: false
 };
 
 export default function DocAdminPage() {
-  const [docData, setDocData] = useState<DocConfig[]>();
-  const [memorizedDoc, memorizeDoc] = useState<DocConfig>(emptyDoc);
+  const [docData, setDocData] = useState<Doc[]>();
+  const [memorizedDoc, memorizeDoc] = useState<Doc>(emptyDoc);
   const [showForm, setShowForm] = useState(false);
   const [snack, setSnack] = useState({
     message: "",
@@ -53,7 +52,7 @@ export default function DocAdminPage() {
   }, []);
 
   const getDocData = async () => {
-    const response = await fetch(`/safeConfig/entity/DocConfig/all`);
+    const response = await fetch(`/safeConfig/entity/Doc/all`);
     const jsonData = await response.json();
     setDocData(await jsonData);
   };
@@ -67,7 +66,7 @@ export default function DocAdminPage() {
     const data = {
       id: id,
     };
-    const response = await fetch(`/safeConfig/entity/DocConfig?id=${id}`, {
+    const response = await fetch(`/safeConfig/entity/Doc?id=${id}`, {
       method: "DELETE",
       headers: {
         Accept: "application/form-data",
@@ -91,7 +90,7 @@ export default function DocAdminPage() {
     }
   };
 
-  const updateDoc = async (doc: DocConfig) => {
+  const updateDoc = async (doc: Doc) => {
     setSnack({
       message: "",
       color: "",
@@ -103,7 +102,6 @@ export default function DocAdminPage() {
         id: doc.id,
         title: doc.title,
         url: doc.url,
-        environments: [doc.environments],
         displayOnLandingPages: doc.displayOnLandingPages,
         indexForSearch: doc.indexForSearch,
         public: doc.public,
@@ -117,7 +115,7 @@ export default function DocAdminPage() {
       };
 
       const response = await fetch(
-        `/safeConfig/entity/DocConfig?id=${doc.id}`,
+        `/safeConfig/entity/Doc?id=${doc.id}`,
         {
           method: "PUT",
           body: JSON.stringify(data),
@@ -151,7 +149,6 @@ export default function DocAdminPage() {
         id: doc.id,
         title: doc.title,
         url: doc.url,
-        environments: [doc.environments],
         displayOnLandingPages: doc.displayOnLandingPages,
         indexForSearch: doc.indexForSearch,
         public: doc.public,
@@ -163,7 +160,7 @@ export default function DocAdminPage() {
         categories: null,
         body: doc.body,
       };
-      const response = await fetch(`/safeConfig/entity/DocConfig?id=`, {
+      const response = await fetch(`/safeConfig/entity/Doc?id=`, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -197,7 +194,7 @@ export default function DocAdminPage() {
     setShowForm(!showForm);
   }
 
-  const showFormAndSetVar = (doc: DocConfig) => {
+  const showFormAndSetVar = (doc: Doc) => {
     handleOpen();
     memorizeDoc(doc);
   };
@@ -214,7 +211,7 @@ export default function DocAdminPage() {
         <div>
           <div style={{ columns: 3 }}>
             {docData ? (
-              docData.map((doc: DocConfig) => (
+              docData.map((doc: Doc) => (
                 <div
                   key={doc.id}
                   style={{
@@ -236,7 +233,6 @@ export default function DocAdminPage() {
                   <div>Is internal: {String(doc.internal)}</div>
                   <div>Early access: {String(doc.earlyAccess)}</div>
                   <div>Subjects: {doc.subjects}</div>
-                  <div>Categories: {doc.categories}</div>
                   <div>Body: {doc.body}</div>
                   <Button color="error" onClick={() => deleteDoc(doc.id)}>
                     Delete
