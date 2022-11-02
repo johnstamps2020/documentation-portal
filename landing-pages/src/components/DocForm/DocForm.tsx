@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import { DocConfig } from "@documentation-portal/dist/model/entity/DocConfig";
+import { Doc } from "@documentation-portal/dist/model/entity/Doc";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -21,9 +21,9 @@ const style = {
 };
 
 type DocFormProps = {
-  updateDoc: (doc: DocConfig) => Promise<void>;
-  docToDisplay: DocConfig;
-  setDocToDisplay: React.Dispatch<React.SetStateAction<DocConfig>>;
+  updateDoc: (doc: Doc) => Promise<void>;
+  docToDisplay: Doc;
+  setDocToDisplay: React.Dispatch<React.SetStateAction<Doc>>;
   handleClose: () => void;
 };
 

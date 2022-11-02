@@ -1800,8 +1800,8 @@ __metadata:
   linkType: hard
 
 "@documentation-portal@file:../server::locator=landing-pages%40workspace%3Alanding-pages":
-  version: 2.29.20
-  resolution: "@documentation-portal@file:../server#../server::hash=f2cba7&locator=landing-pages%40workspace%3Alanding-pages"
+  version: 2.29.22
+  resolution: "@documentation-portal@file:../server#../server::hash=b880cc&locator=landing-pages%40workspace%3Alanding-pages"
   dependencies:
     "@elastic/elasticsearch": ^7.17.0
     "@okta/jwt-verifier": ^2.3.0
@@ -1831,7 +1831,7 @@ __metadata:
     msw: ^0.47.3
     node-fetch: ^2.6.7
     openid-client: ^4.9.1
-    passport: 0.6.0
+    passport: 0.5.0
     passport-saml: 3.2.2
     pg: ^8.8.0
     prettier: ^1.19.1
@@ -1840,7 +1840,7 @@ __metadata:
     serve-favicon: ^2.5.0
     typeorm: ^0.3.9
     winston: ^3.7.2
-  checksum: e8965c2c0c3ba6bbede05a7fb4e3662da9cb7da5e5f5f9396bd14074e5ac29c2a09c7dd9582f9f62cda4e8d6909cedcb0c33bdde0a7c8d0eb2cfc32f212abb97
+  checksum: 1f2332dce94f572e1a3be3223123cfe0aeb33836f80cad46c35e2a07f88e25f04a86ccb10fe5c6cb0dfd0953b913b77f36bfec571ad1903b594873ac9711f267
   languageName: node
   linkType: hard
 
@@ -12477,14 +12477,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"passport@npm:0.6.0":
-  version: 0.6.0
-  resolution: "passport@npm:0.6.0"
+"passport@npm:0.5.0":
+  version: 0.5.0
+  resolution: "passport@npm:0.5.0"
   dependencies:
     passport-strategy: 1.x.x
     pause: 0.0.1
-    utils-merge: ^1.0.1
-  checksum: ef932ad671d50de34765c7a53cd1e058d8331a82a6df09265a9c6c1168911aee4a7b5215803d0101110ab7f317e096b4954ca7e18fb2c33b9929f0bd17dbe159
+  checksum: 5a3db4b420c0255fb8fdfe26005529582ea5697bff5c566ea02ec7e93c5a542f16b298c5545b0e7b5eb4db04eb4d15885948040adf9a98ed77dafb25ed155b7c
   languageName: node
   linkType: hard
 
@@ -14925,7 +14924,7 @@ __metadata:
     node-mocks-http: ^1.11.0
     nodemon: ^2.0.6
     openid-client: ^4.9.1
-    passport: 0.6.0
+    passport: 0.5.0
     passport-saml: 3.2.2
     pg: ^8.8.0
     postcss: ^8.4.12
@@ -16529,7 +16528,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"utils-merge@npm:1.0.1, utils-merge@npm:^1.0.1":
+"utils-merge@npm:1.0.1":
   version: 1.0.1
   resolution: "utils-merge@npm:1.0.1"
   checksum: c81095493225ecfc28add49c106ca4f09cdf56bc66731aa8dabc2edbbccb1e1bfe2de6a115e5c6a380d3ea166d1636410b62ef216bb07b3feb1cfde1d95d5080
