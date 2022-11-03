@@ -866,6 +866,24 @@
       "earlyAccess": false
     },
     {
+      "id": "is202209fnoltemplate",
+      "title": "Claims Intake FNOL Template",
+      "url": "cloud/is/202209/fnoltemplate",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter", "PolicyCenter"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
       "id": "ccapirefflaine",
       "title": "Cloud API Reference",
       "url": "cloud/cc/202209/apiref",
