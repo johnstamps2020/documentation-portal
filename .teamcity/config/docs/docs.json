@@ -6901,6 +6901,22 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "doctoolss3manager",
+      "title": "Doctools S3 manager",
+      "url": "doctools/s3-manager",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Product Adoption Resources"],
+        "version": ["latest"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "earlyAccess": false,
+      "internal": true,
+      "public": false
     }
   ]
 }

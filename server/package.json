@@ -16,6 +16,7 @@
   "dependencies": {
     "@elastic/elasticsearch": "^7.17.0",
     "@okta/jwt-verifier": "^2.3.0",
+    "aws-sdk": "^2.1241.0",
     "axios": "^0.21.4",
     "body-parser": "^1.20.0",
     "cookie-parser": "~1.4.6",
@@ -24,6 +25,7 @@
     "debug": "~2.6.9",
     "ejs": "^3.1.8",
     "express": "^4.17.3",
+    "express-fileupload": "^1.4.0",
     "express-http-context": "^1.2.3",
     "express-winston": "^4.2.0",
     "harmon": "^1.4.4",

@@ -1791,6 +1791,11 @@
       "buildType": "yarn",
       "srcId": "surepathmethodologymainsrc",
       "docId": "surepathmethodologymain"
+    },
+    {
+      "buildType": "yarn",
+      "srcId": "doctoolss3managersrc",
+      "docId": "doctoolss3manager"
     }
   ]
 }

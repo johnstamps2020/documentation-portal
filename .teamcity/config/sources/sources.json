@@ -1118,6 +1118,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/surepath-methodology.git",
       "branch": "main"
+    },
+    {
+      "id": "doctoolss3managersrc",
+      "title": "Doctools S3 manager main",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/s3-file-manager.git",
+      "branch": "main"
     }
   ]
 }

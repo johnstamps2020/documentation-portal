@@ -67,6 +67,7 @@ const searchRouter = require('./routes/search');
 const unauthorizedRouter = require('./routes/unauthorized');
 const internalRouter = require('./routes/internal');
 const supportRouter = require('./routes/support');
+const s3Router = require('./routes/s3');
 const missingPageRouter = require('./routes/404');
 const userRouter = require('./routes/user');
 const configRouter = require('./routes/config');
@@ -123,6 +124,7 @@ app.use('/jira', jiraRouter);
 app.use('/lrs', lrsRouter);
 app.use('/recommendations', recommendationsRouter);
 app.use('/support', supportRouter);
+app.use('/s3', s3Router);
 
 app.use('/portal-config/*', (req, res) => {
   res.redirect('/unauthorized');
