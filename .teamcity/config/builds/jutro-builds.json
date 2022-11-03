@@ -655,13 +655,6 @@
           "value": "/jutro/a11y/latest"
         }
       ]
-    },
-    {
-      "buildType": "yarn",
-      "docId": "jutrohomeplatformbugstats",
-      "srcId": "srcjutrohomeplatformbugstats",
-      "nodeImageVersion": "16.18.0",
-      "workingDir": "website"
     }
   ]
 }
