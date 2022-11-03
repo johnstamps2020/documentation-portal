@@ -12,7 +12,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "configurationguide.ditamap",
+      "root": "IPAConfigurationGuide.ditamap",
       "srcId": "ipacloud10src",
       "docId": "ipacloud10config",
       "indexRedirect": true
