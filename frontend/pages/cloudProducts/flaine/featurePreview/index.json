@@ -87,12 +87,16 @@
       ]
     },
     {
-      "label": "Advanced Product Designer for Claims",
+      "label": "Claims",
       "class": "subject development",
       "items": [
         {
           "label": "APD for Claims",
           "id": "apdclaims"
+        },
+        {
+          "label": "Claims Intake FNOL Template",
+          "id": "is202209fnoltemplate"
         }
       ]
     },

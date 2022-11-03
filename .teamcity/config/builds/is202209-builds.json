@@ -392,6 +392,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "ClaimsIntakeFNOLTemplate.ditamap",
+      "srcId": "is202209src",
+      "docId": "is202209fnoltemplate",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "OverviewCloudIntegration.ditamap",
       "srcId": "is202209src",
       "docId": "is202209integoverview",
