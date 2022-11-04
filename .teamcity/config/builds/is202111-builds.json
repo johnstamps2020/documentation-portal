@@ -36,8 +36,8 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
-      "root": "ReleaseNotesBook-dobson.ditamap",
-      "srcId": "is202111rnsrc",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "is202111src",
       "docId": "isbc202111releasenotes",
       "indexRedirect": true,
       "resources": [
@@ -160,8 +160,8 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
-      "root": "ReleaseNotesBook-dobson.ditamap",
-      "srcId": "is202111rnsrc",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "is202111src",
       "docId": "iscc202111releasenotes",
       "indexRedirect": true,
       "resources": [
@@ -300,8 +300,8 @@
     {
       "buildType": "dita",
       "filter": "IS-PC-Cloud-Release.ditaval",
-      "root": "ReleaseNotesBook-dobson.ditamap",
-      "srcId": "is202111rnsrc",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "is202111src",
       "docId": "ispc202111releasenotes",
       "indexRedirect": true,
       "resources": [
