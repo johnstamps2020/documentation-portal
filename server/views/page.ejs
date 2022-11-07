@@ -4,9 +4,6 @@
 <body>
 <%- include('parts/header') %>
 <main class="<%= pageContent.class || '' %>">
-    <% if (pageContent.title.toLowerCase() === 'flaine ') { %>
-                <%- include('parts/ski/intro') %>
-        <% } %>
     <div class="pageBody">
         <div class="pageControllers">
             <% if (pageContent.title.toLowerCase() !== 'flaine ') { %>
@@ -22,6 +19,9 @@
             <% } %>
         </div>
         <div class="content">
+            <% if (pageContent.title.toLowerCase() === 'flaine ') { %>
+                <%- include('parts/ski/intro') %>
+            <% } %>
             <% function createItemElement(className, href, label, itemItems, isPubliclyAvailable, isInternal) { %>
                 <% if (href || itemItems.length > 0) { %>
                     <div class="<%= className || '' %>">
