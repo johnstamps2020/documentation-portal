@@ -290,8 +290,8 @@ main.skiRelease {
 }
 
 .skiRelease .pageIntro {
-  max-width: var(--content-width);
-  margin: 0 auto 1.5rem auto;
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
 .skiRelease .skiWelcomeSub {
@@ -320,12 +320,7 @@ main.skiRelease {
 
 .skiRelease .pageControllers .skiReleaseOverview {
   margin-top: 1.5rem;
-  flex-grow: 1;
   width: 300px;
-}
-
-.skiReleaseOverview.cardShadow.categoryCard {
-  flex-grow: 1;
 }
 
 .skiRelease .pageControllers .skiReleaseOverview img.skiBadgeLg {
@@ -338,16 +333,24 @@ main.skiRelease {
 
 .skiRelease .skiReleaseOverview.categoryCard .label {
   border-bottom: none;
-  margin-bottom: 4px;
+  margin: 0 auto .25rem auto;
+}
+
+.skiReleaseDesc .skiReleaseDescIntro {
+  color: var(--clr-GW-BLUE);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .skiReleaseDesc ul {
-  margin-top: 1rem;
   margin-left: 1rem;
 }
 
 .skiRelease .skiReleaseOverview.categoryCard a:has(button) {
-  margin-top: auto;
+  margin-top: 3.75rem;
+  margin-left: auto;
+  margin-right: auto;
   width: fit-content;
 }
 .skiRelease .skiReleaseOverview.categoryCard button {
@@ -356,7 +359,6 @@ main.skiRelease {
   border: none;
   border-radius: 4px;
   color: #fff;
-  margin-top: auto;
   width: fit-content;
   cursor: pointer;
 }
@@ -368,18 +370,9 @@ main.skiRelease {
 
 .skiRelease .pageBody {
   display: flex;
-  /* grid-template-columns: 300px 1fr; */
   column-gap: 56px;
 }
 
-/* removed in ejs instead
-/* .skiRelease #platformToggle {
-  display: none;
-}
-
-.skiRelease .pageHero {
-  display: none;
-} */
 
 .skiRelease #pageSelector {
   width: 300px;
@@ -387,7 +380,7 @@ main.skiRelease {
 }
 
 .skiRelease div.content {
-  padding: 21px 0 0 0;
+  padding: 0;
   column-gap: 56px;
 }
 
