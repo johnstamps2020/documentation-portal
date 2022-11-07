@@ -1,8 +1,19 @@
 .embed-container {
+    --width: 100%;
     position: relative;
     overflow: hidden;
-    width: 100%;
-    padding-top: 56.25%;
+    width: var(--width);
+    padding-top: calc(var(--width) * 9 / 16);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.embed-container .brightcove {
+    --width: 70%;
+    position: relative;
+    overflow: hidden;
+    width: var(--width);
+    padding-top: calc(var(--width) * 9 / 16);
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
