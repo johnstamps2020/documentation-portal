@@ -1,0 +1,74 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Guidewire Testing",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Documentation",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Guidewire Testing Framework Supported Software Components (Support Matrix)",
+          "id": "testingframeworksmatrixgarmisch"
+        },
+        {
+          "label": "Guidewire Testing Framework Release Notes",
+          "id": "testingframeworksrngarmisch"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Guidewire Testing Framework Installation",
+          "id": "testingframeworksinstallgarmisch"
+        }
+      ]
+    },
+    {
+      "label": "Application-specific Capabilities",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "InsuranceSuite Unit Testing",
+          "id": "is202302testing"
+        }
+      ]
+    },
+    {
+      "label": "Test Process Capabilities",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Test Management",
+          "id": "testingframeworksmgmtgarmisch"
+        }
+      ]
+    },
+    {
+      "label": "Cross-application Capabilities",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "API Testing",
+          "id": "testingframeworksapigarmisch"
+        },
+        {
+          "label": "Load and Performance Testing",
+          "id": "testingframeworksloadgarmisch"
+        },
+        {
+          "label": "User Interface Testing",
+          "id": "testingframeworksuigarmisch"
+        },
+        {
+          "label": "User Interface Accessibility Testing",
+          "id": "is202302access"
+        }
+      ]
+    }
+  ]
+}
