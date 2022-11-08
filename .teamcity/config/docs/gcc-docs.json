@@ -136,7 +136,7 @@
       "title": "Cloud Console Guide GW Admin",
       "url": "cloud/gcc-guide/gw-admin/latest",
       "displayOnLandingPages": false,
-      "indexForSearch": false,
+      "indexForSearch": true,
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
