@@ -1,15 +1,15 @@
-import jetbrains.buildServer.configs.kotlin.v2019_2.*
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.CommitStatusPublisher
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.DockerSupportFeature
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.SshAgent
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.*
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.ScheduleTrigger
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
-import jetbrains.buildServer.configs.kotlin.v2019_2.ui.add
-import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
+import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildFeatures.CommitStatusPublisher
+import jetbrains.buildServer.configs.kotlin.buildFeatures.DockerSupportFeature
+import jetbrains.buildServer.configs.kotlin.buildFeatures.PullRequests
+import jetbrains.buildServer.configs.kotlin.buildFeatures.SshAgent
+import jetbrains.buildServer.configs.kotlin.buildSteps.*
+import jetbrains.buildServer.configs.kotlin.triggers.ScheduleTrigger
+import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
+import jetbrains.buildServer.configs.kotlin.triggers.schedule
+import jetbrains.buildServer.configs.kotlin.triggers.vcs
+import jetbrains.buildServer.configs.kotlin.ui.add
+import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
@@ -54,6 +54,7 @@ enum class GwBuildTypes(val build_type_name: String) {
     YARN("yarn"),
     STORYBOOK("storybook"),
     SOURCE_ZIP("source-zip"),
+    JUST_COPY("just-copy")
 }
 
 enum class GwValidationModules(val validation_name: String) {
@@ -521,6 +522,35 @@ object Docs {
         return sourceZipBuildTypes
     }
 
+    private fun createJustCopyBuildTypes(
+        env_names: List<String>, doc_id: String,
+        src_id: String,
+        publish_path: String,
+        working_dir: String,
+        output_dir: String,
+    ): List<BuildType> {
+        val justCopyBuildTypes = mutableListOf<BuildType>()
+        for (env in env_names) {
+            val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publish_path)
+            if (env == GwDeployEnvs.PROD.env_name) {
+                val docBuildType = createInitialDocBuildType(
+                    GwBuildTypes.JUST_COPY.build_type_name,
+                    env,
+                    doc_id,
+                    src_id,
+                    publish_path,
+                    working_dir,
+                    output_dir,
+                    false
+                )
+                docBuildType.steps.step(copyFromStagingToProdStep)
+                justCopyBuildTypes.add(docBuildType)
+            }
+        }
+
+        return justCopyBuildTypes
+    }
+
 
     private fun createDitaBuildTypes(
         env_names: List<String>,
@@ -960,6 +990,14 @@ object Docs {
                     indexForSearch,
                     zipFilename
                 )
+            }
+            GwBuildTypes.JUST_COPY.build_type_name -> {
+                docProjectBuildTypes += createJustCopyBuildTypes(docEnvironmentsList,
+                    docId,
+                    src_id,
+                    publishPath,
+                    workingDir,
+                    outputDir)
             }
         }
 

@@ -1793,6 +1793,11 @@
       "docId": "surepathmethodologymain"
     },
     {
+      "buildType": "just-copy",
+      "srcId": "cdsdocss3foldersrc",
+      "docId": "cdsdocss3folder"
+    },
+    {
       "buildType": "yarn",
       "srcId": "doctoolss3managersrc",
       "docId": "doctoolss3manager"

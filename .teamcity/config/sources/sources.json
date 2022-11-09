@@ -1120,6 +1120,13 @@
       "branch": "main"
     },
     {
+      "id": "cdsdocss3foldersrc",
+      "title": "CDS Docs S3 folder main",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/surepath-methodology.git",
+      "branch": "main"
+    },
+    {
       "id": "doctoolss3managersrc",
       "title": "Doctools S3 manager main",
       "sourceType": "git",
