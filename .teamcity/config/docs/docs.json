@@ -6927,7 +6927,7 @@
         "product": ["Product Adoption Resources"],
         "version": ["latest"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "earlyAccess": false,
