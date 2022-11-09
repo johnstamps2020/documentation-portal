@@ -1,7 +1,7 @@
 @import 'headerButtons.css';
 
 #avatarButton {
-  background: url("/images/icon-avatar.svg");
+  background: url("../../images/icon-avatar.svg");
   width: 31px;
   height: 32px;
 }
