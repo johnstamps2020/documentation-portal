@@ -135,7 +135,6 @@ async function isLoggedInOrHasValidToken(req) {
 const majorOpenRoutes = [
   '/404',
   '/unauthorized',
-  '/product',
   '/alive',
   '/userInformation',
   '/safeConfig',
