@@ -160,9 +160,9 @@ main.blue-theme {
 
 @media screen and (min-width: 750px) {
   main.flaine {
-    background-image: url(/images/background-flaine.svg), linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%); 
+    background-image: url(/images/background-flaine.svg), linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%);
     background-position: center center;
-    }
+  }
   
   main.elysian {
     background-image: url(/images/background-elysian.svg);
