@@ -160,27 +160,9 @@ main.blue-theme {
 
 @media screen and (min-width: 750px) {
   main.flaine {
-    background-image: url(/images/background-flaine.svg); 
-    background-image: linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%);
-    background-position: bottom left;
-    }
-
-        main.flaine::after {
-          content: '';
-          background-image: url(/images/background-flaine.svg);
-          opacity: .4;
-          background-repeat: no-repeat;
-          background-attachment: fixed;
-          -webkit-background-size: cover;
-          background-size: cover;
-          background-position: center center;
-          z-index: -1;
-          position: fixed;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-        }
+    background-image: url(/images/background-flaine.svg), linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%);
+    background-position: center center;
+  }
   
   main.elysian {
     background-image: url(/images/background-elysian.svg);
