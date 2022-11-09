@@ -203,6 +203,20 @@
           "id": "dxjsdocs202209"
         }
       ]
+    },
+    {
+      "label": "Jutro Design System 8.3.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Jutro Design System and UI Framework",
+          "id": "jutro830"
+        },
+        {
+          "label": "Jutro Storybook",
+          "id": "storybook830"
+        }
+      ]
     }
   ],
   "search_filters": {

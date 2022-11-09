@@ -113,6 +113,10 @@
         {
           "label": "Gosu Rules",
           "id": "iscc202209rules"
+        },
+        {
+          "label": "APD for Claims (Early Access)",
+          "id": "apdclaims"
         }
       ]
     },

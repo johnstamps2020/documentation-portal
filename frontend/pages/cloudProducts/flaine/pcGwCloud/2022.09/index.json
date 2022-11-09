@@ -127,6 +127,10 @@
           "id": "ispc202209rules"
         },
         {
+          "label": "Guidewire Rules (Early Access)",
+          "id": "gwrules"
+        },
+        {
           "label": "Product Designer",
           "id": "ispc202209pd"
         },

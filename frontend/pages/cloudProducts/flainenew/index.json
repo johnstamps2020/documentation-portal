@@ -39,11 +39,7 @@
           "id": "gchhelprelease"
         },
         {
-          "label": "Cloud Console",
-          "page": "../cloudConsole"
-        },
-        {
-          "label": "Cloud Infrastructure",
+          "label": "Cloud Infrastructure and Console",
           "page": "../cloudConsole"
         },
         {
@@ -53,10 +49,6 @@
         {
           "label": "Cloud Data Access",
           "page": "../cloudDataAccess/latest"
-        },
-        {
-          "label": "Jutro Digital Platform",
-          "id": "jutro831"
         }
       ]
     },
@@ -79,10 +71,6 @@
         {
           "label": "InsuranceNow",
           "page": "../flaine/insuranceNow/2022.2"
-        },
-        {
-          "label": "Advanced Product Designer App",
-          "page": "../flaine/apd"
         },
         {
           "label": "Digital Reference Applications",
@@ -127,7 +115,7 @@
           "page": "../explore/latest"
         },
         {
-          "label": "Data Studio (EA)",
+          "label": "Data Studio (Early Access)",
           "id": "datastudiodraft"
         }
       ]
@@ -137,6 +125,10 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
+          "label": "Advanced Product Designer App",
+          "page": "../flaine/apd"
+        },
+        {
           "label": "API References",
           "page": "../../apiReferences/flaine"
         },
@@ -145,16 +137,16 @@
           "id": "integgatewaydevlatest"
         },
         {
+          "label": "Jutro Digital Platform",
+          "page": "../flaine/jutroDigitalPlatform"
+        },
+        {
           "label": "Guidewire Testing",
           "page": "../../testingFramework/flaine"
         },
         {
           "label": "Application Events",
           "id": "appeventsdev"
-        },
-        {
-          "label": "Cloud Rules (EA)",
-          "id": "gwrules"
         },
         {
           "label": "Workset Manager (EA)",
