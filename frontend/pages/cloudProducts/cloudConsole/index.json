@@ -1,13 +1,35 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Cloud Console",
+  "title": "Cloud Infrastructure and Console",
   "template": "page",
   "class": "twoColumns",
   "items": [
     {
+      "label": "Release notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Cloud Platform Release Notes",
+          "id": "gwcpreleasenotes"
+        },
+        {
+          "label": "Cloud Console Release Notes Archive",
+          "id": "guidewirecloudconsolernarchive"
+        }
+      ]
+    },
+    {
       "label": "Features and functionality",
       "class": "subject featuresAndFunctionality",
       "items": [
+        {
+          "label": "Authentication",
+          "id": "guidewireidentityfederationhubdraft"
+        },
+        {
+          "label": "Authentication",
+          "id": "guidewireidentityfederationhub"
+        },
         {
           "label": "Cloud Console Guide",
           "id": "guidewirecloudconsoleguideinsurerdevdraft"
@@ -17,12 +39,20 @@
           "id": "guidewirecloudconsolerootinsurerdev"
         },
         {
-          "label": "Release Notes Archive",
-          "id": "guidewirecloudconsolernarchive"
+          "label": "Network Connectivity",
+          "id": "cloudplatformdraft"
+        },
+        {
+          "label": "Network Connectivity",
+          "id": "cloudplatformrelease"
         },
         {
           "label": "GCC Internal Docs",
           "id": "gccinternallatests"
+        },
+        {
+          "label": "Data Masking (Early Access)",
+          "id": "datamasking"
         }
       ]
     },

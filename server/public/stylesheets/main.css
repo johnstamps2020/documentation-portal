@@ -382,6 +382,7 @@ main.skiRelease {
 .skiRelease div.content {
   padding: 0;
   column-gap: 56px;
+  max-width: 944px;
 }
 
 .skiRelease div.items {

@@ -1,0 +1,32 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Jutro Digital Platform",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "Jutro Digital Platform (Early Access)",
+      "class": "categoryCard cardShadow",
+      "id": "jutroplatformflaine",
+      "env": ["staging", "prod"]
+    },
+    {
+      "label": "Jutro Digital Platform (Early Access)",
+      "class": "categoryCard cardShadow",
+      "id": "jutroplatformnext",
+      "env": ["int"]
+    },
+    {
+      "label": "Jutro SDK (Early Access)",
+      "class": "categoryCard cardShadow",
+      "id": "jutrosdkflaine",
+      "env": ["staging", "prod"]
+    },
+    {
+      "label": "Jutro SDK (Early Access)",
+      "class": "categoryCard cardShadow",
+      "id": "jutrosdknext",
+      "env": ["int"]
+    }
+  ]
+}

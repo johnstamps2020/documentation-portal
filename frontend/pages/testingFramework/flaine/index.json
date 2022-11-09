@@ -57,12 +57,16 @@
           "id": "testingframeworksapiflaine"
         },
         {
-          "label": "Load and Performance Testing",
+          "label": "Load and Performance Testing (Early Access)",
           "id": "testingframeworksloadflaine"
         },
         {
-          "label": "UI Testing",
+          "label": "User Interface Testing",
           "id": "testingframeworksuiflaine"
+        },
+        {
+          "label": "User Interface Accessibility Testing (Early Access)",
+          "id": "is202209access"
         }
       ]
     }
