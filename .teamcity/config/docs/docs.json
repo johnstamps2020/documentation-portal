@@ -6895,9 +6895,25 @@
         "product": ["Product Adoption Resources"],
         "version": ["latest"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "cdsdocss3folder",
+      "title": "CDS Docs S3 folder",
+      "url": "cds/docs",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Product Adoption Resources"],
+        "version": ["latest"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
       "public": false,
       "internal": false,
       "earlyAccess": false
