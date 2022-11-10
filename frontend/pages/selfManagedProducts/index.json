@@ -86,36 +86,35 @@
       "items": [
         {
           "label": "CustomerEngage Account Management",
-          "id": "dxceam1141"
+          "page": "ceAccountMgmt/11.4.1"
         },
         {
           "label": "CustomerEngage Account Management for ClaimCenter",
-          "id": "dxceclaims1141"
+          "page": "ceAccountMgmtCc/11.4.1"
         },
         {
           "label": "CustomerEngage Quote and Buy",
-          "id": "dxceqb1141"
+          "page": "ceQuoteAndBuy/11.4.1"
         },
         {
           "label": "Jutro Design System",
-          "page": "../jutroDesignSystem/5.3.1",
-          "env": ["dev", "staging", "prod", "int"]
+          "page": "../jutroDesignSystem/5.3.1"
         },
         {
           "label": "ProducerEngage",
-          "id": "dxpe1141"
+          "page": "producerEngage/11.4.1"
         },
         {
           "label": "ProducerEngage for ClaimCenter",
-          "id": "dxpeclaims1141"
+          "page": "producerEngageCc/11.4.1"
         },
         {
           "label": "ServiceRepEngage",
-          "id": "dxsre1141"
+          "page": "serviceRepEngage/11.4.1"
         },
         {
           "label": "VendorEngage",
-          "id": "dxve1141"
+          "page": "vendorEngage/11.4.1"
         }
       ]
     }
