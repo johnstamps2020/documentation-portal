@@ -58,14 +58,6 @@
     },
     {
       "buildType": "dita",
-      "root": "gcc_release_notes_archive.ditamap",
-      "filter": "gw-admin.ditaval",
-      "indexRedirect": true,
-      "srcId": "guidewirecloudconsolelatestsrc",
-      "docId": "guidewirecloudconsolernarchive"
-    },
-    {
-      "buildType": "dita",
       "root": "gcc_release_notes.ditamap",
       "filter": "insurer-developer.ditaval",
       "indexRedirect": true,

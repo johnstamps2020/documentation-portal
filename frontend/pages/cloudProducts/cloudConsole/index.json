@@ -9,17 +9,13 @@
       "class": "subject releaseNotes",
       "items": [
         {
-          "label": "Cloud Platform Release Notes",
+          "label": "Release Notes",
           "id": "gwcpreleasenotes"
-        },
-        {
-          "label": "Cloud Console Release Notes Archive",
-          "id": "guidewirecloudconsolernarchive"
         }
       ]
     },
     {
-      "label": "Features and functionality",
+      "label": "Cloud Infrastructure",
       "class": "subject featuresAndFunctionality",
       "items": [
         {
@@ -29,14 +25,6 @@
         {
           "label": "Authentication",
           "id": "guidewireidentityfederationhub"
-        },
-        {
-          "label": "Cloud Console Guide",
-          "id": "guidewirecloudconsoleguideinsurerdevdraft"
-        },
-        {
-          "label": "Cloud Console Guide",
-          "id": "guidewirecloudconsolerootinsurerdev"
         },
         {
           "label": "Network Connectivity",
@@ -49,6 +37,20 @@
         {
           "label": "GCC Internal Docs",
           "id": "gccinternallatests"
+        }
+      ]
+    },
+    {
+      "label": "Cloud Console",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Cloud Console Guide",
+          "id": "guidewirecloudconsoleguideinsurerdevdraft"
+        },
+        {
+          "label": "Cloud Console Guide",
+          "id": "guidewirecloudconsolerootinsurerdev"
         },
         {
           "label": "Data Masking (Early Access)",
