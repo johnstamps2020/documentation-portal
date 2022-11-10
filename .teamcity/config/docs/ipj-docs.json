@@ -1,0 +1,59 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "ipjflainern",
+      "title": "Release Notes",
+      "url": "ipj/flaine/releasenotes",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Japan"],
+        "platform": ["Cloud", "Self-managed"],
+        "version": ["1.0"],
+        "release": ["Flaine"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipjflaineconfig",
+      "title": "Configuration",
+      "url": "ipj/flaine/config",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Japan"],
+        "platform": ["Cloud", "Self-managed"],
+        "version": ["1.0"],
+        "release": ["Flaine"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },    
+    {
+      "id": "ipjflaineapp",
+      "title": "Application Guide",
+      "url": "ipj/flaine/app",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Japan"],
+        "platform": ["Cloud", "Self-managed"],
+        "version": ["1.0"],
+        "release": ["Flaine"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
