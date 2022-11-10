@@ -163,6 +163,16 @@
           "id": "inupgradetoolsdraft"
         }
       ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Datadog Log Access (Early Access)",
+          "id": "in20222ddlogacc"
+        }
+      ]
     }
   ]
 }

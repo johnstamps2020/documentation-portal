@@ -98,7 +98,7 @@ header.header-search {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 16px;
+  gap: 24px;
 }
 
 header img {
@@ -345,6 +345,10 @@ main.skiRelease {
 
 .skiReleaseDesc ul {
   margin-left: 1rem;
+}
+
+.skiReleaseDesc li {
+  margin-bottom: .5rem;
 }
 
 .skiRelease .skiReleaseOverview.categoryCard a:has(button) {

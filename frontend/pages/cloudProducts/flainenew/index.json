@@ -91,16 +91,16 @@
           "page": "../flaine/icGwCloud/2022.09"
         },
         {
+          "label": "Explore",
+          "page": "../explore/latest"
+        },
+        {
           "label": "Canvas",
           "id": "canvas"
         },
         {
           "label": "Compare",
           "id": "comparelatest"
-        },
-        {
-          "label": "Explore",
-          "page": "../explore/latest"
         },
         {
           "label": "HazardHub",
@@ -137,7 +137,7 @@
           "id": "integgatewaydevlatest"
         },
         {
-          "label": "Jutro Digital Platform",
+          "label": "Jutro Digital Platform (Early Access)",
           "page": "../flaine/jutroDigitalPlatform"
         },
         {
