@@ -31,7 +31,7 @@
   },
   "items": [
     {
-      "label": "Guidewire Cloud Platform",
+      "label": "Platform",
       "class": "categoryCard cardShadow",
       "items": [
         {
@@ -39,7 +39,7 @@
           "id": "gchhelprelease"
         },
         {
-          "label": "Cloud Infrastructure and Console",
+          "label": "Cloud Platform",
           "page": "../cloudConsole"
         },
         {
