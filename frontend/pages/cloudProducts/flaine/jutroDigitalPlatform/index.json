@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Jutro Digital Platform",
+  "title": "Jutro Digital Platform (Early Access)",
   "template": "page",
   "class": "threeCards",
   "items": [
