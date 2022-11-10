@@ -5,7 +5,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-am-OnPrem.ditaval",
       "root": "admin-and-security-guide.ditamap",
-      "srcId": "dx1141src",
+      "srcId": "dx1141",
       "docId": "dx1141ceamadmin",
       "indexRedirect": true
     },
@@ -53,7 +53,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-claims-OnPrem.ditaval",
       "root": "admin-and-security-guide.ditamap",
-      "srcId": "dx1141src",
+      "srcId": "dx1141",
       "docId": "dx1141ceclaimsadmin",
       "indexRedirect": true
     },
@@ -101,7 +101,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-qb-OnPrem.ditaval",
       "root": "admin-and-security-guide.ditamap",
-      "srcId": "dx1141src",
+      "srcId": "dx1141",
       "docId": "dx1141ceqbadmin",
       "indexRedirect": true
     },
@@ -149,7 +149,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-OnPrem.ditaval",
       "root": "admin-and-security-guide.ditamap",
-      "srcId": "dx1141src",
+      "srcId": "dx1141",
       "docId": "dx1141peadmin",
       "indexRedirect": true
     },
@@ -197,7 +197,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-claims-OnPrem.ditaval",
       "root": "admin-and-security-guide.ditamap",
-      "srcId": "dx1141src",
+      "srcId": "dx1141",
       "docId": "dx1141peclaimsadmin",
       "indexRedirect": true
     },
@@ -245,7 +245,7 @@
       "buildType": "dita",
       "filter": "Digital-sre-OnPrem.ditaval",
       "root": "admin-and-security-guide.ditamap",
-      "srcId": "dx1141src",
+      "srcId": "dx1141",
       "docId": "dx1141sreadmin",
       "indexRedirect": true
     },
@@ -293,7 +293,7 @@
       "buildType": "dita",
       "filter": "Digital-ve-OnPrem.ditaval",
       "root": "admin-and-security-guide.ditamap",
-      "srcId": "dx1141src",
+      "srcId": "dx1141",
       "docId": "dx1141veadmin",
       "indexRedirect": true
     },
