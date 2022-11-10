@@ -1,0 +1,29 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJReleaseNotes.ditamap",
+      "srcId": "ipjflainesrc",
+      "docId": "ipjflainern",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJConfigurationGuide.ditamap",
+      "srcId": "ipjflainesrc",
+      "docId": "ipjflaineconfig",
+      "indexRedirect": true
+    }, 
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJApplicationGuide.ditamap",
+      "srcId": "ipjflainesrc",
+      "docId": "ipjflaineapp",
+      "indexRedirect": true
+    }
+  ]
+}
