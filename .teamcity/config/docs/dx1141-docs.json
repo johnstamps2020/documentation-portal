@@ -718,7 +718,7 @@
     {
       "id": "dx1141log4jrelnotes",
       "title": "Log4j Patch Release Notes",
-      "url": "cloud/dx/ce-am/1141/relnotes",
+      "url": "cloud/dx/log4jrelnotes",
       "metadata": {
         "product": ["CustomerEngage Account Management",
                     "CustomerEngage Account Management for ClaimCenter",
