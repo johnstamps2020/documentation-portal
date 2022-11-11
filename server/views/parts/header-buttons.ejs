@@ -1,7 +1,7 @@
 <div id="headerButtons">
     <% const loginButton = typeof showLoginButton !== 'undefined' ? showLoginButton : true %>
     <% const localUserInfo = typeof userInfo !== 'undefined' ? userInfo : {isLoggedIn: false} %>
-    <button id="externalSitesButton" class="headerButtonsButton" aria-label="external sites" type="button">
+    <button id="externalSitesButton" class="headerButtonsButton" aria-label="Guidewire sites" title="Guidewire sites" type="button">
         <div id="externalSitesMenu" class="headerButtonsMenu">
             <div class="headerButtonsMenuHeader">Guidewire sites</div>
             <hr class="headerButtonsMenuDivider">
@@ -40,7 +40,7 @@
     </button>
     <% if (localUserInfo.isLoggedIn) { %>
         <button id="guidewireGlossaryButton" class="headerButtonsButton" aria-label="Guidewire glossary"
-                type="button">
+                title="Guidewire glossary" type="button">
             <div id="guidewireGlossaryMenu" class="headerButtonsMenu">
                 <div class="headerButtonsMenuActions">
                     <div><a href="/glossary">Guidewire Glossary</a></div>
@@ -48,7 +48,7 @@
             </div>
         </button>
         <button id="translatedDocsButton" class="headerButtonsButton" aria-label="translated documentation"
-                type="button">
+                title="Translated documentation" type="button">
             <div id="translatedDocsMenu" class="headerButtonsMenu">
                 <div class="headerButtonsMenuHeader">Translated documentation</div>
                 <hr class="headerButtonsMenuDivider">
@@ -59,7 +59,8 @@
                 </div>
             </div>
         </button>
-        <button id="avatarButton" class="headerButtonsButton" aria-label="user information" type="button">
+        <button id="avatarButton" class="headerButtonsButton" aria-label="user information"
+                title="User information" type="button">
             <div id="avatarMenu" class="headerButtonsMenu">
                 <div class="headerButtonsMenuHeader">
                     <div class="avatarMenuName"><%= userInfo.name %></div>
