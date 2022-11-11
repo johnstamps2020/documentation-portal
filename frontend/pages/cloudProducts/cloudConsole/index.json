@@ -9,7 +9,11 @@
       "class": "subject releaseNotes",
       "items": [
         {
-          "label": "Release Notes",
+          "label": "Cloud Console Release Notes",
+          "link": "/cloud/gcc-guide/insurer-developer/latest/topics/release-notes/c_gcc-rn-intro.html"
+        },
+        {
+          "label": "Cloud Infrastructure Release Notes",
           "id": "gwcpreleasenotes"
         }
       ]
