@@ -164,11 +164,13 @@ main.blue-theme {
       linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
       url(/images/background-flaine.svg),
       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%); 
-    background-position: center center;
+    background-position: bottom right;
   }
   
   main.elysian {
-    background-image: url(/images/background-elysian.svg);
+    
+    background-image: 
+      url(/images/background-elysian.svg);
     background-position: bottom right;
   }
 
