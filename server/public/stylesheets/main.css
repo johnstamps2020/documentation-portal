@@ -160,7 +160,10 @@ main.blue-theme {
 
 @media screen and (min-width: 750px) {
   main.flaine {
-    background-image: url(/images/background-flaine.svg), linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%);
+    background-image: 
+      linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
+      url(/images/background-flaine.svg),
+      linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%); 
     background-position: center center;
   }
   
