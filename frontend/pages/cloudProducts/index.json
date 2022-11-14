@@ -35,11 +35,6 @@
       "env": ["int", "staging"]
     },
     {
-      "label": "Flaine New",
-      "page": "flainenew",
-      "env": ["int"]
-    },
-    {
       "label": "_redirect",
       "link": "/cloudProducts/flaine"
     }

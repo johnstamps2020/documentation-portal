@@ -2,16 +2,11 @@
   "$schema": "/frontend/page-schema.json",
   "title": "Flaine",
   "template": "page",
-  "class": "blue-theme flaine threeCards",
+  "class": "blue-theme flaine skiRelease",
   "selector": {
     "label": "Select release",
     "selectedItem": "Flaine",
     "items": [
-      {
-        "label": "Garmisch",
-        "page": "../garmisch",
-        "env": ["int", "staging"]
-      },
       {
         "label": "Elysian",
         "page": "../elysian"
@@ -36,6 +31,28 @@
   },
   "items": [
     {
+      "label": "Platform",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud Home",
+          "id": "gchhelprelease"
+        },
+        {
+          "label": "Cloud Platform",
+          "page": "../cloudConsole"
+        },
+        {
+          "label": "Data Platform",
+          "id": "dataplatform"
+        },
+        {
+          "label": "Cloud Data Access",
+          "page": "../cloudDataAccess/latest"
+        }
+      ]
+    },
+    {
       "label": "Applications",
       "class": "categoryCard cardShadow",
       "items": [
@@ -52,31 +69,19 @@
           "page": "bcGwCloud/2022.09"
         },
         {
-          "label": "Advanced Product Designer App",
-          "page": "apd"
-        },
-        {
           "label": "InsuranceNow",
           "page": "insuranceNow/2022.2"
+        },
+        {
+          "label": "Digital Reference Applications",
+          "page": "dx-ref-apps"
         }
       ]
     },
     {
-      "label": "Data and Analytics",
+      "label": "Analytics",
       "class": "categoryCard cardShadow",
       "items": [
-        {
-          "label": "Cloud Data Access",
-          "page": "../cloudDataAccess/latest"
-        },
-        {
-          "label": "Explore",
-          "page": "../explore/latest"
-        },
-        {
-          "label": "Data Platform",
-          "id": "dataplatform"
-        },
         {
           "label": "DataHub",
           "page": "dhGwCloud/2022.09"
@@ -84,6 +89,10 @@
         {
           "label": "InfoCenter",
           "page": "icGwCloud/2022.09"
+        },
+        {
+          "label": "Explore",
+          "page": "../explore/latest"
         },
         {
           "label": "Canvas",
@@ -94,160 +103,58 @@
           "id": "comparelatest"
         },
         {
-          "label": "Cyence",
-          "page": "../cyence"
-        },
-        {
-          "label": "HazardHub Casualty",
+          "label": "HazardHub",
           "page": "../hazardhubcasualty"
-        },
-        {
-          "label": "HazardHub Property",
-          "link": "/hazardhub/property/Intro/HazardHub_Property_Intro_gw.pdf"
         },
         {
           "label": "Predict",
           "id": "livepredictlatest"
+        },
+        {
+          "label": "Cyence Cyber",
+          "page": "../explore/latest"
+        },
+        {
+          "label": "Data Studio (Early Access)",
+          "id": "datastudiodraft"
         }
       ]
     },
-    {
-      "label": "Digital",
+        {
+      "label": "Developer Resources",
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Digital Reference Applications",
-          "class": "group",
-          "items": [
-            {
-              "label": "CustomerEngage Account Management",
-              "page": "ceAccountMgmt/2022.09"
-            },
-            {
-              "label": "CustomerEngage Account Management for ClaimCenter",
-              "page": "ceAccountMgmtCc/2022.09"
-            },
-            {
-              "label": "CustomerEngage Quote and Buy",
-              "page": "ceQuoteAndBuy/2022.09"
-            },
-            {
-              "label": "ProducerEngage",
-              "page": "producerEngage/2022.09"
-            },
-            {
-              "label": "ProducerEngage for ClaimCenter",
-              "page": "producerEngageCc/2022.09"
-            },
-            {
-              "label": "ServiceRepEngage",
-              "page": "serviceRepEngage/2022.09"
-            },
-            {
-              "label": "VendorEngage",
-              "page": "vendorEngage/2022.09"
-            }
-          ]
+          "label": "Advanced Product Designer App",
+          "page": "apd"
         },
         {
-          "label": "Jutro Design System 8.3.0",
-          "class": "group",
-          "items": [
-            {
-              "label": "Jutro Design System and UI Framework",
-              "id": "jutro830"
-            },
-            {
-              "label": "Jutro Storybook",
-              "id": "storybook830"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Guidewire Cloud Platform",
-      "class": "categoryCard cardShadow",
-      "items": [
-        {
-          "label": "Cloud Home",
-          "id": "gchhelprelease"
+          "label": "API References",
+          "page": "../../apiReferences/flaine"
         },
         {
-          "label": "Cloud Console",
-          "page": "../cloudConsole"
+          "label": "Integration Gateway",
+          "id": "integgatewaydevlatest"
         },
         {
-          "label": "Cloud Infrastructure",
-          "class": "group",
-          "items": [
-            {
-              "label": "Release Notes",
-              "id": "gwcpreleasenotes"
-            },
-            {
-              "label": "Authentication",
-              "id": "guidewireidentityfederationhubdraft"
-            },
-            {
-              "label": "Authentication",
-              "id": "guidewireidentityfederationhub"
-            },
-            {
-              "label": "Network Connectivity",
-              "id": "cloudplatformdraft"
-            },
-            {
-              "label": "Network Connectivity",
-              "id": "cloudplatformrelease"
-            }
-          ]
+          "label": "App Events",
+          "id": "appeventsdev"
         },
         {
-          "label": "Integration Framework",
-          "class": "group",
-          "items": [
-            {
-              "label": "App Events",
-              "id": "appeventsdev"
-            },
-            {
-              "label": "Integration Gateway",
-              "id": "integgatewaydevlatest"
-            },
-            {
-              "label": "Webhooks API Reference",
-              "id": "webhooksapinext"
-            }
-          ]
+          "label": "REST API Client",
+          "id": "isrestapiclientguide"
+        },
+        {
+          "label": "Jutro Digital Platform (Early Access)",
+          "page": "jutroDigitalPlatform"
+        },
+        {
+          "label": "Guidewire Testing",
+          "page": "../../testingFramework/flaine"
         },
         {
           "label": "Workset Manager",
-          "class": "group",
-          "items": [
-            {
-              "label": "Workset Manager",
-              "id": "worksetmgr"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Global Content",
-      "class": "categoryCard cardShadow",
-      "env": [
-        "int",
-        "staging"
-      ],
-      "items": [
-        {
-          "label": "London Market",
-          "page": "../../globalContent/iplm/flaine"
-        },
-        {
-          "label": "United States",
-          "page": "../../globalContent/sbt"
+          "id": "worksetmgr"
         }
       ]
     }
