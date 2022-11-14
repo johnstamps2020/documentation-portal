@@ -110,22 +110,8 @@ function addElysianNotice() {
   content.prepend(link);
 }
 
-function addFlaineNotice() {
-  if(window.location.pathname != '/cloudProducts/flaine' &&
-     window.location.pathname != '/cloudProducts/flaine/') {
-       return;
-  }
-  const content = document.querySelector('.content');
-  const link = document.createElement('a');
-  link.classList.add('notice', 'cardShadow');
-  link.textContent = "What's new in Flaine";
-  link.setAttribute('href', '/cloud/flaine/whatsnew');
-  content.prepend(link);
-}
-
 function addNotices() {
   addElysianNotice();
-  addFlaineNotice();
 }
 
 window.onload = async function() {
