@@ -6,7 +6,7 @@
 <main class="<%= pageContent.class || '' %>">
     <div class="pageBody">
         <div class="pageControllers">
-            <% if (pageContent.title.toLowerCase() !== 'flaine ') { %>
+            <% if (pageContent.title.toLowerCase() !== 'flaine') { %>
                 <%- include('parts/platform-toggle') %>
                 <div class="pageHero">
                     <%- include('parts/breadcrumbs') %>
@@ -14,12 +14,12 @@
                 </div>
             <% } %>
             <%- include('parts/page-selector') %>
-            <% if (pageContent.title.toLowerCase() === 'flaine ') { %>
+            <% if (pageContent.title.toLowerCase() === 'flaine') { %>
                 <%- include('parts/ski/flaine') %>
             <% } %>
         </div>
         <div class="content">
-            <% if (pageContent.title.toLowerCase() === 'flaine ') { %>
+            <% if (pageContent.title.toLowerCase() === 'flaine') { %>
                 <%- include('parts/ski/intro') %>
             <% } %>
             <% function createItemElement(className, href, label, itemItems, isPubliclyAvailable, isInternal) { %>

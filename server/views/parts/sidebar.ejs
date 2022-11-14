@@ -3,11 +3,9 @@
     <div class="label">Implementation Resources</div>
     <% if (pageContent.title.toLowerCase() === 'garmisch') { %>
     <a href="/testingFramework/garmisch">Guidewire Testing</a>
-    <% } %> <% if (pageContent.title.toLowerCase() === 'flaine') { %>
-    <a href="/testingFramework/flaine">Guidewire Testing</a>
     <% } %> <% if (pageContent.title.toLowerCase() === 'elysian') { %>
     <a href="/testingFramework/elysian">Guidewire Testing</a>
-    <% } %> <% if (pageContent.title.toLowerCase() !== 'api references' && pageContent.title.toLowerCase() !== 'flaine ') { %>
+    <% } %> <% if (pageContent.title.toLowerCase() !== 'api references' && pageContent.title.toLowerCase() !== 'flaine') { %>
     <a href="/apiReferences">API References</a>
     <% } %>
     <% if (process.env.DEPLOY_ENV.toLowerCase() !== 'int') { %>
@@ -19,12 +17,4 @@
       <a href="/internal-docs">Internal docs</a>
     <% } %>
   </div>
-  <% if (pageContent.title.toLowerCase() === 'flaine') { %>
-  <div class="categoryCard cardShadow">
-    <div class="label">Feature Preview</div>
-    <a href="/cloudProducts/flaine/featurePreview"
-      >Early Access Documentation</a
-    >
-  </div>
-  <% } %>
 </div>
