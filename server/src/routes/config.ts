@@ -3,6 +3,7 @@ import {
   createOrUpdateEntity,
   deleteEntity,
   getAllEntities,
+  getBreadcrumbs,
   getDocIdByUrl,
   getDocumentMetadataById,
   getEntity,
@@ -17,6 +18,7 @@ import {
   getLegacyDocConfigs,
   getLegacySourceConfigs,
   putDocConfigsInDatabase,
+  putPageConfigsInDatabase,
   putSourceConfigsInDatabase,
 } from '../controllers/legacyConfigController';
 
@@ -116,6 +118,12 @@ router.get('/entity/doc/id', async function(req, res) {
   return res.status(status).json(body);
 });
 
+router.get('/entity/page/breadcrumbs', async function(req, res) {
+  const { path } = req.query;
+  const { status, body } = await getBreadcrumbs(path as string);
+  return res.status(status).json(body);
+});
+
 router.get('/entity/legacy/docs', async function(req, res) {
   const { status, body } = await getLegacyDocConfigs();
   return res.status(status).json(body);
@@ -146,11 +154,15 @@ router.get('/entity/legacy/putConfigInDatabase/:configType', async function(
     const response = await putSourceConfigsInDatabase();
     status = response.status;
     body = response.body;
+  } else if (configType === 'page') {
+    const response = await putPageConfigsInDatabase();
+    status = response.status;
+    body = response.body;
   } else {
     status = 400;
     body = {
       message:
-        'Incorrect configType parameter. Use "doc" or "source". For example: /entity/legacy/putConfigInDatabase/doc',
+        'Incorrect configType parameter. Use "doc", "source", "page". For example: /entity/legacy/putConfigInDatabase/doc',
     };
   }
   return res.status(status).json(body);

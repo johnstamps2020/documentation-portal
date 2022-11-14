@@ -6,11 +6,9 @@ import { AppDataSource } from '../model/connection';
 import { Doc } from '../model/entity/Doc';
 import { Product } from '../model/entity/Product';
 import { Release } from '../model/entity/Release';
-import { integer } from '@elastic/elasticsearch/api/types';
 import { FindOneAndDeleteOptions, FindOptionsWhere } from 'typeorm';
-import { Environment } from '../types/legacyConfig';
-import { readdirSync, lstatSync, readFileSync } from 'fs';
-import { join, resolve } from 'path';
+import { ApiResponse } from '../types/apiResponse';
+import { Page } from '../model/entity/Page';
 
 function optionsAreValid(options: {}) {
   return (
@@ -18,10 +16,55 @@ function optionsAreValid(options: {}) {
   );
 }
 
+async function pageExists(pagePath: string) {
+  return (await AppDataSource.manager.countBy(Page, { path: pagePath })) === 1;
+}
+
+export async function getBreadcrumbs(pagePath: string): Promise<ApiResponse> {
+  try {
+    const routes = pagePath.split('/').filter(v => v.length > 0);
+    const breadcrumbs = [];
+    let startPath = '';
+    for (const route of routes) {
+      const breadcrumbRoutePath = startPath ? `/${route}` : route;
+      const breadcrumbPath = startPath + breadcrumbRoutePath;
+      const breadcrumbId = route.replace('/', '_').toLowerCase();
+      const breadcrumbLabel = route
+        .replace(/([A-Z])/g, ' $1')
+        .replace(/^./, (str: string) => str.toUpperCase())
+        .replace(
+          /(policy center | billing center | claim center | insurance now)/gi,
+          (str: string) => str.replace(' ', '')
+        );
+      breadcrumbs.push({
+        label: breadcrumbLabel,
+        path: breadcrumbPath,
+        id: breadcrumbId,
+      });
+      startPath += breadcrumbRoutePath;
+    }
+    const validBreadcrumbs = [];
+    for (const breadcrumb of breadcrumbs.slice(1, -1)) {
+      if (await pageExists(breadcrumb.path)) {
+        validBreadcrumbs.push(breadcrumb);
+      }
+    }
+    return {
+      status: 200,
+      body: validBreadcrumbs,
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      body: { message: `Operation failed: ${(err as Error).message}` },
+    };
+  }
+}
+
 export async function getEntity(
   repo: string,
   options: FindOptionsWhere<any>
-): Promise<{ status: integer; body: any }> {
+): Promise<ApiResponse> {
   try {
     if (!optionsAreValid(options)) {
       return {
@@ -57,9 +100,7 @@ export async function getEntity(
   }
 }
 
-export async function getAllEntities(
-  repo: string
-): Promise<{ status: integer; body: any }> {
+export async function getAllEntities(repo: string): Promise<ApiResponse> {
   try {
     const operationResult = await AppDataSource.manager.find(repo);
     if (!operationResult) {
@@ -85,7 +126,7 @@ export async function getAllEntities(
 export async function createOrUpdateEntity(
   repo: string,
   options: {}
-): Promise<{ status: integer; body: any }> {
+): Promise<ApiResponse> {
   try {
     if (!optionsAreValid(options)) {
       return {
@@ -111,7 +152,7 @@ export async function createOrUpdateEntity(
 export async function deleteEntity(
   repo: string,
   options: FindOneAndDeleteOptions
-): Promise<{ status: integer; body: any }> {
+): Promise<ApiResponse> {
   try {
     if (!optionsAreValid(options)) {
       return {
@@ -199,48 +240,6 @@ export async function getDocumentMetadataById(docId: string) {
       body: { message: `Operation failed: ${(err as Error).message}` },
     };
   }
-}
-
-function readFilesInDir(dirPath: string, deployEnv: Environment): Doc[] {
-  try {
-    const localConfig: Doc[] = [];
-    const itemsInDir = readdirSync(dirPath);
-    for (const item of itemsInDir) {
-      const itemPath = join(dirPath, item);
-      if (lstatSync(itemPath).isDirectory()) {
-        localConfig.push(...readFilesInDir(itemPath, deployEnv));
-      } else {
-        const config = readFileSync(itemPath, 'utf-8');
-        const json: any = JSON.parse(config);
-        const docs = json.docs.filter((d: any) =>
-          d.environments.includes(deployEnv)
-        );
-        localConfig.push(...docs);
-      }
-    }
-    return localConfig;
-  } catch (funcErr) {
-    throw new Error(
-      `Cannot read local config file from path: ${dirPath}: ${funcErr}`
-    );
-  }
-}
-
-async function fetchConfig() {
-  const result = await fetch(
-    `${process.env.DOC_S3_URL}/portal-config/config.json`
-  );
-  if (result.ok == false) {
-    throw new Error(
-      `Response status: ${result.status}
-              Response type: ${result.type}
-              Response URL: ${result.url}
-              Response redirected: ${result.redirected}`
-    );
-  }
-  const config = await result.json();
-
-  return config.docs;
 }
 
 export async function getDocByUrl(url: string) {

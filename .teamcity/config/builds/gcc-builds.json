@@ -27,14 +27,6 @@
     {
       "buildType": "dita",
       "root": "guidewire_cloud_platform_guide.ditamap",
-      "filter": "insurer-developer.ditaval",
-      "indexRedirect": true,
-      "srcId": "guidewirecloudconsolelatestsrc",
-      "docId": "guidewirecloudconsolerootinsurerdevdraft"
-    },
-    {
-      "buildType": "dita",
-      "root": "guidewire_cloud_platform_guide.ditamap",
       "filter": "gw-admin.ditaval",
       "indexRedirect": true,
       "srcId": "guidewirecloudconsolelatestsrc",

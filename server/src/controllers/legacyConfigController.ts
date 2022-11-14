@@ -9,13 +9,15 @@ import { Release } from '../model/entity/Release';
 import { Resource } from '../model/entity/Resource';
 import { integer } from '@elastic/elasticsearch/api/types';
 import { Source } from '../model/entity/Source';
-import { join, resolve } from 'path';
+import path, { join, resolve } from 'path';
 import { AppDataSource } from '../model/connection';
 import {
   legacyBuildConfig,
   legacyBuildsConfigFile,
   legacyDocConfig,
   legacyDocsConfigFile,
+  legacyItem,
+  legacyPageConfig,
   legacySourceConfig,
   legacySourcesConfigFile,
   Metadata,
@@ -25,6 +27,18 @@ import { lstatSync, readdirSync, readFileSync } from 'fs';
 import { ProductName } from '../model/entity/ProductName';
 import { ProductPlatform } from '../model/entity/ProductPlatform';
 import { ProductVersion } from '../model/entity/ProductVersion';
+import { Page } from '../model/entity/Page';
+import { winstonLogger } from './loggerController';
+import { CategoryItem } from '../model/entity/CategoryItem';
+import { SubjectItem } from '../model/entity/SubjectItem';
+import { Category } from '../model/entity/Category';
+import { Subject } from '../model/entity/Subject';
+import { SubCategory } from '../model/entity/SubCategory';
+import { SubCategoryItem } from '../model/entity/SubCategoryItem';
+import { ProductFamilyItem } from '../model/entity/ProductFamilyItem';
+import { Item } from '../model/entity/Item';
+import { PageSelectorItem } from '../model/entity/PageSelectorItem';
+import { PageSelector } from '../model/entity/PageSelector';
 
 export async function getLegacyDocConfigs() {
   const { status, body } = await getAllEntities(Doc.name);
@@ -195,17 +209,287 @@ export function readLocalSourceConfigs(dirPath: string): legacySourceConfig[] {
   }
 }
 
+export function readLocalPageConfigs(dirPath: string): legacyPageConfig[] {
+  try {
+    const localConfig: legacyPageConfig[] = [];
+    const itemsInDir = readdirSync(dirPath);
+    for (const item of itemsInDir) {
+      const itemPath = join(dirPath, item);
+      if (lstatSync(itemPath).isDirectory()) {
+        localConfig.push(...readLocalPageConfigs(itemPath));
+      } else {
+        const config = readFileSync(itemPath, 'utf-8');
+        const json: legacyPageConfig = JSON.parse(config);
+        json.path = dirPath;
+        localConfig.push(json);
+      }
+    }
+    return localConfig;
+  } catch (funcErr) {
+    throw new Error(
+      `Cannot read local config file from path: ${dirPath}: ${funcErr}`
+    );
+  }
+}
+
+async function updateRefsInItem(
+  legacyItem: legacyItem,
+  dbItem: Item,
+  legacyLandingPageConfigs: legacyPageConfig[],
+  rootPath: string
+): Promise<Item> {
+  if (legacyItem.id) {
+    const { status, body } = await getEntity(Doc.name, {
+      id: legacyItem.id,
+    });
+    if (status === 200) {
+      dbItem.doc = body;
+    }
+  } else if (legacyItem.page) {
+    const pagePath = legacyItem.page;
+    const pagePathWithRoot = path.join(rootPath, pagePath);
+    const relativePagePath = getRelativePagePath(pagePathWithRoot);
+    const { status, body } = await getEntity(Page.name, {
+      path: relativePagePath,
+    });
+    if (status === 200) {
+      dbItem.page = body;
+    } else {
+      const pageConfigToCreate = legacyLandingPageConfigs.find(
+        i => i.path === pagePath
+      );
+      if (pageConfigToCreate) {
+        const dbPageConfig = new Page();
+        dbPageConfig.path = pagePath;
+        dbPageConfig.title = pageConfigToCreate.title;
+        dbPageConfig.component = pageConfigToCreate.template;
+        dbPageConfig.searchFilters = pageConfigToCreate.search_filters;
+        dbPageConfig.isInProduction = legacyItem.env
+          ? legacyItem.env.includes('prod')
+          : false;
+
+        const createdPage = await createOrUpdateEntity(Page.name, dbPageConfig);
+        dbItem.page = createdPage.body;
+      }
+    }
+  } else if (legacyItem.link) {
+    dbItem.link = legacyItem.link;
+  }
+  return dbItem;
+}
+
+async function getOrCreateItems(
+  rootPath: string,
+  legacyItems: legacyItem[],
+  legacyLandingPageConfigs: legacyPageConfig[]
+): Promise<{
+  categories: Category[];
+  subjects: Subject[];
+  productFamilyItems: ProductFamilyItem[];
+}> {
+  async function getOrCreateSubItems(
+    legacySubItems: legacyItem[],
+    parentItem: Category | Subject | SubCategory
+  ): Promise<Item[]> {
+    const dbPageSubItems = [];
+    for (const legacySubItem of legacySubItems) {
+      let dbPageSubItem;
+      let dbPageSubItemRepo;
+      if (parentItem instanceof SubCategory) {
+        dbPageSubItem = new SubCategoryItem();
+        dbPageSubItemRepo = SubCategoryItem.name;
+      } else if (parentItem instanceof Category) {
+        dbPageSubItem = new CategoryItem();
+        dbPageSubItemRepo = CategoryItem.name;
+      } else {
+        dbPageSubItem = new SubjectItem();
+        dbPageSubItemRepo = SubjectItem.name;
+      }
+      dbPageSubItem.label = legacySubItem.label;
+
+      const dbPageSubItemWithRefs = await updateRefsInItem(
+        legacySubItem,
+        dbPageSubItem,
+        legacyLandingPageConfigs,
+        rootPath
+      );
+      await createOrUpdateEntity(dbPageSubItemRepo, dbPageSubItemWithRefs);
+      dbPageSubItems.push(dbPageSubItemWithRefs);
+    }
+    return dbPageSubItems;
+  }
+
+  const dbPageCategories = [];
+  const dbPageSubjects = [];
+  const dbPageProductFamilyItems = [];
+  for (const legacyItem of legacyItems) {
+    try {
+      if (legacyItem.class?.includes('categoryCard')) {
+        const allLegacyItemItems = legacyItem.items;
+        if (allLegacyItemItems) {
+          const dbPageCategory = new Category();
+          dbPageCategory.label = legacyItem.label;
+          const legacySubCategoryItems = allLegacyItemItems.filter(
+            i => i.class?.includes('group') && i.items
+          );
+          const legacyCategoryItems = allLegacyItemItems.filter(
+            i => !legacySubCategoryItems.includes(i)
+          );
+          const subCategories = [];
+          if (legacySubCategoryItems) {
+            for (const legacySubCategoryItem of legacySubCategoryItems) {
+              const legacySubCategoryItemItems = legacySubCategoryItem.items;
+              if (legacySubCategoryItemItems) {
+                const subCategory = new SubCategory();
+                subCategory.label = legacySubCategoryItem.label;
+                subCategory.subCategoryItems = await getOrCreateSubItems(
+                  legacySubCategoryItemItems,
+                  subCategory
+                );
+                await AppDataSource.manager.save(SubCategory, subCategory);
+                subCategories.push(subCategory);
+              }
+            }
+            dbPageCategory.subCategories = subCategories;
+          }
+          if (legacyCategoryItems) {
+            dbPageCategory.categoryItems = await getOrCreateSubItems(
+              legacyCategoryItems,
+              dbPageCategory
+            );
+          }
+          dbPageCategories.push(dbPageCategory);
+        }
+      } else if (legacyItem.class?.includes('subject')) {
+        const dbPageSubject = new Subject();
+        dbPageSubject.label = legacyItem.label;
+        if (legacyItem.items) {
+          dbPageSubject.subjectItems = await getOrCreateSubItems(
+            legacyItem.items,
+            dbPageSubject
+          );
+        }
+        dbPageSubjects.push(dbPageSubject);
+      } else if (legacyItem.class?.includes('productFamily')) {
+        const dbPageProductFamilyItem = new ProductFamilyItem();
+        dbPageProductFamilyItem.label = legacyItem.label;
+        const dbPageProductFamilyItemWithRefs = await updateRefsInItem(
+          legacyItem,
+          dbPageProductFamilyItem,
+          legacyLandingPageConfigs,
+          rootPath
+        );
+        dbPageProductFamilyItems.push(dbPageProductFamilyItemWithRefs);
+      }
+    } catch (err) {
+      winstonLogger.error(`Error in item: ${legacyItem.label}, ${err}`);
+    }
+  }
+  return {
+    categories: dbPageCategories,
+    subjects: dbPageSubjects,
+    productFamilyItems: dbPageProductFamilyItems,
+  };
+}
+
+function getRelativePagePath(absPagePath: string): string {
+  return absPagePath.split('pages/')[1] || '/';
+}
+
+export async function putPageConfigsInDatabase() {
+  try {
+    const localLandingPagesConfigDir = resolve(
+      `${__dirname}/../../../frontend/pages`
+    );
+
+    const localLandingPagesConfig = readLocalPageConfigs(
+      localLandingPagesConfigDir
+    );
+    const dbPageConfigs = [];
+    for (const page of localLandingPagesConfig) {
+      const dbLandingPage = new Page();
+      const legacyPageAbsPath = page.path;
+      dbLandingPage.path = getRelativePagePath(legacyPageAbsPath);
+      dbLandingPage.title = page.title;
+      dbLandingPage.component = page.template;
+      dbLandingPage.isInProduction = false;
+      if (page.items) {
+        const allPageItems = await getOrCreateItems(
+          legacyPageAbsPath,
+          page.items,
+          localLandingPagesConfig
+        );
+        const pageCategories = allPageItems.categories;
+        const pageSubjects = allPageItems.subjects;
+        const pageProductFamilyItems = allPageItems.productFamilyItems;
+        if (pageCategories.length > 0) {
+          await AppDataSource.manager.save(Category, pageCategories);
+          dbLandingPage.categories = pageCategories;
+        } else if (pageSubjects.length > 0) {
+          await AppDataSource.manager.save(Subject, pageSubjects);
+          dbLandingPage.subjects = pageSubjects;
+        } else if (pageProductFamilyItems.length > 0) {
+          await AppDataSource.manager.save(
+            ProductFamilyItem,
+            pageProductFamilyItems
+          );
+          dbLandingPage.productFamilyItems = pageProductFamilyItems;
+        }
+      }
+      const legacyPageSelector = page.selector;
+      if (legacyPageSelector) {
+        const pageSelector = new PageSelector();
+        pageSelector.label = legacyPageSelector.label;
+        pageSelector.selectedItemLabel = legacyPageSelector.selectedItem;
+        const pageSelectorItems = [];
+        for (const legacyPageSelectorItem of legacyPageSelector.items) {
+          const pageSelectorItem = new PageSelectorItem();
+          pageSelectorItem.label = legacyPageSelectorItem.label;
+          const pageSelectorItemWithRefs = await updateRefsInItem(
+            legacyPageSelectorItem,
+            pageSelectorItem,
+            localLandingPagesConfig,
+            legacyPageAbsPath
+          );
+          pageSelectorItems.push(pageSelectorItemWithRefs);
+        }
+        // Create an item for the currently selected item
+        const currentlySelectedPageSelectorItem = new PageSelectorItem();
+        currentlySelectedPageSelectorItem.label =
+          legacyPageSelector.selectedItem;
+        currentlySelectedPageSelectorItem.link = '#';
+        pageSelectorItems.push(currentlySelectedPageSelectorItem);
+        await AppDataSource.manager.save(PageSelectorItem, pageSelectorItems);
+        pageSelector.pageSelectorItems = pageSelectorItems;
+        await AppDataSource.manager.save(PageSelector, pageSelector);
+        dbLandingPage.pageSelector = pageSelector;
+      }
+      const legacySearchFilters = page.search_filters;
+      if (legacySearchFilters) {
+        dbLandingPage.searchFilters = legacySearchFilters;
+      }
+      dbPageConfigs.push(dbLandingPage);
+    }
+    const saveResult = await AppDataSource.manager.save(Page, dbPageConfigs);
+    return {
+      status: 200,
+      body: saveResult,
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      body: {
+        message: `Cannot put source config in DB: ${(err as Error).message}`,
+      },
+    };
+  }
+}
+
 export async function putSourceConfigsInDatabase(): Promise<{
   status: integer;
   body: any;
 }> {
   try {
-    const deployEnv =
-      process.env.DEPLOY_ENV === 'omega2-andromeda'
-        ? 'prod'
-        : process.env.DEPLOY_ENV;
-    console.log(`Getting local config for the "${deployEnv}" environment`);
-
     const localSourcesConfigDir = resolve(
       `${__dirname}/../../../.teamcity/config/sources`
     );

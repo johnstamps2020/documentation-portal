@@ -4,7 +4,7 @@ import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import { useLocaleParams } from "../../hooks/useLocale";
 
-export default function SearchBox() {
+export default function SearchBox(searchFilters: { [key: string]: string[] }) {
   const { placeholder } = useLocaleParams();
   return (
     <Paper
@@ -14,7 +14,7 @@ export default function SearchBox() {
         display: "flex",
         alignItems: "center",
         width: "100%",
-        maxWidth: 500,
+        maxWidth: 500
       }}
     >
       <InputBase
@@ -22,6 +22,16 @@ export default function SearchBox() {
         placeholder={placeholder}
         inputProps={{ "aria-label": placeholder }}
       />
+      {searchFilters &&
+        Object.keys(searchFilters).map((k: string) => (
+          <InputBase
+            id={k.toLowerCase()}
+            key={k.toLowerCase()}
+            type="hidden"
+            name={k}
+            value={searchFilters[k].join(",")}
+          />
+        ))}
       <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
         <SearchIcon />
       </IconButton>

@@ -33,6 +33,7 @@
   flex-wrap: wrap;
   height: var(--header-height);
   padding: 6px;
+  background-color: hsl(216, 42%, 13%);
 }
 
 .main {
@@ -44,6 +45,6 @@
 }
 
 .footer {
-  background-color: var(--pale-blue);
+  background-color: hsl(216, 42%, 13%);
   min-height: 400px;
 }
