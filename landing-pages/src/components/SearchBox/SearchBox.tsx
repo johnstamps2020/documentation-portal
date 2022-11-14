@@ -9,18 +9,23 @@ export default function SearchBox(searchFilters: { [key: string]: string[] }) {
   return (
     <Paper
       component="form"
+      elevation={0}
+      action="/landing/search"
       sx={{
-        p: "2px 4px",
+        padding: "2px 4px",
         display: "flex",
         alignItems: "center",
         width: "100%",
-        maxWidth: 500
+        maxWidth: "760px",
+        border: "1px solid hsl(214, 22%, 58%)",
+        height: "48px"
       }}
     >
       <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder={placeholder}
         inputProps={{ "aria-label": placeholder }}
+        name="q"
       />
       {searchFilters &&
         Object.keys(searchFilters).map((k: string) => (
@@ -32,7 +37,7 @@ export default function SearchBox(searchFilters: { [key: string]: string[] }) {
             value={searchFilters[k].join(",")}
           />
         ))}
-      <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
+      <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
         <SearchIcon />
       </IconButton>
     </Paper>
