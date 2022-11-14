@@ -37,10 +37,6 @@
           "id": "isrestapiclientguide"
         },
         {
-          "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn"
-        },
-        {
           "label": "Guidewire for Salesforce",
           "page": "gwsf/di/3.4"
         },

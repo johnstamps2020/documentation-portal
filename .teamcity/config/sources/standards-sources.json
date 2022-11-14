@@ -154,6 +154,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git",
       "branch": "master"
+    },
+    {
+      "id": "standards202206jaJPsrc",
+      "title": "Standards 2022.06 ja-JP",
+      "sourceType": "git",
+      "branch": "build/ja-JP/2022.06",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     }
   ]
 }

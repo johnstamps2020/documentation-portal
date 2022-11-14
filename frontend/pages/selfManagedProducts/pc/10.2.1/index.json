@@ -3,6 +3,40 @@
   "title": "PolicyCenter 10.2.1",
   "template": "page",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "10.2.1",
+    "items": [
+      {
+        "label": "10.2.0",
+        "id": "pc1020"
+      },
+      {
+        "label": "10.1.2",
+        "id": "pc1012"
+      },
+      {
+        "label": "10.1.1",
+        "id": "pc1011"
+      },
+      {
+        "label": "10.1.0",
+        "id": "pc1010"
+      },
+      {
+        "label": "9.0.10",
+        "id": "pc9010"
+      },
+      {
+        "label": "9.0.9",
+        "id": "pc909"
+      },
+      {
+        "label": "9.0.8",
+        "id": "pc908"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",
@@ -15,10 +49,6 @@
         {
           "label": "New and Changed",
           "id": "ispc1021newandchanged"
-        },
-        {
-          "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn"
         }
       ]
     },

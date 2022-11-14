@@ -1,6 +1,6 @@
 {
   "name": "server",
-  "version": "2.29.20",
+  "version": "2.29.22",
   "private": true,
   "engines": {
     "node": "16.14.2"
@@ -99,5 +99,6 @@
     "terser": "5.14.2",
     "@xmldom/xmldom": "0.7.6"
   },
+  "proxy": "http://localhost:6006",
   "packageManager": "yarn@3.2.1"
 }

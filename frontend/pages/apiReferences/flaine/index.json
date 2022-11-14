@@ -79,7 +79,6 @@
     {
       "label": "APD API Reference",
       "class": "categoryCard cardShadow",
-      "env": ["int"],
       "items": [
         {
           "label": "API Reference",

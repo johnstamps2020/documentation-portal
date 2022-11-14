@@ -37,14 +37,6 @@
         {
           "label": "Release Notes",
           "id": "isbc202209releasenotes"
-        },
-        {
-          "label": "Integration Gateway Release Notes",
-          "id": "integgatewayrnlatest"
-        },
-        {
-          "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn"
         }
       ]
     },
@@ -133,11 +125,15 @@
           "id": "is202209integoverview"
         },
         {
+          "label": "API Reference",
+          "id": "bcapirefflaine"
+        },
+        {
           "label": "Cloud API Business Flows",
           "id": "isbc202209apibf"
         },
         {
-          "label": "Integration Gateway for Developers",
+          "label": "Integration Gateway",
           "id": "integgatewaydevlatest"
         },
         {
@@ -161,10 +157,6 @@
         {
           "label": "Gosu Reference",
           "id": "gosureflatest"
-        },
-        {
-          "label": "Webhooks API Reference",
-          "id": "webhooksapinext"
         }
       ]
     },

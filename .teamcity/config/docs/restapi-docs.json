@@ -2,50 +2,14 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "appeventsrn",
-      "title": "App Events Release Notes",
-      "url": "cloud/is/appeventsrn/latest",
-      "metadata": {
-        "product": ["ClaimCenter", "PolicyCenter", "App Events Webhooks"],
-        "platform": ["Cloud"],
-        "version": ["2022.05", "2022.09"],
-        "release": ["Elysian", "Flaine"],
-        "subject": ["Release Notes"]
-      },
-      "environments": ["int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
       "id": "appeventsdev",
-      "title": "App Events for Developers",
+      "title": "App Events",
       "url": "cloud/is/appevents/latest",
       "metadata": {
         "product": ["PolicyCenter", "ClaimCenter", "App Events Webhooks"],
         "platform": ["Cloud"],
-        "version": ["2022.05", "2022.09"],
-        "release": ["Elysian", "Flaine"],
-        "subject": ["Integration"]
-      },
-      "environments": ["int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
-      "id": "integgatewaydevlatest",
-      "title": "Integration Gateway for Developers",
-      "url": "cloud/is/integgateway",
-      "metadata": {
-        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
         "subject": ["Integration"]
       },
       "environments": ["int", "staging", "prod"],
@@ -56,15 +20,15 @@
       "earlyAccess": false
     },
     {
-      "id": "integgatewayrnlatest",
-      "title": "Integration Gateway Release Notes",
-      "url": "cloud/is/igrelnotes",
+      "id": "integgatewaydevlatest",
+      "title": "Integration Gateway",
+      "url": "cloud/is/integgateway",
       "metadata": {
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Release notes"]
+        "version": ["2022.05", "2022.09"],
+        "release": ["Elysian", "Flaine"],
+        "subject": ["Integration"]
       },
       "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -81,26 +45,7 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["REST API Client"],
         "version": ["latest"],
-        "subject": ["Integration"],
-        "release": ["Banff", "Cortina", "Dobson", "Elysian"]
-      },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "isrestapiclientrn",
-      "title": "REST API Client Release Notes",
-      "url": "is/restapiclient/releasenotes",
-      "metadata": {
-        "platform": ["Cloud", "Self-managed"],
-        "product": ["REST API Client"],
-        "version": ["latest"],
-        "subject": ["Release notes"],
-        "release": ["Banff", "Cortina", "Dobson", "Elysian"]
+        "subject": ["Integration"]
       },
       "environments": ["dev", "int", "staging", "prod"],
       "displayOnLandingPages": true,

@@ -163,18 +163,6 @@
       ]
     },
     {
-      "id": "cloudisgosu202104src",
-      "title": "IS 2021.04 Gosu Reference",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Cortina",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202104/GosuRefGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Release.ditaval"
-      ]
-    },
-    {
       "id": "cloudisinstall202104src",
       "title": "IS 2021.04 Installation",
       "sourceType": "xdocs",

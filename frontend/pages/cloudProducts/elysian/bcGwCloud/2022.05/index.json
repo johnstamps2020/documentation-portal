@@ -32,19 +32,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "isbcelysiandraftreleasenotes"
-        },
-        {
-          "label": "Release Notes",
           "id": "isbc202205releasenotes"
-        },
-        {
-          "label": "Integration Gateway Release Notes",
-          "id": "integgatewayrnlatest"
-        },
-        {
-          "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn"
         }
       ]
     },
@@ -54,27 +42,11 @@
       "items": [
         {
           "label": "Developer Setup",
-          "id": "isbcelysiandraftdevsetup"
-        },
-        {
-          "label": "Developer Setup",
           "id": "isbc202205devsetup"
-        },
-        {
-          "label": "Developer Setup (Internal only)",
-          "id": "isbcelysiangwdevsetup"
-        },
-        {
-          "label": "Upgrade",
-          "id": "isbcelysiandraftupgrade"
         },
         {
           "label": "Upgrade",
           "id": "isbc202205upgrade"
-        },
-        {
-          "label": "Upgrade (Internal only)",
-          "id": "isbcelysiangwupgrade"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
@@ -92,15 +64,7 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "isbcelysiandraftapp"
-        },
-        {
-          "label": "Application Guide",
           "id": "isbc202205app"
-        },
-        {
-          "label": "Contact Management",
-          "id": "iselysiandraftcontact"
         },
         {
           "label": "Contact Management",
@@ -114,19 +78,7 @@
       "items": [
         {
           "label": "Administration",
-          "id": "isbcelysiandraftadmin"
-        },
-        {
-          "label": "Administration",
           "id": "isbc202205admin"
-        },
-        {
-          "label": "Administration (Internal only)",
-          "id": "isbcelysiangwadmin"
-        },
-        {
-          "label": "Data Archiving",
-          "id": "isbcelysiandraftdataarchiving"
         },
         {
           "label": "Data Archiving",
@@ -140,23 +92,11 @@
       "items": [
         {
           "label": "Configuration",
-          "id": "isbcelysiandraftconfig"
-        },
-        {
-          "label": "Configuration",
           "id": "isbc202205config"
         },
         {
           "label": "Globalization",
-          "id": "isbcelysiandraftglobal"
-        },
-        {
-          "label": "Globalization",
           "id": "isbc202205global"
-        },
-        {
-          "label": "Gosu Rules",
-          "id": "isbcelysiandraftrules"
         },
         {
           "label": "Gosu Rules",
@@ -170,35 +110,23 @@
       "items": [
         {
           "label": "Overview of Cloud Integration",
-          "id": "iselysiandraftintegoverview"
-        },
-        {
-          "label": "Overview of Cloud Integration",
           "id": "is202205integoverview"
         },
         {
-          "label": "Cloud API Business Flows",
-          "id": "isbcelysiandraftapibf"
+          "label": "API Reference",
+          "id": "bcapirefelysian"
         },
         {
           "label": "Cloud API Business Flows",
           "id": "isbc202205apibf"
         },
         {
-          "label": "Integration Gateway for Developers",
+          "label": "Integration Gateway",
           "id": "integgatewaydevlatest"
         },
         {
           "label": "Plugins, Pre-built Integrations, and SOAP APIs",
-          "id": "isbcelysiandraftinteg"
-        },
-        {
-          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
           "id": "isbc202205integ"
-        },
-        {
-          "label": "REST API Framework",
-          "id": "isbcelysiandraftrestapifw"
         },
         {
           "label": "REST API Framework",
@@ -217,10 +145,6 @@
         {
           "label": "Gosu Reference",
           "id": "gosureflatest"
-        },
-        {
-          "label": "Webhooks API Reference",
-          "id": "webhooksapinext"
         }
       ]
     },

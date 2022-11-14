@@ -1,4 +1,5 @@
-import React, { createContext, useEffect, useState } from "react";
+import React from "react";
+import { createContext, useEffect, useState } from "react";
 import { Doc } from "@documentation-portal/dist/model/entity/Doc";
 import { Build } from "@documentation-portal/dist/model/entity/Build";
 import Button from "@mui/material/Button";
@@ -13,7 +14,7 @@ import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { adminDocTheme } from "../../themes/adminDocTheme";
+import { adminDocTheme } from "../../themes/theme";
 
 const emptyDoc: Doc = {
   id: "",
@@ -39,7 +40,7 @@ export default function DocAdminPage() {
   const [snack, setSnack] = useState({
     message: "",
     color: "",
-    open: false
+    open: false,
   });
   const SnackbarContext = createContext({});
   const [open, setOpen] = React.useState(false);
@@ -60,31 +61,31 @@ export default function DocAdminPage() {
     setSnack({
       message: "",
       color: "",
-      open: false
+      open: false,
     });
     const data = {
-      id: id
+      id: id,
     };
     const response = await fetch(`/safeConfig/entity/Doc?id=${id}`, {
       method: "DELETE",
       headers: {
         Accept: "application/form-data",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     });
     if (response.ok) {
       setSnack({
         message: "Successfully deleted document.",
         color: "green",
-        open: true
+        open: true,
       });
       getDocData();
     } else {
       setSnack({
         message: "Oops, something went wrong while deleting document.",
         color: "red",
-        open: true
+        open: true,
       });
     }
   };
@@ -93,7 +94,7 @@ export default function DocAdminPage() {
     setSnack({
       message: "",
       color: "",
-      open: false
+      open: false,
     });
     //updating document
     if (doc && docData && docData.find(document => document.id === doc.id)) {
@@ -110,17 +111,20 @@ export default function DocAdminPage() {
         releases: doc.releases,
         subjects: null,
         categories: null,
-        body: doc.body
+        body: doc.body,
       };
 
-      const response = await fetch(`/safeConfig/entity/Doc?id=${doc.id}`, {
-        method: "PUT",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
+      const response = await fetch(
+        `/safeConfig/entity/Doc?id=${doc.id}`,
+        {
+          method: "PUT",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
         }
-      });
+      );
 
       const result = await response.json();
       console.log("result is: ", JSON.stringify(result, null, 4));
@@ -128,14 +132,14 @@ export default function DocAdminPage() {
         setSnack({
           message: "Successfully updated document.",
           color: "green",
-          open: true
+          open: true,
         });
         getDocData();
       } else {
         setSnack({
           message: "Oops, something went wrong while updating document.",
           color: "red",
-          open: true
+          open: true,
         });
       }
     }
@@ -154,15 +158,15 @@ export default function DocAdminPage() {
         releases: doc.releases,
         subjects: null,
         categories: null,
-        body: doc.body
+        body: doc.body,
       };
       const response = await fetch(`/safeConfig/entity/Doc?id=`, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json"
-        }
+          Accept: "application/json",
+        },
       });
 
       const result = await response.json();
@@ -171,14 +175,14 @@ export default function DocAdminPage() {
         setSnack({
           message: "Successfully added new document.",
           color: "green",
-          open: true
+          open: true,
         });
         getDocData();
       } else {
         setSnack({
           message: "Oops, something went wrong while adding new document.",
           color: "red",
-          open: true
+          open: true,
         });
       }
     }
@@ -214,7 +218,7 @@ export default function DocAdminPage() {
                     width: 400,
                     height: 400,
                     marginBottom: 15,
-                    breakInside: "avoid"
+                    breakInside: "avoid",
                   }}
                 >
                   <div>{doc.title}</div>

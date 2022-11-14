@@ -4,12 +4,11 @@
     {
       "id": "gosureflatest",
       "title": "Gosu Reference",
-      "url": "cloud/is/gosu",
+      "url": "is/gosu",
       "metadata": {
-        "platform": ["Cloud"],
+        "platform": ["Cloud", "Self-managed"],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
+        "version": ["10.2.1", "2020.05", "2020.11", "2021.04", "2021.11", "2022.05", "2022.09",  "latest"],
         "subject": ["Development"]
       },
       "environments": ["int", "staging", "prod"],

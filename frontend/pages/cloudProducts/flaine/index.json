@@ -65,6 +65,10 @@
           "page": "../cloudDataAccess/latest"
         },
         {
+          "label": "Explore",
+          "page": "../explore/latest"
+        },
+        {
           "label": "Data Platform",
           "id": "dataplatform"
         },
@@ -85,8 +89,8 @@
           "id": "comparelatest"
         },
         {
-          "label": "Explore",
-          "page": "../explore/latest"
+          "label": "Cyence",
+          "page": "../cyence"
         },
         {
           "label": "HazardHub Casualty",
@@ -141,7 +145,7 @@
           ]
         },
         {
-          "label": "Jutro Design System 8.3.0 LTS",
+          "label": "Jutro Design System 8.3.0",
           "class": "group",
           "items": [
             {
@@ -157,82 +161,16 @@
       ]
     },
     {
-      "label": "Cyence",
-      "class": "categoryCard cardShadow",
-      "items": [
-        {
-          "label": "Cyence Cyber",
-          "class": "group",
-          "items": [
-            {
-              "label": "Help Center",
-              "link": "/cyence/cyber/HelpCenter"
-            },
-            {
-              "label": "Help Center - Accumulation Only",
-              "link": "/cyence/cyber/HelpCenterAccum"
-            },
-            {
-              "label": "Model 5 Technical Reference",
-              "link": "/cyence/cyber/Model5/CyenceCyberRiskModel5.pdf"
-            },
-            {
-              "label": "Python SDK and REST API Reference",
-              "link": "/cyence/cyber/SdkApiRef"
-            }
-          ]
-        },
-        {
-          "label": "Cyence Cyber for Small/Medium Business",
-          "class": "group",
-          "items": [
-            {
-              "label": "C#/Python SDKs and REST API Reference",
-              "link": "/cyence/smb/SdkApiRef"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "label": "Guidewire Cloud Platform",
       "class": "categoryCard cardShadow",
       "items": [
         {
           "label": "Cloud Home",
-          "class": "group",
-          "items": [
-            {
-              "label": "Release Notes",
-              "id": "gchhelprnrelease"
-            },
-            {
-              "label": "Getting Started with Cloud Home",
-              "id": "gchhelprelease"
-            },
-            {
-              "label": "Cloud Updates",
-              "id": "updatedev"
-            }
-          ]
+          "id": "gchhelprelease"
         },
         {
           "label": "Cloud Console",
-          "class": "group",
-          "items": [
-            {
-              "label": "Release Notes",
-              "id": "guidewirecloudconsolerninsurerdev"
-            },
-            {
-              "label": "Release Notes",
-              "id": "guidewirecloudconsolerninsurerdevdraft"
-            },
-            {
-              "label": "Cloud Console Documentation",
-              "page": "../cloudConsole"
-            }
-          ]
+          "page": "../cloudConsole"
         },
         {
           "label": "Cloud Infrastructure",
@@ -265,19 +203,11 @@
           "class": "group",
           "items": [
             {
-              "label": "App Events Release Notes",
-              "id": "appeventsrn"
-            },
-            {
-              "label": "App Events for Developers",
+              "label": "App Events",
               "id": "appeventsdev"
             },
             {
-              "label": "Integration Gateway Release Notes",
-              "id": "integgatewayrnlatest"
-            },
-            {
-              "label": "Integration Gateway Developer Guide",
+              "label": "Integration Gateway",
               "id": "integgatewaydevlatest"
             },
             {
@@ -293,10 +223,6 @@
             {
               "label": "Workset Manager",
               "id": "worksetmgr"
-            },
-            {
-              "label": "Workset Manager Release Notes",
-              "id": "worksetmgrrn"
             }
           ]
         }

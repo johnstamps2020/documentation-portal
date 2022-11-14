@@ -1,0 +1,12 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "dxpracticessrc",
+      "title": "Digital Services Docs",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-services-docs.git",
+      "branch": "main"
+    }
+  ]
+}

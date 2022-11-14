@@ -310,7 +310,7 @@
       "filter": "IS-BC-OnPrem-Release.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis1010src",
-      "docId": "bc1010staging",
+      "docId": "bc1010",
       "resources": [
         {
           "targetFolder": "releasenotes/ReleaseNotes-files/bc/10.x",
@@ -324,7 +324,7 @@
       "filter": "IS-CC-OnPrem-Release.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis1010src",
-      "docId": "cc1010staging",
+      "docId": "cc1010",
       "resources": [
         {
           "targetFolder": "releasenotes/ReleaseNotes-files/cc/10.x",
@@ -338,7 +338,7 @@
       "filter": "IS-PC-OnPrem-Release.ditaval",
       "root": "_supermap-10x-active.ditamap",
       "srcId": "selfmanagedis1010src",
-      "docId": "pc1010staging",
+      "docId": "pc1010",
       "resources": [
         {
           "targetFolder": "releasenotes/ReleaseNotes-files/pc/10.x",
@@ -739,14 +739,6 @@
       "root": "GCH-EarlyAccess.ditamap",
       "srcId": "gchhelpsrc",
       "docId": "gchhelpearlyaccess",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "GCHReleaseNotes.ditamap",
-      "srcId": "gchhelpsrc",
-      "docId": "gchhelprnrelease",
       "indexRedirect": true
     },
     {
@@ -1183,14 +1175,6 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
-      "root": "GosuRefGuide.ditamap",
-      "srcId": "cloudisgosu202011src",
-      "docId": "isbc202011gosu",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "TestingGuide.ditamap",
       "srcId": "cloudistest202011src",
       "docId": "isbc202011testing",
@@ -1310,14 +1294,6 @@
       "root": "CloudAPIGuide-ConfigAuth.ditamap",
       "srcId": "cloudiscloudapica202011src",
       "docId": "iscc202011cloudapica",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-Cloud-Release.ditaval",
-      "root": "GosuRefGuide.ditamap",
-      "srcId": "cloudisgosu202011src",
-      "docId": "iscc202011gosu",
       "indexRedirect": true
     },
     {
@@ -1482,14 +1458,6 @@
       "root": "CloudAPIGuide-ConfigAuth.ditamap",
       "srcId": "cloudiscloudapica202011src",
       "docId": "ispc202011cloudapica",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
-      "root": "GosuRefGuide.ditamap",
-      "srcId": "cloudisgosu202011src",
-      "docId": "ispc202011gosu",
       "indexRedirect": true
     },
     {
@@ -1812,11 +1780,6 @@
       "srcId": "gwcpinternalsrc",
       "docId": "gwcpinternal",
       "workingDir": "doc-poc"
-    },
-    {
-      "buildType": "yarn",
-      "srcId": "updatedevsrc",
-      "docId": "updatedev"
     },
     {
       "buildType": "yarn",

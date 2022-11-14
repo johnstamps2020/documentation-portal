@@ -9,8 +9,7 @@
     "items": [
       {
         "label": "Flaine",
-        "page": "../flaine",
-        "env": ["int", "staging"]
+        "page": "../flaine"
       },
       {
         "label": "Elysian",
@@ -41,12 +40,6 @@
       "label": "PolicyCenter API Reference",
       "class": "productFamily cardShadow",
       "id": "pcapirefdobson"
-    },
-    {
-      "label": "APD API Reference",
-      "class": "productFamily cardShadow",
-      "id": "apdmaindoc",
-      "env": ["int"]
     }
   ]
 }

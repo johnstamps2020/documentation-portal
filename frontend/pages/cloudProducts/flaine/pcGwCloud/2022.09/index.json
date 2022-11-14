@@ -39,20 +39,8 @@
           "id": "ispc202209releasenotes"
         },
         {
-          "label": "App Events Release Notes",
-          "id": "appeventsrn"
-        },
-        {
           "label": "AppReader Release Notes",
           "id": "appreaderrn400"
-        },
-        {
-          "label": "Integration Gateway Release Notes",
-          "id": "integgatewayrnlatest"
-        },
-        {
-          "label": "REST API Client Release Notes",
-          "id": "isrestapiclientrn"
         }
       ]
     },
@@ -161,7 +149,11 @@
           "id": "is202209integoverview"
         },
         {
-          "label": "App Events for Developers",
+          "label": "API Reference",
+          "id": "pcapirefflaine"
+        },
+        {
+          "label": "App Events",
           "id": "appeventsdev"
         },
         {
@@ -177,7 +169,7 @@
           "id": "ispc202209apicm"
         },
         {
-          "label": "Integration Gateway for Developers",
+          "label": "Integration Gateway",
           "id": "integgatewaydevlatest"
         },
         {
