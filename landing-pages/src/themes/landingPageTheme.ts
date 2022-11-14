@@ -26,6 +26,9 @@ export const landingPageTheme = createTheme({
       padding: "0.5rem 0",
       color: "black",
     },
+    h4: {
+        fontSize: "0.2rem",
+    },
   },
 
   components: {
