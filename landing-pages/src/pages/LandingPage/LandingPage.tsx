@@ -14,6 +14,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
 import Backdrop from "@mui/material/Backdrop";
+import Container from "@mui/material/Container";
 
 export default function LandingPage() {
   const params = useParams();
@@ -78,16 +79,18 @@ export default function LandingPage() {
                 />
               )}
               <Grid xs={12}>
-                <Breadcrumbs pagePath={pageData.path} />
+                <Container>
+                  <Breadcrumbs pagePath={pageData.path} />
+                </Container>
                 <Typography variant="h1">{pageData.title}</Typography>
               </Grid>
-              {pageData.categories?.map(category => (
+              {pageData.categories?.map((category) => (
                 <LandingPageCategory {...category} key={category.id} />
               ))}
-              {pageData.subjects?.map(subject => (
+              {pageData.subjects?.map((subject) => (
                 <LandingPageSubject {...subject} key={subject.id} />
               ))}
-              {pageData.productFamilyItems?.map(item => (
+              {pageData.productFamilyItems?.map((item) => (
                 <LandingPageItem {...item} key={item.id} />
               ))}
             </Grid>
@@ -96,7 +99,7 @@ export default function LandingPage() {
       </ThemeProvider>
       <Backdrop
         open={loading}
-        sx={{ color: "#fff", zIndex: theme => theme.zIndex.drawer + 1 }}
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
       />
     </Layout>
   );

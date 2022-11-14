@@ -11,21 +11,21 @@ export const landingPageTheme = createTheme({
       textAlign: "left",
       color: "white",
       fontWeight: 600,
-      marginRight: "auto"
+      marginRight: "auto",
     },
     h2: {
       fontWeight: 600,
       fontSize: "1.375rem",
       color: "hsl(216, 42%, 13%)",
       textAlign: "left",
-      paddingBottom: "10px"
+      paddingBottom: "10px",
     },
     h3: {
       fontWeight: 600,
       fontSize: "1.125rem",
       padding: "0.5rem 0",
-      color: "black"
-    }
+      color: "black",
+    },
   },
 
   components: {
@@ -33,8 +33,8 @@ export const landingPageTheme = createTheme({
       defaultProps: {
         spacing: 1,
         color: "green",
-        textAlign: "left"
-      }
+        textAlign: "left",
+      },
     },
     MuiPaper: {
       defaultProps: {
@@ -43,18 +43,18 @@ export const landingPageTheme = createTheme({
           marginTop: 2,
           width: 300,
           borderRadius: 2,
-          padding: "24px"
-        }
-      }
+          padding: "24px",
+        },
+      },
     },
     MuiLink: {
       defaultProps: {
         style: {
           textDecoration: "none",
           paddingBottom: "10px",
-          color: "hsl(196, 100%, 31%)"
-        }
-      }
+          color: "hsl(196, 100%, 31%)",
+        },
+      },
     },
     MuiGrid: {
       defaultProps: {
@@ -66,10 +66,17 @@ export const landingPageTheme = createTheme({
           backgroundImage: `url(${elysianBackgroundImage})`,
           backgroundAttachment: "fixed",
           backgroundPosition: "bottom-right",
-          backgroundSize: "cover"
+          backgroundSize: "cover",
         },
-        xs: 12
-      }
-    }
-  }
+        xs: 12,
+      },
+    },
+    MuiContainer: {
+      defaultProps: {
+        sx: {
+          height: 20,
+        },
+      },
+    },
+  },
 });
