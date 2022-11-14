@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "ServiceRepEngage 11.4.1",
+  "title": "CustomerEngage Account Management 11.5.0",
   "template": "page",
   "class": "twoColumns",
   "items": [
@@ -10,11 +10,11 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "dx1141srerelnotes"
+          "id": "dx1150ceamrelnotes"
         },
         {
           "label": "Log4j Patch Release Notes",
-          "id": "dx1141log4jrelnotes"
+          "id": "dx1150log4jrelnotes"
         }
       ]
     },
@@ -24,7 +24,7 @@
       "items": [
         {
           "label": "Installation Guide",
-          "id": "dx1141sreinstall"
+          "id": "dx1150ceaminstall"
         }
       ]
     },
@@ -34,7 +34,7 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "dx1141sreapp"
+          "id": "dx1150ceamapp"
         }
       ]
     },
@@ -44,7 +44,7 @@
       "items": [
         {
           "label": "Administration and Security Guide",
-          "id": "dx1141sreadmin"
+          "id": "dx1150ceamadmin"
         }
       ]
     },
@@ -54,11 +54,11 @@
       "items": [
         {
           "label": "Developer's Guide",
-          "id": "dx1141sredev"
+          "id": "dx1150ceamdev"
         },
         {
           "label": "Digital Services Reference Guides",
-          "id": "dx1141srerefguides"
+          "id": "dx1150ceamrefguides"
         }
       ]
     }

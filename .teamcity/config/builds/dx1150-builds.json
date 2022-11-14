@@ -1,0 +1,349 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-OnPrem.ditaval",
+      "root": "admin-and-security-guide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150ceamadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-OnPrem.ditaval",
+      "root": "CustomerEngage_AccountManagement_AppGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150ceamapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-OnPrem.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150ceaminstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-OnPrem.ditaval",
+      "root": "DevelopersGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150ceamdev",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-OnPrem.ditaval",
+      "root": "DigitalServicesRefGuides.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150ceamrefguides",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-OnPrem.ditaval",
+      "root": "digital-release-notes.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150ceamrelnotes",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-OnPrem.ditaval",
+      "root": "admin-and-security-guide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150ceclaimsadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-OnPrem.ditaval",
+      "root": "CustomerEngage_Claims_AppGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150ceclaimsapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-OnPrem.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150ceclaimsinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-OnPrem.ditaval",
+      "root": "DevelopersGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150ceclaimsdev",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-OnPrem.ditaval",
+      "root": "DigitalServicesRefGuides.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150ceclaimsrefguides",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-OnPrem.ditaval",
+      "root": "digital-release-notes.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150ceclaimsrelnotes",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-OnPrem.ditaval",
+      "root": "admin-and-security-guide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150ceqbadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-OnPrem.ditaval",
+      "root": "CustomerEngage_QuoteAndBuy_AppGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150ceqbapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-OnPrem.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150ceqbinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-OnPrem.ditaval",
+      "root": "DevelopersGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150ceqbdev",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-OnPrem.ditaval",
+      "root": "DigitalServicesRefGuides.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150ceqbrefguides",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-OnPrem.ditaval",
+      "root": "digital-release-notes.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150ceqbrelnotes",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-OnPrem.ditaval",
+      "root": "admin-and-security-guide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150peadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-OnPrem.ditaval",
+      "root": "ProducerEngage_AppGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150peapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-OnPrem.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150peinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-OnPrem.ditaval",
+      "root": "DevelopersGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150pedev",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-OnPrem.ditaval",
+      "root": "DigitalServicesRefGuides.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150perefguides",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-OnPrem.ditaval",
+      "root": "digital-release-notes.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150perelnotes",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-claims-OnPrem.ditaval",
+      "root": "admin-and-security-guide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150peclaimsadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-claims-OnPrem.ditaval",
+      "root": "ProducerEngage_Claims_AppGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150peclaimsapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-claims-OnPrem.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150peclaimsinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-claims-OnPrem.ditaval",
+      "root": "DevelopersGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150peclaimsdev",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-claims-OnPrem.ditaval",
+      "root": "DigitalServicesRefGuides.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150peclaimsrefguides",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-claims-OnPrem.ditaval",
+      "root": "digital-release-notes.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150peclaimsrelnotes",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-OnPrem.ditaval",
+      "root": "admin-and-security-guide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150sreadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-OnPrem.ditaval",
+      "root": "ServiceRepEngage_AppGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150sreapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-OnPrem.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150sreinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-OnPrem.ditaval",
+      "root": "DevelopersGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150sredev",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-OnPrem.ditaval",
+      "root": "DigitalServicesRefGuides.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150srerefguides",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-OnPrem.ditaval",
+      "root": "digital-release-notes.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150srerelnotes",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-OnPrem.ditaval",
+      "root": "admin-and-security-guide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150veadmin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-OnPrem.ditaval",
+      "root": "VendorEngage_AppGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150veapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-OnPrem.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150veinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-OnPrem.ditaval",
+      "root": "DevelopersGuide.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150vedev",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-OnPrem.ditaval",
+      "root": "DigitalServicesRefGuides.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150verefguides",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-OnPrem.ditaval",
+      "root": "digital-release-notes.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150verelnotes",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-OnPrem-Release.ditaval",
+      "root": "Digital_ReleaseNotes_log4j.ditamap",
+      "srcId": "dx1150",
+      "docId": "dx1150log4jrelnotes",
+      "indexRedirect": true
+    }
+  ]
+}
