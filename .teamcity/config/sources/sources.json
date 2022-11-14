@@ -1132,6 +1132,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/s3-file-manager.git",
       "branch": "main"
+    },
+    {
+      "id": "cloudtickettempaltessrc",
+      "title": "Cloud Ticket Templates",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-ticket-templates.git",
+      "branch": "main"
     }
   ]
 }

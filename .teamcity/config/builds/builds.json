@@ -1752,6 +1752,13 @@
       "buildType": "yarn",
       "srcId": "doctoolss3managersrc",
       "docId": "doctoolss3manager"
+    },
+    {
+      "buildType": "dita",
+      "root": "cloud-ticket-templates.ditamap",
+      "srcId": "cloudtickettempaltessrc",
+      "docId": "cloudtickettempaltes",
+      "indexRedirect": true
     }
   ]
 }

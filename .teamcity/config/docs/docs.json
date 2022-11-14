@@ -6821,6 +6821,22 @@
       "earlyAccess": false,
       "internal": true,
       "public": false
+    },
+    {
+      "id": "cloudtickettempaltes",
+      "title": "Cloud Ticket Templates",
+      "url": "cloud/requests/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Ticket Templates"],
+        "version": ["latest"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "earlyAccess": false,
+      "internal": false,
+      "public": false
     }
   ]
 }
