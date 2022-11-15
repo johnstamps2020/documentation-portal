@@ -17,6 +17,7 @@ export const layoutTheme = createTheme({
       defaultProps: {
         sx: {
           display: "flex",
+          textAlign: "center",
           alignItems: "center",
           justifyContent: "center",
           flexWrap: "wrap",
@@ -43,7 +44,8 @@ export const layoutTheme = createTheme({
           fontSize: 11,
           fontWeight: 600,
           marginTop: "22px",
-          marginRight: "33%",
+          marginRight: "auto",
+          marginLeft: "auto",
           color: "white",
         },
       },
@@ -51,7 +53,31 @@ export const layoutTheme = createTheme({
     MuiImageList: {
       defaultProps: {
         cols: 1,
-        style: { marginRight: "2px", marginLeft: "auto" },
+        style: { marginRight: "2px", marginLeft: "auto", overflow: "hidden" },
+      },
+    },
+    MuiAvatar: {
+      defaultProps: {
+        style: {
+          height: "25px",
+          width: "25px",
+          marginRight: "20px",
+          marginLeft: "auto",
+          marginTop: "10px",
+        },
+      },
+    },
+    MuiInputBase: {
+      defaultProps: {
+        sx: { ml: 1, flex: 1 },
+      },
+    },
+    MuiGrid: {
+      defaultProps: {
+        container: true,
+        maxWidth: "200px",
+        marginRight: 0,
+        marginLeft: "auto",
       },
     },
   },

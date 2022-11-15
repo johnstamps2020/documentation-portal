@@ -3,9 +3,11 @@ import Logo from "../Logo/Logo";
 import SearchBox from "../SearchBox/SearchBox";
 import AppBar from "@mui/material/AppBar";
 import {
+  Avatar,
   BottomNavigation,
   Box,
   CssBaseline,
+  Grid,
   ImageList,
   ImageListItem,
   Link,
@@ -13,6 +15,10 @@ import {
   Typography,
 } from "@mui/material";
 import elysianBadge from "../../images/badge-elysian.svg";
+import iconAvatar from "../../images/icon-avatar.svg";
+import iconGlossary from "../../images/icon-glossary.svg";
+import iconTranslatedDocs from "../../images/icon-translatedDocs.svg";
+import iconExternalSites from "../../images/icon-externalSites.svg";
 
 type LayoutProps = {
   children: JSX.Element | JSX.Element[];
@@ -32,15 +38,27 @@ export default function Layout({
       <ThemeProvider theme={layoutTheme}>
         <CssBaseline enableColorScheme />
         <AppBar>
-          <Logo />
+          <ImageList
+            style={{ marginLeft: 0, marginRight: "auto", overflow: "hidden" }}
+          >
+            <ImageListItem>
+              <Logo />
+            </ImageListItem>
+          </ImageList>
           <SearchBox />
+          <Grid>
+            <Avatar alt="External Sites" src={iconExternalSites} />
+            <Avatar alt="Glossary" src={iconGlossary} />
+            <Avatar alt="Translated Documents" src={iconTranslatedDocs} />
+            <Avatar alt="User Avatar" src={iconAvatar} />
+          </Grid>
         </AppBar>
         <main>{children}</main>
         <BottomNavigation>
           <Box sx={{ display: "flex", width: "100%" }}>
             <Typography
               variant="h6"
-              style={{ marginRight: "33%", marginLeft: "2%" }}
+              style={{ marginRight: "auto", marginLeft: "2%" }}
             >
               {"Copyright 2022 Guidewire Software, Inc."}
             </Typography>
