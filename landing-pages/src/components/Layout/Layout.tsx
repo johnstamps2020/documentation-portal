@@ -3,16 +3,12 @@ import Logo from "../Logo/Logo";
 import SearchBox from "../SearchBox/SearchBox";
 import AppBar from "@mui/material/AppBar";
 import {
-  Avatar,
-  Badge,
   BottomNavigation,
   Box,
-  CardMedia,
   CssBaseline,
   ImageList,
   ImageListItem,
   Link,
-  Paper,
   ThemeProvider,
   Typography,
 } from "@mui/material";
