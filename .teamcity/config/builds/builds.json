@@ -1756,7 +1756,8 @@
     {
       "buildType": "yarn",
       "srcId": "cloudtickettemplatessrc",
-      "docId": "cloudtickettemplates"
+      "docId": "cloudtickettemplates",
+      "nodeImageVersion": "18.12.1"
     }
   ]
 }
