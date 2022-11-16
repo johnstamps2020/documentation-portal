@@ -6823,7 +6823,7 @@
       "public": false
     },
     {
-      "id": "cloudtickettempaltes",
+      "id": "cloudtickettemplates",
       "title": "Cloud Ticket Templates",
       "url": "cloud/requests/latest",
       "metadata": {
