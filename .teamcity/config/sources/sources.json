@@ -1065,7 +1065,7 @@
       "branch": "main"
     },
     {
-      "id": "cloudtickettempaltessrc",
+      "id": "cloudtickettemplatessrc",
       "title": "Cloud Ticket Templates",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-ticket-templates.git",
