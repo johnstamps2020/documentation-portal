@@ -72,18 +72,19 @@ export default function LandingPage() {
         {pageData && (
           <Grid {...landingPageTheme.components?.MuiGrid?.defaultProps}>
             <Grid container marginLeft={30} marginBottom={10}>
-              {pageData.pageSelector && (
-                <LandingPageSelector
-                  {...pageData.pageSelector}
-                  key={pageData.pageSelector.id}
-                />
-              )}
-              <Grid xs={12}>
+              <Grid xs={12} sx={{ textAlign: "left" }}>
                 <Container>
                   <Breadcrumbs pagePath={pageData.path} />
                 </Container>
                 <Typography variant="h1">{pageData.title}</Typography>
+                {pageData.pageSelector && (
+                  <LandingPageSelector
+                    {...pageData.pageSelector}
+                    key={pageData.pageSelector.id}
+                  />
+                )}
               </Grid>
+
               {pageData.categories?.map((category) => (
                 <LandingPageCategory {...category} key={category.id} />
               ))}

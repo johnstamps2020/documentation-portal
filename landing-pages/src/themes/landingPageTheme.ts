@@ -12,6 +12,7 @@ export const landingPageTheme = createTheme({
       color: "white",
       fontWeight: 600,
       marginRight: "auto",
+      marginTop: "30px",
     },
     h2: {
       fontWeight: 600,
@@ -27,7 +28,7 @@ export const landingPageTheme = createTheme({
       color: "black",
     },
     h4: {
-        fontSize: "0.2rem",
+      fontSize: "0.2rem",
     },
   },
 
@@ -79,6 +80,32 @@ export const landingPageTheme = createTheme({
         sx: {
           height: 20,
         },
+      },
+    },
+    MuiFormControl: {
+      defaultProps: {
+        variant: "standard",
+        sx: {
+          marginTop: "10px",
+          alignItems: "left",
+          width: "300px",
+        },
+      },
+    },
+    MuiSelect: {
+      defaultProps: {
+        sx: {
+          textAlign: "left",
+          marginLeft: 0,
+          marginRight: "auto",
+          backgroundColor: "white",
+          borderRadius: 4,
+        },
+      },
+    },
+    MuiInputLabel: {
+      defaultProps: {
+        sx: { color: "white", fontSize: 20, fontWeight: 600 },
       },
     },
   },
