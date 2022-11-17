@@ -13,7 +13,6 @@ import {
   ImageList,
   ImageListItem,
   Link,
-  ListItemIcon,
   Menu,
   MenuItem,
   ThemeProvider,
@@ -25,7 +24,6 @@ import iconGlossary from "../../images/icon-glossary.svg";
 import iconTranslatedDocs from "../../images/icon-translatedDocs.svg";
 import iconExternalSites from "../../images/icon-externalSites.svg";
 import React from "react";
-import { PersonAdd, Settings, Logout } from "@mui/icons-material";
 
 type LayoutProps = {
   children: JSX.Element | JSX.Element[];
@@ -39,13 +37,38 @@ export default function Layout({
   searchFilters,
 }: LayoutProps) {
   document.title = `${title} | Guidewire Documentation`;
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  const [anchorElExt, setAnchorElExt] = React.useState<null | HTMLElement>(
+    null
+  );
+  const [anchorElGloss, setAnchorElGloss] = React.useState<null | HTMLElement>(
+    null
+  );
+  const [anchorElTrans, setAnchorElTrans] = React.useState<null | HTMLElement>(
+    null
+  );
+  const [
+    anchorElProfile,
+    setAnchorElProfile,
+  ] = React.useState<null | HTMLElement>(null);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+    if (event.currentTarget.id === "external-sites") {
+      setAnchorElExt(event.currentTarget);
+    }
+    if (event.currentTarget.id === "glossary") {
+      setAnchorElGloss(event.currentTarget);
+    }
+    if (event.currentTarget.id === "translated-documents") {
+      setAnchorElTrans(event.currentTarget);
+    }
+    if (event.currentTarget.id === "profile") {
+      setAnchorElProfile(event.currentTarget);
+    }
   };
   const handleClose = () => {
-    setAnchorEl(null);
+    setAnchorElExt(null);
+    setAnchorElGloss(null);
+    setAnchorElTrans(null);
+    setAnchorElProfile(null);
   };
   return (
     <div>
@@ -61,41 +84,28 @@ export default function Layout({
           </ImageList>
           <SearchBox />
           <Grid>
-            <IconButton
-              onClick={handleClick}
-              aria-controls={open ? "account-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-            >
+            <IconButton id="external-sites" onClick={handleClick}>
               <Avatar alt="External Sites" src={iconExternalSites} />
             </IconButton>
-            <IconButton
-              onClick={handleClick}
-              aria-controls={open ? "account-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-            >
+            <IconButton id="glossary" onClick={handleClick}>
               <Avatar alt="Glossary" src={iconGlossary} />
             </IconButton>
-            <IconButton
-              onClick={handleClick}
-              aria-controls={open ? "account-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-            >
+            <IconButton id="translated-documents" onClick={handleClick}>
               <Avatar alt="Translated Documents" src={iconTranslatedDocs} />
             </IconButton>
-            <Avatar alt="User Avatar" src={iconAvatar} />
+            <IconButton id="profile" onClick={handleClick}>
+              <Avatar alt="User Avatar" src={iconAvatar} />
+            </IconButton>
           </Grid>
         </AppBar>
         <Menu
-          anchorEl={anchorEl}
-          id="account-menu"
-          open={open}
+          anchorEl={anchorElExt}
+          id="external-sites-menu"
+          open={Boolean(anchorElExt)}
           onClose={handleClose}
           onClick={handleClose}
         >
-          <Typography>Guidewire sites</Typography>
+          <Typography variant="body1">Guidewire sites</Typography>
           <Divider />
           <MenuItem>
             <Link href="https://community.guidewire.com/s/login">
@@ -117,6 +127,69 @@ export default function Layout({
           </MenuItem>
           <MenuItem>
             <Link href="https://www.guidewire.com">Guidewire Website</Link>
+          </MenuItem>
+        </Menu>
+        <Menu
+          anchorEl={anchorElGloss}
+          id="glossary-menu"
+          open={Boolean(anchorElGloss)}
+          onClose={handleClose}
+          onClick={handleClose}
+        >
+          <MenuItem>
+            <Link href="https://docs.int.ccs.guidewire.net/glossary">
+              Guidewire Glossary
+            </Link>
+          </MenuItem>
+        </Menu>
+        <Menu
+          anchorEl={anchorElTrans}
+          id="translated-docs-menu"
+          open={Boolean(anchorElTrans)}
+          onClose={handleClose}
+          onClick={handleClose}
+        >
+          <Typography variant="body1">Translated documentation</Typography>
+          <Divider />
+          <MenuItem>
+            <Link href="">Deutch</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link href="">Español (España)</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link href="">Español</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link href="">Français</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link href="">Italiano</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link href="">日本語</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link href="">Nederlands</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link href="">Português</Link>
+          </MenuItem>
+        </Menu>
+        <Menu
+          anchorEl={anchorElProfile}
+          id="profile-menu"
+          open={Boolean(anchorElProfile)}
+          onClose={handleClose}
+          onClick={handleClose}
+        >
+          <Typography variant="body1">Name Surname</Typography>
+          <Typography variant="h5">e-mail address</Typography>
+          <Divider />
+          <MenuItem>
+            <Link href="" style={{ color: "black" }}>
+              Log out
+            </Link>
           </MenuItem>
         </Menu>
         <main>{children}</main>

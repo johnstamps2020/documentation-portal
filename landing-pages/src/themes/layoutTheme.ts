@@ -5,10 +5,22 @@ export const layoutTheme = createTheme({
     fontFamily: ["Source Sans Pro", "Helvetica", "Arial", "sans-serif"].join(
       ","
     ),
+    h5: {
+      fontSize: 12,
+      marginLeft: "16px",
+      marginRight: "auto",
+      marginTop: 0,
+      color: "hsl(204, 12%, 45%)",
+    },
     h6: {
       fontSize: 11,
       fontWeight: 600,
       marginTop: "22px",
+    },
+    body1: {
+      fontSize: 16,
+      marginLeft: "16px",
+      marginRight: "auto",
     },
   },
 
@@ -62,7 +74,6 @@ export const layoutTheme = createTheme({
           height: "25px",
           width: "25px",
           marginRight: "20px",
-          marginLeft: "auto",
           marginTop: "10px",
         },
       },
@@ -82,35 +93,19 @@ export const layoutTheme = createTheme({
     },
     MuiIconButton: {
       defaultProps: {
-        sx: { padding: 0 },
+        sx: { padding: 0, margin: 0 },
       },
     },
     MuiMenu: {
       defaultProps: {
+        disableScrollLock: true,
         PaperProps: {
           elevation: 0,
           sx: {
             overflow: "visible",
             filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
             mt: 1.5,
-            "& .MuiAvatar-root": {
-              width: 32,
-              height: 32,
-              ml: -0.5,
-              mr: 1,
-            },
-            "&:before": {
-              content: '""',
-              display: "block",
-              position: "absolute",
-              top: 0,
-              right: 14,
-              width: 10,
-              height: 10,
-              bgcolor: "background.paper",
-              transform: "translateY(-50%) rotate(45deg)",
-              zIndex: 0,
-            },
+            p: "20px",
           },
         },
         transformOrigin: { horizontal: "right", vertical: "top" },
@@ -121,12 +116,22 @@ export const layoutTheme = createTheme({
       defaultProps: {
         sx: {
           "& .MuiLink-root": {
-            color: "black",
+            color: "hsl(196, 100%, 31%)",
             fontSize: 14,
             fontWeight: 400,
             p: 0,
-            m: 0
+            m: 0,
           },
+          m: 0,
+        },
+      },
+    },
+    MuiDivider: {
+      defaultProps: {
+        sx: {
+          border: 1,
+          m: 2,
+          color: "hsl(214, 22%, 58%);",
         },
       },
     },
