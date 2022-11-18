@@ -2,13 +2,13 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "ipacloud10rn",
+      "id": "ipacloudelysianrn",
       "title": "Release Notes",
-      "url": "cloud/ipa/1.0/releasenotes",
+      "url": "cloud/ipa/elysian/releasenotes",
       "metadata": {
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
-        "version": ["1.0"],
+        "version": ["2.0"],
         "subject": ["Release notes"]
       },
       "environments": ["int", "staging"],
@@ -19,13 +19,13 @@
       "earlyAccess": false
     },
     {
-      "id": "ipacloud10config",
+      "id": "ipacloudelysianconfig",
       "title": "Configuration",
-      "url": "cloud/ipa/1.0/config",
+      "url": "cloud/ipa/elysian/config",
       "metadata": {
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
-        "version": ["1.0"],
+        "version": ["2.0"],
         "subject": ["Developers"]
       },
       "environments": ["int", "staging"],
@@ -36,13 +36,13 @@
       "earlyAccess": false
     },
     {
-      "id": "ipacloud10apmp",
+      "id": "ipacloudelysianapmp",
       "title": "Australian Personal Motor Policy",
-      "url": "cloud/ipa/1.0/apmp",
+      "url": "cloud/ipa/elysian/apmp",
       "metadata": {
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
-        "version": ["1.0"],
+        "version": ["2.0"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int", "staging"],
@@ -53,13 +53,13 @@
       "earlyAccess": false
     },
     {
-      "id": "ipacloud10apmc",
+      "id": "ipacloudelysianapmc",
       "title": "Australian Personal Motor Claims",
-      "url": "cloud/ipa/1.0/apmc",
+      "url": "cloud/ipa/elysian/apmc",
       "metadata": {
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
-        "version": ["1.0"],
+        "version": ["2.0"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int", "staging"],
@@ -70,13 +70,13 @@
       "earlyAccess": false
     },
     {
-      "id": "ipacloud10gstc",
+      "id": "ipacloudelysiangstc",
       "title": "GST for Claims",
-      "url": "cloud/ipa/1.0/gstc",
+      "url": "cloud/ipa/elysian/gstc",
       "metadata": {
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
-        "version": ["1.0"],
+        "version": ["2.0"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int", "staging"],
@@ -87,13 +87,13 @@
       "earlyAccess": false
     },
     {
-      "id": "ipacloud10al",
+      "id": "ipacloudelysianal",
       "title": "Address Lookup",
-      "url": "cloud/ipa/1.0/al",
+      "url": "cloud/ipa/elysian/al",
       "metadata": {
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
-        "version": ["1.0"],
+        "version": ["2.0"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int", "staging"],
@@ -104,67 +104,16 @@
       "earlyAccess": false
     },
     {
-      "id": "ipacloud10vl",
+      "id": "ipacloudelysianvl",
       "title": "Vehicle Lookup",
-      "url": "cloud/ipa/1.0/vl",
+      "url": "cloud/ipa/elysian/vl",
       "metadata": {
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
-        "version": ["1.0"],
+        "version": ["2.0"],
         "subject": ["Features and functionality"]
       },
       "environments": ["int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "ipaappdraft",
-      "title": "Application Guide",
-      "url": "self-managed/ipa/latest/app",
-      "metadata": {
-        "product": ["Global Solutions - Australia"],
-        "platform": ["Self-managed"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "ipainstalldraft",
-      "title": "Installation",
-      "url": "self-managed/ipa/latest/install",
-      "metadata": {
-        "product": ["Global Solutions - Australia"],
-        "platform": ["Self-managed"],
-        "version": ["latest"],
-        "subject": ["Installation"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "iparndraft",
-      "title": "Release Notes",
-      "url": "self-managed/ipa/latest/releasenotes",
-      "metadata": {
-        "product": ["Global Solutions - Australia"],
-        "platform": ["Self-managed"],
-        "version": ["latest"],
-        "subject": ["Release notes"]
-      },
-      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

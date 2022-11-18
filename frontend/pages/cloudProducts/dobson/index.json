@@ -58,6 +58,10 @@
         {
           "label": "Guidewire for Salesforce",
           "page": "gwsf"
+        },
+        {
+          "label": "InsuranceSuite Package for Australia",
+          "page": "../../globalContent/ipa/1.0"
         }
       ]
     },
@@ -220,11 +224,6 @@
         {
           "label": "London Market",
           "page": "../../globalContent/iplm/3.2"
-        },
-        {
-          "label": "Australia",
-          "page": "../../globalContent/ipa/1.0",
-          "env": ["int", "staging"]
         }
       ]
     }
