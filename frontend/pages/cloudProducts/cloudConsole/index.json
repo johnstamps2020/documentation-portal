@@ -77,6 +77,10 @@
         {
           "label": "Database Service API",
           "id": "dbserviceapi"
+        },
+        {
+          "label": "Runtime Properties API",
+          "id": "runtimepropertiesapi"
         }
       ]
     }
