@@ -4,7 +4,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "ReleaseNotes.ditamap",
+      "root": "IPAReleaseNotes.ditamap",
       "srcId": "ipacloud10src",
       "docId": "ipacloud10rn",
       "indexRedirect": true
@@ -36,7 +36,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "ApplicationGuide.ditamap",
+      "root": "IPAApplicationGuide.ditamap",
       "srcId": "ipacloud10src",
       "docId": "ipacloud10gstc",
       "indexRedirect": true
