@@ -38,7 +38,7 @@ html {
 
 body {
   display: grid;
-  grid-template-columns: 300px 3fr 1fr;
+  grid-template-columns: 300px 896px minmax(0, 1fr);
   grid-template-rows: auto;
   grid-template-areas:
     'header header header'
@@ -81,6 +81,7 @@ main {
 main > article {
   max-width: var(--article-width);
   margin-right: var(--article-margin-right);
+  overflow: hidden;
 }
 
 main > .spacer {
@@ -116,7 +117,7 @@ main > .spacer {
   display: block;
 }
 
-@media screen and (max-width: 1405px) {
+@media screen and (max-width: 1496px) {
   main {
     margin-right: 0.2vw;
     flex-direction: column;
