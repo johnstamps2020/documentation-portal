@@ -2,6 +2,13 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "runtimepropertiesapisrc",
+      "title": "Runtime Properties API",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/runtime-properties-api.git",
+      "branch": "master"
+    },
+    {
       "id": "cloudconsoleapisrc",
       "title": "Cloud Console API",
       "sourceType": "git",

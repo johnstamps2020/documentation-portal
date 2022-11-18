@@ -3,6 +3,11 @@
   "builds": [
     {
       "buildType": "yarn",
+      "docId": "runtimepropertiesapi",
+      "srcId": "runtimepropertiesapisrc"
+    },
+    {
+      "buildType": "yarn",
       "docId": "gccinternallatests",
       "srcId": "gccinternalsrc"
     },

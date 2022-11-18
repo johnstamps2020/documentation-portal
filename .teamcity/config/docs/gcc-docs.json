@@ -2,6 +2,23 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "runtimepropertiesapi",
+      "title": "Runtime Properties API",
+      "url": "cloud/console/runtimepropertiesapi",
+      "metadata": {
+        "product": ["Guidewire Cloud Console"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Development"]
+      },
+      "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "cloudconsoleapi",
       "title": "Cloud Console API",
       "url": "cloud/console/cloudconsoleapi",
