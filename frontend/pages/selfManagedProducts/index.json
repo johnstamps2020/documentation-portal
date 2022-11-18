@@ -45,10 +45,6 @@
           "class": "group",
           "items": [
             {
-              "label": "Australia",
-              "page": "../globalContent/ipa/1.0"
-            },
-            {
               "label": "France",
               "page": "../globalContent/ipf/2.0"
             },

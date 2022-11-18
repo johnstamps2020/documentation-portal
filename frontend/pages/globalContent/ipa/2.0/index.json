@@ -1,0 +1,54 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "InsuranceSuite Package for Australia for Guidewire Cloud 2.0",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ipacloudelysianrn"
+        }
+      ]
+    },
+    {
+      "label": "Developers",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Configuration Guide",
+          "id": "ipacloudelysianconfig"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Australia Personal Motor Policy",
+          "id": "ipacloudelysianapmp"
+        },
+        {
+          "label": "Australia Personal Motor Claims",
+          "id": "ipacloudelysianapmc"
+        },
+        {
+          "label": "GST for Claims",
+          "id": "ipacloudelysiangstc"
+        },
+        {
+          "label": "Address Lookup",
+          "id": "ipacloudelysianal"
+        },
+        {
+          "label": "Vehicle Lookup",
+          "id": "ipacloudelysianvl"
+        }
+      ]
+    }
+  ]
+}
