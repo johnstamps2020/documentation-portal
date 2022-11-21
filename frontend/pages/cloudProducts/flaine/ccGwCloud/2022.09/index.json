@@ -117,6 +117,10 @@
         {
           "label": "APD for Claims (Early Access)",
           "id": "apdclaims"
+        },
+        {
+          "label": "Claims Intake FNOL Template (Early Access)",
+          "id": "is202209fnoltemplate"
         }
       ]
     },
