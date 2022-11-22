@@ -15,6 +15,7 @@ import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
 import Backdrop from "@mui/material/Backdrop";
 import Container from "@mui/material/Container";
+import LandingPageSidebar from "../../components/LandingPageSidebar/LandingPageSidebar";
 
 export default function LandingPage() {
   const params = useParams();
@@ -71,23 +72,19 @@ export default function LandingPage() {
         )}
         {pageData && (
           <Grid {...landingPageTheme.components?.MuiGrid?.defaultProps}>
-            <Grid
-              container
-              marginBottom={10}
-            >
-              <Grid xs={12} sx={{ textAlign: "left" }}>
-                <Container>
-                  <Breadcrumbs pagePath={pageData.path} />
-                </Container>
-                <Typography variant="h1">{pageData.title}</Typography>
-                {pageData.pageSelector && (
-                  <LandingPageSelector
-                    {...pageData.pageSelector}
-                    key={pageData.pageSelector.id}
-                  />
-                )}
-              </Grid>
-
+            <Grid xs={12} sx={{ textAlign: "left", width: "100%" }}>
+              <Container>
+                <Breadcrumbs pagePath={pageData.path} />
+              </Container>
+              <Typography variant="h1">{pageData.title}</Typography>
+              {pageData.pageSelector && (
+                <LandingPageSelector
+                  {...pageData.pageSelector}
+                  key={pageData.pageSelector.id}
+                />
+              )}
+            </Grid>
+            <Grid container marginBottom={10} maxWidth={"1000px"}>
               {pageData.categories?.map((category) => (
                 <LandingPageCategory {...category} key={category.id} />
               ))}
@@ -98,6 +95,7 @@ export default function LandingPage() {
                 <LandingPageItem {...item} key={item.id} />
               ))}
             </Grid>
+            <LandingPageSidebar {...pageData.sidebar} />
           </Grid>
         )}
       </ThemeProvider>
