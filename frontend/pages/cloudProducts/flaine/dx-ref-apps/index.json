@@ -5,6 +5,20 @@
   "class": "blue-theme flaine threeCards",
   "items": [
     {
+      "label": "Jutro Design System 8.3.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Jutro Design System and UI Framework",
+          "id": "jutro830"
+        },
+        {
+          "label": "Jutro Storybook",
+          "id": "storybook830"
+        }
+      ]
+    },
+    {
       "label": "CustomerEngage Account Management",
       "class": "categoryCard cardShadow",
       "items": [
@@ -169,7 +183,7 @@
       ]
     },
     {
-      "label": "ServiceRepEngage",
+      "label": "VendorEngage",
       "class": "categoryCard cardShadow",
       "items": [
         {
@@ -201,20 +215,6 @@
         {
           "label": "Digital Frontend API Documentation",
           "id": "dxjsdocs202209"
-        }
-      ]
-    },
-    {
-      "label": "Jutro Design System 8.3.0",
-      "class": "categoryCard cardShadow",
-      "items": [
-        {
-          "label": "Jutro Design System and UI Framework",
-          "id": "jutro830"
-        },
-        {
-          "label": "Jutro Storybook",
-          "id": "storybook830"
         }
       ]
     }
