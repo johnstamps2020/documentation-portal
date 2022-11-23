@@ -1,21 +1,15 @@
 import { useParams } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import { Page } from "@documentation-portal/dist/model/entity/Page";
-import Grid from "@mui/material/Unstable_Grid2";
-import LandingPageItem from "../../components/LandingPageItems/LandingPageItem";
 import { useEffect, useState } from "react";
-import LandingPageCategory from "../../components/LandingPageContainers/LandingPageCategory";
-import LandingPageSubject from "../../components/LandingPageContainers/LandingPageSubject";
-import LandingPageSelector from "../../components/LandingPageSelector/LandingPageSelector";
-import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import { landingPageTheme } from "../../themes/landingPageTheme";
 import { ThemeProvider } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
-import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
 import Backdrop from "@mui/material/Backdrop";
-import Container from "@mui/material/Container";
-import LandingPageSidebar from "../../components/LandingPageSidebar/LandingPageSidebar";
+import CategoryLayout from "../../components/LandingPageLayouts/CategoryLayout";
+import SubjectLayout from "../../components/LandingPageLayouts/SubjectLayout";
+import ProductFamilyLayout from "../../components/LandingPageLayouts/ProductFamilyLayout";
 
 export default function LandingPage() {
   const params = useParams();
@@ -70,34 +64,9 @@ export default function LandingPage() {
             {loadingError}
           </Alert>
         )}
-        {pageData && (
-          <Grid {...landingPageTheme.components?.MuiGrid?.defaultProps}>
-            <Grid xs={12} sx={{ textAlign: "left", width: "100%" }}>
-              <Container>
-                <Breadcrumbs pagePath={pageData.path} />
-              </Container>
-              <Typography variant="h1">{pageData.title}</Typography>
-              {pageData.pageSelector && (
-                <LandingPageSelector
-                  {...pageData.pageSelector}
-                  key={pageData.pageSelector.id}
-                />
-              )}
-            </Grid>
-            <Grid container marginBottom={10} maxWidth={"1000px"}>
-              {pageData.categories?.map((category) => (
-                <LandingPageCategory {...category} key={category.id} />
-              ))}
-              {pageData.subjects?.map((subject) => (
-                <LandingPageSubject {...subject} key={subject.id} />
-              ))}
-              {pageData.productFamilyItems?.map((item) => (
-                <LandingPageItem {...item} key={item.id} />
-              ))}
-            </Grid>
-            <LandingPageSidebar {...pageData.sidebar} />
-          </Grid>
-        )}
+        {pageData && (pageData.categories.length !== 0) && <CategoryLayout {...pageData} />}
+        {pageData && (pageData.subjects.length !== 0) && <SubjectLayout {...pageData} />}
+        {pageData && (pageData.productFamilyItems.length) !== 0 && <ProductFamilyLayout {...pageData} />}
       </ThemeProvider>
       <Backdrop
         open={loading}
