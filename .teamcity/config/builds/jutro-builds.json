@@ -631,15 +631,29 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutro860",
+      "srcId": "srcjutro860",
+      "workingDir": "website",
+      "nodeImageVersion": "17.6.0"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storybook860",
+      "srcId": "srcjutro860",
+      "nodeImageVersion": "17.6.0",
+      "workingDir": "storybook"
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutrolatest",
-      "srcId": "srcjutro850",
+      "srcId": "srcjutro860",
       "workingDir": "website",
       "nodeImageVersion": "17.6.0"
     },
     {
       "buildType": "yarn",
       "docId": "storybooklatest",
-      "srcId": "srcjutro850",
+      "srcId": "srcjutro860",
       "nodeImageVersion": "17.6.0",
       "workingDir": "storybook"
     },
