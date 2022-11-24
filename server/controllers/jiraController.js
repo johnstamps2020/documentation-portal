@@ -276,6 +276,14 @@ async function sendJiraRequest(requestBody) {
       },
     };
 
+    const fs = require('fs');
+    fs.writeFileSync(
+      '~/Downloads/jira-request.json',
+      JSON.stringify(bodyData),
+      { encoding: 'utf-8' }
+    );
+    return { message: "It's all right!" };
+
     let result;
 
     await fetch('https://guidewirejira.atlassian.net/rest/api/3/issue', {
