@@ -7,7 +7,6 @@ const { winstonLogger } = require('../controllers/loggerController');
 router.post('/', async (req, res, next) => {
   try {
     const result = await sendJiraRequest(req.body);
-    console.log('JIRA RESULT', result);
     res.send(result);
   } catch (err) {
     winstonLogger.error(`Problem posting to Jira
