@@ -451,12 +451,6 @@ async function sendFeedback(formId) {
 
   let userCommentText = form.querySelector('textarea[name="userComment"]')
     ?.value;
-  if (userCommentText.length > 0) {
-    // remove duplicate \n and then replace with 0x0A, which we undo in jiraController.js.
-    // this gets the comment through since we tokenize on \n.
-    userCommentText = userCommentText.replace(/(\n)\1{1,}/g, '$1');
-    userCommentText = userCommentText.replace(/\n/g, '0x0A');
-  }
 
   if (userCommentText) {
     submitButton.classList.add('disabled');
@@ -477,7 +471,7 @@ async function sendFeedback(formId) {
         )?.content,
         'Topic ID': document.querySelector('body').id?.content,
         'Feedback type': feedbackType === 'negative' ? 'Critique' : 'Kudos',
-        Comment: userCommentText,
+        Comment: `${userCommentText}`,
         'Reported by': form.querySelector('input[name="user"]')?.value,
         'Possible contacts': getPossibleContacts(),
       },
