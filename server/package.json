@@ -48,7 +48,7 @@
     "@babel/core": "^7.17.7",
     "@babel/preset-react": "^7.16.7",
     "@types/jest": "^27.5.1",
-    "babel-loader": "^8.2.3",
+    "babel-loader": "9.1.0",
     "babel-plugin-prismjs": "^2.1.0",
     "css-loader": "^6.5.1",
     "dotenv": "^8.2.0",
@@ -72,7 +72,7 @@
     "minimist": "^1.2.6",
     "html-select": "2.3.24",
     "terser": "5.14.2",
-    "@xmldom/xmldom": "0.7.6"
+    "@xmldom/xmldom": "0.8.6"
   },
   "packageManager": "yarn@3.2.1"
 }
