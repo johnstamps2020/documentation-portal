@@ -1,0 +1,417 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "is1022src",
+      "docId": "isbc1022releasenotes",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/bc/10.x",
+          "targetFolder": "extras/ReleaseNotes-files/bc/10.x",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "sourceFolder": "ReleaseNotes-files/cm/10.x",
+          "targetFolder": "extras/ReleaseNotes-files/cm/10.x",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "BC-AppGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "isbc1022app",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "isbc1022admin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "BestPracticesGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "isbc1022best",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "ConfigGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "isbc1022config",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "ContactMgmtGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "isbc1022contact",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "GlobalizationGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "isbc1022global",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "GosuRulesGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "isbc1022rules",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "isbc1022install",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "InsuranceSuiteGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "isbc1022isguide",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "NewAndChangedGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "isbc1022newandchanged",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "IntegrationGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "isbc1022integ",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "TestingGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "isbc1022testing",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "is1022src",
+      "docId": "iscc1022releasenotes",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/cc/10.x",
+          "targetFolder": "extras/ReleaseNotes-files/cc/10.x",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "sourceFolder": "ReleaseNotes-files/cm/10.x",
+          "targetFolder": "extras/ReleaseNotes-files/cm/10.x",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "CC-AppGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "iscc1022app",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "iscc1022admin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "BestPracticesGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "iscc1022best",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "ConfigGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "iscc1022config",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "ContactMgmtGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "iscc1022contact",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "GlobalizationGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "iscc1022global",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "GosuRulesGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "iscc1022rules",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "iscc1022install",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "InsuranceSuiteGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "iscc1022isguide",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "NewAndChangedGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "iscc1022newandchanged",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "IntegrationGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "iscc1022integ",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "RESTAPIFramework.ditamap",
+      "srcId": "is1022src",
+      "docId": "iscc1022restapifw",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "TestingGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "iscc1022testing",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "is1022src",
+      "docId": "ispc1022releasenotes",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/pc/10.x",
+          "targetFolder": "extras/ReleaseNotes-files/pc/10.x",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "sourceFolder": "ReleaseNotes-files/cm/10.x",
+          "targetFolder": "extras/ReleaseNotes-files/cm/10.x",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "AdvancedProductDesigner.ditamap",
+      "srcId": "is1022src",
+      "docId": "ispc1022apd",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "PC-AppGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "ispc1022app",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "ispc1022admin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "BestPracticesGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "ispc1022best",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "ConfigGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "ispc1022config",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "ContactMgmtGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "ispc1022contact",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "GlobalizationGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "ispc1022global",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "GosuRulesGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "ispc1022rules",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "InsuranceSuiteGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "ispc1022isguide",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "IntegrationGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "ispc1022integ",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "NewAndChangedGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "ispc1022newandchanged",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "ProductDesignerGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "ispc1022pd",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "ProductModelGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "ispc1022pm",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "RESTAPIFramework.ditamap",
+      "srcId": "is1022src",
+      "docId": "ispc1022restapifw",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "InstallGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "ispc1022install",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "TestingGuide.ditamap",
+      "srcId": "is1022src",
+      "docId": "ispc1022testing",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-OnPrem-Release.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguide1022src",
+      "docId": "isbc1022upgrade"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-OnPrem-Release.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguide1022src",
+      "docId": "iscc1022upgrade"
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-OnPrem-Release.ditaval",
+      "root": "UpgradeGuide.ditamap",
+      "indexRedirect": true,
+      "srcId": "isupgradeguide1022src",
+      "docId": "ispc1022upgrade"
+    }
+  ]
+}

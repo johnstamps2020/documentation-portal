@@ -1,0 +1,804 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "isbc1022releasenotes",
+      "title": "Release Notes",
+      "url": "self-managed/bc/1022/releasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc1022best",
+      "title": "Best Practices",
+      "url": "self-managed/bc/1022/bestpractices",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Best Practices"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc1022isguide",
+      "title": "InsuranceSuite Guide",
+      "url": "self-managed/bc/1022/isguide",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc1022newandchanged",
+      "title": "New and Changed",
+      "url": "self-managed/bc/1022/newandchanged",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc1022upgrade",
+      "title": "Upgrade",
+      "url": "self-managed/bc/1022/upgrade",
+      "displayOnLandingPages": true,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int", "staging"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc1022app",
+      "title": "Application Guide",
+      "url": "self-managed/bc/1022/app",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc1022admin",
+      "title": "Administration",
+      "url": "self-managed/bc/1022/admin",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc1022config",
+      "title": "Configuration",
+      "url": "self-managed/bc/1022/config",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc1022contact",
+      "title": "Contact Management",
+      "url": "self-managed/bc/1022/contact",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc1022global",
+      "title": "Globalization",
+      "url": "self-managed/bc/1022/global",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc1022rules",
+      "title": "Gosu Rules",
+      "url": "self-managed/bc/1022/rules",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc1022integ",
+      "title": "Integration",
+      "url": "self-managed/bc/1022/integration",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc1022testing",
+      "title": "ISBTF and GUnit Testing",
+      "url": "self-managed/bc/1022/testing",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc1022install",
+      "title": "Installation",
+      "url": "self-managed/bc/1022/install",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["BillingCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc1022releasenotes",
+      "title": "Release Notes",
+      "url": "self-managed/cc/1022/releasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc1022best",
+      "title": "Best Practices",
+      "url": "self-managed/cc/1022/bestpractices",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Best Practices"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc1022isguide",
+      "title": "InsuranceSuite Guide",
+      "url": "self-managed/cc/1022/isguide",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc1022newandchanged",
+      "title": "New and Changed",
+      "url": "self-managed/cc/1022/newandchanged",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc1022upgrade",
+      "title": "Upgrade",
+      "url": "self-managed/cc/1022/upgrade",
+      "displayOnLandingPages": true,
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int", "staging"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc1022app",
+      "title": "Application Guide",
+      "url": "self-managed/cc/1022/app",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc1022admin",
+      "title": "Administration",
+      "url": "self-managed/cc/1022/admin",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc1022config",
+      "title": "Configuration",
+      "url": "self-managed/cc/1022/config",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc1022contact",
+      "title": "Contact Management",
+      "url": "self-managed/cc/1022/contact",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc1022global",
+      "title": "Globalization",
+      "url": "self-managed/cc/1022/global",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc1022rules",
+      "title": "Gosu Rules",
+      "url": "self-managed/cc/1022/rules",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc1022integ",
+      "title": "Integration",
+      "url": "self-managed/cc/1022/integration",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc1022testing",
+      "title": "ISBTF and GUnit Testing",
+      "url": "self-managed/cc/1022/testing",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc1022restapifw",
+      "title": "REST API Framework",
+      "url": "self-managed/cc/1022/restapiframework",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc1022install",
+      "title": "Installation",
+      "url": "self-managed/cc/1022/install",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ClaimCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc1022releasenotes",
+      "title": "Release Notes",
+      "url": "self-managed/pc/1022/releasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc1022apd",
+      "title": "Advanced Product Designer in PolicyCenter",
+      "url": "self-managed/pc/1022/apd",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc1022best",
+      "title": "Best Practices",
+      "url": "self-managed/pc/1022/bestpractices",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Best Practices"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc1022isguide",
+      "title": "InsuranceSuite Guide",
+      "url": "self-managed/pc/1022/isguide",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc1022newandchanged",
+      "title": "New and Changed",
+      "url": "self-managed/pc/1022/newandchanged",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc1022upgrade",
+      "title": "Upgrade",
+      "url": "self-managed/pc/1022/upgrade",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc1022app",
+      "title": "Application Guide",
+      "url": "self-managed/pc/1022/app",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc1022admin",
+      "title": "Administration",
+      "url": "self-managed/pc/1022/admin",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Administration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc1022config",
+      "title": "Configuration",
+      "url": "self-managed/pc/1022/config",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc1022contact",
+      "title": "Contact Management",
+      "url": "self-managed/pc/1022/contact",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc1022global",
+      "title": "Globalization",
+      "url": "self-managed/pc/1022/global",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc1022rules",
+      "title": "Gosu Rules",
+      "url": "self-managed/pc/1022/rules",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc1022pd",
+      "title": "Product Designer",
+      "url": "self-managed/pc/1022/pd",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc1022pm",
+      "title": "Product Model",
+      "url": "self-managed/pc/1022/productmodel",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc1022integ",
+      "title": "Integration",
+      "url": "self-managed/pc/1022/integration",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc1022testing",
+      "title": "ISBTF and GUnit Testing",
+      "url": "self-managed/pc/1022/testing",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc1022restapifw",
+      "title": "REST API Framework",
+      "url": "self-managed/pc/1022/restapiframework",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc1022install",
+      "title": "Installation",
+      "url": "self-managed/pc/1022/install",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["PolicyCenter"],
+        "version": ["10.2.2"],
+        "subject": ["Installation"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

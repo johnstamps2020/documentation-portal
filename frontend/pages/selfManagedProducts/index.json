@@ -14,15 +14,30 @@
         },
         {
           "label": "PolicyCenter",
-          "page": "pc/10.2.1"
+          "page": "pc/10.2.2"
         },
         {
           "label": "ClaimCenter",
-          "page": "cc/10.2.1"
+          "page": "cc/10.2.2"
         },
         {
           "label": "BillingCenter",
-          "page": "bc/10.2.1"
+          "page": "bc/10.2.2"
+        },
+        {
+          "label": "PolicyCenter",
+          "page": "pc/10.2.1",
+          "env": ["prod"]
+        },
+        {
+          "label": "ClaimCenter",
+          "page": "cc/10.2.1",
+          "env": ["prod"]
+        },
+        {
+          "label": "BillingCenter",
+          "page": "bc/10.2.1",
+          "env": ["prod"]
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
