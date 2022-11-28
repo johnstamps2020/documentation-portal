@@ -113,12 +113,12 @@ async function getFilters(query, fieldMappings, urlFilters) {
         const urlFilterValues = urlFilters.hasOwnProperty(field)
           ? urlFilters[field]
           : [];
-        const allFilterValues = [
-          ...new Set([
+        const allFilterValues = Array.from(
+          new Set([
             ...allowedFilterValues?.map(v => v.label),
             ...urlFilterValues,
-          ]),
-        ];
+          ])
+        );
         const filterValuesObjects = allFilterValues?.map(value => {
           return {
             label: value,
@@ -290,8 +290,8 @@ async function searchController(req, res, next) {
     const searchPhrase = urlQueryParameters.q
       ? decodeURI(urlQueryParameters.q)
       : '';
-    const resultsPerPage = req.query.pagination || 10;
-    const currentPage = req.query.page || 1;
+    const resultsPerPage = urlQueryParameters.pagination || 10;
+    const currentPage = urlQueryParameters.page || 1;
     const startIndex = resultsPerPage * (currentPage - 1);
     const requestIsAuthenticated = req.session.requestIsAuthenticated;
     const hasGuidewireEmail = res.locals.userInfo.hasGuidewireEmail;
@@ -401,10 +401,10 @@ async function searchController(req, res, next) {
         'g'
       );
       const allText = titleText + bodyText;
-      const regExpResults = [...allText.matchAll(regExp)];
-      const uniqueHighlightTerms = [
-        ...new Set(regExpResults.map(r => r[1].toLowerCase())),
-      ]
+      const regExpResults = Array.from(allText.matchAll(regExp));
+      const uniqueHighlightTerms = Array.from(
+        new Set(regExpResults.map(r => r[1].toLowerCase()))
+      )
         .sort(function(a, b) {
           return b.length - a.length;
         })
@@ -460,7 +460,10 @@ async function searchController(req, res, next) {
     });
 
     if (req.query.rawJSON === 'true') {
-      res.send(resultsToDisplay);
+      return {
+        status: 200,
+        body: resultsToDisplay,
+      };
     } else {
       const searchData = {
         searchPhrase: searchPhrase,
@@ -480,7 +483,10 @@ async function searchController(req, res, next) {
         filtersFromUrl: filtersFromUrl,
         requestIsAuthenticated: requestIsAuthenticated,
       };
-      res.render('search', searchData);
+      return {
+        status: 200,
+        body: searchData,
+      };
     }
   } catch (err) {
     winstonLogger.error(

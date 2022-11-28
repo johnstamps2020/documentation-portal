@@ -9,7 +9,7 @@ import LandingPageSubject from "../../components/LandingPageContainers/LandingPa
 import LandingPageSelector from "../../components/LandingPageSelector/LandingPageSelector";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import { landingPageTheme } from "../../themes/landingPageTheme";
-import { ThemeProvider } from "@emotion/react";
+import { ThemeProvider } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import Alert from "@mui/material/Alert";
@@ -56,11 +56,12 @@ export default function LandingPage() {
     getPageData().catch(console.error);
   }, [pagePathFromRouter]);
 
+  if (!pageData) {
+    return null;
+  }
+
   return (
-    <Layout
-      title={pageData?.title || "loading"}
-      searchFilters={pageData?.searchFilters || { loading: [] }}
-    >
+    <Layout title={pageData.title} searchFilters={pageData.searchFilters}>
       <ThemeProvider theme={landingPageTheme}>
         <CssBaseline enableColorScheme />
         {loadingError && (

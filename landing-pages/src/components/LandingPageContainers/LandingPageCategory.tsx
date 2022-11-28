@@ -1,7 +1,6 @@
 import Stack from "@mui/material/Stack";
 import { Category } from "@documentation-portal/dist/model/entity/Category";
 import LandingPageItem from "../LandingPageItems/LandingPageItem";
-import Grid from "@mui/material/Grid";
 import LandingPageSubCategory from "./LandingPageSubCategory";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";

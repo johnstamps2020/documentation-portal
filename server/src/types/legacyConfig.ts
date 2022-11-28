@@ -1,5 +1,3 @@
-import { integer } from '@elastic/elasticsearch/api/types';
-
 export class legacyItem {
   label: string;
   class: string;
@@ -78,7 +76,7 @@ export class legacySourceConfig {
   xdocsPathIds: Array<string>;
   branch: string;
   exportFrequency: string;
-  pollInterval: integer;
+  pollInterval: number;
 }
 
 export type EnvProps = {

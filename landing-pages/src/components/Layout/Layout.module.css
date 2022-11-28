@@ -1,6 +1,7 @@
 .wrapper {
   --header-height: 80px;
-  --main-height: calc(100vh - var(--header-height));
+  --footer-height: 68px;
+  --main-height: calc(100vh - var(--header-height) - var(--footer-height));
 }
 
 .left {
@@ -46,5 +47,5 @@
 
 .footer {
   background-color: hsl(216, 42%, 13%);
-  min-height: 400px;
+  height: var(--footer-height);
 }

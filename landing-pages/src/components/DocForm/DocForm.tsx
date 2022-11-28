@@ -1,9 +1,8 @@
-import { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { Doc } from "@documentation-portal/dist/model/entity/Doc";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import React from "react";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
@@ -17,7 +16,7 @@ const style = {
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
-  p: 4,
+  p: 4
 };
 
 type DocFormProps = {
@@ -31,7 +30,7 @@ export default function DocForm({
   updateDoc,
   docToDisplay,
   setDocToDisplay,
-  handleClose,
+  handleClose
 }: DocFormProps) {
   const [docObject, setDocObject] = useState(docToDisplay);
 
@@ -41,19 +40,19 @@ export default function DocForm({
   }
 
   function updateField(event: ChangeEvent<HTMLInputElement>) {
-    setDocObject((currentDoc) => {
+    setDocObject(currentDoc => {
       return {
         ...currentDoc,
-        [event.target.id]: event.target.value,
+        [event.target.id]: event.target.value
       };
     });
   }
 
   function updateSwitch(event: ChangeEvent<HTMLInputElement>) {
-    setDocObject((currentDoc) => {
+    setDocObject(currentDoc => {
       return {
         ...currentDoc,
-        [event.target.id]: event.target.checked,
+        [event.target.id]: event.target.checked
       };
     });
   }
