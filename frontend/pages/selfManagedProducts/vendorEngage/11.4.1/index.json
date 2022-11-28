@@ -3,6 +3,20 @@
   "title": "VendorEngage 11.4.1",
   "template": "page",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "11.4.1",
+    "items": [
+      {
+        "label": "11.5.0",
+        "page": "../11.5.0"
+      },
+      {
+        "label": "11.3.0",
+        "id": "dxve1130"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",
