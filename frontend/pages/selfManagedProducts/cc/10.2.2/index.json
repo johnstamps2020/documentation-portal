@@ -1,43 +1,43 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "BillingCenter 10.2.1",
+  "title": "ClaimCenter 10.2.2",
   "template": "page",
   "class": "twoColumns",
   "selector": {
     "label": "Select release",
-    "selectedItem": "10.2.1",
+    "selectedItem": "10.2.2",
     "items": [
       {
-        "label": "10.2.2",
-        "page": "../10.2.2"
+        "label": "10.2.1",
+        "page": "../10.2.1"
       },
       {
         "label": "10.2.0",
-        "id": "bc1020"
+        "id": "cc1020"
       },
       {
         "label": "10.1.2",
-        "id": "bc1012"
+        "id": "cc1012"
       },
       {
         "label": "10.1.1",
-        "id": "bc1011"
+        "id": "cc1011"
       },
       {
         "label": "10.1.0",
-        "id": "bc1010"
+        "id": "cc1010"
       },
       {
         "label": "9.0.10",
-        "id": "bc9010"
+        "id": "cc9010"
       },
       {
         "label": "9.0.9",
-        "id": "bc909"
+        "id": "cc909"
       },
       {
         "label": "9.0.8",
-        "id": "bc908"
+        "id": "cc908"
       }
     ]
   },
@@ -48,11 +48,11 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "isbc1021releasenotes"
+          "id": "iscc1022releasenotes"
         },
         {
           "label": "New and Changed",
-          "id": "isbc1021newandchanged"
+          "id": "iscc1022newandchanged"
         }
       ]
     },
@@ -62,11 +62,11 @@
       "items": [
         {
           "label": "Installation",
-          "id": "isbc1021install"
+          "id": "iscc1022install"
         },
         {
           "label": "Upgrade",
-          "id": "isbc1021upgrade"
+          "id": "iscc1022upgrade"
         }
       ]
     },
@@ -76,15 +76,15 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "isbc1021app"
+          "id": "iscc1022app"
         },
         {
           "label": "Contact Management",
-          "id": "isbc1021contact"
+          "id": "iscc1022contact"
         },
         {
           "label": "InsuranceSuite Guide",
-          "id": "isbc1021isguide"
+          "id": "iscc1022isguide"
         }
       ]
     },
@@ -94,7 +94,7 @@
       "items": [
         {
           "label": "Best Practices",
-          "id": "isbc1021best"
+          "id": "iscc1022best"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "items": [
         {
           "label": "Administration",
-          "id": "isbc1021admin"
+          "id": "iscc1022admin"
         }
       ]
     },
@@ -114,15 +114,15 @@
       "items": [
         {
           "label": "Configuration",
-          "id": "isbc1021config"
+          "id": "iscc1022config"
         },
         {
           "label": "Globalization",
-          "id": "isbc1021global"
+          "id": "iscc1022global"
         },
         {
           "label": "Gosu Rules",
-          "id": "isbc1021rules"
+          "id": "iscc1022rules"
         }
       ]
     },
@@ -132,7 +132,7 @@
       "items": [
         {
           "label": "Integration",
-          "id": "isbc1021integ"
+          "id": "iscc1022integ"
         },
         {
           "label": "REST API Client",
@@ -150,7 +150,11 @@
         },
         {
           "label": "ISBTF and GUnit Testing",
-          "id": "isbc1021testing"
+          "id": "iscc1022testing"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "iscc1022restapifw"
         }
       ]
     },

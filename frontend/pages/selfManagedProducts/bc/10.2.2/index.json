@@ -1,15 +1,15 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "BillingCenter 10.2.1",
+  "title": "BillingCenter 10.2.2",
   "template": "page",
   "class": "twoColumns",
   "selector": {
     "label": "Select release",
-    "selectedItem": "10.2.1",
+    "selectedItem": "10.2.2",
     "items": [
       {
-        "label": "10.2.2",
-        "page": "../10.2.2"
+        "label": "10.2.1",
+        "page": "../10.2.1"
       },
       {
         "label": "10.2.0",
@@ -48,11 +48,11 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "isbc1021releasenotes"
+          "id": "isbc1022releasenotes"
         },
         {
           "label": "New and Changed",
-          "id": "isbc1021newandchanged"
+          "id": "isbc1022newandchanged"
         }
       ]
     },
@@ -62,11 +62,11 @@
       "items": [
         {
           "label": "Installation",
-          "id": "isbc1021install"
+          "id": "isbc1022install"
         },
         {
           "label": "Upgrade",
-          "id": "isbc1021upgrade"
+          "id": "isbc1022upgrade"
         }
       ]
     },
@@ -76,15 +76,15 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "isbc1021app"
+          "id": "isbc1022app"
         },
         {
           "label": "Contact Management",
-          "id": "isbc1021contact"
+          "id": "isbc1022contact"
         },
         {
           "label": "InsuranceSuite Guide",
-          "id": "isbc1021isguide"
+          "id": "isbc1022isguide"
         }
       ]
     },
@@ -94,7 +94,7 @@
       "items": [
         {
           "label": "Best Practices",
-          "id": "isbc1021best"
+          "id": "isbc1022best"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "items": [
         {
           "label": "Administration",
-          "id": "isbc1021admin"
+          "id": "isbc1022admin"
         }
       ]
     },
@@ -114,15 +114,15 @@
       "items": [
         {
           "label": "Configuration",
-          "id": "isbc1021config"
+          "id": "isbc1022config"
         },
         {
           "label": "Globalization",
-          "id": "isbc1021global"
+          "id": "isbc1022global"
         },
         {
           "label": "Gosu Rules",
-          "id": "isbc1021rules"
+          "id": "isbc1022rules"
         }
       ]
     },
@@ -132,7 +132,7 @@
       "items": [
         {
           "label": "Integration",
-          "id": "isbc1021integ"
+          "id": "isbc1022integ"
         },
         {
           "label": "REST API Client",
@@ -150,7 +150,7 @@
         },
         {
           "label": "ISBTF and GUnit Testing",
-          "id": "isbc1021testing"
+          "id": "isbc1022testing"
         }
       ]
     },
