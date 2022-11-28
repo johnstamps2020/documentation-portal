@@ -3,7 +3,7 @@ import { createTheme } from "@mui/material";
 export const searchPageTheme = createTheme({
   palette: {
     primary: {
-      main: "rgb(0, 116, 158)"
+      main: "#00739d"
     }
   },
   typography: {

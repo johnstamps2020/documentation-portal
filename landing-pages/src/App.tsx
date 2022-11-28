@@ -11,6 +11,7 @@ import UnauthorizedPage from "./pages/UnauthorizedPage/UnauthorizedPage";
 import FourOhFourPage from "./pages/FourOhFourPage/FourOhFourPage";
 import DocAdminPage from "./pages/DocAdminPage/DocAdminPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 const theme = createTheme({
   palette: {
@@ -44,6 +45,10 @@ const router = createBrowserRouter(
     {
       path: "/search",
       element: <SearchPage />
+    },
+    {
+      path: "/gw-login",
+      element: <LoginPage />
     },
     {
       path: "/*",
