@@ -3,6 +3,24 @@
   "title": "CustomerEngage Quote and Buy 11.4.1",
   "template": "page",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "11.4.1",
+    "items": [
+      {
+        "label": "11.5.0",
+        "page": "../11.5.0"
+      },
+      {
+        "label": "11.3.0",
+        "id": "dxceqb1130"
+      },
+      {
+        "label": "11.2.0",
+        "id": "dxceqb1120onpremstaging"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",

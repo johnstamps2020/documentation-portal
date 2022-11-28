@@ -3,6 +3,24 @@
   "title": "CustomerEngage Account Management 11.5.0",
   "template": "page",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "11.5.0",
+    "items": [
+      {
+        "label": "11.4.1",
+        "page": "../11.4.1"
+      },
+      {
+        "label": "11.3.0",
+        "id": "dxceam1130"
+      },
+      {
+        "label": "11.2.0",
+        "id": "dxceam1120onpremstaging"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",
