@@ -57,6 +57,10 @@
           "id": "guidewirecloudconsolerootinsurerdev"
         },
         {
+          "label": "Cloud Console Guide (Early Access)",
+          "id": "guidewirecloudconsolerootearlyaccess"
+        },
+        {
           "label": "Data Masking (Early Access)",
           "id": "datamasking"
         }
