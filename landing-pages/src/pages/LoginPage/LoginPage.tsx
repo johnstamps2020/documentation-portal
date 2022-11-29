@@ -60,7 +60,7 @@ export default function LoginPage() {
               }}
             >
               <Typography variant="h2" sx={{ marginBottom: "8px" }}>
-                Log in to view complete documentation
+                To view complete documentation, log in to your account
               </Typography>
               <Box
                 sx={{
@@ -86,7 +86,7 @@ export default function LoginPage() {
                     color="primary"
                     fullWidth
                   >
-                    Guidewire Cloud Account Login
+                    Guidewire Cloud
                   </Button>
                 </Tooltip>
                 <Tooltip
@@ -105,7 +105,7 @@ export default function LoginPage() {
                     color="primary"
                     fullWidth
                   >
-                    Customer Community Account Login
+                    Customer Community
                   </Button>
                 </Tooltip>
                 <Tooltip
@@ -124,7 +124,7 @@ export default function LoginPage() {
                     color="primary"
                     fullWidth
                   >
-                    Partner Community Account Login
+                    Partner Community
                   </Button>
                 </Tooltip>
                 <Button
@@ -134,7 +134,7 @@ export default function LoginPage() {
                   fullWidth
                   sx={{ marginTop: 4, fontWeight: 600, border: 1 }}
                 >
-                  Guidewire Employee login
+                  Guidewire Employee
                 </Button>
               </Box>
             </Paper>
