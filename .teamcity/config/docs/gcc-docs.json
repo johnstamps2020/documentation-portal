@@ -11,7 +11,7 @@
         "version": ["latest"],
         "subject": ["Development"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
