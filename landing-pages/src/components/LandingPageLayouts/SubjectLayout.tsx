@@ -26,6 +26,7 @@ export default function CategoryLayout(pageData: Page) {
             {pageData.pageSelector && (
               <LandingPageSelector
                 {...pageData.pageSelector}
+                {...twoColumnsTheme}
                 key={pageData.pageSelector.id}
               />
             )}

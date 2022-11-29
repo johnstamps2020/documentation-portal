@@ -10,6 +10,7 @@ import Backdrop from "@mui/material/Backdrop";
 import CategoryLayout from "../../components/LandingPageLayouts/CategoryLayout";
 import SubjectLayout from "../../components/LandingPageLayouts/SubjectLayout";
 import ProductFamilyLayout from "../../components/LandingPageLayouts/ProductFamilyLayout";
+import { Theme } from "@mui/material";
 
 export default function LandingPage() {
   const params = useParams();
@@ -70,7 +71,7 @@ export default function LandingPage() {
       </ThemeProvider>
       <Backdrop
         open={loading}
-        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{ color: "#fff", zIndex: (theme: Theme) => theme.zIndex.drawer + 1 }}
       />
     </Layout>
   );

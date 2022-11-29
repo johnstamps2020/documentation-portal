@@ -2,17 +2,18 @@ import { PageSelector } from "@documentation-portal/dist/model/entity/PageSelect
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem/MenuItem";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import InputLabel from "@mui/material/InputLabel";
 import { styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { ThemeProvider } from "@emotion/react";
 import { landingPageTheme } from "../../themes/landingPageTheme";
-import { CssBaseline } from "@mui/material";
+import { CssBaseline, useTheme } from "@mui/material";
 import { ThemeProvider as Emotion10ThemeProvider } from "@emotion/react";
 
-export default function LandingPageSelector(pageSelector: PageSelector) {
+export default function LandingPageSelector(pageSelector: PageSelector, inputTheme: any) {
+  inputTheme = useTheme()
+  const inputColor = inputTheme.components?.MuiInputLabel?.defaultProps?.sx;
   const PageSelectorInput = styled(InputBase)(({ theme }) => ({
     "label + &": {
       marginTop: theme.spacing(3),
@@ -54,7 +55,7 @@ export default function LandingPageSelector(pageSelector: PageSelector) {
         >
           <InputLabel
             id="page-selector-label"
-            sx={landingPageTheme.components?.MuiInputLabel?.defaultProps?.sx}
+            sx={inputColor}
           >
             {pageSelector.label}
           </InputLabel>

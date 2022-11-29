@@ -23,7 +23,7 @@ export default function LandingPageSubject(subject: Subject) {
     usersCogIcon,
     wrenchIcon,
   ];
-  const randomIcon = iconArray[Math.floor(Math.random() * iconArray.length)]
+  const randomIcon = iconArray[Math.floor(Math.random() * iconArray.length)];
 
   return (
     <ThemeProvider theme={twoColumnsTheme}>
@@ -41,18 +41,18 @@ export default function LandingPageSubject(subject: Subject) {
         }}
       >
         <Grid container>
-
+          <div style={{ width: "30px", height: "20px" }}>
             <ImageListItem>
               <img
                 src={randomIcon}
                 alt="logo"
                 style={{
-                  maxWidth: "30px",
-                  maxHeight: "20px"
+                  maxWidth: "20px",
+                  maxHeight: "20px",
                 }}
               />
             </ImageListItem>
-
+          </div>
           <Typography variant="h2">{subject.label}</Typography>
         </Grid>
         <Grid marginLeft="42px">

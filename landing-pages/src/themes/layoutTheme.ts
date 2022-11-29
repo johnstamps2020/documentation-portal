@@ -25,6 +25,11 @@ export const layoutTheme = createTheme({
   },
 
   components: {
+    MuiInputLabel: {
+      defaultProps: {
+        sx: { color: "white", fontSize: 20, fontWeight: 400 },
+      },
+    },
     MuiAppBar: {
       defaultProps: {
         sx: {

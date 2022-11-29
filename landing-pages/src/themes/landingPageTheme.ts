@@ -63,8 +63,8 @@ export const landingPageTheme = createTheme({
     MuiGrid: {
       defaultProps: {
         container: true,
-        paddingLeft: 35,
-        paddingRight: 35,
+        paddingLeft: "10%",
+        paddingRight: "5%",
         paddingTop: 10,
         sx: {
           backgroundImage: `url(${elysianBackgroundImage})`,

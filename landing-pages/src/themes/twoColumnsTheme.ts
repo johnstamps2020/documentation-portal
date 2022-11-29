@@ -15,7 +15,7 @@ export const twoColumnsTheme = createTheme({
       color: "hsl(216, 42%, 13%)",
       textAlign: "left",
       paddingBottom: "16px",
-      marginLeft: "22px",
+      marginLeft: "10px",
       marginRight: "auto",
     },
   },
@@ -33,21 +33,40 @@ export const twoColumnsTheme = createTheme({
       defaultProps: {
         sx: {
           "& .MuiContainer-root": {
-            p: 0,
+            pl: 0,
             ml: 0,
-            mr: "auto"
+            mr: "auto",
           },
           backgroundColor: "white",
         },
-        paddingLeft: "32px",
-        paddingRight: 15,
+        paddingLeft: "5%",
+        paddingTop: 5,
       },
     },
-    MuiFormLabel: {
+    MuiFormControl: {
       defaultProps: {
-        sx:{
-            color: "black"
-        }
+        variant: "standard",
+        sx: {
+          marginTop: "10px",
+          alignItems: "left",
+          width: "300px",
+        },
+      },
+    },
+    MuiSelect: {
+      defaultProps: {
+        sx: {
+          textAlign: "left",
+          marginLeft: 0,
+          marginRight: "auto",
+          backgroundColor: "white",
+          borderRadius: 4,
+        },
+      },
+    },
+    MuiInputLabel: {
+      defaultProps: {
+        sx: { color: "black", fontSize: 20, fontWeight: 400 },
       },
     },
   },
