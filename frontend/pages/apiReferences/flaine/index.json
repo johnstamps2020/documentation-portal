@@ -97,6 +97,10 @@
         {
           "label": "Cloud Console API",
           "id": "cloudconsoleapi"
+        },
+        {
+          "label": "Runtime Properties API",
+          "id": "runtimepropertiesapi"
         }
       ]
     },
