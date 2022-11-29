@@ -18,7 +18,7 @@ export class Sidebar {
   @ManyToMany(
     () => SidebarItem,
     sidebarItem => sidebarItem.id,
-    { nullable: true, eager: true }
+    { eager: true }
   )
   @JoinTable()
   sidebarItems: SidebarItem[];

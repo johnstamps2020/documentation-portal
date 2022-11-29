@@ -478,12 +478,17 @@ export async function putPageConfigsInDatabase() {
         });
         sidebarItemDoc.label = 'Counter Fraud ClaimCenter';
         sidebarItemDoc.doc = docResponse.body;
+
+        const testPageConfig = new Page();
+        testPageConfig.path = "cloudProducts/elysian";
+        testPageConfig.title = "Test Page Config";
+        testPageConfig.component = "page";
+        testPageConfig.isInProduction = false;
+        const createdPage = await createOrUpdateEntity(Page.name, testPageConfig);
         const sidebarItemPage = new SidebarItem();
-        const pageResponse = await getEntity(Page.name, {
-          path: 'apiReferences/banff',
-        });
         sidebarItemPage.label = 'API References';
-        sidebarItemPage.page = pageResponse.body;
+        sidebarItemPage.page = createdPage.body; 
+
         const sidebarItemLink = new SidebarItem();
         sidebarItemLink.link = '/alive';
         sidebarItemLink.label = 'Alive';
