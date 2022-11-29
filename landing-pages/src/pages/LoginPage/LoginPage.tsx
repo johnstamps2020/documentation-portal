@@ -1,6 +1,5 @@
 import Layout from "../../components/Layout/Layout";
-import Stack from "@mui/material/Stack";
-import { ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -8,138 +7,147 @@ import Tooltip from "@mui/material/Tooltip";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import CssBaseline from "@mui/material/CssBaseline";
+import { loginPageThemeOptions } from "../../themes/loginPageThemeOptions";
+import Grid from "@mui/material/Unstable_Grid2";
+import { createMergedTheme } from "../../themes/createMergedTheme";
 import { landingPageTheme } from "../../themes/landingPageTheme";
 
 export default function LoginPage() {
   return (
     <Layout title="Guidewire Documentation | Log in" hideSearchBox>
       <ThemeProvider theme={landingPageTheme}>
-        <CssBaseline enableColorScheme />
-        <Stack
-          direction="row"
-          justifyContent="space-evenly"
-          alignItems="center"
-          height="100vh"
-          width="100%"
+        <ThemeProvider
+          theme={theme => createMergedTheme(theme, loginPageThemeOptions)}
         >
-          <Stack
-            direction="column"
-            alignItems="center"
-            justifyContent="center"
-            sx={{
-              background: "linear-gradient(to right, #324c76, #719fe8)",
-              minWidth: "50%",
-              padding: "0 48px",
-              height: "100vh"
-            }}
-            spacing={7}
-          >
-            <Typography variant="h1" sx={{ margin: 0, display: "block" }}>
-              Welcome to Guidewire documentation
-            </Typography>
-            <img src="/images/login-hero.svg" />
-          </Stack>
-          <Stack
-            direction="column"
-            alignItems="center"
-            sx={{ minWidth: "50%" }}
-            spacing={6}
-          >
-            <Typography variant="h2">
-              Browse through the{" "}
-              <Link href="/apiReferences">latest API References</Link>
-            </Typography>
-            <Paper
+          <CssBaseline enableColorScheme />
+          <Grid container alignItems="center" sx={{ width: "100%" }}>
+            <Grid
+              lg={6}
+              container
               sx={{
-                alignItems: "center",
-                display: "flex",
-                flexDirection: "column",
-                gap: "8px",
-                padding: 4,
-                width: "fit-content"
+                background: "linear-gradient(to right, #324c76, #719fe8)",
+                height: "100vh",
+                padding: "2rem 1rem"
               }}
+              alignItems="center"
+              justifyContent="center"
             >
-              <Typography variant="h2" sx={{ marginBottom: "8px" }}>
-                To view complete documentation, log in to your account
+              <Typography
+                variant="h1"
+                sx={{ margin: 0, display: "block", width: "100%" }}
+              >
+                Welcome to Guidewire documentation
               </Typography>
-              <Box
+              <img
+                src="/images/login-hero.svg"
+                alt=""
+                style={{ maxWidth: "100%", padding: "0 1rem" }}
+              />
+            </Grid>
+            <Grid
+              lg={6}
+              container
+              alignItems="center"
+              justifyContent="center"
+              sx={{ padding: "2rem 1rem" }}
+            >
+              <Typography variant="h2" sx={{ width: "100%" }}>
+                Browse through the{" "}
+                <Link href="/apiReferences">latest API References</Link>
+              </Typography>
+              <Paper
                 sx={{
+                  alignItems: "center",
                   display: "flex",
                   flexDirection: "column",
                   gap: "8px",
+                  padding: 4,
+                  margin: 2,
                   width: "fit-content"
                 }}
               >
-                <Tooltip
-                  title={
-                    <Typography>
-                      Use your Guidewire Cloud Platform account to access
-                      documentation
-                    </Typography>
-                  }
-                  placement="left"
-                  arrow
+                <Typography variant="h2" sx={{ marginBottom: "8px" }}>
+                  To view complete documentation, log in to your account
+                </Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "8px",
+                    width: "fit-content"
+                  }}
                 >
-                  <Button
-                    href="/authorization-code"
-                    variant="contained"
-                    color="primary"
-                    fullWidth
+                  <Tooltip
+                    title={
+                      <Typography>
+                        Use your Guidewire Cloud Platform account to access
+                        documentation
+                      </Typography>
+                    }
+                    placement="left"
+                    arrow
                   >
-                    Guidewire Cloud
-                  </Button>
-                </Tooltip>
-                <Tooltip
-                  title={
-                    <Typography>
-                      Use your community.guidewire.com account to access
-                      documentation
-                    </Typography>
-                  }
-                  placement="left"
-                  arrow
-                >
-                  <Button
-                    href="/customers-login"
-                    variant="contained"
-                    color="primary"
-                    fullWidth
+                    <Button
+                      href="/authorization-code"
+                      variant="contained"
+                      color="primary"
+                      fullWidth
+                    >
+                      Guidewire Cloud
+                    </Button>
+                  </Tooltip>
+                  <Tooltip
+                    title={
+                      <Typography>
+                        Use your community.guidewire.com account to access
+                        documentation
+                      </Typography>
+                    }
+                    placement="left"
+                    arrow
                   >
-                    Customer Community
-                  </Button>
-                </Tooltip>
-                <Tooltip
-                  title={
-                    <Typography>
-                      Use your partner.guidewire.com account to access
-                      documentation
-                    </Typography>
-                  }
-                  placement="left"
-                  arrow
-                >
-                  <Button
-                    href="/partners-login"
-                    variant="contained"
-                    color="primary"
-                    fullWidth
+                    <Button
+                      href="/customers-login"
+                      variant="contained"
+                      color="primary"
+                      fullWidth
+                    >
+                      Customer Community
+                    </Button>
+                  </Tooltip>
+                  <Tooltip
+                    title={
+                      <Typography>
+                        Use your partner.guidewire.com account to access
+                        documentation
+                      </Typography>
+                    }
+                    placement="left"
+                    arrow
                   >
-                    Partner Community
+                    <Button
+                      href="/partners-login"
+                      variant="contained"
+                      color="primary"
+                      fullWidth
+                    >
+                      Partner Community
+                    </Button>
+                  </Tooltip>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    href="/authorization-code?idp=okta"
+                    fullWidth
+                    sx={{ marginTop: 4, fontWeight: 600, border: 1 }}
+                  >
+                    Guidewire Employee
                   </Button>
-                </Tooltip>
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  href="/authorization-code?idp=okta"
-                  fullWidth
-                  sx={{ marginTop: 4, fontWeight: 600, border: 1 }}
-                >
-                  Guidewire Employee
-                </Button>
-              </Box>
-            </Paper>
-          </Stack>
-        </Stack>
+                </Box>
+              </Paper>
+            </Grid>
+          </Grid>
+        </ThemeProvider>
       </ThemeProvider>
     </Layout>
   );

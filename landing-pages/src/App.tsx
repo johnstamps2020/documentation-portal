@@ -1,10 +1,9 @@
-import "./App.css";
 import {
   createBrowserRouter,
   Navigate,
   RouterProvider
 } from "react-router-dom";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import UnauthorizedPage from "./pages/UnauthorizedPage/UnauthorizedPage";
@@ -12,17 +11,7 @@ import FourOhFourPage from "./pages/FourOhFourPage/FourOhFourPage";
 import DocAdminPage from "./pages/DocAdminPage/DocAdminPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#00739d"
-    },
-    secondary: {
-      main: "#3c4c5e"
-    }
-  }
-});
+import { appTheme } from "./themes/appTheme";
 
 const router = createBrowserRouter(
   [
@@ -62,11 +51,9 @@ const router = createBrowserRouter(
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <div className="App">
-        <CssBaseline />
-        <RouterProvider router={router} />
-      </div>
+    <ThemeProvider theme={appTheme}>
+      <CssBaseline />
+      <RouterProvider router={router} />
     </ThemeProvider>
   );
 }
