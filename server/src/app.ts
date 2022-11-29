@@ -36,6 +36,11 @@ app.use(function(req, res, next) {
   }
 });
 
+if (process.env.NODE_ENV === 'development') {
+  const cors = require('cors');
+  app.use(cors());
+}
+
 const options = {
   etag: true,
   maxAge: 3600000,
