@@ -1,15 +1,7 @@
-import { createTheme } from "@mui/material";
+import { ThemeOptions } from "@mui/material/styles";
 
-export const searchPageTheme = createTheme({
-  palette: {
-    primary: {
-      main: "rgb(0, 116, 158)"
-    }
-  },
+export const searchPageThemeOptions: ThemeOptions = {
   typography: {
-    fontFamily: ["Source Sans Pro", "Helvetica", "Arial", "sans-serif"].join(
-      ","
-    ),
     h1: {
       fontSize: 40,
       textAlign: "left",
@@ -138,4 +130,4 @@ export const searchPageTheme = createTheme({
       }
     }
   }
-});
+};

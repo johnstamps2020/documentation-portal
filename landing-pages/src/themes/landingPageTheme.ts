@@ -2,6 +2,11 @@ import { createTheme } from "@mui/material";
 import elysianBackgroundImage from "../images/background-elysian.svg";
 
 export const landingPageTheme = createTheme({
+  palette: {
+    primary: {
+      main: "#00739d"
+    }
+  },
   typography: {
     fontFamily: ["Source Sans Pro", "Helvetica", "Arial", "sans-serif"].join(
       ","
