@@ -4,6 +4,7 @@ import { landingPageTheme } from "../../themes/landingPageTheme";
 import CssBaseline from "@mui/material/CssBaseline";
 import Stack from "@mui/material/Stack";
 import { ThemeProvider } from "@mui/material";
+import internalLogo from "../../images/internal_document_icon.svg";
 
 export default function LandingPageItem(item: Item) {
   const itemHref = item.link || item.doc?.url || item.pagePath;
@@ -18,6 +19,14 @@ export default function LandingPageItem(item: Item) {
           >
             {item.label}
           </Link>
+          {item.doc?.internal && (
+            <img
+              src={internalLogo}
+              alt="internal-document"
+              height="25px"
+              width="25px"
+            ></img>
+          )}
         </Stack>
       </div>
     </ThemeProvider>

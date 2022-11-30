@@ -3,6 +3,7 @@ import { PageSelector } from './PageSelector';
 import { Category } from './Category';
 import { Subject } from './Subject';
 import { ProductFamilyItem } from './ProductFamilyItem';
+import { Sidebar } from './Sidebar';
 
 @Entity()
 export class Page {
@@ -25,6 +26,14 @@ export class Page {
 
   @Column('json', { nullable: true })
   searchFilters: { [key: string]: string[] };
+
+  @ManyToOne(
+    () => Sidebar,
+    sidebar => sidebar.id,
+    { nullable: true, eager: true }
+  )
+  @JoinTable()
+  sidebar: Sidebar;
 
   @ManyToMany(
     () => Category,

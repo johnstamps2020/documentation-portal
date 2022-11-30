@@ -1,6 +1,24 @@
+import { layoutTheme } from "../../themes/layoutTheme";
 import Logo from "../Logo/Logo";
 import SearchBox from "../SearchBox/SearchBox";
-import styles from "./Layout.module.css";
+import AppBar from "@mui/material/AppBar";
+import {
+  BottomNavigation,
+  Box,
+  CssBaseline,
+  Grid,
+  ImageList,
+  ImageListItem,
+  Link,
+  ThemeProvider,
+  Typography,
+} from "@mui/material";
+import elysianBadge from "../../images/badge-elysian.svg";
+import React from "react";
+import ExternalSites from "../NavigationButtons/ExternalSites/ExternalSites";
+import TranslatedPages from "../NavigationButtons/TranslatedPages/TranslatedPages";
+import Glossary from "../NavigationButtons/Glossary/Glossary";
+import UserProfile from "../NavigationButtons/UserProfile/UserProfile";
 
 type LayoutProps = {
   children: JSX.Element | JSX.Element[];
@@ -16,20 +34,53 @@ export default function Layout({
   hideSearchBox
 }: LayoutProps) {
   document.title = `${title} | Guidewire Documentation`;
-
   return (
-    <div className={styles.wrapper}>
-      <header className={styles.header}>
-        <div className={styles.left}>
-          <Logo />
-        </div>
-        <div className={styles.center}>
+    <div>
+      <ThemeProvider theme={layoutTheme}>
+        <CssBaseline enableColorScheme />
+        <AppBar>
+          <ImageList
+            style={{ marginLeft: 0, marginRight: "auto", overflow: "hidden" }}
+          >
+            <ImageListItem>
+              <Logo />
+            </ImageListItem>
+          </ImageList>
           {!hideSearchBox && <SearchBox {...searchFilters} />}
-        </div>
-        <div className={styles.right} />
-      </header>
-      <main className={styles.main}>{children}</main>
-      <footer className={styles.footer} />
+          <Grid>
+            <ExternalSites />
+            <Glossary />
+            <TranslatedPages />
+            <UserProfile />
+          </Grid>
+        </AppBar>
+        <main>{children}</main>
+        <BottomNavigation>
+          <Box sx={{ display: "flex", width: "100%" }}>
+            <Typography
+              variant="h6"
+              style={{ marginRight: "auto", marginLeft: "2%" }}
+            >
+              {"Copyright 2022 Guidewire Software, Inc."}
+            </Typography>
+            <Link href="/support">Legal and Support Information</Link>
+            <ImageList>
+              <ImageListItem>
+                <img
+                  src={elysianBadge}
+                  alt="elysian-badge-logo"
+                  style={{
+                    height: "20px",
+                  }}
+                />
+              </ImageListItem>
+            </ImageList>
+            <Typography variant="h6" style={{ marginRight: "2%" }}>
+              {"Elysian Release"}
+            </Typography>
+          </Box>
+        </BottomNavigation>
+      </ThemeProvider>
     </div>
   );
 }

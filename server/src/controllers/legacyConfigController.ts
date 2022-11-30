@@ -38,6 +38,8 @@ import { ProductFamilyItem } from '../model/entity/ProductFamilyItem';
 import { Item } from '../model/entity/Item';
 import { PageSelectorItem } from '../model/entity/PageSelectorItem';
 import { PageSelector } from '../model/entity/PageSelector';
+import { SidebarItem } from '../model/entity/SidebarItem';
+import { Sidebar } from '../model/entity/Sidebar';
 
 export async function getLegacyDocConfigs() {
   const { status, body } = await getAllEntities(Doc.name);
@@ -466,6 +468,44 @@ export async function putPageConfigsInDatabase() {
       const legacySearchFilters = page.search_filters;
       if (legacySearchFilters) {
         dbLandingPage.searchFilters = legacySearchFilters;
+      }
+      // Temporary sidebar for testing
+      if (page.path.endsWith('cloudProducts/elysian')) {
+        const sidebarItemDoc = new SidebarItem();
+        const docResponse = await getEntity(Doc.name, {
+          id: 'amstcccounterfraud',
+        });
+        sidebarItemDoc.label = 'Counter Fraud ClaimCenter';
+        sidebarItemDoc.doc = docResponse.body;
+
+        const testPageConfig = new Page();
+        testPageConfig.path = "cloudProducts/elysian";
+        testPageConfig.title = "Test Page Config";
+        testPageConfig.component = "page";
+        testPageConfig.isInProduction = false;
+        const createdPage = await createOrUpdateEntity(Page.name, testPageConfig);
+        const sidebarItemPage = new SidebarItem();
+        sidebarItemPage.label = 'API References';
+        sidebarItemPage.page = createdPage.body; 
+
+        const sidebarItemLink = new SidebarItem();
+        sidebarItemLink.link = '/alive';
+        sidebarItemLink.label = 'Alive';
+
+        await AppDataSource.manager.save(SidebarItem, [
+          sidebarItemDoc,
+          sidebarItemPage,
+          sidebarItemLink,
+        ]);
+        const sidebar = new Sidebar();
+        sidebar.label = 'Implementation resources';
+        sidebar.sidebarItems = [
+          sidebarItemDoc,
+          sidebarItemPage,
+          sidebarItemLink,
+        ];
+        await AppDataSource.manager.save(Sidebar, sidebar);
+        dbLandingPage.sidebar = sidebar;
       }
       dbPageConfigs.push(dbLandingPage);
     }

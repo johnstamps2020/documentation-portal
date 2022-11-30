@@ -9,7 +9,11 @@ export default function Logo() {
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
   return (
     <Link to="/" aria-label="Return to the home page">
-      {isLargeScreen ? <LogoLarge /> : <img alt="" src={smallLogo} />}
+      {isLargeScreen ? (
+        <LogoLarge style={{ height: "40px"}} />
+      ) : (
+        <img alt="" src={smallLogo} />
+      )}
     </Link>
   );
 }

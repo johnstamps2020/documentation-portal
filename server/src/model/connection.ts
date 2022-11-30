@@ -21,6 +21,8 @@ import { Subject } from './entity/Subject';
 import { SubjectItem } from './entity/SubjectItem';
 import { ProductFamilyItem } from './entity/ProductFamilyItem';
 import { PageSelectorItem } from './entity/PageSelectorItem';
+import { SidebarItem } from './entity/SidebarItem';
+import { Sidebar } from './entity/Sidebar';
 
 const dbHost = process.env.DOCPORTAL_DB_HOST;
 const isDevMode = runningInDevMode();
@@ -58,6 +60,8 @@ export const AppDataSource = new DataSource({
     Subject,
     SubjectItem,
     ProductFamilyItem,
+    Sidebar,
+    SidebarItem,
   ],
   synchronize: isDevMode,
   cache: {
