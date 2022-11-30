@@ -1,11 +1,12 @@
 import { createTheme } from "@mui/material";
 import elysianBackgroundImage from "../images/background-elysian.svg";
+import dobsonBackgroundImage from "../images/background-dobson.svg";
 
 export const landingPageTheme = createTheme({
   palette: {
     primary: {
-      main: "#00739d"
-    }
+      main: "#00739d",
+    },
   },
   typography: {
     fontFamily: ["Source Sans Pro", "Helvetica", "Arial", "sans-serif"].join(
@@ -65,19 +66,43 @@ export const landingPageTheme = createTheme({
         },
       },
     },
-    MuiGrid: {
+    MuiGrid2: {
       defaultProps: {
         container: true,
-        paddingLeft: "10%",
+        paddingLeft: "7%",
         paddingRight: "5%",
-        sx: {
-          backgroundImage: `url(${elysianBackgroundImage})`,
-          backgroundAttachment: "fixed",
-          backgroundPosition: "bottom-right",
-          backgroundSize: "cover",
-        },
         xs: 12,
       },
+      variants: [
+        {
+          props: { className: "dobson" },
+          style: {
+            backgroundImage: `url(${dobsonBackgroundImage})`,
+            backgroundAttachment: "fixed",
+            backgroundPosition: "bottom-right",
+            backgroundSize: "cover",
+          },
+        },
+        {
+          props: { className: "elysian" },
+          style: {
+            backgroundImage: `url(${elysianBackgroundImage})`,
+            backgroundAttachment: "fixed",
+            backgroundPosition: "bottom-right",
+            backgroundSize: "cover",
+          },
+        },
+        {
+          props: { className: "page-title" },
+          style: {
+            container: true,
+            xs: 1,
+            textAlign: "left",
+            width: "100%",
+            flexDirection: "column"
+          },
+        },
+      ],
     },
     MuiContainer: {
       defaultProps: {

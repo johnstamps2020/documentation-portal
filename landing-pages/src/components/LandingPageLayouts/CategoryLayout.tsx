@@ -9,9 +9,17 @@ import LandingPageSidebar from "../../components/LandingPageSidebar/LandingPageS
 import { Page } from "@documentation-portal/dist/model/entity/Page";
 
 export default function CategoryLayout(pageData: Page) {
+  let className = "elysian";
+  if (pageData.path.endsWith("dobson")) {
+    className = "dobson";
+  }
+
   return (
-    <Grid {...landingPageTheme.components?.MuiGrid?.defaultProps}>
-      <Grid xs={12} sx={{ textAlign: "left", width: "100%" }}>
+    <Grid
+      className={className}
+      {...landingPageTheme.components?.MuiGrid2?.defaultProps}
+    >
+      <Grid className={"page-title"}>
         <Container>
           <Breadcrumbs pagePath={pageData.path} />
         </Container>
@@ -24,12 +32,12 @@ export default function CategoryLayout(pageData: Page) {
           />
         )}
       </Grid>
-      <Grid container marginBottom={10} maxWidth={"1000px"}>
+      <Grid container marginBottom={10} maxWidth={"80%"}>
         {pageData.categories?.map((category) => (
           <LandingPageCategory {...category} key={category.id} />
         ))}
       </Grid>
-      <LandingPageSidebar {...pageData.sidebar} />
+      {pageData.sidebar && <LandingPageSidebar {...pageData.sidebar} />}
     </Grid>
   );
 }
