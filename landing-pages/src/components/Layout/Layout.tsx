@@ -24,12 +24,14 @@ type LayoutProps = {
   children: JSX.Element | JSX.Element[];
   title: string;
   searchFilters?: { [key: string]: string[] };
+  hideSearchBox?: boolean;
 };
 
 export default function Layout({
   children,
   title,
   searchFilters,
+  hideSearchBox
 }: LayoutProps) {
   document.title = `${title} | Guidewire Documentation`;
   return (
@@ -44,7 +46,7 @@ export default function Layout({
               <Logo />
             </ImageListItem>
           </ImageList>
-          <SearchBox />
+          {!hideSearchBox && <SearchBox {...searchFilters} />}
           <Grid>
             <ExternalSites />
             <Glossary />

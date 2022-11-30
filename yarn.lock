@@ -1801,7 +1801,7 @@ __metadata:
 
 "@documentation-portal@file:../server::locator=landing-pages%40workspace%3Alanding-pages":
   version: 2.29.22
-  resolution: "@documentation-portal@file:../server#../server::hash=98ac9c&locator=landing-pages%40workspace%3Alanding-pages"
+  resolution: "@documentation-portal@file:../server#../server::hash=8948d7&locator=landing-pages%40workspace%3Alanding-pages"
   dependencies:
     "@elastic/elasticsearch": ^7.17.0
     "@okta/jwt-verifier": ^2.3.0
@@ -1842,7 +1842,7 @@ __metadata:
     serve-favicon: ^2.5.0
     typeorm: ^0.3.9
     winston: ^3.7.2
-  checksum: 1e84ef15b1409a1098e87eef4548625e8c9a525c37662b20d44100ac7e612a790ed80829926ef1d6b6e7dbcfd56e34ed36de511e346e38e0c42188111e051077
+  checksum: 0fd136ce7ae341b7c6f49bd4ae044e04f55cae51c5738ee8ce1cd1b8ac01455101808340b617e38980659777df1c5f163785be69ef6377d39afcfa0adcad50d0
   languageName: node
   linkType: hard
 
@@ -2027,6 +2027,13 @@ __metadata:
     minimatch: ^3.1.2
     strip-json-comments: ^3.1.1
   checksum: f03e9d6727efd3e0719da2051ea80c0c73d20e28c171121527dbb868cd34232ca9c1d0525a66e517a404afea26624b1e47895b6a92474678418c2f50c9566694
+  languageName: node
+  linkType: hard
+
+"@fontsource/source-sans-pro@npm:^4.5.11":
+  version: 4.5.11
+  resolution: "@fontsource/source-sans-pro@npm:4.5.11"
+  checksum: 550d5bdc43d3656cb215da841212a4126365f068fd6a242a2a61639e6e7bcd18878f91784ec51cba0ce406d0bda5ac5569ad458a383ce056fbdcb92be4370e74
   languageName: node
   linkType: hard
 
@@ -3817,6 +3824,13 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: e009a2bfb50e90ca9b7c6e8f648f8464067271fd99116f881073fa6fa76dc8d0133181dd65e6614d5fb1220d671d67b0124aef7d97dc02d7e342ab143a47779d
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:^4.14.190":
+  version: 4.14.190
+  resolution: "@types/lodash@npm:4.14.190"
+  checksum: 353a55a1222a57224ead8bd3379fabb2e3e3f6685f599c48b1b66f099d8e9e015e6c6352c6e2275954004c3bb510377804c63117233c6f187700b6ab78adfa02
   languageName: node
   linkType: hard
 
@@ -11052,15 +11066,18 @@ __metadata:
     "@documentation-portal": "file:../server"
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
+    "@fontsource/source-sans-pro": ^4.5.11
     "@mui/icons-material": ^5.10.9
     "@mui/material": ^5.10.9
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^13.0.0
     "@testing-library/user-event": ^13.2.1
     "@types/jest": ^27.0.1
+    "@types/lodash": ^4.14.190
     "@types/node": ^16.7.13
     "@types/react": ^18.0.0
     "@types/react-dom": ^18.0.0
+    lodash: ^4.17.21
     react: ^18.2.0
     react-dom: ^18.2.0
     react-native-sqlite-storage: "file:../shims/react-native-sqlite-storage"

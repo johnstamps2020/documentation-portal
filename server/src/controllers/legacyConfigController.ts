@@ -7,7 +7,6 @@ import { Doc } from '../model/entity/Doc';
 import { Product } from '../model/entity/Product';
 import { Release } from '../model/entity/Release';
 import { Resource } from '../model/entity/Resource';
-import { integer } from '@elastic/elasticsearch/api/types';
 import { Source } from '../model/entity/Source';
 import path, { join, resolve } from 'path';
 import { AppDataSource } from '../model/connection';
@@ -526,7 +525,7 @@ export async function putPageConfigsInDatabase() {
 }
 
 export async function putSourceConfigsInDatabase(): Promise<{
-  status: integer;
+  status: number;
   body: any;
 }> {
   try {
@@ -640,7 +639,7 @@ async function addDocBuild(buildConfig: legacyBuildConfig) {
 }
 
 export async function putDocConfigsInDatabase(): Promise<{
-  status: integer;
+  status: number;
   body: any;
 }> {
   try {

@@ -3,7 +3,7 @@ import Layout from "../../components/Layout/Layout";
 import { Page } from "@documentation-portal/dist/model/entity/Page";
 import { useEffect, useState } from "react";
 import { landingPageTheme } from "../../themes/landingPageTheme";
-import { ThemeProvider } from "@emotion/react";
+import { ThemeProvider } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import Alert from "@mui/material/Alert";
 import Backdrop from "@mui/material/Backdrop";
@@ -53,11 +53,12 @@ export default function LandingPage() {
     getPageData().catch(console.error);
   }, [pagePathFromRouter]);
 
+  if (!pageData) {
+    return null;
+  }
+
   return (
-    <Layout
-      title={pageData?.title || "loading"}
-      searchFilters={pageData?.searchFilters || { loading: [] }}
-    >
+    <Layout title={pageData.title} searchFilters={pageData.searchFilters}>
       <ThemeProvider theme={landingPageTheme}>
         <CssBaseline enableColorScheme />
         {loadingError && (
