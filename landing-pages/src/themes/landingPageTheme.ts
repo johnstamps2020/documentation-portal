@@ -70,7 +70,6 @@ export const landingPageTheme = createTheme({
         container: true,
         paddingLeft: "10%",
         paddingRight: "5%",
-        paddingTop: 10,
         sx: {
           backgroundImage: `url(${elysianBackgroundImage})`,
           backgroundAttachment: "fixed",

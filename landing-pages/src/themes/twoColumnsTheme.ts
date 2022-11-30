@@ -40,7 +40,6 @@ export const twoColumnsTheme = createTheme({
           backgroundColor: "white",
         },
         paddingLeft: "5%",
-        paddingTop: 5,
       },
     },
     MuiFormControl: {

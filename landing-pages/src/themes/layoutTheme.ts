@@ -41,7 +41,7 @@ export const layoutTheme = createTheme({
           height: "80px",
           padding: "6px",
           backgroundColor: "hsl(216, 42%, 13%)",
-          position: "absolute",
+          position: "static",
           boxShadow: "none",
         },
       },
