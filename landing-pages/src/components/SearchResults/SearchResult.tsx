@@ -50,8 +50,13 @@ export default function SearchResult(searchResult: ServerSearchResult) {
         </Paper>
       </Stack>
       <Typography
-        variant="body1"
+        paragraph
         dangerouslySetInnerHTML={{ __html: searchResult.body }}
+        sx={{
+          padding: "1rem 0",
+          lineHeight: "24px",
+          textAlign: "left"
+        }}
       />
       {searchResult.innerHits.length > 0 && (
         <Accordion>

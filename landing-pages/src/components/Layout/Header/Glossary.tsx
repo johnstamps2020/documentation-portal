@@ -1,6 +1,12 @@
-import { Avatar, IconButton, Link, Menu, MenuItem } from "@mui/material";
+import { MenuItem } from "@mui/material";
 import React from "react";
 import iconGlossary from "../../../images/icon-glossary.svg";
+import {
+  HeaderAvatar,
+  HeaderIconButton,
+  HeaderMenu,
+  HeaderMenuLink
+} from "../StyledLayoutComponents";
 
 export default function Glossary() {
   const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(
@@ -15,10 +21,10 @@ export default function Glossary() {
 
   return (
     <div>
-      <IconButton id="glossary" onClick={handleClick}>
-        <Avatar alt="Glossary" src={iconGlossary} />
-      </IconButton>
-      <Menu
+      <HeaderIconButton id="glossary" onClick={handleClick}>
+        <HeaderAvatar alt="Glossary" src={iconGlossary} />
+      </HeaderIconButton>
+      <HeaderMenu
         anchorEl={anchorElement}
         id="glossary-menu"
         open={Boolean(anchorElement)}
@@ -26,11 +32,11 @@ export default function Glossary() {
         onClick={handleClose}
       >
         <MenuItem>
-          <Link href="https://docs.int.ccs.guidewire.net/glossary">
+          <HeaderMenuLink href="https://docs.int.ccs.guidewire.net/glossary">
             Guidewire Glossary
-          </Link>
+          </HeaderMenuLink>
         </MenuItem>
-      </Menu>
+      </HeaderMenu>
     </div>
   );
 }

@@ -61,4 +61,13 @@ export class Page {
 
   @Column()
   isInProduction: boolean;
+
+  @Column({ default: false })
+  public: boolean;
+
+  @Column({ default: false })
+  internal: boolean;
+
+  @Column({ default: false })
+  earlyAccess: boolean;
 }

@@ -10,7 +10,7 @@ export default function Logo() {
   return (
     <Link to="/" aria-label="Return to the home page">
       {isLargeScreen ? (
-        <LogoLarge style={{ height: "40px"}} />
+        <LogoLarge style={{ height: "40px", width: "400px" }} />
       ) : (
         <img alt="" src={smallLogo} />
       )}

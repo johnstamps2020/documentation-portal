@@ -21,11 +21,6 @@ export const searchPageThemeOptions: ThemeOptions = {
       fontSize: "1.125rem",
       padding: "0.5rem 0",
       color: "black"
-    },
-    body1: {
-      padding: "1rem 0",
-      lineHeight: "24px",
-      textAlign: "left"
     }
   },
   components: {

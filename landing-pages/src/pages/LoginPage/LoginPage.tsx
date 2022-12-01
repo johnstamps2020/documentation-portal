@@ -14,7 +14,10 @@ import { landingPageTheme } from "../../themes/landingPageTheme";
 
 export default function LoginPage() {
   return (
-    <Layout title="Guidewire Documentation | Log in" hideSearchBox>
+    <Layout
+      title="Guidewire Documentation | Log in"
+      searchBoxOptions={{ hideSearchBox: true }}
+    >
       <ThemeProvider theme={landingPageTheme}>
         <ThemeProvider
           theme={theme => createMergedTheme(theme, loginPageThemeOptions)}

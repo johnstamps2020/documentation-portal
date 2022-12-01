@@ -12,7 +12,7 @@ import { createMergedTheme } from "../../themes/createMergedTheme";
 export default function SearchPage() {
   return (
     <SearchProvider>
-      <Layout title="Search results" hideSearchBox>
+      <Layout title="Search results" searchBoxOptions={{ hideSearchBox: true }}>
         <ThemeProvider
           theme={theme => createMergedTheme(theme, searchPageThemeOptions)}
         >
