@@ -32,7 +32,10 @@ export default function CategoryLayout(pageData: Page) {
           />
         )}
       </Grid>
-      <Grid container marginBottom={10} maxWidth={"80%"}>
+      <Grid
+        className={"category-content"}
+        {...landingPageTheme.components?.MuiGrid2?.defaultProps}
+      >
         {pageData.categories?.map((category) => (
           <LandingPageCategory {...category} key={category.id} />
         ))}

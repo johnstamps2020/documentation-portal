@@ -52,7 +52,7 @@ export const landingPageTheme = createTheme({
           marginRight: 2,
           marginTop: 2,
           width: 300,
-          borderRadius: 2,
+          borderRadius: 1,
           padding: "24px",
         },
       },
@@ -70,7 +70,6 @@ export const landingPageTheme = createTheme({
       defaultProps: {
         container: true,
         paddingLeft: "7%",
-        paddingRight: "5%",
         xs: 12,
       },
       variants: [
@@ -99,7 +98,16 @@ export const landingPageTheme = createTheme({
             xs: 1,
             textAlign: "left",
             width: "100%",
-            flexDirection: "column"
+            flexDirection: "column",
+          },
+        },
+        {
+          props: { className: "category-content" },
+          style: {
+            xs: 3,
+            container: true,
+            marginBottom: 10,
+            maxWidth: "70%",
           },
         },
       ],
