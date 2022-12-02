@@ -14,6 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import elysianBadge from "../../images/badge-elysian.svg";
+import dobsonBadge from "../../images/badge-dobson.svg";
 import React from "react";
 import ExternalSites from "../NavigationButtons/ExternalSites/ExternalSites";
 import TranslatedPages from "../NavigationButtons/TranslatedPages/TranslatedPages";
@@ -25,22 +26,31 @@ type LayoutProps = {
   title: string;
   searchFilters?: { [key: string]: string[] };
   hideSearchBox?: boolean;
+  path?: string;
 };
 
 export default function Layout({
   children,
   title,
   searchFilters,
-  hideSearchBox
+  hideSearchBox,
+  path,
 }: LayoutProps) {
   document.title = `${title} | Guidewire Documentation`;
+  let badge;
+  if (path && path.endsWith("dobson")) {
+    badge = dobsonBadge;
+  } else if (path && path.endsWith("elysian")) {
+    badge = elysianBadge;
+  }
   return (
     <div>
       <ThemeProvider theme={layoutTheme}>
         <CssBaseline enableColorScheme />
         <AppBar>
           <ImageList
-            style={{ marginLeft: 0, marginRight: "auto", overflow: "hidden" }}
+            className="gw-logo-top"
+            {...layoutTheme.components?.MuiImageList?.defaultProps}
           >
             <ImageListItem>
               <Logo />
@@ -57,26 +67,28 @@ export default function Layout({
         <main>{children}</main>
         <BottomNavigation>
           <Box sx={{ display: "flex", width: "100%" }}>
-            <Typography
-              variant="h6"
-              style={{ marginRight: "auto", marginLeft: "2%" }}
-            >
+            <Typography variant="h6">
               {"Copyright 2022 Guidewire Software, Inc."}
             </Typography>
             <Link href="/support">Legal and Support Information</Link>
-            <ImageList>
+            <ImageList className="badge">
               <ImageListItem>
-                <img
-                  src={elysianBadge}
-                  alt="elysian-badge-logo"
-                  style={{
-                    height: "20px",
-                  }}
-                />
+                {badge && (
+                  <img
+                    src={badge}
+                    alt="badge-logo"
+                    style={{
+                      height: "22px",
+                    }}
+                  />
+                )}
               </ImageListItem>
             </ImageList>
-            <Typography variant="h6" style={{ marginRight: "2%" }}>
-              {"Elysian Release"}
+            <Typography
+              variant="h6"
+              style={{ marginLeft: "3px", marginRight: "2%" }}
+            >
+              {`${title} Release`}
             </Typography>
           </Box>
         </BottomNavigation>

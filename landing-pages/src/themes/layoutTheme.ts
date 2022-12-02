@@ -13,9 +13,11 @@ export const layoutTheme = createTheme({
       color: "hsl(204, 12%, 45%)",
     },
     h6: {
-      fontSize: 11,
+      fontSize: 12,
       fontWeight: 600,
       marginTop: "22px",
+      marginRight: "auto",
+      marginLeft: "2%",
     },
     body1: {
       fontSize: 16,
@@ -72,8 +74,27 @@ export const layoutTheme = createTheme({
     MuiImageList: {
       defaultProps: {
         cols: 1,
-        style: { marginRight: "2px", marginLeft: "auto", overflow: "hidden" },
       },
+      variants: [
+        {
+          props: { className: "gw-logo-top" },
+          style: {
+            marginLeft: 0,
+            marginRight: "auto",
+            overflow: "hidden",
+          },
+        },
+        {
+          props: { className: "badge" },
+          style: {
+            marginRight: "2px",
+            marginLeft: "auto",
+            marginBottom: "15px",
+            marginTop: "auto",
+            overflow: "hidden",
+          },
+        },
+      ],
     },
     MuiAvatar: {
       defaultProps: {
