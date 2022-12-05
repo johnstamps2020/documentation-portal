@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import elysianBadge from "../../images/badge-elysian.svg";
 import dobsonBadge from "../../images/badge-dobson.svg";
+import cortinaBadge from "../../images/badge-cortina.svg";
 import React from "react";
 import ExternalSites from "../NavigationButtons/ExternalSites/ExternalSites";
 import TranslatedPages from "../NavigationButtons/TranslatedPages/TranslatedPages";
@@ -43,6 +44,9 @@ export default function Layout({
   } else if (path && path.endsWith("elysian")) {
     badge = elysianBadge;
   }
+  else if (path && path.endsWith("cortina")) {
+  badge = cortinaBadge;
+}
   return (
     <div>
       <ThemeProvider theme={layoutTheme}>

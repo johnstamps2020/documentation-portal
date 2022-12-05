@@ -1,6 +1,7 @@
 import { createTheme } from "@mui/material";
 import elysianBackgroundImage from "../images/background-elysian.svg";
 import dobsonBackgroundImage from "../images/background-dobson.svg";
+import cortinaBackgroundImage from "../images/background-cortina.svg";
 
 export const landingPageTheme = createTheme({
   palette: {
@@ -53,9 +54,24 @@ export const landingPageTheme = createTheme({
           marginTop: 2,
           width: 300,
           borderRadius: 1,
-          padding: "24px",
         },
       },
+      variants: [
+        { props: { className: "category-paper" }, style: { padding: "24px" } },
+        {
+          props: { className: "product-family-paper" },
+          style: {
+            height: "fit-content",
+            textAlign: "center",
+            marginBottom: 0,
+            padding: "35px",
+          },
+        },
+        {
+          props: { className: "sidebar" },
+          style: { padding: "24px", marginBottom: "auto" },
+        },
+      ],
     },
     MuiLink: {
       defaultProps: {
@@ -65,6 +81,12 @@ export const landingPageTheme = createTheme({
           color: "hsl(196, 100%, 31%)",
         },
       },
+      variants: [
+        {
+          props: { className: "product-family-item" },
+          style: { fontSize: 20, fontWeight: 800 },
+        },
+      ],
     },
     MuiGrid2: {
       defaultProps: {
@@ -74,21 +96,36 @@ export const landingPageTheme = createTheme({
       },
       variants: [
         {
-          props: { className: "dobson" },
-          style: {
-            backgroundImage: `url(${dobsonBackgroundImage})`,
-            backgroundAttachment: "fixed",
-            backgroundPosition: "bottom-right",
-            backgroundSize: "cover",
-          },
-        },
-        {
           props: { className: "elysian" },
           style: {
             backgroundImage: `url(${elysianBackgroundImage})`,
             backgroundAttachment: "fixed",
             backgroundPosition: "bottom-right",
             backgroundSize: "cover",
+            minHeight: "100vh",
+            alignContent: "baseline",
+          },
+        },
+        {
+          props: { className: "dobson" },
+          style: {
+            backgroundImage: `url(${dobsonBackgroundImage})`,
+            backgroundAttachment: "fixed",
+            backgroundPosition: "bottom-right",
+            backgroundSize: "cover",
+            minHeight: "100vh",
+            alignContent: "baseline",
+          },
+        },
+        {
+          props: { className: "cortina" },
+          style: {
+            backgroundImage: `url(${cortinaBackgroundImage})`,
+            backgroundAttachment: "fixed",
+            backgroundPosition: "bottom-right",
+            backgroundSize: "cover",
+            minHeight: "100vh",
+            alignContent: "baseline",
           },
         },
         {
@@ -108,6 +145,16 @@ export const landingPageTheme = createTheme({
             container: true,
             marginBottom: 10,
             maxWidth: "70%",
+          },
+        },
+        {
+          props: { className: "family-product-content" },
+          style: {
+            xs: 3,
+            container: true,
+            maxWidth: "70%",
+            marginTop: "2%",
+            marginBottom: "auto",
           },
         },
       ],
