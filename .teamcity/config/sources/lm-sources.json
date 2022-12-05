@@ -2,6 +2,13 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "lmgarmischsrc",
+      "title": "London Markets Garmisch",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/london-markets.git",
+      "branch": "release/garmisch"
+    },
+    {
       "id": "lmflainesrc",
       "title": "London Markets Flaine",
       "sourceType": "git",
