@@ -43,6 +43,16 @@
           "page": "insuranceNow/2023.1"
         }
       ]
+    },
+    {
+      "label": "Global Content",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "London Market",
+          "page": "../../globalContent/iplm/garmisch"
+        }
+      ]
     }
   ],
   "search_filters": {

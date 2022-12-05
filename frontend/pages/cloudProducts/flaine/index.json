@@ -161,6 +161,16 @@
           "id": "worksetmgr"
         }
       ]
+    },
+    {
+      "label": "Global Content",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "London Market",
+          "page": "../../globalContent/iplm/flaine"
+        }
+      ]
     }
   ],
   "search_filters": {

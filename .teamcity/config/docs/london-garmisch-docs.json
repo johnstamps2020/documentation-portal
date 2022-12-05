@@ -1,0 +1,73 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "londonccappgarmisch",
+      "title": "ClaimCenter for London Market Application Guide",
+      "url": "london/garmisch/ccapp",
+      "metadata": {
+        "product": ["London Market"],
+        "platform": ["Cloud"],
+        "version": ["Garmisch"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "londonpcappgarmisch",
+      "title": "PolicyCenter for London Market Application Guide",
+      "url": "london/garmisch/pcapp",
+      "metadata": {
+        "product": ["London Market"],
+        "platform": ["Cloud"],
+        "version": ["Garmisch"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "londonconfiggarmisch",
+      "title": "London Market Configuration Guide",
+      "url": "london/garmisch/config",
+      "metadata": {
+        "product": ["London Market"],
+        "platform": ["Cloud"],
+        "version": ["Garmisch"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "londonrngarmisch",
+      "title": "London Market Release Notes",
+      "url": "london/garmisch/releasenotes",
+      "metadata": {
+        "product": ["London Market"],
+        "platform": ["Cloud"],
+        "version": ["Garmisch"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
