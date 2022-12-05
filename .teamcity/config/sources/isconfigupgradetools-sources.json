@@ -2,6 +2,13 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "isconfigupgradetools450src",
+      "title": "InsuranceSuite Configuration Upgrade Tools 4.5.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-configuration-upgrade-tools.git",
+      "branch": "release/4.5.0"
+    },
+    {
       "id": "isconfigupgradetools440src",
       "title": "InsuranceSuite Configuration Upgrade Tools 4.4.0",
       "sourceType": "git",
