@@ -8,6 +8,11 @@
     "selectedItem": "Flaine",
     "items": [
       {
+        "label": "Garmisch",
+        "page": "../garmisch",
+        "env": ["int", "staging"]
+      },
+      {
         "label": "Elysian",
         "page": "../elysian"
       },
