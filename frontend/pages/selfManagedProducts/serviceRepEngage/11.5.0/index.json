@@ -18,6 +18,34 @@
       {
         "label": "11.2.0",
         "id": "dxsre1120onpremstaging"
+      },
+      {
+        "label": "11.1.0",
+        "id": "dxsre1110onpremstaging"
+      },
+      {
+        "label": "10.0.1",
+        "id": "selfmanageddxsreaqsojbmv"
+      },
+      {
+        "label": "10.0.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocstyghellr"
+      },
+      {
+        "label": "8.1.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsdemyrpoh"
+      },
+      {
+        "label": "8.0.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsqarbsbtn"
+      },
+      {
+        "label": "7.1.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsrtlpihpc"
+      },
+      {
+        "label": "7.0.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsugutdoki"
       }
     ]
   },
