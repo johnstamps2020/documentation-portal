@@ -178,7 +178,7 @@
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -195,7 +195,7 @@
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -212,7 +212,7 @@
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -230,7 +230,7 @@
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -247,7 +247,7 @@
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -264,7 +264,7 @@
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -328,7 +328,7 @@
         "product": ["BillingCenter"],
         "version": ["10.1.2"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -344,7 +344,7 @@
         "product": ["ClaimCenter"],
         "version": ["10.1.2"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -360,7 +360,7 @@
         "product": ["PolicyCenter"],
         "version": ["10.1.2"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -376,7 +376,7 @@
         "product": ["BillingCenter"],
         "version": ["10.1.1"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -392,7 +392,7 @@
         "product": ["ClaimCenter"],
         "version": ["10.1.1"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -408,7 +408,7 @@
         "product": ["PolicyCenter"],
         "version": ["10.1.1"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -424,7 +424,7 @@
         "product": ["BillingCenter"],
         "version": ["10.1.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -440,7 +440,7 @@
         "product": ["ClaimCenter"],
         "version": ["10.1.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -456,7 +456,7 @@
         "product": ["PolicyCenter"],
         "version": ["10.1.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -519,7 +519,7 @@
         "product": ["BillingCenter"],
         "version": ["10.1.2"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -535,7 +535,7 @@
         "product": ["ClaimCenter"],
         "version": ["10.1.2"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -551,7 +551,7 @@
         "product": ["PolicyCenter"],
         "version": ["10.1.2"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -567,7 +567,7 @@
         "product": ["BillingCenter"],
         "version": ["10.1.1"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -583,7 +583,7 @@
         "product": ["ClaimCenter"],
         "version": ["10.1.1"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -599,7 +599,7 @@
         "product": ["PolicyCenter"],
         "version": ["10.1.1"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -615,7 +615,7 @@
         "product": ["BillingCenter"],
         "version": ["10.1.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -631,7 +631,7 @@
         "product": ["ClaimCenter"],
         "version": ["10.1.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -647,7 +647,7 @@
         "product": ["PolicyCenter"],
         "version": ["10.1.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -711,7 +711,7 @@
         "product": ["BillingCenter"],
         "version": ["9.0.9"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -727,7 +727,7 @@
         "product": ["ClaimCenter"],
         "version": ["9.0.9"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -743,7 +743,7 @@
         "product": ["PolicyCenter"],
         "version": ["9.0.9"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -760,7 +760,7 @@
         "product": ["BillingCenter"],
         "version": ["9.0.9"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -776,7 +776,7 @@
         "product": ["ClaimCenter"],
         "version": ["9.0.9"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -792,7 +792,7 @@
         "product": ["PolicyCenter"],
         "version": ["9.0.9"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -856,7 +856,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -873,7 +873,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -907,7 +907,7 @@
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -924,7 +924,7 @@
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1048,7 +1048,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1065,7 +1065,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1082,7 +1082,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1099,7 +1099,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1116,7 +1116,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1133,7 +1133,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1150,7 +1150,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1167,7 +1167,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1184,7 +1184,7 @@
         "version": ["2020.10"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1201,7 +1201,7 @@
         "version": ["2020.10"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1218,7 +1218,7 @@
         "version": ["2020.10"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1235,7 +1235,7 @@
         "version": ["2020.10"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1252,7 +1252,7 @@
         "version": ["2020.10"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1269,7 +1269,7 @@
         "version": ["2020.10"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1286,7 +1286,7 @@
         "version": ["2020.10"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1303,7 +1303,7 @@
         "version": ["2020.08"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1320,7 +1320,7 @@
         "version": ["2020.08"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1337,7 +1337,7 @@
         "version": ["2020.08"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1354,7 +1354,7 @@
         "version": ["2020.08"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1371,7 +1371,7 @@
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1389,7 +1389,7 @@
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -1405,7 +1405,7 @@
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1422,7 +1422,7 @@
         "version": ["2020.05"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1438,7 +1438,7 @@
         "product": ["BillingCenter"],
         "version": ["10.0.3"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1454,7 +1454,7 @@
         "product": ["ClaimCenter"],
         "version": ["10.0.3"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1470,7 +1470,7 @@
         "product": ["PolicyCenter"],
         "version": ["10.0.3"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1536,7 +1536,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1554,7 +1554,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1572,7 +1572,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1590,7 +1590,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1608,7 +1608,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1626,7 +1626,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1644,7 +1644,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1662,7 +1662,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1680,7 +1680,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1698,7 +1698,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1716,7 +1716,7 @@
         "release": ["Aspen"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1734,7 +1734,7 @@
         "release": ["Aspen"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1752,7 +1752,7 @@
         "release": ["Aspen"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1770,7 +1770,7 @@
         "release": ["Aspen"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1788,7 +1788,7 @@
         "release": ["Aspen"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1806,7 +1806,7 @@
         "release": ["Aspen"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1824,7 +1824,7 @@
         "release": ["Aspen"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1842,7 +1842,7 @@
         "release": ["Aspen"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1859,7 +1859,7 @@
         "product": ["BillingCenter"],
         "version": ["10.0.3"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -1875,7 +1875,7 @@
         "product": ["ClaimCenter"],
         "version": ["10.0.3"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -1891,7 +1891,7 @@
         "product": ["PolicyCenter"],
         "version": ["10.0.3"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -2002,7 +2002,7 @@
         "platform": ["Self-managed"],
         "version": ["11.3.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2018,7 +2018,7 @@
         "platform": ["Self-managed"],
         "version": ["11.3.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2034,7 +2034,7 @@
         "platform": ["Self-managed"],
         "version": ["11.3.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2050,7 +2050,7 @@
         "platform": ["Self-managed"],
         "version": ["11.3.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2066,7 +2066,7 @@
         "platform": ["Self-managed"],
         "version": ["11.3.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2082,7 +2082,7 @@
         "platform": ["Self-managed"],
         "version": ["11.3.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2098,7 +2098,7 @@
         "platform": ["Self-managed"],
         "version": ["11.3.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2114,7 +2114,7 @@
         "platform": ["Self-managed"],
         "version": ["11.2.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2130,7 +2130,7 @@
         "platform": ["Self-managed"],
         "version": ["11.2.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2146,7 +2146,7 @@
         "platform": ["Self-managed"],
         "version": ["11.2.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2162,7 +2162,7 @@
         "platform": ["Self-managed"],
         "version": ["11.2.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2242,7 +2242,7 @@
         "platform": ["Self-managed"],
         "version": ["11.1.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2258,7 +2258,7 @@
         "platform": ["Self-managed"],
         "version": ["11.1.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2274,7 +2274,7 @@
         "platform": ["Self-managed"],
         "version": ["11.1.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2290,7 +2290,7 @@
         "product": ["CustomerEngage Account Management"],
         "version": ["10.0.1"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2306,7 +2306,7 @@
         "product": ["VendorEngage"],
         "version": ["10.0.1"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2840,7 +2840,7 @@
         "product": ["CustomerEngage Quote and Buy"],
         "version": ["10.0.1"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2856,7 +2856,7 @@
         "product": ["ProducerEngage"],
         "version": ["10.0.1"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2872,7 +2872,7 @@
         "product": ["ServiceRepEngage"],
         "version": ["10.0.1"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
