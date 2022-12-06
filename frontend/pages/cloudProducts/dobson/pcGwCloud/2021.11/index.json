@@ -44,7 +44,13 @@
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools440"
+          "id": "isconfigupgradetools440",
+          "env": ["prod"]
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools450",
+          "env": ["int", "staging"]
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools Compatibility",
