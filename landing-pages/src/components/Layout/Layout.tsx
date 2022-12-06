@@ -12,6 +12,7 @@ type LayoutProps = {
   children: JSX.Element | JSX.Element[];
   title: string;
   searchBoxOptions?: SearchBoxOptions;
+  path?: string;
 };
 
 export default function Layout({
