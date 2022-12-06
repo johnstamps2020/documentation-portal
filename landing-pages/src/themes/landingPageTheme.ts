@@ -2,6 +2,8 @@ import { createTheme } from "@mui/material";
 import elysianBackgroundImage from "../images/background-elysian.svg";
 import dobsonBackgroundImage from "../images/background-dobson.svg";
 import cortinaBackgroundImage from "../images/background-cortina.svg";
+import banffBackgroundImage from "../images/background-banff.svg";
+import gradientBackground from "../images/background-gradient.svg";
 
 export const landingPageTheme = createTheme({
   palette: {
@@ -19,7 +21,7 @@ export const landingPageTheme = createTheme({
       color: "white",
       fontWeight: 600,
       marginRight: "auto",
-      marginTop: "30px",
+      marginTop: "5px",
     },
     h2: {
       fontWeight: 600,
@@ -81,12 +83,6 @@ export const landingPageTheme = createTheme({
           color: "hsl(196, 100%, 31%)",
         },
       },
-      variants: [
-        {
-          props: { className: "product-family-item" },
-          style: { fontSize: 20, fontWeight: 800 },
-        },
-      ],
     },
     MuiGrid2: {
       defaultProps: {
@@ -129,6 +125,31 @@ export const landingPageTheme = createTheme({
           },
         },
         {
+          props: { className: "banff" },
+          style: {
+            backgroundImage: [
+              `url(${banffBackgroundImage})`,
+              `url(${gradientBackground})`,
+            ],
+            backgroundAttachment: "fixed",
+            backgroundPosition: "bottom-right",
+            backgroundSize: "cover",
+            minHeight: "100vh",
+            alignContent: "baseline",
+          },
+        },
+        {
+          props: { className: "aspen" },
+          style: {
+            backgroundImage: `url(${gradientBackground})`,
+            backgroundAttachment: "fixed",
+            backgroundPosition: "bottom-right",
+            backgroundSize: "cover",
+            minHeight: "100vh",
+            alignContent: "baseline",
+          },
+        },
+        {
           props: { className: "page-title" },
           style: {
             container: true,
@@ -163,8 +184,21 @@ export const landingPageTheme = createTheme({
       defaultProps: {
         sx: {
           height: 20,
+          mb: 0,
+          mt: "30px",
+          ml: 0,
+          mr: "auto",
+          p: 0,
         },
       },
+      variants: [
+        {
+          props: { className: "breadcrumbs" },
+          style: {
+            paddingLeft: 0,
+          },
+        },
+      ],
     },
     MuiFormControl: {
       defaultProps: {
@@ -190,6 +224,11 @@ export const landingPageTheme = createTheme({
     MuiInputLabel: {
       defaultProps: {
         sx: { color: "white", fontSize: 20, fontWeight: 600 },
+      },
+    },
+    MuiMenu: {
+      defaultProps: {
+        style: { top: "-15px", left: "-1px" },
       },
     },
   },

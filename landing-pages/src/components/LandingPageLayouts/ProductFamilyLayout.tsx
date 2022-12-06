@@ -8,12 +8,21 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import LandingPageSidebar from "../LandingPageSidebar/LandingPageSidebar";
 import { Page } from "@documentation-portal/dist/model/entity/Page";
-import { Link, Paper } from "@mui/material";
+import { Paper } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 export default function ProductFamilyLayout(pageData: Page) {
+  let className = "cortina";
+
+  if (pageData.path.includes("banff")) {
+    className = "banff";
+  } else if (pageData.path.includes("aspen")) {
+    className = "aspen";
+  }
+
   return (
     <Grid
-      className="cortina"
+      className={className}
       {...landingPageTheme.components?.MuiGrid2?.defaultProps}
     >
       <Grid className="page-title">
@@ -38,12 +47,18 @@ export default function ProductFamilyLayout(pageData: Page) {
         ))}
         {pageData.productFamilyItems?.map((item) => (
           <Paper className="product-family-paper">
-            <Link
-              href={item.link || item.pagePath || item.doc?.url || "none"}
-              className="product-family-item"
+            <NavLink
+              to={item.link || item.pagePath || item.doc?.url}
+              style={{
+                textDecoration: "none",
+                paddingBottom: "10px",
+                color: "hsl(196, 100%, 31%)",
+                fontSize: 20,
+                fontWeight: 800,
+              }}
             >
               {item.label}
-            </Link>
+            </NavLink>
           </Paper>
         ))}
       </Grid>
