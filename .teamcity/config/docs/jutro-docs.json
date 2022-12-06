@@ -320,7 +320,7 @@
         "version": ["next"],
         "subject": ["Best practices"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
