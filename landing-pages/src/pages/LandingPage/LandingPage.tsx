@@ -58,10 +58,7 @@ export default function LandingPage() {
   }
 
   return (
-    <Layout
-      title={pageData.title}
-      searchBoxOptions={{ searchFilters: pageData.searchFilters }}
-    >
+    <Layout title={pageData.title} searchBoxOptions={{ searchFilters: pageData.searchFilters }} path={pageData.path}>
       <ThemeProvider theme={landingPageTheme}>
         <CssBaseline enableColorScheme />
         {loadingError && (
