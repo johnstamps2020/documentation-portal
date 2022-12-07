@@ -5,9 +5,9 @@ import AppliedFilters from "./AppliedFilters";
 import PaginationSelector from "./PaginationSelector";
 import Stack from "@mui/material/Stack";
 import Highlighter from "./Highlighter";
-import Box from "@mui/material/Box";
 import useClearFilters from "../../hooks/useClearFilters";
 import ClearFilterButton from "./ClearFiltersButton";
+import { StyledHeading1 } from "./StyledSearchComponents";
 
 export default function SearchResults() {
   const { searchData } = useSearch();
@@ -19,10 +19,10 @@ export default function SearchResults() {
     return (
       <>
         <Stack spacing={1}>
-          <Typography variant="h1">
+          <StyledHeading1>
             Sorry, your search for "{searchData!.searchPhrase}" returned no
             results
-          </Typography>
+          </StyledHeading1>
           <AppliedFilters />
         </Stack>
         {!noFiltersApplied && (
@@ -33,16 +33,10 @@ export default function SearchResults() {
   }
   return (
     <>
-      <Stack
-        direction="row"
-        justifyContent="flex-start"
-        alignItems="flex-start"
-      >
-        <Box>
-          <Typography variant="h1">
-            Search results for "{searchData.searchPhrase}"
-          </Typography>
-        </Box>
+      <Stack direction="row" justifyContent="flex-start" alignItems="center">
+        <StyledHeading1>
+          Search results for "{searchData.searchPhrase}"
+        </StyledHeading1>
         <Highlighter />
       </Stack>
       <Stack

@@ -1,10 +1,10 @@
 import SearchFilter from "./SearchFilter";
 import { useSearch } from "../../context/SearchContext";
 import ButtonGroup from "@mui/material/ButtonGroup";
-import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
 import Stack from "@mui/material/Stack";
 import ClearFilterButton from "./ClearFiltersButton";
+import { StyledButton } from "./StyledSearchComponents";
 
 export type SearchFilterExpandStatus = {
   filterName: string;
@@ -71,21 +71,27 @@ export default function SearchFiltersPanel() {
         size="small"
         variant="text"
         aria-label="text small button group"
+        sx={{
+          justifyContent: "space-between",
+          gap: "6px",
+          width: "100%",
+          marginBottom: "8px"
+        }}
       >
-        <Button
+        <StyledButton
           onClick={() => toggleFilters(true)}
           disabled={allSearchFiltersExpandStatus.every(f => f.filterIsExpanded)}
         >
           Expand all
-        </Button>
-        <Button
+        </StyledButton>
+        <StyledButton
           onClick={() => toggleFilters(false)}
           disabled={allSearchFiltersExpandStatus.every(
             f => !f.filterIsExpanded
           )}
         >
           Collapse all
-        </Button>
+        </StyledButton>
         <ClearFilterButton label="Clear filters" grouped={true} />
       </ButtonGroup>
       {searchData.filters.map(f => (

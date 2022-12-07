@@ -3,8 +3,11 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import Typography from "@mui/material/Typography";
 import { useState } from "react";
+import {
+  StyledAdvancedHelpSectionTitle,
+  StyledAdvancedHelpTitle
+} from "./StyledSearchComponents";
 
 const helpText = () => (
   <>
@@ -38,7 +41,9 @@ const helpText = () => (
       </li>
     </ul>
     <p>See below for more details.</p>
-    <h2 id="and_or">AND, OR</h2>
+    <StyledAdvancedHelpSectionTitle id="and_or">
+      AND, OR
+    </StyledAdvancedHelpSectionTitle>
     <p>
       By default, the search returns pages that contain all of the words in your
       query. If you want to search for pages that contain the words “configure”,
@@ -47,10 +52,10 @@ const helpText = () => (
     <pre>
       <code>configure | install | manage</code>
     </pre>
-    <h2>
+    <StyledAdvancedHelpSectionTitle>
       <a id="excluding_not" />
       Excluding (NOT)
-    </h2>
+    </StyledAdvancedHelpSectionTitle>
     <p>
       If you want pages that contain the word “configure” and “manage” but not
       “install”, enter:
@@ -59,18 +64,18 @@ const helpText = () => (
       <code>configure manage -install</code>
     </pre>
     <p>The order of these words in your search query does not matter.</p>
-    <h2>
+    <StyledAdvancedHelpSectionTitle>
       <a id="exact_match" />
       Exact match
-    </h2>
+    </StyledAdvancedHelpSectionTitle>
     <p>If you want an exact phrase to match, surround it with double quotes:</p>
     <pre>
       <code>&quot;manage user accounts&quot;</code>
     </pre>
-    <h2>
+    <StyledAdvancedHelpSectionTitle>
       <a id="grouping" />
       Grouping
-    </h2>
+    </StyledAdvancedHelpSectionTitle>
     <p>
       Group multiple terms by enclosing them in parentheses. For example, the
       following excludes both the terms "install" and "manage":
@@ -92,10 +97,10 @@ const helpText = () => (
       “configure” then you will also see results for “configuring” and
       “configuration”. If you want to match a word exactly, use double quotes.
     </p>
-    <h2>
+    <StyledAdvancedHelpSectionTitle>
       <a id="prefix" />
       Prefix
-    </h2>
+    </StyledAdvancedHelpSectionTitle>
     <p>
       If you want to find words that have a common beginning, such as BigDecimal
       and BigInt, enter the prefix with an asterisk:
@@ -111,10 +116,10 @@ const helpText = () => (
       You cannot perform a suffix search (<code>*decimal</code>), but you can
       get more results using fuzziness.
     </p>
-    <h2>
+    <StyledAdvancedHelpSectionTitle>
       <a id="fuzziness" />
       Fuzziness
-    </h2>
+    </StyledAdvancedHelpSectionTitle>
     <p>
       You can relax the spelling rules a little if you add a ~ and a number
       after a word. For example, to find both “center” and “centre”, enter:
@@ -122,10 +127,10 @@ const helpText = () => (
     <pre>
       <code>centre~1</code>
     </pre>
-    <h2>
+    <StyledAdvancedHelpSectionTitle>
       <a id="slop" />
       Slop
-    </h2>
+    </StyledAdvancedHelpSectionTitle>
     <p>
       If you want to match phrases such as “Model Info screen”, “Model Details
       screen”, and other similar ones, you can surround a simple phrase with
@@ -173,7 +178,9 @@ export default function AdvancedSearchHelp() {
       </Button>
       <Dialog onClose={handleClose} open={open}>
         <DialogTitle>
-          <Typography variant="h1">Advanced search help</Typography>
+          <StyledAdvancedHelpTitle>
+            Advanced search help
+          </StyledAdvancedHelpTitle>
         </DialogTitle>
         <DialogContent>{helpText()}</DialogContent>
         <DialogActions>
