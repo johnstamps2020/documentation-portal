@@ -10,8 +10,14 @@ import { Page } from "@documentation-portal/dist/model/entity/Page";
 
 export default function CategoryLayout(pageData: Page) {
   let className = "elysian";
-  if (pageData.path.endsWith("dobson")) {
+  if (pageData.path.includes("dobson")) {
     className = "dobson";
+  } else if (pageData.path.includes("cortina")) {
+    className = "cortina";
+  } else if (pageData.path.includes("banff")) {
+    className = "banff";
+  } else if (pageData.path.includes("aspen")) {
+    className = "aspen";
   }
 
   return (
@@ -19,8 +25,8 @@ export default function CategoryLayout(pageData: Page) {
       className={className}
       {...landingPageTheme.components?.MuiGrid2?.defaultProps}
     >
-      <Grid className={"page-title"}>
-        <Container>
+      <Grid className="page-title">
+        <Container className="breadcrumbs" style={{ paddingLeft: 0 }}>
           <Breadcrumbs pagePath={pageData.path} />
         </Container>
         <Typography variant="h1">{pageData.title}</Typography>
@@ -33,7 +39,7 @@ export default function CategoryLayout(pageData: Page) {
         )}
       </Grid>
       <Grid
-        className={"category-content"}
+        className="category-content"
         {...landingPageTheme.components?.MuiGrid2?.defaultProps}
       >
         {pageData.categories?.map((category) => (

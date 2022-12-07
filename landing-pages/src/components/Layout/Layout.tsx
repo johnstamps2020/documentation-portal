@@ -18,24 +18,16 @@ type LayoutProps = {
 export default function Layout({
   children,
   title,
-  searchBoxOptions
+  searchBoxOptions,
+  path
 }: LayoutProps) {
   document.title = `${title} | Guidewire Documentation`;
   return (
     <div>
       <CssBaseline enableColorScheme />
       <Header {...searchBoxOptions} />
-      <main
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column"
-        }}
-      >
-        {children}
-      </main>
-      <Footer />
+      <main>{children}</main>
+      <Footer path={path} title={title}/>
     </div>
   );
 }

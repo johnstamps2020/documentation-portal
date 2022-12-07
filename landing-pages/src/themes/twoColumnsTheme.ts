@@ -38,8 +38,13 @@ export const twoColumnsTheme = createTheme({
             mr: "auto",
           },
           backgroundColor: "white",
+          minHeight: "75vh",
+          alignContent: "baseline",
         },
-        paddingLeft: "5%",
+        marginLeft: "100px",
+        marginRight: "auto",
+        alignItems: "baseline",
+        justifyContent: "left"
       },
     },
     MuiFormControl: {
