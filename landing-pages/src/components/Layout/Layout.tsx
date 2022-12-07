@@ -3,7 +3,7 @@ import React from "react";
 import Header from "./Header/Header";
 import Footer from "./Footer";
 
-export type SearchBoxOptions = {
+export type HeaderOptions = {
   searchFilters?: { [key: string]: string[] };
   hideSearchBox?: boolean;
 };
@@ -11,23 +11,23 @@ export type SearchBoxOptions = {
 type LayoutProps = {
   children: JSX.Element | JSX.Element[];
   title: string;
-  searchBoxOptions?: SearchBoxOptions;
+  headerOptions?: HeaderOptions;
   path?: string;
 };
 
 export default function Layout({
   children,
   title,
-  searchBoxOptions,
+  headerOptions,
   path
 }: LayoutProps) {
   document.title = `${title} | Guidewire Documentation`;
   return (
     <div>
       <CssBaseline enableColorScheme />
-      <Header {...searchBoxOptions} />
+      <Header {...headerOptions} />
       <main>{children}</main>
-      <Footer path={path} title={title}/>
+      <Footer path={path} title={title} />
     </div>
   );
 }

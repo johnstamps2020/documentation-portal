@@ -9,7 +9,7 @@ import SearchResultsPanel from "../../components/Search/SearchResultsPanel";
 export default function SearchPage() {
   return (
     <SearchProvider>
-      <Layout title="Search results" searchBoxOptions={{ hideSearchBox: true }}>
+      <Layout title="Search results" headerOptions={{ hideSearchBox: true }}>
         <Stack
           direction="row"
           divider={<Divider orientation="vertical" flexItem />}

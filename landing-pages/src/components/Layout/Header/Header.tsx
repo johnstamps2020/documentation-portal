@@ -4,10 +4,10 @@ import ExternalSites from "./ExternalSites";
 import Glossary from "./Glossary";
 import TranslatedPages from "./TranslatedPages";
 import UserProfile from "./UserProfile";
-import { SearchBoxOptions } from "../Layout";
+import { HeaderOptions } from "../Layout";
 import Stack from "@mui/material/Stack";
 
-export default function Header(searchBoxOptions: SearchBoxOptions) {
+export default function Header(headerOptions: HeaderOptions) {
   return (
     <Stack
       direction={{ xs: "column", sm: "row" }}
@@ -22,8 +22,11 @@ export default function Header(searchBoxOptions: SearchBoxOptions) {
       }}
     >
       <Logo />
-      {!searchBoxOptions?.hideSearchBox && (
-        <SearchBox {...searchBoxOptions?.searchFilters} />
+      {!headerOptions?.hideSearchBox && (
+        <SearchBox
+          bigSize={false}
+          searchFilters={headerOptions?.searchFilters}
+        />
       )}
       <Stack
         direction="row"

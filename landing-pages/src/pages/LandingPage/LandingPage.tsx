@@ -3,14 +3,13 @@ import Layout from "../../components/Layout/Layout";
 import { Page } from "@documentation-portal/dist/model/entity/Page";
 import { useEffect, useState } from "react";
 import { landingPageTheme } from "../../themes/landingPageTheme";
-import { ThemeProvider } from "@mui/material";
+import { Theme, ThemeProvider } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import Alert from "@mui/material/Alert";
 import Backdrop from "@mui/material/Backdrop";
 import CategoryLayout from "../../components/LandingPageLayouts/CategoryLayout";
 import SubjectLayout from "../../components/LandingPageLayouts/SubjectLayout";
 import ProductFamilyLayout from "../../components/LandingPageLayouts/ProductFamilyLayout";
-import { Theme } from "@mui/material";
 
 export default function LandingPage() {
   const params = useParams();
@@ -58,7 +57,11 @@ export default function LandingPage() {
   }
 
   return (
-    <Layout title={pageData.title} searchBoxOptions={{ searchFilters: pageData.searchFilters }} path={pageData.path}>
+    <Layout
+      title={pageData.title}
+      headerOptions={{ searchFilters: pageData.searchFilters }}
+      path={pageData.path}
+    >
       <ThemeProvider theme={landingPageTheme}>
         <CssBaseline enableColorScheme />
         {loadingError && (

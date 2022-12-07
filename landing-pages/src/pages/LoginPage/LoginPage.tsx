@@ -11,7 +11,7 @@ export default function LoginPage() {
   return (
     <Layout
       title="Guidewire Documentation | Log in"
-      searchBoxOptions={{ hideSearchBox: true }}
+      headerOptions={{ hideSearchBox: true }}
     >
       <Grid container alignItems="center" sx={{ width: "100%" }}>
         <Grid

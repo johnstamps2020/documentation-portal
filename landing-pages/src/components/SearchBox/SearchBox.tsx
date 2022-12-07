@@ -4,26 +4,49 @@ import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import { useLocaleParams } from "../../hooks/useLocale";
 
-export default function SearchBox(searchFilters: { [key: string]: string[] }) {
+type SearchBoxOptions = {
+  bigSize: boolean;
+  searchFilters?: { [key: string]: string[] };
+};
+
+const commonProps = {
+  padding: "2px 4px",
+  display: "flex",
+  alignItems: "center",
+  marginLeft: "auto",
+  marginRight: "auto",
+  border: "1px solid hsl(214, 22%, 58%)"
+};
+
+const bigSizeProps = {
+  ...commonProps,
+  height: "45px",
+  width: "760px",
+  maxWidth: "760px",
+  marginTop: 0,
+  marginBottom: 0
+};
+
+const regularSizeProps = {
+  ...commonProps,
+  height: "30px",
+  width: "100%",
+  maxWidth: "400px",
+  marginTop: "25px",
+  marginBottom: "25px"
+};
+
+export default function SearchBox({
+  bigSize,
+  searchFilters
+}: SearchBoxOptions) {
   const { placeholder } = useLocaleParams();
   return (
     <Paper
       component="form"
       elevation={0}
       action="/landing/search"
-      sx={{
-        padding: "2px 4px",
-        display: "flex",
-        alignItems: "center",
-        width: "100%",
-        height: "30px",
-        maxWidth: 400,
-        marginLeft: "auto",
-        marginRight: "auto",
-        marginTop: "25px",
-        marginBottom: "25px",
-        border: "1px solid hsl(214, 22%, 58%)"
-      }}
+      sx={bigSize ? { ...bigSizeProps } : { ...regularSizeProps }}
     >
       <InputBase
         sx={{ ml: 1, flex: 1 }}
