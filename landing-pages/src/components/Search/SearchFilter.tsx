@@ -1,6 +1,3 @@
-import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import AccordionSummary from "@mui/material/AccordionSummary";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormGroup from "@mui/material/FormGroup";
@@ -11,6 +8,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import React from "react";
 import Stack from "@mui/material/Stack";
 import Chip from "@mui/material/Chip";
+import {
+  StyledAccordion,
+  StyledAccordionDetails,
+  StyledAccordionSummary
+} from "./StyledSearchComponents";
 
 type SearchFilterProps = {
   serverSearchFilter: ServerSearchFilter;
@@ -57,8 +59,11 @@ export default function SearchFilter({
   }
 
   return (
-    <Accordion expanded={expanded} onChange={handleAccordionExpandCollapse}>
-      <AccordionSummary
+    <StyledAccordion
+      expanded={expanded}
+      onChange={handleAccordionExpandCollapse}
+    >
+      <StyledAccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="search-filter-panel-content"
         id="search-filter-panel-header"
@@ -72,9 +77,9 @@ export default function SearchFilter({
           variant="outlined"
           sx={{ marginLeft: "8px", border: "1px solid" }}
         />
-      </AccordionSummary>
-      <AccordionDetails>
-        <FormGroup>
+      </StyledAccordionSummary>
+      <StyledAccordionDetails>
+        <FormGroup sx={{ gap: "8px" }}>
           {serverSearchFilter.values.map(value => (
             <Stack
               direction="row"
@@ -84,11 +89,19 @@ export default function SearchFilter({
             >
               {(value.doc_count > 0 || value.checked) && (
                 <FormControlLabel
+                  disableTypography={true}
+                  sx={{
+                    marginRight: "8px",
+                    fontSize: "0.85rem"
+                  }}
                   control={
                     <Checkbox
                       checked={value.checked}
                       value={value.label}
                       onChange={handleCheckboxChange}
+                      sx={{
+                        height: "14px"
+                      }}
                     />
                   }
                   label={value.label}
@@ -98,7 +111,7 @@ export default function SearchFilter({
             </Stack>
           ))}
         </FormGroup>
-      </AccordionDetails>
-    </Accordion>
+      </StyledAccordionDetails>
+    </StyledAccordion>
   );
 }

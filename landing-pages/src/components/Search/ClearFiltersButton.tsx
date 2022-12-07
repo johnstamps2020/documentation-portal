@@ -1,5 +1,6 @@
 import Button from "@mui/material/Button";
 import useClearFilters from "../../hooks/useClearFilters";
+import { StyledButton } from "./StyledSearchComponents";
 
 type ClearFilterButtonProps = {
   label: string;
@@ -12,16 +13,16 @@ export default function ClearFilterButton({
 }: ClearFilterButtonProps) {
   const { clearFilters, noFiltersApplied } = useClearFilters();
   return grouped ? (
-    <Button onClick={clearFilters} disabled={noFiltersApplied}>
+    <StyledButton onClick={clearFilters} disabled={noFiltersApplied}>
       {label}
-    </Button>
+    </StyledButton>
   ) : (
-    <Button
+    <StyledButton
       onClick={clearFilters}
       disabled={noFiltersApplied}
       sx={{ width: "fit-content", marginTop: 3 }}
     >
       {label}
-    </Button>
+    </StyledButton>
   );
 }

@@ -2,7 +2,7 @@ echo "!!!!!!!!!!!!!!!!!!!"
 echo "If the DB does not work, try removing your local postgres files `rm -rf /private/tmp/pgdata`"
 echo "!!!!!!!!!!!!!!!!!!!"
 
-docker run --name docportal-db --rm \
+docker run --name docportal-db \
   -e POSTGRES_USER=postgres \
   -e POSTGRES_PASSWORD=testtesttest \
   -e PGDATA=/var/lib/postgresql/data/pgdata \

@@ -36,7 +36,7 @@ export default function SearchResultsPanel() {
     >
       <Stack alignItems="center" sx={{ marginBottom: 3 }} spacing={1}>
         <NotLoggedInAlert />
-        <SearchBox {...searchFilters} />
+        <SearchBox bigSize={true} searchFilters={searchFilters} />
         <AdvancedSearchHelp />
       </Stack>
       <Stack>

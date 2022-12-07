@@ -9,10 +9,24 @@ import LandingPageSidebar from "../../components/LandingPageSidebar/LandingPageS
 import { Page } from "@documentation-portal/dist/model/entity/Page";
 
 export default function CategoryLayout(pageData: Page) {
+  let className = "elysian";
+  if (pageData.path.includes("dobson")) {
+    className = "dobson";
+  } else if (pageData.path.includes("cortina")) {
+    className = "cortina";
+  } else if (pageData.path.includes("banff")) {
+    className = "banff";
+  } else if (pageData.path.includes("aspen")) {
+    className = "aspen";
+  }
+
   return (
-    <Grid {...landingPageTheme.components?.MuiGrid?.defaultProps}>
-      <Grid xs={12} sx={{ textAlign: "left", width: "100%" }}>
-        <Container>
+    <Grid
+      className={className}
+      {...landingPageTheme.components?.MuiGrid2?.defaultProps}
+    >
+      <Grid className="page-title">
+        <Container className="breadcrumbs" style={{ paddingLeft: 0 }}>
           <Breadcrumbs pagePath={pageData.path} />
         </Container>
         <Typography variant="h1">{pageData.title}</Typography>
@@ -24,12 +38,15 @@ export default function CategoryLayout(pageData: Page) {
           />
         )}
       </Grid>
-      <Grid container marginBottom={10} maxWidth={"1000px"}>
+      <Grid
+        className="category-content"
+        {...landingPageTheme.components?.MuiGrid2?.defaultProps}
+      >
         {pageData.categories?.map((category) => (
           <LandingPageCategory {...category} key={category.id} />
         ))}
       </Grid>
-      <LandingPageSidebar {...pageData.sidebar} />
+      {pageData.sidebar && <LandingPageSidebar {...pageData.sidebar} />}
     </Grid>
   );
 }

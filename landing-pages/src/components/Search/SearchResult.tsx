@@ -1,6 +1,3 @@
-import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import AccordionSummary from "@mui/material/AccordionSummary";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -9,9 +6,15 @@ import {
   ServerSearchResult
 } from "@documentation-portal/dist/types/serverSearch";
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
+import {
+  StyledAccordion,
+  StyledAccordionDetails,
+  StyledAccordionSummary,
+  StyledHeading2,
+  StyledLink
+} from "./StyledSearchComponents";
 
 export default function SearchResult(searchResult: ServerSearchResult) {
   const ListItem = styled("li")(() => ({
@@ -22,12 +25,11 @@ export default function SearchResult(searchResult: ServerSearchResult) {
 
   return (
     <Stack sx={{ paddingBottom: "16px" }}>
-      <Link href={`${searchResult.href}?${highlightedTermsUrlParam}`}>
-        <Typography
-          variant="h2"
+      <StyledLink href={`${searchResult.href}?${highlightedTermsUrlParam}`}>
+        <StyledHeading2
           dangerouslySetInnerHTML={{ __html: searchResult.title }}
         />
-      </Link>
+      </StyledLink>
 
       <Stack direction="row" spacing={1}>
         <Paper
@@ -50,32 +52,37 @@ export default function SearchResult(searchResult: ServerSearchResult) {
         </Paper>
       </Stack>
       <Typography
-        variant="body1"
+        paragraph
         dangerouslySetInnerHTML={{ __html: searchResult.body }}
+        sx={{
+          padding: "1rem 0",
+          lineHeight: "24px",
+          textAlign: "left"
+        }}
       />
       {searchResult.innerHits.length > 0 && (
-        <Accordion>
-          <AccordionSummary
+        <StyledAccordion>
+          <StyledAccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="inner-hit-panel-content"
             id="inner-hit-panel-header"
           >
             Also found in {searchResult.innerHits.length} pages with the same
             title
-          </AccordionSummary>
-          <AccordionDetails>
+          </StyledAccordionSummary>
+          <StyledAccordionDetails>
             <Stack>
               {searchResult.innerHits.map((h: ServerSearchInnerHit, index) => (
-                <Link
+                <StyledLink
                   key={`${h.label}${index}`}
                   href={`${h.href}?${highlightedTermsUrlParam}`}
                 >
                   {h.tags.join(", ")}
-                </Link>
+                </StyledLink>
               ))}
             </Stack>
-          </AccordionDetails>
-        </Accordion>
+          </StyledAccordionDetails>
+        </StyledAccordion>
       )}
     </Stack>
   );
