@@ -8,8 +8,8 @@
     "selectedItem": "10.2.2",
     "items": [
       {
-        "label": "10.2.1",
-        "page": "../10.2.1"
+        "label": "10.2.2",
+        "page": "../10.2.2"
       },
       {
         "label": "10.2.0",
@@ -28,6 +28,22 @@
         "id": "cc1010"
       },
       {
+        "label": "10.0.3",
+        "id": "selfmanagedccahrgbyin"
+      },
+      {
+        "label": "10.0.2",
+        "id": "selfmanagedcc1002"
+      },
+      {
+        "label": "10.0.1",
+        "id": "httpsportalguidewirecomportalsecuredoccclaimenteruhhqohgq"
+      },
+      {
+        "label": "10.0.0",
+        "id": "httpsportalguidewirecomportalsecuredoccclaimenterqqxmyzex"
+      },
+      {
         "label": "9.0.10",
         "id": "cc9010"
       },
@@ -38,6 +54,70 @@
       {
         "label": "9.0.8",
         "id": "cc908"
+      },
+      {
+        "label": "9.0.7",
+        "id": "httpsportalguidewirecomportalsecuredoccclaimenterelmxqvai"
+      },
+      {
+        "label": "9.0.6",
+        "id": "httpsportalguidewirecomportalsecuredoccclaimenterwtigvtxy"
+      },
+      {
+        "label": "9.0.5",
+        "id": "httpsportalguidewirecomportalsecuredoccclaimentercxzeemjp"
+      },
+      {
+        "label": "9.0.4",
+        "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocidesewcj"
+      },
+      {
+        "label": "9.0.3",
+        "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocvqlyczrv"
+      },
+      {
+        "label": "9.0.2",
+        "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocnlrfsben"
+      },
+      {
+        "label": "9.0.1",
+        "id": "httpsportalguidewirecomportalsecuredoccclaimenterdoceytmuoui"
+      },
+      {
+        "label": "9.0.0",
+        "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocxjnxnozc"
+      },
+      {
+        "label": "8.0.7",
+        "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocnhpuynwc"
+      },
+      {
+        "label": "8.0.6",
+        "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocmypqavjm"
+      },
+      {
+        "label": "8.0.5",
+        "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocbapuerjf"
+      },
+      {
+        "label": "8.0.4",
+        "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocqeuxmcrz"
+      },
+      {
+        "label": "8.0.3",
+        "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocpfaqnsti"
+      },
+      {
+        "label": "8.0.2",
+        "id": "httpsportalguidewirecomportalsecuredoccclaimenterdochpprlkbr"
+      },
+      {
+        "label": "8.0.1",
+        "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocaxxmkayt"
+      },
+      {
+        "label": "8.0.0",
+        "id": "httpsportalguidewirecomportalsecuredoccclaimenterdocuwuokkoq"
       }
     ]
   },
