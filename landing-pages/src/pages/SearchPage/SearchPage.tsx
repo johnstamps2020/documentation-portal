@@ -2,9 +2,9 @@ import Layout from "../../components/Layout/Layout";
 import Stack from "@mui/material/Stack";
 import { Divider } from "@mui/material";
 import { SearchProvider } from "../../context/SearchContext";
-import SearchFiltersPanel from "../../components/Search/SearchFiltersPanel";
-import SearchPageBackdrop from "../../components/Search/SearchPageBackdrop";
-import SearchResultsPanel from "../../components/Search/SearchResultsPanel";
+import SearchFiltersPanel from "../../components/SearchPage/SearchFiltersPanel";
+import SearchPageBackdrop from "../../components/SearchPage/SearchPageBackdrop";
+import SearchResultsPanel from "../../components/SearchPage/SearchResultsPanel";
 
 export default function SearchPage() {
   return (

@@ -1,4 +1,4 @@
-import { Menu, MenuItem } from "@mui/material";
+import { MenuItem } from "@mui/material";
 import React from "react";
 import iconTranslatedDocs from "../../../images/icon-translatedDocs.svg";
 import {

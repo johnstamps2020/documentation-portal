@@ -1,5 +1,4 @@
-import React from "react";
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { Doc } from "@documentation-portal/dist/model/entity/Doc";
 import { Build } from "@documentation-portal/dist/model/entity/Build";
 import Button from "@mui/material/Button";

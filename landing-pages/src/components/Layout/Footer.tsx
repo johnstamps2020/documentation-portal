@@ -33,7 +33,7 @@ export default function Footer({ title, path }: FooterProps) {
         color: "hsl(0, 0%, 98%)",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "0 30px",
+        padding: "0 30px"
       }}
     >
       <FooterText sx={{ cols: 1, display: "contents" }}>
@@ -43,7 +43,7 @@ export default function Footer({ title, path }: FooterProps) {
         href="/support"
         sx={{
           underline: "none",
-          color: "white",
+          color: "white"
         }}
       >
         <FooterText sx={{ display: "contents" }}>
@@ -58,7 +58,7 @@ export default function Footer({ title, path }: FooterProps) {
             style={{
               height: "20px",
               display: "block",
-              marginRight: "5px",
+              marginRight: "5px"
             }}
           />
         )}

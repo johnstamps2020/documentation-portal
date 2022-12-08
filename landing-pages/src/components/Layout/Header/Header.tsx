@@ -18,7 +18,7 @@ export default function Header(headerOptions: HeaderOptions) {
       sx={{
         width: "100%",
         backgroundColor: "hsl(216, 42%, 13%)",
-        padding: "6px"
+        padding: "6px 20px 6px 6px"
       }}
     >
       <Logo />
@@ -32,6 +32,7 @@ export default function Header(headerOptions: HeaderOptions) {
         direction="row"
         justifyContent={{ xs: "center", sm: "right" }}
         width={{ sm: "100%", md: "400px" }}
+        spacing={2}
       >
         <ExternalSites />
         <Glossary />

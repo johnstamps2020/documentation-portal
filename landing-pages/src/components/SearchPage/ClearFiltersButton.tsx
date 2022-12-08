@@ -1,4 +1,3 @@
-import Button from "@mui/material/Button";
 import useClearFilters from "../../hooks/useClearFilters";
 import { StyledButton } from "./StyledSearchComponents";
 

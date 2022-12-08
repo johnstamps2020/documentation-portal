@@ -2,14 +2,12 @@ import { useParams } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import { Page } from "@documentation-portal/dist/model/entity/Page";
 import { useEffect, useState } from "react";
-import { landingPageTheme } from "../../themes/landingPageTheme";
-import { Theme, ThemeProvider } from "@mui/material";
-import CssBaseline from "@mui/material/CssBaseline";
+import { Theme } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import Backdrop from "@mui/material/Backdrop";
-import CategoryLayout from "../../components/LandingPageLayouts/CategoryLayout";
-import SubjectLayout from "../../components/LandingPageLayouts/SubjectLayout";
-import ProductFamilyLayout from "../../components/LandingPageLayouts/ProductFamilyLayout";
+import CategoryLayout from "../../components/LandingPage/Category/CategoryLayout";
+import SubjectLayout from "../../components/LandingPage/Subject/SubjectLayout";
+import ProductFamilyLayout from "../../components/LandingPage/ProductFamily/ProductFamilyLayout";
 
 export default function LandingPage() {
   const params = useParams();
@@ -62,8 +60,7 @@ export default function LandingPage() {
       headerOptions={{ searchFilters: pageData.searchFilters }}
       path={pageData.path}
     >
-      <ThemeProvider theme={landingPageTheme}>
-        <CssBaseline enableColorScheme />
+      <>
         {loadingError && (
           <Alert severity="error" variant="filled">
             {loadingError}
@@ -78,7 +75,7 @@ export default function LandingPage() {
         {pageData && pageData.productFamilyItems.length !== 0 && (
           <ProductFamilyLayout {...pageData} />
         )}
-      </ThemeProvider>
+      </>
       <Backdrop
         open={loading}
         sx={{
