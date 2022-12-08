@@ -100,8 +100,8 @@ enum class GwConfigParams(val param_value: String) {
 enum class GwDockerImages(val image_url: String) {
     DOC_PORTAL("${GwConfigParams.ECR_HOST.param_value}/tenant-doctools-docportal"),
     DOC_PORTAL_PROD("${GwConfigParams.ECR_HOST_PROD.param_value}/tenant-doctools-docportal"),
+    DITA_OT_3_4_1("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/dita-ot:3.4.1"),
     DITA_OT_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/dita-ot:latest"),
-    DITA_OT_3_6_1("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/dita-ot:3.6.1"),
     ATMOS_DEPLOY_2_6_0("${GwConfigParams.ARTIFACTORY_HOST.param_value}/devex-docker-dev/atmosdeploy:2.6.0"),
     CONFIG_DEPLOYER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/config-deployer:latest"),
     DOC_CRAWLER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/doc-crawler:latest"),
@@ -1145,7 +1145,7 @@ object Custom {
                       n=${'$'}((n+1))
                     done < %env.BUILDS_FILE_PARSED%
                 """.trimIndent()
-                dockerImage = GwDockerImages.DITA_OT_3_6_1.image_url
+                dockerImage = GwDockerImages.DITA_OT_LATEST.image_url
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             }
             step(GwBuildSteps.createZipPackageStep(
@@ -4151,9 +4151,9 @@ object GwBuildSteps {
         }
 
         val dockerImageName = when (output_format) {
-            GwDitaOutputFormats.HTML5.format_name -> GwDockerImages.DITA_OT_3_6_1.image_url
-            GwDitaOutputFormats.SINGLEHTML.format_name -> GwDockerImages.DITA_OT_3_6_1.image_url
-            else -> GwDockerImages.DITA_OT_LATEST.image_url
+            GwDitaOutputFormats.HTML5.format_name -> GwDockerImages.DITA_OT_LATEST.image_url
+            GwDitaOutputFormats.SINGLEHTML.format_name -> GwDockerImages.DITA_OT_LATEST.image_url
+            else -> GwDockerImages.DITA_OT_3_4_1.image_url
         }
 
         return ScriptBuildStep {
@@ -4265,9 +4265,9 @@ object GwBuildSteps {
         val ditaBuildCommand = Helpers.getCommandString("dita", commandParams)
 
         val dockerImageName = when (output_format) {
-            GwDitaOutputFormats.HTML5.format_name -> GwDockerImages.DITA_OT_3_6_1.image_url
-            GwDitaOutputFormats.SINGLEHTML.format_name -> GwDockerImages.DITA_OT_3_6_1.image_url
-            else -> GwDockerImages.DITA_OT_LATEST.image_url
+            GwDitaOutputFormats.HTML5.format_name -> GwDockerImages.DITA_OT_LATEST.image_url
+            GwDitaOutputFormats.SINGLEHTML.format_name -> GwDockerImages.DITA_OT_LATEST.image_url
+            else -> GwDockerImages.DITA_OT_3_4_1.image_url
         }
 
         return ScriptBuildStep {
