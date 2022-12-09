@@ -129,7 +129,7 @@
     },
     {
       "id": "in20231commonconfig",
-      "title": "Common Functionality Configuration Reference",
+      "title": "Common Functionality Configuration Reference - Internal",
       "url": "cloud/in/20231/commonconfig",
       "metadata": {
         "platform": ["Cloud"],
@@ -142,7 +142,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false,
+      "internal": true,
       "earlyAccess": false
     },
     {
@@ -228,7 +228,7 @@
         "subject": ["Configuration"],
         "release": ["Garmisch"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -300,25 +300,7 @@
         "subject": ["Integration"],
         "release": ["Garmisch"]
       },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": true,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20231xcommonconfigdraft",
-      "title": "Common Functionality Configuration Reference - Internal",
-      "url": "cloud/in/20231/commonconfig",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2023.1"],
-        "subject": ["Configuration"],
-        "release": ["Garmisch"]
-      },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -336,7 +318,7 @@
         "subject": ["Configuration"],
         "release": ["Garmisch"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -354,7 +336,7 @@
         "subject": ["Configuration"],
         "release": ["Garmisch"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
