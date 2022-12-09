@@ -217,16 +217,32 @@
     },
     {
       "id": "indevguidejava11draft",
-      "title": "Developers Setup (Internal) Draft",
+      "title": "Developers Setup - Internal",
       "url": "cloud/in/devsetupjava11",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.1", "2021.2"],
+        "version": [
+          "2023.1",
+          "2022.2",
+          "2022.1",
+          "2021.2",
+          "2021.1",
+          "2020.2",
+          "2020.1"
+        ],
         "subject": ["Installation"],
-        "release": ["Cortina", "Dobson"]
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -415,16 +431,32 @@
     },
     {
       "id": "ininstallassistdraft",
-      "title": "Install Assist",
+      "title": "Install Assist - Internal",
       "url": "cloud/in/installassist",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["latest"],
+        "version": [
+          "2023.1",
+          "2022.2",
+          "2022.1",
+          "2021.2",
+          "2021.1",
+          "2020.2",
+          "2020.1"
+        ],
         "subject": ["Installation"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -559,16 +591,16 @@
     },
     {
       "id": "inupgradetoolsdraft",
-      "title": "Upgrade Tools Draft",
+      "title": "Upgrade Tools - Internal",
       "url": "cloud/in/upgrade",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2022.1", "2021.2", "2021.1", "2020.2", "2020.1"],
+        "version": ["2023.1", "2022.2","2022.1", "2021.2", "2021.1", "2020.2", "2020.1"],
         "subject": ["Installation"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -582,15 +614,15 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2022.2", "2022.1", "2021.2"],
+        "version": ["2023.1", "2022.2", "2022.1", "2021.2"],
         "subject": ["Installation"],
-        "release": ["Dobson", "Elysian", "Flaine"]
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false,
+      "internal": true,
       "earlyAccess": false
     }
   ]
