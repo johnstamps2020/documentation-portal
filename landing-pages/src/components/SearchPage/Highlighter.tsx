@@ -4,6 +4,7 @@ import { useSearch } from "../../context/SearchContext";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Tooltip from "@mui/material/Tooltip";
+import GlobalStyles from "@mui/material/GlobalStyles";
 
 export default function Highlighter() {
   const { searchData } = useSearch();
@@ -36,6 +37,9 @@ export default function Highlighter() {
 
   return (
     <>
+      <GlobalStyles
+        styles={{ ".highlighted": { backgroundColor: "hsl(60, 100%, 77%)" } }}
+      />
       <ToggleButtonGroup
         color="primary"
         size="small"

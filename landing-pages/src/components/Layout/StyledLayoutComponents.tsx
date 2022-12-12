@@ -8,15 +8,14 @@ import Typography, { TypographyProps } from "@mui/material/Typography";
 
 export const HeaderAvatar = styled(Avatar)<AvatarProps>(() => ({
   height: "25px",
-  width: "25px",
-  marginRight: "20px",
-  marginTop: "10px"
+  width: "25px"
 }));
 
 export const HeaderMenuTitle = styled(Typography)<TypographyProps>(() => ({
   fontSize: 16,
   marginLeft: "16px",
-  marginRight: "auto"
+  marginRight: "auto",
+  width: "100%"
 }));
 
 export const HeaderMenuSubtitle = styled(Typography)<TypographyProps>(() => ({
@@ -24,23 +23,27 @@ export const HeaderMenuSubtitle = styled(Typography)<TypographyProps>(() => ({
   marginLeft: "16px",
   marginRight: "auto",
   marginTop: 0,
-  color: "hsl(204, 12%, 45%)"
+  color: "hsl(204, 12%, 45%)",
+  width: "100%"
 }));
 
-export const HeaderMenu = styled(Menu)<MenuProps>(
-  () => ({
-    elevation: 0,
-    disableScrollLock: true,
-    anchorOrigin: { horizontal: "right", vertical: "bottom" }
-  }),
-  () => ({
-    "& .MuiPaper-root": {
-      overflow: "visible",
-      filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-      marginTop: "0.5rem",
-      padding: "20px"
-    }
-  })
+export const HeaderMenu = (props: MenuProps) => (
+  <Menu
+    disableScrollLock={true}
+    anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+    transformOrigin={{ horizontal: "right", vertical: "top" }}
+    PaperProps={{
+      elevation: 0,
+      sx: {
+        overflow: "visible",
+        filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+        mt: "0.5rem",
+        padding: "20px",
+        width: "fit-content"
+      }
+    }}
+    {...props}
+  />
 );
 
 export const HeaderMenuLink = styled(Link)<LinkProps>(() => ({
@@ -48,8 +51,8 @@ export const HeaderMenuLink = styled(Link)<LinkProps>(() => ({
   color: "hsl(196, 100%, 31%)",
   fontSize: 14,
   fontWeight: 400,
-  p: 0,
-  m: 0
+  padding: 0,
+  margin: 0
 }));
 
 export const HeaderMenuDivider = styled(Divider)<DividerProps>(() => ({

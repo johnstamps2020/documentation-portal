@@ -1,8 +1,7 @@
 import Stack from "@mui/material/Stack";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import { Link } from "react-router-dom";
+import Link from "@mui/material/Link";
 import React, { useEffect, useState } from "react";
-import { landingPageTheme } from "../../themes/landingPageTheme";
 
 type BreadcrumbItem = {
   label: string;
@@ -39,17 +38,11 @@ export default function Breadcrumbs(breadcrumbProps: BreadcrumbProps) {
     <Stack direction="row" divider={<ChevronRightIcon />} spacing={1}>
       {breadcrumbs &&
         breadcrumbs.map(({ path, label, id }) => (
-          <Link
-            to={path}
-            key={id}
-            style={landingPageTheme.components?.MuiLink?.defaultProps?.style}
-          >
+          <Link href={`/landing/${path}`} key={id}>
             {label}
           </Link>
         ))}
-      {!breadcrumbs && (
-        <div style={{height: "34px"}}></div>
-      )}
+      {!breadcrumbs && <div style={{ height: "34px" }}></div>}
     </Stack>
   );
 }

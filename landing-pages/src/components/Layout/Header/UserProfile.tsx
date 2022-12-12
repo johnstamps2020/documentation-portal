@@ -1,4 +1,4 @@
-import { Menu, MenuItem } from "@mui/material";
+import { MenuItem } from "@mui/material";
 import React from "react";
 import iconAvatar from "../../../images/icon-avatar.svg";
 import {
