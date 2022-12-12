@@ -8,6 +8,10 @@
     "selectedItem": "Elysian (2022.05)",
     "items": [
       {
+        "label": "Flaine (2022.09)",
+        "page": "../../../flaine/bcGwCloud/2022.09"
+      },
+      {
         "label": "Dobson (2021.11)",
         "page": "../../../dobson/bcGwCloud/2021.11"
       },

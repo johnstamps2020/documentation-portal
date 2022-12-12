@@ -8,6 +8,10 @@
     "selectedItem": "Banff (2020.11)",
     "items": [
       {
+        "label": "Flaine (2022.09)",
+        "page": "../../../../flaine/pcGwCloud/2022.09"
+      },
+      {
         "label": "Elysian (2022.05)",
         "page": "../../../../elysian/pcGwCloud/2022.05"
       },
