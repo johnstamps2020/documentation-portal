@@ -43,7 +43,12 @@ export default function LandingPageSelector({
 
   const navigate = useNavigate();
   const handleChange = (event: SelectChangeEvent) => {
-    return navigate(`/${event.target.value}`);
+    const selectedItem = pageSelector.pageSelectorItems.find(
+      i => i.label === event.target.value
+    );
+    const pageUrl =
+      selectedItem?.pagePath || selectedItem?.link || selectedItem?.doc?.url;
+    return pageUrl ? navigate(`/${pageUrl}`) : navigate("#");
   };
   const sortedPageSelectorItems = pageSelector.pageSelectorItems
     .sort((a, b) => (a.label > b.label ? 1 : -1))
@@ -84,8 +89,8 @@ export default function LandingPageSelector({
         {sortedPageSelectorItems.map(item => (
           <MenuItem
             disabled={item.label === pageSelector.selectedItemLabel}
-            value={item.link || item.doc?.url || item.pagePath}
-            key={pageSelector.pageSelectorItems.indexOf(item)}
+            value={item.label}
+            key={item.label}
             sx={{ fontSize: "0.875rem" }}
           >
             {item.label}
