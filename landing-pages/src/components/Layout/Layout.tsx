@@ -27,7 +27,7 @@ export default function Layout({
       <CssBaseline enableColorScheme />
       <Header {...headerOptions} />
       <main>{children}</main>
-      <Footer path={path} title={title} />
+      <Footer path={path} />
     </div>
   );
 }

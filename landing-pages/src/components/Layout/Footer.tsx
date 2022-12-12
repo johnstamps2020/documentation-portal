@@ -9,22 +9,26 @@ import aspenBadge from "../../images/badge-aspen.svg";
 import { FooterText } from "./StyledLayoutComponents";
 
 type FooterProps = {
-  title?: string;
   path?: string;
 };
 
-export default function Footer({ title, path }: FooterProps) {
-  let badge;
+export default function Footer({ path }: FooterProps) {
+  const releaseInfo = { label: "", badge: "" };
   if (path?.includes("elysian")) {
-    badge = elysianBadge;
+    releaseInfo.label = "Elysian Release";
+    releaseInfo.badge = elysianBadge;
   } else if (path?.includes("dobson")) {
-    badge = dobsonBadge;
+    releaseInfo.label = "Dobson Release";
+    releaseInfo.badge = dobsonBadge;
   } else if (path?.includes("cortina")) {
-    badge = cortinaBadge;
+    releaseInfo.label = "Cortina Release";
+    releaseInfo.badge = cortinaBadge;
   } else if (path?.includes("banff")) {
-    badge = banffBadge;
+    releaseInfo.label = "Banff Release";
+    releaseInfo.badge = banffBadge;
   } else if (path?.includes("aspen")) {
-    badge = aspenBadge;
+    releaseInfo.label = "Aspen Release";
+    releaseInfo.badge = aspenBadge;
   }
   return (
     <BottomNavigation
@@ -51,9 +55,9 @@ export default function Footer({ title, path }: FooterProps) {
         </FooterText>
       </Link>
       <Stack direction="row" alignItems="center">
-        {badge && (
+        {releaseInfo.badge && (
           <img
-            src={badge}
+            src={releaseInfo.badge}
             alt="elysian-badge-logo"
             style={{
               height: "20px",
@@ -62,8 +66,9 @@ export default function Footer({ title, path }: FooterProps) {
             }}
           />
         )}
-
-        <FooterText sx={{ display: "contents" }}>{title} Release</FooterText>
+        <FooterText sx={{ display: "contents" }}>
+          {releaseInfo.label}
+        </FooterText>
       </Stack>
     </BottomNavigation>
   );
