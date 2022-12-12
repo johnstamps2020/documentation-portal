@@ -44,17 +44,26 @@ export default function CategoryLayout(pageData: Page) {
           <Container style={{ padding: 0, margin: "30px 0 0 0" }}>
             <Breadcrumbs pagePath={pageData.path} />
           </Container>
-          <Typography variant="h1">{pageData.title}</Typography>
+          <Typography
+            variant="h1"
+            sx={
+              backgroundProps.backgroundImage
+                ? { color: "white" }
+                : { color: "black" }
+            }
+          >
+            {pageData.title}
+          </Typography>
           {pageData.pageSelector && (
             <LandingPageSelector
               pageSelector={pageData.pageSelector}
-              labelColor="white"
+              labelColor={backgroundProps.backgroundImage ? "white" : "black"}
               key={pageData.pageSelector.id}
             />
           )}
         </Stack>
       </Grid>
-      <Grid container maxWidth="1330px">
+      <Grid container maxWidth="1330px" width="100%">
         <Grid container xs={9} gap={2}>
           {pageData.categories?.map(category => (
             <LandingPageCategory {...category} key={category.id} />
