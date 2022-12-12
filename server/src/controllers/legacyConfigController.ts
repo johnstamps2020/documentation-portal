@@ -233,6 +233,24 @@ export function readLocalPageConfigs(dirPath: string): legacyPageConfig[] {
   }
 }
 
+function getBackgroundComponent(pagePath: string) {
+  const backgroundPathMapping = {
+    'cloudProducts/aspen': 'aspenBackground',
+    'cloudProducts/banff': 'banffBackground',
+    'cloudProducts/cortina': 'cortinaBackground',
+    'cloudProducts/dobson': 'dobsonBackground',
+    'cloudProducts/elysian': 'elysianBackground',
+    'cloudProducts/flaine': 'flaineBackground',
+  };
+  let background = null;
+  Object.entries(backgroundPathMapping).forEach(([k, v]) => {
+    if (k === pagePath) {
+      background = v;
+    }
+  });
+  return background;
+}
+
 async function updateRefsInItem(
   legacyItem: legacyItem,
   dbItem: Item,
@@ -263,7 +281,10 @@ async function updateRefsInItem(
         const dbPageConfig = new Page();
         dbPageConfig.path = pagePath;
         dbPageConfig.title = pageConfigToCreate.title;
-        dbPageConfig.component = pageConfigToCreate.template;
+        const bgComponent = getBackgroundComponent(pagePath);
+        dbPageConfig.component = bgComponent
+          ? pageConfigToCreate.template + ` ${bgComponent}`
+          : pageConfigToCreate.template;
         dbPageConfig.searchFilters = pageConfigToCreate.search_filters;
         dbPageConfig.isInProduction = legacyItem.env
           ? legacyItem.env.includes('prod')
@@ -412,7 +433,10 @@ export async function putPageConfigsInDatabase() {
       const legacyPageAbsPath = page.path;
       dbLandingPage.path = getRelativePagePath(legacyPageAbsPath);
       dbLandingPage.title = page.title;
-      dbLandingPage.component = page.template;
+      const bgComponent = getBackgroundComponent(dbLandingPage.path);
+      dbLandingPage.component = bgComponent
+        ? page.template + ` ${bgComponent}`
+        : page.template;
       dbLandingPage.isInProduction = false;
       if (page.items) {
         const allPageItems = await getOrCreateItems(
@@ -479,14 +503,17 @@ export async function putPageConfigsInDatabase() {
         sidebarItemDoc.doc = docResponse.body;
 
         const testPageConfig = new Page();
-        testPageConfig.path = "cloudProducts/elysian";
-        testPageConfig.title = "Test Page Config";
-        testPageConfig.component = "page";
+        testPageConfig.path = 'cloudProducts/elysian';
+        testPageConfig.title = 'Test Page Config';
+        testPageConfig.component = 'page';
         testPageConfig.isInProduction = false;
-        const createdPage = await createOrUpdateEntity(Page.name, testPageConfig);
+        const createdPage = await createOrUpdateEntity(
+          Page.name,
+          testPageConfig
+        );
         const sidebarItemPage = new SidebarItem();
         sidebarItemPage.label = 'API References';
-        sidebarItemPage.page = createdPage.body; 
+        sidebarItemPage.page = createdPage.body;
 
         const sidebarItemLink = new SidebarItem();
         sidebarItemLink.link = '/alive';
