@@ -31,7 +31,10 @@ export default function Footer({ path }: FooterProps) {
     releaseInfo.badge = aspenBadge;
   }
   return (
-    <BottomNavigation
+    <Stack
+      direction="row"
+      height="55px"
+      maxHeight="55px"
       sx={{
         backgroundColor: "hsl(216, 42%, 13%)",
         color: "hsl(0, 0%, 98%)",
@@ -40,7 +43,7 @@ export default function Footer({ path }: FooterProps) {
         padding: "0 30px"
       }}
     >
-      <FooterText sx={{ cols: 1, display: "contents" }}>
+      <FooterText sx={{ display: "contents" }}>
         Copyright 2022 Guidewire Software, Inc.
       </FooterText>
       <Link
@@ -70,6 +73,6 @@ export default function Footer({ path }: FooterProps) {
           {releaseInfo.label}
         </FooterText>
       </Stack>
-    </BottomNavigation>
+    </Stack>
   );
 }
