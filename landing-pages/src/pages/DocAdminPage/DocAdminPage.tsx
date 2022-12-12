@@ -12,7 +12,7 @@ import Alert from "@mui/material/Alert";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
 import { adminDocTheme } from "../../themes/adminDocTheme";
 
 const emptyDoc: Doc = {
@@ -197,7 +197,6 @@ export default function DocAdminPage() {
 
   return (
     <ThemeProvider theme={adminDocTheme}>
-      <CssBaseline enableColorScheme />
       <Layout title="Manage docs">
         <div>
           <Button size={"large"} onClick={handleCreateNew}>

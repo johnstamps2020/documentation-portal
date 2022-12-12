@@ -4,7 +4,6 @@ import {
   RouterProvider
 } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import UnauthorizedPage from "./pages/UnauthorizedPage/UnauthorizedPage";
 import FourOhFourPage from "./pages/FourOhFourPage/FourOhFourPage";
@@ -12,6 +11,7 @@ import DocAdminPage from "./pages/DocAdminPage/DocAdminPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { appTheme } from "./themes/appTheme";
+import CssBaseline from "@mui/material/CssBaseline";
 
 const router = createBrowserRouter(
   [

@@ -1,4 +1,3 @@
-import { CssBaseline } from "@mui/material";
 import React from "react";
 import Header from "./Header/Header";
 import Footer from "./Footer";
@@ -24,7 +23,6 @@ export default function Layout({
   document.title = `${title} | Guidewire Documentation`;
   return (
     <div>
-      <CssBaseline enableColorScheme />
       <Header {...headerOptions} />
       <main>{children}</main>
       <Footer path={path} />
