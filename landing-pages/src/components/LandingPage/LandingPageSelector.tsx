@@ -64,7 +64,7 @@ export default function LandingPageSelector({
     >
       <InputLabel
         id="page-selector-label"
-        sx={{ color: labelColor, fontSize: 20, fontWeight: 600 }}
+        sx={{ color: labelColor, fontSize: 20, fontWeight: 400 }}
       >
         {pageSelector.label}
       </InputLabel>
