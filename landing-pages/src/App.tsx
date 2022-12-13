@@ -12,6 +12,7 @@ import SearchPage from "./pages/SearchPage/SearchPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { appTheme } from "./themes/appTheme";
 import CssBaseline from "@mui/material/CssBaseline";
+import { UserProvider } from "./context/UserContext";
 
 const router = createBrowserRouter(
   [
@@ -51,10 +52,12 @@ const router = createBrowserRouter(
 
 function App() {
   return (
-    <ThemeProvider theme={appTheme}>
-      <CssBaseline />
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <UserProvider>
+      <ThemeProvider theme={appTheme}>
+        <CssBaseline />
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </UserProvider>
   );
 }
 

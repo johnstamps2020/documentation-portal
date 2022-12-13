@@ -1,4 +1,5 @@
-import { MenuItem } from "@mui/material";
+import MenuItem from "@mui/material/MenuItem";
+import Button from "@mui/material/Button";
 import React from "react";
 import iconAvatar from "../../../images/icon-avatar.svg";
 import {
@@ -10,8 +11,19 @@ import {
   HeaderMenuSubtitle,
   HeaderMenuTitle
 } from "../StyledLayoutComponents";
+import { Link } from "react-router-dom";
+import { useUser } from "../../../context/UserContext";
+
+function LoginButton() {
+  return (
+    <Button variant="contained" to="/gw-login" component={Link}>
+      Log in
+    </Button>
+  );
+}
 
 export default function UserProfile() {
+  const { userInfo } = useUser();
   const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(
     null
   );
@@ -21,6 +33,10 @@ export default function UserProfile() {
   const handleClose = () => {
     setAnchorElement(null);
   };
+
+  if (!userInfo?.isLoggedIn) {
+    return <LoginButton />;
+  }
 
   return (
     <div>

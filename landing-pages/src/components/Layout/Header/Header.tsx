@@ -33,6 +33,7 @@ export default function Header(headerOptions: HeaderOptions) {
         justifyContent={{ xs: "center", sm: "right" }}
         width={{ sm: "100%", md: "400px" }}
         spacing={2}
+        alignItems="center"
       >
         <ExternalSites />
         <Glossary />

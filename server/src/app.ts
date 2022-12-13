@@ -1,4 +1,5 @@
 import * as dotenv from 'dotenv';
+
 dotenv.config();
 import 'reflect-metadata';
 import {
@@ -106,8 +107,6 @@ app.use('/authorization-code', oidcLoginRouter);
 app.use(express.static(join(__dirname, 'public'), options));
 app.use(favicon(join(__dirname, 'public', 'favicon.ico')));
 
-const authGateway = require('./controllers/authController').authGateway;
-
 app.use(passport.initialize());
 app.use(passport.session());
 passport.serializeUser(function(user: any, done: any) {
@@ -116,7 +115,6 @@ passport.serializeUser(function(user: any, done: any) {
 passport.deserializeUser(function(user: any, done: any) {
   done(null, user);
 });
-app.use(authGateway);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
