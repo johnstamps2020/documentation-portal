@@ -1,5 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
 import fetch from 'node-fetch';
+import { getDocByUrl } from './configController';
+import {
+  isUserAllowedToAccessResource,
+  loginGatewayRoute,
+} from './authController';
 
 const HttpProxy = require('http-proxy');
 const proxy = new HttpProxy();
@@ -14,7 +19,20 @@ proxy.on('error', function(err: any, next: NextFunction) {
   next(err);
 });
 
-function s3Proxy(req: Request, res: Response, next: NextFunction) {
+async function s3Proxy(req: Request, res: Response, next: NextFunction) {
+  const requestedDoc = await getDocByUrl(req.path);
+  if (!requestedDoc) {
+    return next();
+  }
+
+  const userIsAllowedToAccessResource = await isUserAllowedToAccessResource(
+    req,
+    requestedDoc.public,
+    requestedDoc.internal
+  );
+  if (!userIsAllowedToAccessResource) {
+    return res.redirect(loginGatewayRoute);
+  }
   const proxyTarget = req.path.startsWith('/sitemap')
     ? `${process.env.DOC_S3_URL}/sitemap`
     : process.env.DOC_S3_URL;

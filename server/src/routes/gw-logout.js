@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/', function(req, res, next) {
   try {
     req.session = null;
-    res.redirect('/');
+    res.redirect('/landing');
   } catch (err) {
     winstonLogger.error(
       `Problem logging out: ${JSON.stringify(err)}; REQ: ${JSON.stringify(req)}`

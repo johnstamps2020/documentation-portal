@@ -1,13 +1,32 @@
 import OktaJwtVerifier from '@okta/jwt-verifier';
 import { NextFunction, Request, Response } from 'express';
 import { decode, JwtPayload } from 'jsonwebtoken';
-import { isPublicDoc, isInternalDoc } from './configController';
+import { isInternalDoc, isPublicDoc } from './configController';
 import { addCommonDataToSessionLocals } from './localsController';
 import { winstonLogger } from './loggerController';
+import { getUserInfo } from './userController';
 
-export const loginGatewayRoute = '/gw-login';
+export const loginGatewayRoute = '/landing/gw-login';
 const gwCommunityCustomerParam = 'guidewire-customer';
 const gwCommunityPartnerParam = 'guidewire-partner';
+
+export async function isUserAllowedToAccessResource(
+  req: Request,
+  resourceIsPublic: boolean,
+  resourceIsInternal: boolean
+): Promise<boolean> {
+  if (resourceIsPublic) {
+    return true;
+  }
+  const userInfo = await getUserInfo(req);
+  if (!userInfo.isLoggedIn) {
+    return false;
+  }
+  if (!resourceIsInternal) {
+    return true;
+  }
+  return userInfo.hasGuidewireEmail;
+}
 
 function getTokenFromRequestHeader(req: Request) {
   try {
@@ -125,20 +144,16 @@ async function verifyToken(req: Request) {
   }
 }
 
-declare global {
-  namespace Express {
-    interface Request {
-      isAuthenticated: () => boolean;
-    }
-  }
-}
-
 export async function isLoggedInOrHasValidToken(req: Request) {
   try {
     const rawJsonRequest = req.query.rawJSON === 'true';
-    return rawJsonRequest
-      ? !!(req.isAuthenticated() || (await verifyToken(req)))
-      : !!req.isAuthenticated();
+    const requestIsAuthenticated = req.isAuthenticated
+      ? req.isAuthenticated()
+      : false;
+    if (rawJsonRequest) {
+      return requestIsAuthenticated || !!(await verifyToken(req));
+    }
+    return requestIsAuthenticated;
   } catch (err) {
     winstonLogger.error(`PROBLEM VERIFYING TOKEN: ${JSON.stringify(err)}`);
     return false;

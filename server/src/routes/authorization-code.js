@@ -60,7 +60,7 @@ Issuer.discover(process.env.OKTA_DOMAIN)
       },
       passport.authenticate('oidcStrategy'),
       function(req, res) {
-        const redirectTo = req.session.redirectTo || '/';
+        const redirectTo = req.session.redirectTo || '/landing';
         delete req.session.redirectTo;
         res.redirect(redirectTo);
       }

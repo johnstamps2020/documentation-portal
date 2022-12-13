@@ -3,11 +3,11 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 import 'reflect-metadata';
 import {
-  expressWinstonLogger,
   expressWinstonErrorLogger,
+  expressWinstonLogger,
   winstonLogger,
 } from './controllers/loggerController';
-import express, { Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import { join } from 'path';
 import cookieParser from 'cookie-parser';
 import favicon from 'serve-favicon';
@@ -15,6 +15,16 @@ import session from 'cookie-session';
 import httpContext from 'express-http-context';
 import { AppDataSource } from './model/connection';
 import { runningInDevMode } from './controllers/utils/serverUtils';
+import { ReqUser } from './controllers/userController';
+
+declare global {
+  namespace Express {
+    interface Request {
+      isAuthenticated?: () => boolean;
+      user?: ReqUser;
+    }
+  }
+}
 
 AppDataSource.initialize()
   .then(() => {
@@ -174,7 +184,7 @@ app.use(s3Proxy);
 
 // handles unauthorized errors
 app.use(expressWinstonErrorLogger);
-app.use((err: Error, req: Request, res: Response) => {
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   winstonLogger.error(
     `General error passed to top-level handler in app.js: ${JSON.stringify(
       err
