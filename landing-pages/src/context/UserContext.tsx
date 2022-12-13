@@ -18,7 +18,7 @@ export function UserProvider({ children }: UserContextProviderProps) {
 
   async function getUserInfo() {
     try {
-      const response = await fetch("/user");
+      const response = await fetch("/userInformation");
       if (!response.ok) {
         throw new Error("Cannot fetch user info");
       }

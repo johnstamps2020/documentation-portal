@@ -50,8 +50,8 @@ export default function UserProfile() {
         onClose={handleClose}
         onClick={handleClose}
       >
-        <HeaderMenuTitle>Alfred Lord Tennyson</HeaderMenuTitle>
-        <HeaderMenuSubtitle>atennyson@guidewire.com</HeaderMenuSubtitle>
+        <HeaderMenuTitle>{userInfo.name}</HeaderMenuTitle>
+        <HeaderMenuSubtitle>{userInfo.preferred_username}</HeaderMenuSubtitle>
         <HeaderMenuDivider />
         <MenuItem>
           <HeaderMenuLink href="/gw-logout">Log out</HeaderMenuLink>

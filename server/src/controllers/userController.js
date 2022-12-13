@@ -1,5 +1,6 @@
 const mockUserData = require('./utils/mockUserData');
 const { winstonLogger } = require('./loggerController');
+const { isLoggedInOrHasValidToken } = require('./authController');
 
 function belongsToGuidewire(email) {
   try {
@@ -26,7 +27,7 @@ function getUserName(user) {
   return 'Unnamed User';
 }
 
-function getUserInfo(req) {
+async function getUserInfo(req) {
   try {
     let userInfo = {};
     let user = {};
@@ -40,7 +41,7 @@ function getUserInfo(req) {
       userInfo.isLoggedIn = true;
     } else {
       user = { ...req.user };
-      userInfo.isLoggedIn = req.session?.requestIsAuthenticated || false;
+      userInfo.isLoggedIn = await isLoggedInOrHasValidToken(req);
     }
 
     const { locale, email } = user;
@@ -53,7 +54,7 @@ function getUserInfo(req) {
   } catch (err) {
     winstonLogger.error(
       `Problem getting user info
-          ERROR: ${JSON.stringify(err)}`
+          ERROR: ${err}`
     );
   }
 }

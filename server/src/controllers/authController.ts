@@ -5,7 +5,7 @@ import { isPublicDoc, isInternalDoc } from './configController';
 import { addCommonDataToSessionLocals } from './localsController';
 import { winstonLogger } from './loggerController';
 
-const loginGatewayRoute = '/gw-login';
+export const loginGatewayRoute = '/gw-login';
 const gwCommunityCustomerParam = 'guidewire-customer';
 const gwCommunityPartnerParam = 'guidewire-partner';
 
@@ -133,7 +133,7 @@ declare global {
   }
 }
 
-async function isLoggedInOrHasValidToken(req: Request) {
+export async function isLoggedInOrHasValidToken(req: Request) {
   try {
     const rawJsonRequest = req.query.rawJSON === 'true';
     return rawJsonRequest
@@ -267,7 +267,11 @@ async function checkIfRouteIsInternal(req: Request) {
   return false;
 }
 
-const authGateway = async (req: Request, res: Response, next: NextFunction) => {
+export const authGateway = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const publicDocsAllowed = process.env.ALLOW_PUBLIC_DOCS === 'yes';
     const authenticationIsDisabled = process.env.ENABLE_AUTH === 'no';
@@ -299,9 +303,4 @@ const authGateway = async (req: Request, res: Response, next: NextFunction) => {
   } catch (err) {
     next(err);
   }
-};
-
-module.exports = {
-  authGateway,
-  loginGatewayRoute,
 };
