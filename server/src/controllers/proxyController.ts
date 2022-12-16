@@ -1,10 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
 import fetch from 'node-fetch';
-import { getDocByUrl } from './configController';
+import { getDocByUrl, getEntity } from './configController';
 import {
   isUserAllowedToAccessResource,
   loginGatewayRoute,
 } from './authController';
+import { Page } from '../model/entity/Page';
 
 const HttpProxy = require('http-proxy');
 const proxy = new HttpProxy();
@@ -24,7 +25,6 @@ async function s3Proxy(req: Request, res: Response, next: NextFunction) {
   if (!requestedDoc) {
     return next();
   }
-
   const userIsAllowedToAccessResource = await isUserAllowedToAccessResource(
     req,
     requestedDoc.public,
@@ -126,16 +126,30 @@ function reactAppProxy(req: Request, res: Response, next: NextFunction) {
   }
 }
 
-function reactDevProxy(req: Request, res: Response, next: NextFunction) {
-  proxy.web(
+async function reactDevProxy(req: Request, res: Response, next: NextFunction) {
+  const proxyOptions = {
+    target: `http://localhost:6006/landing`,
+    changeOrigin: true,
+  };
+  if (req.originalUrl === loginGatewayRoute || req.path.startsWith('/static')) {
+    return proxy.web(req, res, proxyOptions, next);
+  }
+  const requestedPage = await getEntity(Page.name, {
+    path: req.path.replace(/^\//g, ''),
+  });
+  if (!requestedPage) {
+    return next();
+  }
+  const requestedPageBody = requestedPage.body;
+  const userIsAllowedToAccessResource = await isUserAllowedToAccessResource(
     req,
-    res,
-    {
-      target: `http://localhost:6006/landing`,
-      changeOrigin: true,
-    },
-    next
+    requestedPageBody.public,
+    requestedPageBody.internal
   );
+  if (!userIsAllowedToAccessResource) {
+    return res.redirect(loginGatewayRoute);
+  }
+  proxy.web(req, res, proxyOptions, next);
 }
 
 module.exports = {
