@@ -60,7 +60,19 @@ function html5Proxy(req: Request, res: Response, next: NextFunction) {
   );
 }
 
-function portal2Proxy(req: Request, res: Response, next: NextFunction) {
+async function portal2Proxy(req: Request, res: Response, next: NextFunction) {
+  const requestedDoc = await getDocByUrl(`portal${req.path}`);
+  if (!requestedDoc) {
+    return next();
+  }
+  const userIsAllowedToAccessResource = await isUserAllowedToAccessResource(
+    req,
+    requestedDoc.public,
+    requestedDoc.internal
+  );
+  if (!userIsAllowedToAccessResource) {
+    return res.redirect(loginGatewayRoute);
+  }
   proxy.on('proxyRes', setProxyResCacheControlHeader);
   proxy.web(
     req,
