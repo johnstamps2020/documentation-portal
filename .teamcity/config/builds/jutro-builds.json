@@ -685,7 +685,6 @@
       "nodeImageVersion": "17.6.0",
       "workingDir": "storybook"
     },
-
     {
       "buildType": "yarn",
       "docId": "jutroa11yapp",
