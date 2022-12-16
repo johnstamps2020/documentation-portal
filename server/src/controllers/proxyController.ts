@@ -6,6 +6,7 @@ import {
   loginGatewayRoute,
 } from './authController';
 import { Page } from '../model/entity/Page';
+import { runningInDevMode } from './utils/serverUtils';
 
 const HttpProxy = require('http-proxy');
 const proxy = new HttpProxy();
@@ -116,31 +117,12 @@ function getStatusCode(reqUrl: string): number {
   return 200;
 }
 
-function reactAppProxy(req: Request, res: Response, next: NextFunction) {
-  const reactAppRoot = `${process.env.DOC_S3_URL}/landing-pages-react`;
-  if (!req.url.match(/[a-zA-Z0-9]\.[a-zA-Z0-9]+$/)) {
-    fetch(`${reactAppRoot}/index.html`)
-      .then(response => {
-        res.status(getStatusCode(req.url));
-        response.body.pipe(res);
-      })
-      .catch(err => res.status(500).send(err));
-  } else {
-    proxy.web(
-      req,
-      res,
-      {
-        target: reactAppRoot,
-        changeOrigin: true,
-      },
-      next
-    );
-  }
-}
-
-async function reactDevProxy(req: Request, res: Response, next: NextFunction) {
+async function reactAppProxy(req: Request, res: Response, next: NextFunction) {
+  const isDevMode = runningInDevMode();
   const proxyOptions = {
-    target: `http://localhost:6006/landing`,
+    target: isDevMode
+      ? 'http://localhost:6006/landing'
+      : `${process.env.DOC_S3_URL}/landing-pages-react`,
     changeOrigin: true,
   };
   if (req.originalUrl === loginGatewayRoute || req.path.startsWith('/static')) {
@@ -161,7 +143,20 @@ async function reactDevProxy(req: Request, res: Response, next: NextFunction) {
   if (!userIsAllowedToAccessResource) {
     return res.redirect(loginGatewayRoute);
   }
-  proxy.web(req, res, proxyOptions, next);
+  if (isDevMode) {
+    return proxy.web(req, res, proxyOptions, next);
+  } else {
+    if (!req.url.match(/[a-zA-Z0-9]\.[a-zA-Z0-9]+$/)) {
+      fetch(`${proxyOptions.target}/index.html`)
+        .then(response => {
+          res.status(getStatusCode(req.url));
+          response.body.pipe(res);
+        })
+        .catch(err => res.status(500).send(err));
+    } else {
+      proxy.web(req, res, proxyOptions, next);
+    }
+  }
 }
 
 module.exports = {
@@ -169,5 +164,4 @@ module.exports = {
   html5Proxy,
   portal2Proxy,
   reactAppProxy,
-  reactDevProxy,
 };

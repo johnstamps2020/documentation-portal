@@ -1,6 +1,8 @@
 import * as dotenv from 'dotenv';
 
+//IMPORTANT: Don't move this line. Be careful with optimizing imports.
 dotenv.config();
+//
 import 'reflect-metadata';
 import {
   expressWinstonErrorLogger,
@@ -156,21 +158,13 @@ const {
   s3Proxy,
   html5Proxy,
   reactAppProxy,
-  reactDevProxy,
 } = require('./controllers/proxyController');
 
 // Portal 2: Electric Boogaloo
 app.use('/portal', portal2Proxy);
 
 const isDevMode = runningInDevMode();
-
-// Add landing pages
-const landingPageRoute = '/landing';
-if (isDevMode) {
-  app.use(landingPageRoute, reactDevProxy);
-} else {
-  app.use(landingPageRoute, reactAppProxy);
-}
+app.use('/landing', reactAppProxy);
 
 // HTML5 scripts, local or S3
 if (isDevMode) {
