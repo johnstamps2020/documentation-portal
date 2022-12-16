@@ -1491,8 +1491,7 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.7.0"],
-        "subject": ["Best practices"],
-        "release": ["Garmisch"]
+        "subject": ["Best practices"]
       },
       "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
@@ -1509,8 +1508,7 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.7.0"],
-        "subject": ["Development"],
-        "release": ["Garmisch"]
+        "subject": ["Development"]
       },
       "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
