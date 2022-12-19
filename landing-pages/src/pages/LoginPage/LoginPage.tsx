@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import Link from "@mui/material/Link";
+import { Link as RouterLink } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Unstable_Grid2";
 
@@ -62,7 +63,9 @@ export default function LoginPage() {
             }}
           >
             Browse through the{" "}
-            <Link href="/apiReferences">latest API References</Link>
+            <Link component={RouterLink} to="/apiReferences">
+              latest API References
+            </Link>
           </Typography>
           <Paper
             sx={{

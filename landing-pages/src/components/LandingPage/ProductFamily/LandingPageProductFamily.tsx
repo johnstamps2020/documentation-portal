@@ -1,6 +1,7 @@
 import { ProductFamilyItem } from "@documentation-portal/dist/model/entity/ProductFamilyItem";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
+import { Link as RouterLink } from "react-router-dom";
 
 export default function LandingPageProductFamily(
   productFamilyItem: ProductFamilyItem
@@ -16,19 +17,28 @@ export default function LandingPageProductFamily(
         alignItems: "center"
       }}
     >
-      <Link
-        href={
-          productFamilyItem.link ||
-          productFamilyItem.doc?.url ||
-          `/landing/${productFamilyItem.pagePath}`
-        }
-        sx={{
-          fontSize: 20,
-          fontWeight: 800
-        }}
-      >
-        {productFamilyItem.label}
-      </Link>
+      {productFamilyItem.pagePath ? (
+        <Link
+          component={RouterLink}
+          to={`/${productFamilyItem.pagePath}`}
+          sx={{
+            fontSize: 20,
+            fontWeight: 800
+          }}
+        >
+          {productFamilyItem.label}
+        </Link>
+      ) : (
+        <Link
+          href={productFamilyItem.link || `/${productFamilyItem.doc?.url}`}
+          sx={{
+            fontSize: 20,
+            fontWeight: 800
+          }}
+        >
+          {productFamilyItem.label}
+        </Link>
+      )}
     </Paper>
   );
 }

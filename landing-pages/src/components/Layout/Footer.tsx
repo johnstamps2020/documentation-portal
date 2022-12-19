@@ -1,4 +1,3 @@
-import BottomNavigation from "@mui/material/BottomNavigation";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import elysianBadge from "../../images/badge-elysian.svg";
@@ -46,6 +45,7 @@ export default function Footer({ path }: FooterProps) {
       <FooterText sx={{ display: "contents" }}>
         Copyright 2022 Guidewire Software, Inc.
       </FooterText>
+      // TODO: Move this page to frontend?
       <Link
         href="/support"
         sx={{
