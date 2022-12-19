@@ -63,7 +63,7 @@ export default function LoginPage() {
             }}
           >
             Browse through the{" "}
-            <Link component={RouterLink} to="/apiReferences">
+            <Link component={RouterLink} to="/apiReferences/elysian">
               latest API References
             </Link>
           </Typography>

@@ -21,6 +21,7 @@ import {
   putPageConfigsInDatabase,
   putSourceConfigsInDatabase,
 } from '../controllers/legacyConfigController';
+import { isUserAllowedToAccessResource } from '../controllers/authController';
 
 const router = Router();
 
@@ -76,6 +77,14 @@ router.get('/entity/:repo', async function(req, res) {
   const { repo } = req.params;
   const options = req.query;
   const { status, body } = await getEntity(repo, options);
+  const userIsAllowedToAccessResource = await isUserAllowedToAccessResource(
+    req,
+    body?.public || false,
+    body?.internal || false
+  );
+  if (!userIsAllowedToAccessResource) {
+    return res.status(401).json({ message: 'Unauthorized to view content' });
+  }
   return res.status(status).json(body);
 });
 

@@ -163,10 +163,10 @@ const {
 // Portal 2: Electric Boogaloo
 app.use('/portal', portal2Proxy);
 
-const isDevMode = runningInDevMode();
 app.use('/landing', reactAppProxy);
 
 // HTML5 scripts, local or S3
+const isDevMode = runningInDevMode();
 if (isDevMode) {
   app.use(express.static(join(__dirname, '../static/html5'), options));
 } else {
