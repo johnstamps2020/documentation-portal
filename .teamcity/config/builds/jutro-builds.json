@@ -305,7 +305,8 @@
       "buildType": "yarn",
       "docId": "jutroplaygroundnext",
       "srcId": "srcjutroplaygroundnext",
-      "nodeImageVersion": "16.14.2"
+      "nodeImageVersion": "16.14.2",
+      "outputPath": "dist"
     },
     {
       "buildType": "yarn",
