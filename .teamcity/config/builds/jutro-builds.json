@@ -303,6 +303,12 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutroplaygroundnext",
+      "srcId": "srcjutroplaygroundnext",
+      "nodeImageVersion": "16.14.2"
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutroplasmicnext",
       "srcId": "srcjutroplasmicnext",
       "nodeImageVersion": "17.6.0"
