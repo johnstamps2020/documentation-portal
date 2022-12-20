@@ -2,7 +2,7 @@ apiVersion: oort.ccs.guidewire.com/v1alpha1
 kind: GatewayConfig
 metadata:
   namespace: ${POD_NAME}
-  name: ${APP_NAME}-gateway-config
+  name: docportal-gateway-config
 spec:
   profiles:
     - name: Default
