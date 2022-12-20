@@ -212,6 +212,13 @@
       "branch": "main"
     },
     {
+      "id": "srcjutroplaygroundnext",
+      "title": "Jutro Playground Next",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-playground-for-docs.git",
+      "branch": "main"
+    },
+    {
       "id": "srcjutroplasmicnext",
       "title": "Jutro Plasmic Next",
       "sourceType": "git",

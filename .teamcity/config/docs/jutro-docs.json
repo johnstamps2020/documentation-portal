@@ -328,6 +328,23 @@
       "earlyAccess": false
     },
     {
+      "id": "jutroplaygroundnext",
+      "title": "Jutro Design System and UI Framework",
+      "url": "jutro/playground/next",
+      "metadata": {
+        "product": ["Jutro Playground"],
+        "platform": ["Cloud"],
+        "version": ["next"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["dev", "int"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "jutroplasmicnext",
       "title": "Jutro Plasmic",
       "url": "jutro/plasmic/next",
