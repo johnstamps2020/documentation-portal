@@ -28,7 +28,7 @@ metadata:
   namespace: ${POD_NAME}
   labels:
     app: ${APP_NAME}
-    gwcp.guidewire.com/dept: ${DEPT_CODE}
+    gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
     gwcp.guidewire.com/maintained-by: ${POD_NAME}
     gwcp.guidewire.com/created-by: ${POD_NAME}
     gwcp.guidewire.com/tenant-name: tenant-${POD_NAME}
@@ -52,7 +52,7 @@ metadata:
   namespace: ${POD_NAME}
   labels:
     app: ${APP_NAME}
-    gwcp.guidewire.com/dept: ${DEPT_CODE}
+    gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
     gwcp.guidewire.com/maintained-by: ${POD_NAME}
     gwcp.guidewire.com/created-by: ${POD_NAME}
     gwcp.guidewire.com/tenant-name: tenant-${POD_NAME}
@@ -74,7 +74,7 @@ metadata:
     tags.datadoghq.com/service: ${DD_SERVICE_NAME}
     tags.datadoghq.com/version: ${TAG_VERSION}
     app: ${APP_NAME}
-    gwcp.guidewire.com/dept: ${DEPT_CODE}
+    gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
     gwcp.guidewire.com/maintained-by: ${POD_NAME}
     gwcp.guidewire.com/created-by: ${POD_NAME}
     gwcp.guidewire.com/tenant-name: tenant-${POD_NAME}
@@ -98,7 +98,7 @@ spec:
         tags.datadoghq.com/service: ${DD_SERVICE_NAME}
         tags.datadoghq.com/version: ${TAG_VERSION}
         app: ${APP_NAME}
-        gwcp.guidewire.com/dept: ${DEPT_CODE}
+        gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
         gwcp.guidewire.com/maintained-by: ${POD_NAME}
         gwcp.guidewire.com/created-by: ${POD_NAME}
         gwcp.guidewire.com/tenant-name: tenant-${POD_NAME}
