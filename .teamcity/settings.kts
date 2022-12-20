@@ -41,102 +41,87 @@ project {
 }
 
 enum class GwDeployEnvs(val env_name: String) {
-    DEV("dev"),
-    INT("int"),
-    STAGING("staging"),
-    PROD("prod"),
-    OMEGA2_ANDROMEDA("omega2-andromeda"),
-    PORTAL2("portal2")
+    DEV("dev"), INT("int"), STAGING("staging"), PROD("prod"), OMEGA2_ANDROMEDA("omega2-andromeda"), PORTAL2("portal2")
 }
 
 enum class GwBuildTypes(val build_type_name: String) {
-    DITA("dita"),
-    YARN("yarn"),
-    STORYBOOK("storybook"),
-    SOURCE_ZIP("source-zip"),
-    JUST_COPY("just-copy")
+    DITA("dita"), YARN("yarn"), STORYBOOK("storybook"), SOURCE_ZIP("source-zip"), JUST_COPY("just-copy")
 }
 
 enum class GwValidationModules(val validation_name: String) {
-    VALIDATORS_DITA("validators_dita"),
-    VALIDATORS_FILES("validators_files"),
-    VALIDATORS_IMAGES("validators_images"),
-    EXTRACTORS_DITA_OT_LOGS("extractors_dita_ot_logs"),
+    VALIDATORS_DITA("validators_dita"), VALIDATORS_FILES("validators_files"), VALIDATORS_IMAGES("validators_images"), EXTRACTORS_DITA_OT_LOGS(
+        "extractors_dita_ot_logs"
+    ),
     EXTRACTORS_SCHEMATRON_REPORTS("extractors_schematron_reports")
 }
 
 enum class GwDitaOutputFormats(val format_name: String) {
-    WEBHELP("webhelp"),
-    PDF("pdf"),
-    WEBHELP_WITH_PDF("webhelp_with_pdf"),
-    SINGLEHTML("singlehtml"),
-    DITA("dita"),
-    HTML5("html5")
+    WEBHELP("webhelp"), PDF("pdf"), WEBHELP_WITH_PDF("webhelp_with_pdf"), SINGLEHTML("singlehtml"), DITA("dita"), HTML5(
+        "html5"
+    )
 }
 
 enum class GwConfigParams(val param_value: String) {
-    CONFIG_FILES_ROOT_DIR("%teamcity.build.checkoutDir%/.teamcity/config"),
-    CONFIG_SCHEMA_FILE_PATH("${CONFIG_FILES_ROOT_DIR.param_value}/config-schema.json"),
-    BUILDS_CONFIG_FILES_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/builds"),
-    DOCS_CONFIG_FILES_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/docs"),
-    SOURCES_CONFIG_FILES_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/sources"),
-    MERGED_CONFIG_FILE("merge-all.json"),
-    DOCS_CONFIG_FILES_OUT_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/out/docs"),
-    BUILDS_CONFIG_FILES_OUT_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/out/builds"),
-    SOURCES_CONFIG_FILES_OUT_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/out/sources"),
-    DITA_BUILD_OUT_DIR("out"),
-    YARN_BUILD_OUT_DIR("build"),
-    STORYBOOK_BUILD_OUT_DIR("dist"),
-    SOURCE_ZIP_BUILD_OUT_DIR("out"),
-    BUILD_DATA_DIR("json"),
-    BUILD_DATA_FILE("build-data.json"),
-    COMMON_GW_DITAVALS_DIR("common_gw_ditavals"),
-    BITBUCKET_SSH_KEY("svc-doc-bitbucket"),
-    ECR_HOST("627188849628.dkr.ecr.us-west-2.amazonaws.com"),
-    ECR_HOST_PROD("954920275956.dkr.ecr.us-east-1.amazonaws.com"),
-    ARTIFACTORY_HOST("artifactory.guidewire.com")
+    CONFIG_FILES_ROOT_DIR("%teamcity.build.checkoutDir%/.teamcity/config"), CONFIG_SCHEMA_FILE_PATH("${CONFIG_FILES_ROOT_DIR.param_value}/config-schema.json"), BUILDS_CONFIG_FILES_DIR(
+        "${CONFIG_FILES_ROOT_DIR.param_value}/builds"
+    ),
+    DOCS_CONFIG_FILES_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/docs"), SOURCES_CONFIG_FILES_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/sources"), MERGED_CONFIG_FILE(
+        "merge-all.json"
+    ),
+    DOCS_CONFIG_FILES_OUT_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/out/docs"), BUILDS_CONFIG_FILES_OUT_DIR("${CONFIG_FILES_ROOT_DIR.param_value}/out/builds"), SOURCES_CONFIG_FILES_OUT_DIR(
+        "${CONFIG_FILES_ROOT_DIR.param_value}/out/sources"
+    ),
+    DITA_BUILD_OUT_DIR("out"), YARN_BUILD_OUT_DIR("build"), STORYBOOK_BUILD_OUT_DIR("dist"), SOURCE_ZIP_BUILD_OUT_DIR("out"), BUILD_DATA_DIR(
+        "json"
+    ),
+    BUILD_DATA_FILE("build-data.json"), COMMON_GW_DITAVALS_DIR("common_gw_ditavals"), BITBUCKET_SSH_KEY("svc-doc-bitbucket"), ECR_HOST(
+        "627188849628.dkr.ecr.us-west-2.amazonaws.com"
+    ),
+    ECR_HOST_PROD("954920275956.dkr.ecr.us-east-1.amazonaws.com"), ARTIFACTORY_HOST("artifactory.guidewire.com")
 }
 
 enum class GwDockerImages(val image_url: String) {
-    DOC_PORTAL("${GwConfigParams.ECR_HOST.param_value}/tenant-doctools-docportal"),
-    DOC_PORTAL_PROD("${GwConfigParams.ECR_HOST_PROD.param_value}/tenant-doctools-docportal"),
-    DITA_OT_3_4_1("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/dita-ot:3.4.1"),
-    DITA_OT_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/dita-ot:latest"),
-    ATMOS_DEPLOY_2_6_0("${GwConfigParams.ARTIFACTORY_HOST.param_value}/devex-docker-dev/atmosdeploy:2.6.0"),
-    CONFIG_DEPLOYER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/config-deployer:latest"),
-    DOC_CRAWLER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/doc-crawler:latest"),
-    INDEX_CLEANER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/index-cleaner:latest"),
-    BUILD_MANAGER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/build-manager:latest"),
-    RECOMMENDATION_ENGINE_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/recommendation-engine:latest"),
-    FLAIL_SSG_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/flail-ssg:latest"),
-    LION_PKG_BUILDER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/lion-pkg-builder:latest"),
-    LION_PAGE_BUILDER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/lion-page-builder:latest"),
-    UPGRADE_DIFFS_PAGE_BUILDER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/upgradediffs-page-builder:latest"),
-    SITEMAP_GENERATOR_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/sitemap-generator:latest"),
-    DOC_VALIDATOR_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/doc-validator:latest"),
-    PYTHON_3_9_SLIM_BUSTER("${GwConfigParams.ARTIFACTORY_HOST.param_value}/hub-docker-remote/python:3.9-slim-buster"),
-    NODE_REMOTE_BASE("${GwConfigParams.ARTIFACTORY_HOST.param_value}/hub-docker-remote/node"),
-    NODE_16_14_2("${GwConfigParams.ARTIFACTORY_HOST.param_value}/hub-docker-remote/node:16.14.2"),
-    GENERIC_14_14_0_YARN_CHROME("${GwConfigParams.ARTIFACTORY_HOST.param_value}/jutro-docker-dev/generic:14.14.0-yarn-chrome")
+    DOC_PORTAL("${GwConfigParams.ECR_HOST.param_value}/tenant-doctools-docportal"), DOC_PORTAL_PROD("${GwConfigParams.ECR_HOST_PROD.param_value}/tenant-doctools-docportal"), DITA_OT_3_4_1(
+        "${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/dita-ot:3.4.1"
+    ),
+    DITA_OT_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/dita-ot:latest"), ATMOS_DEPLOY_2_6_0(
+        "${GwConfigParams.ARTIFACTORY_HOST.param_value}/devex-docker-dev/atmosdeploy:2.6.0"
+    ),
+    CONFIG_DEPLOYER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/config-deployer:latest"), DOC_CRAWLER_LATEST(
+        "${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/doc-crawler:latest"
+    ),
+    INDEX_CLEANER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/index-cleaner:latest"), BUILD_MANAGER_LATEST(
+        "${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/build-manager:latest"
+    ),
+    RECOMMENDATION_ENGINE_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/recommendation-engine:latest"), FLAIL_SSG_LATEST(
+        "${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/flail-ssg:latest"
+    ),
+    LION_PKG_BUILDER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/lion-pkg-builder:latest"), LION_PAGE_BUILDER_LATEST(
+        "${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/lion-page-builder:latest"
+    ),
+    UPGRADE_DIFFS_PAGE_BUILDER_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/upgradediffs-page-builder:latest"), SITEMAP_GENERATOR_LATEST(
+        "${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/sitemap-generator:latest"
+    ),
+    DOC_VALIDATOR_LATEST("${GwConfigParams.ARTIFACTORY_HOST.param_value}/doctools-docker-dev/doc-validator:latest"), PYTHON_3_9_SLIM_BUSTER(
+        "${GwConfigParams.ARTIFACTORY_HOST.param_value}/hub-docker-remote/python:3.9-slim-buster"
+    ),
+    NODE_REMOTE_BASE("${GwConfigParams.ARTIFACTORY_HOST.param_value}/hub-docker-remote/node"), NODE_16_14_2("${GwConfigParams.ARTIFACTORY_HOST.param_value}/hub-docker-remote/node:16.14.2"), GENERIC_14_14_0_YARN_CHROME(
+        "${GwConfigParams.ARTIFACTORY_HOST.param_value}/jutro-docker-dev/generic:14.14.0-yarn-chrome"
+    )
 }
 
 enum class GwExportFrequencies(val param_value: String) {
-    DAILY("daily"),
-    WEEKLY("weekly")
+    DAILY("daily"), WEEKLY("weekly")
 }
 
 enum class GwStaticFilesModes(val mode_name: String) {
-    LANDING_PAGES("landing_pages"),
-    LOCALIZED_PAGES("localized_pages"),
-    UPGRADE_DIFFS("upgrade_diffs"),
-    SITEMAP("sitemap"),
-    HTML5("html5")
+    LANDING_PAGES("landing_pages"), LOCALIZED_PAGES("localized_pages"), UPGRADE_DIFFS("upgrade_diffs"), SITEMAP("sitemap"), HTML5(
+        "html5"
+    )
 }
 
 enum class GwConfigTypes(val type_name: String) {
-    DOCS("docs"),
-    SOURCES("sources"),
-    BUILDS("builds")
+    DOCS("docs"), SOURCES("sources"), BUILDS("builds")
 }
 
 object Runners {
@@ -206,10 +191,7 @@ object Runners {
                     val matchingDocIds = getDocIdsForProductAndVersion(docConfigsForEnv, gwProduct, gwVersion)
                     if (matchingDocIds.size > 1) {
                         val publishAllDocsBuildType = createRunnerBuildType(
-                            deploy_env,
-                            matchingDocIds, "Publish all docs",
-                            gwProduct,
-                            gwVersion
+                            deploy_env, matchingDocIds, "Publish all docs", gwProduct, gwVersion
                         )
                         vp.buildType(publishAllDocsBuildType)
                     }
@@ -247,8 +229,7 @@ object Runners {
                     for (gwVersion in gwVersions) {
                         val runnerBuildType =
                             createRunnerBuildType(deploy_env, listOf(docId), docTitle, gwProduct, gwVersion)
-                        val existingVersionSubproject =
-                            existingProductProject.subProjects.find { it.name == gwVersion }
+                        val existingVersionSubproject = existingProductProject.subProjects.find { it.name == gwVersion }
                         if (existingVersionSubproject == null) {
                             existingProductProject.subProject {
                                 name = gwVersion
@@ -323,11 +304,7 @@ object Docs {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
             params {
                 text(
-                    "DOC_VERSION",
-                    "",
-                    label = "Doc version",
-                    display = ParameterDisplay.PROMPT,
-                    allowEmpty = false
+                    "DOC_VERSION", "", label = "Doc version", display = ParameterDisplay.PROMPT, allowEmpty = false
                 )
                 text("env.GA4_ID", "G-6XJD083TC6", allowEmpty = false)
             }
@@ -465,14 +442,7 @@ object Docs {
                 docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
             } else {
                 val storybookBuildStep = GwBuildSteps.createBuildStorybookProjectStep(
-                    env,
-                    publish_path,
-                    doc_id,
-                    gw_products,
-                    gw_platforms,
-                    gw_versions,
-                    working_dir,
-                    custom_env
+                    env, publish_path, doc_id, gw_products, gw_platforms, gw_versions, working_dir, custom_env
                 )
                 docBuildType.steps.step(storybookBuildStep)
                 docBuildType.steps.stepsOrder.add(0, storybookBuildStep.id.toString())
@@ -511,9 +481,7 @@ object Docs {
                 docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
             } else {
                 val zipUpSourcesBuildStep = GwBuildSteps.createZipUpSourcesStep(
-                    working_dir,
-                    output_dir,
-                    zip_filename
+                    working_dir, output_dir, zip_filename
                 )
                 docBuildType.steps.step(zipUpSourcesBuildStep)
                 docBuildType.steps.stepsOrder.add(0, zipUpSourcesBuildStep.id.toString())
@@ -620,28 +588,25 @@ object Docs {
                 if (buildOutputForOfflineUse) {
                     docBuildType.features.feature(GwBuildFeatures.GwOxygenWebhelpLicenseBuildFeature)
                     val localOutputDir = "${output_dir}/zip"
-                    val buildDitaProjectForOfflineUseStep =
-                        GwBuildSteps.createBuildDitaProjectForBuildsStep(
-                            GwDitaOutputFormats.WEBHELP.format_name,
-                            root_map,
-                            index_redirect,
-                            working_dir,
-                            localOutputDir,
-                            publish_path,
-                            build_filter = build_filter,
-                            for_offline_use = true
-                        )
+                    val buildDitaProjectForOfflineUseStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
+                        GwDitaOutputFormats.WEBHELP.format_name,
+                        root_map,
+                        index_redirect,
+                        working_dir,
+                        localOutputDir,
+                        publish_path,
+                        build_filter = build_filter,
+                        for_offline_use = true
+                    )
                     docBuildType.steps.step(buildDitaProjectForOfflineUseStep)
                     docBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
                     val copyPdfToOfflineOutputStep = GwBuildSteps.createCopyPdfFromOnlineToOfflineOutputStep(
-                        "${working_dir}/${output_dir}",
-                        "${working_dir}/${localOutputDir}"
+                        "${working_dir}/${output_dir}", "${working_dir}/${localOutputDir}"
                     )
                     docBuildType.steps.step(copyPdfToOfflineOutputStep)
                     docBuildType.steps.stepsOrder.add(1, copyPdfToOfflineOutputStep.id.toString())
                     val zipPackageStep = GwBuildSteps.createZipPackageStep(
-                        "${working_dir}/${localOutputDir}",
-                        "${working_dir}/${output_dir}"
+                        "${working_dir}/${localOutputDir}", "${working_dir}/${output_dir}"
                     )
                     docBuildType.steps.step(zipPackageStep)
                     docBuildType.steps.stepsOrder.add(2, zipPackageStep.id.toString())
@@ -736,8 +701,7 @@ object Docs {
                 }
                 step(
                     GwBuildSteps.createZipPackageStep(
-                        "${working_dir}/${localOutputDir}",
-                        "${working_dir}/${output_dir}"
+                        "${working_dir}/${localOutputDir}", "${working_dir}/${output_dir}"
                     )
                 )
             }
@@ -769,9 +733,7 @@ object Docs {
                 steps {
                     step(
                         GwBuildSteps.createRunLionPkgBuilderStep(
-                            working_dir,
-                            output_dir,
-                            stagingBuildTypeIdString
+                            working_dir, output_dir, stagingBuildTypeIdString
                         )
                     )
                     script {
@@ -821,12 +783,9 @@ object Docs {
                     root(Helpers.resolveRelativeIdFromIdString(src_id))
                     cleanCheckout = true
                 }
-                val uploadContentToS3BucketStep =
-                    GwBuildSteps.createUploadContentToS3BucketStep(
-                        deploy_env,
-                        "${working_dir}/${output_dir}",
-                        publish_path
-                    )
+                val uploadContentToS3BucketStep = GwBuildSteps.createUploadContentToS3BucketStep(
+                    deploy_env, "${working_dir}/${output_dir}", publish_path
+                )
                 steps.step(uploadContentToS3BucketStep)
                 steps.stepsOrder.add(uploadContentToS3BucketStep.id.toString())
             }
@@ -1001,25 +960,13 @@ object Docs {
             GwBuildTypes.SOURCE_ZIP.build_type_name -> {
                 val zipFilename = build_config.getString("zipFilename")
                 docProjectBuildTypes += createSourceZipBuildTypes(
-                    docEnvironmentsList,
-                    docId,
-                    src_id,
-                    publishPath,
-                    workingDir,
-                    outputDir,
-                    indexForSearch,
-                    zipFilename
+                    docEnvironmentsList, docId, src_id, publishPath, workingDir, outputDir, indexForSearch, zipFilename
                 )
             }
 
             GwBuildTypes.JUST_COPY.build_type_name -> {
                 docProjectBuildTypes += createJustCopyBuildTypes(
-                    docEnvironmentsList,
-                    docId,
-                    src_id,
-                    publishPath,
-                    workingDir,
-                    outputDir
+                    docEnvironmentsList, docId, src_id, publishPath, workingDir, outputDir
                 )
             }
         }
@@ -1058,16 +1005,10 @@ object Custom {
 
         params {
             text(
-                "env.GIT_URL",
-                "",
-                label = "Git repo URL",
-                display = ParameterDisplay.PROMPT
+                "env.GIT_URL", "", label = "Git repo URL", display = ParameterDisplay.PROMPT
             )
             text(
-                "env.GIT_BRANCH",
-                "",
-                label = "Git branch name",
-                display = ParameterDisplay.PROMPT
+                "env.GIT_BRANCH", "", label = "Git branch name", display = ParameterDisplay.PROMPT
             )
             text(
                 "env.DOC_IDS",
@@ -1078,9 +1019,7 @@ object Custom {
                 allowEmpty = true
             )
             text(
-                "env.BUILDS_FILE_PARSED",
-                "builds.txt",
-                display = ParameterDisplay.HIDDEN
+                "env.BUILDS_FILE_PARSED", "builds.txt", display = ParameterDisplay.HIDDEN
             )
         }
 
@@ -1173,8 +1112,7 @@ object Custom {
             }
             step(
                 GwBuildSteps.createZipPackageStep(
-                    "%teamcity.build.workingDir%/$localOutputDir",
-                    "%teamcity.build.workingDir%"
+                    "%teamcity.build.workingDir%/$localOutputDir", "%teamcity.build.workingDir%"
                 )
             )
             script {
@@ -1235,10 +1173,7 @@ object Content {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
-                GwDeployEnvs.DEV,
-                GwDeployEnvs.INT,
-                GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD
+                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createGenerateSitemapBuildType(it.env_name))
             }
@@ -1255,9 +1190,7 @@ object Content {
                 step(GwBuildSteps.createRunSitemapGeneratorStep(deploy_env, outputDir))
                 step(
                     GwBuildSteps.createDeployStaticFilesStep(
-                        deploy_env,
-                        GwStaticFilesModes.SITEMAP.mode_name,
-                        outputDir
+                        deploy_env, GwStaticFilesModes.SITEMAP.mode_name, outputDir
                     )
                 )
             }
@@ -1285,10 +1218,7 @@ object Content {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
-                GwDeployEnvs.DEV,
-                GwDeployEnvs.INT,
-                GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD
+                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createCleanUpSearchIndexBuildType(it.env_name))
             }
@@ -1325,11 +1255,7 @@ object Content {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
-                GwDeployEnvs.DEV,
-                GwDeployEnvs.INT,
-                GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD,
-                GwDeployEnvs.PORTAL2
+                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD, GwDeployEnvs.PORTAL2
             ).forEach {
                 buildType(createUpdateSearchIndexBuildType(it.env_name))
             }
@@ -1368,10 +1294,7 @@ object Content {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
-                GwDeployEnvs.DEV,
-                GwDeployEnvs.INT,
-                GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD
+                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createDeployServerConfigBuildType(it.env_name))
             }
@@ -1392,9 +1315,7 @@ object Content {
                 step(GwBuildSteps.createGenerateDocsConfigFilesForEnvStep(deploy_env))
                 step(
                     GwBuildSteps.createUploadContentToS3BucketStep(
-                        deploy_env,
-                        GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value,
-                        "portal-config"
+                        deploy_env, GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.param_value, "portal-config"
                     )
                 )
                 step(GwBuildSteps.createRefreshConfigBuildStep(deploy_env))
@@ -1419,10 +1340,7 @@ object Content {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
-                GwDeployEnvs.DEV,
-                GwDeployEnvs.INT,
-                GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD
+                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createDeploySearchServiceBuildType(it.env_name))
             }
@@ -1584,10 +1502,7 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
-                GwDeployEnvs.DEV,
-                GwDeployEnvs.INT,
-                GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD
+                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createDeployHtml5DependenciesBuildType(it.env_name))
             }
@@ -1600,10 +1515,7 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
-                GwDeployEnvs.DEV,
-                GwDeployEnvs.INT,
-                GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD
+                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createDeployLandingPagesBuildType(it.env_name))
             }
@@ -1628,9 +1540,7 @@ object Frontend {
                 step(GwBuildSteps.createBuildHtml5DependenciesStep())
                 step(
                     GwBuildSteps.createDeployStaticFilesStep(
-                        deploy_env,
-                        GwStaticFilesModes.HTML5.mode_name,
-                        outputDir
+                        deploy_env, GwStaticFilesModes.HTML5.mode_name, outputDir
                     )
                 )
             }
@@ -1669,16 +1579,12 @@ object Frontend {
                 step(GwBuildSteps.MergeDocsConfigFilesStep)
                 step(
                     GwBuildSteps.createRunFlailSsgStep(
-                        "%teamcity.build.checkoutDir%/frontend/pages",
-                        outputDir,
-                        deploy_env
+                        "%teamcity.build.checkoutDir%/frontend/pages", outputDir, deploy_env
                     )
                 )
                 step(
                     GwBuildSteps.createDeployStaticFilesStep(
-                        deploy_env,
-                        GwStaticFilesModes.LANDING_PAGES.mode_name,
-                        outputDir
+                        deploy_env, GwStaticFilesModes.LANDING_PAGES.mode_name, outputDir
                     )
                 )
             }
@@ -1706,10 +1612,7 @@ object Frontend {
 
             vcsRoot(GwVcsRoots.LocalizedPdfsGitVcsRoot)
             arrayOf(
-                GwDeployEnvs.DEV,
-                GwDeployEnvs.INT,
-                GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD
+                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createDeployLocalizedPagesBuildType(it.env_name))
             }
@@ -1736,24 +1639,19 @@ object Frontend {
             steps {
                 step(
                     GwBuildSteps.createRunLionPageBuilderStep(
-                        locDocsSrc,
-                        locDocsOut
+                        locDocsSrc, locDocsOut
                     )
                 )
                 step(GwBuildSteps.createCopyLocalizedPdfsToS3BucketStep(deploy_env, locDocsSrc))
                 step(GwBuildSteps.MergeDocsConfigFilesStep)
                 step(
                     GwBuildSteps.createRunFlailSsgStep(
-                        pagesDir,
-                        outputDir,
-                        deploy_env
+                        pagesDir, outputDir, deploy_env
                     )
                 )
                 step(
                     GwBuildSteps.createDeployStaticFilesStep(
-                        deploy_env,
-                        GwStaticFilesModes.LOCALIZED_PAGES.mode_name,
-                        outputDir
+                        deploy_env, GwStaticFilesModes.LOCALIZED_PAGES.mode_name, outputDir
                     )
                 )
             }
@@ -1780,10 +1678,7 @@ object Frontend {
 
             vcsRoot(GwVcsRoots.UpgradeDiffsGitVcsRoot)
             arrayOf(
-                GwDeployEnvs.DEV,
-                GwDeployEnvs.INT,
-                GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD
+                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createDeployUpgradeDiffsBuildType(it.env_name))
             }
@@ -1810,25 +1705,19 @@ object Frontend {
             steps {
                 step(
                     GwBuildSteps.createRunUpgradeDiffsPageBuilderStep(
-                        deploy_env,
-                        upgradeDiffsDocsSrc,
-                        upgradeDiffsDocsOut
+                        deploy_env, upgradeDiffsDocsSrc, upgradeDiffsDocsOut
                     )
                 )
                 step(GwBuildSteps.createCopyUpgradeDiffsToS3BucketStep(deploy_env, upgradeDiffsDocsSrc))
                 step(GwBuildSteps.MergeDocsConfigFilesStep)
                 step(
                     GwBuildSteps.createRunFlailSsgStep(
-                        pagesDir,
-                        outputDir,
-                        deploy_env
+                        pagesDir, outputDir, deploy_env
                     )
                 )
                 step(
                     GwBuildSteps.createDeployStaticFilesStep(
-                        deploy_env,
-                        GwStaticFilesModes.UPGRADE_DIFFS.mode_name,
-                        outputDir
+                        deploy_env, GwStaticFilesModes.UPGRADE_DIFFS.mode_name, outputDir
                     )
                 )
             }
@@ -1869,10 +1758,7 @@ object Server {
             buildType(TestSettingsKts)
             buildType(AuditNpmPackages)
             arrayOf(
-                GwDeployEnvs.DEV,
-                GwDeployEnvs.INT,
-                GwDeployEnvs.STAGING,
-                GwDeployEnvs.PROD
+                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createDeployServerBuildType(it.env_name))
             }
@@ -2143,7 +2029,10 @@ object Server {
 
         params {
             select(
-                "semver-scope", "patch", label = "Version Scope", display = ParameterDisplay.PROMPT,
+                "semver-scope",
+                "patch",
+                label = "Version Scope",
+                display = ParameterDisplay.PROMPT,
                 options = listOf("Patch" to "patch", "Minor" to "minor", "Major" to "major")
             )
         }
@@ -2290,8 +2179,7 @@ object Server {
         }
 
         if (arrayOf(
-                GwDeployEnvs.STAGING.env_name,
-                GwDeployEnvs.PROD.env_name
+                GwDeployEnvs.STAGING.env_name, GwDeployEnvs.PROD.env_name
             ).contains(deploy_env)
         ) {
             deployServerBuildType.vcs.branchFilter = "+:<default>"
@@ -2627,10 +2515,9 @@ object BuildListeners {
         val sourcesRequiringListeners = mutableListOf<JSONObject>()
         for (src in Helpers.gitNativeSources) {
             val srcId = src.getString("id")
-            val ditaBuildsRelatedToSrc =
-                Helpers.buildConfigs.filter {
-                    it.getString("srcId") == srcId && (it.getString("buildType") == GwBuildTypes.DITA.build_type_name)
-                }
+            val ditaBuildsRelatedToSrc = Helpers.buildConfigs.filter {
+                it.getString("srcId") == srcId && (it.getString("buildType") == GwBuildTypes.DITA.build_type_name)
+            }
             val uniqueEnvsFromAllDitaBuildsRelatedToSrc = ditaBuildsRelatedToSrc.map {
                 val buildDocId = it.getString("docId")
                 val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", buildDocId)
@@ -2638,8 +2525,7 @@ object BuildListeners {
             }.flatten().distinct()
 
             if (arrayListOf(
-                    GwDeployEnvs.INT.env_name,
-                    GwDeployEnvs.STAGING.env_name
+                    GwDeployEnvs.INT.env_name, GwDeployEnvs.STAGING.env_name
                 ).any { uniqueEnvsFromAllDitaBuildsRelatedToSrc.contains(it) }
             ) {
                 sourcesRequiringListeners.add(src)
@@ -2706,15 +2592,11 @@ object Sources {
         for (src in Helpers.gitNativeSources) {
             val srcId = src.getString("id")
             val gitUrl = src.getString("gitUrl")
-            val buildsRelatedToSrc =
-                Helpers.buildConfigs.filter { it.getString("srcId") == srcId }
+            val buildsRelatedToSrc = Helpers.buildConfigs.filter { it.getString("srcId") == srcId }
             if (buildsRelatedToSrc.isNotEmpty()) {
                 val gitBranch = src.getString("branch")
                 val validationProject = createValidationProject(
-                    srcId,
-                    gitUrl,
-                    gitBranch,
-                    buildsRelatedToSrc
+                    srcId, gitUrl, gitBranch, buildsRelatedToSrc
                 )
                 validationProjects.add(validationProject)
             }
@@ -2743,20 +2625,14 @@ object Sources {
             if (uniqueGwBuildTypesForAllBuilds.contains(GwBuildTypes.DITA.build_type_name)) {
                 validationBuildsSubProject.buildType(
                     createValidationListenerBuildType(
-                        src_id,
-                        git_url,
-                        git_branch,
-                        this.id.toString()
+                        src_id, git_url, git_branch, this.id.toString()
                     )
                 )
             }
             build_configs.forEach {
                 validationBuildsSubProject.buildType(
                     createValidationBuildType(
-                        src_id,
-                        git_branch,
-                        it,
-                        it.getString("buildType")
+                        src_id, git_branch, it, it.getString("buildType")
                     )
                 )
             }
@@ -2917,8 +2793,7 @@ object Sources {
                     )
                     step(
                         GwBuildSteps.createPreviewUrlFile(
-                            publishPath,
-                            previewUrlFile
+                            publishPath, previewUrlFile
                         )
                     )
                     step(
@@ -2937,11 +2812,7 @@ object Sources {
                     )
                     step(
                         GwBuildSteps.createGetDocumentDetailsStep(
-                            workingDir,
-                            teamcityBuildBranch,
-                            src_id,
-                            docInfoFile,
-                            docConfig
+                            workingDir, teamcityBuildBranch, src_id, docInfoFile, docConfig
                         )
                     )
                     // For now, image validations are disabled.
@@ -2954,12 +2825,7 @@ object Sources {
                     ).forEach {
                         this.step(
                             GwBuildSteps.createRunDocValidatorStep(
-                                it,
-                                workingDir,
-                                ditaOtLogsDir,
-                                normalizedDitaDir,
-                                schematronReportsDir,
-                                docInfoFile
+                                it, workingDir, ditaOtLogsDir, normalizedDitaDir, schematronReportsDir, docInfoFile
                             )
                         )
                     }
@@ -3010,8 +2876,7 @@ object Sources {
                     )
                     step(
                         GwBuildSteps.createPreviewUrlFile(
-                            publishPath,
-                            previewUrlFile
+                            publishPath, previewUrlFile
                         )
                     )
                 }
@@ -3104,10 +2969,7 @@ object Recommendations {
         for (combination in allPlatformProductVersionCombinations) {
             val (platform, product, version) = combination
             val recommendationsForTopicsBuildTypeInt = createRecommendationsForTopicsBuildType(
-                GwDeployEnvs.INT.env_name,
-                platform,
-                product,
-                version
+                GwDeployEnvs.INT.env_name, platform, product, version
 
             )
             recommendationProjectBuildTypes.add(recommendationsForTopicsBuildTypeInt)
@@ -3237,16 +3099,13 @@ object Apps {
                     when (appName) {
                         "Doc crawler" -> {
                             testAppBuildType.params.text(
-                                "env.TEST_ENVIRONMENT_DOCKER_NETWORK",
-                                "host",
-                                allowEmpty = false
+                                "env.TEST_ENVIRONMENT_DOCKER_NETWORK", "host", allowEmpty = false
                             )
                             val composeElasticsearchAndHttpServerStep =
                                 GwBuildSteps.ComposeElasticsearchAndHttpServerStep
                             testAppBuildType.steps.step(composeElasticsearchAndHttpServerStep)
                             testAppBuildType.steps.stepsOrder.add(
-                                0,
-                                composeElasticsearchAndHttpServerStep.id.toString()
+                                0, composeElasticsearchAndHttpServerStep.id.toString()
                             )
                         }
 
@@ -3490,8 +3349,7 @@ object Helpers {
 
     fun getTargetUrl(deploy_env: String): String {
         return if (arrayOf(
-                GwDeployEnvs.PROD.env_name,
-                GwDeployEnvs.PORTAL2.env_name
+                GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name
             ).contains(deploy_env)
         ) {
             "https://docs.guidewire.com"
@@ -3542,8 +3400,15 @@ object Helpers {
     fun setServerDeployEnvVars(deploy_env: String, tag_version: String): String {
         val (partnersLoginUrl, customersLoginUrl) = getGwCommunityUrls(deploy_env)
         val appBaseUrl = getTargetUrl(deploy_env)
+        val commonEnvVars = """
+            export DD_SERVICE_NAME="docportal"
+            export APP_NAME="docportal-app"
+            export POD_NAME="doctools"
+            export DEPT_CODE="275"
+        """.trimIndent()
         return when (deploy_env) {
             GwDeployEnvs.PROD.env_name -> """
+                $commonEnvVars
                 export AWS_ROLE="arn:aws:iam::954920275956:role/aws_orange-prod_tenant_doctools_developer"
                 export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL_PROD.image_url}"
                 export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/partners-login"
@@ -3570,6 +3435,7 @@ object Helpers {
             """.trimIndent()
 
             else -> """
+                $commonEnvVars
                 export AWS_ROLE="arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"
                 export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL.image_url}"
                 export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/partners-login"
@@ -4210,8 +4076,7 @@ object GwBuildSteps {
         if (build_filter != null) {
             ditaCommandParams.add(
                 Pair(
-                    "--filter",
-                    "${working_dir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}/${build_filter}"
+                    "--filter", "${working_dir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}/${build_filter}"
                 )
             )
         }
@@ -4303,8 +4168,7 @@ object GwBuildSteps {
         if (build_filter != null) {
             commandParams.add(
                 Pair(
-                    "--filter",
-                    "${working_dir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}/${build_filter}"
+                    "--filter", "${working_dir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.param_value}/${build_filter}"
                 )
             )
         }
@@ -4806,8 +4670,7 @@ object GwBuildFeatures {
         publisher = bitbucketServer {
             url = "https://stash.guidewire.com"
             userName = "%env.BITBUCKET_SERVICE_ACCOUNT_USERNAME%"
-            password =
-                "%env.BITBUCKET_ACCESS_TOKEN%"
+            password = "%env.BITBUCKET_ACCESS_TOKEN%"
         }
     })
 
@@ -4825,21 +4688,19 @@ object GwBuildFeatures {
 }
 
 object GwVcsRoots {
-    val DocumentationPortalGitVcsRoot =
-        createGitVcsRoot(
-            Helpers.resolveRelativeIdFromIdString("Documentation Portal git repo"),
-            "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
-            "master",
-            listOf("(refs/heads/*)")
+    val DocumentationPortalGitVcsRoot = createGitVcsRoot(
+        Helpers.resolveRelativeIdFromIdString("Documentation Portal git repo"),
+        "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
+        "master",
+        listOf("(refs/heads/*)")
 
-        )
+    )
 
-    val XdocsClientGitVcsRoot =
-        createGitVcsRoot(
-            Helpers.resolveRelativeIdFromIdString("XDocs Client git repo"),
-            "ssh://git@stash.guidewire.com/doctools/xdocs-client.git",
-            "master"
-        )
+    val XdocsClientGitVcsRoot = createGitVcsRoot(
+        Helpers.resolveRelativeIdFromIdString("XDocs Client git repo"),
+        "ssh://git@stash.guidewire.com/doctools/xdocs-client.git",
+        "master"
+    )
 
     val LocalizedPdfsGitVcsRoot = createGitVcsRoot(
         Helpers.resolveRelativeIdFromIdString("Localized PDFs git repo"),

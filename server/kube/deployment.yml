@@ -1,8 +1,16 @@
 apiVersion: external-secrets.io/v1beta1
 kind: SecretStore
 metadata:
-  name: docportal-app-secret-store
-  namespace: doctools
+  name: ${APP_NAME}-secret-store
+  namespace: ${POD_NAME}
+  labels:
+    app: ${APP_NAME}
+    gwcp.guidewire.com/dept: ${DEPT_CODE}
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: tenant-${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${APP_NAME}
 spec:
   retrySettings:
     maxRetries: 5
@@ -16,14 +24,22 @@ spec:
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: docportal-app-external-secret
-  namespace: doctools
+  name: ${APP_NAME}-external-secret
+  namespace: ${POD_NAME}
+  labels:
+    app: ${APP_NAME}
+    gwcp.guidewire.com/dept: ${DEPT_CODE}
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: tenant-${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${APP_NAME}
 spec:
   secretStoreRef:
-    name: docportal-app-secret-store
+    name: ${APP_NAME}-secret-store
     kind: SecretStore
   target:
-    name: docportal-app-external-secret
+    name: ${APP_NAME}-external-secret
     creationPolicy: Owner
   dataFrom:
     - extract:
@@ -32,37 +48,42 @@ spec:
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: docportal-app-pdb
-  namespace: doctools
+  name: ${APP_NAME}-pdb
+  namespace: ${POD_NAME}
   labels:
-    app: docportal-app
+    app: ${APP_NAME}
+    gwcp.guidewire.com/dept: ${DEPT_CODE}
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: tenant-${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${APP_NAME}
 spec:
   minAvailable: 1
   selector:
     matchLabels:
-      app: docportal-app
+      app: ${APP_NAME}
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: docportal-app-deployment
-  namespace: doctools
+  name: ${APP_NAME}-deployment
+  namespace: ${POD_NAME}
   labels:
     tags.datadoghq.com/env: atmos-${DEPLOY_ENV}
-    tags.datadoghq.com/service: docportal
+    tags.datadoghq.com/service: ${DD_SERVICE_NAME}
     tags.datadoghq.com/version: ${TAG_VERSION}
-    app: docportal-app
-    app.kubernetes.io/name: expressjs
-    app.kubernetes.io/version: ${TAG_VERSION}
-    app.kubernetes.io/component: web-app
-    app.kubernetes.io/part-of: docportal-app
-    app.kubernetes.io/managed-by: doctools
-    app.kubernetes.io/created-by: doctools
-    atmos.guidewire.com/tenancy-scope: shared
+    app: ${APP_NAME}
+    gwcp.guidewire.com/dept: ${DEPT_CODE}
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: tenant-${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${APP_NAME}
 spec:
   selector:
     matchLabels:
-      app: docportal-app
+      app: ${APP_NAME}
   replicas: 2
   strategy:
     type: RollingUpdate
@@ -70,20 +91,19 @@ spec:
       maxUnavailable: 0
   template:
     metadata:
-      name: docportal-app-deployment
-      namespace: doctools
+      name: ${APP_NAME}-deployment
+      namespace: ${POD_NAME}
       labels:
         tags.datadoghq.com/env: atmos-${DEPLOY_ENV}
-        tags.datadoghq.com/service: docportal
+        tags.datadoghq.com/service: ${DD_SERVICE_NAME}
         tags.datadoghq.com/version: ${TAG_VERSION}
-        app: docportal-app
-        app.kubernetes.io/name: expressjs
-        app.kubernetes.io/version: ${TAG_VERSION}
-        app.kubernetes.io/component: web-app
-        app.kubernetes.io/part-of: docportal-app
-        app.kubernetes.io/managed-by: doctools
-        app.kubernetes.io/created-by: doctools
-        atmos.guidewire.com/tenancy-scope: shared
+        app: ${APP_NAME}
+        gwcp.guidewire.com/dept: ${DEPT_CODE}
+        gwcp.guidewire.com/maintained-by: ${POD_NAME}
+        gwcp.guidewire.com/created-by: ${POD_NAME}
+        gwcp.guidewire.com/tenant-name: tenant-${POD_NAME}
+        gwcp.guidewire.com/version: ${TAG_VERSION}
+        gwcp.guidewire.com/app-name: ${APP_NAME}
       annotations:
         iam.amazonaws.com/role: ${AWS_ROLE}
     spec:
@@ -123,32 +143,32 @@ spec:
             - name: OKTA_CLIENT_ID
               valueFrom:
                 secretKeyRef:
-                  name: docportal-app-external-secret
+                  name: ${APP_NAME}-external-secret
                   key: okta_client_id
             - name: OKTA_CLIENT_ID_APAC
               valueFrom:
                 secretKeyRef:
-                  name: docportal-app-external-secret
+                  name: ${APP_NAME}-external-secret
                   key: okta_client_id_apac
             - name: OKTA_CLIENT_ID_EMEA
               valueFrom:
                 secretKeyRef:
-                  name: docportal-app-external-secret
+                  name: ${APP_NAME}-external-secret
                   key: okta_client_id_emea
             - name: OKTA_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: docportal-app-external-secret
+                  name: ${APP_NAME}-external-secret
                   key: okta_client_secret
             - name: OKTA_CLIENT_SECRET_APAC
               valueFrom:
                 secretKeyRef:
-                  name: docportal-app-external-secret
+                  name: ${APP_NAME}-external-secret
                   key: okta_client_secret_apac
             - name: OKTA_CLIENT_SECRET_EMEA
               valueFrom:
                 secretKeyRef:
-                  name: docportal-app-external-secret
+                  name: ${APP_NAME}-external-secret
                   key: okta_client_secret_emea
             - name: OKTA_ACCESS_TOKEN_ISSUER
               value: ${OKTA_ACCESS_TOKEN_ISSUER}
@@ -159,19 +179,19 @@ spec:
             - name: OKTA_ACCESS_TOKEN_SCOPES
               valueFrom:
                 secretKeyRef:
-                  name: docportal-app-external-secret
+                  name: ${APP_NAME}-external-secret
                   key: okta_access_token_scopes
             - name: OKTA_ACCESS_TOKEN_AUDIENCE
               valueFrom:
                 secretKeyRef:
-                  name: docportal-app-external-secret
+                  name: ${APP_NAME}-external-secret
                   key: okta_access_token_audience
             - name: APP_BASE_URL
               value: ${APP_BASE_URL}
             - name: SESSION_KEY
               valueFrom:
                 secretKeyRef:
-                  name: docportal-app-external-secret
+                  name: ${APP_NAME}-external-secret
                   key: session_key
             - name: ELASTIC_SEARCH_URL
               value: ${ELASTIC_SEARCH_URL}
@@ -184,7 +204,7 @@ spec:
             - name: PARTNERS_LOGIN_CERT
               valueFrom:
                 secretKeyRef:
-                  name: docportal-app-external-secret
+                  name: ${APP_NAME}-external-secret
                   key: partners_login_cert
             - name: PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID
               value: ${PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID}
@@ -193,7 +213,7 @@ spec:
             - name: CUSTOMERS_LOGIN_CERT
               valueFrom:
                 secretKeyRef:
-                  name: docportal-app-external-secret
+                  name: ${APP_NAME}-external-secret
                   key: customers_login_cert
             - name: CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID
               value: ${CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID}
@@ -206,7 +226,7 @@ spec:
             - name: JIRA_AUTH_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: docportal-app-external-secret
+                  name: ${APP_NAME}-external-secret
                   key: jira_auth_token
             - name: DD_ENV
               valueFrom:
@@ -225,13 +245,13 @@ spec:
             - name: DD_HTTP_SERVER_TAG_QUERY_STRING
               value: 'true'
             - name: DD_SERVICE_MAPPING
-              value: "nodejs:atmos-${DEPLOY_ENV}-docportal-app"
+              value: "nodejs:atmos-${DEPLOY_ENV}-${APP_NAME}"
             - name: DD_LOGS_INJECTION
               value: 'true'
             - name: DD_PROFILING_ENABLED
               value: 'true'
             - name: DD_TAGS
-              value: layer:webapp, team:doctools
+              value: layer:webapp, team:${POD_NAME}
             - name: DD_TRACE_ANALYTICS_ENABLED
               value: 'true'
             - name: DD_TRACE_STARTUP_LOGS
@@ -253,20 +273,19 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: docportal-app
-  namespace: doctools
+  name: ${APP_NAME}
+  namespace: ${POD_NAME}
   labels:
-    app: docportal-app
-    app.kubernetes.io/name: expressjs
-    app.kubernetes.io/version: ${TAG_VERSION}
-    app.kubernetes.io/component: web-app
-    app.kubernetes.io/part-of: docportal-app
-    app.kubernetes.io/managed-by: doctools
-    app.kubernetes.io/created-by: doctools
-    atmos.guidewire.com/tenancy-scope: shared
+    app: ${APP_NAME}
+    gwcp.guidewire.com/dept: ${DEPT_CODE}
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: tenant-${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${APP_NAME}
 spec:
   ports:
     - name: http
       port: 8081
   selector:
-    app: docportal-app
+    app: ${APP_NAME}
