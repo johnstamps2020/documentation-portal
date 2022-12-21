@@ -1,8 +1,16 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: docsearch-app-config-${DEPLOY_ENV}
-  namespace: doctools
+  name: ${ELASTICSEARCH_APP_NAME}-app-config-${DEPLOY_ENV}
+  namespace: ${POD_NAME}
+  labels:
+    app: ${ELASTICSEARCH_APP_NAME}-${DEPLOY_ENV}
+    gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: ${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${ELASTICSEARCH_APP_NAME}
 data:
   discovery_type: single-node
   xpack_security_enabled: 'false'
@@ -16,8 +24,16 @@ data:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: docsearch-pv-claim-${DEPLOY_ENV}
-  namespace: doctools
+  name: ${ELASTICSEARCH_APP_NAME}-pv-claim-${DEPLOY_ENV}
+  namespace: ${POD_NAME}
+  labels:
+    app: ${ELASTICSEARCH_APP_NAME}-${DEPLOY_ENV}
+    gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: ${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${ELASTICSEARCH_APP_NAME}
 spec:
   accessModes:
     - ReadWriteOnce
@@ -28,44 +44,42 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: docsearch-${DEPLOY_ENV}
-  namespace: doctools
+  name: ${ELASTICSEARCH_APP_NAME}-${DEPLOY_ENV}
+  namespace: ${POD_NAME}
   labels:
-    app: docsearch-${DEPLOY_ENV}
-    app.kubernetes.io/name: elasticsearch
-    app.kubernetes.io/version: 7.17.4
-    app.kubernetes.io/component: search-engine
-    app.kubernetes.io/part-of: docportal-app
-    app.kubernetes.io/managed-by: doctools
-    app.kubernetes.io/created-by: doctools
-    atmos.guidewire.com/tenancy-scope: shared
+    app: ${ELASTICSEARCH_APP_NAME}-${DEPLOY_ENV}
+    gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: ${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${ELASTICSEARCH_APP_NAME}
 spec:
   selector:
     matchLabels:
-      app: docsearch-${DEPLOY_ENV}
+      app: ${ELASTICSEARCH_APP_NAME}-${DEPLOY_ENV}
   replicas: 1
   strategy:
     type: Recreate
   template:
     metadata:
-      name: docsearch-${DEPLOY_ENV}
-      namespace: doctools
+      name: ${ELASTICSEARCH_APP_NAME}-${DEPLOY_ENV}
+      namespace: ${POD_NAME}
       labels:
-        app: docsearch-${DEPLOY_ENV}
-        app.kubernetes.io/name: elasticsearch
-        app.kubernetes.io/version: 7.17.4
-        app.kubernetes.io/component: search-engine
-        app.kubernetes.io/part-of: docportal-app
-        app.kubernetes.io/managed-by: doctools
-        app.kubernetes.io/created-by: doctools
-        atmos.guidewire.com/tenancy-scope: shared
+        app: ${ELASTICSEARCH_APP_NAME}-${DEPLOY_ENV}
+        gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
+        gwcp.guidewire.com/maintained-by: ${POD_NAME}
+        gwcp.guidewire.com/created-by: ${POD_NAME}
+        gwcp.guidewire.com/tenant-name: ${POD_NAME}
+        gwcp.guidewire.com/version: ${TAG_VERSION}
+        gwcp.guidewire.com/app-name: ${ELASTICSEARCH_APP_NAME}
     spec:
       securityContext:
         runAsUser: 1000
         fsGroup: 1000
       containers:
         - name: elasticsearch
-          image: docker.elastic.co/elasticsearch/elasticsearch:7.17.4
+          image: docker.elastic.co/elasticsearch/elasticsearch:${TAG_VERSION}
           imagePullPolicy: IfNotPresent
           resources:
             requests:
@@ -78,17 +92,17 @@ spec:
             - name: discovery.type
               valueFrom:
                 configMapKeyRef:
-                  name: docsearch-app-config-${DEPLOY_ENV}
+                  name: ${ELASTICSEARCH_APP_NAME}-app-config-${DEPLOY_ENV}
                   key: discovery_type
             - name: xpack.security.enabled
               valueFrom:
                 configMapKeyRef:
-                  name: docsearch-app-config-${DEPLOY_ENV}
+                  name: ${ELASTICSEARCH_APP_NAME}-app-config-${DEPLOY_ENV}
                   key: xpack_security_enabled
             - name: cluster_name
               valueFrom:
                 configMapKeyRef:
-                  name: docsearch-app-config-${DEPLOY_ENV}
+                  name: ${ELASTICSEARCH_APP_NAME}-app-config-${DEPLOY_ENV}
                   key: cluster_name
           ports:
             - containerPort: 9200
@@ -101,16 +115,16 @@ spec:
             - mountPath: /usr/share/elasticsearch/data
               name: elasticsearch-storage
             - mountPath: /usr/share/elasticsearch/config/elasticsearch.yml
-              name: docsearch-app-config-${DEPLOY_ENV}
+              name: ${ELASTICSEARCH_APP_NAME}-app-config-${DEPLOY_ENV}
               subPath: elasticsearch.yml
 
       volumes:
         - name: elasticsearch-storage
           persistentVolumeClaim:
-            claimName: docsearch-pv-claim-${DEPLOY_ENV}
-        - name: docsearch-app-config-${DEPLOY_ENV}
+            claimName: ${ELASTICSEARCH_APP_NAME}-pv-claim-${DEPLOY_ENV}
+        - name: ${ELASTICSEARCH_APP_NAME}-app-config-${DEPLOY_ENV}
           configMap:
-            name: docsearch-app-config-${DEPLOY_ENV}
+            name: ${ELASTICSEARCH_APP_NAME}-app-config-${DEPLOY_ENV}
             items:
               - key: elasticsearch.yml
                 path: elasticsearch.yml
@@ -118,21 +132,20 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: docsearch-${DEPLOY_ENV}
-  namespace: doctools
+  name: ${ELASTICSEARCH_APP_NAME}-${DEPLOY_ENV}
+  namespace: ${POD_NAME}
   labels:
-    app: docsearch-${DEPLOY_ENV}
-    app.kubernetes.io/name: elasticsearch
-    app.kubernetes.io/version: 7.17.4
-    app.kubernetes.io/component: search-engine
-    app.kubernetes.io/part-of: docportal-app
-    app.kubernetes.io/managed-by: doctools
-    app.kubernetes.io/created-by: doctools
-    atmos.guidewire.com/tenancy-scope: shared
+    app: ${ELASTICSEARCH_APP_NAME}-${DEPLOY_ENV}
+    gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: ${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${ELASTICSEARCH_APP_NAME}
 spec:
   type: ClusterIP
   selector:
-    app: docsearch-${DEPLOY_ENV}
+    app: ${ELASTICSEARCH_APP_NAME}-${DEPLOY_ENV}
   ports:
     - name: http
       port: 9200
@@ -144,8 +157,16 @@ spec:
 apiVersion: oort.ccs.guidewire.com/v1alpha1
 kind: GatewayConfig
 metadata:
-  namespace: doctools
-  name: docsearch-gateway-config-${DEPLOY_ENV}
+  namespace: ${POD_NAME}
+  name: ${ELASTICSEARCH_APP_NAME}-gateway-config-${DEPLOY_ENV}
+  labels:
+    app: ${ELASTICSEARCH_APP_NAME}-${DEPLOY_ENV}
+    gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: ${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${ELASTICSEARCH_APP_NAME}
 spec:
   profiles:
     - name: Default
@@ -155,66 +176,63 @@ spec:
         - /**
       profiles:
         - Default
-  service_ref: docsearch-${DEPLOY_ENV}
-  service_alias: docsearch-doctools
+  service_ref: ${ELASTICSEARCH_APP_NAME}-${DEPLOY_ENV}
+  service_alias: ${ELASTICSEARCH_APP_NAME}-${POD_NAME}
   enable_sub_domain: false
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: kibana-doctools-${DEPLOY_ENV}
-  namespace: doctools
+  name: ${KIBANA_APP_NAME}-${POD_NAME}-${DEPLOY_ENV}
+  namespace: ${POD_NAME}
   labels:
-    app: kibana-doctools-${DEPLOY_ENV}
-    app.kubernetes.io/name: kibana
-    app.kubernetes.io/version: 7.17.4
-    app.kubernetes.io/component: web-app
-    app.kubernetes.io/part-of: docportal-app
-    app.kubernetes.io/managed-by: doctools
-    app.kubernetes.io/created-by: doctools
-    atmos.guidewire.com/tenancy-scope: shared
+    app: ${KIBANA_APP_NAME}-${DEPLOY_ENV}
+    gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: ${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${KIBANA_APP_NAME}
 spec:
   ports:
     - port: 5601
   selector:
-    app: kibana-doctools-${DEPLOY_ENV}
+    app: ${KIBANA_APP_NAME}-${POD_NAME}-${DEPLOY_ENV}
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kibana-doctools-${DEPLOY_ENV}
-  namespace: doctools
+  name: ${KIBANA_APP_NAME}-${POD_NAME}-${DEPLOY_ENV}
+  namespace: ${POD_NAME}
   labels:
-    app: kibana-doctools-${DEPLOY_ENV}
-    app.kubernetes.io/name: kibana
-    app.kubernetes.io/version: 7.17.4
-    app.kubernetes.io/component: web-app
-    app.kubernetes.io/part-of: docportal-app
-    app.kubernetes.io/managed-by: doctools
-    app.kubernetes.io/created-by: doctools
-    atmos.guidewire.com/tenancy-scope: shared
+    app: ${KIBANA_APP_NAME}-${DEPLOY_ENV}
+    gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: ${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${KIBANA_APP_NAME}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: kibana-doctools-${DEPLOY_ENV}
+      app: ${KIBANA_APP_NAME}-${POD_NAME}-${DEPLOY_ENV}
   template:
     metadata:
-      name: kibana-doctools-${DEPLOY_ENV}
-      namespace: doctools
+      name: ${KIBANA_APP_NAME}-${POD_NAME}-${DEPLOY_ENV}
+      namespace: ${POD_NAME}
       labels:
-        app: kibana-doctools-${DEPLOY_ENV}
-        app.kubernetes.io/name: kibana
-        app.kubernetes.io/version: 7.17.4
-        app.kubernetes.io/component: web-app
-        app.kubernetes.io/part-of: docportal-app
-        app.kubernetes.io/managed-by: doctools
-        app.kubernetes.io/created-by: doctools
-        atmos.guidewire.com/tenancy-scope: shared
+        app: ${KIBANA_APP_NAME}-${DEPLOY_ENV}
+        gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
+        gwcp.guidewire.com/maintained-by: ${POD_NAME}
+        gwcp.guidewire.com/created-by: ${POD_NAME}
+        gwcp.guidewire.com/tenant-name: ${POD_NAME}
+        gwcp.guidewire.com/version: ${TAG_VERSION}
+        gwcp.guidewire.com/app-name: ${KIBANA_APP_NAME}
     spec:
       containers:
         - name: kibana
-          image: docker.elastic.co/kibana/kibana:7.17.4
+          image: docker.elastic.co/kibana/kibana:${TAG_VERSION}
           resources:
             limits:
               cpu: 1000m
@@ -222,15 +240,23 @@ spec:
               cpu: 100m
           env:
             - name: ELASTICSEARCH_HOSTS
-              value: http://docsearch-${DEPLOY_ENV}:9200
+              value: http://${ELASTICSEARCH_APP_NAME}-${DEPLOY_ENV}:9200
           ports:
             - containerPort: 5601
 ---
 apiVersion: oort.ccs.guidewire.com/v1alpha1
 kind: GatewayConfig
 metadata:
-  namespace: doctools
-  name: kibana-doctools-gateway-config-${DEPLOY_ENV}
+  namespace: ${POD_NAME}
+  name: ${KIBANA_APP_NAME}-${POD_NAME}-gateway-config-${DEPLOY_ENV}
+  labels:
+    app: ${KIBANA_APP_NAME}-${DEPLOY_ENV}
+    gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: ${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${KIBANA_APP_NAME}
 spec:
   profiles:
     - name: Default
@@ -240,6 +266,6 @@ spec:
         - /**
       profiles:
         - Default
-  service_ref: kibana-doctools-${DEPLOY_ENV}
-  service_alias: kibana-doctools
+  service_ref: ${KIBANA_APP_NAME}-${POD_NAME}-${DEPLOY_ENV}
+  service_alias: ${KIBANA_APP_NAME}-${POD_NAME}
   enable_sub_domain: false

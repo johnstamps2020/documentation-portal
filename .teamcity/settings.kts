@@ -124,6 +124,11 @@ enum class GwConfigTypes(val type_name: String) {
     DOCS("docs"), SOURCES("sources"), BUILDS("builds")
 }
 
+enum class GwKubernetesLabels(val label_value: String) {
+    POD_NAME("doctools"),
+    DEPT_CODE("284"),
+}
+
 object Runners {
     val rootProject = createRootProjectForRunners()
 
@@ -3403,8 +3408,8 @@ object Helpers {
         val commonEnvVars = """
             export DD_SERVICE_NAME="docportal"
             export APP_NAME="docportal-app"
-            export POD_NAME="doctools"
-            export DEPT_CODE="284"
+            export POD_NAME="${GwKubernetesLabels.POD_NAME.label_value}"
+            export DEPT_CODE="${GwKubernetesLabels.DEPT_CODE.label_value}"
         """.trimIndent()
         return when (deploy_env) {
             GwDeployEnvs.PROD.env_name -> """
@@ -3464,8 +3469,16 @@ object Helpers {
     }
 
     fun setSearchServiceDeployEnvVars(deploy_env: String): String {
+        val commonEnvVars = """
+            export ELASTICSEARCH_APP_NAME="docsearch"
+            export KIBANA_APP_NAME="kibana"
+            export POD_NAME="${GwKubernetesLabels.POD_NAME.label_value}"
+            export DEPT_CODE="${GwKubernetesLabels.DEPT_CODE.label_value}"
+            export TAG_VERSION="7.17.4"
+        """.trimIndent()
         return when (deploy_env) {
             GwDeployEnvs.PROD.env_name -> """
+                $commonEnvVars
                 export DEPLOY_ENV="${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}"
                 export REQUESTS_MEMORY="4G"
                 export REQUESTS_CPU="1"
@@ -3474,6 +3487,7 @@ object Helpers {
             """.trimIndent()
 
             else -> """
+                $commonEnvVars
                 export DEPLOY_ENV="$deploy_env"
                 export REQUESTS_MEMORY="1G"
                 export REQUESTS_CPU="0.5"
