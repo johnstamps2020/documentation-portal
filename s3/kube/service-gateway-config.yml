@@ -2,11 +2,19 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: docportal-content
-  namespace: doctools
+  name: ${APP_NAME}
+  namespace: ${POD_NAME}
+  labels:
+    app: ${APP_NAME}
+    gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: ${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${APP_NAME}
 spec:
   type: ExternalName
-  externalName: tenant-doctools-${DEPLOY_ENV}-builds.s3-website.us-west-2.amazonaws.com
+  externalName: ${SERVICE_EXTERNAL_NAME}
   ports:
     - port: 80
       protocol: TCP
@@ -15,21 +23,29 @@ spec:
 apiVersion: oort.ccs.guidewire.com/v1alpha1
 kind: GatewayConfig
 metadata:
-  namespace: doctools
-  name: docportal-content-gateway-config
+  name: ${APP_NAME}-gateway-config
+  namespace: ${POD_NAME}
+  labels:
+    app: ${APP_NAME}
+    gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: ${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${APP_NAME}
 spec:
   profiles:
     - name: Default
       request_transformer:
         add:
           headers:
-            - Host:tenant-doctools-${DEPLOY_ENV}-builds.s3-website.us-west-2.amazonaws.com
+            - Host:${SERVICE_EXTERNAL_NAME}
   path_configs:
     - name: Default
       paths:
         - /**
       profiles:
         - Default
-  service_ref: docportal-content
-  service_alias: docportal-content
+  service_ref: ${APP_NAME}
+  service_alias: ${APP_NAME}
   enable_sub_domain: false

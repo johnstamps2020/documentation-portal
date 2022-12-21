@@ -1168,6 +1168,7 @@ object Content {
             subProject(createGenerateSitemapProject())
             subProject(createDeployServerConfigProject())
             subProject(createDeploySearchServiceProject())
+            subProject(createDeployContentStorageProject())
             buildType(UploadPdfsForEscrowBuildType)
         }
     }
@@ -1401,7 +1402,6 @@ object Content {
                 vcs {
                     triggerRules = """
                         +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:apps/doc_crawler/kube/deployment.yml
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:apps/doc_crawler/kube/deployment-prod.yml
                         -:user=doctools:**
                         """.trimIndent()
                 }
@@ -1410,6 +1410,78 @@ object Content {
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
     }
+
+    private fun createDeployContentStorageProject(): Project {
+        return Project {
+            name = "Deploy content storage"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            arrayOf(
+                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD, GwDeployEnvs.PORTAL2
+            ).forEach {
+                buildType(createDeployContentStorageBuildType(it.env_name))
+            }
+        }
+    }
+
+    private fun createDeployContentStorageBuildType(deploy_env: String): BuildType {
+        val namespace = "doctools"
+        val awsEnvVars = Helpers.setAwsEnvVars(deploy_env)
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deploy_env)
+        val contentStorageDeployEnvVars = Helpers.setContentStorageDeployEnvVars(deploy_env)
+        return BuildType {
+            name = "Deploy $deploy_env content storage"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                branchFilter = "+:<default>"
+                cleanCheckout = true
+            }
+            steps {
+                script {
+                    name = "Deploy to Kubernetes"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                        #!/bin/bash 
+                        set -eux
+                                              
+                        # Set AWS credentials
+                        $awsEnvVars
+                        
+                        # Set environment variables needed for Kubernetes config files
+                        $contentStorageDeployEnvVars
+                        
+                        # Set other envs
+                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
+                        
+                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
+                        
+                        echo ${'$'}(kubectl get pods --namespace=${namespace})
+                        
+                        eval "echo \"${'$'}(cat s3/kube/service-gateway-config.yml)\"" > ${'$'}TMP_DEPLOYMENT_FILE
+                                                
+                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${namespace}
+                    """.trimIndent()
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.image_url
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                }
+            }
+
+            triggers {
+                vcs {
+                    triggerRules = """
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:s3/kube/service-gateway-config.yml
+                        -:user=doctools:**
+                        """.trimIndent()
+                }
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+        }
+    }
+
 
     object UploadPdfsForEscrowBuildType : BuildType({
         name = "Upload PDFs for Escrow"
@@ -3493,6 +3565,33 @@ object Helpers {
                 export REQUESTS_CPU="0.5"
                 export LIMITS_MEMORY="2G"
                 export LIMITS_CPU="1"
+            """.trimIndent()
+        }
+    }
+
+    fun setContentStorageDeployEnvVars(deploy_env: String): String {
+        val commonEnvVars = """
+            export POD_NAME="${GwKubernetesLabels.POD_NAME.label_value}"
+            export DEPT_CODE="${GwKubernetesLabels.DEPT_CODE.label_value}"
+            export TAG_VERSION="0.0.0"
+        """.trimIndent()
+        return when (deploy_env) {
+            GwDeployEnvs.PROD.env_name -> """
+                $commonEnvVars
+                export APP_NAME="docportal-content"
+                export SERVICE_EXTERNAL_NAME="tenant-${GwKubernetesLabels.POD_NAME.label_value}-${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}-builds.s3-website-us-east-1.amazonaws.com"
+            """.trimIndent()
+
+            GwDeployEnvs.PORTAL2.env_name -> """
+                $commonEnvVars
+                export APP_NAME="portal2-content"
+                export SERVICE_EXTERNAL_NAME="tenant-${GwKubernetesLabels.POD_NAME.label_value}-portal2-${GwDeployEnvs.OMEGA2_ANDROMEDA.env_name}-builds.s3-website-us-east-1.amazonaws.com"
+            """.trimIndent()
+
+            else -> """
+                $commonEnvVars
+                export APP_NAME="docportal-content"
+                export SERVICE_EXTERNAL_NAME="tenant-${GwKubernetesLabels.POD_NAME.label_value}-${deploy_env}-builds.s3-website.us-west-2.amazonaws.com"
             """.trimIndent()
         }
     }
