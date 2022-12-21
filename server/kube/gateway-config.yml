@@ -3,6 +3,14 @@ kind: GatewayConfig
 metadata:
   namespace: ${POD_NAME}
   name: docportal-gateway-config
+  labels:
+    app: ${APP_NAME}
+    gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: ${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${APP_NAME}
 spec:
   profiles:
     - name: Default

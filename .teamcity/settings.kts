@@ -3404,7 +3404,7 @@ object Helpers {
             export DD_SERVICE_NAME="docportal"
             export APP_NAME="docportal-app"
             export POD_NAME="doctools"
-            export DEPT_CODE="275"
+            export DEPT_CODE="284"
         """.trimIndent()
         return when (deploy_env) {
             GwDeployEnvs.PROD.env_name -> """
