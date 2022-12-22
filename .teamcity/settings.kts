@@ -1110,7 +1110,7 @@ object Custom {
                       curl -O https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/common-gw/raw/ditavals/${'$'}filter \
                         -H "Accept: application/json" \
                         -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
-                      dita -i "${'$'}GIT_CLONE_DIR/${'$'}input" --filter "${'$'}GIT_CLONE_DIR/common-gw/ditavals/${'$'}filter" -f pdf2_Guidewire --ah.remote=true --parallel=true -o "$localOutputDir/${'$'}OUTPUT_SUBDIR"
+                      dita -i "${'$'}GIT_CLONE_DIR/${'$'}input" --filter "${'$'}filter" -f pdf2_Guidewire --ah.remote=true --parallel=true -o "$localOutputDir/${'$'}OUTPUT_SUBDIR"
                       n=${'$'}((n+1))
                     done < %env.BUILDS_FILE_PARSED%
                 """.trimIndent()
