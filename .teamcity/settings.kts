@@ -1097,6 +1097,8 @@ object Custom {
                 scriptContent = """
                     #!/bin/bash
                     set -xe
+
+                    export GIT_CLONE_DIR="git_clone_dir"
                                                                                            
                     declare -a BUILDS
                     while read line; do
