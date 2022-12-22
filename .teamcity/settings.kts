@@ -3454,6 +3454,7 @@ object Helpers {
     fun getAtmosDeployEnv(deploy_env: String): String {
         return when (deploy_env) {
             GwDeployEnvs.PROD.env_name -> GwDeployEnvs.OMEGA2_ANDROMEDA.env_name
+            GwDeployEnvs.PORTAL2.env_name -> GwDeployEnvs.OMEGA2_ANDROMEDA.env_name
             else -> deploy_env
         }
     }
