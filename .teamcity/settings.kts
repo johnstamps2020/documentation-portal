@@ -3405,7 +3405,7 @@ object Helpers {
 
     fun setAwsEnvVars(deploy_env: String): String {
         val (awsAccessKeyId, awsSecretAccessKey, awsDefaultRegion) = when (deploy_env) {
-            GwDeployEnvs.PROD.env_name -> Triple(
+            GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name -> Triple(
                 "%env.ATMOS_ORANGE_PROD_AWS_ACCESS_KEY_ID%",
                 "%env.ATMOS_ORANGE_PROD_AWS_SECRET_ACCESS_KEY%",
                 "%env.ATMOS_ORANGE_PROD_AWS_DEFAULT_REGION%"
@@ -3453,8 +3453,7 @@ object Helpers {
 
     fun getAtmosDeployEnv(deploy_env: String): String {
         return when (deploy_env) {
-            GwDeployEnvs.PROD.env_name -> GwDeployEnvs.OMEGA2_ANDROMEDA.env_name
-            GwDeployEnvs.PORTAL2.env_name -> GwDeployEnvs.OMEGA2_ANDROMEDA.env_name
+            GwDeployEnvs.PROD.env_name, GwDeployEnvs.PORTAL2.env_name -> GwDeployEnvs.OMEGA2_ANDROMEDA.env_name
             else -> deploy_env
         }
     }
