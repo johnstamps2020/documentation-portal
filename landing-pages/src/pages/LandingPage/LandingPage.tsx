@@ -30,6 +30,9 @@ export default function LandingPage() {
         if (response.status === 401) {
           return navigate("/gw-login");
         }
+        if (response.status === 403) {
+          return navigate("/forbidden");
+        }
         if (!response.ok) {
           const errorJson = await response.json();
           const { status } = response;

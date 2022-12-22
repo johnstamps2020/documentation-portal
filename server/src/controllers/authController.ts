@@ -7,6 +7,7 @@ import { winstonLogger } from './loggerController';
 import { getUserInfo } from './userController';
 
 export const loginGatewayRoute = '/landing/gw-login';
+export const forbiddenRoute = '/landing/forbidden';
 const gwCommunityCustomerParam = 'guidewire-customer';
 const gwCommunityPartnerParam = 'guidewire-partner';
 
@@ -14,18 +15,47 @@ export async function isUserAllowedToAccessResource(
   req: Request,
   resourceIsPublic: boolean,
   resourceIsInternal: boolean
-): Promise<boolean> {
+): Promise<{ status: number; body: { message: string } }> {
   if (resourceIsPublic) {
-    return true;
+    return {
+      status: 200,
+      body: {
+        message: 'Resource available: Public resource',
+      },
+    };
   }
   const userInfo = await getUserInfo(req);
   if (!userInfo.isLoggedIn) {
-    return false;
+    return {
+      status: 401,
+      body: {
+        message: 'Resource not available: User not logged in',
+      },
+    };
   }
-  if (!resourceIsInternal) {
-    return true;
+  if (resourceIsInternal) {
+    return userInfo.hasGuidewireEmail
+      ? {
+          status: 200,
+          body: {
+            message: 'Resource available: GW user and internal resource',
+          },
+        }
+      : {
+          status: 403,
+          body: {
+            message:
+              'Resource not available: Only GW users have access to internal resources',
+          },
+        };
   }
-  return userInfo.hasGuidewireEmail;
+  return {
+    status: 200,
+    body: {
+      message:
+        'Resource available: User logged in, resource not internal and not public',
+    },
+  };
 }
 
 function getTokenFromRequestHeader(req: Request) {

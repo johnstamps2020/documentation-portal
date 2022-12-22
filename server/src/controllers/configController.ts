@@ -9,6 +9,7 @@ import { Release } from '../model/entity/Release';
 import { FindOneAndDeleteOptions, FindOptionsWhere } from 'typeorm';
 import { ApiResponse } from '../types/apiResponse';
 import { Page } from '../model/entity/Page';
+import { isUserAllowedToAccessResource } from './authController';
 
 function optionsAreValid(options: {}) {
   return (
@@ -61,7 +62,22 @@ export async function getBreadcrumbs(pagePath: string): Promise<ApiResponse> {
   }
 }
 
-export async function getEntity(
+export async function getEntity(reqObj: Request) {
+  const { repo } = reqObj.params;
+  const options = reqObj.query;
+  const operationResult = await findEntity(repo, options);
+  const userIsAllowedToAccessResource = await isUserAllowedToAccessResource(
+    reqObj,
+    operationResult.body?.public || false,
+    operationResult.body?.internal || false
+  );
+  if (userIsAllowedToAccessResource.status === 200) {
+    return operationResult;
+  }
+  return userIsAllowedToAccessResource;
+}
+
+export async function findEntity(
   repo: string,
   options: FindOptionsWhere<any>
 ): Promise<ApiResponse> {
@@ -207,7 +223,7 @@ export async function getDocumentMetadataById(docId: string) {
         },
       };
     }
-    const getEntityResponse = await getEntity(Doc.name, { id: docId });
+    const getEntityResponse = await findEntity(Doc.name, { id: docId });
     if (getEntityResponse.status === 200) {
       const docInfo = getEntityResponse.body;
       return {

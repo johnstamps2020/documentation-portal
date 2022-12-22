@@ -1,9 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
 import fetch from 'node-fetch';
-import { getDocByUrl, getEntity } from './configController';
+import { getDocByUrl, findEntity } from './configController';
 import {
   isUserAllowedToAccessResource,
   loginGatewayRoute,
+  forbiddenRoute,
 } from './authController';
 import { Page } from '../model/entity/Page';
 import { runningInDevMode } from './utils/serverUtils';
@@ -26,13 +27,16 @@ async function s3Proxy(req: Request, res: Response, next: NextFunction) {
   if (!requestedDoc) {
     return next();
   }
-  const userIsAllowedToAccessResource = await isUserAllowedToAccessResource(
+  const checkStatus = await isUserAllowedToAccessResource(
     req,
     requestedDoc.public,
     requestedDoc.internal
-  );
-  if (!userIsAllowedToAccessResource) {
+  ).then(r => r.status);
+  if (checkStatus === 401) {
     return res.redirect(loginGatewayRoute);
+  }
+  if (checkStatus == 403) {
+    return res.redirect(forbiddenRoute);
   }
   const proxyTarget = req.path.startsWith('/sitemap')
     ? `${process.env.DOC_S3_URL}/sitemap`
@@ -66,13 +70,16 @@ async function portal2Proxy(req: Request, res: Response, next: NextFunction) {
   if (!requestedDoc) {
     return next();
   }
-  const userIsAllowedToAccessResource = await isUserAllowedToAccessResource(
+  const checkStatus = await isUserAllowedToAccessResource(
     req,
     requestedDoc.public,
     requestedDoc.internal
-  );
-  if (!userIsAllowedToAccessResource) {
+  ).then(r => r.status);
+  if (checkStatus === 401) {
     return res.redirect(loginGatewayRoute);
+  }
+  if (checkStatus == 403) {
+    return res.redirect(forbiddenRoute);
   }
   proxy.on('proxyRes', setProxyResCacheControlHeader);
   proxy.web(
@@ -128,20 +135,23 @@ async function reactAppProxy(req: Request, res: Response, next: NextFunction) {
   if (req.originalUrl === loginGatewayRoute || req.path.startsWith('/static')) {
     return proxy.web(req, res, proxyOptions, next);
   }
-  const requestedPage = await getEntity(Page.name, {
+  const requestedPage = await findEntity(Page.name, {
     path: req.path.replace(/^\//g, ''),
   });
   if (!requestedPage) {
     return next();
   }
   const requestedPageBody = requestedPage.body;
-  const userIsAllowedToAccessResource = await isUserAllowedToAccessResource(
+  const checkStatus = await isUserAllowedToAccessResource(
     req,
     requestedPageBody.public,
     requestedPageBody.internal
-  );
-  if (!userIsAllowedToAccessResource) {
+  ).then(r => r.status);
+  if (checkStatus === 401) {
     return res.redirect(loginGatewayRoute);
+  }
+  if (checkStatus == 403) {
+    return res.redirect(forbiddenRoute);
   }
   if (isDevMode) {
     return proxy.web(req, res, proxyOptions, next);
