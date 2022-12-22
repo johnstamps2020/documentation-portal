@@ -10,7 +10,7 @@ import { FooterText } from "./StyledLayoutComponents";
 type FooterProps = {
   path?: string;
 };
-
+// TODO: Move the support page to frontend?
 export default function Footer({ path }: FooterProps) {
   const releaseInfo = { label: "", badge: "" };
   if (path?.includes("elysian")) {
@@ -45,7 +45,6 @@ export default function Footer({ path }: FooterProps) {
       <FooterText sx={{ display: "contents" }}>
         Copyright 2022 Guidewire Software, Inc.
       </FooterText>
-      // TODO: Move this page to frontend?
       <Link
         href="/support"
         sx={{

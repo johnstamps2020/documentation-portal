@@ -132,7 +132,11 @@ async function reactAppProxy(req: Request, res: Response, next: NextFunction) {
       : `${process.env.DOC_S3_URL}/landing-pages-react`,
     changeOrigin: true,
   };
-  if (req.originalUrl === loginGatewayRoute || req.path.startsWith('/static')) {
+  /*
+    Open routes, such as /gw-login and /search, are configured in the database as public pages.
+    This way, the user can view them without login.
+    */
+  if (req.path.startsWith('/static') || req.path === '/') {
     return proxy.web(req, res, proxyOptions, next);
   }
   const requestedPage = await findEntity(Page.name, {
