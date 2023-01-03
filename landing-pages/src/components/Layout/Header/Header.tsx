@@ -38,7 +38,7 @@ export default function Header(headerOptions: HeaderOptions) {
         <ExternalSites />
         <Glossary />
         <TranslatedPages />
-        <UserProfile />
+        {!headerOptions.hideUserProfile && <UserProfile />}
       </Stack>
     </Stack>
   );

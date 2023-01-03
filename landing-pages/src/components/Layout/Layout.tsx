@@ -5,6 +5,7 @@ import Footer from "./Footer";
 export type HeaderOptions = {
   searchFilters?: { [key: string]: string[] };
   hideSearchBox?: boolean;
+  hideUserProfile?: boolean;
 };
 
 type LayoutProps = {

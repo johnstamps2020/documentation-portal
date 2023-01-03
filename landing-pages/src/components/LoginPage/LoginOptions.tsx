@@ -1,18 +1,12 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 
 export default function LoginOptions() {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "8px",
-        width: "fit-content"
-      }}
-    >
+    <Stack spacing={2}>
       <Tooltip
         title={
           <Typography>
@@ -22,12 +16,7 @@ export default function LoginOptions() {
         placement="left"
         arrow
       >
-        <Button
-          href="/authorization-code"
-          variant="contained"
-          color="primary"
-          fullWidth
-        >
+        <Button href="/authorization-code" variant="contained" color="primary">
           Guidewire Cloud
         </Button>
       </Tooltip>
@@ -40,12 +29,7 @@ export default function LoginOptions() {
         placement="left"
         arrow
       >
-        <Button
-          href="/customers-login"
-          variant="contained"
-          color="primary"
-          fullWidth
-        >
+        <Button href="/customers-login" variant="contained" color="primary">
           Customer Community
         </Button>
       </Tooltip>
@@ -58,12 +42,7 @@ export default function LoginOptions() {
         placement="left"
         arrow
       >
-        <Button
-          href="/partners-login"
-          variant="contained"
-          color="primary"
-          fullWidth
-        >
+        <Button href="/partners-login" variant="contained" color="primary">
           Partner Community
         </Button>
       </Tooltip>
@@ -71,11 +50,10 @@ export default function LoginOptions() {
         variant="outlined"
         color="primary"
         href="/authorization-code?idp=okta"
-        fullWidth
-        sx={{ marginTop: 4, fontWeight: 600, border: 1 }}
+        sx={{ fontWeight: 600, border: 1 }}
       >
         Guidewire Employee
       </Button>
-    </Box>
+    </Stack>
   );
 }
