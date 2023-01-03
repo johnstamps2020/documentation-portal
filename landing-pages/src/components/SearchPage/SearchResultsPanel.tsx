@@ -34,7 +34,7 @@ export default function SearchResultsPanel() {
         scrollbarWidth: "thin"
       }}
     >
-      <Stack alignItems="center" sx={{ marginBottom: 3 }} spacing={1}>
+      <Stack alignItems="center" sx={{ marginBottom: 3 }} spacing={2}>
         <NotLoggedInAlert />
         <SearchBox bigSize={true} searchFilters={searchFilters} />
         <AdvancedSearchHelp />

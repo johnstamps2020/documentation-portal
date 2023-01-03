@@ -22,9 +22,7 @@ const bigSizeProps = {
   ...commonProps,
   height: "45px",
   width: "760px",
-  maxWidth: "760px",
-  marginTop: 0,
-  marginBottom: 0
+  maxWidth: "760px"
 };
 
 const regularSizeProps = {
@@ -45,13 +43,12 @@ export default function SearchBox({
     <Paper
       component="form"
       elevation={0}
-      action="/landing/search"
       sx={bigSize ? { ...bigSizeProps } : { ...regularSizeProps }}
     >
       <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder={placeholder}
-        inputProps={{ "aria-label": placeholder }}
+        inputProps={{ "aria-label": placeholder, marginTop: 0 }}
         name="q"
       />
       {searchFilters &&

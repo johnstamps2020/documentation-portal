@@ -7,7 +7,7 @@ export default function NotLoggedInAlert() {
     return null;
   }
   return (
-    <Alert severity="warning">
+    <Alert sx={{ justifyContent: "center", width: "100%" }} severity="warning">
       You are not logged in. Search results are limited to public documents
       only.
     </Alert>
