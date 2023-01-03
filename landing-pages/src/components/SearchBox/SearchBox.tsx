@@ -42,6 +42,7 @@ export default function SearchBox({
   return (
     <Paper
       component="form"
+      action="/landing/search"
       elevation={0}
       sx={bigSize ? { ...bigSizeProps } : { ...regularSizeProps }}
     >
