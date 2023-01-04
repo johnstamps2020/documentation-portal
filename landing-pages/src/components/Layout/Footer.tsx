@@ -1,4 +1,5 @@
 import Link from "@mui/material/Link";
+import { Link as RouterLink } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import elysianBadge from "../../images/badge-elysian.svg";
 import dobsonBadge from "../../images/badge-dobson.svg";
@@ -7,10 +8,11 @@ import banffBadge from "../../images/badge-banff.svg";
 import aspenBadge from "../../images/badge-aspen.svg";
 import { FooterText } from "./StyledLayoutComponents";
 
+export const footerHeight = "55px";
+
 type FooterProps = {
   path?: string;
 };
-// TODO: Move the support page to frontend?
 export default function Footer({ path }: FooterProps) {
   const releaseInfo = { label: "", badge: "" };
   if (path?.includes("elysian")) {
@@ -32,8 +34,8 @@ export default function Footer({ path }: FooterProps) {
   return (
     <Stack
       direction="row"
-      height="55px"
-      maxHeight="55px"
+      height={footerHeight}
+      maxHeight={footerHeight}
       sx={{
         backgroundColor: "hsl(216, 42%, 13%)",
         color: "hsl(0, 0%, 98%)",
@@ -46,14 +48,15 @@ export default function Footer({ path }: FooterProps) {
         Copyright 2022 Guidewire Software, Inc.
       </FooterText>
       <Link
-        href="/support"
+        component={RouterLink}
+        to="/support"
         sx={{
           underline: "none",
           color: "white"
         }}
       >
         <FooterText sx={{ display: "contents" }}>
-          Legal and Support Information
+          Legal and support information
         </FooterText>
       </Link>
       <Stack direction="row" alignItems="center">

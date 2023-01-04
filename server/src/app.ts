@@ -92,7 +92,6 @@ const customersLoginRouter = require('./routes/customers-login');
 const oidcLoginRouter = require('./routes/authorization-code');
 const searchRouter = require('./routes/search');
 const internalRouter = require('./routes/internal');
-const supportRouter = require('./routes/support');
 const s3Router = require('./routes/s3');
 const userRouter = require('./routes/user');
 const configRouter = require('./routes/config');
@@ -141,7 +140,6 @@ app.use('/safeConfig', configRouter);
 app.use('/jira', jiraRouter);
 app.use('/lrs', lrsRouter);
 app.use('/recommendations', recommendationsRouter);
-app.use('/support', supportRouter);
 app.use('/s3', s3Router);
 
 app.use('/portal-config/*', (req, res) => {

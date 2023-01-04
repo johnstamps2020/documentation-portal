@@ -13,6 +13,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import { appTheme } from "./themes/appTheme";
 import CssBaseline from "@mui/material/CssBaseline";
 import { UserProvider } from "./context/UserContext";
+import SupportPage from "./pages/SupportPage/SupportPage";
 
 const router = createBrowserRouter(
   [
@@ -39,6 +40,10 @@ const router = createBrowserRouter(
     {
       path: "/gw-login",
       element: <LoginPage />
+    },
+    {
+      path: "/support",
+      element: <SupportPage />
     },
     {
       path: "/*",

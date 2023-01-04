@@ -6,11 +6,6 @@ import { addCommonDataToSessionLocals } from './localsController';
 import { winstonLogger } from './loggerController';
 import { getUserInfo } from './userController';
 
-export const loginGatewayRoute = '/landing/gw-login';
-export const forbiddenRoute = '/landing/forbidden';
-const gwCommunityCustomerParam = 'guidewire-customer';
-const gwCommunityPartnerParam = 'guidewire-partner';
-
 export async function isUserAllowedToAccessResource(
   req: Request,
   resourceIsPublic: boolean,
@@ -209,16 +204,16 @@ const majorPublicRoutes = [
 
 const majorInternalRoutes: string[] = [];
 
-function redirectToLoginPage(req: Request, res: Response) {
+export function redirectToLoginPage(req: Request, res: Response) {
   try {
     req.session!.redirectTo = req.url;
-    if (req.query.authSource === gwCommunityCustomerParam) {
-      res.redirect('/customers-login');
-    } else if (req.query.authSource === gwCommunityPartnerParam) {
-      res.redirect('/partners-login');
-    } else {
-      res.redirect(loginGatewayRoute);
+    if (req.query.authSource === 'guidewire-customer') {
+      return res.redirect('/customers-login');
     }
+    if (req.query.authSource === 'guidewire-partner') {
+      return res.redirect('/partners-login');
+    }
+    return res.redirect('/landing/gw-login');
   } catch (err) {
     winstonLogger.error(
       `Problem redirecting to login page 
@@ -226,7 +221,7 @@ function redirectToLoginPage(req: Request, res: Response) {
     );
   }
 }
-
+// TODO: Update this function to work with the new auth approach
 function openRequestedPage(req: Request, res: Response, next: NextFunction) {
   try {
     let targetUrl = req.url;
