@@ -8,7 +8,7 @@
       "metadata": {
         "product": ["InsuranceSuite Package for Japan"],
         "platform": ["Cloud", "Self-managed"],
-        "version": ["1.0"],
+        "version": ["0.1"],
         "release": ["Flaine"],
         "subject": ["Release notes"]
       },
@@ -26,7 +26,7 @@
       "metadata": {
         "product": ["InsuranceSuite Package for Japan"],
         "platform": ["Cloud", "Self-managed"],
-        "version": ["1.0"],
+        "version": ["0.1"],
         "release": ["Flaine"],
         "subject": ["Development"]
       },
@@ -36,7 +36,7 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    },    
+    },
     {
       "id": "ipjflaineapp",
       "title": "Application Guide",
@@ -44,7 +44,7 @@
       "metadata": {
         "product": ["InsuranceSuite Package for Japan"],
         "platform": ["Cloud", "Self-managed"],
-        "version": ["1.0"],
+        "version": ["0.1"],
         "release": ["Flaine"],
         "subject": ["Features and functionality"]
       },
