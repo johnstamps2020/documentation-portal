@@ -161,15 +161,15 @@
           "id": "appeventsdev"
         },
         {
-          "label": "Cloud API Authentication",
-          "id": "ispc202209apica"
-        },
-        {
-          "label": "Cloud API Business Flows",
+          "label": "Cloud API Consumers",
           "id": "ispc202209apibf"
         },
         {
-          "label": "Cloud API ContactManager",
+          "label": "Cloud API Developers",
+          "id": "ispc202209apica"
+        },
+        {
+          "label": "Cloud API for ContactManager",
           "id": "ispc202209apicm"
         },
         {

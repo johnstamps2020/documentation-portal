@@ -35,7 +35,7 @@
           "id": "bcapirefflaine"
         },
         {
-          "label": "Cloud API Business Flows",
+          "label": "Cloud API Consumers",
           "id": "isbc202209apibf"
         }
       ]
@@ -49,12 +49,12 @@
           "id": "ccapirefflaine"
         },
         {
-          "label": "Cloud API Authentication",
-          "id": "iscc202209apica"
+          "label": "Cloud API Consumers",
+          "id": "iscc202209apibf"
         },
         {
-          "label": "Cloud API Business Flows",
-          "id": "iscc202209apibf"
+          "label": "Cloud API Developers",
+          "id": "iscc202209apica"
         }
       ]
     },
@@ -67,12 +67,12 @@
           "id": "pcapirefflaine"
         },
         {
-          "label": "Cloud API Authentication",
-          "id": "ispc202209apica"
+          "label": "Cloud API Consumers",
+          "id": "ispc202209apibf"
         },
         {
-          "label": "Cloud API Business Flows",
-          "id": "ispc202209apibf"
+          "label": "Cloud API Developers",
+          "id": "ispc202209apica"
         }
       ]
     },
