@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "InsuranceSuite Package for Japan 1.0",
+  "title": "InsuranceSuite Package for Japan 0.1",
   "template": "page",
   "class": "twoColumns",
   "items": [
