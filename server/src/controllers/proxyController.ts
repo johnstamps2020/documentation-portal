@@ -23,29 +23,40 @@ proxy.on('error', function(err: any, next: NextFunction) {
   next(err);
 });
 
-async function s3Proxy(req: Request, res: Response, next: NextFunction) {
-  openRequestedUrl(req, res);
-  const requestedDoc = await getDocByUrl(req.path);
-  if (!requestedDoc) {
-    return next();
+export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
+  let resourceStatus;
+  if (req.path.startsWith('/sitemap')) {
+    resourceStatus = await isUserAllowedToAccessResource(
+      req,
+      false,
+      false
+    ).then(r => r.status);
+  } else {
+    const requestedDoc = await getDocByUrl(req.path);
+    if (!requestedDoc) {
+      return next();
+    }
+    resourceStatus = await isUserAllowedToAccessResource(
+      req,
+      requestedDoc.public,
+      requestedDoc.internal
+    ).then(r => r.status);
   }
-  const checkStatus = await isUserAllowedToAccessResource(
-    req,
-    requestedDoc.public,
-    requestedDoc.internal
-  ).then(r => r.status);
-  if (checkStatus === 401) {
+  if (resourceStatus === 401) {
     return redirectToLoginPage(req, res);
   }
-  if (checkStatus == 403) {
+  if (resourceStatus == 403) {
     return res.redirect(forbiddenRoute);
   }
-  let proxyTarget = process.env.DOC_S3_URL;
+
+  openRequestedUrl(req, res);
+  let proxyTarget;
   if (req.path.startsWith('/sitemap')) {
     proxyTarget = `${process.env.DOC_S3_URL}/sitemap`;
-  }
-  if (req.path.startsWith('/portal')) {
-    proxyTarget = process.env.PORTAL2_S3_URL;
+  } else {
+    proxyTarget = req.path.startsWith('/portal')
+      ? process.env.PORTAL2_S3_URL
+      : process.env.DOC_S3_URL;
   }
   proxy.on('proxyRes', setProxyResCacheControlHeader);
   proxy.web(
@@ -59,7 +70,7 @@ async function s3Proxy(req: Request, res: Response, next: NextFunction) {
   );
 }
 
-function html5Proxy(req: Request, res: Response, next: NextFunction) {
+export function html5Proxy(req: Request, res: Response, next: NextFunction) {
   proxy.web(
     req,
     res,
@@ -102,7 +113,11 @@ function getStatusCode(reqUrl: string): number {
   return 200;
 }
 
-async function reactAppProxy(req: Request, res: Response, next: NextFunction) {
+export async function reactAppProxy(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   const isDevMode = runningInDevMode();
   const proxyOptions = {
     target: isDevMode
@@ -111,9 +126,9 @@ async function reactAppProxy(req: Request, res: Response, next: NextFunction) {
     changeOrigin: true,
   };
   /*
-                        Open routes, such as /gw-login and /search, are configured in the database as public pages.
-                        This way, the user can view them without login.
-                        */
+                                                Open routes, such as /gw-login and /search, are configured in the database as public pages.
+                                                This way, the user can view them without login.
+                                                */
   if (req.path.startsWith('/static') || req.path === '/') {
     return proxy.web(req, res, proxyOptions, next);
   }
@@ -135,6 +150,7 @@ async function reactAppProxy(req: Request, res: Response, next: NextFunction) {
   if (checkStatus == 403) {
     return res.redirect(forbiddenRoute);
   }
+
   if (isDevMode) {
     return proxy.web(req, res, proxyOptions, next);
   } else {
@@ -150,9 +166,3 @@ async function reactAppProxy(req: Request, res: Response, next: NextFunction) {
     }
   }
 }
-
-module.exports = {
-  s3Proxy,
-  html5Proxy,
-  reactAppProxy,
-};

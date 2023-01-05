@@ -167,14 +167,14 @@ if (isDevMode) {
   app.use('/scripts', html5Proxy);
 }
 
-// All remaining docs from S3
+// Docs stored on S3 — current and portal2
 app.use(s3Proxy);
 
 // handles unauthorized errors
 app.use(expressWinstonErrorLogger);
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   winstonLogger.error(
-    `General error passed to top-level handler in app.js: ${JSON.stringify(
+    `General error passed to top-level handler in app.ts: ${JSON.stringify(
       err
     )}`
   );

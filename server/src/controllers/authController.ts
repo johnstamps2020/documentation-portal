@@ -230,15 +230,13 @@ export function openRequestedUrl(req: Request, res: Response) {
       delete req.session!.redirectTo;
       targetUrl = redirectTo;
     }
-    if (req.query?.authSource) {
-      const queryParams = req.query;
-      delete queryParams.authSource;
-      targetUrl =
-        Object.keys(queryParams).length > 0
-          ? `${req.path}?${Object.entries(queryParams)
-              .map(([k, v]) => `${k}=${v}`)
-              .join('&')}`
-          : req.path;
+    const fullRequestUrl = new URL(targetUrl, process.env.APP_BASE_URL);
+    if (fullRequestUrl.searchParams.has('authSource')) {
+      fullRequestUrl.searchParams.delete('authSource');
+      targetUrl = fullRequestUrl.href.replace(
+        `${process.env.APP_BASE_URL}`,
+        ''
+      );
     }
     if (targetUrl !== req.url) {
       res.redirect(targetUrl);
