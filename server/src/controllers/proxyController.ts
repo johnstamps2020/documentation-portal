@@ -125,10 +125,8 @@ export async function reactAppProxy(
       : `${process.env.DOC_S3_URL}/landing-pages-react`,
     changeOrigin: true,
   };
-  /*
-                                                Open routes, such as /gw-login and /search, are configured in the database as public pages.
-                                                This way, the user can view them without login.
-                                                */
+  /* Open routes, such as /gw-login and /search, are configured in the database as public pages.
+      This way, the user can view them without login.*/
   if (req.path.startsWith('/static') || req.path === '/') {
     return proxy.web(req, res, proxyOptions, next);
   }
@@ -151,6 +149,8 @@ export async function reactAppProxy(
     return res.redirect(forbiddenRoute);
   }
 
+  // FIXME: the openRequestedUrl function gets into an infinite loop when used here
+  // openRequestedUrl(req, res);
   if (isDevMode) {
     return proxy.web(req, res, proxyOptions, next);
   } else {
