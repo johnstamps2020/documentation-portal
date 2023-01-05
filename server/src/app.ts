@@ -152,14 +152,10 @@ app.use(harmonRouter);
 
 // set up proxies
 const {
-  portal2Proxy,
   s3Proxy,
   html5Proxy,
   reactAppProxy,
 } = require('./controllers/proxyController');
-
-// Portal 2: Electric Boogaloo
-app.use('/portal', portal2Proxy);
 
 app.use('/landing', reactAppProxy);
 

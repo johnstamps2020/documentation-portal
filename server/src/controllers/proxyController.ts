@@ -40,9 +40,13 @@ async function s3Proxy(req: Request, res: Response, next: NextFunction) {
   if (checkStatus == 403) {
     return res.redirect(forbiddenRoute);
   }
-  const proxyTarget = req.path.startsWith('/sitemap')
-    ? `${process.env.DOC_S3_URL}/sitemap`
-    : process.env.DOC_S3_URL;
+  let proxyTarget = process.env.DOC_S3_URL;
+  if (req.path.startsWith('/sitemap')) {
+    proxyTarget = `${process.env.DOC_S3_URL}/sitemap`;
+  }
+  if (req.path.startsWith('/portal')) {
+    proxyTarget = process.env.PORTAL2_S3_URL;
+  }
   proxy.on('proxyRes', setProxyResCacheControlHeader);
   proxy.web(
     req,
@@ -61,36 +65,6 @@ function html5Proxy(req: Request, res: Response, next: NextFunction) {
     res,
     {
       target: `${process.env.DOC_S3_URL}/html5/scripts`,
-      changeOrigin: true,
-    },
-    next
-  );
-}
-
-async function portal2Proxy(req: Request, res: Response, next: NextFunction) {
-  // FIXME: The url doesn't contain /portal so the function for opening requested url doesn't work
-  // openRequestedUrl(req, res);
-  const requestedDoc = await getDocByUrl(`portal${req.path}`);
-  if (!requestedDoc) {
-    return next();
-  }
-  const checkStatus = await isUserAllowedToAccessResource(
-    req,
-    requestedDoc.public,
-    requestedDoc.internal
-  ).then(r => r.status);
-  if (checkStatus === 401) {
-    return redirectToLoginPage(req, res);
-  }
-  if (checkStatus == 403) {
-    return res.redirect(forbiddenRoute);
-  }
-  proxy.on('proxyRes', setProxyResCacheControlHeader);
-  proxy.web(
-    req,
-    res,
-    {
-      target: `${process.env.PORTAL2_S3_URL}/portal`,
       changeOrigin: true,
     },
     next
@@ -137,9 +111,9 @@ async function reactAppProxy(req: Request, res: Response, next: NextFunction) {
     changeOrigin: true,
   };
   /*
-                  Open routes, such as /gw-login and /search, are configured in the database as public pages.
-                  This way, the user can view them without login.
-                  */
+                        Open routes, such as /gw-login and /search, are configured in the database as public pages.
+                        This way, the user can view them without login.
+                        */
   if (req.path.startsWith('/static') || req.path === '/') {
     return proxy.web(req, res, proxyOptions, next);
   }
@@ -180,6 +154,5 @@ async function reactAppProxy(req: Request, res: Response, next: NextFunction) {
 module.exports = {
   s3Proxy,
   html5Proxy,
-  portal2Proxy,
   reactAppProxy,
 };
