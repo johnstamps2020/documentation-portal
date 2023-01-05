@@ -221,8 +221,8 @@ export function redirectToLoginPage(req: Request, res: Response) {
     );
   }
 }
-// TODO: Update this function to work with the new auth approach
-function openRequestedPage(req: Request, res: Response, next: NextFunction) {
+
+export function openRequestedUrl(req: Request, res: Response) {
   try {
     let targetUrl = req.url;
     if (req.session!.redirectTo) {
@@ -230,15 +230,18 @@ function openRequestedPage(req: Request, res: Response, next: NextFunction) {
       delete req.session!.redirectTo;
       targetUrl = redirectTo;
     }
-    if (req.query.authSource) {
-      const fullRequestUrl = new URL(targetUrl, process.env.APP_BASE_URL);
-      fullRequestUrl.searchParams.delete('authSource');
-      targetUrl = fullRequestUrl.href;
+    if (req.query?.authSource) {
+      const queryParams = req.query;
+      delete queryParams.authSource;
+      targetUrl =
+        Object.keys(queryParams).length > 0
+          ? `${req.path}?${Object.entries(queryParams)
+              .map(([k, v]) => `${k}=${v}`)
+              .join('&')}`
+          : req.path;
     }
     if (targetUrl !== req.url) {
       res.redirect(targetUrl);
-    } else {
-      next();
     }
   } catch (err) {
     winstonLogger.error(
@@ -326,9 +329,9 @@ export const authGateway = async (
     const hasGuidewireEmail = res.locals.userInfo.hasGuidewireEmail;
 
     if (requestIsAuthenticated && !isInternalRoute) {
-      openRequestedPage(req, res, next);
+      openRequestedUrl(req, res);
     } else if (requestIsAuthenticated && isInternalRoute && hasGuidewireEmail) {
-      openRequestedPage(req, res, next);
+      openRequestedUrl(req, res);
     } else if (
       requestIsAuthenticated &&
       isInternalRoute &&

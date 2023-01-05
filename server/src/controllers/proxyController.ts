@@ -3,6 +3,7 @@ import fetch from 'node-fetch';
 import { findEntity, getDocByUrl } from './configController';
 import {
   isUserAllowedToAccessResource,
+  openRequestedUrl,
   redirectToLoginPage,
 } from './authController';
 import { Page } from '../model/entity/Page';
@@ -23,6 +24,7 @@ proxy.on('error', function(err: any, next: NextFunction) {
 });
 
 async function s3Proxy(req: Request, res: Response, next: NextFunction) {
+  openRequestedUrl(req, res);
   const requestedDoc = await getDocByUrl(req.path);
   if (!requestedDoc) {
     return next();
@@ -38,7 +40,6 @@ async function s3Proxy(req: Request, res: Response, next: NextFunction) {
   if (checkStatus == 403) {
     return res.redirect(forbiddenRoute);
   }
-  // TODO: Use the updated openRequestedPage function to clean the target URL
   const proxyTarget = req.path.startsWith('/sitemap')
     ? `${process.env.DOC_S3_URL}/sitemap`
     : process.env.DOC_S3_URL;
@@ -67,6 +68,8 @@ function html5Proxy(req: Request, res: Response, next: NextFunction) {
 }
 
 async function portal2Proxy(req: Request, res: Response, next: NextFunction) {
+  // FIXME: The url doesn't contain /portal so the function for opening requested url doesn't work
+  // openRequestedUrl(req, res);
   const requestedDoc = await getDocByUrl(`portal${req.path}`);
   if (!requestedDoc) {
     return next();
@@ -134,9 +137,9 @@ async function reactAppProxy(req: Request, res: Response, next: NextFunction) {
     changeOrigin: true,
   };
   /*
-            Open routes, such as /gw-login and /search, are configured in the database as public pages.
-            This way, the user can view them without login.
-            */
+                  Open routes, such as /gw-login and /search, are configured in the database as public pages.
+                  This way, the user can view them without login.
+                  */
   if (req.path.startsWith('/static') || req.path === '/') {
     return proxy.web(req, res, proxyOptions, next);
   }
