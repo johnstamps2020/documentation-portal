@@ -201,7 +201,7 @@
     },
     {
       "id": "isbc202209apibf",
-      "title": "Cloud API Consumers",
+      "title": "BillingCenter Cloud API Consumer Guide",
       "url": "cloud/bc/202209/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
@@ -214,6 +214,42 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202209apica",
+      "title": "BillingCenter Cloud API Developer Guide",
+      "url": "cloud/bc/202209/cloudapica",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202209apicm",
+      "title": "ContactManager Cloud API Consumer Guide",
+      "url": "cloud/bc/202209/cloudapicm",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Integration"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
       "internal": false,
       "earlyAccess": false
     },
@@ -435,7 +471,7 @@
     },
     {
       "id": "iscc202209apibf",
-      "title": "Cloud API Consumers",
+      "title": "ClaimCenter Cloud API Consumer Guide",
       "url": "cloud/cc/202209/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
@@ -453,7 +489,7 @@
     },
     {
       "id": "iscc202209apica",
-      "title": "Cloud API Developers",
+      "title": "ClaimCenter Cloud API Developer Guide",
       "url": "cloud/cc/202209/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
@@ -471,7 +507,7 @@
     },
     {
       "id": "iscc202209apicm",
-      "title": "Cloud API for ContactManager",
+      "title": "ContactManager Cloud API Consumer Guide",
       "url": "cloud/cc/202209/cloudapicm",
       "metadata": {
         "platform": ["Cloud"],
@@ -741,7 +777,7 @@
     },
     {
       "id": "ispc202209apibf",
-      "title": "Cloud API Consumers",
+      "title": "PolicyCenter Cloud API Consumer Guide",
       "url": "cloud/pc/202209/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
@@ -759,7 +795,7 @@
     },
     {
       "id": "ispc202209apica",
-      "title": "Cloud API Developers",
+      "title": "PolicyCenter Cloud API Developer Guide",
       "url": "cloud/pc/202209/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
@@ -777,7 +813,7 @@
     },
     {
       "id": "ispc202209apicm",
-      "title": "Cloud API for ContactManager",
+      "title": "ContactManager Cloud API Consumer Guide",
       "url": "cloud/pc/202209/cloudapicm",
       "metadata": {
         "platform": ["Cloud"],
@@ -885,7 +921,7 @@
     },
     {
       "id": "ccapirefflaine",
-      "title": "Cloud API Reference",
+      "title": "ClaimCenter Cloud API Reference",
       "url": "cloud/cc/202209/apiref",
       "metadata": {
         "platform": ["Cloud"],
@@ -903,7 +939,7 @@
     },
     {
       "id": "bcapirefflaine",
-      "title": "Cloud API Reference",
+      "title": "BillingCenter Cloud API Reference",
       "url": "cloud/bc/202209/apiref",
       "metadata": {
         "platform": ["Cloud"],
@@ -921,7 +957,7 @@
     },
     {
       "id": "pcapirefflaine",
-      "title": "Cloud API Reference",
+      "title": "PolicyCenter Cloud API Reference",
       "url": "cloud/pc/202209/apiref",
       "metadata": {
         "platform": ["Cloud"],

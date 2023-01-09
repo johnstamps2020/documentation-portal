@@ -125,12 +125,20 @@
           "id": "is202209integoverview"
         },
         {
-          "label": "API Reference",
+          "label": "BillingCenter Cloud API Consumer Guide",
+          "id": "isbc202209apibf"
+        },
+        {
+          "label": "BillingCenter Cloud API Developer Guide",
+          "id": "isbc202209apica"
+        },
+        {
+          "label": "BillingCenter Cloud API Reference",
           "id": "bcapirefflaine"
         },
         {
-          "label": "Cloud API Consumers",
-          "id": "isbc202209apibf"
+          "label": "ContactManager Cloud API Consumer Guide",
+          "id": "isbc202209apicm"
         },
         {
           "label": "Integration Gateway",

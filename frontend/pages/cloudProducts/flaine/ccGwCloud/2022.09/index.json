@@ -133,23 +133,23 @@
           "id": "is202209integoverview"
         },
         {
-          "label": "API Reference",
-          "id": "ccapirefflaine"
-        },
-        {
           "label": "App Events",
           "id": "appeventsdev"
         },
         {
-          "label": "Cloud API Consumers",
+          "label": "ClaimCenter Cloud API Consumer Guide",
           "id": "iscc202209apibf"
         },
         {
-          "label": "Cloud API Developers",
+          "label": "ClaimCenter Cloud API Developer Guide",
           "id": "iscc202209apica"
         },
         {
-          "label": "Cloud API for ContactManager",
+          "label": "ClaimCenter Cloud API Reference",
+          "id": "ccapirefflaine"
+        },
+        {
+          "label": "ContactManager Cloud API Consumer Guide",
           "id": "iscc202209apicm"
         },
         {
