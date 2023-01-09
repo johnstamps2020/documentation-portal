@@ -153,23 +153,23 @@
           "id": "is202209integoverview"
         },
         {
-          "label": "API Reference",
-          "id": "pcapirefflaine"
-        },
-        {
           "label": "App Events",
           "id": "appeventsdev"
         },
         {
-          "label": "Cloud API Consumers",
+          "label": "PolicyCenter Cloud API Consumer Guide",
           "id": "ispc202209apibf"
         },
         {
-          "label": "Cloud API Developers",
+          "label": "PolicyCenter Cloud API Developer Guide",
           "id": "ispc202209apica"
         },
         {
-          "label": "Cloud API for ContactManager",
+          "label": "PolicyCenter Cloud API Reference",
+          "id": "pcapirefflaine"
+        },
+        {
+          "label": "ContactManager Cloud API Consumer Guide",
           "id": "ispc202209apicm"
         },
         {

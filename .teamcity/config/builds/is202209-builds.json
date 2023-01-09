@@ -104,6 +104,22 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "CloudAPI-Developer.ditamap",
+      "srcId": "is202209src",
+      "docId": "isbc202209apica",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-ContactManager.ditamap",
+      "srcId": "is202209src",
+      "docId": "isbc202209apicm",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "RESTAPIFramework.ditamap",
       "srcId": "is202209src",
       "docId": "isbc202209restapifw",
