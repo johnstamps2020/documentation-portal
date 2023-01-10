@@ -1,0 +1,38 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "InsuranceSuite Package for Japan 1.0",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ipj10rn"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration Guide",
+          "id": "ipj10config"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "ipj10app"
+        }
+      ]
+    }
+  ]
+}
