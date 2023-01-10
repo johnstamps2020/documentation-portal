@@ -16,13 +16,37 @@
       "srcId": "ipjflainesrc",
       "docId": "ipjflaineconfig",
       "indexRedirect": true
-    }, 
+    },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "IPJApplicationGuide.ditamap",
       "srcId": "ipjflainesrc",
       "docId": "ipjflaineapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJReleaseNotes.ditamap",
+      "srcId": "ipj10src",
+      "docId": "ipj10rn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJConfigurationGuide.ditamap",
+      "srcId": "ipj10src",
+      "docId": "ipj10config",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJApplicationGuide.ditamap",
+      "srcId": "ipj10src",
+      "docId": "ipj10app",
       "indexRedirect": true
     }
   ]

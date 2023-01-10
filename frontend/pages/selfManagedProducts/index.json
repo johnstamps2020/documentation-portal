@@ -73,6 +73,10 @@
             {
               "label": "Japan",
               "page": "../globalContent/ipj/0.1"
+            },
+            {
+              "label": "Japan",
+              "page": "../globalContent/ipj/1.0"
             }
           ]
         }
