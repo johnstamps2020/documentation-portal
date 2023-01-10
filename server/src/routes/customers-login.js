@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const saml = require('passport-saml');
+const { openRequestedUrl } = require('../controllers/authController');
 
 router.use(cookieParser());
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -51,10 +52,7 @@ router.post(
   },
   passport.authenticate('customersSamlStrategy'),
   function(req, res) {
-
-    const redirectTo = req.session.redirectTo || '/';
-    delete req.session.redirectTo;
-    res.redirect(redirectTo);
+    return openRequestedUrl(req, res);
   }
 );
 

@@ -5,6 +5,7 @@ const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const { winstonLogger } = require('../controllers/loggerController');
+const { openRequestedUrl } = require('../controllers/authController');
 
 Issuer.discover(process.env.OKTA_DOMAIN)
   .then(oktaIssuer => {
@@ -60,9 +61,7 @@ Issuer.discover(process.env.OKTA_DOMAIN)
       },
       passport.authenticate('oidcStrategy'),
       function(req, res) {
-        const redirectTo = req.session.redirectTo || '/landing';
-        delete req.session.redirectTo;
-        res.redirect(redirectTo);
+        return openRequestedUrl(req, res);
       }
     );
   })

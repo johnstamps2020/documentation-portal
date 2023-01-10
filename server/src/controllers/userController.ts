@@ -5,8 +5,8 @@ import {
   internalMockUserData,
 } from './utils/mockUserData';
 
-const { winstonLogger } = require('./loggerController');
-const { isLoggedInOrHasValidToken } = require('./authController');
+import { winstonLogger } from './loggerController';
+import { isLoggedInOrHasValidToken } from './authController';
 
 function belongsToGuidewire(email: string) {
   try {

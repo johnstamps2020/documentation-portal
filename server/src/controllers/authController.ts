@@ -208,7 +208,7 @@ const majorInternalRoutes: string[] = [];
 //  We need to clean up the redirecting logic
 export function redirectToLoginPage(req: Request, res: Response) {
   try {
-    req.session!.redirectTo = req.url;
+    req.session!.redirectTo = req.originalUrl;
     if (req.query.authSource === 'guidewire-customer') {
       return res.redirect('/customers-login');
     }
@@ -226,7 +226,7 @@ export function redirectToLoginPage(req: Request, res: Response) {
 
 export function openRequestedUrl(req: Request, res: Response) {
   try {
-    let targetUrl = req.url;
+    let targetUrl = req.originalUrl;
     if (req.session!.redirectTo) {
       const redirectTo = req.session!.redirectTo;
       delete req.session!.redirectTo;
@@ -240,13 +240,13 @@ export function openRequestedUrl(req: Request, res: Response) {
         ''
       );
     }
-    if (targetUrl !== req.url) {
+    if (targetUrl !== req.originalUrl) {
       res.redirect(targetUrl);
     }
   } catch (err) {
     winstonLogger.error(
       `Problem opening requested page 
-          ERROR: ${JSON.stringify(err)}`
+          ERROR: ${err}`
     );
   }
 }
