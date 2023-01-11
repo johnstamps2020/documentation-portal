@@ -9,11 +9,11 @@
       "items": [
         {
           "label": "Cloud API 認証ガイド",
-          "link": "/l10n/ja-JP/cc/2022.09/CloudAPIGuide-Auth_ja-JP.pdf"
+          "id": "iscc202209jaJPcloudapica"
         },
         {
           "label": "Cloud API ビジネスフローとコンフィギュレーションガイド",
-          "link": "/l10n/ja-JP/cc/2022.09/CloudAPIGuide-BusinessFlows_ja-JP.pdf"
+          "id": "iscc202209jaJPcloudapibf"
         }
       ]
     },
