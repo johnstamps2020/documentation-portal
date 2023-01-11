@@ -51,6 +51,10 @@
         {
           "label": "London Market",
           "page": "../../globalContent/iplm/garmisch"
+        },
+        {
+          "label": "InsuranceSuite Package for the UK 1.1",
+          "page": "../../globalContent/ipuk/1.1"
         }
       ]
     }

@@ -1,0 +1,29 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "OICRelNotes.ditamap",
+      "srcId": "ipukgarmischsrc",
+      "docId": "ipukgarmischrn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "OICConfigGuide.ditamap",
+      "srcId": "ipukgarmischsrc",
+      "docId": "ipukgarmischconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "OICAppGuide.ditamap",
+      "srcId": "ipukgarmischsrc",
+      "docId": "ipukgarmischapp",
+      "indexRedirect": true
+    }
+  ]
+}
