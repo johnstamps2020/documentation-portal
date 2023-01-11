@@ -1,0 +1,31 @@
+{
+  "title": "ProducerEngage for ClaimCenter",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guida all'installazione",
+          "link": "/it-IT/pe-claims/2022.05/it-IT Digital v.2022.05 PE Claims InstallGuide.pdf"
+        },
+        {
+          "label": "Guida all'applicazione",
+          "link": "/it-IT/pe-claims/2022.05/it-IT Digital v.2022.05 PE Claims_AppGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "11.3",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guida all'installazione",
+          "link": "/it-IT/pe-claims/11.3/it-PE-Claims-onprem-11.3 InstallGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

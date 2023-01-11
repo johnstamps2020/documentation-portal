@@ -1,0 +1,29 @@
+{
+  "title": "ProducerEngage for ClaimCenter",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "11.4.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Administrator- und Sicherheitshandbuch",
+          "link": "/de-DE/pe-claims/11.4.1/de-DE-Digital v.11.4.1 PE Claims admin&security-guide.pdf"
+        },
+        {
+          "label": "Entwicklerhandbuch",
+          "link": "/de-DE/pe-claims/11.4.1/de-DE-Digital v.11.4.1 PE Claims Developers-guide.pdf"
+        },
+        {
+          "label": "Installationshandbuch",
+          "link": "/de-DE/pe-claims/11.4.1/de-DE-Digital v.11.4.1 PE Claims Installer-guide.pdf"
+        },
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/de-DE/pe-claims/11.4.1/de-DE-Digital v.11.4.1 PE Claims_AppGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

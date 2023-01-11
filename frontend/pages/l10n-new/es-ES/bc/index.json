@@ -1,0 +1,59 @@
+{
+  "title": "BillingCenter",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de la aplicación",
+          "link": "/es-ES/bc/2022.05/BC-AppGuide_es-ES.pdf"
+        },
+        {
+          "label": "Guía de configuración",
+          "link": "/es-ES/bc/2022.05/BC-ConfigGuide_es-ES.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2021.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de configuración y flujos de negocio de la API de la nube",
+          "link": "/es-ES/bc/2021.11/BC v.2021.11 es-ES CloudAPIGuide-BusinessFlows.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.1.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de configuración",
+          "link": "/es-ES/bc/10.1.1/BC1011_es-ES_ConfigGuide.pdf"
+        },
+        {
+          "label": "Guía de instalación",
+          "link": "/es-ES/bc/10.1.1/BC1011_es-ES_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.2",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de aplicaciones",
+          "link": "/es-ES/bc/10.0.2/esES-BC-AppGuide.pdf"
+        },
+        {
+          "label": "Guía de gestión de contactos de Guidewire",
+          "link": "/es-ES/bc/10.0.2/esES-BC-ContactMgmtGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

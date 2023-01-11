@@ -1,0 +1,49 @@
+{
+  "title": "VendorEngage",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "インストールガイド",
+          "link": "/ja-JP/ve/2022.05/ja-JP-2022.05-ve_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "11.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "インストールガイド",
+          "link": "/ja-JP/ve/11.1/ja-VE-onprem-InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "管理およびセキュリティガイド",
+          "link": "/ja-JP/ve/10.0.1/ja-VE_Admin and Security Guide.pdf"
+        },
+        {
+          "label": "アプリケーションガイド",
+          "link": "/ja-JP/ve/10.0.1/ja-VE_AppGuide.pdf"
+        },
+        {
+          "label": "インストールガイド",
+          "link": "/ja-JP/ve/10.0.1/ja-VE_InstallGuide.pdf"
+        },
+        {
+          "label": "ライブスタイルガイド：インストールおよびコンフィギュレーションガイド",
+          "link": "/ja-JP/ve/10.0.1/ja-VE_Live Style Guide Install and Config.pdf"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "title": "CustomerEngage Account Management",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "11.4.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de l'application",
+          "link": "/fr-FR/ce-am/11.4.1/fr-FR Digital v.11.4.1 CE-AM AppGuide.pdf"
+        },
+        {
+          "label": "Guide d'installation",
+          "link": "/fr-FR/ce-am/11.4.1/fr-FR Digital v.11.4.1 CE-AM InstallGuide.pdf"
+        },
+        {
+          "label": "Guide d'administration et de sécurité",
+          "link": "/fr-FR/ce-am/11.4.1/fr-FR-Digital v.11.4.1 CE-AM admin&security-guide.pdf"
+        },
+        {
+          "label": "Guide du développeur",
+          "link": "/fr-FR/ce-am/11.4.1/fr-FR-Digital v.11.4.1 CE-AM DevelopersGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "11.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide d'installation",
+          "link": "/fr-FR/ce-am/11.1/fr-CE_AM-onprem_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide d'administration et de sécurité",
+          "link": "/fr-FR/ce-am/10.0.1/fr-CE_AM_admin-and-security-guide.pdf"
+        },
+        {
+          "label": "Guide de configuration",
+          "link": "/fr-FR/ce-am/10.0.1/fr-CE_AM_ConfigurationGuide.pdf"
+        },
+        {
+          "label": "Guide d'installation",
+          "link": "/fr-FR/ce-am/10.0.1/fr-CE_AM_InstallGuide.pdf"
+        },
+        {
+          "label": "Guide d'installation et de configuration Live Style Guide",
+          "link": "/fr-FR/ce-am/10.0.1/fr-CE_AM_Life_Style_Guide Install and Config.pdf"
+        },
+        {
+          "label": "Guide des applications",
+          "link": "/fr-FR/ce-am/10.0.1/fr-CE_AM__AppGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "title": "VendorEngage",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "11.4.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de l'application",
+          "link": "/fr-FR/ve/11.4.1/fr-FR Digital v.11.4.1 VE AppGuide.pdf"
+        },
+        {
+          "label": "Guide d'administration et de sécurité",
+          "link": "/fr-FR/ve/11.4.1/fr-FR-Digital v.11.4.1 VE admin&security-guide.pdf"
+        },
+        {
+          "label": "Guide d'installation",
+          "link": "/fr-FR/ve/11.4.1/fr-FR-Digital v.11.4.1 VE InstallGuide.pdf"
+        },
+        {
+          "label": "Guide du développeur",
+          "link": "/fr-FR/ve/11.4.1/fr-FR-Digital v.11.4.1 VE-DevelopersGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "11.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide d'installation",
+          "link": "/fr-FR/ve/11.1/fr-VE-11.1_onprem_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide d'administration et de sécurité",
+          "link": "/fr-FR/ve/10.0.1/fr-VE_admin-and-security-guide.pdf"
+        },
+        {
+          "label": "Guide des applications",
+          "link": "/fr-FR/ve/10.0.1/fr-VE_AppGuide.pdf"
+        },
+        {
+          "label": "Guide d'installation",
+          "link": "/fr-FR/ve/10.0.1/fr-VE_InstallGuide_fr.pdf"
+        },
+        {
+          "label": "Guide d'installation et de configuration Live Style Guide",
+          "link": "/fr-FR/ve/10.0.1/fr-VE_Life Style Guide Install and Config.pdf"
+        }
+      ]
+    }
+  ]
+}

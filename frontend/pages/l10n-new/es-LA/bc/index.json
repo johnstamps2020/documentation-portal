@@ -1,0 +1,99 @@
+{
+  "title": "BillingCenter",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2021.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de aplicaciones",
+          "link": "/es-LA/bc/2021.11/BC-AppGuide-ESLA.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de configuración",
+          "link": "/es-LA/bc/2020.11/BCCloud202011_es-419_ConfigGuide.pdf"
+        },
+        {
+          "label": "Guía de instalación",
+          "link": "/es-LA/bc/2020.11/BCCloud202011_es-419_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de aplicaciones",
+          "link": "/es-LA/bc/2020.05/ISCL_202005_ESLA_BC-AppGuide.pdf"
+        },
+        {
+          "label": "Guía de administración de contactos de Guidewire",
+          "link": "/es-LA/bc/2020.05/ISCL_202005_ESLA_BC_ContactMgmtGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.1.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de aplicaciones",
+          "link": "/es-LA/bc/10.1.1/BC1011_es-419_AppGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.2",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de aplicaciones",
+          "link": "/es-LA/bc/10.0.2/es-BC-AppGuide.pdf"
+        },
+        {
+          "label": "Guía de configuración",
+          "link": "/es-LA/bc/10.0.2/es-BC-ConfigGuide.pdf"
+        },
+        {
+          "label": "Guía de reglas",
+          "link": "/es-LA/bc/10.0.2/es-BC-RulesGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de aplicaciones",
+          "link": "/es-LA/bc/10.0.0/es-BC-AppGuide.pdf"
+        },
+        {
+          "label": "Guía de configuración",
+          "link": "/es-LA/bc/10.0.0/es-BC-ConfigGuide.pdf"
+        },
+        {
+          "label": "Guía de administración de contactos",
+          "link": "/es-LA/bc/10.0.0/es-BC-ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "Guía de instalación",
+          "link": "/es-LA/bc/10.0.0/es-BC-InstallGuide.pdf"
+        },
+        {
+          "label": "Guía de reglas",
+          "link": "/es-LA/bc/10.0.0/es-BC-RulesGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

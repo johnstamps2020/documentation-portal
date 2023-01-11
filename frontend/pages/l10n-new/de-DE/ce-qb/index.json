@@ -1,0 +1,65 @@
+{
+  "title": "CustomerEngage Quote and Buy",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "11.4.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Administrator- und Sicherheitshandbuch",
+          "link": "/de-DE/ce-qb/11.4.1/de-DE-Digital v.11.4.1 CE-QB admin&security-guide.pdf"
+        },
+        {
+          "label": "Entwicklerhandbuch",
+          "link": "/de-DE/ce-qb/11.4.1/de-DE-Digital v.11.4.1 CE-QB Developers-guide.pdf"
+        },
+        {
+          "label": "Installationshandbuch",
+          "link": "/de-DE/ce-qb/11.4.1/de-DE-Digital v.11.4.1 CE-QB Installer-guide.pdf"
+        },
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/de-DE/ce-qb/11.4.1/de-DE-Digital v.11.4.1 CE-QB_AppGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "11.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Installationshandbuch",
+          "link": "/de-DE/ce-qb/11.1/de-CE_QB-onprem_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Administrator- und Sicherheitshandbuch",
+          "link": "/de-DE/ce-qb/10.0.1/de-CEQB_admin-and-security-guide.pdf"
+        },
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/de-DE/ce-qb/10.0.1/de-CEQB_AppGuide_guide.pdf"
+        },
+        {
+          "label": "Konfigurationshandbuch",
+          "link": "/de-DE/ce-qb/10.0.1/de-CEQB_ConfigurationGuide.pdf"
+        },
+        {
+          "label": "Installationshandbuch",
+          "link": "/de-DE/ce-qb/10.0.1/de-CEQB_InstallGuide.pdf"
+        },
+        {
+          "label": "Live Style Guide Installation and Configuration Guide",
+          "link": "/de-DE/ce-qb/10.0.1/de-CEQB_Life Style Guide Install and Config.pdf"
+        }
+      ]
+    }
+  ]
+}

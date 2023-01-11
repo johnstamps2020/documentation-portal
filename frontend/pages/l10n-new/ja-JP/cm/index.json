@@ -1,0 +1,17 @@
+{
+  "title": "IS Contact Manager",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guidewire 連絡先管理ガイド",
+          "link": "/ja-JP/cm/2022.05/ja-JP-2022.05-IS-ContactMgmtGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

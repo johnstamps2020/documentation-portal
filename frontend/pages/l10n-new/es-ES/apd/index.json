@@ -1,0 +1,17 @@
+{
+  "title": "Advanced Product Designer",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de Advanced Product Designer para PolicyCenter",
+          "link": "/es-ES/apd/2022.05/AdvancedProductDesigner_es-ES.pdf"
+        }
+      ]
+    }
+  ]
+}

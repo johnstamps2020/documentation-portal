@@ -1,0 +1,203 @@
+{
+  "title": "ClaimCenter",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.09",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud API 認証ガイド",
+          "link": "/ja-JP/cc/2022.09/CloudAPIGuide-Auth_ja-JP.pdf"
+        },
+        {
+          "label": "Cloud API ビジネスフローとコンフィギュレーションガイド",
+          "link": "/ja-JP/cc/2022.09/CloudAPIGuide-BusinessFlows_ja-JP.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "開発者設定ガイド",
+          "link": "/ja-JP/cc/2022.05/DeveloperSetupGuide.pdf"
+        },
+        {
+          "label": "Cloud 連携の概要",
+          "link": "/ja-JP/cc/2022.05/ja-JP-2022.05-OverviewCloudIntegration.pdf"
+        },
+        {
+          "label": "アプリケーションガイド",
+          "link": "/ja-JP/cc/2022.05/ja-JP-CC-2022.05-AppGuide.pdf"
+        },
+        {
+          "label": "コンフィギュレーションガイド",
+          "link": "/ja-JP/cc/2022.05/ja-JP-CC-2022.05-ConfigGuide.pdf"
+        },
+        {
+          "label": "開発者設定ガイド",
+          "link": "/ja-JP/cc/2022.05/ja-JP-CC-2022.05-DeveloperSetupGuide.pdf"
+        },
+        {
+          "label": "Gosu リファレンスガイド",
+          "link": "/ja-JP/cc/2022.05/ja-JP-CC-2022.05-GosuRefGuide-JA-Final.pdf"
+        },
+        {
+          "label": "Gosu ルール",
+          "link": "/ja-JP/cc/2022.05/ja-JP-CC-2022.05-GosuRules.pdf"
+        },
+        {
+          "label": "Cloud 連携の概要",
+          "link": "/ja-JP/cc/2022.05/ja-JP-CC-2022.05-OverviewCloudIntegration.pdf"
+        },
+        {
+          "label": "用語集",
+          "link": "/ja-JP/cc/2022.05/ja-JP-Glossary.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2021.04",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Gosu リファレンスガイド",
+          "link": "/ja-JP/cc/2021.04/CC_CL202104_ja-JP_GosuRefGuide.pdf"
+        },
+        {
+          "label": "ルールガイド",
+          "link": "/ja-JP/cc/2021.04/CC_CL202104_ja-JP_RulesGuide.pdf"
+        },
+        {
+          "label": "テストガイド",
+          "link": "/ja-JP/cc/2021.04/CC_CL202104_ja-JP_TestingGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "コンフィギュレーションガイド",
+          "link": "/ja-JP/cc/2020.11/CCCloud202011_ja-JP_ConfigGuide.pdf"
+        },
+        {
+          "label": "インストールガイド",
+          "link": "/ja-JP/cc/2020.11/CCCloud202011_ja-JP_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "アプリケーションガイド",
+          "link": "/ja-JP/cc/2020.05/IS_CL202005-CC-AppGuide-ja_JP.pdf"
+        },
+        {
+          "label": "Guidewire 連絡先管理ガイド",
+          "link": "/ja-JP/cc/2020.05/IS_CL202005-CC-ContactMgmtGuide-ja_JP.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.1.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "インストールガイド",
+          "link": "/ja-JP/cc/10.1.1/CC1011_ja-JP_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.2",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "システム管理ガイド",
+          "link": "/ja-JP/cc/10.0.2/ja-CC-AdminGuide.pdf"
+        },
+        {
+          "label": "アプリケーションガイド",
+          "link": "/ja-JP/cc/10.0.2/ja-CC-AppGuide.pdf"
+        },
+        {
+          "label": "ベストプラクティスガイド",
+          "link": "/ja-JP/cc/10.0.2/ja-CC-BestPracticesGuide.pdf"
+        },
+        {
+          "label": "コンフィギュレーションガイド",
+          "link": "/ja-JP/cc/10.0.2/ja-CC-ConfigGuide.pdf"
+        },
+        {
+          "label": "Guidewire 連絡先管理ガイド",
+          "link": "/ja-JP/cc/10.0.2/ja-CC-ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "Gosu リファレンスガイド",
+          "link": "/ja-JP/cc/10.0.2/ja-CC-GosuRefGuide.pdf"
+        },
+        {
+          "label": "インストールガイド",
+          "link": "/ja-JP/cc/10.0.2/ja-CC-InstallGuide.pdf"
+        },
+        {
+          "label": "連携ガイド",
+          "link": "/ja-JP/cc/10.0.2/ja-CC-IntegrationGuide.pdf"
+        },
+        {
+          "label": "ルールガイド",
+          "link": "/ja-JP/cc/10.0.2/ja-CC-RulesGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "システム管理ガイド",
+          "link": "/ja-JP/cc/10.0.0/ja-CC-AdminGuide.pdf"
+        },
+        {
+          "label": "アプリケーションガイド",
+          "link": "/ja-JP/cc/10.0.0/ja-CC-AppGuide.pdf"
+        },
+        {
+          "label": "ベストプラクティスガイド",
+          "link": "/ja-JP/cc/10.0.0/ja-CC-BestPracticesGuide.pdf"
+        },
+        {
+          "label": "コンフィギュレーションガイド",
+          "link": "/ja-JP/cc/10.0.0/ja-CC-ConfigGuide.pdf"
+        },
+        {
+          "label": "連絡先管理ガイド",
+          "link": "/ja-JP/cc/10.0.0/ja-CC-ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "Gosu リファレンスガイド",
+          "link": "/ja-JP/cc/10.0.0/ja-CC-GosuRefGuide.pdf"
+        },
+        {
+          "label": "インストールガイド",
+          "link": "/ja-JP/cc/10.0.0/ja-CC-InstallGuide.pdf"
+        },
+        {
+          "label": "連携ガイド",
+          "link": "/ja-JP/cc/10.0.0/ja-CC-IntegrationGuide.pdf"
+        },
+        {
+          "label": "ルールガイド",
+          "link": "/ja-JP/cc/10.0.0/ja-CC-RulesGuide.pdf"
+        }
+      ]
+    }
+  ]
+}
