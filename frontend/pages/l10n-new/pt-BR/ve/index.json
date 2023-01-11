@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "Guia de instalação",
-          "link": "/pt-BR/ve/11.1/pt-VE-onprem-InstallGuide.pdf"
+          "link": "/l10n/pt-BR/ve/11.1/pt-VE-onprem-InstallGuide.pdf"
         }
       ]
     },
@@ -19,19 +19,19 @@
       "items": [
         {
           "label": "Guia de administração e segurança",
-          "link": "/pt-BR/ve/10.0.1/pt-VE_Admin and Security Guide.pdf"
+          "link": "/l10n/pt-BR/ve/10.0.1/pt-VE_Admin and Security Guide.pdf"
         },
         {
           "label": "Guia do aplicativo",
-          "link": "/pt-BR/ve/10.0.1/pt-VE_AppGuide.pdf"
+          "link": "/l10n/pt-BR/ve/10.0.1/pt-VE_AppGuide.pdf"
         },
         {
           "label": "Guia de instalação",
-          "link": "/pt-BR/ve/10.0.1/pt-VE_InstallGuide.pdf"
+          "link": "/l10n/pt-BR/ve/10.0.1/pt-VE_InstallGuide.pdf"
         },
         {
           "label": "Guia de instalação e configuração do Live Style Guide",
-          "link": "/pt-BR/ve/10.0.1/pt-VE_Live Style Guide Installand Config.pdf"
+          "link": "/l10n/pt-BR/ve/10.0.1/pt-VE_Live Style Guide Installand Config.pdf"
         }
       ]
     }

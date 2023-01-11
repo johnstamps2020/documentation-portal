@@ -9,23 +9,23 @@
       "items": [
         {
           "label": "Guía de administración",
-          "link": "/es-LA/dh/10.0.0/DH10-admin-es.pdf"
+          "link": "/l10n/es-LA/dh/10.0.0/DH10-admin-es.pdf"
         },
         {
           "label": "Guía de configuración de DataHub",
-          "link": "/es-LA/dh/10.0.0/DH10-config-es.pdf"
+          "link": "/l10n/es-LA/dh/10.0.0/DH10-config-es.pdf"
         },
         {
           "label": "Guía de Data Specifications",
-          "link": "/es-LA/dh/10.0.0/DH10-dataspec-es.pdf"
+          "link": "/l10n/es-LA/dh/10.0.0/DH10-dataspec-es.pdf"
         },
         {
           "label": "Guía de instalación",
-          "link": "/es-LA/dh/10.0.0/DH10-install-es.pdf"
+          "link": "/l10n/es-LA/dh/10.0.0/DH10-install-es.pdf"
         },
         {
           "label": "Guía del producto",
-          "link": "/es-LA/dh/10.0.0/DH10-product-es.pdf"
+          "link": "/l10n/es-LA/dh/10.0.0/DH10-product-es.pdf"
         }
       ]
     }

@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "Guia do aplicativo",
-          "link": "/pt-BR/pc/2021.11/PC-AppGuide_pt-BR.pdf"
+          "link": "/l10n/pt-BR/pc/2021.11/PC-AppGuide_pt-BR.pdf"
         }
       ]
     },
@@ -19,15 +19,15 @@
       "items": [
         {
           "label": "Guia do Advanced Product Designer",
-          "link": "/pt-BR/pc/2020.11/Cloud202011_pt-BR_AdvancedProductDesigner.pdf"
+          "link": "/l10n/pt-BR/pc/2020.11/Cloud202011_pt-BR_AdvancedProductDesigner.pdf"
         },
         {
           "label": "Guia de configuração",
-          "link": "/pt-BR/pc/2020.11/PCCloud202011_pt-BR_ConfigGuide.pdf"
+          "link": "/l10n/pt-BR/pc/2020.11/PCCloud202011_pt-BR_ConfigGuide.pdf"
         },
         {
           "label": "Guia de instalação",
-          "link": "/pt-BR/pc/2020.11/PCCloud202011_pt-BR_InstallGuide.pdf"
+          "link": "/l10n/pt-BR/pc/2020.11/PCCloud202011_pt-BR_InstallGuide.pdf"
         }
       ]
     },
@@ -37,7 +37,7 @@
       "items": [
         {
           "label": "Guia do aplicativo",
-          "link": "/pt-BR/pc/2020.05/IS_CL_202005_pt-BR_PC-AppGuide.pdf"
+          "link": "/l10n/pt-BR/pc/2020.05/IS_CL_202005_pt-BR_PC-AppGuide.pdf"
         }
       ]
     },
@@ -47,15 +47,15 @@
       "items": [
         {
           "label": "Guia do Advanced Product Designer",
-          "link": "/pt-BR/pc/10.1.1/AdvancedProductDesigner_PTBR.pdf"
+          "link": "/l10n/pt-BR/pc/10.1.1/AdvancedProductDesigner_PTBR.pdf"
         },
         {
           "label": "Guia do aplicativo",
-          "link": "/pt-BR/pc/10.1.1/PC-AppGuide_PTBR.pdf"
+          "link": "/l10n/pt-BR/pc/10.1.1/PC-AppGuide_PTBR.pdf"
         },
         {
           "label": "Guia de gerenciamento de contatos da Guidewire",
-          "link": "/pt-BR/pc/10.1.1/PC-ContactMgmtGuide_PTBR.pdf"
+          "link": "/l10n/pt-BR/pc/10.1.1/PC-ContactMgmtGuide_PTBR.pdf"
         }
       ]
     },
@@ -65,15 +65,15 @@
       "items": [
         {
           "label": "Guia do aplicativo",
-          "link": "/pt-BR/pc/10.0.2/pt-PC-AppGuide.pdf"
+          "link": "/l10n/pt-BR/pc/10.0.2/pt-PC-AppGuide.pdf"
         },
         {
           "label": "Guia de configuração",
-          "link": "/pt-BR/pc/10.0.2/pt-PC-ConfigGuide.pdf"
+          "link": "/l10n/pt-BR/pc/10.0.2/pt-PC-ConfigGuide.pdf"
         },
         {
           "label": "Guia de regras",
-          "link": "/pt-BR/pc/10.0.2/pt-PC-RulesGuide.pdf"
+          "link": "/l10n/pt-BR/pc/10.0.2/pt-PC-RulesGuide.pdf"
         }
       ]
     },
@@ -83,23 +83,23 @@
       "items": [
         {
           "label": "Guia do aplicativo",
-          "link": "/pt-BR/pc/10.0.0/pt-PC-AppGuide.pdf"
+          "link": "/l10n/pt-BR/pc/10.0.0/pt-PC-AppGuide.pdf"
         },
         {
           "label": "Guia de configuração",
-          "link": "/pt-BR/pc/10.0.0/pt-PC-ConfigGuide.pdf"
+          "link": "/l10n/pt-BR/pc/10.0.0/pt-PC-ConfigGuide.pdf"
         },
         {
           "label": "Guia de gerenciamento de contatos",
-          "link": "/pt-BR/pc/10.0.0/pt-PC-ContactMgmtGuide.pdf"
+          "link": "/l10n/pt-BR/pc/10.0.0/pt-PC-ContactMgmtGuide.pdf"
         },
         {
           "label": "Guia de instalação",
-          "link": "/pt-BR/pc/10.0.0/pt-PC-InstallGuide.pdf"
+          "link": "/l10n/pt-BR/pc/10.0.0/pt-PC-InstallGuide.pdf"
         },
         {
           "label": "Guia de regras",
-          "link": "/pt-BR/pc/10.0.0/pt-PC-RulesGuide.pdf"
+          "link": "/l10n/pt-BR/pc/10.0.0/pt-PC-RulesGuide.pdf"
         }
       ]
     }

@@ -9,19 +9,19 @@
       "items": [
         {
           "label": "Administrator- und Sicherheitshandbuch",
-          "link": "/de-DE/sre/11.4.1/de-DE-Digital v.11.4.1 SRE admin&security-guide.pdf"
+          "link": "/l10n/de-DE/sre/11.4.1/de-DE-Digital v.11.4.1 SRE admin&security-guide.pdf"
         },
         {
           "label": "Entwicklerhandbuch",
-          "link": "/de-DE/sre/11.4.1/de-DE-Digital v.11.4.1 SRE Developers-guide.pdf"
+          "link": "/l10n/de-DE/sre/11.4.1/de-DE-Digital v.11.4.1 SRE Developers-guide.pdf"
         },
         {
           "label": "Installationshandbuch",
-          "link": "/de-DE/sre/11.4.1/de-DE-Digital v.11.4.1 SRE Installer-guide.pdf"
+          "link": "/l10n/de-DE/sre/11.4.1/de-DE-Digital v.11.4.1 SRE Installer-guide.pdf"
         },
         {
           "label": "Anwendungshandbuch",
-          "link": "/de-DE/sre/11.4.1/de-DE-Digital v.11.4.1 SRE_AppGuide.pdf"
+          "link": "/l10n/de-DE/sre/11.4.1/de-DE-Digital v.11.4.1 SRE_AppGuide.pdf"
         }
       ]
     },
@@ -31,7 +31,7 @@
       "items": [
         {
           "label": "Installationshandbuch",
-          "link": "/de-DE/sre/11.1/de-SRE-onprem_InstallGuide.pdf"
+          "link": "/l10n/de-DE/sre/11.1/de-SRE-onprem_InstallGuide.pdf"
         }
       ]
     },
@@ -41,23 +41,23 @@
       "items": [
         {
           "label": "Administrator- und Sicherheitshandbuch",
-          "link": "/de-DE/sre/10.0.1/de-SRE_admin-and-security-guide.pdf"
+          "link": "/l10n/de-DE/sre/10.0.1/de-SRE_admin-and-security-guide.pdf"
         },
         {
           "label": "Anwendungshandbuch",
-          "link": "/de-DE/sre/10.0.1/de-SRE_AppGuide.pdf"
+          "link": "/l10n/de-DE/sre/10.0.1/de-SRE_AppGuide.pdf"
         },
         {
           "label": "Konfigurationshandbuch",
-          "link": "/de-DE/sre/10.0.1/de-SRE_ConfigurationGuide.pdf"
+          "link": "/l10n/de-DE/sre/10.0.1/de-SRE_ConfigurationGuide.pdf"
         },
         {
           "label": "Installationshandbuch",
-          "link": "/de-DE/sre/10.0.1/de-SRE_InstallGuide.pdf"
+          "link": "/l10n/de-DE/sre/10.0.1/de-SRE_InstallGuide.pdf"
         },
         {
           "label": "Live Style Guide Installation and Configuration Guide",
-          "link": "/de-DE/sre/10.0.1/de-SRE_Life Style Guide Install and Config.pdf"
+          "link": "/l10n/de-DE/sre/10.0.1/de-SRE_Life Style Guide Install and Config.pdf"
         }
       ]
     }

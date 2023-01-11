@@ -9,19 +9,19 @@
       "items": [
         {
           "label": "Guide de l'application",
-          "link": "/fr-FR/ce-qb/11.4.1/fr-FR Digital v.11.4.1 CE-QB AppGuide.pdf"
+          "link": "/l10n/fr-FR/ce-qb/11.4.1/fr-FR Digital v.11.4.1 CE-QB AppGuide.pdf"
         },
         {
           "label": "Guide d'administration et de sécurité",
-          "link": "/fr-FR/ce-qb/11.4.1/fr-FR-Digital v.11.4.1 CE-QB admin&security-guide.pdf"
+          "link": "/l10n/fr-FR/ce-qb/11.4.1/fr-FR-Digital v.11.4.1 CE-QB admin&security-guide.pdf"
         },
         {
           "label": "Guide du développeur",
-          "link": "/fr-FR/ce-qb/11.4.1/fr-FR-Digital v.11.4.1 CE-QB Developers Guide.pdf"
+          "link": "/l10n/fr-FR/ce-qb/11.4.1/fr-FR-Digital v.11.4.1 CE-QB Developers Guide.pdf"
         },
         {
           "label": "Guide d'installation",
-          "link": "/fr-FR/ce-qb/11.4.1/fr-FR-Digital v.11.4.1 CE-QB InstallGuide.pdf"
+          "link": "/l10n/fr-FR/ce-qb/11.4.1/fr-FR-Digital v.11.4.1 CE-QB InstallGuide.pdf"
         }
       ]
     },
@@ -31,7 +31,7 @@
       "items": [
         {
           "label": "Guide d'installation",
-          "link": "/fr-FR/ce-qb/11.1/fr-CE_QB-onprem_InstallGuide.pdf"
+          "link": "/l10n/fr-FR/ce-qb/11.1/fr-CE_QB-onprem_InstallGuide.pdf"
         }
       ]
     },
@@ -41,23 +41,23 @@
       "items": [
         {
           "label": "Guide de configuration",
-          "link": "/fr-FR/ce-qb/10.0.1/fr-CE_QA_ConfigurationGuide.pdf"
+          "link": "/l10n/fr-FR/ce-qb/10.0.1/fr-CE_QA_ConfigurationGuide.pdf"
         },
         {
           "label": "Guide d'administration et de sécurité",
-          "link": "/fr-FR/ce-qb/10.0.1/fr-CE_QB_admin-and-security-guide.pdf"
+          "link": "/l10n/fr-FR/ce-qb/10.0.1/fr-CE_QB_admin-and-security-guide.pdf"
         },
         {
           "label": "Guide des applications",
-          "link": "/fr-FR/ce-qb/10.0.1/fr-CE_QB_AppGuide.pdf"
+          "link": "/l10n/fr-FR/ce-qb/10.0.1/fr-CE_QB_AppGuide.pdf"
         },
         {
           "label": "Guide d'installation",
-          "link": "/fr-FR/ce-qb/10.0.1/fr-CE_QB_InstallGuide.pdf"
+          "link": "/l10n/fr-FR/ce-qb/10.0.1/fr-CE_QB_InstallGuide.pdf"
         },
         {
           "label": "Guide d'installation et de configuration Live Style Guide",
-          "link": "/fr-FR/ce-qb/10.0.1/fr-CE_QB_Life Style Guide Install and Config.pdf"
+          "link": "/l10n/fr-FR/ce-qb/10.0.1/fr-CE_QB_Life Style Guide Install and Config.pdf"
         }
       ]
     }

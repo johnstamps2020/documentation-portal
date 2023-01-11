@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "Guía de la aplicación",
-          "link": "/es-ES/ve/2022.05/es-ES v.2022.05 VE_AppGuide.pdf"
+          "link": "/l10n/es-ES/ve/2022.05/es-ES v.2022.05 VE_AppGuide.pdf"
         }
       ]
     },
@@ -19,7 +19,7 @@
       "items": [
         {
           "label": "Guía de instalación",
-          "link": "/es-ES/ve/11.1/es-ES-VE-onprem-InstallGuide.pdf"
+          "link": "/l10n/es-ES/ve/11.1/es-ES-VE-onprem-InstallGuide.pdf"
         }
       ]
     },
@@ -29,11 +29,11 @@
       "items": [
         {
           "label": "Guía de la aplicación",
-          "link": "/es-ES/ve/10.0.1/es-ES_VE_AppGuide.pdf"
+          "link": "/l10n/es-ES/ve/10.0.1/es-ES_VE_AppGuide.pdf"
         },
         {
           "label": "Guía de instalación",
-          "link": "/es-ES/ve/10.0.1/es-ES_VE_InstallGuide.pdf"
+          "link": "/l10n/es-ES/ve/10.0.1/es-ES_VE_InstallGuide.pdf"
         }
       ]
     }

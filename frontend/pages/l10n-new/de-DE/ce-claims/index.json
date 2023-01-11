@@ -9,19 +9,19 @@
       "items": [
         {
           "label": "Administrator- und Sicherheitshandbuch",
-          "link": "/de-DE/ce-claims/11.4.1/de-DE-Digital v.11.4.1 CE-AM Claims admin&security-guide.pdf"
+          "link": "/l10n/de-DE/ce-claims/11.4.1/de-DE-Digital v.11.4.1 CE-AM Claims admin&security-guide.pdf"
         },
         {
           "label": "Entwicklerhandbuch",
-          "link": "/de-DE/ce-claims/11.4.1/de-DE-Digital v.11.4.1 CE-AM Claims Developers-guide.pdf"
+          "link": "/l10n/de-DE/ce-claims/11.4.1/de-DE-Digital v.11.4.1 CE-AM Claims Developers-guide.pdf"
         },
         {
           "label": "Installationshandbuch",
-          "link": "/de-DE/ce-claims/11.4.1/de-DE-Digital v.11.4.1 CE-AM Claims Installer-guide.pdf"
+          "link": "/l10n/de-DE/ce-claims/11.4.1/de-DE-Digital v.11.4.1 CE-AM Claims Installer-guide.pdf"
         },
         {
           "label": "Anwendungshandbuch",
-          "link": "/de-DE/ce-claims/11.4.1/de-DE-Digital v.11.4.1 CE-AM Claims_AppGuide.pdf"
+          "link": "/l10n/de-DE/ce-claims/11.4.1/de-DE-Digital v.11.4.1 CE-AM Claims_AppGuide.pdf"
         }
       ]
     }

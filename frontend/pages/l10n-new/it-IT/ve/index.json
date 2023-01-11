@@ -9,11 +9,11 @@
       "items": [
         {
           "label": "Guida all'applicazione",
-          "link": "/it-IT/ve/2022.05/it-IT Digital ..2022.05 VE_AppGuide.pdf"
+          "link": "/l10n/it-IT/ve/2022.05/it-IT Digital ..2022.05 VE_AppGuide.pdf"
         },
         {
           "label": "Guida all'installazione",
-          "link": "/it-IT/ve/2022.05/it-IT Digital v.2022.05 VE InstallGuide.pdf"
+          "link": "/l10n/it-IT/ve/2022.05/it-IT Digital v.2022.05 VE InstallGuide.pdf"
         }
       ]
     },
@@ -23,7 +23,7 @@
       "items": [
         {
           "label": "Guida all'installazione",
-          "link": "/it-IT/ve/11.3/it-VE-IT -11.3-onprem InstallGuide.pdf"
+          "link": "/l10n/it-IT/ve/11.3/it-VE-IT -11.3-onprem InstallGuide.pdf"
         }
       ]
     },
@@ -33,7 +33,7 @@
       "items": [
         {
           "label": "Guida all'applicazione",
-          "link": "/it-IT/ve/10.0.1/it-VE_AppGuide.pdf"
+          "link": "/l10n/it-IT/ve/10.0.1/it-VE_AppGuide.pdf"
         }
       ]
     }

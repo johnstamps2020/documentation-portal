@@ -9,15 +9,15 @@
       "items": [
         {
           "label": "Anwendungshandbuch",
-          "link": "/de-DE/cc/2022.05/CC-AppGuide-DE.pdf"
+          "link": "/l10n/de-DE/cc/2022.05/CC-AppGuide-DE.pdf"
         },
         {
           "label": "Konfigurationshandbuch",
-          "link": "/de-DE/cc/2022.05/CC-ConfigGuide-DE.pdf"
+          "link": "/l10n/de-DE/cc/2022.05/CC-ConfigGuide-DE.pdf"
         },
         {
           "label": "Guidewire-Kontaktmanagementhandbuch",
-          "link": "/de-DE/cc/2022.05/ContactMgmtGuide-DE.pdf"
+          "link": "/l10n/de-DE/cc/2022.05/ContactMgmtGuide-DE.pdf"
         }
       ]
     },
@@ -27,11 +27,11 @@
       "items": [
         {
           "label": "Cloud-API-Geschäftsabläufe- und Konfigurationshandbuch",
-          "link": "/de-DE/cc/2021.11/CC v.2021.11  de-DE CloudAPIGuide-BusinessFlows.pdf"
+          "link": "/l10n/de-DE/cc/2021.11/CC v.2021.11  de-DE CloudAPIGuide-BusinessFlows.pdf"
         },
         {
           "label": "Cloud-API-Authentifizierungshandbuch",
-          "link": "/de-DE/cc/2021.11/CC v.2021.11 de-DE CloudAPIGuide-Auth.pdf"
+          "link": "/l10n/de-DE/cc/2021.11/CC v.2021.11 de-DE CloudAPIGuide-Auth.pdf"
         }
       ]
     },
@@ -41,11 +41,11 @@
       "items": [
         {
           "label": "Anwendungshandbuch",
-          "link": "/de-DE/cc/2020.05/ISCL_202005_de_CC-AppGuide.pdf"
+          "link": "/l10n/de-DE/cc/2020.05/ISCL_202005_de_CC-AppGuide.pdf"
         },
         {
           "label": "Guidewire-Kontaktmanagementhandbuch",
-          "link": "/de-DE/cc/2020.05/ISCL_202005_de_CC_ContactMgmtGuide.pdf"
+          "link": "/l10n/de-DE/cc/2020.05/ISCL_202005_de_CC_ContactMgmtGuide.pdf"
         }
       ]
     },
@@ -55,11 +55,11 @@
       "items": [
         {
           "label": "Anwendungshandbuch",
-          "link": "/de-DE/cc/10.1.1/CC1011_de-DE_AppGuide.pdf"
+          "link": "/l10n/de-DE/cc/10.1.1/CC1011_de-DE_AppGuide.pdf"
         },
         {
           "label": "Guidewire-Kontaktmanagementhandbuch",
-          "link": "/de-DE/cc/10.1.1/CC1011_de-DE_ContactMgmtGuide.pdf"
+          "link": "/l10n/de-DE/cc/10.1.1/CC1011_de-DE_ContactMgmtGuide.pdf"
         }
       ]
     },
@@ -69,15 +69,15 @@
       "items": [
         {
           "label": "Anwendungshandbuch",
-          "link": "/de-DE/cc/10.0.2/de-CC-AppGuide.pdf"
+          "link": "/l10n/de-DE/cc/10.0.2/de-CC-AppGuide.pdf"
         },
         {
           "label": "Guidewire-Kontaktmanagementhandbuch",
-          "link": "/de-DE/cc/10.0.2/de-CC-ContactMgmtGuide.pdf"
+          "link": "/l10n/de-DE/cc/10.0.2/de-CC-ContactMgmtGuide.pdf"
         },
         {
           "label": "Regelhandbuch",
-          "link": "/de-DE/cc/10.0.2/de-CC-RulesGuide.pdf"
+          "link": "/l10n/de-DE/cc/10.0.2/de-CC-RulesGuide.pdf"
         }
       ]
     },
@@ -87,11 +87,11 @@
       "items": [
         {
           "label": "Anwendungshandbuch",
-          "link": "/de-DE/cc/10.0.0/de-CC-AppGuide.pdf"
+          "link": "/l10n/de-DE/cc/10.0.0/de-CC-AppGuide.pdf"
         },
         {
           "label": "Kontaktmanagementhandbuch",
-          "link": "/de-DE/cc/10.0.0/de-CC-ContactMgmtGuide.pdf"
+          "link": "/l10n/de-DE/cc/10.0.0/de-CC-ContactMgmtGuide.pdf"
         }
       ]
     }

@@ -9,11 +9,11 @@
       "items": [
         {
           "label": "Guida alle applicazioni BI",
-          "link": "/it-IT/ic/10.0.0/IC10-bi-applications-it.pdf"
+          "link": "/l10n/it-IT/ic/10.0.0/IC10-bi-applications-it.pdf"
         },
         {
           "label": "Guida alle Specifiche dati",
-          "link": "/it-IT/ic/10.0.0/IC10-dataspec-it.pdf"
+          "link": "/l10n/it-IT/ic/10.0.0/IC10-dataspec-it.pdf"
         }
       ]
     }

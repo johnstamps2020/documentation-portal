@@ -9,23 +9,23 @@
       "items": [
         {
           "label": "Guía de administración",
-          "link": "/es-LA/ic/10.0.0/IC10-admin-es.pdf"
+          "link": "/l10n/es-LA/ic/10.0.0/IC10-admin-es.pdf"
         },
         {
           "label": "Guía de las aplicaciones BI",
-          "link": "/es-LA/ic/10.0.0/IC10-bi-applications-es.pdf"
+          "link": "/l10n/es-LA/ic/10.0.0/IC10-bi-applications-es.pdf"
         },
         {
           "label": "Guía de configuración de InfoCenter",
-          "link": "/es-LA/ic/10.0.0/IC10-config-es.pdf"
+          "link": "/l10n/es-LA/ic/10.0.0/IC10-config-es.pdf"
         },
         {
           "label": "Guía de Data Specifications",
-          "link": "/es-LA/ic/10.0.0/IC10-dataspec-es.pdf"
+          "link": "/l10n/es-LA/ic/10.0.0/IC10-dataspec-es.pdf"
         },
         {
           "label": "Guía del producto",
-          "link": "/es-LA/ic/10.0.0/IC10-product-es.pdf"
+          "link": "/l10n/es-LA/ic/10.0.0/IC10-product-es.pdf"
         }
       ]
     }

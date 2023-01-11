@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "Guía de la aplicación",
-          "link": "/es-LA/ve/2022.05/es-LA v.2022.05 VE_AppGuide.pdf"
+          "link": "/l10n/es-LA/ve/2022.05/es-LA v.2022.05 VE_AppGuide.pdf"
         }
       ]
     },
@@ -19,7 +19,7 @@
       "items": [
         {
           "label": "Guía de instalación",
-          "link": "/es-LA/ve/11.1/es-419-VE-onprem-InstallGuide.pdf"
+          "link": "/l10n/es-LA/ve/11.1/es-419-VE-onprem-InstallGuide.pdf"
         }
       ]
     },
@@ -29,19 +29,19 @@
       "items": [
         {
           "label": "Guía de seguridad y administración",
-          "link": "/es-LA/ve/10.0.1/es-VE_admin-and-security-guide.pdf"
+          "link": "/l10n/es-LA/ve/10.0.1/es-VE_admin-and-security-guide.pdf"
         },
         {
           "label": "Guía de la aplicación",
-          "link": "/es-LA/ve/10.0.1/es-VE_AppGuide.pdf"
+          "link": "/l10n/es-LA/ve/10.0.1/es-VE_AppGuide.pdf"
         },
         {
           "label": "Guía de instalación",
-          "link": "/es-LA/ve/10.0.1/es-VE_InstallGuide-es.pdf"
+          "link": "/l10n/es-LA/ve/10.0.1/es-VE_InstallGuide-es.pdf"
         },
         {
           "label": "Guía de configuración e instalación de Live Style Guide",
-          "link": "/es-LA/ve/10.0.1/es-VE_LiveStyleGuide.pdf"
+          "link": "/l10n/es-LA/ve/10.0.1/es-VE_LiveStyleGuide.pdf"
         }
       ]
     }

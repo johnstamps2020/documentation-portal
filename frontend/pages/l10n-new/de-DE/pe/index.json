@@ -9,19 +9,19 @@
       "items": [
         {
           "label": "Administrator- und Sicherheitshandbuch",
-          "link": "/de-DE/pe/11.4.1/de-DE-Digital v.11.4.1 PE admin&security-guide.pdf"
+          "link": "/l10n/de-DE/pe/11.4.1/de-DE-Digital v.11.4.1 PE admin&security-guide.pdf"
         },
         {
           "label": "Entwicklerhandbuch",
-          "link": "/de-DE/pe/11.4.1/de-DE-Digital v.11.4.1 PE Developers-guide.pdf"
+          "link": "/l10n/de-DE/pe/11.4.1/de-DE-Digital v.11.4.1 PE Developers-guide.pdf"
         },
         {
           "label": "Installationshandbuch",
-          "link": "/de-DE/pe/11.4.1/de-DE-Digital v.11.4.1 PE Installer-guide.pdf"
+          "link": "/l10n/de-DE/pe/11.4.1/de-DE-Digital v.11.4.1 PE Installer-guide.pdf"
         },
         {
           "label": "Anwendungshandbuch",
-          "link": "/de-DE/pe/11.4.1/de-DE-Digital v.11.4.1 PE_AppGuide.pdf"
+          "link": "/l10n/de-DE/pe/11.4.1/de-DE-Digital v.11.4.1 PE_AppGuide.pdf"
         }
       ]
     },
@@ -31,11 +31,11 @@
       "items": [
         {
           "label": "Installationshandbuch",
-          "link": "/de-DE/pe/11.1/de-PE-cloud_InstallGuide.pdf"
+          "link": "/l10n/de-DE/pe/11.1/de-PE-cloud_InstallGuide.pdf"
         },
         {
           "label": "Installationshandbuch",
-          "link": "/de-DE/pe/11.1/de-PE-onprem_InstallGuide.pdf"
+          "link": "/l10n/de-DE/pe/11.1/de-PE-onprem_InstallGuide.pdf"
         }
       ]
     },
@@ -45,23 +45,23 @@
       "items": [
         {
           "label": "Administrator- und Sicherheitshandbuch",
-          "link": "/de-DE/pe/10.0.1/de-PE_admin-and-security-guide.pdf"
+          "link": "/l10n/de-DE/pe/10.0.1/de-PE_admin-and-security-guide.pdf"
         },
         {
           "label": "Anwendungshandbuch",
-          "link": "/de-DE/pe/10.0.1/de-PE_AppGuide.pdf"
+          "link": "/l10n/de-DE/pe/10.0.1/de-PE_AppGuide.pdf"
         },
         {
           "label": "Konfigurationshandbuch",
-          "link": "/de-DE/pe/10.0.1/de-PE_ConfigurationGuide.pdf"
+          "link": "/l10n/de-DE/pe/10.0.1/de-PE_ConfigurationGuide.pdf"
         },
         {
           "label": "Installationshandbuch",
-          "link": "/de-DE/pe/10.0.1/de-PE_InstallGuide.pdf"
+          "link": "/l10n/de-DE/pe/10.0.1/de-PE_InstallGuide.pdf"
         },
         {
           "label": "Live Style Guide Installation and Configuration Guide",
-          "link": "/de-DE/pe/10.0.1/de-PE_Life Style Guide Install and Config.pdf"
+          "link": "/l10n/de-DE/pe/10.0.1/de-PE_Life Style Guide Install and Config.pdf"
         }
       ]
     }

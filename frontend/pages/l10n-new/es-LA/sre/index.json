@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "Guía de la aplicación",
-          "link": "/es-LA/sre/2022.05/es-LA-v.2022.05 SRE_AppGuide.pdf"
+          "link": "/l10n/es-LA/sre/2022.05/es-LA-v.2022.05 SRE_AppGuide.pdf"
         }
       ]
     },
@@ -19,7 +19,7 @@
       "items": [
         {
           "label": "Guía de instalación",
-          "link": "/es-LA/sre/11.1/es-419-SRE-onprem_InstallGuide.pdf.pdf"
+          "link": "/l10n/es-LA/sre/11.1/es-419-SRE-onprem_InstallGuide.pdf.pdf"
         }
       ]
     },
@@ -29,23 +29,23 @@
       "items": [
         {
           "label": "Guía de seguridad y administración",
-          "link": "/es-LA/sre/10.0.1/es-SRE_admin-and-security-guide.pdf"
+          "link": "/l10n/es-LA/sre/10.0.1/es-SRE_admin-and-security-guide.pdf"
         },
         {
           "label": "Guía de la aplicación",
-          "link": "/es-LA/sre/10.0.1/es-SRE_AppGuide.pdf"
+          "link": "/l10n/es-LA/sre/10.0.1/es-SRE_AppGuide.pdf"
         },
         {
           "label": "Guía de configuración",
-          "link": "/es-LA/sre/10.0.1/es-SRE_ConfigurationGuide.pdf"
+          "link": "/l10n/es-LA/sre/10.0.1/es-SRE_ConfigurationGuide.pdf"
         },
         {
           "label": "Guía de instalación",
-          "link": "/es-LA/sre/10.0.1/es-SRE_InstallGuide.pdf"
+          "link": "/l10n/es-LA/sre/10.0.1/es-SRE_InstallGuide.pdf"
         },
         {
           "label": "Guía de configuración e instalación de Live Style Guide",
-          "link": "/es-LA/sre/10.0.1/es-SRE_LiveStyleGuide.pdf"
+          "link": "/l10n/es-LA/sre/10.0.1/es-SRE_LiveStyleGuide.pdf"
         }
       ]
     }

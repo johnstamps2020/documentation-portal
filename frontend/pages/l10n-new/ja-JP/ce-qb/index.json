@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "インストールガイド",
-          "link": "/ja-JP/ce-qb/11.1/ja-CE_QB_InstallGuide.pdf"
+          "link": "/l10n/ja-JP/ce-qb/11.1/ja-CE_QB_InstallGuide.pdf"
         }
       ]
     },
@@ -19,23 +19,23 @@
       "items": [
         {
           "label": "管理およびセキュリティガイド",
-          "link": "/ja-JP/ce-qb/10.0.1/ja-CEQB_Admin and Security Guide.pdf"
+          "link": "/l10n/ja-JP/ce-qb/10.0.1/ja-CEQB_Admin and Security Guide.pdf"
         },
         {
           "label": "アプリケーションガイド",
-          "link": "/ja-JP/ce-qb/10.0.1/ja-CEQB_AppGuide.pdf"
+          "link": "/l10n/ja-JP/ce-qb/10.0.1/ja-CEQB_AppGuide.pdf"
         },
         {
           "label": "インストールガイド",
-          "link": "/ja-JP/ce-qb/10.0.1/ja-CEQB_ConfigurationGuide.pdf"
+          "link": "/l10n/ja-JP/ce-qb/10.0.1/ja-CEQB_ConfigurationGuide.pdf"
         },
         {
           "label": "コンフィギュレーションガイド",
-          "link": "/ja-JP/ce-qb/10.0.1/ja-CEQB_InstallGuide.pdf"
+          "link": "/l10n/ja-JP/ce-qb/10.0.1/ja-CEQB_InstallGuide.pdf"
         },
         {
           "label": "ライブスタイルガイド：インストールおよびコンフィギュレーションガイド",
-          "link": "/ja-JP/ce-qb/10.0.1/ja-CEQB_Live Style Guide Install and Config.pdf.pdf"
+          "link": "/l10n/ja-JP/ce-qb/10.0.1/ja-CEQB_Live Style Guide Install and Config.pdf.pdf"
         }
       ]
     }
