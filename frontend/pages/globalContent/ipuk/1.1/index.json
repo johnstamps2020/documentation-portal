@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "InsuranceSuite Package for the UK 1.1",
+  "title": "UK Market - Official Injury Claim Integration for ClaimCenter 1.1",
   "template": "page",
   "class": "twoColumns",
   "items": [
@@ -15,22 +15,22 @@
       ]
     },
     {
-      "label": "Configuration",
-      "class": "subject configuration",
-      "items": [
-        {
-          "label": "Official Injury Claim (OIC) Integration Configuration Guide",
-          "id": "ipukgarmischconfig"
-        }
-      ]
-    },
-    {
       "label": "Features and functionality",
       "class": "subject featuresAndFunctionality",
       "items": [
         {
           "label": "Official Injury Claim (OIC) Integration Application Guide",
           "id": "ipukgarmischapp"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Official Injury Claim (OIC) Integration Configuration Guide",
+          "id": "ipukgarmischconfig"
         }
       ]
     }
