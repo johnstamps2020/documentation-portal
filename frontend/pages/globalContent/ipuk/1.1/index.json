@@ -9,7 +9,7 @@
       "class": "subject releaseNotes",
       "items": [
         {
-          "label": "Official Injury Claim (OIC) Integration Release Notes",
+          "label": "Release Notes",
           "id": "ipukgarmischrn"
         }
       ]
@@ -19,7 +19,7 @@
       "class": "subject featuresAndFunctionality",
       "items": [
         {
-          "label": "Official Injury Claim (OIC) Integration Application Guide",
+          "label": "Application Guide",
           "id": "ipukgarmischapp"
         }
       ]
@@ -29,7 +29,7 @@
       "class": "subject configuration",
       "items": [
         {
-          "label": "Official Injury Claim (OIC) Integration Configuration Guide",
+          "label": "Configuration",
           "id": "ipukgarmischconfig"
         }
       ]
