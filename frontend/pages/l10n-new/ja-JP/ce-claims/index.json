@@ -9,11 +9,7 @@
       "items": [
         {
           "label": "インストールガイド",
-          "link": "/l10n/ja-JP/ce-claims/2022.05/ceclaims_InstallGuide.pdf"
-        },
-        {
-          "label": "インストールガイド",
-          "link": "/l10n/ja-JP/ce-claims/2022.05/ja-JP-2022.05-ceclaims_InstallGuide.pdf"
+          "id": "dx202205jaJPceclaimsinstall"
         }
       ]
     }
