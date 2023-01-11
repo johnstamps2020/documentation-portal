@@ -28,13 +28,6 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
       "branch": "release/it-IT/2022.05"
-    },
-    {
-      "id": "dx202205jaJPsrc",
-      "title": "Digital 2022.05 ja-JP",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
-      "branch": "release/ja-JP/2022.05"
     }
   ]
 }
