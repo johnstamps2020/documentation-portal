@@ -1,0 +1,41 @@
+{
+  "title": "CustomerEngage Account Management",
+  "template": "page.j2",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guida all'installazione",
+          "link": "/it-IT/ce-am/2022.05/it-IT Digital v.2022.05 CE-AM InstallGuide.pdf"
+        },
+        {
+          "label": "Guida all'applicazione",
+          "link": "/it-IT/ce-am/2022.05/it-IT Digital v.2022.05 CE-AM_AppGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "11.3",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guida all'installazione",
+          "link": "/it-IT/ce-am/11.3/it-CEAM-11.3-onprem-InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guida all'applicazione",
+          "link": "/it-IT/ce-am/10.0.1/it-CEAM_AppGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

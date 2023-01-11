@@ -1,0 +1,99 @@
+{
+  "title": "ClaimCenter",
+  "template": "page.j2",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/de-DE/cc/2022.05/CC-AppGuide-DE.pdf"
+        },
+        {
+          "label": "Konfigurationshandbuch",
+          "link": "/de-DE/cc/2022.05/CC-ConfigGuide-DE.pdf"
+        },
+        {
+          "label": "Guidewire-Kontaktmanagementhandbuch",
+          "link": "/de-DE/cc/2022.05/ContactMgmtGuide-DE.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2021.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud-API-Geschäftsabläufe- und Konfigurationshandbuch",
+          "link": "/de-DE/cc/2021.11/CC v.2021.11  de-DE CloudAPIGuide-BusinessFlows.pdf"
+        },
+        {
+          "label": "Cloud-API-Authentifizierungshandbuch",
+          "link": "/de-DE/cc/2021.11/CC v.2021.11 de-DE CloudAPIGuide-Auth.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/de-DE/cc/2020.05/ISCL_202005_de_CC-AppGuide.pdf"
+        },
+        {
+          "label": "Guidewire-Kontaktmanagementhandbuch",
+          "link": "/de-DE/cc/2020.05/ISCL_202005_de_CC_ContactMgmtGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.1.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/de-DE/cc/10.1.1/CC1011_de-DE_AppGuide.pdf"
+        },
+        {
+          "label": "Guidewire-Kontaktmanagementhandbuch",
+          "link": "/de-DE/cc/10.1.1/CC1011_de-DE_ContactMgmtGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.2",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/de-DE/cc/10.0.2/de-CC-AppGuide.pdf"
+        },
+        {
+          "label": "Guidewire-Kontaktmanagementhandbuch",
+          "link": "/de-DE/cc/10.0.2/de-CC-ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "Regelhandbuch",
+          "link": "/de-DE/cc/10.0.2/de-CC-RulesGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/de-DE/cc/10.0.0/de-CC-AppGuide.pdf"
+        },
+        {
+          "label": "Kontaktmanagementhandbuch",
+          "link": "/de-DE/cc/10.0.0/de-CC-ContactMgmtGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

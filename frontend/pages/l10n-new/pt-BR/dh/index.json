@@ -1,0 +1,33 @@
+{
+  "title": "DataHub",
+  "template": "page.j2",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "10.0.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guia de administração",
+          "link": "/pt-BR/dh/10.0.0/DH10-admin-pt.pdf"
+        },
+        {
+          "label": "DataHub Guia de configuração",
+          "link": "/pt-BR/dh/10.0.0/DH10-config-pt.pdf"
+        },
+        {
+          "label": "Guia de especificações de dados",
+          "link": "/pt-BR/dh/10.0.0/DH10-dataspec-pt.pdf"
+        },
+        {
+          "label": "Guia de instalação",
+          "link": "/pt-BR/dh/10.0.0/DH10-install-pt.pdf"
+        },
+        {
+          "label": "Guia do produto",
+          "link": "/pt-BR/dh/10.0.0/DH10-product-pt.pdf"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "title": "BillingCenter",
+  "template": "page.j2",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2021.04",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Gosu リファレンスガイド",
+          "link": "/ja-JP/bc/2021.04/BC_CL202104_ja-JP_GosuRefGuide.pdf"
+        },
+        {
+          "label": "ルールガイド",
+          "link": "/ja-JP/bc/2021.04/BC_CL202104_ja-JP_RulesGuide.pdf"
+        },
+        {
+          "label": "テストガイド",
+          "link": "/ja-JP/bc/2021.04/BC_CL202104_ja-JP_TestingGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "コンフィギュレーションガイド",
+          "link": "/ja-JP/bc/2020.11/BCCloud202011_ja-JP_ConfigGuide.pdf"
+        },
+        {
+          "label": "インストールガイド",
+          "link": "/ja-JP/bc/2020.11/BCCloud202011_ja-JP_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "アプリケーションガイド",
+          "link": "/ja-JP/bc/2020.05/IS_CL202005-BC-AppGuide-ja_JP.pdf"
+        },
+        {
+          "label": "Guidewire 連絡先管理ガイド",
+          "link": "/ja-JP/bc/2020.05/IS_CL202005-BC-ContactMgmtGuide-ja_JP.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.1.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "インストールガイド",
+          "link": "/ja-JP/bc/10.1.1/BC1011_ja-JP_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.2",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "システム管理ガイド",
+          "link": "/ja-JP/bc/10.0.2/ja-BC-AdminGuide.pdf"
+        },
+        {
+          "label": "アプリケーションガイド",
+          "link": "/ja-JP/bc/10.0.2/ja-BC-AppGuide.pdf"
+        },
+        {
+          "label": "ベストプラクティスガイド",
+          "link": "/ja-JP/bc/10.0.2/ja-BC-BestPracticesGuide.pdf"
+        },
+        {
+          "label": "コンフィギュレーションガイド",
+          "link": "/ja-JP/bc/10.0.2/ja-BC-ConfigGuide.pdf"
+        },
+        {
+          "label": "Guidewire 連絡先管理ガイド",
+          "link": "/ja-JP/bc/10.0.2/ja-BC-ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "Gosu リファレンスガイド",
+          "link": "/ja-JP/bc/10.0.2/ja-BC-GosuRefGuide.pdf"
+        },
+        {
+          "label": "インストールガイド",
+          "link": "/ja-JP/bc/10.0.2/ja-BC-InstallGuide.pdf"
+        },
+        {
+          "label": "連携ガイド",
+          "link": "/ja-JP/bc/10.0.2/ja-BC-IntegrationGuide.pdf"
+        },
+        {
+          "label": "ルールガイド",
+          "link": "/ja-JP/bc/10.0.2/ja-BC-RulesGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "アプリケーションガイド",
+          "link": "/ja-JP/bc/10.0.0/ja-BC-AppGuide.pdf"
+        },
+        {
+          "label": "連絡先管理ガイド",
+          "link": "/ja-JP/bc/10.0.0/ja-BC-ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "ルールガイド",
+          "link": "/ja-JP/bc/10.0.0/ja-BC-RulesGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

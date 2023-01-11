@@ -1,0 +1,145 @@
+{
+  "title": "PolicyCenter",
+  "template": "page.j2",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guidewire-Kontaktmanagementhandbuch",
+          "link": "/de-DE/pc/2022.05/ContactMgmtGuide-DE.pdf"
+        },
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/de-DE/pc/2022.05/PC-AppGuide-DE.pdf"
+        },
+        {
+          "label": "Konfigurationshandbuch",
+          "link": "/de-DE/pc/2022.05/PC-ConfigGuide-DE.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2021.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud-API-Authentifizierungshandbuch",
+          "link": "/de-DE/pc/2021.11/PC v.2021.11  de-DE CloudAPIGuide-Auth.pdf"
+        },
+        {
+          "label": "Cloud-API-Geschäftsabläufe- und Konfigurationshandbuch",
+          "link": "/de-DE/pc/2021.11/PC v.2021.11  de-DE CloudAPIGuide-BusinessFlows.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Advanced Product Designer-Handbuch",
+          "link": "/de-DE/pc/2020.11/PC_CL202011_de-DE_AdvancedProductDesigner.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/de-DE/pc/2020.05/ISCL_202005_de_PC-AppGuide.pdf"
+        },
+        {
+          "label": "Guidewire-Kontaktmanagementhandbuch",
+          "link": "/de-DE/pc/2020.05/ISCL_202005_de_PC_ContactMgmtGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.1.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Advanced Product Designer-Handbuch",
+          "link": "/de-DE/pc/10.1.1/PC1011_de-DE_AdvancedProductDesigner.pdf"
+        },
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/de-DE/pc/10.1.1/PC1011_de-DE_AppGuide.pdf"
+        },
+        {
+          "label": "Guidewire-Kontaktmanagementhandbuch",
+          "link": "/de-DE/pc/10.1.1/PC1011_de-DE_ContactMgmtGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.2",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/de-DE/pc/10.0.2/de-PC-AppGuide.pdf"
+        },
+        {
+          "label": "Konfigurationshandbuch",
+          "link": "/de-DE/pc/10.0.2/de-PC-ConfigGuide.pdf"
+        },
+        {
+          "label": "Guidewire-Kontaktmanagementhandbuch",
+          "link": "/de-DE/pc/10.0.2/de-PC-ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "Regelhandbuch",
+          "link": "/de-DE/pc/10.0.2/de-PC-RulesGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Systemadministrationshandbuch",
+          "link": "/de-DE/pc/10.0.0/de-PC-AdminGuide.pdf"
+        },
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/de-DE/pc/10.0.0/de-PC-AppGuide.pdf"
+        },
+        {
+          "label": "Konfigurationshandbuch",
+          "link": "/de-DE/pc/10.0.0/de-PC-ConfigGuide.pdf"
+        },
+        {
+          "label": "Kontaktmanagementhandbuch",
+          "link": "/de-DE/pc/10.0.0/de-PC-ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "Installationshandbuch",
+          "link": "/de-DE/pc/10.0.0/de-PC-InstallGuide.pdf"
+        },
+        {
+          "label": "InsuranceSuite-Handbuch",
+          "link": "/de-DE/pc/10.0.0/de-PC-InsuranceSuiteGuide.pdf"
+        },
+        {
+          "label": "Product-Designer-Handbuch",
+          "link": "/de-DE/pc/10.0.0/de-PC-ProductDesignerGuide.pdf"
+        },
+        {
+          "label": "Produktmodellhandbuch",
+          "link": "/de-DE/pc/10.0.0/de-PC-ProductModelGuide.pdf"
+        },
+        {
+          "label": "Regelhandbuch",
+          "link": "/de-DE/pc/10.0.0/de-PC-RulesGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

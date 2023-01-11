@@ -1,0 +1,17 @@
+{
+  "title": "ProducerEngage for ClaimCenter",
+  "template": "page.j2",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de la aplicación",
+          "link": "/es-ES/pe-claims/2022.05/es-ES v.2022.05 PE Claims_AppGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

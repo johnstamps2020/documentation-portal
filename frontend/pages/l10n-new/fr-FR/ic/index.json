@@ -1,0 +1,33 @@
+{
+  "title": "InfoCenter",
+  "template": "page.j2",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "10.0.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide d'administration",
+          "link": "/fr-FR/ic/10.0.0/IC10-admin-fr.pdf"
+        },
+        {
+          "label": "Guide de configuration InfoCenter",
+          "link": "/fr-FR/ic/10.0.0/IC10-config-fr.pdf"
+        },
+        {
+          "label": "Guide des spécifications de données",
+          "link": "/fr-FR/ic/10.0.0/IC10-dataspec-fr.pdf"
+        },
+        {
+          "label": "Guide d'installation",
+          "link": "/fr-FR/ic/10.0.0/IC10-install-fr.pdf"
+        },
+        {
+          "label": "Guide de mise à niveau",
+          "link": "/fr-FR/ic/10.0.0/IC10-upgrade-fr.pdf"
+        }
+      ]
+    }
+  ]
+}

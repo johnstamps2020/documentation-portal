@@ -1,0 +1,17 @@
+{
+  "title": "Guidewire Identity Federation Hub",
+  "template": "page.j2",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2021.04",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guidewire Identity Federation Hub を使用した認証",
+          "link": "/ja-JP/gwid/2021.04/ja-JP-2021.04-GuidewireHub.pdf"
+        }
+      ]
+    }
+  ]
+}

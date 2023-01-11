@@ -1,0 +1,43 @@
+{
+  "title": "CustomerEngage Quote and Buy",
+  "template": "page.j2",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "11.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "インストールガイド",
+          "link": "/ja-JP/ce-qb/11.1/ja-CE_QB_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "管理およびセキュリティガイド",
+          "link": "/ja-JP/ce-qb/10.0.1/ja-CEQB_Admin and Security Guide.pdf"
+        },
+        {
+          "label": "アプリケーションガイド",
+          "link": "/ja-JP/ce-qb/10.0.1/ja-CEQB_AppGuide.pdf"
+        },
+        {
+          "label": "インストールガイド",
+          "link": "/ja-JP/ce-qb/10.0.1/ja-CEQB_ConfigurationGuide.pdf"
+        },
+        {
+          "label": "コンフィギュレーションガイド",
+          "link": "/ja-JP/ce-qb/10.0.1/ja-CEQB_InstallGuide.pdf"
+        },
+        {
+          "label": "ライブスタイルガイド：インストールおよびコンフィギュレーションガイド",
+          "link": "/ja-JP/ce-qb/10.0.1/ja-CEQB_Live Style Guide Install and Config.pdf.pdf"
+        }
+      ]
+    }
+  ]
+}

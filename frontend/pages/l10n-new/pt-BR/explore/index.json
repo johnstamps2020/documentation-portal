@@ -1,0 +1,17 @@
+{
+  "title": "Explore",
+  "template": "page.j2",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2021.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guia do aplicativo",
+          "link": "/pt-BR/explore/2021.11/pt-BR-CloudExplore.pdf"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Guidewire for Salesforce",
+  "template": "page.j2",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2021.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "インストールガイド",
+          "link": "/ja-JP/gwsf/2021.11/ja-JP-2021.11-Guidewire_For_Salesforce_install-guide.pdf"
+        }
+      ]
+    }
+  ]
+}

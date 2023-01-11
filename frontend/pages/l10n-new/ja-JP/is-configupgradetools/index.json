@@ -1,0 +1,17 @@
+{
+  "title": "InsuranceSuite Configuration Upgrade Tools",
+  "template": "page.j2",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "3.2.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "ガイド",
+          "link": "/ja-JP/is-configupgradetools/3.2.0/InsuranceSuiteConfigurationUpgradeTools.pdf"
+        }
+      ]
+    }
+  ]
+}

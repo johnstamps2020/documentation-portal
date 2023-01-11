@@ -1,0 +1,17 @@
+{
+  "title": "IS Contact Manager",
+  "template": "page.j2",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2021.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guia de gerenciamento de contatos da Guidewire",
+          "link": "/pt-BR/cm/2021.11/ContactMgmtGuide_pt-BR.pdf"
+        }
+      ]
+    }
+  ]
+}

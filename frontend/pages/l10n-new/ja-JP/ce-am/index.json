@@ -1,0 +1,43 @@
+{
+  "title": "CustomerEngage Account Management",
+  "template": "page.j2",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "11.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "インストールガイド",
+          "link": "/ja-JP/ce-am/11.1/ja-CE-AM-onprem-InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "管理およびセキュリティガイド",
+          "link": "/ja-JP/ce-am/10.0.1/ja-CEAM_Admin and Security Guide..pdf"
+        },
+        {
+          "label": "アプリケーションガイド",
+          "link": "/ja-JP/ce-am/10.0.1/ja-CEAM_AppGuide.pdf"
+        },
+        {
+          "label": "コンフィギュレーションガイド",
+          "link": "/ja-JP/ce-am/10.0.1/ja-CEAM_ConfigurationGuide.pdf"
+        },
+        {
+          "label": "インストールガイド",
+          "link": "/ja-JP/ce-am/10.0.1/ja-CEAM_InstallGuide.pdf"
+        },
+        {
+          "label": "ライブスタイルガイド：インストールおよびコンフィギュレーションガイド",
+          "link": "/ja-JP/ce-am/10.0.1/ja-CEAM_Live Style Guide Install and Config.pdf"
+        }
+      ]
+    }
+  ]
+}
