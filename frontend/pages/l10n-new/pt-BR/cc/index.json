@@ -1,6 +1,6 @@
 {
   "title": "ClaimCenter",
-  "template": "page.j2",
+  "template": "page",
   "class": "threeCards",
   "items": [
     {

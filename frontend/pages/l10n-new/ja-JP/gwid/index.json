@@ -1,6 +1,6 @@
 {
   "title": "Guidewire Identity Federation Hub",
-  "template": "page.j2",
+  "template": "page",
   "class": "threeCards",
   "items": [
     {

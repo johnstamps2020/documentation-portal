@@ -1,6 +1,6 @@
 {
   "title": "Guidewire for Salesforce",
-  "template": "page.j2",
+  "template": "page",
   "class": "threeCards",
   "items": [
     {
