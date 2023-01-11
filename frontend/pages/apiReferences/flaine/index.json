@@ -31,12 +31,16 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "API Reference",
+          "label": "Cloud API Reference",
           "id": "bcapirefflaine"
         },
         {
-          "label": "Cloud API Consumers",
+          "label": "Cloud API Consumer Guide",
           "id": "isbc202209apibf"
+        },
+        {
+          "label": "Cloud API Developers Guide",
+          "id": "isbc202209apica"
         }
       ]
     },
@@ -45,15 +49,15 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "API Reference",
+          "label": "Cloud API Reference",
           "id": "ccapirefflaine"
         },
         {
-          "label": "Cloud API Consumers",
+          "label": "Cloud API Consumer Guide",
           "id": "iscc202209apibf"
         },
         {
-          "label": "Cloud API Developers",
+          "label": "Cloud API Developers Guide",
           "id": "iscc202209apica"
         }
       ]
@@ -63,15 +67,15 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "API Reference",
+          "label": "Cloud API Reference",
           "id": "pcapirefflaine"
         },
         {
-          "label": "Cloud API Consumers",
+          "label": "Cloud API Consumer Guide",
           "id": "ispc202209apibf"
         },
         {
-          "label": "Cloud API Developers",
+          "label": "Cloud API Developers Guide",
           "id": "ispc202209apica"
         }
       ]
