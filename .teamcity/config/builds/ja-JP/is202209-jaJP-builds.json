@@ -1,0 +1,21 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-BusinessFlows.ditamap",
+      "srcId": "is202209jaJPsrc",
+      "docId": "iscc202209jaJPcloudapibf",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-Auth.ditamap",
+      "srcId": "is202209jaJPsrc",
+      "docId": "iscc202209jaJPcloudapica",
+      "indexRedirect": true
+    }
+  ]
+}
