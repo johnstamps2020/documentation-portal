@@ -23,7 +23,7 @@
       "items": [
         {
           "label": "開発者設定ガイド",
-          "link": "/l10n/ja-JP/cc/2022.05/DeveloperSetupGuide.pdf"
+          "id": "iscc202205jaJPdevsetup"
         },
         {
           "label": "Cloud 連携の概要",
