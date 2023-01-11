@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "Guía de la aplicación",
-          "link": "/es-LA/ce-am/2022.05/es-LA v.2022.05 CE-AM_AppGuide.pdf"
+          "link": "/l10n/es-LA/ce-am/2022.05/es-LA v.2022.05 CE-AM_AppGuide.pdf"
         }
       ]
     },
@@ -19,7 +19,7 @@
       "items": [
         {
           "label": "Guía de instalación",
-          "link": "/es-LA/ce-am/11.1/es-419-CE_AM-onprem-InstallGuide.pdf"
+          "link": "/l10n/es-LA/ce-am/11.1/es-419-CE_AM-onprem-InstallGuide.pdf"
         }
       ]
     },
@@ -29,23 +29,23 @@
       "items": [
         {
           "label": "Guía de instalación",
-          "link": "/es-LA/ce-am/10.0.1/es-CEAM-InstallGuide.pdf"
+          "link": "/l10n/es-LA/ce-am/10.0.1/es-CEAM-InstallGuide.pdf"
         },
         {
           "label": "Guía de seguridad y administración",
-          "link": "/es-LA/ce-am/10.0.1/es-CEAM_admin-and-security-guide.pdf"
+          "link": "/l10n/es-LA/ce-am/10.0.1/es-CEAM_admin-and-security-guide.pdf"
         },
         {
           "label": "Guía de la aplicación",
-          "link": "/es-LA/ce-am/10.0.1/es-CEAM_AppGuide.pdf"
+          "link": "/l10n/es-LA/ce-am/10.0.1/es-CEAM_AppGuide.pdf"
         },
         {
           "label": "Guía de configuración",
-          "link": "/es-LA/ce-am/10.0.1/es-CEAM_ConfigurationGuide.pdf"
+          "link": "/l10n/es-LA/ce-am/10.0.1/es-CEAM_ConfigurationGuide.pdf"
         },
         {
           "label": "Guía de configuración e instalación de Live Style Guide",
-          "link": "/es-LA/ce-am/10.0.1/es-CEAM_LiveStyleGuide.pdf"
+          "link": "/l10n/es-LA/ce-am/10.0.1/es-CEAM_LiveStyleGuide.pdf"
         }
       ]
     }

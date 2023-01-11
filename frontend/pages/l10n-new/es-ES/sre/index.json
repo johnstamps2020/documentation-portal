@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "Guía de la aplicación",
-          "link": "/es-ES/sre/2022.05/es-ES v.2022.05  SRE_AppGuide.pdf"
+          "link": "/l10n/es-ES/sre/2022.05/es-ES v.2022.05  SRE_AppGuide.pdf"
         }
       ]
     },
@@ -19,7 +19,7 @@
       "items": [
         {
           "label": "Guía de instalación",
-          "link": "/es-ES/sre/11.1/es-ES-SRE-onprem_InstallGuide.pdf"
+          "link": "/l10n/es-ES/sre/11.1/es-ES-SRE-onprem_InstallGuide.pdf"
         }
       ]
     },
@@ -29,15 +29,15 @@
       "items": [
         {
           "label": "Guía de la aplicación",
-          "link": "/es-ES/sre/10.0.1/es-ES-SRE_AppGuide.pdf"
+          "link": "/l10n/es-ES/sre/10.0.1/es-ES-SRE_AppGuide.pdf"
         },
         {
           "label": "Guía de configuración",
-          "link": "/es-ES/sre/10.0.1/es-ES_SRE_ConfigurationGuide.pdf"
+          "link": "/l10n/es-ES/sre/10.0.1/es-ES_SRE_ConfigurationGuide.pdf"
         },
         {
           "label": "Guía de instalación",
-          "link": "/es-ES/sre/10.0.1/es-ES_SRE_InstallGuide.pdf"
+          "link": "/l10n/es-ES/sre/10.0.1/es-ES_SRE_InstallGuide.pdf"
         }
       ]
     }

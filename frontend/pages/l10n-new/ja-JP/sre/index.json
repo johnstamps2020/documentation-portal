@@ -9,11 +9,11 @@
       "items": [
         {
           "label": "インストールガイド",
-          "link": "/ja-JP/sre/2022.05/ja-JP-2022.05-sre_InstallGuide.pdf"
+          "link": "/l10n/ja-JP/sre/2022.05/ja-JP-2022.05-sre_InstallGuide.pdf"
         },
         {
           "label": "インストールガイド",
-          "link": "/ja-JP/sre/2022.05/sre_InstallGuide.pdf"
+          "link": "/l10n/ja-JP/sre/2022.05/sre_InstallGuide.pdf"
         }
       ]
     },
@@ -23,7 +23,7 @@
       "items": [
         {
           "label": "インストールガイド",
-          "link": "/ja-JP/sre/11.1/ja-SRE onprem_InstallGuide.pdf"
+          "link": "/l10n/ja-JP/sre/11.1/ja-SRE onprem_InstallGuide.pdf"
         }
       ]
     },
@@ -33,23 +33,23 @@
       "items": [
         {
           "label": "管理およびセキュリティガイド",
-          "link": "/ja-JP/sre/10.0.1/ja-SRE_Admin and Security Guide.pdf"
+          "link": "/l10n/ja-JP/sre/10.0.1/ja-SRE_Admin and Security Guide.pdf"
         },
         {
           "label": "アプリケーションガイド",
-          "link": "/ja-JP/sre/10.0.1/ja-SRE_AppGuide.pdf"
+          "link": "/l10n/ja-JP/sre/10.0.1/ja-SRE_AppGuide.pdf"
         },
         {
           "label": "コンフィギュレーションガイド",
-          "link": "/ja-JP/sre/10.0.1/ja-SRE_ConfigurationGuide.pdf"
+          "link": "/l10n/ja-JP/sre/10.0.1/ja-SRE_ConfigurationGuide.pdf"
         },
         {
           "label": "インストールガイド",
-          "link": "/ja-JP/sre/10.0.1/ja-SRE_InstallGuide.pdf"
+          "link": "/l10n/ja-JP/sre/10.0.1/ja-SRE_InstallGuide.pdf"
         },
         {
           "label": "ライブスタイルガイド：インストールおよびコンフィギュレーションガイド",
-          "link": "/ja-JP/sre/10.0.1/ja-SRE_Live Style Guide Install and Config.pdf.pdf"
+          "link": "/l10n/ja-JP/sre/10.0.1/ja-SRE_Live Style Guide Install and Config.pdf.pdf"
         }
       ]
     }

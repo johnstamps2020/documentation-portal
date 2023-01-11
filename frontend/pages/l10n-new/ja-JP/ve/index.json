@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "インストールガイド",
-          "link": "/ja-JP/ve/2022.05/ja-JP-2022.05-ve_InstallGuide.pdf"
+          "link": "/l10n/ja-JP/ve/2022.05/ja-JP-2022.05-ve_InstallGuide.pdf"
         }
       ]
     },
@@ -19,7 +19,7 @@
       "items": [
         {
           "label": "インストールガイド",
-          "link": "/ja-JP/ve/11.1/ja-VE-onprem-InstallGuide.pdf"
+          "link": "/l10n/ja-JP/ve/11.1/ja-VE-onprem-InstallGuide.pdf"
         }
       ]
     },
@@ -29,19 +29,19 @@
       "items": [
         {
           "label": "管理およびセキュリティガイド",
-          "link": "/ja-JP/ve/10.0.1/ja-VE_Admin and Security Guide.pdf"
+          "link": "/l10n/ja-JP/ve/10.0.1/ja-VE_Admin and Security Guide.pdf"
         },
         {
           "label": "アプリケーションガイド",
-          "link": "/ja-JP/ve/10.0.1/ja-VE_AppGuide.pdf"
+          "link": "/l10n/ja-JP/ve/10.0.1/ja-VE_AppGuide.pdf"
         },
         {
           "label": "インストールガイド",
-          "link": "/ja-JP/ve/10.0.1/ja-VE_InstallGuide.pdf"
+          "link": "/l10n/ja-JP/ve/10.0.1/ja-VE_InstallGuide.pdf"
         },
         {
           "label": "ライブスタイルガイド：インストールおよびコンフィギュレーションガイド",
-          "link": "/ja-JP/ve/10.0.1/ja-VE_Live Style Guide Install and Config.pdf"
+          "link": "/l10n/ja-JP/ve/10.0.1/ja-VE_Live Style Guide Install and Config.pdf"
         }
       ]
     }

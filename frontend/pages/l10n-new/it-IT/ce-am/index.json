@@ -9,11 +9,11 @@
       "items": [
         {
           "label": "Guida all'installazione",
-          "link": "/it-IT/ce-am/2022.05/it-IT Digital v.2022.05 CE-AM InstallGuide.pdf"
+          "link": "/l10n/it-IT/ce-am/2022.05/it-IT Digital v.2022.05 CE-AM InstallGuide.pdf"
         },
         {
           "label": "Guida all'applicazione",
-          "link": "/it-IT/ce-am/2022.05/it-IT Digital v.2022.05 CE-AM_AppGuide.pdf"
+          "link": "/l10n/it-IT/ce-am/2022.05/it-IT Digital v.2022.05 CE-AM_AppGuide.pdf"
         }
       ]
     },
@@ -23,7 +23,7 @@
       "items": [
         {
           "label": "Guida all'installazione",
-          "link": "/it-IT/ce-am/11.3/it-CEAM-11.3-onprem-InstallGuide.pdf"
+          "link": "/l10n/it-IT/ce-am/11.3/it-CEAM-11.3-onprem-InstallGuide.pdf"
         }
       ]
     },
@@ -33,7 +33,7 @@
       "items": [
         {
           "label": "Guida all'applicazione",
-          "link": "/it-IT/ce-am/10.0.1/it-CEAM_AppGuide.pdf"
+          "link": "/l10n/it-IT/ce-am/10.0.1/it-CEAM_AppGuide.pdf"
         }
       ]
     }

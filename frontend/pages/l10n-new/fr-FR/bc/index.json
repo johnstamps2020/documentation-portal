@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "Guide de configuration et de flux opérationnels de l'API Cloud",
-          "link": "/fr-FR/bc/2021.11/BC v.2021.11 fr-FR CloudAPIGuide-BusinessFlows.pdf"
+          "link": "/l10n/fr-FR/bc/2021.11/BC v.2021.11 fr-FR CloudAPIGuide-BusinessFlows.pdf"
         }
       ]
     },
@@ -19,11 +19,11 @@
       "items": [
         {
           "label": "Guide de configuration",
-          "link": "/fr-FR/bc/2020.11/BC_CL202011_fr-FR_ConfigGuide.pdf"
+          "link": "/l10n/fr-FR/bc/2020.11/BC_CL202011_fr-FR_ConfigGuide.pdf"
         },
         {
           "label": "Guide d'installation",
-          "link": "/fr-FR/bc/2020.11/BC_CL202011_fr-FR_InstallGuide.pdf"
+          "link": "/l10n/fr-FR/bc/2020.11/BC_CL202011_fr-FR_InstallGuide.pdf"
         }
       ]
     },
@@ -33,11 +33,11 @@
       "items": [
         {
           "label": "Guide de l'application",
-          "link": "/fr-FR/bc/2020.05/ISCL_202005_fr_BC-AppGuide.pdf"
+          "link": "/l10n/fr-FR/bc/2020.05/ISCL_202005_fr_BC-AppGuide.pdf"
         },
         {
           "label": "Guide des personnes-ressources de Guidewire",
-          "link": "/fr-FR/bc/2020.05/ISCL_202005_fr_BC_ContactMgmtGuide.pdf"
+          "link": "/l10n/fr-FR/bc/2020.05/ISCL_202005_fr_BC_ContactMgmtGuide.pdf"
         }
       ]
     },
@@ -47,11 +47,11 @@
       "items": [
         {
           "label": "Guide de l'application",
-          "link": "/fr-FR/bc/10.1.1/BC-AppGuide_FR.pdf"
+          "link": "/l10n/fr-FR/bc/10.1.1/BC-AppGuide_FR.pdf"
         },
         {
           "label": "Guide des personnes-ressources de Guidewire",
-          "link": "/fr-FR/bc/10.1.1/BC-ContactMgmtGuide_FR.pdf"
+          "link": "/l10n/fr-FR/bc/10.1.1/BC-ContactMgmtGuide_FR.pdf"
         }
       ]
     },
@@ -61,23 +61,23 @@
       "items": [
         {
           "label": "Guide de l'application",
-          "link": "/fr-FR/bc/10.0.2/BC-AppGuide.pdf"
+          "link": "/l10n/fr-FR/bc/10.0.2/BC-AppGuide.pdf"
         },
         {
           "label": "Guide de configuration",
-          "link": "/fr-FR/bc/10.0.2/ConfigGuide.pdf"
+          "link": "/l10n/fr-FR/bc/10.0.2/ConfigGuide.pdf"
         },
         {
           "label": "Guide des personnes-ressources de Guidewire",
-          "link": "/fr-FR/bc/10.0.2/ContactMgmtGuide.pdf"
+          "link": "/l10n/fr-FR/bc/10.0.2/ContactMgmtGuide.pdf"
         },
         {
           "label": "Guide d'installation",
-          "link": "/fr-FR/bc/10.0.2/InstallGuide.pdf"
+          "link": "/l10n/fr-FR/bc/10.0.2/InstallGuide.pdf"
         },
         {
           "label": "Guide des règles",
-          "link": "/fr-FR/bc/10.0.2/RulesGuide.pdf"
+          "link": "/l10n/fr-FR/bc/10.0.2/RulesGuide.pdf"
         }
       ]
     },
@@ -87,23 +87,23 @@
       "items": [
         {
           "label": "Guide de l'application",
-          "link": "/fr-FR/bc/10.0.0/fr-BC-AppGuide.pdf"
+          "link": "/l10n/fr-FR/bc/10.0.0/fr-BC-AppGuide.pdf"
         },
         {
           "label": "Guide de configuration",
-          "link": "/fr-FR/bc/10.0.0/fr-BC-ConfigGuide.pdf"
+          "link": "/l10n/fr-FR/bc/10.0.0/fr-BC-ConfigGuide.pdf"
         },
         {
           "label": "Guide de gestion des contacts",
-          "link": "/fr-FR/bc/10.0.0/fr-BC-ContactMgmtGuide.pdf"
+          "link": "/l10n/fr-FR/bc/10.0.0/fr-BC-ContactMgmtGuide.pdf"
         },
         {
           "label": "Guide d'installation",
-          "link": "/fr-FR/bc/10.0.0/fr-BC-InstallGuide.pdf"
+          "link": "/l10n/fr-FR/bc/10.0.0/fr-BC-InstallGuide.pdf"
         },
         {
           "label": "Guide des règles",
-          "link": "/fr-FR/bc/10.0.0/fr-BC-RulesGuide.pdf"
+          "link": "/l10n/fr-FR/bc/10.0.0/fr-BC-RulesGuide.pdf"
         }
       ]
     }

@@ -9,11 +9,11 @@
       "items": [
         {
           "label": "Guida all'installazione",
-          "link": "/it-IT/sre/2022.05/it-IT Digital v.2022.05 SRE InstallGuide.pdf"
+          "link": "/l10n/it-IT/sre/2022.05/it-IT Digital v.2022.05 SRE InstallGuide.pdf"
         },
         {
           "label": "Guida all'applicazione",
-          "link": "/it-IT/sre/2022.05/it-IT Digital v.2022.05 SRE_AppGuide.pdf"
+          "link": "/l10n/it-IT/sre/2022.05/it-IT Digital v.2022.05 SRE_AppGuide.pdf"
         }
       ]
     },
@@ -23,7 +23,7 @@
       "items": [
         {
           "label": "Guida all'installazione",
-          "link": "/it-IT/sre/11.3/it-SRE-IT - 11.3-onprem-InstallGuide.pdf"
+          "link": "/l10n/it-IT/sre/11.3/it-SRE-IT - 11.3-onprem-InstallGuide.pdf"
         }
       ]
     },
@@ -33,7 +33,7 @@
       "items": [
         {
           "label": "Guida all'applicazione",
-          "link": "/it-IT/sre/10.0.1/it-SRE_AppGuide.pdf"
+          "link": "/l10n/it-IT/sre/10.0.1/it-SRE_AppGuide.pdf"
         }
       ]
     }

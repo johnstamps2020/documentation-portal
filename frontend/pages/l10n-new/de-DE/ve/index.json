@@ -9,19 +9,19 @@
       "items": [
         {
           "label": "Administrator- und Sicherheitshandbuch",
-          "link": "/de-DE/ve/11.4.1/de-DE-Digital v.11.4.1 VE admin&security-guide.pdf"
+          "link": "/l10n/de-DE/ve/11.4.1/de-DE-Digital v.11.4.1 VE admin&security-guide.pdf"
         },
         {
           "label": "Entwicklerhandbuch",
-          "link": "/de-DE/ve/11.4.1/de-DE-Digital v.11.4.1 VE Developers-guide.pdf"
+          "link": "/l10n/de-DE/ve/11.4.1/de-DE-Digital v.11.4.1 VE Developers-guide.pdf"
         },
         {
           "label": "Installationshandbuch",
-          "link": "/de-DE/ve/11.4.1/de-DE-Digital v.11.4.1 VE Installer-guide.pdf"
+          "link": "/l10n/de-DE/ve/11.4.1/de-DE-Digital v.11.4.1 VE Installer-guide.pdf"
         },
         {
           "label": "Anwendungshandbuch",
-          "link": "/de-DE/ve/11.4.1/de-DE-Digital v.11.4.1 VE_AppGuide.pdf"
+          "link": "/l10n/de-DE/ve/11.4.1/de-DE-Digital v.11.4.1 VE_AppGuide.pdf"
         }
       ]
     },
@@ -31,7 +31,7 @@
       "items": [
         {
           "label": "Installationshandbuch",
-          "link": "/de-DE/ve/11.1/de-VE-11.1_onprem_InstallGuide.pdf"
+          "link": "/l10n/de-DE/ve/11.1/de-VE-11.1_onprem_InstallGuide.pdf"
         }
       ]
     },
@@ -41,19 +41,19 @@
       "items": [
         {
           "label": "Administrator- und Sicherheitshandbuch",
-          "link": "/de-DE/ve/10.0.1/de-VE_admin-and-security-guide.pdf"
+          "link": "/l10n/de-DE/ve/10.0.1/de-VE_admin-and-security-guide.pdf"
         },
         {
           "label": "Anwendungshandbuch",
-          "link": "/de-DE/ve/10.0.1/de-VE_AppGuide_de.pdf"
+          "link": "/l10n/de-DE/ve/10.0.1/de-VE_AppGuide_de.pdf"
         },
         {
           "label": "Live Style Guide Installation and Configuration Guide",
-          "link": "/de-DE/ve/10.0.1/de-VE_Life Style Guide Install and Config.pdf"
+          "link": "/l10n/de-DE/ve/10.0.1/de-VE_Life Style Guide Install and Config.pdf"
         },
         {
           "label": "Installationshandbuch",
-          "link": "/de-DE/ve/10.0.1/de-VM_InstallGuide.pdf"
+          "link": "/l10n/de-DE/ve/10.0.1/de-VM_InstallGuide.pdf"
         }
       ]
     }

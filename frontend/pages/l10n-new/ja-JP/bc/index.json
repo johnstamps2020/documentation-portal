@@ -9,15 +9,15 @@
       "items": [
         {
           "label": "Gosu リファレンスガイド",
-          "link": "/ja-JP/bc/2021.04/BC_CL202104_ja-JP_GosuRefGuide.pdf"
+          "link": "/l10n/ja-JP/bc/2021.04/BC_CL202104_ja-JP_GosuRefGuide.pdf"
         },
         {
           "label": "ルールガイド",
-          "link": "/ja-JP/bc/2021.04/BC_CL202104_ja-JP_RulesGuide.pdf"
+          "link": "/l10n/ja-JP/bc/2021.04/BC_CL202104_ja-JP_RulesGuide.pdf"
         },
         {
           "label": "テストガイド",
-          "link": "/ja-JP/bc/2021.04/BC_CL202104_ja-JP_TestingGuide.pdf"
+          "link": "/l10n/ja-JP/bc/2021.04/BC_CL202104_ja-JP_TestingGuide.pdf"
         }
       ]
     },
@@ -27,11 +27,11 @@
       "items": [
         {
           "label": "コンフィギュレーションガイド",
-          "link": "/ja-JP/bc/2020.11/BCCloud202011_ja-JP_ConfigGuide.pdf"
+          "link": "/l10n/ja-JP/bc/2020.11/BCCloud202011_ja-JP_ConfigGuide.pdf"
         },
         {
           "label": "インストールガイド",
-          "link": "/ja-JP/bc/2020.11/BCCloud202011_ja-JP_InstallGuide.pdf"
+          "link": "/l10n/ja-JP/bc/2020.11/BCCloud202011_ja-JP_InstallGuide.pdf"
         }
       ]
     },
@@ -41,11 +41,11 @@
       "items": [
         {
           "label": "アプリケーションガイド",
-          "link": "/ja-JP/bc/2020.05/IS_CL202005-BC-AppGuide-ja_JP.pdf"
+          "link": "/l10n/ja-JP/bc/2020.05/IS_CL202005-BC-AppGuide-ja_JP.pdf"
         },
         {
           "label": "Guidewire 連絡先管理ガイド",
-          "link": "/ja-JP/bc/2020.05/IS_CL202005-BC-ContactMgmtGuide-ja_JP.pdf"
+          "link": "/l10n/ja-JP/bc/2020.05/IS_CL202005-BC-ContactMgmtGuide-ja_JP.pdf"
         }
       ]
     },
@@ -55,7 +55,7 @@
       "items": [
         {
           "label": "インストールガイド",
-          "link": "/ja-JP/bc/10.1.1/BC1011_ja-JP_InstallGuide.pdf"
+          "link": "/l10n/ja-JP/bc/10.1.1/BC1011_ja-JP_InstallGuide.pdf"
         }
       ]
     },
@@ -65,39 +65,39 @@
       "items": [
         {
           "label": "システム管理ガイド",
-          "link": "/ja-JP/bc/10.0.2/ja-BC-AdminGuide.pdf"
+          "link": "/l10n/ja-JP/bc/10.0.2/ja-BC-AdminGuide.pdf"
         },
         {
           "label": "アプリケーションガイド",
-          "link": "/ja-JP/bc/10.0.2/ja-BC-AppGuide.pdf"
+          "link": "/l10n/ja-JP/bc/10.0.2/ja-BC-AppGuide.pdf"
         },
         {
           "label": "ベストプラクティスガイド",
-          "link": "/ja-JP/bc/10.0.2/ja-BC-BestPracticesGuide.pdf"
+          "link": "/l10n/ja-JP/bc/10.0.2/ja-BC-BestPracticesGuide.pdf"
         },
         {
           "label": "コンフィギュレーションガイド",
-          "link": "/ja-JP/bc/10.0.2/ja-BC-ConfigGuide.pdf"
+          "link": "/l10n/ja-JP/bc/10.0.2/ja-BC-ConfigGuide.pdf"
         },
         {
           "label": "Guidewire 連絡先管理ガイド",
-          "link": "/ja-JP/bc/10.0.2/ja-BC-ContactMgmtGuide.pdf"
+          "link": "/l10n/ja-JP/bc/10.0.2/ja-BC-ContactMgmtGuide.pdf"
         },
         {
           "label": "Gosu リファレンスガイド",
-          "link": "/ja-JP/bc/10.0.2/ja-BC-GosuRefGuide.pdf"
+          "link": "/l10n/ja-JP/bc/10.0.2/ja-BC-GosuRefGuide.pdf"
         },
         {
           "label": "インストールガイド",
-          "link": "/ja-JP/bc/10.0.2/ja-BC-InstallGuide.pdf"
+          "link": "/l10n/ja-JP/bc/10.0.2/ja-BC-InstallGuide.pdf"
         },
         {
           "label": "連携ガイド",
-          "link": "/ja-JP/bc/10.0.2/ja-BC-IntegrationGuide.pdf"
+          "link": "/l10n/ja-JP/bc/10.0.2/ja-BC-IntegrationGuide.pdf"
         },
         {
           "label": "ルールガイド",
-          "link": "/ja-JP/bc/10.0.2/ja-BC-RulesGuide.pdf"
+          "link": "/l10n/ja-JP/bc/10.0.2/ja-BC-RulesGuide.pdf"
         }
       ]
     },
@@ -107,15 +107,15 @@
       "items": [
         {
           "label": "アプリケーションガイド",
-          "link": "/ja-JP/bc/10.0.0/ja-BC-AppGuide.pdf"
+          "link": "/l10n/ja-JP/bc/10.0.0/ja-BC-AppGuide.pdf"
         },
         {
           "label": "連絡先管理ガイド",
-          "link": "/ja-JP/bc/10.0.0/ja-BC-ContactMgmtGuide.pdf"
+          "link": "/l10n/ja-JP/bc/10.0.0/ja-BC-ContactMgmtGuide.pdf"
         },
         {
           "label": "ルールガイド",
-          "link": "/ja-JP/bc/10.0.0/ja-BC-RulesGuide.pdf"
+          "link": "/l10n/ja-JP/bc/10.0.0/ja-BC-RulesGuide.pdf"
         }
       ]
     }

@@ -9,11 +9,11 @@
       "items": [
         {
           "label": "Guida all'installazione",
-          "link": "/it-IT/ce-qb/2022.05/it-IT Digital v.2022.05 CE-QB InstallGuide.pdf"
+          "link": "/l10n/it-IT/ce-qb/2022.05/it-IT Digital v.2022.05 CE-QB InstallGuide.pdf"
         },
         {
           "label": "Guida all'applicazione",
-          "link": "/it-IT/ce-qb/2022.05/it-IT Digital v.2022.05 CE-QB_AppGuide.pdf"
+          "link": "/l10n/it-IT/ce-qb/2022.05/it-IT Digital v.2022.05 CE-QB_AppGuide.pdf"
         }
       ]
     },
@@ -23,7 +23,7 @@
       "items": [
         {
           "label": "Guida all'installazione",
-          "link": "/it-IT/ce-qb/11.3/it-CEQB-11.3-onprem-InstallGuide.pdf"
+          "link": "/l10n/it-IT/ce-qb/11.3/it-CEQB-11.3-onprem-InstallGuide.pdf"
         }
       ]
     },
@@ -33,7 +33,7 @@
       "items": [
         {
           "label": "Guida all'applicazione",
-          "link": "/it-IT/ce-qb/10.0.1/it-CEQB_AppGuide.pdf"
+          "link": "/l10n/it-IT/ce-qb/10.0.1/it-CEQB_AppGuide.pdf"
         }
       ]
     }

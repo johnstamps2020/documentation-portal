@@ -9,11 +9,11 @@
       "items": [
         {
           "label": "Guide d'authentification de l'API Cloud",
-          "link": "/fr-FR/pc/2021.11/PC v.2021.11 fr-FR CloudAPIGuide-Auth.pdf"
+          "link": "/l10n/fr-FR/pc/2021.11/PC v.2021.11 fr-FR CloudAPIGuide-Auth.pdf"
         },
         {
           "label": "Guide de configuration et de flux opérationnels de l'API Cloud",
-          "link": "/fr-FR/pc/2021.11/PC v.2021.11 fr-FR CloudAPIGuide-BusinessFlows.pdf"
+          "link": "/l10n/fr-FR/pc/2021.11/PC v.2021.11 fr-FR CloudAPIGuide-BusinessFlows.pdf"
         }
       ]
     },
@@ -23,15 +23,15 @@
       "items": [
         {
           "label": "Guide Advanced Product Designer",
-          "link": "/fr-FR/pc/2020.11/PC_CL202011_fr-FR_AdvancedProductDesigner.pdf"
+          "link": "/l10n/fr-FR/pc/2020.11/PC_CL202011_fr-FR_AdvancedProductDesigner.pdf"
         },
         {
           "label": "Guide de configuration",
-          "link": "/fr-FR/pc/2020.11/PC_CL202011_fr-FR_ConfigGuide.pdf"
+          "link": "/l10n/fr-FR/pc/2020.11/PC_CL202011_fr-FR_ConfigGuide.pdf"
         },
         {
           "label": "Guide d'installation",
-          "link": "/fr-FR/pc/2020.11/PC_CL202011_fr-FR_InstallGuide.pdf"
+          "link": "/l10n/fr-FR/pc/2020.11/PC_CL202011_fr-FR_InstallGuide.pdf"
         }
       ]
     },
@@ -41,11 +41,11 @@
       "items": [
         {
           "label": "Guide de l'application",
-          "link": "/fr-FR/pc/2020.05/ISCL_202005_fr_PC-AppGuide.pdf"
+          "link": "/l10n/fr-FR/pc/2020.05/ISCL_202005_fr_PC-AppGuide.pdf"
         },
         {
           "label": "Guide des personnes-ressources de Guidewire",
-          "link": "/fr-FR/pc/2020.05/ISCL_202005_fr_PC_ContactMgmtGuide.pdf"
+          "link": "/l10n/fr-FR/pc/2020.05/ISCL_202005_fr_PC_ContactMgmtGuide.pdf"
         }
       ]
     },
@@ -55,15 +55,15 @@
       "items": [
         {
           "label": "Guide Advanced Product Designer",
-          "link": "/fr-FR/pc/10.1.1/AdvancedProductDesigner_FR.pdf"
+          "link": "/l10n/fr-FR/pc/10.1.1/AdvancedProductDesigner_FR.pdf"
         },
         {
           "label": "Guide de l'application",
-          "link": "/fr-FR/pc/10.1.1/PC-AppGuide_FR.pdf"
+          "link": "/l10n/fr-FR/pc/10.1.1/PC-AppGuide_FR.pdf"
         },
         {
           "label": "Guide des personnes-ressources de Guidewire",
-          "link": "/fr-FR/pc/10.1.1/PC-ContactMgmtGuide_FR.pdf"
+          "link": "/l10n/fr-FR/pc/10.1.1/PC-ContactMgmtGuide_FR.pdf"
         }
       ]
     },
@@ -73,23 +73,23 @@
       "items": [
         {
           "label": "Guide de configuration",
-          "link": "/fr-FR/pc/10.0.2/ConfigGuide.pdf"
+          "link": "/l10n/fr-FR/pc/10.0.2/ConfigGuide.pdf"
         },
         {
           "label": "Guide des personnes-ressources de Guidewire",
-          "link": "/fr-FR/pc/10.0.2/ContactMgmtGuide.pdf"
+          "link": "/l10n/fr-FR/pc/10.0.2/ContactMgmtGuide.pdf"
         },
         {
           "label": "Guide d'installation",
-          "link": "/fr-FR/pc/10.0.2/InstallGuide.pdf"
+          "link": "/l10n/fr-FR/pc/10.0.2/InstallGuide.pdf"
         },
         {
           "label": "Guide de l'application",
-          "link": "/fr-FR/pc/10.0.2/PC-AppGuide.pdf"
+          "link": "/l10n/fr-FR/pc/10.0.2/PC-AppGuide.pdf"
         },
         {
           "label": "Guide des règles",
-          "link": "/fr-FR/pc/10.0.2/RulesGuide.pdf"
+          "link": "/l10n/fr-FR/pc/10.0.2/RulesGuide.pdf"
         }
       ]
     },
@@ -99,23 +99,23 @@
       "items": [
         {
           "label": "Guide de l'application",
-          "link": "/fr-FR/pc/10.0.0/fr-PC-AppGuide.pdf"
+          "link": "/l10n/fr-FR/pc/10.0.0/fr-PC-AppGuide.pdf"
         },
         {
           "label": "Guide de configuration",
-          "link": "/fr-FR/pc/10.0.0/fr-PC-ConfigGuide.pdf"
+          "link": "/l10n/fr-FR/pc/10.0.0/fr-PC-ConfigGuide.pdf"
         },
         {
           "label": "Guide de gestion des contacts",
-          "link": "/fr-FR/pc/10.0.0/fr-PC-ContactMgmtGuide.pdf"
+          "link": "/l10n/fr-FR/pc/10.0.0/fr-PC-ContactMgmtGuide.pdf"
         },
         {
           "label": "Guide d'installation",
-          "link": "/fr-FR/pc/10.0.0/fr-PC-InstallGuide.pdf"
+          "link": "/l10n/fr-FR/pc/10.0.0/fr-PC-InstallGuide.pdf"
         },
         {
           "label": "Guide des règles",
-          "link": "/fr-FR/pc/10.0.0/fr-PC-RulesGuide.pdf"
+          "link": "/l10n/fr-FR/pc/10.0.0/fr-PC-RulesGuide.pdf"
         }
       ]
     }

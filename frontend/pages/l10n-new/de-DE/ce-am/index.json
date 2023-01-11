@@ -9,19 +9,19 @@
       "items": [
         {
           "label": "Installationshandbuch",
-          "link": "/de-DE/ce-am/11.4.1/de-DE-Digital v.11.4.1 CE-AM Installer-guide.pdf"
+          "link": "/l10n/de-DE/ce-am/11.4.1/de-DE-Digital v.11.4.1 CE-AM Installer-guide.pdf"
         },
         {
           "label": "Anwendungshandbuch",
-          "link": "/de-DE/ce-am/11.4.1/de-DE-Digital v.11.4.1 CE-AM_AppGuide.pdf"
+          "link": "/l10n/de-DE/ce-am/11.4.1/de-DE-Digital v.11.4.1 CE-AM_AppGuide.pdf"
         },
         {
           "label": "Entwicklerhandbuch",
-          "link": "/de-DE/ce-am/11.4.1/de-DE-Digital v.11.4.1 CEAM Developers-guide.pdf"
+          "link": "/l10n/de-DE/ce-am/11.4.1/de-DE-Digital v.11.4.1 CEAM Developers-guide.pdf"
         },
         {
           "label": "Administrator- und Sicherheitshandbuch",
-          "link": "/de-DE/ce-am/11.4.1/de-DE-Digital v11.4.1 CE-AM admin&security-guide.pdf"
+          "link": "/l10n/de-DE/ce-am/11.4.1/de-DE-Digital v11.4.1 CE-AM admin&security-guide.pdf"
         }
       ]
     },
@@ -31,7 +31,7 @@
       "items": [
         {
           "label": "Installationshandbuch",
-          "link": "/de-DE/ce-am/11.1/de-CE-AM-11.1_onprem_InstallGuides.pdf"
+          "link": "/l10n/de-DE/ce-am/11.1/de-CE-AM-11.1_onprem_InstallGuides.pdf"
         }
       ]
     },
@@ -41,23 +41,23 @@
       "items": [
         {
           "label": "Administrator- und Sicherheitshandbuch",
-          "link": "/de-DE/ce-am/10.0.1/de-CEAM_admin-and-security-guide.pdf"
+          "link": "/l10n/de-DE/ce-am/10.0.1/de-CEAM_admin-and-security-guide.pdf"
         },
         {
           "label": "Anwendungshandbuch",
-          "link": "/de-DE/ce-am/10.0.1/de-CEAM_AppGuide.pdf"
+          "link": "/l10n/de-DE/ce-am/10.0.1/de-CEAM_AppGuide.pdf"
         },
         {
           "label": "Konfigurationshandbuch",
-          "link": "/de-DE/ce-am/10.0.1/de-CEAM_ConfigurationGuide.pdf"
+          "link": "/l10n/de-DE/ce-am/10.0.1/de-CEAM_ConfigurationGuide.pdf"
         },
         {
           "label": "Installationshandbuch",
-          "link": "/de-DE/ce-am/10.0.1/de-CEAM_InstallGuide.pdf"
+          "link": "/l10n/de-DE/ce-am/10.0.1/de-CEAM_InstallGuide.pdf"
         },
         {
           "label": "Live Style Guide Installation and Configuration Guide",
-          "link": "/de-DE/ce-am/10.0.1/de-CEAM_Life Style Guide Install and Config.pdf"
+          "link": "/l10n/de-DE/ce-am/10.0.1/de-CEAM_Life Style Guide Install and Config.pdf"
         }
       ]
     }

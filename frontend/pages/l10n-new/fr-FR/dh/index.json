@@ -9,23 +9,23 @@
       "items": [
         {
           "label": "Guide d'administration",
-          "link": "/fr-FR/dh/10.0.0/DH10-admin-fr.pdf"
+          "link": "/l10n/fr-FR/dh/10.0.0/DH10-admin-fr.pdf"
         },
         {
           "label": "Guide de configuration DataHub",
-          "link": "/fr-FR/dh/10.0.0/DH10-config-fr.pdf"
+          "link": "/l10n/fr-FR/dh/10.0.0/DH10-config-fr.pdf"
         },
         {
           "label": "Guide des spécifications de données",
-          "link": "/fr-FR/dh/10.0.0/DH10-dataspec-fr.pdf"
+          "link": "/l10n/fr-FR/dh/10.0.0/DH10-dataspec-fr.pdf"
         },
         {
           "label": "Guide d'installation",
-          "link": "/fr-FR/dh/10.0.0/DH10-install-fr.pdf"
+          "link": "/l10n/fr-FR/dh/10.0.0/DH10-install-fr.pdf"
         },
         {
           "label": "Guide de mise à niveau",
-          "link": "/fr-FR/dh/10.0.0/DH10-upgrade-fr.pdf"
+          "link": "/l10n/fr-FR/dh/10.0.0/DH10-upgrade-fr.pdf"
         }
       ]
     }

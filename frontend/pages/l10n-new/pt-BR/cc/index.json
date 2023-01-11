@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "Guia do aplicativo",
-          "link": "/pt-BR/cc/2021.11/CC-AppGuide_pt-BR.pdf"
+          "link": "/l10n/pt-BR/cc/2021.11/CC-AppGuide_pt-BR.pdf"
         }
       ]
     },
@@ -19,11 +19,11 @@
       "items": [
         {
           "label": "Guia de configuração",
-          "link": "/pt-BR/cc/2020.11/CCCloud202011_pt-BR_ConfigGuide.pdf"
+          "link": "/l10n/pt-BR/cc/2020.11/CCCloud202011_pt-BR_ConfigGuide.pdf"
         },
         {
           "label": "Guia de instalação",
-          "link": "/pt-BR/cc/2020.11/CCCloud202011_pt-BR_InstallGuide.pdf"
+          "link": "/l10n/pt-BR/cc/2020.11/CCCloud202011_pt-BR_InstallGuide.pdf"
         }
       ]
     },
@@ -33,7 +33,7 @@
       "items": [
         {
           "label": "Guia do aplicativo",
-          "link": "/pt-BR/cc/2020.05/IS_CL_202005_pt-BR_CC-AppGuide.pdf"
+          "link": "/l10n/pt-BR/cc/2020.05/IS_CL_202005_pt-BR_CC-AppGuide.pdf"
         }
       ]
     },
@@ -43,11 +43,11 @@
       "items": [
         {
           "label": "Guia do aplicativo",
-          "link": "/pt-BR/cc/10.1.1/CC-AppGuide_PTBR.pdf"
+          "link": "/l10n/pt-BR/cc/10.1.1/CC-AppGuide_PTBR.pdf"
         },
         {
           "label": "Guia de gerenciamento de contatos da Guidewire",
-          "link": "/pt-BR/cc/10.1.1/CC-ContactMgmtGuide_PTBR.pdf"
+          "link": "/l10n/pt-BR/cc/10.1.1/CC-ContactMgmtGuide_PTBR.pdf"
         }
       ]
     },
@@ -57,15 +57,15 @@
       "items": [
         {
           "label": "Guia do aplicativo",
-          "link": "/pt-BR/cc/10.0.2/pt-CC-AppGuide.pdf"
+          "link": "/l10n/pt-BR/cc/10.0.2/pt-CC-AppGuide.pdf"
         },
         {
           "label": "Guia de configuração",
-          "link": "/pt-BR/cc/10.0.2/pt-CC-ConfigGuide.pdf"
+          "link": "/l10n/pt-BR/cc/10.0.2/pt-CC-ConfigGuide.pdf"
         },
         {
           "label": "Guia de regras",
-          "link": "/pt-BR/cc/10.0.2/pt-CC-RulesGuide.pdf"
+          "link": "/l10n/pt-BR/cc/10.0.2/pt-CC-RulesGuide.pdf"
         }
       ]
     },
@@ -75,23 +75,23 @@
       "items": [
         {
           "label": "Guia do aplicativo",
-          "link": "/pt-BR/cc/10.0.0/pt-CC-AppGuide.pdf"
+          "link": "/l10n/pt-BR/cc/10.0.0/pt-CC-AppGuide.pdf"
         },
         {
           "label": "Guia de configuração",
-          "link": "/pt-BR/cc/10.0.0/pt-CC-ConfigGuide.pdf"
+          "link": "/l10n/pt-BR/cc/10.0.0/pt-CC-ConfigGuide.pdf"
         },
         {
           "label": "Guia de gerenciamento de contatos",
-          "link": "/pt-BR/cc/10.0.0/pt-CC-ContactMgmtGuide.pdf"
+          "link": "/l10n/pt-BR/cc/10.0.0/pt-CC-ContactMgmtGuide.pdf"
         },
         {
           "label": "Guia de instalação",
-          "link": "/pt-BR/cc/10.0.0/pt-CC-InstallGuide.pdf"
+          "link": "/l10n/pt-BR/cc/10.0.0/pt-CC-InstallGuide.pdf"
         },
         {
           "label": "Guia de regras",
-          "link": "/pt-BR/cc/10.0.0/pt-CC-RulesGuide.pdf"
+          "link": "/l10n/pt-BR/cc/10.0.0/pt-CC-RulesGuide.pdf"
         }
       ]
     }

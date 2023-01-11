@@ -9,11 +9,11 @@
       "items": [
         {
           "label": "Guida all'installazione",
-          "link": "/it-IT/pe/2022.05/it-IT Digital v.2022.05 PE InstallGuide.pdf"
+          "link": "/l10n/it-IT/pe/2022.05/it-IT Digital v.2022.05 PE InstallGuide.pdf"
         },
         {
           "label": "Guida all'applicazione",
-          "link": "/it-IT/pe/2022.05/it-IT Digital v.2022.05 PE_AppGuide.pdf"
+          "link": "/l10n/it-IT/pe/2022.05/it-IT Digital v.2022.05 PE_AppGuide.pdf"
         }
       ]
     },
@@ -23,7 +23,7 @@
       "items": [
         {
           "label": "Guida all'installazione",
-          "link": "/it-IT/pe/2020.08/it-PE-202008-cloud-InstallGuide.pdf"
+          "link": "/l10n/it-IT/pe/2020.08/it-PE-202008-cloud-InstallGuide.pdf"
         }
       ]
     },
@@ -33,7 +33,7 @@
       "items": [
         {
           "label": "Guida all'installazione",
-          "link": "/it-IT/pe/11.3/it-PE-11.3-onprem-InstallGuide.pdf"
+          "link": "/l10n/it-IT/pe/11.3/it-PE-11.3-onprem-InstallGuide.pdf"
         }
       ]
     },
@@ -43,7 +43,7 @@
       "items": [
         {
           "label": "Guida all'applicazione",
-          "link": "/it-IT/pe/10.0.1/it_PE_AppGuide.pdf"
+          "link": "/l10n/it-IT/pe/10.0.1/it_PE_AppGuide.pdf"
         }
       ]
     }

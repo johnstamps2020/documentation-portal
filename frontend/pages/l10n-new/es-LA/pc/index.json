@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "Guía de aplicaciones",
-          "link": "/es-LA/pc/2021.11/PC-AppGuide-ESLA.pdf"
+          "link": "/l10n/es-LA/pc/2021.11/PC-AppGuide-ESLA.pdf"
         }
       ]
     },
@@ -19,15 +19,15 @@
       "items": [
         {
           "label": "Guía de Advanced Product Designer",
-          "link": "/es-LA/pc/2020.11/Cloud202011_es-419_AdvancedProductDesigner.pdf"
+          "link": "/l10n/es-LA/pc/2020.11/Cloud202011_es-419_AdvancedProductDesigner.pdf"
         },
         {
           "label": "Guía de configuración",
-          "link": "/es-LA/pc/2020.11/PCCloud202011_es-419_ConfigGuide.pdf"
+          "link": "/l10n/es-LA/pc/2020.11/PCCloud202011_es-419_ConfigGuide.pdf"
         },
         {
           "label": "Guía de instalación",
-          "link": "/es-LA/pc/2020.11/PCCloud202011_es-419_InstallGuide.pdf"
+          "link": "/l10n/es-LA/pc/2020.11/PCCloud202011_es-419_InstallGuide.pdf"
         }
       ]
     },
@@ -37,11 +37,11 @@
       "items": [
         {
           "label": "Guía de aplicaciones",
-          "link": "/es-LA/pc/2020.05/ISCL_202005_ESLA_PC-AppGuide.pdf"
+          "link": "/l10n/es-LA/pc/2020.05/ISCL_202005_ESLA_PC-AppGuide.pdf"
         },
         {
           "label": "Guía de administración de contactos de Guidewire",
-          "link": "/es-LA/pc/2020.05/ISCL_202005_ESLA_PC_ContactMgmtGuide.pdf"
+          "link": "/l10n/es-LA/pc/2020.05/ISCL_202005_ESLA_PC_ContactMgmtGuide.pdf"
         }
       ]
     },
@@ -51,11 +51,11 @@
       "items": [
         {
           "label": "Guía de Advanced Product Designer",
-          "link": "/es-LA/pc/10.1.1/PC1011_es-419_AdvancedProductDesigner.pdf"
+          "link": "/l10n/es-LA/pc/10.1.1/PC1011_es-419_AdvancedProductDesigner.pdf"
         },
         {
           "label": "Guía de aplicaciones",
-          "link": "/es-LA/pc/10.1.1/PC1011_es-419_AppGuide.pdf"
+          "link": "/l10n/es-LA/pc/10.1.1/PC1011_es-419_AppGuide.pdf"
         }
       ]
     },
@@ -65,15 +65,15 @@
       "items": [
         {
           "label": "Guía de aplicaciones",
-          "link": "/es-LA/pc/10.0.2/es-PC-AppGuide.pdf"
+          "link": "/l10n/es-LA/pc/10.0.2/es-PC-AppGuide.pdf"
         },
         {
           "label": "Guía de configuración",
-          "link": "/es-LA/pc/10.0.2/es-PC-ConfigGuide.pdf"
+          "link": "/l10n/es-LA/pc/10.0.2/es-PC-ConfigGuide.pdf"
         },
         {
           "label": "Guía de reglas",
-          "link": "/es-LA/pc/10.0.2/es-PC-RulesGuide.pdf"
+          "link": "/l10n/es-LA/pc/10.0.2/es-PC-RulesGuide.pdf"
         }
       ]
     },
@@ -83,23 +83,23 @@
       "items": [
         {
           "label": "Guía de aplicaciones",
-          "link": "/es-LA/pc/10.0.0/es-PC-AppGuide.pdf"
+          "link": "/l10n/es-LA/pc/10.0.0/es-PC-AppGuide.pdf"
         },
         {
           "label": "Guía de administración de contactos",
-          "link": "/es-LA/pc/10.0.0/es-PC-ContactMgmtGuide.pdf"
+          "link": "/l10n/es-LA/pc/10.0.0/es-PC-ContactMgmtGuide.pdf"
         },
         {
           "label": "Guía de instalación",
-          "link": "/es-LA/pc/10.0.0/es-PC-InstallGuide.pdf"
+          "link": "/l10n/es-LA/pc/10.0.0/es-PC-InstallGuide.pdf"
         },
         {
           "label": "Guía de reglas",
-          "link": "/es-LA/pc/10.0.0/es-PC-RulesGuide.pdf"
+          "link": "/l10n/es-LA/pc/10.0.0/es-PC-RulesGuide.pdf"
         },
         {
           "label": "Guía de configuración",
-          "link": "/es-LA/pc/10.0.0/es_PC-ConfigGuide.pdf"
+          "link": "/l10n/es-LA/pc/10.0.0/es_PC-ConfigGuide.pdf"
         }
       ]
     }

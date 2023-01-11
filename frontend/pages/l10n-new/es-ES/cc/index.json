@@ -9,11 +9,11 @@
       "items": [
         {
           "label": "Guía de la aplicación",
-          "link": "/es-ES/cc/2022.05/CC-AppGuide_es-ES.pdf"
+          "link": "/l10n/es-ES/cc/2022.05/CC-AppGuide_es-ES.pdf"
         },
         {
           "label": "Guía de configuración",
-          "link": "/es-ES/cc/2022.05/CC-ConfigGuide_es-ES.pdf"
+          "link": "/l10n/es-ES/cc/2022.05/CC-ConfigGuide_es-ES.pdf"
         }
       ]
     },
@@ -23,11 +23,11 @@
       "items": [
         {
           "label": "Guía de autenticación de la API de la nube",
-          "link": "/es-ES/cc/2021.11/CC v.2021.11 es-ES CloudAPIGuide-Auth.pdf"
+          "link": "/l10n/es-ES/cc/2021.11/CC v.2021.11 es-ES CloudAPIGuide-Auth.pdf"
         },
         {
           "label": "Guía de configuración y flujos de negocio de la API de la nube",
-          "link": "/es-ES/cc/2021.11/CC v.2021.11 es-ES CloudAPIGuide-BusinessFlows.pdf"
+          "link": "/l10n/es-ES/cc/2021.11/CC v.2021.11 es-ES CloudAPIGuide-BusinessFlows.pdf"
         }
       ]
     },
@@ -37,23 +37,23 @@
       "items": [
         {
           "label": "Guía de aplicaciones",
-          "link": "/es-ES/cc/10.0.2/esES-CC-AppGuide.pdf"
+          "link": "/l10n/es-ES/cc/10.0.2/esES-CC-AppGuide.pdf"
         },
         {
           "label": "Guía de configuración",
-          "link": "/es-ES/cc/10.0.2/esES-CC-ConfigGuide.pdf"
+          "link": "/l10n/es-ES/cc/10.0.2/esES-CC-ConfigGuide.pdf"
         },
         {
           "label": "Guía de gestión de contactos de Guidewire",
-          "link": "/es-ES/cc/10.0.2/esES-CC-ContactMgmtGuide.pdf"
+          "link": "/l10n/es-ES/cc/10.0.2/esES-CC-ContactMgmtGuide.pdf"
         },
         {
           "label": "Guía de instalación",
-          "link": "/es-ES/cc/10.0.2/esES-CC-InstallGuide.pdf"
+          "link": "/l10n/es-ES/cc/10.0.2/esES-CC-InstallGuide.pdf"
         },
         {
           "label": "Guía de reglas",
-          "link": "/es-ES/cc/10.0.2/esES-CC-RulesGuide.pdf"
+          "link": "/l10n/es-ES/cc/10.0.2/esES-CC-RulesGuide.pdf"
         }
       ]
     }

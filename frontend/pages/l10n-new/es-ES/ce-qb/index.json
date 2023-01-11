@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "Guía de la aplicación",
-          "link": "/es-ES/ce-qb/2022.05/es-ES v.2022.05 CE-QB_AppGuide.pdf"
+          "link": "/l10n/es-ES/ce-qb/2022.05/es-ES v.2022.05 CE-QB_AppGuide.pdf"
         }
       ]
     },
@@ -19,7 +19,7 @@
       "items": [
         {
           "label": "Guía de instalación",
-          "link": "/es-ES/ce-qb/11.1/es-ES-CE_QB-onprem_InstallGuide.pdf"
+          "link": "/l10n/es-ES/ce-qb/11.1/es-ES-CE_QB-onprem_InstallGuide.pdf"
         }
       ]
     },
@@ -29,15 +29,15 @@
       "items": [
         {
           "label": "Guía de la aplicación",
-          "link": "/es-ES/ce-qb/10.0.1/es-ES_CEQB_AppGuide.pdf"
+          "link": "/l10n/es-ES/ce-qb/10.0.1/es-ES_CEQB_AppGuide.pdf"
         },
         {
           "label": "Guía de configuración",
-          "link": "/es-ES/ce-qb/10.0.1/es-ES_CEQB_ConfigurationGuide.pdf"
+          "link": "/l10n/es-ES/ce-qb/10.0.1/es-ES_CEQB_ConfigurationGuide.pdf"
         },
         {
           "label": "Guía de instalación",
-          "link": "/es-ES/ce-qb/10.0.1/es-ES_CEQB_InstallGuide.pdf"
+          "link": "/l10n/es-ES/ce-qb/10.0.1/es-ES_CEQB_InstallGuide.pdf"
         }
       ]
     }

@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "Guía de la aplicación",
-          "link": "/es-LA/ce-qb/2022.05/es-LA-v.2022.05 CE-QB_AppGuide.pdf"
+          "link": "/l10n/es-LA/ce-qb/2022.05/es-LA-v.2022.05 CE-QB_AppGuide.pdf"
         }
       ]
     },
@@ -19,7 +19,7 @@
       "items": [
         {
           "label": "Guía de instalación",
-          "link": "/es-LA/ce-qb/11.1/es-419-CE_QB-onprem_InstallGuide.pdf"
+          "link": "/l10n/es-LA/ce-qb/11.1/es-419-CE_QB-onprem_InstallGuide.pdf"
         }
       ]
     },
@@ -29,23 +29,23 @@
       "items": [
         {
           "label": "Guía de seguridad y administración",
-          "link": "/es-LA/ce-qb/10.0.1/es-CEQB_admin-and-security-guide.pdf"
+          "link": "/l10n/es-LA/ce-qb/10.0.1/es-CEQB_admin-and-security-guide.pdf"
         },
         {
           "label": "Guía de la aplicación",
-          "link": "/es-LA/ce-qb/10.0.1/es-CEQB_AppGuide.pdf"
+          "link": "/l10n/es-LA/ce-qb/10.0.1/es-CEQB_AppGuide.pdf"
         },
         {
           "label": "Guía de configuración",
-          "link": "/es-LA/ce-qb/10.0.1/es-CEQB_ConfigurationGuide.pdf"
+          "link": "/l10n/es-LA/ce-qb/10.0.1/es-CEQB_ConfigurationGuide.pdf"
         },
         {
           "label": "Guía de instalación",
-          "link": "/es-LA/ce-qb/10.0.1/es-CEQB_InstallGuide-es.pdf"
+          "link": "/l10n/es-LA/ce-qb/10.0.1/es-CEQB_InstallGuide-es.pdf"
         },
         {
           "label": "Guía de configuración e instalación de Live Style Guide",
-          "link": "/es-LA/ce-qb/10.0.1/es-CEQB_LiveStyleGuide.pdf"
+          "link": "/l10n/es-LA/ce-qb/10.0.1/es-CEQB_LiveStyleGuide.pdf"
         }
       ]
     }

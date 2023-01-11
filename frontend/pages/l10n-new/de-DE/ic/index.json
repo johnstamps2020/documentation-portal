@@ -9,35 +9,35 @@
       "items": [
         {
           "label": "Administrationshandbuch",
-          "link": "/de-DE/ic/10.0.0/IC10-admin-de.pdf"
+          "link": "/l10n/de-DE/ic/10.0.0/IC10-admin-de.pdf"
         },
         {
           "label": "BI-Anwendungshandbuch",
-          "link": "/de-DE/ic/10.0.0/IC10-bi-applications-de.pdf"
+          "link": "/l10n/de-DE/ic/10.0.0/IC10-bi-applications-de.pdf"
         },
         {
           "label": "InfoCenter Konfigurationshandbuch",
-          "link": "/de-DE/ic/10.0.0/IC10-config-de.pdf"
+          "link": "/l10n/de-DE/ic/10.0.0/IC10-config-de.pdf"
         },
         {
           "label": "Leitfaden zur Datenspezifikation",
-          "link": "/de-DE/ic/10.0.0/IC10-dataspec-de.pdf"
+          "link": "/l10n/de-DE/ic/10.0.0/IC10-dataspec-de.pdf"
         },
         {
           "label": "Installationshandbuch",
-          "link": "/de-DE/ic/10.0.0/IC10-install-de.pdf"
+          "link": "/l10n/de-DE/ic/10.0.0/IC10-install-de.pdf"
         },
         {
           "label": "Produkthandbuch",
-          "link": "/de-DE/ic/10.0.0/IC10-product-de.pdf"
+          "link": "/l10n/de-DE/ic/10.0.0/IC10-product-de.pdf"
         },
         {
           "label": "Berichtshandbuch",
-          "link": "/de-DE/ic/10.0.0/IC10-reports-de.pdf"
+          "link": "/l10n/de-DE/ic/10.0.0/IC10-reports-de.pdf"
         },
         {
           "label": "Upgrade-Handbuch",
-          "link": "/de-DE/ic/10.0.0/IC10-upgrade-de.pdf"
+          "link": "/l10n/de-DE/ic/10.0.0/IC10-upgrade-de.pdf"
         }
       ]
     }

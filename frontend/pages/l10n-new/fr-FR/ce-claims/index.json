@@ -9,19 +9,19 @@
       "items": [
         {
           "label": "Guide d'installation",
-          "link": "/fr-FR/ce-claims/11.4.1/fr-FR Digital v.11.4.1 CE-AM  CE-AM Claims InstallGuide.pdf"
+          "link": "/l10n/fr-FR/ce-claims/11.4.1/fr-FR Digital v.11.4.1 CE-AM  CE-AM Claims InstallGuide.pdf"
         },
         {
           "label": "Guide de l'application",
-          "link": "/fr-FR/ce-claims/11.4.1/Fr-FR Digital v.11.4.1 CE-AM-Claims AppGuide.pdf"
+          "link": "/l10n/fr-FR/ce-claims/11.4.1/Fr-FR Digital v.11.4.1 CE-AM-Claims AppGuide.pdf"
         },
         {
           "label": "Guide du développeur",
-          "link": "/fr-FR/ce-claims/11.4.1/fr-FR-Digital v,11.4.1 CE-AM Claims Developers Guide.pdf"
+          "link": "/l10n/fr-FR/ce-claims/11.4.1/fr-FR-Digital v,11.4.1 CE-AM Claims Developers Guide.pdf"
         },
         {
           "label": "Guide d'administration et de sécurité",
-          "link": "/fr-FR/ce-claims/11.4.1/fr-FR-Digital v.11.4.1 CE-AM - Claims admin&security-guide.pdf"
+          "link": "/l10n/fr-FR/ce-claims/11.4.1/fr-FR-Digital v.11.4.1 CE-AM - Claims admin&security-guide.pdf"
         }
       ]
     }
