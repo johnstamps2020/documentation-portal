@@ -1,0 +1,59 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "ipukgarmischrn",
+      "title": "Release Notes",
+      "url": "ipuk/garmisch/releasenotes",
+      "metadata": {
+        "product": ["OIC Integration"],
+        "platform": ["Cloud"],
+        "version": ["1.1"],
+        "release": ["Garmisch"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "ipukgarmischconfig",
+      "title": "Configuration",
+      "url": "ipuk/garmisch/config",
+      "metadata": {
+        "product": ["OIC Integration"],
+        "platform": ["Cloud"],
+        "version": ["1.1"],
+        "release": ["Garmisch"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "ipukgarmischapp",
+      "title": "Application Guide",
+      "url": "ipuk/garmisch/app",
+      "metadata": {
+        "product": ["OIC Integration"],
+        "platform": ["Cloud"],
+        "version": ["1.1"],
+        "release": ["Garmisch"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    }
+  ]
+}

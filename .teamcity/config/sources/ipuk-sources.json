@@ -1,0 +1,12 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "ipukgarmischsrc",
+      "title": "InsuranceSuite Package for UK Garmisch",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipuk.git",
+      "branch": "release/1.1"
+    }
+  ]
+}
