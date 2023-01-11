@@ -33,7 +33,7 @@
     "http-errors": "~1.6.3",
     "http-proxy": "^1.18.1",
     "jsdom": "^19.0.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "node-fetch": "^2.6.7",
     "node-fetch-retry": "^2.0.0",
     "openid-client": "^4.9.1",
