@@ -209,6 +209,7 @@ const majorInternalRoutes: string[] = [];
 export function redirectToLoginPage(req: Request, res: Response) {
   try {
     req.session!.redirectTo = req.originalUrl;
+    console.log(`Redirect to saved to session: ${req.originalUrl}`);
     if (req.query.authSource === 'guidewire-customer') {
       return res.redirect('/customers-login');
     }
@@ -224,24 +225,31 @@ export function redirectToLoginPage(req: Request, res: Response) {
   }
 }
 
+export function removeAuthParamsFromUrl(originalUrl: string) {
+  const fullRequestUrl = new URL(originalUrl, process.env.APP_BASE_URL);
+  if (fullRequestUrl.searchParams.has('authSource')) {
+    fullRequestUrl.searchParams.delete('authSource');
+    return fullRequestUrl.href.replace(`${process.env.APP_BASE_URL}`, '');
+  }
+  return originalUrl;
+}
+
+export function resolveRequestedUrl(req: Request) {
+  if (req.session!.redirectTo) {
+    const redirectTo = req.session!.redirectTo;
+    console.log(`RedirectTo deleted from session: ${redirectTo}`);
+    delete req.session!.redirectTo;
+    return redirectTo;
+  }
+  return req.originalUrl;
+}
+
 export function openRequestedUrl(req: Request, res: Response) {
   try {
-    let targetUrl = req.originalUrl;
-    if (req.session!.redirectTo) {
-      const redirectTo = req.session!.redirectTo;
-      delete req.session!.redirectTo;
-      targetUrl = redirectTo;
-    }
-    const fullRequestUrl = new URL(targetUrl, process.env.APP_BASE_URL);
-    if (fullRequestUrl.searchParams.has('authSource')) {
-      fullRequestUrl.searchParams.delete('authSource');
-      targetUrl = fullRequestUrl.href.replace(
-        `${process.env.APP_BASE_URL}`,
-        ''
-      );
-    }
-    if (targetUrl !== req.originalUrl) {
-      res.redirect(targetUrl);
+    const originalUrl = req.originalUrl;
+    const cleanUrl = removeAuthParamsFromUrl(originalUrl);
+    if (originalUrl !== cleanUrl) {
+      res.redirect(cleanUrl);
     }
   } catch (err) {
     winstonLogger.error(

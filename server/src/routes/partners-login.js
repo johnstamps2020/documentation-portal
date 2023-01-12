@@ -4,7 +4,10 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const saml = require('passport-saml');
-const { openRequestedUrl } = require('../controllers/authController');
+const {
+  openRequestedUrl,
+  resolveRequestedUrl,
+} = require('../controllers/authController');
 
 router.use(cookieParser());
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -52,7 +55,7 @@ router.post(
   },
   passport.authenticate('partnersSamlStrategy'),
   function(req, res) {
-    return openRequestedUrl(req, res);
+    res.redirect(resolveRequestedUrl(req));
   }
 );
 
