@@ -23,10 +23,20 @@
       "env": ["staging", "prod"]
     },
     {
-      "label": "Jutro SDK (Early Access)",
+      "label": "Tools and libraries",
       "class": "categoryCard cardShadow",
-      "id": "jutrosdknext",
-      "env": ["int"]
+      "items": [
+        {
+          "label": "Jutro SDK",
+          "id": "jutrosdknext",
+          "env": ["int"]
+        },
+        {
+          "label": "APD toolkit",
+          "id": "jutroapdtoolkit",
+          "env": ["int"]
+        }
+      ]
     },
     {
       "label": "Jutro Design System 8.3.0",
