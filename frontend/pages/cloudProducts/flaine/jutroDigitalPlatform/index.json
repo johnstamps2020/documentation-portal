@@ -33,7 +33,7 @@
         },
         {
           "label": "APD toolkit",
-          "id": "jutroapdtoolkit",
+          "id": "jutroapdtoolkitnext",
           "env": ["int"]
         }
       ]
