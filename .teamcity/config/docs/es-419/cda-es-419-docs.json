@@ -1,0 +1,23 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "clouddataaccessguidees419",
+      "title": "Application Guide es-419",
+      "url": "cloud/es-419/cda/guide/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Data Access"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

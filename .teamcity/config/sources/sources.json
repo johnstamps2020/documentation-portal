@@ -758,13 +758,6 @@
       "branch": "main"
     },
     {
-      "id": "clouddataaccesses419src",
-      "title": "Cloud Data Access Guide es419",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-access.git",
-      "branch": "release/es-419/2021.11"
-    },
-    {
       "id": "clouddataaccessitITsrc",
       "title": "Cloud Data Access Guide it-IT",
       "sourceType": "git",
@@ -784,13 +777,6 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
       "branch": "main"
-    },
-    {
-      "id": "explorees419src",
-      "title": "Explore es419",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
-      "branch": "es-419/2022Mar"
     },
     {
       "id": "exploreptBRsrc",

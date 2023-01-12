@@ -24,14 +24,6 @@
       "srcId": "explorees419src",
       "docId": "explorees419datadictrelease",
       "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "m_cloud-usingExplore.ditamap",
-      "srcId": "exploreptBRsrc",
-      "docId": "exploreptBRusingrelease",
-      "indexRedirect": true
     }
   ]
 }

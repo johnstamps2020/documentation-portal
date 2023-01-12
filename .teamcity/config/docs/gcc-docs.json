@@ -165,38 +165,6 @@
       "earlyAccess": true
     },
     {
-      "id": "guidewirecloudconsolerootinsurerdeves419",
-      "title": "Cloud Console Guide Insurer Developer es-419",
-      "url": "cloud/es-419/gcc-guide/insurer-developer/latest",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
-        "version": ["latest"]
-      },
-      "environments": ["dev"],
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "guidewirecloudconsolerootinsurerdevrnes419",
-      "title": "Cloud Console Release Notes Insurer Developer es-419",
-      "url": "cloud/es-419/gcc-rn/insurer-developer/latest",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
-        "version": ["latest"]
-      },
-      "environments": ["dev"],
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "guidewirecloudconsolerootinsurerdevitIT",
       "title": "Cloud Console Guide Insurer Developer it-IT",
       "url": "cloud/it-IT/gcc-guide/insurer-developer/latest",
