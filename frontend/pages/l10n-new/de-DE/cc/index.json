@@ -27,11 +27,11 @@
       "items": [
         {
           "label": "Cloud-API-Geschäftsabläufe- und Konfigurationshandbuch",
-          "link": "/l10n/de-DE/cc/2021.11/CC v.2021.11  de-DE CloudAPIGuide-BusinessFlows.pdf"
+          "id": "iscc202111apibfdeDE"
         },
         {
           "label": "Cloud-API-Authentifizierungshandbuch",
-          "link": "/l10n/de-DE/cc/2021.11/CC v.2021.11 de-DE CloudAPIGuide-Auth.pdf"
+          "id": "iscc202111apicadeDE"
         }
       ]
     },

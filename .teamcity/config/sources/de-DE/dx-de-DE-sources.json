@@ -1,0 +1,12 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "dx1141deDE",
+      "title": "Digital 11.4.1 de-DE",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "release/de-DE/11.4.1"
+    }
+  ]
+}
