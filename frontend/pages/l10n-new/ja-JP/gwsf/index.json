@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "インストールガイド",
-          "link": "/l10n/ja-JP/gwsf/2021.11/ja-JP-2021.11-Guidewire_For_Salesforce_install-guide.pdf"
+          "id": "dxgwsfinstall202111jaJP"
         }
       ]
     }
