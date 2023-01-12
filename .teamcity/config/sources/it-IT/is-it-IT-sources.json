@@ -1,0 +1,12 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "is202111itITsrc",
+      "title": "IS 2021.11.2 it-IT",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/it-IT/2021.11.2"
+    }
+  ]
+}

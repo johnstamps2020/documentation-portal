@@ -1,0 +1,22 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "guidewireidentityfederationhubitIT",
+      "title": "Authentication it-IT",
+      "url": "cloud/auth/it-IT/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Identity Federation Hub"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

@@ -16,13 +16,6 @@
       "branch": "release/11.4.1"
     },
     {
-      "id": "dx1141frFR",
-      "title": "Digital 11.4.1 fr-FR",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "release/fr-FR/11.4.1"
-    },
-    {
       "id": "dx1130",
       "title": "Digital 11.3.0",
       "sourceType": "git",

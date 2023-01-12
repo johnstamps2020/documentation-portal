@@ -1,0 +1,13 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "UnderstandingCloudDataAccess.ditamap",
+      "srcId": "clouddataaccessptBRsrc",
+      "docId": "clouddataaccessguideptBR",
+      "indexRedirect": true
+    }
+  ]
+}

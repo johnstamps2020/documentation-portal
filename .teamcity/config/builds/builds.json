@@ -19,14 +19,6 @@
     },
     {
       "buildType": "dita",
-      "root": "GuidewireHub.ditamap",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
-      "indexRedirect": true,
-      "srcId": "guidewireidentityfederationhubitITsrc",
-      "docId": "guidewireidentityfederationhubitIT"
-    },
-    {
-      "buildType": "dita",
       "root": "CloudPlatform.ditamap",
       "filter": "GW-Generic-Cloud-Draft.ditaval",
       "indexRedirect": true,
@@ -373,22 +365,6 @@
       "root": "UnderstandingCloudDataAccess.ditamap",
       "srcId": "clouddataaccesssrc",
       "docId": "clouddataaccessguide",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "UnderstandingCloudDataAccess.ditamap",
-      "srcId": "clouddataaccessitITsrc",
-      "docId": "clouddataaccessguideitIT",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "UnderstandingCloudDataAccess.ditamap",
-      "srcId": "clouddataaccessptBRsrc",
-      "docId": "clouddataaccessguideptBR",
       "indexRedirect": true
     },
     {
