@@ -364,7 +364,7 @@
     {
       "id": "jutrosdknext",
       "title": "Jutro SDK",
-      "url": "jutro/sdk/next/",
+      "url": "jutro/sdk/next",
       "metadata": {
         "product": ["Jutro SDK"],
         "platform": ["Cloud"],
