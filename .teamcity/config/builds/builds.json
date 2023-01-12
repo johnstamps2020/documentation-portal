@@ -379,14 +379,6 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "UnderstandingCloudDataAccess.ditamap",
-      "srcId": "clouddataaccesses419src",
-      "docId": "clouddataaccessguidees419",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "UnderstandingCloudDataAccess.ditamap",
       "srcId": "clouddataaccessitITsrc",
       "docId": "clouddataaccessguideitIT",
       "indexRedirect": true
