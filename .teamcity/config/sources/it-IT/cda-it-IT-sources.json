@@ -1,0 +1,12 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "clouddataaccessitITsrc",
+      "title": "Cloud Data Access Guide it-IT",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-access.git",
+      "branch": "release/it-IT/2021.11"
+    }
+  ]
+}

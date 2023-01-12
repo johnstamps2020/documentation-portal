@@ -758,32 +758,11 @@
       "branch": "main"
     },
     {
-      "id": "clouddataaccessitITsrc",
-      "title": "Cloud Data Access Guide it-IT",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-access.git",
-      "branch": "release/it-IT/2021.11"
-    },
-    {
-      "id": "clouddataaccessptBRsrc",
-      "title": "Cloud Data Access Guide pt-BR",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-access.git",
-      "branch": "release/pt-BR/2021.11"
-    },
-    {
       "id": "exploresrc",
       "title": "Explore",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
       "branch": "main"
-    },
-    {
-      "id": "exploreptBRsrc",
-      "title": "Explore ptBR",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
-      "branch": "pt-BR/2022Mar"
     },
     {
       "id": "insurancenowextrassrc",
@@ -798,13 +777,6 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
       "branch": "main"
-    },
-    {
-      "id": "guidewireidentityfederationhubitITsrc",
-      "title": "Guidewire Identity Federation Hub Release it-IT",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
-      "branch": "release/it-IT/2021.04"
     },
     {
       "id": "cloudplatformsrc",

@@ -1,0 +1,13 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "root": "GuidewireHub.ditamap",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewireidentityfederationhubitITsrc",
+      "docId": "guidewireidentityfederationhubitIT"
+    }
+  ]
+}

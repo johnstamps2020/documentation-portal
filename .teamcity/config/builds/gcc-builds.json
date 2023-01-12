@@ -52,38 +52,6 @@
       "indexRedirect": true,
       "srcId": "guidewirecloudconsolelatestsrc",
       "docId": "guidewirecloudconsolerootearlyaccess"
-    },
-    {
-      "buildType": "dita",
-      "root": "gcc.ditamap",
-      "filter": "insurer-developer.ditaval",
-      "indexRedirect": true,
-      "srcId": "guidewirecloudconsolelatestitITsrc",
-      "docId": "guidewirecloudconsolerootinsurerdevitIT"
-    },
-    {
-      "buildType": "dita",
-      "root": "gcc_release_notes.ditamap",
-      "filter": "insurer-developer.ditaval",
-      "indexRedirect": true,
-      "srcId": "guidewirecloudconsolelatestitITsrc",
-      "docId": "guidewirecloudconsolerootinsurerdevrnitIT"
-    },
-    {
-      "buildType": "dita",
-      "root": "gcc.ditamap",
-      "filter": "insurer-developer.ditaval",
-      "indexRedirect": true,
-      "srcId": "guidewirecloudconsolelatestptBRsrc",
-      "docId": "guidewirecloudconsolerootinsurerdevptBR"
-    },
-    {
-      "buildType": "dita",
-      "root": "gcc_release_notes.ditamap",
-      "filter": "insurer-developer.ditaval",
-      "indexRedirect": true,
-      "srcId": "guidewirecloudconsolelatestptBRsrc",
-      "docId": "guidewirecloudconsolerootinsurerdevrnptBR"
     }
   ]
 }

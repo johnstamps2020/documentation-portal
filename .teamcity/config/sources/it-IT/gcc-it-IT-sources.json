@@ -1,0 +1,12 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "guidewirecloudconsolelatestitITsrc",
+      "title": "Guidewire Cloud Console it-IT",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-cloud-console.git",
+      "branch": "release/it-IT/2021.11"
+    }
+  ]
+}

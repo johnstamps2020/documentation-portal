@@ -36,23 +36,6 @@
       "earlyAccess": false
     },
     {
-      "id": "guidewireidentityfederationhubitIT",
-      "title": "Authentication it-IT",
-      "url": "cloud/auth/it-IT/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Identity Federation Hub"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "cloudplatformdraft",
       "title": "Network Connectivity",
       "url": "cloud/gwcp/latest",
@@ -926,42 +909,6 @@
         "subject": ["Features and functionality"]
       },
       "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "clouddataaccessguideitIT",
-      "title": "Application Guide it-IT",
-      "url": "cloud/it-IT/cda/guide/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Data Access"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["dev", "int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "clouddataaccessguideptBR",
-      "title": "Application Guide pt-BR",
-      "url": "cloud/pt-BR/cda/guide/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Data Access"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["dev", "int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
