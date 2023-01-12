@@ -1,0 +1,22 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "guidewireidentityfederationhubjaJP",
+      "title": "Authentication ja-JP",
+      "url": "cloud/auth/ja-JP/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Identity Federation Hub"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
