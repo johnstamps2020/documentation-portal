@@ -125,10 +125,10 @@
   align-items: flex-start;
   justify-content: flex-end;
   gap: 1rem;
-  margin-top: .88rem;
+  margin-top: 0.88rem;
   margin-left: 2rem;
   flex-grow: 1;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .feedbackThumbs {
@@ -248,7 +248,7 @@
   .feedbackButton:hover {
     transform: none;
   }
-  
+
   .feedbackButton.selected {
     transform: none;
   }
