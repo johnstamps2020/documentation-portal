@@ -85,6 +85,29 @@ if (process.env.LOCALHOST_SESSION_SETTINGS === 'yes') {
 app.set('trust proxy', 1);
 app.use(session(sessionSettings));
 
+/*
+Dummy implementation of regenerate and save functions is a workaround
+for using passport 0.6.0 with cookie-session. This workaround is needed until the known issue
+is resolved by the library maintainer: https://github.com/jaredhanson/passport/issues/904
+The upgrade to version 0.6.x was required because passport 0.5.x
+contains "CVE-2022-25896 4.8 Session Fixation vulnerability pending CVSS allocation".
+*/
+// Workaround start
+app.use(function(req, res, next) {
+  if (req.session && !req.session.regenerate) {
+    req.session.regenerate = (cb: () => void) => {
+      cb();
+    };
+  }
+  if (req.session && !req.session.save) {
+    req.session.save = (cb: () => void) => {
+      cb();
+    };
+  }
+  next();
+});
+// Workaround end
+
 const gwLoginRouter = require('./routes/gw-login');
 const gwLogoutRouter = require('./routes/gw-logout');
 const partnersLoginRouter = require('./routes/partners-login');
