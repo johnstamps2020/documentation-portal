@@ -364,7 +364,7 @@
     {
       "id": "jutrosdknext",
       "title": "Jutro SDK",
-      "url": "jutro/sdk/next/jutro-sdk",
+      "url": "jutro/sdk/next/",
       "metadata": {
         "product": ["Jutro SDK"],
         "platform": ["Cloud"],
@@ -395,23 +395,6 @@
       "public": false,
       "internal": false,
       "earlyAccess": true
-    },
-    {
-      "id": "jutroapdtoolkitnext",
-      "title": "Jutro APD Toolkit",
-      "url": "jutro/sdk/next/apd-toolkit",
-      "metadata": {
-        "product": ["Advanced Product Designer"],
-        "platform": ["Cloud"],
-        "version": ["next"],
-        "subject": ["Best practices"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
     },
     {
       "id": "jutrorewards",

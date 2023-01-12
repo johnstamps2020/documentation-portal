@@ -28,12 +28,12 @@
       "items": [
         {
           "label": "Jutro SDK",
-          "id": "jutrosdknext",
+          "link": "/jutro/sdk/next/docs/jutro-sdk-overview",
           "env": ["int"]
         },
         {
           "label": "APD toolkit",
-          "id": "jutroapdtoolkitnext",
+          "link": "/jutro/sdk/next/docs/apd-overview",
           "env": ["int"]
         }
       ]
