@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
+import { ILike } from 'typeorm';
 import fetch from 'node-fetch';
 import { findEntity, getDocByUrl } from './configController';
 import {
   isUserAllowedToAccessResource,
   openRequestedUrl,
   redirectToLoginPage,
-  removeAuthParamsFromUrl,
 } from './authController';
 import { Page } from '../model/entity/Page';
 import { runningInDevMode } from './utils/serverUtils';
@@ -127,18 +127,22 @@ export async function reactAppProxy(
     changeOrigin: true,
   };
   /* Open routes, such as /gw-login and /search, are configured in the database as public pages.
-          This way, the user can view them without login.*/
-  if (
-    req.path.startsWith('/static') ||
-    req.path.startsWith('/landing-page-resources') ||
-    req.path === '/'
-  ) {
+        Resource routes, such as /static and /landing-page-resource, are configured in the database
+         as public pages with the "resource" component.
+        This way, the user can view these routes without login.*/
+  if (req.path === '/') {
     return proxy.web(req, res, proxyOptions, next);
   }
-  const requestedPage = await findEntity(Page.name, {
+  let requestedPage = await findEntity(Page.name, {
     path: req.path.replace(/^\//g, ''),
   });
-  if (!requestedPage) {
+  if (requestedPage.status === 404) {
+    requestedPage = await findEntity(Page.name, {
+      component: ILike('%resource%'),
+      path: req.path.split('/')[1],
+    });
+  }
+  if ([400, 404, 500].includes(requestedPage.status)) {
     return next();
   }
   const requestedPageBody = requestedPage.body;
@@ -154,7 +158,6 @@ export async function reactAppProxy(
     return res.redirect(forbiddenRoute);
   }
 
-  // FIXME: the openRequestedUrl function gets into an infinite loop when used here
   openRequestedUrl(req, res);
   if (isDevMode) {
     return proxy.web(req, res, proxyOptions, next);

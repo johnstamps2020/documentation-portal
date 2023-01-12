@@ -204,8 +204,6 @@ const majorPublicRoutes = [
 
 const majorInternalRoutes: string[] = [];
 
-// FIXME: Redirects happen also in the auth routes for Okta nad GW Community.
-//  We need to clean up the redirecting logic
 export function redirectToLoginPage(req: Request, res: Response) {
   try {
     req.session!.redirectTo = req.originalUrl;
