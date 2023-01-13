@@ -1,13 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
-import { ILike } from 'typeorm';
 import fetch from 'node-fetch';
-import { findEntity, getDocByUrl } from './configController';
+import { getDocByUrl, getPage } from './configController';
 import {
   isUserAllowedToAccessResource,
   openRequestedUrl,
   redirectToLoginPage,
 } from './authController';
-import { Page } from '../model/entity/Page';
 import { runningInDevMode } from './utils/serverUtils';
 
 const HttpProxy = require('http-proxy');
@@ -127,22 +125,14 @@ export async function reactAppProxy(
     changeOrigin: true,
   };
   /* Open routes, such as /gw-login and /search, are configured in the database as public pages.
-        Resource routes, such as /static and /landing-page-resource, are configured in the database
-         as public pages with the "resource" component.
-        This way, the user can view these routes without login.*/
+              Resource routes, such as /static and /landing-page-resource, are configured in the database
+               as public pages with the "resource" component.
+              This way, the user can view these routes without login.*/
   if (req.path === '/') {
     return proxy.web(req, res, proxyOptions, next);
   }
-  let requestedPage = await findEntity(Page.name, {
-    path: req.path.replace(/^\//g, ''),
-  });
-  if (requestedPage.status === 404) {
-    requestedPage = await findEntity(Page.name, {
-      component: ILike('%resource%'),
-      path: req.path.split('/')[1],
-    });
-  }
-  if ([400, 404, 500].includes(requestedPage.status)) {
+  const requestedPage = await getPage(req);
+  if (!requestedPage) {
     return next();
   }
   const requestedPageBody = requestedPage.body;

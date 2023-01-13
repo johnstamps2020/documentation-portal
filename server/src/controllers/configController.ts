@@ -6,7 +6,7 @@ import { AppDataSource } from '../model/connection';
 import { Doc } from '../model/entity/Doc';
 import { Product } from '../model/entity/Product';
 import { Release } from '../model/entity/Release';
-import { FindOneAndDeleteOptions, FindOptionsWhere } from 'typeorm';
+import { FindOneAndDeleteOptions, FindOptionsWhere, ILike } from 'typeorm';
 import { ApiResponse } from '../types/apiResponse';
 import { Page } from '../model/entity/Page';
 import { isUserAllowedToAccessResource } from './authController';
@@ -19,6 +19,22 @@ function optionsAreValid(options: {}) {
 
 async function pageExists(pagePath: string) {
   return (await AppDataSource.manager.countBy(Page, { path: pagePath })) === 1;
+}
+
+export async function getPage(reqObj: Request) {
+  let page = await findEntity(Page.name, {
+    path: reqObj.path.replace(/^\//g, ''),
+  });
+  if (page.status === 404) {
+    page = await findEntity(Page.name, {
+      component: ILike('%resource%'),
+      path: reqObj.path.split('/')[1],
+    });
+  }
+  if ([400, 404, 500].includes(page.status)) {
+    return null;
+  }
+  return page;
 }
 
 export async function getBreadcrumbs(pagePath: string): Promise<ApiResponse> {
