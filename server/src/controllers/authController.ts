@@ -204,17 +204,23 @@ const majorPublicRoutes = [
 
 const majorInternalRoutes: string[] = [];
 
+export function saveRedirectUrlToSession(req: Request) {
+  const redirectToParam = req.query.redirectTo;
+  if (redirectToParam) {
+    req.session!.redirectTo = redirectToParam;
+  }
+}
+
 export function redirectToLoginPage(req: Request, res: Response) {
   try {
-    req.session!.redirectTo = req.originalUrl;
-    console.log(`Redirect to saved to session: ${req.originalUrl}`);
+    const redirectTo = req.originalUrl;
     if (req.query.authSource === 'guidewire-customer') {
-      return res.redirect('/customers-login');
+      return res.redirect(`/customers-login?redirectTo=${redirectTo}`);
     }
     if (req.query.authSource === 'guidewire-partner') {
-      return res.redirect('/partners-login');
+      return res.redirect(`/partners-login?redirectTo=${redirectTo}`);
     }
-    return res.redirect('/landing/gw-login');
+    return res.redirect(`/landing/gw-login?redirectTo=${redirectTo}`);
   } catch (err) {
     winstonLogger.error(
       `Problem redirecting to login page 

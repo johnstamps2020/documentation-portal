@@ -3,8 +3,16 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
+import { useLocation } from "react-router-dom";
 
 export default function LoginOptions() {
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const redirectTo = query.get("redirectTo") || `/landing${location.pathname}`;
+  const cloudLoginHref = `/authorization-code?redirectTo=${redirectTo}`;
+  const gwCommunityHref = `/customers-login?redirectTo=${redirectTo}`;
+  const gwPartnerHref = `/partners-login?redirectTo=${redirectTo}`;
+  const employeeLoginHref = `${cloudLoginHref}&idp=okta`;
   return (
     <Stack spacing={2}>
       <Tooltip
@@ -16,7 +24,7 @@ export default function LoginOptions() {
         placement="left"
         arrow
       >
-        <Button href="/authorization-code" variant="contained" color="primary">
+        <Button href={cloudLoginHref} variant="contained" color="primary">
           Guidewire Cloud
         </Button>
       </Tooltip>
@@ -29,7 +37,7 @@ export default function LoginOptions() {
         placement="left"
         arrow
       >
-        <Button href="/customers-login" variant="contained" color="primary">
+        <Button href={gwCommunityHref} variant="contained" color="primary">
           Customer Community
         </Button>
       </Tooltip>
@@ -42,14 +50,14 @@ export default function LoginOptions() {
         placement="left"
         arrow
       >
-        <Button href="/partners-login" variant="contained" color="primary">
+        <Button href={gwPartnerHref} variant="contained" color="primary">
           Partner Community
         </Button>
       </Tooltip>
       <Button
         variant="outlined"
         color="primary"
-        href="/authorization-code?idp=okta"
+        href={employeeLoginHref}
         sx={{ fontWeight: 600, border: 1 }}
       >
         Guidewire Employee

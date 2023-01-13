@@ -6,8 +6,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const { winstonLogger } = require('../controllers/loggerController');
 const {
-  openRequestedUrl,
   resolveRequestedUrl,
+  saveRedirectUrlToSession,
 } = require('../controllers/authController');
 
 Issuer.discover(process.env.OKTA_DOMAIN)
@@ -52,6 +52,7 @@ Issuer.discover(process.env.OKTA_DOMAIN)
         if (req.query.idp === 'okta') {
           oidcStrategy._params.idp = process.env.OKTA_IDP;
         }
+        saveRedirectUrlToSession(req);
         next();
       },
       passport.authenticate('oidcStrategy')

@@ -28,7 +28,9 @@ export default function LandingPage() {
           `/safeConfig/entity/Page?path=${pagePathFromRouter}`
         );
         if (response.status === 401) {
-          return navigate("/gw-login");
+          return navigate(
+            `/gw-login?redirectTo=/landing/${pagePathFromRouter}`
+          );
         }
         if (response.status === 403) {
           return navigate("/forbidden");

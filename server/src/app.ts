@@ -108,7 +108,6 @@ app.use(function(req, res, next) {
 });
 // Workaround end
 
-const gwLoginRouter = require('./routes/gw-login');
 const gwLogoutRouter = require('./routes/gw-logout');
 const partnersLoginRouter = require('./routes/partners-login');
 const customersLoginRouter = require('./routes/customers-login');
@@ -131,7 +130,6 @@ app.use('/alive', (req, res, next) => {
   res.sendStatus(200);
 });
 
-app.use('/gw-login', gwLoginRouter);
 app.use('/gw-logout', gwLogoutRouter);
 app.use('/partners-login', partnersLoginRouter);
 app.use('/customers-login', customersLoginRouter);

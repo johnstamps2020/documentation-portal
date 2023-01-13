@@ -7,6 +7,7 @@ const saml = require('passport-saml');
 const {
   openRequestedUrl,
   resolveRequestedUrl,
+  saveRedirectUrlToSession,
 } = require('../controllers/authController');
 
 router.use(cookieParser());
@@ -43,6 +44,7 @@ router.use(passport.session({}));
 router.get(
   '/',
   function(req, res, next) {
+    saveRedirectUrlToSession(req);
     next();
   },
   passport.authenticate('partnersSamlStrategy')
