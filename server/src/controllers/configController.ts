@@ -259,10 +259,7 @@ export async function getDocumentMetadataById(docId: string) {
 }
 
 export async function getDocByUrl(url: string) {
-  let urlToCheck = url;
-  if (url.startsWith('/')) {
-    urlToCheck = url.substring(1);
-  }
+  const urlToCheck = url.replace(/^\//g, '');
   const docUrls = await AppDataSource.getRepository(Doc)
     .createQueryBuilder('doc')
     .useIndex('docUrl-idx')
