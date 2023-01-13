@@ -37,7 +37,7 @@
       "buildType": "yarn",
       "srcId": "docusaurusgwdocslatestsrc",
       "docId": "docusaurusgwdocslatest",
-      "nodeImageVersion": "18.13.0",
+      "nodeImageVersion": "16.16.0",
       "workingDir": "doc-site"
     }
   ]
