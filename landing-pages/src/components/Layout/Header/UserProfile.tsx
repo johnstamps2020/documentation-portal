@@ -87,7 +87,7 @@ export default function UserProfile() {
         <HeaderMenuTitle>{userInfo.name}</HeaderMenuTitle>
         <HeaderMenuSubtitle>{userInfo.preferred_username}</HeaderMenuSubtitle>
         <HeaderMenuDivider />
-        <MenuItem>
+        <MenuItem sx={{ width: "fit-content" }}>
           <HeaderMenuLink href="/gw-logout">Log out</HeaderMenuLink>
         </MenuItem>
       </HeaderMenu>
