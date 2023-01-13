@@ -28,6 +28,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/doctools/element-rendering.git",
       "branch": "main"
+    },
+    {
+      "id": "docusaurusgwdocslatestsrc",
+      "title": "Docusaurus Guidewire",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/doctools/docusaurus-guidewire.git",
+      "branch": "main"
     }
   ]
 }

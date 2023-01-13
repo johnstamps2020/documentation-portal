@@ -37,7 +37,7 @@
       "url": "writing-with-git",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Writing with Git"],
+        "product": ["DocTools"],
         "version": ["latest"]
       },
       "environments": ["int"],
@@ -61,6 +61,22 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "docusaurusgwdocslatest",
+      "title": "Docusaurus Gidewire",
+      "url": "docusaurus/guidewire/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["DocTools"],
+        "version": ["latest"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "earlyAccess": false,
+      "internal": true,
+      "public": false
     }
   ]
 }
