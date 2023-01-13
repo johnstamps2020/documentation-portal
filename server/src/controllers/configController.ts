@@ -22,19 +22,22 @@ async function pageExists(pagePath: string) {
 }
 
 export async function getPage(reqObj: Request) {
-  let page = await findEntity(Page.name, {
+  const landingPage = await findEntity(Page.name, {
     path: reqObj.path.replace(/^\//g, ''),
   });
-  if (page.status === 404) {
-    page = await findEntity(Page.name, {
+  if (landingPage.status === 200) {
+    return landingPage;
+  }
+  if (landingPage.status === 404) {
+    const resourcePath = await findEntity(Page.name, {
       component: ILike('%resource%'),
       path: reqObj.path.split('/')[1],
     });
+    if (resourcePath.status === 200) {
+      return resourcePath;
+    }
   }
-  if ([400, 404, 500].includes(page.status)) {
-    return null;
-  }
-  return page;
+  return null;
 }
 
 export async function getBreadcrumbs(pagePath: string): Promise<ApiResponse> {
