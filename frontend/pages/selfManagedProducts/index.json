@@ -71,11 +71,11 @@
               "page": "../globalContent/ipg/latest"
             },
             {
-              "label": "Japan",
+              "label": "Japan (0.1)",
               "page": "../globalContent/ipj/0.1"
             },
             {
-              "label": "Japan",
+              "label": "Japan (1.0)",
               "page": "../globalContent/ipj/1.0"
             }
           ]
