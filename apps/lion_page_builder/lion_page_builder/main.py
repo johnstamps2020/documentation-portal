@@ -62,7 +62,8 @@ product_codes_labels = {
     'ipf': {'label': 'ClaimCenter Package for France'},
     'ipg': {'label': 'Global Solutions - Germany'},
     'cm': {'label': 'IS Contact Manager'},
-    'apd': {'label': 'Advanced Product Designer'}
+    'apd': {'label': 'Advanced Product Designer'},
+    'cp': {'label': 'Cloud Platform'}
 }
 
 
