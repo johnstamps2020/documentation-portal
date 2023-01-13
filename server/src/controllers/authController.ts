@@ -235,11 +235,11 @@ export function removeAuthParamsFromUrl(originalUrl: string) {
 export function resolveRequestedUrl(req: Request) {
   if (req.session!.redirectTo) {
     const redirectTo = req.session!.redirectTo;
-    console.log(`RedirectTo deleted from session: ${redirectTo}`);
     delete req.session!.redirectTo;
     return redirectTo;
   }
-  return req.originalUrl;
+  // FIXME: Replace it with "/" when the redirect to the root URL is implemented
+  return '/landing';
 }
 
 export function openRequestedUrl(req: Request, res: Response) {
