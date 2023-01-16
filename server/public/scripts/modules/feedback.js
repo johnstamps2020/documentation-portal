@@ -52,9 +52,9 @@ export function addFeedbackElements() {
     docTitle: 'unset',
     docInternal: false,
     docEarlyAccess: false,
-    product: window.docProduct,
-    platform: window.docPlatform,
-    version: window.docVersion,
+    product: window.docProduct.split(','),
+    platform: window.docPlatform.split(','),
+    version: window.docVersion.split(','),
     release: ['unknown'],
     subject: ['unknown'],
   };
