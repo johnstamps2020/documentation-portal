@@ -1,4 +1,5 @@
 .landingpage {
+  margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(2, 288px);
   column-gap: 24px;
