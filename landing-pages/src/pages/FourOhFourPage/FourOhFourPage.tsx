@@ -9,8 +9,11 @@ import { Link as RouterLink } from "react-router-dom";
 import Container from "@mui/material/Container";
 
 export default function FourOhFourPage() {
+  const notFoundParam = new URLSearchParams(window.location.search).get(
+    "notFound"
+  );
   return (
-    <Layout title="404: page not found" headerOptions={{ hideSearchBox: true }}>
+    <Layout title="404: page not found">
       <Grid
         container
         sx={{
@@ -48,22 +51,22 @@ export default function FourOhFourPage() {
               404: page not found
             </Typography>
             <Stack spacing={2}>
-              <Typography>Sorry we couldn't find:</Typography>
-              <Container
-                sx={{
-                  padding: "0.5rem",
-                  border: "1px solid gray",
-                  borderRadius: "4px",
-                  maxWidth: "100%",
-                  overflowX: "scroll"
-                }}
-              >
-                <pre>
-                  {`${window.location.origin}${new URLSearchParams(
-                    window.location.search
-                  ).get("notFound")}`}
-                </pre>
-              </Container>
+              {notFoundParam && (
+                <>
+                  <Typography>Sorry we couldn't find:</Typography>
+                  <Container
+                    sx={{
+                      padding: "0.5rem",
+                      border: "1px solid gray",
+                      borderRadius: "4px",
+                      maxWidth: "100%",
+                      overflowX: "scroll"
+                    }}
+                  >
+                    <pre>{`${window.location.origin}${notFoundParam}`}</pre>
+                  </Container>
+                </>
+              )}
               <Typography>
                 We weren't able to find what you are looking for. You may have
                 an old link. We'll make a note of it and, if it's an error on

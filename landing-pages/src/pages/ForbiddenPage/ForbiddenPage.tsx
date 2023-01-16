@@ -7,8 +7,11 @@ import { headerHeight } from "../../components/Layout/Header/Header";
 import Container from "@mui/material/Container";
 
 export default function ForbiddenPage() {
+  const unauthorizedParam = new URLSearchParams(window.location.search).get(
+    "unauthorized"
+  );
   return (
-    <Layout title="Unauthorized" headerOptions={{ hideSearchBox: true }}>
+    <Layout title="Unauthorized">
       <Grid
         container
         sx={{
@@ -50,21 +53,25 @@ export default function ForbiddenPage() {
                 You are not authorized to view this page. Contact your
                 administrator if you think you should be.
               </Typography>
-              <Container
-                sx={{
-                  padding: "0.5rem",
-                  border: "1px solid gray",
-                  borderRadius: "4px",
-                  maxWidth: "100%",
-                  overflowX: "scroll"
-                }}
-              >
-                <pre>
-                  {`${window.location.origin}${new URLSearchParams(
-                    window.location.search
-                  ).get("unauthorized")}`}
-                </pre>
-              </Container>
+
+              {unauthorizedParam ? (
+                <Container
+                  sx={{
+                    padding: "0.5rem",
+                    border: "1px solid gray",
+                    borderRadius: "4px",
+                    maxWidth: "100%",
+                    overflowX: "scroll"
+                  }}
+                >
+                  <pre>{`${window.location.origin}${unauthorizedParam}`}</pre>
+                </Container>
+              ) : (
+                <Typography>
+                  Also, sorry, but we couldn't determine the address of the page
+                  you were trying to reach. 😅
+                </Typography>
+              )}
             </Stack>
           </Stack>
         </Box>
