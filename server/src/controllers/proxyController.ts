@@ -45,7 +45,7 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
     return redirectToLoginPage(req, res);
   }
   if (resourceStatus == 403) {
-    return res.redirect(forbiddenRoute);
+    return res.redirect(`${forbiddenRoute}?unauthorized=${req.url}`);
   }
 
   openRequestedUrl(req, res);
@@ -125,9 +125,9 @@ export async function reactAppProxy(
     changeOrigin: true,
   };
   /* Open routes, such as /gw-login and /search, are configured in the database as public pages.
-              Resource routes, such as /static and /landing-page-resource, are configured in the database
-               as public pages with the "resource" component.
-              This way, the user can view these routes without login.*/
+                    Resource routes, such as /static and /landing-page-resource, are configured in the database
+                     as public pages with the "resource" component.
+                    This way, the user can view these routes without login.*/
   if (req.path === '/') {
     return proxy.web(req, res, proxyOptions, next);
   }
@@ -145,7 +145,7 @@ export async function reactAppProxy(
     return redirectToLoginPage(req, res);
   }
   if (checkStatus == 403) {
-    return res.redirect(forbiddenRoute);
+    return res.redirect(`${forbiddenRoute}?unauthorized=${req.url}`);
   }
 
   openRequestedUrl(req, res);
