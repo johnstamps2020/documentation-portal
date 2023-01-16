@@ -58,7 +58,11 @@ export default function FourOhFourPage() {
                   overflowX: "scroll"
                 }}
               >
-                <pre>!!!!! The broken URL goes here</pre>
+                <pre>
+                  {`${window.location.origin}${new URLSearchParams(
+                    window.location.search
+                  ).get("notFound")}`}
+                </pre>
               </Container>
               <Typography>
                 We weren't able to find what you are looking for. You may have
