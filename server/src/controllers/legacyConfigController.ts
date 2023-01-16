@@ -437,6 +437,11 @@ export async function putOpenRoutesConfigsInDatabase() {
         title: '404',
       },
       {
+        path: 'forbidden',
+        component: 'page',
+        title: 'Forbidden',
+      },
+      {
         path: 'static',
         component: 'resource',
         title: 'Static',
