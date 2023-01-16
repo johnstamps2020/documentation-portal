@@ -1,4 +1,3 @@
-import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import React from "react";
 import iconAvatar from "../../../images/icon-avatar.svg";
@@ -7,7 +6,6 @@ import {
   HeaderIconButton,
   HeaderMenu,
   HeaderMenuDivider,
-  HeaderMenuLink,
   HeaderMenuSubtitle,
   HeaderMenuTitle
 } from "../StyledLayoutComponents";
@@ -17,6 +15,7 @@ import { useUser } from "../../../context/UserContext";
 import Drawer from "@mui/material/Drawer";
 import LoginOptions from "../../LoginPage/LoginOptions";
 import Stack from "@mui/material/Stack";
+import LogoutOption from "./LogoutOption";
 
 export default function UserProfile() {
   const { userInfo } = useUser();
@@ -87,9 +86,7 @@ export default function UserProfile() {
         <HeaderMenuTitle>{userInfo.name}</HeaderMenuTitle>
         <HeaderMenuSubtitle>{userInfo.preferred_username}</HeaderMenuSubtitle>
         <HeaderMenuDivider />
-        <MenuItem sx={{ width: "fit-content" }}>
-          <HeaderMenuLink href="/gw-logout">Log out</HeaderMenuLink>
-        </MenuItem>
+        <LogoutOption />
       </HeaderMenu>
     </div>
   );
