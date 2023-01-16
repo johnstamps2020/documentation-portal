@@ -418,6 +418,59 @@ function getRelativePagePath(absPagePath: string): string {
   return absPagePath.split('pages/')[1] || '/';
 }
 
+export async function putOpenRoutesConfigsInDatabase() {
+  try {
+    const openPaths = [
+      {
+        path: 'gw-login',
+        component: 'page',
+        title: 'Login',
+      },
+      {
+        path: 'search',
+        component: 'page',
+        title: 'Search',
+      },
+      {
+        path: 'static',
+        component: 'resource',
+        title: 'Static',
+      },
+      {
+        path: 'landing-page-resources',
+        component: 'resource',
+        title: 'Landing page resources',
+      },
+    ];
+    const openRouteConfigs = [];
+    for (const openPath of openPaths) {
+      const openRouteConfig = new Page();
+      openRouteConfig.path = openPath.path;
+      openRouteConfig.title = openPath.title;
+      openRouteConfig.public = true;
+      openRouteConfig.internal = false;
+      openRouteConfig.earlyAccess = false;
+      openRouteConfig.component = openPath.component;
+      openRouteConfig.isInProduction = false;
+      openRouteConfigs.push(openRouteConfig);
+    }
+    const saveResult = await AppDataSource.manager.save(Page, openRouteConfigs);
+    return {
+      status: 200,
+      body: saveResult,
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      body: {
+        message: `Cannot put open route config in DB: ${
+          (err as Error).message
+        }`,
+      },
+    };
+  }
+}
+
 export async function putPageConfigsInDatabase() {
   try {
     const localLandingPagesConfigDir = resolve(

@@ -18,6 +18,7 @@ import {
   getLegacyDocConfigs,
   getLegacySourceConfigs,
   putDocConfigsInDatabase,
+  putOpenRoutesConfigsInDatabase,
   putPageConfigsInDatabase,
   putSourceConfigsInDatabase,
 } from '../controllers/legacyConfigController';
@@ -156,11 +157,15 @@ router.get('/entity/legacy/putConfigInDatabase/:configType', async function(
     const response = await putPageConfigsInDatabase();
     status = response.status;
     body = response.body;
+  } else if (configType === 'openRoutes') {
+    const response = await putOpenRoutesConfigsInDatabase();
+    status = response.status;
+    body = response.body;
   } else {
     status = 400;
     body = {
       message:
-        'Incorrect configType parameter. Use "doc", "source", "page". For example: /entity/legacy/putConfigInDatabase/doc',
+        'Incorrect configType parameter. Use "doc", "source", "page", "openRoutes. For example: /entity/legacy/putConfigInDatabase/doc',
     };
   }
   return res.status(status).json(body);
