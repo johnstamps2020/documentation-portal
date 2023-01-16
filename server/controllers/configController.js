@@ -76,7 +76,7 @@ async function loadConfig() {
   } catch (err) {
     winstonLogger.error(
       `Error getting config!
-        ERROR: ${JSON.stringify(err)}`
+        ERROR: ${err}`
     );
     return { docs: [] };
   }

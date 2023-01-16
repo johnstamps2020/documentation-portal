@@ -24,7 +24,7 @@ function getJiraDescription(descriptionText) {
       content: [
         {
           type: 'text',
-          text: value,
+          text: value || 'empty',
         },
       ],
     },

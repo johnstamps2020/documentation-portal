@@ -14,6 +14,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@doctools/gw-theme-classic": "2.0.35",
     "@elastic/elasticsearch": "^7.17.0",
     "@okta/jwt-verifier": "^2.3.0",
     "aws-sdk": "^2.1241.0",
