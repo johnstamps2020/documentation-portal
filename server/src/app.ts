@@ -190,7 +190,9 @@ if (isDevMode) {
 
 // Docs stored on S3 — current and portal2
 app.use(s3Proxy);
-
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.redirect('/landing/404');
+});
 // handles unauthorized errors
 app.use(expressWinstonErrorLogger);
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

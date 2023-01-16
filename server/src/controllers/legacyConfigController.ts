@@ -432,6 +432,11 @@ export async function putOpenRoutesConfigsInDatabase() {
         title: 'Search',
       },
       {
+        path: '404',
+        component: 'page',
+        title: '404',
+      },
+      {
         path: 'static',
         component: 'resource',
         title: 'Static',
