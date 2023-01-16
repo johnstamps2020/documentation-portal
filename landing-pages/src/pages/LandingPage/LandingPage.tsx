@@ -19,7 +19,6 @@ export default function LandingPage() {
   const [loadingError, setLoadingError] = useState<string | undefined>(
     undefined
   );
-  // TODO: Handle redirect to the original URL.
   useEffect(() => {
     async function getPageData() {
       try {
