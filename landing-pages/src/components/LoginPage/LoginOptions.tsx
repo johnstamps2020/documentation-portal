@@ -1,14 +1,13 @@
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
-import { useLocation } from "react-router-dom";
 
 export default function LoginOptions() {
-  const location = useLocation();
-  const query = new URLSearchParams(location.search);
-  const redirectTo = query.get("redirectTo") || `/landing${location.pathname}`;
+  const query = new URLSearchParams(window.location.search);
+  const redirectTo =
+    query.get("redirectTo") ||
+    window.location.href.replace(window.location.origin, "");
   const cloudLoginHref = `/authorization-code?redirectTo=${redirectTo}`;
   const gwCommunityHref = `/customers-login?redirectTo=${redirectTo}`;
   const gwPartnerHref = `/partners-login?redirectTo=${redirectTo}`;
