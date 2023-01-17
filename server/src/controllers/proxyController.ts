@@ -130,6 +130,7 @@ export async function reactAppProxy(
                         Resource routes, such as /static and /landing-page-resource, are configured in the database
                          as public pages with the "resource" component.
                         This way, the user can view these routes without login.*/
+  // FIXME: Redirect to root doesn't work. It must be caught in app.ts?
   if (req.path === '/') {
     return proxy.web(req, res, proxyOptions, next);
   }

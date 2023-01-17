@@ -5,58 +5,53 @@ import Typography from "@mui/material/Typography";
 
 export default function LoginOptions() {
   const query = new URLSearchParams(window.location.search);
+  const isLoginPage = window.location.pathname.endsWith("/gw-login");
   const redirectTo =
     query.get("redirectTo") ||
+    (isLoginPage && "/") ||
     window.location.href.replace(window.location.origin, "");
-  const cloudLoginHref = `/authorization-code?redirectTo=${redirectTo}`;
-  const gwCommunityHref = `/customers-login?redirectTo=${redirectTo}`;
-  const gwPartnerHref = `/partners-login?redirectTo=${redirectTo}`;
-  const employeeLoginHref = `${cloudLoginHref}&idp=okta`;
+  const loginButtons = [
+    {
+      label: "Guidewire Cloud",
+      href: "/authorization-code",
+      tooltipText:
+        "Use your Guidewire Cloud Platform account to access documentation"
+    },
+    {
+      label: "Customer Community",
+      href: "/customers-login",
+      tooltipText:
+        "Use your community.guidewire.com account to access documentation"
+    },
+    {
+      label: "Partner Community",
+      href: "/partners-login",
+      tooltipText:
+        "Use your partner.guidewire.com account to access documentation"
+    }
+  ];
   return (
     <Stack spacing={2}>
-      <Tooltip
-        title={
-          <Typography>
-            Use your Guidewire Cloud Platform account to access documentation
-          </Typography>
-        }
-        placement="left"
-        arrow
-      >
-        <Button href={cloudLoginHref} variant="contained" color="primary">
-          Guidewire Cloud
-        </Button>
-      </Tooltip>
-      <Tooltip
-        title={
-          <Typography>
-            Use your community.guidewire.com account to access documentation
-          </Typography>
-        }
-        placement="left"
-        arrow
-      >
-        <Button href={gwCommunityHref} variant="contained" color="primary">
-          Customer Community
-        </Button>
-      </Tooltip>
-      <Tooltip
-        title={
-          <Typography>
-            Use your partner.guidewire.com account to access documentation
-          </Typography>
-        }
-        placement="left"
-        arrow
-      >
-        <Button href={gwPartnerHref} variant="contained" color="primary">
-          Partner Community
-        </Button>
-      </Tooltip>
+      {loginButtons.map(loginButton => (
+        <Tooltip
+          key={loginButton.label}
+          title={<Typography>{loginButton.tooltipText}</Typography>}
+          placement="left"
+          arrow
+        >
+          <Button
+            href={`${loginButton.href}?redirectTo=${redirectTo}`}
+            variant="contained"
+            color="primary"
+          >
+            {loginButton.label}
+          </Button>
+        </Tooltip>
+      ))}
       <Button
         variant="outlined"
         color="primary"
-        href={employeeLoginHref}
+        href={`/authorization-code?idp=okta&redirectTo=${redirectTo}`}
         sx={{ fontWeight: 600, border: 1 }}
       >
         Guidewire Employee
