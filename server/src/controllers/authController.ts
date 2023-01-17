@@ -1,8 +1,6 @@
 import OktaJwtVerifier from '@okta/jwt-verifier';
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { decode, JwtPayload } from 'jsonwebtoken';
-import { isInternalDoc, isPublicDoc } from './configController';
-import { addCommonDataToSessionLocals } from './localsController';
 import { winstonLogger } from './loggerController';
 import { getUserInfo } from './userController';
 
@@ -185,25 +183,6 @@ export async function isLoggedInOrHasValidToken(req: Request) {
   }
 }
 
-const majorPublicRoutes = [
-  '/landing/404',
-  '/landing/unauthorized',
-  '/landing/error',
-  '/product',
-  '/alive',
-  '/userInformation',
-  '/safeConfig',
-  '/landing/search',
-  '/landing/apiReferences',
-  '/recommendations',
-  '/scripts',
-  //  DO NOT DELETE google6a1282aff702e827.html, this allows us
-  //  to use Google Search Console and needs to be always available!!!
-  '/google6a1282aff702e827.html',
-];
-
-const majorInternalRoutes: string[] = [];
-
 export function saveRedirectUrlToSession(req: Request) {
   const redirectToParam = req.query.redirectTo;
   if (redirectToParam) {
@@ -244,8 +223,7 @@ export function resolveRequestedUrl(req: Request) {
     delete req.session!.redirectTo;
     return redirectTo;
   }
-  // FIXME: Replace it with "/" when the redirect to the root URL is implemented
-  return '/landing';
+  return '/';
 }
 
 export function openRequestedUrl(req: Request, res: Response) {
@@ -262,100 +240,3 @@ export function openRequestedUrl(req: Request, res: Response) {
     );
   }
 }
-
-function openPublicPage(req: Request, next: NextFunction) {
-  try {
-    if (req.next) {
-      req.next();
-    } else {
-      next();
-    }
-  } catch (err) {
-    winstonLogger.error(
-      `Problem opening public page 
-          ERROR: ${JSON.stringify(err)}`
-    );
-  }
-}
-
-async function checkIfRouteIsPublic(req: Request) {
-  const reqUrl = req.url;
-  try {
-    if (majorPublicRoutes.some(r => reqUrl.startsWith(r))) {
-      return true;
-    }
-
-    const isPublicInConfig = await isPublicDoc(reqUrl);
-    return isPublicInConfig === true;
-  } catch (err) {
-    winstonLogger.error(
-      `Problem checking if route is open 
-          ERROR: ${JSON.stringify(err)}`
-    );
-  }
-}
-
-async function checkIfRouteIsInternal(req: Request) {
-  try {
-    if (majorInternalRoutes.some(r => req.url.startsWith(r))) {
-      return true;
-    }
-  } catch (err) {
-    winstonLogger.error(
-      `Problem checking if route in the list of internal routes internal 
-          ERROR: ${JSON.stringify(err)}`
-    );
-  }
-
-  try {
-    const isInternalInConfig = await isInternalDoc(req.url);
-    if (isInternalInConfig) {
-      return true;
-    }
-  } catch (err) {
-    winstonLogger.error(
-      `Problem checking if route is an internal doc 
-          ERROR: ${JSON.stringify(err)}`
-    );
-  }
-
-  return false;
-}
-
-export const authGateway = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  try {
-    const publicDocsAllowed = process.env.ALLOW_PUBLIC_DOCS === 'yes';
-    const authenticationIsDisabled = process.env.ENABLE_AUTH === 'no';
-
-    const loggedInOrHasValidToken = await isLoggedInOrHasValidToken(req);
-    const requestIsAuthenticated =
-      authenticationIsDisabled || loggedInOrHasValidToken;
-    req.session!.requestIsAuthenticated = requestIsAuthenticated;
-    await addCommonDataToSessionLocals(req, res);
-    const isOpenRoute = await checkIfRouteIsPublic(req);
-    const isInternalRoute = await checkIfRouteIsInternal(req);
-    const hasGuidewireEmail = res.locals.userInfo.hasGuidewireEmail;
-
-    if (requestIsAuthenticated && !isInternalRoute) {
-      openRequestedUrl(req, res);
-    } else if (requestIsAuthenticated && isInternalRoute && hasGuidewireEmail) {
-      openRequestedUrl(req, res);
-    } else if (
-      requestIsAuthenticated &&
-      isInternalRoute &&
-      !hasGuidewireEmail
-    ) {
-      res.redirect('/internal');
-    } else if (!requestIsAuthenticated && publicDocsAllowed && isOpenRoute) {
-      openPublicPage(req, next);
-    } else {
-      redirectToLoginPage(req, res);
-    }
-  } catch (err) {
-    next(err);
-  }
-};
