@@ -21,6 +21,9 @@ export default function LandingPageItem(item: Item) {
       ) : (
         <Link href={item.link || `/${item.doc?.url}`}>{item.label}</Link>
       )}
+      {/*FIXME: The icon should be also shown for page links. In the Item model, only the page path is loaded eagerly.
+          loading of the entire Page relation kills the site. We need to change the Item model not to load doc and page
+          eagerly and find another way to pass required info to this component.*/}
       {item.doc?.internal && (
         <Tooltip
           title={<Typography>Guidewire internal content</Typography>}
