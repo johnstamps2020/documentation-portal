@@ -190,8 +190,12 @@ if (isDevMode) {
 
 // Docs stored on S3 — current and portal2
 app.use(s3Proxy);
+
 app.use((req: Request, res: Response, next: NextFunction) => {
-  res.redirect(`/landing/404${req.url ? `?notFound=${req.url}` : ''}`);
+  if (req.path === '/') {
+    return res.redirect('/landing');
+  }
+  return res.redirect(`/landing/404${req.url ? `?notFound=${req.url}` : ''}`);
 });
 // handles unauthorized errors
 app.use(expressWinstonErrorLogger);
