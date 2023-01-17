@@ -32,7 +32,12 @@ export default function LandingPage() {
           );
         }
         if (response.status === 403) {
-          return navigate("/forbidden");
+          return navigate(
+            `/forbidden?unauthorized=/landing/${pagePathFromRouter}`
+          );
+        }
+        if (response.status !== 200) {
+          return navigate(`/404?notFound=/landing/${pagePathFromRouter}`);
         }
         if (!response.ok) {
           const errorJson = await response.json();

@@ -85,15 +85,18 @@ export async function getEntity(reqObj: Request) {
   const { repo } = reqObj.params;
   const options = reqObj.query;
   const operationResult = await findEntity(repo, options);
-  const userIsAllowedToAccessResource = await isUserAllowedToAccessResource(
-    reqObj,
-    operationResult.body?.public || false,
-    operationResult.body?.internal || false
-  );
-  if (userIsAllowedToAccessResource.status === 200) {
-    return operationResult;
+  if (operationResult.status === 200) {
+    const userIsAllowedToAccessResource = await isUserAllowedToAccessResource(
+      reqObj,
+      operationResult.body?.public || false,
+      operationResult.body?.internal || false
+    );
+    if (userIsAllowedToAccessResource.status === 200) {
+      return operationResult;
+    }
+    return userIsAllowedToAccessResource;
   }
-  return userIsAllowedToAccessResource;
+  return operationResult;
 }
 
 export async function findEntity(
