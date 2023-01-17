@@ -5,6 +5,10 @@ const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const { winstonLogger } = require('../controllers/loggerController');
+const {
+  resolveRequestedUrl,
+  saveRedirectUrlToSession,
+} = require('../controllers/authController');
 
 Issuer.discover(process.env.OKTA_DOMAIN)
   .then(oktaIssuer => {
@@ -48,6 +52,7 @@ Issuer.discover(process.env.OKTA_DOMAIN)
         if (req.query.idp === 'okta') {
           oidcStrategy._params.idp = process.env.OKTA_IDP;
         }
+        saveRedirectUrlToSession(req);
         next();
       },
       passport.authenticate('oidcStrategy')
@@ -60,9 +65,7 @@ Issuer.discover(process.env.OKTA_DOMAIN)
       },
       passport.authenticate('oidcStrategy'),
       function(req, res) {
-        const redirectTo = req.session.redirectTo || '/';
-        delete req.session.redirectTo;
-        res.redirect(redirectTo);
+        res.redirect(resolveRequestedUrl(req));
       }
     );
   })

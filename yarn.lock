@@ -1801,7 +1801,7 @@ __metadata:
 
 "@documentation-portal@file:../server::locator=landing-pages%40workspace%3Alanding-pages":
   version: 2.29.22
-  resolution: "@documentation-portal@file:../server#../server::hash=b64e9b&locator=landing-pages%40workspace%3Alanding-pages"
+  resolution: "@documentation-portal@file:../server#../server::hash=721eec&locator=landing-pages%40workspace%3Alanding-pages"
   dependencies:
     "@elastic/elasticsearch": ^7.17.0
     "@okta/jwt-verifier": ^2.3.0
@@ -1822,7 +1822,7 @@ __metadata:
     dd-trace: ^2.8.0
     debug: ~2.6.9
     ejs: ^3.1.8
-    express: ^4.17.3
+    express: ^4.18.2
     express-fileupload: ^1.4.0
     express-http-context: ^1.2.3
     express-winston: ^4.2.0
@@ -1830,11 +1830,11 @@ __metadata:
     http-errors: ~1.6.3
     http-proxy: ^1.18.1
     jsdom: ^19.0.0
-    jsonwebtoken: ^8.5.1
+    jsonwebtoken: ^9.0.0
     msw: ^0.47.3
     node-fetch: ^2.6.7
     openid-client: ^4.9.1
-    passport: 0.5.0
+    passport: ~0.6.0
     passport-saml: 3.2.2
     pg: ^8.8.0
     prettier: ^1.19.1
@@ -1843,7 +1843,7 @@ __metadata:
     serve-favicon: ^2.5.0
     typeorm: ^0.3.9
     winston: ^3.7.2
-  checksum: d67d6ea5182521491b89770459aa8e657a2475a90e237007c7bc23a072baab89bd45315f69c5ca5bad058987089d126c4b4d1b62b27bc613d319da976a537380
+  checksum: 262069e1c806e8e3ede60830a8426bae1f3b9bd9fe1e9fb4f687df6f3e6d860fe296a9c093021187f179ea2eb676bdba0807e279558796725e0cf7fd248ef740
   languageName: node
   linkType: hard
 
@@ -7899,7 +7899,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express@npm:^4.17.3":
+"express@npm:^4.17.3, express@npm:^4.18.2":
   version: 4.18.2
   resolution: "express@npm:4.18.2"
   dependencies:
@@ -10968,6 +10968,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jsonwebtoken@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "jsonwebtoken@npm:9.0.0"
+  dependencies:
+    jws: ^3.2.2
+    lodash: ^4.17.21
+    ms: ^2.1.1
+    semver: ^7.3.8
+  checksum: b9181cecf9df99f1dc0253f91ba000a1aa4d91f5816d1608c0dba61a5623726a0bfe200b51df25de18c1a6000825d231ad7ce2788aa54fd48dcb760ad9eb9514
+  languageName: node
+  linkType: hard
+
 "jsx-ast-utils@npm:^2.4.1 || ^3.0.0, jsx-ast-utils@npm:^3.3.2":
   version: 3.3.3
   resolution: "jsx-ast-utils@npm:3.3.3"
@@ -12575,13 +12587,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"passport@npm:0.5.0":
-  version: 0.5.0
-  resolution: "passport@npm:0.5.0"
+"passport@npm:~0.6.0":
+  version: 0.6.0
+  resolution: "passport@npm:0.6.0"
   dependencies:
     passport-strategy: 1.x.x
     pause: 0.0.1
-  checksum: 5a3db4b420c0255fb8fdfe26005529582ea5697bff5c566ea02ec7e93c5a542f16b298c5545b0e7b5eb4db04eb4d15885948040adf9a98ed77dafb25ed155b7c
+    utils-merge: ^1.0.1
+  checksum: ef932ad671d50de34765c7a53cd1e058d8331a82a6df09265a9c6c1168911aee4a7b5215803d0101110ab7f317e096b4954ca7e18fb2c33b9929f0bd17dbe159
   languageName: node
   linkType: hard
 
@@ -14873,7 +14886,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:7.x, semver@npm:^7.3.2, semver@npm:^7.3.4, semver@npm:^7.3.5, semver@npm:^7.3.7":
+"semver@npm:7.x, semver@npm:^7.3.2, semver@npm:^7.3.4, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.3.8":
   version: 7.3.8
   resolution: "semver@npm:7.3.8"
   dependencies:
@@ -15028,7 +15041,7 @@ __metadata:
     debug: ~2.6.9
     dotenv: ^8.2.0
     ejs: ^3.1.8
-    express: ^4.17.3
+    express: ^4.18.2
     express-fileupload: ^1.4.0
     express-http-context: ^1.2.3
     express-winston: ^4.2.0
@@ -15038,7 +15051,7 @@ __metadata:
     jest: ^29.1.1
     jest-environment-jsdom: ^29.1.1
     jsdom: ^19.0.0
-    jsonwebtoken: ^8.5.1
+    jsonwebtoken: ^9.0.0
     mini-css-extract-plugin: ^2.4.5
     minimist: ^1.2.6
     msw: ^0.47.3
@@ -15046,7 +15059,7 @@ __metadata:
     node-mocks-http: ^1.11.0
     nodemon: ^2.0.6
     openid-client: ^4.9.1
-    passport: 0.5.0
+    passport: ~0.6.0
     passport-saml: 3.2.2
     pg: ^8.8.0
     postcss: ^8.4.12
@@ -16667,7 +16680,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"utils-merge@npm:1.0.1":
+"utils-merge@npm:1.0.1, utils-merge@npm:^1.0.1":
   version: 1.0.1
   resolution: "utils-merge@npm:1.0.1"
   checksum: c81095493225ecfc28add49c106ca4f09cdf56bc66731aa8dabc2edbbccb1e1bfe2de6a115e5c6a380d3ea166d1636410b62ef216bb07b3feb1cfde1d95d5080

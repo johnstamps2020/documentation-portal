@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import { Page } from "@documentation-portal/dist/model/entity/Page";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Theme } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import Backdrop from "@mui/material/Backdrop";
@@ -10,6 +11,7 @@ import SubjectLayout from "../../components/LandingPage/Subject/SubjectLayout";
 import ProductFamilyLayout from "../../components/LandingPage/ProductFamily/ProductFamilyLayout";
 
 export default function LandingPage() {
+  const navigate = useNavigate();
   const params = useParams();
   const pagePathFromRouter = params["*"];
   const [pageData, setPageData] = useState<Page>();
@@ -17,7 +19,6 @@ export default function LandingPage() {
   const [loadingError, setLoadingError] = useState<string | undefined>(
     undefined
   );
-
   useEffect(() => {
     async function getPageData() {
       try {
@@ -25,6 +26,19 @@ export default function LandingPage() {
         const response = await fetch(
           `/safeConfig/entity/Page?path=${pagePathFromRouter}`
         );
+        if (response.status === 401) {
+          return navigate(
+            `/gw-login?redirectTo=/landing/${pagePathFromRouter}`
+          );
+        }
+        if (response.status === 403) {
+          return navigate(
+            `/forbidden?unauthorized=/landing/${pagePathFromRouter}`
+          );
+        }
+        if (response.status !== 200) {
+          return navigate(`/404?notFound=/landing/${pagePathFromRouter}`);
+        }
         if (!response.ok) {
           const errorJson = await response.json();
           const { status } = response;

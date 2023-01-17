@@ -3,6 +3,7 @@ const { Client } = require('@elastic/elasticsearch');
 const { winstonLogger } = require('./loggerController');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const searchIndexName = 'gw-docs';
+import { getUserInfo } from './userController';
 
 async function getFieldMappings() {
   const mappingResults = await elasticClient.indices.getMapping({
@@ -293,8 +294,9 @@ async function searchController(req, res, next) {
     const resultsPerPage = urlQueryParameters.pagination || 10;
     const currentPage = urlQueryParameters.page || 1;
     const startIndex = resultsPerPage * (currentPage - 1);
-    const requestIsAuthenticated = req.session.requestIsAuthenticated;
-    const hasGuidewireEmail = res.locals.userInfo.hasGuidewireEmail;
+    const userInfo = await getUserInfo(req);
+    const requestIsAuthenticated = userInfo.isLoggedIn;
+    const hasGuidewireEmail = userInfo.hasGuidewireEmail;
     const mappings = await getFieldMappings();
     const filtersFromUrl = getFiltersFromUrl(mappings, urlQueryParameters);
 

@@ -4,6 +4,11 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const saml = require('passport-saml');
+const {
+  openRequestedUrl,
+  resolveRequestedUrl,
+  saveRedirectUrlToSession,
+} = require('../controllers/authController');
 
 router.use(cookieParser());
 router.use(bodyParser.urlencoded({ extended: false }));
@@ -39,6 +44,7 @@ router.use(passport.session({}));
 router.get(
   '/',
   function(req, res, next) {
+    saveRedirectUrlToSession(req);
     next();
   },
   passport.authenticate('partnersSamlStrategy')
@@ -51,10 +57,7 @@ router.post(
   },
   passport.authenticate('partnersSamlStrategy'),
   function(req, res) {
-
-    const redirectTo = req.session.redirectTo || '/';
-    delete req.session.redirectTo;
-    res.redirect(redirectTo);
+    res.redirect(resolveRequestedUrl(req));
   }
 );
 

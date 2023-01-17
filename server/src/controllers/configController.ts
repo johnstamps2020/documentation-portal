@@ -6,9 +6,10 @@ import { AppDataSource } from '../model/connection';
 import { Doc } from '../model/entity/Doc';
 import { Product } from '../model/entity/Product';
 import { Release } from '../model/entity/Release';
-import { FindOneAndDeleteOptions, FindOptionsWhere } from 'typeorm';
+import { FindOneAndDeleteOptions, FindOptionsWhere, ILike } from 'typeorm';
 import { ApiResponse } from '../types/apiResponse';
 import { Page } from '../model/entity/Page';
+import { isUserAllowedToAccessResource } from './authController';
 
 function optionsAreValid(options: {}) {
   return (
@@ -18,6 +19,25 @@ function optionsAreValid(options: {}) {
 
 async function pageExists(pagePath: string) {
   return (await AppDataSource.manager.countBy(Page, { path: pagePath })) === 1;
+}
+
+export async function getPage(reqObj: Request) {
+  const landingPage = await findEntity(Page.name, {
+    path: reqObj.path.replace(/^\//g, ''),
+  });
+  if (landingPage.status === 200) {
+    return landingPage;
+  }
+  if (landingPage.status === 404) {
+    const resourcePath = await findEntity(Page.name, {
+      component: ILike('%resource%'),
+      path: reqObj.path.split('/')[1],
+    });
+    if (resourcePath.status === 200) {
+      return resourcePath;
+    }
+  }
+  return null;
 }
 
 export async function getBreadcrumbs(pagePath: string): Promise<ApiResponse> {
@@ -61,7 +81,25 @@ export async function getBreadcrumbs(pagePath: string): Promise<ApiResponse> {
   }
 }
 
-export async function getEntity(
+export async function getEntity(reqObj: Request) {
+  const { repo } = reqObj.params;
+  const options = reqObj.query;
+  const operationResult = await findEntity(repo, options);
+  if (operationResult.status === 200) {
+    const userIsAllowedToAccessResource = await isUserAllowedToAccessResource(
+      reqObj,
+      operationResult.body?.public || false,
+      operationResult.body?.internal || false
+    );
+    if (userIsAllowedToAccessResource.status === 200) {
+      return operationResult;
+    }
+    return userIsAllowedToAccessResource;
+  }
+  return operationResult;
+}
+
+export async function findEntity(
   repo: string,
   options: FindOptionsWhere<any>
 ): Promise<ApiResponse> {
@@ -207,7 +245,7 @@ export async function getDocumentMetadataById(docId: string) {
         },
       };
     }
-    const getEntityResponse = await getEntity(Doc.name, { id: docId });
+    const getEntityResponse = await findEntity(Doc.name, { id: docId });
     if (getEntityResponse.status === 200) {
       const docInfo = getEntityResponse.body;
       return {
@@ -243,10 +281,7 @@ export async function getDocumentMetadataById(docId: string) {
 }
 
 export async function getDocByUrl(url: string) {
-  let urlToCheck = url;
-  if (url.startsWith('/')) {
-    urlToCheck = url.substring(1);
-  }
+  const urlToCheck = url.replace(/^\//g, '');
   const docUrls = await AppDataSource.getRepository(Doc)
     .createQueryBuilder('doc')
     .useIndex('docUrl-idx')

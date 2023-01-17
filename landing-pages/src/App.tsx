@@ -5,13 +5,15 @@ import {
 } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import LandingPage from "./pages/LandingPage/LandingPage";
-import UnauthorizedPage from "./pages/UnauthorizedPage/UnauthorizedPage";
+import ForbiddenPage from "./pages/ForbiddenPage/ForbiddenPage";
 import FourOhFourPage from "./pages/FourOhFourPage/FourOhFourPage";
 import DocAdminPage from "./pages/DocAdminPage/DocAdminPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { appTheme } from "./themes/appTheme";
 import CssBaseline from "@mui/material/CssBaseline";
+import { UserProvider } from "./context/UserContext";
+import SupportPage from "./pages/SupportPage/SupportPage";
 
 const router = createBrowserRouter(
   [
@@ -20,8 +22,8 @@ const router = createBrowserRouter(
       element: <Navigate to="/cloudProducts/elysian" />
     },
     {
-      path: "/unauthorized",
-      element: <UnauthorizedPage />
+      path: "/forbidden",
+      element: <ForbiddenPage />
     },
     {
       path: "/404",
@@ -40,6 +42,10 @@ const router = createBrowserRouter(
       element: <LoginPage />
     },
     {
+      path: "/support",
+      element: <SupportPage />
+    },
+    {
       path: "/*",
       element: <LandingPage />
     }
@@ -51,10 +57,12 @@ const router = createBrowserRouter(
 
 function App() {
   return (
-    <ThemeProvider theme={appTheme}>
-      <CssBaseline />
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <UserProvider>
+      <ThemeProvider theme={appTheme}>
+        <CssBaseline />
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </UserProvider>
   );
 }
 

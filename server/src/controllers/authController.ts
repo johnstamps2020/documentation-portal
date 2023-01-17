@@ -1,13 +1,57 @@
 import OktaJwtVerifier from '@okta/jwt-verifier';
 import { NextFunction, Request, Response } from 'express';
 import { decode, JwtPayload } from 'jsonwebtoken';
-import { isPublicDoc, isInternalDoc } from './configController';
+import { isInternalDoc, isPublicDoc } from './configController';
 import { addCommonDataToSessionLocals } from './localsController';
 import { winstonLogger } from './loggerController';
+import { getUserInfo } from './userController';
 
-const loginGatewayRoute = '/gw-login';
-const gwCommunityCustomerParam = 'guidewire-customer';
-const gwCommunityPartnerParam = 'guidewire-partner';
+export async function isUserAllowedToAccessResource(
+  req: Request,
+  resourceIsPublic: boolean,
+  resourceIsInternal: boolean
+): Promise<{ status: number; body: { message: string } }> {
+  if (resourceIsPublic) {
+    return {
+      status: 200,
+      body: {
+        message: 'Resource available: Public resource',
+      },
+    };
+  }
+  const userInfo = await getUserInfo(req);
+  if (!userInfo.isLoggedIn) {
+    return {
+      status: 401,
+      body: {
+        message: 'Resource not available: User not logged in',
+      },
+    };
+  }
+  if (resourceIsInternal) {
+    return userInfo.hasGuidewireEmail
+      ? {
+          status: 200,
+          body: {
+            message: 'Resource available: GW user and internal resource',
+          },
+        }
+      : {
+          status: 403,
+          body: {
+            message:
+              'Resource not available: Only GW users have access to internal resources',
+          },
+        };
+  }
+  return {
+    status: 200,
+    body: {
+      message:
+        'Resource available: User logged in, resource not internal and not public',
+    },
+  };
+}
 
 function getTokenFromRequestHeader(req: Request) {
   try {
@@ -125,20 +169,16 @@ async function verifyToken(req: Request) {
   }
 }
 
-declare global {
-  namespace Express {
-    interface Request {
-      isAuthenticated: () => boolean;
-    }
-  }
-}
-
-async function isLoggedInOrHasValidToken(req: Request) {
+export async function isLoggedInOrHasValidToken(req: Request) {
   try {
     const rawJsonRequest = req.query.rawJSON === 'true';
-    return rawJsonRequest
-      ? !!(req.isAuthenticated() || (await verifyToken(req)))
-      : !!req.isAuthenticated();
+    const requestIsAuthenticated = req.isAuthenticated
+      ? req.isAuthenticated()
+      : false;
+    if (rawJsonRequest) {
+      return requestIsAuthenticated || !!(await verifyToken(req));
+    }
+    return requestIsAuthenticated;
   } catch (err) {
     winstonLogger.error(`PROBLEM VERIFYING TOKEN: ${JSON.stringify(err)}`);
     return false;
@@ -164,16 +204,23 @@ const majorPublicRoutes = [
 
 const majorInternalRoutes: string[] = [];
 
-function redirectToLoginPage(req: Request, res: Response) {
+export function saveRedirectUrlToSession(req: Request) {
+  const redirectToParam = req.query.redirectTo;
+  if (redirectToParam) {
+    req.session!.redirectTo = redirectToParam;
+  }
+}
+
+export function redirectToLoginPage(req: Request, res: Response) {
   try {
-    req.session!.redirectTo = req.url;
-    if (req.query.authSource === gwCommunityCustomerParam) {
-      res.redirect('/customers-login');
-    } else if (req.query.authSource === gwCommunityPartnerParam) {
-      res.redirect('/partners-login');
-    } else {
-      res.redirect(loginGatewayRoute);
+    const redirectTo = req.originalUrl;
+    if (req.query.authSource === 'guidewire-customer') {
+      return res.redirect(`/customers-login?redirectTo=${redirectTo}`);
     }
+    if (req.query.authSource === 'guidewire-partner') {
+      return res.redirect(`/partners-login?redirectTo=${redirectTo}`);
+    }
+    return res.redirect(`/landing/gw-login?redirectTo=${redirectTo}`);
   } catch (err) {
     winstonLogger.error(
       `Problem redirecting to login page 
@@ -182,28 +229,36 @@ function redirectToLoginPage(req: Request, res: Response) {
   }
 }
 
-function openRequestedPage(req: Request, res: Response, next: NextFunction) {
+export function removeAuthParamsFromUrl(originalUrl: string) {
+  const fullRequestUrl = new URL(originalUrl, process.env.APP_BASE_URL);
+  if (fullRequestUrl.searchParams.has('authSource')) {
+    fullRequestUrl.searchParams.delete('authSource');
+    return fullRequestUrl.href.replace(`${process.env.APP_BASE_URL}`, '');
+  }
+  return originalUrl;
+}
+
+export function resolveRequestedUrl(req: Request) {
+  if (req.session!.redirectTo) {
+    const redirectTo = req.session!.redirectTo;
+    delete req.session!.redirectTo;
+    return redirectTo;
+  }
+  // FIXME: Replace it with "/" when the redirect to the root URL is implemented
+  return '/landing';
+}
+
+export function openRequestedUrl(req: Request, res: Response) {
   try {
-    let targetUrl = req.url;
-    if (req.session!.redirectTo) {
-      const redirectTo = req.session!.redirectTo;
-      delete req.session!.redirectTo;
-      targetUrl = redirectTo;
-    }
-    if (req.query.authSource) {
-      const fullRequestUrl = new URL(targetUrl, process.env.APP_BASE_URL);
-      fullRequestUrl.searchParams.delete('authSource');
-      targetUrl = fullRequestUrl.href;
-    }
-    if (targetUrl !== req.url) {
-      res.redirect(targetUrl);
-    } else {
-      next();
+    const originalUrl = req.originalUrl;
+    const cleanUrl = removeAuthParamsFromUrl(originalUrl);
+    if (originalUrl !== cleanUrl) {
+      res.redirect(cleanUrl);
     }
   } catch (err) {
     winstonLogger.error(
       `Problem opening requested page 
-          ERROR: ${JSON.stringify(err)}`
+          ERROR: ${err}`
     );
   }
 }
@@ -267,7 +322,11 @@ async function checkIfRouteIsInternal(req: Request) {
   return false;
 }
 
-const authGateway = async (req: Request, res: Response, next: NextFunction) => {
+export const authGateway = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const publicDocsAllowed = process.env.ALLOW_PUBLIC_DOCS === 'yes';
     const authenticationIsDisabled = process.env.ENABLE_AUTH === 'no';
@@ -282,9 +341,9 @@ const authGateway = async (req: Request, res: Response, next: NextFunction) => {
     const hasGuidewireEmail = res.locals.userInfo.hasGuidewireEmail;
 
     if (requestIsAuthenticated && !isInternalRoute) {
-      openRequestedPage(req, res, next);
+      openRequestedUrl(req, res);
     } else if (requestIsAuthenticated && isInternalRoute && hasGuidewireEmail) {
-      openRequestedPage(req, res, next);
+      openRequestedUrl(req, res);
     } else if (
       requestIsAuthenticated &&
       isInternalRoute &&
@@ -299,9 +358,4 @@ const authGateway = async (req: Request, res: Response, next: NextFunction) => {
   } catch (err) {
     next(err);
   }
-};
-
-module.exports = {
-  authGateway,
-  loginGatewayRoute,
 };

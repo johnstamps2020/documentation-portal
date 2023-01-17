@@ -1,12 +1,15 @@
 import * as dotenv from 'dotenv';
+
+//IMPORTANT: Don't move this line. Be careful with optimizing imports.
 dotenv.config();
+//
 import 'reflect-metadata';
 import {
-  expressWinstonLogger,
   expressWinstonErrorLogger,
+  expressWinstonLogger,
   winstonLogger,
 } from './controllers/loggerController';
-import express, { Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import { join } from 'path';
 import cookieParser from 'cookie-parser';
 import favicon from 'serve-favicon';
@@ -14,6 +17,16 @@ import session from 'cookie-session';
 import httpContext from 'express-http-context';
 import { AppDataSource } from './model/connection';
 import { runningInDevMode } from './controllers/utils/serverUtils';
+import { ReqUser } from './controllers/userController';
+
+declare global {
+  namespace Express {
+    interface Request {
+      isAuthenticated?: () => boolean;
+      user?: ReqUser;
+    }
+  }
+}
 
 AppDataSource.initialize()
   .then(() => {
@@ -72,14 +85,35 @@ if (process.env.LOCALHOST_SESSION_SETTINGS === 'yes') {
 app.set('trust proxy', 1);
 app.use(session(sessionSettings));
 
-const gwLoginRouter = require('./routes/gw-login');
+/*
+Dummy implementation of regenerate and save functions is a workaround
+for using passport 0.6.0 with cookie-session. This workaround is needed until the known issue
+is resolved by the library maintainer: https://github.com/jaredhanson/passport/issues/904
+The upgrade to version 0.6.x was required because passport 0.5.x
+contains "CVE-2022-25896 4.8 Session Fixation vulnerability pending CVSS allocation".
+*/
+// Workaround start
+app.use(function(req, res, next) {
+  if (req.session && !req.session.regenerate) {
+    req.session.regenerate = (cb: () => void) => {
+      cb();
+    };
+  }
+  if (req.session && !req.session.save) {
+    req.session.save = (cb: () => void) => {
+      cb();
+    };
+  }
+  next();
+});
+// Workaround end
+
 const gwLogoutRouter = require('./routes/gw-logout');
 const partnersLoginRouter = require('./routes/partners-login');
 const customersLoginRouter = require('./routes/customers-login');
 const oidcLoginRouter = require('./routes/authorization-code');
 const searchRouter = require('./routes/search');
 const internalRouter = require('./routes/internal');
-const supportRouter = require('./routes/support');
 const s3Router = require('./routes/s3');
 const userRouter = require('./routes/user');
 const configRouter = require('./routes/config');
@@ -96,7 +130,6 @@ app.use('/alive', (req, res, next) => {
   res.sendStatus(200);
 });
 
-app.use('/gw-login', gwLoginRouter);
 app.use('/gw-logout', gwLogoutRouter);
 app.use('/partners-login', partnersLoginRouter);
 app.use('/customers-login', customersLoginRouter);
@@ -106,8 +139,6 @@ app.use('/authorization-code', oidcLoginRouter);
 app.use(express.static(join(__dirname, 'public'), options));
 app.use(favicon(join(__dirname, 'public', 'favicon.ico')));
 
-const authGateway = require('./controllers/authController').authGateway;
-
 app.use(passport.initialize());
 app.use(passport.session());
 passport.serializeUser(function(user: any, done: any) {
@@ -116,7 +147,6 @@ passport.serializeUser(function(user: any, done: any) {
 passport.deserializeUser(function(user: any, done: any) {
   done(null, user);
 });
-app.use(authGateway);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -131,7 +161,6 @@ app.use('/safeConfig', configRouter);
 app.use('/jira', jiraRouter);
 app.use('/lrs', lrsRouter);
 app.use('/recommendations', recommendationsRouter);
-app.use('/support', supportRouter);
 app.use('/s3', s3Router);
 
 app.use('/portal-config/*', (req, res) => {
@@ -144,41 +173,35 @@ app.use(harmonRouter);
 
 // set up proxies
 const {
-  portal2Proxy,
   s3Proxy,
   html5Proxy,
   reactAppProxy,
-  reactDevProxy,
 } = require('./controllers/proxyController');
 
-// Portal 2: Electric Boogaloo
-app.use('/portal', portal2Proxy);
-
-const isDevMode = runningInDevMode();
-
-// Add landing pages
-const landingPageRoute = '/landing';
-if (isDevMode) {
-  app.use(landingPageRoute, reactDevProxy);
-} else {
-  app.use(landingPageRoute, reactAppProxy);
-}
+app.use('/landing', reactAppProxy);
 
 // HTML5 scripts, local or S3
+const isDevMode = runningInDevMode();
 if (isDevMode) {
   app.use(express.static(join(__dirname, '../static/html5'), options));
 } else {
   app.use('/scripts', html5Proxy);
 }
 
-// All remaining docs from S3
+// Docs stored on S3 — current and portal2
 app.use(s3Proxy);
 
+app.use((req: Request, res: Response, next: NextFunction) => {
+  if (req.path === '/') {
+    return res.redirect('/landing');
+  }
+  return res.redirect(`/landing/404${req.url ? `?notFound=${req.url}` : ''}`);
+});
 // handles unauthorized errors
 app.use(expressWinstonErrorLogger);
-app.use((err: Error, req: Request, res: Response) => {
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   winstonLogger.error(
-    `General error passed to top-level handler in app.js: ${JSON.stringify(
+    `General error passed to top-level handler in app.ts: ${JSON.stringify(
       err
     )}`
   );

@@ -1,7 +1,7 @@
 import {
   createOrUpdateEntity,
   getAllEntities,
-  getEntity,
+  findEntity,
 } from './configController';
 import { Doc } from '../model/entity/Doc';
 import { Product } from '../model/entity/Product';
@@ -258,7 +258,7 @@ async function updateRefsInItem(
   rootPath: string
 ): Promise<Item> {
   if (legacyItem.id) {
-    const { status, body } = await getEntity(Doc.name, {
+    const { status, body } = await findEntity(Doc.name, {
       id: legacyItem.id,
     });
     if (status === 200) {
@@ -268,7 +268,7 @@ async function updateRefsInItem(
     const pagePath = legacyItem.page;
     const pagePathWithRoot = path.join(rootPath, pagePath);
     const relativePagePath = getRelativePagePath(pagePathWithRoot);
-    const { status, body } = await getEntity(Page.name, {
+    const { status, body } = await findEntity(Page.name, {
       path: relativePagePath,
     });
     if (status === 200) {
@@ -418,6 +418,69 @@ function getRelativePagePath(absPagePath: string): string {
   return absPagePath.split('pages/')[1] || '/';
 }
 
+export async function putOpenRoutesConfigsInDatabase() {
+  try {
+    const openPaths = [
+      {
+        path: 'gw-login',
+        component: 'page',
+        title: 'Login',
+      },
+      {
+        path: 'search',
+        component: 'page',
+        title: 'Search',
+      },
+      {
+        path: '404',
+        component: 'page',
+        title: '404',
+      },
+      {
+        path: 'forbidden',
+        component: 'page',
+        title: 'Forbidden',
+      },
+      {
+        path: 'static',
+        component: 'resource',
+        title: 'Static',
+      },
+      {
+        path: 'landing-page-resources',
+        component: 'resource',
+        title: 'Landing page resources',
+      },
+    ];
+    const openRouteConfigs = [];
+    for (const openPath of openPaths) {
+      const openRouteConfig = new Page();
+      openRouteConfig.path = openPath.path;
+      openRouteConfig.title = openPath.title;
+      openRouteConfig.public = true;
+      openRouteConfig.internal = false;
+      openRouteConfig.earlyAccess = false;
+      openRouteConfig.component = openPath.component;
+      openRouteConfig.isInProduction = false;
+      openRouteConfigs.push(openRouteConfig);
+    }
+    const saveResult = await AppDataSource.manager.save(Page, openRouteConfigs);
+    return {
+      status: 200,
+      body: saveResult,
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      body: {
+        message: `Cannot put open route config in DB: ${
+          (err as Error).message
+        }`,
+      },
+    };
+  }
+}
+
 export async function putPageConfigsInDatabase() {
   try {
     const localLandingPagesConfigDir = resolve(
@@ -496,7 +559,7 @@ export async function putPageConfigsInDatabase() {
       // Temporary sidebar for testing
       if (page.path.endsWith('cloudProducts/elysian')) {
         const sidebarItemDoc = new SidebarItem();
-        const docResponse = await getEntity(Doc.name, {
+        const docResponse = await findEntity(Doc.name, {
           id: 'amstcccounterfraud',
         });
         sidebarItemDoc.label = 'Counter Fraud ClaimCenter';
@@ -600,7 +663,7 @@ async function getOrCreateEntities(
 ) {
   const items = [];
   for (const i of legacyItems) {
-    const { status, body } = await getEntity(repoName, {
+    const { status, body } = await findEntity(repoName, {
       [mainKey]: i,
     });
     if (status === 404) {
@@ -626,13 +689,13 @@ async function createProductEntities(
 ): Promise<Product[]> {
   const dbDocProducts = [];
   for (const productConfig of productConfigs) {
-    const productName = await getEntity(ProductName.name, {
+    const productName = await findEntity(ProductName.name, {
       name: productConfig.productName,
     });
-    const platformName = await getEntity(ProductPlatform.name, {
+    const platformName = await findEntity(ProductPlatform.name, {
       name: productConfig.platformName,
     });
-    const versionName = await getEntity(ProductVersion.name, {
+    const versionName = await findEntity(ProductVersion.name, {
       name: productConfig.versionName,
     });
     const productEntity = await AppDataSource.manager.save(Product, {
@@ -647,7 +710,7 @@ async function createProductEntities(
 
 async function addDocBuild(buildConfig: legacyBuildConfig) {
   const docBuild = new Build();
-  const matchingBuildSrc = await getEntity(Source.name, {
+  const matchingBuildSrc = await findEntity(Source.name, {
     id: buildConfig.srcId,
   });
   docBuild.type = buildConfig.buildType;

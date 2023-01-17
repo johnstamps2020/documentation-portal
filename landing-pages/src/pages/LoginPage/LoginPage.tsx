@@ -1,17 +1,16 @@
 import Layout from "../../components/Layout/Layout";
 import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import Link from "@mui/material/Link";
+import { Link as RouterLink } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Unstable_Grid2";
+import LoginOptions from "../../components/LoginPage/LoginOptions";
 
 export default function LoginPage() {
   return (
     <Layout
       title="Guidewire Documentation | Log in"
-      headerOptions={{ hideSearchBox: true }}
+      headerOptions={{ hideSearchBox: true, hideUserProfile: true }}
     >
       <Grid container alignItems="center" sx={{ width: "100%" }}>
         <Grid
@@ -62,7 +61,9 @@ export default function LoginPage() {
             }}
           >
             Browse through the{" "}
-            <Link href="/apiReferences">latest API References</Link>
+            <Link component={RouterLink} to="/apiReferences/elysian">
+              latest API References
+            </Link>
           </Typography>
           <Paper
             sx={{
@@ -87,81 +88,7 @@ export default function LoginPage() {
             >
               To view complete documentation, log in to your account
             </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "8px",
-                width: "fit-content"
-              }}
-            >
-              <Tooltip
-                title={
-                  <Typography>
-                    Use your Guidewire Cloud Platform account to access
-                    documentation
-                  </Typography>
-                }
-                placement="left"
-                arrow
-              >
-                <Button
-                  href="/authorization-code"
-                  variant="contained"
-                  color="primary"
-                  fullWidth
-                >
-                  Guidewire Cloud
-                </Button>
-              </Tooltip>
-              <Tooltip
-                title={
-                  <Typography>
-                    Use your community.guidewire.com account to access
-                    documentation
-                  </Typography>
-                }
-                placement="left"
-                arrow
-              >
-                <Button
-                  href="/customers-login"
-                  variant="contained"
-                  color="primary"
-                  fullWidth
-                >
-                  Customer Community
-                </Button>
-              </Tooltip>
-              <Tooltip
-                title={
-                  <Typography>
-                    Use your partner.guidewire.com account to access
-                    documentation
-                  </Typography>
-                }
-                placement="left"
-                arrow
-              >
-                <Button
-                  href="/partners-login"
-                  variant="contained"
-                  color="primary"
-                  fullWidth
-                >
-                  Partner Community
-                </Button>
-              </Tooltip>
-              <Button
-                variant="outlined"
-                color="primary"
-                href="/authorization-code?idp=okta"
-                fullWidth
-                sx={{ marginTop: 4, fontWeight: 600, border: 1 }}
-              >
-                Guidewire Employee
-              </Button>
-            </Box>
+            <LoginOptions />
           </Paper>
         </Grid>
       </Grid>
