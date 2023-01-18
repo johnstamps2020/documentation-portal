@@ -8,6 +8,7 @@ COPY package.json .
 COPY yarn.lock .
 COPY .yarn/ .yarn/
 COPY .yarnrc.yml .
+ENV NPM_AUTH_TOKEN=$NPM_AUTH_TOKEN
 RUN yarn
 
 COPY . .
