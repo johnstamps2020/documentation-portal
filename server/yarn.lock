@@ -2274,9 +2274,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@doctools/gw-theme-classic@npm:2.0.36":
-  version: 2.0.36
-  resolution: "@doctools/gw-theme-classic@npm:2.0.36::__archiveUrl=https%3A%2F%2Fartifactory.guidewire.com%2Fartifactory%2Fapi%2Fnpm%2Fdoctools-npm-dev%2F%40doctools%2Fgw-theme-classic%2F-%2F%40doctools%2Fgw-theme-classic-2.0.36.tgz"
+"@doctools/gw-theme-classic@npm:2.0.37":
+  version: 2.0.37
+  resolution: "@doctools/gw-theme-classic@npm:2.0.37::__archiveUrl=https%3A%2F%2Fartifactory.guidewire.com%2Fartifactory%2Fapi%2Fnpm%2Fdoctools-npm-dev%2F%40doctools%2Fgw-theme-classic%2F-%2F%40doctools%2Fgw-theme-classic-2.0.37.tgz"
   dependencies:
     "@brightcove/react-player-loader": ^1.4.2
     "@docusaurus/core": ^2.1.0
@@ -2290,7 +2290,7 @@ __metadata:
     lodash: ^4.17.21
     mark.js: ^8.11.1
     rimraf: ^3.0.2
-  checksum: 1cb226a107a2b89caed215b99eba4e0c3101ea13d1ff572f4e138516f16476294328f371ba66092dae7d6cb3b4991a814c922457ea7cb5c1b6a1c1824e74a811
+  checksum: 379bf34165e8c9618af7b3b45881156fdd240188e409cf293579ed09a6471cf2e894683514e2f300b1ea2e8197b9155d6bcee76dd885b6c2e6bb59555a130eca
   languageName: node
   linkType: hard
 
@@ -7238,7 +7238,7 @@ __metadata:
     "@babel/cli": ^7.17.6
     "@babel/core": ^7.20.12
     "@babel/preset-react": ^7.16.7
-    "@doctools/gw-theme-classic": 2.0.36
+    "@doctools/gw-theme-classic": 2.0.37
     "@elastic/elasticsearch": ^7.17.0
     "@okta/jwt-verifier": ^2.3.0
     "@types/jest": ^27.5.1
