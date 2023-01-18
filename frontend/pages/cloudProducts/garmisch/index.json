@@ -35,6 +35,16 @@
   },
   "items": [
     {
+      "label": "Platform",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Workflow Service (Early Access)",
+          "page": "../workflowservice"
+        }
+      ]
+    },
+    {
       "label": "Applications",
       "class": "categoryCard cardShadow",
       "items": [

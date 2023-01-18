@@ -1,0 +1,21 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "workflowdesignergarmisch",
+      "title": "Workflow Designer (Early Access)",
+      "url": "cloud/workflow-service/designer",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Workflow Service"],
+        "version": ["latest"],
+        "release": ["Garmisch"]
+      },
+      "environments": ["staging"],
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    }
+  ]
+}
