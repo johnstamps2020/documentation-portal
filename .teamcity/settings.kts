@@ -4206,11 +4206,13 @@ object GwBuildSteps {
                 
                 # Log into the dev ECR, build and push the image
                 $awsEnvVars
+                
+                export TAG_VERSION=$tagVersion
 
                 set +x
                 docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
                 set -x
-                docker build -t ${GwDockerImages.DOC_PORTAL.imageUrl}:${tagVersion} ./server --build-arg tag_version=${tagVersion}
+                docker build -t ${GwDockerImages.DOC_PORTAL.imageUrl}:${tagVersion} ./server --build-arg TAG_VERSION --build-arg NPM_AUTH_TOKEN
                 docker push ${GwDockerImages.DOC_PORTAL.imageUrl}:${tagVersion}
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
