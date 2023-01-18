@@ -4347,7 +4347,7 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                 
-                cp -avR "${onlineOutputPath}/pdf" "$offlineOutputPath"
+                [[ -e ${onlineOutputPath}/pdf/*.pdf ]] && cp -avR "${onlineOutputPath}/pdf" "$offlineOutputPath"
                 """.trimIndent()
         }
     }
