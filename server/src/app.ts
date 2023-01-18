@@ -195,7 +195,13 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   if (req.path === '/') {
     return res.redirect('/landing');
   }
-  return res.redirect(`/landing/404${req.url ? `?notFound=${req.url}` : ''}`);
+  const notFoundParam =
+    req.url === '/404'
+      ? req.headers.referer?.replace(`${process.env.APP_BASE_URL}`, '')
+      : req.url;
+  return res.redirect(
+    `/landing/404${notFoundParam && `?notFound=${notFoundParam}`}`
+  );
 });
 // handles unauthorized errors
 app.use(expressWinstonErrorLogger);

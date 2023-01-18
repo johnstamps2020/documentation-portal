@@ -308,32 +308,6 @@ export async function getDocIdByUrl(url: string) {
   };
 }
 
-export async function isPublicDoc(url: string) {
-  try {
-    const matchingDoc = await getDocByUrl(url);
-    return matchingDoc && matchingDoc.public;
-  } catch (err) {
-    winstonLogger.error(
-      `Problem getting doc by url
-              url: ${url}, 
-              ERROR: ${JSON.stringify(err)}`
-    );
-  }
-}
-
-export async function isInternalDoc(url: string) {
-  try {
-    const matchingDoc = await getDocByUrl(url);
-    return matchingDoc && matchingDoc.internal;
-  } catch (err) {
-    winstonLogger.error(
-      `Problem determining if doc is internal
-              url: ${url}, 
-              ERROR: ${JSON.stringify(err)}`
-    );
-  }
-}
-
 export async function getRootBreadcrumb(pagePathname: string) {
   try {
     const breadcrumbsConfigPath = new URL(
@@ -435,8 +409,3 @@ export async function getVersionSelector(
 export function getEnv() {
   return { envName: process.env.DEPLOY_ENV };
 }
-
-export type DocUrlByIdResponse = {
-  id: string;
-  url: string;
-};
