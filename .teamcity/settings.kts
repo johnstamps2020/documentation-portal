@@ -2270,7 +2270,7 @@ object Server {
                 set +x
                 docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
                 set -x
-                docker build -t ${GwDockerImages.DOC_PORTAL.imageUrl}:${'$'}{TAG_VERSION} . --build-arg tag_version=${'$'}{TAG_VERSION}
+                docker build -t ${GwDockerImages.DOC_PORTAL.imageUrl}:${'$'}{TAG_VERSION} . --build-arg TAG_VERSION --build-arg NPM_AUTH_TOKEN
                 docker push ${GwDockerImages.DOC_PORTAL.imageUrl}:${'$'}{TAG_VERSION}
             """.trimIndent()
                 dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
