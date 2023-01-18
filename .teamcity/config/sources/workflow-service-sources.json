@@ -1,0 +1,12 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "workflowservicegarmischsrc",
+      "title": "Workflow Service Garmisch",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/workflow-service.git",
+      "branch": "release/2023.02"
+    }
+  ]
+}
