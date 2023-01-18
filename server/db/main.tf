@@ -51,9 +51,9 @@ module "aurora_db" {
   apply_immediately = true
   deletion_protection = true
 
-  tenant_name = "tenant-doctools"
-  department_code = "185"
-  created_by = "doctools@guidewire.com"
+  tenant_name = var.pod_name
+  department_code = var.dept_code
+  created_by = var.pod_name
   environment_level = var.env_level
   gw_product = "Multi-tenantMicroservice"
   customer_code = "Multi-tenantMicroservice"

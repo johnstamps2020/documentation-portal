@@ -9,3 +9,11 @@ variable "region" {
 variable "env_level" {
   type = string
 }
+
+variable "pod_name" {
+  type = string
+}
+
+variable "dept_code" {
+  type = string
+}
