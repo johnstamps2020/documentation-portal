@@ -2,7 +2,7 @@ apiVersion: oort.ccs.guidewire.com/v1alpha1
 kind: GatewayConfig
 metadata:
   namespace: ${POD_NAME}
-  name: docportal-gateway-config
+  name: ${APP_NAME}-gateway-config
   labels:
     app: ${APP_NAME}
     gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
@@ -29,5 +29,5 @@ spec:
       profiles:
         - Default
   service_ref: ${APP_NAME}
-  service_alias: docs
+  service_alias: croissant
   enable_sub_domain: false
