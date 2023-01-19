@@ -1801,7 +1801,7 @@ __metadata:
 
 "@documentation-portal@file:../server::locator=landing-pages%40workspace%3Alanding-pages":
   version: 2.29.22
-  resolution: "@documentation-portal@file:../server#../server::hash=275d3f&locator=landing-pages%40workspace%3Alanding-pages"
+  resolution: "@documentation-portal@file:../server#../server::hash=669061&locator=landing-pages%40workspace%3Alanding-pages"
   dependencies:
     "@elastic/elasticsearch": ^7.17.0
     "@okta/jwt-verifier": ^2.3.0
@@ -1843,7 +1843,7 @@ __metadata:
     serve-favicon: ^2.5.0
     typeorm: ^0.3.9
     winston: ^3.7.2
-  checksum: e633d7b349ce316d2aa93ab4cfebd15306d353b141236f079fed548e5dce31a790422ec399542a6c29113eac1ed15fe31cec32c5069e59e18873d219e354a26b
+  checksum: ac2db5e88cf7e2363c30cf44dbb549f4af81ad201c8366fe4a75501719e9ba275802f497c580e45e431a3827a0eb242a5804ac5e9b2161df5272f6caf73ac010
   languageName: node
   linkType: hard
 
