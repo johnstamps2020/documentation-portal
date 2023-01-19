@@ -2274,13 +2274,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@doctools/gw-theme-classic@npm:2.0.37":
-  version: 2.0.37
-  resolution: "@doctools/gw-theme-classic@npm:2.0.37::__archiveUrl=https%3A%2F%2Fartifactory.guidewire.com%2Fartifactory%2Fapi%2Fnpm%2Fdoctools-npm-dev%2F%40doctools%2Fgw-theme-classic%2F-%2F%40doctools%2Fgw-theme-classic-2.0.37.tgz"
+"@doctools/gw-theme-classic@npm:2.0.39":
+  version: 2.0.39
+  resolution: "@doctools/gw-theme-classic@npm:2.0.39::__archiveUrl=https%3A%2F%2Fartifactory.guidewire.com%2Fartifactory%2Fapi%2Fnpm%2Fdoctools-npm-dev%2F%40doctools%2Fgw-theme-classic%2F-%2F%40doctools%2Fgw-theme-classic-2.0.39.tgz"
   dependencies:
     "@brightcove/react-player-loader": ^1.4.2
-    "@docusaurus/core": ^2.1.0
-    "@docusaurus/preset-classic": ^2.1.0
+    "@docusaurus/core": 2.2.0
+    "@docusaurus/preset-classic": 2.2.0
     "@emotion/react": ^11.10.0
     "@emotion/styled": ^11.10.0
     "@fontsource/source-sans-pro": ^4.5.11
@@ -2290,11 +2290,11 @@ __metadata:
     lodash: ^4.17.21
     mark.js: ^8.11.1
     rimraf: ^3.0.2
-  checksum: 379bf34165e8c9618af7b3b45881156fdd240188e409cf293579ed09a6471cf2e894683514e2f300b1ea2e8197b9155d6bcee76dd885b6c2e6bb59555a130eca
+  checksum: 837fe7b1b9ee74d9fd07c5a9b09036a02f9462ebc1a685d71aabe4be7399fd25c7c81dfd5de456a18328cce2ae0cc6b6f658e29702ecdd87b78f61a39017c40e
   languageName: node
   linkType: hard
 
-"@docusaurus/core@npm:2.2.0, @docusaurus/core@npm:^2.1.0":
+"@docusaurus/core@npm:2.2.0":
   version: 2.2.0
   resolution: "@docusaurus/core@npm:2.2.0"
   dependencies:
@@ -2587,7 +2587,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/preset-classic@npm:^2.1.0":
+"@docusaurus/preset-classic@npm:2.2.0":
   version: 2.2.0
   resolution: "@docusaurus/preset-classic@npm:2.2.0"
   dependencies:
@@ -7238,7 +7238,7 @@ __metadata:
     "@babel/cli": ^7.17.6
     "@babel/core": ^7.20.12
     "@babel/preset-react": ^7.16.7
-    "@doctools/gw-theme-classic": 2.0.37
+    "@doctools/gw-theme-classic": 2.0.39
     "@elastic/elasticsearch": ^7.17.0
     "@okta/jwt-verifier": ^2.3.0
     "@types/jest": ^27.5.1
