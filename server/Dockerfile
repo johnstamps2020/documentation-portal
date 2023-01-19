@@ -3,12 +3,14 @@ FROM artifactory.guidewire.com/hub-docker-remote/node:16.14.2-alpine
 # Create app directory
 WORKDIR /usr/src/app
 
+ARG NPM_AUTH_TOKEN
+ARG TAG_VERSION
+
 RUN mkdir static
 COPY package.json .
 COPY yarn.lock .
 COPY .yarn/ .yarn/
 COPY .yarnrc.yml .
-ENV NPM_AUTH_TOKEN=$NPM_AUTH_TOKEN
 RUN yarn
 
 COPY . .
