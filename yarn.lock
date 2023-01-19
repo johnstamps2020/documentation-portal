@@ -1801,7 +1801,7 @@ __metadata:
 
 "@documentation-portal@file:../server::locator=landing-pages%40workspace%3Alanding-pages":
   version: 2.29.22
-  resolution: "@documentation-portal@file:../server#../server::hash=721eec&locator=landing-pages%40workspace%3Alanding-pages"
+  resolution: "@documentation-portal@file:../server#../server::hash=275d3f&locator=landing-pages%40workspace%3Alanding-pages"
   dependencies:
     "@elastic/elasticsearch": ^7.17.0
     "@okta/jwt-verifier": ^2.3.0
@@ -1810,17 +1810,17 @@ __metadata:
     "@types/cookie-session": ^2.0.44
     "@types/express": ^4.17.14
     "@types/jsonwebtoken": ^8.5.9
-    "@types/node": ^18.7.18
+    "@types/node": ^18.11.18
     "@types/node-fetch": ^2.6.2
     "@types/serve-favicon": ^2.5.3
-    aws-sdk: ^2.1256.0
+    aws-sdk: ^2.1297.0
     axios: ^0.21.4
     body-parser: ^1.20.0
     cookie-parser: ~1.4.6
     cookie-session: ^2.0.0
     cors: ^2.8.5
     dd-trace: ^2.8.0
-    debug: ~2.6.9
+    debug: ~4.3.4
     ejs: ^3.1.8
     express: ^4.18.2
     express-fileupload: ^1.4.0
@@ -1843,7 +1843,7 @@ __metadata:
     serve-favicon: ^2.5.0
     typeorm: ^0.3.9
     winston: ^3.7.2
-  checksum: 262069e1c806e8e3ede60830a8426bae1f3b9bd9fe1e9fb4f687df6f3e6d860fe296a9c093021187f179ea2eb676bdba0807e279558796725e0cf7fd248ef740
+  checksum: e633d7b349ce316d2aa93ab4cfebd15306d353b141236f079fed548e5dce31a790422ec399542a6c29113eac1ed15fe31cec32c5069e59e18873d219e354a26b
   languageName: node
   linkType: hard
 
@@ -3866,7 +3866,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:>=12, @types/node@npm:>=13.7.0, @types/node@npm:^18.7.18":
+"@types/node@npm:>=12, @types/node@npm:>=13.7.0":
   version: 18.11.3
   resolution: "@types/node@npm:18.11.3"
   checksum: 3a2a9142d891a90a195c296149bf64a69cc0abcc42f543be911ab22b2e0ead85ff077f90af92f0f13f6e3e5e72501469200fd753dfd1101825d4646a89d3ee47
@@ -3884,6 +3884,13 @@ __metadata:
   version: 16.11.68
   resolution: "@types/node@npm:16.11.68"
   checksum: a35293b6b8867e10ab9e10b6cd5f0e4224a86256d5ef102581dcb9f79f35f255ad87443e8584ddf8dce1229ee28885c58187e41822cf8d1e82495e7897c47c3f
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^18.11.18":
+  version: 18.11.18
+  resolution: "@types/node@npm:18.11.18"
+  checksum: 03f17f9480f8d775c8a72da5ea7e9383db5f6d85aa5fefde90dd953a1449bd5e4ffde376f139da4f3744b4c83942166d2a7603969a6f8ea826edfb16e6e3b49d
   languageName: node
   linkType: hard
 
@@ -4999,9 +5006,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:^2.1256.0":
-  version: 2.1256.0
-  resolution: "aws-sdk@npm:2.1256.0"
+"aws-sdk@npm:^2.1297.0":
+  version: 2.1297.0
+  resolution: "aws-sdk@npm:2.1297.0"
   dependencies:
     buffer: 4.9.2
     events: 1.1.1
@@ -5013,7 +5020,7 @@ __metadata:
     util: ^0.12.4
     uuid: 8.0.0
     xml2js: 0.4.19
-  checksum: 441125ec60d784816832d31db7ae02163676a7b689586ffdc5b4b4a92cb88bbd4353b85c6b080e7456752a8830b5689e6c3c5c1358efdf93ae666d53143a3966
+  checksum: 8e5e3d0a0978d0c454e2158a5cef824cab5a68b662323eb4b0f9b2d056907bce0dde70524e09707dd8a4b908c64de211b026606d1d91b24a660f131e5fdcd20e
   languageName: node
   linkType: hard
 
@@ -6679,7 +6686,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:2.6.9, debug@npm:^2.6.0, debug@npm:^2.6.9, debug@npm:~2.6.9":
+"debug@npm:2.6.9, debug@npm:^2.6.0, debug@npm:^2.6.9":
   version: 2.6.9
   resolution: "debug@npm:2.6.9"
   dependencies:
@@ -6697,7 +6704,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.3, debug@npm:^4.3.4":
+"debug@npm:4, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.3, debug@npm:^4.3.4, debug@npm:~4.3.4":
   version: 4.3.4
   resolution: "debug@npm:4.3.4"
   dependencies:
@@ -15022,12 +15029,12 @@ __metadata:
     "@types/jest": ^27.5.1
     "@types/jsdom": ^20.0.0
     "@types/jsonwebtoken": ^8.5.9
-    "@types/node": ^18.7.18
+    "@types/node": ^18.11.18
     "@types/node-fetch": ^2.6.2
     "@types/react-dom": ^18.0.6
     "@types/serve-favicon": ^2.5.3
     "@types/supertest": ^2.0.12
-    aws-sdk: ^2.1256.0
+    aws-sdk: ^2.1297.0
     axios: ^0.21.4
     babel-loader: ^8.2.3
     babel-plugin-prismjs: ^2.1.0
@@ -15038,7 +15045,7 @@ __metadata:
     cors: ^2.8.5
     css-loader: ^6.5.1
     dd-trace: ^2.8.0
-    debug: ~2.6.9
+    debug: ~4.3.4
     dotenv: ^8.2.0
     ejs: ^3.1.8
     express: ^4.18.2

@@ -24,7 +24,7 @@ import { PageSelectorItem } from './entity/PageSelectorItem';
 import { SidebarItem } from './entity/SidebarItem';
 import { Sidebar } from './entity/Sidebar';
 
-const dbHost = process.env.DOCPORTAL_DB_HOST;
+const dbHost = process.env.CONFIG_DB_HOST;
 const isDevMode = runningInDevMode();
 
 winstonLogger.notice(
@@ -36,9 +36,9 @@ export const AppDataSource = new DataSource({
   type: 'postgres',
   host: dbHost,
   port: 5432,
-  username: 'postgres',
-  password: process.env.DOCPORTAL_DB_PASSWORD,
-  database: 'postgres',
+  database: process.env.CONFIG_DB_NAME,
+  username: process.env.CONFIG_DB_USERNAME,
+  password: process.env.CONFIG_DB_PASSWORD,
   entities: [
     Build,
     Doc,
