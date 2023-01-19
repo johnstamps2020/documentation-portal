@@ -2,6 +2,20 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "standards202211src",
+      "title": "Standards 2022.11",
+      "sourceType": "git",
+      "branch": "2022.11",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
+    },
+    {
+      "id": "standards202210src",
+      "title": "Standards 2022.10",
+      "sourceType": "git",
+      "branch": "2022.10",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
+    },
+    {
       "id": "standards202209src",
       "title": "Standards 2022.09",
       "sourceType": "git",
@@ -154,13 +168,6 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git",
       "branch": "master"
-    },
-    {
-      "id": "standards202206jaJPsrc",
-      "title": "Standards 2022.06 ja-JP",
-      "sourceType": "git",
-      "branch": "build/ja-JP/2022.06",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     }
   ]
 }

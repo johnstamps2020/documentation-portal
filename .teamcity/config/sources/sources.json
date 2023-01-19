@@ -488,75 +488,6 @@
       ]
     },
     {
-      "id": "dx1120",
-      "title": "Digital 11.2.0",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "11.2.0",
-      "xdocsPathIds": [
-        "/Content/doc/digital/11.x/releases/1120/DX_superbook.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-c-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-c-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-claims-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ve-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-c-OnPrem.ditaval"
-      ]
-    },
-    {
-      "id": "dx1141",
-      "title": "Digital 11.4.1",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "release/11.4.1"
-    },
-    {
-      "id": "dx1141deDE",
-      "title": "Digital 11.4.1 de-DE",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "release/de-DE/11.4.1"
-    },
-    {
-      "id": "dx1141frFR",
-      "title": "Digital 11.4.1 fr-FR",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "release/fr-FR/11.4.1"
-    },
-    {
-      "id": "dx1130",
-      "title": "Digital 11.3.0",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "11.3.0",
-      "xdocsPathIds": [
-        "/Content/doc/digital/11.x/releases/1130/DX_superbook.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-c-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-c-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-claims-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ve-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-c-OnPrem.ditaval"
-      ]
-    },
-    {
       "id": "gchhelpsrc",
       "title": "Guidewire Cloud Home Help",
       "sourceType": "git",
@@ -827,46 +758,11 @@
       "branch": "main"
     },
     {
-      "id": "clouddataaccesses419src",
-      "title": "Cloud Data Access Guide es419",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-access.git",
-      "branch": "release/es-419/2021.11"
-    },
-    {
-      "id": "clouddataaccessitITsrc",
-      "title": "Cloud Data Access Guide it-IT",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-access.git",
-      "branch": "release/it-IT/2021.11"
-    },
-    {
-      "id": "clouddataaccessptBRsrc",
-      "title": "Cloud Data Access Guide pt-BR",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-access.git",
-      "branch": "release/pt-BR/2021.11"
-    },
-    {
       "id": "exploresrc",
       "title": "Explore",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
       "branch": "main"
-    },
-    {
-      "id": "explorees419src",
-      "title": "Explore es419",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
-      "branch": "es-419/2022Mar"
-    },
-    {
-      "id": "exploreptBRsrc",
-      "title": "Explore ptBR",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
-      "branch": "pt-BR/2022Mar"
     },
     {
       "id": "insurancenowextrassrc",
@@ -881,20 +777,6 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
       "branch": "main"
-    },
-    {
-      "id": "guidewireidentityfederationhubitITsrc",
-      "title": "Guidewire Identity Federation Hub Release it-IT",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
-      "branch": "release/it-IT/2021.04"
-    },
-    {
-      "id": "guidewireidentityfederationhubjaJPsrc",
-      "title": "Guidewire Identity Federation Hub Release ja-JP",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
-      "branch": "release/ja-JP/2021.04"
     },
     {
       "id": "cloudplatformsrc",
@@ -1117,6 +999,27 @@
       "title": "Product Adoption Resources main",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/surepath-methodology.git",
+      "branch": "main"
+    },
+    {
+      "id": "cdsdocss3foldersrc",
+      "title": "CDS Docs S3 folder main",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/surepath-methodology.git",
+      "branch": "main"
+    },
+    {
+      "id": "doctoolss3managersrc",
+      "title": "Doctools S3 manager main",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/s3-file-manager.git",
+      "branch": "main"
+    },
+    {
+      "id": "cloudtickettemplatessrc",
+      "title": "Cloud Ticket Templates",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-ticket-templates.git",
       "branch": "main"
     }
   ]

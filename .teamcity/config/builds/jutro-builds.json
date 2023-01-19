@@ -303,6 +303,13 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutroplaygroundnext",
+      "srcId": "srcjutroplaygroundnext",
+      "nodeImageVersion": "16.14.2",
+      "outputPath": "dist"
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutroplasmicnext",
       "srcId": "srcjutroplasmicnext",
       "nodeImageVersion": "17.6.0"
@@ -582,8 +589,8 @@
     },
     {
       "buildType": "yarn",
-      "docId": "jutro831",
-      "srcId": "srcjutro831",
+      "docId": "jutro832",
+      "srcId": "srcjutro832",
       "workingDir": "website",
       "nodeImageVersion": "17.6.0"
     },
@@ -596,8 +603,8 @@
     },
     {
       "buildType": "yarn",
-      "docId": "storybook831",
-      "srcId": "srcjutro831",
+      "docId": "storybook832",
+      "srcId": "srcjutro832",
       "nodeImageVersion": "17.6.0",
       "workingDir": "storybook"
     },
@@ -631,15 +638,57 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutro860",
+      "srcId": "srcjutro860",
+      "workingDir": "website",
+      "nodeImageVersion": "17.6.0"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storybook860",
+      "srcId": "srcjutro860",
+      "nodeImageVersion": "17.6.0",
+      "workingDir": "storybook"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "jutro861",
+      "srcId": "srcjutro861",
+      "workingDir": "website",
+      "nodeImageVersion": "17.6.0"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storybook861",
+      "srcId": "srcjutro861",
+      "nodeImageVersion": "17.6.0",
+      "workingDir": "storybook"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "jutro870",
+      "srcId": "srcjutro870",
+      "workingDir": "website",
+      "nodeImageVersion": "17.6.0"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storybook870",
+      "srcId": "srcjutro870",
+      "nodeImageVersion": "17.6.0",
+      "workingDir": "storybook"
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutrolatest",
-      "srcId": "srcjutro850",
+      "srcId": "srcjutro870",
       "workingDir": "website",
       "nodeImageVersion": "17.6.0"
     },
     {
       "buildType": "yarn",
       "docId": "storybooklatest",
-      "srcId": "srcjutro850",
+      "srcId": "srcjutro870",
       "nodeImageVersion": "17.6.0",
       "workingDir": "storybook"
     },
@@ -655,13 +704,6 @@
           "value": "/jutro/a11y/latest"
         }
       ]
-    },
-    {
-      "buildType": "yarn",
-      "docId": "jutrohomeplatformbugstats",
-      "srcId": "srcjutrohomeplatformbugstats",
-      "nodeImageVersion": "16.18.0",
-      "workingDir": "website"
     }
   ]
 }

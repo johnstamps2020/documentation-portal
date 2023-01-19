@@ -97,7 +97,15 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"]
+            "enum": [
+              "Aspen",
+              "Banff",
+              "Cortina",
+              "Dobson",
+              "Elysian",
+              "Flaine",
+              "Garmisch"
+            ]
           }
         },
         "subject": {
@@ -205,6 +213,7 @@
           "Guidewire for Salesforce ProducerEngage",
           "Predictive Analytics",
           "Live Predict",
+          "OIC Integration",
           "ProducerEngage",
           "ProducerEngage for ClaimCenter",
           "ServiceRepEngage",
@@ -221,12 +230,14 @@
           "Guidewire InsuranceSuite Package for Germany",
           "Global Solutions - Australia",
           "InsuranceSuite Package for Australia",
+          "InsuranceSuite Package for Japan",
           "London Market",
           "InsuranceNow",
           "InsuranceNow Consumer Service Portal",
           "Internal Docs",
           "REST API Client",
           "Jutro Design System",
+          "Jutro Playground",
           "Jutro Digital Platform",
           "Jutro Plasmic",
           "Jutro SDK",
@@ -238,9 +249,9 @@
           "EasyGuide",
           "UpgradeDiffs",
           "Glossary",
-          "Writing with Git",
           "DocTools",
           "LRS",
+          "Workflow Service",
           "Workset Manager",
           "Canvas",
           "Cyence",
@@ -249,7 +260,8 @@
           "Portfolio Assembly",
           "Standards-based Template Framework",
           "Product Adoption Resources",
-          "Ski release overview"
+          "Ski release overview",
+          "Cloud Ticket Templates"
         ]
       }
     },
@@ -316,7 +328,7 @@
         "buildType": {
           "description": "The build type to apply",
           "type": "string",
-          "enum": ["dita", "source-zip", "storybook", "yarn"]
+          "enum": ["dita", "source-zip", "storybook", "yarn", "just-copy"]
         },
         "filter": {
           "description": "The name of the ditaval file from the common-gw/ditavals submodule to use in the build, including the extension",

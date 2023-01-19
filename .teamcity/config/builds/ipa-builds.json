@@ -4,7 +4,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "ReleaseNotes.ditamap",
+      "root": "IPAReleaseNotes.ditamap",
       "srcId": "ipacloud10src",
       "docId": "ipacloud10rn",
       "indexRedirect": true
@@ -12,7 +12,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "configurationguide.ditamap",
+      "root": "IPAConfigurationGuide.ditamap",
       "srcId": "ipacloud10src",
       "docId": "ipacloud10config",
       "indexRedirect": true
@@ -36,7 +36,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "ApplicationGuide.ditamap",
+      "root": "IPAApplicationGuide.ditamap",
       "srcId": "ipacloud10src",
       "docId": "ipacloud10gstc",
       "indexRedirect": true
@@ -55,30 +55,6 @@
       "root": "vehicle_lookup_applicationguide.ditamap",
       "srcId": "ipacloud10src",
       "docId": "ipacloud10vl",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "ApplicationGuide.ditamap",
-      "srcId": "ipadraftsrc",
-      "docId": "ipaappdraft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "InstallGuide.ditamap",
-      "srcId": "ipadraftsrc",
-      "docId": "ipainstalldraft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "ReleaseNotes.ditamap",
-      "srcId": "ipadraftsrc",
-      "docId": "iparndraft",
       "indexRedirect": true
     }
   ]

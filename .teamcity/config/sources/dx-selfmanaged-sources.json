@@ -1,0 +1,39 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "dx1150",
+      "title": "Digital 11.5.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "release/11.5.0"
+    },
+    {
+      "id": "dx1141",
+      "title": "Digital 11.4.1",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "release/11.4.1"
+    },
+    {
+      "id": "dx1130",
+      "title": "Digital 11.3.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "11.3.0",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/releases/1130/DX_superbook.ditamap"
+      ]
+    },
+    {
+      "id": "dx1120",
+      "title": "Digital 11.2.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "11.2.0",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/releases/1120/DX_superbook.ditamap"
+      ]
+    }
+  ]
+}

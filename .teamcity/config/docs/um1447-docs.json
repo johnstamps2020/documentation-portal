@@ -10,7 +10,7 @@
         "platform": ["Cloud"],
         "version": ["144.7"],
         "release": ["Dobson"],
-        "subject": ["Release Notes"]
+        "subject": ["Release notes"]
       },
       "displayOnLandingPages": true,
       "indexForSearch": false,
@@ -28,7 +28,7 @@
         "platform": ["Cloud"],
         "version": ["144.7"],
         "release": ["Dobson"],
-        "subject": ["Release Notes"]
+        "subject": ["Release notes"]
       },
       "displayOnLandingPages": true,
       "indexForSearch": false,

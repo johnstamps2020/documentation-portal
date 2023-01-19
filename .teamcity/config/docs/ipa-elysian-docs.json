@@ -1,0 +1,124 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "ipacloudelysianrn",
+      "title": "Release Notes",
+      "url": "cloud/ipa/elysian/releasenotes",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipacloudelysianconfig",
+      "title": "Configuration",
+      "url": "cloud/ipa/elysian/config",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "subject": ["Developers"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipacloudelysianapmp",
+      "title": "Australian Personal Motor Policy",
+      "url": "cloud/ipa/elysian/apmp",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipacloudelysianapmc",
+      "title": "Australian Personal Motor Claims",
+      "url": "cloud/ipa/elysian/apmc",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipacloudelysiangstc",
+      "title": "GST for Claims",
+      "url": "cloud/ipa/elysian/gstc",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipacloudelysianal",
+      "title": "Address Lookup",
+      "url": "cloud/ipa/elysian/al",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipacloudelysianvl",
+      "title": "Vehicle Lookup",
+      "url": "cloud/ipa/elysian/vl",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

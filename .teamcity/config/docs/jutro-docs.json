@@ -12,7 +12,7 @@
         "release": ["Banff"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "prod", "int"],
+      "environments": ["staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -29,7 +29,7 @@
         "version": ["4.2.1"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "prod", "int"],
+      "environments": ["staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -46,7 +46,7 @@
         "version": ["4.3.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "prod", "int"],
+      "environments": ["staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -63,7 +63,7 @@
         "version": ["5.0.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "prod", "int"],
+      "environments": ["staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -80,7 +80,7 @@
         "version": ["5.1.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "prod", "int"],
+      "environments": ["staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -97,7 +97,7 @@
         "version": ["5.2.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "prod", "int"],
+      "environments": ["staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -114,7 +114,7 @@
         "version": ["5.3.1"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": false,
@@ -132,7 +132,7 @@
         "subject": ["Best practices"],
         "release": ["Cortina"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -149,7 +149,7 @@
         "version": ["5.4.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -166,7 +166,7 @@
         "version": ["6.0.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -183,7 +183,7 @@
         "version": ["6.1.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -200,7 +200,7 @@
         "version": ["6.2.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -217,7 +217,7 @@
         "version": ["6.3.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -234,7 +234,7 @@
         "version": ["6.4.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -251,7 +251,7 @@
         "version": ["6.5.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -268,7 +268,7 @@
         "version": ["6.5.1"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -286,7 +286,7 @@
         "subject": ["Best practices"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -320,11 +320,28 @@
         "version": ["next"],
         "subject": ["Best practices"]
       },
-      "environments": ["int"],
+      "environments": ["dev", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "jutroplaygroundnext",
+      "title": "Jutro Playground",
+      "url": "jutro/playground/next",
+      "metadata": {
+        "product": ["Jutro Playground"],
+        "platform": ["Cloud"],
+        "version": ["next"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["dev", "int"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
       "earlyAccess": false
     },
     {
@@ -388,7 +405,7 @@
         "platform": ["Cloud", "Self-managed"],
         "version": ["latest"]
       },
-      "environments": ["dev", "staging", "prod", "int"],
+      "environments": ["staging", "prod", "int"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": true,
@@ -406,7 +423,7 @@
         "release": ["Banff"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -423,7 +440,7 @@
         "version": ["4.2.1"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -440,7 +457,7 @@
         "version": ["4.3.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -457,7 +474,7 @@
         "version": ["5.0.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -474,7 +491,7 @@
         "version": ["5.1.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -491,7 +508,7 @@
         "version": ["5.2.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -508,7 +525,7 @@
         "version": ["5.3.1"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": false,
@@ -526,7 +543,7 @@
         "subject": ["Development"],
         "release": ["Cortina"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -543,7 +560,7 @@
         "version": ["5.4.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -560,7 +577,7 @@
         "version": ["6.0.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -577,7 +594,7 @@
         "version": ["6.1.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -594,7 +611,7 @@
         "version": ["6.2.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -611,7 +628,7 @@
         "version": ["6.3.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -628,7 +645,7 @@
         "version": ["6.4.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -645,7 +662,7 @@
         "version": ["6.5.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -663,7 +680,7 @@
         "subject": ["Development"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -681,7 +698,7 @@
         "subject": ["Development"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -716,7 +733,7 @@
         "subject": ["Development"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": false,
@@ -734,7 +751,7 @@
         "subject": ["Development"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -752,7 +769,7 @@
         "subject": ["Development"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": false,
@@ -770,7 +787,7 @@
         "subject": ["Development"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": false,
@@ -788,7 +805,7 @@
         "subject": ["Development"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": false,
@@ -806,7 +823,7 @@
         "subject": ["Development"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": false,
@@ -823,7 +840,7 @@
         "version": ["6.6.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -840,7 +857,7 @@
         "version": ["6.6.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -857,7 +874,7 @@
         "version": ["7.0.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -874,7 +891,7 @@
         "version": ["7.0.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -891,7 +908,7 @@
         "version": ["7.1.1"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -908,7 +925,7 @@
         "version": ["7.1.1"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -925,7 +942,7 @@
         "version": ["7.2.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -942,7 +959,7 @@
         "version": ["7.2.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -959,7 +976,7 @@
         "version": ["7.3.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -976,7 +993,7 @@
         "version": ["7.3.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -993,7 +1010,7 @@
         "version": ["7.4.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -1010,7 +1027,7 @@
         "version": ["7.4.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -1027,7 +1044,7 @@
         "version": ["7.4.1"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -1044,7 +1061,7 @@
         "version": ["7.4.1"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -1061,7 +1078,7 @@
         "version": ["7.4.2"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -1078,7 +1095,7 @@
         "version": ["7.4.2"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -1096,7 +1113,7 @@
         "subject": ["Best practices"],
         "release": ["Elysian"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1114,7 +1131,7 @@
         "subject": ["Development"],
         "release": ["Elysian"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1132,7 +1149,7 @@
         "subject": ["Development"],
         "release": ["Elysian"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": false,
@@ -1149,7 +1166,7 @@
         "version": ["7.5.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1166,7 +1183,7 @@
         "version": ["7.5.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1183,7 +1200,7 @@
         "version": ["8.0.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1200,7 +1217,7 @@
         "version": ["8.0.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1217,7 +1234,7 @@
         "version": ["8.1.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1234,7 +1251,7 @@
         "version": ["8.1.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1251,7 +1268,7 @@
         "version": ["8.2.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1268,7 +1285,7 @@
         "version": ["8.2.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1286,7 +1303,7 @@
         "subject": ["Best practices"],
         "release": ["Flaine"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1304,7 +1321,7 @@
         "subject": ["Development"],
         "release": ["Flaine"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1312,16 +1329,16 @@
       "earlyAccess": false
     },
     {
-      "id": "jutro831",
+      "id": "jutro832",
       "title": "Jutro Design System and UI Framework",
-      "url": "jutro/documentation/8.3.1",
+      "url": "jutro/documentation/8.3.2",
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["8.3.1"],
+        "version": ["8.3.2"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1329,16 +1346,16 @@
       "earlyAccess": false
     },
     {
-      "id": "storybook831",
+      "id": "storybook832",
       "title": "Jutro Storybook",
-      "url": "jutro/storybook/8.3.1",
+      "url": "jutro/storybook/8.3.2",
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["8.3.1"],
+        "version": ["8.3.2"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1355,7 +1372,7 @@
         "version": ["8.4.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1372,7 +1389,7 @@
         "version": ["8.4.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1389,7 +1406,7 @@
         "version": ["8.5.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1406,7 +1423,111 @@
         "version": ["8.5.0"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
+      "environments": ["staging", "int", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "jutro860",
+      "title": "Jutro Design System and UI Framework",
+      "url": "jutro/documentation/8.6.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["8.6.0"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["staging", "int", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "storybook860",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/8.6.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["8.6.0"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging", "int", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "jutro861",
+      "title": "Jutro Design System and UI Framework",
+      "url": "jutro/documentation/8.6.1",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["8.6.1 (LTS)"],
+        "subject": ["Best practices"],
+        "release": ["Garmisch"]
+      },
+      "environments": ["staging", "int", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "storybook861",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/8.6.1",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["8.6.1 (LTS)"],
+        "subject": ["Development"],
+        "release": ["Garmisch"]
+      },
+      "environments": ["staging", "int", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "jutro870",
+      "title": "Jutro Design System and UI Framework",
+      "url": "jutro/documentation/8.7.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["8.7.0"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["staging", "int", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "storybook870",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/8.7.0",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["8.7.0"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging", "int", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1420,11 +1541,11 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["8.5.0 (latest)"],
+        "version": ["8.7.0 (latest)"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
-      "displayOnLandingPages": false,
+      "environments": ["staging", "int", "prod"],
+      "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": true,
@@ -1437,11 +1558,11 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["8.5.0 (latest)"],
+        "version": ["8.7.0 (latest)"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "int", "prod"],
-      "displayOnLandingPages": false,
+      "environments": ["staging", "int", "prod"],
+      "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": true,
@@ -1458,23 +1579,6 @@
         "subject": ["Best practices"]
       },
       "environments": ["int", "staging", "prod"],
-      "displayOnLandingPages": false,
-      "indexForSearch": false,
-      "public": false,
-      "internal": true,
-      "earlyAccess": false
-    },
-    {
-      "id": "jutrohomeplatformbugstats",
-      "title": "Jutro Platform bug stats feature preview",
-      "url": "jutro/platform/home-page-preview",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Jutro Digital Platform"],
-        "version": ["latest"],
-        "subject": ["Administration"]
-      },
-      "environments": ["int"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,

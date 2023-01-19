@@ -32,6 +32,13 @@
       "srcId": "elemrendsrc",
       "docId": "elemrend",
       "indexRedirect": true
+    },
+    {
+      "buildType": "yarn",
+      "srcId": "docusaurusgwdocslatestsrc",
+      "docId": "docusaurusgwdocslatest",
+      "nodeImageVersion": "16.16.0",
+      "workingDir": "doc-site"
     }
   ]
 }

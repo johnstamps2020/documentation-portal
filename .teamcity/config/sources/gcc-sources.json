@@ -2,6 +2,13 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "runtimepropertiesapisrc",
+      "title": "Runtime Properties API",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/runtime-properties-api.git",
+      "branch": "master"
+    },
+    {
       "id": "cloudconsoleapisrc",
       "title": "Cloud Console API",
       "sourceType": "git",
@@ -21,27 +28,6 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-cloud-console.git",
       "branch": "master"
-    },
-    {
-      "id": "guidewirecloudconsolelatestes419src",
-      "title": "Guidewire Cloud Console es-419",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-cloud-console.git",
-      "branch": "release/es-419/2021.11"
-    },
-    {
-      "id": "guidewirecloudconsolelatestitITsrc",
-      "title": "Guidewire Cloud Console it-IT",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-cloud-console.git",
-      "branch": "release/it-IT/2021.11"
-    },
-    {
-      "id": "guidewirecloudconsolelatestptBRsrc",
-      "title": "Guidewire Cloud Console pt-BR",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-cloud-console.git",
-      "branch": "release/pt-BR/2021.11"
     },
     {
       "id": "gccinternalsrc",

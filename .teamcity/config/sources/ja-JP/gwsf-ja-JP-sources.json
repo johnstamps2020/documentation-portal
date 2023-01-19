@@ -1,0 +1,12 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "dxgwsf202111jaJP",
+      "title": "Guidewire for SalesForce 2021.11 ja-JP",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-gwsf.git",
+      "branch": "release/ja-JP/2021.11"
+    }
+  ]
+}

@@ -9,11 +9,45 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"]
       },
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "standards202211",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202211",
+      "metadata": {
+        "product": ["Guidewire Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["2022.11"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "standards202210",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/202210",
+      "metadata": {
+        "product": ["Guidewire Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["2022.10"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
       "public": false,
       "internal": false,
       "earlyAccess": false
@@ -28,7 +62,7 @@
         "version": ["2022.09"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -45,7 +79,7 @@
         "version": ["2022.07"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -62,7 +96,7 @@
         "version": ["2022.06"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -79,7 +113,7 @@
         "version": ["2022.05"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -96,7 +130,7 @@
         "version": ["2022.04"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -113,7 +147,7 @@
         "version": ["2022.03"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -130,7 +164,7 @@
         "version": ["2022.02"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -147,7 +181,7 @@
         "version": ["2022.01"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -164,7 +198,7 @@
         "version": ["2021.11"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -181,7 +215,7 @@
         "version": ["2021.10"],
         "release": ["Aspen", "Banff", "Cortina"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -198,7 +232,7 @@
         "version": ["2021.09"],
         "release": ["Aspen", "Banff", "Cortina"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -215,7 +249,7 @@
         "version": ["2021.08"],
         "release": ["Aspen", "Banff", "Cortina"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -232,7 +266,7 @@
         "version": ["2021.07"],
         "release": ["Aspen", "Banff", "Cortina"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -249,7 +283,7 @@
         "version": ["2021.06"],
         "release": ["Aspen", "Banff", "Cortina"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -266,7 +300,7 @@
         "version": ["2021.05"],
         "release": ["Aspen", "Banff", "Cortina"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -283,7 +317,7 @@
         "version": ["2021.04"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -300,7 +334,7 @@
         "version": ["2021.03"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -317,7 +351,7 @@
         "version": ["2021.02"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -334,7 +368,7 @@
         "version": ["2021.01"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -351,7 +385,7 @@
         "version": ["2020.11"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -368,7 +402,7 @@
         "version": ["2020.10"],
         "release": ["Aspen", "Banff"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -386,23 +420,6 @@
         "release": ["Aspen", "Banff", "Cortina"]
       },
       "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "standards202206jaJP",
-      "title": "Guidewire Cloud Standards ja-JP",
-      "url": "cloud/standards/ja-JP/202206",
-      "metadata": {
-        "product": ["Guidewire Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["2022.06"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
-      },
-      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

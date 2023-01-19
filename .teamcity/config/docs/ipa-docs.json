@@ -11,7 +11,7 @@
         "version": ["1.0"],
         "subject": ["Release notes"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -28,7 +28,7 @@
         "version": ["1.0"],
         "subject": ["Developers"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -45,7 +45,7 @@
         "version": ["1.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -62,7 +62,7 @@
         "version": ["1.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -79,7 +79,7 @@
         "version": ["1.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -96,7 +96,7 @@
         "version": ["1.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -113,58 +113,7 @@
         "version": ["1.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "ipaappdraft",
-      "title": "Application Guide",
-      "url": "self-managed/ipa/latest/app",
-      "metadata": {
-        "product": ["Global Solutions - Australia"],
-        "platform": ["Self-managed"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "ipainstalldraft",
-      "title": "Installation",
-      "url": "self-managed/ipa/latest/install",
-      "metadata": {
-        "product": ["Global Solutions - Australia"],
-        "platform": ["Self-managed"],
-        "version": ["latest"],
-        "subject": ["Installation"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "iparndraft",
-      "title": "Release Notes",
-      "url": "self-managed/ipa/latest/releasenotes",
-      "metadata": {
-        "product": ["Global Solutions - Australia"],
-        "platform": ["Self-managed"],
-        "version": ["latest"],
-        "subject": ["Release notes"]
-      },
-      "environments": ["int"],
+      "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

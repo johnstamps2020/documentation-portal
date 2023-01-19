@@ -1,0 +1,23 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "exploreptBRusingrelease",
+      "title": "Application Guide",
+      "url": "cloud/explore/ptBR/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Explore"],
+        "version": ["pt-BR"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

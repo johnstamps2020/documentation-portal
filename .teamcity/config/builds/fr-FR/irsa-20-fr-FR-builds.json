@@ -1,0 +1,21 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IRSAAdjusterGuide.ditamap",
+      "srcId": "irsa20frFRsrc",
+      "docId": "midipfadjuster20frFR",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IRSAReleaseNotes.ditamap",
+      "srcId": "irsa20frFRsrc",
+      "docId": "midipfrn20frFR",
+      "indexRedirect": true
+    }
+  ]
+}

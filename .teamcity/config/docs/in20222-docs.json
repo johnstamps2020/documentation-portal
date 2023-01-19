@@ -111,7 +111,7 @@
     },
     {
       "id": "in20222config",
-      "title": "Core Configuration Guide",
+      "title": "Core Configuration",
       "url": "cloud/in/20222/config",
       "metadata": {
         "platform": ["Cloud"],
@@ -129,7 +129,7 @@
     },
     {
       "id": "in20222commonconfig",
-      "title": "Common Functionality Configuration Reference",
+      "title": "Common Functionality Configuration Reference - Internal",
       "url": "cloud/in/20222/commonconfig",
       "metadata": {
         "platform": ["Cloud"],
@@ -138,11 +138,11 @@
         "subject": ["Configuration"],
         "release": ["Flaine"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false,
+      "internal": true,
       "earlyAccess": false
     },
     {
@@ -228,7 +228,7 @@
         "subject": ["Configuration"],
         "release": ["Flaine"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -300,25 +300,7 @@
         "subject": ["Integration"],
         "release": ["Flaine"]
       },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": true,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20222xcommonconfigdraft",
-      "title": "Common Functionality Configuration Reference - Internal",
-      "url": "cloud/in/20222/commonconfig",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2022.2"],
-        "subject": ["Configuration"],
-        "release": ["Flaine"]
-      },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -336,7 +318,7 @@
         "subject": ["Configuration"],
         "release": ["Flaine"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -354,7 +336,7 @@
         "subject": ["Configuration"],
         "release": ["Flaine"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

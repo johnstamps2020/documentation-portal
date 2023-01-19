@@ -1,0 +1,37 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "CCLMAppGuide.ditamap",
+      "srcId": "lmgarmischsrc",
+      "docId": "londonccappgarmisch",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "PCLMAppGuide.ditamap",
+      "srcId": "lmgarmischsrc",
+      "docId": "londonpcappgarmisch",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "LMConfigGuide.ditamap",
+      "srcId": "lmgarmischsrc",
+      "docId": "londonconfiggarmisch",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "LMReleaseNotes.ditamap",
+      "srcId": "lmgarmischsrc",
+      "docId": "londonrngarmisch",
+      "indexRedirect": true
+    }
+  ]
+}

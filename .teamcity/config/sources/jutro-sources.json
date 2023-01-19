@@ -212,6 +212,13 @@
       "branch": "main"
     },
     {
+      "id": "srcjutroplaygroundnext",
+      "title": "Jutro Playground Next",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-playground-for-docs.git",
+      "branch": "main"
+    },
+    {
       "id": "srcjutroplasmicnext",
       "title": "Jutro Plasmic Next",
       "sourceType": "git",
@@ -443,11 +450,11 @@
       "branch": "release/8.3.0"
     },
     {
-      "id": "srcjutro831",
-      "title": "Jutro Design System 8.3.1",
+      "id": "srcjutro832",
+      "title": "Jutro Design System 8.3.2",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
-      "branch": "release/8.3.1"
+      "branch": "release/8.3.2"
     },
     {
       "id": "srcjutro840",
@@ -464,18 +471,32 @@
       "branch": "release/8.5.0"
     },
     {
+      "id": "srcjutro860",
+      "title": "Jutro Design System 8.6.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/8.6.0"
+    },
+    {
+      "id": "srcjutro861",
+      "title": "Jutro Design System 8.6.1",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/8.6.1"
+    },
+    {
+      "id": "srcjutro870",
+      "title": "Jutro Design System 8.7.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/8.7.0"
+    },
+    {
       "id": "srcjutroa11yapp",
       "title": "Jutro a11y app source",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-a11y-app.git",
       "branch": "main"
-    },
-    {
-      "id": "srcjutrohomeplatformbugstats",
-      "title": "Jutro Platform bug stats feature preview",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/jut/jutro-home-page.git",
-      "branch": "feature/platform-bug-stats"
     }
   ]
 }

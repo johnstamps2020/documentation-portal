@@ -2,6 +2,23 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "runtimepropertiesapi",
+      "title": "Runtime Properties API",
+      "url": "cloud/console/runtimepropertiesapi",
+      "metadata": {
+        "product": ["Guidewire Cloud Console"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Development"]
+      },
+      "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "cloudconsoleapi",
       "title": "Cloud Console API",
       "url": "cloud/console/cloudconsoleapi",
@@ -28,7 +45,7 @@
         "version": ["latest"],
         "subject": ["Development"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -76,7 +93,7 @@
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -100,9 +117,9 @@
       "earlyAccess": false
     },
     {
-      "id": "guidewirecloudconsolernarchive",
-      "title": "Cloud Console Release Notes Archive",
-      "url": "cloud/gcc/release-notes-archive",
+      "id": "guidewirecloudconsolerootinsurerdevdraft",
+      "title": "Cloud Console Guide Draft",
+      "url": "cloud/gcc-guide/insurer-developer/latest",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
@@ -112,7 +129,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": true,
+      "internal": false,
       "earlyAccess": false
     },
     {
@@ -120,7 +137,7 @@
       "title": "Cloud Console Guide GW Admin",
       "url": "cloud/gcc-guide/gw-admin/latest",
       "displayOnLandingPages": false,
-      "indexForSearch": false,
+      "indexForSearch": true,
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Console"],
@@ -146,102 +163,6 @@
       "public": false,
       "internal": false,
       "earlyAccess": true
-    },
-    {
-      "id": "guidewirecloudconsolerootinsurerdeves419",
-      "title": "Cloud Console Guide Insurer Developer es-419",
-      "url": "cloud/es-419/gcc-guide/insurer-developer/latest",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
-        "version": ["latest"]
-      },
-      "environments": ["dev"],
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "guidewirecloudconsolerootinsurerdevrnes419",
-      "title": "Cloud Console Release Notes Insurer Developer es-419",
-      "url": "cloud/es-419/gcc-rn/insurer-developer/latest",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
-        "version": ["latest"]
-      },
-      "environments": ["dev"],
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "guidewirecloudconsolerootinsurerdevitIT",
-      "title": "Cloud Console Guide Insurer Developer it-IT",
-      "url": "cloud/it-IT/gcc-guide/insurer-developer/latest",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
-        "version": ["latest"]
-      },
-      "environments": ["dev"],
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "guidewirecloudconsolerootinsurerdevrnitIT",
-      "title": "Cloud Console Release Notes Insurer Developer it-IT",
-      "url": "cloud/it-IT/gcc-rn/insurer-developer/latest",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
-        "version": ["latest"]
-      },
-      "environments": ["dev"],
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "guidewirecloudconsolerootinsurerdevptBR",
-      "title": "Cloud Console Guide Insurer Developer pt-BR",
-      "url": "cloud/pt-BR/gcc-guide/insurer-developer/latest",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
-        "version": ["latest"]
-      },
-      "environments": ["dev"],
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "guidewirecloudconsolerootinsurerdevrnptBR",
-      "title": "Cloud Console Release Notes Insurer Developer pt-BR",
-      "url": "cloud/pt-BR/gcc-rn/insurer-developer/latest",
-      "displayOnLandingPages": false,
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
-        "version": ["latest"]
-      },
-      "environments": ["dev"],
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
     },
     {
       "id": "gccinternallatests",

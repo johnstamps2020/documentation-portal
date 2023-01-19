@@ -19,22 +19,6 @@
     },
     {
       "buildType": "dita",
-      "root": "GuidewireHub.ditamap",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
-      "indexRedirect": true,
-      "srcId": "guidewireidentityfederationhubitITsrc",
-      "docId": "guidewireidentityfederationhubitIT"
-    },
-    {
-      "buildType": "dita",
-      "root": "GuidewireHub.ditamap",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
-      "indexRedirect": true,
-      "srcId": "guidewireidentityfederationhubjaJPsrc",
-      "docId": "guidewireidentityfederationhubjaJP"
-    },
-    {
-      "buildType": "dita",
       "root": "CloudPlatform.ditamap",
       "filter": "GW-Generic-Cloud-Draft.ditaval",
       "indexRedirect": true,
@@ -386,30 +370,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "UnderstandingCloudDataAccess.ditamap",
-      "srcId": "clouddataaccesses419src",
-      "docId": "clouddataaccessguidees419",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "UnderstandingCloudDataAccess.ditamap",
-      "srcId": "clouddataaccessitITsrc",
-      "docId": "clouddataaccessguideitIT",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "UnderstandingCloudDataAccess.ditamap",
-      "srcId": "clouddataaccessptBRsrc",
-      "docId": "clouddataaccessguideptBR",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "b_relNotesCda.ditamap",
       "srcId": "clouddataaccesssrc",
       "docId": "clouddataaccessrn",
@@ -598,55 +558,6 @@
       "root": "DM_all.ditamap",
       "srcId": "dhic1020",
       "docId": "ic1020"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-am-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx1141",
-      "docId": "dxceam1141"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-claims-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx1141",
-      "docId": "dxceclaims1141"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-qb-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx1141",
-      "docId": "dxceqb1141"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx1141",
-      "docId": "dxpe1141"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-claims-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx1141",
-      "docId": "dxpeclaims1141"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-sre-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx1141",
-      "docId": "dxsre1141"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ve-OnPrem.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx1141",
-      "docId": "dxve1141"
     },
     {
       "buildType": "dita",
@@ -1791,6 +1702,22 @@
       "buildType": "yarn",
       "srcId": "surepathmethodologymainsrc",
       "docId": "surepathmethodologymain"
+    },
+    {
+      "buildType": "just-copy",
+      "srcId": "cdsdocss3foldersrc",
+      "docId": "cdsdocss3folder"
+    },
+    {
+      "buildType": "yarn",
+      "srcId": "doctoolss3managersrc",
+      "docId": "doctoolss3manager"
+    },
+    {
+      "buildType": "yarn",
+      "srcId": "cloudtickettemplatessrc",
+      "docId": "cloudtickettemplates",
+      "nodeImageVersion": "18.12.1"
     }
   ]
 }

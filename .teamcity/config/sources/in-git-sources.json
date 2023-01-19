@@ -2,6 +2,13 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "in20231",
+      "title": "InsuranceNow 2023.1 Garmisch",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2023.1GARMISCH"
+    },
+    {
       "id": "in20222",
       "title": "InsuranceNow 2022.2 Flaine",
       "sourceType": "git",
@@ -21,6 +28,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
       "branch": "release/2021.2DOBSON"
+    },
+    {
+      "id": "srcin20231apiref",
+      "title": "InsuranceNow API Reference Garmisch",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurance-now-api-ref.git",
+      "branch": "release/garmisch"
     },
     {
       "id": "srcin20222apiref",

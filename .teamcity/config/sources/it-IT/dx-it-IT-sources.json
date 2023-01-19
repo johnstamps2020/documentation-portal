@@ -1,0 +1,12 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "dx202205itITsrc",
+      "title": "Digital 2022.05 it-IT",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
+      "branch": "release/it-IT/2022.05"
+    }
+  ]
+}

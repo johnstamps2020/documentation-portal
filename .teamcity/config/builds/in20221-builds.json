@@ -138,14 +138,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "CommonFunctionalityConfigurationReference.ditamap",
-      "srcId": "in20221",
-      "docId": "in20221xcommonconfigdraft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "ConsumersSalesPortalConfig.ditamap",
       "srcId": "in20221",
       "docId": "in20221xcsalespconfigdraft",

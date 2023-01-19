@@ -14,8 +14,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false,
-      "displayOnLandingPages": true
+      "earlyAccess": false
     },
     {
       "id": "doctoolsadmin",
@@ -30,8 +29,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false,
-      "displayOnLandingPages": true
+      "earlyAccess": false
     },
     {
       "id": "writingwithgit",
@@ -39,7 +37,7 @@
       "url": "writing-with-git",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Writing with Git"],
+        "product": ["DocTools"],
         "version": ["latest"]
       },
       "environments": ["int"],
@@ -62,8 +60,23 @@
       "indexForSearch": false,
       "public": false,
       "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "docusaurusgwdocslatest",
+      "title": "Docusaurus Guidewire",
+      "url": "docusaurus/guidewire/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["DocTools"],
+        "version": ["latest"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
       "earlyAccess": false,
-      "displayOnLandingPages": true
+      "internal": true,
+      "public": false
     }
   ]
 }

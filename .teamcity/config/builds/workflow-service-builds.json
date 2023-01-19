@@ -1,0 +1,13 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "workflow-designer-dev.ditamap",
+      "srcId": "workflowservicegarmischsrc",
+      "docId": "workflowdesignergarmisch",
+      "indexRedirect": true
+    }
+  ]
+}

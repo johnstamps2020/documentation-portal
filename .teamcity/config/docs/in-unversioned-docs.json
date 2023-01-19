@@ -9,7 +9,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2022.1", "2022.2"],
-        "subject": ["Release Notes"]
+        "subject": ["Release notes"]
       },
       "environments": ["int", "staging", "prod"],
       "displayOnLandingPages": true,
@@ -26,9 +26,27 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2022.1", "2022.2"],
-        "subject": ["Release Notes"]
+        "subject": ["Release notes"]
       },
       "environments": ["int", "staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "incsp20231rn",
+      "title": "Consumer Service Portal 2023.1 Release Notes",
+      "url": "cloud/in/csp20231rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.1"],
+        "subject": ["Release notes"],
+        "release": ["Garmisch"]
+      },
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -43,7 +61,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2022.2"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Flaine"]
       },
       "environments": ["int", "staging", "prod"],
@@ -61,7 +79,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Elysian"]
       },
       "environments": ["int", "staging", "prod"],
@@ -79,7 +97,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2021.1"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Cortina"]
       },
       "environments": ["int", "staging", "prod"],
@@ -97,7 +115,7 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["4"],
-        "subject": ["Release Notes"],
+        "subject": ["Release notes"],
         "release": ["Dobson"]
       },
       "environments": ["int", "staging", "prod"],
@@ -199,16 +217,32 @@
     },
     {
       "id": "indevguidejava11draft",
-      "title": "Developers Setup (Internal) Draft",
+      "title": "Developers Setup - Internal",
       "url": "cloud/in/devsetupjava11",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.1", "2021.2"],
+        "version": [
+          "2023.1",
+          "2022.2",
+          "2022.1",
+          "2021.2",
+          "2021.1",
+          "2020.2",
+          "2020.1"
+        ],
         "subject": ["Installation"],
-        "release": ["Cortina", "Dobson"]
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -263,6 +297,24 @@
         "release": ["Aspen", "Banff"]
       },
       "environments": ["int"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20231studiorn",
+      "title": "Studio 2023.1 Release Notes",
+      "url": "cloud/in/20231/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.1"],
+        "subject": ["Release notes"],
+        "release": ["Garmisch"]
+      },
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -379,20 +431,54 @@
     },
     {
       "id": "ininstallassistdraft",
-      "title": "Install Assist",
+      "title": "Install Assist - Internal",
       "url": "cloud/in/installassist",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["latest"],
+        "version": [
+          "2023.1",
+          "2022.2",
+          "2022.1",
+          "2021.2",
+          "2021.1",
+          "2020.2",
+          "2020.1"
+        ],
         "subject": ["Installation"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20231rn",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20231/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.1"],
+        "subject": ["Release notes"],
+        "release": ["Garmisch"]
+      },
+      "environments": ["int", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
       "earlyAccess": false
     },
     {
@@ -505,16 +591,16 @@
     },
     {
       "id": "inupgradetoolsdraft",
-      "title": "Upgrade Tools Draft",
+      "title": "Upgrade Tools - Internal",
       "url": "cloud/in/upgrade",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2022.1", "2021.2", "2021.1", "2020.2", "2020.1"],
+        "version": ["2023.1", "2022.2","2022.1", "2021.2", "2021.1", "2020.2", "2020.1"],
         "subject": ["Installation"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -528,15 +614,15 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2022.2", "2022.1", "2021.2"],
+        "version": ["2023.1", "2022.2", "2022.1", "2021.2"],
         "subject": ["Installation"],
-        "release": ["Dobson", "Elysian", "Flaine"]
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch"]
       },
-      "environments": ["int"],
+      "environments": ["int", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false,
+      "internal": true,
       "earlyAccess": false
     }
   ]

@@ -1,0 +1,19 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "ipjflainesrc",
+      "title": "InsuranceSuite Package for Japan Flaine",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipj.git",
+      "branch": "release/flaine"
+    },
+    {
+      "id": "ipj10src",
+      "title": "InsuranceSuite Package for Japan 1.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipj.git",
+      "branch": "release/1.0"
+    }
+  ]
+}
