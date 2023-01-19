@@ -2256,11 +2256,11 @@ object Server {
                 git config --local user.name "%env.BITBUCKET_SERVICE_ACCOUNT_USERNAME%"
                 git fetch --tags
 
+                cd server/
                 export TAG_VERSION=${'$'}(npm version %semver-scope%)
                 export DEPT_CODE=${GwAtmosLabels.DEPT_CODE.labelValue}
                 export POD_NAME=${GwAtmosLabels.POD_NAME.labelValue}
                 
-                cd server/
                 git add .
                 git commit -m "push changes to ${'$'}{TAG_VERSION}"
                 git tag -a ${'$'}{TAG_VERSION} -m "create new %semver-scope% version ${'$'}{TAG_VERSION}"
