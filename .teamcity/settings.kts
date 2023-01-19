@@ -145,7 +145,7 @@ object Database {
         val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.INT.envName)
         val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
         return BuildType {
-            name = "Deploy doc portal database"
+            name = "Deploy doc portal config database"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
@@ -2296,7 +2296,7 @@ object Server {
     private fun createDeployDbEnabledServerBuildType(deployEnv: String): BuildType {
         val namespace = "doctools"
         val tagVersion = when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> "latest"
+            GwDeployEnvs.DEV.envName -> "latest-croissant"
             GwDeployEnvs.INT.envName -> "latest-int"
             else -> "v%TAG_VERSION%"
         }
@@ -2309,7 +2309,7 @@ object Server {
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
         val serverDeployEnvVars = Helpers.setServerDeployEnvVars(deployEnv, tagVersion, appName = "croissant")
         val deployServerBuildType = BuildType {
-            name = "Deploy to $deployEnv (DB-enabled)"
+            name = "Deploy to $deployEnv (Croissant)"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
