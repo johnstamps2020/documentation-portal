@@ -2256,8 +2256,11 @@ object Server {
                 git config --local user.name "%env.BITBUCKET_SERVICE_ACCOUNT_USERNAME%"
                 git fetch --tags
 
-                cd server/
                 export TAG_VERSION=${'$'}(npm version %semver-scope%)
+                export DEPT_CODE=${GwAtmosLabels.DEPT_CODE.labelValue}
+                export POD_NAME=${GwAtmosLabels.POD_NAME.labelValue}
+                
+                cd server/
                 git add .
                 git commit -m "push changes to ${'$'}{TAG_VERSION}"
                 git tag -a ${'$'}{TAG_VERSION} -m "create new %semver-scope% version ${'$'}{TAG_VERSION}"
@@ -2270,7 +2273,11 @@ object Server {
                 set +x
                 docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
                 set -x
-                docker build -t ${GwDockerImages.DOC_PORTAL.imageUrl}:${'$'}{TAG_VERSION} . --build-arg TAG_VERSION --build-arg NPM_AUTH_TOKEN
+                docker build -t ${GwDockerImages.DOC_PORTAL.imageUrl}:${'$'}{TAG_VERSION} . \
+                --build-arg TAG_VERSION \
+                --build-arg NPM_AUTH_TOKEN \
+                --build-arg DEPT_CODE \
+                --build-arg POD_NAME
                 docker push ${GwDockerImages.DOC_PORTAL.imageUrl}:${'$'}{TAG_VERSION}
             """.trimIndent()
                 dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
@@ -4208,11 +4215,17 @@ object GwBuildSteps {
                 $awsEnvVars
                 
                 export TAG_VERSION=$tagVersion
+                export DEPT_CODE=${GwAtmosLabels.DEPT_CODE.labelValue}
+                export POD_NAME=${GwAtmosLabels.POD_NAME.labelValue}
 
                 set +x
                 docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
                 set -x
-                docker build -t ${GwDockerImages.DOC_PORTAL.imageUrl}:${tagVersion} ./server --build-arg TAG_VERSION --build-arg NPM_AUTH_TOKEN
+                docker build -t ${GwDockerImages.DOC_PORTAL.imageUrl}:${tagVersion} ./server \
+                --build-arg TAG_VERSION \
+                --build-arg NPM_AUTH_TOKEN \
+                --build-arg DEPT_CODE \
+                --build-arg POD_NAME
                 docker push ${GwDockerImages.DOC_PORTAL.imageUrl}:${tagVersion}
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
