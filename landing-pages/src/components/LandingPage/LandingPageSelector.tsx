@@ -1,4 +1,4 @@
-import { PageSelector } from "@documentation-portal/dist/model/entity/PageSelector";
+import { PageSelector } from "server/dist/model/entity/PageSelector";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem/MenuItem";
@@ -14,11 +14,11 @@ type LandingPageSelectorProps = {
 
 export default function LandingPageSelector({
   pageSelector,
-  labelColor
+  labelColor,
 }: LandingPageSelectorProps) {
   const PageSelectorInput = styled(InputBase)(({ theme }) => ({
     "label + &": {
-      marginTop: theme.spacing(3)
+      marginTop: theme.spacing(3),
     },
     "& .MuiInputBase-input": {
       borderRadius: 4,
@@ -36,15 +36,15 @@ export default function LandingPageSelector({
         borderRadius: 4,
         borderColor: "#80bdff",
         boxShadow: "0 0 0 0.2rem rgba(0,123,255,.25)",
-        backgroundColor: "white"
-      }
-    }
+        backgroundColor: "white",
+      },
+    },
   }));
 
   const navigate = useNavigate();
   const handleChange = (event: SelectChangeEvent) => {
     const selectedItem = pageSelector.pageSelectorItems.find(
-      i => i.label === event.target.value
+      (i) => i.label === event.target.value
     );
     const pageUrl =
       selectedItem?.pagePath || selectedItem?.link || selectedItem?.doc?.url;
@@ -59,7 +59,7 @@ export default function LandingPageSelector({
       sx={{
         marginTop: "10px",
         alignItems: "left",
-        width: "300px"
+        width: "300px",
       }}
     >
       <InputLabel
@@ -75,7 +75,7 @@ export default function LandingPageSelector({
         value={pageSelector.selectedItemLabel}
         onChange={handleChange}
         input={<PageSelectorInput />}
-        renderValue={value => {
+        renderValue={(value) => {
           return value;
         }}
         sx={{
@@ -83,10 +83,10 @@ export default function LandingPageSelector({
           marginLeft: 0,
           marginRight: "auto",
           backgroundColor: "white",
-          borderRadius: 4
+          borderRadius: 4,
         }}
       >
-        {sortedPageSelectorItems.map(item => (
+        {sortedPageSelectorItems.map((item) => (
           <MenuItem
             disabled={item.label === pageSelector.selectedItemLabel}
             value={item.label}

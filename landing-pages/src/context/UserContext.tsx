@@ -1,4 +1,4 @@
-import { UserInfo } from "@documentation-portal/dist/types/user";
+import { UserInfo } from "server/dist/types/user";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface UserInterface {
@@ -30,7 +30,7 @@ export function UserProvider({ children }: UserContextProviderProps) {
   }
 
   useEffect(() => {
-    getUserInfo().catch(e => e);
+    getUserInfo().catch((e) => e);
   }, []);
 
   return (

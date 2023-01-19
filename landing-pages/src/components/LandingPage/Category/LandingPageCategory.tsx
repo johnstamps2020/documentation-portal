@@ -1,5 +1,5 @@
 import Stack from "@mui/material/Stack";
-import { Category } from "@documentation-portal/dist/model/entity/Category";
+import { Category } from "server/dist/model/entity/Category";
 import LandingPageItem from "../LandingPageItem";
 import LandingPageSubCategory from "./LandingPageSubCategory";
 import Typography from "@mui/material/Typography";
@@ -10,15 +10,15 @@ export default function LandingPageCategory(category: Category) {
     <Paper
       sx={{
         width: "300px",
-        padding: "24px"
+        padding: "24px",
       }}
     >
       <Typography variant="h2">{category.label}</Typography>
       <Stack spacing={1}>
-        {category.categoryItems?.map(categoryItem => (
+        {category.categoryItems?.map((categoryItem) => (
           <LandingPageItem {...categoryItem} key={categoryItem.id} />
         ))}
-        {category.subCategories?.map(subCategory => (
+        {category.subCategories?.map((subCategory) => (
           <div key={subCategory.id}>
             <LandingPageSubCategory {...subCategory} />
           </div>

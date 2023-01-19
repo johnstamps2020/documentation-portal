@@ -4,7 +4,7 @@ import Breadcrumbs from "../Breadcrumbs";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import LandingPageSidebar from "../LandingPageSidebar";
-import { Page } from "@documentation-portal/dist/model/entity/Page";
+import { Page } from "server/dist/model/entity/Page";
 import Stack from "@mui/material/Stack";
 import cortinaBackgroundImage from "../../../images/background-cortina.svg";
 import banffBackgroundImage from "../../../images/background-banff.svg";
@@ -29,7 +29,7 @@ export default function ProductFamilyLayout(pageData: Page) {
     backgroundAttachment: "fixed",
     backgroundPosition: "bottom-right",
     backgroundSize: "cover",
-    minHeight: "100vh"
+    minHeight: "100vh",
   };
 
   return (
@@ -59,7 +59,7 @@ export default function ProductFamilyLayout(pageData: Page) {
       </Grid>
       <Grid container maxWidth="1330px" gap={2}>
         <Grid container xs={9} gap={2}>
-          {pageData.productFamilyItems?.map(productFamilyItem => (
+          {pageData.productFamilyItems?.map((productFamilyItem) => (
             <LandingPageProductFamily
               {...productFamilyItem}
               key={productFamilyItem.id}

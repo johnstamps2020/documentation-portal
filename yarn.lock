@@ -1799,54 +1799,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@documentation-portal@file:../server::locator=landing-pages%40workspace%3Alanding-pages":
-  version: 2.29.22
-  resolution: "@documentation-portal@file:../server#../server::hash=669061&locator=landing-pages%40workspace%3Alanding-pages"
-  dependencies:
-    "@elastic/elasticsearch": ^7.17.0
-    "@okta/jwt-verifier": ^2.3.0
-    "@testing-library/jest-dom": ^5.16.5
-    "@types/cookie-parser": ^1.4.3
-    "@types/cookie-session": ^2.0.44
-    "@types/express": ^4.17.14
-    "@types/jsonwebtoken": ^8.5.9
-    "@types/node": ^18.11.18
-    "@types/node-fetch": ^2.6.2
-    "@types/serve-favicon": ^2.5.3
-    aws-sdk: ^2.1297.0
-    axios: ^0.21.4
-    body-parser: ^1.20.0
-    cookie-parser: ~1.4.6
-    cookie-session: ^2.0.0
-    cors: ^2.8.5
-    dd-trace: ^2.8.0
-    debug: ~4.3.4
-    ejs: ^3.1.8
-    express: ^4.18.2
-    express-fileupload: ^1.4.0
-    express-http-context: ^1.2.3
-    express-winston: ^4.2.0
-    harmon: ^1.4.4
-    http-errors: ~1.6.3
-    http-proxy: ^1.18.1
-    jsdom: ^19.0.0
-    jsonwebtoken: ^9.0.0
-    msw: ^0.47.3
-    node-fetch: ^2.6.7
-    openid-client: ^4.9.1
-    passport: ~0.6.0
-    passport-saml: 3.2.2
-    pg: ^8.8.0
-    prettier: ^1.19.1
-    process: ^0.11.10
-    reflect-metadata: ^0.1.13
-    serve-favicon: ^2.5.0
-    typeorm: ^0.3.9
-    winston: ^3.7.2
-  checksum: ac2db5e88cf7e2363c30cf44dbb549f4af81ad201c8366fe4a75501719e9ba275802f497c580e45e431a3827a0eb242a5804ac5e9b2161df5272f6caf73ac010
-  languageName: node
-  linkType: hard
-
 "@elastic/elasticsearch@npm:^7.17.0":
   version: 7.17.0
   resolution: "@elastic/elasticsearch@npm:7.17.0"
@@ -11093,7 +11045,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "landing-pages@workspace:landing-pages"
   dependencies:
-    "@documentation-portal": "file:../server"
     "@emotion/react": ^11.10.4
     "@emotion/styled": ^11.10.4
     "@fontsource/source-sans-pro": ^4.5.11
@@ -11113,6 +11064,7 @@ __metadata:
     react-native-sqlite-storage: "file:../shims/react-native-sqlite-storage"
     react-router-dom: 6.4.2
     react-scripts: 5.0.1
+    server: 2.29.22
     typescript: ^4.4.2
     web-vitals: ^2.1.0
   languageName: unknown
@@ -15010,7 +14962,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"server@workspace:server":
+"server@2.29.22, server@workspace:server":
   version: 0.0.0-use.local
   resolution: "server@workspace:server"
   dependencies:

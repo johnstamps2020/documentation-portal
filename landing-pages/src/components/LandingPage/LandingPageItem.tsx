@@ -1,5 +1,5 @@
 import Link from "@mui/material/Link";
-import { Item } from "@documentation-portal/dist/model/entity/Item";
+import { Item } from "server/dist/model/entity/Item";
 import Stack from "@mui/material/Stack";
 import internalLogo from "../../images/internal_document_icon.svg";
 import Tooltip from "@mui/material/Tooltip";
@@ -38,7 +38,7 @@ export default function LandingPageItem(item: Item) {
             width="20px"
             style={{
               backgroundColor: "black",
-              borderRadius: "50%"
+              borderRadius: "50%",
             }}
           ></img>
         </Tooltip>

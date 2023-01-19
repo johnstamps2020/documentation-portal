@@ -1,6 +1,6 @@
 import Chip from "@mui/material/Chip";
 import { useSearch } from "../../context/SearchContext";
-import { ServerSearchFilter } from "@documentation-portal/dist/types/serverSearch";
+import { ServerSearchFilter } from "server/dist/types/serverSearch";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
