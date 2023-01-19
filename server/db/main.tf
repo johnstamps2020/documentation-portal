@@ -1,8 +1,8 @@
 locals {
   aurora_db_name = "tenant-doctools-docportal"
-  database_name = "docportalconfig"
-  database_username = jsondecode(data.aws_secretsmanager_secret_version.database_username.secret_string)["docportal_db_username"]
-  database_password = jsondecode(data.aws_secretsmanager_secret_version.database_password.secret_string)["docportal_db_password"]
+  database_name = jsondecode(data.aws_secretsmanager_secret_version.database_name.secret_string)["config_db_name"]
+  database_username = jsondecode(data.aws_secretsmanager_secret_version.database_username.secret_string)["config_db_username"]
+  database_password = jsondecode(data.aws_secretsmanager_secret_version.database_password.secret_string)["config_db_password"]
   instance_type = "db.r5.large"
   atmos_cluster_name = "atmos-${var.deploy_env}"
   aws_secret_name = "tenant-doctools-docportal"
@@ -13,24 +13,33 @@ provider "aws" {
   region = var.region
 }
 
-data "aws_secretsmanager_secret" "docportal_db_username" {
+data "aws_secretsmanager_secret" "config_db_name" {
+  name = local.aws_secret_name
+}
+
+data "aws_secretsmanager_secret_version" "database_name" {
+  secret_id = data.aws_secretsmanager_secret.config_db_name.id
+}
+
+
+data "aws_secretsmanager_secret" "config_db_username" {
   name = local.aws_secret_name
 }
 
 data "aws_secretsmanager_secret_version" "database_username" {
-  secret_id = data.aws_secretsmanager_secret.docportal_db_username.id
+  secret_id = data.aws_secretsmanager_secret.config_db_username.id
 }
 
-data "aws_secretsmanager_secret" "docportal_db_password" {
+data "aws_secretsmanager_secret" "config_db_password" {
   name = local.aws_secret_name
 }
 
 data "aws_secretsmanager_secret_version" "database_password" {
-  secret_id = data.aws_secretsmanager_secret.docportal_db_password.id
+  secret_id = data.aws_secretsmanager_secret.config_db_password.id
 }
 
 module "aurora_db" {
-  source = "git::ssh://git@stash.guidewire.com/ccs/atmos-tfmodule-aurora.git?ref=v4.0.0"
+  source = "git::ssh://git@stash.guidewire.com/ccs/atmos-tfmodule-aurora.git?ref=v5.0.3"
 
   name = local.aurora_db_name
   atmos_cluster_name = local.atmos_cluster_name

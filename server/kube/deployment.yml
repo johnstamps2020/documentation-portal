@@ -262,6 +262,26 @@ spec:
                   fieldPath: status.hostIP
             - name: DD_PROPAGATION_STYLE_INJECT
               value: "Datadog,B3"
+            - name: CONFIG_DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: ${APP_NAME}-external-secret
+                  key: config_db_host
+            - name: CONFIG_DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: ${APP_NAME}-external-secret
+                  key: config_db_name
+            - name: CONFIG_DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: ${APP_NAME}-external-secret
+                  key: config_db_username
+            - name: CONFIG_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ${APP_NAME}-external-secret
+                  key: config_db_password
           resources:
             requests:
               memory: \"${REQUESTS_MEMORY}\"
