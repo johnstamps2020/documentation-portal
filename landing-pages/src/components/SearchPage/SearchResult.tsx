@@ -3,8 +3,8 @@ import Stack from "@mui/material/Stack";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
   ServerSearchInnerHit,
-  ServerSearchResult
-} from "@documentation-portal/dist/types/serverSearch";
+  ServerSearchResult,
+} from "server/dist/types/serverSearch";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
@@ -13,12 +13,12 @@ import {
   StyledAccordionDetails,
   StyledAccordionSummary,
   StyledHeading2,
-  StyledLink
+  StyledLink,
 } from "./StyledSearchComponents";
 
 export default function SearchResult(searchResult: ServerSearchResult) {
   const ListItem = styled("li")(() => ({
-    margin: "0 4px 6px 0"
+    margin: "0 4px 6px 0",
   }));
 
   const highlightedTermsUrlParam = `hl=${searchResult.uniqueHighlightTerms}`;
@@ -39,7 +39,7 @@ export default function SearchResult(searchResult: ServerSearchResult) {
             flexWrap: "wrap",
             listStyle: "none",
             p: 0,
-            m: 0
+            m: 0,
           }}
           component="ul"
           elevation={0}
@@ -57,7 +57,7 @@ export default function SearchResult(searchResult: ServerSearchResult) {
         sx={{
           padding: "1rem 0",
           lineHeight: "24px",
-          textAlign: "left"
+          textAlign: "left",
         }}
       />
       {searchResult.innerHits.length > 0 && (

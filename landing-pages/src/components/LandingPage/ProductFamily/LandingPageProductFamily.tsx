@@ -1,4 +1,4 @@
-import { ProductFamilyItem } from "@documentation-portal/dist/model/entity/ProductFamilyItem";
+import { ProductFamilyItem } from "server/dist/model/entity/ProductFamilyItem";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import { Link as RouterLink } from "react-router-dom";
@@ -14,7 +14,7 @@ export default function LandingPageProductFamily(
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
       }}
     >
       {productFamilyItem.pagePath ? (
@@ -23,7 +23,7 @@ export default function LandingPageProductFamily(
           to={`/${productFamilyItem.pagePath}`}
           sx={{
             fontSize: 20,
-            fontWeight: 800
+            fontWeight: 800,
           }}
         >
           {productFamilyItem.label}
@@ -33,7 +33,7 @@ export default function LandingPageProductFamily(
           href={productFamilyItem.link || `/${productFamilyItem.doc?.url}`}
           sx={{
             fontSize: 20,
-            fontWeight: 800
+            fontWeight: 800,
           }}
         >
           {productFamilyItem.label}

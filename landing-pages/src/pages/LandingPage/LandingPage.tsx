@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
-import { Page } from "@documentation-portal/dist/model/entity/Page";
+import { Page } from "server/dist/model/entity/Page";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Theme } from "@mui/material";
@@ -94,7 +94,7 @@ export default function LandingPage() {
         open={loading}
         sx={{
           color: "#fff",
-          zIndex: (theme: Theme) => theme.zIndex.drawer + 1
+          zIndex: (theme: Theme) => theme.zIndex.drawer + 1,
         }}
       />
     </Layout>

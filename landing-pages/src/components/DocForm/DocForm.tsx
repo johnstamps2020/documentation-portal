@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
-import { Doc } from "@documentation-portal/dist/model/entity/Doc";
+import { Doc } from "server/dist/model/entity/Doc";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";

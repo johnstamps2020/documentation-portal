@@ -1,7 +1,7 @@
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormGroup from "@mui/material/FormGroup";
-import { ServerSearchFilter } from "@documentation-portal/dist/types/serverSearch";
+import { ServerSearchFilter } from "server/dist/types/serverSearch";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useSearch } from "../../context/SearchContext";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -11,7 +11,7 @@ import Chip from "@mui/material/Chip";
 import {
   StyledAccordion,
   StyledAccordionDetails,
-  StyledAccordionSummary
+  StyledAccordionSummary,
 } from "./StyledSearchComponents";
 
 type SearchFilterProps = {
@@ -23,7 +23,7 @@ type SearchFilterProps = {
 export default function SearchFilter({
   serverSearchFilter,
   expanded,
-  onChange
+  onChange,
 }: SearchFilterProps) {
   const { searchData } = useSearch();
   const navigate = useNavigate();
@@ -54,7 +54,7 @@ export default function SearchFilter({
     query.delete("page");
     navigate({
       pathname: `${location.pathname}`,
-      search: query && `?${query.toString()}`
+      search: query && `?${query.toString()}`,
     });
   }
 
@@ -70,9 +70,9 @@ export default function SearchFilter({
       >
         {serverSearchFilter.name.replace("_", " ")}
         <Chip
-          label={`${serverSearchFilter.values.filter(v => v.checked).length}/${
-            serverSearchFilter.values.length
-          }`}
+          label={`${
+            serverSearchFilter.values.filter((v) => v.checked).length
+          }/${serverSearchFilter.values.length}`}
           size="small"
           variant="outlined"
           sx={{ marginLeft: "8px", border: "1px solid" }}
@@ -80,7 +80,7 @@ export default function SearchFilter({
       </StyledAccordionSummary>
       <StyledAccordionDetails>
         <FormGroup sx={{ gap: "8px" }}>
-          {serverSearchFilter.values.map(value => (
+          {serverSearchFilter.values.map((value) => (
             <Stack
               direction="row"
               justifyContent="space-between"
@@ -92,7 +92,7 @@ export default function SearchFilter({
                   disableTypography={true}
                   sx={{
                     marginRight: "8px",
-                    fontSize: "0.85rem"
+                    fontSize: "0.85rem",
                   }}
                   control={
                     <Checkbox
@@ -100,7 +100,7 @@ export default function SearchFilter({
                       value={value.label}
                       onChange={handleCheckboxChange}
                       sx={{
-                        height: "14px"
+                        height: "14px",
                       }}
                     />
                   }

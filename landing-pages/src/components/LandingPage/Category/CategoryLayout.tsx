@@ -5,7 +5,7 @@ import Breadcrumbs from "../Breadcrumbs";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import LandingPageSidebar from "../LandingPageSidebar";
-import { Page } from "@documentation-portal/dist/model/entity/Page";
+import { Page } from "server/dist/model/entity/Page";
 import elysianBackgroundImage from "../../../images/background-elysian.svg";
 import dobsonBackgroundImage from "../../../images/background-dobson.svg";
 import Stack from "@mui/material/Stack";
@@ -26,7 +26,7 @@ export default function CategoryLayout(pageData: Page) {
     backgroundAttachment: "fixed",
     backgroundPosition: "bottom-right",
     backgroundSize: "cover",
-    minHeight: "100vh"
+    minHeight: "100vh",
   };
 
   return (
@@ -65,7 +65,7 @@ export default function CategoryLayout(pageData: Page) {
       </Grid>
       <Grid container maxWidth="1330px" width="100%">
         <Grid container xs={9} gap={2}>
-          {pageData.categories?.map(category => (
+          {pageData.categories?.map((category) => (
             <LandingPageCategory {...category} key={category.id} />
           ))}
         </Grid>

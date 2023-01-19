@@ -1,7 +1,4 @@
-import {
-  SearchData,
-  ServerSearchError
-} from "@documentation-portal/dist/types/serverSearch";
+import { SearchData, ServerSearchError } from "server/dist/types/serverSearch";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
@@ -34,7 +31,7 @@ export function SearchProvider({ children }: SearchContextProviderProps) {
         const errorJson = await response.json();
         setLoadingSearchDataError({
           status: response.status,
-          message: errorJson.message
+          message: errorJson.message,
         });
       }
       const jsonData = await response.json();
@@ -42,7 +39,7 @@ export function SearchProvider({ children }: SearchContextProviderProps) {
     } catch (err) {
       setLoadingSearchDataError({
         status: 500,
-        message: `Cannot fetch search data: ${err}`
+        message: `Cannot fetch search data: ${err}`,
       });
     } finally {
       setLoadingSearchData(false);
@@ -50,7 +47,7 @@ export function SearchProvider({ children }: SearchContextProviderProps) {
   }
 
   useEffect(() => {
-    runSearch().catch(e => e);
+    runSearch().catch((e) => e);
   }, [searchParams]);
 
   return (
@@ -59,7 +56,7 @@ export function SearchProvider({ children }: SearchContextProviderProps) {
         searchData,
         runSearch,
         loadingSearchData,
-        loadingSearchDataError
+        loadingSearchDataError,
       }}
     >
       {children}

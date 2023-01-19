@@ -1,5 +1,5 @@
 import LandingPageItem from "../LandingPageItem";
-import { Subject } from "@documentation-portal/dist/model/entity/Subject";
+import { Subject } from "server/dist/model/entity/Subject";
 
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
@@ -19,7 +19,7 @@ export default function LandingPageSubject(subject: Subject) {
     ObjectGroupIcon,
     puzzlePieceIcon,
     usersCogIcon,
-    wrenchIcon
+    wrenchIcon,
   ];
   const randomIcon = iconArray[Math.floor(Math.random() * iconArray.length)];
 
@@ -28,7 +28,7 @@ export default function LandingPageSubject(subject: Subject) {
       spacing={2}
       sx={{
         breakInside: "avoid",
-        width: "450px"
+        width: "450px",
       }}
     >
       <Stack direction="row" spacing={2} alignItems="center">
@@ -37,7 +37,7 @@ export default function LandingPageSubject(subject: Subject) {
           alt="Subject icon"
           style={{
             width: "20px",
-            height: "20px"
+            height: "20px",
           }}
         />
         <Typography
@@ -45,14 +45,14 @@ export default function LandingPageSubject(subject: Subject) {
             fontWeight: 700,
             fontSize: "1.25rem",
             color: "hsl(216, 42%, 13%)",
-            textAlign: "left"
+            textAlign: "left",
           }}
         >
           {subject.label}
         </Typography>
       </Stack>
       <Stack spacing={1} paddingLeft="40px">
-        {subject.subjectItems.map(subjectItem => (
+        {subject.subjectItems.map((subjectItem) => (
           <LandingPageItem {...subjectItem} key={subjectItem.id} />
         ))}
       </Stack>
