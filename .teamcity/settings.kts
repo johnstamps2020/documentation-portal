@@ -2414,29 +2414,6 @@ object Server {
                 GwBuildSteps.createBuildAndPublishServerDockerImageToDevEcrStep(tagVersion)
             deployServerBuildType.steps.step(buildAndPublishServerDockerImageStep)
             deployServerBuildType.steps.stepsOrder.add(0, buildAndPublishServerDockerImageStep.id.toString())
-            deployServerBuildType.dependencies {
-                snapshot(Checkmarx) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                snapshot(TestDocSiteServerApp) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                snapshot(TestConfigDocs) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                snapshot(TestConfigSources) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                snapshot(TestConfigBuilds) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-            if (deployEnv == GwDeployEnvs.DEV.envName) {
-                deployServerBuildType.triggers.finishBuildTrigger {
-                    buildType = "${TestDocSiteServerApp.id}"
-                    successfulOnly = true
-                }
-            }
         }
         return deployServerBuildType
     }
