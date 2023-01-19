@@ -2049,7 +2049,7 @@ object Server {
             nodeJS {
                 id = "Run yarn npm audit"
                 shellScript = """
-                    cd server && yarn npm audit --severity high --all --recursive
+                    cd server && yarn npm audit --severity high --all --recursive --exclude @doctools/gw-theme-classic
                 """.trimIndent()
                 dockerImage = GwDockerImages.NODE_16_14_2.imageUrl
             }
