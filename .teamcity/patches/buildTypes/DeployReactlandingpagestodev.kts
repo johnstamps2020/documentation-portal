@@ -1,6 +1,7 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildFeatures.dockerSupport
 import jetbrains.buildServer.configs.kotlin.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.ui.*
@@ -73,6 +74,16 @@ changeBuildType(RelativeId("DeployReactlandingpagestodev")) {
                 yarn build || EXIT_CODE=${'$'}?
                 exit ${'$'}EXIT_CODE
             """.trimIndent()
+        }
+    }
+
+    features {
+        add {
+            dockerSupport {
+                loginToRegistry = on {
+                    dockerRegistryId = "PROJECT_EXT_155"
+                }
+            }
         }
     }
 }
