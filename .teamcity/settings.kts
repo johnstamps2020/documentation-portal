@@ -1393,6 +1393,7 @@ object Content {
                     )
                 )
                 step(GwBuildSteps.createRefreshConfigBuildStep(deployEnv))
+                step(GwBuildSteps.MergeAllLegacyConfigsStep)
                 step(GwBuildSteps.createUploadLegacyConfigsToS3BucketStep(deployEnv))
             }
 
@@ -3927,6 +3928,21 @@ object GwBuildSteps {
         file = "apps/doc_crawler/tests/test_doc_crawler/resources/docker-compose.yml"
     })
 
+    object MergeAllLegacyConfigsStep : ScriptBuildStep({
+        name = "Merge all config files"
+        id = Helpers.createIdStringFromName(this.name)
+        scriptContent = """
+                #!/bin/bash
+                set -xe
+
+                config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}"
+                config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}"
+                config_deployer merge "${GwConfigParams.BUILDS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}"
+            """.trimIndent()
+        dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.imageUrl
+        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+    })
+
     fun createUploadLegacyConfigsToS3BucketStep(deployEnv: String): ScriptBuildStep {
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
@@ -3941,12 +3957,7 @@ object GwBuildSteps {
                 set -xe
                 
                 $awsEnvVars
-                
-                # Merge config files
-                config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}"
-                config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}"
-                config_deployer merge "${GwConfigParams.BUILDS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}"
-                
+                                
                 mv "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localPublishPath/docs.json"
                 mv "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localPublishPath/sources.json"
                 mv "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localPublishPath/builds.json"
@@ -3954,8 +3965,10 @@ object GwBuildSteps {
                 # Copy merged config files to the S3 bucket
                 
                 aws s3 sync "$localPublishPath" "$s3PublishPath" --delete
-
             """.trimIndent()
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
         }
     }
 
