@@ -1393,6 +1393,7 @@ object Content {
                     )
                 )
                 step(GwBuildSteps.createRefreshConfigBuildStep(deployEnv))
+                step(GwBuildSteps.createUploadLegacyConfigsToS3BucketStep(deployEnv))
             }
 
             triggers {
@@ -1698,7 +1699,7 @@ object Frontend {
             steps {
                 step(
                     GwBuildSteps.createBuildYarnProjectStep(
-                        deployEnv, publishPath, "build", "16.18.0", "", "", "", "", "landing-pages", null, false
+                        deployEnv, publishPath, "build", "16.18.0", "", "", "", "", "", null, false
                     )
                 )
                 step(
@@ -1716,6 +1717,8 @@ object Frontend {
                             """.trimIndent()
                 }
             }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
     }
 
@@ -1761,6 +1764,7 @@ object Frontend {
     }
 
     private fun createDeployLandingPagesBuildType(deployEnv: String): BuildType {
+        val pagesDir = "%teamcity.build.checkoutDir%/frontend/pages"
         val outputDir = "%teamcity.build.checkoutDir%/output"
         return BuildType {
             name = "Deploy landing pages to $deployEnv"
@@ -1776,12 +1780,17 @@ object Frontend {
                 step(GwBuildSteps.MergeDocsConfigFilesStep)
                 step(
                     GwBuildSteps.createRunFlailSsgStep(
-                        "%teamcity.build.checkoutDir%/frontend/pages", outputDir, deployEnv
+                        pagesDir, outputDir, deployEnv
                     )
                 )
                 step(
                     GwBuildSteps.createDeployStaticFilesStep(
                         deployEnv, GwStaticFilesModes.LANDING_PAGES.modeName, outputDir
+                    )
+                )
+                step(
+                    GwBuildSteps.createUploadContentToS3BucketStep(
+                        deployEnv, pagesDir, "legacy-landing-pages"
                     )
                 )
             }
@@ -3917,6 +3926,38 @@ object GwBuildSteps {
         id = Helpers.createIdStringFromName(this.name)
         file = "apps/doc_crawler/tests/test_doc_crawler/resources/docker-compose.yml"
     })
+
+    fun createUploadLegacyConfigsToS3BucketStep(deployEnv: String): ScriptBuildStep {
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
+        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
+        val publishPath = "legacy-config"
+        val localPublishPath = "%teamcity.build.checkoutDir%/$publishPath"
+        val s3PublishPath = "s3://tenant-doctools-${atmosDeployEnv}-builds/${publishPath}"
+        return ScriptBuildStep {
+            name = "Upload full legacy configs to the S3 bucket"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                $awsEnvVars
+                
+                # Merge config files
+                config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}"
+                config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}"
+                config_deployer merge "${GwConfigParams.BUILDS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}"
+                
+                mv "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localPublishPath/docs.json"
+                mv "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localPublishPath/sources.json"
+                mv "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localPublishPath/builds.json"
+                
+                # Copy merged config files to the S3 bucket
+                
+                aws s3 sync "$localPublishPath" "$s3PublishPath" --delete
+
+            """.trimIndent()
+        }
+    }
 
     object MergeDocsConfigFilesStep : ScriptBuildStep({
         name = "Merge docs config files"
