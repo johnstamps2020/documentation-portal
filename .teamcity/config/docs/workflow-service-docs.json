@@ -20,7 +20,7 @@
     {
       "id": "workflowcockpitgarmisch",
       "title": "Cockpit (Early Access)",
-      "url": "cloud/workflow-service/designer",
+      "url": "cloud/workflow-service/cockpit",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Workflow Service"],
