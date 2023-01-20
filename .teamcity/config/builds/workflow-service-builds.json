@@ -8,6 +8,14 @@
       "srcId": "workflowservicegarmischsrc",
       "docId": "workflowdesignergarmisch",
       "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "cockpit-ops.ditamap",
+      "srcId": "workflowservicegarmischsrc",
+      "docId": "workflowcockpitgarmisch",
+      "indexRedirect": true
     }
   ]
 }

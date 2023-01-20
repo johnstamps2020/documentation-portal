@@ -13,6 +13,16 @@
           "id": "workflowdesignergarmisch"
         }
       ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Cockpit",
+          "id": "workflowcockpitgarmisch"
+        }
+      ]
     }
   ]
 }
