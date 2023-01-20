@@ -1764,6 +1764,7 @@ object Frontend {
     }
 
     private fun createDeployLandingPagesBuildType(deployEnv: String): BuildType {
+        val pagesDir = "%teamcity.build.checkoutDir%/frontend/pages"
         val outputDir = "%teamcity.build.checkoutDir%/output"
         return BuildType {
             name = "Deploy landing pages to $deployEnv"
@@ -1779,12 +1780,17 @@ object Frontend {
                 step(GwBuildSteps.MergeDocsConfigFilesStep)
                 step(
                     GwBuildSteps.createRunFlailSsgStep(
-                        "%teamcity.build.checkoutDir%/frontend/pages", outputDir, deployEnv
+                        pagesDir, outputDir, deployEnv
                     )
                 )
                 step(
                     GwBuildSteps.createDeployStaticFilesStep(
                         deployEnv, GwStaticFilesModes.LANDING_PAGES.modeName, outputDir
+                    )
+                )
+                step(
+                    GwBuildSteps.createUploadContentToS3BucketStep(
+                        deployEnv, pagesDir, "legacy-landing-pages"
                     )
                 )
             }
