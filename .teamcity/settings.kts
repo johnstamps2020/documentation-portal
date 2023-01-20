@@ -1698,7 +1698,7 @@ object Frontend {
             steps {
                 step(
                     GwBuildSteps.createBuildYarnProjectStep(
-                        deployEnv, publishPath, "build", "16.18.0", "", "", "", "", "landing-pages", null, false
+                        deployEnv, publishPath, "build", "16.18.0", "", "", "", "", "", null, false
                     )
                 )
                 step(
@@ -1716,6 +1716,8 @@ object Frontend {
                             """.trimIndent()
                 }
             }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
     }
 
