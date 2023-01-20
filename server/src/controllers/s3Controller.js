@@ -6,6 +6,28 @@ const bucketParams = {
   Bucket: `tenant-doctools-${process.env.DEPLOY_ENV}-builds`,
 };
 
+async function getConfigFile(localDir, localFilename, remotePath) {
+  try {
+    if (!fs.existsSync(localDir)) {
+      fs.mkdirSync(localDir, { recursive: true });
+    }
+    return new Promise((resolve, reject) => {
+      const file = fs.createWriteStream(`${localDir}/${localFilename}`);
+      file.on('finish', () => {
+        resolve('success');
+      });
+      file.on('error', err => {
+        reject(err);
+      });
+      s3.getObject({ ...bucketParams, Key: remotePath })
+        .createReadStream()
+        .pipe(file);
+    });
+  } catch (err) {
+    throw new Error(err);
+  }
+}
+
 async function listItems(prefix) {
   try {
     return s3.listObjects({ ...bucketParams, Prefix: prefix }).promise();
@@ -61,4 +83,9 @@ async function deleteItems(keysCommaSeparated) {
   }
 }
 
-module.exports = { listItems, addItems, deleteItems };
+module.exports = {
+  getConfigFile,
+  listItems,
+  addItems,
+  deleteItems,
+};
