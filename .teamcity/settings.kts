@@ -3957,6 +3957,8 @@ object GwBuildSteps {
                 set -xe
                 
                 $awsEnvVars
+                
+                mkdir -p "$localPublishPath"
                                 
                 mv "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localPublishPath/docs.json"
                 mv "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localPublishPath/sources.json"
