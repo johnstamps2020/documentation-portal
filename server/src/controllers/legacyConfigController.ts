@@ -40,6 +40,8 @@ import { PageSelectorItem } from '../model/entity/PageSelectorItem';
 import { PageSelector } from '../model/entity/PageSelector';
 import { SidebarItem } from '../model/entity/SidebarItem';
 import { Sidebar } from '../model/entity/Sidebar';
+import { getConfigFile } from './s3Controller';
+import { runningInDevMode } from './utils/serverUtils';
 
 export async function getLegacyDocConfigs() {
   const { status, body } = await getAllEntities(Doc.name);
@@ -481,6 +483,7 @@ export async function putOpenRoutesConfigsInDatabase() {
   }
 }
 
+//TODO: Make it work with the files on the S3 bucket
 export async function putPageConfigsInDatabase() {
   try {
     const localLandingPagesConfigDir = resolve(
@@ -619,9 +622,28 @@ export async function putSourceConfigsInDatabase(): Promise<{
   body: any;
 }> {
   try {
-    const localSourcesConfigDir = resolve(
-      `${__dirname}/../../../.teamcity/config/sources`
-    );
+    const isDevMode = runningInDevMode();
+    let localSourcesConfigDir: string;
+    if (isDevMode) {
+      localSourcesConfigDir = resolve(
+        `${__dirname}/../../../.teamcity/config/sources`
+      );
+    } else {
+      localSourcesConfigDir = resolve(`${__dirname}/../legacyConfig/sources`);
+      const getSourcesConfigResult = await getConfigFile(
+        localSourcesConfigDir,
+        'sources.json',
+        'legacy-config/sources.json'
+      );
+      if (getSourcesConfigResult !== 'success') {
+        return {
+          status: 404,
+          body: {
+            message: `Cannot put doc config in DB: Problem getting the doc config file from S3 (${getSourcesConfigResult})`,
+          },
+        };
+      }
+    }
 
     const localSourcesConfig = readLocalSourceConfigs(localSourcesConfigDir);
     const updatedLocalConfig = [];
@@ -733,12 +755,46 @@ export async function putDocConfigsInDatabase(): Promise<{
   body: any;
 }> {
   try {
-    const localDocsConfigDir = resolve(
-      `${__dirname}/../../../.teamcity/config/docs`
-    );
-    const localBuildsConfigDir = resolve(
-      `${__dirname}/../../../.teamcity/config/builds`
-    );
+    const isDevMode = runningInDevMode();
+    let localDocsConfigDir: string;
+    let localBuildsConfigDir: string;
+    if (isDevMode) {
+      localDocsConfigDir = resolve(
+        `${__dirname}/../../../.teamcity/config/docs`
+      );
+      localBuildsConfigDir = resolve(
+        `${__dirname}/../../../.teamcity/config/builds`
+      );
+    } else {
+      localDocsConfigDir = resolve(`${__dirname}/../legacyConfig/docs`);
+      const getDocsConfigResult = await getConfigFile(
+        localDocsConfigDir,
+        'docs.json',
+        'legacy-config/docs.json'
+      );
+      if (getDocsConfigResult !== 'success') {
+        return {
+          status: 404,
+          body: {
+            message: `Cannot put doc config in DB: Problem getting the doc config file from S3 (${getDocsConfigResult})`,
+          },
+        };
+      }
+      localBuildsConfigDir = resolve(`${__dirname}/../legacyConfig/builds`);
+      const getBuildsConfigResult = await getConfigFile(
+        localBuildsConfigDir,
+        'builds.json',
+        'legacy-config/builds.json'
+      );
+      if (getBuildsConfigResult !== 'success') {
+        return {
+          status: 404,
+          body: {
+            message: `Cannot put doc config in DB: Problem getting the builds config file from S3 (${getBuildsConfigResult})`,
+          },
+        };
+      }
+    }
 
     const localDocsConfig = readLocalDocConfigs(localDocsConfigDir);
     const localBuildsConfig = readLocalBuildConfigs(localBuildsConfigDir);
