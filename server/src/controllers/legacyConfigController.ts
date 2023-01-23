@@ -1,7 +1,7 @@
 import {
   createOrUpdateEntity,
-  getAllEntities,
   findEntity,
+  getAllEntities,
 } from './configController';
 import { Doc } from '../model/entity/Doc';
 import { Product } from '../model/entity/Product';
@@ -40,7 +40,7 @@ import { PageSelectorItem } from '../model/entity/PageSelectorItem';
 import { PageSelector } from '../model/entity/PageSelector';
 import { SidebarItem } from '../model/entity/SidebarItem';
 import { Sidebar } from '../model/entity/Sidebar';
-import { getConfigFile } from './s3Controller';
+import { getConfigFile, listItems } from './s3Controller';
 import { runningInDevMode } from './utils/serverUtils';
 
 export async function getLegacyDocConfigs() {
@@ -483,12 +483,45 @@ export async function putOpenRoutesConfigsInDatabase() {
   }
 }
 
-//TODO: Make it work with the files on the S3 bucket
 export async function putPageConfigsInDatabase() {
   try {
-    const localLandingPagesConfigDir = resolve(
-      `${__dirname}/../../../frontend/pages`
-    );
+    const isDevMode = runningInDevMode();
+    let localLandingPagesConfigDir: string;
+    if (isDevMode) {
+      localLandingPagesConfigDir = resolve(
+        `${__dirname}/../../../frontend/pages`
+      );
+    } else {
+      localLandingPagesConfigDir = resolve(
+        `${__dirname}/../legacyConfig/landingPages`
+      );
+      const getLegacyLandingPagesObjectsResult = await listItems(
+        'legacy-landing-pages'
+      );
+      const legacyLandingPages = getLegacyLandingPagesObjectsResult.Contents?.map(
+        i => i.Key
+      );
+      if (legacyLandingPages) {
+        for (const legacyLandingPage of legacyLandingPages) {
+          const targetLocalDir = legacyLandingPage!
+            .replace('legacy-landing-pages', localLandingPagesConfigDir)
+            .replace('/index.json', '');
+          const getLegacyLandingPageConfigResult = await getConfigFile(
+            targetLocalDir,
+            'index.json',
+            legacyLandingPage
+          );
+          if (getLegacyLandingPageConfigResult !== 'success') {
+            return {
+              status: 404,
+              body: {
+                message: `Cannot put page config in DB: Problem getting the page config file from S3 (${legacyLandingPage})`,
+              },
+            };
+          }
+        }
+      }
+    }
 
     const localLandingPagesConfig = readLocalPageConfigs(
       localLandingPagesConfigDir
@@ -611,7 +644,7 @@ export async function putPageConfigsInDatabase() {
     return {
       status: 500,
       body: {
-        message: `Cannot put source config in DB: ${(err as Error).message}`,
+        message: `Cannot put source config in DB: ${err}`,
       },
     };
   }
