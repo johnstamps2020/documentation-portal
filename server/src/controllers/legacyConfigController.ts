@@ -804,6 +804,7 @@ export async function putDocConfigsInDatabase(): Promise<{
       dbDoc.id = doc.id;
       dbDoc.url = doc.url;
       dbDoc.title = doc.title;
+      dbDoc.public = doc.public;
       dbDoc.internal = doc.internal;
       dbDoc.earlyAccess = doc.earlyAccess;
       dbDoc.displayOnLandingPages = doc.displayOnLandingPages;
