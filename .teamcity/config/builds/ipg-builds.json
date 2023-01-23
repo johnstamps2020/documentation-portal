@@ -48,6 +48,22 @@
       "srcId": "midipgsrc",
       "docId": "midipgrnde",
       "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPGApplicationGuideDE.ditamap",
+      "srcId": "midipgsrc",
+      "docId": "midipgappde",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "_superbook.ditamap",
+      "srcId": "midipgsrc",
+      "docId": "midipgsupermap",
+      "indexRedirect": true
     }
   ]
 }
