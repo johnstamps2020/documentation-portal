@@ -27,6 +27,10 @@
           "id": "midipgapp"
         },
         {
+          "label": "Application Guide (German)",
+          "id": "midipgappde"
+        },
+        {
           "label": "Implementation",
           "id": "midipgimpl"
         }
