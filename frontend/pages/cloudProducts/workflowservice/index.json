@@ -5,12 +5,22 @@
   "class": "twoColumns",
   "items": [
     {
+      "label": "Release notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "workflowreleasenotes"
+        }
+      ]
+    },
+    {
       "label": "Development",
       "class": "subject development",
       "items": [
         {
           "label": "Workflow Designer",
-          "id": "workflowdesignergarmisch"
+          "id": "workflowdesigner"
         }
       ]
     },
@@ -20,7 +30,7 @@
       "items": [
         {
           "label": "Cockpit",
-          "id": "workflowcockpitgarmisch"
+          "id": "workflowcockpit"
         }
       ]
     }
