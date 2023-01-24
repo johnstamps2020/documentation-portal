@@ -337,8 +337,11 @@ async function getOrCreateItems(
         legacyLandingPageConfigs,
         rootPath
       );
-      await createOrUpdateEntity(dbPageSubItemRepo, dbPageSubItemWithRefs);
-      dbPageSubItems.push(dbPageSubItemWithRefs);
+      const result = await createOrUpdateEntity(
+        dbPageSubItemRepo,
+        dbPageSubItemWithRefs
+      );
+      dbPageSubItems.push(result.body);
     }
     return dbPageSubItems;
   }
@@ -370,8 +373,11 @@ async function getOrCreateItems(
                   legacySubCategoryItemItems,
                   subCategory
                 );
-                await AppDataSource.manager.save(SubCategory, subCategory);
-                subCategories.push(subCategory);
+                const saveResult = await createOrUpdateEntity(
+                  SubCategory.name,
+                  subCategory
+                );
+                subCategories.push(saveResult.body);
               }
             }
             dbPageCategory.subCategories = subCategories;
@@ -382,7 +388,11 @@ async function getOrCreateItems(
               dbPageCategory
             );
           }
-          dbPageCategories.push(dbPageCategory);
+          const result = await createOrUpdateEntity(
+            Category.name,
+            dbPageCategory
+          );
+          dbPageCategories.push(result.body);
         }
       } else if (legacyItem.class?.includes('subject')) {
         const dbPageSubject = new Subject();
@@ -393,7 +403,8 @@ async function getOrCreateItems(
             dbPageSubject
           );
         }
-        dbPageSubjects.push(dbPageSubject);
+        const result = await createOrUpdateEntity(Subject.name, dbPageSubject);
+        dbPageSubjects.push(result.body);
       } else if (legacyItem.class?.includes('productFamily')) {
         const dbPageProductFamilyItem = new ProductFamilyItem();
         dbPageProductFamilyItem.label = legacyItem.label;
@@ -403,7 +414,11 @@ async function getOrCreateItems(
           legacyLandingPageConfigs,
           rootPath
         );
-        dbPageProductFamilyItems.push(dbPageProductFamilyItemWithRefs);
+        const result = await createOrUpdateEntity(
+          ProductFamilyItem.name,
+          dbPageProductFamilyItemWithRefs
+        );
+        dbPageProductFamilyItems.push(result.body);
       }
     } catch (err) {
       winstonLogger.error(`Error in item: ${legacyItem.label}, ${err}`);
@@ -464,12 +479,12 @@ export async function putOpenRoutesConfigsInDatabase() {
       openRouteConfig.earlyAccess = false;
       openRouteConfig.component = openPath.component;
       openRouteConfig.isInProduction = false;
-      openRouteConfigs.push(openRouteConfig);
+      const result = await createOrUpdateEntity(Page.name, openRouteConfig);
+      openRouteConfigs.push(result.body);
     }
-    const saveResult = await AppDataSource.manager.save(Page, openRouteConfigs);
     return {
       status: 200,
-      body: saveResult,
+      body: openRouteConfigs,
     };
   } catch (err) {
     return {
@@ -546,18 +561,27 @@ export async function putPageConfigsInDatabase() {
         const pageCategories = allPageItems.categories;
         const pageSubjects = allPageItems.subjects;
         const pageProductFamilyItems = allPageItems.productFamilyItems;
+        dbLandingPage.categories = [];
+        dbLandingPage.subjects = [];
+        dbLandingPage.productFamilyItems = [];
         if (pageCategories.length > 0) {
-          await AppDataSource.manager.save(Category, pageCategories);
-          dbLandingPage.categories = pageCategories;
+          for (const c of pageCategories) {
+            const result = await createOrUpdateEntity(Category.name, c);
+            dbLandingPage.categories.push(result.body);
+          }
         } else if (pageSubjects.length > 0) {
-          await AppDataSource.manager.save(Subject, pageSubjects);
-          dbLandingPage.subjects = pageSubjects;
+          for (const s of pageSubjects) {
+            const result = await createOrUpdateEntity(Subject.name, s);
+            dbLandingPage.subjects.push(result.body);
+          }
         } else if (pageProductFamilyItems.length > 0) {
-          await AppDataSource.manager.save(
-            ProductFamilyItem,
-            pageProductFamilyItems
-          );
-          dbLandingPage.productFamilyItems = pageProductFamilyItems;
+          for (const p of pageProductFamilyItems) {
+            const result = await createOrUpdateEntity(
+              ProductFamilyItem.name,
+              p
+            );
+            dbLandingPage.productFamilyItems.push(result.body);
+          }
         }
       }
       const legacyPageSelector = page.selector;
@@ -575,18 +599,28 @@ export async function putPageConfigsInDatabase() {
             localLandingPagesConfig,
             legacyPageAbsPath
           );
-          pageSelectorItems.push(pageSelectorItemWithRefs);
+          const result = await createOrUpdateEntity(
+            PageSelectorItem.name,
+            pageSelectorItemWithRefs
+          );
+          pageSelectorItems.push(result.body);
         }
         // Create an item for the currently selected item
         const currentlySelectedPageSelectorItem = new PageSelectorItem();
         currentlySelectedPageSelectorItem.label =
           legacyPageSelector.selectedItem;
         currentlySelectedPageSelectorItem.link = '#';
-        pageSelectorItems.push(currentlySelectedPageSelectorItem);
-        await AppDataSource.manager.save(PageSelectorItem, pageSelectorItems);
+        const selectedPageSelectorItemSaveResult = await createOrUpdateEntity(
+          PageSelectorItem.name,
+          currentlySelectedPageSelectorItem
+        );
+        pageSelectorItems.push(selectedPageSelectorItemSaveResult.body);
         pageSelector.pageSelectorItems = pageSelectorItems;
-        await AppDataSource.manager.save(PageSelector, pageSelector);
-        dbLandingPage.pageSelector = pageSelector;
+        const pageSelectorSaveResult = await createOrUpdateEntity(
+          PageSelector.name,
+          pageSelector
+        );
+        dbLandingPage.pageSelector = pageSelectorSaveResult.body;
       }
       const legacySearchFilters = page.search_filters;
       if (legacySearchFilters) {
@@ -594,12 +628,19 @@ export async function putPageConfigsInDatabase() {
       }
       // Temporary sidebar for testing
       if (page.path.endsWith('cloudProducts/elysian')) {
+        const sidebarItems = [];
+
         const sidebarItemDoc = new SidebarItem();
         const docResponse = await findEntity(Doc.name, {
           id: 'amstcccounterfraud',
         });
         sidebarItemDoc.label = 'Counter Fraud ClaimCenter';
         sidebarItemDoc.doc = docResponse.body;
+        const sidebarItemDocSaveResult = await createOrUpdateEntity(
+          SidebarItem.name,
+          sidebarItemDoc
+        );
+        sidebarItems.push(sidebarItemDocSaveResult.body);
 
         const testPageConfig = new Page();
         testPageConfig.path = 'cloudProducts/elysian';
@@ -613,30 +654,36 @@ export async function putPageConfigsInDatabase() {
         const sidebarItemPage = new SidebarItem();
         sidebarItemPage.label = 'API References';
         sidebarItemPage.page = createdPage.body;
+        const sidebarItemPageSaveResult = await createOrUpdateEntity(
+          SidebarItem.name,
+          sidebarItemPage
+        );
+        sidebarItems.push(sidebarItemPageSaveResult.body);
 
         const sidebarItemLink = new SidebarItem();
         sidebarItemLink.link = '/alive';
         sidebarItemLink.label = 'Alive';
+        const sidebarItemLinkSaveResult = await createOrUpdateEntity(
+          SidebarItem.name,
+          sidebarItemLink
+        );
+        sidebarItems.push(sidebarItemLinkSaveResult.body);
 
-        await AppDataSource.manager.save(SidebarItem, [
-          sidebarItemDoc,
-          sidebarItemPage,
-          sidebarItemLink,
-        ]);
         const sidebar = new Sidebar();
         sidebar.label = 'Implementation resources';
-        sidebar.sidebarItems = [
-          sidebarItemDoc,
-          sidebarItemPage,
-          sidebarItemLink,
-        ];
-        await AppDataSource.manager.save(Sidebar, sidebar);
-        dbLandingPage.sidebar = sidebar;
+        sidebar.sidebarItems = sidebarItems;
+        const sidebarSaveResult = await createOrUpdateEntity(
+          Sidebar.name,
+          sidebar
+        );
+        dbLandingPage.sidebar = sidebarSaveResult.body;
       }
-      const saveResult = await AppDataSource.manager.save(Page, dbLandingPage);
-      dbPageConfigs.push(saveResult);
+      const pageSaveResult = await createOrUpdateEntity(
+        Page.name,
+        dbLandingPage
+      );
+      dbPageConfigs.push(pageSaveResult.body);
     }
-    // const saveResult = await AppDataSource.manager.save(Page, dbPageConfigs);
     return {
       status: 200,
       body: dbPageConfigs,
@@ -692,8 +739,8 @@ export async function putSourceConfigsInDatabase(): Promise<{
       dbSource.exportFrequency = source.exportFrequency;
       dbSource.pollInterval = source.pollInterval;
 
-      const saveResult = await AppDataSource.manager.save(Source, dbSource);
-      dbSourceConfigs.push(saveResult);
+      const saveResult = await createOrUpdateEntity(Source.name, dbSource);
+      dbSourceConfigs.push(saveResult.body);
     }
     return {
       status: 200,
@@ -751,12 +798,12 @@ async function createProductEntities(
     const versionName = await findEntity(ProductVersion.name, {
       name: productConfig.versionName,
     });
-    const productEntity = await AppDataSource.manager.save(Product, {
+    const productEntitySaveResult = await createOrUpdateEntity(Product.name, {
       name: productName.body,
       platform: platformName.body,
       version: versionName.body,
     });
-    dbDocProducts.push(productEntity);
+    dbDocProducts.push(productEntitySaveResult.body);
   }
   return dbDocProducts;
 }
@@ -777,8 +824,8 @@ async function addDocBuild(buildConfig: legacyBuildConfig) {
   docBuild.outputPath = buildConfig.outputPath;
   docBuild.zipFilename = buildConfig.zipFilename;
   docBuild.customEnv = buildConfig.customEnv;
-  await AppDataSource.manager.save(Build, docBuild);
-  return docBuild;
+  const saveResult = await createOrUpdateEntity(Build.name, docBuild);
+  return saveResult.body;
 }
 
 export async function putDocConfigsInDatabase(): Promise<{
@@ -893,8 +940,8 @@ export async function putDocConfigsInDatabase(): Promise<{
         dbDoc.build = await addDocBuild(matchingBuild);
       }
 
-      const saveResult = await AppDataSource.manager.save(Doc, dbDoc);
-      dbDocConfigs.push(saveResult);
+      const saveResult = await createOrUpdateEntity(Doc.name, dbDoc);
+      dbDocConfigs.push(saveResult.body);
     }
 
     return {
