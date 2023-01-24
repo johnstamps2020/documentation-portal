@@ -5,16 +5,24 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "workflow-designer-dev.ditamap",
-      "srcId": "workflowservicegarmischsrc",
-      "docId": "workflowdesignergarmisch",
+      "srcId": "workflowservicesrc",
+      "docId": "workflowdesigner",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "cockpit-ops.ditamap",
-      "srcId": "workflowservicegarmischsrc",
-      "docId": "workflowcockpitgarmisch",
+      "srcId": "workflowservicesrc",
+      "docId": "workflowcockpit",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "release-notes-book.ditamap",
+      "srcId": "workflowservicesrc",
+      "docId": "workflowreleasenotes",
       "indexRedirect": true
     }
   ]

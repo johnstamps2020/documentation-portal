@@ -2,14 +2,14 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "workflowdesignergarmisch",
+      "id": "workflowdesigner",
       "title": "Workflow Designer (Early Access)",
       "url": "cloud/workflow-service/designer",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Workflow Service"],
         "version": ["latest"],
-        "release": ["Garmisch"]
+        "subject": ["Features and functionality"]
       },
       "environments": ["staging"],
       "indexForSearch": false,
@@ -18,14 +18,30 @@
       "earlyAccess": true
     },
     {
-      "id": "workflowcockpitgarmisch",
+      "id": "workflowcockpit",
       "title": "Cockpit (Early Access)",
       "url": "cloud/workflow-service/cockpit",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Workflow Service"],
         "version": ["latest"],
-        "release": ["Garmisch"]
+        "subject": ["Administration"]
+      },
+      "environments": ["staging"],
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "workflowreleasenotes",
+      "title": "Release Notes (Early Access)",
+      "url": "cloud/workflow-service/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Workflow Service"],
+        "version": ["latest"],
+        "subject": ["Release notes"]
       },
       "environments": ["staging"],
       "indexForSearch": false,
