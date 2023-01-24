@@ -11,7 +11,7 @@
         "version": ["latest"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -28,7 +28,7 @@
         "version": ["latest"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -45,7 +45,7 @@
         "version": ["latest"],
         "subject": ["Installation"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -62,7 +62,7 @@
         "version": ["latest"],
         "subject": ["Release notes"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -79,7 +79,7 @@
         "version": ["latest"],
         "subject": ["Release notes"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -96,9 +96,43 @@
         "version": ["latest"],
         "subject": ["Glossary"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipgappde",
+      "title": "Application Guide (German)",
+      "url": "self-managed/ipg/latest/appde",
+      "metadata": {
+        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "platform": ["Self-managed"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipgsupermap",
+      "title": "IPG Supermap",
+      "url": "self-managed/ipg/latest/supermap",
+      "metadata": {
+        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "platform": ["Self-managed"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["dev"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
       "public": false,
       "internal": false,
       "earlyAccess": false

@@ -2,7 +2,7 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "iscc202209jaJPcloudapica",
+      "id": "iscc202209cloudapicajaJP",
       "title": "ClaimCenter Cloud API Developer Guide ja-JP",
       "url": "cloud/cc/ja-JP/202209/cloudapica",
       "metadata": {
@@ -20,7 +20,7 @@
       "earlyAccess": false
     },
     {
-      "id": "iscc202209jaJPcloudapibf",
+      "id": "iscc202209cloudapibfjaJP",
       "title": "ClaimCenter Cloud API Consumer Guide ja-JP",
       "url": "cloud/cc/ja-JP/202209/cloudapibf",
       "metadata": {
@@ -34,6 +34,24 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202209apicmjaJP",
+      "title": "ContactManager Cloud API Consumer Guide ja-JP",
+      "url": "cloud/cc/ja-JP/202209/cloudapicm",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Integration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
       "internal": false,
       "earlyAccess": false
     }

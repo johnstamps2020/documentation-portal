@@ -5,7 +5,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "ImplementationGuide.ditamap",
-      "srcId": "midipgimplsrc",
+      "srcId": "midipgsrc",
       "docId": "midipgimpl",
       "indexRedirect": true
     },
@@ -13,7 +13,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "IPGApplicationGuide.ditamap",
-      "srcId": "midipgappsrc",
+      "srcId": "midipgsrc",
       "docId": "midipgapp",
       "indexRedirect": true
     },
@@ -21,7 +21,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "InstallGuide.ditamap",
-      "srcId": "midipginstallsrc",
+      "srcId": "midipgsrc",
       "docId": "midipginstall",
       "indexRedirect": true
     },
@@ -29,7 +29,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "IPGGlossary.ditamap",
-      "srcId": "midipgglossarysrc",
+      "srcId": "midipgsrc",
       "docId": "midipgglossary",
       "indexRedirect": true
     },
@@ -37,7 +37,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "IPGReleaseNotes.ditamap",
-      "srcId": "midipgrnensrc",
+      "srcId": "midipgsrc",
       "docId": "midipgrnen",
       "indexRedirect": true
     },
@@ -45,8 +45,24 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "IPGReleaseNotesDE.ditamap",
-      "srcId": "midipgrndesrc",
+      "srcId": "midipgsrc",
       "docId": "midipgrnde",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPGApplicationGuideDE.ditamap",
+      "srcId": "midipgsrc",
+      "docId": "midipgappde",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "_superbook.ditamap",
+      "srcId": "midipgsrc",
+      "docId": "midipgsupermap",
       "indexRedirect": true
     }
   ]

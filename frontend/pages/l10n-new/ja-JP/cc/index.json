@@ -9,11 +9,15 @@
       "items": [
         {
           "label": "Cloud API 認証ガイド",
-          "id": "iscc202209jaJPcloudapica"
+          "id": "iscc202209cloudapicajaJP"
         },
         {
           "label": "Cloud API ビジネスフローとコンフィギュレーションガイド",
-          "id": "iscc202209jaJPcloudapibf"
+          "id": "iscc202209cloudapibfjaJP"
+        },
+        {
+          "label": "Cloud API ContactManager ガイド",
+          "id": "iscc202209apicmjaJP"
         }
       ]
     },
@@ -23,7 +27,7 @@
       "items": [
         {
           "label": "開発者設定ガイド",
-          "id": "iscc202205jaJPdevsetup"
+          "id": "iscc202205devsetupjaJP"
         },
         {
           "label": "Cloud 連携の概要",
