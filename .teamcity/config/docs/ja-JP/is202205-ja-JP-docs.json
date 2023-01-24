@@ -2,7 +2,7 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "iscc202205jaJPdevsetup",
+      "id": "iscc202205devsetupjaJP",
       "title": "Developer Setup ja-JP",
       "url": "cloud/cc/ja-JP/202205/devsetup",
       "metadata": {
