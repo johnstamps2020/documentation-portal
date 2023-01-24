@@ -633,12 +633,13 @@ export async function putPageConfigsInDatabase() {
         await AppDataSource.manager.save(Sidebar, sidebar);
         dbLandingPage.sidebar = sidebar;
       }
-      dbPageConfigs.push(dbLandingPage);
+      const saveResult = await AppDataSource.manager.save(Page, dbLandingPage);
+      dbPageConfigs.push(saveResult);
     }
-    const saveResult = await AppDataSource.manager.save(Page, dbPageConfigs);
+    // const saveResult = await AppDataSource.manager.save(Page, dbPageConfigs);
     return {
       status: 200,
-      body: saveResult,
+      body: dbPageConfigs,
     };
   } catch (err) {
     return {
@@ -679,7 +680,7 @@ export async function putSourceConfigsInDatabase(): Promise<{
     }
 
     const localSourcesConfig = readLocalSourceConfigs(localSourcesConfigDir);
-    const updatedLocalConfig = [];
+    const dbSourceConfigs = [];
     for await (const source of localSourcesConfig) {
       const dbSource = new Source();
       dbSource.id = source.id;
@@ -691,15 +692,12 @@ export async function putSourceConfigsInDatabase(): Promise<{
       dbSource.exportFrequency = source.exportFrequency;
       dbSource.pollInterval = source.pollInterval;
 
-      updatedLocalConfig.push(dbSource);
+      const saveResult = await AppDataSource.manager.save(Source, dbSource);
+      dbSourceConfigs.push(saveResult);
     }
-    const saveResult = await AppDataSource.manager.save(
-      Source,
-      updatedLocalConfig
-    );
     return {
       status: 200,
-      body: saveResult,
+      body: dbSourceConfigs,
     };
   } catch (err) {
     return {
@@ -831,7 +829,7 @@ export async function putDocConfigsInDatabase(): Promise<{
 
     const localDocsConfig = readLocalDocConfigs(localDocsConfigDir);
     const localBuildsConfig = readLocalBuildConfigs(localBuildsConfigDir);
-    const updatedLocalConfig = [];
+    const dbDocConfigs = [];
     for await (const doc of localDocsConfig) {
       const dbDoc = new Doc();
       dbDoc.id = doc.id;
@@ -895,16 +893,13 @@ export async function putDocConfigsInDatabase(): Promise<{
         dbDoc.build = await addDocBuild(matchingBuild);
       }
 
-      updatedLocalConfig.push(dbDoc);
+      const saveResult = await AppDataSource.manager.save(Doc, dbDoc);
+      dbDocConfigs.push(saveResult);
     }
 
-    const saveResult = await AppDataSource.manager.save(
-      Doc,
-      updatedLocalConfig
-    );
     return {
       status: 200,
-      body: saveResult,
+      body: dbDocConfigs,
     };
   } catch (err) {
     return {
