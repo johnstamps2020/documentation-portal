@@ -18,6 +18,150 @@
       "public": true,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "is202205contactjaJP",
+      "title": "Contact Management ja-JP",
+      "url": "cloud/is/ja-JP/202205/contact",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "is202205integoverviewjaJP",
+      "title": "Overview of Cloud Integration ja-JP",
+      "url": "cloud/is/ja-JP/202205/integoverview",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Integration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202205adminjaJP",
+      "title": "Administration ja-JP",
+      "url": "cloud/cc/ja-JP/202205/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Administration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202205appjaJP",
+      "title": "Application Guide ja-JP",
+      "url": "cloud/cc/ja-JP/202205/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202205configjaJP",
+      "title": "Configuration ja-JP",
+      "url": "cloud/cc/ja-JP/202205/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202205dataarchivingjaJP",
+      "title": "Data Archiving ja-JP",
+      "url": "cloud/cc/ja-JP/202205/dataarchiving",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Administration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202205globaljaJP",
+      "title": "Globalization ja-JP",
+      "url": "cloud/cc/ja-JP/202205/global",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202205rulesjaJP",
+      "title": "Gosu Rules ja-JP",
+      "url": "cloud/cc/ja-JP/202205/rules",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }
