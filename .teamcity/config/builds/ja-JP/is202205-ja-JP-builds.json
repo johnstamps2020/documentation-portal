@@ -8,6 +8,70 @@
       "srcId": "is202205jaJPsrc",
       "docId": "iscc202205devsetupjaJP",
       "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CM-Cloud-Release.ditaval",
+      "root": "ContactMgmtGuide.ditamap",
+      "srcId": "is202205jaJPsrc",
+      "docId": "is202205contactjaJP",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "OverviewCloudIntegration.ditamap",
+      "srcId": "is202205jaJPsrc",
+      "docId": "is202205integoverviewjaJP",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "AdminGuide.ditamap",
+      "srcId": "is202205jaJPsrc",
+      "docId": "iscc202205adminjaJP",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "CC-AppGuide.ditamap",
+      "srcId": "is202205jaJPsrc",
+      "docId": "iscc202205appjaJP",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "ConfigGuide.ditamap",
+      "srcId": "is202205jaJPsrc",
+      "docId": "iscc202205configjaJP",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "DataArchiving.ditamap",
+      "srcId": "is202205jaJPsrc",
+      "docId": "iscc202205dataarchivingjaJP",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "GlobalizationGuide.ditamap",
+      "srcId": "is202205jaJPsrc",
+      "docId": "iscc202205globaljaJP",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "GosuRules.ditamap",
+      "srcId": "is2022051jaJPsrc",
+      "docId": "iscc202205rulesjaJP",
+      "indexRedirect": true
     }
   ]
 }

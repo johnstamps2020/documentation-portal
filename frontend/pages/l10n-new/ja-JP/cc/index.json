@@ -26,36 +26,44 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
+          "label": "システム管理ガイド",
+          "id": "iscc202205adminjaJP"
+        },
+        {
           "label": "開発者設定ガイド",
           "id": "iscc202205devsetupjaJP"
         },
         {
           "label": "Cloud 連携の概要",
-          "link": "/l10n/ja-JP/cc/2022.05/ja-JP-2022.05-OverviewCloudIntegration.pdf"
+          "id": "is202205integoverviewjaJP"
         },
         {
           "label": "アプリケーションガイド",
-          "link": "/l10n/ja-JP/cc/2022.05/ja-JP-CC-2022.05-AppGuide.pdf"
+          "id": "iscc202205appjaJP"
         },
         {
           "label": "コンフィギュレーションガイド",
-          "link": "/l10n/ja-JP/cc/2022.05/ja-JP-CC-2022.05-ConfigGuide.pdf"
+          "id": "iscc202205configjaJP"
         },
         {
           "label": "Gosu リファレンスガイド",
-          "link": "/l10n/ja-JP/cc/2022.05/ja-JP-CC-2022.05-GosuRefGuide-JA-Final.pdf"
+          "id": "gosureflatestjaJP"
         },
         {
           "label": "Gosu ルール",
-          "link": "/l10n/ja-JP/cc/2022.05/ja-JP-CC-2022.05-GosuRules.pdf"
+          "id": "iscc202205rulesjaJP"
         },
         {
-          "label": "Cloud 連携の概要",
-          "link": "/l10n/ja-JP/cc/2022.05/ja-JP-CC-2022.05-OverviewCloudIntegration.pdf"
+          "label": "Guidewire データアーカイブ",
+          "id": "iscc202205dataarchivingjaJP"
+        },
+        {
+          "label": "Gosu ルールガイド",
+          "id": "iscc202205globaljaJP"
         },
         {
           "label": "用語集",
-          "link": "/l10n/ja-JP/cc/2022.05/ja-JP-Glossary.pdf"
+          "id": "gwglossaryjaJP"
         }
       ]
     },

@@ -14,6 +14,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
       "branch": "release/ja-JP/2022.05.0"
+    },
+    {
+      "id": "is2022051jaJPsrc",
+      "title": "IS 2022.05.1 ja-JP",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/ja-JP/2022.05.1"
     }
   ]
 }
