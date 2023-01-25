@@ -43,6 +43,8 @@ import { Sidebar } from '../model/entity/Sidebar';
 import { getConfigFile, listItems } from './s3Controller';
 import { runningInDevMode } from './utils/serverUtils';
 
+// FIXME: Use the query builder instead of find function to speed up find process.
+//  The query builder doesn't load relations.
 export async function getLegacyDocConfigs() {
   const { status, body } = await getAllEntities(Doc.name);
   const dbDocs: Doc[] = body;
@@ -493,7 +495,7 @@ export async function putPageConfigsInDatabase() {
       );
     } else {
       localLandingPagesConfigDir = resolve(
-        `${__dirname}/../legacyConfig/landingPages`
+        `${__dirname}/../legacyConfig/pages`
       );
       const getLegacyLandingPagesObjectsResult = await listItems(
         'legacy-landing-pages'
@@ -639,7 +641,7 @@ export async function putPageConfigsInDatabase() {
         sidebarItems.push(sidebarItemDocSaveResult.body);
 
         const testPageConfig = new Page();
-        testPageConfig.path = 'cloudProducts/elysian';
+        testPageConfig.path = 'cloudProducts/elysian/test-page-config';
         testPageConfig.title = 'Test Page Config';
         testPageConfig.component = 'page';
         testPageConfig.isInProduction = false;

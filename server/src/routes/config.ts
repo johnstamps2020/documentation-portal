@@ -23,6 +23,7 @@ import {
   putSourceConfigsInDatabase,
 } from '../controllers/legacyConfigController';
 
+// TODO: Review endpoints to see if we could use the query builder where possible?
 const router = Router();
 
 router.get('/', async function(req, res) {
