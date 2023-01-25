@@ -260,42 +260,18 @@ async function updateRefsInItem(
   rootPath: string
 ): Promise<Item> {
   if (legacyItem.id) {
-    const { status, body } = await findEntity(Doc.name, {
+    const getDocResult = await findEntity(Doc.name, {
       id: legacyItem.id,
     });
-    if (status === 200) {
-      dbItem.doc = body;
-    }
+    dbItem.doc = getDocResult.status === 200 ? getDocResult.body : undefined;
   } else if (legacyItem.page) {
     const pagePath = legacyItem.page;
     const pagePathWithRoot = path.join(rootPath, pagePath);
     const relativePagePath = getRelativePagePath(pagePathWithRoot);
-    const { status, body } = await findEntity(Page.name, {
+    const getPageResult = await findEntity(Page.name, {
       path: relativePagePath,
     });
-    if (status === 200) {
-      dbItem.page = body;
-    } else {
-      const pageConfigToCreate = legacyLandingPageConfigs.find(
-        i => i.path === pagePath
-      );
-      if (pageConfigToCreate) {
-        const dbPageConfig = new Page();
-        dbPageConfig.path = pagePath;
-        dbPageConfig.title = pageConfigToCreate.title;
-        const bgComponent = getBackgroundComponent(pagePath);
-        dbPageConfig.component = bgComponent
-          ? pageConfigToCreate.template + ` ${bgComponent}`
-          : pageConfigToCreate.template;
-        dbPageConfig.searchFilters = pageConfigToCreate.search_filters;
-        dbPageConfig.isInProduction = legacyItem.env
-          ? legacyItem.env.includes('prod')
-          : false;
-
-        const createdPage = await createOrUpdateEntity(Page.name, dbPageConfig);
-        dbItem.page = createdPage.body;
-      }
-    }
+    dbItem.page = getPageResult.status === 200 ? getPageResult.body : undefined;
   } else if (legacyItem.link) {
     dbItem.link = legacyItem.link;
   }
@@ -541,7 +517,7 @@ export async function putPageConfigsInDatabase() {
     const localLandingPagesConfig = readLocalPageConfigs(
       localLandingPagesConfigDir
     );
-    const dbPageConfigs = [];
+    const pageConfigs = [];
     for (const page of localLandingPagesConfig) {
       const dbLandingPage = new Page();
       const legacyPageAbsPath = page.path;
@@ -552,27 +528,38 @@ export async function putPageConfigsInDatabase() {
         ? page.template + ` ${bgComponent}`
         : page.template;
       dbLandingPage.isInProduction = false;
-      if (page.items) {
+      const pageSaveResult = await createOrUpdateEntity(
+        Page.name,
+        dbLandingPage
+      );
+      pageConfigs.push({ legacyPage: page, dbPage: pageSaveResult.body });
+    }
+    const dbPageConfigs = [];
+    for (const pageConfig of pageConfigs) {
+      const legacyPageConfig = pageConfig.legacyPage;
+      const dbPageConfig = pageConfig.dbPage;
+      const legacyPageAbsPath = legacyPageConfig.path;
+      if (legacyPageConfig.items) {
         const allPageItems = await getOrCreateItems(
           legacyPageAbsPath,
-          page.items,
+          legacyPageConfig.items,
           localLandingPagesConfig
         );
         const pageCategories = allPageItems.categories;
         const pageSubjects = allPageItems.subjects;
         const pageProductFamilyItems = allPageItems.productFamilyItems;
-        dbLandingPage.categories = [];
-        dbLandingPage.subjects = [];
-        dbLandingPage.productFamilyItems = [];
+        dbPageConfig.categories = [];
+        dbPageConfig.subjects = [];
+        dbPageConfig.productFamilyItems = [];
         if (pageCategories.length > 0) {
           for (const c of pageCategories) {
             const result = await createOrUpdateEntity(Category.name, c);
-            dbLandingPage.categories.push(result.body);
+            dbPageConfig.categories.push(result.body);
           }
         } else if (pageSubjects.length > 0) {
           for (const s of pageSubjects) {
             const result = await createOrUpdateEntity(Subject.name, s);
-            dbLandingPage.subjects.push(result.body);
+            dbPageConfig.subjects.push(result.body);
           }
         } else if (pageProductFamilyItems.length > 0) {
           for (const p of pageProductFamilyItems) {
@@ -580,11 +567,11 @@ export async function putPageConfigsInDatabase() {
               ProductFamilyItem.name,
               p
             );
-            dbLandingPage.productFamilyItems.push(result.body);
+            dbPageConfig.productFamilyItems.push(result.body);
           }
         }
       }
-      const legacyPageSelector = page.selector;
+      const legacyPageSelector = legacyPageConfig.selector;
       if (legacyPageSelector) {
         const pageSelector = new PageSelector();
         pageSelector.label = legacyPageSelector.label;
@@ -620,14 +607,14 @@ export async function putPageConfigsInDatabase() {
           PageSelector.name,
           pageSelector
         );
-        dbLandingPage.pageSelector = pageSelectorSaveResult.body;
+        dbPageConfig.pageSelector = pageSelectorSaveResult.body;
       }
-      const legacySearchFilters = page.search_filters;
+      const legacySearchFilters = legacyPageConfig.search_filters;
       if (legacySearchFilters) {
-        dbLandingPage.searchFilters = legacySearchFilters;
+        dbPageConfig.searchFilters = legacySearchFilters;
       }
       // Temporary sidebar for testing
-      if (page.path.endsWith('cloudProducts/elysian')) {
+      if (legacyPageConfig.path.endsWith('cloudProducts/elysian')) {
         const sidebarItems = [];
 
         const sidebarItemDoc = new SidebarItem();
@@ -676,11 +663,11 @@ export async function putPageConfigsInDatabase() {
           Sidebar.name,
           sidebar
         );
-        dbLandingPage.sidebar = sidebarSaveResult.body;
+        dbPageConfig.sidebar = sidebarSaveResult.body;
       }
       const pageSaveResult = await createOrUpdateEntity(
         Page.name,
-        dbLandingPage
+        dbPageConfig
       );
       dbPageConfigs.push(pageSaveResult.body);
     }
