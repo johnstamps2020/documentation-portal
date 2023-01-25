@@ -260,18 +260,27 @@ async function updateRefsInItem(
   rootPath: string
 ): Promise<Item> {
   if (legacyItem.id) {
-    const getDocResult = await findEntity(Doc.name, {
-      id: legacyItem.id,
-    });
-    dbItem.doc = getDocResult.status === 200 ? getDocResult.body : undefined;
+    const getDocResult = await AppDataSource.getRepository(Doc)
+      .createQueryBuilder('doc')
+      .where({
+        id: legacyItem.id,
+      })
+      .useIndex('docUrl-idx')
+      .getOne();
+    if (getDocResult) {
+      dbItem.doc = getDocResult;
+    }
   } else if (legacyItem.page) {
     const pagePath = legacyItem.page;
     const pagePathWithRoot = path.join(rootPath, pagePath);
     const relativePagePath = getRelativePagePath(pagePathWithRoot);
-    const getPageResult = await findEntity(Page.name, {
-      path: relativePagePath,
-    });
-    dbItem.page = getPageResult.status === 200 ? getPageResult.body : undefined;
+    const getPageResult = await AppDataSource.getRepository(Page)
+      .createQueryBuilder('page')
+      .where({ path: relativePagePath })
+      .getOne();
+    if (getPageResult) {
+      dbItem.page = getPageResult;
+    }
   } else if (legacyItem.link) {
     dbItem.link = legacyItem.link;
   }
