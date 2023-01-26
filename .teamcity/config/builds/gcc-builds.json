@@ -8,6 +8,11 @@
     },
     {
       "buildType": "yarn",
+      "docId": "repositorysettingsapi",
+      "srcId": "repositorysettingsapisrc"
+    },
+    {
+      "buildType": "yarn",
       "docId": "gccinternallatests",
       "srcId": "gccinternalsrc"
     },

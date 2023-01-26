@@ -9,6 +9,13 @@
       "branch": "master"
     },
     {
+      "id": "repositorysettingsapisrc",
+      "title": "Repository Settings API",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/scms-api-docs.git",
+      "branch": "master"
+    },
+    {
       "id": "cloudconsoleapisrc",
       "title": "Cloud Console API",
       "sourceType": "git",

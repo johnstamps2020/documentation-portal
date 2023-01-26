@@ -103,6 +103,10 @@
           "id": "cloudconsoleapi"
         },
         {
+          "label": "Repository Settings API",
+          "id": "repositorysettingsapi"
+        },
+        {
           "label": "Runtime Properties API",
           "id": "runtimepropertiesapi"
         }

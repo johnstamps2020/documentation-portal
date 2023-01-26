@@ -19,6 +19,23 @@
       "earlyAccess": false
     },
     {
+      "id": "repositorysettingsapi",
+      "title": "Repository Settings API",
+      "url": "cloud/console/repositorysettingsapi",
+      "metadata": {
+        "product": ["Guidewire Cloud Console"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "cloudconsoleapi",
       "title": "Cloud Console API",
       "url": "cloud/console/cloudconsoleapi",
