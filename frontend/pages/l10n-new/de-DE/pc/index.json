@@ -8,16 +8,16 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Guidewire-Kontaktmanagementhandbuch",
-          "link": "/l10n/de-DE/pc/2022.05/ContactMgmtGuide-DE.pdf"
-        },
-        {
           "label": "Anwendungshandbuch",
-          "link": "/l10n/de-DE/pc/2022.05/PC-AppGuide-DE.pdf"
+          "id": "ispc202205appdeDE"
         },
         {
           "label": "Konfigurationshandbuch",
-          "link": "/l10n/de-DE/pc/2022.05/PC-ConfigGuide-DE.pdf"
+          "id": "ispc202205configdeDE"
+        },
+        {
+          "label": "Guidewire-Kontaktmanagementhandbuch",
+          "id": "is202205contactdeDE"
         }
       ]
     },

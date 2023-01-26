@@ -1,0 +1,61 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "IS-CM-Cloud-Release.ditaval",
+      "root": "ContactMgmtGuide.ditamap",
+      "srcId": "is202205deDEsrc",
+      "docId": "is202205contactdeDE",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "BC-AppGuide.ditamap",
+      "srcId": "is202205deDEsrc",
+      "docId": "isbc202205appdeDE",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "ConfigGuide.ditamap",
+      "srcId": "is202205deDEsrc",
+      "docId": "isbc202205configdeDE",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "CC-AppGuide.ditamap",
+      "srcId": "is202205deDEsrc",
+      "docId": "iscc202205appdeDE",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "ConfigGuide.ditamap",
+      "srcId": "is202205deDEsrc",
+      "docId": "iscc202205configdeDE",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "PC-AppGuide.ditamap",
+      "srcId": "is202205deDEsrc",
+      "docId": "ispc202205appdeDE",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "ConfigGuide.ditamap",
+      "srcId": "is202205deDEsrc",
+      "docId": "ispc202205configdeDE",
+      "indexRedirect": true
+    }
+  ]
+}

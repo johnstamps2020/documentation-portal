@@ -1,0 +1,131 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "is202205contactdeDE",
+      "title": "Contact Management de-DE",
+      "url": "cloud/is/de-DE/202205/contact",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202205appdeDE",
+      "title": "Application Guide de-DE",
+      "url": "cloud/bc/de-DE/202205/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202205configdeDE",
+      "title": "Configuration de-DE",
+      "url": "cloud/bc/de-DE/202205/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202205appdeDE",
+      "title": "Application Guide de-DE",
+      "url": "cloud/cc/de-DE/202205/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202205configdeDE",
+      "title": "Configuration de-DE",
+      "url": "cloud/cc/de-DE/202205/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202205appdeDE",
+      "title": "Application Guide de-DE",
+      "url": "cloud/pc/de-DE/202205/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202205configdeDE",
+      "title": "Configuration de-DE",
+      "url": "cloud/pc/de-DE/202205/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

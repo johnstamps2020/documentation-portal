@@ -9,15 +9,15 @@
       "items": [
         {
           "label": "Anwendungshandbuch",
-          "link": "/l10n/de-DE/cc/2022.05/CC-AppGuide-DE.pdf"
+          "id": "iscc202205appdeDE"
         },
         {
           "label": "Konfigurationshandbuch",
-          "link": "/l10n/de-DE/cc/2022.05/CC-ConfigGuide-DE.pdf"
+          "id": "iscc202205configdeDE"
         },
         {
           "label": "Guidewire-Kontaktmanagementhandbuch",
-          "link": "/l10n/de-DE/cc/2022.05/ContactMgmtGuide-DE.pdf"
+          "id": "is202205contactdeDE"
         }
       ]
     },
