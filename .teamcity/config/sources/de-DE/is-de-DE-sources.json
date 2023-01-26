@@ -2,6 +2,13 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "is202205deDEsrc",
+      "title": "IS 2022.05.1 de-DE",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/de-DE/2022.05.1"
+    },
+    {
       "id": "is202111deDEsrc",
       "title": "IS 2021.11.2 de-DE",
       "sourceType": "git",
