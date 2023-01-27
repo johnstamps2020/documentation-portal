@@ -9,7 +9,11 @@
       "items": [
         {
           "label": "Guía de aplicaciones",
-          "link": "/l10n/es-LA/bc/2021.11/BC-AppGuide-ESLA.pdf"
+          "id": "isbc202111appes419"
+        },
+        {
+          "label": "Guía de administración de contactos de Guidewire",
+          "id": "is202111contactes419"
         }
       ]
     },
