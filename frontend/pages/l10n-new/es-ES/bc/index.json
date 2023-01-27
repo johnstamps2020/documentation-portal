@@ -9,11 +9,15 @@
       "items": [
         {
           "label": "Guía de la aplicación",
-          "link": "/l10n/es-ES/bc/2022.05/BC-AppGuide_es-ES.pdf"
+          "id": "isbc202205appesES"
         },
         {
           "label": "Guía de configuración",
-          "link": "/l10n/es-ES/bc/2022.05/BC-ConfigGuide_es-ES.pdf"
+          "id": "isbc202205configesES"
+        },
+        {
+          "label": "Guía de gestión de contactos de Guidewire",
+          "id": "is202205contactesES"
         }
       ]
     },
