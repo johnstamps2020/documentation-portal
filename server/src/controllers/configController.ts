@@ -84,24 +84,25 @@ export async function getBreadcrumbs(pagePath: string): Promise<ApiResponse> {
 export async function getEntity(reqObj: Request) {
   const { repo } = reqObj.params;
   const options = reqObj.query;
-  const operationResult = await findEntity(repo, options);
-  if (operationResult.status === 200) {
+  const result = await findEntity(repo, options);
+  if (result.status === 200) {
     const userIsAllowedToAccessResource = await isUserAllowedToAccessResource(
       reqObj,
-      operationResult.body?.public || false,
-      operationResult.body?.internal || false
+      result.body?.public || false,
+      result.body?.internal || false
     );
     if (userIsAllowedToAccessResource.status === 200) {
-      return operationResult;
+      return result;
     }
     return userIsAllowedToAccessResource;
   }
-  return operationResult;
+  return result;
 }
 
 export async function findEntity(
-  repo: string,
-  options: FindOptionsWhere<any>
+  repoName: string,
+  options: FindOptionsWhere<any>,
+  loadRelations: boolean = true
 ): Promise<ApiResponse> {
   try {
     if (!optionsAreValid(options)) {
@@ -112,15 +113,20 @@ export async function findEntity(
         },
       };
     }
-    const operationResult = await AppDataSource.manager.findOneBy(
-      repo,
-      options
-    );
-    if (!operationResult) {
+    let result;
+    if (loadRelations) {
+      result = await AppDataSource.manager.findOneBy(repoName, options);
+    } else {
+      result = await AppDataSource.getRepository(repoName)
+        .createQueryBuilder(repoName)
+        .where(options)
+        .getOne();
+    }
+    if (!result) {
       return {
         status: 404,
         body: {
-          message: `Did not find an entity in ${repo} for the following query: ${JSON.stringify(
+          message: `Did not find an entity in ${repoName} for the following query: ${JSON.stringify(
             options
           )}`,
         },
@@ -128,7 +134,7 @@ export async function findEntity(
     }
     return {
       status: 200,
-      body: operationResult,
+      body: result,
     };
   } catch (err) {
     return {
@@ -138,20 +144,20 @@ export async function findEntity(
   }
 }
 
-export async function getAllEntities(repo: string): Promise<ApiResponse> {
+export async function getAllEntities(repoName: string): Promise<ApiResponse> {
   try {
-    const operationResult = await AppDataSource.manager.find(repo);
-    if (!operationResult) {
+    const result = await AppDataSource.manager.find(repoName);
+    if (!result) {
       return {
         status: 404,
         body: {
-          message: `Did not find any entities in ${repo}`,
+          message: `Did not find any entities in ${repoName}`,
         },
       };
     }
     return {
       status: 200,
-      body: operationResult,
+      body: result,
     };
   } catch (err) {
     return {
@@ -162,7 +168,7 @@ export async function getAllEntities(repo: string): Promise<ApiResponse> {
 }
 
 export async function createOrUpdateEntity(
-  repo: string,
+  repoName: string,
   options: {}
 ): Promise<ApiResponse> {
   try {
@@ -174,10 +180,10 @@ export async function createOrUpdateEntity(
         },
       };
     }
-    const operationResult = await AppDataSource.manager.save(repo, options);
+    const result = await AppDataSource.manager.save(repoName, options);
     return {
       status: 200,
-      body: operationResult,
+      body: result,
     };
   } catch (err) {
     return {
@@ -188,7 +194,7 @@ export async function createOrUpdateEntity(
 }
 
 export async function deleteEntity(
-  repo: string,
+  repoName: string,
   options: FindOneAndDeleteOptions
 ): Promise<ApiResponse> {
   try {
@@ -200,10 +206,13 @@ export async function deleteEntity(
         },
       };
     }
-    const operationResult = await AppDataSource.manager.delete(repo, options);
+    const result = await AppDataSource.manager.delete(
+      repoName,
+      options
+    );
     return {
       status: 200,
-      body: operationResult,
+      body: result,
     };
   } catch (err) {
     return {

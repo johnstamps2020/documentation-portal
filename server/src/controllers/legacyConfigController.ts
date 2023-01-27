@@ -262,26 +262,25 @@ async function updateRefsInItem(
   rootPath: string
 ): Promise<Item> {
   if (legacyItem.id) {
-    const getDocResult = await AppDataSource.getRepository(Doc)
-      .createQueryBuilder('doc')
-      .where({
-        id: legacyItem.id,
-      })
-      .useIndex('docUrl-idx')
-      .getOne();
-    if (getDocResult) {
-      dbItem.doc = getDocResult;
+    const getDocResult = await findEntity(
+      Doc.name,
+      { id: legacyItem.id },
+      false
+    );
+    if (getDocResult.status === 200) {
+      dbItem.doc = getDocResult.body;
     }
   } else if (legacyItem.page) {
     const pagePath = legacyItem.page;
     const pagePathWithRoot = path.join(rootPath, pagePath);
     const relativePagePath = getRelativePagePath(pagePathWithRoot);
-    const getPageResult = await AppDataSource.getRepository(Page)
-      .createQueryBuilder('page')
-      .where({ path: relativePagePath })
-      .getOne();
-    if (getPageResult) {
-      dbItem.page = getPageResult;
+    const getPageResult = await findEntity(
+      Page.name,
+      { path: relativePagePath },
+      false
+    );
+    if (getPageResult.status === 200) {
+      dbItem.page = getPageResult.body;
     }
   } else if (legacyItem.link) {
     dbItem.link = legacyItem.link;
@@ -546,6 +545,7 @@ export async function putPageConfigsInDatabase() {
       pageConfigs.push({ legacyPage: page, dbPage: pageSaveResult.body });
     }
     const dbPageConfigs = [];
+    const failedDbPageConfigs = [];
     for (const pageConfig of pageConfigs) {
       const legacyPageConfig = pageConfig.legacyPage;
       const dbPageConfig = pageConfig.dbPage;
@@ -676,11 +676,22 @@ export async function putPageConfigsInDatabase() {
         );
         dbPageConfig.sidebar = sidebarSaveResult.body;
       }
-      const pageSaveResult = await createOrUpdateEntity(
-        Page.name,
-        dbPageConfig
-      );
-      dbPageConfigs.push(pageSaveResult.body);
+      const result = await createOrUpdateEntity(Page.name, dbPageConfig);
+      if (result.status === 200) {
+        dbPageConfigs.push(result.body);
+      } else {
+        failedDbPageConfigs.push(result.body);
+      }
+    }
+    if (failedDbPageConfigs.length > 0) {
+      return {
+        status: 206,
+        body: {
+          message: 'Unable to load some of the pages to the database',
+          failureDetails: failedDbPageConfigs,
+          loadedSourceConfigs: dbPageConfigs,
+        },
+      };
     }
     return {
       status: 200,
@@ -718,7 +729,7 @@ export async function putSourceConfigsInDatabase(): Promise<{
         return {
           status: 404,
           body: {
-            message: `Cannot put doc config in DB: Problem getting the doc config file from S3 (${getSourcesConfigResult})`,
+            message: `Cannot put source config in DB: Problem getting the source config file from S3 (${getSourcesConfigResult})`,
           },
         };
       }
@@ -726,6 +737,7 @@ export async function putSourceConfigsInDatabase(): Promise<{
 
     const localSourcesConfig = readLocalSourceConfigs(localSourcesConfigDir);
     const dbSourceConfigs = [];
+    const failedDbSourceConfigs = [];
     for await (const source of localSourcesConfig) {
       const dbSource = new Source();
       dbSource.id = source.id;
@@ -737,8 +749,22 @@ export async function putSourceConfigsInDatabase(): Promise<{
       dbSource.exportFrequency = source.exportFrequency;
       dbSource.pollInterval = source.pollInterval;
 
-      const saveResult = await createOrUpdateEntity(Source.name, dbSource);
-      dbSourceConfigs.push(saveResult.body);
+      const result = await createOrUpdateEntity(Source.name, dbSource);
+      if (result.status === 200) {
+        dbSourceConfigs.push(result.body);
+      } else {
+        failedDbSourceConfigs.push(result.body);
+      }
+    }
+    if (failedDbSourceConfigs.length > 0) {
+      return {
+        status: 206,
+        body: {
+          message: 'Unable to load some of the sources to the database',
+          failureDetails: failedDbSourceConfigs,
+          loadedSourceConfigs: dbSourceConfigs,
+        },
+      };
     }
     return {
       status: 200,
@@ -761,9 +787,13 @@ async function getOrCreateEntities(
 ) {
   const items = [];
   for (const i of legacyItems) {
-    const { status, body } = await findEntity(repoName, {
-      [mainKey]: i,
-    });
+    const { status, body } = await findEntity(
+      repoName,
+      {
+        [mainKey]: i,
+      },
+      false
+    );
     if (status === 404) {
       const { status, body } = await createOrUpdateEntity(repoName, {
         [mainKey]: i,
@@ -787,15 +817,27 @@ async function createProductEntities(
 ): Promise<Product[]> {
   const dbDocProducts = [];
   for (const productConfig of productConfigs) {
-    const productName = await findEntity(ProductName.name, {
-      name: productConfig.productName,
-    });
-    const platformName = await findEntity(ProductPlatform.name, {
-      name: productConfig.platformName,
-    });
-    const versionName = await findEntity(ProductVersion.name, {
-      name: productConfig.versionName,
-    });
+    const productName = await findEntity(
+      ProductName.name,
+      {
+        name: productConfig.productName,
+      },
+      false
+    );
+    const platformName = await findEntity(
+      ProductPlatform.name,
+      {
+        name: productConfig.platformName,
+      },
+      false
+    );
+    const versionName = await findEntity(
+      ProductVersion.name,
+      {
+        name: productConfig.versionName,
+      },
+      false
+    );
     const productEntitySaveResult = await createOrUpdateEntity(Product.name, {
       name: productName.body,
       platform: platformName.body,
@@ -808,9 +850,13 @@ async function createProductEntities(
 
 async function addDocBuild(buildConfig: legacyBuildConfig) {
   const docBuild = new Build();
-  const matchingBuildSrc = await findEntity(Source.name, {
-    id: buildConfig.srcId,
-  });
+  const matchingBuildSrc = await findEntity(
+    Source.name,
+    {
+      id: buildConfig.srcId,
+    },
+    false
+  );
   docBuild.type = buildConfig.buildType;
   docBuild.root = buildConfig.root;
   docBuild.filter = buildConfig.filter;
@@ -875,6 +921,7 @@ export async function putDocConfigsInDatabase(): Promise<{
     const localDocsConfig = readLocalDocConfigs(localDocsConfigDir);
     const localBuildsConfig = readLocalBuildConfigs(localBuildsConfigDir);
     const dbDocConfigs = [];
+    const failedDbDocConfigs = [];
     for await (const doc of localDocsConfig) {
       const dbDoc = new Doc();
       dbDoc.id = doc.id;
@@ -938,10 +985,23 @@ export async function putDocConfigsInDatabase(): Promise<{
         dbDoc.build = await addDocBuild(matchingBuild);
       }
 
-      const saveResult = await createOrUpdateEntity(Doc.name, dbDoc);
-      dbDocConfigs.push(saveResult.body);
+      const result = await createOrUpdateEntity(Doc.name, dbDoc);
+      if (result.status === 200) {
+        dbDocConfigs.push(result.body);
+      } else {
+        failedDbDocConfigs.push(result.body);
+      }
     }
-
+    if (failedDbDocConfigs.length > 0) {
+      return {
+        status: 206,
+        body: {
+          message: 'Unable to load some of the docs to the database',
+          failureDetails: failedDbDocConfigs,
+          loadedSourceConfigs: dbDocConfigs,
+        },
+      };
+    }
     return {
       status: 200,
       body: dbDocConfigs,
