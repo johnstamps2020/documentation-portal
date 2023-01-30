@@ -622,58 +622,109 @@ export async function putPageConfigsInDatabase() {
       if (legacySearchFilters) {
         dbPageConfig.searchFilters = legacySearchFilters;
       }
-      // Temporary sidebar for testing
-      if (legacyPageConfig.path.endsWith('cloudProducts/elysian')) {
-        const sidebarItems = [];
-
-        const sidebarItemDoc = new SidebarItem();
-        const docResponse = await findEntity(Doc.name, {
-          id: 'amstcccounterfraud',
-        });
-        sidebarItemDoc.label = 'Counter Fraud ClaimCenter';
-        sidebarItemDoc.doc = docResponse.body;
-        const sidebarItemDocSaveResult = await createOrUpdateEntity(
-          SidebarItem.name,
-          sidebarItemDoc
-        );
-        sidebarItems.push(sidebarItemDocSaveResult.body);
-
-        const testPageConfig = new Page();
-        testPageConfig.path = 'cloudProducts/elysian/test-page-config';
-        testPageConfig.title = 'Test Page Config';
-        testPageConfig.component = 'page';
-        testPageConfig.isInProduction = false;
-        const createdPage = await createOrUpdateEntity(
+      // Sidebars
+      if (
+        [
+          'cloudProducts/flaine',
+          'cloudProducts/elysian',
+          'cloudProducts/dobson',
+          'cloudProducts/cortina',
+          'cloudProducts/banff',
+          'cloudProducts/aspen',
+        ].some(p => legacyPageConfig.path.endsWith(p))
+      ) {
+        const guidewireTestingSidebarItem = new SidebarItem();
+        const guidewireTestingPageResult = await findEntity(
           Page.name,
-          testPageConfig
+          {
+            path: 'testingFramework/elysian',
+          },
+          false
         );
-        const sidebarItemPage = new SidebarItem();
-        sidebarItemPage.label = 'API References';
-        sidebarItemPage.page = createdPage.body;
-        const sidebarItemPageSaveResult = await createOrUpdateEntity(
+        guidewireTestingSidebarItem.label = 'Guidewire Testing';
+        guidewireTestingSidebarItem.page = guidewireTestingPageResult.body;
+        const guidewireTestingSidebarItemSaveResult = await createOrUpdateEntity(
           SidebarItem.name,
-          sidebarItemPage
+          guidewireTestingSidebarItem
         );
-        sidebarItems.push(sidebarItemPageSaveResult.body);
 
-        const sidebarItemLink = new SidebarItem();
-        sidebarItemLink.link = '/alive';
-        sidebarItemLink.label = 'Alive';
-        const sidebarItemLinkSaveResult = await createOrUpdateEntity(
-          SidebarItem.name,
-          sidebarItemLink
+        const apiReferencesSidebarItem = new SidebarItem();
+        const apiReferencesPageResult = await findEntity(
+          Page.name,
+          {
+            path: 'apiReferences/flaine',
+          },
+          false
         );
-        sidebarItems.push(sidebarItemLinkSaveResult.body);
+        apiReferencesSidebarItem.label = 'API References';
+        apiReferencesSidebarItem.page = apiReferencesPageResult.body;
+        const apiReferencesSidebarItemSaveResult = await createOrUpdateEntity(
+          SidebarItem.name,
+          apiReferencesSidebarItem
+        );
+
+        const cloudStandardsSidebarItem = new SidebarItem();
+        const cloudStandardsDocResult = await findEntity(
+          Doc.name,
+          {
+            id: 'standardsdraft',
+          },
+          false
+        );
+        cloudStandardsSidebarItem.label = 'Cloud Standards';
+        cloudStandardsSidebarItem.doc = cloudStandardsDocResult.body;
+        const cloudStandardsSidebarItemDocSaveResult = await createOrUpdateEntity(
+          SidebarItem.name,
+          cloudStandardsSidebarItem
+        );
+
+        const upgradeDiffsReportsSidebarItem = new SidebarItem();
+        upgradeDiffsReportsSidebarItem.link = '/upgradediffs';
+        upgradeDiffsReportsSidebarItem.label = 'Upgrade Diff Reports';
+        const upgradeDiffsReportsSidebarItemSaveResult = await createOrUpdateEntity(
+          SidebarItem.name,
+          upgradeDiffsReportsSidebarItem
+        );
+
+        const internalDocsSidebarItem = new SidebarItem();
+        internalDocsSidebarItem.link = '/internal-docs';
+        internalDocsSidebarItem.label = 'Internal docs';
+        const internalDocsSidebarItemSaveResult = await createOrUpdateEntity(
+          SidebarItem.name,
+          internalDocsSidebarItem
+        );
 
         const sidebar = new Sidebar();
         sidebar.label = 'Implementation resources';
-        sidebar.sidebarItems = sidebarItems;
+        if (legacyPageConfig.path.endsWith('cloudProducts/flaine')) {
+          sidebar.sidebarItems = [
+            cloudStandardsSidebarItemDocSaveResult.body,
+            upgradeDiffsReportsSidebarItemSaveResult.body,
+            internalDocsSidebarItemSaveResult.body,
+          ];
+        } else if (legacyPageConfig.path.endsWith('cloudProducts/elysian')) {
+          sidebar.sidebarItems = [
+            guidewireTestingSidebarItemSaveResult.body,
+            apiReferencesSidebarItemSaveResult.body,
+            cloudStandardsSidebarItemDocSaveResult.body,
+            upgradeDiffsReportsSidebarItemSaveResult.body,
+            internalDocsSidebarItemSaveResult.body,
+          ];
+        } else {
+          sidebar.sidebarItems = [
+            apiReferencesSidebarItemSaveResult.body,
+            cloudStandardsSidebarItemDocSaveResult.body,
+            upgradeDiffsReportsSidebarItemSaveResult.body,
+            internalDocsSidebarItemSaveResult.body,
+          ];
+        }
         const sidebarSaveResult = await createOrUpdateEntity(
           Sidebar.name,
           sidebar
         );
         dbPageConfig.sidebar = sidebarSaveResult.body;
       }
+
       const result = await createOrUpdateEntity(Page.name, dbPageConfig);
       if (result.status === 200) {
         dbPageConfigs.push(result.body);
