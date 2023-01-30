@@ -146,7 +146,8 @@
         },
         {
           "label": "Jutro Digital Platform (Early Access)",
-          "page": "jutroDigitalPlatform"
+          "page": "jutroDigitalPlatform",
+          "env": ["staging"]
         },
         {
           "label": "Guidewire Testing",
