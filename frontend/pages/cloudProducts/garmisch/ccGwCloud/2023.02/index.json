@@ -1,0 +1,202 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "ClaimCenter for Guidewire Cloud 2023.02",
+  "template": "page",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Garmisch (2023.02)",
+    "items": [
+      {
+        "label": "Flaine (2022.09)",
+        "page": "../../../flaine/ccGwCloud/2022.09"
+      },
+      {
+        "label": "Elysian (2022.05)",
+        "page": "../../../elysian/ccGwCloud/2022.05"
+      },
+      {
+        "label": "Dobson (2021.11)",
+        "page": "../../../dobson/ccGwCloud/2021.11"
+      },
+      {
+        "label": "Cortina (2021.04)",
+        "page": "../../../cortina/claimCenterCloud/ccGwCloud/2021.04"
+      },
+      {
+        "label": "Banff (2020.11)",
+        "page": "../../../banff/claimCenterCloud/ccGwCloud/2020.11"
+      },
+      {
+        "label": "Aspen (2020.05)",
+        "page": "../../../aspen/claimCenterCloud"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "iscc202302releasenotes"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Developer Setup",
+          "id": "iscc202302devsetup"
+        },
+        {
+          "label": "Developer Setup (Internal only)",
+          "id": "isccgarmischgwdevsetup"
+        },
+        {
+          "label": "Update",
+          "id": "iscc202302update"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools450"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools Compatibility",
+          "id": "isupgradecompatibility"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "iscc202302app"
+        },
+        {
+          "label": "Contact Management",
+          "id": "is202302contact"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "iscc202302admin"
+        },
+        {
+          "label": "Administration (Internal only)",
+          "id": "isccgarmischgwadmin"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "iscc202302dataarchiving"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration",
+          "id": "iscc202302config"
+        },
+        {
+          "label": "Globalization",
+          "id": "iscc202302global"
+        },
+        {
+          "label": "Gosu Rules",
+          "id": "iscc202302rules"
+        },
+        {
+          "label": "APD for Claims (Early Access)",
+          "id": "apdclaims"
+        },
+        {
+          "label": "Claims Intake FNOL Template (Early Access)",
+          "id": "is202302fnoltemplate"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Overview of Cloud Integration",
+          "id": "is202302integoverview"
+        },
+        {
+          "label": "App Events",
+          "id": "appeventsdev"
+        },
+        {
+          "label": "ClaimCenter Cloud API Consumer Guide",
+          "id": "iscc202302apibf"
+        },
+        {
+          "label": "ClaimCenter Cloud API Developer Guide",
+          "id": "iscc202302apica"
+        },
+        {
+          "label": "ClaimCenter Cloud API Reference",
+          "id": "ccapirefgarmisch"
+        },
+        {
+          "label": "ContactManager Cloud API Consumer Guide",
+          "id": "iscc202302apicm"
+        },
+        {
+          "label": "Integration Gateway",
+          "id": "integgatewaydevlatest"
+        },
+        {
+          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
+          "id": "iscc202302integ"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "iscc202302restapifw"
+        },
+        {
+          "label": "REST API Client",
+          "id": "isrestapiclientguide"
+        },
+        {
+          "label": "Webhooks API Reference",
+          "id": "webhooksapinext"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "gosureflatest"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "gwglossary"
+        }
+      ]
+    }
+  ]
+}
