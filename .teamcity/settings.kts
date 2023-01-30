@@ -23,6 +23,7 @@ project {
         vcsRoot(it)
     }
     vcsRoot(GwVcsRoots.DocumentationPortalGitVcsRoot)
+    vcsRoot(GwVcsRoots.DitaOtPluginsVcsRoot)
     subProject(Database.rootProject)
     subProject(Runners.rootProject)
     subProject(Docs.rootProject)
