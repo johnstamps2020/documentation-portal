@@ -63,7 +63,8 @@ enum class GwDitaOutputFormats(val formatName: String) {
     WEBHELP_WITH_PDF("webhelp_with_pdf"),
     SINGLEHTML("singlehtml"),
     DITA("dita"),
-    HTML5("html5")
+    HTML5("html5"),
+    HTML5_WITH_PDF("html5_with_pdf")
 }
 
 enum class GwConfigParams(val paramValue: String) {
@@ -734,10 +735,11 @@ object Docs {
                     "",
                     "Output format",
                     options = listOf(
-                        "Webhelp" to GwDitaOutputFormats.WEBHELP.formatName,
                         "HTML5" to GwDitaOutputFormats.HTML5.formatName,
+                        "HTML5 with PDF" to GwDitaOutputFormats.HTML5_WITH_PDF.formatName,
                         "PDF" to GwDitaOutputFormats.PDF.formatName,
-                        "Webhelp with PDF" to GwDitaOutputFormats.WEBHELP_WITH_PDF.formatName,
+                        "Webhelp (Deprecated)" to GwDitaOutputFormats.WEBHELP.formatName,
+                        "Webhelp with PDF (Deprecated)" to GwDitaOutputFormats.WEBHELP_WITH_PDF.formatName,
                         "Single-page HTML" to GwDitaOutputFormats.SINGLEHTML.formatName
                     ),
                     display = ParameterDisplay.PROMPT,
@@ -757,7 +759,8 @@ object Docs {
                     GwDitaOutputFormats.PDF.formatName,
                     GwDitaOutputFormats.WEBHELP_WITH_PDF.formatName,
                     GwDitaOutputFormats.SINGLEHTML.formatName,
-                    GwDitaOutputFormats.HTML5.formatName
+                    GwDitaOutputFormats.HTML5.formatName,
+                    GwDitaOutputFormats.HTML5_WITH_PDF.formatName
                 )) {
                     val step = GwBuildSteps.createBuildDitaProjectForBuildsStep(
                         format,
@@ -4741,6 +4744,21 @@ object GwBuildSteps {
                     commandParams.add(Pair("--gw-offline-webhelp", "yes"))
                 }
             }
+
+            GwDitaOutputFormats.HTML5_WITH_PDF.formatName -> {
+                commandParams.add(Pair("--gw-base-url", publishPath))
+                commandParams.add(Pair("--gw-doc-id", docId))
+                commandParams.add(Pair("--gw-doc-title", docTitle))
+                commandParams.add(Pair("--generate.build.data", "yes"))
+                commandParams.add(Pair("--git.url", gitUrl))
+                commandParams.add(Pair("--git.branch", gitBranch))
+                commandParams.add(Pair("-f", "html5-Guidewire"))
+                commandParams.add(Pair("--args.rellinks", "nofamily"))
+                commandParams.add(Pair("--build.pdfs", "yes"))
+                if (forOfflineUse) {
+                    commandParams.add(Pair("--gw-offline-webhelp", "yes"))
+                }
+            }
         }
 
         if (indexRedirect) {
@@ -4751,7 +4769,11 @@ object GwBuildSteps {
             ) {
                 commandParams.add(Pair("--create-index-redirect", "yes"))
                 commandParams.add(Pair("--webhelp.publication.toc.links", "all"))
-            } else if (outputFormat == GwDitaOutputFormats.HTML5.formatName) {
+            } else if (arrayOf(
+                GwDitaOutputFormats.HTML5.formatName,
+                GwDitaOutputFormats.HTML5_WITH_PDF.formatName,
+                ).contains(outputFormat)
+            ) {
                 commandParams.add(Pair("--create-index-redirect", "yes"))
             }
         }
@@ -4759,7 +4781,12 @@ object GwBuildSteps {
         val getDitavalCommand = Helpers.createGetDitavalCommandString(workingDir, buildFilter)
         val ditaBuildCommand = Helpers.getCommandString("dita", commandParams)
 
-        val dockerImageName = when (forOfflineUse && (outputFormat !== GwDitaOutputFormats.HTML5.formatName)) {
+        val dockerImageName = when (forOfflineUse && (arrayOf(
+                GwDitaOutputFormats.WEBHELP.formatName,
+                GwDitaOutputFormats.WEBHELP_WITH_PDF.formatName,
+                GwDitaOutputFormats.SINGLEHTML.formatName,
+                ).contains(outputFormat))
+            ) {
             true -> GwDockerImages.DITA_OT_3_4_1.imageUrl
             false -> GwDockerImages.DITA_OT_LATEST.imageUrl
         }
