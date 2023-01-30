@@ -87,6 +87,14 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
+          "label": "DataHub",
+          "page": "dhGwCloud/2023.02"
+        },
+        {
+          "label": "InfoCenter",
+          "page": "icGwCloud/2023.02"
+        },
+        {
           "label": "Explore",
           "page": "../explore/latest"
         },

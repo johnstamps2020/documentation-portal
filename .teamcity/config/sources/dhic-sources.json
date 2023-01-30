@@ -21,6 +21,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "release/2022.09-10.8"
+    },
+    {
+      "id": "dm202302109src",
+      "title": "DataManagement 2023.02 and 10.9.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "release/2023.02-10.9"
     }
   ]
 }
