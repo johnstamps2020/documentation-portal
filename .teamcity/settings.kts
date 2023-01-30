@@ -756,7 +756,8 @@ object Docs {
                     GwDitaOutputFormats.WEBHELP.formatName,
                     GwDitaOutputFormats.PDF.formatName,
                     GwDitaOutputFormats.WEBHELP_WITH_PDF.formatName,
-                    GwDitaOutputFormats.SINGLEHTML.formatName
+                    GwDitaOutputFormats.SINGLEHTML.formatName,
+                    GwDitaOutputFormats.HTML5.formatName
                 )) {
                     val step = GwBuildSteps.createBuildDitaProjectForBuildsStep(
                         format,
