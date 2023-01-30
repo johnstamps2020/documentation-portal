@@ -1,0 +1,25 @@
+@import 'headerButtons.css';
+
+#avatarButton {
+  background: url("../../images/icon-avatar.svg");
+  width: 31px;
+  height: 32px;
+}
+
+.avatarMenuName {
+  color: var(--clr-GW-BLACK);
+  font-size: 1rem;
+}
+
+.avatarMenuEmail {
+  color: var(--clr-GW-BLACKISH);
+  font-size: 0.9rem;
+}
+
+.avatarMenuLogout {
+  color: var(--clr-GW-BLACK) !important;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  padding: 4px 0;
+}

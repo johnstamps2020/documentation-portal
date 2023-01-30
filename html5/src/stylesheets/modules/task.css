@@ -1,0 +1,27 @@
+.tasklabel {
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+h4.sectiontitle.tasklabel {
+  font-weight: 600 !important;
+}
+
+ol.steps {
+  margin-top: 0.25rem;
+}
+
+li.stepexpand {
+  margin-bottom: 0.5em !important;
+  margin-top: 0.5em !important;
+}
+
+.itemgroup.stepresult {
+  margin-top: 0.5em;
+}
+
+li.substep,
+li.substepexpand {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}

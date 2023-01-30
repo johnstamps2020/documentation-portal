@@ -1,0 +1,60 @@
+@import '../stylesheets/modules/header.css';
+@import '../stylesheets/modules/html5vars.css';
+@import '../stylesheets/modules/fonts.css';
+@import '../stylesheets/modules/avatar.css';
+@import '../stylesheets/modules/footer.css';
+@import '../stylesheets/modules/searchBox.css';
+@import '../stylesheets/modules/skipNav.css';
+@import '../stylesheets/modules/versionSelector.css';
+@import '../stylesheets/modules/internal.css';
+@import '../stylesheets/modules/subjects.css';
+@import '../stylesheets//modules/twoColumns.css';
+
+body {
+  --header-height: 32px;
+  --body-height: calc(100vh - var(--header-height));
+  --items-width: 950px;
+  --sidebar-width: 350px;
+  --content-width: calc(var(--items-width) + var(--sidebar-width) + 2rem);
+}
+
+#mainContent {
+  min-height: var(--body-height);
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+main {
+  padding: 64px 32px;
+  background-color: var(--clr-GW-WHITE);
+  min-height: var(--body-height);
+}
+
+main:not(.fullWidth) .content {
+  padding: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.pageBody {
+  max-width: var(--content-width);
+  margin: auto;
+}
+
+.subject .topicref a {
+  text-decoration: none;
+  color: var(--GW-COLOR-BRAND-1);
+  font-family: var(--guidewire-font);
+  font-size: 1rem;
+}
+
+.pageHero h1 {
+  font-weight: 600;
+}
+
+.topicCategory {
+  background-color: yellow;
+}

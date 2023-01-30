@@ -57,9 +57,12 @@ enum class GwValidationModules(val validationName: String) {
 }
 
 enum class GwDitaOutputFormats(val formatName: String) {
-    WEBHELP("webhelp"), PDF("pdf"), WEBHELP_WITH_PDF("webhelp_with_pdf"), SINGLEHTML("singlehtml"), DITA("dita"), HTML5(
-        "html5"
-    )
+    WEBHELP("webhelp"),
+    PDF("pdf"),
+    WEBHELP_WITH_PDF("webhelp_with_pdf"),
+    SINGLEHTML("singlehtml"),
+    DITA("dita"),
+    HTML5("html5")
 }
 
 enum class GwConfigParams(val paramValue: String) {
@@ -731,6 +734,7 @@ object Docs {
                     "Output format",
                     options = listOf(
                         "Webhelp" to GwDitaOutputFormats.WEBHELP.formatName,
+                        "HTML5" to GwDitaOutputFormats.HTML5.formatName,
                         "PDF" to GwDitaOutputFormats.PDF.formatName,
                         "Webhelp with PDF" to GwDitaOutputFormats.WEBHELP_WITH_PDF.formatName,
                         "Single-page HTML" to GwDitaOutputFormats.SINGLEHTML.formatName
@@ -1655,6 +1659,8 @@ object Frontend {
             ).forEach {
                 buildType(createDeployHtml5DependenciesBuildType(it.envName))
             }
+
+            buildType(createDeployHtml5OfflineDependenciesBuildType())
         }
     }
 
@@ -1749,10 +1755,7 @@ object Frontend {
             triggers {
                 vcs {
                     triggerRules = """
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/public/scripts/**
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/public/stylesheets/**
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/public/fonts/**
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/src/html5home/**
+                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:html5/**
                             -:user=doctools:**
                             """.trimIndent()
                 }
@@ -1763,6 +1766,42 @@ object Frontend {
             }
         }
     }
+
+    private fun createDeployHtml5OfflineDependenciesBuildType(): BuildType {
+        val ditaOutPluginsCheckoutDir = "dita-ot-plugins"
+        return BuildType {
+            name = "Deploy HTML5 OFFLINE dependencies"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                root(GwVcsRoots.DitaOtPluginsVcsRoot, "+:.=>$ditaOutPluginsCheckoutDir")
+
+                branchFilter = "+:<default>"
+                cleanCheckout = true
+            }
+
+            steps {
+                step(GwBuildSteps.createBuildHtml5OfflineDependenciesStep())
+                step(GwBuildSteps.createDeployHtml5OfflineDependenciesStep("%teamcity.build.checkoutDir%/$ditaOutPluginsCheckoutDir"))
+            }
+
+            triggers {
+                vcs {
+                    triggerRules = """
+                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:html5/**
+                            -:user=doctools:**
+                            """.trimIndent()
+                }
+            }
+
+            features {
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                feature(GwBuildFeatures.GwSshAgentBuildFeature)
+            }
+        }
+    }
+
 
     private fun createDeployLandingPagesBuildType(deployEnv: String): BuildType {
         val pagesDir = "%teamcity.build.checkoutDir%/frontend/pages"
@@ -1963,6 +2002,7 @@ object Server {
             buildType(TestConfigSources)
             buildType(TestConfigBuilds)
             buildType(TestSettingsKts)
+            buildType(TestHtml5Dependencies)
             buildType(AuditNpmPackages)
             arrayOf(
                 GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
@@ -2039,6 +2079,30 @@ object Server {
             triggerRules = """
                 +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/settings.kts
                 +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+
+        features.feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+    })
+
+    private object TestHtml5Dependencies : BuildType({
+        name = "Test HTML5 dependencies"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        vcs {
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            cleanCheckout = true
+        }
+
+        steps {
+            step(GwBuildSteps.createBuildHtml5DependenciesStep())
+            step(GwBuildSteps.createBuildHtml5OfflineDependenciesStep())
+        }
+
+        triggers.vcs {
+            triggerRules = """
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:html5/**
                 -:user=doctools:**
             """.trimIndent()
         }
@@ -3961,7 +4025,7 @@ object GwBuildSteps {
                 config_deployer merge "${GwConfigParams.BUILDS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}"
             """.trimIndent()
         dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.imageUrl
-        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+        dockerImagePlatform = ImagePlatform.Linux
     })
 
     fun createUploadLegacyConfigsToS3BucketStep(deployEnv: String): ScriptBuildStep {
@@ -4671,7 +4735,9 @@ object GwBuildSteps {
                 commandParams.add(Pair("-f", "html5-Guidewire"))
                 commandParams.add(Pair("--args.rellinks", "nofamily"))
                 commandParams.add(Pair("--build.pdfs", if (buildPdfs) "yes" else "no"))
-
+                if (forOfflineUse) {
+                    commandParams.add(Pair("--gw-offline-webhelp", "yes"))
+                }
             }
         }
 
@@ -4724,51 +4790,62 @@ object GwBuildSteps {
         return ScriptBuildStep {
             name = "Build HTML5 dependencies"
             id = Helpers.createIdStringFromName(this.name)
-            workingDir = "server"
+            workingDir = "html5"
             scriptContent = """
                 #!/bin/bash
                 set -xe
                 
-                yarn
-                yarn build-html5-dependencies
-            """.trimIndent()
-            dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.imageUrl}:14.14.0"
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters = "--user 1000:1000"
-        }
-    }
-
-    fun createBuildHTML2PDFStep(
-        htmlFilesAbsoluteDir: String,
-        pdfLocale: String,
-        pdfOutputAbsolutePath: String,
-        docTitle: String,
-        docPortalAbsoluteDir: String,
-    ): ScriptBuildStep {
-        val workingDir = "$docPortalAbsoluteDir/html2pdf"
-        val scriptsDir = "$docPortalAbsoluteDir/server/static/html5/scripts"
-        return ScriptBuildStep {
-            name = "Build HTML2PDF"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash
-                
                 export EXIT_CODE=0
-                export HTML_FILES_DIR="$htmlFilesAbsoluteDir"
-                export SCRIPTS_DIR="$scriptsDir"
-                export PDF_LOCALE="$pdfLocale"
-                export PDF_OUTPUT_PATH="$pdfOutputAbsolutePath"
-                export DOC_TITLE="$docTitle"
                 
-                cd "$workingDir"
                 yarn
                 yarn build || EXIT_CODE=${'$'}?
                 
                 exit ${'$'}EXIT_CODE
             """.trimIndent()
-            dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.imageUrl}:17.6.0"
+            dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.imageUrl}:16.16.0"
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "--user 1000:1000"
+        }
+    }
+
+    fun createBuildHtml5OfflineDependenciesStep(): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Build HTML5 offline dependencies"
+            id = Helpers.createIdStringFromName(this.name)
+            workingDir = "html5"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                export EXIT_CODE=0
+                
+                yarn
+                yarn build-offline || EXIT_CODE=${'$'}?
+                
+                exit ${'$'}EXIT_CODE
+            """.trimIndent()
+            dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.imageUrl}:16.16.0"
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "--user 1000:1000"
+        }
+    }
+
+    fun createDeployHtml5OfflineDependenciesStep(ditaOtPath: String): ScriptBuildStep {
+        val targetPath = "$ditaOtPath/guidewire/com.guidewire.html5/scripts"
+        return ScriptBuildStep {
+            name = "Deploy HTML5 offline dependencies"
+            id = Helpers.createIdStringFromName(this.name)
+            workingDir = "html5"
+            scriptContent = """
+                #!/bin/bash
+                set -xe
+                
+                rsync -avu --delete ./build $targetPath
+                
+                git add .
+                git commit -m "Load the latest HTML5 scripts (%build.number%)"
+                git push -u origin main
+            """.trimIndent()
         }
     }
 
@@ -5165,6 +5242,12 @@ object GwVcsRoots {
     val UpgradeDiffsGitVcsRoot = createGitVcsRoot(
         Helpers.resolveRelativeIdFromIdString("Upgrade diffs git repo"),
         "ssh://git@stash.guidewire.com/docsources/upgradediffs.git",
+        "main",
+    )
+
+    val DitaOtPluginsVcsRoot = createGitVcsRoot(
+        Helpers.resolveRelativeIdFromIdString("DITA OT plugins repo"),
+        "ssh://git@stash.guidewire.com/doctools/dita-ot-plugins.git",
         "main",
     )
 

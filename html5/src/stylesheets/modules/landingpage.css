@@ -1,0 +1,47 @@
+.landingpage {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 288px);
+  column-gap: 24px;
+  row-gap: 32px;
+}
+
+@media screen and (max-width: 1270px) {
+  .landingpage {
+    grid-template-columns: 288px;
+  }
+}
+
+.landingpage > p {
+  grid-column: 1/3;
+  margin-block-start: -1.5rem;
+  margin-block-end: -1rem;
+}
+
+.landingpage > section {
+  padding: 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 4px;
+  border: 1px solid #d1d9e2;
+  box-shadow: 1px 1px 3px hsl(0deg 0% 0% / 20%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.landingpage > section > h2.sectiontitle {
+  font-size: 1.25rem;
+  border-bottom: 1px solid #d1d9e2;
+  padding-bottom: 0.5rem;
+  margin-top: 0 !important;
+}
+
+.landingpage > section > * {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+}

@@ -1,0 +1,40 @@
+main > article:first-of-type > h1:first-of-type,
+main > article:first-of-type > article.nested0:first-of-type > h1:first-of-type,
+main > article:first-of-type > article.nested0:first-of-type {
+    margin-top: 0 !important;
+}
+
+.p.seealso {
+  font-weight: 500;
+}
+
+.uicontrol,
+.wintitle {
+  font-weight: 600;
+}
+
+.stepsection {
+  font-weight: 600;
+}
+
+.parmname {
+  font-weight: normal !important;
+}
+
+.title .apiname,
+.title .cmdname,
+.title .codeph,
+.title .filepath,
+.title .msgph,
+.title .parmname,
+.title .uicontrol,
+.title .wintitle {
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+}
+
+#footerCenter {
+  font-size: 0.875rem;
+  font-weight: 600;
+}

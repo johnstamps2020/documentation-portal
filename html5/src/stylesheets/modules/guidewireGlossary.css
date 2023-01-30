@@ -1,0 +1,5 @@
+@import 'headerButtons.css';
+
+#guidewireGlossaryButton {
+  background: url("/images/icon-glossary.svg");
+}
