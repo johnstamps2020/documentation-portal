@@ -14,31 +14,28 @@ export default function LandingPageItem(item: Item) {
       alignItems="center"
       justifyContent="flex-start"
     >
-      {item.pagePath ? (
-        <Link component={RouterLink} to={`/${item.pagePath}`}>
+      {item.page ? (
+        <Link component={RouterLink} to={`/${item.page.path}`}>
           {item.label}
         </Link>
       ) : (
         <Link href={item.link || `/${item.doc?.url}`}>{item.label}</Link>
       )}
-      {/*FIXME: The icon should be also shown for page links. In the Item model, only the page path is loaded eagerly.
-          loading of the entire Page relation kills the site. We need to change the Item model not to load doc and page
-          eagerly and find another way to pass required info to this component.*/}
-      {item.doc?.internal && (
+      {(item.doc?.internal || item.page?.internal) && (
         <Tooltip
           title={<Typography>Guidewire internal content</Typography>}
           placement="right"
           arrow
         >
           <img
-            key={item.doc.id}
+            key={item.doc?.id || item.page?.title}
             src={internalLogo}
             alt="internal-document"
             height="20px"
             width="20px"
             style={{
               backgroundColor: "black",
-              borderRadius: "50%",
+              borderRadius: "50%"
             }}
           ></img>
         </Tooltip>

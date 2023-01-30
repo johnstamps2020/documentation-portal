@@ -81,6 +81,141 @@ export async function getBreadcrumbs(pagePath: string): Promise<ApiResponse> {
   }
 }
 
+export async function getPageData(reqObj: Request) {
+  const { path } = reqObj.query;
+  const pageQueryBuilder = await AppDataSource.getRepository(Page)
+    .createQueryBuilder('page')
+    .where({ path: path });
+  const result = await pageQueryBuilder
+    .leftJoinAndSelect('page.pageSelector', 'pageSelectorAlias')
+    .leftJoinAndSelect(
+      'pageSelectorAlias.pageSelectorItems',
+      'pageSelectorItemAlias'
+    )
+    .leftJoin('pageSelectorItemAlias.doc', 'pageSelectorItemDocAlias')
+    .addSelect([
+      'pageSelectorItemDocAlias.url',
+      'pageSelectorItemDocAlias.internal',
+      'pageSelectorItemDocAlias.public',
+      'pageSelectorItemDocAlias.earlyAccess',
+    ])
+    .leftJoin('pageSelectorItemAlias.page', 'pageSelectorItemPageAlias')
+    .addSelect([
+      'pageSelectorItemPageAlias.path',
+      'pageSelectorItemPageAlias.internal',
+      'pageSelectorItemPageAlias.public',
+      'pageSelectorItemPageAlias.earlyAccess',
+    ])
+    .leftJoinAndSelect('page.sidebar', 'sidebarAlias')
+    .leftJoinAndSelect('sidebarAlias.sidebarItems', 'sidebarItemAlias')
+    .leftJoin('sidebarItemAlias.doc', 'sidebarItemDocAlias')
+    .addSelect([
+      'sidebarItemDocAlias.url',
+      'sidebarItemDocAlias.internal',
+      'sidebarItemDocAlias.public',
+      'sidebarItemDocAlias.earlyAccess',
+    ])
+    .leftJoin('sidebarItemAlias.page', 'sidebarItemPageAlias')
+    .addSelect([
+      'sidebarItemPageAlias.path',
+      'sidebarItemPageAlias.internal',
+      'sidebarItemPageAlias.public',
+      'sidebarItemPageAlias.earlyAccess',
+    ])
+    .leftJoinAndSelect('page.categories', 'categoryAlias')
+    .leftJoinAndSelect('categoryAlias.categoryItems', 'categoryItemAlias')
+    .leftJoin('categoryItemAlias.doc', 'categoryItemDocAlias')
+    .addSelect([
+      'categoryItemDocAlias.url',
+      'categoryItemDocAlias.internal',
+      'categoryItemDocAlias.public',
+      'categoryItemDocAlias.earlyAccess',
+    ])
+    .leftJoin('categoryItemAlias.page', 'categoryItemPageAlias')
+    .addSelect([
+      'categoryItemPageAlias.path',
+      'categoryItemPageAlias.internal',
+      'categoryItemPageAlias.public',
+      'categoryItemPageAlias.earlyAccess',
+    ])
+    .leftJoinAndSelect('categoryAlias.subCategories', 'subCategoryAlias')
+    .leftJoinAndSelect(
+      'subCategoryAlias.subCategoryItems',
+      'subCategoryItemAlias'
+    )
+    .leftJoin('subCategoryItemAlias.doc', 'subCategoryItemDocAlias')
+    .addSelect([
+      'subCategoryItemDocAlias.url',
+      'subCategoryItemDocAlias.internal',
+      'subCategoryItemDocAlias.public',
+      'subCategoryItemDocAlias.earlyAccess',
+    ])
+    .leftJoin('subCategoryItemAlias.page', 'subCategoryItemPageAlias')
+    .addSelect([
+      'subCategoryItemPageAlias.path',
+      'subCategoryItemPageAlias.internal',
+      'subCategoryItemPageAlias.public',
+      'subCategoryItemPageAlias.earlyAccess',
+    ])
+    .leftJoinAndSelect('page.subjects', 'subjectAlias')
+    .leftJoinAndSelect('subjectAlias.subjectItems', 'subjectItemAlias')
+    .leftJoin('subjectItemAlias.doc', 'subjectItemDocAlias')
+    .addSelect([
+      'subjectItemDocAlias.url',
+      'subjectItemDocAlias.internal',
+      'subjectItemDocAlias.public',
+      'subjectItemDocAlias.earlyAccess',
+    ])
+    .leftJoin('subjectItemAlias.page', 'subjectItemPageAlias')
+    .addSelect([
+      'subjectItemPageAlias.path',
+      'subjectItemPageAlias.internal',
+      'subjectItemPageAlias.public',
+      'subjectItemPageAlias.earlyAccess',
+    ])
+    .leftJoinAndSelect('page.productFamilyItems', 'productFamilyItemAlias')
+    .leftJoin('productFamilyItemAlias.doc', 'productFamilyItemDocAlias')
+    .addSelect([
+      'productFamilyItemDocAlias.url',
+      'productFamilyItemDocAlias.internal',
+      'productFamilyItemDocAlias.public',
+      'productFamilyItemDocAlias.earlyAccess',
+    ])
+    .leftJoin('productFamilyItemAlias.page', 'productFamilyItemPageAlias')
+    .addSelect([
+      'productFamilyItemPageAlias.path',
+      'productFamilyItemPageAlias.internal',
+      'productFamilyItemPageAlias.public',
+      'productFamilyItemPageAlias.earlyAccess',
+    ])
+    .getOne();
+  if (!result) {
+    return {
+      status: 404,
+      body: { message: `Page data not found for path: ${path}` },
+    };
+  }
+  if (result) {
+    const userIsAllowedToAccessResource = await isUserAllowedToAccessResource(
+      reqObj,
+      result.public || false,
+      result.internal || false
+    );
+    if (userIsAllowedToAccessResource.status === 200) {
+      return {
+        status: 200,
+        body: result,
+      };
+    }
+    return userIsAllowedToAccessResource;
+  }
+
+  return {
+    status: 200,
+    body: result,
+  };
+}
+
 export async function getEntity(reqObj: Request) {
   const { repo } = reqObj.params;
   const options = reqObj.query;
@@ -206,10 +341,7 @@ export async function deleteEntity(
         },
       };
     }
-    const result = await AppDataSource.manager.delete(
-      repoName,
-      options
-    );
+    const result = await AppDataSource.manager.delete(repoName, options);
     return {
       status: 200,
       body: result,

@@ -8,6 +8,7 @@ import {
   getDocumentMetadataById,
   getEntity,
   getEnv,
+  getPageData,
   getRootBreadcrumb,
   getVersionSelector,
 } from '../controllers/configController';
@@ -23,7 +24,6 @@ import {
   putSourceConfigsInDatabase,
 } from '../controllers/legacyConfigController';
 
-// TODO: Review endpoints to see if we could use the query builder where possible?
 const router = Router();
 
 router.get('/', async function(req, res) {
@@ -121,6 +121,11 @@ router.get('/entity/doc/id', async function(req, res) {
 router.get('/entity/page/breadcrumbs', async function(req, res) {
   const { path } = req.query;
   const { status, body } = await getBreadcrumbs(path as string);
+  return res.status(status).json(body);
+});
+
+router.get('/entity/page/data', async function(req, res) {
+  const { status, body } = await getPageData(req);
   return res.status(status).json(body);
 });
 

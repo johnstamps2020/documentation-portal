@@ -43,8 +43,6 @@ import { Sidebar } from '../model/entity/Sidebar';
 import { getConfigFile, listItems } from './s3Controller';
 import { runningInDevMode } from './utils/serverUtils';
 
-// FIXME: Use the query builder instead of find function to speed up find process.
-//  The query builder doesn't load relations.
 export async function getLegacyDocConfigs() {
   const { status, body } = await getAllEntities(Doc.name);
   const dbDocs: Doc[] = body;

@@ -17,12 +17,9 @@ export abstract class Item {
   @Column()
   label: string;
 
-  @ManyToOne(() => Doc, { nullable: true, eager: true })
+  @ManyToOne(() => Doc, { nullable: true })
   @JoinTable()
   doc: Doc;
-
-  @Column({ nullable: true })
-  pagePath: string;
 
   @ManyToOne(() => Page, { nullable: true })
   @JoinColumn()

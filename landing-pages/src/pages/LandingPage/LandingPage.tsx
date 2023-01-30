@@ -24,7 +24,7 @@ export default function LandingPage() {
       try {
         setLoading(true);
         const response = await fetch(
-          `/safeConfig/entity/Page?path=${pagePathFromRouter}`
+          `/safeConfig/entity/page/data?path=${pagePathFromRouter}`
         );
         if (response.status === 401) {
           return navigate(
@@ -94,7 +94,7 @@ export default function LandingPage() {
         open={loading}
         sx={{
           color: "#fff",
-          zIndex: (theme: Theme) => theme.zIndex.drawer + 1,
+          zIndex: (theme: Theme) => theme.zIndex.drawer + 1
         }}
       />
     </Layout>
