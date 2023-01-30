@@ -1,0 +1,11 @@
+.twoCards div.items {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+}
+
+.twoCards div.items > .categoryCard {
+  min-width: 300px;
+  width: calc(50% - 8px);
+}

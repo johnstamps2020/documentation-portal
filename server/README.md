@@ -50,13 +50,14 @@ The attached `keti.json` contains application configuration. Use if if you want 
 To build the webpack bundle, run:
 
 ```
-yarn build-html5-dependencies
+cd html5
+yarn build
 ```
 
-To develop the HTML5 plugin, run:
+To develop the HTML5 plugin, in the `html5` folder run:
 
 ```
-yarn html5-watch
+yarn dev
 ```
 
 ## Local preview of webhelp
@@ -70,10 +71,10 @@ yarn html5-watch
    ```
    DOC_S3_URL=http://localhost:5000/
    ```
-1. In a separate terminal, run the Webpack watch script:
+1. In a separate terminal, run the Webpack dev script:
    ```
-   cd server
-   yarn html5-watch
+   cd html5
+   yarn dev
    ```
 1. In a separate terminal, run the server:
    ```

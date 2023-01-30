@@ -1,0 +1,38 @@
+{
+  "name": "html5",
+  "version": "1.0.0",
+  "description": "JS and CSS needed for HTML5 webhelp",
+  "main": "index.js",
+  "author": "doctools@guidewire.com",
+  "license": "UNLICENSED",
+  "private": true,
+  "packageManager": "yarn@3.3.1",
+  "scripts": {
+    "build": "webpack",
+    "build-offline": "BUILD_MODE=offline webpack",
+    "dev": "webpack --watch",
+    "dev-offline": "BUILD_MODE=offline webpack --watch"
+  },
+  "dependencies": {
+    "@doctools/gw-theme-classic": "2.0.42"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.20.12",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "9.1.0",
+    "babel-plugin-prismjs": "^2.1.0",
+    "css-loader": "^6.5.1",
+    "mini-css-extract-plugin": "^2.4.5",
+    "minimist": "^1.2.6",
+    "postcss": "^8.4.12",
+    "postcss-loader": "^6.2.1",
+    "postcss-preset-env": "^7.4.3",
+    "prismjs": "^1.27.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "style-loader": "^3.3.1",
+    "webpack": "5.74.0",
+    "webpack-cli": "4.10.0"
+  }
+}
