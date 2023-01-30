@@ -4759,7 +4759,7 @@ object GwBuildSteps {
         val getDitavalCommand = Helpers.createGetDitavalCommandString(workingDir, buildFilter)
         val ditaBuildCommand = Helpers.getCommandString("dita", commandParams)
 
-        val dockerImageName = when (forOfflineUse) {
+        val dockerImageName = when (forOfflineUse && (outputFormat !== GwDitaOutputFormats.HTML5.formatName)) {
             true -> GwDockerImages.DITA_OT_3_4_1.imageUrl
             false -> GwDockerImages.DITA_OT_LATEST.imageUrl
         }
