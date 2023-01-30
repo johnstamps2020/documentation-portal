@@ -2,14 +2,14 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "isbcflainegwadmin",
+      "id": "isbcgarmischgwadmin",
       "title": "Administration",
-      "url": "cloud/bc/flaine-gw/admin",
+      "url": "cloud/bc/garmisch-gw/admin",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
-        "version": ["GW-internal-Flaine"],
-        "release": ["Flaine"],
+        "version": ["GW-internal-Garmisch"],
+        "release": ["Garmisch"],
         "subject": ["Administration"]
       },
       "environments": ["staging"],
@@ -20,14 +20,14 @@
       "earlyAccess": false
     },
     {
-      "id": "isbcflainegwdevsetup",
+      "id": "isbcgarmischgwdevsetup",
       "title": "Developer Setup",
-      "url": "cloud/bc/flaine-gw/devsetup",
+      "url": "cloud/bc/garmisch-gw/devsetup",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
-        "version": ["GW-internal-Flaine"],
-        "release": ["Flaine"],
+        "version": ["GW-internal-Garmisch"],
+        "release": ["Garmisch"],
         "subject": ["Installation"]
       },
       "environments": ["staging"],
@@ -38,14 +38,14 @@
       "earlyAccess": false
     },
     {
-      "id": "isccflainegwadmin",
+      "id": "isccgarmischgwadmin",
       "title": "Administration",
-      "url": "cloud/cc/flaine-gw/admin",
+      "url": "cloud/cc/garmisch-gw/admin",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["GW-internal-Flaine"],
-        "release": ["Flaine"],
+        "version": ["GW-internal-Garmisch"],
+        "release": ["Garmisch"],
         "subject": ["Administration"]
       },
       "environments": ["staging"],
@@ -56,14 +56,14 @@
       "earlyAccess": false
     },
     {
-      "id": "isccflainegwdevsetup",
+      "id": "isccgarmischgwdevsetup",
       "title": "Developer Setup",
-      "url": "cloud/cc/flaine-gw/devsetup",
+      "url": "cloud/cc/garmisch-gw/devsetup",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
-        "version": ["GW-internal-Flaine"],
-        "release": ["Flaine"],
+        "version": ["GW-internal-Garmisch"],
+        "release": ["Garmisch"],
         "subject": ["Installation"]
       },
       "environments": ["staging"],
@@ -74,14 +74,14 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcflainegwadmin",
+      "id": "ispcgarmischgwadmin",
       "title": "Administration",
-      "url": "cloud/pc/flaine-gw/admin",
+      "url": "cloud/pc/garmisch-gw/admin",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["GW-internal-Flaine"],
-        "release": ["Flaine"],
+        "version": ["GW-internal-Garmisch"],
+        "release": ["Garmisch"],
         "subject": ["Administration"]
       },
       "environments": ["staging"],
@@ -92,14 +92,14 @@
       "earlyAccess": false
     },
     {
-      "id": "ispcflainegwdevsetup",
+      "id": "ispcgarmischgwdevsetup",
       "title": "Developer Setup",
-      "url": "cloud/pc/flaine-gw/devsetup",
+      "url": "cloud/pc/garmisch-gw/devsetup",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["GW-internal-Flaine"],
-        "release": ["Flaine"],
+        "version": ["GW-internal-Garmisch"],
+        "release": ["Garmisch"],
         "subject": ["Installation"]
       },
       "environments": ["staging"],

@@ -1,0 +1,222 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "PolicyCenter for Guidewire Cloud 2023.02",
+  "template": "page",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Garmisch (2023.02)",
+    "items": [
+      {
+        "label": "Flaine (2022.09)",
+        "page": "../../../flaine/pcGwCloud/2022.09"
+      },
+      {
+        "label": "Elysian (2022.05)",
+        "page": "../../../elysian/pcGwCloud/2022.05"
+      },
+      {
+        "label": "Dobson (2021.11)",
+        "page": "../../../dobson/pcGwCloud/2021.11"
+      },
+      {
+        "label": "Cortina (2021.04)",
+        "page": "../../../cortina/policyCenterCloud/pcGwCloud/2021.04"
+      },
+      {
+        "label": "Banff (2020.11)",
+        "page": "../../../banff/policyCenterCloud/pcGwCloud/2020.11"
+      },
+      {
+        "label": "Aspen (2020.05)",
+        "page": "../../../aspen/policyCenterCloud"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ispc202302releasenotes"
+        },
+        {
+          "label": "AppReader Release Notes",
+          "id": "appreaderrn400"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Developer Setup",
+          "id": "ispc202302devsetup"
+        },
+        {
+          "label": "Developer Setup (Internal only)",
+          "id": "ispcgarmischgwdevsetup"
+        },
+        {
+          "label": "Update",
+          "id": "ispc202302update"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools450"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools Compatibility",
+          "id": "isupgradecompatibility"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "ispc202302app"
+        },
+        {
+          "label": "Contact Management",
+          "id": "is202302contact"
+        },
+        {
+          "label": "Submission Intake",
+          "id": "submissionintake"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "ispc202302admin"
+        },
+        {
+          "label": "Administration (Internal only)",
+          "id": "ispcgarmischgwadmin"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "ispc202302dataarchiving"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Advanced Product Designer in PolicyCenter",
+          "id": "ispc202302apd"
+        },
+        {
+          "label": "Configuration",
+          "id": "ispc202302config"
+        },
+        {
+          "label": "Globalization",
+          "id": "ispc202302global"
+        },
+        {
+          "label": "Gosu Rules",
+          "id": "ispc202302rules"
+        },
+        {
+          "label": "Guidewire Rules (Early Access)",
+          "id": "gwrules"
+        },
+        {
+          "label": "Product Designer",
+          "id": "ispc202302pd"
+        },
+        {
+          "label": "Product Model",
+          "id": "ispc202302pm"
+        },
+        {
+          "label": "Submission Intake Configuration",
+          "id": "submissionintakeconfig"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Overview of Cloud Integration",
+          "id": "is202302integoverview"
+        },
+        {
+          "label": "App Events",
+          "id": "appeventsdev"
+        },
+        {
+          "label": "PolicyCenter Cloud API Consumer Guide",
+          "id": "ispc202302apibf"
+        },
+        {
+          "label": "PolicyCenter Cloud API Developer Guide",
+          "id": "ispc202302apica"
+        },
+        {
+          "label": "PolicyCenter Cloud API Reference",
+          "id": "pcapirefgarmisch"
+        },
+        {
+          "label": "ContactManager Cloud API Consumer Guide",
+          "id": "ispc202302apicm"
+        },
+        {
+          "label": "Integration Gateway",
+          "id": "integgatewaydevlatest"
+        },
+        {
+          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
+          "id": "ispc202302integ"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "ispc202302restapifw"
+        },
+        {
+          "label": "REST API Client",
+          "id": "isrestapiclientguide"
+        },
+        {
+          "label": "Webhooks API Reference",
+          "id": "webhooksapinext"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "gosureflatest"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "gwglossary"
+        }
+      ]
+    }
+  ]
+}

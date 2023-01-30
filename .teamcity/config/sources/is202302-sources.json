@@ -1,0 +1,47 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "isupgradeguide202302src",
+      "title": "InsuranceSuite Upgrade Guide 2023.02",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
+      "branch": "release/2023.02"
+    },
+    {
+      "id": "cloudisapd202302src",
+      "title": "IS 2023.02 Advanced Product Designer for PolicyCenter",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
+      "branch": "release/pc/2023.02"
+    },
+    {
+      "id": "is202302src",
+      "title": "IS 2023.02.0",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/2023.02.0"
+    },
+    {
+      "id": "srcpcapirefgarmisch",
+      "title": "PC API ref preview 2023.02",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/pc-api-ref.git",
+      "branch": "release/garmisch"
+    },
+    {
+      "id": "srcccapirefgarmisch",
+      "title": "CC API ref preview 2023.02",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cc-api-ref.git",
+      "branch": "release/garmisch"
+    },
+    {
+      "id": "srcbcapirefgarmisch",
+      "title": "BC API ref preview 2023.02",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/bc-api-ref.git",
+      "branch": "release/garmisch"
+    }
+  ]
+}
