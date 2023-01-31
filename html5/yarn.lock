@@ -1893,9 +1893,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@doctools/gw-theme-classic@npm:2.0.42":
-  version: 2.0.42
-  resolution: "@doctools/gw-theme-classic@npm:2.0.42::__archiveUrl=https%3A%2F%2Fartifactory.guidewire.com%2Fartifactory%2Fapi%2Fnpm%2Fdoctools-npm-dev%2F%40doctools%2Fgw-theme-classic%2F-%2F%40doctools%2Fgw-theme-classic-2.0.42.tgz"
+"@doctools/gw-theme-classic@npm:2.0.44":
+  version: 2.0.44
+  resolution: "@doctools/gw-theme-classic@npm:2.0.44::__archiveUrl=https%3A%2F%2Fartifactory.guidewire.com%2Fartifactory%2Fapi%2Fnpm%2Fdoctools-npm-dev%2F%40doctools%2Fgw-theme-classic%2F-%2F%40doctools%2Fgw-theme-classic-2.0.44.tgz"
   dependencies:
     "@brightcove/react-player-loader": ^1.4.2
     "@docusaurus/core": 2.2.0
@@ -1909,7 +1909,7 @@ __metadata:
     lodash: ^4.17.21
     mark.js: ^8.11.1
     rimraf: ^3.0.2
-  checksum: 511300462c9a1ff1419bff30cf2e25591c9cb54d53acd30518aa3f74dba3cf040baf11bca4ee7010f4b80e2c6c36b753e496f014e97613d5ad296e232cdc2237
+  checksum: e9da0472569e220947612c0269ace84aa6aca1c42d001b107e0a50c97244356321a297484afaa4bdcdcbd8355923e40628ea10bdab6839ea13b849fc145df7f5
   languageName: node
   linkType: hard
 
@@ -6776,7 +6776,7 @@ __metadata:
     "@babel/cli": ^7.17.6
     "@babel/core": ^7.20.12
     "@babel/preset-react": ^7.16.7
-    "@doctools/gw-theme-classic": 2.0.42
+    "@doctools/gw-theme-classic": 2.0.44
     babel-loader: 9.1.0
     babel-plugin-prismjs: ^2.1.0
     css-loader: ^6.5.1
