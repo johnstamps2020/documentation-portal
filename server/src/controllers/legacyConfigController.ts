@@ -9,7 +9,6 @@ import { Release } from '../model/entity/Release';
 import { Resource } from '../model/entity/Resource';
 import { Source } from '../model/entity/Source';
 import path, { join, resolve } from 'path';
-import { AppDataSource } from '../model/connection';
 import {
   legacyBuildConfig,
   legacyBuildsConfigFile,
@@ -21,7 +20,7 @@ import {
   legacySourcesConfigFile,
   Metadata,
 } from '../types/legacyConfig';
-import { Build } from '../model/entity/Build';
+import { Build, BuildType } from '../model/entity/Build';
 import { lstatSync, readdirSync, readFileSync } from 'fs';
 import { Page } from '../model/entity/Page';
 import { winstonLogger } from './loggerController';
@@ -878,7 +877,11 @@ async function addDocBuild(buildConfig: legacyBuildConfig) {
     },
     false
   );
-  docBuild.type = buildConfig.buildType;
+  docBuild.id = `${buildConfig.srcId}${buildConfig.docId}`;
+  const t = Object.entries(BuildType).find(
+    ([k, v]) => v === buildConfig.buildType
+  );
+  docBuild.type = Array.isArray(t) ? t[1] : BuildType.DITA;
   docBuild.root = buildConfig.root;
   docBuild.filter = buildConfig.filter;
   docBuild.source = matchingBuildSrc.body;

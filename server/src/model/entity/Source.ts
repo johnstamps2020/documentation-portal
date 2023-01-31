@@ -1,11 +1,11 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 import { Build } from './Build';
 import { integer } from '@elastic/elasticsearch/api/types';
 import { Resource } from './Resource';
 
 @Entity()
 export class Source {
-  @Column({ primary: true })
+  @PrimaryColumn()
   id: string;
 
   @Column()
@@ -31,7 +31,7 @@ export class Source {
 
   @OneToMany(
     () => Build,
-    build => build.id
+    build => build
   )
   build: Build;
 

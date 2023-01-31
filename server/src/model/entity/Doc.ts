@@ -6,6 +6,7 @@ import {
   JoinTable,
   ManyToMany,
   OneToOne,
+  PrimaryColumn,
 } from 'typeorm';
 import { Product } from './Product';
 import { Build } from './Build';
@@ -13,7 +14,7 @@ import { Release } from './Release';
 
 @Entity()
 export class Doc {
-  @Column({ primary: true })
+  @PrimaryColumn()
   id: string;
 
   @Column()
@@ -36,7 +37,7 @@ export class Doc {
 
   @OneToOne(
     () => Build,
-    build => build.doc,
+    build => build.id,
     { eager: true }
   )
   @JoinColumn()
