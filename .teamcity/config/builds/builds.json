@@ -4,26 +4,10 @@
     {
       "buildType": "dita",
       "root": "GuidewireHub.ditamap",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
-      "indexRedirect": true,
-      "srcId": "guidewireidentityfederationhubsrc",
-      "docId": "guidewireidentityfederationhubdraft"
-    },
-    {
-      "buildType": "dita",
-      "root": "GuidewireHub.ditamap",
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "indexRedirect": true,
       "srcId": "guidewireidentityfederationhubsrc",
       "docId": "guidewireidentityfederationhub"
-    },
-    {
-      "buildType": "dita",
-      "root": "CloudPlatform.ditamap",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
-      "indexRedirect": true,
-      "srcId": "cloudplatformsrc",
-      "docId": "cloudplatformdraft"
     },
     {
       "buildType": "dita",

@@ -189,15 +189,7 @@
             },
             {
               "label": "Authentication",
-              "id": "guidewireidentityfederationhubdraft"
-            },
-            {
-              "label": "Authentication",
               "id": "guidewireidentityfederationhub"
-            },
-            {
-              "label": "Network Connectivity",
-              "id": "cloudplatformdraft"
             },
             {
               "label": "Network Connectivity",

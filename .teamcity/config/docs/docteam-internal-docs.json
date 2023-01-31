@@ -10,7 +10,7 @@
         "product": ["DocTools"],
         "version": ["latest"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -25,24 +25,8 @@
         "product": ["DocTools"],
         "version": ["latest"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "writingwithgit",
-      "title": "Writing with Git",
-      "url": "writing-with-git",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["DocTools"],
-        "version": ["latest"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": false,
-      "indexForSearch": false,
       "public": false,
       "internal": false,
       "earlyAccess": false
@@ -56,7 +40,7 @@
         "product": ["DocTools"],
         "version": ["latest"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "indexForSearch": false,
       "public": false,
       "internal": false,

@@ -20,14 +20,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "WritingWithGit.ditamap",
-      "srcId": "writingwithgitsrc",
-      "docId": "writingwithgit",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "Element-Rendering.ditamap",
       "srcId": "elemrendsrc",
       "docId": "elemrend",

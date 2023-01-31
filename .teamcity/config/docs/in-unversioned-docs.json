@@ -286,24 +286,6 @@
       "earlyAccess": false
     },
     {
-      "id": "inexcelrating23draft",
-      "title": "Excel Designed Rating 2.3 Draft",
-      "url": "cloud/in/excelrating23",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2", "2020.1"],
-        "subject": ["Features and functionality"],
-        "release": ["Aspen", "Banff"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "in20231studiorn",
       "title": "Studio 2023.1 Release Notes",
       "url": "cloud/in/20231/studiorn",

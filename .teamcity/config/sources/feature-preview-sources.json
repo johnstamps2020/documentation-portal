@@ -2,17 +2,6 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
-      "id": "claimsautopilotdraftsrc",
-      "title": "Claims Autopilot Draft",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/claims-autopilot.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/Content/doc/cloud-services/Autopilot.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Draft.ditaval"
-      ]
-    },
-    {
       "id": "cloudratingdraftsrc",
       "title": "Cloud Rating Guide Draft",
       "sourceType": "git",
