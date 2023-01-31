@@ -16,7 +16,13 @@
         <p>
           We weren't able to find what you are looking for. You may have an old
           link. We'll make a note of it and, if it's an error on our site, we
-          will try to fix it soon. Meanwhile, try using the search box above, or
+          will try to fix it soon.
+        </p>
+        <% if (pageInfo.cameFrom.includes('docs.int.ccs.guidewire.net')) { %>
+          <p>Are you perhaps looking for <a href="<%= pageInfo.cameFrom.replace('docs.int.ccs.guidewire.net', 'docs.staging.ccs.guidewire.net') %> ">that doc page on the "staging" site</a>?</p>
+        <% } %>  
+        <p>
+          Meanwhile, try using the search box above, or
           go to the
           <a href="<%= pageInfo.appBaseUrl %>">home page</a>.
         </p>
