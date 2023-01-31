@@ -4871,6 +4871,7 @@ object GwBuildSteps {
                 
                 rsync -avu --delete ./build $targetPath
                 
+                cd $ditaOtPath
                 git add .
                 git commit -m "Load the latest HTML5 scripts (%build.number%)"
                 git push -u origin main
