@@ -1,12 +1,9 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, ManyToMany, PrimaryColumn } from 'typeorm';
 import { Doc } from './Doc';
 
 @Entity()
 export class Release {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
-  @Column()
+  @PrimaryColumn()
   name: string;
 
   @ManyToMany(

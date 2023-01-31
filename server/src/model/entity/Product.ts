@@ -1,43 +1,16 @@
-import {
-  Entity,
-  JoinTable,
-  ManyToMany,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Entity, ManyToMany, PrimaryColumn } from 'typeorm';
 import { Doc } from './Doc';
-import { ProductName } from './ProductName';
-import { ProductVersion } from './ProductVersion';
-import { ProductPlatform } from './ProductPlatform';
 
 @Entity()
 export class Product {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryColumn()
+  name: string;
 
-  @ManyToOne(
-    () => ProductName,
-    productName => productName.id,
-    { eager: true }
-  )
-  @JoinTable()
-  name: ProductName;
+  @PrimaryColumn()
+  version: string;
 
-  @ManyToOne(
-    () => ProductVersion,
-    productVersion => productVersion.id,
-    { eager: true }
-  )
-  @JoinTable()
-  version: ProductVersion;
-
-  @ManyToOne(
-    () => ProductPlatform,
-    productPlatform => productPlatform.id,
-    { eager: true }
-  )
-  @JoinTable()
-  platform: ProductPlatform;
+  @PrimaryColumn()
+  platform: string;
 
   @ManyToMany(
     () => Doc,

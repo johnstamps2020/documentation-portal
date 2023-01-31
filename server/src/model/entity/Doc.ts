@@ -28,7 +28,7 @@ export class Doc {
 
   @ManyToMany(
     () => Product,
-    product => product.id,
+    product => product,
     { eager: true }
   )
   @JoinTable()
@@ -44,7 +44,7 @@ export class Doc {
 
   @ManyToMany(
     () => Release,
-    release => release.id,
+    release => release.name,
     { eager: true, nullable: true }
   )
   @JoinTable()

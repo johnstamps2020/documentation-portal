@@ -396,13 +396,13 @@ export async function getDocumentMetadataById(docId: string) {
           docInternal: docInfo.internal,
           docEarlyAccess: docInfo.earlyAccess,
           docProducts: wrapInQuotes(
-            docInfo.products.map((p: Product) => p.name.name)
+            docInfo.products.map((p: Product) => p.name)
           ),
           docVersions: wrapInQuotes(
-            docInfo.products.map((p: Product) => p.version.name)
+            docInfo.products.map((p: Product) => p.version)
           ),
           docPlatforms: wrapInQuotes(
-            docInfo.products.map((p: Product) => p.platform.name)
+            docInfo.products.map((p: Product) => p.platform)
           ),
           docReleases: wrapInQuotes(
             docInfo.releases.map((r: Release) => r.name)

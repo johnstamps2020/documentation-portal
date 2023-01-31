@@ -7,9 +7,6 @@ import { Build } from './entity/Build';
 import { Release } from './entity/Release';
 import { Resource } from './entity/Resource';
 import { Source } from './entity/Source';
-import { ProductPlatform } from './entity/ProductPlatform';
-import { ProductName } from './entity/ProductName';
-import { ProductVersion } from './entity/ProductVersion';
 import { Page } from './entity/Page';
 import { PageSelector } from './entity/PageSelector';
 import { Category } from './entity/Category';
@@ -43,9 +40,6 @@ export const AppDataSource = new DataSource({
     Build,
     Doc,
     Product,
-    ProductName,
-    ProductPlatform,
-    ProductVersion,
     Release,
     Resource,
     Source,

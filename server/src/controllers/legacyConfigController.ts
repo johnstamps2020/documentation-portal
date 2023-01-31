@@ -23,9 +23,6 @@ import {
 } from '../types/legacyConfig';
 import { Build } from '../model/entity/Build';
 import { lstatSync, readdirSync, readFileSync } from 'fs';
-import { ProductName } from '../model/entity/ProductName';
-import { ProductPlatform } from '../model/entity/ProductPlatform';
-import { ProductVersion } from '../model/entity/ProductVersion';
 import { Page } from '../model/entity/Page';
 import { winstonLogger } from './loggerController';
 import { CategoryItem } from '../model/entity/CategoryItem';
@@ -63,15 +60,11 @@ export async function getLegacyDocConfigs() {
       legacyDoc.internal = doc.internal;
       legacyDoc.earlyAccess = doc.earlyAccess;
       legacyDoc.metadata = new Metadata();
-      legacyDoc.metadata.product = doc.products.map(
-        (p: Product) => p.name.name
-      );
+      legacyDoc.metadata.product = doc.products.map((p: Product) => p.name);
       legacyDoc.metadata.platform = doc.products.map(
-        (p: Product) => p.platform.name
+        (p: Product) => p.platform
       );
-      legacyDoc.metadata.version = doc.products.map(
-        (p: Product) => p.version.name
-      );
+      legacyDoc.metadata.version = doc.products.map((p: Product) => p.version);
       legacyDoc.metadata.release = doc.releases
         ? doc.releases.map((r: Release) => r.name)
         : null;
@@ -866,31 +859,10 @@ async function createProductEntities(
 ): Promise<Product[]> {
   const dbDocProducts = [];
   for (const productConfig of productConfigs) {
-    const productName = await findEntity(
-      ProductName.name,
-      {
-        name: productConfig.productName,
-      },
-      false
-    );
-    const platformName = await findEntity(
-      ProductPlatform.name,
-      {
-        name: productConfig.platformName,
-      },
-      false
-    );
-    const versionName = await findEntity(
-      ProductVersion.name,
-      {
-        name: productConfig.versionName,
-      },
-      false
-    );
     const productEntitySaveResult = await createOrUpdateEntity(Product.name, {
-      name: productName.body,
-      platform: platformName.body,
-      version: versionName.body,
+      name: productConfig.productName,
+      platform: productConfig.platformName,
+      version: productConfig.versionName,
     });
     dbDocProducts.push(productEntitySaveResult.body);
   }
@@ -996,25 +968,8 @@ export async function putDocConfigsInDatabase(): Promise<{
       dbDoc.releases = docReleases.length > 0 ? docReleases : null;
       // Find products and create if needed
       const legacyDocProducts = doc.metadata.product;
-      if (legacyDocProducts) {
-        await getOrCreateEntities(legacyDocProducts, ProductName.name, 'name');
-      }
       const legacyDocPlatforms = doc.metadata.platform;
-      if (legacyDocPlatforms) {
-        await getOrCreateEntities(
-          legacyDocPlatforms,
-          ProductPlatform.name,
-          'name'
-        );
-      }
       const legacyDocVersions = doc.metadata.version;
-      if (legacyDocVersions) {
-        await getOrCreateEntities(
-          legacyDocVersions,
-          ProductVersion.name,
-          'name'
-        );
-      }
       const productConfigCombinations = [];
       for (const product of legacyDocProducts) {
         for (const platform of legacyDocPlatforms) {
