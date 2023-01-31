@@ -240,13 +240,6 @@
       "branch": "release/flaine"
     },
     {
-      "id": "srcjutrohackathon",
-      "title": "Jutro Design System Hackathon",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
-      "branch": "hackathon-2021"
-    },
-    {
       "id": "srcjutrostorybooknext",
       "title": "Jutro Storybook Next",
       "sourceType": "git",

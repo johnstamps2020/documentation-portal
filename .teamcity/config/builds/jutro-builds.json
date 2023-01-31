@@ -341,12 +341,6 @@
     },
     {
       "buildType": "yarn",
-      "docId": "jutrohackathon",
-      "srcId": "srcjutrohackathon",
-      "workingDir": "website"
-    },
-    {
-      "buildType": "yarn",
       "docId": "jutro660",
       "srcId": "srcjutro660",
       "workingDir": "website"
