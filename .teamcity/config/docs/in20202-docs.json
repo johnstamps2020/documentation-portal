@@ -164,24 +164,6 @@
       "earlyAccess": false
     },
     {
-      "id": "in20202xappdraft",
-      "title": "Application Guide",
-      "url": "cloud/in/20202/app",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Features and functionality"],
-        "release": ["Banff"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "in20202biinteg",
       "title": "Business Intelligence Integration",
       "url": "cloud/in/20202/biinteg",
@@ -192,7 +174,7 @@
         "subject": ["Integration"],
         "release": ["Banff"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -210,7 +192,7 @@
         "subject": ["Configuration"],
         "release": ["Banff"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -228,7 +210,7 @@
         "subject": ["Configuration"],
         "release": ["Banff"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -246,7 +228,7 @@
         "subject": ["Configuration"],
         "release": ["Banff"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -264,7 +246,7 @@
         "subject": ["Configuration"],
         "release": ["Banff"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

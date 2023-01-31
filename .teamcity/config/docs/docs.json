@@ -2,23 +2,6 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "guidewireidentityfederationhubdraft",
-      "title": "Authentication Draft",
-      "url": "cloud/auth/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Identity Federation Hub"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "guidewireidentityfederationhub",
       "title": "Authentication",
       "url": "cloud/auth/latest",
@@ -29,23 +12,6 @@
         "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
       },
       "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "cloudplatformdraft",
-      "title": "Network Connectivity",
-      "url": "cloud/gwcp/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Platform"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
-      },
-      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -80,54 +46,6 @@
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
       "environments": ["int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "selfmanageddxdixowqwwrfu",
-      "title": "Guidewire for Salesforce Data Integrations",
-      "url": "self-managed/dx/di/3x",
-      "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations"],
-        "platform": ["Self-managed"],
-        "version": ["latest"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "selfmanageddxedxqqjwvkln",
-      "title": "Guidewire for Salesforce Digital Gateway",
-      "url": "self-managed/dx/ed/11x",
-      "metadata": {
-        "product": ["Guidewire for Salesforce Digital Gateway"],
-        "platform": ["Self-managed"],
-        "version": ["11.x"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "selfmanageddxvodxqjomllcj",
-      "title": "Guidewire for Salesforce View on Demand",
-      "url": "self-managed/dx/vod/11x",
-      "metadata": {
-        "product": ["Guidewire for Salesforce View on Demand"],
-        "platform": ["Self-managed"],
-        "version": ["11.x"]
-      },
-      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6663,7 +6581,7 @@
         "product": ["Internal Docs"],
         "version": ["latest"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

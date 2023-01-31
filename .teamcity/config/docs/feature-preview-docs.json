@@ -19,23 +19,6 @@
       "earlyAccess": true
     },
     {
-      "id": "claimsautopilotdraft",
-      "title": "Claims Autopilot",
-      "url": "cloud/gw-feature-preview/autopilot",
-      "metadata": {
-        "product": ["Feature Preview"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
       "id": "cloudratingdraft",
       "title": "Cloud Rating",
       "url": "cloud/gw-feature-preview/cloudrating",

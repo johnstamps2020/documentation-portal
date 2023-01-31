@@ -107,14 +107,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "ExcelDesignedRating23.ditamap",
-      "srcId": "inunversionedsrc",
-      "docId": "inexcelrating23draft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "ExcelDesignedRating30.ditamap",
       "srcId": "inunversionedsrc",
