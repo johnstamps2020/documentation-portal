@@ -11,7 +11,7 @@
         "version": ["next"],
         "subject": ["Administration"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -29,7 +29,7 @@
         "subject": ["Administration"],
         "release": ["Flaine"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
