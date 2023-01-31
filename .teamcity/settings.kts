@@ -1700,7 +1700,7 @@ object Frontend {
             steps {
                 step(
                     GwBuildSteps.createBuildYarnProjectStep(
-                        deployEnv, publishPath, "build", "16.18.0", "", "", "", "", "", null, false
+                        deployEnv, publishPath, "landing-pages-build", "16.18.0", "", "", "", "", "", null, false
                     )
                 )
                 step(
