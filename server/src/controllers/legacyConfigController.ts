@@ -892,6 +892,30 @@ async function addDocBuild(buildConfig: legacyBuildConfig) {
   docBuild.outputPath = buildConfig.outputPath;
   docBuild.zipFilename = buildConfig.zipFilename;
   docBuild.customEnv = buildConfig.customEnv;
+  const buildResources = buildConfig.resources;
+  if (buildResources?.length > 0) {
+    const docBuildResources = [];
+    for (const resource of buildResources) {
+      const docBuildResource = new Resource();
+      docBuildResource.id = `${resource.sourceFolder}${resource.targetFolder}${resource.srcId}`;
+      docBuildResource.sourceFolder = resource.sourceFolder;
+      docBuildResource.targetFolder = resource.targetFolder;
+      const sourceEntity = await findEntity(
+        Source.name,
+        { id: resource.srcId },
+        false
+      );
+      docBuildResource.source = sourceEntity.body;
+      const docBuildResourceSaveResult = await createOrUpdateEntity(
+        Resource.name,
+        docBuildResource
+      );
+      if (docBuildResourceSaveResult.status === 200) {
+        docBuildResources.push(docBuildResourceSaveResult.body);
+      }
+      docBuild.resources = docBuildResources;
+    }
+  }
   const saveResult = await createOrUpdateEntity(Build.name, docBuild);
   return saveResult.body;
 }

@@ -60,7 +60,11 @@ export class legacyBuildConfig {
   indexRedirect: boolean;
   srcId: string;
   docId: string;
-  resources: Array<string>;
+  resources: Array<{
+    sourceFolder: string;
+    targetFolder: string;
+    srcId: string;
+  }>;
   nodeImageVersion: string;
   yarnBuildCustomCommand: string;
   outputPath: string;
