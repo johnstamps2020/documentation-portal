@@ -1,7 +1,7 @@
 import { Column, Entity, JoinTable, ManyToMany, ManyToOne } from 'typeorm';
 import { PageSelector } from './PageSelector';
 import { Category } from './Category';
-import { Subject } from './Subject';
+import { Section } from './Section';
 import { ProductFamilyItem } from './ProductFamilyItem';
 import { Sidebar } from './Sidebar';
 
@@ -44,12 +44,12 @@ export class Page {
   categories: Category[];
 
   @ManyToMany(
-    () => Subject,
-    subject => subject.id,
+    () => Section,
+    section => section.id,
     { nullable: true, eager: true }
   )
   @JoinTable()
-  subjects: Subject[];
+  sections: Section[];
 
   @ManyToMany(
     () => ProductFamilyItem,

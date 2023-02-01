@@ -14,8 +14,8 @@ import { CategoryItem } from './entity/CategoryItem';
 import { Item } from './entity/Item';
 import { SubCategory } from './entity/SubCategory';
 import { SubCategoryItem } from './entity/SubCategoryItem';
-import { Subject } from './entity/Subject';
-import { SubjectItem } from './entity/SubjectItem';
+import { Section } from './entity/Section';
+import { SectionItem } from './entity/SectionItem';
 import { ProductFamilyItem } from './entity/ProductFamilyItem';
 import { PageSelectorItem } from './entity/PageSelectorItem';
 import { SidebarItem } from './entity/SidebarItem';
@@ -51,8 +51,8 @@ export const AppDataSource = new DataSource({
     CategoryItem,
     SubCategory,
     SubCategoryItem,
-    Subject,
-    SubjectItem,
+    Section,
+    SectionItem,
     ProductFamilyItem,
     Sidebar,
     SidebarItem,

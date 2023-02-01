@@ -157,21 +157,21 @@ export async function getPageData(reqObj: Request) {
       'subCategoryItemPageAlias.public',
       'subCategoryItemPageAlias.earlyAccess',
     ])
-    .leftJoinAndSelect('page.subjects', 'subjectAlias')
-    .leftJoinAndSelect('subjectAlias.subjectItems', 'subjectItemAlias')
-    .leftJoin('subjectItemAlias.doc', 'subjectItemDocAlias')
+    .leftJoinAndSelect('page.sections', 'sectionAlias')
+    .leftJoinAndSelect('sectionAlias.sectionItems', 'sectionItemAlias')
+    .leftJoin('sectionItemAlias.doc', 'sectionItemDocAlias')
     .addSelect([
-      'subjectItemDocAlias.url',
-      'subjectItemDocAlias.internal',
-      'subjectItemDocAlias.public',
-      'subjectItemDocAlias.earlyAccess',
+      'sectionItemDocAlias.url',
+      'sectionItemDocAlias.internal',
+      'sectionItemDocAlias.public',
+      'sectionItemDocAlias.earlyAccess',
     ])
-    .leftJoin('subjectItemAlias.page', 'subjectItemPageAlias')
+    .leftJoin('sectionItemAlias.page', 'sectionItemPageAlias')
     .addSelect([
-      'subjectItemPageAlias.path',
-      'subjectItemPageAlias.internal',
-      'subjectItemPageAlias.public',
-      'subjectItemPageAlias.earlyAccess',
+      'sectionItemPageAlias.path',
+      'sectionItemPageAlias.internal',
+      'sectionItemPageAlias.public',
+      'sectionItemPageAlias.earlyAccess',
     ])
     .leftJoinAndSelect('page.productFamilyItems', 'productFamilyItemAlias')
     .leftJoin('productFamilyItemAlias.doc', 'productFamilyItemDocAlias')
@@ -407,7 +407,7 @@ export async function getDocumentMetadataById(docId: string) {
           docReleases: wrapInQuotes(
             docInfo.releases.map((r: Release) => r.name)
           ),
-          docSubjects: wrapInQuotes(docInfo.subjects),
+          docSubjects: wrapInQuotes(docInfo.sections),
           docCategories: wrapInQuotes(docInfo.categories),
         },
       };

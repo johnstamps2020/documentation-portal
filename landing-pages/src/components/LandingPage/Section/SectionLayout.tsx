@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Unstable_Grid2";
-import LandingPageSubject from "./LandingPageSubject";
+import LandingPageSection from "./LandingPageSection";
 import LandingPageSelector from "../LandingPageSelector";
 import Breadcrumbs from "../Breadcrumbs";
 import Typography from "@mui/material/Typography";
@@ -8,7 +8,7 @@ import LandingPageSidebar from "../LandingPageSidebar";
 import { Page } from "server/dist/model/entity/Page";
 import Stack from "@mui/material/Stack";
 
-export default function SubjectLayout(pageData: Page) {
+export default function SectionLayout(pageData: Page) {
   return (
     <Grid
       container
@@ -18,7 +18,7 @@ export default function SubjectLayout(pageData: Page) {
       gap={5}
       alignContent="center"
       sx={{
-        minHeight: "100vh",
+        minHeight: "100vh"
       }}
     >
       <Grid>
@@ -32,7 +32,7 @@ export default function SubjectLayout(pageData: Page) {
               textAlign: "left",
               color: "black",
               fontWeight: 600,
-              marginTop: 0,
+              marginTop: 0
             }}
           >
             {pageData.title}
@@ -47,8 +47,8 @@ export default function SubjectLayout(pageData: Page) {
         </Stack>
       </Grid>
       <Grid container alignItems="baseline" gap={5} maxWidth="1100px">
-        {pageData.subjects?.map((subject) => (
-          <LandingPageSubject {...subject} key={subject.id} />
+        {pageData.sections?.map(section => (
+          <LandingPageSection {...section} key={section.id} />
         ))}
       </Grid>
       {pageData && pageData.sidebar && (

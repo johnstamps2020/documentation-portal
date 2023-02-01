@@ -25,9 +25,9 @@ import { lstatSync, readdirSync, readFileSync } from 'fs';
 import { Page } from '../model/entity/Page';
 import { winstonLogger } from './loggerController';
 import { CategoryItem } from '../model/entity/CategoryItem';
-import { SubjectItem } from '../model/entity/SubjectItem';
+import { SectionItem } from '../model/entity/SectionItem';
 import { Category } from '../model/entity/Category';
-import { Subject } from '../model/entity/Subject';
+import { Section } from '../model/entity/Section';
 import { SubCategory } from '../model/entity/SubCategory';
 import { SubCategoryItem } from '../model/entity/SubCategoryItem';
 import { ProductFamilyItem } from '../model/entity/ProductFamilyItem';
@@ -293,12 +293,12 @@ async function getOrCreateItems(
   legacyLandingPageConfigs: legacyPageConfig[]
 ): Promise<{
   categories: Category[];
-  subjects: Subject[];
+  sections: Section[];
   productFamilyItems: ProductFamilyItem[];
 }> {
   async function getOrCreateSubItems(
     legacySubItems: legacyItem[],
-    parentItem: Category | Subject | SubCategory
+    parentItem: Category | Section | SubCategory
   ): Promise<Item[]> {
     const dbPageSubItems = [];
     for (const legacySubItem of legacySubItems) {
@@ -311,8 +311,8 @@ async function getOrCreateItems(
         dbPageSubItem = new CategoryItem();
         dbPageSubItemRepo = CategoryItem.name;
       } else {
-        dbPageSubItem = new SubjectItem();
-        dbPageSubItemRepo = SubjectItem.name;
+        dbPageSubItem = new SectionItem();
+        dbPageSubItemRepo = SectionItem.name;
       }
       dbPageSubItem.label = legacySubItem.label;
 
@@ -337,7 +337,7 @@ async function getOrCreateItems(
   }
 
   const dbPageCategories = [];
-  const dbPageSubjects = [];
+  const dbPageSections = [];
   const dbPageProductFamilyItems = [];
   for (const legacyItem of legacyItems) {
     try {
@@ -391,17 +391,17 @@ async function getOrCreateItems(
           dbPageCategories.push(result.body);
         }
       } else if (legacyItem.class?.includes('subject')) {
-        const dbPageSubject = new Subject();
-        dbPageSubject.label = legacyItem.label;
-        dbPageSubject.id = createMd5Hash(`${dbPagePath}${dbPageSubject.label}`);
+        const dbPageSection = new Section();
+        dbPageSection.label = legacyItem.label;
+        dbPageSection.id = createMd5Hash(`${dbPagePath}${dbPageSection.label}`);
         if (legacyItem.items) {
-          dbPageSubject.subjectItems = await getOrCreateSubItems(
+          dbPageSection.sectionItems = await getOrCreateSubItems(
             legacyItem.items,
-            dbPageSubject
+            dbPageSection
           );
         }
-        const result = await createOrUpdateEntity(Subject.name, dbPageSubject);
-        dbPageSubjects.push(result.body);
+        const result = await createOrUpdateEntity(Section.name, dbPageSection);
+        dbPageSections.push(result.body);
       } else if (legacyItem.class?.includes('productFamily')) {
         const dbPageProductFamilyItem = new ProductFamilyItem();
         dbPageProductFamilyItem.label = legacyItem.label;
@@ -428,7 +428,7 @@ async function getOrCreateItems(
   }
   return {
     categories: dbPageCategories,
-    subjects: dbPageSubjects,
+    sections: dbPageSections,
     productFamilyItems: dbPageProductFamilyItems,
   };
 }
@@ -575,20 +575,20 @@ export async function putPageConfigsInDatabase() {
           localLandingPagesConfig
         );
         const pageCategories = allPageItems.categories;
-        const pageSubjects = allPageItems.subjects;
+        const pageSections = allPageItems.sections;
         const pageProductFamilyItems = allPageItems.productFamilyItems;
         dbPageConfig.categories = [];
-        dbPageConfig.subjects = [];
+        dbPageConfig.sections = [];
         dbPageConfig.productFamilyItems = [];
         if (pageCategories.length > 0) {
           for (const c of pageCategories) {
             const result = await createOrUpdateEntity(Category.name, c);
             dbPageConfig.categories.push(result.body);
           }
-        } else if (pageSubjects.length > 0) {
-          for (const s of pageSubjects) {
-            const result = await createOrUpdateEntity(Subject.name, s);
-            dbPageConfig.subjects.push(result.body);
+        } else if (pageSections.length > 0) {
+          for (const s of pageSections) {
+            const result = await createOrUpdateEntity(Section.name, s);
+            dbPageConfig.sections.push(result.body);
           }
         } else if (pageProductFamilyItems.length > 0) {
           for (const p of pageProductFamilyItems) {

@@ -1,5 +1,5 @@
 import LandingPageItem from "../LandingPageItem";
-import { Subject } from "server/dist/model/entity/Subject";
+import { Section } from "server/dist/model/entity/Section";
 
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
@@ -11,7 +11,7 @@ import puzzlePieceIcon from "../../../images/twoColumn/puzzle-piece-solid.svg";
 import usersCogIcon from "../../../images/twoColumn/users-cog-solid.svg";
 import wrenchIcon from "../../../images/twoColumn/wrench-solid.svg";
 
-export default function LandingPageSubject(subject: Subject) {
+export default function LandingPageSection(section: Section) {
   const iconArray = [
     bookOpenIcon,
     codeIcon,
@@ -19,7 +19,7 @@ export default function LandingPageSubject(subject: Subject) {
     ObjectGroupIcon,
     puzzlePieceIcon,
     usersCogIcon,
-    wrenchIcon,
+    wrenchIcon
   ];
   const randomIcon = iconArray[Math.floor(Math.random() * iconArray.length)];
 
@@ -28,16 +28,16 @@ export default function LandingPageSubject(subject: Subject) {
       spacing={2}
       sx={{
         breakInside: "avoid",
-        width: "450px",
+        width: "450px"
       }}
     >
       <Stack direction="row" spacing={2} alignItems="center">
         <img
           src={randomIcon}
-          alt="Subject icon"
+          alt="Section icon"
           style={{
             width: "20px",
-            height: "20px",
+            height: "20px"
           }}
         />
         <Typography
@@ -45,15 +45,15 @@ export default function LandingPageSubject(subject: Subject) {
             fontWeight: 700,
             fontSize: "1.25rem",
             color: "hsl(216, 42%, 13%)",
-            textAlign: "left",
+            textAlign: "left"
           }}
         >
-          {subject.label}
+          {section.label}
         </Typography>
       </Stack>
       <Stack spacing={1} paddingLeft="40px">
-        {subject.subjectItems.map((subjectItem) => (
-          <LandingPageItem {...subjectItem} key={subjectItem.id} />
+        {section.sectionItems.map(sectionItem => (
+          <LandingPageItem {...sectionItem} key={sectionItem.id} />
         ))}
       </Stack>
     </Stack>

@@ -1,8 +1,8 @@
 import { Column, Entity, JoinTable, ManyToMany, PrimaryColumn } from 'typeorm';
-import { SubjectItem } from './SubjectItem';
+import { SectionItem } from './SectionItem';
 
 @Entity()
-export class Subject {
+export class Section {
   @PrimaryColumn()
   id: string;
 
@@ -10,10 +10,10 @@ export class Subject {
   label: string;
 
   @ManyToMany(
-    () => SubjectItem,
-    subjectItem => subjectItem.id,
+    () => SectionItem,
+    sectionItem => sectionItem.id,
     { nullable: true, eager: true }
   )
   @JoinTable()
-  subjectItems: SubjectItem[];
+  sectionItems: SectionItem[];
 }
