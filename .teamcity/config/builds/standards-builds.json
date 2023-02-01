@@ -5,8 +5,16 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "surepath.ditamap",
-      "srcId": "standards202211src",
+      "srcId": "standards202301src",
       "docId": "standardslatest",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "surepath.ditamap",
+      "srcId": "standards202301src",
+      "docId": "standards202301",
       "indexRedirect": true
     },
     {
