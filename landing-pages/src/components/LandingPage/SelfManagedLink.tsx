@@ -9,7 +9,6 @@ export default function SelfManagedLink({
   pagePath,
   backgroundImage,
 }: selfManagedProps) {
-  let link;
   let selfManagedOrCloud;
 
   return (
