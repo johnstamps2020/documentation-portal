@@ -63,7 +63,8 @@ product_codes_labels = {
     'ipg': {'label': 'Global Solutions - Germany'},
     'cm': {'label': 'IS Contact Manager'},
     'apd': {'label': 'Advanced Product Designer'},
-    'cp': {'label': 'Cloud Platform'}
+    'cp': {'label': 'Cloud Platform'},
+    'gtest': {'label': 'Guidewire Testing'}
 }
 
 
