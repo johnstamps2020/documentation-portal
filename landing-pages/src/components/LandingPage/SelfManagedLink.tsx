@@ -17,7 +17,6 @@ export default function SelfManagedLink({
   } else {
     selfManagedOrCloud = "self-managed";
     link = "/landing/selfManagedProducts";
-  }
 
   return (
     <Container
