@@ -16,7 +16,7 @@ export default function SelfManagedLink({
       style={{ marginLeft: 0, marginTop: 20, paddingLeft: 0 }}
     >
       <Link
-        href={selfManaged ? "/" ? "/landing/selfManagedProducts"}
+        href={selfManaged ? "/" : "/landing/selfManagedProducts"}
         underline="always"
         style={{ fontWeight: "bold" }}
         sx={
