@@ -1,3 +1,17 @@
+export type LegacyVersionObject = {
+  versionObjectId: string;
+  versions: string[];
+  releases: string[];
+  url: string;
+  currentlySelected: boolean;
+  label: string;
+};
+
+export type LegacyVersionSelector = {
+  docId: string;
+  allVersions: LegacyVersionObject[];
+};
+
 export class legacyItem {
   label: string;
   class: string;

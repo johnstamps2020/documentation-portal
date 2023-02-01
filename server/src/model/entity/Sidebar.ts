@@ -1,15 +1,9 @@
-import {
-  Column,
-  Entity,
-  JoinTable,
-  ManyToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany, PrimaryColumn } from 'typeorm';
 import { SidebarItem } from './SidebarItem';
 
 @Entity()
 export class Sidebar {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryColumn()
   id: string;
 
   @Column()
@@ -22,5 +16,4 @@ export class Sidebar {
   )
   @JoinTable()
   sidebarItems: SidebarItem[];
-
 }

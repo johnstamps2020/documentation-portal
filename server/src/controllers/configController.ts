@@ -1,12 +1,12 @@
 import fetch from 'node-fetch';
 import { winstonLogger } from './loggerController';
 import { Request, Response } from 'express';
-import { VersionSelector } from '../model/entity/VersionSelector';
 import { AppDataSource } from '../model/connection';
 import { Doc } from '../model/entity/Doc';
 import { Product } from '../model/entity/Product';
 import { Release } from '../model/entity/Release';
 import { FindOneAndDeleteOptions, FindOptionsWhere, ILike } from 'typeorm';
+import { LegacyVersionSelector } from '../types/legacyConfig';
 import { ApiResponse } from '../types/apiResponse';
 import { Page } from '../model/entity/Page';
 import { isUserAllowedToAccessResource } from './authController';
@@ -500,7 +500,7 @@ export async function getVersionSelector(
     ).href;
     const response = await fetch(versionSelectorsConfigPath);
     if (response.ok) {
-      const versionSelectorMapping: VersionSelector[] = await response.json();
+      const versionSelectorMapping: LegacyVersionSelector[] = await response.json();
       try {
         const matchingVersionSelector = versionSelectorMapping.find(
           s => docId === s.docId
