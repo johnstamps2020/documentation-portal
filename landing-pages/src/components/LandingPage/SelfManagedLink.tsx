@@ -9,7 +9,7 @@ export default function SelfManagedLink({
   pagePath,
   backgroundImage,
 }: selfManagedProps) {
-  let selfManagedOrCloud;
+  const selfManaged = pagePath === "selfManagedProducts";
 
   return (
     <Container
