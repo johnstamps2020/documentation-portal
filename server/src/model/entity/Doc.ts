@@ -11,6 +11,7 @@ import {
 import { Product } from './Product';
 import { Build } from './Build';
 import { Release } from './Release';
+import { Subject } from './Subject';
 
 @Entity()
 export class Doc {
@@ -49,7 +50,15 @@ export class Doc {
     { eager: true, nullable: true }
   )
   @JoinTable()
-  releases: Release[] | null;
+  releases: Release[];
+
+  @ManyToMany(
+    () => Subject,
+    subject => subject.name,
+    { eager: true, nullable: true }
+  )
+  @JoinTable()
+  subjects: Subject[];
 
   @Column()
   isInProduction: boolean;
@@ -68,7 +77,4 @@ export class Doc {
 
   @Column({ default: false })
   earlyAccess: boolean;
-
-  @Column('text', { array: true, nullable: true })
-  subjects: string[];
 }

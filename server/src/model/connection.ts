@@ -20,6 +20,7 @@ import { ProductFamilyItem } from './entity/ProductFamilyItem';
 import { PageSelectorItem } from './entity/PageSelectorItem';
 import { SidebarItem } from './entity/SidebarItem';
 import { Sidebar } from './entity/Sidebar';
+import { Subject } from './entity/Subject';
 
 const dbHost = process.env.CONFIG_DB_HOST;
 const isDevMode = runningInDevMode();
@@ -41,6 +42,7 @@ export const AppDataSource = new DataSource({
     Doc,
     Product,
     Release,
+    Subject,
     Resource,
     Source,
     Page,

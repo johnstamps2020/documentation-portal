@@ -6,6 +6,7 @@ import Layout from "../../components/Layout/Layout";
 import DocForm from "../../components/DocForm/DocForm";
 import { Product } from "server/dist/model/entity/Product";
 import { Release } from "server/dist/model/entity/Release";
+import { Subject } from "server/dist/model/entity/Subject";
 import Modal from "@mui/material/Modal";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
@@ -28,7 +29,7 @@ const emptyDoc: Doc = {
   internal: false,
   earlyAccess: false,
   build: new Build(),
-  subjects: [""],
+  subjects: [new Subject()],
   isInProduction: false
 };
 
@@ -108,7 +109,7 @@ export default function DocAdminPage() {
         earlyAccess: doc.earlyAccess,
         products: doc.products,
         releases: doc.releases,
-        subjects: null,
+        subjects: doc.subjects,
         categories: null,
         body: doc.body
       };
@@ -152,7 +153,7 @@ export default function DocAdminPage() {
         earlyAccess: doc.earlyAccess,
         products: doc.products,
         releases: doc.releases,
-        subjects: null,
+        subjects: doc.subjects,
         categories: null,
         body: doc.body
       };
@@ -227,7 +228,6 @@ export default function DocAdminPage() {
                   <div>Is public: {String(doc.public)}</div>
                   <div>Is internal: {String(doc.internal)}</div>
                   <div>Early access: {String(doc.earlyAccess)}</div>
-                  <div>Subjects: {doc.subjects}</div>
                   <div>Body: {doc.body}</div>
                   <Button color="error" onClick={() => deleteDoc(doc.id)}>
                     Delete

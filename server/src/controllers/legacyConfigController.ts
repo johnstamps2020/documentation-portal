@@ -39,6 +39,7 @@ import { Sidebar } from '../model/entity/Sidebar';
 import { getConfigFile, listItems } from './s3Controller';
 import { runningInDevMode } from './utils/serverUtils';
 import crypto from 'crypto';
+import { Subject } from '../model/entity/Subject';
 
 export async function getLegacyDocConfigs() {
   const { status, body } = await getAllEntities(Doc.name);
@@ -68,7 +69,8 @@ export async function getLegacyDocConfigs() {
       legacyDoc.metadata.release = doc.releases
         ? doc.releases.map((r: Release) => r.name)
         : null;
-      legacyDoc.metadata.subject = doc.subjects || null;
+      const docSubjects = doc.subjects.map(s => s.name);
+      legacyDoc.metadata.subject = docSubjects.length > 0 ? docSubjects : null;
 
       legacyDocs.push(legacyDoc);
     }
@@ -1048,7 +1050,24 @@ export async function putDocConfigsInDatabase(): Promise<{
           'name'
         );
       }
-      dbDoc.releases = docReleases.length > 0 ? docReleases : null;
+      if (docReleases.length > 0) {
+        dbDoc.releases = docReleases;
+      }
+
+      // Find subjects and create if needed
+      let docSubjects = [];
+      const legacyDocSubjects = doc.metadata.subject;
+      if (legacyDocSubjects) {
+        docSubjects = await getOrCreateEntities(
+          legacyDocSubjects,
+          Subject.name,
+          'name'
+        );
+      }
+      if (docSubjects.length > 0) {
+        dbDoc.subjects = docSubjects;
+      }
+
       // Find products and create if needed
       const legacyDocProducts = doc.metadata.product;
       const legacyDocPlatforms = doc.metadata.platform;
