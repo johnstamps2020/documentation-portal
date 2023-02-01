@@ -11,7 +11,6 @@ export default function SelfManagedLink({
 }: selfManagedProps) {
   let link;
   let selfManagedOrCloud;
-  if (pagePath === "selfManagedProducts") {
 
   return (
     <Container
