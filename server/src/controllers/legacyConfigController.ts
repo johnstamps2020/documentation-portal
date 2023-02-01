@@ -38,6 +38,7 @@ import { SidebarItem } from '../model/entity/SidebarItem';
 import { Sidebar } from '../model/entity/Sidebar';
 import { getConfigFile, listItems } from './s3Controller';
 import { runningInDevMode } from './utils/serverUtils';
+import crypto from 'crypto';
 
 export async function getLegacyDocConfigs() {
   const { status, body } = await getAllEntities(Doc.name);
@@ -278,7 +279,15 @@ async function updateRefsInItem(
   return dbItem;
 }
 
+function createMd5Hash(srcText: string) {
+  return crypto
+    .createHash('md5')
+    .update(srcText)
+    .digest('hex');
+}
+
 async function getOrCreateItems(
+  dbPagePath: string,
   rootPath: string,
   legacyItems: legacyItem[],
   legacyLandingPageConfigs: legacyPageConfig[]
@@ -313,6 +322,11 @@ async function getOrCreateItems(
         legacyLandingPageConfigs,
         rootPath
       );
+      dbPageSubItem.id = createMd5Hash(
+        `${dbPagePath}${parentItem.label}${dbPageSubItem.doc?.url ||
+          dbPageSubItem.page?.path ||
+          dbPageSubItem.link}`
+      );
       const result = await createOrUpdateEntity(
         dbPageSubItemRepo,
         dbPageSubItemWithRefs
@@ -332,6 +346,9 @@ async function getOrCreateItems(
         if (allLegacyItemItems) {
           const dbPageCategory = new Category();
           dbPageCategory.label = legacyItem.label;
+          dbPageCategory.id = createMd5Hash(
+            `${dbPagePath}${dbPageCategory.label}`
+          );
           const legacySubCategoryItems = allLegacyItemItems.filter(
             i => i.class?.includes('group') && i.items
           );
@@ -345,6 +362,9 @@ async function getOrCreateItems(
               if (legacySubCategoryItemItems) {
                 const subCategory = new SubCategory();
                 subCategory.label = legacySubCategoryItem.label;
+                subCategory.id = createMd5Hash(
+                  `${dbPagePath}${dbPageCategory.label}${subCategory.label}`
+                );
                 subCategory.subCategoryItems = await getOrCreateSubItems(
                   legacySubCategoryItemItems,
                   subCategory
@@ -373,6 +393,7 @@ async function getOrCreateItems(
       } else if (legacyItem.class?.includes('subject')) {
         const dbPageSubject = new Subject();
         dbPageSubject.label = legacyItem.label;
+        dbPageSubject.id = createMd5Hash(`${dbPagePath}${dbPageSubject.label}`);
         if (legacyItem.items) {
           dbPageSubject.subjectItems = await getOrCreateSubItems(
             legacyItem.items,
@@ -389,6 +410,11 @@ async function getOrCreateItems(
           dbPageProductFamilyItem,
           legacyLandingPageConfigs,
           rootPath
+        );
+        dbPageProductFamilyItem.id = createMd5Hash(
+          `${dbPagePath}${dbPageProductFamilyItem.doc?.url ||
+            dbPageProductFamilyItem.page?.path ||
+            dbPageProductFamilyItem.link}`
         );
         const result = await createOrUpdateEntity(
           ProductFamilyItem.name,
@@ -540,8 +566,10 @@ export async function putPageConfigsInDatabase() {
       const legacyPageConfig = pageConfig.legacyPage;
       const dbPageConfig = pageConfig.dbPage;
       const legacyPageAbsPath = legacyPageConfig.path;
+      const pageConfigDbPagePath = pageConfig.dbPage.path;
       if (legacyPageConfig.items) {
         const allPageItems = await getOrCreateItems(
+          pageConfigDbPagePath,
           legacyPageAbsPath,
           legacyPageConfig.items,
           localLandingPagesConfig
@@ -576,11 +604,17 @@ export async function putPageConfigsInDatabase() {
       if (legacyPageSelector) {
         const pageSelector = new PageSelector();
         pageSelector.label = legacyPageSelector.label;
+        pageSelector.id = createMd5Hash(
+          `${pageConfigDbPagePath}${pageSelector.label}`
+        );
         pageSelector.selectedItemLabel = legacyPageSelector.selectedItem;
         const pageSelectorItems = [];
         for (const legacyPageSelectorItem of legacyPageSelector.items) {
           const pageSelectorItem = new PageSelectorItem();
           pageSelectorItem.label = legacyPageSelectorItem.label;
+          pageSelectorItem.id = createMd5Hash(
+            `${pageConfigDbPagePath}${pageSelector.label}${pageSelectorItem.label}`
+          );
           const pageSelectorItemWithRefs = await updateRefsInItem(
             legacyPageSelectorItem,
             pageSelectorItem,
@@ -597,6 +631,9 @@ export async function putPageConfigsInDatabase() {
         const currentlySelectedPageSelectorItem = new PageSelectorItem();
         currentlySelectedPageSelectorItem.label =
           legacyPageSelector.selectedItem;
+        currentlySelectedPageSelectorItem.id = createMd5Hash(
+          `${pageConfigDbPagePath}${pageSelector.label}${currentlySelectedPageSelectorItem.label}`
+        );
         currentlySelectedPageSelectorItem.link = '#';
         const selectedPageSelectorItemSaveResult = await createOrUpdateEntity(
           PageSelectorItem.name,
@@ -615,6 +652,10 @@ export async function putPageConfigsInDatabase() {
         dbPageConfig.searchFilters = legacySearchFilters;
       }
       // Sidebars
+      const sidebar = new Sidebar();
+      sidebar.label = 'Implementation resources';
+      sidebar.id = createMd5Hash(`${pageConfigDbPagePath}${sidebar.label}`);
+
       if (
         [
           'cloudProducts/flaine',
@@ -635,6 +676,9 @@ export async function putPageConfigsInDatabase() {
         );
         guidewireTestingSidebarItem.label = 'Guidewire Testing';
         guidewireTestingSidebarItem.page = guidewireTestingPageResult.body;
+        guidewireTestingSidebarItem.id = createMd5Hash(
+          `${pageConfigDbPagePath}${sidebar.label}${guidewireTestingSidebarItem.page.path}`
+        );
         const guidewireTestingSidebarItemSaveResult = await createOrUpdateEntity(
           SidebarItem.name,
           guidewireTestingSidebarItem
@@ -650,6 +694,9 @@ export async function putPageConfigsInDatabase() {
         );
         apiReferencesSidebarItem.label = 'API References';
         apiReferencesSidebarItem.page = apiReferencesPageResult.body;
+        apiReferencesSidebarItem.id = createMd5Hash(
+          `${pageConfigDbPagePath}${sidebar.label}${apiReferencesSidebarItem.page.path}`
+        );
         const apiReferencesSidebarItemSaveResult = await createOrUpdateEntity(
           SidebarItem.name,
           apiReferencesSidebarItem
@@ -665,6 +712,10 @@ export async function putPageConfigsInDatabase() {
         );
         cloudStandardsSidebarItem.label = 'Cloud Standards';
         cloudStandardsSidebarItem.doc = cloudStandardsDocResult.body;
+        cloudStandardsSidebarItem.id = createMd5Hash(
+          `${pageConfigDbPagePath}${sidebar.label}${cloudStandardsSidebarItem.doc.url}`
+        );
+
         const cloudStandardsSidebarItemDocSaveResult = await createOrUpdateEntity(
           SidebarItem.name,
           cloudStandardsSidebarItem
@@ -673,6 +724,10 @@ export async function putPageConfigsInDatabase() {
         const upgradeDiffsReportsSidebarItem = new SidebarItem();
         upgradeDiffsReportsSidebarItem.link = '/upgradediffs';
         upgradeDiffsReportsSidebarItem.label = 'Upgrade Diff Reports';
+        upgradeDiffsReportsSidebarItem.id = createMd5Hash(
+          `${pageConfigDbPagePath}${sidebar.label}${upgradeDiffsReportsSidebarItem.link}`
+        );
+
         const upgradeDiffsReportsSidebarItemSaveResult = await createOrUpdateEntity(
           SidebarItem.name,
           upgradeDiffsReportsSidebarItem
@@ -681,13 +736,14 @@ export async function putPageConfigsInDatabase() {
         const internalDocsSidebarItem = new SidebarItem();
         internalDocsSidebarItem.link = '/internal-docs';
         internalDocsSidebarItem.label = 'Internal docs';
+        internalDocsSidebarItem.id = createMd5Hash(
+          `${pageConfigDbPagePath}${sidebar.label}${internalDocsSidebarItem.link}`
+        );
         const internalDocsSidebarItemSaveResult = await createOrUpdateEntity(
           SidebarItem.name,
           internalDocsSidebarItem
         );
 
-        const sidebar = new Sidebar();
-        sidebar.label = 'Implementation resources';
         if (legacyPageConfig.path.endsWith('cloudProducts/flaine')) {
           sidebar.sidebarItems = [
             cloudStandardsSidebarItemDocSaveResult.body,
