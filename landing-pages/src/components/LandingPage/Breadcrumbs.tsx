@@ -43,7 +43,7 @@ export default function Breadcrumbs(breadcrumbProps: BreadcrumbProps) {
             {label}
           </Link>
         ))}
-      {!breadcrumbs && <div style={{ height: "34px" }}></div>}
+      {!breadcrumbs && <div style={{ height: "24px" }}></div>}
     </Stack>
   );
 }
