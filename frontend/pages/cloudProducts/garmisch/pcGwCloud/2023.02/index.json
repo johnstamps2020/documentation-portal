@@ -135,6 +135,10 @@
           "id": "gwrules"
         },
         {
+          "label": "Guidewire Rules Type Manager (Early Access)",
+          "id": "gwrulestypemgr"
+        },
+        {
           "label": "Product Designer",
           "id": "ispc202302pd"
         },

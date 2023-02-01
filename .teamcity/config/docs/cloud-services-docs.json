@@ -12,7 +12,7 @@
         "release": ["Flaine"],
         "subject": ["Release notes"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -30,14 +30,32 @@
         "release": ["Flaine"],
         "subject": ["Configuration"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": false,
       "earlyAccess": true
     },
-        {
+    {
+      "id": "gwrulestypemgr",
+      "title": "Guidewire Rules Type Manager",
+      "url": "cloud/gwrulestypemgr",
+      "metadata": {
+        "product": ["Rules"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Garmisch"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
       "id": "submissionintake",
       "title": "Submission Intake",
       "url": "cloud/subintake",
@@ -48,7 +66,7 @@
         "release": ["Flaine"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -66,7 +84,7 @@
         "release": ["Flaine"],
         "subject": ["Configuration"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -84,7 +102,7 @@
         "release": ["Flaine"],
         "subject": ["Configuration"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
