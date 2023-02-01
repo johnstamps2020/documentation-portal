@@ -33,7 +33,7 @@ export default function SelfManagedLink({
             : { color: "black", textDecorationColor: "black" }
         }
       >
-        Click here for {selfManagedOrCloud} documentation
+        {`Click here for ${selfManaged ? "Guidewire Cloud" : "self-managed"} documentation`}
       </Link>
     </Container>
   );
