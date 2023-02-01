@@ -5,15 +5,23 @@ import {
   ManyToMany,
   ManyToOne,
   OneToOne,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
 } from 'typeorm';
 import { Doc } from './Doc';
 import { Source } from './Source';
 import { Resource } from './Resource';
 
+export enum BuildType {
+  DITA = 'dita',
+  SOURCE_ZIP = 'source-zip',
+  STORYBOOK = 'storybook',
+  YARN = 'yarn',
+  JUST_COPY = 'just-copy',
+}
+
 @Entity()
 export class Build {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryColumn()
   id: string;
 
   @Column()

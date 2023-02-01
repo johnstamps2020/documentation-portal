@@ -6,14 +6,16 @@ import {
   JoinTable,
   ManyToMany,
   OneToOne,
+  PrimaryColumn,
 } from 'typeorm';
 import { Product } from './Product';
 import { Build } from './Build';
 import { Release } from './Release';
+import { Subject } from './Subject';
 
 @Entity()
 export class Doc {
-  @Column({ primary: true })
+  @PrimaryColumn()
   id: string;
 
   @Column()
@@ -28,7 +30,7 @@ export class Doc {
 
   @ManyToMany(
     () => Product,
-    product => product.id,
+    product => product,
     { eager: true }
   )
   @JoinTable()
@@ -36,7 +38,7 @@ export class Doc {
 
   @OneToOne(
     () => Build,
-    build => build.doc,
+    build => build.id,
     { eager: true }
   )
   @JoinColumn()
@@ -44,11 +46,19 @@ export class Doc {
 
   @ManyToMany(
     () => Release,
-    release => release.id,
+    release => release.name,
     { eager: true, nullable: true }
   )
   @JoinTable()
-  releases: Release[] | null;
+  releases: Release[];
+
+  @ManyToMany(
+    () => Subject,
+    subject => subject.name,
+    { eager: true, nullable: true }
+  )
+  @JoinTable()
+  subjects: Subject[];
 
   @Column()
   isInProduction: boolean;
@@ -67,7 +77,4 @@ export class Doc {
 
   @Column({ default: false })
   earlyAccess: boolean;
-
-  @Column('text', { array: true, nullable: true })
-  subjects: string[];
 }

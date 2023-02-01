@@ -7,7 +7,7 @@ import { Theme } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import Backdrop from "@mui/material/Backdrop";
 import CategoryLayout from "../../components/LandingPage/Category/CategoryLayout";
-import SubjectLayout from "../../components/LandingPage/Subject/SubjectLayout";
+import SectionLayout from "../../components/LandingPage/Section/SectionLayout";
 import ProductFamilyLayout from "../../components/LandingPage/ProductFamily/ProductFamilyLayout";
 
 export default function LandingPage() {
@@ -83,8 +83,8 @@ export default function LandingPage() {
         {pageData && pageData.categories.length !== 0 && (
           <CategoryLayout {...pageData} />
         )}
-        {pageData && pageData.subjects.length !== 0 && (
-          <SubjectLayout {...pageData} />
+        {pageData && pageData.sections.length !== 0 && (
+          <SectionLayout {...pageData} />
         )}
         {pageData && pageData.productFamilyItems.length !== 0 && (
           <ProductFamilyLayout {...pageData} />

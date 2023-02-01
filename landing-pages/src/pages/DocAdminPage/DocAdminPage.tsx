@@ -6,6 +6,7 @@ import Layout from "../../components/Layout/Layout";
 import DocForm from "../../components/DocForm/DocForm";
 import { Product } from "server/dist/model/entity/Product";
 import { Release } from "server/dist/model/entity/Release";
+import { Subject } from "server/dist/model/entity/Subject";
 import Modal from "@mui/material/Modal";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
@@ -28,8 +29,8 @@ const emptyDoc: Doc = {
   internal: false,
   earlyAccess: false,
   build: new Build(),
-  subjects: [""],
-  isInProduction: false,
+  subjects: [new Subject()],
+  isInProduction: false
 };
 
 export default function DocAdminPage() {
@@ -39,7 +40,7 @@ export default function DocAdminPage() {
   const [snack, setSnack] = useState({
     message: "",
     color: "",
-    open: false,
+    open: false
   });
   const SnackbarContext = createContext({});
   const [open, setOpen] = React.useState(false);
@@ -60,31 +61,31 @@ export default function DocAdminPage() {
     setSnack({
       message: "",
       color: "",
-      open: false,
+      open: false
     });
     const data = {
-      id: id,
+      id: id
     };
     const response = await fetch(`/safeConfig/entity/Doc?id=${id}`, {
       method: "DELETE",
       headers: {
         Accept: "application/form-data",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data)
     });
     if (response.ok) {
       setSnack({
         message: "Successfully deleted document.",
         color: "green",
-        open: true,
+        open: true
       });
       getDocData();
     } else {
       setSnack({
         message: "Oops, something went wrong while deleting document.",
         color: "red",
-        open: true,
+        open: true
       });
     }
   };
@@ -93,10 +94,10 @@ export default function DocAdminPage() {
     setSnack({
       message: "",
       color: "",
-      open: false,
+      open: false
     });
     //updating document
-    if (doc && docData && docData.find((document) => document.id === doc.id)) {
+    if (doc && docData && docData.find(document => document.id === doc.id)) {
       const data = {
         id: doc.id,
         title: doc.title,
@@ -108,9 +109,9 @@ export default function DocAdminPage() {
         earlyAccess: doc.earlyAccess,
         products: doc.products,
         releases: doc.releases,
-        subjects: null,
+        subjects: doc.subjects,
         categories: null,
-        body: doc.body,
+        body: doc.body
       };
 
       const response = await fetch(`/safeConfig/entity/Doc?id=${doc.id}`, {
@@ -118,8 +119,8 @@ export default function DocAdminPage() {
         body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
-        },
+          Accept: "application/json"
+        }
       });
 
       const result = await response.json();
@@ -128,14 +129,14 @@ export default function DocAdminPage() {
         setSnack({
           message: "Successfully updated document.",
           color: "green",
-          open: true,
+          open: true
         });
         getDocData();
       } else {
         setSnack({
           message: "Oops, something went wrong while updating document.",
           color: "red",
-          open: true,
+          open: true
         });
       }
     }
@@ -152,17 +153,17 @@ export default function DocAdminPage() {
         earlyAccess: doc.earlyAccess,
         products: doc.products,
         releases: doc.releases,
-        subjects: null,
+        subjects: doc.subjects,
         categories: null,
-        body: doc.body,
+        body: doc.body
       };
       const response = await fetch(`/safeConfig/entity/Doc?id=`, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
-        },
+          Accept: "application/json"
+        }
       });
 
       const result = await response.json();
@@ -171,14 +172,14 @@ export default function DocAdminPage() {
         setSnack({
           message: "Successfully added new document.",
           color: "green",
-          open: true,
+          open: true
         });
         getDocData();
       } else {
         setSnack({
           message: "Oops, something went wrong while adding new document.",
           color: "red",
-          open: true,
+          open: true
         });
       }
     }
@@ -213,7 +214,7 @@ export default function DocAdminPage() {
                     width: 400,
                     height: 400,
                     marginBottom: 15,
-                    breakInside: "avoid",
+                    breakInside: "avoid"
                   }}
                 >
                   <div>{doc.title}</div>
@@ -227,7 +228,6 @@ export default function DocAdminPage() {
                   <div>Is public: {String(doc.public)}</div>
                   <div>Is internal: {String(doc.internal)}</div>
                   <div>Early access: {String(doc.earlyAccess)}</div>
-                  <div>Subjects: {doc.subjects}</div>
                   <div>Body: {doc.body}</div>
                   <Button color="error" onClick={() => deleteDoc(doc.id)}>
                     Delete

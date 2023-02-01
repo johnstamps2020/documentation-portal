@@ -9,7 +9,6 @@ import { Release } from '../model/entity/Release';
 import { Resource } from '../model/entity/Resource';
 import { Source } from '../model/entity/Source';
 import path, { join, resolve } from 'path';
-import { AppDataSource } from '../model/connection';
 import {
   legacyBuildConfig,
   legacyBuildsConfigFile,
@@ -21,17 +20,14 @@ import {
   legacySourcesConfigFile,
   Metadata,
 } from '../types/legacyConfig';
-import { Build } from '../model/entity/Build';
+import { Build, BuildType } from '../model/entity/Build';
 import { lstatSync, readdirSync, readFileSync } from 'fs';
-import { ProductName } from '../model/entity/ProductName';
-import { ProductPlatform } from '../model/entity/ProductPlatform';
-import { ProductVersion } from '../model/entity/ProductVersion';
 import { Page } from '../model/entity/Page';
 import { winstonLogger } from './loggerController';
 import { CategoryItem } from '../model/entity/CategoryItem';
-import { SubjectItem } from '../model/entity/SubjectItem';
+import { SectionItem } from '../model/entity/SectionItem';
 import { Category } from '../model/entity/Category';
-import { Subject } from '../model/entity/Subject';
+import { Section } from '../model/entity/Section';
 import { SubCategory } from '../model/entity/SubCategory';
 import { SubCategoryItem } from '../model/entity/SubCategoryItem';
 import { ProductFamilyItem } from '../model/entity/ProductFamilyItem';
@@ -42,6 +38,8 @@ import { SidebarItem } from '../model/entity/SidebarItem';
 import { Sidebar } from '../model/entity/Sidebar';
 import { getConfigFile, listItems } from './s3Controller';
 import { runningInDevMode } from './utils/serverUtils';
+import crypto from 'crypto';
+import { Subject } from '../model/entity/Subject';
 
 export async function getLegacyDocConfigs() {
   const { status, body } = await getAllEntities(Doc.name);
@@ -63,19 +61,16 @@ export async function getLegacyDocConfigs() {
       legacyDoc.internal = doc.internal;
       legacyDoc.earlyAccess = doc.earlyAccess;
       legacyDoc.metadata = new Metadata();
-      legacyDoc.metadata.product = doc.products.map(
-        (p: Product) => p.name.name
-      );
+      legacyDoc.metadata.product = doc.products.map((p: Product) => p.name);
       legacyDoc.metadata.platform = doc.products.map(
-        (p: Product) => p.platform.name
+        (p: Product) => p.platform
       );
-      legacyDoc.metadata.version = doc.products.map(
-        (p: Product) => p.version.name
-      );
+      legacyDoc.metadata.version = doc.products.map((p: Product) => p.version);
       legacyDoc.metadata.release = doc.releases
         ? doc.releases.map((r: Release) => r.name)
         : null;
-      legacyDoc.metadata.subject = doc.subjects || null;
+      const docSubjects = doc.subjects.map(s => s.name);
+      legacyDoc.metadata.subject = docSubjects.length > 0 ? docSubjects : null;
 
       legacyDocs.push(legacyDoc);
     }
@@ -286,18 +281,26 @@ async function updateRefsInItem(
   return dbItem;
 }
 
+function createMd5Hash(srcText: string) {
+  return crypto
+    .createHash('md5')
+    .update(srcText)
+    .digest('hex');
+}
+
 async function getOrCreateItems(
+  dbPagePath: string,
   rootPath: string,
   legacyItems: legacyItem[],
   legacyLandingPageConfigs: legacyPageConfig[]
 ): Promise<{
   categories: Category[];
-  subjects: Subject[];
+  sections: Section[];
   productFamilyItems: ProductFamilyItem[];
 }> {
   async function getOrCreateSubItems(
     legacySubItems: legacyItem[],
-    parentItem: Category | Subject | SubCategory
+    parentItem: Category | Section | SubCategory
   ): Promise<Item[]> {
     const dbPageSubItems = [];
     for (const legacySubItem of legacySubItems) {
@@ -310,8 +313,8 @@ async function getOrCreateItems(
         dbPageSubItem = new CategoryItem();
         dbPageSubItemRepo = CategoryItem.name;
       } else {
-        dbPageSubItem = new SubjectItem();
-        dbPageSubItemRepo = SubjectItem.name;
+        dbPageSubItem = new SectionItem();
+        dbPageSubItemRepo = SectionItem.name;
       }
       dbPageSubItem.label = legacySubItem.label;
 
@@ -320,6 +323,11 @@ async function getOrCreateItems(
         dbPageSubItem,
         legacyLandingPageConfigs,
         rootPath
+      );
+      dbPageSubItem.id = createMd5Hash(
+        `${dbPagePath}${parentItem.label}${dbPageSubItem.doc?.url ||
+          dbPageSubItem.page?.path ||
+          dbPageSubItem.link}`
       );
       const result = await createOrUpdateEntity(
         dbPageSubItemRepo,
@@ -331,7 +339,7 @@ async function getOrCreateItems(
   }
 
   const dbPageCategories = [];
-  const dbPageSubjects = [];
+  const dbPageSections = [];
   const dbPageProductFamilyItems = [];
   for (const legacyItem of legacyItems) {
     try {
@@ -340,6 +348,9 @@ async function getOrCreateItems(
         if (allLegacyItemItems) {
           const dbPageCategory = new Category();
           dbPageCategory.label = legacyItem.label;
+          dbPageCategory.id = createMd5Hash(
+            `${dbPagePath}${dbPageCategory.label}`
+          );
           const legacySubCategoryItems = allLegacyItemItems.filter(
             i => i.class?.includes('group') && i.items
           );
@@ -353,6 +364,9 @@ async function getOrCreateItems(
               if (legacySubCategoryItemItems) {
                 const subCategory = new SubCategory();
                 subCategory.label = legacySubCategoryItem.label;
+                subCategory.id = createMd5Hash(
+                  `${dbPagePath}${dbPageCategory.label}${subCategory.label}`
+                );
                 subCategory.subCategoryItems = await getOrCreateSubItems(
                   legacySubCategoryItemItems,
                   subCategory
@@ -379,16 +393,17 @@ async function getOrCreateItems(
           dbPageCategories.push(result.body);
         }
       } else if (legacyItem.class?.includes('subject')) {
-        const dbPageSubject = new Subject();
-        dbPageSubject.label = legacyItem.label;
+        const dbPageSection = new Section();
+        dbPageSection.label = legacyItem.label;
+        dbPageSection.id = createMd5Hash(`${dbPagePath}${dbPageSection.label}`);
         if (legacyItem.items) {
-          dbPageSubject.subjectItems = await getOrCreateSubItems(
+          dbPageSection.sectionItems = await getOrCreateSubItems(
             legacyItem.items,
-            dbPageSubject
+            dbPageSection
           );
         }
-        const result = await createOrUpdateEntity(Subject.name, dbPageSubject);
-        dbPageSubjects.push(result.body);
+        const result = await createOrUpdateEntity(Section.name, dbPageSection);
+        dbPageSections.push(result.body);
       } else if (legacyItem.class?.includes('productFamily')) {
         const dbPageProductFamilyItem = new ProductFamilyItem();
         dbPageProductFamilyItem.label = legacyItem.label;
@@ -397,6 +412,11 @@ async function getOrCreateItems(
           dbPageProductFamilyItem,
           legacyLandingPageConfigs,
           rootPath
+        );
+        dbPageProductFamilyItem.id = createMd5Hash(
+          `${dbPagePath}${dbPageProductFamilyItem.doc?.url ||
+            dbPageProductFamilyItem.page?.path ||
+            dbPageProductFamilyItem.link}`
         );
         const result = await createOrUpdateEntity(
           ProductFamilyItem.name,
@@ -410,7 +430,7 @@ async function getOrCreateItems(
   }
   return {
     categories: dbPageCategories,
-    subjects: dbPageSubjects,
+    sections: dbPageSections,
     productFamilyItems: dbPageProductFamilyItems,
   };
 }
@@ -548,27 +568,29 @@ export async function putPageConfigsInDatabase() {
       const legacyPageConfig = pageConfig.legacyPage;
       const dbPageConfig = pageConfig.dbPage;
       const legacyPageAbsPath = legacyPageConfig.path;
+      const pageConfigDbPagePath = pageConfig.dbPage.path;
       if (legacyPageConfig.items) {
         const allPageItems = await getOrCreateItems(
+          pageConfigDbPagePath,
           legacyPageAbsPath,
           legacyPageConfig.items,
           localLandingPagesConfig
         );
         const pageCategories = allPageItems.categories;
-        const pageSubjects = allPageItems.subjects;
+        const pageSections = allPageItems.sections;
         const pageProductFamilyItems = allPageItems.productFamilyItems;
         dbPageConfig.categories = [];
-        dbPageConfig.subjects = [];
+        dbPageConfig.sections = [];
         dbPageConfig.productFamilyItems = [];
         if (pageCategories.length > 0) {
           for (const c of pageCategories) {
             const result = await createOrUpdateEntity(Category.name, c);
             dbPageConfig.categories.push(result.body);
           }
-        } else if (pageSubjects.length > 0) {
-          for (const s of pageSubjects) {
-            const result = await createOrUpdateEntity(Subject.name, s);
-            dbPageConfig.subjects.push(result.body);
+        } else if (pageSections.length > 0) {
+          for (const s of pageSections) {
+            const result = await createOrUpdateEntity(Section.name, s);
+            dbPageConfig.sections.push(result.body);
           }
         } else if (pageProductFamilyItems.length > 0) {
           for (const p of pageProductFamilyItems) {
@@ -584,11 +606,17 @@ export async function putPageConfigsInDatabase() {
       if (legacyPageSelector) {
         const pageSelector = new PageSelector();
         pageSelector.label = legacyPageSelector.label;
+        pageSelector.id = createMd5Hash(
+          `${pageConfigDbPagePath}${pageSelector.label}`
+        );
         pageSelector.selectedItemLabel = legacyPageSelector.selectedItem;
         const pageSelectorItems = [];
         for (const legacyPageSelectorItem of legacyPageSelector.items) {
           const pageSelectorItem = new PageSelectorItem();
           pageSelectorItem.label = legacyPageSelectorItem.label;
+          pageSelectorItem.id = createMd5Hash(
+            `${pageConfigDbPagePath}${pageSelector.label}${pageSelectorItem.label}`
+          );
           const pageSelectorItemWithRefs = await updateRefsInItem(
             legacyPageSelectorItem,
             pageSelectorItem,
@@ -605,6 +633,9 @@ export async function putPageConfigsInDatabase() {
         const currentlySelectedPageSelectorItem = new PageSelectorItem();
         currentlySelectedPageSelectorItem.label =
           legacyPageSelector.selectedItem;
+        currentlySelectedPageSelectorItem.id = createMd5Hash(
+          `${pageConfigDbPagePath}${pageSelector.label}${currentlySelectedPageSelectorItem.label}`
+        );
         currentlySelectedPageSelectorItem.link = '#';
         const selectedPageSelectorItemSaveResult = await createOrUpdateEntity(
           PageSelectorItem.name,
@@ -623,6 +654,10 @@ export async function putPageConfigsInDatabase() {
         dbPageConfig.searchFilters = legacySearchFilters;
       }
       // Sidebars
+      const sidebar = new Sidebar();
+      sidebar.label = 'Implementation resources';
+      sidebar.id = createMd5Hash(`${pageConfigDbPagePath}${sidebar.label}`);
+
       if (
         [
           'cloudProducts/flaine',
@@ -643,6 +678,9 @@ export async function putPageConfigsInDatabase() {
         );
         guidewireTestingSidebarItem.label = 'Guidewire Testing';
         guidewireTestingSidebarItem.page = guidewireTestingPageResult.body;
+        guidewireTestingSidebarItem.id = createMd5Hash(
+          `${pageConfigDbPagePath}${sidebar.label}${guidewireTestingSidebarItem.page.path}`
+        );
         const guidewireTestingSidebarItemSaveResult = await createOrUpdateEntity(
           SidebarItem.name,
           guidewireTestingSidebarItem
@@ -658,6 +696,9 @@ export async function putPageConfigsInDatabase() {
         );
         apiReferencesSidebarItem.label = 'API References';
         apiReferencesSidebarItem.page = apiReferencesPageResult.body;
+        apiReferencesSidebarItem.id = createMd5Hash(
+          `${pageConfigDbPagePath}${sidebar.label}${apiReferencesSidebarItem.page.path}`
+        );
         const apiReferencesSidebarItemSaveResult = await createOrUpdateEntity(
           SidebarItem.name,
           apiReferencesSidebarItem
@@ -673,6 +714,10 @@ export async function putPageConfigsInDatabase() {
         );
         cloudStandardsSidebarItem.label = 'Cloud Standards';
         cloudStandardsSidebarItem.doc = cloudStandardsDocResult.body;
+        cloudStandardsSidebarItem.id = createMd5Hash(
+          `${pageConfigDbPagePath}${sidebar.label}${cloudStandardsSidebarItem.doc.url}`
+        );
+
         const cloudStandardsSidebarItemDocSaveResult = await createOrUpdateEntity(
           SidebarItem.name,
           cloudStandardsSidebarItem
@@ -681,6 +726,10 @@ export async function putPageConfigsInDatabase() {
         const upgradeDiffsReportsSidebarItem = new SidebarItem();
         upgradeDiffsReportsSidebarItem.link = '/upgradediffs';
         upgradeDiffsReportsSidebarItem.label = 'Upgrade Diff Reports';
+        upgradeDiffsReportsSidebarItem.id = createMd5Hash(
+          `${pageConfigDbPagePath}${sidebar.label}${upgradeDiffsReportsSidebarItem.link}`
+        );
+
         const upgradeDiffsReportsSidebarItemSaveResult = await createOrUpdateEntity(
           SidebarItem.name,
           upgradeDiffsReportsSidebarItem
@@ -689,13 +738,14 @@ export async function putPageConfigsInDatabase() {
         const internalDocsSidebarItem = new SidebarItem();
         internalDocsSidebarItem.link = '/internal-docs';
         internalDocsSidebarItem.label = 'Internal docs';
+        internalDocsSidebarItem.id = createMd5Hash(
+          `${pageConfigDbPagePath}${sidebar.label}${internalDocsSidebarItem.link}`
+        );
         const internalDocsSidebarItemSaveResult = await createOrUpdateEntity(
           SidebarItem.name,
           internalDocsSidebarItem
         );
 
-        const sidebar = new Sidebar();
-        sidebar.label = 'Implementation resources';
         if (legacyPageConfig.path.endsWith('cloudProducts/flaine')) {
           sidebar.sidebarItems = [
             cloudStandardsSidebarItemDocSaveResult.body,
@@ -866,31 +916,10 @@ async function createProductEntities(
 ): Promise<Product[]> {
   const dbDocProducts = [];
   for (const productConfig of productConfigs) {
-    const productName = await findEntity(
-      ProductName.name,
-      {
-        name: productConfig.productName,
-      },
-      false
-    );
-    const platformName = await findEntity(
-      ProductPlatform.name,
-      {
-        name: productConfig.platformName,
-      },
-      false
-    );
-    const versionName = await findEntity(
-      ProductVersion.name,
-      {
-        name: productConfig.versionName,
-      },
-      false
-    );
     const productEntitySaveResult = await createOrUpdateEntity(Product.name, {
-      name: productName.body,
-      platform: platformName.body,
-      version: versionName.body,
+      name: productConfig.productName,
+      platform: productConfig.platformName,
+      version: productConfig.versionName,
     });
     dbDocProducts.push(productEntitySaveResult.body);
   }
@@ -906,7 +935,11 @@ async function addDocBuild(buildConfig: legacyBuildConfig) {
     },
     false
   );
-  docBuild.type = buildConfig.buildType;
+  docBuild.id = `${buildConfig.srcId}${buildConfig.docId}`;
+  const t = Object.entries(BuildType).find(
+    ([k, v]) => v === buildConfig.buildType
+  );
+  docBuild.type = Array.isArray(t) ? t[1] : BuildType.DITA;
   docBuild.root = buildConfig.root;
   docBuild.filter = buildConfig.filter;
   docBuild.source = matchingBuildSrc.body;
@@ -917,6 +950,30 @@ async function addDocBuild(buildConfig: legacyBuildConfig) {
   docBuild.outputPath = buildConfig.outputPath;
   docBuild.zipFilename = buildConfig.zipFilename;
   docBuild.customEnv = buildConfig.customEnv;
+  const buildResources = buildConfig.resources;
+  if (buildResources?.length > 0) {
+    const docBuildResources = [];
+    for (const resource of buildResources) {
+      const docBuildResource = new Resource();
+      docBuildResource.id = `${resource.sourceFolder}${resource.targetFolder}${resource.srcId}`;
+      docBuildResource.sourceFolder = resource.sourceFolder;
+      docBuildResource.targetFolder = resource.targetFolder;
+      const sourceEntity = await findEntity(
+        Source.name,
+        { id: resource.srcId },
+        false
+      );
+      docBuildResource.source = sourceEntity.body;
+      const docBuildResourceSaveResult = await createOrUpdateEntity(
+        Resource.name,
+        docBuildResource
+      );
+      if (docBuildResourceSaveResult.status === 200) {
+        docBuildResources.push(docBuildResourceSaveResult.body);
+      }
+      docBuild.resources = docBuildResources;
+    }
+  }
   const saveResult = await createOrUpdateEntity(Build.name, docBuild);
   return saveResult.body;
 }
@@ -993,28 +1050,28 @@ export async function putDocConfigsInDatabase(): Promise<{
           'name'
         );
       }
-      dbDoc.releases = docReleases.length > 0 ? docReleases : null;
+      if (docReleases.length > 0) {
+        dbDoc.releases = docReleases;
+      }
+
+      // Find subjects and create if needed
+      let docSubjects = [];
+      const legacyDocSubjects = doc.metadata.subject;
+      if (legacyDocSubjects) {
+        docSubjects = await getOrCreateEntities(
+          legacyDocSubjects,
+          Subject.name,
+          'name'
+        );
+      }
+      if (docSubjects.length > 0) {
+        dbDoc.subjects = docSubjects;
+      }
+
       // Find products and create if needed
       const legacyDocProducts = doc.metadata.product;
-      if (legacyDocProducts) {
-        await getOrCreateEntities(legacyDocProducts, ProductName.name, 'name');
-      }
       const legacyDocPlatforms = doc.metadata.platform;
-      if (legacyDocPlatforms) {
-        await getOrCreateEntities(
-          legacyDocPlatforms,
-          ProductPlatform.name,
-          'name'
-        );
-      }
       const legacyDocVersions = doc.metadata.version;
-      if (legacyDocVersions) {
-        await getOrCreateEntities(
-          legacyDocVersions,
-          ProductVersion.name,
-          'name'
-        );
-      }
       const productConfigCombinations = [];
       for (const product of legacyDocProducts) {
         for (const platform of legacyDocPlatforms) {

@@ -7,9 +7,6 @@ import { Build } from './entity/Build';
 import { Release } from './entity/Release';
 import { Resource } from './entity/Resource';
 import { Source } from './entity/Source';
-import { ProductPlatform } from './entity/ProductPlatform';
-import { ProductName } from './entity/ProductName';
-import { ProductVersion } from './entity/ProductVersion';
 import { Page } from './entity/Page';
 import { PageSelector } from './entity/PageSelector';
 import { Category } from './entity/Category';
@@ -17,12 +14,13 @@ import { CategoryItem } from './entity/CategoryItem';
 import { Item } from './entity/Item';
 import { SubCategory } from './entity/SubCategory';
 import { SubCategoryItem } from './entity/SubCategoryItem';
-import { Subject } from './entity/Subject';
-import { SubjectItem } from './entity/SubjectItem';
+import { Section } from './entity/Section';
+import { SectionItem } from './entity/SectionItem';
 import { ProductFamilyItem } from './entity/ProductFamilyItem';
 import { PageSelectorItem } from './entity/PageSelectorItem';
 import { SidebarItem } from './entity/SidebarItem';
 import { Sidebar } from './entity/Sidebar';
+import { Subject } from './entity/Subject';
 
 const dbHost = process.env.CONFIG_DB_HOST;
 const isDevMode = runningInDevMode();
@@ -43,10 +41,8 @@ export const AppDataSource = new DataSource({
     Build,
     Doc,
     Product,
-    ProductName,
-    ProductPlatform,
-    ProductVersion,
     Release,
+    Subject,
     Resource,
     Source,
     Page,
@@ -57,8 +53,8 @@ export const AppDataSource = new DataSource({
     CategoryItem,
     SubCategory,
     SubCategoryItem,
-    Subject,
-    SubjectItem,
+    Section,
+    SectionItem,
     ProductFamilyItem,
     Sidebar,
     SidebarItem,

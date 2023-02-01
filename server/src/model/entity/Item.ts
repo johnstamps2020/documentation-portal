@@ -4,14 +4,14 @@ import {
   JoinColumn,
   JoinTable,
   ManyToOne,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
 } from 'typeorm';
 import { Page } from './Page';
 import { Doc } from './Doc';
 
 @Entity()
 export abstract class Item {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryColumn()
   id: string;
 
   @Column()

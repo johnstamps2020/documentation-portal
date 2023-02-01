@@ -1,3 +1,17 @@
+export type LegacyVersionObject = {
+  versionObjectId: string;
+  versions: string[];
+  releases: string[];
+  url: string;
+  currentlySelected: boolean;
+  label: string;
+};
+
+export type LegacyVersionSelector = {
+  docId: string;
+  allVersions: LegacyVersionObject[];
+};
+
 export class legacyItem {
   label: string;
   class: string;
@@ -60,7 +74,11 @@ export class legacyBuildConfig {
   indexRedirect: boolean;
   srcId: string;
   docId: string;
-  resources: Array<string>;
+  resources: Array<{
+    sourceFolder: string;
+    targetFolder: string;
+    srcId: string;
+  }>;
   nodeImageVersion: string;
   yarnBuildCustomCommand: string;
   outputPath: string;

@@ -1,25 +1,14 @@
-import {
-  Column,
-  Entity,
-  JoinTable,
-  ManyToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
-import { SubjectItem } from './SubjectItem';
+import { Entity, ManyToMany, PrimaryColumn } from 'typeorm';
+import { Doc } from './Doc';
 
 @Entity()
 export class Subject {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
-  @Column()
-  label: string;
+  @PrimaryColumn()
+  name: string;
 
   @ManyToMany(
-    () => SubjectItem,
-    subjectItem => subjectItem.id,
-    { nullable: true, eager: true }
+    () => Doc,
+    doc => doc.id
   )
-  @JoinTable()
-  subjectItems: SubjectItem[];
+  doc: Doc[];
 }
