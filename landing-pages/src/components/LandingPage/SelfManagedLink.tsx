@@ -14,7 +14,6 @@ export default function SelfManagedLink({
   if (pagePath === "selfManagedProducts") {
     selfManagedOrCloud = "Guidewire Cloud";
     link = "/";
-  } else {
 
   return (
     <Container
