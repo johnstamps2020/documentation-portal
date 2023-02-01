@@ -14,7 +14,7 @@
     "dev-offline": "BUILD_MODE=offline webpack --watch"
   },
   "dependencies": {
-    "@doctools/gw-theme-classic": "2.0.44"
+    "@doctools/gw-theme-classic": "2.0.45"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
