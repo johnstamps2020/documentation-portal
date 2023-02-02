@@ -144,7 +144,7 @@ router.get('/entity/legacy/sources', async function(req, res) {
   return res.status(status).json(body);
 });
 
-router.get('/entity/legacy/putConfigInDatabase/:configType', async function(
+router.put('/entity/legacy/putConfigInDatabase/:configType', async function(
   req,
   res
 ) {

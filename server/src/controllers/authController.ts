@@ -1,8 +1,34 @@
 import OktaJwtVerifier from '@okta/jwt-verifier';
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { decode, JwtPayload } from 'jsonwebtoken';
 import { winstonLogger } from './loggerController';
 import { getUserInfo } from './userController';
+
+export async function isAllowedToAccessRoute(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const userInfo = await getUserInfo(req);
+  if (!userInfo.isLoggedIn) {
+    return res.status(401).json({
+      message: 'Route not available: request not authenticated',
+    });
+  }
+  return next();
+}
+
+export async function checkIfAllowedToAccessRouteAndRedirect(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const userInfo = await getUserInfo(req);
+  if (!userInfo.isLoggedIn) {
+    return redirectToLoginPage(req, res);
+  }
+  return next();
+}
 
 export async function isUserAllowedToAccessResource(
   req: Request,
@@ -169,14 +195,10 @@ async function verifyToken(req: Request) {
 
 export async function isLoggedInOrHasValidToken(req: Request) {
   try {
-    const rawJsonRequest = req.query.rawJSON === 'true';
     const requestIsAuthenticated = req.isAuthenticated
       ? req.isAuthenticated()
       : false;
-    if (rawJsonRequest) {
-      return requestIsAuthenticated || !!(await verifyToken(req));
-    }
-    return requestIsAuthenticated;
+    return requestIsAuthenticated || !!(await verifyToken(req));
   } catch (err) {
     winstonLogger.error(`PROBLEM VERIFYING TOKEN: ${JSON.stringify(err)}`);
     return false;

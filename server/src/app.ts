@@ -18,6 +18,10 @@ import httpContext from 'express-http-context';
 import { AppDataSource } from './model/connection';
 import { runningInDevMode } from './controllers/utils/serverUtils';
 import { ReqUser } from './controllers/userController';
+import {
+  checkIfAllowedToAccessRouteAndRedirect,
+  isAllowedToAccessRoute,
+} from './controllers/authController';
 
 declare global {
   namespace Express {
@@ -126,7 +130,7 @@ const passport = require('passport');
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use('/alive', (req, res, next) => {
+app.use('/alive', (req, res) => {
   res.sendStatus(200);
 });
 
@@ -154,14 +158,15 @@ app.use(cookieParser());
 
 app.use(httpContext.middleware);
 
-app.use('/internal', internalRouter);
-app.use('/search', searchRouter);
-app.use('/userInformation', userRouter);
-app.use('/safeConfig', configRouter);
-app.use('/jira', jiraRouter);
-app.use('/lrs', lrsRouter);
+app.use('/safeConfig', isAllowedToAccessRoute, configRouter);
+app.use('/jira', isAllowedToAccessRoute, jiraRouter);
+app.use('/internal', checkIfAllowedToAccessRouteAndRedirect, internalRouter);
+app.use('/lrs', checkIfAllowedToAccessRouteAndRedirect, lrsRouter);
+app.use('/s3', checkIfAllowedToAccessRouteAndRedirect, s3Router);
+// Open routes
 app.use('/recommendations', recommendationsRouter);
-app.use('/s3', s3Router);
+app.use('/userInformation', userRouter);
+app.use('/search', searchRouter);
 
 app.use('/portal-config/*', (req, res) => {
   res.redirect('/landing/unauthorized');

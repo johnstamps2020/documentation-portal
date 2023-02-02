@@ -56,11 +56,17 @@ export async function getUserInfo(req: Request): Promise<UserInfo> {
       }
       return internalMockUserData;
     }
+    const isLoggedIn = await isLoggedInOrHasValidToken(req);
     const user = req.user;
     if (!user) {
+      if (isLoggedIn) {
+        return {
+          ...unknownUserInfo,
+          isLoggedIn: isLoggedIn,
+        };
+      }
       return unknownUserInfo;
     }
-    const isLoggedIn = await isLoggedInOrHasValidToken(req);
     const email = user.email?.toLowerCase() || 'no email';
 
     return {
