@@ -87,6 +87,40 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "apdclaimsflaine",
+      "title": "Advanced Product Designer for Claims Guide",
+      "url": "cloud/apdclaims/flaine",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer for Claims"],
+        "version": ["2022.09"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "apdclaimsgarmisch",
+      "title": "Advanced Product Designer for Claims Guide",
+      "url": "cloud/apdclaims/garmisch",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer for Claims"],
+        "version": ["2023.02"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
     }
   ]
 }

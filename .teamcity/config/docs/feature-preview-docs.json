@@ -2,23 +2,6 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "apdclaims",
-      "title": "Advanced Product Designer for Claims Guide",
-      "url": "cloud/apdclaims/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Advanced Product Designer for Claims"],
-        "version": ["latest"],
-        "subject": ["Configuration"]
-      },
-      "environments": ["int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
       "id": "cloudratingdraft",
       "title": "Cloud Rating",
       "url": "cloud/gw-feature-preview/cloudrating",
