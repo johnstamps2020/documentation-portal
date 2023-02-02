@@ -50,10 +50,10 @@ changeBuildType(RelativeId("Uploadlegacyconfigstothedocportalconfigdatabase")) {
                 
                 # TODO: When this build is productized, add conditions for settings proper vars depending on env
                 APP_BASE_URL="https://croissant.dev.ccs.guidewire.net"
-                OKTA_ACCESS_TOKEN_ISSUER=https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7
+                OKTA_ACCESS_TOKEN_ISSUER="https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"
                 BASE64_CLIENT_CREDS=${'$'}(echo -n "%env.OKTA_CLIENT_ID%:%env.OKTA_CLIENT_SECRET%" | base64)
                 
-                JWT=${'$'}(curl --http1.1 --location -X POST "${'$'}OKTA_ACCESS_TOKEN_ISSUER/v1/token" \
+                JWT=${'$'}(curl --location -X POST "${'$'}OKTA_ACCESS_TOKEN_ISSUER/v1/token" \
                   --header "Content-Type: application/x-www-form-urlencoded" \
                   --header "Authorization: Basic ${'$'}BASE64_CLIENT_CREDS" \
                   --data-urlencode "grant_type=client_credentials" \
