@@ -3,11 +3,6 @@
   "builds": [
     {
       "buildType": "yarn",
-      "docId": "cc202011apiref",
-      "srcId": "srcapiref202011"
-    },
-    {
-      "buildType": "yarn",
       "docId": "pc202104apiref",
       "srcId": "srcpcapiref202011"
     },
