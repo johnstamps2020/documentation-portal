@@ -10,6 +10,7 @@ import cortinaBackgroundImage from "../../../images/background-cortina.svg";
 import banffBackgroundImage from "../../../images/background-banff.svg";
 import gradientBackground from "../../../images/background-gradient.svg";
 import LandingPageProductFamily from "./LandingPageProductFamily";
+import SelfManagedLink from "../SelfManagedLink";
 
 export default function ProductFamilyLayout(pageData: Page) {
   function getBackgroundImage() {
@@ -43,8 +44,12 @@ export default function ProductFamilyLayout(pageData: Page) {
       alignContent="center"
     >
       <Grid>
-        <Stack spacing={2} direction="column" width="100%">
-          <Container>
+        <Stack spacing={1} direction="column" width="100%">
+          <SelfManagedLink
+            pagePath={pageData.path}
+            backgroundImage={backgroundProps.backgroundImage}
+          />
+          <Container style={{ padding: 0, margin: "5px 0 0 0" }}>
             <Breadcrumbs pagePath={pageData.path} />
           </Container>
           <Typography variant="h1">{pageData.title}</Typography>

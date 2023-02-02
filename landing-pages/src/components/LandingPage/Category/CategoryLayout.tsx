@@ -9,6 +9,7 @@ import { Page } from "server/dist/model/entity/Page";
 import elysianBackgroundImage from "../../../images/background-elysian.svg";
 import dobsonBackgroundImage from "../../../images/background-dobson.svg";
 import Stack from "@mui/material/Stack";
+import SelfManagedLink from "../SelfManagedLink";
 
 export default function CategoryLayout(pageData: Page) {
   function getBackgroundImage() {
@@ -40,8 +41,12 @@ export default function CategoryLayout(pageData: Page) {
       alignContent="center"
     >
       <Grid>
-        <Stack spacing={2} direction="column" width="100%">
-          <Container style={{ padding: 0, margin: "30px 0 0 0" }}>
+        <Stack spacing={1} direction="column" width="100%">
+          <SelfManagedLink
+            pagePath={pageData.path}
+            backgroundImage={backgroundProps.backgroundImage}
+          />
+          <Container style={{ padding: 0, margin: "5px 0 0 0" }}>
             <Breadcrumbs pagePath={pageData.path} />
           </Container>
           <Typography

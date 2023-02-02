@@ -7,6 +7,7 @@ import Container from "@mui/material/Container";
 import LandingPageSidebar from "../LandingPageSidebar";
 import { Page } from "server/dist/model/entity/Page";
 import Stack from "@mui/material/Stack";
+import SelfManagedLink from "../SelfManagedLink";
 
 export default function SectionLayout(pageData: Page) {
   return (
@@ -22,8 +23,9 @@ export default function SectionLayout(pageData: Page) {
       }}
     >
       <Grid>
-        <Stack spacing={2} direction="column" width="100%">
-          <Container style={{ padding: 0, margin: "30px 0 0 0" }}>
+        <Stack spacing={1} direction="column" width="100%">
+          <SelfManagedLink pagePath={pageData.path} backgroundImage=""/>
+          <Container style={{ padding: 0, margin: "5px 0 0 0" }}>
             <Breadcrumbs pagePath={pageData.path} />
           </Container>
           <Typography
