@@ -12,7 +12,7 @@
       "filter": "GW-Generic-EA-Release.ditaval",
       "root": "AdvancedProductDesigner_Release_Notes.ditamap",
       "srcId": "apdappflainesrc",
-      "docId": "apdappflainern",
+      "docId": "apdapprnflaine",
       "indexRedirect": true
     },
     {
@@ -28,7 +28,7 @@
       "filter": "GW-Generic-EA-Release.ditaval",
       "root": "AdvancedProductDesigner_Release_Notes.ditamap",
       "srcId": "apdappgarmischsrc",
-      "docId": "apdappgarmischrn",
+      "docId": "apdapprngarmisch",
       "indexRedirect": true
     },
     {

@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "APD App Release Notes",
-          "id": "apdapprn"
+          "id": "apdappflainern"
         }
       ]
     },
@@ -20,7 +20,7 @@
       "items": [
         {
           "label": "APD App Guide",
-          "id": "apdapp"
+          "id": "apdappflaine"
         }
       ]
     },
