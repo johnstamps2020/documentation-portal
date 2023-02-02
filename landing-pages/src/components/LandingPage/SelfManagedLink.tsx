@@ -1,4 +1,6 @@
-import { Link, Container } from "@mui/material";
+import { Container } from "@mui/material";
+import Link from "@mui/material/Link";
+import { Link as RouterLink } from "react-router-dom";
 
 type selfManagedProps = {
   pagePath: string;
@@ -12,11 +14,10 @@ export default function SelfManagedLink({
   const selfManaged = pagePath === "selfManagedProducts";
 
   return (
-    <Container
-      style={{ marginLeft: 0, marginTop: 20, paddingLeft: 0 }}
-    >
+    <Container style={{ marginLeft: 0, marginTop: 20, paddingLeft: 0 }}>
       <Link
-        href={selfManaged ? "/" : "/landing/selfManagedProducts"}
+        component={RouterLink}
+        to={selfManaged ? "/" : "/selfManagedProducts"}
         underline="always"
         style={{ fontWeight: "bold" }}
         sx={
@@ -25,7 +26,9 @@ export default function SelfManagedLink({
             : { color: "black", textDecorationColor: "black" }
         }
       >
-        {`Click here for ${selfManaged ? "Guidewire Cloud" : "self-managed"} documentation`}
+        {`Click here for ${
+          selfManaged ? "Guidewire Cloud" : "self-managed"
+        } documentation`}
       </Link>
     </Container>
   );
