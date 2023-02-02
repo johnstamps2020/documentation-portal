@@ -1,8 +1,34 @@
 import OktaJwtVerifier from '@okta/jwt-verifier';
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { decode, JwtPayload } from 'jsonwebtoken';
 import { winstonLogger } from './loggerController';
 import { getUserInfo } from './userController';
+
+export async function isAllowedToAccessRoute(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const userInfo = await getUserInfo(req);
+  if (!userInfo.isLoggedIn) {
+    return res.status(401).json({
+      message: 'Route not available: request not authenticated',
+    });
+  }
+  return next();
+}
+
+export async function checkIfAllowedToAccessRouteAndRedirect(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const userInfo = await getUserInfo(req);
+  if (!userInfo.isLoggedIn) {
+    return redirectToLoginPage(req, res);
+  }
+  return next();
+}
 
 export async function isUserAllowedToAccessResource(
   req: Request,
