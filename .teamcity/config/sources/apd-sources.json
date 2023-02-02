@@ -9,11 +9,18 @@
       "branch": "main"
     },
     {
-      "id": "apdappsrc",
+      "id": "apdappflainesrc",
       "title": "Advanced Product Designer - Feature Preview",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
-      "branch": "main"
+      "branch": "release/app/flaine"
+    },
+    {
+      "id": "apdappgarmischsrc",
+      "title": "Advanced Product Designer - Feature Preview",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
+      "branch": "release/app/garmisch"
     }
   ]
 }
