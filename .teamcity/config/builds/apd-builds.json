@@ -11,16 +11,48 @@
       "buildType": "dita",
       "filter": "GW-Generic-EA-Release.ditaval",
       "root": "AdvancedProductDesigner_Release_Notes.ditamap",
-      "srcId": "apdappsrc",
-      "docId": "apdapprn",
+      "srcId": "apdappflainesrc",
+      "docId": "apdappflainern",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-EA-Release.ditaval",
       "root": "AdvancedProductDesigner.ditamap",
-      "srcId": "apdappsrc",
-      "docId": "apdapp",
+      "srcId": "apdappflainesrc",
+      "docId": "apdappflaine",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-EA-Release.ditaval",
+      "root": "AdvancedProductDesigner_Release_Notes.ditamap",
+      "srcId": "apdappgarmischsrc",
+      "docId": "apdappgarmischrn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-EA-Release.ditaval",
+      "root": "AdvancedProductDesigner.ditamap",
+      "srcId": "apdappgarmischsrc",
+      "docId": "apdappgarmisch",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-EA-Release.ditaval",
+      "root": "AdvancedProductDesignerClaims.ditamap",
+      "srcId": "apdappflainesrc",
+      "docId": "apdclaimsflaine",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-EA-Release.ditaval",
+      "root": "AdvancedProductDesignerClaims.ditamap",
+      "srcId": "apdappgarmischsrc",
+      "docId": "apdclaimsgarmisch",
       "indexRedirect": true
     }
   ]

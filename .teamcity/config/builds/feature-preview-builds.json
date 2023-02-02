@@ -3,14 +3,6 @@
   "builds": [
     {
       "buildType": "dita",
-      "filter": "GW-Generic-EA-Release.ditaval",
-      "root": "AdvancedProductDesignerClaims.ditamap",
-      "srcId": "apdappsrc",
-      "docId": "apdclaims",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
       "filter": "IS-PC-Cloud-Draft.ditaval",
       "root": "CloudRating.ditamap",
       "srcId": "cloudratingdraftsrc",

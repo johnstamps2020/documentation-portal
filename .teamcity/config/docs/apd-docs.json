@@ -10,24 +10,24 @@
         "product": ["PolicyCenter"],
         "version": ["latest"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "internal": false,
       "earlyAccess": true,
       "indexForSearch": true,
       "public": false
     },
     {
-      "id": "apdapp",
+      "id": "apdappflaine",
       "title": "Advanced Product Designer",
-      "url": "cloud/apd/latest",
+      "url": "cloud/apd/flaine/app",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Advanced Product Designer"],
-        "version": ["latest"],
+        "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Configuration"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -35,17 +35,53 @@
       "earlyAccess": false
     },
     {
-      "id": "apdapprn",
+      "id": "apdapprnflaine",
       "title": "Advanced Product Designer Release Notes",
-      "url": "cloud/apd/releasenotes/latest",
+      "url": "cloud/apd/flaine/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Advanced Product Designer"],
-        "version": ["latest"],
+        "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Configuration"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "apdappgarmisch",
+      "title": "Advanced Product Designer",
+      "url": "cloud/apd/garmisch/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "apdapprngarmisch",
+      "title": "Advanced Product Designer Release Notes",
+      "url": "cloud/apd/garmisch/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
