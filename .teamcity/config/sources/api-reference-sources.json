@@ -2,13 +2,6 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
-      "id": "srcapiref202011",
-      "title": "Cloud API Reference in Redoc",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/api-directory-redoc.git",
-      "branch": "releases/banff"
-    },
-    {
       "id": "srcapiref202104",
       "title": "Cloud API Reference in Redoc",
       "sourceType": "git",

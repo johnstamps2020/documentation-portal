@@ -1,0 +1,271 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "isupgradeguide202011src",
+      "title": "InsuranceSuite Upgrade Guide 2020.11",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
+      "branch": "release/2020.11.0"
+    },
+    {
+      "id": "cloudisadmin202011src",
+      "title": "IS 2020.11 Administration",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/AdminGuide.ditamap"
+      ]
+    },
+    {
+      "id": "cloudisapd202011src",
+      "title": "IS 2020.11 Advanced Product Designer",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/AdvancedProductDesigner.ditamap"
+      ]
+    },
+    {
+      "id": "cloudisbcapp202011src",
+      "title": "IS 2020.11 BC Application",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/BC-AppGuide.ditamap"
+      ]
+    },
+    {
+      "id": "cloudisccapp202011src",
+      "title": "IS 2020.11 CC Application",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/CC-AppGuide.ditamap"
+      ]
+    },
+    {
+      "id": "cloudispcapp202011src",
+      "title": "IS 2020.11 PC Application",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/PC-AppGuide.ditamap"
+      ]
+    },
+    {
+      "id": "cloudisbp202011src",
+      "title": "IS 2020.11 Best Practices",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/BestPracticesGuide.ditamap"
+      ]
+    },
+    {
+      "id": "cloudiscloudapi202011src",
+      "title": "IS 2020.11 Cloud API",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/CloudAPIGuide.ditamap"
+      ]
+    },
+    {
+      "id": "cloudiscloudapibf202011src",
+      "title": "IS 2020.11 Cloud API Business Flows",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/CloudAPIGuide-BusinessFlows.ditamap"
+      ]
+    },
+    {
+      "id": "cloudiscloudapica202011src",
+      "title": "IS 2020.11 Cloud API Configuration and Authentication",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/CloudAPIGuide-ConfigAuth.ditamap"
+      ]
+    },
+    {
+      "id": "cloudisconfig202011src",
+      "title": "IS 2020.11 Configuration",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/ConfigGuide.ditamap"
+      ]
+    },
+    {
+      "id": "cloudiscontact202011src",
+      "title": "IS 2020.11 Contact Mgmt",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/ContactMgmtGuide.ditamap"
+      ]
+    },
+    {
+      "id": "cloudisglobal202011src",
+      "title": "IS 2020.11 Globalization",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/GlobalizationGuide.ditamap"
+      ]
+    },
+    {
+      "id": "cloudisinstall202011src",
+      "title": "IS 2020.11 Installation",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/InstallGuide.ditamap"
+      ]
+    },
+    {
+      "id": "cloudisinteg202011src",
+      "title": "IS 2020.11 Integration",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/IntegrationGuide.ditamap"
+      ]
+    },
+    {
+      "id": "cloudisnew202011src",
+      "title": "IS 2020.11 New and Changed",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/NewAndChangedGuide.ditamap"
+      ]
+    },
+    {
+      "id": "cloudispd202011src",
+      "title": "IS 2020.11 Product Designer",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/ProductDesignerGuide.ditamap"
+      ]
+    },
+    {
+      "id": "cloudispm202011src",
+      "title": "IS 2020.11 Product Model",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/ProductModelGuide.ditamap"
+      ]
+    },
+    {
+      "id": "cloudisrestapifw202011src",
+      "title": "IS 2020.11 REST API Framework",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/RESTAPIFramework.ditamap"
+      ]
+    },
+    {
+      "id": "cloudisrules202011src",
+      "title": "IS 2020.11 Rules",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/RulesGuide.ditamap"
+      ]
+    },
+    {
+      "id": "cloudistest202011src",
+      "title": "IS 2020.11 Testing",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/cloud/releases/202011/TestingGuide.ditamap"
+      ]
+    },
+    {
+      "id": "cloudisrn202011src",
+      "title": "IS 2020.11 Release Notes",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
+      "branch": "Banff",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/insuranceSuite/core/releasenotes/ReleaseNotesBook-banff.ditamap"
+      ]
+    },
+    {
+      "id": "dhic202011",
+      "title": "Data Management 2020.11",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
+      "branch": "Banff",
+      "xdocsPathIds": [
+        "/Content/doc/data-analytics/dh-ic/10.x/releases-cloud/202011/DM_all.ditamap"
+      ]
+    },
+    {
+      "id": "dx202011",
+      "title": "Digital 2020.11",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
+      "branch": "2020.11",
+      "exportFrequency": "weekly",
+      "xdocsPathIds": [
+        "/Content/doc/digital/11.x/releases/202011/DX_superbook.ditamap"
+      ]
+    },
+    {
+      "id": "srcapiref202011",
+      "title": "Cloud API Reference in Redoc",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/api-directory-redoc.git",
+      "branch": "releases/banff"
+    }
+  ]
+}
