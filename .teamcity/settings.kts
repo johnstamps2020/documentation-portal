@@ -139,10 +139,11 @@ object Database {
 
     private fun createRootProjectForDatabase(): Project {
         return Project {
-            name = "Database"
+            name = "Database (Croissant)"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             buildType(createDeployDbBuildType())
+            buildType(createUploadLegacyConfigsToDb())
         }
     }
 
@@ -215,6 +216,73 @@ object Database {
             features {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
                 feature(GwBuildFeatures.GwSshAgentBuildFeature)
+            }
+        }
+    }
+
+    private fun createUploadLegacyConfigsToDb(): BuildType {
+        return BuildType {
+            name = "Upload legacy configs to the doc portal config database"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                branchFilter = "+:<default>"
+                cleanCheckout = true
+            }
+
+            artifactRules = "response*.json"
+
+            params {
+                select(
+                    "env.DEPLOY_ENV",
+                    value = "",
+                    label = "Deploy environment",
+                    options = listOf(
+                        "Dev" to GwDeployEnvs.DEV.envName,
+                    ),
+                    display = ParameterDisplay.PROMPT,
+                )
+            }
+            steps {
+                script {
+                    name = "Call doc site endpoints to trigger upload"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                        
+                        # TODO: When this build is productized, add conditions for settings proper vars depending on env
+                        APP_BASE_URL="https://croissant.dev.ccs.guidewire.net"
+                        OKTA_ACCESS_TOKEN_ISSUER=https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7
+                        BASE64_CLIENT_CREDS=${'$'}(echo -n "%env.OKTA_CLIENT_ID%:%env.OKTA_CLIENT_SECRET%" | base64)
+
+                        JWT=${'$'}(curl --location -X POST "${'$'}OKTA_ACCESS_TOKEN_ISSUER/v1/token" \
+                          --header "Content-Type: application/x-www-form-urlencoded" \
+                          --header "Authorization: Basic ${'$'}BASE64_CLIENT_CREDS" \
+                          --data-urlencode "grant_type=client_credentials" \
+                          --data-urlencode "scope=%env.OKTA_ACCESS_TOKEN_SCOPES%" |
+                          jq -r '.access_token')
+
+                        [[ -z "${'$'}JWT" || "${'$'}JWT" == "null" ]] && echo "Unable to get an access token from Okta" && exit 1
+                        
+                        for entityType in source doc page openRoutes
+                        do
+                            curl -o response_${'$'}{entityType}.json -X PUT "${'$'}APP_BASE_URL/safeConfig/entity/legacy/putConfigInDatabase/${'$'}{entityType}" \
+                              --header "Authorization: Bearer ${'$'}JWT"
+
+                            echo "Done. For details, see the response_${'$'}{entityType}.json file in the build artifacts."
+                        done
+                        """.trimIndent()
+                }
+            }
+            triggers {
+                vcs {
+                    triggerRules = """
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
+                        -:user=doctools:**
+                        """.trimIndent()
+                }
             }
         }
     }
@@ -1684,7 +1752,7 @@ object Frontend {
 
     private fun createDeployReactLandingPagesProject(): Project {
         return Project {
-            name = "Deploy React landing pages"
+            name = "Deploy React landing pages (Croissant)"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
@@ -4770,8 +4838,8 @@ object GwBuildSteps {
                 commandParams.add(Pair("--create-index-redirect", "yes"))
                 commandParams.add(Pair("--webhelp.publication.toc.links", "all"))
             } else if (arrayOf(
-                GwDitaOutputFormats.HTML5.formatName,
-                GwDitaOutputFormats.HTML5_WITH_PDF.formatName,
+                    GwDitaOutputFormats.HTML5.formatName,
+                    GwDitaOutputFormats.HTML5_WITH_PDF.formatName,
                 ).contains(outputFormat)
             ) {
                 commandParams.add(Pair("--create-index-redirect", "yes"))
@@ -4782,11 +4850,11 @@ object GwBuildSteps {
         val ditaBuildCommand = Helpers.getCommandString("dita", commandParams)
 
         val dockerImageName = when (forOfflineUse && (arrayOf(
-                GwDitaOutputFormats.WEBHELP.formatName,
-                GwDitaOutputFormats.WEBHELP_WITH_PDF.formatName,
-                GwDitaOutputFormats.SINGLEHTML.formatName,
-                ).contains(outputFormat))
-            ) {
+            GwDitaOutputFormats.WEBHELP.formatName,
+            GwDitaOutputFormats.WEBHELP_WITH_PDF.formatName,
+            GwDitaOutputFormats.SINGLEHTML.formatName,
+        ).contains(outputFormat))
+        ) {
             true -> GwDockerImages.DITA_OT_3_4_1.imageUrl
             false -> GwDockerImages.DITA_OT_LATEST.imageUrl
         }
