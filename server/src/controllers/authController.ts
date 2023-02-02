@@ -195,14 +195,10 @@ async function verifyToken(req: Request) {
 
 export async function isLoggedInOrHasValidToken(req: Request) {
   try {
-    const rawJsonRequest = req.query.rawJSON === 'true';
     const requestIsAuthenticated = req.isAuthenticated
       ? req.isAuthenticated()
       : false;
-    if (rawJsonRequest) {
-      return requestIsAuthenticated || !!(await verifyToken(req));
-    }
-    return requestIsAuthenticated;
+    return requestIsAuthenticated || !!(await verifyToken(req));
   } catch (err) {
     winstonLogger.error(`PROBLEM VERIFYING TOKEN: ${JSON.stringify(err)}`);
     return false;
