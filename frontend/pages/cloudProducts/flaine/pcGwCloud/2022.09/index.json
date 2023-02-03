@@ -141,6 +141,10 @@
         {
           "label": "Submission Intake Configuration",
           "id": "submissionintakeconfig"
+        },
+        {
+          "label": "US Standards-based Template Framework",
+          "page": "../../../../globalContent/sbt"
         }
       ]
     },
