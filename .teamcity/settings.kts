@@ -111,7 +111,10 @@ enum class GwDockerImages(val imageUrl: String) {
     DOC_VALIDATOR_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/doc-validator:latest"), PYTHON_3_9_SLIM_BUSTER(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/python:3.9-slim-buster"
     ),
-    NODE_REMOTE_BASE("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node"), NODE_16_14_2("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node:16.14.2"), GENERIC_14_14_0_YARN_CHROME(
+    NODE_REMOTE_BASE("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node"), NODE_16_14_2("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node:16.14.2"), NODE_18_14_0(
+        "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node:18.14.0"
+    ),
+    GENERIC_14_14_0_YARN_CHROME(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/jutro-docker-dev/generic:14.14.0-yarn-chrome"
     )
 }
@@ -231,7 +234,7 @@ object Database {
                 cleanCheckout = true
             }
 
-            artifactRules = "response*.json"
+            artifactRules = "ci/response*.json => /"
 
             params {
                 select(
@@ -249,12 +252,19 @@ object Database {
                     name = "Call doc site endpoints to trigger upload"
                     id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
-                        #!/bin/bash
+                        #!/bin/sh
+                        set -e
+                        
+                        # TODO: When this build is productized, add conditions for settings proper vars depending on env
+                        export APP_BASE_URL="https://croissant.dev.ccs.guidewire.net"
+                        export OKTA_ACCESS_TOKEN_ISSUER="https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"                        
                         
                         cd %teamcity.build.checkoutDir%/ci
-                        ./uploadLegacyConfigsToDb.sh
+                        node uploadLegacyConfigsToDb.mjs
                         """.trimIndent()
+                    dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
                 }
+
             }
             triggers {
                 vcs {
