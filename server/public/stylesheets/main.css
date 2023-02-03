@@ -156,6 +156,14 @@ main.blue-theme {
 }
 
 @media screen and (min-width: 750px) {
+  main.garmisch {
+      background-image:
+        linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
+        url(/images/background-garmisch.svg),
+        linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%);
+      background-position: bottom right;
+    }
+  
   main.flaine {
     background-image: 
       linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
