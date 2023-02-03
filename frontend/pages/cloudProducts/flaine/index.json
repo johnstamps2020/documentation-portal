@@ -174,10 +174,6 @@
         {
           "label": "London Market",
           "page": "../../globalContent/iplm/flaine"
-        },
-        {
-          "label": "United States",
-          "page": "../../globalContent/sbt"
         }
       ]
     }
