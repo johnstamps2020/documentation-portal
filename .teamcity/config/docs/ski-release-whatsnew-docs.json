@@ -2,6 +2,22 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "whatsnewgarmisch",
+      "title": "What's new in Garmisch",
+      "url": "cloud/garmisch/whatsnew",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Ski release overview"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"]
+      },
+      "environments": ["staging"],
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "whatsnewflaine",
       "title": "What's new in Flaine",
       "url": "cloud/flaine/whatsnew",
