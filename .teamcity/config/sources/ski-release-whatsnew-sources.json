@@ -2,6 +2,13 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "whatsnewgarmischsrc",
+      "title": "Ski Release What's New - Garmisch",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/ski-release-overview.git",
+      "branch": "release/garmisch"
+    },
+    {
       "id": "whatsnewflainesrc",
       "title": "Ski Release What's New - Flaine",
       "sourceType": "git",
