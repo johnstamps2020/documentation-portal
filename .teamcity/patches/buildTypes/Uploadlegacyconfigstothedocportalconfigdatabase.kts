@@ -47,6 +47,7 @@ changeBuildType(RelativeId("Uploadlegacyconfigstothedocportalconfigdatabase")) {
             clearConditions()
             scriptContent = """
                 #!/bin/bash
+                set -xe
                 
                 # TODO: When this build is productized, add conditions for settings proper vars depending on env
                 APP_BASE_URL="https://croissant.dev.ccs.guidewire.net"
