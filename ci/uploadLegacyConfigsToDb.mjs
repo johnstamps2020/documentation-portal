@@ -14,6 +14,7 @@ if (json.errorCode) {
     throw new Error(`Failed to get access token from Okta: ${JSON.stringify(json)}`)
 }
 const accessToken = json.access_token;
+console.log("Get access token from Okta: OK")
 
 for (const entityType of ["source", "doc", "page", "openRoutes"]) {
     const response = await fetch(`${process.env.APP_BASE_URL}/safeConfig/entity/legacy/putConfigInDatabase/${entityType}`, {
@@ -26,7 +27,7 @@ for (const entityType of ["source", "doc", "page", "openRoutes"]) {
     if (response.ok) {
         const jsonFileName = `response_${entityType}.json`;
         writeFileSync(jsonFileName, JSON.stringify(json));
-        console.log(`Done. For details, see the ${jsonFileName} file in the build artifacts.`)
+        console.log(`Upload entities for ${entityType}: OK. For details, see the ${jsonFileName} file in the build artifacts.`)
     } else {
         console.log(JSON.stringify(json))
     }

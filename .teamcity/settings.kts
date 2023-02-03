@@ -234,7 +234,7 @@ object Database {
                 cleanCheckout = true
             }
 
-            artifactRules = "ci/response*.json => /"
+            artifactRules = "response*.json => /"
 
             params {
                 select(
@@ -248,10 +248,10 @@ object Database {
                 )
             }
             steps {
-                script {
+                nodeJS {
                     name = "Call doc site endpoints to trigger upload"
                     id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
+                    shellScript = """
                         #!/bin/sh
                         set -e
                         
@@ -259,8 +259,7 @@ object Database {
                         export APP_BASE_URL="https://croissant.dev.ccs.guidewire.net"
                         export OKTA_ACCESS_TOKEN_ISSUER="https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"                        
                         
-                        cd %teamcity.build.checkoutDir%/ci
-                        node uploadLegacyConfigsToDb.mjs
+                        node ci/uploadLegacyConfigsToDb.mjs
                         """.trimIndent()
                     dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
                 }
