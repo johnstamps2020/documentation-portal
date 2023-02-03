@@ -37,8 +37,8 @@
     },
     {
       "id": "ipacloudelysianapp",
-      "title": "Configuration",
-      "url": "cloud/ipa/elysian/config",
+      "title": "Application Guide",
+      "url": "cloud/ipa/elysian/app",
       "metadata": {
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
