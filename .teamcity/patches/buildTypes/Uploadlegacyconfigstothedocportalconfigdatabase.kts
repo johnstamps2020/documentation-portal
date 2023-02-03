@@ -1,6 +1,7 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildFeatures.sshAgent
 import jetbrains.buildServer.configs.kotlin.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.ui.*
@@ -73,6 +74,14 @@ changeBuildType(RelativeId("Uploadlegacyconfigstothedocportalconfigdatabase")) {
                     echo "Done. For details, see the response_${'$'}{entityType}.json file in the build artifacts."
                 done
             """.trimIndent()
+        }
+    }
+
+    features {
+        add {
+            sshAgent {
+                teamcitySshKey = "svc-doc-bitbucket"
+            }
         }
     }
 }
