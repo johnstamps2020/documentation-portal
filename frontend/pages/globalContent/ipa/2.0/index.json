@@ -29,24 +29,8 @@
       "class": "subject featuresAndFunctionality",
       "items": [
         {
-          "label": "Australia Personal Motor Policy",
-          "id": "ipacloudelysianapmp"
-        },
-        {
-          "label": "Australia Personal Motor Claims",
-          "id": "ipacloudelysianapmc"
-        },
-        {
-          "label": "GST for Claims",
-          "id": "ipacloudelysiangstc"
-        },
-        {
-          "label": "Address Lookup",
-          "id": "ipacloudelysianal"
-        },
-        {
-          "label": "Vehicle Lookup",
-          "id": "ipacloudelysianvl"
+          "label": "Application Guide",
+          "id": "ipacloudelysianapp"
         }
       ]
     }

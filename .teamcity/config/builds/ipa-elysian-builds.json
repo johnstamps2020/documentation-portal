@@ -20,41 +20,9 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "pmp_applicationguide.ditamap",
-      "srcId": "ipacloudelysiansrc",
-      "docId": "ipacloudelysianapmp",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "pmc_applicationguide.ditamap",
-      "srcId": "ipacloudelysiansrc",
-      "docId": "ipacloudelysianapmc",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "IPAApplicationGuide.ditamap",
       "srcId": "ipacloudelysiansrc",
-      "docId": "ipacloudelysiangstc",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "address_lookup_applicationguide.ditamap",
-      "srcId": "ipacloudelysiansrc",
-      "docId": "ipacloudelysianal",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "vehicle_lookup_applicationguide.ditamap",
-      "srcId": "ipacloudelysiansrc",
-      "docId": "ipacloudelysianvl",
+      "docId": "ipacloudelysianapp",
       "indexRedirect": true
     }
   ]
