@@ -2,7 +2,7 @@
   "$schema": "/frontend/page-schema.json",
   "title": "Garmisch",
   "template": "page",
-  "class": "blue-theme garmisch threeCards",
+  "class": "blue-theme skiRelease garmisch",
   "selector": {
     "label": "Select release",
     "selectedItem": "Garmisch",
