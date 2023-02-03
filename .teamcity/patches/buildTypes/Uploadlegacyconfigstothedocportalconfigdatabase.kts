@@ -54,6 +54,8 @@ changeBuildType(RelativeId("Uploadlegacyconfigstothedocportalconfigdatabase")) {
                 OKTA_ACCESS_TOKEN_ISSUER="https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"
                 BASE64_CLIENT_CREDS=${'$'}(echo -n "%env.OKTA_CLIENT_ID%:%env.OKTA_CLIENT_SECRET%" | base64)
                 
+                curl --version
+                
                 JWT=${'$'}(curl --location -X POST "${'$'}OKTA_ACCESS_TOKEN_ISSUER/v1/token" \
                   --header "Content-Type: application/x-www-form-urlencoded" \
                   --header "Authorization: Basic ${'$'}BASE64_CLIENT_CREDS" \
