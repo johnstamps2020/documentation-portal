@@ -4926,7 +4926,7 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                 
-                rsync -avu --delete ./build $targetPath
+                rsync -avu --delete ./build/ $targetPath/
                 
                 cd $ditaOtPath
                 git add .
