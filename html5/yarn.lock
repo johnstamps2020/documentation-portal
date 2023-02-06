@@ -1893,13 +1893,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@doctools/gw-theme-classic@npm:2.0.45":
-  version: 2.0.45
-  resolution: "@doctools/gw-theme-classic@npm:2.0.45::__archiveUrl=https%3A%2F%2Fartifactory.guidewire.com%2Fartifactory%2Fapi%2Fnpm%2Fdoctools-npm-dev%2F%40doctools%2Fgw-theme-classic%2F-%2F%40doctools%2Fgw-theme-classic-2.0.45.tgz"
+"@doctools/gw-theme-classic@npm:2.0.55":
+  version: 2.0.55
+  resolution: "@doctools/gw-theme-classic@npm:2.0.55::__archiveUrl=https%3A%2F%2Fartifactory.guidewire.com%2Fartifactory%2Fapi%2Fnpm%2Fdoctools-npm-dev%2F%40doctools%2Fgw-theme-classic%2F-%2F%40doctools%2Fgw-theme-classic-2.0.55.tgz"
   dependencies:
     "@brightcove/react-player-loader": ^1.4.2
     "@docusaurus/core": 2.2.0
     "@docusaurus/preset-classic": 2.2.0
+    "@docusaurus/theme-translations": ^2.3.0
     "@emotion/react": ^11.10.0
     "@emotion/styled": ^11.10.0
     "@fontsource/source-sans-pro": ^4.5.11
@@ -1908,8 +1909,10 @@ __metadata:
     "@types/lodash": ^4.14.190
     lodash: ^4.17.21
     mark.js: ^8.11.1
-    rimraf: ^3.0.2
-  checksum: a994f0e29e754ac5d963b754b6fa0b7d85240f32074776db68b4dd5012271edeb1c6435f82b91b516ca2db5fd80098d452ab6dee7982fa98595e9e4843751c4e
+  peerDependencies:
+    react: ^16.8.4 || ^17.0.0
+    react-dom: ^16.8.4 || ^17.0.0
+  checksum: 59e3faaeefa1dee7d266236a50026a3fa6885d1c0265d0feb9effd9499f1dba510be8c13c5130180f9efb9cc53cc9df5976889f25ef241e7eebbe4913e55e42c
   languageName: node
   linkType: hard
 
@@ -2336,6 +2339,16 @@ __metadata:
     fs-extra: ^10.1.0
     tslib: ^2.4.0
   checksum: 7fe7d104fd094f2af2321986a86edef1eb8ab25415ea94ab1b242d08aec7627b3d5790001631621cd80c57c710714308aad5adfbf570cb74e0f01fda93b610be
+  languageName: node
+  linkType: hard
+
+"@docusaurus/theme-translations@npm:^2.3.0":
+  version: 2.3.1
+  resolution: "@docusaurus/theme-translations@npm:2.3.1"
+  dependencies:
+    fs-extra: ^10.1.0
+    tslib: ^2.4.0
+  checksum: dd3796be63c4c946af789c3da18ed2704a2fa90d8e752ba2b780a124dc13369ba590218afad0ac4ea2342f7331ccb9eb1be086226c950b8384978d94a15c57ad
   languageName: node
   linkType: hard
 
@@ -6776,7 +6789,7 @@ __metadata:
     "@babel/cli": ^7.17.6
     "@babel/core": ^7.20.12
     "@babel/preset-react": ^7.16.7
-    "@doctools/gw-theme-classic": 2.0.45
+    "@doctools/gw-theme-classic": 2.0.55
     babel-loader: 9.1.0
     babel-plugin-prismjs: ^2.1.0
     css-loader: ^6.5.1
