@@ -7,8 +7,10 @@ import Container from "@mui/material/Container";
 import LandingPageSidebar from "../LandingPageSidebar";
 import { Page } from "server/dist/model/entity/Page";
 import flaineBackgroundImage from "../../../images/background-flaine.svg";
+import garmischBackgroundImage from "../../../images/background-garmisch.png";
 import Stack from "@mui/material/Stack";
 import SelfManagedLink from "../SelfManagedLink";
+import WhatsNew from "../WhatsNew";
 
 export default function CategoryLayout(pageData: Page) {
   function getBackgroundImage() {
@@ -17,7 +19,7 @@ export default function CategoryLayout(pageData: Page) {
        url(${flaineBackgroundImage}), 
        linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`;
     } else if (pageData.component.includes("garmischBackground")) {
-      return `linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`;
+      return `${garmischBackgroundImage}`;
     } else {
       return "";
     }
@@ -30,33 +32,21 @@ export default function CategoryLayout(pageData: Page) {
     backgroundSize: "cover",
     minHeight: "100vh",
   };
-  // zamiast 2 gridow jeden pod drugim musza byc dwa obok siebie - po lewej
-  // whats new costam selector a po prawej content i tytul strony u gory
   return (
     <Grid
       sx={{ ...backgroundProps }}
       container
-      flexDirection="column"
+      flexDirection="row"
       margin="auto"
-      padding="0 20px 64px 20px"
-      gap={5}
+      padding="40px 32px"
+      gap="56px"
       alignContent="center"
     >
-      <Grid>
+      <Grid minWidth="338px" marginTop="-27px" marginLeft="auto">
         <Stack spacing={1} direction="column" width="100%">
           <Container style={{ padding: 0, margin: "5px 0 0 0" }}>
             <Breadcrumbs pagePath={pageData.path} />
           </Container>
-          <Typography
-            variant="h1"
-            sx={
-              backgroundProps.backgroundImage
-                ? { color: "white" }
-                : { color: "black" }
-            }
-          >
-            {pageData.title}
-          </Typography>
           {pageData.pageSelector && (
             <LandingPageSelector
               pageSelector={pageData.pageSelector}
@@ -69,14 +59,95 @@ export default function CategoryLayout(pageData: Page) {
           pagePath={pageData.path}
           backgroundImage={backgroundProps.backgroundImage}
         />
+        <WhatsNew path={pageData.path} />
       </Grid>
-      <Grid container maxWidth="1330px" width="100%">
-        <Grid container xs={9} gap={2}>
-          {pageData.categories?.map((category) => (
-            <LandingPageCategory {...category} key={category.id} />
-          ))}
+      <Grid container direction="column" marginRight="auto" gap="2rem">
+        <Grid marginBottom="16px">
+          <Typography
+            variant="h1"
+            sx={
+              backgroundProps.backgroundImage
+                ? { color: "white" }
+                : { color: "black" }
+            }
+            style={{ fontWeight: 600, fontSize: "2em" }}
+          >
+            Welcome to Guidewire Documentation
+          </Typography>
+          <Typography
+            variant="h2"
+            sx={
+              backgroundProps.backgroundImage
+                ? { color: "white" }
+                : { color: "black" }
+            }
+            style={{ fontSize: "14px", marginTop: "8px" }}
+          >
+            Find guides, API references, tutorials, and more to help you
+            implement, adopt, and use Guidewire applications and services.
+          </Typography>
         </Grid>
-        {pageData.sidebar && <LandingPageSidebar {...pageData.sidebar} />}
+        <Grid container direction="row" gap="56px">
+          <Grid
+            container
+            maxWidth="600px"
+            width="100%"
+            xs={9}
+            columnGap="24px"
+            rowGap="32px"
+            sx={{
+              ".css-dxom85-MuiPaper-root": {
+                width: "288px",
+                padding: "24px",
+              },
+              ".css-4041zf-MuiTypography-root": {
+                fontSize: "1.25rem",
+                fontWeight: "600",
+              },
+              ".css-aapr8l-MuiDivider-root": {
+                width: "100%",
+              },
+              ".css-1okj3ks-MuiStack-root": {
+                spacing: 1,
+                fontSize: "0.875rem",
+                color: "black",
+                "& .css-t4izw9-MuiTypography-root-MuiLink-root": {
+                  color: "black",
+                  fontWeight: 600,
+                  padding: "4px 0px",
+                },
+              },
+            }}
+          >
+            {pageData.categories?.map((category) => (
+              <LandingPageCategory {...category} key={category.id} />
+            ))}
+          </Grid>
+          <Grid
+            display="block"
+            sx={{
+              ".css-4041zf-MuiTypography-root": {
+                fontSize: "1.25rem",
+                fontWeight: "600",
+              },
+              ".css-aapr8l-MuiDivider-root": {
+                width: "100%",
+              },
+              ".css-1okj3ks-MuiStack-root": {
+                spacing: 1,
+                fontSize: "0.875rem",
+                color: "black",
+                "& .css-t4izw9-MuiTypography-root-MuiLink-root": {
+                  color: "black",
+                  fontWeight: 600,
+                  padding: "4px 0px",
+                },
+              },
+            }}
+          >
+            {pageData.sidebar && <LandingPageSidebar {...pageData.sidebar} />}
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );
