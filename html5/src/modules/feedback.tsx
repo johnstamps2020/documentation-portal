@@ -1,15 +1,17 @@
 import "../stylesheets/modules/feedback.css";
 import React from "react";
-import Feedback from "@doctools/gw-theme-classic/lib/theme/Feedback/Feedback";
 import { render } from "react-dom";
-window.dataLayer = window.dataLayer || [];
+import { SearchMeta, UserInformation } from "@theme/Types";
+import Feedback from "@theme/Feedback";
 
-function gtag() {
-  dataLayer.push(arguments);
+declare global {
+  interface Window {
+    docProduct: string;
+    docPlatform: string;
+    docVersion: string;
+    userInformation: UserInformation;
+  }
 }
-
-gtag("js", new Date());
-gtag("config", "G-QRTVTBY678");
 
 function getPossibleContacts() {
   const creatorInfos = document.querySelectorAll("meta[name = 'DC.creator']");
@@ -18,15 +20,15 @@ function getPossibleContacts() {
   }
   const emails = [];
   const pattern = /[A-z]*@guidewire.com/g;
-  for (const creatorInfo of creatorInfos) {
-    const matches = creatorInfo.content.matchAll(pattern);
+  for (const creatorInfo of Array.from(creatorInfos)) {
+    const matches = creatorInfo.getAttribute("content").matchAll(pattern);
     for (const match of matches) {
       emails.push(match[0]);
     }
   }
 
   if (emails.length === 0) {
-    return "uknown";
+    return "unknown";
   }
 
   return emails.join(", ");
@@ -48,18 +50,18 @@ export function addFeedbackElements() {
   const jiraApiUrl = `${window.location.origin}/jira`;
   const title = document.querySelector("title").innerHTML;
   const url = window.location.href;
-  const searchMeta = {
+  const searchMeta: SearchMeta = {
     docTitle: "unset",
     docInternal: false,
     docEarlyAccess: false,
-    product: window.docProduct?.split(",") || "unknown",
-    platform: window.docPlatform?.split(",") || "unknown",
-    version: window.docVersion?.split(",") || "unknown",
+    product: window.docProduct?.split(",") || ["unknown"],
+    platform: window.docPlatform?.split(",") || ["unknown"],
+    version: window.docVersion?.split(",") || ["unknown"],
     release: ["unknown"],
     subject: ["unknown"],
   };
   const userInformation = window.userInformation || {
-    preferred_username: undefined,
+    preferred_username: "unknown",
   };
 
   const possibleContacts = getPossibleContacts();

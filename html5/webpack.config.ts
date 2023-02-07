@@ -34,6 +34,7 @@ const config: Configuration = {
       filename: "html5skip.js",
     },
   },
+  devtool: "inline-source-map",
   plugins: [
     new MiniCssExtractPlugin({
       filename: (pathData: PathData) => {
@@ -69,7 +70,7 @@ const config: Configuration = {
       },
       {
         test: /\.m?js$/,
-        exclude: [/node_modules/, /static/, /out/],
+        exclude: [/node_modules/, /static/, /out/, /build/],
         use: {
           loader: "babel-loader",
           options: {
@@ -161,6 +162,16 @@ const config: Configuration = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
+    alias: {
+      "@theme": resolve(
+        __dirname,
+        "node_modules",
+        "@doctools",
+        "gw-theme-classic",
+        "lib",
+        "theme"
+      ),
+    },
   },
 };
 
