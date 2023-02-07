@@ -22,15 +22,15 @@ module.exports = {
   mode: "production",
   entry: {
     html5help: {
-      import: "./src/html5help/html5template.js",
+      import: "./src/html5help/html5.ts",
       filename: "html5.js",
     },
     html5Home: {
-      import: "./src/html5home/html5homeTemplate.js",
+      import: "./src/html5home/html5home.js",
       filename: "html5home.js",
     },
     html5Skip: {
-      import: "./src/html5home/html5skipTemplate.js",
+      import: "./src/html5home/html5skip.js",
       filename: "html5skip.js",
     },
   },
@@ -43,7 +43,9 @@ module.exports = {
         if (pathData.chunk.filenameTemplate === "html5skip.js") {
           return "html5skip.css";
         }
-        return "html5.css";
+        if (pathData.chunk.filenameTemplate === "html5.js") {
+          return "html5.css";
+        }
       },
     }),
     new DefinePlugin({
@@ -53,12 +55,17 @@ module.exports = {
   output: {
     path:
       process.env.BUILD_MODE === "offline"
-        ? path.resolve(__dirname, "build")
+        ? process.env.NODE_ENV === 'development' ? path.resolve(__dirname, "") : path.resolve(__dirname, "build")
         : path.resolve(__dirname, "..", "server", "static", "html5", "scripts"),
     publicPath: "",
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
       {
         test: /\.m?js$/,
         exclude: [/node_modules/, /static/, /out/],
@@ -150,5 +157,8 @@ module.exports = {
         type: "asset/resource",
       },
     ],
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
   },
 };
