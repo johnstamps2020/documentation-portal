@@ -11,7 +11,7 @@
     "build": "webpack",
     "build-offline": "BUILD_MODE=offline webpack",
     "dev": "NODE_ENV=development webpack --watch",
-    "dev-offline": "NODE_ENV=development BUILD_MODE=offline webpack --watch"
+    "dev-offline": "rimraf ./build/* && NODE_ENV=development BUILD_MODE=offline webpack --watch"
   },
   "dependencies": {
     "@doctools/gw-theme-classic": "2.0.57"
@@ -32,6 +32,7 @@
     "prismjs": "^1.27.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "rimraf": "^4.1.2",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.5",
