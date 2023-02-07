@@ -16,7 +16,8 @@ import { addLightbox } from "../modules/lightbox";
 import { addEarlyAccessMark } from "../modules/earlyAccess";
 import "../stylesheets/html5template.css";
 
-const isOffline = process.env.BUILD_MODE === "offline";
+declare const BUILD_MODE: string;
+const isOffline = BUILD_MODE === "offline";
 
 docReady(async function () {
   normalizeCode();

@@ -11,6 +11,7 @@ import { addSkipNav } from "../modules/skipNav.js";
 import { addInternalBadge } from "../modules/internal.js";
 import { handleContextId } from "../modules/redirect.js";
 
+declare const BUILD_MODE: string;
 const isOffline = BUILD_MODE === "offline";
 
 docReady(async function () {

@@ -26,11 +26,11 @@ module.exports = {
       filename: "html5.js",
     },
     html5Home: {
-      import: "./src/html5home/html5home.js",
+      import: "./src/html5home/html5home.ts",
       filename: "html5home.js",
     },
     html5Skip: {
-      import: "./src/html5home/html5skip.js",
+      import: "./src/html5home/html5skip.ts",
       filename: "html5skip.js",
     },
   },
@@ -55,7 +55,7 @@ module.exports = {
   output: {
     path:
       process.env.BUILD_MODE === "offline"
-        ? process.env.NODE_ENV === 'development' ? path.resolve(__dirname, "") : path.resolve(__dirname, "build")
+        ? path.resolve(__dirname, "build")
         : path.resolve(__dirname, "..", "server", "static", "html5", "scripts"),
     publicPath: "",
   },
