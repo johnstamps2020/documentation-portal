@@ -79,6 +79,10 @@
         {
           "label": "InsuranceNow",
           "page": "insuranceNow/2023.1"
+        },
+        {
+          "label": "Digital Reference Applications",
+          "page": "dx-ref-apps"
         }
       ]
     },

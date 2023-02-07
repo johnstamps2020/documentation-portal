@@ -1,0 +1,678 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dx202302ceamapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/ce-am/202302/app",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302ceaminstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/ce-am/202302/install",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302ceamdev",
+      "title": "Development Guide",
+      "url": "cloud/dx/ce-am/202302/dev",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302ceamrefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/ce-am/202302/ref",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302ceamrelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/ce-am/202302/relnotes",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302ceclaimsapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/ce-claims/202302/app",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302ceclaimsinstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/ce-claims/202302/install",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302ceclaimsdev",
+      "title": "Development Guide",
+      "url": "cloud/dx/ce-claims/202302/dev",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302ceclaimsrefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/ce-claims/202302/ref",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302ceclaimsrelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/ce-claims/202302/relnotes",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302ceqbapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/ce-qb/202302/app",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302ceqbinstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/ce-qb/202302/install",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302ceqbdev",
+      "title": "Development Guide",
+      "url": "cloud/dx/ce-qb/202302/dev",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302ceqbrefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/ce-qb/202302/ref",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302ceqbrelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/ce-qb/202302/relnotes",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302peapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/pe/202302/app",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302peinstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/pe/202302/install",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302pedev",
+      "title": "Development Guide",
+      "url": "cloud/dx/pe/202302/dev",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302perefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/pe/202302/ref",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302perelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/pe/202302/relnotes",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302peclaimsapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/pe-claims/202302/app",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302peclaimsinstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/pe-claims/202302/install",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302peclaimsdev",
+      "title": "Development Guide",
+      "url": "cloud/dx/pe-claims/202302/dev",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302peclaimsrefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/pe-claims/202302/ref",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302peclaimsrelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/pe-claims/202302/relnotes",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302sreapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/sre/202302/app",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302sreinstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/sre/202302/install",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302sredev",
+      "title": "Development Guide",
+      "url": "cloud/dx/sre/202302/dev",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302srerefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/sre/202302/ref",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302srerelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/sre/202302/relnotes",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302veapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/ve/202302/app",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302veinstall",
+      "title": "Installation Guide",
+      "url": "cloud/dx/ve/202302/install",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302vedev",
+      "title": "Development Guide",
+      "url": "cloud/dx/ve/202302/dev",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302verefguides",
+      "title": "Digital Services Reference Guides",
+      "url": "cloud/dx/ve/202302/ref",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302verelnotes",
+      "title": "Release Notes",
+      "url": "cloud/dx/ve/202302/relnotes",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302dcg",
+      "title": "Digital Code Generation Guide",
+      "url": "cloud/dx/dcg/202302/guide",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy", "ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxjsdocs202302",
+      "title": "Digital Frontend API Documentation",
+      "url": "dx/js-docs/202302",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": [
+          "CustomerEngage Account Management",
+          "CustomerEngage Account Management for ClaimCenter",
+          "CustomerEngage Quote and Buy",
+          "ProducerEngage",
+          "ProducerEngage for ClaimCenter",
+          "ServiceRepEngage",
+          "VendorEngage"
+        ],
+        "version": ["2023.02"],
+        "release": ["Garmisch"]
+      },
+      "displayOnLandingPages": false,
+      "public": false,
+      "internal": false,
+      "indexForSearch": false,
+      "environments": ["staging"],
+      "earlyAccess": false
+    }
+  ]
+}
