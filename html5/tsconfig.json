@@ -9,6 +9,13 @@
     "moduleResolution": "node",
     "types": ["@doctools/gw-theme-classic", "node"],
     "lib": ["es2018", "dom"],
-    "sourceMap": true
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   }
 }

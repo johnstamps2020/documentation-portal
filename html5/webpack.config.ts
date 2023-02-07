@@ -1,6 +1,6 @@
-const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const DefinePlugin = require("webpack").DefinePlugin;
+import { resolve } from "path";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import { PathData, DefinePlugin, Configuration } from "webpack";
 
 const postCss = {
   loader: "postcss-loader",
@@ -18,7 +18,7 @@ const postCss = {
   },
 };
 
-module.exports = {
+const config: Configuration = {
   mode: "production",
   entry: {
     html5help: {
@@ -36,16 +36,17 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: (pathData) => {
-        if (pathData.chunk.filenameTemplate === "html5home.js") {
+      filename: (pathData: PathData) => {
+        if (pathData.chunk?.name === "html5Home") {
           return "html5home.css";
         }
-        if (pathData.chunk.filenameTemplate === "html5skip.js") {
+        if (pathData.chunk?.name === "html5Skip") {
           return "html5skip.css";
         }
-        if (pathData.chunk.filenameTemplate === "html5.js") {
+        if (pathData.chunk?.name === "html5help") {
           return "html5.css";
         }
+        return `${pathData.chunk?.id}.css`;
       },
     }),
     new DefinePlugin({
@@ -55,8 +56,8 @@ module.exports = {
   output: {
     path:
       process.env.BUILD_MODE === "offline"
-        ? path.resolve(__dirname, "build")
-        : path.resolve(__dirname, "..", "server", "static", "html5", "scripts"),
+        ? resolve(__dirname, "build")
+        : resolve(__dirname, "..", "server", "static", "html5", "scripts"),
     publicPath: "",
   },
   module: {
@@ -162,3 +163,5 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js"],
   },
 };
+
+export default config;

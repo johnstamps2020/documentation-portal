@@ -10,7 +10,7 @@
   "scripts": {
     "build": "webpack",
     "build-offline": "BUILD_MODE=offline webpack",
-    "dev": "NODE_ENV=development webpack --watch",
+    "dev": "rimraf ../server/static/html5/scripts && NODE_ENV=development webpack --watch",
     "dev-offline": "rimraf ./build/* && NODE_ENV=development BUILD_MODE=offline webpack --watch"
   },
   "dependencies": {
@@ -21,6 +21,8 @@
     "@babel/core": "^7.20.12",
     "@babel/preset-react": "^7.16.7",
     "@types/node": "^18.13.0",
+    "@types/react-dom": "^18.0.10",
+    "@types/webpack": "^5.28.0",
     "babel-loader": "9.1.0",
     "babel-plugin-prismjs": "^2.1.0",
     "css-loader": "^6.5.1",
@@ -35,6 +37,7 @@
     "rimraf": "^4.1.2",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.4.2",
+    "ts-node": "^10.9.1",
     "typescript": "^4.9.5",
     "webpack": "5.74.0",
     "webpack-cli": "4.10.0"
