@@ -59,6 +59,6 @@ export function addAvatar() {
     const userButton = getLoginButtonOrAvatar();
     document.getElementById("headerRight").appendChild(userButton);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }

@@ -21,7 +21,7 @@ async function getTopBreadcrumb() {
       return topBreadcrumb;
     }
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return null;
   }
 }

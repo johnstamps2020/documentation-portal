@@ -17,7 +17,7 @@ export function addInternalBadge() {
       document.getElementById("headerRight").appendChild(internalBadge);
     }
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return null;
   }
 }

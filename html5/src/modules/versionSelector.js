@@ -15,7 +15,7 @@ async function findBestMatchingTopic(searchQuery, targetDocVersion) {
     const responseBody = await response.json();
     return responseBody[0]?.href;
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return null;
   }
 }
@@ -81,7 +81,7 @@ export async function addVersionSelector() {
         .appendChild(select);
     }
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return null;
   }
 }
