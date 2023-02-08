@@ -4,7 +4,7 @@ import styles from "./Lightbox.module.css";
 type DialogProps = {
   open: boolean;
   handleClose: () => void;
-  closeOnClick: boolean;
+  closeOnClick?: boolean;
   elementOuterHtml?: string;
   children?: JSX.Element | JSX.Element[];
 };
@@ -41,13 +41,11 @@ export default function Dialog({
     [open]
   );
 
-  console.log("From inside the dialog", { open });
-
   return (
     <dialog ref={dialogRef} className={styles.dialog}>
       <div
         onClick={closeOnClick && handleClose}
-        className={styles.embiggenedImage}
+        className={closeOnClick && styles.embiggenedImage}
         dangerouslySetInnerHTML={
           elementOuterHtml && { __html: elementOuterHtml }
         }

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Fuse from "fuse.js";
 import SearchInput from "./SearchInput";
+import Dialog from "../LightBox/Dialog";
+import OfflineResult from "./OfflineResult";
+import styles from "./OfflineSearch.module.css";
 
 type RawSearchIndexItem = {
   subtitles: string;
@@ -10,7 +13,7 @@ type RawSearchIndexItem = {
   body: string;
 };
 
-type SearchItem = {
+export type SearchItem = {
   subtitles: string[];
   file: string;
   keywords: string;
@@ -29,6 +32,8 @@ const fuseOptions: Fuse.IFuseOptions<SearchItem> = {
 
 export default function OfflineSearch() {
   const [fuse, setFuse] = useState<Fuse<SearchItem> | undefined>(undefined);
+  const [showingResults, setShowingResults] = useState(false);
+  const [results, setResults] = useState<Fuse.FuseResult<SearchItem>[]>([]);
 
   async function loadFuse() {
     try {
@@ -64,7 +69,10 @@ export default function OfflineSearch() {
         q: { value: string };
       };
       const query = target.q.value;
-      const result = fuse.search(query);
+
+      const searchResults = fuse.search(query);
+      setResults(searchResults);
+      setShowingResults(true);
     } catch (err) {
       console.error("Problem running search", err);
     }
@@ -74,9 +82,27 @@ export default function OfflineSearch() {
     return <div>Loading...</div>;
   }
 
+  function handleClose() {
+    setShowingResults(false);
+  }
+
   return (
     <>
       <SearchInput onSubmit={handleSubmit} />
+      <Dialog handleClose={handleClose} open={showingResults}>
+        {results.length > 0 ? (
+          <>
+            {results.map((result) => (
+              <OfflineResult result={result} key={result.item.file} />
+            ))}
+          </>
+        ) : (
+          <div>
+            <div role="image" className={styles.noResultsImage} />
+            <h2>no results</h2>
+          </div>
+        )}
+      </Dialog>
     </>
   );
 }

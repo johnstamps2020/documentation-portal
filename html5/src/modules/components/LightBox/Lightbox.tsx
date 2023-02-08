@@ -51,12 +51,10 @@ export default function Lightbox({
   const [open, setOpen] = useState(false);
 
   function showDialog() {
-    console.log("Fired the show event");
     setOpen(true);
   }
 
   function closeDialog() {
-    console.log("Fired the hide event");
     setOpen(false);
   }
 
