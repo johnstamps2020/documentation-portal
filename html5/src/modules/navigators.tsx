@@ -4,6 +4,7 @@ import { addPdfLink } from "./pdflink";
 import React, { useEffect, useState } from "react";
 import { render } from "react-dom";
 import "../stylesheets/modules/minitoc.css";
+import { translate } from "@theme/Translate";
 
 async function getTopBreadcrumb() {
   try {
@@ -351,10 +352,15 @@ type MiniTocProps = {
 };
 
 function MiniToc({ hashLinks }: MiniTocProps) {
+  // TO DO: Debug this function
   const [width, setWidth] = useState(window.innerWidth);
   const [expanded, setExpanded] = useState(false);
   const breakpoint = 1496;
-  const miniTocTitle = "On this page";
+
+  const miniTocTitle = translate({
+    id: "miniToc.heading",
+    message: "On this page",
+  });
 
   const handleWindowResize = () => setWidth(window.innerWidth);
   useEffect(function () {
