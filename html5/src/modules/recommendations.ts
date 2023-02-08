@@ -1,10 +1,14 @@
 import "../stylesheets/modules/recommendations.css";
 
 export async function showTopicRecommendations() {
-  const response = await fetch(
-    `/recommendations?topicId=${window.location.pathname}`
-  );
-  if (response.ok) {
+  try {
+    const response = await fetch(
+      `/recommendations?topicId=${window.location.pathname}`
+    );
+    if (!response.ok) {
+      throw new Error(`Cannot fetch: ${response.status}`);
+    }
+
     const json = await response.json();
     const recommendedTopics = json.recommendations;
     const recommendationsContainer = document.createElement("div");
@@ -33,5 +37,7 @@ export async function showTopicRecommendations() {
       recommendedTopicListItem.appendChild(recommendedTopicLink);
       recommendedTopicsList.appendChild(recommendedTopicListItem);
     }
+  } catch (err) {
+    console.log("No recommendations found", err);
   }
 }
