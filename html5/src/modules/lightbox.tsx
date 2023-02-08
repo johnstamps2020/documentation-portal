@@ -21,7 +21,7 @@ export async function addLightbox() {
       render(
         <Lightbox
           thumbnail={thumbnail}
-          fullSizeElement={fullSizeElement}
+          elementOuterHtml={fullSizeElement}
           clickToEnlarge={isImage}
         />,
         lightboxContainer

@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
+import Dialog from "./Dialog";
 import styles from "./Lightbox.module.css";
 
 type ThumbnailProps = {
@@ -36,33 +37,27 @@ function ClickableThumbnail({ showDialog, thumbnail }: ThumbnailProps) {
 
 type LightboxProps = {
   thumbnail: string;
-  fullSizeElement: string;
-  clickToEnlarge: boolean;
+  elementOuterHtml?: string;
+  children?: JSX.Element | JSX.Element[];
+  clickToEnlarge?: boolean;
 };
 
 export default function Lightbox({
   thumbnail,
-  fullSizeElement,
+  elementOuterHtml,
   clickToEnlarge,
+  children,
 }: LightboxProps) {
-  const dialogRef = useRef<HTMLDialogElement>();
-
-  function closeDialogWithEscapeButton(event: KeyboardEvent) {
-    if (event.key === "Escape") {
-      closeDialog();
-    }
-  }
+  const [open, setOpen] = useState(false);
 
   function showDialog() {
-    document.body.style.overflow = "hidden";
-    document.addEventListener("keydown", closeDialogWithEscapeButton);
-    dialogRef.current.showModal();
+    console.log("Fired the show event");
+    setOpen(true);
   }
 
   function closeDialog() {
-    document.body.style.overflow = null;
-    document.removeEventListener("keydown", closeDialogWithEscapeButton);
-    dialogRef.current.close();
+    console.log("Fired the hide event");
+    setOpen(false);
   }
 
   return (
@@ -75,25 +70,14 @@ export default function Lightbox({
           thumbnail={thumbnail}
         />
       )}
-      <dialog ref={dialogRef} className={styles.dialog}>
-        {clickToEnlarge ? (
-          <div
-            onClick={closeDialog}
-            className={styles.embiggenedImage}
-            dangerouslySetInnerHTML={{ __html: fullSizeElement }}
-          />
-        ) : (
-          <div
-            className={styles.scrollBox}
-            dangerouslySetInnerHTML={{ __html: fullSizeElement }}
-          />
-        )}
-        <button
-          onClick={closeDialog}
-          className={styles.closeButton}
-          title="Close full-size view"
-        />
-      </dialog>
+      <Dialog
+        closeOnClick={clickToEnlarge}
+        handleClose={closeDialog}
+        elementOuterHtml={elementOuterHtml}
+        open={open}
+      >
+        {children}
+      </Dialog>
     </>
   );
 }

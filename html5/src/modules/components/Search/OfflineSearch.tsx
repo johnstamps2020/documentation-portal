@@ -64,9 +64,7 @@ export default function OfflineSearch() {
         q: { value: string };
       };
       const query = target.q.value;
-      console.log({ query });
       const result = fuse.search(query);
-      console.log({ result });
     } catch (err) {
       console.error("Problem running search", err);
     }
@@ -76,5 +74,9 @@ export default function OfflineSearch() {
     return <div>Loading...</div>;
   }
 
-  return <SearchInput onSubmit={handleSubmit} />;
+  return (
+    <>
+      <SearchInput onSubmit={handleSubmit} />
+    </>
+  );
 }
