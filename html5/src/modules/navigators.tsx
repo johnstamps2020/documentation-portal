@@ -1,6 +1,6 @@
-import { addHashLinks } from "./hashLink.js";
-import { highlightTextFromUrl, addHighlightToggle } from "./highlight.js";
-import { addPdfLink } from "./pdflink.js";
+import { addHashLinks } from "./hashLink";
+import { highlightTextFromUrl, addHighlightToggle } from "./highlight";
+import { addPdfLink } from "./pdflink";
 import React, { useEffect, useState } from "react";
 import { render } from "react-dom";
 import "../stylesheets/modules/minitoc.css";
@@ -21,12 +21,14 @@ async function getTopBreadcrumb() {
       return topBreadcrumb;
     }
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return null;
   }
 }
 
-function getParentNavItems(linkElement) {
+function getParentNavItems(
+  linkElement: Element
+): { text: string; href: string }[] {
   let allLinks = [];
   allLinks.push({
     text: linkElement.textContent,
@@ -40,7 +42,7 @@ function getParentNavItems(linkElement) {
     allLinks.push(getParentNavItems(nextLinkElement).flat());
   }
 
-  return allLinks;
+  return allLinks.flat();
 }
 
 function getCurrentLink() {
@@ -50,10 +52,12 @@ function getCurrentLink() {
 }
 
 function getDocTitleBreadcrumb() {
-  const docTitle = document.querySelector("meta[name='gw-doc-title']")?.content;
-  const docBaseUrl = document.querySelector(
-    "meta[name='gw-base-url']"
-  )?.content;
+  const docTitle = document
+    .querySelector("meta[name='gw-doc-title']")
+    ?.getAttribute("content");
+  const docBaseUrl = document
+    .querySelector("meta[name='gw-base-url']")
+    ?.getAttribute("content");
 
   if (!docTitle || !docBaseUrl) {
     return;
@@ -99,7 +103,7 @@ async function addBreadCrumbs() {
   }
 }
 
-function createNavLink(isPrevious, linkObject) {
+function createNavLink(isPrevious: boolean, linkObject: Element) {
   const navLink = document.createElement("a");
   navLink.classList.add("navbarButton");
   navLink.classList.add("navLink");
@@ -109,14 +113,14 @@ function createNavLink(isPrevious, linkObject) {
   } else {
     navLink.classList.add("disabled");
   }
-  const title = linkObject ? linkObject.innerText : "None";
+  const title = linkObject ? linkObject.textContent : "None";
   const titleLabel = `${
     isPrevious ? "Previous topic" : "Next topic"
   }: ${title}`;
   navLink.setAttribute("title", titleLabel);
   navLink.setAttribute("aria-label", titleLabel);
   navLink.setAttribute("rel", isPrevious ? "prev" : "next");
-  navLink.setAttribute("tabindex", 0);
+  navLink.setAttribute("tabindex", "0");
 
   return navLink;
 }
@@ -127,7 +131,7 @@ function addNavigationLinks() {
       ? document.querySelectorAll("nav[role='toc'] a")
       : document.querySelectorAll("nav.toc a");
   const currentLink = getCurrentLink();
-  let matchingIndex = undefined;
+  let matchingIndex = 0;
   flatLinkList.forEach((link, index) => {
     if (link === currentLink) {
       matchingIndex = index;
@@ -143,21 +147,21 @@ function addNavigationLinks() {
   navigationLinks.appendChild(nextLink);
 
   navigationLinks.addEventListener("click", (e) => {
-    if (e.target.matches("a")) {
+    if ((e.target as Element).matches("a")) {
       const toc = document.querySelector('nav[role="toc"]')
         ? document.querySelector('nav[role="toc"]')
         : document.querySelector("nav.toc");
-      sessionStorage.setItem("tocPos", toc.scrollTop);
+      sessionStorage.setItem("tocPos", toc.scrollTop.toString());
       const navUls = toc.querySelectorAll("li > ul");
-      let expandedUls = [];
+      let expandedUls: string[] = [];
       navUls.forEach((nestedList, index) => {
         if (!nestedList.classList.contains("expanded")) {
           return;
         } else {
-          expandedUls.push(index);
+          expandedUls.push(index.toString());
         }
       });
-      sessionStorage.setItem("tocExpandedItems", expandedUls);
+      sessionStorage.setItem("tocExpandedItems", expandedUls.join(","));
     }
   });
   document.querySelector("#navbarRight").appendChild(navigationLinks);
@@ -231,7 +235,7 @@ function addScrollToTop() {
     // show or hide scrollToTop button
     if (html.scrollTop >= 200) {
       let articleRect = article.getBoundingClientRect();
-      scrollToTopButton.style.left = parseInt(articleRect.right + 4) + "px";
+      scrollToTopButton.style.left = `${articleRect.right + 4}px`;
       scrollToTopButton.classList.add("visible");
     } else {
       scrollToTopButton.classList.remove("visible");
@@ -246,7 +250,7 @@ function addScrollToTop() {
       return;
     }
     const miniToc = document.querySelector("nav.miniToc");
-    const links = [...hashLinks];
+    const links = Array.from(hashLinks);
     let closestToTop = links.reduce((prev, curr) => {
       return Math.abs(prev.getBoundingClientRect().top) <
         Math.abs(curr.getBoundingClientRect().top)
@@ -267,8 +271,7 @@ function addScrollToTop() {
       prevMiniTocLink.classList.remove("current");
     }
     const matchingMiniTocLink = miniToc.querySelector(
-      `[href='${href}']`,
-      ".miniTocLink"
+      `[href='${href}'], .miniTocLink`
     );
     matchingMiniTocLink.classList.add("current");
 
@@ -287,15 +290,15 @@ function addScrollToTop() {
     }
   }
 
-  function debounce(fn, delay = 100) {
-    let timeout;
-
-    return (...args) => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        fn(...args);
-      }, delay);
-    };
+  function debounce<F extends (...params: any[]) => void>(
+    fn: F,
+    delay: number = 1000
+  ) {
+    let timeoutID: number = null;
+    return function (this: any, ...args: any[]) {
+      clearTimeout(timeoutID);
+      timeoutID = window.setTimeout(() => fn.apply(this, args), delay);
+    } as F;
   }
 
   document.querySelector("footer").appendChild(scrollToTopButton);
@@ -311,15 +314,19 @@ function addNavbar() {
   addScrollToTop();
 }
 
+type LinkListProps = {
+  links: Element[];
+};
+
 // miniToc
-function LinkList({ links }) {
+function LinkList({ links }: LinkListProps) {
   return (
     <>
       {links.map((hashLink, key) => {
         const title = hashLink.parentElement.textContent;
         const href = hashLink.getAttribute("href");
         const parentClasses = hashLink.parentElement.classList;
-        const applicableClasses = [...parentClasses].filter(
+        const applicableClasses = Array.from(parentClasses).filter(
           (className) => !className.match("^title$")
         );
 
@@ -339,7 +346,11 @@ function LinkList({ links }) {
   );
 }
 
-function MiniToc({ hashLinks }) {
+type MiniTocProps = {
+  hashLinks: Element[];
+};
+
+function MiniToc({ hashLinks }: MiniTocProps) {
   const [width, setWidth] = useState(window.innerWidth);
   const [expanded, setExpanded] = useState(false);
   const breakpoint = 1496;
@@ -385,7 +396,7 @@ function MiniToc({ hashLinks }) {
   );
 }
 
-function addMiniToc(hashLinks) {
+function addMiniToc(hashLinks: Element[]) {
   const miniTocContainer = document.createElement("nav");
   miniTocContainer.setAttribute("class", "miniToc");
 
@@ -405,13 +416,13 @@ function addMiniToc(hashLinks) {
   mainArticle.before(spacer);
 }
 
-export async function addPageNavigators(isOffline) {
+export async function addPageNavigators(isOffline: boolean) {
   await addHashLinks();
 
   // add minitoc only if hash links have been added
   const hashLinks = document.querySelectorAll(".hashLink");
   if (hashLinks.length > 1) {
-    addMiniToc(hashLinks);
+    addMiniToc(Array.from(hashLinks));
     //showPlaceInMiniToc(hashLinks);
   }
 

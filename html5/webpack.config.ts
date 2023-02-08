@@ -1,6 +1,6 @@
-const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const DefinePlugin = require("webpack").DefinePlugin;
+import { resolve } from "path";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import { PathData, DefinePlugin, Configuration } from "webpack";
 
 const postCss = {
   loader: "postcss-loader",
@@ -18,32 +18,36 @@ const postCss = {
   },
 };
 
-module.exports = {
+const config: Configuration = {
   mode: "production",
   entry: {
     html5help: {
-      import: "./src/html5help/html5template.js",
+      import: "./src/html5help/html5.ts",
       filename: "html5.js",
     },
     html5Home: {
-      import: "./src/html5home/html5homeTemplate.js",
+      import: "./src/html5home/html5home.ts",
       filename: "html5home.js",
     },
     html5Skip: {
-      import: "./src/html5home/html5skipTemplate.js",
+      import: "./src/html5home/html5skip.ts",
       filename: "html5skip.js",
     },
   },
+  devtool: "inline-source-map",
   plugins: [
     new MiniCssExtractPlugin({
-      filename: (pathData) => {
-        if (pathData.chunk.filenameTemplate === "html5home.js") {
+      filename: (pathData: PathData) => {
+        if (pathData.chunk?.name === "html5Home") {
           return "html5home.css";
         }
-        if (pathData.chunk.filenameTemplate === "html5skip.js") {
+        if (pathData.chunk?.name === "html5Skip") {
           return "html5skip.css";
         }
-        return "html5.css";
+        if (pathData.chunk?.name === "html5help") {
+          return "html5.css";
+        }
+        return `${pathData.chunk?.id}.css`;
       },
     }),
     new DefinePlugin({
@@ -53,15 +57,20 @@ module.exports = {
   output: {
     path:
       process.env.BUILD_MODE === "offline"
-        ? path.resolve(__dirname, "build")
-        : path.resolve(__dirname, "..", "server", "static", "html5", "scripts"),
+        ? resolve(__dirname, "build")
+        : resolve(__dirname, "..", "server", "static", "html5", "scripts"),
     publicPath: "",
   },
   module: {
     rules: [
       {
+        test: /\.tsx?$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
+      {
         test: /\.m?js$/,
-        exclude: [/node_modules/, /static/, /out/],
+        exclude: [/node_modules/, /static/, /out/, /build/],
         use: {
           loader: "babel-loader",
           options: {
@@ -151,4 +160,19 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js"],
+    alias: {
+      "@theme": resolve(
+        __dirname,
+        "node_modules",
+        "@doctools",
+        "gw-theme-classic",
+        "lib",
+        "theme"
+      ),
+    },
+  },
 };
+
+export default config;

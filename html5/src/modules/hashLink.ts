@@ -1,32 +1,32 @@
 import "../stylesheets/modules/hashLink.css";
 
-function isHidden(element) {
+function isHidden(element: HTMLElement) {
   return element.offsetParent === null;
 }
 
-export async function addHashLinks() {
-  const idsInDoc = [];
-
-  function generateId(element) {
-    let idString =
-      element.parentElement.getAttribute("id") ||
-      element.getAttribute("id") ||
-      element.textContent.replace(/[^a-zA-Z0-9]/g, "");
-    if (idsInDoc.includes(idString)) {
-      idString = idString + +new Date().getTime();
-    }
-    idsInDoc.push(idString);
-
-    return idString;
+function generateId(element: Element, idsInDoc: string[]) {
+  let idString =
+    element.parentElement.getAttribute("id") ||
+    element.getAttribute("id") ||
+    element.textContent?.replace(/[^a-zA-Z0-9]/g, "");
+  if (idsInDoc.includes(idString)) {
+    idString = idString + +new Date().getTime();
   }
+  idsInDoc.push(idString);
+
+  return idString;
+}
+
+export async function addHashLinks() {
+  const idsInDoc: string[] = [];
 
   document.querySelectorAll(".title").forEach((title, index) => {
     if (
-      !isHidden(title) &&
+      !isHidden(title as HTMLElement) &&
       index !== 0 &&
       !title.parentElement.parentElement.classList.contains("landingpage")
     ) {
-      const id = generateId(title);
+      const id = generateId(title, idsInDoc);
       if (!document.getElementById(id)) {
         title.setAttribute("id", id);
       }
