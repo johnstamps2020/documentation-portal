@@ -38,6 +38,24 @@
       "earlyAccess": false
     },
     {
+      "id": "integgatewaydevlatestlxdpoc",
+      "title": "Integration Gateway LXD POC",
+      "url": "cloud/is/integgatewaylxdpoc",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05", "2022.09"],
+        "release": ["Elysian", "Flaine"],
+        "subject": ["Integration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
       "id": "isrestapiclientguide",
       "title": "REST API Client",
       "url": "is/restapiclient/guide",
