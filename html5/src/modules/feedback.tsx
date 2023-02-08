@@ -1,17 +1,8 @@
 import "../stylesheets/modules/feedback.css";
 import React from "react";
 import { render } from "react-dom";
-import { SearchMeta, UserInformation } from "@theme/Types";
+import { SearchMeta } from "@theme/Types";
 import Feedback from "@theme/Feedback";
-
-declare global {
-  interface Window {
-    docProduct: string;
-    docPlatform: string;
-    docVersion: string;
-    userInformation: UserInformation;
-  }
-}
 
 function getPossibleContacts() {
   const creatorInfos = document.querySelectorAll("meta[name = 'DC.creator']");

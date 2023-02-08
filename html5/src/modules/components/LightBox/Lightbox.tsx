@@ -1,7 +1,15 @@
 import React, { useRef } from "react";
-import styles from "../stylesheets/modules/lightbox.module.css";
+import styles from "./Lightbox.module.css";
 
-function ThumbnailWithExternalButton({ thumbnail, showDialog }) {
+type ThumbnailProps = {
+  thumbnail: string;
+  showDialog: () => void;
+};
+
+function ThumbnailWithExternalButton({
+  thumbnail,
+  showDialog,
+}: ThumbnailProps) {
   return (
     <>
       <div className={styles.thumbnailWithExternalButtonWrapper}>
@@ -16,7 +24,7 @@ function ThumbnailWithExternalButton({ thumbnail, showDialog }) {
   );
 }
 
-function ClickableThumbnail({ showDialog, thumbnail }) {
+function ClickableThumbnail({ showDialog, thumbnail }: ThumbnailProps) {
   return (
     <button
       onClick={showDialog}
@@ -26,10 +34,20 @@ function ClickableThumbnail({ showDialog, thumbnail }) {
   );
 }
 
-function Lightbox({ thumbnail, fullSizeElement, clickToEnlarge }) {
-  const dialogRef = useRef();
+type LightboxProps = {
+  thumbnail: string;
+  fullSizeElement: string;
+  clickToEnlarge: boolean;
+};
 
-  function closeDialogWithEscapeButton(event) {
+export default function Lightbox({
+  thumbnail,
+  fullSizeElement,
+  clickToEnlarge,
+}: LightboxProps) {
+  const dialogRef = useRef<HTMLDialogElement>();
+
+  function closeDialogWithEscapeButton(event: KeyboardEvent) {
     if (event.key === "Escape") {
       closeDialog();
     }
@@ -78,34 +96,4 @@ function Lightbox({ thumbnail, fullSizeElement, clickToEnlarge }) {
       </dialog>
     </>
   );
-}
-
-export async function addLightbox() {
-  const lightboxElements = document.querySelectorAll("img, table");
-  if (lightboxElements) {
-    const { render } = await import("react-dom");
-    lightboxElements.forEach((lightboxElem, i) => {
-      const lightboxContainer = document.createElement("span");
-      lightboxContainer.id = `lightbox${i}`;
-      lightboxElem.before(lightboxContainer);
-      const thumbnail = lightboxElem.outerHTML;
-      const thumbnailDeepCopy = lightboxElem.cloneNode(true);
-      const isImage = lightboxElem.tagName.toLowerCase() === "img";
-      if (isImage) {
-        ["width", "height"].forEach((attrName) =>
-          thumbnailDeepCopy.removeAttribute(attrName)
-        );
-      }
-      const fullSizeElement = thumbnailDeepCopy.outerHTML;
-      render(
-        <Lightbox
-          thumbnail={thumbnail}
-          fullSizeElement={fullSizeElement}
-          clickToEnlarge={isImage}
-        />,
-        lightboxContainer
-      );
-      lightboxElem.remove();
-    });
-  }
 }

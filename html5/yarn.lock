@@ -1902,9 +1902,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@doctools/gw-theme-classic@npm:2.0.61":
-  version: 2.0.61
-  resolution: "@doctools/gw-theme-classic@npm:2.0.61::__archiveUrl=https%3A%2F%2Fartifactory.guidewire.com%2Fartifactory%2Fapi%2Fnpm%2Fdoctools-npm-dev%2F%40doctools%2Fgw-theme-classic%2F-%2F%40doctools%2Fgw-theme-classic-2.0.61.tgz"
+"@doctools/gw-theme-classic@npm:2.0.64":
+  version: 2.0.64
+  resolution: "@doctools/gw-theme-classic@npm:2.0.64::__archiveUrl=https%3A%2F%2Fartifactory.guidewire.com%2Fartifactory%2Fapi%2Fnpm%2Fdoctools-npm-dev%2F%40doctools%2Fgw-theme-classic%2F-%2F%40doctools%2Fgw-theme-classic-2.0.64.tgz"
   dependencies:
     "@brightcove/react-player-loader": ^1.4.2
     "@docusaurus/core": 2.3.1
@@ -1922,7 +1922,7 @@ __metadata:
   peerDependencies:
     react: ^16.8.4 || ^17.0.0
     react-dom: ^16.8.4 || ^17.0.0
-  checksum: 708a95d1ad0b032dff7491c59bdb07d11a8f6ec1f712c870e1339a7c628636f35f5b30ae71dfda72a7eab6a6b56c618cbe7db984d434ac070b8155802ca19725
+  checksum: ed08b93cb89bb430fc0fa889af842c352dc28b1ad6f666963c6243253dd120e2c767df0a5b0436000f443716208ba49f4212f8182cae1bb7e4b18a4d7ee44954
   languageName: node
   linkType: hard
 
@@ -6411,6 +6411,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fuse.js@npm:^6.6.2":
+  version: 6.6.2
+  resolution: "fuse.js@npm:6.6.2"
+  checksum: 17ae758ce205276ebd88bd9c9f088a100be0b4896abac9f6b09847151269d1690f41d7f98ff5813d4a58973162dbd99d0072ce807020fee6f9de60170f6b08eb
+  languageName: node
+  linkType: hard
+
 "gauge@npm:^4.0.3":
   version: 4.0.4
   resolution: "gauge@npm:4.0.4"
@@ -6900,13 +6907,14 @@ __metadata:
     "@babel/cli": ^7.17.6
     "@babel/core": ^7.20.12
     "@babel/preset-react": ^7.16.7
-    "@doctools/gw-theme-classic": 2.0.61
+    "@doctools/gw-theme-classic": 2.0.64
     "@types/node": ^18.13.0
     "@types/react-dom": ^18.0.10
     "@types/webpack": ^5.28.0
     babel-loader: 9.1.0
     babel-plugin-prismjs: ^2.1.0
     css-loader: ^6.5.1
+    fuse.js: ^6.6.2
     mini-css-extract-plugin: ^2.4.5
     minimist: ^1.2.6
     postcss: ^8.4.12

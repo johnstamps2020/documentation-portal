@@ -15,6 +15,18 @@ import { addInternalBadge } from "../modules/internal";
 import { addLightbox } from "../modules/lightbox";
 import { addEarlyAccessMark } from "../modules/earlyAccess";
 import "../stylesheets/html5template.css";
+import { UserInformation } from "@theme/Types";
+
+declare global {
+  interface Window {
+    docProduct: string;
+    docPlatform: string;
+    docVersion: string;
+    docSubject: string;
+    docTitle: string;
+    userInformation: UserInformation;
+  }
+}
 
 declare const BUILD_MODE: string;
 const isOffline = BUILD_MODE === "offline";
@@ -28,7 +40,7 @@ docReady(async function () {
   addInternalBadge();
   addEarlyAccessMark();
   addLogo();
-  !isOffline && addSearchBox();
+  addSearchBox(isOffline);
   !isOffline && (await addVersionSelector());
   !isOffline && (await addAvatar());
   await addPageNavigators(isOffline);

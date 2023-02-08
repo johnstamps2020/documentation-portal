@@ -14,7 +14,8 @@
     "dev-offline": "rimraf ./build/* && NODE_ENV=development BUILD_MODE=offline webpack --watch"
   },
   "dependencies": {
-    "@doctools/gw-theme-classic": "2.0.61"
+    "@doctools/gw-theme-classic": "2.0.64",
+    "fuse.js": "^6.6.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",

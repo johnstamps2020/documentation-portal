@@ -20,7 +20,7 @@ docReady(async function () {
   !isOffline && (await setMetadata());
   addInternalBadge();
   addLogo();
-  !isOffline && addSearchBox();
+  addSearchBox(isOffline);
   !isOffline && (await addVersionSelector());
   !isOffline && (await addAvatar());
   addFooterContents(isOffline);
