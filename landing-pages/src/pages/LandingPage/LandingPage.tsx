@@ -25,18 +25,18 @@ export default function LandingPage() {
         const response = await fetch(
           `/safeConfig/entity/page/data?path=${pagePathFromRouter}`
         );
+        const requestedPath =
+          pagePathFromRouter === "/"
+            ? pagePathFromRouter
+            : `/landing/${pagePathFromRouter}`;
         if (response.status === 401) {
-          return navigate(
-            `/gw-login?redirectTo=/landing/${pagePathFromRouter}`
-          );
+          return navigate(`/gw-login?redirectTo=${requestedPath}`);
         }
         if (response.status === 403) {
-          return navigate(
-            `/forbidden?unauthorized=/landing/${pagePathFromRouter}`
-          );
+          return navigate(`/forbidden?unauthorized=${requestedPath}`);
         }
         if (response.status !== 200) {
-          return navigate(`/404?notFound=/landing/${pagePathFromRouter}`);
+          return navigate(`/404?notFound=${requestedPath}`);
         }
         if (!response.ok) {
           const errorJson = await response.json();
