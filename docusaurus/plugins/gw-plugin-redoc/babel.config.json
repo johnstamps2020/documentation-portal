@@ -1,0 +1,14 @@
+{
+  "ignore": ["**/gw.redoc.standalone.js"],
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ],
+    "@babel/preset-react"
+  ]
+}

@@ -1,0 +1,40 @@
+# Image zoom
+
+:::info
+
+This is a third-party plugin.
+
+:::
+
+Add an option to zoom in images in your beautiful documentation.
+
+## Install
+
+```shell
+yarn add docusaurus-plugin-image-zoom
+```
+
+## Set plugin in docusaurus.config.js
+
+Add the plugin to the `docusaurus.config.js` file.
+
+1. Under `themeConfig`, add:
+
+    ```js
+    themeConfig:
+        zoom: {
+                selector: '.markdown img:not(.doNotZoom)',
+                background: {
+                light: 'rgb(255, 255, 255)',
+                dark: 'rgb(50, 50, 50)',
+                },
+                // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+                config: {},
+            }
+    ```
+
+2. Under `plugins`, add:
+
+    ```js
+    plugins: [require.resolve('docusaurus-plugin-image-zoom')]
+    ```

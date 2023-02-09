@@ -1,0 +1,56 @@
+.redoc-wrap {
+  flex-wrap: wrap;
+  font-size: 18px !important;
+  font-family: "Source Sans Pro" sans-serif !important;
+}
+
+.redoc-wrap div,
+.redoc-wrap p {
+  font-family: "Source Sans Pro" sans-serif !important;
+}
+
+.redoc-wrap code {
+  border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--ifm-code-border-radius);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: var(--ifm-code-font-size);
+  padding: var(--ifm-code-padding-vertical) var(--ifm-code-padding-horizontal);
+}
+
+.redoc-wrap > div:last-child {
+  display: none;
+}
+
+.redoc-wrap td {
+  padding: 1rem;
+}
+
+.redoc-wrap div.menu-content {
+  display: none;
+}
+
+.redoc-wrap div[id^="operation"] > div > div > div > button {
+  margin-top: 3em;
+}
+
+.redoc-wrap label[role="menuitem"],
+.redoc-wrap button {
+  break-inside: auto;
+}
+
+.redoc-wrap code {
+  background-color: #000;
+  color: #fff;
+}
+
+.redoc-wrap div[class~="scrollbar-container"] > div {
+  display: none;
+}
+
+.redoc-wrap div.api-content {
+  width: 100%;
+}
+
+.redoc-wrap div[class~="api-content"] a {
+  text-decoration: underline;
+}

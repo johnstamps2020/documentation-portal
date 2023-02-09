@@ -1,0 +1,30 @@
+---
+internal: true
+---
+
+# Internal page
+
+import Note from "./_internal-not-secure.mdx";
+
+<Note />
+
+You can make an entire page internal. To users without a Guidewire email, the
+page is not visible in the left nav. If they get a link to that page, they see a
+page which tell them they don't have access, along with some guidance.
+
+To make a page internal, add the `internal: true` anywhere in the MDX prolog.
+Other props work normally.
+
+```md {2}
+---
+internal: true
+sidebar_position: 2
+sidebar_label: Easy
+sidebar_class_name: green
+...and other props, as needed
+---
+
+# My private page
+
+I don't want anyone to see my page so I am making it internal.
+```

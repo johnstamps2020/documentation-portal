@@ -1,0 +1,19 @@
+---
+sidebar_position: 2
+---
+
+# Theme Typescript support
+
+If you are using Typescript in your site, you can import type definitions from
+the theme by adding `types` to your `tsconfig.json`. Here's an example file set
+up for this theme.
+
+```json {5}
+{
+  "extends": "@tsconfig/docusaurus/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "types": ["@doctools/gw-theme-classic"]
+  }
+}
+```

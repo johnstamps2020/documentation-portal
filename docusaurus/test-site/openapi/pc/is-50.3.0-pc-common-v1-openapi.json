@@ -1,0 +1,1755 @@
+{
+  "components": {
+    "parameters": {
+      "activityId": {
+        "description": "The REST identifier for the activity, as returned via previous requests that return a list of activities",
+        "in": "path",
+        "name": "activityId",
+        "required": true,
+        "schema": { "type": "string" }
+      },
+      "documentId": {
+        "description": "The REST identifier for the document, as returned via previous requests that return a list of documents",
+        "in": "path",
+        "name": "documentId",
+        "required": true,
+        "schema": { "type": "string" }
+      },
+      "enablePolymorphism": {
+        "description": "Whether or not to use the discriminator/oneOf pattern to output schemas in cases where the valid set of fields can vary based on some attribute of the data such as the country or subtype.  Defaults to true.  When set to false, the schema in these cases will contain the superset of all valid fields, e.g. address schemas will contain all fields for all countries, rather than have separate schemas for different countries.  Setting this to false may make the schema output more consumable by tools that don't support that part of the OpenAPI schema.",
+        "in": "query",
+        "name": "enablePolymorphism",
+        "schema": {
+          "default": true,
+          "type": "boolean"
+        }
+      },
+      "fields": {
+        "description": "The fields parameter allows the caller to specify the set of fields that should be included for a given resource, and allows the client to avoid fetching fields they don't want as well as to request optional fields that aren't included by default.  The parameter is of the form fields=<field list> or fields=<include>:<field list>.  The <field list> is a comma-separated list of fields desired on the response, and <include> indicates that the field selection applies to an included resource.  If not specified, the default fields for a resource will be returned. The \"checksum\" and \"links\" properties are special and can be included by specifying \"$checksum\" and \"$links\" respectively. If you wish to select fields on the root resource and the included resources, each of those must be in a separate fields parameter. For example, ?fields=<field list>&fields=<include1>:<field list>&fields=<include2>:<field list>. Special values beginning with the '*' character are used to indicate a set of fields to return, which will then be combined with additional fields that are explicitly listed. The '*default' set will include whatever set of the fields the endpoint would normally return if the \"fields\" query parameter wasn't specified. For example, specifying fields=firstName,lastName will return only the firstName and lastName fields on the response, while specifying fields=default,firstName,lastName will return all the default fields as well as the firstName and lastName. Other '' options are '*detail', '*summary', and '*all'. Properties on sub-objects can be selected via dot-separated paths, for example fields=assignedUser,assignedUser.id will fetch only the id of the assignedUser object but not the displayName. <include> can also represent a nested included resource, such as fields=activities.notes:subject,body.",
+        "explode": true,
+        "in": "query",
+        "name": "fields",
+        "schema": {
+          "items": { "type": "string" },
+          "type": "array"
+        },
+        "style": "form"
+      },
+      "filter": {
+        "description": "Filters the list of results based on the specified field, operator, and value.  The query parameter's value should be of the form <field>:<operator>:<value> or <include>:<field>:<operator>:<value>.  If the <include>: piece is specified, the filter will be applied to the included resource. The set of supported fields is dependent upon the resource being filtered.  Valid operators include \"eq\", \"ne\", \"lt\", \"gt\", \"le\", \"ge\", \"in\", \"ni\", \"sw\", and \"cn\". Values should be formatted according to the same JSON type and format as the filtered field, i.e. if the filtered field is a boolean field, the value should either be \"true\" or \"false\" and if the filtered field is a date-time field, the value should be an ISO-8601 date-time value.  One exception is that filtering on date-time fields can accept either date-times or dates. On occasions where the value needs to contain a \":\" character, this character can be escaped with an additional \":\". For example, to compare against \"some:value\", the query parameter would take the form <field>:<operator>:some::value. The filter query parameter can be specified multiple times for the same resource or field, and all the specified filters will effectively be ANDed together. <include> can also represent a nested included resource, such as filter=activities.notes:subject:cn:NoteSubject.",
+        "explode": true,
+        "in": "query",
+        "name": "filter",
+        "schema": {
+          "items": { "type": "string" },
+          "type": "array"
+        },
+        "style": "form"
+      },
+      "filterByUser": {
+        "description": "Whether or not to filter endpoints and schema properties by the authorization of this user. Defaults to false.",
+        "in": "query",
+        "name": "filterByUser",
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "gwLanguageHeader": {
+        "description": "If specified, this header will set the language used when processing the request",
+        "in": "header",
+        "name": "GW-Language",
+        "schema": { "type": "string" }
+      },
+      "gwLocaleHeader": {
+        "description": "If specified, this header will set the locale used when processing the request",
+        "in": "header",
+        "name": "GW-Locale",
+        "schema": { "type": "string" }
+      },
+      "gwSchemaProperty": {
+        "description": "If specified and the operation returns json with a defined schema, this will add a property, '$GW-Schema',  with the fully qualified name of the object's schema.",
+        "in": "header",
+        "name": "GW-IncludeSchemaProperty",
+        "schema": { "type": "boolean" }
+      },
+      "gwTraceability": {
+        "description": "This header permits a customer to trace a request from its initial reception through all of the subsequent applications that were invoked to handle that request. The actual traceability id present in the MDC and logs (and returned in the response), is dependent on the implementation of TraceabilityIDPlugin. The default implementation uses this value, if specified, or a generated UID.  However, another implementation may always generate a unique id and just log  the relationship between these incoming values and the generated UID. Note: that this header can be repeated, but the resulting string will just be the comma separated values.",
+        "in": "header",
+        "name": "X-Correlation-ID",
+        "schema": { "type": "string" }
+      },
+      "gwTransactionID": {
+        "description": "If specified and this operation results in a database commit, this header's value must not have been submitted before.  This value must be globally unique across all clients, apis and webservices. It is used for those transaction that are not idempotent. Unless this is explicitly referenced for an operation it is not required.",
+        "in": "header",
+        "name": "GW-DBTransaction-ID",
+        "required": true,
+        "schema": { "type": "string" }
+      },
+      "gwUnknownPropertyHeader": {
+        "description": "If specified, this header will drive the behavior for unknown property handling",
+        "in": "header",
+        "name": "GW-UnknownPropertyHandling",
+        "schema": {
+          "enum": ["log", "reject", "ignore"],
+          "type": "string"
+        }
+      },
+      "gwUnknownQueryParameterHeader": {
+        "description": "If specified, this header will drive the behavior for unknown query parameter handling.  Default is to reject them.",
+        "in": "header",
+        "name": "GW-UnknownQueryParamHandling",
+        "schema": {
+          "enum": ["log", "reject", "ignore"],
+          "type": "string"
+        }
+      },
+      "gwValidateResponseHandling": {
+        "description": "If specified, this header permits the client to override the behavior around validating response",
+        "in": "header",
+        "name": "GW-ValidateResponseHandling",
+        "schema": { "type": "boolean" }
+      },
+      "include": {
+        "description": "Indicates that the caller would like additional resources returned along with this call in the \"included\" section of the response.  The include parameter can appear multiple times, and is a comma-separated list of additional resources to include.  Nested inclusions can be specified by prefixing the inclusion list with the name of the included property and :.  For example, to include the vehicleincidents and mainContact for a Claim, as well as the driver of the vehicle, you could specify ?include=vehicleincidents,mainContact&include=vehicleincidents:driver. The exact set of options for the include parameter depends upon the particular endpoint.",
+        "explode": true,
+        "in": "query",
+        "name": "include",
+        "schema": {
+          "items": { "type": "string" },
+          "type": "array"
+        },
+        "style": "form"
+      },
+      "includeTotal": {
+        "description": "The includeTotal parameter is used to indicate that the results should include a count of the total number of results available, in cases where the list of results is paginated and not all results are included.  This parameter is of the form includeTotal=<true|false> or includeTotal=<include>:<true|false>.  Specifying the <include>: prefix on the query parameter will apply the includeTotal option to the included list. <include> can also represent a nested included resource, such as includeTotal=activities.notes:true. Calculating the total size of a list can require additional database load, and the option is turned off by default. The returned total is capped at 1000, and will not be accurate if the resource contains more than 1000 elements.",
+        "explode": true,
+        "in": "query",
+        "name": "includeTotal",
+        "schema": {
+          "items": { "type": "string" },
+          "type": "array"
+        },
+        "style": "form"
+      },
+      "noteId": {
+        "description": "The REST identifier for the note, as returned via previous requests that return a list of notes",
+        "in": "path",
+        "name": "noteId",
+        "required": true,
+        "schema": { "type": "string" }
+      },
+      "pageOffset": {
+        "description": "The pageOffset parameter is used to indicate the first result to fetch, in order to page through a list of results. The token may represent a zero-indexed offset, but it may also represent something else such as the id of the last or previous result, depending upon how the server implements pagination for a particular operation. As a general rule, pagination of an API should use the \"next\" and \"prev\" links on the query results to navigate back and forth, rather than attempting to manually construct the pageOffset value.",
+        "in": "query",
+        "name": "pageOffset",
+        "schema": { "type": "string" }
+      },
+      "pageSize": {
+        "description": "The maximum number of results to return in the result.  If not specified, the default settings for that endpoint will be used; each endpoint also defines a maximum pageSize.  The pageSize parameter can be specified as either pageSize=<size> or pageSize=<include>:<size>, where <include> represents the name of an included resource.  For example, ?pageSize=100 will indicate that 100 resources should be returned, while ?include=activities&pageSize=activities:5 will indicate that 5 activities should be returned along with the response. <include> can also represent a nested included resource, such as pageSize=activities.notes:5.",
+        "explode": true,
+        "in": "query",
+        "name": "pageSize",
+        "schema": {
+          "items": { "type": "string" },
+          "type": "array"
+        },
+        "style": "form"
+      },
+      "prettyPrintSchema": {
+        "description": "Whether or not to pretty-print the returned schema, making it larger but more human readable.  Defaults to false.",
+        "in": "query",
+        "name": "prettyPrint",
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "sort": {
+        "description": "The sort parameter is used to control the sorting of the returned results.  The sort parameter can appear multiple times in the query string, and is either of the form sort=<include>:<properties> or sort=<properties>, where <properties> is a comma-separated list of properties to sort on and <include> represents the name of an included resource.  Property names can be prefixed with '-' to specify a descending sort on that property, otherwise the default is an ascending sort.  The set of valid sort property names depends on the specific endpoint being requested. For example, ?sort=priority,-dueDate will specify a primary sort on priority (ascending) and a secondary sort on dueDate (descending).  ?include=activities&sort=activities:priority,-dueDate specifies the same sort values, but applies them to the included \"activities\" list rather than to the primary resource. <include> can also represent a nested included resource, such as sort=activities.notes:dueDate.",
+        "explode": true,
+        "in": "query",
+        "name": "sort",
+        "schema": {
+          "items": { "type": "string" },
+          "type": "array"
+        },
+        "style": "form"
+      }
+    },
+    "schemas": {
+      "Activity": {
+        "properties": {
+          "activityPattern": {
+            "maxLength": 60,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string",
+            "x-gw-createOnly": true
+          },
+          "activityType": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "readOnly": true,
+            "x-gw-typelist": "ActivityType"
+          },
+          "approvalIssue": {
+            "maxLength": 255,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "approvalRationale": {
+            "maxLength": 255,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "approved": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "assignedByUser": {
+            "$ref": "#/components/schemas/SimpleReference",
+            "readOnly": true,
+            "x-gw-reference-schema": "User",
+            "x-gw-referenceType": "User"
+          },
+          "assignedGroup": {
+            "$ref": "#/components/schemas/SimpleReference",
+            "readOnly": true
+          },
+          "assignedQueue": {
+            "$ref": "#/components/schemas/SimpleReference",
+            "readOnly": true
+          },
+          "assignedUser": {
+            "$ref": "#/components/schemas/SimpleReference",
+            "readOnly": true,
+            "x-gw-reference-schema": "User",
+            "x-gw-referenceType": "User"
+          },
+          "assignmentStatus": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "readOnly": true,
+            "x-gw-typelist": "AssignmentStatus"
+          },
+          "associatedRole": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "readOnly": true,
+            "x-gw-typelist": "UserRole"
+          },
+          "closeDate": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "closeUser": {
+            "$ref": "#/components/schemas/SimpleReference",
+            "readOnly": true,
+            "x-gw-reference-schema": "User",
+            "x-gw-referenceType": "User"
+          },
+          "createTime": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "description": {
+            "maxLength": 1333,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string",
+            "x-gw-defaultViews": ["detail"]
+          },
+          "dueDate": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "escalated": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "escalationDate": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "externallyOwned": { "type": "boolean" },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "initialAssignment": {
+            "$ref": "#/components/schemas/Assignee",
+            "x-gw-createOnly": true
+          },
+          "mandatory": { "type": "boolean" },
+          "priority": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "Priority"
+          },
+          "recurring": { "type": "boolean" },
+          "startDate": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "readOnly": true,
+            "x-gw-typelist": "ActivityStatus"
+          },
+          "subject": {
+            "maxLength": 255,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-gw-filterable": [
+          "closeDate",
+          "dueDate",
+          "escalated",
+          "externallyOwned",
+          "priority",
+          "status",
+          "subject"
+        ],
+        "x-gw-sortable": [
+          "assignedUser",
+          "dueDate",
+          "escalated",
+          "priority",
+          "status",
+          "subject"
+        ]
+      },
+      "ActivityActionRequest": {
+        "properties": {
+          "included": {
+            "$ref": "#/components/schemas/ActivityRequestInclusions"
+          }
+        },
+        "type": "object"
+      },
+      "ActivityApprovalAttributes": {
+        "properties": { "approvalRationale": { "type": "string" } },
+        "type": "object"
+      },
+      "ActivityApprovalData": {
+        "properties": {
+          "attributes": {
+            "$ref": "#/components/schemas/ActivityApprovalAttributes"
+          },
+          "checksum": { "type": "string" },
+          "id": { "type": "string" },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "method": {
+            "enum": ["post", "patch"],
+            "type": "string"
+          },
+          "refid": { "type": "string" },
+          "related": {
+            "$ref": "#/components/schemas/RelatedCollections",
+            "readOnly": true
+          },
+          "type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "uri": { "type": "string" }
+        },
+        "required": ["attributes"],
+        "type": "object"
+      },
+      "ActivityApprovalRequest": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/ActivityApprovalData" },
+          "included": {
+            "$ref": "#/components/schemas/ActivityRequestInclusions"
+          }
+        },
+        "required": ["data"],
+        "type": "object"
+      },
+      "ActivityAssignmentRequest": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/AssigneeData" },
+          "included": {
+            "$ref": "#/components/schemas/ActivityRequestInclusions"
+          }
+        },
+        "required": ["data"],
+        "type": "object"
+      },
+      "ActivityData": {
+        "properties": {
+          "attributes": { "$ref": "#/components/schemas/Activity" },
+          "checksum": { "type": "string" },
+          "id": { "type": "string" },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "method": {
+            "enum": ["post", "patch"],
+            "type": "string"
+          },
+          "refid": { "type": "string" },
+          "related": {
+            "$ref": "#/components/schemas/RelatedCollections",
+            "readOnly": true
+          },
+          "type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "uri": { "type": "string" }
+        },
+        "required": ["attributes"],
+        "type": "object"
+      },
+      "ActivityList": {
+        "properties": {
+          "count": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "data": {
+            "items": { "$ref": "#/components/schemas/ActivityData" },
+            "type": "array"
+          },
+          "included": {
+            "$ref": "#/components/schemas/ActivityResponseInclusions"
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "total": {
+            "readOnly": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "ActivityRequest": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/ActivityData" },
+          "included": {
+            "$ref": "#/components/schemas/ActivityRequestInclusions"
+          }
+        },
+        "required": ["data"],
+        "type": "object"
+      },
+      "ActivityRequestInclusions": {
+        "properties": {
+          "Note": {
+            "items": { "$ref": "#/components/schemas/NoteData" },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "ActivityResponse": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/ActivityData" },
+          "included": {
+            "$ref": "#/components/schemas/ActivityResponseInclusions"
+          }
+        },
+        "type": "object"
+      },
+      "ActivityResponseInclusions": {
+        "properties": {
+          "Note": {
+            "items": { "$ref": "#/components/schemas/NoteData" },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "Assignee": {
+        "properties": {
+          "autoAssign": { "type": "boolean" },
+          "groupId": { "type": "string" },
+          "name": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "queueId": { "type": "string" },
+          "role": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "UserRole"
+          },
+          "userId": { "type": "string" }
+        },
+        "type": "object"
+      },
+      "AssigneeData": {
+        "properties": {
+          "attributes": { "$ref": "#/components/schemas/Assignee" },
+          "checksum": { "type": "string" },
+          "id": { "type": "string" },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "method": {
+            "enum": ["post", "patch"],
+            "type": "string"
+          },
+          "refid": { "type": "string" },
+          "related": {
+            "$ref": "#/components/schemas/RelatedCollections",
+            "readOnly": true
+          },
+          "type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "uri": { "type": "string" }
+        },
+        "required": ["attributes"],
+        "type": "object"
+      },
+      "AssigneeList": {
+        "properties": {
+          "count": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "data": {
+            "items": { "$ref": "#/components/schemas/AssigneeData" },
+            "type": "array"
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "total": {
+            "readOnly": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "BatchRequest": {
+        "description": "Defines the structure of a batch request, which consists of an array of sub-requests",
+        "properties": {
+          "requests": {
+            "description": "The array of sub-requests",
+            "items": { "$ref": "#/components/schemas/BatchSubRequest" },
+            "type": "array"
+          }
+        },
+        "required": ["requests"],
+        "type": "object"
+      },
+      "BatchResponse": {
+        "description": "Defines the structure of the response to a batch request.  The 'responses' array will have one element for every entry in the 'requests' array, and responses will appear in the same order.",
+        "properties": {
+          "responses": {
+            "description": "The array of sub-responses, appearing in the same order as the elements in the 'requests' array of the request",
+            "items": { "$ref": "#/components/schemas/BatchSubResponse" },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "BatchSubRequest": {
+        "description": "Defines the structure of an individual sub-request of the batch request",
+        "properties": {
+          "body": {
+            "description": "The body of the sub-request, if any",
+            "type": "object"
+          },
+          "headers": {
+            "description": "Defines headers that will be included as part of the sub-request.  Any headers defined using this property will override header values inherited from the main request.  Any headers present on the main request that are not defined in this array will be inherited when the sub-request is made, with the exception of the 'GW-Checksum' header.",
+            "items": { "$ref": "#/components/schemas/Header" },
+            "type": "array"
+          },
+          "method": {
+            "description": "The HTTP method for the sub-request",
+            "enum": [
+              "delete",
+              "head",
+              "get",
+              "options",
+              "patch",
+              "post",
+              "put"
+            ],
+            "type": "string"
+          },
+          "onFail": {
+            "description": "Controls whether or not subsequent sub-requests are processed if this sub-request fails.  The default behavior, if unspecified, is to continue processing sub-request.  The 'abort' option specifies that all subsequent sub-requests will be skipped.",
+            "enum": ["abort", "continue"],
+            "type": "string"
+          },
+          "path": {
+            "description": "Specifies the path for the sub-request.  This path is relative to the root of the API hosting the batch endpoint.  For example, if the batch endpoint is <servlet>/rest/common/v1/batch, then a path of '/activities' will mean a request against <servlet>/rest/common/v1/activities.  The path must start with '/' and cannot contain whitespace.",
+            "minLength": 1,
+            "pattern": "^/[\\S]*$",
+            "type": "string"
+          },
+          "query": {
+            "description": "The query string to use for the sub-request, if any",
+            "type": "string"
+          }
+        },
+        "required": ["method", "path"],
+        "type": "object"
+      },
+      "BatchSubResponse": {
+        "description": "Defines the format of the sub-response.  In addition to the properties listed here, the 'body' property will include the body of the response as a JSON object.",
+        "properties": {
+          "body": {
+            "description": "The body of the response, if any",
+            "type": "object"
+          },
+          "code": {
+            "description": "The HTTP status code for the sub-response",
+            "type": "integer"
+          },
+          "headers": {
+            "description": "The headers returned for the sub-response",
+            "items": { "$ref": "#/components/schemas/Header" },
+            "type": "array"
+          },
+          "skipped": {
+            "description": "This property will be set to 'true' if the corresponding sub-request was not processed due to a prior failed request that specified the \"onFail\": \"abort\" option",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "Document": {
+        "properties": {
+          "account": {
+            "$ref": "#/components/schemas/SimpleReference",
+            "readOnly": true,
+            "x-gw-reference-schema": "Account",
+            "x-gw-referenceType": "Account"
+          },
+          "author": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "dateModified": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "description": {
+            "maxLength": 255,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "docUID": {
+            "maxLength": 255,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string",
+            "x-gw-createOnly": true,
+            "x-gw-defaultViews": ["detail"]
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "inbound": {
+            "nullable": true,
+            "type": "boolean"
+          },
+          "job": {
+            "$ref": "#/components/schemas/SimpleReference",
+            "readOnly": true,
+            "x-gw-reference-schema": "Job",
+            "x-gw-referenceType": "Job"
+          },
+          "language": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-typelist": "LanguageType"
+          },
+          "mimeType": {
+            "maxLength": 80,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "name": {
+            "maxLength": 80,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "obsolete": {
+            "nullable": true,
+            "type": "boolean"
+          },
+          "policy": {
+            "$ref": "#/components/schemas/SimpleReference",
+            "readOnly": true,
+            "x-gw-reference-schema": "Policy",
+            "x-gw-referenceType": "Policy"
+          },
+          "recipient": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "section": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-typelist": "DocumentSection"
+          },
+          "securityType": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-typelist": "DocumentSecurityType"
+          },
+          "status": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "DocumentStatusType"
+          },
+          "type": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "DocumentType"
+          }
+        },
+        "type": "object",
+        "x-gw-filterable": ["name", "section", "status"],
+        "x-gw-requiredForCreate": ["name", "status", "type"],
+        "x-gw-sortable": ["dateModified", "name"]
+      },
+      "DocumentContent": {
+        "properties": {
+          "contents": {
+            "format": "byte",
+            "readOnly": true,
+            "type": "string"
+          },
+          "responseMimeType": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "url": {
+            "readOnly": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "DocumentContentData": {
+        "properties": {
+          "attributes": { "$ref": "#/components/schemas/DocumentContent" },
+          "checksum": { "type": "string" },
+          "id": { "type": "string" },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "method": {
+            "enum": ["post", "patch"],
+            "type": "string"
+          },
+          "refid": { "type": "string" },
+          "related": {
+            "$ref": "#/components/schemas/RelatedCollections",
+            "readOnly": true
+          },
+          "type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "uri": { "type": "string" }
+        },
+        "required": ["attributes"],
+        "type": "object"
+      },
+      "DocumentContentResponse": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/DocumentContentData" }
+        },
+        "type": "object"
+      },
+      "DocumentData": {
+        "properties": {
+          "attributes": { "$ref": "#/components/schemas/Document" },
+          "checksum": { "type": "string" },
+          "id": { "type": "string" },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "method": {
+            "enum": ["post", "patch"],
+            "type": "string"
+          },
+          "refid": { "type": "string" },
+          "related": {
+            "$ref": "#/components/schemas/RelatedCollections",
+            "readOnly": true
+          },
+          "type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "uri": { "type": "string" }
+        },
+        "required": ["attributes"],
+        "type": "object"
+      },
+      "DocumentRequest": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/DocumentData" }
+        },
+        "required": ["data"],
+        "type": "object"
+      },
+      "DocumentResponse": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/DocumentData" },
+          "included": {
+            "$ref": "#/components/schemas/DocumentResponseInclusions"
+          }
+        },
+        "type": "object"
+      },
+      "DocumentResponseInclusions": {
+        "properties": {
+          "DocumentContent": {
+            "items": { "$ref": "#/components/schemas/DocumentContentData" },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "Header": {
+        "description": "An HTTP request or response header",
+        "properties": {
+          "name": {
+            "description": "The header name",
+            "type": "string"
+          },
+          "value": {
+            "description": "The header value",
+            "type": "string"
+          }
+        },
+        "required": ["name", "value"],
+        "type": "object"
+      },
+      "LinkObject": {
+        "properties": {
+          "href": { "type": "string" },
+          "methods": {
+            "items": { "type": "string" },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "Links": {
+        "additionalProperties": { "$ref": "#/components/schemas/LinkObject" },
+        "type": "object"
+      },
+      "Note": {
+        "properties": {
+          "author": {
+            "$ref": "#/components/schemas/SimpleReference",
+            "readOnly": true,
+            "x-gw-reference-schema": "User",
+            "x-gw-referenceType": "User"
+          },
+          "body": {
+            "maxLength": 65000,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string",
+            "x-gw-defaultViews": ["detail"]
+          },
+          "bodySummary": {
+            "readOnly": true,
+            "type": "string",
+            "x-gw-defaultViews": ["summary"]
+          },
+          "confidential": { "type": "boolean" },
+          "createdDate": {
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "securityType": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-typelist": "NoteSecurityType"
+          },
+          "subject": {
+            "maxLength": 255,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "topic": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "NoteTopicType"
+          },
+          "updateTime": {
+            "description": "Time when the note was updated",
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-gw-filterable": ["body", "subject"],
+        "x-gw-requiredForCreate": ["body"],
+        "x-gw-sortable": ["subject", "topic", "updateTime"]
+      },
+      "NoteData": {
+        "properties": {
+          "attributes": { "$ref": "#/components/schemas/Note" },
+          "checksum": { "type": "string" },
+          "id": { "type": "string" },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "method": {
+            "enum": ["post", "patch"],
+            "type": "string"
+          },
+          "refid": { "type": "string" },
+          "related": {
+            "$ref": "#/components/schemas/RelatedCollections",
+            "readOnly": true
+          },
+          "type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "uri": { "type": "string" }
+        },
+        "required": ["attributes"],
+        "type": "object"
+      },
+      "NoteList": {
+        "properties": {
+          "count": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "data": {
+            "items": { "$ref": "#/components/schemas/NoteData" },
+            "type": "array"
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "total": {
+            "readOnly": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "NoteRequest": {
+        "properties": { "data": { "$ref": "#/components/schemas/NoteData" } },
+        "required": ["data"],
+        "type": "object"
+      },
+      "NoteResponse": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/NoteData" },
+          "included": {
+            "$ref": "#/components/schemas/ActivityResponseInclusions"
+          }
+        },
+        "type": "object"
+      },
+      "RelatedCollection": {
+        "properties": {
+          "count": { "type": "integer" },
+          "data": {
+            "items": { "$ref": "#/components/schemas/SimpleReference" },
+            "type": "array"
+          },
+          "total": { "type": "integer" }
+        },
+        "type": "object"
+      },
+      "RelatedCollections": {
+        "additionalProperties": {
+          "$ref": "#/components/schemas/RelatedCollection"
+        },
+        "type": "object"
+      },
+      "SimpleReference": {
+        "properties": {
+          "displayName": { "type": "string" },
+          "id": { "type": "string" },
+          "jsonPath": {
+            "readOnly": true,
+            "type": "string",
+            "x-gw-defaultViews": ["none"]
+          },
+          "refid": { "type": "string" },
+          "type": { "type": "string" },
+          "uri": { "type": "string" }
+        },
+        "type": "object",
+        "x-gw-resourceReference": true
+      },
+      "TypeFilter": {
+        "properties": {
+          "description": { "type": "string" },
+          "name": { "type": "string" },
+          "typeKeys": {
+            "items": { "type": "string" },
+            "type": "array",
+            "x-gw-defaultViews": ["detail"]
+          }
+        },
+        "type": "object"
+      },
+      "TypeKey": {
+        "properties": {
+          "categories": {
+            "items": { "type": "string" },
+            "type": "array",
+            "x-gw-defaultViews": ["none"]
+          },
+          "code": { "type": "string" },
+          "description": { "type": "string" },
+          "name": { "type": "string" },
+          "priority": { "type": "integer" },
+          "retired": {
+            "type": "boolean",
+            "x-gw-defaultViews": ["none"]
+          }
+        },
+        "type": "object"
+      },
+      "TypeKeyReference": {
+        "properties": {
+          "code": { "type": "string" },
+          "name": {
+            "description": "This property is ignored on updates.",
+            "type": "string"
+          }
+        },
+        "required": ["code"],
+        "type": "object"
+      },
+      "TypeList": {
+        "properties": {
+          "description": { "type": "string" },
+          "name": { "type": "string" },
+          "typeFilters": {
+            "items": { "$ref": "#/components/schemas/TypeFilter" },
+            "type": "array",
+            "x-gw-defaultViews": ["detail"]
+          },
+          "typeKeys": {
+            "items": { "$ref": "#/components/schemas/TypeKey" },
+            "type": "array",
+            "x-gw-defaultViews": ["detail"]
+          }
+        },
+        "type": "object",
+        "x-gw-filterable": ["name"],
+        "x-gw-sortable": ["name"]
+      },
+      "TypeListData": {
+        "properties": {
+          "attributes": { "$ref": "#/components/schemas/TypeList" },
+          "checksum": { "type": "string" },
+          "id": { "type": "string" },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "method": {
+            "enum": ["post", "patch"],
+            "type": "string"
+          },
+          "refid": { "type": "string" },
+          "related": {
+            "$ref": "#/components/schemas/RelatedCollections",
+            "readOnly": true
+          },
+          "type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "uri": { "type": "string" }
+        },
+        "required": ["attributes"],
+        "type": "object"
+      },
+      "TypeListList": {
+        "properties": {
+          "count": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "data": {
+            "items": { "$ref": "#/components/schemas/TypeListData" },
+            "type": "array"
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "total": {
+            "readOnly": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "TypeListResponse": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/TypeListData" }
+        },
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "basicAuth": {
+        "scheme": "basic",
+        "type": "http"
+      }
+    }
+  },
+  "info": {
+    "description": "APIs for common InsuranceSuite platform objects like activities and notes",
+    "title": "Common API",
+    "version": "1.2.0"
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/activities": {
+      "get": {
+        "description": "Returns a list of activities assigned to the current user.  The resulting list will be paginated, and the \"next\" links in responses can be used to fetch the next page of results.",
+        "operationId": "getActivities",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/pageOffset" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ActivityList" }
+              }
+            },
+            "description": "The list of activities assigned to the current user"
+          }
+        },
+        "summary": "Returns a list of activities assigned to the current user",
+        "x-gw-childResourceType": "Activity",
+        "x-gw-resourceType": "Activities"
+      }
+    },
+    "/activities/{activityId}": {
+      "get": {
+        "description": "Returns details for a single activity",
+        "operationId": "getActivity",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ActivityResponse" }
+              }
+            },
+            "description": "Returns details for a single activity"
+          }
+        },
+        "summary": "Returns details for a single activity",
+        "x-gw-resourceType": "Activity"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/activityId" }],
+      "patch": {
+        "description": "Updates this activity's fields, optionally attaching a note to the activity as well to explain the update",
+        "operationId": "updateActivity",
+        "parameters": [{ "$ref": "#/components/parameters/fields" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ActivityRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ActivityResponse" }
+              }
+            },
+            "description": "Successful update"
+          }
+        },
+        "summary": "Update this activity's fields",
+        "x-gw-resourceType": "Activity"
+      }
+    },
+    "/activities/{activityId}/approve": {
+      "parameters": [{ "$ref": "#/components/parameters/activityId" }],
+      "post": {
+        "description": "Approve this activity, optionally attaching a note to it as well",
+        "operationId": "approveActivity",
+        "parameters": [{ "$ref": "#/components/parameters/fields" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivityApprovalRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ActivityResponse" }
+              }
+            },
+            "description": "Successful update"
+          }
+        },
+        "summary": "Approve this activity",
+        "x-gw-resourceType": "Activity"
+      }
+    },
+    "/activities/{activityId}/assign": {
+      "parameters": [{ "$ref": "#/components/parameters/activityId" }],
+      "post": {
+        "description": "Assigns or re-assigns this activity, based on the specified assignment criteria",
+        "operationId": "assignActivity",
+        "parameters": [{ "$ref": "#/components/parameters/fields" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivityAssignmentRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ActivityResponse" }
+              }
+            },
+            "description": "Response that indicates if the activity was successfully assigned, and if so to whom"
+          }
+        },
+        "summary": "Assigns or re-assigns this activity, based on the specified assignment criteria",
+        "x-gw-resourceType": "Activity"
+      }
+    },
+    "/activities/{activityId}/assignees": {
+      "get": {
+        "description": "The list of suggested people, groups, queues, etc. to re-assign this activity to",
+        "operationId": "getActivitySuggestedAssignees",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/pageOffset" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AssigneeList" }
+              }
+            },
+            "description": "The suggested assignees"
+          }
+        },
+        "summary": "The list of suggested people, groups, queues, etc. to re-assign this activity to",
+        "x-gw-childResourceType": "Assignee",
+        "x-gw-resourceType": "ActivityAssignees"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/activityId" }]
+    },
+    "/activities/{activityId}/complete": {
+      "parameters": [{ "$ref": "#/components/parameters/activityId" }],
+      "post": {
+        "description": "Completes this activity, optionally attaching a note to it as well",
+        "operationId": "completeActivity",
+        "parameters": [{ "$ref": "#/components/parameters/fields" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ActivityActionRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ActivityResponse" }
+              }
+            },
+            "description": "Successful update"
+          }
+        },
+        "summary": "Completes this activity",
+        "x-gw-resourceType": "Activity"
+      }
+    },
+    "/activities/{activityId}/notes": {
+      "get": {
+        "description": "The notes associated with a given activity",
+        "operationId": "getActivityNotes",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/pageOffset" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/NoteList" }
+              }
+            },
+            "description": "The list of notes associated with this activity"
+          }
+        },
+        "summary": "The notes associated with a given activity",
+        "x-gw-childResourceType": "Note",
+        "x-gw-resourceType": "ActivityNotes"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/activityId" }],
+      "post": {
+        "description": "Create a new note on this activity",
+        "operationId": "createActivityNote",
+        "parameters": [{ "$ref": "#/components/parameters/fields" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/NoteRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/NoteResponse" }
+              }
+            },
+            "description": "The details of the newly-created note"
+          }
+        },
+        "summary": "Create a new note on this activity",
+        "x-gw-childResourceType": "Note",
+        "x-gw-resourceType": "ActivityNotes"
+      }
+    },
+    "/activities/{activityId}/skip": {
+      "parameters": [{ "$ref": "#/components/parameters/activityId" }],
+      "post": {
+        "description": "Skips this activity, optionally attaching a note to it as well",
+        "operationId": "skipActivity",
+        "parameters": [{ "$ref": "#/components/parameters/fields" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ActivityActionRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ActivityResponse" }
+              }
+            },
+            "description": "Successful update"
+          }
+        },
+        "summary": "Skips this activity",
+        "x-gw-resourceType": "Activity"
+      }
+    },
+    "/batch": {
+      "post": {
+        "description": "Post a list of sub-requests to make against this endpoint.  Sub-requests will be executed serially, in the order they are specified in the \"requests\" property of the input.  Responses to each sub-request will then be batched up and returned all together.  Sub-requests inherit the headers from the main request, with the exception of the GW-Checksum header, but headers can be specified on the sub-request and will override any headers from the main request.",
+        "operationId": "batchRequest",
+        "parameters": [
+          {
+            "description": "Controls what response headers, if any, are included for sub-responses.  If unspecified, or set to the value \"*all\", all headers for sub-responses will be returned.  If set to the value \"*none\", no headers for sub-responses will be returned.  Otherwise, this parameter can consist of a comma-separated list of the names of headers that should be included on sub-responses.",
+            "explode": false,
+            "in": "query",
+            "name": "includeResponseHeaders",
+            "required": false,
+            "schema": {
+              "items": { "type": "string" },
+              "type": "array"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/BatchRequest" }
+            }
+          },
+          "description": "The body of the batch request",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/BatchResponse" }
+              }
+            },
+            "description": "The batch request itself was well-formed; individual sub-requests may have succeeded or failed"
+          }
+        },
+        "summary": "Issue multiple requests at once as a non-transactional batch"
+      }
+    },
+    "/documents/{documentId}": {
+      "delete": {
+        "description": "Deletes this document",
+        "operationId": "deleteDocument",
+        "responses": { "204": { "description": "Successful deletion" } },
+        "summary": "Delete this document",
+        "x-gw-resourceType": "Document"
+      },
+      "get": {
+        "description": "Retrieves the details of a specific document",
+        "operationId": "getDocument",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/DocumentResponse" }
+              }
+            },
+            "description": "The document details"
+          }
+        },
+        "summary": "Retrieves the details of a specific document",
+        "x-gw-resourceType": "Document"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/documentId" }],
+      "patch": {
+        "description": "Updates fields on a document",
+        "operationId": "patchDocument",
+        "parameters": [{ "$ref": "#/components/parameters/fields" }],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "content": {
+                    "format": "binary",
+                    "type": "string"
+                  },
+                  "metadata": { "$ref": "#/components/schemas/DocumentRequest" }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/DocumentResponse" }
+              }
+            },
+            "description": "The document details"
+          }
+        },
+        "summary": "Update fields on a document",
+        "x-gw-resourceType": "Document"
+      }
+    },
+    "/documents/{documentId}/content": {
+      "get": {
+        "description": "The contents of a document",
+        "operationId": "getDocumentContent",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentContentResponse"
+                }
+              }
+            },
+            "description": "Success"
+          }
+        },
+        "summary": "The contents of a document",
+        "x-gw-resourceType": "DocumentContent"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/documentId" }]
+    },
+    "/notes/{noteId}": {
+      "delete": {
+        "description": "Deletes this note",
+        "operationId": "deleteNote",
+        "responses": { "204": { "description": "Successful deletion" } },
+        "summary": "Delete this note",
+        "x-gw-resourceType": "Note"
+      },
+      "get": {
+        "description": "Retrieves the details of a specific note",
+        "operationId": "getNote",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/NoteResponse" }
+              }
+            },
+            "description": "The note details"
+          }
+        },
+        "summary": "Retrieves the details of a specific note",
+        "x-gw-resourceType": "Note"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/noteId" }],
+      "patch": {
+        "description": "Updates fields on a note",
+        "operationId": "updateNote",
+        "parameters": [{ "$ref": "#/components/parameters/fields" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/NoteRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/NoteResponse" }
+              }
+            },
+            "description": "The note details"
+          }
+        },
+        "summary": "Update fields on a note",
+        "x-gw-resourceType": "Note"
+      }
+    },
+    "/openapi.json": {
+      "get": {
+        "description": "Return the Open API 3.0 representation of the schema",
+        "operationId": "getOpenApiSchema",
+        "parameters": [
+          { "$ref": "#/components/parameters/prettyPrintSchema" },
+          { "$ref": "#/components/parameters/filterByUser" },
+          { "$ref": "#/components/parameters/enablePolymorphism" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": { "schema": { "type": "string" } }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Return the Open API 3.0 representation of the schema",
+        "x-gw-resourceType": "CommonOpenApiSchema"
+      }
+    },
+    "/swagger.json": {
+      "get": {
+        "description": "Returns a Swagger 2.0 schema for this API as json",
+        "operationId": "generateDocs",
+        "responses": { "200": { "description": "Successful operation" } },
+        "summary": "Returns the Swagger schema for this API"
+      }
+    },
+    "/typelists": {
+      "get": {
+        "description": "Retrieves the list of all typelists",
+        "operationId": "getTypeLists",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/pageOffset" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/TypeListList" }
+              }
+            },
+            "description": "Successful operation"
+          }
+        },
+        "summary": "Retrieves the list of all typelists",
+        "x-gw-childResourceType": "TypeList",
+        "x-gw-resourceType": "TypeLists"
+      }
+    },
+    "/typelists/{typelist}": {
+      "get": {
+        "operationId": "getTypeList",
+        "parameters": [
+          {
+            "description": "Indicates whether retired typekeys should be included in the response; default is false",
+            "in": "query",
+            "name": "includeRetired",
+            "schema": { "type": "boolean" }
+          },
+          {
+            "description": "Filters the array of returned typekeys. The query parameter's value should be of the form <field>:<operator>:<value>. Valid filter properties are:\n- 'code', a string property; legal operators are \"eq\", \"ne\", \"lt\", \"gt\", \"le\", \"ge\", \"in\", \"ni\", \"sw\", and \"cn\"\n- 'category', a string property whose value is a comma-separated list of typekeys in the form typelist.code; legal operators are \"in\", \"ni\", and \"cn\"\n- 'name', a string property; legal operators are \"eq\", \"ne\", \"lt\", \"gt\", \"le\", \"ge\", \"in\", \"ni\", \"sw\", and \"cn\"\n- 'priority', an integer property; legal operators are \"eq\", \"ne\", \"lt\", \"gt\", \"le\", \"ge\", \"in\", and \"ni\"\n- 'retired', a boolean property; legal operators are \"eq\", \"ne\", \"lt\", \"gt\", \"le\", \"ge\", \"in\", and \"ni\"",
+            "explode": true,
+            "in": "query",
+            "name": "typekeyFilter",
+            "schema": {
+              "items": { "type": "string" },
+              "type": "array"
+            },
+            "style": "form"
+          },
+          {
+            "description": "Sorts the array of returned typekeys. The query parameter's value should be of the form <properties>, where <properties> is a comma-separated list of properties to sort on. Property names can be prefixed with '-' to specify a descending sort on that property; otherwise the default is an ascending sort. Valid sort properties include 'code', 'name', 'retired', 'priority'.",
+            "explode": false,
+            "in": "query",
+            "name": "typekeySort",
+            "schema": {
+              "items": { "type": "string" },
+              "type": "array"
+            },
+            "style": "form"
+          },
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/TypeListResponse" }
+              }
+            },
+            "description": "Successful operation"
+          }
+        },
+        "summary": "Retrieves the details of a typelist",
+        "x-gw-resourceType": "TypeList"
+      },
+      "parameters": [
+        {
+          "description": "The name of the typelist",
+          "in": "path",
+          "name": "typelist",
+          "required": true,
+          "schema": { "type": "string" }
+        }
+      ]
+    }
+  },
+  "security": [{ "basicAuth": [] }],
+  "servers": [{ "url": "http://localhost:8180/pc/rest/common/v1" }]
+}

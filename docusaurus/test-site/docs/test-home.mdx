@@ -1,0 +1,260 @@
+---
+title: Test docs home
+slug: /
+---
+
+Welcome home! It's very good to see you again.
+
+```ts
+export function readJsonFile(fileName: string): { [id: string]: string } {
+  const translationData: TranslationFileContent = JSON.parse(
+    readFileSync(`${__dirname}/i18n/${fileName}`, { encoding: "utf-8" })
+  );
+
+  return Object.entries(translationData).reduce(
+    (accumulator, [key, value]) => ({
+      ...accumulator,
+      [key]: value.message,
+    }),
+    {}
+  );
+}
+```
+
+In the code above, we use the `reduce()` function to convert a Docusaurus
+translation file into a set of "string resources". The Docusaurus format is:
+
+```json
+{
+  "docHighlighter.label": {
+    "message": "toggle highlights",
+    "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off."
+  },
+  "anonymous.positive": {
+    "message": "You are anonymous,",
+    "description": "Tells the user their identity is not revealed to us"
+  }
+}
+```
+
+And the expected string resource is.
+
+```json
+{
+  "docHighlighter.label": "toggle highlights",
+  "anonymous.positive": "You are anonymous,"
+}
+```
+
+import Internal from "@theme/Internal";
+
+<Internal>
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mattis, diam ut
+blandit ullamcorper, ante lorem vehicula dolor, vitae dapibus tellus orci quis
+tellus. Ut mauris mauris, fermentum pharetra tortor in, euismod porta magna. Nam
+placerat velit et justo rhoncus, vel volutpat orci vehicula. Sed et convallis
+felis. Nunc sit amet tempus ipsum, nec auctor nunc. Suspendisse interdum
+interdum nunc ac cursus. Integer pellentesque gravida turpis, malesuada commodo
+nisi sodales vel. Nam imperdiet eu mauris eget tristique. Praesent interdum sit
+amet arcu vel aliquam. Quisque suscipit, ante in placerat elementum, diam nulla
+congue mi, vel finibus mi ex id dui. Sed at quam a augue pulvinar porta vitae at
+metus. Curabitur convallis cursus nunc a pretium. Aliquam sit amet ligula id est
+faucibus suscipit vitae eu mauris.
+
+</Internal>
+
+Cras congue tincidunt velit eu fringilla. Nullam nec pulvinar erat. Integer
+pulvinar tortor quis commodo lobortis. Etiam sollicitudin convallis ipsum eu
+rutrum. Maecenas pulvinar nulla vel feugiat scelerisque. Cras a faucibus leo, eu
+commodo elit. Phasellus hendrerit, mauris sed viverra interdum, mi nunc auctor
+nibh, ut tincidunt nisl orci eu lorem. Maecenas dapibus efficitur risus nec
+dignissim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+posuere cubilia curae;
+
+Sed mollis non ipsum vitae consectetur. Donec quis posuere neque. Mauris rhoncus
+tempus sodales. Donec interdum interdum tempor. Proin dapibus ante sit amet
+risus eleifend porta. Integer scelerisque auctor lacus, vel egestas mauris
+pellentesque et. Curabitur quis massa maximus, hendrerit ante nec, sodales nibh.
+Duis eu venenatis lectus, eu ultricies mauris. Pellentesque a dui at urna
+laoreet ornare. Maecenas vel dui euismod, pretium dolor sit amet, aliquet purus.
+Phasellus tempus, dolor ac pharetra sodales, risus quam congue libero, vel
+hendrerit quam nulla in massa. Nunc ante nunc, tristique eu justo ac, eleifend
+tincidunt massa. Nunc euismod mi id mi sollicitudin tempus. Nunc at metus
+tincidunt, aliquet orci sed, scelerisque nulla.
+
+Morbi cursus, dolor a porta tincidunt, sem tortor tristique sapien, dictum
+molestie dui arcu non nibh. In in neque augue. Quisque nec fermentum tortor.
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+turpis egestas. Pellentesque habitant morbi tristique senectus et netus et
+malesuada fames ac turpis egestas. Class aptent taciti sociosqu ad litora
+torquent per conubia nostra, per inceptos himenaeos. Sed sodales diam vel
+euismod ultrices. Duis vestibulum risus eget est tempor, quis rutrum orci
+rhoncus. Ut vel ex ut lacus efficitur accumsan eget eget mauris. Nullam auctor
+in nisl vel interdum. Proin non enim vel dui commodo pellentesque. Nulla
+facilisi.
+
+Praesent eget urna quis tortor laoreet maximus a in sem. Nulla facilisi. Mauris
+congue tortor ut libero faucibus, eget imperdiet mauris porta. Maecenas
+fermentum erat non neque dictum, a vehicula ex rutrum. Suspendisse vel suscipit
+justo. Morbi feugiat leo a mi iaculis placerat. Aliquam felis elit, maximus eu
+interdum vitae, laoreet fermentum est. Nunc sed tortor a lorem tempus sagittis
+tincidunt id lectus. Nulla ut justo sit amet est porttitor aliquet a et enim.
+Aliquam cursus dolor ut pretium vulputate. Nullam ut consequat arcu. Duis eu
+lectus id quam scelerisque euismod.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mattis, diam ut
+blandit ullamcorper, ante lorem vehicula dolor, vitae dapibus tellus orci quis
+tellus. Ut mauris mauris, fermentum pharetra tortor in, euismod porta magna. Nam
+placerat velit et justo rhoncus, vel volutpat orci vehicula. Sed et convallis
+felis. Nunc sit amet tempus ipsum, nec auctor nunc. Suspendisse interdum
+interdum nunc ac cursus. Integer pellentesque gravida turpis, malesuada commodo
+nisi sodales vel. Nam imperdiet eu mauris eget tristique. Praesent interdum sit
+amet arcu vel aliquam. Quisque suscipit, ante in placerat elementum, diam nulla
+congue mi, vel finibus mi ex id dui. Sed at quam a augue pulvinar porta vitae at
+metus. Curabitur convallis cursus nunc a pretium. Aliquam sit amet ligula id est
+faucibus suscipit vitae eu mauris.
+
+Cras congue tincidunt velit eu fringilla. Nullam nec pulvinar erat. Integer
+pulvinar tortor quis commodo lobortis. Etiam sollicitudin convallis ipsum eu
+rutrum. Maecenas pulvinar nulla vel feugiat scelerisque. Cras a faucibus leo, eu
+commodo elit. Phasellus hendrerit, mauris sed viverra interdum, mi nunc auctor
+nibh, ut tincidunt nisl orci eu lorem. Maecenas dapibus efficitur risus nec
+dignissim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+posuere cubilia curae;
+
+Sed mollis non ipsum vitae consectetur. Donec quis posuere neque. Mauris rhoncus
+tempus sodales. Donec interdum interdum tempor. Proin dapibus ante sit amet
+risus eleifend porta. Integer scelerisque auctor lacus, vel egestas mauris
+pellentesque et. Curabitur quis massa maximus, hendrerit ante nec, sodales nibh.
+Duis eu venenatis lectus, eu ultricies mauris. Pellentesque a dui at urna
+laoreet ornare. Maecenas vel dui euismod, pretium dolor sit amet, aliquet purus.
+Phasellus tempus, dolor ac pharetra sodales, risus quam congue libero, vel
+hendrerit quam nulla in massa. Nunc ante nunc, tristique eu justo ac, eleifend
+tincidunt massa. Nunc euismod mi id mi sollicitudin tempus. Nunc at metus
+tincidunt, aliquet orci sed, scelerisque nulla.
+
+Morbi cursus, dolor a porta tincidunt, sem tortor tristique sapien, dictum
+molestie dui arcu non nibh. In in neque augue. Quisque nec fermentum tortor.
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+turpis egestas. Pellentesque habitant morbi tristique senectus et netus et
+malesuada fames ac turpis egestas. Class aptent taciti sociosqu ad litora
+torquent per conubia nostra, per inceptos himenaeos. Sed sodales diam vel
+euismod ultrices. Duis vestibulum risus eget est tempor, quis rutrum orci
+rhoncus. Ut vel ex ut lacus efficitur accumsan eget eget mauris. Nullam auctor
+in nisl vel interdum. Proin non enim vel dui commodo pellentesque. Nulla
+facilisi.
+
+Praesent eget urna quis tortor laoreet maximus a in sem. Nulla facilisi. Mauris
+congue tortor ut libero faucibus, eget imperdiet mauris porta. Maecenas
+fermentum erat non neque dictum, a vehicula ex rutrum. Suspendisse vel suscipit
+justo. Morbi feugiat leo a mi iaculis placerat. Aliquam felis elit, maximus eu
+interdum vitae, laoreet fermentum est. Nunc sed tortor a lorem tempus sagittis
+tincidunt id lectus. Nulla ut justo sit amet est porttitor aliquet a et enim.
+Aliquam cursus dolor ut pretium vulputate. Nullam ut consequat arcu. Duis eu
+lectus id quam scelerisque euismod.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mattis, diam ut
+blandit ullamcorper, ante lorem vehicula dolor, vitae dapibus tellus orci quis
+tellus. Ut mauris mauris, fermentum pharetra tortor in, euismod porta magna. Nam
+placerat velit et justo rhoncus, vel volutpat orci vehicula. Sed et convallis
+felis. Nunc sit amet tempus ipsum, nec auctor nunc. Suspendisse interdum
+interdum nunc ac cursus. Integer pellentesque gravida turpis, malesuada commodo
+nisi sodales vel. Nam imperdiet eu mauris eget tristique. Praesent interdum sit
+amet arcu vel aliquam. Quisque suscipit, ante in placerat elementum, diam nulla
+congue mi, vel finibus mi ex id dui. Sed at quam a augue pulvinar porta vitae at
+metus. Curabitur convallis cursus nunc a pretium. Aliquam sit amet ligula id est
+faucibus suscipit vitae eu mauris.
+
+Cras congue tincidunt velit eu fringilla. Nullam nec pulvinar erat. Integer
+pulvinar tortor quis commodo lobortis. Etiam sollicitudin convallis ipsum eu
+rutrum. Maecenas pulvinar nulla vel feugiat scelerisque. Cras a faucibus leo, eu
+commodo elit. Phasellus hendrerit, mauris sed viverra interdum, mi nunc auctor
+nibh, ut tincidunt nisl orci eu lorem. Maecenas dapibus efficitur risus nec
+dignissim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+posuere cubilia curae;
+
+Sed mollis non ipsum vitae consectetur. Donec quis posuere neque. Mauris rhoncus
+tempus sodales. Donec interdum interdum tempor. Proin dapibus ante sit amet
+risus eleifend porta. Integer scelerisque auctor lacus, vel egestas mauris
+pellentesque et. Curabitur quis massa maximus, hendrerit ante nec, sodales nibh.
+Duis eu venenatis lectus, eu ultricies mauris. Pellentesque a dui at urna
+laoreet ornare. Maecenas vel dui euismod, pretium dolor sit amet, aliquet purus.
+Phasellus tempus, dolor ac pharetra sodales, risus quam congue libero, vel
+hendrerit quam nulla in massa. Nunc ante nunc, tristique eu justo ac, eleifend
+tincidunt massa. Nunc euismod mi id mi sollicitudin tempus. Nunc at metus
+tincidunt, aliquet orci sed, scelerisque nulla.
+
+Morbi cursus, dolor a porta tincidunt, sem tortor tristique sapien, dictum
+molestie dui arcu non nibh. In in neque augue. Quisque nec fermentum tortor.
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+turpis egestas. Pellentesque habitant morbi tristique senectus et netus et
+malesuada fames ac turpis egestas. Class aptent taciti sociosqu ad litora
+torquent per conubia nostra, per inceptos himenaeos. Sed sodales diam vel
+euismod ultrices. Duis vestibulum risus eget est tempor, quis rutrum orci
+rhoncus. Ut vel ex ut lacus efficitur accumsan eget eget mauris. Nullam auctor
+in nisl vel interdum. Proin non enim vel dui commodo pellentesque. Nulla
+facilisi.
+
+Praesent eget urna quis tortor laoreet maximus a in sem. Nulla facilisi. Mauris
+congue tortor ut libero faucibus, eget imperdiet mauris porta. Maecenas
+fermentum erat non neque dictum, a vehicula ex rutrum. Suspendisse vel suscipit
+justo. Morbi feugiat leo a mi iaculis placerat. Aliquam felis elit, maximus eu
+interdum vitae, laoreet fermentum est. Nunc sed tortor a lorem tempus sagittis
+tincidunt id lectus. Nulla ut justo sit amet est porttitor aliquet a et enim.
+Aliquam cursus dolor ut pretium vulputate. Nullam ut consequat arcu. Duis eu
+lectus id quam scelerisque euismod.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mattis, diam ut
+blandit ullamcorper, ante lorem vehicula dolor, vitae dapibus tellus orci quis
+tellus. Ut mauris mauris, fermentum pharetra tortor in, euismod porta magna. Nam
+placerat velit et justo rhoncus, vel volutpat orci vehicula. Sed et convallis
+felis. Nunc sit amet tempus ipsum, nec auctor nunc. Suspendisse interdum
+interdum nunc ac cursus. Integer pellentesque gravida turpis, malesuada commodo
+nisi sodales vel. Nam imperdiet eu mauris eget tristique. Praesent interdum sit
+amet arcu vel aliquam. Quisque suscipit, ante in placerat elementum, diam nulla
+congue mi, vel finibus mi ex id dui. Sed at quam a augue pulvinar porta vitae at
+metus. Curabitur convallis cursus nunc a pretium. Aliquam sit amet ligula id est
+faucibus suscipit vitae eu mauris.
+
+Cras congue tincidunt velit eu fringilla. Nullam nec pulvinar erat. Integer
+pulvinar tortor quis commodo lobortis. Etiam sollicitudin convallis ipsum eu
+rutrum. Maecenas pulvinar nulla vel feugiat scelerisque. Cras a faucibus leo, eu
+commodo elit. Phasellus hendrerit, mauris sed viverra interdum, mi nunc auctor
+nibh, ut tincidunt nisl orci eu lorem. Maecenas dapibus efficitur risus nec
+dignissim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+posuere cubilia curae;
+
+Sed mollis non ipsum vitae consectetur. Donec quis posuere neque. Mauris rhoncus
+tempus sodales. Donec interdum interdum tempor. Proin dapibus ante sit amet
+risus eleifend porta. Integer scelerisque auctor lacus, vel egestas mauris
+pellentesque et. Curabitur quis massa maximus, hendrerit ante nec, sodales nibh.
+Duis eu venenatis lectus, eu ultricies mauris. Pellentesque a dui at urna
+laoreet ornare. Maecenas vel dui euismod, pretium dolor sit amet, aliquet purus.
+Phasellus tempus, dolor ac pharetra sodales, risus quam congue libero, vel
+hendrerit quam nulla in massa. Nunc ante nunc, tristique eu justo ac, eleifend
+tincidunt massa. Nunc euismod mi id mi sollicitudin tempus. Nunc at metus
+tincidunt, aliquet orci sed, scelerisque nulla.
+
+Morbi cursus, dolor a porta tincidunt, sem tortor tristique sapien, dictum
+molestie dui arcu non nibh. In in neque augue. Quisque nec fermentum tortor.
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+turpis egestas. Pellentesque habitant morbi tristique senectus et netus et
+malesuada fames ac turpis egestas. Class aptent taciti sociosqu ad litora
+torquent per conubia nostra, per inceptos himenaeos. Sed sodales diam vel
+euismod ultrices. Duis vestibulum risus eget est tempor, quis rutrum orci
+rhoncus. Ut vel ex ut lacus efficitur accumsan eget eget mauris. Nullam auctor
+in nisl vel interdum. Proin non enim vel dui commodo pellentesque. Nulla
+facilisi.
+
+Praesent eget urna quis tortor laoreet maximus a in sem. Nulla facilisi. Mauris
+congue tortor ut libero faucibus, eget imperdiet mauris porta. Maecenas
+fermentum erat non neque dictum, a vehicula ex rutrum. Suspendisse vel suscipit
+justo. Morbi feugiat leo a mi iaculis placerat. Aliquam felis elit, maximus eu
+interdum vitae, laoreet fermentum est. Nunc sed tortor a lorem tempus sagittis
+tincidunt id lectus. Nulla ut justo sit amet est porttitor aliquet a et enim.
+Aliquam cursus dolor ut pretium vulputate. Nullam ut consequat arcu. Duis eu
+lectus id quam scelerisque euismod.
+
+I hope you can stay a little longer this time. It gets so quiet in these woods I
+can hardly bear it.

@@ -1,0 +1,2089 @@
+openapi: 3.0.1
+info:
+  title: Webhooks
+  version: 0.0.1
+servers:
+  - url: /api/v1
+    description: Development server
+paths:
+  "/metadata/apps/{app}/filterexamples/{type}":
+    get:
+      summary: Retrieves pre-built reusable filter examples
+      description:
+        Retrieves pre-built reusable examples that demonstrate how to define
+        payload filters in the subscription definition.The filters use JMESPath
+        (a JSON query language) to include only the data elements that are
+        necessary for an integration. Note that, the purpose of this filter is
+        to specify what data elements to include in the event subscription
+        payload, not to specify what data elements to exclude.
+      operationId: getFilterTemplatesForAppAndObjectType
+      parameters:
+        - name: app
+          description:
+            The InsuranceSuite application that the examples apply to. Use
+            **cc** for *ClaimCenter* and **pc** for *PolicyCenter*.
+          in: path
+          required: true
+          schema:
+            enum:
+              - cc
+              - pc
+        - name: type
+          description:
+            The entity object type the examples apply to. For example, specify
+            **claim** to get all examples related to Claim events. The examples
+            show how to filter commonly used fields from the **Claim** entity
+            object.
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  additionalProperties:
+                    type: string
+        "400":
+          description: Invalid application code or object type
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+      tags:
+        - Metadata
+  "/metadata/tenants/{id}/planets/dev":
+    get:
+      summary: Retrieves the list of non-production level planets per tenant
+      description:
+        Retrieves the list of the non-production planets (projects) that are
+        avalaible for the specified tenant. The caller must belong to the tenant
+        group to receive the list of planets.
+      operationId: getPlanets
+      parameters:
+        - name: id
+          description: The **id** of the tenant to be queried
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GCCPlanet"
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+        "500":
+          description: Internal exception
+      tags:
+        - Metadata
+  "/metadata/tenants/{id}/planets/prod":
+    get:
+      summary: Retrieves the list of production level planets per tenant
+      description:
+        Retrieves the list of the production planets (projects) that are
+        avalaible for the specified tenant. The caller must belong to the tenant
+        group to receive the list of planets.
+      operationId: getProdPlanets
+      parameters:
+        - name: id
+          description: The **id** of the tenant
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GCCPlanet"
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+        "500":
+          description: Internal exception
+      tags:
+        - Metadata
+  "/metadata/tenants/{tenantId}/projects/{projectId}/planets/{planetName}/apps/{app}/events":
+    get:
+      summary:
+        Retrieves the supported events on a specified InsuranceSuite app
+        instance
+      description: |
+        The call returns the names of the events that are supported on a specified IS instance. If the IS app does not have the App Events destination enabled and running, the caller receives a hardcoded event list from the subscription service.
+
+        Provide the tenant, the project, the planet name, and the type of the InsuranceSuite (IS) instance.
+      operationId: getEventTypes
+      parameters:
+        - name: tenantId
+          description: The **id** of the tenant
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: projectId
+          description: The **id** of the project
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: planetName
+          description: The name of the planet
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: app
+          description:
+            The InsuranceSuite application. Use *cc* for ClaimCenter and *pc*
+            for PolicyCenter.
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: |
+            Successful operation. The response includes the following fields:
+            * `name`: The event name
+            * `schema`: The entity that the event is associated with. For some events, the **schema** field is empty because these events do not have defined entity graph schemas in the Cloud API Integration Views. As a result, there are no endpoints in the Cloud API that allow access to these entities. Instead, these entities and their events are inlined in the schema of other primary entities.
+
+            * `recommendation`: Allows the caller to distinguish the standard (**RECOMMENDED**) from the  internal (**NOT_RECOMMENDED**) events
+
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EventTypesDTO"
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+        "500":
+          description: Internal exception encountered
+      tags:
+        - Metadata
+  "/metadata/tenants/{tenantId}/projects/{projectId}/planets/{planetName}/apps/{app}/status":
+    get:
+      summary:
+        Retrieves the status of the App Events feature on a specified
+        InsuranceSuite app instance
+      description:
+        Checks if the App Events feature is enabled and running on the specified
+        InsuranceSuite instance. The caller receives the App Events `status` and
+        the returned error if applicable. Provide the `tenant`, the `project`
+        id, the `planet` name, and the `type` of the InsuranceSuite (IS)
+        instance.
+      operationId: getStatus
+      parameters:
+        - name: tenantId
+          description: The *id* of the tenant
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: projectId
+          description: The name of the project
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: planetName
+          description: The name of the planet
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: app
+          description:
+            The InsuranceSuite application. Use **cc** for *ClaimCenter* and
+            **pc** for *PolicyCenter*.
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EventStatusDTO"
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+        "500":
+          description: Internal exception encountered
+      tags:
+        - Metadata
+  /subscriptions:
+    get:
+      summary:
+        Retrieves the subscriptions that are defined in the tenant account
+      description:
+        Retrieves the subscriptions that the caller is authorized for.
+      operationId: getAllSubscriptions
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Subscription"
+      tags:
+        - Subscriptions
+    post:
+      summary: Creates a subscription
+      description:
+        Creates a subscription using the data from the request body. The data
+        must be in JSON format that follows the provided schema.
+      operationId: createSubscription
+      requestBody:
+        $ref: "#/components/requestBodies/SubscriptionRequestDTO"
+      responses:
+        "200":
+          description:
+            Successful operation. The response returns a JSON with the created
+            subscription data.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Subscription"
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+        "500":
+          description: Internal exception encountered
+      tags:
+        - Subscriptions
+  "/subscriptions/{id}":
+    get:
+      summary: Retrieves a subscription
+      description:
+        Retrieves the definition of the subscription with the specified **id**.
+      operationId: getSubscription
+      parameters:
+        - name: id
+          description: The *id* of the subscription
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description:
+            Successful operation. The response contains a JSON with the
+            subscription data according to the provided schema.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Subscription"
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+        "500":
+          description: Internal exception encountered
+      tags:
+        - Subscriptions
+    patch:
+      summary: Enables or disables endpoints of a subscription
+      description:
+        Allows the caller to change the `enabled` property of the endpoints that
+        are linked to a subscription. Endpoints that are linked to multiple
+        subscriptions cannot be disabled.
+      operationId: patchSubscription
+      parameters:
+        - name: id
+          description: The *id* of the subscription to be updated
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description:
+          Contains the list of endpoints in JSON format according to the
+          provided schema. The valid values for the `enabled` field are *true*,
+          or *false*.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SubscriptionPatchDTO"
+      responses:
+        "200":
+          description:
+            Successful operation. Returns the subscription JSON object.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Subscription"
+        "400":
+          description:
+            Bad request. The request body does not comply with the schema.
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+        "404":
+          description:
+            The requested endpoint is linked to multiple subscriptions
+        "500":
+          description: Internal exception encountered
+      tags:
+        - Subscriptions
+    put:
+      summary: Updates a subscription
+      description:
+        A subscription specifies what events to subscribe to and the delivery
+        address URL to publish the event to (the endpoint). Use this PUT call to
+        replace an existing subscription data with new data.
+      operationId: updateSubscription
+      parameters:
+        - name: id
+          description: The *id* of the subscription to be updated
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SubscriptionRequestDTO"
+        description: |
+          Contains the new subscription data in JSON format that complies with the provided schema. The following properties are required:
+          * `name` - Unique name or title of a subscription. Special characters are not allowed.
+          * `events` - The list of events that the endpoint subscribes to.
+          * `app` - The InsuranceSuite application to receive events from. Use **cc** for ClaimCenter and **pc** for PolicyCenter.
+          * `planetGrns` - The **grn** of the planet
+          * `includeIncompleteEvents` - Setting the property to **true** includes the following events to the subscription:
+
+             * In ClaimCenter adds draft claim events to the payload
+             * In PolicyCenter adds the events on unbound policies
+
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Subscription"
+        "400":
+          description:
+            Bad request. The request body does not comply with the schema.
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+        "404":
+          description: The subscription does not exist
+        "500":
+          description: Internal exception encountered
+      tags:
+        - Subscriptions
+    delete:
+      summary: Deletes a subscription
+      operationId: deleteSubscription
+      parameters:
+        - name: id
+          description: The *id* of the subscription to be deleted
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Successful operation
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+        "500":
+          description: Internal exception encountered
+      tags:
+        - Subscriptions
+  "/security/signaturekeys/default":
+    get:
+      summary:
+        Gets the Webhooks public key that is used to verify the event payload
+      description:
+        Event requests include content signature to ensure events are
+        transmitted securely to external endpoints. Event consumers (the
+        endpoints) use the signature and the Webhooks public key to verify the
+        integrity of the content and to ensure the event was sent from
+        Guidewire.
+      operationId: getSignatureKey
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JWKSet"
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+        "500":
+          description: Internal exception encountered
+  "/internal/subscriptions":
+    get:
+      operationId: getAllSubscriptionsInternalApi
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Subscription"
+      tags:
+        - Internal-subscriptions
+  "/internal/tenants/{tenantId}/subscriptions":
+    get:
+      operationId: getAllSubscriptionsInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Subscription"
+      tags:
+        - Internal-subscriptions
+    post:
+      operationId: createSubscriptionInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        $ref: "#/components/requestBodies/SubscriptionRequestDTO"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Subscription"
+      tags:
+        - Internal-subscriptions
+  "/internal/tenants/{tenantId}/subscriptions/{id}":
+    get:
+      operationId: getSubscriptionInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Subscription"
+      tags:
+        - Internal-subscriptions
+    patch:
+      operationId: patchSubscriptionInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SubscriptionPatchDTO"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Subscription"
+      tags:
+        - Internal-subscriptions
+    put:
+      operationId: updateSubscriptionInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        $ref: "#/components/requestBodies/SubscriptionRequestDTO"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Subscription"
+      tags:
+        - Internal-subscriptions
+    delete:
+      operationId: deleteSubscriptionInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: successful operation
+      tags:
+        - Internal-subscriptions
+  /endpoints:
+    get:
+      summary:
+        Retrieves a list of the endpoints that are defined in the tenant account
+      description:
+        Retrieves all the endpoints that are defined for the caller's tenant
+      operationId: getAllEndpoints
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Endpoint"
+        "400":
+          description:
+            Bad request. The request body does not comply with the schema.
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+      tags:
+        - Endpoints
+    post:
+      summary: Creates an endpoint
+      description:
+        The App Events Webhooks delivers event payloads to registered HTTP
+        endpoints. Using this resource, you can define endpoints for events
+        subscriptions in your project. The call creates an endpoint using the
+        data from the request body. The data must be in JSON format that follows
+        the provided schema.
+      operationId: createEndpoint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EndpointRequestDTO"
+        description: |
+          Contains the new endpoint data in JSON format that complies with the provided schema. The following properties are required:
+          * `name` - Unique name or title of the endpoint. Special characters are not allowed.
+          * `quadrantType` - The list of events that the endpoint subscribes to.
+          * `value` - the URL of the endpoint where the event payload will be delivered. The URL must use the *https:* protocol and be in the allowed domain list.
+          * `status` - The **grn** of the planet
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Endpoint"
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+      tags:
+        - Endpoints
+  "/endpoints/{id}":
+    get:
+      summary: Retrieves an endpoint
+      description:
+        Retrieves the definition of an endpoint with the specified **id**.
+      operationId: getEndpoint
+      parameters:
+        - name: id
+          description: The **id** of the endpoint to be retrieved
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description:
+            Successful operation. The response contains a JSON with the endpoint
+            data according to the provided schema.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Endpoint"
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+        "500":
+          description: Internal exception encountered
+      tags:
+        - Endpoints
+    put:
+      summary: Updates an endpoint
+      description:
+        An endpoint specifies the delivery address for a subscription's payload.
+        Use this PUT call to replace an existing endpoint definition with a new
+        definition. When updating an endpoint, you can update only the endpoint
+        `name`, the `value` (URL), and the `oauth2Id` properties only.
+      operationId: updateEndpoint
+      parameters:
+        - name: id
+          description: The **id** of the endpoint to be updated
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EndpointRequestDTO"
+        description: |
+          Contains the new endpoint data in JSON format that complies with the provided schema. The following properties are required:
+          * `name` - Unique name or title of the endpoint. Special characters are not allowed.
+          * `quadrantType` - The type of the envitonment for the endpoint. Use **DEV** for a development environment or **PROD** for a production environment.
+          * `value` - The URL of the endpoint where the event payload will be delivered. The URL must use the *https:* protocol and be in the allowed domain list.
+          * `status` - Endpoints assume one of the following states:
+             * `ACTIVE` - Endpoint is enabled.
+             * `ERROR` - A endpoint is automatically set to a suspended (error) state when all retries were unsuccessful due to an issue with the endpoint system. Events that are waiting to be delivered are stored and queued for seven days. Once the issue is resolved, set the endpoint status to ACTIVE to resume delivery of events in the queue. See Streaming API Delivery Guarantees.
+             * `INACTIVE` - Endpoint is disabled. All events waiting to be delivered are discarded. When an inactive endpoint status is set to ACTIVE, only new events are delivered.
+             * `PAUSED` - Same as ERROR state, except the PAUSED state can only be set manually by a user in the Endpoints administration page. To resume delivery of events, set the endpoint status to ACTIVE.
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Endpoint"
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+        "500":
+          description: Internal exception encountered
+      tags:
+        - Endpoints
+    delete:
+      summary: Deletes an endpoint
+      description:
+        Deletes an endpoint with the specified **id**. Endpoints that are linked
+        to multiple subscriptions cannot be deleted. To delete a linked
+        endpoint, unlink it first from all subscriptions that are using it.
+      operationId: deleteEndpoint
+      parameters:
+        - name: id
+          description: The **id** of the endpoint to be deleted
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Successful operation
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+        "500":
+          description: Internal exception encountered
+      tags:
+        - Endpoints
+    patch:
+      summary: Change an endpoint status
+      description:
+        Allows the caller to change the `status` of an endpoint. Provide the new
+        status in the request body following the provided JSON schema.
+      operationId: patchEndpointFields
+      parameters:
+        - name: id
+          description: The **id** of the endpoint to be updated
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EndpointPatchDTO"
+        description: |
+          An endpoint assumes one of the following statuses:
+          * `status` - Endpoints assume one of the following states:
+             * `ACTIVE` - Endpoint is enabled.
+             * `ERROR` - A endpoint is automatically set to a suspended (error) state when all retries were unsuccessful due to an issue with the endpoint system. Events that are waiting to be delivered are stored and queued for seven days. Once the issue is resolved, set the endpoint status to ACTIVE to resume delivery of events in the queue.
+             * `INACTIVE` - Endpoint is disabled. All events waiting to be delivered are discarded. When an inactive endpoint status is set to `ACTIVE`, only new events are delivered.
+             * `PAUSED` - Same as `ERROR` state, except the `PAUSED` state can only be set manually by a user in the Endpoints administration page. To resume delivery of events, set the endpoint status to `ACTIVE`.
+          * `errorMessage` - The error message that is associated with setting the endpoint in `ERROR` state.
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Endpoint"
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+        "500":
+          description: Internal exception encountered
+      tags:
+        - Endpoints
+  "/internal/endpoints":
+    get:
+      operationId: getAllEndpointsInternalApi
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Endpoint"
+      tags:
+        - Internal-endpoints
+  "/internal/tenants/{tenantId}/endpoints":
+    get:
+      operationId: getAllEndpointsInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Endpoint"
+      tags:
+        - Internal-endpoints
+    post:
+      operationId: createEndpointInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        $ref: "#/components/requestBodies/EndpointRequestDTO"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Endpoint"
+      tags:
+        - Internal-endpoints
+  "/internal/tenants/{tenantId}/endpoints/{id}":
+    get:
+      operationId: getEndpointInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Endpoint"
+      tags:
+        - Internal-endpoints
+    put:
+      operationId: updateEndpointInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        $ref: "#/components/requestBodies/EndpointRequestDTO"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Endpoint"
+      tags:
+        - Internal-endpoints
+    delete:
+      operationId: deleteEndpointInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        default:
+          description: successful operation
+      tags:
+        - Internal-endpoints
+    patch:
+      operationId: patchEndpointFieldsInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        $ref: "#/components/requestBodies/EndpointPatchDTO"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Endpoint"
+      tags:
+        - Internal-endpoints
+  "/oauth2":
+    get:
+      summary: Retrieves the defined auth configurations
+      description: |
+        Webhooks support authentication of requests using OAuth 2.0 protocol with the Client Credentials grant type. An Auth configuration is associated with a recipient endpoint. This allows the recipient to verify that a request containing the event payload is not compromised and originated from Guidewire. 
+
+        The call returns a list of all auth configurations that are defined in the caller's tenant account. An auth configuration can be associated with multiple endpoints in a tenant account.
+      operationId: getAllOauth
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/OauthSecurity"
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+        "500":
+          description: Internal exception encountered
+      tags:
+        - OAuth2
+    post:
+      summary: Creates an auth configuration
+      description:
+        App Events Webhooks recipients use auth to authenticate the sender
+        (Guidewire) of a particular event message. After creating an auth
+        configuration, a caller must associate the configuration with an
+        endpoint. Provide the required auth properties in the request body
+        following the provided JSON schema.
+      operationId: createOauth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OauthSecurityRequestDTO"
+        description: |
+          Contains the new auth configuration data that complies with the provided JSON schema. The following properties are required:  
+          * `name` - Unique name of the auth configuration. Used to identify the auth config when associating it to a subscription endpoint.
+          * `clientId` - The client id. This id is requested from your IDP administrator.
+          * `authorizationUrl` - The URL to connect for authorization. HTTPS protocol is required.
+          * `clientSecret` - The client secret. Provided by your IDP administrator.
+          * `scopes` - The desired scopes for the OAuth authorization request that are defined for your services.
+          * `quadrantType` - The environment class, `DEV` (Development) or `PROD` (Production) that the auth configuration applies to.
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OauthSecurity"
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+        "500":
+          description: Internal exception encountered
+      tags:
+        - OAuth2
+  "/oauth2/{id}":
+    get:
+      summary: Retrieves an auth configuration
+      operationId: getOauth
+      parameters:
+        - name: id
+          description: The unique name of the auth configuration
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OauthSecurity"
+        "404":
+          description: The specified auth configuration does not exist.
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+        "500":
+          description: Internal exception encountered
+      tags:
+        - OAuth2
+    put:
+      summary: Updates an auth configuration
+      description:
+        Use this PUT call to replace an existing auth definition with a new
+        definition. When updating an configuration, you can update only the
+        configuration `name`, the `authorizationUrl`, the `scopes`and the
+        `quadrantType` properties only.
+      operationId: updateOauth
+      parameters:
+        - name: id
+          description: The name of the configuration
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OauthSecurityUpdateRequestDTO"
+        description: |
+          Contains the new auth configuration data that complies with the provided JSON schema. The following properties are required:  
+          * `name` - Unique name of the auth configuration. Used to identify the auth config when associating it to a subscription endpoint.
+          * `authorizationUrl` - The URL to connect for authorization. HTTPS protocol is required.
+          * `scopes` - The desired scopes for the OAuth authorization request that are defined for your services.
+          * `quadrantType` - The environment class, `DEV` (Development) or `PROD` (Production) that the auth configuration applies to.
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OauthSecurity"
+        "404":
+          description: The specified auth configuration does not exist.
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+        "500":
+          description: Internal exception encountered
+      tags:
+        - OAuth2
+    delete:
+      summary: Deletes an auth configuration
+      description:
+        Deletes a configuration that is not associated with endpoints.
+      operationId: deleteOauth
+      parameters:
+        - name: id
+          description: The name of the configuration
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: successful operation
+        "404":
+          description: The specified auth configuration does not exist.
+        "401":
+          description:
+            Not authorized. The caller is not authorized or the authorization
+            token expired.
+        "403":
+          description: Forbidden. Access is denied.
+        "500":
+          description: Internal exception encountered
+      tags:
+        - OAuth2
+  "/internal/oauth2":
+    get:
+      operationId: getAllOauthInternalApi
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/OauthSecurity"
+      tags:
+        - Internal-oauth2
+  "/internal/tenants/{tenantId}/oauth2":
+    get:
+      operationId: getAllOauthInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/OauthSecurity"
+      tags:
+        - Internal-oauth2
+    post:
+      operationId: createOauthInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        $ref: "#/components/requestBodies/OauthSecurityRequestDTO"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OauthSecurity"
+      tags:
+        - Internal-oauth2
+  "/internal/tenants/{tenantId}/oauth2/{id}":
+    get:
+      operationId: getOauthInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OauthSecurity"
+      tags:
+        - Internal-oauth2
+    put:
+      operationId: updateOauthInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        $ref: "#/components/requestBodies/OauthSecurityUpdateRequestDTO"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OauthSecurity"
+      tags:
+        - Internal-oauth2
+    delete:
+      operationId: deleteOauthInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        default:
+          description: successful operation
+      tags:
+        - Internal-oauth2
+  "/internal/oauth2/{id}/token":
+    get:
+      operationId: getOauthToken
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OauthToken"
+      tags:
+        - Internal-oauth2
+  /endpoint-domains:
+    get:
+      operationId: getAllEndpointDomains
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EndpointDomain"
+      tags:
+        - EndpointDomains
+    post:
+      operationId: createEndpointDomain
+      requestBody:
+        $ref: "#/components/requestBodies/EndpointDomainRequestDTO"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EndpointDomain"
+      tags:
+        - EndpointDomains
+  "/endpoint-domains/{id}":
+    get:
+      operationId: getEndpointDomain
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EndpointDomain"
+      tags:
+        - EndpointDomains
+    put:
+      operationId: updateEndpointDomain
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        $ref: "#/components/requestBodies/EndpointDomainRequestDTO"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EndpointDomain"
+      tags:
+        - EndpointDomains
+    delete:
+      operationId: deleteEndpointDomain
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        default:
+          description: successful operation
+      tags:
+        - EndpointDomains
+  /internal/endpoint-domains:
+    get:
+      operationId: getAllEndpointDomainsInternalApi
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EndpointDomain"
+      tags:
+        - Internal-EndpointDomains
+  /internal/tenants/{tenantId}/endpoint-domains:
+    get:
+      operationId: getAllEndpointDomainsInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EndpointDomain"
+      tags:
+        - Internal-EndpointDomains
+    post:
+      operationId: createEndpointDomainInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        $ref: "#/components/requestBodies/EndpointDomainRequestDTO"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EndpointDomain"
+      tags:
+        - Internal-EndpointDomains
+  "/internal/tenants/{tenantId}/endpoint-domains/{id}":
+    get:
+      operationId: getEndpointDomainInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EndpointDomain"
+      tags:
+        - Internal-EndpointDomains
+    put:
+      operationId: updateEndpointDomainInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        $ref: "#/components/requestBodies/EndpointDomainRequestDTO"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EndpointDomain"
+      tags:
+        - Internal-EndpointDomains
+    delete:
+      operationId: deleteEndpointDomainInternalApiForTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        default:
+          description: successful operation
+      tags:
+        - Internal-EndpointDomains
+  "/internal/tenants":
+    get:
+      operationId: getAllTenants
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Tenant"
+      tags:
+        - Internal-TenantManagement
+    post:
+      operationId: addTenants
+      requestBody:
+        $ref: "#/components/requestBodies/TenantRequestDTO"
+      responses:
+        "201":
+          description: created
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Tenant"
+      tags:
+        - Internal-TenantManagement
+  "/internal/tenants/{tenantId}":
+    get:
+      operationId: getTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tenant"
+      tags:
+        - Internal-TenantManagement
+    delete:
+      operationId: deleteTenant
+      parameters:
+        - name: tenantId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: successful operation
+      tags:
+        - Internal-TenantManagement
+components:
+  securitySchemes:
+    guidewire:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: "https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7/v1/authorize"
+          tokenUrl: "https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7/v1/token"
+          scopes:
+            groups: Obtains group memberships
+            tenant_id: Obtains tenant information
+  requestBodies:
+    TenantRequestDTO:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/TenantRequestDTO"
+    Subscription:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Subscription"
+    SubscriptionRequestDTO:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/SubscriptionRequestDTO"
+    SubscriptionPatchDTO:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/SubscriptionPatchDTO"
+    SubscriptionEndpoint:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/SubscriptionEndpoint"
+    Endpoint:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Endpoint"
+    EndpointRequestDTO:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/EndpointRequestDTO"
+    EndpointPatchDTO:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/EndpointPatchDTO"
+    OauthSecurityRequestDTO:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/OauthSecurityRequestDTO"
+    OauthSecurityUpdateRequestDTO:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/OauthSecurityUpdateRequestDTO"
+    OauthSecurity:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/OauthSecurity"
+    OauthToken:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/OauthToken"
+    EndpointDomain:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/EndpointDomain"
+    EndpointDomainRequestDTO:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/EndpointDomainRequestDTO"
+  schemas:
+    TenantRequestDTO:
+      type: array
+      uniqueItems: true
+      items:
+        type: string
+    Tenant:
+      type: object
+      required:
+        - tenantId
+        - createdAt
+      properties:
+        tenantId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    OauthStatus:
+      type: string
+      enum:
+        - VALID
+        - INVALID
+    Status:
+      type: string
+      enum:
+        - ACTIVE
+        - PAUSED
+        - INACTIVE
+        - ERROR
+    QuadrantType:
+      type: string
+      enum:
+        - DEV
+        - PROD
+    Subscription:
+      type: object
+      required:
+        - name
+        - events
+        - tenantId
+        - app
+        - planetGrns
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          maxLength: 255
+        events:
+          type: string
+        planetGrns:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+        tenantId:
+          type: string
+        payloadFilter:
+          type: string
+          minLength: 0
+          maxLength: 10000
+        includeDrafts:
+          type: boolean
+        app:
+          type: string
+        createdAt:
+          type: string
+          format: date
+        createdBy:
+          type: string
+        updatedAt:
+          type: string
+          format: date
+        updatedBy:
+          type: string
+        subscriptionEndpoints:
+          type: array
+          uniqueItems: true
+          items:
+            $ref: "#/components/schemas/SubscriptionEndpoint"
+    SubscriptionEndpointRequestDTO:
+      type: object
+      required:
+        - endpointId
+        - enabled
+      properties:
+        endpointId:
+          type: string
+          format: uuid
+        enabled:
+          type: boolean
+    SubscriptionPatchDTO:
+      type: object
+      properties:
+        devEndpoint:
+          $ref: "#/components/schemas/SubscriptionEndpointRequestDTO"
+        prodEndpoint:
+          $ref: "#/components/schemas/SubscriptionEndpointRequestDTO"
+    SubscriptionRequestDTO:
+      required:
+        - name
+        - events
+        - app
+        - planetGrns
+        - includeDrafts
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          maxLength: 255
+        events:
+          type: string
+        devEndpoint:
+          $ref: "#/components/schemas/SubscriptionEndpointRequestDTO"
+        prodEndpoint:
+          $ref: "#/components/schemas/SubscriptionEndpointRequestDTO"
+        payloadFilter:
+          type: string
+          minLength: 0
+          maxLength: 10000
+        includeDrafts:
+          type: boolean
+        app:
+          type: string
+        planetGrns:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+    EndpointRequestDTO:
+      type: object
+      required:
+        - name
+        - quadrantType
+        - value
+        - status
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        quadrantType:
+          $ref: "#/components/schemas/QuadrantType"
+        value:
+          type: string
+        oauth2Id:
+          type: string
+          format: uuid
+        status:
+          $ref: "#/components/schemas/Status"
+    SubscriptionEndpoint:
+      type: object
+      required:
+        - endpointId
+        - subscriptionId
+        - partitionId
+        - enabled
+      properties:
+        id:
+          type: integer
+          format: int64
+        endpointId:
+          type: string
+          format: uuid
+        subscriptionId:
+          type: string
+          format: uuid
+        enabled:
+          type: boolean
+        project:
+          type: string
+        partitionId:
+          type: integer
+          format: int32
+        subscription:
+          $ref: "#/components/schemas/Subscription"
+        endpoint:
+          $ref: "#/components/schemas/Endpoint"
+    EndpointPatchDTO:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          $ref: "#/components/schemas/Status"
+        errorMessage:
+          type: string
+    EndpointDomain:
+      type: object
+      required:
+        - pattern
+        - enabledForDev
+        - enabledForProd
+        - tenantId
+      properties:
+        id:
+          type: string
+          format: uuid
+        pattern:
+          type: string
+        enabledForDev:
+          type: boolean
+        enabledForProd:
+          type: boolean
+        tenantId:
+          type: string
+        createdAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date
+    EndpointDomainRequestDTO:
+      type: object
+      required:
+        - pattern
+        - enabledForDev
+        - enabledForProd
+      properties:
+        id:
+          type: string
+          format: uuid
+        pattern:
+          type: string
+        enabledForDev:
+          type: boolean
+        enabledForProd:
+          type: boolean
+    Endpoint:
+      type: object
+      required:
+        - name
+        - quadrantType
+        - value
+        - tenantId
+        - status
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        quadrantType:
+          $ref: "#/components/schemas/QuadrantType"
+        status:
+          $ref: "#/components/schemas/Status"
+        value:
+          type: string
+        tenantId:
+          type: string
+        createdAt:
+          type: string
+          format: date
+        createdBy:
+          type: string
+        updatedAt:
+          type: string
+          format: date
+        updatedBy:
+          type: string
+        subscriptionEndpoints:
+          type: array
+          uniqueItems: true
+          items:
+            $ref: "#/components/schemas/SubscriptionEndpoint"
+        oauth2:
+          $ref: "#/components/schemas/OauthSecurity"
+        errorMessage:
+          type: string
+    OauthSecurityRequestDTO:
+      type: object
+      required:
+        - name
+        - clientId
+        - clientSecret
+        - scopes
+        - authorizationUrl
+        - quadrantType
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        clientId:
+          type: string
+        authorizationUrl:
+          type: string
+        clientSecret:
+          type: string
+        scopes:
+          type: string
+        quadrantType:
+          $ref: "#/components/schemas/QuadrantType"
+    OauthSecurityUpdateRequestDTO:
+      type: object
+      required:
+        - name
+        - scopes
+        - authorizationUrl
+        - quadrantType
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        authorizationUrl:
+          type: string
+        scopes:
+          type: string
+        quadrantType:
+          $ref: "#/components/schemas/QuadrantType"
+    OauthSecurity:
+      type: object
+      required:
+        - id
+        - name
+        - clientId
+        - tenantId
+        - authorizationUrl
+        - status
+        - quadrantType
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        clientId:
+          type: string
+        tenantId:
+          type: string
+        authorizationUrl:
+          type: string
+        scopes:
+          type: string
+        status:
+          $ref: "#/components/schemas/OauthStatus"
+        createdAt:
+          type: string
+          format: date
+        updatedAt:
+          type: string
+          format: date
+        endpoints:
+          type: array
+          uniqueItems: true
+          items:
+            $ref: "#/components/schemas/Endpoint"
+        quadrantType:
+          $ref: "#/components/schemas/QuadrantType"
+    OauthToken:
+      type: object
+      required:
+        - token
+        - expirationTime
+      properties:
+        token:
+          type: string
+        expirationTime:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    EventTypeDTO:
+      type: object
+      required:
+        - recommendation
+        - name
+      properties:
+        name:
+          type: string
+        schema:
+          type: string
+        recommendation:
+          type: string
+          enum:
+            - RECOMMENDED
+            - NOT_RECOMMENDED
+    AlertDTO:
+      type: object
+      required:
+        - severity
+        - alert
+      properties:
+        severity:
+          type: string
+          enum:
+            - ERROR
+            - WARN
+            - INFO
+        alert:
+          type: object
+    EventTypesDTO:
+      type: object
+      properties:
+        eventTypes:
+          type: array
+          items:
+            $ref: "#/components/schemas/EventTypeDTO"
+        alerts:
+          type: array
+          items:
+            $ref: "#/components/schemas/AlertDTO"
+    EventStatusDTO:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - enabled
+            - disabled
+        alert:
+          $ref: "#/components/schemas/AlertDTO"
+    GCCPlanet:
+      type: object
+      required:
+        - grn
+        - projectId
+      properties:
+        grn:
+          type: string
+        projectId:
+          type: string
+    JWKSet:
+      type: object
+      required:
+        - keys
+      properties:
+        keys:
+          type: array
+          items:
+            type: object
+security:
+  - guidewire:
+      - groups
+      - tenant_id

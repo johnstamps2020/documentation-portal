@@ -1,0 +1,102 @@
+{
+  "docHighlighter.label": {
+    "message": "pokazuj/usuń podświetlenie",
+    "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off."
+  },
+  "anonymous.positive": {
+    "message": "Komentujesz anonimowo,",
+    "description": "Tells the user their identity is not revealed to us"
+  },
+  "anonymous.shareEmail": {
+    "message": "kliknij tutaj, żeby podać swój email",
+    "description": "The button which the user can click to reveal their email to us"
+  },
+  "anonymous.enterEmail": {
+    "message": "Podaj adres email,",
+    "description": "Asks the user to type in their email address"
+  },
+  "anonymous.becomeAnonymous": {
+    "message": "kliknij tutaj, żeby skomentować anonimowo"
+  },
+  "anonymous.youAreSharing": {
+    "message": "Udostępniasz nam swój adres email,",
+    "description": "Tells the user that we know their email. When they send this comment, they will send their email to us."
+  },
+  "feedback.helpful": {
+    "message": "Pomogła Ci ta strona?"
+  },
+  "feedback.thumbsUp": {
+    "message": "Ta strona była pomocna",
+    "description": "The description of the \"thumbs up\" icon which the user can click to share positive feedback"
+  },
+  "feedback.thumbsDown": {
+    "message": "Ta strona wymaga poprawek",
+    "description": "The description of the \"thumbs thumbs\" icon which the user can click to share constructive feedback"
+  },
+  "feedbackDialog.thanks": {
+    "message": "Dziękujemy!",
+    "description": "Appears ot thank the user for their feedback"
+  },
+  "feedbackDialog.followUp": {
+    "message": "Ktoś z naszego zespołu dokumentacyjnego zapozna się z Twoim komentarzem. Jeśli podałeś swój adres email, być może skontaktujemy się z Tobą, jeśli będziemy potrzebować więcej informacji.",
+    "description": "Explains how the support team will react to user feedback"
+  },
+  "feedbackDialog.anythingElse": {
+    "message": "Dzięki, zapisaliśmy Twój głos. Czy chcesz powiedzieć nam więcej?",
+    "description": "Appears above the feedback form"
+  },
+  "feedbackDialog.comment": {
+    "message": "Twój komentarz"
+  },
+  "feedbackDialog.email": {
+    "message": "Twój email"
+  },
+  "feedbackDialog.clearEmail": {
+    "message": "Usuń email"
+  },
+  "feedbackDialog.cancel": {
+    "message": "Anuluj",
+    "description": "Cancel and do not send your feedback"
+  },
+  "feedbackDialog.submit": {
+    "message": "Wyślij",
+    "description": "Send your feedback, submit your feedback to us"
+  },
+  "internal.employeesOnly": {
+    "message": "Ta treść jest dostępna tylko dla pracowników Guidewire"
+  },
+  "internal.noAccess": {
+    "message": "Jesteś zalogowany jako {name} ({email}) i nie masz dostępu."
+  },
+  "internal.info.toView": {
+    "message": "Żeby mieć dostęp do tej strony, musisz się zalogować kontem pracownika Guidewire. Jeśli potrzebujesz pomocy, skontaktuj się ze swoim przedstawicielem Guidewire."
+  },
+  "internal.label": {
+    "message": "Ta treść jest dostępna tylko dla pracowników Guidewire."
+  },
+  "loginButton.out": {
+    "message": "Wyloguj się"
+  },
+  "loginButton.in": {
+    "message": "Zaloguj się"
+  },
+  "transcriptDownloadLink.label": {
+    "message": "Pobierz transkrypt"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Przejdź do treści",
+    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "Tagi",
+    "description": "The title of the tag list page"
+  },
+  "gwSearchForm.placeholder": {
+    "message": "Szukaj",
+    "description": "Text which appears in the search box, placeholder"
+  },
+  "miniToc.heading": {
+    "message": "Na stronie",
+    "description": "Appears at the top of a list of links heading which the suer can see on the page. Each item on the list is a link."
+  }
+}

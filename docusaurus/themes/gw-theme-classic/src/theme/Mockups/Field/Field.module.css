@@ -1,0 +1,22 @@
+.wrapper {
+  --leading-color: #47515c;
+  color: var(--leading-color);
+}
+
+.label {
+  margin-bottom: 8px;
+}
+
+.field {
+  position: relative;
+  background-color: white;
+  border: 1px solid #c8d1dc;
+  border-radius: 6px;
+  padding: 3px 12px;
+}
+
+.rightSideIcon {
+  position: absolute;
+  right: 12px;
+  top: 6px;
+}

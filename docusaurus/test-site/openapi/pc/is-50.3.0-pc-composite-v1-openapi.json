@@ -1,0 +1,358 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Composite API",
+    "description": "API for composite requests that execute multiple API sub-requests in a single database transaction",
+    "version": "1.2.0"
+  },
+  "paths": {
+    "/composite": {
+      "post": {
+        "summary": "Composite API",
+        "description": "Composite API",
+        "operationId": "compositeRequest",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CompositeRequest" }
+            }
+          },
+          "description": "The body of the request",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CompositeResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/swagger.json": {
+      "get": {
+        "summary": "Returns the Swagger schema for this API",
+        "description": "Returns a Swagger 2.0 schema for this API as json",
+        "operationId": "generateDocs",
+        "x-gw-authenticated": false,
+        "responses": { "200": { "description": "Successful operation" } }
+      }
+    }
+  },
+  "security": [{ "basicAuth": [] }],
+  "servers": [{ "url": "http://localhost:8180/pc/rest/composite/v1" }],
+  "components": {
+    "parameters": {
+      "gwLanguageHeader": {
+        "name": "GW-Language",
+        "in": "header",
+        "description": "If specified, this header will set the language used when processing the request",
+        "schema": { "type": "string" }
+      },
+      "gwLocaleHeader": {
+        "name": "GW-Locale",
+        "in": "header",
+        "description": "If specified, this header will set the locale used when processing the request",
+        "schema": { "type": "string" }
+      },
+      "gwSchemaProperty": {
+        "name": "GW-IncludeSchemaProperty",
+        "in": "header",
+        "description": "If specified and the operation returns json with a defined schema, this will add a property, '$GW-Schema',  with the fully qualified name of the object's schema.",
+        "schema": { "type": "boolean" }
+      },
+      "gwTraceability": {
+        "name": "X-Correlation-ID",
+        "in": "header",
+        "description": "This header permits a customer to trace a request from its initial reception through all of the subsequent applications that were invoked to handle that request. The actual traceability id present in the MDC and logs (and returned in the response), is dependent on the implementation of TraceabilityIDPlugin. The default implementation uses this value, if specified, or a generated UID.  However, another implementation may always generate a unique id and just log  the relationship between these incoming values and the generated UID. Note: that this header can be repeated, but the resulting string will just be the comma separated values.",
+        "schema": { "type": "string" }
+      },
+      "gwTransactionID": {
+        "name": "GW-DBTransaction-ID",
+        "in": "header",
+        "description": "If specified and this operation results in a database commit, this header's value must not have been submitted before.  This value must be globally unique across all clients, apis and webservices. It is used for those transaction that are not idempotent. Unless this is explicitly referenced for an operation it is not required.",
+        "required": true,
+        "schema": { "type": "string" }
+      },
+      "gwUnknownPropertyHeader": {
+        "name": "GW-UnknownPropertyHandling",
+        "in": "header",
+        "description": "If specified, this header will drive the behavior for unknown property handling",
+        "schema": {
+          "type": "string",
+          "enum": ["log", "reject", "ignore"]
+        }
+      },
+      "gwUnknownQueryParameterHeader": {
+        "name": "GW-UnknownQueryParamHandling",
+        "in": "header",
+        "description": "If specified, this header will drive the behavior for unknown query parameter handling.  Default is to reject them.",
+        "schema": {
+          "type": "string",
+          "enum": ["log", "reject", "ignore"]
+        }
+      },
+      "gwValidateResponseHandling": {
+        "name": "GW-ValidateResponseHandling",
+        "in": "header",
+        "description": "If specified, this header permits the client to override the behavior around validating response",
+        "schema": { "type": "boolean" }
+      }
+    },
+    "responses": {
+      "AuthenticationError": {
+        "description": "401 error that is returned if the request's user cannot be authenticated",
+        "content": {
+          "*/*": { "schema": { "$ref": "#/components/schemas/ErrorInfo" } }
+        }
+      },
+      "BadInput": {
+        "description": "400 error that is returned if the input to this endpoint is not valid; this can happen because of missing required parameters, malformed json, json that does not validate against the declared schema, etc.",
+        "content": {
+          "*/*": { "schema": { "$ref": "#/components/schemas/ErrorInfo" } }
+        }
+      },
+      "InternalServerError": {
+        "description": "500 error that is returned if a server-side error prevented this request from being processed",
+        "content": {
+          "*/*": { "schema": { "$ref": "#/components/schemas/ErrorInfo" } }
+        }
+      },
+      "NotAcceptable": {
+        "description": "406 error that is returned if the Accept header provided by the client does not match any types produced by this endpoint",
+        "content": {
+          "*/*": { "schema": { "$ref": "#/components/schemas/ErrorInfo" } }
+        }
+      },
+      "NotAuthorized": {
+        "description": "403 error that is returned if the authenticated user is not authorized to access a given resource",
+        "content": {
+          "*/*": { "schema": { "$ref": "#/components/schemas/ErrorInfo" } }
+        }
+      },
+      "NotFound": {
+        "description": "404 error that is returned if the specified resource does not exist",
+        "content": {
+          "*/*": { "schema": { "$ref": "#/components/schemas/ErrorInfo" } }
+        }
+      },
+      "OperationNotSupported": {
+        "description": "405 error that is returned if the specified HTTP verb is not allowed on a given resource",
+        "content": {
+          "*/*": { "schema": { "$ref": "#/components/schemas/ErrorInfo" } }
+        }
+      },
+      "ServiceUnavailable": {
+        "description": "503 error that is returned if the server's runlevel is not adequate to service this request",
+        "content": {
+          "*/*": { "schema": { "$ref": "#/components/schemas/ErrorInfo" } }
+        }
+      },
+      "UnsupportedContentType": {
+        "description": "415 error that is returned if the Content-Type of the request is not consumable by this endpoint",
+        "content": {
+          "*/*": { "schema": { "$ref": "#/components/schemas/ErrorInfo" } }
+        }
+      }
+    },
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    },
+    "schemas": {
+      "CompositeRequest": {
+        "type": "object",
+        "description": "Defines the structure of a composite request, which consists of an array of sub-requests",
+        "properties": {
+          "requests": {
+            "type": "array",
+            "description": "The array of sub-requests",
+            "items": { "$ref": "#/components/schemas/CompositeSubRequest" },
+            "xml": { "wrapped": true }
+          },
+          "selections": {
+            "type": "array",
+            "description": "The array of selections",
+            "items": {
+              "$ref": "#/components/schemas/CompositeSelectionRequest"
+            },
+            "xml": { "wrapped": true }
+          }
+        }
+      },
+      "CompositeResponse": {
+        "type": "object",
+        "description": "Defines the structure of the response to a composite request.  The 'responses' array will have one element for every entry in the 'requests' array, and responses will appear in the same order.",
+        "properties": {
+          "requestFailed": {
+            "type": "boolean",
+            "description": "Flag that is set to true if any sub-request failed or if committing data failed"
+          },
+          "responses": {
+            "type": "array",
+            "description": "The array of sub-responses, appearing in the same order as the elements in the 'requests' array of the request",
+            "items": { "$ref": "#/components/schemas/CompositeSubResponse" },
+            "xml": { "wrapped": true }
+          },
+          "selections": {
+            "type": "array",
+            "description": "The array of selections, appearing in the same order as the elements in the 'selections' array of the request",
+            "items": { "$ref": "#/components/schemas/CompositeSubResponse" },
+            "xml": { "wrapped": true }
+          }
+        }
+      },
+      "CompositeSelectionRequest": {
+        "type": "object",
+        "description": "Defines the structure of an individual selection of the composite request.",
+        "required": ["uri"],
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "description": "Query parameters to apply to the selection.  Each key in the parameters object should be the name of the query parameter, while the value should be appropriate for the type of parameter."
+          },
+          "uri": {
+            "type": "string",
+            "description": "Specifies the path to select.  The path must start with '/' and cannot contain whitespace.",
+            "minLength": 1
+          },
+          "vars": {
+            "type": "array",
+            "maxItems": 25,
+            "items": { "$ref": "#/components/schemas/CompositeSubRequestVar" },
+            "xml": { "wrapped": true }
+          }
+        }
+      },
+      "CompositeSubRequest": {
+        "type": "object",
+        "description": "Defines the structure of an individual sub-request of the composite request",
+        "required": ["method", "uri"],
+        "properties": {
+          "body": {
+            "type": "object",
+            "description": "The body of the sub-request, if any"
+          },
+          "includeResponse": {
+            "type": "boolean",
+            "description": "Whether or not to include the response for this sub-request in the output.  Defaults to true if unspecified.  Setting this to false can be useful in cases where intermediate results are not interesting to the caller, saving response time by not sending back those results."
+          },
+          "method": {
+            "type": "string",
+            "description": "The HTTP method for the sub-request",
+            "enum": [
+              "delete",
+              "DELETE",
+              "patch",
+              "PATCH",
+              "post",
+              "POST",
+              "put",
+              "PUT"
+            ]
+          },
+          "parameters": {
+            "type": "object",
+            "description": "Query parameters to apply to the sub-request.  Each key in the parameters object should be the name of the query parameter, while the value should be appropriate for the type of parameter."
+          },
+          "uri": {
+            "type": "string",
+            "description": "Specifies the path for the sub-request.  The path must start with '/' and cannot contain whitespace.",
+            "minLength": 1
+          },
+          "vars": {
+            "type": "array",
+            "maxItems": 25,
+            "items": { "$ref": "#/components/schemas/CompositeSubRequestVar" },
+            "xml": { "wrapped": true }
+          }
+        }
+      },
+      "CompositeSubRequestVar": {
+        "type": "object",
+        "description": "Defines the vars property that can be passed to composite sub-requests",
+        "required": ["name", "path"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the variable",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "description": "The JsonPath expression to execute against the response value",
+            "minLength": 1
+          }
+        }
+      },
+      "CompositeSubResponse": {
+        "type": "object",
+        "description": "Defines the format of the sub-response",
+        "properties": {
+          "body": {
+            "type": "object",
+            "description": "The body of the response, if any"
+          },
+          "headers": { "$ref": "#/components/schemas/Headers" },
+          "requestError": {
+            "type": "object",
+            "description": "The details of any error that occurred when processing the associated request or selection"
+          },
+          "responseIncluded": {
+            "type": "boolean",
+            "description": "Indicates whether the response to the corresponding sub-request has been included or skipped.  If this property is set to false, that indicates that the 'includeResponse' property on the corresponding sub-request was set to 'false' on the request, and the the response to that sub-request is not included."
+          },
+          "responseSerializationFailed": {
+            "type": "boolean",
+            "description": "Indicates that serializing the response to the corresponding sub-request failed.  The error will be logged, but not returned to the caller.  Response serialization failures will not cause the overall request to fail and will not prevent data from being committed.  This case should rarely, if ever, occur during normal operation."
+          },
+          "skipped": {
+            "type": "boolean",
+            "description": "Flag that is set to true if the sub-request was skipped due to the failure of an earlier sub-request"
+          },
+          "status": {
+            "type": "integer",
+            "description": "The HTTP response status code generated by the associated sub-request."
+          },
+          "varsError": {
+            "type": "object",
+            "description": "The details of any errors that occurred when attempting to process the vars on the associated request or selection"
+          }
+        }
+      },
+      "Headers": {
+        "type": "object",
+        "description": "The headers property consists of name/value pairs that correspond to HTTP header names and values.",
+        "additionalProperties": { "type": "string" }
+      },
+      "ErrorDetails": {
+        "type": "object",
+        "properties": {
+          "lineNumber": { "type": "integer" },
+          "message": { "type": "string" },
+          "parameterLocation": { "type": "string" },
+          "parameterName": { "type": "string" },
+          "stackTrace": { "type": "string" }
+        }
+      },
+      "ErrorInfo": {
+        "type": "object",
+        "properties": {
+          "details": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ErrorDetails" },
+            "xml": { "wrapped": true }
+          },
+          "developerMessage": { "type": "string" },
+          "statusCode": { "type": "integer" },
+          "userMessage": { "type": "string" }
+        }
+      }
+    }
+  }
+}
