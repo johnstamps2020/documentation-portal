@@ -18,10 +18,6 @@ import SupportPage from "./pages/SupportPage/SupportPage";
 const router = createBrowserRouter(
   [
     {
-      path: "/",
-      element: <Navigate to="/cloudProducts/elysian" />
-    },
-    {
       path: "/forbidden",
       element: <ForbiddenPage />
     },

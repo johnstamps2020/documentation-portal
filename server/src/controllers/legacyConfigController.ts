@@ -248,6 +248,24 @@ function getBackgroundComponent(pagePath: string) {
   return background;
 }
 
+function getCompletePageComponent(
+  legacyPageConfig: legacyPageConfig,
+  dbPageConfig: Page
+) {
+  const legacyPageConfigTemplate = legacyPageConfig.template;
+  if (legacyPageConfigTemplate === 'redirect') {
+    const redirectLink = legacyPageConfig
+      .items!.find(i => i.label === '_redirect')!
+      .link!.replace(/^\/+/, '');
+    return `${legacyPageConfigTemplate} ${redirectLink}`;
+  }
+  const bgComponent = getBackgroundComponent(dbPageConfig.path);
+  if (bgComponent) {
+    return `${legacyPageConfigTemplate} ${bgComponent}`;
+  }
+  return legacyPageConfigTemplate;
+}
+
 async function updateRefsInItem(
   legacyItem: legacyItem,
   dbItem: Item,
@@ -551,10 +569,7 @@ export async function putPageConfigsInDatabase() {
       const legacyPageAbsPath = page.path;
       dbLandingPage.path = getRelativePagePath(legacyPageAbsPath);
       dbLandingPage.title = page.title;
-      const bgComponent = getBackgroundComponent(dbLandingPage.path);
-      dbLandingPage.component = bgComponent
-        ? page.template + ` ${bgComponent}`
-        : page.template;
+      dbLandingPage.component = getCompletePageComponent(page, dbLandingPage);
       dbLandingPage.isInProduction = false;
       const pageSaveResult = await createOrUpdateEntity(
         Page.name,
@@ -690,7 +705,7 @@ export async function putPageConfigsInDatabase() {
         const apiReferencesPageResult = await findEntity(
           Page.name,
           {
-            path: 'apiReferences/flaine',
+            path: 'apiReferences',
           },
           false
         );
