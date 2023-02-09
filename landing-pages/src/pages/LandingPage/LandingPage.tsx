@@ -1,8 +1,7 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import { Page } from "server/dist/model/entity/Page";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Theme } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import Backdrop from "@mui/material/Backdrop";
@@ -13,7 +12,7 @@ import ProductFamilyLayout from "../../components/LandingPage/ProductFamily/Prod
 export default function LandingPage() {
   const navigate = useNavigate();
   const params = useParams();
-  const pagePathFromRouter = params["*"];
+  const pagePathFromRouter = params["*"] !== "" ? params["*"] : "/";
   const [pageData, setPageData] = useState<Page>();
   const [loading, setLoading] = useState(false);
   const [loadingError, setLoadingError] = useState<string | undefined>(
@@ -52,6 +51,10 @@ export default function LandingPage() {
           throw new Error(
             `Fetched page data path (${jsonData.path} is different from the page path from router (${pagePathFromRouter})`
           );
+        }
+        if (jsonData.component.includes("redirect")) {
+          console.log("redirect", `/${jsonData.component.split(" ")[1]}`);
+          return navigate(`/${jsonData.component.split(" ")[1]}`);
         }
         setPageData(jsonData);
       } catch (err) {
