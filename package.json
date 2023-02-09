@@ -12,5 +12,8 @@
     "docusaurus/*",
     "html5",
     "server"
-  ]
+  ],
+  "scripts": {
+    "dev:server": "yarn workspace server dev"
+  }
 }

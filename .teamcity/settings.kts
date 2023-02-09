@@ -111,7 +111,7 @@ enum class GwDockerImages(val imageUrl: String) {
     DOC_VALIDATOR_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/doc-validator:latest"), PYTHON_3_9_SLIM_BUSTER(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/python:3.9-slim-buster"
     ),
-    NODE_REMOTE_BASE("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node"), NODE_16_14_2("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node:16.14.2"), NODE_18_14_0(
+    NODE_REMOTE_BASE("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node"), NODE_16_16_0("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node:16.16.0"), NODE_18_14_0(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node:18.14.0"
     ),
     GENERIC_14_14_0_YARN_CHROME(
@@ -2187,7 +2187,7 @@ object Server {
                 shellScript = """
                     cd server && yarn npm audit --severity high --all --recursive --exclude @doctools/gw-theme-classic
                 """.trimIndent()
-                dockerImage = GwDockerImages.NODE_16_14_2.imageUrl
+                dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
             }
         }
 
@@ -2258,7 +2258,7 @@ object Server {
                     yarn
                     yarn test
                 """.trimIndent()
-                dockerImage = GwDockerImages.NODE_16_14_2.imageUrl
+                dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
             }
         }
 

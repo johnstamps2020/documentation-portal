@@ -46,7 +46,7 @@
     "got": "12.5.3",
     "trim": "1.0.1"
   },
-  "packageManager": "yarn@3.4.0",
+  "packageManager": "yarn@3.4.1",
   "peerDependencies": {
     "react": "^16.8.4 || ^17.0.0",
     "react-dom": "^16.8.4 || ^17.0.0"
