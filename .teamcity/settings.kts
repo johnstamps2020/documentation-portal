@@ -3559,163 +3559,111 @@ object Apps {
             name = "Apps"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            createAppProjects().forEach {
-                subProject(it)
-            }
+            subProject(FlailSSGProject)
         }
     }
 
-    private fun createAppProjects(): List<Project> {
-        return arrayOf(
-            Triple("Flail SSG", "frontend/flail_ssg", true),
-            Triple("Config deployer", "apps/config_deployer", true),
-            Triple("Doc crawler", "apps/doc_crawler", true),
-            Triple("Index cleaner", "apps/index_cleaner", false),
-            Triple("Build manager", "apps/build_manager", true),
-            Triple("Recommendation engine", "apps/recommendation_engine", false),
-            Triple("Lion pkg builder", "apps/lion_pkg_builder", false),
-            Triple("Lion page builder", "apps/lion_page_builder", false),
-            Triple("Upgrade diffs page builder", "apps/upgradediffs_page_builder", false),
-            Triple("Sitemap generator", "apps/sitemap_generator", false)
-        ).map {
-            val appName = it.first
-            val appDir = it.second
-            val createTestBuild = it.third
-            Project {
-                name = appName
-                id = Helpers.resolveRelativeIdFromIdString(this.name)
+    object FlailSSGProject : Project({
+        name = "Flail SSG"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-                if (createTestBuild) {
-                    var testAppBuildType = createTestAppBuildType(appName, appDir)
-                    when (appName) {
-                        "Doc crawler" -> {
-                            testAppBuildType.params.text(
-                                "env.TEST_ENVIRONMENT_DOCKER_NETWORK", "host", allowEmpty = false
-                            )
-                            val composeElasticsearchAndHttpServerStep =
-                                GwBuildSteps.ComposeElasticsearchAndHttpServerStep
-                            testAppBuildType.steps.step(composeElasticsearchAndHttpServerStep)
-                            testAppBuildType.steps.stepsOrder.add(
-                                0, composeElasticsearchAndHttpServerStep.id.toString()
-                            )
-                        }
+        buildType(PublishFlailSSGDockerImageBuildType)
+        buildType(TestFlailSSGBuildType)
 
-                        "Flail SSG" -> {
-                            testAppBuildType = createTestAppBuildType(appName, appDir, "frontend")
-                            testAppBuildType.params.text(
-                                "env.DOCS_CONFIG_FILE",
-                                "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}",
-                                display = ParameterDisplay.HIDDEN
-                            )
-                            val mergeDocsConfigFilesStep = GwBuildSteps.MergeDocsConfigFilesStep
-                            testAppBuildType.steps.step(mergeDocsConfigFilesStep)
-                            testAppBuildType.steps.stepsOrder.add(0, mergeDocsConfigFilesStep.id.toString())
-                        }
-                    }
-                    val publishAppDockerImageBuildType =
-                        createPublishAppDockerImageBuildType(appName, appDir, testAppBuildType)
-                    buildType(publishAppDockerImageBuildType)
-                    buildType(testAppBuildType)
-                } else {
-                    buildType(createPublishAppDockerImageBuildType(appName, appDir))
-                }
-            }
+    })
+
+    object PublishFlailSSGDockerImageBuildType : BuildType({
+        val appDir = "frontend/flail_ssg"
+        name = "Publish Docker image for Flail SSG"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        vcs {
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            branchFilter = "+:<default>"
+            cleanCheckout = true
         }
-    }
 
-    private fun createPublishAppDockerImageBuildType(
-        appName: String,
-        appDir: String,
-        dependentBuildType: BuildType? = null,
-    ): BuildType {
-        return BuildType {
-            name = "Publish Docker image for $appName"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:<default>"
-                cleanCheckout = true
-            }
-
-            steps {
-                script {
-                    name = "Publish Docker image to Artifactory"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
+        steps {
+            script {
+                name = "Publish Docker image to Artifactory"
+                id = Helpers.createIdStringFromName(this.name)
+                scriptContent = """
                         #!/bin/bash                        
                         set -xe
                         
                         cd $appDir
                         ./publish_docker.sh latest       
                     """.trimIndent()
-                }
             }
+        }
 
-            triggers {
-                vcs {
-                    triggerRules = """
+        triggers {
+            vcs {
+                triggerRules = """
                         +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${appDir}/**
                         -:user=doctools:**
                     """.trimIndent()
-                }
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            if (dependentBuildType != null) {
-                dependencies {
-                    snapshot(dependentBuildType) {
-                        reuseBuilds = ReuseBuilds.SUCCESSFUL
-                        onDependencyFailure = FailureAction.FAIL_TO_START
-                    }
-                }
             }
         }
-    }
 
-    private fun createTestAppBuildType(appName: String, appDir: String, vcsTriggerDir: String = ""): BuildType {
-        return BuildType {
-            name = "Test $appName"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
+        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
+        dependencies {
+            snapshot(TestFlailSSGBuildType) {
+                reuseBuilds = ReuseBuilds.SUCCESSFUL
+                onDependencyFailure = FailureAction.FAIL_TO_START
             }
+        }
+    })
 
-            steps {
-                script {
-                    name = "Run tests"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
+    object TestFlailSSGBuildType : BuildType({
+        name = "Test Flail SSG"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        vcs {
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            cleanCheckout = true
+        }
+
+        params {
+            text(
+                "env.DOCS_CONFIG_FILE",
+                "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}",
+                display = ParameterDisplay.HIDDEN
+            )
+        }
+
+        steps {
+            step(GwBuildSteps.MergeDocsConfigFilesStep)
+            script {
+                name = "Run tests"
+                id = Helpers.createIdStringFromName(this.name)
+                scriptContent = """
                         #!/bin/bash
                         set -xe
 
-                        cd $appDir
+                        cd frontend/flail_ssg
                         ./run_tests.sh
                     """.trimIndent()
-                    dockerImage = GwDockerImages.PYTHON_3_9_SLIM_BUSTER.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                }
-                stepsOrder.add(this.items[0].id.toString())
-            }
-
-            triggers {
-                vcs {
-                    triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${vcsTriggerDir.ifEmpty { appDir }}/**
-                        -:user=doctools:**
-                    """.trimIndent()
-                }
-            }
-
-            features {
-                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                dockerImage = GwDockerImages.PYTHON_3_9_SLIM_BUSTER.imageUrl
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             }
         }
-    }
+
+        triggers {
+            vcs {
+                triggerRules = """
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:frontend/**
+                        -:user=doctools:**
+                    """.trimIndent()
+            }
+        }
+
+        features {
+            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+            feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+        }
+    })
 }
 
 object Helpers {
@@ -4069,12 +4017,6 @@ object Helpers {
 }
 
 object GwBuildSteps {
-    object ComposeElasticsearchAndHttpServerStep : DockerComposeStep({
-        name = "Compose Elasticsearch and HTTP server"
-        id = Helpers.createIdStringFromName(this.name)
-        file = "apps/doc_crawler/tests/test_doc_crawler/resources/docker-compose.yml"
-    })
-
     object MergeAllLegacyConfigsStep : ScriptBuildStep({
         name = "Merge all config files"
         id = Helpers.createIdStringFromName(this.name)
