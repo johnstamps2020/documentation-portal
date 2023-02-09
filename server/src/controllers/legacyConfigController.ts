@@ -705,7 +705,7 @@ export async function putPageConfigsInDatabase() {
         const apiReferencesPageResult = await findEntity(
           Page.name,
           {
-            path: 'apiReferences/flaine',
+            path: 'apiReferences',
           },
           false
         );
