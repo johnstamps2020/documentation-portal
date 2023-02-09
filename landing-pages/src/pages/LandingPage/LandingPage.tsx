@@ -53,7 +53,6 @@ export default function LandingPage() {
           );
         }
         if (jsonData.component.includes("redirect")) {
-          console.log("redirect", `/${jsonData.component.split(" ")[1]}`);
           return navigate(`/${jsonData.component.split(" ")[1]}`);
         }
         setPageData(jsonData);
