@@ -31,6 +31,14 @@
       "docId": "docusaurusgwdocslatest",
       "nodeImageVersion": "16.16.0",
       "workingDir": "doc-site"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "gw/LearningInDita.ditamap",
+      "srcId": "learninginditasrc",
+      "docId": "learningindita",
+      "indexRedirect": true
     }
   ]
 }
