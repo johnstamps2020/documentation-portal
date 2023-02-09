@@ -2514,9 +2514,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"documentation-portal@workspace:.":
+"server@workspace:.":
   version: 0.0.0-use.local
-  resolution: "documentation-portal@workspace:."
+  resolution: "server@workspace:."
   dependencies:
     "@elastic/elasticsearch": ^7.17.0
     "@okta/jwt-verifier": ^2.3.0

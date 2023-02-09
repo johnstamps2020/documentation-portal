@@ -1,0 +1,16 @@
+{
+  "name": "documentation-portal",
+  "version": "1.0.0",
+  "description": "Guidewire documentation portal",
+  "main": "index.js",
+  "repository": "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
+  "author": "Doctools <doctools@guidewire.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "packageManager": "yarn@3.4.1",
+  "workspaces": [
+    "docusaurus/*",
+    "html5",
+    "server"
+  ]
+}
