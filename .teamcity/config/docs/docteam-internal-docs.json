@@ -61,6 +61,22 @@
       "earlyAccess": false,
       "internal": true,
       "public": false
+    },
+    {
+      "id": "learningindita",
+      "title": "Learning in DITA",
+      "url": "learning-in-dita",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["DocTools"],
+        "version": ["latest"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "earlyAccess": false,
+      "internal": true,
+      "public": false
     }
   ]
 }

@@ -28,6 +28,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
       "branch": "master"
+    },
+    {
+      "id": "learninginditasrc",
+      "title": "Learning in DITA",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/learning-in-dita.git",
+      "branch": "main"
     }
   ]
 }
