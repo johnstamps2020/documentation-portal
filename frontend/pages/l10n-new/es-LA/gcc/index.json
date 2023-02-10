@@ -1,0 +1,17 @@
+{
+  "title": "Guidewire Cloud Console",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Consola de Guidewire Cloud",
+          "link": "/l10n/es-LA/gcc/0/es-LA-GuidewireCloudConsole.pdf"
+        }
+      ]
+    }
+  ]
+}

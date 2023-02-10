@@ -31,12 +31,16 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "API Reference",
+          "label": "Cloud API Reference",
           "id": "bcapirefflaine"
         },
         {
-          "label": "Cloud API Business Flows",
+          "label": "Cloud API Consumer Guide",
           "id": "isbc202209apibf"
+        },
+        {
+          "label": "Cloud API Developer Guide",
+          "id": "isbc202209apica"
         }
       ]
     },
@@ -45,16 +49,16 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "API Reference",
+          "label": "Cloud API Reference",
           "id": "ccapirefflaine"
         },
         {
-          "label": "Cloud API Authentication",
-          "id": "iscc202209apica"
+          "label": "Cloud API Consumer Guide",
+          "id": "iscc202209apibf"
         },
         {
-          "label": "Cloud API Business Flows",
-          "id": "iscc202209apibf"
+          "label": "Cloud API Developer Guide",
+          "id": "iscc202209apica"
         }
       ]
     },
@@ -63,16 +67,16 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "API Reference",
+          "label": "Cloud API Reference",
           "id": "pcapirefflaine"
         },
         {
-          "label": "Cloud API Authentication",
-          "id": "ispc202209apica"
+          "label": "Cloud API Consumer Guide",
+          "id": "ispc202209apibf"
         },
         {
-          "label": "Cloud API Business Flows",
-          "id": "ispc202209apibf"
+          "label": "Cloud API Developer Guide",
+          "id": "ispc202209apica"
         }
       ]
     },
@@ -97,6 +101,14 @@
         {
           "label": "Cloud Console API",
           "id": "cloudconsoleapi"
+        },
+        {
+          "label": "Repository Settings API",
+          "id": "repositorysettingsapi"
+        },
+        {
+          "label": "Runtime Properties API",
+          "id": "runtimepropertiesapi"
         }
       ]
     },
@@ -111,6 +123,16 @@
         {
           "label": "Portal Development Guide",
           "id": "in20222portaldev"
+        }
+      ]
+    },
+    {
+      "label": "Integration Framework",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Webhooks API Reference",
+          "id": "webhooksapinext"
         }
       ]
     }

@@ -1,0 +1,168 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "InsuranceNow 2023.1",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Core Release Notes",
+          "id": "in20231rn"
+        },
+        {
+          "label": "Release Video",
+          "link": "https://www.brainshark.com/guidewire/INFlaine"
+        },
+        {
+          "label": "Studio Release Notes",
+          "id": "in20231studiorn"
+        },
+        {
+          "label": "Consumer Service Portal Release Notes",
+          "id": "incsp20231rn"
+        },
+        {
+          "label": "AppReader Release Notes",
+          "id": "appreaderrn400"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "in20231app"
+        },
+        {
+          "label": "Consumer Sales Portal Features",
+          "id": "in20231csalesp"
+        },
+        {
+          "label": "Consumer Service Portal Features",
+          "id": "in20231cservicep"
+        },
+        {
+          "label": "Excel Designed Rating",
+          "id": "inexcelrating30"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "AppReader Integration",
+          "id": "in20231appreaderinteg"
+        },
+        {
+          "label": "Business Intelligence Integration",
+          "id": "in20231xbiintegdraft"
+        },
+        {
+          "label": "API Reference",
+          "id": "in20231apiref"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "API Modernization",
+          "id": "inapimodernization"
+        },
+        {
+          "label": "Custom API Development",
+          "id": "inapidevelopment"
+        },
+        {
+          "label": "Developer Setup",
+          "id": "indevguidejava11draft"
+        },
+        {
+          "label": "Developer Setup",
+          "id": "indevguidejava11ext"
+        },
+        {
+          "label": "GWCP Operations for Self-led Customers",
+          "id": "ingwcpops"
+        },
+        {
+          "label": "Portal Development",
+          "id": "in20231portaldev"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Billing Configuration Reference",
+          "id": "in20231billref"
+        },
+        {
+          "label": "Core Configuration",
+          "id": "in20231config"
+        },
+        {
+          "label": "Common Functionality Configuration Reference",
+          "id": "in20231commonconfig"
+        },
+        {
+          "label": "Consumer Sales Portal Configuration",
+          "id": "in20231xcsalespconfigdraft"
+        },
+        {
+          "label": "Consumer Service Portal Configuration",
+          "id": "in20231xcservicepconfigdraft"
+        },
+        {
+          "label": "Claims Configuration Reference",
+          "id": "in20231claimsconfig"
+        },
+        {
+          "label": "Studio Configuration",
+          "id": "in20231studio"
+        },
+        {
+          "label": "Product Attribute Reference",
+          "id": "in20231prodattref"
+        },
+        {
+          "label": "Provisioning Portal",
+          "id": "in20231provportal"
+        },
+        {
+          "label": "Provisioning Portal",
+          "id": "in20231provportalinternal"
+        },
+        {
+          "label": "Underwriting Configuration Reference",
+          "id": "in20231uwconfig"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Install Assist",
+          "id": "ininstallassistdraft"
+        },
+        {
+          "label": "Upgrade Tools",
+          "id": "inupgradetoolsdraft"
+        }
+      ]
+    }
+  ]
+}

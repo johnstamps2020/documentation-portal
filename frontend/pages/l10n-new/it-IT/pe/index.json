@@ -1,0 +1,51 @@
+{
+  "title": "ProducerEngage",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guida all'installazione",
+          "link": "/l10n/it-IT/pe/2022.05/it-IT Digital v.2022.05 PE InstallGuide.pdf"
+        },
+        {
+          "label": "Guida all'applicazione",
+          "link": "/l10n/it-IT/pe/2022.05/it-IT Digital v.2022.05 PE_AppGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.08",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guida all'installazione",
+          "link": "/l10n/it-IT/pe/2020.08/it-PE-202008-cloud-InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "11.3",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guida all'installazione",
+          "link": "/l10n/it-IT/pe/11.3/it-PE-11.3-onprem-InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guida all'applicazione",
+          "link": "/l10n/it-IT/pe/10.0.1/it_PE_AppGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

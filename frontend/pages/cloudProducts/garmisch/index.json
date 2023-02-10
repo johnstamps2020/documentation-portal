@@ -1,0 +1,194 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Garmisch",
+  "template": "page",
+  "class": "blue-theme skiRelease garmisch",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Garmisch",
+    "items": [
+      {
+        "label": "Flaine",
+        "page": "../flaine"
+      },
+      {
+        "label": "Elysian",
+        "page": "../elysian"
+      },
+      {
+        "label": "Dobson",
+        "page": "../dobson"
+      },
+      {
+        "label": "Cortina",
+        "page": "../cortina"
+      },
+      {
+        "label": "Banff",
+        "page": "../banff"
+      },
+      {
+        "label": "Aspen",
+        "page": "../aspen"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Platform",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud Home",
+          "id": "gchhelprelease"
+        },
+        {
+          "label": "Cloud Platform",
+          "page": "../cloudConsole"
+        },
+        {
+          "label": "Data Platform",
+          "id": "dataplatform"
+        },
+        {
+          "label": "Cloud Data Access",
+          "page": "../cloudDataAccess/latest"
+        },
+        {
+          "label": "Workflow Service (Early Access)",
+          "page": "../workflowservice"
+        }
+      ]
+    },
+    {
+      "label": "Applications",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "PolicyCenter",
+          "page": "pcGwCloud/2023.02"
+        },
+        {
+          "label": "ClaimCenter",
+          "page": "ccGwCloud/2023.02"
+        },
+        {
+          "label": "BillingCenter",
+          "page": "bcGwCloud/2023.02"
+        },
+        {
+          "label": "InsuranceNow",
+          "page": "insuranceNow/2023.1"
+        },
+        {
+          "label": "Digital Reference Applications",
+          "page": "dx-ref-apps"
+        }
+      ]
+    },
+    {
+      "label": "Analytics",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "DataHub",
+          "page": "dhGwCloud/2023.02"
+        },
+        {
+          "label": "InfoCenter",
+          "page": "icGwCloud/2023.02"
+        },
+        {
+          "label": "Explore",
+          "page": "../explore/latest"
+        },
+        {
+          "label": "Canvas",
+          "id": "canvas"
+        },
+        {
+          "label": "Compare",
+          "id": "comparelatest"
+        },
+        {
+          "label": "HazardHub",
+          "link": "/hazardhub/HazardHub_Intro_gw.pdf"
+        },
+        {
+          "label": "Predict",
+          "id": "livepredictlatest"
+        },
+        {
+          "label": "Cyence Cyber",
+          "page": "../cyence"
+        },
+        {
+          "label": "Data Studio (Early Access)",
+          "id": "datastudiodraft"
+        },
+        {
+          "label": "Data Studio (Early Access)",
+          "id": "datastudiorelease"
+        }
+      ]
+    },
+    {
+      "label": "Developer Resources",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Advanced Product Designer App",
+          "page": "apd"
+        },
+        {
+          "label": "API References",
+          "page": "../../apiReferences/garmisch"
+        },
+        {
+          "label": "Integration Gateway",
+          "id": "integgatewaydevlatest"
+        },
+        {
+          "label": "App Events",
+          "id": "appeventsdev"
+        },
+        {
+          "label": "REST API Client",
+          "id": "isrestapiclientguide"
+        },
+        {
+          "label": "Jutro Digital Platform (Early Access)",
+          "page": "jutroDigitalPlatform",
+          "env": ["staging"]
+        },
+        {
+          "label": "Guidewire Testing",
+          "page": "../../testingFramework/garmisch"
+        },
+        {
+          "label": "Workset Manager",
+          "id": "worksetmgr"
+        }
+      ]
+    },
+    {
+      "label": "Global Content",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "London Market",
+          "page": "../../globalContent/iplm/garmisch"
+        },
+        {
+          "label": "UK Market",
+          "page": "../../globalContent/ipuk/1.1"
+        }
+      ]
+    }
+  ],
+  "search_filters": {
+    "platform": [
+      "Cloud"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "title": "CustomerEngage Account Management for ClaimCenter",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de la aplicación",
+          "link": "/l10n/es-LA/ce-claims/2022.05/es-LA v.2022.05 CE-AM Claims_AppGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

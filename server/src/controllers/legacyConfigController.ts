@@ -238,6 +238,7 @@ function getBackgroundComponent(pagePath: string) {
     'cloudProducts/dobson': 'dobsonBackground',
     'cloudProducts/elysian': 'elysianBackground',
     'cloudProducts/flaine': 'flaineBackground',
+    'cloudProducts/garmisch': 'garmischBackground',
   };
   let background = null;
   Object.entries(backgroundPathMapping).forEach(([k, v]) => {
@@ -246,6 +247,35 @@ function getBackgroundComponent(pagePath: string) {
     }
   });
   return background;
+}
+
+function getCompletePageComponent(
+  legacyPageConfig: legacyPageConfig,
+  dbPageConfig: Page
+) {
+  const categoryLayout2Paths = [
+    'cloudProducts/flaine',
+    'cloudProducts/garmisch',
+  ];
+  const legacyPageConfigTemplate = legacyPageConfig.template;
+  if (legacyPageConfigTemplate === 'redirect') {
+    const redirectLink = legacyPageConfig
+      .items!.find(i => i.label === '_redirect')!
+      .link!.replace(/^\/+/, '');
+    return `${legacyPageConfigTemplate} ${redirectLink}`;
+  }
+  const pageComponent = categoryLayout2Paths.includes(dbPageConfig.path)
+    ? 'pageCategory2'
+    : null;
+  const bgComponent = getBackgroundComponent(dbPageConfig.path);
+  if (bgComponent) {
+    if (pageComponent) {
+      return `${bgComponent} ${pageComponent}`;
+    }
+    return bgComponent;
+  }
+
+  return pageComponent;
 }
 
 async function updateRefsInItem(
@@ -551,10 +581,7 @@ export async function putPageConfigsInDatabase() {
       const legacyPageAbsPath = page.path;
       dbLandingPage.path = getRelativePagePath(legacyPageAbsPath);
       dbLandingPage.title = page.title;
-      const bgComponent = getBackgroundComponent(dbLandingPage.path);
-      dbLandingPage.component = bgComponent
-        ? page.template + ` ${bgComponent}`
-        : page.template;
+      dbLandingPage.component = getCompletePageComponent(page, dbLandingPage);
       dbLandingPage.isInProduction = false;
       const pageSaveResult = await createOrUpdateEntity(
         Page.name,
@@ -690,7 +717,7 @@ export async function putPageConfigsInDatabase() {
         const apiReferencesPageResult = await findEntity(
           Page.name,
           {
-            path: 'apiReferences/flaine',
+            path: 'apiReferences',
           },
           false
         );

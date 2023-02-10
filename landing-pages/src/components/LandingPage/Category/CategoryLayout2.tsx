@@ -14,12 +14,14 @@ import WhatsNew from "../WhatsNew";
 
 export default function CategoryLayout(pageData: Page) {
   function getBackgroundImage() {
-    if (pageData.component.includes("flaineBackground")) {
+    if (pageData.component?.includes("flaineBackground")) {
       return `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
        url(${flaineBackgroundImage}), 
        linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`;
-    } else if (pageData.component.includes("garmischBackground")) {
-      return `${garmischBackgroundImage}`;
+    } else if (pageData.component?.includes("garmischBackground")) {
+      return `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
+      url(${garmischBackgroundImage}), 
+      linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`;
     } else {
       return "";
     }
@@ -40,7 +42,6 @@ export default function CategoryLayout(pageData: Page) {
       margin="auto"
       padding="40px 32px"
       gap="56px"
-      alignContent="center"
     >
       <Grid minWidth="338px" marginTop="-27px" marginLeft="auto">
         <Stack spacing={1} direction="column" width="100%">
@@ -145,7 +146,11 @@ export default function CategoryLayout(pageData: Page) {
               },
             }}
           >
-            {pageData.sidebar && <LandingPageSidebar {...pageData.sidebar} />}
+            {pageData.sidebar ? (
+              <LandingPageSidebar {...pageData.sidebar} />
+            ) : (
+              <div style={{ minHeight: 180, minWidth: 280, padding: "24px" }}></div>
+            )}
           </Grid>
         </Grid>
       </Grid>

@@ -1,0 +1,17 @@
+{
+  "title": "Guidewire Identity Federation Hub",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2021.04",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Autenticazione con Guidewire Identity Federation Hub",
+          "link": "/l10n/it-IT/gwid/2021.04/IT-GW-FederationHub.pdf"
+        }
+      ]
+    }
+  ]
+}

@@ -14,11 +14,11 @@ import SelfManagedLink from "../SelfManagedLink";
 
 export default function ProductFamilyLayout(pageData: Page) {
   function getBackgroundImage() {
-    if (pageData.component.includes("aspenBackground")) {
+    if (pageData.component?.includes("aspenBackground")) {
       return `url(${gradientBackground})`;
-    } else if (pageData.component.includes("banffBackground")) {
+    } else if (pageData.component?.includes("banffBackground")) {
       return `url(${banffBackgroundImage}), url(${gradientBackground})`;
-    } else if (pageData.component.includes("cortinaBackground")) {
+    } else if (pageData.component?.includes("cortinaBackground")) {
       return `url(${cortinaBackgroundImage})`;
     } else {
       return "";

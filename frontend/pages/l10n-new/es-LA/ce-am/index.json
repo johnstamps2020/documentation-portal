@@ -1,0 +1,53 @@
+{
+  "title": "CustomerEngage Account Management",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de la aplicación",
+          "link": "/l10n/es-LA/ce-am/2022.05/es-LA v.2022.05 CE-AM_AppGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "11.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de instalación",
+          "link": "/l10n/es-LA/ce-am/11.1/es-419-CE_AM-onprem-InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de instalación",
+          "link": "/l10n/es-LA/ce-am/10.0.1/es-CEAM-InstallGuide.pdf"
+        },
+        {
+          "label": "Guía de seguridad y administración",
+          "link": "/l10n/es-LA/ce-am/10.0.1/es-CEAM_admin-and-security-guide.pdf"
+        },
+        {
+          "label": "Guía de la aplicación",
+          "link": "/l10n/es-LA/ce-am/10.0.1/es-CEAM_AppGuide.pdf"
+        },
+        {
+          "label": "Guía de configuración",
+          "link": "/l10n/es-LA/ce-am/10.0.1/es-CEAM_ConfigurationGuide.pdf"
+        },
+        {
+          "label": "Guía de configuración e instalación de Live Style Guide",
+          "link": "/l10n/es-LA/ce-am/10.0.1/es-CEAM_LiveStyleGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

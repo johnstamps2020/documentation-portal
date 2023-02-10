@@ -1,0 +1,115 @@
+{
+  "title": "ClaimCenter",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2021.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide d'authentification de l'API Cloud",
+          "link": "/l10n/fr-FR/cc/2021.11/CC v.2021.11 fr-FR CloudAPIGuide-Auth.pdf"
+        },
+        {
+          "label": "Guide de configuration et de flux opérationnels de l'API Cloud",
+          "link": "/l10n/fr-FR/cc/2021.11/CC v.2021.11 fr-FR CloudAPIGuide-BusinessFlows.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de configuration",
+          "link": "/l10n/fr-FR/cc/2020.11/CC_CL202011_fr-FR_ConfigGuide.pdf"
+        },
+        {
+          "label": "Guide d'installation",
+          "link": "/l10n/fr-FR/cc/2020.11/CC_CL202011_fr-FR_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de l'application",
+          "link": "/l10n/fr-FR/cc/2020.05/ISCL_202005_fr_CC-AppGuide.pdf"
+        },
+        {
+          "label": "Guide des personnes-ressources de Guidewire",
+          "link": "/l10n/fr-FR/cc/2020.05/ISCL_202005_fr_CC_ContactMgmtGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.1.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de l'application",
+          "link": "/l10n/fr-FR/cc/10.1.1/CC-AppGuide_FR.pdf"
+        },
+        {
+          "label": "Guide des personnes-ressources de Guidewire",
+          "link": "/l10n/fr-FR/cc/10.1.1/CC-ContactMgmtGuide_FR.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.2",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de l'application",
+          "link": "/l10n/fr-FR/cc/10.0.2/CC-AppGuide.pdf"
+        },
+        {
+          "label": "Guide de configuration",
+          "link": "/l10n/fr-FR/cc/10.0.2/ConfigGuide.pdf"
+        },
+        {
+          "label": "Guide des personnes-ressources de Guidewire",
+          "link": "/l10n/fr-FR/cc/10.0.2/ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "Guide d'installation",
+          "link": "/l10n/fr-FR/cc/10.0.2/InstallGuide.pdf"
+        },
+        {
+          "label": "Guide des règles",
+          "link": "/l10n/fr-FR/cc/10.0.2/RulesGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de l'application",
+          "link": "/l10n/fr-FR/cc/10.0.0/fr-CC-AppGuide.pdf"
+        },
+        {
+          "label": "Guide de configuration",
+          "link": "/l10n/fr-FR/cc/10.0.0/fr-CC-ConfigGuide.pdf"
+        },
+        {
+          "label": "Guide de gestion des contacts",
+          "link": "/l10n/fr-FR/cc/10.0.0/fr-CC-ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "Guide d'installation",
+          "link": "/l10n/fr-FR/cc/10.0.0/fr-CC-InstallGuide.pdf"
+        },
+        {
+          "label": "Guide des règles",
+          "link": "/l10n/fr-FR/cc/10.0.0/fr-CC-RulesGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

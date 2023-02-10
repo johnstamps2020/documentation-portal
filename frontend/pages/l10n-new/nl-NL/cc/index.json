@@ -1,0 +1,17 @@
+{
+  "title": "ClaimCenter",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "10.0.2",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guidewire Contact Management Guide",
+          "link": "/l10n/nl-NL/cc/10.0.2/nl-CC-ContactMgmtGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

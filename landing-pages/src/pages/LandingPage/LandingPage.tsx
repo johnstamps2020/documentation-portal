@@ -81,10 +81,12 @@ export default function LandingPage() {
             {loadingError}
           </Alert>
         )}
-        {pageData && pageData.categories.length !== 0 && !pageData.path.includes("flaine") && (
-          <CategoryLayout {...pageData} />
-        )}
-        {pageData && pageData.categories.length !== 0 && pageData.path.includes("flaine") && (
+        {pageData &&
+          pageData.categories.length !== 0 &&
+          pageData.component?.includes("pageCategory2") && (
+            <CategoryLayout {...pageData} />
+          )}
+        {pageData && pageData.categories.length !== 0 && (
           <CategoryLayout2 {...pageData} />
         )}
         {pageData && pageData.sections.length !== 0 && (

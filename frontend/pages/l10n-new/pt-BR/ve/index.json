@@ -1,0 +1,39 @@
+{
+  "title": "VendorEngage",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "11.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guia de instalação",
+          "link": "/l10n/pt-BR/ve/11.1/pt-VE-onprem-InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guia de administração e segurança",
+          "link": "/l10n/pt-BR/ve/10.0.1/pt-VE_Admin and Security Guide.pdf"
+        },
+        {
+          "label": "Guia do aplicativo",
+          "link": "/l10n/pt-BR/ve/10.0.1/pt-VE_AppGuide.pdf"
+        },
+        {
+          "label": "Guia de instalação",
+          "link": "/l10n/pt-BR/ve/10.0.1/pt-VE_InstallGuide.pdf"
+        },
+        {
+          "label": "Guia de instalação e configuração do Live Style Guide",
+          "link": "/l10n/pt-BR/ve/10.0.1/pt-VE_Live Style Guide Installand Config.pdf"
+        }
+      ]
+    }
+  ]
+}

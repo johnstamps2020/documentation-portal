@@ -1,0 +1,112 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "CustomerEngage Quote and Buy 11.4.1",
+  "template": "page",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "11.4.1",
+    "items": [
+      {
+        "label": "11.5.0",
+        "page": "../11.5.0"
+      },
+      {
+        "label": "11.3.0",
+        "id": "dxceqb1130"
+      },
+      {
+        "label": "11.2.0",
+        "id": "dxceqb1120onpremstaging"
+      },
+      {
+        "label": "11.1.0",
+        "id": "dxceqb1110onpremstaging"
+      },
+      {
+        "label": "10.0.1",
+        "id": "selfmanageddxceqbphivypaz"
+      },
+      {
+        "label": "10.0.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocswhokisuk"
+      },
+      {
+        "label": "8.1.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocsxqghmido"
+      },
+      {
+        "label": "8.0.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocssvsmobif"
+      },
+      {
+        "label": "7.1.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocswnmqkwxj"
+      },
+      {
+        "label": "7.0.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocsmoleigkn"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dx1141ceqbrelnotes"
+        },
+        {
+          "label": "Log4j Patch Release Notes",
+          "id": "dx1141log4jrelnotes"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dx1141ceqbinstall"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "dx1141ceqbapp"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration and Security Guide",
+          "id": "dx1141ceqbadmin"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer's Guide",
+          "id": "dx1141ceqbdev"
+        },
+        {
+          "label": "Digital Services Reference Guides",
+          "id": "dx1141ceqbrefguides"
+        }
+      ]
+    }
+  ]
+}

@@ -1,11 +1,39 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Cloud Console",
+  "title": "Cloud Platform",
   "template": "page",
   "class": "twoColumns",
   "items": [
     {
-      "label": "Features and functionality",
+      "label": "Release notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "gwcpreleasenotes"
+        }
+      ]
+    },
+    {
+      "label": "Cloud Infrastructure",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Authentication",
+          "id": "guidewireidentityfederationhub"
+        },
+        {
+          "label": "Network Connectivity",
+          "id": "cloudplatformrelease"
+        },
+        {
+          "label": "GCC Internal Docs",
+          "id": "gccinternallatests"
+        }
+      ]
+    },
+    {
+      "label": "Cloud Console",
       "class": "subject featuresAndFunctionality",
       "items": [
         {
@@ -17,12 +45,12 @@
           "id": "guidewirecloudconsolerootinsurerdev"
         },
         {
-          "label": "Release Notes Archive",
-          "id": "guidewirecloudconsolernarchive"
+          "label": "Cloud Console Guide (Early Access)",
+          "id": "guidewirecloudconsolerootearlyaccess"
         },
         {
-          "label": "GCC Internal Docs",
-          "id": "gccinternallatests"
+          "label": "Data Masking (Early Access)",
+          "id": "datamasking"
         }
       ]
     },
@@ -41,6 +69,14 @@
         {
           "label": "Database Service API",
           "id": "dbserviceapi"
+        },
+        {
+          "label": "Repository Settings API",
+          "id": "repositorysettingsapi"
+        },
+        {
+          "label": "Runtime Properties API",
+          "id": "runtimepropertiesapi"
         }
       ]
     }

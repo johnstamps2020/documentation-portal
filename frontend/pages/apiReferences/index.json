@@ -6,6 +6,11 @@
   "template": "redirect",
   "items": [
     {
+      "label": "Garmisch",
+      "page": "garmisch",
+      "env": ["int", "staging"]
+    },
+    {
       "label": "Flaine",
       "page": "flaine"
     },
@@ -27,7 +32,13 @@
     },
     {
       "label": "_redirect",
-      "link": "/apiReferences/flaine"
+      "link": "/apiReferences/flaine",
+      "env": ["prod"]
+    },
+    {
+      "label": "_redirect",
+      "link": "/apiReferences/garmisch",
+      "env": ["int", "staging"]
     }
   ]
 }

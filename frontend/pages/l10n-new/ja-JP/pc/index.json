@@ -1,0 +1,163 @@
+{
+  "title": "PolicyCenter",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2021.04",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Gosu リファレンスガイド",
+          "link": "/l10n/ja-JP/pc/2021.04/PC_CL202104_ja-JP_GosuRefGuide.pdf"
+        },
+        {
+          "label": "ルールガイド",
+          "link": "/l10n/ja-JP/pc/2021.04/PC_CL202104_ja-JP_RulesGuide.pdf"
+        },
+        {
+          "label": "テストガイド",
+          "link": "/l10n/ja-JP/pc/2021.04/PC_CL202104_ja-JP_TestingGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Advanced Product Designer ガイド",
+          "link": "/l10n/ja-JP/pc/2020.11/Cloud202011_ja-JP_AdvancedProductDesigner.pdf"
+        },
+        {
+          "label": "コンフィギュレーションガイド",
+          "link": "/l10n/ja-JP/pc/2020.11/PCCloud202011_ja-JP_ConfigGuide.pdf"
+        },
+        {
+          "label": "インストールガイド",
+          "link": "/l10n/ja-JP/pc/2020.11/PCCloud202011_ja-JP_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "アプリケーションガイド",
+          "link": "/l10n/ja-JP/pc/2020.05/IS_CL202005-PC-AppGuide-ja_JP.pdf"
+        },
+        {
+          "label": "Guidewire 連絡先管理ガイド",
+          "link": "/l10n/ja-JP/pc/2020.05/IS_CL202005-PC-ContactMgmtGuide-ja_JP.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.1.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "インストールガイド",
+          "link": "/l10n/ja-JP/pc/10.1.1/PC1011_ja-JP_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.2",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "システム管理ガイド",
+          "link": "/l10n/ja-JP/pc/10.0.2/ja-PC-AdminGuide.pdf"
+        },
+        {
+          "label": "アプリケーションガイド",
+          "link": "/l10n/ja-JP/pc/10.0.2/ja-PC-AppGuide.pdf"
+        },
+        {
+          "label": "ベストプラクティスガイド",
+          "link": "/l10n/ja-JP/pc/10.0.2/ja-PC-BestPracticesGuide.pdf"
+        },
+        {
+          "label": "コンフィギュレーションガイド",
+          "link": "/l10n/ja-JP/pc/10.0.2/ja-PC-ConfigGuide.pdf"
+        },
+        {
+          "label": "Guidewire 連絡先管理ガイド",
+          "link": "/l10n/ja-JP/pc/10.0.2/ja-PC-ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "PolicyCenter  用語集",
+          "link": "/l10n/ja-JP/pc/10.0.2/ja-PC-Glossary.pdf"
+        },
+        {
+          "label": "Gosu リファレンスガイド",
+          "link": "/l10n/ja-JP/pc/10.0.2/ja-PC-GosuRefGuide.pdf"
+        },
+        {
+          "label": "インストールガイド",
+          "link": "/l10n/ja-JP/pc/10.0.2/ja-PC-InstallGuide.pdf"
+        },
+        {
+          "label": "連携ガイド",
+          "link": "/l10n/ja-JP/pc/10.0.2/ja-PC-IntegrationGuide.pdf"
+        },
+        {
+          "label": "Product Designer ガイド",
+          "link": "/l10n/ja-JP/pc/10.0.2/ja-PC-ProductDesignerGuide.pdf"
+        },
+        {
+          "label": "保険商品モデルガイド",
+          "link": "/l10n/ja-JP/pc/10.0.2/ja-PC-ProductModelGuide.pdf"
+        },
+        {
+          "label": "ルールガイド",
+          "link": "/l10n/ja-JP/pc/10.0.2/ja-PC-RulesGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "アプリケーションガイド",
+          "link": "/l10n/ja-JP/pc/10.0.0/ja-PC-AppGuide.pdf"
+        },
+        {
+          "label": "ベストプラクティスガイド",
+          "link": "/l10n/ja-JP/pc/10.0.0/ja-PC-BestPracticesGuide.pdf"
+        },
+        {
+          "label": "コンフィギュレーションガイド",
+          "link": "/l10n/ja-JP/pc/10.0.0/ja-PC-ConfigGuide.pdf"
+        },
+        {
+          "label": "連絡先管理ガイド",
+          "link": "/l10n/ja-JP/pc/10.0.0/ja-PC-ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "インストールガイド",
+          "link": "/l10n/ja-JP/pc/10.0.0/ja-PC-InstallGuide.pdf"
+        },
+        {
+          "label": "連携ガイド",
+          "link": "/l10n/ja-JP/pc/10.0.0/ja-PC-IntegrationGuide.pdf"
+        },
+        {
+          "label": "Product Designer ガイド",
+          "link": "/l10n/ja-JP/pc/10.0.0/ja-PC-ProductDesignerGuide.pdf"
+        },
+        {
+          "label": "保険商品モデルガイド",
+          "link": "/l10n/ja-JP/pc/10.0.0/ja-PC-ProductModelGuide.pdf"
+        },
+        {
+          "label": "ルールガイド",
+          "link": "/l10n/ja-JP/pc/10.0.0/ja-PC-RulesGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

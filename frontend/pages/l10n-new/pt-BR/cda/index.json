@@ -1,0 +1,17 @@
+{
+  "title": "Cloud Data Access",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2021.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guia do aplicativo",
+          "link": "/l10n/pt-BR/cda/2021.11/pt-BR-CloudDataAccess.pdf"
+        }
+      ]
+    }
+  ]
+}

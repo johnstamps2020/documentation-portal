@@ -1,0 +1,82 @@
+{
+  "title": "Italiano",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "BillingCenter",
+      "class": "productFamily cardShadow",
+      "page": "bc"
+    },
+    {
+      "label": "ClaimCenter",
+      "class": "productFamily cardShadow",
+      "page": "cc"
+    },
+    {
+      "label": "Cloud Data Access",
+      "class": "productFamily cardShadow",
+      "page": "cda"
+    },
+    {
+      "label": "CustomerEngage Account Management",
+      "class": "productFamily cardShadow",
+      "page": "ce-am"
+    },
+    {
+      "label": "CustomerEngage Account Management for ClaimCenter",
+      "class": "productFamily cardShadow",
+      "page": "ce-claims"
+    },
+    {
+      "label": "CustomerEngage Quote and Buy",
+      "class": "productFamily cardShadow",
+      "page": "ce-qb"
+    },
+    {
+      "label": "DataHub",
+      "class": "productFamily cardShadow",
+      "page": "dh"
+    },
+    {
+      "label": "Guidewire Cloud Console",
+      "class": "productFamily cardShadow",
+      "page": "gcc"
+    },
+    {
+      "label": "Guidewire Identity Federation Hub",
+      "class": "productFamily cardShadow",
+      "page": "gwid"
+    },
+    {
+      "label": "InfoCenter",
+      "class": "productFamily cardShadow",
+      "page": "ic"
+    },
+    {
+      "label": "PolicyCenter",
+      "class": "productFamily cardShadow",
+      "page": "pc"
+    },
+    {
+      "label": "ProducerEngage",
+      "class": "productFamily cardShadow",
+      "page": "pe"
+    },
+    {
+      "label": "ProducerEngage for ClaimCenter",
+      "class": "productFamily cardShadow",
+      "page": "pe-claims"
+    },
+    {
+      "label": "ServiceRepEngage",
+      "class": "productFamily cardShadow",
+      "page": "sre"
+    },
+    {
+      "label": "VendorEngage",
+      "class": "productFamily cardShadow",
+      "page": "ve"
+    }
+  ]
+}

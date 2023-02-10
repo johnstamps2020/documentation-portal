@@ -1,0 +1,17 @@
+{
+  "title": "IS Contact Manager",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guidewire-Kontaktmanagementhandbuch",
+          "id": "is202205contactdeDE"
+        }
+      ]
+    }
+  ]
+}

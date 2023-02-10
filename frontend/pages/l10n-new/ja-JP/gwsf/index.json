@@ -1,0 +1,17 @@
+{
+  "title": "Guidewire for Salesforce",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2021.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "インストールガイド",
+          "id": "dxgwsfinstall202111jaJP"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "DataHub for Guidewire Cloud 2023.02",
+  "template": "page",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select product",
+    "selectedItem": "DataHub for Guidewire Cloud 2023.02",
+    "items": [
+      {
+        "label": "InfoCenter for Guidewire Cloud 2023.02",
+        "page": "../../icGwCloud/2023.02"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dhrn202302"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Product Guide",
+          "id": "dhproduct202302"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dhinstall202302"
+        },
+        {
+          "label": "Upgrade Guide",
+          "id": "dhupgrade202302"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration Guide",
+          "id": "dhconfig202302"
+        },
+        {
+          "label": "Data Specifications Guide",
+          "id": "dhdataspec202302"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "dhadmin202302"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer Reference",
+          "id": "dhdevref202302"
+        }
+      ]
+    }
+  ]
+}

@@ -30,13 +30,19 @@
       "page": "flaine"
     },
     {
-      "label": "Flaine New",
-      "page": "flainenew",
-      "env": ["int"]
+      "label": "Garmisch",
+      "page": "garmisch",
+      "env": ["int", "staging"]
     },
     {
       "label": "_redirect",
-      "link": "/cloudProducts/flaine"
+      "link": "/cloudProducts/flaine",
+      "env": ["prod"]
+    },
+    {
+      "label": "_redirect",
+      "link": "/cloudProducts/garmisch",
+      "env": ["int", "staging"]
     }
   ]
 }

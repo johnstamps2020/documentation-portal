@@ -1,0 +1,56 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Jutro Digital Platform (Early Access)",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "Jutro Digital Platform (Early Access)",
+      "class": "categoryCard cardShadow",
+      "id": "jutroplatformflaine",
+      "env": ["staging", "prod"]
+    },
+    {
+      "label": "Jutro Digital Platform (Early Access)",
+      "class": "categoryCard cardShadow",
+      "id": "jutroplatformnext",
+      "env": ["int"]
+    },
+    {
+      "label": "Jutro SDK (Early Access)",
+      "class": "categoryCard cardShadow",
+      "id": "jutrosdkflaine",
+      "env": ["staging", "prod"]
+    },
+    {
+      "label": "Tools and libraries",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Jutro SDK",
+          "link": "/jutro/sdk/next/docs/jutro-sdk-overview",
+          "env": ["int"]
+        },
+        {
+          "label": "APD toolkit",
+          "link": "/jutro/sdk/next/docs/apd-overview",
+          "env": ["int"]
+        }
+      ]
+    },
+    {
+      "label": "Jutro Design System 8.3.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Jutro Design System and UI Framework",
+          "id": "jutro830"
+        },
+        {
+          "label": "Jutro Storybook",
+          "id": "storybook830"
+        }
+      ]
+    }
+  ]
+}

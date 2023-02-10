@@ -20,10 +20,6 @@
       "items": [
         {
           "label": "Network Connectivity",
-          "id": "cloudplatformdraft"
-        },
-        {
-          "label": "Network Connectivity",
           "id": "cloudplatformrelease"
         }
       ]
@@ -32,10 +28,6 @@
       "label": "Authentication",
       "class": "subject configuration",
       "items": [
-        {
-          "label": "Authentication",
-          "id": "guidewireidentityfederationhubdraft"
-        },
         {
           "label": "Authentication",
           "id": "guidewireidentityfederationhub"

@@ -11,6 +11,8 @@ export default function LandingPageSidebar(sidebar: Sidebar) {
     <Paper
       sx={{
         height: "fit-content",
+        minHeight: "180px",
+        minWidth: "280px",
         padding: "24px",
       }}
     >

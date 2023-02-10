@@ -1,0 +1,71 @@
+{
+  "title": "PolicyCenter",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de la aplicación",
+          "id": "ispc202205appesES"
+        },
+        {
+          "label": "Guía de configuración",
+          "id": "ispc202205configesES"
+        },
+        {
+          "label": "Guía de gestión de contactos de Guidewire",
+          "id": "is202205contactesES"
+        }
+      ]
+    },
+    {
+      "label": "2021.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de autenticación de la API de la nube",
+          "id": "ispc202111apicaesES"
+        },
+        {
+          "label": "Guía de configuración y flujos de negocio de la API de la nube",
+          "id": "ispc202111apibfesES"
+        }
+      ]
+    },
+    {
+      "label": "10.1.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de Advanced Product Designer",
+          "link": "/l10n/es-ES/pc/10.1.1/PC1011_es-ES_AdvancedProductDesigner.pdf"
+        },
+        {
+          "label": "Guía de configuración",
+          "link": "/l10n/es-ES/pc/10.1.1/PC1011_es-ES_ConfigGuide.pdf"
+        },
+        {
+          "label": "Guía de instalación",
+          "link": "/l10n/es-ES/pc/10.1.1/PC1011_es-ES_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.2",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de aplicaciones",
+          "link": "/l10n/es-ES/pc/10.0.2/esES-PC-AppGuide.pdf"
+        },
+        {
+          "label": "Guía de gestión de contactos de Guidewire",
+          "link": "/l10n/es-ES/pc/10.0.2/esES-PC-ContactMgmtGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

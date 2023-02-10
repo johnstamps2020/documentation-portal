@@ -1,0 +1,80 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "CustomerEngage Account Management for ClaimCenter 11.5.0",
+  "template": "page",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "11.5.0",
+    "items": [
+      {
+        "label": "11.4.1",
+        "page": "../11.4.1"
+      },
+      {
+        "label": "11.3.0",
+        "id": "dxceclaims1130"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dx1150ceclaimsrelnotes"
+        },
+        {
+          "label": "Log4j Patch Release Notes",
+          "id": "dx1150log4jrelnotes"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dx1150ceclaimsinstall"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "dx1150ceclaimsapp"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration and Security Guide",
+          "id": "dx1150ceclaimsadmin"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer's Guide",
+          "id": "dx1150ceclaimsdev"
+        },
+        {
+          "label": "Digital Services Reference Guides",
+          "id": "dx1150ceclaimsrefguides"
+        }
+      ]
+    }
+  ]
+}

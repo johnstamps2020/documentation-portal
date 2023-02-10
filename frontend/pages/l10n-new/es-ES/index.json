@@ -1,0 +1,67 @@
+{
+  "title": "Español (España)",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "Advanced Product Designer",
+      "class": "productFamily cardShadow",
+      "page": "apd"
+    },
+    {
+      "label": "BillingCenter",
+      "class": "productFamily cardShadow",
+      "page": "bc"
+    },
+    {
+      "label": "ClaimCenter",
+      "class": "productFamily cardShadow",
+      "page": "cc"
+    },
+    {
+      "label": "CustomerEngage Account Management",
+      "class": "productFamily cardShadow",
+      "page": "ce-am"
+    },
+    {
+      "label": "CustomerEngage Account Management for ClaimCenter",
+      "class": "productFamily cardShadow",
+      "page": "ce-claims"
+    },
+    {
+      "label": "CustomerEngage Quote and Buy",
+      "class": "productFamily cardShadow",
+      "page": "ce-qb"
+    },
+    {
+      "label": "IS Contact Manager",
+      "class": "productFamily cardShadow",
+      "page": "cm"
+    },
+    {
+      "label": "PolicyCenter",
+      "class": "productFamily cardShadow",
+      "page": "pc"
+    },
+    {
+      "label": "ProducerEngage",
+      "class": "productFamily cardShadow",
+      "page": "pe"
+    },
+    {
+      "label": "ProducerEngage for ClaimCenter",
+      "class": "productFamily cardShadow",
+      "page": "pe-claims"
+    },
+    {
+      "label": "ServiceRepEngage",
+      "class": "productFamily cardShadow",
+      "page": "sre"
+    },
+    {
+      "label": "VendorEngage",
+      "class": "productFamily cardShadow",
+      "page": "ve"
+    }
+  ]
+}

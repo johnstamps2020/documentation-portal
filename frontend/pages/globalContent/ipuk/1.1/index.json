@@ -1,0 +1,38 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "UK Market - Official Injury Claim Integration for ClaimCenter 1.1",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ipukgarmischrn"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "ipukgarmischapp"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration",
+          "id": "ipukgarmischconfig"
+        }
+      ]
+    }
+  ]
+}

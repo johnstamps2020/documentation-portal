@@ -1,0 +1,45 @@
+{
+  "title": "CustomerEngage Quote and Buy",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de la aplicación",
+          "link": "/l10n/es-ES/ce-qb/2022.05/es-ES v.2022.05 CE-QB_AppGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "11.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de instalación",
+          "link": "/l10n/es-ES/ce-qb/11.1/es-ES-CE_QB-onprem_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de la aplicación",
+          "link": "/l10n/es-ES/ce-qb/10.0.1/es-ES_CEQB_AppGuide.pdf"
+        },
+        {
+          "label": "Guía de configuración",
+          "link": "/l10n/es-ES/ce-qb/10.0.1/es-ES_CEQB_ConfigurationGuide.pdf"
+        },
+        {
+          "label": "Guía de instalación",
+          "link": "/l10n/es-ES/ce-qb/10.0.1/es-ES_CEQB_InstallGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Workflow Service (Early Access)",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "workflowreleasenotes"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Workflow Designer",
+          "id": "workflowdesigner"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Cockpit",
+          "id": "workflowcockpit"
+        }
+      ]
+    }
+  ]
+}

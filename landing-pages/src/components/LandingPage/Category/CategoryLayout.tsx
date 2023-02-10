@@ -16,9 +16,9 @@ import Link from "@mui/material/Link";
 
 export default function CategoryLayout(pageData: Page) {
   function getBackgroundImage() {
-    if (pageData.component.includes("dobsonBackground")) {
+    if (pageData?.component?.includes("dobsonBackground")) {
       return `url(${dobsonBackgroundImage})`;
-    } else if (pageData.component.includes("elysianBackground")) {
+    } else if (pageData.component?.includes("elysianBackground")) {
       return `url(${elysianBackgroundImage})`;
     } else {
       return "";

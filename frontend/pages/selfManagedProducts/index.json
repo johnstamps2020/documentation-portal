@@ -14,19 +14,19 @@
         },
         {
           "label": "PolicyCenter",
-          "page": "pc/10.2.1"
+          "page": "pc/10.2.2"
         },
         {
           "label": "ClaimCenter",
-          "page": "cc/10.2.1"
+          "page": "cc/10.2.2"
         },
         {
           "label": "BillingCenter",
-          "page": "bc/10.2.1"
+          "page": "bc/10.2.2"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools440"
+          "id": "isconfigupgradetools450"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools Compatibility",
@@ -51,6 +51,14 @@
             {
               "label": "Germany",
               "page": "../globalContent/ipg/latest"
+            },
+            {
+              "label": "Japan (0.1)",
+              "page": "../globalContent/ipj/0.1"
+            },
+            {
+              "label": "Japan (1.0)",
+              "page": "../globalContent/ipj/1.0"
             }
           ]
         }
@@ -62,21 +70,23 @@
       "items": [
         {
           "label": "DataHub",
-          "page": "dh/10.8.0"
+          "page": "dh/10.8.0",
+          "env": ["prod"]
         },
         {
           "label": "InfoCenter",
-          "page": "ic/10.8.0"
+          "page": "ic/10.8.0",
+          "env": ["prod"]
         },
         {
           "label": "DataHub",
-          "page": "dh/10.7.0",
-          "env": ["prod"]
+          "page": "dh/10.9.0",
+          "env": ["staging"]
         },
         {
           "label": "InfoCenter",
-          "page": "ic/10.7.0",
-          "env": ["prod"]
+          "page": "ic/10.9.0",
+          "env": ["staging"]
         }
       ]
     },
@@ -86,36 +96,35 @@
       "items": [
         {
           "label": "CustomerEngage Account Management",
-          "id": "dxceam1141"
+          "page": "ceAccountMgmt/11.5.0"
         },
         {
           "label": "CustomerEngage Account Management for ClaimCenter",
-          "id": "dxceclaims1141"
+          "page": "ceAccountMgmtCc/11.5.0"
         },
         {
           "label": "CustomerEngage Quote and Buy",
-          "id": "dxceqb1141"
+          "page": "ceQuoteAndBuy/11.5.0"
         },
         {
           "label": "Jutro Design System",
-          "page": "../jutroDesignSystem/5.3.1",
-          "env": ["dev", "staging", "prod", "int"]
+          "page": "../jutroDesignSystem/8.6.1"
         },
         {
           "label": "ProducerEngage",
-          "id": "dxpe1141"
+          "page": "producerEngage/11.5.0"
         },
         {
           "label": "ProducerEngage for ClaimCenter",
-          "id": "dxpeclaims1141"
+          "page": "producerEngageCc/11.5.0"
         },
         {
           "label": "ServiceRepEngage",
-          "id": "dxsre1141"
+          "page": "serviceRepEngage/11.5.0"
         },
         {
           "label": "VendorEngage",
-          "id": "dxve1141"
+          "page": "vendorEngage/11.5.0"
         }
       ]
     }
