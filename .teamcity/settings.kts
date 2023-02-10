@@ -2185,7 +2185,7 @@ object Server {
             nodeJS {
                 id = "Run yarn npm audit"
                 shellScript = """
-                    cd server && yarn npm audit --severity high --all --recursive --exclude @doctools/gw-theme-classic
+                    yarn audit:server
                 """.trimIndent()
                 dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
             }
@@ -4817,7 +4817,6 @@ object GwBuildSteps {
         return ScriptBuildStep {
             name = "Build HTML5 dependencies"
             id = Helpers.createIdStringFromName(this.name)
-            workingDir = "html5"
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -4825,7 +4824,7 @@ object GwBuildSteps {
                 export EXIT_CODE=0
                 
                 yarn
-                yarn build || EXIT_CODE=${'$'}?
+                yarn build:html5 || EXIT_CODE=${'$'}?
                 
                 exit ${'$'}EXIT_CODE
             """.trimIndent()
@@ -4839,7 +4838,6 @@ object GwBuildSteps {
         return ScriptBuildStep {
             name = "Build HTML5 offline dependencies"
             id = Helpers.createIdStringFromName(this.name)
-            workingDir = "html5"
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -4847,7 +4845,7 @@ object GwBuildSteps {
                 export EXIT_CODE=0
                 
                 yarn
-                yarn build-offline || EXIT_CODE=${'$'}?
+                yarn build:html5-offline || EXIT_CODE=${'$'}?
                 
                 exit ${'$'}EXIT_CODE
             """.trimIndent()
