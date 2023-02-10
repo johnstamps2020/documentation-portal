@@ -18,7 +18,10 @@
     "server"
   ],
   "scripts": {
+    "build:html5": "yarn workspace html5 build",
+    "dev:theme": "yarn workspace @doctools/gw-theme-classic dev",
     "dev:server": "yarn workspace server dev",
+    "dev:html5": "NODE_ENV=development concurrently --kill-others-on-fail \"yarn dev:theme\" \"yarn workspace html5 dev\"",
     "test:server": "yarn workspace server test"
   },
   "resolutions": {
@@ -30,5 +33,8 @@
     "json5": "^2.2.2",
     "got": "11.8.5",
     "trim": "1.0.1"
+  },
+  "dependencies": {
+    "concurrently": "7.6.0"
   }
 }

@@ -2,6 +2,8 @@ import { resolve } from "path";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { PathData, DefinePlugin, Configuration } from "webpack";
 
+const doctoolsScopeInclude = "/[\\/]node_modules[\\/]@doctools[\\/]/";
+
 const postCss = {
   loader: "postcss-loader",
   options: {
@@ -161,17 +163,7 @@ const config: Configuration = {
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
-    alias: {
-      "@theme": resolve(
-        __dirname,
-        "node_modules",
-        "@doctools",
-        "gw-theme-classic",
-        "lib",
-        "theme"
-      ),
-    },
+    symlinks: false,
   },
 };
 
