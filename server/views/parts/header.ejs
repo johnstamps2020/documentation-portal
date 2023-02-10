@@ -53,5 +53,10 @@ const internalBadge = pageContentLocal && pageContentLocal.internal;
             <% } %>
             <%- include('header-buttons') %>
         </div>
+        <% if (process.env.DEPLOY_ENV.toLowerCase() == 'int') { %>
+            <div id="headerBottom">This site is deprecated. 
+                Please visit <a href="https://docs.staging.ccs.guidewire.net">https://docs.staging.ccs.guidewire.net</a>
+                or <a href="https://docs.guidewire.com">https://docs.guidewire.com</a> instead.</div>
+        <% } %>
     </header>
 </header>
