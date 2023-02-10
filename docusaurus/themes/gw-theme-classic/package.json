@@ -42,10 +42,6 @@
     "lodash": "^4.17.21",
     "mark.js": "^8.11.1"
   },
-  "resolutions": {
-    "got": "12.5.3",
-    "trim": "1.0.1"
-  },
   "packageManager": "yarn@3.4.1",
   "peerDependencies": {
     "react": "^16.8.4 || ^17.0.0",

@@ -15,7 +15,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@doctools/gw-theme-classic": "2.0.64",
+    "@doctools/gw-theme-classic": "workspace:*",
     "@docusaurus/core": "2.3.1",
     "@docusaurus/preset-classic": "2.3.1",
     "@docusaurus/theme-live-codeblock": "^2.3.1",

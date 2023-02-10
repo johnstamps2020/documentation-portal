@@ -15,7 +15,7 @@
     "profile": "webpack --profile --json > stats.json"
   },
   "dependencies": {
-    "@doctools/gw-theme-classic": "2.0.65",
+    "@doctools/gw-theme-classic": "workspace:*",
     "fuse.js": "^6.6.2"
   },
   "devDependencies": {

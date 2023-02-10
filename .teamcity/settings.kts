@@ -2215,7 +2215,6 @@ object Server {
             script {
                 name = "Test the doc site server"
                 id = Helpers.createIdStringFromName(this.name)
-                workingDir = "server"
                 scriptContent = """
                     #!/bin/sh
                     set -e
@@ -2256,7 +2255,7 @@ object Server {
                     export LIMITS_CPU="2"
                     
                     yarn
-                    yarn test
+                    yarn test:server
                 """.trimIndent()
                 dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
             }
