@@ -1706,7 +1706,22 @@ object Frontend {
             subProject(createDeployLandingPagesProject())
             subProject(createDeployLocalizedPagesProject())
             subProject(createDeployUpgradeDiffsProject())
+            subProject(createPublishNpmPackagesProject())
             subProject(createDeployHtml5DependenciesProject())
+        }
+    }
+
+    private fun createPublishNpmPackagesProject(): Project {
+        return Project {
+            name = "Publish NPM packages to Artifactory"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            arrayOf(
+                Pair("theme", "docusaurus/themes/gw-theme-classic"),
+                Pair("plugin", "docusaurus/plugins/gw-plugin-redoc")
+            ).forEach {
+                buildType(createPublishNpmPackageBuildType(it.first, it.second))
+            }
         }
     }
 
@@ -1788,6 +1803,37 @@ object Frontend {
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+        }
+    }
+
+    private fun createPublishNpmPackageBuildType(packageHandle: String, packagePath: String): BuildType {
+        return BuildType {
+            name = "Publish $packageHandle to Artifactory"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                branchFilter = "+:<default>"
+                cleanCheckout = true
+            }
+
+            steps {
+                step(GwBuildSteps.createPublishNpmPackageStep(packageHandle))
+            }
+
+            triggers {
+                vcs {
+                    triggerRules = """
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${packagePath}/package.json
+                        -:user=doctools:**
+                    """.trimIndent()
+                }
+            }
+
+            features {
+                feature(GwBuildFeatures.GwSshAgentBuildFeature)
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
         }
     }
 
@@ -4030,6 +4076,27 @@ object GwBuildSteps {
         dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.imageUrl
         dockerImagePlatform = ImagePlatform.Linux
     })
+
+    fun createPublishNpmPackageStep(packageHandle: String): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "NPM publish $packageHandle"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                npm install -g npm-cli-login
+                npm-cli-login -u ${'$'}{ARTIFACTORY_SERVICE_ACCOUNT_USERNAME} -p ${'$'}{ARTIFACTORY_API_KEY} -e svc-doc-artifactory@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev
+                npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
+                npm config set always-auth true
+                npm config set unsafe-perm true
+                
+                yarn install
+                yarn build:$packageHandle
+                yarn publish:$packageHandle
+                npm publish --verbose
+            """.trimIndent()
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/node:16.16.0"
+        }
+    }
 
     fun createUploadLegacyConfigsToS3BucketStep(deployEnv: String): ScriptBuildStep {
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
