@@ -11,7 +11,7 @@
         "version": ["1.0"],
         "subject": ["Release notes"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -28,7 +28,7 @@
         "version": ["1.0"],
         "subject": ["Developers"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -45,7 +45,7 @@
         "version": ["1.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -62,7 +62,7 @@
         "version": ["1.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -79,7 +79,7 @@
         "version": ["1.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -96,7 +96,7 @@
         "version": ["1.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -113,7 +113,7 @@
         "version": ["1.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

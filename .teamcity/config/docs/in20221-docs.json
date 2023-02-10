@@ -228,7 +228,7 @@
         "subject": ["Configuration"],
         "release": ["Elysian"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -300,7 +300,7 @@
         "subject": ["Integration"],
         "release": ["Elysian"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -318,7 +318,7 @@
         "subject": ["Configuration"],
         "release": ["Elysian"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -336,7 +336,7 @@
         "subject": ["Configuration"],
         "release": ["Elysian"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

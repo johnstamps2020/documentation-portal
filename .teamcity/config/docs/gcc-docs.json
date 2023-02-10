@@ -11,7 +11,7 @@
         "version": ["latest"],
         "subject": ["Development"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -45,7 +45,7 @@
         "version": ["latest"],
         "subject": ["Development"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -62,7 +62,7 @@
         "version": ["latest"],
         "subject": ["Development"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -80,7 +80,7 @@
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "public": true,
       "internal": false,
       "earlyAccess": false
@@ -160,7 +160,7 @@
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "public": false,
       "internal": true,
       "earlyAccess": false

@@ -11,7 +11,7 @@
         "version": ["2022.1", "2022.2"],
         "subject": ["Release notes"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -28,7 +28,7 @@
         "version": ["2022.1", "2022.2"],
         "subject": ["Release notes"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -46,7 +46,7 @@
         "subject": ["Release notes"],
         "release": ["Garmisch"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -64,7 +64,7 @@
         "subject": ["Release notes"],
         "release": ["Flaine"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -82,7 +82,7 @@
         "subject": ["Release notes"],
         "release": ["Elysian"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -100,7 +100,7 @@
         "subject": ["Release notes"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -118,7 +118,7 @@
         "subject": ["Release notes"],
         "release": ["Dobson"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -136,7 +136,7 @@
         "subject": ["Release notes"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -154,7 +154,7 @@
         "subject": ["Release notes"],
         "release": ["Banff", "Cortina", "Dobson"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -172,7 +172,7 @@
         "subject": ["Release notes"],
         "release": ["Banff", "Cortina", "Dobson"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -190,7 +190,7 @@
         "subject": ["Release notes"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -208,7 +208,7 @@
         "subject": ["Installation"],
         "release": ["Dobson", "Elysian", "Flaine"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -242,7 +242,7 @@
           "Garmisch"
         ]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -260,7 +260,7 @@
         "subject": ["Features and functionality"],
         "release": ["Cortina", "Dobson", "Elysian"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -296,7 +296,7 @@
         "subject": ["Release notes"],
         "release": ["Garmisch"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -314,7 +314,7 @@
         "subject": ["Release notes"],
         "release": ["Flaine"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -332,7 +332,7 @@
         "subject": ["Release notes"],
         "release": ["Elysian"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -350,7 +350,7 @@
         "subject": ["Release notes"],
         "release": ["Dobson"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -368,7 +368,7 @@
         "subject": ["Release notes"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -386,7 +386,7 @@
         "subject": ["Release notes"],
         "release": ["Banff"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -438,7 +438,7 @@
           "Garmisch"
         ]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -456,7 +456,7 @@
         "subject": ["Release notes"],
         "release": ["Garmisch"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -474,7 +474,7 @@
         "subject": ["Release notes"],
         "release": ["Flaine"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -492,7 +492,7 @@
         "subject": ["Release notes"],
         "release": ["Elysian"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -510,7 +510,7 @@
         "subject": ["Release notes"],
         "release": ["Dobson"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -528,7 +528,7 @@
         "subject": ["Release notes"],
         "release": ["Cortina"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -546,7 +546,7 @@
         "subject": ["Release notes"],
         "release": ["Banff"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -564,7 +564,7 @@
         "subject": ["Release notes"],
         "release": ["Aspen"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -582,7 +582,7 @@
         "subject": ["Installation"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -600,7 +600,7 @@
         "subject": ["Installation"],
         "release": ["Dobson", "Elysian", "Flaine", "Garmisch"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

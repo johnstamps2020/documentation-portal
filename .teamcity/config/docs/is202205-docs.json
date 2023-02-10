@@ -912,7 +912,7 @@
         "release": ["Elysian"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,

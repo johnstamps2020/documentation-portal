@@ -12,7 +12,7 @@
         "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

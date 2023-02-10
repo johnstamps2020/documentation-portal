@@ -45,7 +45,7 @@
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -774,7 +774,7 @@
         "version": ["latest"],
         "release": ["Banff", "Cortina", "Dobson"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -826,7 +826,7 @@
         "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -844,7 +844,7 @@
         "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -861,7 +861,7 @@
         "version": ["latest"],
         "release": ["Banff", "Cortina", "Dobson"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -878,7 +878,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -895,7 +895,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -912,7 +912,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -929,7 +929,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -946,7 +946,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -963,7 +963,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -980,7 +980,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -997,7 +997,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1366,7 +1366,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1384,7 +1384,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1402,7 +1402,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1420,7 +1420,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1438,7 +1438,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1456,7 +1456,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1474,7 +1474,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1492,7 +1492,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1510,7 +1510,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1528,7 +1528,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2008,7 +2008,7 @@
         "product": ["Guidewire Cloud Home"],
         "version": ["latest"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": false,
       "public": false,
       "internal": false,
@@ -2023,7 +2023,7 @@
         "product": ["Guidewire Cloud Home"],
         "version": ["latest"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -2153,7 +2153,7 @@
         "version": ["3.3.1"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -2170,7 +2170,7 @@
         "version": ["3.3.1"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -2187,7 +2187,7 @@
         "version": ["3.3.1"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -2204,7 +2204,7 @@
         "version": ["3.3.1"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -2221,7 +2221,7 @@
         "version": ["3.3.1"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2238,7 +2238,7 @@
         "version": ["3.3.1"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2255,7 +2255,7 @@
         "version": ["3.3.1"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2272,7 +2272,7 @@
         "version": ["3.3.1"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2289,7 +2289,7 @@
         "version": ["3.3.1"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2306,7 +2306,7 @@
         "version": ["3.3.1"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2323,7 +2323,7 @@
         "version": ["3.3.1"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2340,7 +2340,7 @@
         "version": ["3.3.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -2357,7 +2357,7 @@
         "version": ["3.3.0"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -2374,7 +2374,7 @@
         "version": ["3.3.0"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -2391,7 +2391,7 @@
         "version": ["3.3.0"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -2408,7 +2408,7 @@
         "version": ["3.3.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2425,7 +2425,7 @@
         "version": ["3.3.0"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2442,7 +2442,7 @@
         "version": ["3.3.0"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2459,7 +2459,7 @@
         "version": ["3.3.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2476,7 +2476,7 @@
         "version": ["3.3.0"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2493,7 +2493,7 @@
         "version": ["3.3.0"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2510,7 +2510,7 @@
         "version": ["3.3.0"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5392,7 +5392,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5410,7 +5410,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5428,7 +5428,7 @@
         "release": ["Banff"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5446,7 +5446,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5464,7 +5464,7 @@
         "release": ["Banff"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5482,7 +5482,7 @@
         "release": ["Banff"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5500,7 +5500,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5518,7 +5518,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5536,7 +5536,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5554,7 +5554,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5572,7 +5572,7 @@
         "release": ["Banff"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5590,7 +5590,7 @@
         "release": ["Banff"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5608,7 +5608,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5626,7 +5626,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5644,7 +5644,7 @@
         "release": ["Banff"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5662,7 +5662,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5680,7 +5680,7 @@
         "release": ["Banff"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5698,7 +5698,7 @@
         "release": ["Banff"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5716,7 +5716,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5734,7 +5734,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5752,7 +5752,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5770,7 +5770,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5788,7 +5788,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -5806,7 +5806,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5824,7 +5824,7 @@
         "release": ["Banff"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5842,7 +5842,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5860,7 +5860,7 @@
         "release": ["Banff"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5878,7 +5878,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5896,7 +5896,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5914,7 +5914,7 @@
         "release": ["Banff"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5932,7 +5932,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5950,7 +5950,7 @@
         "release": ["Banff"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5968,7 +5968,7 @@
         "release": ["Banff"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5986,7 +5986,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6004,7 +6004,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6022,7 +6022,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6040,7 +6040,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6058,7 +6058,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6076,7 +6076,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6094,7 +6094,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6130,7 +6130,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6148,7 +6148,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["dev", "staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6166,7 +6166,7 @@
         "release": ["Banff"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6184,7 +6184,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6202,7 +6202,7 @@
         "release": ["Banff"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6220,7 +6220,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6238,7 +6238,7 @@
         "release": ["Banff"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6256,7 +6256,7 @@
         "release": ["Banff"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6274,7 +6274,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6471,7 +6471,7 @@
       "public": false,
       "internal": false,
       "indexForSearch": true,
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "earlyAccess": false
     },
     {
@@ -6487,7 +6487,7 @@
       "public": false,
       "internal": false,
       "indexForSearch": false,
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "earlyAccess": false
     },
     {
@@ -6499,7 +6499,7 @@
         "product": ["Glossary"],
         "version": ["latest"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6515,7 +6515,7 @@
         "platform": ["Cloud"],
         "version": ["latest"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -6532,7 +6532,7 @@
         "release": ["Dobson"],
         "version": ["latest"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -6549,7 +6549,7 @@
         "release": ["Dobson", "Elysian"],
         "version": ["latest"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
