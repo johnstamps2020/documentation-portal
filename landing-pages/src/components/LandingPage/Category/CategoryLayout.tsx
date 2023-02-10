@@ -10,6 +10,9 @@ import elysianBackgroundImage from "../../../images/background-elysian.svg";
 import dobsonBackgroundImage from "../../../images/background-dobson.svg";
 import Stack from "@mui/material/Stack";
 import SelfManagedLink from "../SelfManagedLink";
+import Paper from "@mui/material/Paper";
+import { Link as RouterLink } from "react-router-dom";
+import Link from "@mui/material/Link";
 
 export default function CategoryLayout(pageData: Page) {
   function getBackgroundImage() {
@@ -40,7 +43,7 @@ export default function CategoryLayout(pageData: Page) {
       gap={5}
       alignContent="center"
     >
-      <Grid>
+      <Grid gap="2rem">
         <Stack spacing={1} direction="column" width="100%">
           <SelfManagedLink
             pagePath={pageData.path}
@@ -67,6 +70,28 @@ export default function CategoryLayout(pageData: Page) {
             />
           )}
         </Stack>
+        {pageData.path.includes("cloudProducts/elysian") && (
+          <Paper
+            sx={{
+              maxWidth: "932px",
+              marginTop: "32px",
+              padding: "16px",
+              textAlign: "center",
+            }}
+          >
+            <Link
+              component={RouterLink}
+              to="/cloudProducts/elysian/whatsnew"
+              sx={{
+                fontSize: "1.2rem",
+                fontWeight: 600,
+                color: "hsl(196, 100%, 31%);",
+              }}
+            >
+              What's new in Elysian
+            </Link>
+          </Paper>
+        )}
       </Grid>
       <Grid container maxWidth="1330px" width="100%">
         <Grid container xs={9} gap={2}>
