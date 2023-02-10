@@ -84,10 +84,10 @@ export default function LandingPage() {
         {pageData &&
           pageData.categories.length !== 0 &&
           pageData.component?.includes("pageCategory2") && (
-            <CategoryLayout {...pageData} />
+            <CategoryLayout2 {...pageData} />
           )}
         {pageData && pageData.categories.length !== 0 && (
-          <CategoryLayout2 {...pageData} />
+          <CategoryLayout {...pageData} />
         )}
         {pageData && pageData.sections.length !== 0 && (
           <SectionLayout {...pageData} />
