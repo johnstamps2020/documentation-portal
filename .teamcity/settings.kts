@@ -2211,6 +2211,7 @@ object Server {
         triggers.vcs {
             triggerRules = """
                 +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:html5/**
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:docusaurus/themes/**
                 -:user=doctools:**
             """.trimIndent()
         }
