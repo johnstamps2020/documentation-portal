@@ -11,7 +11,7 @@
         "version": ["10.2.1", "10.2.2", "2020.05", "2020.11", "2021.04", "2021.11", "2022.05", "2022.09",  "latest"],
         "subject": ["Development"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

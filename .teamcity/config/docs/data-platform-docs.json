@@ -10,7 +10,7 @@
         "product": ["Data Platform"],
         "version": ["latest"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": false,
       "public": false,
       "internal": false,
