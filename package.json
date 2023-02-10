@@ -22,9 +22,10 @@
     "build:html5": "yarn build:theme && yarn workspace html5 build",
     "build:html5-offline": "yarn build:theme && yarn workspace html5 build-offline",
     "build:theme": "yarn workspace @doctools/gw-theme-classic build",
+    "dev:doc-site": "NODE_ENV=development concurrently --kill-others-on-fail \"yarn dev:theme\" \"yarn workspace doc-site dev\"",
     "dev:html5": "NODE_ENV=development concurrently --kill-others-on-fail \"yarn dev:theme\" \"yarn workspace html5 dev\"",
     "dev:html5-offline": "NODE_ENV=development concurrently --kill-others-on-fail \"yarn dev:theme\" \"yarn workspace html5 dev-offline\"",
-    "dev:theme": "NODE_ENV=development yarn workspace @doctools/gw-theme-classic dev",
+    "dev:theme": "NODE_ENV=development yarn build:theme && yarn workspace @doctools/gw-theme-classic dev",
     "dev:server": "NODE_ENV=development yarn workspace server dev",
     "profile:html5": "yarn build:theme && yarn workspace html5 profile",
     "test:server": "yarn workspace server test"

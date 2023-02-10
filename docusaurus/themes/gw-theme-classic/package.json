@@ -8,8 +8,8 @@
   "scripts": {
     "babel": "cross-env babel src -d lib --extensions \".jsx,.js,.tsx,.ts\" --copy-files",
     "clear-lib": "yarn rimraf lib",
-    "build": "yarn clear-lib && yarn babel",
-    "dev": "yarn clear-lib && yarn babel --watch",
+    "build": "yarn babel",
+    "dev": "yarn babel --watch",
     "write-translations": "rimraf src/i18n/en.json && docusaurus write-translations && cp i18n/en/code.json src/i18n/en/code.json"
   },
   "publishConfig": {
