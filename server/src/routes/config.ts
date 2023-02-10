@@ -59,8 +59,8 @@ router.get('/versionSelectors', async function(req, res, next) {
         .send('Provide a docID query parameter to get a version selector');
     }
 
-    const allVersions = await getVersionSelector(docId as string, req, res);
-    return res.send(allVersions);
+    const versionSelector = await getVersionSelector(docId as string);
+    return res.send(versionSelector);
   } catch (err) {
     winstonLogger.error(`[SAFE CONFIG] Problem sending version selectors
       ERROR: ${JSON.stringify(err)}

@@ -1,15 +1,16 @@
+import { compare } from 'semver';
 import fetch from 'node-fetch';
 import { winstonLogger } from './loggerController';
-import { Request, Response } from 'express';
+import { Request } from 'express';
 import { AppDataSource } from '../model/connection';
 import { Doc } from '../model/entity/Doc';
 import { Product } from '../model/entity/Product';
 import { Release } from '../model/entity/Release';
 import { FindOneAndDeleteOptions, FindOptionsWhere, ILike } from 'typeorm';
-import { LegacyVersionSelector } from '../types/legacyConfig';
 import { ApiResponse } from '../types/apiResponse';
 import { Page } from '../model/entity/Page';
 import { isUserAllowedToAccessResource } from './authController';
+import { LegacyVersionObject } from '../types/legacyConfig';
 
 function optionsAreValid(options: {}) {
   return (
@@ -488,59 +489,87 @@ export async function getRootBreadcrumb(pagePathname: string) {
   }
 }
 
-export async function getVersionSelector(
-  docId: string,
-  reqObj: Request,
-  resObj: Response
-) {
+export async function getVersionSelector(docId: string) {
+  function getLabel(docConfig: Doc, releaseInLabel: boolean) {
+    const docReleases = docConfig.releases.map(r => r.name);
+    const docVersions = docConfig.products.map(p => p.version);
+    return releaseInLabel
+      ? `${docReleases[0]} (${docVersions[0]})`
+      : docVersions.join(',');
+  }
+
+  function sortVersions(
+    unsortedVersions: Array<LegacyVersionObject>,
+    releaseInLabel: boolean
+  ) {
+    return releaseInLabel
+      ? unsortedVersions.sort((a, b) => (a.label > b.label ? 1 : -1)).reverse()
+      : unsortedVersions
+          .sort(function(a, b) {
+            const labelA = a.label
+              .split('.')
+              .map(n => +n + 100000)
+              .join('.');
+            const labelB = b.label
+              .split('.')
+              .map(n => +n + 100000)
+              .join('.');
+            return labelA > labelB ? 1 : -1;
+          })
+          .reverse();
+  }
+
   try {
-    const versionSelectorsConfigPath = new URL(
-      `pages/versionSelectors.json`,
-      process.env.DOC_S3_URL
-    ).href;
-    const response = await fetch(versionSelectorsConfigPath);
-    if (response.ok) {
-      const versionSelectorMapping: LegacyVersionSelector[] = await response.json();
-      try {
-        const matchingVersionSelector = versionSelectorMapping.find(
-          s => docId === s.docId
-        );
-        if (matchingVersionSelector) {
-          const isLoggedIn = reqObj.session?.requestIsAuthenticated;
-          const hasGuidewireEmail = resObj.locals.userInfo?.hasGuidewireEmail;
-          const options: FindOptionsWhere<Doc> = {};
-          if (!isLoggedIn) {
-            options.public = true;
-          }
-          if (!hasGuidewireEmail) {
-            options.internal = false;
-          }
-          const docUrls = await AppDataSource.getRepository(Doc)
-            .createQueryBuilder('doc')
-            .useIndex('docUrl-idx')
-            .select(['doc.url'])
-            .where(options)
-            .getMany();
-          matchingVersionSelector[
-            'allVersions'
-          ] = matchingVersionSelector.allVersions.filter(v =>
-            docUrls.find(d => d.url === v.url)
-          );
-          return { matchingVersionSelector: matchingVersionSelector };
-        } else {
-          return { matchingVersionSelector: {} };
-        }
-      } catch (verSelectorErr) {
-        throw new Error(
-          `Problem getting version selector for docId: ${docId}: ${verSelectorErr}`
-        );
-      }
+    const docQueryBuilder = await AppDataSource.getRepository(Doc)
+      .createQueryBuilder('doc')
+      .leftJoinAndSelect('doc.products', 'docProducts')
+      .leftJoinAndSelect('doc.releases', 'docReleases');
+    const docResponse = await docQueryBuilder.where({ id: docId }).getOne();
+    if (docResponse) {
+      const useReleaseForLabel = docResponse.releases?.length === 1;
+      const docsWithTheSameTitle = await docQueryBuilder
+        .where('title = :title', { title: docResponse.title })
+        .andWhere('docProducts.name IN (:...productNames)', {
+          productNames: docResponse.products.map(p => p.name),
+        })
+        .andWhere('docProducts.platform IN (:...productPlatforms)', {
+          productPlatforms: docResponse.products.map(p => p.platform),
+        })
+        .andWhere('docProducts.version NOT IN (:...productVersions)', {
+          productVersions: docResponse.products.map(p => p.version),
+        })
+        .getMany();
+      const otherVersions = docsWithTheSameTitle.map(doc => {
+        return {
+          versions: doc.products.map(p => p.version),
+          releases: doc.releases.map(r => r.name),
+          url: doc.url,
+          label: getLabel(doc, useReleaseForLabel),
+        };
+      });
+      const allVersions = [
+        {
+          versions: docResponse.products.map(p => p.version),
+          releases: docResponse.releases.map(r => r.name),
+          url: docResponse.url,
+          currentlySelected: true,
+          label: getLabel(docResponse, useReleaseForLabel),
+        },
+        ...otherVersions,
+      ];
+
+      return {
+        matchingVersionSelector: {
+          docId: docResponse.id,
+          allVersions: sortVersions(allVersions, useReleaseForLabel),
+        },
+      };
     } else {
       return { matchingVersionSelector: {} };
     }
   } catch (err) {
     winstonLogger.error(
-      `Holy Moly! Cannot get version selector!
+      `Holy Moly! Cannot get version selector for docId ${docId}!
           ERROR: ${JSON.stringify(err)}`
     );
     return { matchingVersionSelector: {} };
