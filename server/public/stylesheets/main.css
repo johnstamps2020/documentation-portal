@@ -94,6 +94,14 @@ header.header-search {
   align-items: center;
 }
 
+#headerBottom {
+  background-color: pink;
+  width: 100%;
+  text-align: center;
+  line-height: 1.5;
+  font-size: 1.25rem;
+}
+
 #headerButtons {
   display: flex;
   align-items: center;
