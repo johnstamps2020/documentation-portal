@@ -18,10 +18,12 @@
     "server"
   ],
   "scripts": {
-    "build:html5": "yarn workspace html5 build",
-    "dev:theme": "yarn workspace @doctools/gw-theme-classic dev",
-    "dev:server": "yarn workspace server dev",
+    "build:html5": "yarn build:theme && yarn workspace html5 build",
+    "build:theme": "yarn workspace @doctools/gw-theme-classic build",
     "dev:html5": "NODE_ENV=development concurrently --kill-others-on-fail \"yarn dev:theme\" \"yarn workspace html5 dev\"",
+    "dev:theme": "NODE_ENV=development yarn workspace @doctools/gw-theme-classic dev",
+    "dev:server": "NODE_ENV=development yarn workspace server dev",
+    "profile:html5": "yarn build:theme && yarn workspace html5 profile",
     "test:server": "yarn workspace server test"
   },
   "resolutions": {
