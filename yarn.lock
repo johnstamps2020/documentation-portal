@@ -2070,8 +2070,8 @@ __metadata:
     "@emotion/react": ^11.10.0
     "@emotion/styled": ^11.10.0
     "@fontsource/source-sans-pro": ^4.5.11
-    "@mui/icons-material": ^5.10.2
-    "@mui/material": ^5.10.2
+    "@mui/icons-material": 5.11.0
+    "@mui/material": 5.11.8
     "@tsconfig/docusaurus": ^1.0.6
     "@types/lodash": ^4.14.190
     cross-env: ^7.0.3
@@ -3400,7 +3400,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/icons-material@npm:^5.10.2":
+"@mui/icons-material@npm:5.11.0":
   version: 5.11.0
   resolution: "@mui/icons-material@npm:5.11.0"
   dependencies:
@@ -3416,7 +3416,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/material@npm:^5.10.2":
+"@mui/material@npm:5.11.8":
   version: 5.11.8
   resolution: "@mui/material@npm:5.11.8"
   dependencies:

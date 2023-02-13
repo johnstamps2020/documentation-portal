@@ -1,8 +1,5 @@
 import { AlertProps } from "@mui/material";
 import React, { createContext, useContext, useState } from "react";
-import Snackbar from "@mui/material/Snackbar";
-import Alert from "@mui/material/Alert";
-import Typography from "@mui/material/Typography";
 import Notification, { NotificationProps } from "@theme/Notification";
 
 interface NotificationContextInterface {
@@ -31,13 +28,15 @@ type NotificationContextProviderProps = {
 export function NotificationProvider({
   children,
 }: NotificationContextProviderProps) {
-  const [isOpen, setIsOpen] =
-    useState<NotificationContextInterface["isOpen"]>(false);
+  const [isOpen, setIsOpen] = useState<NotificationContextInterface["isOpen"]>(
+    false
+  );
   const [message, setMessage] = useState<
     NotificationContextInterface["message"]
   >(<></>);
-  const [severity, setSeverity] =
-    useState<NotificationContextInterface["severity"]>("info");
+  const [severity, setSeverity] = useState<
+    NotificationContextInterface["severity"]
+  >("info");
 
   function showNotification({ message, severity }: NotificationSettings) {
     setSeverity(severity);
