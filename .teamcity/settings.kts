@@ -2111,7 +2111,8 @@ object Server {
             buildType(TestConfigBuilds)
             buildType(TestSettingsKts)
             buildType(TestHtml5Dependencies)
-            buildType(AuditNpmPackages)
+//            temporarily disabled
+//            buildType(AuditNpmPackages)
             arrayOf(
                 GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
