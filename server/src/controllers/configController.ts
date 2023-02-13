@@ -1,4 +1,3 @@
-import { compare } from 'semver';
 import fetch from 'node-fetch';
 import { winstonLogger } from './loggerController';
 import { Request } from 'express';
