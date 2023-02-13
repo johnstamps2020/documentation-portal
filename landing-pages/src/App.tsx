@@ -14,9 +14,14 @@ import { appTheme } from "./themes/appTheme";
 import CssBaseline from "@mui/material/CssBaseline";
 import { UserProvider } from "./context/UserContext";
 import SupportPage from "./pages/SupportPage/SupportPage";
+import InternalPage from "./pages/InternalPage/InternalPage";
 
 const router = createBrowserRouter(
   [
+    {
+      path: "/internal",
+      element: <InternalPage />
+    },
     {
       path: "/forbidden",
       element: <ForbiddenPage />
