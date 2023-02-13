@@ -11,7 +11,7 @@
         "version": ["4.5.0"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -28,7 +28,7 @@
         "version": ["4.4.0"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -45,7 +45,7 @@
         "version": ["4.3.0"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -113,7 +113,7 @@
         "version": ["3.3.0"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -130,7 +130,7 @@
         "version": ["3.1.0"],
         "release": ["Aspen", "Banff", "Cortina"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
