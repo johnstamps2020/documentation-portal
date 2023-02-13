@@ -33,7 +33,7 @@ export default function LandingPage() {
           return navigate(`/gw-login?redirectTo=${requestedPath}`);
         }
         if (response.status === 403) {
-          return navigate(`/forbidden?unauthorized=${requestedPath}`);
+          return navigate(`/internal?restricted=${requestedPath}`);
         }
         if (response.status !== 200) {
           return navigate(`/404?notFound=${requestedPath}`);

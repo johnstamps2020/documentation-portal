@@ -11,6 +11,7 @@ import { runningInDevMode } from './utils/serverUtils';
 const HttpProxy = require('http-proxy');
 const proxy = new HttpProxy();
 export const forbiddenRoute = '/landing/forbidden';
+export const internalRoute = '/landing/internal';
 
 function setProxyResCacheControlHeader(proxyRes: any) {
   if (proxyRes.headers['content-type']?.includes('html')) {
@@ -46,7 +47,7 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
   }
   if (resourceStatus == 403) {
     return res.redirect(
-      `${forbiddenRoute}${req.url ? `?unauthorized=${req.url}` : ''}`
+      `${internalRoute}${req.url ? `?restricted=${req.url}` : ''}`
     );
   }
 
@@ -153,7 +154,7 @@ export async function reactAppProxy(
   }
   if (checkStatus == 403) {
     return res.redirect(
-      `${forbiddenRoute}${req.url ? `?unauthorized=${req.url}` : ''}`
+      `${internalRoute}${req.url ? `?restricted=${req.url}` : ''}`
     );
   }
 

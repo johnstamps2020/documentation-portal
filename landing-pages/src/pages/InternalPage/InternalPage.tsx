@@ -7,10 +7,32 @@ import { headerHeight } from "../../components/Layout/Header/Header";
 import Container from "@mui/material/Container";
 import { useUser } from "../../context/UserContext";
 import Button from "@mui/material/Button";
-import Link from "@mui/material/Link";
+
+type RestrictedPathProps = {
+  restrictedPath: string | null;
+};
+
+function RestrictedPathElement({ restrictedPath }: RestrictedPathProps) {
+  return restrictedPath ? (
+    <Container
+      sx={{
+        padding: "0.5rem",
+        border: "1px solid gray",
+        borderRadius: "4px",
+        maxWidth: "100%",
+        overflowX: "scroll"
+      }}
+    >
+      <pre>{`${window.location.origin}${restrictedPath}`}</pre>
+    </Container>
+  ) : null;
+}
 
 export default function InternalPage() {
   const { userInfo } = useUser();
+  const restrictedParam = new URLSearchParams(window.location.search).get(
+    "restricted"
+  );
 
   if (!userInfo) {
     return null;
@@ -38,7 +60,11 @@ export default function InternalPage() {
           }}
         >
           <Stack spacing={4}>
-            <img src="/images/internal-page.svg" />
+            <Container
+              sx={{ width: "900px", maxWidth: "900px", textAlign: "center" }}
+            >
+              <img src="/images/internal-page.svg" />
+            </Container>
             {userInfo.hasGuidewireEmail ? (
               <>
                 <Typography variant="h1" sx={{ color: "black" }}>
@@ -46,8 +72,11 @@ export default function InternalPage() {
                 </Typography>
                 <Typography>
                   You are a Guidewire employee but for some reason you cannot
-                  access this page. If you need further help, please contact
-                  your administrator.
+                  access this page.
+                </Typography>
+                <RestrictedPathElement restrictedPath={restrictedParam} />
+                <Typography>
+                  If you need further help, please contact your administrator.
                 </Typography>
               </>
             ) : (
@@ -55,6 +84,7 @@ export default function InternalPage() {
                 <Typography variant="h1" sx={{ color: "black" }}>
                   This content is available to Guidewire employees only
                 </Typography>
+                <RestrictedPathElement restrictedPath={restrictedParam} />
                 <Stack spacing={2}>
                   <Typography>
                     You are logged in as <strong>{userInfo.name}</strong> (
