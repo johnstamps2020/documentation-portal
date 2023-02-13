@@ -6,8 +6,8 @@
     "node": "16.16.0"
   },
   "scripts": {
-    "start": "node server.js",
     "dev": "NODE_ENV=development nodemon server.js -e js,ejs,css,html,jpg,png",
+    "start": "node server.js",
     "test": "jest"
   },
   "dependencies": {

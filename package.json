@@ -18,7 +18,7 @@
     "server"
   ],
   "scripts": {
-    "audit:server": "yarn workspace server npm audit --severity high --all --recursive --exclude @doctools/gw-theme-classic",
+    "audit:all": "yarn npm audit --all --severity high --recursive --exclude @doctools/gw-theme-classic",
     "build:doc-site": "yarn build:theme && yarn workspace doc-site build",
     "build:html5": "yarn build:theme && yarn workspace html5 build",
     "build:html5-offline": "yarn build:theme && yarn workspace html5 build-offline",
