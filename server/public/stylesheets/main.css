@@ -440,6 +440,14 @@ main.skiRelease .sidebar .categoryCard {
   width: 288px;
 }
 
+.self-managed .pageIntro {
+  padding: 1rem 1rem .5rem 1rem;
+}
+
+.self-managed .pageIntro p {
+  padding-top: 1rem;
+}
+
 .threeCards div.items > .categoryCard {
   width: 300px;
 }
