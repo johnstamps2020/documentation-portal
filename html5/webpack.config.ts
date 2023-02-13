@@ -2,6 +2,16 @@ import { resolve } from "path";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { PathData, DefinePlugin, Configuration } from "webpack";
 
+const isOffline = process.env.BUILD_MODE === "offline";
+
+function getBuildPath() {
+  if (isOffline) {
+    return resolve(__dirname, "build");
+  }
+
+  return resolve(__dirname, "static", "html5", "scripts");
+}
+
 const postCss = {
   loader: "postcss-loader",
   options: {
@@ -55,10 +65,7 @@ const config: Configuration = {
     }),
   ],
   output: {
-    path:
-      process.env.BUILD_MODE === "offline"
-        ? resolve(__dirname, "build")
-        : resolve(__dirname, "..", "server", "static", "html5", "scripts"),
+    path: getBuildPath(),
     publicPath: "",
   },
   module: {

@@ -178,7 +178,9 @@ app.use('/portal', portal2Proxy);
 
 // HTML5 scripts, local or S3
 if (process.env.NODE_ENV === 'development') {
-  app.use(express.static(path.join(__dirname, 'static/html5'), options));
+  app.use(
+    express.static(path.join(__dirname, '../html5/static/html5'), options)
+  );
 } else {
   app.use('/scripts', html5Proxy);
 }

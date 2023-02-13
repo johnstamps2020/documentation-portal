@@ -1,17 +1,17 @@
-@import 'modules/brightcove.css';
-@import 'modules/fonts.css';
-@import 'modules/header.css';
-@import 'modules/html5content.css';
-@import 'modules/landingpage.css';
-@import 'modules/navbar.css';
-@import 'modules/note.css';
-@import 'modules/print.css';
-@import 'modules/tables.css';
-@import 'modules/task.css';
-@import 'modules/typography.css';
-@import './modules/html5vars.css';
-@import './modules/highlight.css';
-@import './modules//specialOutput.css';
+@import "modules/brightcove.css";
+@import "modules/fonts.css";
+@import "modules/header.css";
+@import "modules/html5content.css";
+@import "modules/landingpage.css";
+@import "modules/navbar.css";
+@import "modules/note.css";
+@import "modules/print.css";
+@import "modules/tables.css";
+@import "modules/task.css";
+@import "modules/typography.css";
+@import "modules/html5vars.css";
+@import "modules/highlight.css";
+@import "modules//specialOutput.css";
 
 * {
   box-sizing: border-box;
@@ -41,10 +41,10 @@ body {
   grid-template-columns: 300px 896px minmax(0, 1fr);
   grid-template-rows: auto;
   grid-template-areas:
-    'header header header'
-    'navbar navbar navbar'
-    'toc main main'
-    'footer footer footer';
+    "header header header"
+    "navbar navbar navbar"
+    "toc main main"
+    "footer footer footer";
 }
 
 img {
