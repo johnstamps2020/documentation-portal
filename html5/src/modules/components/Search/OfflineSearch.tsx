@@ -22,6 +22,8 @@ export type SearchItem = {
 };
 
 const fuseOptions: Fuse.IFuseOptions<SearchItem> = {
+  ignoreLocation: true,
+  distance: 0.4,
   keys: [
     { name: "title", weight: 0.3 },
     { name: "keywords", weight: 0.2 },
@@ -58,7 +60,7 @@ export default function OfflineSearch() {
     }
   }
 
-  useEffect(function () {
+  useEffect(function() {
     loadFuse();
   }, []);
 
