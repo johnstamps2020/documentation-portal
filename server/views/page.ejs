@@ -12,6 +12,12 @@
                 <div class="pageHero">
                     <%- include('parts/breadcrumbs') %>
                     <h1><%= pageContent.title %></h1>
+                    <% if (pageContent.title.toLowerCase() === 'self-managed') { %>
+                        <div class="pageIntro">
+                            <p>Find documentation for the latest releases of Guidewire self-managed products.</p>
+                            <p>Access earlier releases by clicking a product and then selecting a version from the <b>Select release</b> dropdown menu.</p>
+                        </div>
+                    <% } %>
                 </div>
             <% } %>
             <%- include('parts/page-selector') %>
