@@ -1,9 +1,8 @@
 export type LegacyVersionObject = {
-  versionObjectId: string;
   versions: string[];
   releases: string[];
   url: string;
-  currentlySelected: boolean;
+  currentlySelected?: boolean;
   label: string;
 };
 
