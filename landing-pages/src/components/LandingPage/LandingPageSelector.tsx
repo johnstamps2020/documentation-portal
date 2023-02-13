@@ -6,11 +6,35 @@ import { useNavigate } from "react-router-dom";
 import InputLabel from "@mui/material/InputLabel";
 import { styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
+import { PageSelectorItem } from "server/dist/model/entity/PageSelectorItem";
 
 type LandingPageSelectorProps = {
   pageSelector: PageSelector;
   labelColor: string;
 };
+
+function sortPageSelectorItems(unsortedPageSelectorItems: PageSelectorItem[]) {
+  const isSemVerLabel = unsortedPageSelectorItems.some(
+    i => i.label.search(/^([0-9]+\.[0-9]+\.[0-9]+)$/g) === 0
+  );
+  return isSemVerLabel
+    ? unsortedPageSelectorItems
+        .sort(function(a, b) {
+          const labelA = a.label
+            .split(".")
+            .map(n => +n + 100000)
+            .join(".");
+          const labelB = b.label
+            .split(".")
+            .map(n => +n + 100000)
+            .join(".");
+          return labelA > labelB ? 1 : -1;
+        })
+        .reverse()
+    : unsortedPageSelectorItems
+        .sort((a, b) => (a.label > b.label ? 1 : -1))
+        .reverse();
+}
 
 export default function LandingPageSelector({
   pageSelector,
@@ -50,9 +74,10 @@ export default function LandingPageSelector({
       selectedItem?.page.path || selectedItem?.link || selectedItem?.doc?.url;
     return pageUrl ? navigate(`/${pageUrl}`) : navigate("#");
   };
-  const sortedPageSelectorItems = pageSelector.pageSelectorItems
-    .sort((a, b) => (a.label > b.label ? 1 : -1))
-    .reverse();
+
+  const sortedPageSelectorItems = sortPageSelectorItems(
+    pageSelector.pageSelectorItems
+  );
   return (
     <FormControl
       variant="standard"
