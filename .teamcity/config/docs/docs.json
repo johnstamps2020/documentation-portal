@@ -2023,7 +2023,7 @@
         "product": ["Guidewire Cloud Home"],
         "version": ["latest"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -6661,7 +6661,7 @@
         "product": ["Cloud Ticket Templates"],
         "version": ["latest"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "earlyAccess": false,
