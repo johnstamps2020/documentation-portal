@@ -1301,7 +1301,6 @@ object Content {
             subProject(createCleanUpSearchIndexProject())
             subProject(createGenerateSitemapProject())
             subProject(createDeployServerConfigProject())
-            subProject(createDeploySearchServiceProject())
             subProject(createDeployContentStorageProject())
             buildType(UploadPdfsForEscrowBuildType)
         }
@@ -1467,77 +1466,6 @@ object Content {
                 vcs {
                     triggerRules = """
                         +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
-                        -:user=doctools:**
-                        """.trimIndent()
-                }
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-        }
-    }
-
-    private fun createDeploySearchServiceProject(): Project {
-        return Project {
-            name = "Deploy search service"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
-            ).forEach {
-                buildType(createDeploySearchServiceBuildType(it.envName))
-            }
-        }
-    }
-
-    private fun createDeploySearchServiceBuildType(deployEnv: String): BuildType {
-        val namespace = "doctools"
-        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
-        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
-        val searchServiceDeployEnvVars = Helpers.setSearchServiceDeployEnvVars(deployEnv)
-        return BuildType {
-            name = "Deploy search service to $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:<default>"
-                cleanCheckout = true
-            }
-            steps {
-                script {
-                    name = "Deploy to Kubernetes"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                        #!/bin/bash 
-                        set -eux
-                                              
-                        # Set AWS credentials
-                        $awsEnvVars
-                        
-                        # Set environment variables needed for Kubernetes config files
-                        $searchServiceDeployEnvVars
-                        
-                        # Set other envs
-                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
-                        
-                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
-                        
-                        echo ${'$'}(kubectl get pods --namespace=${namespace})
-                        
-                        eval "echo \"${'$'}(cat apps/doc_crawler/kube/deployment.yml)\"" > ${'$'}TMP_DEPLOYMENT_FILE
-                                                
-                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${namespace}
-                    """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
-                }
-            }
-
-            triggers {
-                vcs {
-                    triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:apps/doc_crawler/kube/deployment.yml
                         -:user=doctools:**
                         """.trimIndent()
                 }
@@ -2220,6 +2148,7 @@ object Server {
         features.feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
     })
 
+    // Temporarily disabled
     private object AuditNpmPackages : BuildType({
         name = "Audit npm packages"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -3945,35 +3874,6 @@ object Helpers {
                 export REQUESTS_CPU="1"
                 export LIMITS_MEMORY="8G"
                 export LIMITS_CPU="2"
-            """.trimIndent()
-        }
-    }
-
-    fun setSearchServiceDeployEnvVars(deployEnv: String): String {
-        val commonEnvVars = """
-            export ELASTICSEARCH_APP_NAME="docsearch"
-            export KIBANA_APP_NAME="kibana"
-            export POD_NAME="${GwAtmosLabels.POD_NAME.labelValue}"
-            export DEPT_CODE="${GwAtmosLabels.DEPT_CODE.labelValue}"
-            export TAG_VERSION="7.17.4"
-        """.trimIndent()
-        return when (deployEnv) {
-            GwDeployEnvs.PROD.envName -> """
-                $commonEnvVars
-                export DEPLOY_ENV="${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}"
-                export REQUESTS_MEMORY="4G"
-                export REQUESTS_CPU="1"
-                export LIMITS_MEMORY="8G"
-                export LIMITS_CPU="2"
-            """.trimIndent()
-
-            else -> """
-                $commonEnvVars
-                export DEPLOY_ENV="$deployEnv"
-                export REQUESTS_MEMORY="1G"
-                export REQUESTS_CPU="0.5"
-                export LIMITS_MEMORY="2G"
-                export LIMITS_CPU="1"
             """.trimIndent()
         }
     }
