@@ -1,0 +1,49 @@
+{
+  "name": "documentation-portal",
+  "version": "1.0.0",
+  "description": "Guidewire documentation portal",
+  "main": "index.js",
+  "repository": "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
+  "author": "Doctools <doctools@guidewire.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "packageManager": "yarn@3.4.1",
+  "workspaces": [
+    "docusaurus/doc-site",
+    "docusaurus/test-site",
+    "docusaurus/plugins/gw-plugin-redoc",
+    "docusaurus/themes/gw-theme-classic",
+    "docusaurus/vite-project",
+    "html5",
+    "server"
+  ],
+  "scripts": {
+    "audit:all": "yarn npm audit --all --severity high --recursive --exclude @doctools/gw-theme-classic",
+    "build:doc-site": "yarn build:theme && yarn workspace doc-site build",
+    "build:html5": "yarn build:theme && yarn workspace html5 build",
+    "build:html5-offline": "yarn build:theme && yarn workspace html5 build-offline",
+    "build:theme": "yarn workspace @doctools/gw-theme-classic build",
+    "dev:doc-site": "NODE_ENV=development concurrently --kill-others-on-fail \"yarn dev:theme\" \"yarn workspace doc-site dev\"",
+    "dev:html5": "NODE_ENV=development concurrently --kill-others-on-fail \"yarn dev:theme\" \"yarn workspace html5 dev\"",
+    "dev:html5-offline": "NODE_ENV=development concurrently --kill-others-on-fail \"yarn dev:theme\" \"yarn workspace html5 dev-offline\"",
+    "dev:theme": "NODE_ENV=development yarn build:theme && yarn workspace @doctools/gw-theme-classic dev",
+    "dev:server": "NODE_ENV=development yarn workspace server dev",
+    "publish:theme": "yarn workspace @doctools/gw-theme-classic npm publish",
+    "profile:html5": "yarn build:theme && yarn workspace html5 profile",
+    "start:server": "yarn workspace server start",
+    "test:server": "yarn workspace server test"
+  },
+  "resolutions": {
+    "minimist": "^1.2.6",
+    "html-select": "2.3.24",
+    "terser": "5.14.2",
+    "@xmldom/xmldom": "0.8.6",
+    "jsonwebtoken": "^9.0.0",
+    "json5": "^2.2.2",
+    "got": "11.8.5",
+    "trim": "1.0.1"
+  },
+  "dependencies": {
+    "concurrently": "7.6.0"
+  }
+}

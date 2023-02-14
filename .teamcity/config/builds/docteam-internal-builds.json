@@ -30,7 +30,7 @@
       "srcId": "docusaurusgwdocslatestsrc",
       "docId": "docusaurusgwdocslatest",
       "nodeImageVersion": "16.16.0",
-      "workingDir": "doc-site"
+      "yarnBuildCustomCommand": "yarn build:doc-site"
     },
     {
       "buildType": "dita",

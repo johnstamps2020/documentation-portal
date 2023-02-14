@@ -31,7 +31,7 @@ declare global {
 declare const BUILD_MODE: string;
 const isOffline = BUILD_MODE === "offline";
 
-docReady(async function () {
+docReady(async function() {
   normalizeCode();
   addSkipNav();
   !isOffline && showTopicRecommendations();

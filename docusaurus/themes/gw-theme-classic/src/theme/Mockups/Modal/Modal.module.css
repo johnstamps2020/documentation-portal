@@ -1,0 +1,26 @@
+.wrapper {
+  position: relative;
+}
+
+.content {
+  padding: 1rem;
+}
+
+.title {
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.body {
+  font-size: 90%;
+  padding-right: 1rem;
+}
+
+.actionBar {
+  padding: 1rem;
+  background-color: #f7f8f9;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2rem;
+}

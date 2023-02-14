@@ -1,0 +1,41 @@
+# RightWrong
+
+This component displays the right and the wrong option. You can change the
+display text using the `title` prop.
+
+## In MDX
+
+```md
+import { RightWrong, Right, Wrong } from "@theme/RightWrong";
+
+<RightWrong>
+  <Right title="Nice">Thank the bus driver</Right>
+  <Wrong title="Not nice">Ignore the bus driver</Wrong>
+</RightWrong>
+```
+
+import { RightWrong, Right, Wrong } from "@theme/RightWrong";
+
+<RightWrong>
+  <Right title="Nice">Thank the bus driver</Right>
+  <Wrong title="Not nice">Ignore the bus driver</Wrong>
+</RightWrong>
+
+## In JSX/TSX
+
+```jsx live
+function MostlyRight() {
+  return (
+    <RightWrong>
+      <Right>
+        <p>Select a repair facility</p>
+        <p>You can edit this document</p>
+      </Right>
+      <Wrong>
+        <p>A repair facility selection is required.</p>
+        <p>This document can be edited by you.</p>
+      </Wrong>
+    </RightWrong>
+  );
+}
+```

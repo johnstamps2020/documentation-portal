@@ -49,15 +49,15 @@ The attached `keti.json` contains application configuration. Use if if you want 
 
 To build the webpack bundle, run:
 
-```
-cd html5
-yarn build
+```bash
+// in the root folder
+yarn build:html5
 ```
 
-To develop the HTML5 plugin, in the `html5` folder run:
+To develop the HTML5 plugin, in the root folder run:
 
 ```
-yarn dev
+yarn dev:html5
 ```
 
 ## Local preview of webhelp
@@ -65,7 +65,7 @@ yarn dev
 1. Put a webhelp in a folder somewhere.
 1. Run this command to serve the folder on localhost:5000:
    ```
-   npx serve ./
+   npx serve .
    ```
 1. Add this you your server `.env`:
    ```
@@ -73,12 +73,10 @@ yarn dev
    ```
 1. In a separate terminal, run the Webpack dev script:
    ```
-   cd html5
-   yarn dev
+   yarn dev:html5
    ```
 1. In a separate terminal, run the server:
    ```
-   cd server
-   yarn start:dev
+   yarn dev:server
    ```
 1. Go to `http://localhost:8081/something.html` to preview your webhelp

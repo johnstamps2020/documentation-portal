@@ -1,0 +1,32 @@
+{
+  "name": "@doctools/gw-plugin-redoc",
+  "version": "2.1.1",
+  "description": "Guidewire plugin which generates static assets for Redoc sites",
+  "main": "lib/index.js",
+  "author": "doctools@gudiewire.com",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@fontsource/source-sans-pro": "^4.5.11",
+    "lodash": "^4.17.21",
+    "yaml": "^1.10.2"
+  },
+  "scripts": {
+    "babel": "cross-env babel src -d lib --extensions \".jsx,.js\" --copy-files",
+    "build": "yarn babel"
+  },
+  "publishConfig": {
+    "registry": "https://artifactory.guidewire.com/api/npm/doctools-npm-dev/"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "cross-env": "^7.0.3"
+  },
+  "peerDependencies": {
+    "react": "^16.8.4 || ^17.0.0",
+    "react-dom": "^16.8.4 || ^17.0.0"
+  },
+  "packageManager": "yarn@3.4.1"
+}

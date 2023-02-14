@@ -1,43 +1,27 @@
-# Working with Python apps in this project
+# Documentation portal
 
-To develop Python apps in this project, you need [the `Poetry` tool](https://python-poetry.org/), which manages
-dependencies and virtual environments. Python SDKs are already defined for modules in this IntelliJ IDEA project. You
-only need to configure `Poetry` and then use its feature for installing dependencies in a virtual environment.
+This is a JS/TS monorepo which uses Yarn 3.
 
-## Install and configure Poetry
+## Developing
 
-1. Install `Poetry` by following the instructions in
-   the [official documentation](https://python-poetry.org/docs/#installation).
-2. Configure the tool to create the virtual environment inside the root directory of the project.
+1. Set up access to Artifactory (one-time action see below)
+1. Run `yarn`
+1. See `package.json` for a list of available commands
 
-    ```shell
-     poetry config virtualenvs.in-project true
-    ```
+## Setting up access to Artifactory (one-time)
 
-## Install dependencies for a Python app
+This project uses Yarn 3, see `.yarnrc.yml` for details on the setup we use. To
+make this project work on you machine, you need a local environment variable
+called `NPM_AUTH_TOKEN` available when installing dependencies and/or running
+the site.
 
-1. Go to the root directory of the Python app. It is the directory where the `pyproject.toml` file is located.
-2. Delete any existing Python virtual environments. They are usually stored in `venv` or `.venv` directories.
-3. Install the app dependencies.
+To get the token:
 
-    ```shell
-    poetry install
-    ```
-   The virtual environment is created as the `.venv` directory.
-
-## Run a Python app
-
-1. Go to the root directory of the Python app. It is the directory where the `pyproject.toml` file is located.
-2. Make sure the `.venv` directory is present. If not, follow the steps in the "Install dependencies for a Python app"
-   section.
-3. Run the app in the virtual environment.
-
-    ```shell
-    poetry run python pathToPythonFile
-    ```
-
-   For example
-
-    ```shell
-    poetry run python build_manager/main.py
-    ```
+1. From your Okta home, log into Artifactory.
+1. In the top right-hand corner, click your username and select **Edit
+   profile**.
+1. Either copy an existing token, or click **Generate an identity token** and
+   copy that.
+1. Set the token as the value of an environment variable called
+   `NPM_AUTH_TOKEN`.
+1. Restart your terminal, if necessary.

@@ -1,0 +1,4813 @@
+{
+  "components": {
+    "parameters": {
+      "enablePolymorphism": {
+        "description": "Whether or not to use the discriminator/oneOf pattern to output schemas in cases where the valid set of fields can vary based on some attribute of the data such as the country or subtype.  Defaults to true.  When set to false, the schema in these cases will contain the superset of all valid fields, e.g. address schemas will contain all fields for all countries, rather than have separate schemas for different countries.  Setting this to false may make the schema output more consumable by tools that don't support that part of the OpenAPI schema.",
+        "in": "query",
+        "name": "enablePolymorphism",
+        "schema": {
+          "default": true,
+          "type": "boolean"
+        }
+      },
+      "fields": {
+        "description": "The fields parameter allows the caller to specify the set of fields that should be included for a given resource, and allows the client to avoid fetching fields they don't want as well as to request optional fields that aren't included by default.  The parameter is of the form fields=<field list> or fields=<include>:<field list>.  The <field list> is a comma-separated list of fields desired on the response, and <include> indicates that the field selection applies to an included resource.  If not specified, the default fields for a resource will be returned. The \"checksum\" and \"links\" properties are special and can be included by specifying \"$checksum\" and \"$links\" respectively. If you wish to select fields on the root resource and the included resources, each of those must be in a separate fields parameter. For example, ?fields=<field list>&fields=<include1>:<field list>&fields=<include2>:<field list>. Special values beginning with the '*' character are used to indicate a set of fields to return, which will then be combined with additional fields that are explicitly listed. The '*default' set will include whatever set of the fields the endpoint would normally return if the \"fields\" query parameter wasn't specified. For example, specifying fields=firstName,lastName will return only the firstName and lastName fields on the response, while specifying fields=default,firstName,lastName will return all the default fields as well as the firstName and lastName. Other '' options are '*detail', '*summary', and '*all'. Properties on sub-objects can be selected via dot-separated paths, for example fields=assignedUser,assignedUser.id will fetch only the id of the assignedUser object but not the displayName. <include> can also represent a nested included resource, such as fields=activities.notes:subject,body.",
+        "explode": true,
+        "in": "query",
+        "name": "fields",
+        "schema": {
+          "items": { "type": "string" },
+          "type": "array"
+        },
+        "style": "form"
+      },
+      "filter": {
+        "description": "Filters the list of results based on the specified field, operator, and value.  The query parameter's value should be of the form <field>:<operator>:<value> or <include>:<field>:<operator>:<value>.  If the <include>: piece is specified, the filter will be applied to the included resource. The set of supported fields is dependent upon the resource being filtered.  Valid operators include \"eq\", \"ne\", \"lt\", \"gt\", \"le\", \"ge\", \"in\", \"ni\", \"sw\", and \"cn\". Values should be formatted according to the same JSON type and format as the filtered field, i.e. if the filtered field is a boolean field, the value should either be \"true\" or \"false\" and if the filtered field is a date-time field, the value should be an ISO-8601 date-time value.  One exception is that filtering on date-time fields can accept either date-times or dates. On occasions where the value needs to contain a \":\" character, this character can be escaped with an additional \":\". For example, to compare against \"some:value\", the query parameter would take the form <field>:<operator>:some::value. The filter query parameter can be specified multiple times for the same resource or field, and all the specified filters will effectively be ANDed together. <include> can also represent a nested included resource, such as filter=activities.notes:subject:cn:NoteSubject.",
+        "explode": true,
+        "in": "query",
+        "name": "filter",
+        "schema": {
+          "items": { "type": "string" },
+          "type": "array"
+        },
+        "style": "form"
+      },
+      "filterByUser": {
+        "description": "Whether or not to filter endpoints and schema properties by the authorization of this user. Defaults to false.",
+        "in": "query",
+        "name": "filterByUser",
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "gwLanguageHeader": {
+        "description": "If specified, this header will set the language used when processing the request",
+        "in": "header",
+        "name": "GW-Language",
+        "schema": { "type": "string" }
+      },
+      "gwLocaleHeader": {
+        "description": "If specified, this header will set the locale used when processing the request",
+        "in": "header",
+        "name": "GW-Locale",
+        "schema": { "type": "string" }
+      },
+      "gwSchemaProperty": {
+        "description": "If specified and the operation returns json with a defined schema, this will add a property, '$GW-Schema',  with the fully qualified name of the object's schema.",
+        "in": "header",
+        "name": "GW-IncludeSchemaProperty",
+        "schema": { "type": "boolean" }
+      },
+      "gwTraceability": {
+        "description": "This header permits a customer to trace a request from its initial reception through all of the subsequent applications that were invoked to handle that request. The actual traceability id present in the MDC and logs (and returned in the response), is dependent on the implementation of TraceabilityIDPlugin. The default implementation uses this value, if specified, or a generated UID.  However, another implementation may always generate a unique id and just log  the relationship between these incoming values and the generated UID. Note: that this header can be repeated, but the resulting string will just be the comma separated values.",
+        "in": "header",
+        "name": "X-Correlation-ID",
+        "schema": { "type": "string" }
+      },
+      "gwTransactionID": {
+        "description": "If specified and this operation results in a database commit, this header's value must not have been submitted before.  This value must be globally unique across all clients, apis and webservices. It is used for those transaction that are not idempotent. Unless this is explicitly referenced for an operation it is not required.",
+        "in": "header",
+        "name": "GW-DBTransaction-ID",
+        "required": true,
+        "schema": { "type": "string" }
+      },
+      "gwUnknownPropertyHeader": {
+        "description": "If specified, this header will drive the behavior for unknown property handling",
+        "in": "header",
+        "name": "GW-UnknownPropertyHandling",
+        "schema": {
+          "enum": ["log", "reject", "ignore"],
+          "type": "string"
+        }
+      },
+      "gwUnknownQueryParameterHeader": {
+        "description": "If specified, this header will drive the behavior for unknown query parameter handling.  Default is to reject them.",
+        "in": "header",
+        "name": "GW-UnknownQueryParamHandling",
+        "schema": {
+          "enum": ["log", "reject", "ignore"],
+          "type": "string"
+        }
+      },
+      "gwValidateResponseHandling": {
+        "description": "If specified, this header permits the client to override the behavior around validating response",
+        "in": "header",
+        "name": "GW-ValidateResponseHandling",
+        "schema": { "type": "boolean" }
+      },
+      "include": {
+        "description": "Indicates that the caller would like additional resources returned along with this call in the \"included\" section of the response.  The include parameter can appear multiple times, and is a comma-separated list of additional resources to include.  Nested inclusions can be specified by prefixing the inclusion list with the name of the included property and :.  For example, to include the vehicleincidents and mainContact for a Claim, as well as the driver of the vehicle, you could specify ?include=vehicleincidents,mainContact&include=vehicleincidents:driver. The exact set of options for the include parameter depends upon the particular endpoint.",
+        "explode": true,
+        "in": "query",
+        "name": "include",
+        "schema": {
+          "items": { "type": "string" },
+          "type": "array"
+        },
+        "style": "form"
+      },
+      "includeTotal": {
+        "description": "The includeTotal parameter is used to indicate that the results should include a count of the total number of results available, in cases where the list of results is paginated and not all results are included.  This parameter is of the form includeTotal=<true|false> or includeTotal=<include>:<true|false>.  Specifying the <include>: prefix on the query parameter will apply the includeTotal option to the included list. <include> can also represent a nested included resource, such as includeTotal=activities.notes:true. Calculating the total size of a list can require additional database load, and the option is turned off by default. The returned total is capped at 1000, and will not be accurate if the resource contains more than 1000 elements.",
+        "explode": true,
+        "in": "query",
+        "name": "includeTotal",
+        "schema": {
+          "items": { "type": "string" },
+          "type": "array"
+        },
+        "style": "form"
+      },
+      "organizationId": {
+        "description": "The identifier for the organization",
+        "in": "path",
+        "name": "organizationId",
+        "required": true,
+        "schema": { "type": "string" }
+      },
+      "pageOffset": {
+        "description": "The pageOffset parameter is used to indicate the first result to fetch, in order to page through a list of results. The token may represent a zero-indexed offset, but it may also represent something else such as the id of the last or previous result, depending upon how the server implements pagination for a particular operation. As a general rule, pagination of an API should use the \"next\" and \"prev\" links on the query results to navigate back and forth, rather than attempting to manually construct the pageOffset value.",
+        "in": "query",
+        "name": "pageOffset",
+        "schema": { "type": "string" }
+      },
+      "pageSize": {
+        "description": "The maximum number of results to return in the result.  If not specified, the default settings for that endpoint will be used; each endpoint also defines a maximum pageSize.  The pageSize parameter can be specified as either pageSize=<size> or pageSize=<include>:<size>, where <include> represents the name of an included resource.  For example, ?pageSize=100 will indicate that 100 resources should be returned, while ?include=activities&pageSize=activities:5 will indicate that 5 activities should be returned along with the response. <include> can also represent a nested included resource, such as pageSize=activities.notes:5.",
+        "explode": true,
+        "in": "query",
+        "name": "pageSize",
+        "schema": {
+          "items": { "type": "string" },
+          "type": "array"
+        },
+        "style": "form"
+      },
+      "prettyPrintSchema": {
+        "description": "Whether or not to pretty-print the returned schema, making it larger but more human readable.  Defaults to false.",
+        "in": "query",
+        "name": "prettyPrint",
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "producerCodeId": {
+        "description": "The identifier for the producer code",
+        "in": "path",
+        "name": "producerCodeId",
+        "required": true,
+        "schema": { "type": "string" }
+      },
+      "sort": {
+        "description": "The sort parameter is used to control the sorting of the returned results.  The sort parameter can appear multiple times in the query string, and is either of the form sort=<include>:<properties> or sort=<properties>, where <properties> is a comma-separated list of properties to sort on and <include> represents the name of an included resource.  Property names can be prefixed with '-' to specify a descending sort on that property, otherwise the default is an ascending sort.  The set of valid sort property names depends on the specific endpoint being requested. For example, ?sort=priority,-dueDate will specify a primary sort on priority (ascending) and a secondary sort on dueDate (descending).  ?include=activities&sort=activities:priority,-dueDate specifies the same sort values, but applies them to the included \"activities\" list rather than to the primary resource. <include> can also represent a nested included resource, such as sort=activities.notes:dueDate.",
+        "explode": true,
+        "in": "query",
+        "name": "sort",
+        "schema": {
+          "items": { "type": "string" },
+          "type": "array"
+        },
+        "style": "form"
+      },
+      "userId": {
+        "description": "The REST identifier for the user",
+        "in": "path",
+        "name": "userId",
+        "required": true,
+        "schema": { "type": "string" }
+      }
+    },
+    "schemas": {
+      "Address": {
+        "discriminator": {
+          "mapping": {
+            "AD": "#/components/schemas/Address_Group0",
+            "AE": "#/components/schemas/Address_AE",
+            "AF": "#/components/schemas/Address_Group0",
+            "AG": "#/components/schemas/Address_AG",
+            "AI": "#/components/schemas/Address_Group0",
+            "AL": "#/components/schemas/Address_Group0",
+            "AM": "#/components/schemas/Address_Group3",
+            "AO": "#/components/schemas/Address_Group2",
+            "AQ": "#/components/schemas/Address_Group2",
+            "AR": "#/components/schemas/Address_Group3",
+            "AS": "#/components/schemas/Address_Group1",
+            "AT": "#/components/schemas/Address_Group4",
+            "AU": "#/components/schemas/Address_Group1",
+            "AW": "#/components/schemas/Address_Group2",
+            "AZ": "#/components/schemas/Address_Group0",
+            "BA": "#/components/schemas/Address_Group0",
+            "BB": "#/components/schemas/Address_BB",
+            "BD": "#/components/schemas/Address_Group0",
+            "BE": "#/components/schemas/Address_Group4",
+            "BF": "#/components/schemas/Address_Group6",
+            "BG": "#/components/schemas/Address_Group0",
+            "BH": "#/components/schemas/Address_Group0",
+            "BI": "#/components/schemas/Address_Group2",
+            "BJ": "#/components/schemas/Address_Group2",
+            "BL": "#/components/schemas/Address_Group8",
+            "BM": "#/components/schemas/Address_Group0",
+            "BN": "#/components/schemas/Address_Group0",
+            "BO": "#/components/schemas/Address_Group2",
+            "BR": "#/components/schemas/Address_BR",
+            "BS": "#/components/schemas/Address_Group5",
+            "BT": "#/components/schemas/Address_Group0",
+            "BV": "#/components/schemas/Address_Group2",
+            "BW": "#/components/schemas/Address_Group2",
+            "BY": "#/components/schemas/Address_Group3",
+            "BZ": "#/components/schemas/Address_Group2",
+            "CA": "#/components/schemas/Address_CA",
+            "CC": "#/components/schemas/Address_Group3",
+            "CD": "#/components/schemas/Address_Group2",
+            "CF": "#/components/schemas/Address_Group2",
+            "CG": "#/components/schemas/Address_Group2",
+            "CH": "#/components/schemas/Address_Group4",
+            "CI": "#/components/schemas/Address_Group6",
+            "CK": "#/components/schemas/Address_Group2",
+            "CL": "#/components/schemas/Address_Group3",
+            "CM": "#/components/schemas/Address_Group2",
+            "CN": "#/components/schemas/Address_CN",
+            "CO": "#/components/schemas/Address_CO",
+            "CR": "#/components/schemas/Address_Group7",
+            "CV": "#/components/schemas/Address_CV",
+            "CX": "#/components/schemas/Address_Group3",
+            "CY": "#/components/schemas/Address_Group0",
+            "CZ": "#/components/schemas/Address_Group0",
+            "DE": "#/components/schemas/Address_Group4",
+            "DJ": "#/components/schemas/Address_Group2",
+            "DK": "#/components/schemas/Address_Group4",
+            "DM": "#/components/schemas/Address_Group2",
+            "DO": "#/components/schemas/Address_Group0",
+            "DZ": "#/components/schemas/Address_Group0",
+            "EC": "#/components/schemas/Address_Group0",
+            "EE": "#/components/schemas/Address_Group0",
+            "EG": "#/components/schemas/Address_Group3",
+            "EH": "#/components/schemas/Address_Group0",
+            "ER": "#/components/schemas/Address_Group2",
+            "ES": "#/components/schemas/Address_Group10",
+            "ET": "#/components/schemas/Address_Group0",
+            "FI": "#/components/schemas/Address_Group4",
+            "FJ": "#/components/schemas/Address_Group2",
+            "FK": "#/components/schemas/Address_Group4",
+            "FM": "#/components/schemas/Address_Group1",
+            "FO": "#/components/schemas/Address_Group0",
+            "FR": "#/components/schemas/Address_FR",
+            "GA": "#/components/schemas/Address_Group2",
+            "GB": "#/components/schemas/Address_Group4",
+            "GD": "#/components/schemas/Address_Group2",
+            "GE": "#/components/schemas/Address_Group0",
+            "GF": "#/components/schemas/Address_Group8",
+            "GH": "#/components/schemas/Address_Group2",
+            "GI": "#/components/schemas/Address_GI",
+            "GL": "#/components/schemas/Address_Group4",
+            "GM": "#/components/schemas/Address_Group2",
+            "GN": "#/components/schemas/Address_Group0",
+            "GP": "#/components/schemas/Address_Group8",
+            "GQ": "#/components/schemas/Address_Group2",
+            "GR": "#/components/schemas/Address_Group4",
+            "GS": "#/components/schemas/Address_Group4",
+            "GT": "#/components/schemas/Address_Group0",
+            "GU": "#/components/schemas/Address_Group1",
+            "GW": "#/components/schemas/Address_Group0",
+            "GY": "#/components/schemas/Address_Group2",
+            "HK": "#/components/schemas/Address_HK",
+            "HM": "#/components/schemas/Address_Group3",
+            "HN": "#/components/schemas/Address_Group7",
+            "HR": "#/components/schemas/Address_Group0",
+            "HT": "#/components/schemas/Address_Group0",
+            "HU": "#/components/schemas/Address_Group4",
+            "ID": "#/components/schemas/Address_ID",
+            "IE": "#/components/schemas/Address_IE",
+            "IL": "#/components/schemas/Address_Group0",
+            "IN": "#/components/schemas/Address_Group1",
+            "IO": "#/components/schemas/Address_Group4",
+            "IQ": "#/components/schemas/Address_Group7",
+            "IR": "#/components/schemas/Address_Group9",
+            "IS": "#/components/schemas/Address_Group0",
+            "IT": "#/components/schemas/Address_Group10",
+            "JM": "#/components/schemas/Address_JM",
+            "JO": "#/components/schemas/Address_Group0",
+            "JP": "#/components/schemas/Address_JP",
+            "KE": "#/components/schemas/Address_Group0",
+            "KG": "#/components/schemas/Address_Group0",
+            "KH": "#/components/schemas/Address_Group0",
+            "KI": "#/components/schemas/Address_Group5",
+            "KM": "#/components/schemas/Address_Group2",
+            "KN": "#/components/schemas/Address_KN",
+            "KR": "#/components/schemas/Address_KR",
+            "KW": "#/components/schemas/Address_Group0",
+            "KY": "#/components/schemas/Address_KY",
+            "KZ": "#/components/schemas/Address_Group3",
+            "LA": "#/components/schemas/Address_Group0",
+            "LB": "#/components/schemas/Address_Group0",
+            "LC": "#/components/schemas/Address_Group2",
+            "LI": "#/components/schemas/Address_Group4",
+            "LK": "#/components/schemas/Address_Group0",
+            "LR": "#/components/schemas/Address_Group0",
+            "LS": "#/components/schemas/Address_Group0",
+            "LT": "#/components/schemas/Address_Group0",
+            "LU": "#/components/schemas/Address_Group4",
+            "LV": "#/components/schemas/Address_Group0",
+            "LY": "#/components/schemas/Address_Group2",
+            "MA": "#/components/schemas/Address_Group0",
+            "MC": "#/components/schemas/Address_MC",
+            "MD": "#/components/schemas/Address_Group0",
+            "ME": "#/components/schemas/Address_Group0",
+            "MF": "#/components/schemas/Address_Group8",
+            "MG": "#/components/schemas/Address_Group0",
+            "MH": "#/components/schemas/Address_Group1",
+            "MK": "#/components/schemas/Address_Group0",
+            "ML": "#/components/schemas/Address_Group2",
+            "MM": "#/components/schemas/Address_Group0",
+            "MN": "#/components/schemas/Address_Group3",
+            "MO": "#/components/schemas/Address_MO",
+            "MP": "#/components/schemas/Address_Group1",
+            "MQ": "#/components/schemas/Address_Group8",
+            "MR": "#/components/schemas/Address_Group2",
+            "MS": "#/components/schemas/Address_Group2",
+            "MT": "#/components/schemas/Address_Group0",
+            "MU": "#/components/schemas/Address_Group0",
+            "MV": "#/components/schemas/Address_Group0",
+            "MW": "#/components/schemas/Address_Group6",
+            "MX": "#/components/schemas/Address_Group11",
+            "MY": "#/components/schemas/Address_Group11",
+            "MZ": "#/components/schemas/Address_Group0",
+            "NA": "#/components/schemas/Address_Group2",
+            "NC": "#/components/schemas/Address_Group8",
+            "NE": "#/components/schemas/Address_Group0",
+            "NF": "#/components/schemas/Address_Group3",
+            "NG": "#/components/schemas/Address_NG",
+            "NI": "#/components/schemas/Address_NI",
+            "NL": "#/components/schemas/Address_Group4",
+            "NO": "#/components/schemas/Address_Group4",
+            "NP": "#/components/schemas/Address_Group0",
+            "NR": "#/components/schemas/Address_NR",
+            "NU": "#/components/schemas/Address_Group2",
+            "NZ": "#/components/schemas/Address_Group12",
+            "OM": "#/components/schemas/Address_Group0",
+            "PA": "#/components/schemas/Address_Group13",
+            "PE": "#/components/schemas/Address_Group3",
+            "PF": "#/components/schemas/Address_PF",
+            "PG": "#/components/schemas/Address_Group7",
+            "PH": "#/components/schemas/Address_Group9",
+            "PK": "#/components/schemas/Address_Group0",
+            "PL": "#/components/schemas/Address_Group4",
+            "PM": "#/components/schemas/Address_Group8",
+            "PN": "#/components/schemas/Address_Group4",
+            "PR": "#/components/schemas/Address_Group4",
+            "PS": "#/components/schemas/Address_Group2",
+            "PT": "#/components/schemas/Address_Group4",
+            "PW": "#/components/schemas/Address_Group1",
+            "PY": "#/components/schemas/Address_Group0",
+            "QA": "#/components/schemas/Address_Group2",
+            "RE": "#/components/schemas/Address_Group8",
+            "RO": "#/components/schemas/Address_Group0",
+            "RS": "#/components/schemas/Address_Group0",
+            "RU": "#/components/schemas/Address_Group14",
+            "RW": "#/components/schemas/Address_Group2",
+            "SA": "#/components/schemas/Address_Group0",
+            "SB": "#/components/schemas/Address_Group2",
+            "SC": "#/components/schemas/Address_Group5",
+            "SE": "#/components/schemas/Address_Group4",
+            "SG": "#/components/schemas/Address_SG",
+            "SH": "#/components/schemas/Address_Group4",
+            "SI": "#/components/schemas/Address_Group0",
+            "SJ": "#/components/schemas/Address_Group4",
+            "SK": "#/components/schemas/Address_Group0",
+            "SL": "#/components/schemas/Address_Group2",
+            "SM": "#/components/schemas/Address_SM",
+            "SN": "#/components/schemas/Address_Group0",
+            "SO": "#/components/schemas/Address_Group7",
+            "SR": "#/components/schemas/Address_Group13",
+            "ST": "#/components/schemas/Address_Group2",
+            "SV": "#/components/schemas/Address_Group7",
+            "SZ": "#/components/schemas/Address_Group0",
+            "TC": "#/components/schemas/Address_Group4",
+            "TD": "#/components/schemas/Address_Group2",
+            "TF": "#/components/schemas/Address_Group2",
+            "TG": "#/components/schemas/Address_Group2",
+            "TH": "#/components/schemas/Address_Group9",
+            "TJ": "#/components/schemas/Address_Group0",
+            "TK": "#/components/schemas/Address_Group2",
+            "TL": "#/components/schemas/Address_Group2",
+            "TM": "#/components/schemas/Address_Group0",
+            "TN": "#/components/schemas/Address_Group0",
+            "TO": "#/components/schemas/Address_Group2",
+            "TR": "#/components/schemas/Address_TR",
+            "TT": "#/components/schemas/Address_Group2",
+            "TV": "#/components/schemas/Address_Group5",
+            "TW": "#/components/schemas/Address_TW",
+            "TZ": "#/components/schemas/Address_Group0",
+            "UA": "#/components/schemas/Address_Group14",
+            "UG": "#/components/schemas/Address_Group2",
+            "UM": "#/components/schemas/Address_Group15",
+            "US": "#/components/schemas/Address_US",
+            "UY": "#/components/schemas/Address_Group3",
+            "UZ": "#/components/schemas/Address_Group3",
+            "VA": "#/components/schemas/Address_Group0",
+            "VC": "#/components/schemas/Address_Group0",
+            "VE": "#/components/schemas/Address_Group15",
+            "VG": "#/components/schemas/Address_VG",
+            "VI": "#/components/schemas/Address_Group1",
+            "VN": "#/components/schemas/Address_Group3",
+            "VU": "#/components/schemas/Address_Group2",
+            "WF": "#/components/schemas/Address_Group8",
+            "WS": "#/components/schemas/Address_Group2",
+            "YE": "#/components/schemas/Address_Group2",
+            "YT": "#/components/schemas/Address_Group8",
+            "ZA": "#/components/schemas/Address_Group12",
+            "ZM": "#/components/schemas/Address_Group0",
+            "ZW": "#/components/schemas/Address_Group2"
+          },
+          "propertyName": "country"
+        },
+        "oneOf": [
+          { "$ref": "#/components/schemas/Address_AE" },
+          { "$ref": "#/components/schemas/Address_AG" },
+          { "$ref": "#/components/schemas/Address_BB" },
+          { "$ref": "#/components/schemas/Address_BR" },
+          { "$ref": "#/components/schemas/Address_CA" },
+          { "$ref": "#/components/schemas/Address_CN" },
+          { "$ref": "#/components/schemas/Address_CO" },
+          { "$ref": "#/components/schemas/Address_CV" },
+          { "$ref": "#/components/schemas/Address_FR" },
+          { "$ref": "#/components/schemas/Address_GI" },
+          { "$ref": "#/components/schemas/Address_Group0" },
+          { "$ref": "#/components/schemas/Address_Group1" },
+          { "$ref": "#/components/schemas/Address_Group10" },
+          { "$ref": "#/components/schemas/Address_Group11" },
+          { "$ref": "#/components/schemas/Address_Group12" },
+          { "$ref": "#/components/schemas/Address_Group13" },
+          { "$ref": "#/components/schemas/Address_Group14" },
+          { "$ref": "#/components/schemas/Address_Group15" },
+          { "$ref": "#/components/schemas/Address_Group2" },
+          { "$ref": "#/components/schemas/Address_Group3" },
+          { "$ref": "#/components/schemas/Address_Group4" },
+          { "$ref": "#/components/schemas/Address_Group5" },
+          { "$ref": "#/components/schemas/Address_Group6" },
+          { "$ref": "#/components/schemas/Address_Group7" },
+          { "$ref": "#/components/schemas/Address_Group8" },
+          { "$ref": "#/components/schemas/Address_Group9" },
+          { "$ref": "#/components/schemas/Address_HK" },
+          { "$ref": "#/components/schemas/Address_ID" },
+          { "$ref": "#/components/schemas/Address_IE" },
+          { "$ref": "#/components/schemas/Address_JM" },
+          { "$ref": "#/components/schemas/Address_JP" },
+          { "$ref": "#/components/schemas/Address_KN" },
+          { "$ref": "#/components/schemas/Address_KR" },
+          { "$ref": "#/components/schemas/Address_KY" },
+          { "$ref": "#/components/schemas/Address_MC" },
+          { "$ref": "#/components/schemas/Address_MO" },
+          { "$ref": "#/components/schemas/Address_NG" },
+          { "$ref": "#/components/schemas/Address_NI" },
+          { "$ref": "#/components/schemas/Address_NR" },
+          { "$ref": "#/components/schemas/Address_PF" },
+          { "$ref": "#/components/schemas/Address_SG" },
+          { "$ref": "#/components/schemas/Address_SM" },
+          { "$ref": "#/components/schemas/Address_TR" },
+          { "$ref": "#/components/schemas/Address_TW" },
+          { "$ref": "#/components/schemas/Address_US" },
+          { "$ref": "#/components/schemas/Address_VG" }
+        ]
+      },
+      "Address_AE": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["AE"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "emirate": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "emirate"]
+      },
+      "Address_AG": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["AG"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1"]
+      },
+      "Address_BB": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["BB"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "parish": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city"]
+      },
+      "Address_BR": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["BR"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          },
+          "state": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": [
+          "addressLine1",
+          "city",
+          "postalCode",
+          "state"
+        ]
+      },
+      "Address_CA": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["CA"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "county": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "province": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": [
+          "addressLine1",
+          "city",
+          "postalCode",
+          "province"
+        ]
+      },
+      "Address_CN": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["CN"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "province": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": [
+          "addressLine1",
+          "city",
+          "postalCode",
+          "province"
+        ]
+      },
+      "Address_CO": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["CO"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "department": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "department"]
+      },
+      "Address_CV": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["CV"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "island": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city"]
+      },
+      "Address_FR": {
+        "properties": {
+          "CEDEX": {
+            "maxLength": 2,
+            "nullable": true,
+            "type": "string"
+          },
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["FR"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city", "postalCode"]
+      },
+      "Address_GI": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["GI"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1"]
+      },
+      "Address_Group0": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": [
+              "AD",
+              "AF",
+              "AI",
+              "AL",
+              "AZ",
+              "BA",
+              "BD",
+              "BG",
+              "BH",
+              "BM",
+              "BN",
+              "BT",
+              "CY",
+              "CZ",
+              "DO",
+              "DZ",
+              "EC",
+              "EE",
+              "EH",
+              "ET",
+              "FO",
+              "GE",
+              "GN",
+              "GT",
+              "GW",
+              "HR",
+              "HT",
+              "IL",
+              "IS",
+              "JO",
+              "KE",
+              "KG",
+              "KH",
+              "KW",
+              "LA",
+              "LB",
+              "LK",
+              "LR",
+              "LS",
+              "LT",
+              "LV",
+              "MA",
+              "MD",
+              "ME",
+              "MG",
+              "MK",
+              "MM",
+              "MT",
+              "MU",
+              "MV",
+              "MZ",
+              "NE",
+              "NP",
+              "OM",
+              "PK",
+              "PY",
+              "RO",
+              "RS",
+              "SA",
+              "SI",
+              "SK",
+              "SN",
+              "SZ",
+              "TJ",
+              "TM",
+              "TN",
+              "TZ",
+              "VA",
+              "VC",
+              "ZM"
+            ],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city"]
+      },
+      "Address_Group1": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["AS", "AU", "FM", "GU", "IN", "MH", "MP", "PW", "VI"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          },
+          "state": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": [
+          "addressLine1",
+          "city",
+          "postalCode",
+          "state"
+        ]
+      },
+      "Address_Group10": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["ES", "IT"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "province": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": [
+          "addressLine1",
+          "city",
+          "postalCode",
+          "province"
+        ]
+      },
+      "Address_Group11": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["MX", "MY"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          },
+          "state": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city", "postalCode"]
+      },
+      "Address_Group12": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["NZ", "ZA"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city", "postalCode"]
+      },
+      "Address_Group13": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["PA", "SR"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "province": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city"]
+      },
+      "Address_Group14": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["RU", "UA"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "oblast": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": [
+          "addressLine1",
+          "city",
+          "oblast",
+          "postalCode"
+        ]
+      },
+      "Address_Group15": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["UM", "VE"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          },
+          "state": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city", "state"]
+      },
+      "Address_Group2": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": [
+              "AO",
+              "AQ",
+              "AW",
+              "BI",
+              "BJ",
+              "BO",
+              "BV",
+              "BW",
+              "BZ",
+              "CD",
+              "CF",
+              "CG",
+              "CK",
+              "CM",
+              "DJ",
+              "DM",
+              "ER",
+              "FJ",
+              "GA",
+              "GD",
+              "GH",
+              "GM",
+              "GQ",
+              "GY",
+              "KM",
+              "LC",
+              "LY",
+              "ML",
+              "MR",
+              "MS",
+              "NA",
+              "NU",
+              "PS",
+              "QA",
+              "RW",
+              "SB",
+              "SL",
+              "ST",
+              "TD",
+              "TF",
+              "TG",
+              "TK",
+              "TL",
+              "TO",
+              "TT",
+              "UG",
+              "VU",
+              "WS",
+              "YE",
+              "ZW"
+            ],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city"]
+      },
+      "Address_Group3": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": [
+              "AM",
+              "AR",
+              "BY",
+              "CC",
+              "CL",
+              "CX",
+              "EG",
+              "HM",
+              "KZ",
+              "MN",
+              "NF",
+              "PE",
+              "UY",
+              "UZ",
+              "VN"
+            ],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "province": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city"]
+      },
+      "Address_Group4": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": [
+              "AT",
+              "BE",
+              "CH",
+              "DE",
+              "DK",
+              "FI",
+              "FK",
+              "GB",
+              "GL",
+              "GR",
+              "GS",
+              "HU",
+              "IO",
+              "LI",
+              "LU",
+              "NL",
+              "NO",
+              "PL",
+              "PN",
+              "PR",
+              "PT",
+              "SE",
+              "SH",
+              "SJ",
+              "TC"
+            ],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city", "postalCode"]
+      },
+      "Address_Group5": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["BS", "KI", "SC", "TV"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "island": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city"]
+      },
+      "Address_Group6": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["BF", "CI", "MW"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city"]
+      },
+      "Address_Group7": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["CR", "HN", "IQ", "PG", "SO", "SV"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "province": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city", "province"]
+      },
+      "Address_Group8": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": [
+              "BL",
+              "GF",
+              "GP",
+              "MF",
+              "MQ",
+              "NC",
+              "PM",
+              "RE",
+              "WF",
+              "YT"
+            ],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city", "postalCode"]
+      },
+      "Address_Group9": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["IR", "PH", "TH"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "province": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city"]
+      },
+      "Address_HK": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "area": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["HK"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "area"]
+      },
+      "Address_ID": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["ID"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "province": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "province"]
+      },
+      "Address_IE": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["IE"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "county": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city"]
+      },
+      "Address_JM": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["JM"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "parish": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city", "parish"]
+      },
+      "Address_JP": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine1Kanji": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2Kanji": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "cityKanji": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["JP"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "prefecture": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": [
+          "addressLine1",
+          "city",
+          "postalCode",
+          "prefecture"
+        ]
+      },
+      "Address_KN": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["KN"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "island": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city", "island"]
+      },
+      "Address_KR": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["KR"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": [
+          "addressLine1",
+          "city",
+          "do_si",
+          "postalCode"
+        ]
+      },
+      "Address_KY": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["KY"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "island": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "island"]
+      },
+      "Address_MC": {
+        "properties": {
+          "CEDEX": {
+            "maxLength": 2,
+            "nullable": true,
+            "type": "string"
+          },
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["MC"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city"]
+      },
+      "Address_MO": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["MO"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1"]
+      },
+      "Address_NG": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["NG"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          },
+          "state": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city"]
+      },
+      "Address_NI": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["NI"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "department": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city"]
+      },
+      "Address_NR": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["NR"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "district"]
+      },
+      "Address_PF": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["PF"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "island": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": [
+          "addressLine1",
+          "city",
+          "island",
+          "postalCode"
+        ]
+      },
+      "Address_SG": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["SG"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "postalCode"]
+      },
+      "Address_SM": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["SM"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "postalCode"]
+      },
+      "Address_TR": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["TR"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "province": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1", "city", "postalCode"]
+      },
+      "Address_TW": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["TW"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "county": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": [
+          "addressLine1",
+          "city",
+          "county",
+          "postalCode"
+        ]
+      },
+      "Address_US": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["US"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "county": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          },
+          "state": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-filterBy": ["country"],
+            "x-gw-typelist": "State"
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": [
+          "addressLine1",
+          "city",
+          "postalCode",
+          "state"
+        ]
+      },
+      "Address_VG": {
+        "properties": {
+          "addressLine1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "addressLine3": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "city": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "country": {
+            "enum": ["VG"],
+            "nullable": true,
+            "type": "string",
+            "x-gw-type": "typekey.Country"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "postalCode": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "spatialPoint": {
+            "$ref": "#/components/schemas/SpatialPoint",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-requiredForValidation": ["addressLine1"]
+      },
+      "BatchRequest": {
+        "description": "Defines the structure of a batch request, which consists of an array of sub-requests",
+        "properties": {
+          "requests": {
+            "description": "The array of sub-requests",
+            "items": { "$ref": "#/components/schemas/BatchSubRequest" },
+            "type": "array"
+          }
+        },
+        "required": ["requests"],
+        "type": "object"
+      },
+      "BatchResponse": {
+        "description": "Defines the structure of the response to a batch request.  The 'responses' array will have one element for every entry in the 'requests' array, and responses will appear in the same order.",
+        "properties": {
+          "responses": {
+            "description": "The array of sub-responses, appearing in the same order as the elements in the 'requests' array of the request",
+            "items": { "$ref": "#/components/schemas/BatchSubResponse" },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "BatchSubRequest": {
+        "description": "Defines the structure of an individual sub-request of the batch request",
+        "properties": {
+          "body": {
+            "description": "The body of the sub-request, if any",
+            "type": "object"
+          },
+          "headers": {
+            "description": "Defines headers that will be included as part of the sub-request.  Any headers defined using this property will override header values inherited from the main request.  Any headers present on the main request that are not defined in this array will be inherited when the sub-request is made, with the exception of the 'GW-Checksum' header.",
+            "items": { "$ref": "#/components/schemas/Header" },
+            "type": "array"
+          },
+          "method": {
+            "description": "The HTTP method for the sub-request",
+            "enum": [
+              "delete",
+              "head",
+              "get",
+              "options",
+              "patch",
+              "post",
+              "put"
+            ],
+            "type": "string"
+          },
+          "onFail": {
+            "description": "Controls whether or not subsequent sub-requests are processed if this sub-request fails.  The default behavior, if unspecified, is to continue processing sub-request.  The 'abort' option specifies that all subsequent sub-requests will be skipped.",
+            "enum": ["abort", "continue"],
+            "type": "string"
+          },
+          "path": {
+            "description": "Specifies the path for the sub-request.  This path is relative to the root of the API hosting the batch endpoint.  For example, if the batch endpoint is <servlet>/rest/common/v1/batch, then a path of '/activities' will mean a request against <servlet>/rest/common/v1/activities.  The path must start with '/' and cannot contain whitespace.",
+            "minLength": 1,
+            "pattern": "^/[\\S]*$",
+            "type": "string"
+          },
+          "query": {
+            "description": "The query string to use for the sub-request, if any",
+            "type": "string"
+          }
+        },
+        "required": ["method", "path"],
+        "type": "object"
+      },
+      "BatchSubResponse": {
+        "description": "Defines the format of the sub-response.  In addition to the properties listed here, the 'body' property will include the body of the response as a JSON object.",
+        "properties": {
+          "body": {
+            "description": "The body of the response, if any",
+            "type": "object"
+          },
+          "code": {
+            "description": "The HTTP status code for the sub-response",
+            "type": "integer"
+          },
+          "headers": {
+            "description": "The headers returned for the sub-response",
+            "items": { "$ref": "#/components/schemas/Header" },
+            "type": "array"
+          },
+          "skipped": {
+            "description": "This property will be set to 'true' if the corresponding sub-request was not processed due to a prior failed request that specified the \"onFail\": \"abort\" option",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "CommissionPlan": {
+        "properties": {
+          "commissionPlanId": {
+            "maxLength": 255,
+            "minLength": 1,
+            "pattern": "\\S",
+            "readOnly": true,
+            "type": "string"
+          },
+          "currency": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "readOnly": true,
+            "x-gw-typelist": "Currency"
+          }
+        },
+        "type": "object"
+      },
+      "Contact": {
+        "properties": {
+          "addressBookUID": {
+            "maxLength": 64,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "cellPhone": {
+            "$ref": "#/components/schemas/PhoneNumber",
+            "nullable": true
+          },
+          "companyName": {
+            "maxLength": 60,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "format": "date",
+            "nullable": true,
+            "type": "string",
+            "x-gw-before": "now"
+          },
+          "displayName": {
+            "nullable": true,
+            "readOnly": true,
+            "type": "string"
+          },
+          "emailAddress1": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "emailAddress2": {
+            "maxLength": 60,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "externalId": {
+            "maxLength": 255,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "firstName": {
+            "maxLength": 30,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "homePhone": {
+            "$ref": "#/components/schemas/PhoneNumber",
+            "nullable": true
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "lastName": {
+            "maxLength": 30,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "preferred": {
+            "nullable": true,
+            "type": "boolean"
+          },
+          "primaryAddress": {
+            "$ref": "#/components/schemas/Address",
+            "x-gw-defaultViews": ["detail"]
+          },
+          "primaryLanguage": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-typelist": "LanguageType"
+          },
+          "primaryLocale": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-typelist": "LocaleType"
+          },
+          "primaryPhone": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "primaryPhoneType": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-typelist": "PrimaryPhoneType"
+          },
+          "subtype": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-createOnly": true,
+            "x-gw-typelist": "Contact"
+          },
+          "taxId": {
+            "maxLength": 30,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "workPhone": {
+            "$ref": "#/components/schemas/PhoneNumber",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-filterable": ["externalId"],
+        "x-gw-requiredForCreate": ["subtype"]
+      },
+      "GroupReference": {
+        "properties": {
+          "branchCode": {
+            "maxLength": 255,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "displayName": { "type": "string" },
+          "id": { "type": "string" },
+          "jsonPath": {
+            "readOnly": true,
+            "type": "string",
+            "x-gw-defaultViews": ["none"]
+          },
+          "refid": { "type": "string" },
+          "type": { "type": "string" },
+          "uri": { "type": "string" }
+        },
+        "type": "object",
+        "x-gw-filterable": ["branchCode"],
+        "x-gw-resourceReference": true
+      },
+      "Header": {
+        "description": "An HTTP request or response header",
+        "properties": {
+          "name": {
+            "description": "The header name",
+            "type": "string"
+          },
+          "value": {
+            "description": "The header value",
+            "type": "string"
+          }
+        },
+        "required": ["name", "value"],
+        "type": "object"
+      },
+      "LinkObject": {
+        "properties": {
+          "href": { "type": "string" },
+          "methods": {
+            "items": { "type": "string" },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "Links": {
+        "additionalProperties": { "$ref": "#/components/schemas/LinkObject" },
+        "type": "object"
+      },
+      "Organization": {
+        "properties": {
+          "carrier": {
+            "readOnly": true,
+            "type": "boolean",
+            "x-gw-defaultViews": ["none"]
+          },
+          "contact": {
+            "$ref": "#/components/schemas/Contact",
+            "nullable": true
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "groupDescription": {
+            "maxLength": 1333,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "groupLoadFactor": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "groupSecurityZone": {
+            "$ref": "#/components/schemas/SimpleReference",
+            "x-gw-referenceType": "SecurityZone"
+          },
+          "groupSupervisor": {
+            "$ref": "#/components/schemas/SimpleReference",
+            "nullable": true,
+            "x-gw-reference-schema": "User",
+            "x-gw-referenceType": "User"
+          },
+          "id": { "type": "string" },
+          "masterAdmin": {
+            "readOnly": true,
+            "type": "boolean",
+            "x-gw-defaultViews": ["none"]
+          },
+          "name": {
+            "maxLength": 60,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "producerStatus": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-typelist": "ProducerStatus"
+          },
+          "rootGroup": {
+            "$ref": "#/components/schemas/SimpleReference",
+            "readOnly": true
+          },
+          "tier": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-typelist": "Tier"
+          },
+          "type": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-createOnly": true,
+            "x-gw-typelist": "BusinessType"
+          }
+        },
+        "type": "object",
+        "x-gw-filterable": ["name", "producerStatus", "tier", "type"],
+        "x-gw-requiredForCreate": ["name", "type"],
+        "x-gw-sortable": ["name"]
+      },
+      "OrganizationData": {
+        "properties": {
+          "attributes": { "$ref": "#/components/schemas/Organization" },
+          "checksum": { "type": "string" },
+          "id": { "type": "string" },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "method": {
+            "enum": ["post", "patch"],
+            "type": "string"
+          },
+          "refid": { "type": "string" },
+          "related": {
+            "$ref": "#/components/schemas/RelatedCollections",
+            "readOnly": true
+          },
+          "type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "uri": { "type": "string" }
+        },
+        "required": ["attributes"],
+        "type": "object"
+      },
+      "OrganizationList": {
+        "properties": {
+          "count": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "data": {
+            "items": { "$ref": "#/components/schemas/OrganizationData" },
+            "type": "array"
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "total": {
+            "readOnly": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "OrganizationProducerCodeList": {
+        "properties": {
+          "count": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "data": {
+            "items": { "$ref": "#/components/schemas/ProducerCodeData" },
+            "type": "array"
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "total": {
+            "readOnly": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "OrganizationRequest": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/OrganizationData" }
+        },
+        "required": ["data"],
+        "type": "object"
+      },
+      "OrganizationResponse": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/OrganizationData" }
+        },
+        "type": "object"
+      },
+      "PhoneNumber": {
+        "properties": {
+          "countryCode": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "PhoneCountryCode"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "extension": {
+            "nullable": true,
+            "type": "string"
+          },
+          "number": { "type": "string" }
+        },
+        "required": ["countryCode", "number"],
+        "type": "object"
+      },
+      "ProducerCode": {
+        "properties": {
+          "address": {
+            "$ref": "#/components/schemas/Address",
+            "nullable": true,
+            "x-gw-defaultViews": ["detail"]
+          },
+          "appointmentDate": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string",
+            "x-gw-defaultViews": ["detail"]
+          },
+          "branch": {
+            "$ref": "#/components/schemas/GroupReference",
+            "nullable": true
+          },
+          "code": {
+            "maxLength": 255,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "commissionPlans": {
+            "items": { "$ref": "#/components/schemas/CommissionPlan" },
+            "minItems": 1,
+            "type": "array",
+            "x-gw-defaultViews": ["detail"]
+          },
+          "description": {
+            "maxLength": 255,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "organization": {
+            "$ref": "#/components/schemas/SimpleReference",
+            "x-gw-createOnly": true,
+            "x-gw-reference-schema": "Organization",
+            "x-gw-referenceType": "Organization"
+          },
+          "parent": {
+            "$ref": "#/components/schemas/SimpleReference",
+            "nullable": true,
+            "x-gw-reference-schema": "ProducerCode",
+            "x-gw-referenceType": "ProducerCode"
+          },
+          "preferredUnderwriter": {
+            "$ref": "#/components/schemas/SimpleReference",
+            "nullable": true,
+            "x-gw-reference-schema": "User",
+            "x-gw-referenceType": "User"
+          },
+          "producerStatus": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "ProducerStatus"
+          },
+          "roles": {
+            "items": { "$ref": "#/components/schemas/SimpleReference" },
+            "minItems": 1,
+            "type": "array",
+            "x-gw-defaultViews": ["detail"]
+          },
+          "terminationDate": {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string",
+            "x-gw-defaultViews": ["detail"]
+          }
+        },
+        "type": "object",
+        "x-gw-filterable": ["code", "producerStatus"],
+        "x-gw-requiredForCreate": ["code", "organization", "roles"],
+        "x-gw-sortable": ["code", "organization"]
+      },
+      "ProducerCodeData": {
+        "properties": {
+          "attributes": { "$ref": "#/components/schemas/ProducerCode" },
+          "checksum": { "type": "string" },
+          "id": { "type": "string" },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "method": {
+            "enum": ["post", "patch"],
+            "type": "string"
+          },
+          "refid": { "type": "string" },
+          "related": {
+            "$ref": "#/components/schemas/RelatedCollections",
+            "readOnly": true
+          },
+          "type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "uri": { "type": "string" }
+        },
+        "required": ["attributes"],
+        "type": "object"
+      },
+      "ProducerCodeList": {
+        "properties": {
+          "count": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "data": {
+            "items": { "$ref": "#/components/schemas/ProducerCodeData" },
+            "type": "array"
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "total": {
+            "readOnly": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "ProducerCodeRequest": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/ProducerCodeData" }
+        },
+        "required": ["data"],
+        "type": "object"
+      },
+      "ProducerCodeResponse": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/ProducerCodeData" }
+        },
+        "type": "object"
+      },
+      "RelatedCollection": {
+        "properties": {
+          "count": { "type": "integer" },
+          "data": {
+            "items": { "$ref": "#/components/schemas/SimpleReference" },
+            "type": "array"
+          },
+          "total": { "type": "integer" }
+        },
+        "type": "object"
+      },
+      "RelatedCollections": {
+        "additionalProperties": {
+          "$ref": "#/components/schemas/RelatedCollection"
+        },
+        "type": "object"
+      },
+      "SimpleReference": {
+        "properties": {
+          "displayName": { "type": "string" },
+          "id": { "type": "string" },
+          "jsonPath": {
+            "readOnly": true,
+            "type": "string",
+            "x-gw-defaultViews": ["none"]
+          },
+          "refid": { "type": "string" },
+          "type": { "type": "string" },
+          "uri": { "type": "string" }
+        },
+        "type": "object",
+        "x-gw-resourceReference": true
+      },
+      "SpatialPoint": {
+        "properties": {
+          "latitude": {
+            "format": "gw-bigdecimal",
+            "type": "string"
+          },
+          "longitude": {
+            "format": "gw-bigdecimal",
+            "type": "string"
+          }
+        },
+        "required": ["latitude", "longitude"],
+        "type": "object"
+      },
+      "TypeKeyReference": {
+        "properties": {
+          "code": { "type": "string" },
+          "name": {
+            "description": "This property is ignored on updates.",
+            "type": "string"
+          }
+        },
+        "required": ["code"],
+        "type": "object"
+      },
+      "User": {
+        "properties": {
+          "active": { "type": "boolean" },
+          "displayName": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "employeeNumber": {
+            "maxLength": 255,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "externalUser": {
+            "readOnly": true,
+            "type": "boolean"
+          },
+          "firstName": {
+            "maxLength": 30,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "groups": {
+            "items": {
+              "$ref": "#/components/schemas/SimpleReference",
+              "x-gw-referenceType": "Group"
+            },
+            "type": "array"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "lastName": {
+            "maxLength": 30,
+            "minLength": 1,
+            "nullable": true,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "organization": {
+            "$ref": "#/components/schemas/SimpleReference",
+            "x-gw-reference-schema": "Organization",
+            "x-gw-referenceType": "Organization"
+          },
+          "suffix": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-typelist": "NameSuffix"
+          },
+          "useOrgAddress": {
+            "nullable": true,
+            "type": "boolean"
+          },
+          "useProducerCodeSecurity": { "type": "boolean" },
+          "userType": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "nullable": true,
+            "x-gw-typelist": "UserType"
+          },
+          "username": {
+            "maxLength": 30,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "vacationStatus": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "VacationStatusType"
+          },
+          "workPhone": {
+            "$ref": "#/components/schemas/PhoneNumber",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "x-gw-filterable": ["userType"],
+        "x-gw-requiredForCreate": ["username"],
+        "x-gw-sortable": ["userType"]
+      },
+      "UserData": {
+        "properties": {
+          "attributes": { "$ref": "#/components/schemas/User" },
+          "checksum": { "type": "string" },
+          "id": { "type": "string" },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "method": {
+            "enum": ["post", "patch"],
+            "type": "string"
+          },
+          "refid": { "type": "string" },
+          "related": {
+            "$ref": "#/components/schemas/RelatedCollections",
+            "readOnly": true
+          },
+          "type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "uri": { "type": "string" }
+        },
+        "required": ["attributes"],
+        "type": "object"
+      },
+      "UserList": {
+        "properties": {
+          "count": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "data": {
+            "items": { "$ref": "#/components/schemas/UserData" },
+            "type": "array"
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "total": {
+            "readOnly": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "UserRequest": {
+        "properties": { "data": { "$ref": "#/components/schemas/UserData" } },
+        "required": ["data"],
+        "type": "object"
+      },
+      "UserResponse": {
+        "properties": { "data": { "$ref": "#/components/schemas/UserData" } },
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "basicAuth": {
+        "scheme": "basic",
+        "type": "http"
+      }
+    }
+  },
+  "info": {
+    "description": "APIs for InsuranceSuite administration objects",
+    "title": "Admin API",
+    "version": "1.2.0"
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/batch": {
+      "post": {
+        "description": "Post a list of sub-requests to make against this endpoint.  Sub-requests will be executed serially, in the order they are specified in the \"requests\" property of the input.  Responses to each sub-request will then be batched up and returned all together.  Sub-requests inherit the headers from the main request, with the exception of the GW-Checksum header, but headers can be specified on the sub-request and will override any headers from the main request.",
+        "operationId": "batchRequest",
+        "parameters": [
+          {
+            "description": "Controls what response headers, if any, are included for sub-responses.  If unspecified, or set to the value \"*all\", all headers for sub-responses will be returned.  If set to the value \"*none\", no headers for sub-responses will be returned.  Otherwise, this parameter can consist of a comma-separated list of the names of headers that should be included on sub-responses.",
+            "explode": false,
+            "in": "query",
+            "name": "includeResponseHeaders",
+            "required": false,
+            "schema": {
+              "items": { "type": "string" },
+              "type": "array"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/BatchRequest" }
+            }
+          },
+          "description": "The body of the batch request",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/BatchResponse" }
+              }
+            },
+            "description": "The batch request itself was well-formed; individual sub-requests may have succeeded or failed"
+          }
+        },
+        "summary": "Issue multiple requests at once as a non-transactional batch"
+      }
+    },
+    "/openapi.json": {
+      "get": {
+        "description": "Return the Open API 3.0 representation of the schema",
+        "operationId": "getOpenApiSchema",
+        "parameters": [
+          { "$ref": "#/components/parameters/prettyPrintSchema" },
+          { "$ref": "#/components/parameters/filterByUser" },
+          { "$ref": "#/components/parameters/enablePolymorphism" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": { "schema": { "type": "string" } }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Return the Open API 3.0 representation of the schema",
+        "x-gw-resourceType": "AdminOpenApiSchema"
+      }
+    },
+    "/organizations": {
+      "get": {
+        "description": "Retrieve a list of Organizations",
+        "operationId": "getOrganizations",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/pageOffset" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/OrganizationList" }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Retrieve a list of Organizations",
+        "x-gw-childResourceType": "Organization",
+        "x-gw-resourceType": "Organizations"
+      },
+      "post": {
+        "description": "Create a new organization",
+        "operationId": "createOrganization",
+        "parameters": [{ "$ref": "#/components/parameters/fields" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/OrganizationRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationResponse"
+                }
+              }
+            },
+            "description": "Return the details for the newly-created organization"
+          }
+        },
+        "summary": "Create a new organization",
+        "x-gw-childResourceType": "Organization",
+        "x-gw-resourceType": "Organizations"
+      }
+    },
+    "/organizations/{organizationId}": {
+      "get": {
+        "description": "Retrieve an Organization",
+        "operationId": "getOrganization",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationResponse"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Retrieve an Organization",
+        "x-gw-resourceType": "Organization"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/organizationId" }],
+      "patch": {
+        "description": "Update an organization",
+        "operationId": "patchOrganization",
+        "parameters": [{ "$ref": "#/components/parameters/fields" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/OrganizationRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationResponse"
+                }
+              }
+            },
+            "description": "Successfully updated"
+          }
+        },
+        "summary": "Update an organization",
+        "x-gw-resourceType": "Organization"
+      }
+    },
+    "/organizations/{organizationId}/producer-codes": {
+      "get": {
+        "description": "Retrieve a list of producer codes associated with this organization",
+        "operationId": "getOrganizationProducerCodes",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/pageOffset" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationProducerCodeList"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Retrieve a list of producer codes associated with this organization",
+        "x-gw-childResourceType": "ProducerCode",
+        "x-gw-resourceType": "OrganizationProducerCodes"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/organizationId" }]
+    },
+    "/producer-codes": {
+      "get": {
+        "description": "Retrieve a list of ProducerCodes",
+        "operationId": "getAdminProducerCodes",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/pageOffset" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ProducerCodeList" }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Retrieve a list of ProducerCodes",
+        "x-gw-childResourceType": "ProducerCode",
+        "x-gw-resourceType": "AdminProducerCodes"
+      },
+      "post": {
+        "description": "Create a new producer code",
+        "operationId": "createProducerCode",
+        "parameters": [{ "$ref": "#/components/parameters/fields" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ProducerCodeRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProducerCodeResponse"
+                }
+              }
+            },
+            "description": "Return the details for the newly-created producer code"
+          }
+        },
+        "summary": "Create a new producer code",
+        "x-gw-childResourceType": "ProducerCode",
+        "x-gw-resourceType": "AdminProducerCodes"
+      }
+    },
+    "/producer-codes/{producerCodeId}": {
+      "get": {
+        "description": "Retrieve a producer code",
+        "operationId": "getProducerCode",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProducerCodeResponse"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Retrieve a producer code",
+        "x-gw-resourceType": "ProducerCode"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/producerCodeId" }],
+      "patch": {
+        "description": "Update a producer code",
+        "operationId": "patchProducerCode",
+        "parameters": [{ "$ref": "#/components/parameters/fields" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ProducerCodeRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProducerCodeResponse"
+                }
+              }
+            },
+            "description": "Successfully updated"
+          }
+        },
+        "summary": "Update a producer code",
+        "x-gw-resourceType": "ProducerCode"
+      }
+    },
+    "/swagger.json": {
+      "get": {
+        "description": "Returns a Swagger 2.0 schema for this API as json",
+        "operationId": "generateDocs",
+        "responses": { "200": { "description": "Successful operation" } },
+        "summary": "Returns the Swagger schema for this API"
+      }
+    },
+    "/users": {
+      "get": {
+        "description": "Do not use.",
+        "operationId": "getUsers",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/pageOffset" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UserList" }
+              }
+            },
+            "description": "Do not use."
+          }
+        },
+        "summary": "Do not use.",
+        "x-gw-childResourceType": "User",
+        "x-gw-resourceType": "Users"
+      },
+      "post": {
+        "description": "Create a new user",
+        "operationId": "createUser",
+        "parameters": [{ "$ref": "#/components/parameters/fields" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UserResponse" }
+              }
+            },
+            "description": "The details of the newly-created user"
+          }
+        },
+        "summary": "Create a new user",
+        "x-gw-childResourceType": "User",
+        "x-gw-resourceType": "Users"
+      }
+    },
+    "/users/{userId}": {
+      "get": {
+        "description": "Returns details for a single user",
+        "operationId": "getUser",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UserResponse" }
+              }
+            },
+            "description": "Returns details for a single user"
+          }
+        },
+        "summary": "Returns details for a single user",
+        "x-gw-resourceType": "User"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/userId" }],
+      "patch": {
+        "description": "Update this user's fields",
+        "operationId": "updateUser",
+        "parameters": [{ "$ref": "#/components/parameters/fields" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UserResponse" }
+              }
+            },
+            "description": "Successful update"
+          }
+        },
+        "summary": "Update this user's fields",
+        "x-gw-resourceType": "User"
+      }
+    }
+  },
+  "security": [{ "basicAuth": [] }],
+  "servers": [{ "url": "http://localhost:8180/pc/rest/admin/v1" }]
+}

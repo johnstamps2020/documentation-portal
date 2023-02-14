@@ -1,0 +1,500 @@
+{
+    "components": {
+        "parameters": {
+            "enablePolymorphism": {
+                "description": "Whether or not to use the `discriminator`/`oneOf` pattern to output schemas in cases where the valid set of fields can vary based on some attribute of the data such as the country or subtype.  Defaults to `true`. See the Cloud API documentation for more information.",
+                "in": "query",
+                "name": "enablePolymorphism",
+                "schema": {
+                    "default": true,
+                    "type": "boolean"
+                }
+            },
+            "fields": {
+                "description": "Allows the caller to specify the set of fields that should be included on the response. This can be used to limit the set of fields returned as well as to include optional fields that otherwise wouldn't normally be returned. The parameter is either of the form `fields=<field list>` or `fields=<include>:<field list>`, where `<field list>` consists of a comma-separated list of field or field set names. See the Cloud API documentation for more information.",
+                "explode": true,
+                "in": "query",
+                "name": "fields",
+                "schema": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "style": "form"
+            },
+            "filter": {
+                "description": "Filters the list of results based on the specified field, operator, and value. The parameter is either of the form `filter=<field>:<operator>:<value>` or `filter=<include>:<field>:<operator>:<value>`. See the Cloud API documentation for more information.",
+                "explode": true,
+                "in": "query",
+                "name": "filter",
+                "schema": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "style": "form"
+            },
+            "filterByUser": {
+                "description": "Whether or not to filter endpoints and schema properties by the authorization of the caller. Defaults to `false`.",
+                "in": "query",
+                "name": "filterByUser",
+                "schema": {
+                    "default": false,
+                    "type": "boolean"
+                }
+            },
+            "gwLanguageHeader": {
+                "description": "If specified, this header will set the language used when processing the request",
+                "in": "header",
+                "name": "GW-Language",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "gwLocaleHeader": {
+                "description": "If specified, this header will set the locale used when processing the request",
+                "in": "header",
+                "name": "GW-Locale",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "gwSchemaProperty": {
+                "description": "If specified and the operation returns json with a defined schema, this will add a property, '$GW-Schema',  with the fully qualified name of the object's schema.",
+                "in": "header",
+                "name": "GW-IncludeSchemaProperty",
+                "schema": {
+                    "type": "boolean"
+                }
+            },
+            "gwTraceability": {
+                "description": "This header permits a customer to trace a request from its initial reception through all of the subsequent applications that were invoked to handle that request. The actual traceability id present in the MDC and logs (and returned in the response), is dependent on the implementation of TraceabilityIDPlugin. The default implementation uses this value, if specified, or a generated UID.  However, another implementation may always generate a unique id and just log  the relationship between these incoming values and the generated UID. Note: that this header can be repeated, but the resulting string will just be the comma separated values.",
+                "in": "header",
+                "name": "X-Correlation-ID",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "gwTransactionID": {
+                "description": "If specified and this operation results in a database commit, this header's value must not have been submitted before.  This value must be globally unique across all clients, apis and webservices. It is used for those transaction that are not idempotent. Unless this is explicitly referenced for an operation it is not required.",
+                "in": "header",
+                "name": "GW-DBTransaction-ID",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "gwUnknownPropertyHeader": {
+                "description": "If specified, this header will drive the behavior for unknown property handling",
+                "in": "header",
+                "name": "GW-UnknownPropertyHandling",
+                "schema": {
+                    "enum": [
+                        "log",
+                        "reject",
+                        "ignore"
+                    ],
+                    "type": "string"
+                }
+            },
+            "gwUnknownQueryParameterHeader": {
+                "description": "If specified, this header will drive the behavior for unknown query parameter handling.  Default is to reject them.",
+                "in": "header",
+                "name": "GW-UnknownQueryParamHandling",
+                "schema": {
+                    "enum": [
+                        "log",
+                        "reject",
+                        "ignore"
+                    ],
+                    "type": "string"
+                }
+            },
+            "gwValidateResponseHandling": {
+                "description": "If specified, this header permits the client to override the behavior around validating response",
+                "in": "header",
+                "name": "GW-ValidateResponseHandling",
+                "schema": {
+                    "type": "boolean"
+                }
+            },
+            "include": {
+                "description": "Used to request that additional resources be returned with the API response in the `included` section of the response envelope. The `include` parameter can appear multiple times, and is a comma-separated list of additional resources to include. See the Cloud API documentation for more information.",
+                "explode": true,
+                "in": "query",
+                "name": "include",
+                "schema": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "style": "form"
+            },
+            "includeTotal": {
+                "description": "Used to request that results should include a count of the total number of results available, which may be more than the total number of results currently being returned. This parameter is of the form `includeTotal=<true|false>` or `includeTotal=<include>:<true|false>`. If not specified, the default is considered to be `false`. See the Cloud API documentation for more information about response pagination.",
+                "explode": true,
+                "in": "query",
+                "name": "includeTotal",
+                "schema": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "style": "form"
+            },
+            "pageOffset": {
+                "description": "The offset of the first result to fetch when fetching a paginated set of results. The parameter is of the form `pageOffset=<number>` where the first result has an offset of 0. For example, `pageOffset=25` will skip the first 25 results in sorted order. If not specified, the default value is 0. See the Cloud API documentation for more information about response pagination.",
+                "in": "query",
+                "name": "pageOffset",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "pageSize": {
+                "description": "The maximum number of results to return in the response. The parameter is of the form `pageSize=<size>` or `pageSize=<include>:<size>`. The maximum allowed `pageSize` and the default `pageSize` both depend on the specific API endpoint the request is made to. See the Cloud API documentation for more information about response pagination.",
+                "explode": true,
+                "in": "query",
+                "name": "pageSize",
+                "schema": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "style": "form"
+            },
+            "prettyPrintSchema": {
+                "description": "Whether or not to pretty-print the returned schema, making it larger but more human readable.  Defaults to `false`.",
+                "in": "query",
+                "name": "prettyPrint",
+                "schema": {
+                    "default": false,
+                    "type": "boolean"
+                }
+            },
+            "sort": {
+                "description": "Controls the sorting of elements within a response. The sort parameter is of the form `sort=<fields>` or `sort=<include>:<fields>`, where `<fields>` represents a comma-separated list of field names to sort on. Field names can be prefixed with `-` to request a descending sort, otherwise the sort will be ascending. See the Cloud API documentation for more information.",
+                "explode": true,
+                "in": "query",
+                "name": "sort",
+                "schema": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "style": "form"
+            }
+        },
+        "schemas": {
+            "CompositeRequest": {
+                "description": "The body of a composite request",
+                "properties": {
+                    "requests": {
+                        "description": "The list of subrequests",
+                        "items": {
+                            "$ref": "#/components/schemas/CompositeSubRequest"
+                        },
+                        "title": "Requests",
+                        "type": "array"
+                    },
+                    "selections": {
+                        "description": "The list of selections",
+                        "items": {
+                            "$ref": "#/components/schemas/CompositeSelectionRequest"
+                        },
+                        "title": "Selections",
+                        "type": "array"
+                    }
+                },
+                "title": "Composite request",
+                "type": "object"
+            },
+            "CompositeResponse": {
+                "description": "The body of a composite response. The `responses` field will have one element for every entry in the `requests` field, and responses will appear in the same order.",
+                "properties": {
+                    "requestFailed": {
+                        "description": "This field will be set to `true` if any subrequest failed or if committing data failed",
+                        "title": "Request failed",
+                        "type": "boolean"
+                    },
+                    "responses": {
+                        "description": "The list of subresponses, appearing in the same order as the elements in the `requests` field of the request",
+                        "items": {
+                            "$ref": "#/components/schemas/CompositeSubResponse"
+                        },
+                        "title": "Responses",
+                        "type": "array"
+                    },
+                    "selections": {
+                        "description": "The list of selections, appearing in the same order as the elements in the `selections` field of the request",
+                        "items": {
+                            "$ref": "#/components/schemas/CompositeSubResponse"
+                        },
+                        "title": "Selections",
+                        "type": "array"
+                    }
+                },
+                "title": "Composite response",
+                "type": "object"
+            },
+            "CompositeSelectionRequest": {
+                "description": "An individual selection within the composite request",
+                "properties": {
+                    "parameters": {
+                        "description": "Query parameters to apply to the selection. Each key in the parameters object should be the name of the query parameter, while the value should be appropriate for the type of parameter.",
+                        "title": "Parameters",
+                        "type": "object"
+                    },
+                    "uri": {
+                        "description": "The path to select. The path must start with `/` and cannot contain whitespace.",
+                        "minLength": 1,
+                        "title": "URI",
+                        "type": "string"
+                    },
+                    "vars": {
+                        "description": "A list of variables to extract from the response to this selection, for use in subsequent selections within the same composite request",
+                        "items": {
+                            "$ref": "#/components/schemas/CompositeSubRequestVar"
+                        },
+                        "maxItems": 25,
+                        "title": "Vars",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "uri"
+                ],
+                "title": "Composite selection request",
+                "type": "object"
+            },
+            "CompositeSubRequest": {
+                "description": "An individual subrequest of the composite request",
+                "properties": {
+                    "body": {
+                        "description": "The body of the subrequest",
+                        "title": "Body",
+                        "type": "object"
+                    },
+                    "includeResponse": {
+                        "description": "Setting this field to `false` will cause the response to this subrequest to be omitted from the composite response. Setting this to false can be useful in cases where intermediate results are not interesting to the caller, saving response time by not sending back those results.",
+                        "title": "Include response",
+                        "type": "boolean"
+                    },
+                    "method": {
+                        "description": "The HTTP method for the subrequest. Must be one of `DELETE`, `PATCH`, `POST`, or `PUT`, compared case insensitively.",
+                        "title": "Method",
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "description": "Query parameters to apply to the subrequest. Each key in the parameters object should be the name of the query parameter, while the value should be appropriate for the type of parameter.",
+                        "title": "Parameters",
+                        "type": "object"
+                    },
+                    "uri": {
+                        "description": "The path for the subrequest. The path must start with `/` and cannot contain whitespace.",
+                        "minLength": 1,
+                        "title": "URI",
+                        "type": "string"
+                    },
+                    "vars": {
+                        "description": "A list of variables to extract from the response to this subrequest, for use in subsequent subrequests or selections within the same composite request",
+                        "items": {
+                            "$ref": "#/components/schemas/CompositeSubRequestVar"
+                        },
+                        "maxItems": 25,
+                        "title": "Vars",
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "method",
+                    "uri"
+                ],
+                "title": "Composite subrequest",
+                "type": "object"
+            },
+            "CompositeSubRequestVar": {
+                "description": "A variable used to extract a value from a subrequest or selection response, for use in later subrequests or selections within the same composite request",
+                "properties": {
+                    "name": {
+                        "description": "The name of the variable. This is the name which the variable can be referenced by in subsequent subrequests or selections, using `${name}}` syntax within the `body`, `uri`, or `parameters` of the subsequent subrequest or selection.",
+                        "minLength": 1,
+                        "title": "Title",
+                        "type": "string"
+                    },
+                    "path": {
+                        "description": "The JsonPath expression to execute against the response in order to produce the value",
+                        "minLength": 1,
+                        "title": "Path",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "name",
+                    "path"
+                ],
+                "title": "Composite subrequest variable",
+                "type": "object"
+            },
+            "CompositeSubResponse": {
+                "description": "The response to a composite subrequest or selection",
+                "properties": {
+                    "body": {
+                        "description": "The body of the subresponse",
+                        "title": "Body",
+                        "type": "object"
+                    },
+                    "headers": {
+                        "$ref": "#/components/schemas/Headers",
+                        "description": "The headers returned for the subresponse",
+                        "title": "Headers"
+                    },
+                    "requestError": {
+                        "description": "The details of any error that occurred when processing the associated subrequest or selection",
+                        "title": "Request error",
+                        "type": "object"
+                    },
+                    "responseIncluded": {
+                        "description": "A `false` value indicates that the `includeResponse` property on the corresponding subrequest was set to `false`, and the rest of this subresponse has been omitted",
+                        "title": "Response included",
+                        "type": "boolean"
+                    },
+                    "responseSerializationFailed": {
+                        "description": "A `true` value indicates that serializing the response to the corresponding subrequest failed. The error will be logged, but not returned to the caller. Response serialization failures will not cause the overall request to fail and will not prevent data from being committed. This case should rarely, if ever, occur during normal operation.",
+                        "title": "Response serialization failed",
+                        "type": "boolean"
+                    },
+                    "skipped": {
+                        "description": "A `true` value indicates that the subrequest was skipped due to the failure of an earlier subrequest",
+                        "title": "Skipped",
+                        "type": "boolean"
+                    },
+                    "status": {
+                        "description": "The HTTP response status code generated by the associated subrequest or selection",
+                        "title": "Status",
+                        "type": "integer"
+                    },
+                    "varsError": {
+                        "description": "The details of any errors that occurred when attempting to process the `vars` on the associated subrequest or selection",
+                        "title": "Vars error",
+                        "type": "object"
+                    }
+                },
+                "title": "Composite subresponse",
+                "type": "object"
+            },
+            "Headers": {
+                "additionalProperties": {
+                    "description": "A set of name/value pairs that correspond to HTTP header names and values",
+                    "title": "Headers",
+                    "type": "string"
+                },
+                "description": "A set of name/value pairs that correspond to HTTP header names and values",
+                "title": "Headers",
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "basicAuth": {
+                "scheme": "basic",
+                "type": "http"
+            }
+        }
+    },
+    "info": {
+        "description": "API for composite requests that execute multiple API sub-requests in a single database transaction",
+        "title": "Composite API",
+        "version": "1.3.0"
+    },
+    "openapi": "3.0.0",
+    "paths": {
+        "/composite": {
+            "post": {
+                "description": "Composite API",
+                "operationId": "compositeRequest",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CompositeRequest"
+                            }
+                        }
+                    },
+                    "description": "The body of the request",
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CompositeResponse"
+                                }
+                            }
+                        },
+                        "description": "Success"
+                    }
+                },
+                "summary": "Composite API"
+            }
+        },
+        "/openapi.json": {
+            "get": {
+                "description": "Retrieves the `OpenAPI 3.0` schema for this API",
+                "operationId": "getOpenApiSchema",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/prettyPrintSchema"
+                    },
+                    {
+                        "$ref": "#/components/parameters/filterByUser"
+                    },
+                    {
+                        "$ref": "#/components/parameters/enablePolymorphism"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "description": "The `OpenAPI 3.0` schema for this API"
+                    }
+                },
+                "summary": "Retrieve the OpenAPI 3.0 schema for this API",
+                "x-gw-resourceType": "CompositeOpenApiSchema"
+            }
+        },
+        "/swagger.json": {
+            "get": {
+                "description": "Returns a Swagger 2.0 schema for this API as json",
+                "operationId": "generateDocs",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                },
+                "summary": "Returns the Swagger schema for this API"
+            }
+        }
+    },
+    "security": [
+        {
+            "basicAuth": []
+        }
+    ],
+    "servers": [
+        {
+            "url": "http://localhost:8080/cc/rest/composite/v1"
+        }
+    ]
+}

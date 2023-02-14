@@ -1,0 +1,1833 @@
+{
+  "components": {
+    "parameters": {
+      "coverableId": {
+        "in": "path",
+        "name": "coverableId",
+        "required": true,
+        "schema": { "type": "string" }
+      },
+      "coverageId": {
+        "in": "path",
+        "name": "coverageId",
+        "required": true,
+        "schema": { "type": "string" }
+      },
+      "enablePolymorphism": {
+        "description": "Whether or not to use the discriminator/oneOf pattern to output schemas in cases where the valid set of fields can vary based on some attribute of the data such as the country or subtype.  Defaults to true.  When set to false, the schema in these cases will contain the superset of all valid fields, e.g. address schemas will contain all fields for all countries, rather than have separate schemas for different countries.  Setting this to false may make the schema output more consumable by tools that don't support that part of the OpenAPI schema.",
+        "in": "query",
+        "name": "enablePolymorphism",
+        "schema": {
+          "default": true,
+          "type": "boolean"
+        }
+      },
+      "exposureId": {
+        "in": "path",
+        "name": "exposureId",
+        "required": true,
+        "schema": { "type": "string" }
+      },
+      "fields": {
+        "description": "The fields parameter allows the caller to specify the set of fields that should be included for a given resource, and allows the client to avoid fetching fields they don't want as well as to request optional fields that aren't included by default.  The parameter is of the form fields=<field list> or fields=<include>:<field list>.  The <field list> is a comma-separated list of fields desired on the response, and <include> indicates that the field selection applies to an included resource.  If not specified, the default fields for a resource will be returned. The \"checksum\" and \"links\" properties are special and can be included by specifying \"$checksum\" and \"$links\" respectively. If you wish to select fields on the root resource and the included resources, each of those must be in a separate fields parameter. For example, ?fields=<field list>&fields=<include1>:<field list>&fields=<include2>:<field list>. Special values beginning with the '*' character are used to indicate a set of fields to return, which will then be combined with additional fields that are explicitly listed. The '*default' set will include whatever set of the fields the endpoint would normally return if the \"fields\" query parameter wasn't specified. For example, specifying fields=firstName,lastName will return only the firstName and lastName fields on the response, while specifying fields=default,firstName,lastName will return all the default fields as well as the firstName and lastName. Other '' options are '*detail', '*summary', and '*all'. Properties on sub-objects can be selected via dot-separated paths, for example fields=assignedUser,assignedUser.id will fetch only the id of the assignedUser object but not the displayName. <include> can also represent a nested included resource, such as fields=activities.notes:subject,body.",
+        "explode": true,
+        "in": "query",
+        "name": "fields",
+        "schema": {
+          "items": { "type": "string" },
+          "type": "array"
+        },
+        "style": "form"
+      },
+      "filter": {
+        "description": "Filters the list of results based on the specified field, operator, and value.  The query parameter's value should be of the form <field>:<operator>:<value> or <include>:<field>:<operator>:<value>.  If the <include>: piece is specified, the filter will be applied to the included resource. The set of supported fields is dependent upon the resource being filtered.  Valid operators include \"eq\", \"ne\", \"lt\", \"gt\", \"le\", \"ge\", \"in\", \"ni\", \"sw\", and \"cn\". Values should be formatted according to the same JSON type and format as the filtered field, i.e. if the filtered field is a boolean field, the value should either be \"true\" or \"false\" and if the filtered field is a date-time field, the value should be an ISO-8601 date-time value.  One exception is that filtering on date-time fields can accept either date-times or dates. On occasions where the value needs to contain a \":\" character, this character can be escaped with an additional \":\". For example, to compare against \"some:value\", the query parameter would take the form <field>:<operator>:some::value. The filter query parameter can be specified multiple times for the same resource or field, and all the specified filters will effectively be ANDed together. <include> can also represent a nested included resource, such as filter=activities.notes:subject:cn:NoteSubject.",
+        "explode": true,
+        "in": "query",
+        "name": "filter",
+        "schema": {
+          "items": { "type": "string" },
+          "type": "array"
+        },
+        "style": "form"
+      },
+      "filterByUser": {
+        "description": "Whether or not to filter endpoints and schema properties by the authorization of this user. Defaults to false.",
+        "in": "query",
+        "name": "filterByUser",
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "gwLanguageHeader": {
+        "description": "If specified, this header will set the language used when processing the request",
+        "in": "header",
+        "name": "GW-Language",
+        "schema": { "type": "string" }
+      },
+      "gwLocaleHeader": {
+        "description": "If specified, this header will set the locale used when processing the request",
+        "in": "header",
+        "name": "GW-Locale",
+        "schema": { "type": "string" }
+      },
+      "gwSchemaProperty": {
+        "description": "If specified and the operation returns json with a defined schema, this will add a property, '$GW-Schema',  with the fully qualified name of the object's schema.",
+        "in": "header",
+        "name": "GW-IncludeSchemaProperty",
+        "schema": { "type": "boolean" }
+      },
+      "gwTraceability": {
+        "description": "This header permits a customer to trace a request from its initial reception through all of the subsequent applications that were invoked to handle that request. The actual traceability id present in the MDC and logs (and returned in the response), is dependent on the implementation of TraceabilityIDPlugin. The default implementation uses this value, if specified, or a generated UID.  However, another implementation may always generate a unique id and just log  the relationship between these incoming values and the generated UID. Note: that this header can be repeated, but the resulting string will just be the comma separated values.",
+        "in": "header",
+        "name": "X-Correlation-ID",
+        "schema": { "type": "string" }
+      },
+      "gwTransactionID": {
+        "description": "If specified and this operation results in a database commit, this header's value must not have been submitted before.  This value must be globally unique across all clients, apis and webservices. It is used for those transaction that are not idempotent. Unless this is explicitly referenced for an operation it is not required.",
+        "in": "header",
+        "name": "GW-DBTransaction-ID",
+        "required": true,
+        "schema": { "type": "string" }
+      },
+      "gwUnknownPropertyHeader": {
+        "description": "If specified, this header will drive the behavior for unknown property handling",
+        "in": "header",
+        "name": "GW-UnknownPropertyHandling",
+        "schema": {
+          "enum": ["log", "reject", "ignore"],
+          "type": "string"
+        }
+      },
+      "gwUnknownQueryParameterHeader": {
+        "description": "If specified, this header will drive the behavior for unknown query parameter handling.  Default is to reject them.",
+        "in": "header",
+        "name": "GW-UnknownQueryParamHandling",
+        "schema": {
+          "enum": ["log", "reject", "ignore"],
+          "type": "string"
+        }
+      },
+      "gwValidateResponseHandling": {
+        "description": "If specified, this header permits the client to override the behavior around validating response",
+        "in": "header",
+        "name": "GW-ValidateResponseHandling",
+        "schema": { "type": "boolean" }
+      },
+      "include": {
+        "description": "Indicates that the caller would like additional resources returned along with this call in the \"included\" section of the response.  The include parameter can appear multiple times, and is a comma-separated list of additional resources to include.  Nested inclusions can be specified by prefixing the inclusion list with the name of the included property and :.  For example, to include the vehicleincidents and mainContact for a Claim, as well as the driver of the vehicle, you could specify ?include=vehicleincidents,mainContact&include=vehicleincidents:driver. The exact set of options for the include parameter depends upon the particular endpoint.",
+        "explode": true,
+        "in": "query",
+        "name": "include",
+        "schema": {
+          "items": { "type": "string" },
+          "type": "array"
+        },
+        "style": "form"
+      },
+      "includeTotal": {
+        "description": "The includeTotal parameter is used to indicate that the results should include a count of the total number of results available, in cases where the list of results is paginated and not all results are included.  This parameter is of the form includeTotal=<true|false> or includeTotal=<include>:<true|false>.  Specifying the <include>: prefix on the query parameter will apply the includeTotal option to the included list. <include> can also represent a nested included resource, such as includeTotal=activities.notes:true. Calculating the total size of a list can require additional database load, and the option is turned off by default. The returned total is capped at 1000, and will not be accurate if the resource contains more than 1000 elements.",
+        "explode": true,
+        "in": "query",
+        "name": "includeTotal",
+        "schema": {
+          "items": { "type": "string" },
+          "type": "array"
+        },
+        "style": "form"
+      },
+      "lineId": {
+        "in": "path",
+        "name": "lineId",
+        "required": true,
+        "schema": { "type": "string" }
+      },
+      "pageOffset": {
+        "description": "The pageOffset parameter is used to indicate the first result to fetch, in order to page through a list of results. The token may represent a zero-indexed offset, but it may also represent something else such as the id of the last or previous result, depending upon how the server implements pagination for a particular operation. As a general rule, pagination of an API should use the \"next\" and \"prev\" links on the query results to navigate back and forth, rather than attempting to manually construct the pageOffset value.",
+        "in": "query",
+        "name": "pageOffset",
+        "schema": { "type": "string" }
+      },
+      "pageSize": {
+        "description": "The maximum number of results to return in the result.  If not specified, the default settings for that endpoint will be used; each endpoint also defines a maximum pageSize.  The pageSize parameter can be specified as either pageSize=<size> or pageSize=<include>:<size>, where <include> represents the name of an included resource.  For example, ?pageSize=100 will indicate that 100 resources should be returned, while ?include=activities&pageSize=activities:5 will indicate that 5 activities should be returned along with the response. <include> can also represent a nested included resource, such as pageSize=activities.notes:5.",
+        "explode": true,
+        "in": "query",
+        "name": "pageSize",
+        "schema": {
+          "items": { "type": "string" },
+          "type": "array"
+        },
+        "style": "form"
+      },
+      "prettyPrintSchema": {
+        "description": "Whether or not to pretty-print the returned schema, making it larger but more human readable.  Defaults to false.",
+        "in": "query",
+        "name": "prettyPrint",
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "productId": {
+        "in": "path",
+        "name": "productId",
+        "required": true,
+        "schema": { "type": "string" }
+      },
+      "sort": {
+        "description": "The sort parameter is used to control the sorting of the returned results.  The sort parameter can appear multiple times in the query string, and is either of the form sort=<include>:<properties> or sort=<properties>, where <properties> is a comma-separated list of properties to sort on and <include> represents the name of an included resource.  Property names can be prefixed with '-' to specify a descending sort on that property, otherwise the default is an ascending sort.  The set of valid sort property names depends on the specific endpoint being requested. For example, ?sort=priority,-dueDate will specify a primary sort on priority (ascending) and a secondary sort on dueDate (descending).  ?include=activities&sort=activities:priority,-dueDate specifies the same sort values, but applies them to the included \"activities\" list rather than to the primary resource. <include> can also represent a nested included resource, such as sort=activities.notes:dueDate.",
+        "explode": true,
+        "in": "query",
+        "name": "sort",
+        "schema": {
+          "items": { "type": "string" },
+          "type": "array"
+        },
+        "style": "form"
+      }
+    },
+    "schemas": {
+      "ActivatedEditions": {
+        "properties": {
+          "editions": {
+            "items": { "$ref": "#/components/schemas/Edition" },
+            "type": "array"
+          }
+        },
+        "required": ["editions"],
+        "type": "object"
+      },
+      "ActivatedEditionsData": {
+        "properties": {
+          "attributes": { "$ref": "#/components/schemas/ActivatedEditions" }
+        },
+        "required": ["attributes"],
+        "type": "object"
+      },
+      "ActivatedEditionsListResponse": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/ActivatedEditionsData" }
+        },
+        "required": ["data"],
+        "type": "object"
+      },
+      "BatchRequest": {
+        "description": "Defines the structure of a batch request, which consists of an array of sub-requests",
+        "properties": {
+          "requests": {
+            "description": "The array of sub-requests",
+            "items": { "$ref": "#/components/schemas/BatchSubRequest" },
+            "type": "array"
+          }
+        },
+        "required": ["requests"],
+        "type": "object"
+      },
+      "BatchResponse": {
+        "description": "Defines the structure of the response to a batch request.  The 'responses' array will have one element for every entry in the 'requests' array, and responses will appear in the same order.",
+        "properties": {
+          "responses": {
+            "description": "The array of sub-responses, appearing in the same order as the elements in the 'requests' array of the request",
+            "items": { "$ref": "#/components/schemas/BatchSubResponse" },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "BatchSubRequest": {
+        "description": "Defines the structure of an individual sub-request of the batch request",
+        "properties": {
+          "body": {
+            "description": "The body of the sub-request, if any",
+            "type": "object"
+          },
+          "headers": {
+            "description": "Defines headers that will be included as part of the sub-request.  Any headers defined using this property will override header values inherited from the main request.  Any headers present on the main request that are not defined in this array will be inherited when the sub-request is made, with the exception of the 'GW-Checksum' header.",
+            "items": { "$ref": "#/components/schemas/Header" },
+            "type": "array"
+          },
+          "method": {
+            "description": "The HTTP method for the sub-request",
+            "enum": [
+              "delete",
+              "head",
+              "get",
+              "options",
+              "patch",
+              "post",
+              "put"
+            ],
+            "type": "string"
+          },
+          "onFail": {
+            "description": "Controls whether or not subsequent sub-requests are processed if this sub-request fails.  The default behavior, if unspecified, is to continue processing sub-request.  The 'abort' option specifies that all subsequent sub-requests will be skipped.",
+            "enum": ["abort", "continue"],
+            "type": "string"
+          },
+          "path": {
+            "description": "Specifies the path for the sub-request.  This path is relative to the root of the API hosting the batch endpoint.  For example, if the batch endpoint is <servlet>/rest/common/v1/batch, then a path of '/activities' will mean a request against <servlet>/rest/common/v1/activities.  The path must start with '/' and cannot contain whitespace.",
+            "minLength": 1,
+            "pattern": "^/[\\S]*$",
+            "type": "string"
+          },
+          "query": {
+            "description": "The query string to use for the sub-request, if any",
+            "type": "string"
+          }
+        },
+        "required": ["method", "path"],
+        "type": "object"
+      },
+      "BatchSubResponse": {
+        "description": "Defines the format of the sub-response.  In addition to the properties listed here, the 'body' property will include the body of the response as a JSON object.",
+        "properties": {
+          "body": {
+            "description": "The body of the response, if any",
+            "type": "object"
+          },
+          "code": {
+            "description": "The HTTP status code for the sub-response",
+            "type": "integer"
+          },
+          "headers": {
+            "description": "The headers returned for the sub-response",
+            "items": { "$ref": "#/components/schemas/Header" },
+            "type": "array"
+          },
+          "skipped": {
+            "description": "This property will be set to 'true' if the corresponding sub-request was not processed due to a prior failed request that specified the \"onFail\": \"abort\" option",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "ClauseHierarchy": {
+        "properties": {
+          "childClause": { "type": "string" },
+          "editionCode": { "type": "string" },
+          "parentClause": { "type": "string" }
+        },
+        "type": "object"
+      },
+      "CostCode": {
+        "properties": {
+          "chargePattern": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "ChargePattern"
+          },
+          "costCode": {
+            "maxLength": 64,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "costName": {
+            "maxLength": 255,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "description": {
+            "maxLength": 255,
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "overrideable": { "type": "boolean" },
+          "prorationMethod": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "ProrationMethod"
+          },
+          "rateAmountType": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "RateAmountType"
+          }
+        },
+        "type": "object"
+      },
+      "CostCodeData": {
+        "properties": {
+          "attributes": { "$ref": "#/components/schemas/CostCode" },
+          "checksum": { "type": "string" },
+          "id": { "type": "string" },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "method": {
+            "enum": ["post", "patch"],
+            "type": "string"
+          },
+          "refid": { "type": "string" },
+          "related": {
+            "$ref": "#/components/schemas/RelatedCollections",
+            "readOnly": true
+          },
+          "type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "uri": { "type": "string" }
+        },
+        "required": ["attributes"],
+        "type": "object"
+      },
+      "CostCodeList": {
+        "properties": {
+          "count": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "data": {
+            "items": { "$ref": "#/components/schemas/CostCodeData" },
+            "type": "array"
+          },
+          "included": {
+            "$ref": "#/components/schemas/ReferenceDataInclusions"
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "total": {
+            "readOnly": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "CovTermChoice": {
+        "properties": {
+          "code": { "type": "string" },
+          "currency": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "Currency"
+          },
+          "description": { "type": "string" },
+          "descriptionKey": { "type": "string" },
+          "packageTerms": {
+            "items": { "$ref": "#/components/schemas/PackageTerm" },
+            "type": "array"
+          },
+          "priority": { "type": "integer" },
+          "refCode": { "type": "string" },
+          "value": {
+            "format": "gw-bigdecimal",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "CovTermDefault": {
+        "properties": {
+          "currency": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "Currency"
+          },
+          "defaultValue": { "type": "string" }
+        },
+        "type": "object"
+      },
+      "CovTermLimits": {
+        "properties": {
+          "currency": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "Currency"
+          },
+          "defaultValue": {
+            "format": "gw-bigdecimal",
+            "type": "string"
+          },
+          "maxValue": {
+            "format": "gw-bigdecimal",
+            "type": "string"
+          },
+          "minValue": {
+            "format": "gw-bigdecimal",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "CovTermPattern": {
+        "properties": {
+          "aggregationModel": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "CovTermModelAgg"
+          },
+          "choices": {
+            "items": { "$ref": "#/components/schemas/CovTermChoice" },
+            "type": "array"
+          },
+          "covTermType": { "type": "string" },
+          "defaults": {
+            "items": { "$ref": "#/components/schemas/CovTermDefault" },
+            "type": "array"
+          },
+          "description": { "type": "string" },
+          "descriptionKey": { "type": "string" },
+          "id": { "type": "string" },
+          "limits": {
+            "items": { "$ref": "#/components/schemas/CovTermLimits" },
+            "type": "array"
+          },
+          "modelType": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "CovTermModelType"
+          },
+          "name": { "type": "string" },
+          "nameKey": { "type": "string" },
+          "priority": { "type": "integer" },
+          "refCode": { "type": "string" },
+          "required": { "type": "boolean" },
+          "restrictionModel": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "CovTermModelRest"
+          },
+          "rules": {
+            "items": { "$ref": "#/components/schemas/RuleSet" },
+            "type": "array"
+          },
+          "typefilter": { "type": "string" },
+          "typelist": { "type": "string" },
+          "valueType": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "CovTermModelVal"
+          }
+        },
+        "type": "object"
+      },
+      "CoverablePattern": {
+        "properties": {
+          "clauseAvailabilityRules": {
+            "items": { "$ref": "#/components/schemas/RuleSet" },
+            "type": "array"
+          },
+          "clauseParentRelationships": {
+            "items": { "$ref": "#/components/schemas/ClauseHierarchy" },
+            "type": "array"
+          },
+          "coverageAvailabilityRules": {
+            "items": { "$ref": "#/components/schemas/RuleSet" },
+            "type": "array"
+          },
+          "directChildren": {
+            "items": { "type": "string" },
+            "type": "array"
+          },
+          "exposures": {
+            "items": { "type": "string" },
+            "type": "array"
+          },
+          "fieldAvailabilityRules": {
+            "items": { "$ref": "#/components/schemas/RuleSet" },
+            "type": "array"
+          },
+          "fields": {
+            "items": { "$ref": "#/components/schemas/MetadataField" },
+            "type": "array"
+          },
+          "id": { "type": "string" },
+          "parent": { "type": "string" }
+        },
+        "type": "object"
+      },
+      "CoverablePatternData": {
+        "properties": {
+          "attributes": { "$ref": "#/components/schemas/CoverablePattern" },
+          "checksum": { "type": "string" },
+          "id": { "type": "string" },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "method": {
+            "enum": ["post", "patch"],
+            "type": "string"
+          },
+          "refid": { "type": "string" },
+          "related": {
+            "$ref": "#/components/schemas/RelatedCollections",
+            "readOnly": true
+          },
+          "type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "uri": { "type": "string" }
+        },
+        "required": ["attributes"],
+        "type": "object"
+      },
+      "CoverablePatternList": {
+        "properties": {
+          "count": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "data": {
+            "items": { "$ref": "#/components/schemas/CoverablePatternData" },
+            "type": "array"
+          },
+          "included": {
+            "$ref": "#/components/schemas/ProductDefinitionInclusions"
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "total": {
+            "readOnly": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "CoverablePatternResponse": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/CoverablePatternData" },
+          "included": {
+            "$ref": "#/components/schemas/ProductDefinitionInclusions"
+          }
+        },
+        "type": "object"
+      },
+      "CoverageCategory": {
+        "properties": {
+          "description": { "type": "string" },
+          "descriptionKey": { "type": "string" },
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "nameKey": { "type": "string" },
+          "priority": { "type": "integer" },
+          "refCode": { "type": "string" }
+        },
+        "type": "object"
+      },
+      "CoveragePattern": {
+        "properties": {
+          "clauseType": { "type": "string" },
+          "covTerms": {
+            "items": { "$ref": "#/components/schemas/CovTermPattern" },
+            "type": "array"
+          },
+          "coverageCategory": {
+            "$ref": "#/components/schemas/CoverageCategory"
+          },
+          "description": { "type": "string" },
+          "descriptionKey": { "type": "string" },
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "nameKey": { "type": "string" },
+          "priority": { "type": "integer" },
+          "refCode": { "type": "string" },
+          "scheduledItemProperties": {
+            "items": { "$ref": "#/components/schemas/ScheduledItemProperty" },
+            "type": "array"
+          },
+          "termAvailabilityRules": {
+            "items": { "$ref": "#/components/schemas/RuleSet" },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "CoveragePatternData": {
+        "properties": {
+          "attributes": { "$ref": "#/components/schemas/CoveragePattern" },
+          "checksum": { "type": "string" },
+          "id": { "type": "string" },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "method": {
+            "enum": ["post", "patch"],
+            "type": "string"
+          },
+          "refid": { "type": "string" },
+          "related": {
+            "$ref": "#/components/schemas/RelatedCollections",
+            "readOnly": true
+          },
+          "type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "uri": { "type": "string" }
+        },
+        "required": ["attributes"],
+        "type": "object"
+      },
+      "CoveragePatternList": {
+        "properties": {
+          "count": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "data": {
+            "items": { "$ref": "#/components/schemas/CoveragePatternData" },
+            "type": "array"
+          },
+          "included": {
+            "$ref": "#/components/schemas/ProductDefinitionInclusions"
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "total": {
+            "readOnly": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "Edition": {
+        "properties": {
+          "editionCode": { "type": "string" },
+          "effectiveDate": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ExposurePattern": {
+        "properties": {
+          "coverable": { "type": "string" },
+          "fieldAvailabilityRules": {
+            "items": { "$ref": "#/components/schemas/RuleSet" },
+            "type": "array"
+          },
+          "fields": {
+            "items": { "$ref": "#/components/schemas/MetadataField" },
+            "type": "array"
+          },
+          "id": { "type": "string" }
+        },
+        "type": "object"
+      },
+      "ExposurePatternData": {
+        "properties": {
+          "attributes": { "$ref": "#/components/schemas/ExposurePattern" },
+          "checksum": { "type": "string" },
+          "id": { "type": "string" },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "method": {
+            "enum": ["post", "patch"],
+            "type": "string"
+          },
+          "refid": { "type": "string" },
+          "related": {
+            "$ref": "#/components/schemas/RelatedCollections",
+            "readOnly": true
+          },
+          "type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "uri": { "type": "string" }
+        },
+        "required": ["attributes"],
+        "type": "object"
+      },
+      "ExposurePatternList": {
+        "properties": {
+          "count": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "data": {
+            "items": { "$ref": "#/components/schemas/ExposurePatternData" },
+            "type": "array"
+          },
+          "included": {
+            "$ref": "#/components/schemas/ProductDefinitionInclusions"
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "total": {
+            "readOnly": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "ExposurePatternResponse": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/ExposurePatternData" },
+          "included": {
+            "$ref": "#/components/schemas/ProductDefinitionInclusions"
+          }
+        },
+        "type": "object"
+      },
+      "Header": {
+        "description": "An HTTP request or response header",
+        "properties": {
+          "name": {
+            "description": "The header name",
+            "type": "string"
+          },
+          "value": {
+            "description": "The header value",
+            "type": "string"
+          }
+        },
+        "required": ["name", "value"],
+        "type": "object"
+      },
+      "LinkObject": {
+        "properties": {
+          "href": { "type": "string" },
+          "methods": {
+            "items": { "type": "string" },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "Links": {
+        "additionalProperties": { "$ref": "#/components/schemas/LinkObject" },
+        "type": "object"
+      },
+      "MetadataField": {
+        "properties": {
+          "description": { "type": "string" },
+          "fieldProperties": {
+            "$ref": "#/components/schemas/MetadataFieldPropertyMap"
+          },
+          "label": { "type": "string" },
+          "labelKey": { "type": "string" },
+          "name": { "type": "string" },
+          "referenceTable": { "type": "string" },
+          "referencedType": { "type": "string" },
+          "rules": {
+            "items": { "$ref": "#/components/schemas/RuleSet" },
+            "type": "array"
+          },
+          "type": { "type": "string" },
+          "typelist": { "type": "string" }
+        },
+        "type": "object"
+      },
+      "MetadataFieldProperty": {
+        "properties": {
+          "type": { "type": "string" },
+          "value": { "type": "string" }
+        },
+        "type": "object"
+      },
+      "MetadataFieldPropertyMap": {
+        "additionalProperties": {
+          "$ref": "#/components/schemas/MetadataFieldProperty"
+        },
+        "type": "object"
+      },
+      "PackageTerm": {
+        "properties": {
+          "aggregationModel": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "CovTermModelAgg"
+          },
+          "name": { "type": "string" },
+          "nameKey": { "type": "string" },
+          "restrictionModel": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "CovTermModelRest"
+          },
+          "value": {
+            "format": "gw-bigdecimal",
+            "type": "string"
+          },
+          "valueType": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "CovTermModelVal"
+          }
+        },
+        "type": "object"
+      },
+      "PolicyLinePattern": {
+        "properties": {
+          "availableCoverageCurrencies": {
+            "items": {
+              "$ref": "#/components/schemas/TypeKeyReference",
+              "x-gw-typelist": "Currency"
+            },
+            "type": "array"
+          },
+          "clauseAvailabilityRules": {
+            "items": { "$ref": "#/components/schemas/RuleSet" },
+            "type": "array"
+          },
+          "clauseParentRelationships": {
+            "items": { "$ref": "#/components/schemas/ClauseHierarchy" },
+            "type": "array"
+          },
+          "coverageAvailabilityRules": {
+            "items": { "$ref": "#/components/schemas/RuleSet" },
+            "type": "array"
+          },
+          "coverageCategories": {
+            "items": { "$ref": "#/components/schemas/CoverageCategory" },
+            "type": "array"
+          },
+          "description": { "type": "string" },
+          "descriptionKey": { "type": "string" },
+          "editions": {
+            "items": { "$ref": "#/components/schemas/Edition" },
+            "type": "array"
+          },
+          "fieldAvailabilityRules": {
+            "items": { "$ref": "#/components/schemas/RuleSet" },
+            "type": "array"
+          },
+          "fields": {
+            "items": { "$ref": "#/components/schemas/MetadataField" },
+            "type": "array"
+          },
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "nameKey": { "type": "string" },
+          "priority": { "type": "integer" },
+          "refCode": { "type": "string" }
+        },
+        "type": "object"
+      },
+      "PolicyLinePatternData": {
+        "properties": {
+          "attributes": { "$ref": "#/components/schemas/PolicyLinePattern" },
+          "checksum": { "type": "string" },
+          "id": { "type": "string" },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "method": {
+            "enum": ["post", "patch"],
+            "type": "string"
+          },
+          "refid": { "type": "string" },
+          "related": {
+            "$ref": "#/components/schemas/RelatedCollections",
+            "readOnly": true
+          },
+          "type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "uri": { "type": "string" }
+        },
+        "required": ["attributes"],
+        "type": "object"
+      },
+      "PolicyLinePatternList": {
+        "properties": {
+          "count": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "data": {
+            "items": { "$ref": "#/components/schemas/PolicyLinePatternData" },
+            "type": "array"
+          },
+          "included": {
+            "$ref": "#/components/schemas/ProductDefinitionInclusions"
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "total": {
+            "readOnly": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "PolicyLinePatternQuestion": {
+        "properties": {
+          "questions": {
+            "items": { "$ref": "#/components/schemas/QuestionPattern" },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "PolicyLinePatternQuestions": {
+        "properties": {
+          "products": {
+            "$ref": "#/components/schemas/PolicyLinePatternQuestionsMap"
+          }
+        },
+        "type": "object"
+      },
+      "PolicyLinePatternQuestionsMap": {
+        "additionalProperties": {
+          "$ref": "#/components/schemas/PolicyLinePatternQuestion"
+        },
+        "type": "object"
+      },
+      "PolicyLinePatternResponse": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/PolicyLinePatternData" },
+          "included": {
+            "$ref": "#/components/schemas/ProductDefinitionInclusions"
+          }
+        },
+        "type": "object"
+      },
+      "PolicyLineQuestionsData": {
+        "properties": {
+          "attributes": {
+            "$ref": "#/components/schemas/PolicyLinePatternQuestions"
+          },
+          "checksum": { "type": "string" },
+          "id": { "type": "string" },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "method": {
+            "enum": ["post", "patch"],
+            "type": "string"
+          },
+          "refid": { "type": "string" },
+          "related": {
+            "$ref": "#/components/schemas/RelatedCollections",
+            "readOnly": true
+          },
+          "type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "uri": { "type": "string" }
+        },
+        "required": ["attributes"],
+        "type": "object"
+      },
+      "PolicyLineQuestionsResponse": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/PolicyLineQuestionsData" }
+        },
+        "type": "object"
+      },
+      "ProductDefinitionInclusions": {
+        "properties": {
+          "CoverablePattern": {
+            "items": { "$ref": "#/components/schemas/CoverablePatternData" },
+            "type": "array"
+          },
+          "CoveragePattern": {
+            "items": { "$ref": "#/components/schemas/CoveragePatternData" },
+            "type": "array"
+          },
+          "ExposurePattern": {
+            "items": { "$ref": "#/components/schemas/ExposurePatternData" },
+            "type": "array"
+          },
+          "PolicyLinePattern": {
+            "items": { "$ref": "#/components/schemas/PolicyLinePatternData" },
+            "type": "array"
+          },
+          "QuestionPattern": {
+            "items": { "$ref": "#/components/schemas/QuestionPatternData" },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "ProductPattern": {
+        "properties": {
+          "abbreviation": { "type": "string" },
+          "availableTermTypes": {
+            "items": {
+              "$ref": "#/components/schemas/TypeKeyReference",
+              "x-gw-typelist": "TermType"
+            },
+            "type": "array"
+          },
+          "defaultTermType": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "TermType"
+          },
+          "description": { "type": "string" },
+          "descriptionKey": { "type": "string" },
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "nameKey": { "type": "string" },
+          "priority": { "type": "integer" },
+          "productAccountType": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "ProductAccountType"
+          },
+          "productType": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "ProductType"
+          },
+          "refCode": { "type": "string" },
+          "visualized": { "type": "boolean" }
+        },
+        "type": "object"
+      },
+      "ProductPatternData": {
+        "properties": {
+          "attributes": { "$ref": "#/components/schemas/ProductPattern" },
+          "checksum": { "type": "string" },
+          "id": { "type": "string" },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "method": {
+            "enum": ["post", "patch"],
+            "type": "string"
+          },
+          "refid": { "type": "string" },
+          "related": {
+            "$ref": "#/components/schemas/RelatedCollections",
+            "readOnly": true
+          },
+          "type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "uri": { "type": "string" }
+        },
+        "required": ["attributes"],
+        "type": "object"
+      },
+      "ProductPatternList": {
+        "properties": {
+          "count": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "data": {
+            "items": { "$ref": "#/components/schemas/ProductPatternData" },
+            "type": "array"
+          },
+          "included": {
+            "$ref": "#/components/schemas/ProductDefinitionInclusions"
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "total": {
+            "readOnly": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "ProductPatternResponse": {
+        "properties": {
+          "data": { "$ref": "#/components/schemas/ProductPatternData" },
+          "included": {
+            "$ref": "#/components/schemas/ProductDefinitionInclusions"
+          }
+        },
+        "type": "object"
+      },
+      "QuestionChoice": {
+        "properties": {
+          "code": { "type": "string" },
+          "description": { "type": "string" },
+          "descriptionKey": { "type": "string" },
+          "name": { "type": "string" },
+          "nameKey": { "type": "string" },
+          "priority": { "type": "integer" }
+        },
+        "type": "object"
+      },
+      "QuestionFilter": {
+        "properties": {
+          "answer": { "type": "string" },
+          "filterQuestion": { "$ref": "#/components/schemas/SimpleReference" }
+        },
+        "type": "object"
+      },
+      "QuestionPattern": {
+        "properties": {
+          "choices": {
+            "items": { "$ref": "#/components/schemas/QuestionChoice" },
+            "type": "array"
+          },
+          "defaultAnswer": { "type": "string" },
+          "filters": {
+            "items": { "$ref": "#/components/schemas/QuestionFilter" },
+            "type": "array"
+          },
+          "id": { "type": "string" },
+          "indent": { "type": "integer" },
+          "priority": { "type": "integer" },
+          "questionFormat": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "QuestionFormat"
+          },
+          "questionSet": { "$ref": "#/components/schemas/QuestionSetPattern" },
+          "questionSetType": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "QuestionSetType"
+          },
+          "questionType": {
+            "$ref": "#/components/schemas/TypeKeyReference",
+            "x-gw-typelist": "QuestionType"
+          },
+          "required": { "type": "boolean" },
+          "supplementalTexts": {
+            "items": {
+              "$ref": "#/components/schemas/QuestionSupplementalText"
+            },
+            "type": "array"
+          },
+          "text": { "type": "string" }
+        },
+        "type": "object"
+      },
+      "QuestionPatternData": {
+        "properties": {
+          "attributes": { "$ref": "#/components/schemas/QuestionPattern" },
+          "checksum": { "type": "string" },
+          "id": { "type": "string" },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "method": {
+            "enum": ["post", "patch"],
+            "type": "string"
+          },
+          "refid": { "type": "string" },
+          "related": {
+            "$ref": "#/components/schemas/RelatedCollections",
+            "readOnly": true
+          },
+          "type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "uri": { "type": "string" }
+        },
+        "required": ["attributes"],
+        "type": "object"
+      },
+      "QuestionPatternList": {
+        "properties": {
+          "count": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "data": {
+            "items": { "$ref": "#/components/schemas/QuestionPatternData" },
+            "type": "array"
+          },
+          "included": {
+            "$ref": "#/components/schemas/ProductDefinitionInclusions"
+          },
+          "links": {
+            "$ref": "#/components/schemas/Links",
+            "readOnly": true
+          },
+          "total": {
+            "readOnly": true,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "QuestionSetPattern": {
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "nameKey": { "type": "string" },
+          "priority": { "type": "integer" }
+        },
+        "type": "object"
+      },
+      "QuestionSupplementalText": {
+        "properties": {
+          "priority": { "type": "integer" },
+          "text": { "type": "string" }
+        },
+        "type": "object"
+      },
+      "ReferenceDataInclusions": { "type": "object" },
+      "RelatedCollection": {
+        "properties": {
+          "count": { "type": "integer" },
+          "data": {
+            "items": { "$ref": "#/components/schemas/SimpleReference" },
+            "type": "array"
+          },
+          "total": { "type": "integer" }
+        },
+        "type": "object"
+      },
+      "RelatedCollections": {
+        "additionalProperties": {
+          "$ref": "#/components/schemas/RelatedCollection"
+        },
+        "type": "object"
+      },
+      "RuleSet": {
+        "properties": {
+          "editionCode": { "type": "string" },
+          "jsonLogic": { "type": "string" },
+          "staticValue": { "type": "string" }
+        },
+        "type": "object"
+      },
+      "ScheduledItemProperty": {
+        "properties": {
+          "choices": {
+            "items": { "$ref": "#/components/schemas/CovTermChoice" },
+            "type": "array"
+          },
+          "description": { "type": "string" },
+          "descriptionKey": { "type": "string" },
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "nameKey": { "type": "string" },
+          "priority": { "type": "integer" },
+          "valueType": { "type": "string" }
+        },
+        "type": "object"
+      },
+      "SimpleReference": {
+        "properties": {
+          "displayName": { "type": "string" },
+          "id": { "type": "string" },
+          "jsonPath": {
+            "readOnly": true,
+            "type": "string",
+            "x-gw-defaultViews": ["none"]
+          },
+          "refid": { "type": "string" },
+          "type": { "type": "string" },
+          "uri": { "type": "string" }
+        },
+        "type": "object",
+        "x-gw-resourceReference": true
+      },
+      "TypeKeyReference": {
+        "properties": {
+          "code": { "type": "string" },
+          "name": {
+            "description": "This property is ignored on updates.",
+            "type": "string"
+          }
+        },
+        "required": ["code"],
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "basicAuth": {
+        "scheme": "basic",
+        "type": "http"
+      }
+    }
+  },
+  "info": {
+    "description": "APIs for PolicyCenter product definition metadata",
+    "title": "Product Definition API",
+    "version": "1.2.0"
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/batch": {
+      "post": {
+        "description": "Post a list of sub-requests to make against this endpoint.  Sub-requests will be executed serially, in the order they are specified in the \"requests\" property of the input.  Responses to each sub-request will then be batched up and returned all together.  Sub-requests inherit the headers from the main request, with the exception of the GW-Checksum header, but headers can be specified on the sub-request and will override any headers from the main request.",
+        "operationId": "batchRequest",
+        "parameters": [
+          {
+            "description": "Controls what response headers, if any, are included for sub-responses.  If unspecified, or set to the value \"*all\", all headers for sub-responses will be returned.  If set to the value \"*none\", no headers for sub-responses will be returned.  Otherwise, this parameter can consist of a comma-separated list of the names of headers that should be included on sub-responses.",
+            "explode": false,
+            "in": "query",
+            "name": "includeResponseHeaders",
+            "required": false,
+            "schema": {
+              "items": { "type": "string" },
+              "type": "array"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/BatchRequest" }
+            }
+          },
+          "description": "The body of the batch request",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/BatchResponse" }
+              }
+            },
+            "description": "The batch request itself was well-formed; individual sub-requests may have succeeded or failed"
+          }
+        },
+        "summary": "Issue multiple requests at once as a non-transactional batch"
+      }
+    },
+    "/lines": {
+      "get": {
+        "description": "Return the list of policy lines",
+        "operationId": "getAvailablePolicyLines",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/pageOffset" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyLinePatternList"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Return the list of policy lines",
+        "x-gw-childResourceType": "PolicyLinePattern",
+        "x-gw-resourceType": "PolicyLinePatterns"
+      }
+    },
+    "/lines/{lineId}": {
+      "get": {
+        "description": "Return the details of a given policy line",
+        "operationId": "getPolicyLine",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyLinePatternResponse"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Return the details of a given policy line",
+        "x-gw-resourceType": "PolicyLinePattern"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/lineId" }]
+    },
+    "/lines/{lineId}/activate-editions": {
+      "parameters": [{ "$ref": "#/components/parameters/lineId" }],
+      "post": {
+        "description": "Activate preloaded editions for a policy line",
+        "operationId": "activatePreLoadedEditions",
+        "parameters": [{ "$ref": "#/components/parameters/fields" }],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivatedEditionsListResponse"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Activate preloaded editions for a policy line",
+        "x-gw-resourceType": "PolicyLinePattern"
+      }
+    },
+    "/lines/{lineId}/coverables": {
+      "get": {
+        "description": "Return all coverable sub-entities of the line",
+        "operationId": "getPolicyLineCoverables",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/pageOffset" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoverablePatternList"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Return all coverable sub-entities of the line",
+        "x-gw-childResourceType": "CoverablePattern",
+        "x-gw-resourceType": "PolicyLinePatternCoverables"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/lineId" }]
+    },
+    "/lines/{lineId}/coverables/{coverableId}": {
+      "get": {
+        "description": "Return details of a coverable sub-entity",
+        "operationId": "getCoverable",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoverablePatternResponse"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Return details of a coverable sub-entity",
+        "x-gw-resourceType": "CoverablePattern"
+      },
+      "parameters": [
+        { "$ref": "#/components/parameters/lineId" },
+        { "$ref": "#/components/parameters/coverableId" }
+      ]
+    },
+    "/lines/{lineId}/coverables/{coverableId}/coverages": {
+      "get": {
+        "description": "Return the coverages applicable to a particular coverable",
+        "operationId": "getCoverableCoverages",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/pageOffset" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CoveragePatternList" }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Return the coverages applicable to a particular coverable",
+        "x-gw-childResourceType": "CoveragePattern",
+        "x-gw-resourceType": "CoverablePatternCoverages"
+      },
+      "parameters": [
+        { "$ref": "#/components/parameters/lineId" },
+        { "$ref": "#/components/parameters/coverableId" }
+      ]
+    },
+    "/lines/{lineId}/coverages": {
+      "get": {
+        "description": "Return the line-level coverages",
+        "operationId": "getPolicyLineCoverages",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/pageOffset" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CoveragePatternList" }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Return the line-level coverages",
+        "x-gw-childResourceType": "CoveragePattern",
+        "x-gw-resourceType": "PolicyLinePatternCoverages"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/lineId" }]
+    },
+    "/lines/{lineId}/exposures": {
+      "get": {
+        "description": "Return all exposure sub-entities of the line",
+        "operationId": "getPolicyLineExposures",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/pageOffset" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ExposurePatternList" }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Return all exposure sub-entities of the line",
+        "x-gw-childResourceType": "ExposurePattern",
+        "x-gw-resourceType": "PolicyLinePatternExposures"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/lineId" }]
+    },
+    "/lines/{lineId}/exposures/{exposureId}": {
+      "get": {
+        "description": "Return details of an exposure sub-entity",
+        "operationId": "getExposure",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExposurePatternResponse"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Return details of an exposure sub-entity",
+        "x-gw-resourceType": "ExposurePattern"
+      },
+      "parameters": [
+        { "$ref": "#/components/parameters/lineId" },
+        { "$ref": "#/components/parameters/exposureId" }
+      ]
+    },
+    "/lines/{lineId}/questions": {
+      "get": {
+        "description": "Return the line-level questions",
+        "operationId": "getPolicyLineQuestions",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyLineQuestionsResponse"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Return the line-level questions",
+        "x-gw-resourceType": "PolicyLinePatternQuestions"
+      },
+      "parameters": [
+        { "$ref": "#/components/parameters/productId" },
+        { "$ref": "#/components/parameters/lineId" }
+      ]
+    },
+    "/openapi.json": {
+      "get": {
+        "description": "Return the Open API 3.0 representation of the schema",
+        "operationId": "getOpenApiSchema",
+        "parameters": [
+          { "$ref": "#/components/parameters/prettyPrintSchema" },
+          { "$ref": "#/components/parameters/filterByUser" },
+          { "$ref": "#/components/parameters/enablePolymorphism" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": { "schema": { "type": "string" } }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Return the Open API 3.0 representation of the schema",
+        "x-gw-resourceType": "ProductDefinitionApiOpenApiSchema"
+      }
+    },
+    "/products": {
+      "get": {
+        "description": "Returns a list of all Products available in the system",
+        "operationId": "getProducts",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/pageOffset" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ProductPatternList" }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Returns a list of all Products available in the system",
+        "x-gw-childResourceType": "ProductPattern",
+        "x-gw-resourceType": "ProductPatterns"
+      }
+    },
+    "/products/{productId}": {
+      "get": {
+        "description": "Returns details of a single Product",
+        "operationId": "getProduct",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductPatternResponse"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Returns details of a single Product",
+        "x-gw-resourceType": "ProductPattern"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/productId" }]
+    },
+    "/products/{productId}/lines": {
+      "get": {
+        "description": "Return the policy lines for the given product",
+        "operationId": "getProductPolicyLines",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/pageOffset" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyLinePatternList"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Return the policy lines for the given product",
+        "x-gw-childResourceType": "PolicyLinePattern",
+        "x-gw-resourceType": "PolicyLinePatterns"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/productId" }]
+    },
+    "/products/{productId}/questions": {
+      "get": {
+        "description": "Return the product-level questions",
+        "operationId": "getProductQuestions",
+        "parameters": [
+          { "$ref": "#/components/parameters/fields" },
+          { "$ref": "#/components/parameters/filter" },
+          { "$ref": "#/components/parameters/include" },
+          { "$ref": "#/components/parameters/includeTotal" },
+          { "$ref": "#/components/parameters/pageSize" },
+          { "$ref": "#/components/parameters/pageOffset" },
+          { "$ref": "#/components/parameters/sort" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/QuestionPatternList" }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "summary": "Return the product-level questions",
+        "x-gw-childResourceType": "QuestionPattern",
+        "x-gw-resourceType": "ProductPatternQuestions"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/productId" }]
+    },
+    "/swagger.json": {
+      "get": {
+        "description": "Returns a Swagger 2.0 schema for this API as json",
+        "operationId": "generateDocs",
+        "responses": { "200": { "description": "Successful operation" } },
+        "summary": "Returns the Swagger schema for this API"
+      }
+    }
+  },
+  "security": [{ "basicAuth": [] }],
+  "servers": [{ "url": "http://localhost:8180/pc/rest/productdefinition/v1" }]
+}

@@ -1,0 +1,98 @@
+{
+  "docHighlighter.label": {
+    "message": "検索キーワード強調表示",
+    "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off."
+  },
+  "anonymous.positive": {
+    "message": "メールアドレス非公開です。",
+    "description": "Tells the user their identity is not revealed to us"
+  },
+  "anonymous.shareEmail": {
+    "message": "公開するにはここをクリック",
+    "description": "The button which the user can click to reveal their email to us"
+  },
+  "anonymous.enterEmail": {
+    "message": "メールアドレスを入力してください",
+    "description": "Asks the user to type in their email address"
+  },
+  "anonymous.becomeAnonymous": {
+    "message": "非公開にするにはここをクリック"
+  },
+  "anonymous.youAreSharing": {
+    "message": "メールアドレスが送信されます。",
+    "description": "Tells the user that we know their email. When they send this comment, they will send their email to us."
+  },
+  "feedback.helpful": {
+    "message": "このページの情報は役立ちましたか？"
+  },
+  "feedback.thumbsUp": {
+    "message": "役に立った",
+    "description": "The description of the \"thumbs up\" icon which the user can click to share positive feedback"
+  },
+  "feedback.thumbsDown": {
+    "message": "改善が必要",
+    "description": "The description of the \"thumbs thumbs\" icon which the user can click to share constructive feedback"
+  },
+  "feedbackDialog.thanks": {
+    "message": "ご協力ありがとうございます。",
+    "description": "Appears ot thank the user for their feedback"
+  },
+  "feedbackDialog.followUp": {
+    "message": "フィードバック情報はドキュメントチームで共有させていただきます。メールアドレス情報を送信いただければ、詳細な情報が必要になった場合に連絡をお送りします。",
+    "description": "Explains how the support team will react to user feedback"
+  },
+  "feedbackDialog.anythingElse": {
+    "message": "ご意見ありがとうございます。さらに詳しい情報の提供にご協力ください。",
+    "description": "Appears above the feedback form"
+  },
+  "feedbackDialog.comment": {
+    "message": "あなたのコメント"
+  },
+  "feedbackDialog.email": {
+    "message": "メールアドレス"
+  },
+  "feedbackDialog.clearEmail": {
+    "message": "メールアドレスをクリア"
+  },
+  "feedbackDialog.cancel": {
+    "message": "キャンセル",
+    "description": "Cancel and do not send your feedback"
+  },
+  "feedbackDialog.submit": {
+    "message": "送信",
+    "description": "Send your feedback, submit your feedback to us"
+  },
+  "internal.employeesOnly": {
+    "message": "お送りいただいた内容は Guidewire 社内でのみ共有させていただきます。"
+  },
+  "internal.noAccess": {
+    "message": "現在 {name}（{email}）としてログインしているため、このページにはアクセスできません。"
+  },
+  "internal.info.toView": {
+    "message": "表示には Guidewire 社内アカウントが必要です。詳しくは Guidewire の担当者へご確認ください。"
+  },
+  "internal.label": {
+    "message": "このコンテンツは Guidewire 社内限定の情報を含みます。"
+  },
+  "loginButton.out": {
+    "message": "ログアウト"
+  },
+  "loginButton.in": {
+    "message": "ログイン"
+  },
+  "transcriptDownloadLink.label": {
+    "message": "内容をダウンロード"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "メインコンテンツへ移動",
+    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "タグ",
+    "description": "The title of the tag list page"
+  },
+  "gwSearchForm.placeholder": {
+    "message": "検索",
+    "description": "Text which appears in the search box, placeholder"
+  }
+}

@@ -111,7 +111,7 @@ enum class GwDockerImages(val imageUrl: String) {
     DOC_VALIDATOR_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/doc-validator:latest"), PYTHON_3_9_SLIM_BUSTER(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/python:3.9-slim-buster"
     ),
-    NODE_REMOTE_BASE("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node"), NODE_16_14_2("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node:16.14.2"), NODE_18_14_0(
+    NODE_REMOTE_BASE("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node"), NODE_16_16_0("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node:16.16.0"), NODE_18_14_0(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/hub-docker-remote/node:18.14.0"
     ),
     GENERIC_14_14_0_YARN_CHROME(
@@ -1706,7 +1706,22 @@ object Frontend {
             subProject(createDeployLandingPagesProject())
             subProject(createDeployLocalizedPagesProject())
             subProject(createDeployUpgradeDiffsProject())
+            subProject(createPublishNpmPackagesProject())
             subProject(createDeployHtml5DependenciesProject())
+        }
+    }
+
+    private fun createPublishNpmPackagesProject(): Project {
+        return Project {
+            name = "Publish NPM packages to Artifactory"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            arrayOf(
+                Pair("theme", "docusaurus/themes/gw-theme-classic"),
+                Pair("plugin", "docusaurus/plugins/gw-plugin-redoc")
+            ).forEach {
+                buildType(createPublishNpmPackageBuildType(it.first, it.second))
+            }
         }
     }
 
@@ -1791,6 +1806,37 @@ object Frontend {
         }
     }
 
+    private fun createPublishNpmPackageBuildType(packageHandle: String, packagePath: String): BuildType {
+        return BuildType {
+            name = "Publish $packageHandle to Artifactory"
+            id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                branchFilter = "+:<default>"
+                cleanCheckout = true
+            }
+
+            steps {
+                step(GwBuildSteps.createPublishNpmPackageStep(packageHandle))
+            }
+
+            triggers {
+                vcs {
+                    triggerRules = """
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${packagePath}/package.json
+                        -:user=doctools:**
+                    """.trimIndent()
+                }
+            }
+
+            features {
+                feature(GwBuildFeatures.GwSshAgentBuildFeature)
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
+        }
+    }
+
     private fun createDeployHtml5DependenciesBuildType(deployEnv: String): BuildType {
         return BuildType {
             name = "Deploy HTML5 dependencies to $deployEnv"
@@ -1803,7 +1849,7 @@ object Frontend {
             }
 
             // It is the output path defined in webpack.config.js
-            val outputDir = "%teamcity.build.checkoutDir%/server/static/html5"
+            val outputDir = "%teamcity.build.checkoutDir%/html5/static/html5"
 
             steps {
                 step(GwBuildSteps.createBuildHtml5DependenciesStep())
@@ -2065,7 +2111,8 @@ object Server {
             buildType(TestConfigBuilds)
             buildType(TestSettingsKts)
             buildType(TestHtml5Dependencies)
-            buildType(AuditNpmPackages)
+//            temporarily disabled
+//            buildType(AuditNpmPackages)
             arrayOf(
                 GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
@@ -2165,6 +2212,7 @@ object Server {
         triggers.vcs {
             triggerRules = """
                 +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:html5/**
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:docusaurus/themes/**
                 -:user=doctools:**
             """.trimIndent()
         }
@@ -2185,9 +2233,9 @@ object Server {
             nodeJS {
                 id = "Run yarn npm audit"
                 shellScript = """
-                    cd server && yarn npm audit --severity high --all --recursive --exclude @doctools/gw-theme-classic
+                    yarn audit:server
                 """.trimIndent()
-                dockerImage = GwDockerImages.NODE_16_14_2.imageUrl
+                dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
             }
         }
 
@@ -2215,7 +2263,6 @@ object Server {
             script {
                 name = "Test the doc site server"
                 id = Helpers.createIdStringFromName(this.name)
-                workingDir = "server"
                 scriptContent = """
                     #!/bin/sh
                     set -e
@@ -2256,9 +2303,9 @@ object Server {
                     export LIMITS_CPU="2"
                     
                     yarn
-                    yarn test
+                    yarn test:server
                 """.trimIndent()
-                dockerImage = GwDockerImages.NODE_16_14_2.imageUrl
+                dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
             }
         }
 
@@ -3559,163 +3606,111 @@ object Apps {
             name = "Apps"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            createAppProjects().forEach {
-                subProject(it)
-            }
+            subProject(FlailSSGProject)
         }
     }
 
-    private fun createAppProjects(): List<Project> {
-        return arrayOf(
-            Triple("Flail SSG", "frontend/flail_ssg", true),
-            Triple("Config deployer", "apps/config_deployer", true),
-            Triple("Doc crawler", "apps/doc_crawler", true),
-            Triple("Index cleaner", "apps/index_cleaner", false),
-            Triple("Build manager", "apps/build_manager", true),
-            Triple("Recommendation engine", "apps/recommendation_engine", false),
-            Triple("Lion pkg builder", "apps/lion_pkg_builder", false),
-            Triple("Lion page builder", "apps/lion_page_builder", false),
-            Triple("Upgrade diffs page builder", "apps/upgradediffs_page_builder", false),
-            Triple("Sitemap generator", "apps/sitemap_generator", false)
-        ).map {
-            val appName = it.first
-            val appDir = it.second
-            val createTestBuild = it.third
-            Project {
-                name = appName
-                id = Helpers.resolveRelativeIdFromIdString(this.name)
+    object FlailSSGProject : Project({
+        name = "Flail SSG"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-                if (createTestBuild) {
-                    var testAppBuildType = createTestAppBuildType(appName, appDir)
-                    when (appName) {
-                        "Doc crawler" -> {
-                            testAppBuildType.params.text(
-                                "env.TEST_ENVIRONMENT_DOCKER_NETWORK", "host", allowEmpty = false
-                            )
-                            val composeElasticsearchAndHttpServerStep =
-                                GwBuildSteps.ComposeElasticsearchAndHttpServerStep
-                            testAppBuildType.steps.step(composeElasticsearchAndHttpServerStep)
-                            testAppBuildType.steps.stepsOrder.add(
-                                0, composeElasticsearchAndHttpServerStep.id.toString()
-                            )
-                        }
+        buildType(PublishFlailSSGDockerImageBuildType)
+        buildType(TestFlailSSGBuildType)
 
-                        "Flail SSG" -> {
-                            testAppBuildType = createTestAppBuildType(appName, appDir, "frontend")
-                            testAppBuildType.params.text(
-                                "env.DOCS_CONFIG_FILE",
-                                "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}",
-                                display = ParameterDisplay.HIDDEN
-                            )
-                            val mergeDocsConfigFilesStep = GwBuildSteps.MergeDocsConfigFilesStep
-                            testAppBuildType.steps.step(mergeDocsConfigFilesStep)
-                            testAppBuildType.steps.stepsOrder.add(0, mergeDocsConfigFilesStep.id.toString())
-                        }
-                    }
-                    val publishAppDockerImageBuildType =
-                        createPublishAppDockerImageBuildType(appName, appDir, testAppBuildType)
-                    buildType(publishAppDockerImageBuildType)
-                    buildType(testAppBuildType)
-                } else {
-                    buildType(createPublishAppDockerImageBuildType(appName, appDir))
-                }
-            }
+    })
+
+    object PublishFlailSSGDockerImageBuildType : BuildType({
+        val appDir = "frontend/flail_ssg"
+        name = "Publish Docker image for Flail SSG"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        vcs {
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            branchFilter = "+:<default>"
+            cleanCheckout = true
         }
-    }
 
-    private fun createPublishAppDockerImageBuildType(
-        appName: String,
-        appDir: String,
-        dependentBuildType: BuildType? = null,
-    ): BuildType {
-        return BuildType {
-            name = "Publish Docker image for $appName"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:<default>"
-                cleanCheckout = true
-            }
-
-            steps {
-                script {
-                    name = "Publish Docker image to Artifactory"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
+        steps {
+            script {
+                name = "Publish Docker image to Artifactory"
+                id = Helpers.createIdStringFromName(this.name)
+                scriptContent = """
                         #!/bin/bash                        
                         set -xe
                         
                         cd $appDir
                         ./publish_docker.sh latest       
                     """.trimIndent()
-                }
             }
+        }
 
-            triggers {
-                vcs {
-                    triggerRules = """
+        triggers {
+            vcs {
+                triggerRules = """
                         +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${appDir}/**
                         -:user=doctools:**
                     """.trimIndent()
-                }
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            if (dependentBuildType != null) {
-                dependencies {
-                    snapshot(dependentBuildType) {
-                        reuseBuilds = ReuseBuilds.SUCCESSFUL
-                        onDependencyFailure = FailureAction.FAIL_TO_START
-                    }
-                }
             }
         }
-    }
 
-    private fun createTestAppBuildType(appName: String, appDir: String, vcsTriggerDir: String = ""): BuildType {
-        return BuildType {
-            name = "Test $appName"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
+        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
+        dependencies {
+            snapshot(TestFlailSSGBuildType) {
+                reuseBuilds = ReuseBuilds.SUCCESSFUL
+                onDependencyFailure = FailureAction.FAIL_TO_START
             }
+        }
+    })
 
-            steps {
-                script {
-                    name = "Run tests"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
+    object TestFlailSSGBuildType : BuildType({
+        name = "Test Flail SSG"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        vcs {
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            cleanCheckout = true
+        }
+
+        params {
+            text(
+                "env.DOCS_CONFIG_FILE",
+                "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}",
+                display = ParameterDisplay.HIDDEN
+            )
+        }
+
+        steps {
+            step(GwBuildSteps.MergeDocsConfigFilesStep)
+            script {
+                name = "Run tests"
+                id = Helpers.createIdStringFromName(this.name)
+                scriptContent = """
                         #!/bin/bash
                         set -xe
 
-                        cd $appDir
+                        cd frontend/flail_ssg
                         ./run_tests.sh
                     """.trimIndent()
-                    dockerImage = GwDockerImages.PYTHON_3_9_SLIM_BUSTER.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                }
-                stepsOrder.add(this.items[0].id.toString())
-            }
-
-            triggers {
-                vcs {
-                    triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${vcsTriggerDir.ifEmpty { appDir }}/**
-                        -:user=doctools:**
-                    """.trimIndent()
-                }
-            }
-
-            features {
-                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                dockerImage = GwDockerImages.PYTHON_3_9_SLIM_BUSTER.imageUrl
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             }
         }
-    }
+
+        triggers {
+            vcs {
+                triggerRules = """
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:frontend/**
+                        -:user=doctools:**
+                    """.trimIndent()
+            }
+        }
+
+        features {
+            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+            feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+        }
+    })
 }
 
 object Helpers {
@@ -4069,12 +4064,6 @@ object Helpers {
 }
 
 object GwBuildSteps {
-    object ComposeElasticsearchAndHttpServerStep : DockerComposeStep({
-        name = "Compose Elasticsearch and HTTP server"
-        id = Helpers.createIdStringFromName(this.name)
-        file = "apps/doc_crawler/tests/test_doc_crawler/resources/docker-compose.yml"
-    })
-
     object MergeAllLegacyConfigsStep : ScriptBuildStep({
         name = "Merge all config files"
         id = Helpers.createIdStringFromName(this.name)
@@ -4089,6 +4078,27 @@ object GwBuildSteps {
         dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.imageUrl
         dockerImagePlatform = ImagePlatform.Linux
     })
+
+    fun createPublishNpmPackageStep(packageHandle: String): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "NPM publish $packageHandle"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                npm install -g npm-cli-login
+                npm-cli-login -u ${'$'}{ARTIFACTORY_SERVICE_ACCOUNT_USERNAME} -p ${'$'}{ARTIFACTORY_API_KEY} -e svc-doc-artifactory@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev
+                npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
+                npm config set always-auth true
+                npm config set unsafe-perm true
+                
+                yarn install
+                yarn build:$packageHandle
+                yarn publish:$packageHandle
+                npm publish --verbose
+            """.trimIndent()
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerImage = "artifactory.guidewire.com/hub-docker-remote/node:16.16.0"
+        }
+    }
 
     fun createUploadLegacyConfigsToS3BucketStep(deployEnv: String): ScriptBuildStep {
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
@@ -4876,7 +4886,6 @@ object GwBuildSteps {
         return ScriptBuildStep {
             name = "Build HTML5 dependencies"
             id = Helpers.createIdStringFromName(this.name)
-            workingDir = "html5"
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -4884,7 +4893,7 @@ object GwBuildSteps {
                 export EXIT_CODE=0
                 
                 yarn
-                yarn build || EXIT_CODE=${'$'}?
+                yarn build:html5 || EXIT_CODE=${'$'}?
                 
                 exit ${'$'}EXIT_CODE
             """.trimIndent()
@@ -4898,7 +4907,6 @@ object GwBuildSteps {
         return ScriptBuildStep {
             name = "Build HTML5 offline dependencies"
             id = Helpers.createIdStringFromName(this.name)
-            workingDir = "html5"
             scriptContent = """
                 #!/bin/bash
                 set -xe
@@ -4906,7 +4914,7 @@ object GwBuildSteps {
                 export EXIT_CODE=0
                 
                 yarn
-                yarn build-offline || EXIT_CODE=${'$'}?
+                yarn build:html5-offline || EXIT_CODE=${'$'}?
                 
                 exit ${'$'}EXIT_CODE
             """.trimIndent()

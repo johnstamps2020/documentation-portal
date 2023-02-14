@@ -1,0 +1,102 @@
+{
+  "docHighlighter.label": {
+    "message": "toggle highlights",
+    "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off."
+  },
+  "anonymous.positive": {
+    "message": "You are anonymous,",
+    "description": "Tells the user their identity is not revealed to us"
+  },
+  "anonymous.shareEmail": {
+    "message": "click here to share your email with us",
+    "description": "The button which the user can click to reveal their email to us"
+  },
+  "anonymous.enterEmail": {
+    "message": "Enter your email address,",
+    "description": "Asks the user to type in their email address"
+  },
+  "anonymous.becomeAnonymous": {
+    "message": "click here to be anonymous"
+  },
+  "anonymous.youAreSharing": {
+    "message": "You are sharing your email with us,",
+    "description": "Tells the user that we know their email. When they send this comment, they will send their email to us."
+  },
+  "feedback.helpful": {
+    "message": "Was this page helpful?"
+  },
+  "feedback.thumbsUp": {
+    "message": "This page was helpful",
+    "description": "The description of the \"thumbs up\" icon which the user can click to share positive feedback"
+  },
+  "feedback.thumbsDown": {
+    "message": "This page needs improvement",
+    "description": "The description of the \"thumbs thumbs\" icon which the user can click to share constructive feedback"
+  },
+  "feedbackDialog.thanks": {
+    "message": "Thank you!",
+    "description": "Appears ot thank the user for their feedback"
+  },
+  "feedbackDialog.followUp": {
+    "message": "A member of our documentation team will review your feedback. If you included your email address, we might contact you if we need more information.",
+    "description": "Explains how the support team will react to user feedback"
+  },
+  "feedbackDialog.anythingElse": {
+    "message": "Thanks, we have recorded your vote. Do you have anything else to tell us?",
+    "description": "Appears above the feedback form"
+  },
+  "feedbackDialog.comment": {
+    "message": "Your comment"
+  },
+  "feedbackDialog.email": {
+    "message": "Your email"
+  },
+  "feedbackDialog.clearEmail": {
+    "message": "Clear email"
+  },
+  "feedbackDialog.cancel": {
+    "message": "Cancel",
+    "description": "Cancel and do not send your feedback"
+  },
+  "feedbackDialog.submit": {
+    "message": "Submit",
+    "description": "Send your feedback, submit your feedback to us"
+  },
+  "internal.employeesOnly": {
+    "message": "This content is available to Guidewire employees only"
+  },
+  "internal.noAccess": {
+    "message": "You are logged in as {name} ({email}) and you do not have access."
+  },
+  "internal.info.toView": {
+    "message": "To view this page, you must log in with your Guidewire employee account. If you need further help, please contact your Guidewire representative."
+  },
+  "internal.label": {
+    "message": "This content is internal and available to Guidewire employees only."
+  },
+  "loginButton.out": {
+    "message": "Log out"
+  },
+  "loginButton.in": {
+    "message": "Log in"
+  },
+  "transcriptDownloadLink.label": {
+    "message": "Download transcript"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Skip to main content",
+    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "Tags",
+    "description": "The title of the tag list page"
+  },
+  "gwSearchForm.placeholder": {
+    "message": "Search",
+    "description": "Text which appears in the search box, placeholder"
+  },
+  "miniToc.heading": {
+    "message": "On this page",
+    "description": "Appears at the top of a list of links heading which the suer can see on the page. Each item on the list is a link."
+  }
+}

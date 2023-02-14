@@ -6,16 +6,16 @@
   "author": "doctools@guidewire.com",
   "license": "UNLICENSED",
   "private": true,
-  "packageManager": "yarn@3.3.1",
+  "packageManager": "yarn@3.4.1",
   "scripts": {
     "build": "webpack",
     "build-offline": "BUILD_MODE=offline webpack",
-    "dev": "rimraf ../server/static/html5/scripts && NODE_ENV=development webpack --watch",
+    "dev": "rimraf static/html5/scripts && NODE_ENV=development webpack --watch",
     "dev-offline": "rimraf ./build/* && NODE_ENV=development BUILD_MODE=offline webpack --watch",
     "profile": "webpack --profile --json > stats.json"
   },
   "dependencies": {
-    "@doctools/gw-theme-classic": "2.0.65",
+    "@doctools/gw-theme-classic": "workspace:*",
     "fuse.js": "^6.6.2"
   },
   "devDependencies": {
@@ -34,8 +34,8 @@
     "postcss-loader": "^6.2.1",
     "postcss-preset-env": "^7.4.3",
     "prismjs": "^1.27.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "17.0.0",
+    "react-dom": "17.0.0",
     "rimraf": "^4.1.2",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.4.2",
