@@ -65,7 +65,7 @@
         "version": ["latest"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

@@ -19,7 +19,7 @@
         "subject": ["Best Practices"],
         "version": ["latest"]
       },
-      "environments": ["dev", "int"],
+      "environments": ["int"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

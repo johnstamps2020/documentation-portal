@@ -119,23 +119,6 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    },
-    {
-      "id": "midipgsupermap",
-      "title": "IPG Supermap",
-      "url": "self-managed/ipg/latest/supermap",
-      "metadata": {
-        "product": ["Guidewire InsuranceSuite Package for Germany"],
-        "platform": ["Self-managed"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["dev"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
     }
   ]
 }

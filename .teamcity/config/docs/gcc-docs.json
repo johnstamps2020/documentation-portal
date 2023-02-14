@@ -94,7 +94,7 @@
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -110,7 +110,7 @@
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -160,7 +160,7 @@
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "public": false,
       "internal": true,
       "earlyAccess": false
