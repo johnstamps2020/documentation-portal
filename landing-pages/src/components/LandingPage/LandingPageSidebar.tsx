@@ -12,7 +12,11 @@ export default function LandingPageSidebar(sidebar: Sidebar) {
       sx={{
         height: "fit-content",
         minHeight: "180px",
-        minWidth: "280px",
+        minWidth: "270px",
+        width: {
+          sm: "fit-content",
+          xs: "100%",
+        },
         padding: "24px",
       }}
     >

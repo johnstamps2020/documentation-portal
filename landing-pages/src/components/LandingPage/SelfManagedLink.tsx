@@ -4,7 +4,7 @@ import { Link as RouterLink } from "react-router-dom";
 
 type selfManagedProps = {
   pagePath: string;
-  backgroundImage: string;
+  backgroundImage: string | { sm: string; xs: string; };
 };
 
 export default function SelfManagedLink({
@@ -19,7 +19,7 @@ export default function SelfManagedLink({
         component={RouterLink}
         to={selfManaged ? "/" : "/selfManagedProducts"}
         underline="always"
-        style={{ fontWeight: "bold" }}
+        style={{ fontWeight: 700, fontSize: ".875rem" }}
         sx={
           backgroundImage
             ? { color: "white", textDecorationColor: "white" }

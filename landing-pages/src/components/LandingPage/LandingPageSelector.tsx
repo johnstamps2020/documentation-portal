@@ -83,7 +83,8 @@ export default function LandingPageSelector({
           marginLeft: 0,
           marginRight: "auto",
           backgroundColor: "white",
-          borderRadius: 4
+          borderRadius: 4,
+          width: "300px"
         }}
       >
         {sortedPageSelectorItems.map(item => (

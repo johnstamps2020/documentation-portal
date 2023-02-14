@@ -83,12 +83,12 @@ export default function LandingPage() {
         )}
         {pageData &&
           pageData.categories.length !== 0 &&
-          pageData.component?.includes("pageCategory2") && (
+          (pageData.component?.includes("pageCategory2") ? (
             <CategoryLayout2 {...pageData} />
-          )}
-        {pageData && pageData.categories.length !== 0 && (
-          <CategoryLayout {...pageData} />
-        )}
+          ) : (
+            <CategoryLayout {...pageData} />
+          ))}
+
         {pageData && pageData.sections.length !== 0 && (
           <SectionLayout {...pageData} />
         )}
@@ -100,7 +100,7 @@ export default function LandingPage() {
         open={loading}
         sx={{
           color: "#fff",
-          zIndex: (theme: Theme) => theme.zIndex.drawer + 1
+          zIndex: (theme: Theme) => theme.zIndex.drawer + 1,
         }}
       />
     </Layout>

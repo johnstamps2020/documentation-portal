@@ -10,12 +10,15 @@ export default function LandingPageCategory(category: Category) {
   return (
     <Paper
       sx={{
-        width: "300px",
+        width: {
+          sm: "300px",
+          xs: "100%",
+        },
         padding: "24px",
       }}
     >
       <Typography variant="h2">{category.label}</Typography>
-      <Divider sx={{width: 0}}/>
+      <Divider sx={{ width: 0 }} />
       <Stack spacing={1}>
         {category.categoryItems?.map((categoryItem) => (
           <LandingPageItem {...categoryItem} key={categoryItem.id} />

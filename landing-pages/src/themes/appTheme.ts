@@ -2,6 +2,15 @@ import { createTheme } from "@mui/material";
 import "@fontsource/source-sans-pro";
 
 export const appTheme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 720,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
   palette: {
     primary: {
       main: "#00739d"

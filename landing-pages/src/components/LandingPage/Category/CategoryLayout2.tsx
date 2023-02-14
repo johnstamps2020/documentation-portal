@@ -8,6 +8,7 @@ import LandingPageSidebar from "../LandingPageSidebar";
 import { Page } from "server/dist/model/entity/Page";
 import flaineBackgroundImage from "../../../images/background-flaine.svg";
 import garmischBackgroundImage from "../../../images/background-garmisch.png";
+import gradientBackgroundImage from "../../../images/background-gradient.svg";
 import Stack from "@mui/material/Stack";
 import SelfManagedLink from "../SelfManagedLink";
 import WhatsNew from "../WhatsNew";
@@ -15,13 +16,19 @@ import WhatsNew from "../WhatsNew";
 export default function CategoryLayout(pageData: Page) {
   function getBackgroundImage() {
     if (pageData.component?.includes("flaineBackground")) {
-      return `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
+      return {
+        xs: `url(${gradientBackgroundImage})`,
+        sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
        url(${flaineBackgroundImage}), 
-       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`;
+       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
+      };
     } else if (pageData.component?.includes("garmischBackground")) {
-      return `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
+      return {
+        xs: `url(${gradientBackgroundImage})`,
+        sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
       url(${garmischBackgroundImage}), 
-      linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`;
+      linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
+      };
     } else {
       return "";
     }
@@ -33,17 +40,29 @@ export default function CategoryLayout(pageData: Page) {
     backgroundPosition: "bottom-right",
     backgroundSize: "cover",
     minHeight: "100vh",
+    flexWrap: { breakpointsTheme: "wrap", sm: "nowrap" },
   };
   return (
     <Grid
-      sx={{ ...backgroundProps }}
+      sx={{
+        ...backgroundProps,
+      }}
       container
+      alignContent="center"
       flexDirection="row"
       margin="auto"
       padding="40px 32px"
       gap="56px"
+      flexWrap="nowrap"
     >
-      <Grid minWidth="338px" marginTop="-27px" marginLeft="auto">
+      <Grid
+        container
+        flexWrap="wrap"
+        height="fit-content"
+        width="300px"
+        minWidth="300px"
+        margin={{ sm: "-30px 0 0 auto", xs: "auto" }}
+      >
         <Stack spacing={1} direction="column" width="100%">
           <Container style={{ padding: 0, margin: "5px 0 0 0" }}>
             <Breadcrumbs pagePath={pageData.path} />
@@ -62,7 +81,13 @@ export default function CategoryLayout(pageData: Page) {
         />
         <WhatsNew path={pageData.path} />
       </Grid>
-      <Grid container direction="column" marginRight="auto" gap="2rem">
+      <Grid
+        container
+        direction="column"
+        marginRight="auto"
+        gap="2rem"
+        flexWrap="wrap"
+      >
         <Grid marginBottom="16px">
           <Typography
             variant="h1"
@@ -97,15 +122,15 @@ export default function CategoryLayout(pageData: Page) {
             columnGap="24px"
             rowGap="32px"
             sx={{
-              ".css-dxom85-MuiPaper-root": {
-                width: "288px",
+              "& .MuiPaper-root": {
+                width: { sm: "288px", xs: "100%" },
                 padding: "24px",
               },
-              ".css-4041zf-MuiTypography-root": {
+              "&.MuiTypography-root": {
                 fontSize: "1.25rem",
                 fontWeight: "600",
               },
-              ".css-aapr8l-MuiDivider-root": {
+              "& .MuiDivider-root": {
                 width: "100%",
               },
               ".css-1okj3ks-MuiStack-root": {
@@ -125,7 +150,6 @@ export default function CategoryLayout(pageData: Page) {
             ))}
           </Grid>
           <Grid
-            display="block"
             sx={{
               ".css-4041zf-MuiTypography-root": {
                 fontSize: "1.25rem",
@@ -149,7 +173,9 @@ export default function CategoryLayout(pageData: Page) {
             {pageData.sidebar ? (
               <LandingPageSidebar {...pageData.sidebar} />
             ) : (
-              <div style={{ minHeight: 180, minWidth: 280, padding: "24px" }}></div>
+              <div
+                style={{ minHeight: 180, minWidth: 280, padding: "24px" }}
+              ></div>
             )}
           </Grid>
         </Grid>
