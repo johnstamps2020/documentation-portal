@@ -100,7 +100,7 @@
     {
       "buildType": "yarn",
       "docId": "storybook532",
-      "srcId": "srcjutrostorybook532",
+      "srcId": "srcjutro532",
       "workingDir": "storybook"
     },
     {
@@ -221,7 +221,7 @@
     {
       "buildType": "yarn",
       "docId": "storybook650",
-      "srcId": "srcjutrostorybook650",
+      "srcId": "srcjutro650",
       "workingDir": "storybook",
       "customEnv": [
         {
@@ -240,7 +240,7 @@
     {
       "buildType": "yarn",
       "docId": "storybook651",
-      "srcId": "srcjutrostorybook651",
+      "srcId": "srcjutro651",
       "workingDir": "storybook",
       "customEnv": [
         {
@@ -259,7 +259,7 @@
     {
       "buildType": "yarn",
       "docId": "storybook652",
-      "srcId": "srcjutrostorybook652",
+      "srcId": "srcjutro652",
       "workingDir": "storybook",
       "customEnv": [
         {
@@ -329,7 +329,7 @@
     {
       "buildType": "yarn",
       "docId": "storybooknext",
-      "srcId": "srcjutrostorybooknext",
+      "srcId": "srcjutronext",
       "nodeImageVersion": "17.6.0",
       "workingDir": "storybook",
       "customEnv": [
@@ -366,7 +366,7 @@
     {
       "buildType": "yarn",
       "docId": "storybook700",
-      "srcId": "srcjutrostorybook700",
+      "srcId": "srcjutro700",
       "workingDir": "storybook",
       "customEnv": [
         {
@@ -385,7 +385,7 @@
     {
       "buildType": "yarn",
       "docId": "storybook711",
-      "srcId": "srcjutrostorybook711",
+      "srcId": "srcjutro711",
       "workingDir": "storybook",
       "customEnv": [
         {
@@ -404,7 +404,7 @@
     {
       "buildType": "yarn",
       "docId": "storybook720",
-      "srcId": "srcjutrostorybook720",
+      "srcId": "srcjutro720",
       "workingDir": "storybook",
       "customEnv": [
         {
@@ -423,7 +423,7 @@
     {
       "buildType": "yarn",
       "docId": "storybook730",
-      "srcId": "srcjutrostorybook730",
+      "srcId": "srcjutro730",
       "workingDir": "storybook",
       "customEnv": [
         {
@@ -442,7 +442,7 @@
     {
       "buildType": "yarn",
       "docId": "storybook740",
-      "srcId": "srcjutrostorybook740",
+      "srcId": "srcjutro740",
       "nodeImageVersion": "17.6.0",
       "workingDir": "storybook",
       "customEnv": [
@@ -462,7 +462,7 @@
     {
       "buildType": "yarn",
       "docId": "storybook741",
-      "srcId": "srcjutrostorybook741",
+      "srcId": "srcjutro741",
       "nodeImageVersion": "17.6.0",
       "workingDir": "storybook",
       "customEnv": [
@@ -508,7 +508,7 @@
     {
       "buildType": "yarn",
       "docId": "storybook743",
-      "srcId": "srcjutrostorybook743",
+      "srcId": "srcjutro743",
       "nodeImageVersion": "17.6.0",
       "workingDir": "storybook",
       "customEnv": [
@@ -528,7 +528,7 @@
     {
       "buildType": "yarn",
       "docId": "storybook750",
-      "srcId": "srcjutrostorybook750",
+      "srcId": "srcjutro750",
       "nodeImageVersion": "17.6.0",
       "workingDir": "storybook"
     },
