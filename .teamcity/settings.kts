@@ -2453,6 +2453,7 @@ object Server {
                 # Log into the dev ECR, build and push the image
                 $awsEnvVars
 
+                cd ..
                 set +x
                 docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
                 set -x
@@ -4411,7 +4412,7 @@ object GwBuildSteps {
                 set +x
                 docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
                 set -x
-                docker build -t ${GwDockerImages.DOC_PORTAL.imageUrl}:${tagVersion} ./server \
+                docker build -t ${GwDockerImages.DOC_PORTAL.imageUrl}:${tagVersion} . \
                 --build-arg TAG_VERSION \
                 --build-arg NPM_AUTH_TOKEN \
                 --build-arg DEPT_CODE \
