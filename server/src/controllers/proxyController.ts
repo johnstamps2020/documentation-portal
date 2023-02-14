@@ -128,9 +128,9 @@ export async function reactAppProxy(
     changeOrigin: true,
   };
   /* Open routes, such as /gw-login and /search, are configured in the database as public pages.
-                          Resource routes, such as /static and /landing-page-resource, are configured in the database
-                           as public pages with the "resource" component.
-                          This way, the user can view these routes without login.*/
+                              Resource routes, such as /static and /landing-page-resource, are configured in the database
+                               as public pages with the "resource" component.
+                              This way, the user can view these routes without login.*/
   if (req.originalUrl === '/landing') {
     return proxy.web(req, res, proxyOptions, next);
   }
@@ -162,15 +162,21 @@ export async function reactAppProxy(
   if (isDevMode) {
     return proxy.web(req, res, proxyOptions, next);
   } else {
-    if (!req.url.match(/[a-zA-Z0-9]\.[a-zA-Z0-9]+$/)) {
+    const indexOfExtension = req.url.lastIndexOf('.');
+    const endsWithExtension =
+      indexOfExtension !== -1
+        ? /^\D+$/.test(req.url.substring(indexOfExtension))
+        : false;
+
+    if (endsWithExtension) {
+      proxy.web(req, res, proxyOptions, next);
+    } else {
       fetch(`${proxyOptions.target}/index.html`)
         .then(response => {
           res.status(getStatusCode(req.url));
           response.body.pipe(res);
         })
         .catch(err => res.status(500).send(err));
-    } else {
-      proxy.web(req, res, proxyOptions, next);
     }
   }
 }
