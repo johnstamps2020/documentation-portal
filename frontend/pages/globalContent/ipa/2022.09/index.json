@@ -1,6 +1,6 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "InsuranceSuite Package for Australia for Guidewire Cloud 2.0",
+  "title": "InsuranceSuite Package for Australia for Guidewire Cloud 2022.09",
   "template": "page",
   "class": "twoColumns",
   "items": [
