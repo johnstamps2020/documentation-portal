@@ -1,21 +1,27 @@
-FROM artifactory.guidewire.com/hub-docker-remote/node:16.16.0-alpine
+FROM artifactory.guidewire.com/hub-docker-remote/node:16.16.0-alpine as app-builder
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /usr/app
 
 ARG NPM_AUTH_TOKEN
 ARG TAG_VERSION
 ARG DEPT_CODE
 ARG POD_NAME
 
-RUN mkdir static
+# COPY files we need to install dependencies
 COPY package.json .
 COPY yarn.lock .
 COPY .yarn/ .yarn/
 COPY .yarnrc.yml .
+COPY server/package.json ./server/package.json
+
+# install dependencies
 RUN yarn
 
+# create a "static" folder
+
 COPY . .
+RUN mkdir server/static
 
 EXPOSE 8081
 LABEL "org.opencontainers.image.title"="docportal" \
@@ -27,4 +33,5 @@ LABEL "org.opencontainers.image.title"="docportal" \
       "org.opencontainers.image.vendor"="guidewire" \
       "com.guidewire.dept"="$DEPT_CODE"
 
-CMD [ "node", "server.js" ]
+ENV NODE_ENV=production
+CMD [ "node", "server/server.js" ]
