@@ -1,10 +1,10 @@
 import Grid from "@mui/material/Unstable_Grid2";
-import LandingPageCategory from "./LandingPageCategory";
+import LandingPageCategory2 from "./LandingPageCategory2";
 import LandingPageSelector from "../LandingPageSelector";
 import Breadcrumbs from "../Breadcrumbs";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import LandingPageSidebar from "../LandingPageSidebar";
+import LandingPageSidebar2 from "../LandingPageSidebar2";
 import { Page } from "server/dist/model/entity/Page";
 import flaineBackgroundImage from "../../../images/background-flaine.svg";
 import garmischBackgroundImage from "../../../images/background-garmisch.png";
@@ -13,7 +13,7 @@ import Stack from "@mui/material/Stack";
 import SelfManagedLink from "../SelfManagedLink";
 import WhatsNew from "../WhatsNew";
 
-export default function CategoryLayout(pageData: Page) {
+export default function CategoryLayout2(pageData: Page) {
   function getBackgroundImage() {
     if (pageData.component?.includes("flaineBackground")) {
       return {
@@ -121,57 +121,14 @@ export default function CategoryLayout(pageData: Page) {
             xs={9}
             columnGap="24px"
             rowGap="32px"
-            sx={{
-              "& .MuiPaper-root": {
-                width: { sm: "288px", xs: "100%" },
-                padding: "24px",
-              },
-              "&.MuiTypography-root": {
-                fontSize: "1.25rem",
-                fontWeight: "600",
-              },
-              "& .MuiDivider-root": {
-                width: "100%",
-              },
-              ".css-1okj3ks-MuiStack-root": {
-                spacing: 1,
-                fontSize: "0.875rem",
-                color: "black",
-                "& .css-t4izw9-MuiTypography-root-MuiLink-root": {
-                  color: "black",
-                  fontWeight: 600,
-                  padding: "4px 0px",
-                },
-              },
-            }}
           >
             {pageData.categories?.map((category) => (
-              <LandingPageCategory {...category} key={category.id} />
+              <LandingPageCategory2 {...category} key={category.id} />
             ))}
           </Grid>
-          <Grid
-            sx={{
-              ".css-4041zf-MuiTypography-root": {
-                fontSize: "1.25rem",
-                fontWeight: "600",
-              },
-              ".css-aapr8l-MuiDivider-root": {
-                width: "100%",
-              },
-              ".css-1okj3ks-MuiStack-root": {
-                spacing: 1,
-                fontSize: "0.875rem",
-                color: "black",
-                "& .css-t4izw9-MuiTypography-root-MuiLink-root": {
-                  color: "black",
-                  fontWeight: 600,
-                  padding: "4px 0px",
-                },
-              },
-            }}
-          >
+          <Grid>
             {pageData.sidebar ? (
-              <LandingPageSidebar {...pageData.sidebar} />
+              <LandingPageSidebar2 {...pageData.sidebar} />
             ) : (
               <div
                 style={{ minHeight: 180, minWidth: 280, padding: "24px" }}
