@@ -40,10 +40,6 @@
       "items": [
         {
           "label": "Cloud Console Guide",
-          "id": "guidewirecloudconsoleguideinsurerdevdraft"
-        },
-        {
-          "label": "Cloud Console Guide",
           "id": "guidewirecloudconsoleguideinsurerdev"
         }
       ]
