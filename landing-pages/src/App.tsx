@@ -1,8 +1,4 @@
-import {
-  createBrowserRouter,
-  Navigate,
-  RouterProvider
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import ForbiddenPage from "./pages/ForbiddenPage/ForbiddenPage";

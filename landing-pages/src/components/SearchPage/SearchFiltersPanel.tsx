@@ -1,7 +1,7 @@
 import SearchFilter from "./SearchFilter";
 import { useSearch } from "../../context/SearchContext";
 import ButtonGroup from "@mui/material/ButtonGroup";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Stack from "@mui/material/Stack";
 import ClearFilterButton from "./ClearFiltersButton";
 import { StyledButton } from "./StyledSearchComponents";
@@ -18,9 +18,23 @@ export default function SearchFiltersPanel() {
     setAllSearchFiltersExpandStatus
   ] = useState<SearchFilterExpandStatus[]>([]);
 
+  const toggleFilters = useCallback(
+    (expand: boolean) => {
+      if (searchData) {
+        setAllSearchFiltersExpandStatus(
+          searchData.filters.map(f => ({
+            filterName: f.name,
+            filterIsExpanded: expand
+          }))
+        );
+      }
+    },
+    [searchData]
+  );
+
   useEffect(() => {
     toggleFilters(true);
-  }, [searchData]);
+  }, [searchData, toggleFilters]);
 
   function getPanelStatus(filterName: string) {
     const filterStatus = allSearchFiltersExpandStatus.find(
@@ -39,17 +53,6 @@ export default function SearchFiltersPanel() {
       }
     }
     setAllSearchFiltersExpandStatus(updatedAllSearchFiltersExpandStatus);
-  }
-
-  function toggleFilters(expand: boolean) {
-    if (searchData) {
-      setAllSearchFiltersExpandStatus(
-        searchData.filters.map(f => ({
-          filterName: f.name,
-          filterIsExpanded: expand
-        }))
-      );
-    }
   }
 
   if (!searchData) {

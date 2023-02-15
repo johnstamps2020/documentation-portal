@@ -64,7 +64,7 @@ export default function LandingPage() {
     }
 
     getPageData().catch(console.error);
-  }, [pagePathFromRouter]);
+  }, [pagePathFromRouter, navigate]);
 
   if (!pageData) {
     return null;

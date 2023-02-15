@@ -63,7 +63,7 @@ export default function InternalPage() {
             <Container
               sx={{ width: "900px", maxWidth: "900px", textAlign: "center" }}
             >
-              <img src="/images/internal-page.svg" />
+              <img src="/images/internal-page.svg" alt="" />
             </Container>
             {userInfo.hasGuidewireEmail ? (
               <>

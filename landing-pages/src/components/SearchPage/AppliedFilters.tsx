@@ -20,6 +20,7 @@ export default function AppliedFilters() {
           values: checkedValues
         };
       }
+      return null;
     })
     .filter(Boolean) as ServerSearchFilter[];
 
