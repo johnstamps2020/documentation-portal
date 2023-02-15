@@ -2409,6 +2409,7 @@ object Server {
     private fun createDeployDbEnabledServerBuildType(deployEnv: String): BuildType {
         val namespace = "doctools"
         val tagVersion = "latest-croissant"
+        val appName = "croissant"
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
         val gatewayConfigFile = when (deployEnv) {
             GwDeployEnvs.PROD.envName -> "gateway-config-prod.yml"
@@ -2438,26 +2439,26 @@ object Server {
                         $awsEnvVars
                         
                         # Set environment variables needed for Kubernetes config files
-                        export DD_SERVICE_NAME="croissant"
-                        export APP_NAME="croissant"
+                        export DD_SERVICE_NAME="$appName"
+                        export APP_NAME="$appName"
                         export POD_NAME="doctools"
                         export DEPT_CODE="284"
                         export AWS_ROLE="arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"
                         export AWS_ECR_REPO="627188849628.dkr.ecr.us-west-2.amazonaws.com/tenant-doctools-docportal"
-                        export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="https://croissant.dev.ccs.guidewire.net/partners-login"
+                        export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="https://$appName.dev.ccs.guidewire.net/partners-login"
                         export PARTNERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
                         export GW_COMMUNITY_PARTNER_IDP="0oapv9i36yEMFLjxS0h7"
-                        export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="https://croissant.dev.ccs.guidewire.net/customers-login"
+                        export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="https://$appName.dev.ccs.guidewire.net/customers-login"
                         export CUSTOMERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
                         export GW_COMMUNITY_CUSTOMER_IDP="0oau503zlhhFLwTqF0h7"
-                        export TAG_VERSION="latest-croissant"
+                        export TAG_VERSION="latest-$appName"
                         export DEPLOY_ENV="dev"
                         export OKTA_ACCESS_TOKEN_ISSUER="https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"
                         export OKTA_ACCESS_TOKEN_ISSUER_APAC="issuerNotConfigured"
                         export OKTA_ACCESS_TOKEN_ISSUER_EMEA="issuerNotConfigured"
                         export OKTA_DOMAIN="https://guidewire-hub.oktapreview.com"
                         export OKTA_IDP="0oamwriqo1E1dOdd70h7"
-                        export APP_BASE_URL="https://croissant.dev.ccs.guidewire.net"
+                        export APP_BASE_URL="https://$appName.dev.ccs.guidewire.net"
                         export ELASTIC_SEARCH_URL="http://docsearch-dev.doctools:9200"
                         export DOC_S3_URL="https://docportal-content.dev.ccs.guidewire.net"
                         export PORTAL2_S3_URL="https://portal2-content.omega2-andromeda.guidewire.net"
@@ -2502,7 +2503,7 @@ object Server {
                             if [[ "${'$'}TIME" == "10" ]]; then
                                 break
                             fi
-                            FAIL_PODS=`kubectl get pods -l app=docportal-app --namespace=doctools | grep CrashLoopBackOff | cut -d' ' -f1 | tail -n +2`
+                            FAIL_PODS=`kubectl get pods -l app=$appName --namespace=doctools | grep CrashLoopBackOff | cut -d' ' -f1 | tail -n +2`
                             if [[ ! -z "${'$'}FAIL_PODS" ]]; then
                                 echo "The following pods failed in last Deployment. Please check it in Kubernetes Dashboard."
                                 echo "${'$'}FAIL_PODS" && false
