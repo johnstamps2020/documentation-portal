@@ -2,7 +2,7 @@ import { PageSelector } from "server/dist/model/entity/PageSelector";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem/MenuItem";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import InputLabel from "@mui/material/InputLabel";
 import { styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
@@ -70,9 +70,16 @@ export default function LandingPageSelector({
     const selectedItem = pageSelector.pageSelectorItems.find(
       i => i.label === event.target.value
     );
-    const pageUrl =
-      selectedItem?.page.path || selectedItem?.link || selectedItem?.doc?.url;
-    return pageUrl ? navigate(`/${pageUrl}`) : navigate("#");
+    if (!selectedItem) {
+      return null;
+    }
+    const itemPage = selectedItem.page;
+    if (itemPage) {
+      return navigate(`/${itemPage.path}`);
+    }
+    const itemLink = selectedItem.link;
+    const targetUrl = itemLink ? itemLink : `/${selectedItem.doc.url}`;
+    return (window.location.href = targetUrl);
   };
 
   const sortedPageSelectorItems = sortPageSelectorItems(
