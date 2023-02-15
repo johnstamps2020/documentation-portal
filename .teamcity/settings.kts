@@ -2545,7 +2545,35 @@ object Server {
 
         if (arrayOf(GwDeployEnvs.DEV.envName, GwDeployEnvs.INT.envName).contains(deployEnv)) {
             val buildAndPublishServerDockerImageStep =
-                GwBuildSteps.createBuildAndPublishServerDockerImageToDevEcrStep(tagVersion)
+                ScriptBuildStep {
+                    name = "Build and publish server Docker Image to DEV ECR"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                #!/bin/bash 
+                set -xe
+                
+                # Log into the dev ECR, build and push the image
+                $awsEnvVars
+                
+                export TAG_VERSION=$tagVersion
+                export DEPT_CODE=${GwAtmosLabels.DEPT_CODE.labelValue}
+                export POD_NAME=${GwAtmosLabels.POD_NAME.labelValue}
+
+                set +x
+                docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
+                set -x
+                docker build -t ${GwDockerImages.DOC_PORTAL.imageUrl}:${tagVersion} ./server \
+                --build-arg TAG_VERSION \
+                --build-arg NPM_AUTH_TOKEN \
+                --build-arg DEPT_CODE \
+                --build-arg POD_NAME
+                docker push ${GwDockerImages.DOC_PORTAL.imageUrl}:${tagVersion}
+            """.trimIndent()
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerRunParameters =
+                        "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
+                }
             deployServerBuildType.steps.step(buildAndPublishServerDockerImageStep)
             deployServerBuildType.steps.stepsOrder.add(0, buildAndPublishServerDockerImageStep.id.toString())
         }
