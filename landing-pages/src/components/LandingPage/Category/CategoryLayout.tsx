@@ -105,7 +105,10 @@ export default function CategoryLayout(pageData: Page) {
           container
           xs={9}
           gap={2}
-          sx={{ width: { xs: "100%", sm: "fit-content" } }}
+          sx={{
+            minWidth: { xs: "100%", sm: "616px", md: "932px" },
+            maxWidth: "932px",
+          }}
         >
           {pageData.categories?.map((category) => (
             <LandingPageCategory {...category} key={category.id} />
