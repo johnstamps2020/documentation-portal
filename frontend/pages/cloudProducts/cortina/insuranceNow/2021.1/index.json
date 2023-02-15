@@ -1,0 +1,155 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "InsuranceNow 2021.1",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Core Release Notes",
+          "id": "in20211rn"
+        },
+        {
+          "label": "Release Video",
+          "link": "https://www.brainshark.com/guidewire/vu?pi=zIYz11mVjxzM6iUz0"
+        },
+        {
+          "label": "Studio Release Notes",
+          "id": "in20211studiorn"
+        },
+        {
+          "label": "Consumer Service Portal 2021.1 Release Notes",
+          "id": "incsp20211rn"
+        },
+        {
+          "label": "Consumer Service Portal 3.26 Release Notes",
+          "id": "incsp326rn"
+        },
+        {
+          "label": "Consumer Service Portal 3.25 Release Notes",
+          "id": "incsp325rn"
+        },
+        {
+          "label": "Consumer Service Portal 3.24 Release Notes",
+          "id": "incsp324rn"
+        },
+        {
+          "label": "Consumer Service Portal 3.23 Release Notes",
+          "id": "incsp323rn"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "in20211app"
+        },
+        {
+          "label": "Business Intelligence Getting Started Guide",
+          "id": "in20211bi"
+        },
+        {
+          "label": "Consumer Sales Portal Features",
+          "id": "in20211csalesp"
+        },
+        {
+          "label": "Consumer Service Portal Features",
+          "id": "in20211cservicep"
+        },
+        {
+          "label": "Excel Designed Rating",
+          "id": "inexcelrating30"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "AppReader Integration",
+          "id": "in20211appreaderinteg"
+        },
+        {
+          "label": "Business Intelligence Integration",
+          "id": "in20211xbiintegdraft"
+        },
+        {
+          "label": "Predictive Analytics Integration",
+          "id": "in20211pa"
+        },
+        {
+          "label": "API Reference",
+          "id": "in20211apiref"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Consumer Service Portal Configuration Guide",
+          "id": "in20211xcservicepconfigdraft"
+        },
+        {
+          "label": "Core Configuration Guide",
+          "id": "in20211config"
+        },
+        {
+          "label": "Common Functionality Configuration Reference",
+          "id": "in20211xcommonconfigdraft"
+        },
+        {
+          "label": "Studio Configuration Guide",
+          "id": "in20211studio"
+        },
+        {
+          "label": "Provisioning Portal",
+          "id": "in20211xprovportaldraft"
+        },
+        {
+          "label": "Portal Development Guide",
+          "id": "in20211portaldev"
+        },
+        {
+          "label": "Product Attribute Reference",
+          "id": "in20211prodattref"
+        },
+        {
+          "label": "Underwriting Configuration Reference",
+          "id": "in20211uwconfig"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "env": ["int"],
+      "items": [
+        {
+          "label": "Install Assist",
+          "id": "ininstallassistdraft"
+        },
+        {
+          "label": "Developer Setup",
+          "id": "indevguidejava11draft"
+        },
+        {
+          "label": "Developers Setup",
+          "id": "indevguidejava11ext"
+        },
+        {
+          "label": "Upgrade Tools",
+          "id": "inupgradetoolsdraft"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "InsuranceNow 2021.2",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Core Release Notes",
+          "id": "in20212rn"
+        },
+        {
+          "label": "Release Video",
+          "link": "https://www.brainshark.com/guidewire/vu?pi=zIPzgjRufzM6iUz0"
+        },
+        {
+          "label": "Studio Release Notes",
+          "id": "in20212studiorn"
+        },
+        {
+          "label": "Consumer Service Portal Release Notes",
+          "id": "incsp4rn"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "in20212app"
+        },
+        {
+          "label": "Consumer Sales Portal Features",
+          "id": "in20212csalesp"
+        },
+        {
+          "label": "Consumer Service Portal Features",
+          "id": "in20212cservicep"
+        },
+        {
+          "label": "Excel Designed Rating",
+          "id": "inexcelrating30"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "AppReader Integration",
+          "id": "in20212appreaderinteg"
+        },
+        {
+          "label": "Business Intelligence Integration",
+          "id": "in20212xbiintegdraft"
+        },
+        {
+          "label": "Live Predict Integration",
+          "id": "in20212pa"
+        },
+        {
+          "label": "API Reference",
+          "id": "in20212apiref"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer Setup",
+          "id": "indevguidejava11draft"
+        },
+        {
+          "label": "Developer Setup",
+          "id": "indevguidejava11ext"
+        },
+        {
+          "label": "GWCP Operations for Self-led Customers",
+          "id": "ingwcpops"
+        },
+        {
+          "label": "Portal Development",
+          "id": "in20212portaldev"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Core Configuration",
+          "id": "in20212config"
+        },
+        {
+          "label": "Billing Configuration Reference",
+          "id": "in20212billref"
+        },
+        {
+          "label": "Claims Configuration Reference",
+          "id": "in20212claimsconfig"
+        },
+        {
+          "label": "Common Functionality Configuration Reference",
+          "id": "in20212commonconfig"
+        },
+        {
+          "label": "Consumer Sales Portal Configuration",
+          "id": "in20212xcsalespconfigdraft"
+        },
+        {
+          "label": "Consumer Service Portal Configuration",
+          "id": "in20212xcservicepconfigdraft"
+        },
+        {
+          "label": "Product Attribute Reference",
+          "id": "in20212prodattref"
+        },
+        {
+          "label": "Provisioning Portal",
+          "id": "in20212provportalinternal"
+        },
+        {
+          "label": "Studio Configuration",
+          "id": "in20212studio"
+        },
+        {
+          "label": "Underwriting Configuration Reference",
+          "id": "in20212uwconfig"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Install Assist",
+          "id": "ininstallassistdraft"
+        },
+        {
+          "label": "Upgrade Tools",
+          "id": "inupgradetoolsdraft"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "ClaimCenter Package for France",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "midipfrn20"
+        },
+        {
+          "label": "Release Notes - French",
+          "id": "midipfrn20frFR"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Overview",
+          "id": "midipfoverview20"
+        },
+        {
+          "label": "Adjuster Guide",
+          "id": "midipfadjuster20"
+        },
+        {
+          "label": "Adjuster Guide - French",
+          "id": "midipfadjuster20frFR"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "midipfadmin20"
+        }
+      ]
+    }
+  ]
+}

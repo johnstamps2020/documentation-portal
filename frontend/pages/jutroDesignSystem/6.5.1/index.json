@@ -1,0 +1,27 @@
+{
+  "title": "Jutro Design System 6.5.2 (Dobson)",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Best Practices",
+      "class": "subject bestPractices",
+      "items": [
+        {
+          "label": "Jutro Design System and UI Framework",
+          "id": "jutro652"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Jutro Storybook",
+          "id": "storybook652"
+        }
+      ]
+    }
+  ]
+}

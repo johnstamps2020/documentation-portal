@@ -1,0 +1,108 @@
+{
+  "$schema": "../../../page-schema.json",
+  "title": "API References",
+  "template": "page",
+  "class": "blue-theme elysian threeCards",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Elysian",
+    "items": [
+      {
+        "label": "Flaine",
+        "page": "../flaine"
+      },
+      {
+        "label": "Dobson",
+        "page": "../dobson"
+      },
+      {
+        "label": "Cortina",
+        "page": "../cortina"
+      },
+      {
+        "label": "Banff",
+        "page": "../banff"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "BillingCenter",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "API Reference",
+          "id": "bcapirefelysian"
+        },
+        {
+          "label": "Cloud API Business Flows",
+          "id": "isbc202205apibf"
+        }
+      ]
+    },
+    {
+      "label": "ClaimCenter",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "API Reference",
+          "id": "ccapirefelysian"
+        },
+        {
+          "label": "Cloud API Authentication",
+          "id": "iscc202205apica"
+        },
+        {
+          "label": "Cloud API Business Flows",
+          "id": "iscc202205apibf"
+        }
+      ]
+    },
+    {
+      "label": "PolicyCenter",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "API Reference",
+          "id": "pcapirefelysian"
+        },
+        {
+          "label": "Cloud API Authentication",
+          "id": "ispc202205apica"
+        },
+        {
+          "label": "Cloud API Business Flows",
+          "id": "ispc202205apibf"
+        }
+      ]
+    },
+    {
+      "label": "Cloud Console",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "CI/CD Manager API",
+          "id": "cicdmanagerapiref"
+        },
+        {
+          "label": "Cloud Console API",
+          "id": "cloudconsoleapi"
+        }
+      ]
+    },
+    {
+      "label": "InsuranceNow",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "API Reference",
+          "id": "in20221apiref"
+        },
+        {
+          "label": "Portal Development Guide",
+          "id": "in20221portaldev"
+        }
+      ]
+    }
+  ]
+}
