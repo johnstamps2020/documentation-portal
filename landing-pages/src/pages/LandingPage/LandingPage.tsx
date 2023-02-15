@@ -6,6 +6,7 @@ import { Theme } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import Backdrop from "@mui/material/Backdrop";
 import CategoryLayout from "../../components/LandingPage/Category/CategoryLayout";
+import CategoryLayout2 from "../../components/LandingPage/Category/CategoryLayout2";
 import SectionLayout from "../../components/LandingPage/Section/SectionLayout";
 import ProductFamilyLayout from "../../components/LandingPage/ProductFamily/ProductFamilyLayout";
 
@@ -52,7 +53,7 @@ export default function LandingPage() {
             `Fetched page data path (${jsonData.path} is different from the page path from router (${pagePathFromRouter})`
           );
         }
-        if (jsonData.component.includes("redirect")) {
+        if (jsonData?.component?.includes("redirect")) {
           return navigate(`/${jsonData.component.split(" ")[1]}`);
         }
         setPageData(jsonData);
@@ -82,9 +83,14 @@ export default function LandingPage() {
             {loadingError}
           </Alert>
         )}
-        {pageData && pageData.categories.length !== 0 && (
-          <CategoryLayout {...pageData} />
-        )}
+        {pageData &&
+          pageData.categories.length !== 0 &&
+          (pageData.component?.includes("pageCategory2") ? (
+            <CategoryLayout2 {...pageData} />
+          ) : (
+            <CategoryLayout {...pageData} />
+          ))}
+
         {pageData && pageData.sections.length !== 0 && (
           <SectionLayout {...pageData} />
         )}

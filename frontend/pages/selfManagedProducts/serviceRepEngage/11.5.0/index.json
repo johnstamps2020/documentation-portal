@@ -1,0 +1,112 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "ServiceRepEngage 11.5.0",
+  "template": "page",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "11.5.0",
+    "items": [
+      {
+        "label": "11.4.1",
+        "page": "../11.4.1"
+      },
+      {
+        "label": "11.3.0",
+        "id": "dxsre1130"
+      },
+      {
+        "label": "11.2.0",
+        "id": "dxsre1120onpremstaging"
+      },
+      {
+        "label": "11.1.0",
+        "id": "dxsre1110onpremstaging"
+      },
+      {
+        "label": "10.0.1",
+        "id": "selfmanageddxsreaqsojbmv"
+      },
+      {
+        "label": "10.0.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocstyghellr"
+      },
+      {
+        "label": "8.1.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsdemyrpoh"
+      },
+      {
+        "label": "8.0.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsqarbsbtn"
+      },
+      {
+        "label": "7.1.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsrtlpihpc"
+      },
+      {
+        "label": "7.0.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsugutdoki"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dx1150srerelnotes"
+        },
+        {
+          "label": "Log4j Patch Release Notes",
+          "id": "dx1150log4jrelnotes"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dx1150sreinstall"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "dx1150sreapp"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration and Security Guide",
+          "id": "dx1150sreadmin"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer's Guide",
+          "id": "dx1150sredev"
+        },
+        {
+          "label": "Digital Services Reference Guides",
+          "id": "dx1150srerefguides"
+        }
+      ]
+    }
+  ]
+}

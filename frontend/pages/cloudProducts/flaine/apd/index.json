@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "APD App Release Notes",
-          "id": "apdapprn"
+          "id": "apdapprnflaine"
         }
       ]
     },
@@ -20,7 +20,7 @@
       "items": [
         {
           "label": "APD App Guide",
-          "id": "apdapp"
+          "id": "apdappflaine"
         }
       ]
     },
@@ -31,6 +31,16 @@
         {
           "label": "APD API Reference",
           "id": "apdmaindoc"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "APD for Claims (Early Access)",
+          "id": "apdclaimsflaine"
         }
       ]
     }

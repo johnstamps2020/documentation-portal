@@ -1,0 +1,12 @@
+{
+  "title": "Nederlands",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "ClaimCenter",
+      "class": "productFamily cardShadow",
+      "page": "cc"
+    }
+  ]
+}

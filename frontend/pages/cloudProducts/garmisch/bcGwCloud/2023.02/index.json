@@ -1,0 +1,186 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "BillingCenter for Guidewire Cloud 2023.02",
+  "template": "page",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Garmisch (2023.02)",
+    "items": [
+      {
+        "label": "Flaine (2022.09)",
+        "page": "../../../flaine/bcGwCloud/2022.09"
+      },
+      {
+        "label": "Elysian (2022.05)",
+        "page": "../../../elysian/bcGwCloud/2022.05"
+      },
+      {
+        "label": "Dobson (2021.11)",
+        "page": "../../../dobson/bcGwCloud/2021.11"
+      },
+      {
+        "label": "Cortina (2021.04)",
+        "page": "../../../cortina/billingCenterCloud/bcGwCloud/2021.04"
+      },
+      {
+        "label": "Banff (2020.11)",
+        "page": "../../../banff/billingCenterCloud/bcGwCloud/2020.11"
+      },
+      {
+        "label": "Aspen (2020.05)",
+        "page": "../../../aspen/billingCenterCloud"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "isbc202302releasenotes"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Developer Setup",
+          "id": "isbc202302devsetup"
+        },
+        {
+          "label": "Developer Setup (Internal only)",
+          "id": "isbcgarmischgwdevsetup"
+        },
+        {
+          "label": "Update",
+          "id": "isbc202302update"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools",
+          "id": "isconfigupgradetools450"
+        },
+        {
+          "label": "InsuranceSuite Configuration Upgrade Tools Compatibility",
+          "id": "isupgradecompatibility"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "isbc202302app"
+        },
+        {
+          "label": "Contact Management",
+          "id": "is202302contact"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "isbc202302admin"
+        },
+        {
+          "label": "Administration (Internal only)",
+          "id": "isbcgarmischgwadmin"
+        },
+        {
+          "label": "Data Archiving",
+          "id": "isbc202302dataarchiving"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration",
+          "id": "isbc202302config"
+        },
+        {
+          "label": "Globalization",
+          "id": "isbc202302global"
+        },
+        {
+          "label": "Gosu Rules",
+          "id": "isbc202302rules"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Overview of Cloud Integration",
+          "id": "is202302integoverview"
+        },
+        {
+          "label": "BillingCenter Cloud API Consumer Guide",
+          "id": "isbc202302apibf"
+        },
+        {
+          "label": "BillingCenter Cloud API Developer Guide",
+          "id": "isbc202302apica"
+        },
+        {
+          "label": "BillingCenter Cloud API Reference",
+          "id": "bcapirefgarmisch"
+        },
+        {
+          "label": "ContactManager Cloud API Consumer Guide",
+          "id": "isbc202302apicm"
+        },
+        {
+          "label": "Integration Gateway",
+          "id": "integgatewaydevlatest"
+        },
+        {
+          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
+          "id": "isbc202302integ"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "isbc202302restapifw"
+        },
+        {
+          "label": "REST API Client",
+          "id": "isrestapiclientguide"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "gosureflatest"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "gwglossary"
+        }
+      ]
+    }
+  ]
+}

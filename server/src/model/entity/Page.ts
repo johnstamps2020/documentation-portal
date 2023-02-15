@@ -13,8 +13,8 @@ export class Page {
   @Column()
   title: string;
 
-  @Column()
-  component: string;
+  @Column('text', { nullable: true })
+  component: string | null;
 
   @ManyToOne(
     () => PageSelector,

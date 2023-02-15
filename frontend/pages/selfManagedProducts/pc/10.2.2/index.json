@@ -1,0 +1,268 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "PolicyCenter 10.2.2",
+  "template": "page",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "10.2.2",
+    "items": [
+      {
+        "label": "10.2.1",
+        "page": "../10.2.1"
+      },
+      {
+        "label": "10.2.0",
+        "id": "pc1020"
+      },
+      {
+        "label": "10.1.2",
+        "id": "pc1012"
+      },
+      {
+        "label": "10.1.1",
+        "id": "pc1011"
+      },
+      {
+        "label": "10.1.0",
+        "id": "pc1010"
+      },
+      {
+        "label": "10.0.3",
+        "id": "selfmanagedpcuytrolxz"
+      },
+      {
+        "label": "10.0.2",
+        "id": "selfmanagedpc1002"
+      },
+      {
+        "label": "10.0.1",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyentergcxbllrp"
+      },
+      {
+        "label": "10.0.0",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterxdtwvycu"
+      },
+      {
+        "label": "9.0.10",
+        "id": "pc9010"
+      },
+      {
+        "label": "9.0.9",
+        "id": "pc909"
+      },
+      {
+        "label": "9.0.8",
+        "id": "pc908"
+      },
+      {
+        "label": "9.0.7",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterrtwztpfk"
+      },
+      {
+        "label": "9.0.6",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterhzpxxvwz"
+      },
+      {
+        "label": "9.0.5",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterwlvmqlps"
+      },
+      {
+        "label": "9.0.4",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocnzfemwar"
+      },
+      {
+        "label": "9.0.3",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocsetccnkr"
+      },
+      {
+        "label": "9.0.2",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoclzhtwoyw"
+      },
+      {
+        "label": "9.0.1",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocfwxqxxjo"
+      },
+      {
+        "label": "9.0.0",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocrbuikbrg"
+      },
+      {
+        "label": "8.0.8",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocmeibkklu"
+      },
+      {
+        "label": "8.0.7",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocucydlhvx"
+      },
+      {
+        "label": "8.0.6",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoclxmhamjs"
+      },
+      {
+        "label": "8.0.5",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocafqpzdwd"
+      },
+      {
+        "label": "8.0.4",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocpaqllgoi"
+      },
+      {
+        "label": "8.0.3",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocfnbhhrvy"
+      },
+      {
+        "label": "8.0.2",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocojaabfwj"
+      },
+      {
+        "label": "8.0.1",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocewdbghur"
+      },
+      {
+        "label": "8.0.0",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocjninxbqx"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ispc1022releasenotes"
+        },
+        {
+          "label": "New and Changed",
+          "id": "ispc1022newandchanged"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation",
+          "id": "ispc1022install"
+        },
+        {
+          "label": "Upgrade",
+          "id": "ispc1022upgrade"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "ispc1022app"
+        },
+        {
+          "label": "Contact Management",
+          "id": "ispc1022contact"
+        },
+        {
+          "label": "InsuranceSuite Guide",
+          "id": "ispc1022isguide"
+        }
+      ]
+    },
+    {
+      "label": "Best Practices",
+      "class": "subject bestPractices",
+      "items": [
+        {
+          "label": "Best Practices",
+          "id": "ispc1022best"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration",
+          "id": "ispc1022admin"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Advanced Product Designer in PolicyCenter",
+          "id": "ispc1022apd"
+        },
+        {
+          "label": "Configuration",
+          "id": "ispc1022config"
+        },
+        {
+          "label": "Globalization",
+          "id": "ispc1022global"
+        },
+        {
+          "label": "Gosu Rules",
+          "id": "ispc1022rules"
+        },
+        {
+          "label": "Product Designer",
+          "id": "ispc1022pd"
+        },
+        {
+          "label": "Product Model",
+          "id": "ispc1022pm"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Integration",
+          "id": "ispc1022integ"
+        },
+        {
+          "label": "REST API Client",
+          "id": "isrestapiclientguide"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Gosu Reference",
+          "id": "gosureflatest"
+        },
+        {
+          "label": "ISBTF and GUnit Testing",
+          "id": "ispc1022testing"
+        },
+        {
+          "label": "REST API Framework",
+          "id": "ispc1022restapifw"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "gwglossary"
+        }
+      ]
+    }
+  ]
+}

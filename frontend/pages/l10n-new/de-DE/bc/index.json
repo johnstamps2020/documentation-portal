@@ -1,0 +1,95 @@
+{
+  "title": "BillingCenter",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Anwendungshandbuch",
+          "id": "isbc202205appdeDE"
+        },
+        {
+          "label": "Konfigurationshandbuch",
+          "id": "isbc202205configdeDE"
+        },
+        {
+          "label": "Guidewire-Kontaktmanagementhandbuch",
+          "id": "is202205contactdeDE"
+        }
+      ]
+    },
+    {
+      "label": "2021.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud-API-Geschäftsabläufe- und Konfigurationshandbuch",
+          "id": "isbc202111apibfdeDE"
+        }
+      ]
+    },
+    {
+      "label": "2020.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/l10n/de-DE/bc/2020.05/ISCL_202005_de_BC-AppGuide.pdf"
+        },
+        {
+          "label": "Guidewire-Kontaktmanagementhandbuch",
+          "link": "/l10n/de-DE/bc/2020.05/ISCL_202005_de_BC_ContactMgmtGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.1.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/l10n/de-DE/bc/10.1.1/BC1011_de-DE_AppGuide.pdf"
+        },
+        {
+          "label": "Guidewire-Kontaktmanagementhandbuch",
+          "link": "/l10n/de-DE/bc/10.1.1/BC1011_de-DE_ContactMgmtGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.2",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/l10n/de-DE/bc/10.0.2/de-BC-AppGuide.pdf"
+        },
+        {
+          "label": "Guidewire-Kontaktmanagementhandbuch",
+          "link": "/l10n/de-DE/bc/10.0.2/de-BC-ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "Regelhandbuch",
+          "link": "/l10n/de-DE/bc/10.0.2/de-BC-RulesGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/l10n/de-DE/bc/10.0.0/de-BC-AppGuide.pdf"
+        },
+        {
+          "label": "Kontaktmanagementhandbuch",
+          "link": "/l10n/de-DE/bc/10.0.0/de-BC-ContactMgmtGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

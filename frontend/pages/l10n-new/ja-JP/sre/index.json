@@ -1,0 +1,53 @@
+{
+  "title": "ServiceRepEngage",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "インストールガイド",
+          "id": "dx202205jaJPsreinstall"
+        }
+      ]
+    },
+    {
+      "label": "11.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "インストールガイド",
+          "link": "/l10n/ja-JP/sre/11.1/ja-SRE onprem_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "管理およびセキュリティガイド",
+          "link": "/l10n/ja-JP/sre/10.0.1/ja-SRE_Admin and Security Guide.pdf"
+        },
+        {
+          "label": "アプリケーションガイド",
+          "link": "/l10n/ja-JP/sre/10.0.1/ja-SRE_AppGuide.pdf"
+        },
+        {
+          "label": "コンフィギュレーションガイド",
+          "link": "/l10n/ja-JP/sre/10.0.1/ja-SRE_ConfigurationGuide.pdf"
+        },
+        {
+          "label": "インストールガイド",
+          "link": "/l10n/ja-JP/sre/10.0.1/ja-SRE_InstallGuide.pdf"
+        },
+        {
+          "label": "ライブスタイルガイド：インストールおよびコンフィギュレーションガイド",
+          "link": "/l10n/ja-JP/sre/10.0.1/ja-SRE_Live Style Guide Install and Config.pdf.pdf"
+        }
+      ]
+    }
+  ]
+}

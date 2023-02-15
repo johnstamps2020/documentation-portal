@@ -8,6 +8,11 @@
     "selectedItem": "Dobson",
     "items": [
       {
+        "label": "Garmisch",
+        "page": "../garmisch",
+        "env": ["int", "staging"]
+      },
+      {
         "label": "Flaine",
         "page": "../flaine"
       },
@@ -53,6 +58,10 @@
         {
           "label": "Guidewire for Salesforce",
           "page": "gwsf"
+        },
+        {
+          "label": "InsuranceSuite Package for Australia",
+          "page": "../../globalContent/ipa/1.0"
         }
       ]
     },
@@ -95,12 +104,8 @@
           "page": "../explore/es-419"
         },
         {
-          "label": "HazardHub Casualty",
-          "page": "../hazardhubcasualty"
-        },
-        {
-          "label": "HazardHub Property",
-          "link": "/hazardhub/property/Intro/HazardHub_Property_Intro_gw.pdf"
+          "label": "HazardHub",
+          "link": "/hazardhub/HazardHub_Intro_gw.pdf"
         },
         {
           "label": "Predict",
@@ -180,15 +185,7 @@
             },
             {
               "label": "Authentication",
-              "id": "guidewireidentityfederationhubdraft"
-            },
-            {
-              "label": "Authentication",
               "id": "guidewireidentityfederationhub"
-            },
-            {
-              "label": "Network Connectivity",
-              "id": "cloudplatformdraft"
             },
             {
               "label": "Network Connectivity",
@@ -215,11 +212,6 @@
         {
           "label": "London Market",
           "page": "../../globalContent/iplm/3.2"
-        },
-        {
-          "label": "Australia",
-          "page": "../../globalContent/ipa/1.0",
-          "env": ["int", "staging"]
         }
       ]
     }

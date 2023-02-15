@@ -238,6 +238,7 @@ function getBackgroundComponent(pagePath: string) {
     'cloudProducts/dobson': 'dobsonBackground',
     'cloudProducts/elysian': 'elysianBackground',
     'cloudProducts/flaine': 'flaineBackground',
+    'cloudProducts/garmisch': 'garmischBackground',
   };
   let background = null;
   Object.entries(backgroundPathMapping).forEach(([k, v]) => {
@@ -252,6 +253,10 @@ function getCompletePageComponent(
   legacyPageConfig: legacyPageConfig,
   dbPageConfig: Page
 ) {
+  const categoryLayout2Paths = [
+    'cloudProducts/flaine',
+    'cloudProducts/garmisch',
+  ];
   const legacyPageConfigTemplate = legacyPageConfig.template;
   if (legacyPageConfigTemplate === 'redirect') {
     const redirectLink = legacyPageConfig
@@ -259,11 +264,18 @@ function getCompletePageComponent(
       .link!.replace(/^\/+/, '');
     return `${legacyPageConfigTemplate} ${redirectLink}`;
   }
+  const pageComponent = categoryLayout2Paths.includes(dbPageConfig.path)
+    ? 'pageCategory2'
+    : null;
   const bgComponent = getBackgroundComponent(dbPageConfig.path);
   if (bgComponent) {
-    return `${legacyPageConfigTemplate} ${bgComponent}`;
+    if (pageComponent) {
+      return `${bgComponent} ${pageComponent}`;
+    }
+    return bgComponent;
   }
-  return legacyPageConfigTemplate;
+
+  return pageComponent;
 }
 
 async function updateRefsInItem(

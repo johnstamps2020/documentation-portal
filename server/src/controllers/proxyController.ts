@@ -139,7 +139,7 @@ export async function reactAppProxy(
     return next();
   }
   const requestedPageBody = requestedPage.body;
-  if (requestedPageBody.component.includes('redirect')) {
+  if (requestedPageBody.component?.includes('redirect')) {
     return res.redirect(
       `/landing/${requestedPageBody.component.split(' ')[1]}`
     );

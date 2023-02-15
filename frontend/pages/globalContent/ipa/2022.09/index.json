@@ -1,0 +1,38 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "InsuranceSuite Package for Australia for Guidewire Cloud 2022.09",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ipacloudelysianrn"
+        }
+      ]
+    },
+    {
+      "label": "Developers",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Configuration Guide",
+          "id": "ipacloudelysianconfig"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "ipacloudelysianapp"
+        }
+      ]
+    }
+  ]
+}

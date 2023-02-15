@@ -1,6 +1,8 @@
 import Link from "@mui/material/Link";
 import { Link as RouterLink } from "react-router-dom";
 import Stack from "@mui/material/Stack";
+import garmischBadge from "../../images/badge-garmisch.svg";
+import flaineBadge from "../../images/badge-flaine.svg";
 import elysianBadge from "../../images/badge-elysian.svg";
 import dobsonBadge from "../../images/badge-dobson.svg";
 import cortinaBadge from "../../images/badge-cortina.svg";
@@ -15,7 +17,13 @@ type FooterProps = {
 };
 export default function Footer({ path }: FooterProps) {
   const releaseInfo = { label: "", badge: "" };
-  if (path?.includes("elysian")) {
+  if (path?.includes("garmisch")) {
+    releaseInfo.label = "Garmisch Release";
+    releaseInfo.badge = garmischBadge;
+  } else if (path?.includes("flaine")) {
+    releaseInfo.label = "Flaine Release";
+    releaseInfo.badge = flaineBadge;
+  } else if (path?.includes("elysian")) {
     releaseInfo.label = "Elysian Release";
     releaseInfo.badge = elysianBadge;
   } else if (path?.includes("dobson")) {
@@ -45,7 +53,7 @@ export default function Footer({ path }: FooterProps) {
       }}
     >
       <FooterText sx={{ display: "contents" }}>
-        Copyright 2022 Guidewire Software, Inc.
+        Copyright © 2023 Guidewire Software, Inc.
       </FooterText>
       <Link
         component={RouterLink}

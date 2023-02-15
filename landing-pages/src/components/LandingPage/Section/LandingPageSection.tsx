@@ -28,7 +28,7 @@ export default function LandingPageSection(section: Section) {
       spacing={2}
       sx={{
         breakInside: "avoid",
-        width: "450px"
+        width: { xs: "100%", sm: "450px" }
       }}
     >
       <Stack direction="row" spacing={2} alignItems="center">

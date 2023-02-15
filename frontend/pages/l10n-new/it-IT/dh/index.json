@@ -1,0 +1,17 @@
+{
+  "title": "DataHub",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "10.0.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guida alle Specifiche dati",
+          "link": "/l10n/it-IT/dh/10.0.0/DH10-dataspec-it.pdf"
+        }
+      ]
+    }
+  ]
+}

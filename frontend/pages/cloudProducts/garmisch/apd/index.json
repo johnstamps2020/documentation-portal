@@ -1,0 +1,48 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Advanced Product Designer App",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "APD App Release Notes",
+          "id": "apdapprngarmisch"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "APD App Guide",
+          "id": "apdappgarmisch"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "APD API Reference",
+          "id": "apdmaindoc"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "APD for Claims (Early Access)",
+          "id": "apdclaimsgarmisch"
+        }
+      ]
+    }
+  ]
+}

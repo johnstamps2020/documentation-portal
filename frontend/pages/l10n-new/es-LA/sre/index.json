@@ -1,0 +1,53 @@
+{
+  "title": "ServiceRepEngage",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de la aplicación",
+          "link": "/l10n/es-LA/sre/2022.05/es-LA-v.2022.05 SRE_AppGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "11.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de instalación",
+          "link": "/l10n/es-LA/sre/11.1/es-419-SRE-onprem_InstallGuide.pdf.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de seguridad y administración",
+          "link": "/l10n/es-LA/sre/10.0.1/es-SRE_admin-and-security-guide.pdf"
+        },
+        {
+          "label": "Guía de la aplicación",
+          "link": "/l10n/es-LA/sre/10.0.1/es-SRE_AppGuide.pdf"
+        },
+        {
+          "label": "Guía de configuración",
+          "link": "/l10n/es-LA/sre/10.0.1/es-SRE_ConfigurationGuide.pdf"
+        },
+        {
+          "label": "Guía de instalación",
+          "link": "/l10n/es-LA/sre/10.0.1/es-SRE_InstallGuide.pdf"
+        },
+        {
+          "label": "Guía de configuración e instalación de Live Style Guide",
+          "link": "/l10n/es-LA/sre/10.0.1/es-SRE_LiveStyleGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

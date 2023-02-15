@@ -58,7 +58,7 @@
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools440"
+          "id": "isconfigupgradetools450"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools Compatibility",
@@ -113,6 +113,14 @@
         {
           "label": "Gosu Rules",
           "id": "iscc202209rules"
+        },
+        {
+          "label": "APD for Claims (Early Access)",
+          "id": "apdclaimsflaine"
+        },
+        {
+          "label": "Claims Intake FNOL Template (Early Access)",
+          "id": "is202209fnoltemplate"
         }
       ]
     },
@@ -125,23 +133,23 @@
           "id": "is202209integoverview"
         },
         {
-          "label": "API Reference",
-          "id": "ccapirefflaine"
-        },
-        {
           "label": "App Events",
           "id": "appeventsdev"
         },
         {
-          "label": "Cloud API Authentication",
-          "id": "iscc202209apica"
-        },
-        {
-          "label": "Cloud API Business Flows",
+          "label": "ClaimCenter Cloud API Consumer Guide",
           "id": "iscc202209apibf"
         },
         {
-          "label": "Cloud API ContactManager",
+          "label": "ClaimCenter Cloud API Developer Guide",
+          "id": "iscc202209apica"
+        },
+        {
+          "label": "ClaimCenter Cloud API Reference",
+          "id": "ccapirefflaine"
+        },
+        {
+          "label": "ContactManager Cloud API Consumer Guide",
           "id": "iscc202209apicm"
         },
         {

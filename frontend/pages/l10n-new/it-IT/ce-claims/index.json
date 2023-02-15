@@ -1,0 +1,31 @@
+{
+  "title": "CustomerEngage Account Management for ClaimCenter",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guida all'installazione",
+          "link": "/l10n/it-IT/ce-claims/2022.05/it-IT Digital v.2022.05 CE-AM Claims InstallGuide.pdf"
+        },
+        {
+          "label": "Guida all'applicazione",
+          "link": "/l10n/it-IT/ce-claims/2022.05/it-IT Digital v.2022.05 CE-AM Claims_AppGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "11.3",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guida all'installazione",
+          "link": "/l10n/it-IT/ce-claims/11.3/it-CE-Claims-11.3-onprem- InstallGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

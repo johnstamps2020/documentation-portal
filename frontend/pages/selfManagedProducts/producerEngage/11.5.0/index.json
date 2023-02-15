@@ -1,0 +1,112 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "ProducerEngage 11.5.0",
+  "template": "page",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "11.5.0",
+    "items": [
+      {
+        "label": "11.4.1",
+        "page": "../11.4.1"
+      },
+      {
+        "label": "11.3.0",
+        "id": "dxpe1130"
+      },
+      {
+        "label": "11.2.0",
+        "id": "dxpe1120onpremstaging"
+      },
+      {
+        "label": "11.1.0",
+        "id": "dxpe1110onpremstaging"
+      },
+      {
+        "label": "10.0.1",
+        "id": "selfmanageddxpemlefekrm"
+      },
+      {
+        "label": "10.0.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsamzzpbvt"
+      },
+      {
+        "label": "8.1.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsnoryczgm"
+      },
+      {
+        "label": "8.0.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsvhcgqwst"
+      },
+      {
+        "label": "7.1.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocseucuheur"
+      },
+      {
+        "label": "7.0.0",
+        "id": "httpsportalguidewirecomportalsecuredocdigitalroducerngageocsneawmwlb"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dx1150perelnotes"
+        },
+        {
+          "label": "Log4j Patch Release Notes",
+          "id": "dx1150log4jrelnotes"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dx1150peinstall"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "dx1150peapp"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration and Security Guide",
+          "id": "dx1150peadmin"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer's Guide",
+          "id": "dx1150pedev"
+        },
+        {
+          "label": "Digital Services Reference Guides",
+          "id": "dx1150perefguides"
+        }
+      ]
+    }
+  ]
+}

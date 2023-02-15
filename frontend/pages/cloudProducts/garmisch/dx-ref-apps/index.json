@@ -1,0 +1,227 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "EnterpriseEngage Digital Reference Applications",
+  "template": "page",
+  "class": "blue-theme flaine threeCards",
+  "items": [
+    {
+      "label": "Jutro Design System 8.3.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Jutro Design System and UI Framework",
+          "id": "jutro830"
+        },
+        {
+          "label": "Jutro Storybook",
+          "id": "storybook830"
+        }
+      ]
+    },
+    {
+      "label": "CustomerEngage Account Management",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dx202302ceamrelnotes"
+        },
+        {
+          "label": "Installation Guide",
+          "id": "dx202302ceaminstall"
+        },
+        {
+          "label": "Application Guide",
+          "id": "dx202302ceamapp"
+        },
+        {
+          "label": "Developer's Guide",
+          "id": "dx202302ceamdev"
+        },
+        {
+          "label": "Digital Services Reference Guides",
+          "id": "dx202302ceamrefguides"
+        }
+      ]
+    },
+    {
+      "label": "CustomerEngage Account Management for ClaimCenter",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dx202302ceclaimsrelnotes"
+        },
+        {
+          "label": "Installation Guide",
+          "id": "dx202302ceclaimsinstall"
+        },
+        {
+          "label": "Application Guide",
+          "id": "dx202302ceclaimsapp"
+        },
+        {
+          "label": "Developer's Guide",
+          "id": "dx202302ceclaimsdev"
+        },
+        {
+          "label": "Digital Services Reference Guides",
+          "id": "dx202302ceclaimsrefguides"
+        }
+      ]
+    },
+    {
+      "label": "CustomerEngage Quote and Buy",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dx202302ceqbrelnotes"
+        },
+        {
+          "label": "Installation Guide",
+          "id": "dx202302ceqbinstall"
+        },
+        {
+          "label": "Application Guide",
+          "id": "dx202302ceqbapp"
+        },
+        {
+          "label": "Developer's Guide",
+          "id": "dx202302ceqbdev"
+        },
+        {
+          "label": "Digital Code Generation Guide",
+          "id": "dx202302dcg"
+        },
+        {
+          "label": "Digital Services Reference Guides",
+          "id": "dx202302ceqbrefguides"
+        }
+      ]
+    },
+    {
+      "label": "ProducerEngage",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dx202302perelnotes"
+        },
+        {
+          "label": "Installation Guide",
+          "id": "dx202302peinstall"
+        },
+        {
+          "label": "Application Guide",
+          "id": "dx202302peapp"
+        },
+        {
+          "label": "Developer's Guide",
+          "id": "dx202302pedev"
+        },
+        {
+          "label": "Digital Code Generation Guide",
+          "id": "dx202302dcg"
+        },
+        {
+          "label": "Digital Services Reference Guides",
+          "id": "dx202302perefguides"
+        }
+      ]
+    },
+    {
+      "label": "ProducerEngage for ClaimCenter",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dx202302peclaimsrelnotes"
+        },
+        {
+          "label": "Installation Guide",
+          "id": "dx202302peclaimsinstall"
+        },
+        {
+          "label": "Application Guide",
+          "id": "dx202302peclaimsapp"
+        },
+        {
+          "label": "Developer's Guide",
+          "id": "dx202302peclaimsdev"
+        },
+        {
+          "label": "Digital Services Reference Guides",
+          "id": "dx202302peclaimsrefguides"
+        }
+      ]
+    },
+    {
+      "label": "ServiceRepEngage",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dx202302srerelnotes"
+        },
+        {
+          "label": "Installation Guide",
+          "id": "dx202302sreinstall"
+        },
+        {
+          "label": "Application Guide",
+          "id": "dx202302sreapp"
+        },
+        {
+          "label": "Developer's Guide",
+          "id": "dx202302sredev"
+        },
+        {
+          "label": "Digital Services Reference Guides",
+          "id": "dx202302srerefguides"
+        }
+      ]
+    },
+    {
+      "label": "VendorEngage",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "dx202302verelnotes"
+        },
+        {
+          "label": "Installation Guide",
+          "id": "dx202302veinstall"
+        },
+        {
+          "label": "Application Guide",
+          "id": "dx202302veapp"
+        },
+        {
+          "label": "Developer's Guide",
+          "id": "dx202302vedev"
+        },
+        {
+          "label": "Digital Services Reference Guides",
+          "id": "dx202302verefguides"
+        }
+      ]
+    },
+    {
+      "label": "API Documentation",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Digital Frontend API Documentation",
+          "id": "dxjsdocs202302"
+        }
+      ]
+    }
+  ],
+  "search_filters": {
+    "platform": [
+      "Cloud"
+    ]
+  }
+}

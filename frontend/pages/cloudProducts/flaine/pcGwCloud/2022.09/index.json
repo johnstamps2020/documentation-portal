@@ -62,7 +62,7 @@
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools440"
+          "id": "isconfigupgradetools450"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools Compatibility",
@@ -127,6 +127,10 @@
           "id": "ispc202209rules"
         },
         {
+          "label": "Guidewire Rules (Early Access)",
+          "id": "gwrules"
+        },
+        {
           "label": "Product Designer",
           "id": "ispc202209pd"
         },
@@ -137,6 +141,10 @@
         {
           "label": "Submission Intake Configuration",
           "id": "submissionintakeconfig"
+        },
+        {
+          "label": "US Standards-based Template Framework",
+          "page": "../../../../globalContent/sbt"
         }
       ]
     },
@@ -149,23 +157,23 @@
           "id": "is202209integoverview"
         },
         {
-          "label": "API Reference",
-          "id": "pcapirefflaine"
-        },
-        {
           "label": "App Events",
           "id": "appeventsdev"
         },
         {
-          "label": "Cloud API Authentication",
-          "id": "ispc202209apica"
-        },
-        {
-          "label": "Cloud API Business Flows",
+          "label": "PolicyCenter Cloud API Consumer Guide",
           "id": "ispc202209apibf"
         },
         {
-          "label": "Cloud API ContactManager",
+          "label": "PolicyCenter Cloud API Developer Guide",
+          "id": "ispc202209apica"
+        },
+        {
+          "label": "PolicyCenter Cloud API Reference",
+          "id": "pcapirefflaine"
+        },
+        {
+          "label": "ContactManager Cloud API Consumer Guide",
           "id": "ispc202209apicm"
         },
         {

@@ -8,6 +8,10 @@
     "selectedItem": "10.2.1",
     "items": [
       {
+        "label": "10.2.2",
+        "page": "../10.2.2"
+      },
+      {
         "label": "10.2.0",
         "id": "pc1020"
       },
@@ -24,6 +28,22 @@
         "id": "pc1010"
       },
       {
+        "label": "10.0.3",
+        "id": "selfmanagedpcuytrolxz"
+      },
+      {
+        "label": "10.0.2",
+        "id": "selfmanagedpc1002"
+      },
+      {
+        "label": "10.0.1",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyentergcxbllrp"
+      },
+      {
+        "label": "10.0.0",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterxdtwvycu"
+      },
+      {
         "label": "9.0.10",
         "id": "pc9010"
       },
@@ -34,6 +54,74 @@
       {
         "label": "9.0.8",
         "id": "pc908"
+      },
+      {
+        "label": "9.0.7",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterrtwztpfk"
+      },
+      {
+        "label": "9.0.6",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterhzpxxvwz"
+      },
+      {
+        "label": "9.0.5",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterwlvmqlps"
+      },
+      {
+        "label": "9.0.4",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocnzfemwar"
+      },
+      {
+        "label": "9.0.3",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocsetccnkr"
+      },
+      {
+        "label": "9.0.2",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoclzhtwoyw"
+      },
+      {
+        "label": "9.0.1",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocfwxqxxjo"
+      },
+      {
+        "label": "9.0.0",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocrbuikbrg"
+      },
+      {
+        "label": "8.0.8",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocmeibkklu"
+      },
+      {
+        "label": "8.0.7",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocucydlhvx"
+      },
+      {
+        "label": "8.0.6",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdoclxmhamjs"
+      },
+      {
+        "label": "8.0.5",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocafqpzdwd"
+      },
+      {
+        "label": "8.0.4",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocpaqllgoi"
+      },
+      {
+        "label": "8.0.3",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocfnbhhrvy"
+      },
+      {
+        "label": "8.0.2",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocojaabfwj"
+      },
+      {
+        "label": "8.0.1",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocewdbghur"
+      },
+      {
+        "label": "8.0.0",
+        "id": "httpsportalguidewirecomportalsecuredocpcolicyenterdocjninxbqx"
       }
     ]
   },

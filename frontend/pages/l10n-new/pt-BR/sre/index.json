@@ -1,0 +1,43 @@
+{
+  "title": "ServiceRepEngage",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "11.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guia de instalação",
+          "link": "/l10n/pt-BR/sre/11.1/pt-SRE-onprem_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guia de administração e segurança",
+          "link": "/l10n/pt-BR/sre/10.0.1/pt-SRE_Admin-and-Security Guide.pdf"
+        },
+        {
+          "label": "Guia do aplicativo",
+          "link": "/l10n/pt-BR/sre/10.0.1/pt-SRE_AppGuide.pdf"
+        },
+        {
+          "label": "Guia de configuração",
+          "link": "/l10n/pt-BR/sre/10.0.1/pt-SRE_ConfigurationGuide.pdf"
+        },
+        {
+          "label": "Guia de instalação",
+          "link": "/l10n/pt-BR/sre/10.0.1/pt-SRE_InstallGuide.pdf"
+        },
+        {
+          "label": "Guia de instalação e configuração do Live Style Guide",
+          "link": "/l10n/pt-BR/sre/10.0.1/pt-SRE_Live Style Guide Install and Config.pdf"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "title": "ServiceRepEngage",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "11.4.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Administrator- und Sicherheitshandbuch",
+          "link": "/l10n/de-DE/sre/11.4.1/de-DE-Digital v.11.4.1 SRE admin&security-guide.pdf"
+        },
+        {
+          "label": "Entwicklerhandbuch",
+          "link": "/l10n/de-DE/sre/11.4.1/de-DE-Digital v.11.4.1 SRE Developers-guide.pdf"
+        },
+        {
+          "label": "Installationshandbuch",
+          "link": "/l10n/de-DE/sre/11.4.1/de-DE-Digital v.11.4.1 SRE Installer-guide.pdf"
+        },
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/l10n/de-DE/sre/11.4.1/de-DE-Digital v.11.4.1 SRE_AppGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "11.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Installationshandbuch",
+          "link": "/l10n/de-DE/sre/11.1/de-SRE-onprem_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Administrator- und Sicherheitshandbuch",
+          "link": "/l10n/de-DE/sre/10.0.1/de-SRE_admin-and-security-guide.pdf"
+        },
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/l10n/de-DE/sre/10.0.1/de-SRE_AppGuide.pdf"
+        },
+        {
+          "label": "Konfigurationshandbuch",
+          "link": "/l10n/de-DE/sre/10.0.1/de-SRE_ConfigurationGuide.pdf"
+        },
+        {
+          "label": "Installationshandbuch",
+          "link": "/l10n/de-DE/sre/10.0.1/de-SRE_InstallGuide.pdf"
+        },
+        {
+          "label": "Live Style Guide Installation and Configuration Guide",
+          "link": "/l10n/de-DE/sre/10.0.1/de-SRE_Life Style Guide Install and Config.pdf"
+        }
+      ]
+    }
+  ]
+}

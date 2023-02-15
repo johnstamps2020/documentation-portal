@@ -2,7 +2,7 @@ import { PageSelector } from "server/dist/model/entity/PageSelector";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem/MenuItem";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import InputLabel from "@mui/material/InputLabel";
 import { styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
@@ -115,7 +115,8 @@ export default function LandingPageSelector({
           marginLeft: 0,
           marginRight: "auto",
           backgroundColor: "white",
-          borderRadius: 4
+          borderRadius: 4,
+          width: "300px"
         }}
       >
         {sortedPageSelectorItems.map(item => (

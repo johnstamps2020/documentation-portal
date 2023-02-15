@@ -1,0 +1,118 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "InfoCenter 10.9.0",
+  "class": "twoColumns",
+  "template": "page",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "10.9.0",
+    "items": [
+      {
+        "label": "10.8.0",
+        "page": "../10.8.0"
+      },
+      {
+        "label": "10.7.0",
+        "page": "../10.7.0"
+      },
+      {
+        "label": "10.6.0",
+        "page": "../10.6.0"
+      },
+      {
+        "label": "10.5.0",
+        "page": "../10.5.0"
+      },
+      {
+        "label": "10.4.0",
+        "id": "ic1040"
+      },
+      {
+        "label": "10.3.0",
+        "id": "ic1030"
+      },
+      {
+        "label": "10.2.0",
+        "id": "ic1020"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ic1090rn"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Product Guide",
+          "id": "ic1090product"
+        },
+        {
+          "label": "BI Applications Guide",
+          "id": "ic1090biapp"
+        },
+        {
+          "label": "Reports Guide",
+          "id": "ic1090reports"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "ic1090install"
+        },
+        {
+          "label": "Upgrade Guide",
+          "id": "ic1090upgrade"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration Guide",
+          "id": "ic1090config"
+        },
+        {
+          "label": "Data Specifications Guide",
+          "id": "ic1090dataspec"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration Guide",
+          "id": "ic1090admin"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Developer Reference",
+          "id": "ic1090devref"
+        }
+      ]
+    }
+  ]
+}
