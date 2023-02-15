@@ -53,7 +53,7 @@ export default function LandingPage() {
             `Fetched page data path (${jsonData.path} is different from the page path from router (${pagePathFromRouter})`
           );
         }
-        if (jsonData.component.includes("redirect")) {
+        if (jsonData?.component?.includes("redirect")) {
           return navigate(`/${jsonData.component.split(" ")[1]}`);
         }
         setPageData(jsonData);
@@ -102,7 +102,7 @@ export default function LandingPage() {
         open={loading}
         sx={{
           color: "#fff",
-          zIndex: (theme: Theme) => theme.zIndex.drawer + 1,
+          zIndex: (theme: Theme) => theme.zIndex.drawer + 1
         }}
       />
     </Layout>
