@@ -11,6 +11,7 @@ import { runningInDevMode } from './utils/serverUtils';
 const HttpProxy = require('http-proxy');
 const proxy = new HttpProxy();
 export const forbiddenRoute = '/landing/forbidden';
+export const internalRoute = '/landing/internal';
 
 function setProxyResCacheControlHeader(proxyRes: any) {
   if (proxyRes.headers['content-type']?.includes('html')) {
@@ -46,7 +47,7 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
   }
   if (resourceStatus == 403) {
     return res.redirect(
-      `${forbiddenRoute}${req.url ? `?unauthorized=${req.url}` : ''}`
+      `${internalRoute}${req.url ? `?restricted=${req.url}` : ''}`
     );
   }
 
@@ -127,9 +128,9 @@ export async function reactAppProxy(
     changeOrigin: true,
   };
   /* Open routes, such as /gw-login and /search, are configured in the database as public pages.
-                        Resource routes, such as /static and /landing-page-resource, are configured in the database
-                         as public pages with the "resource" component.
-                        This way, the user can view these routes without login.*/
+                              Resource routes, such as /static and /landing-page-resource, are configured in the database
+                               as public pages with the "resource" component.
+                              This way, the user can view these routes without login.*/
   if (req.originalUrl === '/landing') {
     return proxy.web(req, res, proxyOptions, next);
   }
@@ -138,6 +139,11 @@ export async function reactAppProxy(
     return next();
   }
   const requestedPageBody = requestedPage.body;
+  if (requestedPageBody.component.includes('redirect')) {
+    return res.redirect(
+      `/landing/${requestedPageBody.component.split(' ')[1]}`
+    );
+  }
   const checkStatus = await isUserAllowedToAccessResource(
     req,
     requestedPageBody.public,
@@ -148,7 +154,7 @@ export async function reactAppProxy(
   }
   if (checkStatus == 403) {
     return res.redirect(
-      `${forbiddenRoute}${req.url ? `?unauthorized=${req.url}` : ''}`
+      `${internalRoute}${req.url ? `?restricted=${req.url}` : ''}`
     );
   }
 
@@ -156,15 +162,21 @@ export async function reactAppProxy(
   if (isDevMode) {
     return proxy.web(req, res, proxyOptions, next);
   } else {
-    if (!req.url.match(/[a-zA-Z0-9]\.[a-zA-Z0-9]+$/)) {
+    const indexOfExtension = req.url.lastIndexOf('.');
+    const endsWithExtension =
+      indexOfExtension !== -1
+        ? /^\D+$/.test(req.url.substring(indexOfExtension))
+        : false;
+
+    if (endsWithExtension) {
+      proxy.web(req, res, proxyOptions, next);
+    } else {
       fetch(`${proxyOptions.target}/index.html`)
         .then(response => {
           res.status(getStatusCode(req.url));
           response.body.pipe(res);
         })
         .catch(err => res.status(500).send(err));
-    } else {
-      proxy.web(req, res, proxyOptions, next);
     }
   }
 }

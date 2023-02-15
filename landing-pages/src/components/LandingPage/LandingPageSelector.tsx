@@ -2,15 +2,39 @@ import { PageSelector } from "server/dist/model/entity/PageSelector";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem/MenuItem";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import InputLabel from "@mui/material/InputLabel";
 import { styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
+import { PageSelectorItem } from "server/dist/model/entity/PageSelectorItem";
 
 type LandingPageSelectorProps = {
   pageSelector: PageSelector;
   labelColor: string;
 };
+
+function sortPageSelectorItems(unsortedPageSelectorItems: PageSelectorItem[]) {
+  const isSemVerLabel = unsortedPageSelectorItems.some(
+    i => i.label.search(/^([0-9]+\.[0-9]+\.[0-9]+)$/g) === 0
+  );
+  return isSemVerLabel
+    ? unsortedPageSelectorItems
+        .sort(function(a, b) {
+          const labelA = a.label
+            .split(".")
+            .map(n => +n + 100000)
+            .join(".");
+          const labelB = b.label
+            .split(".")
+            .map(n => +n + 100000)
+            .join(".");
+          return labelA > labelB ? 1 : -1;
+        })
+        .reverse()
+    : unsortedPageSelectorItems
+        .sort((a, b) => (a.label > b.label ? 1 : -1))
+        .reverse();
+}
 
 export default function LandingPageSelector({
   pageSelector,
@@ -46,13 +70,21 @@ export default function LandingPageSelector({
     const selectedItem = pageSelector.pageSelectorItems.find(
       i => i.label === event.target.value
     );
-    const pageUrl =
-      selectedItem?.page.path || selectedItem?.link || selectedItem?.doc?.url;
-    return pageUrl ? navigate(`/${pageUrl}`) : navigate("#");
+    if (!selectedItem) {
+      return null;
+    }
+    const itemPage = selectedItem.page;
+    if (itemPage) {
+      return navigate(`/${itemPage.path}`);
+    }
+    const itemLink = selectedItem.link;
+    const targetUrl = itemLink ? itemLink : `/${selectedItem.doc.url}`;
+    return (window.location.href = targetUrl);
   };
-  const sortedPageSelectorItems = pageSelector.pageSelectorItems
-    .sort((a, b) => (a.label > b.label ? 1 : -1))
-    .reverse();
+
+  const sortedPageSelectorItems = sortPageSelectorItems(
+    pageSelector.pageSelectorItems
+  );
   return (
     <FormControl
       variant="standard"

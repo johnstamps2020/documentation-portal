@@ -1,8 +1,4 @@
-import {
-  createBrowserRouter,
-  Navigate,
-  RouterProvider
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import ForbiddenPage from "./pages/ForbiddenPage/ForbiddenPage";
@@ -14,12 +10,13 @@ import { appTheme } from "./themes/appTheme";
 import CssBaseline from "@mui/material/CssBaseline";
 import { UserProvider } from "./context/UserContext";
 import SupportPage from "./pages/SupportPage/SupportPage";
+import InternalPage from "./pages/InternalPage/InternalPage";
 
 const router = createBrowserRouter(
   [
     {
-      path: "/",
-      element: <Navigate to="/cloudProducts/elysian" />
+      path: "/internal",
+      element: <InternalPage />
     },
     {
       path: "/forbidden",

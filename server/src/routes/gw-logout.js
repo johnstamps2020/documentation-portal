@@ -1,6 +1,5 @@
 const express = require('express');
 const { winstonLogger } = require('../controllers/loggerController');
-const { resolveRequestedUrl } = require('../controllers/authController');
 const router = express.Router();
 
 router.get('/', function(req, res, next) {

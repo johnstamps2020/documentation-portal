@@ -1,8 +1,7 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import { Page } from "server/dist/model/entity/Page";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Theme } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import Backdrop from "@mui/material/Backdrop";
@@ -14,7 +13,7 @@ import ProductFamilyLayout from "../../components/LandingPage/ProductFamily/Prod
 export default function LandingPage() {
   const navigate = useNavigate();
   const params = useParams();
-  const pagePathFromRouter = params["*"];
+  const pagePathFromRouter = params["*"] !== "" ? params["*"] : "/";
   const [pageData, setPageData] = useState<Page>();
   const [loading, setLoading] = useState(false);
   const [loadingError, setLoadingError] = useState<string | undefined>(
@@ -27,18 +26,18 @@ export default function LandingPage() {
         const response = await fetch(
           `/safeConfig/entity/page/data?path=${pagePathFromRouter}`
         );
+        const requestedPath =
+          pagePathFromRouter === "/"
+            ? pagePathFromRouter
+            : `/landing/${pagePathFromRouter}`;
         if (response.status === 401) {
-          return navigate(
-            `/gw-login?redirectTo=/landing/${pagePathFromRouter}`
-          );
+          return navigate(`/gw-login?redirectTo=${requestedPath}`);
         }
         if (response.status === 403) {
-          return navigate(
-            `/forbidden?unauthorized=/landing/${pagePathFromRouter}`
-          );
+          return navigate(`/internal?restricted=${requestedPath}`);
         }
         if (response.status !== 200) {
-          return navigate(`/404?notFound=/landing/${pagePathFromRouter}`);
+          return navigate(`/404?notFound=${requestedPath}`);
         }
         if (!response.ok) {
           const errorJson = await response.json();
@@ -54,6 +53,9 @@ export default function LandingPage() {
             `Fetched page data path (${jsonData.path} is different from the page path from router (${pagePathFromRouter})`
           );
         }
+        if (jsonData.component.includes("redirect")) {
+          return navigate(`/${jsonData.component.split(" ")[1]}`);
+        }
         setPageData(jsonData);
       } catch (err) {
         setLoadingError(`Error loading page: ${err}`);
@@ -63,7 +65,7 @@ export default function LandingPage() {
     }
 
     getPageData().catch(console.error);
-  }, [pagePathFromRouter]);
+  }, [pagePathFromRouter, navigate]);
 
   if (!pageData) {
     return null;

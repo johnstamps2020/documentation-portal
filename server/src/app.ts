@@ -22,6 +22,7 @@ import {
   checkIfAllowedToAccessRouteAndRedirect,
   isAllowedToAccessRoute,
 } from './controllers/authController';
+import { forbiddenRoute } from './controllers/proxyController';
 
 declare global {
   namespace Express {
@@ -169,7 +170,9 @@ app.use('/userInformation', userRouter);
 app.use('/search', searchRouter);
 
 app.use('/portal-config/*', (req, res) => {
-  res.redirect('/landing/unauthorized');
+  res.redirect(
+    `${forbiddenRoute}${req.url ? `?unauthorized=${req.originalUrl}` : ''}`
+  );
 });
 
 // overwrite HTML received through proxy

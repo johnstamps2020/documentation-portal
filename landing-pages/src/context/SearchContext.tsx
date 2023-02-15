@@ -1,5 +1,11 @@
 import { SearchData, ServerSearchError } from "server/dist/types/serverSearch";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState
+} from "react";
 import { useSearchParams } from "react-router-dom";
 
 interface SearchInterface {
@@ -23,7 +29,7 @@ export function SearchProvider({ children }: SearchContextProviderProps) {
   >();
   const [searchParams] = useSearchParams();
 
-  async function runSearch() {
+  const runSearch = useCallback(async () => {
     try {
       setLoadingSearchData(true);
       const response = await fetch(`/search?${searchParams.toString()}`);
@@ -31,7 +37,7 @@ export function SearchProvider({ children }: SearchContextProviderProps) {
         const errorJson = await response.json();
         setLoadingSearchDataError({
           status: response.status,
-          message: errorJson.message,
+          message: errorJson.message
         });
       }
       const jsonData = await response.json();
@@ -39,16 +45,16 @@ export function SearchProvider({ children }: SearchContextProviderProps) {
     } catch (err) {
       setLoadingSearchDataError({
         status: 500,
-        message: `Cannot fetch search data: ${err}`,
+        message: `Cannot fetch search data: ${err}`
       });
     } finally {
       setLoadingSearchData(false);
     }
-  }
+  }, [searchParams]);
 
   useEffect(() => {
-    runSearch().catch((e) => e);
-  }, [searchParams]);
+    runSearch().catch(e => e);
+  }, [searchParams, runSearch]);
 
   return (
     <SearchContext.Provider
@@ -56,7 +62,7 @@ export function SearchProvider({ children }: SearchContextProviderProps) {
         searchData,
         runSearch,
         loadingSearchData,
-        loadingSearchDataError,
+        loadingSearchDataError
       }}
     >
       {children}

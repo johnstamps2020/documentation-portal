@@ -52,8 +52,7 @@ const helpText = () => (
     <pre>
       <code>configure | install | manage</code>
     </pre>
-    <StyledAdvancedHelpSectionTitle>
-      <a id="excluding_not" />
+    <StyledAdvancedHelpSectionTitle id="excluding_not">
       Excluding (NOT)
     </StyledAdvancedHelpSectionTitle>
     <p>
@@ -64,16 +63,14 @@ const helpText = () => (
       <code>configure manage -install</code>
     </pre>
     <p>The order of these words in your search query does not matter.</p>
-    <StyledAdvancedHelpSectionTitle>
-      <a id="exact_match" />
+    <StyledAdvancedHelpSectionTitle id="exact_match">
       Exact match
     </StyledAdvancedHelpSectionTitle>
     <p>If you want an exact phrase to match, surround it with double quotes:</p>
     <pre>
       <code>&quot;manage user accounts&quot;</code>
     </pre>
-    <StyledAdvancedHelpSectionTitle>
-      <a id="grouping" />
+    <StyledAdvancedHelpSectionTitle id="grouping">
       Grouping
     </StyledAdvancedHelpSectionTitle>
     <p>
@@ -97,8 +94,7 @@ const helpText = () => (
       “configure” then you will also see results for “configuring” and
       “configuration”. If you want to match a word exactly, use double quotes.
     </p>
-    <StyledAdvancedHelpSectionTitle>
-      <a id="prefix" />
+    <StyledAdvancedHelpSectionTitle id="prefix">
       Prefix
     </StyledAdvancedHelpSectionTitle>
     <p>
@@ -116,8 +112,7 @@ const helpText = () => (
       You cannot perform a suffix search (<code>*decimal</code>), but you can
       get more results using fuzziness.
     </p>
-    <StyledAdvancedHelpSectionTitle>
-      <a id="fuzziness" />
+    <StyledAdvancedHelpSectionTitle id="fuzziness">
       Fuzziness
     </StyledAdvancedHelpSectionTitle>
     <p>
@@ -127,8 +122,7 @@ const helpText = () => (
     <pre>
       <code>centre~1</code>
     </pre>
-    <StyledAdvancedHelpSectionTitle>
-      <a id="slop" />
+    <StyledAdvancedHelpSectionTitle id="slop">
       Slop
     </StyledAdvancedHelpSectionTitle>
     <p>

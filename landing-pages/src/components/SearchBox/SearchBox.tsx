@@ -49,7 +49,7 @@ export default function SearchBox({
       <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder={placeholder}
-        inputProps={{ "aria-label": placeholder, marginTop: 0 }}
+        inputProps={{ "aria-label": placeholder }}
         name="q"
       />
       {searchFilters &&
