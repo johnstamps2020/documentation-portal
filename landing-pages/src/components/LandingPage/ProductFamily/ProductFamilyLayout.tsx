@@ -17,9 +17,15 @@ export default function ProductFamilyLayout(pageData: Page) {
     if (pageData.component?.includes("aspenBackground")) {
       return `url(${gradientBackground})`;
     } else if (pageData.component?.includes("banffBackground")) {
-      return `url(${banffBackgroundImage}), url(${gradientBackground})`;
+      return {
+        sm: `url(${banffBackgroundImage}), url(${gradientBackground})`,
+        xs: `url(${gradientBackground})`,
+      };
     } else if (pageData.component?.includes("cortinaBackground")) {
-      return `url(${cortinaBackgroundImage})`;
+      return {
+        sm: `url(${cortinaBackgroundImage})`,
+        xs: `url(${gradientBackground})`,
+      };
     } else {
       return "";
     }
@@ -52,7 +58,16 @@ export default function ProductFamilyLayout(pageData: Page) {
           <Container style={{ padding: 0, margin: "5px 0 0 0" }}>
             <Breadcrumbs pagePath={pageData.path} />
           </Container>
-          <Typography variant="h1">{pageData.title}</Typography>
+          <Typography
+            variant="h1"
+            sx={
+              backgroundProps.backgroundImage
+                ? { color: "white" }
+                : { color: "black" }
+            }
+          >
+            {pageData.title}
+          </Typography>
           {pageData.pageSelector && (
             <LandingPageSelector
               pageSelector={pageData.pageSelector}
@@ -62,8 +77,8 @@ export default function ProductFamilyLayout(pageData: Page) {
           )}
         </Stack>
       </Grid>
-      <Grid container maxWidth="1330px" gap={2}>
-        <Grid container xs={9} gap={2}>
+      <Grid container width="100%" maxWidth="1330px" gap={2}>
+        <Grid container sm={12} md={9} gap={2}>
           {pageData.productFamilyItems?.map((productFamilyItem) => (
             <LandingPageProductFamily
               {...productFamilyItem}

@@ -10,7 +10,7 @@ export default function LandingPageProductFamily(
     <Paper
       sx={{
         height: "100px",
-        width: "300px",
+        width: { xs: "100%", sm: "300px" },
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
