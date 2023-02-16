@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('parts/head', { pageTitle: `404: page not found`}) %>
+  <body>
+    <%- include('parts/header') %>
+    <main class="infoPage">
+      <section class="infoSection">
+        <div class="infoSplashImage splashMoved"></div>
+        <h1 class="infoTitle">All pages have moved to staging</h1>
+        <% if (pageInfo.cameFrom) { %>
+        <p>
+          Here's a link to
+          <a
+            href="<%= pageInfo.cameFrom.replace('docs.int.ccs.guidewire.net', 'docs.staging.ccs.guidewire.net') %> "
+            >the page you were trying to reach on the "staging" site</a
+          >.
+        </p>
+        <p>
+          We are moving docs from "int" to "staging". If you have bookmarks to
+          the old preview site, please update them.
+        </p>
+        <% } %>
+      </section>
+    </main>
+    <%- include('parts/footer') %>
+  </body>
+</html>
