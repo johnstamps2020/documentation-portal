@@ -5,27 +5,17 @@ import Breadcrumbs from "../Breadcrumbs";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import LandingPageSidebar from "../LandingPageSidebar";
-import { Page } from "server/dist/model/entity/Page";
 import Stack from "@mui/material/Stack";
 import SelfManagedLink from "../SelfManagedLink";
 import Paper from "@mui/material/Paper";
 import { Link as RouterLink } from "react-router-dom";
 import Link from "@mui/material/Link";
+import { LandingPageLayoutProps } from "../../../pages/LandingPage/LandingPage"
 
-type CategoryProps = {
-  pageData: Page;
-  backgroundProps: {
-    backgroundImage: any;
-    backgroundAttachment: string;
-    backgroundPosition: string;
-    backgroundSize: string;
-    minHeight: string;
-  };
-};
 export default function CategoryLayout({
   pageData,
   backgroundProps,
-}: CategoryProps) {
+}: LandingPageLayoutProps) {
   return (
     <Grid
       sx={{ ...backgroundProps }}

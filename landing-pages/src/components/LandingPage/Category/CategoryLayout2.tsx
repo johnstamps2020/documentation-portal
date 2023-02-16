@@ -5,25 +5,15 @@ import Breadcrumbs from "../Breadcrumbs";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import LandingPageSidebar2 from "../LandingPageSidebar2";
-import { Page } from "server/dist/model/entity/Page";
 import Stack from "@mui/material/Stack";
 import SelfManagedLink from "../SelfManagedLink";
 import WhatsNew from "../WhatsNew";
+import { LandingPageLayoutProps } from "../../../pages/LandingPage/LandingPage";
 
-type Category2Props = {
-  pageData: Page;
-  backgroundProps: {
-    backgroundImage: any;
-    backgroundAttachment: string;
-    backgroundPosition: string;
-    backgroundSize: string;
-    minHeight: string;
-  };
-};
 export default function CategoryLayout2({
   pageData,
   backgroundProps,
-}: Category2Props) {
+}: LandingPageLayoutProps) {
   return (
     <Grid
       sx={{

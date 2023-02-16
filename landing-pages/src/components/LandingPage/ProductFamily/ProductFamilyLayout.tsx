@@ -4,24 +4,15 @@ import Breadcrumbs from "../Breadcrumbs";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import LandingPageSidebar from "../LandingPageSidebar";
-import { Page } from "server/dist/model/entity/Page";
 import Stack from "@mui/material/Stack";
 import LandingPageProductFamily from "./LandingPageProductFamily";
 import SelfManagedLink from "../SelfManagedLink";
-type ProductFamilyProps = {
-  pageData: Page;
-  backgroundProps: {
-    backgroundImage: any;
-    backgroundAttachment: string;
-    backgroundPosition: string;
-    backgroundSize: string;
-    minHeight: string;
-  };
-};
+import { LandingPageLayoutProps } from "../../../pages/LandingPage/LandingPage"
+
 export default function ProductFamilyLayout({
   pageData,
   backgroundProps,
-}: ProductFamilyProps) {
+}: LandingPageLayoutProps) {
   return (
     <Grid
       sx={{ ...backgroundProps }}

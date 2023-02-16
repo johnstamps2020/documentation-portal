@@ -17,6 +17,17 @@ import cortinaBackgroundImage from "../../images/background-cortina.svg";
 import banffBackgroundImage from "../../images/background-banff.svg";
 import gradientBackgroundImage from "../../images/background-gradient.svg";
 
+export type LandingPageLayoutProps = {
+  pageData: Page;
+  backgroundProps: {
+    backgroundImage: any;
+    backgroundAttachment: string;
+    backgroundPosition: string;
+    backgroundSize: string;
+    minHeight: string;
+  };
+};
+
 export default function LandingPage() {
   const navigate = useNavigate();
   const params = useParams();
