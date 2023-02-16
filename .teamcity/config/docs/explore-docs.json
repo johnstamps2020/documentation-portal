@@ -11,7 +11,7 @@
         "version": ["latest"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -28,7 +28,7 @@
         "version": ["latest"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -45,7 +45,7 @@
         "version": ["latest"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

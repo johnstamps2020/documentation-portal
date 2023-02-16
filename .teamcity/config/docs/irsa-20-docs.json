@@ -68,22 +68,6 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    },
-    {
-      "id": "midipfsupermap20",
-      "title": "Supermap for downloadable output",
-      "url": "self-managed/ipf/2.0/all",
-      "metadata": {
-        "product": ["ClaimCenter Package for France"],
-        "platform": ["Self-managed"],
-        "version": ["2.0"]
-      },
-      "environments": ["dev"],
-      "displayOnLandingPages": false,
-      "indexForSearch": false,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
     }
   ]
 }

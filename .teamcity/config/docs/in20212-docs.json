@@ -318,7 +318,7 @@
         "subject": ["Integration"],
         "release": ["Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
