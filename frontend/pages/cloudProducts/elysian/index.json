@@ -162,16 +162,6 @@
               "id": "storybook743"
             }
           ]
-        },
-        {
-          "label": "Best Practices",
-          "class": "group",
-          "items": [
-            {
-              "label": "Digital Best Practices",
-              "id": "dxpractices"
-            }
-          ]
         }
       ]
     },
