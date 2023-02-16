@@ -44,6 +44,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "SubmissionIntakeConfiguration.ditamap",
+      "srcId": "submissionintakelxdsrc",
+      "docId": "submissionintakeconfiglxd",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "WorksetManager.ditamap",
       "srcId": "worksetmgrsrc",
       "docId": "worksetmgr",
