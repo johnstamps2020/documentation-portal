@@ -200,14 +200,6 @@
       "srcId": "standards202010src",
       "docId": "standards202010",
       "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
-      "root": "surepath.ditamap",
-      "srcId": "standardsdraftsrc",
-      "docId": "standardsdraft",
-      "indexRedirect": true
     }
   ]
 }
