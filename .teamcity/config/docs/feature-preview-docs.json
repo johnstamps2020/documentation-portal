@@ -19,23 +19,6 @@
       "earlyAccess": true
     },
     {
-      "id": "datastudiodraft",
-      "title": "Data Studio Draft",
-      "url": "cloud/datastudio/app",
-      "metadata": {
-        "product": ["Data Studio"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
       "id": "datastudiorelease",
       "title": "Data Studio Release",
       "url": "cloud/datastudio/app",
@@ -56,23 +39,6 @@
       "id": "experiencemgrdraft",
       "title": "Experience Manager",
       "url": "cloud/gw-feature-preview/experiencemgr",
-      "metadata": {
-        "product": ["Feature Preview"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "subject": ["Configuration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
-      "id": "stringmanagerpcdraft",
-      "title": "String Manager Draft PolicyCenter",
-      "url": "cloud/gw-feature-preview/stringmanager/pc/latest",
       "metadata": {
         "product": ["Feature Preview"],
         "platform": ["Cloud"],
