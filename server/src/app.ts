@@ -19,10 +19,11 @@ import { AppDataSource } from './model/connection';
 import { runningInDevMode } from './controllers/utils/serverUtils';
 import { ReqUser } from './controllers/userController';
 import {
-  checkIfAllowedToAccessRouteAndRedirect,
+  isAllowedToAccessPageOrDoc,
   isAllowedToAccessRoute,
+  saveUserInfoToResLocals,
 } from './controllers/authController';
-import { forbiddenRoute } from './controllers/proxyController';
+import { forbiddenRoute, fourOhFourRoute } from './controllers/proxyController';
 
 declare global {
   namespace Express {
@@ -118,7 +119,6 @@ const partnersLoginRouter = require('./routes/partners-login');
 const customersLoginRouter = require('./routes/customers-login');
 const oidcLoginRouter = require('./routes/authorization-code');
 const searchRouter = require('./routes/search');
-const internalRouter = require('./routes/internal');
 const s3Router = require('./routes/s3');
 const userRouter = require('./routes/user');
 const configRouter = require('./routes/config');
@@ -159,15 +159,25 @@ app.use(cookieParser());
 
 app.use(httpContext.middleware);
 
-app.use('/safeConfig', isAllowedToAccessRoute, configRouter);
-app.use('/jira', isAllowedToAccessRoute, jiraRouter);
-app.use('/internal', checkIfAllowedToAccessRouteAndRedirect, internalRouter);
-app.use('/lrs', checkIfAllowedToAccessRouteAndRedirect, lrsRouter);
-app.use('/s3', checkIfAllowedToAccessRouteAndRedirect, s3Router);
+app.use((req: Request, res: Response, next: NextFunction) => {
+  if (req.originalUrl === '/') {
+    return res.redirect('/landing');
+  }
+  return next();
+});
+app.use(
+  '/safeConfig',
+  saveUserInfoToResLocals,
+  isAllowedToAccessRoute,
+  configRouter
+);
+app.use('/jira', saveUserInfoToResLocals, isAllowedToAccessRoute, jiraRouter);
+app.use('/lrs', saveUserInfoToResLocals, isAllowedToAccessRoute, lrsRouter);
+app.use('/s3', saveUserInfoToResLocals, isAllowedToAccessRoute, s3Router);
 // Open routes
 app.use('/recommendations', recommendationsRouter);
 app.use('/userInformation', userRouter);
-app.use('/search', searchRouter);
+app.use('/search', saveUserInfoToResLocals, searchRouter);
 
 app.use('/portal-config/*', (req, res) => {
   res.redirect(
@@ -181,12 +191,18 @@ app.use(harmonRouter);
 
 // set up proxies
 const {
+  sitemapProxy,
   s3Proxy,
   html5Proxy,
   reactAppProxy,
 } = require('./controllers/proxyController');
-
-app.use('/landing', reactAppProxy);
+app.use('/sitemap*', sitemapProxy);
+app.use(
+  '/landing',
+  saveUserInfoToResLocals,
+  isAllowedToAccessPageOrDoc,
+  reactAppProxy
+);
 
 // HTML5 scripts, local or S3
 const isDevMode = runningInDevMode();
@@ -197,18 +213,15 @@ if (isDevMode) {
 }
 
 // Docs stored on S3 — current and portal2
-app.use(s3Proxy);
+app.use(saveUserInfoToResLocals, isAllowedToAccessPageOrDoc, s3Proxy);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
-  if (req.path === '/') {
-    return res.redirect('/landing');
-  }
   const notFoundParam =
     req.url === '/404'
       ? req.headers.referer?.replace(`${process.env.APP_BASE_URL}`, '')
       : req.url;
   return res.redirect(
-    `/landing/404${notFoundParam && `?notFound=${notFoundParam}`}`
+    `${fourOhFourRoute}${notFoundParam && `?notFound=${notFoundParam}`}`
   );
 });
 // handles unauthorized errors
