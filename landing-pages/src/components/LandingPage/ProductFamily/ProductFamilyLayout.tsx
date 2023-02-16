@@ -4,41 +4,15 @@ import Breadcrumbs from "../Breadcrumbs";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import LandingPageSidebar from "../LandingPageSidebar";
-import { Page } from "server/dist/model/entity/Page";
 import Stack from "@mui/material/Stack";
-import cortinaBackgroundImage from "../../../images/background-cortina.svg";
-import banffBackgroundImage from "../../../images/background-banff.svg";
-import gradientBackground from "../../../images/background-gradient.svg";
 import LandingPageProductFamily from "./LandingPageProductFamily";
 import SelfManagedLink from "../SelfManagedLink";
+import { LandingPageLayoutProps } from "../../../pages/LandingPage/LandingPage"
 
-export default function ProductFamilyLayout(pageData: Page) {
-  function getBackgroundImage() {
-    if (pageData.component?.includes("aspenBackground")) {
-      return `url(${gradientBackground})`;
-    } else if (pageData.component?.includes("banffBackground")) {
-      return {
-        sm: `url(${banffBackgroundImage}), url(${gradientBackground})`,
-        xs: `url(${gradientBackground})`,
-      };
-    } else if (pageData.component?.includes("cortinaBackground")) {
-      return {
-        sm: `url(${cortinaBackgroundImage})`,
-        xs: `url(${gradientBackground})`,
-      };
-    } else {
-      return "";
-    }
-  }
-
-  const backgroundProps = {
-    backgroundImage: getBackgroundImage(),
-    backgroundAttachment: "fixed",
-    backgroundPosition: "bottom-right",
-    backgroundSize: "cover",
-    minHeight: "100vh",
-  };
-
+export default function ProductFamilyLayout({
+  pageData,
+  backgroundProps,
+}: LandingPageLayoutProps) {
   return (
     <Grid
       sx={{ ...backgroundProps }}
