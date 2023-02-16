@@ -6597,7 +6597,7 @@
         "product": ["Guidewire Cloud Platform"],
         "version": ["latest"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,

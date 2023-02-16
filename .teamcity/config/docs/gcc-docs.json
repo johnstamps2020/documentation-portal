@@ -118,38 +118,6 @@
       "earlyAccess": false
     },
     {
-      "id": "guidewirecloudconsoleguideinsurerdevdraft",
-      "title": "Cloud Console Guide Insurer Developer Draft",
-      "url": "cloud/gcc-guide/insurer-developer/latest/topics/c_provisioning-cloud-console.html",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
-        "version": ["latest"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": false,
-      "indexForSearch": false,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "guidewirecloudconsolerootinsurerdevdraft",
-      "title": "Cloud Console Guide Draft",
-      "url": "cloud/gcc-guide/insurer-developer/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
-        "version": ["latest"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "guidewirecloudconsolerootgwadmin",
       "title": "Cloud Console Guide GW Admin",
       "url": "cloud/gcc-guide/gw-admin/latest",
@@ -176,7 +144,7 @@
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "public": false,
       "internal": false,
       "earlyAccess": true
@@ -191,7 +159,7 @@
         "product": ["Guidewire Cloud Console"],
         "version": ["latest"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "indexForSearch": true,
       "public": false,
       "internal": true,
