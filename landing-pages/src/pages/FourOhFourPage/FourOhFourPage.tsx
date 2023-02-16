@@ -26,11 +26,11 @@ export default function FourOhFourPage() {
           sx={{
             background: "white",
             border: "1px solid gray",
-            maxWidth: "1024px",
+            maxWidth: {xs: "100%", sm: "100%", md: "950px", lg: "1024px"},
             height: "fit-content",
             boxShadow: "10px 5px 12px rgba(0, 0, 0, 0.3)",
             margin: "auto",
-            padding: "4rem 3rem"
+            padding: {xs: "1.5rem", sm: "4rem 3rem"}
           }}
         >
           <Stack spacing={6}>
@@ -60,14 +60,15 @@ export default function FourOhFourPage() {
                       border: "1px solid gray",
                       borderRadius: "4px",
                       maxWidth: "100%",
-                      overflowX: "scroll"
+                      overflowX: "scroll",
+                      fontSize: {xs: ".75rem", sm: "1rem"}
                     }}
                   >
                     <pre>{`${window.location.origin}${notFoundParam}`}</pre>
                   </Container>
                 </>
               )}
-              <Typography>
+              <Typography align="justify">
                 We weren't able to find what you are looking for. You may have
                 an old link. We'll make a note of it and, if it's an error on
                 our site, we will try to fix it soon. Meanwhile, try using the
