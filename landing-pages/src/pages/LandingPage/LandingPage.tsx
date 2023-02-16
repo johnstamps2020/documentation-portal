@@ -9,6 +9,13 @@ import CategoryLayout from "../../components/LandingPage/Category/CategoryLayout
 import CategoryLayout2 from "../../components/LandingPage/Category/CategoryLayout2";
 import SectionLayout from "../../components/LandingPage/Section/SectionLayout";
 import ProductFamilyLayout from "../../components/LandingPage/ProductFamily/ProductFamilyLayout";
+import garmischBackgroundImage from "../../images/background-garmisch.png";
+import flaineBackgroundImage from "../../images/background-flaine.svg";
+import elysianBackgroundImage from "../../images/background-elysian.svg";
+import dobsonBackgroundImage from "../../images/background-dobson.svg";
+import cortinaBackgroundImage from "../../images/background-cortina.svg";
+import banffBackgroundImage from "../../images/background-banff.svg";
+import gradientBackgroundImage from "../../images/background-gradient.svg";
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -71,6 +78,53 @@ export default function LandingPage() {
     return null;
   }
 
+  function getBackgroundImage() {
+    if (pageData?.component?.includes("garmischBackground")) {
+      return {
+        xs: `url(${gradientBackgroundImage})`,
+        sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
+      url(${garmischBackgroundImage}), 
+      linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
+      };
+    }
+    if (pageData?.component?.includes("flaineBackground")) {
+      return {
+        xs: `url(${gradientBackgroundImage})`,
+        sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
+       url(${flaineBackgroundImage}), 
+       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
+      };
+    }
+    if (pageData?.component?.includes("elysianBackground")) {
+      return {
+        sm: `url(${elysianBackgroundImage})`,
+        xs: `url(${gradientBackgroundImage})`,
+      };
+    }
+    if (pageData?.component?.includes("dobsonBackground")) {
+      return {
+        sm: `url(${dobsonBackgroundImage})`,
+        xs: `url(${gradientBackgroundImage})`,
+      };
+    }
+    if (pageData?.component?.includes("cortinaBackground")) {
+      return {
+        sm: `url(${cortinaBackgroundImage})`,
+        xs: `url(${gradientBackgroundImage})`,
+      };
+    }
+    if (pageData?.component?.includes("banffBackground")) {
+      return {
+        sm: `url(${banffBackgroundImage}), url(${gradientBackgroundImage})`,
+        xs: `url(${gradientBackgroundImage})`,
+      };
+    }
+    if (pageData?.component?.includes("aspenBackground")) {
+      return `url(${gradientBackgroundImage})`;
+    }
+    return "";
+  }
+
   return (
     <Layout
       title={pageData.title}
@@ -86,16 +140,22 @@ export default function LandingPage() {
         {pageData &&
           pageData.categories.length !== 0 &&
           (pageData.component?.includes("pageCategory2") ? (
-            <CategoryLayout2 {...pageData} />
+            <CategoryLayout2
+              pageData={pageData}
+              getBackgroundImage={getBackgroundImage}
+            />
           ) : (
-            <CategoryLayout {...pageData} />
+            <CategoryLayout
+              pageData={pageData}
+              getBackgroundImage={getBackgroundImage}
+            />
           ))}
 
         {pageData && pageData.sections.length !== 0 && (
           <SectionLayout {...pageData} />
         )}
         {pageData && pageData.productFamilyItems.length !== 0 && (
-          <ProductFamilyLayout {...pageData} />
+          <ProductFamilyLayout pageData={pageData} getBackgroundImage={getBackgroundImage} />
         )}
       </>
       <Backdrop

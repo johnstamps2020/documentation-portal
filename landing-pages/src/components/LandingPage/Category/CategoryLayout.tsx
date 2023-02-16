@@ -6,32 +6,25 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import LandingPageSidebar from "../LandingPageSidebar";
 import { Page } from "server/dist/model/entity/Page";
-import elysianBackgroundImage from "../../../images/background-elysian.svg";
-import dobsonBackgroundImage from "../../../images/background-dobson.svg";
-import gradientBackgroundImage from "../../../images/background-gradient.svg";
 import Stack from "@mui/material/Stack";
 import SelfManagedLink from "../SelfManagedLink";
 import Paper from "@mui/material/Paper";
 import { Link as RouterLink } from "react-router-dom";
 import Link from "@mui/material/Link";
 
-export default function CategoryLayout(pageData: Page) {
-  function getBackgroundImage() {
-    if (pageData?.component?.includes("dobsonBackground")) {
-      return {
-        sm: `url(${dobsonBackgroundImage})`,
-        xs: `url(${gradientBackgroundImage})`,
+type CategoryProps = {
+  pageData: Page;
+  getBackgroundImage: () =>
+    | string
+    | {
+        sm: string;
+        xs: string;
       };
-    } else if (pageData.component?.includes("elysianBackground")) {
-      return {
-        sm: `url(${elysianBackgroundImage})`,
-        xs: `url(${gradientBackgroundImage})`,
-      };
-    } else {
-      return "";
-    }
-  }
-
+};
+export default function CategoryLayout({
+  pageData,
+  getBackgroundImage,
+}: CategoryProps) {
   const backgroundProps = {
     backgroundImage: getBackgroundImage(),
     backgroundAttachment: "fixed",

@@ -6,31 +6,21 @@ import Container from "@mui/material/Container";
 import LandingPageSidebar from "../LandingPageSidebar";
 import { Page } from "server/dist/model/entity/Page";
 import Stack from "@mui/material/Stack";
-import cortinaBackgroundImage from "../../../images/background-cortina.svg";
-import banffBackgroundImage from "../../../images/background-banff.svg";
-import gradientBackground from "../../../images/background-gradient.svg";
 import LandingPageProductFamily from "./LandingPageProductFamily";
 import SelfManagedLink from "../SelfManagedLink";
-
-export default function ProductFamilyLayout(pageData: Page) {
-  function getBackgroundImage() {
-    if (pageData.component?.includes("aspenBackground")) {
-      return `url(${gradientBackground})`;
-    } else if (pageData.component?.includes("banffBackground")) {
-      return {
-        sm: `url(${banffBackgroundImage}), url(${gradientBackground})`,
-        xs: `url(${gradientBackground})`,
+type ProductFamilyProps = {
+  pageData: Page;
+  getBackgroundImage: () =>
+    | string
+    | {
+        xs: string;
+        sm: string;
       };
-    } else if (pageData.component?.includes("cortinaBackground")) {
-      return {
-        sm: `url(${cortinaBackgroundImage})`,
-        xs: `url(${gradientBackground})`,
-      };
-    } else {
-      return "";
-    }
-  }
-
+};
+export default function ProductFamilyLayout({
+  pageData,
+  getBackgroundImage,
+}: ProductFamilyProps) {
   const backgroundProps = {
     backgroundImage: getBackgroundImage(),
     backgroundAttachment: "fixed",

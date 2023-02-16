@@ -6,34 +6,23 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import LandingPageSidebar2 from "../LandingPageSidebar2";
 import { Page } from "server/dist/model/entity/Page";
-import flaineBackgroundImage from "../../../images/background-flaine.svg";
-import garmischBackgroundImage from "../../../images/background-garmisch.png";
-import gradientBackgroundImage from "../../../images/background-gradient.svg";
 import Stack from "@mui/material/Stack";
 import SelfManagedLink from "../SelfManagedLink";
 import WhatsNew from "../WhatsNew";
 
-export default function CategoryLayout2(pageData: Page) {
-  function getBackgroundImage() {
-    if (pageData.component?.includes("flaineBackground")) {
-      return {
-        xs: `url(${gradientBackgroundImage})`,
-        sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
-       url(${flaineBackgroundImage}), 
-       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
+type Category2Props = {
+  pageData: Page;
+  getBackgroundImage: () =>
+    | string
+    | {
+        sm: string;
+        xs: string;
       };
-    } else if (pageData.component?.includes("garmischBackground")) {
-      return {
-        xs: `url(${gradientBackgroundImage})`,
-        sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
-      url(${garmischBackgroundImage}), 
-      linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
-      };
-    } else {
-      return "";
-    }
-  }
-
+};
+export default function CategoryLayout2({
+  pageData,
+  getBackgroundImage,
+}: Category2Props) {
   const backgroundProps = {
     backgroundImage: getBackgroundImage(),
     backgroundAttachment: "fixed",
@@ -42,6 +31,7 @@ export default function CategoryLayout2(pageData: Page) {
     minHeight: "100vh",
     flexWrap: { breakpointsTheme: "wrap", sm: "nowrap" },
   };
+
   return (
     <Grid
       sx={{
