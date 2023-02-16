@@ -6,7 +6,7 @@
       "title": "Application Guide",
       "url": "cloud/dx/gwsf/202111/app",
       "metadata": {
-        "product": ["Guidewire for Salesforce for Guidewire Cloud"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "subject": ["Features and functionality"]
@@ -23,7 +23,7 @@
       "title": "Installation Guide",
       "url": "cloud/dx/gwsf/202111/install",
       "metadata": {
-        "product": ["Guidewire for Salesforce for Guidewire Cloud"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "subject": ["Installation"]
@@ -40,7 +40,7 @@
       "title": "Administration Guide",
       "url": "cloud/dx/gwsf/202111/admin",
       "metadata": {
-        "product": ["Guidewire for Salesforce for Guidewire Cloud"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "subject": ["Administration"]
@@ -57,7 +57,7 @@
       "title": "Release Notes",
       "url": "cloud/dx/gwsf/202111/relnotes",
       "metadata": {
-        "product": ["Guidewire for Salesforce for Guidewire Cloud"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "subject": ["Release notes"]

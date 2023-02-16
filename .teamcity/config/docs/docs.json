@@ -24,7 +24,7 @@
       "url": "cloud/gwcp/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Platform"],
+        "product": ["Cloud Platform"],
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
@@ -41,7 +41,7 @@
       "url": "cloud/gwcprelnotes/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Platform"],
+        "product": ["Cloud Platform"],
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
@@ -770,9 +770,9 @@
       "url": "cloud/predict/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Live Predict"],
+        "product": ["Predict"],
         "version": ["latest"],
-        "release": ["Banff", "Cortina", "Dobson"]
+        "release": ["Banff", "Cortina", "Dobson", "Elysian", "Flaine"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -6594,7 +6594,7 @@
       "url": "cloud/internal/nps",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Platform"],
+        "product": ["Cloud Platform"],
         "version": ["latest"]
       },
       "environments": ["staging"],
