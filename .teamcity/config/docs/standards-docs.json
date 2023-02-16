@@ -425,23 +425,6 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    },
-    {
-      "id": "standardsdraft",
-      "title": "Guidewire Cloud Standards",
-      "url": "cloud/standards/latest",
-      "metadata": {
-        "product": ["Guidewire Cloud Standards"],
-        "platform": ["Cloud"],
-        "version": ["draft"],
-        "release": ["Aspen", "Banff", "Cortina"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
     }
   ]
 }
