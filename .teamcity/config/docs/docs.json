@@ -6286,7 +6286,7 @@
       "title": "API Specifications",
       "url": "cloud/bc/api-specs/latest/",
       "metadata": {
-        "product": ["BillingCenter API"],
+        "product": ["BillingCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Banff", "Cortina"]
@@ -6303,7 +6303,7 @@
       "title": "API Specifications",
       "url": "cloud/pc/api-specs/latest/",
       "metadata": {
-        "product": ["PolicyCenter API"],
+        "product": ["PolicyCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Banff", "Cortina"]
@@ -6320,7 +6320,7 @@
       "title": "API Specifications",
       "url": "cloud/cc/api-specs/latest/",
       "metadata": {
-        "product": ["ClaimCenter API"],
+        "product": ["ClaimCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Banff", "Cortina"]
