@@ -6282,57 +6282,6 @@
       "earlyAccess": false
     },
     {
-      "id": "apiekdfksmds",
-      "title": "API Specifications",
-      "url": "cloud/bc/api-specs/latest/",
-      "metadata": {
-        "product": ["BillingCenter"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Banff", "Cortina"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "pcappciekdfpcksmds",
-      "title": "API Specifications",
-      "url": "cloud/pc/api-specs/latest/",
-      "metadata": {
-        "product": ["PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Banff", "Cortina"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "ccapcciekdfccksmds",
-      "title": "API Specifications",
-      "url": "cloud/cc/api-specs/latest/",
-      "metadata": {
-        "product": ["ClaimCenter"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Banff", "Cortina"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "in20201bi",
       "title": "Business Intelligence Getting Started Guide",
       "url": "cloud/in/20201/bi",
