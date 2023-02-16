@@ -32,14 +32,6 @@
       "srcId": "experiencemgrdraftsrc",
       "docId": "experiencemgrdraft",
       "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-Draft.ditaval",
-      "root": "StringManager.ditamap",
-      "srcId": "stringmanagerlatestsrc",
-      "docId": "stringmanagerpcdraft",
-      "indexRedirect": true
     }
   ]
 }

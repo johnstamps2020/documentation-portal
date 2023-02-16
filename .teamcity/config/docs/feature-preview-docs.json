@@ -68,23 +68,6 @@
       "public": false,
       "internal": false,
       "earlyAccess": true
-    },
-    {
-      "id": "stringmanagerpcdraft",
-      "title": "String Manager Draft PolicyCenter",
-      "url": "cloud/gw-feature-preview/stringmanager/pc/latest",
-      "metadata": {
-        "product": ["Feature Preview"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "subject": ["Configuration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
     }
   ]
 }

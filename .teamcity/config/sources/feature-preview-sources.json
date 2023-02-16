@@ -36,13 +36,6 @@
         "/Content/doc/cloud-services/ExperienceManager.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
       ]
-    },
-    {
-      "id": "stringmanagerlatestsrc",
-      "title": "String Manager",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/string-manager.git",
-      "branch": "main"
     }
   ]
 }
