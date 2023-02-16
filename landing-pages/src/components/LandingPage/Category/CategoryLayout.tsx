@@ -14,25 +14,18 @@ import Link from "@mui/material/Link";
 
 type CategoryProps = {
   pageData: Page;
-  getBackgroundImage: () =>
-    | string
-    | {
-        sm: string;
-        xs: string;
-      };
+  backgroundProps: {
+    backgroundImage: any;
+    backgroundAttachment: string;
+    backgroundPosition: string;
+    backgroundSize: string;
+    minHeight: string;
+  };
 };
 export default function CategoryLayout({
   pageData,
-  getBackgroundImage,
+  backgroundProps,
 }: CategoryProps) {
-  const backgroundProps = {
-    backgroundImage: getBackgroundImage(),
-    backgroundAttachment: "fixed",
-    backgroundPosition: "bottom-right",
-    backgroundSize: "cover",
-    minHeight: "100vh",
-  };
-
   return (
     <Grid
       sx={{ ...backgroundProps }}

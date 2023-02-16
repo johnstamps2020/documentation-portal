@@ -125,6 +125,14 @@ export default function LandingPage() {
     return "";
   }
 
+  const backgroundProps = {
+    backgroundImage: getBackgroundImage(),
+    backgroundAttachment: "fixed",
+    backgroundPosition: "bottom-right",
+    backgroundSize: "cover",
+    minHeight: "100vh",
+  };
+
   return (
     <Layout
       title={pageData.title}
@@ -142,12 +150,12 @@ export default function LandingPage() {
           (pageData.component?.includes("pageCategory2") ? (
             <CategoryLayout2
               pageData={pageData}
-              getBackgroundImage={getBackgroundImage}
+              backgroundProps={backgroundProps}
             />
           ) : (
             <CategoryLayout
               pageData={pageData}
-              getBackgroundImage={getBackgroundImage}
+              backgroundProps={backgroundProps}
             />
           ))}
 
@@ -155,7 +163,10 @@ export default function LandingPage() {
           <SectionLayout {...pageData} />
         )}
         {pageData && pageData.productFamilyItems.length !== 0 && (
-          <ProductFamilyLayout pageData={pageData} getBackgroundImage={getBackgroundImage} />
+          <ProductFamilyLayout
+            pageData={pageData}
+            backgroundProps={backgroundProps}
+          />
         )}
       </>
       <Backdrop

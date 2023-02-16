@@ -12,30 +12,23 @@ import WhatsNew from "../WhatsNew";
 
 type Category2Props = {
   pageData: Page;
-  getBackgroundImage: () =>
-    | string
-    | {
-        sm: string;
-        xs: string;
-      };
+  backgroundProps: {
+    backgroundImage: any;
+    backgroundAttachment: string;
+    backgroundPosition: string;
+    backgroundSize: string;
+    minHeight: string;
+  };
 };
 export default function CategoryLayout2({
   pageData,
-  getBackgroundImage,
+  backgroundProps,
 }: Category2Props) {
-  const backgroundProps = {
-    backgroundImage: getBackgroundImage(),
-    backgroundAttachment: "fixed",
-    backgroundPosition: "bottom-right",
-    backgroundSize: "cover",
-    minHeight: "100vh",
-    flexWrap: { breakpointsTheme: "wrap", sm: "nowrap" },
-  };
-
   return (
     <Grid
       sx={{
         ...backgroundProps,
+        flexWrap: { breakpointsTheme: "wrap", sm: "nowrap" },
       }}
       container
       alignContent="center"

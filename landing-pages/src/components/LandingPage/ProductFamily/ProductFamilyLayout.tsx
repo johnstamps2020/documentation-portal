@@ -10,25 +10,18 @@ import LandingPageProductFamily from "./LandingPageProductFamily";
 import SelfManagedLink from "../SelfManagedLink";
 type ProductFamilyProps = {
   pageData: Page;
-  getBackgroundImage: () =>
-    | string
-    | {
-        xs: string;
-        sm: string;
-      };
+  backgroundProps: {
+    backgroundImage: any;
+    backgroundAttachment: string;
+    backgroundPosition: string;
+    backgroundSize: string;
+    minHeight: string;
+  };
 };
 export default function ProductFamilyLayout({
   pageData,
-  getBackgroundImage,
+  backgroundProps,
 }: ProductFamilyProps) {
-  const backgroundProps = {
-    backgroundImage: getBackgroundImage(),
-    backgroundAttachment: "fixed",
-    backgroundPosition: "bottom-right",
-    backgroundSize: "cover",
-    minHeight: "100vh",
-  };
-
   return (
     <Grid
       sx={{ ...backgroundProps }}
