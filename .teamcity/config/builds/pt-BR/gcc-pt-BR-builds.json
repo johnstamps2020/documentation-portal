@@ -8,6 +8,14 @@
       "indexRedirect": true,
       "srcId": "guidewirecloudconsolelatestptBRsrc",
       "docId": "guidewirecloudconsolerootinsurerdevptBR"
+    },
+    {
+      "buildType": "dita",
+      "root": "gcc_release_notes.ditamap",
+      "filter": "insurer-developer.ditaval",
+      "indexRedirect": true,
+      "srcId": "guidewirecloudconsolelatestptBRsrc",
+      "docId": "guidewirecloudconsolerootinsurerdevrnptBR"
     }
   ]
 }

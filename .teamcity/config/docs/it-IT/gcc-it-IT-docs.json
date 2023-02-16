@@ -16,6 +16,22 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "guidewirecloudconsolerootinsurerdevrnitIT",
+      "title": "Cloud Console Release Notes Insurer Developer it-IT",
+      "url": "cloud/it-IT/gcc-rn/insurer-developer/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Console"],
+        "version": ["latest"]
+      },
+      "environments": ["dev"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }
