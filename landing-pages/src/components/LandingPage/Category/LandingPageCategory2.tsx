@@ -20,7 +20,7 @@ export default function LandingPageCategory2(category: Category) {
       <Divider />
       <Stack
         spacing={1}
-        sx={{ spacing: 1, fontSize: "0.875rem", color: "black" }}
+        sx={{ fontSize: "0.875rem", color: "black" }}
       >
         {category.categoryItems?.map((categoryItem) => (
           <LandingPageItem2 {...categoryItem} key={categoryItem.id} />
