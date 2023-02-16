@@ -13,13 +13,6 @@
       ]
     },
     {
-      "id": "datastudiodraftsrc",
-      "title": "Data Studio Draft",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/data-studio.git",
-      "branch": "main"
-    },
-    {
       "id": "datastudioreleasesrc",
       "title": "Data Studio Release",
       "sourceType": "git",

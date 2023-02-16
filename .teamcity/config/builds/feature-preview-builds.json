@@ -13,14 +13,6 @@
       "buildType": "dita",
       "filter": "GW-Generic-EA-Release.ditaval",
       "root": "b_data-studio.ditamap",
-      "srcId": "datastudiodraftsrc",
-      "docId": "datastudiodraft",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-EA-Release.ditaval",
-      "root": "b_data-studio.ditamap",
       "srcId": "datastudioreleasesrc",
       "docId": "datastudiorelease",
       "indexRedirect": true

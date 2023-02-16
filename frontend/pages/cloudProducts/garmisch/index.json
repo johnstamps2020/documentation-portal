@@ -124,10 +124,6 @@
         },
         {
           "label": "Data Studio (Early Access)",
-          "id": "datastudiodraft"
-        },
-        {
-          "label": "Data Studio (Early Access)",
           "id": "datastudiorelease"
         }
       ]
