@@ -17,23 +17,6 @@
       "public": false,
       "internal": false,
       "earlyAccess": true
-    },
-    {
-      "id": "experiencemgrdraft",
-      "title": "Experience Manager",
-      "url": "cloud/gw-feature-preview/experiencemgr",
-      "metadata": {
-        "product": ["Feature Preview"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "subject": ["Configuration"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
     }
   ]
 }
