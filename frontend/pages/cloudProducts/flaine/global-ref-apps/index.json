@@ -7,17 +7,56 @@
     {
       "label": "London Market",
       "class": "categoryCard cardShadow",
-      "page": "../../../globalContent/iplm/flaine"
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "londonrnflaine"
+        },
+        {
+          "label": "ClaimCenter for London Market Application Guide",
+          "id": "londonccappflaine"
+        },
+        {
+          "label": "PolicyCenter for London Market Application Guide",
+          "id": "londonpcappflaine"
+        },
+        {
+          "label": "Configuration Guide",
+          "id": "londonconfigflaine"
+        },
+      ]
     },
     {
       "label": "UK Market",
       "class": "categoryCard cardShadow",
-      "page": "../../../globalContent/ipuk/1.1"
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ipukgarmischrn"
+        },
+        {
+          "label": "Application Guide",
+          "id": "ipukgarmischapp"
+        },
+        {
+          "label": "Configuration",
+          "id": "ipukgarmischconfig"
+        }
+      ]
     },
     {
       "label": "US Standards-based Template Framework",
       "class": "categoryCard cardShadow",
-      "page": "../../../globalContent/sbt"
+      "items": [
+        {
+          "label": "Standards-based Template Framework Guide",
+          "id": "sbtfwguide"
+        },
+        {
+          "label": "Standards-based Template Customization",
+          "id": "sbtfwcustomization"
+        }
+      ] 
     }
   ],
   "search_filters": {
