@@ -1,0 +1,28 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "This environment is deprecated. Please visit one of the sites below.",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Staging site",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "https://docs.staging.ccs.guidewire.net/",
+          "link": "https://docs.staging.ccs.guidewire.net/"
+        }
+      ]
+    },
+    {
+      "label": "Production site",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "https://docs.guidewire.com/",
+          "link": "https://docs.guidewire.com/"
+        }
+      ]  
+    }
+  ]
+}
