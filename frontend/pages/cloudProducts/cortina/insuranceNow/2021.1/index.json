@@ -131,7 +131,7 @@
     {
       "label": "Installation",
       "class": "subject installation",
-      "env": ["int"],
+      "env": ["staging"],
       "items": [
         {
           "label": "Install Assist",
