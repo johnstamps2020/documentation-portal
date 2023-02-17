@@ -6,7 +6,7 @@
   "items": [
     {
       "label": "London Market",
-      "page": "../../globalContent/iplm/garmisch"
+      "page": "../../../globalContent/iplm/garmisch"
     }
 
   ],
