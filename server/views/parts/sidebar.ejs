@@ -7,17 +7,17 @@
     <% if (pageContent.title.toLowerCase() !== 'api references' &&
                    pageContent.title.toLowerCase() !== 'flaine' &&
                    pageContent.title.toLowerCase() !== 'garmisch' &&
-                   pageContent.title.toLowerCase() !== 'self-managed')) { %>
+                   pageContent.title.toLowerCase() !== 'self-managed') { %>
       <a href="/apiReferences">API References</a>
     <% } %>
     <% if (process.env.DEPLOY_ENV.toLowerCase() !== 'int' &&
-           pageContent.title.toLowerCase() !== 'self-managed')) { %>
+           pageContent.title.toLowerCase() !== 'self-managed)) { %>
       <a href="/cloud/requests/latest">Community Case Templates</a>
     <% } %>
     <% if (process.env.DEPLOY_ENV.toLowerCase() !== 'int') { %>
       <a href="/product-adoption-resources/latest">Product Adoption</a>
     <% } %>
-    <% if (pageContent.title.toLowerCase() !== 'self-managed')) { %>
+    <% if (pageContent.title.toLowerCase() !== 'self-managed') { %>
       <a href="/cloud/standards/latest">Cloud Standards</a>
     <% } %>
     <a href="/upgradediffs">Upgrade Diff Reports</a>
