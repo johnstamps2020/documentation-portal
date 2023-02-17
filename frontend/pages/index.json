@@ -20,7 +20,7 @@
     {
       "label": "_redirect",
       "link": "/cloudProducts/garmisch",
-      "env": ["staging"]
+      "env": ["dev", "staging"]
     },
     {
       "label": "_redirect",
