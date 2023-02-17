@@ -1746,7 +1746,7 @@ object Frontend {
             }
 
             steps {
-                step(GwBuildSteps.createPublishNpmPackageStep(packageHandle, packagePath))
+                step(GwBuildSteps.createPublishNpmPackageStep(packageHandle))
             }
 
             triggers {
@@ -4009,7 +4009,7 @@ object GwBuildSteps {
         dockerImagePlatform = ImagePlatform.Linux
     })
 
-    fun createPublishNpmPackageStep(packageHandle: String, packagePath: String): ScriptBuildStep {
+    fun createPublishNpmPackageStep(packageHandle: String): ScriptBuildStep {
         return ScriptBuildStep {
             name = "NPM publish $packageHandle"
             id = Helpers.createIdStringFromName(this.name)
@@ -4022,9 +4022,7 @@ object GwBuildSteps {
                 
                 yarn install
                 yarn build:$packageHandle
-                cd $packagePath
-                yarn npm publish
-                npm publish --verbose
+                yarn publish:$packageHandle
             """.trimIndent()
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerImage = "artifactory.guidewire.com/hub-docker-remote/node:16.16.0"
