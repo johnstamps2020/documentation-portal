@@ -7,9 +7,25 @@
     {
       "label": "London Market",
       "class": "categoryCard cardShadow",
-      "page": "../../../globalContent/iplm/garmisch"
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "londonrngarmisch"
+        },
+        {
+          "label": "ClaimCenter for London Market Application Guide",
+          "id": "londonccappgarmisch"
+        },
+        {
+          "label": "PolicyCenter for London Market Application Guide",
+          "id": "londonpcappgarmisch"
+        },
+        {
+          "label": "Configuration Guide",
+          "id": "londonconfiggarmisch"
+        }
+      ]
     }
-
   ],
   "search_filters": {
     "platform": [
