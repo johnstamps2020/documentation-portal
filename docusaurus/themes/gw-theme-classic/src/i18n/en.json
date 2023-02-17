@@ -98,5 +98,9 @@
   "miniToc.heading": {
     "message": "On this page",
     "description": "Appears at the top of a list of links heading which the suer can see on the page. Each item on the list is a link."
+  },
+  "collapsible.title": {
+    "message": "Expand",
+    "description": "Describes an accordion that contains \"more content\" or \"additional information\""
   }
 }
