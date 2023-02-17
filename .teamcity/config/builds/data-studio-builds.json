@@ -8,14 +8,6 @@
       "srcId": "datastudioreleasesrc",
       "docId": "datastudiorelease",
       "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Draft.ditaval",
-      "root": "ExperienceManager.ditamap",
-      "srcId": "experiencemgrdraftsrc",
-      "docId": "experiencemgrdraft",
-      "indexRedirect": true
     }
   ]
 }
