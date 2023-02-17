@@ -1,0 +1,18 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Global Content Reference Applications",
+  "template": "page",
+  "class": "blue-theme flaine threeCards",
+  "items": [
+    {
+      "label": "London Market",
+      "page": "../../globalContent/iplm/garmisch"
+    }
+
+  ],
+  "search_filters": {
+    "platform": [
+      "Cloud"
+    ]
+  }
+}
