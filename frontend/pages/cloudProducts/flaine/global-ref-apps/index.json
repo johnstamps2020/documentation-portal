@@ -16,6 +16,7 @@
     },
     {
       "label": "US Standards-based Template Framework",
+      "class": "categoryCard cardShadow",
       "page": "../../../globalContent/sbt"
     }
   ],
