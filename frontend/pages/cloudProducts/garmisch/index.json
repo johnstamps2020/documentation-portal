@@ -83,6 +83,10 @@
         {
           "label": "Digital Reference Applications",
           "page": "dx-ref-apps"
+        },
+        {
+          "label": "Global Content Reference Applications",
+          "page": "global-ref-apps"
         }
       ]
     },
@@ -164,20 +168,6 @@
         {
           "label": "Workset Manager",
           "id": "worksetmgr"
-        }
-      ]
-    },
-    {
-      "label": "Global Content",
-      "class": "categoryCard cardShadow",
-      "items": [
-        {
-          "label": "London Market",
-          "page": "../../globalContent/iplm/garmisch"
-        },
-        {
-          "label": "UK Market",
-          "page": "../../globalContent/ipuk/1.1"
         }
       ]
     }

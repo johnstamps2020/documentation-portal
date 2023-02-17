@@ -1,0 +1,27 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Global Content Reference Applications",
+  "template": "page",
+  "class": "blue-theme flaine threeCards",
+  "items": [
+    {
+      "label": "London Market",
+      "class": "categoryCard cardShadow",
+      "page": "../../../globalContent/iplm/flaine"
+    },
+    {
+      "label": "UK Market",
+      "class": "categoryCard cardShadow",
+      "page": "../../../globalContent/ipuk/1.1"
+    },
+    {
+      "label": "US Standards-based Template Framework",
+      "page": "../../../globalContent/sbt"
+    }
+  ],
+  "search_filters": {
+    "platform": [
+      "Cloud"
+    ]
+  }
+}
