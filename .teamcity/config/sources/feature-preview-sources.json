@@ -2,17 +2,6 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
-      "id": "cloudratingdraftsrc",
-      "title": "Cloud Rating Guide Draft",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-rating.git",
-      "branch": "master",
-      "xdocsPathIds": [
-        "/Content/doc/cloud-services/CloudRating.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Draft.ditaval"
-      ]
-    },
-    {
       "id": "datastudioreleasesrc",
       "title": "Data Studio Release",
       "sourceType": "git",
