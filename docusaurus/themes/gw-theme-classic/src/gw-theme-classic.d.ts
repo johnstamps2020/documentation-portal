@@ -175,3 +175,12 @@ declare module "@theme/Translate" {
 
   export function translate(props: TranslateBaseProps): string;
 }
+
+declare module "@theme/Collapsible" {
+  export type CollapsibleProps = {
+    title?: string;
+    children: JSX.Element | JSX.Element[] | string | null;
+  };
+
+  export default function Collapsible(props: CollapsibleProps): JSX.Element;
+}

@@ -1,0 +1,40 @@
+# Collapsible
+
+Renders a collapsed accordion that the user can expand to see more content.
+
+import Collapsible from '@theme/Collapsible';
+import CodeBlock from '@theme/CodeBlock';
+
+## A simple text example
+
+```jsx
+import Collapsible from '@theme/Collapsible';
+
+<Collapsible title="Expand to see some text">
+
+## This is a heading
+
+There is some Markdown here.
+
+</Collapsible>
+```
+
+<Collapsible title="Expand to see some text">
+
+## This is a heading
+
+There is some Markdown here.
+
+</Collapsible>
+
+## An example with a CodeBlock
+
+<CodeBlock language="jsx">{`<Collapsible title="Expand to see a code sample">
+ 
+${'```'}jsx
+const MyButton = () => {
+    return <button type="button>Save some time</button>
+}
+${'```'}
+ 
+</Collapsible>`}</CodeBlock>
