@@ -4022,8 +4022,8 @@ object GwBuildSteps {
                 
                 yarn install
                 yarn build:$packageHandle
-                 ls -R $packagePath/lib
-                yarn publish:$packageHandle
+                cd $packagePath
+                npm publish
             """.trimIndent()
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerImage = "artifactory.guidewire.com/hub-docker-remote/node:16.16.0"

@@ -29,7 +29,6 @@
     "dev:theme": "NODE_ENV=development yarn build:theme && yarn workspace @doctools/gw-theme-classic dev",
     "dev:server": "NODE_ENV=development yarn workspace server dev",
     "profile:html5": "yarn build:theme && yarn workspace html5 profile",
-    "publish:theme": "yarn workspace @doctools/gw-theme-classic npm publish",
     "start:server": "yarn workspace server start",
     "test:server": "yarn workspace server test"
   },
