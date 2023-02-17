@@ -2,10 +2,11 @@
   "$schema": "/frontend/page-schema.json",
   "title": "Global Content Reference Applications",
   "template": "page",
-  "class": "blue-theme flaine threeCards",
+  "class": "blue-theme garmisch threeCards",
   "items": [
     {
       "label": "London Market",
+      "class": "categoryCard cardShadow",
       "page": "../../../globalContent/iplm/garmisch"
     }
 
