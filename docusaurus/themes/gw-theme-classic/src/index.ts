@@ -2,9 +2,25 @@ import type { LoadContext, Plugin } from "@docusaurus/types";
 import type { PluginOptions } from "@docusaurus/theme-classic";
 import type { ThemeConfig } from "@docusaurus/theme-common";
 import { resolve } from "path";
-import { readJsonFile } from "./translations";
 import { PluginData } from "@theme/Types";
 import { PLUGIN_NAME } from "./types/constants";
+import type { TranslationFileContent } from "@docusaurus/types";
+import { readFileSync } from "fs";
+
+export function readJsonFile(fileName: string): { [id: string]: string } {
+  const translationData: TranslationFileContent = JSON.parse(
+    readFileSync(`${__dirname}/i18n/${fileName}`, { encoding: "utf-8" })
+  );
+
+  return Object.entries(translationData).reduce(
+    (accumulator, [key, value]) => ({
+      ...accumulator,
+      [key]: value.message,
+    }),
+    {}
+  );
+}
+
 
 const getAppBaseUrl = () => {
   if (process.env["TARGET_URL"]) {
