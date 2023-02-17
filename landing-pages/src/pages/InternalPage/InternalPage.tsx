@@ -52,19 +52,24 @@ export default function InternalPage() {
           sx={{
             background: "white",
             border: "1px solid gray",
-            maxWidth: "1024px",
+            width: { xs: "100%", sm: "100%", md: "950px", lg: "1024px" },
             height: "fit-content",
             boxShadow: "10px 5px 12px rgba(0, 0, 0, 0.3)",
             margin: "auto",
-            padding: "4rem 3rem"
+            padding: { xs: "1.5rem", sm: "4rem 3rem" }
           }}
         >
           <Stack spacing={4}>
             <Container
-              sx={{ width: "900px", maxWidth: "900px", textAlign: "center" }}
-            >
-              <img src="/images/internal-page.svg" alt="" />
-            </Container>
+              sx={{
+                backgroundImage: "url(/images/internal-page.svg)",
+                backgroundPosition: "center",
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                height: { xs: "150px", sm: "250px", md: "350px" },
+                textAlign: "center"
+              }}
+            ></Container>
             {userInfo.hasGuidewireEmail ? (
               <>
                 <Typography variant="h1" sx={{ color: "black" }}>
