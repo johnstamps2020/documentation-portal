@@ -2,23 +2,6 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "cloudratingdraft",
-      "title": "Cloud Rating",
-      "url": "cloud/gw-feature-preview/cloudrating",
-      "metadata": {
-        "product": ["Feature Preview"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
       "id": "datastudiorelease",
       "title": "Data Studio Release",
       "url": "cloud/datastudio/app",
