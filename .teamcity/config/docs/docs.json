@@ -6514,7 +6514,7 @@
         "platform": ["Cloud"],
         "version": ["latest"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
