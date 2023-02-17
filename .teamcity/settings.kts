@@ -1746,7 +1746,7 @@ object Frontend {
             }
 
             steps {
-                step(GwBuildSteps.createPublishNpmPackageStep(packageHandle))
+                step(GwBuildSteps.createPublishNpmPackageStep(packageHandle, packagePath))
             }
 
             triggers {
@@ -4009,7 +4009,7 @@ object GwBuildSteps {
         dockerImagePlatform = ImagePlatform.Linux
     })
 
-    fun createPublishNpmPackageStep(packageHandle: String): ScriptBuildStep {
+    fun createPublishNpmPackageStep(packageHandle: String, packagePath: String): ScriptBuildStep {
         return ScriptBuildStep {
             name = "NPM publish $packageHandle"
             id = Helpers.createIdStringFromName(this.name)
@@ -4022,6 +4022,7 @@ object GwBuildSteps {
                 
                 yarn install
                 yarn build:$packageHandle
+                 ls -R $packagePath/lib
                 yarn publish:$packageHandle
             """.trimIndent()
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
