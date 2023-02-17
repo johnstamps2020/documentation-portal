@@ -10,6 +10,23 @@ import Stack from "@mui/material/Stack";
 import SelfManagedLink from "../SelfManagedLink";
 
 export default function SectionLayout(pageData: Page) {
+  function calcSectionHeightInPx() {
+    const sectionItemHeight = 32;
+    const sectionTitleHeight = 46;
+    const gapHeight = 32;
+    const additionalPxJustInCase = 20;
+    let sum = 0;
+    pageData.sections.map((section) => {
+      const numberOfSections = section.sectionItems.length;
+      sum +=
+        numberOfSections * sectionItemHeight +
+        sectionTitleHeight +
+        gapHeight +
+        additionalPxJustInCase;
+    });
+    return sum / 2;
+  }
+  const contentHeight = calcSectionHeightInPx();
   return (
     <Grid
       container
@@ -22,9 +39,9 @@ export default function SectionLayout(pageData: Page) {
         minHeight: "100vh"
       }}
     >
-      <Grid>
+      <Grid minWidth="1332px">
         <Stack spacing={1} direction="column" width="100%">
-          <SelfManagedLink pagePath={pageData.path} backgroundImage=""/>
+          <SelfManagedLink pagePath={pageData.path} backgroundImage="" />
           <Container style={{ padding: 0, margin: "5px 0 0 0" }}>
             <Breadcrumbs pagePath={pageData.path} />
           </Container>
@@ -48,8 +65,15 @@ export default function SectionLayout(pageData: Page) {
           )}
         </Stack>
       </Grid>
-      <Grid container alignItems="baseline" gap={5} maxWidth="1100px">
-        {pageData.sections?.map(section => (
+      <Grid
+        container
+        direction="column"
+        gap="32px"
+        alignContent="start"
+        maxWidth="950px"
+        sx={{ maxHeight: `${contentHeight}px` }}
+      >
+        {pageData.sections?.map((section) => (
           <LandingPageSection {...section} key={section.id} />
         ))}
       </Grid>
