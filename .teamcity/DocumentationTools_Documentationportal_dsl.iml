@@ -6,8 +6,8 @@
         <compilerSettings />
         <compilerArguments>
           <option name="jvmTarget" value="1.8" />
-          <option name="languageVersion" value="1.8" />
-          <option name="apiVersion" value="1.8" />
+          <option name="languageVersion" value="1.6" />
+          <option name="apiVersion" value="1.6" />
           <option name="pluginClasspaths">
             <array />
           </option>
@@ -30,10 +30,56 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.json:json:20220924" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-latest:2022.04" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.6.21" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.6.21" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-reflect:1.6.21" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-jira-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-dotnet-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-sbt-runner-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-pull-requests-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-perforce-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-xcode-runner-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-tfs-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-golang-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-TeamCity_BitBucketIssues-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-commandLineRunner-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-investigations-auto-assigner-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-kotlin-script-runner-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-xml-report-plugin-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-bundled-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-rake-runner-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-perfmon-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-powershell-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-TeamCity_GitHubIssues-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-swabra-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-ant-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-svn-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-charisma-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-docker-support-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-file-content-replacer-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-GitLabIssues-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-nodejs-runner-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-mercurial-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-jira-cloud-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-fxcop-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-slack-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-Maven2-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-s3-artifact-storage-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-gradle-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-bugzilla-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-commit-status-publisher-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-dotNetRunners-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-jetbrains_git-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-qodana-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-python-runner-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-visualstudiotest-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-deploy-runner-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-teamcity-parallel-tests-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-dotNetPackagesSupport-latest:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-kotlin-ssh-manager-latest:1.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.teamcity:configs-dsl-converters:2022.04" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21" level="project" />
