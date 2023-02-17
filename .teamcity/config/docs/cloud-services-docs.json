@@ -92,6 +92,24 @@
       "earlyAccess": false
     },
     {
+      "id": "submissionintakeconfiglxd",
+      "title": "Submission Intake Configuration LXD",
+      "url": "cloud/subintakeconfiglxd",
+      "metadata": {
+        "product": ["Submission Intake"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Flaine"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "worksetmgr",
       "title": "Workset Manager",
       "url": "cloud/worksetmgr",

@@ -13,13 +13,6 @@
       ]
     },
     {
-      "id": "datastudiodraftsrc",
-      "title": "Data Studio Draft",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/data-studio.git",
-      "branch": "main"
-    },
-    {
       "id": "datastudioreleasesrc",
       "title": "Data Studio Release",
       "sourceType": "git",
@@ -36,13 +29,6 @@
         "/Content/doc/cloud-services/ExperienceManager.ditamap",
         "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Cloud-Draft.ditaval"
       ]
-    },
-    {
-      "id": "stringmanagerlatestsrc",
-      "title": "String Manager",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/string-manager.git",
-      "branch": "main"
     }
   ]
 }

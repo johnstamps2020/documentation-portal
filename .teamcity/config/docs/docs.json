@@ -24,7 +24,7 @@
       "url": "cloud/gwcp/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Platform"],
+        "product": ["Cloud Platform"],
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
@@ -41,7 +41,7 @@
       "url": "cloud/gwcprelnotes/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Platform"],
+        "product": ["Cloud Platform"],
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
@@ -770,9 +770,9 @@
       "url": "cloud/predict/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Live Predict"],
+        "product": ["Predict"],
         "version": ["latest"],
-        "release": ["Banff", "Cortina", "Dobson"]
+        "release": ["Banff", "Cortina", "Dobson", "Elysian", "Flaine"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -6282,57 +6282,6 @@
       "earlyAccess": false
     },
     {
-      "id": "apiekdfksmds",
-      "title": "API Specifications",
-      "url": "cloud/bc/api-specs/latest/",
-      "metadata": {
-        "product": ["BillingCenter API"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Banff", "Cortina"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "pcappciekdfpcksmds",
-      "title": "API Specifications",
-      "url": "cloud/pc/api-specs/latest/",
-      "metadata": {
-        "product": ["PolicyCenter API"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Banff", "Cortina"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "ccapcciekdfccksmds",
-      "title": "API Specifications",
-      "url": "cloud/cc/api-specs/latest/",
-      "metadata": {
-        "product": ["ClaimCenter API"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Banff", "Cortina"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "in20201bi",
       "title": "Business Intelligence Getting Started Guide",
       "url": "cloud/in/20201/bi",
@@ -6594,7 +6543,7 @@
       "url": "cloud/internal/nps",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Platform"],
+        "product": ["Cloud Platform"],
         "version": ["latest"]
       },
       "environments": ["staging"],
