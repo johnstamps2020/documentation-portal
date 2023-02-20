@@ -9,7 +9,7 @@ import { translate } from "@theme/Translate";
 
 export default function Collapsible({ title, children }: CollapsibleProps) {
   return (
-    <Accordion>
+    <Accordion sx={{ marginBottom: "1rem" }}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
