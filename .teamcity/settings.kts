@@ -2195,8 +2195,6 @@ object Server {
                 scriptContent = """
                     #!/bin/sh
                     set -e
-                    export AWS_ROLE="arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"
-                    export AWS_ECR_REPO="627188849628.dkr.ecr.us-west-2.amazonaws.com/tenant-doctools-docportal"
                     export OKTA_DOMAIN=https://guidewire-hub.oktapreview.com
                     export OKTA_CLIENT_ID=mock
                     export OKTA_CLIENT_SECRET=mock
@@ -2208,7 +2206,6 @@ object Server {
                     export OKTA_ACCESS_TOKEN_ISSUER_EMEA="issuerNotConfigured"
                     export OKTA_ACCESS_TOKEN_SCOPES=mock
                     export OKTA_ACCESS_TOKEN_AUDIENCE=mock
-                    export TAG_VERSION="latest-int"
                     export APP_BASE_URL=http://localhost:8081
                     export SESSION_KEY=mock
                     export DOC_S3_URL="https://docportal-content.staging.ccs.guidewire.net"
@@ -2226,10 +2223,6 @@ object Server {
                     export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="https://docs.staging.ccs.guidewire.net/customers-login"
                     export CUSTOMERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
                     export CUSTOMERS_LOGIN_CERT=mock
-                    export REQUESTS_MEMORY="600MiB"
-                    export REQUESTS_CPU="70m"
-                    export LIMITS_MEMORY="800MiB"
-                    export LIMITS_CPU="100m"
                     
                     yarn
                     yarn test:server
