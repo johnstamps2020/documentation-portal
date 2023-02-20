@@ -10,7 +10,7 @@ describe('Search', () => {
   });
 
   test('A search for a specific phrase returns some results', async () => {
-    const searchPhrase = 'button';
+    const searchPhrase = 'API';
     const h1 = await querySelectorFromEndpoint(
       `/search?q=${searchPhrase}`,
       'h1'
