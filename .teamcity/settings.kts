@@ -2195,8 +2195,6 @@ object Server {
                 scriptContent = """
                     #!/bin/sh
                     set -e
-                    export AWS_ROLE="arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"
-                    export AWS_ECR_REPO="627188849628.dkr.ecr.us-west-2.amazonaws.com/tenant-doctools-docportal"
                     export OKTA_DOMAIN=https://guidewire-hub.oktapreview.com
                     export OKTA_CLIENT_ID=mock
                     export OKTA_CLIENT_SECRET=mock
@@ -2208,28 +2206,23 @@ object Server {
                     export OKTA_ACCESS_TOKEN_ISSUER_EMEA="issuerNotConfigured"
                     export OKTA_ACCESS_TOKEN_SCOPES=mock
                     export OKTA_ACCESS_TOKEN_AUDIENCE=mock
-                    export TAG_VERSION="latest-int"
                     export APP_BASE_URL=http://localhost:8081
                     export SESSION_KEY=mock
-                    export DOC_S3_URL="https://docportal-content.int.ccs.guidewire.net"
+                    export DOC_S3_URL="https://docportal-content.staging.ccs.guidewire.net"
                     export PORTAL2_S3_URL="https://portal2-content.omega2-andromeda.guidewire.net"
-                    export ELASTIC_SEARCH_URL=https://docsearch-doctools.int.ccs.guidewire.net
-                    export DEPLOY_ENV=int
+                    export ELASTIC_SEARCH_URL=https://docsearch-doctools.staging.ccs.guidewire.net
+                    export DEPLOY_ENV=staging
                     export LOCAL_CONFIG=yes
                     export ENABLE_AUTH=no
                     export PRETEND_TO_BE_EXTERNAL=no
                     export ALLOW_PUBLIC_DOCS=yes
                     export LOCALHOST_SESSION_SETTINGS=yes
-                    export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="https://docs.int.ccs.guidewire.net/partners-login"
+                    export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="https://docs.staging.ccs.guidewire.net/partners-login"
                     export PARTNERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
                     export PARTNERS_LOGIN_CERT=mock
-                    export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="https://docs.int.ccs.guidewire.net/customers-login"
+                    export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="https://docs.staging.ccs.guidewire.net/customers-login"
                     export CUSTOMERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
                     export CUSTOMERS_LOGIN_CERT=mock
-                    export REQUESTS_MEMORY="4G"
-                    export REQUESTS_CPU="1"
-                    export LIMITS_MEMORY="8G"
-                    export LIMITS_CPU="2"
                     
                     yarn
                     yarn test:server
