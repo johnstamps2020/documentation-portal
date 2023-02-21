@@ -572,7 +572,7 @@
       "buildType": "dita",
       "filter": "Digital-di-OnPrem.ditaval",
       "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
-      "srcId": "dxgwsfapp331",
+      "srcId": "dxgwsf331",
       "docId": "dxdiapp331",
       "indexRedirect": true
     },
@@ -580,7 +580,7 @@
       "buildType": "dita",
       "filter": "Digital-di-OnPrem.ditaval",
       "root": "Guidewire_For_Salesforce_install-guide.ditamap",
-      "srcId": "dxgwsfinstall331",
+      "srcId": "dxgwsf331",
       "docId": "dxdiinstall331",
       "indexRedirect": true
     },
@@ -588,7 +588,7 @@
       "buildType": "dita",
       "filter": "Digital-di-OnPrem.ditaval",
       "root": "gw-for-sf-developer-admin-guide.ditamap",
-      "srcId": "dxgwsfadmin331",
+      "srcId": "dxgwsf331",
       "docId": "dxdiadmin331",
       "indexRedirect": true
     },
@@ -596,7 +596,7 @@
       "buildType": "dita",
       "filter": "Digital-di-OnPrem.ditaval",
       "root": "Digital-Salesforce-ReleaseNotes.ditamap",
-      "srcId": "dxgwsfrelnotes331",
+      "srcId": "dxgwsf331",
       "docId": "dxdirelnotes331",
       "indexRedirect": true
     },
@@ -604,7 +604,7 @@
       "buildType": "dita",
       "filter": "Digital-ed-OnPrem.ditaval",
       "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
-      "srcId": "dxgwsfapp331",
+      "srcId": "dxgwsf331",
       "docId": "dxedapp331",
       "indexRedirect": true
     },
@@ -612,7 +612,7 @@
       "buildType": "dita",
       "filter": "Digital-ed-OnPrem.ditaval",
       "root": "Guidewire_For_Salesforce_install-guide.ditamap",
-      "srcId": "dxgwsfinstall331",
+      "srcId": "dxgwsf331",
       "docId": "dxedinstall331",
       "indexRedirect": true
     },
@@ -620,7 +620,7 @@
       "buildType": "dita",
       "filter": "Digital-ed-OnPrem.ditaval",
       "root": "Digital-Salesforce-ReleaseNotes.ditamap",
-      "srcId": "dxgwsfrelnotes331",
+      "srcId": "dxgwsf331",
       "docId": "dxedrelnotes331",
       "indexRedirect": true
     },
@@ -628,7 +628,7 @@
       "buildType": "dita",
       "filter": "Digital-vod-OnPrem.ditaval",
       "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
-      "srcId": "dxgwsfapp331",
+      "srcId": "dxgwsf331",
       "docId": "dxvodapp331",
       "indexRedirect": true
     },
@@ -636,7 +636,7 @@
       "buildType": "dita",
       "filter": "Digital-vod-OnPrem.ditaval",
       "root": "Guidewire_For_Salesforce_install-guide.ditamap",
-      "srcId": "dxgwsfinstall331",
+      "srcId": "dxgwsf331",
       "docId": "dxvodinstall331",
       "indexRedirect": true
     },
@@ -644,7 +644,7 @@
       "buildType": "dita",
       "filter": "Digital-vod-OnPrem.ditaval",
       "root": "gw-for-sf-developer-admin-guide.ditamap",
-      "srcId": "dxgwsfadmin331",
+      "srcId": "dxgwsf331",
       "docId": "dxvodadmin331",
       "indexRedirect": true
     },
@@ -652,8 +652,96 @@
       "buildType": "dita",
       "filter": "Digital-vod-OnPrem.ditaval",
       "root": "Digital-Salesforce-ReleaseNotes.ditamap",
-      "srcId": "dxgwsfrelnotes331",
+      "srcId": "dxgwsf331",
       "docId": "dxvodrelnotes331",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-OnPrem.ditaval",
+      "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxdiapp330",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-OnPrem.ditaval",
+      "root": "Guidewire_For_Salesforce_install-guide.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxdiinstall330",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-OnPrem.ditaval",
+      "root": "gw-for-sf-developer-admin-guide.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxdiadmin330",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-OnPrem.ditaval",
+      "root": "Digital-Salesforce-ReleaseNotes.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxdirelnotes330",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ed-OnPrem.ditaval",
+      "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxedapp330",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ed-OnPrem.ditaval",
+      "root": "Guidewire_For_Salesforce_install-guide.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxedinstall330",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ed-OnPrem.ditaval",
+      "root": "Digital-Salesforce-ReleaseNotes.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxedrelnotes330",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-vod-OnPrem.ditaval",
+      "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxvodapp330",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-vod-OnPrem.ditaval",
+      "root": "Guidewire_For_Salesforce_install-guide.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxvodinstall330",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-vod-OnPrem.ditaval",
+      "root": "gw-for-sf-developer-admin-guide.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxvodadmin330",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-vod-OnPrem.ditaval",
+      "root": "Digital-Salesforce-ReleaseNotes.ditamap",
+      "srcId": "dxgwsf330",
+      "docId": "dxvodrelnotes330",
       "indexRedirect": true
     },
     {

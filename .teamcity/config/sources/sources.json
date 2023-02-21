@@ -110,56 +110,18 @@
       ]
     },
     {
-      "id": "dxgwsfapp331",
-      "title": "GW for SF 3.3.1 Application Guide",
+      "id": "dxgwsf331",
+      "title": "Digital GW for SF 3.3.1",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "3.3.1",
-      "xdocsPathIds": [
-        "/Content/doc/digital/11.x/releases/202104/Guidewire_For_Salesforce_AppGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval"
-      ]
+      "branch": "3.3.1"
     },
     {
-      "id": "dxgwsfinstall331",
-      "title": "GW for SF 3.3.1 Installation Guide",
+      "id": "dxgwsf330",
+      "title": "Digital GW for SF 3.3.0",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "3.3.1",
-      "xdocsPathIds": [
-        "/Content/doc/digital/11.x/releases/202104/Guidewire_For_Salesforce_install-guide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval"
-      ]
-    },
-    {
-      "id": "dxgwsfadmin331",
-      "title": "GW for SF 3.3.1 Administration Guide",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "3.3.1",
-      "xdocsPathIds": [
-        "/Content/doc/digital/11.x/releases/202104/gw-for-sf-developer-admin-guide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval"
-      ]
-    },
-    {
-      "id": "dxgwsfrelnotes331",
-      "title": "GW for SF 3.3.1 Release Notes",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "3.3.1",
-      "xdocsPathIds": [
-        "/Content/doc/digital/11.x/releases/202104/Digital-Salesforce-ReleaseNotes.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval"
-      ]
+      "branch": "3.3.0"
     },
     {
       "id": "dxgwsf320",
