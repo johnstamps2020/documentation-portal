@@ -8,25 +8,9 @@ import LandingPageSidebar from "../LandingPageSidebar";
 import { Page } from "server/dist/model/entity/Page";
 import Stack from "@mui/material/Stack";
 import SelfManagedLink from "../SelfManagedLink";
+import Box from "@mui/material/Box";
 
 export default function SectionLayout(pageData: Page) {
-  function calcSectionHeightInPx() {
-    const sectionItemHeight = 32;
-    const sectionTitleHeight = 46;
-    const gapHeight = 32;
-    const additionalPxJustInCase = 20;
-    let sum = 0;
-    pageData.sections.map((section) => {
-      const numberOfSections = section.sectionItems.length;
-      sum +=
-        numberOfSections * sectionItemHeight +
-        sectionTitleHeight +
-        gapHeight +
-        additionalPxJustInCase;
-    });
-    return sum / 2;
-  }
-  const contentHeight = calcSectionHeightInPx();
   return (
     <Grid
       container
@@ -36,7 +20,8 @@ export default function SectionLayout(pageData: Page) {
       gap={5}
       alignContent="center"
       sx={{
-        minHeight: "100vh"
+        minHeight: "100vh",
+        backgroundColor: "hsl(0, 0%, 98%)"
       }}
     >
       <Grid xs={12} lg={8}>
@@ -65,18 +50,11 @@ export default function SectionLayout(pageData: Page) {
           )}
         </Stack>
       </Grid>
-      <Grid
-        container
-        direction="column"
-        gap="32px"
-        alignContent="start"
-        maxWidth="950px"
-        sx={{ maxHeight: {xs: "100%", md: `${contentHeight}px`} }}
-      >
+      <Box sx={{ columnCount: { xs: 1, md: 2 }, maxWidth: "950px" }}>
         {pageData.sections?.map((section) => (
           <LandingPageSection {...section} key={section.id} />
         ))}
-      </Grid>
+      </Box>
       {pageData && pageData.sidebar && (
         <LandingPageSidebar {...pageData.sidebar} />
       )}
