@@ -39,7 +39,7 @@ export default function SectionLayout(pageData: Page) {
         minHeight: "100vh"
       }}
     >
-      <Grid minWidth="1332px">
+      <Grid xs={12} lg={8}>
         <Stack spacing={1} direction="column" width="100%">
           <SelfManagedLink pagePath={pageData.path} backgroundImage="" />
           <Container style={{ padding: 0, margin: "5px 0 0 0" }}>
@@ -71,7 +71,7 @@ export default function SectionLayout(pageData: Page) {
         gap="32px"
         alignContent="start"
         maxWidth="950px"
-        sx={{ maxHeight: `${contentHeight}px` }}
+        sx={{ maxHeight: {xs: "100%", md: `${contentHeight}px`} }}
       >
         {pageData.sections?.map((section) => (
           <LandingPageSection {...section} key={section.id} />
