@@ -294,7 +294,7 @@ async function searchController(req, res, next) {
     const resultsPerPage = urlQueryParameters.pagination || 10;
     const currentPage = urlQueryParameters.page || 1;
     const startIndex = resultsPerPage * (currentPage - 1);
-    const userInfo = await getUserInfo(req);
+    const userInfo = res.locals.userInfo;
     const requestIsAuthenticated = userInfo.isLoggedIn;
     const hasGuidewireEmail = userInfo.hasGuidewireEmail;
     const mappings = await getFieldMappings();

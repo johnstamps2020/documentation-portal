@@ -75,7 +75,7 @@ router.get('/env', function(req, res) {
 });
 
 router.get('/entity/:repo', async function(req, res) {
-  const { status, body } = await getEntity(req);
+  const { status, body } = await getEntity(req, res);
   return res.status(status).json(body);
 });
 
@@ -125,7 +125,7 @@ router.get('/entity/page/breadcrumbs', async function(req, res) {
 });
 
 router.get('/entity/page/data', async function(req, res) {
-  const { status, body } = await getPageData(req);
+  const { status, body } = await getPageData(req, res);
   return res.status(status).json(body);
 });
 

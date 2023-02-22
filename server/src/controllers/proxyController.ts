@@ -1,15 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
 import fetch from 'node-fetch';
-import { getDocByUrl, getPage } from './configController';
-import {
-  isUserAllowedToAccessResource,
-  openRequestedUrl,
-  redirectToLoginPage,
-} from './authController';
 import { runningInDevMode } from './utils/serverUtils';
 
 const HttpProxy = require('http-proxy');
 const proxy = new HttpProxy();
+
+export const fourOhFourRoute = '/landing/404';
 export const forbiddenRoute = '/landing/forbidden';
 export const internalRoute = '/landing/internal';
 
@@ -23,49 +19,32 @@ proxy.on('error', function(err: any, next: NextFunction) {
   next(err);
 });
 
-export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
-  let resourceStatus;
-  if (req.path.startsWith('/sitemap')) {
-    resourceStatus = await isUserAllowedToAccessResource(
-      req,
-      false,
-      false
-    ).then(r => r.status);
-  } else {
-    const requestedDoc = await getDocByUrl(req.path);
-    if (!requestedDoc) {
-      return next();
-    }
-    resourceStatus = await isUserAllowedToAccessResource(
-      req,
-      requestedDoc.public,
-      requestedDoc.internal
-    ).then(r => r.status);
-  }
-  if (resourceStatus === 401) {
-    return redirectToLoginPage(req, res);
-  }
-  if (resourceStatus == 403) {
-    return res.redirect(
-      `${internalRoute}${req.url ? `?restricted=${req.url}` : ''}`
-    );
-  }
-
-  openRequestedUrl(req, res);
-  let proxyTarget;
-  if (req.path.startsWith('/sitemap')) {
-    proxyTarget = `${process.env.DOC_S3_URL}/sitemap`;
-  } else {
-    proxyTarget = req.path.startsWith('/portal')
-      ? process.env.PORTAL2_S3_URL
-      : process.env.DOC_S3_URL;
-  }
+export async function sitemapProxy(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   proxy.on('proxyRes', setProxyResCacheControlHeader);
   proxy.web(
     req,
     res,
     {
-      target: proxyTarget,
+      target: `${process.env.DOC_S3_URL}/sitemap`,
+      changeOrigin: true,
+    },
+    next
+  );
+}
+
+export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
+  proxy.on('proxyRes', setProxyResCacheControlHeader);
+  proxy.web(
+    req,
+    res,
+    {
+      target: req.path.startsWith('/portal')
+        ? process.env.PORTAL2_S3_URL
+        : process.env.DOC_S3_URL,
       changeOrigin: true,
     },
     next
@@ -128,37 +107,9 @@ export async function reactAppProxy(
     changeOrigin: true,
   };
   /* Open routes, such as /gw-login and /search, are configured in the database as public pages.
-                              Resource routes, such as /static and /landing-page-resource, are configured in the database
-                               as public pages with the "resource" component.
-                              This way, the user can view these routes without login.*/
-  if (req.originalUrl === '/landing') {
-    return proxy.web(req, res, proxyOptions, next);
-  }
-  const requestedPage = await getPage(req);
-  if (!requestedPage) {
-    return next();
-  }
-  const requestedPageBody = requestedPage.body;
-  if (requestedPageBody.component?.includes('redirect')) {
-    return res.redirect(
-      `/landing/${requestedPageBody.component.split(' ')[1]}`
-    );
-  }
-  const checkStatus = await isUserAllowedToAccessResource(
-    req,
-    requestedPageBody.public,
-    requestedPageBody.internal
-  ).then(r => r.status);
-  if (checkStatus === 401) {
-    return redirectToLoginPage(req, res);
-  }
-  if (checkStatus == 403) {
-    return res.redirect(
-      `${internalRoute}${req.url ? `?restricted=${req.url}` : ''}`
-    );
-  }
-
-  openRequestedUrl(req, res);
+                                        Resource routes, such as /static and /landing-page-resource, are configured in the database
+                                         as public pages with the "resource" component.
+                                        This way, the user can view these routes without login.*/
   if (isDevMode) {
     return proxy.web(req, res, proxyOptions, next);
   } else {

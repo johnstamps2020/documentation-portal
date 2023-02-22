@@ -3,38 +3,67 @@ import { NextFunction, Request, Response } from 'express';
 import { decode, JwtPayload } from 'jsonwebtoken';
 import { winstonLogger } from './loggerController';
 import { getUserInfo } from './userController';
+import { fourOhFourRoute, internalRoute } from './proxyController';
+import { getDocByUrl, getPage } from './configController';
 
+export async function saveUserInfoToResLocals(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  res.locals.userInfo = await getUserInfo(req);
+  return next();
+}
 export async function isAllowedToAccessRoute(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  const userInfo = await getUserInfo(req);
-  if (!userInfo.isLoggedIn) {
-    return res.status(401).json({
-      message: 'Route not available: request not authenticated',
-    });
+  const { status, body } = isUserAllowedToAccessResource(res, false, false);
+  if (status === 200) {
+    return next();
   }
-  return next();
+  return res.status(status).json(body);
 }
 
-export async function checkIfAllowedToAccessRouteAndRedirect(
+export async function isAllowedToAccessPageOrDoc(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  const userInfo = await getUserInfo(req);
-  if (!userInfo.isLoggedIn) {
+  const requestedResource = req.originalUrl.startsWith('/landing')
+    ? await getPage(req).then(r => r?.body)
+    : await getDocByUrl(req.path);
+  if (!requestedResource) {
+    return res.redirect(`${fourOhFourRoute}?notFound=${req.originalUrl}`);
+  }
+  if (requestedResource.component?.includes('redirect')) {
+    return res.redirect(
+      `/landing/${requestedResource.component.split(' ')[1]}`
+    );
+  }
+  const resourceStatus = isUserAllowedToAccessResource(
+    res,
+    requestedResource.public,
+    requestedResource.internal
+  ).status;
+  if (resourceStatus === 401) {
     return redirectToLoginPage(req, res);
   }
+  if (resourceStatus == 403) {
+    return res.redirect(
+      `${internalRoute}${req.url ? `?restricted=${req.originalUrl}` : ''}`
+    );
+  }
+  openRequestedUrl(req, res);
   return next();
 }
 
-export async function isUserAllowedToAccessResource(
-  req: Request,
+export function isUserAllowedToAccessResource(
+  res: Response,
   resourceIsPublic: boolean,
   resourceIsInternal: boolean
-): Promise<{ status: number; body: { message: string } }> {
+): { status: number; body: { message: string } } {
   if (resourceIsPublic) {
     return {
       status: 200,
@@ -43,7 +72,7 @@ export async function isUserAllowedToAccessResource(
       },
     };
   }
-  const userInfo = await getUserInfo(req);
+  const userInfo = res.locals.userInfo;
   if (!userInfo.isLoggedIn) {
     return {
       status: 401,
