@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import HighlightIcon from "@mui/icons-material/Highlight";
+import highlightIcon from "../../images/icon-highlighter.svg";
 import { useSearch } from "../../context/SearchContext";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
@@ -9,6 +9,7 @@ import GlobalStyles from "@mui/material/GlobalStyles";
 export default function Highlighter() {
   const { searchData } = useSearch();
   const [highlight, setHighlight] = useState<string | null>(null);
+  const [highlightedIcon, setHighlightedIcon] = useState(true);
 
   useEffect(() => {
     if (searchData) {
@@ -51,10 +52,16 @@ export default function Highlighter() {
         <ToggleButton
           value="enabled"
           aria-label="highlight"
-          sx={{ marginLeft: 2 }}
+          sx={{ marginLeft: 2, padding: 0, border: 0 }}
         >
           <Tooltip title="Toggle highlight for search phrases">
-            <HighlightIcon />
+            <img
+              src={highlightIcon}
+              alt="highlighter-icon"
+              height="24px"
+              onClick={() => setHighlightedIcon(!highlightedIcon)}
+              style={{backgroundColor: highlightedIcon ? "hsl(60, 100%, 77%)" : "hsl(100, 100%, 100%)" }}
+            />
           </Tooltip>
         </ToggleButton>
       </ToggleButtonGroup>

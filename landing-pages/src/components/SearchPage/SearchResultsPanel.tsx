@@ -7,7 +7,10 @@ import Stack from "@mui/material/Stack";
 import { useSearch } from "../../context/SearchContext";
 import PaginationControl from "./PaginationControl";
 
-export default function SearchResultsPanel() {
+type SearchResultsPanelProps = {
+  isMobile: boolean;
+}
+export default function SearchResultsPanel({isMobile} : SearchResultsPanelProps) {
   const { searchData } = useSearch();
   const searchFilters: { [key: string]: string[] } = {};
   if (searchData) {
@@ -27,7 +30,7 @@ export default function SearchResultsPanel() {
   return (
     <Stack
       sx={{
-        padding: "32px",
+        padding: {xs: "12px", sm: "32px"},
         height: "100vh",
         width: "100%",
         overflow: "scroll",
@@ -36,7 +39,7 @@ export default function SearchResultsPanel() {
     >
       <Stack alignItems="center" sx={{ marginBottom: 3 }} spacing={2}>
         <NotLoggedInAlert />
-        <SearchBox bigSize={true} searchFilters={searchFilters} />
+        <SearchBox bigSize={!isMobile} searchFilters={searchFilters} />
         <AdvancedSearchHelp />
       </Stack>
       <Stack>
