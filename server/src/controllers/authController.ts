@@ -4,7 +4,7 @@ import { decode, JwtPayload } from 'jsonwebtoken';
 import { winstonLogger } from './loggerController';
 import { getUserInfo } from './userController';
 import { fourOhFourRoute, internalRoute } from './proxyController';
-import { getDocByUrl, getPage } from './configController';
+import { getDocByUrl, getEnv, getPage } from './configController';
 
 export async function saveUserInfoToResLocals(
   req: Request,
@@ -14,12 +14,18 @@ export async function saveUserInfoToResLocals(
   res.locals.userInfo = await getUserInfo(req);
   return next();
 }
+
 export async function isAllowedToAccessRoute(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  const { status, body } = isUserAllowedToAccessResource(res, false, false);
+  const { status, body } = isUserAllowedToAccessResource(
+    res,
+    false,
+    false,
+    true
+  );
   if (status === 200) {
     return next();
   }
@@ -45,7 +51,8 @@ export async function isAllowedToAccessPageOrDoc(
   const resourceStatus = isUserAllowedToAccessResource(
     res,
     requestedResource.public,
-    requestedResource.internal
+    requestedResource.internal,
+    requestedResource.isInProduction
   ).status;
   if (resourceStatus === 401) {
     return redirectToLoginPage(req, res);
@@ -62,8 +69,18 @@ export async function isAllowedToAccessPageOrDoc(
 export function isUserAllowedToAccessResource(
   res: Response,
   resourceIsPublic: boolean,
-  resourceIsInternal: boolean
+  resourceIsInternal: boolean,
+  resourceIsInProduction: boolean
 ): { status: number; body: { message: string } } {
+  const isProductionEnvironment = getEnv().envName === 'omega2-andromeda';
+  if (isProductionEnvironment && !resourceIsInProduction) {
+    return {
+      status: 406,
+      body: {
+        message: 'Resource not available for this deployment environment',
+      },
+    };
+  }
   if (resourceIsPublic) {
     return {
       status: 200,

@@ -98,7 +98,8 @@ export async function getEntity(reqObj: Request, resObj: Response) {
     const userIsAllowedToAccessResource = isUserAllowedToAccessResource(
       resObj,
       result.body?.public || false,
-      result.body?.internal || false
+      result.body?.internal || false,
+      result.body?.isInProduction || false
     );
     if (userIsAllowedToAccessResource.status === 200) {
       return result;
