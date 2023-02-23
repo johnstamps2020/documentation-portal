@@ -37,6 +37,7 @@ export default function LandingPage() {
   const [loadingError, setLoadingError] = useState<string | undefined>(
     undefined
   );
+  const [PageComponent, setPageComponent] = useState(<>Loading...</>);
   useEffect(() => {
     async function getPageData() {
       try {
@@ -84,6 +85,16 @@ export default function LandingPage() {
 
     getPageData().catch(console.error);
   }, [pagePathFromRouter, navigate]);
+
+  useEffect(() => {
+    if (pageData) {
+      setPageComponent(() => {
+        const LoadedComponent = lazy(() =>
+          import("../landing/cloudProducts/garmisch")
+        );
+      });
+    }
+  }, [pageData]);
 
   if (!pageData) {
     return null;
@@ -184,7 +195,7 @@ export default function LandingPage() {
         open={loading}
         sx={{
           color: "#fff",
-          zIndex: (theme: Theme) => theme.zIndex.drawer + 1
+          zIndex: (theme: Theme) => theme.zIndex.drawer + 1,
         }}
       />
     </Layout>
