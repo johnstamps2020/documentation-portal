@@ -9,6 +9,7 @@ import { Resource } from './entity/Resource';
 import { Source } from './entity/Source';
 import { Page } from './entity/Page';
 import { Subject } from './entity/Subject';
+import { ExternalLink } from './entity/ExternalLink';
 
 const dbHost = process.env.CONFIG_DB_HOST;
 const isDevMode = runningInDevMode();
@@ -25,7 +26,17 @@ export const AppDataSource = new DataSource({
   database: process.env.CONFIG_DB_NAME,
   username: process.env.CONFIG_DB_USERNAME,
   password: process.env.CONFIG_DB_PASSWORD,
-  entities: [Build, Doc, Product, Release, Subject, Resource, Source, Page],
+  entities: [
+    Build,
+    Doc,
+    Product,
+    Release,
+    Subject,
+    Resource,
+    Source,
+    Page,
+    ExternalLink,
+  ],
   synchronize: isDevMode,
   cache: {
     duration: 3000, // 3 seconds
