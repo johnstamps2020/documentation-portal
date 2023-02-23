@@ -8,18 +8,6 @@ import { Release } from './entity/Release';
 import { Resource } from './entity/Resource';
 import { Source } from './entity/Source';
 import { Page } from './entity/Page';
-import { PageSelector } from './entity/PageSelector';
-import { Category } from './entity/Category';
-import { CategoryItem } from './entity/CategoryItem';
-import { Item } from './entity/Item';
-import { SubCategory } from './entity/SubCategory';
-import { SubCategoryItem } from './entity/SubCategoryItem';
-import { Section } from './entity/Section';
-import { SectionItem } from './entity/SectionItem';
-import { ProductFamilyItem } from './entity/ProductFamilyItem';
-import { PageSelectorItem } from './entity/PageSelectorItem';
-import { SidebarItem } from './entity/SidebarItem';
-import { Sidebar } from './entity/Sidebar';
 import { Subject } from './entity/Subject';
 
 const dbHost = process.env.CONFIG_DB_HOST;
@@ -37,28 +25,7 @@ export const AppDataSource = new DataSource({
   database: process.env.CONFIG_DB_NAME,
   username: process.env.CONFIG_DB_USERNAME,
   password: process.env.CONFIG_DB_PASSWORD,
-  entities: [
-    Build,
-    Doc,
-    Product,
-    Release,
-    Subject,
-    Resource,
-    Source,
-    Page,
-    PageSelector,
-    PageSelectorItem,
-    Item,
-    Category,
-    CategoryItem,
-    SubCategory,
-    SubCategoryItem,
-    Section,
-    SectionItem,
-    ProductFamilyItem,
-    Sidebar,
-    SidebarItem,
-  ],
+  entities: [Build, Doc, Product, Release, Subject, Resource, Source, Page],
   synchronize: isDevMode,
   cache: {
     duration: 3000, // 3 seconds

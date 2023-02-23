@@ -8,13 +8,12 @@ import { Product } from '../model/entity/Product';
 import { Release } from '../model/entity/Release';
 import { Resource } from '../model/entity/Resource';
 import { Source } from '../model/entity/Source';
-import path, { join, resolve } from 'path';
+import { join, resolve } from 'path';
 import {
   legacyBuildConfig,
   legacyBuildsConfigFile,
   legacyDocConfig,
   legacyDocsConfigFile,
-  legacyItem,
   legacyPageConfig,
   legacySourceConfig,
   legacySourcesConfigFile,
@@ -23,22 +22,8 @@ import {
 import { Build, BuildType } from '../model/entity/Build';
 import { lstatSync, readdirSync, readFileSync } from 'fs';
 import { Page } from '../model/entity/Page';
-import { winstonLogger } from './loggerController';
-import { CategoryItem } from '../model/entity/CategoryItem';
-import { SectionItem } from '../model/entity/SectionItem';
-import { Category } from '../model/entity/Category';
-import { Section } from '../model/entity/Section';
-import { SubCategory } from '../model/entity/SubCategory';
-import { SubCategoryItem } from '../model/entity/SubCategoryItem';
-import { ProductFamilyItem } from '../model/entity/ProductFamilyItem';
-import { Item } from '../model/entity/Item';
-import { PageSelectorItem } from '../model/entity/PageSelectorItem';
-import { PageSelector } from '../model/entity/PageSelector';
-import { SidebarItem } from '../model/entity/SidebarItem';
-import { Sidebar } from '../model/entity/Sidebar';
 import { getConfigFile, listItems } from './s3Controller';
 import { runningInDevMode } from './utils/serverUtils';
-import crypto from 'crypto';
 import { Subject } from '../model/entity/Subject';
 
 export async function getLegacyDocConfigs() {
@@ -278,193 +263,6 @@ function getCompletePageComponent(
   return pageComponent;
 }
 
-async function updateRefsInItem(
-  legacyItem: legacyItem,
-  dbItem: Item,
-  legacyLandingPageConfigs: legacyPageConfig[],
-  rootPath: string
-): Promise<Item> {
-  if (legacyItem.id) {
-    const getDocResult = await findEntity(
-      Doc.name,
-      { id: legacyItem.id },
-      false
-    );
-    if (getDocResult.status === 200) {
-      dbItem.doc = getDocResult.body;
-    }
-  } else if (legacyItem.page) {
-    const pagePath = legacyItem.page;
-    const pagePathWithRoot = path.join(rootPath, pagePath);
-    const relativePagePath = getRelativePagePath(pagePathWithRoot);
-    const getPageResult = await findEntity(
-      Page.name,
-      { path: relativePagePath },
-      false
-    );
-    if (getPageResult.status === 200) {
-      dbItem.page = getPageResult.body;
-    }
-  } else if (legacyItem.link) {
-    dbItem.link = legacyItem.link;
-  }
-  return dbItem;
-}
-
-function createMd5Hash(srcText: string) {
-  return crypto
-    .createHash('md5')
-    .update(srcText)
-    .digest('hex');
-}
-
-async function getOrCreateItems(
-  dbPagePath: string,
-  rootPath: string,
-  legacyItems: legacyItem[],
-  legacyLandingPageConfigs: legacyPageConfig[]
-): Promise<{
-  categories: Category[];
-  sections: Section[];
-  productFamilyItems: ProductFamilyItem[];
-}> {
-  async function getOrCreateSubItems(
-    legacySubItems: legacyItem[],
-    parentItem: Category | Section | SubCategory
-  ): Promise<Item[]> {
-    const dbPageSubItems = [];
-    for (const legacySubItem of legacySubItems) {
-      let dbPageSubItem;
-      let dbPageSubItemRepo;
-      if (parentItem instanceof SubCategory) {
-        dbPageSubItem = new SubCategoryItem();
-        dbPageSubItemRepo = SubCategoryItem.name;
-      } else if (parentItem instanceof Category) {
-        dbPageSubItem = new CategoryItem();
-        dbPageSubItemRepo = CategoryItem.name;
-      } else {
-        dbPageSubItem = new SectionItem();
-        dbPageSubItemRepo = SectionItem.name;
-      }
-      dbPageSubItem.label = legacySubItem.label;
-
-      const dbPageSubItemWithRefs = await updateRefsInItem(
-        legacySubItem,
-        dbPageSubItem,
-        legacyLandingPageConfigs,
-        rootPath
-      );
-      dbPageSubItem.id = createMd5Hash(
-        `${dbPagePath}${parentItem.label}${dbPageSubItem.doc?.url ||
-          dbPageSubItem.page?.path ||
-          dbPageSubItem.link}`
-      );
-      const result = await createOrUpdateEntity(
-        dbPageSubItemRepo,
-        dbPageSubItemWithRefs
-      );
-      dbPageSubItems.push(result.body);
-    }
-    return dbPageSubItems;
-  }
-
-  const dbPageCategories = [];
-  const dbPageSections = [];
-  const dbPageProductFamilyItems = [];
-  for (const legacyItem of legacyItems) {
-    try {
-      if (legacyItem.class?.includes('categoryCard')) {
-        const allLegacyItemItems = legacyItem.items;
-        if (allLegacyItemItems) {
-          const dbPageCategory = new Category();
-          dbPageCategory.label = legacyItem.label;
-          dbPageCategory.id = createMd5Hash(
-            `${dbPagePath}${dbPageCategory.label}`
-          );
-          const legacySubCategoryItems = allLegacyItemItems.filter(
-            i => i.class?.includes('group') && i.items
-          );
-          const legacyCategoryItems = allLegacyItemItems.filter(
-            i => !legacySubCategoryItems.includes(i)
-          );
-          const subCategories = [];
-          if (legacySubCategoryItems) {
-            for (const legacySubCategoryItem of legacySubCategoryItems) {
-              const legacySubCategoryItemItems = legacySubCategoryItem.items;
-              if (legacySubCategoryItemItems) {
-                const subCategory = new SubCategory();
-                subCategory.label = legacySubCategoryItem.label;
-                subCategory.id = createMd5Hash(
-                  `${dbPagePath}${dbPageCategory.label}${subCategory.label}`
-                );
-                subCategory.subCategoryItems = await getOrCreateSubItems(
-                  legacySubCategoryItemItems,
-                  subCategory
-                );
-                const saveResult = await createOrUpdateEntity(
-                  SubCategory.name,
-                  subCategory
-                );
-                subCategories.push(saveResult.body);
-              }
-            }
-            dbPageCategory.subCategories = subCategories;
-          }
-          if (legacyCategoryItems) {
-            dbPageCategory.categoryItems = await getOrCreateSubItems(
-              legacyCategoryItems,
-              dbPageCategory
-            );
-          }
-          const result = await createOrUpdateEntity(
-            Category.name,
-            dbPageCategory
-          );
-          dbPageCategories.push(result.body);
-        }
-      } else if (legacyItem.class?.includes('subject')) {
-        const dbPageSection = new Section();
-        dbPageSection.label = legacyItem.label;
-        dbPageSection.id = createMd5Hash(`${dbPagePath}${dbPageSection.label}`);
-        if (legacyItem.items) {
-          dbPageSection.sectionItems = await getOrCreateSubItems(
-            legacyItem.items,
-            dbPageSection
-          );
-        }
-        const result = await createOrUpdateEntity(Section.name, dbPageSection);
-        dbPageSections.push(result.body);
-      } else if (legacyItem.class?.includes('productFamily')) {
-        const dbPageProductFamilyItem = new ProductFamilyItem();
-        dbPageProductFamilyItem.label = legacyItem.label;
-        const dbPageProductFamilyItemWithRefs = await updateRefsInItem(
-          legacyItem,
-          dbPageProductFamilyItem,
-          legacyLandingPageConfigs,
-          rootPath
-        );
-        dbPageProductFamilyItem.id = createMd5Hash(
-          `${dbPagePath}${dbPageProductFamilyItem.doc?.url ||
-            dbPageProductFamilyItem.page?.path ||
-            dbPageProductFamilyItem.link}`
-        );
-        const result = await createOrUpdateEntity(
-          ProductFamilyItem.name,
-          dbPageProductFamilyItemWithRefs
-        );
-        dbPageProductFamilyItems.push(result.body);
-      }
-    } catch (err) {
-      winstonLogger.error(`Error in item: ${legacyItem.label}, ${err}`);
-    }
-  }
-  return {
-    categories: dbPageCategories,
-    sections: dbPageSections,
-    productFamilyItems: dbPageProductFamilyItems,
-  };
-}
-
 function getRelativePagePath(absPagePath: string): string {
   return absPagePath.split('pages/')[1] || '/';
 }
@@ -580,233 +378,19 @@ export async function putPageConfigsInDatabase() {
     const localLandingPagesConfig = readLocalPageConfigs(
       localLandingPagesConfigDir
     );
-    const pageConfigs = [];
-    for (const page of localLandingPagesConfig) {
-      const dbLandingPage = new Page();
-      const legacyPageAbsPath = page.path;
-      dbLandingPage.path = getRelativePagePath(legacyPageAbsPath);
-      dbLandingPage.title = page.title;
-      dbLandingPage.component = getCompletePageComponent(page, dbLandingPage);
-      dbLandingPage.isInProduction = false;
-      const pageSaveResult = await createOrUpdateEntity(
-        Page.name,
-        dbLandingPage
-      );
-      pageConfigs.push({ legacyPage: page, dbPage: pageSaveResult.body });
-    }
     const dbPageConfigs = [];
     const failedDbPageConfigs = [];
-    for (const pageConfig of pageConfigs) {
-      const legacyPageConfig = pageConfig.legacyPage;
-      const dbPageConfig = pageConfig.dbPage;
-      const legacyPageAbsPath = legacyPageConfig.path;
-      const pageConfigDbPagePath = pageConfig.dbPage.path;
-      if (legacyPageConfig.items) {
-        const allPageItems = await getOrCreateItems(
-          pageConfigDbPagePath,
-          legacyPageAbsPath,
-          legacyPageConfig.items,
-          localLandingPagesConfig
-        );
-        const pageCategories = allPageItems.categories;
-        const pageSections = allPageItems.sections;
-        const pageProductFamilyItems = allPageItems.productFamilyItems;
-        dbPageConfig.categories = [];
-        dbPageConfig.sections = [];
-        dbPageConfig.productFamilyItems = [];
-        if (pageCategories.length > 0) {
-          for (const c of pageCategories) {
-            const result = await createOrUpdateEntity(Category.name, c);
-            dbPageConfig.categories.push(result.body);
-          }
-        } else if (pageSections.length > 0) {
-          for (const s of pageSections) {
-            const result = await createOrUpdateEntity(Section.name, s);
-            dbPageConfig.sections.push(result.body);
-          }
-        } else if (pageProductFamilyItems.length > 0) {
-          for (const p of pageProductFamilyItems) {
-            const result = await createOrUpdateEntity(
-              ProductFamilyItem.name,
-              p
-            );
-            dbPageConfig.productFamilyItems.push(result.body);
-          }
-        }
-      }
-      const legacyPageSelector = legacyPageConfig.selector;
-      if (legacyPageSelector) {
-        const pageSelector = new PageSelector();
-        pageSelector.label = legacyPageSelector.label;
-        pageSelector.id = createMd5Hash(
-          `${pageConfigDbPagePath}${pageSelector.label}`
-        );
-        pageSelector.selectedItemLabel = legacyPageSelector.selectedItem;
-        const pageSelectorItems = [];
-        for (const legacyPageSelectorItem of legacyPageSelector.items) {
-          const pageSelectorItem = new PageSelectorItem();
-          pageSelectorItem.label = legacyPageSelectorItem.label;
-          pageSelectorItem.id = createMd5Hash(
-            `${pageConfigDbPagePath}${pageSelector.label}${pageSelectorItem.label}`
-          );
-          const pageSelectorItemWithRefs = await updateRefsInItem(
-            legacyPageSelectorItem,
-            pageSelectorItem,
-            localLandingPagesConfig,
-            legacyPageAbsPath
-          );
-          const result = await createOrUpdateEntity(
-            PageSelectorItem.name,
-            pageSelectorItemWithRefs
-          );
-          pageSelectorItems.push(result.body);
-        }
-        // Create an item for the currently selected item
-        const currentlySelectedPageSelectorItem = new PageSelectorItem();
-        currentlySelectedPageSelectorItem.label =
-          legacyPageSelector.selectedItem;
-        currentlySelectedPageSelectorItem.id = createMd5Hash(
-          `${pageConfigDbPagePath}${pageSelector.label}${currentlySelectedPageSelectorItem.label}`
-        );
-        currentlySelectedPageSelectorItem.link = '#';
-        const selectedPageSelectorItemSaveResult = await createOrUpdateEntity(
-          PageSelectorItem.name,
-          currentlySelectedPageSelectorItem
-        );
-        pageSelectorItems.push(selectedPageSelectorItemSaveResult.body);
-        pageSelector.pageSelectorItems = pageSelectorItems;
-        const pageSelectorSaveResult = await createOrUpdateEntity(
-          PageSelector.name,
-          pageSelector
-        );
-        dbPageConfig.pageSelector = pageSelectorSaveResult.body;
-      }
-      const legacySearchFilters = legacyPageConfig.search_filters;
+    for (const page of localLandingPagesConfig) {
+      const dbPageConfig = new Page();
+      const legacyPageAbsPath = page.path;
+      dbPageConfig.path = getRelativePagePath(legacyPageAbsPath);
+      dbPageConfig.title = page.title;
+      dbPageConfig.component = getCompletePageComponent(page, dbPageConfig);
+      dbPageConfig.isInProduction = false;
+      const legacySearchFilters = page.search_filters;
       if (legacySearchFilters) {
         dbPageConfig.searchFilters = legacySearchFilters;
       }
-      // Sidebars
-      const sidebar = new Sidebar();
-      sidebar.label = 'Implementation resources';
-      sidebar.id = createMd5Hash(`${pageConfigDbPagePath}${sidebar.label}`);
-
-      if (
-        [
-          'cloudProducts/flaine',
-          'cloudProducts/elysian',
-          'cloudProducts/dobson',
-          'cloudProducts/cortina',
-          'cloudProducts/banff',
-          'cloudProducts/aspen',
-        ].some(p => legacyPageConfig.path.endsWith(p))
-      ) {
-        const guidewireTestingSidebarItem = new SidebarItem();
-        const guidewireTestingPageResult = await findEntity(
-          Page.name,
-          {
-            path: 'testingFramework/elysian',
-          },
-          false
-        );
-        guidewireTestingSidebarItem.label = 'Guidewire Testing';
-        guidewireTestingSidebarItem.page = guidewireTestingPageResult.body;
-        guidewireTestingSidebarItem.id = createMd5Hash(
-          `${pageConfigDbPagePath}${sidebar.label}${guidewireTestingSidebarItem.page.path}`
-        );
-        const guidewireTestingSidebarItemSaveResult = await createOrUpdateEntity(
-          SidebarItem.name,
-          guidewireTestingSidebarItem
-        );
-
-        const apiReferencesSidebarItem = new SidebarItem();
-        const apiReferencesPageResult = await findEntity(
-          Page.name,
-          {
-            path: 'apiReferences',
-          },
-          false
-        );
-        apiReferencesSidebarItem.label = 'API References';
-        apiReferencesSidebarItem.page = apiReferencesPageResult.body;
-        apiReferencesSidebarItem.id = createMd5Hash(
-          `${pageConfigDbPagePath}${sidebar.label}${apiReferencesSidebarItem.page.path}`
-        );
-        const apiReferencesSidebarItemSaveResult = await createOrUpdateEntity(
-          SidebarItem.name,
-          apiReferencesSidebarItem
-        );
-
-        const cloudStandardsSidebarItem = new SidebarItem();
-        const cloudStandardsDocResult = await findEntity(
-          Doc.name,
-          {
-            id: 'standardsdraft',
-          },
-          false
-        );
-        cloudStandardsSidebarItem.label = 'Cloud Standards';
-        cloudStandardsSidebarItem.doc = cloudStandardsDocResult.body;
-        cloudStandardsSidebarItem.id = createMd5Hash(
-          `${pageConfigDbPagePath}${sidebar.label}${cloudStandardsSidebarItem.doc.url}`
-        );
-
-        const cloudStandardsSidebarItemDocSaveResult = await createOrUpdateEntity(
-          SidebarItem.name,
-          cloudStandardsSidebarItem
-        );
-
-        const upgradeDiffsReportsSidebarItem = new SidebarItem();
-        upgradeDiffsReportsSidebarItem.link = '/upgradediffs';
-        upgradeDiffsReportsSidebarItem.label = 'Upgrade Diff Reports';
-        upgradeDiffsReportsSidebarItem.id = createMd5Hash(
-          `${pageConfigDbPagePath}${sidebar.label}${upgradeDiffsReportsSidebarItem.link}`
-        );
-
-        const upgradeDiffsReportsSidebarItemSaveResult = await createOrUpdateEntity(
-          SidebarItem.name,
-          upgradeDiffsReportsSidebarItem
-        );
-
-        const internalDocsSidebarItem = new SidebarItem();
-        internalDocsSidebarItem.link = '/internal-docs';
-        internalDocsSidebarItem.label = 'Internal docs';
-        internalDocsSidebarItem.id = createMd5Hash(
-          `${pageConfigDbPagePath}${sidebar.label}${internalDocsSidebarItem.link}`
-        );
-        const internalDocsSidebarItemSaveResult = await createOrUpdateEntity(
-          SidebarItem.name,
-          internalDocsSidebarItem
-        );
-
-        if (legacyPageConfig.path.endsWith('cloudProducts/flaine')) {
-          sidebar.sidebarItems = [
-            cloudStandardsSidebarItemDocSaveResult.body,
-            upgradeDiffsReportsSidebarItemSaveResult.body,
-            internalDocsSidebarItemSaveResult.body,
-          ];
-        } else if (legacyPageConfig.path.endsWith('cloudProducts/elysian')) {
-          sidebar.sidebarItems = [
-            guidewireTestingSidebarItemSaveResult.body,
-            apiReferencesSidebarItemSaveResult.body,
-            cloudStandardsSidebarItemDocSaveResult.body,
-            upgradeDiffsReportsSidebarItemSaveResult.body,
-            internalDocsSidebarItemSaveResult.body,
-          ];
-        } else {
-          sidebar.sidebarItems = [
-            apiReferencesSidebarItemSaveResult.body,
-            cloudStandardsSidebarItemDocSaveResult.body,
-            upgradeDiffsReportsSidebarItemSaveResult.body,
-            internalDocsSidebarItemSaveResult.body,
-          ];
-        }
-        const sidebarSaveResult = await createOrUpdateEntity(
-          Sidebar.name,
-          sidebar
-        );
-        dbPageConfig.sidebar = sidebarSaveResult.body;
-      }
-
       const result = await createOrUpdateEntity(Page.name, dbPageConfig);
       if (result.status === 200) {
         dbPageConfigs.push(result.body);
