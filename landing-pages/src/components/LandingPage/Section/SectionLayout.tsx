@@ -24,7 +24,7 @@ export default function SectionLayout(pageData: Page) {
     >
       <Grid>
         <Stack spacing={1} direction="column" width="100%">
-          <SelfManagedLink pagePath={pageData.path} backgroundImage=""/>
+          <SelfManagedLink pagePath={pageData.path} backgroundImage="" />
           <Container style={{ padding: 0, margin: "5px 0 0 0" }}>
             <Breadcrumbs pagePath={pageData.path} />
           </Container>
@@ -39,23 +39,9 @@ export default function SectionLayout(pageData: Page) {
           >
             {pageData.title}
           </Typography>
-          {pageData.pageSelector && (
-            <LandingPageSelector
-              pageSelector={pageData.pageSelector}
-              labelColor="black"
-              key={pageData.pageSelector.id}
-            />
-          )}
         </Stack>
       </Grid>
-      <Grid container alignItems="baseline" gap={5} maxWidth="1100px">
-        {pageData.sections?.map(section => (
-          <LandingPageSection {...section} key={section.id} />
-        ))}
-      </Grid>
-      {pageData && pageData.sidebar && (
-        <LandingPageSidebar {...pageData.sidebar} />
-      )}
+      <Grid container alignItems="baseline" gap={5} maxWidth="1100px"></Grid>
     </Grid>
   );
 }

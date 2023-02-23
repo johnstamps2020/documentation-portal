@@ -1,5 +1,4 @@
 import LandingPageItem from "../LandingPageItem";
-import { Section } from "server/dist/model/entity/Section";
 
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
@@ -11,7 +10,7 @@ import puzzlePieceIcon from "../../../images/twoColumn/puzzle-piece-solid.svg";
 import usersCogIcon from "../../../images/twoColumn/users-cog-solid.svg";
 import wrenchIcon from "../../../images/twoColumn/wrench-solid.svg";
 
-export default function LandingPageSection(section: Section) {
+export default function LandingPageSection(section: {}) {
   const iconArray = [
     bookOpenIcon,
     codeIcon,
@@ -48,14 +47,10 @@ export default function LandingPageSection(section: Section) {
             textAlign: "left"
           }}
         >
-          {section.label}
+          Dummy label
         </Typography>
       </Stack>
-      <Stack spacing={1} paddingLeft="40px">
-        {section.sectionItems.map(sectionItem => (
-          <LandingPageItem {...sectionItem} key={sectionItem.id} />
-        ))}
-      </Stack>
+      <Stack spacing={1} paddingLeft="40px"></Stack>
     </Stack>
   );
 }

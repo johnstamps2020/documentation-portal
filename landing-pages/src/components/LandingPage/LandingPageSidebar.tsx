@@ -1,11 +1,9 @@
 import Stack from "@mui/material/Stack";
-import { Sidebar } from "server/dist/model/entity/Sidebar";
-import { SidebarItem } from "server/dist/model/entity/SidebarItem";
 import LandingPageItem from "./LandingPageItem";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 
-export default function LandingPageSidebar(sidebar: Sidebar) {
+export default function LandingPageSidebar(sidebar: {}) {
   return (
     <Paper
       sx={{
@@ -14,17 +12,13 @@ export default function LandingPageSidebar(sidebar: Sidebar) {
         minWidth: "270px",
         width: {
           sm: "fit-content",
-          xs: "100%",
+          xs: "100%"
         },
-        padding: "24px",
+        padding: "24px"
       }}
     >
-      <Typography variant="h2">{sidebar.label}</Typography>
-      <Stack spacing={1}>
-        {sidebar.sidebarItems?.map((sidebarItem: SidebarItem) => (
-          <LandingPageItem {...sidebarItem} key={sidebarItem.id} />
-        ))}
-      </Stack>
+      <Typography variant="h2">Dummy label</Typography>
+      <Stack spacing={1}></Stack>
     </Paper>
   );
 }

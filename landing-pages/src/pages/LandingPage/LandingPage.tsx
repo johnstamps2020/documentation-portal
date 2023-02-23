@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import { Page } from "server/dist/model/entity/Page";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Theme } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import Backdrop from "@mui/material/Backdrop";
@@ -16,6 +16,7 @@ import dobsonBackgroundImage from "../../images/background-dobson.svg";
 import cortinaBackgroundImage from "../../images/background-cortina.svg";
 import banffBackgroundImage from "../../images/background-banff.svg";
 import gradientBackgroundImage from "../../images/background-gradient.svg";
+import { open } from "fs";
 
 export type LandingPageLayoutProps = {
   pageData: Page;
@@ -37,13 +38,15 @@ export default function LandingPage() {
   const [loadingError, setLoadingError] = useState<string | undefined>(
     undefined
   );
-  const [PageComponent, setPageComponent] = useState(<>Loading...</>);
+  const [PageComponent, setPageComponent] = useState<
+    React.LazyExoticComponent<() => JSX.Element>
+  >(lazy(() => import("../landing/cloudProducts/garmisch")));
   useEffect(() => {
     async function getPageData() {
       try {
         setLoading(true);
         const response = await fetch(
-          `/safeConfig/entity/page/data?path=${pagePathFromRouter}`
+          `/safeConfig/entity/Page?path=${pagePathFromRouter}`
         );
         const requestedPath =
           pagePathFromRouter === "/"
@@ -89,9 +92,9 @@ export default function LandingPage() {
   useEffect(() => {
     if (pageData) {
       setPageComponent(() => {
-        const LoadedComponent = lazy(() =>
-          import("../landing/cloudProducts/garmisch")
-        );
+        return lazy(() =>
+          import(`../landing/${pageData.path}`)
+        ) as React.LazyExoticComponent<() => JSX.Element>;
       });
     }
   }, [pageData]);
@@ -106,7 +109,7 @@ export default function LandingPage() {
         xs: `url(${gradientBackgroundImage})`,
         sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
       url(${garmischBackgroundImage}), 
-      linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
+      linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`
       };
     }
     if (pageData?.component?.includes("flaineBackground")) {
@@ -114,31 +117,31 @@ export default function LandingPage() {
         xs: `url(${gradientBackgroundImage})`,
         sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
        url(${flaineBackgroundImage}), 
-       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
+       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`
       };
     }
     if (pageData?.component?.includes("elysianBackground")) {
       return {
         sm: `url(${elysianBackgroundImage})`,
-        xs: `url(${gradientBackgroundImage})`,
+        xs: `url(${gradientBackgroundImage})`
       };
     }
     if (pageData?.component?.includes("dobsonBackground")) {
       return {
         sm: `url(${dobsonBackgroundImage})`,
-        xs: `url(${gradientBackgroundImage})`,
+        xs: `url(${gradientBackgroundImage})`
       };
     }
     if (pageData?.component?.includes("cortinaBackground")) {
       return {
         sm: `url(${cortinaBackgroundImage})`,
-        xs: `url(${gradientBackgroundImage})`,
+        xs: `url(${gradientBackgroundImage})`
       };
     }
     if (pageData?.component?.includes("banffBackground")) {
       return {
         sm: `url(${banffBackgroundImage}), url(${gradientBackgroundImage})`,
-        xs: `url(${gradientBackgroundImage})`,
+        xs: `url(${gradientBackgroundImage})`
       };
     }
     if (pageData?.component?.includes("aspenBackground")) {
@@ -152,7 +155,7 @@ export default function LandingPage() {
     backgroundAttachment: "fixed",
     backgroundPosition: "bottom-right",
     backgroundSize: "cover",
-    minHeight: "100vh",
+    minHeight: "100vh"
   };
 
   return (
@@ -167,35 +170,15 @@ export default function LandingPage() {
             {loadingError}
           </Alert>
         )}
-        {pageData &&
-          pageData.categories.length !== 0 &&
-          (pageData.component?.includes("pageCategory2") ? (
-            <CategoryLayout2
-              pageData={pageData}
-              backgroundProps={backgroundProps}
-            />
-          ) : (
-            <CategoryLayout
-              pageData={pageData}
-              backgroundProps={backgroundProps}
-            />
-          ))}
-
-        {pageData && pageData.sections.length !== 0 && (
-          <SectionLayout {...pageData} />
-        )}
-        {pageData && pageData.productFamilyItems.length !== 0 && (
-          <ProductFamilyLayout
-            pageData={pageData}
-            backgroundProps={backgroundProps}
-          />
-        )}
+        <Suspense fallback={<>Loading...</>}>
+          <PageComponent />
+        </Suspense>
       </>
       <Backdrop
         open={loading}
         sx={{
           color: "#fff",
-          zIndex: (theme: Theme) => theme.zIndex.drawer + 1,
+          zIndex: (theme: Theme) => theme.zIndex.drawer + 1
         }}
       />
     </Layout>

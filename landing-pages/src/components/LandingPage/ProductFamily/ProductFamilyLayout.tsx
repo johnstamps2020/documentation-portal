@@ -7,11 +7,11 @@ import LandingPageSidebar from "../LandingPageSidebar";
 import Stack from "@mui/material/Stack";
 import LandingPageProductFamily from "./LandingPageProductFamily";
 import SelfManagedLink from "../SelfManagedLink";
-import { LandingPageLayoutProps } from "../../../pages/LandingPage/LandingPage"
+import { LandingPageLayoutProps } from "../../../pages/LandingPage/LandingPage";
 
 export default function ProductFamilyLayout({
   pageData,
-  backgroundProps,
+  backgroundProps
 }: LandingPageLayoutProps) {
   return (
     <Grid
@@ -42,25 +42,10 @@ export default function ProductFamilyLayout({
           >
             {pageData.title}
           </Typography>
-          {pageData.pageSelector && (
-            <LandingPageSelector
-              pageSelector={pageData.pageSelector}
-              labelColor="white"
-              key={pageData.pageSelector.id}
-            />
-          )}
         </Stack>
       </Grid>
       <Grid container width="100%" maxWidth="1330px" gap={2}>
-        <Grid container sm={12} md={9} gap={2}>
-          {pageData.productFamilyItems?.map((productFamilyItem) => (
-            <LandingPageProductFamily
-              {...productFamilyItem}
-              key={productFamilyItem.id}
-            />
-          ))}
-        </Grid>
-        {pageData.sidebar && <LandingPageSidebar {...pageData.sidebar} />}
+        <Grid container sm={12} md={9} gap={2}></Grid>
       </Grid>
     </Grid>
   );

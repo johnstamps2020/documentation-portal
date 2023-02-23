@@ -1,4 +1,3 @@
-import { PageSelector } from "server/dist/model/entity/PageSelector";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem/MenuItem";
@@ -6,34 +5,34 @@ import { useNavigate } from "react-router-dom";
 import InputLabel from "@mui/material/InputLabel";
 import { styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
-import { PageSelectorItem } from "server/dist/model/entity/PageSelectorItem";
 
 type LandingPageSelectorProps = {
-  pageSelector: PageSelector;
+  pageSelector: {};
   labelColor: string;
 };
 
-function sortPageSelectorItems(unsortedPageSelectorItems: PageSelectorItem[]) {
-  const isSemVerLabel = unsortedPageSelectorItems.some(
-    i => i.label.search(/^([0-9]+\.[0-9]+\.[0-9]+)$/g) === 0
-  );
-  return isSemVerLabel
-    ? unsortedPageSelectorItems
-        .sort(function(a, b) {
-          const labelA = a.label
-            .split(".")
-            .map(n => +n + 100000)
-            .join(".");
-          const labelB = b.label
-            .split(".")
-            .map(n => +n + 100000)
-            .join(".");
-          return labelA > labelB ? 1 : -1;
-        })
-        .reverse()
-    : unsortedPageSelectorItems
-        .sort((a, b) => (a.label > b.label ? 1 : -1))
-        .reverse();
+function sortPageSelectorItems(unsortedPageSelectorItems: {}[]) {
+  // const isSemVerLabel = unsortedPageSelectorItems.some(
+  //   i => i.label.search(/^([0-9]+\.[0-9]+\.[0-9]+)$/g) === 0
+  // );
+  // return isSemVerLabel
+  //   ? unsortedPageSelectorItems
+  //       .sort(function(a, b) {
+  //         const labelA = a.label
+  //           .split(".")
+  //           .map(n => +n + 100000)
+  //           .join(".");
+  //         const labelB = b.label
+  //           .split(".")
+  //           .map(n => +n + 100000)
+  //           .join(".");
+  //         return labelA > labelB ? 1 : -1;
+  //       })
+  //       .reverse()
+  //   : unsortedPageSelectorItems
+  //       .sort((a, b) => (a.label > b.label ? 1 : -1))
+  //       .reverse();
+  return null;
 }
 
 export default function LandingPageSelector({
@@ -67,24 +66,23 @@ export default function LandingPageSelector({
 
   const navigate = useNavigate();
   const handleChange = (event: SelectChangeEvent) => {
-    const selectedItem = pageSelector.pageSelectorItems.find(
-      i => i.label === event.target.value
-    );
-    if (!selectedItem) {
-      return null;
-    }
-    const itemPage = selectedItem.page;
-    if (itemPage) {
-      return navigate(`/${itemPage.path}`);
-    }
-    const itemLink = selectedItem.link;
-    const targetUrl = itemLink ? itemLink : `/${selectedItem.doc.url}`;
-    return (window.location.href = targetUrl);
+    // const selectedItem = pageSelector.pageSelectorItems.find(
+    //   i => i.label === event.target.value
+    // );
+    // if (!selectedItem) {
+    //   return null;
+    // }
+    // const itemPage = selectedItem.page;
+    // if (itemPage) {
+    //   return navigate(`/${itemPage.path}`);
+    // }
+    // const itemLink = selectedItem.link;
+    // const targetUrl = itemLink ? itemLink : `/${selectedItem.doc.url}`;
+    // return (window.location.href = targetUrl);
+    return null;
   };
 
-  const sortedPageSelectorItems = sortPageSelectorItems(
-    pageSelector.pageSelectorItems
-  );
+  const sortedPageSelectorItems = sortPageSelectorItems([]);
   return (
     <FormControl
       variant="standard"
@@ -98,13 +96,13 @@ export default function LandingPageSelector({
         id="page-selector-label"
         sx={{ color: labelColor, fontSize: 20, fontWeight: 400 }}
       >
-        {pageSelector.label}
+        Dummy label
       </InputLabel>
       <Select
         labelId="page-selector-label"
         id="page-selector"
-        key={pageSelector.label.toLowerCase()}
-        value={pageSelector.selectedItemLabel}
+        key="dummy key"
+        value="dummy value"
         onChange={handleChange}
         input={<PageSelectorInput />}
         renderValue={value => {
@@ -118,18 +116,7 @@ export default function LandingPageSelector({
           borderRadius: 4,
           width: "300px"
         }}
-      >
-        {sortedPageSelectorItems.map(item => (
-          <MenuItem
-            disabled={item.label === pageSelector.selectedItemLabel}
-            value={item.label}
-            key={item.label}
-            sx={{ fontSize: "0.875rem" }}
-          >
-            {item.label}
-          </MenuItem>
-        ))}
-      </Select>
+      ></Select>
     </FormControl>
   );
 }
