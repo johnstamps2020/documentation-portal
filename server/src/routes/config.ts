@@ -8,7 +8,6 @@ import {
   getDocumentMetadataById,
   getEntity,
   getEnv,
-  getPageData,
   getRootBreadcrumb,
   getVersionSelector,
 } from '../controllers/configController';
@@ -121,11 +120,6 @@ router.get('/entity/doc/id', async function(req, res) {
 router.get('/entity/page/breadcrumbs', async function(req, res) {
   const { path } = req.query;
   const { status, body } = await getBreadcrumbs(path as string);
-  return res.status(status).json(body);
-});
-
-router.get('/entity/page/data', async function(req, res) {
-  const { status, body } = await getPageData(req, res);
   return res.status(status).json(body);
 });
 
