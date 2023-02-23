@@ -5,18 +5,13 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { Theme } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import Backdrop from "@mui/material/Backdrop";
-import CategoryLayout from "../../components/LandingPage/Category/CategoryLayout";
-import CategoryLayout2 from "../../components/LandingPage/Category/CategoryLayout2";
-import SectionLayout from "../../components/LandingPage/Section/SectionLayout";
-import ProductFamilyLayout from "../../components/LandingPage/ProductFamily/ProductFamilyLayout";
-import garmischBackgroundImage from "../../images/background-garmisch.png";
 import flaineBackgroundImage from "../../images/background-flaine.svg";
 import elysianBackgroundImage from "../../images/background-elysian.svg";
 import dobsonBackgroundImage from "../../images/background-dobson.svg";
 import cortinaBackgroundImage from "../../images/background-cortina.svg";
 import banffBackgroundImage from "../../images/background-banff.svg";
 import gradientBackgroundImage from "../../images/background-gradient.svg";
-import { open } from "fs";
+import { LandingPageProps } from "../landing";
 
 export type LandingPageLayoutProps = {
   pageData: Page;
@@ -29,6 +24,10 @@ export type LandingPageLayoutProps = {
   };
 };
 
+type LazyPageComponent = React.LazyExoticComponent<
+  React.ComponentType<LandingPageProps>
+>;
+
 export default function LandingPage() {
   const navigate = useNavigate();
   const params = useParams();
@@ -38,9 +37,9 @@ export default function LandingPage() {
   const [loadingError, setLoadingError] = useState<string | undefined>(
     undefined
   );
-  const [PageComponent, setPageComponent] = useState<
-    React.LazyExoticComponent<() => JSX.Element>
-  >(lazy(() => import("../landing/cloudProducts/garmisch")));
+  const [PageComponent, setPageComponent] = useState<LazyPageComponent>(
+    lazy(() => import("../landing/cloudProducts/garmisch")) as LazyPageComponent
+  );
   useEffect(() => {
     async function getPageData() {
       try {
@@ -94,7 +93,7 @@ export default function LandingPage() {
       setPageComponent(() => {
         return lazy(() =>
           import(`../landing/${pageData.path}`)
-        ) as React.LazyExoticComponent<() => JSX.Element>;
+        ) as LazyPageComponent;
       });
     }
   }, [pageData]);
@@ -104,44 +103,36 @@ export default function LandingPage() {
   }
 
   function getBackgroundImage() {
-    if (pageData?.component?.includes("garmischBackground")) {
-      return {
-        xs: `url(${gradientBackgroundImage})`,
-        sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
-      url(${garmischBackgroundImage}), 
-      linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`
-      };
-    }
     if (pageData?.component?.includes("flaineBackground")) {
       return {
         xs: `url(${gradientBackgroundImage})`,
         sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
        url(${flaineBackgroundImage}), 
-       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`
+       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
       };
     }
     if (pageData?.component?.includes("elysianBackground")) {
       return {
         sm: `url(${elysianBackgroundImage})`,
-        xs: `url(${gradientBackgroundImage})`
+        xs: `url(${gradientBackgroundImage})`,
       };
     }
     if (pageData?.component?.includes("dobsonBackground")) {
       return {
         sm: `url(${dobsonBackgroundImage})`,
-        xs: `url(${gradientBackgroundImage})`
+        xs: `url(${gradientBackgroundImage})`,
       };
     }
     if (pageData?.component?.includes("cortinaBackground")) {
       return {
         sm: `url(${cortinaBackgroundImage})`,
-        xs: `url(${gradientBackgroundImage})`
+        xs: `url(${gradientBackgroundImage})`,
       };
     }
     if (pageData?.component?.includes("banffBackground")) {
       return {
         sm: `url(${banffBackgroundImage}), url(${gradientBackgroundImage})`,
-        xs: `url(${gradientBackgroundImage})`
+        xs: `url(${gradientBackgroundImage})`,
       };
     }
     if (pageData?.component?.includes("aspenBackground")) {
@@ -155,7 +146,7 @@ export default function LandingPage() {
     backgroundAttachment: "fixed",
     backgroundPosition: "bottom-right",
     backgroundSize: "cover",
-    minHeight: "100vh"
+    minHeight: "100vh",
   };
 
   return (
@@ -171,14 +162,14 @@ export default function LandingPage() {
           </Alert>
         )}
         <Suspense fallback={<>Loading...</>}>
-          <PageComponent />
+          <PageComponent pageData={pageData} />
         </Suspense>
       </>
       <Backdrop
         open={loading}
         sx={{
           color: "#fff",
-          zIndex: (theme: Theme) => theme.zIndex.drawer + 1
+          zIndex: (theme: Theme) => theme.zIndex.drawer + 1,
         }}
       />
     </Layout>
