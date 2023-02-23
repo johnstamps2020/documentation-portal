@@ -2,7 +2,7 @@ import Button from "@mui/material/Button";
 type FiltersButtonProps = {
   setShowFilters: React.Dispatch<React.SetStateAction<boolean>>;
 };
-export default function FiltersButton({ setShowFilters }: FiltersButtonProps) {
+export default function FilterButton({ setShowFilters }: FiltersButtonProps) {
   return (
     <Button
       variant="outlined"
