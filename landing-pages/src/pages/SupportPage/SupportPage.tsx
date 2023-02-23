@@ -22,6 +22,7 @@ export default function SupportPage() {
             background: "white",
             border: "1px solid gray",
             maxWidth: "1024px",
+            width: { xs: "100%", sm: "100%", md: "950px", lg: "1024px" },
             height: "fit-content",
             boxShadow: "10px 5px 12px rgba(0, 0, 0, 0.3)",
             margin: "auto",
