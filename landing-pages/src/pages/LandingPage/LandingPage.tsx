@@ -143,14 +143,6 @@ export default function LandingPage() {
     return "";
   }
 
-  const backgroundProps = {
-    backgroundImage: getBackgroundImage(),
-    backgroundAttachment: "fixed",
-    backgroundPosition: "bottom-right",
-    backgroundSize: "cover",
-    minHeight: "100vh",
-  };
-
   return (
     <Layout
       title={pageData.title}
