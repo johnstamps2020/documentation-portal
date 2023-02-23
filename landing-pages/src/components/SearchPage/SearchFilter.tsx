@@ -107,7 +107,12 @@ export default function SearchFilter({
                   label={value.label}
                 />
               )}
-              <Chip label={value.doc_count} size="small" variant="filled" />
+              <Chip
+                label={value.doc_count}
+                size="small"
+                variant="outlined"
+                sx={{ border: 0 }}
+              />
             </Stack>
           ))}
         </FormGroup>

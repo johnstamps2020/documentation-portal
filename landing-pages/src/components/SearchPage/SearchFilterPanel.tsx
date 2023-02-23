@@ -67,7 +67,7 @@ export default function SearchFiltersPanel() {
         height: "100vh",
         overflow: "scroll",
         scrollbarWidth: "thin",
-        padding: "16px 16px"
+        padding: { xs: "8px 8px", sm: "16px 16px" }
       }}
     >
       <ButtonGroup

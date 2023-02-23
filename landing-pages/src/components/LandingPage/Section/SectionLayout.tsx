@@ -8,6 +8,7 @@ import LandingPageSidebar from "../LandingPageSidebar";
 import { Page } from "server/dist/model/entity/Page";
 import Stack from "@mui/material/Stack";
 import SelfManagedLink from "../SelfManagedLink";
+import Box from "@mui/material/Box";
 
 export default function SectionLayout(pageData: Page) {
   return (
@@ -19,12 +20,13 @@ export default function SectionLayout(pageData: Page) {
       gap={5}
       alignContent="center"
       sx={{
-        minHeight: "100vh"
+        minHeight: "100vh",
+        backgroundColor: "hsl(0, 0%, 98%)"
       }}
     >
-      <Grid>
+      <Grid xs={12} lg={8}>
         <Stack spacing={1} direction="column" width="100%">
-          <SelfManagedLink pagePath={pageData.path} backgroundImage=""/>
+          <SelfManagedLink pagePath={pageData.path} backgroundImage="" />
           <Container style={{ padding: 0, margin: "5px 0 0 0" }}>
             <Breadcrumbs pagePath={pageData.path} />
           </Container>
@@ -48,11 +50,11 @@ export default function SectionLayout(pageData: Page) {
           )}
         </Stack>
       </Grid>
-      <Grid container alignItems="baseline" gap={5} maxWidth="1100px">
-        {pageData.sections?.map(section => (
+      <Box sx={{ columnCount: { xs: 1, md: 2 }, maxWidth: "950px" }}>
+        {pageData.sections?.map((section) => (
           <LandingPageSection {...section} key={section.id} />
         ))}
-      </Grid>
+      </Box>
       {pageData && pageData.sidebar && (
         <LandingPageSidebar {...pageData.sidebar} />
       )}

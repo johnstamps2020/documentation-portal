@@ -21,7 +21,7 @@ const commonProps = {
 const bigSizeProps = {
   ...commonProps,
   height: "45px",
-  width: "760px",
+  width: "100%",
   maxWidth: "760px"
 };
 

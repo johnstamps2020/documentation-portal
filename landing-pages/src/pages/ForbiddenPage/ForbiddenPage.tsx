@@ -28,7 +28,7 @@ export default function ForbiddenPage() {
             height: "fit-content",
             boxShadow: "10px 5px 12px rgba(0, 0, 0, 0.3)",
             margin: "auto",
-            padding: "4rem 3rem"
+            padding: {xs: "2rem", sm: "4rem 3rem"}
           }}
         >
           <Stack spacing={6}>
