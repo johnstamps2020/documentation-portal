@@ -4711,9 +4711,8 @@ object GwBuildSteps {
             }
 
             GwDitaOutputFormats.PDF.formatName -> {
-                commandParams.add(Pair("-f", "pdf_Guidewire_remote"))
-                commandParams.add(Pair("--git.url", gitUrl))
-                commandParams.add(Pair("--git.branch", gitBranch))
+                commandParams.add(Pair("-f", "pdf2_Guidewire"))
+                commandParams.add(Pair("--ah.remote", "true"))
             }
 
             GwDitaOutputFormats.SINGLEHTML.formatName -> {
