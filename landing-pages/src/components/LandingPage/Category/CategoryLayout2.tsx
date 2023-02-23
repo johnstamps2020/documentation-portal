@@ -12,13 +12,14 @@ import { LandingPageLayoutProps } from "../../../pages/LandingPage/LandingPage";
 
 export default function CategoryLayout2({
   pageData,
-  backgroundProps
+  backgroundProps,
+  pageSelector,
 }: LandingPageLayoutProps) {
   return (
     <Grid
       sx={{
         ...backgroundProps,
-        flexWrap: { breakpointsTheme: "wrap", sm: "nowrap" }
+        flexWrap: { breakpointsTheme: "wrap", sm: "nowrap" },
       }}
       container
       alignContent="center"
@@ -40,6 +41,7 @@ export default function CategoryLayout2({
           <Container style={{ padding: 0, margin: "5px 0 0 0" }}>
             <Breadcrumbs pagePath={pageData.path} />
           </Container>
+          {pageSelector && <LandingPageSelector {...pageSelector} />}
         </Stack>
         <SelfManagedLink
           pagePath={pageData.path}

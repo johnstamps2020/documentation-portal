@@ -12,6 +12,7 @@ import cortinaBackgroundImage from "../../images/background-cortina.svg";
 import banffBackgroundImage from "../../images/background-banff.svg";
 import gradientBackgroundImage from "../../images/background-gradient.svg";
 import { LandingPageProps } from "../landing";
+import { LandingPageSelectorProps } from "../../components/LandingPage/LandingPageSelector";
 
 export type LandingPageLayoutProps = {
   pageData: Page;
@@ -22,6 +23,7 @@ export type LandingPageLayoutProps = {
     backgroundSize: string;
     minHeight: string;
   };
+  pageSelector: LandingPageSelectorProps;
 };
 
 type LazyPageComponent = React.LazyExoticComponent<

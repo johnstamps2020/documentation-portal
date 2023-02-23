@@ -91,7 +91,10 @@ export default function WhatsNew({ path }: WhatsNewProps) {
           >
             {contentFlaine.map((feature) => {
               return (
-                <li style={{ marginBottom: "0.5rem", fontSize: "0.875rem" }}>
+                <li
+                  style={{ marginBottom: "0.5rem", fontSize: "0.875rem" }}
+                  key={feature}
+                >
                   {feature}
                 </li>
               );

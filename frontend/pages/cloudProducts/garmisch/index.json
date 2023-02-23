@@ -83,6 +83,10 @@
         {
           "label": "Digital Reference Applications",
           "page": "dx-ref-apps"
+        },
+        {
+          "label": "Global Content Reference Applications",
+          "page": "global-ref-apps"
         }
       ]
     },
@@ -124,10 +128,6 @@
         },
         {
           "label": "Data Studio (Early Access)",
-          "id": "datastudiodraft"
-        },
-        {
-          "label": "Data Studio (Early Access)",
           "id": "datastudiorelease"
         }
       ]
@@ -157,11 +157,6 @@
           "id": "isrestapiclientguide"
         },
         {
-          "label": "Jutro Digital Platform (Early Access)",
-          "page": "jutroDigitalPlatform",
-          "env": ["staging"]
-        },
-        {
           "label": "Guidewire Testing",
           "page": "../../testingFramework/garmisch"
         },
@@ -170,25 +165,9 @@
           "id": "worksetmgr"
         }
       ]
-    },
-    {
-      "label": "Global Content",
-      "class": "categoryCard cardShadow",
-      "items": [
-        {
-          "label": "London Market",
-          "page": "../../globalContent/iplm/garmisch"
-        },
-        {
-          "label": "UK Market",
-          "page": "../../globalContent/ipuk/1.1"
-        }
-      ]
     }
   ],
   "search_filters": {
-    "platform": [
-      "Cloud"
-    ]
+    "platform": ["Cloud"]
   }
 }

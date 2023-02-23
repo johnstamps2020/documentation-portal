@@ -6,106 +6,107 @@ import InputLabel from "@mui/material/InputLabel";
 import { styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 
-type LandingPageSelectorProps = {
-  pageSelector: {};
+type PageSelectorItem = {
+  label: string;
+  href: string;
+};
+
+export type LandingPageSelectorProps = {
+  label: string;
+  selectedItemLabel: string;
+  items: PageSelectorItem[];
   labelColor: string;
 };
 
-function sortPageSelectorItems(unsortedPageSelectorItems: {}[]) {
-  // const isSemVerLabel = unsortedPageSelectorItems.some(
-  //   i => i.label.search(/^([0-9]+\.[0-9]+\.[0-9]+)$/g) === 0
-  // );
-  // return isSemVerLabel
-  //   ? unsortedPageSelectorItems
-  //       .sort(function(a, b) {
-  //         const labelA = a.label
-  //           .split(".")
-  //           .map(n => +n + 100000)
-  //           .join(".");
-  //         const labelB = b.label
-  //           .split(".")
-  //           .map(n => +n + 100000)
-  //           .join(".");
-  //         return labelA > labelB ? 1 : -1;
-  //       })
-  //       .reverse()
-  //   : unsortedPageSelectorItems
-  //       .sort((a, b) => (a.label > b.label ? 1 : -1))
-  //       .reverse();
-  return null;
+function sortPageSelectorItems(unsortedPageSelectorItems: PageSelectorItem[]) {
+  const isSemVerLabel = unsortedPageSelectorItems.some(
+    (i) => i.label.search(/^([0-9]+\.[0-9]+\.[0-9]+)$/g) === 0
+  );
+  return isSemVerLabel
+    ? unsortedPageSelectorItems
+        .sort(function(a, b) {
+          const labelA = a.label
+            .split(".")
+            .map((n) => +n + 100000)
+            .join(".");
+          const labelB = b.label
+            .split(".")
+            .map((n) => +n + 100000)
+            .join(".");
+          return labelA > labelB ? 1 : -1;
+        })
+        .reverse()
+    : unsortedPageSelectorItems
+        .sort((a, b) => (a.label > b.label ? 1 : -1))
+        .reverse();
 }
 
-export default function LandingPageSelector({
-  pageSelector,
-  labelColor
-}: LandingPageSelectorProps) {
-  const PageSelectorInput = styled(InputBase)(({ theme }) => ({
-    "label + &": {
-      marginTop: theme.spacing(3)
-    },
-    "& .MuiInputBase-input": {
+const PageSelectorInput = styled(InputBase)(({ theme }) => ({
+  "label + &": {
+    marginTop: theme.spacing(3),
+  },
+  "& .MuiInputBase-input": {
+    borderRadius: 4,
+    position: "relative",
+    border: "1px solid #ced4da",
+    fontSize: "0.875rem",
+    padding: "4px 12px",
+    minWidth: "300px",
+    textAlign: "left",
+    marginLeft: 0,
+    marginRight: "auto",
+    width: "300px",
+    backgroundColor: "white",
+    "&:focus": {
       borderRadius: 4,
-      position: "relative",
-      border: "1px solid #ced4da",
-      fontSize: "0.875rem",
-      padding: "4px 12px",
-      minWidth: "300px",
-      textAlign: "left",
-      marginLeft: 0,
-      marginRight: "auto",
-      width: "300px",
+      borderColor: "#80bdff",
+      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.25)",
       backgroundColor: "white",
-      "&:focus": {
-        borderRadius: 4,
-        borderColor: "#80bdff",
-        boxShadow: "0 0 0 0.2rem rgba(0,123,255,.25)",
-        backgroundColor: "white"
-      }
-    }
-  }));
+    },
+  },
+}));
 
+export default function LandingPageSelector({
+  items,
+  label,
+  selectedItemLabel,
+  labelColor,
+}: LandingPageSelectorProps) {
   const navigate = useNavigate();
   const handleChange = (event: SelectChangeEvent) => {
-    // const selectedItem = pageSelector.pageSelectorItems.find(
-    //   i => i.label === event.target.value
-    // );
-    // if (!selectedItem) {
-    //   return null;
-    // }
-    // const itemPage = selectedItem.page;
-    // if (itemPage) {
-    //   return navigate(`/${itemPage.path}`);
-    // }
-    // const itemLink = selectedItem.link;
-    // const targetUrl = itemLink ? itemLink : `/${selectedItem.doc.url}`;
-    // return (window.location.href = targetUrl);
-    return null;
+    const selectedItem = items.find((i) => i.label === event.target.value);
+
+    if (!selectedItem) {
+      return null;
+    }
+
+    return (window.location.href = selectedItem.href);
   };
 
-  const sortedPageSelectorItems = sortPageSelectorItems([]);
+  const sortedPageSelectorItems = sortPageSelectorItems(items);
+
   return (
     <FormControl
       variant="standard"
       sx={{
         marginTop: "10px",
         alignItems: "left",
-        width: "300px"
+        width: "300px",
       }}
     >
       <InputLabel
         id="page-selector-label"
         sx={{ color: labelColor, fontSize: 20, fontWeight: 400 }}
       >
-        Dummy label
+        {label}
       </InputLabel>
       <Select
         labelId="page-selector-label"
         id="page-selector"
-        key="dummy key"
-        value="dummy value"
+        value={items.length > 0 ? selectedItemLabel : ""}
         onChange={handleChange}
         input={<PageSelectorInput />}
-        renderValue={value => {
+        renderValue={(value) => {
           return value;
         }}
         sx={{
@@ -114,9 +115,20 @@ export default function LandingPageSelector({
           marginRight: "auto",
           backgroundColor: "white",
           borderRadius: 4,
-          width: "300px"
+          width: "300px",
         }}
-      ></Select>
+      >
+        {sortedPageSelectorItems.map((item) => (
+          <MenuItem
+            disabled={item.label === selectedItemLabel}
+            value={item.label}
+            key={item.label}
+            sx={{ fontSize: "0.875rem" }}
+          >
+            {item.label}
+          </MenuItem>
+        ))}
+      </Select>
     </FormControl>
   );
 }
