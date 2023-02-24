@@ -10,7 +10,7 @@ import SelfManagedLink from "../SelfManagedLink";
 import WhatsNew from "../WhatsNew";
 import {
   LandingPageItem,
-  LandingPageLayoutProps,
+  LandingPageLayoutProps
 } from "../../../pages/LandingPage/LandingPage";
 
 export type CategoryLayout2Props = LandingPageLayoutProps & {
@@ -23,13 +23,13 @@ export type CategoryLayout2Props = LandingPageLayoutProps & {
 export default function CategoryLayout2({
   backgroundProps,
   pageSelector,
-  items,
+  items
 }: CategoryLayout2Props) {
   return (
     <Grid
       sx={{
         ...backgroundProps,
-        flexWrap: { breakpointsTheme: "wrap", sm: "nowrap" },
+        flexWrap: { breakpointsTheme: "wrap", sm: "nowrap" }
       }}
       container
       alignContent="center"
@@ -99,7 +99,14 @@ export default function CategoryLayout2({
             xs={9}
             columnGap="24px"
             rowGap="32px"
-          ></Grid>
+          >
+            {items.map(
+              item =>
+                item.items.length > 0 && (
+                  <LandingPageCategory2 {...item} key={item.label} />
+                )
+            )}
+          </Grid>
           <Grid></Grid>
         </Grid>
       </Grid>

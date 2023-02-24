@@ -2,7 +2,7 @@ import { Page } from "server/dist/model/entity/Page";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
 
-class PageError {
+export class PageError {
   status: number;
   message: string;
   redirectUrl?: string;
@@ -67,6 +67,6 @@ export function usePageData() {
   return {
     pageData: data,
     isLoading,
-    isError: error,
+    isError: error
   };
 }
