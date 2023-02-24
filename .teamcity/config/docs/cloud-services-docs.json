@@ -6,9 +6,9 @@
       "title": "Guidewire Rules Release Notes",
       "url": "cloud/gwrulesrn",
       "metadata": {
-        "product": ["Rules"],
+        "product": ["Rules", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["latest"],
+        "version": ["2023.02"],
         "release": ["Flaine"],
         "subject": ["Release notes"]
       },
@@ -24,9 +24,9 @@
       "title": "Guidewire Rules",
       "url": "cloud/gwrules",
       "metadata": {
-        "product": ["Rules"],
+        "product": ["Rules", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["latest"],
+        "version": ["2023.02"],
         "release": ["Flaine"],
         "subject": ["Configuration"]
       },
@@ -42,9 +42,9 @@
       "title": "Guidewire Rules Type Manager",
       "url": "cloud/gwrulestypemgr",
       "metadata": {
-        "product": ["Rules"],
+        "product": ["Rules", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["latest"],
+        "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Configuration"]
       },
@@ -60,9 +60,9 @@
       "title": "Submission Intake",
       "url": "cloud/subintake",
       "metadata": {
-        "product": ["Submission Intake"],
+        "product": ["Submission Intake", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["latest"],
+        "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Features and functionality"]
       },
@@ -78,9 +78,9 @@
       "title": "Submission Intake Configuration",
       "url": "cloud/subintakeconfig",
       "metadata": {
-        "product": ["Submission Intake"],
+        "product": ["Submission Intake", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["latest"],
+        "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Configuration"]
       },
@@ -96,15 +96,15 @@
       "title": "Submission Intake Configuration LXD",
       "url": "cloud/subintakeconfiglxd",
       "metadata": {
-        "product": ["Submission Intake"],
+        "product": ["Submission Intake", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["latest"],
+        "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Configuration"]
       },
       "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
       "public": false,
       "internal": false,
       "earlyAccess": false
