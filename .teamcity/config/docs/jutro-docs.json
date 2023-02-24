@@ -315,7 +315,7 @@
       "title": "Jutro Playground",
       "url": "jutro/playground/next",
       "metadata": {
-        "product": ["Jutro Playground"],
+        "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
         "version": ["next"],
         "subject": ["Best practices"]
@@ -332,7 +332,7 @@
       "title": "Jutro Plasmic",
       "url": "jutro/plasmic/next",
       "metadata": {
-        "product": ["Jutro Plasmic"],
+        "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
         "version": ["next"],
         "subject": ["Best practices"]
@@ -349,7 +349,7 @@
       "title": "Jutro SDK",
       "url": "jutro/sdk/next",
       "metadata": {
-        "product": ["Jutro SDK"],
+        "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
         "version": ["next"],
         "subject": ["Best practices"]
@@ -366,7 +366,7 @@
       "title": "Jutro SDK",
       "url": "jutro/sdk/flaine",
       "metadata": {
-        "product": ["Jutro SDK"],
+        "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
         "version": ["Flaine"],
         "subject": ["Best practices"],
