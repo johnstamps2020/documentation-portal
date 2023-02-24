@@ -1,6 +1,6 @@
-import React from "react";
-import Header from "./Header/Header";
+import Header, { headerHeight } from "./Header/Header";
 import Footer from "./Footer";
+import Box from "@mui/material/Box";
 
 export type HeaderOptions = {
   searchFilters?: { [key: string]: string[] };
@@ -9,7 +9,7 @@ export type HeaderOptions = {
 };
 
 type LayoutProps = {
-  children: JSX.Element | JSX.Element[];
+  children: JSX.Element[] | JSX.Element;
   title: string;
   headerOptions?: HeaderOptions;
   path?: string;
@@ -19,13 +19,21 @@ export default function Layout({
   children,
   title,
   headerOptions,
-  path
+  path,
 }: LayoutProps) {
   document.title = `${title} | Guidewire Documentation`;
   return (
     <div>
       <Header {...headerOptions} />
-      <main>{children}</main>
+      <main>
+        <Box
+          sx={{
+            minHeight: { xs: "auto", sm: `calc(100vh - ${headerHeight})` },
+          }}
+        >
+          {children}
+        </Box>
+      </main>
       <Footer path={path} />
     </div>
   );
