@@ -29,7 +29,7 @@
         "version": ["latest"],
         "locale": "it-IT"
       },
-      "environments": ["dev"],
+      "environments": ["staging"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
