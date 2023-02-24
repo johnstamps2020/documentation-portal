@@ -8,8 +8,9 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
-        "version": ["latest"]
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "locale": "it-IT"
       },
       "environments": ["staging"],
       "indexForSearch": true,
@@ -24,8 +25,9 @@
       "displayOnLandingPages": false,
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
-        "version": ["latest"]
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "locale": "it-IT"
       },
       "environments": ["dev"],
       "indexForSearch": true,
