@@ -1,4 +1,5 @@
 import { Page } from "server/dist/model/entity/Page";
+import { useParams } from "react-router-dom";
 import useSWR from "swr";
 
 class PageError {
@@ -48,7 +49,16 @@ const pageGetter = async (pagePath: string) => {
   return jsonData;
 };
 
-export function usePageData(pagePath: string) {
+export function usePagePath() {
+  const params = useParams();
+  const pagePath: string =
+    params["*"] && params["*"] !== "" ? params["*"] : "/";
+
+  return pagePath;
+}
+
+export function usePageData() {
+  const pagePath = usePagePath();
   const { data, error, isLoading } = useSWR<Page, PageError>(
     pagePath,
     pageGetter

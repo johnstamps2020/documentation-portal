@@ -11,11 +11,17 @@ import Paper from "@mui/material/Paper";
 import { Link as RouterLink } from "react-router-dom";
 import Link from "@mui/material/Link";
 import { LandingPageLayoutProps } from "../../../pages/LandingPage/LandingPage";
+import { usePageData } from "../../../hooks/usePageData";
 
 export default function CategoryLayout({
-  pageData,
-  backgroundProps
+  backgroundProps,
 }: LandingPageLayoutProps) {
+  const { pageData, isLoading, isError } = usePageData();
+
+  if (isLoading || isError || !pageData) {
+    return null;
+  }
+
   return (
     <Grid
       sx={{ ...backgroundProps }}
@@ -33,7 +39,7 @@ export default function CategoryLayout({
             backgroundImage={backgroundProps.backgroundImage}
           />
           <Container style={{ padding: 0, margin: "5px 0 0 0" }}>
-            <Breadcrumbs pagePath={pageData.path} />
+            <Breadcrumbs />
           </Container>
           <Typography
             variant="h1"
@@ -52,7 +58,7 @@ export default function CategoryLayout({
               maxWidth: { md: "932px", sm: "100%" },
               marginTop: "32px",
               padding: "16px",
-              textAlign: "center"
+              textAlign: "center",
             }}
           >
             <Link
@@ -61,7 +67,7 @@ export default function CategoryLayout({
               sx={{
                 fontSize: "1.2rem",
                 fontWeight: 600,
-                color: "hsl(196, 100%, 31%);"
+                color: "hsl(196, 100%, 31%);",
               }}
             >
               What's new in Elysian
@@ -76,7 +82,7 @@ export default function CategoryLayout({
           gap={2}
           sx={{
             minWidth: { xs: "100%", sm: "616px", md: "932px" },
-            maxWidth: "932px"
+            maxWidth: "932px",
           }}
         ></Grid>
       </Grid>

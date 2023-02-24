@@ -8,13 +8,23 @@ import LandingPageSidebar2 from "../LandingPageSidebar2";
 import Stack from "@mui/material/Stack";
 import SelfManagedLink from "../SelfManagedLink";
 import WhatsNew from "../WhatsNew";
-import { LandingPageLayoutProps } from "../../../pages/LandingPage/LandingPage";
+import {
+  LandingPageItem,
+  LandingPageLayoutProps,
+} from "../../../pages/LandingPage/LandingPage";
+
+export type CategoryLayout2Props = LandingPageLayoutProps & {
+  items: {
+    label: string;
+    items: LandingPageItem[];
+  }[];
+};
 
 export default function CategoryLayout2({
-  pageData,
   backgroundProps,
   pageSelector,
-}: LandingPageLayoutProps) {
+  items,
+}: CategoryLayout2Props) {
   return (
     <Grid
       sx={{
@@ -39,15 +49,15 @@ export default function CategoryLayout2({
       >
         <Stack spacing={1} direction="column" width="100%">
           <Container style={{ padding: 0, margin: "5px 0 0 0" }}>
-            <Breadcrumbs pagePath={pageData.path} />
+            <Breadcrumbs />
           </Container>
           {pageSelector && <LandingPageSelector {...pageSelector} />}
         </Stack>
         <SelfManagedLink
-          pagePath={pageData.path}
+          pagePath="haha"
           backgroundImage={backgroundProps.backgroundImage}
         />
-        <WhatsNew path={pageData.path} />
+        <WhatsNew path="hehe" />
       </Grid>
       <Grid
         container

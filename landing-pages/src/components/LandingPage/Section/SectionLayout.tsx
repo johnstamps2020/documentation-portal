@@ -21,14 +21,14 @@ export default function SectionLayout(pageData: Page) {
       alignContent="center"
       sx={{
         minHeight: "100vh",
-        backgroundColor: "hsl(0, 0%, 98%)"
+        backgroundColor: "hsl(0, 0%, 98%)",
       }}
     >
       <Grid xs={12} lg={8}>
         <Stack spacing={1} direction="column" width="100%">
           <SelfManagedLink pagePath={pageData.path} backgroundImage="" />
           <Container style={{ padding: 0, margin: "5px 0 0 0" }}>
-            <Breadcrumbs pagePath={pageData.path} />
+            <Breadcrumbs />
           </Container>
           <Typography
             sx={{
@@ -36,7 +36,7 @@ export default function SectionLayout(pageData: Page) {
               textAlign: "left",
               color: "black",
               fontWeight: 600,
-              marginTop: 0
+              marginTop: 0,
             }}
           >
             {pageData.title}

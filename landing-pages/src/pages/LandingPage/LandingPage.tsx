@@ -17,7 +17,7 @@ import { LandingPageSelectorProps } from "../../components/LandingPage/LandingPa
 import { usePageData } from "../../hooks/usePageData";
 
 export type LandingPageLayoutProps = {
-  pageData: Page;
+  pageData?: Page;
   backgroundProps: {
     backgroundImage: any;
     backgroundAttachment: string;
@@ -28,17 +28,20 @@ export type LandingPageLayoutProps = {
   pageSelector: LandingPageSelectorProps;
 };
 
+export type LandingPageItem = {
+  label?: string;
+  docId?: string;
+  pagePath?: string;
+  url?: string;
+};
+
 type LazyPageComponent = React.LazyExoticComponent<
   React.ComponentType<LandingPageProps>
 >;
 
 export default function LandingPage() {
   const navigate = useNavigate();
-  const params = useParams();
-  const pagePathFromRouter: string =
-    params["*"] && params["*"] !== "" ? params["*"] : "/";
-
-  const { pageData, isError, isLoading } = usePageData(pagePathFromRouter);
+  const { pageData, isError, isLoading } = usePageData();
 
   if (isError?.redirectUrl) {
     navigate(isError.redirectUrl);
@@ -111,7 +114,7 @@ export default function LandingPage() {
       <Suspense
         fallback={<Skeleton variant="rounded" width="100%" height="100vh" />}
       >
-        <PageComponent pageData={pageData} />
+        <PageComponent title={pageData.title} />
       </Suspense>
       <Backdrop
         open={isLoading}

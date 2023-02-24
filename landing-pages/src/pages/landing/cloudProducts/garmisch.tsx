@@ -3,183 +3,151 @@ import {
   LandingPageProps,
   useReleasePageSelectorProps,
 } from "..";
-import CategoryLayout2 from "../../../components/LandingPage/Category/CategoryLayout2";
+import CategoryLayout2, {
+  CategoryLayout2Props,
+} from "../../../components/LandingPage/Category/CategoryLayout2";
 import gradientBackgroundImage from "../../../images/background-gradient.svg";
 import garmischBackgroundImage from "./background-garmisch.png";
 
-const docs = [
+const docs: CategoryLayout2Props["items"] = [
   {
     label: "Platform",
-    class: "categoryCard cardShadow",
     items: [
       {
         label: "Cloud Home",
-        id: "gchhelprelease",
+        docId: "gchhelprelease",
       },
       {
         label: "Cloud Platform",
-        page: "../cloudConsole",
+        pagePath: "../cloudConsole",
       },
       {
         label: "Data Platform",
-        id: "dataplatform",
+        docId: "dataplatform",
       },
       {
         label: "Cloud Data Access",
-        page: "../cloudDataAccess/latest",
+        pagePath: "../cloudDataAccess/latest",
       },
       {
         label: "Workflow Service (Early Access)",
-        page: "../workflowservice",
+        pagePath: "../workflowservice",
       },
     ],
   },
   {
     label: "Applications",
-    class: "categoryCard cardShadow",
     items: [
       {
         label: "PolicyCenter",
-        page: "pcGwCloud/2023.02",
+        pagePath: "pcGwCloud/2023.02",
       },
       {
         label: "ClaimCenter",
-        page: "ccGwCloud/2023.02",
+        pagePath: "ccGwCloud/2023.02",
       },
       {
         label: "BillingCenter",
-        page: "bcGwCloud/2023.02",
+        pagePath: "bcGwCloud/2023.02",
       },
       {
         label: "InsuranceNow",
-        page: "insuranceNow/2023.1",
+        pagePath: "insuranceNow/2023.1",
       },
       {
         label: "Digital Reference Applications",
-        page: "dx-ref-apps",
+        pagePath: "dx-ref-apps",
       },
       {
         label: "Global Content Reference Applications",
-        page: "global-ref-apps",
+        pagePath: "global-ref-apps",
       },
     ],
   },
   {
     label: "Analytics",
-    class: "categoryCard cardShadow",
     items: [
       {
         label: "DataHub",
-        page: "dhGwCloud/2023.02",
+        pagePath: "dhGwCloud/2023.02",
       },
       {
         label: "InfoCenter",
-        page: "icGwCloud/2023.02",
+        pagePath: "icGwCloud/2023.02",
       },
       {
         label: "Explore",
-        page: "../explore/latest",
+        pagePath: "../explore/latest",
       },
       {
         label: "Canvas",
-        id: "canvas",
+        docId: "canvas",
       },
       {
         label: "Compare",
-        id: "comparelatest",
+        docId: "comparelatest",
       },
       {
         label: "HazardHub",
-        link: "/hazardhub/HazardHub_Intro_gw.pdf",
+        url: "/hazardhub/HazardHub_Intro_gw.pdf",
       },
       {
         label: "Predict",
-        id: "livepredictlatest",
+        docId: "livepredictlatest",
       },
       {
         label: "Cyence Cyber",
-        page: "../cyence",
+        pagePath: "../cyence",
       },
       {
         label: "Data Studio (Early Access)",
-        id: "datastudiorelease",
+        docId: "datastudiorelease",
       },
     ],
   },
   {
     label: "Developer Resources",
-    class: "categoryCard cardShadow",
     items: [
       {
         label: "Advanced Product Designer App",
-        page: "apd",
+        pagePath: "apd",
       },
       {
         label: "API References",
-        page: "../../apiReferences/garmisch",
+        pagePath: "../../apiReferences/garmisch",
       },
       {
         label: "Integration Gateway",
-        id: "integgatewaydevlatest",
+        docId: "integgatewaydevlatest",
       },
       {
         label: "App Events",
-        id: "appeventsdev",
+        docId: "appeventsdev",
       },
       {
         label: "REST API Client",
-        id: "isrestapiclientguide",
+        docId: "isrestapiclientguide",
       },
       {
         label: "Guidewire Testing",
-        page: "../../testingFramework/garmisch",
+        pagePath: "../../testingFramework/garmisch",
       },
       {
         label: "Workset Manager",
-        id: "worksetmgr",
+        docId: "worksetmgr",
       },
     ],
   },
 ];
 
 const other = {
-  selector: {
-    label: "Select release",
-    selectedItem: "Garmisch",
-    items: [
-      {
-        label: "Flaine",
-        page: "../flaine",
-      },
-      {
-        label: "Elysian",
-        page: "../elysian",
-      },
-      {
-        label: "Dobson",
-        page: "../dobson",
-      },
-      {
-        label: "Cortina",
-        page: "../cortina",
-      },
-      {
-        label: "Banff",
-        page: "../banff",
-      },
-      {
-        label: "Aspen",
-        page: "../aspen",
-      },
-    ],
-  },
   search_filters: {
     platform: ["Cloud"],
   },
 };
 
-export default function Garmisch({ pageData }: LandingPageProps) {
-  const pageSelectorProps = useReleasePageSelectorProps(pageData.title);
+export default function Garmisch({ title }: LandingPageProps) {
+  const pageSelectorProps = useReleasePageSelectorProps(title);
   const backgroundImage = {
     xs: `url(${gradientBackgroundImage})`,
     sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
@@ -189,7 +157,7 @@ export default function Garmisch({ pageData }: LandingPageProps) {
 
   return (
     <CategoryLayout2
-      pageData={pageData}
+      items={docs}
       backgroundProps={{ ...baseBackgroundProps, backgroundImage }}
       pageSelector={pageSelectorProps}
     />

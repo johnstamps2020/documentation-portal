@@ -8,11 +8,17 @@ import Stack from "@mui/material/Stack";
 import LandingPageProductFamily from "./LandingPageProductFamily";
 import SelfManagedLink from "../SelfManagedLink";
 import { LandingPageLayoutProps } from "../../../pages/LandingPage/LandingPage";
+import { usePageData } from "../../../hooks/usePageData";
 
 export default function ProductFamilyLayout({
-  pageData,
-  backgroundProps
+  backgroundProps,
 }: LandingPageLayoutProps) {
+  const { pageData, isError, isLoading } = usePageData();
+
+  if (isError || isLoading || !pageData) {
+    return null;
+  }
+
   return (
     <Grid
       sx={{ ...backgroundProps }}
@@ -30,7 +36,7 @@ export default function ProductFamilyLayout({
             backgroundImage={backgroundProps.backgroundImage}
           />
           <Container style={{ padding: 0, margin: "5px 0 0 0" }}>
-            <Breadcrumbs pagePath={pageData.path} />
+            <Breadcrumbs />
           </Container>
           <Typography
             variant="h1"

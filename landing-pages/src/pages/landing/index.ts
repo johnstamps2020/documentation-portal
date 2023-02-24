@@ -4,7 +4,7 @@ import { LandingPageSelectorProps } from "../../components/LandingPage/LandingPa
 import { useReleases } from "../../hooks/useReleases";
 
 export type LandingPageProps = {
-  pageData: Page;
+  title: string;
 };
 
 export const baseBackgroundProps = {
