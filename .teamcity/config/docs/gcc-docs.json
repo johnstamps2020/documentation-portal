@@ -6,7 +6,7 @@
       "title": "Runtime Properties API",
       "url": "cloud/console/runtimepropertiesapi",
       "metadata": {
-        "product": ["Guidewire Cloud Console"],
+        "product": ["Cloud Platform"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "subject": ["Development"]
@@ -23,7 +23,7 @@
       "title": "Repository Settings API",
       "url": "cloud/console/repositorysettingsapi",
       "metadata": {
-        "product": ["Guidewire Cloud Console"],
+        "product": ["Cloud Platform"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "subject": ["Development"]
@@ -40,7 +40,7 @@
       "title": "Cloud Console API",
       "url": "cloud/console/cloudconsoleapi",
       "metadata": {
-        "product": ["Guidewire Cloud Console"],
+        "product": ["Cloud Platform"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "subject": ["Development"]
@@ -57,7 +57,7 @@
       "title": "Database Service API",
       "url": "cloud/console/dbserviceapi",
       "metadata": {
-        "product": ["Guidewire Cloud Console"],
+        "product": ["Cloud Platform"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "subject": ["Development"]
@@ -77,7 +77,7 @@
       "indexForSearch": true,
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
+        "product": ["Cloud Platform"],
         "version": ["latest"]
       },
       "environments": ["staging", "prod"],
@@ -91,7 +91,7 @@
       "url": "cloud/gcc-guide/insurer-developer/latest/topics/c_provisioning-cloud-console.html",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
+        "product": ["Cloud Platform"],
         "version": ["latest"]
       },
       "environments": ["staging", "prod"],
@@ -107,7 +107,7 @@
       "url": "cloud/gcc-guide/insurer-developer/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
+        "product": ["Cloud Platform"],
         "version": ["latest"]
       },
       "environments": ["staging", "prod"],
@@ -125,7 +125,7 @@
       "indexForSearch": true,
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
+        "product": ["Cloud Platform"],
         "version": ["latest"]
       },
       "environments": ["staging", "prod"],
@@ -141,7 +141,7 @@
       "indexForSearch": false,
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
+        "product": ["Cloud Platform"],
         "version": ["latest"]
       },
       "environments": ["staging"],
@@ -156,7 +156,7 @@
       "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
+        "product": ["Cloud Platform"],
         "version": ["latest"]
       },
       "environments": ["staging"],
