@@ -140,7 +140,7 @@ const docs: CategoryLayout2Props["items"] = [
     ]
   }
 ];
-const whatsNewInfo: CategoryLayout2Props["whatsNewInfo"] = {
+const whatsNew: CategoryLayout2Props["whatsNewInfo"] = {
   label: "Garmisch",
   badge: garmischBadge,
   item: { label: "Learn more", docId: "whatsnewgarmisch" },
@@ -152,28 +152,51 @@ const whatsNewInfo: CategoryLayout2Props["whatsNewInfo"] = {
     "Just kidding! Content coming soon."
   ]
 };
-
-const other = {
-  search_filters: {
-    platform: ["Cloud"]
+const sidebar: CategoryLayout2Props["sidebar"] = {
+  label: "Implementation Resources",
+  items: [
+    {
+      label: "Community Case Templates",
+      docId: "cloudtickettemplates"
+    },
+    {
+      label: "Product Adoption",
+      docId: "surepathmethodologymain"
+    },
+    {
+      label: "Cloud Standards",
+      docId: "standardslatest"
+    },
+    {
+      label: "Upgrade Diff Reports",
+      pagePath: "upgradediffs"
+    },
+    {
+      label: "Internal docs",
+      docId: "internaldocslatest"
+    }
+  ]
+};
+const backgroundProps: CategoryLayout2Props["backgroundProps"] = {
+  ...baseBackgroundProps,
+  backgroundImage: {
+    xs: `url(${gradientBackgroundImage})`,
+    sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
+  url(${garmischBackgroundImage}), 
+  linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`
   }
 };
 
 export default function Garmisch({ title }: LandingPageProps) {
   const pageSelectorProps = useReleasePageSelectorProps(title);
-  const backgroundImage = {
-    xs: `url(${gradientBackgroundImage})`,
-    sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
-  url(${garmischBackgroundImage}), 
-  linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`
-  };
 
   return (
     <CategoryLayout2
       items={docs}
-      whatsNewInfo={whatsNewInfo}
-      backgroundProps={{ ...baseBackgroundProps, backgroundImage }}
+      whatsNewInfo={whatsNew}
+      backgroundProps={backgroundProps}
       pageSelector={pageSelectorProps}
+      sidebar={sidebar}
     />
   );
 }

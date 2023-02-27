@@ -9,6 +9,7 @@ import CategoryLayout2, {
 import gradientBackgroundImage from "../../../images/background-gradient.svg";
 import flaineBadge from "../../../images/badge-flaine.svg";
 import flaineBackgroundImage from "../../../images/background-flaine.svg";
+import garmischBackgroundImage from "../../../images/background-garmisch.png";
 
 const docs: CategoryLayout2Props["items"] = [
   {
@@ -140,7 +141,7 @@ const docs: CategoryLayout2Props["items"] = [
     ]
   }
 ];
-const whatsNewInfo: CategoryLayout2Props["whatsNewInfo"] = {
+const whatsNew: CategoryLayout2Props["whatsNewInfo"] = {
   label: "Flaine",
   badge: flaineBadge,
   item: { label: "Learn more", docId: "whatsnewflaine" },
@@ -156,28 +157,51 @@ const whatsNewInfo: CategoryLayout2Props["whatsNewInfo"] = {
     "Advanced monitoring and observability"
   ]
 };
-
-const other = {
-  search_filters: {
-    platform: ["Cloud"]
+const sidebar: CategoryLayout2Props["sidebar"] = {
+  label: "Implementation Resources",
+  items: [
+    {
+      label: "Community Case Templates",
+      docId: "cloudtickettemplates"
+    },
+    {
+      label: "Product Adoption",
+      docId: "surepathmethodologymain"
+    },
+    {
+      label: "Cloud Standards",
+      docId: "standardslatest"
+    },
+    {
+      label: "Upgrade Diff Reports",
+      pagePath: "upgradediffs"
+    },
+    {
+      label: "Internal docs",
+      docId: "internaldocslatest"
+    }
+  ]
+};
+const backgroundProps: CategoryLayout2Props["backgroundProps"] = {
+  ...baseBackgroundProps,
+  backgroundImage: {
+    xs: `url(${gradientBackgroundImage})`,
+    sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
+       url(${flaineBackgroundImage}), 
+       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`
   }
 };
 
 export default function Flaine({ title }: LandingPageProps) {
   const pageSelectorProps = useReleasePageSelectorProps(title);
-  const backgroundImage = {
-    xs: `url(${gradientBackgroundImage})`,
-    sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
-       url(${flaineBackgroundImage}), 
-       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`
-  };
 
   return (
     <CategoryLayout2
       items={docs}
-      whatsNewInfo={whatsNewInfo}
-      backgroundProps={{ ...baseBackgroundProps, backgroundImage }}
+      whatsNewInfo={whatsNew}
+      backgroundProps={backgroundProps}
       pageSelector={pageSelectorProps}
+      sidebar={sidebar}
     />
   );
 }

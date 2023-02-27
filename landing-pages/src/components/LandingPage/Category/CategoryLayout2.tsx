@@ -24,6 +24,7 @@ export type CategoryLayout2Props = LandingPageLayoutProps & {
 export default function CategoryLayout2({
   backgroundProps,
   pageSelector,
+  sidebar,
   items,
   whatsNewInfo
 }: CategoryLayout2Props) {
@@ -109,7 +110,15 @@ export default function CategoryLayout2({
                 )
             )}
           </Grid>
-          <Grid></Grid>
+          <Grid>
+            {sidebar ? (
+              <LandingPageSidebar2 {...sidebar} />
+            ) : (
+              <div
+                style={{ minHeight: 180, minWidth: 280, padding: "24px" }}
+              ></div>
+            )}
+          </Grid>
         </Grid>
       </Grid>
     </Grid>

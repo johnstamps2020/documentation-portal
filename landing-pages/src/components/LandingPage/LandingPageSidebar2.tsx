@@ -3,8 +3,13 @@ import LandingPageItem2 from "./LandingPageItem2";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import Divider from "@mui/material/Divider";
+import { LandingPageItem } from "../../pages/LandingPage/LandingPage";
 
-export default function LandingPageSidebar(sidebar: {}) {
+export type SidebarProps = {
+  label: string;
+  items: LandingPageItem[];
+};
+export default function LandingPageSidebar2({ label, items }: SidebarProps) {
   return (
     <Paper
       sx={{
@@ -19,13 +24,17 @@ export default function LandingPageSidebar(sidebar: {}) {
       }}
     >
       <Typography variant="h2" sx={{ fontSize: "1.25rem", fontWeight: "600" }}>
-        Dummy label
+        {label}
       </Typography>
       <Divider />
       <Stack
         spacing={1}
         sx={{ spacing: 1, fontSize: "0.875rem", color: "black" }}
-      ></Stack>
+      >
+        {items.map(sidebarItem => (
+          <LandingPageItem2 {...sidebarItem} key={sidebarItem.label} />
+        ))}
+      </Stack>
     </Paper>
   );
 }
