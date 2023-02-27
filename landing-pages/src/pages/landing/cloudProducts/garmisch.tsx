@@ -136,8 +136,8 @@ const docs: CategoryLayout2Props['items'] = [
     ],
   },
 ];
-const whatsNew: CategoryLayout2Props['whatsNewInfo'] = {
-  label: 'Garmisch',
+const whatsNew: CategoryLayout2Props["whatsNew"] = {
+  label: "Garmisch",
   badge: garmischBadge,
   item: { label: 'Learn more', docId: 'whatsnewgarmisch' },
   content: [
@@ -187,7 +187,7 @@ export default function Garmisch() {
   return (
     <CategoryLayout2
       items={docs}
-      whatsNewInfo={whatsNew}
+      whatsNew={whatsNew}
       backgroundProps={backgroundProps}
       sidebar={sidebar}
     />
