@@ -18,14 +18,14 @@ import { usePageData } from "../../hooks/usePageData";
 
 export type LandingPageLayoutProps = {
   pageData?: Page;
+  pageSelector?: LandingPageSelectorProps;
   backgroundProps: {
-    backgroundImage: any;
+    backgroundImage?: any;
     backgroundAttachment: string;
     backgroundPosition: string;
     backgroundSize: string;
     minHeight: string;
   };
-  pageSelector: LandingPageSelectorProps;
 };
 
 export type LandingPageItem = {
@@ -65,31 +65,31 @@ export default function LandingPage() {
         xs: `url(${gradientBackgroundImage})`,
         sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
        url(${flaineBackgroundImage}), 
-       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`
+       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
       };
     }
     if (pageData?.component?.includes("elysianBackground")) {
       return {
         sm: `url(${elysianBackgroundImage})`,
-        xs: `url(${gradientBackgroundImage})`
+        xs: `url(${gradientBackgroundImage})`,
       };
     }
     if (pageData?.component?.includes("dobsonBackground")) {
       return {
         sm: `url(${dobsonBackgroundImage})`,
-        xs: `url(${gradientBackgroundImage})`
+        xs: `url(${gradientBackgroundImage})`,
       };
     }
     if (pageData?.component?.includes("cortinaBackground")) {
       return {
         sm: `url(${cortinaBackgroundImage})`,
-        xs: `url(${gradientBackgroundImage})`
+        xs: `url(${gradientBackgroundImage})`,
       };
     }
     if (pageData?.component?.includes("banffBackground")) {
       return {
         sm: `url(${banffBackgroundImage}), url(${gradientBackgroundImage})`,
-        xs: `url(${gradientBackgroundImage})`
+        xs: `url(${gradientBackgroundImage})`,
       };
     }
     if (pageData?.component?.includes("aspenBackground")) {
@@ -120,7 +120,7 @@ export default function LandingPage() {
         open={isLoading}
         sx={{
           color: "#fff",
-          zIndex: (theme: Theme) => theme.zIndex.drawer + 1
+          zIndex: (theme: Theme) => theme.zIndex.drawer + 1,
         }}
       />
     </Layout>

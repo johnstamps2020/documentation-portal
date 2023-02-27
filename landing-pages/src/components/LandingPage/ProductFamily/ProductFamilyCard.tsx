@@ -2,7 +2,13 @@ import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import { Link as RouterLink } from "react-router-dom";
 
-export default function LandingPageProductFamily(productFamilyItem: {}) {
+type ProductFamilyCardProps = {
+  children: JSX.Element | JSX.Element[] | undefined;
+};
+
+export default function LandingPageProductFamily({
+  children,
+}: ProductFamilyCardProps) {
   return (
     <Paper
       sx={{
@@ -11,8 +17,10 @@ export default function LandingPageProductFamily(productFamilyItem: {}) {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
       }}
-    ></Paper>
+    >
+      {children}
+    </Paper>
   );
 }

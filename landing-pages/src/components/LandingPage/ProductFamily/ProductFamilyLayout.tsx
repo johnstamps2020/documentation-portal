@@ -5,19 +5,33 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import LandingPageSidebar from "../LandingPageSidebar";
 import Stack from "@mui/material/Stack";
-import LandingPageProductFamily from "./LandingPageProductFamily";
+import ProductFamilyCard from "./ProductFamilyCard";
 import SelfManagedLink from "../SelfManagedLink";
-import { LandingPageLayoutProps } from "../../../pages/LandingPage/LandingPage";
+import {
+  LandingPageItem,
+  LandingPageLayoutProps,
+} from "../../../pages/LandingPage/LandingPage";
 import { usePageData } from "../../../hooks/usePageData";
+import LandingPageLink from "../LandingPageLink";
+
+type ProductFamilyLayoutProps = LandingPageLayoutProps & {
+  items: LandingPageItem[];
+};
 
 export default function ProductFamilyLayout({
   backgroundProps,
-}: LandingPageLayoutProps) {
+  items,
+}: ProductFamilyLayoutProps) {
   const { pageData, isError, isLoading } = usePageData();
 
   if (isError || isLoading || !pageData) {
     return null;
   }
+
+  const linkStyles = {
+    fontSize: 20,
+    fontWeight: 800,
+  };
 
   return (
     <Grid
@@ -51,7 +65,13 @@ export default function ProductFamilyLayout({
         </Stack>
       </Grid>
       <Grid container width="100%" maxWidth="1330px" gap={2}>
-        <Grid container sm={12} md={9} gap={2}></Grid>
+        <Grid container sm={12} md={9} gap={2}>
+          {items.map((item, key) => (
+            <ProductFamilyCard key={key}>
+              <LandingPageLink item={item} sx={linkStyles} />
+            </ProductFamilyCard>
+          ))}
+        </Grid>
       </Grid>
     </Grid>
   );
