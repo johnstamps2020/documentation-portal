@@ -9,6 +9,7 @@ type LandingPageItemData = {
   path?: string;
   internal: boolean;
   earlyAccess: boolean;
+  isInProduction: boolean;
 };
 
 const landingPageItemGetter = async (
@@ -41,6 +42,6 @@ export function useLandingPageItemData(item: LandingPageItem) {
   return {
     landingPageItemData: data,
     isLoading,
-    isError: error
+    isError: error,
   };
 }
