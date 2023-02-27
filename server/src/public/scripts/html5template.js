@@ -16,7 +16,7 @@ import { addLightbox } from './modules/lightbox.js';
 import { addEarlyAccessMark } from './modules/earlyAccess.js';
 import '../stylesheets/html5template.css';
 
-docReady(async function() {
+docReady(async function () {
   normalizeCode();
   addSkipNav();
   showTopicRecommendations();

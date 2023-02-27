@@ -1,21 +1,21 @@
-import Button from "@mui/material/Button";
-import React from "react";
-import iconAvatar from "../../../images/icon-avatar.svg";
+import Button from '@mui/material/Button';
+import React from 'react';
+import iconAvatar from '../../../images/icon-avatar.svg';
 import {
   HeaderAvatar,
   HeaderIconButton,
   HeaderMenu,
   HeaderMenuDivider,
   HeaderMenuSubtitle,
-  HeaderMenuTitle
-} from "../StyledLayoutComponents";
-import Link from "@mui/material/Link";
-import { Link as RouterLink } from "react-router-dom";
-import { useUser } from "../../../context/UserContext";
-import Drawer from "@mui/material/Drawer";
-import LoginOptions from "../../LoginPage/LoginOptions";
-import Stack from "@mui/material/Stack";
-import LogoutOption from "./LogoutOption";
+  HeaderMenuTitle,
+} from '../StyledLayoutComponents';
+import Link from '@mui/material/Link';
+import { Link as RouterLink } from 'react-router-dom';
+import { useUser } from '../../../context/UserContext';
+import Drawer from '@mui/material/Drawer';
+import LoginOptions from '../../LoginPage/LoginOptions';
+import Stack from '@mui/material/Stack';
+import LogoutOption from './LogoutOption';
 
 export default function UserProfile() {
   const { userInfo } = useUser();
@@ -33,9 +33,9 @@ export default function UserProfile() {
   function toggleLoginDrawer(open: boolean) {
     return (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
       ) {
         return;
       }
@@ -44,7 +44,7 @@ export default function UserProfile() {
   }
 
   function LoginButton() {
-    const anchor = "right";
+    const anchor = 'right';
     return (
       <>
         <Button onClick={toggleLoginDrawer(true)} variant="contained">
@@ -54,7 +54,7 @@ export default function UserProfile() {
           anchor={anchor}
           open={loginDrawer}
           onClose={toggleLoginDrawer(false)}
-          PaperProps={{ sx: { justifyContent: "center" } }}
+          PaperProps={{ sx: { justifyContent: 'center' } }}
         >
           <Stack alignItems="center" spacing={4} margin="16px">
             <LoginOptions />

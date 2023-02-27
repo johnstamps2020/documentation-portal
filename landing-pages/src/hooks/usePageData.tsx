@@ -1,6 +1,6 @@
-import { Page } from "server/dist/model/entity/Page";
-import { useParams } from "react-router-dom";
-import useSWR from "swr";
+import { Page } from 'server/dist/model/entity/Page';
+import { useParams } from 'react-router-dom';
+import useSWR from 'swr';
 
 export class PageError {
   status: number;
@@ -28,7 +28,7 @@ function getRedirectUrl(requestedPath: string, status: number) {
 
 const pageGetter = async (pagePath: string) => {
   const response = await fetch(`/safeConfig/entity/Page?path=${pagePath}`);
-  const requestedPath = pagePath === "/" ? pagePath : `/landing/${pagePath}`;
+  const requestedPath = pagePath === '/' ? pagePath : `/landing/${pagePath}`;
   const { status } = response;
   const jsonData = await response.json();
   if (!response.ok) {
@@ -52,7 +52,7 @@ const pageGetter = async (pagePath: string) => {
 export function usePagePath() {
   const params = useParams();
   const pagePath: string =
-    params["*"] && params["*"] !== "" ? params["*"] : "/";
+    params['*'] && params['*'] !== '' ? params['*'] : '/';
 
   return pagePath;
 }
@@ -67,6 +67,6 @@ export function usePageData() {
   return {
     pageData: data,
     isLoading,
-    isError: error
+    isError: error,
   };
 }

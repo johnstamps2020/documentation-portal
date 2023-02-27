@@ -92,7 +92,7 @@ export async function addLightbox() {
       const thumbnailDeepCopy = lightboxElem.cloneNode(true);
       const isImage = lightboxElem.tagName.toLowerCase() === 'img';
       if (isImage) {
-        ['width', 'height'].forEach(attrName =>
+        ['width', 'height'].forEach((attrName) =>
           thumbnailDeepCopy.removeAttribute(attrName)
         );
       }

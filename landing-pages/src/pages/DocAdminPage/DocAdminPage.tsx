@@ -1,26 +1,26 @@
-import React, { createContext, useEffect, useState } from "react";
-import { Doc } from "server/dist/model/entity/Doc";
-import { Build } from "server/dist/model/entity/Build";
-import Button from "@mui/material/Button";
-import Layout from "../../components/Layout/Layout";
-import DocForm from "../../components/DocForm/DocForm";
-import { Product } from "server/dist/model/entity/Product";
-import { Release } from "server/dist/model/entity/Release";
-import { Subject } from "server/dist/model/entity/Subject";
-import Modal from "@mui/material/Modal";
-import Snackbar from "@mui/material/Snackbar";
-import Alert from "@mui/material/Alert";
-import Skeleton from "@mui/material/Skeleton";
-import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
-import { ThemeProvider } from "@mui/material";
-import { adminDocTheme } from "../../themes/adminDocTheme";
+import React, { createContext, useEffect, useState } from 'react';
+import { Doc } from 'server/dist/model/entity/Doc';
+import { Build } from 'server/dist/model/entity/Build';
+import Button from '@mui/material/Button';
+import Layout from '../../components/Layout/Layout';
+import DocForm from '../../components/DocForm/DocForm';
+import { Product } from 'server/dist/model/entity/Product';
+import { Release } from 'server/dist/model/entity/Release';
+import { Subject } from 'server/dist/model/entity/Subject';
+import Modal from '@mui/material/Modal';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+import Skeleton from '@mui/material/Skeleton';
+import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
+import { ThemeProvider } from '@mui/material';
+import { adminDocTheme } from '../../themes/adminDocTheme';
 
 const emptyDoc: Doc = {
-  id: "",
-  title: "",
-  url: "",
-  body: "",
+  id: '',
+  title: '',
+  url: '',
+  body: '',
   products: [new Product()],
   releases: [new Release()],
   displayOnLandingPages: false,
@@ -30,7 +30,7 @@ const emptyDoc: Doc = {
   earlyAccess: false,
   build: new Build(),
   subjects: [new Subject()],
-  isInProduction: false
+  isInProduction: false,
 };
 
 export default function DocAdminPage() {
@@ -38,9 +38,9 @@ export default function DocAdminPage() {
   const [memorizedDoc, memorizeDoc] = useState<Doc>(emptyDoc);
   const [showForm, setShowForm] = useState(false);
   const [snack, setSnack] = useState({
-    message: "",
-    color: "",
-    open: false
+    message: '',
+    color: '',
+    open: false,
   });
   const SnackbarContext = createContext({});
   const [open, setOpen] = React.useState(false);
@@ -59,45 +59,45 @@ export default function DocAdminPage() {
 
   const deleteDoc = async (id: string) => {
     setSnack({
-      message: "",
-      color: "",
-      open: false
+      message: '',
+      color: '',
+      open: false,
     });
     const data = {
-      id: id
+      id: id,
     };
     const response = await fetch(`/safeConfig/entity/Doc?id=${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
-        Accept: "application/form-data",
-        "Content-Type": "application/json"
+        Accept: 'application/form-data',
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     });
     if (response.ok) {
       setSnack({
-        message: "Successfully deleted document.",
-        color: "green",
-        open: true
+        message: 'Successfully deleted document.',
+        color: 'green',
+        open: true,
       });
       getDocData();
     } else {
       setSnack({
-        message: "Oops, something went wrong while deleting document.",
-        color: "red",
-        open: true
+        message: 'Oops, something went wrong while deleting document.',
+        color: 'red',
+        open: true,
       });
     }
   };
 
   const updateDoc = async (doc: Doc) => {
     setSnack({
-      message: "",
-      color: "",
-      open: false
+      message: '',
+      color: '',
+      open: false,
     });
     //updating document
-    if (doc && docData && docData.find(document => document.id === doc.id)) {
+    if (doc && docData && docData.find((document) => document.id === doc.id)) {
       const data = {
         id: doc.id,
         title: doc.title,
@@ -111,32 +111,32 @@ export default function DocAdminPage() {
         releases: doc.releases,
         subjects: doc.subjects,
         categories: null,
-        body: doc.body
+        body: doc.body,
       };
 
       const response = await fetch(`/safeConfig/entity/Doc?id=${doc.id}`, {
-        method: "PUT",
+        method: 'PUT',
         body: JSON.stringify(data),
         headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        }
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
       });
 
       const result = await response.json();
-      console.log("result is: ", JSON.stringify(result, null, 4));
+      console.log('result is: ', JSON.stringify(result, null, 4));
       if (response.ok) {
         setSnack({
-          message: "Successfully updated document.",
-          color: "green",
-          open: true
+          message: 'Successfully updated document.',
+          color: 'green',
+          open: true,
         });
         getDocData();
       } else {
         setSnack({
-          message: "Oops, something went wrong while updating document.",
-          color: "red",
-          open: true
+          message: 'Oops, something went wrong while updating document.',
+          color: 'red',
+          open: true,
         });
       }
     }
@@ -155,31 +155,31 @@ export default function DocAdminPage() {
         releases: doc.releases,
         subjects: doc.subjects,
         categories: null,
-        body: doc.body
+        body: doc.body,
       };
       const response = await fetch(`/safeConfig/entity/Doc?id=`, {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify(data),
         headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        }
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
       });
 
       const result = await response.json();
-      console.log("result is: ", JSON.stringify(result, null, 4));
+      console.log('result is: ', JSON.stringify(result, null, 4));
       if (response.ok) {
         setSnack({
-          message: "Successfully added new document.",
-          color: "green",
-          open: true
+          message: 'Successfully added new document.',
+          color: 'green',
+          open: true,
         });
         getDocData();
       } else {
         setSnack({
-          message: "Oops, something went wrong while adding new document.",
-          color: "red",
-          open: true
+          message: 'Oops, something went wrong while adding new document.',
+          color: 'red',
+          open: true,
         });
       }
     }
@@ -200,7 +200,7 @@ export default function DocAdminPage() {
     <ThemeProvider theme={adminDocTheme}>
       <Layout title="Manage docs">
         <div>
-          <Button size={"large"} onClick={handleCreateNew}>
+          <Button size={'large'} onClick={handleCreateNew}>
             Add new document
           </Button>
         </div>
@@ -214,14 +214,14 @@ export default function DocAdminPage() {
                     width: 400,
                     height: 400,
                     marginBottom: 15,
-                    breakInside: "avoid"
+                    breakInside: 'avoid',
                   }}
                 >
                   <div>{doc.title}</div>
                   <div>ID: {doc.id}</div>
                   <div>URL: {doc.url}</div>
                   <div>
-                    Display on landing pages:{" "}
+                    Display on landing pages:{' '}
                     {String(doc.displayOnLandingPages)}
                   </div>
                   <div>Index for search: {String(doc.indexForSearch)}</div>
@@ -244,50 +244,50 @@ export default function DocAdminPage() {
               <Stack>
                 <Skeleton variant="text" width={400} height={40} />
                 <Skeleton variant="rectangular" width={400} height={300} />
-                <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
                   <Skeleton
                     variant="rounded"
                     width={200}
                     height={50}
-                    sx={{ margin: "2%" }}
+                    sx={{ margin: '2%' }}
                   />
                   <Skeleton
                     variant="rounded"
                     width={200}
                     height={50}
-                    sx={{ margin: "2%" }}
-                  />
-                </Box>
-                <Skeleton variant="text" width={400} height={40} />
-                <Skeleton variant="rectangular" width={400} height={300} />
-                <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <Skeleton
-                    variant="rounded"
-                    width={200}
-                    height={50}
-                    sx={{ margin: "2%" }}
-                  />
-                  <Skeleton
-                    variant="rounded"
-                    width={200}
-                    height={50}
-                    sx={{ margin: "2%" }}
+                    sx={{ margin: '2%' }}
                   />
                 </Box>
                 <Skeleton variant="text" width={400} height={40} />
                 <Skeleton variant="rectangular" width={400} height={300} />
-                <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
                   <Skeleton
                     variant="rounded"
                     width={200}
                     height={50}
-                    sx={{ margin: "2%" }}
+                    sx={{ margin: '2%' }}
                   />
                   <Skeleton
                     variant="rounded"
                     width={200}
                     height={50}
-                    sx={{ margin: "2%" }}
+                    sx={{ margin: '2%' }}
+                  />
+                </Box>
+                <Skeleton variant="text" width={400} height={40} />
+                <Skeleton variant="rectangular" width={400} height={300} />
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Skeleton
+                    variant="rounded"
+                    width={200}
+                    height={50}
+                    sx={{ margin: '2%' }}
+                  />
+                  <Skeleton
+                    variant="rounded"
+                    width={200}
+                    height={50}
+                    sx={{ margin: '2%' }}
                   />
                 </Box>
               </Stack>
@@ -306,7 +306,7 @@ export default function DocAdminPage() {
           <SnackbarContext.Provider value={{ snack }}>
             <Snackbar
               open={snack.open}
-              onClose={() => setSnack({ message: "", color: "", open: false })}
+              onClose={() => setSnack({ message: '', color: '', open: false })}
             >
               <Alert>{snack.message}</Alert>
             </Snackbar>

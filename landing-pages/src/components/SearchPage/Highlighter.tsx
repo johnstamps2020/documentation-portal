@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import highlightIcon from "../../images/icon-highlighter.svg";
-import { useSearch } from "../../context/SearchContext";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import Tooltip from "@mui/material/Tooltip";
-import GlobalStyles from "@mui/material/GlobalStyles";
+import React, { useEffect, useState } from 'react';
+import highlightIcon from '../../images/icon-highlighter.svg';
+import { useSearch } from '../../context/SearchContext';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import Tooltip from '@mui/material/Tooltip';
+import GlobalStyles from '@mui/material/GlobalStyles';
 
 export default function Highlighter() {
   const { searchData } = useSearch();
@@ -13,7 +13,7 @@ export default function Highlighter() {
 
   useEffect(() => {
     if (searchData) {
-      setHighlight("enabled");
+      setHighlight('enabled');
     } else {
       setHighlight(null);
     }
@@ -24,10 +24,10 @@ export default function Highlighter() {
     highlightSearchPhrase: string | null
   ) {
     const highlightedElements = document.getElementsByClassName(
-      "searchResultHighlight"
+      'searchResultHighlight'
     );
     for (const highlightedElement of highlightedElements) {
-      highlightedElement.classList.toggle("highlighted");
+      highlightedElement.classList.toggle('highlighted');
     }
     setHighlight(highlightSearchPhrase);
   }
@@ -39,7 +39,7 @@ export default function Highlighter() {
   return (
     <>
       <GlobalStyles
-        styles={{ ".highlighted": { backgroundColor: "hsl(60, 100%, 77%)" } }}
+        styles={{ '.highlighted': { backgroundColor: 'hsl(60, 100%, 77%)' } }}
       />
       <ToggleButtonGroup
         color="primary"
@@ -60,7 +60,11 @@ export default function Highlighter() {
               alt="highlighter-icon"
               height="24px"
               onClick={() => setHighlightedIcon(!highlightedIcon)}
-              style={{backgroundColor: highlightedIcon ? "hsl(60, 100%, 77%)" : "hsl(100, 100%, 100%)" }}
+              style={{
+                backgroundColor: highlightedIcon
+                  ? 'hsl(60, 100%, 77%)'
+                  : 'hsl(100, 100%, 100%)',
+              }}
             />
           </Tooltip>
         </ToggleButton>

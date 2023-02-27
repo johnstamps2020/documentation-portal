@@ -1,7 +1,7 @@
-import Alert from "@mui/material/Alert/Alert";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import { useSearch } from "../../context/SearchContext";
+import Alert from '@mui/material/Alert/Alert';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import { useSearch } from '../../context/SearchContext';
 
 export default function LoadingSearchDataErrorAlert() {
   const { loadingSearchDataError } = useSearch();

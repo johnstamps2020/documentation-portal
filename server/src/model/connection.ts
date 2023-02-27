@@ -15,8 +15,9 @@ const dbHost = process.env.CONFIG_DB_HOST;
 const isDevMode = runningInDevMode();
 
 winstonLogger.notice(
-  `Connecting to database at ${dbHost}.${isDevMode &&
-    ' >>WARNING: Running in dev mode<<'}`
+  `Connecting to database at ${dbHost}.${
+    isDevMode && ' >>WARNING: Running in dev mode<<'
+  }`
 );
 
 export const AppDataSource = new DataSource({

@@ -1,5 +1,5 @@
-import useClearFilters from "../../hooks/useClearFilters";
-import { StyledButton } from "./StyledSearchComponents";
+import useClearFilters from '../../hooks/useClearFilters';
+import { StyledButton } from './StyledSearchComponents';
 
 type ClearFilterButtonProps = {
   label: string;
@@ -8,7 +8,7 @@ type ClearFilterButtonProps = {
 
 export default function ClearFilterButton({
   label,
-  grouped = false
+  grouped = false,
 }: ClearFilterButtonProps) {
   const { clearFilters, noFiltersApplied } = useClearFilters();
   return grouped ? (
@@ -19,7 +19,7 @@ export default function ClearFilterButton({
     <StyledButton
       onClick={clearFilters}
       disabled={noFiltersApplied}
-      sx={{ width: "fit-content", marginTop: 3 }}
+      sx={{ width: 'fit-content', marginTop: 3 }}
     >
       {label}
     </StyledButton>

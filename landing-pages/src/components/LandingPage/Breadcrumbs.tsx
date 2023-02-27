@@ -1,8 +1,8 @@
-import Stack from "@mui/material/Stack";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import Link from "@mui/material/Link";
-import { Link as RouterLink } from "react-router-dom";
-import { useBreadcrumbs } from "../../hooks/useApi";
+import Stack from '@mui/material/Stack';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import Link from '@mui/material/Link';
+import { Link as RouterLink } from 'react-router-dom';
+import { useBreadcrumbs } from '../../hooks/useApi';
 
 export default function Breadcrumbs() {
   const { breadcrumbs, isError, isLoading } = useBreadcrumbs();
@@ -19,7 +19,7 @@ export default function Breadcrumbs() {
             {label}
           </Link>
         ))}
-      {!breadcrumbs && <div style={{ height: "24px" }}></div>}
+      {!breadcrumbs && <div style={{ height: '24px' }}></div>}
     </Stack>
   );
 }

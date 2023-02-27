@@ -1,10 +1,10 @@
-import SearchFilter from "./SearchFilter";
-import { useSearch } from "../../context/SearchContext";
-import ButtonGroup from "@mui/material/ButtonGroup";
-import { useCallback, useEffect, useState } from "react";
-import Stack from "@mui/material/Stack";
-import ClearFilterButton from "./ClearFiltersButton";
-import { StyledButton } from "./StyledSearchComponents";
+import SearchFilter from './SearchFilter';
+import { useSearch } from '../../context/SearchContext';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import { useCallback, useEffect, useState } from 'react';
+import Stack from '@mui/material/Stack';
+import ClearFilterButton from './ClearFiltersButton';
+import { StyledButton } from './StyledSearchComponents';
 
 export type SearchFilterExpandStatus = {
   filterName: string;
@@ -13,18 +13,16 @@ export type SearchFilterExpandStatus = {
 
 export default function SearchFiltersPanel() {
   const { searchData } = useSearch();
-  const [
-    allSearchFiltersExpandStatus,
-    setAllSearchFiltersExpandStatus
-  ] = useState<SearchFilterExpandStatus[]>([]);
+  const [allSearchFiltersExpandStatus, setAllSearchFiltersExpandStatus] =
+    useState<SearchFilterExpandStatus[]>([]);
 
   const toggleFilters = useCallback(
     (expand: boolean) => {
       if (searchData) {
         setAllSearchFiltersExpandStatus(
-          searchData.filters.map(f => ({
+          searchData.filters.map((f) => ({
             filterName: f.name,
-            filterIsExpanded: expand
+            filterIsExpanded: expand,
           }))
         );
       }
@@ -38,15 +36,14 @@ export default function SearchFiltersPanel() {
 
   function getPanelStatus(filterName: string) {
     const filterStatus = allSearchFiltersExpandStatus.find(
-      s => s.filterName === filterName
+      (s) => s.filterName === filterName
     )?.filterIsExpanded;
     return filterStatus !== undefined ? filterStatus : true;
   }
 
   function handleChange(filterName: string, filterIsExpanded: boolean) {
-    const updatedAllSearchFiltersExpandStatus = allSearchFiltersExpandStatus.map(
-      s => s
-    );
+    const updatedAllSearchFiltersExpandStatus =
+      allSearchFiltersExpandStatus.map((s) => s);
     for (const filterExpandStatus of updatedAllSearchFiltersExpandStatus) {
       if (filterExpandStatus.filterName === filterName) {
         filterExpandStatus.filterIsExpanded = filterIsExpanded;
@@ -62,12 +59,12 @@ export default function SearchFiltersPanel() {
   return (
     <Stack
       sx={{
-        minWidth: "300px",
-        maxWidth: "300px",
-        height: "100vh",
-        overflow: "scroll",
-        scrollbarWidth: "thin",
-        padding: { xs: "8px 8px", sm: "16px 16px" }
+        minWidth: '300px',
+        maxWidth: '300px',
+        height: '100vh',
+        overflow: 'scroll',
+        scrollbarWidth: 'thin',
+        padding: { xs: '8px 8px', sm: '16px 16px' },
       }}
     >
       <ButtonGroup
@@ -75,29 +72,31 @@ export default function SearchFiltersPanel() {
         variant="text"
         aria-label="text small button group"
         sx={{
-          justifyContent: "space-between",
-          gap: "6px",
-          width: "100%",
-          marginBottom: "8px"
+          justifyContent: 'space-between',
+          gap: '6px',
+          width: '100%',
+          marginBottom: '8px',
         }}
       >
         <StyledButton
           onClick={() => toggleFilters(true)}
-          disabled={allSearchFiltersExpandStatus.every(f => f.filterIsExpanded)}
+          disabled={allSearchFiltersExpandStatus.every(
+            (f) => f.filterIsExpanded
+          )}
         >
           Expand all
         </StyledButton>
         <StyledButton
           onClick={() => toggleFilters(false)}
           disabled={allSearchFiltersExpandStatus.every(
-            f => !f.filterIsExpanded
+            (f) => !f.filterIsExpanded
           )}
         >
           Collapse all
         </StyledButton>
         <ClearFilterButton label="Clear filters" grouped={true} />
       </ButtonGroup>
-      {searchData.filters.map(f => (
+      {searchData.filters.map((f) => (
         <SearchFilter
           key={f.name}
           serverSearchFilter={f}

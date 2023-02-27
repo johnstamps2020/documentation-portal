@@ -104,7 +104,7 @@ export default function CategoryLayout2({
             rowGap="32px"
           >
             {items.map(
-              item =>
+              (item) =>
                 item.items.length > 0 && (
                   <LandingPageCategory2 {...item} key={item.label} />
                 )

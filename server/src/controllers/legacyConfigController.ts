@@ -54,7 +54,7 @@ export async function getLegacyDocConfigs() {
       legacyDoc.metadata.release = doc.releases
         ? doc.releases.map((r: Release) => r.name)
         : null;
-      const docSubjects = doc.subjects.map(s => s.name);
+      const docSubjects = doc.subjects.map((s) => s.name);
       legacyDoc.metadata.subject = docSubjects.length > 0 ? docSubjects : null;
 
       legacyDocs.push(legacyDoc);
@@ -245,7 +245,7 @@ function getCompletePageComponent(
   const legacyPageConfigTemplate = legacyPageConfig.template;
   if (legacyPageConfigTemplate === 'redirect') {
     const redirectLink = legacyPageConfig
-      .items!.find(i => i.label === '_redirect')!
+      .items!.find((i) => i.label === '_redirect')!
       .link!.replace(/^\/+/, '');
     return `${legacyPageConfigTemplate} ${redirectLink}`;
   }
@@ -350,9 +350,8 @@ export async function putPageConfigsInDatabase() {
       const getLegacyLandingPagesObjectsResult = await listItems(
         'legacy-landing-pages'
       );
-      const legacyLandingPages = getLegacyLandingPagesObjectsResult.Contents?.map(
-        i => i.Key
-      );
+      const legacyLandingPages =
+        getLegacyLandingPagesObjectsResult.Contents?.map((i) => i.Key);
       if (legacyLandingPages) {
         for (const legacyLandingPage of legacyLandingPages) {
           const targetLocalDir = legacyLandingPage!
@@ -702,7 +701,7 @@ export async function putDocConfigsInDatabase(): Promise<{
       }
       dbDoc.products = await createProductEntities(productConfigCombinations);
 
-      const matchingBuild = localBuildsConfig.find(b => b.docId === doc.id);
+      const matchingBuild = localBuildsConfig.find((b) => b.docId === doc.id);
       if (matchingBuild) {
         dbDoc.build = await addDocBuild(matchingBuild);
       }

@@ -1,17 +1,17 @@
-import Grid from "@mui/material/Unstable_Grid2";
-import LandingPageCategory from "./LandingPageCategory";
-import LandingPageSelector from "../LandingPageSelector";
-import Breadcrumbs from "../Breadcrumbs";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import LandingPageSidebar from "../LandingPageSidebar";
-import Stack from "@mui/material/Stack";
-import SelfManagedLink from "../SelfManagedLink";
-import Paper from "@mui/material/Paper";
-import { Link as RouterLink } from "react-router-dom";
-import Link from "@mui/material/Link";
-import { LandingPageLayoutProps } from "../../../pages/LandingPage/LandingPage";
-import { usePageData } from "../../../hooks/usePageData";
+import Grid from '@mui/material/Unstable_Grid2';
+import LandingPageCategory from './LandingPageCategory';
+import LandingPageSelector from '../LandingPageSelector';
+import Breadcrumbs from '../Breadcrumbs';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import LandingPageSidebar from '../LandingPageSidebar';
+import Stack from '@mui/material/Stack';
+import SelfManagedLink from '../SelfManagedLink';
+import Paper from '@mui/material/Paper';
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@mui/material/Link';
+import { LandingPageLayoutProps } from '../../../pages/LandingPage/LandingPage';
+import { usePageData } from '../../../hooks/usePageData';
 
 export default function CategoryLayout({
   backgroundProps,
@@ -38,36 +38,36 @@ export default function CategoryLayout({
             pagePath={pageData.path}
             backgroundImage={backgroundProps.backgroundImage}
           />
-          <Container style={{ padding: 0, margin: "5px 0 0 0" }}>
+          <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
             <Breadcrumbs />
           </Container>
           <Typography
             variant="h1"
             sx={
               backgroundProps.backgroundImage
-                ? { color: "white" }
-                : { color: "black" }
+                ? { color: 'white' }
+                : { color: 'black' }
             }
           >
             {pageData.title}
           </Typography>
         </Stack>
-        {pageData.path.includes("cloudProducts/elysian") && (
+        {pageData.path.includes('cloudProducts/elysian') && (
           <Paper
             sx={{
-              maxWidth: { md: "932px", sm: "100%" },
-              marginTop: "32px",
-              padding: "16px",
-              textAlign: "center",
+              maxWidth: { md: '932px', sm: '100%' },
+              marginTop: '32px',
+              padding: '16px',
+              textAlign: 'center',
             }}
           >
             <Link
               component={RouterLink}
               to="/cloudProducts/elysian/whatsnew"
               sx={{
-                fontSize: "1.2rem",
+                fontSize: '1.2rem',
                 fontWeight: 600,
-                color: "hsl(196, 100%, 31%);",
+                color: 'hsl(196, 100%, 31%);',
               }}
             >
               What's new in Elysian
@@ -81,8 +81,8 @@ export default function CategoryLayout({
           xs={9}
           gap={2}
           sx={{
-            minWidth: { xs: "100%", sm: "616px", md: "932px" },
-            maxWidth: "932px",
+            minWidth: { xs: '100%', sm: '616px', md: '932px' },
+            maxWidth: '932px',
           }}
         ></Grid>
       </Grid>

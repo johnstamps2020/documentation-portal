@@ -52,7 +52,7 @@ async function getTopicRecommendations(topicId, reqObj, resObj) {
         query: queryBody,
       },
     });
-    const hit = response.body.hits.hits.map(h => ({
+    const hit = response.body.hits.hits.map((h) => ({
       ...h._source,
     }))[0];
     if (hit) {

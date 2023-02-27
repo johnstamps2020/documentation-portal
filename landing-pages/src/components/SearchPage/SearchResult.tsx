@@ -1,30 +1,30 @@
-import Chip from "@mui/material/Chip";
-import Stack from "@mui/material/Stack";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
   ServerSearchInnerHit,
   ServerSearchResult,
-} from "server/dist/types/serverSearch";
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import { styled } from "@mui/material/styles";
+} from 'server/dist/types/serverSearch';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
 import {
   StyledAccordion,
   StyledAccordionDetails,
   StyledAccordionSummary,
   StyledHeading2,
   StyledLink,
-} from "./StyledSearchComponents";
+} from './StyledSearchComponents';
 
 export default function SearchResult(searchResult: ServerSearchResult) {
-  const ListItem = styled("li")(() => ({
-    margin: "0 4px 6px 0",
+  const ListItem = styled('li')(() => ({
+    margin: '0 4px 6px 0',
   }));
 
   const highlightedTermsUrlParam = `hl=${searchResult.uniqueHighlightTerms}`;
 
   return (
-    <Stack sx={{ paddingBottom: "16px" }}>
+    <Stack sx={{ paddingBottom: '16px' }}>
       <StyledLink href={`${searchResult.href}?${highlightedTermsUrlParam}`}>
         <StyledHeading2
           dangerouslySetInnerHTML={{ __html: searchResult.title }}
@@ -34,10 +34,10 @@ export default function SearchResult(searchResult: ServerSearchResult) {
       <Stack direction="row" spacing={1}>
         <Paper
           sx={{
-            display: "flex",
-            justifyContent: "flex-start",
-            flexWrap: "wrap",
-            listStyle: "none",
+            display: 'flex',
+            justifyContent: 'flex-start',
+            flexWrap: 'wrap',
+            listStyle: 'none',
             p: 0,
             m: 0,
           }}
@@ -55,9 +55,9 @@ export default function SearchResult(searchResult: ServerSearchResult) {
         paragraph
         dangerouslySetInnerHTML={{ __html: searchResult.body }}
         sx={{
-          padding: "1rem 0",
-          lineHeight: "24px",
-          textAlign: "left",
+          padding: '1rem 0',
+          lineHeight: '24px',
+          textAlign: 'left',
         }}
       />
       {searchResult.innerHits.length > 0 && (
@@ -77,7 +77,7 @@ export default function SearchResult(searchResult: ServerSearchResult) {
                   key={`${h.label}${index}`}
                   href={`${h.href}?${highlightedTermsUrlParam}`}
                 >
-                  {h.tags.join(", ")}
+                  {h.tags.join(', ')}
                 </StyledLink>
               ))}
             </Stack>

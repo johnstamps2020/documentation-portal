@@ -1,38 +1,38 @@
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import Tooltip from "@mui/material/Tooltip";
-import Typography from "@mui/material/Typography";
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
 
 export default function LoginOptions() {
   const query = new URLSearchParams(window.location.search);
-  const isLoginPage = window.location.pathname.endsWith("/gw-login");
+  const isLoginPage = window.location.pathname.endsWith('/gw-login');
   const redirectTo =
-    query.get("redirectTo") ||
-    (isLoginPage && "/") ||
-    window.location.href.replace(window.location.origin, "");
+    query.get('redirectTo') ||
+    (isLoginPage && '/') ||
+    window.location.href.replace(window.location.origin, '');
   const loginButtons = [
     {
-      label: "Guidewire Cloud",
-      href: "/authorization-code",
+      label: 'Guidewire Cloud',
+      href: '/authorization-code',
       tooltipText:
-        "Use your Guidewire Cloud Platform account to access documentation"
+        'Use your Guidewire Cloud Platform account to access documentation',
     },
     {
-      label: "Customer Community",
-      href: "/customers-login",
+      label: 'Customer Community',
+      href: '/customers-login',
       tooltipText:
-        "Use your community.guidewire.com account to access documentation"
+        'Use your community.guidewire.com account to access documentation',
     },
     {
-      label: "Partner Community",
-      href: "/partners-login",
+      label: 'Partner Community',
+      href: '/partners-login',
       tooltipText:
-        "Use your partner.guidewire.com account to access documentation"
-    }
+        'Use your partner.guidewire.com account to access documentation',
+    },
   ];
   return (
     <Stack spacing={2}>
-      {loginButtons.map(loginButton => (
+      {loginButtons.map((loginButton) => (
         <Tooltip
           key={loginButton.label}
           title={<Typography>{loginButton.tooltipText}</Typography>}
