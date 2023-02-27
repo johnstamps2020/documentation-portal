@@ -10,7 +10,7 @@ const {
 } = require('../controllers/lrsController');
 const router = express.Router();
 
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   try {
     res.send({
       name: 'Learning Record Store',
@@ -26,7 +26,7 @@ router.get('/', function(req, res, next) {
   }
 });
 
-router.get('/records', async function(req, res, next) {
+router.get('/records', async function (req, res, next) {
   try {
     const { objectId, actorMbox } = req.query;
 
@@ -41,7 +41,7 @@ router.get('/records', async function(req, res, next) {
       res.send(records);
     } else {
       const allRecords = await getAllRecords();
-      res.send(allRecords.body.hits.hits.map(h => h._source));
+      res.send(allRecords.body.hits.hits.map((h) => h._source));
     }
   } catch (err) {
     winstonLogger.error(
@@ -51,7 +51,7 @@ router.get('/records', async function(req, res, next) {
   }
 });
 
-router.post('/records/add', async function(req, res, next) {
+router.post('/records/add', async function (req, res, next) {
   try {
     const record = req.body;
     const result = await addRecord(record);
@@ -62,7 +62,7 @@ router.post('/records/add', async function(req, res, next) {
   }
 });
 
-router.delete('/records/delete', async function(req, res, next) {
+router.delete('/records/delete', async function (req, res, next) {
   try {
     const elasticId = req.query.elasticId;
     if (elasticId) {

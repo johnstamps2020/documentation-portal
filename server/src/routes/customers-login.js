@@ -24,17 +24,17 @@ const customersSamlStrategy = new saml.Strategy(
     identifierFormat: 'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified',
     validateInResponseTo: false,
   },
-  function(profile, done) {
+  function (profile, done) {
     return done(null, profile);
   }
 );
 
 passport.use('customersSamlStrategy', customersSamlStrategy);
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   done(null, user);
 });
 
-passport.deserializeUser(function(user, done) {
+passport.deserializeUser(function (user, done) {
   done(null, user);
 });
 router.use(passport.initialize({}));
@@ -43,7 +43,7 @@ router.use(passport.session({}));
 /* GET home page. */
 router.get(
   '/',
-  function(req, res, next) {
+  function (req, res, next) {
     saveRedirectUrlToSession(req);
     next();
   },
@@ -52,11 +52,11 @@ router.get(
 
 router.post(
   '/callback',
-  function(req, res, next) {
+  function (req, res, next) {
     next();
   },
   passport.authenticate('customersSamlStrategy'),
-  function(req, res) {
+  function (req, res) {
     res.redirect(resolveRequestedUrl(req));
   }
 );

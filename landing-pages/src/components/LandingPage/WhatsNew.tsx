@@ -1,27 +1,29 @@
-import { Button, Typography } from "@mui/material";
-import Paper from "@mui/material/Paper";
-import Stack from "@mui/material/Stack";
+import { Button, Typography } from '@mui/material';
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import { LandingPageItem } from '../../pages/LandingPage/LandingPage';
+import LandingPageLink from './LandingPageLink';
 
 export type WhatsNewProps = {
   label: string;
   badge: string;
-  href: string; // It should a docId, pagePath or link url, just like in case of landing page items
+  item: LandingPageItem;
   content: string[];
 };
 
 export default function WhatsNew({
   label,
   badge,
-  href,
-  content
+  item,
+  content,
 }: WhatsNewProps) {
   return (
     <Paper
       sx={{
-        width: "300px",
-        marginTop: "1.5rem",
-        padding: "24px",
-        gap: "8px"
+        width: '300px',
+        marginTop: '1.5rem',
+        padding: '24px',
+        gap: '8px',
       }}
     >
       <Stack>
@@ -31,21 +33,21 @@ export default function WhatsNew({
             alt="Release logo"
             aria-label="Release logo"
             style={{
-              width: "160px",
-              height: "160px",
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginBottom: "1.5rem"
+              width: '160px',
+              height: '160px',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              marginBottom: '1.5rem',
             }}
           ></img>
         )}
         <Typography
           variant="h2"
           style={{
-            margin: "0 auto 0.25rem auto",
-            fontSize: "1.25rem",
+            margin: '0 auto 0.25rem auto',
+            fontSize: '1.25rem',
             fontWeight: 600,
-            paddingBottom: "0.5rem"
+            paddingBottom: '0.5rem',
           }}
         >
           What's new in {label}
@@ -53,10 +55,10 @@ export default function WhatsNew({
         <Typography
           variant="h3"
           style={{
-            color: "hsl(196, 100%, 31%)",
-            fontSize: "0.875rem",
+            color: 'hsl(196, 100%, 31%)',
+            fontSize: '0.875rem',
             fontWeight: 600,
-            textAlign: "center"
+            textAlign: 'center',
           }}
         >
           {label} introduces the following key features and capabilities:
@@ -64,19 +66,19 @@ export default function WhatsNew({
         {content && (
           <ul
             style={{
-              fontSize: ".875rem",
-              marginLeft: "1rem",
-              marginBlockStart: "1em",
-              marginBlockEnd: "1em",
-              marginInlineStart: "0px",
-              marginInlineEnd: "0px",
-              paddingInlineStart: "20px"
+              fontSize: '.875rem',
+              marginLeft: '1rem',
+              marginBlockStart: '1em',
+              marginBlockEnd: '1em',
+              marginInlineStart: '0px',
+              marginInlineEnd: '0px',
+              paddingInlineStart: '20px',
             }}
           >
-            {content.map(feature => {
+            {content.map((feature) => {
               return (
                 <li
-                  style={{ marginBottom: "0.5rem", fontSize: "0.875rem" }}
+                  style={{ marginBottom: '0.5rem', fontSize: '0.875rem' }}
                   key={feature}
                 >
                   {feature}
@@ -86,15 +88,14 @@ export default function WhatsNew({
           </ul>
         )}
         <Button
-          href={href}
           variant="contained"
           style={{
-            width: "110px",
-            margin: "10px auto 10px auto",
-            padding: "4px"
+            width: '110px',
+            margin: '10px auto 10px auto',
+            padding: '4px',
           }}
         >
-          Learn more
+          <LandingPageLink item={item} sx={{ color: 'white' }} />
         </Button>
       </Stack>
     </Paper>

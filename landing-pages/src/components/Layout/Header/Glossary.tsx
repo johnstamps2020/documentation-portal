@@ -1,12 +1,12 @@
-import { MenuItem } from "@mui/material";
-import React from "react";
-import iconGlossary from "../../../images/icon-glossary.svg";
+import { MenuItem } from '@mui/material';
+import React from 'react';
+import iconGlossary from '../../../images/icon-glossary.svg';
 import {
   HeaderAvatar,
   HeaderIconButton,
   HeaderMenu,
-  HeaderMenuLink
-} from "../StyledLayoutComponents";
+  HeaderMenuLink,
+} from '../StyledLayoutComponents';
 
 export default function Glossary() {
   const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(

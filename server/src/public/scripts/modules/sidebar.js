@@ -19,9 +19,10 @@ function bubbleUpExpanded(element) {
 
 function getNodeByTitle() {
   const pageTitle = document.querySelector('title').textContent;
-  const navLinks = document.querySelectorAll("nav[role='toc'] a").length > 0
-    ? document.querySelectorAll("nav[role='toc'] a")
-    : document.querySelectorAll("nav.toc a");
+  const navLinks =
+    document.querySelectorAll("nav[role='toc'] a").length > 0
+      ? document.querySelectorAll("nav[role='toc'] a")
+      : document.querySelectorAll('nav.toc a');
   for (let i = 0, len = navLinks.length; i < len; i++) {
     const a = navLinks[i];
     if (a.textContent.trim() === pageTitle) {
@@ -36,10 +37,7 @@ function expandCurrent() {
       .querySelector('meta[name="gw-base-url"]')
       ?.getAttribute('content') || '';
 
-  let relativePathname = `${window.location.pathname}`.replace(
-    baseUrl,
-    ''
-  );
+  let relativePathname = `${window.location.pathname}`.replace(baseUrl, '');
 
   if (!relativePathname.endsWith('.html')) {
     relativePathname = relativePathname.concat('.html');
@@ -75,11 +73,12 @@ function expandCurrent() {
 }
 
 function addCaret() {
-  const navUls = document.querySelectorAll("nav[role='toc'] li > ul").length > 0
-    ? document.querySelectorAll("nav[role='toc'] li > ul")
-    : document.querySelectorAll("nav.toc li > ul");
+  const navUls =
+    document.querySelectorAll("nav[role='toc'] li > ul").length > 0
+      ? document.querySelectorAll("nav[role='toc'] li > ul")
+      : document.querySelectorAll('nav.toc li > ul');
 
-  navUls.forEach(nestedList => {
+  navUls.forEach((nestedList) => {
     nestedList.classList.add('nestedList');
     const caret = document.createElement('button');
     caret.setAttribute('type', 'button');
@@ -115,60 +114,67 @@ function addCaret() {
 
 async function addTocListener() {
   const toc = document.querySelector('nav[role="toc"]')
-  ? document.querySelector('nav[role="toc"]')
-  : document.querySelector('nav.toc');
+    ? document.querySelector('nav[role="toc"]')
+    : document.querySelector('nav.toc');
 
-  if(sessionStorage.getItem("tocPos")) {
-    sessionStorage.removeItem("tocPos");
+  if (sessionStorage.getItem('tocPos')) {
+    sessionStorage.removeItem('tocPos');
   }
-  if(sessionStorage.getItem("tocExpandedItems")) {
-    sessionStorage.removeItem("tocExpandedItems");
+  if (sessionStorage.getItem('tocExpandedItems')) {
+    sessionStorage.removeItem('tocExpandedItems');
   }
-  toc.addEventListener("click", e => {
-    if(e.target.matches('a')) {
-      sessionStorage.setItem("tocPos", e.target.closest('nav').scrollTop);
+  toc.addEventListener('click', (e) => {
+    if (e.target.matches('a')) {
+      sessionStorage.setItem('tocPos', e.target.closest('nav').scrollTop);
       const navUls = toc.querySelectorAll('li > ul');
       let expandedUls = [];
       navUls.forEach((nestedList, index) => {
-        if(!nestedList.classList.contains('expanded')) {
+        if (!nestedList.classList.contains('expanded')) {
           return;
-        }
-        else {
+        } else {
           expandedUls.push(index);
         }
-      })
-      sessionStorage.setItem("tocExpandedItems", expandedUls);
+      });
+      sessionStorage.setItem('tocExpandedItems', expandedUls);
     }
-  })
+  });
 }
 
 async function setTocPositionAndState() {
-  const toc = document.querySelector('nav[role="toc"]') ? document.querySelector('nav[role="toc"]') : document.querySelector('nav.toc');
+  const toc = document.querySelector('nav[role="toc"]')
+    ? document.querySelector('nav[role="toc"]')
+    : document.querySelector('nav.toc');
 
-  if(sessionStorage.getItem("tocExpandedItems")) {
+  if (sessionStorage.getItem('tocExpandedItems')) {
     const navUls = toc.querySelectorAll('li > ul');
     navUls.forEach((nestedList, index) => {
-
-      if(sessionStorage.getItem("tocExpandedItems").split(",").includes(index.toString())) {
+      if (
+        sessionStorage
+          .getItem('tocExpandedItems')
+          .split(',')
+          .includes(index.toString())
+      ) {
         nestedList.classList.add('expanded');
         const listHeading = nestedList.parentElement.firstChild;
         const caret = listHeading.querySelector('.caret');
         caret.classList.add('open');
       }
-    })
+    });
   }
-  if(sessionStorage.getItem("tocPos")) {
-      toc.scrollTop = sessionStorage.getItem("tocPos");
+  if (sessionStorage.getItem('tocPos')) {
+    toc.scrollTop = sessionStorage.getItem('tocPos');
   }
 }
 
 async function trimHrefAnchors() {
-  const toc = document.querySelector('nav[role="toc"]') ? document.querySelector('nav[role="toc"]') : document.querySelector('nav.toc');
+  const toc = document.querySelector('nav[role="toc"]')
+    ? document.querySelector('nav[role="toc"]')
+    : document.querySelector('nav.toc');
   const tocLinks = toc.getElementsByTagName('a');
-  for(let i = 0; i < tocLinks.length; i++) {
+  for (let i = 0; i < tocLinks.length; i++) {
     const href = tocLinks.item(i).getAttribute('href');
-    
-    if(href.includes('#')) {
+
+    if (href.includes('#')) {
       const trimmedHref = href.substring(0, href.indexOf('#'));
       tocLinks.item(i).setAttribute('href', trimmedHref);
     }

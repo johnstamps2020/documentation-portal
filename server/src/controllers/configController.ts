@@ -42,7 +42,7 @@ export async function getPage(reqObj: Request) {
 
 export async function getBreadcrumbs(pagePath: string): Promise<ApiResponse> {
   try {
-    const routes = pagePath.split('/').filter(v => v.length > 0);
+    const routes = pagePath.split('/').filter((v) => v.length > 0);
     const breadcrumbs = [];
     let startPath = '';
     for (const route of routes) {
@@ -239,7 +239,7 @@ function wrapInQuotes(stringsToWrap: Array<string> | string | undefined) {
   }
 
   if (Array.isArray(stringsToWrap)) {
-    return stringsToWrap.map(s => addQuotes(s)).join(valueSeparator);
+    return stringsToWrap.map((s) => addQuotes(s)).join(valueSeparator);
   } else if (typeof stringsToWrap === 'string') {
     return addQuotes(stringsToWrap);
   } else {
@@ -364,8 +364,8 @@ export async function getRootBreadcrumb(pagePathname: string) {
 
 export async function getVersionSelector(docId: string) {
   function getLabel(docConfig: Doc, releaseInLabel: boolean) {
-    const docReleases = docConfig.releases.map(r => r.name);
-    const docVersions = docConfig.products.map(p => p.version);
+    const docReleases = docConfig.releases.map((r) => r.name);
+    const docVersions = docConfig.products.map((p) => p.version);
     return releaseInLabel
       ? `${docReleases[0]} (${docVersions[0]})`
       : docVersions.join(',');
@@ -378,14 +378,14 @@ export async function getVersionSelector(docId: string) {
     return releaseInLabel
       ? unsortedVersions.sort((a, b) => (a.label > b.label ? 1 : -1)).reverse()
       : unsortedVersions
-          .sort(function(a, b) {
+          .sort(function (a, b) {
             const labelA = a.label
               .split('.')
-              .map(n => +n + 100000)
+              .map((n) => +n + 100000)
               .join('.');
             const labelB = b.label
               .split('.')
-              .map(n => +n + 100000)
+              .map((n) => +n + 100000)
               .join('.');
             return labelA > labelB ? 1 : -1;
           })
@@ -404,27 +404,27 @@ export async function getVersionSelector(docId: string) {
       const docsWithTheSameTitle = await docQueryBuilder
         .where('title = :title', { title: docResponse.title })
         .andWhere('docProducts.name IN (:...productNames)', {
-          productNames: docResponse.products.map(p => p.name),
+          productNames: docResponse.products.map((p) => p.name),
         })
         .andWhere('docProducts.platform IN (:...productPlatforms)', {
-          productPlatforms: docResponse.products.map(p => p.platform),
+          productPlatforms: docResponse.products.map((p) => p.platform),
         })
         .andWhere('docProducts.version NOT IN (:...productVersions)', {
-          productVersions: docResponse.products.map(p => p.version),
+          productVersions: docResponse.products.map((p) => p.version),
         })
         .getMany();
-      const otherVersions = docsWithTheSameTitle.map(doc => {
+      const otherVersions = docsWithTheSameTitle.map((doc) => {
         return {
-          versions: doc.products.map(p => p.version),
-          releases: doc.releases.map(r => r.name),
+          versions: doc.products.map((p) => p.version),
+          releases: doc.releases.map((r) => r.name),
           url: doc.url,
           label: getLabel(doc, useReleaseForLabel),
         };
       });
       const allVersions = [
         {
-          versions: docResponse.products.map(p => p.version),
-          releases: docResponse.releases.map(r => r.name),
+          versions: docResponse.products.map((p) => p.version),
+          releases: docResponse.releases.map((r) => r.name),
           url: docResponse.url,
           currentlySelected: true,
           label: getLabel(docResponse, useReleaseForLabel),

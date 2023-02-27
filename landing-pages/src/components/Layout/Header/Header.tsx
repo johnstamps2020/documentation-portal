@@ -1,25 +1,25 @@
-import Logo from "./Logo/Logo";
-import SearchBox from "../../SearchBox/SearchBox";
-import ExternalSites from "./ExternalSites";
-import Glossary from "./Glossary";
-import TranslatedPages from "./TranslatedPages";
-import UserProfile from "./UserProfile";
-import { HeaderOptions } from "../Layout";
-import Stack from "@mui/material/Stack";
+import Logo from './Logo/Logo';
+import SearchBox from '../../SearchBox/SearchBox';
+import ExternalSites from './ExternalSites';
+import Glossary from './Glossary';
+import TranslatedPages from './TranslatedPages';
+import UserProfile from './UserProfile';
+import { HeaderOptions } from '../Layout';
+import Stack from '@mui/material/Stack';
 
-export const headerHeight = "80px";
+export const headerHeight = '80px';
 export default function Header(headerOptions: HeaderOptions) {
   return (
     <Stack
-      direction={{ xs: "column", sm: "row" }}
-      height={{ xs: "auto", sm: headerHeight }}
+      direction={{ xs: 'column', sm: 'row' }}
+      height={{ xs: 'auto', sm: headerHeight }}
       alignItems="center"
-      justifyContent={{ xs: "center", sm: "space-between" }}
+      justifyContent={{ xs: 'center', sm: 'space-between' }}
       spacing={{ xs: 1, sm: 2 }}
       sx={{
-        width: "100%",
-        backgroundColor: "hsl(216, 42%, 13%)",
-        padding: "6px 20px 6px 6px"
+        width: '100%',
+        backgroundColor: 'hsl(216, 42%, 13%)',
+        padding: '6px 20px 6px 6px',
       }}
     >
       <Logo />
@@ -31,8 +31,8 @@ export default function Header(headerOptions: HeaderOptions) {
       )}
       <Stack
         direction="row"
-        justifyContent={{ xs: "center", sm: "right" }}
-        width={{ sm: "100%", md: "400px" }}
+        justifyContent={{ xs: 'center', sm: 'right' }}
+        width={{ sm: '100%', md: '400px' }}
         spacing={2}
         alignItems="center"
       >

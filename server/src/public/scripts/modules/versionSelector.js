@@ -27,7 +27,7 @@ export async function addVersionSelector() {
       const allVersions = matchingVersionSelector.allVersions;
       const select = document.createElement('select');
       select.id = 'versionSelector';
-      select.onchange = async function(e) {
+      select.onchange = async function (e) {
         let linkToOpen = document.getElementById('versionSelector').value;
         const mainElement = document.querySelector('main');
         if (mainElement) {
@@ -46,9 +46,8 @@ export async function addVersionSelector() {
           if (bestMatchingTopic) {
             const bestMatchingTopicUrl = new URL(bestMatchingTopic);
             const currentPageUrl = new URL(window.location.href);
-            const currentPageHighlightTerms = currentPageUrl.searchParams.get(
-              'hl'
-            );
+            const currentPageHighlightTerms =
+              currentPageUrl.searchParams.get('hl');
             currentPageHighlightTerms &&
               bestMatchingTopicUrl.searchParams.set(
                 'hl',

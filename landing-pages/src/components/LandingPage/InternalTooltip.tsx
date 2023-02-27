@@ -1,6 +1,6 @@
-import Tooltip from "@mui/material/Tooltip";
-import Typography from "@mui/material/Typography";
-import internalLogo from "../../images/internal_document_icon.svg";
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import internalLogo from '../../images/internal_document_icon.svg';
 
 export default function InternalTooltip(item: {}) {
   return (
@@ -16,8 +16,8 @@ export default function InternalTooltip(item: {}) {
         height="20px"
         width="20px"
         style={{
-          backgroundColor: "black",
-          borderRadius: "50%"
+          backgroundColor: 'black',
+          borderRadius: '50%',
         }}
       ></img>
     </Tooltip>

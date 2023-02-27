@@ -16,7 +16,7 @@ async function getConfigFile(localDir, localFilename, remotePath) {
       file.on('finish', () => {
         resolve('success');
       });
-      file.on('error', err => {
+      file.on('error', (err) => {
         reject(err);
       });
       s3.getObject({ ...bucketParams, Key: remotePath })
@@ -39,7 +39,7 @@ async function listItems(prefix) {
 async function addItems(filesFromClient, prefix) {
   try {
     const fileResults = [];
-    const filesIterable = (function() {
+    const filesIterable = (function () {
       if (Array.isArray(filesFromClient)) {
         return filesFromClient;
       } else {

@@ -1,6 +1,6 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { useSearch } from "../context/SearchContext";
-import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useSearch } from '../context/SearchContext';
+import { useEffect, useState } from 'react';
 
 export default function useClearFilters() {
   const { searchData } = useSearch();
@@ -11,7 +11,7 @@ export default function useClearFilters() {
 
   useEffect(() => {
     setNoFiltersApplied(
-      !!searchData?.filters.every(f => f.values.every(v => !v.checked))
+      !!searchData?.filters.every((f) => f.values.every((v) => !v.checked))
     );
   }, [searchData]);
 
@@ -19,21 +19,21 @@ export default function useClearFilters() {
     if (!searchData) {
       return null;
     }
-    const filters = searchData.filters.map(f => f.name);
+    const filters = searchData.filters.map((f) => f.name);
     for (const filter of filters) {
       if (query.has(filter)) {
         query.delete(filter);
       }
     }
-    query.delete("page");
+    query.delete('page');
     navigate({
       pathname: `${location.pathname}`,
-      search: query && `?${query.toString()}`
+      search: query && `?${query.toString()}`,
     });
   }
 
   return {
     clearFilters,
-    noFiltersApplied
+    noFiltersApplied,
   };
 }

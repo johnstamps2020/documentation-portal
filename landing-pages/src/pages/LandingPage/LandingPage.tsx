@@ -1,31 +1,35 @@
-import { useNavigate } from "react-router-dom";
-import Layout from "../../components/Layout/Layout";
-import { Page } from "server/dist/model/entity/Page";
-import { lazy, Suspense } from "react";
-import { Theme } from "@mui/material";
-import Skeleton from "@mui/material/Skeleton";
-import Alert from "@mui/material/Alert";
-import Backdrop from "@mui/material/Backdrop";
-import flaineBackgroundImage from "../../images/background-flaine.svg";
-import elysianBackgroundImage from "../../images/background-elysian.svg";
-import dobsonBackgroundImage from "../../images/background-dobson.svg";
-import cortinaBackgroundImage from "../../images/background-cortina.svg";
-import banffBackgroundImage from "../../images/background-banff.svg";
-import gradientBackgroundImage from "../../images/background-gradient.svg";
-import { LandingPageProps } from "../landing";
-import { LandingPageSelectorProps } from "../../components/LandingPage/LandingPageSelector";
-import { usePageData } from "../../hooks/usePageData";
+import { useNavigate } from 'react-router-dom';
+import Layout from '../../components/Layout/Layout';
+import { lazy, Suspense } from 'react';
+import { Theme } from '@mui/material';
+import Skeleton from '@mui/material/Skeleton';
+import Alert from '@mui/material/Alert';
+import Backdrop from '@mui/material/Backdrop';
+import flaineBackgroundImage from '../../images/background-flaine.svg';
+import elysianBackgroundImage from '../../images/background-elysian.svg';
+import dobsonBackgroundImage from '../../images/background-dobson.svg';
+import cortinaBackgroundImage from '../../images/background-cortina.svg';
+import banffBackgroundImage from '../../images/background-banff.svg';
+import gradientBackgroundImage from '../../images/background-gradient.svg';
+import { LandingPageProps } from '../landing';
+import { LandingPageSelectorProps } from '../../components/LandingPage/LandingPageSelector';
+import { usePageData } from '../../hooks/usePageData';
+
+export type SidebarProps = {
+  label: string;
+  items: LandingPageItem[];
+};
 
 export type LandingPageLayoutProps = {
-  pageData?: Page;
   backgroundProps: {
-    backgroundImage: any;
+    backgroundImage?: any;
     backgroundAttachment: string;
     backgroundPosition: string;
     backgroundSize: string;
     minHeight: string;
   };
-  pageSelector: LandingPageSelectorProps;
+  pageSelector?: LandingPageSelectorProps;
+  sidebar?: SidebarProps;
 };
 
 export type LandingPageItem = {
@@ -47,8 +51,8 @@ export default function LandingPage() {
     navigate(isError.redirectUrl);
   }
 
-  if (pageData?.component?.includes("redirect")) {
-    navigate(`/${pageData.component.split(" ")[1]}`);
+  if (pageData?.component?.includes('redirect')) {
+    navigate(`/${pageData.component.split(' ')[1]}`);
   }
 
   if (!pageData) {
@@ -60,42 +64,42 @@ export default function LandingPage() {
   ) as LazyPageComponent;
 
   function getBackgroundImage() {
-    if (pageData?.component?.includes("flaineBackground")) {
+    if (pageData?.component?.includes('flaineBackground')) {
       return {
         xs: `url(${gradientBackgroundImage})`,
         sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
        url(${flaineBackgroundImage}), 
-       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`
+       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
       };
     }
-    if (pageData?.component?.includes("elysianBackground")) {
+    if (pageData?.component?.includes('elysianBackground')) {
       return {
         sm: `url(${elysianBackgroundImage})`,
-        xs: `url(${gradientBackgroundImage})`
+        xs: `url(${gradientBackgroundImage})`,
       };
     }
-    if (pageData?.component?.includes("dobsonBackground")) {
+    if (pageData?.component?.includes('dobsonBackground')) {
       return {
         sm: `url(${dobsonBackgroundImage})`,
-        xs: `url(${gradientBackgroundImage})`
+        xs: `url(${gradientBackgroundImage})`,
       };
     }
-    if (pageData?.component?.includes("cortinaBackground")) {
+    if (pageData?.component?.includes('cortinaBackground')) {
       return {
         sm: `url(${cortinaBackgroundImage})`,
-        xs: `url(${gradientBackgroundImage})`
+        xs: `url(${gradientBackgroundImage})`,
       };
     }
-    if (pageData?.component?.includes("banffBackground")) {
+    if (pageData?.component?.includes('banffBackground')) {
       return {
         sm: `url(${banffBackgroundImage}), url(${gradientBackgroundImage})`,
-        xs: `url(${gradientBackgroundImage})`
+        xs: `url(${gradientBackgroundImage})`,
       };
     }
-    if (pageData?.component?.includes("aspenBackground")) {
+    if (pageData?.component?.includes('aspenBackground')) {
       return `url(${gradientBackgroundImage})`;
     }
-    return "";
+    return '';
   }
 
   return (
@@ -119,8 +123,8 @@ export default function LandingPage() {
       <Backdrop
         open={isLoading}
         sx={{
-          color: "#fff",
-          zIndex: (theme: Theme) => theme.zIndex.drawer + 1
+          color: '#fff',
+          zIndex: (theme: Theme) => theme.zIndex.drawer + 1,
         }}
       />
     </Layout>

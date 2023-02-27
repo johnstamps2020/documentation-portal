@@ -1,6 +1,6 @@
-import { LandingPageItem } from "../pages/LandingPage/LandingPage";
-import { PageError } from "./usePageData";
-import useSWR from "swr";
+import { LandingPageItem } from '../pages/LandingPage/LandingPage';
+import { PageError } from './usePageData';
+import useSWR from 'swr';
 
 type LandingPageItemData = {
   label?: string;
@@ -9,6 +9,7 @@ type LandingPageItemData = {
   path?: string;
   internal: boolean;
   earlyAccess: boolean;
+  isInProduction: boolean;
 };
 
 const landingPageItemGetter = async (
@@ -41,6 +42,6 @@ export function useLandingPageItemData(item: LandingPageItem) {
   return {
     landingPageItemData: data,
     isLoading,
-    isError: error
+    isError: error,
   };
 }

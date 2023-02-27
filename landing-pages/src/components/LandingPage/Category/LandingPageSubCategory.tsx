@@ -1,6 +1,6 @@
-import LandingPageItem from "../LandingPageItem";
-import Typography from "@mui/material/Typography";
-import Stack from "@mui/material/Stack";
+import LandingPageItem from '../LandingPageItem';
+import Typography from '@mui/material/Typography';
+import Stack from '@mui/material/Stack';
 
 export default function LandingPageSubCategory(subCategory: {}) {
   return (
