@@ -59,8 +59,8 @@ export default function LandingPage() {
     return <></>;
   }
 
-  const PageComponent = lazy(
-    () => import(`../landing/${pageData.path}`)
+  const PageComponent = lazy(() =>
+    import(`../landing/${pageData.path}`)
   ) as LazyPageComponent;
 
   function getBackgroundImage() {
