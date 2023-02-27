@@ -1,18 +1,20 @@
 import { Button, Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
+import { LandingPageItem } from "../../pages/LandingPage/LandingPage";
+import LandingPageLink from "./LandingPageLink";
 
 export type WhatsNewProps = {
   label: string;
   badge: string;
-  href: string; // It should a docId, pagePath or link url, just like in case of landing page items
+  item: LandingPageItem;
   content: string[];
 };
 
 export default function WhatsNew({
   label,
   badge,
-  href,
+  item,
   content
 }: WhatsNewProps) {
   return (
@@ -86,7 +88,6 @@ export default function WhatsNew({
           </ul>
         )}
         <Button
-          href={href}
           variant="contained"
           style={{
             width: "110px",
@@ -94,7 +95,7 @@ export default function WhatsNew({
             padding: "4px"
           }}
         >
-          Learn more
+          <LandingPageLink item={item} sx={{ color: "white" }} />
         </Button>
       </Stack>
     </Paper>

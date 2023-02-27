@@ -143,7 +143,7 @@ const docs: CategoryLayout2Props["items"] = [
 const whatsNewInfo: CategoryLayout2Props["whatsNewInfo"] = {
   label: "Flaine",
   badge: flaineBadge,
-  href: "/cloud/flaine/whatsnew",
+  item: { label: "Learn more", docId: "whatsnewflaine" },
   content: [
     "Advanced Product Designer app (APD)",
     "Submission Intake for InsuranceSuite",

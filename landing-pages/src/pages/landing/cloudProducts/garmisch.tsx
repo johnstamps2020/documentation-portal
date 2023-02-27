@@ -143,7 +143,7 @@ const docs: CategoryLayout2Props["items"] = [
 const whatsNewInfo: CategoryLayout2Props["whatsNewInfo"] = {
   label: "Garmisch",
   badge: garmischBadge,
-  href: "/cloud/garmisch/whatsnew",
+  item: { label: "Learn more", docId: "whatsnewgarmisch" },
   content: [
     "Washes your car",
     "Folds the laundry",
