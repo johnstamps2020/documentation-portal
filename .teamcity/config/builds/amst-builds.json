@@ -4,6 +4,7 @@
     {
       "buildType": "dita",
       "root": "cc_counter_fraud.ditamap",
+      "filter": "AMST-cc_counter_fraud.ditaval",
       "srcId": "amstsrc",
       "docId": "amstcccounterfraud",
       "indexRedirect": true
@@ -11,6 +12,7 @@
     {
       "buildType": "dita",
       "root": "cc_customer_satisfaction.ditamap",
+      "filter": "AMST-cc_customer_satisfaction.ditaval",
       "srcId": "amstsrc",
       "docId": "amstcccustomersatisfaction",
       "indexRedirect": true
@@ -18,6 +20,7 @@
     {
       "buildType": "dita",
       "root": "cc_incident_damage.ditamap",
+      "filter": "AMST-cc_incident_damage.ditaval",
       "srcId": "amstsrc",
       "docId": "amstccincidentdamage",
       "indexRedirect": true
@@ -25,6 +28,7 @@
     {
       "buildType": "dita",
       "root": "cc_litigation.ditamap",
+      "filter": "AMST-cc_litigation.ditaval",
       "srcId": "amstsrc",
       "docId": "amstcclitigation",
       "indexRedirect": true
@@ -32,6 +36,7 @@
     {
       "buildType": "dita",
       "root": "cc_segmentation.ditamap",
+      "filter": "AMST-cc_segmentation.ditaval",
       "srcId": "amstsrc",
       "docId": "amstccsegmentation",
       "indexRedirect": true
@@ -39,6 +44,7 @@
     {
       "buildType": "dita",
       "root": "cc_severity_escalation.ditamap",
+      "filter": "AMST-cc_severity_escalation.ditaval",
       "srcId": "amstsrc",
       "docId": "amstccseverityescalation",
       "indexRedirect": true
@@ -46,6 +52,7 @@
     {
       "buildType": "dita",
       "root": "cc_subrogation.ditamap",
+      "filter": "AMST-cc_subrogation.ditaval",
       "srcId": "amstsrc",
       "docId": "amstccsubrogation",
       "indexRedirect": true
@@ -53,6 +60,7 @@
     {
       "buildType": "dita",
       "root": "cc_weather_alert.ditamap",
+      "filter": "AMST-cc_weather_alert.ditaval",
       "srcId": "amstsrc",
       "docId": "amstccweatheralert",
       "indexRedirect": true
@@ -60,6 +68,7 @@
     {
       "buildType": "dita",
       "root": "pc_automated_rate_adjustment.ditamap",
+      "filter": "AMST-pc_automated_rate_adjustment.ditaval",
       "srcId": "amstsrc",
       "docId": "amstpcautomatedrateadjustment",
       "indexRedirect": true
@@ -67,6 +76,7 @@
     {
       "buildType": "dita",
       "root": "pc_cyber_risk.ditamap",
+      "filter": "AMST-pc_cyber_risk.ditaval",
       "srcId": "amstsrc",
       "docId": "amstpccyberrisk",
       "indexRedirect": true
@@ -74,6 +84,7 @@
     {
       "buildType": "dita",
       "root": "pc_hazardhub_casualty.ditamap",
+      "filter": "AMST-pc_hazardhub_casualty.ditaval",
       "srcId": "amstsrc",
       "docId": "amstpchazardhubcasualty",
       "indexRedirect": true
@@ -81,6 +92,7 @@
     {
       "buildType": "dita",
       "root": "pc_hazardhub_property.ditamap",
+      "filter": "AMST-pc_hazardhub_property.ditaval",
       "srcId": "amstsrc",
       "docId": "amstpchazardhubproperty",
       "indexRedirect": true
@@ -88,6 +100,7 @@
     {
       "buildType": "dita",
       "root": "pc_smb_cyber_risk.ditamap",
+      "filter": "AMST-pc_smb_cyber_risk.ditaval",
       "srcId": "amstsrc",
       "docId": "amstpcsmbcyberrisk",
       "indexRedirect": true
@@ -95,6 +108,7 @@
     {
       "buildType": "dita",
       "root": "pc_submission_prioritization.ditamap",
+      "filter": "AMST-pc_submission_prioritization.ditaval",
       "srcId": "amstsrc",
       "docId": "amstpcsubmissionprioritization",
       "indexRedirect": true
@@ -102,6 +116,7 @@
     {
       "buildType": "dita",
       "root": "pc_underwriter_experience.ditamap",
+      "filter": "AMST-pc_underwriter_experience.ditaval",
       "srcId": "amstsrc",
       "docId": "amstpcunderwriterexperience",
       "indexRedirect": true
