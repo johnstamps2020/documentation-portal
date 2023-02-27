@@ -14,7 +14,11 @@ import gradientBackgroundImage from '../../images/background-gradient.svg';
 import { LandingPageProps } from '../landing';
 import { LandingPageSelectorProps } from '../../components/LandingPage/LandingPageSelector';
 import { usePageData } from '../../hooks/usePageData';
-import { SidebarProps } from '../../components/LandingPage/LandingPageSidebar2';
+
+export type SidebarProps = {
+  label: string;
+  items: LandingPageItem[];
+};
 
 export type LandingPageLayoutProps = {
   backgroundProps: {

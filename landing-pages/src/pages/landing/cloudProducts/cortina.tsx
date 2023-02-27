@@ -2,6 +2,7 @@ import { baseBackgroundProps } from '..';
 import ProductFamilyLayout from '../../../components/LandingPage/ProductFamily/ProductFamilyLayout';
 import cortinaBackgroundImage from '../../../images/background-cortina.svg';
 import gradientBackgroundImage from '../../../images/background-gradient.svg';
+import { SidebarProps } from '../../LandingPage/LandingPage';
 
 const docs = [
   {
@@ -26,6 +27,32 @@ const docs = [
   },
 ];
 
+const sidebar: SidebarProps = {
+  label: 'Implementation Resources',
+  items: [
+    {
+      label: 'Community Case Templates',
+      docId: 'cloudtickettemplates',
+    },
+    {
+      label: 'Product Adoption',
+      docId: 'surepathmethodologymain',
+    },
+    {
+      label: 'Cloud Standards',
+      docId: 'standardslatest',
+    },
+    {
+      label: 'Upgrade Diff Reports',
+      pagePath: 'upgradediffs',
+    },
+    {
+      label: 'Internal docs',
+      docId: 'internaldocslatest',
+    },
+  ],
+};
+
 export default function Cortina() {
   return (
     <ProductFamilyLayout
@@ -37,6 +64,7 @@ export default function Cortina() {
           xs: `url(${gradientBackgroundImage})`,
         },
       }}
+      sidebar={sidebar}
     />
   );
 }

@@ -6,7 +6,7 @@ type ProductFamilyCardProps = {
   children: JSX.Element | JSX.Element[] | undefined;
 };
 
-export default function LandingPageProductFamily({
+export default function ProductFamilyCard({
   children,
 }: ProductFamilyCardProps) {
   return (

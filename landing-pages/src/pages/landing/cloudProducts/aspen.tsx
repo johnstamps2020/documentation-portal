@@ -2,6 +2,7 @@ import ProductFamilyLayout from '../../../components/LandingPage/ProductFamily/P
 import { baseBackgroundProps } from '..';
 import gradientBackgroundImage from '../../../images/background-gradient.svg';
 import { CategoryLayout2Props } from '../../../components/LandingPage/Category/CategoryLayout2';
+import { SidebarProps } from '../../LandingPage/LandingPage';
 
 const docs = [
   {
@@ -26,7 +27,7 @@ const docs = [
   },
 ];
 
-const sidebar: CategoryLayout2Props['sidebar'] = {
+const sidebar: SidebarProps = {
   label: 'Implementation Resources',
   items: [
     {
@@ -60,6 +61,7 @@ export default function Aspen() {
         backgroundImage: `url(${gradientBackgroundImage})`,
       }}
       items={docs}
+      sidebar={sidebar}
     />
   );
 }
