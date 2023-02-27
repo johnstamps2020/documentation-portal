@@ -3,12 +3,8 @@ import LandingPageItem2 from './LandingPageItem2';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
-import { LandingPageItem } from '../../pages/LandingPage/LandingPage';
+import { SidebarProps } from '../../pages/LandingPage/LandingPage';
 
-export type SidebarProps = {
-  label: string;
-  items: LandingPageItem[];
-};
 export default function LandingPageSidebar2({ label, items }: SidebarProps) {
   return (
     <Paper

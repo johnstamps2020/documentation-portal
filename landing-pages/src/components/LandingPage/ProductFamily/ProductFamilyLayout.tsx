@@ -14,6 +14,7 @@ import {
 import { usePageData } from '../../../hooks/usePageData';
 import LandingPageLink from '../LandingPageLink';
 import ReleaseSelector from '../ReleaseSelector';
+import ProductFamilySidebar from './ProductFamilySidebar';
 
 type ProductFamilyLayoutProps = LandingPageLayoutProps & {
   items: LandingPageItem[];
@@ -22,6 +23,7 @@ type ProductFamilyLayoutProps = LandingPageLayoutProps & {
 export default function ProductFamilyLayout({
   backgroundProps,
   items,
+  sidebar,
 }: ProductFamilyLayoutProps) {
   const { pageData, isError, isLoading } = usePageData();
 
@@ -74,6 +76,7 @@ export default function ProductFamilyLayout({
             </ProductFamilyCard>
           ))}
         </Grid>
+        {sidebar && <ProductFamilySidebar {...sidebar} />}
       </Grid>
     </Grid>
   );
