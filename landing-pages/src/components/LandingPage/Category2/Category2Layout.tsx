@@ -18,7 +18,7 @@ export type Category2LayoutProps = LandingPageLayoutProps & {
     label: string;
     items: LandingPageItemProps[];
   }[];
-  whatsNewInfo: WhatsNewProps;
+  whatsNew: WhatsNewProps;
 };
 
 export default function Category2Layout({
@@ -59,7 +59,7 @@ export default function Category2Layout({
           pagePath="haha"
           backgroundImage={backgroundProps.backgroundImage}
         />
-        <WhatsNew {...whatsNewInfo} />
+        <WhatsNew {...whatsNew} />
       </Grid>
       <Grid
         container

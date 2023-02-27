@@ -191,7 +191,7 @@ export default function Flaine() {
   return (
     <CategoryLayout2
       items={docs}
-      whatsNewInfo={whatsNew}
+      whatsNew={whatsNew}
       backgroundProps={backgroundProps}
       sidebar={sidebar}
     />
