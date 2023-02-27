@@ -19,13 +19,13 @@ export default function Category2Sidebar({ label, items }: SidebarProps) {
         padding: '24px',
       }}
     >
-      <Typography variant="h2" sx={{ fontSize: '1.25rem', fontWeight: '600' }}>
+      <Typography variant="h2" sx={{ fontSize: "1.25rem", fontWeight: "600" }}>
         {label}
       </Typography>
       <Divider />
       <Stack
         spacing={1}
-        sx={{ spacing: 1, fontSize: '0.875rem', color: 'black' }}
+        sx={{ spacing: 1, fontSize: "0.875rem", color: "black" }}
       >
         {items.map((sidebarItem) => (
           <Category2Item {...sidebarItem} key={sidebarItem.label} />
