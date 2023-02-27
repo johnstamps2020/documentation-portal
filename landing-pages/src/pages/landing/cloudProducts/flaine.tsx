@@ -136,8 +136,8 @@ const docs: CategoryLayout2Props['items'] = [
     ],
   },
 ];
-const whatsNew: CategoryLayout2Props['whatsNewInfo'] = {
-  label: 'Flaine',
+const whatsNew: CategoryLayout2Props["whatsNew"] = {
+  label: "Flaine",
   badge: flaineBadge,
   item: { label: 'Learn more', docId: 'whatsnewflaine' },
   content: [
@@ -191,7 +191,7 @@ export default function Flaine() {
   return (
     <CategoryLayout2
       items={docs}
-      whatsNewInfo={whatsNew}
+      whatsNew={whatsNew}
       backgroundProps={backgroundProps}
       sidebar={sidebar}
     />
