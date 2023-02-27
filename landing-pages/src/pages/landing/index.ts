@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Page } from 'server/dist/model/entity/Page';
 import { LandingPageSelectorProps } from '../../components/LandingPage/LandingPageSelector';
 import { usePageData } from '../../hooks/usePageData';
 import { useReleases } from '../../hooks/useReleases';
@@ -17,18 +16,19 @@ export const baseBackgroundProps = {
 
 export function useReleasePageSelectorProps(): LandingPageSelectorProps {
   const { pageData } = usePageData();
-  const [releaseSelectorProps, setReleaseSelectorProps] =
-    useState<LandingPageSelectorProps>({
-      label: 'Select release',
-      selectedItemLabel: '',
-      labelColor: 'white',
-      items: [],
-    });
+  const [releaseSelectorProps, setReleaseSelectorProps] = useState<
+    LandingPageSelectorProps
+  >({
+    label: 'Select release',
+    selectedItemLabel: '',
+    labelColor: 'white',
+    items: [],
+  });
   const releases = useReleases();
 
   useEffect(() => {
     if (pageData) {
-      setReleaseSelectorProps((currentProps) => ({
+      setReleaseSelectorProps(currentProps => ({
         ...currentProps,
         selectedItemLabel: pageData.title,
       }));
@@ -37,10 +37,10 @@ export function useReleasePageSelectorProps(): LandingPageSelectorProps {
 
   useEffect(() => {
     if (releases.length > 0) {
-      setReleaseSelectorProps((currentProps) => {
+      setReleaseSelectorProps(currentProps => {
         return {
           ...currentProps,
-          items: releases.map((label) => ({
+          items: releases.map(label => ({
             label,
             href: `/cloudProducts/${label.toLowerCase()}`,
           })),

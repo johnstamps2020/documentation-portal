@@ -136,8 +136,8 @@ const docs: CategoryLayout2Props['items'] = [
     ],
   },
 ];
-const whatsNew: CategoryLayout2Props["whatsNew"] = {
-  label: "Flaine",
+const whatsNew: CategoryLayout2Props['whatsNew'] = {
+  label: 'Flaine',
   badge: flaineBadge,
   item: { label: 'Learn more', docId: 'whatsnewflaine' },
   content: [

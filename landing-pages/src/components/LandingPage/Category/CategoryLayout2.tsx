@@ -1,6 +1,5 @@
 import Grid from '@mui/material/Unstable_Grid2';
 import LandingPageCategory2 from './LandingPageCategory2';
-import LandingPageSelector from '../LandingPageSelector';
 import Breadcrumbs from '../Breadcrumbs';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -26,7 +25,7 @@ export default function CategoryLayout2({
   backgroundProps,
   sidebar,
   items,
-  whatsNew
+  whatsNew,
 }: CategoryLayout2Props) {
   return (
     <Grid
@@ -104,7 +103,7 @@ export default function CategoryLayout2({
             rowGap="32px"
           >
             {items.map(
-              (item) =>
+              item =>
                 item.items.length > 0 && (
                   <LandingPageCategory2 {...item} key={item.label} />
                 )
