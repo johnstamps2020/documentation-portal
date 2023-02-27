@@ -11,7 +11,8 @@
     "landing-pages-dev": "yarn workspace landing-pages start",
     "server-dev": "yarn workspace server dev",
     "dev": "yarn server-build && concurrently --kill-others-on-fail \"yarn server-dev\" \"yarn landing-pages-dev\"",
-    "build": "yarn server-build && yarn landing-pages-build"
+    "build": "yarn server-build && yarn landing-pages-build",
+    "prettier": "prettier --write ."
   },
   "version": "1.0.0",
   "main": "index.js",
@@ -21,5 +22,8 @@
   "dependencies": {
     "concurrently": "7.4.0",
     "swr": "^2.0.3"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.4"
   }
 }
