@@ -13,6 +13,7 @@ import {
 } from "../../../pages/LandingPage/LandingPage";
 import { usePageData } from "../../../hooks/usePageData";
 import LandingPageLink from "../LandingPageLink";
+import ReleaseSelector from "../ReleaseSelector";
 
 type ProductFamilyLayoutProps = LandingPageLayoutProps & {
   items: LandingPageItem[];
@@ -62,6 +63,7 @@ export default function ProductFamilyLayout({
           >
             {pageData.title}
           </Typography>
+          <ReleaseSelector currentRelease={pageData.title} />
         </Stack>
       </Grid>
       <Grid container width="100%" maxWidth="1330px" gap={2}>
