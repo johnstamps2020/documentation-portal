@@ -28,6 +28,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJInstallationGuide.ditamap",
+      "srcId": "ipjflainesrc",
+      "docId": "ipjflaineinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "IPJReleaseNotes.ditamap",
       "srcId": "ipj10src",
       "docId": "ipj10rn",

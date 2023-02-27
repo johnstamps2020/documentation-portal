@@ -108,6 +108,24 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "ipj10install",
+      "title": "Installation Guide",
+      "url": "ipj/1.0/app",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Japan"],
+        "platform": ["Cloud", "Self-managed"],
+        "version": ["1.0"],
+        "release": ["Flaine"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }
