@@ -83,7 +83,6 @@ export default function LandingPageSelector({
     if (selectedItem.href.startsWith("http")) {
       return (window.location.href = selectedItem.href);
     }
-    console.log(selectedItem.href);
 
     return navigate(selectedItem.href);
   };
