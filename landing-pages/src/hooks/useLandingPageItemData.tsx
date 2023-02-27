@@ -1,6 +1,6 @@
-import { LandingPageItem } from "../pages/LandingPage/LandingPage";
-import { PageError } from "./usePageData";
-import useSWR from "swr";
+import { LandingPageItem } from '../pages/LandingPage/LandingPage';
+import { PageError } from './usePageData';
+import useSWR from 'swr';
 
 type LandingPageItemData = {
   label?: string;

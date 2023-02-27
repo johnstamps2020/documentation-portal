@@ -1,6 +1,6 @@
-import Header, { headerHeight } from "./Header/Header";
-import Footer from "./Footer";
-import Box from "@mui/material/Box";
+import Header, { headerHeight } from './Header/Header';
+import Footer from './Footer';
+import Box from '@mui/material/Box';
 
 export type HeaderOptions = {
   searchFilters?: { [key: string]: string[] };
@@ -28,7 +28,7 @@ export default function Layout({
       <main>
         <Box
           sx={{
-            minHeight: { xs: "auto", sm: `calc(100vh - ${headerHeight})` },
+            minHeight: { xs: 'auto', sm: `calc(100vh - ${headerHeight})` },
           }}
         >
           {children}

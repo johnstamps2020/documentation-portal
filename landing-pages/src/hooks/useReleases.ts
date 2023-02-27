@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Release } from "server/dist/model/entity/Release";
+import { useEffect, useState } from 'react';
+import { Release } from 'server/dist/model/entity/Release';
 
 export function useReleases() {
   const [releases, setReleases] = useState<string[]>([]);
@@ -7,7 +7,7 @@ export function useReleases() {
   useEffect(() => {
     async function getReleases() {
       try {
-        const response = await fetch("/safeConfig/entity/Release/all");
+        const response = await fetch('/safeConfig/entity/Release/all');
         if (!response.ok) {
           throw new Error(
             `Cannot get list of releases from server: ${response.status}`

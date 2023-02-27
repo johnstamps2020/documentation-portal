@@ -1,5 +1,5 @@
-import { UserInfo } from "server/dist/types/user";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { UserInfo } from 'server/dist/types/user';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface UserInterface {
   userInfo: UserInfo | undefined;
@@ -13,14 +13,14 @@ type UserContextProviderProps = {
 
 export function UserProvider({ children }: UserContextProviderProps) {
   const [userInfo, setUserInfo] = useState<
-    UserInterface["userInfo"] | undefined
+    UserInterface['userInfo'] | undefined
   >();
 
   async function getUserInfo() {
     try {
-      const response = await fetch("/userInformation");
+      const response = await fetch('/userInformation');
       if (!response.ok) {
-        throw new Error("Cannot fetch user info");
+        throw new Error('Cannot fetch user info');
       }
       const jsonData = await response.json();
       setUserInfo(jsonData);
@@ -42,7 +42,7 @@ export const useUser = () => {
   const contextValue = useContext(UserContext);
 
   if (!contextValue) {
-    throw new Error("Please check that your page is wrapped in UserProvider");
+    throw new Error('Please check that your page is wrapped in UserProvider');
   }
 
   return contextValue;

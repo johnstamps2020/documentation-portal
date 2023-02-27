@@ -43,8 +43,9 @@ async function sendFeedback(formId) {
     return emails;
   }
 
-  let userCommentText = form.querySelector('textarea[name="userComment"]')
-    ?.value;
+  let userCommentText = form.querySelector(
+    'textarea[name="userComment"]'
+  )?.value;
 
   if (userCommentText) {
     submitButton.classList.add('disabled');
@@ -74,7 +75,7 @@ async function sendFeedback(formId) {
 
     const descriptionText = feedbackRequest.descriptionText;
     let cleanDescriptionText = {};
-    Object.keys(descriptionText).forEach(prop => {
+    Object.keys(descriptionText).forEach((prop) => {
       if (descriptionText[prop] && descriptionText[prop] !== 'undefined') {
         cleanDescriptionText[prop] = descriptionText[prop];
       }
@@ -137,7 +138,7 @@ function renderForm(feedbackType, email) {
   submitButton.setAttribute('class', 'feedbackSubmitButton');
   submitButton.setAttribute('type', 'button');
   submitButton.innerText = 'Submit';
-  submitButton.addEventListener('click', function() {
+  submitButton.addEventListener('click', function () {
     sendFeedback(formWrapperId);
   });
 
@@ -145,7 +146,7 @@ function renderForm(feedbackType, email) {
   closeButton.setAttribute('aria-label', 'Close');
   closeButton.setAttribute('class', 'feedbackFormCloseButton');
   closeButton.setAttribute('type', 'button');
-  closeButton.addEventListener('click', function() {
+  closeButton.addEventListener('click', function () {
     closeForm(formWrapperId);
   });
 
@@ -181,7 +182,7 @@ function renderThanksMessage() {
 function showThanksMessage() {
   const thanksMessage = document.getElementById('thanksMessage');
   thanksMessage.className = 'show';
-  setTimeout(function() {
+  setTimeout(function () {
     thanksMessage.classList.remove('show');
   }, 3000);
 }
@@ -240,7 +241,7 @@ function createFeedbackButton(positive) {
   button.classList.add(
     positive ? 'feedbackButtonPositive' : 'feedbackButtonNegative'
   );
-  button.addEventListener('click', function() {
+  button.addEventListener('click', function () {
     toggleFeedbackForm(positive ? 'positiveFeedback' : 'negativeFeedback');
   });
 

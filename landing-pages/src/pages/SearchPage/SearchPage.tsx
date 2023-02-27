@@ -1,13 +1,13 @@
-import Layout from "../../components/Layout/Layout";
-import Stack from "@mui/material/Stack";
-import { Divider, Drawer } from "@mui/material";
-import { SearchProvider } from "../../context/SearchContext";
-import SearchFiltersPanel from "../../components/SearchPage/SearchFilterPanel";
-import SearchPageBackdrop from "../../components/SearchPage/SearchPageBackdrop";
-import SearchResultsPanel from "../../components/SearchPage/SearchResultPanel";
-import { useState } from "react";
-import { appTheme } from "../../themes/appTheme";
-import FilterButton from "../../components/SearchPage/FilterButton";
+import Layout from '../../components/Layout/Layout';
+import Stack from '@mui/material/Stack';
+import { Divider, Drawer } from '@mui/material';
+import { SearchProvider } from '../../context/SearchContext';
+import SearchFiltersPanel from '../../components/SearchPage/SearchFilterPanel';
+import SearchPageBackdrop from '../../components/SearchPage/SearchPageBackdrop';
+import SearchResultsPanel from '../../components/SearchPage/SearchResultPanel';
+import { useState } from 'react';
+import { appTheme } from '../../themes/appTheme';
+import FilterButton from '../../components/SearchPage/FilterButton';
 
 export default function SearchPage() {
   const [showFilters, setShowFilters] = useState(false);

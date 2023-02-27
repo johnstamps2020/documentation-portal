@@ -1,13 +1,13 @@
-import SearchResult from "./SearchResult";
-import { useSearch } from "../../context/SearchContext";
-import Typography from "@mui/material/Typography";
-import AppliedFilters from "./AppliedFilters";
-import PaginationSelector from "./PaginationSelector";
-import Stack from "@mui/material/Stack";
-import Highlighter from "./Highlighter";
-import useClearFilters from "../../hooks/useClearFilters";
-import ClearFilterButton from "./ClearFiltersButton";
-import { StyledHeading1 } from "./StyledSearchComponents";
+import SearchResult from './SearchResult';
+import { useSearch } from '../../context/SearchContext';
+import Typography from '@mui/material/Typography';
+import AppliedFilters from './AppliedFilters';
+import PaginationSelector from './PaginationSelector';
+import Stack from '@mui/material/Stack';
+import Highlighter from './Highlighter';
+import useClearFilters from '../../hooks/useClearFilters';
+import ClearFilterButton from './ClearFiltersButton';
+import { StyledHeading1 } from './StyledSearchComponents';
 
 export default function SearchResults() {
   const { searchData } = useSearch();
@@ -43,12 +43,12 @@ export default function SearchResults() {
         direction="row"
         justifyContent="space-between"
         alignItems="flex-start"
-        sx={{ padding: "0.5rem 0 2rem 0.5rem" }}
+        sx={{ padding: '0.5rem 0 2rem 0.5rem' }}
       >
         <Stack spacing={1}>
           <Typography paragraph sx={{ padding: 0, margin: 0 }}>
             {`${searchData.totalNumOfResults} ${
-              searchData.totalNumOfResults === 1 ? "result" : "results"
+              searchData.totalNumOfResults === 1 ? 'result' : 'results'
             }`}
           </Typography>
           <AppliedFilters />

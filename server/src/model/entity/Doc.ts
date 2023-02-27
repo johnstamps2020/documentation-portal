@@ -28,35 +28,25 @@ export class Doc {
   @Column({ nullable: true })
   body: string;
 
-  @ManyToMany(
-    () => Product,
-    product => product,
-    { eager: true }
-  )
+  @ManyToMany(() => Product, (product) => product, { eager: true })
   @JoinTable()
   products: Product[];
 
-  @OneToOne(
-    () => Build,
-    build => build.id,
-    { eager: true }
-  )
+  @OneToOne(() => Build, (build) => build.id, { eager: true })
   @JoinColumn()
   build: Build;
 
-  @ManyToMany(
-    () => Release,
-    release => release.name,
-    { eager: true, nullable: true }
-  )
+  @ManyToMany(() => Release, (release) => release.name, {
+    eager: true,
+    nullable: true,
+  })
   @JoinTable()
   releases: Release[];
 
-  @ManyToMany(
-    () => Subject,
-    subject => subject.name,
-    { eager: true, nullable: true }
-  )
+  @ManyToMany(() => Subject, (subject) => subject.name, {
+    eager: true,
+    nullable: true,
+  })
   @JoinTable()
   subjects: Subject[];
 

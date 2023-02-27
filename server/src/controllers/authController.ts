@@ -38,7 +38,7 @@ export async function isAllowedToAccessPageOrDoc(
   next: NextFunction
 ) {
   const requestedResource = req.originalUrl.startsWith('/landing')
-    ? await getPage(req).then(r => r?.body)
+    ? await getPage(req).then((r) => r?.body)
     : await getDocByUrl(req.path);
   if (!requestedResource) {
     return res.redirect(`${fourOhFourRoute}?notFound=${req.originalUrl}`);
@@ -142,8 +142,8 @@ type AvailableOktaIssuers = {
 
 function getAvailableOktaIssuers(): AvailableOktaIssuers {
   const issuers = {
-    [process.env.OKTA_ACCESS_TOKEN_ISSUER as string]: process.env
-      .OKTA_CLIENT_ID,
+    [process.env.OKTA_ACCESS_TOKEN_ISSUER as string]:
+      process.env.OKTA_CLIENT_ID,
   };
   if (
     process.env.OKTA_ACCESS_TOKEN_ISSUER_APAC &&
@@ -172,7 +172,7 @@ function createOktaJwtVerifier(
     if (decodedJwt) {
       const jwtIssuer = decodedJwt.iss;
       const issuer = Object.entries(availableIssuers).find(
-        iss => iss[0] === jwtIssuer
+        (iss) => iss[0] === jwtIssuer
       );
       return new OktaJwtVerifier({
         issuer: issuer![0],

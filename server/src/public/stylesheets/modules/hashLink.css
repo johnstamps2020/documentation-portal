@@ -9,8 +9,8 @@
   opacity: 0;
   --transition-duration: 200ms;
   --transition-timing: ease-in-out;
-  transition: opacity var(--transition-duration) var(--transition-timing), 
-              transform var(--transition-duration) var(--transition-timing);
+  transition: opacity var(--transition-duration) var(--transition-timing),
+    transform var(--transition-duration) var(--transition-timing);
 }
 
 .hashLink::before {

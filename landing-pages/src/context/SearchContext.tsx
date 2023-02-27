@@ -1,12 +1,12 @@
-import { SearchData, ServerSearchError } from "server/dist/types/serverSearch";
+import { SearchData, ServerSearchError } from 'server/dist/types/serverSearch';
 import React, {
   createContext,
   useCallback,
   useContext,
   useEffect,
-  useState
-} from "react";
-import { useSearchParams } from "react-router-dom";
+  useState,
+} from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 interface SearchInterface {
   searchData: SearchData | undefined;
@@ -37,7 +37,7 @@ export function SearchProvider({ children }: SearchContextProviderProps) {
         const errorJson = await response.json();
         setLoadingSearchDataError({
           status: response.status,
-          message: errorJson.message
+          message: errorJson.message,
         });
       }
       const jsonData = await response.json();
@@ -45,7 +45,7 @@ export function SearchProvider({ children }: SearchContextProviderProps) {
     } catch (err) {
       setLoadingSearchDataError({
         status: 500,
-        message: `Cannot fetch search data: ${err}`
+        message: `Cannot fetch search data: ${err}`,
       });
     } finally {
       setLoadingSearchData(false);
@@ -53,7 +53,7 @@ export function SearchProvider({ children }: SearchContextProviderProps) {
   }, [searchParams]);
 
   useEffect(() => {
-    runSearch().catch(e => e);
+    runSearch().catch((e) => e);
   }, [searchParams, runSearch]);
 
   return (
@@ -62,7 +62,7 @@ export function SearchProvider({ children }: SearchContextProviderProps) {
         searchData,
         runSearch,
         loadingSearchData,
-        loadingSearchDataError
+        loadingSearchDataError,
       }}
     >
       {children}
@@ -74,7 +74,7 @@ export const useSearch = () => {
   const contextValue = useContext(SearchContext);
 
   if (!contextValue) {
-    throw new Error("Please check that your page is wrapped in SearchProvider");
+    throw new Error('Please check that your page is wrapped in SearchProvider');
   }
 
   return contextValue;

@@ -51,8 +51,9 @@ function getCurrentLink() {
 
 function getDocTitleBreadcrumb() {
   const docTitle = document.querySelector("meta[name='gw-doc-title']")?.content;
-  const docBaseUrl = document.querySelector("meta[name='gw-base-url']")
-    ?.content;
+  const docBaseUrl = document.querySelector(
+    "meta[name='gw-base-url']"
+  )?.content;
 
   if (!docTitle || !docBaseUrl) {
     return;
@@ -141,7 +142,7 @@ function addNavigationLinks() {
   navigationLinks.appendChild(previousLink);
   navigationLinks.appendChild(nextLink);
 
-  navigationLinks.addEventListener('click', e => {
+  navigationLinks.addEventListener('click', (e) => {
     if (e.target.matches('a')) {
       const toc = document.querySelector('nav[role="toc"]')
         ? document.querySelector('nav[role="toc"]')
@@ -177,7 +178,7 @@ function addPrintButton() {
   const title = 'Print this page';
   printButton.setAttribute('title', title);
   printButton.setAttribute('aria-label', title);
-  printButton.addEventListener('click', function() {
+  printButton.addEventListener('click', function () {
     window.print();
   });
 
@@ -216,7 +217,7 @@ function addScrollToTop() {
     '(prefers-reduced-motion: reduce)'
   );
 
-  scrollToTopButton.addEventListener('click', function() {
+  scrollToTopButton.addEventListener('click', function () {
     if (!prefersReducedMotion || prefersReducedMotion.matches) {
       html.scrollIntoView();
     } else {
@@ -313,7 +314,7 @@ function LinkList({ links }) {
         const href = hashLink.getAttribute('href');
         const parentClasses = hashLink.parentElement.classList;
         const applicableClasses = [...parentClasses].filter(
-          className => !className.match('^title$')
+          (className) => !className.match('^title$')
         );
 
         if (title && href) {
@@ -339,7 +340,7 @@ function MiniToc({ hashLinks }) {
   const miniTocTitle = 'On this page';
 
   const handleWindowResize = () => setWidth(window.innerWidth);
-  useEffect(function() {
+  useEffect(function () {
     window.addEventListener('resize', handleWindowResize);
     return () => window.removeEventListener('resize', handleWindowResize);
   }, []);

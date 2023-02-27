@@ -27,11 +27,7 @@ export class Build {
   @Column()
   type: string;
 
-  @ManyToOne(
-    () => Source,
-    source => source.id,
-    { eager: true }
-  )
+  @ManyToOne(() => Source, (source) => source.id, { eager: true })
   @JoinTable()
   source: Source;
 
@@ -50,11 +46,10 @@ export class Build {
   @Column({ nullable: true })
   workingDir: string;
 
-  @ManyToMany(
-    () => Resource,
-    resource => resource.id,
-    { eager: true, nullable: true }
-  )
+  @ManyToMany(() => Resource, (resource) => resource.id, {
+    eager: true,
+    nullable: true,
+  })
   @JoinTable()
   resources: Resource[];
 
@@ -70,9 +65,6 @@ export class Build {
   @Column('json', { nullable: true })
   customEnv: { name: string; value: string }[];
 
-  @OneToOne(
-    () => Doc,
-    doc => doc.build
-  )
+  @OneToOne(() => Doc, (doc) => doc.build)
   doc: Doc;
 }

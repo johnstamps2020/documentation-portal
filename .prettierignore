@@ -5,7 +5,6 @@
 /apps
 /frontend
 /s3
-node_modules
 build
 out
 dist

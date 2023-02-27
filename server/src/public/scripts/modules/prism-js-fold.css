@@ -6,7 +6,7 @@ code details:not([open]) {
   display: inline;
 }
 code details:not([open]) > summary::after {
-  content: " ... ";
+  content: ' ... ';
 }
 code details:not([open]) + span.ll {
   display: none;
@@ -23,7 +23,7 @@ code summary > span:first-child::before {
   height: 21px;
   margin-left: -16px;
   margin-top: 1px;
-  content: "▶";
+  content: '▶';
   font-size: 12px;
   font-style: normal;
   transition: transform 100ms;

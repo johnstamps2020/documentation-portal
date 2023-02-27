@@ -1,19 +1,19 @@
-import Grid from "@mui/material/Unstable_Grid2";
-import LandingPageSelector from "../LandingPageSelector";
-import Breadcrumbs from "../Breadcrumbs";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import LandingPageSidebar from "../LandingPageSidebar";
-import Stack from "@mui/material/Stack";
-import ProductFamilyCard from "./ProductFamilyCard";
-import SelfManagedLink from "../SelfManagedLink";
+import Grid from '@mui/material/Unstable_Grid2';
+import LandingPageSelector from '../LandingPageSelector';
+import Breadcrumbs from '../Breadcrumbs';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import LandingPageSidebar from '../LandingPageSidebar';
+import Stack from '@mui/material/Stack';
+import ProductFamilyCard from './ProductFamilyCard';
+import SelfManagedLink from '../SelfManagedLink';
 import {
   LandingPageItem,
   LandingPageLayoutProps,
-} from "../../../pages/LandingPage/LandingPage";
-import { usePageData } from "../../../hooks/usePageData";
-import LandingPageLink from "../LandingPageLink";
-import ReleaseSelector from "../ReleaseSelector";
+} from '../../../pages/LandingPage/LandingPage';
+import { usePageData } from '../../../hooks/usePageData';
+import LandingPageLink from '../LandingPageLink';
+import ReleaseSelector from '../ReleaseSelector';
 
 type ProductFamilyLayoutProps = LandingPageLayoutProps & {
   items: LandingPageItem[];
@@ -50,15 +50,15 @@ export default function ProductFamilyLayout({
             pagePath={pageData.path}
             backgroundImage={backgroundProps.backgroundImage}
           />
-          <Container style={{ padding: 0, margin: "5px 0 0 0" }}>
+          <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
             <Breadcrumbs />
           </Container>
           <Typography
             variant="h1"
             sx={
               backgroundProps.backgroundImage
-                ? { color: "white" }
-                : { color: "black" }
+                ? { color: 'white' }
+                : { color: 'black' }
             }
           >
             {pageData.title}

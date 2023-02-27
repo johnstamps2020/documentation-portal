@@ -48,7 +48,7 @@
 }
 
 .crumb {
-  font-size: clamp(.875rem, 1vw, 1rem);
+  font-size: clamp(0.875rem, 1vw, 1rem);
   color: rgb(40, 51, 63);
 }
 

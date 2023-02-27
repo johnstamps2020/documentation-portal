@@ -1,8 +1,8 @@
-import useSWR from "swr";
-import { LandingPageItem } from "../pages/LandingPage/LandingPage";
-import { usePagePath } from "./usePageData";
+import useSWR from 'swr';
+import { LandingPageItem } from '../pages/LandingPage/LandingPage';
+import { usePagePath } from './usePageData';
 
-const getter = (url: string) => fetch(url).then(r => r.json());
+const getter = (url: string) => fetch(url).then((r) => r.json());
 
 type BreadcrumbItem = {
   label: string;
@@ -20,6 +20,6 @@ export function useBreadcrumbs() {
   return {
     breadcrumbs: data,
     isLoading,
-    isError: error
+    isError: error,
   };
 }
