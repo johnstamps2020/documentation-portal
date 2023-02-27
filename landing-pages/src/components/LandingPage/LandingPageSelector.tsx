@@ -80,7 +80,12 @@ export default function LandingPageSelector({
       return null;
     }
 
-    return (window.location.href = selectedItem.href);
+    if (selectedItem.href.startsWith("http")) {
+      return (window.location.href = selectedItem.href);
+    }
+    console.log(selectedItem.href);
+
+    return navigate(selectedItem.href);
   };
 
   const sortedPageSelectorItems = sortPageSelectorItems(items);

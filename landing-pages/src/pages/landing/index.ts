@@ -34,7 +34,7 @@ export function useReleasePageSelectorProps(
           ...currentProps,
           items: releases.map((label) => ({
             label,
-            href: `/landing/cloudProducts/${label.toLowerCase()}`,
+            href: `/cloudProducts/${label.toLowerCase()}`,
           })),
         };
       });
