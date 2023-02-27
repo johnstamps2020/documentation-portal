@@ -10,6 +10,14 @@ type LandingPageLinkProps = {
   sx?: LinkProps["sx"];
 };
 
+function resolveUrl(srcUrl: string | undefined) {
+  if (!srcUrl) {
+    return "/";
+  }
+  const isAbsoluteUrl = srcUrl.startsWith("http") || srcUrl.startsWith("/");
+  return isAbsoluteUrl ? srcUrl : `/${srcUrl}`;
+}
+
 export default function LandingPageLink({ item, sx }: LandingPageLinkProps) {
   const { landingPageItemData, isError, isLoading } = useLandingPageItemData(
     item
@@ -36,7 +44,7 @@ export default function LandingPageLink({ item, sx }: LandingPageLinkProps) {
           {label}
         </Link>
       ) : (
-        <Link href={landingPageItemData.url} sx={sx}>
+        <Link href={resolveUrl(landingPageItemData.url)} sx={sx}>
           {label}
         </Link>
       )}

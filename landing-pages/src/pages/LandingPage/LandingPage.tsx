@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
-import { Page } from "server/dist/model/entity/Page";
 import { lazy, Suspense } from "react";
 import { Theme } from "@mui/material";
 import Skeleton from "@mui/material/Skeleton";
@@ -15,10 +14,9 @@ import gradientBackgroundImage from "../../images/background-gradient.svg";
 import { LandingPageProps } from "../landing";
 import { LandingPageSelectorProps } from "../../components/LandingPage/LandingPageSelector";
 import { usePageData } from "../../hooks/usePageData";
+import { SidebarProps } from "../../components/LandingPage/LandingPageSidebar2";
 
 export type LandingPageLayoutProps = {
-  pageData?: Page;
-  pageSelector?: LandingPageSelectorProps;
   backgroundProps: {
     backgroundImage?: any;
     backgroundAttachment: string;
@@ -26,6 +24,8 @@ export type LandingPageLayoutProps = {
     backgroundSize: string;
     minHeight: string;
   };
+  pageSelector?: LandingPageSelectorProps;
+  sidebar?: SidebarProps;
 };
 
 export type LandingPageItem = {
