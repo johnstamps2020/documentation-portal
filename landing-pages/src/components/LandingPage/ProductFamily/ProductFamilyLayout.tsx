@@ -63,7 +63,7 @@ export default function ProductFamilyLayout({
           >
             {pageData.title}
           </Typography>
-          <ReleaseSelector currentRelease={pageData.title} />
+          <ReleaseSelector />
         </Stack>
       </Grid>
       <Grid container width="100%" maxWidth="1330px" gap={2}>
