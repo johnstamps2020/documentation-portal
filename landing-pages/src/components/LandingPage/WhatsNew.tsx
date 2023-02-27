@@ -1,48 +1,33 @@
 import { Button, Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
-import flaineBadge from "../../images/badge-flaine.svg";
-import garmischBadge from "../../images/badge-garmisch.svg";
 
-type WhatsNewProps = {
-  path?: string;
+export type WhatsNewProps = {
+  label: string;
+  badge: string;
+  href: string; // It should a docId, pagePath or link url, just like in case of landing page items
+  content: string[];
 };
 
-export default function WhatsNew({ path }: WhatsNewProps) {
-  const contentFlaine = [
-    "Advanced Product Designer app (APD)",
-    "Submission Intake for InsuranceSuite",
-    "App Events for event-based integration",
-    "Community-powered machine learning",
-    "Automated updates to latest release",
-    "Cloud API enhancements",
-    "Early access to Jutro Digital Platform",
-    "Expanded Guidewire GO content",
-    "Advanced monitoring and observability",
-  ];
-  const releaseInfo = { label: "", badge: "", href: "" };
-  if (path?.includes("flaine")) {
-    releaseInfo.label = "Flaine";
-    releaseInfo.badge = flaineBadge;
-    releaseInfo.href = "/cloud/flaine/whatsnew";
-  } else if (path?.includes("garmisch")) {
-    releaseInfo.label = "Garmisch";
-    releaseInfo.badge = garmischBadge;
-    releaseInfo.href = "/cloud/garmisch/whatsnew";
-  }
+export default function WhatsNew({
+  label,
+  badge,
+  href,
+  content
+}: WhatsNewProps) {
   return (
     <Paper
       sx={{
         width: "300px",
         marginTop: "1.5rem",
         padding: "24px",
-        gap: "8px",
+        gap: "8px"
       }}
     >
       <Stack>
-        {releaseInfo.badge && (
+        {badge && (
           <img
-            src={releaseInfo.badge}
+            src={badge}
             alt="Release logo"
             aria-label="Release logo"
             style={{
@@ -50,7 +35,7 @@ export default function WhatsNew({ path }: WhatsNewProps) {
               height: "160px",
               marginLeft: "auto",
               marginRight: "auto",
-              marginBottom: "1.5rem",
+              marginBottom: "1.5rem"
             }}
           ></img>
         )}
@@ -60,10 +45,10 @@ export default function WhatsNew({ path }: WhatsNewProps) {
             margin: "0 auto 0.25rem auto",
             fontSize: "1.25rem",
             fontWeight: 600,
-            paddingBottom: "0.5rem",
+            paddingBottom: "0.5rem"
           }}
         >
-          What's new in {releaseInfo.label}
+          What's new in {label}
         </Typography>
         <Typography
           variant="h3"
@@ -71,13 +56,12 @@ export default function WhatsNew({ path }: WhatsNewProps) {
             color: "hsl(196, 100%, 31%)",
             fontSize: "0.875rem",
             fontWeight: 600,
-            textAlign: "center",
+            textAlign: "center"
           }}
         >
-          {releaseInfo.label} introduces the following key features and
-          capabilities:
+          {label} introduces the following key features and capabilities:
         </Typography>
-        {contentFlaine && (
+        {content && (
           <ul
             style={{
               fontSize: ".875rem",
@@ -86,10 +70,10 @@ export default function WhatsNew({ path }: WhatsNewProps) {
               marginBlockEnd: "1em",
               marginInlineStart: "0px",
               marginInlineEnd: "0px",
-              paddingInlineStart: "20px",
+              paddingInlineStart: "20px"
             }}
           >
-            {contentFlaine.map((feature) => {
+            {content.map(feature => {
               return (
                 <li
                   style={{ marginBottom: "0.5rem", fontSize: "0.875rem" }}
@@ -102,12 +86,12 @@ export default function WhatsNew({ path }: WhatsNewProps) {
           </ul>
         )}
         <Button
-          href={releaseInfo.href}
+          href={href}
           variant="contained"
           style={{
             width: "110px",
             margin: "10px auto 10px auto",
-            padding: "4px",
+            padding: "4px"
           }}
         >
           Learn more

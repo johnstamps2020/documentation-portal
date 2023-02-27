@@ -7,8 +7,8 @@ import CategoryLayout2, {
   CategoryLayout2Props
 } from "../../../components/LandingPage/Category/CategoryLayout2";
 import gradientBackgroundImage from "../../../images/background-gradient.svg";
-import garmischBackgroundImage from "../../../images/background-garmisch.png";
-import garmischBadge from "../../../images/badge-garmisch.svg";
+import flaineBadge from "../../../images/badge-flaine.svg";
+import flaineBackgroundImage from "../../../images/background-flaine.svg";
 
 const docs: CategoryLayout2Props["items"] = [
   {
@@ -29,10 +29,6 @@ const docs: CategoryLayout2Props["items"] = [
       {
         label: "Cloud Data Access",
         pagePath: "cloudProducts/cloudDataAccess/latest"
-      },
-      {
-        label: "Workflow Service (Early Access)",
-        pagePath: "cloudProducts/workflowservice"
       }
     ]
   },
@@ -41,27 +37,27 @@ const docs: CategoryLayout2Props["items"] = [
     items: [
       {
         label: "PolicyCenter",
-        pagePath: "cloudProducts/garmisch/pcGwCloud/2023.02"
+        pagePath: "cloudProducts/flaine/pcGwCloud/2022.09"
       },
       {
         label: "ClaimCenter",
-        pagePath: "cloudProducts/garmisch/ccGwCloud/2023.02"
+        pagePath: "cloudProducts/flaine/ccGwCloud/2022.09"
       },
       {
         label: "BillingCenter",
-        pagePath: "cloudProducts/garmisch/bcGwCloud/2023.02"
+        pagePath: "cloudProducts/flaine/bcGwCloud/2022.09"
       },
       {
         label: "InsuranceNow",
-        pagePath: "cloudProducts/garmisch/insuranceNow/2023.1"
+        pagePath: "cloudProducts/flaine/insuranceNow/2022.2"
       },
       {
         label: "Digital Reference Applications",
-        pagePath: "cloudProducts/garmisch/dx-ref-apps"
+        pagePath: "cloudProducts/flaine/dx-ref-apps"
       },
       {
         label: "Global Content Reference Applications",
-        pagePath: "cloudProducts/garmisch/global-ref-apps"
+        pagePath: "cloudProducts/flaine/global-ref-apps"
       }
     ]
   },
@@ -70,11 +66,11 @@ const docs: CategoryLayout2Props["items"] = [
     items: [
       {
         label: "DataHub",
-        pagePath: "cloudProducts/garmisch/dhGwCloud/2023.02"
+        pagePath: "cloudProducts/flaine/dhGwCloud/2022.09"
       },
       {
         label: "InfoCenter",
-        pagePath: "cloudProducts/garmisch/icGwCloud/2023.02"
+        pagePath: "cloudProducts/flaine/icGwCloud/2022.09"
       },
       {
         label: "Explore",
@@ -111,11 +107,11 @@ const docs: CategoryLayout2Props["items"] = [
     items: [
       {
         label: "Advanced Product Designer App",
-        pagePath: "cloudProducts/garmisch/apd"
+        pagePath: "cloudProducts/flaine/apd"
       },
       {
         label: "API References",
-        pagePath: "apiReferences/garmisch"
+        pagePath: "apiReferences/flaine"
       },
       {
         label: "Integration Gateway",
@@ -130,8 +126,12 @@ const docs: CategoryLayout2Props["items"] = [
         docId: "isrestapiclientguide"
       },
       {
+        label: "Jutro Digital Platform (Early Access)",
+        pagePath: "cloudProducts/flaine/jutroDigitalPlatform"
+      },
+      {
         label: "Guidewire Testing",
-        pagePath: "testingFramework/garmisch"
+        pagePath: "testingFramework/flaine"
       },
       {
         label: "Workset Manager",
@@ -141,15 +141,19 @@ const docs: CategoryLayout2Props["items"] = [
   }
 ];
 const whatsNewInfo: CategoryLayout2Props["whatsNewInfo"] = {
-  label: "Garmisch",
-  badge: garmischBadge,
-  href: "/cloud/garmisch/whatsnew",
+  label: "Flaine",
+  badge: flaineBadge,
+  href: "/cloud/flaine/whatsnew",
   content: [
-    "Washes your car",
-    "Folds the laundry",
-    "Enhances the flavor of your food",
-    "Makes you feel like a million bucks",
-    "Just kidding! Content coming soon."
+    "Advanced Product Designer app (APD)",
+    "Submission Intake for InsuranceSuite",
+    "App Events for event-based integration",
+    "Community-powered machine learning",
+    "Automated updates to latest release",
+    "Cloud API enhancements",
+    "Early access to Jutro Digital Platform",
+    "Expanded Guidewire GO content",
+    "Advanced monitoring and observability"
   ]
 };
 
@@ -159,13 +163,13 @@ const other = {
   }
 };
 
-export default function Garmisch({ title }: LandingPageProps) {
+export default function Flaine({ title }: LandingPageProps) {
   const pageSelectorProps = useReleasePageSelectorProps(title);
   const backgroundImage = {
     xs: `url(${gradientBackgroundImage})`,
-    sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
-  url(${garmischBackgroundImage}), 
-  linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`
+    sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
+       url(${flaineBackgroundImage}), 
+       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`
   };
 
   return (

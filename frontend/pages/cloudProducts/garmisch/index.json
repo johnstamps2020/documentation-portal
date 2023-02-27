@@ -168,6 +168,8 @@
     }
   ],
   "search_filters": {
-    "platform": ["Cloud"]
+    "platform": [
+      "Cloud"
+    ]
   }
 }

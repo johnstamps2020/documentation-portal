@@ -7,7 +7,7 @@ import Container from "@mui/material/Container";
 import LandingPageSidebar2 from "../LandingPageSidebar2";
 import Stack from "@mui/material/Stack";
 import SelfManagedLink from "../SelfManagedLink";
-import WhatsNew from "../WhatsNew";
+import WhatsNew, { WhatsNewProps } from "../WhatsNew";
 import {
   LandingPageItem,
   LandingPageLayoutProps
@@ -18,12 +18,14 @@ export type CategoryLayout2Props = LandingPageLayoutProps & {
     label: string;
     items: LandingPageItem[];
   }[];
+  whatsNewInfo: WhatsNewProps;
 };
 
 export default function CategoryLayout2({
   backgroundProps,
   pageSelector,
-  items
+  items,
+  whatsNewInfo
 }: CategoryLayout2Props) {
   return (
     <Grid
@@ -57,7 +59,7 @@ export default function CategoryLayout2({
           pagePath="haha"
           backgroundImage={backgroundProps.backgroundImage}
         />
-        <WhatsNew path="hehe" />
+        <WhatsNew {...whatsNewInfo} />
       </Grid>
       <Grid
         container

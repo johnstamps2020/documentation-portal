@@ -33,7 +33,7 @@
         {
           "label": "Lines of business",
           "class": "group",
-          "env": ["dev", "int", "staging"],
+          "env": ["dev", "staging"],
           "items": [
             {
               "label": "Businessowners Standards Based Template",
@@ -131,7 +131,6 @@
         {
           "label": "Add-ons",
           "class": "group",
-          "env": ["dev", "int", "staging", "prod"],
           "items": [
             {
               "label": "Digital Code Generation Extension Pack",

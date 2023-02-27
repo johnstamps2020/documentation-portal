@@ -10,7 +10,7 @@
       {
         "label": "Garmisch",
         "page": "../garmisch",
-        "env": ["int", "staging"]
+        "env": ["staging"]
       },
       {
         "label": "Elysian",
@@ -80,6 +80,10 @@
         {
           "label": "Digital Reference Applications",
           "page": "dx-ref-apps"
+        },
+        {
+          "label": "Global Content Reference Applications",
+          "page": "global-ref-apps"
         }
       ]
     },
@@ -121,15 +125,11 @@
         },
         {
           "label": "Data Studio (Early Access)",
-          "id": "datastudiodraft"
-        },
-        {
-          "label": "Data Studio (Early Access)",
           "id": "datastudiorelease"
         }
       ]
     },
-        {
+    {
       "label": "Developer Resources",
       "class": "categoryCard cardShadow",
       "items": [
@@ -164,16 +164,6 @@
         {
           "label": "Workset Manager",
           "id": "worksetmgr"
-        }
-      ]
-    },
-    {
-      "label": "Global Content",
-      "class": "categoryCard cardShadow",
-      "items": [
-        {
-          "label": "London Market",
-          "page": "../../globalContent/iplm/flaine"
         }
       ]
     }
