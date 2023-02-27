@@ -1,6 +1,6 @@
-import useSWR from 'swr';
-import { LandingPageItem } from '../pages/LandingPage/LandingPage';
-import { usePagePath } from './usePageData';
+import useSWR from "swr";
+import { LandingPageItemProps } from "../pages/LandingPage/LandingPage";
+import { usePagePath } from "./usePageData";
 
 const getter = (url: string) => fetch(url).then((r) => r.json());
 

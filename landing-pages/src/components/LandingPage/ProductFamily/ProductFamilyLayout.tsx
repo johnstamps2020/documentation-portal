@@ -8,7 +8,7 @@ import Stack from '@mui/material/Stack';
 import ProductFamilyCard from './ProductFamilyCard';
 import SelfManagedLink from '../SelfManagedLink';
 import {
-  LandingPageItem,
+  LandingPageItemProps,
   LandingPageLayoutProps,
 } from '../../../pages/LandingPage/LandingPage';
 import { usePageData } from '../../../hooks/usePageData';
@@ -17,7 +17,7 @@ import ReleaseSelector from '../ReleaseSelector';
 import ProductFamilySidebar from './ProductFamilySidebar';
 
 type ProductFamilyLayoutProps = LandingPageLayoutProps & {
-  items: LandingPageItem[];
+  items: LandingPageItemProps[];
 };
 
 export default function ProductFamilyLayout({

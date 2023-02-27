@@ -1,14 +1,14 @@
-import Stack from '@mui/material/Stack';
-import LandingPageItem2 from '../LandingPageItem2';
-import LandingPageSubCategory from './LandingPageSubCategory';
-import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
-import Divider from '@mui/material/Divider';
-import { LandingPageItem } from '../../../pages/LandingPage/LandingPage';
+import Stack from "@mui/material/Stack";
+import LandingPageItem2 from "../LandingPageItem2";
+import LandingPageSubCategory from "./LandingPageSubCategory";
+import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
+import Divider from "@mui/material/Divider";
+import { LandingPageItemProps } from "../../../pages/LandingPage/LandingPage";
 
 type LandingPageCategoryProps = {
   label: string;
-  items?: LandingPageItem[];
+  items?: LandingPageItemProps[];
 };
 export default function LandingPageCategory2(
   category: LandingPageCategoryProps

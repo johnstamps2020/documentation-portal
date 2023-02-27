@@ -32,7 +32,7 @@ export type LandingPageLayoutProps = {
   sidebar?: SidebarProps;
 };
 
-export type LandingPageItem = {
+export type LandingPageItemProps = {
   label?: string;
   docId?: string;
   pagePath?: string;

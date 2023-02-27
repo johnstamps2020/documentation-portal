@@ -9,15 +9,14 @@ import Stack from '@mui/material/Stack';
 import SelfManagedLink from '../SelfManagedLink';
 import WhatsNew, { WhatsNewProps } from '../WhatsNew';
 import {
-  LandingPageItem,
-  LandingPageLayoutProps,
-} from '../../../pages/LandingPage/LandingPage';
-import ReleaseSelector from '../ReleaseSelector';
+  LandingPageItemProps,
+  LandingPageLayoutProps
+} from "../../../pages/LandingPage/LandingPage";
 
 export type CategoryLayout2Props = LandingPageLayoutProps & {
   items: {
     label: string;
-    items: LandingPageItem[];
+    items: LandingPageItemProps[];
   }[];
   whatsNewInfo: WhatsNewProps;
 };
