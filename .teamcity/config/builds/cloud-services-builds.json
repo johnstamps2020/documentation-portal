@@ -12,14 +12,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "RulesReleaseNotes.ditamap",
-      "srcId": "rulessrc",
-      "docId": "gwrulesrn",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "RulesTypeManager.ditamap",
       "srcId": "rulessrc",
       "docId": "gwrulestypemgr",
