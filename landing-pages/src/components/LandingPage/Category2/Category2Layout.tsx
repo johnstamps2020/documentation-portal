@@ -23,10 +23,9 @@ export type Category2LayoutProps = LandingPageLayoutProps & {
 
 export default function Category2Layout({
   backgroundProps,
-  pageSelector,
   sidebar,
   items,
-  whatsNewInfo,
+  whatsNew,
 }: Category2LayoutProps) {
   return (
     <Grid

@@ -136,7 +136,7 @@ const docs: Category2LayoutProps['items'] = [
     ],
   },
 ];
-const whatsNew: Category2LayoutProps['whatsNewInfo'] = {
+const whatsNew: Category2LayoutProps['whatsNew'] = {
   label: 'Garmisch',
   badge: garmischBadge,
   item: { label: 'Learn more', docId: 'whatsnewgarmisch' },
@@ -183,16 +183,12 @@ const backgroundProps: Category2LayoutProps['backgroundProps'] = {
   }
 };
 
-export default function Garmisch({ title }: LandingPageProps) {
-  const pageSelectorProps = useReleasePageSelectorProps(title);
-
 export default function Garmisch() {
   return (
     <CategoryLayout2
       items={docs}
-      whatsNewInfo={whatsNew}
+      whatsNew={whatsNew}
       backgroundProps={backgroundProps}
-      pageSelector={pageSelectorProps}
       sidebar={sidebar}
     />
   );
