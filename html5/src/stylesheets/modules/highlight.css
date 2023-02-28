@@ -4,6 +4,7 @@ mark {
 
 .noHighlight mark {
   background-color: transparent !important;
+  color: inherit;
 }
 
 #highlightToggle {
