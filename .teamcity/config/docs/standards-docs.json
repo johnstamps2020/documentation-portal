@@ -425,6 +425,22 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "standardsmaster",
+      "title": "Guidewire Cloud Standards",
+      "url": "cloud/standards/master",
+      "metadata": {
+        "product": ["Guidewire Cloud Standards"],
+        "platform": ["Cloud"],
+        "version": ["master"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }
