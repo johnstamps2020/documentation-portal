@@ -1,19 +1,19 @@
 import Grid from '@mui/material/Unstable_Grid2';
-import LandingPageCategory2 from './LandingPageCategory2';
-import LandingPageSelector from '../LandingPageSelector';
+import Category2Card from './Category2Card';
 import Breadcrumbs from '../Breadcrumbs';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import LandingPageSidebar2 from '../LandingPageSidebar2';
+import Category2Sidebar from './Category2Sidebar';
 import Stack from '@mui/material/Stack';
 import SelfManagedLink from '../SelfManagedLink';
 import WhatsNew, { WhatsNewProps } from '../WhatsNew';
 import {
   LandingPageItemProps,
-  LandingPageLayoutProps
-} from "../../../pages/LandingPage/LandingPage";
+  LandingPageLayoutProps,
+} from '../../../pages/LandingPage/LandingPage';
+import ReleaseSelector from '../ReleaseSelector';
 
-export type CategoryLayout2Props = LandingPageLayoutProps & {
+export type Category2LayoutProps = LandingPageLayoutProps & {
   items: {
     label: string;
     items: LandingPageItemProps[];
@@ -21,12 +21,12 @@ export type CategoryLayout2Props = LandingPageLayoutProps & {
   whatsNewInfo: WhatsNewProps;
 };
 
-export default function CategoryLayout2({
+export default function Category2Layout({
   backgroundProps,
   sidebar,
   items,
   whatsNewInfo,
-}: CategoryLayout2Props) {
+}: Category2LayoutProps) {
   return (
     <Grid
       sx={{
@@ -103,20 +103,14 @@ export default function CategoryLayout2({
             rowGap="32px"
           >
             {items.map(
-              (item) =>
+              item =>
                 item.items.length > 0 && (
-                  <LandingPageCategory2 {...item} key={item.label} />
+                  <Category2Card {...item} key={item.label} />
                 )
             )}
           </Grid>
-          <Grid>
-            {sidebar ? (
-              <LandingPageSidebar2 {...sidebar} />
-            ) : (
-              <div
-                style={{ minHeight: 180, minWidth: 280, padding: '24px' }}
-              ></div>
-            )}
+          <Grid sx={{ minHeight: 180, minWidth: 280 }}>
+            {sidebar && <Category2Sidebar {...sidebar} />}
           </Grid>
         </Grid>
       </Grid>

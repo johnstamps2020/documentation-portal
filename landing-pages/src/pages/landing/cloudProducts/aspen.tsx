@@ -1,7 +1,6 @@
 import ProductFamilyLayout from '../../../components/LandingPage/ProductFamily/ProductFamilyLayout';
 import { baseBackgroundProps } from '..';
 import gradientBackgroundImage from '../../../images/background-gradient.svg';
-import { CategoryLayout2Props } from '../../../components/LandingPage/Category/CategoryLayout2';
 import { SidebarProps } from '../../LandingPage/LandingPage';
 
 const docs = [

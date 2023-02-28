@@ -1,4 +1,4 @@
-import LandingPageItem from '../LandingPageItem';
+import LandingPageItem from '../Category/CategoryItem';
 
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';

@@ -1,12 +1,12 @@
 import { baseBackgroundProps } from '..';
 import CategoryLayout2, {
-  CategoryLayout2Props,
-} from '../../../components/LandingPage/Category/CategoryLayout2';
+  Category2LayoutProps,
+} from '../../../components/LandingPage/Category2/Category2Layout';
 import gradientBackgroundImage from '../../../images/background-gradient.svg';
 import garmischBackgroundImage from '../../../images/background-garmisch.png';
 import garmischBadge from '../../../images/badge-garmisch.svg';
 
-const docs: CategoryLayout2Props['items'] = [
+const docs: Category2LayoutProps['items'] = [
   {
     label: 'Platform',
     items: [
@@ -136,7 +136,7 @@ const docs: CategoryLayout2Props['items'] = [
     ],
   },
 ];
-const whatsNew: CategoryLayout2Props['whatsNewInfo'] = {
+const whatsNew: Category2LayoutProps['whatsNewInfo'] = {
   label: 'Garmisch',
   badge: garmischBadge,
   item: { label: 'Learn more', docId: 'whatsnewgarmisch' },
@@ -148,7 +148,7 @@ const whatsNew: CategoryLayout2Props['whatsNewInfo'] = {
     'Just kidding! Content coming soon.',
   ],
 };
-const sidebar: CategoryLayout2Props['sidebar'] = {
+const sidebar: Category2LayoutProps['sidebar'] = {
   label: 'Implementation Resources',
   items: [
     {
@@ -173,7 +173,7 @@ const sidebar: CategoryLayout2Props['sidebar'] = {
     },
   ],
 };
-const backgroundProps: CategoryLayout2Props['backgroundProps'] = {
+const backgroundProps: Category2LayoutProps['backgroundProps'] = {
   ...baseBackgroundProps,
   backgroundImage: {
     xs: `url(${gradientBackgroundImage})`,

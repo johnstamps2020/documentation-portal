@@ -1,21 +1,27 @@
 import Grid from '@mui/material/Unstable_Grid2';
-import LandingPageCategory from './LandingPageCategory';
-import LandingPageSelector from '../LandingPageSelector';
+import CategoryCard, { CategoryCardProps } from './CategoryCard';
 import Breadcrumbs from '../Breadcrumbs';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import LandingPageSidebar from '../LandingPageSidebar';
 import Stack from '@mui/material/Stack';
 import SelfManagedLink from '../SelfManagedLink';
 import Paper from '@mui/material/Paper';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/material/Link';
-import { LandingPageLayoutProps } from '../../../pages/LandingPage/LandingPage';
 import { usePageData } from '../../../hooks/usePageData';
+import { LandingPageLayoutProps } from '../../../pages/LandingPage/LandingPage';
+import ReleaseSelector from '../ReleaseSelector';
+import CategorySidebar from './CategorySidebar';
+
+export type CategoryLayoutProps = LandingPageLayoutProps & {
+  cards: CategoryCardProps[];
+};
 
 export default function CategoryLayout({
   backgroundProps,
-}: LandingPageLayoutProps) {
+  cards,
+  sidebar,
+}: CategoryLayoutProps) {
   const { pageData, isLoading, isError } = usePageData();
 
   if (isLoading || isError || !pageData) {
@@ -51,6 +57,7 @@ export default function CategoryLayout({
           >
             {pageData.title}
           </Typography>
+          <ReleaseSelector />
         </Stack>
         {pageData.path.includes('cloudProducts/elysian') && (
           <Paper
@@ -84,7 +91,12 @@ export default function CategoryLayout({
             minWidth: { xs: '100%', sm: '616px', md: '932px' },
             maxWidth: '932px',
           }}
-        ></Grid>
+        >
+          {cards.map(card => (
+            <CategoryCard {...card} key={card.label} />
+          ))}
+        </Grid>
+        {sidebar && <CategorySidebar {...sidebar} />}
       </Grid>
     </Grid>
   );

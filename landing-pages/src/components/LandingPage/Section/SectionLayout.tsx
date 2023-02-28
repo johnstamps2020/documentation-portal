@@ -4,7 +4,7 @@ import LandingPageSelector from '../LandingPageSelector';
 import Breadcrumbs from '../Breadcrumbs';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import LandingPageSidebar from '../LandingPageSidebar';
+import LandingPageSidebar from '../Category/CategorySidebar';
 import { Page } from 'server/dist/model/entity/Page';
 import Stack from '@mui/material/Stack';
 import SelfManagedLink from '../SelfManagedLink';

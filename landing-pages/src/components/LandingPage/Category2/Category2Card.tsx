@@ -1,6 +1,5 @@
 import Stack from "@mui/material/Stack";
-import LandingPageItem2 from "../LandingPageItem2";
-import LandingPageSubCategory from "./LandingPageSubCategory";
+import Category2Item from "./Category2Item";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import Divider from "@mui/material/Divider";
@@ -10,7 +9,7 @@ type LandingPageCategoryProps = {
   label: string;
   items?: LandingPageItemProps[];
 };
-export default function LandingPageCategory2(
+export default function Category2Card(
   category: LandingPageCategoryProps
 ) {
   return (
@@ -26,7 +25,7 @@ export default function LandingPageCategory2(
       <Divider />
       <Stack spacing={1} sx={{ fontSize: '0.875rem', color: 'black' }}>
         {category.items?.map((categoryItem) => (
-          <LandingPageItem2 {...categoryItem} key={categoryItem.label} />
+          <Category2Item {...categoryItem} key={categoryItem.label} />
         ))}
       </Stack>
     </Paper>
