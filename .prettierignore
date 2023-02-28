@@ -8,6 +8,7 @@
 
 *.iml
 *.log
+*.yml
 
 .docusaurus
 /docusaurus/**/lib
@@ -17,3 +18,5 @@ out
 /html5/static
 logs
 generated
+stats.json
+openapi
