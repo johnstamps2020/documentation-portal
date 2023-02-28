@@ -2,7 +2,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import internalLogo from '../../images/internal_document_icon.svg';
 
-export default function InternalTooltip(item: {}) {
+export default function InternalTooltip() {
   return (
     <Tooltip
       title={<Typography>Guidewire internal content</Typography>}
@@ -10,7 +10,6 @@ export default function InternalTooltip(item: {}) {
       arrow
     >
       <img
-        key="dummykey"
         src={internalLogo}
         alt="internal-document"
         height="20px"

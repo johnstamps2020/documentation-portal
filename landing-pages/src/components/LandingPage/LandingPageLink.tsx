@@ -1,13 +1,13 @@
-import Stack from '@mui/material/Stack';
-import { useLandingPageItemData } from '../../hooks/useLandingPageItemData';
-import { LandingPageItem } from '../../pages/LandingPage/LandingPage';
-import Link, { LinkProps } from '@mui/material/Link';
-import { Link as RouterLink } from 'react-router-dom';
-import InternalTooltip from './InternalTooltip';
+import Stack from "@mui/material/Stack";
+import { useLandingPageItemData } from "../../hooks/useLandingPageItemData";
+import { LandingPageItemProps } from "../../pages/LandingPage/LandingPage";
+import Link, { LinkProps } from "@mui/material/Link";
+import { Link as RouterLink } from "react-router-dom";
+import InternalTooltip from "./InternalTooltip";
 
 type LandingPageLinkProps = {
-  item: LandingPageItem;
-  sx?: LinkProps['sx'];
+  item: LandingPageItemProps;
+  sx?: LinkProps["sx"];
 };
 
 function resolveUrl(srcUrl: string | undefined) {

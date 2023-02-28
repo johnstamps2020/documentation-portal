@@ -1,6 +1,6 @@
-import { LandingPageItem } from '../pages/LandingPage/LandingPage';
-import { PageError } from './usePageData';
-import useSWR from 'swr';
+import { LandingPageItemProps } from "../pages/LandingPage/LandingPage";
+import { PageError } from "./usePageData";
+import useSWR from "swr";
 
 type LandingPageItemData = {
   label?: string;
@@ -13,7 +13,7 @@ type LandingPageItemData = {
 };
 
 const landingPageItemGetter = async (
-  item: LandingPageItem
+  item: LandingPageItemProps
 ): Promise<LandingPageItemData> => {
   let urlSuffix;
   if (item.docId) {
@@ -33,7 +33,7 @@ const landingPageItemGetter = async (
   return jsonData;
 };
 
-export function useLandingPageItemData(item: LandingPageItem) {
+export function useLandingPageItemData(item: LandingPageItemProps) {
   const { data, error, isLoading } = useSWR<LandingPageItemData, PageError>(
     item,
     landingPageItemGetter

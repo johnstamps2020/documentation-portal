@@ -1,12 +1,12 @@
 import { baseBackgroundProps } from '..';
-import CategoryLayout2, {
-  CategoryLayout2Props,
-} from '../../../components/LandingPage/Category/CategoryLayout2';
+import Category2Layout, {
+  Category2LayoutProps,
+} from '../../../components/LandingPage/Category2/Category2Layout';
 import gradientBackgroundImage from '../../../images/background-gradient.svg';
 import flaineBadge from '../../../images/badge-flaine.svg';
 import flaineBackgroundImage from '../../../images/background-flaine.svg';
 
-const docs: CategoryLayout2Props['items'] = [
+const docs: Category2LayoutProps['items'] = [
   {
     label: 'Platform',
     items: [
@@ -136,7 +136,7 @@ const docs: CategoryLayout2Props['items'] = [
     ],
   },
 ];
-const whatsNew: CategoryLayout2Props['whatsNew'] = {
+const whatsNew: Category2LayoutProps['whatsNew'] = {
   label: 'Flaine',
   badge: flaineBadge,
   item: { label: 'Learn more', docId: 'whatsnewflaine' },
@@ -152,44 +152,44 @@ const whatsNew: CategoryLayout2Props['whatsNew'] = {
     'Advanced monitoring and observability',
   ],
 };
-const sidebar: CategoryLayout2Props['sidebar'] = {
+const sidebar: Category2LayoutProps['sidebar'] = {
   label: 'Implementation Resources',
   items: [
     {
-      label: 'Community Case Templates',
-      docId: 'cloudtickettemplates',
+      label: "Community Case Templates",
+      docId: "cloudtickettemplates"
     },
     {
-      label: 'Product Adoption',
-      docId: 'surepathmethodologymain',
+      label: "Product Adoption",
+      docId: "surepathmethodologymain"
     },
     {
-      label: 'Cloud Standards',
-      docId: 'standardslatest',
+      label: "Cloud Standards",
+      docId: "standardslatest"
     },
     {
-      label: 'Upgrade Diff Reports',
-      pagePath: 'upgradediffs',
+      label: "Upgrade Diff Reports",
+      pagePath: "upgradediffs"
     },
     {
-      label: 'Internal docs',
-      docId: 'internaldocslatest',
-    },
-  ],
+      label: "Internal docs",
+      docId: "internaldocslatest"
+    }
+  ]
 };
-const backgroundProps: CategoryLayout2Props['backgroundProps'] = {
+const backgroundProps: Category2LayoutProps['backgroundProps'] = {
   ...baseBackgroundProps,
   backgroundImage: {
     xs: `url(${gradientBackgroundImage})`,
     sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
        url(${flaineBackgroundImage}), 
-       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
-  },
+       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`
+  }
 };
 
 export default function Flaine() {
   return (
-    <CategoryLayout2
+    <Category2Layout
       items={docs}
       whatsNew={whatsNew}
       backgroundProps={backgroundProps}
