@@ -1,10 +1,10 @@
-import "../stylesheets/modules/footer.css";
+import '../stylesheets/modules/footer.css';
 
 export function addFooterContents(isOffline) {
   const footerTemplate = `<div>
         <div class="footerLinks">
             <span class="footerLink">
-                <a href="${isOffline && "https://docs.guidewire.com"}/support"${
+                <a href="${isOffline && 'https://docs.guidewire.com'}/support"${
     isOffline && 'target="__blank" rel="noopener noreferrer"'
   }>Legal and Support Information</a>
             </span>
@@ -15,6 +15,6 @@ export function addFooterContents(isOffline) {
         </div>
     </div>`;
 
-  const footerRight = document.getElementById("footerRight");
+  const footerRight = document.getElementById('footerRight');
   footerRight.innerHTML = footerTemplate;
 }

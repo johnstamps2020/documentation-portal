@@ -1,26 +1,26 @@
-import Feedback from "@theme/Feedback";
-import { SearchMeta } from "@theme/Types";
-import { UserInformation } from "@theme/Types";
+import Feedback from '@theme/Feedback';
+import { SearchMeta } from '@theme/Types';
+import { UserInformation } from '@theme/Types';
 
 export default function FeedbackExample() {
   const jiraApiUrl = `${window.location.origin}/jira`;
-  const title = "Vite test";
+  const title = 'Vite test';
   const url = window.location.href;
   const searchMeta: SearchMeta = {
-    docTitle: "unset",
+    docTitle: 'unset',
     docInternal: false,
     docEarlyAccess: false,
-    product: ["Vite"],
-    platform: ["MacOS"],
-    version: ["latest"],
-    release: ["unknown"],
-    subject: ["unknown"],
+    product: ['Vite'],
+    platform: ['MacOS'],
+    version: ['latest'],
+    release: ['unknown'],
+    subject: ['unknown'],
   };
   const userInformation: UserInformation = {
     hasGuidewireEmail: true,
     isLoggedIn: true,
-    name: "Sergio InBlanco",
-    preferred_username: "sinblanco@guidewire.com",
+    name: 'Sergio InBlanco',
+    preferred_username: 'sinblanco@guidewire.com',
   };
   return (
     <div>

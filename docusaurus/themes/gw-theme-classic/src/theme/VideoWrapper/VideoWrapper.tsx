@@ -1,8 +1,8 @@
-import React from "react";
-import Iframe from "@theme/Iframe";
-import BrightcoveVideo from "@theme/BrightcoveVideo";
-import TranscriptDownloadButton from "@theme/TranscriptDownloadButton/TranscriptDownloadButton";
-import { VideoObject } from "@theme/VideoWrapper";
+import React from 'react';
+import Iframe from '@theme/Iframe';
+import BrightcoveVideo from '@theme/BrightcoveVideo';
+import TranscriptDownloadButton from '@theme/TranscriptDownloadButton/TranscriptDownloadButton';
+import { VideoObject } from '@theme/VideoWrapper';
 
 export default function VideoWrapper({
   transcript,
@@ -12,7 +12,7 @@ export default function VideoWrapper({
   width,
 }: VideoObject) {
   return (
-    <div style={{ width: width ? width : "100%" }}>
+    <div style={{ width: width ? width : '100%' }}>
       {src && <Iframe src={src} />}
       {videoId && <BrightcoveVideo videoId={videoId} />}
       {transcript && ariaLabelForDownload && (

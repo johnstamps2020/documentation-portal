@@ -17,7 +17,7 @@ async function listItems(prefix) {
 async function addItems(filesFromClient, prefix) {
   try {
     const fileResults = [];
-    const filesIterable = (function() {
+    const filesIterable = (function () {
       if (Array.isArray(filesFromClient)) {
         return filesFromClient;
       } else {

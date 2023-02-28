@@ -1,7 +1,7 @@
-import React from "react";
-import CodeBlock from "@theme/CodeBlock";
-import pluginInfo from "../../../plugins/gw-plugin-redoc/package.json";
-import themeInfo from "../../../themes/gw-theme-classic/package.json";
+import React from 'react';
+import CodeBlock from '@theme/CodeBlock';
+import pluginInfo from '../../../plugins/gw-plugin-redoc/package.json';
+import themeInfo from '../../../themes/gw-theme-classic/package.json';
 
 type InstallationCodeBlockProps = {
   forPlugin?: boolean;

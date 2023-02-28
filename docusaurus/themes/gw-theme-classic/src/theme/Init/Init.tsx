@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { usePluginData } from "@docusaurus/useGlobalData";
-import { useDocContext } from "@theme/DocContext";
-import mockUserData from "@theme/mockUserData";
-import { versionSelectorMockup } from "./versionSelectorMockup";
-import { PluginData, SearchMeta } from "@theme/Types";
-import { PLUGIN_NAME } from "../../types/constants";
+import React, { useEffect } from 'react';
+import { usePluginData } from '@docusaurus/useGlobalData';
+import { useDocContext } from '@theme/DocContext';
+import mockUserData from '@theme/mockUserData';
+import { versionSelectorMockup } from './versionSelectorMockup';
+import { PluginData, SearchMeta } from '@theme/Types';
+import { PLUGIN_NAME } from '../../types/constants';
 
 export default function Init(props) {
   const {
@@ -15,28 +15,28 @@ export default function Init(props) {
     setSearchMeta,
   } = useDocContext();
   const { gwDocId } = usePluginData(PLUGIN_NAME) as PluginData;
-  const isDevelopment = process.env.NODE_ENV === "development";
+  const isDevelopment = process.env.NODE_ENV === 'development';
 
   function mockSetup() {
     setUserInformation(mockUserData.internal);
     setIsInternal(false);
     setIsEarlyAccess(false);
     setSearchMeta({
-      docTitle: "Webhooks API Reference",
+      docTitle: 'Webhooks API Reference',
       docInternal: false,
       docEarlyAccess: true,
-      product: ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-      platform: ["Cloud"],
-      version: ["latest"],
-      release: ["Elysian"],
-      subject: ["Integration"],
+      product: ['BillingCenter', 'ClaimCenter', 'PolicyCenter'],
+      platform: ['Cloud'],
+      version: ['latest'],
+      release: ['Elysian'],
+      subject: ['Integration'],
     });
     setAvailableVersions(versionSelectorMockup);
   }
 
   async function fetchUserInformation() {
     try {
-      const userResponse = await fetch("/userInformation");
+      const userResponse = await fetch('/userInformation');
       if (userResponse.ok) {
         const userJson = await userResponse.json();
         setUserInformation(userJson);
@@ -46,8 +46,8 @@ export default function Init(props) {
         hasGuidewireEmail: false,
         isLoggedIn: false,
         error: err,
-        preferred_username: "not-logged-in",
-        name: "Falstaff",
+        preferred_username: 'not-logged-in',
+        name: 'Falstaff',
       });
     }
   }
@@ -68,7 +68,7 @@ export default function Init(props) {
       const allVersions = json.matchingVersionSelector.allVersions;
       setAvailableVersions(allVersions);
     } catch (err) {
-      console.error("PROBLEM GETTING OTHER VERSIONS", err);
+      console.error('PROBLEM GETTING OTHER VERSIONS', err);
     }
   }
 
@@ -92,7 +92,7 @@ export default function Init(props) {
       setIsEarlyAccess(searchMeta.docEarlyAccess);
       setIsInternal(searchMeta.docInternal);
     } catch (err) {
-      console.error("PROBLEM GETTING DOC METADATA", err);
+      console.error('PROBLEM GETTING DOC METADATA', err);
     }
   }
 

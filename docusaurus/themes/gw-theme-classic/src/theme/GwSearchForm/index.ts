@@ -1,3 +1,3 @@
-import GwSearchForm from "./GwSearchForm";
+import GwSearchForm from './GwSearchForm';
 
 export default GwSearchForm;

@@ -1,8 +1,8 @@
-import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import { useDocContext } from "@theme/DocContext";
-import mockUserData from "@theme/mockUserData";
-import React from "react";
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import { useDocContext } from '@theme/DocContext';
+import mockUserData from '@theme/mockUserData';
+import React from 'react';
 
 export default function ExternalUserCheckbox() {
   const { setUserInformation, userInformation } = useDocContext();

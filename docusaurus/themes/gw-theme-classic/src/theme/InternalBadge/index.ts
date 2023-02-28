@@ -1,3 +1,3 @@
-import InternalBadge from "./InternalBadge";
+import InternalBadge from './InternalBadge';
 
 export default InternalBadge;

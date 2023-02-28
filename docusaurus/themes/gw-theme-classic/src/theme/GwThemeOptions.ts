@@ -1,25 +1,25 @@
-import { ThemeOptions } from "@mui/material";
+import { ThemeOptions } from '@mui/material';
 
 export const guidewireThemeOptions: ThemeOptions = {
   palette: {
-    mode: "light",
+    mode: 'light',
     primary: {
-      main: "#00739d",
+      main: '#00739d',
     },
     secondary: {
-      main: "#3c4c5e",
+      main: '#3c4c5e',
     },
     warning: {
-      main: "#FFA500",
+      main: '#FFA500',
     },
   },
   typography: {
-    fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+    fontFamily: ['Source Sans Pro', 'sans-serif'].join(','),
     button: {
-      textTransform: "none",
+      textTransform: 'none',
       fontWeight: 600,
-      "&:hover": {
-        color: "white",
+      '&:hover': {
+        color: 'white',
       },
     },
   },

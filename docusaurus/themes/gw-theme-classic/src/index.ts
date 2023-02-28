@@ -1,15 +1,15 @@
-import type { LoadContext, Plugin } from "@docusaurus/types";
-import type { PluginOptions } from "@docusaurus/theme-classic";
-import type { ThemeConfig } from "@docusaurus/theme-common";
-import { resolve } from "path";
-import { PluginData } from "@theme/Types";
-import { PLUGIN_NAME } from "./types/constants";
-import type { TranslationFileContent } from "@docusaurus/types";
-import { readFileSync } from "fs";
+import type { LoadContext, Plugin } from '@docusaurus/types';
+import type { PluginOptions } from '@docusaurus/theme-classic';
+import type { ThemeConfig } from '@docusaurus/theme-common';
+import { resolve } from 'path';
+import { PluginData } from '@theme/Types';
+import { PLUGIN_NAME } from './types/constants';
+import type { TranslationFileContent } from '@docusaurus/types';
+import { readFileSync } from 'fs';
 
 export function readJsonFile(fileName: string): { [id: string]: string } {
   const translationData: TranslationFileContent = JSON.parse(
-    readFileSync(`${__dirname}/i18n/${fileName}`, { encoding: "utf-8" })
+    readFileSync(`${__dirname}/i18n/${fileName}`, { encoding: 'utf-8' })
   );
 
   return Object.entries(translationData).reduce(
@@ -21,19 +21,18 @@ export function readJsonFile(fileName: string): { [id: string]: string } {
   );
 }
 
-
 const getAppBaseUrl = () => {
-  if (process.env["TARGET_URL"]) {
-    if (!process.env["TARGET_URL"].match(".staging.")) {
-      return process.env["TARGET_URL"];
+  if (process.env['TARGET_URL']) {
+    if (!process.env['TARGET_URL'].match('.staging.')) {
+      return process.env['TARGET_URL'];
     }
   }
 
-  return "https://docs.guidewire.com";
+  return 'https://docs.guidewire.com';
 };
 
 const siteMetadata = {
-  gwDocId: process.env["GW_DOC_ID"] || "exampleid",
+  gwDocId: process.env['GW_DOC_ID'] || 'exampleid',
   appBaseUrl: getAppBaseUrl(),
 };
 
@@ -54,11 +53,11 @@ export default async function (
     name: PLUGIN_NAME,
 
     getThemePath() {
-      return resolve(__dirname, "../lib/theme");
+      return resolve(__dirname, '../lib/theme');
     },
 
     getTypeScriptThemePath() {
-      return resolve(__dirname, "../src/theme");
+      return resolve(__dirname, '../src/theme');
     },
 
     async getDefaultCodeTranslationMessages() {
@@ -67,7 +66,7 @@ export default async function (
 
     async contentLoaded({ actions, allContent }) {
       const defaultContent: any =
-        allContent["docusaurus-plugin-content-docs"].default;
+        allContent['docusaurus-plugin-content-docs'].default;
       const topVersionContent = defaultContent.loadedVersions[0];
 
       // get internal docs

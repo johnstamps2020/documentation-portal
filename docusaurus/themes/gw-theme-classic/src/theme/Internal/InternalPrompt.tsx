@@ -1,6 +1,6 @@
-import Translate from "@theme/Translate";
-import React from "react";
-import styles from "./Internal.module.css";
+import Translate from '@theme/Translate';
+import React from 'react';
+import styles from './Internal.module.css';
 
 export default function Prompt() {
   return (

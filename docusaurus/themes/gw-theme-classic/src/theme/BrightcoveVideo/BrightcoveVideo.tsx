@@ -1,6 +1,6 @@
-import React from "react";
-import ReactPlayerLoader from "@brightcove/react-player-loader";
-import styles from "./BrightcoveVideo.module.css";
+import React from 'react';
+import ReactPlayerLoader from '@brightcove/react-player-loader';
+import styles from './BrightcoveVideo.module.css';
 
 type BrightcoveVideoProps = {
   videoId: string;

@@ -16,7 +16,7 @@ const httpContext = require('express-http-context');
 
 const app = express();
 app.use(expressWinstonLogger);
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   const hostnamesToReplace = ['portal2.guidewire.com'];
   if (hostnamesToReplace.includes(req.hostname)) {
     const fullRequestUrl = new URL(req.url, process.env.APP_BASE_URL);
@@ -36,7 +36,7 @@ const options = {
   etag: true,
   maxAge: 3600000,
   redirect: false,
-  setHeaders: function(res, path, stat) {
+  setHeaders: function (res, path, stat) {
     res.set({
       'x-timestamp': Date.now(),
       'Cache-Control': 'public, max-age: 3600',
@@ -71,14 +71,14 @@ The upgrade to version 0.6.x was required because passport 0.5.x
 contains "CVE-2022-25896 4.8 Session Fixation vulnerability pending CVSS allocation".
 */
 // Workaround start
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   if (req.session && !req.session.regenerate) {
-    req.session.regenerate = cb => {
+    req.session.regenerate = (cb) => {
       cb();
     };
   }
   if (req.session && !req.session.save) {
-    req.session.save = cb => {
+    req.session.save = (cb) => {
       cb();
     };
   }
@@ -126,10 +126,10 @@ const authGateway = require('./controllers/authController').authGateway;
 
 app.use(passport.initialize());
 app.use(passport.session());
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   done(null, user);
 });
-passport.deserializeUser(function(user, done) {
+passport.deserializeUser(function (user, done) {
   done(null, user);
 });
 app.use(authGateway);

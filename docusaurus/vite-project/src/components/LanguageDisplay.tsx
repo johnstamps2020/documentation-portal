@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export default function LanguageDisplay() {
   const lang =
-    document.querySelector("html")?.getAttribute("lang") || "unknown";
+    document.querySelector('html')?.getAttribute('lang') || 'unknown';
 
   return <div>Selected language: {lang}</div>;
 }

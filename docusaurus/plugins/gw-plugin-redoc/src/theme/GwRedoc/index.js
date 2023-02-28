@@ -1,3 +1,3 @@
-import GwRedoc from "./GwRedoc";
+import GwRedoc from './GwRedoc';
 
 export default GwRedoc;

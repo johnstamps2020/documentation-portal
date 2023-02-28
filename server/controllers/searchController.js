@@ -33,7 +33,7 @@ function getFiltersFromUrl(fieldMappings, queryParams) {
         const allParamValues = [
           ...quotedParamValues,
           ...nonQuotedParamValues.split(','),
-        ].filter(v => v);
+        ].filter((v) => v);
         filtersFromUrl[param] = allParamValues;
       }
     }
@@ -73,7 +73,7 @@ async function getAllowedFilterValues(fieldName, query) {
     const result = await elasticClient.search(requestBody);
 
     return result.body.aggregations.allowedForField.keywordFilter.buckets.map(
-      bucket => {
+      (bucket) => {
         return { label: bucket.key, doc_count: bucket.doc_count };
       }
     );
@@ -116,16 +116,17 @@ async function getFilters(query, fieldMappings, urlFilters) {
           : [];
         const allFilterValues = [
           ...new Set([
-            ...allowedFilterValues?.map(v => v.label),
+            ...allowedFilterValues?.map((v) => v.label),
             ...urlFilterValues,
           ]),
         ];
-        const filterValuesObjects = allFilterValues?.map(value => {
+        const filterValuesObjects = allFilterValues?.map((value) => {
           return {
             label: value,
             doc_count:
-              allowedFilterValues.find(v => v.label === value)?.doc_count || 0,
-            checked: !!urlFilterValues.find(v => v === value),
+              allowedFilterValues.find((v) => v.label === value)?.doc_count ||
+              0,
+            checked: !!urlFilterValues.find((v) => v === value),
           };
         });
         filterNamesAndValues.push({
@@ -262,11 +263,11 @@ function sanitizeTagNames(textToSanitize) {
 function sortObjectsFromNewestToOldest(objectsList) {
   try {
     return objectsList
-      .sort(function(a, b) {
-        const verNum = versions =>
+      .sort(function (a, b) {
+        const verNum = (versions) =>
           versions[0]
             .split('.')
-            .map(n => +n + 100000)
+            .map((n) => +n + 100000)
             .join('.');
         const verNumA = verNum(a._source.version);
         const verNumB = verNum(b._source.version);
@@ -342,8 +343,8 @@ async function searchController(req, res, next) {
 
     const arrangedFilters = [];
     for (const key of displayOrder) {
-      if (filters?.some(f => f.name === key)) {
-        arrangedFilters.push(filters.find(f => f.name === key));
+      if (filters?.some((f) => f.name === key)) {
+        arrangedFilters.push(filters.find((f) => f.name === key));
       }
     }
 
@@ -354,11 +355,11 @@ async function searchController(req, res, next) {
       filtersFromUrl
     );
 
-    const resultsToDisplay = results.hits.map(result => {
+    const resultsToDisplay = results.hits.map((result) => {
       const docScore = result._score;
       const innerHits = result.inner_hits.same_title.hits.hits;
       const innerHitsMatchingDocScore = innerHits.filter(
-        h => h._score === docScore
+        (h) => h._score === docScore
       );
 
       let mainResult =
@@ -367,7 +368,7 @@ async function searchController(req, res, next) {
           : result;
 
       const innerHitsWithoutMainResult = innerHits.filter(
-        h => h._id !== mainResult._id
+        (h) => h._id !== mainResult._id
       );
 
       const doc = mainResult._source;
@@ -380,11 +381,11 @@ async function searchController(req, res, next) {
       }
 
       const highlightTitleKey = Object.getOwnPropertyNames(highlight).filter(
-        k => k.startsWith('title') && !k.startsWith('title.raw')
+        (k) => k.startsWith('title') && !k.startsWith('title.raw')
       )[0];
 
-      const highlightBodyKey = Object.getOwnPropertyNames(highlight).filter(k =>
-        k.startsWith('body')
+      const highlightBodyKey = Object.getOwnPropertyNames(highlight).filter(
+        (k) => k.startsWith('body')
       )[0];
       const bodyBlurb = doc.body ? doc.body.substr(0, 300) + '...' : '';
 
@@ -404,9 +405,9 @@ async function searchController(req, res, next) {
       const allText = titleText + bodyText;
       const regExpResults = [...allText.matchAll(regExp)];
       const uniqueHighlightTerms = [
-        ...new Set(regExpResults.map(r => r[1].toLowerCase())),
+        ...new Set(regExpResults.map((r) => r[1].toLowerCase())),
       ]
-        .sort(function(a, b) {
+        .sort(function (a, b) {
           return b.length - a.length;
         })
         .join(',');
@@ -431,7 +432,7 @@ async function searchController(req, res, next) {
 
       let hitsWithUniqueUrls = [];
       for (const hit of innerHitsToDisplay) {
-        if (!hitsWithUniqueUrls.find(h => h.href === hit.href)) {
+        if (!hitsWithUniqueUrls.find((h) => h.href === hit.href)) {
           hitsWithUniqueUrls.push(hit);
         }
       }
@@ -452,8 +453,8 @@ async function searchController(req, res, next) {
 
     const retrievedTags = [];
 
-    resultsToDisplay.forEach(result => {
-      result.docTags.forEach(tag => {
+    resultsToDisplay.forEach((result) => {
+      result.docTags.forEach((tag) => {
         if (!retrievedTags.includes(tag)) {
           retrievedTags.push(tag);
         }

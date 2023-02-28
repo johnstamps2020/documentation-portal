@@ -1,12 +1,12 @@
-import { useDocContext } from "@theme/DocContext";
-import React, { useState, useEffect } from "react";
+import { useDocContext } from '@theme/DocContext';
+import React, { useState, useEffect } from 'react';
 
 type InternalWrapperProps = {
   children: React.ReactNode;
 };
 
-export const hideInternalClassName = "hideInternalItems";
-export const internalNavItemClass = "internalNavItem";
+export const hideInternalClassName = 'hideInternalItems';
+export const internalNavItemClass = 'internalNavItem';
 
 export default function InternalWrapper({ children }: InternalWrapperProps) {
   const { userInformation } = useDocContext();

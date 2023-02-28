@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
-import useIsBrowser from "@docusaurus/useIsBrowser";
-import styles from "./DropdownFrame.module.css";
+import React, { useEffect, useRef, useState } from 'react';
+import useIsBrowser from '@docusaurus/useIsBrowser';
+import styles from './DropdownFrame.module.css';
 
 export default function DropdownFrame({ button, children }) {
   const isBrowser = useIsBrowser();
@@ -22,13 +22,13 @@ export default function DropdownFrame({ button, children }) {
       }
 
       if (isBrowser) {
-        document.addEventListener("mousedown", checkIfClickedOutside);
+        document.addEventListener('mousedown', checkIfClickedOutside);
         setButtonHeight(buttonRef.current.clientHeight);
       }
 
       return function () {
         if (isBrowser) {
-          document.removeEventListener("mousedown", checkIfClickedOutside);
+          document.removeEventListener('mousedown', checkIfClickedOutside);
         }
       };
     },

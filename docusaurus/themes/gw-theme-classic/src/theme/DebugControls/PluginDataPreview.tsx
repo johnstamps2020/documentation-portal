@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import Button from "@mui/material/Button";
-import { usePluginData } from "@docusaurus/useGlobalData";
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
-import DialogActions from "@mui/material/DialogActions";
-import Typography from "@mui/material/Typography";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import DataDisplay from "./DataDisplay";
-import { PluginData } from "@theme/Types";
-import { PLUGIN_NAME } from "../../types/constants";
+import React, { useState } from 'react';
+import Button from '@mui/material/Button';
+import { usePluginData } from '@docusaurus/useGlobalData';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import Typography from '@mui/material/Typography';
+import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
+import DataDisplay from './DataDisplay';
+import { PluginData } from '@theme/Types';
+import { PLUGIN_NAME } from '../../types/constants';
 
 export default function PluginDataPreview() {
   const pluginData = usePluginData(PLUGIN_NAME) as PluginData;

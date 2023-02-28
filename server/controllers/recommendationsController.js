@@ -11,7 +11,7 @@ async function showOnlyPublicRecommendations(reqObj, resObj, recommendations) {
     const config = await getConfig(reqObj, resObj);
     for (const recommendation of recommendations) {
       const matchingDoc = config.docs.find(
-        d => d.doc_id === recommendation.doc_id
+        (d) => d.doc_id === recommendation.doc_id
       );
       const recommendationIsPublic = matchingDoc ? matchingDoc.public : false;
       if (recommendationIsPublic) {
@@ -52,7 +52,7 @@ async function getTopicRecommendations(topicId, reqObj, resObj) {
         query: queryBody,
       },
     });
-    const hit = response.body.hits.hits.map(h => ({
+    const hit = response.body.hits.hits.map((h) => ({
       ...h._source,
     }))[0];
     if (hit) {

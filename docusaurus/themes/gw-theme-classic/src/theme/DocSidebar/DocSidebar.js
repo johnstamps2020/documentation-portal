@@ -1,10 +1,10 @@
-import React from "react";
-import InitialDocSidebar from "@theme-init/DocSidebar";
+import React from 'react';
+import InitialDocSidebar from '@theme-init/DocSidebar';
 
 function insertLineBreak(items) {
   const result = items.map((item) => {
-    item.label = item.label.replace(/\//g, "/\u200B");
-    if (item.type === "category") {
+    item.label = item.label.replace(/\//g, '/\u200B');
+    if (item.type === 'category') {
       return { ...item, items: insertLineBreak(item.items) };
     }
     return item;

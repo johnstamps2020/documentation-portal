@@ -7,9 +7,9 @@
 // our theme shadowing—we probably need the user to specify multiple theme paths
 // in their tsconfig.
 
-declare module "@doctools/gw-theme-classic" {}
+declare module '@doctools/gw-theme-classic' {}
 
-declare module "@theme/Internal" {
+declare module '@theme/Internal' {
   export type InternalProps = {
     children: React.ReactNode;
     showInfo?: boolean;
@@ -19,7 +19,7 @@ declare module "@theme/Internal" {
   export default function Internal(props: InternalProps): JSX.Element;
 }
 
-declare module "@theme/RightWrong" {
+declare module '@theme/RightWrong' {
   export type RightWrongProps = {
     children: JSX.Element | JSX.Element[] | string;
   };
@@ -34,7 +34,7 @@ declare module "@theme/RightWrong" {
   export function Wrong(props: RightWrongCardProps): JSX.Element;
 }
 
-declare module "@theme/Types" {
+declare module '@theme/Types' {
   export type PluginData = {
     internalDocIds: string[];
     gwDocId: string;
@@ -61,7 +61,7 @@ declare module "@theme/Types" {
   };
 }
 
-declare module "@theme/Feedback" {
+declare module '@theme/Feedback' {
   export type FeedbackDialogProps = {
     open: boolean;
     onClose: () => void;
@@ -72,7 +72,7 @@ declare module "@theme/Feedback" {
     jiraApiUrl: string;
     url: string;
     showNotification: (
-      severity: AlertProps["severity"],
+      severity: AlertProps['severity'],
       message: JSX.Element
     ) => void;
     possibleContacts: string;
@@ -80,18 +80,18 @@ declare module "@theme/Feedback" {
 
   export type FeedbackProps = {
     showLabel: boolean;
-    jiraApiUrl: FeedbackDialogProps["jiraApiUrl"];
-    searchMeta: FeedbackDialogProps["searchMeta"];
-    title: FeedbackDialogProps["title"];
-    url: FeedbackDialogProps["url"];
-    userInformation: FeedbackDialogProps["userInformation"];
+    jiraApiUrl: FeedbackDialogProps['jiraApiUrl'];
+    searchMeta: FeedbackDialogProps['searchMeta'];
+    title: FeedbackDialogProps['title'];
+    url: FeedbackDialogProps['url'];
+    userInformation: FeedbackDialogProps['userInformation'];
     possibleContacts?: string;
   };
 
   export default function Feedback(props: FeedbackProps): JSX.Element;
 }
 
-declare module "@theme/VideoWrapper" {
+declare module '@theme/VideoWrapper' {
   export type VideoObject = {
     title?: string;
     description?: JSX.Element | JSX.Element[];
@@ -105,7 +105,7 @@ declare module "@theme/VideoWrapper" {
   export default function VideoWrapper(props: VideoObject): JSX.Element;
 }
 
-declare module "@theme/DocContext" {
+declare module '@theme/DocContext' {
   export interface DocContextInterface {
     userInformation: UserInformation;
     setUserInformation: React.Dispatch<React.SetStateAction<UserInformation>>;
@@ -140,7 +140,7 @@ declare module "@theme/DocContext" {
   export default function DocContext(props): JSX.Element;
 }
 
-declare module "@theme/VersionSelector" {
+declare module '@theme/VersionSelector' {
   export type VersionSelectorProps = {
     versions: string[];
     releases: string[];
@@ -152,7 +152,7 @@ declare module "@theme/VersionSelector" {
   export default function VersionSelector(): JSX.Element;
 }
 
-declare module "@theme/Translate" {
+declare module '@theme/Translate' {
   type TranslationValues = {
     [x: string]: JSX.Element | string;
   };
@@ -176,7 +176,7 @@ declare module "@theme/Translate" {
   export function translate(props: TranslateBaseProps): string;
 }
 
-declare module "@theme/Collapsible" {
+declare module '@theme/Collapsible' {
   export type CollapsibleProps = {
     title?: string;
     children: JSX.Element | JSX.Element[] | string | null;

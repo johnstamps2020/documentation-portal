@@ -1,6 +1,6 @@
-import "./html5skip.css";
+import './html5skip.css';
 
-import { handleContextId, redirectToFirstTopic } from "../modules/redirect";
+import { handleContextId, redirectToFirstTopic } from '../modules/redirect';
 
 handleRedirect();
 

@@ -1,3 +1,3 @@
-import DocSidebarItemCategory from "./DocSidebarItemCategory";
+import DocSidebarItemCategory from './DocSidebarItemCategory';
 
 export default DocSidebarItemCategory;

@@ -1,26 +1,26 @@
-import React from "react";
-import Layout from "@theme/Layout";
-import Internal from "@theme/Internal";
-import { Right, Wrong, RightWrong } from "@theme/RightWrong";
-import Feedback from "@theme/Feedback";
-import { SearchMeta, UserInformation } from "@theme/Types";
+import React from 'react';
+import Layout from '@theme/Layout';
+import Internal from '@theme/Internal';
+import { Right, Wrong, RightWrong } from '@theme/RightWrong';
+import Feedback from '@theme/Feedback';
+import { SearchMeta, UserInformation } from '@theme/Types';
 
 const mockSearchMeta: SearchMeta = {
   docEarlyAccess: false,
   docInternal: false,
-  docTitle: "Thoughts and musings",
-  platform: ["Cloud"],
-  product: ["Doctools"],
-  release: ["Banff"],
-  subject: ["Configuration"],
-  version: ["latest"],
+  docTitle: 'Thoughts and musings',
+  platform: ['Cloud'],
+  product: ['Doctools'],
+  release: ['Banff'],
+  subject: ['Configuration'],
+  version: ['latest'],
 };
 
 const mockUserInformation: UserInformation = {
   hasGuidewireEmail: true,
   isLoggedIn: true,
-  name: "James User",
-  preferred_username: "juser@guidewire.com",
+  name: 'James User',
+  preferred_username: 'juser@guidewire.com',
 };
 
 export default function Playground() {
@@ -31,15 +31,15 @@ export default function Playground() {
     >
       <div
         style={{
-          paddingTop: "3rem",
-          paddingBottom: "3rem",
-          minHeight: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          gap: "2rem",
-          alignItems: "center",
-          margin: "0 auto",
-          maxWidth: "1200px",
+          paddingTop: '3rem',
+          paddingBottom: '3rem',
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '2rem',
+          alignItems: 'center',
+          margin: '0 auto',
+          maxWidth: '1200px',
         }}
       >
         <h1>Theme components</h1>

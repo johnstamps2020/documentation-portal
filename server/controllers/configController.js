@@ -26,7 +26,7 @@ async function loadConfig() {
             } else {
               const config = fs.readFileSync(itemPath, 'utf-8');
               const json = JSON.parse(config);
-              const docs = json.docs.filter(d =>
+              const docs = json.docs.filter((d) =>
                 d.environments.includes(deployEnv)
               );
               localConfig['docs'].push(...docs);
@@ -52,7 +52,7 @@ async function loadConfig() {
           {
             retry: 5,
             pause: 1000,
-            callback: retry => {
+            callback: (retry) => {
               console.log(`Retrying fetch of config.json: ${retry}`);
             },
           }
@@ -104,10 +104,10 @@ async function getConfig(reqObj, resObj) {
     const config = JSON.parse(JSON.stringify(storedConfig));
     const hasGuidewireEmail = resObj.locals.userInfo.hasGuidewireEmail;
     if (!reqObj.session.requestIsAuthenticated) {
-      config['docs'] = config.docs.filter(d => d.public === true);
+      config['docs'] = config.docs.filter((d) => d.public === true);
     }
     if (!hasGuidewireEmail) {
-      config['docs'] = config.docs.filter(d => d.internal === false);
+      config['docs'] = config.docs.filter((d) => d.internal === false);
     }
     return config;
   } catch (err) {
@@ -126,7 +126,7 @@ async function getDocByUrl(url) {
   }
 
   const config = storedConfig;
-  return config.docs.find(d => relativeUrl.startsWith(d.url + '/'));
+  return config.docs.find((d) => relativeUrl.startsWith(d.url + '/'));
 }
 
 async function isPublicDoc(url, reqObj) {
@@ -205,7 +205,7 @@ async function getVersionSelector(docId, reqObj, resObj) {
       const versionSelectorMapping = await response.json();
       try {
         const matchingVersionSelector = versionSelectorMapping.find(
-          s => docId === s.docId
+          (s) => docId === s.docId
         );
         // The getConfig function checks if the request is authenticated and if the user has the Guidewire email,
         // and filters the returned docs accordingly.
@@ -213,11 +213,10 @@ async function getVersionSelector(docId, reqObj, resObj) {
         const config = await getConfig(reqObj, resObj);
         const docs = config.docs;
         if (matchingVersionSelector) {
-          matchingVersionSelector[
-            'allVersions'
-          ] = matchingVersionSelector.allVersions.filter(v =>
-            docs.find(d => d.url === v.url)
-          );
+          matchingVersionSelector['allVersions'] =
+            matchingVersionSelector.allVersions.filter((v) =>
+              docs.find((d) => d.url === v.url)
+            );
           return { matchingVersionSelector: matchingVersionSelector };
         } else {
           return { matchingVersionSelector: {} };
@@ -242,7 +241,7 @@ async function getVersionSelector(docId, reqObj, resObj) {
 async function getDocumentMetadata(docId, reqObj, resObj) {
   try {
     const config = await getConfig(reqObj, resObj);
-    const doc = config.docs.find(d => d.id === docId);
+    const doc = config.docs.find((d) => d.id === docId);
     if (doc) {
       return {
         docTitle: doc.title,
@@ -277,10 +276,10 @@ async function getDocId(
   try {
     const config = await getConfig(reqObj, resObj);
     const doc = config.docs.find(
-      s =>
-        products.split(',').some(p => s.metadata.product.includes(p)) &&
-        platforms.split(',').some(pl => s.metadata.platform.includes(pl)) &&
-        versions.split(',').some(v => s.metadata.version.includes(v)) &&
+      (s) =>
+        products.split(',').some((p) => s.metadata.product.includes(p)) &&
+        platforms.split(',').some((pl) => s.metadata.platform.includes(pl)) &&
+        versions.split(',').some((v) => s.metadata.version.includes(v)) &&
         (title === s.title || !title) &&
         url.includes(s.url)
     );

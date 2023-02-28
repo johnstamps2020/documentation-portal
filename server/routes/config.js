@@ -12,7 +12,7 @@ const ejs = require('ejs');
 const fs = require('fs');
 const { winstonLogger } = require('../controllers/loggerController');
 
-router.get('/', async function(req, res, next) {
+router.get('/', async function (req, res, next) {
   try {
     const config = await getConfig(req, res);
     res.send(config);
@@ -26,7 +26,7 @@ router.get('/', async function(req, res, next) {
   }
 });
 
-router.get('/breadcrumbs', async function(req, res, next) {
+router.get('/breadcrumbs', async function (req, res, next) {
   try {
     const { pagePathname } = req.query;
     const rootBreadcrumb = await getRootBreadcrumb(pagePathname);
@@ -39,7 +39,7 @@ router.get('/breadcrumbs', async function(req, res, next) {
   }
 });
 
-router.get('/versionSelectors', async function(req, res, next) {
+router.get('/versionSelectors', async function (req, res, next) {
   try {
     const { docId } = req.query;
     const allVersions = await getVersionSelector(docId, req, res);
@@ -52,7 +52,7 @@ router.get('/versionSelectors', async function(req, res, next) {
   }
 });
 
-router.get('/versionSelectors/component', async function(req, res, next) {
+router.get('/versionSelectors/component', async function (req, res, next) {
   try {
     const { docId } = req.query;
     const selectorObject = await getVersionSelector(docId, req, res);
@@ -77,7 +77,7 @@ router.get('/versionSelectors/component', async function(req, res, next) {
   }
 });
 
-router.get('/docMetadata/:docId', async function(req, res, next) {
+router.get('/docMetadata/:docId', async function (req, res, next) {
   try {
     const { docId } = req.params;
     const docMetadata = await getDocumentMetadata(docId, req, res);
@@ -90,7 +90,7 @@ router.get('/docMetadata/:docId', async function(req, res, next) {
   }
 });
 
-router.get('/docId', async function(req, res, next) {
+router.get('/docId', async function (req, res, next) {
   try {
     const { platforms, products, versions, title, url } = req.query;
     const docId = await getDocId(
@@ -112,7 +112,7 @@ router.get('/docId', async function(req, res, next) {
   }
 });
 
-router.get('/refreshConfig', async function(req, res, next) {
+router.get('/refreshConfig', async function (req, res, next) {
   try {
     const configExists = await expensiveLoadConfig();
     if (configExists) {

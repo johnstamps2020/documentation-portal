@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import styles from "./Lightbox.module.css";
+import React, { useEffect, useRef } from 'react';
+import styles from './Lightbox.module.css';
 
 type DialogProps = {
   open: boolean;
@@ -19,7 +19,7 @@ export default function Dialog({
   const dialogRef = useRef<HTMLDialogElement>();
 
   function closeDialogWithEscapeButton(event: KeyboardEvent) {
-    if (event.key === "Escape") {
+    if (event.key === 'Escape') {
       handleClose();
     }
   }
@@ -27,14 +27,14 @@ export default function Dialog({
   useEffect(
     function () {
       if (open) {
-        document.body.style.overflow = "hidden";
-        document.addEventListener("keydown", closeDialogWithEscapeButton);
+        document.body.style.overflow = 'hidden';
+        document.addEventListener('keydown', closeDialogWithEscapeButton);
         dialogRef.current.showModal();
       }
 
       return () => {
         document.body.style.overflow = null;
-        document.removeEventListener("keydown", closeDialogWithEscapeButton);
+        document.removeEventListener('keydown', closeDialogWithEscapeButton);
         dialogRef.current.close();
       };
     },

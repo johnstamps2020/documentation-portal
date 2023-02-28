@@ -1,8 +1,8 @@
-import React from "react";
-import { useDocContext } from "@theme/DocContext";
+import React from 'react';
+import { useDocContext } from '@theme/DocContext';
 
 function wrapValuesInQuotes(arr: string[]) {
-  return arr.map((v) => `"${v}"`).join(",");
+  return arr.map((v) => `"${v}"`).join(',');
 }
 
 export default function HiddenSearchInputs() {

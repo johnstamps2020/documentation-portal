@@ -6,7 +6,7 @@ servers:
   - url: /api/v1
     description: Development server
 paths:
-  "/metadata/apps/{app}/filterexamples/{type}":
+  '/metadata/apps/{app}/filterexamples/{type}':
     get:
       summary: Retrieves pre-built reusable filter examples
       description:
@@ -39,7 +39,7 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
@@ -49,15 +49,15 @@ paths:
                   type: object
                   additionalProperties:
                     type: string
-        "400":
+        '400':
           description: Invalid application code or object type
-        "401":
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
       tags:
         - Metadata
-  "/metadata/tenants/{id}/planets/dev":
+  '/metadata/tenants/{id}/planets/dev':
     get:
       summary: Retrieves the list of non-production level planets per tenant
       description:
@@ -73,25 +73,25 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/GCCPlanet"
-        "401":
+                  $ref: '#/components/schemas/GCCPlanet'
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
-        "500":
+        '500':
           description: Internal exception
       tags:
         - Metadata
-  "/metadata/tenants/{id}/planets/prod":
+  '/metadata/tenants/{id}/planets/prod':
     get:
       summary: Retrieves the list of production level planets per tenant
       description:
@@ -107,28 +107,27 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/GCCPlanet"
-        "401":
+                  $ref: '#/components/schemas/GCCPlanet'
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
-        "500":
+        '500':
           description: Internal exception
       tags:
         - Metadata
-  "/metadata/tenants/{tenantId}/projects/{projectId}/planets/{planetName}/apps/{app}/events":
+  '/metadata/tenants/{tenantId}/projects/{projectId}/planets/{planetName}/apps/{app}/events':
     get:
-      summary:
-        Retrieves the supported events on a specified InsuranceSuite app
+      summary: Retrieves the supported events on a specified InsuranceSuite app
         instance
       description: |
         The call returns the names of the events that are supported on a specified IS instance. If the IS app does not have the App Events destination enabled and running, the caller receives a hardcoded event list from the subscription service.
@@ -163,7 +162,7 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: |
             Successful operation. The response includes the following fields:
             * `name`: The event name
@@ -174,21 +173,20 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EventTypesDTO"
-        "401":
+                $ref: '#/components/schemas/EventTypesDTO'
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
-        "500":
+        '500':
           description: Internal exception encountered
       tags:
         - Metadata
-  "/metadata/tenants/{tenantId}/projects/{projectId}/planets/{planetName}/apps/{app}/status":
+  '/metadata/tenants/{tenantId}/projects/{projectId}/planets/{planetName}/apps/{app}/status':
     get:
-      summary:
-        Retrieves the status of the App Events feature on a specified
+      summary: Retrieves the status of the App Events feature on a specified
         InsuranceSuite app instance
       description:
         Checks if the App Events feature is enabled and running on the specified
@@ -225,38 +223,36 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EventStatusDTO"
-        "401":
+                $ref: '#/components/schemas/EventStatusDTO'
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
-        "500":
+        '500':
           description: Internal exception encountered
       tags:
         - Metadata
   /subscriptions:
     get:
-      summary:
-        Retrieves the subscriptions that are defined in the tenant account
-      description:
-        Retrieves the subscriptions that the caller is authorized for.
+      summary: Retrieves the subscriptions that are defined in the tenant account
+      description: Retrieves the subscriptions that the caller is authorized for.
       operationId: getAllSubscriptions
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Subscription"
+                  $ref: '#/components/schemas/Subscription'
       tags:
         - Subscriptions
     post:
@@ -266,31 +262,30 @@ paths:
         must be in JSON format that follows the provided schema.
       operationId: createSubscription
       requestBody:
-        $ref: "#/components/requestBodies/SubscriptionRequestDTO"
+        $ref: '#/components/requestBodies/SubscriptionRequestDTO'
       responses:
-        "200":
+        '200':
           description:
             Successful operation. The response returns a JSON with the created
             subscription data.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Subscription"
-        "401":
+                $ref: '#/components/schemas/Subscription'
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
-        "500":
+        '500':
           description: Internal exception encountered
       tags:
         - Subscriptions
-  "/subscriptions/{id}":
+  '/subscriptions/{id}':
     get:
       summary: Retrieves a subscription
-      description:
-        Retrieves the definition of the subscription with the specified **id**.
+      description: Retrieves the definition of the subscription with the specified **id**.
       operationId: getSubscription
       parameters:
         - name: id
@@ -301,21 +296,21 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description:
             Successful operation. The response contains a JSON with the
             subscription data according to the provided schema.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Subscription"
-        "401":
+                $ref: '#/components/schemas/Subscription'
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
-        "500":
+        '500':
           description: Internal exception encountered
       tags:
         - Subscriptions
@@ -343,28 +338,25 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/SubscriptionPatchDTO"
+              $ref: '#/components/schemas/SubscriptionPatchDTO'
       responses:
-        "200":
-          description:
-            Successful operation. Returns the subscription JSON object.
+        '200':
+          description: Successful operation. Returns the subscription JSON object.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Subscription"
-        "400":
-          description:
-            Bad request. The request body does not comply with the schema.
-        "401":
+                $ref: '#/components/schemas/Subscription'
+        '400':
+          description: Bad request. The request body does not comply with the schema.
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
-        "404":
-          description:
-            The requested endpoint is linked to multiple subscriptions
-        "500":
+        '404':
+          description: The requested endpoint is linked to multiple subscriptions
+        '500':
           description: Internal exception encountered
       tags:
         - Subscriptions
@@ -387,7 +379,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/SubscriptionRequestDTO"
+              $ref: '#/components/schemas/SubscriptionRequestDTO'
         description: |
           Contains the new subscription data in JSON format that complies with the provided schema. The following properties are required:
           * `name` - Unique name or title of a subscription. Special characters are not allowed.
@@ -400,24 +392,23 @@ paths:
              * In PolicyCenter adds the events on unbound policies
 
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Subscription"
-        "400":
-          description:
-            Bad request. The request body does not comply with the schema.
-        "401":
+                $ref: '#/components/schemas/Subscription'
+        '400':
+          description: Bad request. The request body does not comply with the schema.
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
-        "404":
+        '404':
           description: The subscription does not exist
-        "500":
+        '500':
           description: Internal exception encountered
       tags:
         - Subscriptions
@@ -433,59 +424,57 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: Successful operation
-        "401":
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
-        "500":
+        '500':
           description: Internal exception encountered
       tags:
         - Subscriptions
-  "/security/signaturekeys/default":
+  '/security/signaturekeys/default':
     get:
-      summary:
-        Gets the Webhooks public key that is used to verify the event payload
-      description:
-        Event requests include content signature to ensure events are
+      summary: Gets the Webhooks public key that is used to verify the event payload
+      description: Event requests include content signature to ensure events are
         transmitted securely to external endpoints. Event consumers (the
         endpoints) use the signature and the Webhooks public key to verify the
         integrity of the content and to ensure the event was sent from
         Guidewire.
       operationId: getSignatureKey
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/JWKSet"
-        "401":
+                $ref: '#/components/schemas/JWKSet'
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
-        "500":
+        '500':
           description: Internal exception encountered
-  "/internal/subscriptions":
+  '/internal/subscriptions':
     get:
       operationId: getAllSubscriptionsInternalApi
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Subscription"
+                  $ref: '#/components/schemas/Subscription'
       tags:
         - Internal-subscriptions
-  "/internal/tenants/{tenantId}/subscriptions":
+  '/internal/tenants/{tenantId}/subscriptions':
     get:
       operationId: getAllSubscriptionsInternalApiForTenant
       parameters:
@@ -495,14 +484,14 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Subscription"
+                  $ref: '#/components/schemas/Subscription'
       tags:
         - Internal-subscriptions
     post:
@@ -514,17 +503,17 @@ paths:
           schema:
             type: string
       requestBody:
-        $ref: "#/components/requestBodies/SubscriptionRequestDTO"
+        $ref: '#/components/requestBodies/SubscriptionRequestDTO'
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Subscription"
+                $ref: '#/components/schemas/Subscription'
       tags:
         - Internal-subscriptions
-  "/internal/tenants/{tenantId}/subscriptions/{id}":
+  '/internal/tenants/{tenantId}/subscriptions/{id}':
     get:
       operationId: getSubscriptionInternalApiForTenant
       parameters:
@@ -540,12 +529,12 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Subscription"
+                $ref: '#/components/schemas/Subscription'
       tags:
         - Internal-subscriptions
     patch:
@@ -567,14 +556,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/SubscriptionPatchDTO"
+              $ref: '#/components/schemas/SubscriptionPatchDTO'
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Subscription"
+                $ref: '#/components/schemas/Subscription'
       tags:
         - Internal-subscriptions
     put:
@@ -592,14 +581,14 @@ paths:
             type: string
             format: uuid
       requestBody:
-        $ref: "#/components/requestBodies/SubscriptionRequestDTO"
+        $ref: '#/components/requestBodies/SubscriptionRequestDTO'
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Subscription"
+                $ref: '#/components/schemas/Subscription'
       tags:
         - Internal-subscriptions
     delete:
@@ -617,34 +606,31 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: successful operation
       tags:
         - Internal-subscriptions
   /endpoints:
     get:
-      summary:
-        Retrieves a list of the endpoints that are defined in the tenant account
-      description:
-        Retrieves all the endpoints that are defined for the caller's tenant
+      summary: Retrieves a list of the endpoints that are defined in the tenant account
+      description: Retrieves all the endpoints that are defined for the caller's tenant
       operationId: getAllEndpoints
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Endpoint"
-        "400":
-          description:
-            Bad request. The request body does not comply with the schema.
-        "401":
+                  $ref: '#/components/schemas/Endpoint'
+        '400':
+          description: Bad request. The request body does not comply with the schema.
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
       tags:
         - Endpoints
@@ -661,7 +647,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/EndpointRequestDTO"
+              $ref: '#/components/schemas/EndpointRequestDTO'
         description: |
           Contains the new endpoint data in JSON format that complies with the provided schema. The following properties are required:
           * `name` - Unique name or title of the endpoint. Special characters are not allowed.
@@ -669,25 +655,24 @@ paths:
           * `value` - the URL of the endpoint where the event payload will be delivered. The URL must use the *https:* protocol and be in the allowed domain list.
           * `status` - The **grn** of the planet
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Endpoint"
-        "401":
+                $ref: '#/components/schemas/Endpoint'
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
       tags:
         - Endpoints
-  "/endpoints/{id}":
+  '/endpoints/{id}':
     get:
       summary: Retrieves an endpoint
-      description:
-        Retrieves the definition of an endpoint with the specified **id**.
+      description: Retrieves the definition of an endpoint with the specified **id**.
       operationId: getEndpoint
       parameters:
         - name: id
@@ -698,21 +683,21 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description:
             Successful operation. The response contains a JSON with the endpoint
             data according to the provided schema.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Endpoint"
-        "401":
+                $ref: '#/components/schemas/Endpoint'
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
-        "500":
+        '500':
           description: Internal exception encountered
       tags:
         - Endpoints
@@ -736,7 +721,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/EndpointRequestDTO"
+              $ref: '#/components/schemas/EndpointRequestDTO'
         description: |
           Contains the new endpoint data in JSON format that complies with the provided schema. The following properties are required:
           * `name` - Unique name or title of the endpoint. Special characters are not allowed.
@@ -748,19 +733,19 @@ paths:
              * `INACTIVE` - Endpoint is disabled. All events waiting to be delivered are discarded. When an inactive endpoint status is set to ACTIVE, only new events are delivered.
              * `PAUSED` - Same as ERROR state, except the PAUSED state can only be set manually by a user in the Endpoints administration page. To resume delivery of events, set the endpoint status to ACTIVE.
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Endpoint"
-        "401":
+                $ref: '#/components/schemas/Endpoint'
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
-        "500":
+        '500':
           description: Internal exception encountered
       tags:
         - Endpoints
@@ -780,15 +765,15 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: Successful operation
-        "401":
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
-        "500":
+        '500':
           description: Internal exception encountered
       tags:
         - Endpoints
@@ -810,7 +795,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/EndpointPatchDTO"
+              $ref: '#/components/schemas/EndpointPatchDTO'
         description: |
           An endpoint assumes one of the following statuses:
           * `status` - Endpoints assume one of the following states:
@@ -820,37 +805,37 @@ paths:
              * `PAUSED` - Same as `ERROR` state, except the `PAUSED` state can only be set manually by a user in the Endpoints administration page. To resume delivery of events, set the endpoint status to `ACTIVE`.
           * `errorMessage` - The error message that is associated with setting the endpoint in `ERROR` state.
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Endpoint"
-        "401":
+                $ref: '#/components/schemas/Endpoint'
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
-        "500":
+        '500':
           description: Internal exception encountered
       tags:
         - Endpoints
-  "/internal/endpoints":
+  '/internal/endpoints':
     get:
       operationId: getAllEndpointsInternalApi
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Endpoint"
+                  $ref: '#/components/schemas/Endpoint'
       tags:
         - Internal-endpoints
-  "/internal/tenants/{tenantId}/endpoints":
+  '/internal/tenants/{tenantId}/endpoints':
     get:
       operationId: getAllEndpointsInternalApiForTenant
       parameters:
@@ -860,14 +845,14 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Endpoint"
+                  $ref: '#/components/schemas/Endpoint'
       tags:
         - Internal-endpoints
     post:
@@ -879,17 +864,17 @@ paths:
           schema:
             type: string
       requestBody:
-        $ref: "#/components/requestBodies/EndpointRequestDTO"
+        $ref: '#/components/requestBodies/EndpointRequestDTO'
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Endpoint"
+                $ref: '#/components/schemas/Endpoint'
       tags:
         - Internal-endpoints
-  "/internal/tenants/{tenantId}/endpoints/{id}":
+  '/internal/tenants/{tenantId}/endpoints/{id}':
     get:
       operationId: getEndpointInternalApiForTenant
       parameters:
@@ -905,12 +890,12 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Endpoint"
+                $ref: '#/components/schemas/Endpoint'
       tags:
         - Internal-endpoints
     put:
@@ -928,14 +913,14 @@ paths:
             type: string
             format: uuid
       requestBody:
-        $ref: "#/components/requestBodies/EndpointRequestDTO"
+        $ref: '#/components/requestBodies/EndpointRequestDTO'
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Endpoint"
+                $ref: '#/components/schemas/Endpoint'
       tags:
         - Internal-endpoints
     delete:
@@ -972,17 +957,17 @@ paths:
             type: string
             format: uuid
       requestBody:
-        $ref: "#/components/requestBodies/EndpointPatchDTO"
+        $ref: '#/components/requestBodies/EndpointPatchDTO'
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Endpoint"
+                $ref: '#/components/schemas/Endpoint'
       tags:
         - Internal-endpoints
-  "/oauth2":
+  '/oauth2':
     get:
       summary: Retrieves the defined auth configurations
       description: |
@@ -991,21 +976,21 @@ paths:
         The call returns a list of all auth configurations that are defined in the caller's tenant account. An auth configuration can be associated with multiple endpoints in a tenant account.
       operationId: getAllOauth
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/OauthSecurity"
-        "401":
+                  $ref: '#/components/schemas/OauthSecurity'
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
-        "500":
+        '500':
           description: Internal exception encountered
       tags:
         - OAuth2
@@ -1022,7 +1007,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/OauthSecurityRequestDTO"
+              $ref: '#/components/schemas/OauthSecurityRequestDTO'
         description: |
           Contains the new auth configuration data that complies with the provided JSON schema. The following properties are required:  
           * `name` - Unique name of the auth configuration. Used to identify the auth config when associating it to a subscription endpoint.
@@ -1032,23 +1017,23 @@ paths:
           * `scopes` - The desired scopes for the OAuth authorization request that are defined for your services.
           * `quadrantType` - The environment class, `DEV` (Development) or `PROD` (Production) that the auth configuration applies to.
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OauthSecurity"
-        "401":
+                $ref: '#/components/schemas/OauthSecurity'
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
-        "500":
+        '500':
           description: Internal exception encountered
       tags:
         - OAuth2
-  "/oauth2/{id}":
+  '/oauth2/{id}':
     get:
       summary: Retrieves an auth configuration
       operationId: getOauth
@@ -1061,21 +1046,21 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: Successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OauthSecurity"
-        "404":
+                $ref: '#/components/schemas/OauthSecurity'
+        '404':
           description: The specified auth configuration does not exist.
-        "401":
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
-        "500":
+        '500':
           description: Internal exception encountered
       tags:
         - OAuth2
@@ -1099,7 +1084,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/OauthSecurityUpdateRequestDTO"
+              $ref: '#/components/schemas/OauthSecurityUpdateRequestDTO'
         description: |
           Contains the new auth configuration data that complies with the provided JSON schema. The following properties are required:  
           * `name` - Unique name of the auth configuration. Used to identify the auth config when associating it to a subscription endpoint.
@@ -1107,28 +1092,27 @@ paths:
           * `scopes` - The desired scopes for the OAuth authorization request that are defined for your services.
           * `quadrantType` - The environment class, `DEV` (Development) or `PROD` (Production) that the auth configuration applies to.
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OauthSecurity"
-        "404":
+                $ref: '#/components/schemas/OauthSecurity'
+        '404':
           description: The specified auth configuration does not exist.
-        "401":
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
-        "500":
+        '500':
           description: Internal exception encountered
       tags:
         - OAuth2
     delete:
       summary: Deletes an auth configuration
-      description:
-        Deletes a configuration that is not associated with endpoints.
+      description: Deletes a configuration that is not associated with endpoints.
       operationId: deleteOauth
       parameters:
         - name: id
@@ -1139,35 +1123,35 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: successful operation
-        "404":
+        '404':
           description: The specified auth configuration does not exist.
-        "401":
+        '401':
           description:
             Not authorized. The caller is not authorized or the authorization
             token expired.
-        "403":
+        '403':
           description: Forbidden. Access is denied.
-        "500":
+        '500':
           description: Internal exception encountered
       tags:
         - OAuth2
-  "/internal/oauth2":
+  '/internal/oauth2':
     get:
       operationId: getAllOauthInternalApi
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/OauthSecurity"
+                  $ref: '#/components/schemas/OauthSecurity'
       tags:
         - Internal-oauth2
-  "/internal/tenants/{tenantId}/oauth2":
+  '/internal/tenants/{tenantId}/oauth2':
     get:
       operationId: getAllOauthInternalApiForTenant
       parameters:
@@ -1177,14 +1161,14 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/OauthSecurity"
+                  $ref: '#/components/schemas/OauthSecurity'
       tags:
         - Internal-oauth2
     post:
@@ -1196,17 +1180,17 @@ paths:
           schema:
             type: string
       requestBody:
-        $ref: "#/components/requestBodies/OauthSecurityRequestDTO"
+        $ref: '#/components/requestBodies/OauthSecurityRequestDTO'
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OauthSecurity"
+                $ref: '#/components/schemas/OauthSecurity'
       tags:
         - Internal-oauth2
-  "/internal/tenants/{tenantId}/oauth2/{id}":
+  '/internal/tenants/{tenantId}/oauth2/{id}':
     get:
       operationId: getOauthInternalApiForTenant
       parameters:
@@ -1222,12 +1206,12 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OauthSecurity"
+                $ref: '#/components/schemas/OauthSecurity'
       tags:
         - Internal-oauth2
     put:
@@ -1245,14 +1229,14 @@ paths:
             type: string
             format: uuid
       requestBody:
-        $ref: "#/components/requestBodies/OauthSecurityUpdateRequestDTO"
+        $ref: '#/components/requestBodies/OauthSecurityUpdateRequestDTO'
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OauthSecurity"
+                $ref: '#/components/schemas/OauthSecurity'
       tags:
         - Internal-oauth2
     delete:
@@ -1274,7 +1258,7 @@ paths:
           description: successful operation
       tags:
         - Internal-oauth2
-  "/internal/oauth2/{id}/token":
+  '/internal/oauth2/{id}/token':
     get:
       operationId: getOauthToken
       parameters:
@@ -1285,42 +1269,42 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OauthToken"
+                $ref: '#/components/schemas/OauthToken'
       tags:
         - Internal-oauth2
   /endpoint-domains:
     get:
       operationId: getAllEndpointDomains
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/EndpointDomain"
+                  $ref: '#/components/schemas/EndpointDomain'
       tags:
         - EndpointDomains
     post:
       operationId: createEndpointDomain
       requestBody:
-        $ref: "#/components/requestBodies/EndpointDomainRequestDTO"
+        $ref: '#/components/requestBodies/EndpointDomainRequestDTO'
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EndpointDomain"
+                $ref: '#/components/schemas/EndpointDomain'
       tags:
         - EndpointDomains
-  "/endpoint-domains/{id}":
+  '/endpoint-domains/{id}':
     get:
       operationId: getEndpointDomain
       parameters:
@@ -1331,12 +1315,12 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EndpointDomain"
+                $ref: '#/components/schemas/EndpointDomain'
       tags:
         - EndpointDomains
     put:
@@ -1349,14 +1333,14 @@ paths:
             type: string
             format: uuid
       requestBody:
-        $ref: "#/components/requestBodies/EndpointDomainRequestDTO"
+        $ref: '#/components/requestBodies/EndpointDomainRequestDTO'
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EndpointDomain"
+                $ref: '#/components/schemas/EndpointDomain'
       tags:
         - EndpointDomains
     delete:
@@ -1377,14 +1361,14 @@ paths:
     get:
       operationId: getAllEndpointDomainsInternalApi
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/EndpointDomain"
+                  $ref: '#/components/schemas/EndpointDomain'
       tags:
         - Internal-EndpointDomains
   /internal/tenants/{tenantId}/endpoint-domains:
@@ -1397,14 +1381,14 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/EndpointDomain"
+                  $ref: '#/components/schemas/EndpointDomain'
       tags:
         - Internal-EndpointDomains
     post:
@@ -1416,17 +1400,17 @@ paths:
           schema:
             type: string
       requestBody:
-        $ref: "#/components/requestBodies/EndpointDomainRequestDTO"
+        $ref: '#/components/requestBodies/EndpointDomainRequestDTO'
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EndpointDomain"
+                $ref: '#/components/schemas/EndpointDomain'
       tags:
         - Internal-EndpointDomains
-  "/internal/tenants/{tenantId}/endpoint-domains/{id}":
+  '/internal/tenants/{tenantId}/endpoint-domains/{id}':
     get:
       operationId: getEndpointDomainInternalApiForTenant
       parameters:
@@ -1442,12 +1426,12 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EndpointDomain"
+                $ref: '#/components/schemas/EndpointDomain'
       tags:
         - Internal-EndpointDomains
     put:
@@ -1465,14 +1449,14 @@ paths:
             type: string
             format: uuid
       requestBody:
-        $ref: "#/components/requestBodies/EndpointDomainRequestDTO"
+        $ref: '#/components/requestBodies/EndpointDomainRequestDTO'
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EndpointDomain"
+                $ref: '#/components/schemas/EndpointDomain'
       tags:
         - Internal-EndpointDomains
     delete:
@@ -1494,36 +1478,36 @@ paths:
           description: successful operation
       tags:
         - Internal-EndpointDomains
-  "/internal/tenants":
+  '/internal/tenants':
     get:
       operationId: getAllTenants
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Tenant"
+                  $ref: '#/components/schemas/Tenant'
       tags:
         - Internal-TenantManagement
     post:
       operationId: addTenants
       requestBody:
-        $ref: "#/components/requestBodies/TenantRequestDTO"
+        $ref: '#/components/requestBodies/TenantRequestDTO'
       responses:
-        "201":
+        '201':
           description: created
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Tenant"
+                  $ref: '#/components/schemas/Tenant'
       tags:
         - Internal-TenantManagement
-  "/internal/tenants/{tenantId}":
+  '/internal/tenants/{tenantId}':
     get:
       operationId: getTenant
       parameters:
@@ -1533,12 +1517,12 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Tenant"
+                $ref: '#/components/schemas/Tenant'
       tags:
         - Internal-TenantManagement
     delete:
@@ -1560,8 +1544,8 @@ components:
       type: oauth2
       flows:
         authorizationCode:
-          authorizationUrl: "https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7/v1/authorize"
-          tokenUrl: "https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7/v1/token"
+          authorizationUrl: 'https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7/v1/authorize'
+          tokenUrl: 'https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7/v1/token'
           scopes:
             groups: Obtains group memberships
             tenant_id: Obtains tenant information
@@ -1570,72 +1554,72 @@ components:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/TenantRequestDTO"
+            $ref: '#/components/schemas/TenantRequestDTO'
     Subscription:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Subscription"
+            $ref: '#/components/schemas/Subscription'
     SubscriptionRequestDTO:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/SubscriptionRequestDTO"
+            $ref: '#/components/schemas/SubscriptionRequestDTO'
     SubscriptionPatchDTO:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/SubscriptionPatchDTO"
+            $ref: '#/components/schemas/SubscriptionPatchDTO'
     SubscriptionEndpoint:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/SubscriptionEndpoint"
+            $ref: '#/components/schemas/SubscriptionEndpoint'
     Endpoint:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Endpoint"
+            $ref: '#/components/schemas/Endpoint'
     EndpointRequestDTO:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/EndpointRequestDTO"
+            $ref: '#/components/schemas/EndpointRequestDTO'
     EndpointPatchDTO:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/EndpointPatchDTO"
+            $ref: '#/components/schemas/EndpointPatchDTO'
     OauthSecurityRequestDTO:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/OauthSecurityRequestDTO"
+            $ref: '#/components/schemas/OauthSecurityRequestDTO'
     OauthSecurityUpdateRequestDTO:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/OauthSecurityUpdateRequestDTO"
+            $ref: '#/components/schemas/OauthSecurityUpdateRequestDTO'
     OauthSecurity:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/OauthSecurity"
+            $ref: '#/components/schemas/OauthSecurity'
     OauthToken:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/OauthToken"
+            $ref: '#/components/schemas/OauthToken'
     EndpointDomain:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/EndpointDomain"
+            $ref: '#/components/schemas/EndpointDomain'
     EndpointDomainRequestDTO:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/EndpointDomainRequestDTO"
+            $ref: '#/components/schemas/EndpointDomainRequestDTO'
   schemas:
     TenantRequestDTO:
       type: array
@@ -1716,7 +1700,7 @@ components:
           type: array
           uniqueItems: true
           items:
-            $ref: "#/components/schemas/SubscriptionEndpoint"
+            $ref: '#/components/schemas/SubscriptionEndpoint'
     SubscriptionEndpointRequestDTO:
       type: object
       required:
@@ -1732,9 +1716,9 @@ components:
       type: object
       properties:
         devEndpoint:
-          $ref: "#/components/schemas/SubscriptionEndpointRequestDTO"
+          $ref: '#/components/schemas/SubscriptionEndpointRequestDTO'
         prodEndpoint:
-          $ref: "#/components/schemas/SubscriptionEndpointRequestDTO"
+          $ref: '#/components/schemas/SubscriptionEndpointRequestDTO'
     SubscriptionRequestDTO:
       required:
         - name
@@ -1753,9 +1737,9 @@ components:
         events:
           type: string
         devEndpoint:
-          $ref: "#/components/schemas/SubscriptionEndpointRequestDTO"
+          $ref: '#/components/schemas/SubscriptionEndpointRequestDTO'
         prodEndpoint:
-          $ref: "#/components/schemas/SubscriptionEndpointRequestDTO"
+          $ref: '#/components/schemas/SubscriptionEndpointRequestDTO'
         payloadFilter:
           type: string
           minLength: 0
@@ -1785,14 +1769,14 @@ components:
         description:
           type: string
         quadrantType:
-          $ref: "#/components/schemas/QuadrantType"
+          $ref: '#/components/schemas/QuadrantType'
         value:
           type: string
         oauth2Id:
           type: string
           format: uuid
         status:
-          $ref: "#/components/schemas/Status"
+          $ref: '#/components/schemas/Status'
     SubscriptionEndpoint:
       type: object
       required:
@@ -1818,16 +1802,16 @@ components:
           type: integer
           format: int32
         subscription:
-          $ref: "#/components/schemas/Subscription"
+          $ref: '#/components/schemas/Subscription'
         endpoint:
-          $ref: "#/components/schemas/Endpoint"
+          $ref: '#/components/schemas/Endpoint'
     EndpointPatchDTO:
       type: object
       required:
         - status
       properties:
         status:
-          $ref: "#/components/schemas/Status"
+          $ref: '#/components/schemas/Status'
         errorMessage:
           type: string
     EndpointDomain:
@@ -1888,9 +1872,9 @@ components:
         description:
           type: string
         quadrantType:
-          $ref: "#/components/schemas/QuadrantType"
+          $ref: '#/components/schemas/QuadrantType'
         status:
-          $ref: "#/components/schemas/Status"
+          $ref: '#/components/schemas/Status'
         value:
           type: string
         tenantId:
@@ -1909,9 +1893,9 @@ components:
           type: array
           uniqueItems: true
           items:
-            $ref: "#/components/schemas/SubscriptionEndpoint"
+            $ref: '#/components/schemas/SubscriptionEndpoint'
         oauth2:
-          $ref: "#/components/schemas/OauthSecurity"
+          $ref: '#/components/schemas/OauthSecurity'
         errorMessage:
           type: string
     OauthSecurityRequestDTO:
@@ -1938,7 +1922,7 @@ components:
         scopes:
           type: string
         quadrantType:
-          $ref: "#/components/schemas/QuadrantType"
+          $ref: '#/components/schemas/QuadrantType'
     OauthSecurityUpdateRequestDTO:
       type: object
       required:
@@ -1957,7 +1941,7 @@ components:
         scopes:
           type: string
         quadrantType:
-          $ref: "#/components/schemas/QuadrantType"
+          $ref: '#/components/schemas/QuadrantType'
     OauthSecurity:
       type: object
       required:
@@ -1983,7 +1967,7 @@ components:
         scopes:
           type: string
         status:
-          $ref: "#/components/schemas/OauthStatus"
+          $ref: '#/components/schemas/OauthStatus'
         createdAt:
           type: string
           format: date
@@ -1994,9 +1978,9 @@ components:
           type: array
           uniqueItems: true
           items:
-            $ref: "#/components/schemas/Endpoint"
+            $ref: '#/components/schemas/Endpoint'
         quadrantType:
-          $ref: "#/components/schemas/QuadrantType"
+          $ref: '#/components/schemas/QuadrantType'
     OauthToken:
       type: object
       required:
@@ -2049,11 +2033,11 @@ components:
         eventTypes:
           type: array
           items:
-            $ref: "#/components/schemas/EventTypeDTO"
+            $ref: '#/components/schemas/EventTypeDTO'
         alerts:
           type: array
           items:
-            $ref: "#/components/schemas/AlertDTO"
+            $ref: '#/components/schemas/AlertDTO'
     EventStatusDTO:
       type: object
       properties:
@@ -2063,7 +2047,7 @@ components:
             - enabled
             - disabled
         alert:
-          $ref: "#/components/schemas/AlertDTO"
+          $ref: '#/components/schemas/AlertDTO'
     GCCPlanet:
       type: object
       required:

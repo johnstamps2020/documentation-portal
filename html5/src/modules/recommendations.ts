@@ -1,4 +1,4 @@
-import "../stylesheets/modules/recommendations.css";
+import '../stylesheets/modules/recommendations.css';
 
 export async function showTopicRecommendations() {
   try {
@@ -11,15 +11,15 @@ export async function showTopicRecommendations() {
 
     const json = await response.json();
     const recommendedTopics = json.recommendations;
-    const recommendationsContainer = document.createElement("div");
-    recommendationsContainer.setAttribute("class", "recommendations");
+    const recommendationsContainer = document.createElement('div');
+    recommendationsContainer.setAttribute('class', 'recommendations');
     recommendationsContainer.innerHTML = `
       <span>Recommended topics</span>
       <ul id="recommendedTopics"></ul>
       `;
 
-    const feedbackContainer = document.querySelector(".feedback");
-    const topicBody = document.querySelector("article");
+    const feedbackContainer = document.querySelector('.feedback');
+    const topicBody = document.querySelector('article');
     if (feedbackContainer) {
       feedbackContainer.parentElement.insertBefore(
         recommendationsContainer,
@@ -28,16 +28,16 @@ export async function showTopicRecommendations() {
     } else if (topicBody) {
       topicBody.appendChild(recommendationsContainer);
     }
-    const recommendedTopicsList = document.getElementById("recommendedTopics");
+    const recommendedTopicsList = document.getElementById('recommendedTopics');
     for (const topic of recommendedTopics) {
-      const recommendedTopicListItem = document.createElement("li");
-      const recommendedTopicLink = document.createElement("a");
-      recommendedTopicLink.setAttribute("href", topic.id);
+      const recommendedTopicListItem = document.createElement('li');
+      const recommendedTopicLink = document.createElement('a');
+      recommendedTopicLink.setAttribute('href', topic.id);
       recommendedTopicLink.innerText = topic.title;
       recommendedTopicListItem.appendChild(recommendedTopicLink);
       recommendedTopicsList.appendChild(recommendedTopicListItem);
     }
   } catch (err) {
-    console.log("No recommendations found", err);
+    console.log('No recommendations found', err);
   }
 }

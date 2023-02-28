@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import Fuse from "fuse.js";
-import SearchInput from "./SearchInput";
-import Dialog from "../LightBox/Dialog";
-import OfflineResult from "./OfflineResult";
-import styles from "./OfflineSearch.module.css";
+import React, { useEffect, useState } from 'react';
+import Fuse from 'fuse.js';
+import SearchInput from './SearchInput';
+import Dialog from '../LightBox/Dialog';
+import OfflineResult from './OfflineResult';
+import styles from './OfflineSearch.module.css';
 
 type RawSearchIndexItem = {
   subtitles: string;
@@ -25,10 +25,10 @@ const fuseOptions: Fuse.IFuseOptions<SearchItem> = {
   ignoreLocation: true,
   distance: 0.4,
   keys: [
-    { name: "title", weight: 0.3 },
-    { name: "keywords", weight: 0.2 },
-    { name: "subtitles", weight: 0.2 },
-    { name: "body", weight: 0.3 },
+    { name: 'title', weight: 0.3 },
+    { name: 'keywords', weight: 0.2 },
+    { name: 'subtitles', weight: 0.2 },
+    { name: 'body', weight: 0.3 },
   ],
 };
 
@@ -39,7 +39,7 @@ export default function OfflineSearch() {
 
   async function loadFuse() {
     try {
-      const response = await fetch("/search.json");
+      const response = await fetch('/search.json');
       if (!response.ok) {
         throw new Error(`Cannot fetch search index: ${response.status}`);
       }
@@ -47,7 +47,7 @@ export default function OfflineSearch() {
       const rawIndex: RawSearchIndexItem[] = await response.json();
       const normalizedIndex: SearchItem[] = rawIndex.map(
         ({ subtitles, ...otherFields }) => ({
-          subtitles: subtitles.split(","),
+          subtitles: subtitles.split(','),
           ...otherFields,
         })
       );
@@ -56,11 +56,11 @@ export default function OfflineSearch() {
       const fuseInstance = new Fuse(normalizedIndex, fuseOptions, searchIndex);
       setFuse(fuseInstance);
     } catch (err) {
-      console.error("SEARCH ERROR", err);
+      console.error('SEARCH ERROR', err);
     }
   }
 
-  useEffect(function() {
+  useEffect(function () {
     loadFuse();
   }, []);
 
@@ -76,7 +76,7 @@ export default function OfflineSearch() {
       setResults(searchResults);
       setShowingResults(true);
     } catch (err) {
-      console.error("Problem running search", err);
+      console.error('Problem running search', err);
     }
   }
 
