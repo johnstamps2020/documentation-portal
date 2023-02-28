@@ -168,6 +168,13 @@
       "sourceType": "git",
       "branch": "2020.10",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
+    },
+    {
+      "id": "standardsmastersrc",
+      "title": "Standards Master",
+      "sourceType": "git",
+      "branch": "master",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     }
   ]
 }
