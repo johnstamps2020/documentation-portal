@@ -2,31 +2,13 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "gwrulesrn",
-      "title": "Guidewire Rules Release Notes",
-      "url": "cloud/gwrulesrn",
-      "metadata": {
-        "product": ["Rules", "PolicyCenter"],
-        "platform": ["Cloud"],
-        "version": ["2023.02"],
-        "release": ["Flaine"],
-        "subject": ["Release notes"]
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
       "id": "gwrules",
       "title": "Guidewire Rules",
       "url": "cloud/gwrules",
       "metadata": {
-        "product": ["Rules", "PolicyCenter"],
+        "product": ["Rules", "PolicyCenter", "ClaimCenter"],
         "platform": ["Cloud"],
-        "version": ["2023.02"],
+        "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Configuration"]
       },
