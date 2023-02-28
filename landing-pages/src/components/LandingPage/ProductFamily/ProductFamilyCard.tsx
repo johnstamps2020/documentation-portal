@@ -1,6 +1,4 @@
-import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
-import { Link as RouterLink } from 'react-router-dom';
 
 type ProductFamilyCardProps = {
   children: JSX.Element | JSX.Element[] | undefined;
