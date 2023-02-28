@@ -1,5 +1,5 @@
 import { baseBackgroundProps } from '..';
-import CategoryLayout2, {
+import Category2Layout, {
   Category2LayoutProps,
 } from '../../../components/LandingPage/Category2/Category2Layout';
 import gradientBackgroundImage from '../../../images/background-gradient.svg';
@@ -136,8 +136,8 @@ const docs: Category2LayoutProps['items'] = [
     ],
   },
 ];
-const whatsNewInfo: Category2Layout2Props["whatsNew"] = {
-  label: "Garmisch",
+const whatsNew: Category2LayoutProps['whatsNew'] = {
+  label: 'Garmisch',
   badge: garmischBadge,
   item: { label: 'Learn more', docId: 'whatsnewgarmisch' },
   content: [
@@ -185,7 +185,7 @@ const backgroundProps: Category2LayoutProps['backgroundProps'] = {
 
 export default function Garmisch() {
   return (
-    <CategoryLayout2
+    <Category2Layout
       items={docs}
       whatsNew={whatsNew}
       backgroundProps={backgroundProps}

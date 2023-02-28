@@ -26,7 +26,7 @@ export default function Category2Layout({
   sidebar,
   items,
   whatsNew,
-}: CategoryLayout2Props) {
+}: Category2LayoutProps) {
   return (
     <Grid
       sx={{
