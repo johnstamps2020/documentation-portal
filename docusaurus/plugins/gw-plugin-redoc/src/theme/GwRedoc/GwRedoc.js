@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
-import useBaseUrl from "@docusaurus/useBaseUrl";
-import "@fontsource/source-sans-pro";
-import "./GwRedoc.css";
+import React, { useEffect } from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import '@fontsource/source-sans-pro';
+import './GwRedoc.css';
 
 export default function GwRedoc({ specRelativeUrl }) {
-  const gwJs = useBaseUrl("/generated/gw.redoc.standalone.js");
+  const gwJs = useBaseUrl('/generated/gw.redoc.standalone.js');
 
   useEffect(() => {
-    const script = document.createElement("script");
-    script.setAttribute("type", "text/javascript");
+    const script = document.createElement('script');
+    script.setAttribute('type', 'text/javascript');
     script.src = gwJs;
     script.async = true;
-    script.type = "text/javascript";
+    script.type = 'text/javascript';
     document.body.appendChild(script);
     return () => {
       script.parentNode.removeChild(script);

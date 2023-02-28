@@ -56,7 +56,7 @@ function wrapInQuotes(stringsToWrap) {
   }
 
   if (Array.isArray(stringsToWrap)) {
-    return stringsToWrap.map(s => addQuotes(s));
+    return stringsToWrap.map((s) => addQuotes(s));
   } else if (typeof stringsToWrap === 'string') {
     return addQuotes(stringsToWrap);
   } else {
@@ -192,7 +192,7 @@ async function createVersionSelector() {
       const allVersions = matchingVersionSelector.allVersions;
       const select = document.createElement('select');
       select.id = 'versionSelector';
-      select.onchange = async function(e) {
+      select.onchange = async function (e) {
         let linkToOpen = document.getElementById('versionSelector').value;
         const mainElement = document.querySelector('main');
         if (mainElement) {
@@ -211,9 +211,8 @@ async function createVersionSelector() {
           if (bestMatchingTopic) {
             const bestMatchingTopicUrl = new URL(bestMatchingTopic);
             const currentPageUrl = new URL(window.location.href);
-            const currentPageHighlightTerms = currentPageUrl.searchParams.get(
-              'hl'
-            );
+            const currentPageHighlightTerms =
+              currentPageUrl.searchParams.get('hl');
             currentPageHighlightTerms &&
               bestMatchingTopicUrl.searchParams.set(
                 'hl',
@@ -449,8 +448,9 @@ async function sendFeedback(formId) {
     return emails;
   }
 
-  let userCommentText = form.querySelector('textarea[name="userComment"]')
-    ?.value;
+  let userCommentText = form.querySelector(
+    'textarea[name="userComment"]'
+  )?.value;
 
   if (userCommentText) {
     submitButton.classList.add('disabled');
@@ -480,7 +480,7 @@ async function sendFeedback(formId) {
 
     const descriptionText = feedbackRequest.descriptionText;
     let cleanDescriptionText = {};
-    Object.keys(descriptionText).forEach(prop => {
+    Object.keys(descriptionText).forEach((prop) => {
       if (descriptionText[prop] && descriptionText[prop] !== 'undefined') {
         cleanDescriptionText[prop] = descriptionText[prop];
       }
@@ -560,7 +560,7 @@ function renderThanksMessage() {
 function showThanksMessage() {
   const thanksMessage = document.getElementById('thanksMessage');
   thanksMessage.className = 'show';
-  setTimeout(function() {
+  setTimeout(function () {
     thanksMessage.classList.remove('show');
   }, 3000);
 }
@@ -679,7 +679,7 @@ async function configureSearch() {
 function setFooter() {
   const whTopicBody = document.getElementById('wh_topic_body');
   const footer = document.querySelector('.wh_footer');
-  const resizeObserver = new ResizeObserver(entries => {
+  const resizeObserver = new ResizeObserver((entries) => {
     for (let entry of entries) {
       const scrollLeft =
         window.pageXOffset || document.documentElement.scrollLeft;
@@ -733,7 +733,7 @@ function getScrambledEmail(email) {
   return `${scrambledLogin}@${parts[1]}`;
 }
 
-docReady(async function() {
+docReady(async function () {
   metadataIsAvailable = await fetchMetadata();
   await createContainerForCustomHeaderElements();
   addCustomElements();

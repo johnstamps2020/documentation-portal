@@ -1,12 +1,12 @@
 .redoc-wrap {
   flex-wrap: wrap;
   font-size: 18px !important;
-  font-family: "Source Sans Pro" sans-serif !important;
+  font-family: 'Source Sans Pro' sans-serif !important;
 }
 
 .redoc-wrap div,
 .redoc-wrap p {
-  font-family: "Source Sans Pro" sans-serif !important;
+  font-family: 'Source Sans Pro' sans-serif !important;
 }
 
 .redoc-wrap code {
@@ -29,11 +29,11 @@
   display: none;
 }
 
-.redoc-wrap div[id^="operation"] > div > div > div > button {
+.redoc-wrap div[id^='operation'] > div > div > div > button {
   margin-top: 3em;
 }
 
-.redoc-wrap label[role="menuitem"],
+.redoc-wrap label[role='menuitem'],
 .redoc-wrap button {
   break-inside: auto;
 }
@@ -43,7 +43,7 @@
   color: #fff;
 }
 
-.redoc-wrap div[class~="scrollbar-container"] > div {
+.redoc-wrap div[class~='scrollbar-container'] > div {
   display: none;
 }
 
@@ -51,6 +51,6 @@
   width: 100%;
 }
 
-.redoc-wrap div[class~="api-content"] a {
+.redoc-wrap div[class~='api-content'] a {
   text-decoration: underline;
 }

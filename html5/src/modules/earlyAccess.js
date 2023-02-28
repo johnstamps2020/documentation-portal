@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "../stylesheets/modules/earlyAccess.module.css";
+import React from 'react';
+import styles from '../stylesheets/modules/earlyAccess.module.css';
 
 function EarlyAccessWarning() {
   return (
@@ -16,11 +16,11 @@ function EarlyAccessWarning() {
 
 export async function addEarlyAccessMark() {
   if (window.docEarlyAccess) {
-    const { render } = await import("react-dom");
-    const warningContainer = document.createElement("div");
-    const article = document.querySelector("article");
+    const { render } = await import('react-dom');
+    const warningContainer = document.createElement('div');
+    const article = document.querySelector('article');
     article.prepend(warningContainer);
-    React.createElement("div");
+    React.createElement('div');
     render(<EarlyAccessWarning />, warningContainer);
   }
 }

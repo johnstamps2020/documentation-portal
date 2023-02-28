@@ -1,2 +1,2 @@
-import Internal from "./Internal";
+import Internal from './Internal';
 export default Internal;

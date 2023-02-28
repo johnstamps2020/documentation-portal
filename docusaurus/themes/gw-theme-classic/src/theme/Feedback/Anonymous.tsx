@@ -1,7 +1,7 @@
-import React from "react";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Translate from "@theme/Translate";
+import React from 'react';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Translate from '@theme/Translate';
 
 type AnonymousProps = {
   anonymous: boolean;

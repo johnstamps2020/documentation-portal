@@ -1,7 +1,7 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme } from '@mui/material/styles';
 
 export const versionSelectorTheme = createTheme({
   palette: {
-    mode: "dark",
+    mode: 'dark',
   },
 });

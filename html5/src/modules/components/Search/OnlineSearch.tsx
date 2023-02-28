@@ -1,6 +1,6 @@
-import React from "react";
-import HiddenInput from "./HiddenInput";
-import SearchInput from "./SearchInput";
+import React from 'react';
+import HiddenInput from './HiddenInput';
+import SearchInput from './SearchInput';
 
 export default function OnlineSearch() {
   return (

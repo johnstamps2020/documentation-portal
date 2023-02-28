@@ -6,7 +6,6 @@
   "author": "doctools@guidewire.com",
   "license": "UNLICENSED",
   "private": true,
-  "packageManager": "yarn@3.4.1",
   "scripts": {
     "build": "webpack",
     "build-offline": "BUILD_MODE=offline webpack",

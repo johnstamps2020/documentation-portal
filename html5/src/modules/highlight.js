@@ -19,7 +19,7 @@ export function addHighlightToggle() {
     highlightButton.setAttribute('aria-label', toggleDescription);
     highlightButton.setAttribute('title', toggleDescription);
 
-    highlightButton.addEventListener('click', function() {
+    highlightButton.addEventListener('click', function () {
       toggleHighlightsOnPage(highlightButton);
     });
 

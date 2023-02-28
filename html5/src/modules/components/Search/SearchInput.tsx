@@ -1,5 +1,5 @@
-import { translate } from "@theme/Translate";
-import React from "react";
+import { translate } from '@theme/Translate';
+import React from 'react';
 
 type SearchInputProps = {
   children?: JSX.Element | JSX.Element[];
@@ -7,10 +7,10 @@ type SearchInputProps = {
 };
 
 export default function SearchInput({ children, onSubmit }: SearchInputProps) {
-  const searchFieldId = "searchField";
+  const searchFieldId = 'searchField';
   const placeholder = translate({
-    id: "gwSearchForm.placeholder",
-    message: "Search",
+    id: 'gwSearchForm.placeholder',
+    message: 'Search',
   });
 
   return (

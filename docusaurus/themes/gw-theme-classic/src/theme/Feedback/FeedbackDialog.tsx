@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from "react";
-import Dialog from "@mui/material/Dialog";
-import DialogContent from "@mui/material/DialogContent";
-import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import DialogActions from "@mui/material/DialogActions";
-import Typography from "@mui/material/Typography";
-import ClearIcon from "@mui/icons-material/Clear";
-import IconButton from "@mui/material/IconButton";
-import GwBackdrop from "../GwBackdrop";
-import Anonymous from "./Anonymous";
-import Translate, { translate } from "@theme/Translate";
-import { FeedbackDialogProps } from "@theme/Feedback";
+import React, { useState, useEffect } from 'react';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import DialogActions from '@mui/material/DialogActions';
+import Typography from '@mui/material/Typography';
+import ClearIcon from '@mui/icons-material/Clear';
+import IconButton from '@mui/material/IconButton';
+import GwBackdrop from '../GwBackdrop';
+import Anonymous from './Anonymous';
+import Translate, { translate } from '@theme/Translate';
+import { FeedbackDialogProps } from '@theme/Feedback';
 
 const commentLabel = translate({
-  id: "feedbackDialog.comment",
-  message: "Your comment",
+  id: 'feedbackDialog.comment',
+  message: 'Your comment',
 });
 
 const emailLabel = translate({
-  id: "feedbackDialog.email",
-  message: "Your email",
+  id: 'feedbackDialog.email',
+  message: 'Your email',
 });
 
 const clearLabel = translate({
-  id: "feedbackDialog.clearEmail",
-  message: "Clear email",
+  id: 'feedbackDialog.clearEmail',
+  message: 'Clear email',
 });
 
 type JiraResponse = {
@@ -42,12 +42,12 @@ type FeedbackRequestBody = {
     Platform: string;
     Category: string;
     URL: string;
-    "Feedback type": "Kudos" | "Critique";
+    'Feedback type': 'Kudos' | 'Critique';
     Comment: string;
-    "Reported by": string;
-    "Possible contacts": string;
+    'Reported by': string;
+    'Possible contacts': string;
   };
-  feedbackType: "positive" | "negative";
+  feedbackType: 'positive' | 'negative';
 };
 
 export default function FeedbackDialog({
@@ -63,8 +63,8 @@ export default function FeedbackDialog({
   possibleContacts,
 }: FeedbackDialogProps) {
   // State
-  const [comment, setComment] = useState("");
-  const [email, setEmail] = useState("");
+  const [comment, setComment] = useState('');
+  const [email, setEmail] = useState('');
   const [emailIsError, setEmailIsError] = useState(false);
   const [sending, setSending] = useState(false);
   const [anonymous, setAnonymous] = useState(false);
@@ -89,25 +89,25 @@ export default function FeedbackDialog({
       const feedbackRequest: FeedbackRequestBody = {
         summaryText: `User feedback: ${title}`,
         descriptionText: {
-          Product: searchMeta?.product?.join(", ") || "",
-          Version: searchMeta?.version?.join(", ") || "",
-          Platform: searchMeta?.platform?.join(", ") || "",
-          Category: "Best practices",
+          Product: searchMeta?.product?.join(', ') || '',
+          Version: searchMeta?.version?.join(', ') || '',
+          Platform: searchMeta?.platform?.join(', ') || '',
+          Category: 'Best practices',
           URL: url,
-          "Feedback type": positive ? "Kudos" : "Critique",
+          'Feedback type': positive ? 'Kudos' : 'Critique',
           Comment: comment,
-          "Reported by": email.length > 0 && !anonymous ? email : "anonymous",
-          "Possible contacts": possibleContacts,
+          'Reported by': email.length > 0 && !anonymous ? email : 'anonymous',
+          'Possible contacts': possibleContacts,
         },
-        feedbackType: positive ? "positive" : "negative",
+        feedbackType: positive ? 'positive' : 'negative',
       };
 
       setSending(true);
       const response = await fetch(jiraApiUrl, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "http://localhost:8081",
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': 'http://localhost:8081',
         },
         body: JSON.stringify(feedbackRequest),
       });
@@ -127,7 +127,7 @@ export default function FeedbackDialog({
       }
 
       showNotification(
-        "success",
+        'success',
         <>
           <p>
             <Translate
@@ -149,9 +149,9 @@ export default function FeedbackDialog({
           </p>
           {userInformation.hasGuidewireEmail && (
             <p>
-              Created issue{" "}
+              Created issue{' '}
               <a
-                style={{ color: "white", textDecoration: "underline" }}
+                style={{ color: 'white', textDecoration: 'underline' }}
                 href={`https://guidewirejira.atlassian.net/browse/${jsonResponse.key}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -166,7 +166,7 @@ export default function FeedbackDialog({
 
       handleClose();
     } catch (err) {
-      showNotification("error", <>{`${err}`}</>);
+      showNotification('error', <>{`${err}`}</>);
     } finally {
       setSending(false);
     }
@@ -194,7 +194,7 @@ export default function FeedbackDialog({
   }
 
   function handleClearEmail() {
-    setEmail("");
+    setEmail('');
     setEmailIsError(false);
   }
 
@@ -208,7 +208,7 @@ export default function FeedbackDialog({
 
   function handleAnonymous(value: boolean) {
     if (value === true) {
-      setEmail("");
+      setEmail('');
       setAnonymous(true);
       setEmailIsError(false);
     } else {
@@ -221,7 +221,7 @@ export default function FeedbackDialog({
     <>
       <Dialog onClose={handleClose} open={open}>
         <DialogContent>
-          <Stack spacing={2} sx={{ padding: "1rem" }}>
+          <Stack spacing={2} sx={{ padding: '1rem' }}>
             <Typography variant="h5" component="div">
               <Translate
                 id="feedbackDialog.anythingElse"

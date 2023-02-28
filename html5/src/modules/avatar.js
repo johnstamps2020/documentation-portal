@@ -1,29 +1,29 @@
-import "../stylesheets/modules/avatar.css";
+import '../stylesheets/modules/avatar.css';
 
 function showAvatarMenu(event) {
-  if (event.target.id === "avatarButton") {
-    const avatarMenu = document.getElementById("avatarMenu");
-    avatarMenu.classList.toggle("show");
+  if (event.target.id === 'avatarButton') {
+    const avatarMenu = document.getElementById('avatarMenu');
+    avatarMenu.classList.toggle('show');
   }
 }
 
 function closeAvatarMenu(event) {
-  if (!event.target.closest("#avatarButton")) {
-    const avatarMenu = document.getElementById("avatarMenu");
-    if (avatarMenu.classList.contains("show")) {
-      avatarMenu.classList.remove("show");
+  if (!event.target.closest('#avatarButton')) {
+    const avatarMenu = document.getElementById('avatarMenu');
+    if (avatarMenu.classList.contains('show')) {
+      avatarMenu.classList.remove('show');
     }
   }
 }
 
 function createAvatarButton(fullName, username) {
-  const button = document.createElement("button");
-  button.setAttribute("id", "avatarButton");
-  button.setAttribute("class", "headerButtonsButton");
-  button.setAttribute("aria-label", "user information");
-  button.setAttribute("type", "button");
-  button.addEventListener("click", showAvatarMenu);
-  window.addEventListener("click", closeAvatarMenu);
+  const button = document.createElement('button');
+  button.setAttribute('id', 'avatarButton');
+  button.setAttribute('class', 'headerButtonsButton');
+  button.setAttribute('aria-label', 'user information');
+  button.setAttribute('type', 'button');
+  button.addEventListener('click', showAvatarMenu);
+  window.addEventListener('click', closeAvatarMenu);
   button.innerHTML = `
     <div id="avatarMenu" class="headerButtonsMenu">
         <div class="headerButtonsMenuHeader">
@@ -46,10 +46,10 @@ function getLoginButtonOrAvatar() {
   if (isLoggedIn) {
     userButton = createAvatarButton(name, preferred_username);
   } else {
-    userButton = document.createElement("a");
-    userButton.setAttribute("id", "loginButton");
-    userButton.setAttribute("href", "/gw-login");
-    userButton.innerText = "Log in";
+    userButton = document.createElement('a');
+    userButton.setAttribute('id', 'loginButton');
+    userButton.setAttribute('href', '/gw-login');
+    userButton.innerText = 'Log in';
   }
   return userButton;
 }
@@ -57,7 +57,7 @@ function getLoginButtonOrAvatar() {
 export function addAvatar() {
   try {
     const userButton = getLoginButtonOrAvatar();
-    document.getElementById("headerRight").appendChild(userButton);
+    document.getElementById('headerRight').appendChild(userButton);
   } catch (error) {
     console.error(error);
   }

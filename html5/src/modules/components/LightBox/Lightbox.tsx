@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
-import Dialog from "./Dialog";
-import styles from "./Lightbox.module.css";
+import React, { useRef, useState } from 'react';
+import Dialog from './Dialog';
+import styles from './Lightbox.module.css';
 
 type ThumbnailProps = {
   thumbnail: string;

@@ -9,7 +9,7 @@ function setProxyResCacheControlHeader(proxyRes) {
   }
 }
 
-proxy.on('error', function(err) {
+proxy.on('error', function (err) {
   next(err);
 });
 

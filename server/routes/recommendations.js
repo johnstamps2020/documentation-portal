@@ -5,7 +5,7 @@ const {
   getTopicRecommendations,
 } = require('../controllers/recommendationsController');
 
-router.get('/', async function(req, res, next) {
+router.get('/', async function (req, res, next) {
   try {
     const { topicId } = req.query;
     const result = await getTopicRecommendations(topicId, req, res);

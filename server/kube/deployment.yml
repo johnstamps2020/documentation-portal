@@ -116,8 +116,11 @@ spec:
                 command:
                   - /bin/sleep
                   - '30'
-          command: [ \"/bin/sh\", \"-c\" ]
-          args: [ \"until wget -qO- http://127.0.0.1:15000/server_info | grep '\\\"state\\\": \\\"LIVE\\\"'; do echo 'Waiting for Istio sidecar'; sleep 1 ; done ; echo 'istio sidecar available'; node server/server.js\" ]
+          command: [\"/bin/sh\", \"-c\"]
+          args:
+            [
+              \"until wget -qO- http://127.0.0.1:15000/server_info | grep '\\\"state\\\": \\\"LIVE\\\"'; do echo 'Waiting for Istio sidecar'; sleep 1 ; done ; echo 'istio sidecar available'; node server/server.js\",
+            ]
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
@@ -245,7 +248,7 @@ spec:
             - name: DD_HTTP_SERVER_TAG_QUERY_STRING
               value: 'true'
             - name: DD_SERVICE_MAPPING
-              value: "nodejs:atmos-${DEPLOY_ENV}-${APP_NAME}"
+              value: 'nodejs:atmos-${DEPLOY_ENV}-${APP_NAME}'
             - name: DD_LOGS_INJECTION
               value: 'true'
             - name: DD_PROFILING_ENABLED
@@ -261,7 +264,7 @@ spec:
                 fieldRef:
                   fieldPath: status.hostIP
             - name: DD_PROPAGATION_STYLE_INJECT
-              value: "Datadog,B3"
+              value: 'Datadog,B3'
           resources:
             requests:
               memory: \"${REQUESTS_MEMORY}\"

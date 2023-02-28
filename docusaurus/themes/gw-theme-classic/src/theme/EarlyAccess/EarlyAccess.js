@@ -1,6 +1,6 @@
-import React from "react";
-import styles from "./EarlyAccess.module.css";
-import { useDocContext } from "@theme/DocContext";
+import React from 'react';
+import styles from './EarlyAccess.module.css';
+import { useDocContext } from '@theme/DocContext';
 
 export default function EarlyAccess() {
   const { isEarlyAccess } = useDocContext();

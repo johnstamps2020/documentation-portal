@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 
 function getMockLanguages() {
   return ['Dothraki', 'Klingon', 'Fremeni', 'Minion', 'Polish'].map(
-    language => ({
+    (language) => ({
       label: language,
       pageUrl: '/',
     })
@@ -67,8 +67,8 @@ function setL10nParams(pageClass) {
 
 async function fetchConfigFileForLandingPage(req) {
   let reqPath = req.path === '/' ? '' : req.path;
-  if ( reqPath.slice(-1) === '/' ) {
-      reqPath = reqPath.slice(0, -1);
+  if (reqPath.slice(-1) === '/') {
+    reqPath = reqPath.slice(0, -1);
   }
 
   const configFilePath = new URL(
@@ -111,7 +111,7 @@ async function getTranslatedPages() {
     const response = await fetch(rootTranslatedPageConfigFilePath);
     if (response.ok) {
       const fileContentsJson = await response.json();
-      return fileContentsJson.items.map(o => ({
+      return fileContentsJson.items.map((o) => ({
         label: o.label,
         pageUrl: `/l10n/${o.page}`,
       }));

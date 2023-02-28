@@ -20,21 +20,21 @@ Add the plugin to the `docusaurus.config.js` file.
 
 1. Under `themeConfig`, add:
 
-    ```js
-    themeConfig:
-        zoom: {
-                selector: '.markdown img:not(.doNotZoom)',
-                background: {
-                light: 'rgb(255, 255, 255)',
-                dark: 'rgb(50, 50, 50)',
-                },
-                // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
-                config: {},
-            }
-    ```
+   ```js
+   themeConfig:
+       zoom: {
+               selector: '.markdown img:not(.doNotZoom)',
+               background: {
+               light: 'rgb(255, 255, 255)',
+               dark: 'rgb(50, 50, 50)',
+               },
+               // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+               config: {},
+           }
+   ```
 
 2. Under `plugins`, add:
 
-    ```js
-    plugins: [require.resolve('docusaurus-plugin-image-zoom')]
-    ```
+   ```js
+   plugins: [require.resolve('docusaurus-plugin-image-zoom')];
+   ```

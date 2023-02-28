@@ -1,10 +1,10 @@
-import React from "react";
-import { useDocContext } from "@theme/DocContext";
-import InfoImage from "./undraw_personal_info_re_ur1n.svg";
-import Translate from "@theme/Translate";
-import styles from "./Internal.module.css";
-import LogInButton from "@theme/LogInButton";
-import useIsBrowser from "@docusaurus/useIsBrowser";
+import React from 'react';
+import { useDocContext } from '@theme/DocContext';
+import InfoImage from './undraw_personal_info_re_ur1n.svg';
+import Translate from '@theme/Translate';
+import styles from './Internal.module.css';
+import LogInButton from '@theme/LogInButton';
+import useIsBrowser from '@docusaurus/useIsBrowser';
 
 export default function InternalPageInfo() {
   const { userInformation } = useDocContext();
@@ -14,10 +14,10 @@ export default function InternalPageInfo() {
     return null;
   }
 
-  const defaultMessage = "Hi,%0A%0APlease help me access this page. Thank you!";
+  const defaultMessage = 'Hi,%0A%0APlease help me access this page. Thank you!';
   const emailBody = isBrowser
     ? `${defaultMessage}%0A%0A${
-        document.querySelector("title").textContent
+        document.querySelector('title').textContent
       }%0A%0A${window.location.href}`
     : defaultMessage;
 
@@ -34,12 +34,12 @@ export default function InternalPageInfo() {
           <Translate
             id="internal.noAccess"
             values={{
-              name: <strong>{userInformation.name || "Name Unknown"}</strong>,
+              name: <strong>{userInformation.name || 'Name Unknown'}</strong>,
               email: userInformation.preferred_username,
             }}
           >
             {
-              "You are logged in as {name} ({email}) and you do not have access."
+              'You are logged in as {name} ({email}) and you do not have access.'
             }
           </Translate>
         </div>

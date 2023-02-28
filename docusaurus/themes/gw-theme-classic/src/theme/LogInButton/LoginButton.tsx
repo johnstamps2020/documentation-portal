@@ -1,8 +1,8 @@
-import React from "react";
-import { useDocContext } from "@theme/DocContext";
-import styles from "./LoginButton.module.css";
-import Translate from "@theme/Translate";
-import clsx from "clsx";
+import React from 'react';
+import { useDocContext } from '@theme/DocContext';
+import styles from './LoginButton.module.css';
+import Translate from '@theme/Translate';
+import clsx from 'clsx';
 
 export default function LogInButton({ dark }) {
   const isLoggedIn = useDocContext().userInformation?.isLoggedIn;

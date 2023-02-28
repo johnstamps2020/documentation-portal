@@ -1,6 +1,6 @@
-import React from "react";
-import Fuse from "fuse.js";
-import { SearchItem } from "./OfflineSearch";
+import React from 'react';
+import Fuse from 'fuse.js';
+import { SearchItem } from './OfflineSearch';
 
 type OfflineResultProps = {
   result: Fuse.FuseResult<SearchItem>;
@@ -16,7 +16,7 @@ export default function OfflineResult({ result }: OfflineResultProps) {
       </h2>
       <div>
         {body.trim().substring(0, previewLength)}
-        {body.trim().length > previewLength && "..."}
+        {body.trim().length > previewLength && '...'}
       </div>
     </div>
   );

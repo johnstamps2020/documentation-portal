@@ -1,5 +1,5 @@
 @import 'headerButtons.css';
 
 #translatedDocsButton {
-  background: url("/images/icon-translatedDocs.svg");
+  background: url('/images/icon-translatedDocs.svg');
 }

@@ -1,6 +1,6 @@
-import Backdrop from "@mui/material/Backdrop";
-import CircularProgress from "@mui/material/CircularProgress";
-import React from "react";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import React from 'react';
 
 type GwBackdropProps = {
   open: boolean;
@@ -9,7 +9,7 @@ type GwBackdropProps = {
 export default function GwBackdrop({ open }: GwBackdropProps) {
   return (
     <Backdrop
-      sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
       open={open}
     >
       <CircularProgress color="inherit" />

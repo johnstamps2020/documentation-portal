@@ -1,10 +1,10 @@
 export async function redirectToFirstTopic() {
-  const firstLink = document.querySelector(".topicref > a");
+  const firstLink = document.querySelector('.topicref > a');
   if (firstLink === null) {
-    console.error("Error: No first topic reference to redirect to.");
+    console.error('Error: No first topic reference to redirect to.');
     return;
   }
-  window.location.href = firstLink.getAttribute("href");
+  window.location.href = firstLink.getAttribute('href');
 }
 
 export async function handleContextId() {
@@ -15,7 +15,7 @@ export async function handleContextId() {
     for (const [name, value] of urlParams) {
       urlParamsLower.append(name.toLowerCase(), value);
     }
-    const contextId = urlParamsLower.get("contextid");
+    const contextId = urlParamsLower.get('contextid');
     if (contextId) {
       const redirected = await redirectToId(contextId);
       return redirected;
@@ -25,9 +25,9 @@ export async function handleContextId() {
 
 async function redirectToId(contextId) {
   try {
-    const response = await fetch("./contextIds.json");
+    const response = await fetch('./contextIds.json');
     if (!response.ok) {
-      throw new Error("HTTP error: " + response.status);
+      throw new Error('HTTP error: ' + response.status);
       return false;
     } else {
       const json = await response.json();
@@ -37,15 +37,15 @@ async function redirectToId(contextId) {
       );
 
       if (entry) {
-        window.location.href = "./" + entry.file + "#" + contextId;
+        window.location.href = './' + entry.file + '#' + contextId;
         return true;
       } else {
-        console.error("ERROR: Invalid contextId");
+        console.error('ERROR: Invalid contextId');
         return false;
       }
     }
   } catch (e) {
-    console.error("Error fetching contextIds.json: ", e);
+    console.error('Error fetching contextIds.json: ', e);
     return false;
   }
 }

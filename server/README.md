@@ -33,17 +33,19 @@ This is a simple Node.js app which enforces Okta authentication.
    ENABLE_AUTH=yes
    LOCALHOST_SESSION_SETTINGS=yes
    ```
-   Note: If running from a VS Code terminal in Windows, start VS Code with Run as Administrator.
-4. You can also "pretend" to be an external user. This
-   allows you to view the site locally as somebody without
-   a Guidewire email. Set the following optional variable:
+   Note: If running from a VS Code terminal in Windows, start VS Code with Run
+   as Administrator.
+4. You can also "pretend" to be an external user. This allows you to view the
+   site locally as somebody without a Guidewire email. Set the following
+   optional variable:
    ```
    PRETEND_TO_BE_EXTERNAL=yes
    ```
 
 ## Keti
 
-The attached `keti.json` contains application configuration. Use if if you want to make changes to Keti. Make sure you commit your changes to this repository.
+The attached `keti.json` contains application configuration. Use if if you want
+to make changes to Keti. Make sure you commit your changes to this repository.
 
 ## HTML5 webpack
 

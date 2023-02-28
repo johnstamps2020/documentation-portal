@@ -1,12 +1,12 @@
-import React from "react";
-import { useDocContext } from "@theme/DocContext";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { ThemeProvider } from "@mui/material/styles";
-import { versionSelectorTheme } from "./VersionSelectorTheme";
-import { VersionSelectorProps } from "@theme/VersionSelector";
+import React from 'react';
+import { useDocContext } from '@theme/DocContext';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { ThemeProvider } from '@mui/material/styles';
+import { versionSelectorTheme } from './VersionSelectorTheme';
+import { VersionSelectorProps } from '@theme/VersionSelector';
 
 function arrayMoveToTop(arr: VersionSelectorProps[], phrase: string) {
   const fromIndex = arr.findIndex((v) => v.label.includes(phrase));
@@ -47,7 +47,7 @@ function VersionSelector() {
 
   function handleChange(event: SelectChangeEvent) {
     const url =
-      window.location.hostname === "localhost"
+      window.location.hostname === 'localhost'
         ? `https://docs.int.ccs.guidewire.net`
         : `https://${window.location.hostname}`;
     const targetUrl = `${url}/${event.target.value}`;
@@ -55,7 +55,7 @@ function VersionSelector() {
   }
 
   availableVersions.sort(sortVersions);
-  arrayMoveToTop(availableVersions, "next");
+  arrayMoveToTop(availableVersions, 'next');
 
   const selectedVersion = availableVersions.find((v) => v.currentlySelected);
 
@@ -69,7 +69,7 @@ function VersionSelector() {
           value={selectedVersion.url}
           label="versions"
           onChange={handleChange}
-          sx={{ height: "32px" }}
+          sx={{ height: '32px' }}
         >
           {availableVersions.map((v, key) => (
             <MenuItem key={key} value={v.url}>

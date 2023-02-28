@@ -1,3 +1,3 @@
-import DropdownFrame from "./DropdownFrame";
+import DropdownFrame from './DropdownFrame';
 
 export default DropdownFrame;

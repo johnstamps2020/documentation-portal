@@ -8,7 +8,7 @@ Welcome home! It's very good to see you again.
 ```ts
 export function readJsonFile(fileName: string): { [id: string]: string } {
   const translationData: TranslationFileContent = JSON.parse(
-    readFileSync(`${__dirname}/i18n/${fileName}`, { encoding: "utf-8" })
+    readFileSync(`${__dirname}/i18n/${fileName}`, { encoding: 'utf-8' })
   );
 
   return Object.entries(translationData).reduce(
@@ -46,7 +46,7 @@ And the expected string resource is.
 }
 ```
 
-import Internal from "@theme/Internal";
+import Internal from '@theme/Internal';
 
 <Internal>
 

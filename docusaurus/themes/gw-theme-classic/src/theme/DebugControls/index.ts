@@ -1,3 +1,3 @@
-import DebugControls from "./DebugControls";
+import DebugControls from './DebugControls';
 
 export default DebugControls;

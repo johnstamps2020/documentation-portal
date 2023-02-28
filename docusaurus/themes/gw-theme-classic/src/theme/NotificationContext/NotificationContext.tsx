@@ -1,20 +1,20 @@
-import { AlertProps } from "@mui/material";
-import React, { createContext, useContext, useState } from "react";
-import Notification, { NotificationProps } from "@theme/Notification";
+import { AlertProps } from '@mui/material';
+import React, { createContext, useContext, useState } from 'react';
+import Notification, { NotificationProps } from '@theme/Notification';
 
 interface NotificationContextInterface {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  message: NotificationProps["message"];
+  message: NotificationProps['message'];
   setMessage: React.Dispatch<React.SetStateAction<React.ReactNode>>;
-  severity: AlertProps["severity"];
-  setSeverity: React.Dispatch<React.SetStateAction<AlertProps["severity"]>>;
+  severity: AlertProps['severity'];
+  setSeverity: React.Dispatch<React.SetStateAction<AlertProps['severity']>>;
   showNotification: (settings: NotificationSettings) => void;
 }
 
 type NotificationSettings = {
-  message: NotificationContextInterface["message"];
-  severity: NotificationContextInterface["severity"];
+  message: NotificationContextInterface['message'];
+  severity: NotificationContextInterface['severity'];
 };
 
 const NotificationContext = createContext<NotificationContextInterface | null>(
@@ -28,15 +28,13 @@ type NotificationContextProviderProps = {
 export function NotificationProvider({
   children,
 }: NotificationContextProviderProps) {
-  const [isOpen, setIsOpen] = useState<NotificationContextInterface["isOpen"]>(
-    false
-  );
+  const [isOpen, setIsOpen] =
+    useState<NotificationContextInterface['isOpen']>(false);
   const [message, setMessage] = useState<
-    NotificationContextInterface["message"]
+    NotificationContextInterface['message']
   >(<></>);
-  const [severity, setSeverity] = useState<
-    NotificationContextInterface["severity"]
-  >("info");
+  const [severity, setSeverity] =
+    useState<NotificationContextInterface['severity']>('info');
 
   function showNotification({ message, severity }: NotificationSettings) {
     setSeverity(severity);
@@ -76,7 +74,7 @@ export const useNotification = () => {
 
   if (!contextValue) {
     throw new Error(
-      "Please check that your app is wrapped in NotificationProvider"
+      'Please check that your app is wrapped in NotificationProvider'
     );
   }
 

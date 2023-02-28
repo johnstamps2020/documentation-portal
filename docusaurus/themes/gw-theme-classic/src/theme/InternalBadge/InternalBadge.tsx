@@ -1,7 +1,7 @@
-import React from "react";
-import { useDocContext } from "@theme/DocContext";
-import Chip from "@mui/material/Chip";
-import Tooltip from "@mui/material/Tooltip";
+import React from 'react';
+import { useDocContext } from '@theme/DocContext';
+import Chip from '@mui/material/Chip';
+import Tooltip from '@mui/material/Tooltip';
 
 export default function InternalBadge() {
   const { isInternal } = useDocContext();

@@ -4,7 +4,7 @@ const { getRedirectUrl } = require('../controllers/404');
 const { winstonLogger } = require('../controllers/loggerController');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   try {
     const cameFrom = req.headers?.referer;
     const redirectUrl = cameFrom ? getRedirectUrl(cameFrom) : undefined;

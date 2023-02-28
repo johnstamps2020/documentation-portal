@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import styles from "./Internal.module.css";
-import { useDocContext } from "@theme/DocContext";
-import InternalPageInfo from "./InternalPageInfo";
-import InternalPrompt from "./InternalPrompt";
-import { InternalProps } from "@theme/Internal";
+import React, { useEffect } from 'react';
+import styles from './Internal.module.css';
+import { useDocContext } from '@theme/DocContext';
+import InternalPageInfo from './InternalPageInfo';
+import InternalPrompt from './InternalPrompt';
+import { InternalProps } from '@theme/Internal';
 
 export default function Internal({
   children,
@@ -13,14 +13,14 @@ export default function Internal({
   const docsContext = useDocContext();
   const userInformation = docsContext.userInformation;
   const isExternalViewer = !userInformation?.hasGuidewireEmail;
-  const hideMeId = "hideMe";
+  const hideMeId = 'hideMe';
 
   useEffect(
     function () {
       if (isExternalViewer) {
         const contentToHide = document.getElementById(hideMeId);
         if (contentToHide) {
-          contentToHide.style.display = "none";
+          contentToHide.style.display = 'none';
         }
       }
     },

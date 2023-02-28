@@ -1,9 +1,9 @@
-import React from "react";
-import clsx from "clsx";
-import styles from "./styles.module.css";
-import InstallationCodeBlock from "../InstallationCodeBlock";
-import useBaseUrl from "@docusaurus/useBaseUrl";
-import Link from "@docusaurus/Link";
+import React from 'react';
+import clsx from 'clsx';
+import styles from './styles.module.css';
+import InstallationCodeBlock from '../InstallationCodeBlock';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Link from '@docusaurus/Link';
 
 type FeatureItem = {
   title: string;
@@ -14,7 +14,7 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: "Theme",
+    title: 'Theme',
     CodeBlock: <InstallationCodeBlock />,
     description: (
       <>
@@ -23,10 +23,10 @@ const FeatureList: FeatureItem[] = [
         more.
       </>
     ),
-    link: "docs/Themes/Classic/set-up-theme",
+    link: 'docs/Themes/Classic/set-up-theme',
   },
   {
-    title: "Plugin",
+    title: 'Plugin',
     CodeBlock: <InstallationCodeBlock forPlugin />,
     description: (
       <>
@@ -34,13 +34,13 @@ const FeatureList: FeatureItem[] = [
         used to get your website up and running quickly.
       </>
     ),
-    link: "docs/Plugins/Redoc/set-up-plugin",
+    link: 'docs/Plugins/Redoc/set-up-plugin',
   },
 ];
 
 function Feature({ title, CodeBlock, description, link }: FeatureItem) {
   return (
-    <div className={clsx("col col--6")}>
+    <div className={clsx('col col--6')}>
       <div className="text--center padding-horiz--md">
         <h2>{title}</h2>
         <div className="text--center">{CodeBlock}</div>
