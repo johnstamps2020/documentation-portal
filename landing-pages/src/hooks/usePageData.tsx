@@ -6,6 +6,7 @@ export class PageError {
   status: number;
   message: string;
   redirectUrl?: string;
+
   constructor(status: number, message: string, redirectUrl?: string) {
     this.status = status;
     this.message = message;
@@ -20,6 +21,8 @@ function getRedirectUrl(requestedPath: string, status: number) {
     case 403:
       return `/internal?restricted=${requestedPath}`;
     case 404:
+      return `/404?notFound=${requestedPath}`;
+    case 406:
       return `/404?notFound=${requestedPath}`;
     default:
       break;
