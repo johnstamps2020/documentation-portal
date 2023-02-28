@@ -1,0 +1,10 @@
+.idea
+.teamcity
+.vscode
+.yarn
+/ci
+/frontend
+/s3
+
+*.iml
+*.log
