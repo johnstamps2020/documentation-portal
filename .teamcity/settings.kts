@@ -2455,10 +2455,10 @@ object Server {
                         export ELASTIC_SEARCH_URL="http://docsearch-dev.doctools:9200"
                         export DOC_S3_URL="https://docportal-content.dev.ccs.guidewire.net"
                         export PORTAL2_S3_URL="https://portal2-content.omega2-andromeda.guidewire.net"
-                        export REQUESTS_MEMORY="4G"
-                        export REQUESTS_CPU="1"
-                        export LIMITS_MEMORY="8G"
-                        export LIMITS_CPU="2"
+                        export REQUESTS_MEMORY="500M"
+                        export REQUESTS_CPU="100m"
+                        export LIMITS_MEMORY="2G"
+                        export LIMITS_CPU="1"
                         
                         # Set other envs
                         export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
@@ -3865,10 +3865,10 @@ object Helpers {
                 export ELASTIC_SEARCH_URL="http://docsearch-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.doctools:9200"
                 export DOC_S3_URL="${getS3BucketUrl(deployEnv)}"
                 export PORTAL2_S3_URL="${getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)}"
-                export REQUESTS_MEMORY="8G"
-                export REQUESTS_CPU="2"
-                export LIMITS_MEMORY="16G"
-                export LIMITS_CPU="4"
+                export REQUESTS_MEMORY="1G"
+                export REQUESTS_CPU="200m"
+                export LIMITS_MEMORY="4G"
+                export LIMITS_CPU="2"
             """.trimIndent()
 
             else -> """
@@ -3892,10 +3892,10 @@ object Helpers {
                 export ELASTIC_SEARCH_URL="http://docsearch-${deployEnv}.doctools:9200"
                 export DOC_S3_URL="${getS3BucketUrl(deployEnv)}"
                 export PORTAL2_S3_URL="${getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)}"
-                export REQUESTS_MEMORY="4G"
-                export REQUESTS_CPU="1"
-                export LIMITS_MEMORY="8G"
-                export LIMITS_CPU="2"
+                export REQUESTS_MEMORY="500M"
+                export REQUESTS_CPU="100m"
+                export LIMITS_MEMORY="2G"
+                export LIMITS_CPU="1"
             """.trimIndent()
         }
     }
