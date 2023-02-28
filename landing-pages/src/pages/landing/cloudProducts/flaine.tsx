@@ -136,8 +136,8 @@ const docs: Category2LayoutProps['items'] = [
     ],
   },
 ];
-const whatsNew: Category2LayoutProps['whatsNewInfo'] = {
-  label: 'Flaine',
+const whatsNewInfo: Category2Layout2Props["whatsNew"] = {
+  label: "Flaine",
   badge: flaineBadge,
   item: { label: 'Learn more', docId: 'whatsnewflaine' },
   content: [
@@ -187,14 +187,11 @@ const backgroundProps: Category2LayoutProps['backgroundProps'] = {
   }
 };
 
-export default function Flaine({ title }: LandingPageProps) {
-  const pageSelectorProps = useReleasePageSelectorProps(title);
-
 export default function Flaine() {
   return (
     <CategoryLayout2
       items={docs}
-      whatsNewInfo={whatsNew}
+      whatsNew={whatsNew}
       backgroundProps={backgroundProps}
       pageSelector={pageSelectorProps}
       sidebar={sidebar}
