@@ -8,3 +8,11 @@
 
 *.iml
 *.log
+
+.docusaurus
+/docusaurus/**/lib
+build
+dist
+out
+/html5/static
+logs
