@@ -1,11 +1,6 @@
 import { Entity, ManyToMany, PrimaryColumn } from 'typeorm';
 import { Doc } from './Doc';
 
-export enum Platform {
-  CLOUD = 'Cloud',
-  SELF_MANAGED = 'Self-managed',
-}
-
 @Entity()
 export class Product {
   @PrimaryColumn()
@@ -14,10 +9,7 @@ export class Product {
   @PrimaryColumn()
   version: string;
 
-  @PrimaryColumn({
-    type: 'enum',
-    enum: Platform,
-  })
+  @PrimaryColumn()
   platform: string;
 
   @ManyToMany(

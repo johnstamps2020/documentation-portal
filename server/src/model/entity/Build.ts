@@ -28,7 +28,7 @@ export class Build {
     type: 'enum',
     enum: BuildType,
   })
-  type: string;
+  type: BuildType;
 
   @ManyToOne(
     () => Source,
