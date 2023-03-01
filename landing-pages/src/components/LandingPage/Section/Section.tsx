@@ -1,5 +1,3 @@
-import LandingPageItem from '../Category/CategoryItem';
-
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import bookOpenIcon from '../../../images/twoColumn/book-open-solid.svg';
@@ -9,8 +7,15 @@ import ObjectGroupIcon from '../../../images/twoColumn/object-group-regular.svg'
 import puzzlePieceIcon from '../../../images/twoColumn/puzzle-piece-solid.svg';
 import usersCogIcon from '../../../images/twoColumn/users-cog-solid.svg';
 import wrenchIcon from '../../../images/twoColumn/wrench-solid.svg';
+import { LandingPageItemProps } from '../../../pages/LandingPage/LandingPage';
+import SectionItem from './SectionItem';
 
-export default function LandingPageSection(section: {}) {
+export type SectionProps = {
+  label: string;
+  items?: LandingPageItemProps[];
+};
+
+export default function Section({ label, items }: SectionProps) {
   const iconArray = [
     bookOpenIcon,
     codeIcon,
@@ -48,10 +53,14 @@ export default function LandingPageSection(section: {}) {
             textAlign: 'left',
           }}
         >
-          Dummy label
+          {label}
         </Typography>
       </Stack>
-      <Stack spacing={1} paddingLeft="40px"></Stack>
+      <Stack spacing={1} paddingLeft="40px">
+      {items?.map(sectionItem => (
+          <SectionItem {...sectionItem} key={sectionItem.label} />
+        ))}
+      </Stack>
     </Stack>
   );
 }
