@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Layout from '../../components/Layout/Layout';
 import { headerHeight } from '../../components/Layout/Header/Header';
 import Container from '@mui/material/Container';
-import { useUser } from '../../context/UserContext';
+import { useUserInfo } from '../../hooks/useApi';
 import Button from '@mui/material/Button';
 
 type RestrictedPathProps = {
@@ -29,7 +29,11 @@ function RestrictedPathElement({ restrictedPath }: RestrictedPathProps) {
 }
 
 export default function InternalPage() {
-  const { userInfo } = useUser();
+  const { userInfo, isError, isLoading } = useUserInfo();
+  if (isError || isLoading || !userInfo) {
+    return null;
+  }
+
   const restrictedParam = new URLSearchParams(window.location.search).get(
     'restricted'
   );

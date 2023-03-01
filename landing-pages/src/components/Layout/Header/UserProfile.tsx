@@ -11,25 +11,18 @@ import {
 } from '../StyledLayoutComponents';
 import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
-import { useUser } from '../../../context/UserContext';
+import { useUserInfo } from '../../../hooks/useApi';
 import Drawer from '@mui/material/Drawer';
 import LoginOptions from '../../LoginPage/LoginOptions';
 import Stack from '@mui/material/Stack';
 import LogoutOption from './LogoutOption';
 
-export default function UserProfile() {
-  const { userInfo } = useUser();
-  const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(
-    null
-  );
-  const [loginDrawer, setLoginDrawer] = React.useState<boolean>(false);
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElement(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorElement(null);
-  };
+type LoginButtonProps = {
+  drawerOpen: boolean;
+  setDrawerOpen: (isOpen: boolean) => void;
+};
 
+function LoginButton({ drawerOpen, setDrawerOpen }: LoginButtonProps) {
   function toggleLoginDrawer(open: boolean) {
     return (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
@@ -39,36 +32,57 @@ export default function UserProfile() {
       ) {
         return;
       }
-      setLoginDrawer(open);
+      setDrawerOpen(open);
     };
   }
 
-  function LoginButton() {
-    const anchor = 'right';
-    return (
-      <>
-        <Button onClick={toggleLoginDrawer(true)} variant="contained">
-          Log in
-        </Button>
-        <Drawer
-          anchor={anchor}
-          open={loginDrawer}
-          onClose={toggleLoginDrawer(false)}
-          PaperProps={{ sx: { justifyContent: 'center' } }}
-        >
-          <Stack alignItems="center" spacing={4} margin="16px">
-            <LoginOptions />
-            <Link component={RouterLink} to="/gw-login">
-              Go to the login page
-            </Link>
-          </Stack>
-        </Drawer>
-      </>
-    );
+  const anchor = 'right';
+  return (
+    <>
+      <Button onClick={toggleLoginDrawer(true)} variant="contained">
+        Log in
+      </Button>
+      <Drawer
+        anchor={anchor}
+        open={drawerOpen}
+        onClose={toggleLoginDrawer(false)}
+        PaperProps={{ sx: { justifyContent: 'center' } }}
+      >
+        <Stack alignItems="center" spacing={4} margin="16px">
+          <LoginOptions />
+          <Link component={RouterLink} to="/gw-login">
+            Go to the login page
+          </Link>
+        </Stack>
+      </Drawer>
+    </>
+  );
+}
+
+export default function UserProfile() {
+  const { userInfo, isError, isLoading } = useUserInfo();
+
+  const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(
+    null
+  );
+  const [loginDrawer, setLoginDrawer] = React.useState<boolean>(false);
+
+  if (isError || isLoading || !userInfo) {
+    return null;
   }
 
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElement(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorElement(null);
+  };
+
   if (!userInfo?.isLoggedIn) {
-    return <LoginButton />;
+    return (
+      <LoginButton drawerOpen={loginDrawer} setDrawerOpen={setLoginDrawer} />
+    );
   }
 
   return (
