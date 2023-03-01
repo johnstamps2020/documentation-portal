@@ -1,9 +1,9 @@
-import { baseBackgroundProps } from '..';
 import CategoryLayout, {
   CategoryLayoutProps,
 } from '../../../components/LandingPage/Category/CategoryLayout';
 import gradientBackgroundImage from '../../../images/background-gradient.svg';
 import dobsonBackgroundImage from '../../../images/background-dobson.svg';
+import { baseBackgroundProps } from '../../LandingPage/LandingPage';
 
 const docs: CategoryLayoutProps['cards'] = [
   {
