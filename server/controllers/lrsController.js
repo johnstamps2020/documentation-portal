@@ -1,9 +1,13 @@
+'use strict';
 require('dotenv').config();
 const { Client } = require('@elastic/elasticsearch');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const indexName = 'lrs';
 const { getSampleRecords } = require('./utils/lrsUtils');
 const { winstonLogger } = require('./loggerController');
+
+const anonymousName = 'Anonymous Person';
+const anonymousMbox = 'mailto:anonymous@customer.or.partner.com';
 
 function formalizeError(err) {
   return {
@@ -30,13 +34,26 @@ async function createIndex() {
   }
 }
 
+function anonymizeRecordIfExternalUser(record) {
+  if (!record.actor.mbox.endsWith('@guidewire.com')) {
+    const copyOfRecord = JSON.parse(JSON.stringify(record));
+    copyOfRecord.actor.mbox = anonymousMbox;
+    copyOfRecord.actor.name = anonymousName;
+
+    return copyOfRecord;
+  }
+
+  return record;
+}
+
 async function addRecord(record) {
   try {
+    const anonymousRecord = anonymizeRecordIfExternalUser(record);
     const result = await elasticClient.index({
       index: indexName,
       id: `${record.actor.mbox}-${record.verb.id}-${record.object.id}`,
       refresh: true,
-      body: record,
+      body: anonymousRecord,
     });
 
     return result;
@@ -200,6 +217,52 @@ async function deleteRecordByElasticId(elasticId) {
   }
 }
 
+async function anonymizeRecords() {
+  try {
+    const result = await getAllRecords();
+
+    const allRecords = result.body.hits?.hits;
+    const nonGuidewireRecordIds = allRecords
+      .map((record) => {
+        const mbox = record._source.actor.mbox;
+        if (!mbox.endsWith('@guidewire.com')) {
+          // return record._id;
+          return record;
+        }
+      })
+      .filter(Boolean);
+
+    const results = [];
+    Promise.all(
+      nonGuidewireRecordIds.map(async (record) => {
+        await elasticClient.update({
+          index: indexName,
+          id: record._id,
+          body: {
+            doc: {
+              actor: {
+                name: anonymousName,
+                mbox: anonymousMbox,
+              },
+            },
+          },
+        });
+
+        const updatedDoc = await elasticClient.get({
+          index: indexName,
+          id: record._id,
+        });
+
+        results.push(updatedDoc);
+      })
+    );
+
+    return nonGuidewireRecordIds;
+  } catch (err) {
+    return formalizeError(err);
+  }
+}
+
 module.exports = {
   createIndex,
   addRecord,
@@ -210,4 +273,5 @@ module.exports = {
   createTestRecords,
   deleteTestRecords,
   deleteRecordByElasticId,
+  anonymizeRecords,
 };
