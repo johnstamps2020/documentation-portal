@@ -1,4 +1,4 @@
-import { baseBackgroundProps } from '../../..';
+import { baseBackgroundProps } from '../../../../LandingPage/LandingPage';
 import SectionLayout, {
   SectionLayoutProps,
 } from '../../../../../components/LandingPage/Section/SectionLayout';

@@ -1,4 +1,4 @@
-import { baseBackgroundProps } from '../../..';
+import { baseBackgroundProps } from '../../../../LandingPage/LandingPage';
 import SectionLayout, {
   SectionLayoutProps,
 } from '../../../../../components/LandingPage/Section/SectionLayout';
@@ -163,9 +163,9 @@ const selector: SectionLayoutProps['selector'] = {
       href: 'cloudProducts/flaine/pcGwCloud/2022.09',
     },
     {
-        label: 'Elysian (2022.05)',
-        href: 'cloudProducts/elysian/pcGwCloud/2022.05',
-      },
+      label: 'Elysian (2022.05)',
+      href: 'cloudProducts/elysian/pcGwCloud/2022.05',
+    },
     {
       label: 'Dobson (2021.11)',
       href: 'cloudProducts/dobson/pcGwCloud/2021.11',
