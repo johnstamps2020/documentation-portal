@@ -21,6 +21,7 @@ export type LandingPageProps = {
 export type LandingPageLayoutProps = {
   backgroundProps: {
     backgroundImage?: any;
+    backgroundColor?: string;
     backgroundAttachment: string;
     backgroundPosition: string;
     backgroundSize: string;
