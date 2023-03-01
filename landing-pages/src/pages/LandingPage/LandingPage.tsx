@@ -5,12 +5,17 @@ import { Theme } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
 import Alert from '@mui/material/Alert';
 import Backdrop from '@mui/material/Backdrop';
-import { LandingPageProps } from '../landing';
 import { usePageData } from '../../hooks/usePageData';
 
-export type SidebarProps = {
-  label: string;
-  items: LandingPageItemProps[];
+export const baseBackgroundProps = {
+  backgroundAttachment: 'fixed',
+  backgroundPosition: 'bottom-right',
+  backgroundSize: 'cover',
+  minHeight: '100vh',
+};
+
+export type LandingPageProps = {
+  title: string;
 };
 
 export type LandingPageLayoutProps = {
@@ -29,6 +34,11 @@ export type LandingPageItemProps = {
   docId?: string;
   pagePath?: string;
   url?: string;
+};
+
+export type SidebarProps = {
+  label: string;
+  items: LandingPageItemProps[];
 };
 
 type LazyPageComponent = React.LazyExoticComponent<

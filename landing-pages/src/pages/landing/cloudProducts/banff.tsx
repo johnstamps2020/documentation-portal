@@ -1,8 +1,10 @@
-import { baseBackgroundProps } from '..';
 import ProductFamilyLayout from '../../../components/LandingPage/ProductFamily/ProductFamilyLayout';
 import gradientBackgroundImage from '../../../images/background-gradient.svg';
 import banffBackgroundImage from '../../../images/background-banff.svg';
-import { SidebarProps } from '../../LandingPage/LandingPage';
+import {
+  baseBackgroundProps,
+  SidebarProps,
+} from '../../LandingPage/LandingPage';
 
 const docs = [
   {

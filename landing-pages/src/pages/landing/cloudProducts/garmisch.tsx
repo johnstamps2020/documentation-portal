@@ -1,10 +1,10 @@
-import { baseBackgroundProps } from '..';
 import Category2Layout, {
   Category2LayoutProps,
 } from '../../../components/LandingPage/Category2/Category2Layout';
 import gradientBackgroundImage from '../../../images/background-gradient.svg';
 import garmischBackgroundImage from '../../../images/background-garmisch.png';
 import garmischBadge from '../../../images/badge-garmisch.svg';
+import { baseBackgroundProps } from '../../LandingPage/LandingPage';
 
 const docs: Category2LayoutProps['items'] = [
   {
@@ -152,26 +152,26 @@ const sidebar: Category2LayoutProps['sidebar'] = {
   label: 'Implementation Resources',
   items: [
     {
-      label: "Community Case Templates",
-      docId: "cloudtickettemplates"
+      label: 'Community Case Templates',
+      docId: 'cloudtickettemplates',
     },
     {
-      label: "Product Adoption",
-      docId: "surepathmethodologymain"
+      label: 'Product Adoption',
+      docId: 'surepathmethodologymain',
     },
     {
-      label: "Cloud Standards",
-      docId: "standardslatest"
+      label: 'Cloud Standards',
+      docId: 'standardslatest',
     },
     {
-      label: "Upgrade Diff Reports",
-      pagePath: "upgradediffs"
+      label: 'Upgrade Diff Reports',
+      pagePath: 'upgradediffs',
     },
     {
-      label: "Internal docs",
-      docId: "internaldocslatest"
-    }
-  ]
+      label: 'Internal docs',
+      docId: 'internaldocslatest',
+    },
+  ],
 };
 const backgroundProps: Category2LayoutProps['backgroundProps'] = {
   ...baseBackgroundProps,
@@ -179,8 +179,8 @@ const backgroundProps: Category2LayoutProps['backgroundProps'] = {
     xs: `url(${gradientBackgroundImage})`,
     sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
   url(${garmischBackgroundImage}), 
-  linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`
-  }
+  linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
+  },
 };
 
 export default function Garmisch() {
