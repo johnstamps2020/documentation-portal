@@ -1,19 +1,19 @@
 import Chip from '@mui/material/Chip';
-import { useSearch } from '../../context/SearchContext';
 import { ServerSearchFilter } from 'server/dist/types/serverSearch';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
+import { useSearchData } from '../../hooks/useApi';
 
 export default function AppliedFilters() {
-  const { searchData } = useSearch();
+  const { searchData } = useSearchData();
   if (!searchData) {
     return null;
   }
   const checkedFilters = searchData.filters
-    .map((f) => {
-      const checkedValues = f.values.filter((v) => v.checked);
+    .map(f => {
+      const checkedValues = f.values.filter(v => v.checked);
       if (checkedValues.length > 0) {
         return {
           ...f,
@@ -46,8 +46,8 @@ export default function AppliedFilters() {
         elevation={0}
       >
         {checkedFilters.length > 0 ? (
-          checkedFilters.map((f) =>
-            f.values.map((v) => (
+          checkedFilters.map(f =>
+            f.values.map(v => (
               <ListItem key={v.label}>
                 <Chip size="small" label={v.label} color="primary" />
               </ListItem>

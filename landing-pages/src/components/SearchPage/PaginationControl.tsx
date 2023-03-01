@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-import { useSearch } from '../../context/SearchContext';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useSearchData } from '../../hooks/useApi';
 
-export default function PaginationControlled() {
-  const { searchData } = useSearch();
+export default function PaginationControl() {
+  const { searchData } = useSearchData();
   const navigate = useNavigate();
   const location = useLocation();
   const query = new URLSearchParams(location.search);
@@ -19,7 +19,7 @@ export default function PaginationControlled() {
     });
   }
 
-  if (!searchData) {
+  if (!searchData || searchData.pages <= 1) {
     return null;
   }
   return (

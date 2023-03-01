@@ -1,26 +1,28 @@
 import SearchFilter from './SearchFilter';
-import { useSearch } from '../../context/SearchContext';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { useCallback, useEffect, useState } from 'react';
 import Stack from '@mui/material/Stack';
 import ClearFilterButton from './ClearFiltersButton';
 import { StyledButton } from './StyledSearchComponents';
+import { useSearchData } from '../../hooks/useApi';
 
 export type SearchFilterExpandStatus = {
   filterName: string;
   filterIsExpanded: boolean;
 };
 
-export default function SearchFiltersPanel() {
-  const { searchData } = useSearch();
-  const [allSearchFiltersExpandStatus, setAllSearchFiltersExpandStatus] =
-    useState<SearchFilterExpandStatus[]>([]);
+export default function SearchFilterPanel() {
+  const { searchData } = useSearchData();
+  const [
+    allSearchFiltersExpandStatus,
+    setAllSearchFiltersExpandStatus,
+  ] = useState<SearchFilterExpandStatus[]>([]);
 
   const toggleFilters = useCallback(
     (expand: boolean) => {
       if (searchData) {
         setAllSearchFiltersExpandStatus(
-          searchData.filters.map((f) => ({
+          searchData.filters.map(f => ({
             filterName: f.name,
             filterIsExpanded: expand,
           }))
@@ -36,24 +38,21 @@ export default function SearchFiltersPanel() {
 
   function getPanelStatus(filterName: string) {
     const filterStatus = allSearchFiltersExpandStatus.find(
-      (s) => s.filterName === filterName
+      s => s.filterName === filterName
     )?.filterIsExpanded;
     return filterStatus !== undefined ? filterStatus : true;
   }
 
   function handleChange(filterName: string, filterIsExpanded: boolean) {
-    const updatedAllSearchFiltersExpandStatus =
-      allSearchFiltersExpandStatus.map((s) => s);
+    const updatedAllSearchFiltersExpandStatus = allSearchFiltersExpandStatus.map(
+      s => s
+    );
     for (const filterExpandStatus of updatedAllSearchFiltersExpandStatus) {
       if (filterExpandStatus.filterName === filterName) {
         filterExpandStatus.filterIsExpanded = filterIsExpanded;
       }
     }
     setAllSearchFiltersExpandStatus(updatedAllSearchFiltersExpandStatus);
-  }
-
-  if (!searchData) {
-    return null;
   }
 
   return (
@@ -80,23 +79,21 @@ export default function SearchFiltersPanel() {
       >
         <StyledButton
           onClick={() => toggleFilters(true)}
-          disabled={allSearchFiltersExpandStatus.every(
-            (f) => f.filterIsExpanded
-          )}
+          disabled={allSearchFiltersExpandStatus.every(f => f.filterIsExpanded)}
         >
           Expand all
         </StyledButton>
         <StyledButton
           onClick={() => toggleFilters(false)}
           disabled={allSearchFiltersExpandStatus.every(
-            (f) => !f.filterIsExpanded
+            f => !f.filterIsExpanded
           )}
         >
           Collapse all
         </StyledButton>
         <ClearFilterButton label="Clear filters" grouped={true} />
       </ButtonGroup>
-      {searchData.filters.map((f) => (
+      {searchData?.filters.map(f => (
         <SearchFilter
           key={f.name}
           serverSearchFilter={f}

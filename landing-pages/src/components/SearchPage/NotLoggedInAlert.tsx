@@ -1,9 +1,14 @@
 import Alert from '@mui/material/Alert/Alert';
-import { useSearch } from '../../context/SearchContext';
+import { useSearchData } from '../../hooks/useApi';
 
 export default function NotLoggedInAlert() {
-  const { searchData } = useSearch();
-  if (!searchData || searchData.requestIsAuthenticated) {
+  const { searchData, isError, isLoading } = useSearchData();
+  if (
+    isError ||
+    isLoading ||
+    !searchData ||
+    searchData.requestIsAuthenticated
+  ) {
     return null;
   }
   return (

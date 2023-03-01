@@ -1,9 +1,9 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useSearch } from '../context/SearchContext';
 import { useEffect, useState } from 'react';
+import { useSearchData } from './useApi';
 
 export default function useClearFilters() {
-  const { searchData } = useSearch();
+  const { searchData } = useSearchData();
   const navigate = useNavigate();
   const location = useLocation();
   const query = new URLSearchParams(location.search);
@@ -11,7 +11,7 @@ export default function useClearFilters() {
 
   useEffect(() => {
     setNoFiltersApplied(
-      !!searchData?.filters.every((f) => f.values.every((v) => !v.checked))
+      !!searchData?.filters.every(f => f.values.every(v => !v.checked))
     );
   }, [searchData]);
 
@@ -19,7 +19,7 @@ export default function useClearFilters() {
     if (!searchData) {
       return null;
     }
-    const filters = searchData.filters.map((f) => f.name);
+    const filters = searchData.filters.map(f => f.name);
     for (const filter of filters) {
       if (query.has(filter)) {
         query.delete(filter);

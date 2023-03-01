@@ -3,7 +3,6 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import { ServerSearchFilter } from 'server/dist/types/serverSearch';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useSearch } from '../../context/SearchContext';
 import { useLocation, useNavigate } from 'react-router-dom';
 import React from 'react';
 import Stack from '@mui/material/Stack';
@@ -13,6 +12,7 @@ import {
   StyledAccordionDetails,
   StyledAccordionSummary,
 } from './StyledSearchComponents';
+import { useSearchData } from '../../hooks/useApi';
 
 type SearchFilterProps = {
   serverSearchFilter: ServerSearchFilter;
@@ -25,7 +25,6 @@ export default function SearchFilter({
   expanded,
   onChange,
 }: SearchFilterProps) {
-  const { searchData } = useSearch();
   const navigate = useNavigate();
   const location = useLocation();
   const query = new URLSearchParams(location.search);
@@ -38,9 +37,6 @@ export default function SearchFilter({
   }
 
   function handleCheckboxChange(event: React.ChangeEvent<HTMLInputElement>) {
-    if (!searchData) {
-      return null;
-    }
     const filterValues = query.get(serverSearchFilter.name)?.split(',') || [];
     if (event.target.checked) {
       filterValues.push(event.target.value);
@@ -70,9 +66,9 @@ export default function SearchFilter({
       >
         {serverSearchFilter.name.replace('_', ' ')}
         <Chip
-          label={`${
-            serverSearchFilter.values.filter((v) => v.checked).length
-          }/${serverSearchFilter.values.length}`}
+          label={`${serverSearchFilter.values.filter(v => v.checked).length}/${
+            serverSearchFilter.values.length
+          }`}
           size="small"
           variant="outlined"
           sx={{ marginLeft: '8px', border: '1px solid' }}
@@ -80,7 +76,7 @@ export default function SearchFilter({
       </StyledAccordionSummary>
       <StyledAccordionDetails>
         <FormGroup sx={{ gap: '8px' }}>
-          {serverSearchFilter.values.map((value) => (
+          {serverSearchFilter.values.map(value => (
             <Stack
               direction="row"
               justifyContent="space-between"
