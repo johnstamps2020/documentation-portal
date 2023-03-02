@@ -1,13 +1,12 @@
-import Stack from "@mui/material/Stack";
-import { useLandingPageItemData } from "../../hooks/useLandingPageItemData";
-import { LandingPageItemProps } from "../../pages/LandingPage/LandingPage";
-import Link, { LinkProps } from "@mui/material/Link";
-import { Link as RouterLink } from "react-router-dom";
-import InternalTooltip from "./InternalTooltip";
+import Stack from '@mui/material/Stack';
+import { LandingPageItemData } from '../../hooks/useLandingPageItems';
+import Link, { LinkProps } from '@mui/material/Link';
+import { Link as RouterLink } from 'react-router-dom';
+import InternalTooltip from './InternalTooltip';
 
 type LandingPageLinkProps = {
-  item: LandingPageItemProps;
-  sx?: LinkProps["sx"];
+  landingPageItem: LandingPageItemData;
+  sx?: LinkProps['sx'];
 };
 
 function resolveUrl(srcUrl: string | undefined) {
@@ -18,15 +17,10 @@ function resolveUrl(srcUrl: string | undefined) {
   return isAbsoluteUrl ? srcUrl : `/${srcUrl}`;
 }
 
-export default function LandingPageLink({ item, sx }: LandingPageLinkProps) {
-  const { landingPageItemData, isError, isLoading } =
-    useLandingPageItemData(item);
-  if (isError || isLoading || !landingPageItemData) {
-    return null;
-  }
-
-  const label =
-    item.label || landingPageItemData.label || landingPageItemData.title;
+export default function LandingPageLink({
+  landingPageItem,
+  sx,
+}: LandingPageLinkProps) {
   return (
     <Stack
       spacing={1}
@@ -34,20 +28,22 @@ export default function LandingPageLink({ item, sx }: LandingPageLinkProps) {
       alignItems="center"
       justifyContent="flex-start"
     >
-      {landingPageItemData.path ? (
+      {landingPageItem.path ? (
         <Link
           component={RouterLink}
-          to={`/${landingPageItemData.path}`}
+          to={`/${landingPageItem.path}`}
           sx={sx}
         >
-          {label}
+          {landingPageItem.label}
         </Link>
       ) : (
-        <Link href={resolveUrl(landingPageItemData.url)} sx={sx}>
-          {label}
+        <Link href={resolveUrl(landingPageItem.url)} sx={sx}>
+          {landingPageItem.label}
         </Link>
       )}
-      {landingPageItemData.internal && <InternalTooltip key={label} />}
+      {landingPageItem.internal && (
+        <InternalTooltip key={landingPageItem.label} />
+      )}
     </Stack>
   );
 }

@@ -10,7 +10,6 @@ import {
   LandingPageLayoutProps,
 } from '../../../pages/LandingPage/LandingPage';
 import { usePageData } from '../../../hooks/usePageData';
-import LandingPageLink from '../LandingPageLink';
 import ReleaseSelector from '../ReleaseSelector';
 import ProductFamilySidebar from './ProductFamilySidebar';
 
@@ -28,12 +27,6 @@ export default function ProductFamilyLayout({
   if (isError || isLoading || !pageData) {
     return null;
   }
-
-  const linkStyles = {
-    fontSize: 20,
-    fontWeight: 800,
-  };
-
   return (
     <Grid
       sx={{ ...backgroundProps }}
@@ -68,10 +61,8 @@ export default function ProductFamilyLayout({
       </Grid>
       <Grid container width="100%" maxWidth="1330px" gap={2}>
         <Grid container sm={12} md={9} gap={2}>
-          {items.map((item, key) => (
-            <ProductFamilyCard key={key}>
-              <LandingPageLink item={item} sx={linkStyles} />
-            </ProductFamilyCard>
+          {items.map(item => (
+            <ProductFamilyCard {...item} key={item.label} />
           ))}
         </Grid>
         {sidebar && <ProductFamilySidebar {...sidebar} />}

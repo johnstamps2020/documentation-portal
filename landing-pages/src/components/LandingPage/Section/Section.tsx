@@ -9,13 +9,19 @@ import usersCogIcon from '../../../images/twoColumn/users-cog-solid.svg';
 import wrenchIcon from '../../../images/twoColumn/wrench-solid.svg';
 import { LandingPageItemProps } from '../../../pages/LandingPage/LandingPage';
 import SectionItem from './SectionItem';
+import { useLandingPageItems } from '../../../hooks/useLandingPageItems';
 
 export type SectionProps = {
   label: string;
-  items?: LandingPageItemProps[];
+  items: LandingPageItemProps[];
 };
 
 export default function Section({ label, items }: SectionProps) {
+  const { landingPageItems, isLoading, isError} = useLandingPageItems(items);
+
+  if (isLoading || isError || !landingPageItems ) {
+    return null;
+  }
   const iconArray = [
     bookOpenIcon,
     codeIcon,
@@ -57,7 +63,7 @@ export default function Section({ label, items }: SectionProps) {
         </Typography>
       </Stack>
       <Stack spacing={1} paddingLeft="40px">
-      {items?.map(sectionItem => (
+      {landingPageItems?.map(sectionItem => (
           <SectionItem {...sectionItem} key={sectionItem.label} />
         ))}
       </Stack>

@@ -4,8 +4,14 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 import { SidebarProps } from '../../../pages/LandingPage/LandingPage';
+import { useLandingPageItems } from '../../../hooks/useLandingPageItems';
 
 export default function Category2Sidebar({ label, items }: SidebarProps) {
+  const { landingPageItems, isLoading, isError} = useLandingPageItems(items);
+
+  if (isLoading || isError || !landingPageItems ) {
+    return null;
+  }
   return (
     <Paper
       sx={{
@@ -27,7 +33,7 @@ export default function Category2Sidebar({ label, items }: SidebarProps) {
         spacing={1}
         sx={{ spacing: 1, fontSize: "0.875rem", color: "black" }}
       >
-        {items.map((sidebarItem) => (
+        {landingPageItems.map((sidebarItem) => (
           <Category2Item {...sidebarItem} key={sidebarItem.label} />
         ))}
       </Stack>
