@@ -95,21 +95,26 @@ module.exports = {
     //   },
     //   src: "web-hooks/api.yml", // path to the spec file, relative to `specSourceDir`, can by .json or .yaml
     // },
+    // {
+    //   title: 'CICD Manager API test', // Becomes the name of the folder
+    //   task: 'generate-from-spec', // the only allowed value is `generate-from-spec`
+    //   taskOptions: {
+    //     group: 'by-tag', // groups the pages by tag
+    //     removeSecurityNode: true, // removes the `security` field from the spec
+    //     purgeExpression: (key) => key.startsWith('x-'), // if this function matches a prop name, the prop is purged from the schema
+    //     deletePath: (path) => path.startsWith('/internal/'), // if this function returns true, the path is not included in the output
+    //   },
+    //   src: 'cicd-manager.json', // path to the spec file, relative to `specSourceDir`, can by .json or .yaml
+    // },
+    // {
+    //   title: 'Admin API',
+    //   task: 'generate-from-spec',
+    //   src: 'bc/bc-admin.json',
+    // },
     {
-      title: 'CICD Manager API test', // Becomes the name of the folder
-      task: 'generate-from-spec', // the only allowed value is `generate-from-spec`
-      taskOptions: {
-        group: 'by-tag', // groups the pages by tag
-        removeSecurityNode: true, // removes the `security` field from the spec
-        purgeExpression: (key) => key.startsWith('x-'), // if this function matches a prop name, the prop is purged from the schema
-        deletePath: (path) => path.startsWith('/internal/'), // if this function returns true, the path is not included in the output
-      },
-      src: 'cicd-manager.json', // path to the spec file, relative to `specSourceDir`, can by .json or .yaml
-    },
-    {
-      title: 'Admin API',
-      task: 'generate-from-spec',
-      src: 'bc/bc-admin.json',
+      title: "APD API definitions",
+      task: "generate-from-spec",
+      src: "apd-openapi.json",
     },
   ],
 };

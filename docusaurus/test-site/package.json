@@ -15,6 +15,7 @@
     "pages": "docusaurus redoc-generate-pages"
   },
   "dependencies": {
+    "@doctools/gw-plugin-redoc": "workspace:*",
     "@doctools/gw-theme-classic": "workspace:*",
     "@docusaurus/core": "2.3.1",
     "@docusaurus/preset-classic": "2.3.1",
