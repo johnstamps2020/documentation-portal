@@ -157,6 +157,10 @@
           "id": "isrestapiclientguide"
         },
         {
+          "label": "Jutro Digital Platform (Early Access)",
+          "page": "jutroDigitalPlatform"
+        },
+        {
           "label": "Guidewire Testing",
           "page": "../../testingFramework/garmisch"
         },
