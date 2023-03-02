@@ -1,14 +1,19 @@
+import { GuidewireRedocPluginProps } from '@doctools/gw-plugin-redoc/lib/scripts/buildPages';
+
 const path = require('path');
 
-module.exports = {
+const config: GuidewireRedocPluginProps = {
   specSourceDir: path.resolve(__dirname, 'openapi'),
   docsDir: path.resolve(__dirname, 'docs'),
   staticDir: path.resolve(__dirname, 'static'),
   specList: [
     {
-      title: "APD API definitions",
-      task: "generate-from-spec",
-      src: "apd-openapi.json",
+      title: 'APD API definitions',
+      task: 'generate-from-spec',
+      src: 'apd-openapi.json',
+      taskOptions: {
+        deletePath: (pathName) => pathName.includes('PUBLIC'),
+      },
     },
     // {
     //   title: "Admin API",
@@ -118,3 +123,5 @@ module.exports = {
     // },
   ],
 };
+
+export default config;

@@ -206,7 +206,7 @@ async function writeFiles(
   }
 }
 
-type CreateOptions = {
+type TaskOptions = {
   removeSecurityNode?: boolean;
   purgeExpression?: PurgeExpression;
   group?: 'by-tag';
@@ -217,10 +217,6 @@ type TagNode = {
   [tagName: string]: string[];
 };
 
-type SpecNode = {
-  [x: string]: SpecNode;
-};
-
 type SpecObjectTag = {
   name: string;
 };
@@ -228,7 +224,7 @@ type SpecObjectTag = {
 async function createNewTopics(
   specFileName: string,
   title: string,
-  options: CreateOptions,
+  options: TaskOptions,
   specSourceDir: string,
   docsDir: string,
   staticDir: string
@@ -345,9 +341,23 @@ export type BuildPagesProps = {
   configPath: string;
 };
 
+export type SpecListItem = {
+  title: string;
+  task: 'generate-from-spec';
+  taskOptions?: TaskOptions;
+  src: string;
+};
+
+export type GuidewireRedocPluginProps = {
+  specSourceDir: string;
+  docsDir: string;
+  staticDir: string;
+  specList: SpecListItem[];
+};
+
 export default async function buildPages({ configPath }: BuildPagesProps) {
   console.log('Building pages from specs...');
-  const config = require(configPath);
+  const config: GuidewireRedocPluginProps = require(configPath);
   const { specSourceDir, docsDir, staticDir, specList } = config;
   for await (const item of specList) {
     if (item.task === 'generate-from-spec') {
