@@ -7,27 +7,15 @@
     {
       "label": "Jutro Digital Platform (Early Access)",
       "class": "categoryCard cardShadow",
-      "id": "jutroplatformflaine",
-      "env": ["staging", "prod"]
-    },
-    {
-      "label": "Jutro Digital Platform (Early Access)",
-      "class": "categoryCard cardShadow",
       "id": "jutroplatformnext",
       "env": ["staging"]
-    },
-    {
-      "label": "Jutro SDK (Early Access)",
-      "class": "categoryCard cardShadow",
-      "id": "jutrosdkflaine",
-      "env": ["staging", "prod"]
     },
     {
       "label": "Tools and libraries",
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Jutro SDK",
+          "label": "Jutro SDK (Early Access)",
           "link": "/jutro/sdk/next/docs/jutro-sdk-overview",
           "env": ["staging"]
         },
