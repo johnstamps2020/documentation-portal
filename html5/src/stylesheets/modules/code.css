@@ -121,6 +121,7 @@ pre.pre .cmdname,
 pre.pre .tt,
 pre.pre .filepath {
   background-color: transparent;
+  font-family: inherit !important;
   font-size: inherit;
   padding-left: 0;
   padding-right: 0;
