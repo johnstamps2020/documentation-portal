@@ -290,7 +290,7 @@ async function createNewTopics(
                   delete (e[key as any] as Record<string, any>)[subKey];
                 }
 
-                // Set operation to uppercase, e.g., GET, POST, etc.
+                // Break operation ID into words
                 if (['operationId'].includes(subKey)) {
                   const subKeyValue = (e[key as any] as Record<string, any>)[
                     subKey
