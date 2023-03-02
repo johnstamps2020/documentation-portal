@@ -210,7 +210,7 @@ type TaskOptions = {
   removeSecurityNode?: boolean;
   purgeExpression?: PurgeExpression;
   group?: 'by-tag';
-  deletePath: (pathName: string) => boolean;
+  deletePath?: (pathName: string) => boolean;
 };
 
 type TagNode = {
