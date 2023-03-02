@@ -52,7 +52,7 @@ export default function SectionLayout({
               textAlign: 'left',
               color: 'black',
               fontWeight: 600,
-              marginTop: 0, 
+              marginTop: 0,
             }}
           >
             {pageData.title}

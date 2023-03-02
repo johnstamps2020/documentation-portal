@@ -23,12 +23,7 @@ export default function Header(headerOptions: HeaderOptions) {
       }}
     >
       <Logo />
-      {!headerOptions?.hideSearchBox && (
-        <SearchBox
-          bigSize={false}
-          searchFilters={headerOptions?.searchFilters}
-        />
-      )}
+      {!headerOptions?.hideSearchBox && <SearchBox showBigSize={false} />}
       <Stack
         direction="row"
         justifyContent={{ xs: 'center', sm: 'right' }}

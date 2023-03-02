@@ -8,7 +8,6 @@ import SearchPage from './pages/SearchPage/SearchPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import { appTheme } from './themes/appTheme';
 import CssBaseline from '@mui/material/CssBaseline';
-import { UserProvider } from './context/UserContext';
 import SupportPage from './pages/SupportPage/SupportPage';
 import InternalPage from './pages/InternalPage/InternalPage';
 
@@ -54,12 +53,10 @@ const router = createBrowserRouter(
 
 function App() {
   return (
-    <UserProvider>
-      <ThemeProvider theme={appTheme}>
-        <CssBaseline />
-        <RouterProvider router={router} />
-      </ThemeProvider>
-    </UserProvider>
+    <ThemeProvider theme={appTheme}>
+      <CssBaseline />
+      <RouterProvider router={router} />
+    </ThemeProvider>
   );
 }
 

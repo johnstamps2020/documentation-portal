@@ -1,5 +1,4 @@
 import SearchResult from './SearchResult';
-import { useSearch } from '../../context/SearchContext';
 import Typography from '@mui/material/Typography';
 import AppliedFilters from './AppliedFilters';
 import PaginationSelector from './PaginationSelector';
@@ -8,9 +7,11 @@ import Highlighter from './Highlighter';
 import useClearFilters from '../../hooks/useClearFilters';
 import ClearFilterButton from './ClearFiltersButton';
 import { StyledHeading1 } from './StyledSearchComponents';
+import { useSearchData } from '../../hooks/useApi';
 
+//TODO: Don't return null if no searchData, use Skeletons to load while waiting for searchData elements
 export default function SearchResults() {
-  const { searchData } = useSearch();
+  const { searchData } = useSearchData();
   const { noFiltersApplied } = useClearFilters();
   if (!searchData) {
     return null;

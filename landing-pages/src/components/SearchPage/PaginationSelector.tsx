@@ -4,11 +4,11 @@ import MenuItem from '@mui/material/MenuItem/MenuItem';
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import InputLabel from '@mui/material/InputLabel';
-import { useSearch } from '../../context/SearchContext';
 import Box from '@mui/material/Box';
+import { useSearchData } from '../../hooks/useApi';
 
 export default function PaginationSelector() {
-  const { searchData } = useSearch();
+  const { searchData } = useSearchData();
   const navigate = useNavigate();
   const location = useLocation();
   const query = new URLSearchParams(location.search);
@@ -36,11 +36,11 @@ export default function PaginationSelector() {
           label="View items"
           value={pagination.toString()}
           onChange={handleChange}
-          renderValue={(value) => {
+          renderValue={value => {
             return value;
           }}
         >
-          {['10', '25', '50', '100'].map((numberOfResults) => (
+          {['10', '25', '50', '100'].map(numberOfResults => (
             <MenuItem
               disabled={numberOfResults === pagination.toString()}
               value={numberOfResults}

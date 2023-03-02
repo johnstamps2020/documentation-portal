@@ -3,10 +3,11 @@ import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import { useLocaleParams } from '../../hooks/useLocale';
+import { useSearchData } from '../../hooks/useApi';
+import { useMobile } from '../../hooks/useMobile';
 
-type SearchBoxOptions = {
-  bigSize: boolean;
-  searchFilters?: { [key: string]: string[] };
+type SearchBoxProps = {
+  showBigSize?: boolean;
 };
 
 const commonProps = {
@@ -34,17 +35,30 @@ const regularSizeProps = {
   marginBottom: '25px',
 };
 
-export default function SearchBox({
-  bigSize,
-  searchFilters,
-}: SearchBoxOptions) {
+export default function SearchBox({ showBigSize = true }: SearchBoxProps) {
   const { placeholder } = useLocaleParams();
+  const { searchData } = useSearchData();
+  const { isMobile } = useMobile();
+
+  const showBigSearchBox = isMobile ? false : showBigSize;
+
+  const searchFilters: { [key: string]: string[] } = {};
+  if (searchData) {
+    searchData.filters.forEach(f => {
+      const checkedValues = f.values.filter(v => v.checked);
+
+      if (checkedValues.length > 0) {
+        searchFilters[f.name] = checkedValues.filter(Boolean).map(v => v.label);
+      }
+    });
+  }
+
   return (
     <Paper
       component="form"
       action="/landing/search"
       elevation={0}
-      sx={bigSize ? { ...bigSizeProps } : { ...regularSizeProps }}
+      sx={showBigSearchBox ? { ...bigSizeProps } : { ...regularSizeProps }}
     >
       <InputBase
         sx={{ ml: 1, flex: 1 }}
