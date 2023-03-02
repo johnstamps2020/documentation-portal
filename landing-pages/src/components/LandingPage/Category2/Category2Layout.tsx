@@ -56,7 +56,7 @@ export default function Category2Layout({
           <ReleaseSelector />
         </Stack>
         <SelfManagedLink
-          pagePath="haha"
+          pagePath="/selfManagedProducts"
           backgroundImage={backgroundProps.backgroundImage}
         />
         <WhatsNew {...whatsNew} />

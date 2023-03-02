@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { LandingPageItemProps } from '../../../pages/LandingPage/LandingPage';
 import CategorySection, { CategorySectionProps } from './CategorySection';
+import { useLandingPageItems } from '../../../hooks/useLandingPageItems';
 
 export type CategoryCardProps = {
   label: string;
@@ -16,6 +17,24 @@ export default function CategoryCard({
   items,
   sections,
 }: CategoryCardProps) {
+  const { landingPageItems, isError, isLoading } = useLandingPageItems(
+    items || []
+  );
+  const itemsInSections = sections?.map(section => section.items).flat() || [];
+
+  const {
+    landingPageItems: landingPageSectionsItems,
+    isError: isErrorSections,
+    isLoading: isLoadingSections,
+  } = useLandingPageItems(itemsInSections);
+
+  if (
+    (isLoading && isLoadingSections) ||
+    (isError && isErrorSections) ||
+    (!landingPageItems && !landingPageSectionsItems)
+  ) {
+    return null;
+  }
   return (
     <Paper
       sx={{
@@ -30,7 +49,7 @@ export default function CategoryCard({
         {label}
       </Typography>
       <Stack spacing={1} sx={{ fontSize: '0.875rem', color: 'black' }}>
-        {items?.map(categoryItem => (
+        {landingPageItems?.map(categoryItem => (
           <LandingPageItem {...categoryItem} key={categoryItem.label} />
         ))}
         {sections?.map(section => (
