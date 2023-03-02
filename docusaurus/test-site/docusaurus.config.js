@@ -69,7 +69,7 @@ const siteTitle = 'Guidewire Docusaurus Test Site';
 
     plugins: [
       [
-        '../plugins/gw-plugin-redoc/src',
+        '@doctools/gw-plugin-redoc',
         {
           configPath: path.resolve(__dirname, 'gw.plugin.redoc.config.js'),
         },

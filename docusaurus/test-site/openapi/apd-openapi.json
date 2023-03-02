@@ -11,12 +11,12 @@
     },
     "termsOfService": "https://www.guidewire.com/legal-notices",
     "title": "APD Cloud API",
-    "version": "0.0.1"
+    "version": "2.0.0"
   },
   "servers": [
     {
       "description": "Development server",
-      "url": "/api/v2"
+      "url": "/api/v5"
     }
   ],
   "security": [
@@ -40,8 +40,8 @@
             "description": "Json schema enhanced with JsonLogic validation rules"
           }
         },
-        "summary": "Returns the product JSON schema.",
-        "tags": ["Schema V2"]
+        "summary": "Returns the product JSON schema (STABLE, PUBLIC)",
+        "tags": ["Schema V5"]
       }
     },
     "/editions/schema": {
@@ -59,8 +59,46 @@
             "description": "Json schema enhanced with JsonLogic validation rules"
           }
         },
-        "summary": "Returns the edition JSON schema.",
-        "tags": ["Schema V2"]
+        "summary": "Returns the edition JSON schema (STABLE, PUBLIC)",
+        "tags": ["Schema V5"]
+      }
+    },
+    "/settings/jurisdictions": {
+      "get": {
+        "operationId": "getConfiguredJurisdictions",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConfiguredJurisdictionsData"
+                }
+              }
+            },
+            "description": "List of jurisdictions"
+          }
+        },
+        "summary": "Returns configured jurisdictions (STABLE)",
+        "tags": ["Selectors V5"]
+      }
+    },
+    "/settings/segments": {
+      "get": {
+        "operationId": "getConfiguredSegments",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConfiguredSegmentsData"
+                }
+              }
+            },
+            "description": "List of segments"
+          }
+        },
+        "summary": "Returns configured segments (STABLE)",
+        "tags": ["Selectors V5"]
       }
     },
     "/worksets/{worksetUid}/products": {
@@ -97,8 +135,8 @@
             "description": "Workset or product not found"
           }
         },
-        "summary": "Creates a product definition in the specified workset",
-        "tags": ["Products V2"]
+        "summary": "Creates a product definition in the specified workset (STABLE)",
+        "tags": ["Products V5"]
       },
       "put": {
         "description": "If a product with the same code already exists in the workset the existing product's name, description and content will be updated from the product passed into the body of this request.",
@@ -144,8 +182,8 @@
             "description": "Workset or product not found"
           }
         },
-        "summary": "Updates a product definition in the specified workset",
-        "tags": ["Products V2"]
+        "summary": "Updates a product definition in the specified workset (STABLE)",
+        "tags": ["Products V5"]
       }
     },
     "/worksets/{worksetUid}/productsummaries": {
@@ -178,8 +216,8 @@
             "description": "Workset not found"
           }
         },
-        "summary": "Returns summaries for all products in the specified workset, excluding products defined in any parent worksets.",
-        "tags": ["Products V2"]
+        "summary": "Returns summaries for all products in the specified workset, excluding products defined in any parent worksets (STABLE)",
+        "tags": ["Products V5"]
       }
     },
     "/worksets/{worksetUid}/products/{productCode}": {
@@ -214,11 +252,218 @@
             "description": "Workset or product not found"
           }
         },
-        "summary": "Deletes a product from the specified workset",
-        "tags": ["Products V2"]
+        "summary": "Deletes a product from the specified workset (STABLE)",
+        "tags": ["Products V5"]
       },
       "get": {
+        "description": "For a **monoline** product, the value of the `expand` argument is ignored. Monoline products are always returned expanded.\n",
         "operationId": "getProduct",
+        "parameters": [
+          {
+            "description": "The unique identifier of a workset",
+            "in": "path",
+            "name": "worksetUid",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique code of the product",
+            "in": "path",
+            "name": "productCode",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "A flag indicating if line definitions should be expanded",
+            "in": "query",
+            "name": "expand",
+            "required": false,
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APDProductDTO"
+                }
+              }
+            },
+            "description": "Contents of a product in JSON format"
+          },
+          "404": {
+            "description": "Workset or product not found"
+          }
+        },
+        "summary": "Returns a product definition from the specified workset (STABLE)",
+        "tags": ["Products V5"]
+      }
+    },
+    "/worksets/{worksetUid}/products/{productCode}/change-code": {
+      "put": {
+        "operationId": "changeProductCode",
+        "parameters": [
+          {
+            "description": "The unique identifier of a workset",
+            "in": "path",
+            "name": "worksetUid",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique code of the product",
+            "in": "path",
+            "name": "productCode",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/ProductCodeChangeRequest"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APDProductDTO"
+                }
+              }
+            },
+            "description": "Contents of a product in JSON format"
+          },
+          "400": {
+            "description": "Product with provided code already exists"
+          },
+          "404": {
+            "description": "Workset or product not found"
+          }
+        },
+        "summary": "Change the product code found in the product and editions",
+        "tags": ["Products V5"]
+      }
+    },
+    "/worksets/{worksetUid}/products/{productCode}/clone": {
+      "post": {
+        "operationId": "cloneProduct",
+        "parameters": [
+          {
+            "description": "The unique identifier of a workset",
+            "in": "path",
+            "name": "worksetUid",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique code of the product",
+            "in": "path",
+            "name": "productCode",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/ProductCloneRequest"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductSummaryData"
+                }
+              }
+            },
+            "description": "Summary information for a product"
+          },
+          "400": {
+            "description": "Product cannot be cloned with non-unique code or abbreviation"
+          },
+          "404": {
+            "description": "Workset or product not found"
+          }
+        },
+        "summary": "Clone a product with the specified code and all its editions from the specified workset and all its parents",
+        "tags": ["Products V5"]
+      }
+    },
+    "/worksets/{worksetUid}/products/{productCode}/export": {
+      "get": {
+        "description": "Returns a ZIP file containing the product with the given code, and its contents based on a selection criteria. These resources may reside either in the given workset or in its parent worksets.",
+        "operationId": "exportProduct",
+        "parameters": [
+          {
+            "description": "The unique identifier of a workset",
+            "in": "path",
+            "name": "worksetUid",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique code of the product",
+            "in": "path",
+            "name": "productCode",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The type of product contents to be exported",
+            "in": "query",
+            "name": "exportProductType",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/APDProductExportTypeEnum"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Export product content based on selection criteria into Zip format"
+          },
+          "404": {
+            "description": "Workset or product not found"
+          }
+        },
+        "summary": "Returns a ZIP file containing the product with the given code, and its contents based on a selection criteria.",
+        "tags": ["Products V5"]
+      }
+    },
+    "/worksets/{worksetUid}/products/{productCode}/entire-product": {
+      "get": {
+        "description": "Returns a ZIP file containing the product with the given code and all its editions in JSON format. These resources may reside either in the given workset or in its parent worksets.",
+        "operationId": "exportEntireProduct",
         "parameters": [
           {
             "description": "The unique identifier of a workset",
@@ -243,6 +488,117 @@
         "responses": {
           "200": {
             "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Export entire product into Zip format"
+          },
+          "404": {
+            "description": "Workset or product not found"
+          }
+        },
+        "summary": "Returns a ZIP file containing the product with the given code and all its editions in JSON format (STABLE)",
+        "tags": ["Products V5"]
+      }
+    },
+    "/worksets/{worksetUid}/products/{productCode}/xmind": {
+      "get": {
+        "description": "Returns an xmind representation of the product with the given code in the given workset",
+        "operationId": "exportProductToXmind",
+        "parameters": [
+          {
+            "description": "The unique identifier of a workset",
+            "in": "path",
+            "name": "worksetUid",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique code of the product",
+            "in": "path",
+            "name": "productCode",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Export product into XMind format"
+          },
+          "404": {
+            "description": "Workset or product not found"
+          }
+        },
+        "summary": "Returns an xmind representation of the product with the given code in the given workset (STABLE)",
+        "tags": ["Products V5"]
+      },
+      "put": {
+        "description": "If a shortname already exists in the product, its element name will be updated, otherwise a new field will be added.",
+        "operationId": "additiveUpdateProductFromMindMap",
+        "parameters": [
+          {
+            "description": "The unique identifier of a workset",
+            "in": "path",
+            "name": "worksetUid",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique code of the product",
+            "in": "path",
+            "name": "productCode",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Language code to use for translated text",
+            "in": "query",
+            "name": "languageCode",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The ETag of the old product/edition. The value is used to prevent accidental overrides of edits to the product/edition made by other users. The value must be obtained from a previous API call made to get or update the product/edition.",
+            "in": "header",
+            "name": "If-Match",
+            "required": false,
+            "schema": {
+              "maxLength": 255,
+              "minLength": 1,
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/XMindTemplateRequest"
+        },
+        "responses": {
+          "200": {
+            "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/APDProductDTO"
@@ -255,8 +611,66 @@
             "description": "Workset or product not found"
           }
         },
-        "summary": "Returns a product definition from the specified workset",
-        "tags": ["Products V2"]
+        "summary": "Additively updates a product definition in the specified workset with the given XMind template (STABLE)",
+        "tags": ["Products V5"]
+      }
+    },
+    "/worksets/{worksetUid}/products/{productCode}/template": {
+      "put": {
+        "description": "If a product with the same code already exists in the workset the existing product definition and its editions will be overwritten from the product template passed into the body of this request.",
+        "operationId": "updateProductFromTemplate",
+        "parameters": [
+          {
+            "description": "The unique identifier of a workset",
+            "in": "path",
+            "name": "worksetUid",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique code of the product",
+            "in": "path",
+            "name": "productCode",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The ETag of the old product/edition. The value is used to prevent accidental overrides of edits to the product/edition made by other users. The value must be obtained from a previous API call made to get or update the product/edition.",
+            "in": "header",
+            "name": "If-Match",
+            "required": false,
+            "schema": {
+              "maxLength": 255,
+              "minLength": 1,
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/XmlTemplateRequest"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductSummaryData"
+                }
+              }
+            },
+            "description": "Summary information for a product"
+          },
+          "404": {
+            "description": "Workset or product not found"
+          }
+        },
+        "summary": "Updates a product definition in the specified workset with the given XML based template (STABLE)",
+        "tags": ["Products V5"]
       }
     },
     "/worksets/{worksetUid}/products/{productCode}/lock": {
@@ -291,11 +705,11 @@
             "description": "Workset or product not found"
           }
         },
-        "summary": "Unlock product and all its editions in LCM",
-        "tags": ["Products V2"]
+        "summary": "Unlock product and all its editions in LCM (STABLE)",
+        "tags": ["Products V5"]
       },
       "post": {
-        "operationId": "lockProduct",
+        "operationId": "lockProductInCurrentWorkset",
         "parameters": [
           {
             "description": "The unique identifier of a workset",
@@ -315,6 +729,17 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "The ETag of the old product/edition. The value is used to prevent accidental overrides of edits to the product/edition made by other users. The value must be obtained from a previous API call made to get or update the product/edition.",
+            "in": "header",
+            "name": "If-Match",
+            "required": false,
+            "schema": {
+              "maxLength": 255,
+              "minLength": 1,
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -332,8 +757,8 @@
             "description": "Workset or product not found"
           }
         },
-        "summary": "Lock product and all its editions in LCM",
-        "tags": ["Products V2"]
+        "summary": "Lock product and all its editions in LCM (STABLE)",
+        "tags": ["Products V5"]
       }
     },
     "/worksets/{worksetUid}/productsummaries/all": {
@@ -366,8 +791,8 @@
             "description": "Workset not found"
           }
         },
-        "summary": "Returns all product summaries from the specified workset and all its parents.",
-        "tags": ["Products V2"]
+        "summary": "Returns all product summaries from the specified workset and all its parents (STABLE)",
+        "tags": ["Products V5"]
       }
     },
     "/worksets/{worksetUid}/products/{productCode}/validate": {
@@ -405,13 +830,13 @@
             "description": "Workset or product not found"
           }
         },
-        "summary": "Validates a product so that it can be installed into an application (e.g. PolicyCenter).",
-        "tags": ["Products V2"]
+        "summary": "Validates a product so that it can be installed into an application (e.g. PolicyCenter) (STABLE)",
+        "tags": ["Products V5"]
       }
     },
-    "/worksets/{worksetUid}/products/{productCode}/install": {
-      "post": {
-        "operationId": "installProduct",
+    "/worksets/{worksetUid}/products/{productCode}/validate-remove-element": {
+      "get": {
+        "operationId": "validateRemoveElement",
         "parameters": [
           {
             "description": "The unique identifier of a workset",
@@ -433,18 +858,62 @@
             }
           },
           {
-            "description": "The unique id of the GCC environment",
+            "description": "Path to a product element",
             "in": "query",
-            "name": "environmentId",
+            "name": "elementPath",
+            "required": true,
+            "schema": {
+              "example": "product.lines[LineA].fields[LineFldA]",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationData"
+                }
+              }
+            },
+            "description": "Summary information for validating if element can be removed. Returns no issues if element is not present in the saved product (new element) or it exists in the product from current workset, but not in the parent workset and it is not used by any rule."
+          },
+          "404": {
+            "description": "Workset or product not found"
+          }
+        },
+        "summary": "Validate whether the given element can be removed or have its code updated (STABLE)",
+        "tags": ["Products V5"]
+      }
+    },
+    "/worksets/{worksetUid}/products/{productCode}/lines/{lineRef}": {
+      "put": {
+        "operationId": "attachLine",
+        "parameters": [
+          {
+            "description": "The unique identifier of a workset",
+            "in": "path",
+            "name": "worksetUid",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique code of the product",
+            "in": "path",
+            "name": "productCode",
             "required": true,
             "schema": {
               "type": "string"
             }
           },
           {
-            "description": "The unique code of the application (e.g. pc)",
-            "in": "query",
-            "name": "applicationCode",
+            "description": "The line reference for a monoline",
+            "in": "path",
+            "name": "lineRef",
             "required": true,
             "schema": {
               "type": "string"
@@ -453,14 +922,21 @@
         ],
         "responses": {
           "200": {
-            "description": "Product was installed succesfully"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APDProductDTO"
+                }
+              }
+            },
+            "description": "Contents of a product in JSON format"
           },
           "404": {
-            "description": "Workset or product not found or the workset is not deployed in the given environment"
+            "description": "Workset, product or line not found"
           }
         },
-        "summary": "Validates and installs a product into an application such as PolicyCenter.",
-        "tags": ["Products V2"]
+        "summary": "Attach monoline and its editions to multiline product",
+        "tags": ["Products V5"]
       }
     },
     "/worksets/{worksetUid}/products/{productCode}/editions": {
@@ -509,8 +985,8 @@
             "description": "Workset or product not found"
           }
         },
-        "summary": "Created a new edition for a product in the specified workset",
-        "tags": ["Editions V2"]
+        "summary": "Creates a new edition for a product in the specified workset (STABLE)",
+        "tags": ["Editions V5"]
       },
       "put": {
         "description": "If a edition with the same code already exists in the workset is is updated based on the request.",
@@ -565,8 +1041,8 @@
             "description": "Workset or product not found"
           }
         },
-        "summary": "Updates an edition for a product in the specified workset",
-        "tags": ["Editions V2"]
+        "summary": "Updates an edition for a product in the specified workset (STABLE)",
+        "tags": ["Editions V5"]
       }
     },
     "/worksets/{worksetUid}/products/{productCode}/editionsummaries": {
@@ -608,8 +1084,8 @@
             "description": "Workset or product not found"
           }
         },
-        "summary": "Returns all edition summaries from the specified workset, excluding editions defined in any parent worksets.",
-        "tags": ["Editions V2"]
+        "summary": "Returns all edition summaries from the specified workset, excluding editions defined in any parent worksets (STABLE)",
+        "tags": ["Editions V5"]
       }
     },
     "/worksets/{worksetUid}/products/{productCode}/editions/{editionCode}": {
@@ -656,8 +1132,8 @@
             "description": "Workset, product or edition not found"
           }
         },
-        "summary": "Deletes the edition from the specified workset",
-        "tags": ["Editions V2"]
+        "summary": "Deletes the edition from the specified workset (STABLE)",
+        "tags": ["Editions V5"]
       },
       "get": {
         "operationId": "getEdition",
@@ -706,8 +1182,8 @@
             "description": "Workset, product or edition not found"
           }
         },
-        "summary": "Returns the edition for a product from the specified workset",
-        "tags": ["Editions V2"]
+        "summary": "Returns the edition for a product from the specified workset (STABLE)",
+        "tags": ["Editions V5"]
       }
     },
     "/worksets/{worksetUid}/products/{productCode}/editionsummaries/all": {
@@ -749,8 +1225,8 @@
             "description": "Workset or product not found"
           }
         },
-        "summary": "Returns all product edition summaries from the specified workset and all its parents.",
-        "tags": ["Editions V2"]
+        "summary": "Returns all product edition summaries from the specified workset and all its parents (STABLE)",
+        "tags": ["Editions V5"]
       }
     },
     "/worksets/{worksetUid}/products/{productCode}/editions/{editionCode}/rules": {
@@ -810,8 +1286,8 @@
             "description": "Workset, product or edition not found"
           }
         },
-        "summary": "Returns the PM rules associated with a product edition",
-        "tags": ["Editions V2"]
+        "summary": "Returns the PM rules associated with a product edition (STABLE)",
+        "tags": ["Editions V5"]
       }
     },
     "/worksets/{worksetUid}/products/{productCode}/active": {
@@ -853,8 +1329,8 @@
             "description": "Workset or product not found"
           }
         },
-        "summary": "Returns a product definition either from the specified workset or from one of its parent worksets.",
-        "tags": ["Runtime V2"]
+        "summary": "Returns a product definition either from the specified workset or from one of its parent worksets (STABLE)",
+        "tags": ["Runtime V5"]
       }
     },
     "/worksets/{worksetUid}/products/{productCode}/editions/active": {
@@ -890,6 +1366,21 @@
             }
           },
           {
+            "description": "The segments the edition applies to",
+            "in": "query",
+            "name": "segments",
+            "required": false,
+            "schema": {
+              "items": {
+                "maxLength": 255,
+                "minLength": 1,
+                "type": "string",
+                "uniqueItems": true
+              },
+              "type": "array"
+            }
+          },
+          {
             "description": "The reference date of the product/edition. Will match a product/edition if the reference date is greater or equal than the effective date and less than the expiration date",
             "in": "query",
             "name": "referenceDate",
@@ -915,8 +1406,8 @@
             "description": "Workset, product or edition not found"
           }
         },
-        "summary": "Returns an edition for a product either from the specified workset or from one of its parent worksets.",
-        "tags": ["Runtime V2"]
+        "summary": "Returns an edition for a product either from the specified workset or from one of its parent worksets (STABLE)",
+        "tags": ["Runtime V5"]
       }
     },
     "/worksets/{worksetUid}/products/{productCode}/rules/active": {
@@ -949,6 +1440,21 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "description": "The segments the edition applies to",
+            "in": "query",
+            "name": "segments",
+            "required": false,
+            "schema": {
+              "items": {
+                "maxLength": 255,
+                "minLength": 1,
+                "type": "string",
+                "uniqueItems": true
+              },
+              "type": "array"
             }
           },
           {
@@ -986,8 +1492,200 @@
             "description": "Workset or product not found"
           }
         },
-        "summary": "Returns the PM rules associated with a product",
-        "tags": ["Runtime V2"]
+        "summary": "Returns the PM rules associated with a product (STABLE)",
+        "tags": ["Runtime V5"]
+      }
+    },
+    "/products/{productCode}": {
+      "get": {
+        "description": "For a **monoline** product, the value of the `expand` argument is ignored. Monoline products are always returned expanded.\n",
+        "operationId": "getProductForWorksetInHeader",
+        "parameters": [
+          {
+            "description": "The unique identifier of a workset",
+            "in": "header",
+            "name": "GW-Workset",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique code of the product",
+            "in": "path",
+            "name": "productCode",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "A flag indicating if line definitions should be expanded",
+            "in": "query",
+            "name": "expand",
+            "required": false,
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APDProductDTO"
+                }
+              }
+            },
+            "description": "Contents of a product in JSON format"
+          },
+          "404": {
+            "description": "Workset or product not found"
+          }
+        },
+        "summary": "Returns a product definition from the specified workset (STABLE, PUBLIC)",
+        "tags": ["Products V5"]
+      }
+    },
+    "/products/{productCode}/editionsummaries": {
+      "get": {
+        "operationId": "getEditionSummariesForWorksetInHeader",
+        "parameters": [
+          {
+            "description": "The unique identifier of a workset",
+            "in": "header",
+            "name": "GW-Workset",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique code of the product",
+            "in": "path",
+            "name": "productCode",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EditionSummariesData"
+                }
+              }
+            },
+            "description": "List of product edition summaries"
+          },
+          "404": {
+            "description": "Workset or product not found"
+          }
+        },
+        "summary": "Returns all edition summaries from the specified workset, excluding editions defined in any parent worksets (STABLE, PUBLIC)",
+        "tags": ["Editions V5"]
+      }
+    },
+    "/products/{productCode}/editionsummaries/all": {
+      "get": {
+        "operationId": "getAllEditionSummariesForWorksetInHeader",
+        "parameters": [
+          {
+            "description": "The unique identifier of a workset",
+            "in": "header",
+            "name": "GW-Workset",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique code of the product",
+            "in": "path",
+            "name": "productCode",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EditionSummariesData"
+                }
+              }
+            },
+            "description": "List of product edition summaries"
+          },
+          "404": {
+            "description": "Workset or product not found"
+          }
+        },
+        "summary": "Returns all product edition summaries from the specified workset and all its parents (STABLE, PUBLIC)",
+        "tags": ["Editions V5"]
+      }
+    },
+    "/products/{productCode}/editions/{editionCode}": {
+      "get": {
+        "operationId": "getEditionForWorksetInHeader",
+        "parameters": [
+          {
+            "description": "The unique identifier of a workset",
+            "in": "header",
+            "name": "GW-Workset",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique code of the product",
+            "in": "path",
+            "name": "productCode",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The unique code of the edition",
+            "in": "path",
+            "name": "editionCode",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APDEditionDTO"
+                }
+              }
+            },
+            "description": "Contents of an edition in JSON format"
+          },
+          "404": {
+            "description": "Workset, product or edition not found"
+          }
+        },
+        "summary": "Returns the edition for a product from the specified workset (STABLE, PUBLIC)",
+        "tags": ["Editions V5"]
       }
     },
     "/convert/json-to-xmind": {
@@ -1013,8 +1711,8 @@
             "description": "The product JSON is invalid"
           }
         },
-        "summary": "Converts a product definition from JSON to XMind format",
-        "tags": ["Convert V2"]
+        "summary": "Converts a product definition from JSON to XMind format (STABLE)",
+        "tags": ["Convert V5"]
       }
     },
     "/convert/xmind-to-json": {
@@ -1050,8 +1748,8 @@
             "description": "The product Xmind is invalid"
           }
         },
-        "summary": "Converts a product definition from Xmind to JSON format",
-        "tags": ["Convert V2"]
+        "summary": "Converts a product definition from Xmind to JSON format (STABLE)",
+        "tags": ["Convert V5"]
       }
     },
     "/convert/xml-to-json": {
@@ -1076,8 +1774,8 @@
             "description": "The product XML is invalid"
           }
         },
-        "summary": "Converts a product definition from XML to JSON format",
-        "tags": ["Convert V2"]
+        "summary": "Converts a product definition from XML to JSON format (STABLE)",
+        "tags": ["Convert V5"]
       }
     },
     "/convert/xml-to-xmind": {
@@ -1101,15 +1799,6 @@
             "required": false,
             "schema": {
               "format": "email",
-              "type": "string"
-            }
-          },
-          {
-            "description": "The PolicyCenter version used to create the template",
-            "in": "query",
-            "name": "pcVersion",
-            "required": false,
-            "schema": {
               "type": "string"
             }
           },
@@ -1151,8 +1840,8 @@
             "description": "The email address, PC version or product XML is invalid"
           }
         },
-        "summary": "Converts a product definition from XML to XMind format",
-        "tags": ["Convert V2"]
+        "summary": "Converts a product definition from XML to XMind format (STABLE)",
+        "tags": ["Convert V5"]
       }
     }
   },
@@ -1168,6 +1857,50 @@
         },
         "description": "Contents of a product in JSON format",
         "required": true
+      },
+      "ProductCodeChangeRequest": {
+        "content": {
+          "text/plain": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "description": "The code of the product in plain text",
+        "required": true
+      },
+      "ProductCloneRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/APDProductCloneParamsDTO"
+            }
+          }
+        },
+        "description": "Parameters in JSON format for a clone product to be created",
+        "required": true
+      },
+      "XMindTemplateRequest": {
+        "content": {
+          "application/octet-stream": {
+            "schema": {
+              "format": "binary",
+              "type": "string"
+            }
+          }
+        },
+        "description": "Contents of a product in XMind format"
+      },
+      "XmlTemplateRequest": {
+        "content": {
+          "application/xml": {
+            "schema": {
+              "format": "binary",
+              "type": "string"
+            }
+          }
+        },
+        "description": "Contents of a product in XML format."
       },
       "EditionRequest": {
         "content": {
@@ -1248,6 +1981,66 @@
         },
         "required": ["anchor", "expression", "name"]
       },
+      "ConfiguredJurisdictionsData": {
+        "description": "List of configured jurisdictions",
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/Jurisdiction"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["data"]
+      },
+      "Jurisdiction": {
+        "description": "Jurisdiction details",
+        "properties": {
+          "code": {
+            "description": "Jurisdiction code",
+            "type": "string"
+          }
+        },
+        "required": ["code"]
+      },
+      "ConfiguredSegmentsData": {
+        "description": "List of configured segments",
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/Segment"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["data"]
+      },
+      "Segment": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/segmentCode"
+          },
+          {
+            "$ref": "#/components/schemas/localizedName"
+          },
+          {
+            "$ref": "#/components/schemas/Segment_allOf"
+          }
+        ],
+        "description": "Segment information",
+        "required": ["code", "values"]
+      },
+      "SegmentValue": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/segmentValueCode"
+          },
+          {
+            "$ref": "#/components/schemas/localizedName"
+          }
+        ],
+        "description": "Segment value information"
+      },
       "ProductSummaryData": {
         "description": "Summary information for a product",
         "properties": {
@@ -1286,6 +2079,16 @@
             },
             "type": "array"
           },
+          "line_links": {
+            "description": "Line link definitions of all lines of the product",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "type": {
+            "$ref": "#/components/schemas/APDProductTypeEnum"
+          },
           "modificationDate": {
             "description": "Modification date of the product",
             "format": "date-time",
@@ -1296,7 +2099,12 @@
             "type": "string"
           },
           "worksetUid": {
-            "description": "UUID of the parent workset",
+            "description": "UUID of the workset",
+            "format": "uuid",
+            "type": "string"
+          },
+          "parentWorksetUid": {
+            "description": "UUID of the parent production workset",
             "format": "uuid",
             "type": "string"
           },
@@ -1310,8 +2118,11 @@
             "type": "string"
           },
           "lockedBy": {
-            "description": "If provided, identifies user who has locked the resource",
+            "description": "If provided, identifies user who has locked the product resource",
             "type": "string"
+          },
+          "lockedByUserInfo": {
+            "$ref": "#/components/schemas/LockedByUserInfo"
           }
         },
         "required": [
@@ -1321,6 +2132,27 @@
           "name",
           "resourceUid"
         ]
+      },
+      "LockedByUserInfo": {
+        "description": "User information on the resource locking user",
+        "properties": {
+          "id": {
+            "description": "Id",
+            "type": "string"
+          },
+          "firstName": {
+            "description": "First name",
+            "type": "string"
+          },
+          "lastName": {
+            "description": "Last name",
+            "type": "string"
+          },
+          "email": {
+            "description": "Email",
+            "type": "string"
+          }
+        }
       },
       "ProductSummariesData": {
         "description": "List of product summaries",
@@ -1359,16 +2191,6 @@
           "usesLocationListView",
           "writtenByThirdParty"
         ]
-      },
-      "APDCurrencyHandlingTypeEnum": {
-        "default": "domestic",
-        "enum": ["domestic", "single", "basicmulti", "fullmulti"],
-        "type": "string"
-      },
-      "APDProductCategoryEnum": {
-        "default": "Any",
-        "enum": ["Person", "Company", "Any"],
-        "type": "string"
       },
       "APDProductLineDTO": {
         "allOf": [
@@ -1452,6 +2274,10 @@
         "properties": {
           "identifier": {
             "type": "boolean"
+          },
+          "segment": {
+            "maxLength": 61,
+            "type": "string"
           }
         },
         "required": ["name", "sequence", "splitByRatingPeriods", "type"]
@@ -1485,7 +2311,9 @@
           "location",
           "money",
           "party",
-          "varchar"
+          "segment",
+          "varchar",
+          "damageable"
         ],
         "type": "string"
       },
@@ -1539,6 +2367,7 @@
             "type": "integer"
           },
           "decimalValue": {
+            "pattern": "^[0-9]+(\\.[0-9][0-9]?)?$",
             "type": "string"
           },
           "dropdownColumn": {
@@ -1600,6 +2429,14 @@
           "splitByRatingPeriods",
           "type"
         ]
+      },
+      "APDClaimAttributeDTO": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/APDAttributeDTO"
+          }
+        ],
+        "required": ["name", "sequence", "type"]
       },
       "APDClauseCategoryDTO": {
         "allOf": [
@@ -1694,6 +2531,43 @@
           }
         ]
       },
+      "APDLossPartyTypeEnum": {
+        "enum": ["FirstParty", "ThirdParty"],
+        "type": "string"
+      },
+      "APDExposureTypesDTO": {
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/APDExposureTypesEnum"
+          }
+        },
+        "required": ["code"]
+      },
+      "APDExposureTypesEnum": {
+        "enum": [
+          "New",
+          "BodilyInjuryDamage",
+          "LostWages",
+          "WCInjuryDamage",
+          "PIPDamages",
+          "LossOfUseDamage",
+          "PersonalPropertyDamage",
+          "PropertyDamage",
+          "VehicleDamage",
+          "EmployerLiability",
+          "GeneralDamage",
+          "MedPay",
+          "TowOnly",
+          "Theft",
+          "Baggage",
+          "TripCancellationDelay",
+          "Content",
+          "OtherStructure",
+          "LivingExpenses",
+          "Dwelling"
+        ],
+        "type": "string"
+      },
       "APDExclusionDTO": {
         "allOf": [
           {
@@ -1726,6 +2600,9 @@
           },
           "basis": {
             "description": "e.g. product.lines[pa].clause[foo].term[bar]",
+            "type": "string"
+          },
+          "sectionType": {
             "type": "string"
           }
         },
@@ -1775,6 +2652,135 @@
             "$ref": "#/components/schemas/APDTypelistDTO_allOf"
           }
         ]
+      },
+      "APDTypelistOptionDTO": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/typelistOptionCode"
+          },
+          {
+            "$ref": "#/components/schemas/localizedName"
+          },
+          {
+            "$ref": "#/components/schemas/localizedDescription"
+          },
+          {
+            "$ref": "#/components/schemas/APDTypelistOptionDTO_allOf"
+          }
+        ],
+        "required": ["name"]
+      },
+      "APDDefinitionsDTO": {
+        "properties": {
+          "damageables": {
+            "items": {
+              "$ref": "#/components/schemas/APDDamageableDTO"
+            },
+            "type": "array"
+          },
+          "incidents": {
+            "items": {
+              "$ref": "#/components/schemas/APDIncidentDTO"
+            },
+            "type": "array"
+          },
+          "claimCategories": {
+            "items": {
+              "$ref": "#/components/schemas/APDClaimCategoryDTO"
+            },
+            "type": "array"
+          },
+          "typelists": {
+            "items": {
+              "$ref": "#/components/schemas/APDTypelistDTO"
+            },
+            "type": "array"
+          }
+        }
+      },
+      "APDDamageableDTO": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/code"
+          },
+          {
+            "$ref": "#/components/schemas/localizedName"
+          }
+        ],
+        "properties": {
+          "riskUnit": {
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string"
+          },
+          "claimAttributes": {
+            "items": {
+              "$ref": "#/components/schemas/APDClaimAttributeDTO"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["name"]
+      },
+      "APDIncidentDTO": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/code"
+          },
+          {
+            "$ref": "#/components/schemas/localizedName"
+          }
+        ],
+        "properties": {
+          "damageable": {
+            "maxLength": 255,
+            "pattern": "^[A-Z][A-Za-z0-9_]*$",
+            "type": "string"
+          },
+          "exposureTypes": {
+            "items": {
+              "$ref": "#/components/schemas/APDExposureTypesDTO"
+            },
+            "type": "array"
+          },
+          "claimAttributes": {
+            "items": {
+              "$ref": "#/components/schemas/APDClaimAttributeDTO"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["exposureTypes", "name"]
+      },
+      "APDClaimCategoryDTO": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/code"
+          },
+          {
+            "$ref": "#/components/schemas/localizedName"
+          },
+          {
+            "$ref": "#/components/schemas/APDClaimCategoryDTO_allOf"
+          }
+        ],
+        "required": ["hidden", "itemized", "name"]
+      },
+      "APDTagDTO": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/lowercaseCode"
+          },
+          {
+            "$ref": "#/components/schemas/localizedName"
+          }
+        ],
+        "required": ["code", "name"]
+      },
+      "APDProductExportTypeEnum": {
+        "default": "FULL",
+        "enum": ["FULL", "XMIND", "GO_MARKETPLACE_SUBMISSION"],
+        "type": "string"
       },
       "LockData": {
         "description": "Summary data for locked/unlocked product and editions",
@@ -1860,12 +2866,79 @@
             "minItems": 1,
             "type": "array"
           },
+          "segments": {
+            "description": "Segment values associated with the edition",
+            "items": {
+              "$ref": "#/components/schemas/SegmentAssignment"
+            },
+            "type": "array"
+          },
           "etag": {
             "description": "The ETag of the old version of the resource/workset. Used to prevent accidental overrides of edits to the product made by other users. The value must be passed to all APIs which modify the same product in the If-Match header.",
+            "type": "string"
+          },
+          "lockedBy": {
+            "description": "If provided, identifies user who has locked the edition resource",
             "type": "string"
           }
         },
         "required": ["code", "description", "name"]
+      },
+      "SegmentAssignment": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/segmentCode"
+          },
+          {
+            "$ref": "#/components/schemas/SegmentAssignment_allOf"
+          }
+        ],
+        "description": "Segment assignment information",
+        "required": ["code", "values"]
+      },
+      "ValidationData": {
+        "properties": {
+          "data": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationIssue"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["data"]
+      },
+      "ValidationIssue": {
+        "description": "A validation issue",
+        "properties": {
+          "issueType": {
+            "description": "Type of validation issue",
+            "type": "string"
+          },
+          "message": {
+            "description": "Description of the validation issue",
+            "type": "string"
+          },
+          "elementPath": {
+            "description": "Product path to element",
+            "type": "string"
+          },
+          "editionCode": {
+            "description": "Edition code for validation issue",
+            "type": "string"
+          },
+          "productCode": {
+            "description": "Product code for validation issue",
+            "type": "string"
+          },
+          "rules": {
+            "description": "Rules for validation issue",
+            "items": {
+              "$ref": "#/components/schemas/APDJsonLogicRuleDTO"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["elementPath", "issueType", "message"]
       },
       "EditionSummaryData": {
         "description": "Summary information for a product edition",
@@ -1911,15 +2984,115 @@
           "schemaVersion"
         ]
       },
+      "APDSegmentDTO": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/segmentCode"
+          },
+          {
+            "$ref": "#/components/schemas/APDSegmentDTO_allOf"
+          }
+        ],
+        "required": ["code", "values"]
+      },
       "APDEditionProductDTO": {
         "properties": {
           "code": {
             "maxLength": 255,
             "type": "string"
           },
+          "definitions": {
+            "$ref": "#/components/schemas/APDEditionDefinitionsDTO"
+          },
           "lines": {
             "items": {
               "$ref": "#/components/schemas/APDEditionRiskObjectDTO"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["code"]
+      },
+      "APDEditionDefinitionsDTO": {
+        "properties": {
+          "damageables": {
+            "items": {
+              "$ref": "#/components/schemas/APDEditionDamageableDTO"
+            },
+            "type": "array"
+          },
+          "incidents": {
+            "items": {
+              "$ref": "#/components/schemas/APDEditionIncidentDTO"
+            },
+            "type": "array"
+          }
+        }
+      },
+      "APDEditionDamageableDTO": {
+        "properties": {
+          "code": {
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string"
+          },
+          "claimAttributes": {
+            "items": {
+              "$ref": "#/components/schemas/APDEditionAttributeDTO"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["code"]
+      },
+      "APDEditionAttributeDTO": {
+        "properties": {
+          "code": {
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string"
+          },
+          "options": {
+            "items": {
+              "$ref": "#/components/schemas/APDEditionDropdownOptionDTO"
+            },
+            "maxItems": 100,
+            "type": "array"
+          },
+          "rules": {
+            "items": {
+              "$ref": "#/components/schemas/APDRuleDTO"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["code"]
+      },
+      "APDEditionDropdownOptionDTO": {
+        "properties": {
+          "code": {
+            "maxLength": 45,
+            "type": "string"
+          },
+          "rules": {
+            "items": {
+              "$ref": "#/components/schemas/APDRuleDTO"
+            },
+            "type": "array"
+          }
+        },
+        "required": ["code"]
+      },
+      "APDEditionIncidentDTO": {
+        "properties": {
+          "code": {
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string"
+          },
+          "claimAttributes": {
+            "items": {
+              "$ref": "#/components/schemas/APDEditionAttributeDTO"
             },
             "type": "array"
           }
@@ -1973,44 +3146,6 @@
         },
         "required": ["code"]
       },
-      "APDEditionAttributeDTO": {
-        "properties": {
-          "code": {
-            "maxLength": 255,
-            "minLength": 1,
-            "type": "string"
-          },
-          "options": {
-            "items": {
-              "$ref": "#/components/schemas/APDEditionDropdownOptionDTO"
-            },
-            "maxItems": 100,
-            "type": "array"
-          },
-          "rules": {
-            "items": {
-              "$ref": "#/components/schemas/APDRuleDTO"
-            },
-            "type": "array"
-          }
-        },
-        "required": ["code"]
-      },
-      "APDEditionDropdownOptionDTO": {
-        "properties": {
-          "code": {
-            "maxLength": 45,
-            "type": "string"
-          },
-          "rules": {
-            "items": {
-              "$ref": "#/components/schemas/APDRuleDTO"
-            },
-            "type": "array"
-          }
-        },
-        "required": ["code"]
-      },
       "APDEditionExposureDTO": {
         "properties": {
           "code": {
@@ -2046,6 +3181,25 @@
               "$ref": "#/components/schemas/APDRuleDTO"
             },
             "type": "array"
+          },
+          "scheduledItem": {
+            "$ref": "#/components/schemas/APDEditionScheduledItemDTO"
+          }
+        },
+        "required": ["code"]
+      },
+      "APDEditionScheduledItemDTO": {
+        "properties": {
+          "code": {
+            "maxLength": 22,
+            "type": "string"
+          },
+          "terms": {
+            "items": {
+              "$ref": "#/components/schemas/APDEditionAttributeDTO"
+            },
+            "maxItems": 1000,
+            "type": "array"
           }
         },
         "required": ["code"]
@@ -2080,11 +3234,51 @@
         },
         "required": ["editions", "product"]
       },
-      "code": {
+      "APDProductCloneParamsDTO": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/code"
+          },
+          {
+            "$ref": "#/components/schemas/localizedName"
+          },
+          {
+            "$ref": "#/components/schemas/localizedDescription"
+          },
+          {
+            "$ref": "#/components/schemas/APDProductCloneParamsDTO_allOf"
+          }
+        ],
+        "required": ["abbreviation", "code", "schemaVersion"]
+      },
+      "APDProductLineCloneParamsDTO": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/localizedName"
+          },
+          {
+            "$ref": "#/components/schemas/code"
+          },
+          {
+            "$ref": "#/components/schemas/prefix"
+          }
+        ],
+        "properties": {
+          "originalPrefix": {
+            "maxLength": 3,
+            "type": "string"
+          },
+          "originalCode": {
+            "maxLength": 255,
+            "pattern": "^[A-Z][A-Za-z0-9_]*$",
+            "type": "string"
+          }
+        },
+        "required": ["originalCode", "originalPrefix"]
+      },
+      "segmentCode": {
         "properties": {
           "code": {
-            "maxLength": 255,
-            "pattern": "[A-Z][A-Za-z0-9_]*",
             "type": "string"
           }
         },
@@ -2117,6 +3311,37 @@
           }
         }
       },
+      "segmentValueCode": {
+        "properties": {
+          "code": {
+            "maxLength": 45,
+            "type": "string"
+          }
+        },
+        "required": ["code"]
+      },
+      "APDProductCategoryEnum": {
+        "default": "Any",
+        "enum": ["Person", "Company", "Any"],
+        "type": "string"
+      },
+      "APDProductTypeEnum": {
+        "default": "unknown",
+        "deprecated": true,
+        "description": "Product type is deprecated for removal.  Determination of mono/multiline type should use `line_link` rules\ninstead.\n",
+        "enum": ["unknown", "monoline", "multiline"],
+        "type": "string"
+      },
+      "code": {
+        "properties": {
+          "code": {
+            "maxLength": 255,
+            "pattern": "^[A-Z][A-Za-z0-9_]*$",
+            "type": "string"
+          }
+        },
+        "required": ["code"]
+      },
       "localizedDescription": {
         "properties": {
           "description": {
@@ -2132,14 +3357,26 @@
         }
       },
       "WorksetStatus": {
-        "enum": ["draft", "production"],
+        "enum": [
+          "draft",
+          "production",
+          "review",
+          "approved",
+          "withdrawn",
+          "reverted"
+        ],
+        "type": "string"
+      },
+      "APDCurrencyHandlingTypeEnum": {
+        "default": "domestic",
+        "enum": ["domestic", "single", "basicmulti", "fullmulti"],
         "type": "string"
       },
       "optionCode": {
         "properties": {
           "code": {
             "maxLength": 45,
-            "pattern": "[A-Za-z0-9][A-Za-z0-9$_]*",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9$_/%]*$",
             "type": "string"
           }
         },
@@ -2149,7 +3386,7 @@
         "properties": {
           "code": {
             "maxLength": 22,
-            "pattern": "[A-Z][A-Za-z0-9$_]*",
+            "pattern": "^[A-Z][A-Za-z0-9$_]*$",
             "type": "string"
           }
         },
@@ -2159,11 +3396,46 @@
         "properties": {
           "code": {
             "maxLength": 255,
-            "pattern": "[A-Za-z][A-Za-z0-9$_]*",
+            "pattern": "^[A-Za-z][A-Za-z0-9$_]*$",
             "type": "string"
           }
         },
         "required": ["code"]
+      },
+      "typelistOptionCode": {
+        "properties": {
+          "code": {
+            "maxLength": 45,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9$_-]*$",
+            "type": "string"
+          }
+        },
+        "required": ["code"]
+      },
+      "APDJsonLogicRuleDTO": {
+        "description": "A JsonLogic validation rule",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/APDRuleTypeEnum"
+          },
+          "typeArgs": {
+            "description": "The arguments for the type",
+            "type": "object"
+          },
+          "anchor": {
+            "description": "A JsonPath expression indicating the object(s) to which the rule applies",
+            "type": "string"
+          },
+          "expression": {
+            "description": "The JsonLogic validation expression",
+            "type": "object"
+          }
+        },
+        "required": ["anchor", "expression", "type"]
+      },
+      "APDRuleTypeEnum": {
+        "enum": ["existence", "default", "min", "max", "tag"],
+        "type": "string"
       },
       "APDRuleDTO": {
         "properties": {
@@ -2179,8 +3451,8 @@
           "defaultCalculatedValue": {
             "$ref": "#/components/schemas/APDRuleFunctionDTO"
           },
-          "tagType": {
-            "$ref": "#/components/schemas/APDTagTypeEnum"
+          "tag": {
+            "type": "string"
           },
           "elements": {
             "items": {
@@ -2190,10 +3462,6 @@
           }
         },
         "required": ["type"]
-      },
-      "APDRuleTypeEnum": {
-        "enum": ["existence", "default", "min", "max", "tag"],
-        "type": "string"
       },
       "APDRuleFunctionDTO": {
         "properties": {
@@ -2211,10 +3479,6 @@
       },
       "APDRuleFunctionEnum": {
         "enum": ["min", "max", "sum", "ref"],
-        "type": "string"
-      },
-      "APDTagTypeEnum": {
-        "enum": ["rate", "submission", "riskscore"],
         "type": "string"
       },
       "APDRuleElementDTO": {
@@ -2269,22 +3533,26 @@
         ],
         "type": "string"
       },
-      "APDJsonLogicRuleDTO": {
-        "description": "A JsonLogic validation rule",
+      "prefix": {
         "properties": {
-          "type": {
-            "$ref": "#/components/schemas/APDRuleTypeEnum"
-          },
-          "anchor": {
-            "description": "A JsonPath expression indicating the object(s) to which the rule applies",
+          "prefix": {
+            "maxLength": 3,
             "type": "string"
-          },
-          "expression": {
-            "description": "The JsonLogic validation expression",
-            "type": "object"
           }
         },
-        "required": ["anchor", "expression", "type"]
+        "required": ["prefix"]
+      },
+      "Segment_allOf": {
+        "properties": {
+          "values": {
+            "description": "Values of the segment",
+            "items": {
+              "$ref": "#/components/schemas/SegmentValue"
+            },
+            "minItems": 1,
+            "type": "array"
+          }
+        }
       },
       "APDProductDTO_allOf": {
         "properties": {
@@ -2298,6 +3566,10 @@
               }
             ],
             "readOnly": true
+          },
+          "parentWorksetUid": {
+            "format": "uuid",
+            "type": "string"
           },
           "abbreviation": {
             "maxLength": 3,
@@ -2326,6 +3598,28 @@
               "$ref": "#/components/schemas/APDProductLineDTO"
             },
             "type": "array"
+          },
+          "definitions": {
+            "$ref": "#/components/schemas/APDDefinitionsDTO"
+          },
+          "line_links": {
+            "items": {
+              "pattern": "^product\\[.*\\]\\.lines\\[.+\\]$",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "tags": {
+            "items": {
+              "$ref": "#/components/schemas/APDTagDTO"
+            },
+            "type": "array"
+          },
+          "negotiatedCommission": {
+            "type": "boolean"
+          },
+          "sectionBasedCharging": {
+            "type": "boolean"
           }
         },
         "type": "object"
@@ -2435,6 +3729,16 @@
               "$ref": "#/components/schemas/APDCostDefinitionDTO"
             },
             "type": "array"
+          },
+          "claimAttributes": {
+            "items": {
+              "$ref": "#/components/schemas/APDClaimAttributeDTO"
+            },
+            "maxItems": 1000,
+            "type": "array"
+          },
+          "damageable": {
+            "type": "string"
           }
         }
       },
@@ -2460,9 +3764,6 @@
           },
           "jurisdiction": {
             "default": false,
-            "type": "boolean"
-          },
-          "doNotRegenerate": {
             "type": "boolean"
           },
           "type": {
@@ -2557,6 +3858,13 @@
             },
             "maxItems": 1000,
             "type": "array"
+          },
+          "claimAttributes": {
+            "items": {
+              "$ref": "#/components/schemas/APDClaimAttributeDTO"
+            },
+            "maxItems": 1000,
+            "type": "array"
           }
         }
       },
@@ -2572,6 +3880,9 @@
           "itemized": {
             "default": false,
             "type": "boolean"
+          },
+          "sectionType": {
+            "type": "string"
           }
         }
       },
@@ -2638,6 +3949,15 @@
           "clauseCategory": {
             "description": "should match the 'code' of an existing clause category",
             "type": "string"
+          },
+          "coveredPartyType": {
+            "$ref": "#/components/schemas/APDLossPartyTypeEnum"
+          },
+          "exposureTypes": {
+            "items": {
+              "$ref": "#/components/schemas/APDExposureTypesDTO"
+            },
+            "type": "array"
           }
         }
       },
@@ -2672,11 +3992,49 @@
       },
       "APDTypelistDTO_allOf": {
         "properties": {
+          "doNotRegenerate": {
+            "type": "boolean"
+          },
           "options": {
             "items": {
-              "$ref": "#/components/schemas/APDDropdownOptionDTO"
+              "$ref": "#/components/schemas/APDTypelistOptionDTO"
             },
             "maxItems": 1000,
+            "type": "array"
+          }
+        }
+      },
+      "APDTypelistOptionDTO_allOf": {
+        "properties": {
+          "sequence": {
+            "type": "integer"
+          }
+        }
+      },
+      "APDClaimCategoryDTO_allOf": {
+        "properties": {
+          "sequence": {
+            "type": "integer"
+          },
+          "hidden": {
+            "default": false,
+            "type": "boolean"
+          },
+          "itemized": {
+            "default": false,
+            "type": "boolean"
+          }
+        }
+      },
+      "SegmentAssignment_allOf": {
+        "properties": {
+          "values": {
+            "description": "Values of the segment",
+            "items": {
+              "maxLength": 45,
+              "type": "string"
+            },
+            "minItems": 1,
             "type": "array"
           }
         }
@@ -2715,12 +4073,59 @@
             "minItems": 1,
             "type": "array"
           },
+          "segments": {
+            "items": {
+              "$ref": "#/components/schemas/APDSegmentDTO"
+            },
+            "type": "array"
+          },
           "worksetUid": {
             "format": "uuid",
             "type": "string"
           },
           "product": {
             "$ref": "#/components/schemas/APDEditionProductDTO"
+          }
+        },
+        "type": "object"
+      },
+      "APDSegmentDTO_allOf": {
+        "properties": {
+          "values": {
+            "items": {
+              "maxLength": 45,
+              "type": "string",
+              "uniqueItems": true
+            },
+            "minItems": 1,
+            "type": "array"
+          }
+        }
+      },
+      "APDProductCloneParamsDTO_allOf": {
+        "properties": {
+          "schemaVersion": {
+            "type": "string"
+          },
+          "abbreviation": {
+            "maxLength": 3,
+            "type": "string"
+          },
+          "coinsurance": {
+            "default": false,
+            "type": "boolean"
+          },
+          "currencies": {
+            "$ref": "#/components/schemas/APDCurrencyHandlingTypeEnum"
+          },
+          "category": {
+            "$ref": "#/components/schemas/APDProductCategoryEnum"
+          },
+          "lines": {
+            "items": {
+              "$ref": "#/components/schemas/APDProductLineCloneParamsDTO"
+            },
+            "type": "array"
           }
         },
         "type": "object"
@@ -2737,8 +4142,7 @@
               "openid": "OpenId scope (Required)",
               "apds.products.read": "Allows the reading of products",
               "apds.products.write": "Allows the creation of products",
-              "apds.products.delete": "Allows the deletion of products",
-              "apds.products.install": "Allows the installation of products"
+              "apds.products.delete": "Allows the deletion of products"
             },
             "tokenUrl": "https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7/v1/token"
           }
