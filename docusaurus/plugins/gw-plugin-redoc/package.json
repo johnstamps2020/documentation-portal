@@ -1,6 +1,6 @@
 {
   "name": "@doctools/gw-plugin-redoc",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Guidewire plugin which generates static assets for Redoc sites",
   "main": "lib/index.js",
   "author": "doctools@gudiewire.com",
@@ -11,7 +11,7 @@
     "yaml": "^1.10.2"
   },
   "scripts": {
-    "babel": "cross-env babel src -d lib --extensions \".jsx,.js\" --copy-files",
+    "babel": "cross-env babel src -d lib --extensions \".jsx,.js,.tsx,.ts\" --copy-files",
     "dev": "yarn babel --watch",
     "build": "yarn babel"
   },
