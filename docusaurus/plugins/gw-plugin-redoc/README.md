@@ -39,24 +39,21 @@ Look up the version latest version in `package.json` or in Artifactory.
    ```js
    const path = require('path');
 
-   module.exports = {
+   /** @type {import('@doctools/gw-plugin-redoc/lib/scripts/buildPages').GuidewireRedocPluginProps} */
+   const config = {
      specSourceDir: path.resolve(__dirname, 'openapi'),
      docsDir: path.resolve(__dirname, 'docs'),
      staticDir: path.resolve(__dirname, 'static'),
      specList: [
        {
-         title: 'InsuranceNow API', // Becomes the name of the folder
-         task: 'generate-from-spec', // the only allowed value is `generate-from-spec`
-         taskOptions: {
-           group: 'by-tag', // Groups the pages by tag. Grouping is done only if the spec file has the tags property at the root level.
-           removeSecurityNode: true, // removes the `security` field from the spec
-           purgeExpression: (key) => key.startsWith('x-'), // if this function matches a prop name, the prop is purged from the schema
-           deletePath: (path) => path.startsWith('/internal/'), // if this function returns true, the path is not included in the output
-         },
-         src: 'api-spec-core_v5-unsorted.yaml', // path to the spec file, relative to `specSourceDir`, can by .json or .yaml
+         title: 'APD API definitions',
+         task: 'generate-from-spec',
+         src: 'apd-openapi.json',
        },
      ],
    };
+
+   module.exports = config;
    ```
 
 1. Run the following command:
