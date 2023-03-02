@@ -217,6 +217,10 @@ type TagNode = {
   [tagName: string]: string[];
 };
 
+type SpecNode = {
+  [x: string]: SpecNode;
+};
+
 type SpecObjectTag = {
   name: string;
 };
@@ -278,14 +282,20 @@ async function createNewTopics(
           Object.entries(miniSpec.paths[pathName]).forEach((e) => {
             Object.keys(e).forEach((key) => {
               Object.keys(e[key as any]).forEach((subKey) => {
+                // Delete if matcher purge expression
                 if (
                   ['tags'].includes(subKey) ||
                   (options.purgeExpression && options.purgeExpression(subKey))
                 ) {
-                  delete e[key][subKey];
+                  delete (e[key as any] as Record<string, any>)[subKey];
                 }
+
+                // Set operation to uppercase, e.g., GET, POST, etc.
                 if (['operationId'].includes(subKey)) {
-                  e[key][subKey] = e[key][subKey]
+                  const subKeyValue = (e[key as any] as Record<string, any>)[
+                    subKey
+                  ];
+                  (e[key as any] as Record<string, any>)[subKey] = subKeyValue
                     .replace(/([A-Z])/g, ' $1')
                     .replace(/^./, function (str: string) {
                       return str.toUpperCase();
