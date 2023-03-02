@@ -18,6 +18,16 @@
   margin-bottom: 1rem;
 }
 
+.embed-container.portrait {
+  --width: 70%;
+  position: relative;
+  overflow: hidden;
+  width: var(--width);
+  padding-top: calc(var(--width) * 16 / 9);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 iframe {
   position: absolute;
   top: 0;
