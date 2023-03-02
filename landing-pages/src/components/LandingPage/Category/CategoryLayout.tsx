@@ -12,15 +12,20 @@ import { usePageData } from '../../../hooks/usePageData';
 import { LandingPageLayoutProps } from '../../../pages/LandingPage/LandingPage';
 import ReleaseSelector from '../ReleaseSelector';
 import CategorySidebar from './CategorySidebar';
+import Box from '@mui/material/Box';
 
 export type CategoryLayoutProps = LandingPageLayoutProps & {
   cards: CategoryCardProps[];
+  showReleaseSelector?: boolean;
+  selfManaged?: boolean;
 };
 
 export default function CategoryLayout({
   backgroundProps,
   cards,
   sidebar,
+  showReleaseSelector = true,
+  selfManaged = false,
 }: CategoryLayoutProps) {
   const { pageData, isLoading, isError } = usePageData();
 
@@ -57,7 +62,19 @@ export default function CategoryLayout({
           >
             {pageData.title}
           </Typography>
-          <ReleaseSelector />
+          {selfManaged && (
+            <Box padding="1rem 1rem 0rem 1rem">
+              <Typography variant="body1" lineHeight={2}>
+                Find documentation for the latest releases of Guidewire
+                self-managed products.
+              </Typography>
+              <Typography variant="body1" lineHeight={2}>
+                Access earlier releases by clicking a product and then selecting
+                a version from the <b>Select release</b> dropdown menu.
+              </Typography>
+            </Box>
+          )}
+          {showReleaseSelector && <ReleaseSelector />}
         </Stack>
         {pageData.path.includes('cloudProducts/elysian') && (
           <Paper
