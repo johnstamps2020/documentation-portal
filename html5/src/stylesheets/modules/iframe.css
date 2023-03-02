@@ -19,7 +19,7 @@
 }
 
 .embed-container.portrait {
-  --width: 70%;
+  --width: 334px;
   position: relative;
   overflow: hidden;
   width: var(--width);

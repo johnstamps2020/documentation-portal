@@ -17,6 +17,10 @@ table {
   background-attachment: local, local, scroll, scroll;
 }
 
+table.frame-none td {
+  border: 0;
+}
+
 span[id^='lightbox'] table {
   margin-top: 0.25rem;
 }
