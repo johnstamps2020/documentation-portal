@@ -1,12 +1,18 @@
 import Paper from '@mui/material/Paper';
+import { useLandingPageItems } from '../../../hooks/useLandingPageItems';
+import { LandingPageItemProps } from '../../../pages/LandingPage/LandingPage';
+import LandingPageLink from '../LandingPageLink';
 
-type ProductFamilyCardProps = {
-  children: JSX.Element | JSX.Element[] | undefined;
-};
+export default function ProductFamilyCard(item: LandingPageItemProps) {
+  const sx = {
+    fontSize: 20,
+    fontWeight: 800,
+  };
+  const { landingPageItems, isLoading, isError } = useLandingPageItems([item]);
 
-export default function ProductFamilyCard({
-  children,
-}: ProductFamilyCardProps) {
+  if (isLoading || isError || !landingPageItems) {
+    return null;
+  }
   return (
     <Paper
       sx={{
@@ -18,7 +24,7 @@ export default function ProductFamilyCard({
         alignItems: 'center',
       }}
     >
-      {children}
+      <LandingPageLink landingPageItem={landingPageItems[0]} sx={sx} />
     </Paper>
   );
 }
