@@ -1,8 +1,13 @@
 import { resolve } from 'path';
+import type { LoadContext, Plugin } from '@docusaurus/types';
+import { BuildPagesProps } from './scripts/buildPages';
 
 const buildPages = require(resolve(__dirname, 'scripts/buildPages')).buildPages;
 
-module.exports = function (context, options) {
+export default async function (
+  context: LoadContext,
+  options: BuildPagesProps
+): Promise<Plugin<undefined>> {
   return {
     name: 'gw-plugin-redoc',
     extendCli(cli) {
@@ -17,4 +22,4 @@ module.exports = function (context, options) {
       return resolve(__dirname, './theme');
     },
   };
-};
+}

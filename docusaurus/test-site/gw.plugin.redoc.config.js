@@ -5,6 +5,11 @@ module.exports = {
   docsDir: path.resolve(__dirname, 'docs'),
   staticDir: path.resolve(__dirname, 'static'),
   specList: [
+    {
+      title: "APD API definitions",
+      task: "generate-from-spec",
+      src: "apd-openapi.json",
+    },
     // {
     //   title: "Admin API",
     //   task: "generate-from-spec",
@@ -111,10 +116,5 @@ module.exports = {
     //   task: 'generate-from-spec',
     //   src: 'bc/bc-admin.json',
     // },
-    {
-      title: "APD API definitions",
-      task: "generate-from-spec",
-      src: "apd-openapi.json",
-    },
   ],
 };
