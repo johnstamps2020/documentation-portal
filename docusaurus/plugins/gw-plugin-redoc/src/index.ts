@@ -1,9 +1,10 @@
 import { resolve } from 'path';
 import type { LoadContext, Plugin } from '@docusaurus/types';
-import { BuildPagesProps } from './scripts/buildPages';
-import { GuidewireRedocPluginProps } from './scripts/buildPages';
-
-const buildPages = require(resolve(__dirname, 'scripts/buildPages')).buildPages;
+import {
+  buildPages,
+  BuildPagesProps,
+  GuidewireRedocPluginProps,
+} from './scripts/buildPages';
 
 export type PluginConfig = GuidewireRedocPluginProps;
 

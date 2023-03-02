@@ -355,7 +355,7 @@ export type GuidewireRedocPluginProps = {
   specList: SpecListItem[];
 };
 
-export default async function buildPages({ configPath }: BuildPagesProps) {
+export async function buildPages({ configPath }: BuildPagesProps) {
   console.log('Building pages from specs...');
   const config: GuidewireRedocPluginProps = require(configPath);
   const { specSourceDir, docsDir, staticDir, specList } = config;
