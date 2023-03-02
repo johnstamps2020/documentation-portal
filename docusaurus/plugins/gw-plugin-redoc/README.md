@@ -39,7 +39,7 @@ Look up the version latest version in `package.json` or in Artifactory.
    ```js
    const path = require('path');
 
-   /** @type {import('@doctools/gw-plugin-redoc/lib/scripts/buildPages').GuidewireRedocPluginProps} */
+   /** @type {import('@doctools/gw-plugin-redoc').PluginConfig} */
    const config = {
      specSourceDir: path.resolve(__dirname, 'openapi'),
      docsDir: path.resolve(__dirname, 'docs'),
