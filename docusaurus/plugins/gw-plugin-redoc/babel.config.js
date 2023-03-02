@@ -1,7 +1,7 @@
 module.exports = {
   ignore: ['**/gw.redoc.standalone.js'],
   presets: [
-    '@babel/preset-typescript',
+    ['@babel/preset-typescript', { isTSX: true, allExtensions: true }],
     [
       '@babel/preset-env',
       {
