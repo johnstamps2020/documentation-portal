@@ -14,7 +14,7 @@ import {
 import ReleaseSelector from '../ReleaseSelector';
 
 export type Category2LayoutProps = LandingPageLayoutProps & {
-  items: {
+  cards: {
     label: string;
     items: LandingPageItemProps[];
   }[];
@@ -24,7 +24,7 @@ export type Category2LayoutProps = LandingPageLayoutProps & {
 export default function Category2Layout({
   backgroundProps,
   sidebar,
-  items,
+  cards,
   whatsNew,
 }: Category2LayoutProps) {
   return (
@@ -102,10 +102,10 @@ export default function Category2Layout({
             columnGap="24px"
             rowGap="32px"
           >
-            {items.map(
-              item =>
-                item.items.length > 0 && (
-                  <Category2Card {...item} key={item.label} />
+            {cards.map(
+              card =>
+                card.items.length > 0 && (
+                  <Category2Card {...card} key={card.label} />
                 )
             )}
           </Grid>

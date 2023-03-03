@@ -13,7 +13,7 @@ import { usePageData } from '../../../hooks/usePageData';
 import ReleaseSelector from '../ReleaseSelector';
 import ProductFamilySidebar from './ProductFamilySidebar';
 
-type ProductFamilyLayoutProps = LandingPageLayoutProps & {
+export type ProductFamilyLayoutProps = LandingPageLayoutProps & {
   items: LandingPageItemProps[];
 };
 

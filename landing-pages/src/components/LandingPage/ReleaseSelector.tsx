@@ -33,7 +33,7 @@ function useReleasePageSelectorProps(): LandingPageSelectorProps {
           ...currentProps,
           items: releases.map(label => ({
             label,
-            href: `/cloudProducts/${label.toLowerCase()}`,
+            pagePath: `cloudProducts/${label.toLowerCase()}`,
           })),
         };
       });

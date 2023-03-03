@@ -15,20 +15,7 @@ export function useReleases() {
         }
 
         const json: Release[] = await response.json();
-        const releaseNames = json.map(({ name }) => name);
-
-        const availableReleases = [];
-        for (const releaseName of releaseNames) {
-          const pagePath = `cloudProducts/${releaseName.toLowerCase()}`;
-          const response = await fetch(
-            `/safeConfig/entity/Page?path=${pagePath}`
-          );
-          if (response.ok) {
-            availableReleases.push(releaseName);
-          }
-        }
-
-        setReleases(availableReleases);
+        setReleases(json.map(({ name }) => name));
       } catch (err) {
         console.error(err);
       }
