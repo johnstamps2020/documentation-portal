@@ -3233,19 +3233,19 @@ object Sources {
             uploadStepOuputPath,
             publishPath,
         )
-        uploadStep.conditions { equals("%teamcity.build.branch.is_default%", "false") }
+        uploadStep.conditions { equals("teamcity.build.branch.is_default", "false") }
 
         val previewFileStep = GwBuildSteps.createPreviewUrlFile(
             previewUrl, previewUrlFile
         )
-        previewFileStep.conditions { equals("%teamcity.build.branch.is_default%", "false") }
+        previewFileStep.conditions { equals("teamcity.build.branch.is_default", "false") }
 
         val pullRequestCommentStep = GwBuildSteps.createAddPullRequestCommentStep(
             "Hi, I created a preview for validation build %build.number%: $previewUrl",
             projectKey,
             repoKey,
             pullRequestId)
-        pullRequestCommentStep.conditions { equals("%teamcity.build.branch.is_default%", "false") }
+        pullRequestCommentStep.conditions { equals("teamcity.build.branch.is_default", "false") }
 
         when (gwBuildType) {
             GwBuildTypes.DITA.buildTypeName -> {
