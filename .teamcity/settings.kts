@@ -3121,7 +3121,7 @@ object Sources {
             buildConfigs.forEach {
                 validationBuildsSubProject.buildType(
                     createValidationBuildType(
-                        srcId, gitBranch, it, it.getString("buildType")
+                        srcId, gitBranch, it, it.getString("buildType"), gitUrl
                     )
                 )
             }
@@ -3173,6 +3173,7 @@ object Sources {
         gitBranch: String,
         buildConfig: JSONObject,
         gwBuildType: String,
+        gitUrl: String
     ): BuildType {
         val docId = buildConfig.getString("docId")
         val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
@@ -3198,6 +3199,7 @@ object Sources {
         // the teamcity.build.branch variable because it's more flexible (we don't need to provide the VCS Root ID).
         val teamcityBuildBranch = "%teamcity.build.vcs.branch.${teamcityGitRepoId}%"
         val publishPath = "preview/${srcId}/${teamcityBuildBranch}/${docId}"
+        val previewUrl = "https://docs.staging.ccs.guidewire.net/$publishPath"
         val previewUrlFile = "preview_url.txt"
 
         val validationBuildType = BuildType {
@@ -3258,6 +3260,12 @@ object Sources {
                     ${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}/${GwConfigParams.BUILD_DATA_FILE.paramValue} => ${GwConfigParams.BUILD_DATA_DIR.paramValue}
                 """.trimIndent()
 
+                val regex = "ssh://git@stash.guidewire.com/(.+)/(.+).git".toRegex()
+                val matchList = regex.find(gitUrl)?.groupValues
+                val projectKey = matchList!![1]
+                val repoKey = matchList!![2]
+                val pullRequestId = "%teamcity.pullRequest.branch.pullrequests%"
+
                 validationBuildType.steps {
                     step(
                         GwBuildSteps.createBuildDitaProjectForValidationsStep(
@@ -3273,18 +3281,28 @@ object Sources {
                             buildFilter
                         )
                     )
-                    step(
-                        GwBuildSteps.createUploadContentToS3BucketStep(
-                            GwDeployEnvs.STAGING.envName,
-                            "${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}",
-                            publishPath,
-                        )
+                    val uploadStep = GwBuildSteps.createUploadContentToS3BucketStep(
+                        GwDeployEnvs.STAGING.envName,
+                        "${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}",
+                        publishPath,
                     )
-                    step(
-                        GwBuildSteps.createPreviewUrlFile(
-                            publishPath, previewUrlFile
-                        )
+                    uploadStep.conditions { equals("%teamcity.build.branch.is_default%", "false") }
+                    step(uploadStep)
+
+                    val previewFileStep = GwBuildSteps.createPreviewUrlFile(
+                        previewUrl, previewUrlFile
                     )
+                    previewFileStep.conditions { equals("%teamcity.build.branch.is_default%", "false") }
+                    step(previewFileStep)
+
+                    val pullRequestStep = GwBuildSteps.createAddPullRequestCommentStep(
+                        "Hi, I created a preview for validation build %build.number%: $previewUrl",
+                        projectKey,
+                        repoKey,
+                        pullRequestId)
+                    pullRequestStep.conditions { equals("%teamcity.build.branch.is_default%", "false") }
+                    step(pullRequestStep)
+
                     step(
                         GwBuildSteps.createBuildDitaProjectForValidationsStep(
                             GwDitaOutputFormats.DITA.formatName,
@@ -4001,6 +4019,22 @@ object GwBuildSteps {
         dockerImagePlatform = ImagePlatform.Linux
     })
 
+    fun createAddPullRequestCommentStep(commentText: String, projectKey: String, repoKey: String, pullRequestId: String): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Add a pull request comment"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                    set -xe
+                curl -X POST https://stash.guidewire.com/rest/api/1.0/projects/${projectKey}/repos/${repoKey}/pull-requests/${pullRequestId}/comments \
+                        -H "Accept: application/json" \
+                        -H "Content-Type: application/json" \
+                        -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%" \
+                        -d '{ "text": "$commentText"}'
+            """.trimIndent()
+        }
+    }
+
     fun createPublishNpmPackageStep(packageHandle: String, packagePath: String): ScriptBuildStep {
         return ScriptBuildStep {
             name = "NPM publish $packageHandle"
@@ -4522,7 +4556,7 @@ object GwBuildSteps {
     }
 
     fun createPreviewUrlFile(
-        publishPath: String, previewUrlFile: String,
+        previewUrl: String, previewUrlFile: String,
     ): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Create preview URL file"
@@ -4531,7 +4565,7 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                 
-                echo "Output preview available at https://docs.staging.ccs.guidewire.net/${publishPath}" > $previewUrlFile
+                echo "Output preview available at ${previewUrl}" > $previewUrlFile
             """.trimIndent()
         }
     }
