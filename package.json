@@ -12,7 +12,8 @@
     "server-dev": "yarn workspace server dev",
     "dev": "yarn server-build && concurrently --kill-others-on-fail \"yarn server-dev\" \"yarn landing-pages-dev\"",
     "build": "yarn server-build && yarn landing-pages-build",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "test:server": "yarn workspace server test"
   },
   "version": "1.0.0",
   "main": "index.js",
