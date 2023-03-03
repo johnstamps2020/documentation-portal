@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import InputLabel from '@mui/material/InputLabel';
 import { styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
+import { useLandingPageItems } from '../../hooks/useLandingPageItems';
+import { LandingPageItemProps } from '../../pages/LandingPage/LandingPage';
 
 type PageSelectorItem = {
   label: string;
@@ -14,24 +16,24 @@ type PageSelectorItem = {
 export type LandingPageSelectorProps = {
   label: string;
   selectedItemLabel: string;
-  items: PageSelectorItem[];
+  items: LandingPageItemProps[];
   labelColor: string;
 };
 
 function sortPageSelectorItems(unsortedPageSelectorItems: PageSelectorItem[]) {
   const isSemVerLabel = unsortedPageSelectorItems.some(
-    (i) => i.label.search(/^([0-9]+\.[0-9]+\.[0-9]+)$/g) === 0
+    i => i.label.search(/^([0-9]+\.[0-9]+\.[0-9]+)$/g) === 0
   );
   return isSemVerLabel
     ? unsortedPageSelectorItems
-        .sort(function (a, b) {
+        .sort(function(a, b) {
           const labelA = a.label
             .split('.')
-            .map((n) => +n + 100000)
+            .map(n => +n + 100000)
             .join('.');
           const labelB = b.label
             .split('.')
-            .map((n) => +n + 100000)
+            .map(n => +n + 100000)
             .join('.');
           return labelA > labelB ? 1 : -1;
         })
@@ -73,8 +75,27 @@ export default function LandingPageSelector({
   labelColor,
 }: LandingPageSelectorProps) {
   const navigate = useNavigate();
+  const { landingPageItems, isError, isLoading } = useLandingPageItems(items);
+  if (isError || isLoading || !landingPageItems) {
+    return null;
+  }
+  const pageSelectorItems = landingPageItems
+    .map(item => {
+      const label = item.title || item.label || '';
+      const href = `/${item.path}` || item.url || '';
+
+      return {
+        label,
+        href,
+      };
+    })
+    .filter(item => item.label != '' && item.href != '');
+  const sortedPageSelectorItems = sortPageSelectorItems(pageSelectorItems);
+
   const handleChange = (event: SelectChangeEvent) => {
-    const selectedItem = items.find((i) => i.label === event.target.value);
+    const selectedItem = pageSelectorItems.find(
+      i => i.label === event.target.value
+    );
 
     if (!selectedItem) {
       return null;
@@ -86,8 +107,6 @@ export default function LandingPageSelector({
 
     return navigate(selectedItem.href);
   };
-
-  const sortedPageSelectorItems = sortPageSelectorItems(items);
 
   return (
     <FormControl
@@ -110,7 +129,7 @@ export default function LandingPageSelector({
         value={items.length > 0 ? selectedItemLabel : ''}
         onChange={handleChange}
         input={<PageSelectorInput />}
-        renderValue={(value) => {
+        renderValue={value => {
           return value;
         }}
         sx={{
@@ -122,7 +141,7 @@ export default function LandingPageSelector({
           width: '300px',
         }}
       >
-        {sortedPageSelectorItems.map((item) => (
+        {sortedPageSelectorItems.map(item => (
           <MenuItem
             disabled={item.label === selectedItemLabel}
             value={item.label}

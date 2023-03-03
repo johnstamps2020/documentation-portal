@@ -31,7 +31,8 @@ const landingPageItemGetter = async (
       const jsonData = await response.json();
       landingPageItems.push({
         ...jsonData,
-        label: item.label || jsonData.label || jsonData.title,
+        label: item.label || jsonData.label,
+        title: item.label || jsonData.title,
       });
     }
   }
