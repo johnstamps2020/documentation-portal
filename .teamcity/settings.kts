@@ -151,7 +151,7 @@ object Database {
     }
 
     private fun createDeployDbBuildType(): BuildType {
-        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.INT.envName)
+        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
         val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
         return BuildType {
             name = "Deploy doc portal config database"
@@ -321,7 +321,6 @@ object Runners {
 
             arrayOf(
                 GwDeployEnvs.DEV.envName,
-                GwDeployEnvs.INT.envName,
                 GwDeployEnvs.STAGING.envName,
                 GwDeployEnvs.PROD.envName
             ).map {
@@ -912,7 +911,7 @@ object Docs {
             id = Helpers.resolveRelativeIdFromIdString("${this.name}${docId}")
             maxRunningBuilds = 1
 
-            if (arrayOf(GwDeployEnvs.DEV.envName, GwDeployEnvs.INT.envName, GwDeployEnvs.STAGING.envName).contains(
+            if (arrayOf(GwDeployEnvs.STAGING.envName).contains(
                     deployEnv
                 )
             ) {
@@ -940,13 +939,13 @@ object Docs {
                 steps.stepsOrder.add(crawlDocStep.id.toString())
             }
 
-            // Publishing builds for INT and STAGING are triggered automatically.
+            // Publishing builds for STAGING are triggered automatically.
             // DITA publishing builds are triggered by build listener builds. Additionally, DITA publishing builds
             // that use sources exported from XDocs, use a regular TeamCity VCS trigger with a comment rule.
             // The reference to the build listener template is one of the criteria used by the build manager app
             // to identify builds that must be triggered.
             // Yarn validation builds are triggered by regular TeamCity VCS triggers.
-            if (arrayOf(GwDeployEnvs.INT.envName, GwDeployEnvs.STAGING.envName).contains(deployEnv)) {
+            if (arrayOf(GwDeployEnvs.STAGING.envName).contains(deployEnv)) {
                 when (gwBuildType) {
                     GwBuildTypes.DITA.buildTypeName -> {
                         templates(GwTemplates.BuildListenerTemplate)
@@ -1577,7 +1576,7 @@ object Content {
         val tmpDir = "%teamcity.build.checkoutDir%/ci/pdfs"
         val zipArchiveName = "%env.RELEASE_NAME%_pdfs.zip"
         val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
-        val awsEnvVarsInt = Helpers.setAwsEnvVars(GwDeployEnvs.INT.envName)
+        val awsEnvVarsInt = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)
 
         steps {
             script {
@@ -1611,7 +1610,7 @@ object Content {
                     $awsEnvVarsInt
                     
                     echo "Uploading the ZIP archive to the S3 bucket"
-                    aws s3 cp "${tmpDir}/${zipArchiveName}" s3://tenant-doctools-int-builds/escrow/%env.RELEASE_NAME%/
+                    aws s3 cp "${tmpDir}/${zipArchiveName}" s3://tenant-doctools-staging-builds/escrow/%env.RELEASE_NAME%/
             """.trimIndent()
                 dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -2767,7 +2766,7 @@ object Exports {
                     docConfigsRelatedToSrc.map { Helpers.convertJsonArrayWithStringsToLowercaseList(it.getJSONArray("environments")) }
                         .flatten().distinct()
 
-                val exportFrequency = when (environmentsFromRelatedDocConfigs.contains(GwDeployEnvs.INT.envName)) {
+                val exportFrequency = when (environmentsFromRelatedDocConfigs.contains(GwDeployEnvs.STAGING.envName)) {
                     true -> {
                         if (sourceConfig.has("exportFrequency")) sourceConfig.getString("exportFrequency") else GwExportFrequencies.DAILY.paramValue
                     }
@@ -3015,7 +3014,7 @@ object BuildListeners {
             }.flatten().distinct()
 
             if (arrayListOf(
-                    GwDeployEnvs.INT.envName, GwDeployEnvs.STAGING.envName
+                    GwDeployEnvs.STAGING.envName
                 ).any { uniqueEnvsFromAllDitaBuildsRelatedToSrc.contains(it) }
             ) {
                 sourcesRequiringListeners.add(src)
@@ -3122,7 +3121,7 @@ object Sources {
             buildConfigs.forEach {
                 validationBuildsSubProject.buildType(
                     createValidationBuildType(
-                        srcId, gitBranch, it, it.getString("buildType")
+                        srcId, gitBranch, it, it.getString("buildType"), gitUrl
                     )
                 )
             }
@@ -3174,6 +3173,7 @@ object Sources {
         gitBranch: String,
         buildConfig: JSONObject,
         gwBuildType: String,
+        gitUrl: String
     ): BuildType {
         val docId = buildConfig.getString("docId")
         val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
@@ -3199,6 +3199,7 @@ object Sources {
         // the teamcity.build.branch variable because it's more flexible (we don't need to provide the VCS Root ID).
         val teamcityBuildBranch = "%teamcity.build.vcs.branch.${teamcityGitRepoId}%"
         val publishPath = "preview/${srcId}/${teamcityBuildBranch}/${docId}"
+        val previewUrl = "https://docs.staging.ccs.guidewire.net/$publishPath"
         val previewUrlFile = "preview_url.txt"
 
         val validationBuildType = BuildType {
@@ -3259,6 +3260,12 @@ object Sources {
                     ${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}/${GwConfigParams.BUILD_DATA_FILE.paramValue} => ${GwConfigParams.BUILD_DATA_DIR.paramValue}
                 """.trimIndent()
 
+                val regex = "ssh://git@stash.guidewire.com/(.+)/(.+).git".toRegex()
+                val matchList = regex.find(gitUrl)?.groupValues
+                val projectKey = matchList!![1]
+                val repoKey = matchList!![2]
+                val pullRequestId = "%teamcity.pullRequest.branch.pullrequests%"
+
                 validationBuildType.steps {
                     step(
                         GwBuildSteps.createBuildDitaProjectForValidationsStep(
@@ -3274,18 +3281,28 @@ object Sources {
                             buildFilter
                         )
                     )
-                    step(
-                        GwBuildSteps.createUploadContentToS3BucketStep(
-                            GwDeployEnvs.INT.envName,
-                            "${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}",
-                            publishPath,
-                        )
+                    val uploadStep = GwBuildSteps.createUploadContentToS3BucketStep(
+                        GwDeployEnvs.STAGING.envName,
+                        "${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}",
+                        publishPath,
                     )
-                    step(
-                        GwBuildSteps.createPreviewUrlFile(
-                            publishPath, previewUrlFile
-                        )
+                    uploadStep.conditions { equals("%teamcity.build.branch.is_default%", "false") }
+                    step(uploadStep)
+
+                    val previewFileStep = GwBuildSteps.createPreviewUrlFile(
+                        previewUrl, previewUrlFile
                     )
+                    previewFileStep.conditions { equals("%teamcity.build.branch.is_default%", "false") }
+                    step(previewFileStep)
+
+                    val pullRequestStep = GwBuildSteps.createAddPullRequestCommentStep(
+                        "Hi, I created a preview for validation build %build.number%: $previewUrl",
+                        projectKey,
+                        repoKey,
+                        pullRequestId)
+                    pullRequestStep.conditions { equals("%teamcity.build.branch.is_default%", "false") }
+                    step(pullRequestStep)
+
                     step(
                         GwBuildSteps.createBuildDitaProjectForValidationsStep(
                             GwDitaOutputFormats.DITA.formatName,
@@ -3344,7 +3361,7 @@ object Sources {
                 validationBuildType.steps {
                     step(
                         GwBuildSteps.createBuildYarnProjectStep(
-                            GwDeployEnvs.INT.envName,
+                            GwDeployEnvs.STAGING.envName,
                             publishPath,
                             buildCommand,
                             nodeImageVersion,
@@ -3359,7 +3376,7 @@ object Sources {
                     )
                     step(
                         GwBuildSteps.createUploadContentToS3BucketStep(
-                            GwDeployEnvs.INT.envName,
+                            GwDeployEnvs.STAGING.envName,
                             "${workingDir}/${outputDir}",
                             publishPath,
                         )
@@ -3401,8 +3418,8 @@ object Sources {
         srcId: String,
         gitUrl: String,
     ): BuildType {
-        val elasticsearchUrl = Helpers.getElasticsearchUrl(GwDeployEnvs.INT.envName)
-        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.INT.envName)
+        val elasticsearchUrl = Helpers.getElasticsearchUrl(GwDeployEnvs.STAGING.envName)
+        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)
         return BuildType {
             name = "Clean validation results for $srcId"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -3423,7 +3440,7 @@ object Sources {
                         
                         $awsEnvVars
                         
-                        results_cleaner --elasticsearch-urls "$elasticsearchUrl"  --git-source-id "$srcId" --git-source-url "$gitUrl" --s3-bucket-name "tenant-doctools-int-builds"
+                        results_cleaner --elasticsearch-urls "$elasticsearchUrl"  --git-source-id "$srcId" --git-source-url "$gitUrl" --s3-bucket-name "tenant-doctools-staging-builds"
                     """.trimIndent()
                     dockerImage = GwDockerImages.DOC_VALIDATOR_LATEST.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -3459,7 +3476,7 @@ object Recommendations {
         for (combination in allPlatformProductVersionCombinations) {
             val (platform, product, version) = combination
             val recommendationsForTopicsBuildTypeInt = createRecommendationsForTopicsBuildType(
-                GwDeployEnvs.INT.envName, platform, product, version
+                GwDeployEnvs.STAGING.envName, platform, product, version
 
             )
             recommendationProjectBuildTypes.add(recommendationsForTopicsBuildTypeInt)
@@ -4002,6 +4019,22 @@ object GwBuildSteps {
         dockerImagePlatform = ImagePlatform.Linux
     })
 
+    fun createAddPullRequestCommentStep(commentText: String, projectKey: String, repoKey: String, pullRequestId: String): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Add a pull request comment"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                    set -xe
+                curl -X POST https://stash.guidewire.com/rest/api/1.0/projects/${projectKey}/repos/${repoKey}/pull-requests/${pullRequestId}/comments \
+                        -H "Accept: application/json" \
+                        -H "Content-Type: application/json" \
+                        -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%" \
+                        -d '{ "text": "$commentText"}'
+            """.trimIndent()
+        }
+    }
+
     fun createPublishNpmPackageStep(packageHandle: String, packagePath: String): ScriptBuildStep {
         return ScriptBuildStep {
             name = "NPM publish $packageHandle"
@@ -4523,7 +4556,7 @@ object GwBuildSteps {
     }
 
     fun createPreviewUrlFile(
-        publishPath: String, previewUrlFile: String,
+        previewUrl: String, previewUrlFile: String,
     ): ScriptBuildStep {
         return ScriptBuildStep {
             name = "Create preview URL file"
@@ -4532,7 +4565,7 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                 
-                echo "Output preview available at https://docs.int.ccs.guidewire.net/${publishPath}" > $previewUrlFile
+                echo "Output preview available at ${previewUrl}" > $previewUrlFile
             """.trimIndent()
         }
     }
@@ -5054,7 +5087,7 @@ object GwBuildSteps {
     ): ScriptBuildStep {
         var stepName = ""
         val docInfoFileFullPath = "${workingDir}/${docInfoFile}"
-        val elasticsearchUrl = Helpers.getElasticsearchUrl(GwDeployEnvs.INT.envName)
+        val elasticsearchUrl = Helpers.getElasticsearchUrl(GwDeployEnvs.STAGING.envName)
         val validationCommandParams = mutableListOf<Pair<String, String?>>(
             Pair("--elasticsearch-urls", elasticsearchUrl),
             Pair("--doc-info", docInfoFileFullPath),
