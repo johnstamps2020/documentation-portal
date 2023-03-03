@@ -72,5 +72,5 @@ export class Doc {
 
   @ManyToOne(() => Locale, (locale) => locale.languageCode, { eager: true })
   @JoinTable()
-  locale: Locale[];
+  locales: Locale[];
 }
