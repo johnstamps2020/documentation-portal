@@ -3217,6 +3217,36 @@ object Sources {
             features.feature(GwBuildFeatures.createGwPullRequestsBuildFeature(Helpers.createFullGitBranchName(gitBranch)))
         }
 
+        val regex = "ssh://git@stash.guidewire.com/(.+)/(.+).git".toRegex()
+        val matchList = regex.find(gitUrl)?.groupValues
+        val projectKey = matchList!![1]
+        val repoKey = matchList!![2]
+        val pullRequestId = "%teamcity.pullRequest.branch.pullrequests%"
+
+        val uploadStepOuputPath = when(gwBuildType) {
+            GwBuildTypes.DITA.name -> "${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}"
+            else -> "${workingDir}/${outputDir}"
+        }
+
+        val uploadStep = GwBuildSteps.createUploadContentToS3BucketStep(
+            GwDeployEnvs.STAGING.envName,
+            uploadStepOuputPath,
+            publishPath,
+        )
+        uploadStep.conditions { equals("%teamcity.build.branch.is_default%", "false") }
+
+        val previewFileStep = GwBuildSteps.createPreviewUrlFile(
+            previewUrl, previewUrlFile
+        )
+        previewFileStep.conditions { equals("%teamcity.build.branch.is_default%", "false") }
+
+        val pullRequestCommentStep = GwBuildSteps.createAddPullRequestCommentStep(
+            "Hi, I created a preview for validation build %build.number%: $previewUrl",
+            projectKey,
+            repoKey,
+            pullRequestId)
+        pullRequestCommentStep.conditions { equals("%teamcity.build.branch.is_default%", "false") }
+
         when (gwBuildType) {
             GwBuildTypes.DITA.buildTypeName -> {
                 val ditaOtLogsDir = "dita_ot_logs"
@@ -3260,12 +3290,6 @@ object Sources {
                     ${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}/${GwConfigParams.BUILD_DATA_FILE.paramValue} => ${GwConfigParams.BUILD_DATA_DIR.paramValue}
                 """.trimIndent()
 
-                val regex = "ssh://git@stash.guidewire.com/(.+)/(.+).git".toRegex()
-                val matchList = regex.find(gitUrl)?.groupValues
-                val projectKey = matchList!![1]
-                val repoKey = matchList!![2]
-                val pullRequestId = "%teamcity.pullRequest.branch.pullrequests%"
-
                 validationBuildType.steps {
                     step(
                         GwBuildSteps.createBuildDitaProjectForValidationsStep(
@@ -3281,28 +3305,9 @@ object Sources {
                             buildFilter
                         )
                     )
-                    val uploadStep = GwBuildSteps.createUploadContentToS3BucketStep(
-                        GwDeployEnvs.STAGING.envName,
-                        "${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}",
-                        publishPath,
-                    )
-                    uploadStep.conditions { equals("%teamcity.build.branch.is_default%", "false") }
                     step(uploadStep)
-
-                    val previewFileStep = GwBuildSteps.createPreviewUrlFile(
-                        previewUrl, previewUrlFile
-                    )
-                    previewFileStep.conditions { equals("%teamcity.build.branch.is_default%", "false") }
                     step(previewFileStep)
-
-                    val pullRequestStep = GwBuildSteps.createAddPullRequestCommentStep(
-                        "Hi, I created a preview for validation build %build.number%: $previewUrl",
-                        projectKey,
-                        repoKey,
-                        pullRequestId)
-                    pullRequestStep.conditions { equals("%teamcity.build.branch.is_default%", "false") }
-                    step(pullRequestStep)
-
+                    step(pullRequestCommentStep)
                     step(
                         GwBuildSteps.createBuildDitaProjectForValidationsStep(
                             GwDitaOutputFormats.DITA.formatName,
@@ -3374,18 +3379,9 @@ object Sources {
                             validationMode = true
                         )
                     )
-                    step(
-                        GwBuildSteps.createUploadContentToS3BucketStep(
-                            GwDeployEnvs.STAGING.envName,
-                            "${workingDir}/${outputDir}",
-                            publishPath,
-                        )
-                    )
-                    step(
-                        GwBuildSteps.createPreviewUrlFile(
-                            publishPath, previewUrlFile
-                        )
-                    )
+                    step(uploadStep)
+                    step(previewFileStep)
+                    step(pullRequestCommentStep)
                 }
 
                 validationBuildType.features {
