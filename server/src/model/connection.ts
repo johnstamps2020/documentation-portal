@@ -10,6 +10,7 @@ import { Source } from './entity/Source';
 import { Page } from './entity/Page';
 import { Subject } from './entity/Subject';
 import { ExternalLink } from './entity/ExternalLink';
+import { Locale } from './entity/Locale';
 
 const dbHost = process.env.CONFIG_DB_HOST;
 const isDevMode = runningInDevMode();
@@ -37,6 +38,7 @@ export const AppDataSource = new DataSource({
     Source,
     Page,
     ExternalLink,
+    Locale
   ],
   synchronize: isDevMode,
   cache: {
