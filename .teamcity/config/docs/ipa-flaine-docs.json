@@ -1,0 +1,57 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "ipaflainern",
+      "title": "Release Notes",
+      "url": "cloud/ipa/flaine/releasenotes",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2022.11"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipaflaineconfig",
+      "title": "Configuration",
+      "url": "cloud/ipa/flaine/config",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2022.11"],
+        "subject": ["Developers"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipaflaineapp",
+      "title": "Application Guide",
+      "url": "cloud/ipa/flaine/app",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2022.11"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+
+  ]
+}
