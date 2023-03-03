@@ -7,11 +7,13 @@
   "items": [
     {
       "label": "Aspen",
-      "page": "aspen"
+      "page": "aspen",
+      "env": ["staging", "prod"]
     },
     {
       "label": "Banff",
-      "page": "banff"
+      "page": "banff",
+      "env": ["staging", "prod"]
     },
     {
       "label": "Cortina",
@@ -27,7 +29,8 @@
     },
     {
       "label": "Flaine",
-      "page": "flaine"
+      "page": "flaine",
+      "env": ["staging", "prod"]
     },
     {
       "label": "Garmisch",
