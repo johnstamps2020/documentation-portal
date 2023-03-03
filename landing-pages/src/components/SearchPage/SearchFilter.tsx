@@ -12,7 +12,6 @@ import {
   StyledAccordionDetails,
   StyledAccordionSummary,
 } from './StyledSearchComponents';
-import { useSearchData } from '../../hooks/useApi';
 
 type SearchFilterProps = {
   serverSearchFilter: ServerSearchFilter;
