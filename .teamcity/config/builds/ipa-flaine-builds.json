@@ -1,0 +1,29 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAReleaseNotes.ditamap",
+      "srcId": "ipaflainesrc",
+      "docId": "ipaflainern",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAConfigurationGuide.ditamap",
+      "srcId": "ipaflainesrc",
+      "docId": "ipaflaineconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAApplicationGuide.ditamap",
+      "srcId": "ipaflainesrc",
+      "docId": "ipaflaineapp",
+      "indexRedirect": true
+    }
+  ]
+}
