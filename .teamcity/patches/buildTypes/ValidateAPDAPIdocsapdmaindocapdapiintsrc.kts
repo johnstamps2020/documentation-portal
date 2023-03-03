@@ -104,6 +104,13 @@ changeBuildType(RelativeId("ValidateAPDAPIdocsapdmaindocapdapiintsrc")) {
                 equals("teamcity.build.branch.is_default", "false")
             }
         }
+        update<ScriptBuildStep>(2) {
+            clearConditions()
+
+            conditions {
+                equals("teamcity.build.branch.is_default", "false")
+            }
+        }
     }
 
     features {
