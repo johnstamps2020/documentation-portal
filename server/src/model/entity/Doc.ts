@@ -13,7 +13,7 @@ import { Product } from './Product';
 import { Build } from './Build';
 import { Release } from './Release';
 import { Subject } from './Subject';
-import { Locale, languageCode } from './Locale';
+import { Locale } from './Locale';
 
 @Entity()
 export class Doc {
@@ -70,7 +70,7 @@ export class Doc {
   @Column({ default: false })
   earlyAccess: boolean;
 
-  @ManyToOne(() => Locale, (locale) => locale.languageCode)
+  @ManyToOne(() => Locale, (locale) => locale.languageCode, { eager: true })
   @JoinTable()
   locales: Locale[];
 }
