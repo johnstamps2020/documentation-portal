@@ -132,5 +132,11 @@ const pageConfig: CategoryLayoutProps = {
 };
 
 export default function Elysian() {
-  return <CategoryLayout {...pageConfig} />;
+  return (
+    <CategoryLayout
+      {...pageConfig}
+      selfManaged={true}
+      showReleaseSelector={false}
+    />
+  );
 }
