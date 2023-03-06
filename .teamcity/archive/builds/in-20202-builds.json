@@ -5,7 +5,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ApplicationGuide20202x.ditamap",
-      "srcId": "in20202xappdraftsrc",
+      "srcId": "in20202src",
       "docId": "in20202xappdraft",
       "indexRedirect": true
     },
@@ -13,7 +13,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "BusinessIntelligenceIntegrationGuide20202x.ditamap",
-      "srcId": "in20202biintegsrc",
+      "srcId": "in20202src",
       "docId": "in20202biinteg",
       "indexRedirect": true
     },
@@ -21,7 +21,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ClaimsProductConfigGuide20202x.ditamap",
-      "srcId": "in20202xclaimsconfigdraftsrc",
+      "srcId": "in20202src",
       "docId": "in20202xclaimsconfigdraft",
       "indexRedirect": true
     },
@@ -29,7 +29,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ConsumerServicePortalConfigGuide20202x.ditamap",
-      "srcId": "in20202xcservicepconfigdraftsrc",
+      "srcId": "in20202src",
       "docId": "in20202xcservicepconfigdraft",
       "indexRedirect": true
     },
@@ -37,7 +37,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "ProvisioningPortal20202x.ditamap",
-      "srcId": "in20202xprovportaldraftsrc",
+      "srcId": "in20202src",
       "docId": "in20202xprovportaldraft",
       "indexRedirect": true
     },
@@ -45,7 +45,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "UnderwritingProductConfigGuide20202x.ditamap",
-      "srcId": "in20202xuwconfigdraftsrc",
+      "srcId": "in20202src",
       "docId": "in20202xuwconfigdraft",
       "indexRedirect": true
     },
@@ -53,7 +53,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "BusinessIntelligenceGettingStartedGuide20202x.ditamap",
-      "srcId": "in20202bisrc",
+      "srcId": "in20202src",
       "docId": "in20202bi",
       "indexRedirect": true
     },
@@ -61,7 +61,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "ConsumerSalesPortalFeatures20202x.ditamap",
-      "srcId": "in20202csalespsrc",
+      "srcId": "in20202src",
       "docId": "in20202csalesp",
       "indexRedirect": true
     },
@@ -69,7 +69,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "ConsumerServicePortalFeatures20202x.ditamap",
-      "srcId": "in20202cservicepsrc",
+      "srcId": "in20202src",
       "docId": "in20202cservicep",
       "indexRedirect": true
     },
@@ -77,7 +77,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "PredictiveAnalyticsIntegration20202.ditamap",
-      "srcId": "in20202pasrc",
+      "srcId": "in20202src",
       "docId": "in20202pa",
       "indexRedirect": true
     },
@@ -85,7 +85,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "AppReaderIntegrationGuide20202x.ditamap",
-      "srcId": "in20202appreaderintegsrc",
+      "srcId": "in20202src",
       "docId": "in20202appreaderinteg",
       "indexRedirect": true
     },
@@ -93,7 +93,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "Configuration20202x.ditamap",
-      "srcId": "in20202configsrc",
+      "srcId": "in20202src",
       "docId": "in20202config",
       "indexRedirect": true
     },
@@ -101,7 +101,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "Studio20202x.ditamap",
-      "srcId": "in20202studiosrc",
+      "srcId": "in20202src",
       "docId": "in20202studio",
       "indexRedirect": true
     },
@@ -109,7 +109,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "PortalDevelopment20202x.ditamap",
-      "srcId": "in20202portaldevsrc",
+      "srcId": "in20202src",
       "docId": "in20202portaldev",
       "indexRedirect": true
     },
@@ -117,7 +117,7 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "ProductAttributeReference20202.ditamap",
-      "srcId": "in20202prodattrefsrc",
+      "srcId": "in20202src",
       "docId": "in20202prodattref",
       "indexRedirect": true
     }
