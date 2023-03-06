@@ -131,7 +131,7 @@ const pageConfig: CategoryLayoutProps = {
   ],
 };
 
-export default function Elysian() {
+export default function selfManagedProducts() {
   return (
     <CategoryLayout
       {...pageConfig}
