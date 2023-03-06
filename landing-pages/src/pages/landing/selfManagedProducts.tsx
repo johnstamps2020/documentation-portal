@@ -130,7 +130,7 @@ const backgroundProps: CategoryLayoutProps['backgroundProps'] = {
   backgroundColor: 'white',
 };
 
-export default function Elysian() {
+export default function selfManagedProducts() {
   return (
     <CategoryLayout
       cards={docs}
