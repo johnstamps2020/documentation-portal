@@ -12,7 +12,8 @@ async function insertSurveyLink() {
 
   const surveyTextWrapper = document.createElement('div');
   surveyTextWrapper.className = 'surveyTextWrapper';
-  surveyTextWrapper.innerText = 'Help us improve our documentation by taking this short survey.';
+  surveyTextWrapper.innerText =
+    'Help us improve our documentation by taking this short survey.';
 
   const surveyLinkWrapper = document.createElement('div');
   surveyLinkWrapper.className = 'surveyLinkWrapper';
@@ -20,13 +21,13 @@ async function insertSurveyLink() {
   const link = document.createElement('a');
   link.innerText = 'Start Survey';
   link.setAttribute('class', 'gwButtonSecondary');
-  link.setAttribute('id', 'surveyButton')
+  link.setAttribute('id', 'surveyButton');
   link.setAttribute('href', '#');
   link.setAttribute('target', '_blank');
 
   await fetch('/userInformation')
-    .then(result => result.json())
-    .then(userInfo => {
+    .then((result) => result.json())
+    .then((userInfo) => {
       const isEmployee = userInfo.hasGuidewireEmail;
       if (isEmployee) {
         link.setAttribute(
@@ -49,7 +50,7 @@ async function insertSurveyLink() {
         header.appendChild(row);
       }
     })
-    .catch(err =>
+    .catch((err) =>
       console.log('Something went wrong with the survey link', err)
     );
 }

@@ -14,7 +14,7 @@ const bodyParser = require('body-parser');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
-router.get('/', async function(req, res, next) {
+router.get('/', async function (req, res, next) {
   try {
     const { path } = req.query;
 
@@ -36,7 +36,7 @@ router.get('/', async function(req, res, next) {
   }
 });
 
-router.post('/', async function(req, res, next) {
+router.post('/', async function (req, res, next) {
   try {
     const { path } = req.query;
     if (!path) {
@@ -63,7 +63,7 @@ router.post('/', async function(req, res, next) {
   }
 });
 
-router.delete('/', async function(req, res, next) {
+router.delete('/', async function (req, res, next) {
   try {
     const { keys } = req.query;
     if (!keys) {

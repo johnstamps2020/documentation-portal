@@ -8,43 +8,43 @@ type l10NMapping = {
 };
 
 const l10nMappings: l10NMapping = {
-  "de-DE": {
-    placeholder: "Suche",
-    lang: "de",
+  'de-DE': {
+    placeholder: 'Suche',
+    lang: 'de',
   },
 
-  "fr-FR": {
-    placeholder: "Chercher",
-    lang: "fr",
+  'fr-FR': {
+    placeholder: 'Chercher',
+    lang: 'fr',
   },
 
-  "es-ES": {
-    placeholder: "Buscar",
-    lang: "es",
+  'es-ES': {
+    placeholder: 'Buscar',
+    lang: 'es',
   },
-  "es-LA": {
-    placeholder: "Buscar",
-    lang: "es",
+  'es-LA': {
+    placeholder: 'Buscar',
+    lang: 'es',
   },
-  "it-IT": {
-    placeholder: "Ricerca",
-    lang: "it",
+  'it-IT': {
+    placeholder: 'Ricerca',
+    lang: 'it',
   },
-  "ja-JP": {
-    placeholder: "探す",
-    lang: "ja",
+  'ja-JP': {
+    placeholder: '探す',
+    lang: 'ja',
   },
-  "nl-NL": {
-    placeholder: "Zoeken",
-    lang: "nl",
+  'nl-NL': {
+    placeholder: 'Zoeken',
+    lang: 'nl',
   },
-  "pt-BR": {
-    placeholder: "Procurar",
-    lang: "pt",
+  'pt-BR': {
+    placeholder: 'Procurar',
+    lang: 'pt',
   },
   ru: {
-    placeholder: "Поиск",
-    lang: "ru",
+    placeholder: 'Поиск',
+    lang: 'ru',
   },
 };
 
@@ -55,7 +55,7 @@ export function useLocaleParams(): L10N {
   }
 
   return {
-    placeholder: "Search",
-    lang: "en",
+    placeholder: 'Search',
+    lang: 'en',
   };
 }

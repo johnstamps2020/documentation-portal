@@ -6,9 +6,6 @@ export class Subject {
   @PrimaryColumn()
   name: string;
 
-  @ManyToMany(
-    () => Doc,
-    doc => doc.id
-  )
+  @ManyToMany(() => Doc, (doc) => doc.id)
   doc: Doc[];
 }

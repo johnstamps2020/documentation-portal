@@ -1,10 +1,10 @@
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Link from "@mui/material/Link";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import Layout from "../../components/Layout/Layout";
-import { headerHeight } from "../../components/Layout/Header/Header";
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import Layout from '../../components/Layout/Layout';
+import { headerHeight } from '../../components/Layout/Header/Header';
 
 export default function SupportPage() {
   return (
@@ -13,28 +13,28 @@ export default function SupportPage() {
         container
         sx={{
           minHeight: `calc(100vh - ${headerHeight})`,
-          background: "linear-gradient(135deg, white, lightblue)",
-          padding: "2rem"
+          background: 'linear-gradient(135deg, white, lightblue)',
+          padding: '2rem',
         }}
       >
         <Box
           sx={{
-            background: "white",
-            border: "1px solid gray",
-            maxWidth: "1024px",
-            width: { xs: "100%", sm: "100%", md: "950px", lg: "1024px" },
-            height: "fit-content",
-            boxShadow: "10px 5px 12px rgba(0, 0, 0, 0.3)",
-            margin: "auto",
-            padding: "4rem 3rem"
+            background: 'white',
+            border: '1px solid gray',
+            maxWidth: '1024px',
+            width: { xs: '100%', sm: '100%', md: '950px', lg: '1024px' },
+            height: 'fit-content',
+            boxShadow: '10px 5px 12px rgba(0, 0, 0, 0.3)',
+            margin: 'auto',
+            padding: '4rem 3rem',
           }}
         >
           <Stack spacing={6}>
-            <Typography variant="h1" sx={{ color: "black" }}>
+            <Typography variant="h1" sx={{ color: 'black' }}>
               Legal and support information
             </Typography>
             <Stack spacing={2}>
-              <Typography variant="h2" sx={{ color: "black" }}>
+              <Typography variant="h2" sx={{ color: 'black' }}>
                 Legal
               </Typography>
               <Typography>
@@ -53,7 +53,7 @@ export default function SupportPage() {
               </Link>
             </Stack>
             <Stack spacing={2}>
-              <Typography variant="h2" sx={{ color: "black" }}>
+              <Typography variant="h2" sx={{ color: 'black' }}>
                 Support
               </Typography>
               <Typography>

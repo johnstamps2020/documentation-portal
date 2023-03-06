@@ -17,7 +17,7 @@ function appendToSelectedItem(node, str) {
     readStream.pipe(writeStream, { end: false });
 
     // when the stream has ended, attach
-    readStream.on('end', function() {
+    readStream.on('end', function () {
       writeStream.end(str);
     });
   } catch (err) {
@@ -37,7 +37,7 @@ const pendoAndGoogleScripts = `
 const responseSelectors = [
   {
     query: 'head',
-    func: function(node) {
+    func: function (node) {
       appendToSelectedItem(
         node,
         `
@@ -56,7 +56,7 @@ const responseSelectors = [
       // Docusaurus -> body.navigation-with-keyboard
       // Storybook -> div[style="position: static !important;"]
       'div.footerContents, header.wh_header, body.navigation-with-keyboard, div[style="position: static !important;"]',
-    func: function(node) {
+    func: function (node) {
       appendToSelectedItem(node, pendoAndGoogleScripts);
     },
   },

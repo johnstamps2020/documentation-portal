@@ -10,9 +10,9 @@ only need to configure `Poetry` and then use its feature for installing dependen
    the [official documentation](https://python-poetry.org/docs/#installation).
 2. Configure the tool to create the virtual environment inside the root directory of the project.
 
-    ```shell
-     poetry config virtualenvs.in-project true
-    ```
+   ```shell
+    poetry config virtualenvs.in-project true
+   ```
 
 ## Install dependencies for a Python app
 
@@ -20,9 +20,10 @@ only need to configure `Poetry` and then use its feature for installing dependen
 2. Delete any existing Python virtual environments. They are usually stored in `venv` or `.venv` directories.
 3. Install the app dependencies.
 
-    ```shell
-    poetry install
-    ```
+   ```shell
+   poetry install
+   ```
+
    The virtual environment is created as the `.venv` directory.
 
 ## Run a Python app
@@ -32,12 +33,12 @@ only need to configure `Poetry` and then use its feature for installing dependen
    section.
 3. Run the app in the virtual environment.
 
-    ```shell
-    poetry run python pathToPythonFile
-    ```
+   ```shell
+   poetry run python pathToPythonFile
+   ```
 
    For example
 
-    ```shell
-    poetry run python build_manager/main.py
-    ```
+   ```shell
+   poetry run python build_manager/main.py
+   ```

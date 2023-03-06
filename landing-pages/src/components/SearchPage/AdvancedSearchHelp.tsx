@@ -1,13 +1,13 @@
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import { useState } from "react";
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import { useState } from 'react';
 import {
   StyledAdvancedHelpSectionTitle,
-  StyledAdvancedHelpTitle
-} from "./StyledSearchComponents";
+  StyledAdvancedHelpTitle,
+} from './StyledSearchComponents';
 
 const helpText = () => (
   <>
@@ -19,11 +19,11 @@ const helpText = () => (
         <code>-</code> <a href="#excluding_not">excludes</a> a single word
       </li>
       <li>
-        <code>&quot;</code> surrounds a word or phrase to{" "}
+        <code>&quot;</code> surrounds a word or phrase to{' '}
         <a href="#exact_match">match exactly</a>
       </li>
       <li>
-        <code>*</code> at the end of a term performs a{" "}
+        <code>*</code> at the end of a term performs a{' '}
         <a href="#prefix">prefix</a> search
       </li>
       <li>
@@ -36,7 +36,7 @@ const helpText = () => (
       </li>
       <li>
         <code>~N</code>
-        after a <strong>phrase</strong> signifies <a href="#slop">slop</a>{" "}
+        after a <strong>phrase</strong> signifies <a href="#slop">slop</a>{' '}
         amount
       </li>
     </ul>

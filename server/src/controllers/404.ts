@@ -176,8 +176,7 @@ const redirectUrls = [
     to: 'cloud/pc/202104/config',
   },
   {
-    from:
-      'cloud/pc/202011/cloud/active/adv-product-designer/topics/c_intro.html',
+    from: 'cloud/pc/202011/cloud/active/adv-product-designer/topics/c_intro.html',
     to: 'cloud/pc/202104/apd',
   },
   {
@@ -221,19 +220,15 @@ const redirectUrls = [
     to: 'cloud/pc/202104/integration',
   },
   {
-    from:
-      'cloud/in/20202/config/2020.2.x/active/ConfigurationGuide/CloudCommonPaymentService/c_CloudCommonPaymentServiceconfiguration.html',
-    to:
-      'cloud/in/20211/config/2021.1.x/ConfigurationGuide/c_payment-config.html',
+    from: 'cloud/in/20202/config/2020.2.x/active/ConfigurationGuide/CloudCommonPaymentService/c_CloudCommonPaymentServiceconfiguration.html',
+    to: 'cloud/in/20211/config/2021.1.x/ConfigurationGuide/c_payment-config.html',
   },
   {
     from: 'cloud/in/payment-config/latest',
-    to:
-      'cloud/in/20211/config/2021.1.x/ConfigurationGuide/c_payment-config.html',
+    to: 'cloud/in/20211/config/2021.1.x/ConfigurationGuide/c_payment-config.html',
   },
   {
-    from:
-      'cloud/in/20202/2020.2.x/active/PortalDevelopment/topics/c_overview_portal_development.html',
+    from: 'cloud/in/20202/2020.2.x/active/PortalDevelopment/topics/c_overview_portal_development.html',
     to: 'cloud/in/20211/portaldev',
   },
   {
@@ -241,8 +236,7 @@ const redirectUrls = [
     to: 'cloud/in/20211/portaldev',
   },
   {
-    from:
-      'cloud/is/202011/restapiclient/REST-API-Client/topics/c_overview-rest-client.html',
+    from: 'cloud/is/202011/restapiclient/REST-API-Client/topics/c_overview-rest-client.html',
     to: 'is/restapiclient/guide',
   },
   {

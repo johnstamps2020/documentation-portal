@@ -1,0 +1,12 @@
+.idea
+.teamcity
+.vscode
+.yarn
+/apps
+/frontend
+/s3
+build
+out
+dist
+
+*.log

@@ -1,9 +1,0 @@
-@media screen and (max-width: 750px) {
-  .twoColumns div.items {
-    columns: 1;
-  }
-}
-
-.twoColumns div.items {
-  columns: 2;
-}

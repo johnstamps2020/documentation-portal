@@ -1,13 +1,13 @@
-import Chip from "@mui/material/Chip";
-import { useSearch } from "../../context/SearchContext";
-import { ServerSearchFilter } from "server/dist/types/serverSearch";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import { styled } from "@mui/material/styles";
+import Chip from '@mui/material/Chip';
+import { ServerSearchFilter } from 'server/dist/types/serverSearch';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
+import { useSearchData } from '../../hooks/useApi';
 
 export default function AppliedFilters() {
-  const { searchData } = useSearch();
+  const { searchData } = useSearchData();
   if (!searchData) {
     return null;
   }
@@ -17,30 +17,30 @@ export default function AppliedFilters() {
       if (checkedValues.length > 0) {
         return {
           ...f,
-          values: checkedValues
+          values: checkedValues,
         };
       }
       return null;
     })
     .filter(Boolean) as ServerSearchFilter[];
 
-  const ListItem = styled("li")(() => ({
-    margin: "0 4px 6px 0"
+  const ListItem = styled('li')(() => ({
+    margin: '0 4px 6px 0',
   }));
 
   return (
     <Stack direction="row" spacing={1}>
-      <Typography sx={{ padding: 0, minWidth: "110px" }}>
+      <Typography sx={{ padding: 0, minWidth: '110px' }}>
         Applied filters:
       </Typography>
       <Paper
         sx={{
-          display: "flex",
-          justifyContent: "flex-start",
-          flexWrap: "wrap",
-          listStyle: "none",
+          display: 'flex',
+          justifyContent: 'flex-start',
+          flexWrap: 'wrap',
+          listStyle: 'none',
           p: 0,
-          m: 0
+          m: 0,
         }}
         component="ul"
         elevation={0}

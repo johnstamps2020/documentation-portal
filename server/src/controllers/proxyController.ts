@@ -15,7 +15,7 @@ function setProxyResCacheControlHeader(proxyRes: any) {
   }
 }
 
-proxy.on('error', function(err: any, next: NextFunction) {
+proxy.on('error', function (err: any, next: NextFunction) {
   next(err);
 });
 
@@ -123,11 +123,11 @@ export async function reactAppProxy(
       proxy.web(req, res, proxyOptions, next);
     } else {
       fetch(`${proxyOptions.target}/index.html`)
-        .then(response => {
+        .then((response) => {
           res.status(getStatusCode(req.url));
           response.body.pipe(res);
         })
-        .catch(err => res.status(500).send(err));
+        .catch((err) => res.status(500).send(err));
     }
   }
 }

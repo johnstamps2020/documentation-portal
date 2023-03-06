@@ -10,7 +10,7 @@
       {
         "label": "Garmisch",
         "page": "../garmisch",
-        "env": ["int", "staging"]
+        "env": ["staging"]
       },
       {
         "label": "Flaine",
@@ -160,16 +160,6 @@
             {
               "label": "Jutro Storybook",
               "id": "storybook743"
-            }
-          ]
-        },
-        {
-          "label": "Best Practices",
-          "class": "group",
-          "items": [
-            {
-              "label": "Digital Best Practices",
-              "id": "dxpractices"
             }
           ]
         }

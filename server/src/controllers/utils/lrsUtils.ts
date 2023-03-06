@@ -95,5 +95,5 @@ const recordVariables = [
 ];
 
 export function getSampleRecords() {
-  return recordVariables.map(v => ({ ...recordTemplate, ...v }));
+  return recordVariables.map((v) => ({ ...recordTemplate, ...v }));
 }

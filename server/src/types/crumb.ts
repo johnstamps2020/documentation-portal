@@ -1,4 +1,4 @@
 export type Crumb = {
-    label: string;
-    path: string;
-  };
+  label: string;
+  path: string;
+};

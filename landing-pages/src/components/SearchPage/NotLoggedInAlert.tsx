@@ -1,13 +1,18 @@
-import Alert from "@mui/material/Alert/Alert";
-import { useSearch } from "../../context/SearchContext";
+import Alert from '@mui/material/Alert/Alert';
+import { useSearchData } from '../../hooks/useApi';
 
 export default function NotLoggedInAlert() {
-  const { searchData } = useSearch();
-  if (!searchData || searchData.requestIsAuthenticated) {
+  const { searchData, isError, isLoading } = useSearchData();
+  if (
+    isError ||
+    isLoading ||
+    !searchData ||
+    searchData.requestIsAuthenticated
+  ) {
     return null;
   }
   return (
-    <Alert sx={{ justifyContent: "center", width: "100%" }} severity="warning">
+    <Alert sx={{ justifyContent: 'center', width: '100%' }} severity="warning">
       You are not logged in. Search results are limited to public documents
       only.
     </Alert>

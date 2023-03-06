@@ -9,7 +9,7 @@ function selectToggleButton() {
   }
   let matchingButton = document.querySelector('#platformToggle > #cloudButton');
   const currentPath = window.location.pathname;
-  toggleButtons.forEach(button => {
+  toggleButtons.forEach((button) => {
     const root = button.getAttribute('data-root');
     if (currentPath.startsWith(root)) {
       matchingButton = button;
@@ -17,7 +17,9 @@ function selectToggleButton() {
   });
   // temporary patch
   if (currentPath.startsWith('/globalSolutions/ipf/')) {
-    matchingButton = document.querySelector('#platformToggle > #selfManagedButton');
+    matchingButton = document.querySelector(
+      '#platformToggle > #selfManagedButton'
+    );
   }
   matchingButton.classList.toggle('selected');
   matchingButton.removeAttribute('href');
@@ -31,8 +33,9 @@ async function addReleaseBadge() {
   if (cloudReleaseMatch) {
     const releaseName = cloudReleaseMatch[1];
     const p = document.createElement('p');
-    p.innerHTML = `${releaseName.charAt(0).toUpperCase() +
-      releaseName.slice(1)} Release`;
+    p.innerHTML = `${
+      releaseName.charAt(0).toUpperCase() + releaseName.slice(1)
+    } Release`;
 
     const div = document.createElement('div');
     div.setAttribute('class', 'releaseInfo');
@@ -61,7 +64,7 @@ function setSearchFilterCSS() {
   if (window.location.pathname.startsWith('/search')) {
     const header = document.querySelector('.header-search');
     const filter = document.querySelector('.filterSearchResults');
-    const resizeObserver = new ResizeObserver(entries => {
+    const resizeObserver = new ResizeObserver((entries) => {
       for (let entry of entries) {
         const headerPaddingTop = window
           .getComputedStyle(header)
@@ -98,9 +101,11 @@ function setSearchFilterCSS() {
 }
 
 function addElysianNotice() {
-  if(window.location.pathname != '/cloudProducts/elysian' &&
-     window.location.pathname != '/cloudProducts/elysian/') {
-       return;
+  if (
+    window.location.pathname != '/cloudProducts/elysian' &&
+    window.location.pathname != '/cloudProducts/elysian/'
+  ) {
+    return;
   }
   const content = document.querySelector('.content');
   const link = document.createElement('a');
@@ -111,9 +116,11 @@ function addElysianNotice() {
 }
 
 function addFlaineNotice() {
-  if(window.location.pathname != '/cloudProducts/flaine' &&
-     window.location.pathname != '/cloudProducts/flaine/') {
-       return;
+  if (
+    window.location.pathname != '/cloudProducts/flaine' &&
+    window.location.pathname != '/cloudProducts/flaine/'
+  ) {
+    return;
   }
   const content = document.querySelector('.content');
   const link = document.createElement('a');
@@ -128,10 +135,10 @@ function addNotices() {
   addFlaineNotice();
 }
 
-window.onload = async function() {
+window.onload = async function () {
   selectToggleButton();
   addReleaseBadge();
-  addNotices()
+  addNotices();
   setSearchFilterCSS();
   await setMetadata();
 };

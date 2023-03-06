@@ -1,9 +1,4 @@
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne } from 'typeorm';
-import { PageSelector } from './PageSelector';
-import { Category } from './Category';
-import { Section } from './Section';
-import { ProductFamilyItem } from './ProductFamilyItem';
-import { Sidebar } from './Sidebar';
+import { Column, Entity } from 'typeorm';
 
 @Entity()
 export class Page {
@@ -16,48 +11,8 @@ export class Page {
   @Column('text', { nullable: true })
   component: string | null;
 
-  @ManyToOne(
-    () => PageSelector,
-    pageSelector => pageSelector.id,
-    { nullable: true, eager: true }
-  )
-  @JoinTable()
-  pageSelector: PageSelector;
-
   @Column('json', { nullable: true })
   searchFilters: { [key: string]: string[] };
-
-  @ManyToOne(
-    () => Sidebar,
-    sidebar => sidebar.id,
-    { nullable: true, eager: true }
-  )
-  @JoinTable()
-  sidebar: Sidebar;
-
-  @ManyToMany(
-    () => Category,
-    category => category.id,
-    { nullable: true, eager: true }
-  )
-  @JoinTable()
-  categories: Category[];
-
-  @ManyToMany(
-    () => Section,
-    section => section.id,
-    { nullable: true, eager: true }
-  )
-  @JoinTable()
-  sections: Section[];
-
-  @ManyToMany(
-    () => ProductFamilyItem,
-    productFamilyItem => productFamilyItem.id,
-    { nullable: true, eager: true }
-  )
-  @JoinTable()
-  productFamilyItems: ProductFamilyItem[];
 
   @Column()
   isInProduction: boolean;

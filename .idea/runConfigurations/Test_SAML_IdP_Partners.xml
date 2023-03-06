@@ -2,9 +2,8 @@
   <configuration default="false" name="Test SAML IdP Partners" type="docker-deploy" factoryName="docker-image" server-name="Docker">
     <deployment type="docker-image">
       <settings>
-        <option name="command" value="" />
+        <option name="imageTag" value="kristophjunge/test-saml-idp" />
         <option name="containerName" value="testsamlidppart" />
-        <option name="entrypoint" value="" />
         <option name="envVars">
           <list>
             <DockerEnvVarImpl>
@@ -17,7 +16,6 @@
             </DockerEnvVarImpl>
           </list>
         </option>
-        <option name="imageTag" value="kristophjunge/test-saml-idp" />
         <option name="portBindings">
           <list>
             <DockerPortBindingImpl>

@@ -50,7 +50,6 @@
       "last 1 safari version"
     ]
   },
-  "packageManager": "yarn@3.2.4",
   "proxy": "http://localhost:8081",
   "homepage": "/landing/"
 }

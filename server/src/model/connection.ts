@@ -8,26 +8,17 @@ import { Release } from './entity/Release';
 import { Resource } from './entity/Resource';
 import { Source } from './entity/Source';
 import { Page } from './entity/Page';
-import { PageSelector } from './entity/PageSelector';
-import { Category } from './entity/Category';
-import { CategoryItem } from './entity/CategoryItem';
-import { Item } from './entity/Item';
-import { SubCategory } from './entity/SubCategory';
-import { SubCategoryItem } from './entity/SubCategoryItem';
-import { Section } from './entity/Section';
-import { SectionItem } from './entity/SectionItem';
-import { ProductFamilyItem } from './entity/ProductFamilyItem';
-import { PageSelectorItem } from './entity/PageSelectorItem';
-import { SidebarItem } from './entity/SidebarItem';
-import { Sidebar } from './entity/Sidebar';
 import { Subject } from './entity/Subject';
+import { ExternalLink } from './entity/ExternalLink';
+import { Locale } from './entity/Locale';
 
 const dbHost = process.env.CONFIG_DB_HOST;
 const isDevMode = runningInDevMode();
 
 winstonLogger.notice(
-  `Connecting to database at ${dbHost}.${isDevMode &&
-    ' >>WARNING: Running in dev mode<<'}`
+  `Connecting to database at ${dbHost}.${
+    isDevMode && ' >>WARNING: Running in dev mode<<'
+  }`
 );
 
 export const AppDataSource = new DataSource({
@@ -46,18 +37,8 @@ export const AppDataSource = new DataSource({
     Resource,
     Source,
     Page,
-    PageSelector,
-    PageSelectorItem,
-    Item,
-    Category,
-    CategoryItem,
-    SubCategory,
-    SubCategoryItem,
-    Section,
-    SectionItem,
-    ProductFamilyItem,
-    Sidebar,
-    SidebarItem,
+    ExternalLink,
+    Locale
   ],
   synchronize: isDevMode,
   cache: {

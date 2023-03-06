@@ -2,7 +2,7 @@ async function getHash(string) {
   const utf8 = new TextEncoder().encode(string);
   const hashBuffer = await crypto.subtle.digest('SHA-256', utf8);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map(bytes => bytes.toString(16).padStart(2, '0')).join('');
+  return hashArray.map((bytes) => bytes.toString(16).padStart(2, '0')).join('');
 }
 
 async function sendUserId(userInformation) {
@@ -11,7 +11,7 @@ async function sendUserId(userInformation) {
     const isEmployee = userInformation.hasGuidewireEmail;
     window.dataLayer = window.dataLayer || [];
     if (
-      !window.dataLayer.some(d => d.event === 'login' && d.userId === userId)
+      !window.dataLayer.some((d) => d.event === 'login' && d.userId === userId)
     ) {
       window.dataLayer.push({
         user_id: userId,

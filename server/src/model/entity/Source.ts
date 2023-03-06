@@ -29,15 +29,9 @@ export class Source {
   @Column({ nullable: true })
   pollInterval: integer;
 
-  @OneToMany(
-    () => Build,
-    build => build
-  )
+  @OneToMany(() => Build, (build) => build)
   build: Build;
 
-  @OneToMany(
-    () => Resource,
-    resource => resource.id
-  )
+  @OneToMany(() => Resource, (resource) => resource.id)
   resource: Resource;
 }

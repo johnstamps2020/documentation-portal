@@ -32,7 +32,7 @@
     {
       "label": "Garmisch",
       "page": "garmisch",
-      "env": ["int", "staging"]
+      "env": ["staging"]
     },
     {
       "label": "_redirect",
@@ -42,7 +42,12 @@
     {
       "label": "_redirect",
       "link": "/cloudProducts/garmisch",
-      "env": ["int", "staging"]
+      "env": ["dev", "staging"]
+    },
+    {
+      "label": "_redirect",
+      "link": "/int-deprecated",
+      "env": ["int"]
     }
   ]
 }

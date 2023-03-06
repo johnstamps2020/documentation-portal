@@ -11,7 +11,7 @@ const {
 } = require('../controllers/authController');
 
 Issuer.discover(process.env.OKTA_DOMAIN)
-  .then(oktaIssuer => {
+  .then((oktaIssuer) => {
     router.use(cookieParser());
     router.use(bodyParser.urlencoded({ extended: false }));
     router.use(bodyParser.json());
@@ -31,14 +31,14 @@ Issuer.discover(process.env.OKTA_DOMAIN)
           scope: 'openid profile email',
         },
       },
-      function(tokenSet, profile, done) {
+      function (tokenSet, profile, done) {
         return done(null, profile);
       }
     );
-    passport.serializeUser(function(user, done) {
+    passport.serializeUser(function (user, done) {
       done(null, user);
     });
-    passport.deserializeUser(function(user, done) {
+    passport.deserializeUser(function (user, done) {
       done(null, user);
     });
     passport.use('oidcStrategy', oidcStrategy);
@@ -47,7 +47,7 @@ Issuer.discover(process.env.OKTA_DOMAIN)
 
     router.get(
       '/',
-      function(req, res, next) {
+      function (req, res, next) {
         delete oidcStrategy._params.idp;
         if (req.query.idp === 'okta') {
           oidcStrategy._params.idp = process.env.OKTA_IDP;
@@ -60,16 +60,16 @@ Issuer.discover(process.env.OKTA_DOMAIN)
 
     router.use(
       '/callback',
-      function(req, res, next) {
+      function (req, res, next) {
         next();
       },
       passport.authenticate('oidcStrategy'),
-      function(req, res) {
+      function (req, res) {
         res.redirect(resolveRequestedUrl(req));
       }
     );
   })
-  .catch(err => {
+  .catch((err) => {
     winstonLogger.error(`Error in Issuer.discover: ${JSON.stringify(err)}`);
   });
 

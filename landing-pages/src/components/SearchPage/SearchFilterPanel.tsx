@@ -1,21 +1,21 @@
-import SearchFilter from "./SearchFilter";
-import { useSearch } from "../../context/SearchContext";
-import ButtonGroup from "@mui/material/ButtonGroup";
-import { useCallback, useEffect, useState } from "react";
-import Stack from "@mui/material/Stack";
-import ClearFilterButton from "./ClearFiltersButton";
-import { StyledButton } from "./StyledSearchComponents";
+import SearchFilter from './SearchFilter';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import { useCallback, useEffect, useState } from 'react';
+import Stack from '@mui/material/Stack';
+import ClearFilterButton from './ClearFiltersButton';
+import { StyledButton } from './StyledSearchComponents';
+import { useSearchData } from '../../hooks/useApi';
 
 export type SearchFilterExpandStatus = {
   filterName: string;
   filterIsExpanded: boolean;
 };
 
-export default function SearchFiltersPanel() {
-  const { searchData } = useSearch();
+export default function SearchFilterPanel() {
+  const { searchData } = useSearchData();
   const [
     allSearchFiltersExpandStatus,
-    setAllSearchFiltersExpandStatus
+    setAllSearchFiltersExpandStatus,
   ] = useState<SearchFilterExpandStatus[]>([]);
 
   const toggleFilters = useCallback(
@@ -24,7 +24,7 @@ export default function SearchFiltersPanel() {
         setAllSearchFiltersExpandStatus(
           searchData.filters.map(f => ({
             filterName: f.name,
-            filterIsExpanded: expand
+            filterIsExpanded: expand,
           }))
         );
       }
@@ -55,19 +55,15 @@ export default function SearchFiltersPanel() {
     setAllSearchFiltersExpandStatus(updatedAllSearchFiltersExpandStatus);
   }
 
-  if (!searchData) {
-    return null;
-  }
-
   return (
     <Stack
       sx={{
-        minWidth: "300px",
-        maxWidth: "300px",
-        height: "100vh",
-        overflow: "scroll",
-        scrollbarWidth: "thin",
-        padding: { xs: "8px 8px", sm: "16px 16px" }
+        minWidth: '300px',
+        maxWidth: '300px',
+        height: '100vh',
+        overflow: 'scroll',
+        scrollbarWidth: 'thin',
+        padding: { xs: '8px 8px', sm: '16px 16px' },
       }}
     >
       <ButtonGroup
@@ -75,10 +71,10 @@ export default function SearchFiltersPanel() {
         variant="text"
         aria-label="text small button group"
         sx={{
-          justifyContent: "space-between",
-          gap: "6px",
-          width: "100%",
-          marginBottom: "8px"
+          justifyContent: 'space-between',
+          gap: '6px',
+          width: '100%',
+          marginBottom: '8px',
         }}
       >
         <StyledButton
@@ -97,7 +93,7 @@ export default function SearchFiltersPanel() {
         </StyledButton>
         <ClearFilterButton label="Clear filters" grouped={true} />
       </ButtonGroup>
-      {searchData.filters.map(f => (
+      {searchData?.filters.map(f => (
         <SearchFilter
           key={f.name}
           serverSearchFilter={f}

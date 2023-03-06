@@ -4,7 +4,7 @@ import { decode, JwtPayload } from 'jsonwebtoken';
 import { winstonLogger } from './loggerController';
 import { getUserInfo } from './userController';
 import { fourOhFourRoute, internalRoute } from './proxyController';
-import { getDocByUrl, getPage } from './configController';
+import { getDocByUrl, getEnv, getPage } from './configController';
 
 export async function saveUserInfoToResLocals(
   req: Request,
@@ -14,12 +14,18 @@ export async function saveUserInfoToResLocals(
   res.locals.userInfo = await getUserInfo(req);
   return next();
 }
+
 export async function isAllowedToAccessRoute(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  const { status, body } = isUserAllowedToAccessResource(res, false, false);
+  const { status, body } = isUserAllowedToAccessResource(
+    res,
+    false,
+    false,
+    true
+  );
   if (status === 200) {
     return next();
   }
@@ -32,7 +38,7 @@ export async function isAllowedToAccessPageOrDoc(
   next: NextFunction
 ) {
   const requestedResource = req.originalUrl.startsWith('/landing')
-    ? await getPage(req).then(r => r?.body)
+    ? await getPage(req).then((r) => r?.body)
     : await getDocByUrl(req.path);
   if (!requestedResource) {
     return res.redirect(`${fourOhFourRoute}?notFound=${req.originalUrl}`);
@@ -45,7 +51,8 @@ export async function isAllowedToAccessPageOrDoc(
   const resourceStatus = isUserAllowedToAccessResource(
     res,
     requestedResource.public,
-    requestedResource.internal
+    requestedResource.internal,
+    requestedResource.isInProduction
   ).status;
   if (resourceStatus === 401) {
     return redirectToLoginPage(req, res);
@@ -62,8 +69,18 @@ export async function isAllowedToAccessPageOrDoc(
 export function isUserAllowedToAccessResource(
   res: Response,
   resourceIsPublic: boolean,
-  resourceIsInternal: boolean
+  resourceIsInternal: boolean,
+  resourceIsInProduction: boolean
 ): { status: number; body: { message: string } } {
+  const isProductionEnvironment = getEnv().envName === 'omega2-andromeda';
+  if (isProductionEnvironment && !resourceIsInProduction) {
+    return {
+      status: 406,
+      body: {
+        message: 'Resource not available for this deployment environment',
+      },
+    };
+  }
   if (resourceIsPublic) {
     return {
       status: 200,
@@ -125,8 +142,8 @@ type AvailableOktaIssuers = {
 
 function getAvailableOktaIssuers(): AvailableOktaIssuers {
   const issuers = {
-    [process.env.OKTA_ACCESS_TOKEN_ISSUER as string]: process.env
-      .OKTA_CLIENT_ID,
+    [process.env.OKTA_ACCESS_TOKEN_ISSUER as string]:
+      process.env.OKTA_CLIENT_ID,
   };
   if (
     process.env.OKTA_ACCESS_TOKEN_ISSUER_APAC &&
@@ -155,7 +172,7 @@ function createOktaJwtVerifier(
     if (decodedJwt) {
       const jwtIssuer = decodedJwt.iss;
       const issuer = Object.entries(availableIssuers).find(
-        iss => iss[0] === jwtIssuer
+        (iss) => iss[0] === jwtIssuer
       );
       return new OktaJwtVerifier({
         issuer: issuer![0],

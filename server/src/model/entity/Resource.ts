@@ -12,11 +12,7 @@ export class Resource {
   @Column()
   targetFolder: string;
 
-  @ManyToOne(
-    () => Source,
-    source => source.id,
-    { eager: true }
-  )
+  @ManyToOne(() => Source, (source) => source.id, { eager: true })
   @JoinTable()
   source: Source;
 }

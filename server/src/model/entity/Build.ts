@@ -24,8 +24,11 @@ export class Build {
   @PrimaryColumn()
   id: string;
 
-  @Column()
-  type: string;
+  @Column({
+    type: 'enum',
+    enum: BuildType,
+  })
+  type: BuildType;
 
   @ManyToOne(
     () => Source,
@@ -53,7 +56,10 @@ export class Build {
   @ManyToMany(
     () => Resource,
     resource => resource.id,
-    { eager: true, nullable: true }
+    {
+      eager: true,
+      nullable: true,
+    }
   )
   @JoinTable()
   resources: Resource[];

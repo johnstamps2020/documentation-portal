@@ -10,7 +10,7 @@
       {
         "label": "Garmisch",
         "page": "../garmisch",
-        "env": ["int", "staging"]
+        "env": ["staging"]
       },
       {
         "label": "Flaine",

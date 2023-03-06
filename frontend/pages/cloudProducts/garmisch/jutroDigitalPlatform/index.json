@@ -14,7 +14,7 @@
       "label": "Jutro Digital Platform (Early Access)",
       "class": "categoryCard cardShadow",
       "id": "jutroplatformnext",
-      "env": ["int"]
+      "env": ["staging"]
     },
     {
       "label": "Jutro SDK (Early Access)",
@@ -29,12 +29,12 @@
         {
           "label": "Jutro SDK",
           "link": "/jutro/sdk/next/docs/jutro-sdk-overview",
-          "env": ["int"]
+          "env": ["staging"]
         },
         {
           "label": "APD toolkit",
           "link": "/jutro/sdk/next/docs/apd-overview",
-          "env": ["int"]
+          "env": ["staging"]
         }
       ]
     },

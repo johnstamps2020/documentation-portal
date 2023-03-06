@@ -42,7 +42,7 @@ export async function getPage(reqObj: Request) {
 
 export async function getBreadcrumbs(pagePath: string): Promise<ApiResponse> {
   try {
-    const routes = pagePath.split('/').filter(v => v.length > 0);
+    const routes = pagePath.split('/').filter((v) => v.length > 0);
     const breadcrumbs = [];
     let startPath = '';
     for (const route of routes) {
@@ -90,73 +90,6 @@ function getItemProps(itemName: string, primaryKeyName: string) {
   ];
 }
 
-export async function getPageData(reqObj: Request, resObj: Response) {
-  const { path } = reqObj.query;
-  if (!path) {
-    return {
-      status: 500,
-      body: {
-        message: 'Path parameter not provided',
-      },
-    };
-  }
-  const result = await AppDataSource.getRepository(Page)
-    .createQueryBuilder('page')
-    .where({ path: path })
-    .leftJoinAndSelect('page.pageSelector', 'pageSelectorAlias')
-    .leftJoinAndSelect(
-      'pageSelectorAlias.pageSelectorItems',
-      'pageSelectorItemAlias'
-    )
-    .leftJoin('pageSelectorItemAlias.doc', 'pageSelectorItemDocAlias')
-    .addSelect(getItemProps('pageSelectorItemDocAlias', 'url'))
-    .leftJoin('pageSelectorItemAlias.page', 'pageSelectorItemPageAlias')
-    .addSelect(getItemProps('pageSelectorItemPageAlias', 'path'))
-    .leftJoinAndSelect('page.sidebar', 'sidebarAlias')
-    .leftJoinAndSelect('sidebarAlias.sidebarItems', 'sidebarItemAlias')
-    .leftJoin('sidebarItemAlias.doc', 'sidebarItemDocAlias')
-    .addSelect(getItemProps('sidebarItemDocAlias', 'url'))
-    .leftJoin('sidebarItemAlias.page', 'sidebarItemPageAlias')
-    .addSelect(getItemProps('sidebarItemPageAlias', 'path'))
-    .leftJoinAndSelect('page.categories', 'categoryAlias')
-    .leftJoinAndSelect('categoryAlias.categoryItems', 'categoryItemAlias')
-    .leftJoin('categoryItemAlias.doc', 'categoryItemDocAlias')
-    .addSelect(getItemProps('categoryItemDocAlias', 'url'))
-    .leftJoin('categoryItemAlias.page', 'categoryItemPageAlias')
-    .addSelect(getItemProps('categoryItemPageAlias', 'path'))
-    .leftJoinAndSelect('categoryAlias.subCategories', 'subCategoryAlias')
-    .leftJoinAndSelect(
-      'subCategoryAlias.subCategoryItems',
-      'subCategoryItemAlias'
-    )
-    .leftJoin('subCategoryItemAlias.doc', 'subCategoryItemDocAlias')
-    .addSelect(getItemProps('subCategoryItemDocAlias', 'url'))
-    .leftJoin('subCategoryItemAlias.page', 'subCategoryItemPageAlias')
-    .addSelect(getItemProps('subCategoryItemPageAlias', 'path'))
-    .leftJoinAndSelect('page.sections', 'sectionAlias')
-    .leftJoinAndSelect('sectionAlias.sectionItems', 'sectionItemAlias')
-    .leftJoin('sectionItemAlias.doc', 'sectionItemDocAlias')
-    .addSelect(getItemProps('sectionItemDocAlias', 'url'))
-    .leftJoin('sectionItemAlias.page', 'sectionItemPageAlias')
-    .addSelect(getItemProps('sectionItemPageAlias', 'path'))
-    .leftJoinAndSelect('page.productFamilyItems', 'productFamilyItemAlias')
-    .leftJoin('productFamilyItemAlias.doc', 'productFamilyItemDocAlias')
-    .addSelect(getItemProps('productFamilyItemDocAlias', 'url'))
-    .leftJoin('productFamilyItemAlias.page', 'productFamilyItemPageAlias')
-    .addSelect(getItemProps('productFamilyItemPageAlias', 'path'))
-    .getOne();
-  if (!result) {
-    return {
-      status: 404,
-      body: { message: `Page data not found for path: ${path}` },
-    };
-  }
-  return {
-    status: 200,
-    body: result,
-  };
-}
-
 export async function getEntity(reqObj: Request, resObj: Response) {
   const { repo } = reqObj.params;
   const options = reqObj.query;
@@ -165,7 +98,8 @@ export async function getEntity(reqObj: Request, resObj: Response) {
     const userIsAllowedToAccessResource = isUserAllowedToAccessResource(
       resObj,
       result.body?.public || false,
-      result.body?.internal || false
+      result.body?.internal || false,
+      result.body?.isInProduction || false
     );
     if (userIsAllowedToAccessResource.status === 200) {
       return result;
@@ -305,7 +239,7 @@ function wrapInQuotes(stringsToWrap: Array<string> | string | undefined) {
   }
 
   if (Array.isArray(stringsToWrap)) {
-    return stringsToWrap.map(s => addQuotes(s)).join(valueSeparator);
+    return stringsToWrap.map((s) => addQuotes(s)).join(valueSeparator);
   } else if (typeof stringsToWrap === 'string') {
     return addQuotes(stringsToWrap);
   } else {
@@ -388,6 +322,7 @@ export async function getDocIdByUrl(url: string) {
   };
 }
 
+//TODO: Change this function to work with the database. It's used in docs to inject the root breadcrumb.
 export async function getRootBreadcrumb(pagePathname: string) {
   try {
     const breadcrumbsConfigPath = new URL(
@@ -429,8 +364,8 @@ export async function getRootBreadcrumb(pagePathname: string) {
 
 export async function getVersionSelector(docId: string) {
   function getLabel(docConfig: Doc, releaseInLabel: boolean) {
-    const docReleases = docConfig.releases.map(r => r.name);
-    const docVersions = docConfig.products.map(p => p.version);
+    const docReleases = docConfig.releases.map((r) => r.name);
+    const docVersions = docConfig.products.map((p) => p.version);
     return releaseInLabel
       ? `${docReleases[0]} (${docVersions[0]})`
       : docVersions.join(',');
@@ -443,14 +378,14 @@ export async function getVersionSelector(docId: string) {
     return releaseInLabel
       ? unsortedVersions.sort((a, b) => (a.label > b.label ? 1 : -1)).reverse()
       : unsortedVersions
-          .sort(function(a, b) {
+          .sort(function (a, b) {
             const labelA = a.label
               .split('.')
-              .map(n => +n + 100000)
+              .map((n) => +n + 100000)
               .join('.');
             const labelB = b.label
               .split('.')
-              .map(n => +n + 100000)
+              .map((n) => +n + 100000)
               .join('.');
             return labelA > labelB ? 1 : -1;
           })
@@ -465,30 +400,31 @@ export async function getVersionSelector(docId: string) {
     const docResponse = await docQueryBuilder.where({ id: docId }).getOne();
     if (docResponse) {
       const useReleaseForLabel = docResponse.releases?.length === 1;
+      // FIXME: Add query for displayOnLandingPages unless we remove this parameter
       const docsWithTheSameTitle = await docQueryBuilder
         .where('title = :title', { title: docResponse.title })
         .andWhere('docProducts.name IN (:...productNames)', {
-          productNames: docResponse.products.map(p => p.name),
+          productNames: docResponse.products.map((p) => p.name),
         })
         .andWhere('docProducts.platform IN (:...productPlatforms)', {
-          productPlatforms: docResponse.products.map(p => p.platform),
+          productPlatforms: docResponse.products.map((p) => p.platform),
         })
         .andWhere('docProducts.version NOT IN (:...productVersions)', {
-          productVersions: docResponse.products.map(p => p.version),
+          productVersions: docResponse.products.map((p) => p.version),
         })
         .getMany();
-      const otherVersions = docsWithTheSameTitle.map(doc => {
+      const otherVersions = docsWithTheSameTitle.map((doc) => {
         return {
-          versions: doc.products.map(p => p.version),
-          releases: doc.releases.map(r => r.name),
+          versions: doc.products.map((p) => p.version),
+          releases: doc.releases.map((r) => r.name),
           url: doc.url,
           label: getLabel(doc, useReleaseForLabel),
         };
       });
       const allVersions = [
         {
-          versions: docResponse.products.map(p => p.version),
-          releases: docResponse.releases.map(r => r.name),
+          versions: docResponse.products.map((p) => p.version),
+          releases: docResponse.releases.map((r) => r.name),
           url: docResponse.url,
           currentlySelected: true,
           label: getLabel(docResponse, useReleaseForLabel),

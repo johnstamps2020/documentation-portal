@@ -1,9 +1,9 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { useSearch } from "../context/SearchContext";
-import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useSearchData } from './useApi';
 
 export default function useClearFilters() {
-  const { searchData } = useSearch();
+  const { searchData } = useSearchData();
   const navigate = useNavigate();
   const location = useLocation();
   const query = new URLSearchParams(location.search);
@@ -25,15 +25,15 @@ export default function useClearFilters() {
         query.delete(filter);
       }
     }
-    query.delete("page");
+    query.delete('page');
     navigate({
       pathname: `${location.pathname}`,
-      search: query && `?${query.toString()}`
+      search: query && `?${query.toString()}`,
     });
   }
 
   return {
     clearFilters,
-    noFiltersApplied
+    noFiltersApplied,
   };
 }

@@ -6,9 +6,6 @@ export class Release {
   @PrimaryColumn()
   name: string;
 
-  @ManyToMany(
-    () => Doc,
-    doc => doc.id
-  )
+  @ManyToMany(() => Doc, (doc) => doc.id)
   doc: Doc[];
 }
