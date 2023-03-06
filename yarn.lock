@@ -10976,7 +10976,7 @@ __metadata:
     react-native-sqlite-storage: "file:../shims/react-native-sqlite-storage"
     react-router-dom: 6.4.2
     react-scripts: 5.0.1
-    server: 2.29.22
+    server: "workspace:*"
     typescript: ^4.4.2
     web-vitals: ^2.1.0
   languageName: unknown
@@ -14865,7 +14865,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"server@2.29.22, server@workspace:server":
+"server@workspace:*, server@workspace:server":
   version: 0.0.0-use.local
   resolution: "server@workspace:server"
   dependencies:
