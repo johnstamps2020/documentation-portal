@@ -21,6 +21,13 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipa.git",
       "branch": "release/flaine"
+    },
+    {
+      "id": "ipagarmischsrc",
+      "title": "InsuranceSuite Package for Australia for Guidewire Cloud Garmisch",
+      "sourceType": "git",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipa.git",
+      "branch": "release/garmisch"
     }
   ]
 }
