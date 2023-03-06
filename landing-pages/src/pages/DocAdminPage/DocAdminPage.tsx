@@ -15,6 +15,7 @@ import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import { ThemeProvider } from '@mui/material';
 import { adminDocTheme } from '../../themes/adminDocTheme';
+import { Locale } from 'server/dist/model/entity/Locale';
 
 const emptyDoc: Doc = {
   id: '',
@@ -31,6 +32,7 @@ const emptyDoc: Doc = {
   build: new Build(),
   subjects: [new Subject()],
   isInProduction: false,
+  locales: [new Locale()],
 };
 
 export default function DocAdminPage() {
@@ -47,15 +49,15 @@ export default function DocAdminPage() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  useEffect(() => {
-    getDocData();
-  }, []);
-
   const getDocData = async () => {
     const response = await fetch(`/safeConfig/entity/Doc/all`);
     const jsonData = await response.json();
     setDocData(await jsonData);
   };
+
+  useEffect(() => {
+    getDocData().then(r => r);
+  }, []);
 
   const deleteDoc = async (id: string) => {
     setSnack({
@@ -80,7 +82,7 @@ export default function DocAdminPage() {
         color: 'green',
         open: true,
       });
-      getDocData();
+      await getDocData();
     } else {
       setSnack({
         message: 'Oops, something went wrong while deleting document.',
@@ -97,7 +99,7 @@ export default function DocAdminPage() {
       open: false,
     });
     //updating document
-    if (doc && docData && docData.find((document) => document.id === doc.id)) {
+    if (doc && docData && docData.find(document => document.id === doc.id)) {
       const data = {
         id: doc.id,
         title: doc.title,
@@ -131,7 +133,7 @@ export default function DocAdminPage() {
           color: 'green',
           open: true,
         });
-        getDocData();
+        await getDocData();
       } else {
         setSnack({
           message: 'Oops, something went wrong while updating document.',
@@ -174,7 +176,7 @@ export default function DocAdminPage() {
           color: 'green',
           open: true,
         });
-        getDocData();
+        await getDocData();
       } else {
         setSnack({
           message: 'Oops, something went wrong while adding new document.',
