@@ -5,6 +5,24 @@
   "class": "blue-theme garmisch threeCards",
   "items": [
     {
+      "label": "Australia",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ipagarmischrn"
+        },
+        {
+          "label": "Application Guide",
+          "id": "ipagarmischapp"
+        },
+        {
+          "label": "Configuration Guide",
+          "id": "ipagarmischconfig"
+        }
+      ]
+    },
+    {
       "label": "London Market",
       "class": "categoryCard cardShadow",
       "items": [

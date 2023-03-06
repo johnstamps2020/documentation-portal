@@ -1,0 +1,57 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "ipagarmischrn",
+      "title": "Release Notes",
+      "url": "cloud/ipa/garmisch/releasenotes",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2023.04"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipagarmischconfig",
+      "title": "Configuration",
+      "url": "cloud/ipa/garmisch/config",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2023.04"],
+        "subject": ["Developers"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipagarmischapp",
+      "title": "Application Guide",
+      "url": "cloud/ipa/garmisch/app",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2023.04"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+
+  ]
+}
