@@ -62,9 +62,12 @@ export default function LandingPage() {
     return <></>;
   }
 
-  const PageComponent = lazy(() =>
-    import(`../landing/${pageData.path}`)
-  ) as LazyPageComponent;
+  const PageComponent = lazy(() => {
+    const pageDataPath = pageData.path;
+    return pageDataPath === '/'
+      ? import('../landing/Index')
+      : import(`../landing/${pageDataPath}`);
+  }) as LazyPageComponent;
 
   return (
     <Layout
