@@ -3224,7 +3224,7 @@ object Sources {
         val pullRequestId = "%teamcity.pullRequest.branch.pullrequests%"
 
         val uploadStepOuputPath = when(gwBuildType) {
-            GwBuildTypes.DITA.name -> "${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}"
+            GwBuildTypes.DITA.buildTypeName -> "${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}"
             else -> "${workingDir}/${outputDir}"
         }
 
