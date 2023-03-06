@@ -3,7 +3,8 @@
   "license": "UNLICENSED",
   "workspaces": [
     "server",
-    "landing-pages"
+    "landing-pages",
+    "scripts"
   ],
   "scripts": {
     "server-build": "yarn workspace server build",
@@ -13,7 +14,8 @@
     "dev": "yarn server-build && concurrently --kill-others-on-fail \"yarn server-dev\" \"yarn landing-pages-dev\"",
     "build": "yarn server-build && yarn landing-pages-build",
     "prettier": "prettier --write .",
-    "test:server": "yarn workspace server test"
+    "test:server": "yarn workspace server test",
+    "scripts:migrate-pages": "yarn workspace scripts migrate-pages"
   },
   "version": "1.0.0",
   "main": "index.js",
