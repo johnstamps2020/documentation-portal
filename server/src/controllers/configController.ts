@@ -154,6 +154,9 @@ export async function findEntity(
   }
 }
 
+//FIXME: Change this function to return only entities that the user has access to. We cannot
+// restrict access to the get all entities endpoint based on login because
+// we need to be able to return public entities
 export async function getAllEntities(repoName: string): Promise<ApiResponse> {
   try {
     const result = await AppDataSource.manager.find(repoName);
