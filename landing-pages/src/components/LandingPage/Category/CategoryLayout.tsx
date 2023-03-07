@@ -12,12 +12,15 @@ import { usePageData } from '../../../hooks/usePageData';
 import { LandingPageLayoutProps } from '../../../pages/LandingPage/LandingPage';
 import ReleaseSelector from '../ReleaseSelector';
 import CategorySidebar from './CategorySidebar';
-import Box from '@mui/material/Box';
+import LandingPageSelector, {
+  LandingPageSelectorProps,
+} from '../LandingPageSelector';
 
 export type CategoryLayoutProps = LandingPageLayoutProps & {
   cards: CategoryCardProps[];
+  selector?: LandingPageSelectorProps;
   showReleaseSelector?: boolean;
-  selfManaged?: boolean;
+  description?: JSX.Element;
 };
 
 export default function CategoryLayout({
@@ -25,7 +28,8 @@ export default function CategoryLayout({
   cards,
   sidebar,
   showReleaseSelector = true,
-  selfManaged = false,
+  selector,
+  description,
 }: CategoryLayoutProps) {
   const { pageData, isLoading, isError } = usePageData();
 
@@ -62,19 +66,9 @@ export default function CategoryLayout({
           >
             {pageData.title}
           </Typography>
-          {selfManaged && (
-            <Box padding="1rem 1rem 0rem 1rem">
-              <Typography variant="body1" lineHeight={2}>
-                Find documentation for the latest releases of Guidewire
-                self-managed products.
-              </Typography>
-              <Typography variant="body1" lineHeight={2}>
-                Access earlier releases by clicking a product and then selecting
-                a version from the <b>Select release</b> dropdown menu.
-              </Typography>
-            </Box>
-          )}
-          {showReleaseSelector && <ReleaseSelector />}
+          {description}
+          {showReleaseSelector && !selector && <ReleaseSelector />}
+          {selector && <LandingPageSelector {...selector} />}
         </Stack>
         {pageData.path.includes('cloudProducts/elysian') && (
           <Paper
@@ -109,7 +103,7 @@ export default function CategoryLayout({
             maxWidth: '932px',
           }}
         >
-          {cards.map(card => (
+          {cards.map((card) => (
             <CategoryCard {...card} key={card.label} />
           ))}
         </Grid>

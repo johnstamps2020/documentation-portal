@@ -1,3 +1,5 @@
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import CategoryLayout, {
   CategoryLayoutProps,
 } from '../../components/LandingPage/Category/CategoryLayout';
@@ -8,14 +10,25 @@ const pageConfig: CategoryLayoutProps = {
     ...baseBackgroundProps,
     backgroundColor: 'white',
   },
+  description: (
+    <Box padding="1rem 1rem 0rem 1rem">
+      <Typography variant="body1" lineHeight={2}>
+        Find documentation for the latest releases of Guidewire self-managed
+        products.
+      </Typography>
+      <Typography variant="body1" lineHeight={2}>
+        Access earlier releases by clicking a product and then selecting a
+        version from the <b>Select release</b> dropdown menu.
+      </Typography>
+    </Box>
+  ),
   cards: [
     {
       label: 'Core',
       items: [
         {
           label: "What's New for Self-Managed Implementations",
-          url:
-            'https://www.brainshark.com/1/player/guidewire?pi=zGSzK26rDzeZ1oz0&r3f1=&fb=0',
+          url: 'https://www.brainshark.com/1/player/guidewire?pi=zGSzK26rDzeZ1oz0&r3f1=&fb=0',
         },
         {
           label: 'PolicyCenter',
@@ -132,11 +145,5 @@ const pageConfig: CategoryLayoutProps = {
 };
 
 export default function selfManagedProducts() {
-  return (
-    <CategoryLayout
-      {...pageConfig}
-      selfManaged={true}
-      showReleaseSelector={false}
-    />
-  );
+  return <CategoryLayout {...pageConfig} showReleaseSelector={false} />;
 }

@@ -119,6 +119,10 @@
           "id": "iscc202302rules"
         },
         {
+          "label": "Guidewire Rules (Early Access)",
+          "id": "gwrules"
+        },
+        {
           "label": "APD for Claims (Early Access)",
           "id": "apdclaimsgarmisch"
         },
