@@ -26,7 +26,7 @@
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
         "version": ["2022.11"],
-        "subject": ["Developers"]
+        "subject": ["Development"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
