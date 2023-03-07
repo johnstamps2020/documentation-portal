@@ -18,14 +18,9 @@
     {
       "id": "dhic202005",
       "title": "Data Management 2020.05",
-      "sourceType": "xdocs",
+      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-      "branch": "Aspen",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/releases-cloud/202005/DM_all.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
-      ]
+      "branch": "release/2020.05"
     },
     {
       "id": "dx202010",
