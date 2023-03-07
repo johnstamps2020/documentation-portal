@@ -53,7 +53,7 @@ export default function CategoryCard({
           <LandingPageItem {...categoryItem} key={categoryItem.label} />
         ))}
         {sections?.map(section => (
-          <CategorySection {...section} />
+          <CategorySection {...section} key={section.label} />
         ))}
       </Stack>
     </Paper>
