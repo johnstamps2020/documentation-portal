@@ -12,10 +12,13 @@ import { usePageData } from '../../../hooks/usePageData';
 import { LandingPageLayoutProps } from '../../../pages/LandingPage/LandingPage';
 import ReleaseSelector from '../ReleaseSelector';
 import CategorySidebar from './CategorySidebar';
-import Box from '@mui/material/Box';
+import LandingPageSelector, {
+  LandingPageSelectorProps,
+} from '../LandingPageSelector';
 
 export type CategoryLayoutProps = LandingPageLayoutProps & {
   cards: CategoryCardProps[];
+  selector?: LandingPageSelectorProps;
   showReleaseSelector?: boolean;
   description?: JSX.Element;
 };
@@ -25,6 +28,7 @@ export default function CategoryLayout({
   cards,
   sidebar,
   showReleaseSelector = true,
+  selector,
   description,
 }: CategoryLayoutProps) {
   const { pageData, isLoading, isError } = usePageData();
@@ -63,7 +67,8 @@ export default function CategoryLayout({
             {pageData.title}
           </Typography>
           {description}
-          {showReleaseSelector && <ReleaseSelector />}
+          {showReleaseSelector && !selector && <ReleaseSelector />}
+          {selector && <LandingPageSelector {...selector} />}
         </Stack>
         {pageData.path.includes('cloudProducts/elysian') && (
           <Paper
