@@ -37,36 +37,6 @@
       "branch": "main"
     },
     {
-      "id": "is9010",
-      "title": "InsuranceSuite OnPrem 9.0.10",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
-      "branch": "release/9.0.10",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/9.x/releases/9010/_supermap-9010.ditamap"
-      ]
-    },
-    {
-      "id": "is909",
-      "title": "InsuranceSuite OnPrem 9.0.9",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
-      "branch": "release/9.0.9",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/9.x/releases/909/_supermap-909.ditamap"
-      ]
-    },
-    {
-      "id": "is908",
-      "title": "InsuranceSuite OnPrem 9.0.8",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
-      "branch": "release/9.0.8",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/9.x/releases/908/_supermap-908.ditamap"
-      ]
-    },
-    {
       "id": "dxgwsf331",
       "title": "Digital GW for SF 3.3.1",
       "sourceType": "git",
@@ -99,22 +69,14 @@
       "title": "Configuration Manager Help Cortina",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/config-manager-help.git",
-      "branch": "Cortina",
-      "xdocsPathIds": [
-        "/Content/doc/help/guidewireCloud/cortina/GuidewireCloud.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
+      "branch": "release/Cortina"
     },
     {
       "id": "configmgrhelpbanffsrc",
       "title": "Configuration Manager Help Banff",
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/config-manager-help.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/help/guidewireCloud/banff/GuidewireCloudPlatform.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
+      "branch": "release/Banff"
     },
     {
       "id": "clouddataaccesssrc",

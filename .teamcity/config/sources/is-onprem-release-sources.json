@@ -72,6 +72,27 @@
       "branch": "release/10.0.2"
     },
     {
+      "id": "is9010",
+      "title": "InsuranceSuite OnPrem 9.0.10",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/9.0.10"
+    },
+    {
+      "id": "is909",
+      "title": "InsuranceSuite OnPrem 9.0.9",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/9.0.9"
+    },
+    {
+      "id": "is908",
+      "title": "InsuranceSuite OnPrem 9.0.8",
+      "sourceType": "xdocs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/9.0.8"
+    },
+    {
       "id": "insurancesuiteextrassrc",
       "title": "InsuranceSuite Extras",
       "sourceType": "git",
