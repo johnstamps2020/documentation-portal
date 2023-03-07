@@ -30,6 +30,13 @@
       "branch": "release/2021.2DOBSON"
     },
     {
+      "id": "in20211src",
+      "title": "InsuranceNow 2021.1 Cortina",
+      "sourceType": "git",
+      "branch": "release/2021.1CORTINA",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git"
+    }
+    {
       "id": "srcin20231apiref",
       "title": "InsuranceNow API Reference Garmisch",
       "sourceType": "git",
