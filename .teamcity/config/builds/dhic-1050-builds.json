@@ -1,0 +1,177 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dhic1050",
+      "docId": "dh1050rn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Cortina-10.5/DataHub/releaseDiffFiles/onPrem",
+          "targetFolder": "extras/releaseDiffFiles/onPrem",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dhic1050",
+      "docId": "dh1050product",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dhic1050",
+      "docId": "dh1050install",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dhic1050",
+      "docId": "dh1050upgrade",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dhic1050",
+      "docId": "dh1050config",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dhic1050",
+      "docId": "dh1050dataspec",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dhic1050",
+      "docId": "dh1050admin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "developer-ref.ditamap",
+      "srcId": "dhic1050",
+      "docId": "dh1050devref",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "srcId": "dhicextrassrc",
+          "sourceFolder": "Cortina-10.5/DataHub/autoGenFiles/onPrem",
+          "targetFolder": "extras/autoGenFiles/onPrem"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dhic1050",
+      "docId": "ic1050rn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Cortina-10.5/InfoCenter/releaseDiffFiles/onPrem",
+          "targetFolder": "extras/releaseDiffFiles/onPrem",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dhic1050",
+      "docId": "ic1050product",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dhic1050",
+      "docId": "ic1050install",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dhic1050",
+      "docId": "ic1050upgrade",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dhic1050",
+      "docId": "ic1050config",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dhic1050",
+      "docId": "ic1050dataspec",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dhic1050",
+      "docId": "ic1050admin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "bi-applications.ditamap",
+      "srcId": "dhic1050",
+      "docId": "ic1050biapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "reports.ditamap",
+      "srcId": "dhic1050",
+      "docId": "ic1050reports",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "developer-ref.ditamap",
+      "srcId": "dhic1050",
+      "docId": "ic1050devref",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "srcId": "dhicextrassrc",
+          "sourceFolder": "Cortina-10.5/InfoCenter/autoGenFiles/onPrem",
+          "targetFolder": "extras/autoGenFiles/onPrem"
+        }
+      ]
+    }
+  ]
+}
