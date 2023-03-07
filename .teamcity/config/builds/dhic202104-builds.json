@@ -5,7 +5,7 @@
       "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "releasenotes.ditamap",
-      "srcId": "dmcloudrncortinasrc",
+      "srcId": "dm202104src",
       "docId": "dhcloudrncortina",
       "indexRedirect": true,
       "resources": [
@@ -20,7 +20,7 @@
       "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "product.ditamap",
-      "srcId": "dmcloudproductcortinasrc",
+      "srcId": "dm202104src",
       "docId": "dhcloudproductcortina",
       "indexRedirect": true
     },
@@ -28,7 +28,7 @@
       "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "install.ditamap",
-      "srcId": "dmcloudinstallcortinasrc",
+      "srcId": "dm202104src",
       "docId": "dhcloudinstallcortina",
       "indexRedirect": true
     },
@@ -36,7 +36,7 @@
       "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "upgrade.ditamap",
-      "srcId": "dmcloudupgradecortinasrc",
+      "srcId": "dm202104src",
       "docId": "dhcloudupgradecortina",
       "indexRedirect": true
     },
@@ -44,7 +44,7 @@
       "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "config.ditamap",
-      "srcId": "dmcloudconfigcortinasrc",
+      "srcId": "dm202104src",
       "docId": "dhcloudconfigcortina",
       "indexRedirect": true
     },
@@ -52,7 +52,7 @@
       "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "dataspec.ditamap",
-      "srcId": "dmclouddataspeccortinasrc",
+      "srcId": "dm202104src",
       "docId": "dhclouddataspeccortina",
       "indexRedirect": true
     },
@@ -60,7 +60,7 @@
       "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "admin.ditamap",
-      "srcId": "dmcloudadmincortinasrc",
+      "srcId": "dm202104src",
       "docId": "dhcloudadmincortina",
       "indexRedirect": true
     },
@@ -68,7 +68,7 @@
       "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "developer-ref.ditamap",
-      "srcId": "dmclouddevrefcortinasrc",
+      "srcId": "dm202104src",
       "docId": "dhclouddevrefcortina",
       "indexRedirect": true,
       "resources": [
@@ -83,7 +83,7 @@
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "releasenotes.ditamap",
-      "srcId": "dmcloudrncortinasrc",
+      "srcId": "dm202104src",
       "docId": "iccloudrncortina",
       "indexRedirect": true,
       "resources": [
@@ -98,7 +98,7 @@
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "product.ditamap",
-      "srcId": "dmcloudproductcortinasrc",
+      "srcId": "dm202104src",
       "docId": "iccloudproductcortina",
       "indexRedirect": true
     },
@@ -106,7 +106,7 @@
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "install.ditamap",
-      "srcId": "dmcloudinstallcortinasrc",
+      "srcId": "dm202104src",
       "docId": "iccloudinstallcortina",
       "indexRedirect": true
     },
@@ -114,7 +114,7 @@
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "upgrade.ditamap",
-      "srcId": "dmcloudupgradecortinasrc",
+      "srcId": "dm202104src",
       "docId": "iccloudupgradecortina",
       "indexRedirect": true
     },
@@ -122,7 +122,7 @@
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "config.ditamap",
-      "srcId": "dmcloudconfigcortinasrc",
+      "srcId": "dm202104src",
       "docId": "iccloudconfigcortina",
       "indexRedirect": true
     },
@@ -130,7 +130,7 @@
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "dataspec.ditamap",
-      "srcId": "dmclouddataspeccortinasrc",
+      "srcId": "dm202104src",
       "docId": "icclouddataspeccortina",
       "indexRedirect": true
     },
@@ -138,7 +138,7 @@
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "admin.ditamap",
-      "srcId": "dmcloudadmincortinasrc",
+      "srcId": "dm202104src",
       "docId": "iccloudadmincortina",
       "indexRedirect": true
     },
@@ -146,7 +146,7 @@
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "bi-applications.ditamap",
-      "srcId": "iccloudbiappcortinasrc",
+      "srcId": "dm202104src",
       "docId": "iccloudbiappcortina",
       "indexRedirect": true
     },
@@ -154,7 +154,7 @@
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "reports.ditamap",
-      "srcId": "iccloudreportscortinasrc",
+      "srcId": "dm202104src",
       "docId": "iccloudreportscortina",
       "indexRedirect": true
     },
@@ -162,7 +162,7 @@
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "developer-ref.ditamap",
-      "srcId": "dmclouddevrefcortinasrc",
+      "srcId": "dm202104src",
       "docId": "icclouddevrefcortina",
       "indexRedirect": true,
       "resources": [

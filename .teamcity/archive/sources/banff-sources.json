@@ -25,12 +25,9 @@
     {
       "id": "dhic202011",
       "title": "Data Management 2020.11",
-      "sourceType": "xdocs",
+      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/releases-cloud/202011/DM_all.ditamap"
-      ]
+      "branch": "release/2020.11"
     },
     {
       "id": "dx202011",
