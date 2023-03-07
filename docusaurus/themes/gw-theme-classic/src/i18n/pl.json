@@ -54,6 +54,10 @@
   "feedbackDialog.clearEmail": {
     "message": "Usuń email"
   },
+  "feedbackDialog.validEmail": {
+    "message": "Wprowadź prawidłowy adres email",
+    "description": "Appears under the email field asking the user to provide an email address which contains all the elements of an email address, such as the @ symbol and a domain"
+  },
   "feedbackDialog.cancel": {
     "message": "Anuluj",
     "description": "Cancel and do not send your feedback"
