@@ -25,14 +25,14 @@
     {
       "id": "isconfigupgradetools1xsrc",
       "title": "InsuranceSuite Upgrade Tools 1x",
-      "sourceType": "xdocs",
+      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-1x.git",
       "branch": "master"
     },
     {
       "id": "isconfigupgradetools1450src",
       "title": "InsuranceSuite Upgrade Tools 1.45.0",
-      "sourceType": "xdocs",
+      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-tools-1x.git",
       "branch": "release/1.45.0-9.0.10"
     }

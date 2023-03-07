@@ -46,7 +46,7 @@
     {
       "id": "selfmanagedis1011src",
       "title": "InsuranceSuite 10.1.1",
-      "sourceType": "xdocs",
+      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-10x.git",
       "branch": "release/10.1.1"
     },
@@ -74,21 +74,21 @@
     {
       "id": "is9010",
       "title": "InsuranceSuite OnPrem 9.0.10",
-      "sourceType": "xdocs",
+      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
       "branch": "release/9.0.10"
     },
     {
       "id": "is909",
       "title": "InsuranceSuite OnPrem 9.0.9",
-      "sourceType": "xdocs",
+      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
       "branch": "release/9.0.9"
     },
     {
       "id": "is908",
       "title": "InsuranceSuite OnPrem 9.0.8",
-      "sourceType": "xdocs",
+      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
       "branch": "release/9.0.8"
     },
