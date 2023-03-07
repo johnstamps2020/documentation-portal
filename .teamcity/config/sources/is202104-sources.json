@@ -11,7 +11,7 @@
     {
       "id": "is202104src",
       "title": "IS 2021.04",
-      "sourceType": "xdocs",
+      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
       "branch": "release/2021.04"
     }
