@@ -33,12 +33,8 @@
       "id": "dx202011",
       "title": "Digital 2020.11",
       "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "2020.11",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/digital/11.x/releases/202011/DX_superbook.ditamap"
-      ]
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
+      "branch": "release/2020.11"
     },
     {
       "id": "srcapiref202011",
