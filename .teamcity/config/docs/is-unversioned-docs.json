@@ -9,7 +9,7 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools Compatibility"],
         "version": ["latest"],
-        "subject": ["Upgrade Tools Compatibility"]
+        "subject": ["Installation"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
