@@ -11,6 +11,7 @@ import { LandingPageLayoutProps } from '../../../pages/LandingPage/LandingPage';
 import LandingPageSelector, {
   LandingPageSelectorProps,
 } from '../LandingPageSelector';
+import PagePropsController from '../PagePropsController';
 
 export type SectionLayoutProps = LandingPageLayoutProps & {
   sections: SectionProps[];
@@ -42,6 +43,7 @@ export default function SectionLayout({
     >
       <Grid xs={12} lg={8}>
         <Stack spacing={1} direction="column" width="100%">
+          <PagePropsController {...pageData} />
           <SelfManagedLink pagePath={pageData.path} backgroundImage="" />
           <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
             <Breadcrumbs />
@@ -63,7 +65,7 @@ export default function SectionLayout({
         </Stack>
       </Grid>
       <Box sx={{ columnCount: { xs: 1, md: 2 }, maxWidth: '950px' }}>
-        {sections?.map(section => (
+        {sections?.map((section) => (
           <Section {...section} key={section.label} />
         ))}
       </Box>

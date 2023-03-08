@@ -1,10 +1,10 @@
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Stack from '@mui/material/Stack';
 import Switch from '@mui/material/Switch';
+import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import { Page } from 'server/dist/model/entity/Page';
 import { useUserInfo } from '../../hooks/useApi';
@@ -78,10 +78,16 @@ export default function PagePropsController(pageData: Page) {
       sx={{
         alignItems: 'center',
         backgroundColor: 'white',
+        border: '1px solid black',
         borderRadius: '4px',
         padding: '12px',
+        margin: '8px auto',
+        maxWidth: 'fit-content',
       }}
     >
+      <Typography sx={{ fontSize: 18, fontWeight: 800 }}>
+        Page properties
+      </Typography>
       <FormGroup row>
         {['internal', 'public', 'earlyAccess', 'isInProduction'].map((key) => (
           <FormControlLabel

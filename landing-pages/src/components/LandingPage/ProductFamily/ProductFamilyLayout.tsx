@@ -12,6 +12,7 @@ import {
 import { usePageData } from '../../../hooks/usePageData';
 import ReleaseSelector from '../ReleaseSelector';
 import ProductFamilySidebar from './ProductFamilySidebar';
+import PagePropsController from '../PagePropsController';
 
 export type ProductFamilyLayoutProps = LandingPageLayoutProps & {
   items: LandingPageItemProps[];
@@ -39,6 +40,7 @@ export default function ProductFamilyLayout({
     >
       <Grid>
         <Stack spacing={1} direction="column" width="100%">
+          <PagePropsController {...pageData} />
           <SelfManagedLink
             pagePath={pageData.path}
             backgroundImage={backgroundProps.backgroundImage}
@@ -61,7 +63,7 @@ export default function ProductFamilyLayout({
       </Grid>
       <Grid container width="100%" maxWidth="1330px" gap={2}>
         <Grid container sm={12} md={9} gap={2}>
-          {items.map(item => (
+          {items.map((item) => (
             <ProductFamilyCard {...item} key={item.label} />
           ))}
         </Grid>
