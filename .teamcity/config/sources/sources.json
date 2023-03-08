@@ -125,15 +125,13 @@
       "id": "checksumssrc",
       "title": "Checksums source in git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/checksums.git",
-      "branch": "master",
-      "sourceType": "git"
+      "branch": "master"
     },
     {
       "id": "easyguidesrc",
       "title": "EasyGuide source in git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/easyguide.git",
-      "branch": "master",
-      "sourceType": "git"
+      "branch": "master"
     },
     {
       "id": "gwglossarysrc",
