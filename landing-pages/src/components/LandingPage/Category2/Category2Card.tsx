@@ -3,8 +3,8 @@ import Category2Item from './Category2Item';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
-import { LandingPageItemProps } from '../../../pages/LandingPage/LandingPage';
-import { useLandingPageItems } from '../../../hooks/useLandingPageItems';
+import { LandingPageItemProps } from 'pages/LandingPage/LandingPage';
+import { useLandingPageItems } from 'hooks/useLandingPageItems';
 
 type LandingPageCategoryProps = {
   label: string;
@@ -30,7 +30,7 @@ export default function Category2Card({
       </Typography>
       <Divider />
       <Stack spacing={1} sx={{ fontSize: '0.875rem', color: 'black' }}>
-        {landingPageItems?.map(categoryItem => (
+        {landingPageItems?.map((categoryItem) => (
           <Category2Item {...categoryItem} key={categoryItem.label} />
         ))}
       </Stack>

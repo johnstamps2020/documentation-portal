@@ -1,10 +1,10 @@
-import Layout from '../../components/Layout/Layout';
+import Layout from 'components/Layout/Layout';
 import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
-import LoginOptions from '../../components/LoginPage/LoginOptions';
+import LoginOptions from 'components/LoginPage/LoginOptions';
 
 export default function LoginPage() {
   return (

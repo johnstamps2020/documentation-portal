@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import InputLabel from '@mui/material/InputLabel';
 import { styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
-import { useLandingPageItems } from '../../hooks/useLandingPageItems';
-import { LandingPageItemProps } from '../../pages/LandingPage/LandingPage';
+import { useLandingPageItems } from 'hooks/useLandingPageItems';
+import { LandingPageItemProps } from 'pages/LandingPage/LandingPage';
 
 type PageSelectorItem = {
   label: string;

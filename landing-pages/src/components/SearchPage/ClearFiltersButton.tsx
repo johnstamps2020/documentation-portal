@@ -1,4 +1,4 @@
-import useClearFilters from '../../hooks/useClearFilters';
+import useClearFilters from 'hooks/useClearFilters';
 import { StyledButton } from './StyledSearchComponents';
 
 type ClearFilterButtonProps = {

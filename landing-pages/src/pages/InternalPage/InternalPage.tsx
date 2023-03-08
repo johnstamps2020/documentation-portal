@@ -2,10 +2,10 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Layout from '../../components/Layout/Layout';
-import { headerHeight } from '../../components/Layout/Header/Header';
+import Layout from 'components/Layout/Layout';
+import { headerHeight } from 'components/Layout/Header/Header';
 import Container from '@mui/material/Container';
-import { useUserInfo } from '../../hooks/useApi';
+import { useUserInfo } from 'hooks/useApi';
 import Button from '@mui/material/Button';
 
 type RestrictedPathProps = {

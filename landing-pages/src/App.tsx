@@ -6,7 +6,7 @@ import FourOhFourPage from './pages/FourOhFourPage/FourOhFourPage';
 import DocAdminPage from './pages/DocAdminPage/DocAdminPage';
 import SearchPage from './pages/SearchPage/SearchPage';
 import LoginPage from './pages/LoginPage/LoginPage';
-import { appTheme } from './themes/appTheme';
+import { appTheme } from 'themes/appTheme';
 import CssBaseline from '@mui/material/CssBaseline';
 import SupportPage from './pages/SupportPage/SupportPage';
 import InternalPage from './pages/InternalPage/InternalPage';

@@ -2,9 +2,9 @@ import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import { useLocaleParams } from '../../hooks/useLocale';
-import { useSearchData } from '../../hooks/useApi';
-import { useMobile } from '../../hooks/useMobile';
+import { useLocaleParams } from 'hooks/useLocale';
+import { useSearchData } from 'hooks/useApi';
+import { useMobile } from 'hooks/useMobile';
 
 type SearchBoxProps = {
   showBigSize?: boolean;
@@ -44,11 +44,13 @@ export default function SearchBox({ showBigSize = true }: SearchBoxProps) {
 
   const searchFilters: { [key: string]: string[] } = {};
   if (searchData) {
-    searchData.filters.forEach(f => {
-      const checkedValues = f.values.filter(v => v.checked);
+    searchData.filters.forEach((f) => {
+      const checkedValues = f.values.filter((v) => v.checked);
 
       if (checkedValues.length > 0) {
-        searchFilters[f.name] = checkedValues.filter(Boolean).map(v => v.label);
+        searchFilters[f.name] = checkedValues
+          .filter(Boolean)
+          .map((v) => v.label);
       }
     });
   }

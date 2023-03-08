@@ -2,13 +2,13 @@ import Stack from '@mui/material/Stack';
 import CategoryItem from './CategoryItem';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import { SidebarProps } from '../../../pages/LandingPage/LandingPage';
-import { useLandingPageItems } from '../../../hooks/useLandingPageItems';
+import { SidebarProps } from 'pages/LandingPage/LandingPage';
+import { useLandingPageItems } from 'hooks/useLandingPageItems';
 
 export default function CategorySidebar({ label, items }: SidebarProps) {
-  const { landingPageItems, isLoading, isError} = useLandingPageItems(items);
+  const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
 
-  if (isLoading || isError || !landingPageItems ) {
+  if (isLoading || isError || !landingPageItems) {
     return null;
   }
   return (
@@ -26,7 +26,7 @@ export default function CategorySidebar({ label, items }: SidebarProps) {
     >
       <Typography variant="h2">{label}</Typography>
       <Stack spacing={1}>
-      {landingPageItems.map((sidebarItem) => (
+        {landingPageItems.map((sidebarItem) => (
           <CategoryItem {...sidebarItem} key={sidebarItem.label} />
         ))}
       </Stack>

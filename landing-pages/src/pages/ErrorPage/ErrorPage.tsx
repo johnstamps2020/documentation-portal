@@ -1,4 +1,4 @@
-import Layout from '../../components/Layout/Layout';
+import Layout from 'components/Layout/Layout';
 import styles from './ErrorPage.module.css';
 import Paper from '@mui/material/Paper';
 

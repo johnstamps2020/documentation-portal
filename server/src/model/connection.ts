@@ -15,11 +15,11 @@ import { Locale } from './entity/Locale';
 const dbHost = process.env.CONFIG_DB_HOST;
 const isDevMode = runningInDevMode();
 
-winstonLogger.notice(
-  `Connecting to database at ${dbHost}.${
-    isDevMode && ' >>WARNING: Running in dev mode<<'
-  }`
-);
+winstonLogger.notice(`Connecting to database at ${dbHost}.`);
+
+if (isDevMode) {
+  winstonLogger.warning('>>WARNING: Running in dev mode<<');
+}
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -38,7 +38,7 @@ export const AppDataSource = new DataSource({
     Source,
     Page,
     ExternalLink,
-    Locale
+    Locale,
   ],
   synchronize: isDevMode,
   cache: {

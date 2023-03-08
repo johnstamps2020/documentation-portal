@@ -1,10 +1,7 @@
 import { readdirSync, statSync } from 'fs';
-import { resolve, extname } from 'path';
+import { resolve } from 'path';
 
-export function getAllFilesRecursively(
-  rootDir: string,
-  extension?: string
-): (string | undefined)[] {
+export function getAllFilesRecursively(rootDir: string): string[] {
   const filesAndFolders = readdirSync(rootDir);
   return filesAndFolders
     .map((fileOrFolder) => {
@@ -13,10 +10,7 @@ export function getAllFilesRecursively(
         return getAllFilesRecursively(absolutePath);
       }
 
-      if (!extension || extname(absolutePath) === extension) {
-        return absolutePath;
-      }
+      return absolutePath;
     })
-    .flat()
-    .filter(Boolean);
+    .flat();
 }

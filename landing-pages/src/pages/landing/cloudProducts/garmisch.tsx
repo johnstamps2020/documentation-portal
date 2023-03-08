@@ -1,10 +1,10 @@
 import Category2Layout, {
   Category2LayoutProps,
-} from '../../../components/LandingPage/Category2/Category2Layout';
-import gradientBackgroundImage from '../../../images/background-gradient.svg';
-import garmischBackgroundImage from '../../../images/background-garmisch.png';
-import garmischBadge from '../../../images/badge-garmisch.svg';
-import { baseBackgroundProps } from '../../LandingPage/LandingPage';
+} from 'components/LandingPage/Category2/Category2Layout';
+import gradientBackgroundImage from 'images/background-gradient.svg';
+import garmischBackgroundImage from 'images/background-garmisch.png';
+import garmischBadge from 'images/badge-garmisch.svg';
+import { baseBackgroundProps } from 'pages/LandingPage/LandingPage';
 
 const pageConfig: Category2LayoutProps = {
   backgroundProps: {

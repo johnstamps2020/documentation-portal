@@ -1,15 +1,15 @@
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
-import bookOpenIcon from '../../../images/twoColumn/book-open-solid.svg';
-import codeIcon from '../../../images/twoColumn/code-solid.svg';
-import cogsIcon from '../../../images/twoColumn/cogs-solid.svg';
-import ObjectGroupIcon from '../../../images/twoColumn/object-group-regular.svg';
-import puzzlePieceIcon from '../../../images/twoColumn/puzzle-piece-solid.svg';
-import usersCogIcon from '../../../images/twoColumn/users-cog-solid.svg';
-import wrenchIcon from '../../../images/twoColumn/wrench-solid.svg';
-import { LandingPageItemProps } from '../../../pages/LandingPage/LandingPage';
+import bookOpenIcon from 'images/twoColumn/book-open-solid.svg';
+import codeIcon from 'images/twoColumn/code-solid.svg';
+import cogsIcon from 'images/twoColumn/cogs-solid.svg';
+import ObjectGroupIcon from 'images/twoColumn/object-group-regular.svg';
+import puzzlePieceIcon from 'images/twoColumn/puzzle-piece-solid.svg';
+import usersCogIcon from 'images/twoColumn/users-cog-solid.svg';
+import wrenchIcon from 'images/twoColumn/wrench-solid.svg';
+import { LandingPageItemProps } from 'pages/LandingPage/LandingPage';
 import SectionItem from './SectionItem';
-import { useLandingPageItems } from '../../../hooks/useLandingPageItems';
+import { useLandingPageItems } from 'hooks/useLandingPageItems';
 
 export type SectionProps = {
   label: string;
@@ -17,9 +17,9 @@ export type SectionProps = {
 };
 
 export default function Section({ label, items }: SectionProps) {
-  const { landingPageItems, isLoading, isError} = useLandingPageItems(items);
+  const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
 
-  if (isLoading || isError || !landingPageItems ) {
+  if (isLoading || isError || !landingPageItems) {
     return null;
   }
   const iconArray = [
@@ -63,7 +63,7 @@ export default function Section({ label, items }: SectionProps) {
         </Typography>
       </Stack>
       <Stack spacing={1} paddingLeft="40px">
-      {landingPageItems?.map(sectionItem => (
+        {landingPageItems?.map((sectionItem) => (
           <SectionItem {...sectionItem} key={sectionItem.label} />
         ))}
       </Stack>

@@ -1,5 +1,5 @@
 import Stack from '@mui/material/Stack';
-import { LandingPageItemData } from '../../hooks/useLandingPageItems';
+import { LandingPageItemData } from 'hooks/useLandingPageItems';
 import Link, { LinkProps } from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
 import InternalTooltip from './InternalTooltip';

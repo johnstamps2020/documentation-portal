@@ -1,6 +1,6 @@
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import internalLogo from '../../images/internal_document_icon.svg';
+import internalLogo from 'images/internal_document_icon.svg';
 
 export default function InternalTooltip() {
   return (

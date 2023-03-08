@@ -1,16 +1,16 @@
 import Grid from '@mui/material/Unstable_Grid2';
-import Breadcrumbs from '../Breadcrumbs';
+import Breadcrumbs from 'components/LandingPage/Breadcrumbs';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
-import SelfManagedLink from '../SelfManagedLink';
+import SelfManagedLink from 'components/LandingPage/SelfManagedLink';
 import Box from '@mui/material/Box';
 import Section, { SectionProps } from './Section';
-import { usePageData } from '../../../hooks/usePageData';
-import { LandingPageLayoutProps } from '../../../pages/LandingPage/LandingPage';
+import { usePageData } from 'hooks/usePageData';
+import { LandingPageLayoutProps } from 'pages/LandingPage/LandingPage';
 import LandingPageSelector, {
   LandingPageSelectorProps,
-} from '../LandingPageSelector';
+} from 'components/LandingPage/LandingPageSelector';
 
 export type SectionLayoutProps = LandingPageLayoutProps & {
   sections: SectionProps[];
@@ -63,7 +63,7 @@ export default function SectionLayout({
         </Stack>
       </Grid>
       <Box sx={{ columnCount: { xs: 1, md: 2 }, maxWidth: '950px' }}>
-        {sections?.map(section => (
+        {sections?.map((section) => (
           <Section {...section} key={section.label} />
         ))}
       </Box>

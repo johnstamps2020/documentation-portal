@@ -1,6 +1,6 @@
 import { MenuItem } from '@mui/material';
 import React from 'react';
-import iconTranslatedDocs from '../../../images/icon-translatedDocs.svg';
+import iconTranslatedDocs from 'images/icon-translatedDocs.svg';
 import {
   HeaderAvatar,
   HeaderIconButton,
@@ -8,7 +8,7 @@ import {
   HeaderMenuDivider,
   HeaderMenuLink,
   HeaderMenuTitle,
-} from '../StyledLayoutComponents';
+} from 'components/Layout/StyledLayoutComponents';
 
 export default function TranslatedPages() {
   const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(

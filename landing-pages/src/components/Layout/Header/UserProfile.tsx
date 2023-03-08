@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import React from 'react';
-import iconAvatar from '../../../images/icon-avatar.svg';
+import iconAvatar from 'images/icon-avatar.svg';
 import {
   HeaderAvatar,
   HeaderIconButton,
@@ -8,12 +8,12 @@ import {
   HeaderMenuDivider,
   HeaderMenuSubtitle,
   HeaderMenuTitle,
-} from '../StyledLayoutComponents';
+} from 'components/Layout/StyledLayoutComponents';
 import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
-import { useUserInfo } from '../../../hooks/useApi';
+import { useUserInfo } from 'hooks/useApi';
 import Drawer from '@mui/material/Drawer';
-import LoginOptions from '../../LoginPage/LoginOptions';
+import LoginOptions from 'components/LoginPage/LoginOptions';
 import Stack from '@mui/material/Stack';
 import LogoutOption from './LogoutOption';
 

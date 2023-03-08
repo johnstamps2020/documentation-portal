@@ -2,8 +2,8 @@ import React, { createContext, useEffect, useState } from 'react';
 import { Doc } from 'server/dist/model/entity/Doc';
 import { Build } from 'server/dist/model/entity/Build';
 import Button from '@mui/material/Button';
-import Layout from '../../components/Layout/Layout';
-import DocForm from '../../components/DocForm/DocForm';
+import Layout from 'components/Layout/Layout';
+import DocForm from 'components/DocForm/DocForm';
 import { Product } from 'server/dist/model/entity/Product';
 import { Release } from 'server/dist/model/entity/Release';
 import { Subject } from 'server/dist/model/entity/Subject';
@@ -14,7 +14,7 @@ import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import { ThemeProvider } from '@mui/material';
-import { adminDocTheme } from '../../themes/adminDocTheme';
+import { adminDocTheme } from 'themes/adminDocTheme';
 import { Locale } from 'server/dist/model/entity/Locale';
 
 const emptyDoc: Doc = {
@@ -56,7 +56,7 @@ export default function DocAdminPage() {
   };
 
   useEffect(() => {
-    getDocData().then(r => r);
+    getDocData().then((r) => r);
   }, []);
 
   const deleteDoc = async (id: string) => {
@@ -99,7 +99,7 @@ export default function DocAdminPage() {
       open: false,
     });
     //updating document
-    if (doc && docData && docData.find(document => document.id === doc.id)) {
+    if (doc && docData && docData.find((document) => document.id === doc.id)) {
       const data = {
         id: doc.id,
         title: doc.title,
