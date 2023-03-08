@@ -21,16 +21,13 @@ export async function isAllowedToAccessRoute(
   res: Response,
   next: NextFunction
 ) {
-  const { status, body } = isUserAllowedToAccessResource(
-    res,
-    false,
-    false,
-    true
-  );
-  if (status === 200) {
-    return next();
+  const userInfo = res.locals.userInfo;
+  if (!userInfo.isLoggedIn) {
+    return res.status(401).json({
+      message: 'Route not available: User not logged in',
+    });
   }
-  return res.status(status).json(body);
+  return next();
 }
 
 export async function isAllowedToAccessPageOrDoc(
