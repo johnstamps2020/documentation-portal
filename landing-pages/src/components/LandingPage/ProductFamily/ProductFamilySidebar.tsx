@@ -1,6 +1,6 @@
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import { SidebarProps } from 'pages/LandingPage/LandingPage';
+import { SidebarProps } from 'pages/LandingPage/LandingPageTypes';
 import FamilyProductItem from './ProductFamilyItem';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
 

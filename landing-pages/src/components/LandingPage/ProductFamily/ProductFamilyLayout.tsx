@@ -8,7 +8,7 @@ import SelfManagedLink from 'components/LandingPage/SelfManagedLink';
 import {
   LandingPageItemProps,
   LandingPageLayoutProps,
-} from 'pages/LandingPage/LandingPage';
+} from 'pages/LandingPage/LandingPageTypes';
 import { usePageData } from 'hooks/usePageData';
 import ReleaseSelector from 'components/LandingPage/ReleaseSelector';
 import ProductFamilySidebar from './ProductFamilySidebar';

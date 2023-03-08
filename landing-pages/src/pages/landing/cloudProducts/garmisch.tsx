@@ -4,7 +4,7 @@ import Category2Layout, {
 import gradientBackgroundImage from 'images/background-gradient.svg';
 import garmischBackgroundImage from 'images/background-garmisch.png';
 import garmischBadge from 'images/badge-garmisch.svg';
-import { baseBackgroundProps } from 'pages/LandingPage/LandingPage';
+import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 
 const pageConfig: Category2LayoutProps = {
   backgroundProps: {

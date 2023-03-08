@@ -3,7 +3,7 @@ import Category2Item from './Category2Item';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
-import { LandingPageItemProps } from 'pages/LandingPage/LandingPage';
+import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
 
 type LandingPageCategoryProps = {

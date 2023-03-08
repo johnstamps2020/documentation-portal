@@ -1,4 +1,4 @@
-import { LandingPageItemProps } from 'pages/LandingPage/LandingPage';
+import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import { PageError } from './usePageData';
 import useSWR from 'swr';
 

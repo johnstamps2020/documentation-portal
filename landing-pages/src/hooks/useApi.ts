@@ -4,7 +4,7 @@ import { UserInfo } from 'server/dist/types/user';
 import { useSearchParams } from 'react-router-dom';
 import { SearchData, ServerSearchError } from 'server/dist/types/serverSearch';
 
-const getter = (url: string) => fetch(url).then(r => r.json());
+const getter = (url: string) => fetch(url).then((r) => r.json());
 
 type BreadcrumbItem = {
   label: string;

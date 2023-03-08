@@ -2,7 +2,7 @@ import { Button, Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
-import { LandingPageItemProps } from 'pages/LandingPage/LandingPage';
+import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import LandingPageLink from './LandingPageLink';
 
 export type WhatsNewProps = {

@@ -10,7 +10,7 @@ import WhatsNew, { WhatsNewProps } from 'components/LandingPage/WhatsNew';
 import {
   LandingPageItemProps,
   LandingPageLayoutProps,
-} from 'pages/LandingPage/LandingPage';
+} from 'pages/LandingPage/LandingPageTypes';
 import ReleaseSelector from 'components/LandingPage/ReleaseSelector';
 
 export type Category2LayoutProps = LandingPageLayoutProps & {

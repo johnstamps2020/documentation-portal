@@ -3,7 +3,7 @@ import Category2Item from './Category2Item';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
-import { SidebarProps } from 'pages/LandingPage/LandingPage';
+import { SidebarProps } from 'pages/LandingPage/LandingPageTypes';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
 
 export default function Category2Sidebar({ label, items }: SidebarProps) {
