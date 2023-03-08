@@ -1,5 +1,5 @@
 import MenuItem from '@mui/material/MenuItem';
-import { HeaderMenuLink } from '../StyledLayoutComponents';
+import { HeaderMenuLink } from 'components/Layout/StyledLayoutComponents';
 
 export default function LogoutOption() {
   const redirectTo = `/gw-logout?redirectTo=${window.location.href.replace(

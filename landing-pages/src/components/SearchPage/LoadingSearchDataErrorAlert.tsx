@@ -1,7 +1,7 @@
 import Alert from '@mui/material/Alert/Alert';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { useSearchData } from '../../hooks/useApi';
+import { useSearchData } from 'hooks/useApi';
 
 export default function LoadingSearchDataErrorAlert() {
   const { isError } = useSearchData();

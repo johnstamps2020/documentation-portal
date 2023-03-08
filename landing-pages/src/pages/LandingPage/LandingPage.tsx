@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import Layout from '../../components/Layout/Layout';
+import Layout from 'components/Layout/Layout';
 import { lazy, Suspense } from 'react';
 import { Theme } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
 import Alert from '@mui/material/Alert';
 import Backdrop from '@mui/material/Backdrop';
-import { usePageData } from '../../hooks/usePageData';
+import { usePageData } from 'hooks/usePageData';
 
 export const baseBackgroundProps = {
   backgroundAttachment: 'fixed',

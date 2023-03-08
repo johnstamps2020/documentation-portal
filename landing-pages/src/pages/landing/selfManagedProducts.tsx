@@ -2,8 +2,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import CategoryLayout, {
   CategoryLayoutProps,
-} from '../../components/LandingPage/Category/CategoryLayout';
-import { baseBackgroundProps } from '../LandingPage/LandingPage';
+} from 'components/LandingPage/Category/CategoryLayout';
+import { baseBackgroundProps } from 'pages/LandingPage/LandingPage';
 
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {

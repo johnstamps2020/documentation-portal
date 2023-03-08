@@ -1,12 +1,12 @@
-import Layout from '../../components/Layout/Layout';
+import Layout from 'components/Layout/Layout';
 import Stack from '@mui/material/Stack';
 import { Divider, Drawer } from '@mui/material';
-import SearchFilterPanel from '../../components/SearchPage/SearchFilterPanel';
-import SearchPageBackdrop from '../../components/SearchPage/SearchPageBackdrop';
-import SearchResultPanel from '../../components/SearchPage/SearchResultPanel';
+import SearchFilterPanel from 'components/SearchPage/SearchFilterPanel';
+import SearchPageBackdrop from 'components/SearchPage/SearchPageBackdrop';
+import SearchResultPanel from 'components/SearchPage/SearchResultPanel';
 import { useState } from 'react';
-import FilterButton from '../../components/SearchPage/FilterButton';
-import { useMobile } from '../../hooks/useMobile';
+import FilterButton from 'components/SearchPage/FilterButton';
+import { useMobile } from 'hooks/useMobile';
 
 export default function SearchPage() {
   const [showFilters, setShowFilters] = useState(false);

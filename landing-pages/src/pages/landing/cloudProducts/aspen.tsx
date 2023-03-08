@@ -1,8 +1,8 @@
 import ProductFamilyLayout, {
   ProductFamilyLayoutProps,
-} from '../../../components/LandingPage/ProductFamily/ProductFamilyLayout';
-import gradientBackgroundImage from '../../../images/background-gradient.svg';
-import { baseBackgroundProps } from '../../LandingPage/LandingPage';
+} from 'components/LandingPage/ProductFamily/ProductFamilyLayout';
+import gradientBackgroundImage from 'images/background-gradient.svg';
+import { baseBackgroundProps } from 'pages/LandingPage/LandingPage';
 
 const pageConfig: ProductFamilyLayoutProps = {
   backgroundProps: {

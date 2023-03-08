@@ -1,10 +1,10 @@
 import Category2Layout, {
   Category2LayoutProps,
-} from '../../../components/LandingPage/Category2/Category2Layout';
-import gradientBackgroundImage from '../../../images/background-gradient.svg';
-import flaineBadge from '../../../images/badge-flaine.svg';
-import flaineBackgroundImage from '../../../images/background-flaine.svg';
-import { baseBackgroundProps } from '../../LandingPage/LandingPage';
+} from 'components/LandingPage/Category2/Category2Layout';
+import gradientBackgroundImage from 'images/background-gradient.svg';
+import flaineBadge from 'images/badge-flaine.svg';
+import flaineBackgroundImage from 'images/background-flaine.svg';
+import { baseBackgroundProps } from 'pages/LandingPage/LandingPage';
 
 const pageConfig: Category2LayoutProps = {
   backgroundProps: {

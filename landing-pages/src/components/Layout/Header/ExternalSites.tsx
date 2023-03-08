@@ -1,6 +1,6 @@
 import { MenuItem } from '@mui/material';
 import React from 'react';
-import iconExternalSites from '../../../images/icon-externalSites.svg';
+import iconExternalSites from 'images/icon-externalSites.svg';
 import {
   HeaderAvatar,
   HeaderIconButton,
@@ -8,7 +8,7 @@ import {
   HeaderMenuDivider,
   HeaderMenuLink,
   HeaderMenuTitle,
-} from '../StyledLayoutComponents';
+} from 'components/Layout/StyledLayoutComponents';
 
 export default function ExternalSites() {
   const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(

@@ -4,10 +4,10 @@ import AppliedFilters from './AppliedFilters';
 import PaginationSelector from './PaginationSelector';
 import Stack from '@mui/material/Stack';
 import Highlighter from './Highlighter';
-import useClearFilters from '../../hooks/useClearFilters';
+import useClearFilters from 'hooks/useClearFilters';
 import ClearFilterButton from './ClearFiltersButton';
 import { StyledHeading1 } from './StyledSearchComponents';
-import { useSearchData } from '../../hooks/useApi';
+import { useSearchData } from 'hooks/useApi';
 
 //TODO: Don't return null if no searchData, use Skeletons to load while waiting for searchData elements
 export default function SearchResults() {

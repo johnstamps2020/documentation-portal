@@ -1,7 +1,7 @@
-import { baseBackgroundProps } from '../../../../LandingPage/LandingPage';
+import { baseBackgroundProps } from 'pages/LandingPage/LandingPage';
 import SectionLayout, {
   SectionLayoutProps,
-} from '../../../../../components/LandingPage/Section/SectionLayout';
+} from 'components/LandingPage/Section/SectionLayout';
 
 const pageConfig: SectionLayoutProps = {
   backgroundProps: {
@@ -118,7 +118,7 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'US Standards-based Template Framework',
-          pagePath: '../../../../globalContent/sbt',
+          pagePath: 'globalContent/sbt',
         },
       ],
     },

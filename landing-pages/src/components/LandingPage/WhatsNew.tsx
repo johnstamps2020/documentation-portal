@@ -1,8 +1,8 @@
 import { Button, Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
-import { useLandingPageItems } from '../../hooks/useLandingPageItems';
-import { LandingPageItemProps } from '../../pages/LandingPage/LandingPage';
+import { useLandingPageItems } from 'hooks/useLandingPageItems';
+import { LandingPageItemProps } from 'pages/LandingPage/LandingPage';
 import LandingPageLink from './LandingPageLink';
 
 export type WhatsNewProps = {
@@ -18,9 +18,9 @@ export default function WhatsNew({
   item,
   content,
 }: WhatsNewProps) {
-  const { landingPageItems, isLoading, isError} = useLandingPageItems([item]);
+  const { landingPageItems, isLoading, isError } = useLandingPageItems([item]);
 
-  if (isLoading || isError || !landingPageItems ) {
+  if (isLoading || isError || !landingPageItems) {
     return null;
   }
   return (
@@ -101,7 +101,10 @@ export default function WhatsNew({
             padding: '4px',
           }}
         >
-          <LandingPageLink landingPageItem={landingPageItems[0]} sx={{ color: 'white' }} />
+          <LandingPageLink
+            landingPageItem={landingPageItems[0]}
+            sx={{ color: 'white' }}
+          />
         </Button>
       </Stack>
     </Paper>

@@ -1,9 +1,9 @@
 import CategoryLayout, {
   CategoryLayoutProps,
-} from '../../../components/LandingPage/Category/CategoryLayout';
-import gradientBackgroundImage from '../../../images/background-gradient.svg';
-import elysianBackgroundImage from '../../../images/background-elysian.svg';
-import { baseBackgroundProps } from '../../LandingPage/LandingPage';
+} from 'components/LandingPage/Category/CategoryLayout';
+import gradientBackgroundImage from 'images/background-gradient.svg';
+import elysianBackgroundImage from 'images/background-elysian.svg';
+import { baseBackgroundProps } from 'pages/LandingPage/LandingPage';
 
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {

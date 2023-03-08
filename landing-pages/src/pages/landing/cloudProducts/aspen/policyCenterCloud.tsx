@@ -1,7 +1,7 @@
 import CategoryLayout, {
   CategoryLayoutProps,
-} from '../../../../components/LandingPage/Category/CategoryLayout';
-import { baseBackgroundProps } from '../../../LandingPage/LandingPage';
+} from 'components/LandingPage/Category/CategoryLayout';
+import { baseBackgroundProps } from 'pages/LandingPage/LandingPage';
 
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {

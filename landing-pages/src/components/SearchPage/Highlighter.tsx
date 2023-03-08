@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import highlightIcon from '../../images/icon-highlighter.svg';
+import highlightIcon from 'images/icon-highlighter.svg';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Tooltip from '@mui/material/Tooltip';
 import GlobalStyles from '@mui/material/GlobalStyles';
-import { useSearchData } from '../../hooks/useApi';
+import { useSearchData } from 'hooks/useApi';
 
 export default function Highlighter() {
   const { searchData } = useSearchData();
