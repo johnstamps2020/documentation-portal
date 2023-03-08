@@ -1,7 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 import { Doc } from './Doc';
 
-
 @Entity()
 export class Locale {
   @PrimaryColumn()
@@ -10,9 +9,6 @@ export class Locale {
   @Column()
   languageName: string;
 
-  @OneToMany(
-    () => Doc,
-    doc => doc.id
-  )
+  @OneToMany(() => Doc, (doc) => doc.id)
   doc: Doc;
 }

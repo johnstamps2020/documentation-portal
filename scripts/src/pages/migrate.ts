@@ -101,7 +101,7 @@ function getWhatsNew(flailConfig: FlailConfig): WhatsNewProps {
 }
 
 function getBackgroundImage(flailConfig: FlailConfig): string {
-  return
+  return;
 }
 
 const sidebar: SidebarProps = {

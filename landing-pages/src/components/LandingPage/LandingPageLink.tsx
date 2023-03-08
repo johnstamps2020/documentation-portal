@@ -29,11 +29,7 @@ export default function LandingPageLink({
       justifyContent="flex-start"
     >
       {landingPageItem.path ? (
-        <Link
-          component={RouterLink}
-          to={`/${landingPageItem.path}`}
-          sx={sx}
-        >
+        <Link component={RouterLink} to={`/${landingPageItem.path}`} sx={sx}>
           {landingPageItem.label}
         </Link>
       ) : (
