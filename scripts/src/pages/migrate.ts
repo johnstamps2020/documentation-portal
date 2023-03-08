@@ -118,8 +118,13 @@ function getWhatsNew(flailConfig: FlailConfig): WhatsNewProps {
   };
 }
 
-function getBackgroundImage(flailConfig: FlailConfig): string {
-  return 'background image coming soon';
+function getBackgroundProps(flailConfig: FlailConfig): string {
+  const { level1Class } = getFlailClass(flailConfig);
+
+  if (level1Class.match('garmisch')) {
+    return '{...baseBackgroundProps,backgroundImage: {xs: `url(${gradientBackgroundImage})`,sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), url(${garmischBackgroundImage}),linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,},},';
+  }
+  return '{...baseBackgroundProps,backgroundImage: `url(${gradientBackgroundImage})`,},';
 }
 
 const sidebar: SidebarProps = {
@@ -153,10 +158,7 @@ function mapToCategory2Layout(
   targetFile: string
 ): Category2LayoutProps {
   return {
-    backgroundProps: {
-      ...baseBackgroundProps,
-      backgroundImage: getBackgroundImage(flailConfig),
-    },
+    backgroundProps: getBackgroundProps(flailConfig),
     cards: flailConfig.items.map((flail) => ({
       label: flail.label,
       items: getItems(flail.items, targetFile),
