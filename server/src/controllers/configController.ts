@@ -173,6 +173,8 @@ export async function getAllEntities(
     }
     const availableEntities = [];
     for (const entity of result) {
+      //FIXME: If an entity doesn't have the public prop, we set public to false by default.
+      // But this setting breaks the some frontend elements, such as the useReleases hook.
       const { status, body } = isUserAllowedToAccessResource(
         res,
         entity.public || false,
