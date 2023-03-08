@@ -7,7 +7,7 @@ import SelfManagedLink from 'components/LandingPage/SelfManagedLink';
 import Box from '@mui/material/Box';
 import Section, { SectionProps } from './Section';
 import { usePageData } from 'hooks/usePageData';
-import { LandingPageLayoutProps } from 'pages/LandingPage/LandingPage';
+import { LandingPageLayoutProps } from 'pages/LandingPage/LandingPageTypes';
 import LandingPageSelector, {
   LandingPageSelectorProps,
 } from 'components/LandingPage/LandingPageSelector';

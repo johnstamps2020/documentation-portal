@@ -6,41 +6,7 @@ import Skeleton from '@mui/material/Skeleton';
 import Alert from '@mui/material/Alert';
 import Backdrop from '@mui/material/Backdrop';
 import { usePageData } from 'hooks/usePageData';
-
-export const baseBackgroundProps = {
-  backgroundAttachment: 'fixed',
-  backgroundPosition: 'bottom-right',
-  backgroundSize: 'cover',
-  minHeight: '100vh',
-};
-
-export type LandingPageProps = {
-  title: string;
-};
-
-export type LandingPageLayoutProps = {
-  backgroundProps: {
-    backgroundImage?: any;
-    backgroundColor?: string;
-    backgroundAttachment: string;
-    backgroundPosition: string;
-    backgroundSize: string;
-    minHeight: string;
-  };
-  sidebar?: SidebarProps;
-};
-
-export type LandingPageItemProps = {
-  label?: string;
-  docId?: string;
-  pagePath?: string;
-  url?: string;
-};
-
-export type SidebarProps = {
-  label: string;
-  items: LandingPageItemProps[];
-};
+import { LandingPageProps } from './LandingPageTypes';
 
 type LazyPageComponent = React.LazyExoticComponent<
   React.ComponentType<LandingPageProps>
@@ -65,8 +31,8 @@ export default function LandingPage() {
   const PageComponent = lazy(() => {
     const pageDataPath = pageData.path;
     return pageDataPath === '/'
-      ? import('../landing/Index')
-      : import(`../landing/${pageDataPath}`);
+      ? import('pages/landing/Index')
+      : import(`pages/landing/${pageDataPath}`);
   }) as LazyPageComponent;
 
   return (

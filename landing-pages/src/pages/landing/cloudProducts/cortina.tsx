@@ -3,7 +3,7 @@ import ProductFamilyLayout, {
 } from 'components/LandingPage/ProductFamily/ProductFamilyLayout';
 import cortinaBackgroundImage from 'images/background-cortina.svg';
 import gradientBackgroundImage from 'images/background-gradient.svg';
-import { baseBackgroundProps } from 'pages/LandingPage/LandingPage';
+import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 
 const pageConfig: ProductFamilyLayoutProps = {
   backgroundProps: {

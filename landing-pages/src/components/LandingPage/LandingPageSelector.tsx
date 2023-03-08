@@ -6,7 +6,7 @@ import InputLabel from '@mui/material/InputLabel';
 import { styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
-import { LandingPageItemProps } from 'pages/LandingPage/LandingPage';
+import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 
 type PageSelectorItem = {
   label: string;

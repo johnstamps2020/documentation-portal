@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/material/Link';
 import { usePageData } from 'hooks/usePageData';
-import { LandingPageLayoutProps } from 'pages/LandingPage/LandingPage';
+import { LandingPageLayoutProps } from 'pages/LandingPage/LandingPageTypes';
 import ReleaseSelector from 'components/LandingPage/ReleaseSelector';
 import CategorySidebar from './CategorySidebar';
 import LandingPageSelector, {

@@ -3,7 +3,7 @@ import CategoryLayout, {
 } from 'components/LandingPage/Category/CategoryLayout';
 import gradientBackgroundImage from 'images/background-gradient.svg';
 import elysianBackgroundImage from 'images/background-elysian.svg';
-import { baseBackgroundProps } from 'pages/LandingPage/LandingPage';
+import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {

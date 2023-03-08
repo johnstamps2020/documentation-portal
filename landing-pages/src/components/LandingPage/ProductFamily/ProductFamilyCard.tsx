@@ -1,6 +1,6 @@
 import Paper from '@mui/material/Paper';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
-import { LandingPageItemProps } from 'pages/LandingPage/LandingPage';
+import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import LandingPageLink from 'components/LandingPage/LandingPageLink';
 
 export default function ProductFamilyCard(item: LandingPageItemProps) {

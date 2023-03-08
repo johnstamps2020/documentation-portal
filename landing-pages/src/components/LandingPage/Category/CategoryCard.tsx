@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack';
 import LandingPageItem from './CategoryItem';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import { LandingPageItemProps } from 'pages/LandingPage/LandingPage';
+import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import CategorySection, { CategorySectionProps } from './CategorySection';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
 

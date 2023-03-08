@@ -5,6 +5,7 @@
     "migrate-pages": "ts-node src/pages/migrate.ts"
   },
   "devDependencies": {
+    "@types/node": "^18.14.6",
     "landing-pages": "workspace:*",
     "ts-node": "^10.9.1"
   }

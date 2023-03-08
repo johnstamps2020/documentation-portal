@@ -9,10 +9,8 @@ import {
   baseBackgroundProps,
   LandingPageItemProps,
   SidebarProps,
-} from 'landing-pages/src/pages/LandingPage/LandingPage';
+} from 'landing-pages/src/pages/LandingPage/LandingPageTypes';
 import { WhatsNewProps } from 'landing-pages/src/components/LandingPage/WhatsNew';
-import garmischBadge from 'landing-pages/src/images/badge-garmisch.svg';
-import flaineBadge from 'landing-pages/src/images/badge-flaine.svg';
 
 const landingPagesSourceDir = resolve(__dirname, '../../../frontend/pages');
 
@@ -70,7 +68,7 @@ function getWhatsNew(flailConfig: FlailConfig): WhatsNewProps {
   if (level1Class.match('garmisch')) {
     return {
       label: 'Garmisch',
-      badge: garmischBadge,
+      badge: 'garmischBadge',
       item: { label: 'Learn more', docId: 'whatsnewgarmisch' },
       content: [
         'Washes your car',
@@ -84,7 +82,7 @@ function getWhatsNew(flailConfig: FlailConfig): WhatsNewProps {
 
   return {
     label: 'Flaine',
-    badge: flaineBadge,
+    badge: 'flaineBadge',
     item: { label: 'Learn more', docId: 'whatsnewflaine' },
     content: [
       'Advanced Product Designer app (APD)',

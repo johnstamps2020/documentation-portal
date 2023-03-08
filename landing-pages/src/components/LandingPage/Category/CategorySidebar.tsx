@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack';
 import CategoryItem from './CategoryItem';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import { SidebarProps } from 'pages/LandingPage/LandingPage';
+import { SidebarProps } from 'pages/LandingPage/LandingPageTypes';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
 
 export default function CategorySidebar({ label, items }: SidebarProps) {

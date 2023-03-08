@@ -7,7 +7,7 @@ import ObjectGroupIcon from 'images/twoColumn/object-group-regular.svg';
 import puzzlePieceIcon from 'images/twoColumn/puzzle-piece-solid.svg';
 import usersCogIcon from 'images/twoColumn/users-cog-solid.svg';
 import wrenchIcon from 'images/twoColumn/wrench-solid.svg';
-import { LandingPageItemProps } from 'pages/LandingPage/LandingPage';
+import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import SectionItem from './SectionItem';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
 
