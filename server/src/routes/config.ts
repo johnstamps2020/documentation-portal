@@ -27,7 +27,7 @@ const router = Router();
 
 router.get('/', async function (req, res) {
   const { status, body } = await getAllEntities(Doc.name, res);
-  res.status(status).json(body);
+  return res.status(status).json(body);
 });
 
 router.get('/breadcrumbs', async function (req, res, next) {
@@ -87,21 +87,21 @@ router.get('/entity/:repo/all', async function (req, res) {
 router.post('/entity/:repo', async function (req, res) {
   const { repo } = req.params;
   const options = req.body;
-  const { status, body } = await createOrUpdateEntity(repo, options);
+  const { status, body } = await createOrUpdateEntity(repo, options, res);
   return res.status(status).json(body);
 });
 
 router.put('/entity/:repo', async function (req, res) {
   const { repo } = req.params;
   const options = req.body;
-  const { status, body } = await createOrUpdateEntity(repo, options);
+  const { status, body } = await createOrUpdateEntity(repo, options, res);
   return res.status(status).json(body);
 });
 
 router.delete('/entity/:repo', async function (req, res) {
   const { repo } = req.params;
   const options = req.body;
-  const { status, body } = await deleteEntity(repo, options);
+  const { status, body } = await deleteEntity(repo, options, res);
   return res.status(status).json(body);
 });
 
@@ -145,19 +145,19 @@ router.put(
     let status;
     let body;
     if (configType === 'doc') {
-      const response = await putDocConfigsInDatabase();
+      const response = await putDocConfigsInDatabase(res);
       status = response.status;
       body = response.body;
     } else if (configType === 'source') {
-      const response = await putSourceConfigsInDatabase();
+      const response = await putSourceConfigsInDatabase(res);
       status = response.status;
       body = response.body;
     } else if (configType === 'page') {
-      const response = await putPageConfigsInDatabase();
+      const response = await putPageConfigsInDatabase(res);
       status = response.status;
       body = response.body;
     } else if (configType === 'openRoutes') {
-      const response = await putOpenRoutesConfigsInDatabase();
+      const response = await putOpenRoutesConfigsInDatabase(res);
       status = response.status;
       body = response.body;
     } else {

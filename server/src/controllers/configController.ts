@@ -8,7 +8,10 @@ import { Release } from '../model/entity/Release';
 import { FindOneAndDeleteOptions, FindOptionsWhere, ILike } from 'typeorm';
 import { ApiResponse } from '../types/apiResponse';
 import { Page } from '../model/entity/Page';
-import { isUserAllowedToAccessResource } from './authController';
+import {
+  isUserAllowedToAccessResource,
+  isUserAllowedToManageResource,
+} from './authController';
 import { LegacyVersionObject } from '../types/legacyConfig';
 
 function optionsAreValid(options: {}) {
@@ -194,9 +197,14 @@ export async function getAllEntities(
 
 export async function createOrUpdateEntity(
   repoName: string,
-  options: {}
+  options: {},
+  res: Response
 ): Promise<ApiResponse> {
   try {
+    const { status, body } = isUserAllowedToManageResource(res);
+    if (status !== 200) {
+      return { status, body };
+    }
     if (!optionsAreValid(options)) {
       return {
         status: 400,
@@ -207,7 +215,7 @@ export async function createOrUpdateEntity(
     }
     const result = await AppDataSource.manager.save(repoName, options);
     return {
-      status: 200,
+      status: status,
       body: result,
     };
   } catch (err) {
@@ -220,9 +228,14 @@ export async function createOrUpdateEntity(
 
 export async function deleteEntity(
   repoName: string,
-  options: FindOneAndDeleteOptions
+  options: FindOneAndDeleteOptions,
+  res: Response
 ): Promise<ApiResponse> {
   try {
+    const { status, body } = isUserAllowedToManageResource(res);
+    if (status !== 200) {
+      return { status, body };
+    }
     if (!optionsAreValid(options)) {
       return {
         status: 400,
@@ -233,7 +246,7 @@ export async function deleteEntity(
     }
     const result = await AppDataSource.manager.delete(repoName, options);
     return {
-      status: 200,
+      status: status,
       body: result,
     };
   } catch (err) {

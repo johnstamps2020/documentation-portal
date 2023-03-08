@@ -26,6 +26,7 @@ import { getConfigFile, listItems } from './s3Controller';
 import { runningInDevMode } from './utils/serverUtils';
 import { Subject } from '../model/entity/Subject';
 import { Response } from 'express';
+import { isUserAllowedToManageResource } from './authController';
 
 export async function getLegacyDocConfigs(res: Response) {
   const { status, body } = await getAllEntities(Doc.name, res);
@@ -268,8 +269,12 @@ function getRelativePagePath(absPagePath: string): string {
   return absPagePath.split('pages/')[1] || '/';
 }
 
-export async function putOpenRoutesConfigsInDatabase() {
+export async function putOpenRoutesConfigsInDatabase(res: Response) {
   try {
+    const { status, body } = isUserAllowedToManageResource(res);
+    if (status !== 200) {
+      return { status, body };
+    }
     const openPaths = [
       {
         path: 'gw-login',
@@ -317,7 +322,11 @@ export async function putOpenRoutesConfigsInDatabase() {
       openRouteConfig.earlyAccess = false;
       openRouteConfig.component = openPath.component;
       openRouteConfig.isInProduction = false;
-      const result = await createOrUpdateEntity(Page.name, openRouteConfig);
+      const result = await createOrUpdateEntity(
+        Page.name,
+        openRouteConfig,
+        res
+      );
       openRouteConfigs.push(result.body);
     }
     return {
@@ -336,8 +345,12 @@ export async function putOpenRoutesConfigsInDatabase() {
   }
 }
 
-export async function putPageConfigsInDatabase() {
+export async function putPageConfigsInDatabase(res: Response) {
   try {
+    const { status, body } = isUserAllowedToManageResource(res);
+    if (status !== 200) {
+      return { status, body };
+    }
     const isDevMode = runningInDevMode();
     let localLandingPagesConfigDir: string;
     if (isDevMode) {
@@ -391,7 +404,7 @@ export async function putPageConfigsInDatabase() {
       if (legacySearchFilters) {
         dbPageConfig.searchFilters = legacySearchFilters;
       }
-      const result = await createOrUpdateEntity(Page.name, dbPageConfig);
+      const result = await createOrUpdateEntity(Page.name, dbPageConfig, res);
       if (result.status === 200) {
         dbPageConfigs.push(result.body);
       } else {
@@ -422,11 +435,15 @@ export async function putPageConfigsInDatabase() {
   }
 }
 
-export async function putSourceConfigsInDatabase(): Promise<{
+export async function putSourceConfigsInDatabase(res: Response): Promise<{
   status: number;
   body: any;
 }> {
   try {
+    const { status, body } = isUserAllowedToManageResource(res);
+    if (status !== 200) {
+      return { status, body };
+    }
     const isDevMode = runningInDevMode();
     let localSourcesConfigDir: string;
     if (isDevMode) {
@@ -464,7 +481,7 @@ export async function putSourceConfigsInDatabase(): Promise<{
       dbSource.exportFrequency = source.exportFrequency;
       dbSource.pollInterval = source.pollInterval;
 
-      const result = await createOrUpdateEntity(Source.name, dbSource);
+      const result = await createOrUpdateEntity(Source.name, dbSource, res);
       if (result.status === 200) {
         dbSourceConfigs.push(result.body);
       } else {
@@ -498,7 +515,8 @@ export async function putSourceConfigsInDatabase(): Promise<{
 async function getOrCreateEntities(
   legacyItems: string[],
   repoName: string,
-  mainKey: string
+  mainKey: string,
+  res: Response
 ) {
   const items = [];
   for (const i of legacyItems) {
@@ -510,9 +528,13 @@ async function getOrCreateEntities(
       false
     );
     if (status === 404) {
-      const { status, body } = await createOrUpdateEntity(repoName, {
-        [mainKey]: i,
-      });
+      const { status, body } = await createOrUpdateEntity(
+        repoName,
+        {
+          [mainKey]: i,
+        },
+        res
+      );
       if (status === 200) {
         items.push(body);
       }
@@ -528,21 +550,26 @@ async function createProductEntities(
     productName: string;
     platformName: string;
     versionName: string;
-  }[]
+  }[],
+  res: Response
 ): Promise<Product[]> {
   const dbDocProducts = [];
   for (const productConfig of productConfigs) {
-    const productEntitySaveResult = await createOrUpdateEntity(Product.name, {
-      name: productConfig.productName,
-      platform: productConfig.platformName,
-      version: productConfig.versionName,
-    });
+    const productEntitySaveResult = await createOrUpdateEntity(
+      Product.name,
+      {
+        name: productConfig.productName,
+        platform: productConfig.platformName,
+        version: productConfig.versionName,
+      },
+      res
+    );
     dbDocProducts.push(productEntitySaveResult.body);
   }
   return dbDocProducts;
 }
 
-async function addDocBuild(buildConfig: legacyBuildConfig) {
+async function addDocBuild(buildConfig: legacyBuildConfig, res: Response) {
   const docBuild = new Build();
   const matchingBuildSrc = await findEntity(
     Source.name,
@@ -582,7 +609,8 @@ async function addDocBuild(buildConfig: legacyBuildConfig) {
       docBuildResource.source = sourceEntity.body;
       const docBuildResourceSaveResult = await createOrUpdateEntity(
         Resource.name,
-        docBuildResource
+        docBuildResource,
+        res
       );
       if (docBuildResourceSaveResult.status === 200) {
         docBuildResources.push(docBuildResourceSaveResult.body);
@@ -590,15 +618,19 @@ async function addDocBuild(buildConfig: legacyBuildConfig) {
       docBuild.resources = docBuildResources;
     }
   }
-  const saveResult = await createOrUpdateEntity(Build.name, docBuild);
+  const saveResult = await createOrUpdateEntity(Build.name, docBuild, res);
   return saveResult.body;
 }
 
-export async function putDocConfigsInDatabase(): Promise<{
+export async function putDocConfigsInDatabase(res: Response): Promise<{
   status: number;
   body: any;
 }> {
   try {
+    const { status, body } = isUserAllowedToManageResource(res);
+    if (status !== 200) {
+      return { status, body };
+    }
     const isDevMode = runningInDevMode();
     let localDocsConfigDir: string;
     let localBuildsConfigDir: string;
@@ -663,7 +695,8 @@ export async function putDocConfigsInDatabase(): Promise<{
         docReleases = await getOrCreateEntities(
           legacyDocReleases,
           Release.name,
-          'name'
+          'name',
+          res
         );
       }
       if (docReleases.length > 0) {
@@ -677,7 +710,8 @@ export async function putDocConfigsInDatabase(): Promise<{
         docSubjects = await getOrCreateEntities(
           legacyDocSubjects,
           Subject.name,
-          'name'
+          'name',
+          res
         );
       }
       if (docSubjects.length > 0) {
@@ -700,14 +734,17 @@ export async function putDocConfigsInDatabase(): Promise<{
           }
         }
       }
-      dbDoc.products = await createProductEntities(productConfigCombinations);
+      dbDoc.products = await createProductEntities(
+        productConfigCombinations,
+        res
+      );
 
       const matchingBuild = localBuildsConfig.find((b) => b.docId === doc.id);
       if (matchingBuild) {
-        dbDoc.build = await addDocBuild(matchingBuild);
+        dbDoc.build = await addDocBuild(matchingBuild, res);
       }
 
-      const result = await createOrUpdateEntity(Doc.name, dbDoc);
+      const result = await createOrUpdateEntity(Doc.name, dbDoc, res);
       if (result.status === 200) {
         dbDocConfigs.push(result.body);
       } else {
