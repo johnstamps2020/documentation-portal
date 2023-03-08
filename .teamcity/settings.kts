@@ -31,7 +31,6 @@ project {
     subProject(Recommendations.rootProject)
     subProject(Content.rootProject)
     subProject(BuildListeners.rootProject)
-    subProject(Exports.rootProject)
     subProject(Apps.rootProject)
     subProject(Server.rootProject)
     subProject(Frontend.rootProject)
