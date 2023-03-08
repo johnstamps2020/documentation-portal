@@ -4,35 +4,30 @@
     {
       "id": "docguidesrc",
       "title": "Documentation Guide",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/doc-guide.git",
       "branch": "main"
     },
     {
       "id": "doctoolsadminsrc",
       "title": "DocTools Administration Guide",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/doctools-admin-guide.git",
       "branch": "main"
     },
     {
       "id": "elemrendsrc",
       "title": "Element Rendering",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/doctools/element-rendering.git",
       "branch": "main"
     },
     {
       "id": "docusaurusgwdocslatestsrc",
       "title": "Docusaurus Guidewire",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
       "branch": "master"
     },
     {
       "id": "learninginditasrc",
       "title": "Learning in DITA",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/learning-in-dita.git",
       "branch": "main"
     }

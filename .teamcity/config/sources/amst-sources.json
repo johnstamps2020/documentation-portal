@@ -4,7 +4,6 @@
     {
       "id": "amstsrc",
       "title": "Analytics Manager Solution Templates",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/analytics-manager-solution-templates.git",
       "branch": "main"
     }

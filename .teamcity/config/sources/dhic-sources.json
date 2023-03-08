@@ -4,70 +4,60 @@
     {
       "id": "dm202104src",
       "title": "DataManagement 2021.04",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "release/2021.04"
     },
     {
       "id": "dm2021111060src",
       "title": "DataManagement 2021.11 and 10.6.0",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "release/2021.11-10.6.0"
     },
     {
       "id": "dm202205107src",
       "title": "DataManagement 2022.05 and 10.7.0",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "release/2022.05-10.7"
     },
     {
       "id": "dm202209108src",
       "title": "DataManagement 2022.09 and 10.8.0",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "release/2022.09-10.8"
     },
     {
       "id": "dm202302109src",
       "title": "DataManagement 2023.02 and 10.9.0",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "release/2023.02-10.9"
     },
     {
       "id": "dhic1050",
       "title": "DataManagement 10.5.0",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "release/10.5.0"
     },
     {
       "id": "dhic1040",
       "title": "DataManagement 10.4.0",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "release/10.4.0"
     },
     {
       "id": "dhic1030",
       "title": "DataManagement 10.3.0",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "release/10.3.0"
     },
     {
       "id": "dhic1020",
       "title": "DataManagement 10.2.0",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "release/10.2.0"
     },
     {
       "id": "dhicextrassrc",
       "title": "DataHub and InfoCenter Extras",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
       "branch": "master"
     }

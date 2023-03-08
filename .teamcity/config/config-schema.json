@@ -145,11 +145,6 @@
         "title": {
           "$ref": "#/definitions/title"
         },
-        "sourceType": {
-          "description": "The type of the source",
-          "type": "string",
-          "enum": ["git"]
-        },
         "gitUrl": {
           "description": "An SSH url to a git repo containing source files for builds.",
           "pattern": "^ssh://git@stash\\.guidewire\\.com/"

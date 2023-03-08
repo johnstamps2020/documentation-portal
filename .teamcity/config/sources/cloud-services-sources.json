@@ -4,35 +4,30 @@
     {
       "id": "datamaskingsrc",
       "title": "Data Masking",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/data-masking.git",
       "branch": "main"
     },
     {
       "id": "rulessrc",
       "title": "Rules",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/rules.git",
       "branch": "main"
     },
     {
       "id": "submissionintakesrc",
       "title": "Submission Intake",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/submission-intake.git",
       "branch": "main"
     },
     {
       "id": "submissionintakelxdsrc",
       "title": "Submission Intake LXD",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/submission-intake.git",
       "branch": "lxd-experiments"
     },
     {
       "id": "worksetmgrsrc",
       "title": "Workset Manager",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/workset-manager.git",
       "branch": "main"
     }

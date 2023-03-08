@@ -4,14 +4,12 @@
     {
       "id": "isupgradeguide202104src",
       "title": "InsuranceSuite Upgrade Guide 2021.04",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
       "branch": "release/2021.04"
     },
     {
       "id": "is202104src",
       "title": "IS 2021.04",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
       "branch": "release/2021.04"
     }

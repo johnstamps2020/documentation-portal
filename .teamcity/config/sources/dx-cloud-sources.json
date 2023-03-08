@@ -4,7 +4,6 @@
     {
       "id": "dx202302src",
       "title": "Digital 2023.02",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
       "branch": "release/2023.02"
     },
@@ -12,13 +11,11 @@
       "id": "dxjsdocs202302src",
       "title": "Digital Frontend API 2023.02",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-extras.git",
-      "sourceType": "git",
       "branch": "release/2023.02"
     },
     {
       "id": "dx202209src",
       "title": "Digital 2022.09",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
       "branch": "release/2022.09"
     },
@@ -26,13 +23,11 @@
       "id": "dxjsdocs202209src",
       "title": "Digital Frontend API 2022.09",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-extras.git",
-      "sourceType": "git",
       "branch": "release/2022.09"
     },
     {
       "id": "dx202205src",
       "title": "Digital 2022.05",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
       "branch": "release/2022.05"
     },
@@ -40,13 +35,11 @@
       "id": "dxjsdocs202205src",
       "title": "Digital Frontend API 2022.05",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-extras.git",
-      "sourceType": "git",
       "branch": "release/2022.05"
     },
     {
       "id": "dx202111src",
       "title": "Digital 2021.11",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
       "branch": "release/2021.11"
     },
@@ -54,13 +47,11 @@
       "id": "dxjsdocs202111src",
       "title": "Digital Frontend API 2021.11",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-extras.git",
-      "sourceType": "git",
       "branch": "release/2021.11"
     },
     {
       "id": "dx202104src",
       "title": "Digital 2021.04",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
       "branch": "release/2021.04"
     },
@@ -68,7 +59,6 @@
       "id": "dxjsdocs202104src",
       "title": "Digital Frontend API 2021.04",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-extras.git",
-      "sourceType": "git",
       "branch": "release/2021.04"
     }
   ]

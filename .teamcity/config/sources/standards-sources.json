@@ -4,182 +4,156 @@
     {
       "id": "standards202302src",
       "title": "Standards 2023.02",
-      "sourceType": "git",
       "branch": "2023.02",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202301src",
       "title": "Standards 2023.01",
-      "sourceType": "git",
       "branch": "2023.01",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202211src",
       "title": "Standards 2022.11",
-      "sourceType": "git",
       "branch": "2022.11",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202210src",
       "title": "Standards 2022.10",
-      "sourceType": "git",
       "branch": "2022.10",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202209src",
       "title": "Standards 2022.09",
-      "sourceType": "git",
       "branch": "2022.09",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202207src",
       "title": "Standards 2022.07.1",
-      "sourceType": "git",
       "branch": "2022.07.1",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202206src",
       "title": "Standards 2022.06",
-      "sourceType": "git",
       "branch": "2022.06",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202205src",
       "title": "Standards 2022.05",
-      "sourceType": "git",
       "branch": "2022.05",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202204src",
       "title": "Standards 2022.04",
-      "sourceType": "git",
       "branch": "2022.04",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202203src",
       "title": "Standards 2022.03",
-      "sourceType": "git",
       "branch": "2022.03",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202202src",
       "title": "Standards 2022.02",
-      "sourceType": "git",
       "branch": "2022.02",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202201src",
       "title": "Standards 2022.01",
-      "sourceType": "git",
       "branch": "2022.01",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202111src",
       "title": "Standards 2021.11",
-      "sourceType": "git",
       "branch": "2021.11",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202110src",
       "title": "Standards 2021.10",
-      "sourceType": "git",
       "branch": "2021.10",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202109src",
       "title": "Standards 2021.09",
-      "sourceType": "git",
       "branch": "2021.09",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202108src",
       "title": "Standards 2021.08",
-      "sourceType": "git",
       "branch": "2021.08",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202107src",
       "title": "Standards 2021.07",
-      "sourceType": "git",
       "branch": "2021.07",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202106src",
       "title": "Standards 2021.06",
-      "sourceType": "git",
       "branch": "2021.06",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202105src",
       "title": "Standards 2021.05",
-      "sourceType": "git",
       "branch": "2021.05",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202104src",
       "title": "Standards 2021.04",
-      "sourceType": "git",
       "branch": "2021.04",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202103src",
       "title": "Standards 2021.03",
-      "sourceType": "git",
       "branch": "2021.03",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202102src",
       "title": "Standards 2021.02",
-      "sourceType": "git",
       "branch": "2021.02",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202101src",
       "title": "Standards 2021.01",
-      "sourceType": "git",
       "branch": "2021.01",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202011src",
       "title": "Standards 2020.11",
-      "sourceType": "git",
       "branch": "2020.11",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standards202010src",
       "title": "Standards 2020.10",
-      "sourceType": "git",
       "branch": "2020.10",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     },
     {
       "id": "standardsmastersrc",
       "title": "Standards Master",
-      "sourceType": "git",
       "branch": "master",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/standards.git"
     }
