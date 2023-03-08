@@ -21,7 +21,7 @@
         },
         {
           "label": "APD toolkit",
-          "link": "/jutro/sdk/next/docs/apd-overview",
+          "link": "/jutro/sdk/next/docs/apd-toolkit-overview",
           "env": ["staging"]
         }
       ]
