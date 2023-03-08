@@ -5,4 +5,5 @@ export type UserInfo = {
   locale: string;
   isLoggedIn: boolean;
   hasGuidewireEmail: boolean;
+  isAdmin: boolean;
 };

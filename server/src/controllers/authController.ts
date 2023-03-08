@@ -74,6 +74,16 @@ export function isUserAllowedToManageResource(res: Response): ApiResponse {
       },
     };
   }
+  // FIXME: This condition may break loading legacy configs to the database. This process uses access token from
+  //  the authorization header
+  if (!userInfo.isAdmin) {
+    return {
+      status: 403,
+      body: {
+        message: 'Resource not available: Only GW admins can manage resources',
+      },
+    };
+  }
   return {
     status: 200,
     body: {

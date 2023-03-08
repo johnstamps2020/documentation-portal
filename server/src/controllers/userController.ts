@@ -39,6 +39,15 @@ function getUserName(user: ReqUser) {
   return 'Unnamed User';
 }
 
+function isAdmin(user: ReqUser) {
+  return [
+    'mskowron@guidewire.com',
+    'pkowaluk@guidewire.com',
+    'mszeligiewicz@guidewire.com',
+    'mgilster@guidewire.com',
+  ].includes(user.email);
+}
+
 const unknownUserInfo: UserInfo = {
   isLoggedIn: false,
   name: 'Unknown',
@@ -46,6 +55,7 @@ const unknownUserInfo: UserInfo = {
   preferred_username: 'Unknown',
   hasGuidewireEmail: false,
   locale: 'en-US',
+  isAdmin: false,
 };
 
 export async function getUserInfo(req: Request): Promise<UserInfo> {
@@ -76,6 +86,7 @@ export async function getUserInfo(req: Request): Promise<UserInfo> {
       preferred_username: email,
       hasGuidewireEmail: belongsToGuidewire(email),
       locale: user.locale,
+      isAdmin: isAdmin(user),
     };
   } catch (err) {
     winstonLogger.error(

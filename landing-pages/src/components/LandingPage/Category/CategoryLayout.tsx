@@ -14,6 +14,7 @@ import ReleaseSelector from '../ReleaseSelector';
 import CategorySidebar from './CategorySidebar';
 import Box from '@mui/material/Box';
 import PagePropsController from '../PagePropsController';
+import { useUserInfo } from '../../../hooks/useApi';
 
 export type CategoryLayoutProps = LandingPageLayoutProps & {
   cards: CategoryCardProps[];
@@ -111,7 +112,7 @@ export default function CategoryLayout({
             maxWidth: '932px',
           }}
         >
-          {cards.map(card => (
+          {cards.map((card) => (
             <CategoryCard {...card} key={card.label} />
           ))}
         </Grid>

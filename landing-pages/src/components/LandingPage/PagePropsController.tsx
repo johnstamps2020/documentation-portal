@@ -7,13 +7,20 @@ import Stack from '@mui/material/Stack';
 import Switch from '@mui/material/Switch';
 import { useState } from 'react';
 import { Page } from 'server/dist/model/entity/Page';
+import { useUserInfo } from '../../hooks/useApi';
 
 export default function PagePropsController(pageData: Page) {
   const [pageDataFromDb, setPageDataFromDb] = useState(pageData);
   const [tmpPageData, setTmpPageData] = useState(pageData);
   const [isSavingChanges, setIsSavingChanges] = useState(false);
   const [openSaveChangesMessage, setOpenSaveChangesMessage] = useState(false);
+  const [openErrorMessage, setOpenErrorMessage] = useState(false);
   const [readOnlyMode, setReadOnlyMode] = useState(true);
+  const { userInfo, isLoading, isError } = useUserInfo();
+
+  if (isLoading || isError || !userInfo?.isAdmin) {
+    return null;
+  }
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
@@ -24,6 +31,7 @@ export default function PagePropsController(pageData: Page) {
     }
 
     setOpenSaveChangesMessage(false);
+    setOpenErrorMessage(false);
     setIsSavingChanges(false);
   };
 
@@ -52,9 +60,11 @@ export default function PagePropsController(pageData: Page) {
 
     if (response.ok) {
       setPageDataFromDb(tmpPageData);
-      setReadOnlyMode(true);
       setOpenSaveChangesMessage(true);
+    } else {
+      setOpenErrorMessage(true);
     }
+    setReadOnlyMode(true);
     setIsSavingChanges(false);
   }
 
@@ -73,7 +83,7 @@ export default function PagePropsController(pageData: Page) {
       }}
     >
       <FormGroup row>
-        {['internal', 'public', 'earlyAccess', 'isInProduction'].map(key => (
+        {['internal', 'public', 'earlyAccess', 'isInProduction'].map((key) => (
           <FormControlLabel
             disabled={readOnlyMode}
             key={key}
@@ -112,7 +122,12 @@ export default function PagePropsController(pageData: Page) {
       )}
       {openSaveChangesMessage && (
         <Alert severity="success" onClose={handleClose}>
-          Changes saved successfully!
+          Changes saved successfully
+        </Alert>
+      )}
+      {openErrorMessage && (
+        <Alert severity="error" onClose={handleClose}>
+          Error: Changes not saved
         </Alert>
       )}
     </Stack>
