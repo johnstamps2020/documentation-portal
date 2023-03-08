@@ -165,12 +165,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   }
   return next();
 });
-app.use(
-  '/safeConfig',
-  saveUserInfoToResLocals,
-  isAllowedToAccessRoute,
-  configRouter
-);
+app.use('/safeConfig', saveUserInfoToResLocals, configRouter);
 app.use('/jira', saveUserInfoToResLocals, isAllowedToAccessRoute, jiraRouter);
 app.use('/lrs', saveUserInfoToResLocals, isAllowedToAccessRoute, lrsRouter);
 app.use('/s3', saveUserInfoToResLocals, isAllowedToAccessRoute, s3Router);

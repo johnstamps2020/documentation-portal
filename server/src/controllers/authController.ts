@@ -22,7 +22,7 @@ export async function isAllowedToAccessRoute(
 ) {
   const { status, body } = isUserAllowedToAccessResource(
     res,
-    true,
+    false,
     false,
     true
   );

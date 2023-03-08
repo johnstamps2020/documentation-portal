@@ -154,10 +154,10 @@ export async function findEntity(
   }
 }
 
-//FIXME: Change this function to return only entities that the user has access to. We cannot
-// restrict access to the get all entities endpoint based on login because
-// we need to be able to return public entities
-export async function getAllEntities(repoName: string): Promise<ApiResponse> {
+export async function getAllEntities(
+  repoName: string,
+  res: Response
+): Promise<ApiResponse> {
   try {
     const result = await AppDataSource.manager.find(repoName);
     if (!result) {
@@ -168,9 +168,21 @@ export async function getAllEntities(repoName: string): Promise<ApiResponse> {
         },
       };
     }
+    const availableEntities = [];
+    for (const entity of result) {
+      const { status, body } = isUserAllowedToAccessResource(
+        res,
+        entity.public || false,
+        entity.internal || false,
+        entity.isInProduction || true
+      );
+      if (status === 200) {
+        availableEntities.push(entity);
+      }
+    }
     return {
       status: 200,
-      body: result,
+      body: availableEntities,
     };
   } catch (err) {
     return {
@@ -365,6 +377,7 @@ export async function getRootBreadcrumb(pagePathname: string) {
   }
 }
 
+// FIXME: The version selector must filter out versions that the user cannot access
 export async function getVersionSelector(docId: string) {
   function getLabel(docConfig: Doc, releaseInLabel: boolean) {
     const docReleases = docConfig.releases.map((r) => r.name);

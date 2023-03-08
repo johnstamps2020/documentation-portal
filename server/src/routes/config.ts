@@ -26,7 +26,7 @@ import {
 const router = Router();
 
 router.get('/', async function (req, res) {
-  const { status, body } = await getAllEntities(Doc.name);
+  const { status, body } = await getAllEntities(Doc.name, res);
   res.status(status).json(body);
 });
 
@@ -80,7 +80,7 @@ router.get('/entity/:repo', async function (req, res) {
 
 router.get('/entity/:repo/all', async function (req, res) {
   const { repo } = req.params;
-  const { status, body } = await getAllEntities(repo);
+  const { status, body } = await getAllEntities(repo, res);
   return res.status(status).json(body);
 });
 
@@ -124,17 +124,17 @@ router.get('/entity/page/breadcrumbs', async function (req, res) {
 });
 
 router.get('/entity/legacy/docs', async function (req, res) {
-  const { status, body } = await getLegacyDocConfigs();
+  const { status, body } = await getLegacyDocConfigs(res);
   return res.status(status).json(body);
 });
 
 router.get('/entity/legacy/builds', async function (req, res) {
-  const { status, body } = await getLegacyBuildConfigs();
+  const { status, body } = await getLegacyBuildConfigs(res);
   return res.status(status).json(body);
 });
 
 router.get('/entity/legacy/sources', async function (req, res) {
-  const { status, body } = await getLegacySourceConfigs();
+  const { status, body } = await getLegacySourceConfigs(res);
   return res.status(status).json(body);
 });
 

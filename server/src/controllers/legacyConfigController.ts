@@ -25,9 +25,10 @@ import { Page } from '../model/entity/Page';
 import { getConfigFile, listItems } from './s3Controller';
 import { runningInDevMode } from './utils/serverUtils';
 import { Subject } from '../model/entity/Subject';
+import { Response } from 'express';
 
-export async function getLegacyDocConfigs() {
-  const { status, body } = await getAllEntities(Doc.name);
+export async function getLegacyDocConfigs(res: Response) {
+  const { status, body } = await getAllEntities(Doc.name, res);
   const dbDocs: Doc[] = body;
   const legacyDocs = [];
   if (status === 200) {
@@ -66,8 +67,8 @@ export async function getLegacyDocConfigs() {
   };
 }
 
-export async function getLegacyBuildConfigs() {
-  const { status, body } = await getAllEntities(Doc.name);
+export async function getLegacyBuildConfigs(res: Response) {
+  const { status, body } = await getAllEntities(Doc.name, res);
   const legacyBuilds = [];
   if (status === 200) {
     for (const doc of body) {
@@ -103,8 +104,8 @@ export async function getLegacyBuildConfigs() {
   };
 }
 
-export async function getLegacySourceConfigs() {
-  const { status, body } = await getAllEntities(Source.name);
+export async function getLegacySourceConfigs(res: Response) {
+  const { status, body } = await getAllEntities(Source.name, res);
   const legacySources = [];
   if (status === 200) {
     for (const src of body) {
