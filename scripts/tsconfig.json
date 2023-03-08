@@ -4,12 +4,14 @@
     "transpileOnly": true,
     "files": true,
     "compilerOptions": {
+      "jsx": "react"
       // compilerOptions specified here will override those declared below,
       // but *only* in ts-node.  Useful if you want ts-node and tsc to use
       // different options with a single tsconfig.json.
     }
   },
   "compilerOptions": {
+    "jsx": "react"
     // typescript options here
   }
 }

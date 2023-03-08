@@ -10953,7 +10953,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"landing-pages@workspace:landing-pages":
+"landing-pages@workspace:*, landing-pages@workspace:landing-pages":
   version: 0.0.0-use.local
   resolution: "landing-pages@workspace:landing-pages"
   dependencies:
@@ -14729,6 +14729,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "scripts@workspace:scripts"
   dependencies:
+    landing-pages: "workspace:*"
     ts-node: ^10.9.1
   languageName: unknown
   linkType: soft
