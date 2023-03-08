@@ -1,5 +1,5 @@
 import { getAllFilesRecursively } from '../modules/fileOperations';
-import { resolve, dirname } from 'path';
+import { resolve, dirname, relative } from 'path';
 import { writeFileSync, readFileSync, mkdirSync } from 'fs';
 import { CategoryLayoutProps } from 'landing-pages/src/components/LandingPage/Category/CategoryLayout';
 import { Category2LayoutProps } from 'landing-pages/src/components/LandingPage/Category2/Category2Layout';
@@ -13,6 +13,13 @@ import {
 import { WhatsNewProps } from 'landing-pages/src/components/LandingPage/WhatsNew';
 
 const landingPagesSourceDir = resolve(__dirname, '../../../frontend/pages');
+const allFiles = getAllFilesRecursively(landingPagesSourceDir);
+const filePairs: FilePair[] = allFiles.map((sourceFile) => ({
+  sourceFile,
+  targetFile: sourceFile
+    .replace('frontend/pages', 'landing-pages/src/pages/landing')
+    .replace('/index.json', '.tsx'),
+}));
 
 type FlailItem = {
   label: string;
@@ -47,7 +54,20 @@ type FlailConfig = {
   breadcrumbs: FlailItem[];
 };
 
-function getItems(flailItems: FlailItem[] | undefined): LandingPageItemProps[] {
+function remapPageLink(flailPageLink: string, targetFile: string): string {
+  const root = resolve(__dirname, '../../../landing-pages/src/pages/landing');
+  const matchingTargetFile = relative(
+    root,
+    resolve(targetFile.replace('.tsx', ''), flailPageLink)
+  );
+
+  return matchingTargetFile;
+}
+
+function getItems(
+  flailItems: FlailItem[] | undefined,
+  targetFile: string
+): LandingPageItemProps[] {
   if (!flailItems) {
     throw new Error(`Object does not have items`);
   }
@@ -56,7 +76,7 @@ function getItems(flailItems: FlailItem[] | undefined): LandingPageItemProps[] {
     (item): LandingPageItemProps => ({
       label: item.label,
       docId: item.id,
-      pagePath: item.page,
+      pagePath: item.page ? remapPageLink(item.page, targetFile) : undefined,
       url: item.link,
     })
   );
@@ -99,7 +119,7 @@ function getWhatsNew(flailConfig: FlailConfig): WhatsNewProps {
 }
 
 function getBackgroundImage(flailConfig: FlailConfig): string {
-  return;
+  return 'background image coming soon';
 }
 
 const sidebar: SidebarProps = {
@@ -128,7 +148,10 @@ const sidebar: SidebarProps = {
   ],
 };
 
-function mapToCategory2Layout(flailConfig: FlailConfig): Category2LayoutProps {
+function mapToCategory2Layout(
+  flailConfig: FlailConfig,
+  targetFile: string
+): Category2LayoutProps {
   return {
     backgroundProps: {
       ...baseBackgroundProps,
@@ -136,69 +159,111 @@ function mapToCategory2Layout(flailConfig: FlailConfig): Category2LayoutProps {
     },
     cards: flailConfig.items.map((flail) => ({
       label: flail.label,
-      items: getItems(flail.items),
+      items: getItems(flail.items, targetFile),
     })),
     whatsNew: getWhatsNew(flailConfig),
     sidebar,
   };
 }
 
-function mapToCategoryCard(flailConfig: FlailConfig): CategoryLayoutProps {
-  return undefined;
+function mapToCategoryLayout(
+  flailConfig: FlailConfig,
+  targetFile: string
+): CategoryLayoutProps {
+  return {};
 }
 
-function mapToProductFamily(
-  flailConfig: FlailConfig
+function mapToProductFamilyLayout(
+  flailConfig: FlailConfig,
+  targetFile: string
 ): ProductFamilyLayoutProps {
-  return undefined;
+  return {};
 }
 
-function mapToSection(flailConfig: FlailConfig): SectionLayoutProps {
-  return undefined;
+function mapToSectionLayout(
+  flailConfig: FlailConfig,
+  targetFile: string
+): SectionLayoutProps {
+  return {};
 }
 
-function remapPageConfig(
-  flailConfig: FlailConfig
-):
+function getFlailClass(flailConfig: FlailConfig) {
+  const level1Class = flailConfig.class;
+  const level2Class = flailConfig.items[0].class;
+
+  return {
+    level1Class,
+    level2Class,
+  };
+}
+
+type RemapType =
   | CategoryLayoutProps
   | Category2LayoutProps
   | ProductFamilyLayoutProps
-  | SectionLayoutProps {
-  const level1Class = flailConfig.class;
+  | SectionLayoutProps;
+
+function getClassMap(flailConfig: FlailConfig): {
+  layoutProps: string;
+  remapFunction: (flailConfig: FlailConfig, targetFile: string) => RemapType;
+} {
+  const { level1Class, level2Class } = getFlailClass(flailConfig);
 
   if (level1Class.match('garmisch') || level1Class.match('flaine')) {
-    return mapToCategory2Layout(flailConfig);
+    return {
+      layoutProps: 'Category2LayoutProps',
+      remapFunction: mapToCategory2Layout,
+    };
   }
-
-  const level2Class = flailConfig.items[0].class;
 
   switch (level2Class) {
     case 'categoryCard':
-      return mapToCategoryCard(flailConfig);
+      return {
+        layoutProps: 'CategoryLayoutProps',
+        remapFunction: mapToCategoryLayout,
+      };
     case 'productFamily':
-      return mapToProductFamily(flailConfig);
+      return {
+        layoutProps: 'ProductFamilyLayoutProps',
+        remapFunction: mapToProductFamilyLayout,
+      };
     default:
-      return mapToSection(flailConfig);
+      return {
+        layoutProps: 'SectionLayoutProps',
+        remapFunction: mapToSectionLayout,
+      };
   }
 }
 
-const allFiles = getAllFilesRecursively(landingPagesSourceDir);
-const filePairs = allFiles.map((sourceFile) => ({
-  sourceFile,
-  targetFile: sourceFile
-    .replace('frontend/pages', 'landing-pages/src/pages/landing')
-    .replace('/index.json', '.tsx'),
-}));
+type FilePair = {
+  sourceFile: string;
+  targetFile: string;
+};
+
+function createComponentTemplate(
+  flailConfig: FlailConfig,
+  targetFile: string
+): string {
+  const { layoutProps, remapFunction } = getClassMap(flailConfig);
+  const pageConfig = remapFunction(flailConfig, targetFile);
+
+  return `const pageConfig: ${layoutProps} = ${JSON.stringify(
+    pageConfig,
+    null,
+    2
+  )};`;
+}
 
 for (const file of filePairs) {
   const flailFileContents = readFileSync(file.sourceFile, {
     encoding: 'utf-8',
   });
 
-  const pageConfig = remapPageConfig(JSON.parse(flailFileContents));
+  const componentTemplate = createComponentTemplate(
+    JSON.parse(flailFileContents),
+    file.targetFile
+  );
 
   mkdirSync(dirname(file.targetFile), { recursive: true });
-  writeFileSync(file.targetFile, JSON.stringify(pageConfig, null, 2));
+  writeFileSync(file.targetFile, componentTemplate, { encoding: 'utf-8' });
 }
-
-// frontend/pages => landing-pages/src/pages/landing

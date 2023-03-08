@@ -15,7 +15,7 @@
     "build": "yarn server-build && yarn landing-pages-build",
     "prettier": "prettier --write .",
     "test:server": "yarn workspace server test",
-    "scripts:migrate-pages": "yarn workspace scripts migrate-pages"
+    "scripts:migrate-pages": "yarn workspace scripts migrate-pages && yarn prettier"
   },
   "version": "1.0.0",
   "main": "index.js",
