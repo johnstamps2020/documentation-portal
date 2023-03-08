@@ -1,6 +1,6 @@
 import { getAllFilesRecursively } from '../modules/fileOperations';
-import { resolve } from 'path';
-import { writeFileSync } from 'fs';
+import { resolve, dirname } from 'path';
+import { writeFileSync, readFileSync, mkdirSync } from 'fs';
 
 const landingPagesSourceDir = resolve(__dirname, '../../../frontend/pages');
 
@@ -12,5 +12,22 @@ const classMap = {
   subject: 'SectionLayout',
 };
 
-const allFiles = getAllFilesRecursively(landingPagesSourceDir, '.json');
-writeFileSync('allFiles.json', JSON.stringify(allFiles, null, 2));
+const allFiles = getAllFilesRecursively(landingPagesSourceDir);
+const filePairs = allFiles.map((sourceFile) => ({
+  sourceFile,
+  targetFile: sourceFile
+    .replace('frontend/pages', 'landing-pages/src/pages/landing')
+    .replace('/index.json', '.tsx'),
+}));
+
+for (const file of filePairs) {
+  const flailFileContents = readFileSync(file.sourceFile, {
+    encoding: 'utf-8',
+  });
+  mkdirSync(dirname(file.targetFile), { recursive: true });
+  writeFileSync(file.targetFile, JSON.stringify(flailFileContents, null, 2), {
+    flag: 'w',
+  });
+}
+
+// frontend/pages => landing-pages/src/pages/landing
