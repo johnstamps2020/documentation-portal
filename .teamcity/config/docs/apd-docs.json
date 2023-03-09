@@ -12,7 +12,7 @@
       },
       "environments": ["staging", "prod"],
       "internal": false,
-      "earlyAccess": true,
+      "earlyAccess": false,
       "indexForSearch": true,
       "public": false
     },
