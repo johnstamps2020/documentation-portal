@@ -31,7 +31,6 @@ project {
     subProject(Recommendations.rootProject)
     subProject(Content.rootProject)
     subProject(BuildListeners.rootProject)
-    subProject(Exports.rootProject)
     subProject(Apps.rootProject)
     subProject(Server.rootProject)
     subProject(Frontend.rootProject)
@@ -905,7 +904,6 @@ object Docs {
         outputDir: String,
         indexForSearch: Boolean,
     ): BuildType {
-        val srcIsExported = Helpers.getObjectById(Helpers.sourceConfigs, "id", srcId).has("xdocsPathIds")
         return BuildType {
             name = "Publish to $deployEnv"
             id = Helpers.resolveRelativeIdFromIdString("${this.name}${docId}")
@@ -940,8 +938,7 @@ object Docs {
             }
 
             // Publishing builds for STAGING are triggered automatically.
-            // DITA publishing builds are triggered by build listener builds. Additionally, DITA publishing builds
-            // that use sources exported from XDocs, use a regular TeamCity VCS trigger with a comment rule.
+            // DITA publishing builds are triggered by build listener builds.
             // The reference to the build listener template is one of the criteria used by the build manager app
             // to identify builds that must be triggered.
             // Yarn validation builds are triggered by regular TeamCity VCS triggers.
@@ -949,13 +946,6 @@ object Docs {
                 when (gwBuildType) {
                     GwBuildTypes.DITA.buildTypeName -> {
                         templates(GwTemplates.BuildListenerTemplate)
-                        if (srcIsExported) {
-                            triggers.vcs {
-                                triggerRules = """
-                                    +:comment=\[$srcId\]:**
-                                    """.trimIndent()
-                            }
-                        }
                     }
 
                     else -> {
@@ -2721,288 +2711,12 @@ object Server {
     }
 }
 
-object Exports {
-    val rootProject = createRootProjectForExports()
-
-    private fun createRootProjectForExports(): Project {
-        return Project {
-            name = "Exports"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcsRoot(GwVcsRoots.XdocsClientGitVcsRoot)
-            buildType(ExportFilesFromXDocsToBitbucketBuildType)
-            createExportBuildTypes().forEach {
-                buildType(it)
-            }
-        }
-    }
-
-    private fun createExportBuildTypes(): List<BuildType> {
-        val exportBuildTypes = mutableListOf<BuildType>()
-        val exportServers = arrayOf("ORP-XDOCS-WDB03", "ORP-XDOCS-WDB04")
-        var exportServerIndex = 0
-
-        var scheduleHourDaily = 0
-        var scheduleMinuteDaily = 0
-
-        var scheduleHourWeekly = 12
-        var scheduleMinuteWeekly = 0
-
-        for (sourceConfig in Helpers.sourceConfigs) {
-            if (sourceConfig.has("xdocsPathIds")) {
-                val srcId = sourceConfig.getString("id")
-                val srcTitle = sourceConfig.getString("title")
-                val xdocsPathIds = sourceConfig.getJSONArray("xdocsPathIds").joinToString(" ")
-                val gitUrl = sourceConfig.getString("gitUrl")
-                val gitBranch = sourceConfig.getString("branch")
-                val buildConfigsRelatedToSrc = Helpers.buildConfigs.filter {
-                    it.getString("srcId") == srcId
-                }
-                val docConfigsRelatedToSrc = buildConfigsRelatedToSrc.map {
-                    Helpers.getObjectById(Helpers.docConfigs, "id", it.getString("docId"))
-                }
-
-                val environmentsFromRelatedDocConfigs =
-                    docConfigsRelatedToSrc.map { Helpers.convertJsonArrayWithStringsToLowercaseList(it.getJSONArray("environments")) }
-                        .flatten().distinct()
-
-                val exportFrequency = when (environmentsFromRelatedDocConfigs.contains(GwDeployEnvs.STAGING.envName)) {
-                    true -> {
-                        if (sourceConfig.has("exportFrequency")) sourceConfig.getString("exportFrequency") else GwExportFrequencies.DAILY.paramValue
-                    }
-
-                    else -> ""
-                }
-                val exportServer = exportServers[exportServerIndex]
-
-                var scheduleHour: Int
-                var scheduleMinute: Int
-                when (exportFrequency) {
-                    GwExportFrequencies.DAILY.paramValue -> {
-                        scheduleHour = scheduleHourDaily
-                        scheduleMinute = scheduleMinuteDaily
-                        scheduleMinuteDaily += 2
-                        if (scheduleMinuteDaily >= 60) {
-                            scheduleHourDaily += 1
-                            scheduleMinuteDaily = 0
-                        }
-                        if (scheduleHourDaily >= 24) {
-                            scheduleHourDaily = 0
-                        }
-                        exportServerIndex = when (exportServerIndex + 1 == exportServers.size) {
-                            true -> 0
-                            else -> +1
-                        }
-                    }
-
-                    GwExportFrequencies.WEEKLY.paramValue -> {
-                        scheduleHour = scheduleHourWeekly
-                        scheduleMinute = scheduleMinuteWeekly
-                        scheduleMinuteWeekly += 10
-                        if (scheduleMinuteWeekly >= 60) {
-                            scheduleHourWeekly += 1
-                            scheduleMinuteWeekly = 0
-                        }
-                        if (scheduleHourWeekly >= 24) {
-                            scheduleHourWeekly = 0
-                        }
-                    }
-
-                    else -> {
-                        scheduleHour = 0
-                        scheduleMinute = 0
-                    }
-                }
-
-                exportBuildTypes.add(
-                    createExportFilesFromXDocsToBitbucketCompositeBuildType(
-                        srcTitle,
-                        xdocsPathIds,
-                        gitUrl,
-                        gitBranch,
-                        srcId,
-                        exportServer,
-                        exportFrequency,
-                        scheduleHour,
-                        scheduleMinute
-                    )
-                )
-            }
-        }
-        return exportBuildTypes
-    }
-
-    private fun createExportFilesFromXDocsToBitbucketCompositeBuildType(
-        srcTitle: String,
-        exportPathIds: String,
-        gitUrl: String,
-        gitBranch: String,
-        srcId: String,
-        exportServer: String,
-        exportFrequency: String,
-        exportHour: Int,
-        exportMinute: Int,
-    ): BuildType {
-        return BuildType {
-            name = "Export $srcTitle from XDocs and add to Bitbucket"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            type = BuildTypeSettings.Type.COMPOSITE
-
-            params {
-                text("reverse.dep.${ExportFilesFromXDocsToBitbucketBuildType.id}.EXPORT_PATH_IDS", exportPathIds)
-                text("reverse.dep.${ExportFilesFromXDocsToBitbucketBuildType.id}.GIT_URL", gitUrl)
-                text("reverse.dep.${ExportFilesFromXDocsToBitbucketBuildType.id}.GIT_BRANCH", gitBranch)
-                text("reverse.dep.${ExportFilesFromXDocsToBitbucketBuildType.id}.SRC_ID", srcId)
-                text("reverse.dep.${ExportFilesFromXDocsToBitbucketBuildType.id}.EXPORT_SERVER", exportServer)
-            }
-
-            dependencies {
-                snapshot(ExportFilesFromXDocsToBitbucketBuildType) {
-                    reuseBuilds = ReuseBuilds.NO
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-
-            when (exportFrequency) {
-                GwExportFrequencies.DAILY.paramValue -> {
-                    triggers.schedule {
-                        schedulingPolicy = daily {
-                            hour = exportHour
-                            minute = exportMinute
-                        }
-
-                        triggerBuild = always()
-                        withPendingChangesOnly = false
-                    }
-                }
-
-                GwExportFrequencies.WEEKLY.paramValue -> {
-                    triggers.schedule {
-                        schedulingPolicy = weekly {
-                            dayOfWeek = ScheduleTrigger.DAY.Saturday
-                            hour = exportHour
-                            minute = exportMinute
-                        }
-                        triggerBuild = always()
-                        withPendingChangesOnly = false
-                    }
-                }
-            }
-
-        }
-    }
-
-    private object ExportFilesFromXDocsToBitbucketBuildType : BuildType({
-        name = "Export files from XDocs to Bitbucket"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-        maxRunningBuilds = 2
-
-        params {
-            text(
-                "EXPORT_PATH_IDS",
-                "",
-                description = "A list of space-separated path IDs from XDocs",
-                display = ParameterDisplay.PROMPT,
-                allowEmpty = true
-            )
-            text(
-                "GIT_URL",
-                "",
-                description = "The URL of the Bitbucket repository where the files exported from XDocs are added",
-                display = ParameterDisplay.PROMPT,
-                allowEmpty = true
-            )
-            text(
-                "GIT_BRANCH",
-                "",
-                description = "The branch of the Bitbucket repository where the files exported from XDocs are added",
-                display = ParameterDisplay.PROMPT,
-                allowEmpty = true
-            )
-            text(
-                "XDOCS_EXPORT_DIR",
-                "%system.teamcity.build.tempDir%/xdocs_export_dir",
-                display = ParameterDisplay.HIDDEN,
-                allowEmpty = false
-            )
-            text(
-                "SRC_ID",
-                "",
-                description = "The ID of the source",
-                display = ParameterDisplay.HIDDEN,
-                allowEmpty = false
-            )
-            text(
-                "EXPORT_SERVER",
-                "",
-                description = "The export server",
-                display = ParameterDisplay.HIDDEN,
-                allowEmpty = false
-            )
-        }
-
-        vcs {
-            root(GwVcsRoots.XdocsClientGitVcsRoot)
-            cleanCheckout = true
-        }
-
-        steps {
-            script {
-                name = "Export files from XDocs"
-                id = Helpers.createIdStringFromName(this.name)
-                workingDir = "LocalClient/sample/local/bin"
-                scriptContent = """
-                    #!/bin/bash
-                    sed -i "s/ORP-XDOCS-WDB03/%EXPORT_SERVER%/" ../../../conf/LocClientConfig.xml
-                    chmod 777 runExport.sh
-                    export EXIT_CODE=0                    
-                    
-                    for path in %EXPORT_PATH_IDS%; do ./runExport.sh "${'$'}path" %XDOCS_EXPORT_DIR% || EXIT_CODE=${'$'}?; done
-                    
-                    exit ${'$'}EXIT_CODE
-                    """.trimIndent()
-            }
-            script {
-                name = "Add exported files to Bitbucket"
-                id = Helpers.createIdStringFromName(this.name)
-                scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                    
-                    export GIT_CLONE_DIR="git_clone_dir"
-                    git clone --single-branch --branch %GIT_BRANCH% %GIT_URL% ${'$'}GIT_CLONE_DIR
-                    cp -R %XDOCS_EXPORT_DIR%/* ${'$'}GIT_CLONE_DIR/
-                        
-                    cd ${'$'}GIT_CLONE_DIR
-                    git config --local user.email "doctools@guidewire.com"
-                    git config --local user.name "%env.BITBUCKET_SERVICE_ACCOUNT_USERNAME%"
-                        
-                    git add -A
-                    if git status | grep "Changes to be committed"
-                    then
-                      git commit -m "[TeamCity][%SRC_ID%] Add files exported from XDocs"
-                      git pull
-                      git push
-                    else
-                      echo "No changes to commit"
-                    fi
-                    """.trimIndent()
-            }
-        }
-
-        features.feature(GwBuildFeatures.GwSshAgentBuildFeature)
-
-    })
-}
-
 object BuildListeners {
     val rootProject = createBuildListenersProject()
 
     private fun getSourcesForBuildListenerBuildTypes(): List<JSONObject> {
         val sourcesRequiringListeners = mutableListOf<JSONObject>()
-        for (src in Helpers.gitNativeSources) {
+        for (src in Helpers.gitSources) {
             val srcId = src.getString("id")
             val ditaBuildsRelatedToSrc = Helpers.buildConfigs.filter {
                 it.getString("srcId") == srcId && (it.getString("buildType") == GwBuildTypes.DITA.buildTypeName)
@@ -3078,7 +2792,7 @@ object Sources {
 
     private fun createValidationProjectsForSources(): List<Project> {
         val validationProjects = mutableListOf<Project>()
-        for (src in Helpers.gitNativeSources) {
+        for (src in Helpers.gitSources) {
             val srcId = src.getString("id")
             val gitUrl = src.getString("gitUrl")
             val buildsRelatedToSrc = Helpers.buildConfigs.filter { it.getString("srcId") == srcId }
@@ -3739,9 +3453,7 @@ object Helpers {
     val docConfigs = getObjectsFromAllConfigFiles("config/docs", "docs")
     val sourceConfigs = getObjectsFromAllConfigFiles("config/sources", "sources")
     val buildConfigs = getObjectsFromAllConfigFiles("config/builds", "builds")
-    val gitNativeSources = getBuildSourceConfigs().filter {
-        !it.has("xdocsPathIds")
-    }
+    val gitSources = getBuildSourceConfigs()
 
     fun getObjectById(objectList: List<JSONObject>, idName: String, idValue: String): JSONObject {
         return objectList.find { it.getString(idName) == idValue } ?: JSONObject()
@@ -5271,12 +4983,6 @@ object GwVcsRoots {
         "master",
         listOf("(refs/heads/*)")
 
-    )
-
-    val XdocsClientGitVcsRoot = createGitVcsRoot(
-        Helpers.resolveRelativeIdFromIdString("XDocs Client git repo"),
-        "ssh://git@stash.guidewire.com/doctools/xdocs-client.git",
-        "master"
     )
 
     val LocalizedPdfsGitVcsRoot = createGitVcsRoot(

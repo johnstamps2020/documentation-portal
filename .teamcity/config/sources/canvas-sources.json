@@ -4,7 +4,6 @@
     {
       "id": "canvassrc",
       "title": "Canvas latest",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/canvas.git",
       "branch": "main"
     }

@@ -4,7 +4,6 @@
     {
       "id": "is202111frFRsrc",
       "title": "IS 2021.11.2 fr-FR",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
       "branch": "release/fr-FR/2021.11.2"
     }

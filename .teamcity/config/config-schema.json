@@ -63,11 +63,11 @@
       }
     },
     "environments": {
-      "description": "Environments where we will display this doc, dev, int, staging, etc.",
+      "description": "Environments where we will display this doc, dev, staging, and/or prod.",
       "type": "array",
       "items": {
         "type": "string",
-        "enum": ["dev", "int", "staging", "prod"]
+        "enum": ["dev", "staging", "prod"]
       }
     },
     "metadata": {
@@ -90,7 +90,7 @@
         "version": {
           "description": "A version number, or a word like 'latest'",
           "type": "array",
-          "examples": ["2020.05", "3.2.0", "latest"]
+          "examples": ["2023.02", "10.2.2", "latest"]
         },
         "release": {
           "description": "A major release",
@@ -111,12 +111,20 @@
         "subject": {
           "description": "What the doc is about",
           "type": "array",
-          "examples": [
-            "Administration",
-            "Features and functionality",
-            "Best practices",
-            "Configuration"
-          ]
+          "items": {
+            "type": "string",
+            "enum": [
+              "Administration",
+              "Best practices",
+              "Configuration",
+              "Development",
+              "Features and functionality",
+              "Glossary",
+              "Installation",
+              "Integration",
+              "Release notes"
+            ]
+          }
         },
         "locale": {
           "description": "For translated documents, specifies the language code. For English documents, it is not necessary to specify the locale.",
@@ -129,7 +137,7 @@
       "description": "A Git source where the build retrieves files.",
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "title", "sourceType", "gitUrl", "branch"],
+      "required": ["id", "title", "gitUrl", "branch"],
       "properties": {
         "id": {
           "$ref": "#/definitions/id"
@@ -137,21 +145,9 @@
         "title": {
           "$ref": "#/definitions/title"
         },
-        "sourceType": {
-          "description": "The type of the source",
-          "type": "string",
-          "enum": ["git", "xdocs"]
-        },
         "gitUrl": {
-          "description": "An SSH url to a git repo. For all source types, it is a source of files. For the 'xdocs' type, it is also the target where we commit exported files. The 'git' and 'xdocs' types are used by 'docs' components to generate builds.",
+          "description": "An SSH url to a git repo containing source files for builds.",
           "pattern": "^ssh://git@stash\\.guidewire\\.com/"
-        },
-        "xdocsPathIds": {
-          "description": "A list of pathIds to be exported from XDocs",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
         },
         "branch": {
           "description": "The branch to use when checking out. Provide a bare branch name without specification like 'refs/heads', etc.",

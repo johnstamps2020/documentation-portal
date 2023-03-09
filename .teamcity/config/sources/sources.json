@@ -4,140 +4,120 @@
     {
       "id": "isupgradeguide1020src",
       "title": "InsuranceSuite Upgrade Guide 10.2.0",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
       "branch": "release/10.2.0"
     },
     {
       "id": "isupgradeguide1012src",
       "title": "InsuranceSuite Upgrade Guide 10.1.2",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
       "branch": "release/10.1.2"
     },
     {
       "id": "isupgradeguide1011src",
       "title": "InsuranceSuite Upgrade Guide 10.1.1",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
       "branch": "release/10.1.1"
     },
     {
       "id": "exampleresource",
       "title": "Example resource package",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/doctools/dita-ot-254.git",
       "branch": "master"
     },
     {
       "id": "restapisrc",
       "title": "IS REST API",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/rest-api.git",
       "branch": "main"
     },
     {
       "id": "dxgwsf331",
       "title": "Digital GW for SF 3.3.1",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "3.3.1"
     },
     {
       "id": "dxgwsf330",
       "title": "Digital GW for SF 3.3.0",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "3.3.0"
     },
     {
       "id": "dxgwsf320",
       "title": "Digital GW for SF 3.2.0",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "3.2.0"
     },
     {
       "id": "gchhelpsrc",
       "title": "Guidewire Cloud Home Help",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gch-help.git",
       "branch": "main"
     },
     {
       "id": "configmgrhelpcortinasrc",
       "title": "Configuration Manager Help Cortina",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/config-manager-help.git",
       "branch": "release/Cortina"
     },
     {
       "id": "configmgrhelpbanffsrc",
       "title": "Configuration Manager Help Banff",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/config-manager-help.git",
       "branch": "release/Banff"
     },
     {
       "id": "clouddataaccesssrc",
       "title": "Cloud Data Access Guide",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-access.git",
       "branch": "main"
     },
     {
       "id": "exploresrc",
       "title": "Explore",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
       "branch": "main"
     },
     {
       "id": "insurancenowextrassrc",
       "title": "InsuranceNow Extras",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow-extras.git",
       "branch": "master"
     },
     {
       "id": "guidewireidentityfederationhubsrc",
       "title": "Guidewire Identity Federation Hub Release",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
       "branch": "main"
     },
     {
       "id": "cloudplatformsrc",
       "title": "Cloud Platform",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-platform.git",
       "branch": "main"
     },
     {
       "id": "gwcpreleasenotessrc",
       "title": "Cloud Platform Release Notes",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
       "branch": "main"
     },
     {
       "id": "cicdmanagerapirefsrc",
       "title": "CI/CD Manager",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cicd-api-ref.git",
       "branch": "master"
     },
     {
       "id": "livepredictsrc",
       "title": "Live Predict",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/live-predict.git",
       "branch": "main"
     },
     {
       "id": "comparelatestsrc",
       "title": "Compare",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/compare.git",
       "branch": "main"
     },
@@ -145,90 +125,77 @@
       "id": "checksumssrc",
       "title": "Checksums source in git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/checksums.git",
-      "branch": "master",
-      "sourceType": "git"
+      "branch": "master"
     },
     {
       "id": "easyguidesrc",
       "title": "EasyGuide source in git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/easyguide.git",
-      "branch": "master",
-      "sourceType": "git"
+      "branch": "master"
     },
     {
       "id": "gwglossarysrc",
       "title": "Guidewire Glossary",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/glossary.git",
       "branch": "main"
     },
     {
       "id": "learninganalyticssrc",
       "title": "Learning Analytics",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/learning-analytics.git",
       "branch": "main"
     },
     {
       "id": "cyencesrc",
       "title": "Cyence",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cyence.git",
       "branch": "main"
     },
     {
       "id": "hazardhubsrc",
       "title": "HazardHub",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/hazardhub.git",
       "branch": "main"
     },
     {
       "id": "portasrc",
       "title": "Portfolio Assembly (Porta)",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/porta/porta-docs.git",
       "branch": "master"
     },
     {
       "id": "gwcpinternalsrc",
       "title": "Network Permissions Service",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-internal-doc-poc.git",
       "branch": "master"
     },
     {
       "id": "internaldocssrc",
       "title": "Internal Docs",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/internal-docs-directory.git",
       "branch": "main"
     },
     {
       "id": "surepathmethodologymainsrc",
       "title": "Product Adoption Resources main",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/surepath-methodology.git",
       "branch": "main"
     },
     {
       "id": "cdsdocss3foldersrc",
       "title": "CDS Docs S3 folder main",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/surepath-methodology.git",
       "branch": "main"
     },
     {
       "id": "doctoolss3managersrc",
       "title": "Doctools S3 manager main",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/s3-file-manager.git",
       "branch": "main"
     },
     {
       "id": "cloudtickettemplatessrc",
       "title": "Cloud Ticket Templates",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-ticket-templates.git",
       "branch": "main"
     }

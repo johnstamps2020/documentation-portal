@@ -4,7 +4,6 @@
     {
       "id": "dataplatformsrc",
       "title": "Data Platform",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/data-platform.git",
       "branch": "main"
     }
