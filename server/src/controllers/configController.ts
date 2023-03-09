@@ -352,7 +352,7 @@ export async function getDocIdByUrl(url: string) {
   };
 }
 
-//TODO: Change this function to work with the database. It's used in docs to inject the root breadcrumb.
+// TODO: Change this function to work with the database. It's used in docs to inject the root breadcrumb.
 export async function getRootBreadcrumb(pagePathname: string) {
   try {
     const breadcrumbsConfigPath = new URL(

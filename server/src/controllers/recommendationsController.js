@@ -56,6 +56,7 @@ async function getTopicRecommendations(topicId, reqObj, resObj) {
       ...h._source,
     }))[0];
     if (hit) {
+      //FIXME: Use the function for checking if user is allowed to access resource
       let topicRecommendations = hit.recommendations;
       const reqIsAuthenticated = reqObj.session.requestIsAuthenticated;
       if (!reqIsAuthenticated) {
