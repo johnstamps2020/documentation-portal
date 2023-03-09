@@ -1,7 +1,7 @@
-import { baseBackgroundProps } from '../../../../LandingPage/LandingPage';
+import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import SectionLayout, {
   SectionLayoutProps,
-} from '../../../../../components/LandingPage/Section/SectionLayout';
+} from 'components/LandingPage/Section/SectionLayout';
 
 const pageConfig: SectionLayoutProps = {
   backgroundProps: {

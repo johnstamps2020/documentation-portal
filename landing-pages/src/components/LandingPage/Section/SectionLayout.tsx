@@ -1,17 +1,17 @@
 import Grid from '@mui/material/Unstable_Grid2';
-import Breadcrumbs from '../Breadcrumbs';
+import Breadcrumbs from 'components/LandingPage/Breadcrumbs';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
-import SelfManagedLink from '../SelfManagedLink';
+import SelfManagedLink from 'components/LandingPage/SelfManagedLink';
 import Box from '@mui/material/Box';
 import Section, { SectionProps } from './Section';
-import { usePageData } from '../../../hooks/usePageData';
-import { LandingPageLayoutProps } from '../../../pages/LandingPage/LandingPage';
+import { usePageData } from 'hooks/usePageData';
+import { LandingPageLayoutProps } from 'pages/LandingPage/LandingPageTypes';
 import LandingPageSelector, {
   LandingPageSelectorProps,
-} from '../LandingPageSelector';
-import PagePropsController from '../PagePropsController';
+} from 'components/LandingPage/LandingPageSelector';
+import PagePropsController from 'components/LandingPage/PagePropsController';
 
 export type SectionLayoutProps = LandingPageLayoutProps & {
   sections: SectionProps[];

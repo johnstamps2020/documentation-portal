@@ -1,10 +1,10 @@
 import Logo from './Logo/Logo';
-import SearchBox from '../../SearchBox/SearchBox';
+import SearchBox from 'components/SearchBox/SearchBox';
 import ExternalSites from './ExternalSites';
 import Glossary from './Glossary';
 import TranslatedPages from './TranslatedPages';
 import UserProfile from './UserProfile';
-import { HeaderOptions } from '../Layout';
+import { HeaderOptions } from 'components/Layout/Layout';
 import Stack from '@mui/material/Stack';
 
 export const headerHeight = '80px';

@@ -5,6 +5,24 @@
   "class": "blue-theme flaine threeCards",
   "items": [
     {
+      "label": "Australia",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ipaflainern"
+        },
+        {
+          "label": "Application Guide",
+          "id": "ipaflaineapp"
+        },
+        {
+          "label": "Configuration Guide",
+          "id": "ipaflaineconfig"
+        }
+      ]
+    },
+    {
       "label": "London Market",
       "class": "categoryCard cardShadow",
       "items": [

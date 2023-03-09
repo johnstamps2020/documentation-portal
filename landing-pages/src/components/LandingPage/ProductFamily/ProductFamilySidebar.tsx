@@ -1,13 +1,13 @@
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import { SidebarProps } from '../../../pages/LandingPage/LandingPage';
+import { SidebarProps } from 'pages/LandingPage/LandingPageTypes';
 import FamilyProductItem from './ProductFamilyItem';
-import { useLandingPageItems } from '../../../hooks/useLandingPageItems';
+import { useLandingPageItems } from 'hooks/useLandingPageItems';
 
 export default function ProductFamilySidebar({ label, items }: SidebarProps) {
-  const { landingPageItems, isLoading, isError} = useLandingPageItems(items);
+  const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
 
-  if (isLoading || isError || !landingPageItems ) {
+  if (isLoading || isError || !landingPageItems) {
     return null;
   }
   return (
@@ -25,7 +25,7 @@ export default function ProductFamilySidebar({ label, items }: SidebarProps) {
     >
       <Typography variant="h2">{label}</Typography>
       <>
-        {landingPageItems.map(sidebarItem => (
+        {landingPageItems.map((sidebarItem) => (
           <FamilyProductItem key={sidebarItem.label} {...sidebarItem} />
         ))}
       </>

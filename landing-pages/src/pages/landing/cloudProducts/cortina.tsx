@@ -1,9 +1,9 @@
 import ProductFamilyLayout, {
   ProductFamilyLayoutProps,
-} from '../../../components/LandingPage/ProductFamily/ProductFamilyLayout';
-import cortinaBackgroundImage from '../../../images/background-cortina.svg';
-import gradientBackgroundImage from '../../../images/background-gradient.svg';
-import { baseBackgroundProps } from '../../LandingPage/LandingPage';
+} from 'components/LandingPage/ProductFamily/ProductFamilyLayout';
+import cortinaBackgroundImage from 'images/background-cortina.svg';
+import gradientBackgroundImage from 'images/background-gradient.svg';
+import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 
 const pageConfig: ProductFamilyLayoutProps = {
   backgroundProps: {

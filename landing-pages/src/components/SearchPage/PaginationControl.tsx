@@ -2,7 +2,7 @@ import * as React from 'react';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useSearchData } from '../../hooks/useApi';
+import { useSearchData } from 'hooks/useApi';
 
 export default function PaginationControl() {
   const { searchData } = useSearchData();

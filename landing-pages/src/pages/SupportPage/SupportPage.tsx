@@ -3,8 +3,8 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Layout from '../../components/Layout/Layout';
-import { headerHeight } from '../../components/Layout/Header/Header';
+import Layout from 'components/Layout/Layout';
+import { headerHeight } from 'components/Layout/Header/Header';
 
 export default function SupportPage() {
   return (

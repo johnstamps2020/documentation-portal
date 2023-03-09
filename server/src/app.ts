@@ -28,7 +28,6 @@ import { forbiddenRoute, fourOhFourRoute } from './controllers/proxyController';
 declare global {
   namespace Express {
     interface Request {
-      isAuthenticated?: () => boolean;
       user?: ReqUser;
     }
   }

@@ -1,8 +1,8 @@
 import CategoryItem from './CategoryItem';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
-import { LandingPageItemProps } from '../../../pages/LandingPage/LandingPage';
-import { useLandingPageItems } from '../../../hooks/useLandingPageItems';
+import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
+import { useLandingPageItems } from 'hooks/useLandingPageItems';
 
 export type CategorySectionProps = {
   label: string;
@@ -22,7 +22,7 @@ export default function CategorySection({
   return (
     <Stack spacing={1}>
       <Typography variant="h3">{label}</Typography>
-      {landingPageItems?.map(sectionItem => (
+      {landingPageItems?.map((sectionItem) => (
         <CategoryItem {...sectionItem} key={sectionItem.label} />
       ))}
     </Stack>

@@ -65,9 +65,9 @@ export default function SearchFilter({
       >
         {serverSearchFilter.name.replace('_', ' ')}
         <Chip
-          label={`${serverSearchFilter.values.filter(v => v.checked).length}/${
-            serverSearchFilter.values.length
-          }`}
+          label={`${
+            serverSearchFilter.values.filter((v) => v.checked).length
+          }/${serverSearchFilter.values.length}`}
           size="small"
           variant="outlined"
           sx={{ marginLeft: '8px', border: '1px solid' }}
@@ -75,7 +75,7 @@ export default function SearchFilter({
       </StyledAccordionSummary>
       <StyledAccordionDetails>
         <FormGroup sx={{ gap: '8px' }}>
-          {serverSearchFilter.values.map(value => (
+          {serverSearchFilter.values.map((value) => (
             <Stack
               direction="row"
               justifyContent="space-between"

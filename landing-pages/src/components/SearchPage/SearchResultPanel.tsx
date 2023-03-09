@@ -1,5 +1,5 @@
 import NotLoggedInAlert from './NotLoggedInAlert';
-import SearchBox from '../SearchBox/SearchBox';
+import SearchBox from 'components/SearchBox/SearchBox';
 import AdvancedSearchHelp from './AdvancedSearchHelp';
 import LoadingSearchDataErrorAlert from './LoadingSearchDataErrorAlert';
 import SearchResults from './SearchResults';

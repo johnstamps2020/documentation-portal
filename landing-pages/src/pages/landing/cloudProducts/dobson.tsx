@@ -1,9 +1,9 @@
 import CategoryLayout, {
   CategoryLayoutProps,
-} from '../../../components/LandingPage/Category/CategoryLayout';
-import gradientBackgroundImage from '../../../images/background-gradient.svg';
-import dobsonBackgroundImage from '../../../images/background-dobson.svg';
-import { baseBackgroundProps } from '../../LandingPage/LandingPage';
+} from 'components/LandingPage/Category/CategoryLayout';
+import gradientBackgroundImage from 'images/background-gradient.svg';
+import dobsonBackgroundImage from 'images/background-dobson.svg';
+import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {

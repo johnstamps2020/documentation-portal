@@ -1,9 +1,9 @@
 import ProductFamilyLayout, {
   ProductFamilyLayoutProps,
-} from '../../../components/LandingPage/ProductFamily/ProductFamilyLayout';
-import gradientBackgroundImage from '../../../images/background-gradient.svg';
-import banffBackgroundImage from '../../../images/background-banff.svg';
-import { baseBackgroundProps } from '../../LandingPage/LandingPage';
+} from 'components/LandingPage/ProductFamily/ProductFamilyLayout';
+import gradientBackgroundImage from 'images/background-gradient.svg';
+import banffBackgroundImage from 'images/background-banff.svg';
+import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 
 const pageConfig: ProductFamilyLayoutProps = {
   backgroundProps: {

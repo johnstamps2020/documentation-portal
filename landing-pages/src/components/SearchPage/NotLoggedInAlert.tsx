@@ -1,5 +1,5 @@
 import Alert from '@mui/material/Alert/Alert';
-import { useSearchData } from '../../hooks/useApi';
+import { useSearchData } from 'hooks/useApi';
 
 export default function NotLoggedInAlert() {
   const { searchData, isError, isLoading } = useSearchData();

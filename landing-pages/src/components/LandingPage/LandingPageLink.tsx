@@ -1,5 +1,5 @@
 import Stack from '@mui/material/Stack';
-import { LandingPageItemData } from '../../hooks/useLandingPageItems';
+import { LandingPageItemData } from 'hooks/useLandingPageItems';
 import Link, { LinkProps } from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
 import InternalTooltip from './InternalTooltip';
@@ -29,11 +29,7 @@ export default function LandingPageLink({
       justifyContent="flex-start"
     >
       {landingPageItem.path ? (
-        <Link
-          component={RouterLink}
-          to={`/${landingPageItem.path}`}
-          sx={sx}
-        >
+        <Link component={RouterLink} to={`/${landingPageItem.path}`} sx={sx}>
           {landingPageItem.label}
         </Link>
       ) : (

@@ -1,16 +1,16 @@
 import Grid from '@mui/material/Unstable_Grid2';
-import Breadcrumbs from '../Breadcrumbs';
+import Breadcrumbs from 'components/LandingPage/Breadcrumbs';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import ProductFamilyCard from './ProductFamilyCard';
-import SelfManagedLink from '../SelfManagedLink';
+import SelfManagedLink from 'components/LandingPage/SelfManagedLink';
 import {
   LandingPageItemProps,
   LandingPageLayoutProps,
-} from '../../../pages/LandingPage/LandingPage';
-import { usePageData } from '../../../hooks/usePageData';
-import ReleaseSelector from '../ReleaseSelector';
+} from 'pages/LandingPage/LandingPageTypes';
+import { usePageData } from 'hooks/usePageData';
+import ReleaseSelector from 'components/LandingPage/ReleaseSelector';
 import ProductFamilySidebar from './ProductFamilySidebar';
 import PagePropsController from '../PagePropsController';
 

@@ -1,13 +1,13 @@
 import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
-import garmischBadge from '../../images/badge-garmisch.svg';
-import flaineBadge from '../../images/badge-flaine.svg';
-import elysianBadge from '../../images/badge-elysian.svg';
-import dobsonBadge from '../../images/badge-dobson.svg';
-import cortinaBadge from '../../images/badge-cortina.svg';
-import banffBadge from '../../images/badge-banff.svg';
-import aspenBadge from '../../images/badge-aspen.svg';
+import garmischBadge from 'images/badge-garmisch.svg';
+import flaineBadge from 'images/badge-flaine.svg';
+import elysianBadge from 'images/badge-elysian.svg';
+import dobsonBadge from 'images/badge-dobson.svg';
+import cortinaBadge from 'images/badge-cortina.svg';
+import banffBadge from 'images/badge-banff.svg';
+import aspenBadge from 'images/badge-aspen.svg';
 import { FooterText } from './StyledLayoutComponents';
 
 export const footerHeight = '55px';
