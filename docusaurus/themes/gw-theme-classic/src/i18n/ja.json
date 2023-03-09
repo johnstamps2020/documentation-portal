@@ -58,6 +58,10 @@
     "message": "キャンセル",
     "description": "Cancel and do not send your feedback"
   },
+  "feedbackDialog.validEmail": {
+    "message": "有効なメールアドレスを入力してください",
+    "description": "Appears under the email field asking the user to provide an email address which contains all the elements of an email address, such as the @ symbol and a domain"
+  },
   "feedbackDialog.submit": {
     "message": "送信",
     "description": "Send your feedback, submit your feedback to us"

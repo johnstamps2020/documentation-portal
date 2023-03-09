@@ -28,6 +28,11 @@ const clearLabel = translate({
   message: 'Clear email',
 });
 
+const validEmail = translate({
+  id: 'feedbackDialog.validEmail',
+  message: 'Provide a valid email address',
+});
+
 type JiraResponse = {
   id: string;
   key: string;
@@ -246,7 +251,7 @@ export default function FeedbackDialog({
               onChange={handleChangeEmail}
               aria-describedby="email-helper-text"
               error={emailIsError}
-              helperText="Provide a valid email address"
+              helperText={validEmail}
               onBlur={handleValidateEmail}
               variant="outlined"
               type="email"
