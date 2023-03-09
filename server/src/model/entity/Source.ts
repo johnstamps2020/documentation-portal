@@ -2,9 +2,10 @@ import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 import { Build } from './Build';
 import { integer } from '@elastic/elasticsearch/api/types';
 import { Resource } from './Resource';
+import { GwEntity } from './GwEntity';
 
 @Entity()
-export class Source {
+export class Source extends GwEntity {
   @PrimaryColumn()
   id: string;
 
