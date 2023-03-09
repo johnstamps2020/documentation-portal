@@ -12,22 +12,10 @@ export class Source {
   name: string;
 
   @Column()
-  type: string;
-
-  @Column()
   gitUrl: string;
 
   @Column()
   gitBranch: string;
-
-  @Column('text', { array: true, nullable: true })
-  xdocsPathIds: string[];
-
-  @Column({ nullable: true })
-  exportFrequency: string;
-
-  @Column({ nullable: true })
-  pollInterval: integer;
 
   @OneToMany(() => Build, (build) => build)
   build: Build;
