@@ -5,6 +5,7 @@ import { CategoryLayoutProps } from 'landing-pages/src/components/LandingPage/Ca
 import { Category2LayoutProps } from 'landing-pages/src/components/LandingPage/Category2/Category2Layout';
 import { ProductFamilyLayoutProps } from 'landing-pages/src/components/LandingPage/ProductFamily/ProductFamilyLayout';
 import { SectionLayoutProps } from 'landing-pages/src/components/LandingPage/Section/SectionLayout';
+import { LandingPageSelectorProps } from 'landing-pages/src/components/LandingPage/LandingPageSelector';
 import { SectionProps } from 'landing-pages/src/components/LandingPage/Section/Section';
 import {
   baseBackgroundProps,
@@ -288,26 +289,42 @@ function mapToProductFamilyLayout(
   }`;
 }
 
+function getSelector(
+  flailConfig: FlailConfig,
+  targetFile: string
+): LandingPageSelectorProps | undefined {
+  const flailSelector = flailConfig.selector;
+
+  const selectorItems = getItems(flailSelector?.items, targetFile);
+
+  if (!selectorItems) {
+    return undefined;
+  }
+
+  const currentItem: LandingPageItemProps = {
+    label: flailSelector?.selectedItem,
+    pagePath: '',
+  };
+
+  return {
+    label: flailSelector?.label || 'Select version',
+    selectedItemLabel: flailSelector?.selectedItem || '',
+    items: [currentItem, ...selectorItems],
+    labelColor: 'white',
+  };
+}
+
 function mapToSectionLayout(
   flailConfig: FlailConfig,
   targetFile: string
 ): string {
   const { backgroundPropValue } = getBackgroundProps(flailConfig);
-  const cards = flailConfig.items.map((flail) => ({
-    label: flail.label,
-    items: getItems(
-      flail.items?.filter((i) => i.items === undefined),
-      targetFile
-    ),
-    sections: getSections(
-      flail.items?.filter((i) => i.items),
-      targetFile
-    ),
-  }));
+  const sections = getSections(flailConfig.items, targetFile);
+  const selector = getSelector(flailConfig, targetFile);
   return `{
     backgroundProps: ${backgroundPropValue},
-    cards: ${JSON.stringify(cards, null, 2)},
-    sidebar: ${sidebar}
+    sections: ${JSON.stringify(sections, null, 2)},
+    ${selector ? `selector: ${JSON.stringify(selector, null, 2)}` : ''}
   }`;
 }
 
@@ -382,6 +399,17 @@ function capitalizeFirstLetter(word: string) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
+function getComponentName(targetFile: string) {
+  const fileName = parse(targetFile)
+    .name.replaceAll('.', '')
+    .replaceAll('-', '');
+  if (fileName.match(/^\d/)) {
+    return `LandingPage${fileName}`;
+  }
+
+  return capitalizeFirstLetter(fileName);
+}
+
 type FilePair = {
   sourceFile: string;
   targetFile: string;
@@ -394,7 +422,7 @@ function createComponentTemplate(
   const { componentName, layoutProps, from, remapFunction } =
     getClassMap(flailConfig);
   const pageConfig = remapFunction(flailConfig, targetFile);
-  const pageComponentName = capitalizeFirstLetter(parse(targetFile).name);
+  const pageComponentName = getComponentName(targetFile);
   const { backGroundImports } = getBackgroundProps(flailConfig);
 
   return `import ${componentName}, { ${layoutProps} } from '${from}';
