@@ -4877,7 +4877,7 @@ object GwBuildSteps {
                 
                 export EXIT_CODE=0
                 $validationCommand || EXIT_CODE=${'$'}?
-                if [[ ${'$'}EXIT_CODE == 1]]; then
+                if [[ ${'$'}EXIT_CODE == 1 ]]; then
                     ##teamcity[setParameter name='$exitCodeEnvVarName' value='1']
                 fi
                 exit ${'$'}EXIT_CODE
