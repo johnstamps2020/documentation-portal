@@ -1,22 +1,11 @@
 import { Column, Entity } from 'typeorm';
+import { GwEntity } from './GwEntity';
 
 @Entity()
-export class ExternalLink {
+export class ExternalLink extends GwEntity {
   @Column({ primary: true })
   url: string;
 
   @Column()
   label: string;
-
-  @Column()
-  isInProduction: boolean;
-
-  @Column({ default: false })
-  public: boolean;
-
-  @Column({ default: false })
-  internal: boolean;
-
-  @Column({ default: false })
-  earlyAccess: boolean;
 }
