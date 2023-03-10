@@ -122,9 +122,9 @@ function getBackgroundProps(flailConfig: FlailConfig): string {
   const { level1Class } = getFlailClass(flailConfig);
 
   if (level1Class.match('garmisch')) {
-    return '{...baseBackgroundProps,backgroundImage: {xs: `url(${gradientBackgroundImage})`,sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), url(${garmischBackgroundImage}),linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,},},';
+    return '{ ...baseBackgroundProps, backgroundImage: { xs: `url(${gradientBackgroundImage})`, sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), url(${garmischBackgroundImage}), linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`, }, }';
   }
-  return '{...baseBackgroundProps,backgroundImage: `url(${gradientBackgroundImage})`,},';
+  return '{ ...baseBackgroundProps,backgroundImage: `url(${gradientBackgroundImage})`, }';
 }
 
 const sidebar = `{
