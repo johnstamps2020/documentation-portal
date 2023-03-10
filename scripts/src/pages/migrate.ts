@@ -88,7 +88,7 @@ function getWhatsNew(flailConfig: FlailConfig): string {
   if (level1Class.match('garmisch')) {
     return `{
       label: 'Garmisch',
-      badge: 'garmischBadge',
+      badge: garmischBadge,
       item: { label: 'Learn more', docId: 'whatsnewgarmisch' },
       content: [
         'Washes your car',
@@ -102,7 +102,7 @@ function getWhatsNew(flailConfig: FlailConfig): string {
 
   return `{
     label: 'Flaine',
-    badge: 'flaineBadge',
+    badge: flaineBadge,
     item: { label: 'Learn more', docId: 'whatsnewflaine' },
     content: [
       'Advanced Product Designer app (APD)',
