@@ -63,7 +63,7 @@
         "product": ["InsuranceSuite Package for Japan"],
         "platform": ["Cloud", "Self-managed"],
         "version": ["1.0"],
-        "release": ["Flaine"],
+        "release": ["Garmisch"],
         "subject": ["Release notes"]
       },
       "environments": ["staging"],
@@ -81,7 +81,7 @@
         "product": ["InsuranceSuite Package for Japan"],
         "platform": ["Cloud", "Self-managed"],
         "version": ["1.0"],
-        "release": ["Flaine"],
+        "release": ["Garmisch"],
         "subject": ["Development"]
       },
       "environments": ["staging"],
@@ -99,7 +99,7 @@
         "product": ["InsuranceSuite Package for Japan"],
         "platform": ["Cloud", "Self-managed"],
         "version": ["1.0"],
-        "release": ["Flaine"],
+        "release": ["Garmisch"],
         "subject": ["Features and functionality"]
       },
       "environments": ["staging"],
@@ -117,7 +117,7 @@
         "product": ["InsuranceSuite Package for Japan"],
         "platform": ["Cloud", "Self-managed"],
         "version": ["1.0"],
-        "release": ["Flaine"],
+        "release": ["Garmisch"],
         "subject": ["Installation"]
       },
       "environments": ["staging"],

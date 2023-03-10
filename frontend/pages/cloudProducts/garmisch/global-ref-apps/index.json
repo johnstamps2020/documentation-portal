@@ -23,6 +23,28 @@
       ]
     },
     {
+      "label": "Japan",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ipj10rn"
+        },
+        {
+          "label": "Application Guide",
+          "id": "ipj10app"
+        },
+        {
+          "label": "Configuration Guide",
+          "id": "ipj10config"
+        },
+        {
+          "label": "Installation Guide",
+          "id": "ipj10install"
+        }
+      ]
+    },
+    {
       "label": "London Market",
       "class": "categoryCard cardShadow",
       "items": [

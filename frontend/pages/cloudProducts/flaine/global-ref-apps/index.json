@@ -28,19 +28,15 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "ipj10rn"
+          "id": "ipjflainern"
         },
         {
           "label": "Application Guide",
-          "id": "ipj10app"
+          "id": "ipjflaineapp"
         },
         {
           "label": "Configuration Guide",
-          "id": "ipj10config"
-        },
-        {
-          "label": "Installation Guide",
-          "id": "ipj10install"
+          "id": "ipjflaineconfig"
         }
       ]
     },
