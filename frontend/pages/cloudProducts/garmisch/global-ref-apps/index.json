@@ -3,6 +3,16 @@
   "title": "Global Content Reference Applications",
   "template": "page",
   "class": "blue-theme garmisch threeCards",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Garmisch (2023.02)",
+    "items": [
+      {
+        "label": "Flaine (2022.09)",
+        "page": "../../flaine/global-ref-apps"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Australia",
