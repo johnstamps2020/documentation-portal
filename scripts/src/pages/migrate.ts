@@ -181,6 +181,26 @@ function getBackgroundProps(flailConfig: FlailConfig): {
     };
   }
 
+  if (level1Class.match('cortina')) {
+    return {
+      backGroundImports: `import cortinaBackgroundImage from 'images/background-cortina.svg';
+      import gradientBackgroundImage from 'images/background-gradient.svg';
+      import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
+      backgroundPropValue:
+        '{\n...baseBackgroundProps,\nbackgroundImage: {\nsm: `url(${cortinaBackgroundImage})`,\n      xs: `url(${gradientBackgroundImage})`,\n},\n}',
+    };
+  }
+
+  if (level1Class.match('banff')) {
+    return {
+      backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
+      import banffBackgroundImage from 'images/background-banff.svg';
+      import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
+      backgroundPropValue:
+        '{\n...baseBackgroundProps,\nbackgroundImage: {\nsm: `url(${banffBackgroundImage}), url(${gradientBackgroundImage})`,\nxs: `url(${gradientBackgroundImage})`,\n},\n}',
+    };
+  }
+
   return {
     backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
     import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
@@ -259,7 +279,13 @@ function mapToProductFamilyLayout(
   flailConfig: FlailConfig,
   targetFile: string
 ): string {
-  return {};
+  const { backgroundPropValue } = getBackgroundProps(flailConfig);
+  const items = getItems(flailConfig.items, targetFile);
+  return `{
+    backgroundProps: ${backgroundPropValue},
+    items: ${JSON.stringify(items, null, 2)},
+    sidebar: ${sidebar},
+  }`;
 }
 
 function mapToSectionLayout(
@@ -322,14 +348,14 @@ function getClassMap(flailConfig: FlailConfig): ClassMap {
   const productFamily: ClassMap = {
     componentName: 'ProductFamilyLayout',
     layoutProps: 'ProductFamilyLayoutProps',
-    from: 'components/LandingPage/ProductFamily',
+    from: 'components/LandingPage/ProductFamily/ProductFamilyLayout',
     remapFunction: mapToProductFamilyLayout,
   };
 
   const section: ClassMap = {
     componentName: 'SectionLayout',
     layoutProps: 'SectionLayoutProps',
-    from: 'components/LandingPage/Section',
+    from: 'components/LandingPage/Section/SectionLayout',
     remapFunction: mapToSectionLayout,
   };
 
@@ -341,14 +367,15 @@ function getClassMap(flailConfig: FlailConfig): ClassMap {
     return category;
   }
 
-  switch (level2Class) {
-    case 'categoryCard':
-      return category;
-    case 'productFamily':
-      return productFamily;
-    default:
-      return section;
+  if (level2Class?.match('categoryCard')) {
+    return category;
   }
+
+  if (level2Class?.match('productFamily')) {
+    return productFamily;
+  }
+
+  return section;
 }
 
 function capitalizeFirstLetter(word: string) {
