@@ -2962,6 +2962,9 @@ object Sources {
         )
         pullRequestCommentStep.conditions { equals("teamcity.build.branch.is_default", "false") }
 
+        val buildLogsDir = "build_logs"
+        val adminLogsDir = "admin_logs"
+
         when (gwBuildType) {
             GwBuildTypes.DITA.buildTypeName -> {
                 val ditaOtLogsDir = "dita_ot_logs"
@@ -2969,8 +2972,6 @@ object Sources {
                 val normalizedDitaDir = "normalized_dita_dir"
                 val schematronReportsDir = "schematron_reports_dir"
                 val docInfoFile = "doc-info.json"
-                val buildLogsDir = "build_logs"
-                val adminLogsDir = "admin_logs"
                 val rootMap = buildConfig.getString("root")
                 val indexRedirect = when (buildConfig.has("indexRedirect")) {
                     true -> {
@@ -3066,8 +3067,8 @@ object Sources {
                             )
                         )
                         val pullRequestCommentForLogFileLinkStep = GwBuildSteps.createAddPullRequestCommentStep(
-                            "$it log link",
-                            "Hi, $it here. I found some issues in validation build %build.number%: https://gwre-devexp-ci-production-devci.gwre-devops.net/repository/download/%system.teamcity.buildType.id%/%teamcity.build.id%:id/${buildLogsDir}/${it}.log",
+                            "${it}.log link",
+                            "\u26D4 \uD83E\uDD16 Hi, $it here. I found some issues in validation build %build.number%: https://gwre-devexp-ci-production-devci.gwre-devops.net/repository/download/%system.teamcity.buildType.id%/%teamcity.build.id%:id/${buildLogsDir}/${it}.log",
                             projectKey,
                             repoKey,
                             pullRequestId
@@ -3099,11 +3100,12 @@ object Sources {
                 val customEnv = if (buildConfig.has("customEnv")) buildConfig.getJSONArray("customEnv") else null
 
                 validationBuildType.artifactRules += """
-                    ${workingDir}/*.log => build_logs
+                    ${workingDir}/*.log => $buildLogsDir
                 """.trimIndent()
 
 
                 validationBuildType.steps {
+                    val exitCodeEnvVarName = "env.YARN_BUILD_EXIT_CODE"
                     step(
                         GwBuildSteps.createBuildYarnProjectStep(
                             GwDeployEnvs.STAGING.envName,
@@ -3116,12 +3118,29 @@ object Sources {
                             gwVersionsString,
                             workingDir,
                             customEnv,
-                            validationMode = true
+                            validationMode = true,
+                            exitCodeEnvVarName = exitCodeEnvVarName
                         )
                     )
                     step(uploadStep)
                     step(previewFileStep)
                     step(pullRequestCommentStep)
+                    val buildLogFileName = "yarn_build.log"
+                    val pullRequestCommentForLogFileLinkStep = GwBuildSteps.createAddPullRequestCommentStep(
+                        "$buildLogFileName link",
+                        "\u26D4 \uD83E\uDD16 Hi, I found some issues in validation build %build.number%: https://gwre-devexp-ci-production-devci.gwre-devops.net/repository/download/%system.teamcity.buildType.id%/%teamcity.build.id%:id/${buildLogsDir}/${buildLogFileName}",
+                        projectKey,
+                        repoKey,
+                        pullRequestId
+                    )
+                    pullRequestCommentForLogFileLinkStep.executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
+                    pullRequestCommentForLogFileLinkStep.conditions {
+                        equals("teamcity.build.branch.is_default", "false")
+                        equals(exitCodeEnvVarName, "1")
+                    }
+                    this.step(
+                        pullRequestCommentForLogFileLinkStep
+                    )
                 }
 
                 validationBuildType.features {
@@ -4651,6 +4670,7 @@ object GwBuildSteps {
         workingDir: String,
         customEnv: JSONArray?,
         validationMode: Boolean = false,
+        exitCodeEnvVarName: String = ""
     ): ScriptBuildStep {
         val nodeImage = when (nodeImageVersion) {
             null -> "${GwDockerImages.NODE_REMOTE_BASE.imageUrl}:17.6.0"
@@ -4667,6 +4687,8 @@ object GwBuildSteps {
                     echo "VALIDATION FAILED: High severity issues found."
                     echo "Check "$logFile" in the build artifacts for more details."
                 fi
+                
+                echo "##teamcity[setParameter name='$exitCodeEnvVarName' value='${'$'}EXIT_CODE']"
                     
                 exit ${'$'}EXIT_CODE
                 """.trimIndent()
