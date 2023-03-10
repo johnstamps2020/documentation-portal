@@ -1,10 +1,11 @@
 import { getAllFilesRecursively } from '../modules/fileOperations';
-import { resolve, dirname, relative, basename, parse } from 'path';
+import { resolve, dirname, relative, parse } from 'path';
 import { writeFileSync, readFileSync, mkdirSync } from 'fs';
 import { CategoryLayoutProps } from 'landing-pages/src/components/LandingPage/Category/CategoryLayout';
 import { Category2LayoutProps } from 'landing-pages/src/components/LandingPage/Category2/Category2Layout';
 import { ProductFamilyLayoutProps } from 'landing-pages/src/components/LandingPage/ProductFamily/ProductFamilyLayout';
 import { SectionLayoutProps } from 'landing-pages/src/components/LandingPage/Section/SectionLayout';
+import { SectionProps } from 'landing-pages/src/components/LandingPage/Section/Section';
 import {
   baseBackgroundProps,
   LandingPageItemProps,
@@ -64,12 +65,26 @@ function remapPageLink(flailPageLink: string, targetFile: string): string {
   return matchingTargetFile;
 }
 
+function getSections(
+  flailItems: FlailItem[] | undefined,
+  targetFile: string
+): SectionProps[] | undefined {
+  if (!flailItems || flailItems.length === 0) {
+    return undefined;
+  }
+
+  return flailItems.map((item) => ({
+    label: item.label,
+    items: getItems(item.items, targetFile) || [],
+  }));
+}
+
 function getItems(
   flailItems: FlailItem[] | undefined,
   targetFile: string
-): LandingPageItemProps[] {
-  if (!flailItems) {
-    throw new Error(`Object does not have items`);
+): LandingPageItemProps[] | undefined {
+  if (!flailItems || flailItems.length === 0) {
+    return undefined;
   }
 
   return flailItems.map(
@@ -131,7 +146,7 @@ function getBackgroundProps(flailConfig: FlailConfig): {
       import garmischBadge from 'images/badge-garmisch.svg';
       import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
       backgroundPropValue:
-        '{ ...baseBackgroundProps, backgroundImage: { xs: `url(${gradientBackgroundImage})`, sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), url(${garmischBackgroundImage}), linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`, }, }',
+        '{\n...baseBackgroundProps,\nbackgroundImage: {\nxs: `url(${gradientBackgroundImage})`,\nsm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), \n  url(${garmischBackgroundImage}), \n  linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,\n},\n}',
     };
   }
 
@@ -142,7 +157,17 @@ function getBackgroundProps(flailConfig: FlailConfig): {
       import flaineBackgroundImage from 'images/background-flaine.svg';
       import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
       backgroundPropValue:
-        '{ ...baseBackgroundProps, backgroundImage: { xs: `url(${gradientBackgroundImage})`, sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), url(${flaineBackgroundImage}), linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,},}',
+        '{\n...baseBackgroundProps,\nbackgroundImage: {\nxs: `url(${gradientBackgroundImage})`,\nsm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),\n       url(${flaineBackgroundImage}), \n       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,\n},\n}',
+    };
+  }
+
+  if (level1Class.match('elysian')) {
+    return {
+      backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
+      import elysianBackgroundImage from 'images/background-elysian.svg';
+      import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
+      backgroundPropValue:
+        '{\n...baseBackgroundProps,\nbackgroundImage: {\nxs: `url(${gradientBackgroundImage})`,\nsm: `url(${elysianBackgroundImage})`,\n},\n}',
     };
   }
 
@@ -185,16 +210,13 @@ function mapToCategory2Layout(
   targetFile: string
 ): string {
   const { backgroundPropValue } = getBackgroundProps(flailConfig);
+  const cards = flailConfig.items.map((flail) => ({
+    label: flail.label,
+    items: getItems(flail.items, targetFile),
+  }));
   return `{
     backgroundProps: ${backgroundPropValue},
-    cards: ${JSON.stringify(
-      flailConfig.items.map((flail) => ({
-        label: flail.label,
-        items: getItems(flail.items, targetFile),
-      })),
-      null,
-      2
-    )},
+    cards: ${JSON.stringify(cards, null, 2)},
     whatsNew: ${getWhatsNew(flailConfig)},
     sidebar: ${sidebar},
   }`;
@@ -204,7 +226,23 @@ function mapToCategoryLayout(
   flailConfig: FlailConfig,
   targetFile: string
 ): string {
-  return {};
+  const { backgroundPropValue } = getBackgroundProps(flailConfig);
+  const cards = flailConfig.items.map((flail) => ({
+    label: flail.label,
+    items: getItems(
+      flail.items?.filter((i) => i.items === undefined),
+      targetFile
+    ),
+    sections: getSections(
+      flail.items?.filter((i) => i.items),
+      targetFile
+    ),
+  }));
+  return `{
+    backgroundProps: ${backgroundPropValue},
+    cards: ${JSON.stringify(cards, null, 2)},
+    sidebar: ${sidebar}
+  }`;
 }
 
 function mapToProductFamilyLayout(
@@ -218,7 +256,23 @@ function mapToSectionLayout(
   flailConfig: FlailConfig,
   targetFile: string
 ): string {
-  return {};
+  const { backgroundPropValue } = getBackgroundProps(flailConfig);
+  const cards = flailConfig.items.map((flail) => ({
+    label: flail.label,
+    items: getItems(
+      flail.items?.filter((i) => i.items === undefined),
+      targetFile
+    ),
+    sections: getSections(
+      flail.items?.filter((i) => i.items),
+      targetFile
+    ),
+  }));
+  return `{
+    backgroundProps: ${backgroundPropValue},
+    cards: ${JSON.stringify(cards, null, 2)},
+    sidebar: ${sidebar}
+  }`;
 }
 
 function getFlailClass(flailConfig: FlailConfig) {
@@ -231,45 +285,59 @@ function getFlailClass(flailConfig: FlailConfig) {
   };
 }
 
-function getClassMap(flailConfig: FlailConfig): {
+type ClassMap = {
   componentName: string;
   layoutProps: string;
   from: string;
   remapFunction: (flailConfig: FlailConfig, targetFile: string) => string;
-} {
+};
+
+function getClassMap(flailConfig: FlailConfig): ClassMap {
   const { level1Class, level2Class } = getFlailClass(flailConfig);
 
+  const category2: ClassMap = {
+    componentName: 'Category2Layout',
+    layoutProps: 'Category2LayoutProps',
+    from: 'components/LandingPage/Category2/Category2Layout',
+    remapFunction: mapToCategory2Layout,
+  };
+
+  const category: ClassMap = {
+    componentName: 'CategoryLayout',
+    layoutProps: 'CategoryLayoutProps',
+    from: 'components/LandingPage/Category/CategoryLayout',
+    remapFunction: mapToCategoryLayout,
+  };
+
+  const productFamily: ClassMap = {
+    componentName: 'ProductFamilyLayout',
+    layoutProps: 'ProductFamilyLayoutProps',
+    from: 'components/LandingPage/ProductFamily',
+    remapFunction: mapToProductFamilyLayout,
+  };
+
+  const section: ClassMap = {
+    componentName: 'SectionLayout',
+    layoutProps: 'SectionLayoutProps',
+    from: 'components/LandingPage/Section',
+    remapFunction: mapToSectionLayout,
+  };
+
   if (level1Class.match('garmisch') || level1Class.match('flaine')) {
-    return {
-      componentName: 'Category2Layout',
-      layoutProps: 'Category2LayoutProps',
-      from: 'components/LandingPage/Category2/Category2Layout',
-      remapFunction: mapToCategory2Layout,
-    };
+    return category2;
+  }
+
+  if (level1Class.match('elysian')) {
+    return category;
   }
 
   switch (level2Class) {
     case 'categoryCard':
-      return {
-        componentName: 'CategoryLayout',
-        layoutProps: 'CategoryLayoutProps',
-        from: 'components/LandingPage/Category/CategoryLayout',
-        remapFunction: mapToCategoryLayout,
-      };
+      return category;
     case 'productFamily':
-      return {
-        componentName: 'ProductFamilyLayout',
-        layoutProps: 'ProductFamilyLayoutProps',
-        from: 'components/LandingPage/ProductFamily',
-        remapFunction: mapToProductFamilyLayout,
-      };
+      return productFamily;
     default:
-      return {
-        componentName: 'SectionLayout',
-        layoutProps: 'SectionLayoutProps',
-        from: 'components/LandingPage/Section',
-        remapFunction: mapToSectionLayout,
-      };
+      return section;
   }
 }
 
