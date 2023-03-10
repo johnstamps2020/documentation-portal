@@ -28,7 +28,7 @@
         "version": ["2023.02"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
