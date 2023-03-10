@@ -443,7 +443,7 @@ for (const file of filePairs) {
 
   const flailConfig: FlailConfig = JSON.parse(flailFileContents);
 
-  if (flailConfig.template === 'reidrect') {
+  if (flailConfig.template === 'redirect') {
     continue;
   }
 
