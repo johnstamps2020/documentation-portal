@@ -112,7 +112,7 @@
     {
       "id": "ipj10install",
       "title": "Installation Guide",
-      "url": "ipj/1.0/app",
+      "url": "ipj/1.0/install",
       "metadata": {
         "product": ["InsuranceSuite Package for Japan"],
         "platform": ["Cloud", "Self-managed"],
