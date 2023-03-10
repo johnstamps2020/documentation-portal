@@ -1,5 +1,5 @@
 import { getAllFilesRecursively } from '../modules/fileOperations';
-import { resolve, dirname, relative } from 'path';
+import { resolve, dirname, relative, basename, parse } from 'path';
 import { writeFileSync, readFileSync, mkdirSync } from 'fs';
 import { CategoryLayoutProps } from 'landing-pages/src/components/LandingPage/Category/CategoryLayout';
 import { Category2LayoutProps } from 'landing-pages/src/components/LandingPage/Category2/Category2Layout';
@@ -118,13 +118,28 @@ function getWhatsNew(flailConfig: FlailConfig): string {
   }`;
 }
 
-function getBackgroundProps(flailConfig: FlailConfig): string {
+function getBackgroundProps(flailConfig: FlailConfig): {
+  backGroundImports: string;
+  backgroundPropValue: string;
+} {
   const { level1Class } = getFlailClass(flailConfig);
 
   if (level1Class.match('garmisch')) {
-    return '{ ...baseBackgroundProps, backgroundImage: { xs: `url(${gradientBackgroundImage})`, sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), url(${garmischBackgroundImage}), linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`, }, }';
+    return {
+      backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
+      import garmischBackgroundImage from 'images/background-garmisch.png';
+      import garmischBadge from 'images/badge-garmisch.svg';
+      import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
+      backgroundPropValue:
+        '{ ...baseBackgroundProps, backgroundImage: { xs: `url(${gradientBackgroundImage})`, sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), url(${garmischBackgroundImage}), linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`, }, }',
+    };
   }
-  return '{ ...baseBackgroundProps,backgroundImage: `url(${gradientBackgroundImage})`, }';
+  return {
+    backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
+    import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
+    backgroundPropValue:
+      '{ ...baseBackgroundProps,backgroundImage: `url(${gradientBackgroundImage})`, }',
+  };
 }
 
 const sidebar = `{
@@ -157,8 +172,9 @@ function mapToCategory2Layout(
   flailConfig: FlailConfig,
   targetFile: string
 ): string {
+  const { backgroundPropValue } = getBackgroundProps(flailConfig);
   return `{
-    backgroundProps: ${getBackgroundProps(flailConfig)},
+    backgroundProps: ${backgroundPropValue},
     cards: ${JSON.stringify(
       flailConfig.items.map((flail) => ({
         label: flail.label,
@@ -204,14 +220,18 @@ function getFlailClass(flailConfig: FlailConfig) {
 }
 
 function getClassMap(flailConfig: FlailConfig): {
+  componentName: string;
   layoutProps: string;
+  from: string;
   remapFunction: (flailConfig: FlailConfig, targetFile: string) => string;
 } {
   const { level1Class, level2Class } = getFlailClass(flailConfig);
 
   if (level1Class.match('garmisch') || level1Class.match('flaine')) {
     return {
+      componentName: 'Category2Layout',
       layoutProps: 'Category2LayoutProps',
+      from: 'components/LandingPage/Category2/Category2Layout',
       remapFunction: mapToCategory2Layout,
     };
   }
@@ -219,20 +239,30 @@ function getClassMap(flailConfig: FlailConfig): {
   switch (level2Class) {
     case 'categoryCard':
       return {
+        componentName: 'CategoryLayout',
         layoutProps: 'CategoryLayoutProps',
+        from: 'components/LandingPage/Category/CategoryLayout',
         remapFunction: mapToCategoryLayout,
       };
     case 'productFamily':
       return {
+        componentName: 'ProductFamilyLayout',
         layoutProps: 'ProductFamilyLayoutProps',
+        from: 'components/LandingPage/ProductFamily',
         remapFunction: mapToProductFamilyLayout,
       };
     default:
       return {
+        componentName: 'SectionLayout',
         layoutProps: 'SectionLayoutProps',
+        from: 'components/LandingPage/Section',
         remapFunction: mapToSectionLayout,
       };
   }
+}
+
+function capitalizeFirstLetter(word: string) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
 type FilePair = {
@@ -244,10 +274,21 @@ function createComponentTemplate(
   flailConfig: FlailConfig,
   targetFile: string
 ): string {
-  const { layoutProps, remapFunction } = getClassMap(flailConfig);
+  const { componentName, layoutProps, from, remapFunction } =
+    getClassMap(flailConfig);
   const pageConfig = remapFunction(flailConfig, targetFile);
+  const pageComponentName = capitalizeFirstLetter(parse(targetFile).name);
+  const { backGroundImports } = getBackgroundProps(flailConfig);
 
-  return `const pageConfig: ${layoutProps} = ${pageConfig};`;
+  return `import ${componentName}, { ${layoutProps} } from '${from}';
+${backGroundImports}
+
+const pageConfig: ${layoutProps} = ${pageConfig};
+
+export default function ${pageComponentName}() {
+  return <${componentName} {...pageConfig} />
+}
+`;
 }
 
 for (const file of filePairs) {
