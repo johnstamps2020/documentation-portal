@@ -3072,7 +3072,7 @@ object Sources {
                             repoKey,
                             pullRequestId
                         )
-
+                        pullRequestCommentForLogFileLinkStep.executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
                         pullRequestCommentForLogFileLinkStep.conditions {
                             equals("teamcity.build.branch.is_default", "false")
                             equals(exitCodeEnvVarName, "1")
