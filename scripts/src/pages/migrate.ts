@@ -171,6 +171,16 @@ function getBackgroundProps(flailConfig: FlailConfig): {
     };
   }
 
+  if (level1Class.match('dobson')) {
+    return {
+      backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
+      import dobsonBackgroundImage from 'images/background-dobson.svg';
+      import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
+      backgroundPropValue:
+        '{\n...baseBackgroundProps,\nbackgroundImage: {\nxs: `url(${gradientBackgroundImage})`,\n      sm: `url(${dobsonBackgroundImage})`,\n},\n}',
+    };
+  }
+
   return {
     backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
     import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
@@ -327,7 +337,7 @@ function getClassMap(flailConfig: FlailConfig): ClassMap {
     return category2;
   }
 
-  if (level1Class.match('elysian')) {
+  if (level1Class.match('elysian') || level1Class.match('dobson')) {
     return category;
   }
 
