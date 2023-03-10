@@ -82,11 +82,11 @@ function getItems(
   );
 }
 
-function getWhatsNew(flailConfig: FlailConfig): WhatsNewProps {
+function getWhatsNew(flailConfig: FlailConfig): string {
   const level1Class = flailConfig.class;
 
   if (level1Class.match('garmisch')) {
-    return {
+    return `{
       label: 'Garmisch',
       badge: 'garmischBadge',
       item: { label: 'Learn more', docId: 'whatsnewgarmisch' },
@@ -97,10 +97,10 @@ function getWhatsNew(flailConfig: FlailConfig): WhatsNewProps {
         'Makes you feel like a million bucks',
         'Just kidding! Content coming soon.',
       ],
-    };
+    }`;
   }
 
-  return {
+  return `{
     label: 'Flaine',
     badge: 'flaineBadge',
     item: { label: 'Learn more', docId: 'whatsnewflaine' },
@@ -115,7 +115,7 @@ function getWhatsNew(flailConfig: FlailConfig): WhatsNewProps {
       'Expanded Guidewire GO content',
       'Advanced monitoring and observability',
     ],
-  };
+  }`;
 }
 
 function getBackgroundProps(flailConfig: FlailConfig): string {
@@ -156,36 +156,38 @@ const sidebar: SidebarProps = {
 function mapToCategory2Layout(
   flailConfig: FlailConfig,
   targetFile: string
-): Category2LayoutProps {
-  return {
-    backgroundProps: getBackgroundProps(flailConfig),
-    cards: flailConfig.items.map((flail) => ({
-      label: flail.label,
-      items: getItems(flail.items, targetFile),
-    })),
-    whatsNew: getWhatsNew(flailConfig),
+): string {
+  return `{
+    backgroundProps: ${getBackgroundProps(flailConfig)},
+    cards: ${JSON.stringify(
+      flailConfig.items.map((flail) => ({
+        label: flail.label,
+        items: getItems(flail.items, targetFile),
+      }))
+    )},
+    whatsNew: ${getWhatsNew(flailConfig)},
     sidebar,
-  };
+  }`;
 }
 
 function mapToCategoryLayout(
   flailConfig: FlailConfig,
   targetFile: string
-): CategoryLayoutProps {
+): string {
   return {};
 }
 
 function mapToProductFamilyLayout(
   flailConfig: FlailConfig,
   targetFile: string
-): ProductFamilyLayoutProps {
+): string {
   return {};
 }
 
 function mapToSectionLayout(
   flailConfig: FlailConfig,
   targetFile: string
-): SectionLayoutProps {
+): string {
   return {};
 }
 
@@ -207,7 +209,7 @@ type RemapType =
 
 function getClassMap(flailConfig: FlailConfig): {
   layoutProps: string;
-  remapFunction: (flailConfig: FlailConfig, targetFile: string) => RemapType;
+  remapFunction: (flailConfig: FlailConfig, targetFile: string) => string;
 } {
   const { level1Class, level2Class } = getFlailClass(flailConfig);
 
@@ -249,11 +251,7 @@ function createComponentTemplate(
   const { layoutProps, remapFunction } = getClassMap(flailConfig);
   const pageConfig = remapFunction(flailConfig, targetFile);
 
-  return `const pageConfig: ${layoutProps} = ${JSON.stringify(
-    pageConfig,
-    null,
-    2
-  )};`;
+  return `const pageConfig: ${layoutProps} = ${pageConfig};`;
 }
 
 for (const file of filePairs) {
