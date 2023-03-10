@@ -4877,7 +4877,7 @@ object GwBuildSteps {
                 
                 export EXIT_CODE=0
                 $validationCommand || EXIT_CODE=${'$'}?
-                ##teamcity[setParameter name='$exitCodeEnvVarName' value='${'$'}EXIT_CODE']
+                echo "##teamcity[setParameter name='$exitCodeEnvVarName' value='${'$'}EXIT_CODE']"
                 exit ${'$'}EXIT_CODE
             """.trimIndent()
             dockerImage = GwDockerImages.DOC_VALIDATOR_LATEST.imageUrl
