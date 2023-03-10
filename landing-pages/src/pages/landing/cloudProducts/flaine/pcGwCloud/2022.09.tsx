@@ -1,14 +1,28 @@
-import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import SectionLayout, {
   SectionLayoutProps,
 } from 'components/LandingPage/Section/SectionLayout';
+import gradientBackgroundImage from 'images/background-gradient.svg';
+import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 
 const pageConfig: SectionLayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
-    backgroundColor: 'hsl(0, 0%, 98%)',
+    backgroundImage: `url(${gradientBackgroundImage})`,
   },
   sections: [
+    {
+      label: 'Release Notes',
+      items: [
+        {
+          label: 'Release Notes',
+          docId: 'ispc202209releasenotes',
+        },
+        {
+          label: 'AppReader Release Notes',
+          docId: 'appreaderrn400',
+        },
+      ],
+    },
     {
       label: 'Installation',
       items: [
@@ -31,19 +45,6 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'InsuranceSuite Configuration Upgrade Tools Compatibility',
           docId: 'isupgradecompatibility',
-        },
-      ],
-    },
-    {
-      label: 'Release Notes',
-      items: [
-        {
-          label: 'Release Notes',
-          docId: 'ispc202209releasenotes',
-        },
-        {
-          label: 'AppReader Release Notes',
-          docId: 'appreaderrn400',
         },
       ],
     },
@@ -196,7 +197,7 @@ const pageConfig: SectionLayoutProps = {
     items: [
       {
         label: 'Flaine (2022.09)',
-        pagePath: 'cloudProducts/flaine/pcGwCloud/2022.09',
+        pagePath: '',
       },
       {
         label: 'Elysian (2022.05)',
@@ -223,6 +224,6 @@ const pageConfig: SectionLayoutProps = {
   },
 };
 
-export default function pcGwCloud202209() {
+export default function LandingPage202209() {
   return <SectionLayout {...pageConfig} />;
 }

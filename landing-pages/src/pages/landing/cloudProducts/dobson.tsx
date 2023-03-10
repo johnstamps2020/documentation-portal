@@ -13,6 +13,42 @@ const pageConfig: CategoryLayoutProps = {
       sm: `url(${dobsonBackgroundImage})`,
     },
   },
+  selector: {
+    label: 'Select release',
+    selectedItemLabel: 'Dobson',
+    items: [
+      {
+        label: 'Dobson',
+        pagePath: '',
+      },
+      {
+        label: 'Garmisch',
+        pagePath: 'cloudProducts/garmisch',
+      },
+      {
+        label: 'Flaine',
+        pagePath: 'cloudProducts/flaine',
+      },
+      {
+        label: 'Elysian',
+        pagePath: 'cloudProducts/elysian',
+      },
+      {
+        label: 'Cortina',
+        pagePath: 'cloudProducts/cortina',
+      },
+      {
+        label: 'Banff',
+        pagePath: 'cloudProducts/banff',
+      },
+      {
+        label: 'Aspen',
+        pagePath: 'cloudProducts/aspen',
+      },
+    ],
+    labelColor: 'white',
+  },
+
   cards: [
     {
       label: 'Applications',
@@ -186,6 +222,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
   ],
+
   sidebar: {
     label: 'Implementation Resources',
     items: [

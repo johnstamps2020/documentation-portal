@@ -1,0 +1,62 @@
+import SectionLayout, {
+  SectionLayoutProps,
+} from 'components/LandingPage/Section/SectionLayout';
+import gradientBackgroundImage from 'images/background-gradient.svg';
+import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+
+const pageConfig: SectionLayoutProps = {
+  backgroundProps: {
+    ...baseBackgroundProps,
+    backgroundImage: `url(${gradientBackgroundImage})`,
+  },
+  sections: [
+    {
+      label: 'Release Notes',
+      items: [
+        {
+          label: 'Release Notes',
+          docId: 'lobcrimesbtrnaspen',
+        },
+      ],
+    },
+    {
+      label: 'Features and functionality',
+      items: [
+        {
+          label: 'Crime Standards Based Template Guide',
+          docId: 'lobcrimeguideaspen',
+        },
+      ],
+    },
+  ],
+  selector: {
+    label: 'Select product',
+    selectedItemLabel: 'Crime Standards Based Template 2020.05',
+    items: [
+      {
+        label: 'Crime Standards Based Template 2020.05',
+        pagePath: '',
+      },
+      {
+        label: 'Businessowners Standards Based Template 2020.05',
+        pagePath:
+          'cloudProducts/aspen/policyCenterCloud/boStandardsBasedTemplate/2020.05',
+      },
+      {
+        label: 'Commercial Auto Standards Based Template 2020.05',
+        pagePath:
+          'cloudProducts/aspen/policyCenterCloud/caStandardsBasedTemplate/2020.05',
+      },
+      {
+        label: 'General Liability Standards Based Template 2020.05',
+        pagePath:
+          'cloudProducts/aspen/policyCenterCloud/glStandardsBasedTemplate/2020.05',
+      },
+    ],
+    labelColor: 'black',
+  },
+};
+
+export default function LandingPage202005() {
+  return <SectionLayout {...pageConfig} />;
+}

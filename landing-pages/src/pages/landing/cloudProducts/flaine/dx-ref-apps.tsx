@@ -1,0 +1,271 @@
+import Category2Layout, {
+  Category2LayoutProps,
+} from 'components/LandingPage/Category2/Category2Layout';
+import gradientBackgroundImage from 'images/background-gradient.svg';
+import flaineBadge from 'images/badge-flaine.svg';
+import flaineBackgroundImage from 'images/background-flaine.svg';
+import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+
+const pageConfig: Category2LayoutProps = {
+  backgroundProps: {
+    ...baseBackgroundProps,
+    backgroundImage: {
+      xs: `url(${gradientBackgroundImage})`,
+      sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
+       url(${flaineBackgroundImage}), 
+       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
+    },
+  },
+  cards: [
+    {
+      label: 'Jutro Design System 8.3.0',
+      items: [
+        {
+          label: 'Jutro Design System and UI Framework',
+          docId: 'jutro830',
+        },
+        {
+          label: 'Jutro Storybook',
+          docId: 'storybook830',
+        },
+      ],
+    },
+    {
+      label: 'CustomerEngage Account Management',
+      items: [
+        {
+          label: 'Release Notes',
+          docId: 'dx202209ceamrelnotes',
+        },
+        {
+          label: 'Installation Guide',
+          docId: 'dx202209ceaminstall',
+        },
+        {
+          label: 'Application Guide',
+          docId: 'dx202209ceamapp',
+        },
+        {
+          label: "Developer's Guide",
+          docId: 'dx202209ceamdev',
+        },
+        {
+          label: 'Digital Services Reference Guides',
+          docId: 'dx202209ceamrefguides',
+        },
+      ],
+    },
+    {
+      label: 'CustomerEngage Account Management for ClaimCenter',
+      items: [
+        {
+          label: 'Release Notes',
+          docId: 'dx202209ceclaimsrelnotes',
+        },
+        {
+          label: 'Installation Guide',
+          docId: 'dx202209ceclaimsinstall',
+        },
+        {
+          label: 'Application Guide',
+          docId: 'dx202209ceclaimsapp',
+        },
+        {
+          label: "Developer's Guide",
+          docId: 'dx202209ceclaimsdev',
+        },
+        {
+          label: 'Digital Services Reference Guides',
+          docId: 'dx202209ceclaimsrefguides',
+        },
+      ],
+    },
+    {
+      label: 'CustomerEngage Quote and Buy',
+      items: [
+        {
+          label: 'Release Notes',
+          docId: 'dx202209ceqbrelnotes',
+        },
+        {
+          label: 'Installation Guide',
+          docId: 'dx202209ceqbinstall',
+        },
+        {
+          label: 'Application Guide',
+          docId: 'dx202209ceqbapp',
+        },
+        {
+          label: "Developer's Guide",
+          docId: 'dx202209ceqbdev',
+        },
+        {
+          label: 'Digital Code Generation Guide',
+          docId: 'dx202209dcg',
+        },
+        {
+          label: 'Digital Services Reference Guides',
+          docId: 'dx202209ceqbrefguides',
+        },
+      ],
+    },
+    {
+      label: 'ProducerEngage',
+      items: [
+        {
+          label: 'Release Notes',
+          docId: 'dx202209perelnotes',
+        },
+        {
+          label: 'Installation Guide',
+          docId: 'dx202209peinstall',
+        },
+        {
+          label: 'Application Guide',
+          docId: 'dx202209peapp',
+        },
+        {
+          label: "Developer's Guide",
+          docId: 'dx202209pedev',
+        },
+        {
+          label: 'Digital Code Generation Guide',
+          docId: 'dx202209dcg',
+        },
+        {
+          label: 'Digital Services Reference Guides',
+          docId: 'dx202209perefguides',
+        },
+      ],
+    },
+    {
+      label: 'ProducerEngage for ClaimCenter',
+      items: [
+        {
+          label: 'Release Notes',
+          docId: 'dx202209peclaimsrelnotes',
+        },
+        {
+          label: 'Installation Guide',
+          docId: 'dx202209peclaimsinstall',
+        },
+        {
+          label: 'Application Guide',
+          docId: 'dx202209peclaimsapp',
+        },
+        {
+          label: "Developer's Guide",
+          docId: 'dx202209peclaimsdev',
+        },
+        {
+          label: 'Digital Services Reference Guides',
+          docId: 'dx202209peclaimsrefguides',
+        },
+      ],
+    },
+    {
+      label: 'ServiceRepEngage',
+      items: [
+        {
+          label: 'Release Notes',
+          docId: 'dx202209srerelnotes',
+        },
+        {
+          label: 'Installation Guide',
+          docId: 'dx202209sreinstall',
+        },
+        {
+          label: 'Application Guide',
+          docId: 'dx202209sreapp',
+        },
+        {
+          label: "Developer's Guide",
+          docId: 'dx202209sredev',
+        },
+        {
+          label: 'Digital Services Reference Guides',
+          docId: 'dx202209srerefguides',
+        },
+      ],
+    },
+    {
+      label: 'VendorEngage',
+      items: [
+        {
+          label: 'Release Notes',
+          docId: 'dx202209verelnotes',
+        },
+        {
+          label: 'Installation Guide',
+          docId: 'dx202209veinstall',
+        },
+        {
+          label: 'Application Guide',
+          docId: 'dx202209veapp',
+        },
+        {
+          label: "Developer's Guide",
+          docId: 'dx202209vedev',
+        },
+        {
+          label: 'Digital Services Reference Guides',
+          docId: 'dx202209verefguides',
+        },
+      ],
+    },
+    {
+      label: 'API Documentation',
+      items: [
+        {
+          label: 'Digital Frontend API Documentation',
+          docId: 'dxjsdocs202209',
+        },
+      ],
+    },
+  ],
+  whatsNew: {
+    label: 'Flaine',
+    badge: flaineBadge,
+    item: { label: 'Learn more', docId: 'whatsnewflaine' },
+    content: [
+      'Advanced Product Designer app (APD)',
+      'Submission Intake for InsuranceSuite',
+      'App Events for event-based integration',
+      'Community-powered machine learning',
+      'Automated updates to latest release',
+      'Cloud API enhancements',
+      'Early access to Jutro Digital Platform',
+      'Expanded Guidewire GO content',
+      'Advanced monitoring and observability',
+    ],
+  },
+  sidebar: {
+    label: 'Implementation Resources',
+    items: [
+      {
+        label: 'Community Case Templates',
+        docId: 'cloudtickettemplates',
+      },
+      {
+        label: 'Product Adoption',
+        docId: 'surepathmethodologymain',
+      },
+      {
+        label: 'Cloud Standards',
+        docId: 'standardslatest',
+      },
+      {
+        label: 'Upgrade Diff Reports',
+        pagePath: 'upgradediffs',
+      },
+      {
+        label: 'Internal docs',
+        docId: 'internaldocslatest',
+      },
+    ],
+  },
+};
+
+export default function Dxrefapps() {
+  return <Category2Layout {...pageConfig} />;
+}

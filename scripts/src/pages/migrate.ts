@@ -138,6 +138,16 @@ function getBackgroundProps(flailConfig: FlailConfig): {
   backGroundImports: string;
   backgroundPropValue: string;
 } {
+  if (flailConfig.title === 'Self-managed') {
+    return {
+      backGroundImports: `import Box from '@mui/material/Box';
+    import Typography from '@mui/material/Typography';
+    import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
+      backgroundPropValue:
+        "{\n...baseBackgroundProps,\nbackgroundColor: 'white',\n}",
+    };
+  }
+
   const { level1Class } = getFlailClass(flailConfig);
 
   if (level1Class.match('garmisch')) {
@@ -210,31 +220,95 @@ function getBackgroundProps(flailConfig: FlailConfig): {
   };
 }
 
-const sidebar = `{
-  label: 'Implementation Resources',
-  items: [
-    {
-      label: 'Community Case Templates',
-      docId: 'cloudtickettemplates',
-    },
-    {
-      label: 'Product Adoption',
-      docId: 'surepathmethodologymain',
-    },
-    {
-      label: 'Cloud Standards',
-      docId: 'standardslatest',
-    },
-    {
-      label: 'Upgrade Diff Reports',
-      pagePath: 'upgradediffs',
-    },
-    {
-      label: 'Internal docs',
-      docId: 'internaldocslatest',
-    },
-  ],
-}`;
+function getSidebar(flailConfig: FlailConfig) {
+  const { level1Class } = getFlailClass(flailConfig);
+
+  if (level1Class.match('elysian')) {
+    return `{
+      label: 'Implementation Resources',
+      items: [
+        {
+          label: 'Guidewire Testing',
+          pagePath: 'testingFramework/elysian',
+        },
+        {
+          label: 'API References',
+          pagePath: 'apiReferences',
+        },
+        {
+          label: 'Community Case Templates',
+          docId: 'cloudtickettemplates',
+        },
+        {
+          label: 'Product Adoption',
+          docId: 'surepathmethodologymain',
+        },
+        {
+          label: 'Cloud Standards',
+          docId: 'standardslatest',
+        },
+        {
+          label: 'Upgrade Diff Reports',
+          pagePath: 'upgradediffs',
+        },
+      ],
+    }`;
+  }
+
+  if (level1Class.match('dobson')) {
+    return `{
+      label: 'Implementation Resources',
+      items: [
+        {
+          label: 'API References',
+          pagePath: 'apiReferences',
+        },
+        {
+          label: 'Community Case Templates',
+          docId: 'cloudtickettemplates',
+        },
+        {
+          label: 'Product Adoption',
+          docId: 'surepathmethodologymain',
+        },
+        {
+          label: 'Cloud Standards',
+          docId: 'standardslatest',
+        },
+        {
+          label: 'Upgrade Diff Reports',
+          pagePath: 'upgradediffs',
+        },
+      ],
+    }`;
+  }
+
+  return `{
+    label: 'Implementation Resources',
+    items: [
+      {
+        label: 'Community Case Templates',
+        docId: 'cloudtickettemplates',
+      },
+      {
+        label: 'Product Adoption',
+        docId: 'surepathmethodologymain',
+      },
+      {
+        label: 'Cloud Standards',
+        docId: 'standardslatest',
+      },
+      {
+        label: 'Upgrade Diff Reports',
+        pagePath: 'upgradediffs',
+      },
+      {
+        label: 'Internal docs',
+        docId: 'internaldocslatest',
+      },
+    ],
+  }`;
+}
 
 function mapToCategory2Layout(
   flailConfig: FlailConfig,
@@ -249,8 +323,30 @@ function mapToCategory2Layout(
     backgroundProps: ${backgroundPropValue},
     cards: ${JSON.stringify(cards, null, 2)},
     whatsNew: ${getWhatsNew(flailConfig)},
-    sidebar: ${sidebar},
+    sidebar: ${getSidebar(flailConfig)},
   }`;
+}
+
+function getIsRelease(flailConfig: FlailConfig): boolean {
+  const { level1Class } = getFlailClass(flailConfig);
+
+  let result = false;
+  [
+    'aspen',
+    'banff',
+    'cortina',
+    'dobson',
+    'elysian',
+    'flaine',
+    'garmisch',
+  ].forEach((value) => {
+    if (level1Class.match(value)) {
+      result = true;
+      return;
+    }
+  });
+
+  return result;
 }
 
 function mapToCategoryLayout(
@@ -269,10 +365,38 @@ function mapToCategoryLayout(
       targetFile
     ),
   }));
+  const isSelfManaged = flailConfig.title === 'Self-managed';
+  const isRelease = getIsRelease(flailConfig);
   return `{
     backgroundProps: ${backgroundPropValue},
+    ${
+      !isSelfManaged
+        ? `selector: ${JSON.stringify(
+            getSelector(flailConfig, targetFile),
+            null,
+            2
+          )},`
+        : ''
+    }
+    ${
+      isSelfManaged
+        ? `description: (
+      <Box padding="1rem 1rem 0rem 1rem">
+        <Typography variant="body1" lineHeight={2}>
+          Find documentation for the latest releases of Guidewire self-managed
+          products.
+        </Typography>
+        <Typography variant="body1" lineHeight={2}>
+          Access earlier releases by clicking a product and then selecting a
+          version from the <b>Select release</b> dropdown menu.
+        </Typography>
+      </Box>
+    ),`
+        : ''
+    }
     cards: ${JSON.stringify(cards, null, 2)},
-    sidebar: ${sidebar}
+    ${isSelfManaged ? `showReleaseSelector: false` : ''}
+    ${isRelease ? `sidebar: ${getSidebar(flailConfig)}` : ''}
   }`;
 }
 
@@ -285,13 +409,14 @@ function mapToProductFamilyLayout(
   return `{
     backgroundProps: ${backgroundPropValue},
     items: ${JSON.stringify(items, null, 2)},
-    sidebar: ${sidebar},
+    sidebar: ${getSidebar(flailConfig)},
   }`;
 }
 
 function getSelector(
   flailConfig: FlailConfig,
-  targetFile: string
+  targetFile: string,
+  labelColor: string = 'white'
 ): LandingPageSelectorProps | undefined {
   const flailSelector = flailConfig.selector;
 
@@ -310,7 +435,7 @@ function getSelector(
     label: flailSelector?.label || 'Select version',
     selectedItemLabel: flailSelector?.selectedItem || '',
     items: [currentItem, ...selectorItems],
-    labelColor: 'white',
+    labelColor: labelColor,
   };
 }
 
@@ -320,7 +445,7 @@ function mapToSectionLayout(
 ): string {
   const { backgroundPropValue } = getBackgroundProps(flailConfig);
   const sections = getSections(flailConfig.items, targetFile);
-  const selector = getSelector(flailConfig, targetFile);
+  const selector = getSelector(flailConfig, targetFile, 'black');
   return `{
     backgroundProps: ${backgroundPropValue},
     sections: ${JSON.stringify(sections, null, 2)},
