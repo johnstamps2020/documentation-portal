@@ -10,6 +10,7 @@ import {
 import { Doc } from './Doc';
 import { Source } from './Source';
 import { Resource } from './Resource';
+import { GwEntity } from './GwEntity';
 
 export enum BuildType {
   DITA = 'dita',
@@ -20,7 +21,7 @@ export enum BuildType {
 }
 
 @Entity()
-export class Build {
+export class Build extends GwEntity {
   @PrimaryColumn()
   id: string;
 

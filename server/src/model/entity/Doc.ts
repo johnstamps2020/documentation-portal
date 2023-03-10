@@ -14,9 +14,10 @@ import { Build } from './Build';
 import { Release } from './Release';
 import { Subject } from './Subject';
 import { Locale } from './Locale';
+import { GwEntity } from './GwEntity';
 
 @Entity()
-export class Doc {
+export class Doc extends GwEntity {
   @PrimaryColumn()
   id: string;
 
@@ -52,23 +53,11 @@ export class Doc {
   @JoinTable()
   subjects: Subject[];
 
-  @Column()
-  isInProduction: boolean;
-
   @Column({ default: true })
   displayOnLandingPages: boolean;
 
   @Column({ default: true })
   indexForSearch: boolean;
-
-  @Column({ default: false })
-  public: boolean;
-
-  @Column({ default: false })
-  internal: boolean;
-
-  @Column({ default: false })
-  earlyAccess: boolean;
 
   @ManyToOne(() => Locale, (locale) => locale.languageCode, { eager: true })
   @JoinTable()
