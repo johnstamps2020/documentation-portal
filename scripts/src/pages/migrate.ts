@@ -163,7 +163,9 @@ function mapToCategory2Layout(
       flailConfig.items.map((flail) => ({
         label: flail.label,
         items: getItems(flail.items, targetFile),
-      }))
+      })),
+      null,
+      2
     )},
     whatsNew: ${getWhatsNew(flailConfig)},
     sidebar: ${sidebar},
