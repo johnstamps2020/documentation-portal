@@ -134,6 +134,18 @@ function getBackgroundProps(flailConfig: FlailConfig): {
         '{ ...baseBackgroundProps, backgroundImage: { xs: `url(${gradientBackgroundImage})`, sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), url(${garmischBackgroundImage}), linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`, }, }',
     };
   }
+
+  if (level1Class.match('flaine')) {
+    return {
+      backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
+      import flaineBadge from 'images/badge-flaine.svg';
+      import flaineBackgroundImage from 'images/background-flaine.svg';
+      import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
+      backgroundPropValue:
+        '{ ...baseBackgroundProps, backgroundImage: { xs: `url(${gradientBackgroundImage})`, sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), url(${flaineBackgroundImage}), linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,},}',
+    };
+  }
+
   return {
     backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
     import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
