@@ -3067,7 +3067,7 @@ object Sources {
                         )
                         val pullRequestCommentForLogFileLinkStep = GwBuildSteps.createAddPullRequestCommentStep(
                             "$it log link",
-                            "Hi, it's ${it}. I found some issues in validation build %build.number%: https://gwre-devexp-ci-production-devci.gwre-devops.net/repository/download/%system.teamcity.buildType.id%/%teamcity.build.id%:id/${buildLogsDir}/${it}.log",
+                            "Hi, $it here. I found some issues in validation build %build.number%: https://gwre-devexp-ci-production-devci.gwre-devops.net/repository/download/%system.teamcity.buildType.id%/%teamcity.build.id%:id/${buildLogsDir}/${it}.log",
                             projectKey,
                             repoKey,
                             pullRequestId
