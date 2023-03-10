@@ -127,7 +127,7 @@ function getBackgroundProps(flailConfig: FlailConfig): string {
   return '{...baseBackgroundProps,backgroundImage: `url(${gradientBackgroundImage})`,},';
 }
 
-const sidebar: SidebarProps = {
+const sidebar = `{
   label: 'Implementation Resources',
   items: [
     {
@@ -151,7 +151,7 @@ const sidebar: SidebarProps = {
       docId: 'internaldocslatest',
     },
   ],
-};
+}`;
 
 function mapToCategory2Layout(
   flailConfig: FlailConfig,
@@ -166,7 +166,7 @@ function mapToCategory2Layout(
       }))
     )},
     whatsNew: ${getWhatsNew(flailConfig)},
-    sidebar,
+    sidebar: ${sidebar},
   }`;
 }
 
@@ -200,12 +200,6 @@ function getFlailClass(flailConfig: FlailConfig) {
     level2Class,
   };
 }
-
-type RemapType =
-  | CategoryLayoutProps
-  | Category2LayoutProps
-  | ProductFamilyLayoutProps
-  | SectionLayoutProps;
 
 function getClassMap(flailConfig: FlailConfig): {
   layoutProps: string;
