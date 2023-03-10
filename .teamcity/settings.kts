@@ -4,7 +4,6 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.DockerSupportFeature
 import jetbrains.buildServer.configs.kotlin.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.buildSteps.*
-import jetbrains.buildServer.configs.kotlin.triggers.ScheduleTrigger
 import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
@@ -2887,7 +2886,7 @@ object Sources {
         gitBranch: String,
         buildConfig: JSONObject,
         gwBuildType: String,
-        gitUrl: String
+        gitUrl: String,
     ): BuildType {
         val docId = buildConfig.getString("docId")
         val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
@@ -2937,7 +2936,7 @@ object Sources {
         val repoKey = matchList!![2]
         val pullRequestId = "%teamcity.pullRequest.branch.pullrequests%"
 
-        val uploadStepOuputPath = when(gwBuildType) {
+        val uploadStepOuputPath = when (gwBuildType) {
             GwBuildTypes.DITA.buildTypeName -> "${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}"
             else -> "${workingDir}/${outputDir}"
         }
@@ -2955,10 +2954,12 @@ object Sources {
         previewFileStep.conditions { equals("teamcity.build.branch.is_default", "false") }
 
         val pullRequestCommentStep = GwBuildSteps.createAddPullRequestCommentStep(
+            "preview link",
             "Hi, I created a preview for validation build %build.number%: $previewUrl",
             projectKey,
             repoKey,
-            pullRequestId)
+            pullRequestId
+        )
         pullRequestCommentStep.conditions { equals("teamcity.build.branch.is_default", "false") }
 
         when (gwBuildType) {
@@ -2968,6 +2969,8 @@ object Sources {
                 val normalizedDitaDir = "normalized_dita_dir"
                 val schematronReportsDir = "schematron_reports_dir"
                 val docInfoFile = "doc-info.json"
+                val buildLogsDir = "build_logs"
+                val adminLogsDir = "admin_logs"
                 val rootMap = buildConfig.getString("root")
                 val indexRedirect = when (buildConfig.has("indexRedirect")) {
                     true -> {
@@ -2999,8 +3002,8 @@ object Sources {
                 }
 
                 validationBuildType.artifactRules += """
-                    ${workingDir}/${docValidatorLogs} => build_logs
-                    ${workingDir}/${ditaOtLogsDir} => admin_logs
+                    ${workingDir}/${docValidatorLogs} => $buildLogsDir
+                    ${workingDir}/${ditaOtLogsDir} => $adminLogsDir
                     ${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}/${GwConfigParams.BUILD_DATA_FILE.paramValue} => ${GwConfigParams.BUILD_DATA_DIR.paramValue}
                 """.trimIndent()
 
@@ -3043,16 +3046,39 @@ object Sources {
                     )
                     // For now, image validations are disabled.
                     // These validations need improvements.
+
                     arrayOf(
                         GwValidationModules.VALIDATORS_DITA.validationName,
                         GwValidationModules.VALIDATORS_FILES.validationName,
                         GwValidationModules.EXTRACTORS_DITA_OT_LOGS.validationName,
                         GwValidationModules.EXTRACTORS_SCHEMATRON_REPORTS.validationName,
                     ).forEach {
+                        val exitCodeEnvVarName = "env.${it.uppercase()}_EXIT_CODE"
                         this.step(
                             GwBuildSteps.createRunDocValidatorStep(
-                                it, workingDir, ditaOtLogsDir, normalizedDitaDir, schematronReportsDir, docInfoFile
+                                it,
+                                workingDir,
+                                ditaOtLogsDir,
+                                normalizedDitaDir,
+                                schematronReportsDir,
+                                docInfoFile,
+                                exitCodeEnvVarName
                             )
+                        )
+                        val pullRequestCommentForLogFileLinkStep = GwBuildSteps.createAddPullRequestCommentStep(
+                            "$it log link",
+                            "Hi, it's ${it}. I found some issues in validation build %build.number%: https://gwre-devexp-ci-production-devci.gwre-devops.net/repository/download/%system.teamcity.buildType.id%/%teamcity.build.id%:id/${buildLogsDir}/${it}.log",
+                            projectKey,
+                            repoKey,
+                            pullRequestId
+                        )
+
+                        pullRequestCommentForLogFileLinkStep.conditions {
+                            equals("teamcity.build.branch.is_default", "false")
+                            equals(exitCodeEnvVarName, "1")
+                        }
+                        this.step(
+                            pullRequestCommentForLogFileLinkStep
                         )
                     }
                 }
@@ -3727,9 +3753,15 @@ object GwBuildSteps {
         dockerImagePlatform = ImagePlatform.Linux
     })
 
-    fun createAddPullRequestCommentStep(commentText: String, projectKey: String, repoKey: String, pullRequestId: String): ScriptBuildStep {
+    fun createAddPullRequestCommentStep(
+        stepNameSuffix: String,
+        commentText: String,
+        projectKey: String,
+        repoKey: String,
+        pullRequestId: String,
+    ): ScriptBuildStep {
         return ScriptBuildStep {
-            name = "Add a pull request comment"
+            name = "Add a pull request comment (${stepNameSuffix})"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
@@ -4273,7 +4305,7 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                 
-                echo "Output preview available at ${previewUrl}" > $previewUrlFile
+                echo "Output preview available at $previewUrl" > $previewUrlFile
             """.trimIndent()
         }
     }
@@ -4792,6 +4824,7 @@ object GwBuildSteps {
         normalizedDitaDir: String,
         schematronReportsDir: String,
         docInfoFile: String,
+        exitCodeEnvVarName: String,
     ): ScriptBuildStep {
         var stepName = ""
         val docInfoFileFullPath = "${workingDir}/${docInfoFile}"
@@ -4842,7 +4875,10 @@ object GwBuildSteps {
                 #!/bin/bash
                 set -xe
                 
-                $validationCommand
+                export EXIT_CODE=0
+                $validationCommand || EXIT_CODE=${'$'}?
+                ##teamcity[setParameter name='$exitCodeEnvVarName' value='${'$'}EXIT_CODE']
+                exit ${'$'}EXIT_CODE
             """.trimIndent()
             dockerImage = GwDockerImages.DOC_VALIDATOR_LATEST.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
