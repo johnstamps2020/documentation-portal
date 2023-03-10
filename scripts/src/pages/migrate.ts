@@ -441,8 +441,14 @@ for (const file of filePairs) {
     encoding: 'utf-8',
   });
 
+  const flailConfig: FlailConfig = JSON.parse(flailFileContents);
+
+  if (flailConfig.template === 'reidrect') {
+    continue;
+  }
+
   const componentTemplate = createComponentTemplate(
-    JSON.parse(flailFileContents),
+    flailConfig,
     file.targetFile
   );
 
