@@ -5,8 +5,6 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.buildFeatures.commitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.buildFeatures.pullRequests
-import jetbrains.buildServer.configs.kotlin.triggers.VcsTrigger
-import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -15,17 +13,6 @@ To apply the patch, change the buildType with id = 'docguidesrcvalidationlistene
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("docguidesrcvalidationlistener")) {
-    triggers {
-        val trigger1 = find<VcsTrigger> {
-            vcs {
-            }
-        }
-        trigger1.apply {
-            enabled = false
-
-        }
-    }
-
     features {
         val feature1 = find<CommitStatusPublisher> {
             commitStatusPublisher {
