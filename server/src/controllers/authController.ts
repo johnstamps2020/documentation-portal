@@ -268,6 +268,9 @@ async function verifyToken(req: Request) {
           bearerToken,
           oktaJwtVerifier
         );
+        req.accessToken = verifiedToken
+          ? decode(verifiedToken.toString(), {})
+          : null;
         return verifiedToken;
       } else {
         return oktaJwtVerifier;

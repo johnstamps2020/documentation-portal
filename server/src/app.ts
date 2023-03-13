@@ -25,11 +25,13 @@ import {
   saveUserInfoToResLocals,
 } from './controllers/authController';
 import { fourOhFourRoute } from './controllers/proxyController';
+import { JwtPayload } from 'jsonwebtoken';
 
 declare global {
   namespace Express {
     interface Request {
       user?: ReqUser;
+      accessToken?: JwtPayload | string | null;
     }
   }
 }
