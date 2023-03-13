@@ -1,8 +1,9 @@
 import { Column, Entity, JoinTable, ManyToOne, PrimaryColumn } from 'typeorm';
 import { Source } from './Source';
+import { GwEntity } from './GwEntity';
 
 @Entity()
-export class Resource {
+export class Resource extends GwEntity {
   @PrimaryColumn()
   id: string;
 

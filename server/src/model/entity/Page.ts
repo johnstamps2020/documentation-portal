@@ -1,7 +1,8 @@
 import { Column, Entity } from 'typeorm';
+import { GwEntity } from './GwEntity';
 
 @Entity()
-export class Page {
+export class Page extends GwEntity {
   @Column({ primary: true })
   path: string;
 
@@ -13,16 +14,4 @@ export class Page {
 
   @Column('json', { nullable: true })
   searchFilters: { [key: string]: string[] };
-
-  @Column()
-  isInProduction: boolean;
-
-  @Column({ default: false })
-  public: boolean;
-
-  @Column({ default: false })
-  internal: boolean;
-
-  @Column({ default: false })
-  earlyAccess: boolean;
 }

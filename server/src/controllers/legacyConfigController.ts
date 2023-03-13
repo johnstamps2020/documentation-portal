@@ -113,12 +113,8 @@ export async function getLegacySourceConfigs(res: Response) {
       const legacySource = new legacySourceConfig();
       legacySource.id = src.id;
       legacySource.title = src.name;
-      legacySource.sourceType = src.type;
       legacySource.gitUrl = src.gitUrl;
       legacySource.branch = src.gitBranch;
-      legacySource.xdocsPathIds = src.xdocsPathIds;
-      legacySource.exportFrequency = src.exportFrequency;
-      legacySource.pollInterval = src.pollInterval;
       legacySources.push(legacySource);
     }
   }
@@ -474,12 +470,8 @@ export async function putSourceConfigsInDatabase(res: Response): Promise<{
       const dbSource = new Source();
       dbSource.id = source.id;
       dbSource.name = source.title;
-      dbSource.type = source.sourceType;
       dbSource.gitUrl = source.gitUrl;
       dbSource.gitBranch = source.branch;
-      dbSource.xdocsPathIds = source.xdocsPathIds;
-      dbSource.exportFrequency = source.exportFrequency;
-      dbSource.pollInterval = source.pollInterval;
 
       const result = await createOrUpdateEntity(Source.name, dbSource, res);
       if (result.status === 200) {

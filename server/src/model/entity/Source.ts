@@ -2,9 +2,10 @@ import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 import { Build } from './Build';
 import { integer } from '@elastic/elasticsearch/api/types';
 import { Resource } from './Resource';
+import { GwEntity } from './GwEntity';
 
 @Entity()
-export class Source {
+export class Source extends GwEntity {
   @PrimaryColumn()
   id: string;
 
@@ -12,22 +13,10 @@ export class Source {
   name: string;
 
   @Column()
-  type: string;
-
-  @Column()
   gitUrl: string;
 
   @Column()
   gitBranch: string;
-
-  @Column('text', { array: true, nullable: true })
-  xdocsPathIds: string[];
-
-  @Column({ nullable: true })
-  exportFrequency: string;
-
-  @Column({ nullable: true })
-  pollInterval: integer;
 
   @OneToMany(() => Build, (build) => build)
   build: Build;
