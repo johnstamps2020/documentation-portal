@@ -15,9 +15,7 @@ import CategorySidebar from './CategorySidebar';
 import LandingPageSelector, {
   LandingPageSelectorProps,
 } from 'components/LandingPage/LandingPageSelector';
-import Box from '@mui/material/Box';
 import PagePropsController from '../PagePropsController';
-import { useUserInfo } from 'hooks/useApi';
 
 export type CategoryLayoutProps = LandingPageLayoutProps & {
   cards: CategoryCardProps[];
