@@ -25,11 +25,6 @@ import {
 
 const router = Router();
 
-router.get('/', async function (req, res) {
-  const { status, body } = await getAllEntities(Doc.name, res);
-  return res.status(status).json(body);
-});
-
 router.get('/breadcrumbs', async function (req, res, next) {
   try {
     const pagePathname = req.query.pagePathname as string;
@@ -66,11 +61,6 @@ router.get('/versionSelectors', async function (req, res, next) {
       REQ: ${JSON.stringify(req)}`);
     next(err);
   }
-});
-
-router.get('/env', function (req, res) {
-  const env = getEnv();
-  res.send(env);
 });
 
 router.get('/entity/:repo', async function (req, res) {

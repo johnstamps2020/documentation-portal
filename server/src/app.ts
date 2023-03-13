@@ -173,12 +173,6 @@ app.use('/recommendations', recommendationsRouter);
 app.use('/userInformation', userRouter);
 app.use('/search', saveUserInfoToResLocals, searchRouter);
 
-app.use('/portal-config/*', (req, res) => {
-  res.redirect(
-    `${forbiddenRoute}${req.url ? `?unauthorized=${req.originalUrl}` : ''}`
-  );
-});
-
 // overwrite HTML received through proxy
 const { harmonRouter } = require('./routes/proxy-harmon-router');
 app.use(harmonRouter);
