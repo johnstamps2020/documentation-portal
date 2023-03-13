@@ -30,6 +30,25 @@ export async function isAllowedToAccessRoute(
   return next();
 }
 
+export async function isAllowedToAccessRestrictedRoute(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const userInfo = res.locals.userInfo;
+  if (!userInfo.isLoggedIn) {
+    return res.status(401).json({
+      message: 'Resource not available: User not logged in',
+    });
+  }
+  if (!userInfo.isAdmin) {
+    return res.status(403).json({
+      message: 'Resource not available: Only GW admins can manage resources',
+    });
+  }
+  return next();
+}
+
 export async function isAllowedToAccessPageOrDoc(
   req: Request,
   res: Response,

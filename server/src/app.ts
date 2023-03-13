@@ -20,10 +20,11 @@ import { runningInDevMode } from './controllers/utils/serverUtils';
 import { ReqUser } from './controllers/userController';
 import {
   isAllowedToAccessPageOrDoc,
+  isAllowedToAccessRestrictedRoute,
   isAllowedToAccessRoute,
   saveUserInfoToResLocals,
 } from './controllers/authController';
-import { forbiddenRoute, fourOhFourRoute } from './controllers/proxyController';
+import { fourOhFourRoute } from './controllers/proxyController';
 
 declare global {
   namespace Express {
@@ -120,6 +121,7 @@ const oidcLoginRouter = require('./routes/authorization-code');
 const searchRouter = require('./routes/search');
 const s3Router = require('./routes/s3');
 const userRouter = require('./routes/user');
+const adminRouter = require('./routes/admin');
 const configRouter = require('./routes/config');
 const jiraRouter = require('./routes/jira');
 const lrsRouter = require('./routes/lrs');
@@ -164,6 +166,12 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   }
   return next();
 });
+app.use(
+  '/admin',
+  saveUserInfoToResLocals,
+  isAllowedToAccessRestrictedRoute,
+  adminRouter
+);
 app.use('/safeConfig', saveUserInfoToResLocals, configRouter);
 app.use('/jira', saveUserInfoToResLocals, isAllowedToAccessRoute, jiraRouter);
 app.use('/lrs', saveUserInfoToResLocals, isAllowedToAccessRoute, lrsRouter);
