@@ -1,18 +1,22 @@
 import CategoryLayout, {
   CategoryLayoutProps,
 } from 'components/LandingPage/Category/CategoryLayout';
+import gradientBackgroundImage from 'images/background-gradient.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
-    backgroundColor: 'white',
+    backgroundImage: `url(${gradientBackgroundImage})`,
   },
   selector: {
     label: 'Select page',
     selectedItemLabel: 'PolicyCenter Cloud',
-    labelColor: 'black',
     items: [
+      {
+        label: 'PolicyCenter Cloud',
+        pagePath: '',
+      },
       {
         label: 'BillingCenter Cloud',
         pagePath: 'cloudProducts/aspen/billingCenterCloud',
@@ -21,12 +25,10 @@ const pageConfig: CategoryLayoutProps = {
         label: 'ClaimCenter Cloud',
         pagePath: 'cloudProducts/aspen/claimCenterCloud',
       },
-      {
-        label: 'PolicyCenter Cloud',
-        pagePath: 'cloudProducts/aspen/policyCenterCloud',
-      },
     ],
+    labelColor: 'white',
   },
+
   cards: [
     {
       label: 'Core',

@@ -1,10 +1,12 @@
 import { getAllFilesRecursively } from '../modules/fileOperations';
-import { resolve, dirname } from 'path';
+import { resolve, dirname, relative, parse } from 'path';
 import { writeFileSync, readFileSync, mkdirSync } from 'fs';
 import { CategoryLayoutProps } from 'landing-pages/src/components/LandingPage/Category/CategoryLayout';
 import { Category2LayoutProps } from 'landing-pages/src/components/LandingPage/Category2/Category2Layout';
 import { ProductFamilyLayoutProps } from 'landing-pages/src/components/LandingPage/ProductFamily/ProductFamilyLayout';
 import { SectionLayoutProps } from 'landing-pages/src/components/LandingPage/Section/SectionLayout';
+import { LandingPageSelectorProps } from 'landing-pages/src/components/LandingPage/LandingPageSelector';
+import { SectionProps } from 'landing-pages/src/components/LandingPage/Section/Section';
 import {
   baseBackgroundProps,
   LandingPageItemProps,
@@ -13,6 +15,13 @@ import {
 import { WhatsNewProps } from 'landing-pages/src/components/LandingPage/WhatsNew';
 
 const landingPagesSourceDir = resolve(__dirname, '../../../frontend/pages');
+const allFiles = getAllFilesRecursively(landingPagesSourceDir);
+const filePairs: FilePair[] = allFiles.map((sourceFile) => ({
+  sourceFile,
+  targetFile: sourceFile
+    .replace('frontend/pages', 'landing-pages/src/pages/landing')
+    .replace('/index.json', '.tsx'),
+}));
 
 type FlailItem = {
   label: string;
@@ -47,28 +56,55 @@ type FlailConfig = {
   breadcrumbs: FlailItem[];
 };
 
-function getItems(flailItems: FlailItem[] | undefined): LandingPageItemProps[] {
-  if (!flailItems) {
-    throw new Error(`Object does not have items`);
+function remapPageLink(flailPageLink: string, targetFile: string): string {
+  const root = resolve(__dirname, '../../../landing-pages/src/pages/landing');
+  const matchingTargetFile = relative(
+    root,
+    resolve(targetFile.replace('.tsx', ''), flailPageLink)
+  );
+
+  return matchingTargetFile;
+}
+
+function getSections(
+  flailItems: FlailItem[] | undefined,
+  targetFile: string
+): SectionProps[] | undefined {
+  if (!flailItems || flailItems.length === 0) {
+    return undefined;
+  }
+
+  return flailItems.map((item) => ({
+    label: item.label,
+    items: getItems(item.items, targetFile) || [],
+  }));
+}
+
+function getItems(
+  flailItems: FlailItem[] | undefined,
+  targetFile: string
+): LandingPageItemProps[] | undefined {
+  if (!flailItems || flailItems.length === 0) {
+    return undefined;
   }
 
   return flailItems.map(
     (item): LandingPageItemProps => ({
       label: item.label,
       docId: item.id,
-      pagePath: item.page,
+      pagePath: item.page ? remapPageLink(item.page, targetFile) : undefined,
       url: item.link,
     })
   );
 }
 
-function getWhatsNew(flailConfig: FlailConfig): WhatsNewProps {
+function getWhatsNew(flailConfig: FlailConfig): string {
   const level1Class = flailConfig.class;
 
   if (level1Class.match('garmisch')) {
-    return {
+    return `{
       label: 'Garmisch',
-      badge: 'garmischBadge',
+      badge: garmischBadge,
       item: { label: 'Learn more', docId: 'whatsnewgarmisch' },
       content: [
         'Washes your car',
@@ -77,12 +113,12 @@ function getWhatsNew(flailConfig: FlailConfig): WhatsNewProps {
         'Makes you feel like a million bucks',
         'Just kidding! Content coming soon.',
       ],
-    };
+    }`;
   }
 
-  return {
+  return `{
     label: 'Flaine',
-    badge: 'flaineBadge',
+    badge: flaineBadge,
     item: { label: 'Learn more', docId: 'whatsnewflaine' },
     content: [
       'Advanced Product Designer app (APD)',
@@ -95,110 +131,452 @@ function getWhatsNew(flailConfig: FlailConfig): WhatsNewProps {
       'Expanded Guidewire GO content',
       'Advanced monitoring and observability',
     ],
-  };
+  }`;
 }
 
-function getBackgroundImage(flailConfig: FlailConfig): string {
-  return;
-}
-
-const sidebar: SidebarProps = {
-  label: 'Implementation Resources',
-  items: [
-    {
-      label: 'Community Case Templates',
-      docId: 'cloudtickettemplates',
-    },
-    {
-      label: 'Product Adoption',
-      docId: 'surepathmethodologymain',
-    },
-    {
-      label: 'Cloud Standards',
-      docId: 'standardslatest',
-    },
-    {
-      label: 'Upgrade Diff Reports',
-      pagePath: 'upgradediffs',
-    },
-    {
-      label: 'Internal docs',
-      docId: 'internaldocslatest',
-    },
-  ],
-};
-
-function mapToCategory2Layout(flailConfig: FlailConfig): Category2LayoutProps {
-  return {
-    backgroundProps: {
-      ...baseBackgroundProps,
-      backgroundImage: getBackgroundImage(flailConfig),
-    },
-    cards: flailConfig.items.map((flail) => ({
-      label: flail.label,
-      items: getItems(flail.items),
-    })),
-    whatsNew: getWhatsNew(flailConfig),
-    sidebar,
-  };
-}
-
-function mapToCategoryCard(flailConfig: FlailConfig): CategoryLayoutProps {
-  return undefined;
-}
-
-function mapToProductFamily(
-  flailConfig: FlailConfig
-): ProductFamilyLayoutProps {
-  return undefined;
-}
-
-function mapToSection(flailConfig: FlailConfig): SectionLayoutProps {
-  return undefined;
-}
-
-function remapPageConfig(
-  flailConfig: FlailConfig
-):
-  | CategoryLayoutProps
-  | Category2LayoutProps
-  | ProductFamilyLayoutProps
-  | SectionLayoutProps {
-  const level1Class = flailConfig.class;
-
-  if (level1Class.match('garmisch') || level1Class.match('flaine')) {
-    return mapToCategory2Layout(flailConfig);
+function getBackgroundProps(flailConfig: FlailConfig): {
+  backGroundImports: string;
+  backgroundPropValue: string;
+} {
+  if (flailConfig.title === 'Self-managed') {
+    return {
+      backGroundImports: `import Box from '@mui/material/Box';
+    import Typography from '@mui/material/Typography';
+    import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
+      backgroundPropValue:
+        "{\n...baseBackgroundProps,\nbackgroundColor: 'white',\n}",
+    };
   }
 
+  const { level1Class } = getFlailClass(flailConfig);
+
+  if (level1Class.match('garmisch')) {
+    return {
+      backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
+      import garmischBackgroundImage from 'images/background-garmisch.png';
+      import garmischBadge from 'images/badge-garmisch.svg';
+      import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
+      backgroundPropValue:
+        '{\n...baseBackgroundProps,\nbackgroundImage: {\nxs: `url(${gradientBackgroundImage})`,\nsm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), \n  url(${garmischBackgroundImage}), \n  linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,\n},\n}',
+    };
+  }
+
+  if (level1Class.match('flaine')) {
+    return {
+      backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
+      import flaineBadge from 'images/badge-flaine.svg';
+      import flaineBackgroundImage from 'images/background-flaine.svg';
+      import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
+      backgroundPropValue:
+        '{\n...baseBackgroundProps,\nbackgroundImage: {\nxs: `url(${gradientBackgroundImage})`,\nsm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),\n       url(${flaineBackgroundImage}), \n       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,\n},\n}',
+    };
+  }
+
+  if (level1Class.match('elysian')) {
+    return {
+      backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
+      import elysianBackgroundImage from 'images/background-elysian.svg';
+      import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
+      backgroundPropValue:
+        '{\n...baseBackgroundProps,\nbackgroundImage: {\nxs: `url(${gradientBackgroundImage})`,\nsm: `url(${elysianBackgroundImage})`,\n},\n}',
+    };
+  }
+
+  if (level1Class.match('dobson')) {
+    return {
+      backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
+      import dobsonBackgroundImage from 'images/background-dobson.svg';
+      import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
+      backgroundPropValue:
+        '{\n...baseBackgroundProps,\nbackgroundImage: {\nxs: `url(${gradientBackgroundImage})`,\n      sm: `url(${dobsonBackgroundImage})`,\n},\n}',
+    };
+  }
+
+  if (level1Class.match('cortina')) {
+    return {
+      backGroundImports: `import cortinaBackgroundImage from 'images/background-cortina.svg';
+      import gradientBackgroundImage from 'images/background-gradient.svg';
+      import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
+      backgroundPropValue:
+        '{\n...baseBackgroundProps,\nbackgroundImage: {\nsm: `url(${cortinaBackgroundImage})`,\n      xs: `url(${gradientBackgroundImage})`,\n},\n}',
+    };
+  }
+
+  if (level1Class.match('banff')) {
+    return {
+      backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
+      import banffBackgroundImage from 'images/background-banff.svg';
+      import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
+      backgroundPropValue:
+        '{\n...baseBackgroundProps,\nbackgroundImage: {\nsm: `url(${banffBackgroundImage}), url(${gradientBackgroundImage})`,\nxs: `url(${gradientBackgroundImage})`,\n},\n}',
+    };
+  }
+
+  return {
+    backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
+    import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
+    backgroundPropValue:
+      '{ ...baseBackgroundProps,backgroundImage: `url(${gradientBackgroundImage})`, }',
+  };
+}
+
+function getSidebar(flailConfig: FlailConfig) {
+  const { level1Class } = getFlailClass(flailConfig);
+
+  if (level1Class.match('elysian')) {
+    return `{
+      label: 'Implementation Resources',
+      items: [
+        {
+          label: 'Guidewire Testing',
+          pagePath: 'testingFramework/elysian',
+        },
+        {
+          label: 'API References',
+          pagePath: 'apiReferences',
+        },
+        {
+          label: 'Community Case Templates',
+          docId: 'cloudtickettemplates',
+        },
+        {
+          label: 'Product Adoption',
+          docId: 'surepathmethodologymain',
+        },
+        {
+          label: 'Cloud Standards',
+          docId: 'standardslatest',
+        },
+        {
+          label: 'Upgrade Diff Reports',
+          pagePath: 'upgradediffs',
+        },
+      ],
+    }`;
+  }
+
+  if (level1Class.match('dobson')) {
+    return `{
+      label: 'Implementation Resources',
+      items: [
+        {
+          label: 'API References',
+          pagePath: 'apiReferences',
+        },
+        {
+          label: 'Community Case Templates',
+          docId: 'cloudtickettemplates',
+        },
+        {
+          label: 'Product Adoption',
+          docId: 'surepathmethodologymain',
+        },
+        {
+          label: 'Cloud Standards',
+          docId: 'standardslatest',
+        },
+        {
+          label: 'Upgrade Diff Reports',
+          pagePath: 'upgradediffs',
+        },
+      ],
+    }`;
+  }
+
+  return `{
+    label: 'Implementation Resources',
+    items: [
+      {
+        label: 'Community Case Templates',
+        docId: 'cloudtickettemplates',
+      },
+      {
+        label: 'Product Adoption',
+        docId: 'surepathmethodologymain',
+      },
+      {
+        label: 'Cloud Standards',
+        docId: 'standardslatest',
+      },
+      {
+        label: 'Upgrade Diff Reports',
+        pagePath: 'upgradediffs',
+      },
+      {
+        label: 'Internal docs',
+        docId: 'internaldocslatest',
+      },
+    ],
+  }`;
+}
+
+function mapToCategory2Layout(
+  flailConfig: FlailConfig,
+  targetFile: string
+): string {
+  const { backgroundPropValue } = getBackgroundProps(flailConfig);
+  const cards = flailConfig.items.map((flail) => ({
+    label: flail.label,
+    items: getItems(flail.items, targetFile),
+  }));
+  return `{
+    backgroundProps: ${backgroundPropValue},
+    cards: ${JSON.stringify(cards, null, 2)},
+    whatsNew: ${getWhatsNew(flailConfig)},
+    sidebar: ${getSidebar(flailConfig)},
+  }`;
+}
+
+function getIsRelease(flailConfig: FlailConfig): boolean {
+  const { level1Class } = getFlailClass(flailConfig);
+
+  let result = false;
+  [
+    'aspen',
+    'banff',
+    'cortina',
+    'dobson',
+    'elysian',
+    'flaine',
+    'garmisch',
+  ].forEach((value) => {
+    if (level1Class.match(value)) {
+      result = true;
+      return;
+    }
+  });
+
+  return result;
+}
+
+function mapToCategoryLayout(
+  flailConfig: FlailConfig,
+  targetFile: string
+): string {
+  const { backgroundPropValue } = getBackgroundProps(flailConfig);
+  const cards = flailConfig.items.map((flail) => ({
+    label: flail.label,
+    items: getItems(
+      flail.items?.filter((i) => i.items === undefined),
+      targetFile
+    ),
+    sections: getSections(
+      flail.items?.filter((i) => i.items),
+      targetFile
+    ),
+  }));
+  const isSelfManaged = flailConfig.title === 'Self-managed';
+  const isRelease = getIsRelease(flailConfig);
+  return `{
+    backgroundProps: ${backgroundPropValue},
+    ${
+      !isSelfManaged
+        ? `selector: ${JSON.stringify(
+            getSelector(flailConfig, targetFile),
+            null,
+            2
+          )},`
+        : ''
+    }
+    ${
+      isSelfManaged
+        ? `description: (
+      <Box padding="1rem 1rem 0rem 1rem">
+        <Typography variant="body1" lineHeight={2}>
+          Find documentation for the latest releases of Guidewire self-managed
+          products.
+        </Typography>
+        <Typography variant="body1" lineHeight={2}>
+          Access earlier releases by clicking a product and then selecting a
+          version from the <b>Select release</b> dropdown menu.
+        </Typography>
+      </Box>
+    ),`
+        : ''
+    }
+    cards: ${JSON.stringify(cards, null, 2)},
+    ${isSelfManaged ? `showReleaseSelector: false` : ''}
+    ${isRelease ? `sidebar: ${getSidebar(flailConfig)}` : ''}
+  }`;
+}
+
+function mapToProductFamilyLayout(
+  flailConfig: FlailConfig,
+  targetFile: string
+): string {
+  const { backgroundPropValue } = getBackgroundProps(flailConfig);
+  const items = getItems(flailConfig.items, targetFile);
+  return `{
+    backgroundProps: ${backgroundPropValue},
+    items: ${JSON.stringify(items, null, 2)},
+    sidebar: ${getSidebar(flailConfig)},
+  }`;
+}
+
+function getSelector(
+  flailConfig: FlailConfig,
+  targetFile: string,
+  labelColor: string = 'white'
+): LandingPageSelectorProps | undefined {
+  const flailSelector = flailConfig.selector;
+
+  const selectorItems = getItems(flailSelector?.items, targetFile);
+
+  if (!selectorItems) {
+    return undefined;
+  }
+
+  const currentItem: LandingPageItemProps = {
+    label: flailSelector?.selectedItem,
+    pagePath: '',
+  };
+
+  return {
+    label: flailSelector?.label || 'Select version',
+    selectedItemLabel: flailSelector?.selectedItem || '',
+    items: [currentItem, ...selectorItems],
+    labelColor: labelColor,
+  };
+}
+
+function mapToSectionLayout(
+  flailConfig: FlailConfig,
+  targetFile: string
+): string {
+  const { backgroundPropValue } = getBackgroundProps(flailConfig);
+  const sections = getSections(flailConfig.items, targetFile);
+  const selector = getSelector(flailConfig, targetFile, 'black');
+  return `{
+    backgroundProps: ${backgroundPropValue},
+    sections: ${JSON.stringify(sections, null, 2)},
+    ${selector ? `selector: ${JSON.stringify(selector, null, 2)}` : ''}
+  }`;
+}
+
+function getFlailClass(flailConfig: FlailConfig) {
+  const level1Class = flailConfig.class;
   const level2Class = flailConfig.items[0].class;
 
-  switch (level2Class) {
-    case 'categoryCard':
-      return mapToCategoryCard(flailConfig);
-    case 'productFamily':
-      return mapToProductFamily(flailConfig);
-    default:
-      return mapToSection(flailConfig);
-  }
+  return {
+    level1Class,
+    level2Class,
+  };
 }
 
-const allFiles = getAllFilesRecursively(landingPagesSourceDir);
-const filePairs = allFiles.map((sourceFile) => ({
-  sourceFile,
-  targetFile: sourceFile
-    .replace('frontend/pages', 'landing-pages/src/pages/landing')
-    .replace('/index.json', '.tsx'),
-}));
+type ClassMap = {
+  componentName: string;
+  layoutProps: string;
+  from: string;
+  remapFunction: (flailConfig: FlailConfig, targetFile: string) => string;
+};
+
+function getClassMap(flailConfig: FlailConfig): ClassMap {
+  const { level1Class, level2Class } = getFlailClass(flailConfig);
+
+  const category2: ClassMap = {
+    componentName: 'Category2Layout',
+    layoutProps: 'Category2LayoutProps',
+    from: 'components/LandingPage/Category2/Category2Layout',
+    remapFunction: mapToCategory2Layout,
+  };
+
+  const category: ClassMap = {
+    componentName: 'CategoryLayout',
+    layoutProps: 'CategoryLayoutProps',
+    from: 'components/LandingPage/Category/CategoryLayout',
+    remapFunction: mapToCategoryLayout,
+  };
+
+  const productFamily: ClassMap = {
+    componentName: 'ProductFamilyLayout',
+    layoutProps: 'ProductFamilyLayoutProps',
+    from: 'components/LandingPage/ProductFamily/ProductFamilyLayout',
+    remapFunction: mapToProductFamilyLayout,
+  };
+
+  const section: ClassMap = {
+    componentName: 'SectionLayout',
+    layoutProps: 'SectionLayoutProps',
+    from: 'components/LandingPage/Section/SectionLayout',
+    remapFunction: mapToSectionLayout,
+  };
+
+  if (level1Class.match('garmisch') || level1Class.match('flaine')) {
+    return category2;
+  }
+
+  if (level1Class.match('elysian') || level1Class.match('dobson')) {
+    return category;
+  }
+
+  if (level2Class?.match('categoryCard')) {
+    return category;
+  }
+
+  if (level2Class?.match('productFamily')) {
+    return productFamily;
+  }
+
+  return section;
+}
+
+function capitalizeFirstLetter(word: string) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
+function getComponentName(targetFile: string) {
+  const fileName = parse(targetFile)
+    .name.replaceAll('.', '')
+    .replaceAll('-', '');
+  if (fileName.match(/^\d/)) {
+    return `LandingPage${fileName}`;
+  }
+
+  return capitalizeFirstLetter(fileName);
+}
+
+type FilePair = {
+  sourceFile: string;
+  targetFile: string;
+};
+
+function createComponentTemplate(
+  flailConfig: FlailConfig,
+  targetFile: string
+): string {
+  const { componentName, layoutProps, from, remapFunction } =
+    getClassMap(flailConfig);
+  const pageConfig = remapFunction(flailConfig, targetFile);
+  const pageComponentName = getComponentName(targetFile);
+  const { backGroundImports } = getBackgroundProps(flailConfig);
+
+  return `import ${componentName}, { ${layoutProps} } from '${from}';
+${backGroundImports}
+
+const pageConfig: ${layoutProps} = ${pageConfig};
+
+export default function ${pageComponentName}() {
+  return <${componentName} {...pageConfig} />
+}
+`;
+}
 
 for (const file of filePairs) {
   const flailFileContents = readFileSync(file.sourceFile, {
     encoding: 'utf-8',
   });
 
-  const pageConfig = remapPageConfig(JSON.parse(flailFileContents));
+  const flailConfig: FlailConfig = JSON.parse(flailFileContents);
+
+  if (flailConfig.template === 'redirect') {
+    continue;
+  }
+
+  const componentTemplate = createComponentTemplate(
+    flailConfig,
+    file.targetFile
+  );
 
   mkdirSync(dirname(file.targetFile), { recursive: true });
-  writeFileSync(file.targetFile, JSON.stringify(pageConfig, null, 2));
+  writeFileSync(file.targetFile, componentTemplate, { encoding: 'utf-8' });
 }
-
-// frontend/pages => landing-pages/src/pages/landing

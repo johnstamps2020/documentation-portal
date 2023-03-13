@@ -13,6 +13,42 @@ const pageConfig: CategoryLayoutProps = {
       sm: `url(${elysianBackgroundImage})`,
     },
   },
+  selector: {
+    label: 'Select release',
+    selectedItemLabel: 'Elysian',
+    items: [
+      {
+        label: 'Elysian',
+        pagePath: '',
+      },
+      {
+        label: 'Garmisch',
+        pagePath: 'cloudProducts/garmisch',
+      },
+      {
+        label: 'Flaine',
+        pagePath: 'cloudProducts/flaine',
+      },
+      {
+        label: 'Dobson',
+        pagePath: 'cloudProducts/dobson',
+      },
+      {
+        label: 'Cortina',
+        pagePath: 'cloudProducts/cortina',
+      },
+      {
+        label: 'Banff',
+        pagePath: 'cloudProducts/banff',
+      },
+      {
+        label: 'Aspen',
+        pagePath: 'cloudProducts/aspen',
+      },
+    ],
+    labelColor: 'white',
+  },
+
   cards: [
     {
       label: 'Applications',
@@ -80,7 +116,7 @@ const pageConfig: CategoryLayoutProps = {
         },
         {
           label: 'HazardHub',
-          url: 'hazardhub/HazardHub_Intro_gw.pdf',
+          url: '/hazardhub/HazardHub_Intro_gw.pdf',
         },
         {
           label: 'Predict',
@@ -181,6 +217,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
   ],
+
   sidebar: {
     label: 'Implementation Resources',
     items: [

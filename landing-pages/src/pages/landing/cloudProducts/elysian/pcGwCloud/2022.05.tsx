@@ -1,12 +1,13 @@
-import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import SectionLayout, {
   SectionLayoutProps,
 } from 'components/LandingPage/Section/SectionLayout';
+import gradientBackgroundImage from 'images/background-gradient.svg';
+import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 
 const pageConfig: SectionLayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
-    backgroundColor: 'hsl(0, 0%, 98%)',
+    backgroundImage: `url(${gradientBackgroundImage})`,
   },
   sections: [
     {
@@ -163,12 +164,12 @@ const pageConfig: SectionLayoutProps = {
     selectedItemLabel: 'Elysian (2022.05)',
     items: [
       {
-        label: 'Flaine (2022.09)',
-        pagePath: 'cloudProducts/flaine/pcGwCloud/2022.09',
+        label: 'Elysian (2022.05)',
+        pagePath: '',
       },
       {
-        label: 'Elysian (2022.05)',
-        pagePath: 'cloudProducts/elysian/pcGwCloud/2022.05',
+        label: 'Flaine (2022.09)',
+        pagePath: 'cloudProducts/flaine/pcGwCloud/2022.09',
       },
       {
         label: 'Dobson (2021.11)',
@@ -191,6 +192,6 @@ const pageConfig: SectionLayoutProps = {
   },
 };
 
-export default function pcGwCloud202205() {
+export default function LandingPage202205() {
   return <SectionLayout {...pageConfig} />;
 }

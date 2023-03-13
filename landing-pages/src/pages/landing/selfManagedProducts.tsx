@@ -1,8 +1,8 @@
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import CategoryLayout, {
   CategoryLayoutProps,
 } from 'components/LandingPage/Category/CategoryLayout';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 
 const pageConfig: CategoryLayoutProps = {
@@ -10,6 +10,7 @@ const pageConfig: CategoryLayoutProps = {
     ...baseBackgroundProps,
     backgroundColor: 'white',
   },
+
   description: (
     <Box padding="1rem 1rem 0rem 1rem">
       <Typography variant="body1" lineHeight={2}>
@@ -137,13 +138,14 @@ const pageConfig: CategoryLayoutProps = {
         },
         {
           label: 'VendorEngage',
-          pagePath: 'vendorEngage/11.5.0',
+          pagePath: 'selfManagedProducts/vendorEngage/11.5.0',
         },
       ],
     },
   ],
+  showReleaseSelector: false,
 };
 
-export default function selfManagedProducts() {
-  return <CategoryLayout {...pageConfig} showReleaseSelector={false} />;
+export default function SelfManagedProducts() {
+  return <CategoryLayout {...pageConfig} />;
 }
