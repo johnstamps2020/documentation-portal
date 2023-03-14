@@ -15,7 +15,7 @@ import PagePropsController from 'components/LandingPage/PagePropsController';
 
 export type SectionLayoutProps = LandingPageLayoutProps & {
   sections: SectionProps[];
-  selector: LandingPageSelectorProps;
+  selector?: LandingPageSelectorProps;
 };
 
 export default function SectionLayout({

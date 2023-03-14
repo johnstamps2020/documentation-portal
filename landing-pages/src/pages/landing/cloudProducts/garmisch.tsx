@@ -136,6 +136,10 @@ const pageConfig: Category2LayoutProps = {
           docId: 'isrestapiclientguide',
         },
         {
+          label: 'Jutro Digital Platform (Early Access)',
+          pagePath: 'cloudProducts/garmisch/jutroDigitalPlatform',
+        },
+        {
           label: 'Guidewire Testing',
           pagePath: 'testingFramework/garmisch',
         },
