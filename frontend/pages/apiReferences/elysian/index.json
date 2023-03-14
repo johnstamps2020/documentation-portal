@@ -85,7 +85,7 @@
           "id": "cicdmanagerapiref"
         },
         {
-          "label": "Cloud Console API",
+          "label": "IS Deployments API",
           "id": "cloudconsoleapi"
         }
       ]
