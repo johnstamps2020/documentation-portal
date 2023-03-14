@@ -8,7 +8,7 @@
       "metadata": {
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
-        "version": ["2023.04"],
+        "version": ["2023.02"],
         "subject": ["Release notes"]
       },
       "environments": ["staging"],
@@ -25,7 +25,7 @@
       "metadata": {
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
-        "version": ["2023.04"],
+        "version": ["2023.02"],
         "subject": ["Development"]
       },
       "environments": ["staging"],
@@ -42,8 +42,25 @@
       "metadata": {
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
-        "version": ["2023.04"],
+        "version": ["2023.02"],
         "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipagarmischupgrade",
+      "title": "Upgrade Guide",
+      "url": "cloud/ipa/garmisch/upgrade",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "subject": ["Installation"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
