@@ -49,27 +49,20 @@ export async function isAllowedToAccessRestrictedRoute(
   return next();
 }
 
-export async function isAllowedToAccessPageOrDoc(
+export async function isAllowedToAccessDoc(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  const requestedResource = req.originalUrl.startsWith('/landing')
-    ? await getPage(req).then((r) => r?.body)
-    : await getDocByUrl(req.path);
-  if (!requestedResource) {
+  const requestedDoc = await getDocByUrl(req.path);
+  if (!requestedDoc) {
     return res.redirect(`${fourOhFourRoute}?notFound=${req.originalUrl}`);
-  }
-  if (requestedResource.component?.includes('redirect')) {
-    return res.redirect(
-      `/landing/${requestedResource.component.split(' ')[1]}`
-    );
   }
   const resourceStatus = isUserAllowedToAccessResource(
     res,
-    requestedResource.public,
-    requestedResource.internal,
-    requestedResource.isInProduction
+    requestedDoc.public,
+    requestedDoc.internal,
+    requestedDoc.isInProduction
   ).status;
   if (resourceStatus === 401) {
     return redirectToLoginPage(req, res);
@@ -79,7 +72,6 @@ export async function isAllowedToAccessPageOrDoc(
       `${internalRoute}${req.url ? `?restricted=${req.originalUrl}` : ''}`
     );
   }
-  openRequestedUrl(req, res);
   return next();
 }
 
@@ -342,13 +334,18 @@ export function resolveRequestedUrl(req: Request) {
   return '/';
 }
 
-export function openRequestedUrl(req: Request, res: Response) {
+export function openRequestedUrl(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   try {
     const originalUrl = req.originalUrl;
     const cleanUrl = removeAuthParamsFromUrl(originalUrl);
     if (originalUrl !== cleanUrl) {
-      res.redirect(cleanUrl);
+      return res.redirect(cleanUrl);
     }
+    return next();
   } catch (err) {
     winstonLogger.error(
       `Problem opening requested page 

@@ -19,9 +19,10 @@ import { AppDataSource } from './model/connection';
 import { runningInDevMode } from './controllers/utils/serverUtils';
 import { ReqUser } from './controllers/userController';
 import {
-  isAllowedToAccessPageOrDoc,
+  isAllowedToAccessDoc,
   isAllowedToAccessRestrictedRoute,
   isAllowedToAccessRoute,
+  openRequestedUrl,
   saveUserInfoToResLocals,
 } from './controllers/authController';
 import { fourOhFourRoute } from './controllers/proxyController';
@@ -195,12 +196,7 @@ const {
   reactAppProxy,
 } = require('./controllers/proxyController');
 app.use('/sitemap*', sitemapProxy);
-app.use(
-  '/landing',
-  saveUserInfoToResLocals,
-  isAllowedToAccessPageOrDoc,
-  reactAppProxy
-);
+app.use('/landing', saveUserInfoToResLocals, reactAppProxy);
 
 // HTML5 scripts, local or S3
 const isDevMode = runningInDevMode();
@@ -211,9 +207,14 @@ if (isDevMode) {
 }
 
 // Docs stored on S3 — current and portal2
-app.use(saveUserInfoToResLocals, isAllowedToAccessPageOrDoc, s3Proxy);
+app.use(
+  saveUserInfoToResLocals,
+  isAllowedToAccessDoc,
+  openRequestedUrl,
+  s3Proxy
+);
 
-app.use((req: Request, res: Response, next: NextFunction) => {
+app.use((req: Request, res: Response) => {
   const notFoundParam =
     req.url === '/404'
       ? req.headers.referer?.replace(`${process.env.APP_BASE_URL}`, '')
@@ -224,7 +225,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 // handles unauthorized errors
 app.use(expressWinstonErrorLogger);
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+app.use((err: Error, req: Request, res: Response) => {
   winstonLogger.error(
     `General error passed to top-level handler in app.ts: ${JSON.stringify(
       err
