@@ -75,34 +75,6 @@ export async function isAllowedToAccessDoc(
   return next();
 }
 
-export function isUserAllowedToManageResource(res: Response): ApiResponse {
-  const userInfo = res.locals.userInfo;
-  if (!userInfo.isLoggedIn) {
-    return {
-      status: 401,
-      body: {
-        message: 'Resource not available: User not logged in',
-      },
-    };
-  }
-  // FIXME: This condition may break loading legacy configs to the database. This process uses access token from
-  //  the authorization header
-  if (!userInfo.isAdmin) {
-    return {
-      status: 403,
-      body: {
-        message: 'Resource not available: Only GW admins can manage resources',
-      },
-    };
-  }
-  return {
-    status: 200,
-    body: {
-      message: 'Resource available: User logged in',
-    },
-  };
-}
-
 export function isUserAllowedToAccessResource(
   res: Response,
   resourceIsPublic: boolean,

@@ -19,21 +19,21 @@ const router = Router();
 router.post('/entity/:repo', async function (req, res) {
   const { repo } = req.params;
   const options = req.body;
-  const { status, body } = await createOrUpdateEntity(repo, options, res);
+  const { status, body } = await createOrUpdateEntity(repo, options);
   return res.status(status).json(body);
 });
 
 router.put('/entity/:repo', async function (req, res) {
   const { repo } = req.params;
   const options = req.body;
-  const { status, body } = await createOrUpdateEntity(repo, options, res);
+  const { status, body } = await createOrUpdateEntity(repo, options);
   return res.status(status).json(body);
 });
 
 router.delete('/entity/:repo', async function (req, res) {
   const { repo } = req.params;
   const options = req.body;
-  const { status, body } = await deleteEntity(repo, options, res);
+  const { status, body } = await deleteEntity(repo, options);
   return res.status(status).json(body);
 });
 
@@ -65,13 +65,13 @@ router.put('/entity/legacy/:configType', async function (req, res) {
     },
   };
   if (configType === 'doc') {
-    response = await putDocConfigsInDatabase(res);
+    response = await putDocConfigsInDatabase();
   } else if (configType === 'source') {
-    response = await putSourceConfigsInDatabase(res);
+    response = await putSourceConfigsInDatabase();
   } else if (configType === 'page') {
-    response = await putPageConfigsInDatabase(res);
+    response = await putPageConfigsInDatabase();
   } else if (configType === 'openRoute') {
-    response = await putOpenRoutesConfigsInDatabase(res);
+    response = await putOpenRoutesConfigsInDatabase();
   }
   return res.status(response.status).json(response.body);
 });

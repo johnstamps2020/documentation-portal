@@ -8,11 +8,9 @@ import { Release } from '../model/entity/Release';
 import { FindOneAndDeleteOptions, FindOptionsWhere, ILike } from 'typeorm';
 import { ApiResponse } from '../types/apiResponse';
 import { Page } from '../model/entity/Page';
-import {
-  isUserAllowedToAccessResource,
-  isUserAllowedToManageResource,
-} from './authController';
+import { isUserAllowedToAccessResource } from './authController';
 import { LegacyVersionObject } from '../types/legacyConfig';
+import { Entity } from 'typeorm';
 
 function optionsAreValid(options: {}) {
   return (
@@ -96,20 +94,20 @@ function getItemProps(itemName: string, primaryKeyName: string) {
 export async function getEntity(reqObj: Request, resObj: Response) {
   const { repo } = reqObj.params;
   const options = reqObj.query;
-  const result = await findEntity(repo, options);
-  if (result.status === 200) {
-    const userIsAllowedToAccessResource = isUserAllowedToAccessResource(
+  const findEntityResult = await findEntity(repo, options);
+  if (findEntityResult.status === 200) {
+    const isUserAllowedToAccessResourceResult = isUserAllowedToAccessResource(
       resObj,
-      result.body?.public || false,
-      result.body?.internal || false,
-      result.body?.isInProduction || false
+      findEntityResult.body.public,
+      findEntityResult.body.internal,
+      findEntityResult.body.isInProduction
     );
-    if (userIsAllowedToAccessResource.status === 200) {
-      return result;
+    if (isUserAllowedToAccessResourceResult.status === 200) {
+      return findEntityResult;
     }
-    return userIsAllowedToAccessResource;
+    return isUserAllowedToAccessResourceResult;
   }
-  return result;
+  return findEntityResult;
 }
 
 export async function findEntity(
@@ -161,52 +159,56 @@ export async function getAllEntities(
   repoName: string,
   res: Response
 ): Promise<ApiResponse> {
+  const findAllEntitiesResult = await findAllEntities(repoName);
+  if (findAllEntitiesResult.status === 200) {
+    const availableEntities = [];
+    for (const entity of findAllEntitiesResult.body) {
+      const isUserAllowedToAccessResourceResult = isUserAllowedToAccessResource(
+        res,
+        entity.public,
+        entity.internal,
+        entity.isInProduction
+      );
+      if (isUserAllowedToAccessResourceResult.status === 200) {
+        availableEntities.push(entity);
+      }
+    }
+    return {
+      status: findAllEntitiesResult.status,
+      body: availableEntities,
+    };
+  }
+  return findAllEntitiesResult;
+}
+
+export async function findAllEntities(repoName: string): Promise<ApiResponse> {
   try {
     const result = await AppDataSource.manager.find(repoName);
     if (!result) {
       return {
         status: 404,
         body: {
-          message: `Did not find any entities in ${repoName}`,
+          message: `Did not find entities in ${repoName}`,
         },
       };
     }
-    const availableEntities = [];
-    for (const entity of result) {
-      //FIXME: If an entity doesn't have the public prop, we set public to false by default.
-      // But this setting breaks the some frontend elements, such as the useReleases hook.
-      const { status, body } = isUserAllowedToAccessResource(
-        res,
-        entity.public || false,
-        entity.internal || false,
-        entity.isInProduction || true
-      );
-      if (status === 200) {
-        availableEntities.push(entity);
-      }
-    }
     return {
       status: 200,
-      body: availableEntities,
+      body: result,
     };
   } catch (err) {
     return {
       status: 500,
-      body: { message: `Operation failed: ${(err as Error).message}` },
+      body: { message: `Operation failed: ${err}` },
     };
   }
 }
 
 export async function createOrUpdateEntity(
   repoName: string,
-  options: {},
-  res: Response
+  options: {}
 ): Promise<ApiResponse> {
   try {
-    const { status, body } = isUserAllowedToManageResource(res);
-    if (status !== 200) {
-      return { status, body };
-    }
     if (!optionsAreValid(options)) {
       return {
         status: 400,
@@ -217,7 +219,7 @@ export async function createOrUpdateEntity(
     }
     const result = await AppDataSource.manager.save(repoName, options);
     return {
-      status: status,
+      status: 200,
       body: result,
     };
   } catch (err) {
@@ -230,14 +232,9 @@ export async function createOrUpdateEntity(
 
 export async function deleteEntity(
   repoName: string,
-  options: FindOneAndDeleteOptions,
-  res: Response
+  options: FindOneAndDeleteOptions
 ): Promise<ApiResponse> {
   try {
-    const { status, body } = isUserAllowedToManageResource(res);
-    if (status !== 200) {
-      return { status, body };
-    }
     if (!optionsAreValid(options)) {
       return {
         status: 400,
@@ -248,7 +245,7 @@ export async function deleteEntity(
     }
     const result = await AppDataSource.manager.delete(repoName, options);
     return {
-      status: status,
+      status: 200,
       body: result,
     };
   } catch (err) {
