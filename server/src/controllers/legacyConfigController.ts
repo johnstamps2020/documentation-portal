@@ -315,6 +315,7 @@ export async function putPageConfigsInDatabase() {
       dbPageConfig.title = page.title;
       dbPageConfig.component = getCompletePageComponent(page, dbPageConfig);
       dbPageConfig.isInProduction = false;
+      dbPageConfig.internal = false;
       const legacySearchFilters = page.search_filters;
       if (legacySearchFilters) {
         dbPageConfig.searchFilters = legacySearchFilters;
