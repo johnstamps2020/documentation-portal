@@ -27,16 +27,16 @@
       ]
     },
     {
-      "label": "Jutro Design System 8.3.0",
+      "label": "Jutro Design System 8.6.1",
       "class": "categoryCard cardShadow",
       "items": [
         {
           "label": "Jutro Design System and UI Framework",
-          "id": "jutro830"
+          "id": "jutro861"
         },
         {
           "label": "Jutro Storybook",
-          "id": "storybook830"
+          "id": "storybook861"
         }
       ]
     }
