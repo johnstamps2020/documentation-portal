@@ -4,7 +4,6 @@ import {
   getLegacyDocConfigs,
   getLegacySourceConfigs,
   putDocConfigsInDatabase,
-  putOpenRoutesConfigsInDatabase,
   putPageConfigsInDatabase,
   putSourceConfigsInDatabase,
 } from '../controllers/legacyConfigController';
@@ -70,8 +69,6 @@ router.put('/entity/legacy/:configType', async function (req, res) {
     response = await putSourceConfigsInDatabase();
   } else if (configType === 'page') {
     response = await putPageConfigsInDatabase();
-  } else if (configType === 'openRoute') {
-    response = await putOpenRoutesConfigsInDatabase();
   }
   return res.status(response.status).json(response.body);
 });
