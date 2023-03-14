@@ -29,6 +29,10 @@
         {
           "label": "Configuration Guide",
           "id": "ipagarmischconfig"
+        },
+        {
+          "label": "Upgrade Guide",
+          "id": "ipagarmischupgrade"
         }
       ]
     },

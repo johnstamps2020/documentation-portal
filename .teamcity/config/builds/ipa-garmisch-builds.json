@@ -24,6 +24,14 @@
       "srcId": "ipagarmischsrc",
       "docId": "ipagarmischapp",
       "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAUpgradeGuide.ditamap",
+      "srcId": "ipagarmischsrc",
+      "docId": "ipagarmischupgrade",
+      "indexRedirect": true
     }
   ]
 }
