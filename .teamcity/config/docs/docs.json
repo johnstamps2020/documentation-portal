@@ -6482,7 +6482,7 @@
         "product": ["Product Adoption Resources"],
         "version": ["latest"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
