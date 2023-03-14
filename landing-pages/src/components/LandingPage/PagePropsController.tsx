@@ -49,7 +49,7 @@ export default function PagePropsController(pageData: Page) {
 
   async function handleSave() {
     setIsSavingChanges(true);
-    const response = await fetch(`/safeConfig/entity/Page`, {
+    const response = await fetch(`/admin/entity/Page`, {
       method: 'PUT',
       body: JSON.stringify(tmpPageData),
       headers: {
