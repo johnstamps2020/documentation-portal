@@ -15,7 +15,7 @@
     },
     {
       "id": "cloudconsoleapisrc",
-      "title": "Cloud Console API",
+      "title": "IS Deployments API",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-console-api.git",
       "branch": "main"
     },

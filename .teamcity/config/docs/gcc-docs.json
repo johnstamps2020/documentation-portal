@@ -37,7 +37,7 @@
     },
     {
       "id": "cloudconsoleapi",
-      "title": "Cloud Console API",
+      "title": "IS Deployments API",
       "url": "cloud/console/cloudconsoleapi",
       "metadata": {
         "product": ["Cloud Platform"],
