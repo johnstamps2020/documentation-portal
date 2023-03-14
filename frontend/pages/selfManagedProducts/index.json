@@ -54,11 +54,11 @@
             },
             {
               "label": "Japan (0.1)",
-              "page": "../globalContent/ipj/0.1"
+              "page": "../globalContent/ipj/flaine"
             },
             {
-              "label": "Japan (1.0)",
-              "page": "../globalContent/ipj/1.0"
+              "label": "Japan (2023.02)",
+              "page": "../globalContent/ipj/garmisch"
             }
           ]
         }

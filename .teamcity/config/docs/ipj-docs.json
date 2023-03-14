@@ -56,13 +56,13 @@
       "earlyAccess": false
     },
     {
-      "id": "ipj10rn",
+      "id": "ipjgarmischrn",
       "title": "Release Notes",
-      "url": "ipj/1.0/releasenotes",
+      "url": "ipj/garmisch/releasenotes",
       "metadata": {
         "product": ["InsuranceSuite Package for Japan"],
         "platform": ["Cloud", "Self-managed"],
-        "version": ["1.0"],
+        "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Release notes"]
       },
@@ -74,13 +74,13 @@
       "earlyAccess": false
     },
     {
-      "id": "ipj10config",
+      "id": "ipjgarmischconfig",
       "title": "Configuration",
-      "url": "ipj/1.0/config",
+      "url": "ipj/garmisch/config",
       "metadata": {
         "product": ["InsuranceSuite Package for Japan"],
         "platform": ["Cloud", "Self-managed"],
-        "version": ["1.0"],
+        "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Development"]
       },
@@ -92,13 +92,13 @@
       "earlyAccess": false
     },
     {
-      "id": "ipj10app",
+      "id": "ipjgarmischapp",
       "title": "Application Guide",
-      "url": "ipj/1.0/app",
+      "url": "ipj/garmisch/app",
       "metadata": {
         "product": ["InsuranceSuite Package for Japan"],
         "platform": ["Cloud", "Self-managed"],
-        "version": ["1.0"],
+        "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Features and functionality"]
       },
@@ -110,13 +110,13 @@
       "earlyAccess": false
     },
     {
-      "id": "ipj10install",
+      "id": "ipjgarmischinstall",
       "title": "Installation Guide",
-      "url": "ipj/1.0/install",
+      "url": "ipj/garmisch/install",
       "metadata": {
         "product": ["InsuranceSuite Package for Japan"],
         "platform": ["Cloud", "Self-managed"],
-        "version": ["1.0"],
+        "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Installation"]
       },

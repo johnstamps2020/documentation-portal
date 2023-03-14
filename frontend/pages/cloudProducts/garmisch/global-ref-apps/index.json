@@ -42,19 +42,19 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "ipj10rn"
+          "id": "ipjgarmischrn"
         },
         {
           "label": "Application Guide",
-          "id": "ipj10app"
+          "id": "ipjgarmischapp"
         },
         {
           "label": "Configuration Guide",
-          "id": "ipj10config"
+          "id": "ipjgarmischconfig"
         },
         {
           "label": "Installation Guide",
-          "id": "ipj10install"
+          "id": "ipjgarmischinstall"
         }
       ]
     },
