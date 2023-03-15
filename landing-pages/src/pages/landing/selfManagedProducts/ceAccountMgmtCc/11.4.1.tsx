@@ -69,16 +69,16 @@ const pageConfig: SectionLayoutProps = {
     selectedItemLabel: '11.4.1',
     items: [
       {
+        label: '11.3.0',
+        docId: 'dxceclaims1130',
+      },
+      {
         label: '11.4.1',
-        pagePath: '',
+        pagePath: 'selfManagedProducts/ceAccountMgmtCc/11.4.1',
       },
       {
         label: '11.5.0',
         pagePath: 'selfManagedProducts/ceAccountMgmtCc/11.5.0',
-      },
-      {
-        label: '11.3.0',
-        docId: 'dxceclaims1130',
       },
     ],
     labelColor: 'black',

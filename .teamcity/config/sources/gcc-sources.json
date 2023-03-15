@@ -4,35 +4,36 @@
     {
       "id": "runtimepropertiesapisrc",
       "title": "Runtime Properties API",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/runtime-properties-api.git",
       "branch": "master"
     },
     {
+      "id": "repositorysettingsapisrc",
+      "title": "Repository Settings API",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/scms-api-docs.git",
+      "branch": "master"
+    },
+    {
       "id": "cloudconsoleapisrc",
-      "title": "Cloud Console API",
-      "sourceType": "git",
+      "title": "IS Deployments API",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-console-api.git",
       "branch": "main"
     },
     {
       "id": "dbserviceapisrc",
       "title": "Database Service API",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/db-service-api.git",
       "branch": "main"
     },
     {
       "id": "guidewirecloudconsolelatestsrc",
       "title": "Guidewire Cloud Console",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-cloud-console.git",
       "branch": "master"
     },
     {
       "id": "gccinternalsrc",
       "title": "GCC Internal Docs",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gcc-internal-docs.git",
       "branch": "main"
     }

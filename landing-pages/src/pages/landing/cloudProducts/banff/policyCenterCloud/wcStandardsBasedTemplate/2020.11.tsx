@@ -34,10 +34,6 @@ const pageConfig: SectionLayoutProps = {
     selectedItemLabel: 'Workers Compensation Standards Based Template 2020.11',
     items: [
       {
-        label: 'Workers Compensation Standards Based Template 2020.11',
-        pagePath: '',
-      },
-      {
         label: 'Businessowners Standards Based Template 2020.11',
         pagePath:
           'cloudProducts/banff/policyCenterCloud/boStandardsBasedTemplate/2020.11',
@@ -56,6 +52,11 @@ const pageConfig: SectionLayoutProps = {
         label: 'General Liability Standards Based Template 2020.11',
         pagePath:
           'cloudProducts/banff/policyCenterCloud/glStandardsBasedTemplate/2020.11',
+      },
+      {
+        label: 'Workers Compensation Standards Based Template 2020.11',
+        pagePath:
+          'cloudProducts/banff/policyCenterCloud/wcStandardsBasedTemplate/2020.11',
       },
     ],
     labelColor: 'black',

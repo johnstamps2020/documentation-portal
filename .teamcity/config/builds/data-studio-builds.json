@@ -1,0 +1,13 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-EA-Release.ditaval",
+      "root": "b_data-studio.ditamap",
+      "srcId": "datastudioreleasesrc",
+      "docId": "datastudiorelease",
+      "indexRedirect": true
+    }
+  ]
+}

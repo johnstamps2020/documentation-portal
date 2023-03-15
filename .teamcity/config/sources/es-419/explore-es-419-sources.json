@@ -4,7 +4,6 @@
     {
       "id": "explorees419src",
       "title": "Explore es419",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
       "branch": "es-419/2022Mar"
     }

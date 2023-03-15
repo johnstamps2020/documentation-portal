@@ -79,7 +79,7 @@ const pageConfig: SectionLayoutProps = {
     items: [
       {
         label: 'DataHub for Guidewire Cloud 2021.11',
-        pagePath: '',
+        pagePath: 'cloudProducts/dobson/dhGwCloud/2021.11',
       },
       {
         label: 'InfoCenter for Guidewire Cloud 2021.11',

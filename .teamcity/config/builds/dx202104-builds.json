@@ -5,7 +5,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-am-MgSvcs.ditaval",
       "root": "CustomerEngage_AccountManagement_AppGuide.ditamap",
-      "srcId": "dx202104ceamapp",
+      "srcId": "dx202104src",
       "docId": "dx202104ceamapp",
       "indexRedirect": true
     },
@@ -13,7 +13,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-am-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
-      "srcId": "dx202104install",
+      "srcId": "dx202104src",
       "docId": "dx202104ceaminstall",
       "indexRedirect": true
     },
@@ -21,7 +21,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-am-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
-      "srcId": "dx202104dev",
+      "srcId": "dx202104src",
       "docId": "dx202104ceamdev",
       "indexRedirect": true
     },
@@ -29,7 +29,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-am-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dx202104refguides",
+      "srcId": "dx202104src",
       "docId": "dx202104ceamrefguides",
       "indexRedirect": true
     },
@@ -37,7 +37,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-am-MgSvcs.ditaval",
       "root": "cloud_digital-release-notes.ditamap",
-      "srcId": "dx202104relnotes",
+      "srcId": "dx202104src",
       "docId": "dx202104ceamrelnotes",
       "indexRedirect": true
     },
@@ -45,7 +45,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-claims-MgSvcs.ditaval",
       "root": "CustomerEngage_Claims_AppGuide.ditamap",
-      "srcId": "dx202104ceclaimsapp",
+      "srcId": "dx202104src",
       "docId": "dx202104ceclaimsapp",
       "indexRedirect": true
     },
@@ -53,7 +53,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-claims-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
-      "srcId": "dx202104install",
+      "srcId": "dx202104src",
       "docId": "dx202104ceclaimsinstall",
       "indexRedirect": true
     },
@@ -61,7 +61,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-claims-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
-      "srcId": "dx202104dev",
+      "srcId": "dx202104src",
       "docId": "dx202104ceclaimsdev",
       "indexRedirect": true
     },
@@ -69,7 +69,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-claims-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dx202104refguides",
+      "srcId": "dx202104src",
       "docId": "dx202104ceclaimsrefguides",
       "indexRedirect": true
     },
@@ -77,7 +77,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-claims-MgSvcs.ditaval",
       "root": "cloud_digital-release-notes.ditamap",
-      "srcId": "dx202104relnotes",
+      "srcId": "dx202104src",
       "docId": "dx202104ceclaimsrelnotes",
       "indexRedirect": true
     },
@@ -85,7 +85,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-qb-MgSvcs.ditaval",
       "root": "CustomerEngage_QuoteAndBuy_AppGuide.ditamap",
-      "srcId": "dx202104ceqbapp",
+      "srcId": "dx202104src",
       "docId": "dx202104ceqbapp",
       "indexRedirect": true
     },
@@ -93,7 +93,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-qb-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
-      "srcId": "dx202104install",
+      "srcId": "dx202104src",
       "docId": "dx202104ceqbinstall",
       "indexRedirect": true
     },
@@ -101,7 +101,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-qb-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
-      "srcId": "dx202104dev",
+      "srcId": "dx202104src",
       "docId": "dx202104ceqbdev",
       "indexRedirect": true
     },
@@ -109,7 +109,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-qb-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dx202104refguides",
+      "srcId": "dx202104src",
       "docId": "dx202104ceqbrefguides",
       "indexRedirect": true
     },
@@ -117,7 +117,7 @@
       "buildType": "dita",
       "filter": "Digital-ce-qb-MgSvcs.ditaval",
       "root": "cloud_digital-release-notes.ditamap",
-      "srcId": "dx202104relnotes",
+      "srcId": "dx202104src",
       "docId": "dx202104ceqbrelnotes",
       "indexRedirect": true
     },
@@ -125,7 +125,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-MgSvcs.ditaval",
       "root": "ProducerEngage_AppGuide.ditamap",
-      "srcId": "dx202104peapp",
+      "srcId": "dx202104src",
       "docId": "dx202104peapp",
       "indexRedirect": true
     },
@@ -133,7 +133,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
-      "srcId": "dx202104install",
+      "srcId": "dx202104src",
       "docId": "dx202104peinstall",
       "indexRedirect": true
     },
@@ -141,7 +141,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
-      "srcId": "dx202104dev",
+      "srcId": "dx202104src",
       "docId": "dx202104pedev",
       "indexRedirect": true
     },
@@ -149,7 +149,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dx202104refguides",
+      "srcId": "dx202104src",
       "docId": "dx202104perefguides",
       "indexRedirect": true
     },
@@ -157,7 +157,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-MgSvcs.ditaval",
       "root": "cloud_digital-release-notes.ditamap",
-      "srcId": "dx202104relnotes",
+      "srcId": "dx202104src",
       "docId": "dx202104perelnotes",
       "indexRedirect": true
     },
@@ -165,7 +165,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-claims-MgSvcs.ditaval",
       "root": "ProducerEngage_Claims_AppGuide.ditamap",
-      "srcId": "dx202104peclaimsapp",
+      "srcId": "dx202104src",
       "docId": "dx202104peclaimsapp",
       "indexRedirect": true
     },
@@ -173,7 +173,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-claims-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
-      "srcId": "dx202104install",
+      "srcId": "dx202104src",
       "docId": "dx202104peclaimsinstall",
       "indexRedirect": true
     },
@@ -181,7 +181,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-claims-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
-      "srcId": "dx202104dev",
+      "srcId": "dx202104src",
       "docId": "dx202104peclaimsdev",
       "indexRedirect": true
     },
@@ -189,7 +189,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-claims-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dx202104refguides",
+      "srcId": "dx202104src",
       "docId": "dx202104peclaimsrefguides",
       "indexRedirect": true
     },
@@ -197,7 +197,7 @@
       "buildType": "dita",
       "filter": "Digital-pe-claims-MgSvcs.ditaval",
       "root": "cloud_digital-release-notes.ditamap",
-      "srcId": "dx202104relnotes",
+      "srcId": "dx202104src",
       "docId": "dx202104peclaimsrelnotes",
       "indexRedirect": true
     },
@@ -205,7 +205,7 @@
       "buildType": "dita",
       "filter": "Digital-sre-MgSvcs.ditaval",
       "root": "ServiceRepEngage_AppGuide.ditamap",
-      "srcId": "dx202104sreapp",
+      "srcId": "dx202104src",
       "docId": "dx202104sreapp",
       "indexRedirect": true
     },
@@ -213,7 +213,7 @@
       "buildType": "dita",
       "filter": "Digital-sre-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
-      "srcId": "dx202104install",
+      "srcId": "dx202104src",
       "docId": "dx202104sreinstall",
       "indexRedirect": true
     },
@@ -221,7 +221,7 @@
       "buildType": "dita",
       "filter": "Digital-sre-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
-      "srcId": "dx202104dev",
+      "srcId": "dx202104src",
       "docId": "dx202104sredev",
       "indexRedirect": true
     },
@@ -229,7 +229,7 @@
       "buildType": "dita",
       "filter": "Digital-sre-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dx202104refguides",
+      "srcId": "dx202104src",
       "docId": "dx202104srerefguides",
       "indexRedirect": true
     },
@@ -237,7 +237,7 @@
       "buildType": "dita",
       "filter": "Digital-sre-MgSvcs.ditaval",
       "root": "cloud_digital-release-notes.ditamap",
-      "srcId": "dx202104relnotes",
+      "srcId": "dx202104src",
       "docId": "dx202104srerelnotes",
       "indexRedirect": true
     },
@@ -245,7 +245,7 @@
       "buildType": "dita",
       "filter": "Digital-ve-MgSvcs.ditaval",
       "root": "VendorEngage_AppGuide.ditamap",
-      "srcId": "dx202104veapp",
+      "srcId": "dx202104src",
       "docId": "dx202104veapp",
       "indexRedirect": true
     },
@@ -253,7 +253,7 @@
       "buildType": "dita",
       "filter": "Digital-ve-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
-      "srcId": "dx202104install",
+      "srcId": "dx202104src",
       "docId": "dx202104veinstall",
       "indexRedirect": true
     },
@@ -261,7 +261,7 @@
       "buildType": "dita",
       "filter": "Digital-ve-MgSvcs.ditaval",
       "root": "DevelopersGuide.ditamap",
-      "srcId": "dx202104dev",
+      "srcId": "dx202104src",
       "docId": "dx202104vedev",
       "indexRedirect": true
     },
@@ -269,7 +269,7 @@
       "buildType": "dita",
       "filter": "Digital-ve-MgSvcs.ditaval",
       "root": "DigitalServicesRefGuides.ditamap",
-      "srcId": "dx202104refguides",
+      "srcId": "dx202104src",
       "docId": "dx202104verefguides",
       "indexRedirect": true
     },
@@ -277,7 +277,7 @@
       "buildType": "dita",
       "filter": "Digital-ve-MgSvcs.ditaval",
       "root": "cloud_digital-release-notes.ditamap",
-      "srcId": "dx202104relnotes",
+      "srcId": "dx202104src",
       "docId": "dx202104verelnotes",
       "indexRedirect": true
     },
@@ -285,7 +285,7 @@
       "buildType": "dita",
       "filter": "Digital-apd-MgSvcs.ditaval",
       "root": "DigitalCodeGenerationGuide.ditamap",
-      "srcId": "dx202104dcg",
+      "srcId": "dx202104src",
       "docId": "dx202104dcg",
       "indexRedirect": true
     },

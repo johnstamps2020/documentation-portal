@@ -20,14 +20,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "WritingWithGit.ditamap",
-      "srcId": "writingwithgitsrc",
-      "docId": "writingwithgit",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "Element-Rendering.ditamap",
       "srcId": "elemrendsrc",
       "docId": "elemrend",
@@ -38,7 +30,16 @@
       "srcId": "docusaurusgwdocslatestsrc",
       "docId": "docusaurusgwdocslatest",
       "nodeImageVersion": "16.16.0",
-      "workingDir": "doc-site"
+      "yarnBuildCustomCommand": "build:doc-site",
+      "outputPath": "docusaurus/doc-site/build"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "gw/LearningInDita.ditamap",
+      "srcId": "learninginditasrc",
+      "docId": "learningindita",
+      "indexRedirect": true
     }
   ]
 }

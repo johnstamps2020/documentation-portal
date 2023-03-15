@@ -10,7 +10,7 @@
         "product": ["Standards-based Template Framework"],
         "version": ["latest"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging", "prod"],
       "internal": false,
       "earlyAccess": false,
       "indexForSearch": true,
@@ -25,7 +25,7 @@
         "product": ["Standards-based Template Framework"],
         "version": ["latest"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging", "prod"],
       "internal": false,
       "earlyAccess": false,
       "indexForSearch": true,

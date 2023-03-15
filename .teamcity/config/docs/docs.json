@@ -2,50 +2,16 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "guidewireidentityfederationhubdraft",
-      "title": "Authentication Draft",
-      "url": "cloud/auth/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Identity Federation Hub"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "guidewireidentityfederationhub",
       "title": "Authentication",
       "url": "cloud/auth/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Identity Federation Hub"],
+        "product": ["Cloud Platform"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"]
       },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "cloudplatformdraft",
-      "title": "Network Connectivity",
-      "url": "cloud/gwcp/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Platform"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
-      },
-      "environments": ["int"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -58,11 +24,11 @@
       "url": "cloud/gwcp/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Platform"],
+        "product": ["Cloud Platform"],
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -75,59 +41,11 @@
       "url": "cloud/gwcprelnotes/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Platform"],
+        "product": ["Cloud Platform"],
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"]
       },
-      "environments": ["int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "selfmanageddxdixowqwwrfu",
-      "title": "Guidewire for Salesforce Data Integrations",
-      "url": "self-managed/dx/di/3x",
-      "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations"],
-        "platform": ["Self-managed"],
-        "version": ["latest"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "selfmanageddxedxqqjwvkln",
-      "title": "Guidewire for Salesforce Digital Gateway",
-      "url": "self-managed/dx/ed/11x",
-      "metadata": {
-        "product": ["Guidewire for Salesforce Digital Gateway"],
-        "platform": ["Self-managed"],
-        "version": ["11.x"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "selfmanageddxvodxqjomllcj",
-      "title": "Guidewire for Salesforce View on Demand",
-      "url": "self-managed/dx/vod/11x",
-      "metadata": {
-        "product": ["Guidewire for Salesforce View on Demand"],
-        "platform": ["Self-managed"],
-        "version": ["11.x"]
-      },
-      "environments": ["int"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -629,7 +547,7 @@
         "product": ["BillingCenter"],
         "version": ["9.0.10"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -645,7 +563,7 @@
         "product": ["ClaimCenter"],
         "version": ["9.0.10"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -661,7 +579,7 @@
         "product": ["PolicyCenter"],
         "version": ["9.0.10"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -774,7 +692,7 @@
         "product": ["BillingCenter"],
         "version": ["9.0.10"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -790,7 +708,7 @@
         "product": ["ClaimCenter"],
         "version": ["9.0.10"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -806,7 +724,7 @@
         "product": ["PolicyCenter"],
         "version": ["9.0.10"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -852,11 +770,11 @@
       "url": "cloud/predict/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Live Predict"],
+        "product": ["Predict"],
         "version": ["latest"],
-        "release": ["Banff", "Cortina", "Dobson"]
+        "release": ["Banff", "Cortina", "Dobson", "Elysian", "Flaine"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -908,7 +826,7 @@
         "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -926,7 +844,7 @@
         "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -943,7 +861,7 @@
         "version": ["latest"],
         "release": ["Banff", "Cortina", "Dobson"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -960,7 +878,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -977,7 +895,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -994,7 +912,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1011,7 +929,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1028,7 +946,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1045,7 +963,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1062,7 +980,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1079,7 +997,7 @@
         "version": ["2020.11"],
         "release": ["Banff"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1448,7 +1366,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1466,7 +1384,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1484,7 +1402,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1502,7 +1420,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1520,7 +1438,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1538,7 +1456,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1556,7 +1474,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1574,7 +1492,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1592,7 +1510,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1610,7 +1528,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1818,7 +1736,7 @@
         "product": ["DataHub"],
         "version": ["10.4.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1834,7 +1752,7 @@
         "product": ["InfoCenter"],
         "version": ["10.4.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1850,7 +1768,7 @@
         "product": ["DataHub"],
         "version": ["10.3.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1866,7 +1784,7 @@
         "product": ["InfoCenter"],
         "version": ["10.3.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1882,7 +1800,7 @@
         "product": ["DataHub"],
         "version": ["10.2.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1898,7 +1816,7 @@
         "product": ["InfoCenter"],
         "version": ["10.2.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2090,7 +2008,7 @@
         "product": ["Guidewire Cloud Home"],
         "version": ["latest"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": false,
       "public": false,
       "internal": false,
@@ -2105,7 +2023,7 @@
         "product": ["Guidewire Cloud Home"],
         "version": ["latest"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -2122,7 +2040,7 @@
         "release": ["Cortina"]
       },
       "displayOnLandingPages": false,
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": false,
       "public": false,
       "internal": false,
@@ -2227,15 +2145,15 @@
     },
     {
       "id": "dxdiapp331",
-      "title": "Application Guide",
+      "title": "Data Integrations Application Guide",
       "url": "self-managed/dx/di/331/app",
       "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.1"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -2244,15 +2162,15 @@
     },
     {
       "id": "dxdiinstall331",
-      "title": "Installation Guide",
+      "title": "Data Integrations Installation Guide",
       "url": "self-managed/dx/di/331/install",
       "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.1"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -2261,15 +2179,15 @@
     },
     {
       "id": "dxdiadmin331",
-      "title": "Administration Guide",
+      "title": "Data Integrations Administration Guide",
       "url": "self-managed/dx/di/331/admin",
       "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.1"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -2278,15 +2196,15 @@
     },
     {
       "id": "dxdirelnotes331",
-      "title": "Release Notes",
+      "title": "Data Integrations Release Notes",
       "url": "self-managed/dx/di/331/relnotes",
       "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.1"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -2295,15 +2213,15 @@
     },
     {
       "id": "dxedapp331",
-      "title": "Application Guide",
+      "title": "Digital Gateway Application Guide",
       "url": "self-managed/dx/ed/331/app",
       "metadata": {
-        "product": ["Guidewire for Salesforce Digital Gateway"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.1"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2312,15 +2230,15 @@
     },
     {
       "id": "dxedinstall331",
-      "title": "Installation Guide",
+      "title": "Digital Gateway Installation Guide",
       "url": "self-managed/dx/ed/331/install",
       "metadata": {
-        "product": ["Guidewire for Salesforce Digital Gateway"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.1"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2329,15 +2247,15 @@
     },
     {
       "id": "dxedrelnotes331",
-      "title": "Release Notes",
+      "title": "Digital Gateway Release Notes",
       "url": "self-managed/dx/ed/331/relnotes",
       "metadata": {
-        "product": ["Guidewire for Salesforce Digital Gateway"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.1"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2346,15 +2264,15 @@
     },
     {
       "id": "dxvodapp331",
-      "title": "Application Guide",
+      "title": "View on Demand Application Guide",
       "url": "self-managed/dx/vod/331/app",
       "metadata": {
-        "product": ["Guidewire for Salesforce View on Demand"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.1"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2363,15 +2281,15 @@
     },
     {
       "id": "dxvodinstall331",
-      "title": "Installation Guide",
+      "title": "View on Demand Installation Guide",
       "url": "self-managed/dx/vod/331/install",
       "metadata": {
-        "product": ["Guidewire for Salesforce View on Demand"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.1"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2380,15 +2298,15 @@
     },
     {
       "id": "dxvodadmin331",
-      "title": "Administration Guide",
+      "title": "View on Demand Administration Guide",
       "url": "self-managed/dx/vod/331/admin",
       "metadata": {
-        "product": ["Guidewire for Salesforce View on Demand"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.1"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2397,15 +2315,15 @@
     },
     {
       "id": "dxvodrelnotes331",
-      "title": "Release Notes",
+      "title": "View on Demand Release Notes",
       "url": "self-managed/dx/vod/331/relnotes",
       "metadata": {
-        "product": ["Guidewire for Salesforce View on Demand"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.1"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2414,15 +2332,15 @@
     },
     {
       "id": "dxdiapp330",
-      "title": "Application Guide",
+      "title": "Data Integrations Application Guide",
       "url": "self-managed/dx/di/330/app",
       "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -2431,15 +2349,15 @@
     },
     {
       "id": "dxdiinstall330",
-      "title": "Installation Guide",
+      "title": "Data Integrations Installation Guide",
       "url": "self-managed/dx/di/330/install",
       "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.0"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -2448,15 +2366,15 @@
     },
     {
       "id": "dxdiadmin330",
-      "title": "Administration Guide",
+      "title": "Data Integrations Administration Guide",
       "url": "self-managed/dx/di/330/admin",
       "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.0"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -2465,15 +2383,15 @@
     },
     {
       "id": "dxdirelnotes330",
-      "title": "Release Notes",
+      "title": "Data Integrations Release Notes",
       "url": "self-managed/dx/di/330/relnotes",
       "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.0"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -2482,15 +2400,15 @@
     },
     {
       "id": "dxedapp330",
-      "title": "Application Guide",
+      "title": "Digital Gateway Application Guide",
       "url": "self-managed/dx/ed/330/app",
       "metadata": {
-        "product": ["Guidewire for Salesforce Digital Gateway"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2499,15 +2417,15 @@
     },
     {
       "id": "dxedinstall330",
-      "title": "Installation Guide",
+      "title": "Digital Gateway Installation Guide",
       "url": "self-managed/dx/ed/330/install",
       "metadata": {
-        "product": ["Guidewire for Salesforce Digital Gateway"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.0"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2516,15 +2434,15 @@
     },
     {
       "id": "dxedrelnotes330",
-      "title": "Release Notes",
+      "title": "Digital Gateway Release Notes",
       "url": "self-managed/dx/ed/330/relnotes",
       "metadata": {
-        "product": ["Guidewire for Salesforce Digital Gateway"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.0"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2533,15 +2451,15 @@
     },
     {
       "id": "dxvodapp330",
-      "title": "Application Guide",
+      "title": "View on Demand Application Guide",
       "url": "self-managed/dx/vod/330/app",
       "metadata": {
-        "product": ["Guidewire for Salesforce View on Demand"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.0"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2550,15 +2468,15 @@
     },
     {
       "id": "dxvodinstall330",
-      "title": "Installation Guide",
+      "title": "View on Demand Installation Guide",
       "url": "self-managed/dx/vod/330/install",
       "metadata": {
-        "product": ["Guidewire for Salesforce View on Demand"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.0"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2567,15 +2485,15 @@
     },
     {
       "id": "dxvodadmin330",
-      "title": "Administration Guide",
+      "title": "View on Demand Administration Guide",
       "url": "self-managed/dx/vod/330/admin",
       "metadata": {
-        "product": ["Guidewire for Salesforce View on Demand"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.0"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2584,15 +2502,15 @@
     },
     {
       "id": "dxvodrelnotes330",
-      "title": "Release Notes",
+      "title": "View on Demand Release Notes",
       "url": "self-managed/dx/vod/330/relnotes",
       "metadata": {
-        "product": ["Guidewire for Salesforce View on Demand"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.3.0"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2604,11 +2522,11 @@
       "title": "Guidewire for Salesforce Data Integrations",
       "url": "self-managed/dx/di/320",
       "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.2.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2620,11 +2538,11 @@
       "title": "Guidewire for Salesforce Digital Gateway",
       "url": "self-managed/dx/ed/320",
       "metadata": {
-        "product": ["Guidewire for Salesforce Digital Gateway"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.2.0"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2636,107 +2554,11 @@
       "title": "Guidewire for Salesforce View on Demand",
       "url": "self-managed/dx/vod/320",
       "metadata": {
-        "product": ["Guidewire for Salesforce View on Demand"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.2.0"]
       },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dxdionprem310",
-      "title": "Guidewire for Salesforce Data Integrations",
-      "url": "self-managed/dx/di/310",
-      "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations"],
-        "platform": ["Self-managed"],
-        "version": ["3.1.0"]
-      },
-      "environments": ["prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dxdiconprem310",
-      "title": "Guidewire for Salesforce Data Integrations for Claims",
-      "url": "self-managed/dx/di-c/310",
-      "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations for Claims"],
-        "platform": ["Self-managed"],
-        "version": ["3.1.0"]
-      },
-      "environments": ["prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dxedonprem310",
-      "title": "Guidewire for Salesforce Digital Gateway",
-      "url": "self-managed/dx/ed/310",
-      "metadata": {
-        "product": ["Guidewire for Salesforce Digital Gateway"],
-        "platform": ["Self-managed"],
-        "version": ["3.1.0"]
-      },
-      "environments": ["prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dxedconprem310",
-      "title": "Guidewire for Salesforce Digital Gateway for Claims",
-      "url": "self-managed/dx/ed-c/310",
-      "metadata": {
-        "product": ["Guidewire for Salesforce Digital Gateway for Claims"],
-        "platform": ["Self-managed"],
-        "version": ["3.1.0"]
-      },
-      "environments": ["prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dxvodonprem310",
-      "title": "Guidewire for Salesforce View on Demand",
-      "url": "self-managed/dx/vod/310",
-      "metadata": {
-        "product": ["Guidewire for Salesforce View on Demand"],
-        "platform": ["Self-managed"],
-        "version": ["3.1.0"]
-      },
-      "environments": ["prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dxvodconprem310",
-      "title": "Guidewire for Salesforce View on Demand for Claims",
-      "url": "self-managed/dx/vod-c/310",
-      "metadata": {
-        "product": ["Guidewire for Salesforce View on Demand for Claims"],
-        "platform": ["Self-managed"],
-        "version": ["3.1.0"]
-      },
-      "environments": ["prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -2832,7 +2654,7 @@
         "product": ["BillingCenter"],
         "version": ["9.0.8"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -3424,7 +3246,7 @@
         "product": ["ClaimCenter"],
         "version": ["9.0.8"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -4176,7 +3998,7 @@
         "product": ["PolicyCenter"],
         "version": ["9.0.8"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5474,7 +5296,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5492,7 +5314,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5510,7 +5332,7 @@
         "release": ["Banff"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5528,7 +5350,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5546,7 +5368,7 @@
         "release": ["Banff"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5564,7 +5386,7 @@
         "release": ["Banff"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5582,7 +5404,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5600,7 +5422,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5618,7 +5440,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5636,7 +5458,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5654,7 +5476,7 @@
         "release": ["Banff"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5672,7 +5494,7 @@
         "release": ["Banff"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5690,7 +5512,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5708,7 +5530,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5726,7 +5548,7 @@
         "release": ["Banff"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5744,7 +5566,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5762,7 +5584,7 @@
         "release": ["Banff"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5780,7 +5602,7 @@
         "release": ["Banff"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5798,7 +5620,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5816,7 +5638,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5834,7 +5656,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5852,7 +5674,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5870,7 +5692,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -5888,7 +5710,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5906,7 +5728,7 @@
         "release": ["Banff"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5924,7 +5746,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5942,7 +5764,7 @@
         "release": ["Banff"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5960,7 +5782,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5978,7 +5800,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -5996,7 +5818,7 @@
         "release": ["Banff"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6014,7 +5836,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6032,7 +5854,7 @@
         "release": ["Banff"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6050,7 +5872,7 @@
         "release": ["Banff"],
         "subject": ["Best practices"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6068,7 +5890,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6086,7 +5908,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6104,7 +5926,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6122,7 +5944,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6140,7 +5962,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6158,7 +5980,7 @@
         "release": ["Banff"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6176,7 +5998,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6212,7 +6034,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6230,7 +6052,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6248,7 +6070,7 @@
         "release": ["Banff"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6266,7 +6088,7 @@
         "release": ["Banff"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6284,7 +6106,7 @@
         "release": ["Banff"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6302,7 +6124,7 @@
         "release": ["Banff"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6320,7 +6142,7 @@
         "release": ["Banff"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6338,7 +6160,7 @@
         "release": ["Banff"],
         "subject": ["Development"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6356,58 +6178,7 @@
         "release": ["Banff"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "apiekdfksmds",
-      "title": "API Specifications",
-      "url": "cloud/bc/api-specs/latest/",
-      "metadata": {
-        "product": ["BillingCenter API"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Banff", "Cortina"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "pcappciekdfpcksmds",
-      "title": "API Specifications",
-      "url": "cloud/pc/api-specs/latest/",
-      "metadata": {
-        "product": ["PolicyCenter API"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Banff", "Cortina"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "ccapcciekdfccksmds",
-      "title": "API Specifications",
-      "url": "cloud/cc/api-specs/latest/",
-      "metadata": {
-        "product": ["ClaimCenter API"],
-        "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Banff", "Cortina"]
-      },
-      "environments": ["int"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6425,7 +6196,7 @@
         "subject": ["Features and functionality"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6443,7 +6214,7 @@
         "subject": ["Features and functionality"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6461,7 +6232,7 @@
         "subject": ["Integration"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6479,7 +6250,7 @@
         "subject": ["Integration"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6497,7 +6268,7 @@
         "subject": ["Configuration"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6515,7 +6286,7 @@
         "subject": ["Configuration"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6533,7 +6304,7 @@
         "subject": ["Configuration"],
         "release": ["Aspen"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6553,7 +6324,7 @@
       "public": false,
       "internal": false,
       "indexForSearch": true,
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "earlyAccess": false
     },
     {
@@ -6569,7 +6340,7 @@
       "public": false,
       "internal": false,
       "indexForSearch": false,
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "earlyAccess": false
     },
     {
@@ -6581,7 +6352,7 @@
         "product": ["Glossary"],
         "version": ["latest"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6597,7 +6368,7 @@
         "platform": ["Cloud"],
         "version": ["latest"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -6614,7 +6385,7 @@
         "release": ["Dobson"],
         "version": ["latest"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -6631,7 +6402,7 @@
         "release": ["Dobson", "Elysian"],
         "version": ["latest"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -6647,7 +6418,7 @@
         "platform": ["Cloud"],
         "version": ["latest"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -6663,7 +6434,7 @@
         "product": ["Internal Docs"],
         "version": ["latest"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -6676,10 +6447,10 @@
       "url": "cloud/internal/nps",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Platform"],
+        "product": ["Cloud Platform"],
         "version": ["latest"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -6711,7 +6482,7 @@
         "product": ["Product Adoption Resources"],
         "version": ["latest"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -6743,7 +6514,7 @@
         "product": ["Cloud Ticket Templates"],
         "version": ["latest"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "earlyAccess": false,

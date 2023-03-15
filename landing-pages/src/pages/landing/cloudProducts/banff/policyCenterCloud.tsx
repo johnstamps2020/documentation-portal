@@ -14,16 +14,16 @@ const pageConfig: CategoryLayoutProps = {
     selectedItemLabel: 'PolicyCenter Cloud',
     items: [
       {
-        label: 'PolicyCenter Cloud',
-        pagePath: '',
-      },
-      {
         label: 'BillingCenter Cloud',
         pagePath: 'cloudProducts/banff/billingCenterCloud',
       },
       {
         label: 'ClaimCenter Cloud',
         pagePath: 'cloudProducts/banff/claimCenterCloud',
+      },
+      {
+        label: 'PolicyCenter Cloud',
+        pagePath: 'cloudProducts/banff/policyCenterCloud',
       },
     ],
     labelColor: 'white',

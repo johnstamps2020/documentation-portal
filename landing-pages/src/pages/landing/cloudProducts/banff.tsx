@@ -13,6 +13,7 @@ const pageConfig: ProductFamilyLayoutProps = {
       xs: `url(${gradientBackgroundImage})`,
     },
   },
+
   items: [
     {
       label: 'PolicyCenter Cloud',

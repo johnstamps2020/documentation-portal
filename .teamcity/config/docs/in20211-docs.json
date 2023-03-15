@@ -210,7 +210,7 @@
         "subject": ["Integration"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -228,7 +228,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -246,7 +246,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -264,7 +264,7 @@
         "subject": ["Configuration"],
         "release": ["Cortina"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

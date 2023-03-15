@@ -2,17 +2,17 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "gwrulesrn",
-      "title": "Guidewire Rules Release Notes",
-      "url": "cloud/gwrulesrn",
+      "id": "gwrules",
+      "title": "Guidewire Rules",
+      "url": "cloud/gwrules",
       "metadata": {
-        "product": ["Rules"],
+        "product": ["Rules", "PolicyCenter", "ClaimCenter"],
         "platform": ["Cloud"],
-        "version": ["latest"],
+        "version": ["2022.09"],
         "release": ["Flaine"],
-        "subject": ["Release notes"]
+        "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -20,35 +20,35 @@
       "earlyAccess": true
     },
     {
-      "id": "gwrules",
-      "title": "Guidewire Rules",
-      "url": "cloud/gwrules",
+      "id": "gwrulestypemgr",
+      "title": "Guidewire Rules Type Manager",
+      "url": "cloud/gwrulestypemgr",
       "metadata": {
-        "product": ["Rules"],
+        "product": ["Rules", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["latest"],
-        "release": ["Flaine"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": false,
       "earlyAccess": true
     },
-        {
+    {
       "id": "submissionintake",
       "title": "Submission Intake",
       "url": "cloud/subintake",
       "metadata": {
-        "product": ["Submission Intake"],
+        "product": ["Submission Intake", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["latest"],
+        "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -60,15 +60,33 @@
       "title": "Submission Intake Configuration",
       "url": "cloud/subintakeconfig",
       "metadata": {
-        "product": ["Submission Intake"],
+        "product": ["Submission Intake", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["latest"],
+        "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "submissionintakeconfiglxd",
+      "title": "Submission Intake Configuration LXD",
+      "url": "cloud/subintakeconfiglxd",
+      "metadata": {
+        "product": ["Submission Intake", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
       "public": false,
       "internal": false,
       "earlyAccess": false
@@ -84,7 +102,7 @@
         "release": ["Flaine"],
         "subject": ["Configuration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

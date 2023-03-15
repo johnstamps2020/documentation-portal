@@ -2,30 +2,20 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
-      "id": "srcapiref202011",
-      "title": "Cloud API Reference in Redoc",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/api-directory-redoc.git",
-      "branch": "releases/banff"
-    },
-    {
       "id": "srcapiref202104",
       "title": "Cloud API Reference in Redoc",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/api-directory-redoc.git",
       "branch": "releases/cortina"
     },
     {
       "id": "srcpcapiref202011",
       "title": "PC Cloud API Reference in Redoc",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/pc-api-ref.git",
       "branch": "releases/cortina"
     },
     {
       "id": "srcin20211apiref",
       "title": "InsuranceNow API Reference in Redoc",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurance-now-api-ref.git",
       "branch": "release/cortina"
     }

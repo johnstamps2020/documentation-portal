@@ -1,0 +1,311 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dh1090rn",
+      "title": "Release Notes",
+      "url": "self-managed/dh/1090/releasenotes",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.9.0"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dh1090product",
+      "title": "Product Guide",
+      "url": "self-managed/dh/1090/product",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.9.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dh1090install",
+      "title": "Installation Guide",
+      "url": "self-managed/dh/1090/install",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.9.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dh1090upgrade",
+      "title": "Upgrade Guide",
+      "url": "self-managed/dh/1090/upgrade",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.9.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dh1090config",
+      "title": "Configuration Guide",
+      "url": "self-managed/dh/1090/config",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.9.0"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dh1090dataspec",
+      "title": "Data Specifications Guide",
+      "url": "self-managed/dh/1090/dataspec",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.9.0"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dh1090admin",
+      "title": "Administration Guide",
+      "url": "self-managed/dh/1090/admin",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.9.0"],
+        "subject": ["Administration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dh1090devref",
+      "title": "Developer Reference",
+      "url": "self-managed/dh/1090/devref",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.9.0"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic1090rn",
+      "title": "Release Notes",
+      "url": "self-managed/ic/1090/releasenotes",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.9.0"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic1090product",
+      "title": "Product Guide",
+      "url": "self-managed/ic/1090/product",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.9.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic1090install",
+      "title": "Installation Guide",
+      "url": "self-managed/ic/1090/install",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.9.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic1090upgrade",
+      "title": "Upgrade Guide",
+      "url": "self-managed/ic/1090/upgrade",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.9.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic1090config",
+      "title": "Configuration Guide",
+      "url": "self-managed/ic/1090/config",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.9.0"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic1090dataspec",
+      "title": "Data Specifications Guide",
+      "url": "self-managed/ic/1090/dataspec",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.9.0"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic1090admin",
+      "title": "Administration Guide",
+      "url": "self-managed/ic/1090/admin",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.9.0"],
+        "subject": ["Administration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic1090biapp",
+      "title": "BI Applications Guide",
+      "url": "self-managed/ic/1090/biapp",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.9.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic1090reports",
+      "title": "Reports Guide",
+      "url": "self-managed/ic/1090/reports",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.9.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic1090devref",
+      "title": "Developer Reference",
+      "url": "self-managed/ic/1090/devref",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.9.0"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
