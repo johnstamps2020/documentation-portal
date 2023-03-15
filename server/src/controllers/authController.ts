@@ -4,7 +4,7 @@ import { decode, JwtPayload } from 'jsonwebtoken';
 import { winstonLogger } from './loggerController';
 import { getUserInfo } from './userController';
 import { fourOhFourRoute, internalRoute } from './proxyController';
-import { getDocByUrl, getEnv, getPage } from './configController';
+import { getDocByUrl } from './configController';
 import { ApiResponse } from '../types/apiResponse';
 
 export async function saveUserInfoToResLocals(
@@ -81,7 +81,7 @@ export function isUserAllowedToAccessResource(
   resourceIsInternal: boolean,
   resourceIsInProduction: boolean
 ): ApiResponse {
-  const isProductionEnvironment = getEnv().envName === 'omega2-andromeda';
+  const isProductionEnvironment = process.env.DEPLOY_ENV === 'omega2-andromeda';
   if (isProductionEnvironment && !resourceIsInProduction) {
     return {
       status: 406,

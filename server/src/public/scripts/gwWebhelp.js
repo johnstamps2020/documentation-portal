@@ -155,10 +155,9 @@ async function createVersionSelector() {
       return null;
     }
     const response = await fetch(`/safeConfig/versionSelectors?docId=${docId}`);
-    const jsonResponse = await response.json();
-    const matchingVersionSelector = jsonResponse.matchingVersionSelector;
-    if (Object.keys(matchingVersionSelector).length > 0) {
-      const allVersions = matchingVersionSelector.allVersions;
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      const allVersions = jsonResponse.matchingVersionSelector.allVersions;
       const select = document.createElement('select');
       select.id = 'versionSelector';
       select.onchange = async function (e) {

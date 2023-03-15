@@ -31,23 +31,9 @@ router.get('/breadcrumbs', async function (req, res, next) {
   }
 });
 
-router.get('/versionSelectors', async function (req, res, next) {
-  try {
-    const docId = req.query.docId;
-    if (!docId) {
-      return res
-        .status(500)
-        .send('Provide a docID query parameter to get a version selector');
-    }
-
-    const versionSelector = await getVersionSelector(docId as string);
-    return res.send(versionSelector);
-  } catch (err) {
-    winstonLogger.error(`[SAFE CONFIG] Problem sending version selectors
-      ERROR: ${JSON.stringify(err)}
-      REQ: ${JSON.stringify(req)}`);
-    next(err);
-  }
+router.get('/versionSelectors', async function (req, res) {
+  const { status, body } = await getVersionSelector(req, res);
+  return res.status(status).json(body);
 });
 
 router.get('/entity/:repo', async function (req, res) {

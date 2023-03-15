@@ -61,6 +61,10 @@ export async function setMetadata() {
   const selectorResponse = await fetch(
     `/safeConfig/versionSelectors?docId=${docId}`
   );
-  const jsonResponse = await selectorResponse.json();
-  window.matchingVersionSelector = jsonResponse.matchingVersionSelector;
+  if (selectorResponse.ok) {
+    const jsonResponse = await selectorResponse.json();
+    window.matchingVersionSelector = jsonResponse.matchingVersionSelector;
+  } else {
+    window.matchingVersionSelector = {};
+  }
 }

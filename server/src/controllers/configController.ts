@@ -9,7 +9,10 @@ import { FindOneAndDeleteOptions, FindOptionsWhere, ILike } from 'typeorm';
 import { ApiResponse } from '../types/apiResponse';
 import { Page } from '../model/entity/Page';
 import { isUserAllowedToAccessResource } from './authController';
-import { LegacyVersionObject } from '../types/legacyConfig';
+import {
+  LegacyVersionObject,
+  LegacyVersionSelector,
+} from '../types/legacyConfig';
 import { Entity } from 'typeorm';
 
 function optionsAreValid(options: {}) {
@@ -77,7 +80,7 @@ export async function getBreadcrumbs(pagePath: string): Promise<ApiResponse> {
   } catch (err) {
     return {
       status: 500,
-      body: { message: `Operation failed: ${(err as Error).message}` },
+      body: { message: `Operation failed: ${err}` },
     };
   }
 }
@@ -150,7 +153,7 @@ export async function findEntity(
   } catch (err) {
     return {
       status: 500,
-      body: { message: `Operation failed: ${(err as Error).message}` },
+      body: { message: `Operation failed: ${err}` },
     };
   }
 }
@@ -251,7 +254,7 @@ export async function deleteEntity(
   } catch (err) {
     return {
       status: 500,
-      body: { message: `Operation failed: ${(err as Error).message}` },
+      body: { message: `Operation failed: ${err}` },
     };
   }
 }
@@ -318,7 +321,7 @@ export async function getDocumentMetadataById(docId: string) {
   } catch (err) {
     return {
       status: 500,
-      body: { message: `Operation failed: ${(err as Error).message}` },
+      body: { message: `Operation failed: ${err}` },
     };
   }
 }
@@ -350,6 +353,7 @@ export async function getDocIdByUrl(url: string) {
 }
 
 // TODO: Change this function to work with the database. It's used in docs to inject the root breadcrumb.
+//  We may need to build a site taxonomy to be able to achieve it
 export async function getRootBreadcrumb(pagePathname: string) {
   try {
     const breadcrumbsConfigPath = new URL(
@@ -389,8 +393,10 @@ export async function getRootBreadcrumb(pagePathname: string) {
   }
 }
 
-// FIXME: The version selector must filter out versions that the user cannot access
-export async function getVersionSelector(docId: string) {
+export async function getVersionSelector(
+  req: Request,
+  res: Response
+): Promise<ApiResponse> {
   function getLabel(docConfig: Doc, releaseInLabel: boolean) {
     const docReleases = docConfig.releases.map((r) => r.name);
     const docVersions = docConfig.products.map((p) => p.version);
@@ -421,6 +427,17 @@ export async function getVersionSelector(docId: string) {
   }
 
   try {
+    const { docId } = req.query;
+    if (!docId) {
+      return {
+        status: 400,
+        body: {
+          message:
+            'Invalid request. Provide the "docID" query parameter to get a version selector',
+        },
+      };
+    }
+
     const docQueryBuilder = await AppDataSource.getRepository(Doc)
       .createQueryBuilder('doc')
       .leftJoinAndSelect('doc.products', 'docProducts')
@@ -441,7 +458,21 @@ export async function getVersionSelector(docId: string) {
           productVersions: docResponse.products.map((p) => p.version),
         })
         .getMany();
-      const otherVersions = docsWithTheSameTitle.map((doc) => {
+
+      const availableDocsWithTheSameTitle = [];
+      for (const docWithTheSameTitle of docsWithTheSameTitle) {
+        const isUserAllowedToAccessResourceResult =
+          isUserAllowedToAccessResource(
+            res,
+            docWithTheSameTitle.public,
+            docWithTheSameTitle.internal,
+            docWithTheSameTitle.isInProduction
+          );
+        if (isUserAllowedToAccessResourceResult.status === 200) {
+          availableDocsWithTheSameTitle.push(docWithTheSameTitle);
+        }
+      }
+      const otherVersions = availableDocsWithTheSameTitle.map((doc) => {
         return {
           versions: doc.products.map((p) => p.version),
           releases: doc.releases.map((r) => r.name),
@@ -461,23 +492,23 @@ export async function getVersionSelector(docId: string) {
       ];
 
       return {
-        matchingVersionSelector: {
-          docId: docResponse.id,
-          allVersions: sortVersions(allVersions, useReleaseForLabel),
+        status: 200,
+        body: {
+          matchingVersionSelector: {
+            docId: docResponse.id,
+            allVersions: sortVersions(allVersions, useReleaseForLabel),
+          },
         },
       };
-    } else {
-      return { matchingVersionSelector: {} };
     }
+    return {
+      status: 404,
+      body: { message: `Cannot find the document for ID ${docId}` },
+    };
   } catch (err) {
-    winstonLogger.error(
-      `Holy Moly! Cannot get version selector for docId ${docId}!
-          ERROR: ${JSON.stringify(err)}`
-    );
-    return { matchingVersionSelector: {} };
+    return {
+      status: 500,
+      body: { message: `Operation failed: ${err}` },
+    };
   }
-}
-
-export function getEnv() {
-  return { envName: process.env.DEPLOY_ENV };
 }
