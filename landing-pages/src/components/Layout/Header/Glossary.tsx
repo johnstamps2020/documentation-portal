@@ -32,7 +32,7 @@ export default function Glossary() {
         onClick={handleClose}
       >
         <MenuItem>
-          <HeaderMenuLink href="https://docs.int.ccs.guidewire.net/glossary">
+          <HeaderMenuLink href="/glossary" disableReactRouter>
             Guidewire Glossary
           </HeaderMenuLink>
         </MenuItem>
