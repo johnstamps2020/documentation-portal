@@ -1,20 +1,15 @@
 import { getAllFilesRecursively } from '../modules/fileOperations';
 import { resolve, dirname, relative, parse } from 'path';
 import { writeFileSync, readFileSync, mkdirSync } from 'fs';
-import { CategoryLayoutProps } from 'landing-pages/src/components/LandingPage/Category/CategoryLayout';
-import { Category2LayoutProps } from 'landing-pages/src/components/LandingPage/Category2/Category2Layout';
-import { ProductFamilyLayoutProps } from 'landing-pages/src/components/LandingPage/ProductFamily/ProductFamilyLayout';
-import { SectionLayoutProps } from 'landing-pages/src/components/LandingPage/Section/SectionLayout';
 import { LandingPageSelectorProps } from 'landing-pages/src/components/LandingPage/LandingPageSelector';
 import { SectionProps } from 'landing-pages/src/components/LandingPage/Section/Section';
-import {
-  baseBackgroundProps,
-  LandingPageItemProps,
-  SidebarProps,
-} from 'landing-pages/src/pages/LandingPage/LandingPageTypes';
-import { WhatsNewProps } from 'landing-pages/src/components/LandingPage/WhatsNew';
+import { LandingPageItemProps } from 'landing-pages/src/pages/LandingPage/LandingPageTypes';
 
 const landingPagesSourceDir = resolve(__dirname, '../../../frontend/pages');
+const targetDir = resolve(
+  __dirname,
+  '../../../landing-pages/src/pages/landing'
+);
 const allFiles = getAllFilesRecursively(landingPagesSourceDir);
 const filePairs: FilePair[] = allFiles.map((sourceFile) => ({
   sourceFile,
@@ -57,13 +52,46 @@ type FlailConfig = {
 };
 
 function remapPageLink(flailPageLink: string, targetFile: string): string {
-  const root = resolve(__dirname, '../../../landing-pages/src/pages/landing');
   const matchingTargetFile = relative(
-    root,
+    targetDir,
     resolve(targetFile.replace('.tsx', ''), flailPageLink)
   );
 
   return matchingTargetFile;
+}
+
+function getSelector(
+  flailConfig: FlailConfig,
+  targetFile: string,
+  labelColor: string = 'white'
+): LandingPageSelectorProps | undefined {
+  if (getIsRelease(targetFile)) {
+    return undefined;
+  }
+
+  const flailSelector = flailConfig.selector;
+
+  const selectorItems = getItems(flailSelector?.items, targetFile);
+
+  if (!selectorItems) {
+    return undefined;
+  }
+
+  const currentItem: LandingPageItemProps = {
+    label: flailSelector?.selectedItem,
+    pagePath: relative(targetDir, targetFile).replace('.tsx', ''),
+  };
+
+  const sortedItems = [currentItem, ...selectorItems].sort((a, b) =>
+    a.label! > b.label! ? 1 : -1
+  );
+
+  return {
+    label: flailSelector?.label || 'Select version',
+    selectedItemLabel: flailSelector?.selectedItem || '',
+    items: sortedItems,
+    labelColor: labelColor,
+  };
 }
 
 function getSections(
@@ -327,26 +355,12 @@ function mapToCategory2Layout(
   }`;
 }
 
-function getIsRelease(flailConfig: FlailConfig): boolean {
-  const { level1Class } = getFlailClass(flailConfig);
+function getIsRelease(targetFile: string): boolean {
+  if (targetFile.match(/landing\/cloudProducts\/[a-z]+.tsx$/)) {
+    return true;
+  }
 
-  let result = false;
-  [
-    'aspen',
-    'banff',
-    'cortina',
-    'dobson',
-    'elysian',
-    'flaine',
-    'garmisch',
-  ].forEach((value) => {
-    if (level1Class.match(value)) {
-      result = true;
-      return;
-    }
-  });
-
-  return result;
+  return false;
 }
 
 function mapToCategoryLayout(
@@ -366,16 +380,13 @@ function mapToCategoryLayout(
     ),
   }));
   const isSelfManaged = flailConfig.title === 'Self-managed';
-  const isRelease = getIsRelease(flailConfig);
+  const isRelease = getIsRelease(targetFile);
+  const selector = getSelector(flailConfig, targetFile);
   return `{
     backgroundProps: ${backgroundPropValue},
     ${
-      !isSelfManaged
-        ? `selector: ${JSON.stringify(
-            getSelector(flailConfig, targetFile),
-            null,
-            2
-          )},`
+      !isSelfManaged && selector
+        ? `selector: ${JSON.stringify(selector, null, 2)},`
         : ''
     }
     ${
@@ -406,37 +417,13 @@ function mapToProductFamilyLayout(
 ): string {
   const { backgroundPropValue } = getBackgroundProps(flailConfig);
   const items = getItems(flailConfig.items, targetFile);
+  const selector = getSelector(flailConfig, targetFile);
   return `{
     backgroundProps: ${backgroundPropValue},
+    ${selector ? `selector: ${JSON.stringify(selector)},` : ''}
     items: ${JSON.stringify(items, null, 2)},
     sidebar: ${getSidebar(flailConfig)},
   }`;
-}
-
-function getSelector(
-  flailConfig: FlailConfig,
-  targetFile: string,
-  labelColor: string = 'white'
-): LandingPageSelectorProps | undefined {
-  const flailSelector = flailConfig.selector;
-
-  const selectorItems = getItems(flailSelector?.items, targetFile);
-
-  if (!selectorItems) {
-    return undefined;
-  }
-
-  const currentItem: LandingPageItemProps = {
-    label: flailSelector?.selectedItem,
-    pagePath: '',
-  };
-
-  return {
-    label: flailSelector?.label || 'Select version',
-    selectedItemLabel: flailSelector?.selectedItem || '',
-    items: [currentItem, ...selectorItems],
-    labelColor: labelColor,
-  };
 }
 
 function mapToSectionLayout(
@@ -470,7 +457,7 @@ type ClassMap = {
   remapFunction: (flailConfig: FlailConfig, targetFile: string) => string;
 };
 
-function getClassMap(flailConfig: FlailConfig): ClassMap {
+function getClassMap(flailConfig: FlailConfig, targetFile: string): ClassMap {
   const { level1Class, level2Class } = getFlailClass(flailConfig);
 
   const category2: ClassMap = {
@@ -501,11 +488,19 @@ function getClassMap(flailConfig: FlailConfig): ClassMap {
     remapFunction: mapToSectionLayout,
   };
 
-  if (level1Class.match('garmisch') || level1Class.match('flaine')) {
+  const isRelease = getIsRelease(targetFile);
+
+  if (
+    isRelease &&
+    (level1Class.match('garmisch') || level1Class.match('flaine'))
+  ) {
     return category2;
   }
 
-  if (level1Class.match('elysian') || level1Class.match('dobson')) {
+  if (
+    isRelease &&
+    (level1Class.match('elysian') || level1Class.match('dobson'))
+  ) {
     return category;
   }
 
@@ -544,8 +539,10 @@ function createComponentTemplate(
   flailConfig: FlailConfig,
   targetFile: string
 ): string {
-  const { componentName, layoutProps, from, remapFunction } =
-    getClassMap(flailConfig);
+  const { componentName, layoutProps, from, remapFunction } = getClassMap(
+    flailConfig,
+    targetFile
+  );
   const pageConfig = remapFunction(flailConfig, targetFile);
   const pageComponentName = getComponentName(targetFile);
   const { backGroundImports } = getBackgroundProps(flailConfig);

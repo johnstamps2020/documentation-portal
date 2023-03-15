@@ -86,12 +86,12 @@ const pageConfig: SectionLayoutProps = {
     selectedItemLabel: 'InfoCenter for Guidewire Cloud 2023.02',
     items: [
       {
-        label: 'InfoCenter for Guidewire Cloud 2023.02',
-        pagePath: '',
-      },
-      {
         label: 'DataHub for Guidewire Cloud 2023.02',
         pagePath: 'cloudProducts/garmisch/dhGwCloud/2023.02',
+      },
+      {
+        label: 'InfoCenter for Guidewire Cloud 2023.02',
+        pagePath: 'cloudProducts/garmisch/icGwCloud/2023.02',
       },
     ],
     labelColor: 'black',

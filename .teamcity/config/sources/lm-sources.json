@@ -4,21 +4,18 @@
     {
       "id": "lmgarmischsrc",
       "title": "London Markets Garmisch",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/london-markets.git",
       "branch": "release/garmisch"
     },
     {
       "id": "lmflainesrc",
       "title": "London Markets Flaine",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/london-markets.git",
       "branch": "release/flaine"
     },
     {
       "id": "lm32src",
       "title": "London Markets 3.2",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/london-markets.git",
       "branch": "release/3.2"
     }

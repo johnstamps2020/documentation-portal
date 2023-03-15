@@ -6,7 +6,7 @@
       "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide-BusinessFlows.ditamap",
       "srcId": "is202209jaJPsrc",
-      "docId": "iscc202209jaJPcloudapibf",
+      "docId": "iscc202209cloudapibfjaJP",
       "indexRedirect": true
     },
     {
@@ -14,7 +14,15 @@
       "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "CloudAPIGuide-Auth.ditamap",
       "srcId": "is202209jaJPsrc",
-      "docId": "iscc202209jaJPcloudapica",
+      "docId": "iscc202209cloudapicajaJP",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "CloudAPIGuide-ContactManager.ditamap",
+      "srcId": "is202209jaJPsrc",
+      "docId": "iscc202209apicmjaJP",
       "indexRedirect": true
     }
   ]

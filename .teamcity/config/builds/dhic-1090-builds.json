@@ -1,0 +1,177 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dm202302109src",
+      "docId": "dh1090rn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Garmisch-10.9/DataHub",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dm202302109src",
+      "docId": "dh1090product",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dm202302109src",
+      "docId": "dh1090install",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dm202302109src",
+      "docId": "dh1090upgrade",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dm202302109src",
+      "docId": "dh1090config",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dm202302109src",
+      "docId": "dh1090dataspec",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dm202302109src",
+      "docId": "dh1090admin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "developer-ref.ditamap",
+      "srcId": "dm202302109src",
+      "docId": "dh1090devref",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "srcId": "dhicextrassrc",
+          "sourceFolder": "Garmisch-10.9/DataHub/autoGenFiles/onPrem",
+          "targetFolder": "extras/autoGenFiles/onPrem"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dm202302109src",
+      "docId": "ic1090rn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Garmisch-10.9/InfoCenter",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ]
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dm202302109src",
+      "docId": "ic1090product",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dm202302109src",
+      "docId": "ic1090install",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dm202302109src",
+      "docId": "ic1090upgrade",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dm202302109src",
+      "docId": "ic1090config",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dm202302109src",
+      "docId": "ic1090dataspec",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dm202302109src",
+      "docId": "ic1090admin",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "bi-applications.ditamap",
+      "srcId": "dm202302109src",
+      "docId": "ic1090biapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "reports.ditamap",
+      "srcId": "dm202302109src",
+      "docId": "ic1090reports",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "developer-ref.ditamap",
+      "srcId": "dm202302109src",
+      "docId": "ic1090devref",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "srcId": "dhicextrassrc",
+          "sourceFolder": "Garmisch-10.9/InfoCenter/autoGenFiles/onPrem",
+          "targetFolder": "extras/autoGenFiles/onPrem"
+        }
+      ]
+    }
+  ]
+}

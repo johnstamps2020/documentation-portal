@@ -5,8 +5,24 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "surepath.ditamap",
-      "srcId": "standards202211src",
+      "srcId": "standards202302src",
       "docId": "standardslatest",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "surepath.ditamap",
+      "srcId": "standards202302src",
+      "docId": "standards202302",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "surepath.ditamap",
+      "srcId": "standards202301src",
+      "docId": "standards202301",
       "indexRedirect": true
     },
     {
@@ -195,10 +211,10 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Draft.ditaval",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "surepath.ditamap",
-      "srcId": "standardsdraftsrc",
-      "docId": "standardsdraft",
+      "srcId": "standardsmastersrc",
+      "docId": "standardsmaster",
       "indexRedirect": true
     }
   ]

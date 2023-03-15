@@ -12,16 +12,21 @@ import {
 import { usePageData } from 'hooks/usePageData';
 import ReleaseSelector from 'components/LandingPage/ReleaseSelector';
 import ProductFamilySidebar from './ProductFamilySidebar';
+import LandingPageSelector, {
+  LandingPageSelectorProps,
+} from 'components/LandingPage/LandingPageSelector';
 import PagePropsController from '../PagePropsController';
 
 export type ProductFamilyLayoutProps = LandingPageLayoutProps & {
   items: LandingPageItemProps[];
+  selector?: LandingPageSelectorProps;
 };
 
 export default function ProductFamilyLayout({
   backgroundProps,
   items,
   sidebar,
+  selector,
 }: ProductFamilyLayoutProps) {
   const { pageData, isError, isLoading } = usePageData();
 
@@ -58,7 +63,11 @@ export default function ProductFamilyLayout({
           >
             {pageData.title}
           </Typography>
-          <ReleaseSelector />
+          {selector ? (
+            <LandingPageSelector {...selector} />
+          ) : (
+            <ReleaseSelector />
+          )}
         </Stack>
       </Grid>
       <Grid container width="100%" maxWidth="1330px" gap={2}>

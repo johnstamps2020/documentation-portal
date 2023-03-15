@@ -4,7 +4,6 @@
     {
       "id": "sbtfwsrc",
       "title": "SBT Frameworks",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/sbt-frameworks.git",
       "branch": "main"
     }

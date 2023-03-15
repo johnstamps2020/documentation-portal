@@ -86,32 +86,32 @@ const pageConfig: SectionLayoutProps = {
     selectedItemLabel: '10.5.0',
     items: [
       {
-        label: '10.5.0',
-        pagePath: '',
-      },
-      {
-        label: '10.8.0',
-        pagePath: 'selfManagedProducts/ic/10.8.0',
-      },
-      {
-        label: '10.7.0',
-        pagePath: 'selfManagedProducts/ic/10.7.0',
-      },
-      {
-        label: '10.6.0',
-        pagePath: 'selfManagedProducts/ic/10.6.0',
-      },
-      {
-        label: '10.4.0',
-        docId: 'ic1040',
+        label: '10.2.0',
+        docId: 'ic1020',
       },
       {
         label: '10.3.0',
         docId: 'ic1030',
       },
       {
-        label: '10.2.0',
-        docId: 'ic1020',
+        label: '10.4.0',
+        docId: 'ic1040',
+      },
+      {
+        label: '10.5.0',
+        pagePath: 'selfManagedProducts/ic/10.5.0',
+      },
+      {
+        label: '10.6.0',
+        pagePath: 'selfManagedProducts/ic/10.6.0',
+      },
+      {
+        label: '10.7.0',
+        pagePath: 'selfManagedProducts/ic/10.7.0',
+      },
+      {
+        label: '10.8.0',
+        pagePath: 'selfManagedProducts/ic/10.8.0',
       },
     ],
     labelColor: 'black',

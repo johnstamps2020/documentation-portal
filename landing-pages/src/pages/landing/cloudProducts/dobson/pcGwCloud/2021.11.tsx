@@ -176,28 +176,28 @@ const pageConfig: SectionLayoutProps = {
     selectedItemLabel: 'Dobson (2021.11)',
     items: [
       {
-        label: 'Dobson (2021.11)',
-        pagePath: '',
-      },
-      {
-        label: 'Flaine (2022.09)',
-        pagePath: 'cloudProducts/flaine/pcGwCloud/2022.09',
-      },
-      {
-        label: 'Elysian (2022.05)',
-        pagePath: 'cloudProducts/elysian/pcGwCloud/2022.05',
-      },
-      {
-        label: 'Cortina (2021.04)',
-        pagePath: 'cloudProducts/cortina/policyCenterCloud/pcGwCloud/2021.04',
+        label: 'Aspen (2020.05)',
+        pagePath: 'cloudProducts/aspen/policyCenterCloud',
       },
       {
         label: 'Banff (2020.11)',
         pagePath: 'cloudProducts/banff/policyCenterCloud/pcGwCloud/2020.11',
       },
       {
-        label: 'Aspen (2020.05)',
-        pagePath: 'cloudProducts/aspen/policyCenterCloud',
+        label: 'Cortina (2021.04)',
+        pagePath: 'cloudProducts/cortina/policyCenterCloud/pcGwCloud/2021.04',
+      },
+      {
+        label: 'Dobson (2021.11)',
+        pagePath: 'cloudProducts/dobson/pcGwCloud/2021.11',
+      },
+      {
+        label: 'Elysian (2022.05)',
+        pagePath: 'cloudProducts/elysian/pcGwCloud/2022.05',
+      },
+      {
+        label: 'Flaine (2022.09)',
+        pagePath: 'cloudProducts/flaine/pcGwCloud/2022.09',
       },
     ],
     labelColor: 'black',

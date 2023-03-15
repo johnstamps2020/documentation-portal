@@ -8,7 +8,9 @@ export default function LogoutOption() {
   )}`;
   return (
     <MenuItem sx={{ width: 'fit-content' }}>
-      <HeaderMenuLink href={redirectTo}>Log out</HeaderMenuLink>
+      <HeaderMenuLink href={redirectTo} disableReactRouter>
+        Log out
+      </HeaderMenuLink>
     </MenuItem>
   );
 }

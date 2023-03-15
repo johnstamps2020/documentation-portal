@@ -78,36 +78,36 @@ const pageConfig: SectionLayoutProps = {
     selectedItemLabel: '10.9.0',
     items: [
       {
-        label: '10.9.0',
-        pagePath: '',
-      },
-      {
-        label: '10.8.0',
-        pagePath: 'selfManagedProducts/dh/10.8.0',
-      },
-      {
-        label: '10.7.0',
-        pagePath: 'selfManagedProducts/dh/10.7.0',
-      },
-      {
-        label: '10.6.0',
-        pagePath: 'selfManagedProducts/dh/10.6.0',
-      },
-      {
-        label: '10.5.0',
-        pagePath: 'selfManagedProducts/dh/10.5.0',
-      },
-      {
-        label: '10.4.0',
-        docId: 'dh1040',
+        label: '10.2.0',
+        docId: 'dh1020',
       },
       {
         label: '10.3.0',
         docId: 'dh1030',
       },
       {
-        label: '10.2.0',
-        docId: 'dh1020',
+        label: '10.4.0',
+        docId: 'dh1040',
+      },
+      {
+        label: '10.5.0',
+        pagePath: 'selfManagedProducts/dh/10.5.0',
+      },
+      {
+        label: '10.6.0',
+        pagePath: 'selfManagedProducts/dh/10.6.0',
+      },
+      {
+        label: '10.7.0',
+        pagePath: 'selfManagedProducts/dh/10.7.0',
+      },
+      {
+        label: '10.8.0',
+        pagePath: 'selfManagedProducts/dh/10.8.0',
+      },
+      {
+        label: '10.9.0',
+        pagePath: 'selfManagedProducts/dh/10.9.0',
       },
     ],
     labelColor: 'black',

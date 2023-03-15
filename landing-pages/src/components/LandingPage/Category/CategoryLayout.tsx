@@ -28,7 +28,7 @@ export default function CategoryLayout({
   backgroundProps,
   cards,
   sidebar,
-  showReleaseSelector = true,
+  showReleaseSelector,
   selector,
   description,
 }: CategoryLayoutProps) {

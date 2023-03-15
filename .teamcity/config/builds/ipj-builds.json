@@ -48,6 +48,14 @@
       "srcId": "ipj10src",
       "docId": "ipj10app",
       "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJInstallationGuide.ditamap",
+      "srcId": "ipj10src",
+      "docId": "ipj10install",
+      "indexRedirect": true
     }
   ]
 }

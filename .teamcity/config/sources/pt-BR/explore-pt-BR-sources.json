@@ -4,7 +4,6 @@
     {
       "id": "exploreptBRsrc",
       "title": "Explore ptBR",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
       "branch": "pt-BR/2022Mar"
     }

@@ -12,7 +12,7 @@
         "release": ["Flaine"],
         "subject": ["Integration"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

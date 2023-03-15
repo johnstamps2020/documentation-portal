@@ -18,24 +18,24 @@ const pageConfig: CategoryLayoutProps = {
     selectedItemLabel: 'Elysian',
     items: [
       {
-        label: 'Elysian',
-        pagePath: '',
-      },
-      {
-        label: 'Flaine',
-        pagePath: 'apiReferences/flaine',
-      },
-      {
-        label: 'Dobson',
-        pagePath: 'apiReferences/dobson',
+        label: 'Banff',
+        pagePath: 'apiReferences/banff',
       },
       {
         label: 'Cortina',
         pagePath: 'apiReferences/cortina',
       },
       {
-        label: 'Banff',
-        pagePath: 'apiReferences/banff',
+        label: 'Dobson',
+        pagePath: 'apiReferences/dobson',
+      },
+      {
+        label: 'Elysian',
+        pagePath: 'apiReferences/elysian',
+      },
+      {
+        label: 'Flaine',
+        pagePath: 'apiReferences/flaine',
       },
     ],
     labelColor: 'white',
@@ -116,36 +116,6 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
   ],
-
-  sidebar: {
-    label: 'Implementation Resources',
-    items: [
-      {
-        label: 'Guidewire Testing',
-        pagePath: 'testingFramework/elysian',
-      },
-      {
-        label: 'API References',
-        pagePath: 'apiReferences',
-      },
-      {
-        label: 'Community Case Templates',
-        docId: 'cloudtickettemplates',
-      },
-      {
-        label: 'Product Adoption',
-        docId: 'surepathmethodologymain',
-      },
-      {
-        label: 'Cloud Standards',
-        docId: 'standardslatest',
-      },
-      {
-        label: 'Upgrade Diff Reports',
-        pagePath: 'upgradediffs',
-      },
-    ],
-  },
 };
 
 export default function Elysian() {

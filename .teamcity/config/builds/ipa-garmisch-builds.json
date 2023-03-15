@@ -1,0 +1,29 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAReleaseNotes.ditamap",
+      "srcId": "ipagarmischsrc",
+      "docId": "ipagarmischrn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAConfigurationGuide.ditamap",
+      "srcId": "ipagarmischsrc",
+      "docId": "ipagarmischconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAApplicationGuide.ditamap",
+      "srcId": "ipagarmischsrc",
+      "docId": "ipagarmischapp",
+      "indexRedirect": true
+    }
+  ]
+}

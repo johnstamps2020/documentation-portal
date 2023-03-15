@@ -13,6 +13,18 @@ const pageConfig: ProductFamilyLayoutProps = {
       xs: `url(${gradientBackgroundImage})`,
     },
   },
+  selector: {
+    label: 'Select release',
+    selectedItemLabel: 'Banff',
+    items: [
+      { label: 'Banff', pagePath: 'apiReferences/banff' },
+      { label: 'Cortina', pagePath: 'apiReferences/cortina' },
+      { label: 'Dobson', pagePath: 'apiReferences/dobson' },
+      { label: 'Elysian', pagePath: 'apiReferences/elysian' },
+      { label: 'Flaine', pagePath: 'apiReferences/flaine' },
+    ],
+    labelColor: 'white',
+  },
   items: [
     {
       label: 'ClaimCenter API Reference',

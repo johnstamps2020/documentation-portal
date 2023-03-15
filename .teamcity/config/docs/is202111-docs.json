@@ -984,7 +984,7 @@
         "release": ["Dobson"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -1002,7 +1002,7 @@
         "release": ["Dobson"],
         "subject": ["Integration"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,

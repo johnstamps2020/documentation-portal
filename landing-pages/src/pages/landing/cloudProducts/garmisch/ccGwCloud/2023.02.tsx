@@ -176,32 +176,32 @@ const pageConfig: SectionLayoutProps = {
     selectedItemLabel: 'Garmisch (2023.02)',
     items: [
       {
-        label: 'Garmisch (2023.02)',
-        pagePath: '',
-      },
-      {
-        label: 'Flaine (2022.09)',
-        pagePath: 'cloudProducts/flaine/ccGwCloud/2022.09',
-      },
-      {
-        label: 'Elysian (2022.05)',
-        pagePath: 'cloudProducts/elysian/ccGwCloud/2022.05',
-      },
-      {
-        label: 'Dobson (2021.11)',
-        pagePath: 'cloudProducts/dobson/ccGwCloud/2021.11',
-      },
-      {
-        label: 'Cortina (2021.04)',
-        pagePath: 'cloudProducts/cortina/claimCenterCloud/ccGwCloud/2021.04',
+        label: 'Aspen (2020.05)',
+        pagePath: 'cloudProducts/aspen/claimCenterCloud',
       },
       {
         label: 'Banff (2020.11)',
         pagePath: 'cloudProducts/banff/claimCenterCloud/ccGwCloud/2020.11',
       },
       {
-        label: 'Aspen (2020.05)',
-        pagePath: 'cloudProducts/aspen/claimCenterCloud',
+        label: 'Cortina (2021.04)',
+        pagePath: 'cloudProducts/cortina/claimCenterCloud/ccGwCloud/2021.04',
+      },
+      {
+        label: 'Dobson (2021.11)',
+        pagePath: 'cloudProducts/dobson/ccGwCloud/2021.11',
+      },
+      {
+        label: 'Elysian (2022.05)',
+        pagePath: 'cloudProducts/elysian/ccGwCloud/2022.05',
+      },
+      {
+        label: 'Flaine (2022.09)',
+        pagePath: 'cloudProducts/flaine/ccGwCloud/2022.09',
+      },
+      {
+        label: 'Garmisch (2023.02)',
+        pagePath: 'cloudProducts/garmisch/ccGwCloud/2023.02',
       },
     ],
     labelColor: 'black',

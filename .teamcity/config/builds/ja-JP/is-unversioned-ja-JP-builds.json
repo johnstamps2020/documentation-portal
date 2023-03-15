@@ -1,0 +1,21 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "GosuRefGuide.ditamap",
+      "srcId": "is202205jaJPsrc",
+      "docId": "gosureflatestjaJP",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "Glossary.ditamap",
+      "srcId": "is202205jaJPsrc",
+      "docId": "gwglossaryjaJP",
+      "indexRedirect": true
+    }
+  ]
+}

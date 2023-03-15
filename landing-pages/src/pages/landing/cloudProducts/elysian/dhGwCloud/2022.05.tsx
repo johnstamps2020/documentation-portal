@@ -79,7 +79,7 @@ const pageConfig: SectionLayoutProps = {
     items: [
       {
         label: 'DataHub for Guidewire Cloud 2022.05',
-        pagePath: '',
+        pagePath: 'cloudProducts/elysian/dhGwCloud/2022.05',
       },
       {
         label: 'InfoCenter for Guidewire Cloud 2022.05',

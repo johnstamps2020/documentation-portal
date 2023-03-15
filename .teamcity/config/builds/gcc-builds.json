@@ -8,6 +8,11 @@
     },
     {
       "buildType": "yarn",
+      "docId": "repositorysettingsapi",
+      "srcId": "repositorysettingsapisrc"
+    },
+    {
+      "buildType": "yarn",
       "docId": "gccinternallatests",
       "srcId": "gccinternalsrc"
     },
@@ -28,14 +33,6 @@
       "indexRedirect": true,
       "srcId": "guidewirecloudconsolelatestsrc",
       "docId": "guidewirecloudconsolerootinsurerdev"
-    },
-    {
-      "buildType": "dita",
-      "root": "guidewire_cloud_platform_guide.ditamap",
-      "filter": "insurer-developer.ditaval",
-      "indexRedirect": true,
-      "srcId": "guidewirecloudconsolelatestsrc",
-      "docId": "guidewirecloudconsolerootinsurerdevdraft"
     },
     {
       "buildType": "dita",
