@@ -9,9 +9,9 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools Compatibility"],
         "version": ["latest"],
-        "subject": ["Upgrade Tools Compatibility"]
+        "subject": ["Installation"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

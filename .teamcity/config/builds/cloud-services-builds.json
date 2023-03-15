@@ -12,9 +12,9 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "RulesReleaseNotes.ditamap",
+      "root": "RulesTypeManager.ditamap",
       "srcId": "rulessrc",
-      "docId": "gwrulesrn",
+      "docId": "gwrulestypemgr",
       "indexRedirect": true
     },
     {
@@ -31,6 +31,14 @@
       "root": "SubmissionIntakeConfiguration.ditamap",
       "srcId": "submissionintakesrc",
       "docId": "submissionintakeconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "SubmissionIntakeConfiguration.ditamap",
+      "srcId": "submissionintakelxdsrc",
+      "docId": "submissionintakeconfiglxd",
       "indexRedirect": true
     },
     {

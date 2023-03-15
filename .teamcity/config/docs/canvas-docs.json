@@ -11,7 +11,7 @@
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,

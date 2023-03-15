@@ -1,0 +1,11 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "datastudioreleasesrc",
+      "title": "Data Studio Release",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/data-studio.git",
+      "branch": "release/latest"
+    }
+  ]
+}

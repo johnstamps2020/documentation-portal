@@ -4,16 +4,26 @@
     {
       "id": "ipacloud10src",
       "title": "InsuranceSuite Package for Australia for Guidewire Cloud Dobson",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipa.git",
       "branch": "IPA-1-0-FeatureWork"
     },
     {
       "id": "ipacloudelysiansrc",
       "title": "InsuranceSuite Package for Australia for Guidewire Cloud Elysian",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipa.git",
       "branch": "release/elysian"
+    },
+    {
+      "id": "ipaflainesrc",
+      "title": "InsuranceSuite Package for Australia for Guidewire Cloud Flaine",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipa.git",
+      "branch": "release/flaine"
+    },
+    {
+      "id": "ipagarmischsrc",
+      "title": "InsuranceSuite Package for Australia for Guidewire Cloud Garmisch",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipa.git",
+      "branch": "release/garmisch"
     }
   ]
 }

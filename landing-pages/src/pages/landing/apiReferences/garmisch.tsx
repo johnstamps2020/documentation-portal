@@ -1,12 +1,12 @@
-import Category2Layout, {
-  Category2LayoutProps,
-} from 'components/LandingPage/Category2/Category2Layout';
+import CategoryLayout, {
+  CategoryLayoutProps,
+} from 'components/LandingPage/Category/CategoryLayout';
 import gradientBackgroundImage from 'images/background-gradient.svg';
 import garmischBackgroundImage from 'images/background-garmisch.png';
 import garmischBadge from 'images/badge-garmisch.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 
-const pageConfig: Category2LayoutProps = {
+const pageConfig: CategoryLayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
     backgroundImage: {
@@ -16,6 +16,7 @@ const pageConfig: Category2LayoutProps = {
   linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
     },
   },
+
   cards: [
     {
       label: 'BillingCenter',
@@ -121,18 +122,7 @@ const pageConfig: Category2LayoutProps = {
       ],
     },
   ],
-  whatsNew: {
-    label: 'Garmisch',
-    badge: garmischBadge,
-    item: { label: 'Learn more', docId: 'whatsnewgarmisch' },
-    content: [
-      'Washes your car',
-      'Folds the laundry',
-      'Enhances the flavor of your food',
-      'Makes you feel like a million bucks',
-      'Just kidding! Content coming soon.',
-    ],
-  },
+
   sidebar: {
     label: 'Implementation Resources',
     items: [
@@ -161,5 +151,5 @@ const pageConfig: Category2LayoutProps = {
 };
 
 export default function Garmisch() {
-  return <Category2Layout {...pageConfig} />;
+  return <CategoryLayout {...pageConfig} />;
 }

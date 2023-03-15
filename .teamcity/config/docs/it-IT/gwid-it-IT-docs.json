@@ -7,9 +7,9 @@
       "url": "cloud/auth/it-IT/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Identity Federation Hub"],
+        "product": ["Cloud Platform"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

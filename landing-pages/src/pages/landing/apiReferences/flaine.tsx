@@ -1,12 +1,12 @@
-import Category2Layout, {
-  Category2LayoutProps,
-} from 'components/LandingPage/Category2/Category2Layout';
+import CategoryLayout, {
+  CategoryLayoutProps,
+} from 'components/LandingPage/Category/CategoryLayout';
 import gradientBackgroundImage from 'images/background-gradient.svg';
 import flaineBadge from 'images/badge-flaine.svg';
 import flaineBackgroundImage from 'images/background-flaine.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 
-const pageConfig: Category2LayoutProps = {
+const pageConfig: CategoryLayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
     backgroundImage: {
@@ -16,6 +16,7 @@ const pageConfig: Category2LayoutProps = {
        linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
     },
   },
+
   cards: [
     {
       label: 'BillingCenter',
@@ -121,22 +122,7 @@ const pageConfig: Category2LayoutProps = {
       ],
     },
   ],
-  whatsNew: {
-    label: 'Flaine',
-    badge: flaineBadge,
-    item: { label: 'Learn more', docId: 'whatsnewflaine' },
-    content: [
-      'Advanced Product Designer app (APD)',
-      'Submission Intake for InsuranceSuite',
-      'App Events for event-based integration',
-      'Community-powered machine learning',
-      'Automated updates to latest release',
-      'Cloud API enhancements',
-      'Early access to Jutro Digital Platform',
-      'Expanded Guidewire GO content',
-      'Advanced monitoring and observability',
-    ],
-  },
+
   sidebar: {
     label: 'Implementation Resources',
     items: [
@@ -165,5 +151,5 @@ const pageConfig: Category2LayoutProps = {
 };
 
 export default function Flaine() {
-  return <Category2Layout {...pageConfig} />;
+  return <CategoryLayout {...pageConfig} />;
 }

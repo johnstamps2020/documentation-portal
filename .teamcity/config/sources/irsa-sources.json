@@ -4,7 +4,6 @@
     {
       "id": "irsa20src",
       "title": "IRSA Integration for ClaimCenter 2.0",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipf.git",
       "branch": "release/2.0"
     }

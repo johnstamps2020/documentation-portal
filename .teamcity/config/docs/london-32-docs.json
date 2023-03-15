@@ -11,7 +11,7 @@
         "version": ["3.2"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -28,7 +28,7 @@
         "version": ["3.2"],
         "subject": ["Release notes"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

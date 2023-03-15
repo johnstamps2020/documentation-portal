@@ -6,12 +6,29 @@
       "title": "Runtime Properties API",
       "url": "cloud/console/runtimepropertiesapi",
       "metadata": {
-        "product": ["Guidewire Cloud Console"],
+        "product": ["Cloud Platform"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "subject": ["Development"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "repositorysettingsapi",
+      "title": "Repository Settings API",
+      "url": "cloud/console/repositorysettingsapi",
+      "metadata": {
+        "product": ["Cloud Platform"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -20,15 +37,15 @@
     },
     {
       "id": "cloudconsoleapi",
-      "title": "Cloud Console API",
+      "title": "IS Deployments API",
       "url": "cloud/console/cloudconsoleapi",
       "metadata": {
-        "product": ["Guidewire Cloud Console"],
+        "product": ["Cloud Platform"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "subject": ["Development"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -40,12 +57,12 @@
       "title": "Database Service API",
       "url": "cloud/console/dbserviceapi",
       "metadata": {
-        "product": ["Guidewire Cloud Console"],
+        "product": ["Cloud Platform"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "subject": ["Development"]
       },
-      "environments": ["int", "staging"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -60,10 +77,10 @@
       "indexForSearch": true,
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
+        "product": ["Cloud Platform"],
         "version": ["latest"]
       },
-      "environments": ["int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "public": true,
       "internal": false,
       "earlyAccess": false
@@ -74,10 +91,10 @@
       "url": "cloud/gcc-guide/insurer-developer/latest/topics/c_provisioning-cloud-console.html",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
+        "product": ["Cloud Platform"],
         "version": ["latest"]
       },
-      "environments": ["dev", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -90,42 +107,10 @@
       "url": "cloud/gcc-guide/insurer-developer/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
+        "product": ["Cloud Platform"],
         "version": ["latest"]
       },
-      "environments": ["dev", "staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "guidewirecloudconsoleguideinsurerdevdraft",
-      "title": "Cloud Console Guide Insurer Developer Draft",
-      "url": "cloud/gcc-guide/insurer-developer/latest/topics/c_provisioning-cloud-console.html",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
-        "version": ["latest"]
-      },
-      "environments": ["int"],
-      "displayOnLandingPages": false,
-      "indexForSearch": false,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "guidewirecloudconsolerootinsurerdevdraft",
-      "title": "Cloud Console Guide Draft",
-      "url": "cloud/gcc-guide/insurer-developer/latest",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
-        "version": ["latest"]
-      },
-      "environments": ["int"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -140,10 +125,10 @@
       "indexForSearch": true,
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
+        "product": ["Cloud Platform"],
         "version": ["latest"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "public": false,
       "internal": true,
       "earlyAccess": false
@@ -156,10 +141,10 @@
       "indexForSearch": false,
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
+        "product": ["Cloud Platform"],
         "version": ["latest"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "public": false,
       "internal": false,
       "earlyAccess": true
@@ -171,10 +156,10 @@
       "displayOnLandingPages": true,
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Guidewire Cloud Console"],
+        "product": ["Cloud Platform"],
         "version": ["latest"]
       },
-      "environments": ["int"],
+      "environments": ["staging"],
       "indexForSearch": true,
       "public": false,
       "internal": true,

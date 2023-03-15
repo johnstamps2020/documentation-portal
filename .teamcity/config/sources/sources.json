@@ -4,1021 +4,198 @@
     {
       "id": "isupgradeguide1020src",
       "title": "InsuranceSuite Upgrade Guide 10.2.0",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
       "branch": "release/10.2.0"
     },
     {
       "id": "isupgradeguide1012src",
       "title": "InsuranceSuite Upgrade Guide 10.1.2",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
       "branch": "release/10.1.2"
     },
     {
       "id": "isupgradeguide1011src",
       "title": "InsuranceSuite Upgrade Guide 10.1.1",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
       "branch": "release/10.1.1"
     },
     {
       "id": "exampleresource",
       "title": "Example resource package",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/doctools/dita-ot-254.git",
-      "branch": "master"
-    },
-    {
-      "id": "isupgradeguide202011src",
-      "title": "InsuranceSuite Upgrade Guide 2020.11",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
-      "branch": "release/2020.11.0"
-    },
-    {
-      "id": "cloudisadmin202011src",
-      "title": "IS 2020.11 Administration",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/AdminGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudisapd202011src",
-      "title": "IS 2020.11 Advanced Product Designer",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/AdvancedProductDesigner.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudisbcapp202011src",
-      "title": "IS 2020.11 BC Application",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/BC-AppGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudisccapp202011src",
-      "title": "IS 2020.11 CC Application",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/CC-AppGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudispcapp202011src",
-      "title": "IS 2020.11 PC Application",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/PC-AppGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudisbp202011src",
-      "title": "IS 2020.11 Best Practices",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/BestPracticesGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudiscloudapi202011src",
-      "title": "IS 2020.11 Cloud API",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/CloudAPIGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudiscloudapibf202011src",
-      "title": "IS 2020.11 Cloud API Business Flows",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/CloudAPIGuide-BusinessFlows.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudiscloudapica202011src",
-      "title": "IS 2020.11 Cloud API Configuration and Authentication",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/CloudAPIGuide-ConfigAuth.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudisconfig202011src",
-      "title": "IS 2020.11 Configuration",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/ConfigGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudiscontact202011src",
-      "title": "IS 2020.11 Contact Mgmt",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/ContactMgmtGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CM-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CM-Cloud-EA.ditaval"
-      ]
-    },
-    {
-      "id": "cloudisglobal202011src",
-      "title": "IS 2020.11 Globalization",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/GlobalizationGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudisinstall202011src",
-      "title": "IS 2020.11 Installation",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/InstallGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudisinteg202011src",
-      "title": "IS 2020.11 Integration",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/IntegrationGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudisnew202011src",
-      "title": "IS 2020.11 New and Changed",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/NewAndChangedGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudispd202011src",
-      "title": "IS 2020.11 Product Designer",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/ProductDesignerGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudispm202011src",
-      "title": "IS 2020.11 Product Model",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/ProductModelGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudisrestapifw202011src",
-      "title": "IS 2020.11 REST API Framework",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/RESTAPIFramework.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudisrules202011src",
-      "title": "IS 2020.11 Rules",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/RulesGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudistest202011src",
-      "title": "IS 2020.11 Testing",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/cloud/releases/202011/TestingGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "cloudisrn202011src",
-      "title": "IS 2020.11 Release Notes",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-cloud.git",
-      "branch": "Banff",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/releasenotes/ReleaseNotesBook-banff.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-BC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-CC-Cloud-Release.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/IS-PC-Cloud-Release.ditaval"
-      ]
-    },
-    {
-      "id": "dhic1040",
-      "title": "Data Management 10.4.0",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-      "branch": "10.4.0",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1040/DM_all.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-RELEASE.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-RELEASE.ditaval"
-      ]
-    },
-    {
-      "id": "dhic1030",
-      "title": "Data Management 10.3.0",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-      "branch": "1030",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1030/DM_all.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-RELEASE.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-RELEASE.ditaval"
-      ]
-    },
-    {
-      "id": "dhic1020",
-      "title": "Data Management 10.2.0",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-      "branch": "10.2.0",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1020/DM_all.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-RELEASE.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-RELEASE.ditaval"
-      ]
-    },
-    {
-      "id": "dhic202011",
-      "title": "Data Management 2020.11",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/releases-cloud/202011/DM_all.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
-      ]
-    },
-    {
-      "id": "dhicextrassrc",
-      "title": "DataHub and InfoCenter Extras",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic-extras.git",
       "branch": "master"
     },
     {
       "id": "restapisrc",
       "title": "IS REST API",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/rest-api.git",
       "branch": "main"
     },
     {
-      "id": "is9010",
-      "title": "InsuranceSuite OnPrem 9.0.10",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
-      "branch": "release/9.0.10",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/9.x/releases/9010/_supermap-9010.ditamap"
-      ]
-    },
-    {
-      "id": "is909",
-      "title": "InsuranceSuite OnPrem 9.0.9",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
-      "branch": "release/9.0.9",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/9.x/releases/909/_supermap-909.ditamap"
-      ]
-    },
-    {
-      "id": "is908",
-      "title": "InsuranceSuite OnPrem 9.0.8",
-      "sourceType": "xdocs",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
-      "branch": "release/9.0.8",
-      "xdocsPathIds": [
-        "/Content/doc/insuranceSuite/core/9.x/releases/908/_supermap-908.ditamap"
-      ]
-    },
-    {
-      "id": "dxgwsfapp331",
-      "title": "GW for SF 3.3.1 Application Guide",
-      "sourceType": "git",
+      "id": "dxgwsf331",
+      "title": "Digital GW for SF 3.3.1",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "3.3.1",
-      "xdocsPathIds": [
-        "/Content/doc/digital/11.x/releases/202104/Guidewire_For_Salesforce_AppGuide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval"
-      ]
+      "branch": "3.3.1"
     },
     {
-      "id": "dxgwsfinstall331",
-      "title": "GW for SF 3.3.1 Installation Guide",
-      "sourceType": "git",
+      "id": "dxgwsf330",
+      "title": "Digital GW for SF 3.3.0",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "3.3.1",
-      "xdocsPathIds": [
-        "/Content/doc/digital/11.x/releases/202104/Guidewire_For_Salesforce_install-guide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval"
-      ]
-    },
-    {
-      "id": "dxgwsfadmin331",
-      "title": "GW for SF 3.3.1 Administration Guide",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "3.3.1",
-      "xdocsPathIds": [
-        "/Content/doc/digital/11.x/releases/202104/gw-for-sf-developer-admin-guide.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval"
-      ]
-    },
-    {
-      "id": "dxgwsfrelnotes331",
-      "title": "GW for SF 3.3.1 Release Notes",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "3.3.1",
-      "xdocsPathIds": [
-        "/Content/doc/digital/11.x/releases/202104/Digital-Salesforce-ReleaseNotes.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-di-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ed-OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-vod-OnPrem.ditaval"
-      ]
+      "branch": "3.3.0"
     },
     {
       "id": "dxgwsf320",
       "title": "Digital GW for SF 3.2.0",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "3.2.0"
     },
     {
-      "id": "dx202011",
-      "title": "Digital 2020.11",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
-      "branch": "2020.11",
-      "exportFrequency": "weekly",
-      "xdocsPathIds": [
-        "/Content/doc/digital/11.x/releases/202011/DX_superbook.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-apd-MgSvcs.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-am-MgSvcs.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-claims-MgSvcs.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ce-qb-MgSvcs.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-MgSvcs.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-pe-claims-MgSvcs.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-sre-MgSvcs.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/Digital-ve-MgSvcs.ditaval"
-      ]
-    },
-    {
       "id": "gchhelpsrc",
       "title": "Guidewire Cloud Home Help",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gch-help.git",
       "branch": "main"
     },
     {
       "id": "configmgrhelpcortinasrc",
       "title": "Configuration Manager Help Cortina",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/config-manager-help.git",
-      "branch": "Cortina",
-      "xdocsPathIds": [
-        "/Content/doc/help/guidewireCloud/cortina/GuidewireCloud.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
+      "branch": "release/Cortina"
     },
     {
       "id": "configmgrhelpbanffsrc",
       "title": "Configuration Manager Help Banff",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/config-manager-help.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/help/guidewireCloud/banff/GuidewireCloudPlatform.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/GW-Generic-Release.ditaval"
-      ]
-    },
-    {
-      "id": "lobbopguideaspensrc",
-      "title": "LOB BOP Guide Aspen",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Aspen",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/aspen/lob-bop-10x.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
-    },
-    {
-      "id": "lobbopsbtrnaspensrc",
-      "title": "LOB BOP Countrywide Release Notes Aspen",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Aspen",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/aspen/BOP_SBT_ReleaseNotes-10x.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
-    },
-    {
-      "id": "lobglguideaspensrc",
-      "title": "LOB GL Guide Aspen",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Aspen",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/aspen/lob-gl-9x-1003.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
-    },
-    {
-      "id": "lobglsbtrnaspensrc",
-      "title": "LOB GL Countrywide Release Notes Aspen",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Aspen",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/aspen/GL_SBT_ReleaseNotes-9x-1003.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
-    },
-    {
-      "id": "lobcaguideaspensrc",
-      "title": "LOB CA Guide Aspen",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Aspen",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/aspen/lob-ca-10x.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
-    },
-    {
-      "id": "lobcasbtrnaspensrc",
-      "title": "LOB CA Countrywide Release Notes Aspen",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Aspen",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/aspen/CA_SBT_ReleaseNotesCW2020-10x.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
-    },
-    {
-      "id": "lobcrimeguideaspensrc",
-      "title": "LOB Crime Guide Aspen",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Aspen",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/aspen/lob-crime.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
-    },
-    {
-      "id": "lobcrimesbtrnaspensrc",
-      "title": "LOB Crime Countrywide Release Notes Aspen",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Aspen",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/aspen/Crime_SBT_ReleaseNotes.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
-    },
-    {
-      "id": "lobbopguidebanffsrc",
-      "title": "LOB BOP Guide Banff",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/active/lob-bop-10x.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
-    },
-    {
-      "id": "lobbopsbtrnbanffsrc",
-      "title": "LOB BOP Countrywide Release Notes Banff",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/active/BOP_SBT_ReleaseNotes-10x.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
-    },
-    {
-      "id": "lobglguidebanffsrc",
-      "title": "LOB GL Guide Banff",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/banff/lob-gl-9x-1003.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
-    },
-    {
-      "id": "lobglsbtrnbanffsrc",
-      "title": "LOB GL Countrywide Release Notes Banff",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/banff/GL_SBT_ReleaseNotes-9x-1003.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
-    },
-    {
-      "id": "lobcaguidebanffsrc",
-      "title": "LOB CA Guide Banff",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/banff/lob-ca-10x.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
-    },
-    {
-      "id": "lobcasbtrnbanffsrc",
-      "title": "LOB CA Countrywide Release Notes Banff",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/banff/CA_SBT_ReleaseNotesCW2020-10x.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
-    },
-    {
-      "id": "lobcrimeguidebanffsrc",
-      "title": "LOB Crime Guide Banff",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/banff/lob-crime.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
-    },
-    {
-      "id": "lobcrimesbtrnbanffsrc",
-      "title": "LOB Crime Countrywide Release Notes Banff",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/banff/Crime_SBT_ReleaseNotes.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
-    },
-    {
-      "id": "lobwcguidebanffsrc",
-      "title": "LOB WC Guide Banff",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/banff/lob-wc.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
-    },
-    {
-      "id": "lobwcsbtrnbanffsrc",
-      "title": "LOB WC Countrywide Release Notes Banff",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
-      "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/banff/WC_SBT_ReleaseNotes.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_BASIC_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_OnPrem.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/LOB_STANDARDS_Cloud.ditaval"
-      ]
+      "branch": "release/Banff"
     },
     {
       "id": "clouddataaccesssrc",
       "title": "Cloud Data Access Guide",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-data-access.git",
       "branch": "main"
     },
     {
       "id": "exploresrc",
       "title": "Explore",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
       "branch": "main"
     },
     {
       "id": "insurancenowextrassrc",
       "title": "InsuranceNow Extras",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow-extras.git",
       "branch": "master"
     },
     {
       "id": "guidewireidentityfederationhubsrc",
       "title": "Guidewire Identity Federation Hub Release",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/guidewire-identity-federation-hub.git",
       "branch": "main"
     },
     {
       "id": "cloudplatformsrc",
       "title": "Cloud Platform",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-platform.git",
       "branch": "main"
     },
     {
       "id": "gwcpreleasenotessrc",
       "title": "Cloud Platform Release Notes",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-releasenotes.git",
       "branch": "main"
     },
     {
       "id": "cicdmanagerapirefsrc",
       "title": "CI/CD Manager",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cicd-api-ref.git",
       "branch": "master"
     },
     {
       "id": "livepredictsrc",
       "title": "Live Predict",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/live-predict.git",
       "branch": "main"
     },
     {
       "id": "comparelatestsrc",
       "title": "Compare",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/compare.git",
       "branch": "main"
-    },
-    {
-      "id": "dm1050rnsrc",
-      "title": "DataManagement Release Notes 10.5.0",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-      "branch": "10.5.0",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/releasenotes.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
-      ]
-    },
-    {
-      "id": "dm1050devrefsrc",
-      "title": "DataManagement Developer Reference 10.5.0",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-      "branch": "10.5.0",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/developer-ref.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-RELEASE.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-RELEASE.ditaval"
-      ]
-    },
-    {
-      "id": "dm1050productsrc",
-      "title": "DataManagement Product Guide 10.5.0",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-      "branch": "10.5.0",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/product.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
-      ]
-    },
-    {
-      "id": "dm1050installsrc",
-      "title": "DataManagement Installation Guide 10.5.0",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-      "branch": "10.5.0",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/install.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
-      ]
-    },
-    {
-      "id": "dm1050upgradesrc",
-      "title": "DataManagement Upgrade Guide 10.5.0",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-      "branch": "10.5.0",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/upgrade.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
-      ]
-    },
-    {
-      "id": "dm1050configsrc",
-      "title": "DataManagement Configuration Guide 10.5.0",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-      "branch": "10.5.0",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/config.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
-      ]
-    },
-    {
-      "id": "dm1050dataspecsrc",
-      "title": "DataManagement Data Specifications Guide 10.5.0",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-      "branch": "10.5.0",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/dataspec.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
-      ]
-    },
-    {
-      "id": "dm1050adminsrc",
-      "title": "DataManagement Administration Guide 10.5.0",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-      "branch": "10.5.0",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/admin.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/DataHub-MS-RELEASE.ditaval",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
-      ]
-    },
-    {
-      "id": "ic1050biappsrc",
-      "title": "InfoCenter BI App Guide 10.5.0",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-      "branch": "10.5.0",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/bi-applications.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
-      ]
-    },
-    {
-      "id": "ic1050reportssrc",
-      "title": "InfoCenter Reports Guide 10.5.0",
-      "sourceType": "git",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
-      "branch": "10.5.0",
-      "xdocsPathIds": [
-        "/Content/doc/data-analytics/dh-ic/10.x/releases-self-managed/1050/reports.ditamap",
-        "/SysConfig/publishProfiles/processingProfiles/filterSets/InfoCenter-MS-RELEASE.ditaval"
-      ]
     },
     {
       "id": "checksumssrc",
       "title": "Checksums source in git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/checksums.git",
-      "branch": "master",
-      "sourceType": "git"
+      "branch": "master"
     },
     {
       "id": "easyguidesrc",
       "title": "EasyGuide source in git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/easyguide.git",
-      "branch": "master",
-      "sourceType": "git"
+      "branch": "master"
     },
     {
       "id": "gwglossarysrc",
       "title": "Guidewire Glossary",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/glossary.git",
       "branch": "main"
     },
     {
       "id": "learninganalyticssrc",
       "title": "Learning Analytics",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/learning-analytics.git",
       "branch": "main"
     },
     {
       "id": "cyencesrc",
       "title": "Cyence",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cyence.git",
       "branch": "main"
     },
     {
       "id": "hazardhubsrc",
       "title": "HazardHub",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/hazardhub.git",
       "branch": "main"
     },
     {
       "id": "portasrc",
       "title": "Portfolio Assembly (Porta)",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/porta/porta-docs.git",
       "branch": "master"
     },
     {
       "id": "gwcpinternalsrc",
       "title": "Network Permissions Service",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-internal-doc-poc.git",
       "branch": "master"
     },
     {
       "id": "internaldocssrc",
       "title": "Internal Docs",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/internal-docs-directory.git",
       "branch": "main"
     },
     {
       "id": "surepathmethodologymainsrc",
       "title": "Product Adoption Resources main",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/surepath-methodology.git",
       "branch": "main"
     },
     {
       "id": "cdsdocss3foldersrc",
       "title": "CDS Docs S3 folder main",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/surepath-methodology.git",
       "branch": "main"
     },
     {
       "id": "doctoolss3managersrc",
       "title": "Doctools S3 manager main",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/s3-file-manager.git",
       "branch": "main"
     },
     {
       "id": "cloudtickettemplatessrc",
       "title": "Cloud Ticket Templates",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-ticket-templates.git",
       "branch": "main"
     }

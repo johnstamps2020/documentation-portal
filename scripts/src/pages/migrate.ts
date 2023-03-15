@@ -1,18 +1,9 @@
 import { getAllFilesRecursively } from '../modules/fileOperations';
 import { resolve, dirname, relative, parse } from 'path';
 import { writeFileSync, readFileSync, mkdirSync } from 'fs';
-import { CategoryLayoutProps } from 'landing-pages/src/components/LandingPage/Category/CategoryLayout';
-import { Category2LayoutProps } from 'landing-pages/src/components/LandingPage/Category2/Category2Layout';
-import { ProductFamilyLayoutProps } from 'landing-pages/src/components/LandingPage/ProductFamily/ProductFamilyLayout';
-import { SectionLayoutProps } from 'landing-pages/src/components/LandingPage/Section/SectionLayout';
 import { LandingPageSelectorProps } from 'landing-pages/src/components/LandingPage/LandingPageSelector';
 import { SectionProps } from 'landing-pages/src/components/LandingPage/Section/Section';
-import {
-  baseBackgroundProps,
-  LandingPageItemProps,
-  SidebarProps,
-} from 'landing-pages/src/pages/LandingPage/LandingPageTypes';
-import { WhatsNewProps } from 'landing-pages/src/components/LandingPage/WhatsNew';
+import { LandingPageItemProps } from 'landing-pages/src/pages/LandingPage/LandingPageTypes';
 
 const landingPagesSourceDir = resolve(__dirname, '../../../frontend/pages');
 const targetDir = resolve(
@@ -67,6 +58,36 @@ function remapPageLink(flailPageLink: string, targetFile: string): string {
   );
 
   return matchingTargetFile;
+}
+
+function getSelector(
+  flailConfig: FlailConfig,
+  targetFile: string,
+  labelColor: string = 'white'
+): LandingPageSelectorProps | undefined {
+  if (getIsRelease(flailConfig)) {
+    return undefined;
+  }
+
+  const flailSelector = flailConfig.selector;
+
+  const selectorItems = getItems(flailSelector?.items, targetFile);
+
+  if (!selectorItems) {
+    return undefined;
+  }
+
+  const currentItem: LandingPageItemProps = {
+    label: flailSelector?.selectedItem,
+    pagePath: relative(targetDir, targetFile).replace('.tsx', ''),
+  };
+
+  return {
+    label: flailSelector?.label || 'Select version',
+    selectedItemLabel: flailSelector?.selectedItem || '',
+    items: [currentItem, ...selectorItems],
+    labelColor: labelColor,
+  };
 }
 
 function getSections(
@@ -413,36 +434,6 @@ function mapToProductFamilyLayout(
   }`;
 }
 
-function getSelector(
-  flailConfig: FlailConfig,
-  targetFile: string,
-  labelColor: string = 'white'
-): LandingPageSelectorProps | undefined {
-  if (getIsRelease(flailConfig)) {
-    return undefined;
-  }
-
-  const flailSelector = flailConfig.selector;
-
-  const selectorItems = getItems(flailSelector?.items, targetFile);
-
-  if (!selectorItems) {
-    return undefined;
-  }
-
-  const currentItem: LandingPageItemProps = {
-    label: flailSelector?.selectedItem,
-    pagePath: relative(targetDir, targetFile).replace('.tsx', ''),
-  };
-
-  return {
-    label: flailSelector?.label || 'Select version',
-    selectedItemLabel: flailSelector?.selectedItem || '',
-    items: [currentItem, ...selectorItems],
-    labelColor: labelColor,
-  };
-}
-
 function mapToSectionLayout(
   flailConfig: FlailConfig,
   targetFile: string
@@ -505,7 +496,10 @@ function getClassMap(flailConfig: FlailConfig): ClassMap {
     remapFunction: mapToSectionLayout,
   };
 
-  if (level1Class.match('garmisch') || level1Class.match('flaine')) {
+  if (
+    level1Class.match('skiRelease') &&
+    (level1Class.match('garmisch') || level1Class.match('flaine'))
+  ) {
     return category2;
   }
 

@@ -6,12 +6,12 @@
       "title": "Application Guide",
       "url": "self-managed/dx/di/34/app",
       "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.4"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -23,12 +23,12 @@
       "title": "Installation Guide",
       "url": "self-managed/dx/di/34/install",
       "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.4"],
         "subject": ["Installation"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -40,12 +40,12 @@
       "title": "Administration Guide",
       "url": "self-managed/dx/di/34/admin",
       "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.4"],
         "subject": ["Administration"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -57,12 +57,12 @@
       "title": "Release Notes",
       "url": "self-managed/dx/di/34/relnotes",
       "metadata": {
-        "product": ["Guidewire for Salesforce Data Integrations"],
+        "product": ["Guidewire for Salesforce"],
         "platform": ["Self-managed"],
         "version": ["3.4"],
         "subject": ["Release notes"]
       },
-      "environments": ["dev", "int", "staging", "prod"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

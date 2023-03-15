@@ -5,6 +5,14 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "whatsnew.ditamap",
+      "srcId": "whatsnewgarmischsrc",
+      "docId": "whatsnewgarmisch",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "whatsnew.ditamap",
       "srcId": "whatsnewflainesrc",
       "docId": "whatsnewflaine",
       "indexRedirect": true

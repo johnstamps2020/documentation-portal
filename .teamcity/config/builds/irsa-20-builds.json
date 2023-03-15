@@ -32,14 +32,6 @@
       "srcId": "irsa20src",
       "docId": "midipfrn20",
       "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "_supermap.ditamap",
-      "srcId": "irsa20src",
-      "docId": "midipfsupermap20",
-      "indexRedirect": false
     }
   ]
 }
