@@ -11,10 +11,118 @@ import { Page } from '../model/entity/Page';
 import { isUserAllowedToAccessResource } from './authController';
 import { LegacyVersionObject } from '../types/legacyConfig';
 
-function optionsAreValid(options: {}) {
+function wrapInQuotes(
+  stringsToWrap: string[] | string | undefined
+): string[] | string | undefined {
+  const valueSeparator = ',';
+
+  function addQuotes(stringToModify: string) {
+    return stringToModify.includes(',')
+      ? '"' + stringToModify + '"'
+      : stringToModify;
+  }
+
+  if (Array.isArray(stringsToWrap)) {
+    return stringsToWrap.map((s) => addQuotes(s)).join(valueSeparator);
+  } else if (typeof stringsToWrap === 'string') {
+    return addQuotes(stringsToWrap);
+  } else {
+    return stringsToWrap;
+  }
+}
+
+function optionsAreValid(options: {}): boolean {
   return (
     options && Object.keys(options)?.length > 0 && !(options instanceof Array)
   );
+}
+
+export async function getDocByUrl(url: string): Promise<Doc | null> {
+  const urlToCheck = url.replace(/^\//g, '');
+  return await AppDataSource.getRepository(Doc)
+    .createQueryBuilder('doc')
+    .useIndex('docUrl-idx')
+    .select([
+      'doc.url',
+      'doc.id',
+      'doc.public',
+      'doc.internal',
+      'doc.isInProduction',
+    ])
+    .where(":urlToCheck LIKE concat(doc.url, '%')", { urlToCheck: urlToCheck })
+    .getOne();
+}
+
+// FIXME: Change this function to return the found entity or null
+//  ApiResponse is returned in functions used directly by routes
+export async function findEntity(
+  repoName: string,
+  options: FindOptionsWhere<any>,
+  loadRelations: boolean = true
+): Promise<ApiResponse> {
+  try {
+    if (!optionsAreValid(options)) {
+      return {
+        status: 400,
+        body: {
+          message: 'Invalid request. Provide query parameters in the URL.',
+        },
+      };
+    }
+    let result;
+    if (loadRelations) {
+      result = await AppDataSource.manager.findOneBy(repoName, options);
+    } else {
+      result = await AppDataSource.getRepository(repoName)
+        .createQueryBuilder(repoName)
+        .where(options)
+        .getOne();
+    }
+    if (!result) {
+      return {
+        status: 404,
+        body: {
+          message: `Did not find an entity in ${repoName} for the following query: ${JSON.stringify(
+            options
+          )}`,
+        },
+      };
+    }
+    return {
+      status: 200,
+      body: result,
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      body: { message: `Operation failed: ${err}` },
+    };
+  }
+}
+
+// FIXME: Change this function to return the found entity or null
+//  ApiResponse is returned in functions used directly by routes
+export async function findAllEntities(repoName: string): Promise<ApiResponse> {
+  try {
+    const result = await AppDataSource.manager.find(repoName);
+    if (!result) {
+      return {
+        status: 404,
+        body: {
+          message: `Did not find entities in ${repoName}`,
+        },
+      };
+    }
+    return {
+      status: 200,
+      body: result,
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      body: { message: `Operation failed: ${err}` },
+    };
+  }
 }
 
 export async function getBreadcrumbs(
@@ -85,13 +193,16 @@ export async function getBreadcrumbs(
   }
 }
 
-export async function getEntity(reqObj: Request, resObj: Response) {
-  const { repo } = reqObj.params;
-  const options = reqObj.query;
+export async function getEntity(
+  req: Request,
+  res: Response
+): Promise<ApiResponse> {
+  const { repo } = req.params;
+  const options = req.query;
   const findEntityResult = await findEntity(repo, options);
   if (findEntityResult.status === 200) {
     const isUserAllowedToAccessResourceResult = isUserAllowedToAccessResource(
-      resObj,
+      res,
       findEntityResult.body.public,
       findEntityResult.body.internal,
       findEntityResult.body.isInProduction
@@ -102,51 +213,6 @@ export async function getEntity(reqObj: Request, resObj: Response) {
     return isUserAllowedToAccessResourceResult;
   }
   return findEntityResult;
-}
-
-export async function findEntity(
-  repoName: string,
-  options: FindOptionsWhere<any>,
-  loadRelations: boolean = true
-): Promise<ApiResponse> {
-  try {
-    if (!optionsAreValid(options)) {
-      return {
-        status: 400,
-        body: {
-          message: 'Invalid request. Provide query parameters in the URL.',
-        },
-      };
-    }
-    let result;
-    if (loadRelations) {
-      result = await AppDataSource.manager.findOneBy(repoName, options);
-    } else {
-      result = await AppDataSource.getRepository(repoName)
-        .createQueryBuilder(repoName)
-        .where(options)
-        .getOne();
-    }
-    if (!result) {
-      return {
-        status: 404,
-        body: {
-          message: `Did not find an entity in ${repoName} for the following query: ${JSON.stringify(
-            options
-          )}`,
-        },
-      };
-    }
-    return {
-      status: 200,
-      body: result,
-    };
-  } catch (err) {
-    return {
-      status: 500,
-      body: { message: `Operation failed: ${err}` },
-    };
-  }
 }
 
 export async function getAllEntities(
@@ -175,29 +241,7 @@ export async function getAllEntities(
   return findAllEntitiesResult;
 }
 
-export async function findAllEntities(repoName: string): Promise<ApiResponse> {
-  try {
-    const result = await AppDataSource.manager.find(repoName);
-    if (!result) {
-      return {
-        status: 404,
-        body: {
-          message: `Did not find entities in ${repoName}`,
-        },
-      };
-    }
-    return {
-      status: 200,
-      body: result,
-    };
-  } catch (err) {
-    return {
-      status: 500,
-      body: { message: `Operation failed: ${err}` },
-    };
-  }
-}
-
+// FIXME: Get params from the req inside this function
 export async function createOrUpdateEntity(
   repoName: string,
   options: {}
@@ -224,6 +268,7 @@ export async function createOrUpdateEntity(
   }
 }
 
+//FIXME: Get params from the req inside the function
 export async function deleteEntity(
   repoName: string,
   options: FindOneAndDeleteOptions
@@ -250,25 +295,10 @@ export async function deleteEntity(
   }
 }
 
-function wrapInQuotes(stringsToWrap: Array<string> | string | undefined) {
-  const valueSeparator = ',';
-
-  function addQuotes(stringToModify: string) {
-    return stringToModify.includes(',')
-      ? '"' + stringToModify + '"'
-      : stringToModify;
-  }
-
-  if (Array.isArray(stringsToWrap)) {
-    return stringsToWrap.map((s) => addQuotes(s)).join(valueSeparator);
-  } else if (typeof stringsToWrap === 'string') {
-    return addQuotes(stringsToWrap);
-  } else {
-    return stringsToWrap;
-  }
-}
-
-export async function getDocumentMetadataById(req: Request, res: Response) {
+export async function getDocumentMetadataById(
+  req: Request,
+  res: Response
+): Promise<ApiResponse> {
   // Filter values are passed around as strings that use commas to separate values. To avoid issues with splitting,
   // values that contain commas must be wrapped in quotes.
   // Filter values are parsed by the getFiltersFromUrl function in searchController.js.
@@ -327,23 +357,10 @@ export async function getDocumentMetadataById(req: Request, res: Response) {
   }
 }
 
-export async function getDocByUrl(url: string) {
-  const urlToCheck = url.replace(/^\//g, '');
-  return await AppDataSource.getRepository(Doc)
-    .createQueryBuilder('doc')
-    .useIndex('docUrl-idx')
-    .select([
-      'doc.url',
-      'doc.id',
-      'doc.public',
-      'doc.internal',
-      'doc.isInProduction',
-    ])
-    .where(":urlToCheck LIKE concat(doc.url, '%')", { urlToCheck: urlToCheck })
-    .getOne();
-}
-
-export async function getDocIdByUrl(req: Request, res: Response) {
+export async function getDocIdByUrl(
+  req: Request,
+  res: Response
+): Promise<ApiResponse> {
   const { url } = req.query;
   if (!url) {
     return {
@@ -376,47 +393,6 @@ export async function getDocIdByUrl(req: Request, res: Response) {
     };
   }
   return isUserAllowedToAccessResourceResult;
-}
-
-// TODO: Change this function to work with the database. It's used in docs to inject the root breadcrumb.
-//  We may need to build a site taxonomy to be able to achieve it
-export async function getRootBreadcrumb(pagePathname: string) {
-  try {
-    const breadcrumbsConfigPath = new URL(
-      `pages/breadcrumbs.json`,
-      process.env.DOC_S3_URL
-    ).href;
-    const response = await fetch(breadcrumbsConfigPath);
-    if (response.ok) {
-      const breadcrumbsMapping = await response.json();
-      try {
-        for (const breadcrumb of breadcrumbsMapping) {
-          if (
-            pagePathname.startsWith(breadcrumb.docUrl) &&
-            breadcrumb.rootPages.length === 1
-          ) {
-            return {
-              rootPage: {
-                path: breadcrumb.rootPages[0].path,
-                label: breadcrumb.rootPages[0].label,
-              },
-            };
-          }
-        }
-      } catch (breadErr) {
-        throw new Error(
-          `Problem getting breadcrumb file for page: "${pagePathname}" from file "${breadcrumbsConfigPath}": ${breadErr}`
-        );
-      }
-    }
-    return { rootPage: {} };
-  } catch (err) {
-    winstonLogger.error(
-      `Something wrong when trying to get the root breadcrumb
-          ERROR: ${JSON.stringify(err)}`
-    );
-    return { rootPage: {} };
-  }
 }
 
 export async function getVersionSelector(
@@ -536,5 +512,46 @@ export async function getVersionSelector(
       status: 500,
       body: { message: `Operation failed: ${err}` },
     };
+  }
+}
+
+// TODO: Change this function to work with the database. It's used in docs to inject the root breadcrumb.
+//  We may need to build a site taxonomy to be able to achieve it
+export async function getRootBreadcrumb(pagePathname: string) {
+  try {
+    const breadcrumbsConfigPath = new URL(
+      `pages/breadcrumbs.json`,
+      process.env.DOC_S3_URL
+    ).href;
+    const response = await fetch(breadcrumbsConfigPath);
+    if (response.ok) {
+      const breadcrumbsMapping = await response.json();
+      try {
+        for (const breadcrumb of breadcrumbsMapping) {
+          if (
+            pagePathname.startsWith(breadcrumb.docUrl) &&
+            breadcrumb.rootPages.length === 1
+          ) {
+            return {
+              rootPage: {
+                path: breadcrumb.rootPages[0].path,
+                label: breadcrumb.rootPages[0].label,
+              },
+            };
+          }
+        }
+      } catch (breadErr) {
+        throw new Error(
+          `Problem getting breadcrumb file for page: "${pagePathname}" from file "${breadcrumbsConfigPath}": ${breadErr}`
+        );
+      }
+    }
+    return { rootPage: {} };
+  } catch (err) {
+    winstonLogger.error(
+      `Something wrong when trying to get the root breadcrumb
+          ERROR: ${JSON.stringify(err)}`
+    );
+    return { rootPage: {} };
   }
 }

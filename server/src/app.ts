@@ -180,7 +180,7 @@ app.use('/jira', saveUserInfoToResLocals, isAllowedToAccessRoute, jiraRouter);
 app.use('/lrs', saveUserInfoToResLocals, isAllowedToAccessRoute, lrsRouter);
 app.use('/s3', saveUserInfoToResLocals, isAllowedToAccessRoute, s3Router);
 // Open routes
-app.use('/recommendations', recommendationsRouter);
+app.use('/recommendations', saveUserInfoToResLocals, recommendationsRouter);
 app.use('/userInformation', userRouter);
 app.use('/search', saveUserInfoToResLocals, searchRouter);
 
