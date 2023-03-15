@@ -42,8 +42,7 @@ router.get('/entity/:repo', async function (req, res) {
 });
 
 router.get('/entity/:repo/all', async function (req, res) {
-  const { repo } = req.params;
-  const { status, body } = await getAllEntities(repo, res);
+  const { status, body } = await getAllEntities(req, res);
   return res.status(status).json(body);
 });
 

@@ -1,8 +1,4 @@
-import {
-  createOrUpdateEntity,
-  findAllEntities,
-  findEntity,
-} from './configController';
+import { findAllEntities, findEntity, saveEntity } from './configController';
 import { Doc } from '../model/entity/Doc';
 import { Product } from '../model/entity/Product';
 import { Release } from '../model/entity/Release';
@@ -25,102 +21,133 @@ import { Page } from '../model/entity/Page';
 import { getConfigFile, listItems } from './s3Controller';
 import { runningInDevMode } from './utils/serverUtils';
 import { Subject } from '../model/entity/Subject';
-import { Response } from 'express';
+import { Request } from 'express';
+import { ApiResponse } from '../types/apiResponse';
+import { ObjectLiteral } from 'typeorm';
 
-export async function getLegacyDocConfigs(res: Response) {
-  const { status, body } = await findAllEntities(Doc.name);
-  const dbDocs: Doc[] = body;
+export async function getLegacyConfigs(req: Request): Promise<ApiResponse> {
+  const { configType } = req.params;
+  let repoName;
+  let getFunc;
+  if (!['doc', 'source', 'build'].includes(configType)) {
+    return {
+      status: 400,
+      body: {
+        message:
+          'Incorrect configType parameter. Use "doc", "source", "build". For example: /entity/legacy/doc',
+      },
+    };
+  }
+  if (configType === 'source') {
+    repoName = Source.name;
+    getFunc = getLegacySourceConfigs;
+  } else if (configType === 'doc') {
+    repoName = Doc.name;
+    getFunc = getLegacyDocConfigs;
+  } else if (configType === 'build') {
+    repoName = Doc.name;
+    getFunc = getLegacyBuildConfigs;
+  }
+  if (repoName && getFunc) {
+    const findAllEntitiesResult = await findAllEntities(repoName);
+    if (!findAllEntitiesResult) {
+      return {
+        status: 404,
+        body: {
+          message: `Did not find entities in ${repoName}`,
+        },
+      };
+    }
+    const legacyConfigs = getFunc(findAllEntitiesResult);
+    return {
+      status: 200,
+      body: legacyConfigs,
+    };
+  }
+  return {
+    status: 404,
+    body: { message: `Cannot get legacy configs from the ${repoName}` },
+  };
+}
+
+function getLegacyDocConfigs(dbEntities: ObjectLiteral[]): legacyDocConfig[] {
+  const dbDocs = dbEntities;
   const legacyDocs = [];
-  if (status === 200) {
-    for (const doc of dbDocs) {
-      const legacyDoc = new legacyDocConfig();
-      legacyDoc.id = doc.id;
-      legacyDoc.title = doc.title;
-      legacyDoc.url = doc.url;
-      legacyDoc.body = doc.body;
-      legacyDoc.environments = doc.isInProduction
-        ? ['int', 'staging', 'prod']
-        : ['int', 'staging'];
-      legacyDoc.displayOnLandingPages = doc.displayOnLandingPages;
-      legacyDoc.indexForSearch = doc.indexForSearch;
-      legacyDoc.public = doc.public;
-      legacyDoc.internal = doc.internal;
-      legacyDoc.earlyAccess = doc.earlyAccess;
-      legacyDoc.metadata = new Metadata();
-      legacyDoc.metadata.product = doc.products.map((p: Product) => p.name);
-      legacyDoc.metadata.platform = doc.products.map(
-        (p: Product) => p.platform
-      );
-      legacyDoc.metadata.version = doc.products.map((p: Product) => p.version);
-      legacyDoc.metadata.release = doc.releases
-        ? doc.releases.map((r: Release) => r.name)
-        : null;
-      const docSubjects = doc.subjects.map((s) => s.name);
-      legacyDoc.metadata.subject = docSubjects.length > 0 ? docSubjects : null;
+  for (const doc of dbDocs) {
+    const legacyDoc = new legacyDocConfig();
+    legacyDoc.id = doc.id;
+    legacyDoc.title = doc.title;
+    legacyDoc.url = doc.url;
+    legacyDoc.body = doc.body;
+    legacyDoc.environments = doc.isInProduction
+      ? ['int', 'staging', 'prod']
+      : ['int', 'staging'];
+    legacyDoc.displayOnLandingPages = doc.displayOnLandingPages;
+    legacyDoc.indexForSearch = doc.indexForSearch;
+    legacyDoc.public = doc.public;
+    legacyDoc.internal = doc.internal;
+    legacyDoc.earlyAccess = doc.earlyAccess;
+    legacyDoc.metadata = new Metadata();
+    legacyDoc.metadata.product = doc.products.map((p: Product) => p.name);
+    legacyDoc.metadata.platform = doc.products.map((p: Product) => p.platform);
+    legacyDoc.metadata.version = doc.products.map((p: Product) => p.version);
+    legacyDoc.metadata.release = doc.releases
+      ? doc.releases.map((r: Release) => r.name)
+      : null;
+    const docSubjects = doc.subjects.map((s: Subject) => s.name);
+    legacyDoc.metadata.subject = docSubjects.length > 0 ? docSubjects : null;
 
-      legacyDocs.push(legacyDoc);
-    }
+    legacyDocs.push(legacyDoc);
   }
-  return {
-    status: 200,
-    body: legacyDocs,
-  };
+  return legacyDocs;
 }
 
-export async function getLegacyBuildConfigs(res: Response) {
-  const { status, body } = await findAllEntities(Doc.name);
+function getLegacyBuildConfigs(
+  dbEntities: ObjectLiteral[]
+): legacyBuildConfig[] {
   const legacyBuilds = [];
-  if (status === 200) {
-    for (const doc of body) {
-      const buildData = doc.build;
-      const legacyBuild = new legacyBuildConfig();
-      if (buildData) {
-        legacyBuild.buildType = buildData.type;
-        legacyBuild.root = buildData.root;
-        legacyBuild.filter = buildData.filter;
-        legacyBuild.indexRedirect = buildData.indexRedirect;
-        legacyBuild.nodeImageVersion = buildData.nodeImageVersion;
-        legacyBuild.workingDir = buildData.workingDir;
-        legacyBuild.yarnBuildCustomCommand = buildData.yarnBuildCustomCommand;
-        legacyBuild.outputPath = buildData.outputPath;
-        legacyBuild.zipFilename = buildData.zipFilename;
-        legacyBuild.customEnv = buildData.customEnv;
-        legacyBuild.srcId = buildData.source.id;
-        legacyBuild.docId = doc.id;
-        legacyBuild.resources = buildData.resources.map((rs: Resource) => {
-          return {
-            sourceFolder: rs.sourceFolder,
-            targetFolder: rs.targetFolder,
-            srcId: rs.source.id,
-          };
-        });
-      }
-      legacyBuilds.push(legacyBuild);
+  for (const doc of dbEntities) {
+    const buildData = doc.build;
+    const legacyBuild = new legacyBuildConfig();
+    if (buildData) {
+      legacyBuild.buildType = buildData.type;
+      legacyBuild.root = buildData.root;
+      legacyBuild.filter = buildData.filter;
+      legacyBuild.indexRedirect = buildData.indexRedirect;
+      legacyBuild.nodeImageVersion = buildData.nodeImageVersion;
+      legacyBuild.workingDir = buildData.workingDir;
+      legacyBuild.yarnBuildCustomCommand = buildData.yarnBuildCustomCommand;
+      legacyBuild.outputPath = buildData.outputPath;
+      legacyBuild.zipFilename = buildData.zipFilename;
+      legacyBuild.customEnv = buildData.customEnv;
+      legacyBuild.srcId = buildData.source.id;
+      legacyBuild.docId = doc.id;
+      legacyBuild.resources = buildData.resources.map((rs: Resource) => {
+        return {
+          sourceFolder: rs.sourceFolder,
+          targetFolder: rs.targetFolder,
+          srcId: rs.source.id,
+        };
+      });
     }
+    legacyBuilds.push(legacyBuild);
   }
-  return {
-    status: 200,
-    body: legacyBuilds,
-  };
+  return legacyBuilds;
 }
 
-export async function getLegacySourceConfigs(res: Response) {
-  const { status, body } = await findAllEntities(Source.name);
+function getLegacySourceConfigs(
+  dbEntities: ObjectLiteral[]
+): legacySourceConfig[] {
   const legacySources = [];
-  if (status === 200) {
-    for (const src of body) {
-      const legacySource = new legacySourceConfig();
-      legacySource.id = src.id;
-      legacySource.title = src.name;
-      legacySource.gitUrl = src.gitUrl;
-      legacySource.branch = src.gitBranch;
-      legacySources.push(legacySource);
-    }
+  for (const src of dbEntities) {
+    const legacySource = new legacySourceConfig();
+    legacySource.id = src.id;
+    legacySource.title = src.name;
+    legacySource.gitUrl = src.gitUrl;
+    legacySource.branch = src.gitBranch;
+    legacySources.push(legacySource);
   }
-  return {
-    status: 200,
-    body: legacySources,
-  };
+  return legacySources;
 }
 
 export function readLocalDocConfigs(dirPath: string): legacyDocConfig[] {
@@ -264,7 +291,31 @@ function getRelativePagePath(absPagePath: string): string {
   return absPagePath.split('pages/')[1] || '/';
 }
 
-export async function putPageConfigsInDatabase() {
+export async function putConfigsInDatabase(req: Request): Promise<ApiResponse> {
+  const { configType } = req.params;
+  if (!['doc', 'source', 'page'].includes(configType)) {
+    return {
+      status: 400,
+      body: {
+        message:
+          'Incorrect configType parameter. Use "doc", "source", "page". For example: /entity/legacy/doc',
+      },
+    };
+  }
+  if (configType === 'doc') {
+    return await putDocConfigsInDatabase();
+  } else if (configType === 'source') {
+    return await putSourceConfigsInDatabase();
+  } else if (configType === 'page') {
+    return await putPageConfigsInDatabase();
+  }
+  return {
+    status: 500,
+    body: { message: 'Operation failed: cannot put configs in the database' },
+  };
+}
+
+async function putPageConfigsInDatabase(): Promise<ApiResponse> {
   try {
     const isDevMode = runningInDevMode();
     let localLandingPagesConfigDir: string;
@@ -320,11 +371,11 @@ export async function putPageConfigsInDatabase() {
       if (legacySearchFilters) {
         dbPageConfig.searchFilters = legacySearchFilters;
       }
-      const result = await createOrUpdateEntity(Page.name, dbPageConfig);
-      if (result.status === 200) {
-        dbPageConfigs.push(result.body);
+      const result = await saveEntity(Page.name, dbPageConfig);
+      if (result) {
+        dbPageConfigs.push(result);
       } else {
-        failedDbPageConfigs.push(result.body);
+        failedDbPageConfigs.push(result);
       }
     }
     if (failedDbPageConfigs.length > 0) {
@@ -351,10 +402,7 @@ export async function putPageConfigsInDatabase() {
   }
 }
 
-export async function putSourceConfigsInDatabase(): Promise<{
-  status: number;
-  body: any;
-}> {
+async function putSourceConfigsInDatabase(): Promise<ApiResponse> {
   try {
     const isDevMode = runningInDevMode();
     let localSourcesConfigDir: string;
@@ -389,11 +437,11 @@ export async function putSourceConfigsInDatabase(): Promise<{
       dbSource.gitUrl = source.gitUrl;
       dbSource.gitBranch = source.branch;
 
-      const result = await createOrUpdateEntity(Source.name, dbSource);
-      if (result.status === 200) {
-        dbSourceConfigs.push(result.body);
+      const result = await saveEntity(Source.name, dbSource);
+      if (result) {
+        dbSourceConfigs.push(result);
       } else {
-        failedDbSourceConfigs.push(result.body);
+        failedDbSourceConfigs.push(result);
       }
     }
     if (failedDbSourceConfigs.length > 0) {
@@ -414,7 +462,7 @@ export async function putSourceConfigsInDatabase(): Promise<{
     return {
       status: 500,
       body: {
-        message: `Cannot put source config in DB: ${(err as Error).message}`,
+        message: `Cannot put source config in DB: ${err}`,
       },
     };
   }
@@ -427,22 +475,22 @@ async function getOrCreateEntities(
 ) {
   const items = [];
   for (const i of legacyItems) {
-    const { status, body } = await findEntity(
+    const findEntityResult = await findEntity(
       repoName,
       {
         [mainKey]: i,
       },
       false
     );
-    if (status === 404) {
-      const { status, body } = await createOrUpdateEntity(repoName, {
+    if (!findEntityResult) {
+      const saveEntityResult = await saveEntity(repoName, {
         [mainKey]: i,
       });
-      if (status === 200) {
-        items.push(body);
+      if (saveEntityResult) {
+        items.push(saveEntityResult);
       }
-    } else if (status === 200) {
-      items.push(body);
+    } else if (findEntityResult) {
+      items.push(findEntityResult);
     }
   }
   return items;
@@ -457,12 +505,14 @@ async function createProductEntities(
 ): Promise<Product[]> {
   const dbDocProducts = [];
   for (const productConfig of productConfigs) {
-    const productEntitySaveResult = await createOrUpdateEntity(Product.name, {
+    const productEntitySaveResult = await saveEntity(Product.name, {
       name: productConfig.productName,
       platform: productConfig.platformName,
       version: productConfig.versionName,
     });
-    dbDocProducts.push(productEntitySaveResult.body);
+    if (productEntitySaveResult) {
+      dbDocProducts.push(productEntitySaveResult as Product);
+    }
   }
   return dbDocProducts;
 }
@@ -483,7 +533,7 @@ async function addDocBuild(buildConfig: legacyBuildConfig) {
   docBuild.type = Array.isArray(t) ? t[1] : BuildType.DITA;
   docBuild.root = buildConfig.root;
   docBuild.filter = buildConfig.filter;
-  docBuild.source = matchingBuildSrc.body;
+  docBuild.source = matchingBuildSrc?.body;
   docBuild.indexRedirect = buildConfig.indexRedirect;
   docBuild.nodeImageVersion = buildConfig.nodeImageVersion;
   docBuild.workingDir = buildConfig.workingDir;
@@ -504,25 +554,21 @@ async function addDocBuild(buildConfig: legacyBuildConfig) {
         { id: resource.srcId },
         false
       );
-      docBuildResource.source = sourceEntity.body;
-      const docBuildResourceSaveResult = await createOrUpdateEntity(
+      docBuildResource.source = sourceEntity?.body;
+      const docBuildResourceSaveResult = await saveEntity(
         Resource.name,
         docBuildResource
       );
-      if (docBuildResourceSaveResult.status === 200) {
-        docBuildResources.push(docBuildResourceSaveResult.body);
+      if (docBuildResourceSaveResult) {
+        docBuildResources.push(docBuildResourceSaveResult as Resource);
       }
       docBuild.resources = docBuildResources;
     }
   }
-  const saveResult = await createOrUpdateEntity(Build.name, docBuild);
-  return saveResult.body;
+  return await saveEntity(Build.name, docBuild);
 }
 
-export async function putDocConfigsInDatabase(): Promise<{
-  status: number;
-  body: any;
-}> {
+async function putDocConfigsInDatabase(): Promise<ApiResponse> {
   try {
     const isDevMode = runningInDevMode();
     let localDocsConfigDir: string;
@@ -582,31 +628,29 @@ export async function putDocConfigsInDatabase(): Promise<{
       dbDoc.indexForSearch = doc.indexForSearch;
 
       // Find releases and create if needed
-      let docReleases = [];
       const legacyDocReleases = doc.metadata.release;
       if (legacyDocReleases) {
-        docReleases = await getOrCreateEntities(
+        const docReleases = (await getOrCreateEntities(
           legacyDocReleases,
           Release.name,
           'name'
-        );
-      }
-      if (docReleases.length > 0) {
-        dbDoc.releases = docReleases;
+        )) as Release[];
+        if (docReleases.length > 0) {
+          dbDoc.releases = docReleases;
+        }
       }
 
       // Find subjects and create if needed
-      let docSubjects = [];
       const legacyDocSubjects = doc.metadata.subject;
       if (legacyDocSubjects) {
-        docSubjects = await getOrCreateEntities(
+        const docSubjects = (await getOrCreateEntities(
           legacyDocSubjects,
           Subject.name,
           'name'
-        );
-      }
-      if (docSubjects.length > 0) {
-        dbDoc.subjects = docSubjects;
+        )) as Subject[];
+        if (docSubjects.length > 0) {
+          dbDoc.subjects = docSubjects;
+        }
       }
 
       // Find products and create if needed
@@ -629,14 +673,14 @@ export async function putDocConfigsInDatabase(): Promise<{
 
       const matchingBuild = localBuildsConfig.find((b) => b.docId === doc.id);
       if (matchingBuild) {
-        dbDoc.build = await addDocBuild(matchingBuild);
+        dbDoc.build = (await addDocBuild(matchingBuild)) as Build;
       }
 
-      const result = await createOrUpdateEntity(Doc.name, dbDoc);
-      if (result.status === 200) {
-        dbDocConfigs.push(result.body);
+      const saveEntityResult = await saveEntity(Doc.name, dbDoc);
+      if (saveEntityResult) {
+        dbDocConfigs.push(saveEntityResult);
       } else {
-        failedDbDocConfigs.push(result.body);
+        failedDbDocConfigs.push(saveEntityResult);
       }
     }
     if (failedDbDocConfigs.length > 0) {
@@ -657,7 +701,7 @@ export async function putDocConfigsInDatabase(): Promise<{
     return {
       status: 500,
       body: {
-        message: `Cannot put doc config in DB: ${(err as Error).message}`,
+        message: `Cannot put doc config in DB: ${err}`,
       },
     };
   }

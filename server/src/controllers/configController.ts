@@ -5,7 +5,11 @@ import { AppDataSource } from '../model/connection';
 import { Doc } from '../model/entity/Doc';
 import { Product } from '../model/entity/Product';
 import { Release } from '../model/entity/Release';
-import { FindOneAndDeleteOptions, FindOptionsWhere } from 'typeorm';
+import {
+  FindOneAndDeleteOptions,
+  FindOptionsWhere,
+  ObjectLiteral,
+} from 'typeorm';
 import { ApiResponse } from '../types/apiResponse';
 import { Page } from '../model/entity/Page';
 import { isUserAllowedToAccessResource } from './authController';
@@ -53,76 +57,28 @@ export async function getDocByUrl(url: string): Promise<Doc | null> {
     .getOne();
 }
 
-// FIXME: Change this function to return the found entity or null
-//  ApiResponse is returned in functions used directly by routes
 export async function findEntity(
   repoName: string,
   options: FindOptionsWhere<any>,
   loadRelations: boolean = true
-): Promise<ApiResponse> {
-  try {
-    if (!optionsAreValid(options)) {
-      return {
-        status: 400,
-        body: {
-          message: 'Invalid request. Provide query parameters in the URL.',
-        },
-      };
-    }
-    let result;
-    if (loadRelations) {
-      result = await AppDataSource.manager.findOneBy(repoName, options);
-    } else {
-      result = await AppDataSource.getRepository(repoName)
-        .createQueryBuilder(repoName)
-        .where(options)
-        .getOne();
-    }
-    if (!result) {
-      return {
-        status: 404,
-        body: {
-          message: `Did not find an entity in ${repoName} for the following query: ${JSON.stringify(
-            options
-          )}`,
-        },
-      };
-    }
-    return {
-      status: 200,
-      body: result,
-    };
-  } catch (err) {
-    return {
-      status: 500,
-      body: { message: `Operation failed: ${err}` },
-    };
+): Promise<ObjectLiteral | null> {
+  if (loadRelations) {
+    return await AppDataSource.manager.findOneBy(repoName, options);
   }
+  return await AppDataSource.getRepository(repoName)
+    .createQueryBuilder(repoName)
+    .where(options)
+    .getOne();
 }
 
-// FIXME: Change this function to return the found entity or null
-//  ApiResponse is returned in functions used directly by routes
-export async function findAllEntities(repoName: string): Promise<ApiResponse> {
-  try {
-    const result = await AppDataSource.manager.find(repoName);
-    if (!result) {
-      return {
-        status: 404,
-        body: {
-          message: `Did not find entities in ${repoName}`,
-        },
-      };
-    }
-    return {
-      status: 200,
-      body: result,
-    };
-  } catch (err) {
-    return {
-      status: 500,
-      body: { message: `Operation failed: ${err}` },
-    };
-  }
+export async function findAllEntities(
+  repoName: string
+): Promise<ObjectLiteral[] | null> {
+  return await AppDataSource.manager.find(repoName);
+}
+
+export async function saveEntity(repoName: string, options: {}) {
+  return await AppDataSource.manager.save(repoName, options);
 }
 
 export async function getBreadcrumbs(
@@ -168,13 +124,13 @@ export async function getBreadcrumbs(
         { path: breadcrumb.path },
         false
       );
-      if (findPageResult.status === 200) {
+      if (findPageResult) {
         const isUserAllowedToAccessResourceResult =
           isUserAllowedToAccessResource(
             res,
-            findPageResult.body.public,
-            findPageResult.body.internal,
-            findPageResult.body.isInProduction
+            findPageResult.public,
+            findPageResult.internal,
+            findPageResult.isInProduction
           );
         if (isUserAllowedToAccessResourceResult.status === 200) {
           validBreadcrumbs.push(breadcrumb);
@@ -198,31 +154,65 @@ export async function getEntity(
   res: Response
 ): Promise<ApiResponse> {
   const { repo } = req.params;
-  const options = req.query;
-  const findEntityResult = await findEntity(repo, options);
-  if (findEntityResult.status === 200) {
+  const options: FindOptionsWhere<any> = req.query;
+  if (!optionsAreValid(options)) {
+    return {
+      status: 400,
+      body: {
+        message: 'Invalid request. Provide query parameters in the URL.',
+      },
+    };
+  }
+  try {
+    const findEntityResult = await findEntity(repo, options);
+    if (!findEntityResult) {
+      return {
+        status: 404,
+        body: {
+          message: `Did not find an entity in ${repo} for the following query: ${JSON.stringify(
+            options
+          )}`,
+        },
+      };
+    }
     const isUserAllowedToAccessResourceResult = isUserAllowedToAccessResource(
       res,
-      findEntityResult.body.public,
-      findEntityResult.body.internal,
-      findEntityResult.body.isInProduction
+      findEntityResult.public,
+      findEntityResult.internal,
+      findEntityResult.isInProduction
     );
     if (isUserAllowedToAccessResourceResult.status === 200) {
-      return findEntityResult;
+      return {
+        status: 200,
+        body: findEntityResult,
+      };
     }
     return isUserAllowedToAccessResourceResult;
+  } catch (err) {
+    return {
+      status: 500,
+      body: { message: `Operation failed: ${err}` },
+    };
   }
-  return findEntityResult;
 }
 
 export async function getAllEntities(
-  repoName: string,
+  req: Request,
   res: Response
 ): Promise<ApiResponse> {
-  const findAllEntitiesResult = await findAllEntities(repoName);
-  if (findAllEntitiesResult.status === 200) {
+  try {
+    const { repo } = req.params;
+    const findAllEntitiesResult = await findAllEntities(repo);
+    if (!findAllEntitiesResult) {
+      return {
+        status: 404,
+        body: {
+          message: `Did not find entities in ${repo}`,
+        },
+      };
+    }
     const availableEntities = [];
-    for (const entity of findAllEntitiesResult.body) {
+    for (const entity of findAllEntitiesResult) {
       const isUserAllowedToAccessResourceResult = isUserAllowedToAccessResource(
         res,
         entity.public,
@@ -234,19 +224,21 @@ export async function getAllEntities(
       }
     }
     return {
-      status: findAllEntitiesResult.status,
+      status: 200,
       body: availableEntities,
     };
+  } catch (err) {
+    return {
+      status: 500,
+      body: { message: `Operation failed: ${err}` },
+    };
   }
-  return findAllEntitiesResult;
 }
 
-// FIXME: Get params from the req inside this function
-export async function createOrUpdateEntity(
-  repoName: string,
-  options: {}
-): Promise<ApiResponse> {
+export async function createOrUpdateEntity(req: Request): Promise<ApiResponse> {
   try {
+    const { repo } = req.params;
+    const options = req.body;
     if (!optionsAreValid(options)) {
       return {
         status: 400,
@@ -255,7 +247,7 @@ export async function createOrUpdateEntity(
         },
       };
     }
-    const result = await AppDataSource.manager.save(repoName, options);
+    const result = await saveEntity(repo, options);
     return {
       status: 200,
       body: result,
@@ -268,12 +260,10 @@ export async function createOrUpdateEntity(
   }
 }
 
-//FIXME: Get params from the req inside the function
-export async function deleteEntity(
-  repoName: string,
-  options: FindOneAndDeleteOptions
-): Promise<ApiResponse> {
+export async function deleteEntity(req: Request): Promise<ApiResponse> {
   try {
+    const { repo } = req.params;
+    const options: FindOneAndDeleteOptions = req.body;
     if (!optionsAreValid(options)) {
       return {
         status: 400,
@@ -282,7 +272,7 @@ export async function deleteEntity(
         },
       };
     }
-    const result = await AppDataSource.manager.delete(repoName, options);
+    const result = await AppDataSource.manager.delete(repo, options);
     return {
       status: 200,
       body: result,
@@ -314,8 +304,8 @@ export async function getDocumentMetadataById(
       };
     }
     const findEntityResult = await findEntity(Doc.name, { id: id });
-    if (findEntityResult.status === 200) {
-      const docInfo = findEntityResult.body;
+    if (findEntityResult) {
+      const docInfo = findEntityResult;
       const isUserAllowedToAccessResourceResult = isUserAllowedToAccessResource(
         res,
         docInfo.public,
@@ -348,7 +338,10 @@ export async function getDocumentMetadataById(
       }
       return isUserAllowedToAccessResourceResult;
     }
-    return findEntityResult;
+    return {
+      status: 404,
+      body: { message: `Cannot find the document with ID: ${id}` },
+    };
   } catch (err) {
     return {
       status: 500,

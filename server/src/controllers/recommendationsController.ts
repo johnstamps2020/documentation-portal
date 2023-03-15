@@ -64,14 +64,13 @@ export async function getTopicRecommendations(
           },
           false
         );
-        if (findTopicRecommendationResult.status === 200) {
-          const docInfo = findTopicRecommendationResult.body;
+        if (findTopicRecommendationResult) {
           const isUserAllowedToAccessResourceResult =
             isUserAllowedToAccessResource(
               res,
-              docInfo.public,
-              docInfo.internal,
-              docInfo.isInProduction
+              findTopicRecommendationResult.public,
+              findTopicRecommendationResult.internal,
+              findTopicRecommendationResult.isInProduction
             );
           if (isUserAllowedToAccessResourceResult.status === 200) {
             availableRecommendations.push(topicRecommendation);
