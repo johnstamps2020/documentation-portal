@@ -48,20 +48,17 @@ router.get('/entity/:repo/all', async function (req, res) {
 });
 
 router.get('/entity/doc/metadata', async function (req, res) {
-  const { id } = req.query;
-  const { status, body } = await getDocumentMetadataById(id as string);
+  const { status, body } = await getDocumentMetadataById(req, res);
   return res.status(status).json(body);
 });
 
 router.get('/entity/doc/id', async function (req, res) {
-  const { url } = req.query;
-  const { status, body } = await getDocIdByUrl(url as string);
+  const { status, body } = await getDocIdByUrl(req, res);
   return res.status(status).json(body);
 });
 
 router.get('/entity/page/breadcrumbs', async function (req, res) {
-  const { path } = req.query;
-  const { status, body } = await getBreadcrumbs(path as string);
+  const { status, body } = await getBreadcrumbs(req, res);
   return res.status(status).json(body);
 });
 

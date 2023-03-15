@@ -5,15 +5,11 @@ import { AppDataSource } from '../model/connection';
 import { Doc } from '../model/entity/Doc';
 import { Product } from '../model/entity/Product';
 import { Release } from '../model/entity/Release';
-import { FindOneAndDeleteOptions, FindOptionsWhere, ILike } from 'typeorm';
+import { FindOneAndDeleteOptions, FindOptionsWhere } from 'typeorm';
 import { ApiResponse } from '../types/apiResponse';
 import { Page } from '../model/entity/Page';
 import { isUserAllowedToAccessResource } from './authController';
-import {
-  LegacyVersionObject,
-  LegacyVersionSelector,
-} from '../types/legacyConfig';
-import { Entity } from 'typeorm';
+import { LegacyVersionObject } from '../types/legacyConfig';
 
 function optionsAreValid(options: {}) {
   return (
@@ -21,32 +17,22 @@ function optionsAreValid(options: {}) {
   );
 }
 
-async function pageExists(pagePath: string) {
-  return (await AppDataSource.manager.countBy(Page, { path: pagePath })) === 1;
-}
-
-export async function getPage(reqObj: Request) {
-  const landingPage = await findEntity(Page.name, {
-    path: reqObj.path.replace(/^(\/)(.+)/g, '$2'),
-  });
-  if (landingPage.status === 200) {
-    return landingPage;
-  }
-  if (landingPage.status === 404) {
-    const resourcePath = await findEntity(Page.name, {
-      component: ILike('%resource%'),
-      path: reqObj.path.split('/')[1],
-    });
-    if (resourcePath.status === 200) {
-      return resourcePath;
-    }
-  }
-  return null;
-}
-
-export async function getBreadcrumbs(pagePath: string): Promise<ApiResponse> {
+export async function getBreadcrumbs(
+  req: Request,
+  res: Response
+): Promise<ApiResponse> {
   try {
-    const routes = pagePath.split('/').filter((v) => v.length > 0);
+    const { path } = req.query;
+    if (!path) {
+      return {
+        status: 400,
+        body: {
+          message:
+            'Invalid request. Provide the "path" query parameter to get breadcrumbs.',
+        },
+      };
+    }
+    const routes = (path as string).split('/').filter((v) => v.length > 0);
     const breadcrumbs = [];
     let startPath = '';
     for (const route of routes) {
@@ -69,8 +55,22 @@ export async function getBreadcrumbs(pagePath: string): Promise<ApiResponse> {
     }
     const validBreadcrumbs = [];
     for (const breadcrumb of breadcrumbs.slice(1, -1)) {
-      if (await pageExists(breadcrumb.path)) {
-        validBreadcrumbs.push(breadcrumb);
+      const findPageResult = await findEntity(
+        Page.name,
+        { path: breadcrumb.path },
+        false
+      );
+      if (findPageResult.status === 200) {
+        const isUserAllowedToAccessResourceResult =
+          isUserAllowedToAccessResource(
+            res,
+            findPageResult.body.public,
+            findPageResult.body.internal,
+            findPageResult.body.isInProduction
+          );
+        if (isUserAllowedToAccessResourceResult.status === 200) {
+          validBreadcrumbs.push(breadcrumb);
+        }
       }
     }
     return {
@@ -83,15 +83,6 @@ export async function getBreadcrumbs(pagePath: string): Promise<ApiResponse> {
       body: { message: `Operation failed: ${err}` },
     };
   }
-}
-
-function getItemProps(itemName: string, primaryKeyName: string) {
-  return [
-    `${itemName}.${primaryKeyName}`,
-    `${itemName}.internal`,
-    `${itemName}.public`,
-    `${itemName}.earlyAccess`,
-  ];
 }
 
 export async function getEntity(reqObj: Request, resObj: Response) {
@@ -277,47 +268,57 @@ function wrapInQuotes(stringsToWrap: Array<string> | string | undefined) {
   }
 }
 
-export async function getDocumentMetadataById(docId: string) {
+export async function getDocumentMetadataById(req: Request, res: Response) {
   // Filter values are passed around as strings that use commas to separate values. To avoid issues with splitting,
   // values that contain commas must be wrapped in quotes.
   // Filter values are parsed by the getFiltersFromUrl function in searchController.js.
   try {
-    if (!docId) {
+    const { id } = req.query;
+    if (!id) {
       return {
         status: 400,
         body: {
           message:
-            'Invalid request. Provide the docId param to get doc metadata.',
+            'Invalid request. Provide the "id" query parameter to get doc metadata.',
         },
       };
     }
-    const getEntityResponse = await findEntity(Doc.name, { id: docId });
-    if (getEntityResponse.status === 200) {
-      const docInfo = getEntityResponse.body;
-      return {
-        status: 200,
-        body: {
-          docTitle: wrapInQuotes(docInfo.title),
-          docInternal: docInfo.internal,
-          docEarlyAccess: docInfo.earlyAccess,
-          docProducts: wrapInQuotes(
-            docInfo.products.map((p: Product) => p.name)
-          ),
-          docVersions: wrapInQuotes(
-            docInfo.products.map((p: Product) => p.version)
-          ),
-          docPlatforms: wrapInQuotes(
-            docInfo.products.map((p: Product) => p.platform)
-          ),
-          docReleases: wrapInQuotes(
-            docInfo.releases.map((r: Release) => r.name)
-          ),
-          docSubjects: wrapInQuotes(docInfo.sections),
-          docCategories: wrapInQuotes(docInfo.categories),
-        },
-      };
+    const findEntityResult = await findEntity(Doc.name, { id: id });
+    if (findEntityResult.status === 200) {
+      const docInfo = findEntityResult.body;
+      const isUserAllowedToAccessResourceResult = isUserAllowedToAccessResource(
+        res,
+        docInfo.public,
+        docInfo.internal,
+        docInfo.isInProduction
+      );
+      if (isUserAllowedToAccessResourceResult.status === 200) {
+        return {
+          status: 200,
+          body: {
+            docTitle: wrapInQuotes(docInfo.title),
+            docInternal: docInfo.internal,
+            docEarlyAccess: docInfo.earlyAccess,
+            docProducts: wrapInQuotes(
+              docInfo.products.map((p: Product) => p.name)
+            ),
+            docVersions: wrapInQuotes(
+              docInfo.products.map((p: Product) => p.version)
+            ),
+            docPlatforms: wrapInQuotes(
+              docInfo.products.map((p: Product) => p.platform)
+            ),
+            docReleases: wrapInQuotes(
+              docInfo.releases.map((r: Release) => r.name)
+            ),
+            docSubjects: wrapInQuotes(docInfo.sections),
+            docCategories: wrapInQuotes(docInfo.categories),
+          },
+        };
+      }
+      return isUserAllowedToAccessResourceResult;
     }
-    return getEntityResponse;
+    return findEntityResult;
   } catch (err) {
     return {
       status: 500,
@@ -331,25 +332,50 @@ export async function getDocByUrl(url: string) {
   return await AppDataSource.getRepository(Doc)
     .createQueryBuilder('doc')
     .useIndex('docUrl-idx')
-    .select(['doc.url', 'doc.id', 'doc.public', 'doc.internal'])
+    .select([
+      'doc.url',
+      'doc.id',
+      'doc.public',
+      'doc.internal',
+      'doc.isInProduction',
+    ])
     .where(":urlToCheck LIKE concat(doc.url, '%')", { urlToCheck: urlToCheck })
     .getOne();
 }
 
-export async function getDocIdByUrl(url: string) {
-  const doc = await getDocByUrl(url);
+export async function getDocIdByUrl(req: Request, res: Response) {
+  const { url } = req.query;
+  if (!url) {
+    return {
+      status: 400,
+      body: {
+        message:
+          'Invalid request. Provide the "url" query parameter to get a version selector',
+      },
+    };
+  }
+  const doc = await getDocByUrl(url as string);
   if (!doc) {
     return {
       status: 404,
       body: {
-        message: `Doc ID matching the ${url} url was not found.`,
+        message: `Doc ID for the ${url} url was not found.`,
       },
     };
   }
-  return {
-    status: 200,
-    body: { docId: doc.id },
-  };
+  const isUserAllowedToAccessResourceResult = isUserAllowedToAccessResource(
+    res,
+    doc.public,
+    doc.internal,
+    doc.isInProduction
+  );
+  if (isUserAllowedToAccessResourceResult.status === 200) {
+    return {
+      status: 200,
+      body: { docId: doc.id },
+    };
+  }
+  return isUserAllowedToAccessResourceResult;
 }
 
 // TODO: Change this function to work with the database. It's used in docs to inject the root breadcrumb.
