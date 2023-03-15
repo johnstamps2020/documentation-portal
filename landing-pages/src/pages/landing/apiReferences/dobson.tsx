@@ -13,6 +13,33 @@ const pageConfig: CategoryLayoutProps = {
       sm: `url(${dobsonBackgroundImage})`,
     },
   },
+  selector: {
+    label: 'Select release',
+    selectedItemLabel: 'Dobson',
+    items: [
+      {
+        label: 'Banff',
+        pagePath: 'apiReferences/banff',
+      },
+      {
+        label: 'Cortina',
+        pagePath: 'apiReferences/cortina',
+      },
+      {
+        label: 'Dobson',
+        pagePath: 'apiReferences/dobson',
+      },
+      {
+        label: 'Elysian',
+        pagePath: 'apiReferences/elysian',
+      },
+      {
+        label: 'Flaine',
+        pagePath: 'apiReferences/flaine',
+      },
+    ],
+    labelColor: 'white',
+  },
 
   cards: [
     {
@@ -25,32 +52,6 @@ const pageConfig: CategoryLayoutProps = {
       label: 'PolicyCenter API Reference',
     },
   ],
-
-  sidebar: {
-    label: 'Implementation Resources',
-    items: [
-      {
-        label: 'API References',
-        pagePath: 'apiReferences',
-      },
-      {
-        label: 'Community Case Templates',
-        docId: 'cloudtickettemplates',
-      },
-      {
-        label: 'Product Adoption',
-        docId: 'surepathmethodologymain',
-      },
-      {
-        label: 'Cloud Standards',
-        docId: 'standardslatest',
-      },
-      {
-        label: 'Upgrade Diff Reports',
-        pagePath: 'upgradediffs',
-      },
-    ],
-  },
 };
 
 export default function Dobson() {

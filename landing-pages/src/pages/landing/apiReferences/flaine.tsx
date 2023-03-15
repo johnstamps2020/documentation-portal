@@ -16,6 +16,33 @@ const pageConfig: CategoryLayoutProps = {
        linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
     },
   },
+  selector: {
+    label: 'Select release',
+    selectedItemLabel: 'Flaine',
+    items: [
+      {
+        label: 'Banff',
+        pagePath: 'apiReferences/banff',
+      },
+      {
+        label: 'Cortina',
+        pagePath: 'apiReferences/cortina',
+      },
+      {
+        label: 'Dobson',
+        pagePath: 'apiReferences/dobson',
+      },
+      {
+        label: 'Elysian',
+        pagePath: 'apiReferences/elysian',
+      },
+      {
+        label: 'Flaine',
+        pagePath: 'apiReferences/flaine',
+      },
+    ],
+    labelColor: 'white',
+  },
 
   cards: [
     {
@@ -122,32 +149,6 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
   ],
-
-  sidebar: {
-    label: 'Implementation Resources',
-    items: [
-      {
-        label: 'Community Case Templates',
-        docId: 'cloudtickettemplates',
-      },
-      {
-        label: 'Product Adoption',
-        docId: 'surepathmethodologymain',
-      },
-      {
-        label: 'Cloud Standards',
-        docId: 'standardslatest',
-      },
-      {
-        label: 'Upgrade Diff Reports',
-        pagePath: 'upgradediffs',
-      },
-      {
-        label: 'Internal docs',
-        docId: 'internaldocslatest',
-      },
-    ],
-  },
 };
 
 export default function Flaine() {

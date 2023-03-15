@@ -65,7 +65,7 @@ function getSelector(
   targetFile: string,
   labelColor: string = 'white'
 ): LandingPageSelectorProps | undefined {
-  if (getIsRelease(flailConfig)) {
+  if (getIsRelease(targetFile)) {
     return undefined;
   }
 
@@ -355,26 +355,12 @@ function mapToCategory2Layout(
   }`;
 }
 
-function getIsRelease(flailConfig: FlailConfig): boolean {
-  const { level1Class } = getFlailClass(flailConfig);
+function getIsRelease(targetFile: string): boolean {
+  if (targetFile.match(/landing\/cloudProducts\/[a-z]+.tsx$/)) {
+    return true;
+  }
 
-  let result = false;
-  [
-    'aspen',
-    'banff',
-    'cortina',
-    'dobson',
-    'elysian',
-    'flaine',
-    'garmisch',
-  ].forEach((value) => {
-    if (level1Class.match(value)) {
-      result = true;
-      return;
-    }
-  });
-
-  return result;
+  return false;
 }
 
 function mapToCategoryLayout(
@@ -394,7 +380,7 @@ function mapToCategoryLayout(
     ),
   }));
   const isSelfManaged = flailConfig.title === 'Self-managed';
-  const isRelease = getIsRelease(flailConfig);
+  const isRelease = getIsRelease(targetFile);
   const selector = getSelector(flailConfig, targetFile);
   return `{
     backgroundProps: ${backgroundPropValue},
