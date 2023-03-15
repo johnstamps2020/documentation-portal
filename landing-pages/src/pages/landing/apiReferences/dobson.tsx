@@ -13,33 +13,6 @@ const pageConfig: CategoryLayoutProps = {
       sm: `url(${dobsonBackgroundImage})`,
     },
   },
-  selector: {
-    label: 'Select release',
-    selectedItemLabel: 'Dobson',
-    items: [
-      {
-        label: 'Dobson',
-        pagePath: '',
-      },
-      {
-        label: 'Flaine',
-        pagePath: 'apiReferences/flaine',
-      },
-      {
-        label: 'Elysian',
-        pagePath: 'apiReferences/elysian',
-      },
-      {
-        label: 'Cortina',
-        pagePath: 'apiReferences/cortina',
-      },
-      {
-        label: 'Banff',
-        pagePath: 'apiReferences/banff',
-      },
-    ],
-    labelColor: 'white',
-  },
 
   cards: [
     {

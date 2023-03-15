@@ -13,33 +13,6 @@ const pageConfig: CategoryLayoutProps = {
       sm: `url(${elysianBackgroundImage})`,
     },
   },
-  selector: {
-    label: 'Select release',
-    selectedItemLabel: 'Elysian',
-    items: [
-      {
-        label: 'Elysian',
-        pagePath: '',
-      },
-      {
-        label: 'Flaine',
-        pagePath: 'apiReferences/flaine',
-      },
-      {
-        label: 'Dobson',
-        pagePath: 'apiReferences/dobson',
-      },
-      {
-        label: 'Cortina',
-        pagePath: 'apiReferences/cortina',
-      },
-      {
-        label: 'Banff',
-        pagePath: 'apiReferences/banff',
-      },
-    ],
-    labelColor: 'white',
-  },
 
   cards: [
     {

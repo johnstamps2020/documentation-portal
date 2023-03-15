@@ -367,15 +367,12 @@ function mapToCategoryLayout(
   }));
   const isSelfManaged = flailConfig.title === 'Self-managed';
   const isRelease = getIsRelease(flailConfig);
+  const selector = getSelector(flailConfig, targetFile);
   return `{
     backgroundProps: ${backgroundPropValue},
     ${
-      !isSelfManaged
-        ? `selector: ${JSON.stringify(
-            getSelector(flailConfig, targetFile),
-            null,
-            2
-          )},`
+      !isSelfManaged && selector
+        ? `selector: ${JSON.stringify(selector, null, 2)},`
         : ''
     }
     ${
@@ -418,6 +415,10 @@ function getSelector(
   targetFile: string,
   labelColor: string = 'white'
 ): LandingPageSelectorProps | undefined {
+  if (getIsRelease(flailConfig)) {
+    return undefined;
+  }
+
   const flailSelector = flailConfig.selector;
 
   const selectorItems = getItems(flailSelector?.items, targetFile);

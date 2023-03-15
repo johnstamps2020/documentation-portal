@@ -9,7 +9,6 @@ const pageConfig: CategoryLayoutProps = {
     ...baseBackgroundProps,
     backgroundImage: `url(${gradientBackgroundImage})`,
   },
-  selector: undefined,
 
   cards: [
     {
