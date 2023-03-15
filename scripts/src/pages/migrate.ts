@@ -457,7 +457,7 @@ type ClassMap = {
   remapFunction: (flailConfig: FlailConfig, targetFile: string) => string;
 };
 
-function getClassMap(flailConfig: FlailConfig): ClassMap {
+function getClassMap(flailConfig: FlailConfig, targetFile: string): ClassMap {
   const { level1Class, level2Class } = getFlailClass(flailConfig);
 
   const category2: ClassMap = {
@@ -488,14 +488,19 @@ function getClassMap(flailConfig: FlailConfig): ClassMap {
     remapFunction: mapToSectionLayout,
   };
 
+  const isRelease = getIsRelease(targetFile);
+
   if (
-    level1Class.match('skiRelease') &&
+    isRelease &&
     (level1Class.match('garmisch') || level1Class.match('flaine'))
   ) {
     return category2;
   }
 
-  if (level1Class.match('elysian') || level1Class.match('dobson')) {
+  if (
+    isRelease &&
+    (level1Class.match('elysian') || level1Class.match('dobson'))
+  ) {
     return category;
   }
 
@@ -534,8 +539,10 @@ function createComponentTemplate(
   flailConfig: FlailConfig,
   targetFile: string
 ): string {
-  const { componentName, layoutProps, from, remapFunction } =
-    getClassMap(flailConfig);
+  const { componentName, layoutProps, from, remapFunction } = getClassMap(
+    flailConfig,
+    targetFile
+  );
   const pageConfig = remapFunction(flailConfig, targetFile);
   const pageComponentName = getComponentName(targetFile);
   const { backGroundImports } = getBackgroundProps(flailConfig);
