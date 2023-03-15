@@ -3613,6 +3613,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/harmon@npm:^1.4.1":
+  version: 1.4.1
+  resolution: "@types/harmon@npm:1.4.1"
+  checksum: a8fa3afb395636563197753fb419c4be32bcc11a0f93b763c2133a87daaf93548d7f955333fa00e0a4656caa3d8bcadecd89a8726c8091078a1d859a2d3a238b
+  languageName: node
+  linkType: hard
+
 "@types/html-minifier-terser@npm:^6.0.0":
   version: 6.1.0
   resolution: "@types/html-minifier-terser@npm:6.1.0"
@@ -6802,6 +6809,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "documentation-portal-monorepo@workspace:."
   dependencies:
+    "@types/harmon": ^1.4.1
     concurrently: 7.4.0
     prettier: ^2.8.4
     swr: ^2.0.3
