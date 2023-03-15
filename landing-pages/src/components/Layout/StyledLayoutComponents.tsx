@@ -2,6 +2,7 @@ import Avatar, { AvatarProps } from '@mui/material/Avatar';
 import Divider, { DividerProps } from '@mui/material/Divider';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Link, { LinkProps } from '@mui/material/Link';
+import { Link as RouterLink } from 'react-router-dom';
 import Menu, { MenuProps } from '@mui/material/Menu';
 import { styled } from '@mui/material/styles';
 import Typography, { TypographyProps } from '@mui/material/Typography';
@@ -46,14 +47,45 @@ export const HeaderMenu = (props: MenuProps) => (
   />
 );
 
-export const HeaderMenuLink = styled(Link)<LinkProps>(() => ({
-  textDecoration: 'none',
-  color: 'hsl(196, 100%, 31%)',
-  fontSize: 14,
-  fontWeight: 400,
-  padding: 0,
-  margin: 0,
-}));
+type HeaderMenuLinkProps = LinkProps & {
+  external?: boolean;
+};
+
+export function HeaderMenuLink({
+  children,
+  sx,
+  href,
+  external,
+}: HeaderMenuLinkProps) {
+  const mergedStyles = {
+    ...sx,
+    textDecoration: 'none',
+    color: 'hsl(196, 100%, 31%)',
+    fontSize: 14,
+    fontWeight: 400,
+    padding: 0,
+    margin: 0,
+  };
+
+  if (external || href?.startsWith('http') || !href) {
+    return (
+      <Link
+        href={href}
+        sx={mergedStyles}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <Link sx={mergedStyles} component={RouterLink} to={href}>
+      {children}
+    </Link>
+  );
+}
 
 export const HeaderMenuDivider = styled(Divider)<DividerProps>(() => ({
   border: '1px solid',
