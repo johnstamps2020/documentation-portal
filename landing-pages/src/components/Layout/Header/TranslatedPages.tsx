@@ -16,14 +16,14 @@ export default function TranslatedPages() {
   );
 
   const pages = [
-    { label: 'Deutsch', url: '/l10n/de-DE' },
-    { label: 'Español (España)', url: '/l10n/es-ES' },
-    { label: 'Español', url: '/l10n/es-LA' },
-    { label: 'Français', url: '/l10n/fr-FR' },
-    { label: 'Italiano', url: '/l10n/it-IT' },
-    { label: '日本語', url: '/l10n/ja-JP' },
-    { label: 'Nederlands', url: '/l10n/nl-NL' },
-    { label: 'Português', url: '/l10n/pt-BR' },
+    { label: 'Deutsch', url: '/landing/l10n-new/de-DE' },
+    { label: 'Español (España)', url: '/landing/l10n-new/es-ES' },
+    { label: 'Español', url: '/landing/l10n-new/es-LA' },
+    { label: 'Français', url: '/landing/l10n-new/fr-FR' },
+    { label: 'Italiano', url: '/landing/l10n-new/it-IT' },
+    { label: '日本語', url: '/landing/l10n-new/ja-JP' },
+    { label: 'Nederlands', url: '/landing/l10n-new/nl-NL' },
+    { label: 'Português', url: '/landing/l10n-new/pt-BR' },
   ];
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
