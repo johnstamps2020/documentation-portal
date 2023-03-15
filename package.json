@@ -27,6 +27,7 @@
     "swr": "^2.0.3"
   },
   "devDependencies": {
+    "@types/harmon": "^1.4.1",
     "prettier": "^2.8.4"
   }
 }

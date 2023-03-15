@@ -1,6 +1,7 @@
-const { Router } = require('express');
-const { winstonLogger } = require('../controllers/loggerController');
-const harmon = require('harmon');
+import { Router } from 'express';
+import { winstonLogger } from '../controllers/loggerController';
+import harmon, { Select } from 'harmon';
+
 const {
   tagManagerHeadScript,
   pendoInstallScript,
@@ -8,7 +9,7 @@ const {
   getPendoInitializeScript,
 } = require('../controllers/analyticsController');
 
-function appendToSelectedItem(node, str) {
+function appendToSelectedItem(node: any, str: string) {
   try {
     const readStream = node.createReadStream();
     const writeStream = node.createWriteStream();
@@ -23,7 +24,7 @@ function appendToSelectedItem(node, str) {
   } catch (err) {
     winstonLogger.error(`ERROR overwriting response using Harmon: 
           ERROR: ${JSON.stringify(err)}
-          MESSAGE: ${err.message}`);
+          MESSAGE: ${err}`);
   }
 }
 
@@ -34,7 +35,7 @@ const pendoAndGoogleScripts = `
       <!-- Google tag manager no-script -->
       <noscript>${tagManagerBody}</noscript>`;
 
-const responseSelectors = [
+const responseSelectors: Select[] = [
   {
     query: 'head',
     func: function (node) {
