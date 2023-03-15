@@ -35,7 +35,8 @@ const pageConfig: SectionLayoutProps = {
     items: [
       {
         label: 'Workers Compensation Standards Based Template 2020.11',
-        pagePath: '',
+        pagePath:
+          'cloudProducts/banff/policyCenterCloud/wcStandardsBasedTemplate/2020.11',
       },
       {
         label: 'Businessowners Standards Based Template 2020.11',

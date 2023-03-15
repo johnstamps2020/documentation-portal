@@ -35,7 +35,8 @@ const pageConfig: SectionLayoutProps = {
     items: [
       {
         label: 'Crime Standards Based Template 2020.05',
-        pagePath: '',
+        pagePath:
+          'cloudProducts/aspen/policyCenterCloud/crimeStandardsBasedTemplate/2020.05',
       },
       {
         label: 'Businessowners Standards Based Template 2020.05',

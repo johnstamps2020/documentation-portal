@@ -177,7 +177,7 @@ const pageConfig: SectionLayoutProps = {
     items: [
       {
         label: 'Garmisch (2023.02)',
-        pagePath: '',
+        pagePath: 'cloudProducts/garmisch/ccGwCloud/2023.02',
       },
       {
         label: 'Flaine (2022.09)',

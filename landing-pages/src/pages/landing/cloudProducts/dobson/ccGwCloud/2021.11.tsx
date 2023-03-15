@@ -165,7 +165,7 @@ const pageConfig: SectionLayoutProps = {
     items: [
       {
         label: 'Dobson (2021.11)',
-        pagePath: '',
+        pagePath: 'cloudProducts/dobson/ccGwCloud/2021.11',
       },
       {
         label: 'Flaine (2022.09)',

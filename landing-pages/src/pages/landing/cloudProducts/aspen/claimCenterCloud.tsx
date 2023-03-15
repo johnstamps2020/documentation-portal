@@ -15,7 +15,7 @@ const pageConfig: CategoryLayoutProps = {
     items: [
       {
         label: 'ClaimCenter Cloud',
-        pagePath: '',
+        pagePath: 'cloudProducts/aspen/claimCenterCloud',
       },
       {
         label: 'BillingCenter Cloud',

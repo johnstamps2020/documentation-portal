@@ -70,7 +70,7 @@ const pageConfig: SectionLayoutProps = {
     items: [
       {
         label: '11.5.0',
-        pagePath: '',
+        pagePath: 'selfManagedProducts/ceQuoteAndBuy/11.5.0',
       },
       {
         label: '11.4.1',

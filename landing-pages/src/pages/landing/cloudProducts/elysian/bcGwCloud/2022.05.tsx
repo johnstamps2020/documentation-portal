@@ -141,7 +141,7 @@ const pageConfig: SectionLayoutProps = {
     items: [
       {
         label: 'Elysian (2022.05)',
-        pagePath: '',
+        pagePath: 'cloudProducts/elysian/bcGwCloud/2022.05',
       },
       {
         label: 'Flaine (2022.09)',

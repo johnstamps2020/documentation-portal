@@ -15,7 +15,7 @@ const pageConfig: CategoryLayoutProps = {
     items: [
       {
         label: 'PolicyCenter Cloud',
-        pagePath: '',
+        pagePath: 'cloudProducts/banff/policyCenterCloud',
       },
       {
         label: 'BillingCenter Cloud',

@@ -154,7 +154,7 @@ const pageConfig: SectionLayoutProps = {
     items: [
       {
         label: 'Banff (2020.11)',
-        pagePath: '',
+        pagePath: 'cloudProducts/banff/claimCenterCloud/ccGwCloud/2020.11',
       },
       {
         label: 'Flaine (2022.09)',

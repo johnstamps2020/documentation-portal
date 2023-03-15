@@ -15,7 +15,7 @@ const pageConfig: CategoryLayoutProps = {
     items: [
       {
         label: 'PolicyCenter Cloud',
-        pagePath: '',
+        pagePath: 'cloudProducts/cortina/policyCenterCloud',
       },
       {
         label: 'BillingCenter Cloud',

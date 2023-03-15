@@ -146,7 +146,7 @@ const pageConfig: SectionLayoutProps = {
     items: [
       {
         label: '10.2.2',
-        pagePath: '',
+        pagePath: 'selfManagedProducts/pc/10.2.2',
       },
       {
         label: '10.2.1',

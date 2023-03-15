@@ -70,7 +70,7 @@ const pageConfig: SectionLayoutProps = {
     items: [
       {
         label: '11.4.1',
-        pagePath: '',
+        pagePath: 'selfManagedProducts/serviceRepEngage/11.4.1',
       },
       {
         label: '11.5.0',

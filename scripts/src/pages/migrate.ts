@@ -15,6 +15,10 @@ import {
 import { WhatsNewProps } from 'landing-pages/src/components/LandingPage/WhatsNew';
 
 const landingPagesSourceDir = resolve(__dirname, '../../../frontend/pages');
+const targetDir = resolve(
+  __dirname,
+  '../../../landing-pages/src/pages/landing'
+);
 const allFiles = getAllFilesRecursively(landingPagesSourceDir);
 const filePairs: FilePair[] = allFiles.map((sourceFile) => ({
   sourceFile,
@@ -57,9 +61,8 @@ type FlailConfig = {
 };
 
 function remapPageLink(flailPageLink: string, targetFile: string): string {
-  const root = resolve(__dirname, '../../../landing-pages/src/pages/landing');
   const matchingTargetFile = relative(
-    root,
+    targetDir,
     resolve(targetFile.replace('.tsx', ''), flailPageLink)
   );
 
@@ -429,7 +432,7 @@ function getSelector(
 
   const currentItem: LandingPageItemProps = {
     label: flailSelector?.selectedItem,
-    pagePath: '',
+    pagePath: relative(targetDir, targetFile).replace('.tsx', ''),
   };
 
   return {

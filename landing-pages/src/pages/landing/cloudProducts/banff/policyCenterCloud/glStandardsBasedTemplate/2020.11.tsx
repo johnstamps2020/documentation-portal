@@ -35,7 +35,8 @@ const pageConfig: SectionLayoutProps = {
     items: [
       {
         label: 'General Liability Standards Based Template 2020.11',
-        pagePath: '',
+        pagePath:
+          'cloudProducts/banff/policyCenterCloud/glStandardsBasedTemplate/2020.11',
       },
       {
         label: 'Businessowners Standards Based Template 2020.11',

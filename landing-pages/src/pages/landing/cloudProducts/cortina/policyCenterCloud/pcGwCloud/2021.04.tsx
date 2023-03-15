@@ -170,7 +170,7 @@ const pageConfig: SectionLayoutProps = {
     items: [
       {
         label: 'Cortina (2021.04)',
-        pagePath: '',
+        pagePath: 'cloudProducts/cortina/policyCenterCloud/pcGwCloud/2021.04',
       },
       {
         label: 'Flaine (2022.09)',

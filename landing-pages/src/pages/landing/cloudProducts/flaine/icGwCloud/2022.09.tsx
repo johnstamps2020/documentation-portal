@@ -87,7 +87,7 @@ const pageConfig: SectionLayoutProps = {
     items: [
       {
         label: 'InfoCenter for Guidewire Cloud 2022.09',
-        pagePath: '',
+        pagePath: 'cloudProducts/flaine/icGwCloud/2022.09',
       },
       {
         label: 'DataHub for Guidewire Cloud 2022.09',

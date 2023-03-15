@@ -35,7 +35,8 @@ const pageConfig: SectionLayoutProps = {
     items: [
       {
         label: 'Crime Standards Based Template 2020.11',
-        pagePath: '',
+        pagePath:
+          'cloudProducts/banff/policyCenterCloud/crimeStandardsBasedTemplate/2020.11',
       },
       {
         label: 'Businessowners Standards Based Template 2020.11',
