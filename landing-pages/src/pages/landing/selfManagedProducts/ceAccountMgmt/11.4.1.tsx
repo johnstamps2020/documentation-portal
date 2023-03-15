@@ -69,6 +69,23 @@ const pageConfig: SectionLayoutProps = {
     selectedItemLabel: '11.4.1',
     items: [
       {
+        label: '10.0.0',
+        docId:
+          'httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsimqfvska',
+      },
+      {
+        label: '10.0.1',
+        docId: 'selfmanageddxceamagmqaagu',
+      },
+      {
+        label: '11.2.0',
+        docId: 'dxceam1120onpremstaging',
+      },
+      {
+        label: '11.3.0',
+        docId: 'dxceam1130',
+      },
+      {
         label: '11.4.1',
         pagePath: 'selfManagedProducts/ceAccountMgmt/11.4.1',
       },
@@ -77,31 +94,9 @@ const pageConfig: SectionLayoutProps = {
         pagePath: 'selfManagedProducts/ceAccountMgmt/11.5.0',
       },
       {
-        label: '11.3.0',
-        docId: 'dxceam1130',
-      },
-      {
-        label: '11.2.0',
-        docId: 'dxceam1120onpremstaging',
-      },
-      {
-        label: '10.0.1',
-        docId: 'selfmanageddxceamagmqaagu',
-      },
-      {
-        label: '10.0.0',
+        label: '7.0.0',
         docId:
-          'httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsimqfvska',
-      },
-      {
-        label: '8.1.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocswtwqtyvt',
-      },
-      {
-        label: '8.0.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocskaceffks',
+          'httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsdixvkiug',
       },
       {
         label: '7.1.0',
@@ -109,9 +104,14 @@ const pageConfig: SectionLayoutProps = {
           'httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsvvjeexxr',
       },
       {
-        label: '7.0.0',
+        label: '8.0.0',
         docId:
-          'httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsdixvkiug',
+          'httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocskaceffks',
+      },
+      {
+        label: '8.1.0',
+        docId:
+          'httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocswtwqtyvt',
       },
     ],
     labelColor: 'black',

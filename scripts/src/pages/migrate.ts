@@ -82,10 +82,14 @@ function getSelector(
     pagePath: relative(targetDir, targetFile).replace('.tsx', ''),
   };
 
+  const sortedItems = [currentItem, ...selectorItems].sort((a, b) =>
+    a.label! > b.label! ? 1 : -1
+  );
+
   return {
     label: flailSelector?.label || 'Select version',
     selectedItemLabel: flailSelector?.selectedItem || '',
-    items: [currentItem, ...selectorItems],
+    items: sortedItems,
     labelColor: labelColor,
   };
 }

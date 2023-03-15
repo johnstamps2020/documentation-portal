@@ -69,6 +69,27 @@ const pageConfig: SectionLayoutProps = {
     selectedItemLabel: '11.4.1',
     items: [
       {
+        label: '10.0.0',
+        docId:
+          'httpsportalguidewirecomportalsecuredocdigitalroducerngageocsamzzpbvt',
+      },
+      {
+        label: '10.0.1',
+        docId: 'selfmanageddxpemlefekrm',
+      },
+      {
+        label: '11.1.0',
+        docId: 'dxpe1110onpremstaging',
+      },
+      {
+        label: '11.2.0',
+        docId: 'dxpe1120onpremstaging',
+      },
+      {
+        label: '11.3.0',
+        docId: 'dxpe1130',
+      },
+      {
         label: '11.4.1',
         pagePath: 'selfManagedProducts/producerEngage/11.4.1',
       },
@@ -77,35 +98,9 @@ const pageConfig: SectionLayoutProps = {
         pagePath: 'selfManagedProducts/producerEngage/11.5.0',
       },
       {
-        label: '11.3.0',
-        docId: 'dxpe1130',
-      },
-      {
-        label: '11.2.0',
-        docId: 'dxpe1120onpremstaging',
-      },
-      {
-        label: '11.1.0',
-        docId: 'dxpe1110onpremstaging',
-      },
-      {
-        label: '10.0.1',
-        docId: 'selfmanageddxpemlefekrm',
-      },
-      {
-        label: '10.0.0',
+        label: '7.0.0',
         docId:
-          'httpsportalguidewirecomportalsecuredocdigitalroducerngageocsamzzpbvt',
-      },
-      {
-        label: '8.1.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalroducerngageocsnoryczgm',
-      },
-      {
-        label: '8.0.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalroducerngageocsvhcgqwst',
+          'httpsportalguidewirecomportalsecuredocdigitalroducerngageocsneawmwlb',
       },
       {
         label: '7.1.0',
@@ -113,9 +108,14 @@ const pageConfig: SectionLayoutProps = {
           'httpsportalguidewirecomportalsecuredocdigitalroducerngageocseucuheur',
       },
       {
-        label: '7.0.0',
+        label: '8.0.0',
         docId:
-          'httpsportalguidewirecomportalsecuredocdigitalroducerngageocsneawmwlb',
+          'httpsportalguidewirecomportalsecuredocdigitalroducerngageocsvhcgqwst',
+      },
+      {
+        label: '8.1.0',
+        docId:
+          'httpsportalguidewirecomportalsecuredocdigitalroducerngageocsnoryczgm',
       },
     ],
     labelColor: 'black',

@@ -14,16 +14,16 @@ const pageConfig: CategoryLayoutProps = {
     selectedItemLabel: 'PolicyCenter Cloud',
     items: [
       {
-        label: 'PolicyCenter Cloud',
-        pagePath: 'cloudProducts/cortina/policyCenterCloud',
-      },
-      {
         label: 'BillingCenter Cloud',
         pagePath: 'cloudProducts/cortina/billingCenterCloud',
       },
       {
         label: 'ClaimCenter Cloud',
         pagePath: 'cloudProducts/cortina/claimCenterCloud',
+      },
+      {
+        label: 'PolicyCenter Cloud',
+        pagePath: 'cloudProducts/cortina/policyCenterCloud',
       },
     ],
     labelColor: 'white',

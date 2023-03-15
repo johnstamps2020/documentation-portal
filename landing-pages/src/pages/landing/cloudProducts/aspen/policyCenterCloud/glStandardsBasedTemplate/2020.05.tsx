@@ -34,11 +34,6 @@ const pageConfig: SectionLayoutProps = {
     selectedItemLabel: 'General Liability Standards Based Template 2020.05',
     items: [
       {
-        label: 'General Liability Standards Based Template 2020.05',
-        pagePath:
-          'cloudProducts/aspen/policyCenterCloud/glStandardsBasedTemplate/2020.05',
-      },
-      {
         label: 'Businessowners Standards Based Template 2020.05',
         pagePath:
           'cloudProducts/aspen/policyCenterCloud/boStandardsBasedTemplate/2020.05',
@@ -52,6 +47,11 @@ const pageConfig: SectionLayoutProps = {
         label: 'Crime Standards Based Template 2020.05',
         pagePath:
           'cloudProducts/aspen/policyCenterCloud/crimeStandardsBasedTemplate/2020.05',
+      },
+      {
+        label: 'General Liability Standards Based Template 2020.05',
+        pagePath:
+          'cloudProducts/aspen/policyCenterCloud/glStandardsBasedTemplate/2020.05',
       },
     ],
     labelColor: 'black',

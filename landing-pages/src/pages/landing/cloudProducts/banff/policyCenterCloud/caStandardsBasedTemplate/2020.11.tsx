@@ -34,14 +34,14 @@ const pageConfig: SectionLayoutProps = {
     selectedItemLabel: 'Commercial Auto Standards Based Template 2020.05',
     items: [
       {
-        label: 'Commercial Auto Standards Based Template 2020.05',
-        pagePath:
-          'cloudProducts/banff/policyCenterCloud/caStandardsBasedTemplate/2020.11',
-      },
-      {
         label: 'Businessowners Standards Based Template 2020.11',
         pagePath:
           'cloudProducts/banff/policyCenterCloud/boStandardsBasedTemplate/2020.11',
+      },
+      {
+        label: 'Commercial Auto Standards Based Template 2020.05',
+        pagePath:
+          'cloudProducts/banff/policyCenterCloud/caStandardsBasedTemplate/2020.11',
       },
       {
         label: 'Crime Standards Based Template 2020.11',

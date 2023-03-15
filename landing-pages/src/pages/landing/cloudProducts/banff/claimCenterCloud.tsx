@@ -14,12 +14,12 @@ const pageConfig: CategoryLayoutProps = {
     selectedItemLabel: 'ClaimCenter Cloud',
     items: [
       {
-        label: 'ClaimCenter Cloud',
-        pagePath: 'cloudProducts/banff/claimCenterCloud',
-      },
-      {
         label: 'BillingCenter Cloud',
         pagePath: 'cloudProducts/banff/billingCenterCloud',
+      },
+      {
+        label: 'ClaimCenter Cloud',
+        pagePath: 'cloudProducts/banff/claimCenterCloud',
       },
       {
         label: 'PolicyCenter Cloud',

@@ -14,12 +14,12 @@ const pageConfig: CategoryLayoutProps = {
     selectedItemLabel: 'ClaimCenter Cloud',
     items: [
       {
-        label: 'ClaimCenter Cloud',
-        pagePath: 'cloudProducts/aspen/claimCenterCloud',
-      },
-      {
         label: 'BillingCenter Cloud',
         pagePath: 'cloudProducts/aspen/billingCenterCloud',
+      },
+      {
+        label: 'ClaimCenter Cloud',
+        pagePath: 'cloudProducts/aspen/claimCenterCloud',
       },
       {
         label: 'PolicyCenter Cloud',

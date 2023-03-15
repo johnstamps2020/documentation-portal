@@ -69,6 +69,27 @@ const pageConfig: SectionLayoutProps = {
     selectedItemLabel: '11.4.1',
     items: [
       {
+        label: '10.0.0',
+        docId:
+          'httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocswhokisuk',
+      },
+      {
+        label: '10.0.1',
+        docId: 'selfmanageddxceqbphivypaz',
+      },
+      {
+        label: '11.1.0',
+        docId: 'dxceqb1110onpremstaging',
+      },
+      {
+        label: '11.2.0',
+        docId: 'dxceqb1120onpremstaging',
+      },
+      {
+        label: '11.3.0',
+        docId: 'dxceqb1130',
+      },
+      {
         label: '11.4.1',
         pagePath: 'selfManagedProducts/ceQuoteAndBuy/11.4.1',
       },
@@ -77,35 +98,9 @@ const pageConfig: SectionLayoutProps = {
         pagePath: 'selfManagedProducts/ceQuoteAndBuy/11.5.0',
       },
       {
-        label: '11.3.0',
-        docId: 'dxceqb1130',
-      },
-      {
-        label: '11.2.0',
-        docId: 'dxceqb1120onpremstaging',
-      },
-      {
-        label: '11.1.0',
-        docId: 'dxceqb1110onpremstaging',
-      },
-      {
-        label: '10.0.1',
-        docId: 'selfmanageddxceqbphivypaz',
-      },
-      {
-        label: '10.0.0',
+        label: '7.0.0',
         docId:
-          'httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocswhokisuk',
-      },
-      {
-        label: '8.1.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocsxqghmido',
-      },
-      {
-        label: '8.0.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocssvsmobif',
+          'httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocsmoleigkn',
       },
       {
         label: '7.1.0',
@@ -113,9 +108,14 @@ const pageConfig: SectionLayoutProps = {
           'httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocswnmqkwxj',
       },
       {
-        label: '7.0.0',
+        label: '8.0.0',
         docId:
-          'httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocsmoleigkn',
+          'httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocssvsmobif',
+      },
+      {
+        label: '8.1.0',
+        docId:
+          'httpsportalguidewirecomportalsecuredocdigitalustomerngageuotenduyocsxqghmido',
       },
     ],
     labelColor: 'black',

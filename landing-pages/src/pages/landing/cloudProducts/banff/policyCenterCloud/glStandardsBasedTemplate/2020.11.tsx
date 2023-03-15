@@ -34,11 +34,6 @@ const pageConfig: SectionLayoutProps = {
     selectedItemLabel: 'General Liability Standards Based Template 2020.11',
     items: [
       {
-        label: 'General Liability Standards Based Template 2020.11',
-        pagePath:
-          'cloudProducts/banff/policyCenterCloud/glStandardsBasedTemplate/2020.11',
-      },
-      {
         label: 'Businessowners Standards Based Template 2020.11',
         pagePath:
           'cloudProducts/banff/policyCenterCloud/boStandardsBasedTemplate/2020.11',
@@ -52,6 +47,11 @@ const pageConfig: SectionLayoutProps = {
         label: 'Crime Standards Based Template 2020.11',
         pagePath:
           'cloudProducts/banff/policyCenterCloud/crimeStandardsBasedTemplate/2020.11',
+      },
+      {
+        label: 'General Liability Standards Based Template 2020.11',
+        pagePath:
+          'cloudProducts/banff/policyCenterCloud/glStandardsBasedTemplate/2020.11',
       },
       {
         label: 'Workers Compensation Standards Based Template 2020.11',

@@ -69,6 +69,19 @@ const pageConfig: SectionLayoutProps = {
     selectedItemLabel: '11.4.1',
     items: [
       {
+        label: '10.0.0',
+        docId:
+          'httpsportalguidewirecomportalsecuredocdigitalendorngageocsqblntzzp',
+      },
+      {
+        label: '10.0.1',
+        docId: 'selfmanageddxvebjvtkgov',
+      },
+      {
+        label: '11.3.0',
+        docId: 'dxve1130',
+      },
+      {
         label: '11.4.1',
         pagePath: 'selfManagedProducts/vendorEngage/11.4.1',
       },
@@ -77,27 +90,9 @@ const pageConfig: SectionLayoutProps = {
         pagePath: 'selfManagedProducts/vendorEngage/11.5.0',
       },
       {
-        label: '11.3.0',
-        docId: 'dxve1130',
-      },
-      {
-        label: '10.0.1',
-        docId: 'selfmanageddxvebjvtkgov',
-      },
-      {
-        label: '10.0.0',
+        label: '7.0.0',
         docId:
-          'httpsportalguidewirecomportalsecuredocdigitalendorngageocsqblntzzp',
-      },
-      {
-        label: '8.1.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalendorngageocshfhoxxya',
-      },
-      {
-        label: '8.0.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalendorngageocsyrmcgnnq',
+          'httpsportalguidewirecomportalsecuredocdigitalendorngageocsjkkjagrp',
       },
       {
         label: '7.1.0',
@@ -105,9 +100,14 @@ const pageConfig: SectionLayoutProps = {
           'httpsportalguidewirecomportalsecuredocdigitalendorngageocsgehgsaei',
       },
       {
-        label: '7.0.0',
+        label: '8.0.0',
         docId:
-          'httpsportalguidewirecomportalsecuredocdigitalendorngageocsjkkjagrp',
+          'httpsportalguidewirecomportalsecuredocdigitalendorngageocsyrmcgnnq',
+      },
+      {
+        label: '8.1.0',
+        docId:
+          'httpsportalguidewirecomportalsecuredocdigitalendorngageocshfhoxxya',
       },
     ],
     labelColor: 'black',

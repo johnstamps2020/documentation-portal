@@ -86,12 +86,12 @@ const pageConfig: SectionLayoutProps = {
     selectedItemLabel: 'InfoCenter for Guidewire Cloud 2022.05',
     items: [
       {
-        label: 'InfoCenter for Guidewire Cloud 2022.05',
-        pagePath: 'cloudProducts/elysian/icGwCloud/2022.05',
-      },
-      {
         label: 'DataHub for Guidewire Cloud 2022.05',
         pagePath: 'cloudProducts/elysian/dhGwCloud/2022.05',
+      },
+      {
+        label: 'InfoCenter for Guidewire Cloud 2022.05',
+        pagePath: 'cloudProducts/elysian/icGwCloud/2022.05',
       },
     ],
     labelColor: 'black',

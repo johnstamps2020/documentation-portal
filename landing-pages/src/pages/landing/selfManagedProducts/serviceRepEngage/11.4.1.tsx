@@ -69,6 +69,27 @@ const pageConfig: SectionLayoutProps = {
     selectedItemLabel: '11.4.1',
     items: [
       {
+        label: '10.0.0',
+        docId:
+          'httpsportalguidewirecomportalsecuredocdigitalerviceepngageocstyghellr',
+      },
+      {
+        label: '10.0.1',
+        docId: 'selfmanageddxsreaqsojbmv',
+      },
+      {
+        label: '11.1.0',
+        docId: 'dxsre1110onpremstaging',
+      },
+      {
+        label: '11.2.0',
+        docId: 'dxsre1120onpremstaging',
+      },
+      {
+        label: '11.3.0',
+        docId: 'dxsre1130',
+      },
+      {
         label: '11.4.1',
         pagePath: 'selfManagedProducts/serviceRepEngage/11.4.1',
       },
@@ -77,35 +98,9 @@ const pageConfig: SectionLayoutProps = {
         pagePath: 'selfManagedProducts/serviceRepEngage/11.5.0',
       },
       {
-        label: '11.3.0',
-        docId: 'dxsre1130',
-      },
-      {
-        label: '11.2.0',
-        docId: 'dxsre1120onpremstaging',
-      },
-      {
-        label: '11.1.0',
-        docId: 'dxsre1110onpremstaging',
-      },
-      {
-        label: '10.0.1',
-        docId: 'selfmanageddxsreaqsojbmv',
-      },
-      {
-        label: '10.0.0',
+        label: '7.0.0',
         docId:
-          'httpsportalguidewirecomportalsecuredocdigitalerviceepngageocstyghellr',
-      },
-      {
-        label: '8.1.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsdemyrpoh',
-      },
-      {
-        label: '8.0.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsqarbsbtn',
+          'httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsugutdoki',
       },
       {
         label: '7.1.0',
@@ -113,9 +108,14 @@ const pageConfig: SectionLayoutProps = {
           'httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsrtlpihpc',
       },
       {
-        label: '7.0.0',
+        label: '8.0.0',
         docId:
-          'httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsugutdoki',
+          'httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsqarbsbtn',
+      },
+      {
+        label: '8.1.0',
+        docId:
+          'httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsdemyrpoh',
       },
     ],
     labelColor: 'black',
