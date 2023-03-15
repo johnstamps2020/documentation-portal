@@ -9,6 +9,7 @@ const pageConfig: ProductFamilyLayoutProps = {
     ...baseBackgroundProps,
     backgroundImage: `url(${gradientBackgroundImage})`,
   },
+
   items: [
     {
       label: 'Deutsch',

@@ -417,8 +417,10 @@ function mapToProductFamilyLayout(
 ): string {
   const { backgroundPropValue } = getBackgroundProps(flailConfig);
   const items = getItems(flailConfig.items, targetFile);
+  const selector = getSelector(flailConfig, targetFile);
   return `{
     backgroundProps: ${backgroundPropValue},
+    ${selector ? `selector: ${JSON.stringify(selector)},` : ''}
     items: ${JSON.stringify(items, null, 2)},
     sidebar: ${getSidebar(flailConfig)},
   }`;
