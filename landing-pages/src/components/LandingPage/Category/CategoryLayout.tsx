@@ -15,6 +15,7 @@ import CategorySidebar from './CategorySidebar';
 import LandingPageSelector, {
   LandingPageSelectorProps,
 } from 'components/LandingPage/LandingPageSelector';
+import PagePropsController from '../PagePropsController';
 
 export type CategoryLayoutProps = LandingPageLayoutProps & {
   cards: CategoryCardProps[];
@@ -49,6 +50,7 @@ export default function CategoryLayout({
     >
       <Grid gap="2rem">
         <Stack spacing={1} direction="column" width="100%">
+          <PagePropsController {...pageData} />
           <SelfManagedLink
             pagePath={pageData.path}
             backgroundImage={backgroundProps.backgroundImage}

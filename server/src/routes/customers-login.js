@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const saml = require('passport-saml');
 const {
-  openRequestedUrl,
   resolveRequestedUrl,
   saveRedirectUrlToSession,
 } = require('../controllers/authController');

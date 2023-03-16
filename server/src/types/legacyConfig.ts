@@ -7,8 +7,10 @@ export type LegacyVersionObject = {
 };
 
 export type LegacyVersionSelector = {
-  docId: string;
-  allVersions: LegacyVersionObject[];
+  matchingVersionSelector: {
+    docId: string;
+    allVersions: LegacyVersionObject[];
+  };
 };
 
 export class legacyItem {
@@ -95,10 +97,6 @@ export class legacySourceConfig {
   exportFrequency: string;
   pollInterval: number;
 }
-
-export type EnvProps = {
-  envName: Environment;
-};
 
 export type legacyDocsConfigFile = {
   docs: legacyDocConfig[];

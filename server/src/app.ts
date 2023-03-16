@@ -19,16 +19,20 @@ import { AppDataSource } from './model/connection';
 import { runningInDevMode } from './controllers/utils/serverUtils';
 import { ReqUser } from './controllers/userController';
 import {
-  isAllowedToAccessPageOrDoc,
+  isAllowedToAccessDoc,
+  isAllowedToAccessRestrictedRoute,
   isAllowedToAccessRoute,
+  openRequestedUrl,
   saveUserInfoToResLocals,
 } from './controllers/authController';
-import { forbiddenRoute, fourOhFourRoute } from './controllers/proxyController';
+import { fourOhFourRoute } from './controllers/proxyController';
+import { JwtPayload } from 'jsonwebtoken';
 
 declare global {
   namespace Express {
     interface Request {
       user?: ReqUser;
+      accessToken?: JwtPayload | string | null;
     }
   }
 }
@@ -120,6 +124,7 @@ const oidcLoginRouter = require('./routes/authorization-code');
 const searchRouter = require('./routes/search');
 const s3Router = require('./routes/s3');
 const userRouter = require('./routes/user');
+const adminRouter = require('./routes/admin');
 const configRouter = require('./routes/config');
 const jiraRouter = require('./routes/jira');
 const lrsRouter = require('./routes/lrs');
@@ -165,24 +170,19 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   return next();
 });
 app.use(
-  '/safeConfig',
+  '/admin',
   saveUserInfoToResLocals,
-  isAllowedToAccessRoute,
-  configRouter
+  isAllowedToAccessRestrictedRoute,
+  adminRouter
 );
+app.use('/safeConfig', saveUserInfoToResLocals, configRouter);
 app.use('/jira', saveUserInfoToResLocals, isAllowedToAccessRoute, jiraRouter);
 app.use('/lrs', saveUserInfoToResLocals, isAllowedToAccessRoute, lrsRouter);
 app.use('/s3', saveUserInfoToResLocals, isAllowedToAccessRoute, s3Router);
 // Open routes
-app.use('/recommendations', recommendationsRouter);
+app.use('/recommendations', saveUserInfoToResLocals, recommendationsRouter);
 app.use('/userInformation', userRouter);
 app.use('/search', saveUserInfoToResLocals, searchRouter);
-
-app.use('/portal-config/*', (req, res) => {
-  res.redirect(
-    `${forbiddenRoute}${req.url ? `?unauthorized=${req.originalUrl}` : ''}`
-  );
-});
 
 // overwrite HTML received through proxy
 const { harmonRouter } = require('./routes/proxy-harmon-router');
@@ -196,12 +196,7 @@ const {
   reactAppProxy,
 } = require('./controllers/proxyController');
 app.use('/sitemap*', sitemapProxy);
-app.use(
-  '/landing',
-  saveUserInfoToResLocals,
-  isAllowedToAccessPageOrDoc,
-  reactAppProxy
-);
+app.use('/landing', saveUserInfoToResLocals, reactAppProxy);
 
 // HTML5 scripts, local or S3
 const isDevMode = runningInDevMode();
@@ -212,9 +207,14 @@ if (isDevMode) {
 }
 
 // Docs stored on S3 — current and portal2
-app.use(saveUserInfoToResLocals, isAllowedToAccessPageOrDoc, s3Proxy);
+app.use(
+  saveUserInfoToResLocals,
+  isAllowedToAccessDoc,
+  openRequestedUrl,
+  s3Proxy
+);
 
-app.use((req: Request, res: Response, next: NextFunction) => {
+app.use((req: Request, res: Response) => {
   const notFoundParam =
     req.url === '/404'
       ? req.headers.referer?.replace(`${process.env.APP_BASE_URL}`, '')
@@ -225,7 +225,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 // handles unauthorized errors
 app.use(expressWinstonErrorLogger);
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+app.use((err: Error, req: Request, res: Response) => {
   winstonLogger.error(
     `General error passed to top-level handler in app.ts: ${JSON.stringify(
       err

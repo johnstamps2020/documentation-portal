@@ -4,7 +4,8 @@ import { decode, JwtPayload } from 'jsonwebtoken';
 import { winstonLogger } from './loggerController';
 import { getUserInfo } from './userController';
 import { fourOhFourRoute, internalRoute } from './proxyController';
-import { getDocByUrl, getEnv, getPage } from './configController';
+import { getDocByUrl } from './configController';
+import { ApiResponse } from '../types/apiResponse';
 
 export async function saveUserInfoToResLocals(
   req: Request,
@@ -20,39 +21,48 @@ export async function isAllowedToAccessRoute(
   res: Response,
   next: NextFunction
 ) {
-  const { status, body } = isUserAllowedToAccessResource(
-    res,
-    false,
-    false,
-    true
-  );
-  if (status === 200) {
-    return next();
+  const userInfo = res.locals.userInfo;
+  if (!userInfo.isLoggedIn) {
+    return res.status(401).json({
+      message: 'Route not available: User not logged in',
+    });
   }
-  return res.status(status).json(body);
+  return next();
 }
 
-export async function isAllowedToAccessPageOrDoc(
+export async function isAllowedToAccessRestrictedRoute(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  const requestedResource = req.originalUrl.startsWith('/landing')
-    ? await getPage(req).then((r) => r?.body)
-    : await getDocByUrl(req.path);
-  if (!requestedResource) {
-    return res.redirect(`${fourOhFourRoute}?notFound=${req.originalUrl}`);
+  const userInfo = res.locals.userInfo;
+  if (!userInfo.isLoggedIn) {
+    return res.status(401).json({
+      message: 'Resource not available: User not logged in',
+    });
   }
-  if (requestedResource.component?.includes('redirect')) {
-    return res.redirect(
-      `/landing/${requestedResource.component.split(' ')[1]}`
-    );
+  if (!userInfo.isAdmin) {
+    return res.status(403).json({
+      message: 'Resource not available: Only GW admins can manage resources',
+    });
+  }
+  return next();
+}
+
+export async function isAllowedToAccessDoc(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const requestedDoc = await getDocByUrl(req.path);
+  if (!requestedDoc) {
+    return res.redirect(`${fourOhFourRoute}?notFound=${req.originalUrl}`);
   }
   const resourceStatus = isUserAllowedToAccessResource(
     res,
-    requestedResource.public,
-    requestedResource.internal,
-    requestedResource.isInProduction
+    requestedDoc.public,
+    requestedDoc.internal,
+    requestedDoc.isInProduction
   ).status;
   if (resourceStatus === 401) {
     return redirectToLoginPage(req, res);
@@ -62,7 +72,6 @@ export async function isAllowedToAccessPageOrDoc(
       `${internalRoute}${req.url ? `?restricted=${req.originalUrl}` : ''}`
     );
   }
-  openRequestedUrl(req, res);
   return next();
 }
 
@@ -71,8 +80,8 @@ export function isUserAllowedToAccessResource(
   resourceIsPublic: boolean,
   resourceIsInternal: boolean,
   resourceIsInProduction: boolean
-): { status: number; body: { message: string } } {
-  const isProductionEnvironment = getEnv().envName === 'omega2-andromeda';
+): ApiResponse {
+  const isProductionEnvironment = process.env.DEPLOY_ENV === 'omega2-andromeda';
   if (isProductionEnvironment && !resourceIsInProduction) {
     return {
       status: 406,
@@ -223,6 +232,9 @@ async function verifyToken(req: Request) {
           bearerToken,
           oktaJwtVerifier
         );
+        req.accessToken = verifiedToken
+          ? decode(verifiedToken.toString(), {})
+          : null;
         return verifiedToken;
       } else {
         return oktaJwtVerifier;
@@ -294,13 +306,18 @@ export function resolveRequestedUrl(req: Request) {
   return '/';
 }
 
-export function openRequestedUrl(req: Request, res: Response) {
+export function openRequestedUrl(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   try {
     const originalUrl = req.originalUrl;
     const cleanUrl = removeAuthParamsFromUrl(originalUrl);
     if (originalUrl !== cleanUrl) {
-      res.redirect(cleanUrl);
+      return res.redirect(cleanUrl);
     }
+    return next();
   } catch (err) {
     winstonLogger.error(
       `Problem opening requested page 

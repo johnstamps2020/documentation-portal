@@ -7,6 +7,7 @@ import {
 
 import { winstonLogger } from './loggerController';
 import { isLoggedInOrHasValidToken } from './authController';
+import { JwtPayload } from 'jsonwebtoken';
 
 function belongsToGuidewire(email: string) {
   try {
@@ -39,6 +40,19 @@ function getUserName(user: ReqUser) {
   return 'Unnamed User';
 }
 
+function isAdminUser(user: ReqUser) {
+  return [
+    'mskowron@guidewire.com',
+    'pkowaluk@guidewire.com',
+    'mszeligiewicz@guidewire.com',
+    'mgilster@guidewire.com',
+  ].includes(user.email);
+}
+
+function isAdminAccessToken(accessToken: JwtPayload) {
+  return accessToken.scp.includes('NODE_Hawaii_Docs_Web.admin');
+}
+
 const unknownUserInfo: UserInfo = {
   isLoggedIn: false,
   name: 'Unknown',
@@ -46,6 +60,7 @@ const unknownUserInfo: UserInfo = {
   preferred_username: 'Unknown',
   hasGuidewireEmail: false,
   locale: 'en-US',
+  isAdmin: false,
 };
 
 export async function getUserInfo(req: Request): Promise<UserInfo> {
@@ -60,9 +75,11 @@ export async function getUserInfo(req: Request): Promise<UserInfo> {
     const user = req.user;
     if (!user) {
       if (isLoggedIn) {
+        const accessToken = req.accessToken as JwtPayload;
         return {
           ...unknownUserInfo,
           isLoggedIn: isLoggedIn,
+          isAdmin: isAdminAccessToken(accessToken),
         };
       }
       return unknownUserInfo;
@@ -76,6 +93,7 @@ export async function getUserInfo(req: Request): Promise<UserInfo> {
       preferred_username: email,
       hasGuidewireEmail: belongsToGuidewire(email),
       locale: user.locale,
+      isAdmin: isAdminUser(user),
     };
   } catch (err) {
     winstonLogger.error(

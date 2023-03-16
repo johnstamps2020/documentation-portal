@@ -3,7 +3,6 @@ const { Client } = require('@elastic/elasticsearch');
 const { winstonLogger } = require('./loggerController');
 const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const searchIndexName = 'gw-docs';
-import { getUserInfo } from './userController';
 
 async function getFieldMappings() {
   const mappingResults = await elasticClient.indices.getMapping({

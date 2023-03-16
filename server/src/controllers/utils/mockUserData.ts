@@ -7,6 +7,7 @@ export const internalMockUserData: UserInfo = {
   email: 'atennyson@guidewire.com',
   hasGuidewireEmail: true,
   locale: 'en-US',
+  isAdmin: false,
 };
 
 export const externalMockUserData: UserInfo = {
@@ -16,4 +17,5 @@ export const externalMockUserData: UserInfo = {
   email: 'ghopkins@gcustomer.com',
   hasGuidewireEmail: false,
   locale: 'en-US',
+  isAdmin: false,
 };
