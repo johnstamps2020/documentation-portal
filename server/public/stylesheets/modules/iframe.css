@@ -1,5 +1,5 @@
 .embed-container {
-  --width: 100%;
+  --width: 484px;
   position: relative;
   overflow: hidden;
   width: var(--width);
@@ -8,24 +8,17 @@
   margin-bottom: 1rem;
 }
 
-.embed-container.brightcove {
-  --width: 70%;
-  position: relative;
-  overflow: hidden;
-  width: var(--width);
-  padding-top: calc(var(--width) * 9 / 16);
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+.embed-container.fullscreen {
+  --width: 100%;
 }
 
 .embed-container.portrait {
   --width: 334px;
-  position: relative;
-  overflow: hidden;
-  width: var(--width);
   padding-top: calc(var(--width) * 16 / 9);
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+}
+
+.embed-container.fullscreen.portrait {
+  --width: 100%;
 }
 
 iframe {
