@@ -1,7 +1,8 @@
 import {writeFileSync} from "fs";
 
+const oktaScopes = `${process.env.OKTA_ACCESS_TOKEN_SCOPES} NODE_Hawaii_Docs_Web.admin`
 const base64ClientCreds = Buffer.from(`${process.env.OKTA_CLIENT_ID}:${process.env.OKTA_CLIENT_SECRET}`, 'utf-8').toString('base64')
-const jwt = await fetch(`${process.env.OKTA_ACCESS_TOKEN_ISSUER}/v1/token?grant_type=client_credentials&scope=${process.env.OKTA_ACCESS_TOKEN_SCOPES}`, {
+const jwt = await fetch(`${process.env.OKTA_ACCESS_TOKEN_ISSUER}/v1/token?grant_type=client_credentials&scope=${oktaScopes}`, {
     method: "POST",
     headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -16,8 +17,8 @@ if (json.errorCode) {
 const accessToken = json.access_token;
 console.log("Get access token from Okta: OK")
 
-for (const entityType of ["source", "doc", "page", "openRoutes"]) {
-    const response = await fetch(`${process.env.APP_BASE_URL}/safeConfig/entity/legacy/putConfigInDatabase/${entityType}`, {
+for (const entityType of ["source", "doc", "page"]) {
+    const response = await fetch(`${process.env.APP_BASE_URL}/admin/entity/legacy/${entityType}`, {
         method: "PUT",
         headers: {
             "Authorization": `Bearer ${accessToken}`
