@@ -8,7 +8,7 @@
   margin-bottom: 1rem;
 }
 
-.embed-container.fullscreen {
+.embed-container.fullwidth {
   --width: 100%;
 }
 
@@ -17,7 +17,7 @@
   padding-top: calc(var(--width) * 16 / 9);
 }
 
-.embed-container.fullscreen.portrait {
+.embed-container.fullwidth.portrait {
   --width: 100%;
 }
 
