@@ -2440,8 +2440,8 @@ object Server {
                         export OKTA_DOMAIN="https://guidewire-hub.oktapreview.com"
                         export OKTA_IDP="0oamwriqo1E1dOdd70h7"
                         export APP_BASE_URL="https://$appName.dev.ccs.guidewire.net"
-                        export ELASTIC_SEARCH_URL="http://docsearch-dev.doctools:9200"
-                        export DOC_S3_URL="https://docportal-content.dev.ccs.guidewire.net"
+                        export ELASTIC_SEARCH_URL="https://docsearch-doctools.staging.ccs.guidewire.net"
+                        export DOC_S3_URL="https://docportal-content.staging.ccs.guidewire.net"
                         export PORTAL2_S3_URL="https://portal2-content.omega2-andromeda.guidewire.net"
                         export REQUESTS_MEMORY="500M"
                         export REQUESTS_CPU="100m"
@@ -2558,6 +2558,14 @@ object Server {
                 }
             deployServerBuildType.steps.step(buildAndPublishServerDockerImageStep)
             deployServerBuildType.steps.stepsOrder.add(0, buildAndPublishServerDockerImageStep.id.toString())
+            deployServerBuildType.triggers {
+                vcs {
+                    triggerRules = """
+                    +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/**
+                    -:user=doctools:**
+                    """.trimIndent()
+                }
+            }
         }
         return deployServerBuildType
     }
@@ -4670,7 +4678,7 @@ object GwBuildSteps {
         workingDir: String,
         customEnv: JSONArray?,
         validationMode: Boolean = false,
-        exitCodeEnvVarName: String = ""
+        exitCodeEnvVarName: String = "",
     ): ScriptBuildStep {
         val nodeImage = when (nodeImageVersion) {
             null -> "${GwDockerImages.NODE_REMOTE_BASE.imageUrl}:17.6.0"
