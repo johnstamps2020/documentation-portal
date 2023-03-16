@@ -42,32 +42,6 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
   ],
-
-  sidebar: {
-    label: 'Implementation Resources',
-    items: [
-      {
-        label: 'Community Case Templates',
-        docId: 'cloudtickettemplates',
-      },
-      {
-        label: 'Product Adoption',
-        docId: 'surepathmethodologymain',
-      },
-      {
-        label: 'Cloud Standards',
-        docId: 'standardslatest',
-      },
-      {
-        label: 'Upgrade Diff Reports',
-        pagePath: 'upgradediffs',
-      },
-      {
-        label: 'Internal docs',
-        docId: 'internaldocslatest',
-      },
-    ],
-  },
 };
 
 export default function Cyence() {
