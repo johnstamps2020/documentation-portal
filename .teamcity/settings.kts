@@ -1676,7 +1676,7 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
-                GwDeployEnvs.DEV,
+                GwDeployEnvs.STAGING,
             ).forEach {
                 buildType(createDeployReactLandingPagesBuildType(it.envName))
             }
