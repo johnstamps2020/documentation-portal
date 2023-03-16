@@ -6,6 +6,7 @@ import TranslatedPages from './TranslatedPages';
 import UserProfile from './UserProfile';
 import { HeaderOptions } from 'components/Layout/Layout';
 import Stack from '@mui/material/Stack';
+import InternalBadge from '../../LandingPage/InternalBadge';
 
 export const headerHeight = '80px';
 export default function Header(headerOptions: HeaderOptions) {
@@ -31,6 +32,7 @@ export default function Header(headerOptions: HeaderOptions) {
         spacing={2}
         alignItems="center"
       >
+        <InternalBadge />
         <ExternalSites />
         <Glossary />
         <TranslatedPages />
