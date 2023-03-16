@@ -11,7 +11,7 @@ import { LandingPageLayoutProps } from 'pages/LandingPage/LandingPageTypes';
 import LandingPageSelector, {
   LandingPageSelectorProps,
 } from 'components/LandingPage/LandingPageSelector';
-import PagePropsController from 'components/LandingPage/PagePropsController';
+import EditPagePropsButton from '../EditPagePropsButton';
 
 export type SectionLayoutProps = LandingPageLayoutProps & {
   sections: SectionProps[];
@@ -41,9 +41,9 @@ export default function SectionLayout({
         backgroundColor: 'hsl(0, 0%, 98%)',
       }}
     >
+      <EditPagePropsButton pagePath={pageData.path} />
       <Grid xs={12} lg={8}>
         <Stack spacing={1} direction="column" width="100%">
-          <PagePropsController {...pageData} />
           <SelfManagedLink pagePath={pageData.path} backgroundImage="" />
           <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
             <Breadcrumbs />

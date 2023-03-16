@@ -3,6 +3,7 @@ import { PageError, usePagePath } from './usePageData';
 import { UserInfo } from 'server/dist/types/user';
 import { useSearchParams } from 'react-router-dom';
 import { SearchData, ServerSearchError } from 'server/dist/types/serverSearch';
+import { Page } from 'server/dist/model/entity/Page';
 
 const getter = (url: string) => fetch(url).then((r) => r.json());
 
@@ -49,6 +50,20 @@ export function useSearchData() {
 
   return {
     searchData: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+export function usePages() {
+  const { data, error, isLoading } = useSWR<Page[], ServerSearchError>(
+    '/safeConfig/entity/Page/all',
+    getter,
+    { keepPreviousData: true }
+  );
+
+  return {
+    pages: data,
     isLoading,
     isError: error,
   };

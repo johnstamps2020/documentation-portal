@@ -273,9 +273,17 @@ export async function deleteEntity(req: Request): Promise<ApiResponse> {
       };
     }
     const result = await AppDataSource.manager.delete(repo, options);
+    if (result.affected === 1) {
+      return {
+        status: 200,
+        body: result,
+      };
+    }
     return {
-      status: 200,
-      body: result,
+      status: 404,
+      body: {
+        message: 'Entity not found',
+      },
     };
   } catch (err) {
     return {

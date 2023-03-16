@@ -15,7 +15,7 @@ import ProductFamilySidebar from './ProductFamilySidebar';
 import LandingPageSelector, {
   LandingPageSelectorProps,
 } from 'components/LandingPage/LandingPageSelector';
-import PagePropsController from '../PagePropsController';
+import EditPagePropsButton from '../EditPagePropsButton';
 
 export type ProductFamilyLayoutProps = LandingPageLayoutProps & {
   items: LandingPageItemProps[];
@@ -43,9 +43,9 @@ export default function ProductFamilyLayout({
       gap={5}
       alignContent="center"
     >
+      <EditPagePropsButton pagePath={pageData.path} />
       <Grid>
         <Stack spacing={1} direction="column" width="100%">
-          <PagePropsController {...pageData} />
           <SelfManagedLink
             pagePath={pageData.path}
             backgroundImage={backgroundProps.backgroundImage}
