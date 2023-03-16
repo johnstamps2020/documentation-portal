@@ -29,8 +29,15 @@ function appendToSelectedItem(node: any, str: string) {
   }
 }
 
+export const pendoAndGoogleHead = `
+<!-- Google tag manager -->
+<script>${tagManagerHeadScript}</script>
+<!-- Pendo install -->
+<script>${pendoInstallScript}</script>
+`;
+
 const pendoInitializeScript = getPendoInitializeScript();
-const pendoAndGoogleScripts = `
+export const pendoAndGoogleScripts = `
       <!-- Pendo initialize -->
       <script>${pendoInitializeScript}</script>
       <!-- Google tag manager no-script -->
@@ -40,15 +47,7 @@ const responseSelectors = [
   {
     query: 'head',
     func: function (node: any) {
-      appendToSelectedItem(
-        node,
-        `
-    <!-- Google tag manager -->
-    <script>${tagManagerHeadScript}</script>
-    <!-- Pendo install -->
-    <script>${pendoInstallScript}</script>
-    `
-      );
+      appendToSelectedItem(node, pendoAndGoogleHead);
     },
   },
   {
