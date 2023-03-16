@@ -69,12 +69,7 @@ export function HeaderMenuLink({
 
   if (disableReactRouter || href?.startsWith('http') || !href) {
     return (
-      <Link
-        href={href}
-        sx={mergedStyles}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <Link href={href} sx={mergedStyles}>
         {children}
       </Link>
     );
