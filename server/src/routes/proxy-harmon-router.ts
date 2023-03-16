@@ -1,13 +1,14 @@
 import { Router } from 'express';
 import { winstonLogger } from '../controllers/loggerController';
-import harmon, { Select } from 'harmon';
+// @ts-ignore
+import harmon from 'harmon';
 
-const {
+import {
   tagManagerHeadScript,
   pendoInstallScript,
   tagManagerBody,
   getPendoInitializeScript,
-} = require('../controllers/analyticsController');
+} from '../controllers/analyticsController';
 
 function appendToSelectedItem(node: any, str: string) {
   try {
@@ -35,10 +36,10 @@ const pendoAndGoogleScripts = `
       <!-- Google tag manager no-script -->
       <noscript>${tagManagerBody}</noscript>`;
 
-const responseSelectors: Select[] = [
+const responseSelectors = [
   {
     query: 'head',
-    func: function (node) {
+    func: function (node: any) {
       appendToSelectedItem(
         node,
         `
@@ -57,7 +58,7 @@ const responseSelectors: Select[] = [
       // Docusaurus -> body.navigation-with-keyboard
       // Storybook -> div[style="position: static !important;"]
       'div.footerContents, header.wh_header, body.navigation-with-keyboard, div[style="position: static !important;"]',
-    func: function (node) {
+    func: function (node: any) {
       appendToSelectedItem(node, pendoAndGoogleScripts);
     },
   },
