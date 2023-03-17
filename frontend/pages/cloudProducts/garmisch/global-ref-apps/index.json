@@ -33,7 +33,7 @@
         {
           "label": "Installation",
           "id": "ipagarmischinstall"
-        }
+        },
         {
           "label": "Upgrade",
           "id": "ipagarmischupgrade"
