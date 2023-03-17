@@ -196,6 +196,8 @@ spec:
                 secretKeyRef:
                   name: ${APP_NAME}-external-secret
                   key: session_key
+            - name: FRONTEND_URL
+              value: ${FRONTEND_URL}
             - name: ELASTIC_SEARCH_URL
               value: ${ELASTIC_SEARCH_URL}
             - name: DOC_S3_URL
