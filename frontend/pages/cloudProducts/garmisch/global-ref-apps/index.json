@@ -27,11 +27,15 @@
           "id": "ipagarmischapp"
         },
         {
-          "label": "Configuration Guide",
+          "label": "Configuration",
           "id": "ipagarmischconfig"
         },
         {
-          "label": "Upgrade Guide",
+          "label": "Installation",
+          "id": "ipagarmischinstall"
+        }
+        {
+          "label": "Upgrade",
           "id": "ipagarmischupgrade"
         }
       ]
@@ -49,11 +53,11 @@
           "id": "ipjgarmischapp"
         },
         {
-          "label": "Configuration Guide",
+          "label": "Configuration",
           "id": "ipjgarmischconfig"
         },
         {
-          "label": "Installation Guide",
+          "label": "Installation",
           "id": "ipjgarmischinstall"
         }
       ]
@@ -75,7 +79,7 @@
           "id": "londonpcappgarmisch"
         },
         {
-          "label": "Configuration Guide",
+          "label": "Configuration",
           "id": "londonconfiggarmisch"
         }
       ]
