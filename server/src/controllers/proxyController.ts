@@ -1,9 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
 import fetch from 'node-fetch';
-import {
-  pendoAndGoogleHead,
-  pendoAndGoogleScripts,
-} from '../routes/proxy-harmon-router';
 import { runningInDevMode } from './utils/serverUtils';
 
 const HttpProxy = require('http-proxy');
@@ -126,28 +122,12 @@ export async function reactAppProxy(
     if (endsWithExtension) {
       proxy.web(req, res, proxyOptions, next);
     } else {
-      try {
-        const response = await fetch(`${proxyOptions.target}/index.html`);
-
-        if (!response.ok) {
-          throw new Error(
-            `Cannot get index.html fro landing pages: ${response}`
-          );
-        }
-
-        const text = await response.text();
-        res.status(getStatusCode(req.url));
-        if (!pendoAndGoogleHead || !pendoAndGoogleScripts) {
-          return res.send(text);
-        }
-
-        const modifiedText = text
-          .replace('</head>', `${pendoAndGoogleHead}</head>`)
-          .replace('</body>', `${pendoAndGoogleScripts}</body>`);
-        return res.send(modifiedText);
-      } catch (err) {
-        return res.status(500).send(err);
-      }
+      fetch(`${proxyOptions.target}/index.html`)
+        .then((response) => {
+          res.status(getStatusCode(req.url));
+          response.body.pipe(res);
+        })
+        .catch((err) => res.status(500).send(err));
     }
   }
 }
