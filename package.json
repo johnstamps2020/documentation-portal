@@ -31,6 +31,7 @@
     "dev:test-site": "NODE_ENV=development concurrently --kill-others-on-fail \"yarn dev:theme\" \"yarn workspace test-site dev\"",
     "dev:theme": "NODE_ENV=development yarn build:theme && yarn workspace @doctools/gw-theme-classic dev",
     "dev:server": "NODE_ENV=development yarn workspace server dev",
+    "pages:test-site": "yarn build:plugin && yarn workspace test-site pages",
     "prettier": "prettier --write .",
     "profile:html5": "yarn build:theme && yarn workspace html5 profile",
     "start:server": "yarn workspace server start",
