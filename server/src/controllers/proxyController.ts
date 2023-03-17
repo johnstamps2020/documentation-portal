@@ -106,10 +106,6 @@ export async function reactAppProxy(
       : `${process.env.DOC_S3_URL}/landing-pages-react`,
     changeOrigin: true,
   };
-  /* Open routes, such as /gw-login and /search, are configured in the database as public pages.
-                                        Resource routes, such as /static and /landing-page-resource, are configured in the database
-                                         as public pages with the "resource" component.
-                                        This way, the user can view these routes without login.*/
   if (isDevMode) {
     return proxy.web(req, res, proxyOptions, next);
   } else {
