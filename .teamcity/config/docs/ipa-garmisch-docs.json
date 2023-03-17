@@ -68,7 +68,23 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "ipagarmischinstall",
+      "title": "Installation Guide",
+      "url": "cloud/ipa/garmisch/install",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
-
   ]
 }
