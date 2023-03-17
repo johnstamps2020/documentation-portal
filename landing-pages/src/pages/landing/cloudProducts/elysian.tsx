@@ -14,6 +14,8 @@ const pageConfig: CategoryLayoutProps = {
     },
   },
 
+  showReleaseSelector: true,
+
   cards: [
     {
       label: 'Applications',
