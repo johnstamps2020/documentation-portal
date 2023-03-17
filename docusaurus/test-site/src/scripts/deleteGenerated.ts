@@ -1,6 +1,7 @@
 import { rmdirSync } from 'fs';
 import { rmdir } from 'fs/promises';
 import { resolve } from 'path';
+import { rimrafSync } from 'rimraf';
 
 const dirsToDelete = [
   resolve(__dirname, '../../static/generated'),
@@ -9,7 +10,7 @@ const dirsToDelete = [
 
 function deleteRecursively(directoryPath: string): void {
   console.log(`Deleting ${directoryPath}`);
-  rmdirSync(directoryPath);
+  rimrafSync(directoryPath);
   console.log('Deleted!');
 }
 

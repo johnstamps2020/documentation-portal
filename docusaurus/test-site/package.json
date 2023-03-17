@@ -28,6 +28,7 @@
     "prism-react-renderer": "^1.2.1",
     "react": "17.0.0",
     "react-dom": "17.0.0",
+    "rimraf": "^4.4.0",
     "url-loader": "^4.1.1"
   },
   "browserslist": {
