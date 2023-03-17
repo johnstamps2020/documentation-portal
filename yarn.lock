@@ -4464,6 +4464,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^18.15.3":
+  version: 18.15.3
+  resolution: "@types/node@npm:18.15.3"
+  checksum: 31b1d92475a82c30de29aa6c0771b18a276552d191283b4423ba2d61b3f01159bf0d02576c0b7cc834b043997893800db6bb47f246083ed85aa45e79c80875d7
+  languageName: node
+  linkType: hard
+
 "@types/parse-json@npm:^4.0.0":
   version: 4.0.0
   resolution: "@types/parse-json@npm:4.0.0"
@@ -15784,11 +15791,13 @@ __metadata:
     "@mdx-js/react": ^1.6.21
     "@svgr/webpack": ^5.5.0
     "@tsconfig/docusaurus": ^1.0.6
+    "@types/node": ^18.15.3
     clsx: ^1.1.1
     file-loader: ^6.2.0
     prism-react-renderer: ^1.2.1
     react: 17.0.0
     react-dom: 17.0.0
+    ts-node: ^10.9.1
     typescript: ^4.9.5
     url-loader: ^4.1.1
   languageName: unknown

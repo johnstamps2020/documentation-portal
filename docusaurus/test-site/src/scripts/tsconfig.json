@@ -1,0 +1,14 @@
+{
+  "extends": "ts-node/node16/tsconfig.json",
+  "ts-node": {
+    "transpileOnly": true,
+    "files": true,
+    "compilerOptions": {
+      "jsx": "react"
+    }
+  },
+  "compilerOptions": {
+    "jsx": "react"
+    // typescript options here
+  }
+}
