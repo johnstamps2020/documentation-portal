@@ -6,6 +6,7 @@ const {
   getVersionSelector,
   getDocumentMetadata,
   getDocId,
+  getDocUrlByMetadata,
   expensiveLoadConfig,
 } = require('../controllers/configController');
 const ejs = require('ejs');
@@ -105,6 +106,26 @@ router.get('/docId', async function (req, res, next) {
     res.send(docId);
   } catch (err) {
     winstonLogger.error(`[SAFE CONFIG] Problem sending doc ID
+    ERROR: ${JSON.stringify(err)}
+    QUERY: ${req.query}
+    REQ: ${JSON.stringify(req)}`);
+    next(err);
+  }
+});
+
+router.get('/docUrl', async function (req, res, next) {
+  try {
+    const { platforms, products, versions, title, url } = req.query;
+    const docUrl = await getDocUrlByMetadata(
+      products,
+      versions,
+      title,
+      req,
+      res
+    );
+    res.send(docUrl);
+  } catch (err) {
+    winstonLogger.error(`[SAFE CONFIG] Problem sending doc URL
     ERROR: ${JSON.stringify(err)}
     QUERY: ${req.query}
     REQ: ${JSON.stringify(req)}`);

@@ -245,6 +245,7 @@ async function getDocumentMetadata(docId, reqObj, resObj) {
     if (doc) {
       return {
         docTitle: doc.title,
+        docUrl: doc.url,
         docInternal: doc.internal,
         docEarlyAccess: doc.earlyAccess,
         ...doc.metadata,
@@ -303,6 +304,42 @@ async function getDocId(
   }
 }
 
+async function getDocUrlByMetadata(
+  products,
+  versions,
+  title,
+  reqObj,
+  resObj
+) {
+  try {
+    const config = await getConfig(reqObj, resObj);
+    const doc = config.docs.find(
+      (s) =>
+        products.split(',').some((p) => s.metadata.product.includes(p)) &&
+        versions.split(',').some((v) => s.metadata.version.includes(v)) &&
+        (title === s.title || title === `${s.title} Guide`) 
+    );
+    if (doc) {
+      return {
+        url: doc.url,
+      };
+    } else {
+      return {
+        error: true,
+        message: `Did not find a doc matching the provided info: ${products}, ${versions}, ${title}`,
+      };
+    }
+  } catch (err) {
+    winstonLogger.error(
+      `Problem getting document url by metadata
+              title: ${title},
+              product: ${products},
+              versions: ${versions}
+              ERROR: ${JSON.stringify(err)}`
+    );
+  }
+}
+
 module.exports = {
   getConfig,
   expensiveLoadConfig,
@@ -312,4 +349,5 @@ module.exports = {
   getVersionSelector,
   getDocumentMetadata,
   getDocId,
+  getDocUrlByMetadata
 };
