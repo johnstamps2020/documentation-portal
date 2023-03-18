@@ -304,6 +304,13 @@ async function getDocId(
   }
 }
 
+/* Finds a doc URL based on product, version, and title.
+** WARNING: This function is a bit fuzzy. It will find a match 
+** if the doc title that is passed to it matches either exactly
+** or has ' Guide' appended to it. Many docs are in the config
+** as, for example, "Installation", but to avoid awkward human-speech
+** in prose, are defined in library keys as "Installation Guide", so 
+** we allow that one exception. */
 async function getDocUrlByMetadata(
   products,
   versions,
