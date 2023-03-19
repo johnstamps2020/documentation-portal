@@ -16,6 +16,7 @@ import { addLightbox } from '../modules/lightbox';
 import { addEarlyAccessMark } from '../modules/earlyAccess';
 import '../stylesheets/html5template.css';
 import { UserInformation } from '@theme/Types';
+import { addBookLinks } from '../modules/xbook-ref';
 
 declare global {
   interface Window {
@@ -48,4 +49,5 @@ docReady(async function () {
   !isOffline && addFeedbackElements();
   addLightbox();
   highlightCode();
+  !isOffline && (addBookLinks());
 });

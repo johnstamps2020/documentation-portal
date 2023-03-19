@@ -70,6 +70,7 @@ export async function setMetadata() {
             valueSeparator
           );
           window.docTitle = wrapInQuotes(docInfo.docTitle);
+          window.docUrl = wrapInQuotes(docInfo.docUrl);
           window.docInternal = docInfo.docInternal;
           window.docEarlyAccess = docInfo.docEarlyAccess;
         }
