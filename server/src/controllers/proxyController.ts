@@ -1,6 +1,4 @@
 import { NextFunction, Request, Response } from 'express';
-import fetch from 'node-fetch';
-import { runningInDevMode } from './utils/serverUtils';
 
 const HttpProxy = require('http-proxy');
 const proxy = new HttpProxy();
@@ -99,31 +97,9 @@ export async function reactAppProxy(
   res: Response,
   next: NextFunction
 ) {
-  const isDevMode = runningInDevMode();
   const proxyOptions = {
-    target: isDevMode
-      ? 'http://localhost:6006/landing'
-      : `${process.env.DOC_S3_URL}/landing-pages-react`,
+    target: `${process.env.FRONTEND_URL}/landing`,
     changeOrigin: true,
   };
-  if (isDevMode) {
-    return proxy.web(req, res, proxyOptions, next);
-  } else {
-    const indexOfExtension = req.url.lastIndexOf('.');
-    const endsWithExtension =
-      indexOfExtension !== -1
-        ? /^\D+$/.test(req.url.substring(indexOfExtension))
-        : false;
-
-    if (endsWithExtension) {
-      proxy.web(req, res, proxyOptions, next);
-    } else {
-      fetch(`${proxyOptions.target}/index.html`)
-        .then((response) => {
-          res.status(getStatusCode(req.url));
-          response.body.pipe(res);
-        })
-        .catch((err) => res.status(500).send(err));
-    }
-  }
+  return proxy.web(req, res, proxyOptions, next);
 }
