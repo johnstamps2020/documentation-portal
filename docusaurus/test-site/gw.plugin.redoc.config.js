@@ -32,50 +32,14 @@ const config = {
       src: 'pc/is-50.3.0-pc-account-v1-openapi.json',
     },
     {
-      title: 'Admin API',
-      task: 'generate-from-spec',
-      src: 'pc/is-50.3.0-pc-admin-v1-openapi.json',
-    },
-    {
-      title: 'Common API',
-      task: 'generate-from-spec',
-      src: 'pc/is-50.3.0-pc-common-v1-openapi.json',
-    },
-    {
-      title: 'Composite API',
-      task: 'generate-from-spec',
-      src: 'pc/is-50.3.0-pc-composite-v1-openapi.json',
-    },
-    {
-      title: 'Job API',
-      task: 'generate-from-spec',
-      src: 'pc/is-50.3.0-pc-job-v1-openapi.json',
-    },
-    {
-      title: 'Policy API',
-      task: 'generate-from-spec',
-      src: 'pc/is-50.3.0-pc-policy-v1-openapi.json',
-    },
-    {
-      title: 'Product Definition API',
-      task: 'generate-from-spec',
-      src: 'pc/is-50.3.1-pc-productdefinition-v1-openapi.json',
-    },
-    {
       title: 'Example: Job API with LOB',
       task: 'generate-from-spec',
       src: 'pc/example-job-personal-auto-line.json',
     },
     {
-      title: 'Example: Policy API with LOB',
-      task: 'generate-from-spec',
-      src: 'pc/example-policy-personal-auto-line.json',
-    },
-    {
       title: 'Webhooks API', // Becomes the name of the folder
       task: 'generate-from-spec', // the only allowed value is `generate-from-spec`
       taskOptions: {
-        //group: "by-tag",
         removeSecurityNode: true, // removes the `security` field from the spec
         deletePath: (path) => path.startsWith('/internal/'),
       },
