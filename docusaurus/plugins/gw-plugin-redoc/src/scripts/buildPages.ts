@@ -16,14 +16,14 @@ function generateId(str: string) {
   return str.replace('/', '').replace(/[^a-zA-Z]/g, '-');
 }
 
-async function createTargetFolderIfNeeded(filePath: string) {
+function createTargetFolderIfNeeded(filePath: string) {
   const dirPath = dirname(filePath);
   if (!existsSync(dirPath)) {
     mkdirSync(dirPath, { recursive: true });
   }
 }
 
-async function writeFileIfNewOrChanged(filePath: string, fileContents: string) {
+function writeFileIfNewOrChanged(filePath: string, fileContents: string) {
   let alreadyMatches = false;
 
   if (existsSync(filePath)) {
@@ -34,18 +34,18 @@ async function writeFileIfNewOrChanged(filePath: string, fileContents: string) {
   }
 
   if (!alreadyMatches) {
+    createTargetFolderIfNeeded(filePath);
     writeFileSync(filePath, fileContents);
   }
 }
 
-async function createMarkdownFile(
+function createMarkdownFile(
   relativePath: string,
   title: string,
   docsDir: string,
   operation: string
 ) {
   const outputPath = join(docsDir, `${relativePath}.mdx`);
-  await createTargetFolderIfNeeded(outputPath);
 
   const markdownContents = `---
 title: ${operation.toUpperCase()} ${title}
@@ -58,7 +58,7 @@ import GwRedoc from '@theme/GwRedoc';
 <GwRedoc specRelativeUrl="${relativePath}.json" />
 `;
 
-  await writeFileIfNewOrChanged(outputPath, markdownContents);
+  writeFileIfNewOrChanged(outputPath, markdownContents);
 }
 
 function findAllByKey(obj: any, keyToFind: string): any {
@@ -73,7 +73,7 @@ function findAllByKey(obj: any, keyToFind: string): any {
   );
 }
 
-async function getMatchingRefs(obj: any, pathSegment: string) {
+function getMatchingRefs(obj: any, pathSegment: string) {
   const all = findAllByKey(obj, '$ref');
   const filtered = all.filter((key: string) =>
     key.split('/').includes(pathSegment)
@@ -87,9 +87,9 @@ async function getMatchingRefs(obj: any, pathSegment: string) {
   return result;
 }
 
-async function purify(sinner: any, sinName: string) {
-  const sinnerCopy = await cloneDeep(sinner);
-  const allowList = await getMatchingRefs(sinnerCopy, sinName);
+function purify(sinner: any, sinName: string) {
+  const sinnerCopy = cloneDeep(sinner);
+  const allowList = getMatchingRefs(sinnerCopy, sinName);
   if (!sinnerCopy.components) {
     sinnerCopy.components = {};
   }
@@ -115,27 +115,23 @@ async function purify(sinner: any, sinName: string) {
   return sinnerCopy;
 }
 
-async function purifySpec(specObject: any) {
-  const cloneOfTheSinner = await cloneDeep(specObject);
-  const copyWithPureParameters = await purify(cloneOfTheSinner, 'parameters');
-  const copyWithPureSchemas = await purify(copyWithPureParameters, 'schemas');
+function purifySpec(specObject: any) {
+  const cloneOfTheSinner = cloneDeep(specObject);
+  const copyWithPureParameters = purify(cloneOfTheSinner, 'parameters');
+  const copyWithPureSchemas = purify(copyWithPureParameters, 'schemas');
 
   return copyWithPureSchemas;
 }
 
-async function createSpecFile(
+function createSpecFile(
   relativePath: string,
   specObject: any,
   targetDir: string
 ) {
   const outputPath = join(targetDir, `${relativePath}.json`);
-  await createTargetFolderIfNeeded(outputPath);
 
-  const purifiedSpec = await purifySpec(specObject);
-  await writeFileIfNewOrChanged(
-    outputPath,
-    JSON.stringify(purifiedSpec, null, 2)
-  );
+  const purifiedSpec = purifySpec(specObject);
+  writeFileIfNewOrChanged(outputPath, JSON.stringify(purifiedSpec, null, 2));
   totalNumberOfSavedSpecs = totalNumberOfSavedSpecs + 1;
 }
 
@@ -179,7 +175,7 @@ function purgeCustomTags(
   return property;
 }
 
-async function writeFiles(
+function writeFiles(
   fileRelativeId: string,
   miniSpec: any,
   staticDir: string,
@@ -190,7 +186,7 @@ async function writeFiles(
   for (const operation of operations) {
     if (verbs.includes(operation)) {
       const fileRelativePath = `${fileRelativeId}--${operation}`;
-      const pathSpec = await cloneDeep(miniSpec);
+      const pathSpec = cloneDeep(miniSpec);
 
       pathSpec.paths[pathName] = purgeCustomTags(
         pathSpec.paths[pathName],
@@ -198,8 +194,8 @@ async function writeFiles(
         true
       );
 
-      await createSpecFile(fileRelativePath, pathSpec, staticDir);
-      await createMarkdownFile(fileRelativePath, pathName, docsDir, operation);
+      createSpecFile(fileRelativePath, pathSpec, staticDir);
+      createMarkdownFile(fileRelativePath, pathName, docsDir, operation);
     }
   }
 }
@@ -219,7 +215,7 @@ type SpecObjectTag = {
   name: string;
 };
 
-async function createNewTopics(
+function createNewTopics(
   specFileName: string,
   title: string,
   options: TaskOptions,
@@ -298,13 +294,7 @@ async function createNewTopics(
               });
             });
           });
-          await writeFiles(
-            fileRelativeId,
-            miniSpec,
-            staticDir,
-            pathName,
-            docsDir
-          );
+          writeFiles(fileRelativeId, miniSpec, staticDir, pathName, docsDir);
           tagNode[tag.name].push(fileRelativeId);
         }
       }
@@ -321,15 +311,9 @@ async function createNewTopics(
           generateId(pathName)
         );
 
-        let miniSpec = await cloneDeep(specTemplate);
+        let miniSpec = cloneDeep(specTemplate);
         miniSpec.paths[pathName] = specObject.paths[pathName];
-        await writeFiles(
-          fileRelativePath,
-          miniSpec,
-          staticDir,
-          pathName,
-          docsDir
-        );
+        writeFiles(fileRelativePath, miniSpec, staticDir, pathName, docsDir);
       }
     }
   }
@@ -353,15 +337,15 @@ export type GuidewireRedocPluginProps = {
   specList: SpecListItem[];
 };
 
-export async function buildPages({ configPath }: BuildPagesProps) {
+export function buildPages({ configPath }: BuildPagesProps) {
   const timeLabel = 'Elapsed time';
   console.time(timeLabel);
   console.log('Building pages from specs...');
   const config: GuidewireRedocPluginProps = require(configPath);
   const { specSourceDir, docsDir, staticDir, specList } = config;
-  for await (const item of specList) {
+  for (const item of specList) {
     if (item.task === 'generate-from-spec') {
-      await createNewTopics(
+      createNewTopics(
         item.src,
         item.title,
         item.taskOptions,
@@ -377,10 +361,8 @@ export async function buildPages({ configPath }: BuildPagesProps) {
     resolve(__dirname, scriptFilename),
     'utf-8'
   );
-  await writeFileIfNewOrChanged(
-    resolve(staticDir, 'generated', scriptFilename),
-    scriptFileContents
-  );
+  const scriptTargetFileName = resolve(staticDir, 'generated', scriptFilename);
+  writeFileIfNewOrChanged(scriptTargetFileName, scriptFileContents);
 
   console.log(
     'Improved spec load times by removing',
