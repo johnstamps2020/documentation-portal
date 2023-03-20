@@ -163,7 +163,6 @@
         "type": "string",
         "enum": [
           "Advanced Product Designer",
-          "Advanced Product Designer for Claims",
           "Analytics Manager Solution Templates",
           "App Events Webhooks",
           "PolicyCenter",
@@ -171,7 +170,6 @@
           "ClaimCenter",
           "ClaimCenter Package for France",
           "InsuranceSuite Configuration Upgrade Tools",
-          "InsuranceSuite Configuration Upgrade Tools Compatibility",
           "Businessowners Standards Based Template",
           "Commercial Auto Standards Based Template",
           "Crime Standards Based Template",
@@ -202,7 +200,6 @@
           "Guidewire Cloud Standards",
           "VendorEngage",
           "Cloud Platform",
-          "Feature Preview",
           "Guidewire InsuranceSuite Package for Germany",
           "InsuranceSuite Package for Australia",
           "InsuranceSuite Package for Japan",
