@@ -85,7 +85,10 @@ enum class GwConfigParams(val paramValue: String) {
 }
 
 enum class GwDockerImages(val imageUrl: String) {
-    DOC_PORTAL("${GwConfigParams.ECR_HOST.paramValue}/tenant-doctools-docportal"), DOC_PORTAL_PROD("${GwConfigParams.ECR_HOST_PROD.paramValue}/tenant-doctools-docportal"), DITA_OT_3_4_1(
+    DOC_PORTAL("${GwConfigParams.ECR_HOST.paramValue}/tenant-doctools-docportal"), DOC_PORTAL_PROD("${GwConfigParams.ECR_HOST_PROD.paramValue}/tenant-doctools-docportal"), DOC_PORTAL_FRONTEND(
+        "${GwConfigParams.ECR_HOST.paramValue}/tenant-doctools-docportal-frontend"
+    ),
+    DITA_OT_3_4_1(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/dita-ot:3.4.1"
     ),
     DITA_OT_LATEST("${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/dita-ot:latest"), ATMOS_DEPLOY_2_6_0(
@@ -1676,7 +1679,7 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
-                GwDeployEnvs.STAGING,
+                GwDeployEnvs.DEV,
             ).forEach {
                 buildType(createDeployReactLandingPagesBuildType(it.envName))
             }
@@ -1684,6 +1687,11 @@ object Frontend {
     }
 
     private fun createDeployReactLandingPagesBuildType(deployEnv: String): BuildType {
+        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
+        val tagVersion = "latest"
+        val appName = "docportal-frontend"
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
+        val namespace = GwAtmosLabels.POD_NAME.labelValue
         return BuildType {
             name = "Deploy React landing pages to $deployEnv"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -1694,19 +1702,81 @@ object Frontend {
                 cleanCheckout = true
             }
 
-            val publishPath = "landing-pages-react"
-
             steps {
-                step(
-                    GwBuildSteps.createBuildYarnProjectStep(
-                        deployEnv, publishPath, "build", "16.18.0", "", "", "", "", "", null, false
-                    )
-                )
-                step(
-                    GwBuildSteps.createUploadContentToS3BucketStep(
-                        deployEnv, "%teamcity.build.checkoutDir%/landing-pages/build", publishPath
-                    )
-                )
+                script {
+                    name = "Build and publish server Docker Image to DEV ECR"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                        #!/bin/bash 
+                        set -xe
+                        
+                        # Log into the dev ECR, build and push the image
+                        $awsEnvVars
+                        
+                        export TAG_VERSION=$tagVersion
+                        export DEPT_CODE=${GwAtmosLabels.DEPT_CODE.labelValue}
+                        export POD_NAME=${GwAtmosLabels.POD_NAME.labelValue}
+                        export DEPLOY_ENV=$deployEnv
+                        export TARGET_URL="https://croissant.dev.ccs.guidewire.net"
+                        export BASE_URL="/landing/"
+        
+                        set +x
+                        docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
+                        set -x
+                        docker build -t ${GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl}:${tagVersion} . \
+                        --build-arg TAG_VERSION \
+                        --build-arg DEPT_CODE \
+                        --build-arg POD_NAME \
+                        --build-arg DEPLOY_ENV \
+                        --build-arg TARGET_URL \
+                        --build-arg BASE_URL 
+                        docker push ${GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl}:${tagVersion}
+                    """.trimIndent()
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerRunParameters =
+                        "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
+
+                }
+                script {
+                    name = "Deploy to Kubernetes"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                        #!/bin/bash 
+                        set -eux
+                                
+                        # Set AWS credentials
+                        $awsEnvVars
+                        
+                        # Set environment variables needed for Kubernetes config files
+                        export APP_NAME="$appName"
+                        export POD_NAME="${GwAtmosLabels.POD_NAME.labelValue}"
+                        export DEPT_CODE="${GwAtmosLabels.DEPT_CODE.labelValue}"
+                        export AWS_ROLE="arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"
+                        export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl}"
+                        export TAG_VERSION=$tagVersion
+                        export DEPLOY_ENV=$deployEnv
+                        export REQUESTS_MEMORY="2G"
+                        export REQUESTS_CPU="500m"
+                        export LIMITS_MEMORY="4G"
+                        export LIMITS_CPU="1"
+                        
+                        # Set other envs
+                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
+                        
+                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
+                        
+                        echo ${'$'}(kubectl get pods --namespace=${namespace})
+                        
+                        eval "echo \"${'$'}(cat landing-pages/kube/deployment.yml)\"" > ${'$'}TMP_DEPLOYMENT_FILE
+                                                
+                        sed -ie "s/BUILD_TIME/${'$'}(date)/g" ${'$'}TMP_DEPLOYMENT_FILE
+                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${namespace}
+                    """.trimIndent()
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                }
             }
 
             triggers {
@@ -2440,6 +2510,7 @@ object Server {
                         export OKTA_DOMAIN="https://guidewire-hub.oktapreview.com"
                         export OKTA_IDP="0oamwriqo1E1dOdd70h7"
                         export APP_BASE_URL="https://$appName.dev.ccs.guidewire.net"
+                        export FRONTEND_URL="http://docportal-frontend.doctools:6006"
                         export ELASTIC_SEARCH_URL="https://docsearch-doctools.staging.ccs.guidewire.net"
                         export DOC_S3_URL="https://docportal-content.staging.ccs.guidewire.net"
                         export PORTAL2_S3_URL="https://portal2-content.omega2-andromeda.guidewire.net"
