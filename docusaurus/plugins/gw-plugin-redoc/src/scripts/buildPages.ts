@@ -88,7 +88,7 @@ async function getMatchingRefs(obj: any, pathSegment: string) {
 }
 
 async function purify(sinner: any, sinName: string) {
-  const sinnerCopy = await cloneObject(sinner);
+  const sinnerCopy = await cloneDeep(sinner);
   const allowList = await getMatchingRefs(sinnerCopy, sinName);
   if (!sinnerCopy.components) {
     sinnerCopy.components = {};
@@ -116,7 +116,7 @@ async function purify(sinner: any, sinName: string) {
 }
 
 async function purifySpec(specObject: any) {
-  const cloneOfTheSinner = await cloneObject(specObject);
+  const cloneOfTheSinner = await cloneDeep(specObject);
   const copyWithPureParameters = await purify(cloneOfTheSinner, 'parameters');
   const copyWithPureSchemas = await purify(copyWithPureParameters, 'schemas');
 
@@ -134,11 +134,6 @@ async function createSpecFile(
   const purifiedSpec = await purifySpec(specObject);
   await writeFileIfNewOrChanged(outputPath, JSON.stringify(purifiedSpec));
   totalNumberOfSavedSpecs = totalNumberOfSavedSpecs + 1;
-}
-
-async function cloneObject(obj: any) {
-  const clone = cloneDeep(obj);
-  return clone;
 }
 
 function getSpecObject(specString: string) {
@@ -192,7 +187,7 @@ async function writeFiles(
   for (const operation of operations) {
     if (verbs.includes(operation)) {
       const fileRelativePath = `${fileRelativeId}--${operation}`;
-      const pathSpec = await cloneObject(miniSpec);
+      const pathSpec = await cloneDeep(miniSpec);
 
       pathSpec.paths[pathName] = purgeCustomTags(
         pathSpec.paths[pathName],
@@ -233,7 +228,7 @@ async function createNewTopics(
     encoding: 'utf-8',
   });
   const specObject = getSpecObject(specString);
-  let specTemplate = await cloneObject(specObject);
+  let specTemplate = await cloneDeep(specObject);
   specTemplate.paths = {};
 
   if (options?.removeSecurityNode) {
@@ -323,7 +318,7 @@ async function createNewTopics(
           generateId(pathName)
         );
 
-        let miniSpec = await cloneObject(specTemplate);
+        let miniSpec = await cloneDeep(specTemplate);
         miniSpec.paths[pathName] = specObject.paths[pathName];
         await writeFiles(
           fileRelativePath,
