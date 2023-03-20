@@ -126,9 +126,9 @@ async function purifySpec(specObject: any) {
 async function createSpecFile(
   relativePath: string,
   specObject: any,
-  staticDir: string
+  targetDir: string
 ) {
-  const outputPath = join(staticDir, `${relativePath}.json`);
+  const outputPath = join(targetDir, `${relativePath}.json`);
   await createTargetFolderIfNeeded(outputPath);
 
   const purifiedSpec = await purifySpec(specObject);
@@ -354,6 +354,8 @@ export type GuidewireRedocPluginProps = {
 };
 
 export async function buildPages({ configPath }: BuildPagesProps) {
+  const timeLabel = 'Elapsed time';
+  console.time(timeLabel);
   console.log('Building pages from specs...');
   const config: GuidewireRedocPluginProps = require(configPath);
   const { specSourceDir, docsDir, staticDir, specList } = config;
@@ -388,4 +390,5 @@ export async function buildPages({ configPath }: BuildPagesProps) {
     'spec pages'
   );
   console.log('DONE building pages from specs');
+  console.timeEnd(timeLabel);
 }

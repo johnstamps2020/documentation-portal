@@ -12,26 +12,6 @@ const config = {
       src: 'apd-openapi.json',
     },
     {
-      title: 'Admin API',
-      task: 'generate-from-spec',
-      src: 'cc/cc-admin.json',
-    },
-    {
-      title: 'Claim API',
-      task: 'generate-from-spec',
-      src: 'cc/cc-claim.json',
-    },
-    {
-      title: 'Common API',
-      task: 'generate-from-spec',
-      src: 'cc/cc-common.json',
-    },
-    {
-      title: 'Composite API',
-      task: 'generate-from-spec',
-      src: 'cc/cc-composite.json',
-    },
-    {
       title: 'APD API definitions',
       task: 'generate-from-spec',
       src: 'apd-openapi.json',
@@ -111,11 +91,6 @@ const config = {
         deletePath: (path) => path.startsWith('/internal/'), // if this function returns true, the path is not included in the output
       },
       src: 'cicd-manager.json', // path to the spec file, relative to `specSourceDir`, can by .json or .yaml
-    },
-    {
-      title: 'Admin API',
-      task: 'generate-from-spec',
-      src: 'bc/bc-admin.json',
     },
   ],
 };
