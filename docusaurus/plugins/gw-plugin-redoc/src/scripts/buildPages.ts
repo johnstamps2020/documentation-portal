@@ -132,7 +132,10 @@ async function createSpecFile(
   await createTargetFolderIfNeeded(outputPath);
 
   const purifiedSpec = await purifySpec(specObject);
-  await writeFileIfNewOrChanged(outputPath, JSON.stringify(purifiedSpec));
+  await writeFileIfNewOrChanged(
+    outputPath,
+    JSON.stringify(purifiedSpec, null, 2)
+  );
   totalNumberOfSavedSpecs = totalNumberOfSavedSpecs + 1;
 }
 
@@ -228,7 +231,7 @@ async function createNewTopics(
     encoding: 'utf-8',
   });
   const specObject = getSpecObject(specString);
-  let specTemplate = await cloneDeep(specObject);
+  let specTemplate = cloneDeep(specObject);
   specTemplate.paths = {};
 
   if (options?.removeSecurityNode) {
