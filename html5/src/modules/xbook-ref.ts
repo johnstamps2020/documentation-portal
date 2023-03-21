@@ -1,16 +1,13 @@
 export async function addBookLinks() {
   const keywords = document.querySelectorAll('cite .keyword');
-  if (keywords == null) return;
-
-  
-  
+  if (keywords == null) return;  
   keywords.forEach(async (keyword, i) => {
     const docTitle = keyword.textContent;
     const citeClassName = keyword.parentElement.className;
     let product = window.docProduct;
     let version = window.docVersion;
     let contextid = null;
-    
+
     const contextidRegex = /contextid\(([^\)]*)\)/;
     if (contextidRegex.test(citeClassName)) {
       contextid = contextidRegex.exec(citeClassName)[1];
