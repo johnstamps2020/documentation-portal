@@ -1,17 +1,31 @@
 export async function addBookLinks() {
   const keywords = document.querySelectorAll('cite .keyword');
   if (keywords == null) return;
+
+  let product = window.docProduct;
+  let version = window.docVersion;
   
   keywords.forEach(async (keyword, i) => {
     const docTitle = keyword.textContent;
     const citeClassName = keyword.parentElement.className;
-    const contextidRegex = /contextid\((.*)\)/;
+    const contextidRegex = /contextid\(([^\)]*)\)/;
+    
     let contextid = null;
     if (contextidRegex.test(citeClassName)) {
       contextid = contextidRegex.exec(citeClassName)[1];
     }
+
+    const productRegex = /product\(([^\)]*)\)/;
+    if (productRegex.test(citeClassName)) {
+      product = productRegex.exec(citeClassName)[1];
+    }
+    const versionRegex = /version\(([^\)]*)\)/;
+    if (versionRegex.test(citeClassName)) {
+      version = versionRegex.exec(citeClassName)[1];
+    }
+    
     try {
-      const response = await fetch(`/safeConfig/docUrl?products=${window.docProduct}&versions=${window.docVersion}&title=${docTitle}`);
+      const response = await fetch(`/safeConfig/docUrl?products=${product}&versions=${version}&title=${docTitle}`);
       if (response.ok) {
         const docInfo = await response.json();
         if (docInfo.error) return;
@@ -53,7 +67,6 @@ async function getTopicUrl(url: string, contextid: string) {
       const idInfo = await response.json();
       if (idInfo.error) return;
       const id = idInfo.contextIds.find((match: { ids: string | String[]; }) => match.ids.includes(contextid));
-      console.log(id.file);
       return id.file;
     }
   } catch (err) {
