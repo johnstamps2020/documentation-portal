@@ -18,9 +18,9 @@
       "earlyAccess": true
     },
     {
-      "id": "workflowcockpit",
-      "title": "Cockpit (Early Access)",
-      "url": "cloud/workflow-service/cockpit",
+      "id": "workflowconsole",
+      "title": "Workflow Console (Early Access)",
+      "url": "cloud/workflow-service/workflow-console",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Workflow Service"],

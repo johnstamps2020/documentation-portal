@@ -12,9 +12,9 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "cockpit-ops.ditamap",
+      "root": "workflow-console-ops.ditamap",
       "srcId": "workflowservicesrc",
-      "docId": "workflowcockpit",
+      "docId": "workflowconsole",
       "indexRedirect": true
     },
     {
