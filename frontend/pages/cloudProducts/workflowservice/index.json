@@ -29,8 +29,8 @@
       "class": "subject administration",
       "items": [
         {
-          "label": "Cockpit",
-          "id": "workflowcockpit"
+          "label": "Workflow Console",
+          "id": "workflowconsole"
         }
       ]
     }
