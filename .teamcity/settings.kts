@@ -2763,7 +2763,7 @@ object Server {
             deployServerBuildType.steps.stepsOrder.add(0, buildAndPublishServerDockerImageStep.id.toString())
             deployServerBuildType.dependencies {
                 snapshot(Checkmarx) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
+                    onDependencyFailure = FailureAction.ADD_PROBLEM
                 }
                 snapshot(TestDocSiteServerApp) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
