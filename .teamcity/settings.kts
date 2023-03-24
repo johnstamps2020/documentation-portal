@@ -2120,6 +2120,7 @@ object Server {
 
         params {
             text("checkmarx.project.name", "doctools")
+            text("checkmarx.source.directory", "%teamcity.build.checkoutDir%/server")
             text(
                 "checkmarx.location.files.exclude ", """
                 !**/_cvs/**/*, !**/.svn/**/*,   !**/.hg/**/*,   !**/.git/**/*,  !**/.bzr/**/*, !**/bin/**/*,
@@ -2763,7 +2764,7 @@ object Server {
             deployServerBuildType.steps.stepsOrder.add(0, buildAndPublishServerDockerImageStep.id.toString())
             deployServerBuildType.dependencies {
                 snapshot(Checkmarx) {
-                    onDependencyFailure = FailureAction.ADD_PROBLEM
+                    onDependencyFailure = FailureAction.FAIL_TO_START
                 }
                 snapshot(TestDocSiteServerApp) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
