@@ -32,6 +32,7 @@ main > article:first-of-type > article.nested0:first-of-type {
   font-weight: inherit !important;
   font-size: inherit !important;
   font-family: inherit !important;
+  background-color: inherit;
 }
 
 #footerCenter {
