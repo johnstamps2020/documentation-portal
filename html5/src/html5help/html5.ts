@@ -7,7 +7,7 @@ import { setMetadata } from '../modules/metadata';
 import { addVersionSelector } from '../modules/versionSelector';
 import { addAvatar } from '../modules/avatar';
 import { addSearchBox } from '../modules/searchBox';
-import { normalizeCode, highlightCode } from '../modules/code';
+import { normalizeCode } from '../modules/code';
 import { setUpSidebar } from '../modules/sidebar';
 import { showTopicRecommendations } from '../modules/recommendations';
 import { addSkipNav } from '../modules/skipNav';
@@ -48,6 +48,5 @@ docReady(async function () {
   addFooterContents(isOffline);
   !isOffline && addFeedbackElements();
   addLightbox();
-  highlightCode();
   !isOffline && (addBookLinks());
 });
