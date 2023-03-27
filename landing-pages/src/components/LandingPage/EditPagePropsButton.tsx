@@ -1,4 +1,3 @@
-import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import PagePropsController from '../LandingPage/PagePropsController';
 import Dialog from '@mui/material/Dialog';

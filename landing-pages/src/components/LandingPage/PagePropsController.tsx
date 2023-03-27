@@ -13,7 +13,7 @@ import { usePageData } from '../../hooks/usePageData';
 import { Page } from 'server/dist/model/entity/Page';
 import Snackbar from '@mui/material/Snackbar';
 
-const emptyPage: Page = {
+export const emptyPage: Page = {
   path: '',
   title: '',
   component: '',
