@@ -25,7 +25,7 @@ export const emptyPage: Page = {
 };
 
 type PagePropsControllerProps = {
-  pagePath: string;
+  pagePath?: string;
   fullEditMode?: boolean;
 };
 
@@ -68,14 +68,18 @@ export default function PagePropsController({
     useState<EditMessage>(emptyEditMessage);
 
   useEffect(() => {
-    pageData && setTmpPageData(pageData);
+    pagePath && pageData && setTmpPageData(pageData);
   }, [pageData]);
 
   useEffect(() => {
     if (
       isMutating ||
       pageAlreadyExists ||
-      JSON.stringify(tmpPageData) === JSON.stringify(pageData)
+      JSON.stringify(tmpPageData) === JSON.stringify(pageData) ||
+      (!pagePath &&
+        JSON.stringify(tmpPageData) === JSON.stringify(emptyPage)) ||
+      !tmpPageData.path ||
+      !tmpPageData.title
     ) {
       setCanSubmitData(false);
     } else {
@@ -118,7 +122,11 @@ export default function PagePropsController({
   }
 
   function handleResetForm() {
-    setTmpPageData(pageData || emptyPage);
+    if (pagePath && pageData) {
+      setTmpPageData(pageData);
+    } else {
+      setTmpPageData(emptyPage);
+    }
   }
 
   async function handleSave() {
