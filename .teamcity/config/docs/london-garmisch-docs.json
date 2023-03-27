@@ -9,7 +9,8 @@
         "product": ["London Market"],
         "platform": ["Cloud"],
         "version": ["Garmisch"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "release": ["Garmisch"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -26,7 +27,8 @@
         "product": ["London Market"],
         "platform": ["Cloud"],
         "version": ["Garmisch"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "release": ["Garmisch"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -43,7 +45,8 @@
         "product": ["London Market"],
         "platform": ["Cloud"],
         "version": ["Garmisch"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "release": ["Garmisch"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -60,7 +63,8 @@
         "product": ["London Market"],
         "platform": ["Cloud"],
         "version": ["Garmisch"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "release": ["Garmisch"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

@@ -8,7 +8,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2022.05"],
+        "version": ["2022.05", "2022.09"],
         "release": ["Elysian", "Flaine"],
         "subject": ["Development"]
       },

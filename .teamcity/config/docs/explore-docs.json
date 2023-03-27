@@ -9,7 +9,8 @@
         "platform": ["Cloud"],
         "product": ["Explore"],
         "version": ["latest"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -26,7 +27,8 @@
         "platform": ["Cloud"],
         "product": ["Explore"],
         "version": ["latest"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -43,7 +45,8 @@
         "platform": ["Cloud"],
         "product": ["Explore"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

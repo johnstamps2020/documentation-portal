@@ -9,7 +9,8 @@
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
         "version": ["2022.11"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "release": ["Flaine"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -26,7 +27,8 @@
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
         "version": ["2022.11"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "release": ["Flaine"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -43,7 +45,8 @@
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
         "version": ["2022.11"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "release": ["Flaine"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

@@ -8,7 +8,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
-        "version": ["latest"]
+        "version": ["2022.09"],
+        "release": ["Flaine"]
       },
       "environments": ["staging", "prod"],
       "internal": false,
@@ -96,7 +97,8 @@
         "platform": ["Cloud"],
         "product": ["Advanced Product Designer"],
         "version": ["2022.09"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "release": ["Flaine"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -113,7 +115,8 @@
         "platform": ["Cloud"],
         "product": ["Advanced Product Designer"],
         "version": ["2023.02"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "release": ["Garmisch"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

@@ -9,7 +9,8 @@
         "platform": ["Cloud"],
         "product": ["Workflow Service"],
         "version": ["latest"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "release": ["Garmisch"]
       },
       "environments": ["staging"],
       "indexForSearch": false,
@@ -25,7 +26,8 @@
         "platform": ["Cloud"],
         "product": ["Workflow Service"],
         "version": ["latest"],
-        "subject": ["Administration"]
+        "subject": ["Administration"],
+        "release": ["Garmisch"]
       },
       "environments": ["staging"],
       "indexForSearch": false,
@@ -41,7 +43,8 @@
         "platform": ["Cloud"],
         "product": ["Workflow Service"],
         "version": ["latest"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "release": ["Garmisch"]
       },
       "environments": ["staging"],
       "indexForSearch": false,
