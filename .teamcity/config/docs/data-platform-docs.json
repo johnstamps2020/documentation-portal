@@ -8,7 +8,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Data Platform"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "release": ["Elysian", "Flaine", "Garmisch"]
       },
       "environments": ["staging", "prod"],
       "indexForSearch": false,

@@ -9,7 +9,8 @@
         "product": ["Data Studio"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "release": ["Flaine", "Garmisch"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

@@ -9,7 +9,8 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2022.1", "2022.2"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "release": ["Elysian", "Flaine", "Garmisch"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -26,7 +27,8 @@
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2022.1", "2022.2"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "release": ["Elysian", "Flaine", "Garmisch"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -114,7 +116,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["4"],
+        "version": ["2021.2"],
         "subject": ["Release notes"],
         "release": ["Dobson"]
       },
@@ -134,7 +136,7 @@
         "product": ["InsuranceNow Consumer Service Portal"],
         "version": ["3.26"],
         "subject": ["Release notes"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+        "release": ["Aspen", "Banff", "Cortina"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -152,7 +154,7 @@
         "product": ["InsuranceNow Consumer Service Portal"],
         "version": ["3.25"],
         "subject": ["Release notes"],
-        "release": ["Banff", "Cortina", "Dobson"]
+        "release": ["Aspen", "Banff", "Cortina"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -170,7 +172,7 @@
         "product": ["InsuranceNow Consumer Service Portal"],
         "version": ["3.24"],
         "subject": ["Release notes"],
-        "release": ["Banff", "Cortina", "Dobson"]
+        "release": ["Aspen", "Banff", "Cortina"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -188,7 +190,7 @@
         "product": ["InsuranceNow Consumer Service Portal"],
         "version": ["3.23"],
         "subject": ["Release notes"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+        "release": ["Aspen", "Banff", "Cortina"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -204,9 +206,9 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2021.2", "2022.1"],
+        "version": ["2021.2", "2022.1", "2022.2"],
         "subject": ["Installation"],
-        "release": ["Dobson", "Elysian", "Flaine"]
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -256,9 +258,9 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2022.1", "2021.2", "2021.1"],
+        "version": ["2022.2", "2022.1", "2021.2", "2021.1"],
         "subject": ["Features and functionality"],
-        "release": ["Cortina", "Dobson", "Elysian"]
+        "release": ["Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

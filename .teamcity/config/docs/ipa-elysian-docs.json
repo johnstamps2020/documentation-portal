@@ -9,7 +9,8 @@
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "release": ["Elysian"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -26,7 +27,8 @@
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "release": ["Elysian"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -43,7 +45,8 @@
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "release": ["Elysian"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

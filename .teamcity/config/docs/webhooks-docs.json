@@ -9,7 +9,7 @@
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Flaine"],
+        "release": ["Flaine", "Garmisch"],
         "subject": ["Integration"]
       },
       "environments": ["staging", "prod"],

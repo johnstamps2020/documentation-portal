@@ -9,7 +9,8 @@
         "product": ["Cloud Platform"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "release": ["Flaine", "Garmisch"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -26,7 +27,8 @@
         "product": ["Cloud Platform"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "release": ["Flaine", "Garmisch"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -43,7 +45,8 @@
         "product": ["Cloud Platform"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "release": ["Elysian", "Flaine", "Garmisch"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -60,7 +63,8 @@
         "product": ["Cloud Platform"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "release": ["Garmisch"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -78,7 +82,9 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "subject": ["Development"],
+        "release": ["Elysian", "Flaine", "Garmisch"]
       },
       "environments": ["staging", "prod"],
       "public": true,
@@ -108,7 +114,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -126,7 +133,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
       },
       "environments": ["staging", "prod"],
       "public": false,
