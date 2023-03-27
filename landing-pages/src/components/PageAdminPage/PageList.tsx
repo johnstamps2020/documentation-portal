@@ -15,22 +15,34 @@ export default function PageList() {
   }
   return (
     <Grid container gap={1}>
-      {pages.map(({ path, title }) => (
-        <Grid key={path} xs={12} sm={6} md={3}>
-          <Card sx={{ padding: 1, height: '100%' }}>
-            <CardContent>
-              <Typography variant="h2">{title}</Typography>
-              <Typography variant="subtitle1" component="div">
-                {path}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <EditButton pagePath={path} />
-              <DeleteButton pagePath={path} />
-            </CardActions>
-          </Card>
-        </Grid>
-      ))}
+      {pages
+        .sort((a, b) => {
+          const aTitle = a.title.toLowerCase();
+          const bTitle = b.title.toLowerCase();
+          let result = 0;
+          if (aTitle > bTitle) {
+            result = 1;
+          } else if (aTitle < bTitle) {
+            result = -1;
+          }
+          return result;
+        })
+        .map(({ path, title }) => (
+          <Grid key={path} xs={12} sm={6} md={3}>
+            <Card sx={{ padding: 1, height: '100%' }}>
+              <CardContent>
+                <Typography variant="h2">{title}</Typography>
+                <Typography variant="subtitle1" component="div">
+                  {path}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <EditButton pagePath={path} />
+                <DeleteButton pagePath={path} />
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
     </Grid>
   );
 }
