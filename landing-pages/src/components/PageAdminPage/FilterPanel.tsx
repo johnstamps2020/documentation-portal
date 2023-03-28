@@ -4,14 +4,22 @@ import FormGroup from '@mui/material/FormGroup';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
-import { emptyPage } from 'components/LandingPage/PagePropsController';
-import { Page } from 'server/dist/model/entity/Page';
+import PageList from './PageList';
+import IconButton from '@mui/material/IconButton';
+import ClearIcon from '@mui/icons-material/Clear';
 
-type Filters = Page;
+const emptyFilters = {
+  path: '',
+  title: '',
+  component: '',
+  searchFilters: {},
+  internal: true,
+  public: false,
+  earlyAccess: true,
+  isInProduction: false,
+};
 
-const emptyFilters = emptyPage;
-
-export default function Filters() {
+export default function FilterPanel() {
   const [filters, setFilters] = useState(emptyFilters);
 
   function handleChange(field: string, value: string | boolean) {
@@ -60,6 +68,7 @@ export default function Filters() {
           )}
         </FormGroup>
       </Stack>
+      <PageList filters={filters} />
     </Stack>
   );
 }

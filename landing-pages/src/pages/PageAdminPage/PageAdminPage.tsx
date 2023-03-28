@@ -1,5 +1,5 @@
 import Layout from 'components/Layout/Layout';
-import Filters from 'components/PageAdminPage/Filters';
+import FilterPanel from 'components/PageAdminPage/FilterPanel';
 import PageList from 'components/PageAdminPage/PageList';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -18,8 +18,7 @@ export default function PageAdminPage() {
             <Typography variant="h1" sx={{ color: 'black' }}>
               {title}
             </Typography>
-            <Filters />
-            <PageList />
+            <FilterPanel />
           </Stack>
         </Container>
       </AdminAccess>
