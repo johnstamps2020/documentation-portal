@@ -63,6 +63,7 @@ export default function PagePropsController({
   );
   const [tmpPageData, setTmpPageData] = useState(emptyPage);
   const [canSubmitData, setCanSubmitData] = useState(false);
+  const [dataChanged, setDataChanged] = useState(false);
   const [pageAlreadyExists, setPageAlreadyExists] = useState<boolean>();
   const [editResultMessage, setEditResultMessage] =
     useState<EditMessage>(emptyEditMessage);
@@ -73,11 +74,20 @@ export default function PagePropsController({
 
   useEffect(() => {
     if (
-      isMutating ||
-      pageAlreadyExists ||
-      JSON.stringify(tmpPageData) === JSON.stringify(pageData) ||
       (!pagePath &&
         JSON.stringify(tmpPageData) === JSON.stringify(emptyPage)) ||
+      JSON.stringify(tmpPageData) === JSON.stringify(pageData)
+    ) {
+      setDataChanged(false);
+    } else {
+      setDataChanged(true);
+    }
+  }, [tmpPageData, pageData]);
+
+  useEffect(() => {
+    if (
+      isMutating ||
+      pageAlreadyExists ||
       !tmpPageData.path ||
       !tmpPageData.title
     ) {
@@ -127,6 +137,7 @@ export default function PagePropsController({
     } else {
       setTmpPageData(emptyPage);
     }
+    setPageAlreadyExists(false);
   }
 
   async function handleSave() {
@@ -214,8 +225,13 @@ export default function PagePropsController({
         ))}
       </FormGroup>
       <Stack direction="row" spacing={1}>
-        <ButtonGroup disabled={!canSubmitData}>
-          <Button variant="contained" color="primary" onClick={handleSave}>
+        <ButtonGroup disabled={!dataChanged}>
+          <Button
+            disabled={!canSubmitData}
+            variant="contained"
+            color="primary"
+            onClick={handleSave}
+          >
             Save
           </Button>
           <Button variant="outlined" color="warning" onClick={handleResetForm}>
