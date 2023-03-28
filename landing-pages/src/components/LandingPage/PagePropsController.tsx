@@ -110,9 +110,6 @@ export default function PagePropsController({
       `/safeConfig/entity/Page?path=${tmpPageData.path}`
     );
     const jsonData = await response.json();
-    console.log(response.ok);
-    console.log({ jsonData }, jsonData.path === tmpPageData.path);
-    console.log(pageData?.path !== tmpPageData.path);
     if (
       response.ok &&
       jsonData.path === tmpPageData.path &&
