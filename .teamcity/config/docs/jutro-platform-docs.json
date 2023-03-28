@@ -25,7 +25,7 @@
       "metadata": {
         "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
-        "version": ["latest"]
+        "version": ["Flaine (latest)"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
