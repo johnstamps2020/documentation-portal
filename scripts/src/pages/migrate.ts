@@ -356,7 +356,10 @@ function mapToCategory2Layout(
 }
 
 function getIsRelease(targetFile: string): boolean {
-  if (targetFile.match(/landing\/cloudProducts\/[a-z]+.tsx$/)) {
+  if (
+    targetFile.match(/landing\/cloudProducts\/[a-z]+.tsx$/) &&
+    parse(targetFile).name !== 'cyence'
+  ) {
     return true;
   }
 
@@ -389,6 +392,7 @@ function mapToCategoryLayout(
         ? `selector: ${JSON.stringify(selector, null, 2)},`
         : ''
     }
+    ${isRelease ? 'showReleaseSelector: true,' : ''}
     ${
       isSelfManaged
         ? `description: (

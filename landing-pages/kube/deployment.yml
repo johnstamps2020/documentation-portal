@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${APP_NAME}
+  namespace: ${POD_NAME}
+  labels:
+    app: ${APP_NAME}
+    gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: ${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${APP_NAME}
+spec:
+  selector:
+    matchLabels:
+      app: ${APP_NAME}
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+  template:
+    metadata:
+      name: ${APP_NAME}
+      namespace: ${POD_NAME}
+      labels:
+        app: ${APP_NAME}
+        gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
+        gwcp.guidewire.com/maintained-by: ${POD_NAME}
+        gwcp.guidewire.com/created-by: ${POD_NAME}
+        gwcp.guidewire.com/tenant-name: ${POD_NAME}
+        gwcp.guidewire.com/version: ${TAG_VERSION}
+        gwcp.guidewire.com/app-name: ${APP_NAME}
+      annotations:
+        iam.amazonaws.com/role: ${AWS_ROLE}
+    spec:
+      containers:
+        - name: ${APP_NAME}
+          image: ${AWS_ECR_REPO}:${TAG_VERSION}
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - /bin/sleep
+                  - '30'
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              name: http
+              protocol: TCP
+          resources:
+            requests:
+              memory: \"${REQUESTS_MEMORY}\"
+              cpu: \"${REQUESTS_CPU}\"
+            limits:
+              memory: \"${LIMITS_MEMORY}\"
+              cpu: \"${LIMITS_CPU}\"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${APP_NAME}
+  namespace: ${POD_NAME}
+  labels:
+    app: ${APP_NAME}
+    gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: ${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${APP_NAME}
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 6006
+      targetPort: 80
+  selector:
+    app: ${APP_NAME}
