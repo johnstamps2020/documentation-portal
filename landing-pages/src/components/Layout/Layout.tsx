@@ -13,6 +13,7 @@ type LayoutProps = {
   title: string;
   headerOptions?: HeaderOptions;
   path?: string;
+  backgroundColor?: React.CSSProperties['backgroundColor'];
 };
 
 export default function Layout({
@@ -20,12 +21,13 @@ export default function Layout({
   title,
   headerOptions,
   path,
+  backgroundColor,
 }: LayoutProps) {
   document.title = `${title} | Guidewire Documentation`;
   return (
     <div>
       <Header {...headerOptions} />
-      <main>
+      <main style={{ backgroundColor }}>
         <Box
           sx={{
             minHeight: { xs: 'auto', sm: `calc(100vh - ${headerHeight})` },

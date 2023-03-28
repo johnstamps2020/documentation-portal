@@ -60,10 +60,11 @@ export function usePagePath() {
   return pagePath;
 }
 
-export function usePageData() {
-  const pagePath = usePagePath();
+export function usePageData(pagePath?: string) {
+  const currentPagePath = usePagePath();
+  const targetPagePath = pagePath ? pagePath : currentPagePath;
   const { data, error, isLoading } = useSWR<Page, PageError>(
-    pagePath,
+    targetPagePath,
     pageGetter
   );
 

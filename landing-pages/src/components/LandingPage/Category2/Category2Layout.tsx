@@ -13,7 +13,7 @@ import {
 } from 'pages/LandingPage/LandingPageTypes';
 import ReleaseSelector from 'components/LandingPage/ReleaseSelector';
 import { usePageData } from 'hooks/usePageData';
-import PagePropsController from 'components/LandingPage/PagePropsController';
+import EditPagePropsButton from '../EditPagePropsButton';
 
 export type Category2LayoutProps = LandingPageLayoutProps & {
   cards: {
@@ -37,7 +37,6 @@ export default function Category2Layout({
 
   return (
     <>
-      <PagePropsController {...pageData} />
       <Grid
         sx={{
           ...backgroundProps,
@@ -59,6 +58,7 @@ export default function Category2Layout({
           minWidth="300px"
           margin={{ sm: '-30px 0 0 auto', xs: 'auto' }}
         >
+          <EditPagePropsButton pagePath={pageData.path} />
           <Stack spacing={1} direction="column" width="100%">
             <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
               <Breadcrumbs />

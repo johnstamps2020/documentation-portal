@@ -1,105 +1,219 @@
-import Alert from '@mui/material/Alert';
+import useSWRMutation from 'swr/mutation';
+import Alert, { AlertColor } from '@mui/material/Alert';
 import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import Stack from '@mui/material/Stack';
 import Switch from '@mui/material/Switch';
+import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { usePageData } from '../../hooks/usePageData';
 import { Page } from 'server/dist/model/entity/Page';
-import { useUserInfo } from '../../hooks/useApi';
+import Snackbar from '@mui/material/Snackbar';
 
-export default function PagePropsController(pageData: Page) {
-  const [pageDataFromDb, setPageDataFromDb] = useState(pageData);
-  const [tmpPageData, setTmpPageData] = useState(pageData);
-  const [isSavingChanges, setIsSavingChanges] = useState(false);
-  const [openSaveChangesMessage, setOpenSaveChangesMessage] = useState(false);
-  const [openErrorMessage, setOpenErrorMessage] = useState(false);
-  const [readOnlyMode, setReadOnlyMode] = useState(true);
-  const { userInfo, isLoading, isError } = useUserInfo();
+export const emptyPage: Page = {
+  path: '',
+  title: '',
+  component: '',
+  searchFilters: {},
+  internal: true,
+  public: false,
+  earlyAccess: true,
+  isInProduction: false,
+};
 
-  if (isLoading || isError || !userInfo?.isAdmin) {
+type PagePropsControllerProps = {
+  pagePath?: string;
+  fullEditMode?: boolean;
+};
+
+type EditMessage = {
+  text: string;
+  severity: AlertColor;
+  isOpen: boolean;
+};
+
+const emptyEditMessage: EditMessage = {
+  text: '',
+  severity: 'info',
+  isOpen: false,
+};
+
+async function sendRequest(url: string, { arg }: { arg: Page }) {
+  return await fetch(url, {
+    method: 'PUT',
+    body: JSON.stringify(arg),
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+  });
+}
+
+export default function PagePropsController({
+  pagePath,
+  fullEditMode = false,
+}: PagePropsControllerProps) {
+  const { pageData, isError, isLoading } = usePageData(pagePath);
+  const { trigger, isMutating } = useSWRMutation(
+    '/admin/entity/Page',
+    sendRequest
+  );
+  const [tmpPageData, setTmpPageData] = useState(emptyPage);
+  const [canSubmitData, setCanSubmitData] = useState(false);
+  const [dataChanged, setDataChanged] = useState(false);
+  const [pageAlreadyExists, setPageAlreadyExists] = useState<boolean>();
+  const [editResultMessage, setEditResultMessage] =
+    useState<EditMessage>(emptyEditMessage);
+
+  useEffect(() => {
+    pagePath && pageData && setTmpPageData(pageData);
+  }, [pageData]);
+
+  useEffect(() => {
+    if (
+      (!pagePath &&
+        JSON.stringify(tmpPageData) === JSON.stringify(emptyPage)) ||
+      JSON.stringify(tmpPageData) === JSON.stringify(pageData)
+    ) {
+      setDataChanged(false);
+    } else {
+      setDataChanged(true);
+    }
+  }, [tmpPageData, pageData]);
+
+  useEffect(() => {
+    if (
+      isMutating ||
+      pageAlreadyExists ||
+      !tmpPageData.path ||
+      !tmpPageData.title
+    ) {
+      setCanSubmitData(false);
+    } else {
+      setCanSubmitData(true);
+    }
+  }, [pageData, tmpPageData, pageAlreadyExists, isMutating]);
+
+  if (isError || isLoading || !pageData) {
     return null;
   }
 
-  const handleClose = (
-    event?: React.SyntheticEvent | Event,
-    reason?: string
-  ) => {
-    if (reason === 'clickaway') {
-      return;
+  function handleCloseEditResultMessage() {
+    setEditResultMessage(emptyEditMessage);
+  }
+
+  async function pageExists() {
+    const response = await fetch(
+      `/safeConfig/entity/Page?path=${tmpPageData.path}`
+    );
+    const jsonData = await response.json();
+    if (
+      response.ok &&
+      jsonData.path === tmpPageData.path &&
+      pageData?.path !== tmpPageData.path
+    ) {
+      setPageAlreadyExists(true);
+    } else {
+      setPageAlreadyExists(false);
     }
+  }
 
-    setOpenSaveChangesMessage(false);
-    setOpenErrorMessage(false);
-    setIsSavingChanges(false);
-  };
-
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(field: string, value: string | boolean) {
     setTmpPageData({
       ...tmpPageData,
-      [event.target.value]: event.target.checked,
+      [field]: value,
     });
   }
 
-  function handleCancel() {
-    setTmpPageData(pageDataFromDb);
-    toggleReadOnlyMode();
+  function handleResetForm() {
+    if (pagePath && pageData) {
+      setTmpPageData(pageData);
+    } else {
+      setTmpPageData(emptyPage);
+    }
+    setPageAlreadyExists(false);
   }
 
   async function handleSave() {
-    setIsSavingChanges(true);
-    const response = await fetch(`/admin/entity/Page`, {
-      method: 'PUT',
-      body: JSON.stringify(tmpPageData),
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-    });
-
-    if (response.ok) {
-      setPageDataFromDb(tmpPageData);
-      setOpenSaveChangesMessage(true);
-    } else {
-      setOpenErrorMessage(true);
+    try {
+      const response = await trigger(tmpPageData);
+      if (response?.ok) {
+        setEditResultMessage({
+          text: 'Page updated successfully',
+          severity: 'success',
+          isOpen: true,
+        });
+      } else if (response) {
+        const jsonError = await response.json();
+        setEditResultMessage({
+          text: `Page not updated: ${jsonError.message}`,
+          severity: 'error',
+          isOpen: true,
+        });
+      }
+    } catch (err) {
+      setEditResultMessage({
+        text: `Page not updated: ${err}`,
+        severity: 'error',
+        isOpen: true,
+      });
     }
-    setReadOnlyMode(true);
-    setIsSavingChanges(false);
-  }
-
-  function toggleReadOnlyMode() {
-    setReadOnlyMode(!readOnlyMode);
   }
 
   return (
     <Stack
-      spacing={1}
+      spacing={2}
       sx={{
         alignItems: 'center',
         backgroundColor: 'white',
         border: '1px solid black',
         borderRadius: '4px',
         padding: '12px',
-        margin: '8px auto',
+        margin: '16px',
         maxWidth: 'fit-content',
       }}
     >
       <Typography sx={{ fontSize: 18, fontWeight: 800 }}>
-        Page properties
+        {fullEditMode ? 'Page properties' : pagePath}
       </Typography>
+      {fullEditMode && (
+        <TextField
+          required
+          error={pageAlreadyExists}
+          helperText={pageAlreadyExists && 'Page with this path already exists'}
+          disabled={isMutating}
+          label="Path"
+          value={tmpPageData.path}
+          onChange={(event) => handleChange('path', event.target.value)}
+          onBlur={pageExists}
+        />
+      )}
+      <TextField
+        required
+        disabled={isMutating}
+        label="Title"
+        onChange={(event) => handleChange('title', event.target.value)}
+        value={tmpPageData.title}
+      />
+      <TextField
+        disabled={isMutating}
+        label="Component"
+        onChange={(event) => handleChange('component', event.target.value)}
+        value={tmpPageData.component}
+      />
       <FormGroup row>
         {['internal', 'public', 'earlyAccess', 'isInProduction'].map((key) => (
           <FormControlLabel
-            disabled={readOnlyMode}
+            disabled={isMutating}
             key={key}
             control={
               <Switch
                 value={key}
-                checked={
-                  tmpPageData[key as keyof typeof tmpPageData] as boolean
-                }
-                onChange={handleChange}
+                checked={tmpPageData[key as keyof typeof pageData] as boolean}
+                onChange={(event) => handleChange(key, event.target.checked)}
                 inputProps={{ 'aria-label': 'controlled' }}
               />
             }
@@ -107,35 +221,35 @@ export default function PagePropsController(pageData: Page) {
           />
         ))}
       </FormGroup>
-      {readOnlyMode ? (
-        <Button variant="contained" onClick={toggleReadOnlyMode}>
-          Edit
-        </Button>
-      ) : (
-        <Stack direction="row" spacing={1}>
+      <Stack direction="row" spacing={1}>
+        <ButtonGroup disabled={!dataChanged}>
           <Button
+            disabled={!canSubmitData}
             variant="contained"
             color="primary"
-            disabled={isSavingChanges || pageDataFromDb === tmpPageData}
             onClick={handleSave}
           >
             Save
           </Button>
-          <Button variant="outlined" color="warning" onClick={handleCancel}>
-            Cancel
+          <Button variant="outlined" color="warning" onClick={handleResetForm}>
+            Reset
           </Button>
-        </Stack>
-      )}
-      {openSaveChangesMessage && (
-        <Alert severity="success" onClose={handleClose}>
-          Changes saved successfully
+        </ButtonGroup>
+      </Stack>
+      <Snackbar
+        open={editResultMessage.isOpen}
+        onClose={handleCloseEditResultMessage}
+        autoHideDuration={6000}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <Alert
+          onClose={handleCloseEditResultMessage}
+          sx={{ width: '100%' }}
+          severity={editResultMessage.severity}
+        >
+          {editResultMessage.text}
         </Alert>
-      )}
-      {openErrorMessage && (
-        <Alert severity="error" onClose={handleClose}>
-          Error: Changes not saved
-        </Alert>
-      )}
+      </Snackbar>
     </Stack>
   );
 }

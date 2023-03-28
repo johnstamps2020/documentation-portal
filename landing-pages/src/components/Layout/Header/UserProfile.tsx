@@ -16,6 +16,7 @@ import Drawer from '@mui/material/Drawer';
 import LoginOptions from 'components/LoginPage/LoginOptions';
 import Stack from '@mui/material/Stack';
 import LogoutOption from './LogoutOption';
+import AdminPanelOption from './AdminPanelOption';
 
 type LoginButtonProps = {
   drawerOpen: boolean;
@@ -101,6 +102,7 @@ export default function UserProfile() {
         <HeaderMenuSubtitle>{userInfo.preferred_username}</HeaderMenuSubtitle>
         <HeaderMenuDivider />
         <LogoutOption />
+        {userInfo.isAdmin && <AdminPanelOption />}
       </HeaderMenu>
     </div>
   );
