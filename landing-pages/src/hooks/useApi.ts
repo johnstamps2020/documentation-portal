@@ -59,7 +59,10 @@ export function usePages() {
   const { data, error, isLoading } = useSWR<Page[], ServerSearchError>(
     '/safeConfig/entity/Page/all',
     getter,
-    { keepPreviousData: true }
+    {
+      keepPreviousData: true,
+      refreshInterval: 1000,
+    }
   );
 
   return {
