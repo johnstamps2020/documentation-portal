@@ -331,10 +331,11 @@ async function getLatestVersionUrl(url, urlBase) {
         }
         return;
       });
+
     const highestNumberUrlWithSuffix = highestNumberUrlSegments
       .join('/')
       .concat(urlAfterWildcard);
-    console.log(`${urlBase}/${highestNumberUrlWithSuffix}`);
+
     if (await isHtmlPage(`${urlBase}/${highestNumberUrlWithSuffix}`)) {
       return highestNumberUrlWithSuffix;
     } else {
