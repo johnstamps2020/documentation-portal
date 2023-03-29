@@ -8,6 +8,11 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutroplatformlatest",
+      "srcId": "srcjutroplatformflaine"
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutroplatformnext",
       "srcId": "srcjutroplatformnext"
     }

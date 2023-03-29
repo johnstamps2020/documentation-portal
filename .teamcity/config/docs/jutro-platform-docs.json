@@ -19,6 +19,22 @@
       "earlyAccess": true
     },
     {
+      "id": "jutroplatformlatest",
+      "title": "Jutro Digital Platform",
+      "url": "jutro/platform/latest",
+      "metadata": {
+        "product": ["Jutro Digital Platform"],
+        "platform": ["Cloud"],
+        "version": ["Flaine (latest)"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
       "id": "jutroplatformflaine",
       "title": "Jutro Digital Platform",
       "url": "jutro/platform/flaine",
