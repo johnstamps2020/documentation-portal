@@ -53,10 +53,6 @@
           "id": "iscc202302devsetup"
         },
         {
-          "label": "Developer Setup (Internal only)",
-          "id": "isccgarmischgwdevsetup"
-        },
-        {
           "label": "Update",
           "id": "iscc202302update"
         },
@@ -91,10 +87,6 @@
         {
           "label": "Administration",
           "id": "iscc202302admin"
-        },
-        {
-          "label": "Administration (Internal only)",
-          "id": "isccgarmischgwadmin"
         },
         {
           "label": "Data Archiving",

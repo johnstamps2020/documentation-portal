@@ -57,10 +57,6 @@
           "id": "ispc202302devsetup"
         },
         {
-          "label": "Developer Setup (Internal only)",
-          "id": "ispcgarmischgwdevsetup"
-        },
-        {
           "label": "Update",
           "id": "ispc202302update"
         },
@@ -99,10 +95,6 @@
         {
           "label": "Administration",
           "id": "ispc202302admin"
-        },
-        {
-          "label": "Administration (Internal only)",
-          "id": "ispcgarmischgwadmin"
         },
         {
           "label": "Data Archiving",

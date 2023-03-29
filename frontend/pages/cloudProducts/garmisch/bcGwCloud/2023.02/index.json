@@ -53,10 +53,6 @@
           "id": "isbc202302devsetup"
         },
         {
-          "label": "Developer Setup (Internal only)",
-          "id": "isbcgarmischgwdevsetup"
-        },
-        {
           "label": "Update",
           "id": "isbc202302update"
         },
@@ -91,10 +87,6 @@
         {
           "label": "Administration",
           "id": "isbc202302admin"
-        },
-        {
-          "label": "Administration (Internal only)",
-          "id": "isbcgarmischgwadmin"
         },
         {
           "label": "Data Archiving",
