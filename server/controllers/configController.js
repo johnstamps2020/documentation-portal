@@ -305,26 +305,20 @@ async function getDocId(
 }
 
 /* Finds a doc URL based on product, version, and title.
-** WARNING: This function is a bit fuzzy. It will find a match 
-** if the doc title that is passed to it matches either exactly
-** or has ' Guide' appended to it. Many docs are in the config
-** as, for example, "Installation", but to avoid awkward human-speech
-** in prose, are defined in library keys as "Installation Guide", so 
-** we allow that one exception. */
-async function getDocUrlByMetadata(
-  products,
-  versions,
-  title,
-  reqObj,
-  resObj
-) {
+ ** WARNING: This function is a bit fuzzy. It will find a match
+ ** if the doc title that is passed to it matches either exactly
+ ** or has ' Guide' appended to it. Many docs are in the config
+ ** as, for example, "Installation", but to avoid awkward human-speech
+ ** in prose, are defined in library keys as "Installation Guide", so
+ ** we allow that one exception. */
+async function getDocUrlByMetadata(products, versions, title, reqObj, resObj) {
   try {
     const config = await getConfig(reqObj, resObj);
     const doc = config.docs.find(
       (s) =>
         products.split(',').some((p) => s.metadata.product.includes(p)) &&
         versions.split(',').some((v) => s.metadata.version.includes(v)) &&
-        (title === s.title || title === `${s.title} Guide`) 
+        (title === s.title || title === `${s.title} Guide`)
     );
     if (doc) {
       return {
@@ -347,6 +341,54 @@ async function getDocUrlByMetadata(
   }
 }
 
+async function getUrlsByWildcard(url) {
+  try {
+    if (!storedConfig || !storedConfig.docs || storedConfig.docs.length === 0) {
+      await expensiveLoadConfig();
+    }
+    const config = JSON.parse(JSON.stringify(storedConfig));
+
+    const testUrlSegments = url.replace(/^\/+/, '').split('/');
+    let wildcardIndex;
+    for (let i = 0; i < testUrlSegments.length; i++) {
+      if (testUrlSegments[i] === '*') {
+        wildcardIndex = i;
+        break;
+      }
+    }
+
+    const matches = config.docs
+      .filter((doc) => {
+        let docUrl = doc.url;
+        const docUrlSegments = doc.url.split('/').map((segment, index) => {
+          if (wildcardIndex === index) {
+            return '[^/]*';
+          }
+          return segment;
+        });
+        docUrl = docUrlSegments.join('/');
+        const regex = new RegExp('^' + docUrl);
+        return regex.test(url);
+      })
+      .map((doc) => doc.url);
+
+    if (matches) {
+      return matches;
+    } else {
+      return {
+        error: true,
+        message: `Did not find any docs matching ${url}.`,
+      };
+    }
+  } catch (err) {
+    winstonLogger.error(
+      `Problem getting document urls by wildcard match
+              url: ${url}
+              ERROR: ${JSON.stringify(err)}`
+    );
+  }
+}
+
 module.exports = {
   getConfig,
   expensiveLoadConfig,
@@ -356,5 +398,6 @@ module.exports = {
   getVersionSelector,
   getDocumentMetadata,
   getDocId,
-  getDocUrlByMetadata
+  getDocUrlByMetadata,
+  getUrlsByWildcard,
 };

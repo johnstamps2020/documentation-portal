@@ -1,3 +1,5 @@
+const fetch = require('node-fetch-retry');
+const { getUrlsByWildcard } = require('./configController');
 const redirectUrls = [
   {
     from: 'cloud/cda/banff',
@@ -257,14 +259,103 @@ const redirectUrls = [
   },
 ];
 
-function getRedirectUrl(originUrl) {
+async function getRedirectUrl(originUrl) {
   const originPathname = new URL(originUrl).pathname;
+  const originBase = new URL(originUrl).origin;
+
   for (const urlObj of redirectUrls) {
     if (`/${urlObj.from}` === originPathname) {
       return `/${urlObj.to}`;
     }
   }
+  if (originPathname.includes('/latest')) {
+    const latestVersionUrl = await getLatestVersionUrl(
+      originPathname,
+      originBase
+    );
+    if (latestVersionUrl) {
+      return `/${latestVersionUrl}`;
+    }
+  }
   return undefined;
 }
 
+async function getLatestVersionUrl(url, urlBase) {
+  const wildcardUrl = url
+    .replace('latest', '*')
+    .replace(/^\/+/, '')
+    .replace(/\/$/, '');
+  const wildcardIndex = wildcardUrl.split('/').indexOf('*');
+  const urlAfterWildcardSegments = wildcardUrl
+    .split('/')
+    .map((segment, index) => {
+      if (index > wildcardIndex) {
+        return segment;
+      }
+      return;
+    });
+  const urlAfterWildcard = urlAfterWildcardSegments
+    .join('/')
+    .replace(/^\/+/, '');
+
+  const matchingUrls = await getUrlsByWildcard(wildcardUrl);
+  if (matchingUrls) {
+    let highestNumber = -Infinity;
+    let highestNumberUrl = null;
+    let highestAlphabeticalUrl = null;
+    Object.values(matchingUrls).forEach((url) => {
+      const urlSegments = url.split('/');
+      const urlVersionSegment = urlSegments[wildcardIndex];
+      if (!isNaN(urlVersionSegment)) {
+        const urlNumber = parseInt(urlVersionSegment);
+        if (urlNumber > highestNumber) {
+          highestNumber = urlNumber;
+          highestNumberUrl = url;
+        }
+      } else if (
+        urlSegments[wildcardIndex] &&
+        (!highestAlphabeticalUrl ||
+          urlVersionSegment.localeCompare(highestAlphabeticalUrl) > 0)
+      ) {
+        highestAlphabeticalUrl = urlSegments[wildcardIndex];
+        highestNumberUrl = url;
+      }
+    });
+    if (!highestNumberUrl) return;
+
+    const highestNumberUrlSegments = highestNumberUrl
+      .split('/')
+      .map((segment, index) => {
+        if (index <= wildcardIndex) {
+          return segment;
+        }
+        return;
+      });
+    const highestNumberUrlWithSuffix = highestNumberUrlSegments
+      .join('/')
+      .concat(urlAfterWildcard);
+    console.log(`${urlBase}/${highestNumberUrlWithSuffix}`);
+    if (await isHtmlPage(`${urlBase}/${highestNumberUrlWithSuffix}`)) {
+      return highestNumberUrlWithSuffix;
+    } else {
+      return highestNumberUrl;
+    }
+  }
+  return;
+}
+
+async function isHtmlPage(url) {
+  try {
+    const response = await fetch(url, { method: 'HEAD' });
+    if (
+      response.ok &&
+      response.headers.get('content-type').includes('text/html')
+    ) {
+      return true;
+    } else return false;
+  } catch (err) {
+    console.error(`Error checking if HTML page exists at ${url}: ${err}`);
+    return false;
+  }
+}
 module.exports = { getRedirectUrl };
