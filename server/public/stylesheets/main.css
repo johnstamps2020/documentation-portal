@@ -368,18 +368,11 @@ main.skiRelease {
 }
 
 .skiReleaseDesc li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .skiRelease .skiReleaseOverview.categoryCard a:has(button) {
-  margin-top: 3.75rem;
-  margin-left: auto;
-  margin-right: auto;
-  width: fit-content;
-}
-
-.skiRelease.garmisch .skiReleaseOverview.categoryCard a:has(button) {
-  margin-top: .65rem;
+  margin-top: 1.1rem;
   margin-left: auto;
   margin-right: auto;
   width: fit-content;
