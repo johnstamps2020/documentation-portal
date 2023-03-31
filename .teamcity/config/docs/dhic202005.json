@@ -1,0 +1,39 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dh202005",
+      "title": "DataHub for Guidewire Cloud",
+      "url": "cloud/dh/202005",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["DataHub"],
+        "version": ["2020.05"],
+        "release": ["Aspen"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic202005",
+      "title": "InfoCenter for Guidewire Cloud",
+      "url": "cloud/ic/202005",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InfoCenter"],
+        "version": ["2020.05"],
+        "release": ["Aspen"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

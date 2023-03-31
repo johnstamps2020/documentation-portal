@@ -1,0 +1,427 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dxdiapp331",
+      "title": "Data Integrations Application Guide",
+      "url": "self-managed/dx/di/331/app",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.1"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxdiinstall331",
+      "title": "Data Integrations Installation Guide",
+      "url": "self-managed/dx/di/331/install",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.1"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxdiadmin331",
+      "title": "Data Integrations Administration Guide",
+      "url": "self-managed/dx/di/331/admin",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.1"],
+        "subject": ["Administration"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxdirelnotes331",
+      "title": "Data Integrations Release Notes",
+      "url": "self-managed/dx/di/331/relnotes",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.1"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxedapp331",
+      "title": "Digital Gateway Application Guide",
+      "url": "self-managed/dx/ed/331/app",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.1"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxedinstall331",
+      "title": "Digital Gateway Installation Guide",
+      "url": "self-managed/dx/ed/331/install",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.1"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxedrelnotes331",
+      "title": "Digital Gateway Release Notes",
+      "url": "self-managed/dx/ed/331/relnotes",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.1"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxvodapp331",
+      "title": "View on Demand Application Guide",
+      "url": "self-managed/dx/vod/331/app",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.1"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxvodinstall331",
+      "title": "View on Demand Installation Guide",
+      "url": "self-managed/dx/vod/331/install",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.1"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxvodadmin331",
+      "title": "View on Demand Administration Guide",
+      "url": "self-managed/dx/vod/331/admin",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.1"],
+        "subject": ["Administration"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxvodrelnotes331",
+      "title": "View on Demand Release Notes",
+      "url": "self-managed/dx/vod/331/relnotes",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.1"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxdiapp330",
+      "title": "Data Integrations Application Guide",
+      "url": "self-managed/dx/di/330/app",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxdiinstall330",
+      "title": "Data Integrations Installation Guide",
+      "url": "self-managed/dx/di/330/install",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxdiadmin330",
+      "title": "Data Integrations Administration Guide",
+      "url": "self-managed/dx/di/330/admin",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Administration"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxdirelnotes330",
+      "title": "Data Integrations Release Notes",
+      "url": "self-managed/dx/di/330/relnotes",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxedapp330",
+      "title": "Digital Gateway Application Guide",
+      "url": "self-managed/dx/ed/330/app",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxedinstall330",
+      "title": "Digital Gateway Installation Guide",
+      "url": "self-managed/dx/ed/330/install",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxedrelnotes330",
+      "title": "Digital Gateway Release Notes",
+      "url": "self-managed/dx/ed/330/relnotes",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxvodapp330",
+      "title": "View on Demand Application Guide",
+      "url": "self-managed/dx/vod/330/app",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxvodinstall330",
+      "title": "View on Demand Installation Guide",
+      "url": "self-managed/dx/vod/330/install",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxvodadmin330",
+      "title": "View on Demand Administration Guide",
+      "url": "self-managed/dx/vod/330/admin",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Administration"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxvodrelnotes330",
+      "title": "View on Demand Release Notes",
+      "url": "self-managed/dx/vod/330/relnotes",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.3.0"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxdionprem320",
+      "title": "Guidewire for Salesforce Data Integrations",
+      "url": "self-managed/dx/di/320",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.2.0"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxedonprem320",
+      "title": "Guidewire for Salesforce Digital Gateway",
+      "url": "self-managed/dx/ed/320",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.2.0"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxvodonprem320",
+      "title": "Guidewire for Salesforce View on Demand",
+      "url": "self-managed/dx/vod/320",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Self-managed"],
+        "version": ["3.2.0"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

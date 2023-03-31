@@ -34,6 +34,42 @@
       "public": false,
       "internal": false,
       "earlyAccess": true
+    },
+    {
+      "id": "clouddataaccessguide",
+      "title": "Application Guide",
+      "url": "cloud/cda/guide/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Data Platform"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "clouddataaccessrn",
+      "title": "Release Notes",
+      "url": "cloud/cda/rn/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Data Platform"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }

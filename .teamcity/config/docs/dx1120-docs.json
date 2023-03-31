@@ -1,0 +1,69 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dxceam1120onpremstaging",
+      "title": "CustomerEngage Account Management",
+      "url": "self-managed/dx/ce-am/1120",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Self-managed"],
+        "version": ["11.2.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxceqb1120onpremstaging",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "self-managed/dx/ce-qb/1120",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Self-managed"],
+        "version": ["11.2.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxpe1120onpremstaging",
+      "title": "ProducerEngage",
+      "url": "self-managed/dx/pe/1120",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Self-managed"],
+        "version": ["11.2.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxsre1120onpremstaging",
+      "title": "ServiceRepEngage",
+      "url": "self-managed/dx/sre/1120",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Self-managed"],
+        "version": ["11.2.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
