@@ -3,6 +3,16 @@
   "title": "EnterpriseEngage Digital Reference Applications",
   "template": "page",
   "class": "blue-theme flaine threeCards",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "Flaine (2022.09)",
+    "items": [
+      {
+        "label": "Garmisch (2023.02)",
+        "page": "../../garmisch/dx-ref-apps"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Jutro Design System 8.3.0",

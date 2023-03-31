@@ -8,6 +8,10 @@
     "selectedItem": "Cortina (2021.04)",
     "items": [
       {
+        "label": "Garmisch (2023.02)",
+        "page": "../../../../garmisch/pcGwCloud/2023.02"
+      },
+      {
         "label": "Flaine (2022.09)",
         "page": "../../../../flaine/pcGwCloud/2022.09"
       },

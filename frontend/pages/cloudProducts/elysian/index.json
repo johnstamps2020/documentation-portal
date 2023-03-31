@@ -9,8 +9,7 @@
     "items": [
       {
         "label": "Garmisch",
-        "page": "../garmisch",
-        "env": ["staging"]
+        "page": "../garmisch"
       },
       {
         "label": "Flaine",

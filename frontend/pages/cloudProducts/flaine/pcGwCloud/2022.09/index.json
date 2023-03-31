@@ -8,6 +8,10 @@
     "selectedItem": "Flaine (2022.09)",
     "items": [
       {
+        "label": "Garmisch (2023.02)",
+        "page": "../../../garmisch/pcGwCloud/2023.02"
+      },
+      {
         "label": "Elysian (2022.05)",
         "page": "../../../elysian/pcGwCloud/2022.05"
       },
