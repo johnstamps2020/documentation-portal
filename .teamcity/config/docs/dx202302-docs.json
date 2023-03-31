@@ -6,7 +6,7 @@
       "title": "CustomerEngage Account Management Application Guide",
       "url": "cloud/dx/ce-am/202302/app",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -24,7 +24,7 @@
       "title": "CustomerEngage Account Management Installation Guide",
       "url": "cloud/dx/ce-am/202302/install",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -42,7 +42,7 @@
       "title": "CustomerEngage Account Management Development Guide",
       "url": "cloud/dx/ce-am/202302/dev",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -60,7 +60,7 @@
       "title": "CustomerEngage Account Management Digital Services Reference Guides",
       "url": "cloud/dx/ce-am/202302/ref",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -78,7 +78,7 @@
       "title": "CustomerEngage Account Management Release Notes",
       "url": "cloud/dx/ce-am/202302/relnotes",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -96,7 +96,7 @@
       "title": "CustomerEngage Account Management for ClaimCenter Application Guide",
       "url": "cloud/dx/ce-claims/202302/app",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -114,7 +114,7 @@
       "title": "CustomerEngage Account Management for ClaimCenter Installation Guide",
       "url": "cloud/dx/ce-claims/202302/install",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -132,7 +132,7 @@
       "title": "CustomerEngage Account Management for ClaimCenter Development Guide",
       "url": "cloud/dx/ce-claims/202302/dev",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -150,7 +150,7 @@
       "title": "CustomerEngage Account Management for ClaimCenter Digital Services Reference Guides",
       "url": "cloud/dx/ce-claims/202302/ref",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -168,7 +168,7 @@
       "title": "CustomerEngage Account Management for ClaimCenter Release Notes",
       "url": "cloud/dx/ce-claims/202302/relnotes",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -186,7 +186,7 @@
       "title": "CustomerEngage Quote and Buy Application Guide",
       "url": "cloud/dx/ce-qb/202302/app",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -204,7 +204,7 @@
       "title": "CustomerEngage Quote and Buy Installation Guide",
       "url": "cloud/dx/ce-qb/202302/install",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -222,7 +222,7 @@
       "title": "CustomerEngage Quote and Buy Development Guide",
       "url": "cloud/dx/ce-qb/202302/dev",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -240,7 +240,7 @@
       "title": "CustomerEngage Quote and Buy Digital Services Reference Guides",
       "url": "cloud/dx/ce-qb/202302/ref",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -258,7 +258,7 @@
       "title": "CustomerEngage Quote and Buy Release Notes",
       "url": "cloud/dx/ce-qb/202302/relnotes",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -276,7 +276,7 @@
       "title": "ProducerEngage Application Guide",
       "url": "cloud/dx/pe/202302/app",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -294,7 +294,7 @@
       "title": "ProducerEngage Installation Guide",
       "url": "cloud/dx/pe/202302/install",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -312,7 +312,7 @@
       "title": "ProducerEngage Development Guide",
       "url": "cloud/dx/pe/202302/dev",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -330,7 +330,7 @@
       "title": "ProducerEngage Digital Services Reference Guides",
       "url": "cloud/dx/pe/202302/ref",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -348,7 +348,7 @@
       "title": "ProducerEngage Release Notes",
       "url": "cloud/dx/pe/202302/relnotes",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -366,7 +366,7 @@
       "title": "ProducerEngage for ClaimCenter Application Guide",
       "url": "cloud/dx/pe-claims/202302/app",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -384,7 +384,7 @@
       "title": "ProducerEngage for ClaimCenter Installation Guide",
       "url": "cloud/dx/pe-claims/202302/install",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -402,7 +402,7 @@
       "title": "ProducerEngage for ClaimCenter Development Guide",
       "url": "cloud/dx/pe-claims/202302/dev",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -420,7 +420,7 @@
       "title": "ProducerEngage for ClaimCenter Digital Services Reference Guides",
       "url": "cloud/dx/pe-claims/202302/ref",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -438,7 +438,7 @@
       "title": "ProducerEngage for ClaimCenter Release Notes",
       "url": "cloud/dx/pe-claims/202302/relnotes",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -456,7 +456,7 @@
       "title": "ServiceRepEngage Application Guide",
       "url": "cloud/dx/sre/202302/app",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -474,7 +474,7 @@
       "title": "ServiceRepEngage Installation Guide",
       "url": "cloud/dx/sre/202302/install",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -492,7 +492,7 @@
       "title": "ServiceRepEngage Development Guide",
       "url": "cloud/dx/sre/202302/dev",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -510,7 +510,7 @@
       "title": "ServiceRepEngage Digital Services Reference Guides",
       "url": "cloud/dx/sre/202302/ref",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -528,7 +528,7 @@
       "title": "ServiceRepEngage Release Notes",
       "url": "cloud/dx/sre/202302/relnotes",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -546,7 +546,7 @@
       "title": "VendorEngage Application Guide",
       "url": "cloud/dx/ve/202302/app",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -564,7 +564,7 @@
       "title": "VendorEngage Installation Guide",
       "url": "cloud/dx/ve/202302/install",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -582,7 +582,7 @@
       "title": "VendorEngage Development Guide",
       "url": "cloud/dx/ve/202302/dev",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -600,7 +600,7 @@
       "title": "VendorEngage Digital Services Reference Guides",
       "url": "cloud/dx/ve/202302/ref",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -618,7 +618,7 @@
       "title": "VendorEngage Release Notes",
       "url": "cloud/dx/ve/202302/relnotes",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -636,7 +636,7 @@
       "title": "Digital Code Generation Guide",
       "url": "cloud/dx/dcg/202302/guide",
       "metadata": {
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
@@ -655,7 +655,7 @@
       "url": "dx/js-docs/202302",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["EnterpriseEngage"],
+        "product": ["Digital Reference Applications"],
         "version": ["2023.02"],
         "release": ["Garmisch"]
       },
