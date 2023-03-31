@@ -8,8 +8,8 @@
       "metadata": {
         "product": ["PolicyCenter", "ClaimCenter", "App Events Webhooks"],
         "platform": ["Cloud"],
-        "version": ["2022.09"],
-        "release": ["Flaine"],
+        "version": ["2022.09", "2023.02"],
+        "release": ["Flaine", "Garmisch"],
         "subject": ["Integration"]
       },
       "environments": ["staging", "prod"],
@@ -26,8 +26,8 @@
       "metadata": {
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["2022.05", "2022.09"],
-        "release": ["Elysian", "Flaine"],
+        "version": ["2022.05", "2022.09", "2023.02"],
+        "release": ["Elysian", "Flaine", "Garmisch"],
         "subject": ["Integration"]
       },
       "environments": ["staging", "prod"],
@@ -61,8 +61,8 @@
       "url": "is/restapiclient/guide",
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
-        "product": ["REST API Client"],
-        "version": ["latest"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["10.2.1", "10.2.2", "2020.11", "2021.04", "2021.11", "2022.05", "2022.11", "2023.02"],
         "subject": ["Integration"],
         "release": ["Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
       },
