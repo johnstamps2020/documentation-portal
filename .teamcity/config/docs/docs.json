@@ -3,7 +3,7 @@
   "docs": [
     {
       "id": "livepredictlatest",
-      "title": "Live Predict",
+      "title": "Predict",
       "url": "cloud/predict/latest",
       "metadata": {
         "platform": ["Cloud"],
