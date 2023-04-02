@@ -7,9 +7,9 @@
       "url": "apd/api/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2022.09"],
-        "release": ["Flaine"]
+        "product": ["Advanced Product Designer"],
+        "version": ["2022.09", "2023.02"],
+        "release": ["Flaine", "Garmisch"]
       },
       "environments": ["staging", "prod"],
       "internal": false,
@@ -64,7 +64,7 @@
         "release": ["Garmisch"],
         "subject": ["Configuration"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -82,7 +82,7 @@
         "release": ["Garmisch"],
         "subject": ["Configuration"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,

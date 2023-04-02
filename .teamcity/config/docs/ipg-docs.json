@@ -6,7 +6,7 @@
       "title": "Implementation",
       "url": "self-managed/ipg/latest/impl",
       "metadata": {
-        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
         "version": ["latest"],
         "subject": ["Features and functionality"]
@@ -23,7 +23,7 @@
       "title": "Application Guide",
       "url": "self-managed/ipg/latest/app",
       "metadata": {
-        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
         "version": ["latest"],
         "subject": ["Features and functionality"]
@@ -40,7 +40,7 @@
       "title": "Installation",
       "url": "self-managed/ipg/latest/install",
       "metadata": {
-        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
         "version": ["latest"],
         "subject": ["Installation"]
@@ -57,7 +57,7 @@
       "title": "Release Notes",
       "url": "self-managed/ipg/latest/releasenotes",
       "metadata": {
-        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
         "version": ["latest"],
         "subject": ["Release notes"]
@@ -74,7 +74,7 @@
       "title": "Release Notes (German)",
       "url": "self-managed/ipg/latest/releasenotesde",
       "metadata": {
-        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
         "version": ["latest"],
         "subject": ["Release notes"]
@@ -91,7 +91,7 @@
       "title": "Glossary",
       "url": "self-managed/ipg/latest/glossary",
       "metadata": {
-        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
         "version": ["latest"],
         "subject": ["Glossary"]
@@ -108,7 +108,7 @@
       "title": "Application Guide (German)",
       "url": "self-managed/ipg/latest/appde",
       "metadata": {
-        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
         "version": ["latest"],
         "subject": ["Features and functionality"]

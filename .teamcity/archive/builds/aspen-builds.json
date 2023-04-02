@@ -122,62 +122,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "Digital-ce-am-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202008",
-      "docId": "dxceam202008"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-qb-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202008",
-      "docId": "dxceqb202008"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202008",
-      "docId": "dxpe202008"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-sre-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202008",
-      "docId": "dxsre202008"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-apd-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202005",
-      "docId": "dxapd202005"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-ce-qb-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202005",
-      "docId": "dxceqb202005"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-pe-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202005",
-      "docId": "dxpe202005"
-    },
-    {
-      "buildType": "dita",
-      "filter": "Digital-sre-MgSvcs.ditaval",
-      "root": "DX_superbook.ditamap",
-      "srcId": "dx202005",
-      "docId": "dxsre202005"
-    },
-    {
-      "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "DM_all.ditamap",
       "srcId": "dhic202005",

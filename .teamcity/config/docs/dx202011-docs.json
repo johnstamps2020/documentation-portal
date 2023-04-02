@@ -1,0 +1,141 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dxceam202011",
+      "title": "CustomerEngage Account Management",
+      "url": "cloud/dx/ce-am/202011",
+      "metadata": {
+        "product": ["CustomerEngage Account Management"],
+        "platform": ["Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxceclaims202011",
+      "title": "CustomerEngage Account Management for ClaimCenter",
+      "url": "cloud/dx/ce-claims/202011",
+      "metadata": {
+        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxceqb202011",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "cloud/dx/ce-qb/202011",
+      "metadata": {
+        "product": ["CustomerEngage Quote and Buy"],
+        "platform": ["Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxapd202011",
+      "title": "Digital Code Generation Extension Pack",
+      "url": "cloud/dx/apd/202011",
+      "metadata": {
+        "product": ["Digital Code Generation Extension Pack"],
+        "platform": ["Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxpe202011",
+      "title": "ProducerEngage",
+      "url": "cloud/dx/pe/202011",
+      "metadata": {
+        "product": ["ProducerEngage"],
+        "platform": ["Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxpeclaims202011",
+      "title": "ProducerEngage for ClaimCenter",
+      "url": "cloud/dx/pe-claims/202011",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxsre202011",
+      "title": "ServiceRepEngage",
+      "url": "cloud/dx/sre/202011",
+      "metadata": {
+        "product": ["ServiceRepEngage"],
+        "platform": ["Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dxve202011",
+      "title": "VendorEngage",
+      "url": "cloud/dx/ve/202011",
+      "metadata": {
+        "product": ["VendorEngage"],
+        "platform": ["Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

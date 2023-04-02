@@ -29,23 +29,15 @@
     },
     {
       "label": "Flaine",
-      "page": "flaine",
-      "env": ["staging", "prod"]
+      "page": "flaine"
     },
     {
       "label": "Garmisch",
-      "page": "garmisch",
-      "env": ["staging"]
+      "page": "garmisch"
     },
     {
       "label": "_redirect",
-      "link": "/cloudProducts/flaine",
-      "env": ["prod"]
-    },
-    {
-      "label": "_redirect",
-      "link": "/cloudProducts/garmisch",
-      "env": ["dev", "staging"]
+      "link": "/cloudProducts/garmisch"
     },
     {
       "label": "_redirect",

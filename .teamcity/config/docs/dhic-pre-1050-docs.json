@@ -1,0 +1,437 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dh1040",
+      "title": "DataHub",
+      "url": "self-managed/dh/1040",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["10.4.0"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic1040",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/1040",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["10.4.0"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dh1030",
+      "title": "DataHub",
+      "url": "self-managed/dh/1030",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["10.3.0"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic1030",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/1030",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["10.3.0"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dh1020",
+      "title": "DataHub",
+      "url": "self-managed/dh/1020",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["10.2.0"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic1020",
+      "title": "InfoCenter",
+      "url": "self-managed/ic/1020",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["10.2.0"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubyluzrolx",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/1010/DataHub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["10.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubuesxagrn",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/1000/DataHub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["10.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubthgnbdfg",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/930/DataHub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["9.3.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubrzwdsixl",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/920/DataHub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["9.2.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubhsutrtnu",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/910/DataHub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["9.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubzmzzotex",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/900/DataHub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["9.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubsupynnah",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/830/DataHub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["8.3.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementataublvbraqby",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/820/DataHub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["8.2.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementataubguacpbha",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/811/DataHub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["8.1.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementdatahubvfzvhptq",
+      "title": "DataHub",
+      "url": "portal/secure/doc/data-management/810/datahub/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["DataHub"],
+        "version": ["8.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoentereiscelti",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/1010/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["10.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterowudqgnv",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/1000/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["10.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterrowgmanb",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/930/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["9.3.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoentertuykkfbw",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/920/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["9.2.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterbzhtclos",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/910/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["9.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterzjwxvdgn",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/900/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["9.0.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterxnghccvc",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/830/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["8.3.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterqtbtcudr",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/821/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["8.2.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterlgrrnrtz",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/820/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["8.2.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementnfoenterfuqlhtcv",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/811/InfoCenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["8.1.1"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "httpsportalguidewirecomportalsecuredocdatamanagementinfocentergkwxcgth",
+      "title": "InfoCenter",
+      "url": "portal/secure/doc/data-management/810/infocenter/",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["InfoCenter"],
+        "version": ["8.1.0"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

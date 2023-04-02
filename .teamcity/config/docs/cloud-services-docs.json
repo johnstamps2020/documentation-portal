@@ -8,8 +8,8 @@
       "metadata": {
         "product": ["Rules", "PolicyCenter", "ClaimCenter"],
         "platform": ["Cloud"],
-        "version": ["2022.09"],
-        "release": ["Flaine"],
+        "version": ["2022.09", "2023.02"],
+        "release": ["Flaine", "Garmisch"],
         "subject": ["Configuration"]
       },
       "environments": ["staging", "prod"],
@@ -30,7 +30,7 @@
         "release": ["Garmisch"],
         "subject": ["Configuration"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -44,8 +44,8 @@
       "metadata": {
         "product": ["Submission Intake", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["2022.09"],
-        "release": ["Flaine"],
+        "version": ["2022.09", "2023.02"],
+        "release": ["Flaine", "Garmisch"],
         "subject": ["Features and functionality"]
       },
       "environments": ["staging", "prod"],
@@ -62,8 +62,8 @@
       "metadata": {
         "product": ["Submission Intake", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["2022.09"],
-        "release": ["Flaine"],
+        "version": ["2022.09", "2023.02"],
+        "release": ["Flaine", "Garmisch"],
         "subject": ["Configuration"]
       },
       "environments": ["staging", "prod"],
@@ -99,7 +99,7 @@
         "product": ["Workset Manager"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Flaine"],
+        "release": ["Flaine", "Garmisch"],
         "subject": ["Configuration"]
       },
       "environments": ["staging", "prod"],

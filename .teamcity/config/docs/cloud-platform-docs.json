@@ -1,0 +1,73 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "guidewireidentityfederationhub",
+      "title": "Authentication",
+      "url": "cloud/auth/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "cloudplatformrelease",
+      "title": "Network Connectivity",
+      "url": "cloud/gwcp/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "gwcpreleasenotes",
+      "title": "Cloud Platform Release Notes",
+      "url": "cloud/gwcprelnotes/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "gwcpinternal",
+      "title": "Network Permissions Service",
+      "url": "cloud/internal/nps",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": false,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": true
+    }
+  ]
+}

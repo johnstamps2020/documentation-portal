@@ -8,6 +8,10 @@
     "selectedItem": "Aspen",
     "items": [
       {
+        "label": "Garmisch",
+        "page": "../garmisch"
+      },
+      {
         "label": "Flaine",
         "page": "../flaine"
       },
