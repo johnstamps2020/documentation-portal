@@ -8,6 +8,10 @@
     "selectedItem": "Cortina",
     "items": [
       {
+        "label": "Garmisch",
+        "page": "../garmisch"
+      },
+      {
         "label": "Flaine",
         "page": "../flaine"
       },

@@ -8,6 +8,10 @@
     "selectedItem": "Banff",
     "items": [
       {
+        "label": "Garmisch",
+        "page": "../garmisch"
+      },
+      {
         "label": "Flaine",
         "page": "../flaine"
       },
