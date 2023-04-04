@@ -36,6 +36,12 @@
       "title": "GCC Internal Docs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gcc-internal-docs.git",
       "branch": "main"
+    },
+    {
+      "id": "gccuiinternallatestsrc",
+      "title": "GCC UI Internal Docs",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gcc-ui-internal-features-docs.git",
+      "branch": "master"
     }
   ]
 }

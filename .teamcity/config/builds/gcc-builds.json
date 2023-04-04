@@ -18,6 +18,11 @@
     },
     {
       "buildType": "yarn",
+      "docId": "gccuiinternallatest",
+      "srcId": "gccuiinternallatestsrc"
+    },
+    {
+      "buildType": "yarn",
       "docId": "cloudconsoleapi",
       "srcId": "cloudconsoleapisrc"
     },
