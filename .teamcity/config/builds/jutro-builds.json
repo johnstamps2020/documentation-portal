@@ -702,6 +702,20 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutro8100",
+      "srcId": "srcjutro8100",
+      "workingDir": "website",
+      "nodeImageVersion": "17.6.0"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storybook8100",
+      "srcId": "srcjutro8100",
+      "nodeImageVersion": "17.6.0",
+      "workingDir": "storybook"
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutrolatest",
       "srcId": "srcjutro8100",
       "workingDir": "website",
