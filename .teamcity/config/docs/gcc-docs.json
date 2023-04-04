@@ -172,6 +172,22 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "gccuiinternallatest",
+      "title": "GCC UI Internal Features",
+      "url": "gcc/ui/latest",
+      "displayOnLandingPages": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"]
+      },
+      "environments": ["staging"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }
