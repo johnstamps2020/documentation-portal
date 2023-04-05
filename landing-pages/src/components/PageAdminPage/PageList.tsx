@@ -6,6 +6,8 @@ import CardContent from '@mui/material/CardContent';
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
 import { Page } from 'server/dist/model/entity/Page';
+import Link from '@mui/material/Link';
+import { Link as RouterLink } from 'react-router-dom';
 
 type PageListProps = {
   pages: Page[];
@@ -19,9 +21,16 @@ export default function PageList({ pages }: PageListProps) {
           <Card sx={{ padding: 1, height: '100%' }}>
             <CardContent>
               <Typography variant="h2">{title}</Typography>
-              <Typography variant="subtitle1" component="div">
-                {path}
-              </Typography>
+              <Link
+                to={`/${path}`}
+                target="_blank"
+                component={RouterLink}
+                sx={{ textDecoration: 'underline' }}
+              >
+                <Typography variant="subtitle1" component="div">
+                  {path}
+                </Typography>
+              </Link>
             </CardContent>
             <CardActions>
               <EditButton pagePath={path} />
