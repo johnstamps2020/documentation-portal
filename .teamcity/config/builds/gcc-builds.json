@@ -19,7 +19,8 @@
     {
       "buildType": "yarn",
       "docId": "gccuiinternallatest",
-      "srcId": "gccuiinternallatestsrc"
+      "srcId": "gccuiinternallatestsrc",
+      "nodeImageVersion": "18.0.0"
     },
     {
       "buildType": "yarn",
