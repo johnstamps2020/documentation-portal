@@ -340,7 +340,7 @@ async function putPageConfigsInDatabase(): Promise<ApiResponse> {
           const getLegacyLandingPageConfigResult = await getConfigFile(
             targetLocalDir,
             'index.json',
-            legacyLandingPage
+            legacyLandingPage!
           );
           if (getLegacyLandingPageConfigResult !== 'success') {
             return {
