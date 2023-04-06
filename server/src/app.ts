@@ -27,6 +27,7 @@ import {
 } from './controllers/authController';
 import { fourOhFourRoute } from './controllers/proxyController';
 import { JwtPayload } from 'jsonwebtoken';
+import { FileArray, UploadedFile } from 'express-fileupload';
 
 declare global {
   namespace Express {

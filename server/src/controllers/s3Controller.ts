@@ -1,12 +1,20 @@
-const AWS = require('aws-sdk');
-const fs = require('fs');
-const path = require('path');
-const s3 = new AWS.S3({ apiVersion: '2006-03-01' });
+import { Upload } from '@aws-sdk/lib-storage';
+import { S3 } from '@aws-sdk/client-s3';
+import { FileArray, UploadedFile } from 'express-fileupload';
+import fs from 'fs';
+import path from 'path';
+import { Readable } from 'stream';
+
+const s3 = new S3({ apiVersion: '2006-03-01' });
 const bucketParams = {
   Bucket: `tenant-doctools-${process.env.DEPLOY_ENV}-builds`,
 };
 
-async function getConfigFile(localDir, localFilename, remotePath) {
+export async function getConfigFile(
+  localDir: string,
+  localFilename: string,
+  remotePath: string
+) {
   try {
     if (!fs.existsSync(localDir)) {
       fs.mkdirSync(localDir, { recursive: true });
@@ -20,23 +28,26 @@ async function getConfigFile(localDir, localFilename, remotePath) {
         reject(err);
       });
       s3.getObject({ ...bucketParams, Key: remotePath })
-        .createReadStream()
-        .pipe(file);
+        .then((response) => response.Body as Readable)
+        .then((body) => body.pipe(file));
     });
   } catch (err) {
-    throw new Error(err);
+    throw new Error(JSON.stringify(err));
   }
 }
 
-async function listItems(prefix) {
+export async function listItems(prefix: string) {
   try {
-    return s3.listObjects({ ...bucketParams, Prefix: prefix }).promise();
+    return s3.listObjects({ ...bucketParams, Prefix: prefix });
   } catch (err) {
-    throw new Error(err);
+    throw new Error(JSON.stringify(err));
   }
 }
 
-async function addItems(filesFromClient, prefix) {
+export async function addItems(
+  filesFromClient: UploadedFile | FileArray,
+  prefix: string
+) {
   try {
     const fileResults = [];
     const filesIterable = (function () {
@@ -48,44 +59,37 @@ async function addItems(filesFromClient, prefix) {
     })();
     for await (const file of filesIterable) {
       fileResults.push(
-        await s3
-          .upload({
+        await new Upload({
+          client: s3,
+
+          params: {
             ...bucketParams,
             Body: file.data,
             Key: path.join(prefix, file.name),
-          })
-          .promise()
+          },
+        }).done()
       );
     }
 
     return fileResults;
   } catch (err) {
-    throw new Error(err);
+    throw new Error(JSON.stringify(err));
   }
 }
 
-async function deleteItems(keysCommaSeparated) {
+export async function deleteItems(keysCommaSeparated: string) {
   try {
     const keys = keysCommaSeparated.split(',');
 
     const deleteResults = [];
 
     for await (const key of keys) {
-      const result = await s3
-        .deleteObject({ ...bucketParams, Key: key })
-        .promise();
+      const result = await s3.deleteObject({ ...bucketParams, Key: key });
       deleteResults.push(result);
     }
 
     return deleteResults;
   } catch (err) {
-    throw new Error(err);
+    throw new Error(JSON.stringify(err));
   }
 }
-
-module.exports = {
-  getConfigFile,
-  listItems,
-  addItems,
-  deleteItems,
-};
