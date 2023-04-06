@@ -36,6 +36,11 @@
       "page": "garmisch"
     },
     {
+      "label": "Hakuba",
+      "page": "hakuba",
+      "env": ["staging"]
+    },
+    {
       "label": "_redirect",
       "link": "/cloudProducts/garmisch"
     },

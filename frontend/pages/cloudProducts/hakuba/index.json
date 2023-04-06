@@ -5,12 +5,11 @@
   "class": "blue-theme skiRelease garmisch",
   "selector": {
     "label": "Select release",
-    "selectedItem": "Garmisch",
+    "selectedItem": "Hakuba",
     "items": [
       {
-        "label": "Hakuba",
-        "page": "../hakuba",
-        "env": ["staging"]
+        "label": "Garmisch",
+        "page": "../garmisch"
       },
       {
         "label": "Flaine",
@@ -66,47 +65,9 @@
       ]
     },
     {
-      "label": "Applications",
-      "class": "categoryCard cardShadow",
-      "items": [
-        {
-          "label": "PolicyCenter",
-          "page": "pcGwCloud/2023.02"
-        },
-        {
-          "label": "ClaimCenter",
-          "page": "ccGwCloud/2023.02"
-        },
-        {
-          "label": "BillingCenter",
-          "page": "bcGwCloud/2023.02"
-        },
-        {
-          "label": "InsuranceNow",
-          "page": "insuranceNow/2023.1"
-        },
-        {
-          "label": "Digital Reference Applications",
-          "page": "dx-ref-apps"
-        },
-        {
-          "label": "Global Content Reference Applications",
-          "page": "global-ref-apps"
-        }
-      ]
-    },
-    {
       "label": "Analytics",
       "class": "categoryCard cardShadow",
       "items": [
-        {
-          "label": "DataHub",
-          "page": "dhGwCloud/2023.02"
-        },
-        {
-          "label": "InfoCenter",
-          "page": "icGwCloud/2023.02"
-        },
         {
           "label": "Explore",
           "page": "../explore/latest"
@@ -146,10 +107,6 @@
           "page": "apd"
         },
         {
-          "label": "API References",
-          "page": "../../apiReferences/garmisch"
-        },
-        {
           "label": "Integration Gateway",
           "id": "integgatewaydevlatest"
         },
@@ -167,7 +124,7 @@
         },
         {
           "label": "Guidewire Testing",
-          "page": "../../testingFramework/garmisch"
+          "page": "../../testingFramework/hakuba"
         },
         {
           "label": "Workset Manager",
