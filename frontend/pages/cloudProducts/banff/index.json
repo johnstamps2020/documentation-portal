@@ -8,6 +8,11 @@
     "selectedItem": "Banff",
     "items": [
       {
+        "label": "Hakuba",
+        "page": "../hakuba",
+        "env": ["staging"]
+      },
+      {
         "label": "Garmisch",
         "page": "../garmisch"
       },
