@@ -103,10 +103,6 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Advanced Product Designer App",
-          "page": "apd"
-        },
-        {
           "label": "Integration Gateway",
           "id": "integgatewaydevlatest"
         },
@@ -117,10 +113,6 @@
         {
           "label": "REST API Client",
           "id": "isrestapiclientguide"
-        },
-        {
-          "label": "Jutro Digital Platform (Early Access)",
-          "page": "jutroDigitalPlatform"
         },
         {
           "label": "Guidewire Testing",
