@@ -3,13 +3,19 @@ import Paper from '@mui/material/Paper';
 import { SidebarProps } from 'pages/LandingPage/LandingPageTypes';
 import FamilyProductItem from './ProductFamilyItem';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
+import SidebarSkeleton from '../SidebarSkeleton';
 
 export default function ProductFamilySidebar({ label, items }: SidebarProps) {
   const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
 
-  if (isLoading || isError || !landingPageItems) {
+  if (isError) {
     return null;
   }
+
+  if (isLoading || !landingPageItems) {
+    return <SidebarSkeleton />;
+  }
+
   return (
     <Paper
       sx={{

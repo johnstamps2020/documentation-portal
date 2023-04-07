@@ -10,6 +10,7 @@ import wrenchIcon from 'images/twoColumn/wrench-solid.svg';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import SectionItem from './SectionItem';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
+import Skeleton from '@mui/material/Skeleton';
 
 export type SectionProps = {
   label: string;
@@ -19,9 +20,23 @@ export type SectionProps = {
 export default function Section({ label, items }: SectionProps) {
   const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
 
-  if (isLoading || isError || !landingPageItems) {
+  if (isError) {
     return null;
   }
+
+  if (isLoading || !landingPageItems) {
+    return (
+      <Skeleton
+        variant="rectangular"
+        sx={{
+          width: { sm: '450px', xs: '100%' },
+          height: '200px',
+          margin: '0 0 32px 16px',
+        }}
+      />
+    );
+  }
+
   const iconArray = [
     bookOpenIcon,
     codeIcon,
@@ -39,7 +54,7 @@ export default function Section({ label, items }: SectionProps) {
       sx={{
         breakInside: 'avoid',
         width: { xs: '100%', sm: '450px' },
-        m: '0 0 32px 16px',
+        margin: '0 0 32px 16px',
       }}
     >
       <Stack direction="row" spacing={2} alignItems="center">
