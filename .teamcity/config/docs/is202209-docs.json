@@ -201,7 +201,7 @@
     },
     {
       "id": "isbc202209apibf",
-      "title": "BillingCenter Cloud API Consumer Guide",
+      "title": "Cloud API Consumer Guide",
       "url": "cloud/bc/202209/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
@@ -219,7 +219,7 @@
     },
     {
       "id": "isbc202209apica",
-      "title": "BillingCenter Cloud API Developer Guide",
+      "title": "Cloud API Developer Guide",
       "url": "cloud/bc/202209/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
@@ -471,7 +471,7 @@
     },
     {
       "id": "iscc202209apibf",
-      "title": "ClaimCenter Cloud API Consumer Guide",
+      "title": "Cloud API Consumer Guide",
       "url": "cloud/cc/202209/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
@@ -489,7 +489,7 @@
     },
     {
       "id": "iscc202209apica",
-      "title": "ClaimCenter Cloud API Developer Guide",
+      "title": "Cloud API Developer Guide",
       "url": "cloud/cc/202209/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
@@ -777,7 +777,7 @@
     },
     {
       "id": "ispc202209apibf",
-      "title": "PolicyCenter Cloud API Consumer Guide",
+      "title": "Cloud API Consumer Guide",
       "url": "cloud/pc/202209/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
@@ -795,7 +795,7 @@
     },
     {
       "id": "ispc202209apica",
-      "title": "PolicyCenter Cloud API Developer Guide",
+      "title": "Cloud API Developer Guide",
       "url": "cloud/pc/202209/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
