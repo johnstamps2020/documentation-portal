@@ -372,7 +372,7 @@ main.skiRelease {
 }
 
 .garmisch .skiReleaseDesc li {
-  margin-bottom: .7rem;
+  margin-bottom: .42rem;
 }
 
 .skiRelease .skiReleaseOverview.categoryCard a:has(button) {
