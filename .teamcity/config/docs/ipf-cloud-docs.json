@@ -1,0 +1,73 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "midipfcloudoverview",
+      "title": "Overview",
+      "url": "cloud/ipf/latest/overview",
+      "metadata": {
+        "product": ["ClaimCenter Package for France"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipfcloudadjuster",
+      "title": "Adjuster Guide",
+      "url": "cloud/ipf/latest/adjuster",
+      "metadata": {
+        "product": ["ClaimCenter Package for France"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipfcloudadmin",
+      "title": "Administration Guide",
+      "url": "cloud/ipf/latest/admin",
+      "metadata": {
+        "product": ["ClaimCenter Package for France"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Administration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipfcloudrn",
+      "title": "Release Notes",
+      "url": "cloud/ipf/latest/releasenotes",
+      "metadata": {
+        "product": ["ClaimCenter Package for France"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
