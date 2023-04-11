@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "midipfcloudrn"
+          "id": "midipfelysianrn"
         }
       ]
     },
@@ -20,11 +20,11 @@
       "items": [
         {
           "label": "Overview",
-          "id": "midipfcloudoverview"
+          "id": "midipfelysianoverview"
         },
         {
           "label": "Adjuster Guide",
-          "id": "midipfcloudadjuster"
+          "id": "midipfelysianadjuster"
         }
       ]
     },
@@ -34,7 +34,7 @@
       "items": [
         {
           "label": "Administration Guide",
-          "id": "midipfcloudadmin"
+          "id": "midipfelysianadmin"
         }
       ]
     }

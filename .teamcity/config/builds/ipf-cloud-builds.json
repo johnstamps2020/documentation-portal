@@ -5,32 +5,32 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "IRSAOverview.ditamap",
-      "srcId": "midipfcloudsrc",
-      "docId": "midipfcloudoverview",
+      "srcId": "midipfelysiansrc",
+      "docId": "midipfelysianoverview",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "IRSAAdjusterGuide.ditamap",
-      "srcId": "midipfcloudsrc",
-      "docId": "midipfcloudadjuster",
+      "srcId": "midipfelysiansrc",
+      "docId": "midipfelysianadjuster",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "IRSAAdministrationGuide.ditamap",
-      "srcId": "midipfcloudsrc",
-      "docId": "midipfcloudadmin",
+      "srcId": "midipfelysiansrc",
+      "docId": "midipfelysianadmin",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "IRSAReleaseNotes.ditamap",
-      "srcId": "midipfcloudsrc",
-      "docId": "midipfcloudrn",
+      "srcId": "midipfelysiansrc",
+      "docId": "midipfelysianrn",
       "indexRedirect": true
     }
   ]
