@@ -7,7 +7,8 @@
     <div class="pageBody">
         <div class="pageControllers">
             <% if (pageContent.title.toLowerCase() !== 'flaine' &&
-                   pageContent.title.toLowerCase() !== 'garmisch') { %>
+                   pageContent.title.toLowerCase() !== 'garmisch' &&
+                   pageContent.title.toLowerCase() !== 'hakuba') { %>
                 <%- include('parts/platform-toggle') %>
                 <div class="pageHero">
                     <%- include('parts/breadcrumbs') %>
@@ -21,6 +22,9 @@
                 </div>
             <% } %>
             <%- include('parts/page-selector') %>
+            <% if (pageContent.title.toLowerCase() === 'hakuba') { %>
+                <%- include('parts/ski/hakuba') %>
+            <% } %>
             <% if (pageContent.title.toLowerCase() === 'garmisch') { %>
                 <%- include('parts/ski/garmisch') %>
             <% } %>
@@ -30,7 +34,8 @@
         </div>
         <div class="content">
             <% if (pageContent.title.toLowerCase() === 'flaine' ||
-                   pageContent.title.toLowerCase() === 'garmisch') { %>
+                   pageContent.title.toLowerCase() === 'garmisch' ||
+                   pageContent.title.toLowerCase() === 'hakuba') { %>
                 <%- include('parts/ski/intro') %>
             <% } %>
             <% function createItemElement(className, href, label, itemItems, isPubliclyAvailable, isInternal) { %>
