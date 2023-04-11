@@ -347,23 +347,7 @@
     {
       "id": "jutrosdknext",
       "title": "Jutro SDK",
-      "url": "jutro/sdk/next/docs/jutro-sdk-overview",
-      "metadata": {
-        "product": ["Jutro Digital Platform"],
-        "platform": ["Cloud"],
-        "version": ["next"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
-      "id": "jutroapdtoolkit",
-      "title": "Jutro APD Toolkit",
-      "url": "jutro/sdk/next/docs/apd-toolkit-overview",
+      "url": "jutro/sdk/next",
       "metadata": {
         "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],

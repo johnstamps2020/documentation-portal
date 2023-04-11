@@ -16,12 +16,12 @@
       "items": [
         {
           "label": "Jutro SDK (Early Access)",
-          "id": "jutrosdknext",
+          "link": "/jutro/sdk/next/docs/jutro-sdk-overview",
           "env": ["staging"]
         },
         {
           "label": "APD toolkit (Early Access)",
-          "id": "jutroapdtoolkit",
+          "link": "/jutro/sdk/next/docs/apd-toolkit-overview",
           "env": ["staging"]
         }
       ]
