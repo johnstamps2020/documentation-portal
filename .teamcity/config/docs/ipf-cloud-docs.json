@@ -4,11 +4,12 @@
     {
       "id": "midipfcloudoverview",
       "title": "Overview",
-      "url": "cloud/ipf/latest/overview",
+      "url": "cloud/ipf/elysian/overview",
       "metadata": {
         "product": ["ClaimCenter Package for France"],
         "platform": ["Cloud"],
-        "version": ["latest"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
         "subject": ["Features and functionality"]
       },
       "environments": ["staging"],
@@ -21,11 +22,12 @@
     {
       "id": "midipfcloudadjuster",
       "title": "Adjuster Guide",
-      "url": "cloud/ipf/latest/adjuster",
+      "url": "cloud/ipf/elysian/adjuster",
       "metadata": {
         "product": ["ClaimCenter Package for France"],
         "platform": ["Cloud"],
-        "version": ["latest"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
         "subject": ["Features and functionality"]
       },
       "environments": ["staging"],
@@ -38,11 +40,12 @@
     {
       "id": "midipfcloudadmin",
       "title": "Administration Guide",
-      "url": "cloud/ipf/latest/admin",
+      "url": "cloud/ipf/elysian/admin",
       "metadata": {
         "product": ["ClaimCenter Package for France"],
         "platform": ["Cloud"],
-        "version": ["latest"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
         "subject": ["Administration"]
       },
       "environments": ["staging"],
@@ -55,11 +58,12 @@
     {
       "id": "midipfcloudrn",
       "title": "Release Notes",
-      "url": "cloud/ipf/latest/releasenotes",
+      "url": "cloud/ipf/elysian/releasenotes",
       "metadata": {
         "product": ["ClaimCenter Package for France"],
         "platform": ["Cloud"],
-        "version": ["latest"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
         "subject": ["Release notes"]
       },
       "environments": ["staging"],

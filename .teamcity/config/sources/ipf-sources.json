@@ -6,6 +6,12 @@
       "title": "IRSA Integration for ClaimCenter 2.0",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipf.git",
       "branch": "release/2.0"
+    },
+    {
+      "id": "midipfelysiansrc",
+      "title": "InsuranceSuite Package for France Cloud",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipf.git",
+      "branch": "release/cloud/elysian"
     }
   ]
 }
