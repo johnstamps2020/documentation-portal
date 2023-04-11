@@ -1,3 +1,22 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: ${APP_NAME}-pdb
+  namespace: ${POD_NAME}
+  labels:
+    app: ${APP_NAME}
+    gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: ${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${APP_NAME}
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: ${APP_NAME}
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -49,6 +68,9 @@ spec:
             - containerPort: 80
               name: http
               protocol: TCP
+          env:
+            - name: REFRESH_IMAGE
+              value: 'BUILD_TIME'
           resources:
             requests:
               memory: \"${REQUESTS_MEMORY}\"
