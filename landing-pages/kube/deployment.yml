@@ -68,6 +68,9 @@ spec:
             - containerPort: 80
               name: http
               protocol: TCP
+          env:
+            - name: REFRESH_IMAGE
+              value: 'BUILD_TIME'
           resources:
             requests:
               memory: \"${REQUESTS_MEMORY}\"
