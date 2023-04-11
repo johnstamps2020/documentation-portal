@@ -1,8 +1,8 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Garmisch",
+  "title": "Hakuba",
   "template": "page",
-  "class": "blue-theme skiRelease garmisch",
+  "class": "blue-theme skiRelease hakuba",
   "selector": {
     "label": "Select release",
     "selectedItem": "Hakuba",
