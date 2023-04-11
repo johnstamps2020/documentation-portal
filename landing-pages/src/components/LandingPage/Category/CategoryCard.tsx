@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import CategorySection, { CategorySectionProps } from './CategorySection';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
+import Skeleton from '@mui/material/Skeleton';
 
 export type CategoryCardProps = {
   label: string;
@@ -29,13 +30,25 @@ export default function CategoryCard({
     isLoading: isLoadingSections,
   } = useLandingPageItems(itemsInSections);
 
-  if (
-    (isLoading && isLoadingSections) ||
-    (isError && isErrorSections) ||
-    (!landingPageItems && !landingPageSectionsItems)
-  ) {
+  if (isError && isErrorSections) {
     return null;
   }
+
+  if (
+    (isLoading && isLoadingSections) ||
+    (!landingPageItems && !landingPageSectionsItems)
+  ) {
+    return (
+      <Skeleton
+        variant="rectangular"
+        sx={{
+          width: { sm: '300px', xs: '100%' },
+          height: '450px',
+        }}
+      />
+    );
+  }
+
   return (
     <Paper
       sx={{

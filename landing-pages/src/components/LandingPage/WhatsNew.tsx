@@ -1,6 +1,7 @@
 import { Button, Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
+import Skeleton from '@mui/material/Skeleton';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import LandingPageLink from './LandingPageLink';
@@ -20,9 +21,19 @@ export default function WhatsNew({
 }: WhatsNewProps) {
   const { landingPageItems, isLoading, isError } = useLandingPageItems([item]);
 
-  if (isLoading || isError || !landingPageItems) {
+  if (isError) {
     return null;
   }
+
+  if (isLoading || !landingPageItems) {
+    return (
+      <Skeleton
+        variant="rectangular"
+        sx={{ width: '300px', height: '600px' }}
+      />
+    );
+  }
+
   return (
     <Paper
       sx={{

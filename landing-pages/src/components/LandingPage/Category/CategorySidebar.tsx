@@ -4,13 +4,19 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { SidebarProps } from 'pages/LandingPage/LandingPageTypes';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
+import SidebarSkeleton from '../SidebarSkeleton';
 
 export default function CategorySidebar({ label, items }: SidebarProps) {
   const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
 
-  if (isLoading || isError || !landingPageItems) {
+  if (isError) {
     return null;
   }
+
+  if (isLoading || !landingPageItems) {
+    return <SidebarSkeleton />;
+  }
+
   return (
     <Paper
       sx={{

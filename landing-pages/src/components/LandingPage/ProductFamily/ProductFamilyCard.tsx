@@ -2,6 +2,7 @@ import Paper from '@mui/material/Paper';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import LandingPageLink from 'components/LandingPage/LandingPageLink';
+import Skeleton from '@mui/material/Skeleton';
 
 export default function ProductFamilyCard(item: LandingPageItemProps) {
   const sx = {
@@ -10,9 +11,22 @@ export default function ProductFamilyCard(item: LandingPageItemProps) {
   };
   const { landingPageItems, isLoading, isError } = useLandingPageItems([item]);
 
-  if (isLoading || isError || !landingPageItems) {
+  if (isError) {
+    return (
+      <Skeleton
+        variant="rectangular"
+        sx={{
+          width: { sm: '300px', xs: '100%' },
+          height: '100px',
+        }}
+      />
+    );
+  }
+
+  if (isLoading || !landingPageItems) {
     return null;
   }
+
   return (
     <Paper
       sx={{

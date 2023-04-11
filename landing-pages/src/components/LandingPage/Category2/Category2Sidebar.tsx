@@ -5,13 +5,19 @@ import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 import { SidebarProps } from 'pages/LandingPage/LandingPageTypes';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
+import SidebarSkeleton from '../SidebarSkeleton';
 
 export default function Category2Sidebar({ label, items }: SidebarProps) {
   const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
 
-  if (isLoading || isError || !landingPageItems) {
+  if (isError) {
     return null;
   }
+
+  if (isLoading || !landingPageItems) {
+    return <SidebarSkeleton />;
+  }
+
   return (
     <Paper
       sx={{

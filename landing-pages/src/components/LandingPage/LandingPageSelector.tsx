@@ -7,6 +7,7 @@ import { styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
+import Skeleton from '@mui/material/Skeleton';
 
 type PageSelectorItem = {
   label: string;
@@ -76,9 +77,17 @@ export default function LandingPageSelector({
 }: LandingPageSelectorProps) {
   const navigate = useNavigate();
   const { landingPageItems, isError, isLoading } = useLandingPageItems(items);
-  if (isError || isLoading || !landingPageItems) {
+
+  if (isError) {
     return null;
   }
+
+  if (isLoading || !landingPageItems) {
+    return (
+      <Skeleton variant="rectangular" sx={{ width: '300px', height: '55px' }} />
+    );
+  }
+
   const pageSelectorItems = landingPageItems
     .map((item) => {
       const label = item.title || item.label || '';
