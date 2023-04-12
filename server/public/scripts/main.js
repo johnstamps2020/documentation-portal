@@ -1,30 +1,5 @@
 import { setMetadata } from './modules/metadata.js';
 
-function selectToggleButton() {
-  const toggleButtons = document.querySelectorAll(
-    '#platformToggle > .toggleButton'
-  );
-  if (toggleButtons.length === 0) {
-    return;
-  }
-  let matchingButton = document.querySelector('#platformToggle > #cloudButton');
-  const currentPath = window.location.pathname;
-  toggleButtons.forEach((button) => {
-    const root = button.getAttribute('data-root');
-    if (currentPath.startsWith(root)) {
-      matchingButton = button;
-    }
-  });
-  // temporary patch
-  if (currentPath.startsWith('/globalSolutions/ipf/')) {
-    matchingButton = document.querySelector(
-      '#platformToggle > #selfManagedButton'
-    );
-  }
-  matchingButton.classList.toggle('selected');
-  matchingButton.removeAttribute('href');
-}
-
 async function addReleaseBadge() {
   const cloudReleaseMatch = window.location.href.match(
     /\/cloudProducts\/([^/]+)(\/|$)/
@@ -120,7 +95,6 @@ function addNotices() {
 }
 
 window.onload = async function () {
-  selectToggleButton();
   addReleaseBadge();
   addNotices();
   setSearchFilterCSS();

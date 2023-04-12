@@ -286,6 +286,15 @@ div.items {
   flex-wrap: wrap;
 }
 
+.pageControllers a.platformLink {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: underline;
+  color: #131E2F;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
 main.skiRelease {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
@@ -314,10 +323,10 @@ main.skiRelease {
   margin-bottom: 1.5rem;
 }
 
-.skiRelease .pageControllers a.selfManagedLink {
+.skiRelease .pageControllers a.platformLink,
+.blue-theme .pageControllers a.platformLink {
   color: #fff;
-  font-weight: 700;
-  text-decoration: underline;
+  margin-bottom: 0;
 }
 
 .skiRelease .pageControllers .skiReleaseOverview {
