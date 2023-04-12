@@ -61,7 +61,7 @@
       "url": "ipj/garmisch/releasenotes",
       "metadata": {
         "product": ["InsuranceSuite Package for Japan"],
-        "platform": ["Cloud", "Self-managed"],
+        "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Release notes"]
@@ -79,7 +79,7 @@
       "url": "ipj/garmisch/config",
       "metadata": {
         "product": ["InsuranceSuite Package for Japan"],
-        "platform": ["Cloud", "Self-managed"],
+        "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Development"]
@@ -97,7 +97,7 @@
       "url": "ipj/garmisch/app",
       "metadata": {
         "product": ["InsuranceSuite Package for Japan"],
-        "platform": ["Cloud", "Self-managed"],
+        "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Features and functionality"]
@@ -115,7 +115,7 @@
       "url": "ipj/garmisch/install",
       "metadata": {
         "product": ["InsuranceSuite Package for Japan"],
-        "platform": ["Cloud", "Self-managed"],
+        "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Installation"]
