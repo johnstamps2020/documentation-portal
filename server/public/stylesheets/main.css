@@ -304,6 +304,15 @@ div.items {
   flex-wrap: wrap;
 }
 
+.pageControllers a.platformLink {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: underline;
+  color: #131E2F;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
 main.skiRelease {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
@@ -332,10 +341,10 @@ main.skiRelease {
   margin-bottom: 1.5rem;
 }
 
-.skiRelease .pageControllers a.selfManagedLink {
+.skiRelease .pageControllers a.platformLink,
+.blue-theme .pageControllers a.platformLink {
   color: #fff;
-  font-weight: 700;
-  text-decoration: underline;
+  margin-bottom: 0;
 }
 
 .skiRelease .pageControllers .skiReleaseOverview {
@@ -584,73 +593,6 @@ footer .releaseInfo {
 
 div.pageHero {
   display: block;
-}
-
-#platformToggle {
-  display: inline-flex;
-  color: var(--clr-GW-BLACK);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 21px;
-  box-sizing: border-box;
-}
-
-#platformToggle > .toggleButton {
-  align-items: center;
-  display: flex;
-  height: 32px;
-  width: 150px;
-  cursor: pointer;
-  justify-content: center;
-  box-sizing: border-box;
-  outline-style: none;
-  outline-width: 0;
-  text-align: center;
-  white-space: nowrap;
-  padding: 0 1.25rem;
-  text-decoration: none;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  color: var(--clr-GW-BLACKISH);
-  background: hsl(0, 0%, 100%);
-  border: var(--clr-GW-HEADER-BORDER) solid 1px;
-  box-shadow: var(--clr-GW-BOXSHADOW) 0 2px 4px 0;
-}
-
-#platformToggle > .toggleButton:not(.selected):hover {
-  background: var(--clr-GW-BLUE-LIGHTEST);
-  box-shadow: var(--clr-GW-BOXSHADOW) 0 2px 4px 0 !important;
-}
-
-#platformToggle > #cloudButton {
-  border-radius: 4px 0 0 4px;
-}
-
-#platformToggle > #selfManagedButton {
-  border-width: 1px 1px 1px 0;
-  border-radius: 0 4px 4px 0;
-}
-
-.featurePreview #platformToggle,
-.l10n #platformToggle,
-.upgradediffs #platformToggle {
-  display: none;
-}
-
-.upgradediffs #platformToggle {
-  display: none;
-}
-
-#platformToggle > .selected {
-  background: var(--clr-GW-BLUE);
-  color: var(--clr-GW-WHITE);
-  border: hsl(198, 75%, 46%) solid 1px;
-  font-weight: 600;
-}
-
-#platformToggle > .selected:hover {
-  outline: none;
-  box-shadow: 0 0 0 2px hsla(198, 75%, 46%, 0.4) !important;
 }
 
 .button {
@@ -962,7 +904,7 @@ main.support h2 {
 }
 
 .docBreadcrumb {
-  padding: 0.5rem 0;
+  margin: 0.5rem 0;
   height: 2.25rem;
 }
 

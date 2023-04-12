@@ -9,7 +9,20 @@
             <% if (pageContent.title.toLowerCase() !== 'flaine' &&
                    pageContent.title.toLowerCase() !== 'garmisch' &&
                    pageContent.title.toLowerCase() !== 'hakuba') { %>
-                <%- include('parts/platform-toggle') %>
+                <% if (pagePath.includes("selfManagedProducts")) { %>
+                    <a
+                        href="/cloudProducts"
+                        data-root="/cloudProducts"
+                        class="platformLink"
+                        >Click here for cloud documentation</a>
+                <% } else if (pagePath.includes("cloudProducts")) { %>
+                    <a
+                        href="/selfManagedProducts"
+                        data-root="/selfManagedProducts"
+                        class="platformLink"
+                        >Click here for self-managed documentation</a>
+
+                <% } %>
                 <div class="pageHero">
                     <%- include('parts/breadcrumbs') %>
                     <h1><%= pageContent.title %></h1>
