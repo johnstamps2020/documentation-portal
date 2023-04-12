@@ -351,8 +351,7 @@
       "metadata": {
         "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
-        "version": ["next"],
-        "subject": ["Best practices"]
+        "version": ["next"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

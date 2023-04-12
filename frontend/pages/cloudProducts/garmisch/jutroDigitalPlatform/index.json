@@ -20,7 +20,7 @@
           "env": ["staging"]
         },
         {
-          "label": "APD toolkit",
+          "label": "APD toolkit (Early Access)",
           "link": "/jutro/sdk/next/docs/apd-toolkit-overview",
           "env": ["staging"]
         }
