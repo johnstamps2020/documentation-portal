@@ -19,7 +19,7 @@ can still use the Redoc plugin.
 Use Yarn 3 in builds for docs.guidewire.com.
 
 1. Upgrade your site to Yarn 3.
-1. At the root of your site, set up `yarnrc.yml` similar to the following
+1. At the root of your site, set up `.yarnrc.yml` similar to the following
 
 ```yml
 yarnPath: .yarn/releases/yarn-3.3.0.cjs

@@ -42,6 +42,12 @@
       "title": "GCC UI Internal Docs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gcc-ui-internal-features-docs.git",
       "branch": "master"
+    },
+    {
+      "id": "gcccloudconsoletemporarysrc",
+      "title": "Guidewire Cloud Console Temporary",
+      "gitUrl": "https://stash.guidewire.com/projects/DOCSOURCES/repos/cloud-console-docs/browse",
+      "branch": "master"
     }
   ]
 }
