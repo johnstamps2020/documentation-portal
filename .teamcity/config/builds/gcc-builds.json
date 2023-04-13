@@ -61,6 +61,12 @@
       "indexRedirect": true,
       "srcId": "guidewirecloudconsolelatestsrc",
       "docId": "guidewirecloudconsolerootearlyaccess"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "databaseservice",
+      "srcId": "databaseservicesrc",
+      "nodeImageVersion": "18.0.0"
     }
   ]
 }

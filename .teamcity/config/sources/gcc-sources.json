@@ -48,6 +48,12 @@
       "title": "Guidewire Cloud Console Temporary",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-console-docs.git",
       "branch": "master"
+    },
+    {
+      "id": "databaseservicesrc",
+      "title": "Database Service",
+      "gitUrl": "ssh://git@stash.guidewire.com/orange/database-service-docs.git",
+      "branch": "main"
     }
   ]
 }
