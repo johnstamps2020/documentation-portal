@@ -12,6 +12,7 @@ import GwBackdrop from '../GwBackdrop';
 import Anonymous from './Anonymous';
 import Translate, { translate } from '@theme/Translate';
 import { FeedbackDialogProps } from '@theme/Feedback';
+import PrivacyNotice from './PrivacyNotice';
 
 const commentLabel = translate({
   id: 'feedbackDialog.comment',
@@ -275,6 +276,7 @@ export default function FeedbackDialog({
                 isValid={email.length > 0 && !emailIsError}
               />
             </Stack>
+            <PrivacyNotice />
             <DialogActions>
               <Button onClick={onClose} size="large" disabled={sending}>
                 <Translate
