@@ -18,6 +18,12 @@
   "anonymous.becomeAnonymous": {
     "message": "kliknij tutaj, żeby skomentować anonimowo"
   },
+  "privacy.warning": {
+    "message": "Podając swój adres e-mail, wyrażasz zgodę na to, że skontaktuje się z Tobą przedstawiciel Guidewire."
+  },
+  "privacy.link": {
+    "message": "Polityka prywatności Guidewire jest dostępna tutaj."
+  },
   "anonymous.youAreSharing": {
     "message": "Udostępniasz nam swój adres email,",
     "description": "Tells the user that we know their email. When they send this comment, they will send their email to us."
