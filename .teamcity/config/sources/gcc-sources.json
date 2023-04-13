@@ -46,7 +46,7 @@
     {
       "id": "gcccloudconsoletemporarysrc",
       "title": "Guidewire Cloud Console Temporary",
-      "gitUrl": "https://stash.guidewire.com/projects/DOCSOURCES/repos/cloud-console-docs/browse",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-console-docs.git",
       "branch": "master"
     }
   ]
