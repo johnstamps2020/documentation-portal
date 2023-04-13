@@ -6,6 +6,46 @@ import { render } from 'react-dom';
 import '../stylesheets/modules/minitoc.css';
 import { translate } from '@theme/Translate';
 
+async function getPlatformBreadcrumb() {
+  const docId = document
+    .querySelector("meta[name='gw-doc-id']")
+    ?.getAttribute('content');
+  try {
+    const response = await fetch(
+      `/safeConfig/docMetadata/${docId}`
+    );
+    const jsonResponse = await response.json();
+    
+    if (jsonResponse.platform?.length > 1) {
+      return;
+    }
+    let releaseLink;
+    let releaseText;
+    if (jsonResponse.platform[0] === 'Cloud') {
+      if (jsonResponse.release && jsonResponse.release.length === 1) {
+        releaseText = jsonResponse.release[0]
+        releaseLink = `/cloudProducts/${jsonResponse.release[0].toLowerCase()}`
+      }
+      else {
+        releaseText = 'Cloud';
+        releaseLink = '/cloudProducts';
+      }
+    }
+    if (jsonResponse.platform[0] === 'Self-managed') {
+      releaseText = 'Self-managed';
+      releaseLink = '/selfManagedProducts';   
+    }
+    const platformBreadcrumb = {
+      text: releaseText,
+      href: releaseLink,
+    };
+
+    return platformBreadcrumb;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 async function getTopBreadcrumb() {
   try {
     const currentPagePathname = window.location.pathname;
@@ -84,6 +124,11 @@ async function addBreadCrumbs() {
     const topBreadcrumb = await getTopBreadcrumb();
     if (topBreadcrumb) {
       linkTrail.push(topBreadcrumb);
+    }
+
+    const platformBreadcrumb = await getPlatformBreadcrumb();
+    if (platformBreadcrumb) {
+      linkTrail.push(platformBreadcrumb);
     }
 
     linkTrail.reverse();
