@@ -1,0 +1,42 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "London Market",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "londonrnhakuba"
+        }
+      ]
+    },
+    {
+      "label": "Developers",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "Configuration Guide",
+          "id": "londonconfighakuba"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "ClaimCenter for London Market Application Guide",
+          "id": "londonccapphakuba"
+        },
+        {
+          "label": "PolicyCenter for London Market Application Guide",
+          "id": "londonpcapphakuba"
+        }
+      ]
+    }
+  ]
+}
