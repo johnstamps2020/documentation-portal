@@ -92,6 +92,24 @@
       "earlyAccess": false
     },
     {
+      "id": "gcccloudconsoletemporary",
+      "title": "Guidewire Cloud Console Temporary",
+      "url": "cloud/console/tmp",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"],
+        "release": ["Elysian", "Flaine", "Garmisch"]
+      },
+      "environments": ["staging"],
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
       "id": "guidewirecloudconsoleguideinsurerdev",
       "title": "Cloud Console Guide Insurer Developer",
       "url": "cloud/gcc-guide/insurer-developer/latest/topics/c_provisioning-cloud-console.html",
