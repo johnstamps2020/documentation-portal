@@ -2,7 +2,8 @@
   "name": "scripts",
   "packageManager": "yarn@3.2.4",
   "scripts": {
-    "migrate-pages": "ts-node src/pages/migrate.ts"
+    "migrate-pages": "ts-node src/pages/migrate.ts",
+    "get-root-breadcrumbs": "ts-node src/pages/getRootBreadcrumbs.ts"
   },
   "devDependencies": {
     "@types/node": "^18.14.6",
