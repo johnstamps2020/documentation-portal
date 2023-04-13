@@ -1,6 +1,6 @@
 # Set up local env
 
-Use the following environment variables. Private keys etc. are not listed below, so you need to fill them in yourself.
+Use the following environment variables. Private keys etc. are not listed below, so you need get them from Password Vault.
 
 OKTA_DOMAIN=https://guidewire-hub.oktapreview.com
 OKTA_CLIENT_ID=
