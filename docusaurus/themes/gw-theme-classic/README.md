@@ -40,21 +40,6 @@ In you `docusaurus.config.js`:
 baseUrl: process.env["BASE_URL"] || "/",
 ```
 
-## Site metadata
-
-For your site to work well with docs.guidewire.com, you need to build it with
-metadata mapped to environment variables. If you use a standard
-docs.guidewire.com build as managed by doctools@guidewire.com, the variables are
-automatically mapped to the environment.
-
-The following metadata values map onto the search and versioning features. You
-can use commas to separate multiple values, for example
-`GW_PLATFORM=Cloud,Self-managed`.
-
-- `GW_PLATFORM`
-- `GW_PRODUCT`
-- `GW_VERSION`
-
 ## Navbar and logo
 
 The navbar (top bar) is set so that it matches Guidewire styles and contains the
