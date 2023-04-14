@@ -31,6 +31,23 @@ npmScopes:
     npmRegistryServer: https://artifactory.guidewire.com/artifactory/api/npm/doctools-npm-dev/
 ```
 
+## trailingSlash
+
+import { RightWrong, Right, Wrong } from "@theme/RightWrong";
+
+<RightWrong>
+<Wrong>
+
+```js
+trailingSlash: false,
+```
+
+</Wrong>
+</RightWrong>
+
+Do not use this setting when posting to docs.guidewire.com. It breaks S3 file
+hosting. Leave `trailingSlash` undefined, or set it to `true`.
+
 ## Setup access to the @doctools scope in Artifactory (first time only)
 
 import Artifactory from './\_set-up-artifactory.md';
