@@ -67,6 +67,12 @@
       "docId": "databaseservice",
       "srcId": "databaseservicesrc",
       "nodeImageVersion": "18.0.0"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "insurancesuiteplatformdeployer",
+      "srcId": "insurancesuiteplatformdeployersrc",
+      "nodeImageVersion": "18.0.0"
     }
   ]
 }

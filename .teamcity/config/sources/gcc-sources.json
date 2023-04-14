@@ -54,6 +54,12 @@
       "title": "Database Service",
       "gitUrl": "ssh://git@stash.guidewire.com/orange/database-service-docs.git",
       "branch": "main"
+    },
+    {
+      "id": "insurancesuiteplatformdeployersrc",
+      "title": "InsuranceSuite Platform Deployer",
+      "gitUrl": "ssh://git@stash.guidewire.com/orange/insuranceplatform-deployer-docs.git",
+      "branch": "master"
     }
   ]
 }
