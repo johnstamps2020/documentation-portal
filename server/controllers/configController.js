@@ -357,7 +357,7 @@ async function getUrlsByWildcard(url) {
       }
     }
 
-    const matches = config.docs
+    let matches = config.docs
       .filter((doc) => {
         let docUrl = doc.url;
         const docUrlSegments = doc.url.split('/').map((segment, index) => {
@@ -372,7 +372,22 @@ async function getUrlsByWildcard(url) {
       })
       .map((doc) => doc.url);
 
-    if (matches) {
+    while (matches.length > 0 && testUrlSegments[wildcardIndex + 1]) {
+      const nextMatches = matches.filter((match) => {
+        const matchSegments = match.split('/');
+        if (matchSegments[wildcardIndex + 1]) {
+          return (
+            matchSegments[wildcardIndex + 1] ===
+            testUrlSegments[wildcardIndex + 1]
+          );
+        }
+      });
+      if (nextMatches.length === 0) break;
+      matches = nextMatches;
+      wildcardIndex++;
+    }
+
+    if (matches.length > 0) {
       return matches;
     } else {
       return {
