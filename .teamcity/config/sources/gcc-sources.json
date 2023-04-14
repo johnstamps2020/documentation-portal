@@ -66,6 +66,12 @@
       "title": "GWCP Infrastructure Provisioning Service",
       "gitUrl": "ssh://git@stash.guidewire.com/orange/gwcp-infrastructure-provisioning-service-docs.git",
       "branch": "main"
+    },
+    {
+      "id": "isdeploymentorchestratorsrc",
+      "title": "InsuranceSuite Deployment Orchestrator",
+      "gitUrl": "ssh://git@stash.guidewire.com/orange/is-deployment-orchestrator-docs.git",
+      "branch": "main"
     }
   ]
 }
