@@ -73,6 +73,12 @@
       "docId": "insurancesuiteplatformdeployer",
       "srcId": "insurancesuiteplatformdeployersrc",
       "nodeImageVersion": "18.0.0"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "gwcpinfrastructureprovisioningservicesrc",
+      "srcId": "gwcpinfrastructureprovisioningservice",
+      "nodeImageVersion": "18.0.0"
     }
   ]
 }
