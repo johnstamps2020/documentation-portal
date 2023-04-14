@@ -97,6 +97,12 @@
       "docId": "nps",
       "srcId": "npssrc",
       "nodeImageVersion": "18.0.0"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storageservice",
+      "srcId": "storageservicesrc",
+      "nodeImageVersion": "18.0.0"
     }
   ]
 }

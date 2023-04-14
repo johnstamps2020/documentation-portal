@@ -84,6 +84,12 @@
       "title": "Network Permission Service",
       "gitUrl": "ssh://git@stash.guidewire.com/orange/atmos-provisioning-service.git",
       "branch": "master"
+    },
+    {
+      "id": "storageservicesrc",
+      "title": "Storage Service",
+      "gitUrl": "ssh://git@stash.guidewire.com/orange/storage-service-docs.git",
+      "branch": "master"
     }
   ]
 }

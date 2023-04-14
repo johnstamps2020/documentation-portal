@@ -308,6 +308,23 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "storageservicesrc",
+      "title": "Storage Service",
+      "url": "internal/storage/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }
