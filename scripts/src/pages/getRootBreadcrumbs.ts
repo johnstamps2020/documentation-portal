@@ -34,7 +34,7 @@ for (const file of allFiles) {
   const matches = [...fileContents.matchAll(regex)].map((match) => match[1]);
   if (matches.length > 0 && filePath) {
     matches.forEach((match) => {
-      const index = breadcrumbs.findIndex((b) => b.docId === match);
+      const matchingBreadcrumb = breadcrumbs.find((b) => b.docId === match);
       if (index === -1) {
         breadcrumbs.push({ docId: match, rootPages: [filePath] });
       } else {
