@@ -35,7 +35,7 @@ for (const file of allFiles) {
   if (matches.length > 0 && filePath) {
     matches.forEach((match) => {
       const matchingBreadcrumb = breadcrumbs.find((b) => b.docId === match);
-      if (index === -1) {
+      if (!matchingBreadcrumb) {
         breadcrumbs.push({ docId: match, rootPages: [filePath] });
       } else {
         const matchingBreadcrumb = breadcrumbs[index];
