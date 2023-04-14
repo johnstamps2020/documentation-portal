@@ -121,6 +121,12 @@
       "docId": "cicdmanager",
       "srcId": "cicdmanagersrc",
       "nodeImageVersion": "18.0.0"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "scm",
+      "srcId": "scmsrc",
+      "nodeImageVersion": "18.0.0"
     }
   ]
 }

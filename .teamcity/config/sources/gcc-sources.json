@@ -108,6 +108,12 @@
       "title": "CI/CD Manager",
       "gitUrl": "ssh://git@stash.guidewire.com/orange/cicd-manager-service-docs.git",
       "branch": "master"
+    },
+    {
+      "id": "scmsrc",
+      "title": "Source Control Management Service",
+      "gitUrl": "ssh://git@stash.guidewire.com/orange/source-control-management-service-docs.git",
+      "branch": "master"
     }
   ]
 }
