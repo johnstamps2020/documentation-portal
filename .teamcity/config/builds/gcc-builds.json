@@ -76,8 +76,8 @@
     },
     {
       "buildType": "yarn",
-      "docId": "gwcpinfrastructureprovisioningservicesrc",
-      "srcId": "gwcpinfrastructureprovisioningservice",
+      "docId": "gwcpinfrastructureprovisioningservice",
+      "srcId": "gwcpinfrastructureprovisioningservicesrc",
       "nodeImageVersion": "18.0.0"
     },
     {
