@@ -359,6 +359,23 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "cicdmanager",
+      "title": "CI/CD Manager",
+      "url": "internal/ci-cd-manager/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }

@@ -102,6 +102,12 @@
       "title": "Digital Applications Deployer",
       "gitUrl": "ssh://git@stash.guidewire.com/kdc/digital-applications-deployer-docs.git",
       "branch": "main"
+    },
+    {
+      "id": "cicdmanagersrc",
+      "title": "CI/CD Manager",
+      "gitUrl": "ssh://git@stash.guidewire.com/orange/cicd-manager-service-docs.git",
+      "branch": "master"
     }
   ]
 }
