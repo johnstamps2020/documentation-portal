@@ -51,23 +51,6 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    },
-    {
-      "id": "gwcpinternal",
-      "title": "Network Permissions Service",
-      "url": "cloud/internal/nps",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": false,
-      "indexForSearch": true,
-      "public": false,
-      "internal": true,
-      "earlyAccess": true
     }
   ]
 }

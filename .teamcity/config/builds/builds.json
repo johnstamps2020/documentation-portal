@@ -876,12 +876,6 @@
     },
     {
       "buildType": "yarn",
-      "srcId": "gwcpinternalsrc",
-      "docId": "gwcpinternal",
-      "workingDir": "doc-poc"
-    },
-    {
-      "buildType": "yarn",
       "srcId": "internaldocssrc",
       "docId": "internaldocslatest",
       "nodeImageVersion": "16.16.0"

@@ -164,12 +164,6 @@
       "branch": "master"
     },
     {
-      "id": "gwcpinternalsrc",
-      "title": "Network Permissions Service",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-internal-doc-poc.git",
-      "branch": "master"
-    },
-    {
       "id": "internaldocssrc",
       "title": "Internal Docs",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/internal-docs-directory.git",
