@@ -516,43 +516,50 @@ export async function getVersionSelector(
   }
 }
 
-// TODO: Change this function to work with the database. It's used in docs to inject the root breadcrumb.
-//  We may need to build a site taxonomy to be able to achieve it
 export async function getRootBreadcrumb(pagePathname: string) {
+  const emptyRootPage = {
+    rootPage: {},
+  };
   try {
-    const breadcrumbsConfigPath = new URL(
-      `pages/breadcrumbs.json`,
-      process.env.DOC_S3_URL
-    ).href;
-    const response = await fetch(breadcrumbsConfigPath);
-    if (response.ok) {
-      const breadcrumbsMapping = await response.json();
-      try {
-        for (const breadcrumb of breadcrumbsMapping) {
-          if (
-            pagePathname.startsWith(breadcrumb.docUrl) &&
-            breadcrumb.rootPages.length === 1
-          ) {
-            return {
-              rootPage: {
-                path: breadcrumb.rootPages[0].path,
-                label: breadcrumb.rootPages[0].label,
-              },
-            };
-          }
-        }
-      } catch (breadErr) {
-        throw new Error(
-          `Problem getting breadcrumb file for page: "${pagePathname}" from file "${breadcrumbsConfigPath}": ${breadErr}`
-        );
-      }
+    const response = await fetch(
+      `${process.env.APP_BASE_URL}/landing/root-breadcrumbs.json`
+    );
+    if (!response.ok) {
+      return emptyRootPage;
     }
-    return { rootPage: {} };
+    const breadcrumbsJson = await response.json();
+    const docEntity = await getDocByUrl(pagePathname);
+    if (!docEntity) {
+      return emptyRootPage;
+    }
+    const matchingBreadcrumb = breadcrumbsJson.find(
+      (b: { docId: string; rootPages: string[] }) => b.docId === docEntity.id
+    );
+    if (matchingBreadcrumb.rootPages.length !== 1) {
+      return emptyRootPage;
+    }
+    const rootPagePath = matchingBreadcrumb.rootPages[0];
+    const rootPageEntity = await findEntity(
+      'Page',
+      {
+        path: rootPagePath.slice('/landing/'.length, rootPagePath.length),
+      },
+      false
+    );
+    if (!rootPageEntity) {
+      return emptyRootPage;
+    }
+    return {
+      rootPage: {
+        path: matchingBreadcrumb.rootPages[0],
+        label: rootPageEntity.title,
+      },
+    };
   } catch (err) {
     winstonLogger.error(
-      `Something wrong when trying to get the root breadcrumb
+      `Problem getting root breadcrumb for page: "${pagePathname}":
           ERROR: ${JSON.stringify(err)}`
     );
-    return { rootPage: {} };
+    return emptyRootPage;
   }
 }

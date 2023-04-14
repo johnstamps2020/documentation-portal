@@ -52,6 +52,9 @@ const router = createBrowserRouter(
       element: <SupportPage />,
     },
     {
+      path: '/root-breadcrumbs.json',
+    },
+    {
       path: '/*',
       element: <LandingPage />,
     },
