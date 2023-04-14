@@ -1703,6 +1703,24 @@ object Frontend {
             }
 
             steps {
+                nodeJS {
+                    name = "Generate the root breadcrumbs file from React components"
+                    id = Helpers.createIdStringFromName(this.name)
+                    shellScript = """
+                        yarn --cwd scripts get-root-breadcrumbs
+                    """.trimIndent()
+                    dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
+                }
+                script {
+                    name = "Copy the root breadcrumbs file to landing pages"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                        #!/bin/bash 
+                        set -xe
+                        
+                        cp %teamcity.build.checkoutDir%/scripts/out/root-breadcrumbs.json %teamcity.build.checkoutDir%/landing-pages/public
+                    """.trimIndent()
+                }
                 script {
                     name = "Build and publish server Docker Image to DEV ECR"
                     id = Helpers.createIdStringFromName(this.name)
