@@ -85,6 +85,12 @@
       "docId": "isdeploymentorchestrator",
       "srcId": "isdeploymentorchestratorsrc",
       "nodeImageVersion": "18.0.0"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "buildpromoter",
+      "srcId": "buildpromotersrc",
+      "nodeImageVersion": "18.0.0"
     }
   ]
 }

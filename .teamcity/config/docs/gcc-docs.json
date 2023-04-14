@@ -274,6 +274,23 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "buildpromoter",
+      "title": "Build Promoter",
+      "url": "internal/build-promoter/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }
