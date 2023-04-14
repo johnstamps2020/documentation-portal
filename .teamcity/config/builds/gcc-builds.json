@@ -109,6 +109,12 @@
       "docId": "projectservice",
       "srcId": "projectservicesrc",
       "nodeImageVersion": "18.0.0"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "dad",
+      "srcId": "dadsrc",
+      "nodeImageVersion": "18.0.0"
     }
   ]
 }

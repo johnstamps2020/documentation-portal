@@ -96,6 +96,12 @@
       "title": "Storage Service",
       "gitUrl": "ssh://git@stash.guidewire.com/orange/project-service-docs.git",
       "branch": "master"
+    },
+    {
+      "id": "dadsrc",
+      "title": "Digital Applications Deployer",
+      "gitUrl": "ssh://git@stash.guidewire.com/kdc/digital-applications-deployer-docs.git",
+      "branch": "main"
     }
   ]
 }
