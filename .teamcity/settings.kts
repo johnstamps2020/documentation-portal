@@ -1707,6 +1707,7 @@ object Frontend {
                     name = "Generate the root breadcrumbs file from React components"
                     id = Helpers.createIdStringFromName(this.name)
                     shellScript = """
+                        yarn --cwd scripts
                         yarn --cwd scripts get-root-breadcrumbs
                     """.trimIndent()
                     dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
