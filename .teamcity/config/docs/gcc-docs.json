@@ -310,9 +310,26 @@
       "earlyAccess": false
     },
     {
-      "id": "storageservicesrc",
+      "id": "storageservice",
       "title": "Storage Service",
       "url": "internal/storage/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "projectservice",
+      "title": "Project Service",
+      "url": "internal/project/latest",
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "metadata": {

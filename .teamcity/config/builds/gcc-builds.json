@@ -103,6 +103,12 @@
       "docId": "storageservice",
       "srcId": "storageservicesrc",
       "nodeImageVersion": "18.0.0"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "projectservice",
+      "srcId": "projectservicesrc",
+      "nodeImageVersion": "18.0.0"
     }
   ]
 }

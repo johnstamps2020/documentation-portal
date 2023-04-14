@@ -90,6 +90,12 @@
       "title": "Storage Service",
       "gitUrl": "ssh://git@stash.guidewire.com/orange/storage-service-docs.git",
       "branch": "master"
+    },
+    {
+      "id": "projectservicesrc",
+      "title": "Storage Service",
+      "gitUrl": "ssh://git@stash.guidewire.com/orange/project-service-docs.git",
+      "branch": "master"
     }
   ]
 }
