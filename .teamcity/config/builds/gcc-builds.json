@@ -91,6 +91,12 @@
       "docId": "buildpromoter",
       "srcId": "buildpromotersrc",
       "nodeImageVersion": "18.0.0"
+    },
+    {
+      "buildType": "yarn",
+      "docId": "nps",
+      "srcId": "npssrc",
+      "nodeImageVersion": "18.0.0"
     }
   ]
 }

@@ -291,6 +291,23 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "nps",
+      "title": "Network Permissions Service",
+      "url": "internal/nps/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }

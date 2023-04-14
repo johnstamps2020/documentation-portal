@@ -78,6 +78,12 @@
       "title": "Build Promoter",
       "gitUrl": "ssh://git@stash.guidewire.com/orange/build-promoter-docs.git",
       "branch": "master"
+    },
+    {
+      "id": "npssrc",
+      "title": "Network Permission Service",
+      "gitUrl": "ssh://git@stash.guidewire.com/orange/atmos-provisioning-service.git",
+      "branch": "master"
     }
   ]
 }
