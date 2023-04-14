@@ -38,7 +38,6 @@ for (const file of allFiles) {
       if (!matchingBreadcrumb) {
         breadcrumbs.push({ docId: match, rootPages: [filePath] });
       } else {
-        const matchingBreadcrumb = breadcrumbs[index];
         if (!matchingBreadcrumb.rootPages.includes(filePath)) {
           matchingBreadcrumb.rootPages.push(filePath);
         }
