@@ -1,6 +1,6 @@
 import { dirname, parse, relative, resolve } from 'path';
 import { getAllFilesRecursively } from '../modules/fileOperations';
-import { readFileSync, writeFileSync } from 'fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'fs';
 
 type DocRootPages = {
   docId: string;
@@ -11,21 +11,8 @@ const landingPagesSourceDir = resolve(
   __dirname,
   '../../../landing-pages/src/pages/landing'
 );
-const targetFile = resolve(__dirname, 'root-breadcrumbs.json');
+const targetFile = resolve(__dirname, '../../out/root-breadcrumbs.json');
 const allFiles = getAllFilesRecursively(landingPagesSourceDir);
-
-function mergeBreadcrumbs(breadcrumbs: DocRootPages[]) {
-  const mergedBreadcrumbs: DocRootPages[] = [];
-  breadcrumbs.forEach((obj) => {
-    const index = mergedBreadcrumbs.findIndex((o) => o.docId === obj.docId);
-    if (index === -1) {
-      mergedBreadcrumbs.push({ docId: obj.docId, rootPages: obj.rootPages });
-    } else {
-      mergedBreadcrumbs[index].rootPages.push(...obj.rootPages);
-    }
-  });
-  return mergedBreadcrumbs;
-}
 
 function getFilePath(absoluteFilePath: string): string {
   const relativeFilePath = relative(
@@ -47,14 +34,19 @@ for (const file of allFiles) {
   const matches = [...fileContents.matchAll(regex)].map((match) => match[1]);
   if (matches.length > 0 && filePath) {
     matches.forEach((match) => {
-      breadcrumbs.push({
-        docId: match,
-        rootPages: [filePath],
-      });
+      const index = breadcrumbs.findIndex((b) => b.docId === match);
+      if (index === -1) {
+        breadcrumbs.push({ docId: match, rootPages: [filePath] });
+      } else {
+        const matchingBreadcrumb = breadcrumbs[index];
+        if (!matchingBreadcrumb.rootPages.includes(filePath)) {
+          matchingBreadcrumb.rootPages.push(filePath);
+        }
+      }
     });
   }
 }
-const mergedBreadcrumbs = mergeBreadcrumbs(breadcrumbs);
-writeFileSync(targetFile, JSON.stringify(mergedBreadcrumbs, null, 2), {
+mkdirSync(dirname(targetFile), { recursive: true });
+writeFileSync(targetFile, JSON.stringify(breadcrumbs, null, 2), {
   encoding: 'utf-8',
 });
