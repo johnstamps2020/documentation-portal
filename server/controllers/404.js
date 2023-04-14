@@ -333,8 +333,8 @@ async function getLatestVersionUrl(url, urlBase) {
       });
 
     const highestNumberUrlWithSuffix = highestNumberUrlSegments
-      .join('/')
-      .concat(urlAfterWildcard);
+      .concat(urlAfterWildcard)
+      .join('/');
 
     if (await isHtmlPage(`${urlBase}/${highestNumberUrlWithSuffix}`)) {
       return highestNumberUrlWithSuffix;
