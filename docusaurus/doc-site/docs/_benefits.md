@@ -1,0 +1,7 @@
+- Centralized search
+- Feedback mechanism
+- Validation builds with preview
+- Unified branding
+- Pendo and Google Analytics
+- Doctools team will support you
+- Simple path to publishing on prod

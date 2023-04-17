@@ -4,7 +4,14 @@ sidebar_position: 2
 
 # Deploy to Atmos
 
-Themes and plugins for Guidewire Docusaurus apps. To get started:
+Before you deploy to Atmos, remember that deploying to docs.guidewire.com
+provides the following benefits:
+
+import Benefits from '@site/docs/\_benefits.md'
+
+<Benefits/>
+
+If you still want to deploy to Atmos, do the following:
 
 1. [Bootstrap a Docusaurus site](https://docusaurus.io/docs/installation).
 1. Add a

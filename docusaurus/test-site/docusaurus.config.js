@@ -30,7 +30,7 @@ const siteTitle = 'Guidewire Docusaurus Test Site';
             sidebarPath: require.resolve('./sidebars.js'),
             routeBasePath: '/',
             editUrl: function ({ versionDocsDirPath, docPath }) {
-              return `https://stash.guidewire.com/projects/DOCTOOLS/repos/docusaurus-guidewire/browse/test-site/${versionDocsDirPath}/${docPath}`;
+              return `https://stash.guidewire.com/projects/DOCTOOLS/repos/documentation-portal/browse/docusaurus/test-site/${versionDocsDirPath}/${docPath}`;
             },
           },
           theme: {
