@@ -19,20 +19,22 @@
       "earlyAccess": true
     },
     {
-      "id": "jutroplatformlatest",
+      "id": "jutroplatformgarmisch",
       "title": "Jutro Digital Platform",
-      "url": "jutro/platform/latest",
+      "url": "jutro/platform/garmisch",
       "metadata": {
         "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
-        "version": ["Flaine (latest)"]
+        "version": ["Garmisch"],
+        "subject": ["Administration"],
+        "release": ["Garmisch"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": true,
-      "earlyAccess": false
+      "internal": false,
+      "earlyAccess": true
     },
     {
       "id": "jutroplatformflaine",

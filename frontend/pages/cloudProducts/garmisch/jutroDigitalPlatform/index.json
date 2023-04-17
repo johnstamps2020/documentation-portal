@@ -5,10 +5,10 @@
   "class": "threeCards",
   "items": [
     {
-      "label": "Jutro Digital Platform (Early Access)",
+      "label": "Jutro Digital Platform (Early Access)", 
       "class": "categoryCard cardShadow",
       "id": "jutroplatformnext",
-      "env": ["staging"]
+      "env": ["staging", "prod"]
     },
     {
       "label": "Tools and libraries",
