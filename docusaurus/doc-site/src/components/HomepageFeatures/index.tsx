@@ -30,8 +30,7 @@ const FeatureList: FeatureItem[] = [
     CodeBlock: <InstallationCodeBlock forPlugin />,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        This plugin allows you to generate static pages from your OpenAPI spec.
       </>
     ),
     link: 'docs/Plugins/Redoc/set-up-plugin',
