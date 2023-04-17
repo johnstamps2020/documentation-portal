@@ -393,23 +393,6 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
-    },
-    {
-      "id": "guard",
-      "title": "Guard",
-      "url": "internal/guard/latest",
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"],
-        "subject": ["Development"]
-      },
-      "environments": ["staging"],
-      "public": false,
-      "internal": true,
-      "earlyAccess": false
     }
   ]
 }

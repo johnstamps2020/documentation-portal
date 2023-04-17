@@ -128,13 +128,6 @@
       "docId": "scm",
       "srcId": "scmsrc",
       "nodeImageVersion": "18.0.0"
-    },
-    {
-      "buildType": "yarn",
-      "docId": "guard",
-      "srcId": "guardsrc",
-      "nodeImageVersion": "18.0.0",
-      "workingDir": "docs/website"
     }
   ]
 }
