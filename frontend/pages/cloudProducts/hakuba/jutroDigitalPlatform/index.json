@@ -7,8 +7,8 @@
     {
       "label": "Jutro Digital Platform (Early Access)", 
       "class": "categoryCard cardShadow",
-      "id": "jutroplatformgarmisch",
-      "env": ["staging", "prod"]
+      "id": "jutroplatformnext",
+      "env": ["staging"]
     },
     {
       "label": "Tools and libraries",
