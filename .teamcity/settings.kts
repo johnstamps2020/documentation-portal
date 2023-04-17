@@ -1303,7 +1303,7 @@ object Content {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
+                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createGenerateSitemapBuildType(it.envName))
             }
@@ -1348,7 +1348,7 @@ object Content {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
+                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createCleanUpSearchIndexBuildType(it.envName))
             }
@@ -1385,7 +1385,7 @@ object Content {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD, GwDeployEnvs.PORTAL2
+                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD, GwDeployEnvs.PORTAL2
             ).forEach {
                 buildType(createUpdateSearchIndexBuildType(it.envName))
             }
@@ -1424,7 +1424,7 @@ object Content {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
+                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createDeployServerConfigBuildType(it.envName))
             }
@@ -1472,7 +1472,7 @@ object Content {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD, GwDeployEnvs.PORTAL2
+                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD, GwDeployEnvs.PORTAL2
             ).forEach {
                 buildType(createDeployContentStorageBuildType(it.envName))
             }
@@ -1651,7 +1651,7 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
+                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createDeployHtml5DependenciesBuildType(it.envName))
             }
@@ -1666,7 +1666,7 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
+                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createDeployLandingPagesBuildType(it.envName))
             }
@@ -1971,7 +1971,7 @@ object Frontend {
 
             vcsRoot(GwVcsRoots.LocalizedPdfsGitVcsRoot)
             arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
+                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createDeployLocalizedPagesBuildType(it.envName))
             }
@@ -2037,7 +2037,7 @@ object Frontend {
 
             vcsRoot(GwVcsRoots.UpgradeDiffsGitVcsRoot)
             arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
+                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createDeployUpgradeDiffsBuildType(it.envName))
             }
@@ -3317,7 +3317,7 @@ object Recommendations {
             name = "Recommendations"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            for (env in arrayOf(GwDeployEnvs.INT)) {
+            for (env in arrayOf(GwDeployEnvs.STAGING)) {
                 val recommendationProject = createRecommendationProject(env.envName)
                 subProject(recommendationProject)
             }
