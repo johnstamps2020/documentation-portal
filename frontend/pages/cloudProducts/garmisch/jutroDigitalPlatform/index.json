@@ -7,7 +7,7 @@
     {
       "label": "Jutro Digital Platform (Early Access)", 
       "class": "categoryCard cardShadow",
-      "id": "jutroplatformnext",
+      "id": "jutroplatformgarmisch",
       "env": ["staging", "prod"]
     },
     {
