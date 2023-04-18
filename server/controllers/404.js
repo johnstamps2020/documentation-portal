@@ -366,7 +366,7 @@ async function isHtmlPage(url) {
   try {
     const response = await fetch(url, { method: 'HEAD' });
     if (
-      response.ok &&
+      response.status === 200 &&
       response.headers.get('content-type').includes('text/html')
     ) {
       return true;
