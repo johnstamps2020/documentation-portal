@@ -354,21 +354,17 @@ async function getLatestVersionUrl(url, urlBase) {
       );
     }
 
-    // if (await isHtmlPage(`${urlBase}/${highestNumberUrlWithSuffix}`)) {
-    //   return highestNumberUrlWithSuffix;
-    // } else {
-    //   return highestNumberUrl;
-    // }
+    let isPage = false;
     try {
-      if (await isHtmlPage(`${urlBase}/${highestNumberUrlWithSuffix}`)) {
-        return highestNumberUrlWithSuffix;
-      } else {
-        return highestNumberUrl;
-      }
+      isPage = await isHtmlPage(`${urlBase}/${highestNumberUrlWithSuffix}`);
     } catch (err) {
       console.error(
         `Error checking if HTML page exists at ${urlBase}/${highestNumberUrlWithSuffix}: ${err}`
       );
+    }
+    if (isPage) {
+      return highestNumberUrlWithSuffix;
+    } else {
       return highestNumberUrl;
     }
   }
