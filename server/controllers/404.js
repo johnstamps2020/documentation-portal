@@ -300,6 +300,7 @@ async function getLatestVersionUrl(url, urlBase) {
 
   const matchingUrls = await getUrlsByWildcard(wildcardUrl);
   if (matchingUrls) {
+    if (matchingUrls[0].includes('/latest')) return;
     let highestNumber = -Infinity;
     let highestNumberUrl = null;
     let highestAlphabeticalUrl = null;
@@ -353,9 +354,21 @@ async function getLatestVersionUrl(url, urlBase) {
       );
     }
 
-    if (await isHtmlPage(`${urlBase}/${highestNumberUrlWithSuffix}`)) {
-      return highestNumberUrlWithSuffix;
-    } else {
+    // if (await isHtmlPage(`${urlBase}/${highestNumberUrlWithSuffix}`)) {
+    //   return highestNumberUrlWithSuffix;
+    // } else {
+    //   return highestNumberUrl;
+    // }
+    try {
+      if (await isHtmlPage(`${urlBase}/${highestNumberUrlWithSuffix}`)) {
+        return highestNumberUrlWithSuffix;
+      } else {
+        return highestNumberUrl;
+      }
+    } catch (err) {
+      console.error(
+        `Error checking if HTML page exists at ${urlBase}/${highestNumberUrlWithSuffix}: ${err}`
+      );
       return highestNumberUrl;
     }
   }
