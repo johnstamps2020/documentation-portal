@@ -16,7 +16,6 @@ export default function Category2Card({
   items,
 }: LandingPageCategoryProps) {
   const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
-  console.log('isLoading', isLoading);
   if (isError) {
     return null;
   }

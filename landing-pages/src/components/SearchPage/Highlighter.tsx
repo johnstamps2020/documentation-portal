@@ -5,9 +5,10 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Tooltip from '@mui/material/Tooltip';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { useSearchData } from 'hooks/useApi';
+import Skeleton from '@mui/material/Skeleton';
 
 export default function Highlighter() {
-  const { searchData } = useSearchData();
+  const { searchData, isLoading, isError } = useSearchData();
   const [highlight, setHighlight] = useState<string | null>(null);
   const [highlightedIcon, setHighlightedIcon] = useState(true);
 
@@ -32,10 +33,15 @@ export default function Highlighter() {
     setHighlight(highlightSearchPhrase);
   }
 
-  if (!searchData) {
-    return null;
+  if (!searchData || isLoading) {
+    return (
+      <Skeleton variant="rectangular" sx={{ width: '25px', height: '24px' }} />
+    );
   }
 
+  if (isError) {
+    return null;
+  }
   return (
     <>
       <GlobalStyles
