@@ -387,6 +387,11 @@ async function getUrlsByWildcard(url) {
       wildcardIndex++;
     }
 
+    const latestMatch = matches.find((match) => match.includes('/latest'));
+    if (latestMatch) {
+      return [latestMatch];
+    }
+
     if (matches.length > 0) {
       return matches;
     } else {

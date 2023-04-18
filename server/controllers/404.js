@@ -332,9 +332,26 @@ async function getLatestVersionUrl(url, urlBase) {
         return;
       });
 
-    const highestNumberUrlWithSuffix = highestNumberUrlSegments
-      .concat(urlAfterWildcard)
-      .join('/');
+    let highestNumberUrlWithSuffix = highestNumberUrlSegments.join('/');
+    if (
+      highestNumberUrlWithSuffix.endsWith('/') &&
+      urlAfterWildcard.startsWith('/')
+    ) {
+      highestNumberUrlWithSuffix = highestNumberUrlWithSuffix
+        .slice(0, -1)
+        .concat(urlAfterWildcard);
+    } else if (
+      highestNumberUrlWithSuffix.endsWith('/') ||
+      urlAfterWildcard.startsWith('/')
+    ) {
+      highestNumberUrlWithSuffix =
+        highestNumberUrlWithSuffix.concat(urlAfterWildcard);
+    } else {
+      highestNumberUrlWithSuffix = highestNumberUrlWithSuffix.concat(
+        '/',
+        urlAfterWildcard
+      );
+    }
 
     if (await isHtmlPage(`${urlBase}/${highestNumberUrlWithSuffix}`)) {
       return highestNumberUrlWithSuffix;
