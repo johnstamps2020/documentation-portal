@@ -1,44 +1,47 @@
-# Working with Python apps in this project
+# Set up local env
 
-To develop Python apps in this project, you need [the `Poetry` tool](https://python-poetry.org/), which manages
-dependencies and virtual environments. Python SDKs are already defined for modules in this IntelliJ IDEA project. You
-only need to configure `Poetry` and then use its feature for installing dependencies in a virtual environment.
+Use the following environment variables. Private keys etc. are not listed below,
+so you need to get them from Password Vault.
 
-## Install and configure Poetry
+OKTA_DOMAIN=https://guidewire-hub.oktapreview.com
+OKTA_CLIENT_ID=
+OKTA_CLIENT_SECRET=
+OKTA_IDP=
+OKTA_ACCESS_TOKEN_ISSUER=https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7
+OKTA_ACCESS_TOKEN_SCOPES=NODE_Hawaii_Docs_Web.read
+OKTA_ACCESS_TOKEN_AUDIENCE=Guidewire
+APP_BASE_URL=http://localhost:8081
+SESSION_KEY=
+DOC_S3_URL=https://docportal-content.staging.ccs.guidewire.net
+PORTAL2_S3_URL=https://portal2-content.omega2-andromeda.guidewire.net
+ELASTIC_SEARCH_URL=https://docsearch-doctools.staging.ccs.guidewire.net
+DEPLOY_ENV=staging
+LOCAL_CONFIG=no
+ENABLE_AUTH=yes
+PRETEND_TO_BE_EXTERNAL=no
+ALLOW_PUBLIC_DOCS=yes
+LOCALHOST_SESSION_SETTINGS=yes
+JIRA_AUTH_TOKEN===
+CONFIG_DB_NAME=postgres
+CONFIG_DB_USERNAME=postgres
+CONFIG_DB_PASSWORD=testtesttest
+CONFIG_DB_HOST=0.0.0.0
+PARTNERS_LOGIN_URL=https://qaint-guidewire.cs172.force.com/partners/idp/endpoint/HttpRedirect
+PARTNERS_LOGIN_CERT=
+PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/partners-login
+CUSTOMERS_LOGIN_URL=https://qaint-guidewire.cs172.force.com/customers/idp/endpoint/HttpRedirect
+CUSTOMERS_LOGIN_CERT=
+CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/customers-login
 
-1. Install `Poetry` by following the instructions in
-   the [official documentation](https://python-poetry.org/docs/#installation).
-2. Configure the tool to create the virtual environment inside the root directory of the project.
+# Start developing
 
-   ```shell
-    poetry config virtualenvs.in-project true
+To start developing on this branch, you're going to need three terminal windows:
+
+1. Start the database using the `./start_docportal_db_container.sh`.
+2. Start the server `yarn server-dev`.
+3. Load configs into the database by running:
    ```
-
-## Install dependencies for a Python app
-
-1. Go to the root directory of the Python app. It is the directory where the `pyproject.toml` file is located.
-2. Delete any existing Python virtual environments. They are usually stored in `venv` or `.venv` directories.
-3. Install the app dependencies.
-
-   ```shell
-   poetry install
+   cd ci
+   node uploadLegacyConfigsToDb.mjs
    ```
-
-   The virtual environment is created as the `.venv` directory.
-
-## Run a Python app
-
-1. Go to the root directory of the Python app. It is the directory where the `pyproject.toml` file is located.
-2. Make sure the `.venv` directory is present. If not, follow the steps in the "Install dependencies for a Python app"
-   section.
-3. Run the app in the virtual environment.
-
-   ```shell
-   poetry run python pathToPythonFile
-   ```
-
-   For example
-
-   ```shell
-   poetry run python build_manager/main.py
-   ```
+4. Start the client by running `yarn landing-pages-dev`.
