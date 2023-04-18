@@ -183,9 +183,9 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["dev", "int", "staging", "prod"]
+            "enum": ["dev", "staging", "prod"]
           },
-          "examples": [["dev", "staging", "prod"], ["int"]]
+          "examples": [["dev", "staging", "prod"], ["staging"]]
         },
         "items": {
           "$ref": "#/definitions/items"
