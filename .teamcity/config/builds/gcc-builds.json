@@ -78,7 +78,8 @@
       "buildType": "yarn",
       "docId": "gwcpinfrastructureprovisioningservice",
       "srcId": "gwcpinfrastructureprovisioningservicesrc",
-      "nodeImageVersion": "18.0.0"
+      "nodeImageVersion": "18.0.0",
+      "workingDir": "website"
     },
     {
       "buildType": "yarn",
@@ -103,13 +104,15 @@
       "buildType": "yarn",
       "docId": "storageservice",
       "srcId": "storageservicesrc",
-      "nodeImageVersion": "18.0.0"
+      "nodeImageVersion": "18.0.0",
+      "workingDir": "website"
     },
     {
       "buildType": "yarn",
       "docId": "projectservice",
       "srcId": "projectservicesrc",
-      "nodeImageVersion": "18.0.0"
+      "nodeImageVersion": "18.0.0",
+      "workingDir": "website"
     },
     {
       "buildType": "yarn",
@@ -121,13 +124,15 @@
       "buildType": "yarn",
       "docId": "cicdmanager",
       "srcId": "cicdmanagersrc",
-      "nodeImageVersion": "18.0.0"
+      "nodeImageVersion": "18.0.0",
+      "workingDir": "website"
     },
     {
       "buildType": "yarn",
       "docId": "scm",
       "srcId": "scmsrc",
-      "nodeImageVersion": "18.0.0"
+      "nodeImageVersion": "18.0.0",
+      "workingDir": "website"
     }
   ]
 }
