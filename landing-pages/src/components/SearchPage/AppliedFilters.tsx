@@ -5,10 +5,31 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import { useSearchData } from 'hooks/useApi';
+import Skeleton from '@mui/material/Skeleton';
 
 export default function AppliedFilters() {
-  const { searchData } = useSearchData();
-  if (!searchData) {
+  const { searchData, isLoading, isError } = useSearchData();
+  if (!searchData || isLoading) {
+    return (
+      <Stack direction="row" spacing={1}>
+        <Skeleton
+          variant="rectangular"
+          sx={{
+            width: { sm: '110px', xs: '100%' },
+            height: '24px',
+          }}
+        />
+        <Skeleton
+          variant="circular"
+          sx={{
+            width: { sm: '45px', xs: '100%' },
+            height: '24px',
+          }}
+        />
+      </Stack>
+    );
+  }
+  if (isError) {
     return null;
   }
   const checkedFilters = searchData.filters

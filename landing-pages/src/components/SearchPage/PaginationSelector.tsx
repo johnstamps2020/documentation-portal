@@ -6,9 +6,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import InputLabel from '@mui/material/InputLabel';
 import Box from '@mui/material/Box';
 import { useSearchData } from 'hooks/useApi';
+import Skeleton from '@mui/material/Skeleton';
 
 export default function PaginationSelector() {
-  const { searchData } = useSearchData();
+  const { searchData, isLoading, isError } = useSearchData();
   const navigate = useNavigate();
   const location = useLocation();
   const query = new URLSearchParams(location.search);
@@ -23,8 +24,14 @@ export default function PaginationSelector() {
     });
   }
 
-  if (!searchData) {
+  if (isError) {
     return null;
+  }
+  
+  if (isLoading || !searchData) {
+    return (
+      <Skeleton variant="rectangular" sx={{ width: '80px', height: '40px' }} />
+    );
   }
   return (
     <Box sx={{ minWidth: '80px', width: '80px' }}>

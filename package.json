@@ -24,6 +24,7 @@
   "packageManager": "yarn@3.2.4",
   "dependencies": {
     "concurrently": "7.4.0",
+    "express-fileupload": "^1.4.0",
     "swr": "^2.0.3"
   },
   "devDependencies": {
