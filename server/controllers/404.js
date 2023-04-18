@@ -362,7 +362,7 @@ async function getLatestVersionUrl(url, urlBase) {
         `Error checking if HTML page exists at ${urlBase}/${highestNumberUrlWithSuffix}: ${err}`
       );
     }
-    if (isPage) {
+    if (isPage === true) {
       return highestNumberUrlWithSuffix;
     } else {
       return highestNumberUrl;
