@@ -1,0 +1,94 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redirect-int-to-staging
+  labels:
+    app: redirect-int-to-staging
+    gwcp.guidewire.com/dept: "284"
+    gwcp.guidewire.com/maintained-by: doctools
+    gwcp.guidewire.com/created-by: doctools
+    gwcp.guidewire.com/tenant-name: doctools
+    gwcp.guidewire.com/version: latest
+    gwcp.guidewire.com/app-name: redirect-int-to-staging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redirect-int-to-staging
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      name: redirect-int-to-staging
+      annotations:
+        iam.amazonaws.com/role: arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer
+      labels:
+        app: redirect-int-to-staging
+        gwcp.guidewire.com/dept: "284"
+        gwcp.guidewire.com/maintained-by: doctools
+        gwcp.guidewire.com/created-by: doctools
+        gwcp.guidewire.com/tenant-name: doctools
+        gwcp.guidewire.com/version: latest
+        gwcp.guidewire.com/app-name: redirect-int-to-staging
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1-alpine
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redirect-int-to-staging
+  labels:
+    gwcp.guidewire.com/dept: "284"
+    gwcp.guidewire.com/maintained-by: doctools
+    gwcp.guidewire.com/created-by: doctools
+    gwcp.guidewire.com/tenant-name: doctools
+    gwcp.guidewire.com/version: latest
+    gwcp.guidewire.com/app-name: redirect-int-to-staging
+spec:
+  selector:
+    app: redirect-int-to-staging
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: oort.ccs.guidewire.com/v1alpha1
+kind: GatewayConfig
+metadata:
+  namespace: doctools
+  name: redirect-int-to-staging
+  labels:
+    gwcp.guidewire.com/dept: "284"
+    gwcp.guidewire.com/maintained-by: doctools
+    gwcp.guidewire.com/created-by: doctools
+    gwcp.guidewire.com/tenant-name: doctools
+    gwcp.guidewire.com/version: latest
+    gwcp.guidewire.com/app-name: redirect-int-to-staging
+spec:
+  profiles:
+    - name: Default
+      response_transformer:
+        add:
+          headers:
+            - Content-Security-Policy:frame-ancestors https://*.guidewire.net https://*.guidewire.com
+            - X-Frame-Options:SAMEORIGIN
+            - Access-Control-Allow-Origin:*
+            - Access-Control-Allow-Methods:GET, OPTIONS
+            - Access-Control-Allow-Headers:*
+  path_configs:
+    - name: Default
+      paths:
+        - /**
+      profiles:
+        - Default
+  service_ref: redirect-int-to-staging
+  service_alias: docs
+  enable_sub_domain: false
