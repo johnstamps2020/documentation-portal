@@ -40,7 +40,6 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 80
-          command: [ "/bin/bash", "-c", "rm /etc/nginx/conf.d/default.conf && echo 'server { listen 80; listen 443; server_name _; return 301 https://docs.staging.ccs.guidewire.net$request_uri; }' > /etc/nginx/conf.d/nginx.conf && nginx -s reload" ]
 ---
 apiVersion: v1
 kind: Service
