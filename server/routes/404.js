@@ -15,10 +15,6 @@ router.get('/', async function (req, res, next) {
         cameFrom: cameFrom,
         appBaseUrl: process.env.APP_BASE_URL,
       };
-      if (process.env.DEPLOY_ENV === 'int') {
-        return res.status(404).render('moved', { pageInfo });
-      }
-
       return res.status(404).render('404', { pageInfo });
     }
   } catch (err) {
