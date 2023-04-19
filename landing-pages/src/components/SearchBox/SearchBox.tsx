@@ -63,7 +63,18 @@ export default function SearchBox({ showBigSize = true }: SearchBoxProps) {
       sx={showBigSearchBox ? { ...bigSizeProps } : { ...regularSizeProps }}
     >
       <InputBase
-        sx={{ ml: 1, flex: 1 }}
+        sx={{
+          ml: 1,
+          flex: 1,
+          '& .MuiInputBase-input': {
+            padding: 0,
+          },
+          '& input:-webkit-autofill': {
+            backgroundColor: '#fff!important' as any,
+            WebkitBoxShadow: '0 0 0 30px white inset !important' as any,
+            fontFamily: 'Source Sans Pro,Helvetica,Arial,sans-serif',
+          },
+        }}
         placeholder={placeholder}
         inputProps={{ 'aria-label': placeholder }}
         name="q"
