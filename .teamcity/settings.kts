@@ -41,7 +41,7 @@ project {
 }
 
 enum class GwDeployEnvs(val envName: String) {
-    DEV("dev"), INT("int"), STAGING("staging"), PROD("prod"), OMEGA2_ANDROMEDA("omega2-andromeda"), PORTAL2("portal2")
+    DEV("dev"), STAGING("staging"), PROD("prod"), OMEGA2_ANDROMEDA("omega2-andromeda"), PORTAL2("portal2")
 }
 
 enum class GwBuildTypes(val buildTypeName: String) {
@@ -2119,7 +2119,7 @@ object Server {
 //            temporarily disabled
 //            buildType(AuditNpmPackages)
             arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.INT, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
+                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createDeployServerBuildType(it.envName))
             }
@@ -2616,7 +2616,7 @@ object Server {
             }
         }
 
-        if (arrayOf(GwDeployEnvs.DEV.envName, GwDeployEnvs.INT.envName).contains(deployEnv)) {
+        if (arrayOf(GwDeployEnvs.DEV.envName).contains(deployEnv)) {
             val buildAndPublishServerDockerImageStep =
                 ScriptBuildStep {
                     name = "Build and publish server Docker Image to DEV ECR"
@@ -2665,7 +2665,6 @@ object Server {
         val namespace = "doctools"
         val tagVersion = when (deployEnv) {
             GwDeployEnvs.DEV.envName -> "latest"
-            GwDeployEnvs.INT.envName -> "latest-int"
             else -> "v%TAG_VERSION%"
         }
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
@@ -2776,7 +2775,7 @@ object Server {
             }
         }
 
-        if (arrayOf(GwDeployEnvs.DEV.envName, GwDeployEnvs.INT.envName).contains(deployEnv)) {
+        if (arrayOf(GwDeployEnvs.DEV.envName).contains(deployEnv)) {
             val buildAndPublishServerDockerImageStep =
                 GwBuildSteps.createBuildAndPublishServerDockerImageToDevEcrStep(tagVersion)
             deployServerBuildType.steps.step(buildAndPublishServerDockerImageStep)
@@ -3690,7 +3689,7 @@ object Helpers {
     private fun getGwCommunityUrls(deployEnv: String): Pair<String, String> {
         val partnersLoginUrl: String
         val customersLoginUrl: String
-        if (arrayOf(GwDeployEnvs.DEV.envName, GwDeployEnvs.INT.envName).contains(deployEnv)) {
+        if (arrayOf(GwDeployEnvs.DEV.envName).contains(deployEnv)) {
             partnersLoginUrl = "https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
             customersLoginUrl = "https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
         } else if (deployEnv == GwDeployEnvs.STAGING.envName) {
