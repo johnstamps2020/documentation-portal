@@ -373,7 +373,10 @@ async function getLatestVersionUrl(url, urlBase) {
 
 async function isHtmlPage(url) {
   try {
-    const response = await fetch(url, { method: 'HEAD' });
+    const response = await fetch(
+      url.replace(process.env.APP_BASE_URL, process.env.DOC_S3_URL),
+      { method: 'HEAD' }
+    );
     if (
       response.status === 200 &&
       response.headers.get('content-type').includes('text/html')
