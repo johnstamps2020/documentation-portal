@@ -19,26 +19,53 @@ a Guidewire theme. You can still use the Redoc plugin.
 
 ## Upgrade to Yarn 3
 
-Use Yarn 3 in builds for docs.guidewire.com.
+Use Yarn 3 in builds for docs.guidewire.com. If this is your first time
+upgrading Yarn, you may want to read
+[the official article about Yarn migration](https://yarnpkg.com/getting-started/migration).
 
-1. Upgrade your site to Yarn 3.
+Here are the highlights of the process:
+
+1. Install Yarn 3.
+   ```bash
+   yarn set version berry
+   ```
+   This adds the `.yarn` folder to your repo.
+1. Add the recommended files to `.gitignore`:
+   ```git
+   .pnp.*
+   .yarn/*
+   !.yarn/patches
+   !.yarn/plugins
+   !.yarn/releases
+   !.yarn/sdks
+   !.yarn/versions
+   ```
 1. At the root of your site, set up `.yarnrc.yml` similar to the following
-
-```yml
-yarnPath: .yarn/releases/yarn-3.3.0.cjs
-nodeLinker: node-modules
-npmAlwaysAuth: true
-npmAuthToken: ${NPM_AUTH_TOKEN}
-npmScopes:
-  doctools:
-    npmRegistryServer: https://artifactory.guidewire.com/artifactory/api/npm/doctools-npm-dev/
-```
+   ```yaml
+   yarnPath: .yarn/releases/yarn-3.X.X.cjs
+   nodeLinker: node-modules
+   npmAlwaysAuth: true
+   npmAuthToken: ${NPM_AUTH_TOKEN}
+   npmScopes:
+     doctools:
+       npmRegistryServer: https://artifactory.guidewire.com/artifactory/api/npm/doctools-npm-dev/
+   ```
+1. If you have a `yarn.lock` generated with a previous version of Yarn, **delete
+   it**.
+1. Run `yarn` to install dependencies and update `yarn.lock`.
 
 ## trailingSlash
 
 import { RightWrong, Right, Wrong } from "@theme/RightWrong";
 
 <RightWrong>
+<Right>
+
+```js
+trailingSlash: true,
+```
+
+</Right>
 <Wrong>
 
 ```js

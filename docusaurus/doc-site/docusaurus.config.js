@@ -47,8 +47,9 @@ const config = {
         title: 'Docusaurus Guidewire',
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: require('prism-react-renderer/themes/vsDark'),
+        draculaTheme: require('prism-react-renderer/themes/dracula'),
+        additionalLanguages: ['yaml'],
       },
     }),
 
