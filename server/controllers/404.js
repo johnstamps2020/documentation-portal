@@ -299,12 +299,13 @@ async function getLatestVersionUrl(url, urlBase) {
     .replace(/^\/+/, '');
 
   const matchingUrls = await getUrlsByWildcard(wildcardUrl);
-  if (matchingUrls) {
+  if (matchingUrls && !matchingUrls.error) {
     if (matchingUrls[0].includes('/latest')) return;
     let highestNumber = -Infinity;
     let highestNumberUrl = null;
     let highestAlphabeticalUrl = null;
     Object.values(matchingUrls).forEach((url) => {
+      if (url.includes('/next')) return;
       const urlSegments = url.split('/');
       const urlVersionSegment = urlSegments[wildcardIndex];
       if (!isNaN(urlVersionSegment)) {
