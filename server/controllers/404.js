@@ -354,15 +354,7 @@ async function getLatestVersionUrl(url, urlBase) {
       );
     }
 
-    let isPage = false;
-    try {
-      isPage = await isHtmlPage(`${urlBase}/${highestNumberUrlWithSuffix}`);
-    } catch (err) {
-      console.error(
-        `Error checking if HTML page exists at ${urlBase}/${highestNumberUrlWithSuffix}: ${err}`
-      );
-    }
-    if (isPage === true) {
+    if (await isHtmlPage(`${urlBase}/${highestNumberUrlWithSuffix}`)) {
       return highestNumberUrlWithSuffix;
     } else {
       return highestNumberUrl;
@@ -373,13 +365,14 @@ async function getLatestVersionUrl(url, urlBase) {
 
 async function isHtmlPage(url) {
   try {
-    const response = await fetch(url, { method: 'HEAD' });
-    if (
+    const response = await fetch(
+      url.replace(process.env.APP_BASE_URL, process.env.DOC_S3_URL),
+      { method: 'HEAD' }
+    );
+    return !!(
       response.status === 200 &&
       response.headers.get('content-type').includes('text/html')
-    ) {
-      return true;
-    } else return false;
+    );
   } catch (err) {
     console.error(`Error checking if HTML page exists at ${url}: ${err}`);
     return false;
