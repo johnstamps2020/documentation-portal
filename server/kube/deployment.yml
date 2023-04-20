@@ -182,6 +182,11 @@ spec:
                 secretKeyRef:
                   name: ${APP_NAME}-external-secret
                   key: okta_access_token_scopes
+            - name: OKTA_ADMIN_GROUPS
+              valueFrom:
+                secretKeyRef:
+                  name: ${APP_NAME}-external-secret
+                  key: okta_admin_groups
             - name: OKTA_AUDIENCE
               valueFrom:
                 secretKeyRef:
