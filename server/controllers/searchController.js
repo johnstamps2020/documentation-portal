@@ -205,6 +205,7 @@ async function runSearch(query, startIndex, resultsPerPage, urlFilters) {
       size: resultsPerPage,
       body: {
         query: queryWithFiltersFromUrl,
+        sort: [{ version: { order: 'desc', mode: 'max' } }, '_score'],
         collapse: {
           field: 'title.raw',
           inner_hits: {
