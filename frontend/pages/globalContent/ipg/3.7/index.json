@@ -3,6 +3,16 @@
   "title": "Global Content - Germany",
   "template": "page",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "3.7",
+    "items": [
+      {
+        "label": "3.6",
+        "page": "../3.6"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",
