@@ -1,7 +1,7 @@
 # Set up local env
 
-Use the following environment variables. Private keys etc. are not listed below,
-so you need to get them from Password Vault.
+Use the following environment variables. Private keys and other sensitive data are not listed below,
+so you need to get them from Password Vault or AWS Secrets Manager.
 
 OKTA_CLIENT_ID=
 OKTA_CLIENT_SECRET=
@@ -9,6 +9,7 @@ OKTA_IDP=
 OKTA_ISSUER=https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7
 OKTA_SCOPES=NODE_Hawaii_Docs_Web.read
 OKTA_AUDIENCE=Guidewire
+OKTA_ADMIN_GROUPS=
 APP_BASE_URL=http://localhost:8081
 SESSION_KEY=
 DOC_S3_URL=https://docportal-content.staging.ccs.guidewire.net
