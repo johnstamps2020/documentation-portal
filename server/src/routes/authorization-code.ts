@@ -40,7 +40,7 @@ fetch(`${process.env.OKTA_ISSUER!}/.well-known/openid-configuration`)
         profile: UserinfoResponse,
         done: (err: any, user?: UserinfoResponse) => void
       ) {
-        return done(null, { tokens: tokenSet, ...profile });
+        return done(null, profile);
       }
     );
     passport.serializeUser(function (user, done) {
