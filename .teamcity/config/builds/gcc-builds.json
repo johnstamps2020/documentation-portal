@@ -14,7 +14,8 @@
     {
       "buildType": "yarn",
       "docId": "gccinternallatests",
-      "srcId": "gccinternalsrc"
+      "srcId": "gccinternalsrc",
+      "nodeImageVersion": "18.0.0"
     },
     {
       "buildType": "yarn",
