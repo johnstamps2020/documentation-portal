@@ -151,22 +151,13 @@ type AvailableOktaIssuers = {
 
 function getAvailableOktaIssuers(): AvailableOktaIssuers {
   const issuers = {
-    [process.env.OKTA_ACCESS_TOKEN_ISSUER as string]:
-      process.env.OKTA_CLIENT_ID,
+    [process.env.OKTA_ISSUER as string]: process.env.OKTA_CLIENT_ID,
   };
-  if (
-    process.env.OKTA_ACCESS_TOKEN_ISSUER_APAC &&
-    process.env.OKTA_CLIENT_ID_APAC
-  ) {
-    issuers[process.env.OKTA_ACCESS_TOKEN_ISSUER_APAC] =
-      process.env.OKTA_CLIENT_ID_APAC;
+  if (process.env.OKTA_ISSUER_APAC && process.env.OKTA_CLIENT_ID_APAC) {
+    issuers[process.env.OKTA_ISSUER_APAC] = process.env.OKTA_CLIENT_ID_APAC;
   }
-  if (
-    process.env.OKTA_ACCESS_TOKEN_ISSUER_EMEA &&
-    process.env.OKTA_CLIENT_ID_EMEA
-  ) {
-    issuers[process.env.OKTA_ACCESS_TOKEN_ISSUER_EMEA] =
-      process.env.OKTA_CLIENT_ID_EMEA;
+  if (process.env.OKTA_ISSUER_EMEA && process.env.OKTA_CLIENT_ID_EMEA) {
+    issuers[process.env.OKTA_ISSUER_EMEA] = process.env.OKTA_CLIENT_ID_EMEA;
   }
 
   return issuers;
@@ -187,7 +178,7 @@ function createOktaJwtVerifier(
         issuer: issuer![0],
         clientId: issuer![1],
         assertClaims: {
-          'scp.includes': process.env.OKTA_ACCESS_TOKEN_SCOPES,
+          'scp.includes': process.env.OKTA_SCOPES,
         },
       });
     } else {
@@ -212,7 +203,7 @@ async function checkTokenInOkta(
   try {
     const jwt = await jwtVerifierInstance.verifyAccessToken(
       token,
-      process.env.OKTA_ACCESS_TOKEN_AUDIENCE as string
+      process.env.OKTA_AUDIENCE as string
     );
     return jwt;
   } catch (err) {

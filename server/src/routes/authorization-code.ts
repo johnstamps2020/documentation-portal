@@ -12,7 +12,7 @@ import fetch from 'node-fetch';
 
 const router = Router();
 
-fetch(`${process.env.OKTA_DOMAIN!}/.well-known/openid-configuration`)
+fetch(`${process.env.OKTA_ISSUER!}/.well-known/openid-configuration`)
   .then((r) => r.json())
   .then((oktaIssuerDetails) => {
     const oktaIssuer = new Issuer(oktaIssuerDetails);
@@ -40,7 +40,7 @@ fetch(`${process.env.OKTA_DOMAIN!}/.well-known/openid-configuration`)
         profile: UserinfoResponse,
         done: (err: any, user?: UserinfoResponse) => void
       ) {
-        return done(null, { tokens: tokenSet, ...profile });
+        return done(null, profile);
       }
     );
     passport.serializeUser(function (user, done) {

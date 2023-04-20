@@ -26,6 +26,7 @@ export type ReqUser = {
   name: string;
   email: string;
   locale: string;
+  groups: string[];
 };
 
 function getUserName(user: ReqUser) {
@@ -41,12 +42,11 @@ function getUserName(user: ReqUser) {
 }
 
 function isAdminUser(user: ReqUser) {
-  return [
-    'mskowron@guidewire.com',
-    'pkowaluk@guidewire.com',
-    'mszeligiewicz@guidewire.com',
-    'mgilster@guidewire.com',
-  ].includes(user.email);
+  const adminGroups = process.env.OKTA_ADMIN_GROUPS?.split(',') || [];
+  return (
+    adminGroups.length > 0 &&
+    adminGroups.some((adminGroup) => user.groups.includes(adminGroup))
+  );
 }
 
 function isAdminAccessToken(accessToken: JwtPayload) {

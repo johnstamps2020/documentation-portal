@@ -139,8 +139,6 @@ spec:
           env:
             - name: REFRESH_IMAGE
               value: 'BUILD_TIME'
-            - name: OKTA_DOMAIN
-              value: ${OKTA_DOMAIN}
             - name: OKTA_IDP
               value: ${OKTA_IDP}
             - name: OKTA_CLIENT_ID
@@ -173,18 +171,23 @@ spec:
                 secretKeyRef:
                   name: ${APP_NAME}-external-secret
                   key: okta_client_secret_emea
-            - name: OKTA_ACCESS_TOKEN_ISSUER
+            - name: OKTA_ISSUER
               value: ${OKTA_ACCESS_TOKEN_ISSUER}
-            - name: OKTA_ACCESS_TOKEN_ISSUER_APAC
+            - name: OKTA_ISSUER_APAC
               value: ${OKTA_ACCESS_TOKEN_ISSUER_APAC}
-            - name: OKTA_ACCESS_TOKEN_ISSUER_EMEA
+            - name: OKTA_ISSUER_EMEA
               value: ${OKTA_ACCESS_TOKEN_ISSUER_EMEA}
-            - name: OKTA_ACCESS_TOKEN_SCOPES
+            - name: OKTA_SCOPES
               valueFrom:
                 secretKeyRef:
                   name: ${APP_NAME}-external-secret
                   key: okta_access_token_scopes
-            - name: OKTA_ACCESS_TOKEN_AUDIENCE
+            - name: OKTA_ADMIN_GROUPS
+              valueFrom:
+                secretKeyRef:
+                  name: ${APP_NAME}-external-secret
+                  key: okta_admin_groups
+            - name: OKTA_AUDIENCE
               valueFrom:
                 secretKeyRef:
                   name: ${APP_NAME}-external-secret
