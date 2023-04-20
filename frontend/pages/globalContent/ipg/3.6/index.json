@@ -10,11 +10,11 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "midipgrnen"
+          "id": "midipgrnen36"
         },
         {
           "label": "Release Notes (German)",
-          "id": "midipgrnde"
+          "id": "midipgrnde36"
         }
       ]
     },
@@ -24,15 +24,15 @@
       "items": [
         {
           "label": "Application Guide",
-          "id": "midipgapp"
+          "id": "midipgapp36"
         },
         {
           "label": "Application Guide (German)",
-          "id": "midipgappde"
+          "id": "midipgappde36"
         },
         {
           "label": "Implementation",
-          "id": "midipgimpl"
+          "id": "midipgimpl36"
         }
       ]
     },
@@ -42,7 +42,7 @@
       "items": [
         {
           "label": "Installation",
-          "id": "midipginstall"
+          "id": "midipginstall36"
         }
       ]
     },
@@ -52,7 +52,7 @@
       "items": [
         {
           "label": "Glossary",
-          "id": "midipgglossary"
+          "id": "midipgglossary36"
         }
       ]
     }
