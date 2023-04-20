@@ -2,13 +2,13 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "midipgimpl",
+      "id": "midipgimpl37",
       "title": "Implementation",
-      "url": "self-managed/ipg/latest/impl",
+      "url": "self-managed/ipg/37/impl",
       "metadata": {
         "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
-        "version": ["latest"],
+        "version": ["3.7"],
         "subject": ["Features and functionality"]
       },
       "environments": ["staging"],
@@ -19,16 +19,16 @@
       "earlyAccess": false
     },
     {
-      "id": "midipgapp",
+      "id": "midipgapp37",
       "title": "Application Guide",
-      "url": "self-managed/ipg/latest/app",
+      "url": "self-managed/ipg/37/app",
       "metadata": {
         "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
-        "version": ["latest"],
+        "version": ["3.7"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -36,13 +36,13 @@
       "earlyAccess": false
     },
     {
-      "id": "midipginstall",
+      "id": "midipginstall37",
       "title": "Installation",
-      "url": "self-managed/ipg/latest/install",
+      "url": "self-managed/ipg/37/install",
       "metadata": {
         "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
-        "version": ["latest"],
+        "version": ["3.7"],
         "subject": ["Installation"]
       },
       "environments": ["staging"],
@@ -53,16 +53,16 @@
       "earlyAccess": false
     },
     {
-      "id": "midipgrnen",
+      "id": "midipgrnen37",
       "title": "Release Notes",
-      "url": "self-managed/ipg/latest/releasenotes",
+      "url": "self-managed/ipg/37/releasenotes",
       "metadata": {
         "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
-        "version": ["latest"],
+        "version": ["3.7"],
         "subject": ["Release notes"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -70,16 +70,16 @@
       "earlyAccess": false
     },
     {
-      "id": "midipgrnde",
+      "id": "midipgrnde37",
       "title": "Release Notes (German)",
-      "url": "self-managed/ipg/latest/releasenotesde",
+      "url": "self-managed/ipg/37/releasenotesde",
       "metadata": {
         "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
-        "version": ["latest"],
+        "version": ["3.7"],
         "subject": ["Release notes"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -87,13 +87,13 @@
       "earlyAccess": false
     },
     {
-      "id": "midipgglossary",
+      "id": "midipgglossary37",
       "title": "Glossary",
-      "url": "self-managed/ipg/latest/glossary",
+      "url": "self-managed/ipg/37/glossary",
       "metadata": {
         "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
-        "version": ["latest"],
+        "version": ["3.7"],
         "subject": ["Glossary"]
       },
       "environments": ["staging"],
@@ -104,16 +104,16 @@
       "earlyAccess": false
     },
     {
-      "id": "midipgappde",
+      "id": "midipgappde37",
       "title": "Application Guide (German)",
-      "url": "self-managed/ipg/latest/appde",
+      "url": "self-managed/ipg/37/appde",
       "metadata": {
         "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
-        "version": ["latest"],
+        "version": ["3.7"],
         "subject": ["Features and functionality"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
