@@ -70,7 +70,7 @@
       "earlyAccess": false
     },
     {
-      "id": "midipgrnde",
+      "id": "midipgrnde36",
       "title": "Release Notes (German)",
       "url": "self-managed/ipg/36/releasenotesde",
       "metadata": {
@@ -87,7 +87,7 @@
       "earlyAccess": false
     },
     {
-      "id": "midipgglossary",
+      "id": "midipgglossary36",
       "title": "Glossary",
       "url": "self-managed/ipg/36/glossary",
       "metadata": {
@@ -104,7 +104,7 @@
       "earlyAccess": false
     },
     {
-      "id": "midipgappde",
+      "id": "midipgappde36",
       "title": "Application Guide (German)",
       "url": "self-managed/ipg/36/appde",
       "metadata": {
