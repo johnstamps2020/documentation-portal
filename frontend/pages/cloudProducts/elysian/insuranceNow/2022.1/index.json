@@ -3,6 +3,36 @@
   "title": "InsuranceNow 2022.1",
   "template": "page",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select cloud release",
+    "selectedItem": "Elysian (2022.1)",
+    "items": [
+      {
+        "label": "Garmisch (2023.1)",
+        "page": "../../../garmisch/insuranceNow/2023.1"
+      },
+      {
+        "label": "Flaine (2022.2)",
+        "page": "../../../flaine/insuranceNow/2022.2"
+      },
+      {
+        "label": "Dobson (2021.2)",
+        "page": "../../../dobson/insuranceNow/2021.2"
+      },
+      {
+        "label": "Cortina (2021.1)",
+        "page": "../../../cortina/insuranceNow/2021.1"
+      },
+      {
+        "label": "Banff (2020.2)",
+        "page": "../../../banff/insuranceNow/2020.2"
+      },
+      {
+        "label": "Aspen (2020.1)",
+        "page": "../../../aspen/insuranceNow/2020.1"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",
