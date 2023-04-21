@@ -304,7 +304,7 @@ div.items {
   flex-wrap: wrap;
 }
 
-.pageControllers a.platformLink {
+a.platformLink {
   font-size: 0.875rem;
   font-weight: 700;
   text-decoration: underline;
@@ -329,6 +329,10 @@ main.skiRelease {
   margin-top: 0.5rem;
 }
 
+.skiRelease .pageControllers {
+  padding-top: .4rem;
+}
+
 .skiRelease .pageControllers,
 .skiRelease .pageControllers #pageSelector {
   font-size: 0.875rem;
@@ -338,17 +342,24 @@ main.skiRelease {
 
 .skiRelease .pageControllers #pageSelector {
   color: #28333f;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: .8rem;
 }
 
-.skiRelease .pageControllers a.platformLink,
+.skiRelease a.platformLink,
 .blue-theme .pageControllers a.platformLink {
   color: #fff;
   margin-bottom: 0;
 }
 
+.skiRelease a.platformLink {
+  display: block;
+  max-width: var(--content-width);
+  margin: auto;
+}
+
 .skiRelease .pageControllers .skiReleaseOverview {
-  margin-top: 1.5rem;
+  margin-top: 2.2rem;
   width: 300px;
 }
 
@@ -412,6 +423,7 @@ main.skiRelease {
 .skiRelease .pageBody {
   display: flex;
   column-gap: 56px;
+  padding-top: 2rem;
 }
 
 .skiRelease #pageSelector {
