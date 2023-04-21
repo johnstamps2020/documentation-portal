@@ -1,6 +1,6 @@
 {
   "name": "server",
-  "version": "2.33.12",
+  "version": "2.33.13",
   "private": true,
   "engines": {
     "node": "16.16.0"
