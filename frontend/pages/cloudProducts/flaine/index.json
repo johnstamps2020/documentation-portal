@@ -4,7 +4,7 @@
   "template": "page",
   "class": "blue-theme flaine skiRelease",
   "selector": {
-    "label": "Select release",
+    "label": "Select cloud release",
     "selectedItem": "Flaine",
     "items": [
       {

@@ -4,7 +4,7 @@
   "template": "page",
   "class": "blue-theme dobson threeCards",
   "selector": {
-    "label": "Select release",
+    "label": "Select cloud release",
     "selectedItem": "Dobson",
     "items": [
       {
