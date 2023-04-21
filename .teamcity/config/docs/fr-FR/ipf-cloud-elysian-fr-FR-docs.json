@@ -1,0 +1,43 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "midipfelysianadjusterfrFR",
+      "title": "Adjuster Guide - fr-FR",
+      "url": "cloud/ipf/fr-FR/elysian/adjuster",
+      "metadata": {
+        "product": ["ClaimCenter Package for France"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "locale": "fr-FR"
+    },
+    {
+      "id": "midipfelysianrnfrFR",
+      "title": "Release Notes - fr-FR",
+      "url": "cloud/ipf/fr-FR/elysian/releasenotes",
+      "metadata": {
+        "product": ["ClaimCenter Package for France"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "locale": "fr-FR"
+    }
+  ]
+}
