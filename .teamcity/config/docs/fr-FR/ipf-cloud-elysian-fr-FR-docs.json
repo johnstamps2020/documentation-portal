@@ -10,15 +10,15 @@
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": "fr-FR"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false,
-      "locale": "fr-FR"
+      "earlyAccess": false
     },
     {
       "id": "midipfelysianrnfrFR",
@@ -29,15 +29,15 @@
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": "fr-FR"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false,
-      "locale": "fr-FR"
+      "earlyAccess": false
     }
   ]
 }
