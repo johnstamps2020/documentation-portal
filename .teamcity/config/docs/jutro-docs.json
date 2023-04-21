@@ -29,7 +29,7 @@
         "version": ["4.2.1"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -46,7 +46,7 @@
         "version": ["4.3.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -63,7 +63,7 @@
         "version": ["5.0.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -80,7 +80,7 @@
         "version": ["5.1.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -97,7 +97,7 @@
         "version": ["5.2.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -114,7 +114,7 @@
         "version": ["5.3.1"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": false,
@@ -132,7 +132,7 @@
         "subject": ["Best practices"],
         "release": ["Cortina"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -149,7 +149,7 @@
         "version": ["5.4.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -166,7 +166,7 @@
         "version": ["6.0.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -183,7 +183,7 @@
         "version": ["6.1.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -200,7 +200,7 @@
         "version": ["6.2.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -217,7 +217,7 @@
         "version": ["6.3.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -234,7 +234,7 @@
         "version": ["6.4.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -251,7 +251,7 @@
         "version": ["6.5.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -268,7 +268,7 @@
         "version": ["6.5.1"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -324,7 +324,7 @@
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
-      "internal": false,
+      "internal": true,
       "earlyAccess": false
     },
     {
@@ -422,7 +422,7 @@
         "version": ["4.2.1"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -439,7 +439,7 @@
         "version": ["4.3.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -456,7 +456,7 @@
         "version": ["5.0.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -473,7 +473,7 @@
         "version": ["5.1.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -490,7 +490,7 @@
         "version": ["5.2.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -507,7 +507,7 @@
         "version": ["5.3.1"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": false,
@@ -542,7 +542,7 @@
         "version": ["5.4.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -559,7 +559,7 @@
         "version": ["6.0.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -576,7 +576,7 @@
         "version": ["6.1.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -593,7 +593,7 @@
         "version": ["6.2.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -610,7 +610,7 @@
         "version": ["6.3.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -627,7 +627,7 @@
         "version": ["6.4.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -644,7 +644,7 @@
         "version": ["6.5.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -662,7 +662,7 @@
         "subject": ["Development"],
         "release": ["Dobson"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -822,7 +822,7 @@
         "version": ["6.6.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -839,7 +839,7 @@
         "version": ["6.6.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -856,7 +856,7 @@
         "version": ["7.0.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -873,7 +873,7 @@
         "version": ["7.0.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -890,7 +890,7 @@
         "version": ["7.1.1"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -907,7 +907,7 @@
         "version": ["7.1.1"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -924,7 +924,7 @@
         "version": ["7.2.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -941,7 +941,7 @@
         "version": ["7.2.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -958,7 +958,7 @@
         "version": ["7.3.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -975,7 +975,7 @@
         "version": ["7.3.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -992,7 +992,7 @@
         "version": ["7.4.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -1009,7 +1009,7 @@
         "version": ["7.4.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -1026,7 +1026,7 @@
         "version": ["7.4.1"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -1043,7 +1043,7 @@
         "version": ["7.4.1"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -1060,7 +1060,7 @@
         "version": ["7.4.2"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -1077,7 +1077,7 @@
         "version": ["7.4.2"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": false,
       "indexForSearch": true,
       "public": false,
@@ -1148,7 +1148,7 @@
         "version": ["7.5.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1165,7 +1165,7 @@
         "version": ["7.5.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1182,7 +1182,7 @@
         "version": ["8.0.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1199,7 +1199,7 @@
         "version": ["8.0.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1216,7 +1216,7 @@
         "version": ["8.1.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1233,7 +1233,7 @@
         "version": ["8.1.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1250,7 +1250,7 @@
         "version": ["8.2.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1267,7 +1267,7 @@
         "version": ["8.2.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1320,7 +1320,7 @@
         "version": ["8.3.2"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1337,7 +1337,7 @@
         "version": ["8.3.2"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1354,7 +1354,7 @@
         "version": ["8.4.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1371,7 +1371,7 @@
         "version": ["8.4.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1388,7 +1388,7 @@
         "version": ["8.5.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1405,7 +1405,7 @@
         "version": ["8.5.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1422,7 +1422,7 @@
         "version": ["8.6.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1439,7 +1439,7 @@
         "version": ["8.6.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1492,7 +1492,7 @@
         "version": ["8.7.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1509,7 +1509,7 @@
         "version": ["8.7.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1526,7 +1526,7 @@
         "version": ["8.8.0"],
         "subject": ["Best practices"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1543,7 +1543,7 @@
         "version": ["8.8.0"],
         "subject": ["Development"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
