@@ -44,8 +44,7 @@ export function useSearchData() {
   const [searchParams] = useSearchParams();
   const { data, error, isLoading } = useSWR<SearchData, ServerSearchError>(
     `/search?${searchParams.toString()}`,
-    getter,
-    { keepPreviousData: true }
+    getter
   );
 
   return {
