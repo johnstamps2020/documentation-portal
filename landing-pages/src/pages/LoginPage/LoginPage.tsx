@@ -1,36 +1,45 @@
 import Layout from 'components/Layout/Layout';
-import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import LoginOptions from 'components/LoginPage/LoginOptions';
+import { Box } from '@mui/material';
 
 export default function LoginPage() {
   return (
     <Layout
       title="Guidewire Documentation | Log in"
       headerOptions={{ hideSearchBox: true, hideUserProfile: true }}
+      backgroundColor="hsl(0, 0%, 98%)"
     >
-      <Grid container alignItems="center" sx={{ width: '100%' }}>
+      <Grid
+        container
+        direction="column"
+        flexWrap="wrap"
+        alignItems="center"
+        sx={{ width: '100%' }}
+      >
         <Grid
-          lg={6}
           container
+          direction="row"
           sx={{
             background: 'linear-gradient(to right, #324c76, #719fe8)',
-            height: '100vh',
-            padding: '2rem 1rem',
+            flexWrap: { xs: 'wrap', sm: 'nowrap', md: 'wrap' },
+            height: '400px',
+            width: '100%',
+            padding: '1rem',
+            justifyContent: 'space-evenly',
+            alignItems: 'center',
           }}
-          alignItems="center"
-          justifyContent="center"
         >
           <Typography
             sx={{
               margin: 0,
               display: 'block',
-              width: '100%',
-              fontSize: 40,
-              textAlign: 'center',
+              width: { xs: '100%', sm: '30%', md: '40%' },
+              fontSize: { xs: 30, sm: 30, lg: 40 },
+              textAlign: { xs: 'center', sm: 'right' },
               color: 'white',
               fontWeight: 600,
             }}
@@ -40,15 +49,18 @@ export default function LoginPage() {
           <img
             src="/images/login-hero.svg"
             alt=""
-            style={{ maxWidth: '100%', padding: '0 1rem' }}
+            style={{
+              minWidth: '100px',
+              minHeight: '100px',
+              padding: '0 2rem',
+            }}
           />
         </Grid>
         <Grid
-          lg={6}
           container
           alignItems="center"
           justifyContent="center"
-          sx={{ padding: '2rem 1rem' }}
+          sx={{ padding: '2rem 1rem', width: '100%' }}
         >
           <Typography
             sx={{
@@ -65,14 +77,13 @@ export default function LoginPage() {
               latest API References
             </Link>
           </Typography>
-          <Paper
+          <Box
             sx={{
               alignItems: 'center',
               display: 'flex',
               flexDirection: 'column',
               gap: '8px',
-              padding: 4,
-              margin: 2,
+              padding: { xs: 0, sm: 4 },
               width: 'fit-content',
             }}
           >
@@ -83,13 +94,13 @@ export default function LoginPage() {
                 color: 'hsl(216, 42%, 13%)',
                 textAlign: 'center',
                 paddingBottom: '10px',
-                marginBottom: '8px',
+                marginBottom: '55px',
               }}
             >
               To view complete documentation, log in to your account
             </Typography>
             <LoginOptions />
-          </Paper>
+          </Box>
         </Grid>
       </Grid>
     </Layout>

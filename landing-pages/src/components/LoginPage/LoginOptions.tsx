@@ -30,19 +30,33 @@ export default function LoginOptions() {
         'Use your partner.guidewire.com account to access documentation',
     },
   ];
+  const buttonStyle = {
+    width: '250px',
+    height: '80px',
+    fontSize: '18px',
+    fontWeight: 600,
+    margin: '15px',
+  };
   return (
-    <Stack spacing={2}>
+    <Stack
+      direction="row"
+      marginBottom="70px"
+      flexWrap="wrap"
+      sx={{ justifyContent: 'space-evenly', alignItems: 'center' }}
+    >
       {loginButtons.map((loginButton) => (
         <Tooltip
           key={loginButton.label}
           title={<Typography>{loginButton.tooltipText}</Typography>}
-          placement="left"
+          placement="bottom"
           arrow
+          sx={{ fontSize: '16px' }}
         >
           <Button
             href={`${loginButton.href}?redirectTo=${redirectTo}`}
             variant="contained"
             color="primary"
+            sx={buttonStyle}
           >
             {loginButton.label}
           </Button>
@@ -52,7 +66,7 @@ export default function LoginOptions() {
         variant="outlined"
         color="primary"
         href={`/authorization-code?idp=okta&redirectTo=${redirectTo}`}
-        sx={{ fontWeight: 600, border: 1 }}
+        sx={{ ...buttonStyle, border: 1 }}
       >
         Guidewire Employee
       </Button>
