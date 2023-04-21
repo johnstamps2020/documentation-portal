@@ -12,6 +12,12 @@
       "title": "InsuranceSuite Package for France Cloud",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipf.git",
       "branch": "release/cloud/elysian"
+    },
+    {
+      "id": "midipfelysianfrFRsrc",
+      "title": "InsuranceSuite Package for France Cloud fr-FR Elysian",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipf.git",
+      "branch": "release/fr-FR/cloud/elysian"
     }
   ]
 }
