@@ -4,7 +4,7 @@
   "template": "page",
   "class": "twoColumns",
   "selector": {
-    "label": "Select release",
+    "label": "Select cloud release",
     "selectedItem": "Dobson (2021.11)",
     "items": [
       {

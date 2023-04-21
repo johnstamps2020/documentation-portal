@@ -4,7 +4,7 @@
   "template": "page",
   "class": "blue-theme hakuba threeCards",
   "selector": {
-    "label": "Select release",
+    "label": "Select cloud release",
     "selectedItem": "Hakuba (2023.06)",
     "items": [
       {

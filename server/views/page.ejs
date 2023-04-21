@@ -4,6 +4,16 @@
 <body>
 <%- include('parts/header') %>
 <main class="<%= pageContent.class || '' %>">
+    <% if (pageContent.title.toLowerCase() === 'flaine' ||
+            pageContent.title.toLowerCase() === 'garmisch' ||
+            pageContent.title.toLowerCase() === 'hakuba') { %>
+        <a
+            href="/selfManagedProducts"
+            data-root="/selfManagedProducts"
+            class="platformLink"
+            >Click here for self-managed documentation</a>
+
+    <% } %>
     <div class="pageBody">
         <div class="pageControllers">
             <% if (pageContent.title.toLowerCase() !== 'flaine' &&
