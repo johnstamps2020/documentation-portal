@@ -132,7 +132,7 @@
         "subject": ["Best practices"],
         "release": ["Cortina"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1453,7 +1453,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["8.6.1 (LTS)"],
+        "version": ["8.6.1 LTS"],
         "subject": ["Best practices"],
         "release": ["Garmisch"]
       },
