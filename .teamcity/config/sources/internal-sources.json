@@ -1,0 +1,12 @@
+{
+    "$schema": "../config-schema.json",
+    "sources": [
+      {
+        "id": "ketisrc",
+        "title": "Keti Cloud Common Auth",
+        "gitUrl": "ssh://git@stash.guidewire.com/ccs/keti-docs.git",
+        "branch": "main"
+      }
+    ]
+  }
+  

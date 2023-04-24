@@ -1,0 +1,22 @@
+{
+    "$schema": "../config-schema.json",
+    "docs": [
+      {
+        "id": "keti",
+        "title": "Keti Cloud Common Auth",
+        "url": "internal/keti/latest",
+        "metadata": {
+          "platform": ["Cloud"],
+          "product": ["Internal Docs"],
+          "version": ["latest"]
+        },
+        "environments": ["staging"],
+        "displayOnLandingPages": true,
+        "indexForSearch": true,
+        "public": false,
+        "internal": true,
+        "earlyAccess": false
+      }
+    ]
+  }
+  
