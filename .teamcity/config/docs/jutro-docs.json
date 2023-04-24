@@ -1453,7 +1453,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["8.6.1 LTS"],
+        "version": ["8.6.1"],
         "subject": ["Best practices"],
         "release": ["Garmisch"]
       },
@@ -1471,7 +1471,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["8.6.1 LTS"],
+        "version": ["8.6.1"],
         "subject": ["Development"],
         "release": ["Garmisch"]
       },
