@@ -7,6 +7,7 @@ const {
   getDocumentMetadata,
   getDocId,
   getDocUrlByMetadata,
+  getUrlsContainingString,
   expensiveLoadConfig,
 } = require('../controllers/configController');
 const ejs = require('ejs');
@@ -126,6 +127,25 @@ router.get('/docUrl', async function (req, res, next) {
     res.send(docUrl);
   } catch (err) {
     winstonLogger.error(`[SAFE CONFIG] Problem sending doc URL
+    ERROR: ${JSON.stringify(err)}
+    QUERY: ${req.query}
+    REQ: ${JSON.stringify(req)}`);
+    next(err);
+  }
+});
+
+/*
+ * This route finds a list of doc urls containing a queryString.
+ * This route doesn't need to be migrated to
+ * Croissant, but leaving it here for now in case it's useful.
+ */
+router.get('/docUrlsContainingString', async function (req, res, next) {
+  try {
+    const { query } = req.query;
+    const urls = await getUrlsContainingString(query);
+    res.send(urls);
+  } catch (err) {
+    winstonLogger.error(`[SAFE CONFIG] Problem getting doc URLs with dots
     ERROR: ${JSON.stringify(err)}
     QUERY: ${req.query}
     REQ: ${JSON.stringify(req)}`);
