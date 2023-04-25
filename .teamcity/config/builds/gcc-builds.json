@@ -25,8 +25,8 @@
     },
     {
       "buildType": "yarn",
-      "docId": "gcccloudconsoletemporary",
-      "srcId": "gcccloudconsoletemporarysrc",
+      "docId": "guidewirecloudconsolerootinsurerdev",
+      "srcId": "gcccloudconsoledocusaurussrc",
       "nodeImageVersion": "18.0.0"
     },
     {
@@ -38,30 +38,6 @@
       "buildType": "yarn",
       "docId": "dbserviceapi",
       "srcId": "dbserviceapisrc"
-    },
-    {
-      "buildType": "dita",
-      "root": "guidewire_cloud_platform_guide.ditamap",
-      "filter": "insurer-developer.ditaval",
-      "indexRedirect": true,
-      "srcId": "guidewirecloudconsolelatestsrc",
-      "docId": "guidewirecloudconsolerootinsurerdev"
-    },
-    {
-      "buildType": "dita",
-      "root": "guidewire_cloud_platform_guide.ditamap",
-      "filter": "gw-admin.ditaval",
-      "indexRedirect": true,
-      "srcId": "guidewirecloudconsolelatestsrc",
-      "docId": "guidewirecloudconsolerootgwadmin"
-    },
-    {
-      "buildType": "dita",
-      "root": "guidewire_cloud_platform_guide.ditamap",
-      "filter": "early-access.ditaval",
-      "indexRedirect": true,
-      "srcId": "guidewirecloudconsolelatestsrc",
-      "docId": "guidewirecloudconsolerootearlyaccess"
     },
     {
       "buildType": "yarn",
