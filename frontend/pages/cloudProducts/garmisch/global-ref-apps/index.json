@@ -83,6 +83,20 @@
           "id": "londonconfiggarmisch"
         }
       ]
+    },
+    {
+      "label": "US Standards-based Template Framework",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Standards-based Template Framework Guide",
+          "id": "sbtfwguide"
+        },
+        {
+          "label": "Standards-based Template Customization",
+          "id": "sbtfwcustomization"
+        }
+      ] 
     }
   ],
   "search_filters": {
