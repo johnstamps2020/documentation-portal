@@ -8,6 +8,7 @@
 tmp/
 
 .idea/libraries/
+.idea/aws.xml
 
 frontend/pages/localizedDocs/
 # Created by https://www.gitignore.io/api/intellij
