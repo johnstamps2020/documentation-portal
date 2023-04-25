@@ -44,8 +44,8 @@
       "branch": "master"
     },
     {
-      "id": "gcccloudconsoletemporarysrc",
-      "title": "Guidewire Cloud Console Temporary",
+      "id": "gcccloudconsoledocusaurussrc",
+      "title": "Guidewire Cloud Console",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/cloud-console-docs.git",
       "branch": "master"
     },
