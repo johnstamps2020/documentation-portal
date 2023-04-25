@@ -24,6 +24,12 @@
   "privacy.link": {
     "message": "Polityka prywatności Guidewire jest dostępna tutaj."
   },
+  "rightWrong.positiveTitle": {
+    "message": "Dobrze"
+  },
+  "theme.rightWrong.negativeTitle": {
+    "message": "Żle"
+  },
   "anonymous.youAreSharing": {
     "message": "Udostępniasz nam swój adres email,",
     "description": "Tells the user that we know their email. When they send this comment, they will send their email to us."

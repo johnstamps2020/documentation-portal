@@ -65,6 +65,14 @@ const siteTitle = 'Guidewire Docusaurus Test Site';
           theme: lightCodeTheme,
           darkTheme: darkCodeTheme,
         },
+        zoom: {
+          selector: '.markdown img:not(.doNotZoom)',
+          background: {
+            light: 'rgb(255, 255, 255)',
+            dark: 'rgb(50, 50, 50)',
+          },
+          // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+        },
       }),
 
     plugins: [
@@ -74,6 +82,7 @@ const siteTitle = 'Guidewire Docusaurus Test Site';
           configPath: path.resolve(__dirname, 'gw.plugin.redoc.config.js'),
         },
       ],
+      require.resolve('docusaurus-plugin-image-zoom'),
     ],
 
     themes: ['@doctools/gw-theme-classic'],

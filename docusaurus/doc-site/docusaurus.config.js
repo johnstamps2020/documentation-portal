@@ -51,9 +51,18 @@ const config = {
         draculaTheme: require('prism-react-renderer/themes/dracula'),
         additionalLanguages: ['yaml'],
       },
+      zoom: {
+        selector: '.markdown img:not(.doNotZoom)',
+        background: {
+          light: 'rgb(255, 255, 255)',
+          dark: 'rgb(50, 50, 50)',
+        },
+        // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+      },
     }),
 
   themes: ['@doctools/gw-theme-classic', '@docusaurus/theme-live-codeblock'],
+  plugins: [require.resolve('docusaurus-plugin-image-zoom')],
 };
 
 module.exports = config;

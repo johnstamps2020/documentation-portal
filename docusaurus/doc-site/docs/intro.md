@@ -40,9 +40,8 @@ Here are the highlights of the process:
    !.yarn/sdks
    !.yarn/versions
    ```
-1. At the root of your site, set up `.yarnrc.yml` similar to the following
+1. In your `.yarnrc.yml`, after `yarnPath: .yarn/releases/yarn-3.X.X.cjs`, add:
    ```yaml
-   yarnPath: .yarn/releases/yarn-3.X.X.cjs
    nodeLinker: node-modules
    npmAlwaysAuth: true
    npmAuthToken: ${NPM_AUTH_TOKEN}

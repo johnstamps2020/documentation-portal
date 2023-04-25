@@ -42,3 +42,27 @@
   align-items: center;
   justify-content: center;
 }
+
+.imagesWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  padding: 1rem;
+  background-color: #f4f5fa;
+}
+
+.imageWrapper {
+  position: relative;
+  border-top-width: 3px;
+}
+
+.imageTitle {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+}
+
+.imageCaption {
+  margin-top: 1rem;
+}
