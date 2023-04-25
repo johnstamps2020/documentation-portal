@@ -4,7 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import LoginOptions from 'components/LoginPage/LoginOptions';
-import { Box } from '@mui/material';
+import { Paper } from '@mui/material';
 
 export default function LoginPage() {
   return (
@@ -77,10 +77,12 @@ export default function LoginPage() {
               latest API References
             </Link>
           </Typography>
-          <Box
+          <Paper
+            elevation={2}
             sx={{
               alignItems: 'center',
               display: 'flex',
+              justifyContent: 'space-evenly',
               flexDirection: 'column',
               gap: '8px',
               padding: { xs: 0, sm: 4 },
@@ -93,14 +95,14 @@ export default function LoginPage() {
                 fontSize: '1.375rem',
                 color: 'hsl(216, 42%, 13%)',
                 textAlign: 'center',
-                paddingBottom: '10px',
+                padding: '5px 10px',
                 marginBottom: '55px',
               }}
             >
               To view complete documentation, log in to your account
             </Typography>
             <LoginOptions />
-          </Box>
+          </Paper>
         </Grid>
       </Grid>
     </Layout>

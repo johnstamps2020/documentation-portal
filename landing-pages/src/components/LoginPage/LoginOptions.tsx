@@ -38,38 +38,40 @@ export default function LoginOptions() {
     margin: '15px',
   };
   return (
-    <Stack
-      direction="row"
-      marginBottom="70px"
-      flexWrap="wrap"
-      sx={{ justifyContent: 'space-evenly', alignItems: 'center' }}
-    >
-      {loginButtons.map((loginButton) => (
-        <Tooltip
-          key={loginButton.label}
-          title={<Typography>{loginButton.tooltipText}</Typography>}
-          placement="bottom"
-          arrow
-          sx={{ fontSize: '16px' }}
-        >
-          <Button
-            href={`${loginButton.href}?redirectTo=${redirectTo}`}
-            variant="contained"
-            color="primary"
-            sx={buttonStyle}
+    <>
+      <Stack
+        direction="row"
+        marginBottom="50px"
+        flexWrap="wrap"
+        sx={{ justifyContent: 'space-around', alignItems: 'center' }}
+      >
+        {loginButtons.map((loginButton) => (
+          <Tooltip
+            key={loginButton.label}
+            title={<Typography>{loginButton.tooltipText}</Typography>}
+            placement="bottom"
+            arrow
+            sx={{ fontSize: '16px' }}
           >
-            {loginButton.label}
-          </Button>
-        </Tooltip>
-      ))}
+            <Button
+              href={`${loginButton.href}?redirectTo=${redirectTo}`}
+              variant="contained"
+              color="primary"
+              sx={buttonStyle}
+            >
+              {loginButton.label}
+            </Button>
+          </Tooltip>
+        ))}
+      </Stack>
       <Button
         variant="outlined"
         color="primary"
         href={`/authorization-code?idp=okta&redirectTo=${redirectTo}`}
-        sx={{ ...buttonStyle, border: 1 }}
+        sx={{ ...buttonStyle, border: 1, height: '65px', width: '230px' }}
       >
         Guidewire Employee
       </Button>
-    </Stack>
+    </>
   );
 }
