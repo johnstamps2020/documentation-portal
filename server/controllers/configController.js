@@ -131,7 +131,15 @@ async function getDocByUrl(url) {
 
 async function isPublicDoc(url, reqObj) {
   try {
-    const matchingDoc = await getDocByUrl(url, reqObj);
+    let matchingDoc = await getDocByUrl(url, reqObj);
+    if (!matchingDoc) {
+      if (url.includes('/latest')) {
+        const latestVersionUrl = await getLatestVersionUrl(url);
+        if (latestVersionUrl) {
+          matchingDoc = await getDocByUrl(latestVersionUrl, reqObj);
+        }
+      }
+    }
     return !!(matchingDoc && matchingDoc.public);
   } catch (err) {
     winstonLogger.error(
@@ -409,6 +417,135 @@ async function getUrlsByWildcard(url) {
   }
 }
 
+async function getLatestVersionUrl(url) {
+  try {
+    const wildcardUrl = url
+      .replace('latest', '*')
+      .replace(/^\/+/, '')
+      .replace(/\/$/, '');
+    const wildcardIndex = wildcardUrl.split('/').indexOf('*');
+    const urlAfterWildcardSegments = wildcardUrl
+      .split('/')
+      .map((segment, index) => {
+        if (index > wildcardIndex) {
+          return segment;
+        }
+        return;
+      });
+    const urlAfterWildcard = urlAfterWildcardSegments
+      .join('/')
+      .replace(/^\/+/, '');
+
+    const matchingUrls = await getUrlsByWildcard(wildcardUrl);
+    if (matchingUrls && !matchingUrls.error) {
+      if (matchingUrls[0].includes('/latest')) return;
+      let highestNumber = -Infinity;
+      let highestNumberUrl = null;
+      let highestAlphabeticalUrl = null;
+      Object.values(matchingUrls).forEach((url) => {
+        if (url.includes('/next')) return;
+        const urlSegments = url.split('/');
+        const urlVersionSegment = urlSegments[wildcardIndex];
+        if (!isNaN(urlVersionSegment)) {
+          const urlNumber = parseInt(urlVersionSegment);
+          if (urlNumber > highestNumber) {
+            highestNumber = urlNumber;
+            highestNumberUrl = url;
+          }
+        } else if (
+          urlSegments[wildcardIndex] &&
+          (!highestAlphabeticalUrl ||
+            urlVersionSegment.localeCompare(highestAlphabeticalUrl) > 0)
+        ) {
+          highestAlphabeticalUrl = urlSegments[wildcardIndex];
+          highestNumberUrl = url;
+        }
+      });
+      if (!highestNumberUrl) return;
+
+      const highestNumberUrlSegments = highestNumberUrl
+        .split('/')
+        .map((segment, index) => {
+          if (index <= wildcardIndex) {
+            return segment;
+          }
+          return;
+        });
+
+      let highestNumberUrlWithSuffix = highestNumberUrlSegments.join('/');
+      if (
+        highestNumberUrlWithSuffix.endsWith('/') &&
+        urlAfterWildcard.startsWith('/')
+      ) {
+        highestNumberUrlWithSuffix = highestNumberUrlWithSuffix
+          .slice(0, -1)
+          .concat(urlAfterWildcard);
+      } else if (
+        highestNumberUrlWithSuffix.endsWith('/') ||
+        urlAfterWildcard.startsWith('/')
+      ) {
+        highestNumberUrlWithSuffix =
+          highestNumberUrlWithSuffix.concat(urlAfterWildcard);
+      } else {
+        highestNumberUrlWithSuffix = highestNumberUrlWithSuffix.concat(
+          '/',
+          urlAfterWildcard
+        );
+      }
+
+      if (await isHtmlPage(`/${highestNumberUrlWithSuffix}`)) {
+        return highestNumberUrlWithSuffix;
+      } else {
+        return highestNumberUrl;
+      }
+    }
+  } catch (err) {
+    winstonLogger.error(
+      `Problem getting highest number url
+              url: ${url}
+              ERROR: ${JSON.stringify(err)}`
+    );
+  }
+  return;
+}
+
+async function isHtmlPage(url) {
+  try {
+    const fullUrl = process.env.DOC_S3_URL + url;
+    const response = await fetch(fullUrl, { method: 'HEAD' });
+    return !!(
+      response.status === 200 &&
+      response.headers.get('content-type').includes('text/html')
+    );
+  } catch (err) {
+    console.error(`Error checking if HTML page exists at ${url}: ${err}`);
+    return false;
+  }
+}
+
+/* See note on /docUrlsContainingString route in config.js */
+async function getUrlsContainingString(query) {
+  try {
+    if (!storedConfig || !storedConfig.docs || storedConfig.docs.length === 0) {
+      await expensiveLoadConfig();
+    }
+    const config = JSON.parse(JSON.stringify(storedConfig));
+
+    let matches = config.docs
+      .filter((doc) => {
+        return doc.url.includes(query);
+      })
+      .map((doc) => doc.url);
+
+    return matches;
+  } catch (err) {
+    winstonLogger.error(
+      `Problem getting urls with dots
+              Error: ${JSON.stringify(err)}`
+    );
+  }
+}
+
 module.exports = {
   getConfig,
   expensiveLoadConfig,
@@ -420,4 +557,6 @@ module.exports = {
   getDocId,
   getDocUrlByMetadata,
   getUrlsByWildcard,
+  getLatestVersionUrl,
+  getUrlsContainingString,
 };
