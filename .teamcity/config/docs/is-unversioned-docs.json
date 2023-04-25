@@ -4,7 +4,7 @@
     {
       "id": "isupgradecompatibility",
       "title": "InsuranceSuite Configuration Upgrade Tools Compatibility",
-      "url": "isconfigupgradetools/compatibility",
+      "url": "isconfigupgradetools-compatibility",
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
