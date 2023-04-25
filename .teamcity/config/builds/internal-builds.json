@@ -1,0 +1,13 @@
+{
+    "$schema": "../config-schema.json",
+    "builds": [
+      {
+        "buildType": "yarn",
+        "docId": "keti",
+        "srcId": "ketisrc",
+        "workingDir": "website",
+        "nodeImageVersion": "18.0.0"
+      }
+    ]
+  }
+  
