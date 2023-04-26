@@ -120,10 +120,6 @@ enum class GwDockerImages(val imageUrl: String) {
     )
 }
 
-enum class GwExportFrequencies(val paramValue: String) {
-    DAILY("daily"), WEEKLY("weekly")
-}
-
 enum class GwStaticFilesModes(val modeName: String) {
     LANDING_PAGES("landing_pages"), LOCALIZED_PAGES("localized_pages"), UPGRADE_DIFFS("upgrade_diffs"), SITEMAP("sitemap"), HTML5(
         "html5"
@@ -448,67 +444,6 @@ object Docs {
                 val docProject = createDocProject(buildConfig, srcId)
                 subProject(docProject)
             }
-        }
-    }
-
-    private fun createBuildAndPublishDockerImageWithGccContent(srcId: String): BuildType {
-        return BuildType {
-            name = "Build and publish Docker image with GCC content"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-            params {
-                text(
-                    "DOC_VERSION", "", label = "Doc version", display = ParameterDisplay.PROMPT, allowEmpty = false
-                )
-                text("env.GA4_ID", "G-6XJD083TC6", allowEmpty = false)
-            }
-            vcs {
-                root(Helpers.resolveRelativeIdFromIdString(srcId))
-            }
-            steps {
-                script {
-                    name = "Build standalone output"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                        #!/bin/bash
-                        set -xe
-                        
-                        ./build_standalone.sh
-                        """.trimIndent()
-                }
-                script {
-                    name = "Run the post-build yarn script"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                        #!/bin/bash
-                    
-                        cd "postbuilder"
-                        yarn install
-                        export EXIT_CODE=0
-                        yarn build || EXIT_CODE=${'$'}?
-                        exit ${'$'}EXIT_CODE
-                    """.trimIndent()
-                    dockerImage = "${GwDockerImages.NODE_REMOTE_BASE.imageUrl}:17.6.0"
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters = "--user 1000:1000"
-                }
-                script {
-                    name = "Build and publish Docker image"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                        #!/bin/bash
-                        set -xe
-                        
-                        export PACKAGE_NAME="gccwebhelp"
-                        export IMAGE_URL="${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/${'$'}PACKAGE_NAME:%DOC_VERSION%"
-                        
-                        docker build -t ${'$'}PACKAGE_NAME .
-                        docker tag ${'$'}PACKAGE_NAME ${'$'}IMAGE_URL
-                        docker push ${'$'}IMAGE_URL
-                        """.trimIndent()
-                }
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
     }
 
@@ -1097,10 +1032,6 @@ object Docs {
                     docEnvironmentsList, docId, srcId, publishPath, workingDir, outputDir
                 )
             }
-        }
-
-        if (arrayOf("guidewirecloudconsolerootinsurerdev").contains(docId)) {
-            docProjectBuildTypes.add(createBuildAndPublishDockerImageWithGccContent(srcId))
         }
 
         return Project {
