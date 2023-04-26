@@ -2,14 +2,14 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "ipukgarmischrn",
+      "id": "ipukflainern",
       "title": "Release Notes",
-      "url": "ipuk/garmisch/releasenotes",
+      "url": "ipuk/flaine/releasenotes",
       "metadata": {
         "product": ["OIC Integration"],
         "platform": ["Cloud"],
         "version": ["1.1"],
-        "release": ["Garmisch"],
+        "release": ["Flaine"],
         "subject": ["Release notes"]
       },
       "environments": ["staging"],
@@ -20,14 +20,14 @@
       "earlyAccess": true
     },
     {
-      "id": "ipukgarmischconfig",
+      "id": "ipukflaineconfig",
       "title": "Configuration",
-      "url": "ipuk/garmisch/config",
+      "url": "ipuk/flaine/config",
       "metadata": {
         "product": ["OIC Integration"],
         "platform": ["Cloud"],
         "version": ["1.1"],
-        "release": ["Garmisch"],
+        "release": ["Flaine"],
         "subject": ["Development"]
       },
       "environments": ["staging"],
@@ -38,14 +38,14 @@
       "earlyAccess": true
     },
     {
-      "id": "ipukgarmischapp",
+      "id": "ipukflaineapp",
       "title": "Application Guide",
-      "url": "ipuk/garmisch/app",
+      "url": "ipuk/flaine/app",
       "metadata": {
         "product": ["OIC Integration"],
         "platform": ["Cloud"],
         "version": ["1.1"],
-        "release": ["Garmisch"],
+        "release": ["Flaine"],
         "subject": ["Features and functionality"]
       },
       "environments": ["staging"],

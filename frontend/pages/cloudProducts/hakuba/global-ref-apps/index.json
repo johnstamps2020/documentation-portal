@@ -8,8 +8,8 @@
     "selectedItem": "Hakuba (2023.06)",
     "items": [
       {
-        "label": "Hakuba (2023.02)",
-        "page": "../../hakuba/global-ref-apps"
+        "label": "Garmisch (2023.02)",
+        "page": "../../garmisch/global-ref-apps"
       },
       {
         "label": "Flaine (2022.09)",
@@ -37,6 +37,24 @@
         {
           "label": "Configuration",
           "id": "londonconfighakuba"
+        }
+      ]
+    },
+    {
+      "label": "UK Market",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ipukhakubarn"
+        },
+        {
+          "label": "Application Guide",
+          "id": "ipukhakubaapp"
+        },
+        {
+          "label": "Configuration",
+          "id": "ipukhakubaconfig"
         }
       ]
     },
