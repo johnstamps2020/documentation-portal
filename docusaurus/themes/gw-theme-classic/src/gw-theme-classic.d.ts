@@ -25,13 +25,21 @@ declare module '@theme/RightWrong' {
   };
 
   export type RightWrongCardProps = {
-    title?: string;
     children: JSX.Element | JSX.Element[] | string;
+    title: string;
+  };
+
+  export type RightWrongImageProps = ImgHTMLAttributes<HTMLImageElement> & {
+    caption?: JSX.Element | JSX.Element[] | string;
+    wrapperStyle?: CSSProperties;
   };
 
   export function RightWrong({ children }: RightWrongProps): JSX.Element;
   export function Right(props: RightWrongCardProps): JSX.Element;
   export function Wrong(props: RightWrongCardProps): JSX.Element;
+  export function RightWrongImages({ children }: RightWrongProps): JSX.Element;
+  export function RightImage(props: RightWrongImageProps): JSX.Element;
+  export function WrongImage(props: RightWrongImageProps): JSX.Element;
 }
 
 declare module '@theme/Types' {

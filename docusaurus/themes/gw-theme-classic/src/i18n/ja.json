@@ -24,6 +24,12 @@
   "privacy.link": {
     "message": "Guidewire's Privacy Policy can be found here."
   },
+  "rightWrong.positiveTitle": {
+    "message": "Do"
+  },
+  "theme.rightWrong.negativeTitle": {
+    "message": "Don't"
+  },
   "anonymous.youAreSharing": {
     "message": "メールアドレスが送信されます。",
     "description": "Tells the user that we know their email. When they send this comment, they will send their email to us."
