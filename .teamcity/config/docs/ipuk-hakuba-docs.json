@@ -8,7 +8,7 @@
       "metadata": {
         "product": ["OIC Integration"],
         "platform": ["Cloud"],
-        "version": ["1.2"],
+        "version": ["2023.06"],
         "release": ["Hakuba"],
         "subject": ["Release notes"]
       },
@@ -26,7 +26,7 @@
       "metadata": {
         "product": ["OIC Integration"],
         "platform": ["Cloud"],
-        "version": ["1.2"],
+        "version": ["2023.06"],
         "release": ["Hakuba"],
         "subject": ["Development"]
       },
@@ -44,7 +44,7 @@
       "metadata": {
         "product": ["OIC Integration"],
         "platform": ["Cloud"],
-        "version": ["1.2"],
+        "version": ["2023.06"],
         "release": ["Hakuba"],
         "subject": ["Features and functionality"]
       },
