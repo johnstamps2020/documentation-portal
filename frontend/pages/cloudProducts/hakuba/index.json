@@ -39,16 +39,6 @@
   },
   "items": [
     {
-      "label": "Applications",
-      "class": "categoryCard cardShadow",
-      "items": [
-        {
-          "label": "Global Content Reference Applications",
-          "page": "global-ref-apps"
-        }
-      ]
-    },
-    {
       "label": "Platform",
       "class": "categoryCard cardShadow",
       "items": [
@@ -71,6 +61,16 @@
         {
           "label": "Workflow Service (Early Access)",
           "page": "../workflowservice"
+        }
+      ]
+    },
+    {
+      "label": "Applications",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Global Content Reference Applications",
+          "page": "global-ref-apps"
         }
       ]
     },
