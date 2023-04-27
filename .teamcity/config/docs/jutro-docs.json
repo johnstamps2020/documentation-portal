@@ -1702,6 +1702,23 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "jutrodocsnext",
+      "title": "Jutro Digital Platform",
+      "url": "jutro/docs/next",
+      "metadata": {
+        "product": ["Jutro Digital Platform"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }

@@ -366,6 +366,12 @@
       "title": "Jutro a11y app source",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-a11y-app.git",
       "branch": "main"
+    },
+    {
+      "id": "jutrodocsnextsrc",
+      "title": "Jutro Home Next",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs.git",
+      "branch": "main"
     }
   ]
 }

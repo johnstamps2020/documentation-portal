@@ -754,6 +754,12 @@
           "value": "/jutro/a11y/latest"
         }
       ]
+    },
+    {
+      "buildType": "yarn",
+      "docId": "jutrodocsnext",
+      "srcId": "jutrodocsnextsrc",
+      "nodeImageVersion": "18.0.0"
     }
   ]
 }
