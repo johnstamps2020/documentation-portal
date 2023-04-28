@@ -143,6 +143,7 @@ object Database {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             buildType(createDeployDbBuildType())
+            buildType(SyncProdDbWithLowerEnvBuildType)
             buildType(createUploadLegacyConfigsToDb())
         }
     }
@@ -167,6 +168,7 @@ object Database {
                     label = "Deploy environment",
                     options = listOf(
                         "Dev" to GwDeployEnvs.DEV.envName,
+                        "Prod" to GwDeployEnvs.PROD.envName,
                     ),
                     display = ParameterDisplay.PROMPT,
                 )
@@ -219,6 +221,86 @@ object Database {
             }
         }
     }
+
+    private object SyncProdDbWithLowerEnvBuildType : BuildType({
+        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
+        val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
+        val namespace = "doctools"
+        val imageName = "alpine"
+        val podName = "postgresql-client-shell"
+        val dbDumpZipPackageName = "docportalconfig.zip"
+        name = "Sync prod db with lower env db (Croissant)"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        steps {
+            script {
+                name = "Create a db dump on lower env"
+                scriptContent = """
+                #!/bin/bash 
+                set -eu
+                                                
+                # Set AWS credentials
+                $awsEnvVars
+                
+                aws eks update-kubeconfig --name atmos-dev
+                kubectl config set-context --current --namespace=$namespace
+                kubectl run $podName --image=$imageName --env="PGPASSWORD=%env.CONFIG_DB_PASSWORD%" --env="PGUSER=%env.CONFIG_DB_USERNAME%" --env="PGHOST=%env.CONFIG_DB_HOST%" --env="PGDATABASE=%env.CONFIG_DB_NAME%" --command -- /bin/sleep "infinite"
+                
+                SECONDS=0
+                while [ ${'$'}SECONDS -le 30 ]; do
+                  status=${'$'}(kubectl get pods $podName -o jsonpath='{.status.phase}')
+                  if [ "${'$'}status" == "Running" ]; then
+                    kubectl exec $podName -- sh -c "apk add --no-cache postgresql-client zip && pg_dump -Fd %env.CONFIG_DB_NAME% -j 5 -f %env.CONFIG_DB_NAME%" && zip -r $dbDumpZipPackageName %env.CONFIG_DB_NAME%" && kubectl cp $podName:/$dbDumpZipPackageName ./$dbDumpZipPackageName && kubectl delete pod $podName
+                    exit 0
+                  else
+                    echo "Waiting for the $podName pod to be ready"
+                    sleep 5
+                  fi
+                done
+                
+                echo "Maximum waiting time for pod readiness exceeded" >&2
+                kubectl delete pod $podName && exit 1
+            """.trimIndent()
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+            }
+            script {
+                name = "Restore the db dump from lower env on prod"
+                scriptContent = """
+                #!/bin/bash 
+                set -eu
+                                                
+                # Set AWS credentials
+                $awsEnvVarsProd
+                
+                aws eks update-kubeconfig --name atmos-omega2-andromeda
+                kubectl config set-context --current --namespace=$namespace
+                kubectl run $podName --image=$imageName --env="PGPASSWORD=%env.CONFIG_DB_PASSWORD%" --env="PGUSER=%env.CONFIG_DB_USERNAME%" --env="PGHOST=%env.CONFIG_DB_HOST%" --env="PGDATABASE=%env.CONFIG_DB_NAME%" --command -- /bin/sleep "infinite"
+                
+                SECONDS=0
+                while [ ${'$'}SECONDS -le 30 ]; do
+                  status=${'$'}(kubectl get pods $podName -o jsonpath='{.status.phase}')
+                  if [ "${'$'}status" == "Running" ]; then
+                    kubectl cp ./$dbDumpZipPackageName $podName:/$dbDumpZipPackageName && kubectl exec $podName -- sh -c "apk add --no-cache postgresql-client zip && unzip ./$dbDumpZipPackageName && pg_restore --clean --if-exists -d %env.CONFIG_DB_NAME% %env.CONFIG_DB_NAME%" && kubectl delete pod $podName
+                    exit 0
+                  else
+                    echo "Waiting for the $podName pod to be ready"
+                    sleep 5
+                  fi
+                done
+                
+                echo "Maximum waiting time for pod readiness exceeded" >&2
+                kubectl delete pod $podName && exit 1
+            """.trimIndent()
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+            }
+        }
+
+        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+    })
 
     private fun createUploadLegacyConfigsToDb(): BuildType {
         return BuildType {
