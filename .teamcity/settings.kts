@@ -227,7 +227,7 @@ object Database {
         val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
         val namespace = "doctools"
         val imageName = "alpine"
-        val podName = "postgresql-client-shell"
+        val podName = "postgresql-client-shell-teamcity"
         val dbDumpZipPackageName = "docportalconfig.zip"
         name = "Sync prod db with lower env db (Croissant)"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
