@@ -242,24 +242,25 @@ object Database {
                 # Set AWS credentials
                 $awsEnvVars
                 
-                aws eks update-kubeconfig --name atmos-dev
-                kubectl config set-context --current --namespace=$namespace
-                kubectl run $podName --image=$imageName --env="PGPASSWORD=%env.CONFIG_DB_PASSWORD%" --env="PGUSER=%env.CONFIG_DB_USERNAME%" --env="PGHOST=%env.CONFIG_DB_HOST%" --env="PGDATABASE=%env.CONFIG_DB_NAME%" --command -- /bin/sleep "infinite"
+                EXIT_CODE=0
+                aws eks update-kubeconfig --name atmos-dev && kubectl config set-context --current --namespace=$namespace && kubectl run $podName --image=$imageName --env="PGPASSWORD=%env.CONFIG_DB_PASSWORD%" --env="PGUSER=%env.CONFIG_DB_USERNAME%" --env="PGHOST=%env.CONFIG_DB_HOST%" --env="PGDATABASE=%env.CONFIG_DB_NAME%" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
                 
-                SECONDS=0
-                while [ ${'$'}SECONDS -le 30 ]; do
-                  status=${'$'}(kubectl get pods $podName -o jsonpath='{.status.phase}')
-                  if [ "${'$'}status" == "Running" ]; then
-                    kubectl exec $podName -- sh -c "apk add --no-cache postgresql-client zip && pg_dump -Fd %env.CONFIG_DB_NAME% -j 5 -f %env.CONFIG_DB_NAME% && zip -r $dbDumpZipPackageName %env.CONFIG_DB_NAME%" && kubectl cp $podName:/$dbDumpZipPackageName ./$dbDumpZipPackageName && kubectl delete pod $podName
-                    exit 0
-                  else
-                    echo "Waiting for the $podName pod to be ready"
-                    sleep 5
-                  fi
-                done
+                if [ "${'$'}EXIT_CODE" -eq 0 ]; then
+                    SECONDS=0
+                    while [ ${'$'}SECONDS -le 30 ]; do
+                      status=${'$'}(kubectl get pods $podName -o jsonpath='{.status.phase}')
+                      if [ "${'$'}status" == "Running" ]; then
+                        kubectl exec $podName -- sh -c "apk add --no-cache postgresql-client zip && pg_dump -Fd %env.CONFIG_DB_NAME% -j 5 -f %env.CONFIG_DB_NAME% && zip -r $dbDumpZipPackageName %env.CONFIG_DB_NAME%" && kubectl cp $podName:/$dbDumpZipPackageName ./$dbDumpZipPackageName || EXIT_CODE=${'$'}?
+                      else
+                        echo "Waiting for the $podName pod to be ready"
+                        sleep 5
+                      fi
+                    done
+                fi
                 
-                echo "Maximum waiting time for pod readiness exceeded" >&2
-                kubectl delete pod $podName && exit 1
+                kubectl get pods | grep $podName && kubectl delete pod $podName || EXIT_CODE=${'$'}?
+               
+                exit ${'$'}EXIT_CODE
             """.trimIndent()
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
@@ -274,24 +275,25 @@ object Database {
                 # Set AWS credentials
                 $awsEnvVarsProd
                 
-                aws eks update-kubeconfig --name atmos-omega2-andromeda
-                kubectl config set-context --current --namespace=$namespace
-                kubectl run $podName --image=$imageName --env="PGPASSWORD=%env.CONFIG_DB_PASSWORD%" --env="PGUSER=%env.CONFIG_DB_USERNAME%" --env="PGHOST=%env.CONFIG_DB_HOST_PROD%" --env="PGDATABASE=%env.CONFIG_DB_NAME%" --command -- /bin/sleep "infinite"
+                EXIT_CODE=0
+                aws eks update-kubeconfig --name atmos-omega2-andromeda && kubectl config set-context --current --namespace=$namespace && kubectl run $podName --image=$imageName --env="PGPASSWORD=%env.CONFIG_DB_PASSWORD%" --env="PGUSER=%env.CONFIG_DB_USERNAME%" --env="PGHOST=%env.CONFIG_DB_HOST_PROD%" --env="PGDATABASE=%env.CONFIG_DB_NAME%" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
                 
-                SECONDS=0
-                while [ ${'$'}SECONDS -le 30 ]; do
-                  status=${'$'}(kubectl get pods $podName -o jsonpath='{.status.phase}')
-                  if [ "${'$'}status" == "Running" ]; then
-                    kubectl cp ./$dbDumpZipPackageName $podName:/$dbDumpZipPackageName && kubectl exec $podName -- sh -c "apk add --no-cache postgresql-client zip && unzip ./$dbDumpZipPackageName && pg_restore --clean --if-exists -d %env.CONFIG_DB_NAME% %env.CONFIG_DB_NAME%" && kubectl delete pod $podName
-                    exit 0
-                  else
-                    echo "Waiting for the $podName pod to be ready"
-                    sleep 5
-                  fi
-                done
+                if [ "${'$'}EXIT_CODE" -eq 0 ]; then
+                    SECONDS=0
+                    while [ ${'$'}SECONDS -le 30 ]; do
+                      status=${'$'}(kubectl get pods $podName -o jsonpath='{.status.phase}')
+                      if [ "${'$'}status" == "Running" ]; then
+                        kubectl cp ./$dbDumpZipPackageName $podName:/$dbDumpZipPackageName && kubectl exec $podName -- sh -c "apk add --no-cache postgresql-client zip && unzip ./$dbDumpZipPackageName && pg_restore --clean --if-exists -d %env.CONFIG_DB_NAME% %env.CONFIG_DB_NAME%" || EXIT_CODE=${'$'}? 
+                      else
+                        echo "Waiting for the $podName pod to be ready"
+                        sleep 5
+                      fi
+                    done
+                fi
                 
-                echo "Maximum waiting time for pod readiness exceeded" >&2
-                kubectl delete pod $podName && exit 1
+                kubectl get pods | grep $podName && kubectl delete pod $podName || EXIT_CODE=${'$'}?
+               
+                exit ${'$'}EXIT_CODE
             """.trimIndent()
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
