@@ -227,7 +227,7 @@ object Database {
         val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
         val namespace = "doctools"
         val imageName = "alpine"
-        val podName = "postgresql-client-shell"
+        val podName = "postgresql-client-shell-teamcity"
         val dbDumpZipPackageName = "docportalconfig.zip"
         name = "Sync prod db with lower env db (Croissant)"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -251,6 +251,7 @@ object Database {
                       status=${'$'}(kubectl get pods $podName -o jsonpath='{.status.phase}')
                       if [ "${'$'}status" == "Running" ]; then
                         kubectl exec $podName -- sh -c "apk add --no-cache postgresql-client zip && pg_dump -Fd %env.CONFIG_DB_NAME% -j 5 -f %env.CONFIG_DB_NAME% && zip -r $dbDumpZipPackageName %env.CONFIG_DB_NAME%" && kubectl cp $podName:/$dbDumpZipPackageName ./$dbDumpZipPackageName || EXIT_CODE=${'$'}?
+                        break
                       else
                         echo "Waiting for the $podName pod to be ready"
                         sleep 5
@@ -283,7 +284,8 @@ object Database {
                     while [ ${'$'}SECONDS -le 30 ]; do
                       status=${'$'}(kubectl get pods $podName -o jsonpath='{.status.phase}')
                       if [ "${'$'}status" == "Running" ]; then
-                        kubectl cp ./$dbDumpZipPackageName $podName:/$dbDumpZipPackageName && kubectl exec $podName -- sh -c "apk add --no-cache postgresql-client zip && unzip ./$dbDumpZipPackageName && pg_restore --clean --if-exists -d %env.CONFIG_DB_NAME% %env.CONFIG_DB_NAME%" || EXIT_CODE=${'$'}? 
+                        kubectl cp ./$dbDumpZipPackageName $podName:/$dbDumpZipPackageName && kubectl exec $podName -- sh -c "apk add --no-cache postgresql-client zip && unzip ./$dbDumpZipPackageName && pg_restore --clean --if-exists -d %env.CONFIG_DB_NAME% %env.CONFIG_DB_NAME%" || EXIT_CODE=${'$'}?
+                        break
                       else
                         echo "Waiting for the $podName pod to be ready"
                         sleep 5
