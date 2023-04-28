@@ -86,6 +86,12 @@
       "branch": "master"
     },
     {
+      "id": "smssrc",
+      "title": "Configuration Service",
+      "gitUrl": "ssh://git@stash.guidewire.com/orange/secret-management-service.git",
+      "branch": "master"
+    },
+    {
       "id": "storageservicesrc",
       "title": "Storage Service",
       "gitUrl": "ssh://git@stash.guidewire.com/orange/storage-service-docs.git",
