@@ -276,7 +276,7 @@ object Database {
                 
                 aws eks update-kubeconfig --name atmos-omega2-andromeda
                 kubectl config set-context --current --namespace=$namespace
-                kubectl run $podName --image=$imageName --env="PGPASSWORD=%env.CONFIG_DB_PASSWORD%" --env="PGUSER=%env.CONFIG_DB_USERNAME%" --env="PGHOST=%env.CONFIG_DB_HOST%" --env="PGDATABASE=%env.CONFIG_DB_NAME%" --command -- /bin/sleep "infinite"
+                kubectl run $podName --image=$imageName --env="PGPASSWORD=%env.CONFIG_DB_PASSWORD%" --env="PGUSER=%env.CONFIG_DB_USERNAME%" --env="PGHOST=%env.CONFIG_DB_HOST_PROD%" --env="PGDATABASE=%env.CONFIG_DB_NAME%" --command -- /bin/sleep "infinite"
                 
                 SECONDS=0
                 while [ ${'$'}SECONDS -le 30 ]; do
