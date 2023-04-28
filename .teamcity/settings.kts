@@ -250,7 +250,7 @@ object Database {
                 while [ ${'$'}SECONDS -le 30 ]; do
                   status=${'$'}(kubectl get pods $podName -o jsonpath='{.status.phase}')
                   if [ "${'$'}status" == "Running" ]; then
-                    kubectl exec $podName -- sh -c "apk add --no-cache postgresql-client zip && pg_dump -Fd %env.CONFIG_DB_NAME% -j 5 -f %env.CONFIG_DB_NAME%" && zip -r $dbDumpZipPackageName %env.CONFIG_DB_NAME%" && kubectl cp $podName:/$dbDumpZipPackageName ./$dbDumpZipPackageName && kubectl delete pod $podName
+                    kubectl exec $podName -- sh -c "apk add --no-cache postgresql-client zip && pg_dump -Fd %env.CONFIG_DB_NAME% -j 5 -f %env.CONFIG_DB_NAME% && zip -r $dbDumpZipPackageName %env.CONFIG_DB_NAME%" && kubectl cp $podName:/$dbDumpZipPackageName ./$dbDumpZipPackageName && kubectl delete pod $podName
                     exit 0
                   else
                     echo "Waiting for the $podName pod to be ready"
