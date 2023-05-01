@@ -1,0 +1,155 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "DatadogEACustomerAccess.ditamap",
+      "srcId": "in20232",
+      "docId": "in20232ddlogacc",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ApplicationGuide.ditamap",
+      "srcId": "in20232",
+      "docId": "in20232app",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "BillingConfigurationReference.ditamap",
+      "srcId": "in20232",
+      "docId": "in20232billref",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ConsumerSalesPortalFeatures.ditamap",
+      "srcId": "in20232",
+      "docId": "in20232csalesp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ConsumerServicePortalFeatures.ditamap",
+      "srcId": "in20232",
+      "docId": "in20232cservicep",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "AppReaderIntegrationGuide.ditamap",
+      "srcId": "in20232",
+      "docId": "in20232appreaderinteg",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "Configuration.ditamap",
+      "srcId": "in20232",
+      "docId": "in20232config",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "CommonFunctionalityConfigurationReference.ditamap",
+      "srcId": "in20232",
+      "docId": "in20232commonconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "Studio.ditamap",
+      "srcId": "in20232",
+      "docId": "in20232studio",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "PortalDevelopment.ditamap",
+      "srcId": "in20232",
+      "docId": "in20232portaldev",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ProductAttributeReference.ditamap",
+      "srcId": "in20232",
+      "docId": "in20232prodattref",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ProvisioningPortalGuide.ditamap",
+      "srcId": "in20232",
+      "docId": "in20232provportal",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ProvisioningPortal.ditamap",
+      "srcId": "in20232",
+      "docId": "in20232provportalinternal",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "UnderwritingConfigurationReference.ditamap",
+      "srcId": "in20232",
+      "docId": "in20232uwconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ClaimsConfigurationReference.ditamap",
+      "srcId": "in20232",
+      "docId": "in20232claimsconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "yarn",
+      "docId": "in20232apiref",
+      "srcId": "srcin20232apiref",
+      "nodeImageVersion": "16.18.0"
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "BusinessIntelligenceIntegrationGuide.ditamap",
+      "srcId": "in20232",
+      "docId": "in20232xbiintegdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ConsumersSalesPortalConfig.ditamap",
+      "srcId": "in20232",
+      "docId": "in20232xcsalespconfigdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ConsumerServicePortalConfigGuide.ditamap",
+      "srcId": "in20232",
+      "docId": "in20232xcservicepconfigdraft",
+      "indexRedirect": true
+    }
+  ]
+}

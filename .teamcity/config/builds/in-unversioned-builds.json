@@ -20,6 +20,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "INowServicePortalReleaseNotes20232Hakuba.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "incsp20232rn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "INowServicePortalReleaseNotes20231Garmisch.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp20231rn",
@@ -116,6 +124,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "INowStudioReleaseNotes20232Hakuba.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20232studiorn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "INowStudioReleaseNotes20231Garmisch.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20231studiorn",
@@ -167,6 +183,14 @@
       "root": "InsuranceNow_InstallAssist_5.0.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "ininstallassistdraft",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "INowCoreReleaseNotes20232Hakuba.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20232rn",
       "indexRedirect": true
     },
     {
