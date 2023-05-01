@@ -1,0 +1,202 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "InsuranceNow 2023.2",
+  "template": "page",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select cloud release",
+    "selectedItem": "Hakuba (2023.2)",
+    "items": [
+      {
+        "label": "Garmisch (2023.1)",
+        "page": "../../../garmisch/insuranceNow/2023.1"
+      },
+      {
+        "label": "Flaine (2022.2)",
+        "page": "../../../flaine/insuranceNow/2022.2"
+      },
+      {
+        "label": "Elysian (2022.1)",
+        "page": "../../../elysian/insuranceNow/2022.1"
+      },
+      {
+        "label": "Dobson (2021.2)",
+        "page": "../../../dobson/insuranceNow/2021.2"
+      },
+      {
+        "label": "Cortina (2021.1)",
+        "page": "../../../cortina/insuranceNow/2021.1"
+      },
+      {
+        "label": "Banff (2020.2)",
+        "page": "../../../banff/insuranceNow/2020.2"
+      },
+      {
+        "label": "Aspen (2020.1)",
+        "page": "../../../aspen/insuranceNow/2020.1"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Core Release Notes",
+          "id": "in20232rn"
+        },
+        {
+          "label": "Release Video",
+          "link": "https://www.brainshark.com/guidewire/InsuranceNowGarmisch"
+        },
+        {
+          "label": "Studio Release Notes",
+          "id": "in20232studiorn"
+        },
+        {
+          "label": "Consumer Service Portal Release Notes",
+          "id": "incsp20232rn"
+        },
+        {
+          "label": "AppReader Release Notes",
+          "id": "appreaderrn400"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "in20232app"
+        },
+        {
+          "label": "Consumer Sales Portal Features",
+          "id": "in20232csalesp"
+        },
+        {
+          "label": "Consumer Service Portal Features",
+          "id": "in20232cservicep"
+        },
+        {
+          "label": "Excel Designed Rating",
+          "id": "inexcelrating30"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "AppReader Integration",
+          "id": "in20232appreaderinteg"
+        },
+        {
+          "label": "Business Intelligence Integration",
+          "id": "in20232xbiintegdraft"
+        },
+        {
+          "label": "API Reference",
+          "id": "in20232apiref"
+        }
+      ]
+    },
+    {
+      "label": "Development",
+      "class": "subject development",
+      "items": [
+        {
+          "label": "API Modernization",
+          "id": "inapimodernization"
+        },
+        {
+          "label": "Custom API Development",
+          "id": "inapidevelopment"
+        },
+        {
+          "label": "Developer Setup",
+          "id": "indevguidejava11draft"
+        },
+        {
+          "label": "Developer Setup",
+          "id": "indevguidejava11ext"
+        },
+        {
+          "label": "GWCP Operations for Self-led Customers",
+          "id": "ingwcpops"
+        },
+        {
+          "label": "Portal Development",
+          "id": "in20232portaldev"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Billing Configuration Reference",
+          "id": "in20232billref"
+        },
+        {
+          "label": "Core Configuration",
+          "id": "in20232config"
+        },
+        {
+          "label": "Common Functionality Configuration Reference",
+          "id": "in20232commonconfig"
+        },
+        {
+          "label": "Consumer Sales Portal Configuration",
+          "id": "in20232xcsalespconfigdraft"
+        },
+        {
+          "label": "Consumer Service Portal Configuration",
+          "id": "in20232xcservicepconfigdraft"
+        },
+        {
+          "label": "Claims Configuration Reference",
+          "id": "in20232claimsconfig"
+        },
+        {
+          "label": "Studio Configuration",
+          "id": "in20232studio"
+        },
+        {
+          "label": "Product Attribute Reference",
+          "id": "in20232prodattref"
+        },
+        {
+          "label": "Provisioning Portal",
+          "id": "in20232provportal"
+        },
+        {
+          "label": "Provisioning Portal",
+          "id": "in20232provportalinternal"
+        },
+        {
+          "label": "Underwriting Configuration Reference",
+          "id": "in20232uwconfig"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Install Assist",
+          "id": "ininstallassistdraft"
+        },
+        {
+          "label": "Upgrade Tools",
+          "id": "inupgradetoolsdraft"
+        }
+      ]
+    }
+  ]
+}

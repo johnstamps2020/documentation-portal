@@ -38,6 +38,24 @@
       "earlyAccess": false
     },
     {
+      "id": "incsp20232rn",
+      "title": "Consumer Service Portal 2023.2 Release Notes",
+      "url": "cloud/in/csp20232rn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.2"],
+        "subject": ["Release notes"],
+        "release": ["Hakuba"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "incsp20231rn",
       "title": "Consumer Service Portal 2023.1 Release Notes",
       "url": "cloud/in/csp20231rn",
@@ -285,6 +303,24 @@
       "earlyAccess": false
     },
     {
+      "id": "in20232studiorn",
+      "title": "Studio 2023.2 Release Notes",
+      "url": "cloud/in/20232/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.2"],
+        "subject": ["Release notes"],
+        "release": ["Garmisch"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "in20231studiorn",
       "title": "Studio 2023.1 Release Notes",
       "url": "cloud/in/20231/studiorn",
@@ -442,6 +478,24 @@
       "indexForSearch": true,
       "public": false,
       "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20232rn",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20232/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.2"],
+        "subject": ["Release notes"],
+        "release": ["Hakuba"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
       "earlyAccess": false
     },
     {
