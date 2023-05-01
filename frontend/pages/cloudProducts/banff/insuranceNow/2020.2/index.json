@@ -8,6 +8,10 @@
     "selectedItem": "Banff (2020.2)",
     "items": [
       {
+        "label": "Hakuba (2023.2)",
+        "page": "../../../hakuba/insuranceNow/2023.2"
+      },
+      {
         "label": "Garmisch (2023.1)",
         "page": "../../../garmisch/insuranceNow/2023.1"
       },

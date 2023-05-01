@@ -8,6 +8,10 @@
     "selectedItem": "Garmisch (2023.1)",
     "items": [
       {
+        "label": "Hakuba (2023.2)",
+        "page": "../../../hakuba/insuranceNow/2023.2"
+      },
+      {
         "label": "Flaine (2022.2)",
         "page": "../../../flaine/insuranceNow/2022.2"
       },
