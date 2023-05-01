@@ -311,7 +311,7 @@
         "product": ["InsuranceNow"],
         "version": ["2023.2"],
         "subject": ["Release notes"],
-        "release": ["Garmisch"]
+        "release": ["Hakuba"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
