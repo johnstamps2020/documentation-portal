@@ -1,9 +1,9 @@
 locals {
+  app_name = "docportal-app"
   aurora_db_name = "tenant-doctools-docportal"
   database_name = jsondecode(data.aws_secretsmanager_secret_version.database_name.secret_string)["config_db_name"]
   database_username = jsondecode(data.aws_secretsmanager_secret_version.database_username.secret_string)["config_db_username"]
   database_password = jsondecode(data.aws_secretsmanager_secret_version.database_password.secret_string)["config_db_password"]
-  instance_type = "db.r5.large"
   atmos_cluster_name = "atmos-${var.deploy_env}"
   aws_secret_name = "tenant-doctools-docportal"
 }
@@ -39,18 +39,21 @@ data "aws_secretsmanager_secret_version" "database_password" {
 }
 
 module "aurora_db" {
-  source = "git::ssh://git@stash.guidewire.com/ccs/atmos-tfmodule-aurora.git?ref=v5.0.3"
+  source = "git::ssh://git@stash.guidewire.com/ccs/atmos-tfmodule-aurora.git?ref=v6.0.0"
 
   name = local.aurora_db_name
   atmos_cluster_name = local.atmos_cluster_name
   region = var.region
+  star_system_name = var.star_system_name
+  quadrant_name = var.quadrant_name
+  app_name = local.app_name
 
   database_name = local.database_name
   username = local.database_username
   password = local.database_password
 
   replica_count = 1
-  instance_type = local.instance_type
+  instance_type = "db.r6g.large"
 
   enable_datadog_subscription_filter = false
   enable_sumologic_subscription_filter = false
