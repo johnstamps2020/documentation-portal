@@ -168,7 +168,7 @@ object Database {
                     label = "Deploy environment",
                     options = listOf(
                         "Dev" to GwDeployEnvs.DEV.envName,
-                        "Prod" to GwDeployEnvs.PROD.envName,
+                        "Prod" to GwDeployEnvs.OMEGA2_ANDROMEDA.envName,
                     ),
                     display = ParameterDisplay.PROMPT,
                 )
@@ -182,22 +182,19 @@ object Database {
                     #!/bin/bash
                     set -eux
 
-                    if [[ "%env.DEPLOY_ENV%" == "${GwDeployEnvs.PROD.envName}" ]]; then
+                    if [[ "%env.DEPLOY_ENV%" == "${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}" ]]; then
                       $awsEnvVarsProd
                       export ENV_LEVEL="Prod"
                       export STAR_SYSTEM_NAME="andromeda"
                       export QUADRANT_NAME="omega2"
-                      export ATMOS_DEPLOY_ENV="${'$'}STAR_SYSTEM_NAME-${'$'}QUADRANT_NAME"
-                      export S3_BUCKET="tenant-doctools-${'$'}QUADRANT_NAME-${'$'}STAR_SYSTEM_NAME-terraform"
                     else
                       $awsEnvVars
                       export ENV_LEVEL="Non-Prod"
                       export STAR_SYSTEM_NAME="needle"
                       export QUADRANT_NAME="pi7"
-                      export ATMOS_DEPLOY_ENV="%env.DEPLOY_ENV%"
-                      export S3_BUCKET="tenant-doctools-%env.DEPLOY_ENV%-terraform"
                     fi
 
+                    export S3_BUCKET="tenant-doctools-%env.DEPLOY_ENV%-terraform"
                     export TFSTATE_KEY="docportal/db/terraform.tfstate"
 
                     cd server/db
@@ -210,7 +207,7 @@ object Database {
                     terraform apply \
                         -var="star_system_name=${'$'}{STAR_SYSTEM_NAME}" \
                         -var="quadrant_name=${'$'}{QUADRANT_NAME}" \
-                        -var="deploy_env=${'$'}{ATMOS_DEPLOY_ENV}" \
+                        -var="deploy_env=%env.DEPLOY_ENV%" \
                         -var="region=${'$'}{AWS_DEFAULT_REGION}" \
                         -var="env_level=${'$'}{ENV_LEVEL}" \
                         -var="pod_name=${GwAtmosLabels.POD_NAME.labelValue}" \
