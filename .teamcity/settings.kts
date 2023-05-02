@@ -185,9 +185,13 @@ object Database {
                     if [[ "%env.DEPLOY_ENV%" == "${GwDeployEnvs.PROD.envName}" ]]; then
                       $awsEnvVarsProd
                       export ENV_LEVEL="Prod"
+                      export STAR_SYSTEM_NAME="andromeda"
+                      export QUADRANT_NAME="omega2"
                     else
                       $awsEnvVars
                       export ENV_LEVEL="Non-Prod"
+                      export STAR_SYSTEM_NAME="needle"
+                      export QUADRANT_NAME="pi7"
                     fi
 
                     export S3_BUCKET="tenant-doctools-%env.DEPLOY_ENV%-terraform"
@@ -206,6 +210,8 @@ object Database {
                         -var="env_level=${'$'}{ENV_LEVEL}" \
                         -var="pod_name=${GwAtmosLabels.POD_NAME.labelValue}" \
                         -var="dept_code=${GwAtmosLabels.DEPT_CODE.labelValue}" \
+                        -var="star_system_name=${'$'}{STAR_SYSTEM_NAME}" \
+                        -var="quadrant_name=${'$'}{QUADRANT_NAME}" \
                         -input=false \
                         -auto-approve
                     """.trimIndent()
