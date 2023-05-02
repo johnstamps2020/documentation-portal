@@ -187,14 +187,17 @@ object Database {
                       export ENV_LEVEL="Prod"
                       export STAR_SYSTEM_NAME="andromeda"
                       export QUADRANT_NAME="omega2"
+                      export ATMOS_DEPLOY_ENV="${'$'}STAR_SYSTEM_NAME-${'$'}QUADRANT_NAME"
+                      export S3_BUCKET="tenant-doctools-${'$'}QUADRANT_NAME-${'$'}STAR_SYSTEM_NAME-terraform"
                     else
                       $awsEnvVars
                       export ENV_LEVEL="Non-Prod"
                       export STAR_SYSTEM_NAME="needle"
                       export QUADRANT_NAME="pi7"
+                      export ATMOS_DEPLOY_ENV="%env.DEPLOY_ENV%"
+                      export S3_BUCKET="tenant-doctools-%env.DEPLOY_ENV%-terraform"
                     fi
 
-                    export S3_BUCKET="tenant-doctools-%env.DEPLOY_ENV%-terraform"
                     export TFSTATE_KEY="docportal/db/terraform.tfstate"
 
                     cd server/db
@@ -205,13 +208,13 @@ object Database {
                         -backend-config="key=${'$'}{TFSTATE_KEY}" \
                         -input=false
                     terraform apply \
-                        -var="deploy_env=%env.DEPLOY_ENV%" \
+                        -var="star_system_name=${'$'}{STAR_SYSTEM_NAME}" \
+                        -var="quadrant_name=${'$'}{QUADRANT_NAME}" \
+                        -var="deploy_env=${'$'}{ATMOS_DEPLOY_ENV}" \
                         -var="region=${'$'}{AWS_DEFAULT_REGION}" \
                         -var="env_level=${'$'}{ENV_LEVEL}" \
                         -var="pod_name=${GwAtmosLabels.POD_NAME.labelValue}" \
                         -var="dept_code=${GwAtmosLabels.DEPT_CODE.labelValue}" \
-                        -var="star_system_name=${'$'}{STAR_SYSTEM_NAME}" \
-                        -var="quadrant_name=${'$'}{QUADRANT_NAME}" \
                         -input=false \
                         -auto-approve
                     """.trimIndent()
