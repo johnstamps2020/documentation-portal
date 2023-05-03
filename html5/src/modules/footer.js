@@ -4,8 +4,10 @@ export function addFooterContents(isOffline) {
   const footerTemplate = `<div>
         <div class="footerLinks">
             <span class="footerLink">
-                <a href="${isOffline && 'https://docs.guidewire.com'}/support"${
-    isOffline && 'target="__blank" rel="noopener noreferrer"'
+                <a href="${
+                  isOffline ? 'https://docs.guidewire.com' : ''
+                }/support" ${
+    isOffline ? 'target="__blank" rel="noopener noreferrer"' : ''
   }>Legal and Support Information</a>
             </span>
         </div>
