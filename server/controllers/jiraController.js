@@ -50,6 +50,9 @@ async function sendJiraRequest(requestBody) {
           version: 1,
           content: description,
         },
+        priority: {
+          name: 'Unknown',
+        },
         issuetype: {
           name: 'Action Item',
         },
