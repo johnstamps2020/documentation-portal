@@ -243,6 +243,23 @@
       "earlyAccess": false
     },
     {
+      "id": "sms",
+      "title": "Configuration Service",
+      "url": "internal/sms/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
       "id": "storageservice",
       "title": "Storage Service",
       "url": "internal/storage/latest",

@@ -79,6 +79,13 @@
     },
     {
       "buildType": "yarn",
+      "docId": "sms",
+      "srcId": "smssrc",
+      "nodeImageVersion": "18.0.0",
+      "workingDir": "secret-management-service-docs"
+    },
+    {
+      "buildType": "yarn",
       "docId": "storageservice",
       "srcId": "storageservicesrc",
       "nodeImageVersion": "18.0.0",
