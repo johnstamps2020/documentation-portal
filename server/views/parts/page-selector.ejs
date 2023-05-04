@@ -17,20 +17,8 @@
             {label: pageSelector.selectedItem},
             ...pageSelector.items
         ];
-            const sortedItems = allItems
-                    .sort(function (a, b) {
-                        var labelA = a.label.toUpperCase();
-                        var labelB = b.label.toUpperCase();
-                        if (labelA < labelB) {
-                            return -1;
-                        }
-                        if (labelA > labelB) {
-                            return 1;
-                        }
-                        return 0;
-                    })
-                    .reverse();
-        sortedItems.forEach(item => {
+
+        allItems.forEach(item => {
         if (item.label === pageSelector.selectedItem) { %>
             <option selected="selected"><%= item.label %></option>
         <% } else { %>
