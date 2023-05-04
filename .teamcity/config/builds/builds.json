@@ -318,22 +318,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "UnderstandingCloudDataAccess.ditamap",
-      "srcId": "clouddataaccesssrc",
-      "docId": "clouddataaccessguide",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "b_relNotesCda.ditamap",
-      "srcId": "clouddataaccesssrc",
-      "docId": "clouddataaccessrn",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "A_Map01.ditamap",
       "indexRedirect": true,
       "srcId": "comparelatestsrc",
