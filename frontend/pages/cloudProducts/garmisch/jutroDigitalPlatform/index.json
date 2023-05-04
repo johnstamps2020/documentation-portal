@@ -16,13 +16,13 @@
       "items": [
         {
           "label": "Jutro SDK (Early Access)",
-          "link": "/jutro/sdk/next/docs/jutro-sdk-overview",
-          "env": ["staging"]
+          "link": "/jutro/sdk/garmisch/docs/jutro-sdk-overview",
+          "env": ["staging", "prod"]
         },
         {
           "label": "APD toolkit (Early Access)",
-          "link": "/jutro/sdk/next/docs/apd-toolkit-overview",
-          "env": ["staging"]
+          "link": "/jutro/sdk/garmisch/docs/apd-toolkit-overview",
+          "env": ["staging", "prod"]
         }
       ]
     },

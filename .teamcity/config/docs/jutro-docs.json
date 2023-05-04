@@ -379,6 +379,24 @@
       "earlyAccess": true
     },
     {
+      "id": "jutrosdkgarmisch",
+      "title": "Jutro SDK",
+      "url": "jutro/sdk/garmisch",
+      "metadata": {
+        "product": ["Jutro Digital Platform"],
+        "platform": ["Cloud"],
+        "version": ["Garmisch"],
+        "subject": ["Best practices"],
+        "release": ["Garmisch"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
       "id": "jutrorewards",
       "title": "Jutro Rewards",
       "url": "jutro/rewards",
