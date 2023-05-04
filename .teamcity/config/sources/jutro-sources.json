@@ -182,6 +182,12 @@
       "branch": "release/flaine"
     },
     {
+      "id": "srcjutrosdkgarmisch",
+      "title": "Jutro SDK Garmisch",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
+      "branch": "release/garmisch"
+    },
+    {
       "id": "srcjutrosbbizpatterns652",
       "title": "Jutro Storybook Business Patterns 6.5.2",
       "gitUrl": "ssh://git@stash.guidewire.com/jut/storybook-business-patterns.git",
