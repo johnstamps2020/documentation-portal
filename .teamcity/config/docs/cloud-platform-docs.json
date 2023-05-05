@@ -20,7 +20,7 @@
     },
     {
       "id": "cloudplatformrelease",
-      "title": "Network Connectivity",
+      "title": "Network connectivity with Guidewire Cloud Platform",
       "url": "cloud/gwcp/latest",
       "metadata": {
         "platform": ["Cloud"],
