@@ -670,7 +670,7 @@
       "displayOnLandingPages": false,
       "public": false,
       "internal": false,
-      "indexForSearch": false,
+      "indexForSearch": true,
       "environments": ["staging", "prod"],
       "earlyAccess": false
     }
