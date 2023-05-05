@@ -12,7 +12,7 @@
         "release": ["Elysian", "Flaine", "Garmisch"]
       },
       "environments": ["staging", "prod"],
-      "indexForSearch": false,
+      "indexForSearch": true,
       "public": false,
       "internal": false,
       "earlyAccess": false

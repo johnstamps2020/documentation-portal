@@ -98,7 +98,7 @@
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
-      "indexForSearch": false,
+      "indexForSearch": true,
       "public": false,
       "internal": false,
       "earlyAccess": false
