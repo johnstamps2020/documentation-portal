@@ -36,6 +36,7 @@ metadata:
 spec:
   profiles:
     - name: Default
+      internal_only: true
       request_transformer:
         add:
           headers:
