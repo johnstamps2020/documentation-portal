@@ -68,10 +68,6 @@
         {
           "label": "InsuranceSuite Package for Australia",
           "page": "../../globalContent/ipa/2022.09"
-        },
-        {
-          "label": "ClaimCenter Package for France",
-          "page": "../../globalContent/ipf/elysian"
         }
       ]
     },
