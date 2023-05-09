@@ -88,6 +88,7 @@ enum class GwDockerImages(val imageUrl: String) {
     DOC_PORTAL("${GwConfigParams.ECR_HOST.paramValue}/tenant-doctools-docportal"), DOC_PORTAL_PROD("${GwConfigParams.ECR_HOST_PROD.paramValue}/tenant-doctools-docportal"), DOC_PORTAL_FRONTEND(
         "${GwConfigParams.ECR_HOST.paramValue}/tenant-doctools-docportal-frontend"
     ),
+    DOC_PORTAL_FRONTEND_PROD("${GwConfigParams.ECR_HOST_PROD.paramValue}/tenant-doctools-docportal-frontend"),
     DITA_OT_3_4_1(
         "${GwConfigParams.ARTIFACTORY_HOST.paramValue}/doctools-docker-dev/dita-ot:3.4.1"
     ),
@@ -1702,7 +1703,7 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
-                GwDeployEnvs.DEV,
+                GwDeployEnvs.DEV, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createDeployReactLandingPagesBuildType(it.envName))
             }
@@ -1715,6 +1716,25 @@ object Frontend {
         val appName = "docportal-frontend"
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
         val namespace = GwAtmosLabels.POD_NAME.labelValue
+        var docportalBaseUrl = ""
+        var ecrHost = ""
+        var frontendImageUrl = ""
+        var awsRole = ""
+        when (deployEnv) {
+            GwDeployEnvs.DEV.envName -> {
+                docportalBaseUrl = "https://croissant.dev.ccs.guidewire.net"
+                ecrHost = GwConfigParams.ECR_HOST.paramValue
+                frontendImageUrl = GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl
+                awsRole = "arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"
+            }
+
+            GwDeployEnvs.PROD.envName -> {
+                docportalBaseUrl = "https://croissant.omega2-andromeda.guidewire.net"
+                ecrHost = GwConfigParams.ECR_HOST_PROD.paramValue
+                frontendImageUrl = GwDockerImages.DOC_PORTAL_FRONTEND_PROD.imageUrl
+                awsRole = "arn:aws:iam::954920275956:role/aws_orange-prod_tenant_doctools_developer"
+            }
+        }
         return BuildType {
             name = "Deploy React landing pages to $deployEnv"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -1758,21 +1778,21 @@ object Frontend {
                         export TAG_VERSION=$tagVersion
                         export DEPT_CODE=${GwAtmosLabels.DEPT_CODE.labelValue}
                         export POD_NAME=${GwAtmosLabels.POD_NAME.labelValue}
-                        export DEPLOY_ENV=$deployEnv
-                        export TARGET_URL="https://croissant.dev.ccs.guidewire.net"
+                        export DEPLOY_ENV=$atmosDeployEnv
+                        export TARGET_URL=$docportalBaseUrl
                         export BASE_URL="/landing/"
         
                         set +x
-                        docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
+                        docker login -u AWS -p ${'$'}(aws ecr get-login-password) $ecrHost
                         set -x
-                        docker build -t ${GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl}:${tagVersion} . \
+                        docker build -t $frontendImageUrl:${tagVersion} . \
                         --build-arg TAG_VERSION \
                         --build-arg DEPT_CODE \
                         --build-arg POD_NAME \
                         --build-arg DEPLOY_ENV \
                         --build-arg TARGET_URL \
                         --build-arg BASE_URL 
-                        docker push ${GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl}:${tagVersion}
+                        docker push $frontendImageUrl:${tagVersion}
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -1794,10 +1814,10 @@ object Frontend {
                         export APP_NAME="$appName"
                         export POD_NAME="${GwAtmosLabels.POD_NAME.labelValue}"
                         export DEPT_CODE="${GwAtmosLabels.DEPT_CODE.labelValue}"
-                        export AWS_ROLE="arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"
-                        export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl}"
+                        export AWS_ROLE="$awsRole"
+                        export AWS_ECR_REPO="$frontendImageUrl"
                         export TAG_VERSION=$tagVersion
-                        export DEPLOY_ENV=$deployEnv
+                        export DEPLOY_ENV=$atmosDeployEnv
                         export REQUESTS_MEMORY="2G"
                         export REQUESTS_CPU="500m"
                         export LIMITS_MEMORY="4G"
