@@ -228,7 +228,7 @@ spec:
             - name: ALLOW_PUBLIC_DOCS
               value: 'yes'
             - name: ENABLE_AUTH
-              value: 'yes'
+              value: '${ENABLE_AUTH}'
             - name: DEPLOY_ENV
               value: '${DEPLOY_ENV}'
             - name: JIRA_AUTH_TOKEN
