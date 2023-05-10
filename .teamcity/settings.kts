@@ -2539,6 +2539,7 @@ object Server {
         var elasticsearchUrl = ""
         var oktaDomain = ""
         var oktaIssuer = ""
+        var enableAuth="yes"
         when (deployEnv) {
             GwDeployEnvs.DEV.envName -> {
                 docportalBaseUrl = "https://$appName.${GwDeployEnvs.DEV.envName}.ccs.guidewire.net"
@@ -2560,6 +2561,7 @@ object Server {
                 elasticsearchUrl = "https://docsearch-doctools.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net"
                 oktaDomain = "https://guidewire-hub.okta.com"
                 oktaIssuer = "https://guidewire-hub.okta.com/oauth2/aus11vix3uKEpIfSI357"
+                enableAuth = "no"
             }
         }
         val deployServerBuildType = BuildType {
@@ -2641,6 +2643,7 @@ object Server {
                         export REQUESTS_CPU="100m"
                         export LIMITS_MEMORY="2G"
                         export LIMITS_CPU="1"
+                        export ENABLE_AUTH=$enableAuth
                         
                         # Set other envs
                         export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
