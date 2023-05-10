@@ -1,16 +1,34 @@
-# Set up local env
+# Set up local development environment
 
-Use the following environment variables. Private keys and other sensitive data are not listed below,
-so you need to get them from Password Vault or AWS Secrets Manager.
+> WARNING: The instructions in this file are for macOS. If you use a different OS, adjust them accordingly.
 
+## Make sure you have the required tools installed
+
+You need the following tools:
+
+- Docker
+- [nvm](https://github.com/nvm-sh/nvm) for managing Node.js versions. We use `.nvmrc` files for automatic version
+  switching.
+- Node.js 16.18.0 for running the server (install through nvm)
+- Node.js 18.15.0 for loading configs into the database (install through nvm)
+
+## Configure environment variables for the doc portal server
+
+Create a `server/.env` file with the following variables:
+
+> IMPORTANT: Private keys and other sensitive data are not listed below, so you need to get them from Password Vault or
+> AWS Secrets Manager.
+
+```
 OKTA_CLIENT_ID=
 OKTA_CLIENT_SECRET=
 OKTA_IDP=
 OKTA_ISSUER=https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7
-OKTA_SCOPES=NODE_Hawaii_Docs_Web.read
+OKTA_SCOPES="NODE_Hawaii_Docs_Web.read"
 OKTA_AUDIENCE=Guidewire
 OKTA_ADMIN_GROUPS=
 APP_BASE_URL=http://localhost:8081
+FRONTEND_URL=http://localhost:6006
 SESSION_KEY=
 DOC_S3_URL=https://docportal-content.staging.ccs.guidewire.net
 PORTAL2_S3_URL=https://portal2-content.omega2-andromeda.guidewire.net
@@ -21,7 +39,7 @@ ENABLE_AUTH=yes
 PRETEND_TO_BE_EXTERNAL=no
 ALLOW_PUBLIC_DOCS=yes
 LOCALHOST_SESSION_SETTINGS=yes
-JIRA_AUTH_TOKEN===
+JIRA_AUTH_TOKEN=
 CONFIG_DB_NAME=postgres
 CONFIG_DB_USERNAME=postgres
 CONFIG_DB_PASSWORD=testtesttest
@@ -32,16 +50,16 @@ PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/par
 CUSTOMERS_LOGIN_URL=https://qaint-guidewire.cs172.force.com/customers/idp/endpoint/HttpRedirect
 CUSTOMERS_LOGIN_CERT=
 CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/customers-login
+```
 
-# Start developing
+## Start the services
 
-To start developing on this branch, you're going to need three terminal windows:
-
-1. Start the database using the `./start_docportal_db_container.sh`.
-2. Start the server `yarn server-dev`.
-3. Load configs into the database by running:
+1. Open a new terminal window and start the database by running `./start_docportal_db_container.sh`.
+2. Open a new terminal window and start the server by running `yarn server-dev`.
+3. Open a new terminal window, export environment variables and load configs into the database by running:
    ```
+   set -a && source server/.env
    cd ci
    node uploadLegacyConfigsToDb.mjs
    ```
-4. Start the client by running `yarn landing-pages-dev`.
+4. Open a new terminal window and start the frontend by running `yarn landing-pages-dev`.
