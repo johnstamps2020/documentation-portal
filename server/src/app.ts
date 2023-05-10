@@ -140,6 +140,8 @@ app.use('/alive', (req, res) => {
   res.sendStatus(200);
 });
 
+app.use(express.json());
+app.use('/jira', jiraRouter);
 app.use('/gw-logout', gwLogoutRouter);
 app.use('/partners-login', partnersLoginRouter);
 app.use('/customers-login', customersLoginRouter);
@@ -158,7 +160,6 @@ passport.deserializeUser(function (user: any, done: any) {
   done(null, user);
 });
 
-app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
@@ -177,7 +178,6 @@ app.use(
   adminRouter
 );
 app.use('/safeConfig', saveUserInfoToResLocals, configRouter);
-app.use('/jira', saveUserInfoToResLocals, isAllowedToAccessRoute, jiraRouter);
 app.use('/lrs', saveUserInfoToResLocals, isAllowedToAccessRoute, lrsRouter);
 app.use('/s3', saveUserInfoToResLocals, isAllowedToAccessRoute, s3Router);
 // Open routes
