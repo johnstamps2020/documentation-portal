@@ -1766,7 +1766,7 @@ object Frontend {
                     """.trimIndent()
                 }
                 script {
-                    name = "Build and publish server Docker Image to DEV ECR"
+                    name = "Build and publish server Docker Image to $deployEnv ECR"
                     id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
                         #!/bin/bash 
@@ -2526,11 +2526,42 @@ object Server {
         val appName = "croissant"
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
         val gatewayConfigFile = when (deployEnv) {
-            GwDeployEnvs.PROD.envName -> "gateway-config-prod.yml"
+            GwDeployEnvs.PROD.envName -> "gateway-config.yml" // Temporarily use the lower env deployment file
             else -> "gateway-config.yml"
         }
 
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
+        var docportalBaseUrl = ""
+        var ecrHost = ""
+        var docportalImageUrl = ""
+        var awsRole = ""
+        var docS3url = ""
+        var elasticsearchUrl = ""
+        var oktaDomain = ""
+        var oktaIssuer = ""
+        when (deployEnv) {
+            GwDeployEnvs.DEV.envName -> {
+                docportalBaseUrl = "https://$appName.${GwDeployEnvs.DEV.envName}.ccs.guidewire.net"
+                ecrHost = GwConfigParams.ECR_HOST.paramValue
+                docportalImageUrl = GwDockerImages.DOC_PORTAL.imageUrl
+                awsRole = "arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"
+                docS3url = "https://docportal-content.dev.ccs.guidewire.net"
+                elasticsearchUrl = "https://docsearch-doctools.${GwDeployEnvs.DEV.envName}.ccs.guidewire.net"
+                oktaDomain = "https://guidewire-hub.oktapreview.com"
+                oktaIssuer = "https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"
+            }
+
+            GwDeployEnvs.PROD.envName -> {
+                docportalBaseUrl = "https://$appName.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net"
+                ecrHost = GwConfigParams.ECR_HOST_PROD.paramValue
+                docportalImageUrl = GwDockerImages.DOC_PORTAL_PROD.imageUrl
+                awsRole = "arn:aws:iam::954920275956:role/aws_orange-prod_tenant_doctools_developer"
+                docS3url = "https://docportal-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net"
+                elasticsearchUrl = "https://docsearch-doctools.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net"
+                oktaDomain = "https://guidewire-hub.okta.com"
+                oktaIssuer = "https://guidewire-hub.okta.com/oauth2/aus11vix3uKEpIfSI357"
+            }
+        }
         val deployServerBuildType = BuildType {
             name = "Deploy to $deployEnv (Croissant)"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -2542,6 +2573,35 @@ object Server {
             }
 
             steps {
+                script {
+                    name = "Build and publish server Docker Image to $deployEnv ECR"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                        #!/bin/bash 
+                        set -xe
+                        
+                        # Log into the dev ECR, build and push the image
+                        $awsEnvVars
+                        
+                        export TAG_VERSION=$tagVersion
+                        export DEPT_CODE=${GwAtmosLabels.DEPT_CODE.labelValue}
+                        export POD_NAME=${GwAtmosLabels.POD_NAME.labelValue}
+        
+                        set +x
+                        docker login -u AWS -p ${'$'}(aws ecr get-login-password) $ecrHost
+                        set -x
+                        docker build -t $docportalImageUrl:${tagVersion} ./server \
+                        --build-arg TAG_VERSION \
+                        --build-arg NPM_AUTH_TOKEN \
+                        --build-arg DEPT_CODE \
+                        --build-arg POD_NAME
+                        docker push $docportalImageUrl:${tagVersion}
+                    """.trimIndent()
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerRunParameters =
+                        "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
+                }
                 script {
                     name = "Deploy to Kubernetes"
                     id = Helpers.createIdStringFromName(this.name)
@@ -2555,27 +2615,27 @@ object Server {
                         # Set environment variables needed for Kubernetes config files
                         export DD_SERVICE_NAME="$appName"
                         export APP_NAME="$appName"
-                        export POD_NAME="doctools"
-                        export DEPT_CODE="284"
-                        export AWS_ROLE="arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"
-                        export AWS_ECR_REPO="627188849628.dkr.ecr.us-west-2.amazonaws.com/tenant-doctools-docportal"
-                        export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="https://$appName.dev.ccs.guidewire.net/partners-login"
+                        export POD_NAME="${GwAtmosLabels.POD_NAME.labelValue}"
+                        export DEPT_CODE="${GwAtmosLabels.DEPT_CODE.labelValue}"
+                        export AWS_ROLE="$awsRole"
+                        export AWS_ECR_REPO="$docportalImageUrl"
+                        export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="$docportalBaseUrl/partners-login"
                         export PARTNERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
                         export GW_COMMUNITY_PARTNER_IDP="0oapv9i36yEMFLjxS0h7"
-                        export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="https://$appName.dev.ccs.guidewire.net/customers-login"
+                        export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="$docportalBaseUrl/customers-login"
                         export CUSTOMERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
                         export GW_COMMUNITY_CUSTOMER_IDP="0oau503zlhhFLwTqF0h7"
                         export TAG_VERSION="latest-$appName"
-                        export DEPLOY_ENV="dev"
-                        export OKTA_ACCESS_TOKEN_ISSUER="https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"
+                        export DEPLOY_ENV="$deployEnv"
+                        export OKTA_ACCESS_TOKEN_ISSUER="$oktaIssuer"
                         export OKTA_ACCESS_TOKEN_ISSUER_APAC="issuerNotConfigured"
                         export OKTA_ACCESS_TOKEN_ISSUER_EMEA="issuerNotConfigured"
-                        export OKTA_DOMAIN="https://guidewire-hub.oktapreview.com"
+                        export OKTA_DOMAIN="$oktaDomain"
                         export OKTA_IDP="0oamwriqo1E1dOdd70h7"
-                        export APP_BASE_URL="https://$appName.dev.ccs.guidewire.net"
+                        export APP_BASE_URL="$docportalBaseUrl"
                         export FRONTEND_URL="http://docportal-frontend.doctools:6006"
-                        export ELASTIC_SEARCH_URL="https://docsearch-doctools.dev.ccs.guidewire.net"
-                        export DOC_S3_URL="https://docportal-content.dev.ccs.guidewire.net"
+                        export ELASTIC_SEARCH_URL="$elasticsearchUrl"
+                        export DOC_S3_URL="$docS3url"
                         export PORTAL2_S3_URL="https://portal2-content.omega2-andromeda.guidewire.net"
                         export REQUESTS_MEMORY="500M"
                         export REQUESTS_CPU="100m"
@@ -2638,60 +2698,6 @@ object Server {
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
 
-        if (arrayOf(
-                GwDeployEnvs.STAGING.envName, GwDeployEnvs.PROD.envName
-            ).contains(deployEnv)
-        ) {
-            deployServerBuildType.vcs.branchFilter = "+:<default>"
-            deployServerBuildType.params.text(
-                "TAG_VERSION",
-                "",
-                label = "Deploy Version",
-                display = ParameterDisplay.PROMPT,
-                regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""",
-                validationMessage = "Invalid SemVer Format"
-            )
-            if (arrayOf(GwDeployEnvs.PROD.envName).contains(deployEnv)) {
-                val publishServerDockerImageToEcrStep =
-                    GwBuildSteps.createPublishServerDockerImageToProdEcrStep(tagVersion)
-                deployServerBuildType.steps.step(publishServerDockerImageToEcrStep)
-                deployServerBuildType.steps.stepsOrder.add(0, publishServerDockerImageToEcrStep.id.toString())
-            }
-        }
-
-        if (arrayOf(GwDeployEnvs.DEV.envName).contains(deployEnv)) {
-            val buildAndPublishServerDockerImageStep =
-                ScriptBuildStep {
-                    name = "Build and publish server Docker Image to DEV ECR"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                #!/bin/bash 
-                set -xe
-                
-                # Log into the dev ECR, build and push the image
-                $awsEnvVars
-                
-                export TAG_VERSION=$tagVersion
-                export DEPT_CODE=${GwAtmosLabels.DEPT_CODE.labelValue}
-                export POD_NAME=${GwAtmosLabels.POD_NAME.labelValue}
-
-                set +x
-                docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
-                set -x
-                docker build -t ${GwDockerImages.DOC_PORTAL.imageUrl}:${tagVersion} ./server \
-                --build-arg TAG_VERSION \
-                --build-arg NPM_AUTH_TOKEN \
-                --build-arg DEPT_CODE \
-                --build-arg POD_NAME
-                docker push ${GwDockerImages.DOC_PORTAL.imageUrl}:${tagVersion}
-            """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters =
-                        "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
-                }
-            deployServerBuildType.steps.step(buildAndPublishServerDockerImageStep)
-            deployServerBuildType.steps.stepsOrder.add(0, buildAndPublishServerDockerImageStep.id.toString())
             deployServerBuildType.triggers {
                 vcs {
                     triggerRules = """
@@ -2700,7 +2706,6 @@ object Server {
                     """.trimIndent()
                 }
             }
-        }
         return deployServerBuildType
     }
 
