@@ -54,7 +54,11 @@ CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/cu
 
 ## Start the services
 
-1. Open a new terminal window and start the database by running `./start_docportal_db_container.sh`.
+1. Open a new terminal window and start the database by running:
+    ```
+    cd server
+    ./start_docportal_db_container.sh
+    ```
 2. Open a new terminal window and start the server by running `yarn server-dev`.
 3. Open a new terminal window, export environment variables and load configs into the database by running:
    ```
