@@ -112,6 +112,8 @@ app.use('/alive', (req, res, next) => {
   res.sendStatus(200);
 });
 
+app.use(express.json());
+app.use('/jira', jiraRouter);
 app.use('/gw-login', gwLoginRouter);
 app.use('/gw-logout', gwLogoutRouter);
 app.use('/partners-login', partnersLoginRouter);
@@ -136,7 +138,6 @@ app.use(authGateway);
 const getPage = require('./controllers/frontendController').getPage;
 app.use(getPage);
 
-app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
@@ -148,7 +149,6 @@ app.use('/search', searchRouter);
 app.use('/404', missingPageRouter);
 app.use('/userInformation', userRouter);
 app.use('/safeConfig', configRouter);
-app.use('/jira', jiraRouter);
 app.use('/lrs', lrsRouter);
 app.use('/recommendations', recommendationsRouter);
 app.use('/support', supportRouter);
