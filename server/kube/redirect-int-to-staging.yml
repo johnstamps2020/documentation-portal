@@ -94,6 +94,7 @@ metadata:
 spec:
   profiles:
     - name: Default
+      internal_only: true
       response_transformer:
         add:
           headers:
