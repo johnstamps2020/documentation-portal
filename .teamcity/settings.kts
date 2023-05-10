@@ -2167,7 +2167,7 @@ object Server {
                 buildType(createDeployServerBuildType(it.envName))
             }
             arrayOf(
-                GwDeployEnvs.DEV
+                GwDeployEnvs.DEV, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createDeployDbEnabledServerBuildType(it.envName))
             }
