@@ -2628,7 +2628,7 @@ object Server {
                         export CUSTOMERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
                         export GW_COMMUNITY_CUSTOMER_IDP="0oau503zlhhFLwTqF0h7"
                         export TAG_VERSION="latest-$appName"
-                        export DEPLOY_ENV="$deployEnv"
+                        export DEPLOY_ENV="$atmosDeployEnv"
                         export OKTA_ACCESS_TOKEN_ISSUER="$oktaIssuer"
                         export OKTA_ACCESS_TOKEN_ISSUER_APAC="issuerNotConfigured"
                         export OKTA_ACCESS_TOKEN_ISSUER_EMEA="issuerNotConfigured"
