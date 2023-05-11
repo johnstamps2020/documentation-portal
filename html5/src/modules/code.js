@@ -16,3 +16,11 @@ export function normalizeCode() {
     }
   }
 }
+
+export function highlightCode() {
+  const codeBlocks = document.querySelectorAll('pre');
+
+  if (codeBlocks.length > 0) {
+    Prism.highlightAll();
+  }
+}

@@ -85,10 +85,8 @@ function insertFold(inputBuffer, depth, context) {
 // takes a code element and begins recursion if it's a parsable format
 function insertFolds(codeElement) {
   const parseable =
-    Array.from(codeElement.classList).find(
-      (cls) =>
-        cls.endsWith('json') || cls.endsWith('js') || cls.endsWith('javascript')
-    ) !== undefined;
+    Array.from(codeElement.classList).find((cls) => cls.endsWith('json')) !==
+    undefined;
 
   if (parseable) {
     const inputBuffer = codeElement.innerText.split('');
