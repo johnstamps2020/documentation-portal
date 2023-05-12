@@ -1,12 +1,18 @@
 {
-    "$schema": "../config-schema.json",
-    "sources": [
-      {
-        "id": "ketisrc",
-        "title": "Keti Cloud Common Auth",
-        "gitUrl": "ssh://git@stash.guidewire.com/ccs/keti-docs.git",
-        "branch": "main"
-      }
-    ]
-  }
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "ketisrc",
+      "title": "Keti Cloud Common Auth",
+      "gitUrl": "ssh://git@stash.guidewire.com/ccs/keti-docs.git",
+      "branch": "main"
+    },
+    {
+      "id": "dmasrc",
+      "title": "DMA - Database migration to Aurora",
+      "gitUrl": "ssh://git@stash.guidewire.com/kdc/dma-docs.git",
+      "branch": "master"
+    }
+  ]
+}
   
