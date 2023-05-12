@@ -75,7 +75,9 @@ trailingSlash: false,
 </RightWrong>
 
 Do not use this setting when posting to docs.guidewire.com. It breaks S3 file
-hosting. Leave `trailingSlash` undefined, or set it to `true`.
+hosting. Leave `trailingSlash` undefined, or set it to `true`. If
+`trailingSlash` is not defined in your settings, there is no need to add it, as
+it defaults to `true`.
 
 ## Setup access to the @doctools scope in Artifactory (first time only)
 
