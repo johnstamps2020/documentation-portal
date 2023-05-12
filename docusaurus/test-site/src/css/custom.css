@@ -26,7 +26,3 @@
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
-
-.alert a {
-  text-decoration-thickness: 0.15em;
-}

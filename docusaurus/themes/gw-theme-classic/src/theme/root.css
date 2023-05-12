@@ -154,3 +154,7 @@ h6 {
 .medium-zoom-image--opened {
   z-index: 9999;
 }
+
+.alert a {
+  text-decoration-thickness: 0.15em;
+}
