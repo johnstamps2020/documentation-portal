@@ -17,6 +17,7 @@ export function DocContextProvider(props: DocContextProviderProps) {
     useState<DocContextInterface['isEarlyAccess']>(false);
   const [searchMeta, setSearchMeta] =
     useState<DocContextInterface['searchMeta']>(undefined);
+  const [authors, setAuthors] = useState<DocContextInterface['authors']>([]);
 
   return (
     <DocContext.Provider
@@ -31,6 +32,8 @@ export function DocContextProvider(props: DocContextProviderProps) {
         setIsEarlyAccess,
         searchMeta,
         setSearchMeta,
+        authors,
+        setAuthors,
       }}
     >
       {props.children}

@@ -127,6 +127,8 @@ declare module '@theme/DocContext' {
     setIsEarlyAccess: React.Dispatch<boolean>;
     searchMeta: SearchMeta;
     setSearchMeta: React.Dispatch<SearchMeta>;
+    authors: string[];
+    setAuthors: React.Dispatch<string[]>;
   }
 
   export type DocContextProviderProps = {

@@ -7,7 +7,7 @@ import { useDocContext } from '@theme/DocContext';
 export default function Footer(props) {
   // Context
   const isBrowser = useIsBrowser();
-  const { userInformation, searchMeta } = useDocContext();
+  const { userInformation, searchMeta, authors } = useDocContext();
 
   const jiraApiUrl =
     process.env.NODE_ENV === 'development'
@@ -43,6 +43,7 @@ export default function Footer(props) {
           title={title}
           url={url}
           userInformation={userInformation}
+          possibleContacts={authors.join(', ')}
         />
       </div>
       <InitialDocItemFooter {...props} />

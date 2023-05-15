@@ -5,6 +5,7 @@ import mockUserData from '@theme/mockUserData';
 import { versionSelectorMockup } from './versionSelectorMockup';
 import { PluginData, SearchMeta } from '@theme/Types';
 import { PLUGIN_NAME } from '../../types/constants';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 export default function Init(props) {
   const {
@@ -13,7 +14,11 @@ export default function Init(props) {
     setIsInternal,
     setIsEarlyAccess,
     setSearchMeta,
+    setAuthors,
   } = useDocContext();
+  const context = useDocusaurusContext();
+  const { siteConfig } = context;
+  const configuredAuthors = siteConfig.customFields?.authors || [];
   const { gwDocId } = usePluginData(PLUGIN_NAME) as PluginData;
   const isDevelopment = process.env.NODE_ENV === 'development';
 
@@ -32,6 +37,7 @@ export default function Init(props) {
       subject: ['Integration'],
     });
     setAvailableVersions(versionSelectorMockup);
+    setAuthors(configuredAuthors);
   }
 
   async function fetchUserInformation() {
@@ -103,6 +109,7 @@ export default function Init(props) {
       fetchUserInformation();
       fetchAvailableVersions();
       fetchDocMetadata();
+      setAuthors(configuredAuthors);
     }
   }
 
