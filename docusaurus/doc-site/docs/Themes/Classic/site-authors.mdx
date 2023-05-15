@@ -1,3 +1,19 @@
 # Site authors
 
-To configure site authors...
+When the feedback mechanism creates a Jira in response to a user clicking a thumbs-up or thumbs-down button, site author information is added to the jira if it exists. Site authors are email addresses that are added to the Jira as **Possible contacts**.
+To add site authors:
+
+1. Open `docusaurus.config.js`.
+1. Within `module.exports` add a `customFields` object if one does not yet exist. If there already is a `customFields` object, proceed to the next step.
+1. Add an `authors` array to `customFields`.
+1. Add email addresses to the `authors` array.
+
+For example:
+```json
+module.exports {
+  ...
+  customFields {
+    authors: ['mgilster@guidewire.com', 'pkowaluk@gidewire.com']
+  }
+}  
+
