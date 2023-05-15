@@ -9,15 +9,15 @@ Check that you are using version 2.0.76 or newer of `gw-theme-classic`:
 
 To add site authors:
 1. Open `docusaurus.config.js`.
-1. Within `module.exports` add a `customFields` object if one does not yet exist. If there already is a `customFields` object, proceed to the next step.
+1. Within the `config` object set to `module.exports`, add a `customFields` object if one does not yet exist. If there already is a `customFields` object, proceed to the next step.
 1. Add an `authors` array to `customFields`.
 1. Add email addresses to the `authors` array.
 
 For example:
 ```json
-module.exports {
+config {
   ...
-  customFields {
+  customFields: {
     authors: ['mgilster@guidewire.com', 'pkowaluk@gidewire.com']
   }
 }  
