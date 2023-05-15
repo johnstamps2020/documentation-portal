@@ -1,0 +1,47 @@
+[
+  {
+    "bucketName": "tenant-doctools-dev-builds",
+    "tags": [
+      {
+        "Key": "gwcp:v1:tenant:app-name",
+        "Value": "docportal-content"
+      }
+    ]
+  },
+  {
+    "bucketName": "tenant-doctools-staging-builds",
+    "tags": [
+      {
+        "Key": "gwcp:v1:tenant:app-name",
+        "Value": "docportal-content"
+      }
+    ]
+  },
+  {
+    "bucketName": "tenant-doctools-dma-docs",
+    "tags": [
+      {
+        "Key": "gwcp:v1:tenant:app-name",
+        "Value": "dma-docs"
+      }
+    ]
+  },
+  {
+    "bucketName": "tenant-doctools-jutrodocs",
+    "tags": [
+      {
+        "Key": "gwcp:v1:tenant:app-name",
+        "Value": "jutro-docs-content"
+      }
+    ]
+  },
+  {
+    "bucketName": "tenant-doctools-dev-terraform",
+    "tags": [
+      {
+        "Key": "gwcp:v1:tenant:app-name",
+        "Value": "docportal-app"
+      }
+    ]
+  }
+]

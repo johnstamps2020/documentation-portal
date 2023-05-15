@@ -1538,7 +1538,7 @@ object Content {
                         
                         echo ${'$'}(kubectl get pods --namespace=${namespace})
                         
-                        eval "echo \"${'$'}(cat s3/kube/service-gateway-config.yml)\"" > ${'$'}TMP_DEPLOYMENT_FILE
+                        eval "echo \"${'$'}(cat aws/s3/kube/service-gateway-config.yml)\"" > ${'$'}TMP_DEPLOYMENT_FILE
                                                 
                         kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${namespace}
                     """.trimIndent()
@@ -1551,7 +1551,7 @@ object Content {
             triggers {
                 vcs {
                     triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:s3/kube/service-gateway-config.yml
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:aws/s3/kube/service-gateway-config.yml
                         -:user=doctools:**
                         """.trimIndent()
                 }
