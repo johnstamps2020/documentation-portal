@@ -31,20 +31,29 @@ export async function addBookLinks() {
         const link = document.createElement('a');
 
         if (contextid) {
-          //targetUrl = targetUrl.concat('/?contextId=', contextid);
-          const topicUrl = await getTopicUrl(docInfo.url, contextid);
+          let topicTitle;
+          let topicUrl = await getTopicUrl(docInfo.url, contextid);
+          
           if (topicUrl) {
             targetUrl = targetUrl.concat(`/${topicUrl}`);
-            const topicTitle = await getTopicTitle(targetUrl);
-            if (topicTitle) {
-              if (document.documentElement.lang.toLowerCase() === 'en-us') {
-                link.setAttribute('title', `"${topicTitle}" in the ${docTitle}`);
-              }
-              else {
-                link.setAttribute('title', topicTitle);
-              }
-            } 
+            topicTitle = await getTopicTitle(targetUrl);
           }
+          else {
+            const targetTestUrl = targetUrl.concat(`/${contextid}`);
+            topicTitle = await getTopicTitle(targetTestUrl);
+            if (topicTitle) {
+              targetUrl = targetTestUrl; 
+            }
+          }
+          
+          if (topicTitle) {
+            if (document.documentElement.lang.toLowerCase() === 'en-us') {
+              link.setAttribute('title', `"${topicTitle}" in ${docTitle}`);
+            }
+            else {
+              link.setAttribute('title', topicTitle);
+            }
+          } 
         }
 
         link.setAttribute('href', targetUrl);
