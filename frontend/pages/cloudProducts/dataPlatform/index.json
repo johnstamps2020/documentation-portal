@@ -31,6 +31,16 @@
           "id": "dataplatform"
         }
       ]
+    },
+    {
+      "label": "Internal Documentation",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Data Access",
+          "id": "clouddataaccessinternal"
+        }
+      ]
     }
   ]
 }
