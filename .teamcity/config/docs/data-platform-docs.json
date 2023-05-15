@@ -70,6 +70,24 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "clouddataaccessinternal",
+      "title": "Cloud Data Access Internal",
+      "url": "internal/cloud/cda/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Data Platform"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
   ]
 }

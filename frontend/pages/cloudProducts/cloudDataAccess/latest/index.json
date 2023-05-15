@@ -21,6 +21,10 @@
         {
           "label": "Application Guide",
           "id": "clouddataaccessguide"
+        },
+        {
+          "label": "Internal Doc",
+          "id": "clouddataaccessinternal"
         }
       ]
     }
