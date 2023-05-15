@@ -86,5 +86,9 @@ const siteTitle = 'Guidewire Docusaurus Test Site';
     ],
 
     themes: ['@doctools/gw-theme-classic'],
+
+    customFields: {
+      authors: ['mgilster@guidewire.com', 'pkowaluk@gidewire.com'],
+    },
   }
 );
