@@ -1,0 +1,32 @@
+[
+  {
+    "repoName": "tenant-doctools-docportal",
+    "resourceArn": "arn:aws:ecr:us-west-2:627188849628:repository/tenant-doctools-docportal",
+    "tags": [
+      {
+        "Key": "gwcp:v1:tenant:app-name",
+        "Value": "docportal-app"
+      }
+    ]
+  },
+  {
+    "repoName": "tenant-doctools-docportal-frontend",
+    "resourceArn": "arn:aws:ecr:us-west-2:627188849628:repository/tenant-doctools-docportal-frontend",
+    "tags": [
+      {
+        "Key": "gwcp:v1:tenant:app-name",
+        "Value": "docportal-frontend"
+      }
+    ]
+  },
+  {
+    "repoName": "tenant-doctools-jutro-home-server",
+    "resourceArn": "arn:aws:ecr:us-west-2:627188849628:repository/tenant-doctools-jutro-home-server",
+    "tags": [
+      {
+        "Key": "gwcp:v1:tenant:app-name",
+        "Value": "jutro-docs-content"
+      }
+    ]
+  }
+]

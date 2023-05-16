@@ -1,0 +1,11 @@
+[
+  {
+    "secretId": "tenant-doctools-docportal",
+    "tags": [
+      {
+        "Key": "gwcp:v1:tenant:app-name",
+        "Value": "docportal-app"
+      }
+    ]
+  }
+]

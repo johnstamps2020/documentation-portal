@@ -1,0 +1,22 @@
+[
+  {
+    "repoName": "tenant-doctools-docportal",
+    "resourceArn": "arn:aws:ecr:us-east-1:954920275956:repository/tenant-doctools-docportal",
+    "tags": [
+      {
+        "Key": "gwcp:v1:tenant:app-name",
+        "Value": "docportal-app"
+      }
+    ]
+  },
+  {
+    "repoName": "tenant-doctools-docportal-frontend",
+    "resourceArn": "arn:aws:ecr:us-east-1:954920275956:repository/tenant-doctools-docportal-frontend",
+    "tags": [
+      {
+        "Key": "gwcp:v1:tenant:app-name",
+        "Value": "docportal-frontend"
+      }
+    ]
+  }
+]
