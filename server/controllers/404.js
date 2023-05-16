@@ -3,11 +3,11 @@ const { getLatestVersionUrl } = require('./configController');
 const redirectUrls = [
   {
     from: 'cloud/cda/banff',
-    to: 'cloudProducts/cloudDataAccess/latest',
+    to: 'cloudProducts/dataPlatform',
   },
   {
     from: 'cloud/cda/aspen',
-    to: 'cloudProducts/cloudDataAccess/latest',
+    to: 'cloudProducts/dataPlatform',
   },
   {
     from: 'cloud/restapi/latest/release-notes',
@@ -210,18 +210,6 @@ const redirectUrls = [
     to: 'cloud/is/202104/gosu',
   },
   {
-    from: 'cloud/bc/integration/latest',
-    to: 'cloud/bc/202104/integration',
-  },
-  {
-    from: 'cloud/cc/integration/latest',
-    to: 'cloud/cc/202104/integration',
-  },
-  {
-    from: 'cloud/pc/integration/latest',
-    to: 'cloud/pc/202104/integration',
-  },
-  {
     from: 'cloud/in/20202/config/2020.2.x/active/ConfigurationGuide/CloudCommonPaymentService/c_CloudCommonPaymentServiceconfiguration.html',
     to: 'cloud/in/20211/config/2021.1.x/ConfigurationGuide/c_payment-config.html',
   },
@@ -256,6 +244,10 @@ const redirectUrls = [
   {
     from: 'cloud/testingframeworks/202111/api/gw-api/topics/c_overview.html%20',
     to: 'cloud/testingframeworks/202111/api/gw-api/topics/c_overview.html',
+  },
+  {
+    from: 'cloudProducts/cloudDataAccess/latest',
+    to: 'cloud/cda/guide/latest',
   },
 ];
 
