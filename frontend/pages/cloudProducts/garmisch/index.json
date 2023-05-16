@@ -53,11 +53,7 @@
         },
         {
           "label": "Data Platform",
-          "id": "dataplatform"
-        },
-        {
-          "label": "Cloud Data Access",
-          "page": "../cloudDataAccess/latest"
+          "page": "../dataPlatform"
         },
         {
           "label": "Workflow Service (Early Access)",
