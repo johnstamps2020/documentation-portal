@@ -2,6 +2,23 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "isconfigupgradetools460",
+      "title": "InsuranceSuite Configuration Upgrade Tools",
+      "url": "isconfigupgradetools/460",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": ["4.6.0"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "isconfigupgradetools450",
       "title": "InsuranceSuite Configuration Upgrade Tools",
       "url": "isconfigupgradetools/450",
