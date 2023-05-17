@@ -219,7 +219,7 @@
     },
     {
       "id": "indevguidejava11ext",
-      "title": "Developers Setup",
+      "title": "Developer Setup",
       "url": "cloud/in/devsetupjava11ext",
       "metadata": {
         "platform": ["Cloud"],
@@ -237,7 +237,7 @@
     },
     {
       "id": "indevguidejava11draft",
-      "title": "Developers Setup - Internal",
+      "title": "Developer Setup - Internal",
       "url": "cloud/in/devsetupjava11",
       "metadata": {
         "platform": ["Cloud"],
