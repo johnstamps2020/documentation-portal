@@ -1,33 +1,30 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "Start DocPortal DB Container",
-			"type": "shell",
-			"command": "./server/start_docportal_db_container.sh",
-			"isBackground": true,
-			"problemMatcher": {
-				"owner": "custom",
-				"fileLocation": [
-					"relative",
-					"${workspaceFolder}"
-				],
-				"pattern": {
-					"regexp": "^.* (ERROR):\\s+(.*)$",
-					"message": 2,
-					"severity": 1
-				},
-				"background": {
-					"activeOnStart": true,
-					"beginsPattern": "^.* database system is ready to accept connections",
-					"endsPattern": "^.* database system is shut down"
-				}
-			}
-		},
-		{
-			"label": "Set server variables from .env",
-			"type": "shell",
-			"command": "set -a && source server/.env",
-		}
-	]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start DocPortal DB Container",
+      "type": "shell",
+      "command": "./server/start_docportal_db_container.sh",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "custom",
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "pattern": {
+          "regexp": "^.* (ERROR):\\s+(.*)$",
+          "message": 2,
+          "severity": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.* database system is ready to accept connections",
+          "endsPattern": "^.* database system is shut down"
+        }
+      }
+    },
+    {
+      "label": "Set server variables from .env",
+      "type": "shell",
+      "command": "set -a && source server/.env"
+    }
+  ]
 }

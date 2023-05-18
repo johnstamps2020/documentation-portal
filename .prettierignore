@@ -7,5 +7,7 @@
 build
 out
 dist
+/server/kube
+/server/static
 
 *.log

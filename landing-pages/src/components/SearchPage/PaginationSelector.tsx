@@ -27,7 +27,7 @@ export default function PaginationSelector() {
   if (isError) {
     return null;
   }
-  
+
   if (isLoading || !searchData) {
     return (
       <Skeleton variant="rectangular" sx={{ width: '80px', height: '40px' }} />

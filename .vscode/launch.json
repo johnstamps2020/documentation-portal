@@ -10,7 +10,7 @@
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "type": "node-terminal",
-      "preLaunchTask": "Start DocPortal DB Container",
+      "preLaunchTask": "Start DocPortal DB Container"
     },
     {
       "name": "Landing Pages DEV",
