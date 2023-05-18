@@ -1,6 +1,5 @@
 .idea
 .teamcity
-.vscode
 .yarn
 /apps
 /frontend
@@ -8,5 +7,7 @@
 build
 out
 dist
+/server/kube
+/server/static
 
 *.log
