@@ -118,5 +118,9 @@
   "collapsible.title": {
     "message": "Expand",
     "description": "Describes an accordion that contains \"more content\" or \"additional information\""
+  },
+  "footer.published": {
+    "message": "Published:",
+    "description": "Text preceding the date on which the page was published"
   }
 }
