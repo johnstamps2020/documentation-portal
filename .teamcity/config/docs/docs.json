@@ -19,6 +19,23 @@
       "earlyAccess": false
     },
     {
+      "id": "livepredictpost7x",
+      "title": "Predict Post-7x",
+      "url": "cloud/predict/post7x",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Predict"],
+        "version": ["latest"],
+        "release": ["Hakuba"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "comparelatest",
       "title": "Compare",
       "url": "cloud/compare/latest",
