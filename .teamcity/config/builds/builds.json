@@ -325,11 +325,19 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
+      "filter": "Predict-7x.ditaval",
       "root": "A_Map01_7x.ditamap",
       "indexRedirect": true,
       "srcId": "livepredictsrc",
       "docId": "livepredictlatest"
+    },
+    {
+      "buildType": "dita",
+      "filter": "Predict-post7x.ditaval",
+      "root": "A_Map01_7x.ditamap",
+      "indexRedirect": true,
+      "srcId": "livepredictsrc",
+      "docId": "livepredictpost7x"
     },
     {
       "buildType": "dita",
