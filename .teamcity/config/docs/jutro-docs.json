@@ -1609,8 +1609,9 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["8.10.0"],
-        "subject": ["Best practices"]
+        "version": ["8.10.0 LTS"],
+        "subject": ["Best practices"],
+        "release": ["Hakuba"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -1627,7 +1628,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.10.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "release": ["Hakuba"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
