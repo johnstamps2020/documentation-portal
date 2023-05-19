@@ -1,0 +1,59 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "iscc202302ipjreleasenotesjaJP",
+      "title": "IPJ ReleaseNotes ja-JP",
+      "url": "cloud/cc/ja-JP/202302ipj/IPJReleaseNotesjaJP",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.02ipj"],
+        "release": ["Elysian"],
+        "subject": ["ReleaseNotes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202302ipjappjaJP",
+      "title": "IPJ Application Guide ja-JP",
+      "url": "cloud/cc/ja-JP/202302ipj/IPJApplicationGuidejaJP",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.02ipj"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202302ipjconfigjaJP",
+      "title": "IPJ Configuration Guide ja-JP",
+      "url": "cloud/cc/ja-JP/202302ipj/IPJConfigurationGuidejaJP",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.02ipj"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

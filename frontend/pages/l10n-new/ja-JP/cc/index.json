@@ -4,6 +4,24 @@
   "class": "threeCards",
   "items": [
     {
+      "label": "2023.02IPJ Japan Package",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "アプリケーションガイド",
+          "id": "iscc202302ipjappjaJP"
+        },
+        {
+          "label": "コンフィギュレーションガイド",
+          "id": "iscc202302ipjconfigjaJP"
+        },
+        {
+          "label": "ClaimCenter Package for Japan for Guidewire Cloud リリースノート",
+          "id": "iscc202302ipjreleasenotesjaJP"
+        }
+      ]
+    },
+    {
       "label": "2022.09",
       "class": "categoryCard cardShadow",
       "items": [
