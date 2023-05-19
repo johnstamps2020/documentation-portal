@@ -2,7 +2,7 @@ import { addHashLinks } from './hashLink';
 import { highlightTextFromUrl, addHighlightToggle } from './highlight';
 import { addPdfLink } from './pdflink';
 import React, { useEffect, useState } from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import '../stylesheets/modules/minitoc.css';
 import { translate } from '@theme/Translate';
 
@@ -11,11 +11,9 @@ async function getPlatformBreadcrumb() {
     .querySelector("meta[name='gw-doc-id']")
     ?.getAttribute('content');
   try {
-    const response = await fetch(
-      `/safeConfig/docMetadata/${docId}`
-    );
+    const response = await fetch(`/safeConfig/docMetadata/${docId}`);
     const jsonResponse = await response.json();
-    
+
     if (jsonResponse.platform?.length > 1) {
       return;
     }
@@ -23,17 +21,16 @@ async function getPlatformBreadcrumb() {
     let releaseText;
     if (jsonResponse.platform[0] === 'Cloud') {
       if (jsonResponse.release && jsonResponse.release.length === 1) {
-        releaseText = jsonResponse.release[0]
-        releaseLink = `/cloudProducts/${jsonResponse.release[0].toLowerCase()}`
-      }
-      else {
+        releaseText = jsonResponse.release[0];
+        releaseLink = `/cloudProducts/${jsonResponse.release[0].toLowerCase()}`;
+      } else {
         releaseText = 'Cloud';
         releaseLink = '/cloudProducts';
       }
     }
     if (jsonResponse.platform[0] === 'Self-managed') {
       releaseText = 'Self-managed';
-      releaseLink = '/selfManagedProducts';   
+      releaseLink = '/selfManagedProducts';
     }
     const platformBreadcrumb = {
       text: releaseText,
@@ -459,7 +456,8 @@ function addMiniToc(hashLinks: Element[]) {
 
   const main = document.querySelector('main');
   main.prepend(miniTocContainer);
-  render(<MiniToc hashLinks={hashLinks} />, miniTocContainer);
+  const miniTocRoot = createRoot(miniTocContainer);
+  miniTocRoot.render(<MiniToc hashLinks={hashLinks} />);
 
   const spacer = document.createElement('div');
   spacer.classList.add('spacer');

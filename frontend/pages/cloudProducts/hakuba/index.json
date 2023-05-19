@@ -99,6 +99,10 @@
           "id": "livepredictlatest"
         },
         {
+          "label": "Predict (Post-7x)",
+          "id": "livepredictpost7x"
+        },
+        {
           "label": "Cyence Cyber",
           "page": "../cyence"
         },
