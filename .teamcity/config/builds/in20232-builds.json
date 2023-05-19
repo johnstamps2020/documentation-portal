@@ -60,14 +60,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "CommonFunctionalityConfigurationReference.ditamap",
-      "srcId": "in20232",
-      "docId": "in20232commonconfig",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "Studio.ditamap",
       "srcId": "in20232",
       "docId": "in20232studio",

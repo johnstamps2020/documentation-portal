@@ -128,24 +128,6 @@
       "earlyAccess": false
     },
     {
-      "id": "in20232commonconfig",
-      "title": "Common Functionality Configuration Reference - Internal",
-      "url": "cloud/in/20232/commonconfig",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2023.2"],
-        "subject": ["Configuration"],
-        "release": ["Hakuba"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": true,
-      "earlyAccess": false
-    },
-    {
       "id": "in20232studio",
       "title": "Studio Configuration Guide",
       "url": "cloud/in/20232/studioconfig",
