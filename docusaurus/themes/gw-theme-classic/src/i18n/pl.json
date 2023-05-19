@@ -113,7 +113,7 @@
   },
   "miniToc.heading": {
     "message": "Na stronie",
-    "description": "Appears at the top of a list of links heading which the suer can see on the page. Each item on the list is a link."
+    "description": "Appears at the top of a list of links heading which the user can see on the page. Each item on the list is a link."
   },
   "collapsible.title": {
     "message": "Rozwiń",
