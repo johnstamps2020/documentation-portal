@@ -5,7 +5,7 @@
       "id": "iscc202302ipjjaJPsrc",
       "title": "IS 2023.02 ClaimCenter IPJ ja-JP",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipj.git",
-      "branch": "build/ja-JP/1.0revised"
+      "branch": "release/ja-JP/2023.02"
     }
   ]
 }

@@ -4,7 +4,7 @@
     {
       "id": "iscc202302ipjreleasenotesjaJP",
       "title": "IPJ ReleaseNotes ja-JP",
-      "url": "cloud/cc/ja-JP/202302ipj/IPJReleaseNotesjaJP",
+      "url": "ja-JP/ipj/202302/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
@@ -22,7 +22,7 @@
     {
       "id": "iscc202302ipjappjaJP",
       "title": "IPJ Application Guide ja-JP",
-      "url": "cloud/cc/ja-JP/202302ipj/IPJApplicationGuidejaJP",
+      "url": "ja-JP/ipj/202302/app",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
@@ -40,7 +40,7 @@
     {
       "id": "iscc202302ipjconfigjaJP",
       "title": "IPJ Configuration Guide ja-JP",
-      "url": "cloud/cc/ja-JP/202302ipj/IPJConfigurationGuidejaJP",
+      "url": "ja-JP/ipj/202302/config",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
