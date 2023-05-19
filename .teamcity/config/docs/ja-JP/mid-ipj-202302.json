@@ -10,7 +10,7 @@
         "product": ["ClaimCenter"],
         "version": ["2023.02ipj"],
         "release": ["Elysian"],
-        "subject": ["ReleaseNotes"]
+        "subject": ["Release notes"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
