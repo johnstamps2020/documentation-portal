@@ -20,6 +20,9 @@ Create a `server/.env` file with the following variables:
 > IMPORTANT: Private keys and other sensitive data are not listed below, so you
 > need to get them from Password Vault or AWS Secrets Manager.
 
+> IMPORTANT: If you use docker compose for running the local dev environment, you need to set different values for 
+> the following variables: CONFIG_DB_HOST=db, FRONTEND_URL=http://landing-pages:6006
+
 ```
 OKTA_CLIENT_ID=
 OKTA_CLIENT_SECRET=
@@ -54,6 +57,11 @@ CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/cu
 ```
 
 ## Start the services
+
+## Docker compose
+
+If you use IntelliJ IDEA, run the "Compose local dev environment" configuration.
+If you use the terminal, run this command in the root folder of the project: `docker compose -f .dev/compose-local-dev-env.yml up`
 
 ## VS Code
 

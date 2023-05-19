@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  server:
+    networks:
+      - docportal_network
+    image: artifactory.guidewire.com/hub-docker-remote/node:16.14.2
+    container_name: server
+    restart: always
+    ports:
+      - "8081:8081"
+    volumes:
+      - ..:/usr/app
+    working_dir: /usr/app
+    command: yarn server-dev
+    depends_on:
+      - db
+  landing-pages:
+    networks:
+      - docportal_network
+    image: artifactory.guidewire.com/hub-docker-remote/node:16.14.2
+    container_name: landing-pages
+    restart: always
+    ports:
+      - "6006:6006"
+    volumes:
+      - ..:/usr/app
+    working_dir: /usr/app
+    command: yarn landing-pages-dev
+  db:
+    networks:
+      - docportal_network
+    image: artifactory.guidewire.com/hub-docker-remote/postgres:14.1-alpine
+    container_name: db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: testtesttest
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+networks:
+  docportal_network:
+    driver: bridge
