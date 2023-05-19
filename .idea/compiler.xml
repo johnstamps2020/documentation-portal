@@ -9,8 +9,5 @@
         <module name="DocumentationTools_Documentationportal_dsl" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="DocumentationTools_Documentationportal_dsl" target="1.5" />
-    </bytecodeTargetLevel>
   </component>
 </project>
