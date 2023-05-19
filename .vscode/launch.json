@@ -1,0 +1,32 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Server DEV",
+      "command": "yarn dev:server",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "type": "node-terminal",
+      "preLaunchTask": "html5 DEV"
+    },
+    {
+      "name": "doc-site DEV",
+      "command": "yarn dev:doc-site",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "type": "node-terminal",
+      "preLaunchTask": "theme DEV"
+    },
+    {
+      "name": "test-site DEV",
+      "command": "yarn dev:test-site",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "type": "node-terminal",
+      "preLaunchTask": "plugin DEV"
+    }
+  ]
+}

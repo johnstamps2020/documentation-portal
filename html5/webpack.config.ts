@@ -67,6 +67,7 @@ const config: Configuration = {
   output: {
     path: getBuildPath(),
     publicPath: '',
+    clean: true,
   },
   module: {
     rules: [

@@ -1,0 +1,79 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "html5 DEV",
+      "type": "npm",
+      "script": "dev:html5",
+      "isBackground": true,
+      "dependsOn": ["theme DEV"],
+      "problemMatcher": {
+        "owner": "custom",
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "pattern": [
+          {
+            "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "message": 5
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*Successfully compiled .*",
+          "endsPattern": ".*webpack.*compiled with .*"
+        }
+      }
+    },
+    {
+      "label": "theme DEV",
+      "type": "npm",
+      "script": "dev:theme",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "custom",
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "pattern": [
+          {
+            "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "message": 5
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "endsPattern": ".*Successfully compiled .*",
+          "beginsPattern": ".*The watcher is ready.*"
+        }
+      }
+    },
+    {
+      "label": "plugin DEV",
+      "type": "npm",
+      "script": "dev:plugin",
+      "isBackground": true,
+      "dependsOn": ["theme DEV"],
+      "problemMatcher": {
+        "owner": "custom",
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "pattern": [
+          {
+            "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "message": 5
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "endsPattern": ".*Successfully compiled .*",
+          "beginsPattern": ".*The watcher is ready.*"
+        }
+      }
+    }
+  ]
+}

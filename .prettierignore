@@ -1,6 +1,5 @@
 .idea
 .teamcity
-.vscode
 .yarn
 /ci
 /frontend

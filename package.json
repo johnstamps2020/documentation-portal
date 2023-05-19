@@ -24,12 +24,12 @@
     "build:html5-offline": "yarn build:theme && yarn workspace html5 build-offline",
     "build:plugin": "yarn workspace @doctools/gw-plugin-redoc build",
     "build:theme": "yarn workspace @doctools/gw-theme-classic build",
-    "dev:doc-site": "NODE_ENV=development concurrently --kill-others-on-fail \"yarn dev:theme\" \"yarn workspace doc-site dev\"",
-    "dev:html5": "NODE_ENV=development concurrently --kill-others-on-fail \"yarn dev:theme\" \"yarn workspace html5 dev\"",
-    "dev:html5-offline": "NODE_ENV=development concurrently --kill-others-on-fail \"yarn dev:theme\" \"yarn workspace html5 dev-offline\"",
+    "dev:doc-site": "NODE_ENV=development yarn workspace doc-site dev",
+    "dev:html5": "NODE_ENV=development yarn workspace html5 dev",
+    "dev:html5-offline": "NODE_ENV=development yarn workspace html5 dev-offline",
     "dev:plugin": "NODE_ENV=development yarn build:plugin && yarn workspace @doctools/gw-plugin-redoc dev",
-    "dev:test-site": "NODE_ENV=development concurrently --kill-others-on-fail \"yarn dev:theme\" \"yarn workspace test-site dev\"",
-    "dev:theme": "NODE_ENV=development yarn build:theme && yarn workspace @doctools/gw-theme-classic dev",
+    "dev:test-site": "NODE_ENV=development yarn workspace test-site dev",
+    "dev:theme": "NODE_ENV=development yarn workspace @doctools/gw-theme-classic dev",
     "dev:server": "NODE_ENV=development yarn workspace server dev",
     "pages:test-site": "yarn build:plugin && yarn workspace test-site pages",
     "prettier": "prettier --write .",
@@ -46,9 +46,6 @@
     "json5": "^2.2.2",
     "got": "11.8.5",
     "trim": "1.0.1"
-  },
-  "dependencies": {
-    "concurrently": "7.6.0"
   },
   "devDependencies": {
     "prettier": "^2.8.4"
