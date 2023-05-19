@@ -112,15 +112,15 @@
     "description": "Text which appears in the search box, placeholder"
   },
   "miniToc.heading": {
-    "message": "このページで",
+    "message": "このページの内容",
     "description": "Appears at the top of a list of links heading which the user can see on the page. Each item on the list is a link."
   },
   "collapsible.title": {
-    "message": "拡大",
+    "message": "展開",
     "description": "Describes an accordion that contains \"more content\" or \"additional information\""
   },
   "footer.published": {
-    "message": "に公開されました",
+    "message": "公開日：",
     "description": "Text preceding the date on which the page was published"
   }
 }
