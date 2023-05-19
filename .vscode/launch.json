@@ -11,6 +11,22 @@
       "cwd": "${workspaceFolder}",
       "type": "node-terminal",
       "preLaunchTask": "html5 DEV"
+    },
+    {
+      "name": "doc-site DEV",
+      "command": "yarn dev:doc-site",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "type": "node-terminal",
+      "preLaunchTask": "theme DEV"
+    },
+    {
+      "name": "test-site DEV",
+      "command": "yarn dev:test-site",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "type": "node-terminal",
+      "preLaunchTask": "plugin DEV"
     }
   ]
 }
