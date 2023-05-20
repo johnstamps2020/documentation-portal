@@ -2,7 +2,7 @@ import { addHashLinks } from './hashLink';
 import { highlightTextFromUrl, addHighlightToggle } from './highlight';
 import { addPdfLink } from './pdflink';
 import React, { useEffect, useState } from 'react';
-import { createRoot } from 'react-dom/client';
+import { render } from 'react-dom';
 import '../stylesheets/modules/minitoc.css';
 import { translate } from '@theme/Translate';
 
@@ -456,8 +456,7 @@ function addMiniToc(hashLinks: Element[]) {
 
   const main = document.querySelector('main');
   main.prepend(miniTocContainer);
-  const miniTocRoot = createRoot(miniTocContainer);
-  miniTocRoot.render(<MiniToc hashLinks={hashLinks} />);
+  render(<MiniToc hashLinks={hashLinks} />, miniTocContainer);
 
   const spacer = document.createElement('div');
   spacer.classList.add('spacer');
