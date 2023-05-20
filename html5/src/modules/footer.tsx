@@ -1,5 +1,5 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import { render } from 'react-dom';
 import '../stylesheets/modules/footer.css';
 import Translate from '@theme/Translate';
 
@@ -39,6 +39,6 @@ export function addFooterContents(isOffline: boolean) {
 
   const footerCenter = document.getElementById('footerCenter');
   const pubDate = footerCenter.innerText.match(/Published: (.*)/)[1];
-  const footerCenterRoot = createRoot(footerCenter);
-  footerCenterRoot.render(<FooterPublicationDate publicationTime={pubDate} />);
+
+  render(<FooterPublicationDate publicationTime={pubDate} />, footerCenter);
 }
