@@ -2,6 +2,12 @@
 
 .teamcity/target/
 
+### Local dev env
+.dev/db/*
+!.dev/db/.gitkeep
+.dev/search/*
+!.dev/search/.gitkeep
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
