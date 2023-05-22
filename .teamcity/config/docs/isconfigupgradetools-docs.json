@@ -11,7 +11,7 @@
         "version": ["4.6.0"],
         "release": ["Dobson", "Elysian", "Flaine", "Garmisch"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
