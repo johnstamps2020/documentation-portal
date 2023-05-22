@@ -1,5 +1,7 @@
 import { writeFileSync } from 'fs';
 
+const timerName = 'Elapsed time';
+console.time(timerName);
 const oktaScopes = `${process.env.OKTA_SCOPES} NODE_Hawaii_Docs_Web.admin`;
 const base64ClientCreds = Buffer.from(
   `${process.env.OKTA_CLIENT_ID}:${process.env.OKTA_CLIENT_SECRET}`,
@@ -46,3 +48,6 @@ for (const entityType of ['source', 'doc', 'page']) {
     console.log(JSON.stringify(json));
   }
 }
+
+console.timeEnd(timerName);
+console.log('Done.');
