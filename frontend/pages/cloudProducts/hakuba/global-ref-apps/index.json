@@ -45,6 +45,28 @@
       ]
     },
     {
+      "label": "Japan",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ipjhakubarn"
+        },
+        {
+          "label": "Application Guide",
+          "id": "ipjhakubaapp"
+        },
+        {
+          "label": "Configuration",
+          "id": "ipjhakubaconfig"
+        },
+        {
+          "label": "Installation",
+          "id": "ipjhakubainstall"
+        }
+      ]
+    },
+    {
       "label": "London Market",
       "class": "categoryCard cardShadow",
       "items": [
