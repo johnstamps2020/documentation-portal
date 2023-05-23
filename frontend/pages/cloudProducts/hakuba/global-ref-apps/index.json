@@ -19,6 +19,32 @@
   },
   "items": [
     {
+      "label": "Australia",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ipahakubarn"
+        },
+        {
+          "label": "Application Guide",
+          "id": "ipahakubaapp"
+        },
+        {
+          "label": "Configuration",
+          "id": "ipahakubaconfig"
+        },
+        {
+          "label": "Installation",
+          "id": "ipahakubainstall"
+        },
+        {
+          "label": "Upgrade",
+          "id": "ipahakubaupgrade"
+        }
+      ]
+    },
+    {
       "label": "London Market",
       "class": "categoryCard cardShadow",
       "items": [
