@@ -13,56 +13,51 @@ import InternalPage from 'pages/InternalPage/InternalPage';
 import PageAdminPage from 'pages/PageAdminPage/PageAdminPage';
 import AdminPage from 'pages/AdminPage/AdminPage';
 
-const router = createBrowserRouter(
-  [
-    {
-      path: '/internal',
-      element: <InternalPage />,
-    },
-    {
-      path: '/forbidden',
-      element: <ForbiddenPage />,
-    },
-    {
-      path: '/404',
-      element: <FourOhFourPage />,
-    },
-    {
-      path: '/admin',
-      element: <AdminPage />,
-    },
-    {
-      path: '/admin/doc',
-      element: <DocAdminPage />,
-    },
-    {
-      path: '/admin/page',
-      element: <PageAdminPage />,
-    },
-    {
-      path: '/search',
-      element: <SearchPage />,
-    },
-    {
-      path: '/gw-login',
-      element: <LoginPage />,
-    },
-    {
-      path: '/support',
-      element: <SupportPage />,
-    },
-    {
-      path: '/root-breadcrumbs.json',
-    },
-    {
-      path: '/*',
-      element: <LandingPage />,
-    },
-  ],
+const router = createBrowserRouter([
   {
-    basename: '/landing',
-  }
-);
+    path: '/internal',
+    element: <InternalPage />,
+  },
+  {
+    path: '/forbidden',
+    element: <ForbiddenPage />,
+  },
+  {
+    path: '/404',
+    element: <FourOhFourPage />,
+  },
+  {
+    path: '/admin',
+    element: <AdminPage />,
+  },
+  {
+    path: '/admin/doc',
+    element: <DocAdminPage />,
+  },
+  {
+    path: '/admin/page',
+    element: <PageAdminPage />,
+  },
+  {
+    path: '/search-results',
+    element: <SearchPage />,
+  },
+  {
+    path: '/gw-login',
+    element: <LoginPage />,
+  },
+  {
+    path: '/support',
+    element: <SupportPage />,
+  },
+  {
+    path: '/root-breadcrumbs.json',
+  },
+  {
+    path: '/*',
+    element: <LandingPage />,
+  },
+]);
 
 function App() {
   return (

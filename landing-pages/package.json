@@ -51,5 +51,5 @@
     ]
   },
   "proxy": "http://localhost:8081",
-  "homepage": "/landing/"
+  "homepage": "/"
 }

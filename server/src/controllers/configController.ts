@@ -522,7 +522,7 @@ export async function getRootBreadcrumb(pagePathname: string) {
   };
   try {
     const response = await fetch(
-      `${process.env.APP_BASE_URL}/landing/root-breadcrumbs.json`
+      `${process.env.APP_BASE_URL}/root-breadcrumbs.json`
     );
     if (!response.ok) {
       return emptyRootPage;
@@ -542,7 +542,7 @@ export async function getRootBreadcrumb(pagePathname: string) {
     const rootPageEntity = await findEntity(
       'Page',
       {
-        path: rootPagePath.slice('/landing/'.length, rootPagePath.length),
+        path: rootPagePath,
       },
       false
     );

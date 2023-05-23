@@ -31,7 +31,7 @@ function getRedirectUrl(requestedPath: string, status: number) {
 
 const pageGetter = async (pagePath: string) => {
   const response = await fetch(`/safeConfig/entity/Page?path=${pagePath}`);
-  const requestedPath = pagePath === '/' ? pagePath : `/landing/${pagePath}`;
+  const requestedPath = pagePath === '/' ? pagePath : `/${pagePath}`;
   const { status } = response;
   const jsonData = await response.json();
   if (!response.ok) {
