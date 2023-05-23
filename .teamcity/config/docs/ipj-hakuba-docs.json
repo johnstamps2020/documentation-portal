@@ -1,0 +1,77 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "ipjhakubarn",
+      "title": "Release Notes",
+      "url": "ipj/hakuba/releasenotes",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Japan"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipjhakubaconfig",
+      "title": "Configuration",
+      "url": "ipj/hakuba/config",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Japan"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipjhakubaapp",
+      "title": "Application Guide",
+      "url": "ipj/hakuba/app",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Japan"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipjhakubainstall",
+      "title": "Installation Guide",
+      "url": "ipj/hakuba/install",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Japan"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    }
+  ]
+}

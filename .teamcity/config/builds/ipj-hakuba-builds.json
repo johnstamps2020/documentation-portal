@@ -1,0 +1,37 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJReleaseNotes.ditamap",
+      "srcId": "ipjhakubasrc",
+      "docId": "ipjhakubarn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJConfigurationGuide.ditamap",
+      "srcId": "ipjhakubasrc",
+      "docId": "ipjhakubaconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJApplicationGuide.ditamap",
+      "srcId": "ipjhakubasrc",
+      "docId": "ipjhakubaapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJInstallationGuide.ditamap",
+      "srcId": "ipjhakubasrc",
+      "docId": "ipjhakubainstall",
+      "indexRedirect": true
+    }
+  ]
+}
