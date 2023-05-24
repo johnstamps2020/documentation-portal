@@ -310,8 +310,8 @@
     },
     {
       "buildType": "yarn",
-      "docId": "jutroplasmicnext",
-      "srcId": "srcjutroplasmicnext",
+      "docId": "jutroeditornext",
+      "srcId": "srcjutroeditornext",
       "nodeImageVersion": "17.6.0"
     },
     {

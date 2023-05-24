@@ -328,9 +328,9 @@
       "earlyAccess": false
     },
     {
-      "id": "jutroplasmicnext",
-      "title": "Jutro Plasmic",
-      "url": "jutro/plasmic/next",
+      "id": "jutroeditornext",
+      "title": "Jutro Editor",
+      "url": "jutro/editor/next",
       "metadata": {
         "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
