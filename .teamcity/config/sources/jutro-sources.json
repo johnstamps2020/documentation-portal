@@ -164,9 +164,9 @@
       "branch": "main"
     },
     {
-      "id": "srcjutroplasmicnext",
-      "title": "Jutro Plasmic Next",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-plasmic-docs.git",
+      "id": "srcjutroeditornext",
+      "title": "Jutro Editor Next",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-editor-docs.git",
       "branch": "main"
     },
     {
