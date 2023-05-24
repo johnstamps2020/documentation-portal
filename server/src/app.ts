@@ -9,7 +9,7 @@ import {
   expressWinstonLogger,
   winstonLogger,
 } from './controllers/loggerController';
-import express, { NextFunction, Request, Response } from 'express';
+import express, { Request, Response } from 'express';
 import { join } from 'path';
 import cookieParser from 'cookie-parser';
 import favicon from 'serve-favicon';
@@ -19,15 +19,12 @@ import { AppDataSource } from './model/connection';
 import { runningInDevMode } from './controllers/utils/serverUtils';
 import { ReqUser } from './controllers/userController';
 import {
-  isAllowedToAccessDoc,
   isAllowedToAccessRestrictedRoute,
   isAllowedToAccessRoute,
-  openRequestedUrl,
   saveUserInfoToResLocals,
 } from './controllers/authController';
 import { fourOhFourRoute } from './controllers/proxyController';
 import { JwtPayload } from 'jsonwebtoken';
-import { FileArray, UploadedFile } from 'express-fileupload';
 
 declare global {
   namespace Express {
@@ -165,12 +162,6 @@ app.use(cookieParser());
 
 app.use(httpContext.middleware);
 
-app.use((req: Request, res: Response, next: NextFunction) => {
-  if (req.originalUrl === '/') {
-    return res.redirect('/landing');
-  }
-  return next();
-});
 app.use(
   '/admin',
   saveUserInfoToResLocals,
@@ -197,7 +188,6 @@ const {
   reactAppProxy,
 } = require('./controllers/proxyController');
 app.use('/sitemap*', sitemapProxy);
-app.use('/landing', saveUserInfoToResLocals, reactAppProxy);
 
 // HTML5 scripts, local or S3
 const isDevMode = runningInDevMode();
@@ -207,13 +197,8 @@ if (isDevMode) {
   app.use('/scripts', html5Proxy);
 }
 
-// Docs stored on S3 — current and portal2
-app.use(
-  saveUserInfoToResLocals,
-  isAllowedToAccessDoc,
-  openRequestedUrl,
-  s3Proxy
-);
+// Docs stored on S3 (current and portal2) and landing pages
+app.use(saveUserInfoToResLocals, s3Proxy, reactAppProxy);
 
 app.use((req: Request, res: Response) => {
   const notFoundParam =

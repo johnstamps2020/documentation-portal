@@ -3,8 +3,6 @@ import { NextFunction, Request, Response } from 'express';
 import { decode, JwtPayload } from 'jsonwebtoken';
 import { winstonLogger } from './loggerController';
 import { getUserInfo } from './userController';
-import { fourOhFourRoute, internalRoute } from './proxyController';
-import { getDocByUrl } from './configController';
 import { ApiResponse } from '../types/apiResponse';
 
 export async function saveUserInfoToResLocals(
@@ -45,32 +43,6 @@ export async function isAllowedToAccessRestrictedRoute(
     return res.status(403).json({
       message: 'Resource not available: Only GW admins can manage resources',
     });
-  }
-  return next();
-}
-
-export async function isAllowedToAccessDoc(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-  const requestedDoc = await getDocByUrl(req.path);
-  if (!requestedDoc) {
-    return res.redirect(`${fourOhFourRoute}?notFound=${req.originalUrl}`);
-  }
-  const resourceStatus = isUserAllowedToAccessResource(
-    res,
-    requestedDoc.public,
-    requestedDoc.internal,
-    requestedDoc.isInProduction
-  ).status;
-  if (resourceStatus === 401) {
-    return redirectToLoginPage(req, res);
-  }
-  if (resourceStatus == 403) {
-    return res.redirect(
-      `${internalRoute}${req.url ? `?restricted=${req.originalUrl}` : ''}`
-    );
   }
   return next();
 }
@@ -270,7 +242,7 @@ export function redirectToLoginPage(req: Request, res: Response) {
     if (req.query.authSource === 'guidewire-partner') {
       return res.redirect(`/partners-login?redirectTo=${redirectTo}`);
     }
-    return res.redirect(`/landing/gw-login?redirectTo=${redirectTo}`);
+    return res.redirect(`/gw-login?redirectTo=${redirectTo}`);
   } catch (err) {
     winstonLogger.error(
       `Problem redirecting to login page 
@@ -297,18 +269,13 @@ export function resolveRequestedUrl(req: Request) {
   return '/';
 }
 
-export function openRequestedUrl(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+export function openRequestedUrl(req: Request, res: Response) {
   try {
     const originalUrl = req.originalUrl;
     const cleanUrl = removeAuthParamsFromUrl(originalUrl);
     if (originalUrl !== cleanUrl) {
       return res.redirect(cleanUrl);
     }
-    return next();
   } catch (err) {
     winstonLogger.error(
       `Problem opening requested page 

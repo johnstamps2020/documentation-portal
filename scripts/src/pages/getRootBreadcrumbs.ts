@@ -6,7 +6,6 @@ type DocRootPages = {
   docId: string;
   rootPages: string[];
 };
-
 const landingPagesSourceDir = resolve(
   __dirname,
   '../../../landing-pages/src/pages/landing'
@@ -30,16 +29,23 @@ for (const file of allFiles) {
     encoding: 'utf-8',
   });
   const filePath = getFilePath(file);
+  const filePathWithoutDirPrefix = filePath.slice(
+    '/landing'.length,
+    filePath.length
+  );
   const regex = /docId:\s*'([^']*)'/g;
   const matches = [...fileContents.matchAll(regex)].map((match) => match[1]);
-  if (matches.length > 0 && filePath) {
+  if (matches.length > 0 && filePathWithoutDirPrefix) {
     matches.forEach((match) => {
       const matchingBreadcrumb = breadcrumbs.find((b) => b.docId === match);
       if (!matchingBreadcrumb) {
-        breadcrumbs.push({ docId: match, rootPages: [filePath] });
+        breadcrumbs.push({
+          docId: match,
+          rootPages: [filePathWithoutDirPrefix],
+        });
       } else {
-        if (!matchingBreadcrumb.rootPages.includes(filePath)) {
-          matchingBreadcrumb.rootPages.push(filePath);
+        if (!matchingBreadcrumb.rootPages.includes(filePathWithoutDirPrefix)) {
+          matchingBreadcrumb.rootPages.push(filePathWithoutDirPrefix);
         }
       }
     });
