@@ -69,6 +69,10 @@
           "page": "insuranceNow/2023.2"
         },
         {
+          "label": "Digital Reference Applications",
+          "page": "dx-ref-apps"
+        },
+        {
           "label": "Global Content Reference Applications",
           "page": "global-ref-apps"
         }
