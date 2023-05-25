@@ -10,7 +10,7 @@
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "type": "node-terminal",
-      "preLaunchTask": "Start DocPortal DB Container"
+      "preLaunchTask": "Start docportal DB"
     },
     {
       "name": "Landing Pages DEV",
@@ -26,6 +26,6 @@
       "cwd": "${workspaceFolder}/ci",
       "command": "node uploadLegacyConfigsToDb.mjs",
       "envFile": "${workspaceFolder}/server/.env"
-    }
+    },
   ]
 }
