@@ -3,7 +3,10 @@ import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 
-export default function LoginOptions() {
+type LoginOptionsProps = {
+  inDrawer?: boolean;
+};
+export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
   const query = new URLSearchParams(window.location.search);
   const isLoginPage = window.location.pathname.endsWith('/gw-login');
   const redirectTo =
@@ -37,6 +40,38 @@ export default function LoginOptions() {
     fontWeight: 600,
     margin: '15px',
   };
+
+  if (inDrawer) {
+    return (
+      <Stack spacing={2}>
+        {loginButtons.map((loginButton) => (
+          <Tooltip
+            key={loginButton.label}
+            title={<Typography>{loginButton.tooltipText}</Typography>}
+            placement="left"
+            arrow
+          >
+            <Button
+              href={`${loginButton.href}?redirectTo=${redirectTo}`}
+              variant="contained"
+              color="primary"
+            >
+              {loginButton.label}
+            </Button>
+          </Tooltip>
+        ))}
+        <Button
+          variant="outlined"
+          color="primary"
+          href={`/authorization-code?idp=okta&redirectTo=${redirectTo}`}
+          sx={{ fontWeight: 600, border: 1 }}
+        >
+          Guidewire Employee
+        </Button>
+      </Stack>
+    );
+  }
+
   return (
     <>
       <Stack

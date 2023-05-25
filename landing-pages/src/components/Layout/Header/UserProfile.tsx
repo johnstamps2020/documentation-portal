@@ -50,7 +50,7 @@ function LoginButton({ drawerOpen, setDrawerOpen }: LoginButtonProps) {
         PaperProps={{ sx: { justifyContent: 'center' } }}
       >
         <Stack alignItems="center" spacing={4} margin="16px">
-          <LoginOptions />
+          <LoginOptions inDrawer={true}/>
           <Link component={RouterLink} to="/gw-login">
             Go to the login page
           </Link>
