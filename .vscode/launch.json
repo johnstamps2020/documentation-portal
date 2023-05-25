@@ -13,7 +13,7 @@
       "preLaunchTask": "Start docportal DB"
     },
     {
-      "name": "Landing Pages DEV",
+      "name": "Landing pages DEV",
       "command": "yarn landing-pages-dev",
       "request": "launch",
       "cwd": "${workspaceFolder}",

@@ -7,7 +7,7 @@
 
 You need the following tools:
 
-- Docker
+- Docker Desktop
 - [nvm](https://github.com/nvm-sh/nvm) for managing Node.js versions. We use
   `.nvmrc` files for automatic version switching.
 - Node.js 16.18.0 for running the server (install through nvm)
@@ -60,23 +60,36 @@ CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/cu
 
 ## Start the services
 
-## Docker compose
+### Docker compose
 
-If you use IntelliJ IDEA, run the "Compose local dev environment" configuration.
+If you use VS Code, run the **Compose local dev environment** task. If you use
+IntelliJ IDEA, run the **Compose local dev environment** configuration. If you
+use the terminal, run this command in the root folder of the project:
+`docker compose -f .dev/compose-local-dev-env.yml up --detach`.
 
-If you use the terminal, run this command in the root folder of the project:
-`docker compose -f .dev/compose-local-dev-env.yml up`.
+### VS Code
 
-## VS Code
+1. Make sure you have the Docker plugin installed and that you are connected to
+   the Docker Hub registry.
+2. Run the **Server DEV** debug. This automatically creates a Docker container
+   for Postgres (docportal DB) and then launches the server in dev mode.
+3. Wait for the server to fully start and then run the **Upload Legacy Configs**
+   to DB" debug. This may take a while.
+4. Run the **Landing Pages DEV** debug. This launches the frontend in dev mode.
+5. Open http://localhost:8081 in your browser.
 
-1. Run the "Server DEV" debug. This automatically starts the database and then
-   launches the server in dev mode.
-1. Make sure you have a `server/.env` file with the required environment
-   variables, as described above.
-1. Wait for the server to fully start and then run the "Upload Legacy Configs to
-   DB" debug. This may take a while.
-1. Run the "Landing Pages DEV" debug. This launches the frontend in dev mode.
-1. Open http://localhost:8081 in your browser.
+### IntelliJ IDEA
+
+1. Make sure the Docker plugin is running.
+2. Run the **Start docportal DB** configuration. This creates a Docker container
+   for Postgres.
+3. Wait for the docportal DB to fully start and then run the **Server DEV**
+   configuration. This launches the server in dev mode.
+4. Wait for the server to fully start and then run the **Upload legacy configs
+   to DB** configuration. This may take a while.
+5. Run the **Landing pages DEV** configuration. This launches the frontend in
+   dev mode.
+6. Open http://localhost:8081 in your browser.
 
 ### Terminal (macOS)
 

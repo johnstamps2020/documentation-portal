@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Docportal search" type="docker-deploy" factoryName="docker-image" server-name="Docker">
+  <configuration default="false" name="Start docportal search" type="docker-deploy" factoryName="docker-image" server-name="Docker">
     <deployment type="docker-image">
       <settings>
         <option name="imageTag" value="artifactory.guidewire.com/hub-docker-remote/elasticsearch:7.17.4" />
