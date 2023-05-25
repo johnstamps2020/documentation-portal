@@ -6,6 +6,7 @@ import ClearFilterButton from './ClearFiltersButton';
 import { StyledButton } from './StyledSearchComponents';
 import { useSearchData } from 'hooks/useApi';
 import Skeleton from '@mui/material/Skeleton';
+import FilterItemsSkeleton from './FilterItemsSkeleton';
 
 export type SearchFilterExpandStatus = {
   filterName: string;
@@ -16,36 +17,7 @@ export default function SearchFilterPanel() {
   const { searchData, isLoading, isError } = useSearchData();
   const [allSearchFiltersExpandStatus, setAllSearchFiltersExpandStatus] =
     useState<SearchFilterExpandStatus[]>([]);
-  const filterSubItemsSkeleton = Array.from({ length: 4 }, () => {
-    return (
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-        margin="8px 0px 0px 22px"
-      >
-        <Skeleton
-          variant="rectangular"
-          sx={{ width: '120px', height: '20px' }}
-        />
-        <Skeleton
-          variant="rectangular"
-          sx={{ width: '50px', height: '20px' }}
-        />
-      </Stack>
-    );
-  });
-  const filterItemsSkeleton = Array.from({ length: 5 }, () => {
-    return (
-      <>
-        <Skeleton
-          variant="rectangular"
-          sx={{ width: '125px', height: '24px', m: '12px 0px 12px 0px' }}
-        />
-        {filterSubItemsSkeleton}
-      </>
-    );
-  });
+
   const toggleFilters = useCallback(
     (expand: boolean) => {
       if (searchData) {
@@ -134,7 +106,7 @@ export default function SearchFilterPanel() {
           />
         ))
       ) : (
-        <>{filterItemsSkeleton}</>
+        <FilterItemsSkeleton />
       )}
     </Stack>
   );

@@ -9,6 +9,7 @@ import ClearFilterButton from './ClearFiltersButton';
 import { StyledHeading1 } from './StyledSearchComponents';
 import { useSearchData } from 'hooks/useApi';
 import Skeleton from '@mui/material/Skeleton';
+import ResultsSkeleton from './ResultsSkeleton';
 
 //TODO: Don't return null if no searchData, use Skeletons to load while waiting for searchData elements
 export default function SearchResults() {
@@ -18,66 +19,6 @@ export default function SearchResults() {
   if (isError) {
     return null;
   }
-  const textSkeleton = Array.from({ length: 4 }, () => {
-    return <Skeleton variant="text" sx={{ width: '100%' }} />;
-  });
-  const resultSkeleton = Array.from({ length: 5 }, () => {
-    return (
-      <>
-        <Skeleton
-          variant="rectangular"
-          sx={{
-            height: '33px',
-            width: '230px',
-            margin: '8px 0px 16px 0px',
-          }}
-        />
-        <Stack direction="row">
-          <Skeleton
-            variant="circular"
-            sx={{
-              height: '24px',
-              width: '70px',
-              margin: '0px 4px 16px 0px',
-            }}
-          />
-          <Skeleton
-            variant="circular"
-            sx={{
-              height: '24px',
-              width: '85px',
-              margin: '0px 4px 16px 0px',
-            }}
-          />
-          <Skeleton
-            variant="circular"
-            sx={{
-              height: '24px',
-              width: '50px',
-              margin: '0px 4px 16px 0px',
-            }}
-          />
-          <Skeleton
-            variant="circular"
-            sx={{
-              height: '24px',
-              width: '120px',
-              margin: '0px 4px 16px 0px',
-            }}
-          />
-        </Stack>
-        {textSkeleton}
-        <Skeleton
-          variant="rectangular"
-          sx={{
-            height: '21px',
-            width: '550px',
-            margin: '32px 0px 44px 0px',
-          }}
-        />
-      </>
-    );
-  });
 
   if (searchData?.totalNumOfResults === 0) {
     return (
@@ -148,7 +89,7 @@ export default function SearchResults() {
           ))}
         </>
       ) : (
-        <>{resultSkeleton}</>
+        <ResultsSkeleton />
       )}
     </>
   );
