@@ -37,7 +37,7 @@
           <list>
             <DockerVolumeBindingImpl>
               <option name="containerPath" value="/usr/share/elasticsearch/data" />
-              <option name="hostPath" value="$PROJECT_DIR$/.dev/volumes/containers/docportal-search" />
+              <option name="hostPath" value="$PROJECT_DIR$/.dev/volumes/search" />
             </DockerVolumeBindingImpl>
           </list>
         </option>

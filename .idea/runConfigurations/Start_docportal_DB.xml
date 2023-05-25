@@ -32,7 +32,7 @@
           <list>
             <DockerVolumeBindingImpl>
               <option name="containerPath" value="/var/lib/postgresql/data" />
-              <option name="hostPath" value="$PROJECT_DIR$/.dev/volumes/containers/docportal-db" />
+              <option name="hostPath" value="$PROJECT_DIR$/.dev/volumes/db" />
             </DockerVolumeBindingImpl>
           </list>
         </option>
