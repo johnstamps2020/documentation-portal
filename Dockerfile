@@ -23,8 +23,6 @@ RUN yarn build
 FROM artifactory.guidewire.com/hub-docker-remote/nginx:1-alpine
 
 COPY --from=app-builder /usr/app/landing-pages/build /usr/share/nginx/html
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx/nginx.conf /etc/nginx/conf.d
 
 EXPOSE 80
 LABEL "org.opencontainers.image.title"="docportal-frontend" \
