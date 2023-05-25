@@ -65,7 +65,7 @@ CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/cu
 If you use VS Code, run the **Compose local dev environment** task. If you use
 IntelliJ IDEA, run the **Compose local dev environment** configuration. If you
 use the terminal, run this command in the root folder of the project:
-`docker compose -f .dev/compose-local-dev-env.yml up --detach`.
+`docker compose -f .dev/compose-local-dev-env.yml up --build --detach`.
 
 ### VS Code
 
