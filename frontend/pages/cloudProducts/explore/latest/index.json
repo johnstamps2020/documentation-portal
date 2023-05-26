@@ -21,6 +21,10 @@
         {
           "label": "Application Guide",
           "id": "exploreusingrelease"
+        },
+        {
+          "label": "Application Guide for Explore with Kibana",
+          "id": "exploreusingkibanarelease"
         }
       ]
     },

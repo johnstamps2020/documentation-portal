@@ -20,6 +20,14 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "m_cloud-usingExplore.ditamap",
+      "srcId": "explorekibanasrc",
+      "docId": "exploreusingkibanarelease",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "m_dataDictionaries.ditamap",
       "srcId": "exploresrc",
       "docId": "exploredatadictrelease",
