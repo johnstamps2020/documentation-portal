@@ -1,7 +1,6 @@
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import Tooltip from '@mui/material/Tooltip';
-import Typography from '@mui/material/Typography';
+import ButtonWithTooltip from './ButtonWithTooltip';
 
 type LoginOptionsProps = {
   inDrawer?: boolean;
@@ -44,21 +43,13 @@ export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
   if (inDrawer) {
     return (
       <Stack spacing={2}>
-        {loginButtons.map((loginButton) => (
-          <Tooltip
-            key={loginButton.label}
-            title={<Typography>{loginButton.tooltipText}</Typography>}
+        {loginButtons.map((loginButtonProps) => (
+          <ButtonWithTooltip
+            loginButtonProps={loginButtonProps}
             placement="left"
-            arrow
-          >
-            <Button
-              href={`${loginButton.href}?redirectTo=${redirectTo}`}
-              variant="contained"
-              color="primary"
-            >
-              {loginButton.label}
-            </Button>
-          </Tooltip>
+            key={loginButtonProps.label}
+            redirectTo={redirectTo}
+          />
         ))}
         <Button
           variant="outlined"
@@ -80,23 +71,15 @@ export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
         flexWrap="wrap"
         sx={{ justifyContent: 'space-around', alignItems: 'center' }}
       >
-        {loginButtons.map((loginButton) => (
-          <Tooltip
-            key={loginButton.label}
-            title={<Typography>{loginButton.tooltipText}</Typography>}
+        {loginButtons.map((loginButtonProps) => (
+          <ButtonWithTooltip
+            loginButtonProps={loginButtonProps}
             placement="bottom"
-            arrow
-            sx={{ fontSize: '16px' }}
-          >
-            <Button
-              href={`${loginButton.href}?redirectTo=${redirectTo}`}
-              variant="contained"
-              color="primary"
-              sx={buttonStyle}
-            >
-              {loginButton.label}
-            </Button>
-          </Tooltip>
+            key={loginButtonProps.label}
+            redirectTo={redirectTo}
+            tooltipStyle={{ fontSize: '16px' }}
+            buttonStyle={buttonStyle}
+          />
         ))}
       </Stack>
       <Button
