@@ -1,14 +1,14 @@
 import Button from '@mui/material/Button';
 
-type GWEmployeeButtonProps = {
+type GwEmployeeButtonProps = {
   redirectTo: string;
   buttonStyle?: {};
 };
 
-export default function GWEmployeeButton({
+export default function GwEmployeeButton({
   buttonStyle,
   redirectTo,
-}: GWEmployeeButtonProps) {
+}: GwEmployeeButtonProps) {
   const buttonText = 'Guidewire Employee';
   return (
     <Button

@@ -1,6 +1,6 @@
 import Stack from '@mui/material/Stack';
 import ButtonWithTooltip from './ButtonWithTooltip';
-import GWEmployeeButton from './GWEmployeeButton';
+import GwEmployeeButton from './GwEmployeeButton'
 
 type LoginOptionsProps = {
   inDrawer?: boolean;
@@ -51,7 +51,7 @@ export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
             redirectTo={redirectTo}
           />
         ))}
-        <GWEmployeeButton
+        <GwEmployeeButton
           buttonStyle={{ fontWeight: 600, border: 1 }}
           redirectTo={redirectTo}
         />
@@ -78,7 +78,7 @@ export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
           />
         ))}
       </Stack>
-      <GWEmployeeButton
+      <GwEmployeeButton
         buttonStyle={{
           ...buttonStyle,
           border: 1,
