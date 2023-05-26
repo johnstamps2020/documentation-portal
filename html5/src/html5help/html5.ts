@@ -47,7 +47,7 @@ docReady(async function () {
   await addPageNavigators(isOffline);
   addFooterContents(isOffline);
   !isOffline && addFeedbackElements();
+  !isOffline && (await addBookLinks());
   addLightbox();
   highlightCode();
-  !isOffline && addBookLinks();
 });
