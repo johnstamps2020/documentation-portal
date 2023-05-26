@@ -38,6 +38,24 @@
       "earlyAccess": false
     },
     {
+      "id": "exploreusingkibanarelease",
+      "title": "Application Guide for Explore with Kibana",
+      "url": "cloud/explore/app-kibana",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Explore"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "exploredatadictrelease",
       "title": "Data Dictionaries",
       "url": "cloud/explore/datadict",
