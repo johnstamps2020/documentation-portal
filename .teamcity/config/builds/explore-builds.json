@@ -22,7 +22,7 @@
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "root": "m_cloud-usingExplore.ditamap",
       "srcId": "explorekibanasrc",
-      "docId": "explorekibanausingrelease",
+      "docId": "exploreusingkibanarelease",
       "indexRedirect": true
     },
     {
