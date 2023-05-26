@@ -37,7 +37,7 @@ services:
       POSTGRES_PASSWORD: testtesttest
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
-      - ./db:/var/lib/postgresql/data
+      - ./volumes/db:/var/lib/postgresql/data
     ports:
       - "5432:5432"
   search:
@@ -57,7 +57,7 @@ services:
         soft: 65536
         hard: 65536
     volumes:
-      - ./search:/usr/share/elasticsearch/data
+      - ./volumes/search:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
       - "9300:9300"

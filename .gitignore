@@ -3,10 +3,8 @@
 .teamcity/target/
 
 ### Local dev env
-.dev/db/*
-!.dev/db/.gitkeep
-.dev/search/*
-!.dev/search/.gitkeep
+.dev/volumes/**
+!.dev/volumes/**/.gitkeep
 
 ### VisualStudioCode ###
 .vscode/*

@@ -2,23 +2,78 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Start DocPortal DB Container",
-      "type": "shell",
-      "command": "./server/start_docportal_db_container.sh",
-      "isBackground": true,
-      "problemMatcher": {
-        "owner": "custom",
-        "fileLocation": ["relative", "${workspaceFolder}"],
-        "pattern": {
-          "regexp": "^.* (ERROR):\\s+(.*)$",
-          "message": 2,
-          "severity": 1
+      "label": "Start docportal DB",
+      "type": "docker-run",
+      "platform": "node",
+      "dockerRun": {
+        "image": "artifactory.guidewire.com/hub-docker-remote/postgres:14.1-alpine",
+        "containerName": "docportal-db",
+        "ports": [
+          {
+            "hostPort": 5432,
+            "containerPort": 5432,
+            "protocol": "tcp"
+          }
+        ],
+        "volumes": [
+          {
+            "localPath": "${workspaceFolder}/.dev/volumes/containers/docportal-db",
+            "containerPath": "/var/lib/postgresql/data",
+            "permissions": "rw"
+          }
+        ],
+        "env": {
+          "PGDATA": "/var/lib/postgresql/data/pgdata",
+          "POSTGRES_PASSWORD": "testtesttest",
+          "POSTGRES_USER": "postgres"
         },
-        "background": {
-          "activeOnStart": true,
-          "beginsPattern": "^.* database system is ready to accept connections",
-          "endsPattern": "^.* database system is shut down"
-        }
+      }
+    },
+    {
+      "label": "Start docportal search",
+      "type": "docker-run",
+      "platform": "node",
+      "dockerRun": {
+        "image": "artifactory.guidewire.com/hub-docker-remote/elasticsearch:7.17.4",
+        "containerName": "docportal-search",
+        "ports": [
+          {
+            "hostPort": 9200,
+            "containerPort": 9200,
+            "protocol": "tcp"
+          },
+          {
+            "hostPort": 9300,
+            "containerPort": 9300,
+            "protocol": "tcp"
+          }
+        ],
+        "volumes": [
+          {
+            "localPath": "${workspaceFolder}/.dev/volumes/containers/docportal-search",
+            "containerPath": "/usr/share/elasticsearch/data",
+            "permissions": "rw"
+          }
+        ],
+        "env": {
+          "cluster.name": "es-docker-cluster",
+          "discovery.type": "single-node",
+          "xpack.security.enabled": "false"
+        },
+        "customOptions": "--ulimit nofile=65536 --ulimit memlock=-1"
+      }
+    },
+    {
+      "label": "Compose local dev environment",
+      "type": "docker-compose",
+      "dockerCompose": {
+        "up": {
+          "detached": true,
+          "build": true,
+        },
+        "files": [
+          "${workspaceFolder}/.dev/compose-local-dev-env.yml"
+        ]
       }
     },
     {
