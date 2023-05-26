@@ -1,6 +1,6 @@
-import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import ButtonWithTooltip from './ButtonWithTooltip';
+import GWEmployeeButton from './GWEmployeeButton';
 
 type LoginOptionsProps = {
   inDrawer?: boolean;
@@ -51,14 +51,10 @@ export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
             redirectTo={redirectTo}
           />
         ))}
-        <Button
-          variant="outlined"
-          color="primary"
-          href={`/authorization-code?idp=okta&redirectTo=${redirectTo}`}
-          sx={{ fontWeight: 600, border: 1 }}
-        >
-          Guidewire Employee
-        </Button>
+        <GWEmployeeButton
+          buttonStyle={{ fontWeight: 600, border: 1 }}
+          redirectTo={redirectTo}
+        />
       </Stack>
     );
   }
@@ -82,14 +78,15 @@ export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
           />
         ))}
       </Stack>
-      <Button
-        variant="outlined"
-        color="primary"
-        href={`/authorization-code?idp=okta&redirectTo=${redirectTo}`}
-        sx={{ ...buttonStyle, border: 1, height: '65px', width: '230px' }}
-      >
-        Guidewire Employee
-      </Button>
+      <GWEmployeeButton
+        buttonStyle={{
+          ...buttonStyle,
+          border: 1,
+          height: '65px',
+          width: '230px',
+        }}
+        redirectTo={redirectTo}
+      />
     </>
   );
 }
