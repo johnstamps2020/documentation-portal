@@ -1,9 +1,11 @@
-import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import Tooltip from '@mui/material/Tooltip';
-import Typography from '@mui/material/Typography';
+import ButtonWithTooltip from './ButtonWithTooltip';
+import GwEmployeeButton from './GwEmployeeButton'
 
-export default function LoginOptions() {
+type LoginOptionsProps = {
+  inDrawer?: boolean;
+};
+export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
   const query = new URLSearchParams(window.location.search);
   const isLoginPage = window.location.pathname.endsWith('/gw-login');
   const redirectTo =
@@ -37,6 +39,26 @@ export default function LoginOptions() {
     fontWeight: 600,
     margin: '15px',
   };
+
+  if (inDrawer) {
+    return (
+      <Stack spacing={2}>
+        {loginButtons.map((loginButtonProps) => (
+          <ButtonWithTooltip
+            loginButtonProps={loginButtonProps}
+            placement="left"
+            key={loginButtonProps.label}
+            redirectTo={redirectTo}
+          />
+        ))}
+        <GwEmployeeButton
+          buttonStyle={{ fontWeight: 600, border: 1 }}
+          redirectTo={redirectTo}
+        />
+      </Stack>
+    );
+  }
+
   return (
     <>
       <Stack
@@ -45,33 +67,26 @@ export default function LoginOptions() {
         flexWrap="wrap"
         sx={{ justifyContent: 'space-around', alignItems: 'center' }}
       >
-        {loginButtons.map((loginButton) => (
-          <Tooltip
-            key={loginButton.label}
-            title={<Typography>{loginButton.tooltipText}</Typography>}
+        {loginButtons.map((loginButtonProps) => (
+          <ButtonWithTooltip
+            loginButtonProps={loginButtonProps}
             placement="bottom"
-            arrow
-            sx={{ fontSize: '16px' }}
-          >
-            <Button
-              href={`${loginButton.href}?redirectTo=${redirectTo}`}
-              variant="contained"
-              color="primary"
-              sx={buttonStyle}
-            >
-              {loginButton.label}
-            </Button>
-          </Tooltip>
+            key={loginButtonProps.label}
+            redirectTo={redirectTo}
+            tooltipStyle={{ fontSize: '16px' }}
+            buttonStyle={buttonStyle}
+          />
         ))}
       </Stack>
-      <Button
-        variant="outlined"
-        color="primary"
-        href={`/authorization-code?idp=okta&redirectTo=${redirectTo}`}
-        sx={{ ...buttonStyle, border: 1, height: '65px', width: '230px' }}
-      >
-        Guidewire Employee
-      </Button>
+      <GwEmployeeButton
+        buttonStyle={{
+          ...buttonStyle,
+          border: 1,
+          height: '65px',
+          width: '230px',
+        }}
+        redirectTo={redirectTo}
+      />
     </>
   );
 }
