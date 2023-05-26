@@ -1,6 +1,6 @@
 import Stack from '@mui/material/Stack';
 import ButtonWithTooltip from './ButtonWithTooltip';
-import GwEmployeeButton from './GwEmployeeButton'
+import GwEmployeeButton from './EmployeeButton'
 
 type LoginOptionsProps = {
   inDrawer?: boolean;
