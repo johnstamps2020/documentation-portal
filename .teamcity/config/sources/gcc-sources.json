@@ -2,6 +2,12 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "gccinternaltemplatesrc",
+      "title": "GCC Internal Template",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gcc-internal-docs-template.git",
+      "branch": "main"
+    },
+    {
       "id": "runtimepropertiesapisrc",
       "title": "Runtime Properties API",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/runtime-properties-api.git",

@@ -3,6 +3,11 @@
   "builds": [
     {
       "buildType": "yarn",
+      "docId": "gccinternaltemplate",
+      "srcId": "gccinternaltemplatesrc"
+    },
+    {
+      "buildType": "yarn",
       "docId": "runtimepropertiesapi",
       "srcId": "runtimepropertiesapisrc"
     },
