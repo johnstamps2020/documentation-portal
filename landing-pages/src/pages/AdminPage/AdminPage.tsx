@@ -26,14 +26,16 @@ const links: AdminLink[] = [
 export default function AdminPage() {
   const adminPanelTitle = 'Admin panel';
   return (
-    <Layout title={adminPanelTitle} backgroundColor="gray">
+    <Layout title={adminPanelTitle}>
       <AdminAccess pagePath={window.location.href}>
         <Container sx={{ padding: '3rem 0' }}>
-          <Typography variant="h1">{adminPanelTitle}</Typography>
+          <Typography variant="h1" color="WindowText">
+            {adminPanelTitle}
+          </Typography>
           <Stack spacing={2} direction="row" sx={{ padding: '2rem 0' }}>
             {links.map(({ title, path }) => (
               <Link key={path} component={RouterLink} to={path}>
-                <Card sx={{ padding: '2rem 3rem' }}>{title}</Card>
+                <Card sx={{ padding: '2rem 3rem' }} variant='outlined'>{title}</Card>
               </Link>
             ))}
           </Stack>

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import Layout from 'components/Layout/Layout';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Theme } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
 import Alert from '@mui/material/Alert';
@@ -16,13 +16,17 @@ export default function LandingPage() {
   const navigate = useNavigate();
   const { pageData, isError, isLoading } = usePageData();
 
-  if (isError?.redirectUrl) {
-    navigate(isError.redirectUrl);
-  }
+  useEffect(() => {
+    if (isError?.redirectUrl) {
+      navigate(isError.redirectUrl);
+    }
+  }, [isError]);
 
-  if (pageData?.component?.includes('redirect')) {
-    navigate(`/${pageData.component.split(' ')[1]}`);
-  }
+  useEffect(() => {
+    if (pageData?.component?.includes('redirect')) {
+      navigate(`/${pageData.component.split(' ')[1]}`);
+    }
+  }, [pageData]);
 
   if (!pageData) {
     return <></>;
