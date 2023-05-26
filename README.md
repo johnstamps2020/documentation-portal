@@ -3,7 +3,7 @@
 > WARNING: The instructions in this file are for macOS. If you use a different
 > OS, adjust them accordingly.
 
-## Make sure you have the required tools installed
+## Step 1: Make sure you have the required tools installed
 
 You need the following tools:
 
@@ -13,7 +13,14 @@ You need the following tools:
 - Node.js 16.18.0 for running the server (install through nvm)
 - Node.js 18.15.0 for loading configs into the database (install through nvm)
 
-## Configure environment variables for the doc portal server
+## Step 2: Make sure Docker Desktop can mount directories from this project
+
+1. Open Docker Desktop.
+2. Go to **Settings -> Resources -> File sharing**.
+3. Make sure the location of this project is included in the list of directories
+   that can be bind mounted into Docker containers.
+
+## Step 3: Configure environment variables for the doc portal server
 
 Create a `server/.env` file with the following variables:
 
@@ -58,7 +65,7 @@ CUSTOMERS_LOGIN_CERT=
 CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID=https://docs.int.ccs.guidewire.net/customers-login
 ```
 
-## Start the services
+## Step 4: Start the services
 
 ### Docker compose
 
