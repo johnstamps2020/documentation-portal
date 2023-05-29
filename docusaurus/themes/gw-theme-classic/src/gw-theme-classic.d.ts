@@ -26,7 +26,7 @@ declare module '@theme/RightWrong' {
 
   export type RightWrongCardProps = {
     children: JSX.Element | JSX.Element[] | string;
-    title: string;
+    title?: string;
   };
 
   export type RightWrongImageProps = ImgHTMLAttributes<HTMLImageElement> & {

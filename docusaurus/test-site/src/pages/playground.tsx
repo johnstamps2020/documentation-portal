@@ -47,11 +47,11 @@ export default function Playground() {
         <Internal>This content is internal</Internal>
         <h2>Right/wrong</h2>
         <RightWrong>
-          <Right title="Correct">
+          <Right>
             <p>Select a repair facility</p>
             <p>You can edit this document</p>
           </Right>
-          <Wrong title="Incorrect">
+          <Wrong>
             <p>A repair facility selection is required.</p>
             <p>This document can be edited by you.</p>
           </Wrong>
