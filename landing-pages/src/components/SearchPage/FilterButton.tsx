@@ -1,13 +1,22 @@
 import Button from '@mui/material/Button';
-type FiltersButtonProps = {
-  setShowFilters: React.Dispatch<React.SetStateAction<boolean>>;
-};
-export default function FilterButton({ setShowFilters }: FiltersButtonProps) {
+import { useMobile } from 'hooks/useMobile';
+import { useSearchLayoutContext } from './SearchLayoutContext';
+import FilterListIcon from '@mui/icons-material/FilterList';
+
+export default function FilterButton() {
+  const { isMobile } = useMobile();
+  const { setIsShowFiltersExpanded } = useSearchLayoutContext();
+
+  if (!isMobile) {
+    return null;
+  }
+
   return (
     <Button
       variant="outlined"
-      onClick={() => setShowFilters(true)}
+      onClick={() => setIsShowFiltersExpanded(true)}
       sx={{ width: '100%' }}
+      startIcon={<FilterListIcon />}
     >
       Show filters
     </Button>
