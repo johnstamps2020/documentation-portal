@@ -47,8 +47,8 @@ export default function InternalPageInfo() {
       <div>
         <Translate id="internal.info.toView">
           To view this page, you must log in with your Guidewire employee
-          account. If you need further help, please contact the Jutro Design
-          System team.
+          account. If you need further help, please contact your Guidewire
+          representative.
         </Translate>
       </div>
       <div className={styles.buttons}>

@@ -45,8 +45,8 @@
         ],
         "background": {
           "activeOnStart": true,
-          "endsPattern": ".*Successfully compiled .*",
-          "beginsPattern": ".*The watcher is ready.*"
+          "beginsPattern": ".*Successfully compiled.*",
+          "endsPattern": ".*The watcher is ready.*"
         }
       }
     },
@@ -70,8 +70,8 @@
         ],
         "background": {
           "activeOnStart": true,
-          "endsPattern": ".*Successfully compiled .*",
-          "beginsPattern": ".*The watcher is ready.*"
+          "beginsPattern": ".*Successfully compiled.*",
+          "endsPattern": ".*The watcher is ready.*"
         }
       }
     }
