@@ -20,6 +20,7 @@ export default function ClearFilterButton({
       onClick={clearFilters}
       disabled={noFiltersApplied}
       sx={{ width: 'fit-content', marginTop: 3 }}
+      variant="outlined"
     >
       {label}
     </StyledButton>

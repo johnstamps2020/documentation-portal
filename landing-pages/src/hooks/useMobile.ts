@@ -1,5 +1,9 @@
-import { appTheme } from 'themes/appTheme';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 export function useMobile() {
-  return { isMobile: window.innerWidth <= appTheme.breakpoints.values.md };
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  return { isMobile };
 }
