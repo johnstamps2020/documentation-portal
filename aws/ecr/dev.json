@@ -28,5 +28,15 @@
         "Value": "jutro-docs-content"
       }
     ]
+  },
+  {
+    "repoName": "tenant-doctools-redirect-server",
+    "resourceArn": "arn:aws:ecr:us-west-2:627188849628:repository/tenant-doctools-redirect-server",
+    "tags": [
+      {
+        "Key": "gwcp:v1:tenant:app-name",
+        "Value": "redirect-server"
+      }
+    ]
   }
 ]
