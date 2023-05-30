@@ -7,6 +7,7 @@ import { styled } from '@mui/material/styles';
 import { useSearchData } from 'hooks/useApi';
 import AppliedFiltersSkeleton from './AppliedFiltersSkeleton';
 import { useEffect, useState } from 'react';
+import AppliedFilterControl from './AppliedFilterControl';
 
 export default function AppliedFilters() {
   const { searchData, isLoading, isError } = useSearchData();
@@ -68,7 +69,7 @@ export default function AppliedFilters() {
           checkedFilters.map((f) =>
             f.values.map((v) => (
               <ListItem key={v.label}>
-                <Chip size="small" label={v.label} />
+                <AppliedFilterControl name={f.name} value={v.label} />
               </ListItem>
             ))
           )
