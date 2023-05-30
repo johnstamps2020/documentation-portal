@@ -5,7 +5,6 @@ import Stack from '@mui/material/Stack';
 import ClearFilterButton from './ClearFiltersButton';
 import { StyledButton } from './StyledSearchComponents';
 import { useSearchData } from 'hooks/useApi';
-import Skeleton from '@mui/material/Skeleton';
 import FilterItemsSkeleton from './FilterItemsSkeleton';
 
 export type SearchFilterExpandStatus = {
