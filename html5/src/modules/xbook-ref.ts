@@ -46,7 +46,6 @@ async function findDocLink(
 ) {
   let link = null;
   for (const version of versionArray) {
-    console.log(version);
     try {
       const response = await fetch(
         `/safeConfig/docUrl?products=${product}&versions=${version}&title=${docTitle}`
