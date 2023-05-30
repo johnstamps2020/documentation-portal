@@ -12,6 +12,7 @@ import {
   StyledAccordionDetails,
   StyledAccordionSummary,
 } from './StyledSearchComponents';
+import { useQueryParameters } from 'hooks/useQueryParameters';
 
 type SearchFilterProps = {
   serverSearchFilter: ServerSearchFilter;
@@ -24,6 +25,7 @@ export default function SearchFilter({
   expanded,
   onChange,
 }: SearchFilterProps) {
+  const { modifyFilterValue } = useQueryParameters();
   const navigate = useNavigate();
   const location = useLocation();
   const query = new URLSearchParams(location.search);
@@ -36,21 +38,11 @@ export default function SearchFilter({
   }
 
   function handleCheckboxChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const filterValues = query.get(serverSearchFilter.name)?.split(',') || [];
-    if (event.target.checked) {
-      filterValues.push(event.target.value);
-    } else {
-      filterValues.splice(filterValues.indexOf(event.target.value), 1);
-    }
-    const onlyNonEmptyFilterValues = filterValues.filter(Boolean);
-    onlyNonEmptyFilterValues.length > 0
-      ? query.set(serverSearchFilter.name, onlyNonEmptyFilterValues.join(','))
-      : query.delete(serverSearchFilter.name);
-    query.delete('page');
-    navigate({
-      pathname: `${location.pathname}`,
-      search: query && `?${query.toString()}`,
-    });
+    modifyFilterValue(
+      serverSearchFilter.name,
+      event.target.value,
+      event.target.checked
+    );
   }
 
   return (
