@@ -1,8 +1,24 @@
+import Box from '@mui/material/Box';
 import { StyledAdvancedHelpSectionTitle } from './StyledSearchComponents';
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
 
 export default function AdvancedSearchHelpContents() {
+  const theme = useTheme();
+
   return (
-    <>
+    <Box
+      sx={{
+        width: '60ch',
+        padding: 3,
+        [theme.breakpoints.down('sm')]: {
+          width: 300,
+        },
+      }}
+    >
+      <StyledAdvancedHelpSectionTitle id="special_characters">
+        Special characters
+      </StyledAdvancedHelpSectionTitle>
       <ul>
         <li>
           <code>|</code> performs an <a href="#and_or">OR</a> search
@@ -144,6 +160,6 @@ export default function AdvancedSearchHelpContents() {
         <strong>zones</strong> and <strong>types</strong>&quot;.
       </p>
       <p>Have fun searching! 🙂</p>
-    </>
+    </Box>
   );
 }
