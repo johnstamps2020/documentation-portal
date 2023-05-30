@@ -31,6 +31,8 @@ export default function SearchFilterCheckboxList({
   });
 
   useEffect(() => {
+    // if there are no checked values, show the first 5
+    // if there are checked values, show all checked values
     const numberOfCheckedValues = values.filter(
       (value) => value.checked
     ).length;
