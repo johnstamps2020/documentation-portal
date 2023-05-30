@@ -11,9 +11,7 @@ export default function SearchPage() {
   return (
     <Layout title="Search results" headerOptions={{ hideSearchBox: true }}>
       <SearchLayoutContextProvider>
-        <Stack>
-          <FilterButton />
-        </Stack>
+        <FilterButton />
         <Stack
           direction="row"
           divider={<Divider orientation="vertical" flexItem />}

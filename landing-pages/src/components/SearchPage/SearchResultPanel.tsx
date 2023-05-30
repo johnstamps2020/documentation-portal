@@ -6,7 +6,6 @@ import Stack from '@mui/material/Stack';
 import PaginationControl from './PaginationControl';
 import AdvancedSearchHelpButton from './AdvancedSearchHelpButton';
 import AdvancedSearchHelpSection from './AdvancedSearchHelpSection';
-import Box from '@mui/material/Box';
 
 export default function SearchResultPanel() {
   return (
@@ -19,19 +18,17 @@ export default function SearchResultPanel() {
         scrollbarWidth: 'thin',
       }}
     >
-      <Box>
-        <Stack alignItems="center" sx={{ marginBottom: 3 }} spacing={2}>
-          <NotLoggedInAlert />
-          <SearchBox />
-          <AdvancedSearchHelpButton />
-        </Stack>
-        <Stack>
-          <LoadingSearchDataErrorAlert />
-          <SearchResultSection />
-        </Stack>
-        <PaginationControl />
-        <AdvancedSearchHelpSection />
-      </Box>
+      <Stack alignItems="center" sx={{ marginBottom: 3 }} spacing={2}>
+        <NotLoggedInAlert />
+        <SearchBox />
+        <AdvancedSearchHelpButton />
+      </Stack>
+      <Stack>
+        <LoadingSearchDataErrorAlert />
+        <SearchResultSection />
+      </Stack>
+      <PaginationControl />
+      <AdvancedSearchHelpSection />
     </Stack>
   );
 }
