@@ -18,7 +18,6 @@ export default function AppliedFilterControl({
 
   return (
     <Chip
-      size="small"
       label={value}
       onDelete={handleDelete}
       color="primary"

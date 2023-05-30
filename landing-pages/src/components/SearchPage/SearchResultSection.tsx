@@ -17,7 +17,12 @@ export default function SearchResultSection() {
 
   return (
     <>
-      <Stack direction="row" justifyContent="flex-start" alignItems="center">
+      <Stack
+        direction="row"
+        justifyContent="flex-start"
+        alignItems="center"
+        flexWrap={{ xs: 'wrap', sm: 'nowrap' }}
+      >
         <SearchResultSectionHeading />
         <Highlighter />
       </Stack>
@@ -26,6 +31,8 @@ export default function SearchResultSection() {
         justifyContent="space-between"
         alignItems="flex-start"
         sx={{ padding: '0.5rem 0 2rem 0.5rem' }}
+        flexWrap={{ xs: 'wrap', sm: 'nowrap' }}
+        gap={2}
       >
         <Stack spacing={1}>
           <NumberOfSearchResults />
