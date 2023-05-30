@@ -8,6 +8,7 @@ import {
   StyledAccordionSummary,
 } from './StyledSearchComponents';
 import SearchFilterCheckbox from './SearchFilterCheckbox';
+import SearchFilterCheckboxList from './SearchFilterCheckboxList';
 
 type SearchFilterProps = {
   serverSearchFilter: ServerSearchFilter;
@@ -42,15 +43,10 @@ export default function SearchFilter({
         {serverSearchFilter.values.length})
       </StyledAccordionSummary>
       <StyledAccordionDetails>
-        <FormGroup sx={{ gap: '8px' }}>
-          {serverSearchFilter.values.map((value) => (
-            <SearchFilterCheckbox
-              key={value.label}
-              name={serverSearchFilter.name}
-              value={value}
-            />
-          ))}
-        </FormGroup>
+        <SearchFilterCheckboxList
+          filterName={serverSearchFilter.name}
+          values={serverSearchFilter.values}
+        />
       </StyledAccordionDetails>
     </StyledAccordion>
   );
