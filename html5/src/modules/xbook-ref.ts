@@ -28,48 +28,68 @@ async function processKeyword(keyword: Element) {
     version = versionRegex.exec(citeClassName)[1];
   }
 
-  try {
-    const response = await fetch(
-      `/safeConfig/docUrl?products=${product}&versions=${version}&title=${docTitle}`
-    );
-    if (response.ok) {
-      const docInfo = await response.json();
-      if (docInfo.error) return;
-      let targetUrl = `/${docInfo.url}`;
-      const link = document.createElement('a');
+  // if the doc applies to multiple versions, look for matches with latest first
+  const versionArray = version.split(',').sort().reverse();
+  const link = await findDocLink(product, versionArray, docTitle, contextid);
 
-      if (contextid) {
-        let topicTitle;
-        let topicUrl = await getTopicUrl(docInfo.url, contextid);
-
-        if (topicUrl) {
-          targetUrl = targetUrl.concat(`/${topicUrl}`);
-          topicTitle = await getTopicTitle(targetUrl);
-        } else {
-          const targetTestUrl = targetUrl.concat(`/${contextid}`);
-          topicTitle = await getTopicTitle(targetTestUrl);
-          if (topicTitle) {
-            targetUrl = targetTestUrl;
-          }
-        }
-
-        if (topicTitle) {
-          if (document.documentElement.lang.toLowerCase() === 'en-us') {
-            link.setAttribute('title', `"${topicTitle}" in ${docTitle}`);
-          } else {
-            link.setAttribute('title', topicTitle);
-          }
-        }
-      }
-
-      link.setAttribute('href', targetUrl);
-      link.textContent = docTitle;
-      keyword.textContent = '';
-      keyword.appendChild(link);
-    }
-  } catch (err) {
-    console.error(err);
+  if (link) {
+    keyword.textContent = '';
+    keyword.appendChild(link);
   }
+}
+
+async function findDocLink(
+  product: string,
+  versionArray: string[],
+  docTitle: string,
+  contextid: string
+) {
+  let link = null;
+  for (const version of versionArray) {
+    console.log(version);
+    try {
+      const response = await fetch(
+        `/safeConfig/docUrl?products=${product}&versions=${version}&title=${docTitle}`
+      );
+      if (response.ok) {
+        const docInfo = await response.json();
+        if (docInfo.error) return;
+        let targetUrl = `/${docInfo.url}`;
+        link = document.createElement('a');
+
+        if (contextid) {
+          let topicTitle;
+          let topicUrl = await getTopicUrl(docInfo.url, contextid);
+
+          if (topicUrl) {
+            targetUrl = targetUrl.concat(`/${topicUrl}`);
+            topicTitle = await getTopicTitle(targetUrl);
+          } else {
+            const targetTestUrl = targetUrl.concat(`/${contextid}`);
+            topicTitle = await getTopicTitle(targetTestUrl);
+            if (topicTitle) {
+              targetUrl = targetTestUrl;
+            }
+          }
+
+          if (topicTitle) {
+            if (document.documentElement.lang.toLowerCase() === 'en-us') {
+              link.setAttribute('title', `"${topicTitle}" in ${docTitle}`);
+            } else {
+              link.setAttribute('title', topicTitle);
+            }
+          }
+        }
+
+        link.setAttribute('href', targetUrl);
+        link.textContent = docTitle;
+        return link;
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  return link;
 }
 
 async function getTopicUrl(url: string, contextid: string) {
