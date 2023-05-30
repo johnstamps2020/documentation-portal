@@ -12,6 +12,14 @@ import fetch from 'node-fetch';
 
 const router = Router();
 
+function isAdminUser(userGroups: string[]) {
+  const adminGroups = process.env.OKTA_ADMIN_GROUPS?.split(',') || [];
+  return (
+    adminGroups.length > 0 &&
+    adminGroups.some((adminGroup) => userGroups.includes(adminGroup))
+  );
+}
+
 fetch(`${process.env.OKTA_ISSUER!}/.well-known/openid-configuration`)
   .then((r) => r.json())
   .then((oktaIssuerDetails) => {
@@ -40,6 +48,13 @@ fetch(`${process.env.OKTA_ISSUER!}/.well-known/openid-configuration`)
         profile: UserinfoResponse,
         done: (err: any, user?: UserinfoResponse) => void
       ) {
+        profile.isAdmin = isAdminUser(profile.groups as string[]);
+        /*
+        Keeping info about groups in the user profile increases the size of the session cookie significantly.
+        For some users, it was not possible to set the session cookie because it exceeded the maximum size
+        allowed by the browser (4096 bytes).
+        */
+        delete profile.groups;
         return done(null, profile);
       }
     );

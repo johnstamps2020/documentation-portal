@@ -26,6 +26,7 @@ export type ReqUser = {
   name: string;
   email: string;
   locale: string;
+  isAdmin: boolean;
   groups: string[];
 };
 
@@ -39,14 +40,6 @@ function getUserName(user: ReqUser) {
   }
 
   return 'Unnamed User';
-}
-
-function isAdminUser(user: ReqUser) {
-  const adminGroups = process.env.OKTA_ADMIN_GROUPS?.split(',') || [];
-  return (
-    adminGroups.length > 0 &&
-    adminGroups.some((adminGroup) => user.groups.includes(adminGroup))
-  );
 }
 
 function isAdminAccessToken(accessToken: JwtPayload) {
@@ -93,7 +86,7 @@ export async function getUserInfo(req: Request): Promise<UserInfo> {
       preferred_username: email,
       hasGuidewireEmail: belongsToGuidewire(email),
       locale: user.locale,
-      isAdmin: isAdminUser(user),
+      isAdmin: user.isAdmin,
     };
   } catch (err) {
     winstonLogger.error(
