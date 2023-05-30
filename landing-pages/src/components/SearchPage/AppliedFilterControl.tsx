@@ -17,6 +17,12 @@ export default function AppliedFilterControl({
   }
 
   return (
-    <Chip size="small" label={value} onDelete={handleDelete} color="primary" />
+    <Chip
+      size="small"
+      label={value}
+      onDelete={handleDelete}
+      color="primary"
+      sx={{ borderRadius: 1 }}
+    />
   );
 }
