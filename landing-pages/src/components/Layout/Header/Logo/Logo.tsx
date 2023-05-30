@@ -3,7 +3,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/material/Link';
 import { ReactComponent as LogoLarge } from './img/gw-docs-logo-impact-color.svg';
-import smallLogo from './img/logo41.png';
+import smallLogo from './img/logo-white.svg';
 
 export default function Logo() {
   const theme = useTheme();
