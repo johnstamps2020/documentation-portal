@@ -5,45 +5,43 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import { useSearchData } from 'hooks/useApi';
-import Skeleton from '@mui/material/Skeleton';
+import AppliedFiltersSkeleton from './AppliedFiltersSkeleton';
+import { useEffect, useState } from 'react';
 
 export default function AppliedFilters() {
   const { searchData, isLoading, isError } = useSearchData();
+  const [checkedFilters, setCheckedFilters] = useState<ServerSearchFilter[]>();
+
+  useEffect(() => {
+    if (searchData) {
+      const currentlyChecked = searchData.filters
+        .map((f) => {
+          const checkedValues = f.values.filter((v) => v.checked);
+          if (checkedValues.length > 0) {
+            return {
+              ...f,
+              values: checkedValues,
+            };
+          }
+          return null;
+        })
+        .filter(Boolean) as ServerSearchFilter[];
+
+      if (currentlyChecked.length > 0) {
+        setCheckedFilters(currentlyChecked);
+      } else {
+        setCheckedFilters([]);
+      }
+    }
+  }, [searchData?.filters]);
+
   if (!searchData || isLoading) {
-    return (
-      <Stack direction="row" spacing={1}>
-        <Skeleton
-          variant="rectangular"
-          sx={{
-            width: { sm: '110px', xs: '100%' },
-            height: '24px',
-          }}
-        />
-        <Skeleton
-          variant="circular"
-          sx={{
-            width: { sm: '45px', xs: '100%' },
-            height: '24px',
-          }}
-        />
-      </Stack>
-    );
+    return <AppliedFiltersSkeleton />;
   }
+
   if (isError) {
     return null;
   }
-  const checkedFilters = searchData.filters
-    .map((f) => {
-      const checkedValues = f.values.filter((v) => v.checked);
-      if (checkedValues.length > 0) {
-        return {
-          ...f,
-          values: checkedValues,
-        };
-      }
-      return null;
-    })
-    .filter(Boolean) as ServerSearchFilter[];
 
   const ListItem = styled('li')(() => ({
     margin: '0 4px 6px 0',
@@ -66,17 +64,17 @@ export default function AppliedFilters() {
         component="ul"
         elevation={0}
       >
-        {checkedFilters.length > 0 ? (
+        {checkedFilters && checkedFilters.length > 0 ? (
           checkedFilters.map((f) =>
             f.values.map((v) => (
               <ListItem key={v.label}>
-                <Chip size="small" label={v.label} color="primary" />
+                <Chip size="small" label={v.label} />
               </ListItem>
             ))
           )
         ) : (
           <ListItem key="none">
-            <Chip size="small" label="None" color="primary" />
+            <Typography>None</Typography>
           </ListItem>
         )}
       </Paper>
