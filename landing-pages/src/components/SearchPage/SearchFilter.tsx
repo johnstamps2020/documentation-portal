@@ -3,7 +3,6 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import { ServerSearchFilter } from 'server/dist/types/serverSearch';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useLocation, useNavigate } from 'react-router-dom';
 import React from 'react';
 import Stack from '@mui/material/Stack';
 import Chip from '@mui/material/Chip';
@@ -26,9 +25,6 @@ export default function SearchFilter({
   onChange,
 }: SearchFilterProps) {
   const { modifyFilterValue } = useQueryParameters();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const query = new URLSearchParams(location.search);
 
   function handleAccordionExpandCollapse(
     event: React.SyntheticEvent,
