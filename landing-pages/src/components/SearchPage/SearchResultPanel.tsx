@@ -11,6 +11,7 @@ export default function SearchResultPanel() {
   return (
     <Stack
       sx={{
+        position: 'relative',
         padding: { xs: '12px', sm: '32px' },
         height: '100vh',
         width: '100%',
