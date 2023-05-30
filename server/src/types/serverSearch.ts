@@ -30,13 +30,15 @@ export type ServerSearchInnerHit = {
   tags: string[];
 };
 
+export type ServerSearchFilterValue = {
+  label: string;
+  doc_count: number;
+  checked: boolean;
+};
+
 export type ServerSearchFilter = {
   name: string;
-  values: {
-    label: string;
-    doc_count: number;
-    checked: boolean;
-  }[];
+  values: ServerSearchFilterValue[];
 };
 
 export type ServerSearchError = {
