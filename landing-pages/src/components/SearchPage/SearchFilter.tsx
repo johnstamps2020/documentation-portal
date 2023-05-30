@@ -51,15 +51,9 @@ export default function SearchFilter({
         aria-controls="search-filter-panel-content"
         id="search-filter-panel-header"
       >
-        {serverSearchFilter.name.replace('_', ' ')}
-        <Chip
-          label={`${
-            serverSearchFilter.values.filter((v) => v.checked).length
-          }/${serverSearchFilter.values.length}`}
-          size="small"
-          variant="outlined"
-          sx={{ marginLeft: '8px', border: '1px solid' }}
-        />
+        {serverSearchFilter.name.replace('_', ' ')} (
+        {serverSearchFilter.values.filter((v) => v.checked).length}/
+        {serverSearchFilter.values.length})
       </StyledAccordionSummary>
       <StyledAccordionDetails>
         <FormGroup sx={{ gap: '8px' }}>

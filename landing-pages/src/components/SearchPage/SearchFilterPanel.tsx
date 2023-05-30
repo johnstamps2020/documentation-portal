@@ -52,9 +52,11 @@ export default function SearchFilterPanel() {
     }
     setAllSearchFiltersExpandStatus(updatedAllSearchFiltersExpandStatus);
   }
+
   if (isError) {
     return null;
   }
+
   return (
     <Stack
       sx={{
