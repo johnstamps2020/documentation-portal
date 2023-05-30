@@ -10,12 +10,17 @@ import Link, { LinkProps } from '@mui/material/Link';
 import { styled } from '@mui/material/styles';
 import Typography, { TypographyProps } from '@mui/material/Typography';
 
-export const StyledHeading1 = styled(Typography)<TypographyProps>(() => ({
-  fontSize: 40,
-  textAlign: 'left',
-  color: 'black',
-  fontWeight: 600,
-}));
+export const StyledHeading1 = (props: TypographyProps) => (
+  <Typography
+    sx={{
+      fontSize: { xs: 30, sm: 40 },
+      textAlign: 'left',
+      color: 'black',
+      fontWeight: 600,
+    }}
+    {...props}
+  />
+);
 
 export const StyledHeading2 = styled(Typography)<TypographyProps>(() => ({
   fontWeight: 600,
