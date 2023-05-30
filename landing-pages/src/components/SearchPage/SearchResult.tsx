@@ -46,7 +46,7 @@ export default function SearchResult(searchResult: ServerSearchResult) {
         >
           {searchResult.docTags.flat().map((t, tIndex) => (
             <ListItem key={tIndex}>
-              <Chip label={t} variant="filled" size="small" color="primary" />
+              <Chip label={t} variant="filled" size="small" />
             </ListItem>
           ))}
         </Paper>
