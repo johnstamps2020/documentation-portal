@@ -39,14 +39,6 @@ export default function AdvancedSearchHelpSection() {
       onClose={() => setIsHelpExpanded(false)}
       anchor="right"
       variant={isMobile ? 'temporary' : 'persistent'}
-      sx={{
-        '& .MuiDrawer-root': {
-          position: 'absolute',
-        },
-        '& .MuiPaper-root': {
-          position: 'absolute',
-        },
-      }}
     >
       <DrawerHeader>
         <IconButton onClick={handleClose} aria-label="close help panel">
