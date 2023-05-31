@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import Layout from 'components/Layout/Layout';
+import Layout, { mainHeight } from 'components/Layout/Layout';
 import { lazy, Suspense, useEffect } from 'react';
 import { Theme } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
@@ -53,7 +53,9 @@ export default function LandingPage() {
         )}
       </>
       <Suspense
-        fallback={<Skeleton variant="rounded" width="100%" height="100vh" />}
+        fallback={
+          <Skeleton variant="rounded" width="100%" height={mainHeight} />
+        }
       >
         <PageComponent title={pageData.title} />
       </Suspense>

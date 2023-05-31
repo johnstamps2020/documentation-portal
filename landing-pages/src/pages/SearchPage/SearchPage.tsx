@@ -1,4 +1,4 @@
-import Layout from 'components/Layout/Layout';
+import Layout, { mainHeight } from 'components/Layout/Layout';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
 import SearchPageBackdrop from 'components/SearchPage/SearchPageBackdrop';
@@ -17,7 +17,7 @@ export default function SearchPage() {
           divider={<Divider orientation="vertical" flexItem />}
           justifyContent="flex-start"
           width="100%"
-          minHeight="100vh"
+          minHeight={mainHeight}
         >
           <SearchFilterLayout />
           <SearchResultPanel />

@@ -39,9 +39,7 @@ export default function LandingPageLink({
         </Link>
       )}
       {landingPageItem.videoIcon && <VideoIcon />}
-      {landingPageItem.internal && (
-        <InternalTooltip key={landingPageItem.label} />
-      )}
+      {landingPageItem.internal && <InternalTooltip />}
     </Stack>
   );
 }
