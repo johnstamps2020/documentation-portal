@@ -3,8 +3,7 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Layout from 'components/Layout/Layout';
-import { headerHeight } from 'components/Layout/Header/Header';
+import Layout, { mainHeight } from 'components/Layout/Layout';
 
 export default function SupportPage() {
   return (
@@ -12,7 +11,7 @@ export default function SupportPage() {
       <Grid
         container
         sx={{
-          minHeight: `calc(100vh - ${headerHeight})`,
+          minHeight: mainHeight,
           background: 'linear-gradient(135deg, white, lightblue)',
           padding: '2rem',
         }}

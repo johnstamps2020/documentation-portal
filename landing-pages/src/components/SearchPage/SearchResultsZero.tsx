@@ -13,7 +13,13 @@ export default function SearchResultsZero() {
   }
 
   return (
-    <Stack direction="row" spacing={2} alignItems="center">
+    <Stack
+      direction="row"
+      spacing={{ xs: 0, sm: 2 }}
+      gap={2}
+      alignItems="center"
+      flexWrap={{ xs: 'wrap', sm: 'nowrap' }}
+    >
       <Typography>
         Sorry, your search for "{searchData?.searchPhrase}" returned no results
       </Typography>

@@ -63,11 +63,11 @@ export default function CategoryCard({
         {label}
       </Typography>
       <Stack spacing={1} sx={{ fontSize: '0.875rem', color: 'black' }}>
-        {landingPageItems?.map((categoryItem) => (
-          <LandingPageItem {...categoryItem} key={categoryItem.label} />
+        {landingPageItems?.map((categoryItem, idx) => (
+          <LandingPageItem {...categoryItem} key={idx} />
         ))}
-        {sections?.map((section) => (
-          <CategorySection {...section} key={section.label} />
+        {sections?.map((section, idx) => (
+          <CategorySection {...section} key={idx} />
         ))}
       </Stack>
     </Paper>

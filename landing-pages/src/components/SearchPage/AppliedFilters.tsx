@@ -49,12 +49,7 @@ export default function AppliedFilters() {
   }));
 
   return (
-    <Stack
-      direction="row"
-      spacing={1}
-      gap={2}
-      flexWrap={{ xs: 'wrap', sm: 'nowrap' }}
-    >
+    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} gap={2}>
       <Typography sx={{ padding: 0, minWidth: '110px' }}>
         Applied filters:
       </Typography>

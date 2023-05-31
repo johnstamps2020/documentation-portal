@@ -12,6 +12,7 @@ import LandingPageSelector, {
   LandingPageSelectorProps,
 } from 'components/LandingPage/LandingPageSelector';
 import EditPagePropsButton from '../EditPagePropsButton';
+import { mainHeight } from 'components/Layout/Layout';
 
 export type SectionLayoutProps = LandingPageLayoutProps & {
   sections: SectionProps[];
@@ -37,7 +38,7 @@ export default function SectionLayout({
       gap={5}
       alignContent="center"
       sx={{
-        minHeight: '100vh',
+        minHeight: mainHeight,
         backgroundColor: 'hsl(0, 0%, 98%)',
       }}
     >

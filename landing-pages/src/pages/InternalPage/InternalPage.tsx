@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Layout from 'components/Layout/Layout';
+import Layout, { mainHeight } from 'components/Layout/Layout';
 import { headerHeight } from 'components/Layout/Header/Header';
 import Container from '@mui/material/Container';
 import { useUserInfo } from 'hooks/useApi';
@@ -47,7 +47,7 @@ export default function InternalPage() {
       <Grid
         container
         sx={{
-          minHeight: `calc(100vh - ${headerHeight})`,
+          minHeight: mainHeight,
           background: 'linear-gradient(135deg, white, lightblue)',
           padding: '2rem',
         }}

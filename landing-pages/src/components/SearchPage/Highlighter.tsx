@@ -39,9 +39,10 @@ export default function Highlighter() {
     );
   }
 
-  if (isError) {
+  if (isError || searchData.totalNumOfResults === 0) {
     return null;
   }
+
   return (
     <>
       <GlobalStyles
