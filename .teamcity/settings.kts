@@ -5139,7 +5139,7 @@ object GwBuildSteps {
                     
                     $awsEnvVars
                     
-                    Echo Syncing the $dirName directory...
+                    echo Syncing the $dirName directory...
                     aws s3 sync "s3://tenant-doctools-${GwDeployEnvs.STAGING.envName}-builds/${dirName}" "s3://tenant-doctools-${GwDeployEnvs.DEV.envName}-builds/${dirName}" --delete --only-show-errors
                 """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
