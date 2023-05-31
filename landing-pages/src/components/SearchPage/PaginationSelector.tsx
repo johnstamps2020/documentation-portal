@@ -24,7 +24,7 @@ export default function PaginationSelector() {
     });
   }
 
-  if (isError) {
+  if (isError || searchData?.totalNumOfResults === 0) {
     return null;
   }
 
