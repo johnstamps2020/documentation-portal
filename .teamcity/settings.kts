@@ -1644,6 +1644,8 @@ object Content {
             step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("cloud"))
             step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("self-managed"))
         }
+
+        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
     })
 
 }
@@ -1729,6 +1731,8 @@ object Frontend {
         steps {
             step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("pages"))
         }
+
+        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
     })
 
     private fun createDeployReactLandingPagesBuildType(deployEnv: String): BuildType {
