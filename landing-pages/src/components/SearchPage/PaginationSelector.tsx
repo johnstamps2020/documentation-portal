@@ -24,7 +24,7 @@ export default function PaginationSelector() {
     });
   }
 
-  if (isError) {
+  if (isError || searchData?.totalNumOfResults === 0) {
     return null;
   }
 
@@ -34,7 +34,7 @@ export default function PaginationSelector() {
     );
   }
   return (
-    <Box sx={{ minWidth: '80px', width: '80px' }}>
+    <Box sx={{ minWidth: '80px' }}>
       <FormControl size="small" fullWidth>
         <InputLabel>View items</InputLabel>
         <Select

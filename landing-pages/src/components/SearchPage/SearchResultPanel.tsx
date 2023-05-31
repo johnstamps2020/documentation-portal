@@ -1,10 +1,12 @@
 import NotLoggedInAlert from './NotLoggedInAlert';
 import SearchBox from 'components/SearchBox/SearchBox';
-import AdvancedSearchHelp from './AdvancedSearchHelp';
 import LoadingSearchDataErrorAlert from './LoadingSearchDataErrorAlert';
-import SearchResults from './SearchResults';
+import SearchResultSection from './SearchResultSection';
 import Stack from '@mui/material/Stack';
 import PaginationControl from './PaginationControl';
+import AdvancedSearchHelpButton from './AdvancedSearchHelpButton';
+import AdvancedSearchHelpSection from './AdvancedSearchHelpSection';
+import Container from '@mui/material/Container';
 
 export default function SearchResultPanel() {
   return (
@@ -17,16 +19,19 @@ export default function SearchResultPanel() {
         scrollbarWidth: 'thin',
       }}
     >
-      <Stack alignItems="center" sx={{ marginBottom: 3 }} spacing={2}>
-        <NotLoggedInAlert />
-        <SearchBox />
-        <AdvancedSearchHelp />
-      </Stack>
-      <Stack>
-        <LoadingSearchDataErrorAlert />
-        <SearchResults />
-      </Stack>
-      <PaginationControl />
+      <Container>
+        <Stack alignItems="center" sx={{ marginBottom: 3 }} spacing={2}>
+          <NotLoggedInAlert />
+          <SearchBox />
+          <AdvancedSearchHelpButton />
+        </Stack>
+        <Stack>
+          <LoadingSearchDataErrorAlert />
+          <SearchResultSection />
+        </Stack>
+        <PaginationControl />
+        <AdvancedSearchHelpSection />
+      </Container>
     </Stack>
   );
 }
