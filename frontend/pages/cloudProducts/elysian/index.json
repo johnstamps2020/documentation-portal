@@ -76,12 +76,8 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Cloud Data Access",
-          "page": "../cloudDataAccess/latest"
-        },
-        {
           "label": "Data Platform",
-          "id": "dataplatform"
+          "page": "../dataPlatform"
         },
         {
           "label": "DataHub",
