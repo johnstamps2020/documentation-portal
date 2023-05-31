@@ -1318,6 +1318,7 @@ object Content {
             subProject(createDeployServerConfigProject())
             subProject(createDeployContentStorageProject())
             buildType(UploadPdfsForEscrowBuildType)
+            buildType(SyncDocsFromStagingToDev)
         }
     }
 
@@ -1635,6 +1636,16 @@ object Content {
         }
     })
 
+    object SyncDocsFromStagingToDev : BuildType({
+        name = "Sync docs from staging to dev"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        steps {
+            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("cloud"))
+            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("self-managed"))
+        }
+    })
+
 }
 
 object Frontend {
@@ -1689,8 +1700,9 @@ object Frontend {
             name = "Deploy landing pages"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
+            buildType(SyncLandingPagesFromStagingToDev)
             arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
+                GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createDeployLandingPagesBuildType(it.envName))
             }
@@ -1709,6 +1721,15 @@ object Frontend {
             }
         }
     }
+
+    object SyncLandingPagesFromStagingToDev : BuildType({
+        name = "Sync landing pages from staging to dev"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        steps {
+            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("pages"))
+        }
+    })
 
     private fun createDeployReactLandingPagesBuildType(deployEnv: String): BuildType {
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
@@ -1976,7 +1997,9 @@ object Frontend {
                 step(GwBuildSteps.MergeDocsConfigFilesStep)
                 step(
                     GwBuildSteps.createRunFlailSsgStep(
-                        pagesDir, outputDir, if (deployEnv == GwDeployEnvs.DEV.envName) GwDeployEnvs.STAGING.envName else deployEnv
+                        pagesDir,
+                        outputDir,
+                        deployEnv
                     )
                 )
                 step(
@@ -5099,6 +5122,26 @@ object GwBuildSteps {
                 
                 $deployCommand
             """.trimIndent()
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+        }
+    }
+
+    fun createSyncDataFromStagingS3BucketToDevS3BucketStep(dirName: String): ScriptBuildStep {
+        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
+        return ScriptBuildStep {
+            name = "Sync $dirName from staging S3 bucket to dev S3 bucket"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                    
+                    $awsEnvVars
+                    
+                    Echo Syncing the $dirName directory...
+                    aws s3 sync "s3://tenant-doctools-${GwDeployEnvs.STAGING.envName}-builds/${dirName}" "s3://tenant-doctools-${GwDeployEnvs.DEV.envName}-builds/${dirName}" --delete --only-show-errors
+                """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
