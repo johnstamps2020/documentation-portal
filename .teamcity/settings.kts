@@ -1976,7 +1976,7 @@ object Frontend {
                 step(GwBuildSteps.MergeDocsConfigFilesStep)
                 step(
                     GwBuildSteps.createRunFlailSsgStep(
-                        pagesDir, outputDir, deployEnv
+                        pagesDir, outputDir, if (deployEnv == GwDeployEnvs.DEV.envName) GwDeployEnvs.STAGING.envName else deployEnv
                     )
                 )
                 step(
@@ -2539,7 +2539,7 @@ object Server {
         var elasticsearchUrl = ""
         var oktaDomain = ""
         var oktaIssuer = ""
-        var enableAuth="yes"
+        var enableAuth = "yes"
         when (deployEnv) {
             GwDeployEnvs.DEV.envName -> {
                 docportalBaseUrl = "https://$appName.${GwDeployEnvs.DEV.envName}.ccs.guidewire.net"
@@ -2701,14 +2701,14 @@ object Server {
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
 
-            deployServerBuildType.triggers {
-                vcs {
-                    triggerRules = """
+        deployServerBuildType.triggers {
+            vcs {
+                triggerRules = """
                     +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/**
                     -:user=doctools:**
                     """.trimIndent()
-                }
             }
+        }
         return deployServerBuildType
     }
 
