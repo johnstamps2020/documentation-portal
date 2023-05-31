@@ -2,6 +2,8 @@ import Header, { headerHeight } from './Header/Header';
 import Footer from './Footer';
 import Box from '@mui/material/Box';
 
+export const mainHeight = `calc(100vh - ${headerHeight})`;
+
 export type HeaderOptions = {
   searchFilters?: { [key: string]: string[] };
   hideSearchBox?: boolean;
@@ -30,7 +32,7 @@ export default function Layout({
       <main style={{ backgroundColor }}>
         <Box
           sx={{
-            minHeight: { xs: 'auto', sm: `calc(100vh - ${headerHeight})` },
+            minHeight: { xs: 'auto', sm: mainHeight },
           }}
         >
           {children}

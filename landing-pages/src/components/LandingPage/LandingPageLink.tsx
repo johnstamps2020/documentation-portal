@@ -37,9 +37,7 @@ export default function LandingPageLink({
           {landingPageItem.label}
         </Link>
       )}
-      {landingPageItem.internal && (
-        <InternalTooltip key={landingPageItem.label} />
-      )}
+      {landingPageItem.internal && <InternalTooltip />}
     </Stack>
   );
 }

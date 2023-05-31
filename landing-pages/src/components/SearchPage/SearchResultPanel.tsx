@@ -7,13 +7,14 @@ import PaginationControl from './PaginationControl';
 import AdvancedSearchHelpButton from './AdvancedSearchHelpButton';
 import AdvancedSearchHelpSection from './AdvancedSearchHelpSection';
 import Container from '@mui/material/Container';
+import { mainHeight } from 'components/Layout/Layout';
 
 export default function SearchResultPanel() {
   return (
     <Stack
       sx={{
         padding: { xs: '12px', sm: '32px' },
-        height: '100vh',
+        height: mainHeight,
         width: '100%',
         overflow: 'scroll',
         scrollbarWidth: 'thin',

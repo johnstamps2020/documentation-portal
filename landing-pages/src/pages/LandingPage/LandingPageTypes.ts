@@ -1,8 +1,10 @@
+import { mainHeight } from 'components/Layout/Layout';
+
 export const baseBackgroundProps = {
   backgroundAttachment: 'fixed',
   backgroundPosition: 'bottom-right',
   backgroundSize: 'cover',
-  minHeight: '100vh',
+  minHeight: mainHeight,
 };
 
 export type LandingPageProps = {

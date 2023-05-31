@@ -6,6 +6,7 @@ import ClearFilterButton from './ClearFiltersButton';
 import { StyledButton } from './StyledSearchComponents';
 import { useSearchData } from 'hooks/useApi';
 import FilterItemsSkeleton from './FilterItemsSkeleton';
+import { mainHeight } from 'components/Layout/Layout';
 
 export type SearchFilterExpandStatus = {
   filterName: string;
@@ -62,7 +63,7 @@ export default function SearchFilterPanel() {
       sx={{
         minWidth: '300px',
         maxWidth: '300px',
-        height: '100vh',
+        height: mainHeight,
         overflow: 'scroll',
         scrollbarWidth: 'thin',
         padding: { xs: '8px 8px', sm: '16px 16px' },
