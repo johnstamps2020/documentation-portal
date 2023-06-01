@@ -30,6 +30,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "What's New for Self-Managed Implementations",
           url: 'https://www.brainshark.com/1/player/guidewire?pi=zGSzK26rDzeZ1oz0&r3f1=&fb=0',
+          videoIcon: true
         },
         {
           label: 'PolicyCenter',

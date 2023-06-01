@@ -7,6 +7,7 @@ export type LandingPageItemData = {
   title?: string;
   url?: string;
   path?: string;
+  videoIcon?: boolean;
   internal: boolean;
   earlyAccess: boolean;
   isInProduction: boolean;
@@ -35,6 +36,7 @@ const landingPageItemGetter = async (
         ...jsonData,
         label: item.label || jsonData.label,
         title: item.label || jsonData.title,
+        videoIcon: item.videoIcon,
       });
     }
   }

@@ -26,6 +26,7 @@ export type LandingPageItemProps = {
   docId?: string;
   pagePath?: string;
   url?: string;
+  videoIcon?: boolean;
 };
 
 export type SidebarProps = {

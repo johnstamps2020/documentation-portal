@@ -16,6 +16,7 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'Highlights Video',
           url: 'https://www.brainshark.com/1/player/guidewire?pi=zISzx7slszM6iUz0&r3f1=&fb=0',
+          videoIcon: true
         },
       ],
     },
@@ -46,6 +47,7 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'Release Video',
           url: 'https://www.brainshark.com/guidewire/vu?pi=zGCzZHe5LzcT3Fz0',
+          videoIcon: true
         },
         {
           label: 'Studio Release Notes',
