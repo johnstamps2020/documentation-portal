@@ -23,7 +23,9 @@ const landingPageItemGetter = async (
     } else if (item.pagePath) {
       urlSuffix = `Page?path=${item.pagePath}`;
     } else {
-      urlSuffix = `ExternalLink?url=${item.url}`;
+      if (item.url) {
+        urlSuffix = `ExternalLink?url=${encodeURIComponent(item.url)}`;
+      }
     }
 
     const response = await fetch(`/safeConfig/entity/${urlSuffix}`);

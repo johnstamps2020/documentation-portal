@@ -10,6 +10,7 @@ import {
   legacyBuildsConfigFile,
   legacyDocConfig,
   legacyDocsConfigFile,
+  legacyItem,
   legacyPageConfig,
   legacySourceConfig,
   legacySourcesConfigFile,
@@ -24,6 +25,7 @@ import { Subject } from '../model/entity/Subject';
 import { Request } from 'express';
 import { ApiResponse } from '../types/apiResponse';
 import { ObjectLiteral } from 'typeorm';
+import { ExternalLink } from '../model/entity/ExternalLink';
 
 export async function getLegacyConfigs(req: Request): Promise<ApiResponse> {
   const { configType } = req.params;
@@ -315,6 +317,62 @@ export async function putConfigsInDatabase(req: Request): Promise<ApiResponse> {
   };
 }
 
+async function putExternalLinksInDatabase(
+  pageItems: legacyItem[]
+): Promise<ApiResponse> {
+  try {
+    const dbExternalLinkConfigs = [];
+    const failedDbExternalLinkConfigs = [];
+    for (const pageItem of pageItems) {
+      if (pageItem.items) {
+        for (const innerItem of pageItem.items) {
+          const externalLink = innerItem.link;
+          if (externalLink) {
+            const dbExternalLinkConfig = new ExternalLink();
+            dbExternalLinkConfig.url = externalLink;
+            dbExternalLinkConfig.label = innerItem.label;
+            dbExternalLinkConfig.public = false;
+            dbExternalLinkConfig.isInProduction = false;
+            dbExternalLinkConfig.earlyAccess = false;
+            dbExternalLinkConfig.internal = false;
+            
+            const externalLinkResult = await saveEntity(
+              ExternalLink.name,
+              dbExternalLinkConfig
+            );
+            if (externalLinkResult) {
+              dbExternalLinkConfigs.push(externalLinkResult);
+            } else {
+              failedDbExternalLinkConfigs.push(externalLinkResult);
+            }
+          }
+        }
+      }
+    }
+    if (failedDbExternalLinkConfigs.length > 0) {
+      return {
+        status: 206,
+        body: {
+          message: 'Unable to load some of the external links to the database',
+          failureDetails: failedDbExternalLinkConfigs,
+          loadedSourceConfigs: dbExternalLinkConfigs,
+        },
+      };
+    }
+    return {
+      status: 200,
+      body: dbExternalLinkConfigs,
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      body: {
+        message: `Cannot put external link config in DB: ${err}`,
+      },
+    };
+  }
+}
+
 async function putPageConfigsInDatabase(): Promise<ApiResponse> {
   try {
     const isDevMode = runningInDevMode();
@@ -371,6 +429,7 @@ async function putPageConfigsInDatabase(): Promise<ApiResponse> {
       if (legacySearchFilters) {
         dbPageConfig.searchFilters = legacySearchFilters;
       }
+      putExternalLinksInDatabase(page.items);
       const result = await saveEntity(Page.name, dbPageConfig);
       if (result) {
         dbPageConfigs.push(result);
@@ -396,7 +455,7 @@ async function putPageConfigsInDatabase(): Promise<ApiResponse> {
     return {
       status: 500,
       body: {
-        message: `Cannot put source config in DB: ${err}`,
+        message: `Cannot put page config in DB: ${err}`,
       },
     };
   }
