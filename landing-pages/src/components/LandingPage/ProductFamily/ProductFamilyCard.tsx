@@ -36,6 +36,7 @@ export default function ProductFamilyCard(item: LandingPageItemProps) {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+        textAlign: 'center',
       }}
     >
       <LandingPageLink landingPageItem={landingPageItems[0]} sx={sx} />
