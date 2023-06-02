@@ -44,7 +44,10 @@ export default function Category2Card({
       <Divider />
       <Stack spacing={1} sx={{ fontSize: '0.875rem', color: 'black' }}>
         {landingPageItems?.map((categoryItem) => (
-          <Category2Item {...categoryItem} key={categoryItem.label} />
+          <Category2Item
+            {...categoryItem}
+            key={`${categoryItem.label}_${categoryItem.internal}`}
+          />
         ))}
       </Stack>
     </Paper>

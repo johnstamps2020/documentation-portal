@@ -22,8 +22,11 @@ export default function CategorySection({
   return (
     <Stack spacing={1}>
       <Typography variant="h3">{label}</Typography>
-      {landingPageItems?.map((sectionItem) => (
-        <CategoryItem {...sectionItem} key={sectionItem.label} />
+      {landingPageItems?.map((categoryItem) => (
+        <CategoryItem
+          {...categoryItem}
+          key={`${categoryItem.label}_${categoryItem.internal}`}
+        />
       ))}
     </Stack>
   );

@@ -79,7 +79,10 @@ export default function Section({ label, items }: SectionProps) {
       </Stack>
       <Stack spacing={1} paddingLeft="40px">
         {landingPageItems?.map((sectionItem) => (
-          <SectionItem {...sectionItem} key={sectionItem.label} />
+          <SectionItem
+            {...sectionItem}
+            key={`${sectionItem.label}_${sectionItem.internal}`}
+          />
         ))}
       </Stack>
     </Stack>
