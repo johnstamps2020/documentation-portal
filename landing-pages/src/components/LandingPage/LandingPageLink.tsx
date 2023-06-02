@@ -3,6 +3,7 @@ import { LandingPageItemData } from 'hooks/useLandingPageItems';
 import Link, { LinkProps } from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
 import InternalTooltip from './InternalTooltip';
+import VideoIcon from './VideoIcon';
 
 type LandingPageLinkProps = {
   landingPageItem: LandingPageItemData;
@@ -37,6 +38,7 @@ export default function LandingPageLink({
           {landingPageItem.label}
         </Link>
       )}
+      {landingPageItem.videoIcon && <VideoIcon />}
       {landingPageItem.internal && <InternalTooltip />}
     </Stack>
   );

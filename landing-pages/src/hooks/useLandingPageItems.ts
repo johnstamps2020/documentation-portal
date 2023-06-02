@@ -7,6 +7,7 @@ export type LandingPageItemData = {
   title?: string;
   url?: string;
   path?: string;
+  videoIcon?: boolean;
   internal: boolean;
   earlyAccess: boolean;
   isInProduction: boolean;
@@ -23,7 +24,9 @@ const landingPageItemGetter = async (
     } else if (item.pagePath) {
       urlSuffix = `Page?path=${item.pagePath}`;
     } else {
-      urlSuffix = `ExternalLink?url=${item.url}`;
+      if (item.url) {
+        urlSuffix = `ExternalLink?url=${encodeURIComponent(item.url)}`;
+      }
     }
 
     const response = await fetch(`/safeConfig/entity/${urlSuffix}`);
@@ -33,6 +36,7 @@ const landingPageItemGetter = async (
         ...jsonData,
         label: item.label || jsonData.label,
         title: item.label || jsonData.title,
+        videoIcon: item.videoIcon,
       });
     }
   }
