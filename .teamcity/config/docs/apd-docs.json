@@ -124,6 +124,24 @@
       "public": false,
       "internal": false,
       "earlyAccess": true
+    },
+    {
+      "id": "apdclaimshakuba",
+      "title": "Advanced Product Designer for Claims Guide",
+      "url": "cloud/apdclaims/hakuba",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["2023.06"],
+        "subject": ["Configuration"],
+        "release": ["Hakuba"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
     }
   ]
 }

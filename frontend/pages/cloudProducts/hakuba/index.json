@@ -65,6 +65,18 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
+          "label": "PolicyCenter",
+          "page": "pcGwCloud/2023.06"
+        },
+        {
+          "label": "ClaimCenter",
+          "page": "ccGwCloud/2023.06"
+        },
+        {
+          "label": "BillingCenter",
+          "page": "bcGwCloud/2023.06"
+        },
+        {
           "label": "InsuranceNow",
           "page": "insuranceNow/2023.2"
         },
