@@ -6,6 +6,7 @@ import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 
 import styles from './index.module.css';
+import Explore from '@site/src/components/Explore';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -21,6 +22,7 @@ function HomepageHeader() {
           >
             Get started 🚀
           </Link>
+          <Explore />
         </div>
       </div>
     </header>
