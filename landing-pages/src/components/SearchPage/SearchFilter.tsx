@@ -1,4 +1,3 @@
-import FormGroup from '@mui/material/FormGroup';
 import { ServerSearchFilter } from 'server/dist/types/serverSearch';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react';
@@ -7,7 +6,6 @@ import {
   StyledAccordionDetails,
   StyledAccordionSummary,
 } from './StyledSearchComponents';
-import SearchFilterCheckbox from './SearchFilterCheckbox';
 import SearchFilterCheckboxList from './SearchFilterCheckboxList';
 
 type SearchFilterProps = {
