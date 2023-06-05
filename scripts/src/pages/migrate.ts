@@ -341,13 +341,11 @@ function getSidebar(flailConfig: FlailConfig) {
 
 function getReleaseSelector(flailConfig: FlailConfig) {
   const { level1Class } = getFlailClass(flailConfig);
-  if (level1Class.match('aspen')) {
-    return true;
-  }
-  if (level1Class.match('banff')) {
-    return true;
-  }
-  if (level1Class.match('cortina')) {
+  if (
+    level1Class.match('aspen') ||
+    level1Class.match('banff') ||
+    level1Class.match('cortina')
+  ) {
     return true;
   }
   return false;
