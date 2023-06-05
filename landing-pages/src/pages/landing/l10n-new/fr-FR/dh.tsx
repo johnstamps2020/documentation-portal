@@ -17,22 +17,27 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guide d'administration",
           url: '/l10n/fr-FR/dh/10.0.0/DH10-admin-fr.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guide de configuration DataHub',
           url: '/l10n/fr-FR/dh/10.0.0/DH10-config-fr.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guide des spécifications de données',
           url: '/l10n/fr-FR/dh/10.0.0/DH10-dataspec-fr.pdf',
+          videoIcon: false,
         },
         {
           label: "Guide d'installation",
           url: '/l10n/fr-FR/dh/10.0.0/DH10-install-fr.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guide de mise à niveau',
           url: '/l10n/fr-FR/dh/10.0.0/DH10-upgrade-fr.pdf',
+          videoIcon: false,
         },
       ],
     },

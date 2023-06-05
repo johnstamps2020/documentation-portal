@@ -17,22 +17,27 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guía de administración',
           url: '/l10n/es-LA/ic/10.0.0/IC10-admin-es.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de las aplicaciones BI',
           url: '/l10n/es-LA/ic/10.0.0/IC10-bi-applications-es.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de configuración de InfoCenter',
           url: '/l10n/es-LA/ic/10.0.0/IC10-config-es.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de Data Specifications',
           url: '/l10n/es-LA/ic/10.0.0/IC10-dataspec-es.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía del producto',
           url: '/l10n/es-LA/ic/10.0.0/IC10-product-es.pdf',
+          videoIcon: false,
         },
       ],
     },

@@ -26,10 +26,12 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Jutro SDK',
           url: '/jutro/sdk/next/docs/jutro-sdk-overview',
+          videoIcon: false,
         },
         {
           label: 'APD toolkit',
           url: '/jutro/sdk/next/docs/apd-overview',
+          videoIcon: false,
         },
       ],
     },

@@ -17,6 +17,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guía de Advanced Product Designer para PolicyCenter',
           url: '/l10n/es-ES/apd/2022.05/AdvancedProductDesigner_es-ES.pdf',
+          videoIcon: false,
         },
       ],
     },

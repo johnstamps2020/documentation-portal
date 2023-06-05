@@ -335,7 +335,7 @@ async function putExternalLinksInDatabase(
             dbExternalLinkConfig.isInProduction = false;
             dbExternalLinkConfig.earlyAccess = false;
             dbExternalLinkConfig.internal = false;
-            
+
             const externalLinkResult = await saveEntity(
               ExternalLink.name,
               dbExternalLinkConfig

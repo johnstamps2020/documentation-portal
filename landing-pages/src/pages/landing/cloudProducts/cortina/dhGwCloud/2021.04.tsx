@@ -20,6 +20,7 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'Log4j Patch Release Notes',
           url: '/dm/dh/DH2021_04_Patch3_ReleaseNotes.html',
+          videoIcon: false,
         },
       ],
     },

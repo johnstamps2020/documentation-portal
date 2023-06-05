@@ -17,6 +17,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Autenticazione con Guidewire Identity Federation Hub',
           url: '/l10n/it-IT/gwid/2021.04/IT-GW-FederationHub.pdf',
+          videoIcon: false,
         },
       ],
     },

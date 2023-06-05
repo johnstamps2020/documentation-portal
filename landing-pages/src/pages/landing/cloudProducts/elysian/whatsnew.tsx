@@ -16,7 +16,7 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'Highlights Video',
           url: 'https://www.brainshark.com/1/player/guidewire?pi=zISzx7slszM6iUz0&r3f1=&fb=0',
-          videoIcon: true
+          videoIcon: true,
         },
       ],
     },
@@ -47,7 +47,7 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'Release Video',
           url: 'https://www.brainshark.com/guidewire/vu?pi=zGCzZHe5LzcT3Fz0',
-          videoIcon: true
+          videoIcon: true,
         },
         {
           label: 'Studio Release Notes',
@@ -69,6 +69,7 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'Data Platform Release Notes',
           url: '/cloud/dataplatform/topics/c_rn-new-changed.html',
+          videoIcon: false,
         },
         {
           label: 'DataHub Release Notes',
@@ -119,6 +120,7 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'Jutro Release Notes',
           url: '/jutro/documentation/7.4.3/relnotes/r-elysian/',
+          videoIcon: false,
         },
       ],
     },

@@ -17,18 +17,22 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guide d'administration et de sécurité",
           url: '/l10n/fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE Claims admin&security-guide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guide du développeur',
           url: '/l10n/fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE Claims DevelopersGuide.pdf',
+          videoIcon: false,
         },
         {
           label: "Guide de l'application",
           url: '/l10n/fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE-Claims AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: "Guide d'installation",
           url: '/l10n/fr-FR/pe-claims/11.4.1/fr-FR-Digital v.11.4.1 PE-Claims InstallGuide.pdf',
+          videoIcon: false,
         },
       ],
     },

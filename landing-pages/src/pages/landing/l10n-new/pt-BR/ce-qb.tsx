@@ -17,6 +17,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guia de instalação',
           url: '/l10n/pt-BR/ce-qb/11.1/pt-CE_QB-onprem_InstallGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -26,22 +27,27 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guia de administração e segurança',
           url: '/l10n/pt-BR/ce-qb/10.0.1/pt-CE_QB_Admin and Security guide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guia do aplicativo',
           url: '/l10n/pt-BR/ce-qb/10.0.1/pt-CE_QB_AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guia de configuração',
           url: '/l10n/pt-BR/ce-qb/10.0.1/pt-CE_QB_ConfigurationGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guia de instalação',
           url: '/l10n/pt-BR/ce-qb/10.0.1/pt-CE_QB_InstallGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guia de instalação e configuração do Live Style Guide',
           url: '/l10n/pt-BR/ce-qb/10.0.1/pt-CE_QB_Live Style Guide Install and Config.pdf',
+          videoIcon: false,
         },
       ],
     },

@@ -48,14 +48,17 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guía de Advanced Product Designer',
           url: '/l10n/es-ES/pc/10.1.1/PC1011_es-ES_AdvancedProductDesigner.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de configuración',
           url: '/l10n/es-ES/pc/10.1.1/PC1011_es-ES_ConfigGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de instalación',
           url: '/l10n/es-ES/pc/10.1.1/PC1011_es-ES_InstallGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -65,10 +68,12 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guía de aplicaciones',
           url: '/l10n/es-ES/pc/10.0.2/esES-PC-AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de gestión de contactos de Guidewire',
           url: '/l10n/es-ES/pc/10.0.2/esES-PC-ContactMgmtGuide.pdf',
+          videoIcon: false,
         },
       ],
     },

@@ -17,11 +17,13 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guide d'authentification de l'API Cloud",
           url: '/l10n/fr-FR/cc/2021.11/CC v.2021.11 fr-FR CloudAPIGuide-Auth.pdf',
+          videoIcon: false,
         },
         {
           label:
             "Guide de configuration et de flux opérationnels de l'API Cloud",
           url: '/l10n/fr-FR/cc/2021.11/CC v.2021.11 fr-FR CloudAPIGuide-BusinessFlows.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -31,10 +33,12 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guide de configuration',
           url: '/l10n/fr-FR/cc/2020.11/CC_CL202011_fr-FR_ConfigGuide.pdf',
+          videoIcon: false,
         },
         {
           label: "Guide d'installation",
           url: '/l10n/fr-FR/cc/2020.11/CC_CL202011_fr-FR_InstallGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -44,10 +48,12 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guide de l'application",
           url: '/l10n/fr-FR/cc/2020.05/ISCL_202005_fr_CC-AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guide des personnes-ressources de Guidewire',
           url: '/l10n/fr-FR/cc/2020.05/ISCL_202005_fr_CC_ContactMgmtGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -57,10 +63,12 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guide de l'application",
           url: '/l10n/fr-FR/cc/10.1.1/CC-AppGuide_FR.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guide des personnes-ressources de Guidewire',
           url: '/l10n/fr-FR/cc/10.1.1/CC-ContactMgmtGuide_FR.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -70,22 +78,27 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guide de l'application",
           url: '/l10n/fr-FR/cc/10.0.2/CC-AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guide de configuration',
           url: '/l10n/fr-FR/cc/10.0.2/ConfigGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guide des personnes-ressources de Guidewire',
           url: '/l10n/fr-FR/cc/10.0.2/ContactMgmtGuide.pdf',
+          videoIcon: false,
         },
         {
           label: "Guide d'installation",
           url: '/l10n/fr-FR/cc/10.0.2/InstallGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guide des règles',
           url: '/l10n/fr-FR/cc/10.0.2/RulesGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -95,22 +108,27 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guide de l'application",
           url: '/l10n/fr-FR/cc/10.0.0/fr-CC-AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guide de configuration',
           url: '/l10n/fr-FR/cc/10.0.0/fr-CC-ConfigGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guide de gestion des contacts',
           url: '/l10n/fr-FR/cc/10.0.0/fr-CC-ContactMgmtGuide.pdf',
+          videoIcon: false,
         },
         {
           label: "Guide d'installation",
           url: '/l10n/fr-FR/cc/10.0.0/fr-CC-InstallGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guide des règles',
           url: '/l10n/fr-FR/cc/10.0.0/fr-CC-RulesGuide.pdf',
+          videoIcon: false,
         },
       ],
     },

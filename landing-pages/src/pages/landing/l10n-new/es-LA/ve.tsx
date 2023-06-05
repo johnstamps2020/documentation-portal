@@ -17,6 +17,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guía de la aplicación',
           url: '/l10n/es-LA/ve/2022.05/es-LA v.2022.05 VE_AppGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -26,6 +27,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guía de instalación',
           url: '/l10n/es-LA/ve/11.1/es-419-VE-onprem-InstallGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -35,18 +37,22 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guía de seguridad y administración',
           url: '/l10n/es-LA/ve/10.0.1/es-VE_admin-and-security-guide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de la aplicación',
           url: '/l10n/es-LA/ve/10.0.1/es-VE_AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de instalación',
           url: '/l10n/es-LA/ve/10.0.1/es-VE_InstallGuide-es.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de configuración e instalación de Live Style Guide',
           url: '/l10n/es-LA/ve/10.0.1/es-VE_LiveStyleGuide.pdf',
+          videoIcon: false,
         },
       ],
     },

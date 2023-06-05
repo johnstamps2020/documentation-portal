@@ -30,10 +30,12 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guía de configuración',
           url: '/l10n/es-LA/bc/2020.11/BCCloud202011_es-419_ConfigGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de instalación',
           url: '/l10n/es-LA/bc/2020.11/BCCloud202011_es-419_InstallGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -43,10 +45,12 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guía de aplicaciones',
           url: '/l10n/es-LA/bc/2020.05/ISCL_202005_ESLA_BC-AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de administración de contactos de Guidewire',
           url: '/l10n/es-LA/bc/2020.05/ISCL_202005_ESLA_BC_ContactMgmtGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -56,6 +60,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guía de aplicaciones',
           url: '/l10n/es-LA/bc/10.1.1/BC1011_es-419_AppGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -65,14 +70,17 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guía de aplicaciones',
           url: '/l10n/es-LA/bc/10.0.2/es-BC-AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de configuración',
           url: '/l10n/es-LA/bc/10.0.2/es-BC-ConfigGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de reglas',
           url: '/l10n/es-LA/bc/10.0.2/es-BC-RulesGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -82,22 +90,27 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guía de aplicaciones',
           url: '/l10n/es-LA/bc/10.0.0/es-BC-AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de configuración',
           url: '/l10n/es-LA/bc/10.0.0/es-BC-ConfigGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de administración de contactos',
           url: '/l10n/es-LA/bc/10.0.0/es-BC-ContactMgmtGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de instalación',
           url: '/l10n/es-LA/bc/10.0.0/es-BC-InstallGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de reglas',
           url: '/l10n/es-LA/bc/10.0.0/es-BC-RulesGuide.pdf',
+          videoIcon: false,
         },
       ],
     },

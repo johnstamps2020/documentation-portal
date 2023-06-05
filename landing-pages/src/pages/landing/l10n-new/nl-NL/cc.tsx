@@ -17,6 +17,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guidewire Contact Management Guide',
           url: '/l10n/nl-NL/cc/10.0.2/nl-CC-ContactMgmtGuide.pdf',
+          videoIcon: false,
         },
       ],
     },

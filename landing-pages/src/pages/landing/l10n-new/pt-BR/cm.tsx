@@ -17,6 +17,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guia de gerenciamento de contatos da Guidewire',
           url: '/l10n/pt-BR/cm/2021.11/ContactMgmtGuide_pt-BR.pdf',
+          videoIcon: false,
         },
       ],
     },

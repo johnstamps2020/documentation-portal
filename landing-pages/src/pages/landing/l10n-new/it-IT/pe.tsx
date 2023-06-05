@@ -17,10 +17,12 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guida all'installazione",
           url: '/l10n/it-IT/pe/2022.05/it-IT Digital v.2022.05 PE InstallGuide.pdf',
+          videoIcon: false,
         },
         {
           label: "Guida all'applicazione",
           url: '/l10n/it-IT/pe/2022.05/it-IT Digital v.2022.05 PE_AppGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -30,6 +32,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guida all'installazione",
           url: '/l10n/it-IT/pe/2020.08/it-PE-202008-cloud-InstallGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -39,6 +42,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guida all'installazione",
           url: '/l10n/it-IT/pe/11.3/it-PE-11.3-onprem-InstallGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -48,6 +52,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guida all'applicazione",
           url: '/l10n/it-IT/pe/10.0.1/it_PE_AppGuide.pdf',
+          videoIcon: false,
         },
       ],
     },

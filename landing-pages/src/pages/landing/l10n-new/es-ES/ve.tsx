@@ -17,6 +17,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guía de la aplicación',
           url: '/l10n/es-ES/ve/2022.05/es-ES v.2022.05 VE_AppGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -26,6 +27,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guía de instalación',
           url: '/l10n/es-ES/ve/11.1/es-ES-VE-onprem-InstallGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -35,10 +37,12 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guía de la aplicación',
           url: '/l10n/es-ES/ve/10.0.1/es-ES_VE_AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de instalación',
           url: '/l10n/es-ES/ve/10.0.1/es-ES_VE_InstallGuide.pdf',
+          videoIcon: false,
         },
       ],
     },

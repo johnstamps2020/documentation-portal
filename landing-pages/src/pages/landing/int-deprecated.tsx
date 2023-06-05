@@ -16,6 +16,7 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'https://docs.staging.ccs.guidewire.net/',
           url: 'https://docs.staging.ccs.guidewire.net/',
+          videoIcon: false,
         },
       ],
     },
@@ -25,6 +26,7 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'https://docs.guidewire.com/',
           url: 'https://docs.guidewire.com/',
+          videoIcon: false,
         },
       ],
     },

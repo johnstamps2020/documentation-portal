@@ -84,6 +84,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'HazardHub',
           url: '/hazardhub/HazardHub_Intro_gw.pdf',
+          videoIcon: false,
         },
         {
           label: 'Predict',
