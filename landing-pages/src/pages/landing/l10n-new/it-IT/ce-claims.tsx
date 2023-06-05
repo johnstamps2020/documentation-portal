@@ -17,10 +17,12 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guida all'installazione",
           url: '/l10n/it-IT/ce-claims/2022.05/it-IT Digital v.2022.05 CE-AM Claims InstallGuide.pdf',
+          videoIcon: false,
         },
         {
           label: "Guida all'applicazione",
           url: '/l10n/it-IT/ce-claims/2022.05/it-IT Digital v.2022.05 CE-AM Claims_AppGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -30,6 +32,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guida all'installazione",
           url: '/l10n/it-IT/ce-claims/11.3/it-CE-Claims-11.3-onprem- InstallGuide.pdf',
+          videoIcon: false,
         },
       ],
     },

@@ -17,6 +17,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guía de la aplicación',
           url: '/l10n/es-ES/sre/2022.05/es-ES v.2022.05  SRE_AppGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -26,6 +27,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guía de instalación',
           url: '/l10n/es-ES/sre/11.1/es-ES-SRE-onprem_InstallGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -35,14 +37,17 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guía de la aplicación',
           url: '/l10n/es-ES/sre/10.0.1/es-ES-SRE_AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de configuración',
           url: '/l10n/es-ES/sre/10.0.1/es-ES_SRE_ConfigurationGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de instalación',
           url: '/l10n/es-ES/sre/10.0.1/es-ES_SRE_InstallGuide.pdf',
+          videoIcon: false,
         },
       ],
     },

@@ -47,10 +47,12 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Anwendungshandbuch',
           url: '/l10n/de-DE/cc/2020.05/ISCL_202005_de_CC-AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guidewire-Kontaktmanagementhandbuch',
           url: '/l10n/de-DE/cc/2020.05/ISCL_202005_de_CC_ContactMgmtGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -60,10 +62,12 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Anwendungshandbuch',
           url: '/l10n/de-DE/cc/10.1.1/CC1011_de-DE_AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guidewire-Kontaktmanagementhandbuch',
           url: '/l10n/de-DE/cc/10.1.1/CC1011_de-DE_ContactMgmtGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -73,14 +77,17 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Anwendungshandbuch',
           url: '/l10n/de-DE/cc/10.0.2/de-CC-AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guidewire-Kontaktmanagementhandbuch',
           url: '/l10n/de-DE/cc/10.0.2/de-CC-ContactMgmtGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Regelhandbuch',
           url: '/l10n/de-DE/cc/10.0.2/de-CC-RulesGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -90,10 +97,12 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Anwendungshandbuch',
           url: '/l10n/de-DE/cc/10.0.0/de-CC-AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Kontaktmanagementhandbuch',
           url: '/l10n/de-DE/cc/10.0.0/de-CC-ContactMgmtGuide.pdf',
+          videoIcon: false,
         },
       ],
     },

@@ -20,7 +20,7 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'Release Video',
           url: 'https://www.brainshark.com/guidewire/vu?pi=zGCzZHe5LzcT3Fz0',
-          videoIcon: true
+          videoIcon: true,
         },
         {
           label: 'Studio Release Notes',

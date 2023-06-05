@@ -79,14 +79,17 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Gosu リファレンスガイド',
           url: '/l10n/ja-JP/cc/2021.04/CC_CL202104_ja-JP_GosuRefGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'ルールガイド',
           url: '/l10n/ja-JP/cc/2021.04/CC_CL202104_ja-JP_RulesGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'テストガイド',
           url: '/l10n/ja-JP/cc/2021.04/CC_CL202104_ja-JP_TestingGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -96,10 +99,12 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'コンフィギュレーションガイド',
           url: '/l10n/ja-JP/cc/2020.11/CCCloud202011_ja-JP_ConfigGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'インストールガイド',
           url: '/l10n/ja-JP/cc/2020.11/CCCloud202011_ja-JP_InstallGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -109,10 +114,12 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'アプリケーションガイド',
           url: '/l10n/ja-JP/cc/2020.05/IS_CL202005-CC-AppGuide-ja_JP.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guidewire 連絡先管理ガイド',
           url: '/l10n/ja-JP/cc/2020.05/IS_CL202005-CC-ContactMgmtGuide-ja_JP.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -122,6 +129,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'インストールガイド',
           url: '/l10n/ja-JP/cc/10.1.1/CC1011_ja-JP_InstallGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -131,38 +139,47 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'システム管理ガイド',
           url: '/l10n/ja-JP/cc/10.0.2/ja-CC-AdminGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'アプリケーションガイド',
           url: '/l10n/ja-JP/cc/10.0.2/ja-CC-AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'ベストプラクティスガイド',
           url: '/l10n/ja-JP/cc/10.0.2/ja-CC-BestPracticesGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'コンフィギュレーションガイド',
           url: '/l10n/ja-JP/cc/10.0.2/ja-CC-ConfigGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guidewire 連絡先管理ガイド',
           url: '/l10n/ja-JP/cc/10.0.2/ja-CC-ContactMgmtGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Gosu リファレンスガイド',
           url: '/l10n/ja-JP/cc/10.0.2/ja-CC-GosuRefGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'インストールガイド',
           url: '/l10n/ja-JP/cc/10.0.2/ja-CC-InstallGuide.pdf',
+          videoIcon: false,
         },
         {
           label: '連携ガイド',
           url: '/l10n/ja-JP/cc/10.0.2/ja-CC-IntegrationGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'ルールガイド',
           url: '/l10n/ja-JP/cc/10.0.2/ja-CC-RulesGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -172,38 +189,47 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'システム管理ガイド',
           url: '/l10n/ja-JP/cc/10.0.0/ja-CC-AdminGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'アプリケーションガイド',
           url: '/l10n/ja-JP/cc/10.0.0/ja-CC-AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'ベストプラクティスガイド',
           url: '/l10n/ja-JP/cc/10.0.0/ja-CC-BestPracticesGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'コンフィギュレーションガイド',
           url: '/l10n/ja-JP/cc/10.0.0/ja-CC-ConfigGuide.pdf',
+          videoIcon: false,
         },
         {
           label: '連絡先管理ガイド',
           url: '/l10n/ja-JP/cc/10.0.0/ja-CC-ContactMgmtGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Gosu リファレンスガイド',
           url: '/l10n/ja-JP/cc/10.0.0/ja-CC-GosuRefGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'インストールガイド',
           url: '/l10n/ja-JP/cc/10.0.0/ja-CC-InstallGuide.pdf',
+          videoIcon: false,
         },
         {
           label: '連携ガイド',
           url: '/l10n/ja-JP/cc/10.0.0/ja-CC-IntegrationGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'ルールガイド',
           url: '/l10n/ja-JP/cc/10.0.0/ja-CC-RulesGuide.pdf',
+          videoIcon: false,
         },
       ],
     },

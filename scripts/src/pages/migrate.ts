@@ -122,6 +122,7 @@ function getItems(
       docId: item.id,
       pagePath: item.page ? remapPageLink(item.page, targetFile) : undefined,
       url: item.link,
+      videoIcon: item.link?.includes('brainshark') && true,
     })
   );
 }
@@ -338,6 +339,18 @@ function getSidebar(flailConfig: FlailConfig) {
   }`;
 }
 
+function getReleaseSelector(flailConfig: FlailConfig) {
+  const { level1Class } = getFlailClass(flailConfig);
+  if (
+    level1Class.match('aspen') ||
+    level1Class.match('banff') ||
+    level1Class.match('cortina')
+  ) {
+    return true;
+  }
+  return false;
+}
+
 function mapToCategory2Layout(
   flailConfig: FlailConfig,
   targetFile: string
@@ -427,6 +440,7 @@ function mapToProductFamilyLayout(
     ${selector ? `selector: ${JSON.stringify(selector)},` : ''}
     items: ${JSON.stringify(items, null, 2)},
     sidebar: ${getSidebar(flailConfig)},
+    releaseSelector: ${getReleaseSelector(flailConfig)},
   }`;
 }
 

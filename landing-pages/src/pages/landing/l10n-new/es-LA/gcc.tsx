@@ -17,6 +17,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Consola de Guidewire Cloud',
           url: '/l10n/es-LA/gcc/0/es-LA-GuidewireCloudConsole.pdf',
+          videoIcon: false,
         },
       ],
     },

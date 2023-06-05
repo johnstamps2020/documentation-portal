@@ -17,10 +17,12 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guida alle applicazioni BI',
           url: '/l10n/it-IT/ic/10.0.0/IC10-bi-applications-it.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guida alle Specifiche dati',
           url: '/l10n/it-IT/ic/10.0.0/IC10-dataspec-it.pdf',
+          videoIcon: false,
         },
       ],
     },

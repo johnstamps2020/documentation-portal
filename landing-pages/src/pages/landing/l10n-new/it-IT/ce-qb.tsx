@@ -17,10 +17,12 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guida all'installazione",
           url: '/l10n/it-IT/ce-qb/2022.05/it-IT Digital v.2022.05 CE-QB InstallGuide.pdf',
+          videoIcon: false,
         },
         {
           label: "Guida all'applicazione",
           url: '/l10n/it-IT/ce-qb/2022.05/it-IT Digital v.2022.05 CE-QB_AppGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -30,6 +32,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guida all'installazione",
           url: '/l10n/it-IT/ce-qb/11.3/it-CEQB-11.3-onprem-InstallGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -39,6 +42,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guida all'applicazione",
           url: '/l10n/it-IT/ce-qb/10.0.1/it-CEQB_AppGuide.pdf',
+          videoIcon: false,
         },
       ],
     },

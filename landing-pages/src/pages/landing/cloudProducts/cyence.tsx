@@ -17,18 +17,22 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Help Center',
           url: '/cyence/cyber/HelpCenter',
+          videoIcon: false,
         },
         {
           label: 'Help Center - Accumulation Only',
           url: '/cyence/cyber/HelpCenterAccum',
+          videoIcon: false,
         },
         {
           label: 'Model 5 Technical Reference',
           url: '/cyence/cyber/Model5/CyenceCyberRiskModel5.pdf',
+          videoIcon: false,
         },
         {
           label: 'Python SDK and REST API Reference',
           url: '/cyence/cyber/SdkApiRef',
+          videoIcon: false,
         },
       ],
     },
@@ -38,6 +42,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'C#/Python SDKs and REST API Reference',
           url: '/cyence/smb/SdkApiRef',
+          videoIcon: false,
         },
       ],
     },

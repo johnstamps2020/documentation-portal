@@ -26,6 +26,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'インストールガイド',
           url: '/l10n/ja-JP/sre/11.1/ja-SRE onprem_InstallGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -35,23 +36,28 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: '管理およびセキュリティガイド',
           url: '/l10n/ja-JP/sre/10.0.1/ja-SRE_Admin and Security Guide.pdf',
+          videoIcon: false,
         },
         {
           label: 'アプリケーションガイド',
           url: '/l10n/ja-JP/sre/10.0.1/ja-SRE_AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'コンフィギュレーションガイド',
           url: '/l10n/ja-JP/sre/10.0.1/ja-SRE_ConfigurationGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'インストールガイド',
           url: '/l10n/ja-JP/sre/10.0.1/ja-SRE_InstallGuide.pdf',
+          videoIcon: false,
         },
         {
           label:
             'ライブスタイルガイド：インストールおよびコンフィギュレーションガイド',
           url: '/l10n/ja-JP/sre/10.0.1/ja-SRE_Live Style Guide Install and Config.pdf.pdf',
+          videoIcon: false,
         },
       ],
     },

@@ -17,6 +17,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guia do aplicativo',
           url: '/l10n/pt-BR/explore/2021.11/pt-BR-CloudExplore.pdf',
+          videoIcon: false,
         },
       ],
     },

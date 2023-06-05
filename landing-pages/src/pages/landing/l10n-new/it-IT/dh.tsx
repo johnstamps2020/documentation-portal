@@ -17,6 +17,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guida alle Specifiche dati',
           url: '/l10n/it-IT/dh/10.0.0/DH10-dataspec-it.pdf',
+          videoIcon: false,
         },
       ],
     },

@@ -17,6 +17,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guida all'installazione per sviluppatori",
           url: '/l10n/it-IT/pc/2022.05/PC-DeveloperSetupGuide-IT.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -26,6 +27,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guida all'applicazione",
           url: '/l10n/it-IT/pc/2020.05/ISCL_202005_it_IT_PC-AppGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -35,6 +37,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guida all'applicazione",
           url: '/l10n/it-IT/pc/10.1.1/PC1011-it_IT-AppGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -44,6 +47,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guida all'applicazione",
           url: '/l10n/it-IT/pc/10.0.2/it-PC-AppGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
@@ -53,6 +57,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Guida all'applicazione",
           url: '/l10n/it-IT/pc/10.0.0/it-PC-AppGuide.pdf',
+          videoIcon: false,
         },
       ],
     },

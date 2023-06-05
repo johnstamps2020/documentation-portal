@@ -48,22 +48,27 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Guía de aplicaciones',
           url: '/l10n/es-ES/cc/10.0.2/esES-CC-AppGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de configuración',
           url: '/l10n/es-ES/cc/10.0.2/esES-CC-ConfigGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de gestión de contactos de Guidewire',
           url: '/l10n/es-ES/cc/10.0.2/esES-CC-ContactMgmtGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de instalación',
           url: '/l10n/es-ES/cc/10.0.2/esES-CC-InstallGuide.pdf',
+          videoIcon: false,
         },
         {
           label: 'Guía de reglas',
           url: '/l10n/es-ES/cc/10.0.2/esES-CC-RulesGuide.pdf',
+          videoIcon: false,
         },
       ],
     },
