@@ -54,6 +54,14 @@
       "srcId": "apdappgarmischsrc",
       "docId": "apdclaimsgarmisch",
       "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-EA-Release.ditaval",
+      "root": "AdvancedProductDesignerClaims.ditamap",
+      "srcId": "apdapphakubasrc",
+      "docId": "apdclaimshakuba",
+      "indexRedirect": true
     }
   ]
 }
