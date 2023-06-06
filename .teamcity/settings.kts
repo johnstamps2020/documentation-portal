@@ -1702,9 +1702,8 @@ object Frontend {
             name = "Deploy landing pages"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            buildType(SyncLandingPagesFromStagingToDev)
             arrayOf(
-                GwDeployEnvs.STAGING, GwDeployEnvs.PROD
+                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createDeployLandingPagesBuildType(it.envName))
             }
@@ -1723,17 +1722,6 @@ object Frontend {
             }
         }
     }
-
-    object SyncLandingPagesFromStagingToDev : BuildType({
-        name = "Sync landing pages from staging to dev"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-        steps {
-            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("pages"))
-        }
-
-        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-    })
 
     private fun createDeployReactLandingPagesBuildType(deployEnv: String): BuildType {
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
@@ -1983,12 +1971,19 @@ object Frontend {
         }
     }
 
-
     private fun createDeployLandingPagesBuildType(deployEnv: String): BuildType {
         val pagesDir = "%teamcity.build.checkoutDir%/frontend/pages"
         val outputDir = "%teamcity.build.checkoutDir%/output"
+        val buildName = when (deployEnv) {
+            GwDeployEnvs.DEV.envName -> "Deploy staging landing pages to $deployEnv"
+            else -> "Deploy landing pages to $deployEnv"
+        }
+        val flailDeployEnv = when (deployEnv) {
+            GwDeployEnvs.DEV.envName -> GwDeployEnvs.STAGING.envName
+            else -> deployEnv
+        }
         return BuildType {
-            name = "Deploy landing pages to $deployEnv"
+            name = buildName
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
@@ -2003,7 +1998,7 @@ object Frontend {
                     GwBuildSteps.createRunFlailSsgStep(
                         pagesDir,
                         outputDir,
-                        deployEnv
+                        flailDeployEnv
                     )
                 )
                 step(
