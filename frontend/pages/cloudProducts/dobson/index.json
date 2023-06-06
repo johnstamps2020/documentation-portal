@@ -177,7 +177,7 @@
         },
         {
           "label": "Cloud Console",
-          "page": "../cloudConsole"
+          "id": "guidewirecloudconsolerootinsurerdev"
         },
         {
           "label": "Cloud Infrastructure",

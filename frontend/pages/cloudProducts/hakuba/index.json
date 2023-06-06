@@ -48,7 +48,7 @@
         },
         {
           "label": "Cloud Platform",
-          "page": "../cloudConsole"
+          "id": "guidewirecloudconsolerootinsurerdev"
         },
         {
           "label": "Data Platform",
