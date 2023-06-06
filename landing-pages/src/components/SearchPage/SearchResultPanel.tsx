@@ -32,13 +32,6 @@ export default function SearchResultPanel() {
           transition: theme.transitions.create(['margin', 'width'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
-            ...(isHelpExpanded && {
-              transition: theme.transitions.create(['margin', 'width'], {
-                easing: theme.transitions.easing.easeOut,
-                duration: theme.transitions.duration.enteringScreen,
-              }),
-              marginRight: 0,
-            }),
           }),
         }}
       >
