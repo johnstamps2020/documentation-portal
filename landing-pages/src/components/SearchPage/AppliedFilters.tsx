@@ -8,10 +8,12 @@ import { useSearchData } from 'hooks/useApi';
 import AppliedFiltersSkeleton from './AppliedFiltersSkeleton';
 import { useEffect, useState } from 'react';
 import AppliedFilterControl from './AppliedFilterControl';
+import useClearFilters from 'hooks/useClearFilters';
 
 export default function AppliedFilters() {
   const { searchData, isLoading, isError } = useSearchData();
   const [checkedFilters, setCheckedFilters] = useState<ServerSearchFilter[]>();
+  const { noFiltersApplied } = useClearFilters();
 
   useEffect(() => {
     if (searchData) {
@@ -40,7 +42,7 @@ export default function AppliedFilters() {
     return <AppliedFiltersSkeleton />;
   }
 
-  if (isError) {
+  if (isError || !checkedFilters || checkedFilters.length === 0) {
     return null;
   }
 
@@ -65,18 +67,12 @@ export default function AppliedFilters() {
         component="ul"
         elevation={0}
       >
-        {checkedFilters && checkedFilters.length > 0 ? (
-          checkedFilters.map((f) =>
-            f.values.map((v) => (
-              <ListItem key={v.label}>
-                <AppliedFilterControl name={f.name} value={v.label} />
-              </ListItem>
-            ))
-          )
-        ) : (
-          <ListItem key="none">
-            <Typography>None</Typography>
-          </ListItem>
+        {checkedFilters.map((f) =>
+          f.values.map((v) => (
+            <ListItem key={v.label}>
+              <AppliedFilterControl name={f.name} value={v.label} />
+            </ListItem>
+          ))
         )}
       </Paper>
     </Stack>
