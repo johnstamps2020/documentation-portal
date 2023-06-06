@@ -171,7 +171,7 @@ const redirectUrls = [
   },
   {
     from: 'cloudProducts/cloudConsole',
-    to: 'cloud/gcc-guide/insurer-developer/latest/',
+    to: 'cloud/gcc-guide/insurer-developer/latest',
   },
 ];
 
