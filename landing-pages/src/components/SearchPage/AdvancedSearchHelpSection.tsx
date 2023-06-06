@@ -7,6 +7,8 @@ import IconButton from '@mui/material/IconButton';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useMobile } from 'hooks/useMobile';
 import Divider from '@mui/material/Divider';
+import { headerHeight } from 'components/Layout/Header/Header';
+import { footerHeight } from 'components/Layout/Footer';
 
 function DrawerHeader(props: StackProps) {
   return (
@@ -31,14 +33,21 @@ export default function AdvancedSearchHelpSection() {
     setIsHelpExpanded(false);
   }
 
-  const drawerWidth = '60ch';
-
   return (
     <Drawer
       open={isHelpExpanded}
       onClose={() => setIsHelpExpanded(false)}
       anchor="right"
       variant={isMobile ? 'temporary' : 'persistent'}
+      sx={{
+        paddingTop: headerHeight,
+        paddingBottom: footerHeight,
+        [`& .MuiDrawer-paper`]: {
+          boxSizing: 'border-box',
+          paddingTop: headerHeight,
+          paddingBottom: footerHeight,
+        },
+      }}
     >
       <DrawerHeader>
         <IconButton onClick={handleClose} aria-label="close help panel">

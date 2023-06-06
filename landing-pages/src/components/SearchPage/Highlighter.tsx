@@ -46,7 +46,9 @@ export default function Highlighter() {
   return (
     <>
       <GlobalStyles
-        styles={{ '.highlighted': { backgroundColor: 'hsl(60, 100%, 77%)' } }}
+        styles={{
+          '.highlighted': { fontWeight: 700 },
+        }}
       />
       <ToggleButtonGroup
         color="primary"

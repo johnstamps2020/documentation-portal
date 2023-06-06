@@ -5,7 +5,6 @@ import Highlighter from './Highlighter';
 import { useSearchData } from 'hooks/useApi';
 import SearchResultsZero from './SearchResultsZero';
 import SearchResultSectionHeading from './SearchResultSectionHeading';
-import NumberOfSearchResults from './NumberOfSearchResults';
 import SearchResultList from './SearchResultList';
 
 export default function SearchResultSection() {
@@ -35,7 +34,6 @@ export default function SearchResultSection() {
         gap={2}
       >
         <Stack spacing={1}>
-          <NumberOfSearchResults />
           <AppliedFilters />
           <SearchResultsZero />
         </Stack>

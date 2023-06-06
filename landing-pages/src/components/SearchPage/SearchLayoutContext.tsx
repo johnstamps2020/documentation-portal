@@ -5,6 +5,7 @@ interface SearchLayoutContextInterface {
   setIsHelpExpanded: React.Dispatch<React.SetStateAction<boolean>>;
   isShowFiltersExpanded: boolean;
   setIsShowFiltersExpanded: React.Dispatch<React.SetStateAction<boolean>>;
+  helpWidth: React.CSSProperties['width'];
 }
 
 export const SearchLayoutContext =
@@ -17,6 +18,7 @@ export function SearchLayoutContextProvider({
 }) {
   const [isHelpExpanded, setIsHelpExpanded] = useState(false);
   const [isShowFiltersExpanded, setIsShowFiltersExpanded] = useState(false);
+  const helpWidth = '60ch';
 
   return (
     <SearchLayoutContext.Provider
@@ -25,6 +27,7 @@ export function SearchLayoutContextProvider({
         setIsHelpExpanded,
         isShowFiltersExpanded,
         setIsShowFiltersExpanded,
+        helpWidth,
       }}
     >
       {children}

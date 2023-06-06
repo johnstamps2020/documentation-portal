@@ -8,8 +8,13 @@ import AdvancedSearchHelpButton from './AdvancedSearchHelpButton';
 import AdvancedSearchHelpSection from './AdvancedSearchHelpSection';
 import Container from '@mui/material/Container';
 import { mainHeight } from 'components/Layout/Layout';
+import { useSearchLayoutContext } from './SearchLayoutContext';
+import { useTheme } from '@mui/material/styles';
 
 export default function SearchResultPanel() {
+  const { helpWidth, isHelpExpanded } = useSearchLayoutContext();
+  const theme = useTheme();
+
   return (
     <Stack
       sx={{
@@ -20,7 +25,16 @@ export default function SearchResultPanel() {
         scrollbarWidth: 'thin',
       }}
     >
-      <Container>
+      <Container
+        sx={{
+          width: { sm: isHelpExpanded ? `calc(100% - ${helpWidth})` : '100%' },
+          marginRight: { sm: isHelpExpanded ? helpWidth : 'auto' },
+          transition: theme.transitions.create(['margin', 'width'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+          }),
+        }}
+      >
         <Stack alignItems="center" sx={{ marginBottom: 3 }} spacing={2}>
           <NotLoggedInAlert />
           <SearchBox />
@@ -31,8 +45,8 @@ export default function SearchResultPanel() {
           <SearchResultSection />
         </Stack>
         <PaginationControl />
-        <AdvancedSearchHelpSection />
       </Container>
+      <AdvancedSearchHelpSection />
     </Stack>
   );
 }

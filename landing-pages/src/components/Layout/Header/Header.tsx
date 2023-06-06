@@ -7,9 +7,12 @@ import UserProfile from './UserProfile';
 import { HeaderOptions } from 'components/Layout/Layout';
 import Stack from '@mui/material/Stack';
 import InternalBadge from '../../LandingPage/InternalBadge';
+import { useTheme } from '@mui/material/styles';
 
 export const headerHeight = '80px';
 export default function Header(headerOptions: HeaderOptions) {
+  const theme = useTheme();
+
   return (
     <Stack
       direction={{ xs: 'column', sm: 'row' }}
@@ -18,9 +21,11 @@ export default function Header(headerOptions: HeaderOptions) {
       justifyContent={{ xs: 'center', sm: 'space-between' }}
       spacing={{ xs: 1, sm: 2 }}
       sx={{
+        position: 'relative', // for zIndex to work
         width: '100%',
         backgroundColor: 'hsl(216, 42%, 13%)',
         padding: '6px 20px 6px 6px',
+        zIndex: theme.zIndex.drawer + 1,
       }}
     >
       <Logo />

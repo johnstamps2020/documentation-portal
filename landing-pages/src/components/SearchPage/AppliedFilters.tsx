@@ -1,4 +1,3 @@
-import Chip from '@mui/material/Chip';
 import { ServerSearchFilter } from 'server/dist/types/serverSearch';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
@@ -40,7 +39,7 @@ export default function AppliedFilters() {
     return <AppliedFiltersSkeleton />;
   }
 
-  if (isError) {
+  if (isError || !checkedFilters || checkedFilters.length === 0) {
     return null;
   }
 
@@ -65,18 +64,12 @@ export default function AppliedFilters() {
         component="ul"
         elevation={0}
       >
-        {checkedFilters && checkedFilters.length > 0 ? (
-          checkedFilters.map((f) =>
-            f.values.map((v) => (
-              <ListItem key={v.label}>
-                <AppliedFilterControl name={f.name} value={v.label} />
-              </ListItem>
-            ))
-          )
-        ) : (
-          <ListItem key="none">
-            <Typography>None</Typography>
-          </ListItem>
+        {checkedFilters.map((f) =>
+          f.values.map((v) => (
+            <ListItem key={v.label}>
+              <AppliedFilterControl name={f.name} value={v.label} />
+            </ListItem>
+          ))
         )}
       </Paper>
     </Stack>
