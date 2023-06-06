@@ -31,8 +31,6 @@ export default function AdvancedSearchHelpSection() {
     setIsHelpExpanded(false);
   }
 
-  const drawerWidth = '60ch';
-
   return (
     <Drawer
       open={isHelpExpanded}

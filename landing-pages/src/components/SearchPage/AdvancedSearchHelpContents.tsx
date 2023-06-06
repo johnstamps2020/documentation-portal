@@ -1,15 +1,16 @@
 import Box from '@mui/material/Box';
 import { StyledAdvancedHelpSectionTitle } from './StyledSearchComponents';
 import { useTheme } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
+import { useSearchLayoutContext } from './SearchLayoutContext';
 
 export default function AdvancedSearchHelpContents() {
   const theme = useTheme();
+  const { helpWidth } = useSearchLayoutContext();
 
   return (
     <Box
       sx={{
-        width: '60ch',
+        width: helpWidth,
         padding: 3,
         [theme.breakpoints.down('sm')]: {
           width: 300,
