@@ -1,4 +1,3 @@
-import Chip from '@mui/material/Chip';
 import { ServerSearchFilter } from 'server/dist/types/serverSearch';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
@@ -8,12 +7,10 @@ import { useSearchData } from 'hooks/useApi';
 import AppliedFiltersSkeleton from './AppliedFiltersSkeleton';
 import { useEffect, useState } from 'react';
 import AppliedFilterControl from './AppliedFilterControl';
-import useClearFilters from 'hooks/useClearFilters';
 
 export default function AppliedFilters() {
   const { searchData, isLoading, isError } = useSearchData();
   const [checkedFilters, setCheckedFilters] = useState<ServerSearchFilter[]>();
-  const { noFiltersApplied } = useClearFilters();
 
   useEffect(() => {
     if (searchData) {
