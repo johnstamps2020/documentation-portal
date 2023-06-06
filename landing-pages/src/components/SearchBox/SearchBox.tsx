@@ -5,6 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useLocaleParams } from 'hooks/useLocale';
 import { useSearchData } from 'hooks/useApi';
 import { useMobile } from 'hooks/useMobile';
+import { useEffect, useState } from 'react';
 
 type SearchBoxProps = {
   showBigSize?: boolean;
@@ -39,6 +40,13 @@ export default function SearchBox({ showBigSize = true }: SearchBoxProps) {
   const { placeholder } = useLocaleParams();
   const { searchData } = useSearchData();
   const { isMobile } = useMobile();
+  const [searchPhrase, setSearchPhrase] = useState<string>('');
+
+  useEffect(() => {
+    if (searchData) {
+      setSearchPhrase(searchData.searchPhrase);
+    }
+  }, [searchData?.searchPhrase]);
 
   const showBigSearchBox = isMobile ? false : showBigSize;
 
@@ -78,6 +86,8 @@ export default function SearchBox({ showBigSize = true }: SearchBoxProps) {
         placeholder={placeholder}
         inputProps={{ 'aria-label': placeholder }}
         name="q"
+        value={searchPhrase}
+        onChange={(e) => setSearchPhrase(e.target.value)}
       />
       {searchFilters &&
         Object.keys(searchFilters).map((k: string) => (
