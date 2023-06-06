@@ -141,6 +141,10 @@
           "page": "../../apiReferences/hakuba"
         },
         {
+          "label": "API Sandbox",
+          "id": "is202306apisandbox"
+        },
+        {
           "label": "Integration Gateway",
           "id": "integgatewaydevlatest"
         },
