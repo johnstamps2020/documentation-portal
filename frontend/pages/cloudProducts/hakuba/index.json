@@ -133,6 +133,14 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
+          "label": "Advanced Product Designer App",
+          "page": "apd"
+        },
+        {
+          "label": "API References",
+          "page": "../../apiReferences/hakuba"
+        },
+        {
           "label": "Integration Gateway",
           "id": "integgatewaydevlatest"
         },
