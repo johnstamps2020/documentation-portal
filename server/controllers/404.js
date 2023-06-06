@@ -169,6 +169,10 @@ const redirectUrls = [
     from: 'cloudProducts/cloudDataAccess/latest',
     to: 'cloud/cda/guide/latest',
   },
+  {
+    from: 'cloudProducts/cloudConsole',
+    to: 'cloud/gcc-guide/insurer-developer/latest/',
+  },
 ];
 
 async function getRedirectUrl(originUrl) {
