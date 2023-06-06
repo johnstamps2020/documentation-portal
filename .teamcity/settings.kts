@@ -2573,8 +2573,8 @@ object Server {
                 ecrHost = GwConfigParams.ECR_HOST.paramValue
                 docportalImageUrl = GwDockerImages.DOC_PORTAL.imageUrl
                 awsRole = "arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"
-                docS3url = "https://docportal-content.dev.ccs.guidewire.net"
-                elasticsearchUrl = "https://docsearch-doctools.${GwDeployEnvs.DEV.envName}.ccs.guidewire.net"
+                docS3url = "https://docportal-content.${GwDeployEnvs.DEV.envName}.ccs.guidewire.net"
+                elasticsearchUrl = "http://docsearch-${GwDeployEnvs.DEV.envName}.doctools:9200"
                 oktaDomain = "https://guidewire-hub.oktapreview.com"
                 oktaIssuer = "https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"
             }
@@ -2585,7 +2585,7 @@ object Server {
                 docportalImageUrl = GwDockerImages.DOC_PORTAL_PROD.imageUrl
                 awsRole = "arn:aws:iam::954920275956:role/aws_orange-prod_tenant_doctools_developer"
                 docS3url = "https://docportal-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net"
-                elasticsearchUrl = "https://docsearch-doctools.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net"
+                elasticsearchUrl = "http://docsearch-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.doctools:9200"
                 oktaDomain = "https://guidewire-hub.okta.com"
                 oktaIssuer = "https://guidewire-hub.okta.com/oauth2/aus11vix3uKEpIfSI357"
                 enableAuth = "no"
