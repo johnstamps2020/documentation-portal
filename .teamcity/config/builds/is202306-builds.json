@@ -422,6 +422,14 @@
       "indexRedirect": true
     },
     {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "APISandbox.ditamap",
+      "srcId": "is202306src",
+      "docId": "is202306apisandbox",
+      "indexRedirect": true
+    },
+    {
       "buildType": "yarn",
       "docId": "ccapirefhakuba",
       "srcId": "srcccapirefhakuba",
