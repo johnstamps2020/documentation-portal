@@ -2573,8 +2573,8 @@ object Server {
                 ecrHost = GwConfigParams.ECR_HOST.paramValue
                 docportalImageUrl = GwDockerImages.DOC_PORTAL.imageUrl
                 awsRole = "arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"
-                docS3url = "https://docportal-content.dev.ccs.guidewire.net"
-                elasticsearchUrl = "https://docsearch-doctools.${GwDeployEnvs.DEV.envName}.ccs.guidewire.net"
+                docS3url = "https://docportal-content.${GwDeployEnvs.STAGING.envName}.ccs.guidewire.net"
+                elasticsearchUrl = "https://docsearch-doctools.${GwDeployEnvs.STAGING.envName}.ccs.guidewire.net"
                 oktaDomain = "https://guidewire-hub.oktapreview.com"
                 oktaIssuer = "https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"
             }
