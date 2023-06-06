@@ -20,7 +20,7 @@ export default function SearchResultSectionHeading() {
 
   return (
     <StyledHeading1>
-      {searchData.totalNumOfResults}{' '}
+      {searchData.totalNumOfResults.toLocaleString()}{' '}
       {searchData.totalNumOfCollapsedResults === 1 ? 'result' : 'results'} for "
       {searchData.searchPhrase}"
     </StyledHeading1>
