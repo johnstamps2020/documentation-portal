@@ -9,6 +9,7 @@ import cortinaBadge from 'images/badge-cortina.svg';
 import banffBadge from 'images/badge-banff.svg';
 import aspenBadge from 'images/badge-aspen.svg';
 import { FooterText } from './StyledLayoutComponents';
+import { useTheme } from '@mui/material/styles';
 
 export const footerHeight = '55px';
 
@@ -16,7 +17,9 @@ type FooterProps = {
   path?: string;
 };
 export default function Footer({ path }: FooterProps) {
+  const theme = useTheme();
   const releaseInfo = { label: '', badge: '' };
+
   if (path?.includes('garmisch')) {
     releaseInfo.label = 'Garmisch Release';
     releaseInfo.badge = garmischBadge;
@@ -39,17 +42,20 @@ export default function Footer({ path }: FooterProps) {
     releaseInfo.label = 'Aspen Release';
     releaseInfo.badge = aspenBadge;
   }
+
   return (
     <Stack
       direction="row"
       height={footerHeight}
       maxHeight={footerHeight}
       sx={{
+        position: 'relative', // for zIndex to work
         backgroundColor: 'hsl(216, 42%, 13%)',
         color: 'hsl(0, 0%, 98%)',
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '0 30px',
+        zIndex: theme.zIndex.drawer + 1,
       }}
     >
       <FooterText sx={{ display: 'contents' }}>
