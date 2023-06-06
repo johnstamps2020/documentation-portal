@@ -62,6 +62,22 @@
       "srcId": "apdapphakubasrc",
       "docId": "apdclaimshakuba",
       "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-EA-Release.ditaval",
+      "root": "AdvancedProductDesigner_Release_Notes.ditamap",
+      "srcId": "apdapphakubasrc",
+      "docId": "apdapprnhakuba",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-EA-Release.ditaval",
+      "root": "AdvancedProductDesigner.ditamap",
+      "srcId": "apdapphakubasrc",
+      "docId": "apdapphakuba",
+      "indexRedirect": true
     }
   ]
 }
