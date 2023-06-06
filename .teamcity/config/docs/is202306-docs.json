@@ -866,6 +866,24 @@
       "earlyAccess": true
     },
     {
+      "id": "is202306apisandbox",
+      "title": "API Sandbox",
+      "url": "cloud/202306/apisandbox",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter", "PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "ccapirefhakuba",
       "title": "ClaimCenter Cloud API Reference",
       "url": "cloud/cc/202306/apiref",
