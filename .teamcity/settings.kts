@@ -1319,6 +1319,7 @@ object Content {
             subProject(createDeployContentStorageProject())
             buildType(UploadPdfsForEscrowBuildType)
             buildType(SyncDocsFromStagingToDev)
+            buildType(SyncElasticsearchIndexFromStagingToDev)
         }
     }
 
@@ -1643,6 +1644,27 @@ object Content {
         steps {
             step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("cloud"))
             step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("self-managed"))
+        }
+
+        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+    })
+
+    object SyncElasticsearchIndexFromStagingToDev : BuildType({
+        name = "Sync the Elasticsearch index from staging to dev"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        steps {
+            nodeJS {
+                name = "Reindex from staging to dev"
+                id = Helpers.createIdStringFromName(this.name)
+                shellScript = """
+                        #!/bin/sh
+                        set -e
+                        
+                        node ci/reindexFromStagingToDev.mjs
+                        """.trimIndent()
+                dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
+            }
         }
 
         features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
