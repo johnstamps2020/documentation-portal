@@ -9,7 +9,7 @@
       "items": [
         {
           "label": "Guide d'authentification de l'API Cloud",
-          "link": "/l10n/fr-FR/cc/2021.11/CC v.2021.11 fr-FR CloudAPIGuide-Auth.pdf"
+          "id": "iscc202111apicafrFR"
         },
         {
           "label": "Guide de configuration et de flux opérationnels de l'API Cloud",
