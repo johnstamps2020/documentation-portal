@@ -196,7 +196,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false,
+      "internal": true,
       "earlyAccess": false
     },
     {
@@ -215,7 +215,7 @@
       "indexForSearch": true,
       "public": false,
       "internal": true,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
       "id": "in20232uwconfig",
