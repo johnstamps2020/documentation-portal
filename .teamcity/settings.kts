@@ -1653,6 +1653,12 @@ object Content {
         name = "Sync the Elasticsearch index from staging to dev"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
+        vcs {
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            branchFilter = "+:<default>"
+            cleanCheckout = true
+        }
+
         steps {
             nodeJS {
                 name = "Reindex from staging to dev"
