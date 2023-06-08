@@ -1,0 +1,11 @@
+{
+  "$schema": "../../config-schema.json",
+  "sources": [
+    {
+      "id": "apd202205deDEsrc",
+      "title": "APD 2022.05.1 de-DE",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
+      "branch": "release/de-DE/2022.05.1"
+    }
+  ]
+}
