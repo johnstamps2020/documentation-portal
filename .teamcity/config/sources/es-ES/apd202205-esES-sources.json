@@ -2,10 +2,10 @@
   "$schema": "../../config-schema.json",
   "sources": [
     {
-      "id": "apd202205deDEsrc",
-      "title": "APD 2022.05.1 de-DE",
+      "id": "apd202205esESsrc",
+      "title": "APD 2022.05.1 es-ES",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
-      "branch": "release/de-DE/pc/2022.05"
+      "branch": "release/es-ES/pc/2022.05"
     }
   ]
 }
