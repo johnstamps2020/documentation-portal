@@ -4,6 +4,11 @@
   "class": "threeCards",
   "items": [
     {
+      "label": "Advanced Product Designer",
+      "class": "productFamily cardShadow",
+      "page": "apd"
+    },
+    {
       "label": "BillingCenter",
       "class": "productFamily cardShadow",
       "page": "bc"
