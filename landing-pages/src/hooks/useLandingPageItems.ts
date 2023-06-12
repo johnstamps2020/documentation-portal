@@ -16,9 +16,9 @@ export type LandingPageItemData = {
 const landingPageItemGetter = async (
   items: LandingPageItemProps[]
 ): Promise<LandingPageItemData[]> => {
-  let urlSuffix;
   const landingPageItems = [];
   for (const item of items) {
+    let urlSuffix;
     if (item.docId) {
       urlSuffix = `Doc?id=${item.docId}`;
     } else if (item.pagePath) {
