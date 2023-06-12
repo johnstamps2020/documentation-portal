@@ -1,0 +1,469 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "AU_CW_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobaucwreleasenotescloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "AU_CW_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobaucwreleasenotesonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "AU_State_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobaustatereleasenotescloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "AU_State_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobaustatereleasenotesonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "BOP_CW_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobbopcwreleasenotescloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "BOP_CW_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobbopcwreleasenotesonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "BP_State_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobbpstatereleasenotescloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "BP_State_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobbpstatereleasenotesonprem",
+      "indexRedirect": true
+    },    
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "CA_CW_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcacwreleasenotescloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "CA_CW_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcacwreleasenotesonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "CA_State_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcastatereleasenotescloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "CA_State_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcastatereleasenotesonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "CP_CW_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcpcwreleasenotescloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "CP_CW_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcpcwreleasenotesonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "CP_State_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcpstatereleasenotescloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "CP_State_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcpstatereleasenotesonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "Crime_CW_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcrimecwreleasenotescloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "Crime_CW_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcrimecwreleasenotesonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "Crime_State_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcrimestatereleasenotescloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "Crime_State_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcrimestatereleasenotesonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "GL_CW_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobglcwreleasenotescloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "GL_CW_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobglcwreleasenotesonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "GL_State_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobglstatereleasenotescloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "GL_State_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobglstatereleasenotesonprem",
+      "indexRedirect": true
+    },    
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-au-10x.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobau10xcloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "lob-au-10x.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobau10xonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-bop-guide.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobbopguidecloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "lob-bop-guide.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobbopguideonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-ca.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcacloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "lob-ca.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcaonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-cp.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcpcloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "lob-cp.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcponprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-cpp.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcppcloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "lob-cpp.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcpponprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-crime.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcrimecloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "lob-crime.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobcrimeonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-gl-9x-1003.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobgl9x1003cloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "lob-gl-9x-1003.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobgl9x1003onprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-ho.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobhocloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "lob-ho.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobhoonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-pup.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobpupcloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "lob-pup.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobpuponprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-wc.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobwccloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "lob-wc.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobwconprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "lob-wcm.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobwcmcloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "lob-wcm.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobwcmonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "PCA-User.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobpcausercloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "PCA-User.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobpcauseronprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "PCAReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobpcareleasenotescloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "PCAReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobpcareleasenotesonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "WC_CW_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobwccwreleasenotescloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "WC_CW_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobwccwreleasenotesonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "WC_State_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobwcstaterelnotescloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "WC_State_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobwcstaterelnotesonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "WC_WCM_CW_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobwcwcmcwreleasenotescloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "WC_WCM_CW_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobwcwcmcwreleasenotesonprem",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_Cloud.ditaval",
+      "root": "WC_WCM_State_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobwcwcmstaterelnotescloud",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "LOB_STANDARDS_OnPrem.ditaval",
+      "root": "WC_WCM_State_ReleaseNotes.ditamap",
+      "srcId": "lobmainsrc",
+      "docId": "lobwcwcmstaterelnotesonprem",
+      "indexRedirect": true
+    }
+  ]
+}
