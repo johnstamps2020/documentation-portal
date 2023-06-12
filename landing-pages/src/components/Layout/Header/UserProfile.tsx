@@ -11,7 +11,7 @@ import {
 } from 'components/Layout/StyledLayoutComponents';
 import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
-import { useUserInfo } from 'hooks/useApi';
+import { useEnvInfo, useUserInfo } from 'hooks/useApi';
 import Drawer from '@mui/material/Drawer';
 import LoginOptions from 'components/LoginPage/LoginOptions';
 import Stack from '@mui/material/Stack';
@@ -50,7 +50,7 @@ function LoginButton({ drawerOpen, setDrawerOpen }: LoginButtonProps) {
         PaperProps={{ sx: { justifyContent: 'center' } }}
       >
         <Stack alignItems="center" spacing={4} margin="16px">
-          <LoginOptions inDrawer={true}/>
+          <LoginOptions inDrawer={true} />
           <Link component={RouterLink} to="/gw-login">
             Go to the login page
           </Link>
@@ -62,6 +62,7 @@ function LoginButton({ drawerOpen, setDrawerOpen }: LoginButtonProps) {
 
 export default function UserProfile() {
   const { userInfo, isError, isLoading } = useUserInfo();
+  const { envInfo } = useEnvInfo();
 
   const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(
     null
@@ -102,7 +103,7 @@ export default function UserProfile() {
         <HeaderMenuSubtitle>{userInfo.preferred_username}</HeaderMenuSubtitle>
         <HeaderMenuDivider />
         <LogoutOption />
-        {userInfo.isAdmin && <AdminPanelOption />}
+        <AdminPanelOption />
       </HeaderMenu>
     </div>
   );

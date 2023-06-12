@@ -27,15 +27,15 @@ const router = createBrowserRouter([
     element: <FourOhFourPage />,
   },
   {
-    path: '/admin',
+    path: '/admin-panel',
     element: <AdminPage />,
   },
   {
-    path: '/admin/doc',
+    path: '/admin-panel/doc',
     element: <DocAdminPage />,
   },
   {
-    path: '/admin/page',
+    path: '/admin-panel/page',
     element: <PageAdminPage />,
   },
   {
