@@ -138,7 +138,7 @@
       "earlyAccess": false
     },
     {
-      "id": "lobbopguidecloud",
+      "id": "lobbopcloud",
       "title": "LOB BOP Cloud Guide",
       "url": "lob/bop/cloud/guide",
       "metadata": {
@@ -155,7 +155,7 @@
       "earlyAccess": false
     },
     {
-      "id": "lobbopguideonprem",
+      "id": "lobboponprem",
       "title": "LOB BOP Self-managed Guide",
       "url": "lob/bop/self-managed/guide",
       "metadata": {
@@ -172,7 +172,7 @@
       "earlyAccess": false
     },    
     {
-      "id": "lobbpstatereleasenotescloud",
+      "id": "lobbopstatereleasenotescloud",
       "title": "LOB BOP State Cloud Release Notes",
       "url": "lob/bop/cloud/statereleasenotes",
       "metadata": {
@@ -189,7 +189,7 @@
       "earlyAccess": false
     },
     {
-      "id": "lobbpstatereleasenotesonprem",
+      "id": "lobbopstatereleasenotesonprem",
       "title": "LOB BOP State Self-managed Release Notes",
       "url": "lob/bop/self-managed/statereleasenotes",
       "metadata": {

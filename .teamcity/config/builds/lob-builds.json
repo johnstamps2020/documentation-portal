@@ -54,7 +54,7 @@
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "BP_State_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
-      "docId": "lobbpstatereleasenotescloud",
+      "docId": "lobbopstatereleasenotescloud",
       "indexRedirect": true
     },
     {
@@ -62,7 +62,7 @@
       "filter": "LOB_STANDARDS_OnPrem.ditaval",
       "root": "BP_State_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
-      "docId": "lobbpstatereleasenotesonprem",
+      "docId": "lobbopstatereleasenotesonprem",
       "indexRedirect": true
     },    
     {
@@ -214,7 +214,7 @@
       "filter": "LOB_STANDARDS_Cloud.ditaval",
       "root": "lob-bop-guide.ditamap",
       "srcId": "lobmainsrc",
-      "docId": "lobbopguidecloud",
+      "docId": "lobbopcloud",
       "indexRedirect": true
     },
     {
@@ -222,7 +222,7 @@
       "filter": "LOB_STANDARDS_OnPrem.ditaval",
       "root": "lob-bop-guide.ditamap",
       "srcId": "lobmainsrc",
-      "docId": "lobbopguideonprem",
+      "docId": "lobboponprem",
       "indexRedirect": true
     },
     {
