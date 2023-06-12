@@ -1,0 +1,459 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Lines of Business",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "AU",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobau10xcloud"
+            },
+            {
+              "label": "CW Release Notes",
+              "id": "lobaucwreleasenotescloud"
+            },
+            {
+              "label": "State Release Notes",
+              "id": "lobaustatereleasenotescloud"
+            }
+          ]
+        },
+        {
+          "label": "Self-managed",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobau10xonprem"
+            },
+            {
+              "label": "CW Release Notes",
+              "id": "lobaucwreleasenotesonprem"
+            },
+            {
+              "label": "State Release Notes",
+              "id": "lobaustatereleasenotesonprem"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "BOP",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobbopcloud"
+            },
+            {
+              "label": "CW Release Notes",
+              "id": "lobbopcwreleasenotescloud"
+            },
+            {
+              "label": "State Release Notes",
+              "id": "lobbpstatereleasenotescloud"
+            }
+          ]
+        },
+        {
+          "label": "Self-managed",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobboponprem"
+            },
+            {
+              "label": "CW Release Notes",
+              "id": "lobbopcwreleasenotesonprem"
+            },
+            {
+              "label": "State Release Notes",
+              "id": "lobbpstatereleasenotesonprem"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "CA",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobcacloud"
+            },
+            {
+              "label": "CW Release Notes",
+              "id": "lobcacwreleasenotescloud"
+            },
+            {
+              "label": "State Release Notes",
+              "id": "lobcastatereleasenotescloud"
+            }
+          ]
+        },
+        {
+          "label": "Self-managed",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobcaonprem"
+            },
+            {
+              "label": "CW Release Notes",
+              "id": "lobcacwreleasenotesonprem"
+            },
+            {
+              "label": "State Release Notes",
+              "id": "lobcastatereleasenotesonprem"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "CP",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobcpcloud"
+            },
+            {
+              "label": "CW Release Notes",
+              "id": "lobcpcwreleasenotescloud"
+            },
+            {
+              "label": "State Release Notes",
+              "id": "lobcpstatereleasenotescloud"
+            }
+          ]
+        },
+        {
+          "label": "Self-managed",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobcponprem"
+            },
+            {
+              "label": "CW Release Notes",
+              "id": "lobcpcwreleasenotesonprem"
+            },
+            {
+              "label": "State Release Notes",
+              "id": "lobcpstatereleasenotesonprem"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "CPP",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobcppcloud"
+            }
+          ]
+        },
+        {
+          "label": "Self-managed",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobcpponprem"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Crime",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobcrimecloud"
+            },
+            {
+              "label": "CW Release Notes",
+              "id": "lobcrimecwreleasenotescloud"
+            },
+            {
+              "label": "State Release Notes",
+              "id": "lobcrimestatereleasenotescloud"
+            }
+          ]
+        },
+        {
+          "label": "Self-managed",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobcrimeonprem"
+            },
+            {
+              "label": "CW Release Notes",
+              "id": "lobcrimecwreleasenotesonprem"
+            },
+            {
+              "label": "State Release Notes",
+              "id": "lobcrimestatereleasenotesonprem"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "GL",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobgl9x1003cloud"
+            },
+            {
+              "label": "CW Release Notes",
+              "id": "lobglcwreleasenotescloud"
+            },
+            {
+              "label": "State Release Notes",
+              "id": "lobglstatereleasenotescloud"
+            }
+          ]
+        },
+        {
+          "label": "Self-managed",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobgl9x1003onprem"
+            },
+            {
+              "label": "CW Release Notes",
+              "id": "lobglcwreleasenotesonprem"
+            },
+            {
+              "label": "State Release Notes",
+              "id": "lobglstatereleasenotesonprem"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "HO",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobhocloud"
+            }
+          ]
+        },
+        {
+          "label": "Self-managed",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobhoonprem"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "PCA",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobpcausercloud"
+            },
+            {
+              "label": "Release Notes",
+              "id": "lobpcareleasenotescloud"
+            }
+          ]
+        },
+        {
+          "label": "Self-managed",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobpcauseronprem"
+            },
+            {
+              "label": "Release Notes",
+              "id": "lobpcareleasenotesonprem"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "PUP",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobpupcloud"
+            }
+          ]
+        },
+        {
+          "label": "Self-managed",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobpuponprem"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "WC",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobwccloud"
+            },
+            {
+              "label": "CW Release Notes",
+              "id": "lobwccwreleasenotescloud"
+            },
+            {
+              "label": "State Release Notes",
+              "id": "lobwcstaterelnotescloud"
+            }
+          ]
+        },
+        {
+          "label": "Self-managed",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobwconprem"
+            },
+            {
+              "label": "CW Release Notes",
+              "id": "lobwccwreleasenotesonprem"
+            },
+            {
+              "label": "State Release Notes",
+              "id": "lobwcstaterelnotesonprem"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "WC WCM",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobwcmcloud"
+            },
+            {
+              "label": "CW Release Notes",
+              "id": "lobwcwcmcwreleasenotescloud"
+            },
+            {
+              "label": "State Release Notes",
+              "id": "lobwcwcmstaterelnotescloud"
+            }
+          ]
+        },
+        {
+          "label": "Self-managed",
+          "class": "group",
+          "items": [
+            {
+              "label": "Guide",
+              "id": "lobwcmonprem"
+            },
+            {
+              "label": "CW Release Notes",
+              "id": "lobwcwcmcwreleasenotesonprem"
+            },
+            {
+              "label": "State Release Notes",
+              "id": "lobwcwcmstaterelnotesonprem"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "search_filters": {
+    "product": ["Lines of Business"]
+  }
+}
