@@ -1644,6 +1644,7 @@ object Content {
         steps {
             step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("cloud"))
             step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("self-managed"))
+            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("internal-docs"))
         }
 
         features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
