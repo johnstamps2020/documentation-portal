@@ -93,7 +93,7 @@ export default function LandingPageSelector({
     .map((item) => {
       const label = item.title || item.label || '';
       const itemHref = item.path || item.url || '';
-      const href = `/${itemHref}`;
+      const href = itemHref !== '' ? `/${itemHref}` : itemHref;
       const doc = item.url ? true : false;
       return {
         label,
