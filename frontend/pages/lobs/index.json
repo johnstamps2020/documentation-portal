@@ -64,7 +64,7 @@
             },
             {
               "label": "State Release Notes",
-              "id": "lobbpstatereleasenotescloud"
+              "id": "lobbopstatereleasenotescloud"
             }
           ]
         },
@@ -82,7 +82,7 @@
             },
             {
               "label": "State Release Notes",
-              "id": "lobbpstatereleasenotesonprem"
+              "id": "lobbopstatereleasenotesonprem"
             }
           ]
         }
