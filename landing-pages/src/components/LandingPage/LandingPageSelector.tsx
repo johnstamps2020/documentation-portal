@@ -12,6 +12,7 @@ import Skeleton from '@mui/material/Skeleton';
 type PageSelectorItem = {
   label: string;
   href: string;
+  doc: boolean;
 };
 
 export type LandingPageSelectorProps = {
@@ -88,14 +89,16 @@ export default function LandingPageSelector({
     );
   }
 
-  const pageSelectorItems = landingPageItems
+  const pageSelectorItems: PageSelectorItem[] = landingPageItems
     .map((item) => {
       const label = item.title || item.label || '';
-      const href = `/${item.path}` || item.url || '';
-
+      const itemHref = item.path || item.url || '';
+      const href = `/${itemHref}`;
+      const doc = item.url ? true : false;
       return {
         label,
         href,
+        doc,
       };
     })
     .filter((item) => item.label !== '' && item.href !== '');
@@ -110,7 +113,7 @@ export default function LandingPageSelector({
       return null;
     }
 
-    if (selectedItem.href.startsWith('http')) {
+    if (selectedItem.href.startsWith('http') || selectedItem.doc) {
       return (window.location.href = selectedItem.href);
     }
 
