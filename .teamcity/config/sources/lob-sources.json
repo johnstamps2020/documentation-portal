@@ -1,0 +1,11 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "lobmainsrc",
+      "title": "LOB Main",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
+      "branch": "main"
+    }
+  ]
+}
