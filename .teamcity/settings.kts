@@ -1749,6 +1749,7 @@ object Frontend {
             ).forEach {
                 buildType(createDeployReactLandingPagesBuildType(it.envName))
             }
+            buildType(TestReactLandingPagesBuildType)
         }
     }
 
@@ -1895,6 +1896,37 @@ object Frontend {
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
         }
     }
+
+    private object TestReactLandingPagesBuildType : BuildType({
+        name = "Test React landing pages"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        vcs {
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            cleanCheckout = true
+        }
+
+        steps {
+            nodeJS {
+                id = "Build landing pages"
+                shellScript = """
+                    yarn landing-pages-build
+                """.trimIndent()
+                dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
+            }
+        }
+
+        features.feature(GwBuildFeatures.createGwPullRequestsBuildFeature(Helpers.createFullGitBranchName("feature/typeorm")))
+
+        triggers {
+            vcs {
+                triggerRules = """
+                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/**
+                            -:user=doctools:**
+                            """.trimIndent()
+            }
+        }
+    })
 
     private fun createPublishNpmPackageBuildType(packageHandle: String, packagePath: String): BuildType {
         return BuildType {
