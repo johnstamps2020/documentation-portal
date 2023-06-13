@@ -22,6 +22,7 @@ project {
         vcsRoot(it)
     }
     vcsRoot(GwVcsRoots.DocumentationPortalGitVcsRoot)
+    vcsRoot(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
     vcsRoot(GwVcsRoots.DitaOtPluginsVcsRoot)
     subProject(Database.rootProject)
     subProject(Runners.rootProject)
@@ -157,8 +158,7 @@ object Database {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:refs/heads/feature/typeorm"
+                root(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
                 cleanCheckout = true
             }
 
@@ -1783,8 +1783,7 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:refs/heads/feature/typeorm"
+                root(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
                 cleanCheckout = true
             }
 
@@ -1902,8 +1901,7 @@ object Frontend {
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
         vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            branchFilter = "+:refs/heads/feature/typeorm"
+            root(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
             cleanCheckout = true
         }
 
@@ -2657,8 +2655,7 @@ object Server {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:refs/heads/feature/typeorm"
+                root(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
                 cleanCheckout = true
             }
 
@@ -5316,6 +5313,12 @@ object GwVcsRoots {
         Helpers.resolveRelativeIdFromIdString("DITA OT plugins repo"),
         "ssh://git@stash.guidewire.com/doctools/dita-ot-plugins.git",
         "main",
+    )
+
+    val CroissantFeatureBranchGitVcsRoot = createGitVcsRoot(
+        Helpers.resolveRelativeIdFromIdString("Croissant feature branch"),
+        "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
+        "feature/typeorm",
     )
 
     private fun createGitVcsRoot(
