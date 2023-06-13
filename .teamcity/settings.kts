@@ -1924,7 +1924,7 @@ object Frontend {
         triggers {
             vcs {
                 triggerRules = """
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/**
+                            +:root=${GwVcsRoots.CroissantFeatureBranchGitVcsRoot.id}:landing-pages/**
                             -:user=doctools:**
                             """.trimIndent()
             }
