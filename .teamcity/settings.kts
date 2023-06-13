@@ -1903,6 +1903,7 @@ object Frontend {
 
         vcs {
             root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            branchFilter = "+:refs/heads/feature/typeorm"
             cleanCheckout = true
         }
 
@@ -1910,13 +1911,17 @@ object Frontend {
             nodeJS {
                 id = "Build landing pages"
                 shellScript = """
+                    yarn
                     yarn landing-pages-build
                 """.trimIndent()
                 dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
             }
         }
 
-        features.feature(GwBuildFeatures.createGwPullRequestsBuildFeature(Helpers.createFullGitBranchName("feature/typeorm")))
+        features {
+            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(Helpers.createFullGitBranchName("feature/typeorm")))
+            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+        }
 
         triggers {
             vcs {
