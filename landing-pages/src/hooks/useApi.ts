@@ -1,6 +1,8 @@
 import useSWR from 'swr';
+import useSWRImmutable from 'swr/immutable';
 import { PageError, usePagePath } from './usePageData';
 import { UserInfo } from 'server/dist/types/user';
+import { EnvInfo } from 'server/dist/types/env';
 import { useSearchParams } from 'react-router-dom';
 import { SearchData, ServerSearchError } from 'server/dist/types/serverSearch';
 import { Page } from 'server/dist/model/entity/Page';
@@ -21,6 +23,19 @@ export function useUserInfo() {
 
   return {
     userInfo: data,
+    isLoading,
+    isError: error,
+  };
+}
+
+export function useEnvInfo() {
+  const { data, error, isLoading } = useSWRImmutable<EnvInfo, PageError>(
+    '/envInformation',
+    getter
+  );
+
+  return {
+    envInfo: data,
     isLoading,
     isError: error,
   };

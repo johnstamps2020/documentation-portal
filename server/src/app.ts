@@ -122,6 +122,7 @@ const oidcLoginRouter = require('./routes/authorization-code');
 const searchRouter = require('./routes/search');
 const s3Router = require('./routes/s3');
 const userRouter = require('./routes/user');
+const envRouter = require('./routes/envInformation');
 const adminRouter = require('./routes/admin');
 const configRouter = require('./routes/config');
 const jiraRouter = require('./routes/jira');
@@ -174,6 +175,7 @@ app.use('/s3', saveUserInfoToResLocals, isAllowedToAccessRoute, s3Router);
 // Open routes
 app.use('/recommendations', saveUserInfoToResLocals, recommendationsRouter);
 app.use('/userInformation', userRouter);
+app.use('/envInformation', envRouter);
 app.use('/search', saveUserInfoToResLocals, searchRouter);
 
 // overwrite HTML received through proxy

@@ -5,7 +5,8 @@ import { useState } from 'react';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 import Fab from '@mui/material/Fab';
-import { useUserInfo } from '../../hooks/useApi';
+import { useEnvInfo, useUserInfo } from '../../hooks/useApi';
+import { prodDeployEnv } from '../../vars';
 
 type EditPagePropsButtonProps = {
   pagePath: string;
@@ -13,10 +14,23 @@ type EditPagePropsButtonProps = {
 export default function EditPagePropsButton({
   pagePath,
 }: EditPagePropsButtonProps) {
-  const { userInfo, isLoading, isError } = useUserInfo();
+  const {
+    userInfo,
+    isLoading: isUserInfoLoading,
+    isError: isUserInfoError,
+  } = useUserInfo();
+  const {
+    envInfo,
+    isLoading: isEnvInfoLoading,
+    isError: isEnvInfoError,
+  } = useEnvInfo();
   const [isOpen, setIsOpen] = useState(false);
 
-  if (isLoading || isError || !userInfo?.isAdmin) {
+  if (isEnvInfoLoading || isEnvInfoError || envInfo?.name === prodDeployEnv) {
+    return null;
+  }
+
+  if (isUserInfoLoading || isUserInfoError || !userInfo?.isAdmin) {
     return null;
   }
 

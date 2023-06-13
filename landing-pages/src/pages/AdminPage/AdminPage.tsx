@@ -6,6 +6,10 @@ import Typography from '@mui/material/Typography';
 import Layout from 'components/Layout/Layout';
 import { Link as RouterLink } from 'react-router-dom';
 import AdminAccess from '../../components/AdminPage/AdminAccess';
+import { useEnvInfo } from '../../hooks/useApi';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { prodDeployEnv } from '../../vars';
 
 type AdminLink = {
   path: string;
@@ -14,16 +18,29 @@ type AdminLink = {
 
 const links: AdminLink[] = [
   {
-    path: '/admin/page',
+    path: '/admin-panel/page',
     title: 'Manage pages',
   },
   {
-    path: '/admin/doc',
+    path: '/admin-panel/doc',
     title: 'Manage docs, builds, and sources',
   },
 ];
 
 export default function AdminPage() {
+  const { envInfo, isLoading, isError } = useEnvInfo();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (envInfo && envInfo.name === prodDeployEnv) {
+      navigate(`/forbidden?unauthorized=/admin-panel`);
+    }
+  }, [envInfo, navigate]);
+
+  if (isLoading || isError) {
+    return null;
+  }
+
   const adminPanelTitle = 'Admin panel';
   return (
     <Layout title={adminPanelTitle}>
@@ -35,7 +52,9 @@ export default function AdminPage() {
           <Stack spacing={2} direction="row" sx={{ padding: '2rem 0' }}>
             {links.map(({ title, path }) => (
               <Link key={path} component={RouterLink} to={path}>
-                <Card sx={{ padding: '2rem 3rem' }} variant='outlined'>{title}</Card>
+                <Card sx={{ padding: '2rem 3rem' }} variant="outlined">
+                  {title}
+                </Card>
               </Link>
             ))}
           </Stack>
