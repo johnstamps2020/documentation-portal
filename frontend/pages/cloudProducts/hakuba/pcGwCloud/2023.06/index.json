@@ -83,6 +83,10 @@
           "id": "ispc202306app"
         },
         {
+          "label": "Cloud Rating Management",
+          "id": "ispc202306cloudratingmgmt"
+        },
+        {
           "label": "Contact Management",
           "id": "is202306contact"
         },
