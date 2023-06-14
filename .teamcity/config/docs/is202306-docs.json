@@ -812,6 +812,24 @@
       "earlyAccess": false
     },
     {
+      "id": "ispc202306cloudratingmgmt",
+      "title": "Cloud Rating Management",
+      "url": "cloud/202306/cloudratingmgmt",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
       "id": "is202306integoverview",
       "title": "Overview of Cloud Integration",
       "url": "cloud/202306/integoverview",

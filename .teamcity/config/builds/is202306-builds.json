@@ -430,6 +430,14 @@
       "indexRedirect": true
     },
     {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "CloudRatingMgmt.ditamap",
+      "srcId": "is202306src",
+      "docId": "ispc202306cloudratingmgmt",
+      "indexRedirect": true
+    },
+    {
       "buildType": "yarn",
       "docId": "ccapirefhakuba",
       "srcId": "srcccapirefhakuba",
