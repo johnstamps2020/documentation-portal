@@ -16,34 +16,39 @@ export type LandingPageItemData = {
 const landingPageItemGetter = async (
   items: LandingPageItemProps[]
 ): Promise<LandingPageItemData[]> => {
-  const landingPageItems = [];
-  for (const item of items) {
-    let urlSuffix;
-    if (item.docId) {
-      urlSuffix = `Doc?id=${item.docId}`;
-    } else if (item.pagePath) {
-      urlSuffix = `Page?path=${item.pagePath}`;
-    } else {
-      if (item.url) {
-        urlSuffix = `ExternalLink?url=${encodeURIComponent(item.url)}`;
+  if (items.length === 0) {
+    return [];
+  }
+  const landingPageItems: LandingPageItemData[] = [];
+  try {
+    for (const item of items) {
+      let urlSuffix;
+      if (item.docId) {
+        urlSuffix = `Doc?id=${item.docId}`;
+      } else if (item.pagePath) {
+        urlSuffix = `Page?path=${item.pagePath}`;
+      } else {
+        if (item.url) {
+          urlSuffix = `ExternalLink?url=${encodeURIComponent(item.url)}`;
+        }
+      }
+
+      const response = await fetch(`/safeConfig/entity/${urlSuffix}`);
+      if (response.ok) {
+        const jsonData = await response.json();
+        landingPageItems.push({
+          ...jsonData,
+          label: item.label || jsonData.label,
+          title: item.label || jsonData.title,
+          videoIcon: item.videoIcon,
+        });
       }
     }
-
-    const response = await fetch(`/safeConfig/entity/${urlSuffix}`);
-    if (response.ok) {
-      const jsonData = await response.json();
-      landingPageItems.push({
-        ...jsonData,
-        label: item.label || jsonData.label,
-        title: item.label || jsonData.title,
-        videoIcon: item.videoIcon,
-      });
-    }
+  } catch (err) {
+    console.error(err);
+  } finally {
+    return landingPageItems;
   }
-  if (landingPageItems.length === 0) {
-    throw new Error('No items found.');
-  }
-  return landingPageItems;
 };
 
 export function useLandingPageItems(items: LandingPageItemProps[]) {

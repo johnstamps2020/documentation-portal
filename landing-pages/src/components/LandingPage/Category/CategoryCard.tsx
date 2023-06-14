@@ -30,7 +30,11 @@ export default function CategoryCard({
     isLoading: isLoadingSections,
   } = useLandingPageItems(itemsInSections);
 
-  if (isError && isErrorSections) {
+  if (
+    (isError && isErrorSections) ||
+    landingPageItems?.length === 0 ||
+    (items === undefined && sections === undefined)
+  ) {
     return null;
   }
 
