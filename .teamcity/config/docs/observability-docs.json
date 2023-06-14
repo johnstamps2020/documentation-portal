@@ -1,0 +1,23 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "observability",
+      "title": "Observability",
+      "url": "cloud/observability",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "subject": ["Administration"],
+        "release": ["Hakuba"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
