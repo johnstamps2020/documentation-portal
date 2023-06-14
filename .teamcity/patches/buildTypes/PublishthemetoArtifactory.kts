@@ -34,7 +34,6 @@ changeBuildType(RelativeId("PublishthemetoArtifactory")) {
         update<ScriptBuildStep>(0) {
             clearConditions()
             scriptContent = """
-                npm install -g npm-cli-login
                 npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
                 npm config set always-auth true
                 npm config set unsafe-perm true
