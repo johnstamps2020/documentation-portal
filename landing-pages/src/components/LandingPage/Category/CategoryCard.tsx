@@ -63,9 +63,15 @@ export default function CategoryCard({
         padding: '24px',
       }}
     >
-      <Typography variant="h2" sx={{ fontSize: '1.25rem', fontWeight: '600' }}>
-        {label}
-      </Typography>
+      {label !== '' && (
+        <Typography
+          variant="h2"
+          sx={{ fontSize: '1.25rem', fontWeight: '600' }}
+        >
+          {label}
+        </Typography>
+      )}
+
       <Stack spacing={1} sx={{ fontSize: '0.875rem', color: 'black' }}>
         {landingPageItems?.map((categoryItem, idx) => (
           <LandingPageItem {...categoryItem} key={idx} />

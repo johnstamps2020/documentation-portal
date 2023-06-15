@@ -105,8 +105,8 @@ export default function CategoryLayout({
             maxWidth: '932px',
           }}
         >
-          {cards.map((card) => (
-            <CategoryCard {...card} key={card.label} />
+          {cards.map((card, idx) => (
+            <CategoryCard {...card} key={idx} />
           ))}
         </Grid>
         {sidebar && <CategorySidebar {...sidebar} />}

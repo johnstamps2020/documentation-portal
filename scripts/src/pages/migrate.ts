@@ -173,7 +173,7 @@ function getBackgroundProps(flailConfig: FlailConfig): {
     import Typography from '@mui/material/Typography';
     import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
       backgroundPropValue:
-        "{\n...baseBackgroundProps,\nbackgroundColor: 'white',\n}",
+        "{\n...baseBackgroundProps,\nbackgroundColor: 'hsl(0, 0%, 98%)',\n}",
     };
   }
 
@@ -238,6 +238,14 @@ function getBackgroundProps(flailConfig: FlailConfig): {
       import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
       backgroundPropValue:
         '{\n...baseBackgroundProps,\nbackgroundImage: {\nsm: `url(${banffBackgroundImage}), url(${gradientBackgroundImage})`,\nxs: `url(${gradientBackgroundImage})`,\n},\n}',
+    };
+  }
+
+  if (!level1Class.match('blue-theme')) {
+    return {
+      backGroundImports: `import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
+      backgroundPropValue:
+        '{ ...baseBackgroundProps,backgroundColor: `hsl(0, 0%, 98%)`, }',
     };
   }
 
@@ -385,11 +393,15 @@ function mapToCategoryLayout(
 ): string {
   const { backgroundPropValue } = getBackgroundProps(flailConfig);
   const cards = flailConfig.items.map((flail) => ({
-    label: flail.label,
-    items: getItems(
-      flail.items?.filter((i) => i.items === undefined),
-      targetFile
-    ),
+    label: flail.id ? '' : flail.label,
+    items:
+      (flail.items &&
+        getItems(
+          flail.items?.filter((i) => i.items === undefined),
+          targetFile
+        )) ||
+      (flail.id &&
+        getItems([{ label: flail.label, id: flail.id }], targetFile)),
     sections: getSections(
       flail.items?.filter((i) => i.items),
       targetFile

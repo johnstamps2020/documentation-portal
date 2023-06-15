@@ -1,13 +1,12 @@
 import SectionLayout, {
   SectionLayoutProps,
 } from 'components/LandingPage/Section/SectionLayout';
-import gradientBackgroundImage from 'images/background-gradient.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 
 const pageConfig: SectionLayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
-    backgroundImage: `url(${gradientBackgroundImage})`,
+    backgroundColor: `hsl(0, 0%, 98%)`,
   },
   sections: [
     {
