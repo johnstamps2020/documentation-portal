@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ExplorationItem, { ExplorationItemProps } from './ExplorationItem';
 import { explorationContent } from './items';
 import Grid from '@mui/material/Unstable_Grid2';
