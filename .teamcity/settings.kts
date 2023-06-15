@@ -22,6 +22,7 @@ project {
         vcsRoot(it)
     }
     vcsRoot(GwVcsRoots.DocumentationPortalGitVcsRoot)
+    vcsRoot(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
     vcsRoot(GwVcsRoots.DitaOtPluginsVcsRoot)
     subProject(Database.rootProject)
     subProject(Runners.rootProject)
@@ -157,8 +158,7 @@ object Database {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:refs/heads/feature/typeorm"
+                root(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
                 cleanCheckout = true
             }
 
@@ -1783,8 +1783,7 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:refs/heads/feature/typeorm"
+                root(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
                 cleanCheckout = true
             }
 
@@ -1902,7 +1901,7 @@ object Frontend {
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
         vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            root(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
             cleanCheckout = true
         }
 
@@ -1910,18 +1909,22 @@ object Frontend {
             nodeJS {
                 id = "Build landing pages"
                 shellScript = """
-                    yarn landing-pages-build
+                    yarn
+                    yarn build
                 """.trimIndent()
                 dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
             }
         }
 
-        features.feature(GwBuildFeatures.createGwPullRequestsBuildFeature(Helpers.createFullGitBranchName("feature/typeorm")))
+        features {
+            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(Helpers.createFullGitBranchName("feature/typeorm")))
+            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+        }
 
         triggers {
             vcs {
                 triggerRules = """
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/**
+                            +:root=${GwVcsRoots.CroissantFeatureBranchGitVcsRoot.id}:landing-pages/**
                             -:user=doctools:**
                             """.trimIndent()
             }
@@ -2652,8 +2655,7 @@ object Server {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:refs/heads/feature/typeorm"
+                root(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
                 cleanCheckout = true
             }
 
@@ -5311,6 +5313,12 @@ object GwVcsRoots {
         Helpers.resolveRelativeIdFromIdString("DITA OT plugins repo"),
         "ssh://git@stash.guidewire.com/doctools/dita-ot-plugins.git",
         "main",
+    )
+
+    val CroissantFeatureBranchGitVcsRoot = createGitVcsRoot(
+        Helpers.resolveRelativeIdFromIdString("Croissant feature branch"),
+        "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
+        "feature/typeorm",
     )
 
     private fun createGitVcsRoot(

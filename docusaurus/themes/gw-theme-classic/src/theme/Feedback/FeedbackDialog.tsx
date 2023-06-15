@@ -93,7 +93,7 @@ export default function FeedbackDialog({
   async function submitFeedback() {
     try {
       const feedbackRequest: FeedbackRequestBody = {
-        summaryText: `User feedback: ${title}`,
+        summaryText: `Doc: user feedback: ${title}`,
         descriptionText: {
           Product: searchMeta?.product?.join(', ') || '',
           Version: searchMeta?.version?.join(', ') || '',

@@ -40,3 +40,7 @@ spec:
       enable_sub_domain: false
       hostname: portal2
       base_domain: guidewire.com
+    - name: documentation-vanity-domain
+      enable_sub_domain: false
+      hostname: documentation
+      base_domain: guidewire.com

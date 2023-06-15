@@ -17,7 +17,7 @@ const httpContext = require('express-http-context');
 const app = express();
 app.use(expressWinstonLogger);
 app.use(function (req, res, next) {
-  const hostnamesToReplace = ['portal2.guidewire.com'];
+  const hostnamesToReplace = ['portal2.guidewire.com', 'documentation.guidewire.com'];
   if (hostnamesToReplace.includes(req.hostname)) {
     const fullRequestUrl = new URL(req.url, process.env.APP_BASE_URL);
     res.redirect(fullRequestUrl.href);
