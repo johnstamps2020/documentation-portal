@@ -28,5 +28,6 @@
   "files.readonlyInclude": {
     "**/node_modules/**": true,
     "**/logs/**": true
-  }
+  },
+  "cSpell.words": ["Hakuba"]
 }
