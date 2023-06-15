@@ -21,7 +21,6 @@ function HomepageHeader() {
             Get started 🚀
           </Link>
         </div>
-        <Explorer />
       </div>
     </header>
   );
