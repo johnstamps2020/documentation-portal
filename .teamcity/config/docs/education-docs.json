@@ -1,0 +1,22 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "cloudintegrationbasics",
+      "title": "Cloud Integration Basics",
+      "url": "education/cloud-integration-basics/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter", "BillingCenter", "ClaimCenter"],
+        "version": ["latest"],
+        "subject": ["Integration"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

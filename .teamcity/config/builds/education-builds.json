@@ -1,0 +1,12 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "yarn",
+      "docId": "cloudintegrationbasics",
+      "srcId": "cloudintegrationbasicssrc",
+      "workingDir": "website",
+      "nodeImageVersion": "18.16.0"
+    }
+  ]
+}
