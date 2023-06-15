@@ -4,6 +4,7 @@
  */
 
 .heroBanner {
+  --ifm-hero-background-color: black;
   padding: 4rem 0;
   text-align: center;
   overflow: hidden;
