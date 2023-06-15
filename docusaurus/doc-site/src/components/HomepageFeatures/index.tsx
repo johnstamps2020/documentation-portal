@@ -4,6 +4,9 @@ import styles from './styles.module.css';
 import InstallationCodeBlock from '../InstallationCodeBlock';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Link from '@docusaurus/Link';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Unstable_Grid2';
+import Box from '@mui/material/Box';
 
 type FeatureItem = {
   title: string;
@@ -39,32 +42,36 @@ const FeatureList: FeatureItem[] = [
 
 function Feature({ title, CodeBlock, description, link }: FeatureItem) {
   return (
-    <div className={clsx('col col--6')}>
-      <div className="text--center padding-horiz--md">
-        <h2>{title}</h2>
-        <div className="text--center">{CodeBlock}</div>
-        <p>{description}</p>
-        <Link
-          className="button button--primary button--lg"
-          to={useBaseUrl(link)}
-        >
-          Details
-        </Link>
+    <Grid xs={12} sm={6}>
+      <div className={styles.feature}>
+        <Box>
+          <h2>{title}</h2>
+          <div className="text--center">{CodeBlock}</div>
+          <p>{description}</p>
+        </Box>
+        <Box>
+          <Button
+            className="button button--primary button--lg"
+            href={useBaseUrl(link)}
+            LinkComponent={Link}
+            variant="contained"
+          >
+            Details
+          </Button>
+        </Box>
       </div>
-    </div>
+    </Grid>
   );
 }
 
 export default function HomepageFeatures(): JSX.Element {
   return (
-    <section className={styles.features}>
-      <div className="container">
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
-        </div>
-      </div>
-    </section>
+    <div className="container">
+      <Grid container>
+        {FeatureList.map((props, idx) => (
+          <Feature key={idx} {...props} />
+        ))}
+      </Grid>
+    </div>
   );
 }
