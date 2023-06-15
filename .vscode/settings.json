@@ -24,5 +24,21 @@
       "path": "pwsh",
       "icon": "terminal-powershell"
     }
-  }
+  },
+  "files.readonlyInclude": {
+    "**/node_modules/**": true,
+    "**/logs/**": true
+  },
+  "cSpell.words": [
+    "Aspen",
+    "Banff",
+    "Businessowners",
+    "Cortina",
+    "ditavals",
+    "Dobson",
+    "Elysian",
+    "Flaine",
+    "Garmisch",
+    "Hakuba"
+  ]
 }

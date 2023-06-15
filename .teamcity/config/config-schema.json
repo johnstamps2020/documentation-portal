@@ -77,7 +77,7 @@
       "required": ["product", "platform"],
       "properties": {
         "product": {
-          "$ref": "#definitions/product"
+          "$ref": "#/definitions/product"
         },
         "platform": {
           "description": "The broad category of how we deliver products. Can be Self-managed or Cloud",
@@ -206,6 +206,7 @@
           "Internal Docs",
           "Jutro Design System",
           "Jutro Digital Platform",
+          "Lines of Business",
           "LRS",
           "London Market",
           "OIC Integration",

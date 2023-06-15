@@ -48,7 +48,7 @@
         },
         {
           "label": "Cloud Platform",
-          "page": "../cloudConsole"
+          "id": "guidewirecloudconsolerootinsurerdev"
         },
         {
           "label": "Data Platform",
@@ -64,6 +64,18 @@
       "label": "Applications",
       "class": "categoryCard cardShadow",
       "items": [
+        {
+          "label": "PolicyCenter",
+          "page": "pcGwCloud/2023.06"
+        },
+        {
+          "label": "ClaimCenter",
+          "page": "ccGwCloud/2023.06"
+        },
+        {
+          "label": "BillingCenter",
+          "page": "bcGwCloud/2023.06"
+        },
         {
           "label": "InsuranceNow",
           "page": "insuranceNow/2023.2"
@@ -120,6 +132,18 @@
       "label": "Developer Resources",
       "class": "categoryCard cardShadow",
       "items": [
+        {
+          "label": "Advanced Product Designer App",
+          "page": "apd"
+        },
+        {
+          "label": "API References",
+          "page": "../../apiReferences/hakuba"
+        },
+        {
+          "label": "API Sandbox",
+          "id": "is202306apisandbox"
+        },
         {
           "label": "Integration Gateway",
           "id": "integgatewaydevlatest"

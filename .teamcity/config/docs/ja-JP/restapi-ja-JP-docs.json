@@ -1,0 +1,23 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "integgatewaydevlatestjaJP",
+      "title": "Integration Gateway ja-JP",
+      "url": "ja-JP/cloud/is/integgateway",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Integration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

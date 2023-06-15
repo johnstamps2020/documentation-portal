@@ -22,6 +22,7 @@ project {
         vcsRoot(it)
     }
     vcsRoot(GwVcsRoots.DocumentationPortalGitVcsRoot)
+    vcsRoot(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
     vcsRoot(GwVcsRoots.DitaOtPluginsVcsRoot)
     subProject(Database.rootProject)
     subProject(Runners.rootProject)
@@ -157,8 +158,7 @@ object Database {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:refs/heads/feature/typeorm"
+                root(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
                 cleanCheckout = true
             }
 
@@ -1319,6 +1319,7 @@ object Content {
             subProject(createDeployContentStorageProject())
             buildType(UploadPdfsForEscrowBuildType)
             buildType(SyncDocsFromStagingToDev)
+            buildType(SyncElasticsearchIndexFromStagingToDev)
         }
     }
 
@@ -1643,6 +1644,34 @@ object Content {
         steps {
             step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("cloud"))
             step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("self-managed"))
+            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("internal-docs"))
+        }
+
+        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+    })
+
+    object SyncElasticsearchIndexFromStagingToDev : BuildType({
+        name = "Sync the Elasticsearch index from staging to dev"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        vcs {
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            branchFilter = "+:<default>"
+            cleanCheckout = true
+        }
+
+        steps {
+            nodeJS {
+                name = "Reindex from staging to dev"
+                id = Helpers.createIdStringFromName(this.name)
+                shellScript = """
+                        #!/bin/sh
+                        set -e
+                        
+                        node ci/reindexFromStagingToDev.mjs
+                        """.trimIndent()
+                dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
+            }
         }
 
         features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -1702,9 +1731,8 @@ object Frontend {
             name = "Deploy landing pages"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            buildType(SyncLandingPagesFromStagingToDev)
             arrayOf(
-                GwDeployEnvs.STAGING, GwDeployEnvs.PROD
+                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
                 buildType(createDeployLandingPagesBuildType(it.envName))
             }
@@ -1721,19 +1749,9 @@ object Frontend {
             ).forEach {
                 buildType(createDeployReactLandingPagesBuildType(it.envName))
             }
+            buildType(TestReactLandingPagesBuildType)
         }
     }
-
-    object SyncLandingPagesFromStagingToDev : BuildType({
-        name = "Sync landing pages from staging to dev"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-        steps {
-            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("pages"))
-        }
-
-        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-    })
 
     private fun createDeployReactLandingPagesBuildType(deployEnv: String): BuildType {
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
@@ -1765,8 +1783,7 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:refs/heads/feature/typeorm"
+                root(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
                 cleanCheckout = true
             }
 
@@ -1879,6 +1896,41 @@ object Frontend {
         }
     }
 
+    private object TestReactLandingPagesBuildType : BuildType({
+        name = "Test React landing pages"
+        id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        vcs {
+            root(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
+            cleanCheckout = true
+        }
+
+        steps {
+            nodeJS {
+                id = "Build landing pages"
+                shellScript = """
+                    yarn
+                    yarn build
+                """.trimIndent()
+                dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
+            }
+        }
+
+        features {
+            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(Helpers.createFullGitBranchName("feature/typeorm")))
+            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+        }
+
+        triggers {
+            vcs {
+                triggerRules = """
+                            +:root=${GwVcsRoots.CroissantFeatureBranchGitVcsRoot.id}:landing-pages/**
+                            -:user=doctools:**
+                            """.trimIndent()
+            }
+        }
+    })
+
     private fun createPublishNpmPackageBuildType(packageHandle: String, packagePath: String): BuildType {
         return BuildType {
             name = "Publish $packageHandle to Artifactory"
@@ -1983,12 +2035,19 @@ object Frontend {
         }
     }
 
-
     private fun createDeployLandingPagesBuildType(deployEnv: String): BuildType {
         val pagesDir = "%teamcity.build.checkoutDir%/frontend/pages"
         val outputDir = "%teamcity.build.checkoutDir%/output"
+        val buildName = when (deployEnv) {
+            GwDeployEnvs.DEV.envName -> "Deploy staging landing pages to $deployEnv"
+            else -> "Deploy landing pages to $deployEnv"
+        }
+        val flailDeployEnv = when (deployEnv) {
+            GwDeployEnvs.DEV.envName -> GwDeployEnvs.STAGING.envName
+            else -> deployEnv
+        }
         return BuildType {
-            name = "Deploy landing pages to $deployEnv"
+            name = buildName
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
@@ -2003,7 +2062,7 @@ object Frontend {
                     GwBuildSteps.createRunFlailSsgStep(
                         pagesDir,
                         outputDir,
-                        deployEnv
+                        flailDeployEnv
                     )
                 )
                 step(
@@ -2573,8 +2632,8 @@ object Server {
                 ecrHost = GwConfigParams.ECR_HOST.paramValue
                 docportalImageUrl = GwDockerImages.DOC_PORTAL.imageUrl
                 awsRole = "arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"
-                docS3url = "https://docportal-content.dev.ccs.guidewire.net"
-                elasticsearchUrl = "https://docsearch-doctools.${GwDeployEnvs.DEV.envName}.ccs.guidewire.net"
+                docS3url = "https://docportal-content.${GwDeployEnvs.DEV.envName}.ccs.guidewire.net"
+                elasticsearchUrl = "http://docsearch-${GwDeployEnvs.DEV.envName}.doctools:9200"
                 oktaDomain = "https://guidewire-hub.oktapreview.com"
                 oktaIssuer = "https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"
             }
@@ -2585,7 +2644,7 @@ object Server {
                 docportalImageUrl = GwDockerImages.DOC_PORTAL_PROD.imageUrl
                 awsRole = "arn:aws:iam::954920275956:role/aws_orange-prod_tenant_doctools_developer"
                 docS3url = "https://docportal-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net"
-                elasticsearchUrl = "https://docsearch-doctools.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net"
+                elasticsearchUrl = "http://docsearch-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.doctools:9200"
                 oktaDomain = "https://guidewire-hub.okta.com"
                 oktaIssuer = "https://guidewire-hub.okta.com/oauth2/aus11vix3uKEpIfSI357"
                 enableAuth = "no"
@@ -2596,8 +2655,7 @@ object Server {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:refs/heads/feature/typeorm"
+                root(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
                 cleanCheckout = true
             }
 
@@ -5255,6 +5313,12 @@ object GwVcsRoots {
         Helpers.resolveRelativeIdFromIdString("DITA OT plugins repo"),
         "ssh://git@stash.guidewire.com/doctools/dita-ot-plugins.git",
         "main",
+    )
+
+    val CroissantFeatureBranchGitVcsRoot = createGitVcsRoot(
+        Helpers.resolveRelativeIdFromIdString("Croissant feature branch"),
+        "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
+        "feature/typeorm",
     )
 
     private fun createGitVcsRoot(
