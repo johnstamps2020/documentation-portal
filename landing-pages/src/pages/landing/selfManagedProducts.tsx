@@ -8,7 +8,7 @@ import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
-    backgroundColor: 'white',
+    backgroundColor: 'hsl(0, 0%, 98%)',
   },
 
   description: (

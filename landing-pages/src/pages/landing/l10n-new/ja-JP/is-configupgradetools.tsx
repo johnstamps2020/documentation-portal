@@ -1,13 +1,12 @@
 import CategoryLayout, {
   CategoryLayoutProps,
 } from 'components/LandingPage/Category/CategoryLayout';
-import gradientBackgroundImage from 'images/background-gradient.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
-    backgroundImage: `url(${gradientBackgroundImage})`,
+    backgroundColor: `hsl(0, 0%, 98%)`,
   },
 
   cards: [
