@@ -4,8 +4,8 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "ISObservability.ditamap",
-      "srcId": "is202306src",
+      "root": "Observability.ditamap",
+      "srcId": "observabilitysrc",
       "docId": "observability",
       "indexRedirect": true
     }
