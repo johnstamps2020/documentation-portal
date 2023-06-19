@@ -2,15 +2,15 @@
   "$schema": "../../config-schema.json",
   "docs": [
     {
-      "id": "dx202205jaJPceclaimsinstall",
-      "title": "Installation Guide ja-JP",
-      "url": "cloud/dx/ja-JP/ce-claims/202205/install",
+      "id": "dx202205esESceamapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/es-ES/ce-am/202205/app",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["CustomerEngage Account Management"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Installation"]
+        "subject": ["Features and functionality"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -20,9 +20,9 @@
       "earlyAccess": false
     },
     {
-      "id": "dx202205jaJPceclaimsapp",
-      "title": "Application Guide ja-JP",
-      "url": "cloud/dx/ja-JP/ce-claims/202205/app",
+      "id": "dx202205esESceclaimsapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/es-ES/ce-claims/202205/app",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Cloud"],
@@ -38,15 +38,15 @@
       "earlyAccess": false
     },
     {
-      "id": "dx202205jaJPceclaimsdev",
-      "title": "Development Guide ja-JP",
-      "url": "cloud/dx/ja-JP/ce-claims/202205/dev",
+      "id": "dx202205esESceqbapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/es-ES/ce-qb/202205/app",
       "metadata": {
-        "product": ["CustomerEngage Account Management for ClaimCenter"],
+        "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Development"]
+        "subject": ["Features and functionality"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -56,15 +56,15 @@
       "earlyAccess": false
     },
     {
-      "id": "dx202205jaJPsreinstall",
-      "title": "Installation Guide ja-JP",
-      "url": "cloud/dx/ja-JP/sre/202205/install",
+      "id": "dx202205esESpeapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/es-ES/pe/202205/app",
       "metadata": {
-        "product": ["ServiceRepEngage"],
+        "product": ["ProducerEngage"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Installation"]
+        "subject": ["Features and functionality"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -74,9 +74,27 @@
       "earlyAccess": false
     },
     {
-      "id": "dx202205jaJPsreapp",
-      "title": "Application Guide ja-JP",
-      "url": "cloud/dx/ja-JP/sre/202205/app",
+      "id": "dx202205esESpeclaimsapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/es-ES/pe-claims/202205/app",
+      "metadata": {
+        "product": ["ProducerEngage for ClaimCenter"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202205esESsreapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/es-ES/sre/202205/app",
       "metadata": {
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
@@ -92,69 +110,15 @@
       "earlyAccess": false
     },
     {
-      "id": "dx202205jaJPsredev",
-      "title": "Development Guide ja-JP",
-      "url": "cloud/dx/ja-JP/sre/202205/dev",
-      "metadata": {
-        "product": ["ServiceRepEngage"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205jaJPveinstall",
-      "title": "Installation Guide ja-JP",
-      "url": "cloud/dx/ja-JP/ve/202205/install",
-      "metadata": {
-        "product": ["VendorEngage"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Installation"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205jaJPveapp",
-      "title": "Application Guide ja-JP",
-      "url": "cloud/dx/ja-JP/ve/202205/app",
+      "id": "dx202205esESveapp",
+      "title": "Application Guide",
+      "url": "cloud/dx/es-ES/ve/202205/app",
       "metadata": {
         "product": ["VendorEngage"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Features and functionality"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "dx202205jaJPvedev",
-      "title": "Development Guide ja-JP",
-      "url": "cloud/dx/ja-JP/ve/202205/dev",
-      "metadata": {
-        "product": ["VendorEngage"],
-        "platform": ["Cloud"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Development"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

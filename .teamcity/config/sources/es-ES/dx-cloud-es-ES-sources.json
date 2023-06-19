@@ -2,10 +2,10 @@
   "$schema": "../../config-schema.json",
   "sources": [
     {
-      "id": "dx202205jaJPsrc",
-      "title": "Digital 2022.05 ja-JP",
+      "id": "dx202205esESsrc",
+      "title": "Digital 2022.05 Spanish (Spain)",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
-      "branch": "release/ja-JP/2022.05"
+      "branch": "release/es-ES/2022.05"
     }
   ]
 }
