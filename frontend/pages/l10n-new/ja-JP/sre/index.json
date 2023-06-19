@@ -10,6 +10,14 @@
         {
           "label": "インストールガイド",
           "id": "dx202205jaJPsreinstall"
+        },
+        {
+          "label": "アプリケーションガイド",
+          "id": "dx202205jaJPsreapp"
+        },
+        {
+          "label": "開発者ガイド",
+          "id": "dx202205jaJPsredev"
         }
       ]
     },
