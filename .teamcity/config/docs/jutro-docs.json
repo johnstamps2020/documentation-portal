@@ -1773,6 +1773,23 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "agentquoteandbuypersonalauto",
+      "title": "Agent Quote and Buy Personal Auto",
+      "url": "jutro/agent-quote-and-buy-pa/next",
+      "metadata": {
+        "product": ["Jutro Digital Platform"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Best practices"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": true
     }
   ]
 }
