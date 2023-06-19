@@ -2,24 +2,6 @@
   "$schema": "../../config-schema.json",
   "sources": [
     {
-      "id": "dx202306esESsrc",
-      "title": "Digital 2023.06",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
-      "branch": "release/2023.06"
-    },
-    {
-      "id": "dx202302esESsrc",
-      "title": "Digital 2023.02 Spanish (Spain)",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
-      "branch": "release/es-ES/2023.02"
-    },
-    {
-      "id": "dx202209esESsrc",
-      "title": "Digital 2022.09 Spanish (Spain)",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
-      "branch": "release/es-ES/2022.09"
-    },
-    {
       "id": "dx202205esESsrc",
       "title": "Digital 2022.05 Spanish (Spain)",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
