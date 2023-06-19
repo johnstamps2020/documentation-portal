@@ -384,6 +384,12 @@
       "title": "Jutro Home Next",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs.git",
       "branch": "main"
+    },
+    {
+      "id": "jutrodigitalcontentsrc",
+      "title": "Jutro Digital Content",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-digital-content.git",
+      "branch": "main"
     }
   ]
 }

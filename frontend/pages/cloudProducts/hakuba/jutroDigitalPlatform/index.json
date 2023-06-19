@@ -7,8 +7,19 @@
     {
       "label": "Jutro Digital Platform (Early Access)", 
       "class": "categoryCard cardShadow",
-      "id": "jutroplatformnext",
-      "env": ["staging"]
+      "env": ["staging"],
+      "items": [
+        {
+          "label": "Jutro Web Apps", 
+          "id": "jutroplatformnext",
+          "env": ["staging"]
+        },
+        {
+          "label": "Templates", 
+          "id": "agentquoteandbuypersonalauto",
+          "env": ["staging"]
+        }
+      ]
     },
     {
       "label": "Tools and libraries",
