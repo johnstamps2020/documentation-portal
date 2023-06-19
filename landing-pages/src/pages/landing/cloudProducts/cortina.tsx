@@ -61,7 +61,7 @@ const pageConfig: ProductFamilyLayoutProps = {
       },
     ],
   },
-  releaseSelector: true,
+  showReleaseSelector: true,
 };
 
 export default function Cortina() {
