@@ -10,9 +10,10 @@
         "product": ["PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -28,45 +29,10 @@
         "product": ["BillingCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "isbc202302newandchanged",
-      "title": "New and Changed",
-      "url": "cloud/bc/202302/newandchanged",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2023.02"],
-        "release": ["Garmisch"],
-        "subject": ["Release notes"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "isbc202302update",
-      "title": "Update",
-      "url": "cloud/bc/202302/update",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2023.02"],
-        "release": ["Garmisch"],
-        "subject": ["Installation"]
-      },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -82,9 +48,10 @@
         "product": ["BillingCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -100,9 +67,10 @@
         "product": ["BillingCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Administration"]
+        "subject": ["Administration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -118,9 +86,10 @@
         "product": ["BillingCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -136,9 +105,10 @@
         "product": ["BillingCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Administration"]
+        "subject": ["Administration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -154,9 +124,10 @@
         "product": ["BillingCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -172,9 +143,10 @@
         "product": ["BillingCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -190,9 +162,10 @@
         "product": ["BillingCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -201,16 +174,17 @@
     },
     {
       "id": "isbc202302apibf",
-      "title": "BillingCenter Cloud API Consumer Guide",
+      "title": "Cloud API Consumer Guide",
       "url": "cloud/bc/202302/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -219,16 +193,17 @@
     },
     {
       "id": "isbc202302apica",
-      "title": "BillingCenter Cloud API Developer Guide",
+      "title": "Cloud API Developer Guide",
       "url": "cloud/bc/202302/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -244,9 +219,10 @@
         "product": ["BillingCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -262,9 +238,10 @@
         "product": ["BillingCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -280,9 +257,10 @@
         "product": ["BillingCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Installation"]
+        "subject": ["Installation"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -298,45 +276,10 @@
         "product": ["ClaimCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "iscc202302newandchanged",
-      "title": "New and Changed",
-      "url": "cloud/cc/202302/newandchanged",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.02"],
-        "release": ["Garmisch"],
-        "subject": ["Release notes"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "iscc202302update",
-      "title": "Update",
-      "url": "cloud/cc/202302/update",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.02"],
-        "release": ["Garmisch"],
-        "subject": ["Installation"]
-      },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -352,9 +295,10 @@
         "product": ["ClaimCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -370,9 +314,10 @@
         "product": ["ClaimCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Administration"]
+        "subject": ["Administration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -388,9 +333,10 @@
         "product": ["ClaimCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -406,9 +352,10 @@
         "product": ["ClaimCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Administration"]
+        "subject": ["Administration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -424,9 +371,10 @@
         "product": ["ClaimCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -442,9 +390,10 @@
         "product": ["ClaimCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -460,9 +409,10 @@
         "product": ["ClaimCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -471,16 +421,17 @@
     },
     {
       "id": "iscc202302apibf",
-      "title": "ClaimCenter Cloud API Consumer Guide",
+      "title": "Cloud API Consumer Guide",
       "url": "cloud/cc/202302/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -489,16 +440,17 @@
     },
     {
       "id": "iscc202302apica",
-      "title": "ClaimCenter Cloud API Developer Guide",
+      "title": "Cloud API Developer Guide",
       "url": "cloud/cc/202302/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -514,9 +466,10 @@
         "product": ["ClaimCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -532,9 +485,10 @@
         "product": ["ClaimCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -550,9 +504,10 @@
         "product": ["ClaimCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Installation"]
+        "subject": ["Installation"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -568,45 +523,10 @@
         "product": ["PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "ispc202302newandchanged",
-      "title": "New and Changed",
-      "url": "cloud/pc/202302/newandchanged",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.02"],
-        "release": ["Garmisch"],
-        "subject": ["Release notes"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "ispc202302update",
-      "title": "Update",
-      "url": "cloud/pc/202302/update",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.02"],
-        "release": ["Garmisch"],
-        "subject": ["Installation"]
-      },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -622,9 +542,10 @@
         "product": ["PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -640,9 +561,10 @@
         "product": ["PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Administration"]
+        "subject": ["Administration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -658,9 +580,10 @@
         "product": ["PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -676,9 +599,10 @@
         "product": ["PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Administration"]
+        "subject": ["Administration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -694,9 +618,10 @@
         "product": ["PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -712,9 +637,10 @@
         "product": ["PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -730,9 +656,10 @@
         "product": ["PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -748,9 +675,10 @@
         "product": ["PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -766,9 +694,10 @@
         "product": ["PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -777,16 +706,17 @@
     },
     {
       "id": "ispc202302apibf",
-      "title": "PolicyCenter Cloud API Consumer Guide",
+      "title": "Cloud API Consumer Guide",
       "url": "cloud/pc/202302/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -795,16 +725,17 @@
     },
     {
       "id": "ispc202302apica",
-      "title": "PolicyCenter Cloud API Developer Guide",
+      "title": "Cloud API Developer Guide",
       "url": "cloud/pc/202302/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -820,9 +751,10 @@
         "product": ["PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -838,9 +770,10 @@
         "product": ["PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -856,9 +789,10 @@
         "product": ["PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Installation"]
+        "subject": ["Installation"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -874,9 +808,10 @@
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -892,9 +827,10 @@
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -910,7 +846,8 @@
         "product": ["ClaimCenter", "PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -928,9 +865,10 @@
         "product": ["ClaimCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -946,9 +884,10 @@
         "product": ["BillingCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -964,9 +903,10 @@
         "product": ["PolicyCenter"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,

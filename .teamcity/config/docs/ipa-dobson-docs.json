@@ -9,7 +9,9 @@
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
         "version": ["1.0"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "release": ["Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -26,7 +28,9 @@
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
         "version": ["1.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "release": ["Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -43,7 +47,9 @@
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
         "version": ["1.0"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "release": ["Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -60,7 +66,9 @@
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
         "version": ["1.0"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "release": ["Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -77,7 +85,9 @@
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
         "version": ["1.0"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "release": ["Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -94,7 +104,9 @@
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
         "version": ["1.0"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "release": ["Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -111,7 +123,9 @@
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
         "version": ["1.0"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "release": ["Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

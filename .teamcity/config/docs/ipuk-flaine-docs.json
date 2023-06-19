@@ -1,0 +1,62 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "ipukflainern",
+      "title": "Release Notes",
+      "url": "ipuk/flaine/releasenotes",
+      "metadata": {
+        "product": ["OIC Integration"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "ipukflaineconfig",
+      "title": "Configuration",
+      "url": "ipuk/flaine/config",
+      "metadata": {
+        "product": ["OIC Integration"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "ipukflaineapp",
+      "title": "Application Guide",
+      "url": "ipuk/flaine/app",
+      "metadata": {
+        "product": ["OIC Integration"],
+        "platform": ["Cloud"],
+        "version": ["2022.09"],
+        "release": ["Flaine"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    }
+  ]
+}

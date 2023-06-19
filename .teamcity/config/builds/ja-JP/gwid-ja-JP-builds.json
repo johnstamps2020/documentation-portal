@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "builds": [
     {
       "buildType": "dita",
@@ -7,7 +7,8 @@
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "indexRedirect": true,
       "srcId": "guidewireidentityfederationhubjaJPsrc",
-      "docId": "guidewireidentityfederationhubjaJP"
+      "docId": "guidewireidentityfederationhubjaJP",
+      "disabled": false
     }
   ]
 }

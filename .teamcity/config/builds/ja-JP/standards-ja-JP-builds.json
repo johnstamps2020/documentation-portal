@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "builds": [
     {
       "buildType": "dita",
@@ -7,7 +7,8 @@
       "root": "surepath.ditamap",
       "srcId": "standards202206jaJPsrc",
       "docId": "standards202206jaJP",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

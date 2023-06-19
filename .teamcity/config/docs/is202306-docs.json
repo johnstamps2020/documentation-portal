@@ -1,0 +1,955 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "ispc202306apd",
+      "title": "Advanced Product Designer in PolicyCenter",
+      "url": "cloud/pc/202306/apd",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202306releasenotes",
+      "title": "Release Notes",
+      "url": "cloud/bc/202306/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202306app",
+      "title": "Application Guide",
+      "url": "cloud/bc/202306/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202306admin",
+      "title": "Administration",
+      "url": "cloud/bc/202306/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Administration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202306config",
+      "title": "Configuration",
+      "url": "cloud/bc/202306/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202306dataarchiving",
+      "title": "Data Archiving",
+      "url": "cloud/bc/202306/dataarchiving",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Administration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202306global",
+      "title": "Globalization",
+      "url": "cloud/bc/202306/global",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202306rules",
+      "title": "Gosu Rules",
+      "url": "cloud/bc/202306/rules",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202306integ",
+      "title": "Plugins, Prebuilt Integrations, and SOAP APIs",
+      "url": "cloud/bc/202306/integration",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202306apibf",
+      "title": "Cloud API Consumer Guide",
+      "url": "cloud/bc/202306/cloudapibf",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202306apica",
+      "title": "Cloud API Developer Guide",
+      "url": "cloud/bc/202306/cloudapica",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202306apicm",
+      "title": "ContactManager Cloud API Consumer Guide",
+      "url": "cloud/bc/202306/cloudapicm",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202306restapifw",
+      "title": "REST API Framework",
+      "url": "cloud/bc/202306/restapiframework",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202306devsetup",
+      "title": "Developer Setup",
+      "url": "cloud/bc/202306/devsetup",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Installation"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202306releasenotes",
+      "title": "Release Notes",
+      "url": "cloud/cc/202306/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202306app",
+      "title": "Application Guide",
+      "url": "cloud/cc/202306/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202306admin",
+      "title": "Administration",
+      "url": "cloud/cc/202306/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Administration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202306config",
+      "title": "Configuration",
+      "url": "cloud/cc/202306/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202306dataarchiving",
+      "title": "Data Archiving",
+      "url": "cloud/cc/202306/dataarchiving",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Administration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202306global",
+      "title": "Globalization",
+      "url": "cloud/cc/202306/global",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202306rules",
+      "title": "Gosu Rules",
+      "url": "cloud/cc/202306/rules",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202306integ",
+      "title": "Plugins, Prebuilt Integrations, and SOAP APIs",
+      "url": "cloud/cc/202306/integration",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202306apibf",
+      "title": "Cloud API Consumer Guide",
+      "url": "cloud/cc/202306/cloudapibf",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202306apica",
+      "title": "Cloud API Developer Guide",
+      "url": "cloud/cc/202306/cloudapica",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202306apicm",
+      "title": "ContactManager Cloud API Consumer Guide",
+      "url": "cloud/cc/202306/cloudapicm",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202306restapifw",
+      "title": "REST API Framework",
+      "url": "cloud/cc/202306/restapiframework",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202306devsetup",
+      "title": "Developer Setup",
+      "url": "cloud/cc/202306/devsetup",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Installation"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202306releasenotes",
+      "title": "Release Notes",
+      "url": "cloud/pc/202306/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202306app",
+      "title": "Application Guide",
+      "url": "cloud/pc/202306/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202306admin",
+      "title": "Administration",
+      "url": "cloud/pc/202306/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Administration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202306config",
+      "title": "Configuration",
+      "url": "cloud/pc/202306/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202306dataarchiving",
+      "title": "Data Archiving",
+      "url": "cloud/pc/202306/dataarchiving",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Administration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202306global",
+      "title": "Globalization",
+      "url": "cloud/pc/202306/global",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202306rules",
+      "title": "Gosu Rules",
+      "url": "cloud/pc/202306/rules",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202306pd",
+      "title": "Product Designer",
+      "url": "cloud/pc/202306/pd",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202306pm",
+      "title": "Product Model",
+      "url": "cloud/pc/202306/productmodel",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202306integ",
+      "title": "Plugins, Prebuilt Integrations, and SOAP APIs",
+      "url": "cloud/pc/202306/integration",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202306apibf",
+      "title": "Cloud API Consumer Guide",
+      "url": "cloud/pc/202306/cloudapibf",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202306apica",
+      "title": "Cloud API Developer Guide",
+      "url": "cloud/pc/202306/cloudapica",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202306apicm",
+      "title": "ContactManager Cloud API Consumer Guide",
+      "url": "cloud/pc/202306/cloudapicm",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202306restapifw",
+      "title": "REST API Framework",
+      "url": "cloud/pc/202306/restapiframework",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202306devsetup",
+      "title": "Developer Setup",
+      "url": "cloud/pc/202306/devsetup",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Installation"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202306cloudratingmgmt",
+      "title": "Cloud Rating Management",
+      "url": "cloud/202306/cloudratingmgmt",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "is202306integoverview",
+      "title": "Overview of Cloud Integration",
+      "url": "cloud/202306/integoverview",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "is202306contact",
+      "title": "Contact Management",
+      "url": "cloud/is/202306/contact",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "is202306fnoltemplate",
+      "title": "Claims Intake FNOL Template",
+      "url": "cloud/is/202306/fnoltemplate",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter", "PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "is202306apisandbox",
+      "title": "API Sandbox",
+      "url": "cloud/202306/apisandbox",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter", "PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ccapirefhakuba",
+      "title": "ClaimCenter Cloud API Reference",
+      "url": "cloud/cc/202306/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "bcapirefhakuba",
+      "title": "BillingCenter Cloud API Reference",
+      "url": "cloud/bc/202306/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "pcapirefhakuba",
+      "title": "PolicyCenter Cloud API Reference",
+      "url": "cloud/pc/202306/apiref",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

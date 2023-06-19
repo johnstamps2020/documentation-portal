@@ -8,13 +8,15 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["DocTools"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": false,
+      "displayOnLandingPages": true
     },
     {
       "id": "doctoolsadmin",
@@ -23,13 +25,15 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["DocTools"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": false,
+      "displayOnLandingPages": true
     },
     {
       "id": "elemrend",
@@ -38,13 +42,15 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["DocTools"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "indexForSearch": false,
       "public": false,
       "internal": false,
-      "earlyAccess": false
+      "earlyAccess": false,
+      "displayOnLandingPages": true
     },
     {
       "id": "docusaurusgwdocslatest",
@@ -53,7 +59,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["DocTools"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -69,7 +76,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["DocTools"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

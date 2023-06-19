@@ -7,7 +7,8 @@
       "root": "IPJReleaseNotes.ditamap",
       "srcId": "ipjflainesrc",
       "docId": "ipjflainern",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "IPJConfigurationGuide.ditamap",
       "srcId": "ipjflainesrc",
       "docId": "ipjflaineconfig",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,39 +25,44 @@
       "root": "IPJApplicationGuide.ditamap",
       "srcId": "ipjflainesrc",
       "docId": "ipjflaineapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "IPJReleaseNotes.ditamap",
-      "srcId": "ipj10src",
-      "docId": "ipj10rn",
-      "indexRedirect": true
+      "srcId": "ipjgarmischsrc",
+      "docId": "ipjgarmischrn",
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "IPJConfigurationGuide.ditamap",
-      "srcId": "ipj10src",
-      "docId": "ipj10config",
-      "indexRedirect": true
+      "srcId": "ipjgarmischsrc",
+      "docId": "ipjgarmischconfig",
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "IPJApplicationGuide.ditamap",
-      "srcId": "ipj10src",
-      "docId": "ipj10app",
-      "indexRedirect": true
+      "srcId": "ipjgarmischsrc",
+      "docId": "ipjgarmischapp",
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "IPJInstallationGuide.ditamap",
-      "srcId": "ipj10src",
-      "docId": "ipj10install",
-      "indexRedirect": true
+      "srcId": "ipjgarmischsrc",
+      "docId": "ipjgarmischinstall",
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

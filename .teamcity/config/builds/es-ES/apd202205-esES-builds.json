@@ -1,0 +1,14 @@
+{
+  "$schema": "../../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "AdvancedProductDesigner.ditamap",
+      "srcId": "apd202205esESsrc",
+      "docId": "ispc202205apdesES",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}

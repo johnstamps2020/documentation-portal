@@ -1,0 +1,163 @@
+{
+  "$schema": "../../config/config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dm2021111060src",
+      "docId": "dhproduct202111",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dm2021111060src",
+      "docId": "dhinstall202111",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dm2021111060src",
+      "docId": "dhupgrade202111",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dm2021111060src",
+      "docId": "dhconfig202111",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dm2021111060src",
+      "docId": "dhdataspec202111",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dm2021111060src",
+      "docId": "dhadmin202111",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "developer-ref.ditamap",
+      "srcId": "dm2021111060src",
+      "docId": "dhdevref202111",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "srcId": "dhicextrassrc",
+          "sourceFolder": "Dobson-10.6/DataHub/autoGenFiles/cloud",
+          "targetFolder": "extras/autoGenFiles/cloud"
+        }
+      ],
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dm2021111060src",
+      "docId": "icproduct202111",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dm2021111060src",
+      "docId": "icinstall202111",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dm2021111060src",
+      "docId": "icupgrade202111",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dm2021111060src",
+      "docId": "icconfig202111",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dm2021111060src",
+      "docId": "icdataspec202111",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dm2021111060src",
+      "docId": "icadmin202111",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "bi-applications.ditamap",
+      "srcId": "dm2021111060src",
+      "docId": "icbiapp202111",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "reports.ditamap",
+      "srcId": "dm2021111060src",
+      "docId": "icreports202111",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "developer-ref.ditamap",
+      "srcId": "dm2021111060src",
+      "docId": "icdevref202111",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "srcId": "dhicextrassrc",
+          "sourceFolder": "Dobson-10.6/InfoCenter/autoGenFiles/cloud",
+          "targetFolder": "extras/autoGenFiles/cloud"
+        }
+      ],
+      "disabled": true
+    }
+  ]
+}

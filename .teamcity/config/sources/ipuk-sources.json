@@ -2,8 +2,14 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
-      "id": "ipukgarmischsrc",
-      "title": "InsuranceSuite Package for UK Garmisch",
+      "id": "ipukhakubasrc",
+      "title": "InsuranceSuite Package for UK Hakuba",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipuk.git",
+      "branch": "release/1.2"
+    },
+    {
+      "id": "ipukflainesrc",
+      "title": "InsuranceSuite Package for UK Flaine",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipuk.git",
       "branch": "release/1.1"
     }

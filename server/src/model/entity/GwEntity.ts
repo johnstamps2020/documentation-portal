@@ -1,15 +1,18 @@
-import { Column } from 'typeorm';
+import { Column, PrimaryGeneratedColumn } from 'typeorm';
 
 export abstract class GwEntity {
-  @Column({ default: false })
+  @PrimaryGeneratedColumn('uuid')
+  uuid: string;
+
+  @Column({ type: 'boolean', default: false })
   public: boolean;
 
-  @Column({ default: true })
+  @Column({ type: 'boolean', default: false })
   internal: boolean;
 
-  @Column({ default: true })
+  @Column({ type: 'boolean', default: false })
   earlyAccess: boolean;
 
-  @Column({ default: false })
+  @Column({ type: 'boolean', default: false })
   isInProduction: boolean;
 }

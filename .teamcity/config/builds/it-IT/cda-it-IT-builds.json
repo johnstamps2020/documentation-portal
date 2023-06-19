@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "builds": [
     {
       "buildType": "dita",
@@ -7,7 +7,8 @@
       "root": "UnderstandingCloudDataAccess.ditamap",
       "srcId": "clouddataaccessitITsrc",
       "docId": "clouddataaccessguideitIT",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

@@ -1,0 +1,163 @@
+{
+  "$schema": "../../config/config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dm202104src",
+      "docId": "dhcloudproductcortina",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dm202104src",
+      "docId": "dhcloudinstallcortina",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dm202104src",
+      "docId": "dhcloudupgradecortina",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dm202104src",
+      "docId": "dhcloudconfigcortina",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dm202104src",
+      "docId": "dhclouddataspeccortina",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dm202104src",
+      "docId": "dhcloudadmincortina",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "developer-ref.ditamap",
+      "srcId": "dm202104src",
+      "docId": "dhclouddevrefcortina",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "srcId": "dhicextrassrc",
+          "sourceFolder": "Cortina-10.5/DataHub/autoGenFiles/cloud",
+          "targetFolder": "extras/autoGenFiles/cloud"
+        }
+      ],
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dm202104src",
+      "docId": "iccloudproductcortina",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dm202104src",
+      "docId": "iccloudinstallcortina",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dm202104src",
+      "docId": "iccloudupgradecortina",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dm202104src",
+      "docId": "iccloudconfigcortina",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dm202104src",
+      "docId": "icclouddataspeccortina",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dm202104src",
+      "docId": "iccloudadmincortina",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "bi-applications.ditamap",
+      "srcId": "dm202104src",
+      "docId": "iccloudbiappcortina",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "reports.ditamap",
+      "srcId": "dm202104src",
+      "docId": "iccloudreportscortina",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "developer-ref.ditamap",
+      "srcId": "dm202104src",
+      "docId": "icclouddevrefcortina",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "srcId": "dhicextrassrc",
+          "sourceFolder": "Cortina-10.5/InfoCenter/autoGenFiles/cloud",
+          "targetFolder": "extras/autoGenFiles/cloud"
+        }
+      ],
+      "disabled": true
+    }
+  ]
+}

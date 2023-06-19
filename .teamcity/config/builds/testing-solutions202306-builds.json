@@ -1,0 +1,86 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-API.ditamap",
+      "srcId": "testingframeworks202306src",
+      "docId": "testingframeworksapihakuba",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-UI.ditamap",
+      "srcId": "testingframeworks202306src",
+      "docId": "testingframeworksuihakuba",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Load.ditamap",
+      "srcId": "testingframeworks202306src",
+      "docId": "testingframeworksloadhakuba",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Management.ditamap",
+      "srcId": "testingframeworks202306src",
+      "docId": "testingframeworksmgmthakuba",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Matrix.ditamap",
+      "srcId": "testingframeworks202306src",
+      "docId": "testingframeworksmatrixhakuba",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "Guidewire_Test_Automation202306_ReleaseNotes.ditamap",
+      "srcId": "testingframeworks202306src",
+      "docId": "testingframeworksrnhakuba",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Framework-Installation.ditamap",
+      "srcId": "testingframeworks202306src",
+      "docId": "testingframeworksinstallhakuba",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "ISUnitTesting.ditamap",
+      "srcId": "testingframeworks202306src",
+      "docId": "is202306testing",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Accessibility.ditamap",
+      "srcId": "testingframeworks202306src",
+      "docId": "is202306access",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}

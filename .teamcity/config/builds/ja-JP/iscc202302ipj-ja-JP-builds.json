@@ -1,0 +1,32 @@
+{
+  "$schema": "../../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJApplicationGuide.ditamap",
+      "srcId": "iscc202302ipjjaJPsrc",
+      "docId": "iscc202302ipjappjaJP",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJConfigurationGuide.ditamap",
+      "srcId": "iscc202302ipjjaJPsrc",
+      "docId": "iscc202302ipjconfigjaJP",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPJReleaseNotes.ditamap",
+      "srcId": "iscc202302ipjjaJPsrc",
+      "docId": "iscc202302ipjreleasenotesjaJP",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}

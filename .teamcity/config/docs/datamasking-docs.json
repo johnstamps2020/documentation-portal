@@ -8,15 +8,17 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian", "Flaine"],
-        "subject": ["Development"]
+        "version": ["2022.05", "2022.09", "2023.02"],
+        "release": ["Elysian", "Flaine", "Garmisch"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true
+      "earlyAccess": false,
+      "displayOnLandingPages": true
     }
   ]
 }

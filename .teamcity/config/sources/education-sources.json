@@ -1,0 +1,11 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "cloudintegrationbasicssrc",
+      "title": "Cloud Integration Basics",
+      "gitUrl": "ssh://git@stash.guidewire.com/ed/cloud-integration-basics-course.git",
+      "branch": "main"
+    }
+  ]
+}

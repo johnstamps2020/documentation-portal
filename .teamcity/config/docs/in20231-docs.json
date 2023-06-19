@@ -2,24 +2,6 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "in20231ddlogacc",
-      "title": "Datadog Log Access",
-      "url": "cloud/in/20231/ddlogacc",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2023.1"],
-        "subject": ["Features and functionality"],
-        "release": ["Garmisch"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
       "id": "in20231app",
       "title": "Application Guide",
       "url": "cloud/in/20231/app",
@@ -28,9 +10,10 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Features and functionality"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -46,9 +29,10 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Configuration"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -64,9 +48,10 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Features and functionality"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -82,9 +67,10 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Features and functionality"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -100,9 +86,10 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Integration"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -118,9 +105,10 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Configuration"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -136,7 +124,8 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Configuration"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -154,9 +143,10 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Configuration"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -165,16 +155,17 @@
     },
     {
       "id": "in20231portaldev",
-      "title": "Portal Development Guide",
+      "title": "Portal Development",
       "url": "cloud/in/20231/portaldev",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Configuration"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -190,9 +181,10 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Configuration"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -208,13 +200,14 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Configuration"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false,
+      "internal": true,
       "earlyAccess": false
     },
     {
@@ -226,14 +219,15 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Configuration"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": true,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
       "id": "in20231uwconfig",
@@ -244,9 +238,10 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Configuration"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -262,9 +257,10 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Configuration"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -280,9 +276,10 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Integration"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -298,7 +295,8 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Integration"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -316,7 +314,8 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Configuration"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -334,7 +333,8 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Configuration"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

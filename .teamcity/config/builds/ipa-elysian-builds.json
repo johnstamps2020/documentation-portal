@@ -7,7 +7,8 @@
       "root": "IPAReleaseNotes.ditamap",
       "srcId": "ipacloudelysiansrc",
       "docId": "ipacloudelysianrn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "IPAConfigurationGuide.ditamap",
       "srcId": "ipacloudelysiansrc",
       "docId": "ipacloudelysianconfig",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "IPAApplicationGuide.ditamap",
       "srcId": "ipacloudelysiansrc",
       "docId": "ipacloudelysianapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

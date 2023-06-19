@@ -7,7 +7,8 @@
       "root": "IRSAOverview.ditamap",
       "srcId": "irsa20src",
       "docId": "midipfoverview20",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "IRSAAdjusterGuide.ditamap",
       "srcId": "irsa20src",
       "docId": "midipfadjuster20",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "IRSAAdministrationGuide.ditamap",
       "srcId": "irsa20src",
       "docId": "midipfadmin20",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "IRSAReleaseNotes.ditamap",
       "srcId": "irsa20src",
       "docId": "midipfrn20",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

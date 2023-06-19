@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "builds": [
     {
       "buildType": "dita",
@@ -7,7 +7,8 @@
       "root": "DeveloperSetupGuide.ditamap",
       "srcId": "is202205jaJPsrc",
       "docId": "iscc202205devsetupjaJP",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "ContactMgmtGuide.ditamap",
       "srcId": "is202205jaJPsrc",
       "docId": "is202205contactjaJP",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "OverviewCloudIntegration.ditamap",
       "srcId": "is202205jaJPsrc",
       "docId": "is202205integoverviewjaJP",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "AdminGuide.ditamap",
       "srcId": "is202205jaJPsrc",
       "docId": "iscc202205adminjaJP",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "CC-AppGuide.ditamap",
       "srcId": "is202205jaJPsrc",
       "docId": "iscc202205appjaJP",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -47,7 +52,8 @@
       "root": "ConfigGuide.ditamap",
       "srcId": "is202205jaJPsrc",
       "docId": "iscc202205configjaJP",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -55,7 +61,8 @@
       "root": "DataArchiving.ditamap",
       "srcId": "is202205jaJPsrc",
       "docId": "iscc202205dataarchivingjaJP",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -63,7 +70,8 @@
       "root": "GlobalizationGuide.ditamap",
       "srcId": "is202205jaJPsrc",
       "docId": "iscc202205globaljaJP",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -71,7 +79,8 @@
       "root": "GosuRules.ditamap",
       "srcId": "is2022051jaJPsrc",
       "docId": "iscc202205rulesjaJP",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

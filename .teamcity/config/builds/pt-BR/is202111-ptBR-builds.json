@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "builds": [
     {
       "buildType": "dita",
@@ -7,7 +7,8 @@
       "root": "ContactMgmtGuide.ditamap",
       "srcId": "is202111ptBRsrc",
       "docId": "is202111contactptBR",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "BC-AppGuide.ditamap",
       "srcId": "is202111ptBRsrc",
       "docId": "isbc202111appptBR",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "CC-AppGuide.ditamap",
       "srcId": "is202111ptBRsrc",
       "docId": "iscc202111appptBR",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "PC-AppGuide.ditamap",
       "srcId": "is202111ptBRsrc",
       "docId": "ispc202111appptBR",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

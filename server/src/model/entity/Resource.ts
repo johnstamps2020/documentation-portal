@@ -1,19 +1,20 @@
-import { Column, Entity, JoinTable, ManyToOne, PrimaryColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, Unique } from 'typeorm';
 import { Source } from './Source';
 import { GwEntity } from './GwEntity';
 
 @Entity()
+@Unique(['id'])
 export class Resource extends GwEntity {
-  @PrimaryColumn()
+  @Column({ type: 'varchar' })
   id: string;
 
-  @Column()
+  @Column({ type: 'varchar' })
   sourceFolder: string;
 
-  @Column()
+  @Column({ type: 'varchar' })
   targetFolder: string;
 
-  @ManyToOne(() => Source, (source) => source.id, { eager: true })
-  @JoinTable()
+  @ManyToOne(() => Source, (source) => source.uuid)
+  @JoinColumn()
   source: Source;
 }

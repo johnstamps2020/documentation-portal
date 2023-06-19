@@ -1,0 +1,32 @@
+{
+  "$schema": "../../config/config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-MgSvcs.ditaval",
+      "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
+      "srcId": "dxgwsf202111",
+      "docId": "dxgwsfapp202111",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-MgSvcs.ditaval",
+      "root": "Guidewire_For_Salesforce_install-guide.ditamap",
+      "srcId": "dxgwsf202111",
+      "docId": "dxgwsfinstall202111",
+      "indexRedirect": true,
+      "disabled": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-di-MgSvcs.ditaval",
+      "root": "gw-for-sf-developer-admin-guide.ditamap",
+      "srcId": "dxgwsf202111",
+      "docId": "dxgwsfadmin202111",
+      "indexRedirect": true,
+      "disabled": true
+    }
+  ]
+}

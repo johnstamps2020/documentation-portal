@@ -4,10 +4,20 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
+      "root": "InsuranceSuiteConfigurationUpgradeTools.ditamap",
+      "indexRedirect": true,
+      "srcId": "isconfigupgradetools460src",
+      "docId": "isconfigupgradetools460",
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
       "root": "_supermap.ditamap",
       "indexRedirect": true,
       "srcId": "isconfigupgradetools450src",
-      "docId": "isconfigupgradetools450"
+      "docId": "isconfigupgradetools450",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +25,8 @@
       "root": "_supermap.ditamap",
       "indexRedirect": true,
       "srcId": "isconfigupgradetools440src",
-      "docId": "isconfigupgradetools440"
+      "docId": "isconfigupgradetools440",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +34,8 @@
       "root": "_supermap.ditamap",
       "indexRedirect": true,
       "srcId": "isconfigupgradetools430src",
-      "docId": "isconfigupgradetools430"
+      "docId": "isconfigupgradetools430",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +43,8 @@
       "root": "_superbook.ditamap",
       "indexRedirect": true,
       "srcId": "isconfigupgradetools1450src",
-      "docId": "selfmanagedbcupgradetools1450"
+      "docId": "selfmanagedbcupgradetools1450",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +52,8 @@
       "root": "_superbook.ditamap",
       "indexRedirect": true,
       "srcId": "isconfigupgradetools1450src",
-      "docId": "selfmanagedccupgradetools1450"
+      "docId": "selfmanagedccupgradetools1450",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -47,7 +61,8 @@
       "root": "_superbook.ditamap",
       "indexRedirect": true,
       "srcId": "isconfigupgradetools1450src",
-      "docId": "selfmanagedpcupgradetools1450"
+      "docId": "selfmanagedpcupgradetools1450",
+      "disabled": false
     }
   ]
 }

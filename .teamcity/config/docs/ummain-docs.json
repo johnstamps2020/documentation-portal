@@ -10,7 +10,8 @@
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
       "displayOnLandingPages": true,
       "indexForSearch": false,
@@ -28,7 +29,8 @@
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
       "displayOnLandingPages": true,
       "indexForSearch": false,
@@ -46,7 +48,8 @@
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "displayOnLandingPages": true,
       "indexForSearch": false,
@@ -64,7 +67,8 @@
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "displayOnLandingPages": true,
       "indexForSearch": false,
@@ -82,7 +86,8 @@
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "displayOnLandingPages": true,
       "indexForSearch": false,
@@ -100,7 +105,8 @@
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Dobson"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "displayOnLandingPages": true,
       "indexForSearch": false,

@@ -74,10 +74,10 @@
       "description": "Metadata used for classification, search filtering, grouping on landing pages, etc.",
       "type": "object",
       "additionalProperties": false,
-      "required": ["product", "platform"],
+      "required": ["product", "platform", "locale"],
       "properties": {
         "product": {
-          "$ref": "#definitions/product"
+          "$ref": "#/definitions/product"
         },
         "platform": {
           "description": "The broad category of how we deliver products. Can be Self-managed or Cloud",
@@ -104,7 +104,8 @@
               "Dobson",
               "Elysian",
               "Flaine",
-              "Garmisch"
+              "Garmisch",
+              "Hakuba"
             ]
           }
         },
@@ -127,10 +128,23 @@
           }
         },
         "locale": {
-          "description": "For translated documents, specifies the language code. For English documents, it is not necessary to specify the locale.",
-          "type": "string",
-          "enum": ["de-DE", "en-US", "es-419", "es-ES", "fr-FR", "it-IT", "ja-JP", "nl-NL", "pt-BR"]
-    }
+          "description": "Specifies the language code. Locale is mandatory. Set it to 'en-US' for English documents.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "de-DE",
+              "en-US",
+              "es-419",
+              "es-ES",
+              "fr-FR",
+              "it-IT",
+              "ja-JP",
+              "nl-NL",
+              "pt-BR"
+            ]
+          }
+        }
       }
     },
     "source": {
@@ -163,73 +177,69 @@
         "type": "string",
         "enum": [
           "Advanced Product Designer",
-          "Advanced Product Designer for Claims",
           "Analytics Manager Solution Templates",
           "App Events Webhooks",
-          "PolicyCenter",
           "BillingCenter",
+          "Businessowners Standards Based Template",
+          "Canvas",
+          "Checksums",
           "ClaimCenter",
           "ClaimCenter Package for France",
-          "InsuranceSuite Configuration Upgrade Tools",
-          "InsuranceSuite Configuration Upgrade Tools Compatibility",
-          "Businessowners Standards Based Template",
+          "Cloud Platform",
+          "Cloud Ticket Templates",
           "Commercial Auto Standards Based Template",
-          "Crime Standards Based Template",
-          "General Liability Standards Based Template",
-          "Workers Compensation Standards Based Template",
-          "DataHub",
-          "Data Platform",
-          "Data Studio",
-          "InfoCenter",
-          "Cloud Data Access",
           "Compare",
           "Configuration Manager",
-          "Explore",
+          "Crime Standards Based Template",
           "CustomerEngage Account Management",
           "CustomerEngage Account Management for ClaimCenter",
           "CustomerEngage Quote and Buy",
+          "Cyence",
+          "Data Platform",
+          "DataHub",
           "Digital Code Generation Extension Pack",
-          "Guidewire for Salesforce",
-          "Predict",
-          "OIC Integration",
-          "ProducerEngage",
-          "ProducerEngage for ClaimCenter",
-          "ServiceRepEngage",
-          "Submission Intake",
-          "Rules",
+          "Digital Reference Applications",
+          "DocTools",
+          "EasyGuide",
+          "Explore",
+          "Glossary",
+          "General Liability Standards Based Template",
           "Guidewire AppReader",
           "Guidewire Cloud Home",
           "Guidewire Cloud Standards",
-          "VendorEngage",
-          "Cloud Platform",
-          "Feature Preview",
-          "Guidewire InsuranceSuite Package for Germany",
-          "InsuranceSuite Package for Australia",
-          "InsuranceSuite Package for Japan",
-          "London Market",
+          "Guidewire for Salesforce",
+          "HazardHub Casualty",
+          "InfoCenter",
           "InsuranceNow",
           "InsuranceNow Consumer Service Portal",
+          "InsuranceSuite Configuration Upgrade Tools",
+          "InsuranceSuite Package for Australia",
+          "InsuranceSuite Package for Germany",
+          "InsuranceSuite Package for Japan",
           "Internal Docs",
-          "REST API Client",
           "Jutro Design System",
           "Jutro Digital Platform",
-          "String Manager",
-          "Checksums",
-          "EasyGuide",
-          "Glossary",
-          "DocTools",
+          "Lines of Business",
           "LRS",
-          "Workflow Service",
-          "Workset Manager",
-          "Canvas",
-          "Cyence",
-          "HazardHub Casualty",
-          "Underwriting Management",
+          "London Market",
+          "OIC Integration",
+          "PolicyCenter",
           "Portfolio Assembly",
-          "Standards-based Template Framework",
+          "Predict",
+          "ProducerEngage",
+          "ProducerEngage for ClaimCenter",
           "Product Adoption Resources",
+          "Rules",
+          "ServiceRepEngage",
           "Ski release overview",
-          "Cloud Ticket Templates"
+          "Standards-based Template Framework",
+          "String Manager",
+          "Submission Intake",
+          "Underwriting Management",
+          "VendorEngage",
+          "Workers Compensation Standards Based Template",
+          "Workflow Service",
+          "Workset Manager"
         ]
       }
     },
@@ -244,7 +254,9 @@
         "environments",
         "internal",
         "earlyAccess",
-        "public"
+        "public",
+        "displayOnLandingPages",
+        "indexForSearch"
       ],
       "properties": {
         "id": {
@@ -342,6 +354,10 @@
         },
         "zipFilename": {
           "description": "The name of the output .zip file (do not include .zip, that's added automatically). Only makes sense for the source-zip build. Default is 'result'."
+        },
+        "disabled": {
+          "description": "If set to true, the build is disabled. Defaults to false if not set.",
+          "type": "boolean"
         },
         "customEnv": {
           "type": "array",

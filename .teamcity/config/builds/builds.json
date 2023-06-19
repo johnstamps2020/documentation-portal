@@ -7,7 +7,8 @@
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "indexRedirect": true,
       "srcId": "guidewireidentityfederationhubsrc",
-      "docId": "guidewireidentityfederationhub"
+      "docId": "guidewireidentityfederationhub",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "indexRedirect": true,
       "srcId": "cloudplatformsrc",
-      "docId": "cloudplatformrelease"
+      "docId": "cloudplatformrelease",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,12 +25,14 @@
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "indexRedirect": true,
       "srcId": "gwcpreleasenotessrc",
-      "docId": "gwcpreleasenotes"
+      "docId": "gwcpreleasenotes",
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "cicdmanagerapiref",
-      "srcId": "cicdmanagerapirefsrc"
+      "srcId": "cicdmanagerapirefsrc",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -36,7 +40,8 @@
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1020src",
-      "docId": "selfmanagedbcupgradeguide1020"
+      "docId": "selfmanagedbcupgradeguide1020",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -44,7 +49,8 @@
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1020src",
-      "docId": "selfmanagedccupgradeguide1020"
+      "docId": "selfmanagedccupgradeguide1020",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -52,7 +58,8 @@
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1020src",
-      "docId": "selfmanagedpcupgradeguide1020"
+      "docId": "selfmanagedpcupgradeguide1020",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -60,7 +67,8 @@
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1012src",
-      "docId": "selfmanagedbcupgradeguide1012"
+      "docId": "selfmanagedbcupgradeguide1012",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -68,7 +76,8 @@
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1012src",
-      "docId": "selfmanagedccupgradeguide1012"
+      "docId": "selfmanagedccupgradeguide1012",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -76,7 +85,8 @@
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1012src",
-      "docId": "selfmanagedpcupgradeguide1012"
+      "docId": "selfmanagedpcupgradeguide1012",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -84,7 +94,8 @@
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1011src",
-      "docId": "selfmanagedbcupgradeguide1011"
+      "docId": "selfmanagedbcupgradeguide1011",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -92,7 +103,8 @@
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1011src",
-      "docId": "selfmanagedccupgradeguide1011"
+      "docId": "selfmanagedccupgradeguide1011",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -100,7 +112,8 @@
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide1011src",
-      "docId": "selfmanagedpcupgradeguide1011"
+      "docId": "selfmanagedpcupgradeguide1011",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -119,7 +132,8 @@
           "sourceFolder": "ReleaseNotes-files/cm/10.x",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -138,7 +152,8 @@
           "sourceFolder": "ReleaseNotes-files/cm/10.x",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -157,7 +172,8 @@
           "sourceFolder": "ReleaseNotes-files/cm/10.x",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -176,7 +192,8 @@
           "sourceFolder": "ReleaseNotes-files/cm/10.x",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -195,7 +212,8 @@
           "sourceFolder": "ReleaseNotes-files/cm/10.x",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -214,7 +232,8 @@
           "sourceFolder": "ReleaseNotes-files/cm/10.x",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -233,7 +252,8 @@
           "sourceFolder": "ReleaseNotes-files/cm/10.x",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -252,7 +272,8 @@
           "sourceFolder": "ReleaseNotes-files/cm/10.x",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -271,7 +292,8 @@
           "sourceFolder": "ReleaseNotes-files/cm/10.x",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -285,7 +307,8 @@
           "sourceFolder": "ReleaseNotes-files/bc/10.x",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -299,7 +322,8 @@
           "sourceFolder": "ReleaseNotes-files/cc/10.x",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -313,23 +337,8 @@
           "sourceFolder": "ReleaseNotes-files/pc/10.x",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "UnderstandingCloudDataAccess.ditamap",
-      "srcId": "clouddataaccesssrc",
-      "docId": "clouddataaccessguide",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "b_relNotesCda.ditamap",
-      "srcId": "clouddataaccesssrc",
-      "docId": "clouddataaccessrn",
-      "indexRedirect": true
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -337,57 +346,74 @@
       "root": "A_Map01.ditamap",
       "indexRedirect": true,
       "srcId": "comparelatestsrc",
-      "docId": "comparelatest"
+      "docId": "comparelatest",
+      "disabled": false
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
+      "filter": "Predict-7x.ditaval",
       "root": "A_Map01_7x.ditamap",
       "indexRedirect": true,
       "srcId": "livepredictsrc",
-      "docId": "livepredictlatest"
+      "docId": "livepredictlatest",
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "Predict-post7x.ditaval",
+      "root": "A_Map01_7x.ditamap",
+      "indexRedirect": true,
+      "srcId": "livepredictsrc",
+      "docId": "livepredictpost7x",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "IS-BC-OnPrem-Release.ditaval",
       "root": "_superbook.ditamap",
       "srcId": "selfmanagedis1003src",
-      "docId": "selfmanagedbcfxhglseu"
+      "docId": "selfmanagedbcfxhglseu",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "IS-CC-OnPrem-Release.ditaval",
       "root": "_superbook.ditamap",
       "srcId": "selfmanagedis1003src",
-      "docId": "selfmanagedccahrgbyin"
+      "docId": "selfmanagedccahrgbyin",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "IS-PC-OnPrem-Release.ditaval",
       "root": "_superbook.ditamap",
       "srcId": "selfmanagedis1003src",
-      "docId": "selfmanagedpcuytrolxz"
+      "docId": "selfmanagedpcuytrolxz",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "IS-BC-OnPrem-Release.ditaval",
       "root": "_superbook.ditamap",
       "srcId": "selfmanagedis1002src",
-      "docId": "selfmanagedbc1002"
+      "docId": "selfmanagedbc1002",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "IS-CC-OnPrem-Release.ditaval",
       "root": "_superbook.ditamap",
       "srcId": "selfmanagedis1002src",
-      "docId": "selfmanagedcc1002"
+      "docId": "selfmanagedcc1002",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "IS-PC-OnPrem-Release.ditaval",
       "root": "_superbook.ditamap",
       "srcId": "selfmanagedis1002src",
-      "docId": "selfmanagedpc1002"
+      "docId": "selfmanagedpc1002",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -401,7 +427,8 @@
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -415,7 +442,8 @@
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -429,7 +457,8 @@
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -443,98 +472,112 @@
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "DataHub-RELEASE.ditaval",
       "root": "DM_all.ditamap",
       "srcId": "dhic1020",
-      "docId": "dh1020"
+      "docId": "dh1020",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "InfoCenter-RELEASE.ditaval",
       "root": "DM_all.ditamap",
       "srcId": "dhic1020",
-      "docId": "ic1020"
+      "docId": "ic1020",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "Digital-ce-am-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1130",
-      "docId": "dxceam1130"
+      "docId": "dxceam1130",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "Digital-ce-claims-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1130",
-      "docId": "dxceclaims1130"
+      "docId": "dxceclaims1130",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "Digital-ce-qb-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1130",
-      "docId": "dxceqb1130"
+      "docId": "dxceqb1130",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "Digital-pe-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1130",
-      "docId": "dxpe1130"
+      "docId": "dxpe1130",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "Digital-pe-claims-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1130",
-      "docId": "dxpeclaims1130"
+      "docId": "dxpeclaims1130",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "Digital-sre-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1130",
-      "docId": "dxsre1130"
+      "docId": "dxsre1130",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "Digital-ve-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1130",
-      "docId": "dxve1130"
+      "docId": "dxve1130",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "Digital-ce-am-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1120",
-      "docId": "dxceam1120onpremstaging"
+      "docId": "dxceam1120onpremstaging",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "Digital-ce-qb-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1120",
-      "docId": "dxceqb1120onpremstaging"
+      "docId": "dxceqb1120onpremstaging",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "Digital-pe-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1120",
-      "docId": "dxpe1120onpremstaging"
+      "docId": "dxpe1120onpremstaging",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "Digital-sre-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx1120",
-      "docId": "dxsre1120onpremstaging"
+      "docId": "dxsre1120onpremstaging",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -542,7 +585,8 @@
       "root": "GuidewireCloud.ditamap",
       "srcId": "gchhelpsrc",
       "docId": "gchhelprelease",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -550,7 +594,8 @@
       "root": "GCH-EarlyAccess.ditamap",
       "srcId": "gchhelpsrc",
       "docId": "gchhelpearlyaccess",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -558,7 +603,8 @@
       "root": "GuidewireCloud.ditamap",
       "srcId": "configmgrhelpcortinasrc",
       "docId": "configmgrhelpcortina",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -566,7 +612,8 @@
       "root": "GuidewireCloudPlatform.ditamap",
       "srcId": "configmgrhelpbanffsrc",
       "docId": "configmgrhelpbanff",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -574,7 +621,8 @@
       "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
       "srcId": "dxgwsf331",
       "docId": "dxdiapp331",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -582,7 +630,8 @@
       "root": "Guidewire_For_Salesforce_install-guide.ditamap",
       "srcId": "dxgwsf331",
       "docId": "dxdiinstall331",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -590,7 +639,8 @@
       "root": "gw-for-sf-developer-admin-guide.ditamap",
       "srcId": "dxgwsf331",
       "docId": "dxdiadmin331",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -598,7 +648,8 @@
       "root": "Digital-Salesforce-ReleaseNotes.ditamap",
       "srcId": "dxgwsf331",
       "docId": "dxdirelnotes331",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -606,7 +657,8 @@
       "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
       "srcId": "dxgwsf331",
       "docId": "dxedapp331",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -614,7 +666,8 @@
       "root": "Guidewire_For_Salesforce_install-guide.ditamap",
       "srcId": "dxgwsf331",
       "docId": "dxedinstall331",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -622,7 +675,8 @@
       "root": "Digital-Salesforce-ReleaseNotes.ditamap",
       "srcId": "dxgwsf331",
       "docId": "dxedrelnotes331",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -630,7 +684,8 @@
       "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
       "srcId": "dxgwsf331",
       "docId": "dxvodapp331",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -638,7 +693,8 @@
       "root": "Guidewire_For_Salesforce_install-guide.ditamap",
       "srcId": "dxgwsf331",
       "docId": "dxvodinstall331",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -646,7 +702,8 @@
       "root": "gw-for-sf-developer-admin-guide.ditamap",
       "srcId": "dxgwsf331",
       "docId": "dxvodadmin331",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -654,7 +711,8 @@
       "root": "Digital-Salesforce-ReleaseNotes.ditamap",
       "srcId": "dxgwsf331",
       "docId": "dxvodrelnotes331",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -662,7 +720,8 @@
       "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
       "srcId": "dxgwsf330",
       "docId": "dxdiapp330",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -670,7 +729,8 @@
       "root": "Guidewire_For_Salesforce_install-guide.ditamap",
       "srcId": "dxgwsf330",
       "docId": "dxdiinstall330",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -678,7 +738,8 @@
       "root": "gw-for-sf-developer-admin-guide.ditamap",
       "srcId": "dxgwsf330",
       "docId": "dxdiadmin330",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -686,7 +747,8 @@
       "root": "Digital-Salesforce-ReleaseNotes.ditamap",
       "srcId": "dxgwsf330",
       "docId": "dxdirelnotes330",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -694,7 +756,8 @@
       "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
       "srcId": "dxgwsf330",
       "docId": "dxedapp330",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -702,7 +765,8 @@
       "root": "Guidewire_For_Salesforce_install-guide.ditamap",
       "srcId": "dxgwsf330",
       "docId": "dxedinstall330",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -710,7 +774,8 @@
       "root": "Digital-Salesforce-ReleaseNotes.ditamap",
       "srcId": "dxgwsf330",
       "docId": "dxedrelnotes330",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -718,7 +783,8 @@
       "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
       "srcId": "dxgwsf330",
       "docId": "dxvodapp330",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -726,7 +792,8 @@
       "root": "Guidewire_For_Salesforce_install-guide.ditamap",
       "srcId": "dxgwsf330",
       "docId": "dxvodinstall330",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -734,7 +801,8 @@
       "root": "gw-for-sf-developer-admin-guide.ditamap",
       "srcId": "dxgwsf330",
       "docId": "dxvodadmin330",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -742,42 +810,48 @@
       "root": "Digital-Salesforce-ReleaseNotes.ditamap",
       "srcId": "dxgwsf330",
       "docId": "dxvodrelnotes330",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "Digital-di-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dxgwsf320",
-      "docId": "dxdionprem320"
+      "docId": "dxdionprem320",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "Digital-ed-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dxgwsf320",
-      "docId": "dxedonprem320"
+      "docId": "dxedonprem320",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "Digital-vod-OnPrem.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dxgwsf320",
-      "docId": "dxvodonprem320"
+      "docId": "dxvodonprem320",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "IS-BC-OnPrem-Release.ditaval",
       "root": "_supermap-9010.ditamap",
       "srcId": "is9010",
-      "docId": "bc9010"
+      "docId": "bc9010",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "IS-CC-OnPrem-Release.ditaval",
       "root": "_supermap-9010.ditamap",
       "srcId": "is9010",
-      "docId": "cc9010"
+      "docId": "cc9010",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -791,59 +865,68 @@
           "targetFolder": "extras/ReleaseNotes-files/pc/9.0.10",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "IS-BC-OnPrem-Release.ditaval",
       "root": "_supermap-909.ditamap",
       "srcId": "is909",
-      "docId": "bc909"
+      "docId": "bc909",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "IS-CC-OnPrem-Release.ditaval",
       "root": "_supermap-909.ditamap",
       "srcId": "is909",
-      "docId": "cc909"
+      "docId": "cc909",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "IS-PC-OnPrem-Release.ditaval",
       "root": "_supermap-909.ditamap",
       "srcId": "is909",
-      "docId": "pc909"
+      "docId": "pc909",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "IS-BC-OnPrem-Release.ditaval",
       "root": "_supermap-908.ditamap",
       "srcId": "is908",
-      "docId": "bc908"
+      "docId": "bc908",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "IS-CC-OnPrem-Release.ditaval",
       "root": "_supermap-908.ditamap",
       "srcId": "is908",
-      "docId": "cc908"
+      "docId": "cc908",
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "IS-PC-OnPrem-Release.ditaval",
       "root": "_supermap-908.ditamap",
       "srcId": "is908",
-      "docId": "pc908"
+      "docId": "pc908",
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "srcId": "checksumssrc",
-      "docId": "checksums"
+      "docId": "checksums",
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "srcId": "easyguidesrc",
-      "docId": "easyguide"
+      "docId": "easyguide",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -851,61 +934,65 @@
       "root": "Glossary.ditamap",
       "srcId": "gwglossarysrc",
       "docId": "gwglossary",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "srcId": "learninganalyticssrc",
-      "docId": "learninganalytics"
+      "docId": "learninganalytics",
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "srcId": "cyencesrc",
-      "docId": "cyence"
+      "docId": "cyence",
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "srcId": "hazardhubsrc",
-      "docId": "hazardhub"
+      "docId": "hazardhub",
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "srcId": "portasrc",
       "docId": "portalatest",
-      "workingDir": "website"
-    },
-    {
-      "buildType": "yarn",
-      "srcId": "gwcpinternalsrc",
-      "docId": "gwcpinternal",
-      "workingDir": "doc-poc"
+      "workingDir": "website",
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "srcId": "internaldocssrc",
       "docId": "internaldocslatest",
-      "nodeImageVersion": "16.16.0"
+      "nodeImageVersion": "18.0.0",
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "srcId": "surepathmethodologymainsrc",
-      "docId": "surepathmethodologymain"
+      "docId": "surepathmethodologymain",
+      "disabled": false
     },
     {
       "buildType": "just-copy",
       "srcId": "cdsdocss3foldersrc",
-      "docId": "cdsdocss3folder"
+      "docId": "cdsdocss3folder",
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "srcId": "doctoolss3managersrc",
-      "docId": "doctoolss3manager"
+      "docId": "doctoolss3manager",
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "srcId": "cloudtickettemplatessrc",
       "docId": "cloudtickettemplates",
-      "nodeImageVersion": "18.12.1"
+      "nodeImageVersion": "18.12.1",
+      "disabled": false
     }
   ]
 }

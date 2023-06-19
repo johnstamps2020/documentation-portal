@@ -1,0 +1,100 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "ipahakubarn",
+      "title": "Release Notes",
+      "url": "cloud/ipa/hakuba/releasenotes",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "subject": ["Release notes"],
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipahakubaconfig",
+      "title": "Configuration",
+      "url": "cloud/ipa/hakuba/config",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "subject": ["Development"],
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipahakubaapp",
+      "title": "Application Guide",
+      "url": "cloud/ipa/hakuba/app",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "subject": ["Features and functionality"],
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipahakubaupgrade",
+      "title": "Upgrade Guide",
+      "url": "cloud/ipa/hakuba/upgrade",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "subject": ["Installation"],
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipahakubainstall",
+      "title": "Installation Guide",
+      "url": "cloud/ipa/hakuba/install",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "subject": ["Installation"],
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    }
+  ]
+}

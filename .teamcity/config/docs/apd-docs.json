@@ -7,14 +7,17 @@
       "url": "apd/api/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["latest"]
+        "product": ["Advanced Product Designer"],
+        "version": ["2022.09", "2023.02"],
+        "release": ["Flaine", "Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "internal": false,
       "earlyAccess": false,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "displayOnLandingPages": true
     },
     {
       "id": "apdappflaine",
@@ -25,7 +28,8 @@
         "product": ["Advanced Product Designer"],
         "version": ["2022.09"],
         "release": ["Flaine"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -43,11 +47,12 @@
         "product": ["Advanced Product Designer"],
         "version": ["2022.09"],
         "release": ["Flaine"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
-      "indexForSearch": false,
+      "indexForSearch": true,
       "public": false,
       "internal": false,
       "earlyAccess": false
@@ -61,9 +66,10 @@
         "product": ["Advanced Product Designer"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -79,9 +85,10 @@
         "product": ["Advanced Product Designer"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,
@@ -94,9 +101,11 @@
       "url": "cloud/apdclaims/flaine",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Advanced Product Designer for Claims"],
+        "product": ["Advanced Product Designer"],
         "version": ["2022.09"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -111,9 +120,11 @@
       "url": "cloud/apdclaims/garmisch",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Advanced Product Designer for Claims"],
+        "product": ["Advanced Product Designer"],
         "version": ["2023.02"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -121,6 +132,63 @@
       "public": false,
       "internal": false,
       "earlyAccess": true
+    },
+    {
+      "id": "apdclaimshakuba",
+      "title": "Advanced Product Designer for Claims Guide",
+      "url": "cloud/apdclaims/hakuba",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["2023.06"],
+        "subject": ["Configuration"],
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "apdapphakuba",
+      "title": "Advanced Product Designer",
+      "url": "cloud/apd/hakuba/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "apdapprnhakuba",
+      "title": "Advanced Product Designer Release Notes",
+      "url": "cloud/apd/hakuba/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }

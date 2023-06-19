@@ -18,6 +18,12 @@
       "title": "Advanced Product Designer - Feature Preview",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
       "branch": "release/app/garmisch"
+    },
+    {
+      "id": "apdapphakubasrc",
+      "title": "Advanced Product Designer - Feature Preview",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/advanced-product-designer.git",
+      "branch": "release/app/hakuba"
     }
   ]
 }

@@ -1,26 +1,18 @@
-import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
-import { Build } from './Build';
-import { integer } from '@elastic/elasticsearch/api/types';
-import { Resource } from './Resource';
+import { Column, Entity, Unique } from 'typeorm';
 import { GwEntity } from './GwEntity';
 
 @Entity()
+@Unique(['id'])
 export class Source extends GwEntity {
-  @PrimaryColumn()
+  @Column({ type: 'varchar' })
   id: string;
 
-  @Column()
+  @Column({ type: 'varchar' })
   name: string;
 
-  @Column()
+  @Column({ type: 'varchar' })
   gitUrl: string;
 
-  @Column()
+  @Column({ type: 'varchar' })
   gitBranch: string;
-
-  @OneToMany(() => Build, (build) => build)
-  build: Build;
-
-  @OneToMany(() => Resource, (resource) => resource.id)
-  resource: Resource;
 }

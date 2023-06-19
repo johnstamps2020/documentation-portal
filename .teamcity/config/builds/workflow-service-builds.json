@@ -7,15 +7,17 @@
       "root": "workflow-designer-dev.ditamap",
       "srcId": "workflowservicesrc",
       "docId": "workflowdesigner",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "cockpit-ops.ditamap",
+      "root": "workflow-console-ops.ditamap",
       "srcId": "workflowservicesrc",
-      "docId": "workflowcockpit",
-      "indexRedirect": true
+      "docId": "workflowconsole",
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "release-notes-book.ditamap",
       "srcId": "workflowservicesrc",
       "docId": "workflowreleasenotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

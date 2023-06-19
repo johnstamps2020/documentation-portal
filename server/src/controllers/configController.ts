@@ -3,10 +3,12 @@ import { winstonLogger } from './loggerController';
 import { Request, Response } from 'express';
 import { AppDataSource } from '../model/connection';
 import { Doc } from '../model/entity/Doc';
-import { Product } from '../model/entity/Product';
+import { PlatformProductVersion } from '../model/entity/PlatformProductVersion';
 import { Release } from '../model/entity/Release';
 import {
   FindOneAndDeleteOptions,
+  FindOneOptions,
+  FindOptionsRelations,
   FindOptionsWhere,
   ObjectLiteral,
 } from 'typeorm';
@@ -57,28 +59,81 @@ export async function getDocByUrl(url: string): Promise<Doc | null> {
     .getOne();
 }
 
+function getRelationOptionsForEntity(
+  entityName: string
+): FindOptionsRelations<ObjectLiteral> | null {
+  const lowerCaseEntityName = entityName.toLowerCase();
+  let relations: FindOptionsRelations<ObjectLiteral> | null = null;
+  if (lowerCaseEntityName === 'doc') {
+    relations = {
+      platformProductVersions: {
+        platform: true,
+        product: true,
+        version: true,
+      },
+      releases: true,
+      subjects: true,
+      locales: true,
+    };
+  } else if (
+    ['yarnbuild', 'ditabuild', 'sourcezipbuild', 'justcopybuild'].includes(
+      lowerCaseEntityName
+    )
+  ) {
+    relations = {
+      source: true,
+      doc: true,
+      resources: {
+        source: true,
+      },
+    };
+  } else if (lowerCaseEntityName === 'platformproductversion') {
+    relations = {
+      platform: true,
+      product: true,
+      version: true,
+    };
+  } else if (lowerCaseEntityName === 'resource') {
+    relations = { source: true };
+  }
+  return relations;
+}
+
 export async function findEntity(
-  repoName: string,
-  options: FindOptionsWhere<any>,
+  entityName: string,
+  where: FindOptionsWhere<ObjectLiteral>,
   loadRelations: boolean = true
 ): Promise<ObjectLiteral | null> {
+  let findOptions: FindOneOptions<ObjectLiteral> = {
+    where: where,
+  };
   if (loadRelations) {
-    return await AppDataSource.manager.findOneBy(repoName, options);
+    const relations = getRelationOptionsForEntity(entityName);
+    if (relations) {
+      findOptions.relations = relations;
+    }
   }
-  return await AppDataSource.getRepository(repoName)
-    .createQueryBuilder(repoName)
-    .where(options)
-    .getOne();
+  return await AppDataSource.manager.findOne(entityName, findOptions);
 }
 
 export async function findAllEntities(
-  repoName: string
+  entityName: string,
+  loadRelations: boolean = true
 ): Promise<ObjectLiteral[] | null> {
-  return await AppDataSource.manager.find(repoName);
+  let findOptions: FindOneOptions<ObjectLiteral> = {};
+  if (loadRelations) {
+    const relations = getRelationOptionsForEntity(entityName);
+    if (relations) {
+      findOptions.relations = relations;
+    }
+  }
+  return await AppDataSource.manager.find(entityName, findOptions);
 }
 
-export async function saveEntity(repoName: string, options: {}) {
-  return await AppDataSource.manager.save(repoName, options);
+export async function saveEntities(
+  entityInstances: ObjectLiteral | ObjectLiteral[]
+) {
+  return await AppDataSource.manager.save(entityInstances);
 }
 
 export async function getBreadcrumbs(
@@ -121,7 +176,9 @@ export async function getBreadcrumbs(
     for (const breadcrumb of breadcrumbs.slice(1, -1)) {
       const findPageResult = await findEntity(
         Page.name,
-        { path: breadcrumb.path },
+        {
+          path: breadcrumb.path,
+        },
         false
       );
       if (findPageResult) {
@@ -164,7 +221,7 @@ export async function getEntity(
     };
   }
   try {
-    const findEntityResult = await findEntity(repo, options);
+    const findEntityResult = await findEntity(repo, options, false);
     if (!findEntityResult) {
       return {
         status: 404,
@@ -202,7 +259,7 @@ export async function getAllEntities(
 ): Promise<ApiResponse> {
   try {
     const { repo } = req.params;
-    const findAllEntitiesResult = await findAllEntities(repo);
+    const findAllEntitiesResult = await findAllEntities(repo, false);
     if (!findAllEntitiesResult) {
       return {
         status: 404,
@@ -247,7 +304,7 @@ export async function createOrUpdateEntity(req: Request): Promise<ApiResponse> {
         },
       };
     }
-    const result = await saveEntity(repo, options);
+    const result = await AppDataSource.manager.save(repo, options);
     return {
       status: 200,
       body: result,
@@ -311,9 +368,19 @@ export async function getDocumentMetadataById(
         },
       };
     }
-    const findEntityResult = await findEntity(Doc.name, { id: id });
-    if (findEntityResult) {
-      const docInfo = findEntityResult;
+    const docInfo = (await AppDataSource.manager.findOne(Doc.name, {
+      where: { id: id } as ObjectLiteral,
+      relations: {
+        platformProductVersions: {
+          platform: true,
+          product: true,
+          version: true,
+        },
+        releases: true,
+        subjects: true,
+      } as ObjectLiteral,
+    })) as ObjectLiteral;
+    if (docInfo) {
       const isUserAllowedToAccessResourceResult = isUserAllowedToAccessResource(
         res,
         docInfo.public,
@@ -328,19 +395,24 @@ export async function getDocumentMetadataById(
             docInternal: docInfo.internal,
             docEarlyAccess: docInfo.earlyAccess,
             docProducts: wrapInQuotes(
-              docInfo.products.map((p: Product) => p.name)
+              docInfo.platformProductVersions.map(
+                (ppv: PlatformProductVersion) => ppv.product.name
+              )
             ),
             docVersions: wrapInQuotes(
-              docInfo.products.map((p: Product) => p.version)
+              docInfo.platformProductVersions.map(
+                (ppv: PlatformProductVersion) => ppv.version.name
+              )
             ),
             docPlatforms: wrapInQuotes(
-              docInfo.products.map((p: Product) => p.platform)
+              docInfo.platformProductVersions.map(
+                (ppv: PlatformProductVersion) => ppv.platform.name
+              )
             ),
             docReleases: wrapInQuotes(
               docInfo.releases.map((r: Release) => r.name)
             ),
             docSubjects: wrapInQuotes(docInfo.sections),
-            docCategories: wrapInQuotes(docInfo.categories),
           },
         };
       }
@@ -401,8 +473,10 @@ export async function getVersionSelector(
   res: Response
 ): Promise<ApiResponse> {
   function getLabel(docConfig: Doc, releaseInLabel: boolean) {
-    const docReleases = docConfig.releases.map((r) => r.name);
-    const docVersions = docConfig.products.map((p) => p.version);
+    const docReleases = docConfig.releases?.map((r) => r.name) || [];
+    const docVersions = docConfig.platformProductVersions.map(
+      (p) => p.version.name
+    );
     return releaseInLabel
       ? `${docReleases[0]} (${docVersions[0]})`
       : docVersions.join(',');
@@ -443,23 +517,55 @@ export async function getVersionSelector(
 
     const docQueryBuilder = await AppDataSource.getRepository(Doc)
       .createQueryBuilder('doc')
-      .leftJoinAndSelect('doc.products', 'docProducts')
+      .leftJoinAndSelect(
+        'doc.platformProductVersions',
+        'docPlatformProductVersions'
+      )
       .leftJoinAndSelect('doc.releases', 'docReleases');
-    const docResponse = await docQueryBuilder.where({ id: docId }).getOne();
+    const docResponse = await docQueryBuilder
+      .leftJoinAndSelect(
+        'docPlatformProductVersions.platform',
+        'docPlatformProductVersionsPlatform'
+      )
+      .leftJoinAndSelect(
+        'docPlatformProductVersions.product',
+        'docPlatformProductVersionsProduct'
+      )
+      .leftJoinAndSelect(
+        'docPlatformProductVersions.version',
+        'docPlatformProductVersionsVersion'
+      )
+      .where({ id: docId })
+      .getOne();
     if (docResponse) {
       const useReleaseForLabel = docResponse.releases?.length === 1;
       // FIXME: Add query for displayOnLandingPages unless we remove this parameter
       const docsWithTheSameTitle = await docQueryBuilder
         .where('title = :title', { title: docResponse.title })
-        .andWhere('docProducts.name IN (:...productNames)', {
-          productNames: docResponse.products.map((p) => p.name),
-        })
-        .andWhere('docProducts.platform IN (:...productPlatforms)', {
-          productPlatforms: docResponse.products.map((p) => p.platform),
-        })
-        .andWhere('docProducts.version NOT IN (:...productVersions)', {
-          productVersions: docResponse.products.map((p) => p.version),
-        })
+        .andWhere(
+          'docPlatformProductVersionsPlatform.name IN (:...productPlatforms)',
+          {
+            productPlatforms: docResponse.platformProductVersions.map(
+              (ppv) => ppv.platform.name
+            ),
+          }
+        )
+        .andWhere(
+          'docPlatformProductVersionsProduct.name IN (:...productNames)',
+          {
+            productNames: docResponse.platformProductVersions.map(
+              (ppv) => ppv.product.name
+            ),
+          }
+        )
+        .andWhere(
+          'docPlatformProductVersionsVersion.name NOT IN (:...productVersions)',
+          {
+            productVersions: docResponse.platformProductVersions.map(
+              (ppv) => ppv.version.name
+            ),
+          }
+        )
         .getMany();
 
       const availableDocsWithTheSameTitle = [];
@@ -477,16 +583,18 @@ export async function getVersionSelector(
       }
       const otherVersions = availableDocsWithTheSameTitle.map((doc) => {
         return {
-          versions: doc.products.map((p) => p.version),
-          releases: doc.releases.map((r) => r.name),
+          versions: doc.platformProductVersions.map((p) => p.version.name),
+          releases: doc.releases?.map((r) => r.name) || [],
           url: doc.url,
           label: getLabel(doc, useReleaseForLabel),
         };
       });
       const allVersions = [
         {
-          versions: docResponse.products.map((p) => p.version),
-          releases: docResponse.releases.map((r) => r.name),
+          versions: docResponse.platformProductVersions.map(
+            (p) => p.version.name
+          ),
+          releases: docResponse.releases?.map((r) => r.name) || [],
           url: docResponse.url,
           currentlySelected: true,
           label: getLabel(docResponse, useReleaseForLabel),
@@ -540,7 +648,7 @@ export async function getRootBreadcrumb(pagePathname: string) {
     }
     const rootPagePath = matchingBreadcrumb.rootPages[0];
     const rootPageEntity = await findEntity(
-      'Page',
+      Page.name,
       {
         path: rootPagePath,
       },

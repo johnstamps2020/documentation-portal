@@ -1,0 +1,62 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "testingframeworksapibanff",
+      "title": "API Testing",
+      "url": "cloud/testingframeworks/202011/api",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testingframeworksuibanff",
+      "title": "User Interface Testing",
+      "url": "cloud/testingframeworks/202011/ui",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "testingframeworksrnbanff",
+      "title": "Test Automation Release Notes",
+      "url": "cloud/testingframeworks/202011/releasenotes",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

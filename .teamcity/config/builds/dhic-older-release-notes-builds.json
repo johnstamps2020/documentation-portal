@@ -1,0 +1,69 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dm202104src",
+      "docId": "dhcloudrncortina",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Cortina-10.5/DataHub/releaseDiffFiles/cloud",
+          "targetFolder": "extras/releaseDiffFiles/cloud",
+          "srcId": "dhicextrassrc"
+        }
+      ],
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dm202104src",
+      "docId": "iccloudrncortina",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Cortina-10.5/InfoCenter/releaseDiffFiles/cloud",
+          "targetFolder": "extras/releaseDiffFiles/cloud",
+          "srcId": "dhicextrassrc"
+        }
+      ],
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-MS-RELEASE.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dm2021111060src",
+      "docId": "dhrn202111",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Dobson-10.6/DataHub/releaseDiffFiles/cloud",
+          "targetFolder": "extras/releaseDiffFiles/cloud",
+          "srcId": "dhicextrassrc"
+        }
+      ],
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-MS-RELEASE.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dm2021111060src",
+      "docId": "icrn202111",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Dobson-10.6/InfoCenter/releaseDiffFiles/cloud",
+          "targetFolder": "extras/releaseDiffFiles/cloud",
+          "srcId": "dhicextrassrc"
+        }
+      ],
+      "disabled": false
+    }
+  ]
+}

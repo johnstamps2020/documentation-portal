@@ -1,0 +1,90 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "selfmanageddxceamagmqaagu",
+      "title": "CustomerEngage Account Management",
+      "url": "self-managed/dx/ce-am/1001",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["CustomerEngage Account Management"],
+        "version": ["10.0.1"],
+        "locale": ["en-US"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "selfmanageddxvebjvtkgov",
+      "title": "VendorEngage",
+      "url": "self-managed/dx/ve/1001",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["VendorEngage"],
+        "version": ["10.0.1"],
+        "locale": ["en-US"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "selfmanageddxceqbphivypaz",
+      "title": "CustomerEngage Quote and Buy",
+      "url": "self-managed/dx/ce-qb/1001",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["CustomerEngage Quote and Buy"],
+        "version": ["10.0.1"],
+        "locale": ["en-US"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "selfmanageddxpemlefekrm",
+      "title": "ProducerEngage",
+      "url": "self-managed/dx/pe/1001",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ProducerEngage"],
+        "version": ["10.0.1"],
+        "locale": ["en-US"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "selfmanageddxsreaqsojbmv",
+      "title": "ServiceRepEngage",
+      "url": "self-managed/dx/sre/1001",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["ServiceRepEngage"],
+        "version": ["10.0.1"],
+        "locale": ["en-US"]
+      },
+      "environments": ["prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

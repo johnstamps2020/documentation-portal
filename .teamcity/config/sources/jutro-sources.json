@@ -164,9 +164,9 @@
       "branch": "main"
     },
     {
-      "id": "srcjutroplasmicnext",
-      "title": "Jutro Plasmic Next",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-plasmic-docs.git",
+      "id": "srcjutroeditornext",
+      "title": "Jutro Editor Next",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-editor-docs.git",
       "branch": "main"
     },
     {
@@ -180,6 +180,12 @@
       "title": "Jutro SDK Flaine",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
       "branch": "release/flaine"
+    },
+    {
+      "id": "srcjutrosdkgarmisch",
+      "title": "Jutro SDK Garmisch",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
+      "branch": "release/garmisch"
     },
     {
       "id": "srcjutrosbbizpatterns652",
@@ -350,9 +356,51 @@
       "branch": "release/8.9.0"
     },
     {
+      "id": "srcjutro8100",
+      "title": "Jutro Design System 8.10.0",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/8.10.0"
+    },
+    {
+      "id": "srcjutro8110",
+      "title": "Jutro Design System 8.11.0",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/8.11.0"
+    },
+    {
+      "id": "srcjutro8120",
+      "title": "Jutro Design System 8.12.0",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/8.12.0"
+    },
+    {
+      "id": "srcjutro8121",
+      "title": "Jutro Design System 8.12.1",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/8.12.1"
+    },
+    {
+      "id": "srcjutro8130",
+      "title": "Jutro Design System 8.13.0",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-core-docs.git",
+      "branch": "release/8.13.0"
+    },
+    {
       "id": "srcjutroa11yapp",
       "title": "Jutro a11y app source",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-a11y-app.git",
+      "branch": "main"
+    },
+    {
+      "id": "jutrodocsnextsrc",
+      "title": "Jutro Home Next",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs.git",
+      "branch": "main"
+    },
+    {
+      "id": "jutrodigitalcontentsrc",
+      "title": "Jutro Digital Content",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-digital-content.git",
       "branch": "main"
     }
   ]

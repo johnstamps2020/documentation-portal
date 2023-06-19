@@ -9,9 +9,15 @@
     },
     {
       "id": "srcjutroplatformflaine",
-      "title": "Jutro Digital Platform Next",
+      "title": "Jutro Digital Platform",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-platform-docs.git",
       "branch": "release/flaine"
+    },
+    {
+      "id": "srcjutroplatformgarmisch",
+      "title": "Jutro Digital Platform",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-platform-docs.git",
+      "branch": "release/garmisch"
     }
   ]
 }

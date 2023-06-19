@@ -8,9 +8,10 @@
       "metadata": {
         "product": ["PolicyCenter", "ClaimCenter", "App Events Webhooks"],
         "platform": ["Cloud"],
-        "version": ["2022.09"],
-        "release": ["Flaine"],
-        "subject": ["Integration"]
+        "version": ["2022.09", "2023.02"],
+        "release": ["Flaine", "Garmisch"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -26,9 +27,10 @@
       "metadata": {
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["2022.05", "2022.09"],
-        "release": ["Elysian", "Flaine"],
-        "subject": ["Integration"]
+        "version": ["2022.05", "2022.09", "2023.02"],
+        "release": ["Elysian", "Flaine", "Garmisch"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "platform": ["Cloud"],
         "version": ["2022.05", "2022.09"],
         "release": ["Elysian", "Flaine"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": false,
@@ -61,9 +64,27 @@
       "url": "is/restapiclient/guide",
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
-        "product": ["REST API Client"],
-        "version": ["latest"],
-        "subject": ["Integration"]
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": [
+          "10.2.1",
+          "10.2.2",
+          "2020.11",
+          "2021.04",
+          "2021.11",
+          "2022.05",
+          "2022.09",
+          "2023.02"
+        ],
+        "subject": ["Integration"],
+        "release": [
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

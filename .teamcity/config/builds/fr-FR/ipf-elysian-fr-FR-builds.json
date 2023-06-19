@@ -1,0 +1,23 @@
+{
+  "$schema": "../../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IRSAAdjusterGuide.ditamap",
+      "srcId": "midipfelysianfrFRsrc",
+      "docId": "midipfelysianadjusterfrFR",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IRSAReleaseNotes.ditamap",
+      "srcId": "midipfelysianfrFRsrc",
+      "docId": "midipfelysianrnfrFR",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}

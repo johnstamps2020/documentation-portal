@@ -1,0 +1,898 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "isbc202011releasenotes",
+      "title": "Release Notes",
+      "url": "cloud/bc/202011/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202011newandchanged",
+      "title": "New and Changed",
+      "url": "cloud/bc/202011/newandchanged",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202011upgrade",
+      "title": "Upgrade",
+      "url": "cloud/bc/202011/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Installation"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202011app",
+      "title": "Application Guide",
+      "url": "cloud/bc/202011/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202011admin",
+      "title": "Administration",
+      "url": "cloud/bc/202011/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Administration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202011bestpractice",
+      "title": "Best Practices",
+      "url": "cloud/bc/202011/bestpractice",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202011config",
+      "title": "Configuration",
+      "url": "cloud/bc/202011/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202011global",
+      "title": "Globalization",
+      "url": "cloud/bc/202011/global",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202011rules",
+      "title": "Rules",
+      "url": "cloud/bc/202011/rules",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202011integ",
+      "title": "Integration",
+      "url": "cloud/bc/202011/integration",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202011testing",
+      "title": "ISBTF and GUnit Testing",
+      "url": "cloud/bc/202011/testing",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isbc202011install",
+      "title": "Installation",
+      "url": "cloud/bc/202011/installation",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Installation"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202011releasenotes",
+      "title": "Release Notes",
+      "url": "cloud/cc/202011/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202011newandchanged",
+      "title": "New and Changed",
+      "url": "cloud/cc/202011/newandchanged",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202011upgrade",
+      "title": "Upgrade",
+      "url": "cloud/cc/202011/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Installation"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202011app",
+      "title": "Application Guide",
+      "url": "cloud/cc/202011/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202011admin",
+      "title": "Administration",
+      "url": "cloud/cc/202011/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Administration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202011bestpractice",
+      "title": "Best Practices",
+      "url": "cloud/cc/202011/bestpractice",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202011config",
+      "title": "Configuration",
+      "url": "cloud/cc/202011/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202011global",
+      "title": "Globalization",
+      "url": "cloud/cc/202011/global",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202011rules",
+      "title": "Rules",
+      "url": "cloud/cc/202011/rules",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202011integ",
+      "title": "Integration",
+      "url": "cloud/cc/202011/integration",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202011cloudapibf",
+      "title": "Cloud API Business Flows",
+      "url": "cloud/cc/202011/cloudapibf",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202011cloudapica",
+      "title": "Cloud API Configuration and Authentication",
+      "url": "cloud/cc/202011/cloudapica",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202011testing",
+      "title": "ISBTF and GUnit Testing",
+      "url": "cloud/cc/202011/testing",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202011restapifw",
+      "title": "REST API Framework",
+      "url": "cloud/cc/202011/restapiframework",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202011install",
+      "title": "Installation",
+      "url": "cloud/cc/202011/installation",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Installation"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202011releasenotes",
+      "title": "Release Notes",
+      "url": "cloud/pc/202011/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202011newandchanged",
+      "title": "New and Changed",
+      "url": "cloud/pc/202011/newandchanged",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202011upgrade",
+      "title": "Upgrade",
+      "url": "cloud/pc/202011/upgrade",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Installation"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202011app",
+      "title": "Application Guide",
+      "url": "cloud/pc/202011/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202011admin",
+      "title": "Administration",
+      "url": "cloud/pc/202011/admin",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Administration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202011bestpractice",
+      "title": "Best Practices",
+      "url": "cloud/pc/202011/bestpractice",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202011apd",
+      "title": "Advanced Product Designer in PolicyCenter",
+      "url": "cloud/pc/202011/apd",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202011config",
+      "title": "Configuration",
+      "url": "cloud/pc/202011/config",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202011global",
+      "title": "Globalization",
+      "url": "cloud/pc/202011/global",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202011rules",
+      "title": "Rules",
+      "url": "cloud/pc/202011/rules",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202011pd",
+      "title": "Product Designer",
+      "url": "cloud/pc/202011/pd",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202011pm",
+      "title": "Product Model",
+      "url": "cloud/pc/202011/productmodel",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202011integ",
+      "title": "Integration",
+      "url": "cloud/pc/202011/integration",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202011cloudapi",
+      "title": "Cloud API",
+      "url": "cloud/pc/202011/cloudapi",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["prod", "staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202011cloudapibf",
+      "title": "Cloud API Business Flows",
+      "url": "cloud/pc/202011/cloudapibf",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202011cloudapica",
+      "title": "Cloud API Configuration and Authentication",
+      "url": "cloud/pc/202011/cloudapica",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202011testing",
+      "title": "ISBTF and GUnit Testing",
+      "url": "cloud/pc/202011/testing",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202011restapifw",
+      "title": "REST API Framework",
+      "url": "cloud/pc/202011/restapiframework",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202011install",
+      "title": "Installation",
+      "url": "cloud/pc/202011/installation",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Installation"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "is202011contact",
+      "title": "Contact Management",
+      "url": "cloud/is/202011/contact",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["2020.11"],
+        "release": ["Banff"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dm2023061010src",
+      "docId": "dh10100rn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Hakuba-10.10/DataHub",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ],
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dm2023061010src",
+      "docId": "dh10100product",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dm2023061010src",
+      "docId": "dh10100install",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dm2023061010src",
+      "docId": "dh10100upgrade",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dm2023061010src",
+      "docId": "dh10100config",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dm2023061010src",
+      "docId": "dh10100dataspec",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dm2023061010src",
+      "docId": "dh10100admin",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "DataHub-RELEASE.ditaval",
+      "root": "developer-ref.ditamap",
+      "srcId": "dm2023061010src",
+      "docId": "dh10100devref",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "srcId": "dhicextrassrc",
+          "sourceFolder": "Hakuba-10.10/DataHub/autoGenFiles/onPrem",
+          "targetFolder": "extras/autoGenFiles/onPrem"
+        }
+      ],
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "releasenotes.ditamap",
+      "srcId": "dm2023061010src",
+      "docId": "ic10100rn",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "Hakuba-10.10/InfoCenter",
+          "targetFolder": "extras",
+          "srcId": "dhicextrassrc"
+        }
+      ],
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "product.ditamap",
+      "srcId": "dm2023061010src",
+      "docId": "ic10100product",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "install.ditamap",
+      "srcId": "dm2023061010src",
+      "docId": "ic10100install",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "upgrade.ditamap",
+      "srcId": "dm2023061010src",
+      "docId": "ic10100upgrade",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "config.ditamap",
+      "srcId": "dm2023061010src",
+      "docId": "ic10100config",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "dataspec.ditamap",
+      "srcId": "dm2023061010src",
+      "docId": "ic10100dataspec",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "admin.ditamap",
+      "srcId": "dm2023061010src",
+      "docId": "ic10100admin",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "bi-applications.ditamap",
+      "srcId": "dm2023061010src",
+      "docId": "ic10100biapp",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "reports.ditamap",
+      "srcId": "dm2023061010src",
+      "docId": "ic10100reports",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "developer-ref.ditamap",
+      "srcId": "dm2023061010src",
+      "docId": "ic10100devref",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "srcId": "dhicextrassrc",
+          "sourceFolder": "Hakuba-10.10/InfoCenter/autoGenFiles/onPrem",
+          "targetFolder": "extras/autoGenFiles/onPrem"
+        }
+      ],
+      "disabled": false
+    }
+  ]
+}

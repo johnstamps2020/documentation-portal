@@ -3,52 +3,145 @@
   "builds": [
     {
       "buildType": "yarn",
+      "docId": "gccinternaltemplate",
+      "srcId": "gccinternaltemplatesrc",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
       "docId": "runtimepropertiesapi",
-      "srcId": "runtimepropertiesapisrc"
+      "srcId": "runtimepropertiesapisrc",
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "repositorysettingsapi",
-      "srcId": "repositorysettingsapisrc"
+      "srcId": "repositorysettingsapisrc",
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "gccinternallatests",
-      "srcId": "gccinternalsrc"
+      "srcId": "gccinternalsrc",
+      "nodeImageVersion": "18.0.0",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "gccuiinternallatest",
+      "srcId": "gccuiinternallatestsrc",
+      "nodeImageVersion": "18.0.0",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "guidewirecloudconsolerootinsurerdev",
+      "srcId": "gcccloudconsoledocusaurussrc",
+      "nodeImageVersion": "18.0.0",
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "cloudconsoleapi",
-      "srcId": "cloudconsoleapisrc"
+      "srcId": "cloudconsoleapisrc",
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "dbserviceapi",
-      "srcId": "dbserviceapisrc"
+      "srcId": "dbserviceapisrc",
+      "disabled": false
     },
     {
-      "buildType": "dita",
-      "root": "guidewire_cloud_platform_guide.ditamap",
-      "filter": "insurer-developer.ditaval",
-      "indexRedirect": true,
-      "srcId": "guidewirecloudconsolelatestsrc",
-      "docId": "guidewirecloudconsolerootinsurerdev"
+      "buildType": "yarn",
+      "docId": "databaseservice",
+      "srcId": "databaseservicesrc",
+      "nodeImageVersion": "18.0.0",
+      "disabled": false
     },
     {
-      "buildType": "dita",
-      "root": "guidewire_cloud_platform_guide.ditamap",
-      "filter": "gw-admin.ditaval",
-      "indexRedirect": true,
-      "srcId": "guidewirecloudconsolelatestsrc",
-      "docId": "guidewirecloudconsolerootgwadmin"
+      "buildType": "yarn",
+      "docId": "insurancesuiteplatformdeployer",
+      "srcId": "insurancesuiteplatformdeployersrc",
+      "nodeImageVersion": "18.0.0",
+      "disabled": false
     },
     {
-      "buildType": "dita",
-      "root": "guidewire_cloud_platform_guide.ditamap",
-      "filter": "early-access.ditaval",
-      "indexRedirect": true,
-      "srcId": "guidewirecloudconsolelatestsrc",
-      "docId": "guidewirecloudconsolerootearlyaccess"
+      "buildType": "yarn",
+      "docId": "gwcpinfrastructureprovisioningservice",
+      "srcId": "gwcpinfrastructureprovisioningservicesrc",
+      "nodeImageVersion": "18.0.0",
+      "workingDir": "website",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "isdeploymentorchestrator",
+      "srcId": "isdeploymentorchestratorsrc",
+      "nodeImageVersion": "18.0.0",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "buildpromoter",
+      "srcId": "buildpromotersrc",
+      "nodeImageVersion": "18.0.0",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "nps",
+      "srcId": "npssrc",
+      "nodeImageVersion": "18.0.0",
+      "workingDir": "atmos-provisioning-docs",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "sms",
+      "srcId": "smssrc",
+      "nodeImageVersion": "18.0.0",
+      "workingDir": "secret-management-service-docs",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "storageservice",
+      "srcId": "storageservicesrc",
+      "nodeImageVersion": "18.0.0",
+      "workingDir": "website",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "projectservice",
+      "srcId": "projectservicesrc",
+      "nodeImageVersion": "18.0.0",
+      "workingDir": "website",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "dad",
+      "srcId": "dadsrc",
+      "nodeImageVersion": "18.0.0",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "cicdmanager",
+      "srcId": "cicdmanagersrc",
+      "nodeImageVersion": "18.0.0",
+      "workingDir": "website",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "scm",
+      "srcId": "scmsrc",
+      "nodeImageVersion": "18.0.0",
+      "workingDir": "website",
+      "disabled": false
     }
   ]
 }

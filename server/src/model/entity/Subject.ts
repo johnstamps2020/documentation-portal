@@ -1,12 +1,9 @@
-import { Entity, ManyToMany, PrimaryColumn } from 'typeorm';
-import { Doc } from './Doc';
+import { Column, Entity, Unique } from 'typeorm';
 import { GwEntity } from './GwEntity';
 
 @Entity()
+@Unique(['name'])
 export class Subject extends GwEntity {
-  @PrimaryColumn()
+  @Column({ type: 'varchar' })
   name: string;
-
-  @ManyToMany(() => Doc, (doc) => doc.id)
-  doc: Doc[];
 }

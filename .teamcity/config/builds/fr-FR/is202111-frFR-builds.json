@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "builds": [
     {
       "buildType": "dita",
@@ -7,7 +7,8 @@
       "root": "CloudAPIGuide-BusinessFlows.ditamap",
       "srcId": "is202111frFRsrc",
       "docId": "isbc202111apibffrFR",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "CloudAPIGuide-BusinessFlows.ditamap",
       "srcId": "is202111frFRsrc",
       "docId": "iscc202111apibffrFR",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "CloudAPIGuide-BusinessFlows.ditamap",
       "srcId": "is202111frFRsrc",
       "docId": "ispc202111apibffrFR",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "CloudAPIGuide-Auth.ditamap",
       "srcId": "is202111frFRsrc",
       "docId": "iscc202111apicafrFR",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "CloudAPIGuide-Auth.ditamap",
       "srcId": "is202111frFRsrc",
       "docId": "ispc202111apicafrFR",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }
