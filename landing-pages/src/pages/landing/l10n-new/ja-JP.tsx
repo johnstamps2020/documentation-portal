@@ -88,7 +88,6 @@ const pageConfig: ProductFamilyLayoutProps = {
       },
     ],
   },
-  releaseSelector: false,
 };
 
 export default function JaJP() {

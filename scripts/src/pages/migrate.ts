@@ -347,18 +347,6 @@ function getSidebar(flailConfig: FlailConfig) {
   }`;
 }
 
-function getReleaseSelector(flailConfig: FlailConfig) {
-  const { level1Class } = getFlailClass(flailConfig);
-  if (
-    level1Class.match('aspen') ||
-    level1Class.match('banff') ||
-    level1Class.match('cortina')
-  ) {
-    return true;
-  }
-  return false;
-}
-
 function mapToCategory2Layout(
   flailConfig: FlailConfig,
   targetFile: string
@@ -447,12 +435,13 @@ function mapToProductFamilyLayout(
   const { backgroundPropValue } = getBackgroundProps(flailConfig);
   const items = getItems(flailConfig.items, targetFile);
   const selector = getSelector(flailConfig, targetFile);
+  const showReleaseSelector = getIsRelease(targetFile);
   return `{
     backgroundProps: ${backgroundPropValue},
     ${selector ? `selector: ${JSON.stringify(selector)},` : ''}
+    ${showReleaseSelector ? `showReleaseSelector: ${showReleaseSelector}` : ''}
     items: ${JSON.stringify(items, null, 2)},
     sidebar: ${getSidebar(flailConfig)},
-    releaseSelector: ${getReleaseSelector(flailConfig)},
   }`;
 }
 

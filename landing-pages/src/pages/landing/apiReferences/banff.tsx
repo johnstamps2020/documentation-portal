@@ -56,7 +56,6 @@ const pageConfig: ProductFamilyLayoutProps = {
       },
     ],
   },
-  releaseSelector: true,
 };
 
 export default function Banff() {
