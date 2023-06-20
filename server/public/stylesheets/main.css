@@ -308,7 +308,7 @@ a.platformLink {
   font-size: 0.875rem;
   font-weight: 700;
   text-decoration: underline;
-  color: #131E2F;
+  color: #131e2f;
   margin-bottom: 1.5rem;
   display: block;
 }
@@ -330,7 +330,7 @@ main.skiRelease {
 }
 
 .skiRelease .pageControllers {
-  padding-top: .4rem;
+  padding-top: 0.4rem;
 }
 
 .skiRelease .pageControllers,
@@ -343,7 +343,7 @@ main.skiRelease {
 .skiRelease .pageControllers #pageSelector {
   color: #28333f;
   margin-bottom: 1rem;
-  margin-top: .8rem;
+  margin-top: 0.8rem;
 }
 
 .skiRelease a.platformLink,
@@ -392,7 +392,7 @@ main.skiRelease {
 }
 
 .garmisch .skiReleaseDesc li {
-  margin-bottom: .42rem;
+  margin-bottom: 0.42rem;
 }
 
 .skiRelease .skiReleaseOverview.categoryCard a:has(button) {

@@ -290,7 +290,7 @@ div.items {
   font-size: 0.875rem;
   font-weight: 700;
   text-decoration: underline;
-  color: #131E2F;
+  color: #131e2f;
   margin-bottom: 1.5rem;
   display: block;
 }
@@ -363,7 +363,7 @@ main.skiRelease {
 }
 
 .garmisch .skiReleaseDesc li {
-  margin-bottom: .42rem;
+  margin-bottom: 0.42rem;
 }
 
 .skiRelease .skiReleaseOverview.categoryCard a:has(button) {

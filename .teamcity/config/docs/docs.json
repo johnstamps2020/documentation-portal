@@ -9,7 +9,14 @@
         "platform": ["Cloud"],
         "product": ["Predict"],
         "version": ["latest"],
-        "release": ["Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
+        "release": [
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -43,7 +50,15 @@
         "platform": ["Cloud"],
         "product": ["Compare"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -52,8 +67,7 @@
       "internal": false,
       "earlyAccess": false
     },
-    
-    
+
     {
       "id": "gchhelpearlyaccess",
       "title": "Guidewire Cloud Home Help - Early Access",
@@ -77,7 +91,15 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Home"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
@@ -159,7 +181,15 @@
         "platform": ["Cloud"],
         "product": ["Glossary"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

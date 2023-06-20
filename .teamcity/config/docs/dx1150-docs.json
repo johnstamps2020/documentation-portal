@@ -720,13 +720,15 @@
       "title": "Log4j Patch Release Notes",
       "url": "cloud/dx/log4jrelnotes",
       "metadata": {
-        "product": ["CustomerEngage Account Management",
-                    "CustomerEngage Account Management for ClaimCenter",
-                    "CustomerEngage Quote and Buy",
-                    "ProducerEngage",
-                    "ProducerEngage for ClaimCenter",
-                    "ServiceRepEngage",
-                    "VendorEngage"],
+        "product": [
+          "CustomerEngage Account Management",
+          "CustomerEngage Account Management for ClaimCenter",
+          "CustomerEngage Quote and Buy",
+          "ProducerEngage",
+          "ProducerEngage for ClaimCenter",
+          "ServiceRepEngage",
+          "VendorEngage"
+        ],
         "platform": ["Self-managed"],
         "version": ["11.5.0"],
         "subject": ["Release notes"]

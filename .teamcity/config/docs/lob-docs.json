@@ -102,7 +102,7 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    },       
+    },
     {
       "id": "lobbopcwreleasenotescloud",
       "title": "LOB BOP CW Cloud Release Notes",
@@ -170,7 +170,7 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    },    
+    },
     {
       "id": "lobbopstatereleasenotescloud",
       "title": "LOB BOP State Cloud Release Notes",
@@ -204,7 +204,7 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    },    
+    },
     {
       "id": "lobcacwreleasenotescloud",
       "title": "LOB CA CW Cloud Release Notes",
@@ -306,7 +306,7 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    },    
+    },
     {
       "id": "lobcpcwreleasenotescloud",
       "title": "LOB CP CW Cloud Release Notes",
@@ -442,7 +442,7 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    },        
+    },
     {
       "id": "lobcrimecwreleasenotescloud",
       "title": "LOB Crime CW Cloud Release Notes",
@@ -544,7 +544,7 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    },    
+    },
     {
       "id": "lobglcwreleasenotescloud",
       "title": "LOB GL CW Cloud Release Notes",
@@ -578,7 +578,7 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    },    
+    },
     {
       "id": "lobglstatereleasenotescloud",
       "title": "LOB GL State Cloud Release Notes",
@@ -714,7 +714,7 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    },            
+    },
     {
       "id": "lobwccwreleasenotescloud",
       "title": "LOB WC CW Cloud Release Notes",
@@ -816,7 +816,7 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    },    
+    },
     {
       "id": "lobwcwcmcwreleasenotescloud",
       "title": "LOB WC WCM CW Cloud Release Notes",
@@ -884,7 +884,7 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    },    
+    },
     {
       "id": "lobwcmcloud",
       "title": "LOB WC WCM Cloud Guide",
@@ -986,6 +986,6 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    }    
+    }
   ]
 }
