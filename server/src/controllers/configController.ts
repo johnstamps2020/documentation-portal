@@ -103,13 +103,7 @@ export async function getBreadcrumbs(
       const breadcrumbRoutePath = startPath ? `/${route}` : route;
       const breadcrumbPath = startPath + breadcrumbRoutePath;
       const breadcrumbId = route.replace('/', '_').toLowerCase();
-      const breadcrumbLabel = route
-        .replace(/([A-Z])/g, ' $1')
-        .replace(/^./, (str: string) => str.toUpperCase())
-        .replace(
-          /(policy center | billing center | claim center | insurance now)/gi,
-          (str: string) => str.replace(' ', '')
-        );
+      const breadcrumbLabel = route;
       breadcrumbs.push({
         label: breadcrumbLabel,
         path: breadcrumbPath,
@@ -118,7 +112,12 @@ export async function getBreadcrumbs(
       startPath += breadcrumbRoutePath;
     }
     const validBreadcrumbs = [];
-    for (const breadcrumb of breadcrumbs.slice(1, -1)) {
+    const breadcrumbsToValidate = breadcrumbs.find(
+      (obj) => obj.path === 'cloudProducts'
+    )
+      ? breadcrumbs.slice(1, -1)
+      : breadcrumbs.slice(0, -1);
+    for (const breadcrumb of breadcrumbsToValidate) {
       const findPageResult = await findEntity(
         Page.name,
         { path: breadcrumb.path },
@@ -133,6 +132,7 @@ export async function getBreadcrumbs(
             findPageResult.isInProduction
           );
         if (isUserAllowedToAccessResourceResult.status === 200) {
+          breadcrumb.label = findPageResult.title;
           validBreadcrumbs.push(breadcrumb);
         }
       }
