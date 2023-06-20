@@ -95,6 +95,14 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
+          "label": "DataHub",
+          "page": "dhGwCloud/2023.06"
+        },
+        {
+          "label": "InfoCenter",
+          "page": "icGwCloud/2023.06"
+        },
+        {
           "label": "Explore",
           "page": "../explore/latest"
         },

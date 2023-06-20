@@ -1,0 +1,311 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "dh10100rn",
+      "title": "Release Notes",
+      "url": "self-managed/dh/10100/releasenotes",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.10.0"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dh10100product",
+      "title": "Product Guide",
+      "url": "self-managed/dh/10100/product",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.10.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dh10100install",
+      "title": "Installation Guide",
+      "url": "self-managed/dh/10100/install",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.10.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dh10100upgrade",
+      "title": "Upgrade Guide",
+      "url": "self-managed/dh/10100/upgrade",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.10.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dh10100config",
+      "title": "Configuration Guide",
+      "url": "self-managed/dh/10100/config",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.10.0"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dh10100dataspec",
+      "title": "Data Specifications Guide",
+      "url": "self-managed/dh/10100/dataspec",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.10.0"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dh10100admin",
+      "title": "Administration Guide",
+      "url": "self-managed/dh/10100/admin",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.10.0"],
+        "subject": ["Administration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dh10100devref",
+      "title": "Developer Reference",
+      "url": "self-managed/dh/10100/devref",
+      "metadata": {
+        "product": ["DataHub"],
+        "platform": ["Self-managed"],
+        "version": ["10.10.0"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic10100rn",
+      "title": "Release Notes",
+      "url": "self-managed/ic/10100/releasenotes",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.10.0"],
+        "subject": ["Release notes"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic10100product",
+      "title": "Product Guide",
+      "url": "self-managed/ic/10100/product",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.10.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic10100install",
+      "title": "Installation Guide",
+      "url": "self-managed/ic/10100/install",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.10.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic10100upgrade",
+      "title": "Upgrade Guide",
+      "url": "self-managed/ic/10100/upgrade",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.10.0"],
+        "subject": ["Installation"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic10100config",
+      "title": "Configuration Guide",
+      "url": "self-managed/ic/10100/config",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.10.0"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic10100dataspec",
+      "title": "Data Specifications Guide",
+      "url": "self-managed/ic/10100/dataspec",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.10.0"],
+        "subject": ["Configuration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic10100admin",
+      "title": "Administration Guide",
+      "url": "self-managed/ic/10100/admin",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.10.0"],
+        "subject": ["Administration"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic10100biapp",
+      "title": "BI Applications Guide",
+      "url": "self-managed/ic/10100/biapp",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.10.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic10100reports",
+      "title": "Reports Guide",
+      "url": "self-managed/ic/10100/reports",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.10.0"],
+        "subject": ["Features and functionality"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ic10100devref",
+      "title": "Developer Reference",
+      "url": "self-managed/ic/10100/devref",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.10.0"],
+        "subject": ["Development"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
