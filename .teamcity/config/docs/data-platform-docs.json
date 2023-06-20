@@ -9,7 +9,8 @@
         "platform": ["Cloud"],
         "product": ["Data Platform"],
         "version": ["latest"],
-        "release": ["Elysian", "Flaine", "Garmisch"]
+        "release": ["Elysian", "Flaine", "Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,
@@ -26,7 +27,8 @@
         "platform": ["Cloud"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
-        "release": ["Flaine", "Garmisch"]
+        "release": ["Flaine", "Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -43,8 +45,17 @@
         "platform": ["Cloud"],
         "product": ["Data Platform"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"],
-        "subject": ["Features and functionality"]
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -61,8 +72,17 @@
         "platform": ["Cloud"],
         "product": ["Data Platform"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"],
-        "subject": ["Release notes"]
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -79,8 +99,17 @@
         "platform": ["Cloud"],
         "product": ["Data Platform"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"],
-        "subject": ["Features and functionality"]
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

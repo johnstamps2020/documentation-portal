@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "docs": [
     {
       "id": "guidewirecloudconsolerootinsurerdevitIT",
@@ -10,7 +10,7 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "locale": "it-IT"
+        "locale": ["it-IT"]
       },
       "environments": ["staging"],
       "indexForSearch": true,
@@ -27,7 +27,7 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "locale": "it-IT"
+        "locale": ["it-IT"]
       },
       "environments": ["staging"],
       "indexForSearch": true,

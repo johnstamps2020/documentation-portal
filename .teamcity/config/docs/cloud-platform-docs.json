@@ -9,7 +9,16 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -26,7 +35,16 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -43,7 +61,16 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"]
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

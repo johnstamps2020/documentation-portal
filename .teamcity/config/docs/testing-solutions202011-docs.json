@@ -10,7 +10,8 @@
         "platform": ["Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "platform": ["Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "platform": ["Cloud"],
         "version": ["2020.11"],
         "release": ["Banff"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

@@ -10,7 +10,8 @@
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "version": ["2022.05", "2022.09", "2023.02"],
         "release": ["Elysian", "Flaine", "Garmisch"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,

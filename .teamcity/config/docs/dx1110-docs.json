@@ -8,7 +8,8 @@
       "metadata": {
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Self-managed"],
-        "version": ["11.1.0"]
+        "version": ["11.1.0"],
+        "locale": ["en-US"]
       },
       "environments": ["prod"],
       "displayOnLandingPages": true,
@@ -24,7 +25,8 @@
       "metadata": {
         "product": ["ProducerEngage"],
         "platform": ["Self-managed"],
-        "version": ["11.1.0"]
+        "version": ["11.1.0"],
+        "locale": ["en-US"]
       },
       "environments": ["prod"],
       "displayOnLandingPages": true,
@@ -40,7 +42,8 @@
       "metadata": {
         "product": ["ServiceRepEngage"],
         "platform": ["Self-managed"],
-        "version": ["11.1.0"]
+        "version": ["11.1.0"],
+        "locale": ["en-US"]
       },
       "environments": ["prod"],
       "displayOnLandingPages": true,

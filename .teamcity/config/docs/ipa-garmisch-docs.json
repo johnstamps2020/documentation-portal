@@ -10,7 +10,8 @@
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "subject": ["Release notes"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "subject": ["Development"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "subject": ["Features and functionality"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -64,7 +67,8 @@
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "subject": ["Installation"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -82,7 +86,8 @@
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "subject": ["Installation"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

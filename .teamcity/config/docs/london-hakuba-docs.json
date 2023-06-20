@@ -10,7 +10,8 @@
         "platform": ["Cloud"],
         "version": ["Hakuba"],
         "subject": ["Features and functionality"],
-        "release": ["Hakuba"]
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "platform": ["Cloud"],
         "version": ["Hakuba"],
         "subject": ["Features and functionality"],
-        "release": ["Hakuba"]
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "platform": ["Cloud"],
         "version": ["Hakuba"],
         "subject": ["Development"],
-        "release": ["Hakuba"]
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -64,7 +67,8 @@
         "platform": ["Cloud"],
         "version": ["Hakuba"],
         "subject": ["Release notes"],
-        "release": ["Hakuba"]
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

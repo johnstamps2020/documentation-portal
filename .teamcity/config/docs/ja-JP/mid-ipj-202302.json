@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "docs": [
     {
       "id": "iscc202302ipjreleasenotesjaJP",
@@ -10,7 +10,8 @@
         "product": ["ClaimCenter"],
         "version": ["2023.02ipj"],
         "release": ["Elysian"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["ja-JP"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "product": ["ClaimCenter"],
         "version": ["2023.02ipj"],
         "release": ["Elysian"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["ja-JP"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "product": ["ClaimCenter"],
         "version": ["2023.02ipj"],
         "release": ["Elysian"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["ja-JP"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

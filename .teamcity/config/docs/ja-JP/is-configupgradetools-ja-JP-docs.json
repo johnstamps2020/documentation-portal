@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "docs": [
     {
       "id": "isconfigupgradetools320jaJP",
@@ -9,7 +9,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["3.2.0"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina"],
+        "locale": ["ja-JP"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

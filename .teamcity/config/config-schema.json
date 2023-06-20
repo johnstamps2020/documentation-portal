@@ -74,7 +74,7 @@
       "description": "Metadata used for classification, search filtering, grouping on landing pages, etc.",
       "type": "object",
       "additionalProperties": false,
-      "required": ["product", "platform"],
+      "required": ["product", "platform", "locale"],
       "properties": {
         "product": {
           "$ref": "#/definitions/product"
@@ -128,10 +128,23 @@
           }
         },
         "locale": {
-          "description": "For translated documents, specifies the language code. For English documents, it is not necessary to specify the locale.",
-          "type": "string",
-          "enum": ["de-DE", "en-US", "es-419", "es-ES", "fr-FR", "it-IT", "ja-JP", "nl-NL", "pt-BR"]
-    }
+          "description": "Specifies the language code. Locale is mandatory. Set it to 'en-US' for English documents.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "de-DE",
+              "en-US",
+              "es-419",
+              "es-ES",
+              "fr-FR",
+              "it-IT",
+              "ja-JP",
+              "nl-NL",
+              "pt-BR"
+            ]
+          }
+        }
       }
     },
     "source": {

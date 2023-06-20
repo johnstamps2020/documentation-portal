@@ -10,7 +10,8 @@
         "product": ["Workflow Service"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "indexForSearch": true,
@@ -27,7 +28,8 @@
         "product": ["Workflow Service"],
         "version": ["latest"],
         "subject": ["Administration"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "indexForSearch": true,
@@ -44,7 +46,8 @@
         "product": ["Workflow Service"],
         "version": ["latest"],
         "subject": ["Release notes"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "indexForSearch": true,
