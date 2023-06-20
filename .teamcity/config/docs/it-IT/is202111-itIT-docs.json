@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "docs": [
     {
       "id": "isbc202111apibfitIT",
@@ -10,7 +10,8 @@
         "product": ["BillingCenter"],
         "version": ["2021.11"],
         "release": ["Dobson"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["it-IT"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "product": ["ClaimCenter"],
         "version": ["2021.11"],
         "release": ["Dobson"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["it-IT"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "product": ["PolicyCenter"],
         "version": ["2021.11"],
         "release": ["Dobson"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["it-IT"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -64,7 +67,8 @@
         "product": ["ClaimCenter"],
         "version": ["2021.11"],
         "release": ["Dobson"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["it-IT"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -82,7 +86,8 @@
         "product": ["PolicyCenter"],
         "version": ["2021.11"],
         "release": ["Dobson"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["it-IT"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

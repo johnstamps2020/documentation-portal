@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "docs": [
     {
       "id": "exploreptBRusingrelease",
@@ -10,7 +10,8 @@
         "product": ["Explore"],
         "version": ["pt-BR"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["pt-BR"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

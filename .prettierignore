@@ -2,13 +2,13 @@
 .teamcity/*
 !.teamcity/config
 .yarn
-/ci
 /frontend
 /s3
 
 *.iml
 *.log
 *.yml
+*.sh
 
 .docusaurus
 /docusaurus/**/lib

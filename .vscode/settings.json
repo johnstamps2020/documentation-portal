@@ -30,16 +30,21 @@
     "**/logs/**": true
   },
   "cSpell.words": [
+    "AMST",
     "Aspen",
     "Banff",
     "Businessowners",
     "Cortina",
+    "Creds",
     "ditavals",
     "Dobson",
     "Elysian",
     "Flaine",
     "Garmisch",
     "Hakuba",
+    "reindex",
+    "reindexing",
     "superbook"
-  ]
+  ],
+  "cSpell.ignoreRegExpList": ["\"id\": \"[a-zA-Z0-9]+\"", "\"url\": \"[^\"]+\""]
 }

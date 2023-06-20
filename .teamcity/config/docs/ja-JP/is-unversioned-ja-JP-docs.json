@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "docs": [
     {
       "id": "gosureflatestjaJP",
@@ -19,7 +19,8 @@
           "2022.09",
           "latest"
         ],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["ja-JP"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -35,7 +36,8 @@
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["ja-JP"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

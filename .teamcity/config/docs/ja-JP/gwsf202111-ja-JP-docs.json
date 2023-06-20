@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "docs": [
     {
       "id": "dxgwsfinstall202111jaJP",
@@ -9,7 +9,8 @@
         "product": ["Guidewire for Salesforce"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
-        "subject": ["Installation"]
+        "subject": ["Installation"],
+        "locale": ["ja-JP"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
