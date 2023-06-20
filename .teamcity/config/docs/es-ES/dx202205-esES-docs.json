@@ -3,7 +3,7 @@
   "docs": [
     {
       "id": "dx202205esESceamapp",
-      "title": "Application Guide",
+      "title": "Application Guide es-ES",
       "url": "cloud/dx/es-ES/ce-am/202205/app",
       "metadata": {
         "product": ["CustomerEngage Account Management"],
@@ -21,7 +21,7 @@
     },
     {
       "id": "dx202205esESceclaimsapp",
-      "title": "Application Guide",
+      "title": "Application Guide es-ES",
       "url": "cloud/dx/es-ES/ce-claims/202205/app",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
@@ -39,7 +39,7 @@
     },
     {
       "id": "dx202205esESceqbapp",
-      "title": "Application Guide",
+      "title": "Application Guide es-ES",
       "url": "cloud/dx/es-ES/ce-qb/202205/app",
       "metadata": {
         "product": ["CustomerEngage Quote and Buy"],
@@ -57,7 +57,7 @@
     },
     {
       "id": "dx202205esESpeapp",
-      "title": "Application Guide",
+      "title": "Application Guide es-ES",
       "url": "cloud/dx/es-ES/pe/202205/app",
       "metadata": {
         "product": ["ProducerEngage"],
@@ -75,7 +75,7 @@
     },
     {
       "id": "dx202205esESpeclaimsapp",
-      "title": "Application Guide",
+      "title": "Application Guide es-ES",
       "url": "cloud/dx/es-ES/pe-claims/202205/app",
       "metadata": {
         "product": ["ProducerEngage for ClaimCenter"],
@@ -93,7 +93,7 @@
     },
     {
       "id": "dx202205esESsreapp",
-      "title": "Application Guide",
+      "title": "Application Guide es-ES",
       "url": "cloud/dx/es-ES/sre/202205/app",
       "metadata": {
         "product": ["ServiceRepEngage"],
@@ -111,7 +111,7 @@
     },
     {
       "id": "dx202205esESveapp",
-      "title": "Application Guide",
+      "title": "Application Guide es-ES",
       "url": "cloud/dx/es-ES/ve/202205/app",
       "metadata": {
         "product": ["VendorEngage"],
