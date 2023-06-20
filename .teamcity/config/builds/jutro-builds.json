@@ -780,6 +780,12 @@
       "docId": "jutrodocsnext",
       "srcId": "jutrodocsnextsrc",
       "nodeImageVersion": "18.0.0"
+    },
+    {
+      "buildType": "dita",
+      "docId": "agentquoteandbuypersonalauto",
+      "srcId": "jutrodigitalcontentsrc",
+      "root": "AgentQuoteAndBuyPA.ditamap"
     }
   ]
 }

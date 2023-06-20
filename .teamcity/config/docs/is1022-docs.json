@@ -9,7 +9,8 @@
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
         "version": ["10.2.2"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -26,7 +27,8 @@
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
         "version": ["10.2.2"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -43,7 +45,8 @@
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
         "version": ["10.2.2"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -60,7 +63,8 @@
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
         "version": ["10.2.2"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -78,7 +82,8 @@
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
         "version": ["10.2.2"],
-        "subject": ["Installation"]
+        "subject": ["Installation"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,
@@ -94,7 +99,8 @@
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
         "version": ["10.2.2"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -111,7 +117,8 @@
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
         "version": ["10.2.2"],
-        "subject": ["Administration"]
+        "subject": ["Administration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -128,7 +135,8 @@
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
         "version": ["10.2.2"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -145,7 +153,8 @@
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
         "version": ["10.2.2"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -162,7 +171,8 @@
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
         "version": ["10.2.2"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -179,7 +189,8 @@
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
         "version": ["10.2.2"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -196,7 +207,8 @@
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
         "version": ["10.2.2"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -213,7 +225,8 @@
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
         "version": ["10.2.2"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -230,7 +243,8 @@
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
         "version": ["10.2.2"],
-        "subject": ["Installation"]
+        "subject": ["Installation"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -247,7 +261,8 @@
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
         "version": ["10.2.2"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -264,7 +279,8 @@
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
         "version": ["10.2.2"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -281,7 +297,8 @@
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
         "version": ["10.2.2"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -298,7 +315,8 @@
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
         "version": ["10.2.2"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -316,7 +334,8 @@
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
         "version": ["10.2.2"],
-        "subject": ["Installation"]
+        "subject": ["Installation"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,
@@ -332,7 +351,8 @@
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
         "version": ["10.2.2"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -349,7 +369,8 @@
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
         "version": ["10.2.2"],
-        "subject": ["Administration"]
+        "subject": ["Administration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -366,7 +387,8 @@
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
         "version": ["10.2.2"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -383,7 +405,8 @@
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
         "version": ["10.2.2"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -400,7 +423,8 @@
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
         "version": ["10.2.2"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -417,7 +441,8 @@
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
         "version": ["10.2.2"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -434,7 +459,8 @@
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
         "version": ["10.2.2"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -451,7 +477,8 @@
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
         "version": ["10.2.2"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -468,7 +495,8 @@
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
         "version": ["10.2.2"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -485,7 +513,8 @@
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
         "version": ["10.2.2"],
-        "subject": ["Installation"]
+        "subject": ["Installation"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -502,7 +531,8 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.2"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -519,7 +549,8 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.2"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -536,7 +567,8 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.2"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -553,7 +585,8 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.2"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -570,7 +603,8 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.2"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -587,7 +621,8 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.2"],
-        "subject": ["Installation"]
+        "subject": ["Installation"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -604,7 +639,8 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.2"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -621,7 +657,8 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.2"],
-        "subject": ["Administration"]
+        "subject": ["Administration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -638,7 +675,8 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.2"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -655,7 +693,8 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.2"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -672,7 +711,8 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.2"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -689,7 +729,8 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.2"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -706,7 +747,8 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.2"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -723,7 +765,8 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.2"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -740,7 +783,8 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.2"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -757,7 +801,8 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.2"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -774,7 +819,8 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.2"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -791,7 +837,8 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.2"],
-        "subject": ["Installation"]
+        "subject": ["Installation"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

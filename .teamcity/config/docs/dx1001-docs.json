@@ -8,7 +8,8 @@
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["CustomerEngage Account Management"],
-        "version": ["10.0.1"]
+        "version": ["10.0.1"],
+        "locale": ["en-US"]
       },
       "environments": ["prod"],
       "displayOnLandingPages": true,
@@ -24,7 +25,8 @@
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["VendorEngage"],
-        "version": ["10.0.1"]
+        "version": ["10.0.1"],
+        "locale": ["en-US"]
       },
       "environments": ["prod"],
       "displayOnLandingPages": true,
@@ -33,7 +35,6 @@
       "internal": false,
       "earlyAccess": false
     },
-    
     {
       "id": "selfmanageddxceqbphivypaz",
       "title": "CustomerEngage Quote and Buy",
@@ -41,7 +42,8 @@
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["CustomerEngage Quote and Buy"],
-        "version": ["10.0.1"]
+        "version": ["10.0.1"],
+        "locale": ["en-US"]
       },
       "environments": ["prod"],
       "displayOnLandingPages": true,
@@ -57,7 +59,8 @@
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["ProducerEngage"],
-        "version": ["10.0.1"]
+        "version": ["10.0.1"],
+        "locale": ["en-US"]
       },
       "environments": ["prod"],
       "displayOnLandingPages": true,
@@ -73,7 +76,8 @@
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["ServiceRepEngage"],
-        "version": ["10.0.1"]
+        "version": ["10.0.1"],
+        "locale": ["en-US"]
       },
       "environments": ["prod"],
       "displayOnLandingPages": true,

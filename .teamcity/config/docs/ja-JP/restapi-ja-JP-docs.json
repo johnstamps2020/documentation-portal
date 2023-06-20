@@ -10,7 +10,8 @@
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["ja-JP"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

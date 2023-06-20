@@ -10,7 +10,8 @@
         "platform": ["Cloud"],
         "version": ["2022.09", "2023.02"],
         "release": ["Flaine", "Garmisch"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

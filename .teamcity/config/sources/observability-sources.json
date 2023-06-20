@@ -1,0 +1,11 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "observabilitysrc",
+      "title": "Observability",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/observability.git",
+      "branch": "main"
+    }
+  ]
+}

@@ -10,7 +10,8 @@
         "product": ["Advanced Product Designer"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["de-DE"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

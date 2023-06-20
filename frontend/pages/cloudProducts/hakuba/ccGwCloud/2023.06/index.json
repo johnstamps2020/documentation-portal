@@ -95,6 +95,10 @@
         {
           "label": "Data Archiving",
           "id": "iscc202306dataarchiving"
+        },
+        {
+          "label": "Observability",
+          "id": "observability"
         }
       ]
     },

@@ -1,0 +1,13 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "Observability.ditamap",
+      "srcId": "observabilitysrc",
+      "docId": "observability",
+      "indexRedirect": true
+    }
+  ]
+}

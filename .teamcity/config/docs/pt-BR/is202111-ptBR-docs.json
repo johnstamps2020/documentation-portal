@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "docs": [
     {
       "id": "is202111contactptBR",
@@ -10,7 +10,8 @@
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "version": ["2021.11"],
         "release": ["Dobson"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["pt-BR"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "product": ["BillingCenter"],
         "version": ["2021.11"],
         "release": ["Dobson"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["pt-BR"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "product": ["ClaimCenter"],
         "version": ["2021.11"],
         "release": ["Dobson"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["pt-BR"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -64,7 +67,8 @@
         "product": ["PolicyCenter"],
         "version": ["2021.11"],
         "release": ["Dobson"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["pt-BR"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

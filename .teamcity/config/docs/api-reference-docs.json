@@ -10,7 +10,8 @@
         "product": ["ClaimCenter"],
         "version": ["2020.11"],
         "release": ["Banff"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "product": ["InsuranceNow"],
         "version": ["2021.1"],
         "subject": ["Integration"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "product": ["ClaimCenter"],
         "version": ["2021.04"],
         "release": ["Cortina"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -64,7 +67,8 @@
         "product": ["PolicyCenter"],
         "version": ["2021.04"],
         "release": ["Cortina"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

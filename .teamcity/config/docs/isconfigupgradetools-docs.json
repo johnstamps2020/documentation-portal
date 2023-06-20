@@ -9,7 +9,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.6.0"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch"]
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -26,7 +27,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.5.0"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch"]
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -43,7 +45,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.4.0"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -60,7 +63,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.3.0"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -77,7 +81,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.2.0"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -94,7 +99,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.1.0"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -111,7 +117,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.0.0"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -128,7 +135,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["3.3.0"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -145,7 +153,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["3.1.0"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

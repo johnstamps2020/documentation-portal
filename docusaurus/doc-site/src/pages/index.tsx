@@ -4,8 +4,10 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
-
 import styles from './index.module.css';
+import Explorer from '@site/src/components/Explore/Explorer';
+import Button from '@mui/material/Button';
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -15,13 +17,18 @@ function HomepageHeader() {
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          <Link
+          <Button
             className="button button--secondary button--lg"
-            to="/docs/intro"
+            href="/docs/intro"
+            LinkComponent={Link}
+            variant="contained"
+            color="info"
+            endIcon={<RocketLaunchIcon />}
           >
-            Get started 🚀
-          </Link>
+            Get started
+          </Button>
         </div>
+        <Explorer />
       </div>
     </header>
   );

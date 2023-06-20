@@ -8,7 +8,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Internal Docs"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -24,7 +25,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Internal Docs"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -35,4 +37,3 @@
     }
   ]
 }
-  

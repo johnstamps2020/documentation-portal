@@ -10,7 +10,8 @@
         "platform": ["Cloud", "Self-managed"],
         "version": ["4.1.1"],
         "release": ["Banff"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -27,7 +28,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["4.2.1"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -44,7 +46,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["4.3.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -61,7 +64,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["5.0.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -78,7 +82,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["5.1.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -95,7 +100,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["5.2.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -112,7 +118,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["5.3.1"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -130,7 +137,8 @@
         "platform": ["Cloud"],
         "version": ["5.3.2 LTS"],
         "subject": ["Best practices"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -147,7 +155,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["5.4.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -164,7 +173,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["6.0.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -181,7 +191,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["6.1.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -198,7 +209,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["6.2.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -215,7 +227,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["6.3.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -232,7 +245,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["6.4.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -249,7 +263,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["6.5.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": false,
@@ -266,7 +281,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["6.5.1"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": false,
@@ -284,7 +300,8 @@
         "platform": ["Cloud"],
         "version": ["6.5.2 LTS"],
         "subject": ["Best practices"],
-        "release": ["Dobson"]
+        "release": ["Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -301,7 +318,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["next"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -318,7 +336,8 @@
         "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
         "version": ["next"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": false,
@@ -335,7 +354,8 @@
         "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
         "version": ["next"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -351,7 +371,8 @@
       "metadata": {
         "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
-        "version": ["next"]
+        "version": ["next"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -369,7 +390,8 @@
         "platform": ["Cloud"],
         "version": ["Flaine"],
         "subject": ["Best practices"],
-        "release": ["Flaine"]
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -387,7 +409,8 @@
         "platform": ["Cloud"],
         "version": ["Garmisch"],
         "subject": ["Best practices"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -403,7 +426,8 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud", "Self-managed"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -421,7 +445,8 @@
         "platform": ["Cloud", "Self-managed"],
         "version": ["4.1.1"],
         "release": ["Banff"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -438,7 +463,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["4.2.1"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -455,7 +481,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["4.3.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -472,7 +499,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["5.0.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -489,7 +517,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["5.1.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -506,7 +535,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["5.2.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -523,7 +553,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["5.3.1"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -541,7 +572,8 @@
         "platform": ["Cloud"],
         "version": ["5.3.2 LTS"],
         "subject": ["Development"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -558,7 +590,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["5.4.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -575,7 +608,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["6.0.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -592,7 +626,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["6.1.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -609,7 +644,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["6.2.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -626,7 +662,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["6.3.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -643,7 +680,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["6.4.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -660,7 +698,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["6.5.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": false,
@@ -678,7 +717,8 @@
         "platform": ["Cloud"],
         "version": ["6.5.1"],
         "subject": ["Development"],
-        "release": ["Dobson"]
+        "release": ["Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": false,
@@ -696,7 +736,8 @@
         "platform": ["Cloud"],
         "version": ["6.5.2 LTS"],
         "subject": ["Development"],
-        "release": ["Dobson"]
+        "release": ["Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -713,7 +754,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["next"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -731,7 +773,8 @@
         "platform": ["Cloud"],
         "version": ["6.5.1"],
         "subject": ["Development"],
-        "release": ["Dobson"]
+        "release": ["Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -749,7 +792,8 @@
         "platform": ["Cloud"],
         "version": ["6.5.2 LTS"],
         "subject": ["Development"],
-        "release": ["Dobson"]
+        "release": ["Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -767,7 +811,8 @@
         "platform": ["Cloud"],
         "version": ["6.5.1"],
         "subject": ["Development"],
-        "release": ["Dobson"]
+        "release": ["Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -785,7 +830,8 @@
         "platform": ["Cloud"],
         "version": ["6.5.2 LTS"],
         "subject": ["Development"],
-        "release": ["Dobson"]
+        "release": ["Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -803,7 +849,8 @@
         "platform": ["Cloud"],
         "version": ["6.5.1"],
         "subject": ["Development"],
-        "release": ["Dobson"]
+        "release": ["Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -821,7 +868,8 @@
         "platform": ["Cloud"],
         "version": ["6.5.2 LTS"],
         "subject": ["Development"],
-        "release": ["Dobson"]
+        "release": ["Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -838,7 +886,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["6.6.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -855,7 +904,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["6.6.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -872,7 +922,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["7.0.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -889,7 +940,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["7.0.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -906,7 +958,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["7.1.1"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -923,7 +976,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["7.1.1"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -940,7 +994,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["7.2.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -957,7 +1012,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["7.2.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -974,7 +1030,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["7.3.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -991,7 +1048,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["7.3.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1008,7 +1066,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["7.4.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": false,
@@ -1025,7 +1084,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["7.4.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": false,
@@ -1042,7 +1102,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["7.4.1"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": false,
@@ -1059,7 +1120,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["7.4.1"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": false,
@@ -1076,7 +1138,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["7.4.2"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": false,
@@ -1093,7 +1156,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["7.4.2"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": false,
@@ -1111,7 +1175,8 @@
         "platform": ["Cloud"],
         "version": ["7.4.3 LTS"],
         "subject": ["Best practices"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -1129,7 +1194,8 @@
         "platform": ["Cloud"],
         "version": ["7.4.3 LTS"],
         "subject": ["Development"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -1147,7 +1213,8 @@
         "platform": ["Cloud"],
         "version": ["7.4.3"],
         "subject": ["Development"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -1164,7 +1231,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["7.5.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1181,7 +1249,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["7.5.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1198,7 +1267,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.0.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1215,7 +1285,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.0.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1232,7 +1303,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.1.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1249,7 +1321,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.1.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1266,7 +1339,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.2.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1283,7 +1357,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.2.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1301,7 +1376,8 @@
         "platform": ["Cloud"],
         "version": ["8.3.0 LTS"],
         "subject": ["Best practices"],
-        "release": ["Flaine"]
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -1319,7 +1395,8 @@
         "platform": ["Cloud"],
         "version": ["8.3.0 LTS"],
         "subject": ["Development"],
-        "release": ["Flaine"]
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -1336,7 +1413,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.3.2"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1353,7 +1431,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.3.2"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1370,7 +1449,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.4.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1387,7 +1467,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.4.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1404,7 +1485,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.5.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1421,7 +1503,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.5.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1438,7 +1521,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.6.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1455,7 +1539,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.6.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1473,7 +1558,8 @@
         "platform": ["Cloud"],
         "version": ["8.6.1 LTS"],
         "subject": ["Best practices"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -1491,7 +1577,8 @@
         "platform": ["Cloud"],
         "version": ["8.6.1 LTS"],
         "subject": ["Development"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -1508,7 +1595,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.7.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1525,7 +1613,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.7.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1542,7 +1631,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.8.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1559,7 +1649,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.8.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1576,7 +1667,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.9.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -1593,7 +1685,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.9.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -1611,7 +1704,8 @@
         "platform": ["Cloud"],
         "version": ["8.10.0 LTS"],
         "subject": ["Best practices"],
-        "release": ["Hakuba"]
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -1629,7 +1723,8 @@
         "platform": ["Cloud"],
         "version": ["8.10.0"],
         "subject": ["Development"],
-        "release": ["Hakuba"]
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -1646,7 +1741,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.11.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -1663,7 +1759,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.11.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -1680,7 +1777,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.12.0"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -1697,7 +1795,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.12.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -1714,7 +1813,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.12.0 (latest)"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -1731,7 +1831,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["8.12.0 (latest)"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -1748,7 +1849,8 @@
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
@@ -1765,7 +1867,8 @@
         "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -1773,6 +1876,24 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
+    },
+    {
+      "id": "agentquoteandbuypersonalauto",
+      "title": "Agent Quote and Buy Personal Auto",
+      "url": "jutro/agent-quote-and-buy-pa/next",
+      "metadata": {
+        "product": ["Jutro Digital Platform"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": true
     }
   ]
 }

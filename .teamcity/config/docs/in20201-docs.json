@@ -10,7 +10,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.1"],
         "subject": ["Features and functionality"],
-        "release": ["Aspen"]
+        "release": ["Aspen"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.1"],
         "subject": ["Features and functionality"],
-        "release": ["Aspen"]
+        "release": ["Aspen"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.1"],
         "subject": ["Integration"],
-        "release": ["Aspen"]
+        "release": ["Aspen"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -64,7 +67,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.1"],
         "subject": ["Integration"],
-        "release": ["Aspen"]
+        "release": ["Aspen"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -82,7 +86,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.1"],
         "subject": ["Configuration"],
-        "release": ["Aspen"]
+        "release": ["Aspen"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -100,7 +105,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.1"],
         "subject": ["Configuration"],
-        "release": ["Aspen"]
+        "release": ["Aspen"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -118,7 +124,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.1"],
         "subject": ["Configuration"],
-        "release": ["Aspen"]
+        "release": ["Aspen"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

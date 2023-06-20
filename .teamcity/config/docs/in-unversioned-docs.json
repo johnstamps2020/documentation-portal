@@ -10,7 +10,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1", "2022.2", "2023.1"],
         "subject": ["Release notes"],
-        "release": ["Elysian", "Flaine", "Garmisch"]
+        "release": ["Elysian", "Flaine", "Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1", "2022.2", "2023.1"],
         "subject": ["Release notes"],
-        "release": ["Elysian", "Flaine", "Garmisch"]
+        "release": ["Elysian", "Flaine", "Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "product": ["InsuranceNow"],
         "version": ["2023.2"],
         "subject": ["Release notes"],
-        "release": ["Hakuba"]
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -64,7 +67,8 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Release notes"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -82,7 +86,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.2"],
         "subject": ["Release notes"],
-        "release": ["Flaine"]
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -100,7 +105,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Release notes"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -118,7 +124,8 @@
         "product": ["InsuranceNow"],
         "version": ["2021.1"],
         "subject": ["Release notes"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -136,7 +143,8 @@
         "product": ["InsuranceNow"],
         "version": ["2021.2"],
         "subject": ["Release notes"],
-        "release": ["Dobson"]
+        "release": ["Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -154,7 +162,8 @@
         "product": ["InsuranceNow Consumer Service Portal"],
         "version": ["3.26"],
         "subject": ["Release notes"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -172,7 +181,8 @@
         "product": ["InsuranceNow Consumer Service Portal"],
         "version": ["3.25"],
         "subject": ["Release notes"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -190,7 +200,8 @@
         "product": ["InsuranceNow Consumer Service Portal"],
         "version": ["3.24"],
         "subject": ["Release notes"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -208,7 +219,8 @@
         "product": ["InsuranceNow Consumer Service Portal"],
         "version": ["3.23"],
         "subject": ["Release notes"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -226,7 +238,8 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1", "2022.2", "2022.1", "2021.2"],
         "subject": ["Installation"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"]
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -253,13 +266,8 @@
           "2020.1"
         ],
         "subject": ["Installation"],
-        "release": [
-          "Dobson",
-          "Elysian",
-          "Flaine",
-          "Garmisch",
-          "Hakuba"
-        ]
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -277,7 +285,15 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
         "subject": ["Features and functionality"],
-        "release": ["Cortina", "Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"]
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba"
+        ],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -295,7 +311,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.2", "2020.1"],
         "subject": ["Features and functionality"],
-        "release": ["Aspen", "Banff"]
+        "release": ["Aspen", "Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -313,7 +330,8 @@
         "product": ["InsuranceNow"],
         "version": ["2023.2"],
         "subject": ["Release notes"],
-        "release": ["Hakuba"]
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -331,7 +349,8 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Release notes"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -349,7 +368,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.2"],
         "subject": ["Release notes"],
-        "release": ["Flaine"]
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -367,7 +387,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Release notes"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -385,7 +406,8 @@
         "product": ["InsuranceNow"],
         "version": ["2021.2"],
         "subject": ["Release notes"],
-        "release": ["Dobson"]
+        "release": ["Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -403,7 +425,8 @@
         "product": ["InsuranceNow"],
         "version": ["2021.1"],
         "subject": ["Release notes"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -421,7 +444,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
         "subject": ["Release notes"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -439,7 +463,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.1"],
         "subject": ["Release notes"],
-        "release": ["Aspen"]
+        "release": ["Aspen"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -475,7 +500,8 @@
           "Flaine",
           "Garmisch",
           "Hakuba"
-        ]
+        ],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -493,7 +519,8 @@
         "product": ["InsuranceNow"],
         "version": ["2023.2"],
         "subject": ["Release notes"],
-        "release": ["Hakuba"]
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -511,7 +538,8 @@
         "product": ["InsuranceNow"],
         "version": ["2023.1"],
         "subject": ["Release notes"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -529,7 +557,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.2"],
         "subject": ["Release notes"],
-        "release": ["Flaine"]
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -547,7 +576,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Release notes"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -565,7 +595,8 @@
         "product": ["InsuranceNow"],
         "version": ["2021.2"],
         "subject": ["Release notes"],
-        "release": ["Dobson"]
+        "release": ["Dobson"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -583,7 +614,8 @@
         "product": ["InsuranceNow"],
         "version": ["2021.1"],
         "subject": ["Release notes"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -601,7 +633,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
         "subject": ["Release notes"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -619,7 +652,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.1"],
         "subject": ["Release notes"],
-        "release": ["Aspen"]
+        "release": ["Aspen"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -635,9 +669,28 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": ["2023.2", "2023.1", "2022.2","2022.1", "2021.2", "2021.1", "2020.2", "2020.1"],
+        "version": [
+          "2023.2",
+          "2023.1",
+          "2022.2",
+          "2022.1",
+          "2021.2",
+          "2021.1",
+          "2020.2",
+          "2020.1"
+        ],
         "subject": ["Installation"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"]
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba"
+        ],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -655,7 +708,8 @@
         "product": ["InsuranceNow"],
         "version": ["2023.2", "2023.1", "2022.2", "2022.1", "2021.2"],
         "subject": ["Installation"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"]
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

@@ -10,6 +10,14 @@
         {
           "label": "インストールガイド",
           "id": "dx202205jaJPveinstall"
+        },
+        {
+          "label": "アプリケーションガイド",
+          "id": "dx202205jaJPveapp"
+        },
+        {
+          "label": "開発者ガイド",
+          "id": "dx202205jaJPvedev"
         }
       ]
     },

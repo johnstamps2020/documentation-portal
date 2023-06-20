@@ -10,7 +10,8 @@
         "platform": ["Cloud"],
         "version": ["Flaine"],
         "subject": ["Features and functionality"],
-        "release": ["Flaine"]
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "platform": ["Cloud"],
         "version": ["Flaine"],
         "subject": ["Features and functionality"],
-        "release": ["Flaine"]
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "platform": ["Cloud"],
         "version": ["Flaine"],
         "subject": ["Development"],
-        "release": ["Flaine"]
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -64,7 +67,8 @@
         "platform": ["Cloud"],
         "version": ["Flaine"],
         "subject": ["Release notes"],
-        "release": ["Flaine"]
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

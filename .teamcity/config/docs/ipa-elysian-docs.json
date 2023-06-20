@@ -10,7 +10,8 @@
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "subject": ["Release notes"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "subject": ["Development"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "subject": ["Features and functionality"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -55,6 +58,5 @@
       "internal": false,
       "earlyAccess": false
     }
-
   ]
 }
