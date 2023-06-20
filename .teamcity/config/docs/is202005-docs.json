@@ -9,7 +9,8 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
         "version": ["2020.05"],
-        "release": ["Aspen"]
+        "release": ["Aspen"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -26,7 +27,8 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
         "version": ["2020.05"],
-        "release": ["Aspen"]
+        "release": ["Aspen"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -43,7 +45,8 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
         "version": ["2020.05"],
-        "release": ["Aspen"]
+        "release": ["Aspen"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -61,7 +64,8 @@
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
         "version": ["2020.05"],
-        "release": ["Aspen"]
+        "release": ["Aspen"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,
@@ -78,7 +82,8 @@
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
         "version": ["2020.05"],
-        "release": ["Aspen"]
+        "release": ["Aspen"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,
@@ -95,7 +100,8 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
         "version": ["2020.05"],
-        "release": ["Aspen"]
+        "release": ["Aspen"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,

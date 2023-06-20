@@ -9,7 +9,8 @@
         "platform": ["Cloud"],
         "product": ["PolicyCenter", "BillingCenter", "ClaimCenter"],
         "version": ["latest"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

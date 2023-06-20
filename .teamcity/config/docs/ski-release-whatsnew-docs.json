@@ -9,7 +9,8 @@
         "platform": ["Cloud"],
         "product": ["Ski release overview"],
         "version": ["2023.02"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,
@@ -25,7 +26,8 @@
         "platform": ["Cloud"],
         "product": ["Ski release overview"],
         "version": ["2022.09"],
-        "release": ["Flaine"]
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "indexForSearch": false,

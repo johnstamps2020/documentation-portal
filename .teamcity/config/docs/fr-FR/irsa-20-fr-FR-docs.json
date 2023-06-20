@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "docs": [
     {
       "id": "midipfadjuster20frFR",
@@ -9,7 +9,8 @@
         "product": ["ClaimCenter Package for France"],
         "platform": ["Self-managed"],
         "version": ["2.0"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["fr-FR"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -26,7 +27,8 @@
         "product": ["ClaimCenter Package for France"],
         "platform": ["Self-managed"],
         "version": ["2.0"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["fr-FR"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

@@ -9,7 +9,8 @@
         "platform": ["Cloud"],
         "product": ["Advanced Product Designer"],
         "version": ["2022.09", "2023.02"],
-        "release": ["Flaine", "Garmisch"]
+        "release": ["Flaine", "Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "internal": false,
@@ -26,7 +27,8 @@
         "product": ["Advanced Product Designer"],
         "version": ["2022.09"],
         "release": ["Flaine"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -44,7 +46,8 @@
         "product": ["Advanced Product Designer"],
         "version": ["2022.09"],
         "release": ["Flaine"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
@@ -62,7 +65,8 @@
         "product": ["Advanced Product Designer"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -80,7 +84,8 @@
         "product": ["Advanced Product Designer"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
@@ -98,7 +103,8 @@
         "product": ["Advanced Product Designer"],
         "version": ["2022.09"],
         "subject": ["Configuration"],
-        "release": ["Flaine"]
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -116,7 +122,8 @@
         "product": ["Advanced Product Designer"],
         "version": ["2023.02"],
         "subject": ["Configuration"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -134,7 +141,8 @@
         "product": ["Advanced Product Designer"],
         "version": ["2023.06"],
         "subject": ["Configuration"],
-        "release": ["Hakuba"]
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -152,7 +160,8 @@
         "product": ["Advanced Product Designer"],
         "version": ["2023.06"],
         "release": ["Hakuba"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -170,7 +179,8 @@
         "product": ["Advanced Product Designer"],
         "version": ["2023.06"],
         "release": ["Hakuba"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": false,

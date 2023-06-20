@@ -64,7 +64,7 @@
       "srcId": "lobmainsrc",
       "docId": "lobbopstatereleasenotesonprem",
       "indexRedirect": true
-    },    
+    },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",
@@ -192,7 +192,7 @@
       "srcId": "lobmainsrc",
       "docId": "lobglstatereleasenotesonprem",
       "indexRedirect": true
-    },    
+    },
     {
       "buildType": "dita",
       "filter": "LOB_STANDARDS_Cloud.ditaval",

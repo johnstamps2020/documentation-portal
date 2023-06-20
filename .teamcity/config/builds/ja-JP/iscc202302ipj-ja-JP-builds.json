@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "builds": [
     {
       "buildType": "dita",
@@ -16,7 +16,8 @@
       "srcId": "iscc202302ipjjaJPsrc",
       "docId": "iscc202302ipjconfigjaJP",
       "indexRedirect": true
-    },{
+    },
+    {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "IPJReleaseNotes.ditamap",
