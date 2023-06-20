@@ -77,6 +77,16 @@
         {
           "label": "InfoCenter",
           "page": "ic/10.9.0"
+        },
+        {
+          "label": "DataHub 10.10.0",
+          "page": "dh/10.10.0",
+          "env": ["staging"]
+        },
+        {
+          "label": "InfoCenter 10.10.0",
+          "page": "ic/10.10.0",
+          "env": ["staging"]
         }
       ]
     },
