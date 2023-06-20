@@ -4,7 +4,7 @@
     {
       "id": "dx202205jaJPceclaimsinstall",
       "title": "Installation Guide ja-JP",
-      "url": "cloud/dx/ja-JP/ce-claims/202205/install",
+      "url": "ja-JP/cloud/dx/ce-claims/202205/install",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Cloud"],
@@ -22,7 +22,7 @@
     {
       "id": "dx202205jaJPceclaimsapp",
       "title": "Application Guide ja-JP",
-      "url": "cloud/dx/ja-JP/ce-claims/202205/app",
+      "url": "ja-JP/cloud/dx/ce-claims/202205/app",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Cloud"],
@@ -40,7 +40,7 @@
     {
       "id": "dx202205jaJPceclaimsdev",
       "title": "Development Guide ja-JP",
-      "url": "cloud/dx/ja-JP/ce-claims/202205/dev",
+      "url": "ja-JP/cloud/dx/ce-claims/202205/dev",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Cloud"],
@@ -58,7 +58,7 @@
     {
       "id": "dx202205jaJPsreinstall",
       "title": "Installation Guide ja-JP",
-      "url": "cloud/dx/ja-JP/sre/202205/install",
+      "url": "ja-JP/cloud/dx/sre/202205/install",
       "metadata": {
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
@@ -76,7 +76,7 @@
     {
       "id": "dx202205jaJPsreapp",
       "title": "Application Guide ja-JP",
-      "url": "cloud/dx/ja-JP/sre/202205/app",
+      "url": "ja-JP/cloud/dx/sre/202205/app",
       "metadata": {
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
@@ -94,7 +94,7 @@
     {
       "id": "dx202205jaJPsredev",
       "title": "Development Guide ja-JP",
-      "url": "cloud/dx/ja-JP/sre/202205/dev",
+      "url": "ja-JP/cloud/dx/sre/202205/dev",
       "metadata": {
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
@@ -112,7 +112,7 @@
     {
       "id": "dx202205jaJPveinstall",
       "title": "Installation Guide ja-JP",
-      "url": "cloud/dx/ja-JP/ve/202205/install",
+      "url": "ja-JP/cloud/dx/ve/202205/install",
       "metadata": {
         "product": ["VendorEngage"],
         "platform": ["Cloud"],
@@ -130,7 +130,7 @@
     {
       "id": "dx202205jaJPveapp",
       "title": "Application Guide ja-JP",
-      "url": "cloud/dx/ja-JP/ve/202205/app",
+      "url": "ja-JP/cloud/dx/ve/202205/app",
       "metadata": {
         "product": ["VendorEngage"],
         "platform": ["Cloud"],
@@ -148,7 +148,7 @@
     {
       "id": "dx202205jaJPvedev",
       "title": "Development Guide ja-JP",
-      "url": "cloud/dx/ja-JP/ve/202205/dev",
+      "url": "ja-JP/cloud/dx/ve/202205/dev",
       "metadata": {
         "product": ["VendorEngage"],
         "platform": ["Cloud"],
