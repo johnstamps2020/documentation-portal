@@ -4,7 +4,7 @@
     {
       "id": "dx202205es419ceamapp",
       "title": "Application Guide es-419",
-      "url": "cloud/dx/es-419/ce-am/202205/app",
+      "url": "es-419/cloud/dx/ce-am/202205/app",
       "metadata": {
         "product": ["CustomerEngage Account Management"],
         "platform": ["Cloud"],
@@ -23,7 +23,7 @@
     {
       "id": "dx202205es419ceclaimsapp",
       "title": "Application Guide es-419",
-      "url": "cloud/dx/es-419/ce-claims/202205/app",
+      "url": "es-419/cloud/dx/ce-claims/202205/app",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
         "platform": ["Cloud"],
@@ -42,7 +42,7 @@
     {
       "id": "dx202205es419ceqbapp",
       "title": "Application Guide es-419",
-      "url": "cloud/dx/es-419/ce-qb/202205/app",
+      "url": "es-419/cloud/dx/ce-qb/202205/app",
       "metadata": {
         "product": ["CustomerEngage Quote and Buy"],
         "platform": ["Cloud"],
@@ -61,7 +61,7 @@
     {
       "id": "dx202205es419peapp",
       "title": "Application Guide es-419",
-      "url": "cloud/dx/es-419/pe/202205/app",
+      "url": "es-419/cloud/dx/pe/202205/app",
       "metadata": {
         "product": ["ProducerEngage"],
         "platform": ["Cloud"],
@@ -80,7 +80,7 @@
     {
       "id": "dx202205es419peclaimsapp",
       "title": "Application Guide es-419",
-      "url": "cloud/dx/es-419/pe-claims/202205/app",
+      "url": "es-419/cloud/dx/pe-claims/202205/app",
       "metadata": {
         "product": ["ProducerEngage for ClaimCenter"],
         "platform": ["Cloud"],
@@ -99,7 +99,7 @@
     {
       "id": "dx202205es419sreapp",
       "title": "Application Guide es-419",
-      "url": "cloud/dx/es-419/sre/202205/app",
+      "url": "es-419/cloud/dx/sre/202205/app",
       "metadata": {
         "product": ["ServiceRepEngage"],
         "platform": ["Cloud"],
@@ -118,7 +118,7 @@
     {
       "id": "dx202205es419veapp",
       "title": "Application Guide es-419",
-      "url": "cloud/dx/es-419/ve/202205/app",
+      "url": "es-419/cloud/dx/ve/202205/app",
       "metadata": {
         "product": ["VendorEngage"],
         "platform": ["Cloud"],
