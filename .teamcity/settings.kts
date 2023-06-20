@@ -13,6 +13,8 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 import java.util.*
+import java.math.BigInteger
+import java.security.MessageDigest
 
 version = "2022.04"
 
@@ -498,7 +500,8 @@ object Runners {
     ): BuildType {
         return BuildType {
             name = docTitle
-            id = Helpers.resolveRelativeIdFromIdString("${this.name}${deployEnv}${gwProduct}${gwVersion}")
+            val idHash = Helpers.md5("${this.name}${deployEnv}${gwProduct}${gwVersion}${docIds.joinToString()}")
+            id = Helpers.resolveRelativeIdFromIdString(idHash)
 
             type = BuildTypeSettings.Type.COMPOSITE
 
@@ -3986,6 +3989,11 @@ object Helpers {
         } else {
             "echo \"This build does not use a ditaval file. Skipping download from the common-gw submodule...\""
         }
+    }
+
+    fun md5(input: String): String {
+        val md = MessageDigest.getInstance("MD5")
+        return BigInteger(1, md.digest(input.toByteArray())).toString(16).padStart(32, '0')
     }
 
 }
