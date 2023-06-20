@@ -42,10 +42,14 @@
     "Flaine",
     "Garmisch",
     "Hakuba",
+    "IRSA",
     "ISBTF",
     "reindex",
     "reindexing",
     "superbook"
   ],
-  "cSpell.ignoreRegExpList": ["\"id\": \"[a-zA-Z0-9]+\"", "\"url\": \"[^\"]+\""]
+  "cSpell.ignoreRegExpList": [
+    "\"(id|docId|srcId)\": \"[a-zA-Z0-9]+\"",
+    "\"(url|root|filter|targetFolder|gitUrl|zipFilename)\": \"[^\"]+\""
+  ]
 }
