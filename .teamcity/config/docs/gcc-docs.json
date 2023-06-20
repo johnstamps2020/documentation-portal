@@ -9,7 +9,8 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "subject": ["Best practices"]
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": false,
@@ -27,7 +28,8 @@
         "platform": ["Cloud"],
         "version": ["latest"],
         "subject": ["Development"],
-        "release": ["Flaine", "Garmisch"]
+        "release": ["Flaine", "Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -45,7 +47,8 @@
         "platform": ["Cloud"],
         "version": ["latest"],
         "subject": ["Development"],
-        "release": ["Flaine", "Garmisch"]
+        "release": ["Flaine", "Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -63,7 +66,8 @@
         "platform": ["Cloud"],
         "version": ["latest"],
         "subject": ["Development"],
-        "release": ["Elysian", "Flaine", "Garmisch"]
+        "release": ["Elysian", "Flaine", "Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -81,7 +85,8 @@
         "platform": ["Cloud"],
         "version": ["latest"],
         "subject": ["Development"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -101,7 +106,8 @@
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "subject": ["Development"],
-        "release": ["Elysian", "Flaine", "Garmisch"]
+        "release": ["Elysian", "Flaine", "Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "public": true,
@@ -124,7 +130,8 @@
           "Elysian",
           "Flaine",
           "Garmisch"
-        ]
+        ],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -141,7 +148,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "indexForSearch": true,
@@ -157,7 +165,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,
@@ -175,7 +184,8 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "public": false,
@@ -192,7 +202,8 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "public": false,
@@ -209,7 +220,8 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "public": false,
@@ -226,7 +238,8 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "public": false,
@@ -243,7 +256,8 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "public": false,
@@ -260,7 +274,8 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "public": false,
@@ -277,7 +292,8 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "public": false,
@@ -294,7 +310,8 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "public": false,
@@ -311,7 +328,8 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "public": false,
@@ -328,7 +346,8 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "public": false,
@@ -345,7 +364,8 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "public": false,
@@ -362,7 +382,8 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "public": false,

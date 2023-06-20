@@ -9,7 +9,8 @@
         "platform": ["Cloud"],
         "product": ["DataHub"],
         "version": ["2020.11"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -26,7 +27,8 @@
         "platform": ["Cloud"],
         "product": ["InfoCenter"],
         "version": ["2020.11"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

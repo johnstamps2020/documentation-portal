@@ -10,7 +10,8 @@
         "platform": ["Cloud"],
         "version": ["2022.11"],
         "subject": ["Release notes"],
-        "release": ["Flaine"]
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "platform": ["Cloud"],
         "version": ["2022.11"],
         "subject": ["Development"],
-        "release": ["Flaine"]
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "platform": ["Cloud"],
         "version": ["2022.11"],
         "subject": ["Features and functionality"],
-        "release": ["Flaine"]
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

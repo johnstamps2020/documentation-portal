@@ -16,7 +16,8 @@
           "Elysian",
           "Flaine",
           "Garmisch"
-        ]
+        ],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -33,7 +34,8 @@
         "platform": ["Cloud"],
         "product": ["Predict"],
         "version": ["latest"],
-        "release": ["Hakuba"]
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -58,7 +60,8 @@
           "Elysian",
           "Flaine",
           "Garmisch"
-        ]
+        ],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -67,7 +70,6 @@
       "internal": false,
       "earlyAccess": false
     },
-
     {
       "id": "gchhelpearlyaccess",
       "title": "Guidewire Cloud Home Help - Early Access",
@@ -75,7 +77,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Home"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "indexForSearch": false,
@@ -99,7 +102,8 @@
           "Elysian",
           "Flaine",
           "Garmisch"
-        ]
+        ],
+        "locale": ["en-US"]
       },
       "environments": ["dev", "staging", "prod"],
       "indexForSearch": true,
@@ -115,7 +119,8 @@
         "platform": ["Cloud"],
         "product": ["Configuration Manager"],
         "version": ["Cortina"],
-        "release": ["Cortina"]
+        "release": ["Cortina"],
+        "locale": ["en-US"]
       },
       "displayOnLandingPages": false,
       "environments": ["staging", "prod"],
@@ -132,7 +137,8 @@
         "platform": ["Cloud"],
         "product": ["Configuration Manager"],
         "version": ["Banff"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "displayOnLandingPages": false,
       "environments": ["staging", "prod"],
@@ -148,7 +154,8 @@
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["Checksums"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "displayOnLandingPages": false,
       "public": false,
@@ -164,7 +171,8 @@
       "metadata": {
         "platform": ["Self-managed"],
         "product": ["EasyGuide"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "displayOnLandingPages": false,
       "public": false,
@@ -189,7 +197,8 @@
           "Elysian",
           "Flaine",
           "Garmisch"
-        ]
+        ],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -205,7 +214,8 @@
       "metadata": {
         "product": ["LRS"],
         "platform": ["Cloud"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
@@ -222,7 +232,8 @@
         "product": ["Cyence"],
         "platform": ["Cloud"],
         "release": ["Dobson", "Elysian", "Flaine", "Garmisch"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
@@ -239,7 +250,8 @@
         "product": ["HazardHub Casualty"],
         "platform": ["Cloud"],
         "release": ["Dobson", "Elysian", "Flaine", "Garmisch"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
@@ -255,7 +267,8 @@
       "metadata": {
         "product": ["Portfolio Assembly"],
         "platform": ["Cloud"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": false,
@@ -271,7 +284,8 @@
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
         "product": ["Internal Docs"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -287,7 +301,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Product Adoption Resources"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -303,7 +318,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Product Adoption Resources"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["prod"],
       "displayOnLandingPages": false,
@@ -319,7 +335,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Product Adoption Resources"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": false,
@@ -335,7 +352,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Cloud Ticket Templates"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["dev", "staging", "prod"],
       "displayOnLandingPages": true,

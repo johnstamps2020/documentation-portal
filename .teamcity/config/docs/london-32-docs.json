@@ -9,7 +9,8 @@
         "product": ["London Market"],
         "platform": ["Cloud"],
         "version": ["3.2"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -26,7 +27,8 @@
         "product": ["London Market"],
         "platform": ["Cloud"],
         "version": ["3.2"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

@@ -10,7 +10,8 @@
         "platform": ["Cloud"],
         "version": ["Garmisch"],
         "subject": ["Features and functionality"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "platform": ["Cloud"],
         "version": ["Garmisch"],
         "subject": ["Features and functionality"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "platform": ["Cloud"],
         "version": ["Garmisch"],
         "subject": ["Development"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -64,7 +67,8 @@
         "platform": ["Cloud"],
         "version": ["Garmisch"],
         "subject": ["Release notes"],
-        "release": ["Garmisch"]
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

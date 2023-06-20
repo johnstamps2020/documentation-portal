@@ -10,7 +10,8 @@
         "platform": ["Cloud"],
         "version": ["2022.09", "2023.02"],
         "release": ["Flaine", "Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "platform": ["Cloud"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "platform": ["Cloud"],
         "version": ["2022.09", "2023.02"],
         "release": ["Flaine", "Garmisch"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -64,7 +67,8 @@
         "platform": ["Cloud"],
         "version": ["2022.09", "2023.02"],
         "release": ["Flaine", "Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -82,7 +86,8 @@
         "platform": ["Cloud"],
         "version": ["2022.09"],
         "release": ["Flaine"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": false,
@@ -100,7 +105,8 @@
         "platform": ["Cloud"],
         "version": ["latest"],
         "release": ["Flaine", "Garmisch"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

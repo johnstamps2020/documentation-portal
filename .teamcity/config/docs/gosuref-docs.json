@@ -28,7 +28,8 @@
           "Elysian",
           "Flaine",
           "Garmisch"
-        ]
+        ],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

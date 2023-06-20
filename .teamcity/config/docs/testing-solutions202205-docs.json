@@ -10,7 +10,8 @@
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -64,7 +67,8 @@
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -82,7 +86,8 @@
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -100,7 +105,8 @@
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -118,7 +124,8 @@
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -136,7 +143,8 @@
         "platform": ["Cloud"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -154,7 +162,8 @@
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -172,7 +181,8 @@
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
