@@ -40,25 +40,6 @@
       "earlyAccess": false
     },
     {
-      "id": "isbc202302update",
-      "title": "Update",
-      "url": "cloud/bc/202302/update",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["BillingCenter"],
-        "version": ["2023.02"],
-        "release": ["Garmisch"],
-        "subject": ["Installation"],
-        "locale": ["en-US"]
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "isbc202302app",
       "title": "Application Guide",
       "url": "cloud/bc/202302/app",
@@ -306,25 +287,6 @@
       "earlyAccess": false
     },
     {
-      "id": "iscc202302update",
-      "title": "Update",
-      "url": "cloud/cc/202302/update",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2023.02"],
-        "release": ["Garmisch"],
-        "subject": ["Installation"],
-        "locale": ["en-US"]
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "iscc202302app",
       "title": "Application Guide",
       "url": "cloud/cc/202302/app",
@@ -562,25 +524,6 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Release notes"],
-        "locale": ["en-US"]
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "ispc202302update",
-      "title": "Update",
-      "url": "cloud/pc/202302/update",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2023.02"],
-        "release": ["Garmisch"],
-        "subject": ["Installation"],
         "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
