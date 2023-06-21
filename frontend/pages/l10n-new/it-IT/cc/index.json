@@ -8,8 +8,16 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
+          "label": "Guida all'applicazione",
+          "id": "isccitIT202205app"
+        },
+        {
+          "label": "Guida alla configurazione",
+          "id": "iscc202205itITconfig"
+        },
+        {
           "label": "Guida all'installazione per sviluppatori",
-          "link": "/l10n/it-IT/cc/2022.05/CC-DeveloperSetupGuide-IT.pdf"
+          "id": "iscc202205itITdevsetup"
         }
       ]
     },

@@ -8,8 +8,20 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
+          "label": "Guida all'applicazione",
+          "id": "ispcitIT202205app"
+        },
+        {
+          "label": "Guida alla configurazione",
+          "id": "ispc202205itITconfig"
+        },
+        {
           "label": "Guida all'installazione per sviluppatori",
-          "link": "/l10n/it-IT/pc/2022.05/PC-DeveloperSetupGuide-IT.pdf"
+          "id": "ispc202205itITdevsetup"
+        },
+        {
+          "label": "Guida ad Advanced Product Designer per PolicyCenter",
+          "id": "ispc202205itITapd"
         }
       ]
     },

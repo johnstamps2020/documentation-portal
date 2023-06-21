@@ -8,8 +8,16 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
+          "label": "Guida all'applicazione",
+          "id": "isbcitIT202205app"
+        },
+        {
+          "label": "Guida alla configurazione",
+          "id": "isbc202205itITconfig"
+        },
+        {
           "label": "Guida all'installazione per sviluppatori",
-          "link": "/l10n/it-IT/bc/2022.05/BC-DeveloperSetupGuide-IT.pdf"
+          "id": "isbc202205itITdevsetup"
         }
       ]
     },
