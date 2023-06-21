@@ -19,6 +19,16 @@
   },
   "items": [
     {
+      "label": "Update",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Update Guide",
+          "id": "ee202306update"
+        }
+      ]
+    },
+    {
       "label": "Jutro Design System 8.6.1",
       "class": "categoryCard cardShadow",
       "items": [

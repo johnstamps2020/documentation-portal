@@ -32,14 +32,6 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
-      "root": "UpdateGuide.ditamap",
-      "indexRedirect": true,
-      "srcId": "is202306src",
-      "docId": "isbc202306update"
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "BC-AppGuide.ditamap",
       "srcId": "is202306src",
       "docId": "isbc202306app",
@@ -156,14 +148,6 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
-      "root": "UpdateGuide.ditamap",
-      "indexRedirect": true,
-      "srcId": "is202306src",
-      "docId": "iscc202306update"
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "CC-AppGuide.ditamap",
       "srcId": "is202306src",
       "docId": "iscc202306app",
@@ -276,14 +260,6 @@
           "srcId": "insurancesuiteextrassrc"
         }
       ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
-      "root": "UpdateGuide.ditamap",
-      "indexRedirect": true,
-      "srcId": "is202306src",
-      "docId": "ispc202306update"
     },
     {
       "buildType": "dita",
