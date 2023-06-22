@@ -132,7 +132,10 @@ export async function getBreadcrumbs(
             findPageResult.isInProduction
           );
         if (isUserAllowedToAccessResourceResult.status === 200) {
-          breadcrumb.label = findPageResult.title;
+          breadcrumb.label =
+          findPageResult.title === 'Automated redirect'
+              ? ''
+              : findPageResult.title;
           validBreadcrumbs.push(breadcrumb);
         }
       }
