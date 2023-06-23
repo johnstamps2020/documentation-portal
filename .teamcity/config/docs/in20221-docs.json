@@ -10,7 +10,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Features and functionality"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Configuration"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Features and functionality"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -64,7 +67,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Features and functionality"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -82,7 +86,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Integration"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -100,7 +105,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Integration"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -118,7 +124,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Configuration"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -136,7 +143,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Configuration"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -154,7 +162,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Configuration"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -165,14 +174,15 @@
     },
     {
       "id": "in20221portaldev",
-      "title": "Portal Development Guide",
+      "title": "Portal Development",
       "url": "cloud/in/20221/portaldev",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Configuration"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -190,7 +200,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Configuration"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -208,13 +219,14 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Configuration"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false,
+      "internal": true,
       "earlyAccess": false
     },
     {
@@ -226,14 +238,15 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Configuration"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": true,
-      "earlyAccess": false
+      "earlyAccess": true
     },
     {
       "id": "in20221uwconfig",
@@ -244,7 +257,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Configuration"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -262,7 +276,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Configuration"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -280,7 +295,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Integration"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -298,7 +314,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Integration"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -316,7 +333,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Configuration"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -334,7 +352,8 @@
         "product": ["InsuranceNow"],
         "version": ["2022.1"],
         "subject": ["Configuration"],
-        "release": ["Elysian"]
+        "release": ["Elysian"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

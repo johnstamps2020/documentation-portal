@@ -10,7 +10,8 @@
         "product": ["BillingCenter"],
         "version": ["GW-internal-Flaine"],
         "release": ["Flaine"],
-        "subject": ["Administration"]
+        "subject": ["Administration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "product": ["BillingCenter"],
         "version": ["GW-internal-Flaine"],
         "release": ["Flaine"],
-        "subject": ["Installation"]
+        "subject": ["Installation"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "product": ["ClaimCenter"],
         "version": ["GW-internal-Flaine"],
         "release": ["Flaine"],
-        "subject": ["Administration"]
+        "subject": ["Administration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -64,7 +67,8 @@
         "product": ["ClaimCenter"],
         "version": ["GW-internal-Flaine"],
         "release": ["Flaine"],
-        "subject": ["Installation"]
+        "subject": ["Installation"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -82,7 +86,8 @@
         "product": ["PolicyCenter"],
         "version": ["GW-internal-Flaine"],
         "release": ["Flaine"],
-        "subject": ["Administration"]
+        "subject": ["Administration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -100,7 +105,8 @@
         "product": ["PolicyCenter"],
         "version": ["GW-internal-Flaine"],
         "release": ["Flaine"],
-        "subject": ["Installation"]
+        "subject": ["Installation"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

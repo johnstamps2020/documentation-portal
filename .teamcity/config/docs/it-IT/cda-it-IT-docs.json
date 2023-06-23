@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "docs": [
     {
       "id": "clouddataaccessguideitIT",
@@ -7,10 +7,11 @@
       "url": "cloud/it-IT/cda/guide/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Cloud Data Access"],
+        "product": ["Data Platform"],
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["it-IT"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

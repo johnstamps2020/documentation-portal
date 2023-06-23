@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "docs": [
     {
       "id": "guidewireidentityfederationhubitIT",
@@ -9,7 +9,8 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"]
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"],
+        "locale": ["it-IT"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

@@ -10,7 +10,8 @@
         "platform": ["Cloud", "Self-managed"],
         "version": ["0.1"],
         "release": ["Flaine"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "platform": ["Cloud", "Self-managed"],
         "version": ["0.1"],
         "release": ["Flaine"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "platform": ["Cloud", "Self-managed"],
         "version": ["0.1"],
         "release": ["Flaine"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -56,17 +59,18 @@
       "earlyAccess": false
     },
     {
-      "id": "ipj10rn",
+      "id": "ipjgarmischrn",
       "title": "Release Notes",
-      "url": "ipj/1.0/releasenotes",
+      "url": "ipj/garmisch/releasenotes",
       "metadata": {
         "product": ["InsuranceSuite Package for Japan"],
-        "platform": ["Cloud", "Self-managed"],
-        "version": ["1.0"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -74,17 +78,18 @@
       "earlyAccess": false
     },
     {
-      "id": "ipj10config",
+      "id": "ipjgarmischconfig",
       "title": "Configuration",
-      "url": "ipj/1.0/config",
+      "url": "ipj/garmisch/config",
       "metadata": {
         "product": ["InsuranceSuite Package for Japan"],
-        "platform": ["Cloud", "Self-managed"],
-        "version": ["1.0"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -92,17 +97,18 @@
       "earlyAccess": false
     },
     {
-      "id": "ipj10app",
+      "id": "ipjgarmischapp",
       "title": "Application Guide",
-      "url": "ipj/1.0/app",
+      "url": "ipj/garmisch/app",
       "metadata": {
         "product": ["InsuranceSuite Package for Japan"],
-        "platform": ["Cloud", "Self-managed"],
-        "version": ["1.0"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -110,21 +116,22 @@
       "earlyAccess": false
     },
     {
-      "id": "ipj10install",
+      "id": "ipjgarmischinstall",
       "title": "Installation Guide",
-      "url": "ipj/1.0/install",
+      "url": "ipj/garmisch/install",
       "metadata": {
         "product": ["InsuranceSuite Package for Japan"],
-        "platform": ["Cloud", "Self-managed"],
-        "version": ["1.0"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
         "release": ["Garmisch"],
-        "subject": ["Installation"]
+        "subject": ["Installation"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false,
+      "internal": true,
       "earlyAccess": false
     }
   ]

@@ -8,7 +8,9 @@
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
         "product": ["Standards-based Template Framework"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "release": ["Flaine", "Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "internal": false,
@@ -23,7 +25,9 @@
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
         "product": ["Standards-based Template Framework"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "release": ["Flaine", "Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "internal": false,

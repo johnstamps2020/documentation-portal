@@ -1,0 +1,81 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "londonccapphakuba",
+      "title": "ClaimCenter for London Market Application Guide",
+      "url": "london/hakuba/ccapp",
+      "metadata": {
+        "product": ["London Market"],
+        "platform": ["Cloud"],
+        "version": ["Hakuba"],
+        "subject": ["Features and functionality"],
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "londonpcapphakuba",
+      "title": "PolicyCenter for London Market Application Guide",
+      "url": "london/hakuba/pcapp",
+      "metadata": {
+        "product": ["London Market"],
+        "platform": ["Cloud"],
+        "version": ["Hakuba"],
+        "subject": ["Features and functionality"],
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "londonconfighakuba",
+      "title": "London Market Configuration Guide",
+      "url": "london/hakuba/config",
+      "metadata": {
+        "product": ["London Market"],
+        "platform": ["Cloud"],
+        "version": ["Hakuba"],
+        "subject": ["Development"],
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "londonrnhakuba",
+      "title": "London Market Release Notes",
+      "url": "london/hakuba/releasenotes",
+      "metadata": {
+        "product": ["London Market"],
+        "platform": ["Cloud"],
+        "version": ["Hakuba"],
+        "subject": ["Release notes"],
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

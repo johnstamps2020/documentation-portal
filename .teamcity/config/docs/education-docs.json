@@ -2,21 +2,22 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "datastudiorelease",
-      "title": "Data Studio Release",
-      "url": "cloud/datastudio/app",
+      "id": "cloudintegrationbasics",
+      "title": "Cloud Integration Basics",
+      "url": "education/cloud-integration-basics/latest",
       "metadata": {
-        "product": ["Data Studio"],
         "platform": ["Cloud"],
+        "product": ["PolicyCenter", "BillingCenter", "ClaimCenter"],
         "version": ["latest"],
-        "subject": ["Features and functionality"]
+        "subject": ["Integration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true
+      "earlyAccess": false
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "docs": [
     {
       "id": "is202205contactesES",
@@ -10,7 +10,8 @@
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["es-ES"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "product": ["BillingCenter"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["es-ES"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "product": ["BillingCenter"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["es-ES"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -64,7 +67,8 @@
         "product": ["ClaimCenter"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["es-ES"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -82,7 +86,8 @@
         "product": ["ClaimCenter"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["es-ES"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -100,7 +105,8 @@
         "product": ["PolicyCenter"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["es-ES"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -118,7 +124,8 @@
         "product": ["PolicyCenter"],
         "version": ["2022.05"],
         "release": ["Elysian"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["es-ES"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

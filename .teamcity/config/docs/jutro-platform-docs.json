@@ -9,9 +9,29 @@
         "product": ["Jutro Digital Platform"],
         "platform": ["Cloud"],
         "version": ["next"],
-        "subject": ["Administration"]
+        "subject": ["Administration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "jutroplatformgarmisch",
+      "title": "Jutro Digital Platform",
+      "url": "jutro/platform/garmisch",
+      "metadata": {
+        "product": ["Jutro Digital Platform"],
+        "platform": ["Cloud"],
+        "version": ["Garmisch"],
+        "subject": ["Administration"],
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -27,7 +47,8 @@
         "platform": ["Cloud"],
         "version": ["Flaine"],
         "subject": ["Administration"],
-        "release": ["Flaine"]
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

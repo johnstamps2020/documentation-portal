@@ -5,24 +5,24 @@
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "OICRelNotes.ditamap",
-      "srcId": "ipukgarmischsrc",
-      "docId": "ipukgarmischrn",
+      "srcId": "ipukhakubasrc",
+      "docId": "ipukhakubarn",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "OICConfigGuide.ditamap",
-      "srcId": "ipukgarmischsrc",
-      "docId": "ipukgarmischconfig",
+      "srcId": "ipukhakubasrc",
+      "docId": "ipukhakubaconfig",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
       "root": "OICAppGuide.ditamap",
-      "srcId": "ipukgarmischsrc",
-      "docId": "ipukgarmischapp",
+      "srcId": "ipukhakubasrc",
+      "docId": "ipukhakubaapp",
       "indexRedirect": true
     }
   ]

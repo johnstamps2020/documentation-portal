@@ -1,0 +1,1049 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "lobaucwreleasenotescloud",
+      "title": "LOB AU CW Cloud Release Notes",
+      "url": "lob/au/cloud/cwreleasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobaucwreleasenotesonprem",
+      "title": "LOB AU CW Self-managed Release Notes",
+      "url": "lob/au/self-managed/cwreleasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobaustatereleasenotescloud",
+      "title": "LOB AU State Cloud Release Notes",
+      "url": "lob/au/cloud/statereleasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobaustatereleasenotesonprem",
+      "title": "LOB AU State Self-managed Release Notes",
+      "url": "lob/au/self-managed/statereleasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobau10xcloud",
+      "title": "LOB AU Cloud Guide",
+      "url": "lob/au/cloud/guide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobau10xonprem",
+      "title": "LOB AU Self-managed Guide",
+      "url": "lob/au/self-managed/guide",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobbopcwreleasenotescloud",
+      "title": "LOB BOP CW Cloud Release Notes",
+      "url": "lob/bop/cloud/cwreleasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobbopcwreleasenotesonprem",
+      "title": "LOB BOP CW Self-managed Release Notes",
+      "url": "lob/bop/self-managed/cwreleasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobbopcloud",
+      "title": "LOB BOP Cloud Guide",
+      "url": "lob/bop/cloud/guide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobboponprem",
+      "title": "LOB BOP Self-managed Guide",
+      "url": "lob/bop/self-managed/guide",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobbopstatereleasenotescloud",
+      "title": "LOB BOP State Cloud Release Notes",
+      "url": "lob/bop/cloud/statereleasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobbopstatereleasenotesonprem",
+      "title": "LOB BOP State Self-managed Release Notes",
+      "url": "lob/bop/self-managed/statereleasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcacwreleasenotescloud",
+      "title": "LOB CA CW Cloud Release Notes",
+      "url": "lob/ca/cloud/cwreleasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcacwreleasenotesonprem",
+      "title": "LOB CA CW Self-managed Release Notes",
+      "url": "lob/ca/self-managed/cwreleasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcastatereleasenotescloud",
+      "title": "LOB CA State Cloud Release Notes",
+      "url": "lob/ca/cloud/statereleasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcastatereleasenotesonprem",
+      "title": "LOB CA State Self-managed Release Notes",
+      "url": "lob/ca/self-managed/statereleasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcacloud",
+      "title": "LOB CA Cloud Guide",
+      "url": "lob/ca/cloud/guide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcaonprem",
+      "title": "LOB CA Self-managed Guide",
+      "url": "lob/ca/self-managed/guide",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcpcwreleasenotescloud",
+      "title": "LOB CP CW Cloud Release Notes",
+      "url": "lob/cp/cloud/cwreleasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcpcwreleasenotesonprem",
+      "title": "LOB CP CW Self-managed Release Notes",
+      "url": "lob/cp/self-managed/cwreleasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcpstatereleasenotescloud",
+      "title": "LOB CP State Cloud Release Notes",
+      "url": "lob/cp/cloud/statereleasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcpstatereleasenotesonprem",
+      "title": "LOB CP State Self-managed Release Notes",
+      "url": "lob/cp/self-managed/statereleasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcpcloud",
+      "title": "LOB CP Cloud Guide",
+      "url": "lob/cp/cloud/guide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcponprem",
+      "title": "LOB CP Self-managed Guide",
+      "url": "lob/cp/self-managed/guide",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcppcloud",
+      "title": "LOB CPP Cloud Guide",
+      "url": "lob/cpp/cloud/guide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcpponprem",
+      "title": "LOB CPP Self-managed Guide",
+      "url": "lob/cpp/self-managed/guide",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcrimecwreleasenotescloud",
+      "title": "LOB Crime CW Cloud Release Notes",
+      "url": "lob/crime/cloud/cwreleasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcrimecwreleasenotesonprem",
+      "title": "LOB Crime CW Self-managed Release Notes",
+      "url": "lob/crime/self-managed/cwreleasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcrimestatereleasenotescloud",
+      "title": "LOB Crime State Cloud Release Notes",
+      "url": "lob/crime/cloud/statereleasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcrimestatereleasenotesonprem",
+      "title": "LOB Crime State Self-managed Release Notes",
+      "url": "lob/crime/self-managed/statereleasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcrimecloud",
+      "title": "LOB Crime Cloud Guide",
+      "url": "lob/crime/cloud/guide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobcrimeonprem",
+      "title": "LOB Crime Self-managed Guide",
+      "url": "lob/crime/self-managed/guide",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobglcwreleasenotescloud",
+      "title": "LOB GL CW Cloud Release Notes",
+      "url": "lob/gl/cloud/cwreleasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobglcwreleasenotesonprem",
+      "title": "LOB GL CW Self-managed Release Notes",
+      "url": "lob/gl/self-managed/cwreleasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobglstatereleasenotescloud",
+      "title": "LOB GL State Cloud Release Notes",
+      "url": "lob/gl/cloud/statereleasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobglstatereleasenotesonprem",
+      "title": "LOB GL State Self-managed Release Notes",
+      "url": "lob/gl/self-managed/statereleasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobgl9x1003cloud",
+      "title": "LOB GL Cloud Guide",
+      "url": "lob/gl/cloud/guide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobgl9x1003onprem",
+      "title": "LOB GL Self-managed Guide",
+      "url": "lob/gl/self-managed/guide",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobhocloud",
+      "title": "LOB HO Cloud Guide",
+      "url": "lob/ho/cloud/guide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobhoonprem",
+      "title": "LOB HO Self-managed Guide",
+      "url": "lob/ho/self-managed/guide",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobpupcloud",
+      "title": "LOB PUP Cloud Guide",
+      "url": "lob/pup/cloud/guide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobpuponprem",
+      "title": "LOB PUP Self-managed Guide",
+      "url": "lob/pup/self-managed/guide",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobwccwreleasenotescloud",
+      "title": "LOB WC CW Cloud Release Notes",
+      "url": "lob/wc/cloud/cwreleasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobwccwreleasenotesonprem",
+      "title": "LOB WC CW Self-managed Release Notes",
+      "url": "lob/wc/self-managed/cwreleasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobwcstaterelnotescloud",
+      "title": "LOB WC State Cloud Release Notes",
+      "url": "lob/wc/cloud/statereleasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobwcstaterelnotesonprem",
+      "title": "LOB WC State Self-managed Release Notes",
+      "url": "lob/wc/self-managed/statereleasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobwccloud",
+      "title": "LOB WC Cloud Guide",
+      "url": "lob/wc/cloud/guide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobwconprem",
+      "title": "LOB WC Self-managed Guide",
+      "url": "lob/wc/self-managed/guide",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobwcwcmcwreleasenotescloud",
+      "title": "LOB WC WCM CW Cloud Release Notes",
+      "url": "lob/wcwcm/cloud/cwreleasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobwcwcmcwreleasenotesonprem",
+      "title": "LOB WC WCM CW Self-managed Release Notes",
+      "url": "lob/wcwcm/self-managed/cwreleasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobwcwcmstaterelnotescloud",
+      "title": "LOB WC WCM State Cloud Release Notes",
+      "url": "lob/wcwcm/cloud/statereleasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobwcwcmstaterelnotesonprem",
+      "title": "LOB WC WCM State Self-managed Release Notes",
+      "url": "lob/wcwcm/self-managed/statereleasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobwcmcloud",
+      "title": "LOB WC WCM Cloud Guide",
+      "url": "lob/wcwcm/cloud/guide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobwcmonprem",
+      "title": "LOB WC WCM Self-managed Guide",
+      "url": "lob/wcwcm/self-managed/guide",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobpcausercloud",
+      "title": "LOB PCA User Cloud Guide",
+      "url": "lob/pca/cloud/guide",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobpcauseronprem",
+      "title": "LOB PCA User Self-managed Guide",
+      "url": "lob/pca/self-managed/guide",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobpcareleasenotescloud",
+      "title": "LOB PCA Cloud Release Notes",
+      "url": "lob/pca/cloud/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "lobpcareleasenotesonprem",
+      "title": "LOB PCA Self-managed Release Notes",
+      "url": "lob/pca/self-managed/releasenotes",
+      "metadata": {
+        "platform": ["Self-managed"],
+        "product": ["Lines of Business"],
+        "version": ["latest"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

@@ -1,6 +1,22 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "builds": [
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-MgSvcs.ditaval",
+      "root": "CustomerEngage_Claims_AppGuide.ditamap",
+      "srcId": "dx202205jaJPsrc",
+      "docId": "dx202205jaJPceclaimsapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-MgSvcs.ditaval",
+      "root": "DevelopersGuide.ditamap",
+      "srcId": "dx202205jaJPsrc",
+      "docId": "dx202205jaJPceclaimsdev",
+      "indexRedirect": true
+    },
     {
       "buildType": "dita",
       "filter": "Digital-ce-claims-MgSvcs.ditaval",
@@ -12,9 +28,41 @@
     {
       "buildType": "dita",
       "filter": "Digital-sre-MgSvcs.ditaval",
+      "root": "CustomerEngage_Claims_AppGuide.ditamap",
+      "srcId": "dx202205jaJPsrc",
+      "docId": "dx202205jaJPsreapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-MgSvcs.ditaval",
+      "root": "DevelopersGuide.ditamap",
+      "srcId": "dx202205jaJPsrc",
+      "docId": "dx202205jaJPsredev",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-MgSvcs.ditaval",
       "root": "InstallGuide.ditamap",
       "srcId": "dx202205jaJPsrc",
       "docId": "dx202205jaJPsreinstall",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-MgSvcs.ditaval",
+      "root": "CustomerEngage_Claims_AppGuide.ditamap",
+      "srcId": "dx202205jaJPsrc",
+      "docId": "dx202205jaJPveapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-MgSvcs.ditaval",
+      "root": "DevelopersGuide.ditamap",
+      "srcId": "dx202205jaJPsrc",
+      "docId": "dx202205jaJPvedev",
       "indexRedirect": true
     },
     {

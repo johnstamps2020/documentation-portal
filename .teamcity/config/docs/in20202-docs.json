@@ -10,7 +10,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
         "subject": ["Features and functionality"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
         "subject": ["Features and functionality"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
         "subject": ["Features and functionality"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -64,7 +67,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
         "subject": ["Integration"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -82,7 +86,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
         "subject": ["Integration"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -100,7 +105,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
         "subject": ["Configuration"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -118,7 +124,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
         "subject": ["Configuration"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -136,7 +143,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
         "subject": ["Configuration"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -154,7 +162,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
         "subject": ["Configuration"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -172,7 +181,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
         "subject": ["Features and functionality"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -190,7 +200,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
         "subject": ["Integration"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -199,7 +210,7 @@
       "internal": false,
       "earlyAccess": false
     },
-        {
+    {
       "id": "in20202xclaimsconfigdraft",
       "title": "Claims Product Configuration Guide",
       "url": "cloud/in/20202/claimsconfig",
@@ -208,7 +219,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
         "subject": ["Configuration"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -226,7 +238,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
         "subject": ["Configuration"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -244,13 +257,14 @@
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
         "subject": ["Configuration"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": false,
+      "internal": true,
       "earlyAccess": false
     },
     {
@@ -262,7 +276,8 @@
         "product": ["InsuranceNow"],
         "version": ["2020.2"],
         "subject": ["Configuration"],
-        "release": ["Banff"]
+        "release": ["Banff"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

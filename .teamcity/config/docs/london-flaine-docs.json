@@ -9,7 +9,9 @@
         "product": ["London Market"],
         "platform": ["Cloud"],
         "version": ["Flaine"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -26,7 +28,9 @@
         "product": ["London Market"],
         "platform": ["Cloud"],
         "version": ["Flaine"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -43,7 +47,9 @@
         "product": ["London Market"],
         "platform": ["Cloud"],
         "version": ["Flaine"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -60,7 +66,9 @@
         "product": ["London Market"],
         "platform": ["Cloud"],
         "version": ["Flaine"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "release": ["Flaine"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

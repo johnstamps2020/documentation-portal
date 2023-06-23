@@ -1,0 +1,39 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "keti",
+      "title": "Keti Cloud Common Auth",
+      "url": "internal/keti/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Internal Docs"],
+        "version": ["latest"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "dma",
+      "title": "DMA - Database migration to Aurora",
+      "url": "internal/dma/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Internal Docs"],
+        "version": ["latest"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    }
+  ]
+}

@@ -2,6 +2,24 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "gccinternaltemplate",
+      "title": "GCC Internal Template",
+      "url": "internal/gcc-template/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": false,
+      "indexForSearch": false,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
       "id": "runtimepropertiesapi",
       "title": "Runtime Properties API",
       "url": "cloud/console/runtimepropertiesapi",
@@ -9,7 +27,9 @@
         "product": ["Cloud Platform"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "release": ["Flaine", "Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -26,7 +46,9 @@
         "product": ["Cloud Platform"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "release": ["Flaine", "Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -43,7 +65,9 @@
         "product": ["Cloud Platform"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "release": ["Elysian", "Flaine", "Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -60,7 +84,9 @@
         "product": ["Cloud Platform"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -78,26 +104,13 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "subject": ["Development"],
+        "release": ["Elysian", "Flaine", "Garmisch"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "public": true,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "guidewirecloudconsoleguideinsurerdev",
-      "title": "Cloud Console Guide Insurer Developer",
-      "url": "cloud/gcc-guide/insurer-developer/latest/topics/c_provisioning-cloud-console.html",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"]
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": false,
-      "indexForSearch": false,
-      "public": false,
       "internal": false,
       "earlyAccess": false
     },
@@ -108,7 +121,17 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -116,38 +139,6 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
-    },
-    {
-      "id": "guidewirecloudconsolerootgwadmin",
-      "title": "Cloud Console Guide GW Admin",
-      "url": "cloud/gcc-guide/gw-admin/latest",
-      "displayOnLandingPages": false,
-      "indexForSearch": true,
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"]
-      },
-      "environments": ["staging", "prod"],
-      "public": false,
-      "internal": true,
-      "earlyAccess": false
-    },
-    {
-      "id": "guidewirecloudconsolerootearlyaccess",
-      "title": "Cloud Console Guide Early Access",
-      "url": "cloud/gcc-guide/early-access/latest",
-      "displayOnLandingPages": false,
-      "indexForSearch": false,
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["Cloud Platform"],
-        "version": ["latest"]
-      },
-      "environments": ["staging"],
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
     },
     {
       "id": "gccinternallatests",
@@ -157,10 +148,244 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "gccuiinternallatest",
+      "title": "GCC UI Internal Features",
+      "url": "cloud/gcc-guide/gw-admin/latest",
+      "displayOnLandingPages": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "databaseservice",
+      "title": "Database Service",
+      "url": "internal/db-service/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "insurancesuiteplatformdeployer",
+      "title": "InsuranceSuite Platform Deployer",
+      "url": "internal/is-deployer/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "gwcpinfrastructureprovisioningservice",
+      "title": "GWCP Infrastructure Provisioning Service",
+      "url": "internal/gwcp-provisioning/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "isdeploymentorchestrator",
+      "title": "InsuranceSuite Deployment Orchestrator",
+      "url": "internal/is-deployment-orchestrator/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "buildpromoter",
+      "title": "Build Promoter",
+      "url": "internal/build-promoter/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "nps",
+      "title": "Network Permissions Service",
+      "url": "internal/nps/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "sms",
+      "title": "Configuration Service",
+      "url": "internal/sms/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "storageservice",
+      "title": "Storage Service",
+      "url": "internal/storage/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "projectservice",
+      "title": "Project Service",
+      "url": "internal/project/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "dad",
+      "title": "Digital Applications Deployer",
+      "url": "internal/dad/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "cicdmanager",
+      "title": "CI/CD Manager",
+      "url": "internal/ci-cd-manager/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "scm",
+      "title": "Source Control Management Service",
+      "url": "internal/scm/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
       "public": false,
       "internal": true,
       "earlyAccess": false

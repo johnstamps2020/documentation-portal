@@ -8,10 +8,12 @@
       "metadata": {
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
-        "version": ["2023.04"],
-        "subject": ["Release notes"]
+        "version": ["2023.02"],
+        "subject": ["Release notes"],
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -25,10 +27,12 @@
       "metadata": {
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
-        "version": ["2023.04"],
-        "subject": ["Development"]
+        "version": ["2023.02"],
+        "subject": ["Development"],
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -42,16 +46,55 @@
       "metadata": {
         "product": ["InsuranceSuite Package for Australia"],
         "platform": ["Cloud"],
-        "version": ["2023.04"],
-        "subject": ["Features and functionality"]
+        "version": ["2023.02"],
+        "subject": ["Features and functionality"],
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "ipagarmischupgrade",
+      "title": "Upgrade Guide",
+      "url": "cloud/ipa/garmisch/upgrade",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "subject": ["Installation"],
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ipagarmischinstall",
+      "title": "Installation Guide",
+      "url": "cloud/ipa/garmisch/install",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Australia"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "subject": ["Installation"],
+        "release": ["Garmisch"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
     }
-
   ]
 }

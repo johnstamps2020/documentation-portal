@@ -8,7 +8,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["DocTools"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "indexForSearch": true,
@@ -23,7 +24,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["DocTools"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "indexForSearch": true,
@@ -38,7 +40,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["DocTools"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "indexForSearch": false,
@@ -53,7 +56,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["DocTools"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -69,7 +73,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["DocTools"],
-        "version": ["latest"]
+        "version": ["latest"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

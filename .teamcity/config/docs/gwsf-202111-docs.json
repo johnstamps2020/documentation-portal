@@ -9,7 +9,8 @@
         "product": ["Guidewire for Salesforce"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -26,7 +27,8 @@
         "product": ["Guidewire for Salesforce"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
-        "subject": ["Installation"]
+        "subject": ["Installation"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -43,7 +45,8 @@
         "product": ["Guidewire for Salesforce"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
-        "subject": ["Administration"]
+        "subject": ["Administration"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -60,7 +63,8 @@
         "product": ["Guidewire for Salesforce"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

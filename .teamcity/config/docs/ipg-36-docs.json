@@ -2,14 +2,15 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "midipgimpl",
+      "id": "midipgimpl36",
       "title": "Implementation",
-      "url": "self-managed/ipg/latest/impl",
+      "url": "self-managed/ipg/36/impl",
       "metadata": {
-        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"]
+        "version": ["3.6"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -19,16 +20,17 @@
       "earlyAccess": false
     },
     {
-      "id": "midipgapp",
+      "id": "midipgapp36",
       "title": "Application Guide",
-      "url": "self-managed/ipg/latest/app",
+      "url": "self-managed/ipg/36/app",
       "metadata": {
-        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"]
+        "version": ["3.6"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -36,14 +38,15 @@
       "earlyAccess": false
     },
     {
-      "id": "midipginstall",
+      "id": "midipginstall36",
       "title": "Installation",
-      "url": "self-managed/ipg/latest/install",
+      "url": "self-managed/ipg/36/install",
       "metadata": {
-        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
-        "version": ["latest"],
-        "subject": ["Installation"]
+        "version": ["3.6"],
+        "subject": ["Installation"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -53,16 +56,17 @@
       "earlyAccess": false
     },
     {
-      "id": "midipgrnen",
+      "id": "midipgrnen36",
       "title": "Release Notes",
-      "url": "self-managed/ipg/latest/releasenotes",
+      "url": "self-managed/ipg/36/releasenotes",
       "metadata": {
-        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
-        "version": ["latest"],
-        "subject": ["Release notes"]
+        "version": ["3.6"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -70,14 +74,33 @@
       "earlyAccess": false
     },
     {
-      "id": "midipgrnde",
+      "id": "midipgrnde36",
       "title": "Release Notes (German)",
-      "url": "self-managed/ipg/latest/releasenotesde",
+      "url": "self-managed/ipg/36/releasenotesde",
       "metadata": {
-        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
-        "version": ["latest"],
-        "subject": ["Release notes"]
+        "version": ["3.6"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipgglossary36",
+      "title": "Glossary",
+      "url": "self-managed/ipg/36/glossary",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Germany"],
+        "platform": ["Self-managed"],
+        "version": ["3.6"],
+        "subject": ["Glossary"],
+        "locale": ["en-US"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -87,33 +110,17 @@
       "earlyAccess": false
     },
     {
-      "id": "midipgglossary",
-      "title": "Glossary",
-      "url": "self-managed/ipg/latest/glossary",
-      "metadata": {
-        "product": ["Guidewire InsuranceSuite Package for Germany"],
-        "platform": ["Self-managed"],
-        "version": ["latest"],
-        "subject": ["Glossary"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": false,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "midipgappde",
+      "id": "midipgappde36",
       "title": "Application Guide (German)",
-      "url": "self-managed/ipg/latest/appde",
+      "url": "self-managed/ipg/36/appde",
       "metadata": {
-        "product": ["Guidewire InsuranceSuite Package for Germany"],
+        "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
-        "version": ["latest"],
-        "subject": ["Features and functionality"]
+        "version": ["3.6"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
