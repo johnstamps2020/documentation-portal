@@ -1806,13 +1806,49 @@
       "earlyAccess": false
     },
     {
+      "id": "jutro8121",
+      "title": "Jutro Design System and UI Framework",
+      "url": "jutro/documentation/8.12.1",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["8.12.1"],
+        "subject": ["Best practices"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },
+    {
+      "id": "storybook8121",
+      "title": "Jutro Storybook",
+      "url": "jutro/storybook/8.12.1",
+      "metadata": {
+        "product": ["Jutro Design System"],
+        "platform": ["Cloud"],
+        "version": ["8.12.1"],
+        "subject": ["Development"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    },    
+    {
       "id": "jutrolatest",
       "title": "Jutro Design System and UI Framework",
       "url": "jutro/documentation/latest",
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["8.12.0 (latest)"],
+        "version": ["8.12.1 (latest)"],
         "subject": ["Best practices"],
         "locale": ["en-US"]
       },
@@ -1830,7 +1866,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["8.12.0 (latest)"],
+        "version": ["8.12.1 (latest)"],
         "subject": ["Development"],
         "locale": ["en-US"]
       },
