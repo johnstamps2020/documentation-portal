@@ -757,7 +757,7 @@
     },
     {
       "buildType": "yarn",
-      "docId": "storybook8120",
+      "docId": "storybook8121",
       "srcId": "srcjutro8121",
       "nodeImageVersion": "17.6.0",
       "workingDir": "storybook"
