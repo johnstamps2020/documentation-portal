@@ -1,15 +1,16 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "docs": [
     {
       "id": "isconfigupgradetools320jaJP",
       "title": "InsuranceSuite Configuration Upgrade Tools ja-JP",
-      "url": "isconfigupgradetools/ja-JP/320",
+      "url": "ja-JP/isconfigupgradetools/320",
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["3.2.0"],
-        "release": ["Aspen", "Banff", "Cortina"]
+        "release": ["Aspen", "Banff", "Cortina"],
+        "locale": ["ja-JP"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

@@ -14,6 +14,7 @@ const pageConfig: ProductFamilyLayoutProps = {
     },
   },
 
+  showReleaseSelector: true,
   items: [
     {
       label: 'PolicyCenter Cloud',
@@ -65,7 +66,6 @@ const pageConfig: ProductFamilyLayoutProps = {
       },
     ],
   },
-  showReleaseSelector: true,
 };
 
 export default function Banff() {

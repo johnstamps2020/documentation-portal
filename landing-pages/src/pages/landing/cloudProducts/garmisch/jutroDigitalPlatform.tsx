@@ -15,7 +15,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Jutro Digital Platform (Early Access)',
-          docId: 'jutroplatformnext',
+          docId: 'jutroplatformgarmisch',
         },
       ],
     },
@@ -24,26 +24,26 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Jutro SDK (Early Access)',
-          url: '/jutro/sdk/next/docs/jutro-sdk-overview',
+          url: '/jutro/sdk/garmisch/docs/jutro-sdk-overview',
           videoIcon: false,
         },
         {
-          label: 'APD toolkit',
-          url: '/jutro/sdk/next/docs/apd-overview',
+          label: 'APD toolkit (Early Access)',
+          url: '/jutro/sdk/garmisch/docs/apd-toolkit-overview',
           videoIcon: false,
         },
       ],
     },
     {
-      label: 'Jutro Design System 8.3.0',
+      label: 'Jutro Design System 8.6.1',
       items: [
         {
           label: 'Jutro Design System and UI Framework',
-          docId: 'jutro830',
+          docId: 'jutro861',
         },
         {
           label: 'Jutro Storybook',
-          docId: 'storybook830',
+          docId: 'storybook861',
         },
       ],
     },

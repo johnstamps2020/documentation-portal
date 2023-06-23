@@ -14,18 +14,13 @@
     },
     {
       "label": "_redirect",
-      "link": "/cloudProducts/flaine",
+      "link": "/cloudProducts/garmisch",
       "env": ["prod"]
     },
     {
       "label": "_redirect",
-      "link": "/cloudProducts/garmisch",
-      "env": ["dev", "staging"]
-    },
-    {
-      "label": "_redirect",
-      "link": "/int-deprecated",
-      "env": ["int"]
+      "link": "/cloudProducts/hakuba",
+      "env": ["staging"]
     }
   ]
 }

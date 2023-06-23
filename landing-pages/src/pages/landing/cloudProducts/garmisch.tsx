@@ -26,15 +26,11 @@ const pageConfig: Category2LayoutProps = {
         },
         {
           label: 'Cloud Platform',
-          pagePath: 'cloudProducts/cloudConsole',
+          docId: 'guidewirecloudconsolerootinsurerdev',
         },
         {
           label: 'Data Platform',
-          docId: 'dataplatform',
-        },
-        {
-          label: 'Cloud Data Access',
-          pagePath: 'cloudProducts/cloudDataAccess/latest',
+          pagePath: 'cloudProducts/dataPlatform',
         },
         {
           label: 'Workflow Service (Early Access)',

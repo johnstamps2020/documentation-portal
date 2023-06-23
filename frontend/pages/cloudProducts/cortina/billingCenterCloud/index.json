@@ -37,8 +37,8 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Cloud Data Access",
-          "page": "../../cloudDataAccess/latest"
+          "label": "Data Platform",
+          "page": "../../dataPlatform"
         },
         {
           "label": "Explore",

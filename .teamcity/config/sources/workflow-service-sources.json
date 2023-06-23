@@ -5,7 +5,7 @@
       "id": "workflowservicesrc",
       "title": "Workflow Service",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/workflow-service.git",
-      "branch": "release/2023.02"
+      "branch": "main"
     }
   ]
 }

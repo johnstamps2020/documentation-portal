@@ -4,9 +4,13 @@
   "template": "page",
   "class": "blue-theme elysian threeCards",
   "selector": {
-    "label": "Select release",
+    "label": "Select cloud release",
     "selectedItem": "Elysian",
     "items": [
+      {
+        "label": "Garmisch",
+        "page": "../garmisch"
+      },
       {
         "label": "Flaine",
         "page": "../flaine"
@@ -85,7 +89,7 @@
           "id": "cicdmanagerapiref"
         },
         {
-          "label": "Cloud Console API",
+          "label": "IS Deployments API",
           "id": "cloudconsoleapi"
         }
       ]

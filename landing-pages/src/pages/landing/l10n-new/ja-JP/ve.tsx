@@ -17,6 +17,14 @@ const pageConfig: CategoryLayoutProps = {
           label: 'インストールガイド',
           docId: 'dx202205jaJPveinstall',
         },
+        {
+          label: 'アプリケーションガイド',
+          docId: 'dx202205jaJPveapp',
+        },
+        {
+          label: '開発者ガイド',
+          docId: 'dx202205jaJPvedev',
+        },
       ],
     },
     {

@@ -8,10 +8,16 @@
       "branch": "release/flaine"
     },
     {
-      "id": "ipj10src",
-      "title": "InsuranceSuite Package for Japan 1.0",
+      "id": "ipjgarmischsrc",
+      "title": "InsuranceSuite Package for Japan Garmisch",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipj.git",
       "branch": "release/1.0"
+    },
+    {
+      "id": "ipjhakubasrc",
+      "title": "InsuranceSuite Package for Japan Hakuba",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/mid-ipj.git",
+      "branch": "release/hakuba"
     }
   ]
 }

@@ -1,0 +1,85 @@
+{
+  "$schema": "../../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "AdvancedProductDesigner.ditamap",
+      "srcId": "cloudisapd202205itITsrc",
+      "docId": "ispc202205itITapd",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "BC-AppGuide.ditamap",
+      "srcId": "is202205itITsrc",
+      "docId": "isbc202205itITapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "ConfigGuide.ditamap",
+      "srcId": "is202205itITsrc",
+      "docId": "isbc202205itITconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-BC-Cloud-Release.ditaval",
+      "root": "DeveloperSetupGuide.ditamap",
+      "srcId": "is202205itITsrc",
+      "docId": "isbc202205itITdevsetup",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "CC-AppGuide.ditamap",
+      "srcId": "is202205itITsrc",
+      "docId": "iscc202205itITapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "ConfigGuide.ditamap",
+      "srcId": "is202205itITsrc",
+      "docId": "iscc202205itITconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "DeveloperSetupGuide.ditamap",
+      "srcId": "is202205itITsrc",
+      "docId": "iscc202205itITdevsetup",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "PC-AppGuide.ditamap",
+      "srcId": "is202205itITsrc",
+      "docId": "ispc202205itITapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "ConfigGuide.ditamap",
+      "srcId": "is202205itITsrc",
+      "docId": "ispc202205itITconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "DeveloperSetupGuide.ditamap",
+      "srcId": "is202205itITsrc",
+      "docId": "ispc202205itITdevsetup",
+      "indexRedirect": true
+    }
+  ]
+}

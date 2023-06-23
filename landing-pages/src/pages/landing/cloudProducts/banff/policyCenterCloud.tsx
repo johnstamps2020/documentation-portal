@@ -78,8 +78,8 @@ const pageConfig: CategoryLayoutProps = {
       label: 'Analytics',
       items: [
         {
-          label: 'Cloud Data Access',
-          pagePath: 'cloudProducts/cloudDataAccess/latest',
+          label: 'Data Platform',
+          pagePath: 'cloudProducts/dataPlatform',
         },
         {
           label: 'Explore',

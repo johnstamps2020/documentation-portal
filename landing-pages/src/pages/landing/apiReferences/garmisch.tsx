@@ -17,7 +17,7 @@ const pageConfig: CategoryLayoutProps = {
     },
   },
   selector: {
-    label: 'Select release',
+    label: 'Select cloud release',
     selectedItemLabel: 'Garmisch',
     items: [
       {
@@ -117,7 +117,7 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'cicdmanagerapiref',
         },
         {
-          label: 'Cloud Console API',
+          label: 'IS Deployments API',
           docId: 'cloudconsoleapi',
         },
         {
@@ -135,11 +135,11 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'API Reference',
-          docId: 'in20222apiref',
+          docId: 'in20231apiref',
         },
         {
           label: 'Portal Development Guide',
-          docId: 'in20222portaldev',
+          docId: 'in20231portaldev',
         },
       ],
     },

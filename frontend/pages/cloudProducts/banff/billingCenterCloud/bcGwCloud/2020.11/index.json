@@ -4,9 +4,13 @@
   "template": "page",
   "class": "twoColumns",
   "selector": {
-    "label": "Select release",
+    "label": "Select cloud release",
     "selectedItem": "Banff (2020.11)",
     "items": [
+      {
+        "label": "Garmisch (2023.02)",
+        "page": "../../../../garmisch/bcGwCloud/2023.02"
+      },
       {
         "label": "Flaine (2022.09)",
         "page": "../../../../flaine/bcGwCloud/2022.09"

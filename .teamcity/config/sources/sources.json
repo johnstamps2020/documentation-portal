@@ -80,6 +80,12 @@
       "branch": "main"
     },
     {
+      "id": "explorekibanasrc",
+      "title": "Explore",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/explore.git",
+      "branch": "release/kibana"
+    },
+    {
       "id": "insurancenowextrassrc",
       "title": "InsuranceNow Extras",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow-extras.git",
@@ -161,12 +167,6 @@
       "id": "portasrc",
       "title": "Portfolio Assembly (Porta)",
       "gitUrl": "ssh://git@stash.guidewire.com/porta/porta-docs.git",
-      "branch": "master"
-    },
-    {
-      "id": "gwcpinternalsrc",
-      "title": "Network Permissions Service",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gwcp-internal-doc-poc.git",
       "branch": "master"
     },
     {

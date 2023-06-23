@@ -1,0 +1,24 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "ispc202205apddeDE",
+      "title": "Advanced Product Designer in PolicyCenter de-DE",
+      "url": "de-DE/cloud/pc/202205/apd",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Advanced Product Designer"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Configuration"],
+        "locale": ["de-DE"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

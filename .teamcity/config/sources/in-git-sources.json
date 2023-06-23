@@ -2,6 +2,12 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "in20232",
+      "title": "InsuranceNow 2023.2 Hakuba",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
+      "branch": "release/2023.2HAKUBA"
+    },
+    {
       "id": "in20231",
       "title": "InsuranceNow 2023.1 Garmisch",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
@@ -30,6 +36,12 @@
       "title": "InsuranceNow 2021.1 Cortina",
       "branch": "release/2021.1CORTINA",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git"
+    },
+    {
+      "id": "srcin20232apiref",
+      "title": "InsuranceNow API Reference Hakuba",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurance-now-api-ref.git",
+      "branch": "release/hakuba"
     },
     {
       "id": "srcin20231apiref",

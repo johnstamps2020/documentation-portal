@@ -15,13 +15,11 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guida all'installazione",
-          url: '/l10n/it-IT/ce-am/2022.05/it-IT Digital v.2022.05 CE-AM InstallGuide.pdf',
-          videoIcon: false,
+          docId: 'dx202205itITceaminstall',
         },
         {
           label: "Guida all'applicazione",
-          url: '/l10n/it-IT/ce-am/2022.05/it-IT Digital v.2022.05 CE-AM_AppGuide.pdf',
-          videoIcon: false,
+          docId: 'dx202205itITceamapp',
         },
       ],
     },

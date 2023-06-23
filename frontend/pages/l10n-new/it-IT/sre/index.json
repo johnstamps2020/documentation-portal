@@ -9,11 +9,11 @@
       "items": [
         {
           "label": "Guida all'installazione",
-          "link": "/l10n/it-IT/sre/2022.05/it-IT Digital v.2022.05 SRE InstallGuide.pdf"
+          "id": "dx202205itITsreinstall"
         },
         {
           "label": "Guida all'applicazione",
-          "link": "/l10n/it-IT/sre/2022.05/it-IT Digital v.2022.05 SRE_AppGuide.pdf"
+          "id": "dx202205itITsreapp"
         }
       ]
     },

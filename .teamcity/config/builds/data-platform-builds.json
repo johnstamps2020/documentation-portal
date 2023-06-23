@@ -8,6 +8,30 @@
       "srcId": "dataplatformsrc",
       "docId": "dataplatform",
       "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "DataAccess.ditamap",
+      "srcId": "clouddataaccesssrc",
+      "docId": "clouddataaccessguide",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "b_relNotesCda.ditamap",
+      "srcId": "clouddataaccesssrc",
+      "docId": "clouddataaccessrn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "b_cda_internal.ditamap",
+      "srcId": "clouddataaccesssrc",
+      "docId": "clouddataaccessinternal",
+      "indexRedirect": true
     }
   ]
 }

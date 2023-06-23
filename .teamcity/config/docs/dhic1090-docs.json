@@ -9,9 +9,10 @@
         "product": ["DataHub"],
         "platform": ["Self-managed"],
         "version": ["10.9.0"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -26,9 +27,10 @@
         "product": ["DataHub"],
         "platform": ["Self-managed"],
         "version": ["10.9.0"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -43,9 +45,10 @@
         "product": ["DataHub"],
         "platform": ["Self-managed"],
         "version": ["10.9.0"],
-        "subject": ["Installation"]
+        "subject": ["Installation"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -60,9 +63,10 @@
         "product": ["DataHub"],
         "platform": ["Self-managed"],
         "version": ["10.9.0"],
-        "subject": ["Installation"]
+        "subject": ["Installation"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -77,9 +81,10 @@
         "product": ["DataHub"],
         "platform": ["Self-managed"],
         "version": ["10.9.0"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -94,9 +99,10 @@
         "product": ["DataHub"],
         "platform": ["Self-managed"],
         "version": ["10.9.0"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -111,9 +117,10 @@
         "product": ["DataHub"],
         "platform": ["Self-managed"],
         "version": ["10.9.0"],
-        "subject": ["Administration"]
+        "subject": ["Administration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -128,9 +135,10 @@
         "product": ["DataHub"],
         "platform": ["Self-managed"],
         "version": ["10.9.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -145,9 +153,10 @@
         "product": ["InfoCenter"],
         "platform": ["Self-managed"],
         "version": ["10.9.0"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -162,9 +171,10 @@
         "product": ["InfoCenter"],
         "platform": ["Self-managed"],
         "version": ["10.9.0"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -179,9 +189,10 @@
         "product": ["InfoCenter"],
         "platform": ["Self-managed"],
         "version": ["10.9.0"],
-        "subject": ["Installation"]
+        "subject": ["Installation"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -196,9 +207,10 @@
         "product": ["InfoCenter"],
         "platform": ["Self-managed"],
         "version": ["10.9.0"],
-        "subject": ["Installation"]
+        "subject": ["Installation"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -213,9 +225,10 @@
         "product": ["InfoCenter"],
         "platform": ["Self-managed"],
         "version": ["10.9.0"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -230,9 +243,10 @@
         "product": ["InfoCenter"],
         "platform": ["Self-managed"],
         "version": ["10.9.0"],
-        "subject": ["Configuration"]
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -247,9 +261,10 @@
         "product": ["InfoCenter"],
         "platform": ["Self-managed"],
         "version": ["10.9.0"],
-        "subject": ["Administration"]
+        "subject": ["Administration"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -264,9 +279,10 @@
         "product": ["InfoCenter"],
         "platform": ["Self-managed"],
         "version": ["10.9.0"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -281,9 +297,10 @@
         "product": ["InfoCenter"],
         "platform": ["Self-managed"],
         "version": ["10.9.0"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -298,9 +315,10 @@
         "product": ["InfoCenter"],
         "platform": ["Self-managed"],
         "version": ["10.9.0"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

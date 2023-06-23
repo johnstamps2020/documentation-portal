@@ -1,0 +1,81 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "midipfelysianoverview",
+      "title": "Overview",
+      "url": "cloud/ipf/elysian/overview",
+      "metadata": {
+        "product": ["ClaimCenter Package for France"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipfelysianadjuster",
+      "title": "Adjuster Guide",
+      "url": "cloud/ipf/elysian/adjuster",
+      "metadata": {
+        "product": ["ClaimCenter Package for France"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipfelysianadmin",
+      "title": "Administration Guide",
+      "url": "cloud/ipf/elysian/admin",
+      "metadata": {
+        "product": ["ClaimCenter Package for France"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Administration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipfelysianrn",
+      "title": "Release Notes",
+      "url": "cloud/ipf/elysian/releasenotes",
+      "metadata": {
+        "product": ["ClaimCenter Package for France"],
+        "platform": ["Cloud"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

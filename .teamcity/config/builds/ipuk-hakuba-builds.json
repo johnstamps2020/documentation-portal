@@ -1,0 +1,29 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "OICRelNotes.ditamap",
+      "srcId": "ipukhakubasrc",
+      "docId": "ipukhakubarn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "OICConfigGuide.ditamap",
+      "srcId": "ipukhakubasrc",
+      "docId": "ipukhakubaconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "OICAppGuide.ditamap",
+      "srcId": "ipukhakubasrc",
+      "docId": "ipukhakubaapp",
+      "indexRedirect": true
+    }
+  ]
+}

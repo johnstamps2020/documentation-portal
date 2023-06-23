@@ -4,13 +4,19 @@
   "template": "page",
   "class": "blue-theme elysian threeCards",
   "selector": {
-    "label": "Select release",
+    "label": "Select cloud release",
     "selectedItem": "Elysian",
     "items": [
       {
+        "label": "Hakuba",
+        "page": "../hakuba",
+        "env": [
+          "staging"
+        ]
+      },
+      {
         "label": "Garmisch",
-        "page": "../garmisch",
-        "env": ["staging"]
+        "page": "../garmisch"
       },
       {
         "label": "Flaine",
@@ -70,12 +76,8 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Cloud Data Access",
-          "page": "../cloudDataAccess/latest"
-        },
-        {
           "label": "Data Platform",
-          "id": "dataplatform"
+          "page": "../dataPlatform"
         },
         {
           "label": "DataHub",
@@ -175,7 +177,7 @@
         },
         {
           "label": "Cloud Console",
-          "page": "../cloudConsole"
+          "id": "guidewirecloudconsolerootinsurerdev"
         },
         {
           "label": "Cloud Infrastructure",
@@ -209,6 +211,8 @@
     }
   ],
   "search_filters": {
-    "platform": ["Cloud"]
+    "platform": [
+      "Cloud"
+    ]
   }
 }

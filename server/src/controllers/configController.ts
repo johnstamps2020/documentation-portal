@@ -133,7 +133,7 @@ export async function getBreadcrumbs(
           );
         if (isUserAllowedToAccessResourceResult.status === 200) {
           breadcrumb.label =
-          findPageResult.title === 'Automated redirect'
+            findPageResult.title === 'Automated redirect'
               ? ''
               : findPageResult.title;
           validBreadcrumbs.push(breadcrumb);

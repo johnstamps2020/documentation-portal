@@ -41,7 +41,7 @@ const pageConfig: SectionLayoutProps = {
       items: [
         {
           label: 'Cloud Console Guide',
-          docId: 'guidewirecloudconsoleguideinsurerdev',
+          docId: 'guidewirecloudconsolerootinsurerdev',
         },
       ],
     },

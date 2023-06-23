@@ -9,7 +9,17 @@
         "platform": ["Cloud"],
         "product": ["Explore"],
         "version": ["latest"],
-        "subject": ["Release notes"]
+        "subject": ["Release notes"],
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -20,13 +30,50 @@
     },
     {
       "id": "exploreusingrelease",
-      "title": "Application Guide",
+      "title": "Application Guide for ThoughtSpot-based Explore",
       "url": "cloud/explore/app",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Explore"],
         "version": ["latest"],
-        "subject": ["Features and functionality"]
+        "subject": ["Features and functionality"],
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "exploreusingkibanarelease",
+      "title": "Application Guide for Kibana-based Explore",
+      "url": "cloud/explore/app-kibana",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Explore"],
+        "version": ["latest"],
+        "subject": ["Features and functionality"],
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -43,7 +90,17 @@
         "platform": ["Cloud"],
         "product": ["Explore"],
         "version": ["latest"],
-        "subject": ["Development"]
+        "subject": ["Development"],
+        "release": [
+          "Aspen",
+          "Banff",
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch"
+        ],
+        "locale": ["en-US"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

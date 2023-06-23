@@ -30,16 +30,12 @@ const pageConfig: SectionLayoutProps = {
           docId: 'ispc202302devsetup',
         },
         {
-          label: 'Developer Setup (Internal only)',
-          docId: 'ispcgarmischgwdevsetup',
-        },
-        {
           label: 'Update',
           docId: 'ispc202302update',
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools',
-          docId: 'isconfigupgradetools450',
+          docId: 'isconfigupgradetools460',
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools Compatibility',
@@ -70,10 +66,6 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'Administration',
           docId: 'ispc202302admin',
-        },
-        {
-          label: 'Administration (Internal only)',
-          docId: 'ispcgarmischgwadmin',
         },
         {
           label: 'Data Archiving',
@@ -119,6 +111,10 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'Submission Intake Configuration',
           docId: 'submissionintakeconfig',
+        },
+        {
+          label: 'US Standards-based Template Framework',
+          pagePath: 'globalContent/sbt',
         },
       ],
     },
@@ -191,7 +187,7 @@ const pageConfig: SectionLayoutProps = {
     },
   ],
   selector: {
-    label: 'Select release',
+    label: 'Select cloud release',
     selectedItemLabel: 'Garmisch (2023.02)',
     items: [
       {

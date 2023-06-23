@@ -1,0 +1,46 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Data Platform",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Data Access",
+          "id": "clouddataaccessrn"
+        },
+        {
+          "label": "Data Platform",
+          "link": "/cloud/dataplatform/topics/c_rn-new-changed.html"
+        }
+      ]
+    },
+    {
+      "label": "Application Guides",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Data Access",
+          "id": "clouddataaccessguide"
+        },
+        {
+          "label": "Data Platform",
+          "id": "dataplatform"
+        }
+      ]
+    },
+    {
+      "label": "Internal Documentation",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Data Access",
+          "id": "clouddataaccessinternal"
+        }
+      ]
+    }
+  ]
+}

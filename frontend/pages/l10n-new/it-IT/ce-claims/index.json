@@ -9,11 +9,11 @@
       "items": [
         {
           "label": "Guida all'installazione",
-          "link": "/l10n/it-IT/ce-claims/2022.05/it-IT Digital v.2022.05 CE-AM Claims InstallGuide.pdf"
+          "id": "dx202205itITceclaimsinstall"
         },
         {
           "label": "Guida all'applicazione",
-          "link": "/l10n/it-IT/ce-claims/2022.05/it-IT Digital v.2022.05 CE-AM Claims_AppGuide.pdf"
+          "id": "dx202205itITceclaimsapp"
         }
       ]
     },

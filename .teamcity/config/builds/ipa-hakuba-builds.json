@@ -1,0 +1,45 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAReleaseNotes.ditamap",
+      "srcId": "ipahakubasrc",
+      "docId": "ipahakubarn",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAConfigurationGuide.ditamap",
+      "srcId": "ipahakubasrc",
+      "docId": "ipahakubaconfig",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAApplicationGuide.ditamap",
+      "srcId": "ipahakubasrc",
+      "docId": "ipahakubaapp",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAUpgradeGuide.ditamap",
+      "srcId": "ipahakubasrc",
+      "docId": "ipahakubaupgrade",
+      "indexRedirect": true
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IPAInstallGuide.ditamap",
+      "srcId": "ipahakubasrc",
+      "docId": "ipahakubainstall",
+      "indexRedirect": true
+    }
+  ]
+}

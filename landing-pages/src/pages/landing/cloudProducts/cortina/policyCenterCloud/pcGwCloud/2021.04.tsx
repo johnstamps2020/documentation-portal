@@ -164,7 +164,7 @@ const pageConfig: SectionLayoutProps = {
     },
   ],
   selector: {
-    label: 'Select release',
+    label: 'Select cloud release',
     selectedItemLabel: 'Cortina (2021.04)',
     items: [
       {
@@ -190,6 +190,10 @@ const pageConfig: SectionLayoutProps = {
       {
         label: 'Flaine (2022.09)',
         pagePath: 'cloudProducts/flaine/pcGwCloud/2022.09',
+      },
+      {
+        label: 'Garmisch (2023.02)',
+        pagePath: 'cloudProducts/garmisch/pcGwCloud/2023.02',
       },
     ],
     labelColor: 'black',

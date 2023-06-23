@@ -15,13 +15,11 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guida all'applicazione",
-          url: '/l10n/it-IT/ve/2022.05/it-IT Digital ..2022.05 VE_AppGuide.pdf',
-          videoIcon: false,
+          docId: 'dx202205itITveapp',
         },
         {
           label: "Guida all'installazione",
-          url: '/l10n/it-IT/ve/2022.05/it-IT Digital v.2022.05 VE InstallGuide.pdf',
-          videoIcon: false,
+          docId: 'dx202205itITveinstall',
         },
       ],
     },

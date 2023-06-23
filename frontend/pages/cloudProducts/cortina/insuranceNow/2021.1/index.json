@@ -3,6 +3,40 @@
   "title": "InsuranceNow 2021.1",
   "template": "page",
   "class": "twoColumns",
+  "selector": {
+    "label": "Select cloud release",
+    "selectedItem": "Cortina (2021.1)",
+    "items": [
+      {
+        "label": "Hakuba (2023.2)",
+        "page": "../../../hakuba/insuranceNow/2023.2"
+      },
+      {
+        "label": "Garmisch (2023.1)",
+        "page": "../../../garmisch/insuranceNow/2023.1"
+      },
+      {
+        "label": "Elysian (2022.1)",
+        "page": "../../../elysian/insuranceNow/2022.1"
+      },
+      {
+        "label": "Flaine (2022.2)",
+        "page": "../../../flaine/insuranceNow/2022.2"
+      },
+      {
+        "label": "Dobson (2021.2)",
+        "page": "../../../dobson/insuranceNow/2021.2"
+      },
+      {
+        "label": "Banff (2020.2)",
+        "page": "../../../banff/insuranceNow/2020.2"
+      },
+      {
+        "label": "Aspen (2020.1)",
+        "page": "../../../aspen/insuranceNow/2020.1"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Release Notes",
@@ -115,7 +149,7 @@
           "id": "in20211xprovportaldraft"
         },
         {
-          "label": "Portal Development Guide",
+          "label": "Portal Development",
           "id": "in20211portaldev"
         },
         {

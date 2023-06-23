@@ -26,7 +26,7 @@
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools450"
+          "id": "isconfigupgradetools460"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools Compatibility",
@@ -50,15 +50,17 @@
             },
             {
               "label": "Germany",
-              "page": "../globalContent/ipg/latest"
+              "page": "../globalContent/ipg/3.6",
+              "env": ["prod"]
+            },
+            {
+              "label": "Germany",
+              "page": "../globalContent/ipg/3.7",
+              "env": ["staging"]
             },
             {
               "label": "Japan (0.1)",
-              "page": "../globalContent/ipj/0.1"
-            },
-            {
-              "label": "Japan (1.0)",
-              "page": "../globalContent/ipj/1.0"
+              "page": "../globalContent/ipj/flaine"
             }
           ]
         }
@@ -70,22 +72,20 @@
       "items": [
         {
           "label": "DataHub",
-          "page": "dh/10.8.0",
-          "env": ["prod"]
+          "page": "dh/10.9.0"
         },
         {
           "label": "InfoCenter",
-          "page": "ic/10.8.0",
-          "env": ["prod"]
+          "page": "ic/10.9.0"
         },
         {
-          "label": "DataHub",
-          "page": "dh/10.9.0",
+          "label": "DataHub 10.10.0",
+          "page": "dh/10.10.0",
           "env": ["staging"]
         },
         {
-          "label": "InfoCenter",
-          "page": "ic/10.9.0",
+          "label": "InfoCenter 10.10.0",
+          "page": "ic/10.10.0",
           "env": ["staging"]
         }
       ]

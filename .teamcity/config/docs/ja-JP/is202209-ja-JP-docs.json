@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "docs": [
     {
       "id": "iscc202209cloudapicajaJP",
@@ -10,7 +10,8 @@
         "product": ["ClaimCenter"],
         "version": ["2022.09"],
         "release": ["Flaine"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["ja-JP"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -28,7 +29,8 @@
         "product": ["ClaimCenter"],
         "version": ["2022.09"],
         "release": ["Flaine"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["ja-JP"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -46,7 +48,8 @@
         "product": ["ClaimCenter"],
         "version": ["2022.09"],
         "release": ["Flaine"],
-        "subject": ["Integration"]
+        "subject": ["Integration"],
+        "locale": ["ja-JP"]
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

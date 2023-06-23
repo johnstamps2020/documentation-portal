@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "docs": [
     {
       "id": "guidewirecloudconsolerootinsurerdeves419",
@@ -10,7 +10,7 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "locale": "es-419"
+        "locale": ["es-419"]
       },
       "environments": ["staging"],
       "indexForSearch": true,
@@ -27,7 +27,7 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "locale": "es-419"
+        "locale": ["es-419"]
       },
       "environments": ["staging"],
       "indexForSearch": true,
