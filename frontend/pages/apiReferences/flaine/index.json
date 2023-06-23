@@ -4,9 +4,13 @@
   "template": "page",
   "class": "blue-theme flaine threeCards",
   "selector": {
-    "label": "Select release",
+    "label": "Select cloud release",
     "selectedItem": "Flaine",
     "items": [
+      {
+        "label": "Garmisch",
+        "page": "../garmisch"
+      },
       {
         "label": "Elysian",
         "page": "../elysian"
@@ -99,7 +103,7 @@
           "id": "cicdmanagerapiref"
         },
         {
-          "label": "Cloud Console API",
+          "label": "IS Deployments API",
           "id": "cloudconsoleapi"
         },
         {

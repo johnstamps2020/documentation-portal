@@ -47,7 +47,7 @@ const pageConfig: CategoryLayoutProps = {
         },
         {
           label: 'APD toolkit',
-          url: '/jutro/sdk/next/docs/apd-overview',
+          url: '/jutro/sdk/next/docs/apd-toolkit-overview',
           videoIcon: false,
         },
       ],

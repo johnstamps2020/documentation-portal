@@ -11,6 +11,33 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2023.02IPJ Japan Package',
+      items: [
+        {
+          label: 'アプリケーションガイド',
+          docId: 'iscc202302ipjappjaJP',
+        },
+        {
+          label: 'コンフィギュレーションガイド',
+          docId: 'iscc202302ipjconfigjaJP',
+        },
+        {
+          label:
+            'ClaimCenter Package for Japan for Guidewire Cloud リリースノート',
+          docId: 'iscc202302ipjreleasenotesjaJP',
+        },
+      ],
+    },
+    {
+      label: '2023.02 Garmisch',
+      items: [
+        {
+          label: 'Integration Gateway',
+          docId: 'integgatewaydevlatestjaJP',
+        },
+      ],
+    },
+    {
       label: '2022.09',
       items: [
         {

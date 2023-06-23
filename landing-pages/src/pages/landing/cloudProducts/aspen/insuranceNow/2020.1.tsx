@@ -91,6 +91,45 @@ const pageConfig: SectionLayoutProps = {
       ],
     },
   ],
+  selector: {
+    label: 'Select cloud release',
+    selectedItemLabel: 'Aspen (2020.1)',
+    items: [
+      {
+        label: 'Aspen (2020.1)',
+        pagePath: 'cloudProducts/aspen/insuranceNow/2020.1',
+      },
+      {
+        label: 'Banff (2020.2)',
+        pagePath: 'cloudProducts/banff/insuranceNow/2020.2',
+      },
+      {
+        label: 'Cortina (2021.1)',
+        pagePath: 'cloudProducts/cortina/insuranceNow/2021.1',
+      },
+      {
+        label: 'Dobson (2021.2)',
+        pagePath: 'cloudProducts/dobson/insuranceNow/2021.2',
+      },
+      {
+        label: 'Elysian (2022.1)',
+        pagePath: 'cloudProducts/elysian/insuranceNow/2022.1',
+      },
+      {
+        label: 'Flaine (2022.2)',
+        pagePath: 'cloudProducts/flaine/insuranceNow/2022.2',
+      },
+      {
+        label: 'Garmisch (2023.1)',
+        pagePath: 'cloudProducts/garmisch/insuranceNow/2023.1',
+      },
+      {
+        label: 'Hakuba (2023.2)',
+        pagePath: 'cloudProducts/hakuba/insuranceNow/2023.2',
+      },
+    ],
+    labelColor: 'black',
+  },
 };
 
 export default function LandingPage20201() {

@@ -1,0 +1,129 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Global Content Reference Applications",
+  "template": "page",
+  "class": "blue-theme hakuba threeCards",
+  "selector": {
+    "label": "Select cloud release",
+    "selectedItem": "Hakuba (2023.06)",
+    "items": [
+      {
+        "label": "Garmisch (2023.02)",
+        "page": "../../garmisch/global-ref-apps"
+      },
+      {
+        "label": "Flaine (2022.09)",
+        "page": "../../flaine/global-ref-apps"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Australia",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ipahakubarn"
+        },
+        {
+          "label": "Application Guide",
+          "id": "ipahakubaapp"
+        },
+        {
+          "label": "Configuration",
+          "id": "ipahakubaconfig"
+        },
+        {
+          "label": "Installation",
+          "id": "ipahakubainstall"
+        },
+        {
+          "label": "Upgrade",
+          "id": "ipahakubaupgrade"
+        }
+      ]
+    },
+    {
+      "label": "Japan",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ipjhakubarn"
+        },
+        {
+          "label": "Application Guide",
+          "id": "ipjhakubaapp"
+        },
+        {
+          "label": "Configuration",
+          "id": "ipjhakubaconfig"
+        },
+        {
+          "label": "Installation",
+          "id": "ipjhakubainstall"
+        }
+      ]
+    },
+    {
+      "label": "London Market",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "londonrnhakuba"
+        },
+        {
+          "label": "ClaimCenter for London Market Application Guide",
+          "id": "londonccapphakuba"
+        },
+        {
+          "label": "PolicyCenter for London Market Application Guide",
+          "id": "londonpcapphakuba"
+        },
+        {
+          "label": "Configuration",
+          "id": "londonconfighakuba"
+        }
+      ]
+    },
+    {
+      "label": "UK Market",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ipukhakubarn"
+        },
+        {
+          "label": "Application Guide",
+          "id": "ipukhakubaapp"
+        },
+        {
+          "label": "Configuration",
+          "id": "ipukhakubaconfig"
+        }
+      ]
+    },
+    {
+      "label": "US Standards-based Template Framework",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Standards-based Template Framework Guide",
+          "id": "sbtfwguide"
+        },
+        {
+          "label": "Standards-based Template Customization",
+          "id": "sbtfwcustomization"
+        }
+      ] 
+    }
+  ],
+  "search_filters": {
+    "platform": [
+      "Cloud"
+    ]
+  }
+}

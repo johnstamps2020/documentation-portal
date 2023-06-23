@@ -26,16 +26,12 @@ const pageConfig: SectionLayoutProps = {
           docId: 'iscc202302devsetup',
         },
         {
-          label: 'Developer Setup (Internal only)',
-          docId: 'isccgarmischgwdevsetup',
-        },
-        {
           label: 'Update',
           docId: 'iscc202302update',
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools',
-          docId: 'isconfigupgradetools450',
+          docId: 'isconfigupgradetools460',
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools Compatibility',
@@ -62,10 +58,6 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'Administration',
           docId: 'iscc202302admin',
-        },
-        {
-          label: 'Administration (Internal only)',
-          docId: 'isccgarmischgwadmin',
         },
         {
           label: 'Data Archiving',
@@ -171,7 +163,7 @@ const pageConfig: SectionLayoutProps = {
     },
   ],
   selector: {
-    label: 'Select release',
+    label: 'Select cloud release',
     selectedItemLabel: 'Garmisch (2023.02)',
     items: [
       {

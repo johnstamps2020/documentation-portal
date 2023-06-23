@@ -14,9 +14,20 @@ const pageConfig: CategoryLayoutProps = {
       label: '2022.05',
       items: [
         {
+          label: "Guida all'applicazione",
+          docId: 'ispc202205itITapp',
+        },
+        {
+          label: 'Guida alla configurazione',
+          docId: 'ispc202205itITconfig',
+        },
+        {
           label: "Guida all'installazione per sviluppatori",
-          url: '/l10n/it-IT/pc/2022.05/PC-DeveloperSetupGuide-IT.pdf',
-          videoIcon: false,
+          docId: 'ispc202205itITdevsetup',
+        },
+        {
+          label: 'Guida ad Advanced Product Designer per PolicyCenter',
+          docId: 'ispc202205itITapd',
         },
       ],
     },

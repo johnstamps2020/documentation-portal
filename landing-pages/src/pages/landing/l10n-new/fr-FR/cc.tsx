@@ -15,8 +15,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guide d'authentification de l'API Cloud",
-          url: '/l10n/fr-FR/cc/2021.11/CC v.2021.11 fr-FR CloudAPIGuide-Auth.pdf',
-          videoIcon: false,
+          docId: 'iscc202111apicafrFR',
         },
         {
           label:

@@ -15,8 +15,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de la aplicación',
-          url: '/l10n/es-LA/ce-am/2022.05/es-LA v.2022.05 CE-AM_AppGuide.pdf',
-          videoIcon: false,
+          docId: 'dx202205es419ceamapp',
         },
       ],
     },

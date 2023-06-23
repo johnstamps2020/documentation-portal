@@ -31,8 +31,8 @@ const pageConfig: SectionLayoutProps = {
       label: 'Administration',
       items: [
         {
-          label: 'Cockpit',
-          docId: 'workflowcockpit',
+          label: 'Workflow Console',
+          docId: 'workflowconsole',
         },
       ],
     },

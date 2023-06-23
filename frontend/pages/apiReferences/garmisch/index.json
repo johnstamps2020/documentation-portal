@@ -4,7 +4,7 @@
   "template": "page",
   "class": "blue-theme garmisch threeCards",
   "selector": {
-    "label": "Select release",
+    "label": "Select cloud release",
     "selectedItem": "Garmisch",
     "items": [
       {
@@ -103,7 +103,7 @@
           "id": "cicdmanagerapiref"
         },
         {
-          "label": "Cloud Console API",
+          "label": "IS Deployments API",
           "id": "cloudconsoleapi"
         },
         {
@@ -122,11 +122,11 @@
       "items": [
         {
           "label": "API Reference",
-          "id": "in20222apiref"
+          "id": "in20231apiref"
         },
         {
           "label": "Portal Development Guide",
-          "id": "in20222portaldev"
+          "id": "in20231portaldev"
         }
       ]
     },

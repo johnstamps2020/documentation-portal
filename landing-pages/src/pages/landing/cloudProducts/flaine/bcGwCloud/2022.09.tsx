@@ -35,7 +35,7 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools',
-          docId: 'isconfigupgradetools450',
+          docId: 'isconfigupgradetools460',
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools Compatibility',
@@ -151,7 +151,7 @@ const pageConfig: SectionLayoutProps = {
     },
   ],
   selector: {
-    label: 'Select release',
+    label: 'Select cloud release',
     selectedItemLabel: 'Flaine (2022.09)',
     items: [
       {
@@ -177,6 +177,10 @@ const pageConfig: SectionLayoutProps = {
       {
         label: 'Flaine (2022.09)',
         pagePath: 'cloudProducts/flaine/bcGwCloud/2022.09',
+      },
+      {
+        label: 'Garmisch (2023.02)',
+        pagePath: 'cloudProducts/garmisch/bcGwCloud/2023.02',
       },
     ],
     labelColor: 'black',

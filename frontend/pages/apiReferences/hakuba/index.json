@@ -1,0 +1,148 @@
+{
+  "$schema": "../../../page-schema.json",
+  "title": "API References",
+  "template": "page",
+  "class": "blue-theme hakuba threeCards",
+  "selector": {
+    "label": "Select cloud release",
+    "selectedItem": "Hakuba",
+    "items": [
+      {
+        "label": "Garmisch",
+        "page": "../garmisch"
+      },
+      {
+        "label": "Flaine",
+        "page": "../flaine"
+      },
+      {
+        "label": "Elysian",
+        "page": "../elysian"
+      },
+      {
+        "label": "Dobson",
+        "page": "../dobson"
+      },
+      {
+        "label": "Cortina",
+        "page": "../cortina"
+      },
+      {
+        "label": "Banff",
+        "page": "../banff"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "BillingCenter",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud API Reference",
+          "id": "bcapirefhakuba"
+        },
+        {
+          "label": "Cloud API Consumer Guide",
+          "id": "isbc202306apibf"
+        },
+        {
+          "label": "Cloud API Developer Guide",
+          "id": "isbc202306apica"
+        }
+      ]
+    },
+    {
+      "label": "ClaimCenter",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud API Reference",
+          "id": "ccapirefhakuba"
+        },
+        {
+          "label": "Cloud API Consumer Guide",
+          "id": "iscc202306apibf"
+        },
+        {
+          "label": "Cloud API Developer Guide",
+          "id": "iscc202306apica"
+        }
+      ]
+    },
+    {
+      "label": "PolicyCenter",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud API Reference",
+          "id": "pcapirefhakuba"
+        },
+        {
+          "label": "Cloud API Consumer Guide",
+          "id": "ispc202306apibf"
+        },
+        {
+          "label": "Cloud API Developer Guide",
+          "id": "ispc202306apica"
+        }
+      ]
+    },
+    {
+      "label": "APD API Reference",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "API Reference",
+          "id": "apdmaindoc"
+        }
+      ]
+    },
+    {
+      "label": "Cloud Console",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "CI/CD Manager API",
+          "id": "cicdmanagerapiref"
+        },
+        {
+          "label": "IS Deployments API",
+          "id": "cloudconsoleapi"
+        },
+        {
+          "label": "Repository Settings API",
+          "id": "repositorysettingsapi"
+        },
+        {
+          "label": "Runtime Properties API",
+          "id": "runtimepropertiesapi"
+        }
+      ]
+    },
+    {
+      "label": "InsuranceNow",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "API Reference",
+          "id": "in20232apiref"
+        },
+        {
+          "label": "Portal Development Guide",
+          "id": "in20232portaldev"
+        }
+      ]
+    },
+    {
+      "label": "Integration Framework",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Webhooks API Reference",
+          "id": "webhooksapinext"
+        }
+      ]
+    }
+  ]
+}

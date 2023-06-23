@@ -2,19 +2,43 @@
   "$schema": "/frontend/page-schema.json",
   "title": "EnterpriseEngage Digital Reference Applications",
   "template": "page",
-  "class": "blue-theme flaine threeCards",
+  "class": "blue-theme garmisch threeCards",
+  "selector": {
+    "label": "Select cloud release",
+    "selectedItem": "Garmisch (2023.02)",
+    "items": [
+      {
+        "label": "Hakuba (2023.06)",
+        "page": "../../hakuba/dx-ref-apps"
+      },
+      {
+        "label": "Flaine (2022.09)",
+        "page": "../../flaine/dx-ref-apps"
+      }
+    ]
+  },
   "items": [
     {
-      "label": "Jutro Design System 8.3.0",
+      "label": "Update",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Update Guide",
+          "id": "ee202302update"
+        }
+      ]
+    },
+    {
+      "label": "Jutro Design System 8.6.1",
       "class": "categoryCard cardShadow",
       "items": [
         {
           "label": "Jutro Design System and UI Framework",
-          "id": "jutro830"
+          "id": "jutro861"
         },
         {
           "label": "Jutro Storybook",
-          "id": "storybook830"
+          "id": "storybook861"
         }
       ]
     },

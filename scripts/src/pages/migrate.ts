@@ -439,7 +439,7 @@ function mapToProductFamilyLayout(
   return `{
     backgroundProps: ${backgroundPropValue},
     ${selector ? `selector: ${JSON.stringify(selector)},` : ''}
-    ${showReleaseSelector ? `showReleaseSelector: ${showReleaseSelector}` : ''}
+    ${showReleaseSelector ? `showReleaseSelector: ${showReleaseSelector},` : ''}
     items: ${JSON.stringify(items, null, 2)},
     sidebar: ${getSidebar(flailConfig)},
   }`;

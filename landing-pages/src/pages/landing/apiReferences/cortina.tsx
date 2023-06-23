@@ -14,7 +14,7 @@ const pageConfig: ProductFamilyLayoutProps = {
     },
   },
   selector: {
-    label: 'Select release',
+    label: 'Select cloud release',
     selectedItemLabel: 'Cortina',
     items: [
       { label: 'Banff', pagePath: 'apiReferences/banff' },
@@ -22,9 +22,11 @@ const pageConfig: ProductFamilyLayoutProps = {
       { label: 'Dobson', pagePath: 'apiReferences/dobson' },
       { label: 'Elysian', pagePath: 'apiReferences/elysian' },
       { label: 'Flaine', pagePath: 'apiReferences/flaine' },
+      { label: 'Garmisch', pagePath: 'apiReferences/garmisch' },
     ],
     labelColor: 'white',
   },
+
   items: [
     {
       label: 'InsuranceNow API Reference',

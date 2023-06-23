@@ -2,8 +2,8 @@ import CategoryLayout, {
   CategoryLayoutProps,
 } from 'components/LandingPage/Category/CategoryLayout';
 import gradientBackgroundImage from 'images/background-gradient.svg';
-import flaineBadge from 'images/badge-flaine.svg';
-import flaineBackgroundImage from 'images/background-flaine.svg';
+import garmischBackgroundImage from 'images/background-garmisch.png';
+import garmischBadge from 'images/badge-garmisch.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 
 const pageConfig: CategoryLayoutProps = {
@@ -11,23 +11,51 @@ const pageConfig: CategoryLayoutProps = {
     ...baseBackgroundProps,
     backgroundImage: {
       xs: `url(${gradientBackgroundImage})`,
-      sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
-       url(${flaineBackgroundImage}), 
-       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
+      sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), 
+  url(${garmischBackgroundImage}), 
+  linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
     },
+  },
+  selector: {
+    label: 'Select cloud release',
+    selectedItemLabel: 'Garmisch (2023.02)',
+    items: [
+      {
+        label: 'Flaine (2022.09)',
+        pagePath: 'cloudProducts/flaine/dx-ref-apps',
+      },
+      {
+        label: 'Garmisch (2023.02)',
+        pagePath: 'cloudProducts/garmisch/dx-ref-apps',
+      },
+      {
+        label: 'Hakuba (2023.06)',
+        pagePath: 'cloudProducts/hakuba/dx-ref-apps',
+      },
+    ],
+    labelColor: 'white',
   },
 
   cards: [
     {
-      label: 'Jutro Design System 8.3.0',
+      label: 'Update',
+      items: [
+        {
+          label: 'Update Guide',
+          docId: 'ee202302update',
+        },
+      ],
+    },
+    {
+      label: 'Jutro Design System 8.6.1',
       items: [
         {
           label: 'Jutro Design System and UI Framework',
-          docId: 'jutro830',
+          docId: 'jutro861',
         },
         {
           label: 'Jutro Storybook',
-          docId: 'storybook830',
+          docId: 'storybook861',
         },
       ],
     },
