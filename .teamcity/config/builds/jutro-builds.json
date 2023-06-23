@@ -799,7 +799,8 @@
       "buildType": "dita",
       "docId": "agentquoteandbuypersonalauto",
       "srcId": "jutrodigitalcontentsrc",
-      "root": "AgentQuoteAndBuyPA.ditamap"
+      "root": "AgentQuoteAndBuyPA.ditamap",
+      "indexRedirect": true
     }
   ]
 }
