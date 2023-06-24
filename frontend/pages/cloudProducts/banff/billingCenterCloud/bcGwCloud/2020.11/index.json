@@ -8,6 +8,11 @@
     "selectedItem": "Banff (2020.11)",
     "items": [
       {
+        "label": "Hakuba (2023.06)",
+        "page": "../../../../hakuba/bcGwCloud/2023.06",
+        "env": ["staging"]
+      },
+      {
         "label": "Garmisch (2023.02)",
         "page": "../../../../garmisch/bcGwCloud/2023.02"
       },
