@@ -8,6 +8,11 @@
     "selectedItem": "Cortina (2021.04)",
     "items": [
       {
+        "label": "Hakuba (2023.06)",
+        "page": "../../../../hakuba/ccGwCloud/2023.06",
+        "env": ["staging"]
+      },
+      {
         "label": "Garmisch (2023.02)",
         "page": "../../../../garmisch/ccGwCloud/2023.02"
       },
