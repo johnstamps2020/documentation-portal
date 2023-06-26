@@ -4,14 +4,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "DatadogEACustomerAccess.ditamap",
-      "srcId": "in20232",
-      "docId": "in20232ddlogacc",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "ApplicationGuide.ditamap",
       "srcId": "in20232",
       "docId": "in20232app",
