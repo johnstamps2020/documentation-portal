@@ -1711,7 +1711,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": true,
+      "internal": false,
       "earlyAccess": false
     },
     {
@@ -1721,7 +1721,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["8.10.0"],
+        "version": ["8.10.0 LTS"],
         "subject": ["Development"],
         "release": ["Hakuba"],
         "locale": ["en-US"]
@@ -1730,7 +1730,7 @@
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": true,
+      "internal": false,
       "earlyAccess": false
     },
     {
@@ -1840,7 +1840,7 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
-    },    
+    },
     {
       "id": "jutrolatest",
       "title": "Jutro Design System and UI Framework",
