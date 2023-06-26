@@ -2,25 +2,6 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "in20231ddlogacc",
-      "title": "Datadog Log Access",
-      "url": "cloud/in/20231/ddlogacc",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2023.1"],
-        "subject": ["Features and functionality"],
-        "release": ["Garmisch"],
-        "locale": ["en-US"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
       "id": "in20231app",
       "title": "Application Guide",
       "url": "cloud/in/20231/app",
