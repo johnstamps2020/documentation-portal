@@ -3,7 +3,9 @@ import InitialDocSidebar from '@theme-init/DocSidebar';
 
 function insertLineBreak(items) {
   const result = items.map((item) => {
-    item.label = item.label.replace(/\//g, '/\u200B');
+    if (item.label) {
+      item.label = item.label.replace(/\//g, '/\u200B');
+    }
     if (item.type === 'category') {
       return { ...item, items: insertLineBreak(item.items) };
     }
