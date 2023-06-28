@@ -30,28 +30,7 @@ const title = 'Two-wheelers';
 
 const cardConfig: CategoryCardProps = {
   label: title,
-  items: [
-    {
-      label: 'Red bicycle',
-      url: 'https://bicycles.com/red-bike-demo.mp4',
-      videoIcon: true,
-    },
-    {
-      label: 'Regular bicycle',
-      pagePath: 'regular-bike',
-    },
-  ],
-  sections: [
-    {
-      label: 'Sports bikes section',
-      items: [
-        {
-          label: 'Speedy bike',
-          docId: 'speedy-bike',
-        },
-      ],
-    },
-  ],
+  items: [],
 };
 
 beforeAll(() => {
