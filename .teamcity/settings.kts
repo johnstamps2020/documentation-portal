@@ -1913,6 +1913,7 @@ object Frontend {
                 id = "Build landing pages"
                 shellScript = """
                     yarn
+                    CI=true yarn test:landing-pages
                     yarn build
                 """.trimIndent()
                 dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
