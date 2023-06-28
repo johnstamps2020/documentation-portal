@@ -15,6 +15,8 @@
     "build": "yarn server-build && yarn landing-pages-build",
     "prettier": "prettier --write .",
     "test:server": "yarn workspace server test",
+    "test:landing-pages": "yarn workspace landing-pages test",
+    "test": "yarn test:server && yarn test:landing-pages",
     "scripts:migrate-pages": "yarn workspace scripts migrate-pages && yarn prettier"
   },
   "version": "1.0.0",
@@ -25,6 +27,7 @@
   "dependencies": {
     "concurrently": "7.4.0",
     "express-fileupload": "^1.4.0",
+    "jest-watch-typeahead": "0.6.5",
     "swr": "^2.0.3"
   },
   "devDependencies": {
