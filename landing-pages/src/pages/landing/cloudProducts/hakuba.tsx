@@ -1,17 +1,14 @@
-import CategoryLayout, {
-  CategoryLayoutProps,
-} from 'components/LandingPage/Category/CategoryLayout';
+import Category2Layout, {
+  Category2LayoutProps,
+} from 'components/LandingPage/Category2/Category2Layout';
 import gradientBackgroundImage from 'images/background-gradient.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 
-const pageConfig: CategoryLayoutProps = {
+const pageConfig: Category2LayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
     backgroundImage: `url(${gradientBackgroundImage})`,
   },
-
-  showReleaseSelector: true,
-
   cards: [
     {
       label: 'Platform',
@@ -151,7 +148,12 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
   ],
-
+  whatsNew: {
+    label: 'Hakuba',
+    badge: '',
+    item: { label: 'Learn more', docId: 'whatsnewgarmisch' },
+    content: ['Content coming soon'],
+  },
   sidebar: {
     label: 'Implementation Resources',
     items: [
@@ -180,5 +182,5 @@ const pageConfig: CategoryLayoutProps = {
 };
 
 export default function Hakuba() {
-  return <CategoryLayout {...pageConfig} />;
+  return <Category2Layout {...pageConfig} />;
 }
