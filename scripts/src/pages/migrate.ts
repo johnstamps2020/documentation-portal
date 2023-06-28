@@ -130,17 +130,34 @@ function getItems(
 function getWhatsNew(flailConfig: FlailConfig): string {
   const level1Class = flailConfig.class;
 
+  if (level1Class.match('hakuba')) {
+    return `{
+      label: 'Hakuba',
+      badge: '',
+      item: { label: 'Learn more', docId: 'whatsnewgarmisch' },
+      content: [
+        'Content coming soon',
+      ],
+    }`;
+  }
+  
   if (level1Class.match('garmisch')) {
     return `{
       label: 'Garmisch',
       badge: garmischBadge,
       item: { label: 'Learn more', docId: 'whatsnewgarmisch' },
       content: [
-        'Washes your car',
-        'Folds the laundry',
-        'Enhances the flavor of your food',
-        'Makes you feel like a million bucks',
-        'Just kidding! Content coming soon.',
+        'Self-service production deployments',
+        'Automatic post-deployment testing',
+        'Custom monitoring and observability',
+        'Cloud API enhancements',
+        'Multi-product support in APD',
+        'Support for importing loss runs into PolicyCenter',
+        'Expanded line of business content',
+        'InsuranceNow integration with Hi Marley',
+        'Support for One Inc ACH payments in InsuranceNow',
+        'New analytics dashboards for Cyence',
+        'New analytics model for Predict',
       ],
     }`;
   }
@@ -178,6 +195,15 @@ function getBackgroundProps(flailConfig: FlailConfig): {
   }
 
   const { level1Class } = getFlailClass(flailConfig);
+
+  if (level1Class.match('hakuba')) {
+    return {
+      backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
+      import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
+      backgroundPropValue:
+        '{ ...baseBackgroundProps,backgroundImage: `url(${gradientBackgroundImage})`, }',
+    };
+  }
 
   if (level1Class.match('garmisch')) {
     return {
@@ -511,7 +537,9 @@ function getClassMap(flailConfig: FlailConfig, targetFile: string): ClassMap {
 
   if (
     isRelease &&
-    (level1Class.match('garmisch') || level1Class.match('flaine'))
+    (level1Class.match('garmisch') ||
+      level1Class.match('flaine') ||
+      level1Class.match('hakuba'))
   ) {
     return category2;
   }
