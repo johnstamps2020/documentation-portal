@@ -4,77 +4,62 @@
     {
       "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
-      "root": "releasenotes.ditamap",
-      "srcId": "dm202104src",
-      "docId": "dhcloudrncortina",
-      "indexRedirect": true,
-      "resources": [
-        {
-          "sourceFolder": "Cortina-10.5/DataHub/releaseDiffFiles/cloud",
-          "targetFolder": "extras/releaseDiffFiles/cloud",
-          "srcId": "dhicextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "product.ditamap",
-      "srcId": "dm202104src",
-      "docId": "dhcloudproductcortina",
+      "srcId": "dm2021111060src",
+      "docId": "dhproduct202111",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "install.ditamap",
-      "srcId": "dm202104src",
-      "docId": "dhcloudinstallcortina",
+      "srcId": "dm2021111060src",
+      "docId": "dhinstall202111",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "upgrade.ditamap",
-      "srcId": "dm202104src",
-      "docId": "dhcloudupgradecortina",
+      "srcId": "dm2021111060src",
+      "docId": "dhupgrade202111",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "config.ditamap",
-      "srcId": "dm202104src",
-      "docId": "dhcloudconfigcortina",
+      "srcId": "dm2021111060src",
+      "docId": "dhconfig202111",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "dataspec.ditamap",
-      "srcId": "dm202104src",
-      "docId": "dhclouddataspeccortina",
+      "srcId": "dm2021111060src",
+      "docId": "dhdataspec202111",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "admin.ditamap",
-      "srcId": "dm202104src",
-      "docId": "dhcloudadmincortina",
+      "srcId": "dm2021111060src",
+      "docId": "dhadmin202111",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "DataHub-MS-RELEASE.ditaval",
       "root": "developer-ref.ditamap",
-      "srcId": "dm202104src",
-      "docId": "dhclouddevrefcortina",
+      "srcId": "dm2021111060src",
+      "docId": "dhdevref202111",
       "indexRedirect": true,
       "resources": [
         {
           "srcId": "dhicextrassrc",
-          "sourceFolder": "Cortina-10.5/DataHub/autoGenFiles/cloud",
+          "sourceFolder": "Dobson-10.6/DataHub/autoGenFiles/cloud",
           "targetFolder": "extras/autoGenFiles/cloud"
         }
       ]
@@ -82,93 +67,78 @@
     {
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
-      "root": "releasenotes.ditamap",
-      "srcId": "dm202104src",
-      "docId": "iccloudrncortina",
-      "indexRedirect": true,
-      "resources": [
-        {
-          "sourceFolder": "Cortina-10.5/InfoCenter/releaseDiffFiles/cloud",
-          "targetFolder": "extras/releaseDiffFiles/cloud",
-          "srcId": "dhicextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "product.ditamap",
-      "srcId": "dm202104src",
-      "docId": "iccloudproductcortina",
+      "srcId": "dm2021111060src",
+      "docId": "icproduct202111",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "install.ditamap",
-      "srcId": "dm202104src",
-      "docId": "iccloudinstallcortina",
+      "srcId": "dm2021111060src",
+      "docId": "icinstall202111",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "upgrade.ditamap",
-      "srcId": "dm202104src",
-      "docId": "iccloudupgradecortina",
+      "srcId": "dm2021111060src",
+      "docId": "icupgrade202111",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "config.ditamap",
-      "srcId": "dm202104src",
-      "docId": "iccloudconfigcortina",
+      "srcId": "dm2021111060src",
+      "docId": "icconfig202111",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "dataspec.ditamap",
-      "srcId": "dm202104src",
-      "docId": "icclouddataspeccortina",
+      "srcId": "dm2021111060src",
+      "docId": "icdataspec202111",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "admin.ditamap",
-      "srcId": "dm202104src",
-      "docId": "iccloudadmincortina",
+      "srcId": "dm2021111060src",
+      "docId": "icadmin202111",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "bi-applications.ditamap",
-      "srcId": "dm202104src",
-      "docId": "iccloudbiappcortina",
+      "srcId": "dm2021111060src",
+      "docId": "icbiapp202111",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "reports.ditamap",
-      "srcId": "dm202104src",
-      "docId": "iccloudreportscortina",
+      "srcId": "dm2021111060src",
+      "docId": "icreports202111",
       "indexRedirect": true
     },
     {
       "buildType": "dita",
       "filter": "InfoCenter-MS-RELEASE.ditaval",
       "root": "developer-ref.ditamap",
-      "srcId": "dm202104src",
-      "docId": "icclouddevrefcortina",
+      "srcId": "dm2021111060src",
+      "docId": "icdevref202111",
       "indexRedirect": true,
       "resources": [
         {
           "srcId": "dhicextrassrc",
-          "sourceFolder": "Cortina-10.5/InfoCenter/autoGenFiles/cloud",
+          "sourceFolder": "Dobson-10.6/InfoCenter/autoGenFiles/cloud",
           "targetFolder": "extras/autoGenFiles/cloud"
         }
       ]

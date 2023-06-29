@@ -4,26 +4,6 @@
     {
       "buildType": "dita",
       "filter": "IS-BC-Cloud-Release.ditaval",
-      "root": "ReleaseNotesBook-cortina.ditamap",
-      "srcId": "is202104src",
-      "docId": "isbc202104releasenotes",
-      "indexRedirect": true,
-      "resources": [
-        {
-          "sourceFolder": "ReleaseNotes-files/bc/2021.04",
-          "targetFolder": "extras/ReleaseNotes-files/bc/2021.04",
-          "srcId": "insurancesuiteextrassrc"
-        },
-        {
-          "sourceFolder": "ReleaseNotes-files/cm/2021.04",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2021.04",
-          "srcId": "insurancesuiteextrassrc"
-        }
-      ]
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-BC-Cloud-Release.ditaval",
       "root": "NewAndChangedGuide.ditamap",
       "srcId": "is202104src",
       "docId": "isbc202104newandchanged",
@@ -108,26 +88,6 @@
       "srcId": "is202104src",
       "docId": "isbc202104install",
       "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-CC-Cloud-Release.ditaval",
-      "root": "ReleaseNotesBook-cortina.ditamap",
-      "srcId": "is202104src",
-      "docId": "iscc202104releasenotes",
-      "indexRedirect": true,
-      "resources": [
-        {
-          "sourceFolder": "ReleaseNotes-files/cc/2021.04",
-          "targetFolder": "extras/ReleaseNotes-files/cc/2021.04",
-          "srcId": "insurancesuiteextrassrc"
-        },
-        {
-          "sourceFolder": "ReleaseNotes-files/cm/2021.04",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2021.04",
-          "srcId": "insurancesuiteextrassrc"
-        }
-      ]
     },
     {
       "buildType": "dita",
@@ -248,26 +208,6 @@
       "srcId": "is202104src",
       "docId": "iscc202104install",
       "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "IS-PC-Cloud-Release.ditaval",
-      "root": "ReleaseNotesBook-cortina.ditamap",
-      "srcId": "is202104src",
-      "docId": "ispc202104releasenotes",
-      "indexRedirect": true,
-      "resources": [
-        {
-          "sourceFolder": "ReleaseNotes-files/pc/2021.04",
-          "targetFolder": "extras/ReleaseNotes-files/pc/2021.04",
-          "srcId": "insurancesuiteextrassrc"
-        },
-        {
-          "sourceFolder": "ReleaseNotes-files/cm/2021.04",
-          "targetFolder": "extras/ReleaseNotes-files/cm/2021.04",
-          "srcId": "insurancesuiteextrassrc"
-        }
-      ]
     },
     {
       "buildType": "dita",
