@@ -13,7 +13,8 @@
           "targetFolder": "extras/ReleaseNotes-files/bc/2020.05",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -27,7 +28,8 @@
           "targetFolder": "extras/ReleaseNotes-files/cc/2020.05",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -41,7 +43,8 @@
           "targetFolder": "extras/ReleaseNotes-files/pc/2020.05",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -55,7 +58,8 @@
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
-      ]
+      ],
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -69,56 +73,64 @@
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
-      ]
+      ],
+      "disabled": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-ce-am-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202010",
-      "docId": "dxceam202010"
+      "docId": "dxceam202010",
+      "disabled": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-ce-claims-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202010",
-      "docId": "dxceclaims202010"
+      "docId": "dxceclaims202010",
+      "disabled": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-ce-qb-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202010",
-      "docId": "dxceqb202010"
+      "docId": "dxceqb202010",
+      "disabled": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-pe-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202010",
-      "docId": "dxpe202010"
+      "docId": "dxpe202010",
+      "disabled": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-pe-claims-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202010",
-      "docId": "dxpeclaims202010"
+      "docId": "dxpeclaims202010",
+      "disabled": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-sre-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202010",
-      "docId": "dxsre202010"
+      "docId": "dxsre202010",
+      "disabled": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-ve-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202010",
-      "docId": "dxve202010"
+      "docId": "dxve202010",
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -132,7 +144,8 @@
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
-      ]
+      ],
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -146,7 +159,8 @@
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
-      ]
+      ],
+      "disabled": true
     }
   ]
 }

@@ -7,7 +7,8 @@
       "root": "m_cloud-usingExplore.ditamap",
       "srcId": "exploreptBRsrc",
       "docId": "exploreptBRusingrelease",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

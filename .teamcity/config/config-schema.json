@@ -355,6 +355,10 @@
         "zipFilename": {
           "description": "The name of the output .zip file (do not include .zip, that's added automatically). Only makes sense for the source-zip build. Default is 'result'."
         },
+        "disabled": {
+          "description": "If set to true, the build is disabled. Defaults to false if not set.",
+          "type": "boolean"
+        },
         "customEnv": {
           "type": "array",
           "items": {

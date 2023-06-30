@@ -14,7 +14,8 @@
           "targetFolder": "extras/releaseDiffFiles/cloud",
           "srcId": "dhicextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -29,7 +30,8 @@
           "targetFolder": "extras/releaseDiffFiles/cloud",
           "srcId": "dhicextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -44,7 +46,8 @@
           "targetFolder": "extras/releaseDiffFiles/cloud",
           "srcId": "dhicextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -59,7 +62,8 @@
           "targetFolder": "extras/releaseDiffFiles/cloud",
           "srcId": "dhicextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     }
   ]
 }

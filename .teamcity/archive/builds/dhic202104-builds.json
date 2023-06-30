@@ -7,7 +7,8 @@
       "root": "product.ditamap",
       "srcId": "dm202104src",
       "docId": "dhcloudproductcortina",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "install.ditamap",
       "srcId": "dm202104src",
       "docId": "dhcloudinstallcortina",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "upgrade.ditamap",
       "srcId": "dm202104src",
       "docId": "dhcloudupgradecortina",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "config.ditamap",
       "srcId": "dm202104src",
       "docId": "dhcloudconfigcortina",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "dataspec.ditamap",
       "srcId": "dm202104src",
       "docId": "dhclouddataspeccortina",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -47,7 +52,8 @@
       "root": "admin.ditamap",
       "srcId": "dm202104src",
       "docId": "dhcloudadmincortina",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -62,7 +68,8 @@
           "sourceFolder": "Cortina-10.5/DataHub/autoGenFiles/cloud",
           "targetFolder": "extras/autoGenFiles/cloud"
         }
-      ]
+      ],
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -70,7 +77,8 @@
       "root": "product.ditamap",
       "srcId": "dm202104src",
       "docId": "iccloudproductcortina",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -78,7 +86,8 @@
       "root": "install.ditamap",
       "srcId": "dm202104src",
       "docId": "iccloudinstallcortina",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -86,7 +95,8 @@
       "root": "upgrade.ditamap",
       "srcId": "dm202104src",
       "docId": "iccloudupgradecortina",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -94,7 +104,8 @@
       "root": "config.ditamap",
       "srcId": "dm202104src",
       "docId": "iccloudconfigcortina",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -102,7 +113,8 @@
       "root": "dataspec.ditamap",
       "srcId": "dm202104src",
       "docId": "icclouddataspeccortina",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -110,7 +122,8 @@
       "root": "admin.ditamap",
       "srcId": "dm202104src",
       "docId": "iccloudadmincortina",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -118,7 +131,8 @@
       "root": "bi-applications.ditamap",
       "srcId": "dm202104src",
       "docId": "iccloudbiappcortina",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -126,7 +140,8 @@
       "root": "reports.ditamap",
       "srcId": "dm202104src",
       "docId": "iccloudreportscortina",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -141,7 +156,8 @@
           "sourceFolder": "Cortina-10.5/InfoCenter/autoGenFiles/cloud",
           "targetFolder": "extras/autoGenFiles/cloud"
         }
-      ]
+      ],
+      "disabled": true
     }
   ]
 }

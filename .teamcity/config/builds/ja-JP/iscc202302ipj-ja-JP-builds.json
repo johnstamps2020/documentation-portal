@@ -7,7 +7,8 @@
       "root": "IPJApplicationGuide.ditamap",
       "srcId": "iscc202302ipjjaJPsrc",
       "docId": "iscc202302ipjappjaJP",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "IPJConfigurationGuide.ditamap",
       "srcId": "iscc202302ipjjaJPsrc",
       "docId": "iscc202302ipjconfigjaJP",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "IPJReleaseNotes.ditamap",
       "srcId": "iscc202302ipjjaJPsrc",
       "docId": "iscc202302ipjreleasenotesjaJP",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

@@ -7,7 +7,8 @@
       "filter": "GW-Generic-Release.ditaval",
       "docId": "appreaderrn400",
       "srcId": "appreadersrc",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

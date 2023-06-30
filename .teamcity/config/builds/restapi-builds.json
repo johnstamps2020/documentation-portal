@@ -7,7 +7,8 @@
       "root": "ApplicationEventsForDevelopers.ditamap",
       "indexRedirect": true,
       "srcId": "restapisrc",
-      "docId": "appeventsdev"
+      "docId": "appeventsdev",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "IntegrationGatewayForDevelopers.ditamap",
       "indexRedirect": true,
       "srcId": "restapisrc",
-      "docId": "integgatewaydevlatest"
+      "docId": "integgatewaydevlatest",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "LxdPOCProject.ditamap",
       "indexRedirect": true,
       "srcId": "restapisrc",
-      "docId": "integgatewaydevlatestlxdpoc"
+      "docId": "integgatewaydevlatestlxdpoc",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "RESTAPIClientGuide.ditamap",
       "srcId": "restapisrc",
       "docId": "isrestapiclientguide",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

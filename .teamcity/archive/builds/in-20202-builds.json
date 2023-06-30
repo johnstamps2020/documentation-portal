@@ -7,7 +7,8 @@
       "root": "ApplicationGuide20202x.ditamap",
       "srcId": "in20202src",
       "docId": "in20202xappdraft",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "BusinessIntelligenceIntegrationGuide20202x.ditamap",
       "srcId": "in20202src",
       "docId": "in20202biinteg",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "ClaimsProductConfigGuide20202x.ditamap",
       "srcId": "in20202src",
       "docId": "in20202xclaimsconfigdraft",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "ConsumerServicePortalConfigGuide20202x.ditamap",
       "srcId": "in20202src",
       "docId": "in20202xcservicepconfigdraft",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "ProvisioningPortal20202x.ditamap",
       "srcId": "in20202src",
       "docId": "in20202xprovportaldraft",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -47,7 +52,8 @@
       "root": "UnderwritingProductConfigGuide20202x.ditamap",
       "srcId": "in20202src",
       "docId": "in20202xuwconfigdraft",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -55,7 +61,8 @@
       "root": "BusinessIntelligenceGettingStartedGuide20202x.ditamap",
       "srcId": "in20202src",
       "docId": "in20202bi",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -63,7 +70,8 @@
       "root": "ConsumerSalesPortalFeatures20202x.ditamap",
       "srcId": "in20202src",
       "docId": "in20202csalesp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -71,7 +79,8 @@
       "root": "ConsumerServicePortalFeatures20202x.ditamap",
       "srcId": "in20202src",
       "docId": "in20202cservicep",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -79,7 +88,8 @@
       "root": "PredictiveAnalyticsIntegration20202.ditamap",
       "srcId": "in20202src",
       "docId": "in20202pa",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -87,7 +97,8 @@
       "root": "AppReaderIntegrationGuide20202x.ditamap",
       "srcId": "in20202src",
       "docId": "in20202appreaderinteg",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -95,7 +106,8 @@
       "root": "Configuration20202x.ditamap",
       "srcId": "in20202src",
       "docId": "in20202config",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -103,7 +115,8 @@
       "root": "Studio20202x.ditamap",
       "srcId": "in20202src",
       "docId": "in20202studio",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -111,7 +124,8 @@
       "root": "PortalDevelopment20202x.ditamap",
       "srcId": "in20202src",
       "docId": "in20202portaldev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -119,7 +133,8 @@
       "root": "ProductAttributeReference20202.ditamap",
       "srcId": "in20202src",
       "docId": "in20202prodattref",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     }
   ]
 }

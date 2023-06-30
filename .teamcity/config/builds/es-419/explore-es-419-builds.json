@@ -7,7 +7,8 @@
       "root": "m_relNotes.ditamap",
       "srcId": "explorees419src",
       "docId": "explorees419rnrelease",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "m_cloud-usingExplore.ditamap",
       "srcId": "explorees419src",
       "docId": "explorees419usingrelease",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "m_dataDictionaries.ditamap",
       "srcId": "explorees419src",
       "docId": "explorees419datadictrelease",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

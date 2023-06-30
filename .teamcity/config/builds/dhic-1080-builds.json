@@ -14,7 +14,8 @@
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -22,7 +23,8 @@
       "root": "product.ditamap",
       "srcId": "dm202209108src",
       "docId": "dh1080product",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -30,7 +32,8 @@
       "root": "install.ditamap",
       "srcId": "dm202209108src",
       "docId": "dh1080install",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -38,7 +41,8 @@
       "root": "upgrade.ditamap",
       "srcId": "dm202209108src",
       "docId": "dh1080upgrade",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -46,7 +50,8 @@
       "root": "config.ditamap",
       "srcId": "dm202209108src",
       "docId": "dh1080config",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -54,7 +59,8 @@
       "root": "dataspec.ditamap",
       "srcId": "dm202209108src",
       "docId": "dh1080dataspec",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -62,7 +68,8 @@
       "root": "admin.ditamap",
       "srcId": "dm202209108src",
       "docId": "dh1080admin",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -77,7 +84,8 @@
           "sourceFolder": "Flaine-10.8/DataHub/autoGenFiles/onPrem",
           "targetFolder": "extras/autoGenFiles/onPrem"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -92,7 +100,8 @@
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -100,7 +109,8 @@
       "root": "product.ditamap",
       "srcId": "dm202209108src",
       "docId": "ic1080product",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -108,7 +118,8 @@
       "root": "install.ditamap",
       "srcId": "dm202209108src",
       "docId": "ic1080install",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -116,7 +127,8 @@
       "root": "upgrade.ditamap",
       "srcId": "dm202209108src",
       "docId": "ic1080upgrade",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -124,7 +136,8 @@
       "root": "config.ditamap",
       "srcId": "dm202209108src",
       "docId": "ic1080config",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -132,7 +145,8 @@
       "root": "dataspec.ditamap",
       "srcId": "dm202209108src",
       "docId": "ic1080dataspec",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -140,7 +154,8 @@
       "root": "admin.ditamap",
       "srcId": "dm202209108src",
       "docId": "ic1080admin",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -148,7 +163,8 @@
       "root": "bi-applications.ditamap",
       "srcId": "dm202209108src",
       "docId": "ic1080biapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -156,7 +172,8 @@
       "root": "reports.ditamap",
       "srcId": "dm202209108src",
       "docId": "ic1080reports",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -171,7 +188,8 @@
           "sourceFolder": "Flaine-10.8/InfoCenter/autoGenFiles/onPrem",
           "targetFolder": "extras/autoGenFiles/onPrem"
         }
-      ]
+      ],
+      "disabled": false
     }
   ]
 }

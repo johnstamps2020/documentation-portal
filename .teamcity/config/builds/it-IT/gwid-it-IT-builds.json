@@ -7,7 +7,8 @@
       "filter": "GW-Generic-Cloud-Release.ditaval",
       "indexRedirect": true,
       "srcId": "guidewireidentityfederationhubitITsrc",
-      "docId": "guidewireidentityfederationhubitIT"
+      "docId": "guidewireidentityfederationhubitIT",
+      "disabled": false
     }
   ]
 }

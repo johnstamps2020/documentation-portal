@@ -7,7 +7,8 @@
       "root": "admin-and-security-guide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150ceamadmin",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "CustomerEngage_AccountManagement_AppGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150ceamapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150ceaminstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "DevelopersGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150ceamdev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150ceamrefguides",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -47,7 +52,8 @@
       "root": "digital-release-notes.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150ceamrelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -55,7 +61,8 @@
       "root": "admin-and-security-guide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150ceclaimsadmin",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -63,7 +70,8 @@
       "root": "CustomerEngage_Claims_AppGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150ceclaimsapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -71,7 +79,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150ceclaimsinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -79,7 +88,8 @@
       "root": "DevelopersGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150ceclaimsdev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -87,7 +97,8 @@
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150ceclaimsrefguides",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -95,7 +106,8 @@
       "root": "digital-release-notes.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150ceclaimsrelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -103,7 +115,8 @@
       "root": "admin-and-security-guide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150ceqbadmin",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -111,7 +124,8 @@
       "root": "CustomerEngage_QuoteAndBuy_AppGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150ceqbapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -119,7 +133,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150ceqbinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -127,7 +142,8 @@
       "root": "DevelopersGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150ceqbdev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -135,7 +151,8 @@
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150ceqbrefguides",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -143,7 +160,8 @@
       "root": "digital-release-notes.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150ceqbrelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -151,7 +169,8 @@
       "root": "admin-and-security-guide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150peadmin",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -159,7 +178,8 @@
       "root": "ProducerEngage_AppGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150peapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -167,7 +187,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150peinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -175,7 +196,8 @@
       "root": "DevelopersGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150pedev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -183,7 +205,8 @@
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150perefguides",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -191,7 +214,8 @@
       "root": "digital-release-notes.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150perelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -199,7 +223,8 @@
       "root": "admin-and-security-guide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150peclaimsadmin",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -207,7 +232,8 @@
       "root": "ProducerEngage_Claims_AppGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150peclaimsapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -215,7 +241,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150peclaimsinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -223,7 +250,8 @@
       "root": "DevelopersGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150peclaimsdev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -231,7 +259,8 @@
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150peclaimsrefguides",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -239,7 +268,8 @@
       "root": "digital-release-notes.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150peclaimsrelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -247,7 +277,8 @@
       "root": "admin-and-security-guide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150sreadmin",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -255,7 +286,8 @@
       "root": "ServiceRepEngage_AppGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150sreapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -263,7 +295,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150sreinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -271,7 +304,8 @@
       "root": "DevelopersGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150sredev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -279,7 +313,8 @@
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150srerefguides",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -287,7 +322,8 @@
       "root": "digital-release-notes.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150srerelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -295,7 +331,8 @@
       "root": "admin-and-security-guide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150veadmin",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -303,7 +340,8 @@
       "root": "VendorEngage_AppGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150veapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -311,7 +349,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150veinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -319,7 +358,8 @@
       "root": "DevelopersGuide.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150vedev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -327,7 +367,8 @@
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150verefguides",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -335,7 +376,8 @@
       "root": "digital-release-notes.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150verelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -343,7 +385,8 @@
       "root": "Digital_ReleaseNotes_log4j.ditamap",
       "srcId": "dx1150",
       "docId": "dx1150log4jrelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

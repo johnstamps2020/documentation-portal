@@ -7,7 +7,8 @@
       "root": "surepath.ditamap",
       "srcId": "standards202303src",
       "docId": "standardslatest",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "surepath.ditamap",
       "srcId": "standards202303src",
       "docId": "standards202303",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "surepath.ditamap",
       "srcId": "standardsmastersrc",
       "docId": "standardsmaster",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }
