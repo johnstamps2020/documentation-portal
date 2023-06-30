@@ -1,0 +1,14 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "ClaimsIntakeFNOLTemplate.ditamap",
+      "srcId": "is202209src",
+      "docId": "is202209fnoltemplate",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}
