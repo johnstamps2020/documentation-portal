@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config/config-schema.json",
   "builds": [
     {
       "buildType": "dita",
@@ -7,7 +7,8 @@
       "root": "lob-bop-10x.ditamap",
       "srcId": "lobbopguidebanffsrc",
       "docId": "lobbopguidebanff",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "BOP_SBT_ReleaseNotes-10x.ditamap",
       "srcId": "lobbopsbtrnbanffsrc",
       "docId": "lobbopsbtrnbanff",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "lob-gl-9x-1003.ditamap",
       "srcId": "lobglguidebanffsrc",
       "docId": "lobglguidebanff",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "GL_SBT_ReleaseNotes-9x-1003.ditamap",
       "srcId": "lobglsbtrnbanffsrc",
       "docId": "lobglsbtrnbanff",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "lob-ca-10x.ditamap",
       "srcId": "lobcaguidebanffsrc",
       "docId": "lobcaguidebanff",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -47,7 +52,8 @@
       "root": "CA_SBT_ReleaseNotesCW2020-10x.ditamap",
       "srcId": "lobcasbtrnbanffsrc",
       "docId": "lobcasbtrnbanff",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -55,7 +61,8 @@
       "root": "lob-crime.ditamap",
       "srcId": "lobcrimeguidebanffsrc",
       "docId": "lobcrimeguidebanff",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -63,7 +70,8 @@
       "root": "Crime_SBT_ReleaseNotes.ditamap",
       "srcId": "lobcrimesbtrnbanffsrc",
       "docId": "lobcrimesbtrnbanff",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -71,7 +79,8 @@
       "root": "lob-wc.ditamap",
       "srcId": "lobwcguidebanffsrc",
       "docId": "lobwcguidebanff",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -79,7 +88,8 @@
       "root": "WC_SBT_ReleaseNotes.ditamap",
       "srcId": "lobwcsbtrnbanffsrc",
       "docId": "lobwcsbtrnbanff",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -87,7 +97,8 @@
       "root": "lob-bop-10x.ditamap",
       "srcId": "lobbopguideaspensrc",
       "docId": "lobbopguideaspen",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -95,7 +106,8 @@
       "root": "BOP_SBT_ReleaseNotes-10x.ditamap",
       "srcId": "lobbopsbtrnaspensrc",
       "docId": "lobbopsbtrnaspen",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -103,7 +115,8 @@
       "root": "lob-gl-9x-1003.ditamap",
       "srcId": "lobglguideaspensrc",
       "docId": "lobglguideaspen",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -111,7 +124,8 @@
       "root": "GL_SBT_ReleaseNotes-9x-1003.ditamap",
       "srcId": "lobglsbtrnaspensrc",
       "docId": "lobglsbtrnaspen",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -119,7 +133,8 @@
       "root": "lob-ca-10x.ditamap",
       "srcId": "lobcaguideaspensrc",
       "docId": "lobcaguideaspen",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -127,7 +142,8 @@
       "root": "CA_SBT_ReleaseNotesCW2020-10x.ditamap",
       "srcId": "lobcasbtrnaspensrc",
       "docId": "lobcasbtrnaspen",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -135,7 +151,8 @@
       "root": "lob-crime.ditamap",
       "srcId": "lobcrimeguideaspensrc",
       "docId": "lobcrimeguideaspen",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -143,7 +160,8 @@
       "root": "Crime_SBT_ReleaseNotes.ditamap",
       "srcId": "lobcrimesbtrnaspensrc",
       "docId": "lobcrimesbtrnaspen",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     }
   ]
 }

@@ -4,17 +4,20 @@
     {
       "buildType": "yarn",
       "docId": "jutroplatformflaine",
-      "srcId": "srcjutroplatformflaine"
+      "srcId": "srcjutroplatformflaine",
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "jutroplatformgarmisch",
-      "srcId": "srcjutroplatformgarmisch"
+      "srcId": "srcjutroplatformgarmisch",
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "jutroplatformnext",
-      "srcId": "srcjutroplatformnext"
+      "srcId": "srcjutroplatformnext",
+      "disabled": false
     }
   ]
 }

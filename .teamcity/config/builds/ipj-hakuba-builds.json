@@ -7,7 +7,8 @@
       "root": "IPJReleaseNotes.ditamap",
       "srcId": "ipjhakubasrc",
       "docId": "ipjhakubarn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "IPJConfigurationGuide.ditamap",
       "srcId": "ipjhakubasrc",
       "docId": "ipjhakubaconfig",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "IPJApplicationGuide.ditamap",
       "srcId": "ipjhakubasrc",
       "docId": "ipjhakubaapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "IPJInstallationGuide.ditamap",
       "srcId": "ipjhakubasrc",
       "docId": "ipjhakubainstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

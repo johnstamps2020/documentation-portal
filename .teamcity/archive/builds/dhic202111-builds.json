@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config/config-schema.json",
   "builds": [
     {
       "buildType": "dita",
@@ -7,7 +7,8 @@
       "root": "product.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dhproduct202111",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "install.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dhinstall202111",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "upgrade.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dhupgrade202111",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "config.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dhconfig202111",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "dataspec.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dhdataspec202111",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -47,7 +52,8 @@
       "root": "admin.ditamap",
       "srcId": "dm2021111060src",
       "docId": "dhadmin202111",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -62,7 +68,8 @@
           "sourceFolder": "Dobson-10.6/DataHub/autoGenFiles/cloud",
           "targetFolder": "extras/autoGenFiles/cloud"
         }
-      ]
+      ],
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -70,7 +77,8 @@
       "root": "product.ditamap",
       "srcId": "dm2021111060src",
       "docId": "icproduct202111",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -78,7 +86,8 @@
       "root": "install.ditamap",
       "srcId": "dm2021111060src",
       "docId": "icinstall202111",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -86,7 +95,8 @@
       "root": "upgrade.ditamap",
       "srcId": "dm2021111060src",
       "docId": "icupgrade202111",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -94,7 +104,8 @@
       "root": "config.ditamap",
       "srcId": "dm2021111060src",
       "docId": "icconfig202111",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -102,7 +113,8 @@
       "root": "dataspec.ditamap",
       "srcId": "dm2021111060src",
       "docId": "icdataspec202111",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -110,7 +122,8 @@
       "root": "admin.ditamap",
       "srcId": "dm2021111060src",
       "docId": "icadmin202111",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -118,7 +131,8 @@
       "root": "bi-applications.ditamap",
       "srcId": "dm2021111060src",
       "docId": "icbiapp202111",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -126,7 +140,8 @@
       "root": "reports.ditamap",
       "srcId": "dm2021111060src",
       "docId": "icreports202111",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -141,7 +156,8 @@
           "sourceFolder": "Dobson-10.6/InfoCenter/autoGenFiles/cloud",
           "targetFolder": "extras/autoGenFiles/cloud"
         }
-      ]
+      ],
+      "disabled": true
     }
   ]
 }

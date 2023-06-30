@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config/config-schema.json",
   "builds": [
     {
       "buildType": "dita",
@@ -7,7 +7,8 @@
       "root": "Guidewire_For_Salesforce_AppGuide.ditamap",
       "srcId": "dxgwsf34",
       "docId": "dxdiapp34",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "Guidewire_For_Salesforce_install-guide.ditamap",
       "srcId": "dxgwsf34",
       "docId": "dxdiinstall34",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "gw-for-sf-developer-admin-guide.ditamap",
       "srcId": "dxgwsf34",
       "docId": "dxdiadmin34",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     }
   ]
 }

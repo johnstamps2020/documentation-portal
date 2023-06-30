@@ -7,7 +7,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202104src",
       "docId": "dx202104ceamrelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202104src",
       "docId": "dx202104ceclaimsrelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202104src",
       "docId": "dx202104ceqbrelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202104src",
       "docId": "dx202104perelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202104src",
       "docId": "dx202104peclaimsrelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -47,7 +52,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202104src",
       "docId": "dx202104srerelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -55,7 +61,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202104src",
       "docId": "dx202104verelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -63,7 +70,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202111src",
       "docId": "dx202111ceamrelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -71,7 +79,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202111src",
       "docId": "dx202111ceclaimsrelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -79,7 +88,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202111src",
       "docId": "dx202111ceqbrelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -87,7 +97,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202111src",
       "docId": "dx202111perelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -95,7 +106,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202111src",
       "docId": "dx202111peclaimsrelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -103,7 +115,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202111src",
       "docId": "dx202111srerelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -111,7 +124,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202111src",
       "docId": "dx202111verelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

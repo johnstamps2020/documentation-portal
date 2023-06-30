@@ -4,17 +4,20 @@
     {
       "buildType": "yarn",
       "docId": "pc202104apiref",
-      "srcId": "srcpcapiref202011"
+      "srcId": "srcpcapiref202011",
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "cc202104apiref",
-      "srcId": "srcapiref202104"
+      "srcId": "srcapiref202104",
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "in20211apiref",
-      "srcId": "srcin20211apiref"
+      "srcId": "srcin20211apiref",
+      "disabled": false
     }
   ]
 }

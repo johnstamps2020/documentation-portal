@@ -7,7 +7,8 @@
       "root": "GT-API.ditamap",
       "srcId": "testingframeworks202306src",
       "docId": "testingframeworksapihakuba",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "GT-UI.ditamap",
       "srcId": "testingframeworks202306src",
       "docId": "testingframeworksuihakuba",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "GT-Load.ditamap",
       "srcId": "testingframeworks202306src",
       "docId": "testingframeworksloadhakuba",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "GT-Management.ditamap",
       "srcId": "testingframeworks202306src",
       "docId": "testingframeworksmgmthakuba",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "GT-Matrix.ditamap",
       "srcId": "testingframeworks202306src",
       "docId": "testingframeworksmatrixhakuba",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -47,7 +52,8 @@
       "root": "Guidewire_Test_Automation202306_ReleaseNotes.ditamap",
       "srcId": "testingframeworks202306src",
       "docId": "testingframeworksrnhakuba",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -55,7 +61,8 @@
       "root": "GT-Framework-Installation.ditamap",
       "srcId": "testingframeworks202306src",
       "docId": "testingframeworksinstallhakuba",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -63,7 +70,8 @@
       "root": "ISUnitTesting.ditamap",
       "srcId": "testingframeworks202306src",
       "docId": "is202306testing",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -71,7 +79,8 @@
       "root": "GT-Accessibility.ditamap",
       "srcId": "testingframeworks202306src",
       "docId": "is202306access",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

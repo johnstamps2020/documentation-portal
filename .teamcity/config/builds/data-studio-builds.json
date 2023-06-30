@@ -7,7 +7,8 @@
       "root": "b_data-studio.ditamap",
       "srcId": "datastudioreleasesrc",
       "docId": "datastudiorelease",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

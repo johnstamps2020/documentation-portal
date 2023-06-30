@@ -1,6 +1,4 @@
 {
-  "$schema": "../config-schema.json",
-  "docs": [
-    
-  ]
+  "$schema": "../../config/config-schema.json",
+  "docs": []
 }

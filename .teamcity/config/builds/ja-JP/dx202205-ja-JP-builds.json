@@ -7,7 +7,8 @@
       "root": "CustomerEngage_Claims_AppGuide.ditamap",
       "srcId": "dx202205jaJPsrc",
       "docId": "dx202205jaJPceclaimsapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "DevelopersGuide.ditamap",
       "srcId": "dx202205jaJPsrc",
       "docId": "dx202205jaJPceclaimsdev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx202205jaJPsrc",
       "docId": "dx202205jaJPceclaimsinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "CustomerEngage_Claims_AppGuide.ditamap",
       "srcId": "dx202205jaJPsrc",
       "docId": "dx202205jaJPsreapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "DevelopersGuide.ditamap",
       "srcId": "dx202205jaJPsrc",
       "docId": "dx202205jaJPsredev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -47,7 +52,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx202205jaJPsrc",
       "docId": "dx202205jaJPsreinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -55,7 +61,8 @@
       "root": "CustomerEngage_Claims_AppGuide.ditamap",
       "srcId": "dx202205jaJPsrc",
       "docId": "dx202205jaJPveapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -63,7 +70,8 @@
       "root": "DevelopersGuide.ditamap",
       "srcId": "dx202205jaJPsrc",
       "docId": "dx202205jaJPvedev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -71,7 +79,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx202205jaJPsrc",
       "docId": "dx202205jaJPveinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

@@ -7,7 +7,8 @@
       "root": "UnderstandingCloudDataAccess.ditamap",
       "srcId": "clouddataaccessptBRsrc",
       "docId": "clouddataaccessguideptBR",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

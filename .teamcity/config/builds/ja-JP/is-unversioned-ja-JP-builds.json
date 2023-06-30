@@ -7,7 +7,8 @@
       "root": "GosuRefGuide.ditamap",
       "srcId": "is202205jaJPsrc",
       "docId": "gosureflatestjaJP",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "Glossary.ditamap",
       "srcId": "is202205jaJPsrc",
       "docId": "gwglossaryjaJP",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

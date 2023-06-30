@@ -7,7 +7,8 @@
       "root": "AdminGuide.ditamap",
       "srcId": "is202209src",
       "docId": "isbcflainegwadmin",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "DeveloperSetupGuide.ditamap",
       "srcId": "is202209src",
       "docId": "isbcflainegwdevsetup",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "AdminGuide.ditamap",
       "srcId": "is202209src",
       "docId": "isccflainegwadmin",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "DeveloperSetupGuide.ditamap",
       "srcId": "is202209src",
       "docId": "isccflainegwdevsetup",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "AdminGuide.ditamap",
       "srcId": "is202209src",
       "docId": "ispcflainegwadmin",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -47,7 +52,8 @@
       "root": "DeveloperSetupGuide.ditamap",
       "srcId": "is202209src",
       "docId": "ispcflainegwdevsetup",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

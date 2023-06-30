@@ -1033,100 +1033,110 @@ object Docs {
         val docProjectBuildTypes = mutableListOf<BuildType>()
         val customEnv = if (buildConfig.has("customEnv")) buildConfig.getJSONArray("customEnv") else null
 
-        when (gwBuildType) {
-            GwBuildTypes.YARN.buildTypeName -> {
-                val nodeImageVersion =
-                    if (buildConfig.has("nodeImageVersion")) buildConfig.getString("nodeImageVersion") else null
-                val buildCommand =
-                    if (buildConfig.has("yarnBuildCustomCommand")) buildConfig.getString("yarnBuildCustomCommand") else null
-                docProjectBuildTypes += createYarnBuildTypes(
-                    docEnvironmentsList,
-                    docId,
-                    srcId,
-                    publishPath,
-                    workingDir,
-                    outputDir,
-                    indexForSearch,
-                    buildCommand,
-                    nodeImageVersion,
-                    gwPlatformsString,
-                    gwProductsString,
-                    gwVersionsString,
-                    customEnv
-                )
-            }
+        val buildIsDisabled = buildConfig.getBoolean("disabled")
+        if (!buildIsDisabled) {
+            when (gwBuildType) {
+                GwBuildTypes.YARN.buildTypeName -> {
+                    val nodeImageVersion =
+                        if (buildConfig.has("nodeImageVersion")) buildConfig.getString("nodeImageVersion") else null
+                    val buildCommand =
+                        if (buildConfig.has("yarnBuildCustomCommand")) buildConfig.getString("yarnBuildCustomCommand") else null
+                    docProjectBuildTypes += createYarnBuildTypes(
+                        docEnvironmentsList,
+                        docId,
+                        srcId,
+                        publishPath,
+                        workingDir,
+                        outputDir,
+                        indexForSearch,
+                        buildCommand,
+                        nodeImageVersion,
+                        gwPlatformsString,
+                        gwProductsString,
+                        gwVersionsString,
+                        customEnv
+                    )
+                }
 
-            GwBuildTypes.STORYBOOK.buildTypeName -> {
-                docProjectBuildTypes += createStorybookBuildTypes(
-                    docEnvironmentsList,
-                    docId,
-                    srcId,
-                    publishPath,
-                    workingDir,
-                    outputDir,
-                    indexForSearch,
-                    gwPlatformsString,
-                    gwProductsString,
-                    gwVersionsString,
-                    customEnv
-                )
-            }
+                GwBuildTypes.STORYBOOK.buildTypeName -> {
+                    docProjectBuildTypes += createStorybookBuildTypes(
+                        docEnvironmentsList,
+                        docId,
+                        srcId,
+                        publishPath,
+                        workingDir,
+                        outputDir,
+                        indexForSearch,
+                        gwPlatformsString,
+                        gwProductsString,
+                        gwVersionsString,
+                        customEnv
+                    )
+                }
 
-            GwBuildTypes.DITA.buildTypeName -> {
-                val rootMap = buildConfig.getString("root")
-                val indexRedirect = when (buildConfig.has("indexRedirect")) {
-                    true -> {
-                        buildConfig.getBoolean("indexRedirect")
+                GwBuildTypes.DITA.buildTypeName -> {
+                    val rootMap = buildConfig.getString("root")
+                    val indexRedirect = when (buildConfig.has("indexRedirect")) {
+                        true -> {
+                            buildConfig.getBoolean("indexRedirect")
+                        }
+
+                        else -> {
+                            false
+                        }
+
                     }
+                    val buildFilter = when (buildConfig.has("filter")) {
+                        true -> {
+                            buildConfig.getString("filter")
+                        }
 
-                    else -> {
-                        false
+                        else -> {
+                            null
+                        }
                     }
+                    val resourcesToCopy =
+                        if (buildConfig.has("resources")) buildConfig.getJSONArray("resources") else JSONArray()
+
+                    docProjectBuildTypes += createDitaBuildTypes(
+                        docEnvironmentsList,
+                        docId,
+                        srcId,
+                        gitUrl,
+                        gitBranch,
+                        publishPath,
+                        workingDir,
+                        outputDir,
+                        docTitle,
+                        indexForSearch,
+                        rootMap,
+                        indexRedirect,
+                        buildFilter,
+                        gwPlatformsString,
+                        resourcesToCopy
+                    )
 
                 }
-                val buildFilter = when (buildConfig.has("filter")) {
-                    true -> {
-                        buildConfig.getString("filter")
-                    }
 
-                    else -> {
-                        null
-                    }
+                GwBuildTypes.SOURCE_ZIP.buildTypeName -> {
+                    val zipFilename = buildConfig.getString("zipFilename")
+                    docProjectBuildTypes += createSourceZipBuildTypes(
+                        docEnvironmentsList,
+                        docId,
+                        srcId,
+                        publishPath,
+                        workingDir,
+                        outputDir,
+                        indexForSearch,
+                        zipFilename
+                    )
                 }
-                val resourcesToCopy =
-                    if (buildConfig.has("resources")) buildConfig.getJSONArray("resources") else JSONArray()
 
-                docProjectBuildTypes += createDitaBuildTypes(
-                    docEnvironmentsList,
-                    docId,
-                    srcId,
-                    gitUrl,
-                    gitBranch,
-                    publishPath,
-                    workingDir,
-                    outputDir,
-                    docTitle,
-                    indexForSearch,
-                    rootMap,
-                    indexRedirect,
-                    buildFilter,
-                    gwPlatformsString,
-                    resourcesToCopy
-                )
-
-            }
-
-            GwBuildTypes.SOURCE_ZIP.buildTypeName -> {
-                val zipFilename = buildConfig.getString("zipFilename")
-                docProjectBuildTypes += createSourceZipBuildTypes(
-                    docEnvironmentsList, docId, srcId, publishPath, workingDir, outputDir, indexForSearch, zipFilename
-                )
-            }
-
-            GwBuildTypes.JUST_COPY.buildTypeName -> {
-                docProjectBuildTypes += createJustCopyBuildTypes(
-                    docEnvironmentsList, docId, srcId, publishPath, workingDir, outputDir
-                )
+                GwBuildTypes.JUST_COPY.buildTypeName -> {
+                    docProjectBuildTypes += createJustCopyBuildTypes(
+                        docEnvironmentsList, docId, srcId, publishPath, workingDir, outputDir
+                    )
+                }
             }
         }
 

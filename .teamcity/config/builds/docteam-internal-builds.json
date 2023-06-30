@@ -7,7 +7,8 @@
       "root": "DitaDocGuide.ditamap",
       "srcId": "docguidesrc",
       "docId": "docguide",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "DocToolsAdminGuide.ditamap",
       "srcId": "doctoolsadminsrc",
       "docId": "doctoolsadmin",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "Element-Rendering.ditamap",
       "srcId": "elemrendsrc",
       "docId": "elemrend",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "yarn",
@@ -31,7 +34,8 @@
       "docId": "docusaurusgwdocslatest",
       "nodeImageVersion": "16.16.0",
       "yarnBuildCustomCommand": "build:doc-site",
-      "outputPath": "docusaurus/doc-site/build"
+      "outputPath": "docusaurus/doc-site/build",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "gw/LearningInDita.ditamap",
       "srcId": "learninginditasrc",
       "docId": "learningindita",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

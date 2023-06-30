@@ -7,7 +7,8 @@
       "root": "ContactMgmtGuide.ditamap",
       "srcId": "is202111es419src",
       "docId": "is202111contactes419",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "BC-AppGuide.ditamap",
       "srcId": "is202111es419src",
       "docId": "isbc202111appes419",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "CC-AppGuide.ditamap",
       "srcId": "is202111es419src",
       "docId": "iscc202111appes419",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "PC-AppGuide.ditamap",
       "srcId": "is202111es419src",
       "docId": "ispc202111appes419",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

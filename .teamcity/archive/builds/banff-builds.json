@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config/config-schema.json",
   "builds": [
     {
       "buildType": "dita",
@@ -13,7 +13,8 @@
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
-      ]
+      ],
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -27,63 +28,72 @@
           "targetFolder": "extras",
           "srcId": "dhicextrassrc"
         }
-      ]
+      ],
+      "disabled": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-ce-am-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202011",
-      "docId": "dxceam202011"
+      "docId": "dxceam202011",
+      "disabled": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-ce-claims-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202011",
-      "docId": "dxceclaims202011"
+      "docId": "dxceclaims202011",
+      "disabled": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-ce-qb-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202011",
-      "docId": "dxceqb202011"
+      "docId": "dxceqb202011",
+      "disabled": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-apd-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202011",
-      "docId": "dxapd202011"
+      "docId": "dxapd202011",
+      "disabled": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-pe-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202011",
-      "docId": "dxpe202011"
+      "docId": "dxpe202011",
+      "disabled": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-pe-claims-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202011",
-      "docId": "dxpeclaims202011"
+      "docId": "dxpeclaims202011",
+      "disabled": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-sre-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202011",
-      "docId": "dxsre202011"
+      "docId": "dxsre202011",
+      "disabled": true
     },
     {
       "buildType": "dita",
       "filter": "Digital-ve-MgSvcs.ditaval",
       "root": "DX_superbook.ditamap",
       "srcId": "dx202011",
-      "docId": "dxve202011"
+      "docId": "dxve202011",
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -103,7 +113,8 @@
           "targetFolder": "extras/ReleaseNotes-files/cm/2020.11",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -111,7 +122,8 @@
       "root": "NewAndChangedGuide.ditamap",
       "srcId": "is202011src",
       "docId": "isbc202011newandchanged",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -119,7 +131,8 @@
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide202011src",
-      "docId": "isbc202011upgrade"
+      "docId": "isbc202011upgrade",
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -127,7 +140,8 @@
       "root": "BC-AppGuide.ditamap",
       "srcId": "is202011src",
       "docId": "isbc202011app",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -135,7 +149,8 @@
       "root": "AdminGuide.ditamap",
       "srcId": "is202011src",
       "docId": "isbc202011admin",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -143,7 +158,8 @@
       "root": "BestPracticesGuide.ditamap",
       "srcId": "is202011src",
       "docId": "isbc202011bestpractice",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -151,7 +167,8 @@
       "root": "ConfigGuide.ditamap",
       "srcId": "is202011src",
       "docId": "isbc202011config",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -159,7 +176,8 @@
       "root": "GlobalizationGuide.ditamap",
       "srcId": "is202011src",
       "docId": "isbc202011global",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -167,7 +185,8 @@
       "root": "RulesGuide.ditamap",
       "srcId": "is202011src",
       "docId": "isbc202011rules",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -175,7 +194,8 @@
       "root": "IntegrationGuide.ditamap",
       "srcId": "is202011src",
       "docId": "isbc202011integ",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -183,7 +203,8 @@
       "root": "TestingGuide.ditamap",
       "srcId": "is202011src",
       "docId": "isbc202011testing",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -191,7 +212,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "is202011src",
       "docId": "isbc202011install",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -211,7 +233,8 @@
           "targetFolder": "extras/ReleaseNotes-files/cm/2020.11",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -219,7 +242,8 @@
       "root": "NewAndChangedGuide.ditamap",
       "srcId": "is202011src",
       "docId": "iscc202011newandchanged",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -227,7 +251,8 @@
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide202011src",
-      "docId": "iscc202011upgrade"
+      "docId": "iscc202011upgrade",
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -235,7 +260,8 @@
       "root": "CC-AppGuide.ditamap",
       "srcId": "is202011src",
       "docId": "iscc202011app",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -243,7 +269,8 @@
       "root": "AdminGuide.ditamap",
       "srcId": "is202011src",
       "docId": "iscc202011admin",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -251,7 +278,8 @@
       "root": "BestPracticesGuide.ditamap",
       "srcId": "is202011src",
       "docId": "iscc202011bestpractice",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -259,7 +287,8 @@
       "root": "ConfigGuide.ditamap",
       "srcId": "is202011src",
       "docId": "iscc202011config",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -267,7 +296,8 @@
       "root": "GlobalizationGuide.ditamap",
       "srcId": "is202011src",
       "docId": "iscc202011global",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -275,7 +305,8 @@
       "root": "RulesGuide.ditamap",
       "srcId": "is202011src",
       "docId": "iscc202011rules",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -283,7 +314,8 @@
       "root": "IntegrationGuide.ditamap",
       "srcId": "is202011src",
       "docId": "iscc202011integ",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -291,7 +323,8 @@
       "root": "CloudAPIGuide-BusinessFlows.ditamap",
       "srcId": "is202011src",
       "docId": "iscc202011cloudapibf",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -299,7 +332,8 @@
       "root": "CloudAPIGuide-ConfigAuth.ditamap",
       "srcId": "is202011src",
       "docId": "iscc202011cloudapica",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -307,7 +341,8 @@
       "root": "TestingGuide.ditamap",
       "srcId": "is202011src",
       "docId": "iscc202011testing",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -315,7 +350,8 @@
       "root": "RESTAPIFramework.ditamap",
       "srcId": "is202011src",
       "docId": "iscc202011restapifw",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -323,7 +359,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "is202011src",
       "docId": "iscc202011install",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -343,7 +380,8 @@
           "targetFolder": "extras/ReleaseNotes-files/cm/2020.11",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -351,7 +389,8 @@
       "root": "NewAndChangedGuide.ditamap",
       "srcId": "is202011src",
       "docId": "ispc202011newandchanged",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -359,7 +398,8 @@
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide202011src",
-      "docId": "ispc202011upgrade"
+      "docId": "ispc202011upgrade",
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -367,7 +407,8 @@
       "root": "PC-AppGuide.ditamap",
       "srcId": "is202011src",
       "docId": "ispc202011app",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -375,7 +416,8 @@
       "root": "AdminGuide.ditamap",
       "srcId": "is202011src",
       "docId": "ispc202011admin",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -383,7 +425,8 @@
       "root": "BestPracticesGuide.ditamap",
       "srcId": "is202011src",
       "docId": "ispc202011bestpractice",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -391,7 +434,8 @@
       "root": "AdvancedProductDesigner.ditamap",
       "srcId": "is202011src",
       "docId": "ispc202011apd",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -399,7 +443,8 @@
       "root": "ConfigGuide.ditamap",
       "srcId": "is202011src",
       "docId": "ispc202011config",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -407,7 +452,8 @@
       "root": "GlobalizationGuide.ditamap",
       "srcId": "is202011src",
       "docId": "ispc202011global",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -415,7 +461,8 @@
       "root": "RulesGuide.ditamap",
       "srcId": "is202011src",
       "docId": "ispc202011rules",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -423,7 +470,8 @@
       "root": "ProductDesignerGuide.ditamap",
       "srcId": "is202011src",
       "docId": "ispc202011pd",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -431,7 +479,8 @@
       "root": "ProductModelGuide.ditamap",
       "srcId": "is202011src",
       "docId": "ispc202011pm",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -439,7 +488,8 @@
       "root": "IntegrationGuide.ditamap",
       "srcId": "is202011src",
       "docId": "ispc202011integ",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -447,7 +497,8 @@
       "root": "CloudAPIGuide.ditamap",
       "srcId": "is202011src",
       "docId": "ispc202011cloudapi",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -455,7 +506,8 @@
       "root": "CloudAPIGuide-BusinessFlows.ditamap",
       "srcId": "is202011src",
       "docId": "ispc202011cloudapibf",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -463,7 +515,8 @@
       "root": "CloudAPIGuide-ConfigAuth.ditamap",
       "srcId": "is202011src",
       "docId": "ispc202011cloudapica",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -471,7 +524,8 @@
       "root": "TestingGuide.ditamap",
       "srcId": "is202011src",
       "docId": "ispc202011testing",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -479,7 +533,8 @@
       "root": "RESTAPIFramework.ditamap",
       "srcId": "is202011src",
       "docId": "ispc202011restapifw",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -487,7 +542,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "is202011src",
       "docId": "ispc202011install",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -495,12 +551,14 @@
       "root": "ContactMgmtGuide.ditamap",
       "srcId": "is202011src",
       "docId": "is202011contact",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "yarn",
       "docId": "cc202011apiref",
-      "srcId": "srcapiref202011"
+      "srcId": "srcapiref202011",
+      "disabled": true
     }
   ]
 }

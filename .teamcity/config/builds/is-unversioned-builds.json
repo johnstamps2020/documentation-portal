@@ -7,7 +7,8 @@
       "root": "ISUpgradeCompatibility.ditamap",
       "srcId": "isunversionedsrc",
       "docId": "isupgradecompatibility",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

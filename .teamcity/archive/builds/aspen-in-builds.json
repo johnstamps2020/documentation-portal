@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config/config-schema.json",
   "builds": [
     {
       "buildType": "dita",
@@ -7,7 +7,8 @@
       "root": "BusinessIntelligenceGettingStartedGuide20201x.ditamap",
       "srcId": "in20201src",
       "docId": "in20201bi",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "ConsumerServicePortalFeatures20201x.ditamap",
       "srcId": "in20201src",
       "docId": "in20201cservicep",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "AppReaderIntegrationGuide20201x.ditamap",
       "srcId": "in20201src",
       "docId": "in20201appreaderinteg",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "PredictiveAnalyticsIntegration20201.ditamap",
       "srcId": "in20201src",
       "docId": "in20201pa",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "Configuration20201x.ditamap",
       "srcId": "in20201src",
       "docId": "in20201config",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -47,7 +52,8 @@
       "root": "StudioConfigurationGuide20201x.ditamap",
       "srcId": "in20201src",
       "docId": "in20201studio",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -55,7 +61,8 @@
       "root": "PortalDevelopment20201x.ditamap",
       "srcId": "in20201src",
       "docId": "in20201portaldev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -63,7 +70,8 @@
       "root": "INowStudioReleaseNotes20201Aspen.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20201studiorn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -78,7 +86,8 @@
           "sourceFolder": "ChangedFiles/2020.1",
           "srcId": "insurancenowextrassrc"
         }
-      ]
+      ],
+      "disabled": true
     }
   ]
 }

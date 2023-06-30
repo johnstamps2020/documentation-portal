@@ -7,7 +7,8 @@
       "root": "ImplementationGuide.ditamap",
       "srcId": "midipg36src",
       "docId": "midipgimpl36",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "IPGApplicationGuide.ditamap",
       "srcId": "midipg36src",
       "docId": "midipgapp36",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "midipg36src",
       "docId": "midipginstall36",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "IPGGlossary.ditamap",
       "srcId": "midipg36src",
       "docId": "midipgglossary36",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "IPGReleaseNotes.ditamap",
       "srcId": "midipg36src",
       "docId": "midipgrnen36",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -47,7 +52,8 @@
       "root": "IPGReleaseNotesDE.ditamap",
       "srcId": "midipg36src",
       "docId": "midipgrnde36",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -55,7 +61,8 @@
       "root": "IPGApplicationGuideDE.ditamap",
       "srcId": "midipg36src",
       "docId": "midipgappde36",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

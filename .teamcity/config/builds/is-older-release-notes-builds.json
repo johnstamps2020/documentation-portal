@@ -19,7 +19,8 @@
           "targetFolder": "extras/ReleaseNotes-files/cm/2021.04",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +40,8 @@
           "targetFolder": "extras/ReleaseNotes-files/cm/2021.04",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -59,7 +61,8 @@
           "targetFolder": "extras/ReleaseNotes-files/cm/2021.04",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -79,7 +82,8 @@
           "targetFolder": "extras/ReleaseNotes-files/cm/2021.11",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -99,7 +103,8 @@
           "targetFolder": "extras/ReleaseNotes-files/cm/2021.11",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -119,7 +124,8 @@
           "targetFolder": "extras/ReleaseNotes-files/cm/2021.11",
           "srcId": "insurancesuiteextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     }
   ]
 }

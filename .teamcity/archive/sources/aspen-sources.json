@@ -1,45 +1,39 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config/config-schema.json",
   "sources": [
     {
       "id": "in20201src",
       "title": "InsuranceNow 2020.1",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
       "branch": "release/2020.1ASPEN"
     },
     {
       "id": "cloudis202005src",
       "title": "InsuranceSuite 2020.05",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
       "branch": "release/2020.05.2"
     },
     {
       "id": "dhic202005",
       "title": "Data Management 2020.05",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "release/2020.05"
     },
     {
       "id": "dx202010",
       "title": "Digital 2020.10",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
       "branch": "release/2020.10"
     },
     {
       "id": "dx202008",
       "title": "Digital 2020.08",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
       "branch": "release/2020.08"
     },
     {
       "id": "dx202005",
       "title": "Digital 2020.05",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
       "branch": "release/2020.05"
     }

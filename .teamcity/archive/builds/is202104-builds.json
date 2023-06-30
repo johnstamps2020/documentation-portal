@@ -1,5 +1,5 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config/config-schema.json",
   "builds": [
     {
       "buildType": "dita",
@@ -7,7 +7,8 @@
       "root": "NewAndChangedGuide.ditamap",
       "srcId": "is202104src",
       "docId": "isbc202104newandchanged",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide202104src",
-      "docId": "isbc202104upgrade"
+      "docId": "isbc202104upgrade",
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "BC-AppGuide.ditamap",
       "srcId": "is202104src",
       "docId": "isbc202104app",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "AdminGuide.ditamap",
       "srcId": "is202104src",
       "docId": "isbc202104admin",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "BestPracticesGuide.ditamap",
       "srcId": "is202104src",
       "docId": "isbc202104bestpractice",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -47,7 +52,8 @@
       "root": "ConfigGuide.ditamap",
       "srcId": "is202104src",
       "docId": "isbc202104config",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -55,7 +61,8 @@
       "root": "GlobalizationGuide.ditamap",
       "srcId": "is202104src",
       "docId": "isbc202104global",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -63,7 +70,8 @@
       "root": "RulesGuide.ditamap",
       "srcId": "is202104src",
       "docId": "isbc202104rules",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -71,7 +79,8 @@
       "root": "IntegrationGuide.ditamap",
       "srcId": "is202104src",
       "docId": "isbc202104integ",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -79,7 +88,8 @@
       "root": "TestingGuide.ditamap",
       "srcId": "is202104src",
       "docId": "isbc202104testing",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -87,7 +97,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "is202104src",
       "docId": "isbc202104install",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -95,7 +106,8 @@
       "root": "NewAndChangedGuide.ditamap",
       "srcId": "is202104src",
       "docId": "iscc202104newandchanged",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -103,7 +115,8 @@
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide202104src",
-      "docId": "iscc202104upgrade"
+      "docId": "iscc202104upgrade",
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -111,7 +124,8 @@
       "root": "CC-AppGuide.ditamap",
       "srcId": "is202104src",
       "docId": "iscc202104app",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -119,7 +133,8 @@
       "root": "AdminGuide.ditamap",
       "srcId": "is202104src",
       "docId": "iscc202104admin",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -127,7 +142,8 @@
       "root": "BestPracticesGuide.ditamap",
       "srcId": "is202104src",
       "docId": "iscc202104bestpractice",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -135,7 +151,8 @@
       "root": "ConfigGuide.ditamap",
       "srcId": "is202104src",
       "docId": "iscc202104config",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -143,7 +160,8 @@
       "root": "GlobalizationGuide.ditamap",
       "srcId": "is202104src",
       "docId": "iscc202104global",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -151,7 +169,8 @@
       "root": "RulesGuide.ditamap",
       "srcId": "is202104src",
       "docId": "iscc202104rules",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -159,7 +178,8 @@
       "root": "IntegrationGuide.ditamap",
       "srcId": "is202104src",
       "docId": "iscc202104integ",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -167,7 +187,8 @@
       "root": "CloudAPIGuide-BusinessFlows.ditamap",
       "srcId": "is202104src",
       "docId": "iscc202104cloudapibf",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -175,7 +196,8 @@
       "root": "CloudAPIGuide-Auth.ditamap",
       "srcId": "is202104src",
       "docId": "iscc202104cloudapica",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -183,7 +205,8 @@
       "root": "CloudAPIGuide-ContactManager.ditamap",
       "srcId": "is202104src",
       "docId": "iscc202104cloudapicm",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -191,7 +214,8 @@
       "root": "TestingGuide.ditamap",
       "srcId": "is202104src",
       "docId": "iscc202104testing",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -199,7 +223,8 @@
       "root": "RESTAPIFramework.ditamap",
       "srcId": "is202104src",
       "docId": "iscc202104restapifw",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -207,7 +232,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "is202104src",
       "docId": "iscc202104install",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -215,7 +241,8 @@
       "root": "NewAndChangedGuide.ditamap",
       "srcId": "is202104src",
       "docId": "ispc202104newandchanged",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -223,7 +250,8 @@
       "root": "UpgradeGuide.ditamap",
       "indexRedirect": true,
       "srcId": "isupgradeguide202104src",
-      "docId": "ispc202104upgrade"
+      "docId": "ispc202104upgrade",
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -231,7 +259,8 @@
       "root": "PC-AppGuide.ditamap",
       "srcId": "is202104src",
       "docId": "ispc202104app",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -239,7 +268,8 @@
       "root": "AdminGuide.ditamap",
       "srcId": "is202104src",
       "docId": "ispc202104admin",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -247,7 +277,8 @@
       "root": "BestPracticesGuide.ditamap",
       "srcId": "is202104src",
       "docId": "ispc202104bestpractice",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -255,7 +286,8 @@
       "root": "AdvancedProductDesigner.ditamap",
       "srcId": "is202104src",
       "docId": "ispc202104apd",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -263,7 +295,8 @@
       "root": "ConfigGuide.ditamap",
       "srcId": "is202104src",
       "docId": "ispc202104config",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -271,7 +304,8 @@
       "root": "GlobalizationGuide.ditamap",
       "srcId": "is202104src",
       "docId": "ispc202104global",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -279,7 +313,8 @@
       "root": "RulesGuide.ditamap",
       "srcId": "is202104src",
       "docId": "ispc202104rules",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -287,7 +322,8 @@
       "root": "ProductDesignerGuide.ditamap",
       "srcId": "is202104src",
       "docId": "ispc202104pd",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -295,7 +331,8 @@
       "root": "ProductModelGuide.ditamap",
       "srcId": "is202104src",
       "docId": "ispc202104pm",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -303,7 +340,8 @@
       "root": "IntegrationGuide.ditamap",
       "srcId": "is202104src",
       "docId": "ispc202104integ",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -311,7 +349,8 @@
       "root": "CloudAPIGuide-BusinessFlows.ditamap",
       "srcId": "is202104src",
       "docId": "ispc202104cloudapibf",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -319,7 +358,8 @@
       "root": "CloudAPIGuide-Auth.ditamap",
       "srcId": "is202104src",
       "docId": "ispc202104cloudapica",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -327,7 +367,8 @@
       "root": "CloudAPIGuide-ContactManager.ditamap",
       "srcId": "is202104src",
       "docId": "ispc202104cloudapicm",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -335,7 +376,8 @@
       "root": "TestingGuide.ditamap",
       "srcId": "is202104src",
       "docId": "ispc202104testing",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -343,7 +385,8 @@
       "root": "RESTAPIFramework.ditamap",
       "srcId": "is202104src",
       "docId": "ispc202104restapifw",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -351,7 +394,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "is202104src",
       "docId": "ispc202104install",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     },
     {
       "buildType": "dita",
@@ -359,7 +403,8 @@
       "root": "ContactMgmtGuide.ditamap",
       "srcId": "is202104src",
       "docId": "is202104contact",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": true
     }
   ]
 }

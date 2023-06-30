@@ -7,7 +7,8 @@
       "root": "OICRelNotes.ditamap",
       "srcId": "ipukhakubasrc",
       "docId": "ipukhakubarn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "OICConfigGuide.ditamap",
       "srcId": "ipukhakubasrc",
       "docId": "ipukhakubaconfig",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "OICAppGuide.ditamap",
       "srcId": "ipukhakubasrc",
       "docId": "ipukhakubaapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

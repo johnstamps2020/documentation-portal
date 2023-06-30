@@ -14,7 +14,8 @@
           "targetFolder": "extras/releaseDiffFiles/cloud",
           "srcId": "dhicextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -22,7 +23,8 @@
       "root": "product.ditamap",
       "srcId": "dm202302109src",
       "docId": "dhproduct202302",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -30,7 +32,8 @@
       "root": "install.ditamap",
       "srcId": "dm202302109src",
       "docId": "dhinstall202302",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -38,7 +41,8 @@
       "root": "upgrade.ditamap",
       "srcId": "dm202302109src",
       "docId": "dhupgrade202302",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -46,7 +50,8 @@
       "root": "config.ditamap",
       "srcId": "dm202302109src",
       "docId": "dhconfig202302",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -54,7 +59,8 @@
       "root": "dataspec.ditamap",
       "srcId": "dm202302109src",
       "docId": "dhdataspec202302",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -62,7 +68,8 @@
       "root": "admin.ditamap",
       "srcId": "dm202302109src",
       "docId": "dhadmin202302",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -77,7 +84,8 @@
           "sourceFolder": "Garmisch-10.9/DataHub/autoGenFiles/cloud",
           "targetFolder": "extras/autoGenFiles/cloud"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -92,7 +100,8 @@
           "targetFolder": "extras/releaseDiffFiles/cloud",
           "srcId": "dhicextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -100,7 +109,8 @@
       "root": "product.ditamap",
       "srcId": "dm202302109src",
       "docId": "icproduct202302",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -108,7 +118,8 @@
       "root": "install.ditamap",
       "srcId": "dm202302109src",
       "docId": "icinstall202302",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -116,7 +127,8 @@
       "root": "upgrade.ditamap",
       "srcId": "dm202302109src",
       "docId": "icupgrade202302",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -124,7 +136,8 @@
       "root": "config.ditamap",
       "srcId": "dm202302109src",
       "docId": "icconfig202302",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -132,7 +145,8 @@
       "root": "dataspec.ditamap",
       "srcId": "dm202302109src",
       "docId": "icdataspec202302",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -140,7 +154,8 @@
       "root": "admin.ditamap",
       "srcId": "dm202302109src",
       "docId": "icadmin202302",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -148,7 +163,8 @@
       "root": "bi-applications.ditamap",
       "srcId": "dm202302109src",
       "docId": "icbiapp202302",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -156,7 +172,8 @@
       "root": "reports.ditamap",
       "srcId": "dm202302109src",
       "docId": "icreports202302",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -171,7 +188,8 @@
           "sourceFolder": "Garmisch-10.9/InfoCenter/autoGenFiles/cloud",
           "targetFolder": "extras/autoGenFiles/cloud"
         }
-      ]
+      ],
+      "disabled": false
     }
   ]
 }
