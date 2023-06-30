@@ -17,7 +17,8 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true
+      "earlyAccess": true,
+      "displayOnLandingPages": true
     },
     {
       "id": "workflowconsole",
@@ -35,7 +36,8 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true
+      "earlyAccess": true,
+      "displayOnLandingPages": true
     },
     {
       "id": "workflowreleasenotes",
@@ -53,7 +55,8 @@
       "indexForSearch": true,
       "public": false,
       "internal": false,
-      "earlyAccess": true
+      "earlyAccess": true,
+      "displayOnLandingPages": true
     }
   ]
 }

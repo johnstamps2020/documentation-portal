@@ -16,7 +16,8 @@
       "internal": false,
       "earlyAccess": false,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "displayOnLandingPages": true
     },
     {
       "id": "sbtfwguide",
@@ -33,7 +34,8 @@
       "internal": false,
       "earlyAccess": false,
       "indexForSearch": true,
-      "public": false
+      "public": false,
+      "displayOnLandingPages": true
     }
   ]
 }

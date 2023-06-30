@@ -7,9 +7,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Aspen",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/aspen/lob-bop-10x.ditamap"
-      ]
+      "xdocsPathIds": ["/Content/doc/LOB/aspen/lob-bop-10x.ditamap"]
     },
     {
       "id": "lobbopsbtrnaspensrc",
@@ -27,9 +25,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Aspen",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/aspen/lob-gl-9x-1003.ditamap"
-      ]
+      "xdocsPathIds": ["/Content/doc/LOB/aspen/lob-gl-9x-1003.ditamap"]
     },
     {
       "id": "lobglsbtrnaspensrc",
@@ -47,9 +43,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Aspen",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/aspen/lob-ca-10x.ditamap"
-      ]
+      "xdocsPathIds": ["/Content/doc/LOB/aspen/lob-ca-10x.ditamap"]
     },
     {
       "id": "lobcasbtrnaspensrc",
@@ -67,9 +61,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Aspen",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/aspen/lob-crime.ditamap"
-      ]
+      "xdocsPathIds": ["/Content/doc/LOB/aspen/lob-crime.ditamap"]
     },
     {
       "id": "lobcrimesbtrnaspensrc",
@@ -77,9 +69,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Aspen",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/aspen/Crime_SBT_ReleaseNotes.ditamap"
-      ]
+      "xdocsPathIds": ["/Content/doc/LOB/aspen/Crime_SBT_ReleaseNotes.ditamap"]
     },
     {
       "id": "lobbopguidebanffsrc",
@@ -87,9 +77,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/active/lob-bop-10x.ditamap"
-      ]
+      "xdocsPathIds": ["/Content/doc/LOB/active/lob-bop-10x.ditamap"]
     },
     {
       "id": "lobbopsbtrnbanffsrc",
@@ -107,9 +95,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/banff/lob-gl-9x-1003.ditamap"
-      ]
+      "xdocsPathIds": ["/Content/doc/LOB/banff/lob-gl-9x-1003.ditamap"]
     },
     {
       "id": "lobglsbtrnbanffsrc",
@@ -127,9 +113,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/banff/lob-ca-10x.ditamap"
-      ]
+      "xdocsPathIds": ["/Content/doc/LOB/banff/lob-ca-10x.ditamap"]
     },
     {
       "id": "lobcasbtrnbanffsrc",
@@ -147,9 +131,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/banff/lob-crime.ditamap"
-      ]
+      "xdocsPathIds": ["/Content/doc/LOB/banff/lob-crime.ditamap"]
     },
     {
       "id": "lobcrimesbtrnbanffsrc",
@@ -157,9 +139,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/banff/Crime_SBT_ReleaseNotes.ditamap"
-      ]
+      "xdocsPathIds": ["/Content/doc/LOB/banff/Crime_SBT_ReleaseNotes.ditamap"]
     },
     {
       "id": "lobwcguidebanffsrc",
@@ -167,9 +147,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/banff/lob-wc.ditamap"
-      ]
+      "xdocsPathIds": ["/Content/doc/LOB/banff/lob-wc.ditamap"]
     },
     {
       "id": "lobwcsbtrnbanffsrc",
@@ -177,9 +155,7 @@
       "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/lines-of-business.git",
       "branch": "Banff",
-      "xdocsPathIds": [
-        "/Content/doc/LOB/banff/WC_SBT_ReleaseNotes.ditamap"
-      ]
+      "xdocsPathIds": ["/Content/doc/LOB/banff/WC_SBT_ReleaseNotes.ditamap"]
     }
   ]
 }
