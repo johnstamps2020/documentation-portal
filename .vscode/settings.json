@@ -11,5 +11,6 @@
     "**/build/**": true,
     "**/logs/**": true,
     "**/static/html5/**": true
-  }
+  },
+  "cSpell.words": ["Guidewire"]
 }

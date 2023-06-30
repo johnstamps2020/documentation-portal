@@ -50,8 +50,8 @@ const pageConfig: CategoryLayoutProps = {
       label: 'Data and Analytics',
       items: [
         {
-          label: 'Cloud Data Access',
-          pagePath: 'cloudProducts/cloudDataAccess/latest',
+          label: 'Data Platform',
+          pagePath: 'cloudProducts/dataPlatform',
         },
         {
           label: 'DataHub',
@@ -148,7 +148,7 @@ const pageConfig: CategoryLayoutProps = {
         },
         {
           label: 'Cloud Console',
-          pagePath: 'cloudProducts/cloudConsole',
+          docId: 'guidewirecloudconsolerootinsurerdev',
         },
       ],
       sections: [

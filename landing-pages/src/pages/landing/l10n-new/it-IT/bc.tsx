@@ -14,9 +14,16 @@ const pageConfig: CategoryLayoutProps = {
       label: '2022.05',
       items: [
         {
+          label: "Guida all'applicazione",
+          docId: 'isbc202205itITapp',
+        },
+        {
+          label: 'Guida alla configurazione',
+          docId: 'isbc202205itITconfig',
+        },
+        {
           label: "Guida all'installazione per sviluppatori",
-          url: '/l10n/it-IT/bc/2022.05/BC-DeveloperSetupGuide-IT.pdf',
-          videoIcon: false,
+          docId: 'isbc202205itITdevsetup',
         },
       ],
     },

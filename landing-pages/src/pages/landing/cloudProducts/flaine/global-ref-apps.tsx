@@ -16,6 +16,25 @@ const pageConfig: CategoryLayoutProps = {
        linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
     },
   },
+  selector: {
+    label: 'Select cloud release',
+    selectedItemLabel: 'Flaine (2022.09)',
+    items: [
+      {
+        label: 'Flaine (2022.09)',
+        pagePath: 'cloudProducts/flaine/global-ref-apps',
+      },
+      {
+        label: 'Garmisch (2023.02)',
+        pagePath: 'cloudProducts/garmisch/global-ref-apps',
+      },
+      {
+        label: 'Hakuba (2023.06)',
+        pagePath: 'cloudProducts/hakuba/global-ref-apps',
+      },
+    ],
+    labelColor: 'white',
+  },
 
   cards: [
     {
@@ -32,6 +51,23 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'Configuration Guide',
           docId: 'ipaflaineconfig',
+        },
+      ],
+    },
+    {
+      label: 'Japan',
+      items: [
+        {
+          label: 'Release Notes',
+          docId: 'ipjflainern',
+        },
+        {
+          label: 'Application Guide',
+          docId: 'ipjflaineapp',
+        },
+        {
+          label: 'Configuration Guide',
+          docId: 'ipjflaineconfig',
         },
       ],
     },
@@ -61,15 +97,15 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'ipukgarmischrn',
+          docId: 'ipukflainern',
         },
         {
           label: 'Application Guide',
-          docId: 'ipukgarmischapp',
+          docId: 'ipukflaineapp',
         },
         {
           label: 'Configuration',
-          docId: 'ipukgarmischconfig',
+          docId: 'ipukflaineconfig',
         },
       ],
     },

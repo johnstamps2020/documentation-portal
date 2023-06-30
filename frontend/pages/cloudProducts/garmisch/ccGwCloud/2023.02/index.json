@@ -4,7 +4,7 @@
   "template": "page",
   "class": "twoColumns",
   "selector": {
-    "label": "Select release",
+    "label": "Select cloud release",
     "selectedItem": "Garmisch (2023.02)",
     "items": [
       {
@@ -53,16 +53,12 @@
           "id": "iscc202302devsetup"
         },
         {
-          "label": "Developer Setup (Internal only)",
-          "id": "isccgarmischgwdevsetup"
-        },
-        {
           "label": "Update",
           "id": "iscc202302update"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools450"
+          "id": "isconfigupgradetools460"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools Compatibility",
@@ -91,10 +87,6 @@
         {
           "label": "Administration",
           "id": "iscc202302admin"
-        },
-        {
-          "label": "Administration (Internal only)",
-          "id": "isccgarmischgwadmin"
         },
         {
           "label": "Data Archiving",

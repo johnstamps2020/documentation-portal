@@ -22,8 +22,12 @@ const pageConfig: SectionLayoutProps = {
       label: 'Features and functionality',
       items: [
         {
-          label: 'Application Guide',
+          label: 'Application Guide for ThoughtSpot-based Explore',
           docId: 'exploreusingrelease',
+        },
+        {
+          label: 'Application Guide',
+          docId: 'exploreusingkibanarelease',
         },
       ],
     },

@@ -11,6 +11,10 @@ const pageConfig: ProductFamilyLayoutProps = {
 
   items: [
     {
+      label: 'Advanced Product Designer',
+      pagePath: 'l10n-new/it-IT/apd',
+    },
+    {
       label: 'BillingCenter',
       pagePath: 'l10n-new/it-IT/bc',
     },
@@ -96,7 +100,6 @@ const pageConfig: ProductFamilyLayoutProps = {
       },
     ],
   },
-  releaseSelector: false,
 };
 
 export default function ItIT() {

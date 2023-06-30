@@ -3,7 +3,70 @@
   "title": "Global Content Reference Applications",
   "template": "page",
   "class": "blue-theme garmisch threeCards",
+  "selector": {
+    "label": "Select cloud release",
+    "selectedItem": "Garmisch (2023.02)",
+    "items": [
+      {
+        "label": "Hakuba (2023.06)",
+        "page": "../../hakuba/global-ref-apps",
+        "env": ["staging"]
+      },
+      {
+        "label": "Flaine (2022.09)",
+        "page": "../../flaine/global-ref-apps"
+      }
+    ]
+  },
   "items": [
+    {
+      "label": "Australia",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ipagarmischrn"
+        },
+        {
+          "label": "Application Guide",
+          "id": "ipagarmischapp"
+        },
+        {
+          "label": "Configuration",
+          "id": "ipagarmischconfig"
+        },
+        {
+          "label": "Installation",
+          "id": "ipagarmischinstall"
+        },
+        {
+          "label": "Upgrade",
+          "id": "ipagarmischupgrade"
+        }
+      ]
+    },
+    {
+      "label": "Japan",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ipjgarmischrn"
+        },
+        {
+          "label": "Application Guide",
+          "id": "ipjgarmischapp"
+        },
+        {
+          "label": "Configuration",
+          "id": "ipjgarmischconfig"
+        },
+        {
+          "label": "Installation",
+          "id": "ipjgarmischinstall"
+        }
+      ]
+    },
     {
       "label": "London Market",
       "class": "categoryCard cardShadow",
@@ -21,10 +84,24 @@
           "id": "londonpcappgarmisch"
         },
         {
-          "label": "Configuration Guide",
+          "label": "Configuration",
           "id": "londonconfiggarmisch"
         }
       ]
+    },
+    {
+      "label": "US Standards-based Template Framework",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Standards-based Template Framework Guide",
+          "id": "sbtfwguide"
+        },
+        {
+          "label": "Standards-based Template Customization",
+          "id": "sbtfwcustomization"
+        }
+      ] 
     }
   ],
   "search_filters": {

@@ -16,6 +16,25 @@ const pageConfig: CategoryLayoutProps = {
        linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
     },
   },
+  selector: {
+    label: 'Select cloud release',
+    selectedItemLabel: 'Flaine (2022.09)',
+    items: [
+      {
+        label: 'Flaine (2022.09)',
+        pagePath: 'cloudProducts/flaine/dx-ref-apps',
+      },
+      {
+        label: 'Garmisch (2023.02)',
+        pagePath: 'cloudProducts/garmisch/dx-ref-apps',
+      },
+      {
+        label: 'Hakuba (2023.06)',
+        pagePath: 'cloudProducts/hakuba/dx-ref-apps',
+      },
+    ],
+    labelColor: 'white',
+  },
 
   cards: [
     {

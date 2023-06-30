@@ -3,6 +3,21 @@
   "title": "Global Content Reference Applications",
   "template": "page",
   "class": "blue-theme flaine threeCards",
+  "selector": {
+    "label": "Select cloud release",
+    "selectedItem": "Flaine (2022.09)",
+    "items": [
+      {
+        "label": "Hakuba (2023.06)",
+        "page": "../../hakuba/global-ref-apps",
+        "env": ["staging"]
+      },
+      {
+        "label": "Garmisch (2023.02)",
+        "page": "../../garmisch/global-ref-apps"
+      }
+    ]
+  },
   "items": [
     {
       "label": "Australia",
@@ -19,6 +34,24 @@
         {
           "label": "Configuration Guide",
           "id": "ipaflaineconfig"
+        }
+      ]
+    },
+    {
+      "label": "Japan",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "ipjflainern"
+        },
+        {
+          "label": "Application Guide",
+          "id": "ipjflaineapp"
+        },
+        {
+          "label": "Configuration Guide",
+          "id": "ipjflaineconfig"
         }
       ]
     },
@@ -50,15 +83,15 @@
       "items": [
         {
           "label": "Release Notes",
-          "id": "ipukgarmischrn"
+          "id": "ipukflainern"
         },
         {
           "label": "Application Guide",
-          "id": "ipukgarmischapp"
+          "id": "ipukflaineapp"
         },
         {
           "label": "Configuration",
-          "id": "ipukgarmischconfig"
+          "id": "ipukflaineconfig"
         }
       ]
     },

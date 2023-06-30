@@ -46,7 +46,7 @@ const pageConfig: CategoryLayoutProps = {
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools',
-          docId: 'isconfigupgradetools450',
+          docId: 'isconfigupgradetools460',
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools Compatibility',
@@ -71,15 +71,15 @@ const pageConfig: CategoryLayoutProps = {
             },
             {
               label: 'Germany',
-              pagePath: 'globalContent/ipg/latest',
+              pagePath: 'globalContent/ipg/3.6',
+            },
+            {
+              label: 'Germany',
+              pagePath: 'globalContent/ipg/3.7',
             },
             {
               label: 'Japan (0.1)',
-              pagePath: 'globalContent/ipj/0.1',
-            },
-            {
-              label: 'Japan (1.0)',
-              pagePath: 'globalContent/ipj/1.0',
+              pagePath: 'globalContent/ipj/flaine',
             },
           ],
         },
@@ -90,19 +90,19 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'DataHub',
-          pagePath: 'selfManagedProducts/dh/10.8.0',
-        },
-        {
-          label: 'InfoCenter',
-          pagePath: 'selfManagedProducts/ic/10.8.0',
-        },
-        {
-          label: 'DataHub',
           pagePath: 'selfManagedProducts/dh/10.9.0',
         },
         {
           label: 'InfoCenter',
           pagePath: 'selfManagedProducts/ic/10.9.0',
+        },
+        {
+          label: 'DataHub 10.10.0',
+          pagePath: 'selfManagedProducts/dh/10.10.0',
+        },
+        {
+          label: 'InfoCenter 10.10.0',
+          pagePath: 'selfManagedProducts/ic/10.10.0',
         },
       ],
     },

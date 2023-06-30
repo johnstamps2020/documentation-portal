@@ -15,8 +15,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de la aplicación',
-          url: '/l10n/es-ES/ce-claims/2022.05/es-ES v.2022.05 CE-AM Claims_AppGuide.pdf',
-          videoIcon: false,
+          docId: 'dx202205esESceclaimsapp',
         },
       ],
     },

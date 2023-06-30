@@ -29,28 +29,26 @@
     },
     {
       "label": "Flaine",
-      "page": "flaine",
-      "env": ["staging", "prod"]
+      "page": "flaine"
     },
     {
       "label": "Garmisch",
-      "page": "garmisch",
+      "page": "garmisch"
+    },
+    {
+      "label": "Hakuba",
+      "page": "hakuba",
       "env": ["staging"]
     },
     {
       "label": "_redirect",
-      "link": "/cloudProducts/flaine",
+      "link": "/cloudProducts/garmisch",
       "env": ["prod"]
     },
     {
       "label": "_redirect",
-      "link": "/cloudProducts/garmisch",
-      "env": ["dev", "staging"]
-    },
-    {
-      "label": "_redirect",
-      "link": "/int-deprecated",
-      "env": ["int"]
+      "link": "/cloudProducts/hakuba",
+      "env": ["staging"]
     }
   ]
 }

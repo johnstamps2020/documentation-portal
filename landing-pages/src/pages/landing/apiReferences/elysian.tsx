@@ -14,7 +14,7 @@ const pageConfig: CategoryLayoutProps = {
     },
   },
   selector: {
-    label: 'Select release',
+    label: 'Select cloud release',
     selectedItemLabel: 'Elysian',
     items: [
       {
@@ -36,6 +36,10 @@ const pageConfig: CategoryLayoutProps = {
       {
         label: 'Flaine',
         pagePath: 'apiReferences/flaine',
+      },
+      {
+        label: 'Garmisch',
+        pagePath: 'apiReferences/garmisch',
       },
     ],
     labelColor: 'white',
@@ -97,7 +101,7 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'cicdmanagerapiref',
         },
         {
-          label: 'Cloud Console API',
+          label: 'IS Deployments API',
           docId: 'cloudconsoleapi',
         },
       ],

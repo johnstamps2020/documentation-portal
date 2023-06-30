@@ -15,8 +15,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de la aplicación',
-          url: '/l10n/es-ES/ve/2022.05/es-ES v.2022.05 VE_AppGuide.pdf',
-          videoIcon: false,
+          docId: 'dx202205esESveapp',
         },
       ],
     },

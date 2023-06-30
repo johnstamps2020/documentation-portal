@@ -1,0 +1,70 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Global Content - Germany",
+  "template": "page",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "3.7",
+    "items": [
+      {
+        "label": "3.6",
+        "page": "../3.6"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "midipgrnen37"
+        },
+        {
+          "label": "Release Notes (German)",
+          "id": "midipgrnde37"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "midipgapp37"
+        },
+        {
+          "label": "Application Guide (German)",
+          "id": "midipgappde37"
+        },
+        {
+          "label": "Implementation",
+          "id": "midipgimpl37"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation",
+          "id": "midipginstall37"
+        }
+      ]
+    },
+    {
+      "label": "Glossary",
+      "class": "subject glossary",
+      "items": [
+        {
+          "label": "Glossary",
+          "id": "midipgglossary37"
+        }
+      ]
+    }
+  ]
+}

@@ -10,6 +10,7 @@ const pageConfig: ProductFamilyLayoutProps = {
     backgroundImage: `url(${gradientBackgroundImage})`,
   },
 
+  showReleaseSelector: true,
   items: [
     {
       label: 'PolicyCenter Cloud',
@@ -57,7 +58,6 @@ const pageConfig: ProductFamilyLayoutProps = {
       },
     ],
   },
-  releaseSelector: true,
 };
 
 export default function Aspen() {

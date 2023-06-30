@@ -4,9 +4,13 @@
   "template": "page",
   "class": "twoColumns",
   "selector": {
-    "label": "Select release",
+    "label": "Select cloud release",
     "selectedItem": "Dobson (2021.11)",
     "items": [
+      {
+        "label": "Garmisch (2023.02)",
+        "page": "../../../garmisch/ccGwCloud/2023.02"
+      },
       {
         "label": "Flaine (2022.09)",
         "page": "../../../flaine/ccGwCloud/2022.09"
@@ -62,7 +66,7 @@
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools450"
+          "id": "isconfigupgradetools460"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools Compatibility",

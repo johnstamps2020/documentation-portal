@@ -19,8 +19,12 @@
       "class": "subject featuresAndFunctionality",
       "items": [
         {
-          "label": "Application Guide",
+          "label": "Application Guide for ThoughtSpot-based Explore",
           "id": "exploreusingrelease"
+        },
+        {
+          "label": "Application Guide",
+          "id": "exploreusingkibanarelease"
         }
       ]
     },

@@ -4,9 +4,14 @@
   "template": "page",
   "class": "blue-theme skiRelease garmisch",
   "selector": {
-    "label": "Select release",
+    "label": "Select cloud release",
     "selectedItem": "Garmisch",
     "items": [
+      {
+        "label": "Hakuba",
+        "page": "../hakuba",
+        "env": ["staging"]
+      },
       {
         "label": "Flaine",
         "page": "../flaine"
@@ -44,15 +49,11 @@
         },
         {
           "label": "Cloud Platform",
-          "page": "../cloudConsole"
+          "id": "guidewirecloudconsolerootinsurerdev"
         },
         {
           "label": "Data Platform",
-          "id": "dataplatform"
-        },
-        {
-          "label": "Cloud Data Access",
-          "page": "../cloudDataAccess/latest"
+          "page": "../dataPlatform"
         },
         {
           "label": "Workflow Service (Early Access)",
