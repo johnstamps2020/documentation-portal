@@ -82,7 +82,7 @@
         "platform": ["Self-managed"],
         "version": ["3.7"],
         "subject": ["Release notes"],
-        "locale": ["en-US"]
+        "locale": ["de-DE"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -118,7 +118,7 @@
         "platform": ["Self-managed"],
         "version": ["3.7"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "locale": ["de-DE"]
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
