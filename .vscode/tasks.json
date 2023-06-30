@@ -26,7 +26,7 @@
           "PGDATA": "/var/lib/postgresql/data/pgdata",
           "POSTGRES_PASSWORD": "testtesttest",
           "POSTGRES_USER": "postgres"
-        },
+        }
       }
     },
     {
@@ -69,11 +69,9 @@
       "dockerCompose": {
         "up": {
           "detached": true,
-          "build": true,
+          "build": true
         },
-        "files": [
-          "${workspaceFolder}/.dev/compose-local-dev-env.yml"
-        ]
+        "files": ["${workspaceFolder}/.dev/compose-local-dev-env.yml"]
       }
     },
     {
