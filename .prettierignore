@@ -1,6 +1,7 @@
 .idea
 .teamcity/*
 !.teamcity/config
+!.teamcity/archive
 .yarn
 /frontend
 /s3
