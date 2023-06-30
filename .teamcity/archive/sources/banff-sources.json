@@ -1,45 +1,39 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config/config-schema.json",
   "sources": [
     {
       "id": "in20202src",
       "title": "InsuranceNow 2020.2",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancenow.git",
       "branch": "release/2020.2BANFF"
     },
     {
       "id": "isupgradeguide202011src",
       "title": "InsuranceSuite Upgrade Guide 2020.11",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite-upgrade-guide.git",
       "branch": "release/2020.11.0"
     },
     {
       "id": "is202011src",
       "title": "IS 2020.11",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/insurancesuite.git",
       "branch": "release/2020.11"
     },
     {
       "id": "dhic202011",
       "title": "Data Management 2020.11",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/datamanagement-dh-ic.git",
       "branch": "release/2020.11"
     },
     {
       "id": "dx202011",
       "title": "Digital 2020.11",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
       "branch": "release/2020.11"
     },
     {
       "id": "srcapiref202011",
       "title": "Cloud API Reference in Redoc",
-      "sourceType": "git",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/api-directory-redoc.git",
       "branch": "releases/banff"
     }
