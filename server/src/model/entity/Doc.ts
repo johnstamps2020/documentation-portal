@@ -1,19 +1,9 @@
-import {
-  Column,
-  Entity,
-  Index,
-  JoinColumn,
-  JoinTable,
-  ManyToMany,
-  OneToOne,
-  Unique,
-} from 'typeorm';
+import { Column, Entity, Index, JoinTable, ManyToMany, Unique } from 'typeorm';
 import { PlatformProductVersion } from './PlatformProductVersion';
 import { Release } from './Release';
 import { Subject } from './Subject';
 import { Locale } from './Locale';
 import { GwEntity } from './GwEntity';
-import { Build } from './Build';
 
 @Entity()
 @Unique(['id', 'url'])

@@ -184,26 +184,6 @@ async function getLegacyBuildConfigs(): Promise<LegacyBuildConfig[]> {
       docId: yarnBuild.doc.id,
       disabled: yarnBuild.disabled,
     };
-    // const yarnBuildCustomEnv = yarnBuild.customEnv;
-    // if (yarnBuildCustomEnv) {
-    //   legacyBuild.customEnv = yarnBuildCustomEnv;
-    // }
-    // const yarnBuildCustomCommand = yarnBuild.yarnBuildCustomCommand;
-    // if (yarnBuildCustomCommand) {
-    //   legacyBuild.yarnBuildCustomCommand = yarnBuildCustomCommand;
-    // }
-    // const yarnBuildWorkingDir = yarnBuild.workingDir;
-    // if (yarnBuildWorkingDir) {
-    //   legacyBuild.workingDir = yarnBuildWorkingDir;
-    // }
-    // const yarnBuildOutputPath = yarnBuild.outputPath;
-    // if (yarnBuildOutputPath) {
-    //   legacyBuild.outputPath = yarnBuildOutputPath;
-    // }
-    // const yarnBuildNodeImageVersion = yarnBuild.nodeImageVersion;
-    // if (yarnBuildNodeImageVersion) {
-    //   legacyBuild.nodeImageVersion = yarnBuildNodeImageVersion;
-    // }
     const properties = [
       'customEnv',
       'yarnBuildCustomCommand',
@@ -450,26 +430,35 @@ async function createExternalLinkEntities(
   pageItems: LegacyItem[]
 ): Promise<ApiResponse> {
   try {
-    const dbExternalLinkConfigsToSave = [];
+    const dbExternalLinkConfigsToSave: ExternalLink[] = [];
     for (const pageItem of pageItems) {
       if (pageItem.items) {
         for (const innerItem of pageItem.items) {
           const externalLink = innerItem.link;
           if (externalLink) {
-            const dbExternalLinkConfig = new ExternalLink();
-            dbExternalLinkConfig.url = externalLink;
-            dbExternalLinkConfig.label = innerItem.label;
-            dbExternalLinkConfig.public = false;
-            dbExternalLinkConfig.isInProduction = false;
-            dbExternalLinkConfig.earlyAccess = false;
-            dbExternalLinkConfig.internal = false;
+            if (
+              !dbExternalLinkConfigsToSave.find(
+                (dbExternalLinkConfigToSave) =>
+                  dbExternalLinkConfigToSave.url === externalLink
+              )
+            ) {
+              const dbExternalLinkConfig = new ExternalLink();
+              dbExternalLinkConfig.url = externalLink;
+              dbExternalLinkConfig.label = innerItem.label;
+              dbExternalLinkConfig.public = false;
+              dbExternalLinkConfig.isInProduction = false;
+              dbExternalLinkConfig.earlyAccess = false;
+              dbExternalLinkConfig.internal = false;
 
-            const dbExternalLinkConfigToSave = await addUuidIfEntityExists(
-              ExternalLink.name,
-              { url: dbExternalLinkConfig.url },
-              dbExternalLinkConfig
-            );
-            dbExternalLinkConfigsToSave.push(dbExternalLinkConfigToSave);
+              const dbExternalLinkConfigToSave = await addUuidIfEntityExists(
+                ExternalLink.name,
+                { url: dbExternalLinkConfig.url },
+                dbExternalLinkConfig
+              );
+              dbExternalLinkConfigsToSave.push(
+                dbExternalLinkConfigToSave as ExternalLink
+              );
+            }
           }
         }
       }
@@ -529,11 +518,17 @@ async function putPageConfigsInDatabase(): Promise<ApiResponse> {
     const localLandingPagesConfig = readLocalPageConfigs(
       localLandingPagesConfigDir
     );
-    const dbPageConfigsToSave = [];
+    const dbPageConfigsToSave: Page[] = [];
     for (const page of localLandingPagesConfig) {
+      const relativePagePath = getRelativePagePath(page.path);
+      if (
+        !dbPageConfigsToSave.find(
+          (dbPageConfigToSave) => dbPageConfigToSave.path === relativePagePath
+        )
+      ) {
+      }
       const dbPageConfig = new Page();
-      const legacyPageAbsPath = page.path;
-      dbPageConfig.path = getRelativePagePath(legacyPageAbsPath);
+      dbPageConfig.path = relativePagePath;
       dbPageConfig.title = page.title;
       dbPageConfig.component = getCompletePageComponent(page, dbPageConfig);
       dbPageConfig.isInProduction = false;
@@ -545,7 +540,7 @@ async function putPageConfigsInDatabase(): Promise<ApiResponse> {
         { path: dbPageConfig.path },
         dbPageConfig
       );
-      dbPageConfigsToSave.push(dbPageConfigToSave);
+      dbPageConfigsToSave.push(dbPageConfigToSave as Page);
     }
     const dbPageConfigsSaveResult = await saveEntities(dbPageConfigsToSave);
     return {
@@ -592,19 +587,26 @@ async function putSourceConfigsInDatabase(): Promise<ApiResponse> {
     }
 
     const localSourcesConfig = readLocalSourceConfigs(localSourcesConfigDir);
-    const dbSourceConfigsToSave = [];
+    const dbSourceConfigsToSave: Source[] = [];
     for await (const source of localSourcesConfig) {
-      const dbSource = new Source();
-      dbSource.id = source.id;
-      dbSource.name = source.title;
-      dbSource.gitUrl = source.gitUrl;
-      dbSource.gitBranch = source.branch;
-      const dbSourceConfigToSave = await addUuidIfEntityExists(
-        Source.name,
-        { id: dbSource.id },
-        dbSource
-      );
-      dbSourceConfigsToSave.push(dbSourceConfigToSave);
+      const sourceId = source.id;
+      if (
+        !dbSourceConfigsToSave.find(
+          (dbSourceConfigToSave) => dbSourceConfigToSave.id === sourceId
+        )
+      ) {
+        const dbSource = new Source();
+        dbSource.id = source.id;
+        dbSource.name = source.title;
+        dbSource.gitUrl = source.gitUrl;
+        dbSource.gitBranch = source.branch;
+        const dbSourceConfigToSave = await addUuidIfEntityExists(
+          Source.name,
+          { id: dbSource.id },
+          dbSource
+        );
+        dbSourceConfigsToSave.push(dbSourceConfigToSave as Source);
+      }
     }
     const dbSourceConfigsSaveResult = await saveEntities(dbSourceConfigsToSave);
     return {
@@ -999,33 +1001,40 @@ async function putDocConfigsInDatabase(): Promise<ApiResponse> {
     await createVersionEntities(localDocsConfig);
     await createPlatformProductVersionEntities(localDocsConfig);
 
-    const dbDocConfigsToSave = [];
+    const dbDocConfigsToSave: Doc[] = [];
     for await (const doc of localDocsConfig) {
-      const dbDoc = new Doc();
-      dbDoc.id = doc.id;
-      dbDoc.url = doc.url;
-      dbDoc.title = doc.title;
-      dbDoc.public = doc.public;
-      dbDoc.internal = doc.internal;
-      dbDoc.earlyAccess = doc.earlyAccess;
-      dbDoc.displayOnLandingPages = doc.displayOnLandingPages;
-      dbDoc.indexForSearch = doc.indexForSearch;
-      dbDoc.isInProduction = doc.environments.includes('prod');
-      dbDoc.body = doc.body || null;
+      const docId = doc.id;
+      if (
+        !dbDocConfigsToSave.find(
+          (dbDocConfigToSave) => dbDocConfigToSave.id === docId
+        )
+      ) {
+        const dbDoc = new Doc();
+        dbDoc.id = docId;
+        dbDoc.url = doc.url;
+        dbDoc.title = doc.title;
+        dbDoc.public = doc.public;
+        dbDoc.internal = doc.internal;
+        dbDoc.earlyAccess = doc.earlyAccess;
+        dbDoc.displayOnLandingPages = doc.displayOnLandingPages;
+        dbDoc.indexForSearch = doc.indexForSearch;
+        dbDoc.isInProduction = doc.environments.includes('prod');
+        dbDoc.body = doc.body || null;
 
-      dbDoc.locales = await addDocLocales(doc);
-      dbDoc.releases = await addDocReleases(doc);
-      dbDoc.subjects = await addDocSubjects(doc);
-      dbDoc.platformProductVersions = await addPlatformProductVersions(
-        createLegacyPlatformProductVersionCombinations(doc)
-      );
+        dbDoc.locales = await addDocLocales(doc);
+        dbDoc.releases = await addDocReleases(doc);
+        dbDoc.subjects = await addDocSubjects(doc);
+        dbDoc.platformProductVersions = await addPlatformProductVersions(
+          createLegacyPlatformProductVersionCombinations(doc)
+        );
 
-      const dbDocConfigToSave = await addUuidIfEntityExists(
-        Doc.name,
-        { id: dbDoc.id },
-        dbDoc
-      );
-      dbDocConfigsToSave.push(dbDocConfigToSave);
+        const dbDocConfigToSave = await addUuidIfEntityExists(
+          Doc.name,
+          { id: dbDoc.id },
+          dbDoc
+        );
+        dbDocConfigsToSave.push(dbDocConfigToSave as Doc);
+      }
     }
     const dbDocConfigsSaveResult = await saveEntities(dbDocConfigsToSave);
     return {
