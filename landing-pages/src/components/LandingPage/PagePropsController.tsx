@@ -71,7 +71,7 @@ export default function PagePropsController({
 
   useEffect(() => {
     pagePath && pageData && setTmpPageData(pageData);
-  }, [pageData]);
+  }, [pageData, pagePath]);
 
   useEffect(() => {
     if (
