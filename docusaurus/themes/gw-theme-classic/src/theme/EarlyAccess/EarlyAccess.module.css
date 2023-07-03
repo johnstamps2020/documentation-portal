@@ -1,0 +1,14 @@
+.wrapper {
+  background-color: orange;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 997px) {
+  .wrapper {
+    max-width: 75% !important;
+  }
+}

@@ -50,13 +50,7 @@
             },
             {
               "label": "Germany",
-              "page": "../globalContent/ipg/3.6",
-              "env": ["prod"]
-            },
-            {
-              "label": "Germany",
-              "page": "../globalContent/ipg/3.7",
-              "env": ["staging"]
+              "page": "../globalContent/ipg/3.7"
             },
             {
               "label": "Japan (0.1)",

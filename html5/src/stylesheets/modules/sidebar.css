@@ -1,0 +1,116 @@
+/* throughout, nav[role='toc'] is for OT 3.6.1
+   nav.toc is for OT 3.7.1  */
+nav[role='toc'],
+nav.toc {
+  --nav-font-color: var(--GW-COLOR-TEXT-2);
+  --caret-closed: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='18px' viewBox='0 0 24 24' width='18px' fill='%23000000'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z'/%3E%3C/svg%3E");
+  --caret-open: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='18px' viewBox='0 0 24 24' width='18px' fill='%23000000'%3E%3Cpath d='M24 24H0V0h24v24z' fill='none' opacity='.87'/%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z'/%3E%3C/svg%3E");
+  grid-area: toc;
+  padding: 16px 1rem var(--footer-height) 4px;
+  height: var(--left-nav-mini-toc-height);
+  overflow-y: auto;
+  border-right: 1px solid lightgray;
+  position: sticky;
+  top: 0;
+}
+
+nav[role='toc'] ul,
+nav.toc ul {
+  margin: 0;
+  padding-left: 0.5rem;
+}
+
+nav[role='toc'] ul:not(.expanded),
+nav.toc ul:not(.expanded) {
+  display: none;
+}
+
+nav[role='toc'] ul.expanded,
+nav.toc ul.expanded {
+  display: block;
+}
+
+nav[role='toc'] .listHeading,
+nav.toc .listHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+nav[role='toc'] .listLabel,
+nav.toc .listLabel {
+  user-select: none;
+}
+
+nav[role='toc'] .caret,
+nav.toc .caret {
+  content: ' ';
+  width: 24px;
+  height: 24px;
+  background-image: var(--caret-closed);
+  background-position: center;
+  color: var(--nav-font-color);
+  background-color: transparent;
+  border: none;
+}
+
+nav[role='toc'] .caret.open,
+nav.toc .caret.open {
+  background-image: var(--caret-open);
+}
+
+nav[role='toc'] .caret nav.toc .caret {
+  cursor: pointer;
+}
+
+nav[role='toc'] .caret:active,
+nav.toc .caret:active {
+  transform: scale(1.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  nav[role='toc'] .caret:active,
+  nav.toc .caret:active {
+    transform: none;
+  }
+}
+
+nav[role='toc'] li,
+nav.toc li {
+  list-style: none;
+}
+
+nav[role='toc'] a,
+nav[role='toc'] .listLabel,
+nav.toc a,
+nav.toc .listLabel {
+  display: block;
+  padding: 2px 4px;
+  width: 100%;
+  color: var(--nav-font-color) !important;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 4px 0;
+  border-radius: 3px;
+}
+
+nav[role='toc'] .listLabel,
+nav.toc .listLabel {
+  font-weight: 600;
+}
+
+nav[role='toc'] a:hover,
+nav[role='toc'] .listHeading:hover,
+nav.toc a:hover,
+nav.toc .listHeading:hover {
+  background-color: #ebedf0;
+  cursor: pointer;
+}
+
+nav[role='toc'] *.current,
+nav.toc *.current {
+  background-color: #ebedf0;
+  color: black !important;
+}

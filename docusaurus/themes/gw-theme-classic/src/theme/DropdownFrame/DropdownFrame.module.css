@@ -1,0 +1,14 @@
+.wrapper {
+  position: relative;
+}
+
+.button {
+  cursor: pointer;
+  user-select: none;
+}
+
+.dropdown {
+  position: absolute;
+  top: var(--height);
+  right: 0;
+}

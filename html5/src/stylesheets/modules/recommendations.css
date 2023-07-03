@@ -1,0 +1,9 @@
+.recommendations {
+  margin-top: 3rem;
+}
+
+.recommendations span:first-of-type {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}

@@ -1,0 +1,8 @@
+.earlyAccessWarning {
+  background-color: orange;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 16px 32px;
+  border-radius: 8px;
+  margin-bottom: 32px;
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "Key": "gwcp:v1:star-system:name",
+    "Value": "Not applicable"
+  },
+  {
+    "Key": "gwcp:v1:quadrant:name",
+    "Value": "Not applicable"
+  },
+  {
+    "Key": "gwcp:v1:tenant:name",
+    "Value": "doctools"
+  },
+  {
+    "Key": "gwcp:v1:dept",
+    "Value": "284"
+  },
+  {
+    "Key": "gwcp:v1:provisioned-resource:created-by",
+    "Value": "doctools"
+  },
+  {
+    "Key": "gwcp:v1:resource-type:managed-by",
+    "Value": "doctools"
+  },
+  {
+    "Key": "gwcp:v1:resource-type:managed-tool",
+    "Value": "manual"
+  }
+]

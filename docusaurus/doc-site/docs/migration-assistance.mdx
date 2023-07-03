@@ -1,0 +1,69 @@
+---
+sidebar_position: 3
+---
+
+# Migration assistance
+
+![](./img/undraw_moving.svg)
+
+The Doctools team can help you migrate your site from a custom deployment to the
+documentation portal. The high-level steps are:
+
+1. We apply the theme
+1. We create deployments and other helpful builds for your project
+1. We ask you what workflow you want to use for customer feedback
+1. You can now delete your old site and start using the new one
+
+## Theme
+
+We create a PR with all the changes needed to apply the theme. At this point,
+your validation builds may fail, so we will need you help merging the PR.
+
+In case you don't know, the theme provides the following benefits:
+
+import Benefits from '@site/docs/_benefits.md';
+
+<Benefits />
+
+## Deployments
+
+We create deployments and other helpful builds for your project. Among other
+things, you get handy validation builds which add a preview link to every PR.
+
+To access preview builds, you need to be a member of the
+`docportal-build-runners` group in AD. You can request your pod to be added by
+opening a ticket in ServiceNow project.
+
+## Feedback
+
+Once of the features you get on the portal is feedback buttons. People can add
+comments to your docs and those comments end up as Jira Action Items in the DOCS
+project. We triage issues and assign them to the appropriate pods.
+
+We will ask you what workflow you want to use for customer feedback.
+
+- Should we add them to a specific project? Which one?
+- Should we assign a specific person, apply a component, or something else.
+
+## Your old site
+
+At this point, out work is done. You can now delete your old site and start
+using the new one. This also means you can delete your Atmos deployments,
+gateway configs, Teamcity builds etc.
+
+Aside from the nice feeling of of getting rid of clutter, this step is where you
+save some money 💰 on AWS and other services.
+
+## Redirect service
+
+If you want, you can keep the old URL for a while and redirect users to the new
+site. This is a good idea if you have a lot of traffic and want to avoid
+confusing users.
+
+Explore our
+[redirect service repository](https://stash.guidewire.com/projects/DOCTOOLS/repos/redirect-server/browse),
+which contains all the necessary resources and code for implementing the
+redirect service on your site. To get started, please follow the instructions
+outlined in the ReadMe file. It provides step-by-step guidance on how to apply
+the redirect service to your website, ensuring a smooth transition for your
+visitors.

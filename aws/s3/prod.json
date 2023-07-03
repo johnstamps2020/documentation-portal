@@ -1,0 +1,29 @@
+[
+  {
+    "bucketName": "tenant-doctools-omega2-andromeda-builds",
+    "tags": [
+      {
+        "Key": "gwcp:v1:tenant:app-name",
+        "Value": "docportal-content"
+      }
+    ]
+  },
+  {
+    "bucketName": "tenant-doctools-omega2-andromeda-terraform",
+    "tags": [
+      {
+        "Key": "gwcp:v1:tenant:app-name",
+        "Value": "docportal-app"
+      }
+    ]
+  },
+  {
+    "bucketName": "tenant-doctools-portal2-omega2-andromeda-builds",
+    "tags": [
+      {
+        "Key": "gwcp:v1:tenant:app-name",
+        "Value": "portal2-content"
+      }
+    ]
+  }
+]
