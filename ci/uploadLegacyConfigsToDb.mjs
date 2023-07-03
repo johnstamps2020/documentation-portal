@@ -47,8 +47,8 @@ const accessToken = json.access_token;
 console.log('Get access token from Okta: OK');
 
 for (const entityType of ['page', 'source', 'doc', 'build']) {
-    console.log(`Uploading entities for ${entityType}...`);
-    const response = await fetch(
+  console.log(`Uploading entities for ${entityType}...`);
+  const response = await fetch(
     `${process.env.APP_BASE_URL}/admin/entity/legacy/${entityType}`,
     {
       method: 'PUT',

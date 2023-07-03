@@ -3,7 +3,7 @@ import CategoryLayout, {
 } from 'components/LandingPage/Category/CategoryLayout';
 import gradientBackgroundImage from 'images/background-gradient.svg';
 import garmischBackgroundImage from 'images/background-garmisch.png';
-import garmischBadge from 'images/badge-garmisch.svg';
+
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 
 const pageConfig: CategoryLayoutProps = {
