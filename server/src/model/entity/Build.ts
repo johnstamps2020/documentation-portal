@@ -1,74 +1,36 @@
 import {
   Column,
   Entity,
+  JoinColumn,
   JoinTable,
   ManyToMany,
   ManyToOne,
   OneToOne,
-  PrimaryColumn,
+  Unique,
 } from 'typeorm';
 import { Doc } from './Doc';
 import { Source } from './Source';
 import { Resource } from './Resource';
 import { GwEntity } from './GwEntity';
 
-export enum BuildType {
-  DITA = 'dita',
-  SOURCE_ZIP = 'source-zip',
-  STORYBOOK = 'storybook',
-  YARN = 'yarn',
-  JUST_COPY = 'just-copy',
-}
-
 @Entity()
-export class Build extends GwEntity {
-  @PrimaryColumn()
+@Unique(['id'])
+export abstract class Build extends GwEntity {
+  @Column({ type: 'varchar' })
   id: string;
 
-  @Column({
-    type: 'enum',
-    enum: BuildType,
-  })
-  type: BuildType;
+  @Column({ type: 'boolean' })
+  disabled: boolean;
 
-  @ManyToOne(() => Source, (source) => source.id, { eager: true })
-  @JoinTable()
+  @OneToOne(() => Doc, (doc) => doc.uuid)
+  @JoinColumn()
+  doc: Doc;
+
+  @ManyToOne(() => Source, (source) => source.uuid)
+  @JoinColumn()
   source: Source;
 
-  @Column({ nullable: true })
-  root: string;
-
-  @Column({ nullable: true })
-  filter: string;
-
-  @Column({ nullable: true })
-  indexRedirect: boolean;
-
-  @Column({ nullable: true })
-  nodeImageVersion: string;
-
-  @Column({ nullable: true })
-  workingDir: string;
-
-  @ManyToMany(() => Resource, (resource) => resource.id, {
-    eager: true,
-    nullable: true,
-  })
+  @ManyToMany(() => Resource, (resource) => resource.uuid, { nullable: true })
   @JoinTable()
-  resources: Resource[];
-
-  @Column({ nullable: true })
-  yarnBuildCustomCommand: string;
-
-  @Column({ nullable: true })
-  outputPath: string;
-
-  @Column({ nullable: true })
-  zipFilename: string;
-
-  @Column('json', { nullable: true })
-  customEnv: { name: string; value: string }[];
-
-  @OneToOne(() => Doc, (doc) => doc.build)
-  doc: Doc;
+  resources: Resource[] | null;
 }

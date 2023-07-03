@@ -1,0 +1,11 @@
+{
+  "$schema": "../config-schema.json",
+  "sources": [
+    {
+      "id": "gosurefsrc",
+      "title": "Gosu Reference",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gosu-reference.git",
+      "branch": "main"
+    }
+  ]
+}

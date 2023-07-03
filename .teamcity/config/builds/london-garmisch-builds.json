@@ -7,7 +7,8 @@
       "root": "CCLMAppGuide.ditamap",
       "srcId": "lmgarmischsrc",
       "docId": "londonccappgarmisch",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "PCLMAppGuide.ditamap",
       "srcId": "lmgarmischsrc",
       "docId": "londonpcappgarmisch",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "LMConfigGuide.ditamap",
       "srcId": "lmgarmischsrc",
       "docId": "londonconfiggarmisch",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "LMReleaseNotes.ditamap",
       "srcId": "lmgarmischsrc",
       "docId": "londonrngarmisch",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

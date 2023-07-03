@@ -7,7 +7,8 @@
       "root": "UpdateGuide.ditamap",
       "indexRedirect": true,
       "srcId": "is202302src",
-      "docId": "isbc202302update"
+      "docId": "isbc202302update",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "UpdateGuide.ditamap",
       "indexRedirect": true,
       "srcId": "is202302src",
-      "docId": "iscc202302update"
+      "docId": "iscc202302update",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "UpdateGuide.ditamap",
       "indexRedirect": true,
       "srcId": "is202302src",
-      "docId": "ispc202302update"
+      "docId": "ispc202302update",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "UpdateGuide.ditamap",
       "indexRedirect": true,
       "srcId": "is202302src",
-      "docId": "ee202302update"
+      "docId": "ee202302update",
+      "disabled": false
     }
   ]
 }

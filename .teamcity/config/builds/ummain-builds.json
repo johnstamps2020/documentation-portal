@@ -7,7 +7,8 @@
       "root": "AppReaderReleaseNotes.ditamap",
       "srcId": "ummainsrc",
       "docId": "ummainappreaderrn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "ReleaseNotes.ditamap",
       "srcId": "ummainsrc",
       "docId": "ummainrn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "UMAgentUserGuide.ditamap",
       "srcId": "ummainsrc",
       "docId": "ummainagentuser",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "UMOutlookAddinGuide.ditamap",
       "srcId": "ummainsrc",
       "docId": "ummainoutlook",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "UMStudioHelp.ditamap",
       "srcId": "ummainsrc",
       "docId": "ummainstudio",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -47,7 +52,8 @@
       "root": "UserGuide.ditamap",
       "srcId": "ummainsrc",
       "docId": "ummainuser",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

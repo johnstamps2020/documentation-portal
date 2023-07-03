@@ -7,7 +7,8 @@
       "root": "IRSAAdjusterGuide.ditamap",
       "srcId": "midipfelysianfrFRsrc",
       "docId": "midipfelysianadjusterfrFR",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "IRSAReleaseNotes.ditamap",
       "srcId": "midipfelysianfrFRsrc",
       "docId": "midipfelysianrnfrFR",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

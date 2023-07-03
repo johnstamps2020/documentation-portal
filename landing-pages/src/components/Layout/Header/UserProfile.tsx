@@ -11,7 +11,7 @@ import {
 } from 'components/Layout/StyledLayoutComponents';
 import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
-import { useEnvInfo, useUserInfo } from 'hooks/useApi';
+import { useUserInfo } from 'hooks/useApi';
 import Drawer from '@mui/material/Drawer';
 import LoginOptions from 'components/LoginPage/LoginOptions';
 import Stack from '@mui/material/Stack';
@@ -62,7 +62,6 @@ function LoginButton({ drawerOpen, setDrawerOpen }: LoginButtonProps) {
 
 export default function UserProfile() {
   const { userInfo, isError, isLoading } = useUserInfo();
-  const { envInfo } = useEnvInfo();
 
   const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(
     null

@@ -7,7 +7,8 @@
       "root": "DataMasking.ditamap",
       "srcId": "datamaskingsrc",
       "docId": "datamasking",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

@@ -36,6 +36,23 @@ export default function FilterPanel() {
   const resultsOffset = page === 1 ? 0 : (page - 1) * resultsPerPage;
 
   useEffect(() => {
+    function filterPages() {
+      return pages?.filter((p) => {
+        let matchesFilters = true;
+        for (const [k, v] of Object.entries(filters)) {
+          if (typeof v === 'boolean' && v && p[k as keyof typeof p] !== v) {
+            matchesFilters = false;
+          } else if (
+            typeof v === 'string' &&
+            v !== '' &&
+            !p[k as keyof typeof p]?.toString()?.includes(v)
+          ) {
+            matchesFilters = false;
+          }
+        }
+        return matchesFilters;
+      });
+    }
     const filteredPages = filterPages();
     if (filteredPages) {
       setFilteredPages(sortPages(filteredPages));
@@ -48,24 +65,6 @@ export default function FilterPanel() {
 
   function handleChangePage(event: React.ChangeEvent<unknown>, value: number) {
     setPage(value);
-  }
-
-  function filterPages() {
-    return pages?.filter((p) => {
-      let matchesFilters = true;
-      for (const [k, v] of Object.entries(filters)) {
-        if (typeof v === 'boolean' && v && p[k as keyof typeof p] !== v) {
-          matchesFilters = false;
-        } else if (
-          typeof v === 'string' &&
-          v !== '' &&
-          !p[k as keyof typeof p]?.toString()?.includes(v)
-        ) {
-          matchesFilters = false;
-        }
-      }
-      return matchesFilters;
-    });
   }
 
   function handleChange(field: string, value: string | boolean) {

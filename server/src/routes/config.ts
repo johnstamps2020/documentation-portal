@@ -36,11 +36,15 @@ router.get('/versionSelectors', async function (req, res) {
   return res.status(status).json(body);
 });
 
+// TODO: For editors, we should create separate endpoints in the admin route. They will load entities with all relations
+//  or some other way. These endpoints are used by frontend mostly, so we need make requests cheap.
 router.get('/entity/:repo', async function (req, res) {
   const { status, body } = await getEntity(req, res);
   return res.status(status).json(body);
 });
 
+//FIXME: For entities with a one-word name, a request in a browser is not case-sensitive
+//  For entities with a name that has two or more words, a request in a browser is case-sensitive
 router.get('/entity/:repo/all', async function (req, res) {
   const { status, body } = await getAllEntities(req, res);
   return res.status(status).json(body);

@@ -7,7 +7,8 @@
       "root": "workflow-designer-dev.ditamap",
       "srcId": "workflowservicesrc",
       "docId": "workflowdesigner",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "workflow-console-ops.ditamap",
       "srcId": "workflowservicesrc",
       "docId": "workflowconsole",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "release-notes-book.ditamap",
       "srcId": "workflowservicesrc",
       "docId": "workflowreleasenotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

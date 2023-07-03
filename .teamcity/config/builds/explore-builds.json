@@ -7,7 +7,8 @@
       "root": "m_relNotes.ditamap",
       "srcId": "exploresrc",
       "docId": "explorernrelease",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,17 @@
       "root": "m_cloud-usingExplore.ditamap",
       "srcId": "exploresrc",
       "docId": "exploreusingrelease",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "m_cloud-usingExplore.ditamap",
+      "srcId": "explorekibanasrc",
+      "docId": "exploreusingkibanarelease",
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +42,8 @@
       "root": "m_dataDictionaries.ditamap",
       "srcId": "exploresrc",
       "docId": "exploredatadictrelease",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

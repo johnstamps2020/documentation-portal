@@ -4,18 +4,11 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "DatadogEACustomerAccess.ditamap",
-      "srcId": "in20232",
-      "docId": "in20232ddlogacc",
-      "indexRedirect": true
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "ApplicationGuide.ditamap",
       "srcId": "in20232",
       "docId": "in20232app",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +16,8 @@
       "root": "BillingConfigurationReference.ditamap",
       "srcId": "in20232",
       "docId": "in20232billref",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +25,8 @@
       "root": "ConsumerSalesPortalFeatures.ditamap",
       "srcId": "in20232",
       "docId": "in20232csalesp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +34,8 @@
       "root": "ConsumerServicePortalFeatures.ditamap",
       "srcId": "in20232",
       "docId": "in20232cservicep",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -47,7 +43,8 @@
       "root": "AppReaderIntegrationGuide.ditamap",
       "srcId": "in20232",
       "docId": "in20232appreaderinteg",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -55,7 +52,8 @@
       "root": "Configuration.ditamap",
       "srcId": "in20232",
       "docId": "in20232config",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -63,7 +61,8 @@
       "root": "Studio.ditamap",
       "srcId": "in20232",
       "docId": "in20232studio",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -71,7 +70,8 @@
       "root": "PortalDevelopment.ditamap",
       "srcId": "in20232",
       "docId": "in20232portaldev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -79,7 +79,8 @@
       "root": "ProductAttributeReference.ditamap",
       "srcId": "in20232",
       "docId": "in20232prodattref",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -87,7 +88,8 @@
       "root": "ProvisioningPortalGuide.ditamap",
       "srcId": "in20232",
       "docId": "in20232provportal",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -95,7 +97,8 @@
       "root": "ProvisioningPortal.ditamap",
       "srcId": "in20232",
       "docId": "in20232provportalinternal",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -103,7 +106,8 @@
       "root": "UnderwritingConfigurationReference.ditamap",
       "srcId": "in20232",
       "docId": "in20232uwconfig",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -111,13 +115,15 @@
       "root": "ClaimsConfigurationReference.ditamap",
       "srcId": "in20232",
       "docId": "in20232claimsconfig",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "docId": "in20232apiref",
       "srcId": "srcin20232apiref",
-      "nodeImageVersion": "16.18.0"
+      "nodeImageVersion": "16.18.0",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -125,7 +131,8 @@
       "root": "BusinessIntelligenceIntegrationGuide.ditamap",
       "srcId": "in20232",
       "docId": "in20232xbiintegdraft",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -133,7 +140,8 @@
       "root": "ConsumersSalesPortalConfig.ditamap",
       "srcId": "in20232",
       "docId": "in20232xcsalespconfigdraft",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -141,7 +149,8 @@
       "root": "ConsumerServicePortalConfigGuide.ditamap",
       "srcId": "in20232",
       "docId": "in20232xcservicepconfigdraft",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

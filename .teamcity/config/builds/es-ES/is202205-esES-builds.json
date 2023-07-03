@@ -7,7 +7,8 @@
       "root": "ContactMgmtGuide.ditamap",
       "srcId": "is202205esESsrc",
       "docId": "is202205contactesES",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "BC-AppGuide.ditamap",
       "srcId": "is202205esESsrc",
       "docId": "isbc202205appesES",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "ConfigGuide.ditamap",
       "srcId": "is202205esESsrc",
       "docId": "isbc202205configesES",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "CC-AppGuide.ditamap",
       "srcId": "is202205esESsrc",
       "docId": "iscc202205appesES",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "ConfigGuide.ditamap",
       "srcId": "is202205esESsrc",
       "docId": "iscc202205configesES",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -47,7 +52,8 @@
       "root": "PC-AppGuide.ditamap",
       "srcId": "is202205esESsrc",
       "docId": "ispc202205appesES",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -55,7 +61,8 @@
       "root": "ConfigGuide.ditamap",
       "srcId": "is202205esESsrc",
       "docId": "ispc202205configesES",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

@@ -1,5 +1,7 @@
+import { Version } from '../model/entity/Version';
+
 export type LegacyVersionObject = {
-  versions: string[];
+  versions: string[] | Version[];
   releases: string[];
   url: string;
   currentlySelected?: boolean;
@@ -13,99 +15,107 @@ export type LegacyVersionSelector = {
   };
 };
 
-export class legacyItem {
+export type LegacyItem = {
   label: string;
   class: string;
-  id: string | null;
-  page: string | null;
-  link: string | null;
-  env: string[] | null;
-  items: legacyItem[] | null;
-}
+  id: string;
+  page: string;
+  link: string;
+  env: string[];
+  items: LegacyItem[];
+};
 
-export class legacySelector {
+export type LegacySelector = {
   label: string;
   class: string;
   selectedItem: string;
-  items: legacyItem[];
-}
+  items: LegacyItem[];
+};
 
-export class legacyPageConfig {
+type SearchFilters = { [key: string]: string[] };
+
+export type LegacyPageConfig = {
   path: string;
   title: string;
   template: string;
   includeInBreadcrumbs: boolean;
   class: string;
-  selector: legacySelector;
-  search_filters: { [key: string]: string[] };
-  items: legacyItem[];
-}
+  selector: LegacySelector;
+  search_filters: SearchFilters;
+  items: LegacyItem[];
+};
 
-export type Environment = string;
+type Environment = 'staging' | 'prod';
 
-export type Environments = Environment[];
+type EnvironmentVariable = { name: string; value: string };
 
-export class Metadata {
+type Metadata = {
   product: string[];
   platform: string[];
   version: string[];
-  subject: string[] | null;
-  release: string[] | null;
-}
+  locale: string[];
+  subject?: string[];
+  release?: string[];
+};
 
-export class legacyDocConfig {
+export type LegacyDocConfig = {
   id: string;
   title: string;
   url: string;
-  body: string;
+  body?: string;
   metadata: Metadata;
-  environments: Environments;
+  environments: Environment[];
   displayOnLandingPages: boolean;
   indexForSearch: boolean;
   public: boolean;
   internal: boolean;
   earlyAccess: boolean;
-}
+};
 
-export class legacyBuildConfig {
-  buildType: string;
-  filter: string;
-  root: string;
-  workingDir: string;
-  indexRedirect: boolean;
+export type LegacyBuildResource = {
+  sourceFolder: string;
+  targetFolder: string;
+  srcId: string;
+};
+
+export type LegacyBuildConfig = {
+  buildType: 'dita' | 'source-zip' | 'storybook' | 'yarn' | 'just-copy';
+  filter?: string;
+  root?: string;
+  workingDir?: string;
+  indexRedirect?: boolean;
   srcId: string;
   docId: string;
-  resources: Array<{
-    sourceFolder: string;
-    targetFolder: string;
-    srcId: string;
-  }>;
-  nodeImageVersion: string;
-  yarnBuildCustomCommand: string;
-  outputPath: string;
-  zipFilename: string;
-  customEnv: { name: string; value: string }[];
-}
+  resources?: LegacyBuildResource[];
+  nodeImageVersion?: string;
+  yarnBuildCustomCommand?: string;
+  outputPath?: string;
+  zipFilename?: string;
+  customEnv?: EnvironmentVariable[];
+  disabled: boolean;
+};
 
-export class legacySourceConfig {
+export type LegacySourceConfig = {
   id: string;
   title: string;
-  sourceType: string;
   gitUrl: string;
-  xdocsPathIds: Array<string>;
   branch: string;
-  exportFrequency: string;
-  pollInterval: number;
-}
-
-export type legacyDocsConfigFile = {
-  docs: legacyDocConfig[];
 };
 
-export type legacyBuildsConfigFile = {
-  builds: legacyBuildConfig[];
+export type LegacyDocsConfigFile = {
+  docs: LegacyDocConfig[];
 };
 
-export type legacySourcesConfigFile = {
-  sources: legacySourceConfig[];
+export type LegacyBuildsConfigFile = {
+  builds: LegacyBuildConfig[];
+};
+
+export type LegacySourcesConfigFile = {
+  sources: LegacySourceConfig[];
+};
+
+export type PlatformProductVersionCombination = {
+  productName: string;
+  platformName: string;
+  versionName: string;
 };

@@ -7,7 +7,8 @@
       "root": "CustomerEngage_AccountManagement_AppGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITceamapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITceaminstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "CustomerEngage_Claims_AppGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITceclaimsapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITceclaimsinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "CustomerEngage_QuoteAndBuy_AppGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITceqbapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -47,7 +52,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITceqbinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -55,7 +61,8 @@
       "root": "ProducerEngage_AppGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITpeapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -63,7 +70,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITpeinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -71,7 +79,8 @@
       "root": "ProducerEngage_Claims_AppGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITpeclaimsapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -79,7 +88,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITpeclaimsinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -87,7 +97,8 @@
       "root": "ServiceRepEngage_AppGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITsreapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -95,7 +106,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITsreinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -103,7 +115,8 @@
       "root": "VendorEngage_AppGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITveapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -111,7 +124,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx202205itITsrc",
       "docId": "dx202205itITveinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

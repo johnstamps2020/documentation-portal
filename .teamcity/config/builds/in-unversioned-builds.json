@@ -7,7 +7,8 @@
       "root": "API_Modernization.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "inapimodernization",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,17 @@
       "root": "CustomAPI.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "inapidevelopment",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "INowServicePortalReleaseNotes20232Hakuba.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "incsp20232rn",
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +42,8 @@
       "root": "INowServicePortalReleaseNotes20231Garmisch.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp20231rn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +51,8 @@
       "root": "INowServicePortalReleaseNotes20222Flaine.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp20222rn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -47,7 +60,8 @@
       "root": "INowServicePortalReleaseNotes20221Elysian.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp20221rn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -55,7 +69,8 @@
       "root": "INowServicePortalReleaseNotes20212Dobson.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp4rn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -63,7 +78,8 @@
       "root": "INowServicePortalReleaseNotes20211Cortina.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp20211rn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -71,7 +87,8 @@
       "root": "ConsumerServicePortalReleaseNotesV326.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp326rn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -79,7 +96,8 @@
       "root": "ConsumerServicePortalReleaseNotesV325.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp325rn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -87,7 +105,8 @@
       "root": "ConsumerServicePortalReleaseNotesV324.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp324rn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -95,7 +114,8 @@
       "root": "ConsumerServicePortalReleaseNotesV323.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "incsp323rn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -103,7 +123,8 @@
       "root": "DevelopersGuide_Java11.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "indevguidejava11ext",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -111,7 +132,8 @@
       "root": "DevelopersGuide_Java11.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "indevguidejava11draft",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -119,7 +141,17 @@
       "root": "ExcelDesignedRating30.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "inexcelrating30",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "INowStudioReleaseNotes20232Hakuba.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20232studiorn",
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -135,7 +167,8 @@
       "root": "INowStudioReleaseNotes20231Garmisch.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20231studiorn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -143,7 +176,8 @@
       "root": "INowStudioReleaseNotes20222Flaine.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20222studiorn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -151,7 +185,8 @@
       "root": "INowStudioReleaseNotes20221Elysian.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20221studiorn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -159,7 +194,8 @@
       "root": "INowStudioReleaseNotes20212Dobson.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20212studiorn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -167,7 +203,8 @@
       "root": "INowStudioReleaseNotes20211Cortina.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20211studiorn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -175,7 +212,8 @@
       "root": "INowStudioReleaseNotes20202Banff.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20202studiorn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -183,7 +221,17 @@
       "root": "InsuranceNow_InstallAssist_5.0.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "ininstallassistdraft",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "INowCoreReleaseNotes20232Hakuba.ditamap",
+      "srcId": "inunversionedsrc",
+      "docId": "in20232rn",
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -199,7 +247,8 @@
       "root": "INowCoreReleaseNotes20231Garmisch.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20231rn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -207,7 +256,8 @@
       "root": "INowCoreReleaseNotes20222Flaine.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20222rn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -215,7 +265,8 @@
       "root": "INowCoreReleaseNotes20221Elysian.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20221rn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -223,7 +274,8 @@
       "root": "INowCoreReleaseNotes20212Dobson.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "in20212rn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -238,7 +290,8 @@
           "sourceFolder": "ChangedFiles/2021.1",
           "srcId": "insurancenowextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -253,7 +306,8 @@
           "sourceFolder": "ChangedFiles/2020.2",
           "srcId": "insurancenowextrassrc"
         }
-      ]
+      ],
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -261,7 +315,8 @@
       "root": "UpgradeTools.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "inupgradetoolsdraft",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -269,7 +324,8 @@
       "root": "GWCPOperations.ditamap",
       "srcId": "inunversionedsrc",
       "docId": "ingwcpops",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

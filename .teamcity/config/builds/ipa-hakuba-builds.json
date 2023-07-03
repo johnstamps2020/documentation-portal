@@ -7,7 +7,8 @@
       "root": "IPAReleaseNotes.ditamap",
       "srcId": "ipahakubasrc",
       "docId": "ipahakubarn",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "IPAConfigurationGuide.ditamap",
       "srcId": "ipahakubasrc",
       "docId": "ipahakubaconfig",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "IPAApplicationGuide.ditamap",
       "srcId": "ipahakubasrc",
       "docId": "ipahakubaapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "IPAUpgradeGuide.ditamap",
       "srcId": "ipahakubasrc",
       "docId": "ipahakubaupgrade",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "IPAInstallGuide.ditamap",
       "srcId": "ipahakubasrc",
       "docId": "ipahakubainstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

@@ -7,7 +7,8 @@
       "root": "A_Map01.ditamap",
       "srcId": "canvassrc",
       "docId": "canvas",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

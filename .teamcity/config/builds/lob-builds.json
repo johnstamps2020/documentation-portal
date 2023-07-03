@@ -7,7 +7,8 @@
       "root": "AU_CW_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobaucwreleasenotescloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "AU_CW_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobaucwreleasenotesonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "AU_State_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobaustatereleasenotescloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "AU_State_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobaustatereleasenotesonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "BOP_CW_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobbopcwreleasenotescloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -47,7 +52,8 @@
       "root": "BOP_CW_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobbopcwreleasenotesonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -55,7 +61,8 @@
       "root": "BP_State_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobbopstatereleasenotescloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -63,7 +70,8 @@
       "root": "BP_State_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobbopstatereleasenotesonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -71,7 +79,8 @@
       "root": "CA_CW_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcacwreleasenotescloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -79,7 +88,8 @@
       "root": "CA_CW_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcacwreleasenotesonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -87,7 +97,8 @@
       "root": "CA_State_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcastatereleasenotescloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -95,7 +106,8 @@
       "root": "CA_State_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcastatereleasenotesonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -103,7 +115,8 @@
       "root": "CP_CW_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcpcwreleasenotescloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -111,7 +124,8 @@
       "root": "CP_CW_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcpcwreleasenotesonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -119,7 +133,8 @@
       "root": "CP_State_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcpstatereleasenotescloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -127,7 +142,8 @@
       "root": "CP_State_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcpstatereleasenotesonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -135,7 +151,8 @@
       "root": "Crime_CW_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcrimecwreleasenotescloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -143,7 +160,8 @@
       "root": "Crime_CW_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcrimecwreleasenotesonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -151,7 +169,8 @@
       "root": "Crime_State_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcrimestatereleasenotescloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -159,7 +178,8 @@
       "root": "Crime_State_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcrimestatereleasenotesonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -167,7 +187,8 @@
       "root": "GL_CW_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobglcwreleasenotescloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -175,7 +196,8 @@
       "root": "GL_CW_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobglcwreleasenotesonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -183,7 +205,8 @@
       "root": "GL_State_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobglstatereleasenotescloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -191,7 +214,8 @@
       "root": "GL_State_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobglstatereleasenotesonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -199,7 +223,8 @@
       "root": "lob-au-10x.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobau10xcloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -207,7 +232,8 @@
       "root": "lob-au-10x.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobau10xonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -215,7 +241,8 @@
       "root": "lob-bop-guide.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobbopcloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -223,7 +250,8 @@
       "root": "lob-bop-guide.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobboponprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -231,7 +259,8 @@
       "root": "lob-ca.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcacloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -239,7 +268,8 @@
       "root": "lob-ca.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcaonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -247,7 +277,8 @@
       "root": "lob-cp.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcpcloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -255,7 +286,8 @@
       "root": "lob-cp.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcponprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -263,7 +295,8 @@
       "root": "lob-cpp.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcppcloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -271,7 +304,8 @@
       "root": "lob-cpp.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcpponprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -279,7 +313,8 @@
       "root": "lob-crime.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcrimecloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -287,7 +322,8 @@
       "root": "lob-crime.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobcrimeonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -295,7 +331,8 @@
       "root": "lob-gl-9x-1003.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobgl9x1003cloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -303,7 +340,8 @@
       "root": "lob-gl-9x-1003.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobgl9x1003onprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -311,7 +349,8 @@
       "root": "lob-ho.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobhocloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -319,7 +358,8 @@
       "root": "lob-ho.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobhoonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -327,7 +367,8 @@
       "root": "lob-pup.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobpupcloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -335,7 +376,8 @@
       "root": "lob-pup.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobpuponprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -343,7 +385,8 @@
       "root": "lob-wc.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobwccloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -351,7 +394,8 @@
       "root": "lob-wc.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobwconprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -359,7 +403,8 @@
       "root": "lob-wcm.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobwcmcloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -367,7 +412,8 @@
       "root": "lob-wcm.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobwcmonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -375,7 +421,8 @@
       "root": "PCA-User.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobpcausercloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -383,7 +430,8 @@
       "root": "PCA-User.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobpcauseronprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -391,7 +439,8 @@
       "root": "PCAReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobpcareleasenotescloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -399,7 +448,8 @@
       "root": "PCAReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobpcareleasenotesonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -407,7 +457,8 @@
       "root": "WC_CW_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobwccwreleasenotescloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -415,7 +466,8 @@
       "root": "WC_CW_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobwccwreleasenotesonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -423,7 +475,8 @@
       "root": "WC_State_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobwcstaterelnotescloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -431,7 +484,8 @@
       "root": "WC_State_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobwcstaterelnotesonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -439,7 +493,8 @@
       "root": "WC_WCM_CW_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobwcwcmcwreleasenotescloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -447,7 +502,8 @@
       "root": "WC_WCM_CW_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobwcwcmcwreleasenotesonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -455,7 +511,8 @@
       "root": "WC_WCM_State_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobwcwcmstaterelnotescloud",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -463,7 +520,8 @@
       "root": "WC_WCM_State_ReleaseNotes.ditamap",
       "srcId": "lobmainsrc",
       "docId": "lobwcwcmstaterelnotesonprem",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

@@ -26,6 +26,6 @@
       "cwd": "${workspaceFolder}/ci",
       "command": "node uploadLegacyConfigsToDb.mjs",
       "envFile": "${workspaceFolder}/server/.env"
-    },
+    }
   ]
 }

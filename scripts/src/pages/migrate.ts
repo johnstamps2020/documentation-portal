@@ -140,7 +140,7 @@ function getWhatsNew(flailConfig: FlailConfig): string {
       ],
     }`;
   }
-  
+
   if (level1Class.match('garmisch')) {
     return `{
       label: 'Garmisch',
@@ -180,10 +180,14 @@ function getWhatsNew(flailConfig: FlailConfig): string {
   }`;
 }
 
-function getBackgroundProps(flailConfig: FlailConfig): {
+function getBackgroundProps(
+  flailConfig: FlailConfig,
+  targetFile: string
+): {
   backGroundImports: string;
   backgroundPropValue: string;
 } {
+  const isRelease = getIsRelease(targetFile);
   if (flailConfig.title === 'Self-managed') {
     return {
       backGroundImports: `import Box from '@mui/material/Box';
@@ -209,7 +213,11 @@ function getBackgroundProps(flailConfig: FlailConfig): {
     return {
       backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
       import garmischBackgroundImage from 'images/background-garmisch.png';
-      import garmischBadge from 'images/badge-garmisch.svg';
+      ${
+        isRelease
+          ? `import garmischBadge from 'images/badge-garmisch.svg';`
+          : ''
+      }
       import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
       backgroundPropValue:
         '{\n...baseBackgroundProps,\nbackgroundImage: {\nxs: `url(${gradientBackgroundImage})`,\nsm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), \n  url(${garmischBackgroundImage}), \n  linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,\n},\n}',
@@ -219,7 +227,7 @@ function getBackgroundProps(flailConfig: FlailConfig): {
   if (level1Class.match('flaine')) {
     return {
       backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
-      import flaineBadge from 'images/badge-flaine.svg';
+      ${isRelease ? `import flaineBadge from 'images/badge-flaine.svg';` : ''}
       import flaineBackgroundImage from 'images/background-flaine.svg';
       import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
       backgroundPropValue:
@@ -377,7 +385,7 @@ function mapToCategory2Layout(
   flailConfig: FlailConfig,
   targetFile: string
 ): string {
-  const { backgroundPropValue } = getBackgroundProps(flailConfig);
+  const { backgroundPropValue } = getBackgroundProps(flailConfig, targetFile);
   const cards = flailConfig.items.map((flail) => ({
     label: flail.label,
     items: getItems(flail.items, targetFile),
@@ -405,7 +413,7 @@ function mapToCategoryLayout(
   flailConfig: FlailConfig,
   targetFile: string
 ): string {
-  const { backgroundPropValue } = getBackgroundProps(flailConfig);
+  const { backgroundPropValue } = getBackgroundProps(flailConfig, targetFile);
   const cards = flailConfig.items.map((flail) => ({
     label: flail.id ? '' : flail.label,
     items:
@@ -458,7 +466,7 @@ function mapToProductFamilyLayout(
   flailConfig: FlailConfig,
   targetFile: string
 ): string {
-  const { backgroundPropValue } = getBackgroundProps(flailConfig);
+  const { backgroundPropValue } = getBackgroundProps(flailConfig, targetFile);
   const items = getItems(flailConfig.items, targetFile);
   const selector = getSelector(flailConfig, targetFile);
   const showReleaseSelector = getIsRelease(targetFile);
@@ -475,7 +483,7 @@ function mapToSectionLayout(
   flailConfig: FlailConfig,
   targetFile: string
 ): string {
-  const { backgroundPropValue } = getBackgroundProps(flailConfig);
+  const { backgroundPropValue } = getBackgroundProps(flailConfig, targetFile);
   const sections = getSections(flailConfig.items, targetFile);
   const selector = getSelector(flailConfig, targetFile, 'black');
   return `{
@@ -592,7 +600,7 @@ function createComponentTemplate(
   );
   const pageConfig = remapFunction(flailConfig, targetFile);
   const pageComponentName = getComponentName(targetFile);
-  const { backGroundImports } = getBackgroundProps(flailConfig);
+  const { backGroundImports } = getBackgroundProps(flailConfig, targetFile);
 
   return `import ${componentName}, { ${layoutProps} } from '${from}';
 ${backGroundImports}

@@ -1,15 +1,12 @@
-import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
-import { Doc } from './Doc';
+import { Column, Entity, Unique } from 'typeorm';
 import { GwEntity } from './GwEntity';
 
 @Entity()
+@Unique(['code'])
 export class Locale extends GwEntity {
-  @PrimaryColumn()
-  languageCode: string;
+  @Column({ type: 'varchar' })
+  code: string;
 
-  @Column()
-  languageName: string;
-
-  @OneToMany(() => Doc, (doc) => doc.id)
-  doc: Doc;
+  @Column({ type: 'varchar' })
+  label: string;
 }

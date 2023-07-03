@@ -16,7 +16,7 @@ export default function AdminAccess({ pagePath, children }: AdminAccessProps) {
     } else if (userInfo && userInfo.isAdmin === false) {
       navigate(`/forbidden?unauthorized=${pagePath}`);
     }
-  }, [userInfo?.isLoggedIn, userInfo?.isAdmin, pagePath]);
+  }, [navigate, userInfo, userInfo?.isLoggedIn, userInfo?.isAdmin, pagePath]);
 
   if (isLoading || isError) {
     return null;

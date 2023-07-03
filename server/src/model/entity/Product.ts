@@ -1,18 +1,9 @@
-import { Entity, ManyToMany, PrimaryColumn } from 'typeorm';
-import { Doc } from './Doc';
+import { Column, Entity, Unique } from 'typeorm';
 import { GwEntity } from './GwEntity';
 
 @Entity()
+@Unique(['name'])
 export class Product extends GwEntity {
-  @PrimaryColumn()
+  @Column({ type: 'varchar' })
   name: string;
-
-  @PrimaryColumn()
-  version: string;
-
-  @PrimaryColumn()
-  platform: string;
-
-  @ManyToMany(() => Doc, (doc) => doc.id)
-  docs: Doc[];
 }

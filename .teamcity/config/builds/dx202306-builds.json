@@ -7,7 +7,8 @@
       "root": "CustomerEngage_AccountManagement_AppGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306ceamapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306ceaminstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "DevelopersGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306ceamdev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -31,7 +34,8 @@
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306ceamrefguides",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -39,7 +43,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306ceamrelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -47,7 +52,8 @@
       "root": "CustomerEngage_Claims_AppGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306ceclaimsapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -55,7 +61,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306ceclaimsinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -63,7 +70,8 @@
       "root": "DevelopersGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306ceclaimsdev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -71,7 +79,8 @@
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306ceclaimsrefguides",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -79,7 +88,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306ceclaimsrelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -87,7 +97,8 @@
       "root": "CustomerEngage_QuoteAndBuy_AppGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306ceqbapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -95,7 +106,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306ceqbinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -103,7 +115,8 @@
       "root": "DevelopersGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306ceqbdev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -111,7 +124,8 @@
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306ceqbrefguides",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -119,7 +133,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306ceqbrelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -127,7 +142,8 @@
       "root": "ProducerEngage_AppGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306peapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -135,7 +151,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306peinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -143,7 +160,8 @@
       "root": "DevelopersGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306pedev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -151,7 +169,8 @@
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306perefguides",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -159,7 +178,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306perelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -167,7 +187,8 @@
       "root": "ProducerEngage_Claims_AppGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306peclaimsapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -175,7 +196,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306peclaimsinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -183,7 +205,8 @@
       "root": "DevelopersGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306peclaimsdev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -191,7 +214,8 @@
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306peclaimsrefguides",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -199,7 +223,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306peclaimsrelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -207,7 +232,8 @@
       "root": "ServiceRepEngage_AppGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306sreapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -215,7 +241,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306sreinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -223,7 +250,8 @@
       "root": "DevelopersGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306sredev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -231,7 +259,8 @@
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306srerefguides",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -239,7 +268,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306srerelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -247,7 +277,8 @@
       "root": "VendorEngage_AppGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306veapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -255,7 +286,8 @@
       "root": "InstallGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306veinstall",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -263,7 +295,8 @@
       "root": "DevelopersGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306vedev",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -271,7 +304,8 @@
       "root": "DigitalServicesRefGuides.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306verefguides",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -279,7 +313,8 @@
       "root": "cloud_digital-release-notes.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306verelnotes",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -287,12 +322,14 @@
       "root": "DigitalCodeGenerationGuide.ditamap",
       "srcId": "dx202306src",
       "docId": "dx202306dcg",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "yarn",
       "srcId": "dxjsdocs202306src",
-      "docId": "dxjsdocs202306"
+      "docId": "dxjsdocs202306",
+      "disabled": false
     }
   ]
 }

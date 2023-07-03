@@ -1,65 +1,48 @@
-import {
-  Column,
-  Entity,
-  Index,
-  JoinColumn,
-  JoinTable,
-  ManyToMany,
-  ManyToOne,
-  OneToOne,
-  PrimaryColumn,
-} from 'typeorm';
-import { Product } from './Product';
-import { Build } from './Build';
+import { Column, Entity, Index, JoinTable, ManyToMany, Unique } from 'typeorm';
+import { PlatformProductVersion } from './PlatformProductVersion';
 import { Release } from './Release';
 import { Subject } from './Subject';
 import { Locale } from './Locale';
 import { GwEntity } from './GwEntity';
 
 @Entity()
+@Unique(['id', 'url'])
 export class Doc extends GwEntity {
-  @PrimaryColumn()
+  @Column({ type: 'varchar' })
   id: string;
 
-  @Column()
+  @Column({ type: 'varchar' })
   title: string;
 
-  @Column()
+  @Column({ type: 'varchar' })
   @Index('docUrls-idx')
   url: string;
 
-  @Column({ nullable: true })
-  body: string;
-
-  @ManyToMany(() => Product, (product) => product, { eager: true })
-  @JoinTable()
-  products: Product[];
-
-  @OneToOne(() => Build, (build) => build.id, { eager: true })
-  @JoinColumn()
-  build: Build;
-
-  @ManyToMany(() => Release, (release) => release.name, {
-    eager: true,
-    nullable: true,
-  })
-  @JoinTable()
-  releases: Release[];
-
-  @ManyToMany(() => Subject, (subject) => subject.name, {
-    eager: true,
-    nullable: true,
-  })
-  @JoinTable()
-  subjects: Subject[];
-
-  @Column({ default: true })
+  @Column({ type: 'boolean' })
   displayOnLandingPages: boolean;
 
-  @Column({ default: true })
+  @Column({ type: 'boolean' })
   indexForSearch: boolean;
 
-  @ManyToOne(() => Locale, (locale) => locale.languageCode, { eager: true })
+  @Column({ type: 'varchar', nullable: true })
+  body: string | null;
+
+  @ManyToMany(
+    () => PlatformProductVersion,
+    (platform_product_version) => platform_product_version.uuid
+  )
+  @JoinTable()
+  platformProductVersions: PlatformProductVersion[];
+
+  @ManyToMany(() => Locale, (locale) => locale.uuid)
   @JoinTable()
   locales: Locale[];
+
+  @ManyToMany(() => Release, (release) => release.uuid, { nullable: true })
+  @JoinTable()
+  releases: Release[] | null;
+
+  @ManyToMany(() => Subject, (subject) => subject.uuid, { nullable: true })
+  @JoinTable()
+  subjects: Subject[] | null;
 }

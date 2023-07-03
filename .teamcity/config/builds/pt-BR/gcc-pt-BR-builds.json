@@ -7,7 +7,8 @@
       "filter": "insurer-developer.ditaval",
       "indexRedirect": true,
       "srcId": "guidewirecloudconsolelatestptBRsrc",
-      "docId": "guidewirecloudconsolerootinsurerdevptBR"
+      "docId": "guidewirecloudconsolerootinsurerdevptBR",
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "filter": "insurer-developer.ditaval",
       "indexRedirect": true,
       "srcId": "guidewirecloudconsolelatestptBRsrc",
-      "docId": "guidewirecloudconsolerootinsurerdevrnptBR"
+      "docId": "guidewirecloudconsolerootinsurerdevrnptBR",
+      "disabled": false
     }
   ]
 }

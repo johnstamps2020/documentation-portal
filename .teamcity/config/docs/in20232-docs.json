@@ -2,25 +2,6 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "in20232ddlogacc",
-      "title": "Datadog Log Access",
-      "url": "cloud/in/20232/ddlogacc",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2023.2"],
-        "subject": ["Features and functionality"],
-        "release": ["Hakuba"],
-        "locale": ["en-US"]
-      },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": true
-    },
-    {
       "id": "in20232app",
       "title": "Application Guide",
       "url": "cloud/in/20232/app",

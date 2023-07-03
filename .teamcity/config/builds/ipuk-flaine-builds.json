@@ -7,7 +7,8 @@
       "root": "OICRelNotes.ditamap",
       "srcId": "ipukflainesrc",
       "docId": "ipukflainern",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -15,7 +16,8 @@
       "root": "OICConfigGuide.ditamap",
       "srcId": "ipukflainesrc",
       "docId": "ipukflaineconfig",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     },
     {
       "buildType": "dita",
@@ -23,7 +25,8 @@
       "root": "OICAppGuide.ditamap",
       "srcId": "ipukflainesrc",
       "docId": "ipukflaineapp",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

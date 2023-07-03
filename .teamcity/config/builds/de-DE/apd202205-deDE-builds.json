@@ -7,7 +7,8 @@
       "root": "AdvancedProductDesigner.ditamap",
       "srcId": "apd202205deDEsrc",
       "docId": "ispc202205apddeDE",
-      "indexRedirect": true
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

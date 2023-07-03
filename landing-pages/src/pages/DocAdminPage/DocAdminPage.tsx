@@ -1,10 +1,8 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { Doc } from 'server/dist/model/entity/Doc';
-import { Build } from 'server/dist/model/entity/Build';
 import Button from '@mui/material/Button';
 import Layout from 'components/Layout/Layout';
 import DocForm from 'components/DocForm/DocForm';
-import { Product } from 'server/dist/model/entity/Product';
 import { Release } from 'server/dist/model/entity/Release';
 import { Subject } from 'server/dist/model/entity/Subject';
 import Modal from '@mui/material/Modal';
@@ -18,18 +16,18 @@ import { adminDocTheme } from 'themes/adminDocTheme';
 import { Locale } from 'server/dist/model/entity/Locale';
 
 const emptyDoc: Doc = {
+  uuid: '',
   id: '',
   title: '',
   url: '',
   body: '',
-  products: [new Product()],
+  platformProductVersions: [],
   releases: [new Release()],
   displayOnLandingPages: false,
   indexForSearch: false,
   public: false,
   internal: false,
   earlyAccess: false,
-  build: new Build(),
   subjects: [new Subject()],
   isInProduction: false,
   locales: [new Locale()],
@@ -109,7 +107,6 @@ export default function DocAdminPage() {
         public: doc.public,
         internal: doc.internal,
         earlyAccess: doc.earlyAccess,
-        products: doc.products,
         releases: doc.releases,
         subjects: doc.subjects,
         categories: null,
@@ -153,7 +150,6 @@ export default function DocAdminPage() {
         public: doc.public,
         internal: doc.internal,
         earlyAccess: doc.earlyAccess,
-        products: doc.products,
         releases: doc.releases,
         subjects: doc.subjects,
         categories: null,

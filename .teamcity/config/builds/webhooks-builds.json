@@ -5,7 +5,8 @@
       "buildType": "yarn",
       "docId": "webhooksapinext",
       "srcId": "webhooksapinextsrc",
-      "workingDir": "docs"
+      "workingDir": "docs",
+      "disabled": false
     }
   ]
 }
