@@ -1,5 +1,5 @@
 import Stack from '@mui/material/Stack';
-import Checkbox, { CheckboxProps } from '@mui/material/Checkbox';
+import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Chip from '@mui/material/Chip';
 import { ServerSearchFilterValue } from 'server/dist/types/serverSearch';

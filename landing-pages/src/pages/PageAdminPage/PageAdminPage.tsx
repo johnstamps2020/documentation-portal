@@ -1,6 +1,5 @@
 import Layout from 'components/Layout/Layout';
 import FilterPanel from 'components/PageAdminPage/FilterPanel';
-import PageList from 'components/PageAdminPage/PageList';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';

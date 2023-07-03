@@ -14,6 +14,7 @@ import { Page } from 'server/dist/model/entity/Page';
 import Snackbar from '@mui/material/Snackbar';
 
 export const emptyPage: Page = {
+  uuid: '',
   path: '',
   title: '',
   component: '',
@@ -82,7 +83,7 @@ export default function PagePropsController({
     } else {
       setDataChanged(true);
     }
-  }, [tmpPageData, pageData]);
+  }, [tmpPageData, pageData, pagePath]);
 
   useEffect(() => {
     if (

@@ -12,5 +12,13 @@
     "**/logs/**": true,
     "**/static/html5/**": true
   },
-  "cSpell.words": ["Guidewire"]
+  "cSpell.words": [
+    "brainshark",
+    "Cortina",
+    "Cyence",
+    "flaine",
+    "Guidewire",
+    "Hakuba"
+  ],
+  "cSpell.ignoreRegExpList": ["(docId|pagePath): [\"'][a-zA-Z0-9]+[\"']"]
 }

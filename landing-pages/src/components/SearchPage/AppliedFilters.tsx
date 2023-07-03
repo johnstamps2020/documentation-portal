@@ -33,7 +33,7 @@ export default function AppliedFilters() {
         setCheckedFilters([]);
       }
     }
-  }, [searchData?.filters]);
+  }, [searchData, searchData?.filters]);
 
   if (!searchData || isLoading) {
     return <AppliedFiltersSkeleton />;

@@ -40,7 +40,7 @@ export default function FilterPanel() {
     if (filteredPages) {
       setFilteredPages(sortPages(filteredPages));
     }
-  }, [pages, filters]);
+  }, [pages, filters, filterPages]);
 
   if (isError || isLoading || !pages || !filters) {
     return null;

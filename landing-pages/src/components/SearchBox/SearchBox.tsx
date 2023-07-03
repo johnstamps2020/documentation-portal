@@ -46,7 +46,7 @@ export default function SearchBox({ showBigSize = true }: SearchBoxProps) {
     if (searchData) {
       setSearchPhrase(searchData.searchPhrase);
     }
-  }, [searchData?.searchPhrase]);
+  }, [searchData, searchData?.searchPhrase]);
 
   const showBigSearchBox = isMobile ? false : showBigSize;
 

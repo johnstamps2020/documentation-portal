@@ -20,13 +20,13 @@ export default function LandingPage() {
     if (isError?.redirectUrl) {
       navigate(isError.redirectUrl);
     }
-  }, [isError]);
+  }, [isError, navigate]);
 
   useEffect(() => {
     if (pageData?.component?.includes('redirect')) {
       navigate(`/${pageData.component.split(' ')[1]}`);
     }
-  }, [pageData]);
+  }, [pageData, navigate]);
 
   if (!pageData) {
     return <></>;
@@ -42,7 +42,7 @@ export default function LandingPage() {
   return (
     <Layout
       title={pageData.title}
-      headerOptions={{ searchFilters: pageData.searchFilters }}
+      headerOptions={{ searchFilters: pageData.searchFilters || undefined }}
       path={pageData.path}
     >
       <>
