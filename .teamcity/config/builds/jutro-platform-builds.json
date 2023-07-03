@@ -15,11 +15,6 @@
     },
     {
       "buildType": "yarn",
-      "docId": "jutroplatformgarmisch",
-      "srcId": "srcjutroplatformgarmisch"
-    },
-    {
-      "buildType": "yarn",
       "docId": "jutroplatformnext",
       "srcId": "srcjutroplatformnext",
       "disabled": false

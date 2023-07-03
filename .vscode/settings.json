@@ -20,5 +20,18 @@
     "Guidewire",
     "Hakuba"
   ],
-  "cSpell.ignoreRegExpList": ["(docId|pagePath): [\"'][a-zA-Z0-9]+[\"']"]
+  "cSpell.ignorePaths": [
+    "package-lock.json",
+    "package.json",
+    "node_modules",
+    "vscode-extension",
+    ".git/objects",
+    ".vscode",
+    ".vscode-insiders"
+  ],
+  "cSpell.ignoreRegExpList": [
+    "(docId|pagePath): [\"'][a-zA-Z0-9]+[\"']",
+    "\"(id|docId|srcId)\": \"[a-zA-Z0-9]+\"",
+    "\"(url|root|filter|targetFolder|gitUrl|zipFilename)\": \"[^\"]+\""
+  ]
 }
