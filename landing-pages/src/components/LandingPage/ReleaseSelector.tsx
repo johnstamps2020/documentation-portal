@@ -17,12 +17,13 @@ function useReleasePageSelectorProps(): LandingPageSelectorProps {
   const releases = useReleases();
 
   useEffect(() => {
-    if (pageData) {
+    if (pageData && releases.length > 0) {
+      const matchingRelease = releases.find((r) =>
+        pageData?.path.toLowerCase().includes(r.toLowerCase())
+      );
       setReleaseSelectorProps((currentProps) => ({
         ...currentProps,
-        selectedItemLabel:
-          currentProps.items.find((item) => item.pagePath === pageData?.path)
-            ?.label || '',
+        selectedItemLabel: matchingRelease || '',
       }));
     }
   }, [pageData, releases]);
