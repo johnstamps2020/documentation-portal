@@ -182,6 +182,10 @@ const pageConfig: SectionLayoutProps = {
         label: 'Garmisch (2023.02)',
         pagePath: 'cloudProducts/garmisch/bcGwCloud/2023.02',
       },
+      {
+        label: 'Hakuba (2023.06)',
+        pagePath: 'cloudProducts/hakuba/bcGwCloud/2023.06',
+      },
     ],
     labelColor: 'black',
   },

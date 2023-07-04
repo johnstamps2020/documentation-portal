@@ -9,6 +9,9 @@ out
 dist
 /server/kube
 /server/static
+/docusaurus/test-site/openapi
+docusaurus/test-site/static
+generated
 
 *.log
 *.yml

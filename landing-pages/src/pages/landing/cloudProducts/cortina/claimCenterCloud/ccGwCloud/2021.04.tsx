@@ -183,6 +183,10 @@ const pageConfig: SectionLayoutProps = {
         label: 'Garmisch (2023.02)',
         pagePath: 'cloudProducts/garmisch/ccGwCloud/2023.02',
       },
+      {
+        label: 'Hakuba (2023.06)',
+        pagePath: 'cloudProducts/hakuba/ccGwCloud/2023.06',
+      },
     ],
     labelColor: 'black',
   },

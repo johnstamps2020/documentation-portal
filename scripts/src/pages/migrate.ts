@@ -228,7 +228,7 @@ function getBackgroundProps(
     return {
       backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
       ${isRelease ? `import flaineBadge from 'images/badge-flaine.svg';` : ''}
-      import flaineBackgroundImage from 'images/background-flaine.svg';
+      import flaineBackgroundImage from 'images/background-flaine.png';
       import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
       backgroundPropValue:
         '{\n...baseBackgroundProps,\nbackgroundImage: {\nxs: `url(${gradientBackgroundImage})`,\nsm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),\n       url(${flaineBackgroundImage}), \n       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,\n},\n}',
@@ -238,7 +238,7 @@ function getBackgroundProps(
   if (level1Class.match('elysian')) {
     return {
       backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
-      import elysianBackgroundImage from 'images/background-elysian.svg';
+      import elysianBackgroundImage from 'images/background-elysian.png';
       import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
       backgroundPropValue:
         '{\n...baseBackgroundProps,\nbackgroundImage: {\nxs: `url(${gradientBackgroundImage})`,\nsm: `url(${elysianBackgroundImage})`,\n},\n}',
