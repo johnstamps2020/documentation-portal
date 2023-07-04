@@ -1,0 +1,71 @@
+# RightWrong
+
+import { RightWrong, Right, Wrong } from '@theme/RightWrong';
+
+This component displays the right and the wrong option.
+
+```jsx
+import { RightWrong, Right, Wrong } from '@theme/RightWrong';
+```
+
+The most basic usage is as follows.
+
+```jsx live
+<RightWrong>
+  <Right>Thank the bus driver</Right>
+  <Wrong>Ignore the bus driver</Wrong>
+</RightWrong>
+```
+
+## Custom title
+
+You can also override the text displayed next to the icon using the `title`
+prop.
+
+```jsx live
+<RightWrong>
+  <Right title="Polite">Thank the bus driver</Right>
+  <Wrong title="Impolite">Ignore the bus driver</Wrong>
+</RightWrong>
+```
+
+## Rich text
+
+In MDX, you can use Markdown syntax inside a JSX tag as long as you put a blank
+line before and after your Markdown content.
+
+```mdx
+<RightWrong>
+  <Right title="Polite">
+
+- Talk to other passengers about the weather
+- Thank the bus driver
+- Say "please" and "thank you"
+
+</Right>
+  <Wrong title="Impolite">
+
+- Talk to the bus driver about the weather
+- Not thank the bus driver
+- Say "tell me what time it is" and "get that for me real quick, or else..."
+
+</Wrong>
+</RightWrong>
+```
+
+<RightWrong>
+  <Right title="Polite">
+
+- Talk to other passengers about the weather
+- Thank the bus driver
+- Say "please" and "thank you"
+
+</Right>
+  <Wrong title="Impolite">
+  
+- Talk to the bus driver about the weather
+- Not thank the bus driver
+- Say "tell me what time it is" and "get that for me real quick, or else..."
+
+</Wrong>
+</RightWrong>

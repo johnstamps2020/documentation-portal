@@ -1,0 +1,52 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ${APP_NAME}
+  namespace: ${POD_NAME}
+  labels:
+    app: ${APP_NAME}
+    gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: ${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${APP_NAME}
+spec:
+  type: ExternalName
+  externalName: ${SERVICE_EXTERNAL_NAME}
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+---
+apiVersion: oort.ccs.guidewire.com/v1alpha1
+kind: GatewayConfig
+metadata:
+  name: ${APP_NAME}-gateway-config
+  namespace: ${POD_NAME}
+  labels:
+    app: ${APP_NAME}
+    gwcp.guidewire.com/dept: \"${DEPT_CODE}\"
+    gwcp.guidewire.com/maintained-by: ${POD_NAME}
+    gwcp.guidewire.com/created-by: ${POD_NAME}
+    gwcp.guidewire.com/tenant-name: ${POD_NAME}
+    gwcp.guidewire.com/version: ${TAG_VERSION}
+    gwcp.guidewire.com/app-name: ${APP_NAME}
+spec:
+  profiles:
+    - name: Default
+      internal_only: true
+      request_transformer:
+        add:
+          headers:
+            - Host:${SERVICE_EXTERNAL_NAME}
+  path_configs:
+    - name: Default
+      paths:
+        - /**
+      profiles:
+        - Default
+  service_ref: ${APP_NAME}
+  service_alias: ${APP_NAME}
+  enable_sub_domain: false

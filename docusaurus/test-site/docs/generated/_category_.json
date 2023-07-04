@@ -1,0 +1,7 @@
+{
+  "label": "API Reference",
+  "link": {
+    "type": "generated-index",
+    "description": "Generated API references to test the Redoc plugin"
+  }
+}

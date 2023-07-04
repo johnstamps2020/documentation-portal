@@ -56,7 +56,7 @@ const pageConfig: CategoryLayoutProps = {
       label: 'CustomerEngage Account Management',
       items: [
         {
-          label: 'Release Notes',
+          label: 'Release Notes (Prerelease)',
           docId: 'dx202306ceamrelnotes',
         },
         {
@@ -81,7 +81,7 @@ const pageConfig: CategoryLayoutProps = {
       label: 'CustomerEngage Account Management for ClaimCenter',
       items: [
         {
-          label: 'Release Notes',
+          label: 'Release Notes (Prerelease)',
           docId: 'dx202306ceclaimsrelnotes',
         },
         {
@@ -106,7 +106,7 @@ const pageConfig: CategoryLayoutProps = {
       label: 'CustomerEngage Quote and Buy',
       items: [
         {
-          label: 'Release Notes',
+          label: 'Release Notes (Prerelease)',
           docId: 'dx202306ceqbrelnotes',
         },
         {
@@ -135,7 +135,7 @@ const pageConfig: CategoryLayoutProps = {
       label: 'ProducerEngage',
       items: [
         {
-          label: 'Release Notes',
+          label: 'Release Notes (Prerelease)',
           docId: 'dx202306perelnotes',
         },
         {
@@ -164,7 +164,7 @@ const pageConfig: CategoryLayoutProps = {
       label: 'ProducerEngage for ClaimCenter',
       items: [
         {
-          label: 'Release Notes',
+          label: 'Release Notes (Prerelease)',
           docId: 'dx202306peclaimsrelnotes',
         },
         {
@@ -189,7 +189,7 @@ const pageConfig: CategoryLayoutProps = {
       label: 'ServiceRepEngage',
       items: [
         {
-          label: 'Release Notes',
+          label: 'Release Notes (Prerelease)',
           docId: 'dx202306srerelnotes',
         },
         {
@@ -214,7 +214,7 @@ const pageConfig: CategoryLayoutProps = {
       label: 'VendorEngage',
       items: [
         {
-          label: 'Release Notes',
+          label: 'Release Notes (Prerelease)',
           docId: 'dx202306verelnotes',
         },
         {

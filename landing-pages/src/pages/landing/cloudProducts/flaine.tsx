@@ -3,7 +3,7 @@ import Category2Layout, {
 } from 'components/LandingPage/Category2/Category2Layout';
 import gradientBackgroundImage from 'images/background-gradient.svg';
 import flaineBadge from 'images/badge-flaine.svg';
-import flaineBackgroundImage from 'images/background-flaine.svg';
+import flaineBackgroundImage from 'images/background-flaine.png';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 
 const pageConfig: Category2LayoutProps = {

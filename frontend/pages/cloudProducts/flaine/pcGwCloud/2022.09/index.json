@@ -8,6 +8,11 @@
     "selectedItem": "Flaine (2022.09)",
     "items": [
       {
+        "label": "Hakuba (2023.06)",
+        "page": "../../../hakuba/pcGwCloud/2023.06",
+        "env": ["staging"]
+      },
+      {
         "label": "Garmisch (2023.02)",
         "page": "../../../garmisch/pcGwCloud/2023.02"
       },

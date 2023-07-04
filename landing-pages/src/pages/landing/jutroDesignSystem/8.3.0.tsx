@@ -14,7 +14,7 @@ const pageConfig: SectionLayoutProps = {
       items: [
         {
           label: 'Jutro Design System and UI Framework',
-          docId: 'jutro830',
+          docId: 'jutro832',
         },
       ],
     },
@@ -23,7 +23,7 @@ const pageConfig: SectionLayoutProps = {
       items: [
         {
           label: 'Jutro Storybook',
-          docId: 'storybook830',
+          docId: 'storybook832',
         },
       ],
     },

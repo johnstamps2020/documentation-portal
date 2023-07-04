@@ -2,6 +2,29 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "cSpell.enableFiletypes": ["mdx"],
+  "terminal.integrated.profiles.osx": {
+    "bash": {
+      "path": "bash",
+      "args": ["-i"],
+      "icon": "terminal-bash"
+    },
+    "zsh": {
+      "path": "zsh",
+      "args": ["-i"]
+    },
+    "fish": {
+      "path": "fish",
+      "args": ["-i"]
+    },
+    "tmux": {
+      "path": "tmux",
+      "icon": "terminal-tmux"
+    },
+    "pwsh": {
+      "path": "pwsh",
+      "icon": "terminal-powershell"
+    }
+  },
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
@@ -18,7 +41,26 @@
     "Cyence",
     "flaine",
     "Guidewire",
-    "Hakuba"
+    "Hakuba",
+    "AMST",
+    "Aspen",
+    "Banff",
+    "brightcove",
+    "Businessowners",
+    "clsx",
+    "Creds",
+    "ditavals",
+    "Dobson",
+    "doctools",
+    "Elysian",
+    "fontsource",
+    "Garmisch",
+    "IRSA",
+    "ISBTF",
+    "redoc",
+    "reindex",
+    "reindexing",
+    "superbook"
   ],
   "cSpell.ignorePaths": [
     "package-lock.json",

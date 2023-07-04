@@ -1,0 +1,299 @@
+# RightWrongImages
+
+This component overlays a green checkmark or red X over an image. Use this to
+indicate that something is correct or incorrect while using screenshots,
+diagrams, or drawings.
+
+```jsx
+import { RightImage, WrongImage, RightWrongImages } from '@theme/RightWrong';
+```
+
+## Simple example
+
+```jsx live
+<RightWrongImages>
+  <RightImage
+    src="/img/carbon-right.png"
+    caption="Do place the icon on the right side of the button after the text"
+  />
+  <WrongImage
+    src="/img/carbon-wrong.png"
+    caption="Don't place the icon on the left of the button before the text"
+  />
+</RightWrongImages>
+```
+
+`RightWrongImages` is a wrapper around the images which renders them in a row
+and adds some spacing. It is also responsive, so the images stack on mobile.
+
+On wide screens, it always displays two images side by side, even if you put
+more images into the wrapper and reduce their size.
+
+You can use images directly if you want to customize the layout.
+
+## Props
+
+### src
+
+The only way to display an image is to provide a URL pointing to the root folder
+of the site, like `/img/image.png`, assuming that the image is in the
+`static/img`
+
+:::danger Use the static folder
+
+Your images have to be in the `static` folder of your site.
+
+:::
+
+### caption
+
+`RightImage` and `WrongImage` both take a `caption` prop which is a string or a
+React node. The caption is rendered below the image.
+
+### alt
+
+If you do not provide an `alt`, it is set to an empty string, assuming the image
+is explained in the caption. The caption is not used as alt text by default
+because that would make the screen reader announce it twice, which is not
+helpful to the user.
+
+The caption is optional, so you may use alt text instead. Just remember that if
+you have no caption and you do not set an alt text, the image will not be
+accessible to screen readers.
+
+### Image props
+
+Other allowed props are the same as those for a regular HTML `<img>` tag. For
+more details, see the
+[W3 Schools page about images](https://www.w3schools.com/html/html_images.asp).
+
+## Icons
+
+The icons indicating the sentiment of the image are:
+
+- For `RightImage`: a green checkmark
+- For `WrongImage`: a red X
+
+The icons cannot be customized. This is because we want to stay consistent
+between the various sites that use this theme.
+
+## Rich text caption
+
+If you want rich formatting in the caption, use JSX. Refer to the detailed
+example below. Note that the caption can be any React node, not just a string.
+
+```jsx live
+<RightWrongImages>
+  <RightImage
+    src="/img/carbon-right.png"
+    caption={
+      <div>
+        <p>Follow these practices:</p>
+        <ul>
+          <li>place the icon on the right side of the button after the text</li>
+          <li>use a clear icon in high contrast with the background</li>
+          <li>
+            choose an icon which clearly corresponds to the purpose of the
+            button following cultural guidelines for your audiences
+          </li>
+        </ul>
+      </div>
+    }
+  />
+  <WrongImage
+    src="/img/carbon-wrong.png"
+    caption={
+      <div>
+        <p>Avoid the following:</p>
+        <ul>
+          <li>
+            placing the icon on the <strong>left</strong> side of the button
+            after the text
+          </li>
+          <li>
+            using low quality icon, or an icon which blends with the background
+          </li>
+          <li>
+            choosing an icon which does not correspond to the purpose of the
+            button or requires cultural context which your audience does not
+            have
+          </li>
+        </ul>
+      </div>
+    }
+  />
+</RightWrongImages>
+```
+
+## Controlling image size
+
+You can set image size using the `width` and `height` props. They accept any
+valid CSS size values. So, they can be expressed in px, percentage, em, rem, and
+so on.
+
+However, remember that the image wrapper is a div so it will take up 100% of the
+available width. You can set the width of the wrapper using
+[wrapperStyle](#wrapper-style).
+
+```jsx live
+<div>
+  <h3>Size applied to images</h3>
+  <RightWrongImages>
+    <RightImage
+      src="/img/carbon-right.png"
+      width="200"
+      caption="image width 200px"
+    />
+    <RightImage
+      src="/img/carbon-right.png"
+      width="50%"
+      caption="image width 50%"
+    />
+  </RightWrongImages>
+  <hr />
+  <h3>Size applied to image wrappers</h3>
+  <RightWrongImages>
+    <RightImage
+      src="/img/carbon-right.png"
+      wrapperStyle={{ width: 200 }}
+      caption="wrapper width 200px"
+    />
+    <RightImage
+      src="/img/carbon-right.png"
+      wrapperStyle={{ width: '50%' }}
+      caption="wrapper width 50%"
+    />
+  </RightWrongImages>
+</div>
+```
+
+## wrapperStyle {#wrapper-style}
+
+The image wrapper component is a `<div>`, so, if not overridden, it will take up
+100% of the available width.
+
+If you want to control the layout of the image, you can use the `wrapperStyle`
+props. It accepts React CSS properties.
+
+```jsx live
+<RightImage
+  src="/img/carbon-right.png"
+  caption="Do place the icon on the right side of the button after the text"
+  wrapperStyle={{ width: '50%' }}
+/>
+```
+
+## Many images
+
+Here's an example of a set of lots of images. We added a box where you can set
+the size of the images to see how they behave.
+
+Note that on large screens, images are always displayed in two columns, no
+matter how small they are.
+
+```jsx live
+function ImageExample() {
+  const initialSize = 32;
+  const [size, setSize] = useState(initialSize);
+  function handleSizeChange(event) {
+    setSize(event.target.value);
+  }
+
+  const imageList = [
+    'gw-account-balance.svg',
+    'gw-assignment.svg',
+    'gw-bathtub.svg',
+    'gw-business-center.svg',
+    'gw-business.svg',
+    'gw-coverage.svg',
+    'gw-directions-car.svg',
+    'gw-local-shipping.svg',
+  ];
+
+  return (
+    <section>
+      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <span>size in px:</span>
+        <input
+          value={size}
+          type="number"
+          onChange={handleSizeChange}
+          style={{
+            padding: '6px',
+            borderRadius: '4px',
+            border: '1px solid gray',
+            maxWidth: '100px',
+          }}
+        />
+        <button
+          type="button"
+          onClick={() => setSize(initialSize)}
+          className="button button--primary"
+        >
+          reset
+        </button>
+      </div>
+      <RightWrongImages>
+        {imageList.map((fileName) => (
+          <RightImage
+            src={`/img/gw-icons/${fileName}`}
+            width={size}
+            height={size}
+            key={fileName}
+          />
+        ))}
+      </RightWrongImages>
+    </section>
+  );
+}
+```
+
+When rendered at 32px, the images are so small that the icon is displayed at the
+bottom of the imag wrapper. This is because the icon is always placed at a fixed
+distance form the top-left corner of the image.
+
+You can see it better if we add a border around the image. Note the:
+
+- solid black border around the image
+- dashed red border around the image wrapper
+
+```jsx live
+<RightImage
+  src="/img/gw-icons/gw-business.svg"
+  width="64px"
+  height="64px"
+  border="1px solid black"
+  wrapperStyle={{ border: '1px dashed red' }}
+/>
+```
+
+To make it better, you can change the size of the image:
+
+```jsx live
+<RightImage src="/img/gw-icons/gw-business.svg" width="200px" height="200px" />
+```
+
+## Positioning the image
+
+To position the image, use `wrapperStyle`. You can do quite a lot to customize
+the experience, but remember to stay consistent with the rest of the site.
+
+```jsx live
+<RightImage
+  src="/img/gw-icons/gw-business.svg"
+  width="200px"
+  height="200px"
+  wrapperStyle={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 500,
+    width: 500,
+    maxWidth: '100%',
+    margin: '5rem auto',
+    background: 'rgb(0,127,173)',
+    background:
+      'linear-gradient(130deg, rgba(0,127,173,1) 41%, rgba(255,255,255,1) 73%)',
+  }}
+/>
+```
