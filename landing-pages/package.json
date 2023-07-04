@@ -8,11 +8,6 @@
     "@fontsource/source-sans-pro": "^4.5.11",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.3",
-    "@types/jest": "^27.0.1",
-    "@types/lodash": "^4.14.190",
-    "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
     "lodash": "^4.17.21",
     "react": "17.0.0",
     "react-dom": "17.0.0",
@@ -26,7 +21,12 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "12.1.4",
-    "@testing-library/user-event": "^13.2.1"
+    "@testing-library/user-event": "^13.2.1",
+    "@types/jest": "^27.0.1",
+    "@types/lodash": "^4.14.190",
+    "@types/node": "^16.7.13",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0"
   },
   "scripts": {
     "start": "BROWSER=none PORT=6006 DANGEROUSLY_DISABLE_HOST_CHECK=true react-scripts start",
