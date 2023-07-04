@@ -54,6 +54,7 @@ export const AppDataSource = new DataSource({
     YarnBuild,
   ],
   synchronize: true,
+  dropSchema: true,
   cache: {
     duration: 3000, // 3 seconds
   },
