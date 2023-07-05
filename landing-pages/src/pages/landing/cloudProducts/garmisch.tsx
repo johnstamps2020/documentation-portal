@@ -16,6 +16,7 @@ const pageConfig: Category2LayoutProps = {
   linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
     },
   },
+  isRelease: true,
   cards: [
     {
       label: 'Platform',

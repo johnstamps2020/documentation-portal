@@ -20,7 +20,7 @@ import EditPagePropsButton from '../EditPagePropsButton';
 export type CategoryLayoutProps = LandingPageLayoutProps & {
   cards: CategoryCardProps[];
   selector?: LandingPageSelectorProps;
-  showReleaseSelector?: boolean;
+  isRelease?: boolean;
   description?: JSX.Element;
 };
 
@@ -28,7 +28,7 @@ export default function CategoryLayout({
   backgroundProps,
   cards,
   sidebar,
-  showReleaseSelector,
+  isRelease,
   selector,
   description,
 }: CategoryLayoutProps) {
@@ -51,10 +51,12 @@ export default function CategoryLayout({
       <EditPagePropsButton pagePath={pageData.path} />
       <Grid gap="2rem">
         <Stack spacing={1} direction="column" width="100%">
-          <SelfManagedLink
-            pagePath={pageData.path}
-            backgroundImage={backgroundProps.backgroundImage}
-          />
+          {(isRelease || pageData.path === 'selfManagedProducts') && (
+            <SelfManagedLink
+              pagePath={pageData.path}
+              backgroundImage={backgroundProps.backgroundImage}
+            />
+          )}
           <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
             <Breadcrumbs />
           </Container>
@@ -69,7 +71,7 @@ export default function CategoryLayout({
             {pageData.title}
           </Typography>
           {description}
-          {showReleaseSelector && !selector && <ReleaseSelector />}
+          {isRelease && !selector && <ReleaseSelector />}
           {selector && <LandingPageSelector {...selector} />}
         </Stack>
         {pageData.path.includes('cloudProducts/elysian') && (

@@ -14,7 +14,7 @@ const pageConfig: CategoryLayoutProps = {
     },
   },
 
-  showReleaseSelector: true,
+  isRelease: true,
 
   cards: [
     {

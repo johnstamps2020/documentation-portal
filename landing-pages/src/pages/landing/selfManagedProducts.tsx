@@ -140,7 +140,7 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
   ],
-  showReleaseSelector: false,
+  isRelease: false,
 };
 
 export default function SelfManagedProducts() {

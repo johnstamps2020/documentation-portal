@@ -14,7 +14,7 @@ const pageConfig: ProductFamilyLayoutProps = {
     },
   },
 
-  showReleaseSelector: true,
+  isRelease: true,
   items: [
     {
       label: 'PolicyCenter Cloud',

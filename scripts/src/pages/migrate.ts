@@ -390,8 +390,10 @@ function mapToCategory2Layout(
     label: flail.label,
     items: getItems(flail.items, targetFile),
   }));
+  const isRelease = getIsRelease(targetFile);
   return `{
     backgroundProps: ${backgroundPropValue},
+    ${isRelease ? 'isRelease: true,' : ''}
     cards: ${JSON.stringify(cards, null, 2)},
     whatsNew: ${getWhatsNew(flailConfig)},
     sidebar: ${getSidebar(flailConfig)},
@@ -439,7 +441,7 @@ function mapToCategoryLayout(
         ? `selector: ${JSON.stringify(selector, null, 2)},`
         : ''
     }
-    ${isRelease ? 'showReleaseSelector: true,' : ''}
+    ${isRelease ? 'isRelease: true,' : ''}
     ${
       isSelfManaged
         ? `description: (
@@ -457,7 +459,7 @@ function mapToCategoryLayout(
         : ''
     }
     cards: ${JSON.stringify(cards, null, 2)},
-    ${isSelfManaged ? `showReleaseSelector: false` : ''}
+    ${isSelfManaged ? `isRelease: false` : ''}
     ${isRelease ? `sidebar: ${getSidebar(flailConfig)}` : ''}
   }`;
 }
@@ -469,11 +471,11 @@ function mapToProductFamilyLayout(
   const { backgroundPropValue } = getBackgroundProps(flailConfig, targetFile);
   const items = getItems(flailConfig.items, targetFile);
   const selector = getSelector(flailConfig, targetFile);
-  const showReleaseSelector = getIsRelease(targetFile);
+  const isRelease = getIsRelease(targetFile);
   return `{
     backgroundProps: ${backgroundPropValue},
     ${selector ? `selector: ${JSON.stringify(selector)},` : ''}
-    ${showReleaseSelector ? `showReleaseSelector: ${showReleaseSelector},` : ''}
+    ${isRelease ? `isRelease: ${isRelease},` : ''}
     items: ${JSON.stringify(items, null, 2)},
     sidebar: ${getSidebar(flailConfig)},
   }`;
