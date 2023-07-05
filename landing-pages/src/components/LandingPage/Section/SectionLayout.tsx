@@ -3,7 +3,6 @@ import Breadcrumbs from 'components/LandingPage/Breadcrumbs';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
-import SelfManagedLink from 'components/LandingPage/SelfManagedLink';
 import Box from '@mui/material/Box';
 import Section, { SectionProps } from './Section';
 import { usePageData } from 'hooks/usePageData';
@@ -45,7 +44,6 @@ export default function SectionLayout({
       <EditPagePropsButton pagePath={pageData.path} />
       <Grid xs={12} lg={8}>
         <Stack spacing={1} direction="column" width="100%">
-          <SelfManagedLink pagePath={pageData.path} backgroundImage="" />
           <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
             <Breadcrumbs />
           </Container>

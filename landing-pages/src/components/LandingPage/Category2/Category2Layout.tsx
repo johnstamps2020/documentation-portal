@@ -21,6 +21,7 @@ export type Category2LayoutProps = LandingPageLayoutProps & {
     items: LandingPageItemProps[];
   }[];
   whatsNew: WhatsNewProps;
+  isRelease?: boolean;
 };
 
 export default function Category2Layout({
@@ -28,6 +29,7 @@ export default function Category2Layout({
   sidebar,
   cards,
   whatsNew,
+  isRelease,
 }: Category2LayoutProps) {
   const { pageData, isLoading, isError } = usePageData();
 
@@ -63,12 +65,14 @@ export default function Category2Layout({
             <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
               <Breadcrumbs />
             </Container>
-            <ReleaseSelector />
+            {isRelease && <ReleaseSelector />}
           </Stack>
-          <SelfManagedLink
-            pagePath={pageData.path}
-            backgroundImage={backgroundProps.backgroundImage}
-          />
+          {isRelease && (
+            <SelfManagedLink
+              pagePath={pageData.path}
+              backgroundImage={backgroundProps.backgroundImage}
+            />
+          )}
           <WhatsNew {...whatsNew} />
         </Grid>
         <Grid

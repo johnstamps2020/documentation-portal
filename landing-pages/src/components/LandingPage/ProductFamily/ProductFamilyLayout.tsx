@@ -20,7 +20,7 @@ import EditPagePropsButton from '../EditPagePropsButton';
 export type ProductFamilyLayoutProps = LandingPageLayoutProps & {
   items: LandingPageItemProps[];
   selector?: LandingPageSelectorProps;
-  showReleaseSelector?: boolean;
+  isRelease?: boolean;
 };
 
 export default function ProductFamilyLayout({
@@ -28,7 +28,7 @@ export default function ProductFamilyLayout({
   items,
   sidebar,
   selector,
-  showReleaseSelector,
+  isRelease,
 }: ProductFamilyLayoutProps) {
   const { pageData, isError, isLoading } = usePageData();
 
@@ -48,10 +48,12 @@ export default function ProductFamilyLayout({
       <EditPagePropsButton pagePath={pageData.path} />
       <Grid>
         <Stack spacing={1} direction="column" width="100%">
-          <SelfManagedLink
-            pagePath={pageData.path}
-            backgroundImage={backgroundProps.backgroundImage}
-          />
+          {isRelease && (
+            <SelfManagedLink
+              pagePath={pageData.path}
+              backgroundImage={backgroundProps.backgroundImage}
+            />
+          )}
           <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
             <Breadcrumbs />
           </Container>
@@ -66,7 +68,7 @@ export default function ProductFamilyLayout({
             {pageData.title}
           </Typography>
           {selector && <LandingPageSelector {...selector} />}{' '}
-          {showReleaseSelector && <ReleaseSelector />}
+          {isRelease && <ReleaseSelector />}
         </Stack>
       </Grid>
       <Grid container width="100%" maxWidth="1330px" gap={2}>

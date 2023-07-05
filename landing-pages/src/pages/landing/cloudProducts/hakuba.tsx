@@ -9,6 +9,7 @@ const pageConfig: Category2LayoutProps = {
     ...baseBackgroundProps,
     backgroundImage: `url(${gradientBackgroundImage})`,
   },
+  isRelease: true,
   cards: [
     {
       label: 'Platform',
