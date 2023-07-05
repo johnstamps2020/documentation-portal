@@ -1658,6 +1658,7 @@ object Content {
             step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("cloud"))
             step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("self-managed"))
             step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("internal-docs"))
+            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("jutro"))
             step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("help"))
             step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("de-DE"))
             step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("es-419"))
