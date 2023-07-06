@@ -1,9 +1,9 @@
 {
-  "$schema": "../config-schema.json",
+  "$schema": "../../config-schema.json",
   "docs": [
     {
       "id": "gchjaJPhelpearlyaccess",
-      "title": "Guidewire Cloud Home Help - Early Access",
+      "title": "Guidewire Cloud Home Help - Early Access (ja-JP)",
       "url": "help/GCH-earlyaccess",
       "metadata": {
         "platform": ["Cloud"],
