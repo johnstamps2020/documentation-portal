@@ -1,0 +1,22 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "gchjaJPhelpearlyaccess",
+      "title": "Guidewire Cloud Home ヘルプ (Early Access)",
+      "url": "help/GCH-earlyaccess",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Home"],
+        "version": ["latest"],
+        "locale": ["ja-JP"]
+      },
+      "environments": ["staging"],
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true,
+      "displayOnLandingPages": true
+    }
+  ]
+}
