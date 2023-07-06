@@ -3,7 +3,7 @@
   "sources": [
     {
       "id": "gchjaJPhelpsrc",
-      "title": "Guidewire Cloud Home ヘルプ",
+      "title": "Guidewire Cloud Home Help ja-JP - Early Access",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gch-help.git",
       "branch": "ja-JP/main"
     }
