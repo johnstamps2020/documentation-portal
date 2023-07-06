@@ -499,8 +499,8 @@ object Runners {
         gwVersion: String,
     ): BuildType {
         return BuildType {
-            name = docTitle
             val idHash = Helpers.md5("${this.name}${deployEnv}${gwProduct}${gwVersion}${docIds.joinToString()}")
+            name = "$docTitle ($idHash)"
             id = Helpers.resolveRelativeIdFromIdString(idHash)
 
             type = BuildTypeSettings.Type.COMPOSITE
