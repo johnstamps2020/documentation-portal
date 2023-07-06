@@ -14,6 +14,11 @@
       "page": "cc"
     },
     {
+      "label": "Platform",
+      "class": "productFamily cardShadow",
+      "page": "gch"
+    },
+    {
       "label": "CustomerEngage Account Management",
       "class": "productFamily cardShadow",
       "page": "ce-am"
