@@ -12,6 +12,7 @@ import SupportPage from 'pages/SupportPage/SupportPage';
 import InternalPage from 'pages/InternalPage/InternalPage';
 import PageAdminPage from 'pages/PageAdminPage/PageAdminPage';
 import AdminPage from 'pages/AdminPage/AdminPage';
+import PolicyCenterPrototype from 'pages/Prototypes/PolicyCenterPrototype';
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
   {
     path: '/support',
     element: <SupportPage />,
+  },
+  {
+    path: '/prototypes/pc',
+    element: <PolicyCenterPrototype />,
   },
   {
     path: '/root-breadcrumbs.json',

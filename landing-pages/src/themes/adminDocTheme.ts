@@ -12,6 +12,14 @@ export const adminDocTheme = createTheme({
     error: {
       main: red[200],
     },
+    paleBlue: {
+      main: '#d3dded',
+      contrastText: '#131e2e',
+    },
+    darkBlue: {
+      main: '#385583',
+      contrastText: '#fff',
+    },
   },
   typography: {
     fontFamily: [
