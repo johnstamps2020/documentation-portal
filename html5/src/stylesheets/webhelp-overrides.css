@@ -182,14 +182,6 @@ div#affix3 form#searchForm {
   left: 960px;
 }
 
-#versionSelector {
-  padding: 4px 12px;
-  border-radius: 6px;
-  border: 1px solid var(--GW-COLOR-BRAND-2);
-  margin: 0 8px;
-  height: 32px;
-}
-
 .wh_top_menu_and_indexterms_link > label {
   margin-bottom: 0;
 }
