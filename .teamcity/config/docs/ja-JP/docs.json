@@ -4,14 +4,12 @@
     {
       "id": "gchjaJPhelprelease",
       "title": "Guidewire Cloud Home Help ja-JP",
-      "url": "help/GCH",
+      "url": "ja-JP/help/GCH",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Home"],
         "version": ["latest"],
-        "release": [
-          "Garmisch"
-        ],
+        "release": ["Garmisch"],
         "locale": ["ja-JP"]
       },
       "environments": ["staging"],
@@ -24,7 +22,7 @@
     {
       "id": "gchjaJPhelpearlyaccess",
       "title": "Guidewire Cloud Home Help ja-JP - Early Access",
-      "url": "help/ja-JP/GCH-earlyaccess",
+      "url": "ja-JP/help/GCH-earlyaccess",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Home"],
