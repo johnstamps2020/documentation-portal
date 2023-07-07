@@ -1,0 +1,14 @@
+{
+  "$schema": "../../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "InfoCenter-RELEASE.ditaval",
+      "root": "reports.ditamap",
+      "srcId": "dm202302109es419src",
+      "docId": "ic1090reportses419",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}

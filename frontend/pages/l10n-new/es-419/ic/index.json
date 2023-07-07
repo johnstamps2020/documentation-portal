@@ -4,6 +4,16 @@
   "class": "threeCards",
   "items": [
     {
+      "label": "10.9.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de informes",
+          "id": "ic1090reportses419"
+        }
+      ]
+    },
+    {
       "label": "10.0.0",
       "class": "categoryCard cardShadow",
       "items": [
@@ -20,7 +30,7 @@
           "link": "/l10n/es-LA/ic/10.0.0/IC10-config-es.pdf"
         },
         {
-          "label": "Guía de Data Specifications",
+          "label": "Guía de Data Specifications",
           "link": "/l10n/es-LA/ic/10.0.0/IC10-dataspec-es.pdf"
         },
         {
