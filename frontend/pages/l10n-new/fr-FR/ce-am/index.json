@@ -4,6 +4,16 @@
   "class": "threeCards",
   "items": [
     {
+      "label": "2023.02",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de l'application",
+          "id": "dx202302frFRceamapp"
+        }
+      ]
+    },
+    {
       "label": "11.4.1",
       "class": "categoryCard cardShadow",
       "items": [
