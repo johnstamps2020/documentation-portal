@@ -9,14 +9,14 @@
       "page": "de-DE"
     },
     {
+      "label": "Español",
+      "class": "productFamily cardShadow",
+      "page": "es-419"
+    },
+    {
       "label": "Español (España)",
       "class": "productFamily cardShadow",
       "page": "es-ES"
-    },
-    {
-      "label": "Español",
-      "class": "productFamily cardShadow",
-      "page": "es-LA"
     },
     {
       "label": "Français",
