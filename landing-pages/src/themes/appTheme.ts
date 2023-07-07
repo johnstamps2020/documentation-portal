@@ -1,6 +1,26 @@
 import { createTheme } from '@mui/material';
 import '@fontsource/source-sans-pro';
 
+declare module '@mui/material/styles' {
+  interface Palette {
+    paleBlue: Palette['primary'];
+    darkBlue: Palette['primary'];
+  }
+
+  interface PaletteOptions {
+    paleBlue: PaletteOptions['primary'];
+    darkBlue: PaletteOptions['primary'];
+  }
+
+  interface PaletteColor {
+    darker?: string;
+  }
+
+  interface SimplePaletteColorOptions {
+    darker?: string;
+  }
+}
+
 export const appTheme = createTheme({
   breakpoints: {
     values: {
@@ -17,6 +37,14 @@ export const appTheme = createTheme({
     },
     secondary: {
       main: '#3c4c5e',
+    },
+    paleBlue: {
+      main: '#d3dded',
+      contrastText: '#131e2e',
+    },
+    darkBlue: {
+      main: '#385583',
+      contrastText: '#fff',
     },
   },
   typography: {

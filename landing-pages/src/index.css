@@ -5,9 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --pale-blue: #e7f1f5;
-  --brand-leading: #008999;
-  --brand-impact: #00739d;
 }
 
 code {
