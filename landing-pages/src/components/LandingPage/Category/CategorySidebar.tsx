@@ -9,7 +9,7 @@ import SidebarSkeleton from '../SidebarSkeleton';
 export default function CategorySidebar({ label, items }: SidebarProps) {
   const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
 
-  if (isError) {
+  if (isError || (landingPageItems && landingPageItems.length === 0)) {
     return null;
   }
 
