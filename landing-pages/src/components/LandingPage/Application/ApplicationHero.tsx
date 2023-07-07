@@ -6,9 +6,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import { heroImageSource } from './heroImage';
 
-type ApplicationHeroProps = {};
-
-export default function ApplicationHero({}: ApplicationHeroProps) {
+export default function ApplicationHero() {
   return (
     <Box
       sx={{
