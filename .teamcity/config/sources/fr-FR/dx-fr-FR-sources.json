@@ -8,7 +8,7 @@
       "branch": "release/fr-FR/11.4.1"
     },
     {
-      "id": "dx202302frFR",
+      "id": "dx202302frFRsrc",
       "title": "Digital 2023.02 fr-FR",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
       "branch": "release/fr-FR/2023.02"
