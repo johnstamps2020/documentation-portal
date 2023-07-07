@@ -3,6 +3,15 @@
   "builds": [
     {
       "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GuidewireCloud.ditamap",
+      "srcId": "gchjaJPhelpsrc",
+      "docId": "gchjaJPhelprelease",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
       "filter": "GW-Generic-EA-Release.ditaval",
       "root": "GCH-EarlyAccess.ditamap",
       "srcId": "gchjaJPhelpsrc",
