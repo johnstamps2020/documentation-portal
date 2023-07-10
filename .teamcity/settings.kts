@@ -4310,8 +4310,11 @@ object GwBuildSteps {
     }
 
     fun createRunIndexCleanerStep(deployEnv: String): ScriptBuildStep {
+        // Do not use the config file from dev because here are hardly any docs configured for dev and the index
+        // will end up with very few docs.
+        val envForConfigFile = if (deployEnv == GwDeployEnvs.DEV.envName) GwDeployEnvs.STAGING.envName else deployEnv
         val elasticsearchUrls = Helpers.getElasticsearchUrl(deployEnv)
-        val configFileUrl = Helpers.getConfigFileUrl(deployEnv)
+        val configFileUrl = Helpers.getConfigFileUrl(envForConfigFile)
         return ScriptBuildStep {
             name = "Run the index cleaner"
             id = Helpers.createIdStringFromName(this.name)
