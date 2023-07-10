@@ -1,4 +1,4 @@
-async function checkTaskStatus(taskId, elapsedTime = 0) {
+async function checkTaskStatus(taskId, elapsedTime = 0, reindexTaskResponse) {
   const statusCheckTimeout = 120000;
   console.log(`Checking status of reindexing task ${taskId}`);
   const taskStatus = await fetch(`${elasticsearchDevUrl}/_tasks/${taskId}`, {
@@ -14,11 +14,12 @@ async function checkTaskStatus(taskId, elapsedTime = 0) {
   }
   if (taskStatus.completed) {
     console.log('Reindexing task completed');
+    console.log(JSON.stringify(reindexTaskResponse, null, 2));
     return;
   }
   console.log('Reindexing task is still running. Checking again in 2 minutes');
   setTimeout(async () => {
-    await checkTaskStatus(taskId, elapsedTime + statusCheckTimeout);
+    await checkTaskStatus(taskId, elapsedTime + statusCheckTimeout, reindexTaskResponse);
   }, statusCheckTimeout);
 }
 
@@ -58,4 +59,4 @@ if (reindexTaskError) {
 if (reindexTaskId === '') {
   throw new Error('Unable to get task ID');
 }
-await checkTaskStatus(reindexTaskId);
+await checkTaskStatus(reindexTaskId, undefined, reindexTaskResponse);
