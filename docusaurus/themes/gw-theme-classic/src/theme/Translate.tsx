@@ -1,5 +1,6 @@
 import React from 'react';
 import en from '../i18n/en.json';
+import es from '../i18n/es.json';
 import pl from '../i18n/pl.json';
 import ja from '../i18n/ja.json';
 import { TranslateBaseProps, TranslateProps } from '@theme/Translate';
@@ -9,6 +10,9 @@ const translations = {
   en,
   'en-us': en,
   'en-gb': en,
+  es,
+  'es-419': es,
+  'es-ES': es,
   pl,
   'pl-pl': pl,
   ja,
