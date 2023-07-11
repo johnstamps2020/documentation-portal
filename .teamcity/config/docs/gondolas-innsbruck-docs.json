@@ -1,0 +1,290 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "gondolaslecappinnsbruck",
+      "title": "Loss Estimate Calculator Application Guide",
+      "url": "cloud/global/losscalc/202310/app",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Cloud"],
+        "release": ["Innsbruck"],
+        "version": ["2023.10"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "gondolaslecrninnsbruck",
+      "title": "Loss Estimate Calculator Release Notes",
+      "url": "cloud/global/losscalc/202310/rn",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Cloud"],
+        "release": ["Innsbruck"],
+        "version": ["2023.10"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "gondolaslecconfiginnsbruck",
+      "title": "Loss Estimate Calculator Configuration",
+      "url": "cloud/global/losscalc/202310/config",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Cloud"],
+        "release": ["Innsbruck"],
+        "version": ["2023.10"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "gondolaslecinstallinnsbruck",
+      "title": "Loss Estimate Calculator Installation and Deployment",
+      "url": "cloud/global/losscalc/202310/install",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Cloud"],
+        "release": ["Innsbruck"],
+        "version": ["2023.10"],
+        "subject": ["Installation"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "gondolaslecinteginnsbruck",
+      "title": "Loss Estimate Calculator Integration",
+      "url": "cloud/global/losscalc/202310/integ",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Cloud"],
+        "release": ["Innsbruck"],
+        "version": ["2023.10"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "gondolaslgappinnsbruck",
+      "title": "Lookup Generator Application Guide",
+      "url": "cloud/global/lookup-generator/202310/app",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Cloud"],
+        "release": ["Innsbruck"],
+        "version": ["2023.10"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "gondolaslgrninnsbruck",
+      "title": "Lookup Generator Release Notes",
+      "url": "cloud/global/lookup-generator/202310/rn",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Cloud"],
+        "release": ["Innsbruck"],
+        "version": ["2023.10"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "gondolaslgconfiginnsbruck",
+      "title": "Lookup Generator Configuration",
+      "url": "cloud/global/lookup-generator/202310/config",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Cloud"],
+        "release": ["Innsbruck"],
+        "version": ["2023.10"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "gondolaslginstallinnsbruck",
+      "title": "Lookup Generator Installation and Deployment",
+      "url": "cloud/global/lookup-generator/202310/install",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Cloud"],
+        "release": ["Innsbruck"],
+        "version": ["2023.10"],
+        "subject": ["Installation"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "gondolaslginteginnsbruck",
+      "title": "Lookup Generator Integration",
+      "url": "cloud/global/lookup-generator/202310/integ",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Cloud"],
+        "release": ["Innsbruck"],
+        "version": ["2023.10"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "gondolasmsappinnsbruck",
+      "title": "Message Store Application Guide",
+      "url": "cloud/global/message-store/202310/app",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Cloud"],
+        "release": ["Innsbruck"],
+        "version": ["2023.10"],
+        "subject": ["Features and functionality"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "gondolasmsrninnsbruck",
+      "title": "Message Store Release Notes",
+      "url": "cloud/global/message-store/202310/rn",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Cloud"],
+        "release": ["Innsbruck"],
+        "version": ["2023.10"],
+        "subject": ["Release notes"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "gondolasmsconfiginnsbruck",
+      "title": "Message Store Configuration",
+      "url": "cloud/global/message-store/202310/config",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Cloud"],
+        "release": ["Innsbruck"],
+        "version": ["2023.10"],
+        "subject": ["Configuration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "gondolasmsinstallinnsbruck",
+      "title": "Message Store Installation and Deployment",
+      "url": "cloud/global/message-store/202310/install",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Cloud"],
+        "release": ["Innsbruck"],
+        "version": ["2023.10"],
+        "subject": ["Installation"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "gondolasmsinteginnsbruck",
+      "title": "Message Store Integration",
+      "url": "cloud/global/message-store/202310/integ",
+      "metadata": {
+        "product": ["ClaimCenter"],
+        "platform": ["Cloud"],
+        "release": ["Innsbruck"],
+        "version": ["2023.10"],
+        "subject": ["Integration"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
