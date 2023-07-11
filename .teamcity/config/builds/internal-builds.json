@@ -16,6 +16,14 @@
       "workingDir": "website",
       "nodeImageVersion": "18.0.0",
       "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "gch",
+      "srcId": "gchsrc",
+      "workingDir": "website",
+      "nodeImageVersion": "18.0.0",
+      "disabled": false
     }
   ]
 }
