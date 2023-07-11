@@ -1,0 +1,58 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Global Content - Loss Estimate Calculator",
+  "template": "page",
+  "class": "twoColumns",
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "gondolaslecrninnsbruck"
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+          "id": "gondolaslecappinnsbruck"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation and Deployment",
+          "id": "gondolaslecinstallinnsbruck"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration",
+          "id": "gondolaslecconfiginnsbruck"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Integration",
+          "id": "gondolaslecinteginnsbruck"
+        }
+      ]
+    }
+  ]
+}
