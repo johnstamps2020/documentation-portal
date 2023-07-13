@@ -34,7 +34,7 @@ export default function ApplicationHero() {
         >
           <Grid sx={{ maxWidth: '466px' }}>
             <Stack gap={3}>
-              <Typography variant="h1" sx={{ lineHeight: 1.4 }}>
+              <Typography variant="h1" sx={{ lineHeight: 1.4, fontSize: 30 }}>
                 Guidewire InsuranceSuite PolicyCenter
               </Typography>
               <Box sx={{ pb: '60px' }}>
@@ -46,7 +46,9 @@ export default function ApplicationHero() {
                     borderRadius: 2.5,
                     textTransform: 'none',
                     fontWeight: 600,
+                    fontSize: 14,
                     px: 3.5,
+                    py: 0.5,
                     ':hover': {
                       color: 'white',
                     },
