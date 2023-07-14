@@ -3,7 +3,7 @@
   "docs": [
     {
       "id": "workflowdesigner",
-      "title": "Workflow Designer (Early Access)",
+      "title": "Workflow Designer",
       "url": "cloud/workflow-service/designer",
       "metadata": {
         "platform": ["Cloud"],
@@ -22,7 +22,7 @@
     },
     {
       "id": "workflowconsole",
-      "title": "Workflow Console (Early Access)",
+      "title": "Workflow Console",
       "url": "cloud/workflow-service/workflow-console",
       "metadata": {
         "platform": ["Cloud"],
@@ -41,7 +41,7 @@
     },
     {
       "id": "workflowreleasenotes",
-      "title": "Release Notes (Early Access)",
+      "title": "Release Notes",
       "url": "cloud/workflow-service/releasenotes",
       "metadata": {
         "platform": ["Cloud"],
