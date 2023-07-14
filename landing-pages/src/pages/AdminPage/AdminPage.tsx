@@ -3,13 +3,13 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Layout from 'components/Layout/Layout';
 import { Link as RouterLink } from 'react-router-dom';
 import AdminAccess from '../../components/AdminPage/AdminAccess';
 import { useEnvInfo } from '../../hooks/useApi';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { prodDeployEnv } from '../../vars';
+import { useLayoutContext } from 'LayoutContext';
 
 type AdminLink = {
   path: string;
@@ -30,6 +30,7 @@ const links: AdminLink[] = [
 export default function AdminPage() {
   const { envInfo, isLoading, isError } = useEnvInfo();
   const navigate = useNavigate();
+  const { title, setTitle } = useLayoutContext();
 
   useEffect(() => {
     if (envInfo && envInfo.name === prodDeployEnv) {
@@ -37,29 +38,29 @@ export default function AdminPage() {
     }
   }, [envInfo, navigate]);
 
+  useEffect(() => {
+    setTitle('Admin panel');
+  }, [setTitle]);
+
   if (isLoading || isError) {
     return null;
   }
-
-  const adminPanelTitle = 'Admin panel';
   return (
-    <Layout title={adminPanelTitle}>
-      <AdminAccess pagePath={window.location.href}>
-        <Container sx={{ padding: '3rem 0' }}>
-          <Typography variant="h1" color="WindowText">
-            {adminPanelTitle}
-          </Typography>
-          <Stack spacing={2} direction="row" sx={{ padding: '2rem 0' }}>
-            {links.map(({ title, path }) => (
-              <Link key={path} component={RouterLink} to={path}>
-                <Card sx={{ padding: '2rem 3rem' }} variant="outlined">
-                  {title}
-                </Card>
-              </Link>
-            ))}
-          </Stack>
-        </Container>
-      </AdminAccess>
-    </Layout>
+    <AdminAccess pagePath={window.location.href}>
+      <Container sx={{ padding: '3rem 0' }}>
+        <Typography variant="h1" color="WindowText">
+          {title}
+        </Typography>
+        <Stack spacing={2} direction="row" sx={{ padding: '2rem 0' }}>
+          {links.map(({ title, path }) => (
+            <Link key={path} component={RouterLink} to={path}>
+              <Card sx={{ padding: '2rem 3rem' }} variant="outlined">
+                {title}
+              </Card>
+            </Link>
+          ))}
+        </Stack>
+      </Container>
+    </AdminAccess>
   );
 }
