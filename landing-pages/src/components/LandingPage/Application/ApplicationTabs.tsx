@@ -5,7 +5,7 @@ import { useState } from 'react';
 import ApplicationTabIcon, {
   ApplicationTabIconProps,
 } from './ApplicationTabIcon';
-import ApplicationTabPanel from './ApplicationTabPanel';
+import ApplicationLinkList from './ApplicationLinkList';
 import indicator from './indicator.svg';
 
 function a11yProps(index: number) {
@@ -57,7 +57,7 @@ export default function ApplicationTabs({ tabs }: ApplicationTabsProps) {
                   content: `url("${indicator}")`,
                   position: 'absolute',
                   left: `calc(50% - ${triangleSize}px)`,
-                  bottom: -20,
+                  bottom: -25,
                 },
               },
             },
@@ -72,9 +72,9 @@ export default function ApplicationTabs({ tabs }: ApplicationTabsProps) {
               icon={<ApplicationTabIcon icon={icon} />}
               iconPosition="start"
               sx={{
-                height: '63px',
-                fontSize: '20px',
-                fontWeight: '600',
+                height: '49px',
+                fontSize: 21,
+                fontWeight: 600,
                 px: 2,
                 backgroundColor: 'paleBlue.main',
                 color: 'paleBlue.contrastText',
@@ -93,7 +93,7 @@ export default function ApplicationTabs({ tabs }: ApplicationTabsProps) {
         </Tabs>
       </Box>
       {tabs.map((tab, index) => (
-        <ApplicationTabPanel
+        <ApplicationLinkList
           value={value}
           index={index}
           key={index}

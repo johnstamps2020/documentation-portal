@@ -10,7 +10,7 @@ interface TabPanelProps {
   items: LinkSectionProps[];
 }
 
-export default function CustomTabPanel(props: TabPanelProps): JSX.Element {
+export default function ApplicationLinkList(props: TabPanelProps): JSX.Element {
   const { value, index, items, ...other } = props;
 
   return (
@@ -29,8 +29,9 @@ export default function CustomTabPanel(props: TabPanelProps): JSX.Element {
                 variant="h5"
                 component="h2"
                 sx={{
-                  fontSize: 22,
+                  fontSize: 21,
                   mb: 1.5,
+                  fontWeight: 600,
                 }}
               >
                 <Link>{item.title}</Link>
