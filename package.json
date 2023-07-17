@@ -1,8 +1,6 @@
 {
   "name": "documentation-portal-monorepo",
   "license": "UNLICENSED",
-  "author": "Doctools <doctools@guidewire.com>",
-  "license": "UNLICENSED",
   "private": true,
   "packageManager": "yarn@3.4.1",
   "workspaces": [
@@ -48,7 +46,6 @@
   "main": "index.js",
   "repository": "ssh://git@stash.guidewire.com/doctools/server.git",
   "author": "Doc Tools <doctools@guidewire.com>",
-  "packageManager": "yarn@3.2.4",
   "resolutions": {
     "minimist": "^1.2.6",
     "html-select": "2.3.24",

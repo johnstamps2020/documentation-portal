@@ -1,27 +1,15 @@
 {
   "$schema": "/frontend/page-schema.json",
-<<<<<<<< HEAD:frontend/pages/selfManagedProducts/ceAccountMgmtCc/11.5.0/index.json
-  "title": "CustomerEngage Account Management for ClaimCenter 11.5.0",
-========
   "title": "CustomerEngage Account Management for ClaimCenter 11.4.1",
->>>>>>>> origin/master-typeorm-prepped:frontend/pages/selfManagedProducts/ceAccountMgmtCc/11.4.1/index.json
   "template": "page",
   "class": "twoColumns",
   "selector": {
     "label": "Select release",
-<<<<<<<< HEAD:frontend/pages/selfManagedProducts/ceAccountMgmtCc/11.5.0/index.json
-    "selectedItem": "11.5.0",
-    "items": [
-      {
-        "label": "11.4.1",
-        "page": "../11.4.1"
-========
     "selectedItem": "11.4.1",
     "items": [
       {
         "label": "11.5.0",
         "page": "../11.5.0"
->>>>>>>> origin/master-typeorm-prepped:frontend/pages/selfManagedProducts/ceAccountMgmtCc/11.4.1/index.json
       },
       {
         "label": "11.3.0",
@@ -36,19 +24,11 @@
       "items": [
         {
           "label": "Release Notes",
-<<<<<<<< HEAD:frontend/pages/selfManagedProducts/ceAccountMgmtCc/11.5.0/index.json
-          "id": "dx1150ceclaimsrelnotes"
-        },
-        {
-          "label": "Log4j Patch Release Notes",
-          "id": "dx1150log4jrelnotes"
-========
           "id": "dx1141ceclaimsrelnotes"
         },
         {
           "label": "Log4j Patch Release Notes",
           "id": "dx1141log4jrelnotes"
->>>>>>>> origin/master-typeorm-prepped:frontend/pages/selfManagedProducts/ceAccountMgmtCc/11.4.1/index.json
         }
       ]
     },
@@ -58,11 +38,7 @@
       "items": [
         {
           "label": "Installation Guide",
-<<<<<<<< HEAD:frontend/pages/selfManagedProducts/ceAccountMgmtCc/11.5.0/index.json
-          "id": "dx1150ceclaimsinstall"
-========
           "id": "dx1141ceclaimsinstall"
->>>>>>>> origin/master-typeorm-prepped:frontend/pages/selfManagedProducts/ceAccountMgmtCc/11.4.1/index.json
         }
       ]
     },
@@ -72,11 +48,7 @@
       "items": [
         {
           "label": "Application Guide",
-<<<<<<<< HEAD:frontend/pages/selfManagedProducts/ceAccountMgmtCc/11.5.0/index.json
-          "id": "dx1150ceclaimsapp"
-========
           "id": "dx1141ceclaimsapp"
->>>>>>>> origin/master-typeorm-prepped:frontend/pages/selfManagedProducts/ceAccountMgmtCc/11.4.1/index.json
         }
       ]
     },
@@ -86,11 +58,7 @@
       "items": [
         {
           "label": "Administration and Security Guide",
-<<<<<<<< HEAD:frontend/pages/selfManagedProducts/ceAccountMgmtCc/11.5.0/index.json
-          "id": "dx1150ceclaimsadmin"
-========
           "id": "dx1141ceclaimsadmin"
->>>>>>>> origin/master-typeorm-prepped:frontend/pages/selfManagedProducts/ceAccountMgmtCc/11.4.1/index.json
         }
       ]
     },
@@ -100,19 +68,11 @@
       "items": [
         {
           "label": "Developer's Guide",
-<<<<<<<< HEAD:frontend/pages/selfManagedProducts/ceAccountMgmtCc/11.5.0/index.json
-          "id": "dx1150ceclaimsdev"
-        },
-        {
-          "label": "Digital Services Reference Guides",
-          "id": "dx1150ceclaimsrefguides"
-========
           "id": "dx1141ceclaimsdev"
         },
         {
           "label": "Digital Services Reference Guides",
           "id": "dx1141ceclaimsrefguides"
->>>>>>>> origin/master-typeorm-prepped:frontend/pages/selfManagedProducts/ceAccountMgmtCc/11.4.1/index.json
         }
       ]
     }
