@@ -332,11 +332,11 @@ async function searchController(req, res, next) {
     }
 
     const displayOrder = [
-      'platform',
       'product',
       'version',
       'subject',
       'doc_title',
+      'platform',
     ];
 
     const filters = await getFilters(queryBody, mappings, filtersFromUrl);
