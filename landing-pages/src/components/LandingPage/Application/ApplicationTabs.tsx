@@ -71,6 +71,7 @@ export default function ApplicationTabs({ tabs }: ApplicationTabsProps) {
               {...a11yProps(index)}
               icon={<ApplicationTabIcon icon={icon} />}
               iconPosition="start"
+              disableRipple
               sx={{
                 height: '49px',
                 fontSize: 21,
