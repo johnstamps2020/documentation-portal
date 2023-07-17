@@ -368,7 +368,6 @@ export function removeQuotesFromLegacySearchParams(
   queryString: string
 ): string {
   const replaced = queryString.replace(/"]/g, '').replace(/%22/g, '');
-  console.log('queryString', queryString, replaced);
   return replaced;
 }
 

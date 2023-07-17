@@ -1,17 +1,21 @@
-const express = require('express');
-const router = express.Router();
-const searchController = require('../controllers/searchController');
+import express from 'express';
+import searchController from '../controllers/searchController';
 import { NextFunction, Request, Response } from 'express';
-const {
-  removeQuotesFromLegacySearchParams,
-} = require('../controllers/configController');
+import { removeQuotesFromLegacySearchParams } from '../controllers/configController';
+
+const router = express.Router();
 
 router.get(
   '/',
   async function (req: Request, res: Response, next: NextFunction) {
     if (req.query.getData === 'true' || req.query.rawJSON === 'true') {
-      const { status, body } = await searchController(req, res, next);
-      return res.status(status).json(body);
+      const result = await searchController(req, res, next);
+      if (result) {
+        const { status, body } = result;
+        return res.status(status).json(body);
+      }
+
+      return next('Nothing retrieved from search controller for: ' + req.query);
     }
 
     const redirectUrl =
