@@ -353,18 +353,23 @@ export async function deleteEntity(req: Request): Promise<ApiResponse> {
   }
 }
 
-export function splitLegacyValueByComma(commaSeparated: string): string[] {
+export function splitLegacyValueByCommaAndReturnUnique(
+  commaSeparated: string
+): string[] {
   if (!commaSeparated) {
     return [];
   }
 
-  return commaSeparated.split(',');
+  const uniqueValues = new Set(commaSeparated.split(','));
+  return Array.from(uniqueValues);
 }
 
 export function removeQuotesFromLegacySearchParams(
   queryString: string
 ): string {
-  return queryString.replace(/["(%22)]/g, '');
+  const replaced = queryString.replace(/"]/g, '').replace(/%22/g, '');
+  console.log('queryString', queryString, replaced);
+  return replaced;
 }
 
 export async function getDocumentMetadataById(
