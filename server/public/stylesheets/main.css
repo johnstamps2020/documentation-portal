@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
-@import 'modules/avatar.css';
-@import 'modules/translatedDocs.css';
-@import 'modules/externalSites.css';
-@import 'modules/guidewireGlossary.css';
-@import 'modules/searchBox.css';
-@import 'modules/highlight.css';
-@import 'modules/internal.css';
-@import 'modules/subjects.css';
-@import 'modules/twoCards.css';
-@import 'modules/twoColumns.css';
-@import 'modules/infoPage.css';
+@import 'avatar.css';
+@import 'translatedDocs.css';
+@import 'externalSites.css';
+@import 'guidewireGlossary.css';
+@import 'searchBox.css';
+@import 'highlight.css';
+@import 'internal.css';
+@import 'subjects.css';
+@import 'twoCards.css';
+@import 'twoColumns.css';
+@import 'infoPage.css';
 
 :root {
   --ff-GW: 'Source Sans Pro', Helvetica, Arial, sans-serif;
