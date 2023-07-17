@@ -30,8 +30,8 @@ const links: AdminLink[] = [
 export default function AdminPage() {
   const { envInfo, isLoading, isError } = useEnvInfo();
   const navigate = useNavigate();
-  const { title, setTitle } = useLayoutContext();
-
+  const { setTitle } = useLayoutContext();
+  const title = 'Admin panel';
   useEffect(() => {
     if (envInfo && envInfo.name === prodDeployEnv) {
       navigate(`/forbidden?unauthorized=/admin-panel`);
@@ -39,7 +39,7 @@ export default function AdminPage() {
   }, [envInfo, navigate]);
 
   useEffect(() => {
-    setTitle('Admin panel');
+    setTitle(title);
   }, [setTitle]);
 
   if (isLoading || isError) {

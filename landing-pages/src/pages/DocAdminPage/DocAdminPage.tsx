@@ -59,7 +59,7 @@ export default function DocAdminPage() {
   }, []);
 
   useEffect(() => {
-    setTitle('manage docs');
+    setTitle('Manage docs');
   }, [setTitle]);
   
   const deleteDoc = async (id: string) => {
