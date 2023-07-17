@@ -488,41 +488,61 @@ export async function getDocIdByUrl(
   return isUserAllowedToAccessResourceResult;
 }
 
+function getUniqueVersions(
+  allPlatformProductVersions: PlatformProductVersion[]
+): string[] {
+  const uniqueVersions = new Set<string>();
+  allPlatformProductVersions.forEach((ppv) => {
+    uniqueVersions.add(ppv.version.name);
+  });
+  return Array.from(uniqueVersions);
+}
+
+function getUniqueReleases(allReleases: Release[] | null): string[] {
+  if (!allReleases) {
+    return [];
+  }
+
+  const uniqueReleases = new Set<string>();
+  allReleases.forEach((r) => {
+    uniqueReleases.add(r.name);
+  });
+  return Array.from(uniqueReleases);
+}
+
+function getLabel(docConfig: Doc, releaseInLabel: boolean) {
+  const docReleases = getUniqueReleases(docConfig.releases);
+  const docVersions = getUniqueVersions(docConfig.platformProductVersions);
+  return releaseInLabel
+    ? `${docReleases[0]} (${docVersions[0]})`
+    : docVersions.join(',');
+}
+
+function sortVersions(
+  unsortedVersions: Array<LegacyVersionObject>,
+  releaseInLabel: boolean
+) {
+  return releaseInLabel
+    ? unsortedVersions.sort((a, b) => (a.label > b.label ? 1 : -1)).reverse()
+    : unsortedVersions
+        .sort(function (a, b) {
+          const labelA = a.label
+            .split('.')
+            .map((n) => +n + 100000)
+            .join('.');
+          const labelB = b.label
+            .split('.')
+            .map((n) => +n + 100000)
+            .join('.');
+          return labelA > labelB ? 1 : -1;
+        })
+        .reverse();
+}
+
 export async function getVersionSelector(
   req: Request,
   res: Response
 ): Promise<ApiResponse> {
-  function getLabel(docConfig: Doc, releaseInLabel: boolean) {
-    const docReleases = docConfig.releases?.map((r) => r.name) || [];
-    const docVersions = docConfig.platformProductVersions.map(
-      (p) => p.version.name
-    );
-    return releaseInLabel
-      ? `${docReleases[0]} (${docVersions[0]})`
-      : docVersions.join(',');
-  }
-
-  function sortVersions(
-    unsortedVersions: Array<LegacyVersionObject>,
-    releaseInLabel: boolean
-  ) {
-    return releaseInLabel
-      ? unsortedVersions.sort((a, b) => (a.label > b.label ? 1 : -1)).reverse()
-      : unsortedVersions
-          .sort(function (a, b) {
-            const labelA = a.label
-              .split('.')
-              .map((n) => +n + 100000)
-              .join('.');
-            const labelB = b.label
-              .split('.')
-              .map((n) => +n + 100000)
-              .join('.');
-            return labelA > labelB ? 1 : -1;
-          })
-          .reverse();
-  }
-
   try {
     const { docId } = req.query;
     if (!docId) {
@@ -603,24 +623,29 @@ export async function getVersionSelector(
       }
       const otherVersions = availableDocsWithTheSameTitle.map((doc) => {
         return {
-          versions: doc.platformProductVersions.map((p) => p.version.name),
-          releases: doc.releases?.map((r) => r.name) || [],
+          versions: getUniqueVersions(doc.platformProductVersions),
+          releases: getUniqueReleases(doc.releases),
           url: doc.url,
           label: getLabel(doc, useReleaseForLabel),
         };
       });
       const allVersions = [
         {
-          versions: docResponse.platformProductVersions.map(
-            (p) => p.version.name
-          ),
-          releases: docResponse.releases?.map((r) => r.name) || [],
+          versions: getUniqueVersions(docResponse.platformProductVersions),
+          releases: getUniqueReleases(docResponse.releases),
           url: docResponse.url,
           currentlySelected: true,
           label: getLabel(docResponse, useReleaseForLabel),
         },
         ...otherVersions,
       ];
+
+      if (allVersions.length < 2) {
+        return {
+          status: 200,
+          body: { matchingVersionSelector: {} },
+        };
+      }
 
       return {
         status: 200,
