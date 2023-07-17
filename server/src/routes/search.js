@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const searchController = require('../controllers/searchController');
 const {
-  legacySearchParametersWithoutQuotes,
+  removeQuotesFromLegacySearchParams,
 } = require('../controllers/configController');
 
 router.get('/', async function (req, res, next) {
@@ -13,7 +13,7 @@ router.get('/', async function (req, res, next) {
 
   const redirectUrl =
     '/search-results?' +
-    legacySearchParametersWithoutQuotes(req.originalUrl.split('?')[1]);
+    removeQuotesFromLegacySearchParams(req.originalUrl.split('?')[1]);
 
   res.redirect(redirectUrl);
 });

@@ -7,7 +7,7 @@ import {
   getEntity,
   getRootBreadcrumb,
   getVersionSelector,
-  legacyMapCommaSeparated,
+  splitLegacyValueByComma,
 } from '../controllers/configController';
 import { winstonLogger } from '../controllers/loggerController';
 
@@ -65,11 +65,11 @@ router.get('/docMetadata/:docId', async function (req, res) {
     docTitle: body.docTitle,
     docInternal: body.docInternal,
     docEarlyAccess: body.docEarlyAccess,
-    platform: legacyMapCommaSeparated(body.docPlatforms),
-    product: legacyMapCommaSeparated(body.docProducts),
-    version: legacyMapCommaSeparated(body.docVersions),
-    release: legacyMapCommaSeparated(body.docReleases),
-    locale: legacyMapCommaSeparated(body.docLocales),
+    platform: splitLegacyValueByComma(body.docPlatforms),
+    product: splitLegacyValueByComma(body.docProducts),
+    version: splitLegacyValueByComma(body.docVersions),
+    release: splitLegacyValueByComma(body.docReleases),
+    locale: splitLegacyValueByComma(body.docLocales),
   };
 
   return res.status(status).json(mappedConfig);

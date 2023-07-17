@@ -353,7 +353,7 @@ export async function deleteEntity(req: Request): Promise<ApiResponse> {
   }
 }
 
-export function legacyMapCommaSeparated(commaSeparated: string): string[] {
+export function splitLegacyValueByComma(commaSeparated: string): string[] {
   if (!commaSeparated) {
     return [];
   }
@@ -361,7 +361,7 @@ export function legacyMapCommaSeparated(commaSeparated: string): string[] {
   return commaSeparated.split(',');
 }
 
-export function legacySearchParametersWithoutQuotes(
+export function removeQuotesFromLegacySearchParams(
   queryString: string
 ): string {
   return queryString.replace(/["(%22)]/g, '');
