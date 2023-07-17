@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const searchController = require('../controllers/searchController');
+const {
+  legacySearchParametersWithoutQuotes,
+} = require('../controllers/configController');
 
 router.get('/', async function (req, res, next) {
   if (req.query.getData === 'true' || req.query.rawJSON === 'true') {
@@ -8,7 +11,9 @@ router.get('/', async function (req, res, next) {
     return res.status(status).json(body);
   }
 
-  const redirectUrl = '/search-results?' + req.originalUrl.split('?')[1];
+  const redirectUrl =
+    '/search-results?' +
+    legacySearchParametersWithoutQuotes(req.originalUrl.split('?')[1]);
 
   res.redirect(redirectUrl);
 });

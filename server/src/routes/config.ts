@@ -72,8 +72,6 @@ router.get('/docMetadata/:docId', async function (req, res) {
     locale: legacyMapCommaSeparated(body.docLocales),
   };
 
-  console.log('mappedConfig', mappedConfig);
-
   return res.status(status).json(mappedConfig);
 });
 

@@ -361,6 +361,12 @@ export function legacyMapCommaSeparated(commaSeparated: string): string[] {
   return commaSeparated.split(',');
 }
 
+export function legacySearchParametersWithoutQuotes(
+  queryString: string
+): string {
+  return queryString.replace(/["(%22)]/g, '');
+}
+
 export async function getDocumentMetadataById(
   id: string | undefined,
   res: Response
