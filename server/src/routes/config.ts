@@ -7,6 +7,7 @@ import {
   getEntity,
   getRootBreadcrumb,
   getVersionSelector,
+  splitLegacyValueByCommaAndReturnUnique,
 } from '../controllers/configController';
 import { winstonLogger } from '../controllers/loggerController';
 
@@ -51,8 +52,27 @@ router.get('/entity/:repo/all', async function (req, res) {
 });
 
 router.get('/entity/doc/metadata', async function (req, res) {
-  const { status, body } = await getDocumentMetadataById(req, res);
+  const { id } = req.query;
+  const { status, body } = await getDocumentMetadataById(id as string, res);
   return res.status(status).json(body);
+});
+
+router.get('/docMetadata/:docId', async function (req, res) {
+  const id = req.params.docId;
+  const { status, body } = await getDocumentMetadataById(id, res);
+
+  const mappedConfig = {
+    docTitle: body.docTitle,
+    docInternal: body.docInternal,
+    docEarlyAccess: body.docEarlyAccess,
+    platform: splitLegacyValueByCommaAndReturnUnique(body.docPlatforms),
+    product: splitLegacyValueByCommaAndReturnUnique(body.docProducts),
+    version: splitLegacyValueByCommaAndReturnUnique(body.docVersions),
+    release: splitLegacyValueByCommaAndReturnUnique(body.docReleases),
+    locale: splitLegacyValueByCommaAndReturnUnique(body.docLocales),
+  };
+
+  return res.status(status).json(mappedConfig);
 });
 
 router.get('/entity/doc/id', async function (req, res) {

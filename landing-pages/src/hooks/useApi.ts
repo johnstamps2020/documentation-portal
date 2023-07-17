@@ -58,7 +58,7 @@ export function useBreadcrumbs() {
 export function useSearchData() {
   const [searchParams] = useSearchParams();
   const { data, error, isLoading } = useSWR<SearchData, ServerSearchError>(
-    `/search?${searchParams.toString()}`,
+    `/search?${searchParams.toString()}&getData=true`,
     getter
   );
 

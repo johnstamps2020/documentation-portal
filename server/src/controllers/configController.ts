@@ -353,15 +353,32 @@ export async function deleteEntity(req: Request): Promise<ApiResponse> {
   }
 }
 
+export function splitLegacyValueByCommaAndReturnUnique(
+  commaSeparated: string
+): string[] {
+  if (!commaSeparated) {
+    return [];
+  }
+
+  const uniqueValues = new Set(commaSeparated.split(','));
+  return Array.from(uniqueValues);
+}
+
+export function removeQuotesFromLegacySearchParams(
+  queryString: string
+): string {
+  const replaced = queryString.replace(/"]/g, '').replace(/%22/g, '');
+  return replaced;
+}
+
 export async function getDocumentMetadataById(
-  req: Request,
+  id: string | undefined,
   res: Response
 ): Promise<ApiResponse> {
   // Filter values are passed around as strings that use commas to separate values. To avoid issues with splitting,
   // values that contain commas must be wrapped in quotes.
   // Filter values are parsed by the getFiltersFromUrl function in searchController.js.
   try {
-    const { id } = req.query;
     if (!id) {
       return {
         status: 400,
