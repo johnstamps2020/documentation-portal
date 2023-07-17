@@ -1,0 +1,15 @@
+# Ignore everything
+**
+
+# Allow specific folders
+!server/controllers/
+!server/public/
+!server/routes/
+!server/views/
+!server/app.js
+!server/server.js
+!server/package.json
+!.yarn/
+!.yarnrc.yml
+!package.json
+!yarn.lock

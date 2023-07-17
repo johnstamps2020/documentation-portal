@@ -1,6 +1,10 @@
 {
   "name": "documentation-portal-monorepo",
   "license": "UNLICENSED",
+  "author": "Doctools <doctools@guidewire.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "packageManager": "yarn@3.4.1",
   "workspaces": [
     "server",
     "landing-pages",
@@ -8,8 +12,10 @@
     "docusaurus/test-site",
     "docusaurus/plugins/gw-plugin-redoc",
     "docusaurus/themes/gw-theme-classic",
+    "docusaurus/vite-project",
     "html5",
-    "scripts"
+    "scripts",
+    "server"
   ],
   "scripts": {
     "audit:all": "yarn npm audit --all --severity high --recursive --exclude @doctools/gw-theme-classic",

@@ -858,7 +858,7 @@
     },
     {
       "id": "ccapirefgarmisch",
-      "title": "ClaimCenter Cloud API Reference",
+      "title": "Cloud API Reference",
       "url": "cloud/cc/202302/apiref",
       "metadata": {
         "platform": ["Cloud"],
@@ -877,7 +877,7 @@
     },
     {
       "id": "bcapirefgarmisch",
-      "title": "BillingCenter Cloud API Reference",
+      "title": "Cloud API Reference",
       "url": "cloud/bc/202302/apiref",
       "metadata": {
         "platform": ["Cloud"],
@@ -896,7 +896,7 @@
     },
     {
       "id": "pcapirefgarmisch",
-      "title": "PolicyCenter Cloud API Reference",
+      "title": "Cloud API Reference",
       "url": "cloud/pc/202302/apiref",
       "metadata": {
         "platform": ["Cloud"],

@@ -499,8 +499,8 @@ object Runners {
         gwVersion: String,
     ): BuildType {
         return BuildType {
-            name = docTitle
             val idHash = Helpers.md5("${this.name}${deployEnv}${gwProduct}${gwVersion}${docIds.joinToString()}")
+            name = "$docTitle ($idHash)"
             id = Helpers.resolveRelativeIdFromIdString(idHash)
 
             type = BuildTypeSettings.Type.COMPOSITE
@@ -1658,6 +1658,15 @@ object Content {
             step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("cloud"))
             step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("self-managed"))
             step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("internal-docs"))
+            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("jutro"))
+            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("help"))
+            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("de-DE"))
+            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("es-419"))
+            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("es-ES"))
+            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("fr-FR"))
+            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("it-IT"))
+            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("ja-JP"))
+            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("pt-BR"))
         }
 
         features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -4301,8 +4310,11 @@ object GwBuildSteps {
     }
 
     fun createRunIndexCleanerStep(deployEnv: String): ScriptBuildStep {
+        // Do not use the config file from dev because here are hardly any docs configured for dev and the index
+        // will end up with very few docs.
+        val envForConfigFile = if (deployEnv == GwDeployEnvs.DEV.envName) GwDeployEnvs.STAGING.envName else deployEnv
         val elasticsearchUrls = Helpers.getElasticsearchUrl(deployEnv)
-        val configFileUrl = Helpers.getConfigFileUrl(deployEnv)
+        val configFileUrl = Helpers.getConfigFileUrl(envForConfigFile)
         return ScriptBuildStep {
             name = "Run the index cleaner"
             id = Helpers.createIdStringFromName(this.name)

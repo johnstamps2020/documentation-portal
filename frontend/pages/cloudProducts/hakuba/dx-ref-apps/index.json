@@ -29,16 +29,16 @@
       ]
     },
     {
-      "label": "Jutro Design System 8.6.1",
+      "label": "Jutro Design System 8.10.0",
       "class": "categoryCard cardShadow",
       "items": [
         {
           "label": "Jutro Design System and UI Framework",
-          "id": "jutro861"
+          "id": "jutro8100"
         },
         {
           "label": "Jutro Storybook",
-          "id": "storybook861"
+          "id": "storybook8100"
         }
       ]
     },
@@ -47,7 +47,7 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Release Notes (Prerelease)",
+          "label": "Release Notes",
           "id": "dx202306ceamrelnotes"
         },
         {
@@ -73,7 +73,7 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Release Notes (Prerelease)",
+          "label": "Release Notes",
           "id": "dx202306ceclaimsrelnotes"
         },
         {
@@ -99,7 +99,7 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Release Notes (Prerelease)",
+          "label": "Release Notes",
           "id": "dx202306ceqbrelnotes"
         },
         {
@@ -129,7 +129,7 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Release Notes (Prerelease)",
+          "label": "Release Notes",
           "id": "dx202306perelnotes"
         },
         {
@@ -159,7 +159,7 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Release Notes (Prerelease)",
+          "label": "Release Notes",
           "id": "dx202306peclaimsrelnotes"
         },
         {
@@ -185,7 +185,7 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Release Notes (Prerelease)",
+          "label": "Release Notes",
           "id": "dx202306srerelnotes"
         },
         {
@@ -211,7 +211,7 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Release Notes (Prerelease)",
+          "label": "Release Notes",
           "id": "dx202306verelnotes"
         },
         {

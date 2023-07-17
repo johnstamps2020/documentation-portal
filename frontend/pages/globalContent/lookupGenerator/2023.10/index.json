@@ -1,0 +1,117 @@
+{
+  "$schema": "/frontend/page-schema.json",
+<<<<<<<< HEAD:frontend/pages/selfManagedProducts/ceAccountMgmtCc/11.4.1/index.json
+  "title": "CustomerEngage Account Management for ClaimCenter 11.4.1",
+========
+  "title": "Global Content - Lookup Generator",
+>>>>>>>> origin/master-typeorm-prepped:frontend/pages/globalContent/lookupGenerator/2023.10/index.json
+  "template": "page",
+  "class": "twoColumns",
+  "selector": {
+    "label": "Select release",
+    "selectedItem": "11.4.1",
+    "items": [
+      {
+        "label": "11.5.0",
+        "page": "../11.5.0"
+      },
+      {
+        "label": "11.3.0",
+        "id": "dxceclaims1130"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "Release Notes",
+      "class": "subject releaseNotes",
+      "items": [
+        {
+          "label": "Release Notes",
+<<<<<<<< HEAD:frontend/pages/selfManagedProducts/ceAccountMgmtCc/11.4.1/index.json
+          "id": "dx1141ceclaimsrelnotes"
+        },
+        {
+          "label": "Log4j Patch Release Notes",
+          "id": "dx1141log4jrelnotes"
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+          "label": "Installation Guide",
+          "id": "dx1141ceclaimsinstall"
+========
+          "id": "gondolaslgrninnsbruck"
+>>>>>>>> origin/master-typeorm-prepped:frontend/pages/globalContent/lookupGenerator/2023.10/index.json
+        }
+      ]
+    },
+    {
+      "label": "Features and functionality",
+      "class": "subject featuresAndFunctionality",
+      "items": [
+        {
+          "label": "Application Guide",
+<<<<<<<< HEAD:frontend/pages/selfManagedProducts/ceAccountMgmtCc/11.4.1/index.json
+          "id": "dx1141ceclaimsapp"
+        }
+      ]
+    },
+    {
+      "label": "Administration",
+      "class": "subject administration",
+      "items": [
+        {
+          "label": "Administration and Security Guide",
+          "id": "dx1141ceclaimsadmin"
+========
+          "id": "gondolaslgappinnsbruck"
+>>>>>>>> origin/master-typeorm-prepped:frontend/pages/globalContent/lookupGenerator/2023.10/index.json
+        }
+      ]
+    },
+    {
+      "label": "Installation",
+      "class": "subject installation",
+      "items": [
+        {
+<<<<<<<< HEAD:frontend/pages/selfManagedProducts/ceAccountMgmtCc/11.4.1/index.json
+          "label": "Developer's Guide",
+          "id": "dx1141ceclaimsdev"
+        },
+        {
+          "label": "Digital Services Reference Guides",
+          "id": "dx1141ceclaimsrefguides"
+========
+          "label": "Installation and Deployment",
+          "id": "gondolaslginstallinnsbruck"
+        }
+      ]
+    },
+    {
+      "label": "Configuration",
+      "class": "subject configuration",
+      "items": [
+        {
+          "label": "Configuration",
+          "id": "gondolaslgconfiginnsbruck"
+        }
+      ]
+    },
+    {
+      "label": "Integration",
+      "class": "subject integration",
+      "items": [
+        {
+          "label": "Integration",
+          "id": "gondolaslginteginnsbruck"
+>>>>>>>> origin/master-typeorm-prepped:frontend/pages/globalContent/lookupGenerator/2023.10/index.json
+        }
+      ]
+    }
+  ]
+}

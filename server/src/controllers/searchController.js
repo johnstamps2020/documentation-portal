@@ -13,7 +13,8 @@ async function getFieldMappings() {
 
 // Filter values are passed around as strings that use commas to separate values. To avoid issues with splitting,
 // values that contain commas are wrapped in quotes by:
-// - the getDocumentMetadataById function in configController.js
+// - the fetchMetadata function in gwWebhelp.js
+// - the setMetadata function in metadata.js
 // - the updateFilters function in search.ejs
 // Therefore, filter values must be parsed here taking quotes into account.
 function getFiltersFromUrl(fieldMappings, queryParams) {
@@ -113,13 +114,13 @@ async function getFilters(query, fieldMappings, urlFilters) {
         const urlFilterValues = urlFilters.hasOwnProperty(field)
           ? urlFilters[field]
           : [];
-        const allFilterValues = Array.from(
-          new Set([
-            ...allowedFilterValues?.map((v) => v.label),
+        const allFilterValues = [
+          ...new Set([
+            ...allowedFilterValues?.map(v => v.label),
             ...urlFilterValues,
-          ])
-        );
-        const filterValuesObjects = allFilterValues?.map((value) => {
+          ]),
+        ];
+        const filterValuesObjects = allFilterValues?.map(value => {
           return {
             label: value,
             doc_count:

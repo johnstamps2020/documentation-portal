@@ -6,26 +6,27 @@
   "configurations": [
     {
       "name": "Server DEV",
-      "command": "yarn server-dev",
+      "command": "yarn dev:server",
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "type": "node-terminal",
-      "preLaunchTask": "Start docportal DB"
+      "preLaunchTask": "html5 DEV"
     },
     {
-      "name": "Landing pages DEV",
-      "command": "yarn landing-pages-dev",
+      "name": "doc-site DEV",
+      "command": "yarn dev:doc-site",
       "request": "launch",
       "cwd": "${workspaceFolder}",
-      "type": "node-terminal"
+      "type": "node-terminal",
+      "preLaunchTask": "theme DEV"
     },
     {
-      "name": "Upload legacy configs to DB",
-      "type": "node-terminal",
+      "name": "test-site DEV",
+      "command": "yarn dev:test-site",
       "request": "launch",
-      "cwd": "${workspaceFolder}/ci",
-      "command": "node uploadLegacyConfigsToDb.mjs",
-      "envFile": "${workspaceFolder}/server/.env"
+      "cwd": "${workspaceFolder}",
+      "type": "node-terminal",
+      "preLaunchTask": "plugin DEV"
     }
   ]
 }

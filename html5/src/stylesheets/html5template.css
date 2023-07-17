@@ -1,3 +1,4 @@
+<<<<<<<< HEAD:html5/src/stylesheets/html5template.css
 @import 'modules/iframe.css';
 @import 'modules/fonts.css';
 @import 'modules/header.css';
@@ -12,6 +13,22 @@
 @import 'modules/html5vars.css';
 @import 'modules/highlight.css';
 @import 'modules//specialOutput.css';
+========
+@import 'iframe.css';
+@import 'fonts.css';
+@import 'header.css';
+@import 'html5content.css';
+@import 'landingpage.css';
+@import 'navbar.css';
+@import 'note.css';
+@import 'print.css';
+@import 'tables.css';
+@import 'task.css';
+@import 'typography.css';
+@import 'html5vars.css';
+@import 'highlight.css';
+@import './modules//specialOutput.css';
+>>>>>>>> origin/master-typeorm-prepped:server/public/stylesheets/html5template.css
 
 * {
   box-sizing: border-box;

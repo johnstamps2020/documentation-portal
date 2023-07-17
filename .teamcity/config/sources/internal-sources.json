@@ -12,6 +12,12 @@
       "title": "DMA - Database migration to Aurora",
       "gitUrl": "ssh://git@stash.guidewire.com/kdc/dma-docs.git",
       "branch": "master"
+    },
+    {
+      "id": "gchsrc",
+      "title": "Guidewire Cloud Home",
+      "gitUrl": "ssh://git@stash.guidewire.com/appl/applauncher-docs.git",
+      "branch": "main"
     }
   ]
 }
