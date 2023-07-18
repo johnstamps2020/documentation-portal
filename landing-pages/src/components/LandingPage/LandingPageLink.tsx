@@ -29,17 +29,17 @@ export default function LandingPageLink({
       alignItems="center"
       justifyContent="flex-start"
     >
-      {landingPageItem.path ? (
+      {landingPageItem?.path ? (
         <Link component={RouterLink} to={`/${landingPageItem.path}`} sx={sx}>
           {landingPageItem.label}
         </Link>
       ) : (
-        <Link href={resolveUrl(landingPageItem.url)} sx={sx}>
-          {landingPageItem.label}
+        <Link href={resolveUrl(landingPageItem?.url)} sx={sx}>
+          {landingPageItem?.label}
         </Link>
       )}
-      {landingPageItem.videoIcon && <VideoIcon />}
-      {landingPageItem.internal && <InternalTooltip />}
+      {landingPageItem?.videoIcon && <VideoIcon />}
+      {landingPageItem?.internal && <InternalTooltip />}
     </Stack>
   );
 }
