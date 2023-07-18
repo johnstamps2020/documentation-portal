@@ -12,7 +12,6 @@ export type HeaderOptions = {
   hideUserProfile?: boolean;
 };
 
-
 export default function Layout() {
   const { title, headerOptions, backgroundColor, path } = useLayoutContext();
   document.title = `${title} | Guidewire Documentation`;

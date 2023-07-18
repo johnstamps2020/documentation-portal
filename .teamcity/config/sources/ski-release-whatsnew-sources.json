@@ -2,6 +2,12 @@
   "$schema": "../config-schema.json",
   "sources": [
     {
+      "id": "whatsnewhakubasrc",
+      "title": "Ski Release What's New - Hakuba",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/ski-release-overview.git",
+      "branch": "release/hakuba"
+    },
+    {
       "id": "whatsnewgarmischsrc",
       "title": "Ski Release What's New - Garmisch",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/ski-release-overview.git",
