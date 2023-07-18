@@ -6,6 +6,12 @@
       "title": "Digital 11.4.1 de-DE",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",
       "branch": "release/de-DE/11.4.1"
+    },
+    {
+      "id": "dx202302deDEsrc",
+      "title": "Digital 2023.02 de-DE",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-cloud.git",
+      "branch": "release/de-DE/2023.02"
     }
   ]
 }

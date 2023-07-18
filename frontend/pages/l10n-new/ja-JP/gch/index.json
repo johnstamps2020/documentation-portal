@@ -1,0 +1,17 @@
+{
+  "title": "Guidewire Cloud Platform",
+  "template": "page",
+  "class": "threeCards",
+  "items": [
+    {
+      "label": "latest",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label":"Guidewire Cloud Home ヘルプ",
+          "id": "gchjaJPhelprelease"
+        }
+      ]
+    }
+  ]
+}

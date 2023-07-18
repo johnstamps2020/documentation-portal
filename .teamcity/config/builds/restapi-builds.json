@@ -22,15 +22,6 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Release.ditaval",
-      "root": "LxdPOCProject.ditamap",
-      "indexRedirect": true,
-      "srcId": "restapisrc",
-      "docId": "integgatewaydevlatestlxdpoc",
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
       "root": "RESTAPIClientGuide.ditamap",
       "srcId": "restapisrc",
       "docId": "isrestapiclientguide",
