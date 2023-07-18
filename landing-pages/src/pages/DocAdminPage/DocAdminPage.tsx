@@ -1,7 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { Doc } from 'server/dist/model/entity/Doc';
 import Button from '@mui/material/Button';
-import Layout from 'components/Layout/Layout';
 import DocForm from 'components/DocForm/DocForm';
 import { Release } from 'server/dist/model/entity/Release';
 import { Subject } from 'server/dist/model/entity/Subject';
@@ -14,6 +13,7 @@ import Box from '@mui/material/Box';
 import { ThemeProvider } from '@mui/material';
 import { adminDocTheme } from 'themes/adminDocTheme';
 import { Locale } from 'server/dist/model/entity/Locale';
+import { useLayoutContext } from 'LayoutContext';
 
 const emptyDoc: Doc = {
   uuid: '',
@@ -34,6 +34,7 @@ const emptyDoc: Doc = {
 };
 
 export default function DocAdminPage() {
+  const { setTitle } = useLayoutContext();
   const [docData, setDocData] = useState<Doc[]>();
   const [memorizedDoc, memorizeDoc] = useState<Doc>(emptyDoc);
   const [showForm, setShowForm] = useState(false);
@@ -57,6 +58,10 @@ export default function DocAdminPage() {
     getDocData().then((r) => r);
   }, []);
 
+  useEffect(() => {
+    setTitle('Manage docs');
+  }, [setTitle]);
+  
   const deleteDoc = async (id: string) => {
     setSnack({
       message: '',
@@ -196,121 +201,115 @@ export default function DocAdminPage() {
 
   return (
     <ThemeProvider theme={adminDocTheme}>
-      <Layout title="Manage docs">
-        <div>
-          <Button size={'large'} onClick={handleCreateNew}>
-            Add new document
-          </Button>
-        </div>
-        <div>
-          <div style={{ columns: 3 }}>
-            {docData ? (
-              docData.map((doc: Doc) => (
-                <div
-                  key={doc.id}
-                  style={{
-                    width: 400,
-                    height: 400,
-                    marginBottom: 15,
-                    breakInside: 'avoid',
-                  }}
-                >
-                  <div>{doc.title}</div>
-                  <div>ID: {doc.id}</div>
-                  <div>URL: {doc.url}</div>
-                  <div>
-                    Display on landing pages:{' '}
-                    {String(doc.displayOnLandingPages)}
-                  </div>
-                  <div>Index for search: {String(doc.indexForSearch)}</div>
-                  <div>Is public: {String(doc.public)}</div>
-                  <div>Is internal: {String(doc.internal)}</div>
-                  <div>Early access: {String(doc.earlyAccess)}</div>
-                  <div>Body: {doc.body}</div>
-                  <Button color="error" onClick={() => deleteDoc(doc.id)}>
-                    Delete
-                  </Button>
-                  <Button
-                    color="success"
-                    onClick={() => showFormAndSetVar(doc)}
-                  >
-                    Update
-                  </Button>
+      <div>
+        <Button size={'large'} onClick={handleCreateNew}>
+          Add new document
+        </Button>
+      </div>
+      <div>
+        <div style={{ columns: 3 }}>
+          {docData ? (
+            docData.map((doc: Doc) => (
+              <div
+                key={doc.id}
+                style={{
+                  width: 400,
+                  height: 400,
+                  marginBottom: 15,
+                  breakInside: 'avoid',
+                }}
+              >
+                <div>{doc.title}</div>
+                <div>ID: {doc.id}</div>
+                <div>URL: {doc.url}</div>
+                <div>
+                  Display on landing pages: {String(doc.displayOnLandingPages)}
                 </div>
-              ))
-            ) : (
-              <Stack>
-                <Skeleton variant="text" width={400} height={40} />
-                <Skeleton variant="rectangular" width={400} height={300} />
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <Skeleton
-                    variant="rounded"
-                    width={200}
-                    height={50}
-                    sx={{ margin: '2%' }}
-                  />
-                  <Skeleton
-                    variant="rounded"
-                    width={200}
-                    height={50}
-                    sx={{ margin: '2%' }}
-                  />
-                </Box>
-                <Skeleton variant="text" width={400} height={40} />
-                <Skeleton variant="rectangular" width={400} height={300} />
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <Skeleton
-                    variant="rounded"
-                    width={200}
-                    height={50}
-                    sx={{ margin: '2%' }}
-                  />
-                  <Skeleton
-                    variant="rounded"
-                    width={200}
-                    height={50}
-                    sx={{ margin: '2%' }}
-                  />
-                </Box>
-                <Skeleton variant="text" width={400} height={40} />
-                <Skeleton variant="rectangular" width={400} height={300} />
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <Skeleton
-                    variant="rounded"
-                    width={200}
-                    height={50}
-                    sx={{ margin: '2%' }}
-                  />
-                  <Skeleton
-                    variant="rounded"
-                    width={200}
-                    height={50}
-                    sx={{ margin: '2%' }}
-                  />
-                </Box>
-              </Stack>
-            )}
-          </div>
-          <Modal open={open} onClose={handleClose}>
-            <>
-              <DocForm
-                docToDisplay={memorizedDoc}
-                setDocToDisplay={memorizeDoc}
-                updateDoc={updateDoc}
-                handleClose={handleClose}
-              />
-            </>
-          </Modal>
-          <SnackbarContext.Provider value={{ snack }}>
-            <Snackbar
-              open={snack.open}
-              onClose={() => setSnack({ message: '', color: '', open: false })}
-            >
-              <Alert>{snack.message}</Alert>
-            </Snackbar>
-          </SnackbarContext.Provider>
+                <div>Index for search: {String(doc.indexForSearch)}</div>
+                <div>Is public: {String(doc.public)}</div>
+                <div>Is internal: {String(doc.internal)}</div>
+                <div>Early access: {String(doc.earlyAccess)}</div>
+                <div>Body: {doc.body}</div>
+                <Button color="error" onClick={() => deleteDoc(doc.id)}>
+                  Delete
+                </Button>
+                <Button color="success" onClick={() => showFormAndSetVar(doc)}>
+                  Update
+                </Button>
+              </div>
+            ))
+          ) : (
+            <Stack>
+              <Skeleton variant="text" width={400} height={40} />
+              <Skeleton variant="rectangular" width={400} height={300} />
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <Skeleton
+                  variant="rounded"
+                  width={200}
+                  height={50}
+                  sx={{ margin: '2%' }}
+                />
+                <Skeleton
+                  variant="rounded"
+                  width={200}
+                  height={50}
+                  sx={{ margin: '2%' }}
+                />
+              </Box>
+              <Skeleton variant="text" width={400} height={40} />
+              <Skeleton variant="rectangular" width={400} height={300} />
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <Skeleton
+                  variant="rounded"
+                  width={200}
+                  height={50}
+                  sx={{ margin: '2%' }}
+                />
+                <Skeleton
+                  variant="rounded"
+                  width={200}
+                  height={50}
+                  sx={{ margin: '2%' }}
+                />
+              </Box>
+              <Skeleton variant="text" width={400} height={40} />
+              <Skeleton variant="rectangular" width={400} height={300} />
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <Skeleton
+                  variant="rounded"
+                  width={200}
+                  height={50}
+                  sx={{ margin: '2%' }}
+                />
+                <Skeleton
+                  variant="rounded"
+                  width={200}
+                  height={50}
+                  sx={{ margin: '2%' }}
+                />
+              </Box>
+            </Stack>
+          )}
         </div>
-      </Layout>
+        <Modal open={open} onClose={handleClose}>
+          <>
+            <DocForm
+              docToDisplay={memorizedDoc}
+              setDocToDisplay={memorizeDoc}
+              updateDoc={updateDoc}
+              handleClose={handleClose}
+            />
+          </>
+        </Modal>
+        <SnackbarContext.Provider value={{ snack }}>
+          <Snackbar
+            open={snack.open}
+            onClose={() => setSnack({ message: '', color: '', open: false })}
+          >
+            <Alert>{snack.message}</Alert>
+          </Snackbar>
+        </SnackbarContext.Provider>
+      </div>
     </ThemeProvider>
   );
 }

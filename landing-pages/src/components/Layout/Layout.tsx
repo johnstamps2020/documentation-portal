@@ -1,6 +1,8 @@
 import Header, { headerHeight } from './Header/Header';
 import Footer from './Footer';
 import Box from '@mui/material/Box';
+import { useLayoutContext } from 'LayoutContext';
+import { Outlet } from 'react-router-dom';
 
 export const mainHeight = `calc(100vh - ${headerHeight})`;
 
@@ -10,21 +12,9 @@ export type HeaderOptions = {
   hideUserProfile?: boolean;
 };
 
-type LayoutProps = {
-  children: JSX.Element[] | JSX.Element;
-  title: string;
-  headerOptions?: HeaderOptions;
-  path?: string;
-  backgroundColor?: React.CSSProperties['backgroundColor'];
-};
 
-export default function Layout({
-  children,
-  title,
-  headerOptions,
-  path,
-  backgroundColor,
-}: LayoutProps) {
+export default function Layout() {
+  const { title, headerOptions, backgroundColor, path } = useLayoutContext();
   document.title = `${title} | Guidewire Documentation`;
   return (
     <div>
@@ -35,7 +25,7 @@ export default function Layout({
             minHeight: { xs: 'auto', sm: mainHeight },
           }}
         >
-          {children}
+          <Outlet />
         </Box>
       </main>
       <Footer path={path} />
