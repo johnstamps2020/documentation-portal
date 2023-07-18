@@ -1,0 +1,68 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-am-MgSvcs.ditaval",
+      "root": "CustomerEngage_AccountManagement_AppGuide.ditamap",
+      "srcId": "dx202302deDEsrc",
+      "docId": "dx202302deDEceamapp",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-claims-MgSvcs.ditaval",
+      "root": "CustomerEngage_Claims_AppGuide.ditamap",
+      "srcId": "dx202302deDEsrc",
+      "docId": "dx202302deDEceclaimsapp",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ce-qb-MgSvcs.ditaval",
+      "root": "CustomerEngage_QuoteAndBuy_AppGuide.ditamap",
+      "srcId": "dx202302deDEsrc",
+      "docId": "dx202302deDEceqbapp",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-MgSvcs.ditaval",
+      "root": "ProducerEngage_AppGuide.ditamap",
+      "srcId": "dx202302deDEsrc",
+      "docId": "dx202302deDEpeapp",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-pe-claims-MgSvcs.ditaval",
+      "root": "ProducerEngage_Claims_AppGuide.ditamap",
+      "srcId": "dx202302deDEsrc",
+      "docId": "dx202302deDEpeclaimsapp",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-sre-MgSvcs.ditaval",
+      "root": "ServiceRepEngage_AppGuide.ditamap",
+      "srcId": "dx202302deDEsrc",
+      "docId": "dx202302deDEsreapp",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "Digital-ve-MgSvcs.ditaval",
+      "root": "VendorEngage_AppGuide.ditamap",
+      "srcId": "dx202302deDEsrc",
+      "docId": "dx202302deDEveapp",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}

@@ -339,6 +339,7 @@ function getBackgroundComponent(pagePath: string) {
     'cloudProducts/elysian': 'elysianBackground',
     'cloudProducts/flaine': 'flaineBackground',
     'cloudProducts/garmisch': 'garmischBackground',
+    'cloudProducts/hakuba': 'hakubaBackground',
   };
   let background = null;
   Object.entries(backgroundPathMapping).forEach(([k, v]) => {
@@ -356,6 +357,7 @@ function getCompletePageComponent(
   const categoryLayout2Paths = [
     'cloudProducts/flaine',
     'cloudProducts/garmisch',
+    'cloudProducts/hakuba',
   ];
   const legacyPageConfigTemplate = legacyPageConfig.template;
   if (legacyPageConfigTemplate === 'redirect') {

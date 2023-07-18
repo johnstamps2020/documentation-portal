@@ -5,6 +5,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Migrate pages from legacy config to JSX",
+      "command": "yarn scripts:migrate-pages",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "type": "node-terminal"
+    },
+    {
       "name": "Server DEV",
       "command": "yarn server-dev",
       "request": "launch",

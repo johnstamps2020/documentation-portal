@@ -1378,7 +1378,7 @@
         "subject": ["Best practices"],
         "locale": ["en-US"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1396,7 +1396,7 @@
         "subject": ["Development"],
         "locale": ["en-US"]
       },
-      "environments": ["staging", "prod"],
+      "environments": ["staging"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1415,7 +1415,7 @@
         "release": ["Flaine"],
         "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -1434,7 +1434,7 @@
         "release": ["Flaine"],
         "locale": ["en-US"]
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

@@ -2,6 +2,24 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "whatsnewhakuba",
+      "title": "What's new in Hakuba",
+      "url": "cloud/hakuba/whatsnew",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Ski release overview"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "locale": ["en-US"]
+      },
+      "environments": ["staging"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "displayOnLandingPages": true
+    },
+    {
       "id": "whatsnewgarmisch",
       "title": "What's new in Garmisch",
       "url": "cloud/garmisch/whatsnew",

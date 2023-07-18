@@ -61,7 +61,7 @@ export default function DocAdminPage() {
   useEffect(() => {
     setTitle('Manage docs');
   }, [setTitle]);
-  
+
   const deleteDoc = async (id: string) => {
     setSnack({
       message: '',
