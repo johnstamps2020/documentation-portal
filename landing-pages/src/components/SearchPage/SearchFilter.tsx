@@ -1,12 +1,13 @@
 import { ServerSearchFilter } from 'server/dist/types/serverSearch';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyledAccordion,
   StyledAccordionDetails,
   StyledAccordionSummary,
 } from './StyledSearchComponents';
 import SearchFilterCheckboxList from './SearchFilterCheckboxList';
+import Button from '@mui/material/Button';
 
 type SearchFilterProps = {
   serverSearchFilter: ServerSearchFilter;
@@ -19,6 +20,7 @@ export default function SearchFilter({
   expanded,
   onChange,
 }: SearchFilterProps) {
+  const [sortAlpha, setSortAlpha] = useState(false);
   function handleAccordionExpandCollapse(
     event: React.SyntheticEvent,
     isExpanded: boolean
@@ -41,9 +43,13 @@ export default function SearchFilter({
         {serverSearchFilter.values.length})
       </StyledAccordionSummary>
       <StyledAccordionDetails>
+        <Button onClick={() => setSortAlpha(!sortAlpha)}>
+          {sortAlpha ? 'Sort by count' : 'Sort alphabetically'}
+        </Button>
         <SearchFilterCheckboxList
           filterName={serverSearchFilter.name}
           values={serverSearchFilter.values}
+          sortAlphabetically={sortAlpha}
         />
       </StyledAccordionDetails>
     </StyledAccordion>
