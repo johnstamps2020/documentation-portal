@@ -21,7 +21,6 @@ export default function SearchFilterCheckboxList({
   >([]);
   const [expanded, setExpanded] = useState<boolean>(false);
 
-  useEffect(() => {}, [sortAlphabetically]);
   // sort by checked first, then by doc_count/alphabetically
   values.sort((a, b) => {
     if (a.checked && !b.checked) {
