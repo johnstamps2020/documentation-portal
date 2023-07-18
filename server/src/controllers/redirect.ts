@@ -1,5 +1,12 @@
+import { getDocByUrl } from './configController';
+import { ApiResponse } from '../types/apiResponse';
+import { winstonLogger } from './loggerController';
+import { Doc } from '../model/entity/Doc';
+import { AppDataSource } from '../model/connection';
+import { isUserAllowedToAccessResource } from './authController';
+import { Response } from 'express';
+
 const fetch = require('node-fetch-retry');
-const { getLatestVersionUrl } = require('./configController');
 const redirectUrls = [
   {
     from: 'cloud/cda/banff',
@@ -175,19 +182,163 @@ const redirectUrls = [
   },
 ];
 
-export async function getRedirectUrl(originUrl: string) {
-  const originPathname = new URL(originUrl).pathname;
+export async function isHtmlPage(url: string) {
+  try {
+    const fullUrl = process.env.DOC_S3_URL + url;
+    const response = await fetch(fullUrl, { method: 'HEAD' });
+    return (
+      response.status === 200 &&
+      response.headers.get('content-type')?.includes('text/html')
+    );
+  } catch (err) {
+    winstonLogger.error(`Error checking if HTML page exists at ${url}: ${err}`);
+    return false;
+  }
+}
 
-  for (const urlObj of redirectUrls) {
-    if (`/${urlObj.from}` === originPathname) {
-      return `/${urlObj.to}`;
+async function findMatchingDocs(res: Response, urls: string[]) {
+  for (const u of urls) {
+    const matches: Doc[] = await AppDataSource.getRepository(Doc)
+      .createQueryBuilder('doc')
+      .useIndex('docUrl-idx')
+      .select([
+        'doc.url',
+        'doc.id',
+        'doc.public',
+        'doc.internal',
+        'doc.isInProduction',
+      ])
+      .where(
+        'doc.url LIKE :urlPattern AND doc.url NOT LIKE :excludedUrlPattern',
+        { urlPattern: u, excludedUrlPattern: u.replace('%', '%/%') }
+      )
+      .getMany();
+    const availableMatches = [];
+    if (matches.length > 0) {
+      // TODO: Don't forget to check if the user is allowed to access the found latest version
+      return matches.filter(
+        (m) =>
+          isUserAllowedToAccessResource(
+            res,
+            m.public,
+            m.internal,
+            m.isInProduction
+          ).status === 200
+      );
     }
   }
-  if (originPathname.includes('/latest')) {
-    const latestVersionUrl = await getLatestVersionUrl(originPathname);
-    if (latestVersionUrl) {
-      return `/${latestVersionUrl}`;
+  return [];
+}
+
+function getPathname(url: string): string {
+  return new URL(url).pathname.replace(/^\//, '');
+}
+
+export async function getLatestVersionUrl(
+  res: Response,
+  pathname: string
+): Promise<string | null> {
+  const wildcardUrlSegments = pathname.replace('latest', '%').split('/');
+  const urlsToCheck = [];
+  for (const segment of wildcardUrlSegments) {
+    const partialUrl = wildcardUrlSegments
+      .slice(
+        0,
+        wildcardUrlSegments.length - wildcardUrlSegments.indexOf(segment)
+      )
+      .join('/');
+    if (partialUrl.includes('%')) {
+      urlsToCheck.push(partialUrl);
     }
   }
-  return undefined;
+
+  const matchingDocs = await findMatchingDocs(res, urlsToCheck);
+  if (matchingDocs.length === 0) {
+    return null;
+  }
+  const wildcardIndex = wildcardUrlSegments.indexOf('%');
+  const sortedUrls = matchingDocs
+    .map((d) => d.url.split('/'))
+    .sort(
+      (a: string[], b: string[]) =>
+        parseInt(a[wildcardIndex], 10) - parseInt(b[wildcardIndex], 10)
+    )
+    .reverse();
+  const urlWithHighestVersionSegments = sortedUrls[0];
+  const targetUrlSegments = Array.from(wildcardUrlSegments);
+  targetUrlSegments[wildcardIndex] =
+    urlWithHighestVersionSegments[wildcardIndex];
+  const targetUrl = targetUrlSegments.join('/');
+  const targetUrlExists = await isHtmlPage(`/${targetUrl}`);
+  return targetUrlExists ? targetUrl : urlWithHighestVersionSegments.join('/');
+}
+
+// FIXME: In master, this function was used in the 404 route. This route was removed and now we have a 404 page in React.
+//  Maybe we should create a middleware to handle resolution of links with latest?
+export async function getRedirectUrl(
+  res: Response,
+  originUrl: string | null | undefined
+): Promise<ApiResponse> {
+  try {
+    if (!originUrl) {
+      return {
+        status: 404,
+        body: {
+          message: 'Redirect URL not found because the origin URL is empty.',
+        },
+      };
+    }
+    const originPathname = getPathname(originUrl);
+    for (const urlObj of redirectUrls) {
+      if (urlObj.from === originPathname) {
+        return {
+          status: 308,
+          body: `/${urlObj.to}`,
+        };
+      }
+    }
+    if (originUrl.includes('/latest')) {
+      const latestVersionUrl = await getLatestVersionUrl(res, originPathname);
+      if (latestVersionUrl) {
+        return {
+          status: 307,
+          body: `/${latestVersionUrl}`,
+        };
+      }
+    }
+    const matchingDoc = await getDocByUrl(originPathname);
+    if (!matchingDoc) {
+      return {
+        status: 404,
+        body: {
+          message: 'Redirect URL does not exist',
+        },
+      };
+    }
+    const isUserAllowedToAccessResourceResult = isUserAllowedToAccessResource(
+      res,
+      matchingDoc.public,
+      matchingDoc.internal,
+      matchingDoc.isInProduction
+    );
+    if (isUserAllowedToAccessResourceResult.status === 200) {
+      return {
+        status: 307,
+        body: matchingDoc.url,
+      };
+    }
+    return {
+      status: 404,
+      body: {
+        message: 'Redirect URL does not exist',
+      },
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      body: {
+        message: `Redirect URL not found due to an error. Error: ${err}`,
+      },
+    };
+  }
 }

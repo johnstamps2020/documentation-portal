@@ -1,5 +1,4 @@
 import * as dotenv from 'dotenv';
-
 //IMPORTANT: Don't move this line. Be careful with optimizing imports.
 dotenv.config();
 //
@@ -130,6 +129,7 @@ const adminRouter = require('./routes/admin');
 const configRouter = require('./routes/config');
 const jiraRouter = require('./routes/jira');
 const lrsRouter = require('./routes/lrs');
+const redirectRouter = require('./routes/redirect');
 const recommendationsRouter = require('./routes/recommendations');
 const passport = require('passport');
 
@@ -179,6 +179,7 @@ app.use('/s3', saveUserInfoToResLocals, isAllowedToAccessRoute, s3Router);
 app.use('/recommendations', saveUserInfoToResLocals, recommendationsRouter);
 app.use('/userInformation', userRouter);
 app.use('/envInformation', envRouter);
+app.use('/redirect', saveUserInfoToResLocals, redirectRouter);
 app.use('/search', saveUserInfoToResLocals, searchRouter);
 
 // overwrite HTML received through proxy
