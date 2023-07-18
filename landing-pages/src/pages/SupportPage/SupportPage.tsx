@@ -8,11 +8,10 @@ import { useLayoutContext } from 'LayoutContext';
 import { useEffect } from 'react';
 
 export default function SupportPage() {
-  const { setTitle, setHeaderOptions } = useLayoutContext();
+  const { setTitle } = useLayoutContext();
   useEffect(() => {
     setTitle('Support');
-    setHeaderOptions({ hideSearchBox: true });
-  }, [setHeaderOptions, setTitle]);
+  }, [setTitle]);
 
   return (
     <Grid
