@@ -510,7 +510,7 @@ function getUniqueReleases(allReleases: Release[] | null): string[] {
   return Array.from(uniqueReleases);
 }
 
-function getLabel(docConfig: Doc, releaseInLabel: boolean) {
+function getLabel(docConfig: Doc, releaseInLabel: boolean): string {
   const docReleases = getUniqueReleases(docConfig.releases);
   const docVersions = getUniqueVersions(docConfig.platformProductVersions);
   return releaseInLabel
