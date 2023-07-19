@@ -521,7 +521,7 @@ function getLabel(docConfig: Doc, releaseInLabel: boolean) {
 function sortVersions(
   unsortedVersions: Array<LegacyVersionObject>,
   releaseInLabel: boolean
-) {
+): Array<LegacyVersionObject> {
   return releaseInLabel
     ? unsortedVersions.sort((a, b) => (a.label > b.label ? 1 : -1)).reverse()
     : unsortedVersions
