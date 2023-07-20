@@ -207,7 +207,6 @@ if (isDevMode) {
 app.use(saveUserInfoToResLocals, s3Proxy, reactAppProxy);
 
 app.use((req: Request, res: Response) => {
-  res.redirect('/redirect');
   const notFoundParam =
     req.url === '/404'
       ? req.headers.referer?.replace(`${process.env.APP_BASE_URL}`, '')

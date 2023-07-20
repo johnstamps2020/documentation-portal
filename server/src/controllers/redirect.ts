@@ -213,7 +213,6 @@ async function findMatchingDocs(res: Response, urls: string[]) {
         { urlPattern: u, excludedUrlPattern: u.replace('%', '%/%') }
       )
       .getMany();
-    const availableMatches = [];
     if (matches.length > 0) {
       return matches.filter(
         (m) =>
