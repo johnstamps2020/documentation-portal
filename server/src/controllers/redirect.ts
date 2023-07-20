@@ -209,13 +209,12 @@ async function findMatchingDocs(res: Response, urls: string[]) {
         'doc.isInProduction',
       ])
       .where(
-        'doc.url LIKE :urlPattern AND doc.url NOT LIKE :excludedUrlPattern',
+        "doc.url LIKE :urlPattern AND doc.url NOT LIKE :excludedUrlPattern AND doc.url NOT LIKE '%next%'",
         { urlPattern: u, excludedUrlPattern: u.replace('%', '%/%') }
       )
       .getMany();
     const availableMatches = [];
     if (matches.length > 0) {
-      // TODO: Don't forget to check if the user is allowed to access the found latest version
       return matches.filter(
         (m) =>
           isUserAllowedToAccessResource(
@@ -231,7 +230,26 @@ async function findMatchingDocs(res: Response, urls: string[]) {
 }
 
 function getPathname(url: string): string {
-  return new URL(url).pathname.replace(/^\//, '');
+  return new URL(url).pathname.replace(/^\//, '').replace(/\/$/, '');
+}
+
+function sortUrlsByVersion(a: string[], b: string[], wildcardIndex: number) {
+  const isANumber = !isNaN(parseInt(a[wildcardIndex], 10));
+  const isBNumber = !isNaN(parseInt(b[wildcardIndex], 10));
+
+  if (isANumber && isBNumber) {
+    // Both elements are numbers, so sort numerically
+    return parseInt(a[wildcardIndex], 10) - parseInt(b[wildcardIndex], 10);
+  } else if (isANumber) {
+    // Only element at wildcardIndex in 'a' is a number, so 'a' comes first
+    return -1;
+  } else if (isBNumber) {
+    // Only element at wildcardIndex in 'b' is a number, so 'b' comes first
+    return 1;
+  } else {
+    // Both elements are not numbers, so sort alphabetically
+    return a[wildcardIndex].localeCompare(b[wildcardIndex]);
+  }
 }
 
 export async function getLatestVersionUrl(
@@ -259,10 +277,7 @@ export async function getLatestVersionUrl(
   const wildcardIndex = wildcardUrlSegments.indexOf('%');
   const sortedUrls = matchingDocs
     .map((d) => d.url.split('/'))
-    .sort(
-      (a: string[], b: string[]) =>
-        parseInt(a[wildcardIndex], 10) - parseInt(b[wildcardIndex], 10)
-    )
+    .sort((a, b) => sortUrlsByVersion(a, b, wildcardIndex))
     .reverse();
   const urlWithHighestVersionSegments = sortedUrls[0];
   const targetUrlSegments = Array.from(wildcardUrlSegments);
