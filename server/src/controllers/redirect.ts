@@ -339,7 +339,7 @@ export async function getRedirectUrl(
     if (isUserAllowedToAccessResourceResult.status === 200) {
       return {
         status: 307,
-        body: matchingDoc.url,
+        body: `/${matchingDoc.url}`,
       };
     }
     return {
