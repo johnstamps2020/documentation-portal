@@ -72,7 +72,6 @@ export default function WhatsNew({
         <Typography
           variant="h3"
           style={{
-            color: 'hsl(196, 100%, 31%)',
             fontSize: '0.875rem',
             fontWeight: 600,
             textAlign: 'center',
