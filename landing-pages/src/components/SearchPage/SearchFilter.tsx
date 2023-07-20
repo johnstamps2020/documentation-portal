@@ -43,7 +43,7 @@ export default function SearchFilter({
         {serverSearchFilter.values.length})
       </StyledAccordionSummary>
       <StyledAccordionDetails>
-        <Button onClick={() => setSortAlpha(!sortAlpha)}>
+        <Button onClick={() => setSortAlpha(!sortAlpha)} sx={{ p: '6px 0px' }}>
           {sortAlpha ? 'Sort by count' : 'Sort alphabetically'}
         </Button>
         <SearchFilterCheckboxList
