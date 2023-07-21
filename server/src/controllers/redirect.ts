@@ -232,16 +232,6 @@ function removeSlashesFromPath(path: string): string {
   return path.replace(/^\//, '').replace(/\/$/, '');
 }
 
-/** TODO: Check if this simpler function would work
- function sortVersions(a: VersionSelectorProps, b: VersionSelectorProps) {
-  if (a.versions && b.versions) {
-    return a.versions[0].localeCompare(b.versions[0], undefined, {
-      numeric: true,
-      sensitivity: 'base',
-    });
-  }
-}
- **/
 function sortUrlsByVersion(a: string[], b: string[], wildcardIndex: number) {
   const isANumber = !isNaN(parseInt(a[wildcardIndex], 10));
   const isBNumber = !isNaN(parseInt(b[wildcardIndex], 10));
@@ -297,8 +287,6 @@ export async function getLatestVersionUrl(
   return targetUrlExists ? targetUrl : urlWithHighestVersionSegments.join('/');
 }
 
-// FIXME: In master, this function was used in the 404 route. This route was removed and now we have a 404 page in React.
-//  Maybe we should create a middleware to handle resolution of links with latest?
 export async function getRedirectUrl(
   res: Response,
   requestedPath: string | null | undefined
