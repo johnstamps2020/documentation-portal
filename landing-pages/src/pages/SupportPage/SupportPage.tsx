@@ -2,7 +2,7 @@ import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { useLayoutContext } from 'LayoutContext';
-import TemplatePage from 'pages/TemplatePage';
+import ServerMessagePage from 'pages/ServerMessagePage';
 import { useEffect } from 'react';
 
 export default function SupportPage() {
@@ -46,5 +46,5 @@ export default function SupportPage() {
       </Stack>
     </Stack>
   );
-  return <TemplatePage informationToDisplay={informationToDisplay} />;
+  return <ServerMessagePage informationToDisplay={informationToDisplay} />;
 }

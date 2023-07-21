@@ -5,7 +5,7 @@ import { useUserInfo } from 'hooks/useApi';
 import Button from '@mui/material/Button';
 import { useLayoutContext } from '../../LayoutContext';
 import { useEffect } from 'react';
-import TemplatePage from 'pages/TemplatePage';
+import ServerMessagePage from 'pages/ServerMessagePage';
 
 type RestrictedPathProps = {
   restrictedPath: string | null;
@@ -93,7 +93,7 @@ export default function InternalPage() {
 
   return (
     <>
-      <TemplatePage
+      <ServerMessagePage
         informationToDisplay={informationToDisplay}
         backgroundImage="url(/images/internal-page.svg)"
       />

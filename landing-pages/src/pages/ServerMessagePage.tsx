@@ -4,15 +4,15 @@ import Stack from '@mui/material/Stack';
 import { mainHeight } from 'components/Layout/Layout';
 import Container from '@mui/material/Container';
 
-type TemplatePageProps = {
+type ServerMessagePageProps = {
   informationToDisplay: JSX.Element | JSX.Element[];
   backgroundImage?: string;
 };
 
-export default function TemplatePage({
+export default function ServerMessagePage({
   informationToDisplay,
   backgroundImage,
-}: TemplatePageProps) {
+}: ServerMessagePageProps) {
   return (
     <Grid
       container
