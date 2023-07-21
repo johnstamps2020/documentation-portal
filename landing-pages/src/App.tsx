@@ -13,62 +13,78 @@ import InternalPage from 'pages/InternalPage/InternalPage';
 import PageAdminPage from 'pages/PageAdminPage/PageAdminPage';
 import AdminPage from 'pages/AdminPage/AdminPage';
 import PolicyCenterPrototype from 'pages/Prototypes/PolicyCenterPrototype';
+import { LayoutContextProvider } from 'LayoutContext';
+import Layout from 'components/Layout/Layout';
 
 const router = createBrowserRouter([
   {
-    path: '/internal',
-    element: <InternalPage />,
-  },
-  {
-    path: '/forbidden',
-    element: <ForbiddenPage />,
-  },
-  {
-    path: '/404',
-    element: <FourOhFourPage />,
-  },
-  {
-    path: '/admin-panel',
-    element: <AdminPage />,
-  },
-  {
-    path: '/admin-panel/doc',
-    element: <DocAdminPage />,
-  },
-  {
-    path: '/admin-panel/page',
-    element: <PageAdminPage />,
-  },
-  {
-    path: '/search-results',
-    element: <SearchPage />,
-  },
-  {
-    path: '/gw-login',
-    element: <LoginPage />,
-  },
-  {
-    path: '/support',
-    element: <SupportPage />,
-  },
-  {
-    path: '/prototypes/pc',
-    element: <PolicyCenterPrototype />,
-  },
-  {
-    path: '/root-breadcrumbs.json',
-  },
-  {
-    path: '/*',
-    element: <LandingPage />,
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        path: 'internal',
+        element: <InternalPage />,
+      },
+      {
+        path: 'forbidden',
+        element: <ForbiddenPage />,
+      },
+      {
+        path: '404',
+        element: <FourOhFourPage />,
+      },
+      {
+        path: 'admin-panel',
+        element: <AdminPage />,
+      },
+      {
+        path: 'admin-panel/doc',
+        element: <DocAdminPage />,
+      },
+      {
+        path: 'admin-panel/page',
+        element: <PageAdminPage />,
+      },
+      {
+        path: 'search-results',
+        element: <SearchPage />,
+      },
+      {
+        path: 'gw-login',
+        element: <LoginPage />,
+      },
+      {
+        path: 'support',
+        element: <SupportPage />,
+      },
+      {
+        path: 'prototypes/pc',
+        element: <PolicyCenterPrototype />,
+      },
+      {
+        path: 'root-breadcrumbs.json',
+      },
+      {
+        path: '',
+        element: <LandingPage />,
+        children: [
+          {
+            path: '*',
+            element: <LandingPage />,
+          },
+        ],
+      },
+    ],
   },
 ]);
 
 function App() {
   return (
     <ThemeProvider theme={appTheme}>
-      <CssBaseline />
-      <RouterProvider router={router} />
+      <LayoutContextProvider>
+        <CssBaseline />
+        <RouterProvider router={router} />
+      </LayoutContextProvider>
     </ThemeProvider>
   );
 }

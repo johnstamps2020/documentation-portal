@@ -25,36 +25,66 @@
       "icon": "terminal-powershell"
     }
   },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
   "files.readonlyInclude": {
     "**/node_modules/**": true,
-    "**/logs/**": true
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/logs/**": true,
+    "**/static/html5/**": true
   },
   "cSpell.words": [
     "AMST",
     "Aspen",
     "Banff",
+    "Boogalo",
+    "brainshark",
     "brightcove",
     "Businessowners",
     "clsx",
     "Cortina",
     "Creds",
+    "Cyence",
+    "ditabuild",
     "ditavals",
     "Dobson",
     "doctools",
     "Elysian",
-    "Flaine",
+    "fileupload",
+    "flaine",
     "fontsource",
     "Garmisch",
+    "Gosu",
     "Guidewire",
+    "GWCP",
     "Hakuba",
     "IRSA",
     "ISBTF",
+    "justcopybuild",
+    "platformproductversion",
     "redoc",
     "reindex",
     "reindexing",
-    "superbook"
+    "sourcezipbuild",
+    "startable",
+    "superbook",
+    "topicref",
+    "typeorm",
+    "yarnbuild"
+  ],
+  "cSpell.ignorePaths": [
+    "package-lock.json",
+    "package.json",
+    "node_modules",
+    "vscode-extension",
+    ".git/objects",
+    ".vscode",
+    ".vscode-insiders"
   ],
   "cSpell.ignoreRegExpList": [
+    "(docId|pagePath): [\"'][a-zA-Z0-9]+[\"']",
     "\"(id|docId|srcId)\": \"[a-zA-Z0-9]+\"",
     "\"(url|root|filter|targetFolder|gitUrl|zipFilename)\": \"[^\"]+\""
   ]

@@ -133,8 +133,8 @@ function getWhatsNew(flailConfig: FlailConfig): string {
   if (level1Class.match('hakuba')) {
     return `{
       label: 'Hakuba',
-      badge: '',
-      item: { label: 'Learn more', docId: 'whatsnewgarmisch' },
+      badge: hakubaBadge,
+      item: { label: 'Learn more', docId: 'whatsnewhakuba' },
       content: [
         'Content coming soon',
       ],
@@ -203,9 +203,11 @@ function getBackgroundProps(
   if (level1Class.match('hakuba')) {
     return {
       backGroundImports: `import gradientBackgroundImage from 'images/background-gradient.svg';
+      import hakubaBackgroundImage from 'images/background-hakuba.svg';
+      ${isRelease ? `import hakubaBadge from 'images/badge-hakuba.svg';` : ''}
       import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';`,
       backgroundPropValue:
-        '{ ...baseBackgroundProps,backgroundImage: `url(${gradientBackgroundImage})`, }',
+        '{\n...baseBackgroundProps,\nbackgroundImage: {\nxs: `url(${gradientBackgroundImage})`,\nsm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)), \n  url(${hakubaBackgroundImage}), \n  linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,\n},\n}',
     };
   }
 

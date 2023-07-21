@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import Layout, { mainHeight } from 'components/Layout/Layout';
+import { mainHeight } from 'components/Layout/Layout';
 import { lazy, Suspense, useEffect } from 'react';
 import { Theme } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
@@ -7,6 +7,7 @@ import Alert from '@mui/material/Alert';
 import Backdrop from '@mui/material/Backdrop';
 import { usePageData } from 'hooks/usePageData';
 import { LandingPageProps } from './LandingPageTypes';
+import { useLayoutContext } from 'LayoutContext';
 
 type LazyPageComponent = React.LazyExoticComponent<
   React.ComponentType<LandingPageProps>
@@ -15,6 +16,7 @@ type LazyPageComponent = React.LazyExoticComponent<
 export default function LandingPage() {
   const navigate = useNavigate();
   const { pageData, isError, isLoading } = usePageData();
+  const { title, setTitle, setHeaderOptions, setPath } = useLayoutContext();
 
   useEffect(() => {
     const redirectError = isError?.redirect;
@@ -32,6 +34,18 @@ export default function LandingPage() {
     }
   }, [pageData, navigate]);
 
+  useEffect(() => {
+    if (pageData?.title) {
+      setTitle(pageData.title);
+    }
+    if (pageData?.searchFilters) {
+      setHeaderOptions({ searchFilters: pageData.searchFilters || undefined });
+    }
+    if (pageData?.path) {
+      setPath(pageData.path);
+    }
+  }, [pageData, setHeaderOptions, setPath, setTitle]);
+
   if (!pageData) {
     return <></>;
   }
@@ -44,11 +58,7 @@ export default function LandingPage() {
   }) as LazyPageComponent;
 
   return (
-    <Layout
-      title={pageData.title}
-      headerOptions={{ searchFilters: pageData.searchFilters || undefined }}
-      path={pageData.path}
-    >
+    <>
       <>
         {isError && (
           <Alert severity="error" variant="filled">
@@ -61,7 +71,7 @@ export default function LandingPage() {
           <Skeleton variant="rounded" width="100%" height={mainHeight} />
         }
       >
-        <PageComponent title={pageData.title} />
+        <PageComponent title={title} />
       </Suspense>
       <Backdrop
         open={isLoading}
@@ -70,6 +80,6 @@ export default function LandingPage() {
           zIndex: (theme: Theme) => theme.zIndex.drawer + 1,
         }}
       />
-    </Layout>
+    </>
   );
 }
