@@ -228,10 +228,20 @@ async function findMatchingDocs(res: Response, urls: string[]) {
   return [];
 }
 
-function getPathname(url: string): string {
-  return new URL(url).pathname.replace(/^\//, '').replace(/\/$/, '');
+function removeSlashesFromPath(path: string): string {
+  return path.replace(/^\//, '').replace(/\/$/, '');
 }
 
+/** TODO: Check if this simpler function would work
+ function sortVersions(a: VersionSelectorProps, b: VersionSelectorProps) {
+  if (a.versions && b.versions) {
+    return a.versions[0].localeCompare(b.versions[0], undefined, {
+      numeric: true,
+      sensitivity: 'base',
+    });
+  }
+}
+ **/
 function sortUrlsByVersion(a: string[], b: string[], wildcardIndex: number) {
   const isANumber = !isNaN(parseInt(a[wildcardIndex], 10));
   const isBNumber = !isNaN(parseInt(b[wildcardIndex], 10));
@@ -291,36 +301,43 @@ export async function getLatestVersionUrl(
 //  Maybe we should create a middleware to handle resolution of links with latest?
 export async function getRedirectUrl(
   res: Response,
-  originUrl: string | null | undefined
+  requestedPath: string | null | undefined
 ): Promise<ApiResponse> {
   try {
-    if (!originUrl) {
+    if (!requestedPath) {
       return {
         status: 404,
         body: {
-          message: 'Redirect URL not found because the origin URL is empty.',
+          message:
+            'Redirect URL not found because the requested path was not provided.',
         },
       };
     }
-    const originPathname = getPathname(originUrl);
+    const normalizedPath = removeSlashesFromPath(requestedPath);
     for (const urlObj of redirectUrls) {
-      if (urlObj.from === originPathname) {
+      if (urlObj.from === normalizedPath) {
         return {
-          status: 308,
-          body: `/${urlObj.to}`,
+          status: 200,
+          body: {
+            redirectStatusCode: 308,
+            redirectUrl: `/${urlObj.to}`,
+          },
         };
       }
     }
-    if (originUrl.includes('/latest')) {
-      const latestVersionUrl = await getLatestVersionUrl(res, originPathname);
+    if (requestedPath.includes('/latest')) {
+      const latestVersionUrl = await getLatestVersionUrl(res, normalizedPath);
       if (latestVersionUrl) {
         return {
-          status: 307,
-          body: `/${latestVersionUrl}`,
+          status: 200,
+          body: {
+            redirectStatusCode: 307,
+            redirectUrl: `/${latestVersionUrl}`,
+          },
         };
       }
     }
-    const matchingDoc = await getDocByUrl(originPathname);
+    const matchingDoc = await getDocByUrl(normalizedPath);
     if (!matchingDoc) {
       return {
         status: 404,
@@ -337,8 +354,11 @@ export async function getRedirectUrl(
     );
     if (isUserAllowedToAccessResourceResult.status === 200) {
       return {
-        status: 307,
-        body: `/${matchingDoc.url}`,
+        status: 200,
+        body: {
+          redirectStatusCode: 307,
+          redirectUrl: `/${matchingDoc.url}`,
+        },
       };
     }
     return {
