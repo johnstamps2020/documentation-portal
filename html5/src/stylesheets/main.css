@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
-@import 'avatar.css';
-@import 'translatedDocs.css';
-@import 'externalSites.css';
-@import 'guidewireGlossary.css';
-@import 'searchBox.css';
-@import 'highlight.css';
-@import 'internal.css';
-@import 'subjects.css';
-@import 'twoCards.css';
-@import 'twoColumns.css';
-@import 'infoPage.css';
+@import 'modules/avatar.css';
+@import 'modules/translatedDocs.css';
+@import 'modules/externalSites.css';
+@import 'modules/guidewireGlossary.css';
+@import 'modules/searchBox.css';
+@import 'modules/highlight.css';
+@import 'modules/internal.css';
+@import 'modules/subjects.css';
+@import 'modules/twoCards.css';
+@import 'modules/twoColumns.css';
+@import 'modules/infoPage.css';
 
 :root {
   --ff-GW: 'Source Sans Pro', Helvetica, Arial, sans-serif;
@@ -94,14 +94,6 @@ header.header-search {
   align-items: center;
 }
 
-#headerBottom {
-  background-color: pink;
-  width: 100%;
-  text-align: center;
-  line-height: 1.5;
-  font-size: 1.25rem;
-}
-
 #headerButtons {
   display: flex;
   align-items: center;
@@ -164,19 +156,6 @@ main.blue-theme {
 }
 
 @media screen and (min-width: 750px) {
-<<<<<<<< HEAD:html5/src/stylesheets/main.css
-========
-  main.garmisch {
-    background-image: linear-gradient(
-        hsla(200, 6%, 10%, 0.68),
-        hsla(200, 6%, 10%, 0.68)
-      ),
-      url(/images/background-garmisch.svg),
-      linear-gradient(152.93deg, #57709b 7.82%, #1e2b43 86.61%);
-    background-position: bottom right;
-  }
-
->>>>>>>> origin/master-typeorm-prepped:server/public/stylesheets/main.css
   main.flaine {
     background-image: linear-gradient(
         hsla(200, 6%, 10%, 0.68),
@@ -307,11 +286,7 @@ div.items {
   flex-wrap: wrap;
 }
 
-<<<<<<<< HEAD:html5/src/stylesheets/main.css
 .pageControllers a.platformLink {
-========
-a.platformLink {
->>>>>>>> origin/master-typeorm-prepped:server/public/stylesheets/main.css
   font-size: 0.875rem;
   font-weight: 700;
   text-decoration: underline;
@@ -336,13 +311,6 @@ main.skiRelease {
   margin-top: 0.5rem;
 }
 
-<<<<<<<< HEAD:html5/src/stylesheets/main.css
-========
-.skiRelease .pageControllers {
-  padding-top: 0.4rem;
-}
-
->>>>>>>> origin/master-typeorm-prepped:server/public/stylesheets/main.css
 .skiRelease .pageControllers,
 .skiRelease .pageControllers #pageSelector {
   font-size: 0.875rem;
@@ -352,36 +320,17 @@ main.skiRelease {
 
 .skiRelease .pageControllers #pageSelector {
   color: #28333f;
-<<<<<<<< HEAD:html5/src/stylesheets/main.css
   margin-bottom: 1.5rem;
 }
 
 .skiRelease .pageControllers a.platformLink,
-========
-  margin-bottom: 1rem;
-  margin-top: 0.8rem;
-}
-
-.skiRelease a.platformLink,
->>>>>>>> origin/master-typeorm-prepped:server/public/stylesheets/main.css
 .blue-theme .pageControllers a.platformLink {
   color: #fff;
   margin-bottom: 0;
 }
 
-<<<<<<<< HEAD:html5/src/stylesheets/main.css
 .skiRelease .pageControllers .skiReleaseOverview {
   margin-top: 1.5rem;
-========
-.skiRelease a.platformLink {
-  display: block;
-  max-width: var(--content-width);
-  margin: auto;
-}
-
-.skiRelease .pageControllers .skiReleaseOverview {
-  margin-top: 2.2rem;
->>>>>>>> origin/master-typeorm-prepped:server/public/stylesheets/main.css
   width: 300px;
 }
 
@@ -399,7 +348,6 @@ main.skiRelease {
 }
 
 .skiReleaseDesc .skiReleaseDescIntro {
-  color: var(--clr-GW-BLUE);
   font-weight: 600;
   text-align: center;
   margin-bottom: 1rem;
@@ -445,10 +393,6 @@ main.skiRelease {
 .skiRelease .pageBody {
   display: flex;
   column-gap: 56px;
-<<<<<<<< HEAD:html5/src/stylesheets/main.css
-========
-  padding-top: 2rem;
->>>>>>>> origin/master-typeorm-prepped:server/public/stylesheets/main.css
 }
 
 .skiRelease #pageSelector {
@@ -497,17 +441,6 @@ main.skiRelease .sidebar .categoryCard {
   width: 288px;
 }
 
-<<<<<<<< HEAD:html5/src/stylesheets/main.css
-========
-.self-managed .pageIntro {
-  padding: 1rem 1rem 0.5rem 1rem;
-}
-
-.self-managed .pageIntro p {
-  padding-top: 1rem;
-}
-
->>>>>>>> origin/master-typeorm-prepped:server/public/stylesheets/main.css
 .threeCards div.items > .categoryCard {
   width: 300px;
 }
@@ -633,6 +566,73 @@ footer .releaseInfo {
 
 div.pageHero {
   display: block;
+}
+
+#platformToggle {
+  display: inline-flex;
+  color: var(--clr-GW-BLACK);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  box-sizing: border-box;
+}
+
+#platformToggle > .toggleButton {
+  align-items: center;
+  display: flex;
+  height: 32px;
+  width: 150px;
+  cursor: pointer;
+  justify-content: center;
+  box-sizing: border-box;
+  outline-style: none;
+  outline-width: 0;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0 1.25rem;
+  text-decoration: none;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--clr-GW-BLACKISH);
+  background: hsl(0, 0%, 100%);
+  border: var(--clr-GW-HEADER-BORDER) solid 1px;
+  box-shadow: var(--clr-GW-BOXSHADOW) 0 2px 4px 0;
+}
+
+#platformToggle > .toggleButton:not(.selected):hover {
+  background: var(--clr-GW-BLUE-LIGHTEST);
+  box-shadow: var(--clr-GW-BOXSHADOW) 0 2px 4px 0 !important;
+}
+
+#platformToggle > #cloudButton {
+  border-radius: 4px 0 0 4px;
+}
+
+#platformToggle > #selfManagedButton {
+  border-width: 1px 1px 1px 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.featurePreview #platformToggle,
+.l10n #platformToggle,
+.upgradediffs #platformToggle {
+  display: none;
+}
+
+.upgradediffs #platformToggle {
+  display: none;
+}
+
+#platformToggle > .selected {
+  background: var(--clr-GW-BLUE);
+  color: var(--clr-GW-WHITE);
+  border: hsl(198, 75%, 46%) solid 1px;
+  font-weight: 600;
+}
+
+#platformToggle > .selected:hover {
+  outline: none;
+  box-shadow: 0 0 0 2px hsla(198, 75%, 46%, 0.4) !important;
 }
 
 .button {
@@ -944,7 +944,7 @@ main.support h2 {
 }
 
 .docBreadcrumb {
-  margin: 0.5rem 0;
+  padding: 0.5rem 0;
   height: 2.25rem;
 }
 

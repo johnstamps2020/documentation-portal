@@ -10,7 +10,7 @@
   color: transparent;
   width: 22px;
   height: 22px;
-  background-image: url(book-solid.svg);
+  background-image: url(../../images/book-solid.svg);
   background-repeat: no-repeat;
   background-size: 20px 20px;
   float: left;
@@ -18,46 +18,46 @@
 
 .featuresAndFunctionality::before,
 .featuresandfunctionality::before {
-  background-image: url(object-group-regular.svg);
+  background-image: url(../../images/object-group-regular.svg);
 }
 
 .installation::before {
-  background-image: url(wrench-solid.svg);
+  background-image: url(../../images/wrench-solid.svg);
 }
 
 .releaseNotes::before,
 .releasenotes::before {
-  background-image: url(file-alt-regular.svg);
+  background-image: url(../../images/file-alt-regular.svg);
 }
 
 .administration::before {
-  background-image: url(users-cog-solid.svg);
+  background-image: url(../../images/users-cog-solid.svg);
 }
 
 .development::before {
-  background-image: url(code-solid.svg);
+  background-image: url(../../images/code-solid.svg);
 }
 
 .integration::before {
-  background-image: url(puzzle-piece-solid.svg);
+  background-image: url(../../images/puzzle-piece-solid.svg);
 }
 
 .configuration::before {
-  background-image: url(cogs-solid.svg);
+  background-image: url(../../images/cogs-solid.svg);
 }
 
 .bestPractices::before,
 .bestpractices::before {
-  background-image: url(lightbulb-regular.svg);
+  background-image: url(../../images/lightbulb-regular.svg);
 }
 
 .glossary::before {
-  background-image: url(book-open-solid.svg);
+  background-image: url(../../images/book-open-solid.svg);
 }
 
 .aboutThisDocumentation::before,
 .aboutthisdocumentation::before {
-  background-image: url(book-solid.svg);
+  background-image: url(../../images/book-solid.svg);
 }
 
 .subject .label {
