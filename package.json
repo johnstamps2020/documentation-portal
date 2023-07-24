@@ -1,5 +1,9 @@
 {
   "name": "documentation-portal-monorepo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "ssh://git@stash.guidewire.com/doctools/server.git",
+  "author": "Doc Tools <doctools@guidewire.com>",
   "license": "UNLICENSED",
   "private": true,
   "packageManager": "yarn@3.4.1",
@@ -41,10 +45,6 @@
     "scripts:migrate-pages": "yarn workspace scripts migrate-pages && yarn prettier",
     "profile:html5": "yarn build:theme && yarn workspace html5 profile"
   },
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "ssh://git@stash.guidewire.com/doctools/server.git",
-  "author": "Doc Tools <doctools@guidewire.com>",
   "resolutions": {
     "minimist": "^1.2.6",
     "html-select": "2.3.24",
