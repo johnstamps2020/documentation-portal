@@ -12,8 +12,7 @@
     "docusaurus/themes/gw-theme-classic",
     "docusaurus/vite-project",
     "html5",
-    "scripts",
-    "server"
+    "scripts"
   ],
   "scripts": {
     "audit:all": "yarn npm audit --all --severity high --recursive --exclude @doctools/gw-theme-classic",
