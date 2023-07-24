@@ -5,25 +5,36 @@ import useSWR from 'swr';
 export class PageError {
   status: number;
   message: string;
-  redirectUrl?: string;
+  redirect?: Redirect;
 
-  constructor(status: number, message: string, redirectUrl?: string) {
+  constructor(status: number, message: string, redirect?: Redirect) {
     this.status = status;
     this.message = message;
-    this.redirectUrl = redirectUrl;
+    this.redirect = redirect;
   }
 }
 
-function getRedirectUrl(requestedPath: string, status: number) {
+class Redirect {
+  type: string;
+  url: string;
+
+  constructor(type: 'external' | 'internal', url: string) {
+    this.type = type;
+    this.url = url;
+  }
+}
+
+function getRedirectUrl(
+  requestedPath: string,
+  status: number
+): Redirect | undefined {
   switch (status) {
     case 401:
-      return `/gw-login?redirectTo=${requestedPath}`;
+      return new Redirect('internal', `/gw-login?redirectTo=${requestedPath}`);
     case 403:
-      return `/internal?restricted=${requestedPath}`;
-    case 404:
-      return `/404?notFound=${requestedPath}`;
-    case 406:
-      return `/404?notFound=${requestedPath}`;
+      return new Redirect('internal', `/internal?restricted=${requestedPath}`);
+    case 404 || 406:
+      return new Redirect('external', `/redirect?cameFrom=${requestedPath}`);
     default:
       break;
   }
@@ -35,11 +46,8 @@ const pageGetter = async (pagePath: string) => {
   const { status } = response;
   const jsonData = await response.json();
   if (!response.ok) {
-    throw new PageError(
-      status,
-      jsonData.message,
-      getRedirectUrl(requestedPath, status)
-    );
+    const redirectUrl = getRedirectUrl(requestedPath, status);
+    throw new PageError(status, jsonData.message, redirectUrl);
   }
 
   if (jsonData.path !== pagePath) {

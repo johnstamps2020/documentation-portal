@@ -19,7 +19,10 @@ function arrayMoveToTop(arr: VersionSelectorProps[], phrase: string) {
 
 function sortVersions(a: VersionSelectorProps, b: VersionSelectorProps) {
   if (a.versions && b.versions) {
-    return a.versions[0] > b.versions[0] ? -1 : 1;
+    return a.versions[0].localeCompare(b.versions[0], undefined, {
+      numeric: true,
+      sensitivity: 'base',
+    });
   }
 }
 
@@ -54,7 +57,7 @@ function VersionSelector() {
     window.location.href = targetUrl;
   }
 
-  availableVersions.sort(sortVersions);
+  availableVersions.sort(sortVersions).reverse();
   arrayMoveToTop(availableVersions, 'next');
 
   const selectedVersion = availableVersions.find((v) => v.currentlySelected);

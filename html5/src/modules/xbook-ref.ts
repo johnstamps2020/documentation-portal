@@ -72,7 +72,7 @@ async function findDocLink(
           }
 
           if (topicTitle) {
-            if (document.documentElement.lang.toLowerCase() === 'en-us') {
+            if (document.documentElement.lang.toLowerCase().startsWith('en')) {
               link.setAttribute('title', `"${topicTitle}" in ${docTitle}`);
             } else {
               link.setAttribute('title', topicTitle);

@@ -24,7 +24,7 @@ function getJiraDescription(descriptionText) {
       content: [
         {
           type: 'text',
-          text: value,
+          text: value || 'empty',
         },
       ],
     },
@@ -49,6 +49,9 @@ async function sendJiraRequest(requestBody) {
           type: 'doc',
           version: 1,
           content: description,
+        },
+        priority: {
+          name: 'Unknown',
         },
         issuetype: {
           name: 'Action Item',
@@ -87,6 +90,7 @@ async function sendJiraRequest(requestBody) {
           BODY: ${JSON.stringify(requestBody)}
           ERROR: ${err}`
     );
+    return `[Error in Jira controller] ${err}`;
   }
 }
 

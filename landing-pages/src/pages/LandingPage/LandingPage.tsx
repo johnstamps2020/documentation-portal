@@ -19,8 +19,12 @@ export default function LandingPage() {
   const { title, setTitle, setHeaderOptions, setPath } = useLayoutContext();
 
   useEffect(() => {
-    if (isError?.redirectUrl) {
-      navigate(isError.redirectUrl);
+    const redirectError = isError?.redirect;
+    if (redirectError) {
+      const redirectUrl = redirectError.url;
+      if (redirectError.type === 'internal') navigate(redirectUrl);
+      if (redirectError.type === 'external')
+        window.location.replace(redirectUrl);
     }
   }, [isError, navigate]);
 

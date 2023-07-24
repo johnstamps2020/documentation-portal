@@ -51,14 +51,15 @@ to make changes to Keti. Make sure you commit your changes to this repository.
 
 To build the webpack bundle, run:
 
-```
-yarn build-html5-dependencies
+```bash
+// in the root folder
+yarn build:html5
 ```
 
-To develop the HTML5 plugin, run:
+To develop the HTML5 plugin, in the root folder run:
 
 ```
-yarn html5-watch
+yarn dev:html5
 ```
 
 ## Local preview of webhelp
@@ -66,20 +67,18 @@ yarn html5-watch
 1. Put a webhelp in a folder somewhere.
 1. Run this command to serve the folder on localhost:5000:
    ```
-   npx serve ./
+   npx serve .
    ```
 1. Add this you your server `.env`:
    ```
    DOC_S3_URL=http://localhost:5000/
    ```
-1. In a separate terminal, run the Webpack watch script:
+1. In a separate terminal, run the Webpack dev script:
    ```
-   cd server
-   yarn html5-watch
+   yarn dev:html5
    ```
 1. In a separate terminal, run the server:
    ```
-   cd server
-   yarn start:dev
+   yarn dev:server
    ```
 1. Go to `http://localhost:8081/something.html` to preview your webhelp
