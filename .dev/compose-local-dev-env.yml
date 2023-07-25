@@ -6,6 +6,9 @@ services:
     image: artifactory.guidewire.com/hub-docker-remote/node:16.14.2
     container_name: server
     restart: always
+    environment:
+      - NODE_ENV=development
+      - NPM_AUTH_TOKEN=${NPM_AUTH_TOKEN}
     ports:
       - "8081:8081"
     volumes:
@@ -20,6 +23,9 @@ services:
     image: artifactory.guidewire.com/hub-docker-remote/node:16.14.2
     container_name: landing-pages
     restart: always
+    environment:
+      - NODE_ENV=development
+      - NPM_AUTH_TOKEN=${NPM_AUTH_TOKEN}
     ports:
       - "6006:6006"
     volumes:
