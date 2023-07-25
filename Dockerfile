@@ -8,6 +8,7 @@ ARG POD_NAME
 ARG DEPLOY_ENV
 ARG TARGET_URL
 ARG BASE_URL
+ARG NPM_AUTH_TOKEN
 
 COPY .yarn .yarn
 COPY .yarnrc.yml .yarnrc.yml
