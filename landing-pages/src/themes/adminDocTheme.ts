@@ -12,8 +12,8 @@ export const adminDocTheme = createTheme({
     error: {
       main: red[200],
     },
-    paleBlue: {
-      main: '#d3dded',
+    paleBackground: {
+      main: '#e1e6eC',
       contrastText: '#131e2e',
     },
     darkBlue: {

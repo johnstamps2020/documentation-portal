@@ -22,7 +22,7 @@ export default function ApplicationLinkList(props: TabPanelProps): JSX.Element {
       {...other}
     >
       <Container>
-        <Grid container spacing={4} sx={{ pt: '54px' }}>
+        <Grid container spacing={4} sx={{ pt: '68px' }}>
           {items.map((item, index) => (
             <Grid xs={12} sm={6} md={4} key={index}>
               <Typography

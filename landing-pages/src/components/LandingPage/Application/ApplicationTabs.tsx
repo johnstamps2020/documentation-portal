@@ -37,12 +37,17 @@ export default function ApplicationTabs({ tabs }: ApplicationTabsProps) {
 
   const triangleSize = 15;
 
+  const tabHeight = '42px';
+
   return (
     <Box sx={{ width: '100%' }}>
       <Box
         sx={{
           borderBottom: 1,
           borderColor: 'divider',
+          '.MuiTabs-root': {
+            minHeight: tabHeight,
+          },
         }}
       >
         <Tabs
@@ -51,14 +56,12 @@ export default function ApplicationTabs({ tabs }: ApplicationTabsProps) {
           aria-label="Available docs"
           TabIndicatorProps={{
             sx: {
-              '&.MuiTabs-indicator': {
-                backgroundColor: 'transparent',
-                ':after': {
-                  content: `url("${indicator}")`,
-                  position: 'absolute',
-                  left: `calc(50% - ${triangleSize}px)`,
-                  bottom: -25,
-                },
+              backgroundColor: 'transparent',
+              ':after': {
+                content: `url("${indicator}")`,
+                position: 'absolute',
+                left: `calc(50% - ${triangleSize}px)`,
+                bottom: -30,
               },
             },
           }}
@@ -73,20 +76,30 @@ export default function ApplicationTabs({ tabs }: ApplicationTabsProps) {
               iconPosition="start"
               disableRipple
               sx={{
-                height: '49px',
+                minHeight: tabHeight,
+                height: tabHeight,
+                minWidth: '180px',
                 fontSize: 21,
-                fontWeight: 600,
+                fontWeight: 400,
                 px: 2,
-                backgroundColor: 'paleBlue.main',
-                color: 'paleBlue.contrastText',
+                backgroundColor: 'paleBackground.main',
+                color: 'paleBackground.contrastText',
                 textTransform: 'none',
-                border: 0.5,
-                borderColor: 'divider',
-                mx: 0.25,
+                mx: '3px',
                 gap: 1,
+                borderTopLeftRadius: '10px',
+                borderTopRightRadius: '10px',
+                alignSelf: 'flex-end',
                 '&.Mui-selected': {
-                  color: 'darkBlue.contrastText',
-                  backgroundColor: 'darkBlue.main',
+                  color: 'primary.contrastText',
+                  backgroundColor: 'primary.main',
+                  border: 'solid',
+                  borderWidth: '0.5px',
+                  borderColor: '#385583',
+                  minWidth: '188px',
+                  minHeight: '47px',
+                  fontSize: '24px',
+                  fontWeight: 600,
                 },
               }}
             />

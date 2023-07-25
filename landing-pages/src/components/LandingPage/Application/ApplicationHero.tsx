@@ -5,8 +5,17 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 import { heroImageSource } from './heroImage';
+import { useLayoutContext } from 'LayoutContext';
+import { useEffect } from 'react';
 
 export default function ApplicationHero() {
+  const { setTitle } = useLayoutContext();
+  const title = 'Guidewire InsuranceSuite PolicyCenter';
+
+  useEffect(() => {
+    setTitle(title);
+  }, [setTitle]);
+
   return (
     <Box
       sx={{
@@ -35,7 +44,7 @@ export default function ApplicationHero() {
           <Grid sx={{ maxWidth: '466px' }}>
             <Stack gap={3}>
               <Typography variant="h1" sx={{ lineHeight: 1.4, fontSize: 30 }}>
-                Guidewire InsuranceSuite PolicyCenter
+                {title}
               </Typography>
               <Box sx={{ pb: '60px' }}>
                 <Button
