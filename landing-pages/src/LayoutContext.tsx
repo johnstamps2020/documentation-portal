@@ -50,6 +50,6 @@ export function useLayoutContext() {
       'useLayoutContext must be used within LayoutContextProvider'
     );
   }
-  console.log(value);
+
   return value;
 }

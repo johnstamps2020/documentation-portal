@@ -3,12 +3,12 @@ import '@fontsource/source-sans-pro';
 
 declare module '@mui/material/styles' {
   interface Palette {
-    paleBlue: Palette['primary'];
+    paleBackground: Palette['primary'];
     darkBlue: Palette['primary'];
   }
 
   interface PaletteOptions {
-    paleBlue: PaletteOptions['primary'];
+    paleBackground: PaletteOptions['primary'];
     darkBlue: PaletteOptions['primary'];
   }
 
@@ -38,8 +38,8 @@ export const appTheme = createTheme({
     secondary: {
       main: '#3c4c5e',
     },
-    paleBlue: {
-      main: '#d3dded',
+    paleBackground: {
+      main: '#e1e6eC',
       contrastText: '#131e2e',
     },
     darkBlue: {
