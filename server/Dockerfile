@@ -1,4 +1,4 @@
-FROM artifactory.guidewire.com/hub-docker-remote/node:16.0-alpine as app-builder
+FROM artifactory.guidewire.com/hub-docker-remote/node:16.16.0-alpine as app-builder
 
 WORKDIR /usr/app
 
@@ -12,7 +12,7 @@ RUN yarn
 RUN yarn build
 RUN mkdir dist/static
 
-FROM artifactory.guidewire.com/hub-docker-remote/node:16.0-alpine
+FROM artifactory.guidewire.com/hub-docker-remote/node:16.16.0-alpine
 
 WORKDIR /usr/app
 
