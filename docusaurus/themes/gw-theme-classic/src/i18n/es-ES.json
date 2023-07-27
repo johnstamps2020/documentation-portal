@@ -1,114 +1,114 @@
 {
   "docHighlighter.label": {
-    "message": "toggle highlights",
+    "message": "activar y desactivar destacados",
     "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off."
   },
   "anonymous.positive": {
-    "message": "You are anonymous,",
+    "message": "Es un usuario anónimo,",
     "description": "Tells the user their identity is not revealed to us"
   },
   "anonymous.shareEmail": {
-    "message": "click here to share your email with us",
+    "message": "haga clic aquí para compartir su correo electrónico con nosotros",
     "description": "The button which the user can click to reveal their email to us"
   },
   "anonymous.enterEmail": {
-    "message": "Enter your email address,",
+    "message": "Introduzca su dirección de correo electrónico,",
     "description": "Asks the user to type in their email address"
   },
   "anonymous.becomeAnonymous": {
-    "message": "click here to be anonymous"
+    "message": "haga clic aquí para ser un usuario anónimo"
   },
   "privacy.warning": {
-    "message": "By providing your e-mail address, you consent to being contacted by Guidewire."
+    "message": "Al proporcionar su dirección de correo electrónico, acepta que Guidewire se ponga en contacto con usted."
   },
   "privacy.link": {
-    "message": "Guidewire's Privacy Policy can be found here."
+    "message": "Puede consultar la Política de privacidad de Guidewire aquí."
   },
   "rightWrong.positiveTitle": {
-    "message": "Do"
+    "message": "Sí"
   },
   "theme.rightWrong.negativeTitle": {
-    "message": "Don't"
+    "message": "No"
   },
   "anonymous.youAreSharing": {
-    "message": "You are sharing your email with us,",
+    "message": "Está compartiendo su correo electrónico con nosotros,",
     "description": "Tells the user that we know their email. When they send this comment, they will send their email to us."
   },
   "feedback.helpful": {
-    "message": "Was this page helpful?"
+    "message": "¿Le ha resultado útil esta página?"
   },
   "feedback.thumbsUp": {
-    "message": "This page was helpful",
+    "message": "Esta página me ha resultado útil",
     "description": "The description of the \"thumbs up\" icon which the user can click to share positive feedback"
   },
   "feedback.thumbsDown": {
-    "message": "This page needs improvement",
+    "message": "Esta página necesita mejoras",
     "description": "The description of the \"thumbs thumbs\" icon which the user can click to share constructive feedback"
   },
   "feedbackDialog.thanks": {
-    "message": "Thank you!",
+    "message": "¡Gracias!",
     "description": "Appears ot thank the user for their feedback"
   },
   "feedbackDialog.followUp": {
-    "message": "A member of our documentation team will review your feedback. If you included your email address, we might contact you if we need more information.",
+    "message": "Un miembro de nuestro equipo de documentación revisará sus comentarios. Si ha incluido su dirección de correo electrónico, es posible que nos pongamos en contacto con usted si necesitamos más información.",
     "description": "Explains how the support team will react to user feedback"
   },
   "feedbackDialog.anythingElse": {
-    "message": "Thanks, we have recorded your vote. Do you have anything else to tell us?",
+    "message": "Gracias, hemos registrado su voto. ¿Quiere contarnos algo más?",
     "description": "Appears above the feedback form"
   },
   "feedbackDialog.comment": {
-    "message": "Your comment"
+    "message": "Su comentario"
   },
   "feedbackDialog.email": {
-    "message": "Your email"
+    "message": "Su correo electrónico"
   },
   "feedbackDialog.clearEmail": {
-    "message": "Clear email"
+    "message": "Borrar correo electrónico"
   },
   "feedbackDialog.validEmail": {
-    "message": "Provide a valid email address",
+    "message": "Proporcione una dirección de correo electrónico válida",
     "description": "Appears under the email field asking the user to provide an email address which contains all the elements of an email address, such as the @ symbol and a domain"
   },
   "feedbackDialog.cancel": {
-    "message": "Cancel",
+    "message": "Cancelar",
     "description": "Cancel and do not send your feedback"
   },
   "feedbackDialog.submit": {
-    "message": "Submit",
+    "message": "Enviar",
     "description": "Send your feedback, submit your feedback to us"
   },
   "internal.employeesOnly": {
-    "message": "This content is available to Guidewire employees only"
+    "message": "Este contenido solo está disponible para empleados de Guidewire"
   },
   "internal.noAccess": {
-    "message": "You are logged in as {name} ({email}) and you do not have access."
+    "message": "Ha iniciado sesión como {name} ({email}) y no tiene acceso."
   },
   "internal.info.toView": {
-    "message": "To view this page, you must log in with your Guidewire employee account. If you need further help, please contact your Guidewire representative."
+    "message": "Para ver esta página, debe iniciar sesión con su cuenta de empleado de Guidewire. Si necesita más ayuda, póngase en contacto con su representante de Guidewire."
   },
   "internal.label": {
-    "message": "This content is internal and available to Guidewire employees only."
+    "message": "Este contenido es interno y solo está disponible para empleados de Guidewire."
   },
   "loginButton.out": {
-    "message": "Log out"
+    "message": "Cerrar sesión"
   },
   "loginButton.in": {
-    "message": "Log in"
+    "message": "Iniciar sesión"
   },
   "transcriptDownloadLink.label": {
-    "message": "Download transcript"
+    "message": "Descargar la transcripción"
   },
   "theme.common.skipToMainContent": {
-    "message": "Skip to main content",
+    "message": "Saltar al contenido principal",
     "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
   },
   "theme.tags.tagsPageTitle": {
-    "message": "Tags",
+    "message": "Etiquetas",
     "description": "The title of the tag list page"
   },
   "gwSearchForm.placeholder": {
-    "message": "Search",
+    "message": "Buscar",
     "description": "Text which appears in the search box, placeholder"
   },
   "miniToc.heading": {
@@ -116,11 +116,11 @@
     "description": "Appears at the top of a list of links heading which the user can see on the page. Each item on the list is a link."
   },
   "collapsible.title": {
-    "message": "Expand",
+    "message": "Expandir",
     "description": "Describes an accordion that contains \"more content\" or \"additional information\""
   },
   "footer.published": {
-    "message": "Published:",
+    "message": "Publicado:",
     "description": "Text preceding the date on which the page was published"
   }
 }

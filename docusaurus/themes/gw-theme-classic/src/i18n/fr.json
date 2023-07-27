@@ -1,0 +1,126 @@
+{
+  "docHighlighter.label": {
+    "message": "basculer les surbrillances",
+    "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off."
+  },
+  "anonymous.positive": {
+    "message": "Vous êtes anonyme,",
+    "description": "Tells the user their identity is not revealed to us"
+  },
+  "anonymous.shareEmail": {
+    "message": "cliquez ici pour partager votre adresse e-mail avec nous.",
+    "description": "The button which the user can click to reveal their email to us"
+  },
+  "anonymous.enterEmail": {
+    "message": "Saisissez votre adresse e-mail,",
+    "description": "Asks the user to type in their email address"
+  },
+  "anonymous.becomeAnonymous": {
+    "message": "cliquez ici pour être anonyme"
+  },
+  "privacy.warning": {
+    "message": "En fournissant votre adresse e-mail, vous acceptez d'être contacté par Guidewire."
+  },
+  "privacy.link": {
+    "message": "La politique de confidentialité de Guidewire est disponible ici."
+  },
+  "rightWrong.positiveTitle": {
+    "message": "Faire"
+  },
+  "theme.rightWrong.negativeTitle": {
+    "message": "Ne pas faire"
+  },
+  "anonymous.youAreSharing": {
+    "message": "Vous partagez votre adresse e-mail avec nous,",
+    "description": "Tells the user that we know their email. When they send this comment, they will send their email to us."
+  },
+  "feedback.helpful": {
+    "message": "Cette page a-t-elle été utile ?"
+  },
+  "feedback.thumbsUp": {
+    "message": "Cette page a été utile",
+    "description": "The description of the \"thumbs up\" icon which the user can click to share positive feedback"
+  },
+  "feedback.thumbsDown": {
+    "message": "Cette page doit être améliorée",
+    "description": "The description of the \"thumbs thumbs\" icon which the user can click to share constructive feedback"
+  },
+  "feedbackDialog.thanks": {
+    "message": "Merci !",
+    "description": "Appears ot thank the user for their feedback"
+  },
+  "feedbackDialog.followUp": {
+    "message": "Un membre de notre équipe de documentation examinera vos commentaires. Si vous avez inclus votre adresse e-mail, nous vous contacterons peut-être si nous avons besoin de plus d'informations.",
+    "description": "Explains how the support team will react to user feedback"
+  },
+  "feedbackDialog.anythingElse": {
+    "message": "Merci, nous avons enregistré votre vote. Avez-vous autre chose à nous dire ?",
+    "description": "Appears above the feedback form"
+  },
+  "feedbackDialog.comment": {
+    "message": "Votre commentaire"
+  },
+  "feedbackDialog.email": {
+    "message": "Votre e-mail"
+  },
+  "feedbackDialog.clearEmail": {
+    "message": "Effacer l'e-mail"
+  },
+  "feedbackDialog.validEmail": {
+    "message": "Indiquer une adresse e-mail valide",
+    "description": "Appears under the email field asking the user to provide an email address which contains all the elements of an email address, such as the @ symbol and a domain"
+  },
+  "feedbackDialog.cancel": {
+    "message": "Annuler",
+    "description": "Cancel and do not send your feedback"
+  },
+  "feedbackDialog.submit": {
+    "message": "Soumettre",
+    "description": "Send your feedback, submit your feedback to us"
+  },
+  "internal.employeesOnly": {
+    "message": "Ce contenu est uniquement disponible pour les employés Guidewire"
+  },
+  "internal.noAccess": {
+    "message": "Vous êtes connecté en tant que {name} ({email}) et vous n'avez pas accès à ce contenu."
+  },
+  "internal.info.toView": {
+    "message": "Pour afficher cette page, vous devez vous connecter avec votre compte employé Guidewire. Si vous avez besoin d'aide, contactez votre représentant Guidewire."
+  },
+  "internal.label": {
+    "message": "Ce contenu est uniquement disponible pour les employés Guidewire en interne."
+  },
+  "loginButton.out": {
+    "message": "Déconnexion"
+  },
+  "loginButton.in": {
+    "message": "Connexion"
+  },
+  "transcriptDownloadLink.label": {
+    "message": "Télécharger la transcription"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Passer au contenu principal",
+    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "Balises",
+    "description": "The title of the tag list page"
+  },
+  "gwSearchForm.placeholder": {
+    "message": "Rechercher",
+    "description": "Text which appears in the search box, placeholder"
+  },
+  "miniToc.heading": {
+    "message": "Sur cette page",
+    "description": "Appears at the top of a list of links heading which the user can see on the page. Each item on the list is a link."
+  },
+  "collapsible.title": {
+    "message": "Agrandir",
+    "description": "Describes an accordion that contains \"more content\" or \"additional information\""
+  },
+  "footer.published": {
+    "message": "Publié :",
+    "description": "Text preceding the date on which the page was published"
+  }
+}

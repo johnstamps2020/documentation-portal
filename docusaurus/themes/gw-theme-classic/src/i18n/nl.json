@@ -1,0 +1,126 @@
+{
+  "docHighlighter.label": {
+    "message": "highlights inschakelen",
+    "description": "If the user opens the page from the search window, the search words are highlighted. This button turns the highlights on and off."
+  },
+  "anonymous.positive": {
+    "message": "U bent anoniem,",
+    "description": "Tells the user their identity is not revealed to us"
+  },
+  "anonymous.shareEmail": {
+    "message": "klik hier om uw e-mail met ons te delen",
+    "description": "The button which the user can click to reveal their email to us"
+  },
+  "anonymous.enterEmail": {
+    "message": "Voer uw e-mailadres in,",
+    "description": "Asks the user to type in their email address"
+  },
+  "anonymous.becomeAnonymous": {
+    "message": "klik hier om anoniem te zijn"
+  },
+  "privacy.warning": {
+    "message": "Door uw e-mailadres op te geven, stemt u ermee in dat Guidewire contact met u opneemt."
+  },
+  "privacy.link": {
+    "message": "Het privacybeleid van Guidewire vindt u hier."
+  },
+  "rightWrong.positiveTitle": {
+    "message": "Doen"
+  },
+  "theme.rightWrong.negativeTitle": {
+    "message": "Niet doen"
+  },
+  "anonymous.youAreSharing": {
+    "message": "U deelt uw e-mail met ons,",
+    "description": "Tells the user that we know their email. When they send this comment, they will send their email to us."
+  },
+  "feedback.helpful": {
+    "message": "Was deze pagina nuttig?"
+  },
+  "feedback.thumbsUp": {
+    "message": "Deze pagina was nuttig",
+    "description": "The description of the \"thumbs up\" icon which the user can click to share positive feedback"
+  },
+  "feedback.thumbsDown": {
+    "message": "Deze pagina moet worden verbeterd",
+    "description": "The description of the \"thumbs thumbs\" icon which the user can click to share constructive feedback"
+  },
+  "feedbackDialog.thanks": {
+    "message": "Bedankt!",
+    "description": "Appears ot thank the user for their feedback"
+  },
+  "feedbackDialog.followUp": {
+    "message": "Een lid van ons documentatieteam zal uw feedback bekijken. Als u uw e-mailadres heeft vermeld, kunnen we contact met u opnemen als we meer informatie nodig hebben.",
+    "description": "Explains how the support team will react to user feedback"
+  },
+  "feedbackDialog.anythingElse": {
+    "message": "Bedankt, we hebben uw stem geregistreerd. Heeft u ons verder nog iets te vertellen?",
+    "description": "Appears above the feedback form"
+  },
+  "feedbackDialog.comment": {
+    "message": "Uw opmerking"
+  },
+  "feedbackDialog.email": {
+    "message": "Uw e-mail"
+  },
+  "feedbackDialog.clearEmail": {
+    "message": "E-mail wissen"
+  },
+  "feedbackDialog.validEmail": {
+    "message": "Geef een geldig e-mailadres op",
+    "description": "Appears under the email field asking the user to provide an email address which contains all the elements of an email address, such as the @ symbol and a domain"
+  },
+  "feedbackDialog.cancel": {
+    "message": "Annuleren",
+    "description": "Cancel and do not send your feedback"
+  },
+  "feedbackDialog.submit": {
+    "message": "Indienen",
+    "description": "Send your feedback, submit your feedback to us"
+  },
+  "internal.employeesOnly": {
+    "message": "Deze inhoud is alleen beschikbaar voor werknemers van Guidewire"
+  },
+  "internal.noAccess": {
+    "message": "U bent ingelogd als {naam} ({email}) en u heeft geen toegang."
+  },
+  "internal.info.toView": {
+    "message": "Om deze pagina te bekijken, moet u inloggen met uw Guidewire-werknemersaccount. Als u meer hulp nodig hebt, neem dan contact op met uw Guidewire-vertegenwoordiger."
+  },
+  "internal.label": {
+    "message": "Deze inhoud is alleen intern beschikbaar voor werknemers van Guidewire"
+  },
+  "loginButton.out": {
+    "message": "Afmelden"
+  },
+  "loginButton.in": {
+    "message": "Aanmelden"
+  },
+  "transcriptDownloadLink.label": {
+    "message": "Transcript downloaden"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Doorgaan naar hoofdinhoud",
+    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "Tags",
+    "description": "The title of the tag list page"
+  },
+  "gwSearchForm.placeholder": {
+    "message": "Zoeken",
+    "description": "Text which appears in the search box, placeholder"
+  },
+  "miniToc.heading": {
+    "message": "Op deze pagina",
+    "description": "Appears at the top of a list of links heading which the user can see on the page. Each item on the list is a link."
+  },
+  "collapsible.title": {
+    "message": "Uitvouwen",
+    "description": "Describes an accordion that contains \"more content\" or \"additional information\""
+  },
+  "footer.published": {
+    "message": "Gepubliceerd:",
+    "description": "Text preceding the date on which the page was published"
+  }
+}
