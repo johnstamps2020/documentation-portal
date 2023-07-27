@@ -16,6 +16,8 @@ import LandingPageSelector, {
   LandingPageSelectorProps,
 } from 'components/LandingPage/LandingPageSelector';
 import EditPagePropsButton from '../EditPagePropsButton';
+import ErrorPage from 'pages/ErrorPage/ErrorPage';
+import { ErrorBoundary } from 'react-error-boundary';
 
 export type CategoryLayoutProps = LandingPageLayoutProps & {
   cards: CategoryCardProps[];
@@ -39,80 +41,87 @@ export default function CategoryLayout({
   }
 
   return (
-    <Grid
-      sx={{ ...backgroundProps }}
-      container
-      flexDirection="column"
-      margin="auto"
-      padding="0 20px 64px 20px"
-      gap={5}
-      alignContent="center"
-    >
-      <EditPagePropsButton pagePath={pageData.path} />
-      <Grid gap="2rem">
-        <Stack spacing={1} direction="column" width="100%">
-          {(isRelease || pageData.path === 'selfManagedProducts') && (
-            <SelfManagedLink
-              pagePath={pageData.path}
-              backgroundImage={backgroundProps.backgroundImage}
-            />
-          )}
-          <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
-            <Breadcrumbs />
-          </Container>
-          <Typography
-            variant="h1"
-            sx={
-              backgroundProps.backgroundImage
-                ? { color: 'white' }
-                : { color: 'black' }
-            }
-          >
-            {pageData.title}
-          </Typography>
-          {description}
-          {isRelease && !selector && <ReleaseSelector />}
-          {selector && <LandingPageSelector {...selector} />}
-        </Stack>
-        {pageData.path.includes('cloudProducts/elysian') && (
-          <Paper
-            sx={{
-              maxWidth: { md: '932px', sm: '100%' },
-              marginTop: '32px',
-              padding: '16px',
-              textAlign: 'center',
-            }}
-          >
-            <Link
-              component={RouterLink}
-              to="/cloudProducts/elysian/whatsnew"
+    <>
+      <ErrorBoundary
+        FallbackComponent={ErrorPage}
+        onError={() => console.error()}
+      >
+        <Grid
+          sx={{ ...backgroundProps }}
+          container
+          flexDirection="column"
+          margin="auto"
+          padding="0 20px 64px 20px"
+          gap={5}
+          alignContent="center"
+        >
+          <EditPagePropsButton pagePath={pageData.path} />
+          <Grid gap="2rem">
+            <Stack spacing={1} direction="column" width="100%">
+              {(isRelease || pageData.path === 'selfManagedProducts') && (
+                <SelfManagedLink
+                  pagePath={pageData.path}
+                  backgroundImage={backgroundProps.backgroundImage}
+                />
+              )}
+              <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
+                <Breadcrumbs />
+              </Container>
+              <Typography
+                variant="h1"
+                sx={
+                  backgroundProps.backgroundImage
+                    ? { color: 'white' }
+                    : { color: 'black' }
+                }
+              >
+                {pageData.title}
+              </Typography>
+              {description}
+              {isRelease && !selector && <ReleaseSelector />}
+              {selector && <LandingPageSelector {...selector} />}
+            </Stack>
+            {pageData.path.includes('cloudProducts/elysian') && (
+              <Paper
+                sx={{
+                  maxWidth: { md: '932px', sm: '100%' },
+                  marginTop: '32px',
+                  padding: '16px',
+                  textAlign: 'center',
+                }}
+              >
+                <Link
+                  component={RouterLink}
+                  to="/cloudProducts/elysian/whatsnew"
+                  sx={{
+                    fontSize: '1.2rem',
+                    fontWeight: 600,
+                    color: 'hsl(196, 100%, 31%);',
+                  }}
+                >
+                  What's new in Elysian
+                </Link>
+              </Paper>
+            )}
+          </Grid>
+          <Grid container maxWidth="1330px" width="100%" gap={6}>
+            <Grid
+              container
+              xs={9}
+              gap={2}
               sx={{
-                fontSize: '1.2rem',
-                fontWeight: 600,
-                color: 'hsl(196, 100%, 31%);',
+                minWidth: { xs: '100%', sm: '616px', md: '932px' },
+                maxWidth: '932px',
               }}
             >
-              What's new in Elysian
-            </Link>
-          </Paper>
-        )}
-      </Grid>
-      <Grid container maxWidth="1330px" width="100%" gap={6}>
-        <Grid
-          container
-          xs={9}
-          gap={2}
-          sx={{
-            minWidth: { xs: '100%', sm: '616px', md: '932px' },
-            maxWidth: '932px',
-          }}
-        >
-          {cards.map((card, idx) => (
-            <CategoryCard {...card} key={idx} />
-          ))}
+              {cards.map((card, idx) => (
+                <CategoryCard {...card} key={idx} />
+              ))}
+            </Grid>
+            {sidebar && <CategorySidebar {...sidebar} />}
+          </Grid>
         </Grid>
-        {sidebar && <CategorySidebar {...sidebar} />}
-      </Grid>
-    </Grid>
+      </ErrorBoundary>
+    </>
   );
 }
