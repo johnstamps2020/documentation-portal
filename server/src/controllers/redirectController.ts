@@ -233,22 +233,10 @@ function removeSlashesFromPath(path: string): string {
 }
 
 function sortUrlsByVersion(a: string[], b: string[], wildcardIndex: number) {
-  const isANumber = !isNaN(parseInt(a[wildcardIndex], 10));
-  const isBNumber = !isNaN(parseInt(b[wildcardIndex], 10));
-
-  if (isANumber && isBNumber) {
-    // Both elements are numbers, so sort numerically
-    return parseInt(a[wildcardIndex], 10) - parseInt(b[wildcardIndex], 10);
-  } else if (isANumber) {
-    // Only element at wildcardIndex in 'a' is a number, so 'a' comes first
-    return -1;
-  } else if (isBNumber) {
-    // Only element at wildcardIndex in 'b' is a number, so 'b' comes first
-    return 1;
-  } else {
-    // Both elements are not numbers, so sort alphabetically
-    return a[wildcardIndex].localeCompare(b[wildcardIndex]);
-  }
+  return a[wildcardIndex].localeCompare(b[wildcardIndex], undefined, {
+    numeric: true,
+    sensitivity: 'base',
+  });
 }
 
 export async function getLatestVersionUrl(
