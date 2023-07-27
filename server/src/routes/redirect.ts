@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getRedirectUrl } from '../controllers/redirect';
+import { getRedirectUrl } from '../controllers/redirectController';
 
 const router = Router();
 router.get('/', async function (req, res) {
