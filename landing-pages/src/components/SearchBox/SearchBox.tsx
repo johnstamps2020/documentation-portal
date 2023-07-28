@@ -6,6 +6,7 @@ import { useLocaleParams } from 'hooks/useLocale';
 import { useSearchData } from 'hooks/useApi';
 import { useMobile } from 'hooks/useMobile';
 import { useEffect, useState } from 'react';
+import { useLayoutContext } from 'LayoutContext';
 
 type SearchBoxProps = {
   showBigSize?: boolean;
@@ -40,13 +41,24 @@ export default function SearchBox({ showBigSize = true }: SearchBoxProps) {
   const { placeholder } = useLocaleParams();
   const { searchData } = useSearchData();
   const { isMobile } = useMobile();
+  const { setTitle } = useLayoutContext();
   const [searchPhrase, setSearchPhrase] = useState<string>('');
 
   useEffect(() => {
     if (searchData) {
       setSearchPhrase(searchData.searchPhrase);
+
+      if (searchData.searchPhrase) {
+        setTitle(
+          `${searchData.searchPhrase} | ${
+            searchData.totalNumOfResults > 0
+              ? `${searchData.totalNumOfResults} `
+              : ``
+          }search results`
+        );
+      }
     }
-  }, [searchData, searchData?.searchPhrase]);
+  }, [searchData, searchData?.searchPhrase, setTitle]);
 
   const showBigSearchBox = isMobile ? false : showBigSize;
 
