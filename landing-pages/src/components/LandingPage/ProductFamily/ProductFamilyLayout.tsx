@@ -16,8 +16,6 @@ import LandingPageSelector, {
   LandingPageSelectorProps,
 } from 'components/LandingPage/LandingPageSelector';
 import EditPagePropsButton from '../EditPagePropsButton';
-import ErrorPage from 'pages/ErrorPage/ErrorPage';
-import { ErrorBoundary } from 'react-error-boundary';
 
 export type ProductFamilyLayoutProps = LandingPageLayoutProps & {
   items: LandingPageItemProps[];
@@ -38,56 +36,49 @@ export default function ProductFamilyLayout({
     return null;
   }
   return (
-    <>
-      <ErrorBoundary
-        FallbackComponent={ErrorPage}
-        onError={() => console.error()}
-      >
-        <Grid
-          sx={{ ...backgroundProps }}
-          container
-          flexDirection="column"
-          margin="auto"
-          padding="0 20px 64px 20px"
-          gap={5}
-          alignContent="center"
-        >
-          <EditPagePropsButton pagePath={pageData.path} />
-          <Grid>
-            <Stack spacing={1} direction="column" width="100%">
-              {isRelease && (
-                <SelfManagedLink
-                  pagePath={pageData.path}
-                  backgroundImage={backgroundProps.backgroundImage}
-                />
-              )}
-              <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
-                <Breadcrumbs />
-              </Container>
-              <Typography
-                variant="h1"
-                sx={
-                  backgroundProps.backgroundImage
-                    ? { color: 'white' }
-                    : { color: 'black' }
-                }
-              >
-                {pageData.title}
-              </Typography>
-              {selector && <LandingPageSelector {...selector} />}{' '}
-              {isRelease && <ReleaseSelector />}
-            </Stack>
-          </Grid>
-          <Grid container width="100%" maxWidth="1330px" gap={2}>
-            <Grid container sm={12} md={9} gap={2}>
-              {items.map((item) => (
-                <ProductFamilyCard {...item} key={item.label} />
-              ))}
-            </Grid>
-            {sidebar && <ProductFamilySidebar {...sidebar} />}
-          </Grid>
+    <Grid
+      sx={{ ...backgroundProps }}
+      container
+      flexDirection="column"
+      margin="auto"
+      padding="0 20px 64px 20px"
+      gap={5}
+      alignContent="center"
+    >
+      <EditPagePropsButton pagePath={pageData.path} />
+      <Grid>
+        <Stack spacing={1} direction="column" width="100%">
+          {isRelease && (
+            <SelfManagedLink
+              pagePath={pageData.path}
+              backgroundImage={backgroundProps.backgroundImage}
+            />
+          )}
+          <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
+            <Breadcrumbs />
+          </Container>
+          <Typography
+            variant="h1"
+            sx={
+              backgroundProps.backgroundImage
+                ? { color: 'white' }
+                : { color: 'black' }
+            }
+          >
+            {pageData.title}
+          </Typography>
+          {selector && <LandingPageSelector {...selector} />}{' '}
+          {isRelease && <ReleaseSelector />}
+        </Stack>
+      </Grid>
+      <Grid container width="100%" maxWidth="1330px" gap={2}>
+        <Grid container sm={12} md={9} gap={2}>
+          {items.map((item) => (
+            <ProductFamilyCard {...item} key={item.label} />
+          ))}
         </Grid>
-      </ErrorBoundary>
-    </>
+        {sidebar && <ProductFamilySidebar {...sidebar} />}
+      </Grid>
+    </Grid>
   );
 }

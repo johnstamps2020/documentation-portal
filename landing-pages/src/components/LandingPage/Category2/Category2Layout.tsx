@@ -14,8 +14,6 @@ import {
 import ReleaseSelector from 'components/LandingPage/ReleaseSelector';
 import { usePageData } from 'hooks/usePageData';
 import EditPagePropsButton from '../EditPagePropsButton';
-import { ErrorBoundary } from 'react-error-boundary';
-import ErrorPage from 'pages/ErrorPage/ErrorPage';
 
 export type Category2LayoutProps = LandingPageLayoutProps & {
   cards: {
@@ -40,102 +38,95 @@ export default function Category2Layout({
   }
 
   return (
-    <>
-      <ErrorBoundary
-        FallbackComponent={ErrorPage}
-        onError={() => console.error()}
+    <Grid
+      sx={{
+        ...backgroundProps,
+        flexWrap: { breakpointsTheme: 'wrap', sm: 'nowrap' },
+      }}
+      container
+      alignContent="center"
+      flexDirection="row"
+      margin="auto"
+      padding="40px 32px"
+      gap="56px"
+      flexWrap="nowrap"
+    >
+      <Grid
+        container
+        flexWrap="wrap"
+        height="fit-content"
+        width="300px"
+        minWidth="300px"
+        margin={{ sm: '-30px 0 0 auto', xs: 'auto' }}
       >
-        <Grid
-          sx={{
-            ...backgroundProps,
-            flexWrap: { breakpointsTheme: 'wrap', sm: 'nowrap' },
-          }}
-          container
-          alignContent="center"
-          flexDirection="row"
-          margin="auto"
-          padding="40px 32px"
-          gap="56px"
-          flexWrap="nowrap"
-        >
+        <EditPagePropsButton pagePath={pageData.path} />
+        <Stack spacing={1} direction="column" width="100%">
+          <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
+            <Breadcrumbs />
+          </Container>
+          {isRelease && <ReleaseSelector />}
+        </Stack>
+        {isRelease && (
+          <SelfManagedLink
+            pagePath={pageData.path}
+            backgroundImage={backgroundProps.backgroundImage}
+          />
+        )}
+        <WhatsNew {...whatsNew} />
+      </Grid>
+      <Grid
+        container
+        direction="column"
+        marginRight="auto"
+        gap="2rem"
+        flexWrap="wrap"
+      >
+        <Grid marginBottom="16px">
+          <Typography
+            variant="h1"
+            sx={
+              backgroundProps.backgroundImage
+                ? { color: 'white' }
+                : { color: 'black' }
+            }
+            style={{ fontWeight: 600, fontSize: '2em' }}
+          >
+            Welcome to Guidewire Documentation
+          </Typography>
+          <Typography
+            variant="h2"
+            sx={
+              backgroundProps.backgroundImage
+                ? { color: 'white' }
+                : { color: 'black' }
+            }
+            style={{ fontSize: '14px', marginTop: '8px' }}
+          >
+            Find guides, API references, tutorials, and more to help you
+            implement, adopt, and use Guidewire applications and services.
+          </Typography>
+        </Grid>
+        <Grid container direction="row" gap="56px">
           <Grid
             container
-            flexWrap="wrap"
-            height="fit-content"
-            width="300px"
-            minWidth="300px"
-            margin={{ sm: '-30px 0 0 auto', xs: 'auto' }}
+            maxWidth="600px"
+            width="100%"
+            xs={9}
+            columnGap="24px"
+            rowGap="32px"
           >
-            <EditPagePropsButton pagePath={pageData.path} />
-            <Stack spacing={1} direction="column" width="100%">
-              <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
-                <Breadcrumbs />
-              </Container>
-              {isRelease && <ReleaseSelector />}
-            </Stack>
-            {isRelease && (
-              <SelfManagedLink
-                pagePath={pageData.path}
-                backgroundImage={backgroundProps.backgroundImage}
-              />
+            {cards.map(
+              (card) =>
+                card.items.length > 0 && (
+                  <Category2Card {...card} key={card.label} />
+                )
             )}
-            <WhatsNew {...whatsNew} />
           </Grid>
-          <Grid
-            container
-            direction="column"
-            marginRight="auto"
-            gap="2rem"
-            flexWrap="wrap"
-          >
-            <Grid marginBottom="16px">
-              <Typography
-                variant="h1"
-                sx={
-                  backgroundProps.backgroundImage
-                    ? { color: 'white' }
-                    : { color: 'black' }
-                }
-                style={{ fontWeight: 600, fontSize: '2em' }}
-              >
-                Welcome to Guidewire Documentation
-              </Typography>
-              <Typography
-                variant="h2"
-                sx={
-                  backgroundProps.backgroundImage
-                    ? { color: 'white' }
-                    : { color: 'black' }
-                }
-                style={{ fontSize: '14px', marginTop: '8px' }}
-              >
-                Find guides, API references, tutorials, and more to help you
-                implement, adopt, and use Guidewire applications and services.
-              </Typography>
-            </Grid>
-            <Grid container direction="row" gap="56px">
-              <Grid
-                container
-                maxWidth="600px"
-                width="100%"
-                xs={9}
-                columnGap="24px"
-                rowGap="32px"
-              >
-                {cards.map(
-                  (card) =>
-                    card.items.length > 0 && (
-                      <Category2Card {...card} key={card.label} />
-                    )
-                )}
-              </Grid>
-              <Grid sx={{ minHeight: 180, minWidth: 280 }}>
-                {sidebar && <Category2Sidebar {...sidebar} />}
-              </Grid>
-            </Grid>
+          <Grid sx={{ minHeight: 180, minWidth: 280 }}>
+            {sidebar && <Category2Sidebar {...sidebar} />}
           </Grid>
         </Grid>
-      </ErrorBoundary>
-    </>
+      </Grid>
+    </Grid>
   );
 }
