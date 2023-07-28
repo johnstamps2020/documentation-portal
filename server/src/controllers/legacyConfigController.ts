@@ -488,13 +488,9 @@ async function putPageConfigsInDatabase(): Promise<ApiResponse> {
     let localLandingPagesConfigDir: string;
     const failedFetchesFromS3 = [];
     if (isDevMode) {
-      localLandingPagesConfigDir = resolve(
-        `${__dirname}/../../../frontend/pages`
-      );
+      localLandingPagesConfigDir = resolve(`${__dirname}/../../../frontend`);
     } else {
-      localLandingPagesConfigDir = resolve(
-        `${__dirname}/../legacyConfig/pages`
-      );
+      localLandingPagesConfigDir = resolve(`${__dirname}/../legacyConfig`);
       const getLegacyLandingPagesObjectsResult = await listItems(
         'legacy-landing-pages'
       );
@@ -517,32 +513,41 @@ async function putPageConfigsInDatabase(): Promise<ApiResponse> {
       }
     }
 
-    const localLandingPagesConfig = readLocalPageConfigs(
-      localLandingPagesConfigDir
+    const localLandingPagesConfigStaging = readLocalPageConfigs(
+      `${localLandingPagesConfigDir}/staging/pages`
+    );
+    const localLandingPagesConfigProd = readLocalPageConfigs(
+      `${localLandingPagesConfigDir}/prod/pages`
     );
     const dbPageConfigsToSave: Page[] = [];
-    for (const page of localLandingPagesConfig) {
-      const relativePagePath = getRelativePagePath(page.path);
+    for (const page of localLandingPagesConfigStaging) {
+      const legacyPageRelativePath = getRelativePagePath(page.path);
       if (
         !dbPageConfigsToSave.find(
-          (dbPageConfigToSave) => dbPageConfigToSave.path === relativePagePath
+          (dbPageConfigToSave) =>
+            dbPageConfigToSave.path === legacyPageRelativePath
         )
       ) {
+        const dbPageConfig = new Page();
+
+        dbPageConfig.path = legacyPageRelativePath;
+        dbPageConfig.title = page.title;
+        dbPageConfig.component = getCompletePageComponent(page, dbPageConfig);
+        dbPageConfig.isInProduction = !!localLandingPagesConfigProd.find(
+          (pc) => getRelativePagePath(pc.path) === legacyPageRelativePath
+        );
+        dbPageConfig.internal = page.internal;
+        dbPageConfig.public = page.public;
+        dbPageConfig.earlyAccess = false;
+        dbPageConfig.searchFilters = page.search_filters || null;
+        await createExternalLinkEntities(page.items);
+        const dbPageConfigToSave = await addUuidIfEntityExists(
+          Page.name,
+          { path: dbPageConfig.path },
+          dbPageConfig
+        );
+        dbPageConfigsToSave.push(dbPageConfigToSave as Page);
       }
-      const dbPageConfig = new Page();
-      dbPageConfig.path = relativePagePath;
-      dbPageConfig.title = page.title;
-      dbPageConfig.component = getCompletePageComponent(page, dbPageConfig);
-      dbPageConfig.isInProduction = false;
-      dbPageConfig.internal = false;
-      dbPageConfig.searchFilters = page.search_filters || null;
-      await createExternalLinkEntities(page.items);
-      const dbPageConfigToSave = await addUuidIfEntityExists(
-        Page.name,
-        { path: dbPageConfig.path },
-        dbPageConfig
-      );
-      dbPageConfigsToSave.push(dbPageConfigToSave as Page);
     }
     const dbPageConfigsSaveResult = await saveEntities(dbPageConfigsToSave);
     return {

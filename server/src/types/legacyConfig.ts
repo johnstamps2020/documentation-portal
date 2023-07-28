@@ -43,6 +43,8 @@ export type LegacyPageConfig = {
   selector: LegacySelector;
   search_filters: SearchFilters;
   items: LegacyItem[];
+  internal: boolean;
+  public: boolean;
 };
 
 type Environment = 'staging' | 'prod';
