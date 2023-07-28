@@ -29,7 +29,7 @@ import { ExternalLink } from '../model/entity/ExternalLink';
 import { Product } from '../model/entity/Product';
 import { Platform } from '../model/entity/Platform';
 import { Version } from '../model/entity/Version';
-import { Locale } from '../model/entity/Locale';
+import { Lang } from '../model/entity/Lang';
 import { DitaBuild } from '../model/entity/DitaBuild';
 import { YarnBuild } from '../model/entity/YarnBuild';
 import { SourceZipBuild } from '../model/entity/SourceZipBuild';
@@ -94,6 +94,7 @@ async function getLegacyDocConfigs(): Promise<LegacyDocConfig[]> {
       internal: doc.internal,
       earlyAccess: doc.earlyAccess,
       metadata: {
+        lang: doc.lang.code,
         product: doc.platformProductVersions.map((ppv) => ppv.product.name),
         platform: removeDuplicatesAndEmptyValues(
           doc.platformProductVersions.map((ppv) => ppv.platform.name)
@@ -101,7 +102,6 @@ async function getLegacyDocConfigs(): Promise<LegacyDocConfig[]> {
         version: removeDuplicatesAndEmptyValues(
           doc.platformProductVersions.map((ppv) => ppv.version.name)
         ),
-        locale: removeDuplicatesAndEmptyValues(doc.locales.map((l) => l.code)),
       },
     };
     const docBody = doc.body;
@@ -840,56 +840,48 @@ async function createSubjectEntities(legacyDocConfig: LegacyDocConfig[]) {
   await saveEntities(dbDocSubjectsToSave);
 }
 
-async function createLocaleEntities(legacyDocConfig: LegacyDocConfig[]) {
-  const locales: { [key: string]: string } = {
-    'de-DE': 'German (Germany)',
-    'en-US': 'English (United States)',
-    'es-419': 'Spanish (Latin America and Caribbean region)',
+async function createLangEntities(legacyDocConfig: LegacyDocConfig[]) {
+  const langs: { [key: string]: string } = {
+    de: 'German (Germany)',
+    en: 'English (United States)',
+    es: 'Spanish (Latin America and Caribbean region)',
     'es-ES': 'Spanish (Spain)',
-    'fr-FR': 'French (France)',
-    'it-IT': 'Italian (Italy)',
-    'ja-JP': 'Japanese (Japan)',
-    'nl-NL': 'Dutch (Netherlands)',
-    'pt-BR': 'Portuguese (Brazil)',
+    fr: 'French (France)',
+    it: 'Italian (Italy)',
+    ja: 'Japanese (Japan)',
+    nl: 'Dutch (Netherlands)',
+    pt: 'Portuguese (Brazil)',
   };
-  const dbDocLocalesToSave: Locale[] = [];
+  const dbDocLangsToSave: Lang[] = [];
   for (const doc of legacyDocConfig) {
-    const legacyDocLocales = doc.metadata.locale;
-    if (legacyDocLocales && legacyDocLocales.length > 0) {
-      for (const legacyDocLocale of legacyDocLocales) {
-        if (
-          !dbDocLocalesToSave.find(
-            (dbLocaleToSave) => dbLocaleToSave.code === legacyDocLocale
-          )
-        ) {
-          const dbDocLocale = new Locale();
-          dbDocLocale.code = legacyDocLocale;
-          dbDocLocale.label = locales[legacyDocLocale];
-          const dbDocLocaleToSave = await addUuidIfEntityExists(
-            Locale.name,
-            { code: dbDocLocale.code },
-            dbDocLocale
-          );
-          dbDocLocalesToSave.push(dbDocLocaleToSave as Locale);
-        }
-      }
+    const legacyDocLang = doc.metadata.lang;
+    if (
+      legacyDocLang &&
+      !dbDocLangsToSave.find(
+        (dbDocLangToSave) => dbDocLangToSave.code === legacyDocLang
+      )
+    ) {
+      const dbDocLang = new Lang();
+      dbDocLang.code = legacyDocLang;
+      dbDocLang.label = langs[legacyDocLang];
+      const dbDocLangToSave = await addUuidIfEntityExists(
+        Lang.name,
+        { code: dbDocLang.code },
+        dbDocLang
+      );
+      dbDocLangsToSave.push(dbDocLangToSave as Lang);
     }
   }
-  await saveEntities(dbDocLocalesToSave);
+  await saveEntities(dbDocLangsToSave);
 }
 
-async function addDocLocales(legacyDoc: LegacyDocConfig): Promise<Locale[]> {
-  const legacyDocLocales = legacyDoc.metadata.locale;
-  const docLocales: Locale[] = [];
-  for (const legacyDocLocale of legacyDocLocales) {
-    const dbDocLocale = await findEntity(
-      Locale.name,
-      { code: legacyDocLocale },
-      false
-    );
-    docLocales.push(dbDocLocale as Locale);
-  }
-  return docLocales.filter(Boolean);
+async function addDocLang(legacyDoc: LegacyDocConfig): Promise<Lang> {
+  const dbDocLang = await findEntity(
+    Lang.name,
+    { code: legacyDoc.metadata.lang },
+    false
+  );
+  return dbDocLang as Lang;
 }
 
 async function addDocReleases(
@@ -1002,7 +994,7 @@ async function putDocConfigsInDatabase(): Promise<ApiResponse> {
 
     await createSubjectEntities(localDocsConfig);
     await createReleaseEntities(localDocsConfig);
-    await createLocaleEntities(localDocsConfig);
+    await createLangEntities(localDocsConfig);
     await createPlatformEntities(localDocsConfig);
     await createProductEntities(localDocsConfig);
     await createVersionEntities(localDocsConfig);
@@ -1028,7 +1020,7 @@ async function putDocConfigsInDatabase(): Promise<ApiResponse> {
         dbDoc.isInProduction = doc.environments.includes('prod');
         dbDoc.body = doc.body || null;
 
-        dbDoc.locales = await addDocLocales(doc);
+        dbDoc.lang = await addDocLang(doc);
         dbDoc.releases = await addDocReleases(doc);
         dbDoc.subjects = await addDocSubjects(doc);
         dbDoc.platformProductVersions = await addPlatformProductVersions(

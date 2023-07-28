@@ -16,6 +16,7 @@ import { ApiResponse } from '../types/apiResponse';
 import { Page } from '../model/entity/Page';
 import { isUserAllowedToAccessResource } from './authController';
 import { LegacyVersionObject } from '../types/legacyConfig';
+import { Subject } from '../model/entity/Subject';
 
 function wrapInQuotes(
   stringsToWrap: string[] | string | undefined
@@ -73,7 +74,7 @@ function getRelationOptionsForEntity(
       },
       releases: true,
       subjects: true,
-      locales: true,
+      lang: true,
     };
   } else if (
     ['yarnbuild', 'ditabuild', 'sourcezipbuild', 'justcopybuild'].includes(
@@ -398,6 +399,7 @@ export async function getDocumentMetadataById(
         },
         releases: true,
         subjects: true,
+        lang: true,
       } as ObjectLiteral,
     })) as ObjectLiteral;
     if (docInfo) {
@@ -432,7 +434,10 @@ export async function getDocumentMetadataById(
             docReleases: wrapInQuotes(
               docInfo.releases.map((r: Release) => r.name)
             ),
-            docSubjects: wrapInQuotes(docInfo.sections),
+            docSubjects: wrapInQuotes(
+              docInfo.subjects.map((s: Subject) => s.name)
+            ),
+            docLang: docInfo.lang.code,
           },
         };
       }

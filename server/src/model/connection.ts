@@ -3,14 +3,13 @@ import { winstonLogger } from '../controllers/loggerController';
 import { Doc } from './entity/Doc';
 import { PlatformProductVersion } from './entity/PlatformProductVersion';
 import { runningInDevMode } from '../controllers/utils/serverUtils';
-import { Build } from './entity/Build';
 import { Release } from './entity/Release';
 import { Resource } from './entity/Resource';
 import { Source } from './entity/Source';
 import { Page } from './entity/Page';
 import { Subject } from './entity/Subject';
 import { ExternalLink } from './entity/ExternalLink';
-import { Locale } from './entity/Locale';
+import { Lang } from './entity/Lang';
 import { Platform } from './entity/Platform';
 import { Product } from './entity/Product';
 import { Version } from './entity/Version';
@@ -40,7 +39,7 @@ export const AppDataSource = new DataSource({
     Doc,
     ExternalLink,
     JustCopyBuild,
-    Locale,
+    Lang,
     Page,
     Platform,
     PlatformProductVersion,
