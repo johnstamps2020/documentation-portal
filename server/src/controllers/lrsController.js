@@ -5,9 +5,10 @@ const elasticClient = new Client({ node: process.env.ELASTIC_SEARCH_URL });
 const indexName = 'lrs';
 const { getSampleRecords } = require('./utils/lrsUtils');
 const { winstonLogger } = require('./loggerController');
+const { getScrambledEmail } = require('./utils/privacy');
+const { getUserInfo } = require('./userController');
 
 const anonymousName = 'Anonymous Person';
-const anonymousMbox = 'mailto:anonymous@customer.or.partner.com';
 
 function formalizeError(err) {
   return {
@@ -18,12 +19,10 @@ function formalizeError(err) {
 
 async function createIndex() {
   try {
-    console.log('ATTEMPTING TO CREATE INDEX', indexName);
     const result = await elasticClient.indices.create({
       index: indexName,
     });
 
-    console.log('CREATED INDEX', JSON.stringify(result, null, 2));
     return result;
   } catch (err) {
     winstonLogger.error(
@@ -36,9 +35,34 @@ async function createIndex() {
 
 function anonymizeRecordIfExternalUser(record) {
   if (!record.actor.mbox.endsWith('@guidewire.com')) {
+    const anonymousMbox = getScrambledEmail(record.actor.mbox);
     const copyOfRecord = JSON.parse(JSON.stringify(record));
     copyOfRecord.actor.mbox = anonymousMbox;
     copyOfRecord.actor.name = anonymousName;
+
+    return copyOfRecord;
+  }
+
+  return record;
+}
+
+function getAnonymousMboxIfExternalUser(mbox) {
+  if (!mbox.endsWith('@guidewire.com')) {
+    return getScrambledEmail(mbox);
+  }
+
+  return mbox;
+}
+
+function revealNameIfAllowed(record, req) {
+  const { name, preferred_username } = getUserInfo(req);
+
+  if (
+    !record.actor.mbox.endsWith('@guidewire.com') &&
+    record.actor.mbox === getScrambledEmail(`mailto:${preferred_username}`)
+  ) {
+    const copyOfRecord = JSON.parse(JSON.stringify(record));
+    copyOfRecord.actor.name = name;
 
     return copyOfRecord;
   }
@@ -125,7 +149,7 @@ async function getAllRecords() {
   }
 }
 
-async function getRecordsByObjectId(objectId) {
+async function getRecordsByObjectId(objectId, req) {
   try {
     const result = await elasticClient.search({
       index: indexName,
@@ -139,13 +163,19 @@ async function getRecordsByObjectId(objectId) {
       },
     });
 
-    return result.body.hits?.hits?.map((h) => h._source) || [];
+    const records = result.body.hits?.hits?.map((h) => h._source);
+
+    if (records) {
+      return records.map((r) => revealNameIfAllowed(r, req));
+    } else {
+      return [];
+    }
   } catch (err) {
     return formalizeError(err);
   }
 }
 
-async function getRecordsByActorMbox(actorMbox) {
+async function getRecordsByActorMbox(actorMbox, req) {
   try {
     const result = await elasticClient.search({
       index: indexName,
@@ -153,19 +183,25 @@ async function getRecordsByActorMbox(actorMbox) {
       body: {
         query: {
           match: {
-            'actor.mbox.keyword': actorMbox,
+            'actor.mbox.keyword': getAnonymousMboxIfExternalUser(actorMbox),
           },
         },
       },
     });
 
-    return result.body.hits?.hits?.map((h) => h._source) || [];
+    const records = result.body.hits?.hits?.map((h) => h._source);
+
+    if (records) {
+      return records.map((r) => revealNameIfAllowed(r, req));
+    } else {
+      return [];
+    }
   } catch (err) {
     return formalizeError(err);
   }
 }
 
-async function getRecordByObjectIdAndActorMbox(objectId, actorMbox) {
+async function getRecordByObjectIdAndActorMbox(objectId, actorMbox, req) {
   try {
     const result = await elasticClient.search({
       index: indexName,
@@ -180,7 +216,9 @@ async function getRecordByObjectIdAndActorMbox(objectId, actorMbox) {
               },
               {
                 term: {
-                  'actor.mbox.keyword': { value: actorMbox },
+                  'actor.mbox.keyword': {
+                    value: getAnonymousMboxIfExternalUser(actorMbox),
+                  },
                 },
               },
             ],
@@ -195,7 +233,7 @@ async function getRecordByObjectIdAndActorMbox(objectId, actorMbox) {
     );
 
     if (matchingRecord) {
-      return matchingRecord;
+      return revealNameIfAllowed(matchingRecord, req);
     } else {
       return {};
     }
@@ -226,7 +264,6 @@ async function anonymizeRecords() {
       .map((record) => {
         const mbox = record._source.actor.mbox;
         if (!mbox.endsWith('@guidewire.com')) {
-          // return record._id;
           return record;
         }
       })
