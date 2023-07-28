@@ -15,9 +15,7 @@ export default function ErrorPage({ error }: FallbackProps) {
         error has occurred. Our team is already on the case, diligently working
         to fix the issue and get everything back on track. In the meantime,
         please try refreshing the page or come back a little later. We promise
-        to have things up and running as soon as possible. If you continue to
-        encounter this problem or have any other concerns, please leave
-        feedback.
+        to have things up and running as soon as possible. 
       </Typography>
       <Box
         sx={{
@@ -32,7 +30,7 @@ export default function ErrorPage({ error }: FallbackProps) {
           padding: { xs: '1.5rem', sm: '1rem 1rem' },
         }}
       >
-        <Typography>{error.message}</Typography>
+        <Typography>{error.message}.</Typography>
       </Box>
     </>
   );
