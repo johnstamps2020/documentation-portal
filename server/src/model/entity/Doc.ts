@@ -1,8 +1,17 @@
-import { Column, Entity, Index, JoinTable, ManyToMany, Unique } from 'typeorm';
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  Unique,
+} from 'typeorm';
 import { PlatformProductVersion } from './PlatformProductVersion';
 import { Release } from './Release';
 import { Subject } from './Subject';
-import { Locale } from './Locale';
+import { Lang } from './Lang';
 import { GwEntity } from './GwEntity';
 
 @Entity()
@@ -34,9 +43,9 @@ export class Doc extends GwEntity {
   @JoinTable()
   platformProductVersions: PlatformProductVersion[];
 
-  @ManyToMany(() => Locale, (locale) => locale.uuid)
-  @JoinTable()
-  locales: Locale[];
+  @ManyToOne(() => Lang, (lang) => lang.uuid)
+  @JoinColumn()
+  lang: Lang;
 
   @ManyToMany(() => Release, (release) => release.uuid, { nullable: true })
   @JoinTable()

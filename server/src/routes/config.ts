@@ -69,7 +69,7 @@ router.get('/docMetadata/:docId', async function (req, res) {
     product: splitLegacyValueByCommaAndReturnUnique(body.docProducts),
     version: splitLegacyValueByCommaAndReturnUnique(body.docVersions),
     release: splitLegacyValueByCommaAndReturnUnique(body.docReleases),
-    locale: splitLegacyValueByCommaAndReturnUnique(body.docLocales),
+    lang: body.docLang,
   };
 
   return res.status(status).json(mappedConfig);

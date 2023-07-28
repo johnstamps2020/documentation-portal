@@ -3,7 +3,7 @@ import { GwEntity } from './GwEntity';
 
 @Entity()
 @Unique(['code'])
-export class Locale extends GwEntity {
+export class Lang extends GwEntity {
   @Column({ type: 'varchar' })
   code: string;
 
