@@ -45,6 +45,7 @@ export function getPendoInitializeScript() {
     const fileContents = readFileSync(scriptPath, {
       encoding: 'utf8',
     });
+
     return fileContents;
   } catch (err) {
     winstonLogger.error(

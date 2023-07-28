@@ -32,17 +32,21 @@ router.get('/records', async function (req, res, next) {
     const { objectId, actorMbox } = req.query;
 
     if (objectId && actorMbox) {
-      const record = await getRecordByObjectIdAndActorMbox(objectId, actorMbox);
+      const record = await getRecordByObjectIdAndActorMbox(
+        objectId,
+        actorMbox,
+        req
+      );
       return res.send(record);
     }
 
     if (objectId) {
-      const records = await getRecordsByObjectId(objectId);
+      const records = await getRecordsByObjectId(objectId, req);
       return res.send(records);
     }
 
     if (actorMbox) {
-      const records = await getRecordsByActorMbox(actorMbox);
+      const records = await getRecordsByActorMbox(actorMbox, req);
       return res.send(records);
     }
 
