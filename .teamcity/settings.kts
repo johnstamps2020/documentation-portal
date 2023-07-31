@@ -315,7 +315,13 @@ object Database {
         features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
     })
 
+    //TODO: When this build is productized, it should be available only for staging. Dev will sync from staging
     private fun createUploadLegacyConfigsToDb(): BuildType {
+        val pagesDir = "%teamcity.build.checkoutDir%/frontend/pages"
+        val outputDir = "%teamcity.build.checkoutDir%/output"
+        val outputDirStaging = "${outputDir}/staging/pages"
+        val outputDirProd = "${outputDir}/prod/pages"
+        val deployEnv = GwDeployEnvs.DEV.envName
         return BuildType {
             name = "Upload legacy configs to the doc portal config database"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -327,19 +333,23 @@ object Database {
             }
 
             artifactRules = "response*.json => /"
-
-            params {
-                select(
-                    "env.DEPLOY_ENV",
-                    value = "",
-                    label = "Deploy environment",
-                    options = listOf(
-                        "Dev" to GwDeployEnvs.DEV.envName,
-                    ),
-                    display = ParameterDisplay.PROMPT,
-                )
-            }
             steps {
+                step(GwBuildSteps.MergeAllLegacyConfigsStep)
+                step(
+                    GwBuildSteps.createRunFlailSsgStep(
+                        pagesDir,
+                        outputDirStaging,
+                        GwDeployEnvs.STAGING.envName
+                    )
+                )
+                step(
+                    GwBuildSteps.createRunFlailSsgStep(
+                        pagesDir,
+                        outputDirProd,
+                        GwDeployEnvs.PROD.envName
+                    )
+                )
+                step(GwBuildSteps.createUploadLegacyConfigsAndPagesToS3BucketStep(GwDeployEnvs.DEV.envName))
                 nodeJS {
                     name = "Call doc site endpoints to trigger upload"
                     id = Helpers.createIdStringFromName(this.name)
@@ -347,7 +357,6 @@ object Database {
                         #!/bin/sh
                         set -e
                         
-                        # TODO: When this build is productized, add conditions for settings proper vars depending on env
                         export APP_BASE_URL="https://croissant.dev.ccs.guidewire.net"
                         export OKTA_ACCESS_TOKEN_ISSUER="https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"                        
                         
@@ -357,10 +366,14 @@ object Database {
                 }
 
             }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
             triggers {
                 vcs {
                     triggerRules = """
                         +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/frontend/pages/**
                         -:user=doctools:**
                         """.trimIndent()
                 }
@@ -1488,8 +1501,6 @@ object Content {
                     )
                 )
                 step(GwBuildSteps.createRefreshConfigBuildStep(deployEnv))
-                step(GwBuildSteps.MergeAllLegacyConfigsStep)
-                step(GwBuildSteps.createUploadLegacyConfigsToS3BucketStep(deployEnv))
             }
 
             triggers {
@@ -1655,18 +1666,7 @@ object Content {
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
         steps {
-            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("cloud"))
-            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("self-managed"))
-            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("internal-docs"))
-            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("jutro"))
-            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("help"))
-            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("de-DE"))
-            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("es-419"))
-            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("es-ES"))
-            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("fr-FR"))
-            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("it-IT"))
-            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("ja-JP"))
-            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep("pt-BR"))
+            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep())
         }
 
         features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -1855,7 +1855,8 @@ object Frontend {
                         --build-arg POD_NAME \
                         --build-arg DEPLOY_ENV \
                         --build-arg TARGET_URL \
-                        --build-arg BASE_URL 
+                        --build-arg BASE_URL \
+                        --build-arg NPM_AUTH_TOKEN
                         docker push $frontendImageUrl:${tagVersion}
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
@@ -2091,11 +2092,6 @@ object Frontend {
                 step(
                     GwBuildSteps.createDeployStaticFilesStep(
                         deployEnv, GwStaticFilesModes.LANDING_PAGES.modeName, outputDir
-                    )
-                )
-                step(
-                    GwBuildSteps.createUploadContentToS3BucketStep(
-                        deployEnv, pagesDir, "legacy-landing-pages"
                     )
                 )
             }
@@ -4077,14 +4073,18 @@ object GwBuildSteps {
         }
     }
 
-    fun createUploadLegacyConfigsToS3BucketStep(deployEnv: String): ScriptBuildStep {
+    fun createUploadLegacyConfigsAndPagesToS3BucketStep(deployEnv: String): ScriptBuildStep {
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
-        val publishPath = "legacy-config"
-        val localPublishPath = "%teamcity.build.checkoutDir%/$publishPath"
-        val s3PublishPath = "s3://tenant-doctools-${atmosDeployEnv}-builds/${publishPath}"
+        val localRootDir = "%teamcity.build.checkoutDir%"
+        val legacyConfigsPublishPath = "legacy-config"
+        val localLegacyConfigsPublishPath = "${localRootDir}/$legacyConfigsPublishPath"
+        val localLegacyPagesPublishPath = "${localRootDir}/output"
+        val s3BucketUrl = "s3://tenant-doctools-${atmosDeployEnv}-builds"
+        val s3LegacyConfigsPublishPath = "${s3BucketUrl}/${legacyConfigsPublishPath}"
+        val s3LegacyPagesPublishPath = "${s3BucketUrl}/legacy-landing-pages"
         return ScriptBuildStep {
-            name = "Upload full legacy configs to the S3 bucket"
+            name = "Upload legacy configs and legacy pages to the S3 bucket"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
@@ -4092,15 +4092,19 @@ object GwBuildSteps {
                 
                 $awsEnvVars
                 
-                mkdir -p "$localPublishPath"
+                mkdir -p "$localLegacyConfigsPublishPath"
                                 
-                mv "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localPublishPath/docs.json"
-                mv "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localPublishPath/sources.json"
-                mv "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localPublishPath/builds.json"
+                mv "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localLegacyConfigsPublishPath/docs.json"
+                mv "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localLegacyConfigsPublishPath/sources.json"
+                mv "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localLegacyConfigsPublishPath/builds.json"
                 
-                # Copy merged config files to the S3 bucket
+                rm -rf 
                 
-                aws s3 sync "$localPublishPath" "$s3PublishPath" --delete
+                # Copy merged legacy configs to the S3 bucket
+                aws s3 sync "$localLegacyConfigsPublishPath" "$s3LegacyConfigsPublishPath" --delete
+                
+                # Copy merged legacy pages to the S3 bucket
+                aws s3 sync "$localLegacyPagesPublishPath" "$s3LegacyPagesPublishPath" --delete --exclude "**/breadcrumbs.json" --exclude "**/versionSelectors.json"
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -4142,7 +4146,7 @@ object GwBuildSteps {
         deployEnv: String,
     ): ScriptBuildStep {
         return ScriptBuildStep {
-            name = "Run Flail SSG"
+            name = "Run Flail SSG (${deployEnv})"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                 #!/bin/bash
@@ -5221,10 +5225,10 @@ object GwBuildSteps {
         }
     }
 
-    fun createSyncDataFromStagingS3BucketToDevS3BucketStep(dirName: String): ScriptBuildStep {
+    fun createSyncDataFromStagingS3BucketToDevS3BucketStep(): ScriptBuildStep {
         val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
         return ScriptBuildStep {
-            name = "Sync $dirName from staging S3 bucket to dev S3 bucket"
+            name = "Sync contents from staging S3 bucket to dev S3 bucket"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
                     #!/bin/bash
@@ -5232,8 +5236,8 @@ object GwBuildSteps {
                     
                     $awsEnvVars
                     
-                    echo Syncing the $dirName directory...
-                    aws s3 sync "s3://tenant-doctools-${GwDeployEnvs.STAGING.envName}-builds/${dirName}" "s3://tenant-doctools-${GwDeployEnvs.DEV.envName}-builds/${dirName}" --delete --only-show-errors
+                    echo Syncing the s3 server...
+                    aws s3 sync "s3://tenant-doctools-${GwDeployEnvs.STAGING.envName}-builds" "s3://tenant-doctools-${GwDeployEnvs.DEV.envName}-builds" --delete --only-show-errors --exclude "_do-not-delete/*"
                 """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux

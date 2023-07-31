@@ -10,12 +10,12 @@
         "product": ["PolicyCenter", "BillingCenter", "ClaimCenter"],
         "version": ["latest"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
-      "public": false,
+      "public": true,
       "internal": false,
       "earlyAccess": false
     }

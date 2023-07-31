@@ -10,7 +10,7 @@
         "platform": ["Cloud"],
         "version": ["2020.10"],
         "release": ["Aspen"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -28,7 +28,7 @@
         "platform": ["Cloud"],
         "version": ["2020.10"],
         "release": ["Aspen"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -46,7 +46,7 @@
         "platform": ["Cloud"],
         "version": ["2020.10"],
         "release": ["Aspen"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -64,7 +64,7 @@
         "platform": ["Cloud"],
         "version": ["2020.10"],
         "release": ["Aspen"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -82,7 +82,7 @@
         "platform": ["Cloud"],
         "version": ["2020.10"],
         "release": ["Aspen"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -100,7 +100,7 @@
         "platform": ["Cloud"],
         "version": ["2020.10"],
         "release": ["Aspen"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -118,7 +118,7 @@
         "platform": ["Cloud"],
         "version": ["2020.10"],
         "release": ["Aspen"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

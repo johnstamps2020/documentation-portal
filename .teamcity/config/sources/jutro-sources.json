@@ -188,6 +188,12 @@
       "branch": "release/garmisch"
     },
     {
+      "id": "srcjutrosdkhakuba",
+      "title": "Jutro SDK Hakuba",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-sdk-docs.git",
+      "branch": "release/hakuba"
+    },
+    {
       "id": "srcjutrosbbizpatterns652",
       "title": "Jutro Storybook Business Patterns 6.5.2",
       "gitUrl": "ssh://git@stash.guidewire.com/jut/storybook-business-patterns.git",

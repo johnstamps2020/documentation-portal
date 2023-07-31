@@ -41,6 +41,10 @@
       "description": "A human-readable title, for displaying to humans in various human scenarios. All of us humans know what it is. Right, fellow humans?",
       "type": "string"
     },
+    "displayTitle": {
+      "description": "An optional title that takes precedence over title in breadcrumbs, search results, etc. Used for translated content to show a translated title while leaving an English title available for TeamCity.",
+      "type": "string"
+    },
     "body": {
       "description": "Text explaining what the document contains. If this property is used, the doc crawler does not extract body from the document.",
       "type": "string"
@@ -74,7 +78,7 @@
       "description": "Metadata used for classification, search filtering, grouping on landing pages, etc.",
       "type": "object",
       "additionalProperties": false,
-      "required": ["product", "platform", "locale"],
+      "required": ["product", "platform", "lang"],
       "properties": {
         "product": {
           "$ref": "#/definitions/product"
@@ -128,23 +132,10 @@
             ]
           }
         },
-        "locale": {
-          "description": "Specifies the language code. Locale is mandatory. Set it to 'en-US' for English documents.",
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "de-DE",
-              "en-US",
-              "es-419",
-              "es-ES",
-              "fr-FR",
-              "it-IT",
-              "ja-JP",
-              "nl-NL",
-              "pt-BR"
-            ]
-          }
+        "lang": {
+          "description": "Specifies the language code. Field is mandatory. Set it to 'en' for English documents.",
+          "type": "string",
+          "enum": ["de", "en", "es", "es-ES", "fr", "it", "ja", "nl", "pt"]
         }
       }
     },
@@ -265,6 +256,9 @@
         },
         "title": {
           "$ref": "#/definitions/title"
+        },
+        "displayTitle": {
+          "$ref": "#/definitions/displayTitle"
         },
         "body": {
           "$ref": "#/definitions/body"

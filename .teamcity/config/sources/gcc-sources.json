@@ -126,6 +126,12 @@
       "title": "Source Control Management Service",
       "gitUrl": "ssh://git@stash.guidewire.com/orange/source-control-management-service-docs.git",
       "branch": "master"
+    },
+    {
+      "id": "planetservicesrc",
+      "title": "Planet Service",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/gcc-internal-docs-template-planet-service.git",
+      "branch": "main"
     }
   ]
 }

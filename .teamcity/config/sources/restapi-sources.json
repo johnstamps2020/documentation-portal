@@ -1,0 +1,17 @@
+{
+  "$schema": "../../config-schema.json",
+  "sources": [
+    {
+      "id": "restapisrc",
+      "title": "IS REST API",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/rest-api.git",
+      "branch": "release/latest"
+    },
+    {
+      "id": "restapinextsrc",
+      "title": "IS REST API Next",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/rest-api.git",
+      "branch": "main"
+    }
+  ]
+}

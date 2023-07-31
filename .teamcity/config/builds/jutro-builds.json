@@ -164,6 +164,13 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutrosdkhakuba",
+      "srcId": "srcjutrosdkhakuba",
+      "nodeImageVersion": "17.6.0",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutronext",
       "srcId": "srcjutronext",
       "workingDir": "website",

@@ -1,0 +1,40 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "gchjaJPhelprelease",
+      "title": "Guidewire Cloud Home Help ja",
+      "url": "ja/help/GCH",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Home"],
+        "version": ["latest"],
+        "release": ["Garmisch"],
+        "lang": "ja"
+      },
+      "environments": ["staging"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false,
+      "displayOnLandingPages": true
+    },
+    {
+      "id": "gchjaJPhelpearlyaccess",
+      "title": "Guidewire Cloud Home Help ja - Early Access",
+      "url": "ja/help/GCH-earlyaccess",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Guidewire Cloud Home"],
+        "version": ["latest"],
+        "lang": "ja"
+      },
+      "environments": ["staging"],
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true,
+      "displayOnLandingPages": true
+    }
+  ]
+}

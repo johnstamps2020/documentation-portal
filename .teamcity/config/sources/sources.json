@@ -26,12 +26,6 @@
       "branch": "master"
     },
     {
-      "id": "restapisrc",
-      "title": "IS REST API",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/rest-api.git",
-      "branch": "main"
-    },
-    {
       "id": "dxgwsf331",
       "title": "Digital GW for SF 3.3.1",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/digital-11x.git",

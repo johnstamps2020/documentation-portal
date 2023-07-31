@@ -10,7 +10,7 @@
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
         "subject": ["Release notes"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["prod", "staging"],
       "displayOnLandingPages": true,
@@ -28,7 +28,7 @@
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["prod", "staging"],
       "displayOnLandingPages": true,
@@ -46,7 +46,7 @@
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
         "subject": ["Installation"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["prod", "staging"],
       "displayOnLandingPages": true,
@@ -64,7 +64,7 @@
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
         "subject": ["Installation"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["prod", "staging"],
       "displayOnLandingPages": true,
@@ -82,7 +82,7 @@
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["prod", "staging"],
       "displayOnLandingPages": true,
@@ -100,7 +100,7 @@
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["prod", "staging"],
       "displayOnLandingPages": true,
@@ -118,7 +118,7 @@
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
         "subject": ["Administration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["prod", "staging"],
       "displayOnLandingPages": true,
@@ -136,7 +136,7 @@
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
         "subject": ["Development"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["prod", "staging"],
       "displayOnLandingPages": true,
@@ -154,7 +154,7 @@
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
         "subject": ["Release notes"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["prod", "staging"],
       "displayOnLandingPages": true,
@@ -172,7 +172,7 @@
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["prod", "staging"],
       "displayOnLandingPages": true,
@@ -190,7 +190,7 @@
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
         "subject": ["Installation"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["prod", "staging"],
       "displayOnLandingPages": true,
@@ -208,7 +208,7 @@
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
         "subject": ["Installation"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["prod", "staging"],
       "displayOnLandingPages": true,
@@ -226,7 +226,7 @@
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["prod", "staging"],
       "displayOnLandingPages": true,
@@ -244,7 +244,7 @@
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["prod", "staging"],
       "displayOnLandingPages": true,
@@ -262,7 +262,7 @@
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
         "subject": ["Administration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["prod", "staging"],
       "displayOnLandingPages": true,
@@ -280,7 +280,7 @@
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["prod", "staging"],
       "displayOnLandingPages": true,
@@ -298,7 +298,7 @@
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["prod", "staging"],
       "displayOnLandingPages": true,
@@ -316,7 +316,7 @@
         "platform": ["Self-managed"],
         "version": ["10.6.0"],
         "subject": ["Development"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["prod", "staging"],
       "displayOnLandingPages": true,

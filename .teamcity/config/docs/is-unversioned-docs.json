@@ -28,7 +28,7 @@
           "Flaine",
           "Garmisch"
         ],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

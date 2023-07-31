@@ -11,7 +11,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -30,7 +30,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Release notes"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -49,7 +49,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -68,7 +68,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Administration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -87,7 +87,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -106,7 +106,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Administration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -125,7 +125,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -144,7 +144,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -163,7 +163,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -182,7 +182,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -201,7 +201,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -220,7 +220,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -239,7 +239,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -258,7 +258,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Installation"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -277,7 +277,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Release notes"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -296,7 +296,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -315,7 +315,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Administration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -334,7 +334,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -353,7 +353,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Administration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -372,7 +372,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -391,7 +391,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -410,7 +410,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -429,7 +429,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -448,7 +448,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -467,7 +467,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -486,7 +486,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -505,7 +505,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Installation"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -524,7 +524,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Release notes"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -543,7 +543,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -562,7 +562,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Administration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -581,7 +581,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -600,7 +600,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Administration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -619,7 +619,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -638,7 +638,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -657,7 +657,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -676,7 +676,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -695,7 +695,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -714,7 +714,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -733,7 +733,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -752,7 +752,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -771,7 +771,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -790,7 +790,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Installation"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -809,7 +809,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -828,7 +828,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -847,7 +847,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -866,7 +866,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -885,7 +885,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -904,7 +904,7 @@
         "version": ["2023.02"],
         "release": ["Garmisch"],
         "subject": ["Integration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

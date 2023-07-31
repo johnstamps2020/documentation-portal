@@ -1,0 +1,100 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "isbc202111apibfitIT",
+      "title": "Cloud API Business Flows and Configuration it",
+      "url": "it/cloud/bc/202111/cloudapibf",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Integration"],
+        "lang": "it"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202111apibfitIT",
+      "title": "Cloud API Business Flows and Configuration it",
+      "url": "it/cloud/cc/202111/cloudapibf",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Integration"],
+        "lang": "it"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202111apibfitIT",
+      "title": "Cloud API Business Flows and Configuration it",
+      "url": "it/cloud/pc/202111/cloudapibf",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Integration"],
+        "lang": "it"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202111apicaitIT",
+      "title": "Cloud API Authentication it",
+      "url": "it/cloud/cc/202111/cloudapica",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Integration"],
+        "lang": "it"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202111apicaitIT",
+      "title": "Cloud API Authentication it",
+      "url": "it/cloud/pc/202111/cloudapica",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2021.11"],
+        "release": ["Dobson"],
+        "subject": ["Integration"],
+        "lang": "it"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

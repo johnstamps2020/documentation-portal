@@ -10,7 +10,7 @@
         "product": ["Ski release overview"],
         "version": ["2023.06"],
         "release": ["Hakuba"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "indexForSearch": true,
@@ -28,7 +28,7 @@
         "product": ["Ski release overview"],
         "version": ["2023.02"],
         "release": ["Garmisch"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,
@@ -46,7 +46,7 @@
         "product": ["Ski release overview"],
         "version": ["2022.09"],
         "release": ["Flaine"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "indexForSearch": false,

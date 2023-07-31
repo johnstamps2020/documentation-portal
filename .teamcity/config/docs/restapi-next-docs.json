@@ -1,0 +1,62 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "appeventsdevnext",
+      "title": "App Events",
+      "url": "cloud/is/appevents/next",
+      "metadata": {
+        "product": ["PolicyCenter", "ClaimCenter", "App Events Webhooks"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "lang": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "integgatewaydevnext",
+      "title": "Integration Gateway",
+      "url": "cloud/is/integgateway/next",
+      "metadata": {
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "platform": ["Cloud"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Integration"],
+        "lang": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "isrestapiclientguidenext",
+      "title": "REST API Client",
+      "url": "is/restapiclient/next/guide",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["2023.06"],
+        "subject": ["Integration"],
+        "release": ["Hakuba"],
+        "lang": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

@@ -10,7 +10,7 @@
         "platform": ["Self-managed"],
         "version": ["3.6"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -28,7 +28,7 @@
         "platform": ["Self-managed"],
         "version": ["3.6"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -46,7 +46,7 @@
         "platform": ["Self-managed"],
         "version": ["3.6"],
         "subject": ["Installation"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -64,7 +64,7 @@
         "platform": ["Self-managed"],
         "version": ["3.6"],
         "subject": ["Release notes"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -82,7 +82,7 @@
         "platform": ["Self-managed"],
         "version": ["3.6"],
         "subject": ["Release notes"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -100,7 +100,7 @@
         "platform": ["Self-managed"],
         "version": ["3.6"],
         "subject": ["Glossary"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -118,7 +118,7 @@
         "platform": ["Self-managed"],
         "version": ["3.6"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

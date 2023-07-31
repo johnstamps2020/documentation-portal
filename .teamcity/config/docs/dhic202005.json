@@ -10,7 +10,7 @@
         "product": ["DataHub"],
         "version": ["2020.05"],
         "release": ["Aspen"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -28,7 +28,7 @@
         "product": ["InfoCenter"],
         "version": ["2020.05"],
         "release": ["Aspen"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

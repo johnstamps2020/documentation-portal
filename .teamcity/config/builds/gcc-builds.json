@@ -142,6 +142,13 @@
       "nodeImageVersion": "18.0.0",
       "workingDir": "website",
       "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "planetservice",
+      "srcId": "planetservicesrc",
+      "nodeImageVersion": "18.0.0",
+      "disabled": false
     }
   ]
 }

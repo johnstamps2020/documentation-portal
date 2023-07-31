@@ -11,7 +11,7 @@
         "version": ["2023.06"],
         "release": ["Hakuba"],
         "subject": ["Release notes"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -30,7 +30,7 @@
         "version": ["2023.06"],
         "release": ["Hakuba"],
         "subject": ["Development"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -49,7 +49,7 @@
         "version": ["2023.06"],
         "release": ["Hakuba"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -68,7 +68,7 @@
         "version": ["2023.06"],
         "release": ["Hakuba"],
         "subject": ["Installation"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

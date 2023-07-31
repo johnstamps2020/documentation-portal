@@ -1,0 +1,62 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "isbc202302appes419",
+      "title": "Application Guide es",
+      "url": "es/cloud/bc/202302/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter"],
+        "version": ["2023.02"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"],
+        "lang": "es"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "iscc202302appes419",
+      "title": "Application Guide es",
+      "url": "es/cloud/cc/202302/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2023.02"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"],
+        "lang": "es"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "ispc202302appes419",
+      "title": "Application Guide es",
+      "url": "es/cloud/pc/202302/app",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["PolicyCenter"],
+        "version": ["2023.02"],
+        "release": ["Dobson"],
+        "subject": ["Features and functionality"],
+        "lang": "es"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}
