@@ -8,13 +8,6 @@ export type LegacyVersionObject = {
   label: string;
 };
 
-export type LegacyVersionSelector = {
-  matchingVersionSelector: {
-    docId: string;
-    allVersions: LegacyVersionObject[];
-  };
-};
-
 export type LegacyItem = {
   label: string;
   class: string;
