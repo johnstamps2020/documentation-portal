@@ -1,0 +1,24 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "ic1090reportses419",
+      "title": "Reports Guide es",
+      "displayTitle": "Guía de informes",
+      "url": "es/self-managed/ic/1090/reports",
+      "metadata": {
+        "product": ["InfoCenter"],
+        "platform": ["Self-managed"],
+        "version": ["10.9.0"],
+        "subject": ["Features and functionality"],
+        "lang": "es"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

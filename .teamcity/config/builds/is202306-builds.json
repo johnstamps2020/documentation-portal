@@ -217,6 +217,15 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "IntegrationDataManager.ditamap",
+      "srcId": "is202306src",
+      "docId": "iscc202306integdatamgr",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "IntegrationGuide.ditamap",
       "srcId": "is202306src",
       "docId": "iscc202306integ",
@@ -358,6 +367,15 @@
       "root": "ProductModelGuide.ditamap",
       "srcId": "is202306src",
       "docId": "ispc202306pm",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-PC-Cloud-Release.ditaval",
+      "root": "IntegrationDataManager.ditamap",
+      "srcId": "is202306src",
+      "docId": "ispc202306integdatamgr",
       "indexRedirect": true,
       "disabled": false
     },

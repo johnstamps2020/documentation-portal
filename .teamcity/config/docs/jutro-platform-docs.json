@@ -10,7 +10,7 @@
         "platform": ["Cloud"],
         "version": ["next"],
         "subject": ["Administration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -29,7 +29,7 @@
         "version": ["Garmisch"],
         "subject": ["Administration"],
         "release": ["Garmisch"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -48,7 +48,7 @@
         "version": ["Flaine"],
         "subject": ["Administration"],
         "release": ["Flaine"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

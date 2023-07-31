@@ -3,7 +3,7 @@
   "docs": [
     {
       "id": "observability",
-      "title": "Observability",
+      "title": "InsuranceSuite Observability",
       "url": "cloud/observability",
       "metadata": {
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
@@ -11,7 +11,7 @@
         "version": ["2023.06"],
         "subject": ["Administration"],
         "release": ["Hakuba"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

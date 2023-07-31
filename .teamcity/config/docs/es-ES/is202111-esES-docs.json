@@ -4,14 +4,14 @@
     {
       "id": "isbc202111apibfesES",
       "title": "Cloud API Business Flows and Configuration es-ES",
-      "url": "cloud/bc/es-ES/202111/cloudapibf",
+      "url": "es-ES/cloud/bc/202111/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Integration"],
-        "locale": ["es-ES"]
+        "lang": "es-ES"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -23,14 +23,14 @@
     {
       "id": "iscc202111apibfesES",
       "title": "Cloud API Business Flows and Configuration es-ES",
-      "url": "cloud/cc/es-ES/202111/cloudapibf",
+      "url": "es-ES/cloud/cc/202111/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Integration"],
-        "locale": ["es-ES"]
+        "lang": "es-ES"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -42,14 +42,14 @@
     {
       "id": "ispc202111apibfesES",
       "title": "Cloud API Business Flows and Configuration es-ES",
-      "url": "cloud/pc/es-ES/202111/cloudapibf",
+      "url": "es-ES/cloud/pc/202111/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Integration"],
-        "locale": ["es-ES"]
+        "lang": "es-ES"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -61,14 +61,14 @@
     {
       "id": "iscc202111apicaesES",
       "title": "Cloud API Authentication es-ES",
-      "url": "cloud/cc/es-ES/202111/cloudapica",
+      "url": "es-ES/cloud/cc/202111/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Integration"],
-        "locale": ["es-ES"]
+        "lang": "es-ES"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -80,14 +80,14 @@
     {
       "id": "ispc202111apicaesES",
       "title": "Cloud API Authentication es-ES",
-      "url": "cloud/pc/es-ES/202111/cloudapica",
+      "url": "es-ES/cloud/pc/202111/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Integration"],
-        "locale": ["es-ES"]
+        "lang": "es-ES"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

@@ -9,7 +9,7 @@
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
         "version": ["10.2.0"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -26,7 +26,7 @@
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
         "version": ["10.2.0"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -43,7 +43,7 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.0"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -61,7 +61,7 @@
         "platform": ["Self-managed"],
         "product": ["BillingCenter"],
         "version": ["10.2.0"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,
@@ -78,7 +78,7 @@
         "platform": ["Self-managed"],
         "product": ["ClaimCenter"],
         "version": ["10.2.0"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,
@@ -95,7 +95,7 @@
         "platform": ["Self-managed"],
         "product": ["PolicyCenter"],
         "version": ["10.2.0"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,

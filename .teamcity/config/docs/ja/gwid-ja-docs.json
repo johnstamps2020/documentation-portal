@@ -1,0 +1,23 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "guidewireidentityfederationhubjaJP",
+      "title": "Authentication ja",
+      "url": "ja/cloud/auth/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"],
+        "lang": "ja"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

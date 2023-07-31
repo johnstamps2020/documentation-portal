@@ -10,7 +10,7 @@
         "platform": ["Cloud"],
         "version": ["3.2"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -28,7 +28,7 @@
         "platform": ["Cloud"],
         "version": ["3.2"],
         "subject": ["Release notes"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

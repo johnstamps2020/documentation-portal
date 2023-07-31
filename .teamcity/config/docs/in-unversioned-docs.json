@@ -11,7 +11,7 @@
         "version": ["2022.1", "2022.2", "2023.1"],
         "subject": ["Release notes"],
         "release": ["Elysian", "Flaine", "Garmisch"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -30,7 +30,7 @@
         "version": ["2022.1", "2022.2", "2023.1"],
         "subject": ["Release notes"],
         "release": ["Elysian", "Flaine", "Garmisch"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -49,7 +49,7 @@
         "version": ["2023.2"],
         "subject": ["Release notes"],
         "release": ["Hakuba"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -68,7 +68,7 @@
         "version": ["2023.1"],
         "subject": ["Release notes"],
         "release": ["Garmisch"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -87,7 +87,7 @@
         "version": ["2022.2"],
         "subject": ["Release notes"],
         "release": ["Flaine"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -106,7 +106,7 @@
         "version": ["2022.1"],
         "subject": ["Release notes"],
         "release": ["Elysian"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -125,7 +125,7 @@
         "version": ["2021.1"],
         "subject": ["Release notes"],
         "release": ["Cortina"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -144,7 +144,7 @@
         "version": ["2021.2"],
         "subject": ["Release notes"],
         "release": ["Dobson"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -163,7 +163,7 @@
         "version": ["3.26"],
         "subject": ["Release notes"],
         "release": ["Aspen", "Banff", "Cortina"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -182,7 +182,7 @@
         "version": ["3.25"],
         "subject": ["Release notes"],
         "release": ["Aspen", "Banff", "Cortina"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -201,7 +201,7 @@
         "version": ["3.24"],
         "subject": ["Release notes"],
         "release": ["Aspen", "Banff", "Cortina"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -220,7 +220,7 @@
         "version": ["3.23"],
         "subject": ["Release notes"],
         "release": ["Aspen", "Banff", "Cortina"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -239,7 +239,7 @@
         "version": ["2023.1", "2022.2", "2022.1", "2021.2"],
         "subject": ["Installation"],
         "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -267,7 +267,7 @@
         ],
         "subject": ["Installation"],
         "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -293,7 +293,7 @@
           "Garmisch",
           "Hakuba"
         ],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -312,7 +312,7 @@
         "version": ["2020.2", "2020.1"],
         "subject": ["Features and functionality"],
         "release": ["Aspen", "Banff"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -331,7 +331,7 @@
         "version": ["2023.2"],
         "subject": ["Release notes"],
         "release": ["Hakuba"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -350,7 +350,7 @@
         "version": ["2023.1"],
         "subject": ["Release notes"],
         "release": ["Garmisch"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -369,7 +369,7 @@
         "version": ["2022.2"],
         "subject": ["Release notes"],
         "release": ["Flaine"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -388,7 +388,7 @@
         "version": ["2022.1"],
         "subject": ["Release notes"],
         "release": ["Elysian"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -407,7 +407,7 @@
         "version": ["2021.2"],
         "subject": ["Release notes"],
         "release": ["Dobson"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -426,7 +426,7 @@
         "version": ["2021.1"],
         "subject": ["Release notes"],
         "release": ["Cortina"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -445,7 +445,7 @@
         "version": ["2020.2"],
         "subject": ["Release notes"],
         "release": ["Banff"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -464,7 +464,7 @@
         "version": ["2020.1"],
         "subject": ["Release notes"],
         "release": ["Aspen"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -501,7 +501,7 @@
           "Garmisch",
           "Hakuba"
         ],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -520,7 +520,7 @@
         "version": ["2023.2"],
         "subject": ["Release notes"],
         "release": ["Hakuba"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -539,7 +539,7 @@
         "version": ["2023.1"],
         "subject": ["Release notes"],
         "release": ["Garmisch"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -558,7 +558,7 @@
         "version": ["2022.2"],
         "subject": ["Release notes"],
         "release": ["Flaine"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -577,7 +577,7 @@
         "version": ["2022.1"],
         "subject": ["Release notes"],
         "release": ["Elysian"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -596,7 +596,7 @@
         "version": ["2021.2"],
         "subject": ["Release notes"],
         "release": ["Dobson"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -615,7 +615,7 @@
         "version": ["2021.1"],
         "subject": ["Release notes"],
         "release": ["Cortina"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -634,7 +634,7 @@
         "version": ["2020.2"],
         "subject": ["Release notes"],
         "release": ["Banff"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -653,7 +653,7 @@
         "version": ["2020.1"],
         "subject": ["Release notes"],
         "release": ["Aspen"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -690,7 +690,7 @@
           "Garmisch",
           "Hakuba"
         ],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -709,7 +709,7 @@
         "version": ["2023.2", "2023.1", "2022.2", "2022.1", "2021.2"],
         "subject": ["Installation"],
         "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

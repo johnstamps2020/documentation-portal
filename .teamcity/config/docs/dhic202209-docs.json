@@ -11,7 +11,7 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Release notes"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -30,7 +30,7 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -49,7 +49,7 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Installation"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -68,7 +68,7 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Installation"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -87,7 +87,7 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -106,7 +106,7 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -125,7 +125,7 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Administration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -144,7 +144,7 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Development"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -163,7 +163,7 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Release notes"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -182,7 +182,7 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -201,7 +201,7 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Installation"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -220,7 +220,7 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Installation"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -239,7 +239,7 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -258,7 +258,7 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Configuration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -277,7 +277,7 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Administration"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -296,7 +296,7 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -315,7 +315,7 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -334,7 +334,7 @@
         "version": ["2022.09"],
         "release": ["Flaine"],
         "subject": ["Development"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

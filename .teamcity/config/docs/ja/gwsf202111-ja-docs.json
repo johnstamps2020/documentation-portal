@@ -1,0 +1,23 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "dxgwsfinstall202111jaJP",
+      "title": "Installation Guide ja",
+      "url": "ja/cloud/dx/gwsf/202111/install",
+      "metadata": {
+        "product": ["Guidewire for Salesforce"],
+        "platform": ["Cloud"],
+        "version": ["2021.11"],
+        "subject": ["Installation"],
+        "lang": "ja"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

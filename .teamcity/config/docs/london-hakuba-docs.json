@@ -11,7 +11,7 @@
         "version": ["Hakuba"],
         "subject": ["Features and functionality"],
         "release": ["Hakuba"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -30,7 +30,7 @@
         "version": ["Hakuba"],
         "subject": ["Features and functionality"],
         "release": ["Hakuba"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -49,7 +49,7 @@
         "version": ["Hakuba"],
         "subject": ["Development"],
         "release": ["Hakuba"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -68,7 +68,7 @@
         "version": ["Hakuba"],
         "subject": ["Release notes"],
         "release": ["Hakuba"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

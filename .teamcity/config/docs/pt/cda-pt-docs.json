@@ -1,0 +1,24 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "clouddataaccessguideptBR",
+      "title": "Application Guide pt",
+      "url": "pt/cloud/cda/guide/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Data Platform"],
+        "version": ["latest"],
+        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "subject": ["Features and functionality"],
+        "lang": "pt"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

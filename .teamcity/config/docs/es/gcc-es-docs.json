@@ -1,0 +1,39 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "guidewirecloudconsolerootinsurerdeves419",
+      "title": "Cloud Console Guide Insurer Developer es",
+      "url": "es/cloud/gcc-guide/insurer-developer/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "lang": "es"
+      },
+      "environments": ["staging"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "guidewirecloudconsolerootinsurerdevrnes419",
+      "title": "Cloud Console Release Notes Insurer Developer es",
+      "url": "es/cloud/gcc-rn/insurer-developer/latest",
+      "displayOnLandingPages": false,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "lang": "es"
+      },
+      "environments": ["staging"],
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

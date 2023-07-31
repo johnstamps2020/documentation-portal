@@ -11,7 +11,7 @@
         "version": ["144.7"],
         "release": ["Dobson"],
         "subject": ["Release notes"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "displayOnLandingPages": true,
       "indexForSearch": false,
@@ -30,7 +30,7 @@
         "version": ["144.7"],
         "release": ["Dobson"],
         "subject": ["Release notes"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "displayOnLandingPages": true,
       "indexForSearch": false,
@@ -49,7 +49,7 @@
         "version": ["144.7"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "displayOnLandingPages": true,
       "indexForSearch": false,
@@ -68,7 +68,7 @@
         "version": ["144.7"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "displayOnLandingPages": true,
       "indexForSearch": false,
@@ -87,7 +87,7 @@
         "version": ["144.7"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "displayOnLandingPages": true,
       "indexForSearch": false,
@@ -106,7 +106,7 @@
         "version": ["144.7"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "displayOnLandingPages": true,
       "indexForSearch": false,

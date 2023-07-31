@@ -1,0 +1,138 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "dx202302deDEceamapp",
+      "title": "CustomerEngage Account Management Application Guide de",
+      "url": "de/cloud/dx/ce-am/202302/app",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Features and functionality"],
+        "lang": "de"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302deDEceclaimsapp",
+      "title": "CustomerEngage Account Management for ClaimCenter Application Guide de",
+      "url": "de/cloud/dx/ce-claims/202302/app",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Features and functionality"],
+        "lang": "de"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302deDEceqbapp",
+      "title": "CustomerEngage Quote and Buy Application Guide de",
+      "url": "de/cloud/dx/ce-qb/202302/app",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Features and functionality"],
+        "lang": "de"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302deDEpeapp",
+      "title": "ProducerEngage Application Guide de",
+      "url": "de/cloud/dx/pe/202302/app",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Features and functionality"],
+        "lang": "de"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302deDEpeclaimsapp",
+      "title": "ProducerEngage for ClaimCenter Application Guide de",
+      "url": "de/cloud/dx/pe-claims/202302/app",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Features and functionality"],
+        "lang": "de"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302deDEsreapp",
+      "title": "ServiceRepEngage Application Guide de",
+      "url": "de/cloud/dx/sre/202302/app",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Features and functionality"],
+        "lang": "de"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "dx202302deDEveapp",
+      "title": "VendorEngage Application Guide de",
+      "url": "de/cloud/dx/ve/202302/app",
+      "metadata": {
+        "product": ["Digital Reference Applications"],
+        "platform": ["Cloud"],
+        "version": ["2023.02"],
+        "release": ["Garmisch"],
+        "subject": ["Features and functionality"],
+        "lang": "de"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

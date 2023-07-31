@@ -10,7 +10,7 @@
         "platform": ["Self-managed"],
         "version": ["3.7"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -28,7 +28,7 @@
         "platform": ["Self-managed"],
         "version": ["3.7"],
         "subject": ["Features and functionality"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -46,7 +46,7 @@
         "platform": ["Self-managed"],
         "version": ["3.7"],
         "subject": ["Installation"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -64,7 +64,7 @@
         "platform": ["Self-managed"],
         "version": ["3.7"],
         "subject": ["Release notes"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -76,13 +76,13 @@
     {
       "id": "midipgrnde37",
       "title": "Release Notes (German)",
-      "url": "de-DE/self-managed/ipg/37/releasenotes",
+      "url": "de/self-managed/ipg/37/releasenotes",
       "metadata": {
         "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
         "version": ["3.7"],
         "subject": ["Release notes"],
-        "locale": ["de-DE"]
+        "lang": "de"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -100,7 +100,7 @@
         "platform": ["Self-managed"],
         "version": ["3.7"],
         "subject": ["Glossary"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -112,13 +112,13 @@
     {
       "id": "midipgappde37",
       "title": "Application Guide (German)",
-      "url": "de-DE/self-managed/ipg/37/app",
+      "url": "de/self-managed/ipg/37/app",
       "metadata": {
         "product": ["InsuranceSuite Package for Germany"],
         "platform": ["Self-managed"],
         "version": ["3.7"],
         "subject": ["Features and functionality"],
-        "locale": ["de-DE"]
+        "lang": "de"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

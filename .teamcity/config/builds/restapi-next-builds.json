@@ -1,0 +1,32 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "ApplicationEventsForDevelopers.ditamap",
+      "indexRedirect": true,
+      "srcId": "restapinextsrc",
+      "docId": "appeventsdevnext",
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "IntegrationGatewayForDevelopers.ditamap",
+      "indexRedirect": true,
+      "srcId": "restapinextsrc",
+      "docId": "integgatewaydevnext",
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "RESTAPIClientGuide.ditamap",
+      "srcId": "restapinextsrc",
+      "docId": "isrestapiclientguidenext",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}

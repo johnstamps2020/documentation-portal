@@ -10,7 +10,7 @@
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "subject": ["Best practices"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": false,
@@ -29,7 +29,7 @@
         "version": ["latest"],
         "subject": ["Development"],
         "release": ["Flaine", "Garmisch"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -48,7 +48,7 @@
         "version": ["latest"],
         "subject": ["Development"],
         "release": ["Flaine", "Garmisch"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -67,7 +67,7 @@
         "version": ["latest"],
         "subject": ["Development"],
         "release": ["Elysian", "Flaine", "Garmisch"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -86,7 +86,7 @@
         "version": ["latest"],
         "subject": ["Development"],
         "release": ["Garmisch"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -107,7 +107,7 @@
         "version": ["latest"],
         "subject": ["Development"],
         "release": ["Elysian", "Flaine", "Garmisch"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "public": true,
@@ -131,7 +131,7 @@
           "Flaine",
           "Garmisch"
         ],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -149,7 +149,7 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "indexForSearch": true,
@@ -166,7 +166,7 @@
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,
@@ -185,7 +185,7 @@
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "subject": ["Development"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "public": false,
@@ -203,7 +203,7 @@
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "subject": ["Development"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "public": false,
@@ -221,7 +221,7 @@
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "subject": ["Development"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "public": false,
@@ -239,7 +239,7 @@
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "subject": ["Development"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "public": false,
@@ -257,7 +257,7 @@
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "subject": ["Development"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "public": false,
@@ -275,7 +275,7 @@
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "subject": ["Development"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "public": false,
@@ -293,7 +293,7 @@
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "subject": ["Development"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "public": false,
@@ -311,7 +311,7 @@
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "subject": ["Development"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "public": false,
@@ -329,7 +329,7 @@
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "subject": ["Development"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "public": false,
@@ -347,7 +347,7 @@
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "subject": ["Development"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "public": false,
@@ -365,7 +365,7 @@
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "subject": ["Development"],
-        "locale": ["en-US"]
+        "lang": "en"
       },
       "environments": ["staging"],
       "public": false,
@@ -383,7 +383,25 @@
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "subject": ["Development"],
-        "locale": ["en-US"]
+        "lang": "en"
+      },
+      "environments": ["staging"],
+      "public": false,
+      "internal": true,
+      "earlyAccess": false
+    }, 
+    {
+      "id": "planetservice",
+      "title": "Planet Service",
+      "url": "internal/planet-service/latest",
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "subject": ["Development"],
+        "lang": "en"
       },
       "environments": ["staging"],
       "public": false,
