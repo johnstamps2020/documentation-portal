@@ -8,14 +8,12 @@ export default function ErrorPage({ error }: FallbackProps) {
   const informationToDisplay = (
     <>
       <Typography variant="h1" sx={{ color: 'black', textAlign: 'center' }}>
-        Oops! Something went wrong
+        Unable to load page
       </Typography>
       <Typography>
-        We apologize for the inconvenience, but it seems that an unexpected
-        error has occurred. Our team is already on the case, diligently working
-        to fix the issue and get everything back on track. In the meantime,
-        please try refreshing the page or come back a little later. We promise
-        to have things up and running as soon as possible. 
+        A technical issue has occurred on our end. We are sorry for the
+        inconvenience. Our team is working to fix the issue. In the meantime,
+        please try refreshing the page or come back a little later.
       </Typography>
       <Box
         sx={{
