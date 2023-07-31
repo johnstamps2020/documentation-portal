@@ -15,13 +15,18 @@ export function useReleases() {
         }
 
         const json: Release[] = await response.json();
-        setReleases(json.map(({ name }) => name));
+        if (!ignore) {
+          setReleases(json.map(({ name }) => name));
+        }
       } catch (err) {
         console.error(err);
       }
     }
-
+    let ignore = false;
     getReleases();
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   return releases;

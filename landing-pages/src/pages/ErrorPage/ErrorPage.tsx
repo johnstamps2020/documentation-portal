@@ -1,24 +1,42 @@
-import styles from './ErrorPage.module.css';
-import Paper from '@mui/material/Paper';
-import { useLayoutContext } from 'LayoutContext';
-import { useEffect } from 'react';
+import ServerMessagePage from 'pages/ServerMessagePage';
+import Typography from '@mui/material/Typography';
+import ErrorImage from './../../images/error-page.svg';
+import { FallbackProps } from 'react-error-boundary';
+import Box from '@mui/material/Box';
 
-type ErrorPageProps = {
-  code: number;
-  message: JSX.Element;
-};
-
-export default function ErrorPage({ code, message }: ErrorPageProps) {
-  const { setTitle } = useLayoutContext();
-  useEffect(() => {
-    setTitle('Error');
-  }, [setTitle]);
+export default function ErrorPage({ error }: FallbackProps) {
+  const informationToDisplay = (
+    <>
+      <Typography variant="h1" sx={{ color: 'black', textAlign: 'center' }}>
+        Unable to load page
+      </Typography>
+      <Typography>
+        A technical issue has occurred on our end. We are sorry for the
+        inconvenience. Our team is working to fix the issue. In the meantime,
+        please try refreshing the page or come back a little later.
+      </Typography>
+      <Box
+        sx={{
+          background: 'hsla(211, 22%, 20%, 0.04);',
+          borderRadius: '6px',
+          border: '1px solid gray',
+          width: 'fit-content',
+          maxWidth: { xs: '100%', sm: '100%', md: '950px', lg: '1024px' },
+          height: 'fit-content',
+          maxHeight: '200px',
+          margin: 'auto',
+          padding: { xs: '1.5rem', sm: '1rem 1rem' },
+        }}
+      >
+        <Typography>{error.message}.</Typography>
+      </Box>
+    </>
+  );
 
   return (
-    <Paper elevation={3} className={styles.wrapper}>
-      <h1>Oh no! It looks like there was a problem!</h1>
-      <div className={styles.code}>{code}</div>
-      <div className={styles.message}>{message}</div>
-    </Paper>
+    <ServerMessagePage
+      informationToDisplay={informationToDisplay}
+      backgroundImage={`url(${ErrorImage})`}
+    />
   );
 }
