@@ -10,8 +10,8 @@ import {
   FindOneOptions,
   FindOptionsRelations,
   FindOptionsWhere,
-  ObjectLiteral,
   In,
+  ObjectLiteral,
 } from 'typeorm';
 import { ApiResponse } from '../types/apiResponse';
 import { Page } from '../model/entity/Page';
@@ -26,11 +26,11 @@ function wrapInQuotes(
 ): string[] | string | undefined {
   const valueSeparator = ',';
 
-  function addQuotes(stringToModify: string) {
+  const addQuotes = function (stringToModify: string) {
     return stringToModify.includes(',')
       ? '"' + stringToModify + '"'
       : stringToModify;
-  }
+  };
 
   if (Array.isArray(stringsToWrap)) {
     return stringsToWrap.map((s) => addQuotes(s)).join(valueSeparator);
@@ -162,9 +162,8 @@ export async function getBreadcrumbs(
       const breadcrumbRoutePath = startPath ? `/${route}` : route;
       const breadcrumbPath = startPath + breadcrumbRoutePath;
       const breadcrumbId = route.replace('/', '_').toLowerCase();
-      const breadcrumbLabel = route;
       breadcrumbs.push({
-        label: breadcrumbLabel,
+        label: route,
         path: breadcrumbPath,
         id: breadcrumbId,
       });
@@ -379,8 +378,7 @@ export function splitLegacyValueByCommaAndReturnUnique(
 export function removeQuotesFromLegacySearchParams(
   queryString: string
 ): string {
-  const replaced = queryString.replace(/"]/g, '').replace(/%22/g, '');
-  return replaced;
+  return queryString.replace(/"]/g, '').replace(/%22/g, '');
 }
 
 export async function getDocumentMetadataById(
