@@ -10,6 +10,7 @@ type ButtonWithTooltipProps = {
   redirectTo: string;
   tooltipStyle?: {};
   buttonStyle?: {};
+  onClick?: () => void;
 };
 
 export default function ButtonWithTooltip({
@@ -18,6 +19,7 @@ export default function ButtonWithTooltip({
   redirectTo,
   tooltipStyle,
   buttonStyle,
+  onClick,
 }: ButtonWithTooltipProps) {
   return (
     <Tooltip
@@ -32,6 +34,7 @@ export default function ButtonWithTooltip({
         variant="contained"
         color="primary"
         sx={buttonStyle}
+        onClick={onClick}
       >
         {loginButtonProps.label}
       </Button>
