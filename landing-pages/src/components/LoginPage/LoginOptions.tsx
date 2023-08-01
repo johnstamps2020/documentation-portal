@@ -1,11 +1,14 @@
 import Stack from '@mui/material/Stack';
+import { useState } from 'react';
 import ButtonWithTooltip from './ButtonWithTooltip';
 import GwEmployeeButton from './GwEmployeeButton';
+import LoginInProgress from './LoginInProgress';
 
 type LoginOptionsProps = {
   inDrawer?: boolean;
 };
 export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
+  const [loginInProgress, setLoginInProgress] = useState(false);
   const query = new URLSearchParams(window.location.search);
   const isLoginPage = window.location.pathname.endsWith('/gw-login');
   const redirectTo =
@@ -43,17 +46,20 @@ export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
   if (inDrawer) {
     return (
       <Stack spacing={2}>
+        <LoginInProgress loginIsInProgress={loginInProgress} />
         {loginButtons.map((loginButtonProps) => (
           <ButtonWithTooltip
             loginButtonProps={loginButtonProps}
             placement="left"
             key={loginButtonProps.label}
             redirectTo={redirectTo}
+            onClick={() => setLoginInProgress(true)}
           />
         ))}
         <GwEmployeeButton
           buttonStyle={{ fontWeight: 600, border: 1 }}
           redirectTo={redirectTo}
+          onClick={() => setLoginInProgress(true)}
         />
       </Stack>
     );
@@ -61,6 +67,7 @@ export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
 
   return (
     <>
+      <LoginInProgress loginIsInProgress={loginInProgress} />
       <Stack
         direction="row"
         marginBottom="50px"
@@ -75,6 +82,7 @@ export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
             redirectTo={redirectTo}
             tooltipStyle={{ fontSize: '16px' }}
             buttonStyle={buttonStyle}
+            onClick={() => setLoginInProgress(true)}
           />
         ))}
       </Stack>
@@ -86,6 +94,7 @@ export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
           width: '230px',
         }}
         redirectTo={redirectTo}
+        onClick={() => setLoginInProgress(true)}
       />
     </>
   );
