@@ -15,12 +15,12 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n-new/de-DE',
     },
     {
-      label: 'Español (España)',
-      pagePath: 'l10n-new/es-ES',
+      label: 'Español',
+      pagePath: 'l10n-new/es-419',
     },
     {
-      label: 'Español',
-      pagePath: 'l10n-new/es-LA',
+      label: 'Español (España)',
+      pagePath: 'l10n-new/es-ES',
     },
     {
       label: 'Français',

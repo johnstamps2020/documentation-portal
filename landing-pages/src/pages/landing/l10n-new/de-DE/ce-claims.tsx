@@ -11,6 +11,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2023.02',
+      items: [
+        {
+          label: 'Anwendungshandbuch',
+          docId: 'dx202302deDEceclaimsapp',
+        },
+      ],
+    },
+    {
       label: '11.4.1',
       items: [
         {

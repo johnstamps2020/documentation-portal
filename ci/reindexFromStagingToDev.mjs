@@ -19,7 +19,11 @@ async function checkTaskStatus(taskId, elapsedTime = 0, reindexTaskResponse) {
   }
   console.log('Reindexing task is still running. Checking again in 2 minutes');
   setTimeout(async () => {
-    await checkTaskStatus(taskId, elapsedTime + statusCheckTimeout, reindexTaskResponse);
+    await checkTaskStatus(
+      taskId,
+      elapsedTime + statusCheckTimeout,
+      reindexTaskResponse
+    );
   }, statusCheckTimeout);
 }
 

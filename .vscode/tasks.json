@@ -8,9 +8,9 @@
         "up": {
           "detached": true,
           "build": true,
-          "customOptions": "--force-recreate --remove-orphans"
+          "customOptions": "--force-recreate --remove-orphans",
         },
-        "files": ["${workspaceFolder}/.dev/compose-local-dev-env.yml"]
+        "files": ["${workspaceFolder}/.dev/compose-local-dev-env.yml"],
       }
     },
     {

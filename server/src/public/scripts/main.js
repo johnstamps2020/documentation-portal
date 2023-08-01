@@ -119,7 +119,7 @@ function addNotices() {
   addElysianNotice();
 }
 
-window.onload = async function() {
+window.onload = async function () {
   addReleaseBadge();
   addNotices();
   setSearchFilterCSS();

@@ -389,7 +389,7 @@
       "public": false,
       "internal": true,
       "earlyAccess": false
-    }, 
+    },
     {
       "id": "planetservice",
       "title": "Planet Service",
