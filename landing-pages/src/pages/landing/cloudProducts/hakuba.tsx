@@ -160,7 +160,17 @@ const pageConfig: Category2LayoutProps = {
     label: 'Hakuba',
     badge: hakubaBadge,
     item: { label: 'Learn more', docId: 'whatsnewhakuba' },
-    content: ['Content coming soon'],
+    content: [
+      'Integration Data Manager for third-party data storage',
+      'Real-time monitoring of cloud services by region',
+      'Multi-currency support for global commercial lines',
+      'APD App rate modifiers for premium adjustments',
+      'Cloud API enhancements',
+      'InsuranceNow Data Service Console',
+      'One Inc ClaimsPay® integration with InsuranceNow',
+      'London Market programmes and journal financials',
+      'Cyence Model 6',
+    ],
   },
   sidebar: {
     label: 'Implementation Resources',

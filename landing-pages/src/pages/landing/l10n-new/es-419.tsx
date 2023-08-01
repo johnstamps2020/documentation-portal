@@ -12,59 +12,67 @@ const pageConfig: ProductFamilyLayoutProps = {
   items: [
     {
       label: 'BillingCenter',
-      pagePath: 'l10n-new/ja-JP/bc',
+      pagePath: 'l10n-new/es-419/bc',
     },
     {
       label: 'ClaimCenter',
-      pagePath: 'l10n-new/ja-JP/cc',
+      pagePath: 'l10n-new/es-419/cc',
     },
     {
-      label: 'Platform',
-      pagePath: 'l10n-new/ja-JP/gch',
+      label: 'Cloud Data Access',
+      pagePath: 'l10n-new/es-419/cda',
     },
     {
       label: 'CustomerEngage Account Management',
-      pagePath: 'l10n-new/ja-JP/ce-am',
+      pagePath: 'l10n-new/es-419/ce-am',
     },
     {
       label: 'CustomerEngage Account Management for ClaimCenter',
-      pagePath: 'l10n-new/ja-JP/ce-claims',
+      pagePath: 'l10n-new/es-419/ce-claims',
     },
     {
       label: 'CustomerEngage Quote and Buy',
-      pagePath: 'l10n-new/ja-JP/ce-qb',
+      pagePath: 'l10n-new/es-419/ce-qb',
     },
     {
       label: 'InsuranceSuite Contact Management',
-      pagePath: 'l10n-new/ja-JP/cm',
+      pagePath: 'l10n-new/es-419/cm',
     },
     {
-      label: 'Guidewire Identity Federation Hub',
-      pagePath: 'l10n-new/ja-JP/gwid',
+      label: 'DataHub',
+      pagePath: 'l10n-new/es-419/dh',
     },
     {
-      label: 'Guidewire for Salesforce',
-      pagePath: 'l10n-new/ja-JP/gwsf',
+      label: 'Explore',
+      pagePath: 'l10n-new/es-419/explore',
     },
     {
-      label: 'InsuranceSuite Configuration Upgrade Tools',
-      pagePath: 'l10n-new/ja-JP/is-configupgradetools',
+      label: 'Guidewire Cloud Console',
+      pagePath: 'l10n-new/es-419/gcc',
+    },
+    {
+      label: 'InfoCenter',
+      pagePath: 'l10n-new/es-419/ic',
     },
     {
       label: 'PolicyCenter',
-      pagePath: 'l10n-new/ja-JP/pc',
+      pagePath: 'l10n-new/es-419/pc',
     },
     {
       label: 'ProducerEngage',
-      pagePath: 'l10n-new/ja-JP/pe',
+      pagePath: 'l10n-new/es-419/pe',
+    },
+    {
+      label: 'ProducerEngage for ClaimCenter',
+      pagePath: 'l10n-new/es-419/pe-claims',
     },
     {
       label: 'ServiceRepEngage',
-      pagePath: 'l10n-new/ja-JP/sre',
+      pagePath: 'l10n-new/es-419/sre',
     },
     {
       label: 'VendorEngage',
-      pagePath: 'l10n-new/ja-JP/ve',
+      pagePath: 'l10n-new/es-419/ve',
     },
   ],
   sidebar: {
@@ -94,6 +102,6 @@ const pageConfig: ProductFamilyLayoutProps = {
   },
 };
 
-export default function JaJP() {
+export default function Es419() {
   return <ProductFamilyLayout {...pageConfig} />;
 }

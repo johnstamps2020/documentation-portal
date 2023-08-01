@@ -47,15 +47,15 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: 'Jutro Design System 8.6.1',
+      label: 'Jutro Design System 8.10.0',
       items: [
         {
           label: 'Jutro Design System and UI Framework',
-          docId: 'jutro861',
+          docId: 'jutro8100',
         },
         {
           label: 'Jutro Storybook',
-          docId: 'storybook861',
+          docId: 'storybook8100',
         },
       ],
     },
@@ -63,7 +63,7 @@ const pageConfig: CategoryLayoutProps = {
       label: 'CustomerEngage Account Management',
       items: [
         {
-          label: 'Release Notes (Prerelease)',
+          label: 'Release Notes',
           docId: 'dx202306ceamrelnotes',
         },
         {
@@ -88,7 +88,7 @@ const pageConfig: CategoryLayoutProps = {
       label: 'CustomerEngage Account Management for ClaimCenter',
       items: [
         {
-          label: 'Release Notes (Prerelease)',
+          label: 'Release Notes',
           docId: 'dx202306ceclaimsrelnotes',
         },
         {
@@ -113,7 +113,7 @@ const pageConfig: CategoryLayoutProps = {
       label: 'CustomerEngage Quote and Buy',
       items: [
         {
-          label: 'Release Notes (Prerelease)',
+          label: 'Release Notes',
           docId: 'dx202306ceqbrelnotes',
         },
         {
@@ -142,7 +142,7 @@ const pageConfig: CategoryLayoutProps = {
       label: 'ProducerEngage',
       items: [
         {
-          label: 'Release Notes (Prerelease)',
+          label: 'Release Notes',
           docId: 'dx202306perelnotes',
         },
         {
@@ -171,7 +171,7 @@ const pageConfig: CategoryLayoutProps = {
       label: 'ProducerEngage for ClaimCenter',
       items: [
         {
-          label: 'Release Notes (Prerelease)',
+          label: 'Release Notes',
           docId: 'dx202306peclaimsrelnotes',
         },
         {
@@ -196,7 +196,7 @@ const pageConfig: CategoryLayoutProps = {
       label: 'ServiceRepEngage',
       items: [
         {
-          label: 'Release Notes (Prerelease)',
+          label: 'Release Notes',
           docId: 'dx202306srerelnotes',
         },
         {
@@ -221,7 +221,7 @@ const pageConfig: CategoryLayoutProps = {
       label: 'VendorEngage',
       items: [
         {
-          label: 'Release Notes (Prerelease)',
+          label: 'Release Notes',
           docId: 'dx202306verelnotes',
         },
         {

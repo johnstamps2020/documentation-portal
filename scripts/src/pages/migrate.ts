@@ -136,7 +136,15 @@ function getWhatsNew(flailConfig: FlailConfig): string {
       badge: hakubaBadge,
       item: { label: 'Learn more', docId: 'whatsnewhakuba' },
       content: [
-        'Content coming soon',
+        'Integration Data Manager for third-party data storage',
+        'Real-time monitoring of cloud services by region',
+        'Multi-currency support for global commercial lines',
+        'APD App rate modifiers for premium adjustments',
+        'Cloud API enhancements',
+        'InsuranceNow Data Service Console',
+        'One Inc ClaimsPay® integration with InsuranceNow',
+        'London Market programmes and journal financials',
+        'Cyence Model 6',
       ],
     }`;
   }
