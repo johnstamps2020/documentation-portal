@@ -10,6 +10,7 @@ import {
   FindOneOptions,
   FindOptionsRelations,
   FindOptionsWhere,
+  In,
   ObjectLiteral,
 } from 'typeorm';
 import { ApiResponse } from '../types/apiResponse';
@@ -17,17 +18,19 @@ import { Page } from '../model/entity/Page';
 import { isUserAllowedToAccessResource } from './authController';
 import { LegacyVersionObject } from '../types/legacyConfig';
 import { Subject } from '../model/entity/Subject';
+import { PageItemsRequestBody, PageItemsResponse } from '../types/config';
+import { ExternalLink } from '../model/entity/ExternalLink';
 
 function wrapInQuotes(
   stringsToWrap: string[] | string | undefined
 ): string[] | string | undefined {
   const valueSeparator = ',';
 
-  function addQuotes(stringToModify: string) {
+  const addQuotes = function (stringToModify: string) {
     return stringToModify.includes(',')
       ? '"' + stringToModify + '"'
       : stringToModify;
-  }
+  };
 
   if (Array.isArray(stringsToWrap)) {
     return stringsToWrap.map((s) => addQuotes(s)).join(valueSeparator);
@@ -159,9 +162,8 @@ export async function getBreadcrumbs(
       const breadcrumbRoutePath = startPath ? `/${route}` : route;
       const breadcrumbPath = startPath + breadcrumbRoutePath;
       const breadcrumbId = route.replace('/', '_').toLowerCase();
-      const breadcrumbLabel = route;
       breadcrumbs.push({
-        label: breadcrumbLabel,
+        label: route,
         path: breadcrumbPath,
         id: breadcrumbId,
       });
@@ -284,6 +286,14 @@ export async function getAllEntities(
         availableEntities.push(entity);
       }
     }
+    if (availableEntities.length === 0) {
+      return {
+        status: 403,
+        body: {
+          message: 'Not authorized to view entities',
+        },
+      };
+    }
     return {
       status: 200,
       body: availableEntities,
@@ -368,8 +378,7 @@ export function splitLegacyValueByCommaAndReturnUnique(
 export function removeQuotesFromLegacySearchParams(
   queryString: string
 ): string {
-  const replaced = queryString.replace(/"]/g, '').replace(/%22/g, '');
-  return replaced;
+  return queryString.replace(/"]/g, '').replace(/%22/g, '');
 }
 
 export async function getDocumentMetadataById(
@@ -719,5 +728,88 @@ export async function getRootBreadcrumb(pagePathname: string) {
           ERROR: ${JSON.stringify(err)}`
     );
     return emptyRootPage;
+  }
+}
+
+function getAllowedResources(
+  items: (Doc | Page | ExternalLink)[],
+  res: Response
+): (Doc | Page | ExternalLink)[] {
+  return items.filter(
+    (item) =>
+      isUserAllowedToAccessResource(
+        res,
+        item.public,
+        item.internal,
+        item.isInProduction
+      ).status === 200
+  );
+}
+
+export async function getPageItems(
+  req: Request,
+  res: Response
+): Promise<ApiResponse> {
+  try {
+    const pageItemsResult: PageItemsResponse = {
+      docs: [],
+      pages: [],
+      externalLinks: [],
+    };
+    const { docIds, pagePaths, externalLinkUrls }: PageItemsRequestBody =
+      req.body;
+
+    if (docIds.length > 0) {
+      const findDocsResult: Doc[] = await AppDataSource.manager.find(Doc, {
+        where: { id: In(docIds) },
+      });
+      if (findDocsResult.length > 0) {
+        pageItemsResult.docs = getAllowedResources(
+          findDocsResult,
+          res
+        ) as Doc[];
+      }
+    }
+    if (pagePaths.length > 0) {
+      const findPagesResult: Page[] = await AppDataSource.manager.find(Page, {
+        where: { path: In(pagePaths) },
+      });
+      if (findPagesResult.length > 0) {
+        pageItemsResult.pages = getAllowedResources(
+          findPagesResult,
+          res
+        ) as Page[];
+      }
+    }
+    if (externalLinkUrls.length > 0) {
+      const findExternalLinksResult: ExternalLink[] =
+        await AppDataSource.manager.find(ExternalLink, {
+          where: { url: In(externalLinkUrls) },
+        });
+      if (findExternalLinksResult.length > 0) {
+        pageItemsResult.externalLinks = getAllowedResources(
+          findExternalLinksResult,
+          res
+        ) as ExternalLink[];
+      }
+    }
+
+    if (Object.values(pageItemsResult).flat().length === 0) {
+      return {
+        status: 404,
+        body: {
+          message: `Did not find entities in the Doc, Page, and ExternalLink repos`,
+        },
+      };
+    }
+    return {
+      status: 200,
+      body: pageItemsResult,
+    };
+  } catch (err) {
+    return {
+      status: 500,
+      body: { message: `Operation failed: ${err}` },
+    };
   }
 }

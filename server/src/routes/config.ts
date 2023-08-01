@@ -5,6 +5,7 @@ import {
   getDocIdByUrl,
   getDocumentMetadataById,
   getEntity,
+  getPageItems,
   getRootBreadcrumb,
   getVersionSelector,
   splitLegacyValueByCommaAndReturnUnique,
@@ -34,6 +35,11 @@ router.get('/breadcrumbs', async function (req, res, next) {
 
 router.get('/versionSelectors', async function (req, res) {
   const { status, body } = await getVersionSelector(req, res);
+  return res.status(status).json(body);
+});
+
+router.post('/pageItems', async function (req, res) {
+  const { status, body } = await getPageItems(req, res);
   return res.status(status).json(body);
 });
 
