@@ -10,7 +10,7 @@
         "platform": ["Cloud"],
         "version": ["next"],
         "subject": ["Administration"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -29,7 +29,26 @@
         "version": ["Garmisch"],
         "subject": ["Administration"],
         "release": ["Garmisch"],
-        "lang": "en"
+        "language": "en"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    },
+    {
+      "id": "jutroplatformhakuba",
+      "title": "Jutro Digital Platform",
+      "url": "jutro/platform/hakuba",
+      "metadata": {
+        "product": ["Jutro Digital Platform"],
+        "platform": ["Cloud"],
+        "version": ["Hakuba"],
+        "subject": ["Administration"],
+        "release": ["Hakuba"],
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -48,7 +67,7 @@
         "version": ["Flaine"],
         "subject": ["Administration"],
         "release": ["Flaine"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

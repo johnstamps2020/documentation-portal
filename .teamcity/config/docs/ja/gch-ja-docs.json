@@ -10,7 +10,7 @@
         "product": ["Guidewire Cloud Home"],
         "version": ["latest"],
         "release": ["Garmisch"],
-        "lang": "ja"
+        "language": "ja"
       },
       "environments": ["staging"],
       "indexForSearch": true,
@@ -27,7 +27,7 @@
         "platform": ["Cloud"],
         "product": ["Guidewire Cloud Home"],
         "version": ["latest"],
-        "lang": "ja"
+        "language": "ja"
       },
       "environments": ["staging"],
       "indexForSearch": false,

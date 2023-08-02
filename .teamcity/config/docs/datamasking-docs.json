@@ -11,7 +11,7 @@
         "version": ["2022.05", "2022.09", "2023.02"],
         "release": ["Elysian", "Flaine", "Garmisch"],
         "subject": ["Development"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,

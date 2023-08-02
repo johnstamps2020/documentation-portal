@@ -10,7 +10,7 @@
         "platform": ["Self-managed"],
         "version": ["3.4"],
         "subject": ["Features and functionality"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -28,7 +28,7 @@
         "platform": ["Self-managed"],
         "version": ["3.4"],
         "subject": ["Installation"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -46,7 +46,7 @@
         "platform": ["Self-managed"],
         "version": ["3.4"],
         "subject": ["Administration"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -64,7 +64,7 @@
         "platform": ["Self-managed"],
         "version": ["3.4"],
         "subject": ["Release notes"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

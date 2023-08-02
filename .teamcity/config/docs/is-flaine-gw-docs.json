@@ -11,7 +11,7 @@
         "version": ["GW-internal-Flaine"],
         "release": ["Flaine"],
         "subject": ["Administration"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -30,7 +30,7 @@
         "version": ["GW-internal-Flaine"],
         "release": ["Flaine"],
         "subject": ["Installation"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -49,7 +49,7 @@
         "version": ["GW-internal-Flaine"],
         "release": ["Flaine"],
         "subject": ["Administration"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -68,7 +68,7 @@
         "version": ["GW-internal-Flaine"],
         "release": ["Flaine"],
         "subject": ["Installation"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -87,7 +87,7 @@
         "version": ["GW-internal-Flaine"],
         "release": ["Flaine"],
         "subject": ["Administration"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -106,7 +106,7 @@
         "version": ["GW-internal-Flaine"],
         "release": ["Flaine"],
         "subject": ["Installation"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

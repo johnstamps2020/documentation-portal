@@ -11,7 +11,7 @@
         "version": ["2022.09", "2023.02"],
         "release": ["Flaine", "Garmisch"],
         "subject": ["Integration"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

@@ -11,7 +11,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -30,7 +30,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Installation"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -49,7 +49,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Development"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -68,7 +68,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Development"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -87,7 +87,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Release notes"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -106,7 +106,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -125,7 +125,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Installation"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -144,7 +144,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Development"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -163,7 +163,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Development"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -182,7 +182,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Release notes"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -201,7 +201,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -220,7 +220,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Installation"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -239,7 +239,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Development"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -258,7 +258,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Development"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -277,7 +277,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Release notes"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -296,7 +296,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -315,7 +315,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Installation"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -334,7 +334,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Development"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -353,7 +353,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Development"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -372,7 +372,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Release notes"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -391,7 +391,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -410,7 +410,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Installation"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -429,7 +429,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Development"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -448,7 +448,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Development"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -467,7 +467,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Release notes"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -486,7 +486,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -505,7 +505,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Installation"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -524,7 +524,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Development"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -543,7 +543,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Development"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -562,7 +562,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Release notes"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -581,7 +581,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Features and functionality"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -600,7 +600,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Installation"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -619,7 +619,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Development"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -638,7 +638,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Development"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -657,7 +657,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Release notes"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -676,7 +676,7 @@
         "version": ["2021.11"],
         "release": ["Dobson"],
         "subject": ["Configuration"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -702,7 +702,7 @@
         ],
         "version": ["2021.11"],
         "release": ["Dobson"],
-        "lang": "en"
+        "language": "en"
       },
       "displayOnLandingPages": false,
       "public": false,

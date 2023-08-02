@@ -20,7 +20,7 @@
           "latest"
         ],
         "subject": ["Development"],
-        "lang": "ja"
+        "language": "ja"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -37,7 +37,7 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "version": ["latest"],
-        "lang": "ja"
+        "language": "ja"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

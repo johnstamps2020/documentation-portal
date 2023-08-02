@@ -10,7 +10,7 @@
         "product": ["Data Platform"],
         "version": ["latest"],
         "release": ["Elysian", "Flaine", "Garmisch"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,
@@ -29,7 +29,7 @@
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "release": ["Flaine", "Garmisch"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -56,7 +56,7 @@
           "Garmisch"
         ],
         "subject": ["Features and functionality"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -83,7 +83,7 @@
           "Garmisch"
         ],
         "subject": ["Release notes"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -110,7 +110,7 @@
           "Garmisch"
         ],
         "subject": ["Features and functionality"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

@@ -11,7 +11,7 @@
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "release": ["Garmisch"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging"],
       "indexForSearch": true,
@@ -30,7 +30,7 @@
         "version": ["latest"],
         "subject": ["Administration"],
         "release": ["Garmisch"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging"],
       "indexForSearch": true,
@@ -49,7 +49,7 @@
         "version": ["latest"],
         "subject": ["Release notes"],
         "release": ["Garmisch"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging"],
       "indexForSearch": true,

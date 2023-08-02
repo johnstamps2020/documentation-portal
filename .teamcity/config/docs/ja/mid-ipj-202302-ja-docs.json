@@ -11,7 +11,7 @@
         "version": ["2023.02ipj"],
         "release": ["Elysian"],
         "subject": ["Release notes"],
-        "lang": "ja"
+        "language": "ja"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -30,7 +30,7 @@
         "version": ["2023.02ipj"],
         "release": ["Elysian"],
         "subject": ["Features and functionality"],
-        "lang": "ja"
+        "language": "ja"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -49,7 +49,7 @@
         "version": ["2023.02ipj"],
         "release": ["Elysian"],
         "subject": ["Configuration"],
-        "lang": "ja"
+        "language": "ja"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

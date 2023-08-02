@@ -9,7 +9,7 @@
         "platform": ["Cloud"],
         "product": ["Guidewire AppReader"],
         "version": ["4.0.0"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "internal": false,

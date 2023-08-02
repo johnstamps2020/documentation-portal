@@ -10,7 +10,7 @@
         "product": ["BillingCenter"],
         "version": ["2020.05"],
         "release": ["Aspen"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -28,7 +28,7 @@
         "product": ["ClaimCenter"],
         "version": ["2020.05"],
         "release": ["Aspen"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -46,7 +46,7 @@
         "product": ["PolicyCenter"],
         "version": ["2020.05"],
         "release": ["Aspen"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -65,7 +65,7 @@
         "product": ["BillingCenter"],
         "version": ["2020.05"],
         "release": ["Aspen"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,
@@ -83,7 +83,7 @@
         "product": ["ClaimCenter"],
         "version": ["2020.05"],
         "release": ["Aspen"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,
@@ -101,7 +101,7 @@
         "product": ["PolicyCenter"],
         "version": ["2020.05"],
         "release": ["Aspen"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "indexForSearch": true,

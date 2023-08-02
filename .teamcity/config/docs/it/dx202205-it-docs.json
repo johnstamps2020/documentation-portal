@@ -11,7 +11,7 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Features and functionality"],
-        "lang": "it"
+        "language": "it"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -30,7 +30,7 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Installation"],
-        "lang": "it"
+        "language": "it"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -49,7 +49,7 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Features and functionality"],
-        "lang": "it"
+        "language": "it"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -68,7 +68,7 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Installation"],
-        "lang": "it"
+        "language": "it"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -87,7 +87,7 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Features and functionality"],
-        "lang": "it"
+        "language": "it"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -106,7 +106,7 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Installation"],
-        "lang": "it"
+        "language": "it"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -125,7 +125,7 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Features and functionality"],
-        "lang": "it"
+        "language": "it"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -144,7 +144,7 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Installation"],
-        "lang": "it"
+        "language": "it"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -163,7 +163,7 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Features and functionality"],
-        "lang": "it"
+        "language": "it"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -182,7 +182,7 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Installation"],
-        "lang": "it"
+        "language": "it"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -201,7 +201,7 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Features and functionality"],
-        "lang": "it"
+        "language": "it"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -220,7 +220,7 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Installation"],
-        "lang": "it"
+        "language": "it"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -239,7 +239,7 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Features and functionality"],
-        "lang": "it"
+        "language": "it"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
@@ -258,7 +258,7 @@
         "version": ["2022.05"],
         "release": ["Elysian"],
         "subject": ["Installation"],
-        "lang": "it"
+        "language": "it"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,
