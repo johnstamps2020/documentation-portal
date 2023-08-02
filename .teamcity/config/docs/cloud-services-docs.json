@@ -114,6 +114,25 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "lifecyclemgr",
+      "title": "Lifecycle Manager",
+      "url": "cloud/lifecyclemgr",
+      "metadata": {
+        "product": ["Lifecycle Manager"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Innsbruck"],
+        "subject": ["Configuration"],
+        "lang": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
   ]
 }

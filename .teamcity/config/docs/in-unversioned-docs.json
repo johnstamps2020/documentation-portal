@@ -511,6 +511,25 @@
       "earlyAccess": false
     },
     {
+      "id": "in20233rn",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20233/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2023.3"],
+        "subject": ["Release notes"],
+        "release": ["Innsbruck"],
+        "lang": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "in20232rn",
       "title": "Core Release Notes",
       "url": "cloud/in/20232/releasenotes",
