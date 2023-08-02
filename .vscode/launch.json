@@ -34,6 +34,14 @@
       "cwd": "${workspaceFolder}",
       "type": "node-terminal",
       "preLaunchTask": "plugin DEV"
+    },
+    {
+      "name": "Upload legacy configs to DB",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/ci",
+      "command": "node uploadLegacyConfigsToDb.mjs",
+      "envFile": "${workspaceFolder}/server/.env"
     }
   ]
 }
