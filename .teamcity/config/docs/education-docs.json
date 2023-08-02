@@ -10,7 +10,7 @@
         "product": ["PolicyCenter", "BillingCenter", "ClaimCenter"],
         "version": ["latest"],
         "subject": ["Integration"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

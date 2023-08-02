@@ -11,7 +11,7 @@ import {
 import { PlatformProductVersion } from './PlatformProductVersion';
 import { Release } from './Release';
 import { Subject } from './Subject';
-import { Lang } from './Lang';
+import { Language } from './Language';
 import { GwEntity } from './GwEntity';
 
 @Entity()
@@ -43,9 +43,9 @@ export class Doc extends GwEntity {
   @JoinTable()
   platformProductVersions: PlatformProductVersion[];
 
-  @ManyToOne(() => Lang, (lang) => lang.uuid)
+  @ManyToOne(() => Language, (language) => language.uuid)
   @JoinColumn()
-  lang: Lang;
+  language: Language;
 
   @ManyToMany(() => Release, (release) => release.uuid, { nullable: true })
   @JoinTable()

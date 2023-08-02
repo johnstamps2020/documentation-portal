@@ -11,7 +11,7 @@
         "platform": ["Self-managed"],
         "version": ["10.9.0"],
         "subject": ["Features and functionality"],
-        "lang": "es"
+        "language": "es"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

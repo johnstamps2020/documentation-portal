@@ -77,7 +77,7 @@ function getRelationOptionsForEntity(
       },
       releases: true,
       subjects: true,
-      lang: true,
+      language: true,
     };
   } else if (
     ['yarnbuild', 'ditabuild', 'sourcezipbuild', 'justcopybuild'].includes(
@@ -408,7 +408,7 @@ export async function getDocumentMetadataById(
         },
         releases: true,
         subjects: true,
-        lang: true,
+        language: true,
       } as ObjectLiteral,
     })) as ObjectLiteral;
     if (docInfo) {
@@ -446,7 +446,7 @@ export async function getDocumentMetadataById(
             docSubjects: wrapInQuotes(
               docInfo.subjects.map((s: Subject) => s.name)
             ),
-            docLang: docInfo.lang.code,
+            docLanguage: docInfo.language.code,
           },
         };
       }

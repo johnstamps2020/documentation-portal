@@ -10,7 +10,7 @@
         "product": ["Standards-based Template Framework"],
         "version": ["latest"],
         "release": ["Flaine", "Garmisch"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "internal": false,
@@ -28,7 +28,7 @@
         "product": ["Standards-based Template Framework"],
         "version": ["latest"],
         "release": ["Flaine", "Garmisch"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "internal": false,

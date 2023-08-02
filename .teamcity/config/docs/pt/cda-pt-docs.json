@@ -11,7 +11,7 @@
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson"],
         "subject": ["Features and functionality"],
-        "lang": "pt"
+        "language": "pt"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

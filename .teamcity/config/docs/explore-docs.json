@@ -19,7 +19,7 @@
           "Flaine",
           "Garmisch"
         ],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -46,7 +46,7 @@
           "Flaine",
           "Garmisch"
         ],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -73,7 +73,7 @@
           "Flaine",
           "Garmisch"
         ],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -100,7 +100,7 @@
           "Flaine",
           "Garmisch"
         ],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

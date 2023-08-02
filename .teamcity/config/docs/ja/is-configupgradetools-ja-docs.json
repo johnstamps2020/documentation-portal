@@ -10,7 +10,7 @@
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["3.2.0"],
         "release": ["Aspen", "Banff", "Cortina"],
-        "lang": "ja"
+        "language": "ja"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

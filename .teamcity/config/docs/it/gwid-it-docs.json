@@ -10,7 +10,7 @@
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"],
-        "lang": "it"
+        "language": "it"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

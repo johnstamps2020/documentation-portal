@@ -10,7 +10,7 @@
         "platform": ["Cloud"],
         "version": ["2021.11"],
         "subject": ["Installation"],
-        "lang": "ja"
+        "language": "ja"
       },
       "environments": ["staging"],
       "displayOnLandingPages": true,

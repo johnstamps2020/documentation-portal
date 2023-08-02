@@ -78,7 +78,7 @@
       "description": "Metadata used for classification, search filtering, grouping on landing pages, etc.",
       "type": "object",
       "additionalProperties": false,
-      "required": ["product", "platform", "lang"],
+      "required": ["product", "platform", "language"],
       "properties": {
         "product": {
           "$ref": "#/definitions/product"
@@ -132,7 +132,7 @@
             ]
           }
         },
-        "lang": {
+        "language": {
           "description": "Specifies the language code. Field is mandatory. Set it to 'en' for English documents.",
           "type": "string",
           "enum": ["de", "en", "es", "es-ES", "fr", "it", "ja", "nl", "pt"]

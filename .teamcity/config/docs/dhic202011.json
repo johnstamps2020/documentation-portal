@@ -10,7 +10,7 @@
         "product": ["DataHub"],
         "version": ["2020.11"],
         "release": ["Banff"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
@@ -28,7 +28,7 @@
         "product": ["InfoCenter"],
         "version": ["2020.11"],
         "release": ["Banff"],
-        "lang": "en"
+        "language": "en"
       },
       "environments": ["staging", "prod"],
       "displayOnLandingPages": true,

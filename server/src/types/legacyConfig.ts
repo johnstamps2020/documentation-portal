@@ -48,7 +48,7 @@ type Metadata = {
   product: string[];
   platform: string[];
   version: string[];
-  lang: string;
+  language: string;
   subject?: string[];
   release?: string[];
 };
