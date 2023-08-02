@@ -29,7 +29,7 @@ import { ExternalLink } from '../model/entity/ExternalLink';
 import { Product } from '../model/entity/Product';
 import { Platform } from '../model/entity/Platform';
 import { Version } from '../model/entity/Version';
-import { Lang } from '../model/entity/Lang';
+import { Language } from '../model/entity/Language';
 import { DitaBuild } from '../model/entity/DitaBuild';
 import { YarnBuild } from '../model/entity/YarnBuild';
 import { SourceZipBuild } from '../model/entity/SourceZipBuild';
@@ -94,7 +94,7 @@ async function getLegacyDocConfigs(): Promise<LegacyDocConfig[]> {
       internal: doc.internal,
       earlyAccess: doc.earlyAccess,
       metadata: {
-        lang: doc.lang.code,
+        language: doc.language.code,
         product: doc.platformProductVersions.map((ppv) => ppv.product.name),
         platform: removeDuplicatesAndEmptyValues(
           doc.platformProductVersions.map((ppv) => ppv.platform.name)
@@ -840,8 +840,8 @@ async function createSubjectEntities(legacyDocConfig: LegacyDocConfig[]) {
   await saveEntities(dbDocSubjectsToSave);
 }
 
-async function createLangEntities(legacyDocConfig: LegacyDocConfig[]) {
-  const langs: { [key: string]: string } = {
+async function createLanguageEntities(legacyDocConfig: LegacyDocConfig[]) {
+  const languages: { [key: string]: string } = {
     de: 'German (Germany)',
     en: 'English (United States)',
     es: 'Spanish (Latin America and Caribbean region)',
@@ -852,36 +852,36 @@ async function createLangEntities(legacyDocConfig: LegacyDocConfig[]) {
     nl: 'Dutch (Netherlands)',
     pt: 'Portuguese (Brazil)',
   };
-  const dbDocLangsToSave: Lang[] = [];
+  const dbDocLanguagesToSave: Language[] = [];
   for (const doc of legacyDocConfig) {
-    const legacyDocLang = doc.metadata.lang;
+    const legacyDocLanguage = doc.metadata.language;
     if (
-      legacyDocLang &&
-      !dbDocLangsToSave.find(
-        (dbDocLangToSave) => dbDocLangToSave.code === legacyDocLang
+      legacyDocLanguage &&
+      !dbDocLanguagesToSave.find(
+        (dbDocLanguageToSave) => dbDocLanguageToSave.code === legacyDocLanguage
       )
     ) {
-      const dbDocLang = new Lang();
-      dbDocLang.code = legacyDocLang;
-      dbDocLang.label = langs[legacyDocLang];
-      const dbDocLangToSave = await addUuidIfEntityExists(
-        Lang.name,
-        { code: dbDocLang.code },
-        dbDocLang
+      const dbDocLanguage = new Language();
+      dbDocLanguage.code = legacyDocLanguage;
+      dbDocLanguage.label = languages[legacyDocLanguage];
+      const dbDocLanguageToSave = await addUuidIfEntityExists(
+        Language.name,
+        { code: dbDocLanguage.code },
+        dbDocLanguage
       );
-      dbDocLangsToSave.push(dbDocLangToSave as Lang);
+      dbDocLanguagesToSave.push(dbDocLanguageToSave as Language);
     }
   }
-  await saveEntities(dbDocLangsToSave);
+  await saveEntities(dbDocLanguagesToSave);
 }
 
-async function addDocLang(legacyDoc: LegacyDocConfig): Promise<Lang> {
-  const dbDocLang = await findEntity(
-    Lang.name,
-    { code: legacyDoc.metadata.lang },
+async function addDocLanguage(legacyDoc: LegacyDocConfig): Promise<Language> {
+  const dbDocLanguage = await findEntity(
+    Language.name,
+    { code: legacyDoc.metadata.language },
     false
   );
-  return dbDocLang as Lang;
+  return dbDocLanguage as Language;
 }
 
 async function addDocReleases(
@@ -994,7 +994,7 @@ async function putDocConfigsInDatabase(): Promise<ApiResponse> {
 
     await createSubjectEntities(localDocsConfig);
     await createReleaseEntities(localDocsConfig);
-    await createLangEntities(localDocsConfig);
+    await createLanguageEntities(localDocsConfig);
     await createPlatformEntities(localDocsConfig);
     await createProductEntities(localDocsConfig);
     await createVersionEntities(localDocsConfig);
@@ -1020,7 +1020,7 @@ async function putDocConfigsInDatabase(): Promise<ApiResponse> {
         dbDoc.isInProduction = doc.environments.includes('prod');
         dbDoc.body = doc.body || null;
 
-        dbDoc.lang = await addDocLang(doc);
+        dbDoc.language = await addDocLanguage(doc);
         dbDoc.releases = await addDocReleases(doc);
         dbDoc.subjects = await addDocSubjects(doc);
         dbDoc.platformProductVersions = await addPlatformProductVersions(

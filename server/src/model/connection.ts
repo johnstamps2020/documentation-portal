@@ -9,7 +9,7 @@ import { Source } from './entity/Source';
 import { Page } from './entity/Page';
 import { Subject } from './entity/Subject';
 import { ExternalLink } from './entity/ExternalLink';
-import { Lang } from './entity/Lang';
+import { Language } from './entity/Language';
 import { Platform } from './entity/Platform';
 import { Product } from './entity/Product';
 import { Version } from './entity/Version';
@@ -39,7 +39,7 @@ export const AppDataSource = new DataSource({
     Doc,
     ExternalLink,
     JustCopyBuild,
-    Lang,
+    Language,
     Page,
     Platform,
     PlatformProductVersion,
