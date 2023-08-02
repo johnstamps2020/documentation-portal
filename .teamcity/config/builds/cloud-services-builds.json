@@ -54,6 +54,15 @@
       "docId": "worksetmgr",
       "indexRedirect": true,
       "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "lifecycle_manager_v2.ditamap",
+      "srcId": "worksetmgrsrc",
+      "docId": "lifecyclemgr",
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }
