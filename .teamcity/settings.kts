@@ -4,7 +4,6 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.DockerSupportFeature
 import jetbrains.buildServer.configs.kotlin.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.buildSteps.*
-import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.ui.add
@@ -17,26 +16,31 @@ import java.math.BigInteger
 import java.security.MessageDigest
 
 version = "2022.04"
-
+// TODO: To make testing easier:
+//  - Clean up commits in this branch
+//  - Merge changes from the feature/typeorm branch
+// TODO: Remove all the patches - they were created because builds were paused in the UI to disable automatic triggers
+// TODO: Create a build/chain for deploying all the services at once - server, db, landing pages, data???
+//  Idea: Use composite builds
 project {
 
-    GwVcsRoots.createGitVcsRootsFromConfigFiles().forEach {
-        vcsRoot(it)
-    }
+//    TODO: Uncomment these builds when the pipeline is ready to merge
+//    GwVcsRoots.createGitVcsRootsFromConfigFiles().forEach {
+//        vcsRoot(it)
+//    }
     vcsRoot(GwVcsRoots.DocumentationPortalGitVcsRoot)
-    vcsRoot(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
     vcsRoot(GwVcsRoots.DitaOtPluginsVcsRoot)
     subProject(Database.rootProject)
-    subProject(Runners.rootProject)
-    subProject(Docs.rootProject)
-    subProject(Sources.rootProject)
-    subProject(Recommendations.rootProject)
-    subProject(Content.rootProject)
-    subProject(BuildListeners.rootProject)
-    subProject(Apps.rootProject)
+//    subProject(Runners.rootProject)
+//    subProject(Docs.rootProject)
+//    subProject(Sources.rootProject)
+//    subProject(Recommendations.rootProject)
+//    subProject(Content.rootProject)
+//    subProject(BuildListeners.rootProject)
+//    subProject(Apps.rootProject)
     subProject(Server.rootProject)
     subProject(Frontend.rootProject)
-    subProject(Custom.rootProject)
+//    subProject(Custom.rootProject)
 
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
     features.feature(GwProjectFeatures.GwAntennaHouseFormatterServerProjectFeature)
@@ -81,10 +85,19 @@ enum class GwConfigParams(val paramValue: String) {
     DITA_BUILD_OUT_DIR("out"), YARN_BUILD_OUT_DIR("build"), STORYBOOK_BUILD_OUT_DIR("dist"), SOURCE_ZIP_BUILD_OUT_DIR("out"), BUILD_DATA_DIR(
         "json"
     ),
-    BUILD_DATA_FILE("build-data.json"), COMMON_GW_DITAVALS_DIR("common_gw_ditavals"), BITBUCKET_SSH_KEY("svc-doc-bitbucket"), ECR_HOST(
-        "627188849628.dkr.ecr.us-west-2.amazonaws.com"
-    ),
-    ECR_HOST_PROD("954920275956.dkr.ecr.us-east-1.amazonaws.com"), ARTIFACTORY_HOST("artifactory.guidewire.com")
+    BUILD_DATA_FILE("build-data.json"), COMMON_GW_DITAVALS_DIR("common_gw_ditavals"), BITBUCKET_SSH_KEY("svc-doc-bitbucket"),
+    ECR_HOST("627188849628.dkr.ecr.us-west-2.amazonaws.com"),
+    ECR_HOST_PROD("954920275956.dkr.ecr.us-east-1.amazonaws.com"),
+    AWS_ROLE("arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"),
+    AWS_ROLE_PROD("arn:aws:iam::954920275956:role/aws_orange-prod_tenant_doctools_developer"),
+    ARTIFACTORY_HOST("artifactory.guidewire.com"),
+    OKTA_ISSUER("https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"),
+    OKTA_ISSUER_PROD("https://guidewire-hub.okta.com/oauth2/aus11vix3uKEpIfSI357"),
+    OKTA_ISSUER_APAC("https://guidewire-hub-apac.okta.com/oauth2/ausbg05gfcTZQ7bpH3l6"),
+    OKTA_ISSUER_EMEA("https://guidewire-hub-eu.okta.com/oauth2/ausc2q01c40dNZII0416"),
+    // TODO: Change croissant to docportal before merge to master
+    DOC_PORTAL_APP_NAME("croissant"),
+    DOC_PORTAL_FRONTEND_APP_NAME("docportal-frontend")
 }
 
 enum class GwDockerImages(val imageUrl: String) {
@@ -137,17 +150,21 @@ enum class GwConfigTypes(val typeName: String) {
 enum class GwAtmosLabels(val labelValue: String) {
     POD_NAME("doctools"), DEPT_CODE("284"),
 }
+// TODO: Remove croissant from the image tag before merge to master
+enum class GwDockerImageTags(val tagValue: String) {
+    DOC_PORTAL("latest-croissant"), DOC_PORTAL_FRONTEND("latest")
+}
 
 object Database {
     val rootProject = createRootProjectForDatabase()
 
     private fun createRootProjectForDatabase(): Project {
         return Project {
-            name = "Database (Croissant)"
+            name = "Database"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             buildType(createDeployDbBuildType())
-            buildType(SyncProdDbWithLowerEnvBuildType)
+            buildType(SyncDbDataBuildType)
             buildType(createUploadLegacyConfigsToDb())
         }
     }
@@ -156,11 +173,12 @@ object Database {
         val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
         val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
         return BuildType {
-            name = "Deploy doc portal config database"
+            name = "Deploy to AWS"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                branchFilter = "+:<default>"
                 cleanCheckout = true
             }
 
@@ -171,10 +189,12 @@ object Database {
                     label = "Deploy environment",
                     options = listOf(
                         "Dev" to GwDeployEnvs.DEV.envName,
+                        "Staging" to GwDeployEnvs.STAGING.envName,
                         "Prod" to GwDeployEnvs.OMEGA2_ANDROMEDA.envName,
                     ),
                     display = ParameterDisplay.PROMPT,
-                )
+
+                    )
             }
 
             steps {
@@ -190,11 +210,19 @@ object Database {
                       export ENV_LEVEL="Prod"
                       export STAR_SYSTEM_NAME="andromeda"
                       export QUADRANT_NAME="omega2"
-                    else
+                    elif [[ "%env.DEPLOY_ENV%" == "${GwDeployEnvs.DEV.envName}" ]]; then
                       $awsEnvVars
                       export ENV_LEVEL="Non-Prod"
                       export STAR_SYSTEM_NAME="needle"
                       export QUADRANT_NAME="pi7"
+                    elif [[ "%env.DEPLOY_ENV%" == "${GwDeployEnvs.STAGING.envName}" ]]; then
+                      $awsEnvVars
+                      export ENV_LEVEL="Non-Prod"
+                      export STAR_SYSTEM_NAME="needle"
+                      export QUADRANT_NAME="pi11"
+                    else
+                      echo "Invalid deployment environment. Available options: Dev, Staging, Prod."
+                      exit 1
                     fi
 
                     export S3_BUCKET="tenant-doctools-%env.DEPLOY_ENV%-terraform"
@@ -231,19 +259,35 @@ object Database {
         }
     }
 
-    private object SyncProdDbWithLowerEnvBuildType : BuildType({
-        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
+    private object SyncDbDataBuildType : BuildType({
+        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)
         val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
-        val namespace = "doctools"
+        val atmosDeployEnvDev = Helpers.getAtmosDeployEnv(GwDeployEnvs.DEV.envName)
+        val atmosDeployEnvStaging = Helpers.getAtmosDeployEnv(GwDeployEnvs.STAGING.envName)
+        val atmosDeployEnvProd = Helpers.getAtmosDeployEnv(GwDeployEnvs.PROD.envName)
         val imageName = "alpine"
         val podName = "postgresql-client-shell-teamcity"
         val dbDumpZipPackageName = "docportalconfig.zip"
-        name = "Sync prod db with lower env db (Croissant)"
+        name = "Sync data"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
+
+        params {
+            select(
+                "env.DEPLOY_ENV",
+                value = "",
+                label = "Sync to",
+                options = listOf(
+                    "Dev" to GwDeployEnvs.DEV.envName,
+                    "Prod" to GwDeployEnvs.OMEGA2_ANDROMEDA.envName,
+                ),
+                display = ParameterDisplay.PROMPT,
+                description = "Select an environment to which you want to sync data from staging"
+            )
+        }
 
         steps {
             script {
-                name = "Create a db dump on lower env"
+                name = "Create a db dump on staging"
                 scriptContent = """
                 #!/bin/bash 
                 set -eu
@@ -252,7 +296,7 @@ object Database {
                 $awsEnvVars
                 
                 EXIT_CODE=0
-                aws eks update-kubeconfig --name atmos-dev && kubectl config set-context --current --namespace=$namespace && kubectl run $podName --image=$imageName --env="PGPASSWORD=%env.CONFIG_DB_PASSWORD%" --env="PGUSER=%env.CONFIG_DB_USERNAME%" --env="PGHOST=%env.CONFIG_DB_HOST%" --env="PGDATABASE=%env.CONFIG_DB_NAME%" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
+                aws eks update-kubeconfig --name $atmosDeployEnvStaging && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run $podName --image=$imageName --env="PGPASSWORD=%env.CONFIG_DB_PASSWORD%" --env="PGUSER=%env.CONFIG_DB_USERNAME%" --env="PGHOST=%env.CONFIG_DB_HOST%" --env="PGDATABASE=%env.CONFIG_DB_NAME%" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
                 
                 if [ "${'$'}EXIT_CODE" -eq 0 ]; then
                     SECONDS=0
@@ -277,16 +321,25 @@ object Database {
                 dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
             }
             script {
-                name = "Restore the db dump from lower env on prod"
+                name = "Restore the db dump from staging on the target env"
                 scriptContent = """
                 #!/bin/bash 
                 set -eu
                                                 
                 # Set AWS credentials
-                $awsEnvVarsProd
+                if [[ "%env.DEPLOY_ENV%" == "${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}" ]]; then
+                    $awsEnvVarsProd
+                    export ATMOS_DEPLOY_ENV=${atmosDeployEnvProd}
+                elif [[ "%env.DEPLOY_ENV%" == "${GwDeployEnvs.DEV.envName}" ]]; then
+                    $awsEnvVars
+                    export ATMOS_DEPLOY_ENV=${atmosDeployEnvDev}
+                else
+                    echo "Invalid deployment environment. Available options: Dev, Prod."
+                    exit 1
+                fi
                 
                 EXIT_CODE=0
-                aws eks update-kubeconfig --name atmos-omega2-andromeda && kubectl config set-context --current --namespace=$namespace && kubectl run $podName --image=$imageName --env="PGPASSWORD=%env.CONFIG_DB_PASSWORD%" --env="PGUSER=%env.CONFIG_DB_USERNAME%" --env="PGHOST=%env.CONFIG_DB_HOST_PROD%" --env="PGDATABASE=%env.CONFIG_DB_NAME%" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
+                aws eks update-kubeconfig --name ${'$'}ATMOS_DEPLOY_ENV && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run $podName --image=$imageName --env="PGPASSWORD=%env.CONFIG_DB_PASSWORD%" --env="PGUSER=%env.CONFIG_DB_USERNAME%" --env="PGHOST=%env.CONFIG_DB_HOST_PROD%" --env="PGDATABASE=%env.CONFIG_DB_NAME%" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
                 
                 if [ "${'$'}EXIT_CODE" -eq 0 ]; then
                     SECONDS=0
@@ -315,15 +368,14 @@ object Database {
         features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
     })
 
-    //TODO: When this build is productized, it should be available only for staging. Dev will sync from staging
+    // Legacy configs are uploaded only to the db on staging. Dev db and prod db sync data from staging.
     private fun createUploadLegacyConfigsToDb(): BuildType {
         val pagesDir = "%teamcity.build.checkoutDir%/frontend/pages"
         val outputDir = "%teamcity.build.checkoutDir%/output"
         val outputDirStaging = "${outputDir}/staging/pages"
         val outputDirProd = "${outputDir}/prod/pages"
-        val deployEnv = GwDeployEnvs.DEV.envName
         return BuildType {
-            name = "Upload legacy configs to the doc portal config database"
+            name = "Upload legacy configs"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
@@ -349,15 +401,15 @@ object Database {
                         GwDeployEnvs.PROD.envName
                     )
                 )
-                step(GwBuildSteps.createUploadLegacyConfigsAndPagesToS3BucketStep(GwDeployEnvs.DEV.envName))
+                step(GwBuildSteps.createUploadLegacyConfigsAndPagesToS3BucketStep(GwDeployEnvs.STAGING.envName))
                 nodeJS {
-                    name = "Call doc site endpoints to trigger upload"
+                    name = "Call doc portal endpoints to trigger upload"
                     id = Helpers.createIdStringFromName(this.name)
                     shellScript = """
                         #!/bin/sh
                         set -e
                         
-                        export APP_BASE_URL="https://croissant.dev.ccs.guidewire.net"
+                        export APP_BASE_URL="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}"
                         export OKTA_ACCESS_TOKEN_ISSUER="https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"                        
                         
                         node ci/uploadLegacyConfigsToDb.mjs
@@ -373,7 +425,6 @@ object Database {
                 vcs {
                     triggerRules = """
                         +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/frontend/pages/**
                         -:user=doctools:**
                         """.trimIndent()
                 }
@@ -1530,7 +1581,6 @@ object Content {
     }
 
     private fun createDeployContentStorageBuildType(deployEnv: String): BuildType {
-        val namespace = "doctools"
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
         val contentStorageDeployEnvVars = Helpers.setContentStorageDeployEnvVars(deployEnv)
@@ -1562,11 +1612,11 @@ object Content {
                         
                         aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
                         
-                        echo ${'$'}(kubectl get pods --namespace=${namespace})
+                        echo ${'$'}(kubectl get pods --namespace=${GwAtmosLabels.POD_NAME.labelValue})
                         
                         eval "echo \"${'$'}(cat aws/s3/kube/service-gateway-config.yml)\"" > ${'$'}TMP_DEPLOYMENT_FILE
                                                 
-                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${namespace}
+                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -1702,6 +1752,18 @@ object Content {
 }
 
 object Frontend {
+    private val buildAndPublishDockerImageToDevEcrBuildType =
+        GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
+            GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
+            GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl,
+            "%teamcity.build.checkoutDir%"
+        )
+    private val publishDockerImageToProdEcrBuildType = GwBuilds.createPublishDockerImageToProdEcrBuildType(
+        GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
+        GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl,
+        GwDockerImages.DOC_PORTAL_FRONTEND_PROD.imageUrl,
+        buildAndPublishDockerImageToDevEcrBuildType
+    )
     val rootProject = createRootProjectForFrontend()
 
     private fun createRootProjectForFrontend(): Project {
@@ -1710,9 +1772,6 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             subProject(createDeployReactLandingPagesProject())
-            subProject(createDeployLandingPagesProject())
-            subProject(createDeployLocalizedPagesProject())
-            subProject(createDeployUpgradeDiffsProject())
             subProject(createPublishNpmPackagesProject())
             subProject(createDeployHtml5DependenciesProject())
         }
@@ -1748,64 +1807,33 @@ object Frontend {
         }
     }
 
-    private fun createDeployLandingPagesProject(): Project {
+    private fun createDeployReactLandingPagesProject(): Project {
         return Project {
-            name = "Deploy landing pages"
+            name = "Deploy React landing pages"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
                 GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
             ).forEach {
-                buildType(createDeployLandingPagesBuildType(it.envName))
-            }
-        }
-    }
-
-    private fun createDeployReactLandingPagesProject(): Project {
-        return Project {
-            name = "Deploy React landing pages (Croissant)"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.PROD
-            ).forEach {
                 buildType(createDeployReactLandingPagesBuildType(it.envName))
             }
+            buildType(buildAndPublishDockerImageToDevEcrBuildType)
+            buildType(publishDockerImageToProdEcrBuildType)
             buildType(TestReactLandingPagesBuildType)
         }
     }
 
     private fun createDeployReactLandingPagesBuildType(deployEnv: String): BuildType {
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
-        val tagVersion = "latest"
-        val appName = "docportal-frontend"
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
-        val namespace = GwAtmosLabels.POD_NAME.labelValue
-        var docportalBaseUrl = ""
-        var ecrHost = ""
-        var frontendImageUrl = ""
-        var awsRole = ""
-        when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> {
-                docportalBaseUrl = "https://croissant.dev.ccs.guidewire.net"
-                ecrHost = GwConfigParams.ECR_HOST.paramValue
-                frontendImageUrl = GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl
-                awsRole = "arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"
-            }
-
-            GwDeployEnvs.PROD.envName -> {
-                docportalBaseUrl = "https://croissant.omega2-andromeda.guidewire.net"
-                ecrHost = GwConfigParams.ECR_HOST_PROD.paramValue
-                frontendImageUrl = GwDockerImages.DOC_PORTAL_FRONTEND_PROD.imageUrl
-                awsRole = "arn:aws:iam::954920275956:role/aws_orange-prod_tenant_doctools_developer"
-            }
-        }
-        return BuildType {
+        val reactLandingPagesDeployEnvVars =
+            Helpers.setReactLandingPagesDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue)
+        val deployReactLandingPagesBuildType = BuildType {
             name = "Deploy React landing pages to $deployEnv"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
                 cleanCheckout = true
             }
 
@@ -1830,42 +1858,6 @@ object Frontend {
                     """.trimIndent()
                 }
                 script {
-                    name = "Build and publish server Docker Image to $deployEnv ECR"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                        #!/bin/bash 
-                        set -xe
-                        
-                        # Log into the dev ECR, build and push the image
-                        $awsEnvVars
-                        
-                        export TAG_VERSION=$tagVersion
-                        export DEPT_CODE=${GwAtmosLabels.DEPT_CODE.labelValue}
-                        export POD_NAME=${GwAtmosLabels.POD_NAME.labelValue}
-                        export DEPLOY_ENV=$atmosDeployEnv
-                        export TARGET_URL=$docportalBaseUrl
-                        export BASE_URL="/landing/"
-        
-                        set +x
-                        docker login -u AWS -p ${'$'}(aws ecr get-login-password) $ecrHost
-                        set -x
-                        docker build -t $frontendImageUrl:${tagVersion} . \
-                        --build-arg TAG_VERSION \
-                        --build-arg DEPT_CODE \
-                        --build-arg POD_NAME \
-                        --build-arg DEPLOY_ENV \
-                        --build-arg TARGET_URL \
-                        --build-arg BASE_URL \
-                        --build-arg NPM_AUTH_TOKEN
-                        docker push $frontendImageUrl:${tagVersion}
-                    """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters =
-                        "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
-
-                }
-                script {
                     name = "Deploy to Kubernetes"
                     id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
@@ -1876,47 +1868,69 @@ object Frontend {
                         $awsEnvVars
                         
                         # Set environment variables needed for Kubernetes config files
-                        export APP_NAME="$appName"
-                        export POD_NAME="${GwAtmosLabels.POD_NAME.labelValue}"
-                        export DEPT_CODE="${GwAtmosLabels.DEPT_CODE.labelValue}"
-                        export AWS_ROLE="$awsRole"
-                        export AWS_ECR_REPO="$frontendImageUrl"
-                        export TAG_VERSION=$tagVersion
-                        export DEPLOY_ENV=$atmosDeployEnv
-                        export REQUESTS_MEMORY="2G"
-                        export REQUESTS_CPU="500m"
-                        export LIMITS_MEMORY="4G"
-                        export LIMITS_CPU="1"
+                        $reactLandingPagesDeployEnvVars
                         
                         # Set other envs
                         export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
                         
                         aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
                         
-                        echo ${'$'}(kubectl get pods --namespace=${namespace})
+                        echo ${'$'}(kubectl get pods --namespace=${GwAtmosLabels.POD_NAME.labelValue})
                         
                         eval "echo \"${'$'}(cat landing-pages/kube/deployment.yml)\"" > ${'$'}TMP_DEPLOYMENT_FILE
                                                 
                         sed -ie "s/BUILD_TIME/${'$'}(date)/g" ${'$'}TMP_DEPLOYMENT_FILE
-                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${namespace}
+                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
                 }
-            }
-
-            triggers {
-                vcs {
-                    triggerRules = """
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/**
-                            -:user=doctools:**
-                            """.trimIndent()
-                }
+                step(
+                    GwBuildSteps.createCheckPodsStatusStep(
+                        awsEnvVars,
+                        atmosDeployEnv,
+                        GwConfigParams.DOC_PORTAL_FRONTEND_APP_NAME.paramValue
+                    )
+                )
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+            dependencies {
+                snapshot(TestReactLandingPagesBuildType) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+            }
         }
+
+        if (arrayOf(
+                GwDeployEnvs.STAGING.envName, GwDeployEnvs.PROD.envName
+            ).contains(deployEnv)
+        ) {
+            deployReactLandingPagesBuildType.vcs.branchFilter = "+:<default>"
+        }
+
+        if (deployEnv == GwDeployEnvs.PROD.envName) {
+            deployReactLandingPagesBuildType.dependencies.snapshot(publishDockerImageToProdEcrBuildType) {
+                onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+        } else {
+            deployReactLandingPagesBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
+                onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+        }
+
+        if (deployEnv == GwDeployEnvs.DEV.envName) {
+            deployReactLandingPagesBuildType.triggers.vcs {
+                triggerRules = """
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/**
+                        -:user=doctools:**
+                    """.trimIndent()
+            }
+        }
+
+        return deployReactLandingPagesBuildType
     }
 
     private object TestReactLandingPagesBuildType : BuildType({
@@ -1924,7 +1938,7 @@ object Frontend {
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
         vcs {
-            root(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
             cleanCheckout = true
         }
 
@@ -1948,9 +1962,9 @@ object Frontend {
         triggers {
             vcs {
                 triggerRules = """
-                            +:root=${GwVcsRoots.CroissantFeatureBranchGitVcsRoot.id}:landing-pages/**
-                            -:user=doctools:**
-                            """.trimIndent()
+                    +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/**
+                    -:user=doctools:**
+                """.trimIndent()
             }
         }
     })
@@ -2058,200 +2072,26 @@ object Frontend {
             }
         }
     }
-
-    private fun createDeployLandingPagesBuildType(deployEnv: String): BuildType {
-        val pagesDir = "%teamcity.build.checkoutDir%/frontend/pages"
-        val outputDir = "%teamcity.build.checkoutDir%/output"
-        val buildName = when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> "Deploy staging landing pages to $deployEnv"
-            else -> "Deploy landing pages to $deployEnv"
-        }
-        val flailDeployEnv = when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> GwDeployEnvs.STAGING.envName
-            else -> deployEnv
-        }
-        return BuildType {
-            name = buildName
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:<default>"
-                cleanCheckout = true
-            }
-
-            steps {
-                step(GwBuildSteps.MergeDocsConfigFilesStep)
-                step(
-                    GwBuildSteps.createRunFlailSsgStep(
-                        pagesDir,
-                        outputDir,
-                        flailDeployEnv
-                    )
-                )
-                step(
-                    GwBuildSteps.createDeployStaticFilesStep(
-                        deployEnv, GwStaticFilesModes.LANDING_PAGES.modeName, outputDir
-                    )
-                )
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            if (deployEnv == GwDeployEnvs.DEV.envName) {
-                triggers {
-                    vcs {
-                        triggerRules = """
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:frontend/pages/**
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
-                            -:user=doctools:**
-                            """.trimIndent()
-                    }
-                }
-            }
-        }
-    }
-
-    private fun createDeployLocalizedPagesProject(): Project {
-        return Project {
-            name = "Deploy localized pages"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcsRoot(GwVcsRoots.LocalizedPdfsGitVcsRoot)
-            arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
-            ).forEach {
-                buildType(createDeployLocalizedPagesBuildType(it.envName))
-            }
-        }
-    }
-
-    private fun createDeployLocalizedPagesBuildType(deployEnv: String): BuildType {
-        val lionSourcesRoot = "pdf-src"
-        val pagesDir = "%teamcity.build.checkoutDir%/build"
-        val locDocsSrc = "%teamcity.build.checkoutDir%/${lionSourcesRoot}"
-        val locDocsOut = "${pagesDir}/l10n"
-        val outputDir = "%teamcity.build.checkoutDir%/output"
-        return BuildType {
-            name = "Deploy localized pages to $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                root(GwVcsRoots.LocalizedPdfsGitVcsRoot, "+:. => $lionSourcesRoot")
-                branchFilter = "+:<default>"
-                cleanCheckout = true
-            }
-
-            steps {
-                step(
-                    GwBuildSteps.createRunLionPageBuilderStep(
-                        locDocsSrc, locDocsOut
-                    )
-                )
-                step(GwBuildSteps.createCopyLocalizedPdfsToS3BucketStep(deployEnv, locDocsSrc))
-                step(GwBuildSteps.MergeDocsConfigFilesStep)
-                step(
-                    GwBuildSteps.createRunFlailSsgStep(
-                        pagesDir, outputDir, deployEnv
-                    )
-                )
-                step(
-                    GwBuildSteps.createDeployStaticFilesStep(
-                        deployEnv, GwStaticFilesModes.LOCALIZED_PAGES.modeName, outputDir
-                    )
-                )
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            if (deployEnv == GwDeployEnvs.DEV.envName) {
-                triggers {
-                    vcs {
-                        triggerRules = """
-                            +:root=${GwVcsRoots.LocalizedPdfsGitVcsRoot.id}:**
-                            -:user=doctools:**
-                            """.trimIndent()
-                    }
-                }
-            }
-        }
-    }
-
-    private fun createDeployUpgradeDiffsProject(): Project {
-        return Project {
-            name = "Deploy upgrade diffs"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcsRoot(GwVcsRoots.UpgradeDiffsGitVcsRoot)
-            arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
-            ).forEach {
-                buildType(createDeployUpgradeDiffsBuildType(it.envName))
-            }
-        }
-    }
-
-    private fun createDeployUpgradeDiffsBuildType(deployEnv: String): BuildType {
-        val upgradeDiffsSourcesRoot = "upgradediffs-src"
-        val pagesDir = "%teamcity.build.checkoutDir%/build"
-        val upgradeDiffsDocsSrc = "%teamcity.build.checkoutDir%/${upgradeDiffsSourcesRoot}/src"
-        val upgradeDiffsDocsOut = "${pagesDir}/upgradediffs"
-        val outputDir = "%teamcity.build.checkoutDir%/output"
-        return BuildType {
-            name = "Deploy upgrade diffs to $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                root(GwVcsRoots.UpgradeDiffsGitVcsRoot, "+:. => $upgradeDiffsSourcesRoot")
-                branchFilter = "+:<default>"
-                cleanCheckout = true
-            }
-
-            steps {
-                step(
-                    GwBuildSteps.createRunUpgradeDiffsPageBuilderStep(
-                        deployEnv, upgradeDiffsDocsSrc, upgradeDiffsDocsOut
-                    )
-                )
-                step(GwBuildSteps.createCopyUpgradeDiffsToS3BucketStep(deployEnv, upgradeDiffsDocsSrc))
-                step(GwBuildSteps.MergeDocsConfigFilesStep)
-                step(
-                    GwBuildSteps.createRunFlailSsgStep(
-                        pagesDir, outputDir, deployEnv
-                    )
-                )
-                step(
-                    GwBuildSteps.createDeployStaticFilesStep(
-                        deployEnv, GwStaticFilesModes.UPGRADE_DIFFS.modeName, outputDir
-                    )
-                )
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            if (deployEnv == GwDeployEnvs.DEV.envName) {
-                triggers {
-                    vcs {
-                        triggerRules = """
-                            +:root=${GwVcsRoots.UpgradeDiffsGitVcsRoot.id}:**
-                            -:user=doctools:**
-                            """.trimIndent()
-                    }
-                }
-            }
-        }
-    }
 }
 
 object Server {
-    private val TestConfigDocs = createTestConfigBuildType(GwConfigTypes.DOCS.typeName)
-    private val TestConfigSources = createTestConfigBuildType(GwConfigTypes.SOURCES.typeName)
-    private val TestConfigBuilds = createTestConfigBuildType(GwConfigTypes.BUILDS.typeName)
+    private val testConfigDocs = createTestConfigBuildType(GwConfigTypes.DOCS.typeName)
+    private val testConfigSources = createTestConfigBuildType(GwConfigTypes.SOURCES.typeName)
+    private val testConfigBuilds = createTestConfigBuildType(GwConfigTypes.BUILDS.typeName)
+    private val buildAndPublishDockerImageToDevEcrBuildType =
+        GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
+            GwDockerImageTags.DOC_PORTAL.tagValue,
+            GwDockerImages.DOC_PORTAL.imageUrl,
+            "%teamcity.build.checkoutDir%/server"
+        )
+    private val publishDockerImageToProdEcrBuildType = GwBuilds.createPublishDockerImageToProdEcrBuildType(
+        GwDockerImageTags.DOC_PORTAL.tagValue,
+        GwDockerImages.DOC_PORTAL.imageUrl,
+        GwDockerImages.DOC_PORTAL_PROD.imageUrl,
+        buildAndPublishDockerImageToDevEcrBuildType
+    )
 
     val rootProject = createRootProjectForServer()
-
     private fun createRootProjectForServer(): Project {
         return Project {
             name = "Server"
@@ -2259,9 +2099,9 @@ object Server {
 
             buildType(Checkmarx)
             buildType(TestDocSiteServerApp)
-            buildType(TestConfigDocs)
-            buildType(TestConfigSources)
-            buildType(TestConfigBuilds)
+            buildType(testConfigDocs)
+            buildType(testConfigSources)
+            buildType(testConfigBuilds)
             buildType(TestSettingsKts)
             buildType(TestHtml5Dependencies)
 //            temporarily disabled
@@ -2271,12 +2111,8 @@ object Server {
             ).forEach {
                 buildType(createDeployServerBuildType(it.envName))
             }
-            arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.PROD
-            ).forEach {
-                buildType(createDeployDbEnabledServerBuildType(it.envName))
-            }
-            buildType(ReleaseNewVersion)
+            buildType(buildAndPublishDockerImageToDevEcrBuildType)
+            buildType(publishDockerImageToProdEcrBuildType)
         }
     }
 
@@ -2405,6 +2241,7 @@ object Server {
         features.feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
     })
 
+    // TODO: Update to work with Croissant
     private object TestDocSiteServerApp : BuildType({
         name = "Test doc site server app"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -2421,17 +2258,16 @@ object Server {
                 scriptContent = """
                     #!/bin/sh
                     set -e
-                    export OKTA_DOMAIN=https://guidewire-hub.oktapreview.com
                     export OKTA_CLIENT_ID=mock
                     export OKTA_CLIENT_SECRET=mock
                     export OKTA_IDP="0oamwriqo1E1dOdd70h7"
                     export GW_COMMUNITY_PARTNER_IDP="0oapv9i36yEMFLjxS0h7"
                     export GW_COMMUNITY_CUSTOMER_IDP="0oau503zlhhFLwTqF0h7"
-                    export OKTA_ACCESS_TOKEN_ISSUER=https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7
-                    export OKTA_ACCESS_TOKEN_ISSUER_APAC="issuerNotConfigured"
-                    export OKTA_ACCESS_TOKEN_ISSUER_EMEA="issuerNotConfigured"
-                    export OKTA_ACCESS_TOKEN_SCOPES=mock
-                    export OKTA_ACCESS_TOKEN_AUDIENCE=mock
+                    export OKTA_ISSUER=https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7
+                    export OKTA_ISSUER_APAC="issuerNotConfigured"
+                    export OKTA_ISSUER_EMEA="issuerNotConfigured"
+                    export OKTA_SCOPES=mock
+                    export OKTA_AUDIENCE=mock
                     export APP_BASE_URL=http://localhost:8081
                     export SESSION_KEY=mock
                     export DOC_S3_URL="https://docportal-content.staging.ccs.guidewire.net"
@@ -2555,281 +2391,16 @@ object Server {
         }
     }
 
-    object ReleaseNewVersion : BuildType({
-        name = "Release new version"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-        maxRunningBuilds = 1
-
-        params {
-            select(
-                "semver-scope",
-                "patch",
-                label = "Version Scope",
-                display = ParameterDisplay.PROMPT,
-                options = listOf("Patch" to "patch", "Minor" to "minor", "Major" to "major")
-            )
-        }
-
-        vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            branchFilter = "+:<default>"
-            cleanCheckout = true
-        }
-
-        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
-        steps {
-            script {
-                name = "Bump and tag version"
-                id = Helpers.createIdStringFromName(this.name)
-                scriptContent = """
-                set -xe
-                git config --local user.email "doctools@guidewire.com"
-                git config --local user.name "%env.BITBUCKET_SERVICE_ACCOUNT_USERNAME%"
-                git fetch --tags
-
-                cd server/
-                export TAG_VERSION=${'$'}(npm version %semver-scope%)
-                export DEPT_CODE=${GwAtmosLabels.DEPT_CODE.labelValue}
-                export POD_NAME=${GwAtmosLabels.POD_NAME.labelValue}
-                
-                git add .
-                git commit -m "push changes to ${'$'}{TAG_VERSION}"
-                git tag -a ${'$'}{TAG_VERSION} -m "create new %semver-scope% version ${'$'}{TAG_VERSION}"
-                git push
-                git push --tags
-                
-                # Log into the dev ECR, build and push the image
-                $awsEnvVars
-
-                cd ..
-                set +x
-                docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
-                set -x
-                docker build -t ${GwDockerImages.DOC_PORTAL.imageUrl}:${'$'}{TAG_VERSION} . \
-                --build-arg TAG_VERSION \
-                --build-arg NPM_AUTH_TOKEN \
-                --build-arg DEPT_CODE \
-                --build-arg POD_NAME
-                docker push ${GwDockerImages.DOC_PORTAL.imageUrl}:${'$'}{TAG_VERSION}
-            """.trimIndent()
-                dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                dockerRunParameters =
-                    "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
-            }
-        }
-
-        features {
-            feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            feature(GwBuildFeatures.GwSshAgentBuildFeature)
-        }
-    })
-
-    private fun createDeployDbEnabledServerBuildType(deployEnv: String): BuildType {
-        val namespace = "doctools"
-        val tagVersion = "latest-croissant"
-        val appName = "croissant"
-        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
-        val gatewayConfigFile = when (deployEnv) {
-            GwDeployEnvs.PROD.envName -> "gateway-config.yml" // Temporarily use the lower env deployment file
-            else -> "gateway-config.yml"
-        }
-
-        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
-        var docportalBaseUrl = ""
-        var ecrHost = ""
-        var docportalImageUrl = ""
-        var awsRole = ""
-        var docS3url = ""
-        var elasticsearchUrl = ""
-        var oktaDomain = ""
-        var oktaIssuer = ""
-        var enableAuth = "yes"
-        when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> {
-                docportalBaseUrl = "https://$appName.${GwDeployEnvs.DEV.envName}.ccs.guidewire.net"
-                ecrHost = GwConfigParams.ECR_HOST.paramValue
-                docportalImageUrl = GwDockerImages.DOC_PORTAL.imageUrl
-                awsRole = "arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"
-                docS3url = "https://docportal-content.${GwDeployEnvs.DEV.envName}.ccs.guidewire.net"
-                elasticsearchUrl = "http://docsearch-${GwDeployEnvs.DEV.envName}.doctools:9200"
-                oktaDomain = "https://guidewire-hub.oktapreview.com"
-                oktaIssuer = "https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"
-            }
-
-            GwDeployEnvs.PROD.envName -> {
-                docportalBaseUrl = "https://$appName.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net"
-                ecrHost = GwConfigParams.ECR_HOST_PROD.paramValue
-                docportalImageUrl = GwDockerImages.DOC_PORTAL_PROD.imageUrl
-                awsRole = "arn:aws:iam::954920275956:role/aws_orange-prod_tenant_doctools_developer"
-                docS3url = "https://docportal-content.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net"
-                elasticsearchUrl = "http://docsearch-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.doctools:9200"
-                oktaDomain = "https://guidewire-hub.okta.com"
-                oktaIssuer = "https://guidewire-hub.okta.com/oauth2/aus11vix3uKEpIfSI357"
-                enableAuth = "no"
-            }
-        }
-        val deployServerBuildType = BuildType {
-            name = "Deploy to $deployEnv (Croissant)"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcs {
-                root(GwVcsRoots.CroissantFeatureBranchGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            steps {
-                script {
-                    name = "Build and publish server Docker Image to $deployEnv ECR"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                        #!/bin/bash 
-                        set -xe
-                        
-                        # Log into the dev ECR, build and push the image
-                        $awsEnvVars
-                        
-                        export TAG_VERSION=$tagVersion
-                        export DEPT_CODE=${GwAtmosLabels.DEPT_CODE.labelValue}
-                        export POD_NAME=${GwAtmosLabels.POD_NAME.labelValue}
-        
-                        set +x
-                        docker login -u AWS -p ${'$'}(aws ecr get-login-password) $ecrHost
-                        set -x
-                        docker build -t $docportalImageUrl:${tagVersion} ./server \
-                        --build-arg TAG_VERSION \
-                        --build-arg NPM_AUTH_TOKEN \
-                        --build-arg DEPT_CODE \
-                        --build-arg POD_NAME
-                        docker push $docportalImageUrl:${tagVersion}
-                    """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters =
-                        "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
-                }
-                script {
-                    name = "Deploy to Kubernetes"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                        #!/bin/bash 
-                        set -eux
-                                
-                        # Set AWS credentials
-                        $awsEnvVars
-                        
-                        # Set environment variables needed for Kubernetes config files
-                        export DD_SERVICE_NAME="$appName"
-                        export APP_NAME="$appName"
-                        export POD_NAME="${GwAtmosLabels.POD_NAME.labelValue}"
-                        export DEPT_CODE="${GwAtmosLabels.DEPT_CODE.labelValue}"
-                        export AWS_ROLE="$awsRole"
-                        export AWS_ECR_REPO="$docportalImageUrl"
-                        export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="$docportalBaseUrl/partners-login"
-                        export PARTNERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
-                        export GW_COMMUNITY_PARTNER_IDP="0oapv9i36yEMFLjxS0h7"
-                        export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="$docportalBaseUrl/customers-login"
-                        export CUSTOMERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
-                        export GW_COMMUNITY_CUSTOMER_IDP="0oau503zlhhFLwTqF0h7"
-                        export TAG_VERSION="latest-$appName"
-                        export DEPLOY_ENV="$atmosDeployEnv"
-                        export OKTA_ACCESS_TOKEN_ISSUER="$oktaIssuer"
-                        export OKTA_ACCESS_TOKEN_ISSUER_APAC="issuerNotConfigured"
-                        export OKTA_ACCESS_TOKEN_ISSUER_EMEA="issuerNotConfigured"
-                        export OKTA_DOMAIN="$oktaDomain"
-                        export OKTA_IDP="0oamwriqo1E1dOdd70h7"
-                        export APP_BASE_URL="$docportalBaseUrl"
-                        export FRONTEND_URL="http://docportal-frontend.doctools:6006"
-                        export ELASTIC_SEARCH_URL="$elasticsearchUrl"
-                        export DOC_S3_URL="$docS3url"
-                        export PORTAL2_S3_URL="https://portal2-content.omega2-andromeda.guidewire.net"
-                        export REQUESTS_MEMORY="500M"
-                        export REQUESTS_CPU="100m"
-                        export LIMITS_MEMORY="2G"
-                        export LIMITS_CPU="1"
-                        export ENABLE_AUTH=$enableAuth
-                        
-                        # Set other envs
-                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
-                        export TMP_GATEWAY_CONFIG_FILE="tmp-gateway-config.yml"
-                        
-                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
-                        
-                        echo ${'$'}(kubectl get pods --namespace=${namespace})
-                        
-                        eval "echo \"${'$'}(cat server/kube/deployment.yml)\"" > ${'$'}TMP_DEPLOYMENT_FILE
-                        eval "echo \"${'$'}(cat server/kube/${gatewayConfigFile})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
-                                                
-                        sed -ie "s/BUILD_TIME/${'$'}(date)/g" ${'$'}TMP_DEPLOYMENT_FILE
-                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${namespace}
-                        kubectl apply -f ${'$'}TMP_GATEWAY_CONFIG_FILE --namespace=${namespace}                    
-                    """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
-                }
-                script {
-                    name = "Check new Pods Status"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                        #!/bin/bash
-                        set -e
-                        
-                        # Set AWS credentials
-                        $awsEnvVars
-                        
-                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
-                        sleep 10
-                        TIME="0"
-                        while true; do
-                            if [[ "${'$'}TIME" == "10" ]]; then
-                                break
-                            fi
-                            FAIL_PODS=`kubectl get pods -l app=$appName --namespace=doctools | grep CrashLoopBackOff | cut -d' ' -f1 | tail -n +2`
-                            if [[ ! -z "${'$'}FAIL_PODS" ]]; then
-                                echo "The following pods failed in last Deployment. Please check it in Kubernetes Dashboard."
-                                echo "${'$'}FAIL_PODS" && false
-                            fi
-                            sleep 10
-                            TIME=${'$'}[${'$'}TIME+1]
-                        done
-                    """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
-                }
-
-                stepsOrder = this.items.map { it.id.toString() } as ArrayList<String>
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-        }
-
-        deployServerBuildType.triggers {
-            vcs {
-                triggerRules = """
-                    +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/**
-                    -:user=doctools:**
-                    """.trimIndent()
-            }
-        }
-        return deployServerBuildType
-    }
-
+    // TODO:Change GatewayConfig files to master files before merge to master
     private fun createDeployServerBuildType(deployEnv: String): BuildType {
-        val namespace = "doctools"
-        val tagVersion = when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> "latest"
-            else -> "v%TAG_VERSION%"
-        }
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
         val gatewayConfigFile = when (deployEnv) {
-            GwDeployEnvs.PROD.envName -> "gateway-config-prod.yml"
-            else -> "gateway-config.yml"
+            GwDeployEnvs.PROD.envName -> "gateway-config-croissant.yml"
+            else -> "gateway-config-croissant.yml"
         }
 
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
-        val serverDeployEnvVars = Helpers.setServerDeployEnvVars(deployEnv, tagVersion)
+        val serverDeployEnvVars = Helpers.setServerDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL.tagValue)
         val deployServerBuildType = BuildType {
             name = "Deploy to $deployEnv"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -2859,54 +2430,47 @@ object Server {
                         
                         aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
                         
-                        echo ${'$'}(kubectl get pods --namespace=${namespace})
+                        echo ${'$'}(kubectl get pods --namespace=${GwAtmosLabels.POD_NAME.labelValue})
                         
                         eval "echo \"${'$'}(cat server/kube/deployment.yml)\"" > ${'$'}TMP_DEPLOYMENT_FILE
                         eval "echo \"${'$'}(cat server/kube/${gatewayConfigFile})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
                                                 
                         sed -ie "s/BUILD_TIME/${'$'}(date)/g" ${'$'}TMP_DEPLOYMENT_FILE
-                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${namespace}
-                        kubectl apply -f ${'$'}TMP_GATEWAY_CONFIG_FILE --namespace=${namespace}                    
+                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}
+                        kubectl apply -f ${'$'}TMP_GATEWAY_CONFIG_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}                    
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
                 }
-                script {
-                    name = "Check new Pods Status"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                        #!/bin/bash
-                        set -e
-                        
-                        # Set AWS credentials
-                        $awsEnvVars
-                        
-                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
-                        sleep 10
-                        TIME="0"
-                        while true; do
-                            if [[ "${'$'}TIME" == "10" ]]; then
-                                break
-                            fi
-                            FAIL_PODS=`kubectl get pods -l app=docportal-app --namespace=doctools | grep CrashLoopBackOff | cut -d' ' -f1 | tail -n +2`
-                            if [[ ! -z "${'$'}FAIL_PODS" ]]; then
-                                echo "The following pods failed in last Deployment. Please check it in Kubernetes Dashboard."
-                                echo "${'$'}FAIL_PODS" && false
-                            fi
-                            sleep 10
-                            TIME=${'$'}[${'$'}TIME+1]
-                        done
-                    """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
-                }
-
-                stepsOrder = this.items.map { it.id.toString() } as ArrayList<String>
+                step(
+                    GwBuildSteps.createCheckPodsStatusStep(
+                        awsEnvVars,
+                        atmosDeployEnv,
+                        GwConfigParams.DOC_PORTAL_APP_NAME.paramValue
+                    )
+                )
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+            dependencies {
+                snapshot(Checkmarx) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+                snapshot(TestDocSiteServerApp) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+                snapshot(testConfigDocs) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+                snapshot(testConfigSources) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+                snapshot(testConfigBuilds) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+            }
         }
 
         if (arrayOf(
@@ -2914,57 +2478,33 @@ object Server {
             ).contains(deployEnv)
         ) {
             deployServerBuildType.vcs.branchFilter = "+:<default>"
-            deployServerBuildType.params.text(
-                "TAG_VERSION",
-                "",
-                label = "Deploy Version",
-                display = ParameterDisplay.PROMPT,
-                regex = """^([0-9]+\.[0-9]+\.[0-9]+)${'$'}""",
-                validationMessage = "Invalid SemVer Format"
-            )
-            if (arrayOf(GwDeployEnvs.PROD.envName).contains(deployEnv)) {
-                val publishServerDockerImageToEcrStep =
-                    GwBuildSteps.createPublishServerDockerImageToProdEcrStep(tagVersion)
-                deployServerBuildType.steps.step(publishServerDockerImageToEcrStep)
-                deployServerBuildType.steps.stepsOrder.add(0, publishServerDockerImageToEcrStep.id.toString())
+        }
+
+        if (deployEnv == GwDeployEnvs.PROD.envName) {
+            deployServerBuildType.dependencies.snapshot(publishDockerImageToProdEcrBuildType) {
+                onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+        } else {
+            deployServerBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
+                onDependencyFailure = FailureAction.FAIL_TO_START
             }
         }
 
-        if (arrayOf(GwDeployEnvs.DEV.envName).contains(deployEnv)) {
-            val buildAndPublishServerDockerImageStep =
-                GwBuildSteps.createBuildAndPublishServerDockerImageToDevEcrStep(tagVersion)
-            deployServerBuildType.steps.step(buildAndPublishServerDockerImageStep)
-            deployServerBuildType.steps.stepsOrder.add(0, buildAndPublishServerDockerImageStep.id.toString())
-            deployServerBuildType.dependencies {
-                snapshot(Checkmarx) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                snapshot(TestDocSiteServerApp) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                snapshot(TestConfigDocs) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                snapshot(TestConfigSources) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                snapshot(TestConfigBuilds) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-            if (deployEnv == GwDeployEnvs.DEV.envName) {
-                deployServerBuildType.triggers.finishBuildTrigger {
-                    buildType = "${TestDocSiteServerApp.id}"
-                    successfulOnly = true
-                }
+        if (deployEnv == GwDeployEnvs.DEV.envName) {
+            deployServerBuildType.triggers.vcs {
+                triggerRules = """
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/**
+                        -:user=doctools:**
+                    """.trimIndent()
             }
         }
+
         return deployServerBuildType
     }
 }
 
 object BuildListeners {
-    val rootProject = createBuildListenersProject()
+    val rootProject = createRootProjectForBuildListeners()
 
     private fun getSourcesForBuildListenerBuildTypes(): List<JSONObject> {
         val sourcesRequiringListeners = mutableListOf<JSONObject>()
@@ -2989,7 +2529,7 @@ object BuildListeners {
         return sourcesRequiringListeners
     }
 
-    private fun createBuildListenersProject(): Project {
+    private fun createRootProjectForBuildListeners(): Project {
         return Project {
             name = "Build listeners"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -3165,7 +2705,7 @@ object Sources {
         // the teamcity.build.branch variable because it's more flexible (we don't need to provide the VCS Root ID).
         val teamcityBuildBranch = "%teamcity.build.vcs.branch.${teamcityGitRepoId}%"
         val publishPath = "preview/${srcId}/${teamcityBuildBranch}/${docId}"
-        val previewUrl = "https://docs.staging.ccs.guidewire.net/$publishPath"
+        val previewUrl = "${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/$publishPath"
         val previewUrlFile = "preview_url.txt"
 
         val validationBuildType = BuildType {
@@ -3806,15 +3346,15 @@ object Helpers {
             export AWS_DEFAULT_REGION="$awsDefaultRegion"
         """.trimIndent()
     }
-
+// TODO: Change URLs to doc site URLs before merge to master
     fun getTargetUrl(deployEnv: String): String {
         return if (arrayOf(
                 GwDeployEnvs.PROD.envName, GwDeployEnvs.PORTAL2.envName
             ).contains(deployEnv)
         ) {
-            "https://docs.guidewire.com"
+            "https://croissant.${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.guidewire.net"
         } else {
-            "https://docs.${deployEnv}.ccs.guidewire.net"
+            "https://croissant.${deployEnv}.ccs.guidewire.net"
         }
     }
 
@@ -3857,37 +3397,19 @@ object Helpers {
         return Pair(partnersLoginUrl, customersLoginUrl)
     }
 
-    fun setServerDeployEnvVars(deployEnv: String, tagVersion: String, appName: String = "docportal-app"): String {
-        val (partnersLoginUrl, customersLoginUrl) = getGwCommunityUrls(deployEnv)
-        val appBaseUrl = getTargetUrl(deployEnv)
+    // TODO: Adjust requested values for CPU and memory when Kubecost starts being useful again
+    fun setReactLandingPagesDeployEnvVars(deployEnv: String, tagVersion: String): String {
         val commonEnvVars = """
-            export DD_SERVICE_NAME="docportal"
-            export APP_NAME="$appName"
+            export APP_NAME="${GwConfigParams.DOC_PORTAL_FRONTEND_APP_NAME.paramValue}"
             export POD_NAME="${GwAtmosLabels.POD_NAME.labelValue}"
             export DEPT_CODE="${GwAtmosLabels.DEPT_CODE.labelValue}"
+            export TAG_VERSION=$tagVersion
         """.trimIndent()
         return when (deployEnv) {
             GwDeployEnvs.PROD.envName -> """
                 $commonEnvVars
-                export AWS_ROLE="arn:aws:iam::954920275956:role/aws_orange-prod_tenant_doctools_developer"
-                export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL_PROD.imageUrl}"
-                export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/partners-login"
-                export PARTNERS_LOGIN_URL="$partnersLoginUrl"
-                export GW_COMMUNITY_PARTNER_IDP="0oa6c4yaoikrU91Hw357"
-                export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/customers-login"
-                export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
-                export GW_COMMUNITY_CUSTOMER_IDP="0oa6c4x5z3fYXUWoE357"
-                export TAG_VERSION="$tagVersion"
-                export DEPLOY_ENV="${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}"
-                export OKTA_ACCESS_TOKEN_ISSUER="https://guidewire-hub.okta.com/oauth2/aus11vix3uKEpIfSI357"
-                export OKTA_ACCESS_TOKEN_ISSUER_APAC="https://guidewire-hub-apac.okta.com/oauth2/ausbg05gfcTZQ7bpH3l6"
-                export OKTA_ACCESS_TOKEN_ISSUER_EMEA="https://guidewire-hub-eu.okta.com/oauth2/ausc2q01c40dNZII0416"
-                export OKTA_DOMAIN="https://guidewire-hub.okta.com"
-                export OKTA_IDP="0oa25tk18zhGOqMfj357"
-                export APP_BASE_URL="$appBaseUrl"
-                export ELASTIC_SEARCH_URL="http://docsearch-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.doctools:9200"
-                export DOC_S3_URL="${getS3BucketUrl(deployEnv)}"
-                export PORTAL2_S3_URL="${getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)}"
+                export AWS_ROLE="${GwConfigParams.AWS_ROLE_PROD.paramValue}"
+                export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL_FRONTEND_PROD.imageUrl}"
                 export REQUESTS_MEMORY="1G"
                 export REQUESTS_CPU="200m"
                 export LIMITS_MEMORY="4G"
@@ -3896,7 +3418,59 @@ object Helpers {
 
             else -> """
                 $commonEnvVars
-                export AWS_ROLE="arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"
+                export AWS_ROLE="${GwConfigParams.AWS_ROLE.paramValue}"
+                export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl}"
+                export REQUESTS_MEMORY="500M"
+                export REQUESTS_CPU="100m"
+                export LIMITS_MEMORY="2G"
+                export LIMITS_CPU="1"
+            """.trimIndent()
+        }
+    }
+// TODO:
+//  - Remove the secret from the secrets manager (do it when ready to merge to feature/typeorm)
+    fun setServerDeployEnvVars(deployEnv: String, tagVersion: String): String {
+        val (partnersLoginUrl, customersLoginUrl) = getGwCommunityUrls(deployEnv)
+        val appBaseUrl = getTargetUrl(deployEnv)
+        val commonEnvVars = """
+            export APP_NAME="${GwConfigParams.DOC_PORTAL_APP_NAME.paramValue}"
+            export POD_NAME="${GwAtmosLabels.POD_NAME.labelValue}"
+            export DEPT_CODE="${GwAtmosLabels.DEPT_CODE.labelValue}"
+            export TAG_VERSION="$tagVersion"
+            export APP_BASE_URL="$appBaseUrl"
+            export FRONTEND_URL="http://docportal-frontend.doctools:6006"
+            export DOC_S3_URL="${getS3BucketUrl(deployEnv)}"
+            export PORTAL2_S3_URL="${getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)}"
+            export ENABLE_AUTH="yes"
+            export DD_SERVICE_NAME="${GwConfigParams.DOC_PORTAL_APP_NAME.paramValue}"
+        """.trimIndent()
+        return when (deployEnv) {
+            GwDeployEnvs.PROD.envName -> """
+                $commonEnvVars
+                export AWS_ROLE="${GwConfigParams.AWS_ROLE_PROD.paramValue}"
+                export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL_PROD.imageUrl}"
+                export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/partners-login"
+                export PARTNERS_LOGIN_URL="$partnersLoginUrl"
+                export GW_COMMUNITY_PARTNER_IDP="0oa6c4yaoikrU91Hw357"
+                export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/customers-login"
+                export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
+                export GW_COMMUNITY_CUSTOMER_IDP="0oa6c4x5z3fYXUWoE357"
+                export DEPLOY_ENV="${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}"
+                export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER_PROD.paramValue}"
+                export OKTA_ISSUER_APAC="${GwConfigParams.OKTA_ISSUER_APAC.paramValue}"
+                export OKTA_ISSUER_EMEA="${GwConfigParams.OKTA_ISSUER_EMEA.paramValue}"
+                export OKTA_IDP="0oa25tk18zhGOqMfj357"
+                export ELASTIC_SEARCH_URL="http://docsearch-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.doctools:9200"
+                export CONFIG_DB_HOST="tenant-doctools-docportal-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-1.c3qnnou7xlkq.us-east-1.rds.amazonaws.com"
+                export REQUESTS_MEMORY="1G"
+                export REQUESTS_CPU="200m"
+                export LIMITS_MEMORY="4G"
+                export LIMITS_CPU="2"
+            """.trimIndent()
+
+            else -> """
+                $commonEnvVars
+                export AWS_ROLE="${GwConfigParams.AWS_ROLE.paramValue}"
                 export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL.imageUrl}"
                 export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/partners-login"
                 export PARTNERS_LOGIN_URL="$partnersLoginUrl"
@@ -3904,17 +3478,13 @@ object Helpers {
                 export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/customers-login"
                 export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
                 export GW_COMMUNITY_CUSTOMER_IDP="0oau503zlhhFLwTqF0h7"
-                export TAG_VERSION="$tagVersion"
                 export DEPLOY_ENV="$deployEnv"
-                export OKTA_ACCESS_TOKEN_ISSUER="https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"
-                export OKTA_ACCESS_TOKEN_ISSUER_APAC="issuerNotConfigured"
-                export OKTA_ACCESS_TOKEN_ISSUER_EMEA="issuerNotConfigured"
-                export OKTA_DOMAIN="https://guidewire-hub.oktapreview.com"
+                export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
+                export OKTA_ISSUER_APAC="issuerNotConfigured"
+                export OKTA_ISSUER_EMEA="issuerNotConfigured"
                 export OKTA_IDP="0oamwriqo1E1dOdd70h7"
-                export APP_BASE_URL="$appBaseUrl"
                 export ELASTIC_SEARCH_URL="http://docsearch-${deployEnv}.doctools:9200"
-                export DOC_S3_URL="${getS3BucketUrl(deployEnv)}"
-                export PORTAL2_S3_URL="${getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)}"
+                export CONFIG_DB_HOST="tenant-doctools-docportal-${deployEnv}-1.crahnfhpsx5k.us-west-2.rds.amazonaws.com"
                 export REQUESTS_MEMORY="500M"
                 export REQUESTS_CPU="100m"
                 export LIMITS_MEMORY="2G"
@@ -4014,6 +3584,114 @@ object Helpers {
 
 }
 
+object GwBuilds {
+    fun createBuildAndPublishDockerImageToDevEcrBuildType(
+        tagVersion: String,
+        devDockerImageUrl: String,
+        dockerfilePath: String,
+    ): BuildType {
+        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
+        return BuildType {
+            name = "Build and publish Docker Image to DEV ECR"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${devDockerImageUrl}"))
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                branchFilter = "+:<default>"
+                cleanCheckout = true
+            }
+
+            steps {
+                script {
+                    name = "Build and publish Docker Image to DEV ECR"
+                    id = Helpers.createIdStringFromName(this.name)
+
+                    scriptContent = """
+                        #!/bin/bash 
+                        set -xe
+                        
+                        # Log into the dev ECR, build and push the image
+                        $awsEnvVars
+                        
+                        export TAG_VERSION=$tagVersion
+                        export DEPT_CODE=${GwAtmosLabels.DEPT_CODE.labelValue}
+                        export POD_NAME=${GwAtmosLabels.POD_NAME.labelValue}
+        
+                        set +x
+                        docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
+                        set -x
+                        docker build -t ${devDockerImageUrl}:${tagVersion} $dockerfilePath \
+                        --build-arg NPM_AUTH_TOKEN \
+                        --build-arg TAG_VERSION \
+                        --build-arg DEPT_CODE \
+                        --build-arg POD_NAME
+                        docker push ${devDockerImageUrl}:${tagVersion}
+                    """.trimIndent()
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerRunParameters =
+                        "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
+                }
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+        }
+    }
+
+    fun createPublishDockerImageToProdEcrBuildType(
+        tagVersion: String,
+        devDockerImageUrl: String,
+        prodDockerImageUrl: String,
+        buildDevDockerImageBuildType: BuildType,
+    ): BuildType {
+        val awsEnvVarsDev = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
+        val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
+        return BuildType {
+            name = "Publish Docker Image to PROD ECR"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${devDockerImageUrl}"))
+
+            steps {
+                script {
+                    name = "Download Docker Image from DEV ECR and push it to PROD ECR"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                        set -xe
+                        
+                        # Log into the dev ECR, download the image and tag it
+                        $awsEnvVarsDev
+        
+                        set +x
+                        docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
+                        set -x
+                        docker pull ${devDockerImageUrl}:${tagVersion}
+                        docker tag ${devDockerImageUrl}:${tagVersion} ${prodDockerImageUrl}:${tagVersion}
+                        
+                        # Log into the prod ECR and push the image
+                        $awsEnvVarsProd
+                        
+                        set +x
+                        docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST_PROD.paramValue}
+                        set -x
+                        docker push ${prodDockerImageUrl}:${tagVersion}
+                    """.trimIndent()
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerRunParameters =
+                        "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
+                }
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+            dependencies {
+                snapshot(buildDevDockerImageBuildType) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+            }
+        }
+    }
+}
+
 object GwBuildSteps {
     object MergeAllLegacyConfigsStep : ScriptBuildStep({
         name = "Merge all config files"
@@ -4029,6 +3707,39 @@ object GwBuildSteps {
         dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.imageUrl
         dockerImagePlatform = ImagePlatform.Linux
     })
+
+    fun createCheckPodsStatusStep(envVars: String, deployEnv: String, appName: String): ScriptBuildStep {
+        return ScriptBuildStep {
+            name = "Check pods status"
+            id = Helpers.createIdStringFromName(this.name)
+            scriptContent = """
+                #!/bin/bash
+                set -e
+                
+                # Set AWS credentials
+                $envVars
+                
+                aws eks update-kubeconfig --name atmos-${deployEnv}
+                sleep 10
+                TIME="0"
+                while true; do
+                    if [[ "${'$'}TIME" == "10" ]]; then
+                        break
+                    fi
+                    FAIL_PODS=`kubectl get pods -l app=${appName} --namespace=${GwAtmosLabels.POD_NAME.labelValue} | grep CrashLoopBackOff | cut -d' ' -f1 | tail -n +2`
+                    if [[ ! -z "${'$'}FAIL_PODS" ]]; then
+                        echo "The following pods failed in last Deployment. Please check it in Kubernetes Dashboard."
+                        echo "${'$'}FAIL_PODS" && false
+                    fi
+                    sleep 10
+                    TIME=${'$'}[${'$'}TIME+1]
+                done
+            """.trimIndent()
+            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+            dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+        }
+    }
 
     fun createAddPullRequestCommentStep(
         stepNameSuffix: String,
@@ -4336,76 +4047,6 @@ object GwBuildSteps {
             """.trimIndent()
             dockerImage = GwDockerImages.INDEX_CLEANER_LATEST.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-        }
-    }
-
-    fun createPublishServerDockerImageToProdEcrStep(
-        tagVersion: String,
-    ): ScriptBuildStep {
-        val awsEnvVarsDev = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
-        val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
-        return ScriptBuildStep {
-            name = "Publish server Docker Image to PROD ECR"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                set -xe
-                
-                # Log into the dev ECR, download the image and tag it
-                $awsEnvVarsDev
-
-                set +x
-                docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
-                set -x
-                docker pull ${GwDockerImages.DOC_PORTAL.imageUrl}:${tagVersion}
-                docker tag ${GwDockerImages.DOC_PORTAL.imageUrl}:${tagVersion} ${GwDockerImages.DOC_PORTAL_PROD.imageUrl}:${tagVersion}
-                
-                # Log into the prod ECR and push the image
-                $awsEnvVarsProd
-                
-                set +x
-                docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST_PROD.paramValue}
-                set -x
-                docker push ${GwDockerImages.DOC_PORTAL_PROD.imageUrl}:${tagVersion}
-            """.trimIndent()
-            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters =
-                "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
-        }
-    }
-
-    fun createBuildAndPublishServerDockerImageToDevEcrStep(
-        tagVersion: String,
-    ): ScriptBuildStep {
-        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
-        return ScriptBuildStep {
-            name = "Build and publish server Docker Image to DEV ECR"
-            id = Helpers.createIdStringFromName(this.name)
-            scriptContent = """
-                #!/bin/bash 
-                set -xe
-                
-                # Log into the dev ECR, build and push the image
-                $awsEnvVars
-                
-                export TAG_VERSION=$tagVersion
-                export DEPT_CODE=${GwAtmosLabels.DEPT_CODE.labelValue}
-                export POD_NAME=${GwAtmosLabels.POD_NAME.labelValue}
-
-                set +x
-                docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
-                set -x
-                docker build -t ${GwDockerImages.DOC_PORTAL.imageUrl}:${tagVersion} . \
-                --build-arg TAG_VERSION \
-                --build-arg NPM_AUTH_TOKEN \
-                --build-arg DEPT_CODE \
-                --build-arg POD_NAME
-                docker push ${GwDockerImages.DOC_PORTAL.imageUrl}:${tagVersion}
-            """.trimIndent()
-            dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            dockerRunParameters =
-                "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
         }
     }
 
@@ -5324,12 +4965,12 @@ object GwBuildFeatures {
 }
 
 object GwVcsRoots {
+    // TODO: Switch this repo to the master branch after testing is done
     val DocumentationPortalGitVcsRoot = createGitVcsRoot(
         Helpers.resolveRelativeIdFromIdString("Documentation Portal git repo"),
         "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
-        "master",
+        "feature/typeorm",
         listOf("(refs/heads/*)")
-
     )
 
     val LocalizedPdfsGitVcsRoot = createGitVcsRoot(
@@ -5348,12 +4989,6 @@ object GwVcsRoots {
         Helpers.resolveRelativeIdFromIdString("DITA OT plugins repo"),
         "ssh://git@stash.guidewire.com/doctools/dita-ot-plugins.git",
         "main",
-    )
-
-    val CroissantFeatureBranchGitVcsRoot = createGitVcsRoot(
-        Helpers.resolveRelativeIdFromIdString("Croissant feature branch"),
-        "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
-        "feature/typeorm",
     )
 
     private fun createGitVcsRoot(

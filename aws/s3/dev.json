@@ -40,7 +40,16 @@
     "tags": [
       {
         "Key": "gwcp:v1:tenant:app-name",
-        "Value": "docportal-app"
+        "Value": "docportal"
+      }
+    ]
+  },
+  {
+    "bucketName": "tenant-doctools-staging-terraform",
+    "tags": [
+      {
+        "Key": "gwcp:v1:tenant:app-name",
+        "Value": "docportal"
       }
     ]
   }

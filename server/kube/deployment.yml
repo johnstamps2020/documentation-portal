@@ -116,11 +116,6 @@ spec:
                 command:
                   - /bin/sleep
                   - '30'
-          command: [\"/bin/sh\", \"-c\"]
-          args:
-            [
-              \"until wget -qO- http://127.0.0.1:15000/server_info | grep '\\\"state\\\": \\\"LIVE\\\"'; do echo 'Waiting for Istio sidecar'; sleep 1 ; done ; echo 'istio sidecar available'; node server.js\",
-            ]
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
@@ -172,11 +167,11 @@ spec:
                   name: ${APP_NAME}-external-secret
                   key: okta_client_secret_emea
             - name: OKTA_ISSUER
-              value: ${OKTA_ACCESS_TOKEN_ISSUER}
+              value: ${OKTA_ISSUER}
             - name: OKTA_ISSUER_APAC
-              value: ${OKTA_ACCESS_TOKEN_ISSUER_APAC}
+              value: ${OKTA_ISSUER_APAC}
             - name: OKTA_ISSUER_EMEA
-              value: ${OKTA_ACCESS_TOKEN_ISSUER_EMEA}
+              value: ${OKTA_ISSUER_EMEA}
             - name: OKTA_SCOPES
               valueFrom:
                 secretKeyRef:
@@ -271,10 +266,7 @@ spec:
             - name: DD_PROPAGATION_STYLE_INJECT
               value: 'Datadog,B3'
             - name: CONFIG_DB_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: ${APP_NAME}-external-secret
-                  key: config_db_host
+              value: ${CONFIG_DB_HOST}
             - name: CONFIG_DB_NAME
               valueFrom:
                 secretKeyRef:

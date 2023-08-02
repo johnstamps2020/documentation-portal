@@ -30,5 +30,5 @@ spec:
       profiles:
         - Default
   service_ref: ${APP_NAME}
-  service_alias: croissant
+  service_alias: docs
   enable_sub_domain: false
