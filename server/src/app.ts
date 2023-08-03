@@ -24,6 +24,7 @@ import {
 } from './controllers/authController';
 import { fourOhFourRoute } from './controllers/proxyController';
 import { JwtPayload } from 'jsonwebtoken';
+import { redirect } from './middlewares/redirectMiddleware';
 
 declare global {
   namespace Express {
@@ -204,7 +205,7 @@ if (isDevMode) {
 }
 
 // Docs stored on S3 (current and portal2) and landing pages
-app.use(saveUserInfoToResLocals, s3Proxy, reactAppProxy);
+app.use(saveUserInfoToResLocals, redirect, s3Proxy, reactAppProxy);
 
 app.use((req: Request, res: Response) => {
   const notFoundParam =
