@@ -122,7 +122,10 @@ const landingPageItemGetter = async (
 export function useLandingPageItems(items: LandingPageItemProps[]) {
   const { data, error, isLoading } = useSWR<LandingPageItemData[], PageError>(
     items,
-    landingPageItemGetter
+    landingPageItemGetter,
+    {
+      revalidateOnFocus: false,
+    }
   );
 
   return {
