@@ -1,4 +1,5 @@
 import { Page } from 'server/dist/model/entity/Page';
+import { RedirectResponseBody } from 'server/dist/types/apiResponse';
 import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
 
@@ -33,16 +34,30 @@ function getRedirectUrl(
       return new Redirect('internal', `/gw-login?redirectTo=${requestedPath}`);
     case 403:
       return new Redirect('internal', `/internal?restricted=${requestedPath}`);
-    case 404 || 406:
-      return new Redirect('external', `/redirect?cameFrom=${requestedPath}`);
+    case 404:
+      return new Redirect('internal', `/404?notFound=${requestedPath}`);
+    case 406:
+      return new Redirect('internal', `/404?notFound=${requestedPath}`);
     default:
       break;
   }
 }
 
 const pageGetter = async (pagePath: string) => {
+  const redirectResponse = await fetch(`/redirect?cameFrom=${pagePath}`);
+  if (redirectResponse.ok) {
+    const redirectResponseBody: RedirectResponseBody =
+      await redirectResponse.json();
+    if (redirectResponseBody.redirectUrl) {
+      throw new PageError(
+        redirectResponseBody.redirectStatusCode,
+        'Redirect found on server',
+        new Redirect('external', redirectResponseBody.redirectUrl)
+      );
+    }
+  }
   const response = await fetch(`/safeConfig/entity/Page?path=${pagePath}`);
-  const requestedPath = pagePath === '/' ? pagePath : `/${pagePath}`;
+  const requestedPath = `/${pagePath}`;
   const { status } = response;
   const jsonData = await response.json();
   if (!response.ok) {
@@ -60,17 +75,10 @@ const pageGetter = async (pagePath: string) => {
   return jsonData;
 };
 
-export function usePagePath() {
-  const params = useParams();
-  const pagePath: string =
-    params['*'] && params['*'] !== '' ? params['*'] : '/';
-
-  return pagePath;
-}
-
 export function usePageData(pagePath?: string) {
-  const currentPagePath = usePagePath();
-  const targetPagePath = pagePath ? pagePath : currentPagePath;
+  const reactRouterParams = useParams();
+  const currentPagePath = reactRouterParams['*'] || '/';
+  const targetPagePath = pagePath || currentPagePath;
   const { data, error, isLoading } = useSWR<Page, PageError>(
     targetPagePath,
     pageGetter

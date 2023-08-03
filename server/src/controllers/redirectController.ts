@@ -1,13 +1,15 @@
-import { getDocByUrl } from './configController';
-import { ApiResponse } from '../types/apiResponse';
+import { RedirectResponse } from '../types/apiResponse';
 import { winstonLogger } from './loggerController';
 import { Doc } from '../model/entity/Doc';
 import { AppDataSource } from '../model/connection';
 import { isUserAllowedToAccessResource } from './authController';
 import { Response } from 'express';
+import { getEnvInfo } from './envController';
 
 const fetch = require('node-fetch-retry');
-const redirectUrls = [
+
+const isProd = getEnvInfo()?.name === 'omega2-andromeda';
+const permanentRedirectUrls = [
   {
     from: 'cloud/cda/banff',
     to: 'cloudProducts/dataPlatform',
@@ -181,8 +183,26 @@ const redirectUrls = [
     to: 'cloud/gcc-guide/insurer-developer/latest',
   },
 ];
+const temporaryRedirectUrls = [
+  {
+    from: '',
+    to: isProd ? 'cloudProducts/garmisch' : 'cloudProducts/hakuba',
+  },
+  {
+    from: 'cloudProducts',
+    to: isProd ? 'cloudProducts/garmisch' : 'cloudProducts/hakuba',
+  },
+  {
+    from: 'apiReferences',
+    to: isProd ? 'apiReferences/garmisch' : 'apiReferences/hakuba',
+  },
+];
 
-export async function isHtmlPage(url: string) {
+export function isHtmlRequest(url: string) {
+  return /(^(?!.*\.\D+$).*$|\.htm.*$)/.test(url);
+}
+
+export async function htmlPageExists(url: string) {
   try {
     const fullUrl = process.env.DOC_S3_URL + url;
     const response = await fetch(fullUrl, { method: 'HEAD' });
@@ -244,13 +264,10 @@ export async function getLatestVersionUrl(
   pathname: string
 ): Promise<string | null> {
   const wildcardUrlSegments = pathname.replace('latest', '%').split('/');
-  const urlsToCheck = [];
-  for (const segment of wildcardUrlSegments) {
+  const urlsToCheck: string[] = [];
+  for (const segmentIndex in wildcardUrlSegments) {
     const partialUrl = wildcardUrlSegments
-      .slice(
-        0,
-        wildcardUrlSegments.length - wildcardUrlSegments.indexOf(segment)
-      )
+      .slice(0, wildcardUrlSegments.length - parseInt(segmentIndex))
       .join('/');
     if (partialUrl.includes('%')) {
       urlsToCheck.push(partialUrl);
@@ -271,26 +288,37 @@ export async function getLatestVersionUrl(
   targetUrlSegments[wildcardIndex] =
     urlWithHighestVersionSegments[wildcardIndex];
   const targetUrl = targetUrlSegments.join('/');
-  const targetUrlExists = await isHtmlPage(`/${targetUrl}`);
+  const targetUrlExists = await htmlPageExists(`/${targetUrl}`);
   return targetUrlExists ? targetUrl : urlWithHighestVersionSegments.join('/');
 }
 
 export async function getRedirectUrl(
   res: Response,
   requestedPath: string | null | undefined
-): Promise<ApiResponse> {
+): Promise<RedirectResponse> {
   try {
-    if (!requestedPath) {
+    if (requestedPath === null || requestedPath === undefined) {
       return {
-        status: 404,
+        status: 200,
         body: {
-          message:
-            'Redirect URL not found because the requested path was not provided.',
+          redirectStatusCode: 404,
+          redirectUrl: null,
+          message: 'The cameFrom parameter was not provided',
+        },
+      };
+    }
+    if (!isHtmlRequest(requestedPath)) {
+      return {
+        status: 200,
+        body: {
+          redirectStatusCode: 404,
+          redirectUrl: null,
+          message: 'Redirect URL is not supported for non-HTML requests',
         },
       };
     }
     const normalizedPath = removeSlashesFromPath(requestedPath);
-    for (const urlObj of redirectUrls) {
+    for (const urlObj of permanentRedirectUrls) {
       if (urlObj.from === normalizedPath) {
         return {
           status: 200,
@@ -301,53 +329,47 @@ export async function getRedirectUrl(
         };
       }
     }
-    if (requestedPath.includes('/latest')) {
-      const latestVersionUrl = await getLatestVersionUrl(res, normalizedPath);
-      if (latestVersionUrl) {
+    for (const urlObj of temporaryRedirectUrls) {
+      if (urlObj.from === normalizedPath) {
         return {
           status: 200,
           body: {
             redirectStatusCode: 307,
-            redirectUrl: `/${latestVersionUrl}`,
+            redirectUrl: `/${urlObj.to}`,
           },
         };
       }
     }
-    const matchingDoc = await getDocByUrl(normalizedPath);
-    if (!matchingDoc) {
-      return {
-        status: 404,
-        body: {
-          message: 'Redirect URL does not exist',
-        },
-      };
-    }
-    const isUserAllowedToAccessResourceResult = isUserAllowedToAccessResource(
-      res,
-      matchingDoc.public,
-      matchingDoc.internal,
-      matchingDoc.isInProduction
-    );
-    if (isUserAllowedToAccessResourceResult.status === 200) {
-      return {
-        status: 200,
-        body: {
-          redirectStatusCode: 307,
-          redirectUrl: `/${matchingDoc.url}`,
-        },
-      };
+    if (requestedPath.includes('/latest')) {
+      const pathExists = await htmlPageExists(requestedPath);
+      if (!pathExists) {
+        const latestVersionUrl = await getLatestVersionUrl(res, normalizedPath);
+        if (latestVersionUrl) {
+          return {
+            status: 200,
+            body: {
+              redirectStatusCode: 307,
+              redirectUrl: `/${latestVersionUrl}`,
+            },
+          };
+        }
+      }
     }
     return {
-      status: 404,
+      status: 200,
       body: {
-        message: 'Redirect URL does not exist',
+        redirectStatusCode: 404,
+        redirectUrl: null,
+        message: `Redirect URL not found for path: ${normalizedPath}`,
       },
     };
   } catch (err) {
     return {
       status: 500,
       body: {
-        message: `Redirect URL not found due to an error. Error: ${err}`,
+        redirectStatusCode: 404,
+        redirectUrl: null,
+        message: `Redirect URL not found due to an error: ${err}`,
       },
     };
   }
