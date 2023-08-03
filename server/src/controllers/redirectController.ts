@@ -5,9 +5,12 @@ import { Doc } from '../model/entity/Doc';
 import { AppDataSource } from '../model/connection';
 import { isUserAllowedToAccessResource } from './authController';
 import { Response } from 'express';
+import { getEnvInfo } from './envController';
 
 const fetch = require('node-fetch-retry');
-const redirectUrls = [
+
+const isProd = getEnvInfo()?.name === 'omega2-andromeda';
+const permanentRedirectUrls = [
   {
     from: 'cloud/cda/banff',
     to: 'cloudProducts/dataPlatform',
@@ -181,6 +184,20 @@ const redirectUrls = [
     to: 'cloud/gcc-guide/insurer-developer/latest',
   },
 ];
+const temporaryRedirectUrls = [
+  {
+    from: '',
+    to: isProd ? 'cloudProducts/garmisch' : 'cloudProducts/hakuba',
+  },
+  {
+    from: 'cloudProducts',
+    to: isProd ? 'cloudProducts/garmisch' : 'cloudProducts/hakuba',
+  },
+  {
+    from: 'apiReferences',
+    to: isProd ? 'apiReferences/garmisch' : 'apiReferences/hakuba',
+  },
+];
 
 export async function isHtmlPage(url: string) {
   try {
@@ -290,12 +307,23 @@ export async function getRedirectUrl(
       };
     }
     const normalizedPath = removeSlashesFromPath(requestedPath);
-    for (const urlObj of redirectUrls) {
-      if (normalizedPath.startsWith(urlObj.from)) {
+    for (const urlObj of permanentRedirectUrls) {
+      if (urlObj.from === normalizedPath) {
         return {
           status: 200,
           body: {
             redirectStatusCode: 308,
+            redirectUrl: `/${urlObj.to}`,
+          },
+        };
+      }
+    }
+    for (const urlObj of temporaryRedirectUrls) {
+      if (urlObj.from === normalizedPath) {
+        return {
+          status: 200,
+          body: {
+            redirectStatusCode: 307,
             redirectUrl: `/${urlObj.to}`,
           },
         };
