@@ -291,7 +291,7 @@ export async function getRedirectUrl(
     }
     const normalizedPath = removeSlashesFromPath(requestedPath);
     for (const urlObj of redirectUrls) {
-      if (urlObj.from === normalizedPath) {
+      if (normalizedPath.startsWith(urlObj.from)) {
         return {
           status: 200,
           body: {
