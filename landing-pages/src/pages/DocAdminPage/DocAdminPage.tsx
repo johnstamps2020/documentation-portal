@@ -12,7 +12,7 @@ import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import { ThemeProvider } from '@mui/material';
 import { adminDocTheme } from 'themes/adminDocTheme';
-import { Lang } from 'server/dist/model/entity/Lang';
+import { Language } from 'server/dist/model/entity/Language';
 import { useLayoutContext } from 'LayoutContext';
 
 const emptyDoc: Doc = {
@@ -30,7 +30,7 @@ const emptyDoc: Doc = {
   earlyAccess: false,
   subjects: [new Subject()],
   isInProduction: false,
-  lang: new Lang(),
+  language: new Language(),
 };
 
 export default function DocAdminPage() {
