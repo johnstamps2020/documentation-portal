@@ -33,7 +33,9 @@ function getRedirectUrl(
       return new Redirect('internal', `/gw-login?redirectTo=${requestedPath}`);
     case 403:
       return new Redirect('internal', `/internal?restricted=${requestedPath}`);
-    case 404 || 406:
+    case 404:
+      return new Redirect('external', `/redirect?cameFrom=${requestedPath}`);
+    case 406:
       return new Redirect('external', `/redirect?cameFrom=${requestedPath}`);
     default:
       break;
