@@ -297,7 +297,7 @@ export async function getRedirectUrl(
   requestedPath: string | null | undefined
 ): Promise<ApiResponse> {
   try {
-    if (!requestedPath) {
+    if (requestedPath === null || requestedPath === undefined) {
       return {
         status: 404,
         body: {
