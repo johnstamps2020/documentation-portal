@@ -1,5 +1,5 @@
 import { getDocByUrl } from './configController';
-import { ApiResponse } from '../types/apiResponse';
+import { ApiResponse, RedirectResponse } from '../types/apiResponse';
 import { winstonLogger } from './loggerController';
 import { Doc } from '../model/entity/Doc';
 import { AppDataSource } from '../model/connection';
@@ -295,14 +295,15 @@ export async function getLatestVersionUrl(
 export async function getRedirectUrl(
   res: Response,
   requestedPath: string | null | undefined
-): Promise<ApiResponse> {
+): Promise<RedirectResponse> {
   try {
     if (requestedPath === null || requestedPath === undefined) {
       return {
-        status: 404,
+        status: 200,
         body: {
-          message:
-            'Redirect URL not found because the requested path was not provided.',
+          redirectStatusCode: 404,
+          redirectUrl: null,
+          message: 'The cameFrom parameter was not provided',
         },
       };
     }
@@ -344,9 +345,11 @@ export async function getRedirectUrl(
     const matchingDoc = await getDocByUrl(normalizedPath);
     if (!matchingDoc) {
       return {
-        status: 404,
+        status: 200,
         body: {
-          message: 'Redirect URL does not exist',
+          redirectStatusCode: 404,
+          redirectUrl: null,
+          message: `Matching doc not found for path: ${normalizedPath}`,
         },
       };
     }
@@ -366,16 +369,20 @@ export async function getRedirectUrl(
       };
     }
     return {
-      status: 404,
+      status: 200,
       body: {
-        message: 'Redirect URL does not exist',
+        redirectStatusCode: 404,
+        redirectUrl: null,
+        message: `Redirect URL not found for path: ${normalizedPath}`,
       },
     };
   } catch (err) {
     return {
       status: 500,
       body: {
-        message: `Redirect URL not found due to an error. Error: ${err}`,
+        redirectStatusCode: 404,
+        redirectUrl: null,
+        message: `Redirect URL not found due to an error: ${err}`,
       },
     };
   }
