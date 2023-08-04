@@ -13,7 +13,6 @@ export const headerHeight = '80px';
 export type HeaderOptions = {
   searchFilters?: { [key: string]: string[] };
   hideSearchBox?: boolean;
-  hideUserProfile?: boolean;
 };
 
 export default function Header(headerOptions: HeaderOptions) {
