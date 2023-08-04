@@ -29,6 +29,12 @@ export default function LandingPage() {
   }, [isError, navigate]);
 
   useEffect(() => {
+    if (pageData?.component?.includes('redirect')) {
+      navigate(`/${pageData.component.split(' ')[1]}`);
+    }
+  }, [pageData, navigate]);
+
+  useEffect(() => {
     if (pageData?.title) {
       setTitle(pageData.title);
     }
@@ -46,7 +52,9 @@ export default function LandingPage() {
 
   const PageComponent = lazy(() => {
     const pageDataPath = pageData.path;
-    return import(`pages/landing/${pageDataPath}`);
+    return pageDataPath === '/'
+      ? import('pages/landing/Index')
+      : import(`pages/landing/${pageDataPath}`);
   }) as LazyPageComponent;
 
   return (
