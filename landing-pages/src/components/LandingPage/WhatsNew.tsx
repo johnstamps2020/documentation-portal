@@ -38,7 +38,6 @@ export default function WhatsNew({
     <Paper
       sx={{
         width: '300px',
-        marginTop: '1.5rem',
         padding: '24px',
         gap: '8px',
       }}

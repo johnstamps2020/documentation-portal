@@ -12,6 +12,7 @@ import LandingPageSelector, {
 } from 'components/LandingPage/LandingPageSelector';
 import EditPagePropsButton from '../EditPagePropsButton';
 import { mainHeight } from 'components/Layout/Layout';
+import NotLoggedInInfo from 'components/NotLoggedInInfo';
 
 export type SectionLayoutProps = LandingPageLayoutProps & {
   sections: SectionProps[];
@@ -58,6 +59,7 @@ export default function SectionLayout({
           >
             {pageData.title}
           </Typography>
+          <NotLoggedInInfo />
           {selector && (
             <LandingPageSelector key={selector.label} {...selector} />
           )}
