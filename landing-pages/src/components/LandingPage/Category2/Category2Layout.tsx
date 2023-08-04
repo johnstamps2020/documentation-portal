@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Unstable_Grid2';
-import Category2Card from './Category2Card';
+import Category2Card, { Category2CardProps } from './Category2Card';
 import Breadcrumbs from 'components/LandingPage/Breadcrumbs';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -7,19 +7,13 @@ import Category2Sidebar from './Category2Sidebar';
 import Stack from '@mui/material/Stack';
 import SelfManagedLink from 'components/LandingPage/SelfManagedLink';
 import WhatsNew, { WhatsNewProps } from 'components/LandingPage/WhatsNew';
-import {
-  LandingPageItemProps,
-  LandingPageLayoutProps,
-} from 'pages/LandingPage/LandingPageTypes';
+import { LandingPageLayoutProps } from 'pages/LandingPage/LandingPageTypes';
 import ReleaseSelector from 'components/LandingPage/ReleaseSelector';
 import { usePageData } from 'hooks/usePageData';
 import EditPagePropsButton from '../EditPagePropsButton';
 
 export type Category2LayoutProps = LandingPageLayoutProps & {
-  cards: {
-    label: string;
-    items: LandingPageItemProps[];
-  }[];
+  cards: Category2CardProps[];
   whatsNew: WhatsNewProps;
   isRelease?: boolean;
 };

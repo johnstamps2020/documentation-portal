@@ -7,18 +7,17 @@ import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import Skeleton from '@mui/material/Skeleton';
 
-type LandingPageCategoryProps = {
+export type Category2CardProps = {
   label: string;
   items: LandingPageItemProps[];
 };
-export default function Category2Card({
-  label,
-  items,
-}: LandingPageCategoryProps) {
+export default function Category2Card({ label, items }: Category2CardProps) {
   const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
-  if (isError) {
+
+  if (isError || (landingPageItems && landingPageItems.length === 0)) {
     return null;
   }
+
   if (isLoading || !landingPageItems) {
     return (
       <Skeleton
