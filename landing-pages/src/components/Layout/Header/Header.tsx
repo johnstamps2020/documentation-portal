@@ -4,12 +4,18 @@ import ExternalSites from './ExternalSites';
 import Glossary from './Glossary';
 import TranslatedPages from './TranslatedPages';
 import UserProfile from './UserProfile';
-import { HeaderOptions } from 'components/Layout/Layout';
 import Stack from '@mui/material/Stack';
 import InternalBadge from '../../LandingPage/InternalBadge';
 import { useTheme } from '@mui/material/styles';
 
 export const headerHeight = '80px';
+
+export type HeaderOptions = {
+  searchFilters?: { [key: string]: string[] };
+  hideSearchBox?: boolean;
+  hideUserProfile?: boolean;
+};
+
 export default function Header(headerOptions: HeaderOptions) {
   const theme = useTheme();
 
@@ -41,7 +47,7 @@ export default function Header(headerOptions: HeaderOptions) {
         <ExternalSites />
         <Glossary />
         <TranslatedPages />
-        {!headerOptions.hideUserProfile && <UserProfile />}
+        <UserProfile />
       </Stack>
     </Stack>
   );

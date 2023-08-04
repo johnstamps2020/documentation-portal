@@ -8,12 +8,6 @@ import ErrorPage from 'pages/ErrorPage/ErrorPage';
 
 export const mainHeight = `calc(100vh - ${headerHeight})`;
 
-export type HeaderOptions = {
-  searchFilters?: { [key: string]: string[] };
-  hideSearchBox?: boolean;
-  hideUserProfile?: boolean;
-};
-
 export default function Layout() {
   const { title, headerOptions, backgroundColor, path } = useLayoutContext();
   document.title = `${title} | Guidewire Documentation`;
