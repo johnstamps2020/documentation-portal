@@ -6,7 +6,8 @@ export async function redirect(
   res: Response,
   next: NextFunction
 ) {
-  const redirectUrlResponse = await getRedirectUrl(res, req.path);
+  const pathNameWithoutSlash = req.path.replace(/^\//, '');
+  const redirectUrlResponse = await getRedirectUrl(res, pathNameWithoutSlash);
   const { status, body } = redirectUrlResponse;
   if (status === 200) {
     return res.redirect(body.redirectStatusCode, body.redirectUrl);

@@ -34,9 +34,9 @@ function getRedirectUrl(
     case 403:
       return new Redirect('internal', `/internal?restricted=${requestedPath}`);
     case 404:
-      return new Redirect('internal', `/404?notFound=${requestedPath}`);
+      return new Redirect('external', `/redirect?cameFrom=${requestedPath}`);
     case 406:
-      return new Redirect('internal', `/404?notFound=${requestedPath}`);
+      return new Redirect('external', `/redirect?cameFrom=${requestedPath}`);
     default:
       break;
   }
@@ -44,7 +44,7 @@ function getRedirectUrl(
 
 const pageGetter = async (pagePath: string) => {
   const response = await fetch(`/safeConfig/entity/Page?path=${pagePath}`);
-  const requestedPath = `/${pagePath}`;
+  const requestedPath = pagePath === '/' ? pagePath : `/${pagePath}`;
   const { status } = response;
   const jsonData = await response.json();
   if (!response.ok) {
@@ -62,10 +62,17 @@ const pageGetter = async (pagePath: string) => {
   return jsonData;
 };
 
+export function usePagePath() {
+  const params = useParams();
+  const pagePath: string =
+    params['*'] && params['*'] !== '' ? params['*'] : '/';
+
+  return pagePath;
+}
+
 export function usePageData(pagePath?: string) {
-  const reactRouterParams = useParams();
-  const currentPagePath = reactRouterParams['*'];
-  const targetPagePath = pagePath || currentPagePath;
+  const currentPagePath = usePagePath();
+  const targetPagePath = pagePath ? pagePath : currentPagePath;
   const { data, error, isLoading } = useSWR<Page, PageError>(
     targetPagePath,
     pageGetter

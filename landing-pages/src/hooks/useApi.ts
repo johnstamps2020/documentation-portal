@@ -1,9 +1,9 @@
 import useSWR from 'swr';
 import useSWRImmutable from 'swr/immutable';
-import { PageError } from './usePageData';
+import { PageError, usePagePath } from './usePageData';
 import { UserInfo } from 'server/dist/types/user';
 import { EnvInfo } from 'server/dist/types/env';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { SearchData, ServerSearchError } from 'server/dist/types/serverSearch';
 import { Page } from 'server/dist/model/entity/Page';
 
@@ -42,8 +42,7 @@ export function useEnvInfo() {
 }
 
 export function useBreadcrumbs() {
-  const reactRouterParams = useParams();
-  const pagePath = reactRouterParams['*'];
+  const pagePath = usePagePath();
   const { data, error, isLoading } = useSWR<BreadcrumbItem[]>(
     `/safeConfig/entity/page/breadcrumbs?path=${pagePath}`,
     getter
