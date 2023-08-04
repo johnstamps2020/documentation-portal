@@ -23,7 +23,7 @@ export default function ProductFamilyCard(item: LandingPageItemProps) {
     );
   }
 
-  if (isLoading || !landingPageItems) {
+  if (isLoading || !landingPageItems || landingPageItems.length === 0) {
     return null;
   }
 
