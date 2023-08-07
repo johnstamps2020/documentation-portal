@@ -333,7 +333,6 @@ async function searchController(req, res, next) {
       'product',
       'version',
       'subject',
-      'doc_title',
       'platform',
     ];
 
