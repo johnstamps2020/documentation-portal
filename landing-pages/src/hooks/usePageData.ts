@@ -45,6 +45,7 @@ function getRedirectUrl(
 
 const pageGetter = async (pagePath: string) => {
   const redirectResponse = await fetch(`/redirect?cameFrom=${pagePath}`);
+
   if (redirectResponse.ok) {
     const redirectResponseBody: RedirectResponseBody =
       await redirectResponse.json();
