@@ -25,7 +25,7 @@ export default function NotLoggedInInfo({ styles }: NotLoggedInInfoProps) {
           You are viewing limited content.
         </Typography>
         <Typography sx={{ ...styles }}>
-          To see all the documentation, please{' '}
+          To access all the documentation, please{' '}
           <Link
             component={RouterLink}
             to="/gw-login"
