@@ -1,4 +1,4 @@
-import { HeaderOptions } from 'components/Layout/Layout';
+import { HeaderOptions } from 'components/Layout/Header/Header';
 import { createContext, useState, useContext } from 'react';
 
 interface LayoutContextInterface {

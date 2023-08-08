@@ -16,6 +16,7 @@ import LandingPageSelector, {
   LandingPageSelectorProps,
 } from 'components/LandingPage/LandingPageSelector';
 import EditPagePropsButton from '../EditPagePropsButton';
+import NotLoggedInInfo from 'components/NotLoggedInInfo';
 
 export type CategoryLayoutProps = LandingPageLayoutProps & {
   cards: CategoryCardProps[];
@@ -37,6 +38,10 @@ export default function CategoryLayout({
   if (isLoading || isError || !pageData) {
     return null;
   }
+
+  const variableColor = backgroundProps.backgroundImage
+    ? { color: 'white' }
+    : { color: 'black' };
 
   return (
     <Grid
@@ -60,41 +65,35 @@ export default function CategoryLayout({
           <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
             <Breadcrumbs />
           </Container>
-          <Typography
-            variant="h1"
-            sx={
-              backgroundProps.backgroundImage
-                ? { color: 'white' }
-                : { color: 'black' }
-            }
-          >
+          <Typography variant="h1" sx={variableColor}>
             {pageData.title}
           </Typography>
           {description}
+          <NotLoggedInInfo styles={variableColor} />
           {isRelease && !selector && <ReleaseSelector />}
           {selector && <LandingPageSelector {...selector} />}
         </Stack>
         {pageData.path.includes('cloudProducts/elysian') && (
-          <Paper
+          <Link
+            component={RouterLink}
+            to="/cloudProducts/elysian/whatsnew"
             sx={{
-              maxWidth: { md: '932px', sm: '100%' },
-              marginTop: '32px',
-              padding: '16px',
-              textAlign: 'center',
+              fontSize: '1.2rem',
+              fontWeight: 600,
             }}
           >
-            <Link
-              component={RouterLink}
-              to="/cloudProducts/elysian/whatsnew"
+            <Paper
               sx={{
-                fontSize: '1.2rem',
-                fontWeight: 600,
+                maxWidth: { md: '932px', sm: '100%' },
+                marginTop: '32px',
+                padding: '16px',
+                textAlign: 'center',
                 color: 'hsl(196, 100%, 31%);',
               }}
             >
               What's new in Elysian
-            </Link>
-          </Paper>
+            </Paper>
+          </Link>
         )}
       </Grid>
       <Grid container maxWidth="1330px" width="100%" gap={6}>

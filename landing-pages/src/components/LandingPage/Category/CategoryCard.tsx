@@ -33,6 +33,7 @@ export default function CategoryCard({
   if (
     (isError && isErrorSections) ||
     landingPageItems?.length === 0 ||
+    landingPageSectionsItems?.length === 0 ||
     (items === undefined && sections === undefined)
   ) {
     return null;

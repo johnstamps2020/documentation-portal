@@ -16,6 +16,7 @@ import LandingPageSelector, {
   LandingPageSelectorProps,
 } from 'components/LandingPage/LandingPageSelector';
 import EditPagePropsButton from '../EditPagePropsButton';
+import NotLoggedInInfo from 'components/NotLoggedInInfo';
 
 export type ProductFamilyLayoutProps = LandingPageLayoutProps & {
   items: LandingPageItemProps[];
@@ -35,6 +36,11 @@ export default function ProductFamilyLayout({
   if (isError || isLoading || !pageData) {
     return null;
   }
+
+  const variableColor = backgroundProps.backgroundImage
+    ? { color: 'white' }
+    : { color: 'black' };
+
   return (
     <Grid
       sx={{ ...backgroundProps }}
@@ -57,16 +63,10 @@ export default function ProductFamilyLayout({
           <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
             <Breadcrumbs />
           </Container>
-          <Typography
-            variant="h1"
-            sx={
-              backgroundProps.backgroundImage
-                ? { color: 'white' }
-                : { color: 'black' }
-            }
-          >
+          <Typography variant="h1" sx={variableColor}>
             {pageData.title}
           </Typography>
+          <NotLoggedInInfo styles={variableColor} />
           {selector && <LandingPageSelector {...selector} />}{' '}
           {isRelease && <ReleaseSelector />}
         </Stack>

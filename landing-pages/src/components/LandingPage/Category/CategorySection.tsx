@@ -16,7 +16,12 @@ export default function CategorySection({
   const { landingPageItems, isLoading, isError } = useLandingPageItems(
     items || []
   );
-  if (isLoading || isError || !landingPageItems) {
+  if (
+    isLoading ||
+    isError ||
+    !landingPageItems ||
+    landingPageItems.length === 0
+  ) {
     return null;
   }
   return (

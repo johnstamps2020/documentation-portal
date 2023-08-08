@@ -20,7 +20,7 @@ export type SectionProps = {
 export default function Section({ label, items }: SectionProps) {
   const { landingPageItems, isLoading, isError } = useLandingPageItems(items);
 
-  if (isError) {
+  if (isError || landingPageItems?.length === 0) {
     return null;
   }
 

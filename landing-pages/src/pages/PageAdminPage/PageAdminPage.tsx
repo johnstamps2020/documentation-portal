@@ -11,7 +11,6 @@ export default function PageAdminPage() {
   const { title, setTitle, setHeaderOptions } = useLayoutContext();
   useEffect(() => {
     setTitle('Manage pages');
-    setHeaderOptions({ hideSearchBox: true });
   }, [setHeaderOptions, setTitle]);
 
   return (

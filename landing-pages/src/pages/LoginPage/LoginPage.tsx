@@ -11,7 +11,6 @@ export default function LoginPage() {
   const { setTitle, setHeaderOptions, setBackgroundColor } = useLayoutContext();
   useEffect(() => {
     setTitle('Guidewire Documentation | Log in');
-    setHeaderOptions({ hideSearchBox: true, hideUserProfile: true });
     setBackgroundColor('hsl(0, 0%, 98%)');
   }, [setBackgroundColor, setHeaderOptions, setTitle]);
 

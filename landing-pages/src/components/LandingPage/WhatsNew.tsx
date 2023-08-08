@@ -38,7 +38,6 @@ export default function WhatsNew({
     <Paper
       sx={{
         width: '300px',
-        marginTop: '1.5rem',
         padding: '24px',
         gap: '8px',
       }}
@@ -103,19 +102,21 @@ export default function WhatsNew({
             })}
           </ul>
         )}
-        <Button
-          variant="contained"
-          style={{
-            width: '110px',
-            margin: '10px auto 10px auto',
-            padding: '4px',
-          }}
-        >
-          <LandingPageLink
-            landingPageItem={landingPageItems[0]}
-            sx={{ color: 'white' }}
-          />
-        </Button>
+        {landingPageItems[0] && (
+          <Button
+            variant="contained"
+            style={{
+              width: '110px',
+              margin: '10px auto 10px auto',
+              padding: '4px',
+            }}
+          >
+            <LandingPageLink
+              landingPageItem={landingPageItems[0]}
+              sx={{ color: 'white' }}
+            />
+          </Button>
+        )}
       </Stack>
     </Paper>
   );
