@@ -5,6 +5,9 @@ import {
   openRequestedUrl,
   redirectToLoginPage,
 } from './authController';
+import { htmlPageExists, isHtmlRequest } from './redirectController';
+
+const fetch = require('node-fetch-retry');
 
 const HttpProxy = require('http-proxy');
 const proxy = new HttpProxy();
@@ -40,7 +43,8 @@ export async function sitemapProxy(
 }
 
 export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
-  const requestedDoc = await getDocByUrl(req.path.replace(/^\//, ''));
+  const requestedPath: string = req.path;
+  const requestedDoc = await getDocByUrl(requestedPath.replace(/^\//, ''));
   if (requestedDoc) {
     const resourceStatus = isUserAllowedToAccessResource(
       res,
@@ -56,6 +60,14 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
         `${internalRoute}${req.url ? `?restricted=${req.originalUrl}` : ''}`
       );
     }
+
+    if (isHtmlRequest(requestedPath)) {
+      const pathExists = await htmlPageExists(requestedPath);
+      if (!pathExists) {
+        return res.redirect(`/${requestedDoc.url}`);
+      }
+    }
+
     openRequestedUrl(req, res);
     proxy.on('proxyRes', setProxyResCacheControlHeader);
     return proxy.web(
