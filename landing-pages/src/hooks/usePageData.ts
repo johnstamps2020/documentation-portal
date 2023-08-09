@@ -82,7 +82,10 @@ export function usePageData(pagePath?: string) {
   const targetPagePath = pagePath || currentPagePath;
   const { data, error, isLoading } = useSWR<Page, PageError>(
     targetPagePath,
-    pageGetter
+    pageGetter,
+    {
+      revalidateOnFocus: false,
+    }
   );
 
   return {
