@@ -26,7 +26,7 @@ export default function SelfManagedLink({
             : { color: 'black', textDecorationColor: 'black' }
         }
       >
-        {`Click here for ${
+        {`View ${
           selfManaged ? 'Guidewire Cloud' : 'self-managed'
         } documentation`}
       </Link>
