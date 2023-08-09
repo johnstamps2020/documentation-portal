@@ -252,7 +252,11 @@ function removeSlashesFromPath(path: string): string {
   return path.replace(/^\//, '').replace(/\/$/, '');
 }
 
-function sortUrlsByVersion(a: string[], b: string[], wildcardIndex: number) {
+export function sortUrlsByVersion(
+  a: string[],
+  b: string[],
+  wildcardIndex: number
+): number {
   return a[wildcardIndex].localeCompare(b[wildcardIndex], undefined, {
     numeric: true,
     sensitivity: 'base',
