@@ -18,7 +18,8 @@ type BreadcrumbItem = {
 export function useUserInfo() {
   const { data, error, isLoading } = useSWR<UserInfo, PageError>(
     '/userInformation',
-    getter
+    getter,
+    { revalidateOnFocus: false }
   );
 
   return {
@@ -46,7 +47,8 @@ export function useBreadcrumbs() {
   const pagePath = reactRouterParams['*'];
   const { data, error, isLoading } = useSWR<BreadcrumbItem[]>(
     `/safeConfig/entity/page/breadcrumbs?path=${pagePath}`,
-    getter
+    getter,
+    { revalidateOnFocus: false }
   );
 
   return {
@@ -60,7 +62,8 @@ export function useSearchData() {
   const [searchParams] = useSearchParams();
   const { data, error, isLoading } = useSWR<SearchData, ServerSearchError>(
     `/search?${searchParams.toString()}&getData=true`,
-    getter
+    getter,
+    { revalidateOnFocus: false }
   );
 
   return {
