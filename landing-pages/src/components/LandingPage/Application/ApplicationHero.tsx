@@ -7,14 +7,9 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { ReactComponent as HeroImage } from './application-hero-image.svg';
 import { useLayoutContext } from 'LayoutContext';
 import { useEffect } from 'react';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
 
 export default function ApplicationHero() {
   const { setTitle } = useLayoutContext();
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-  const imageWidth = isSmallScreen ? 200 : 400;
 
   const title = 'Guidewire InsuranceSuite PolicyCenter';
 
@@ -27,27 +22,23 @@ export default function ApplicationHero() {
       sx={{
         pt: '26px',
         position: 'relative',
+        minHeight: 220,
+        backgroundColor: 'primary.main',
       }}
     >
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: '12px',
-          backgroundColor: 'primary.main',
-          zIndex: -1,
-        }}
-      />
       <Container>
         <Grid container justifyContent="space-between">
           <Grid sx={{ maxWidth: '466px' }}>
-            <Stack gap={3}>
+            <Stack
+              gap={3}
+              justifyContent="space-between"
+              height="100%"
+              sx={{ pb: '8px' }}
+            >
               <Typography variant="h1" sx={{ lineHeight: 1.4, fontSize: 30 }}>
                 {title}
               </Typography>
-              <Box sx={{ pb: '60px' }}>
+              <Box>
                 <Button
                   variant="contained"
                   sx={{
@@ -70,7 +61,7 @@ export default function ApplicationHero() {
             </Stack>
           </Grid>
           <Grid alignSelf="flex-end">
-            <HeroImage width={imageWidth} />
+            <HeroImage height={170} />
           </Grid>
         </Grid>
       </Container>
