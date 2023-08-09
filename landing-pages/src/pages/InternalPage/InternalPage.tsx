@@ -94,6 +94,7 @@ export default function InternalPage() {
   return (
     <>
       <ServerMessagePage
+        title="Internal page"
         informationToDisplay={informationToDisplay}
         backgroundImage="url(/images/internal-page.svg)"
       />

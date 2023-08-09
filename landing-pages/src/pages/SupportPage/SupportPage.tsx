@@ -46,5 +46,10 @@ export default function SupportPage() {
       </Stack>
     </Stack>
   );
-  return <ServerMessagePage informationToDisplay={informationToDisplay} />;
+  return (
+    <ServerMessagePage
+      title="Support"
+      informationToDisplay={informationToDisplay}
+    />
+  );
 }

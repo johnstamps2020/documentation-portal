@@ -20,7 +20,7 @@ export default function ErrorPage({ error }: FallbackProps) {
           background: 'hsla(211, 22%, 20%, 0.04);',
           borderRadius: '6px',
           border: '1px solid gray',
-          width: 'fit-content',
+          width: '100%',
           maxWidth: { xs: '100%', sm: '100%', md: '950px', lg: '1024px' },
           height: 'fit-content',
           maxHeight: '200px',
@@ -35,6 +35,7 @@ export default function ErrorPage({ error }: FallbackProps) {
 
   return (
     <ServerMessagePage
+      title="Error"
       informationToDisplay={informationToDisplay}
       backgroundImage={`url(${ErrorImage})`}
     />

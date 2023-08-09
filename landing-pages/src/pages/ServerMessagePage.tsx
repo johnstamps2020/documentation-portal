@@ -3,16 +3,22 @@ import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import { mainHeight } from 'components/Layout/Layout';
 import Container from '@mui/material/Container';
+import { useLayoutContext } from 'LayoutContext';
 
 type ServerMessagePageProps = {
   informationToDisplay: JSX.Element | JSX.Element[];
   backgroundImage?: string;
+  title: string;
 };
 
 export default function ServerMessagePage({
   informationToDisplay,
   backgroundImage,
+  title,
 }: ServerMessagePageProps) {
+  const { setTitle } = useLayoutContext();
+  setTitle(title);
+
   return (
     <Grid
       container
