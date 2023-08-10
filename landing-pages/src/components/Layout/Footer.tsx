@@ -48,6 +48,7 @@ export default function Footer({ path }: FooterProps) {
       direction="row"
       height={footerHeight}
       maxHeight={footerHeight}
+      flexWrap="wrap"
       sx={{
         position: 'relative', // for zIndex to work
         backgroundColor: 'hsl(216, 42%, 13%)',

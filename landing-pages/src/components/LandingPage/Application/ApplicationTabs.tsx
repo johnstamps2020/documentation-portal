@@ -7,6 +7,8 @@ import ApplicationTabIcon, {
 } from './ApplicationTabIcon';
 import ApplicationLinkList from './ApplicationLinkList';
 import indicator from './indicator.svg';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 export const tabsWidth = 1428;
 
@@ -32,6 +34,8 @@ type ApplicationTabsProps = { tabs: ApplicationTabItemProps[] };
 
 export default function ApplicationTabs({ tabs }: ApplicationTabsProps) {
   const [value, setValue] = useState(0);
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -56,16 +60,22 @@ export default function ApplicationTabs({ tabs }: ApplicationTabsProps) {
           value={value}
           onChange={handleChange}
           aria-label="Available docs"
+          orientation={isSmallScreen ? 'vertical' : 'horizontal'}
+          sx={{
+            width: isSmallScreen ? 'fit-content' : undefined,
+            margin: isSmallScreen ? '0 auto' : undefined,
+          }}
           TabIndicatorProps={{
             sx: {
               backgroundColor: 'transparent',
-              width: tabsWidth,
-              ':after': {
-                content: `url("${indicator}")`,
-                position: 'absolute',
-                left: `calc(50% - ${triangleSize}px)`,
-                bottom: -30,
-              },
+              ':after': isSmallScreen
+                ? undefined
+                : {
+                    content: `url("${indicator}")`,
+                    position: 'absolute',
+                    left: `calc(50% - ${triangleSize}px)`,
+                    bottom: -30,
+                  },
             },
           }}
           centered
@@ -82,6 +92,7 @@ export default function ApplicationTabs({ tabs }: ApplicationTabsProps) {
                 minHeight: tabHeight,
                 height: tabHeight,
                 minWidth: '180px',
+                width: isSmallScreen ? '100%' : undefined,
                 fontSize: 21,
                 fontWeight: 400,
                 px: 2,
