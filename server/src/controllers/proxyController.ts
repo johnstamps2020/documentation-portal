@@ -46,6 +46,11 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
   const requestedPath: string = req.path;
   const requestedDoc = await getDocByUrl(requestedPath.replace(/^\//, ''));
   if (requestedDoc) {
+    const fullRequestedDocUrl = `/${requestedDoc.url}`;
+    const requestedDocUrlExists = await htmlPageExists(fullRequestedDocUrl);
+    if (!requestedDocUrlExists) {
+      return next();
+    }
     const resourceStatus = isUserAllowedToAccessResource(
       res,
       requestedDoc.public,
@@ -62,9 +67,9 @@ export async function s3Proxy(req: Request, res: Response, next: NextFunction) {
     }
 
     if (isHtmlRequest(requestedPath)) {
-      const pathExists = await htmlPageExists(requestedPath);
-      if (!pathExists) {
-        return res.redirect(`/${requestedDoc.url}`);
+      const requestedPathExists = await htmlPageExists(requestedPath);
+      if (!requestedPathExists) {
+        return res.redirect(fullRequestedDocUrl);
       }
     }
 

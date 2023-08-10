@@ -46,10 +46,17 @@ function optionsAreValid(options: {}): boolean {
     options && Object.keys(options)?.length > 0 && !(options instanceof Array)
   );
 }
-
+/*
+The function looks for many entities in the db because sometimes the first match is not correct.
+For example, we have these two URLs:
+- 'jutro/platform/hakuba'
+- 'jutro/platform/hakuba2'
+We want to open 'jutro/platform/hakuba2'. If we look just for the first match, the search returns 'jutro/platform/hakuba'.
+Instead, we look for all matches and select the longest URL.
+*/
 export async function getDocByUrl(url: string): Promise<Doc | null> {
   const urlToCheck = url.replace(/^\//g, '');
-  return await AppDataSource.getRepository(Doc)
+  const matchingDocs = await AppDataSource.getRepository(Doc)
     .createQueryBuilder('doc')
     .useIndex('docUrl-idx')
     .select([
@@ -60,7 +67,8 @@ export async function getDocByUrl(url: string): Promise<Doc | null> {
       'doc.isInProduction',
     ])
     .where(":urlToCheck LIKE concat(doc.url, '%')", { urlToCheck: urlToCheck })
-    .getOne();
+    .getMany();
+  return matchingDocs.sort((a, b) => b.url.length - a.url.length)[0];
 }
 
 function getRelationOptionsForEntity(
