@@ -8,6 +8,8 @@ import ApplicationTabIcon, {
 import ApplicationLinkList from './ApplicationLinkList';
 import indicator from './indicator.svg';
 
+export const tabsWidth = 1428;
+
 function a11yProps(index: number) {
   return {
     id: `doc-tab-${index}`,
@@ -57,6 +59,7 @@ export default function ApplicationTabs({ tabs }: ApplicationTabsProps) {
           TabIndicatorProps={{
             sx: {
               backgroundColor: 'transparent',
+              width: tabsWidth,
               ':after': {
                 content: `url("${indicator}")`,
                 position: 'absolute',
