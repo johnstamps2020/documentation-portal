@@ -4,7 +4,7 @@ import { writeFileSync, readFileSync, mkdirSync, existsSync } from 'fs';
 import { LandingPageSelectorProps } from 'landing-pages/src/components/LandingPage/LandingPageSelector';
 import { SectionProps } from 'landing-pages/src/components/LandingPage/Section/Section';
 import { LandingPageItemProps } from 'landing-pages/src/pages/LandingPage/LandingPageTypes';
-import { get } from 'http';
+import { createHash } from 'crypto';
 
 const landingPagesSourceDir = resolve(__dirname, '../../../frontend/pages');
 const targetDir = resolve(
@@ -67,12 +67,19 @@ function remapPageLink(flailPageLink: string, targetFile: string): string {
   return matchingTargetFile;
 }
 
+function generateHash(input: string): string {
+  let md5sum = createHash('md5');
+  md5sum.update(input);
+  return `s${md5sum.digest('hex')}`;
+}
+
 function addSelectorIfNotExists(sortedItems: LandingPageItemProps[]): string {
-  // transform all items into a string that can be used as a selectorId
-  const selectorId = `s${sortedItems
-    .map((item) => `${item.label}_${item.pagePath || item.url || item.docId}`)
-    .join('_')
-    .replace(/[^a-zA-Z0-9]/g, '')}`;
+  const selectorId = generateHash(
+    sortedItems
+      .map((item) => `${item.label}_${item.pagePath || item.url || item.docId}`)
+      .join('_')
+      .replace(/[^a-zA-Z0-9]/g, '')
+  );
 
   if (!allSelectors.find((selector) => selector.selectorId === selectorId)) {
     allSelectors.push({
