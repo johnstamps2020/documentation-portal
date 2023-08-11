@@ -13,7 +13,45 @@ const pageConfig: CategoryLayoutProps = {
       sm: `url(${elysianBackgroundImage})`,
     },
   },
-
+  selector: {
+    label: 'Select cloud release',
+    selectedItemLabel: 'Elysian',
+    items: [
+      {
+        label: 'Aspen',
+        pagePath: 'cloudProducts/aspen',
+      },
+      {
+        label: 'Banff',
+        pagePath: 'cloudProducts/banff',
+      },
+      {
+        label: 'Cortina',
+        pagePath: 'cloudProducts/cortina',
+      },
+      {
+        label: 'Dobson',
+        pagePath: 'cloudProducts/dobson',
+      },
+      {
+        label: 'Elysian',
+        pagePath: 'cloudProducts/elysian',
+      },
+      {
+        label: 'Flaine',
+        pagePath: 'cloudProducts/flaine',
+      },
+      {
+        label: 'Garmisch',
+        pagePath: 'cloudProducts/garmisch',
+      },
+      {
+        label: 'Hakuba',
+        pagePath: 'cloudProducts/hakuba',
+      },
+    ],
+    labelColor: 'white',
+  },
   isRelease: true,
 
   cards: [

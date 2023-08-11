@@ -1,3 +1,4 @@
+import * as fs from 'fs';
 import { getAllFilesRecursively } from '../modules/fileOperations';
 import { resolve, dirname, relative, parse } from 'path';
 import { writeFileSync, readFileSync, mkdirSync } from 'fs';
@@ -51,6 +52,11 @@ type FlailConfig = {
   breadcrumbs: FlailItem[];
 };
 
+type dataToWriteType = {
+  label: string | undefined;
+  items: LandingPageItemProps[];
+};
+
 function remapPageLink(flailPageLink: string, targetFile: string): string {
   const matchingTargetFile = relative(
     targetDir,
@@ -65,12 +71,7 @@ function getSelector(
   targetFile: string,
   labelColor: string = 'white'
 ): LandingPageSelectorProps | undefined {
-  if (getIsRelease(targetFile)) {
-    return undefined;
-  }
-
   const flailSelector = flailConfig.selector;
-
   const selectorItems = getItems(flailSelector?.items, targetFile);
 
   if (!selectorItems) {
@@ -85,6 +86,31 @@ function getSelector(
   const sortedItems = [currentItem, ...selectorItems].sort((a, b) =>
     a.label! > b.label! ? 1 : -1
   );
+  const fileName = `${flailSelector?.label.replace(
+    /\s/g,
+    '_'
+  )}_${flailSelector?.selectedItem.replace(/\s/g, '_')}`;
+  const dataToWrite: dataToWriteType = {
+    label: flailSelector?.label,
+    items: sortedItems,
+  };
+
+  const stringifiedData = JSON.stringify(dataToWrite);
+
+  const files = fs.readdirSync(`${targetDir}/selectors`);
+  if (files.length == 0) {
+    writeFileSync(`${targetDir}/selectors/${fileName}.json`, stringifiedData);
+  }
+  for (const file of files) {
+    const parsedFile: dataToWriteType = JSON.parse(
+      readFileSync(`${targetDir}/selectors/${file}`, {
+        encoding: 'utf-8',
+      })
+    );
+    if (!(JSON.stringify(parsedFile) === stringifiedData)) {
+      writeFileSync(`${targetDir}/selectors/${fileName}.json`, stringifiedData);
+    }
+  }
 
   return {
     label: flailSelector?.label || 'Select version',
@@ -93,6 +119,8 @@ function getSelector(
     labelColor: labelColor,
   };
 }
+
+function selectorExists(selector: string) {}
 
 function getSections(
   flailItems: FlailItem[] | undefined,
