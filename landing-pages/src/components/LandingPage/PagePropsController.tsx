@@ -12,9 +12,12 @@ import { useEffect, useState } from 'react';
 import { usePageData } from '../../hooks/usePageData';
 import { Page } from 'server/dist/model/entity/Page';
 import Snackbar from '@mui/material/Snackbar';
+import CircularProgress from '@mui/material/CircularProgress';
+import Chip from '@mui/material/Chip';
 
-export const emptyPage: Page = {
-  uuid: '',
+type NewPage = Omit<Page, 'uuid'>;
+
+export const emptyPage: NewPage = {
   path: '',
   title: '',
   component: '',
@@ -42,7 +45,7 @@ const emptyEditMessage: EditMessage = {
   isOpen: false,
 };
 
-async function sendRequest(url: string, { arg }: { arg: Page }) {
+async function sendRequest(url: string, { arg }: { arg: NewPage }) {
   return await fetch(url, {
     method: 'PUT',
     body: JSON.stringify(arg),
@@ -98,8 +101,23 @@ export default function PagePropsController({
     }
   }, [pageData, tmpPageData, pageAlreadyExists, isMutating]);
 
-  if (isError || isLoading || !pageData) {
-    return null;
+  if (isError && isError.status !== 307) {
+    return (
+      <Stack
+        sx={{
+          padding: 4,
+        }}
+      >
+        <Typography variant="h2">Problem loading page data</Typography>
+        <pre>
+          <code>{JSON.stringify(isError, null, 2)}</code>
+        </pre>
+      </Stack>
+    );
+  }
+
+  if (isLoading) {
+    return <CircularProgress />;
   }
 
   function handleCloseEditResultMessage() {
@@ -177,8 +195,9 @@ export default function PagePropsController({
         maxWidth: 'fit-content',
       }}
     >
-      <Typography sx={{ fontSize: 18, fontWeight: 800 }}>
-        {fullEditMode ? 'Page properties' : pagePath}
+      <Typography sx={{ fontSize: 18, fontWeight: 800 }} variant="h2">
+        {fullEditMode ? 'Page properties' : pagePath}{' '}
+        {!pageData && <Chip label="new" color="success" />}
       </Typography>
       {fullEditMode && (
         <TextField

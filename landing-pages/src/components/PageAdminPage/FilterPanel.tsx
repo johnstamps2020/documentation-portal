@@ -45,7 +45,10 @@ export default function FilterPanel() {
           } else if (
             typeof v === 'string' &&
             v !== '' &&
-            !p[k as keyof typeof p]?.toString()?.includes(v)
+            !p[k as keyof typeof p]
+              ?.toString()
+              ?.toLocaleLowerCase()
+              .includes(v.toLocaleLowerCase())
           ) {
             matchesFilters = false;
           }
@@ -99,7 +102,7 @@ export default function FilterPanel() {
       >
         Clear filters
       </Button>
-      <Stack direction="row" spacing={1}>
+      <Stack direction="row" spacing={1} flexWrap="wrap">
         <TextField
           label="Path"
           value={filters.path}

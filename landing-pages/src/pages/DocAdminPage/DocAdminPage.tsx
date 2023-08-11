@@ -10,8 +10,6 @@ import Alert from '@mui/material/Alert';
 import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import { ThemeProvider } from '@mui/material';
-import { adminDocTheme } from 'themes/adminDocTheme';
 import { Language } from 'server/dist/model/entity/Language';
 import { useLayoutContext } from 'LayoutContext';
 
@@ -200,7 +198,7 @@ export default function DocAdminPage() {
   };
 
   return (
-    <ThemeProvider theme={adminDocTheme}>
+    <>
       <div>
         <Button size={'large'} onClick={handleCreateNew}>
           Add new document
@@ -310,6 +308,6 @@ export default function DocAdminPage() {
           </Snackbar>
         </SnackbarContext.Provider>
       </div>
-    </ThemeProvider>
+    </>
   );
 }
