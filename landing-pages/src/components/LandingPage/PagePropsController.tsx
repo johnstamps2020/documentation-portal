@@ -13,6 +13,7 @@ import { usePageData } from '../../hooks/usePageData';
 import { Page } from 'server/dist/model/entity/Page';
 import Snackbar from '@mui/material/Snackbar';
 import CircularProgress from '@mui/material/CircularProgress';
+import Chip from '@mui/material/Chip';
 
 type NewPage = Omit<Page, 'uuid'>;
 
@@ -195,7 +196,8 @@ export default function PagePropsController({
       }}
     >
       <Typography sx={{ fontSize: 18, fontWeight: 800 }}>
-        {fullEditMode ? 'Page properties' : pagePath}
+        {fullEditMode ? 'Page properties' : pagePath}{' '}
+        {!pageData && <Chip label="new" color="success" />}
       </Typography>
       {fullEditMode && (
         <TextField
