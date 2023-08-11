@@ -99,7 +99,7 @@ export default function FilterPanel() {
       >
         Clear filters
       </Button>
-      <Stack direction="row" spacing={1}>
+      <Stack direction="row" spacing={1} flexWrap="wrap">
         <TextField
           label="Path"
           value={filters.path}
