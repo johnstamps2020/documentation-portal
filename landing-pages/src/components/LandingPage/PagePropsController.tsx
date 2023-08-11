@@ -13,8 +13,6 @@ import { usePageData } from '../../hooks/usePageData';
 import { Page } from 'server/dist/model/entity/Page';
 import Snackbar from '@mui/material/Snackbar';
 import CircularProgress from '@mui/material/CircularProgress';
-import { isError } from 'lodash';
-import { error } from 'console';
 
 type NewPage = Omit<Page, 'uuid'>;
 
