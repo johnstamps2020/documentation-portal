@@ -5,6 +5,7 @@ import gradientBackgroundImage from 'images/background-gradient.svg';
 
 import flaineBackgroundImage from 'images/background-flaine.png';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {
@@ -19,20 +20,7 @@ const pageConfig: CategoryLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Flaine (2022.09)',
-    items: [
-      {
-        label: 'Flaine (2022.09)',
-        pagePath: 'cloudProducts/flaine/global-ref-apps',
-      },
-      {
-        label: 'Garmisch (2023.02)',
-        pagePath: 'cloudProducts/garmisch/global-ref-apps',
-      },
-      {
-        label: 'Hakuba (2023.06)',
-        pagePath: 'cloudProducts/hakuba/global-ref-apps',
-      },
-    ],
+    items: allSelectors.sf75404ebcf8fdb6eb0c053a20d5f3feb,
     labelColor: 'white',
   },
 

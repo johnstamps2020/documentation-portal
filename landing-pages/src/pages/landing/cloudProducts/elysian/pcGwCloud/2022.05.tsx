@@ -2,6 +2,7 @@ import SectionLayout, {
   SectionLayoutProps,
 } from 'components/LandingPage/Section/SectionLayout';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: SectionLayoutProps = {
   backgroundProps: {
@@ -161,40 +162,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Elysian (2022.05)',
-    items: [
-      {
-        label: 'Aspen (2020.05)',
-        pagePath: 'cloudProducts/aspen/policyCenterCloud',
-      },
-      {
-        label: 'Banff (2020.11)',
-        pagePath: 'cloudProducts/banff/policyCenterCloud/pcGwCloud/2020.11',
-      },
-      {
-        label: 'Cortina (2021.04)',
-        pagePath: 'cloudProducts/cortina/policyCenterCloud/pcGwCloud/2021.04',
-      },
-      {
-        label: 'Dobson (2021.11)',
-        pagePath: 'cloudProducts/dobson/pcGwCloud/2021.11',
-      },
-      {
-        label: 'Elysian (2022.05)',
-        pagePath: 'cloudProducts/elysian/pcGwCloud/2022.05',
-      },
-      {
-        label: 'Flaine (2022.09)',
-        pagePath: 'cloudProducts/flaine/pcGwCloud/2022.09',
-      },
-      {
-        label: 'Garmisch (2023.02)',
-        pagePath: 'cloudProducts/garmisch/pcGwCloud/2023.02',
-      },
-      {
-        label: 'Hakuba (2023.06)',
-        pagePath: 'cloudProducts/hakuba/pcGwCloud/2023.06',
-      },
-    ],
+    items: allSelectors.sd9a35f8d6c6966748440440ab5f1f654,
     labelColor: 'black',
   },
 };

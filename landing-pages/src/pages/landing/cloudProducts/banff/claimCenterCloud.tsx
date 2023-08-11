@@ -2,6 +2,7 @@ import CategoryLayout, {
   CategoryLayoutProps,
 } from 'components/LandingPage/Category/CategoryLayout';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {
@@ -11,20 +12,7 @@ const pageConfig: CategoryLayoutProps = {
   selector: {
     label: 'Select page',
     selectedItemLabel: 'ClaimCenter Cloud',
-    items: [
-      {
-        label: 'BillingCenter Cloud',
-        pagePath: 'cloudProducts/banff/billingCenterCloud',
-      },
-      {
-        label: 'ClaimCenter Cloud',
-        pagePath: 'cloudProducts/banff/claimCenterCloud',
-      },
-      {
-        label: 'PolicyCenter Cloud',
-        pagePath: 'cloudProducts/banff/policyCenterCloud',
-      },
-    ],
+    items: allSelectors.s516deedcbe9a11db4e386860485ea15e,
     labelColor: 'white',
   },
 

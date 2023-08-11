@@ -2,6 +2,7 @@ import SectionLayout, {
   SectionLayoutProps,
 } from 'components/LandingPage/Section/SectionLayout';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: SectionLayoutProps = {
   backgroundProps: {
@@ -83,84 +84,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select release',
     selectedItemLabel: '10.8.0',
-    items: [
-      {
-        label: '10.0.0',
-        docId: 'ic1000',
-      },
-      {
-        label: '10.1.0',
-        docId: 'ic1010',
-      },
-      {
-        label: '10.2.0',
-        docId: 'ic1020',
-      },
-      {
-        label: '10.3.0',
-        docId: 'ic1030',
-      },
-      {
-        label: '10.4.0',
-        docId: 'ic1040',
-      },
-      {
-        label: '10.5.0',
-        pagePath: 'selfManagedProducts/ic/10.5.0',
-      },
-      {
-        label: '10.6.0',
-        pagePath: 'selfManagedProducts/ic/10.6.0',
-      },
-      {
-        label: '10.7.0',
-        pagePath: 'selfManagedProducts/ic/10.7.0',
-      },
-      {
-        label: '10.8.0',
-        pagePath: 'selfManagedProducts/ic/10.8.0',
-      },
-      {
-        label: '10.9.0',
-        pagePath: 'selfManagedProducts/ic/10.9.0',
-      },
-      {
-        label: '8.1.0',
-        docId: 'ic810',
-      },
-      {
-        label: '8.1.1',
-        docId: 'ic811',
-      },
-      {
-        label: '8.2.0',
-        docId: 'ic820',
-      },
-      {
-        label: '8.2.1',
-        docId: 'ic821',
-      },
-      {
-        label: '8.3.0',
-        docId: 'ic830',
-      },
-      {
-        label: '9.0.0',
-        docId: 'ic900',
-      },
-      {
-        label: '9.1.0',
-        docId: 'ic910',
-      },
-      {
-        label: '9.2.0',
-        docId: 'ic920',
-      },
-      {
-        label: '9.3.0',
-        docId: 'ic930',
-      },
-    ],
+    items: allSelectors.sadc52db4f41c0e5e05d0afc6156aaaec,
     labelColor: 'black',
   },
 };

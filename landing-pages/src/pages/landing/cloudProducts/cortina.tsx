@@ -4,6 +4,7 @@ import ProductFamilyLayout, {
 import cortinaBackgroundImage from 'images/background-cortina.svg';
 import gradientBackgroundImage from 'images/background-gradient.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: ProductFamilyLayoutProps = {
   backgroundProps: {
@@ -16,16 +17,7 @@ const pageConfig: ProductFamilyLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Cortina',
-    items: [
-      { label: 'Aspen', pagePath: 'cloudProducts/aspen' },
-      { label: 'Banff', pagePath: 'cloudProducts/banff' },
-      { label: 'Cortina', pagePath: 'cloudProducts/cortina' },
-      { label: 'Dobson', pagePath: 'cloudProducts/dobson' },
-      { label: 'Elysian', pagePath: 'cloudProducts/elysian' },
-      { label: 'Flaine', pagePath: 'cloudProducts/flaine' },
-      { label: 'Garmisch', pagePath: 'cloudProducts/garmisch' },
-      { label: 'Hakuba', pagePath: 'cloudProducts/hakuba' },
-    ],
+    items: allSelectors.sde180aec65620690fc9f929603e08d2c,
     labelColor: 'white',
   },
   isRelease: true,

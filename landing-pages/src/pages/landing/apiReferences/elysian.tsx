@@ -4,6 +4,7 @@ import CategoryLayout, {
 import gradientBackgroundImage from 'images/background-gradient.svg';
 import elysianBackgroundImage from 'images/background-elysian.png';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {
@@ -16,32 +17,7 @@ const pageConfig: CategoryLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Elysian',
-    items: [
-      {
-        label: 'Banff',
-        pagePath: 'apiReferences/banff',
-      },
-      {
-        label: 'Cortina',
-        pagePath: 'apiReferences/cortina',
-      },
-      {
-        label: 'Dobson',
-        pagePath: 'apiReferences/dobson',
-      },
-      {
-        label: 'Elysian',
-        pagePath: 'apiReferences/elysian',
-      },
-      {
-        label: 'Flaine',
-        pagePath: 'apiReferences/flaine',
-      },
-      {
-        label: 'Garmisch',
-        pagePath: 'apiReferences/garmisch',
-      },
-    ],
+    items: allSelectors.s027a61c6afed86fb43842929cfca2775,
     labelColor: 'white',
   },
 

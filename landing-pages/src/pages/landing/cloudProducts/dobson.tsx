@@ -4,6 +4,7 @@ import CategoryLayout, {
 import gradientBackgroundImage from 'images/background-gradient.svg';
 import dobsonBackgroundImage from 'images/background-dobson.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {
@@ -16,40 +17,7 @@ const pageConfig: CategoryLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Dobson',
-    items: [
-      {
-        label: 'Aspen',
-        pagePath: 'cloudProducts/aspen',
-      },
-      {
-        label: 'Banff',
-        pagePath: 'cloudProducts/banff',
-      },
-      {
-        label: 'Cortina',
-        pagePath: 'cloudProducts/cortina',
-      },
-      {
-        label: 'Dobson',
-        pagePath: 'cloudProducts/dobson',
-      },
-      {
-        label: 'Elysian',
-        pagePath: 'cloudProducts/elysian',
-      },
-      {
-        label: 'Flaine',
-        pagePath: 'cloudProducts/flaine',
-      },
-      {
-        label: 'Garmisch',
-        pagePath: 'cloudProducts/garmisch',
-      },
-      {
-        label: 'Hakuba',
-        pagePath: 'cloudProducts/hakuba',
-      },
-    ],
+    items: allSelectors.sde180aec65620690fc9f929603e08d2c,
     labelColor: 'white',
   },
   isRelease: true,

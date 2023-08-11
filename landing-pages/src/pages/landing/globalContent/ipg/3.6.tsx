@@ -2,6 +2,7 @@ import SectionLayout, {
   SectionLayoutProps,
 } from 'components/LandingPage/Section/SectionLayout';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: SectionLayoutProps = {
   backgroundProps: {
@@ -61,16 +62,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select release',
     selectedItemLabel: '3.6',
-    items: [
-      {
-        label: '3.6',
-        pagePath: 'globalContent/ipg/3.6',
-      },
-      {
-        label: '3.7',
-        pagePath: 'globalContent/ipg/3.7',
-      },
-    ],
+    items: allSelectors.sce510530da4e4c84641710b29d9f757f,
     labelColor: 'black',
   },
 };

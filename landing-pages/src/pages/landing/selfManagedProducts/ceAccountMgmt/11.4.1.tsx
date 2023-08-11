@@ -2,6 +2,7 @@ import SectionLayout, {
   SectionLayoutProps,
 } from 'components/LandingPage/Section/SectionLayout';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: SectionLayoutProps = {
   backgroundProps: {
@@ -66,53 +67,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select release',
     selectedItemLabel: '11.4.1',
-    items: [
-      {
-        label: '10.0.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsimqfvska',
-      },
-      {
-        label: '10.0.1',
-        docId: 'selfmanageddxceamagmqaagu',
-      },
-      {
-        label: '11.2.0',
-        docId: 'dxceam1120onpremstaging',
-      },
-      {
-        label: '11.3.0',
-        docId: 'dxceam1130',
-      },
-      {
-        label: '11.4.1',
-        pagePath: 'selfManagedProducts/ceAccountMgmt/11.4.1',
-      },
-      {
-        label: '11.5.0',
-        pagePath: 'selfManagedProducts/ceAccountMgmt/11.5.0',
-      },
-      {
-        label: '7.0.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsdixvkiug',
-      },
-      {
-        label: '7.1.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocsvvjeexxr',
-      },
-      {
-        label: '8.0.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocskaceffks',
-      },
-      {
-        label: '8.1.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalustomerngageccountanagementocswtwqtyvt',
-      },
-    ],
+    items: allSelectors.se1c665c92fb97241fba07f209dc2f2ae,
     labelColor: 'black',
   },
 };
