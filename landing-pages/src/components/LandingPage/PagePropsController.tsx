@@ -195,7 +195,7 @@ export default function PagePropsController({
         maxWidth: 'fit-content',
       }}
     >
-      <Typography sx={{ fontSize: 18, fontWeight: 800 }}>
+      <Typography sx={{ fontSize: 18, fontWeight: 800 }} variant="h2">
         {fullEditMode ? 'Page properties' : pagePath}{' '}
         {!pageData && <Chip label="new" color="success" />}
       </Typography>
