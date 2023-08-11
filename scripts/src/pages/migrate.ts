@@ -1,7 +1,12 @@
-import * as fs from 'fs';
 import { getAllFilesRecursively } from '../modules/fileOperations';
 import { resolve, dirname, relative, parse } from 'path';
-import { writeFileSync, readFileSync, mkdirSync } from 'fs';
+import {
+  writeFileSync,
+  readFileSync,
+  mkdirSync,
+  readdirSync,
+  existsSync,
+} from 'fs';
 import { LandingPageSelectorProps } from 'landing-pages/src/components/LandingPage/LandingPageSelector';
 import { SectionProps } from 'landing-pages/src/components/LandingPage/Section/Section';
 import { LandingPageItemProps } from 'landing-pages/src/pages/LandingPage/LandingPageTypes';
@@ -52,7 +57,7 @@ type FlailConfig = {
   breadcrumbs: FlailItem[];
 };
 
-type dataToWriteType = {
+type SelectorFileData = {
   label: string | undefined;
   items: LandingPageItemProps[];
 };
@@ -90,19 +95,23 @@ function getSelector(
     /\s/g,
     '_'
   )}_${flailSelector?.selectedItem.replace(/\s/g, '_')}`;
-  const dataToWrite: dataToWriteType = {
+  const dataToWrite: SelectorFileData = {
     label: flailSelector?.label,
     items: sortedItems,
   };
 
   const stringifiedData = JSON.stringify(dataToWrite);
 
-  const files = fs.readdirSync(`${targetDir}/selectors`);
-  if (files.length == 0) {
+  if (!existsSync(`${targetDir}/selectors`)) {
+    mkdirSync(`${targetDir}/selectors`);
+  }
+
+  const files = readdirSync(`${targetDir}/selectors`);
+  if (files.length === 0) {
     writeFileSync(`${targetDir}/selectors/${fileName}.json`, stringifiedData);
   }
   for (const file of files) {
-    const parsedFile: dataToWriteType = JSON.parse(
+    const parsedFile: SelectorFileData = JSON.parse(
       readFileSync(`${targetDir}/selectors/${file}`, {
         encoding: 'utf-8',
       })
