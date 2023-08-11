@@ -21,10 +21,6 @@ const links: AdminLink[] = [
     path: '/admin-panel/page',
     title: 'Manage pages',
   },
-  {
-    path: '/admin-panel/doc',
-    title: 'Manage docs, builds, and sources',
-  },
 ];
 
 export default function AdminPage() {
