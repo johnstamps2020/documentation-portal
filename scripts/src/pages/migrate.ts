@@ -18,6 +18,11 @@ const filePairs: FilePair[] = allFiles.map((sourceFile) => ({
     .replace('frontend/pages', 'landing-pages/src/pages/landing')
     .replace('/index.json', '.tsx'),
 }));
+
+type SelectorFileData = {
+  selectorId: string;
+  items: LandingPageItemProps[];
+};
 const allSelectors: SelectorFileData[] = [];
 
 type FlailItem = {
@@ -51,11 +56,6 @@ type FlailConfig = {
     path: string;
   };
   breadcrumbs: FlailItem[];
-};
-
-type SelectorFileData = {
-  selectorId: string;
-  items: LandingPageItemProps[];
 };
 
 function remapPageLink(flailPageLink: string, targetFile: string): string {
