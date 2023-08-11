@@ -9,13 +9,16 @@ import Box from '@mui/material/Box';
 import SelfManagedLink from 'components/LandingPage/SelfManagedLink';
 import WhatsNew, { WhatsNewProps } from 'components/LandingPage/WhatsNew';
 import { LandingPageLayoutProps } from 'pages/LandingPage/LandingPageTypes';
-import ReleaseSelector from 'components/LandingPage/ReleaseSelector';
 import { usePageData } from 'hooks/usePageData';
 import EditPagePropsButton from '../EditPagePropsButton';
 import NotLoggedInInfo from 'components/NotLoggedInInfo';
+import LandingPageSelector, {
+  LandingPageSelectorProps,
+} from 'components/LandingPage/LandingPageSelector';
 
 export type Category2LayoutProps = LandingPageLayoutProps & {
   cards: Category2CardProps[];
+  selector?: LandingPageSelectorProps;
   whatsNew: WhatsNewProps;
   isRelease?: boolean;
 };
@@ -24,6 +27,7 @@ export default function Category2Layout({
   backgroundProps,
   sidebar,
   cards,
+  selector,
   whatsNew,
   isRelease,
 }: Category2LayoutProps) {
@@ -67,7 +71,7 @@ export default function Category2Layout({
               <Container style={{ padding: 0, margin: '5px 0 0 0' }}>
                 <Breadcrumbs />
               </Container>
-              {isRelease && <ReleaseSelector />}
+              {selector && <LandingPageSelector {...selector} />}
             </Stack>
             {isRelease && (
               <SelfManagedLink
