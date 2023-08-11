@@ -45,7 +45,10 @@ export default function FilterPanel() {
           } else if (
             typeof v === 'string' &&
             v !== '' &&
-            !p[k as keyof typeof p]?.toString()?.includes(v)
+            !p[k as keyof typeof p]
+              ?.toString()
+              ?.toLocaleLowerCase()
+              .includes(v.toLocaleLowerCase())
           ) {
             matchesFilters = false;
           }
