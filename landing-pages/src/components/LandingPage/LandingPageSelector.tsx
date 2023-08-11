@@ -23,11 +23,12 @@ export type LandingPageSelectorProps = {
 };
 
 function sortPageSelectorItems(unsortedPageSelectorItems: PageSelectorItem[]) {
-  const isSemVerLabel = unsortedPageSelectorItems.some(
+  const copyOfItems = [...unsortedPageSelectorItems];
+  const isSemVerLabel = copyOfItems.some(
     (i) => i.label.search(/^([0-9]+\.[0-9]+\.[0-9]+)$/g) === 0
   );
   return isSemVerLabel
-    ? unsortedPageSelectorItems
+    ? copyOfItems
         .sort(function (a, b) {
           const labelA = a.label
             .split('.')
@@ -40,9 +41,7 @@ function sortPageSelectorItems(unsortedPageSelectorItems: PageSelectorItem[]) {
           return labelA > labelB ? 1 : -1;
         })
         .reverse()
-    : unsortedPageSelectorItems
-        .sort((a, b) => (a.label > b.label ? 1 : -1))
-        .reverse();
+    : copyOfItems.sort((a, b) => (a.label > b.label ? 1 : -1)).reverse();
 }
 
 const PageSelectorInput = styled(InputBase)(({ theme }) => ({
@@ -91,7 +90,7 @@ export default function LandingPageSelector({
 
   const pageSelectorItems: PageSelectorItem[] = landingPageItems
     .map((item) => {
-      const label = item.title || item.label || '';
+      const label = item.label || item.title || '';
       const itemHref = item.path || item.url || '';
       const href = itemHref !== '' ? `/${itemHref}` : itemHref;
       const doc = item.url ? true : false;
