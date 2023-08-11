@@ -2,6 +2,7 @@ import SectionLayout, {
   SectionLayoutProps,
 } from 'components/LandingPage/Section/SectionLayout';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: SectionLayoutProps = {
   backgroundProps: {
@@ -31,28 +32,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select product',
     selectedItemLabel: 'Crime Standards Based Template 2020.05',
-    items: [
-      {
-        label: 'Businessowners Standards Based Template 2020.05',
-        pagePath:
-          'cloudProducts/aspen/policyCenterCloud/boStandardsBasedTemplate/2020.05',
-      },
-      {
-        label: 'Commercial Auto Standards Based Template 2020.05',
-        pagePath:
-          'cloudProducts/aspen/policyCenterCloud/caStandardsBasedTemplate/2020.05',
-      },
-      {
-        label: 'Crime Standards Based Template 2020.05',
-        pagePath:
-          'cloudProducts/aspen/policyCenterCloud/crimeStandardsBasedTemplate/2020.05',
-      },
-      {
-        label: 'General Liability Standards Based Template 2020.05',
-        pagePath:
-          'cloudProducts/aspen/policyCenterCloud/glStandardsBasedTemplate/2020.05',
-      },
-    ],
+    items: allSelectors.saf476edd868b80b4bcf23c54036f36b8,
     labelColor: 'black',
   },
 };

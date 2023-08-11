@@ -9,10 +9,10 @@ import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import Skeleton from '@mui/material/Skeleton';
 
-type PageSelectorItem = {
+export type PageSelectorItem = {
   label: string;
   href: string;
-  doc: boolean;
+  isDoc: boolean;
 };
 
 export type LandingPageSelectorProps = {
@@ -22,27 +22,19 @@ export type LandingPageSelectorProps = {
   labelColor: string;
 };
 
-function sortPageSelectorItems(unsortedPageSelectorItems: PageSelectorItem[]) {
-  const isSemVerLabel = unsortedPageSelectorItems.some(
-    (i) => i.label.search(/^([0-9]+\.[0-9]+\.[0-9]+)$/g) === 0
-  );
-  return isSemVerLabel
-    ? unsortedPageSelectorItems
-        .sort(function (a, b) {
-          const labelA = a.label
-            .split('.')
-            .map((n) => +n + 100000)
-            .join('.');
-          const labelB = b.label
-            .split('.')
-            .map((n) => +n + 100000)
-            .join('.');
-          return labelA > labelB ? 1 : -1;
-        })
-        .reverse()
-    : unsortedPageSelectorItems
-        .sort((a, b) => (a.label > b.label ? 1 : -1))
-        .reverse();
+export function sortPageSelectorItems(
+  unsortedPageSelectorItems: PageSelectorItem[]
+) {
+  const copyOfItems = [...unsortedPageSelectorItems];
+
+  return copyOfItems
+    .sort(function (a, b) {
+      return a.label.localeCompare(b.label, undefined, {
+        numeric: true,
+        sensitivity: 'base',
+      });
+    })
+    .reverse();
 }
 
 const PageSelectorInput = styled(InputBase)(({ theme }) => ({
@@ -91,14 +83,14 @@ export default function LandingPageSelector({
 
   const pageSelectorItems: PageSelectorItem[] = landingPageItems
     .map((item) => {
-      const label = item.title || item.label || '';
+      const label = item.label || item.title || '';
       const itemHref = item.path || item.url || '';
       const href = itemHref !== '' ? `/${itemHref}` : itemHref;
-      const doc = item.url ? true : false;
+      const isDoc = item.url ? true : false;
       return {
         label,
         href,
-        doc,
+        isDoc,
       };
     })
     .filter((item) => item.label !== '' && item.href !== '');
@@ -113,7 +105,7 @@ export default function LandingPageSelector({
       return null;
     }
 
-    if (selectedItem.href.startsWith('http') || selectedItem.doc) {
+    if (selectedItem.href.startsWith('http') || selectedItem.isDoc) {
       return (window.location.href = selectedItem.href);
     }
 

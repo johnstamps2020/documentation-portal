@@ -5,6 +5,7 @@ import gradientBackgroundImage from 'images/background-gradient.svg';
 import hakubaBackgroundImage from 'images/background-hakuba.svg';
 import hakubaBadge from 'images/badge-hakuba.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: Category2LayoutProps = {
   backgroundProps: {
@@ -15,6 +16,12 @@ const pageConfig: Category2LayoutProps = {
   url(${hakubaBackgroundImage}), 
   linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
     },
+  },
+  selector: {
+    label: 'Select cloud release',
+    selectedItemLabel: 'Hakuba',
+    items: allSelectors.sde180aec65620690fc9f929603e08d2c,
+    labelColor: 'white',
   },
   isRelease: true,
   cards: [

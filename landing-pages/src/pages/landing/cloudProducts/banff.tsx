@@ -4,6 +4,7 @@ import ProductFamilyLayout, {
 import gradientBackgroundImage from 'images/background-gradient.svg';
 import banffBackgroundImage from 'images/background-banff.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: ProductFamilyLayoutProps = {
   backgroundProps: {
@@ -13,7 +14,12 @@ const pageConfig: ProductFamilyLayoutProps = {
       xs: `url(${gradientBackgroundImage})`,
     },
   },
-
+  selector: {
+    label: 'Select cloud release',
+    selectedItemLabel: 'Banff',
+    items: allSelectors.sde180aec65620690fc9f929603e08d2c,
+    labelColor: 'white',
+  },
   isRelease: true,
   items: [
     {

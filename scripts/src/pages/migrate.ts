@@ -1,9 +1,10 @@
 import { getAllFilesRecursively } from '../modules/fileOperations';
 import { resolve, dirname, relative, parse } from 'path';
-import { writeFileSync, readFileSync, mkdirSync } from 'fs';
+import { writeFileSync, readFileSync, mkdirSync, existsSync } from 'fs';
 import { LandingPageSelectorProps } from 'landing-pages/src/components/LandingPage/LandingPageSelector';
 import { SectionProps } from 'landing-pages/src/components/LandingPage/Section/Section';
 import { LandingPageItemProps } from 'landing-pages/src/pages/LandingPage/LandingPageTypes';
+import { createHash } from 'crypto';
 
 const landingPagesSourceDir = resolve(__dirname, '../../../frontend/pages');
 const targetDir = resolve(
@@ -17,6 +18,12 @@ const filePairs: FilePair[] = allFiles.map((sourceFile) => ({
     .replace('frontend/pages', 'landing-pages/src/pages/landing')
     .replace('/index.json', '.tsx'),
 }));
+
+type SelectorFileData = {
+  selectorId: string;
+  items: LandingPageItemProps[];
+};
+const allSelectors: SelectorFileData[] = [];
 
 type FlailItem = {
   label: string;
@@ -60,17 +67,43 @@ function remapPageLink(flailPageLink: string, targetFile: string): string {
   return matchingTargetFile;
 }
 
+function generateHash(input: string): string {
+  let md5sum = createHash('md5');
+  md5sum.update(input);
+  return `s${md5sum.digest('hex')}`;
+}
+
+function addSelectorIfNotExists(sortedItems: LandingPageItemProps[]): string {
+  const selectorId = generateHash(
+    sortedItems
+      .map((item) => `${item.label}_${item.pagePath || item.url || item.docId}`)
+      .join('_')
+      .replace(/[^a-zA-Z0-9]/g, '')
+  );
+
+  if (!allSelectors.find((selector) => selector.selectorId === selectorId)) {
+    allSelectors.push({
+      selectorId,
+      items: sortedItems,
+    });
+  }
+
+  return selectorId;
+}
+
+type LandingPageSelectorTemplateProps = Omit<
+  LandingPageSelectorProps,
+  'items'
+> & {
+  items: string;
+};
+
 function getSelector(
   flailConfig: FlailConfig,
   targetFile: string,
   labelColor: string = 'white'
-): LandingPageSelectorProps | undefined {
-  if (getIsRelease(targetFile)) {
-    return undefined;
-  }
-
+): string | undefined {
   const flailSelector = flailConfig.selector;
-
   const selectorItems = getItems(flailSelector?.items, targetFile);
 
   if (!selectorItems) {
@@ -86,12 +119,21 @@ function getSelector(
     a.label! > b.label! ? 1 : -1
   );
 
-  return {
+  const selectorId = addSelectorIfNotExists(sortedItems);
+
+  const result: LandingPageSelectorTemplateProps = {
     label: flailSelector?.label || 'Select version',
     selectedItemLabel: flailSelector?.selectedItem || '',
-    items: sortedItems,
+    items: `allSelectors.${selectorId}`,
     labelColor: labelColor,
   };
+
+  return `{
+    label: '${result.label}',
+    selectedItemLabel: '${result.selectedItemLabel}',
+    items: allSelectors.${selectorId},
+    labelColor: '${result.labelColor}',
+  }`;
 }
 
 function getSections(
@@ -400,9 +442,11 @@ function mapToCategory2Layout(
     label: flail.label,
     items: getItems(flail.items, targetFile),
   }));
+  const selector = getSelector(flailConfig, targetFile);
   const isRelease = getIsRelease(targetFile);
   return `{
     backgroundProps: ${backgroundPropValue},
+    ${selector ? `selector: ${selector},` : ''}
     ${isRelease ? 'isRelease: true,' : ''}
     cards: ${JSON.stringify(cards, null, 2)},
     whatsNew: ${getWhatsNew(flailConfig)},
@@ -446,11 +490,7 @@ function mapToCategoryLayout(
   const selector = getSelector(flailConfig, targetFile);
   return `{
     backgroundProps: ${backgroundPropValue},
-    ${
-      !isSelfManaged && selector
-        ? `selector: ${JSON.stringify(selector, null, 2)},`
-        : ''
-    }
+    ${!isSelfManaged && selector ? `selector: ${selector},` : ''}
     ${isRelease ? 'isRelease: true,' : ''}
     ${
       isSelfManaged
@@ -484,7 +524,7 @@ function mapToProductFamilyLayout(
   const isRelease = getIsRelease(targetFile);
   return `{
     backgroundProps: ${backgroundPropValue},
-    ${selector ? `selector: ${JSON.stringify(selector)},` : ''}
+    ${selector ? `selector: ${selector},` : ''}
     ${isRelease ? `isRelease: ${isRelease},` : ''}
     items: ${JSON.stringify(items, null, 2)},
     sidebar: ${getSidebar(flailConfig)},
@@ -501,7 +541,7 @@ function mapToSectionLayout(
   return `{
     backgroundProps: ${backgroundPropValue},
     sections: ${JSON.stringify(sections, null, 2)},
-    ${selector ? `selector: ${JSON.stringify(selector, null, 2)}` : ''}
+    ${selector ? `selector: ${selector}` : ''}
   }`;
 }
 
@@ -613,9 +653,15 @@ function createComponentTemplate(
   const pageConfig = remapFunction(flailConfig, targetFile);
   const pageComponentName = getComponentName(targetFile);
   const { backGroundImports } = getBackgroundProps(flailConfig, targetFile);
+  const hasPageSelector = getSelector(flailConfig, targetFile) !== undefined;
 
   return `import ${componentName}, { ${layoutProps} } from '${from}';
 ${backGroundImports}
+${
+  hasPageSelector
+    ? `import { allSelectors } from 'pages/landing/selectors/allSelectors';`
+    : ''
+}
 
 const pageConfig: ${layoutProps} = ${pageConfig};
 
@@ -644,3 +690,16 @@ for (const file of filePairs) {
   mkdirSync(dirname(file.targetFile), { recursive: true });
   writeFileSync(file.targetFile, componentTemplate, { encoding: 'utf-8' });
 }
+
+if (!existsSync(`${targetDir}/selectors`)) {
+  mkdirSync(`${targetDir}/selectors`);
+}
+writeFileSync(
+  `${targetDir}/selectors/allSelectors.ts`,
+  `export const allSelectors = {
+    ${allSelectors.map(
+      (selector) =>
+        `'${selector.selectorId}': ${JSON.stringify(selector.items)}`
+    )}
+  };`
+);

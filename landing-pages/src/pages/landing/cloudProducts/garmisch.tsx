@@ -5,6 +5,7 @@ import gradientBackgroundImage from 'images/background-gradient.svg';
 import garmischBackgroundImage from 'images/background-garmisch.png';
 import garmischBadge from 'images/badge-garmisch.svg';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: Category2LayoutProps = {
   backgroundProps: {
@@ -15,6 +16,12 @@ const pageConfig: Category2LayoutProps = {
   url(${garmischBackgroundImage}), 
   linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
     },
+  },
+  selector: {
+    label: 'Select cloud release',
+    selectedItemLabel: 'Garmisch',
+    items: allSelectors.sde180aec65620690fc9f929603e08d2c,
+    labelColor: 'white',
   },
   isRelease: true,
   cards: [

@@ -77,6 +77,7 @@
     "superbook",
     "topicref",
     "typeorm",
+    "whatsnew",
     "yarnbuild"
   ],
   "cSpell.ignorePaths": [

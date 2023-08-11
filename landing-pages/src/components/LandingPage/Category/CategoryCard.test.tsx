@@ -33,11 +33,8 @@ const cardConfig: CategoryCardProps = {
   items: [],
 };
 
-beforeAll(() => {
-  render(<CategoryCard {...cardConfig} />);
-});
-
 test('renders the card title', () => {
+  render(<CategoryCard {...cardConfig} />);
   const titleElement = screen.getByText(title);
   expect(titleElement).toBeInTheDocument();
 });

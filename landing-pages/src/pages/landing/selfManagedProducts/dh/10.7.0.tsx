@@ -2,6 +2,7 @@ import SectionLayout, {
   SectionLayoutProps,
 } from 'components/LandingPage/Section/SectionLayout';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: SectionLayoutProps = {
   backgroundProps: {
@@ -75,80 +76,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select release',
     selectedItemLabel: '10.7.0',
-    items: [
-      {
-        label: '10.0.0',
-        docId: 'dh1000',
-      },
-      {
-        label: '10.1.0',
-        docId: 'dh1010',
-      },
-      {
-        label: '10.2.0',
-        docId: 'dh1020',
-      },
-      {
-        label: '10.3.0',
-        docId: 'dh1030',
-      },
-      {
-        label: '10.4.0',
-        docId: 'dh1040',
-      },
-      {
-        label: '10.5.0',
-        pagePath: 'selfManagedProducts/dh/10.5.0',
-      },
-      {
-        label: '10.6.0',
-        pagePath: 'selfManagedProducts/dh/10.6.0',
-      },
-      {
-        label: '10.7.0',
-        pagePath: 'selfManagedProducts/dh/10.7.0',
-      },
-      {
-        label: '10.8.0',
-        pagePath: 'selfManagedProducts/dh/10.8.0',
-      },
-      {
-        label: '10.9.0',
-        pagePath: 'selfManagedProducts/dh/10.9.0',
-      },
-      {
-        label: '8.1.0',
-        docId: 'dh810',
-      },
-      {
-        label: '8.1.1',
-        docId: 'dh811',
-      },
-      {
-        label: '8.2.0',
-        docId: 'dh820',
-      },
-      {
-        label: '8.3.0',
-        docId: 'dh830',
-      },
-      {
-        label: '9.0.0',
-        docId: 'dh900',
-      },
-      {
-        label: '9.1.0',
-        docId: 'dh910',
-      },
-      {
-        label: '9.2.0',
-        docId: 'dh920',
-      },
-      {
-        label: '9.3.0',
-        docId: 'dh930',
-      },
-    ],
+    items: allSelectors.sb993b95f0270ffbe809967569ebeb73d,
     labelColor: 'black',
   },
 };

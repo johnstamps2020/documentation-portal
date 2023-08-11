@@ -5,6 +5,7 @@ import gradientBackgroundImage from 'images/background-gradient.svg';
 import hakubaBackgroundImage from 'images/background-hakuba.svg';
 
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {
@@ -19,20 +20,7 @@ const pageConfig: CategoryLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Hakuba (2023.06)',
-    items: [
-      {
-        label: 'Flaine (2022.09)',
-        pagePath: 'cloudProducts/flaine/dx-ref-apps',
-      },
-      {
-        label: 'Garmisch (2023.02)',
-        pagePath: 'cloudProducts/garmisch/dx-ref-apps',
-      },
-      {
-        label: 'Hakuba (2023.06)',
-        pagePath: 'cloudProducts/hakuba/dx-ref-apps',
-      },
-    ],
+    items: allSelectors.s92475b0db6d6007931455ee967b8bcb8,
     labelColor: 'white',
   },
 

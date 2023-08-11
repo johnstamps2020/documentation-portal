@@ -10,7 +10,6 @@ import {
   LandingPageLayoutProps,
 } from 'pages/LandingPage/LandingPageTypes';
 import { usePageData } from 'hooks/usePageData';
-import ReleaseSelector from 'components/LandingPage/ReleaseSelector';
 import ProductFamilySidebar from './ProductFamilySidebar';
 import LandingPageSelector, {
   LandingPageSelectorProps,
@@ -68,7 +67,6 @@ export default function ProductFamilyLayout({
           </Typography>
           <NotLoggedInInfo styles={variableColor} />
           {selector && <LandingPageSelector {...selector} />}{' '}
-          {isRelease && <ReleaseSelector />}
         </Stack>
       </Grid>
       <Grid container width="100%" maxWidth="1330px" gap={2}>

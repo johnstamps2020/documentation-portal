@@ -2,6 +2,7 @@ import SectionLayout, {
   SectionLayoutProps,
 } from 'components/LandingPage/Section/SectionLayout';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: SectionLayoutProps = {
   backgroundProps: {
@@ -66,49 +67,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select release',
     selectedItemLabel: '11.5.0',
-    items: [
-      {
-        label: '10.0.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalendorngageocsqblntzzp',
-      },
-      {
-        label: '10.0.1',
-        docId: 'selfmanageddxvebjvtkgov',
-      },
-      {
-        label: '11.3.0',
-        docId: 'dxve1130',
-      },
-      {
-        label: '11.4.1',
-        pagePath: 'selfManagedProducts/vendorEngage/11.4.1',
-      },
-      {
-        label: '11.5.0',
-        pagePath: 'selfManagedProducts/vendorEngage/11.5.0',
-      },
-      {
-        label: '7.0.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalendorngageocsjkkjagrp',
-      },
-      {
-        label: '7.1.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalendorngageocsgehgsaei',
-      },
-      {
-        label: '8.0.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalendorngageocsyrmcgnnq',
-      },
-      {
-        label: '8.1.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalendorngageocshfhoxxya',
-      },
-    ],
+    items: allSelectors.s26ee69db851ee379ae73979e028a4ffe,
     labelColor: 'black',
   },
 };

@@ -2,6 +2,7 @@ import SectionLayout, {
   SectionLayoutProps,
 } from 'components/LandingPage/Section/SectionLayout';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: SectionLayoutProps = {
   backgroundProps: {
@@ -83,16 +84,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select product',
     selectedItemLabel: 'InfoCenter for Guidewire Cloud 2022.05',
-    items: [
-      {
-        label: 'DataHub for Guidewire Cloud 2022.05',
-        pagePath: 'cloudProducts/elysian/dhGwCloud/2022.05',
-      },
-      {
-        label: 'InfoCenter for Guidewire Cloud 2022.05',
-        pagePath: 'cloudProducts/elysian/icGwCloud/2022.05',
-      },
-    ],
+    items: allSelectors.s4858c06c81117f2dc4e39f487f8c532f,
     labelColor: 'black',
   },
 };

@@ -2,6 +2,7 @@ import SectionLayout, {
   SectionLayoutProps,
 } from 'components/LandingPage/Section/SectionLayout';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: SectionLayoutProps = {
   backgroundProps: {
@@ -66,20 +67,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select release',
     selectedItemLabel: '11.4.1',
-    items: [
-      {
-        label: '11.3.0',
-        docId: 'dxceclaims1130',
-      },
-      {
-        label: '11.4.1',
-        pagePath: 'selfManagedProducts/ceAccountMgmtCc/11.4.1',
-      },
-      {
-        label: '11.5.0',
-        pagePath: 'selfManagedProducts/ceAccountMgmtCc/11.5.0',
-      },
-    ],
+    items: allSelectors.sef0d4993be616495fae38c5e28c9d828,
     labelColor: 'black',
   },
 };

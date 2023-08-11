@@ -2,6 +2,7 @@ import SectionLayout, {
   SectionLayoutProps,
 } from 'components/LandingPage/Section/SectionLayout';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: SectionLayoutProps = {
   backgroundProps: {
@@ -75,16 +76,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select product',
     selectedItemLabel: 'DataHub for Guidewire Cloud 2023.06',
-    items: [
-      {
-        label: 'DataHub for Guidewire Cloud 2023.06',
-        pagePath: 'cloudProducts/hakuba/dhGwCloud/2023.06',
-      },
-      {
-        label: 'InfoCenter for Guidewire Cloud 2023.06',
-        pagePath: 'cloudProducts/hakuba/icGwCloud/2023.06',
-      },
-    ],
+    items: allSelectors.s34b1bb41846cbe6e50333cdfed5c3a73,
     labelColor: 'black',
   },
 };

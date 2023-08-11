@@ -10,7 +10,6 @@ import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/material/Link';
 import { usePageData } from 'hooks/usePageData';
 import { LandingPageLayoutProps } from 'pages/LandingPage/LandingPageTypes';
-import ReleaseSelector from 'components/LandingPage/ReleaseSelector';
 import CategorySidebar from './CategorySidebar';
 import LandingPageSelector, {
   LandingPageSelectorProps,
@@ -70,7 +69,6 @@ export default function CategoryLayout({
           </Typography>
           {description}
           <NotLoggedInInfo styles={variableColor} />
-          {isRelease && !selector && <ReleaseSelector />}
           {selector && <LandingPageSelector {...selector} />}
         </Stack>
         {pageData.path.includes('cloudProducts/elysian') && (

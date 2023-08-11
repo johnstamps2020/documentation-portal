@@ -42,7 +42,7 @@
     "test:server": "yarn workspace server test",
     "test:landing-pages": "yarn workspace landing-pages test",
     "test": "yarn test:server && yarn test:landing-pages",
-    "scripts:migrate-pages": "yarn workspace scripts migrate-pages && yarn prettier",
+    "scripts:migrate-pages": "yarn workspace scripts migrate-pages && prettier landing-pages/src/pages/landing --write",
     "profile:html5": "yarn build:theme && yarn workspace html5 profile"
   },
   "resolutions": {

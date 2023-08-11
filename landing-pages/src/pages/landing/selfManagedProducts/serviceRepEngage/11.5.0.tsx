@@ -2,6 +2,7 @@ import SectionLayout, {
   SectionLayoutProps,
 } from 'components/LandingPage/Section/SectionLayout';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: SectionLayoutProps = {
   backgroundProps: {
@@ -66,57 +67,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select release',
     selectedItemLabel: '11.5.0',
-    items: [
-      {
-        label: '10.0.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalerviceepngageocstyghellr',
-      },
-      {
-        label: '10.0.1',
-        docId: 'selfmanageddxsreaqsojbmv',
-      },
-      {
-        label: '11.1.0',
-        docId: 'dxsre1110onpremstaging',
-      },
-      {
-        label: '11.2.0',
-        docId: 'dxsre1120onpremstaging',
-      },
-      {
-        label: '11.3.0',
-        docId: 'dxsre1130',
-      },
-      {
-        label: '11.4.1',
-        pagePath: 'selfManagedProducts/serviceRepEngage/11.4.1',
-      },
-      {
-        label: '11.5.0',
-        pagePath: 'selfManagedProducts/serviceRepEngage/11.5.0',
-      },
-      {
-        label: '7.0.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsugutdoki',
-      },
-      {
-        label: '7.1.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsrtlpihpc',
-      },
-      {
-        label: '8.0.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsqarbsbtn',
-      },
-      {
-        label: '8.1.0',
-        docId:
-          'httpsportalguidewirecomportalsecuredocdigitalerviceepngageocsdemyrpoh',
-      },
-    ],
+    items: allSelectors.s206251df424d4d7759bced1d71908add,
     labelColor: 'black',
   },
 };
