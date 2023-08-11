@@ -54,7 +54,6 @@ export const appTheme = createTheme({
     h1: {
       fontSize: 40,
       textAlign: 'left',
-      color: 'white',
       fontWeight: 600,
       marginRight: 'auto',
       marginTop: '5px',
@@ -62,7 +61,6 @@ export const appTheme = createTheme({
     h2: {
       fontWeight: 600,
       fontSize: '1.375rem',
-      color: 'hsl(216, 42%, 13%)',
       textAlign: 'left',
       paddingBottom: '10px',
     },
@@ -70,7 +68,6 @@ export const appTheme = createTheme({
       fontWeight: 600,
       fontSize: '1.125rem',
       padding: '0.5rem 0',
-      color: 'black',
     },
     h4: {
       fontSize: '0.2rem',
