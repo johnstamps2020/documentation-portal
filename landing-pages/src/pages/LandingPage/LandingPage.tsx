@@ -60,7 +60,12 @@ export default function LandingPage() {
       </>
       <Suspense
         fallback={
-          <Skeleton variant="rounded" width="100%" height={mainHeight} />
+          <Skeleton
+            variant="rounded"
+            width="100%"
+            height={mainHeight}
+            sx={{ bgcolor: 'white' }}
+          />
         }
       >
         <PageComponent title={title} />
