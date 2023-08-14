@@ -1,6 +1,6 @@
 locals {
-  app_name = "docportal-app"
-  aurora_db_name = "tenant-doctools-docportal"
+  app_name = "docportal"
+  aurora_db_name = "tenant-doctools-docportal-${var.deploy_env}"
   database_name = jsondecode(data.aws_secretsmanager_secret_version.database_name.secret_string)["config_db_name"]
   database_username = jsondecode(data.aws_secretsmanager_secret_version.database_username.secret_string)["config_db_username"]
   database_password = jsondecode(data.aws_secretsmanager_secret_version.database_password.secret_string)["config_db_password"]
