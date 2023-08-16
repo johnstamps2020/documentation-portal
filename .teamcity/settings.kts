@@ -258,7 +258,8 @@ object Database {
             }
         }
     }
-
+    // FIXME: URLs of dbs are taken from Parameters in the Documentation Tools project. There is one value for dev and one for prod.
+    //  Make updates to use one value for dev, one for staging and one for prod. Move these values somewhere else?
     private object SyncDbDataBuildType : BuildType({
         val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)
         val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
