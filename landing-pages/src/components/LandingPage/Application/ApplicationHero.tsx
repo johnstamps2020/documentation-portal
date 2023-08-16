@@ -24,6 +24,7 @@ export default function ApplicationHero() {
         position: 'relative',
         minHeight: 220,
         backgroundColor: 'primary.main',
+        color: 'white',
       }}
     >
       <Container>
