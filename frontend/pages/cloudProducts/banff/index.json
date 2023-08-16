@@ -8,8 +8,8 @@
     "selectedItem": "Banff",
     "items": [
       {
-        "label": "Hakuba",
-        "page": "../hakuba",
+        "label": "Innsbruck",
+        "page": "../innsbruck",
         "env": ["staging"]
       },
       {

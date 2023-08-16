@@ -143,12 +143,28 @@
       "class": "subject configuration",
       "items": [
         {
+          "label": "Core Configuration",
+          "id": "in20221config"
+        },
+        {
+          "label": "Studio Configuration",
+          "id": "in20221studio"
+        },
+        {
           "label": "Billing Configuration Reference",
           "id": "in20221billref"
         },
         {
-          "label": "Core Configuration",
-          "id": "in20221config"
+          "label": "Claims Configuration Reference",
+          "id": "in20221claimsconfig"
+        },
+        {
+          "label": "Underwriting Configuration Reference",
+          "id": "in20221uwconfig"
+        },
+        {
+          "label": "Product Attribute Reference",
+          "id": "in20221prodattref"
         },
         {
           "label": "Common Functionality Configuration Reference",
@@ -163,28 +179,12 @@
           "id": "in20221xcservicepconfigdraft"
         },
         {
-          "label": "Claims Configuration Reference",
-          "id": "in20221claimsconfig"
-        },
-        {
-          "label": "Studio Configuration",
-          "id": "in20221studio"
-        },
-        {
-          "label": "Product Attribute Reference",
-          "id": "in20221prodattref"
-        },
-        {
           "label": "Provisioning Portal",
           "id": "in20221provportal"
         },
         {
           "label": "Provisioning Portal",
           "id": "in20221provportalinternal"
-        },
-        {
-          "label": "Underwriting Configuration Reference",
-          "id": "in20221uwconfig"
         }
       ]
     },

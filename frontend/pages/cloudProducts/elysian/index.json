@@ -8,11 +8,13 @@
     "selectedItem": "Elysian",
     "items": [
       {
+        "label": "Innsbruck",
+        "page": "../innsbruck",
+        "env": ["staging"]
+      },
+      {
         "label": "Hakuba",
-        "page": "../hakuba",
-        "env": [
-          "staging"
-        ]
+        "page": "../hakuba"
       },
       {
         "label": "Garmisch",

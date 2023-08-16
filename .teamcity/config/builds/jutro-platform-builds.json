@@ -15,6 +15,12 @@
     },
     {
       "buildType": "yarn",
+      "docId": "jutroplatformhakuba",
+      "srcId": "srcjutroplatformhakuba",
+      "disabled": false
+    },
+    {
+      "buildType": "yarn",
       "docId": "jutroplatformnext",
       "srcId": "srcjutroplatformnext",
       "disabled": false

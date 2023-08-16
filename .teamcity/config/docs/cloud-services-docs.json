@@ -8,8 +8,8 @@
       "metadata": {
         "product": ["Rules", "PolicyCenter", "ClaimCenter"],
         "platform": ["Cloud"],
-        "version": ["2022.09", "2023.02"],
-        "release": ["Flaine", "Garmisch"],
+        "version": ["2022.09", "2023.02", "2023.06"],
+        "release": ["Flaine", "Garmisch", "Hakuba"],
         "subject": ["Configuration"],
         "language": "en"
       },
@@ -27,8 +27,8 @@
       "metadata": {
         "product": ["Rules", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["2023.02"],
-        "release": ["Garmisch"],
+        "version": ["2023.02", "2023.06"],
+        "release": ["Garmisch", "Hakuba"],
         "subject": ["Configuration"],
         "language": "en"
       },
@@ -46,8 +46,8 @@
       "metadata": {
         "product": ["Submission Intake", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["2022.09", "2023.02"],
-        "release": ["Flaine", "Garmisch"],
+        "version": ["2022.09", "2023.02", "2023.06"],
+        "release": ["Flaine", "Garmisch", "Hakuba"],
         "subject": ["Features and functionality"],
         "language": "en"
       },
@@ -65,8 +65,8 @@
       "metadata": {
         "product": ["Submission Intake", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["2022.09", "2023.02"],
-        "release": ["Flaine", "Garmisch"],
+        "version": ["2022.09", "2023.02", "2023.06"],
+        "release": ["Flaine", "Garmisch", "Hakuba"],
         "subject": ["Configuration"],
         "language": "en"
       },
@@ -104,7 +104,7 @@
         "product": ["Workset Manager"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": ["Flaine", "Garmisch"],
+        "release": ["Flaine", "Garmisch", "Hakuba"],
         "subject": ["Configuration"],
         "language": "en"
       },
@@ -118,11 +118,11 @@
     {
       "id": "lifecyclemgr",
       "title": "Lifecycle Manager",
-      "url": "cloud/lifecyclemgr",
+      "url": "cloud/lifecyclemgr/2.0",
       "metadata": {
         "product": ["Lifecycle Manager"],
         "platform": ["Cloud"],
-        "version": ["latest"],
+        "version": ["2.0"],
         "release": ["Innsbruck"],
         "subject": ["Configuration"],
         "language": "en"

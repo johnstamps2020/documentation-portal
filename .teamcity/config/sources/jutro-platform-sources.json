@@ -18,6 +18,12 @@
       "title": "Jutro Digital Platform",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-platform-docs.git",
       "branch": "release/garmisch"
+    },
+    {
+      "id": "srcjutroplatformhakuba",
+      "title": "Jutro Digital Platform",
+      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-platform-docs.git",
+      "branch": "release/hakuba"
     }
   ]
 }

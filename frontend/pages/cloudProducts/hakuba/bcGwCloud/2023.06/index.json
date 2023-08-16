@@ -129,6 +129,10 @@
           "id": "is202306integoverview"
         },
         {
+          "label": "Cloud Integration Basics Course",
+          "id": "cloudintegrationbasics"
+        },
+        {
           "label": "BillingCenter Cloud API Consumer Guide",
           "id": "isbc202306apibf"
         },

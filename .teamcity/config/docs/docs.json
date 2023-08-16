@@ -15,7 +15,8 @@
           "Dobson",
           "Elysian",
           "Flaine",
-          "Garmisch"
+          "Garmisch",
+          "Hakuba"
         ],
         "language": "en"
       },
@@ -59,7 +60,8 @@
           "Dobson",
           "Elysian",
           "Flaine",
-          "Garmisch"
+          "Garmisch",
+          "Hakuba"
         ],
         "language": "en"
       },
@@ -102,7 +104,8 @@
           "Dobson",
           "Elysian",
           "Flaine",
-          "Garmisch"
+          "Garmisch",
+          "Hakuba"
         ],
         "language": "en"
       },
@@ -198,7 +201,8 @@
           "Dobson",
           "Elysian",
           "Flaine",
-          "Garmisch"
+          "Garmisch",
+          "Hakuba"
         ],
         "language": "en"
       },
@@ -233,7 +237,7 @@
       "metadata": {
         "product": ["Cyence"],
         "platform": ["Cloud"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
         "version": ["latest"],
         "language": "en"
       },
@@ -251,7 +255,7 @@
       "metadata": {
         "product": ["HazardHub Casualty"],
         "platform": ["Cloud"],
-        "release": ["Dobson", "Elysian", "Flaine", "Garmisch"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
         "version": ["latest"],
         "language": "en"
       },

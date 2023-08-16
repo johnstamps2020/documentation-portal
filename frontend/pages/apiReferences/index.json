@@ -6,6 +6,10 @@
   "template": "redirect",
   "items": [
     {
+      "label": "Hakuba",
+      "page": "hakuba"
+    },
+    {
       "label": "Garmisch",
       "page": "garmisch"
     },
@@ -31,7 +35,7 @@
     },
     {
       "label": "_redirect",
-      "link": "/apiReferences/garmisch"
+      "link": "/apiReferences/hakuba"
     }
   ]
 }

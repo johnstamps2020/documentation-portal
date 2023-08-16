@@ -8,6 +8,11 @@
     "selectedItem": "Hakuba",
     "items": [
       {
+        "label": "Innsbruck",
+        "page": "../innsbruck",
+        "env": ["staging"]
+      },
+      {
         "label": "Garmisch",
         "page": "../garmisch"
       },
@@ -55,8 +60,8 @@
           "page": "../dataPlatform"
         },
         {
-          "label": "Workflow Service (Early Access)",
-          "page": "../workflowservice"
+          "label": "Autopilot Workflow Service (Early Access)",
+          "page": "../autopilotworkflowservice"
         }
       ]
     },

@@ -10,10 +10,10 @@
         "product": ["Workflow Service"],
         "version": ["latest"],
         "subject": ["Features and functionality"],
-        "release": ["Garmisch"],
+        "release": ["Hakuba"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,
@@ -29,7 +29,7 @@
         "product": ["Workflow Service"],
         "version": ["latest"],
         "subject": ["Administration"],
-        "release": ["Garmisch"],
+        "release": ["Garmisch", "Hakuba"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -48,7 +48,7 @@
         "product": ["Workflow Service"],
         "version": ["latest"],
         "subject": ["Release notes"],
-        "release": ["Garmisch"],
+        "release": ["Garmisch", "Hakuba"],
         "language": "en"
       },
       "environments": ["staging"],

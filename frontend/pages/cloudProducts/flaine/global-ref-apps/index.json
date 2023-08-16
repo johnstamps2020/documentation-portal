@@ -9,8 +9,7 @@
     "items": [
       {
         "label": "Hakuba (2023.06)",
-        "page": "../../hakuba/global-ref-apps",
-        "env": ["staging"]
+        "page": "../../hakuba/global-ref-apps"
       },
       {
         "label": "Garmisch (2023.02)",

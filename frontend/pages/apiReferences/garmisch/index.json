@@ -8,6 +8,10 @@
     "selectedItem": "Garmisch",
     "items": [
       {
+        "label": "Hakuba",
+        "page": "../hakuba"
+      },
+      {
         "label": "Flaine",
         "page": "../flaine"
       },

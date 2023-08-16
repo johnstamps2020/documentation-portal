@@ -8,8 +8,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2022.05", "2022.09", "2023.02"],
-        "release": ["Elysian", "Flaine", "Garmisch"],
+        "version": ["2022.05", "2022.09", "2023.02", "2023.06"],
+        "release": ["Elysian", "Flaine", "Garmisch", "Hakuba"],
         "subject": ["Development"],
         "language": "en"
       },
