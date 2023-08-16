@@ -129,20 +129,28 @@
       "class": "subject configuration",
       "items": [
         {
-          "label": "Consumer Service Portal Configuration Guide",
-          "id": "in20211xcservicepconfigdraft"
-        },
-        {
           "label": "Core Configuration Guide",
           "id": "in20211config"
         },
         {
-          "label": "Common Functionality Configuration Reference",
-          "id": "in20211xcommonconfigdraft"
-        },
-        {
           "label": "Studio Configuration Guide",
           "id": "in20211studio"
+        },
+        {
+          "label": "Underwriting Configuration Reference",
+          "id": "in20211uwconfig"
+        },
+        {
+          "label": "Product Attribute Reference",
+          "id": "in20211prodattref"
+        },
+        {
+          "label": "Consumer Service Portal Configuration Guide",
+          "id": "in20211xcservicepconfigdraft"
+        },
+        {
+          "label": "Common Functionality Configuration Reference",
+          "id": "in20211xcommonconfigdraft"
         },
         {
           "label": "Provisioning Portal",
@@ -151,14 +159,6 @@
         {
           "label": "Portal Development",
           "id": "in20211portaldev"
-        },
-        {
-          "label": "Product Attribute Reference",
-          "id": "in20211prodattref"
-        },
-        {
-          "label": "Underwriting Configuration Reference",
-          "id": "in20211uwconfig"
         }
       ]
     },

@@ -66,19 +66,21 @@
       "items": [
         {
           "label": "DataHub",
-          "page": "dh/10.9.0"
+          "page": "dh/10.9.0",
+          "env": ["prod"]
         },
         {
           "label": "InfoCenter",
-          "page": "ic/10.9.0"
+          "page": "ic/10.9.0",
+          "env": ["prod"]
         },
         {
-          "label": "DataHub 10.10.0",
+          "label": "DataHub",
           "page": "dh/10.10.0",
           "env": ["staging"]
         },
         {
-          "label": "InfoCenter 10.10.0",
+          "label": "InfoCenter",
           "page": "ic/10.10.0",
           "env": ["staging"]
         }

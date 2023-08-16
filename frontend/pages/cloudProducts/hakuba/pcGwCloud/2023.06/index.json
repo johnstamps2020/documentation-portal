@@ -169,6 +169,10 @@
           "id": "is202306integoverview"
         },
         {
+          "label": "Cloud Integration Basics Course",
+          "id": "cloudintegrationbasics"
+        },
+        {
           "label": "App Events",
           "id": "appeventsdev"
         },
@@ -187,6 +191,10 @@
         {
           "label": "ContactManager Cloud API Consumer Guide",
           "id": "ispc202306apicm"
+        },
+        {
+          "label": "Integration Data Manager",
+          "id": "ispc202306integdatamgr"
         },
         {
           "label": "Integration Gateway",

@@ -14,12 +14,12 @@
     },
     {
       "label": "_redirect",
-      "link": "/cloudProducts/garmisch",
+      "link": "/cloudProducts/hakuba",
       "env": ["prod"]
     },
     {
       "label": "_redirect",
-      "link": "/cloudProducts/hakuba",
+      "link": "/cloudProducts/innsbruck",
       "env": ["staging"]
     }
   ]

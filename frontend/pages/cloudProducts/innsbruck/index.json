@@ -1,20 +1,19 @@
 {
   "$schema": "/frontend/page-schema.json",
-  "title": "Garmisch",
+  "title": "Innsbruck",
   "template": "page",
-  "class": "blue-theme skiRelease garmisch",
+  "class": "blue-theme skiRelease innsbruck",
   "selector": {
     "label": "Select cloud release",
-    "selectedItem": "Garmisch",
+    "selectedItem": "Innsbruck",
     "items": [
-      {
-        "label": "Innsbruck",
-        "page": "../innsbruck",
-        "env": ["staging"]
-      },
       {
         "label": "Hakuba",
         "page": "../hakuba"
+      },
+      {
+        "label": "Garmisch",
+        "page": "../garmisch"
       },
       {
         "label": "Flaine",
@@ -70,28 +69,8 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "PolicyCenter",
-          "page": "pcGwCloud/2023.02"
-        },
-        {
-          "label": "ClaimCenter",
-          "page": "ccGwCloud/2023.02"
-        },
-        {
-          "label": "BillingCenter",
-          "page": "bcGwCloud/2023.02"
-        },
-        {
           "label": "InsuranceNow",
-          "page": "insuranceNow/2023.1"
-        },
-        {
-          "label": "Digital Reference Applications",
-          "page": "dx-ref-apps"
-        },
-        {
-          "label": "Global Content Reference Applications",
-          "page": "global-ref-apps"
+          "page": "insuranceNow/2023.3"
         }
       ]
     },
@@ -99,14 +78,6 @@
       "label": "Analytics",
       "class": "categoryCard cardShadow",
       "items": [
-        {
-          "label": "DataHub",
-          "page": "dhGwCloud/2023.02"
-        },
-        {
-          "label": "InfoCenter",
-          "page": "icGwCloud/2023.02"
-        },
         {
           "label": "Explore",
           "page": "../explore/latest"
@@ -128,6 +99,10 @@
           "id": "livepredictlatest"
         },
         {
+          "label": "Predict (Post-7x)",
+          "id": "livepredictpost7x"
+        },
+        {
           "label": "Cyence Cyber",
           "page": "../cyence"
         },
@@ -142,32 +117,20 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Advanced Product Designer App",
-          "page": "apd"
-        },
-        {
-          "label": "API References",
-          "page": "../../apiReferences/garmisch"
-        },
-        {
           "label": "Integration Gateway",
-          "id": "integgatewaydevlatest"
+          "id": "integgatewaydevnext"
         },
         {
           "label": "App Events",
-          "id": "appeventsdev"
+          "id": "appeventsdevnext"
         },
         {
           "label": "REST API Client",
-          "id": "isrestapiclientguide"
+          "id": "isrestapiclientguidenext"
         },
         {
-          "label": "Jutro Digital Platform (Early Access)",
-          "page": "jutroDigitalPlatform"
-        },
-        {
-          "label": "Guidewire Testing",
-          "page": "../../testingFramework/garmisch"
+          "label": "Lifecycle Manager",
+          "id": "lifecyclemgr"
         },
         {
           "label": "Workset Manager",

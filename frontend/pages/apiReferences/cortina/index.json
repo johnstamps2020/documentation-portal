@@ -8,6 +8,10 @@
     "selectedItem": "Cortina",
     "items": [
       {
+        "label": "Hakuba",
+        "page": "../hakuba"
+      },
+      {
         "label": "Garmisch",
         "page": "../garmisch"
       },

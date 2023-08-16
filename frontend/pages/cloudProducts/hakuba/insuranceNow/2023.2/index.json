@@ -48,7 +48,7 @@
         },
         {
           "label": "Release Video",
-          "link": "https://www.brainshark.com/guidewire/InsuranceNowGarmisch"
+          "link": "https://www.brainshark.com/1/player/guidewire?pi=zHjz8nvg0ziJoAz0&r3f1=&fb=0"
         },
         {
           "label": "Studio Release Notes",
@@ -139,12 +139,28 @@
       "class": "subject configuration",
       "items": [
         {
+          "label": "Core Configuration",
+          "id": "in20232config"
+        },
+        {
+          "label": "Studio Configuration",
+          "id": "in20232studio"
+        },
+        {
           "label": "Billing Configuration Reference",
           "id": "in20232billref"
         },
         {
-          "label": "Core Configuration",
-          "id": "in20232config"
+          "label": "Claims Configuration Reference",
+          "id": "in20232claimsconfig"
+        },
+        {
+          "label": "Underwriting Configuration Reference",
+          "id": "in20232uwconfig"
+        },
+        {
+          "label": "Product Attribute Reference",
+          "id": "in20232prodattref"
         },
         {
           "label": "Consumer Sales Portal Configuration",
@@ -155,28 +171,12 @@
           "id": "in20232xcservicepconfigdraft"
         },
         {
-          "label": "Claims Configuration Reference",
-          "id": "in20232claimsconfig"
-        },
-        {
-          "label": "Studio Configuration",
-          "id": "in20232studio"
-        },
-        {
-          "label": "Product Attribute Reference",
-          "id": "in20232prodattref"
-        },
-        {
           "label": "Provisioning Portal",
           "id": "in20232provportal"
         },
         {
           "label": "Provisioning Portal",
           "id": "in20232provportalinternal"
-        },
-        {
-          "label": "Underwriting Configuration Reference",
-          "id": "in20232uwconfig"
         }
       ]
     },

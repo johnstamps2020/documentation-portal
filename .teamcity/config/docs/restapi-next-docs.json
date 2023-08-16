@@ -8,8 +8,8 @@
       "metadata": {
         "product": ["PolicyCenter", "ClaimCenter", "App Events Webhooks"],
         "platform": ["Cloud"],
-        "version": ["2023.06"],
-        "release": ["Hakuba"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
         "subject": ["Integration"],
         "language": "en"
       },
@@ -27,8 +27,8 @@
       "metadata": {
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["2023.06"],
-        "release": ["Hakuba"],
+        "version": ["2023.10"],
+        "release": ["Innsbruck"],
         "subject": ["Integration"],
         "language": "en"
       },
@@ -46,9 +46,9 @@
       "metadata": {
         "platform": ["Cloud", "Self-managed"],
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
-        "version": ["2023.06"],
+        "version": ["2023.10"],
         "subject": ["Integration"],
-        "release": ["Hakuba"],
+        "release": ["Innsbruck"],
         "language": "en"
       },
       "environments": ["staging"],

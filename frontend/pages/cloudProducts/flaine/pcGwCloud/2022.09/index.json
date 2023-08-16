@@ -9,8 +9,7 @@
     "items": [
       {
         "label": "Hakuba (2023.06)",
-        "page": "../../../hakuba/pcGwCloud/2023.06",
-        "env": ["staging"]
+        "page": "../../../hakuba/pcGwCloud/2023.06"
       },
       {
         "label": "Garmisch (2023.02)",

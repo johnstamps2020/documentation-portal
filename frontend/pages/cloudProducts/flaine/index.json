@@ -8,9 +8,13 @@
     "selectedItem": "Flaine",
     "items": [
       {
-        "label": "Hakuba",
-        "page": "../hakuba",
+        "label": "Innsbruck",
+        "page": "../innsbruck",
         "env": ["staging"]
+      },
+      {
+        "label": "Hakuba",
+        "page": "../hakuba"
       },
       {
         "label": "Garmisch",

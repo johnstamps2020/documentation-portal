@@ -9,8 +9,7 @@
     "items": [
       {
         "label": "Hakuba (2023.06)",
-        "page": "../../../hakuba/pcGwCloud/2023.06",
-        "env": ["staging"]
+        "page": "../../../hakuba/pcGwCloud/2023.06"
       },
       {
         "label": "Flaine (2022.09)",
@@ -160,6 +159,10 @@
         {
           "label": "Overview of Cloud Integration",
           "id": "is202302integoverview"
+        },
+        {
+          "label": "Cloud Integration Basics Course",
+          "id": "cloudintegrationbasics"
         },
         {
           "label": "App Events",

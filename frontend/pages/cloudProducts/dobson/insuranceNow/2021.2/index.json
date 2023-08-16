@@ -135,12 +135,24 @@
           "id": "in20212config"
         },
         {
+          "label": "Studio Configuration",
+          "id": "in20212studio"
+        },
+        {
           "label": "Billing Configuration Reference",
           "id": "in20212billref"
         },
         {
           "label": "Claims Configuration Reference",
           "id": "in20212claimsconfig"
+        },
+        {
+          "label": "Underwriting Configuration Reference",
+          "id": "in20212uwconfig"
+        },
+        {
+          "label": "Product Attribute Reference",
+          "id": "in20212prodattref"
         },
         {
           "label": "Common Functionality Configuration Reference",
@@ -155,20 +167,8 @@
           "id": "in20212xcservicepconfigdraft"
         },
         {
-          "label": "Product Attribute Reference",
-          "id": "in20212prodattref"
-        },
-        {
           "label": "Provisioning Portal",
           "id": "in20212provportalinternal"
-        },
-        {
-          "label": "Studio Configuration",
-          "id": "in20212studio"
-        },
-        {
-          "label": "Underwriting Configuration Reference",
-          "id": "in20212uwconfig"
         }
       ]
     },

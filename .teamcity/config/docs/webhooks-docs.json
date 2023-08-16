@@ -8,8 +8,8 @@
       "metadata": {
         "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
         "platform": ["Cloud"],
-        "version": ["2022.09", "2023.02"],
-        "release": ["Flaine", "Garmisch"],
+        "version": ["2022.09", "2023.02", "2023.06"],
+        "release": ["Flaine", "Garmisch", "Hakuba"],
         "subject": ["Integration"],
         "language": "en"
       },

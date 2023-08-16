@@ -8,8 +8,8 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Advanced Product Designer"],
-        "version": ["2022.09", "2023.02"],
-        "release": ["Flaine", "Garmisch"],
+        "version": ["2022.09", "2023.02", "2023.06"],
+        "release": ["Flaine", "Garmisch", "Hakuba"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -164,7 +164,7 @@
         "subject": ["Configuration"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -183,7 +183,7 @@
         "subject": ["Configuration"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": false,
       "indexForSearch": false,
       "public": false,

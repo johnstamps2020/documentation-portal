@@ -139,12 +139,28 @@
       "class": "subject configuration",
       "items": [
         {
+          "label": "Core Configuration",
+          "id": "in20222config"
+        },
+        {
+          "label": "Studio Configuration",
+          "id": "in20222studio"
+        },
+        {
           "label": "Billing Configuration Reference",
           "id": "in20222billref"
         },
         {
-          "label": "Core Configuration",
-          "id": "in20222config"
+          "label": "Claims Configuration Reference",
+          "id": "in20222claimsconfig"
+        },
+        {
+          "label": "Underwriting Configuration Reference",
+          "id": "in20222uwconfig"
+        },
+        {
+          "label": "Product Attribute Reference",
+          "id": "in20222prodattref"
         },
         {
           "label": "Common Functionality Configuration Reference",
@@ -159,28 +175,12 @@
           "id": "in20222xcservicepconfigdraft"
         },
         {
-          "label": "Claims Configuration Reference",
-          "id": "in20222claimsconfig"
-        },
-        {
-          "label": "Studio Configuration",
-          "id": "in20222studio"
-        },
-        {
-          "label": "Product Attribute Reference",
-          "id": "in20222prodattref"
-        },
-        {
           "label": "Provisioning Portal",
           "id": "in20222provportal"
         },
         {
           "label": "Provisioning Portal",
           "id": "in20222provportalinternal"
-        },
-        {
-          "label": "Underwriting Configuration Reference",
-          "id": "in20222uwconfig"
         }
       ]
     },
@@ -195,16 +195,6 @@
         {
           "label": "Upgrade Tools",
           "id": "inupgradetoolsdraft"
-        }
-      ]
-    },
-    {
-      "label": "Administration",
-      "class": "subject administration",
-      "items": [
-        {
-          "label": "Datadog Log Access (Early Access)",
-          "id": "in20222ddlogacc"
         }
       ]
     }

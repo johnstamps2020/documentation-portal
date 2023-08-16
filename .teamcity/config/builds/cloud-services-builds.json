@@ -58,7 +58,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "lifecycle_manager_v2.ditamap",
+      "root": "lifecycle_manager.ditamap",
       "srcId": "worksetmgrsrc",
       "docId": "lifecyclemgr",
       "indexRedirect": true,
