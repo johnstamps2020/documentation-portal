@@ -410,13 +410,12 @@ object Database {
                         set -e
                         
                         export APP_BASE_URL="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}"
-                        export OKTA_ACCESS_TOKEN_ISSUER="https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"                        
+                        export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"                        
                         
                         node ci/uploadLegacyConfigsToDb.mjs
                         """.trimIndent()
                     dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
                 }
-
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
