@@ -1,10 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { mainHeight } from 'components/Layout/Layout';
 import { lazy, Suspense, useEffect } from 'react';
-import { Theme } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
 import Alert from '@mui/material/Alert';
-import Backdrop from '@mui/material/Backdrop';
 import { usePageData } from 'hooks/usePageData';
 import { LandingPageProps } from './LandingPageTypes';
 import { useLayoutContext } from 'LayoutContext';
@@ -60,18 +58,16 @@ export default function LandingPage() {
       </>
       <Suspense
         fallback={
-          <Skeleton variant="rounded" width="100%" height={mainHeight} />
+          <Skeleton
+            variant="rounded"
+            width="100%"
+            height={mainHeight}
+            sx={{ bgcolor: 'white' }}
+          />
         }
       >
         <PageComponent title={title} />
       </Suspense>
-      <Backdrop
-        open={isLoading}
-        sx={{
-          color: '#fff',
-          zIndex: (theme: Theme) => theme.zIndex.drawer + 1,
-        }}
-      />
     </>
   );
 }

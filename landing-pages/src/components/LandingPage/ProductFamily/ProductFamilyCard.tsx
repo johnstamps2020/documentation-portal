@@ -11,7 +11,11 @@ export default function ProductFamilyCard(item: LandingPageItemProps) {
   };
   const { landingPageItems, isLoading, isError } = useLandingPageItems([item]);
 
-  if (isError) {
+  if (isError || landingPageItems?.length === 0) {
+    return null;
+  }
+
+  if (isLoading || !landingPageItems) {
     return (
       <Skeleton
         variant="rectangular"
@@ -21,10 +25,6 @@ export default function ProductFamilyCard(item: LandingPageItemProps) {
         }}
       />
     );
-  }
-
-  if (isLoading || !landingPageItems || landingPageItems.length === 0) {
-    return null;
   }
 
   return (
@@ -39,7 +39,9 @@ export default function ProductFamilyCard(item: LandingPageItemProps) {
         textAlign: 'center',
       }}
     >
-      <LandingPageLink landingPageItem={landingPageItems[0]} sx={sx} />
+      {landingPageItems && (
+        <LandingPageLink landingPageItem={landingPageItems[0]} sx={sx} />
+      )}
     </Paper>
   );
 }
