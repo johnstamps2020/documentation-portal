@@ -2,13 +2,10 @@ FROM artifactory.guidewire.com/hub-docker-remote/node:18-alpine as app-builder
 
 WORKDIR /usr/app
 
+ARG NPM_AUTH_TOKEN
 ARG TAG_VERSION
 ARG DEPT_CODE
 ARG POD_NAME
-ARG DEPLOY_ENV
-ARG TARGET_URL
-ARG BASE_URL
-ARG NPM_AUTH_TOKEN
 
 COPY .yarn .yarn
 COPY .yarnrc.yml .yarnrc.yml

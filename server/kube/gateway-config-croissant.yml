@@ -14,6 +14,7 @@ metadata:
 spec:
   profiles:
     - name: Default
+      internal_only: true
       response_transformer:
         add:
           headers:
@@ -29,18 +30,5 @@ spec:
       profiles:
         - Default
   service_ref: ${APP_NAME}
-  service_alias: docs
+  service_alias: croissant
   enable_sub_domain: false
-  alt_fqdns:
-    - name: docs-vanity-domain
-      enable_sub_domain: false
-      hostname: docs
-      base_domain: guidewire.com
-    - name: portal2-vanity-domain
-      enable_sub_domain: false
-      hostname: portal2
-      base_domain: guidewire.com
-    - name: documentation-vanity-domain
-      enable_sub_domain: false
-      hostname: documentation
-      base_domain: guidewire.com
