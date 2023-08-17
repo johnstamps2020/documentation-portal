@@ -95,6 +95,9 @@ enum class GwConfigParams(val paramValue: String) {
     OKTA_ISSUER_PROD("https://guidewire-hub.okta.com/oauth2/aus11vix3uKEpIfSI357"),
     OKTA_ISSUER_APAC("https://guidewire-hub-apac.okta.com/oauth2/ausbg05gfcTZQ7bpH3l6"),
     OKTA_ISSUER_EMEA("https://guidewire-hub-eu.okta.com/oauth2/ausc2q01c40dNZII0416"),
+    CONFIG_DB_HOST_DEV("tenant-doctools-docportal-${GwDeployEnvs.DEV.envName}-1.crahnfhpsx5k.us-west-2.rds.amazonaws.com"),
+    CONFIG_DB_HOST_STAGING("tenant-doctools-docportal-${GwDeployEnvs.STAGING.envName}-1.crahnfhpsx5k.us-west-2.rds.amazonaws.com"),
+    CONFIG_DB_HOST_PROD("tenant-doctools-docportal-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-1.c3qnnou7xlkq.us-east-1.rds.amazonaws.com"),
     // TODO: Change croissant to docportal before merge to master
     DOC_PORTAL_APP_NAME("croissant"),
     DOC_PORTAL_FRONTEND_APP_NAME("docportal-frontend")
@@ -293,18 +296,23 @@ object Database {
                 #!/bin/bash 
                 set -eu
                                                 
-                # Set AWS credentials
+                # Set env variables
                 $awsEnvVars
+                export AWS_SECRET=${'$'}(aws secretsmanager get-secret-value --secret-id tenant-doctools-docportal)
+                export CONFIG_DB_NAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_name' <<< "${'$'}AWS_SECRET")
+                export CONFIG_DB_USERNAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_username' <<< "${'$'}AWS_SECRET")
+                export CONFIG_DB_PASSWORD=${'$'}(jq -r '.SecretString | fromjson | .config_db_password' <<< "${'$'}AWS_SECRET")
+                export CONFIG_DB_HOST=${GwConfigParams.CONFIG_DB_HOST_STAGING.paramValue}
                 
                 EXIT_CODE=0
-                aws eks update-kubeconfig --name $atmosDeployEnvStaging && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run $podName --image=$imageName --env="PGPASSWORD=%env.CONFIG_DB_PASSWORD%" --env="PGUSER=%env.CONFIG_DB_USERNAME%" --env="PGHOST=%env.CONFIG_DB_HOST%" --env="PGDATABASE=%env.CONFIG_DB_NAME%" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
+                aws eks update-kubeconfig --name $atmosDeployEnvStaging && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run $podName --image=$imageName --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
                 
                 if [ "${'$'}EXIT_CODE" -eq 0 ]; then
                     SECONDS=0
                     while [ ${'$'}SECONDS -le 30 ]; do
                       status=${'$'}(kubectl get pods $podName -o jsonpath='{.status.phase}')
                       if [ "${'$'}status" == "Running" ]; then
-                        kubectl exec $podName -- sh -c "apk add --no-cache postgresql-client zip && pg_dump -Fd %env.CONFIG_DB_NAME% -j 5 -f %env.CONFIG_DB_NAME% && zip -r $dbDumpZipPackageName %env.CONFIG_DB_NAME%" && kubectl cp $podName:/$dbDumpZipPackageName ./$dbDumpZipPackageName || EXIT_CODE=${'$'}?
+                        kubectl exec $podName -- sh -c "apk add --no-cache postgresql-client zip && pg_dump -Fd ${'$'}CONFIG_DB_NAME -j 5 -f ${'$'}CONFIG_DB_NAME && zip -r $dbDumpZipPackageName ${'$'}CONFIG_DB_NAME" && kubectl cp $podName:/$dbDumpZipPackageName ./$dbDumpZipPackageName || EXIT_CODE=${'$'}?
                         break
                       else
                         echo "Waiting for the $podName pod to be ready"
@@ -327,27 +335,34 @@ object Database {
                 #!/bin/bash 
                 set -eu
                                                 
-                # Set AWS credentials
+                # Set env variables                
                 if [[ "%env.DEPLOY_ENV%" == "${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}" ]]; then
                     $awsEnvVarsProd
                     export ATMOS_DEPLOY_ENV=${atmosDeployEnvProd}
+                    export CONFIG_DB_HOST=${GwConfigParams.CONFIG_DB_HOST_PROD.paramValue}
                 elif [[ "%env.DEPLOY_ENV%" == "${GwDeployEnvs.DEV.envName}" ]]; then
                     $awsEnvVars
                     export ATMOS_DEPLOY_ENV=${atmosDeployEnvDev}
+                    export CONFIG_DB_HOST=${GwConfigParams.CONFIG_DB_HOST_DEV.paramValue}
                 else
                     echo "Invalid deployment environment. Available options: Dev, Prod."
                     exit 1
                 fi
                 
+                export AWS_SECRET=${'$'}(aws secretsmanager get-secret-value --secret-id tenant-doctools-docportal)
+                export CONFIG_DB_NAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_name' <<< "${'$'}AWS_SECRET")
+                export CONFIG_DB_USERNAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_username' <<< "${'$'}AWS_SECRET")
+                export CONFIG_DB_PASSWORD=${'$'}(jq -r '.SecretString | fromjson | .config_db_password' <<< "${'$'}AWS_SECRET")
+                
                 EXIT_CODE=0
-                aws eks update-kubeconfig --name ${'$'}ATMOS_DEPLOY_ENV && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run $podName --image=$imageName --env="PGPASSWORD=%env.CONFIG_DB_PASSWORD%" --env="PGUSER=%env.CONFIG_DB_USERNAME%" --env="PGHOST=%env.CONFIG_DB_HOST_PROD%" --env="PGDATABASE=%env.CONFIG_DB_NAME%" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
+                aws eks update-kubeconfig --name ${'$'}ATMOS_DEPLOY_ENV && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run $podName --image=$imageName --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST_PROD" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
                 
                 if [ "${'$'}EXIT_CODE" -eq 0 ]; then
                     SECONDS=0
                     while [ ${'$'}SECONDS -le 30 ]; do
                       status=${'$'}(kubectl get pods $podName -o jsonpath='{.status.phase}')
                       if [ "${'$'}status" == "Running" ]; then
-                        kubectl cp ./$dbDumpZipPackageName $podName:/$dbDumpZipPackageName && kubectl exec $podName -- sh -c "apk add --no-cache postgresql-client zip && unzip ./$dbDumpZipPackageName && pg_restore --clean --if-exists -d %env.CONFIG_DB_NAME% %env.CONFIG_DB_NAME%" || EXIT_CODE=${'$'}?
+                        kubectl cp ./$dbDumpZipPackageName $podName:/$dbDumpZipPackageName && kubectl exec $podName -- sh -c "apk add --no-cache postgresql-client zip && unzip ./$dbDumpZipPackageName && pg_restore --clean --if-exists -d ${'$'}CONFIG_DB_NAME ${'$'}CONFIG_DB_NAME" || EXIT_CODE=${'$'}?
                         break
                       else
                         echo "Waiting for the $podName pod to be ready"
@@ -3432,6 +3447,12 @@ object Helpers {
     fun setServerDeployEnvVars(deployEnv: String, tagVersion: String): String {
         val (partnersLoginUrl, customersLoginUrl) = getGwCommunityUrls(deployEnv)
         val appBaseUrl = getTargetUrl(deployEnv)
+        val configDbHost = when (deployEnv) {
+            GwDeployEnvs.DEV.envName -> GwConfigParams.CONFIG_DB_HOST_DEV.paramValue
+            GwDeployEnvs.STAGING.envName -> GwConfigParams.CONFIG_DB_HOST_STAGING.paramValue
+            GwDeployEnvs.PROD.envName -> GwConfigParams.CONFIG_DB_HOST_PROD.paramValue
+            else -> null
+        }
         val commonEnvVars = """
             export APP_NAME="${GwConfigParams.DOC_PORTAL_APP_NAME.paramValue}"
             export POD_NAME="${GwAtmosLabels.POD_NAME.labelValue}"
@@ -3443,6 +3464,7 @@ object Helpers {
             export PORTAL2_S3_URL="${getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)}"
             export ENABLE_AUTH="yes"
             export DD_SERVICE_NAME="${GwConfigParams.DOC_PORTAL_APP_NAME.paramValue}"
+            export CONFIG_DB_HOST="$configDbHost"
         """.trimIndent()
         return when (deployEnv) {
             GwDeployEnvs.PROD.envName -> """
@@ -3461,13 +3483,11 @@ object Helpers {
                 export OKTA_ISSUER_EMEA="${GwConfigParams.OKTA_ISSUER_EMEA.paramValue}"
                 export OKTA_IDP="0oa25tk18zhGOqMfj357"
                 export ELASTIC_SEARCH_URL="http://docsearch-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.doctools:9200"
-                export CONFIG_DB_HOST="tenant-doctools-docportal-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-1.c3qnnou7xlkq.us-east-1.rds.amazonaws.com"
                 export REQUESTS_MEMORY="1G"
                 export REQUESTS_CPU="200m"
                 export LIMITS_MEMORY="4G"
                 export LIMITS_CPU="2"
             """.trimIndent()
-
             else -> """
                 $commonEnvVars
                 export AWS_ROLE="${GwConfigParams.AWS_ROLE.paramValue}"
@@ -3484,7 +3504,6 @@ object Helpers {
                 export OKTA_ISSUER_EMEA="issuerNotConfigured"
                 export OKTA_IDP="0oamwriqo1E1dOdd70h7"
                 export ELASTIC_SEARCH_URL="http://docsearch-${deployEnv}.doctools:9200"
-                export CONFIG_DB_HOST="tenant-doctools-docportal-${deployEnv}-1.crahnfhpsx5k.us-west-2.rds.amazonaws.com"
                 export REQUESTS_MEMORY="500M"
                 export REQUESTS_CPU="100m"
                 export LIMITS_MEMORY="2G"
