@@ -2,7 +2,7 @@
   "name": "documentation-portal-monorepo",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "ssh://git@stash.guidewire.com/doctools/server.git",
+  "repository": "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
   "author": "Doc Tools <doctools@guidewire.com>",
   "license": "UNLICENSED",
   "private": true,
@@ -16,7 +16,8 @@
     "docusaurus/themes/gw-theme-classic",
     "docusaurus/vite-project",
     "html5",
-    "scripts"
+    "scripts",
+    "ci/uploadLegacyConfigsToDb"
   ],
   "scripts": {
     "audit:all": "yarn npm audit --all --severity high --recursive --exclude @doctools/gw-theme-classic",

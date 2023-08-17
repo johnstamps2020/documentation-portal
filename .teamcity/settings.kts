@@ -394,6 +394,7 @@ object Database {
 
     // Legacy configs are uploaded only to the db on staging. Dev db and prod db sync data from staging.
     private fun createUploadLegacyConfigsToDb(): BuildType {
+        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)
         val pagesDir = "%teamcity.build.checkoutDir%/frontend/pages"
         val outputDir = "%teamcity.build.checkoutDir%/output"
         val outputDirStaging = "${outputDir}/staging/pages"
@@ -433,10 +434,14 @@ object Database {
                         #!/bin/sh
                         set -e
                         
+                        $awsEnvVars
                         export APP_BASE_URL="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}"
-                        export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"                        
+                        export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
+                        export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES.paramValue}"
                         
-                        node ci/uploadLegacyConfigsToDb.mjs
+                        cd ci/uploadLegacyConfigsToDb
+                        yarn
+                        node uploadLegacyConfigsToDb.mjs
                         """.trimIndent()
                     dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
                 }
@@ -3367,6 +3372,7 @@ object Helpers {
             export AWS_ACCESS_KEY_ID="$awsAccessKeyId"
             export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
             export AWS_DEFAULT_REGION="$awsDefaultRegion"
+            export AWS_REGION="$awsDefaultRegion"
         """.trimIndent()
     }
 

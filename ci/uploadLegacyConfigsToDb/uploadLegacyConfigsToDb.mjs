@@ -1,12 +1,37 @@
 import { writeFileSync } from 'fs';
+import {
+  SecretsManagerClient,
+  GetSecretValueCommand,
+} from '@aws-sdk/client-secrets-manager';
 
 const requiredEnvVars = [
   'OKTA_ISSUER',
-  'OKTA_CLIENT_ID',
-  'OKTA_CLIENT_SECRET',
   'OKTA_SCOPES',
   'APP_BASE_URL',
+  'AWS_ACCESS_KEY_ID',
+  'AWS_SECRET_ACCESS_KEY',
+  'AWS_REGION',
 ];
+
+async function getOktaCredentialsFromSecretsManager() {
+  try {
+    const client = new SecretsManagerClient();
+    const command = new GetSecretValueCommand({
+      SecretId: 'tenant-doctools-docportal',
+    });
+    const data = await client.send(command);
+    if ('SecretString' in data) {
+      const secret = JSON.parse(data.SecretString);
+      return {
+        oktaClientId: secret.okta_client_id,
+        oktaClientSecret: secret.okta_client_secret,
+      };
+    }
+    return null;
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 for (const envVar of requiredEnvVars) {
   if (envVar in process.env) {
@@ -22,8 +47,10 @@ console.log('OK to start uploading legacy configs to the database...');
 const timerName = 'Elapsed time';
 console.time(timerName);
 const oktaScopes = `${process.env.OKTA_SCOPES} NODE_Hawaii_Docs_Web.admin`;
+const { oktaClientId, oktaClientSecret } =
+  await getOktaCredentialsFromSecretsManager();
 const base64ClientCreds = Buffer.from(
-  `${process.env.OKTA_CLIENT_ID}:${process.env.OKTA_CLIENT_SECRET}`,
+  `${oktaClientId}:${oktaClientSecret}`,
   'utf-8'
 ).toString('base64');
 const jwt = await fetch(
