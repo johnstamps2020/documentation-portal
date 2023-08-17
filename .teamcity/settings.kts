@@ -363,7 +363,7 @@ object Database {
                 export CONFIG_DB_PASSWORD=${'$'}(jq -r '.SecretString | fromjson | .config_db_password' <<< "${'$'}AWS_SECRET")
                 
                 EXIT_CODE=0
-                aws eks update-kubeconfig --name atmos-${'$'}ATMOS_DEPLOY_ENV && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run $podName --image=$imageName --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST_PROD" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
+                aws eks update-kubeconfig --name atmos-${'$'}ATMOS_DEPLOY_ENV && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run $podName --image=$imageName --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
                 
                 if [ "${'$'}EXIT_CODE" -eq 0 ]; then
                     SECONDS=0
@@ -3458,8 +3458,6 @@ object Helpers {
         }
     }
 
-    // TODO:
-//  - Remove the secret from the secrets manager (do it when ready to merge to feature/typeorm)
     fun setServerDeployEnvVars(deployEnv: String, tagVersion: String): String {
         val (partnersLoginUrl, customersLoginUrl) = getGwCommunityUrls(deployEnv)
         val appBaseUrl = getTargetUrl(deployEnv)
