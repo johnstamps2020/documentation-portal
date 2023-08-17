@@ -1,0 +1,12 @@
+{
+  "name": "upload-legacy-configs-to-db",
+  "version": "1.0.0",
+  "repository": "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
+  "author": "Doc Tools <doctools@guidewire.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "packageManager": "yarn@3.4.1",
+  "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.391.0"
+  }
+}
