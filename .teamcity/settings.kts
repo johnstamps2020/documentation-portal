@@ -16,9 +16,6 @@ import java.math.BigInteger
 import java.security.MessageDigest
 
 version = "2022.04"
-// TODO: To make testing easier:
-//  - Clean up commits in this branch
-//  - Merge changes from the feature/typeorm branch
 // TODO: Remove all the patches - they were created because builds were paused in the UI to disable automatic triggers
 // TODO: Create a build/chain for deploying all the services at once - server, db, landing pages, data???
 //  Idea: Use composite builds
@@ -91,13 +88,24 @@ enum class GwConfigParams(val paramValue: String) {
     AWS_ROLE("arn:aws:iam::627188849628:role/aws_gwre-ccs-dev_tenant_doctools_developer"),
     AWS_ROLE_PROD("arn:aws:iam::954920275956:role/aws_orange-prod_tenant_doctools_developer"),
     ARTIFACTORY_HOST("artifactory.guidewire.com"),
+    OKTA_IDP("0oamwriqo1E1dOdd70h7"),
+    OKTA_IDP_PROD("0oa25tk18zhGOqMfj357"),
     OKTA_ISSUER("https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7"),
     OKTA_ISSUER_PROD("https://guidewire-hub.okta.com/oauth2/aus11vix3uKEpIfSI357"),
     OKTA_ISSUER_APAC("https://guidewire-hub-apac.okta.com/oauth2/ausbg05gfcTZQ7bpH3l6"),
     OKTA_ISSUER_EMEA("https://guidewire-hub-eu.okta.com/oauth2/ausc2q01c40dNZII0416"),
+    OKTA_SCOPES("NODE_Hawaii_Docs_Web.read"),
+    OKTA_SCOPES_PROD("Documentation_portal.read"),
+    OKTA_AUDIENCE("Guidewire"),
+    OKTA_ADMIN_GROUPS("doctools"),
+    GW_COMMUNITY_CUSTOMER_IDP("0oau503zlhhFLwTqF0h7"),
+    GW_COMMUNITY_CUSTOMER_IDP_PROD("0oa6c4x5z3fYXUWoE357"),
+    GW_COMMUNITY_PARTNER_IDP("0oapv9i36yEMFLjxS0h7"),
+    GW_COMMUNITY_PARTNER_IDP_PROD("0oa6c4yaoikrU91Hw357"),
     CONFIG_DB_HOST_DEV("tenant-doctools-docportal-${GwDeployEnvs.DEV.envName}-1.crahnfhpsx5k.us-west-2.rds.amazonaws.com"),
     CONFIG_DB_HOST_STAGING("tenant-doctools-docportal-${GwDeployEnvs.STAGING.envName}-1.crahnfhpsx5k.us-west-2.rds.amazonaws.com"),
     CONFIG_DB_HOST_PROD("tenant-doctools-docportal-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-1.c3qnnou7xlkq.us-east-1.rds.amazonaws.com"),
+
     // TODO: Change croissant to docportal before merge to master
     DOC_PORTAL_APP_NAME("croissant"),
     DOC_PORTAL_FRONTEND_APP_NAME("docportal-frontend")
@@ -153,6 +161,7 @@ enum class GwConfigTypes(val typeName: String) {
 enum class GwAtmosLabels(val labelValue: String) {
     POD_NAME("doctools"), DEPT_CODE("284"),
 }
+
 // TODO: Remove croissant from the image tag before merge to master
 enum class GwDockerImageTags(val tagValue: String) {
     DOC_PORTAL("latest-croissant"), DOC_PORTAL_FRONTEND("latest")
@@ -261,8 +270,7 @@ object Database {
             }
         }
     }
-    // FIXME: URLs of dbs are taken from Parameters in the Documentation Tools project. There is one value for dev and one for prod.
-    //  Make updates to use one value for dev, one for staging and one for prod. Move these values somewhere else?
+
     private object SyncDbDataBuildType : BuildType({
         val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)
         val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
@@ -305,7 +313,7 @@ object Database {
                 export CONFIG_DB_HOST=${GwConfigParams.CONFIG_DB_HOST_STAGING.paramValue}
                 
                 EXIT_CODE=0
-                aws eks update-kubeconfig --name $atmosDeployEnvStaging && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run $podName --image=$imageName --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
+                aws eks update-kubeconfig --name atmos-$atmosDeployEnvStaging && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run $podName --image=$imageName --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
                 
                 if [ "${'$'}EXIT_CODE" -eq 0 ]; then
                     SECONDS=0
@@ -355,7 +363,7 @@ object Database {
                 export CONFIG_DB_PASSWORD=${'$'}(jq -r '.SecretString | fromjson | .config_db_password' <<< "${'$'}AWS_SECRET")
                 
                 EXIT_CODE=0
-                aws eks update-kubeconfig --name ${'$'}ATMOS_DEPLOY_ENV && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run $podName --image=$imageName --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST_PROD" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
+                aws eks update-kubeconfig --name atmos-${'$'}ATMOS_DEPLOY_ENV && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run $podName --image=$imageName --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST_PROD" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
                 
                 if [ "${'$'}EXIT_CODE" -eq 0 ]; then
                     SECONDS=0
@@ -2275,7 +2283,7 @@ object Server {
                     set -e
                     export OKTA_CLIENT_ID=mock
                     export OKTA_CLIENT_SECRET=mock
-                    export OKTA_IDP="0oamwriqo1E1dOdd70h7"
+                    export OKTA_IDP="${GwConfigParams.OKTA_IDP.paramValue}"
                     export GW_COMMUNITY_PARTNER_IDP="0oapv9i36yEMFLjxS0h7"
                     export GW_COMMUNITY_CUSTOMER_IDP="0oau503zlhhFLwTqF0h7"
                     export OKTA_ISSUER=https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7
@@ -3361,7 +3369,8 @@ object Helpers {
             export AWS_DEFAULT_REGION="$awsDefaultRegion"
         """.trimIndent()
     }
-// TODO: Change URLs to doc site URLs before merge to master
+
+    // TODO: Change URLs to doc site URLs before merge to master
     fun getTargetUrl(deployEnv: String): String {
         return if (arrayOf(
                 GwDeployEnvs.PROD.envName, GwDeployEnvs.PORTAL2.envName
@@ -3442,17 +3451,14 @@ object Helpers {
             """.trimIndent()
         }
     }
-// TODO:
+
+    // TODO:
 //  - Remove the secret from the secrets manager (do it when ready to merge to feature/typeorm)
     fun setServerDeployEnvVars(deployEnv: String, tagVersion: String): String {
         val (partnersLoginUrl, customersLoginUrl) = getGwCommunityUrls(deployEnv)
         val appBaseUrl = getTargetUrl(deployEnv)
-        val configDbHost = when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> GwConfigParams.CONFIG_DB_HOST_DEV.paramValue
-            GwDeployEnvs.STAGING.envName -> GwConfigParams.CONFIG_DB_HOST_STAGING.paramValue
-            GwDeployEnvs.PROD.envName -> GwConfigParams.CONFIG_DB_HOST_PROD.paramValue
-            else -> null
-        }
+        val docS3Url = getS3BucketUrl(deployEnv)
+        val portal2S3Url = getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)
         val commonEnvVars = """
             export APP_NAME="${GwConfigParams.DOC_PORTAL_APP_NAME.paramValue}"
             export POD_NAME="${GwAtmosLabels.POD_NAME.labelValue}"
@@ -3460,50 +3466,58 @@ object Helpers {
             export TAG_VERSION="$tagVersion"
             export APP_BASE_URL="$appBaseUrl"
             export FRONTEND_URL="http://docportal-frontend.doctools:6006"
-            export DOC_S3_URL="${getS3BucketUrl(deployEnv)}"
-            export PORTAL2_S3_URL="${getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)}"
+            export DOC_S3_URL="$docS3Url"
+            export PORTAL2_S3_URL="$portal2S3Url"
             export ENABLE_AUTH="yes"
             export DD_SERVICE_NAME="${GwConfigParams.DOC_PORTAL_APP_NAME.paramValue}"
-            export CONFIG_DB_HOST="$configDbHost"
+            export OKTA_AUDIENCE="${GwConfigParams.OKTA_AUDIENCE.paramValue}"
+            export OKTA_ADMIN_GROUPS="${GwConfigParams.OKTA_ADMIN_GROUPS.paramValue}"
+            export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
+            export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/customers-login"
+            export PARTNERS_LOGIN_URL="$partnersLoginUrl"
+            export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/partners-login"
         """.trimIndent()
         return when (deployEnv) {
             GwDeployEnvs.PROD.envName -> """
                 $commonEnvVars
                 export AWS_ROLE="${GwConfigParams.AWS_ROLE_PROD.paramValue}"
                 export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL_PROD.imageUrl}"
-                export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/partners-login"
-                export PARTNERS_LOGIN_URL="$partnersLoginUrl"
-                export GW_COMMUNITY_PARTNER_IDP="0oa6c4yaoikrU91Hw357"
-                export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/customers-login"
-                export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
-                export GW_COMMUNITY_CUSTOMER_IDP="0oa6c4x5z3fYXUWoE357"
+                export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP_PROD.paramValue}"
+                export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP_PROD.paramValue}"
                 export DEPLOY_ENV="${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}"
                 export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER_PROD.paramValue}"
                 export OKTA_ISSUER_APAC="${GwConfigParams.OKTA_ISSUER_APAC.paramValue}"
                 export OKTA_ISSUER_EMEA="${GwConfigParams.OKTA_ISSUER_EMEA.paramValue}"
-                export OKTA_IDP="0oa25tk18zhGOqMfj357"
+                export OKTA_IDP="${GwConfigParams.OKTA_IDP_PROD.paramValue}"
+                export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES_PROD.paramValue}"
                 export ELASTIC_SEARCH_URL="http://docsearch-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.doctools:9200"
+                export CONFIG_DB_HOST="${GwConfigParams.CONFIG_DB_HOST_PROD.paramValue}" 
                 export REQUESTS_MEMORY="1G"
                 export REQUESTS_CPU="200m"
                 export LIMITS_MEMORY="4G"
                 export LIMITS_CPU="2"
             """.trimIndent()
+
             else -> """
                 $commonEnvVars
                 export AWS_ROLE="${GwConfigParams.AWS_ROLE.paramValue}"
                 export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL.imageUrl}"
-                export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/partners-login"
-                export PARTNERS_LOGIN_URL="$partnersLoginUrl"
-                export GW_COMMUNITY_PARTNER_IDP="0oapv9i36yEMFLjxS0h7"
-                export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/customers-login"
-                export CUSTOMERS_LOGIN_URL="$customersLoginUrl"
-                export GW_COMMUNITY_CUSTOMER_IDP="0oau503zlhhFLwTqF0h7"
+                export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
+                export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP.paramValue}"
                 export DEPLOY_ENV="$deployEnv"
                 export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
                 export OKTA_ISSUER_APAC="issuerNotConfigured"
                 export OKTA_ISSUER_EMEA="issuerNotConfigured"
-                export OKTA_IDP="0oamwriqo1E1dOdd70h7"
+                export OKTA_IDP="${GwConfigParams.OKTA_IDP.paramValue}"
+                export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES.paramValue}"
                 export ELASTIC_SEARCH_URL="http://docsearch-${deployEnv}.doctools:9200"
+                export CONFIG_DB_HOST="${
+                when (deployEnv) {
+                    GwDeployEnvs.STAGING.envName -> GwConfigParams.CONFIG_DB_HOST_STAGING.paramValue
+                    GwDeployEnvs.DEV.envName -> GwConfigParams.CONFIG_DB_HOST_DEV.paramValue
+                    else -> ""
+                }
+            }"
                 export REQUESTS_MEMORY="500M"
                 export REQUESTS_CPU="100m"
                 export LIMITS_MEMORY="2G"
