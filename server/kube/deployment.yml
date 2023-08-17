@@ -173,20 +173,11 @@ spec:
             - name: OKTA_ISSUER_EMEA
               value: ${OKTA_ISSUER_EMEA}
             - name: OKTA_SCOPES
-              valueFrom:
-                secretKeyRef:
-                  name: ${APP_NAME}-external-secret
-                  key: okta_access_token_scopes
+              value: ${OKTA_SCOPES}
             - name: OKTA_ADMIN_GROUPS
-              valueFrom:
-                secretKeyRef:
-                  name: ${APP_NAME}-external-secret
-                  key: okta_admin_groups
+              value: ${OKTA_ADMIN_GROUPS}
             - name: OKTA_AUDIENCE
-              valueFrom:
-                secretKeyRef:
-                  name: ${APP_NAME}-external-secret
-                  key: okta_access_token_audience
+              value: ${OKTA_AUDIENCE}
             - name: APP_BASE_URL
               value: ${APP_BASE_URL}
             - name: SESSION_KEY
