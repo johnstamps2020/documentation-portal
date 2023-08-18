@@ -1866,15 +1866,15 @@ object Frontend {
             name = "Frontend"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            subProject(createDeployReactLandingPagesProject())
-            subProject(createPublishNpmPackagesProject())
-            subProject(createDeployHtml5DependenciesProject())
+            subProject(createReactLandingPagesProject())
+            subProject(createNpmPackagesProject())
+            subProject(createHtml5DependenciesProject())
         }
     }
 
-    private fun createPublishNpmPackagesProject(): Project {
+    private fun createNpmPackagesProject(): Project {
         return Project {
-            name = "Publish NPM packages to Artifactory"
+            name = "NPM packages"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
@@ -1887,9 +1887,9 @@ object Frontend {
     }
 
 
-    private fun createDeployHtml5DependenciesProject(): Project {
+    private fun createHtml5DependenciesProject(): Project {
         return Project {
-            name = "Deploy HTML5 dependencies"
+            name = "HTML5 dependencies"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             arrayOf(
@@ -1902,7 +1902,7 @@ object Frontend {
         }
     }
 
-    private fun createDeployReactLandingPagesProject(): Project {
+    private fun createReactLandingPagesProject(): Project {
         return Project {
             name = "React landing pages"
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
