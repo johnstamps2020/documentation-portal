@@ -9,7 +9,6 @@ import { addAvatar } from '../modules/avatar';
 import { addSearchBox } from '../modules/searchBox';
 import { highlightCode, normalizeCode } from '../modules/code';
 import { setUpSidebar } from '../modules/sidebar';
-import { showTopicRecommendations } from '../modules/recommendations';
 import { addSkipNav } from '../modules/skipNav';
 import { addInternalBadge } from '../modules/internal';
 import { addLightbox } from '../modules/lightbox';
@@ -35,7 +34,6 @@ const isOffline = BUILD_MODE === 'offline';
 docReady(async function () {
   normalizeCode();
   addSkipNav();
-  !isOffline && showTopicRecommendations();
   await setUpSidebar();
   !isOffline && (await setMetadata());
   addInternalBadge();
