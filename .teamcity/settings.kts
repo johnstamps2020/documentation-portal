@@ -238,6 +238,7 @@ object Database {
 
             features {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                feature(GwBuildFeatures.GwSshAgentBuildFeature)
             }
         }
 
@@ -329,6 +330,7 @@ object Database {
 
             features {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                feature(GwBuildFeatures.GwSshAgentBuildFeature)
             }
         }
 
