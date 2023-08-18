@@ -168,9 +168,10 @@ enum class GwDockerImageTags(val tagValue: String) {
 }
 
 object Database {
-    val validateDbDeploymentBuildTypeDev = createValidateDbDeploymentBuildType(GwDeployEnvs.DEV.envName)
-    val validateDbDeploymentBuildTypeStaging = createValidateDbDeploymentBuildType(GwDeployEnvs.STAGING.envName)
-    val validateDbDeploymentBuildTypeProd = createValidateDbDeploymentBuildType(GwDeployEnvs.PROD.envName)
+    private val validateDbDeploymentBuildTypeDev = createValidateDbDeploymentBuildType(GwDeployEnvs.DEV.envName)
+    private val validateDbDeploymentBuildTypeStaging = createValidateDbDeploymentBuildType(GwDeployEnvs.STAGING.envName)
+    private val validateDbDeploymentBuildTypeProd = createValidateDbDeploymentBuildType(GwDeployEnvs.PROD.envName)
+    private val uploadLegacyConfigsToDb = createUploadLegacyConfigsToDb()
     val rootProject = createRootProjectForDatabase()
 
     private fun createRootProjectForDatabase(): Project {
@@ -184,7 +185,10 @@ object Database {
                 buildType(createDeployDbBuildType(it.envName))
             }
             buildType(SyncDbDataBuildType)
-            buildType(createUploadLegacyConfigsToDb())
+            buildType(uploadLegacyConfigsToDb)
+            buildType(validateDbDeploymentBuildTypeDev)
+            buildType(validateDbDeploymentBuildTypeStaging)
+            buildType(validateDbDeploymentBuildTypeProd)
         }
     }
 
