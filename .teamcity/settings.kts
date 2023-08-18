@@ -181,6 +181,8 @@ object Database {
         }
     }
 
+    // TODO: Change this function to generate a separate build for each deploy env (similar to what is done for server and frontend)
+    // It will be easier to add triggers, dependencies etc.
     private fun createDeployDbBuildType(): BuildType {
         val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
         val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
@@ -197,7 +199,7 @@ object Database {
             params {
                 select(
                     "env.DEPLOY_ENV",
-                    value = "",
+                    value = "Dev",
                     label = "Deploy environment",
                     options = listOf(
                         "Dev" to GwDeployEnvs.DEV.envName,
@@ -1784,13 +1786,14 @@ object Frontend {
         GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
             GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
             GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl,
-            "%teamcity.build.checkoutDir%"
+            "%teamcity.build.checkoutDir%",
+            listOf(TestReactLandingPagesBuildType)
         )
     private val publishDockerImageToProdEcrBuildType = GwBuilds.createPublishDockerImageToProdEcrBuildType(
         GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
         GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl,
         GwDockerImages.DOC_PORTAL_FRONTEND_PROD.imageUrl,
-        buildAndPublishDockerImageToDevEcrBuildType
+        listOf(buildAndPublishDockerImageToDevEcrBuildType)
     )
     val rootProject = createRootProjectForFrontend()
 
@@ -1924,12 +1927,6 @@ object Frontend {
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            dependencies {
-                snapshot(TestReactLandingPagesBuildType) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
         }
 
         if (arrayOf(
@@ -2110,13 +2107,14 @@ object Server {
         GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
             GwDockerImageTags.DOC_PORTAL.tagValue,
             GwDockerImages.DOC_PORTAL.imageUrl,
-            "%teamcity.build.checkoutDir%/server"
+            "%teamcity.build.checkoutDir%/server",
+            listOf(Checkmarx, TestDocSiteServerApp, testConfigDocs, testConfigSources, testConfigBuilds)
         )
     private val publishDockerImageToProdEcrBuildType = GwBuilds.createPublishDockerImageToProdEcrBuildType(
         GwDockerImageTags.DOC_PORTAL.tagValue,
         GwDockerImages.DOC_PORTAL.imageUrl,
         GwDockerImages.DOC_PORTAL_PROD.imageUrl,
-        buildAndPublishDockerImageToDevEcrBuildType
+        listOf(buildAndPublishDockerImageToDevEcrBuildType)
     )
 
     val rootProject = createRootProjectForServer()
@@ -2481,24 +2479,6 @@ object Server {
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            dependencies {
-                snapshot(Checkmarx) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                snapshot(TestDocSiteServerApp) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                snapshot(testConfigDocs) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                snapshot(testConfigSources) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                snapshot(testConfigBuilds) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
         }
 
         if (arrayOf(
@@ -3626,6 +3606,7 @@ object GwBuilds {
         tagVersion: String,
         devDockerImageUrl: String,
         dockerfilePath: String,
+        snapshotDependencies: List<BuildType>,
     ): BuildType {
         val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
         return BuildType {
@@ -3672,6 +3653,14 @@ object GwBuilds {
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+            dependencies {
+                snapshotDependencies.forEach {
+                    snapshot(it) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                }
+            }
         }
     }
 
@@ -3679,7 +3668,7 @@ object GwBuilds {
         tagVersion: String,
         devDockerImageUrl: String,
         prodDockerImageUrl: String,
-        buildDevDockerImageBuildType: BuildType,
+        snapshotDependencies: List<BuildType>,
     ): BuildType {
         val awsEnvVarsDev = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
         val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
@@ -3721,8 +3710,10 @@ object GwBuilds {
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 
             dependencies {
-                snapshot(buildDevDockerImageBuildType) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
+                snapshotDependencies.forEach {
+                    snapshot(it) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
                 }
             }
         }
