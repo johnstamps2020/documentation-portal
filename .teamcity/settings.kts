@@ -167,48 +167,63 @@ enum class GwDockerImageTags(val tagValue: String) {
     DOC_PORTAL("latest-croissant"), DOC_PORTAL_FRONTEND("latest")
 }
 
+// TODO: Add a test build for database - terraform validate?
 object Database {
     val rootProject = createRootProjectForDatabase()
 
     private fun createRootProjectForDatabase(): Project {
         return Project {
             name = "Database"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
-            buildType(createDeployDbBuildType())
+            arrayOf(
+                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
+            ).forEach {
+                buildType(createDeployDbBuildType(it.envName))
+            }
             buildType(SyncDbDataBuildType)
             buildType(createUploadLegacyConfigsToDb())
         }
     }
 
-    // TODO: Change this function to generate a separate build for each deploy env (similar to what is done for server and frontend)
-    // It will be easier to add triggers, dependencies etc.
-    private fun createDeployDbBuildType(): BuildType {
-        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
-        val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
-        return BuildType {
-            name = "Deploy to AWS"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
+    private fun createDeployDbBuildType(deployEnv: String): BuildType {
+        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
+        val tfstateKey = "docportal/db/terraform.tfstate"
+        var envLevel = ""
+        var starSystemName = ""
+        var quadrantName = ""
+        var s3Bucket = ""
+        when (deployEnv) {
+            GwDeployEnvs.DEV.envName -> {
+                envLevel = "Non-Prod"
+                starSystemName = "needle"
+                quadrantName = "pi7"
+                s3Bucket = "tenant-doctools-${GwDeployEnvs.DEV.envName}-terraform"
+            }
+
+            GwDeployEnvs.STAGING.envName -> {
+                envLevel = "Non-Prod"
+                starSystemName = "needle"
+                quadrantName = "pi11"
+                s3Bucket = "tenant-doctools-${GwDeployEnvs.STAGING.envName}-terraform"
+            }
+
+            GwDeployEnvs.PROD.envName -> {
+                envLevel = "Prod"
+                starSystemName = "andromeda"
+                quadrantName = "omega2"
+                s3Bucket = "tenant-doctools-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-terraform"
+            }
+        }
+        val deployDatabaseBuildType = BuildType {
+            name = "Deploy database to $deployEnv"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
                 branchFilter = "+:<default>"
                 cleanCheckout = true
-            }
-
-            params {
-                select(
-                    "env.DEPLOY_ENV",
-                    value = "Dev",
-                    label = "Deploy environment",
-                    options = listOf(
-                        "Dev" to GwDeployEnvs.DEV.envName,
-                        "Staging" to GwDeployEnvs.STAGING.envName,
-                        "Prod" to GwDeployEnvs.OMEGA2_ANDROMEDA.envName,
-                    ),
-                    display = ParameterDisplay.PROMPT,
-
-                    )
             }
 
             steps {
@@ -218,43 +233,22 @@ object Database {
                     scriptContent = """
                     #!/bin/bash
                     set -eux
+                    
+                    $awsEnvVars
 
-                    if [[ "%env.DEPLOY_ENV%" == "${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}" ]]; then
-                      $awsEnvVarsProd
-                      export ENV_LEVEL="Prod"
-                      export STAR_SYSTEM_NAME="andromeda"
-                      export QUADRANT_NAME="omega2"
-                    elif [[ "%env.DEPLOY_ENV%" == "${GwDeployEnvs.DEV.envName}" ]]; then
-                      $awsEnvVars
-                      export ENV_LEVEL="Non-Prod"
-                      export STAR_SYSTEM_NAME="needle"
-                      export QUADRANT_NAME="pi7"
-                    elif [[ "%env.DEPLOY_ENV%" == "${GwDeployEnvs.STAGING.envName}" ]]; then
-                      $awsEnvVars
-                      export ENV_LEVEL="Non-Prod"
-                      export STAR_SYSTEM_NAME="needle"
-                      export QUADRANT_NAME="pi11"
-                    else
-                      echo "Invalid deployment environment. Available options: Dev, Staging, Prod."
-                      exit 1
-                    fi
-
-                    export S3_BUCKET="tenant-doctools-%env.DEPLOY_ENV%-terraform"
-                    export TFSTATE_KEY="docportal/db/terraform.tfstate"
-
-                    cd server/db
+                    cd db
 
                     terraform init \
-                        -backend-config="bucket=${'$'}{S3_BUCKET}" \
+                        -backend-config="bucket=$s3Bucket" \
                         -backend-config="region=${'$'}{AWS_DEFAULT_REGION}" \
-                        -backend-config="key=${'$'}{TFSTATE_KEY}" \
+                        -backend-config="key=$tfstateKey" \
                         -input=false
                     terraform apply \
-                        -var="star_system_name=${'$'}{STAR_SYSTEM_NAME}" \
-                        -var="quadrant_name=${'$'}{QUADRANT_NAME}" \
-                        -var="deploy_env=%env.DEPLOY_ENV%" \
+                        -var="star_system_name=$starSystemName" \
+                        -var="quadrant_name=$quadrantName" \
+                        -var="deploy_env=$atmosDeployEnv" \
                         -var="region=${'$'}{AWS_DEFAULT_REGION}" \
-                        -var="env_level=${'$'}{ENV_LEVEL}" \
+                        -var="env_level=$envLevel" \
                         -var="pod_name=${GwAtmosLabels.POD_NAME.labelValue}" \
                         -var="dept_code=${GwAtmosLabels.DEPT_CODE.labelValue}" \
                         -input=false \
@@ -271,6 +265,17 @@ object Database {
                 feature(GwBuildFeatures.GwSshAgentBuildFeature)
             }
         }
+
+        if (deployEnv == GwDeployEnvs.DEV.envName) {
+            deployDatabaseBuildType.triggers.vcs {
+                triggerRules = """
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:db/**
+                        -:user=doctools:**
+                    """.trimIndent()
+            }
+        }
+
+        return deployDatabaseBuildType
     }
 
     private object SyncDbDataBuildType : BuildType({
@@ -282,8 +287,8 @@ object Database {
         val imageName = "alpine"
         val podName = "postgresql-client-shell-teamcity"
         val dbDumpZipPackageName = "docportalconfig.zip"
-        name = "Sync data"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
+        name = "Sync database data"
+        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         params {
             select(
@@ -402,8 +407,8 @@ object Database {
         val outputDirStaging = "${outputDir}/staging/pages"
         val outputDirProd = "${outputDir}/prod/pages"
         return BuildType {
-            name = "Upload legacy configs"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
+            name = "Upload legacy configs to ${GwDeployEnvs.STAGING.envName} database"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
@@ -1422,7 +1427,6 @@ object Content {
             subProject(createUpdateSearchIndexProject())
             subProject(createCleanUpSearchIndexProject())
             subProject(createGenerateSitemapProject())
-            subProject(createDeployServerConfigProject())
             subProject(createDeployContentStorageProject())
             buildType(UploadPdfsForEscrowBuildType)
             buildType(SyncDocsFromStagingToDev)
@@ -1545,52 +1549,6 @@ object Content {
             steps {
                 step(GwBuildSteps.createGetConfigFileStep(deployEnv, configFile))
                 step(GwBuildSteps.createRunDocCrawlerStep(deployEnv, "%DOC_ID%", configFile))
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-        }
-    }
-
-    private fun createDeployServerConfigProject(): Project {
-        return Project {
-            name = "Deploy server config"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
-            ).forEach {
-                buildType(createDeployServerConfigBuildType(it.envName))
-            }
-        }
-    }
-
-    private fun createDeployServerConfigBuildType(deployEnv: String): BuildType {
-        return BuildType {
-            name = "Deploy server config to $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:<default>"
-                cleanCheckout = true
-            }
-            steps {
-                step(GwBuildSteps.createGenerateDocsConfigFilesForEnvStep(deployEnv))
-                step(
-                    GwBuildSteps.createUploadContentToS3BucketStep(
-                        deployEnv, GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue, "portal-config"
-                    )
-                )
-                step(GwBuildSteps.createRefreshConfigBuildStep(deployEnv))
-            }
-
-            triggers {
-                vcs {
-                    triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
-                        -:user=doctools:**
-                        """.trimIndent()
-                }
             }
 
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
@@ -1840,8 +1798,8 @@ object Frontend {
 
     private fun createDeployReactLandingPagesProject(): Project {
         return Project {
-            name = "Deploy React landing pages"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
+            name = "React landing pages"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
             arrayOf(
                 GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
@@ -1861,7 +1819,7 @@ object Frontend {
             Helpers.setReactLandingPagesDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue)
         val deployReactLandingPagesBuildType = BuildType {
             name = "Deploy React landing pages to $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
@@ -1960,7 +1918,7 @@ object Frontend {
 
     private object TestReactLandingPagesBuildType : BuildType({
         name = "Test React landing pages"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
+        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         vcs {
             root(GwVcsRoots.DocumentationPortalGitVcsRoot)
@@ -2098,7 +2056,7 @@ object Frontend {
         }
     }
 }
-
+// TODO: Add a build for testing Kubernetes - similar to the test build in redirect server
 object Server {
     private val testConfigDocs = createTestConfigBuildType(GwConfigTypes.DOCS.typeName)
     private val testConfigSources = createTestConfigBuildType(GwConfigTypes.SOURCES.typeName)
@@ -2144,8 +2102,8 @@ object Server {
 
     private object Checkmarx : BuildType({
         templates(AbsoluteId("CheckmarxSastScan"))
-        name = "Checkmarx"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
+        name = "Run Checkmarx scan"
+        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         params {
             text("checkmarx.project.name", "doctools")
@@ -2185,7 +2143,7 @@ object Server {
 
     private object TestSettingsKts : BuildType({
         name = "Test settings.kts"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
+        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         vcs {
             root(GwVcsRoots.DocumentationPortalGitVcsRoot)
@@ -2213,7 +2171,7 @@ object Server {
 
     private object TestHtml5Dependencies : BuildType({
         name = "Test HTML5 dependencies"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
+        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         vcs {
             root(GwVcsRoots.DocumentationPortalGitVcsRoot)
@@ -2239,7 +2197,7 @@ object Server {
     // Temporarily disabled
     private object AuditNpmPackages : BuildType({
         name = "Audit npm packages"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
+        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         vcs {
             root(GwVcsRoots.DocumentationPortalGitVcsRoot)
@@ -2267,10 +2225,9 @@ object Server {
         features.feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
     })
 
-    // TODO: Update to work with Croissant
     private object TestDocSiteServerApp : BuildType({
         name = "Test doc site server app"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
+        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         vcs {
             root(GwVcsRoots.DocumentationPortalGitVcsRoot)
@@ -2287,28 +2244,28 @@ object Server {
                     export OKTA_CLIENT_ID=mock
                     export OKTA_CLIENT_SECRET=mock
                     export OKTA_IDP="${GwConfigParams.OKTA_IDP.paramValue}"
-                    export GW_COMMUNITY_PARTNER_IDP="0oapv9i36yEMFLjxS0h7"
-                    export GW_COMMUNITY_CUSTOMER_IDP="0oau503zlhhFLwTqF0h7"
-                    export OKTA_ISSUER=https://guidewire-hub.oktapreview.com/oauth2/ausj9ftnbxOqfGU4U0h7
+                    export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
+                    export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP.paramValue}"
+                    export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
                     export OKTA_ISSUER_APAC="issuerNotConfigured"
                     export OKTA_ISSUER_EMEA="issuerNotConfigured"
                     export OKTA_SCOPES=mock
                     export OKTA_AUDIENCE=mock
                     export APP_BASE_URL=http://localhost:8081
                     export SESSION_KEY=mock
-                    export DOC_S3_URL="https://docportal-content.staging.ccs.guidewire.net"
-                    export PORTAL2_S3_URL="https://portal2-content.omega2-andromeda.guidewire.net"
-                    export ELASTIC_SEARCH_URL=https://docsearch-doctools.staging.ccs.guidewire.net
-                    export DEPLOY_ENV=staging
+                    export DOC_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.STAGING.envName)}"
+                    export PORTAL2_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)}"
+                    export ELASTIC_SEARCH_URL="${Helpers.getElasticsearchUrl(GwDeployEnvs.STAGING.envName)}"
+                    export DEPLOY_ENV="${GwDeployEnvs.STAGING.envName}"
                     export LOCAL_CONFIG=yes
                     export ENABLE_AUTH=no
                     export PRETEND_TO_BE_EXTERNAL=no
                     export ALLOW_PUBLIC_DOCS=yes
                     export LOCALHOST_SESSION_SETTINGS=yes
-                    export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="https://docs.staging.ccs.guidewire.net/partners-login"
+                    export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/partners-login"
                     export PARTNERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
                     export PARTNERS_LOGIN_CERT=mock
-                    export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="https://docs.staging.ccs.guidewire.net/customers-login"
+                    export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/customers-login"
                     export CUSTOMERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
                     export CUSTOMERS_LOGIN_CERT=mock
                     
@@ -2384,7 +2341,7 @@ object Server {
         }
         return BuildType {
             name = "Test $configType config files"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
@@ -2428,8 +2385,8 @@ object Server {
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
         val serverDeployEnvVars = Helpers.setServerDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL.tagValue)
         val deployServerBuildType = BuildType {
-            name = "Deploy to $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
+            name = "Deploy server to $deployEnv"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
