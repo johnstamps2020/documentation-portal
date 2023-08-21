@@ -3623,15 +3623,26 @@ object Helpers {
     private fun getGwCommunityUrls(deployEnv: String): Pair<String, String> {
         val partnersLoginUrl: String
         val customersLoginUrl: String
-        if (arrayOf(GwDeployEnvs.DEV.envName).contains(deployEnv)) {
-            partnersLoginUrl = "https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
-            customersLoginUrl = "https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
-        } else if (deployEnv == GwDeployEnvs.STAGING.envName) {
-            partnersLoginUrl = "https://guidewire--uat.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
-            customersLoginUrl = "https://guidewire--uat.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
-        } else {
-            partnersLoginUrl = "https://partner.guidewire.com/idp/endpoint/HttpRedirect"
-            customersLoginUrl = "https://community.guidewire.com/idp/endpoint/HttpRedirect"
+        when (deployEnv) {
+            GwDeployEnvs.DEV.envName -> {
+                partnersLoginUrl = "https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
+                customersLoginUrl = "https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
+            }
+
+            GwDeployEnvs.STAGING.envName -> {
+                partnersLoginUrl = "https://guidewire--uat.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
+                customersLoginUrl = "https://guidewire--uat.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
+            }
+
+            GwDeployEnvs.PROD.envName -> {
+                partnersLoginUrl = "https://partner.guidewire.com/idp/endpoint/HttpRedirect"
+                customersLoginUrl = "https://community.guidewire.com/idp/endpoint/HttpRedirect"
+            }
+
+            else -> {
+                partnersLoginUrl = ""
+                customersLoginUrl = ""
+            }
         }
         return Pair(partnersLoginUrl, customersLoginUrl)
     }
