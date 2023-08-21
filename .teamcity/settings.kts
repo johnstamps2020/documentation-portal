@@ -5224,12 +5224,14 @@ object GwBuildFeatures {
 }
 
 object GwVcsRoots {
-    // TODO: Switch this repo to the master branch after testing is done
+    // TODO:
+    //  - Switch this repo to the master branch after testing is done
+    //  - Change the branch filter to "(refs/heads/*)"
     val DocumentationPortalGitVcsRoot = createGitVcsRoot(
         Helpers.resolveRelativeIdFromIdString("Documentation Portal git repo"),
         "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
         "feature/typeorm",
-        listOf("(refs/heads/*)")
+        listOf("(refs/heads/feature/typeorm*)")
     )
 
     val LocalizedPdfsGitVcsRoot = createGitVcsRoot(
