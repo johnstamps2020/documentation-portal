@@ -16,7 +16,6 @@ import java.math.BigInteger
 import java.security.MessageDigest
 
 version = "2022.04"
-// TODO: Remove all the patches - they were created because builds were paused in the UI to disable automatic triggers
 // TODO: Create a build/chain for deploying all the services at once - server, db, landing pages, data???
 //  Idea: Use composite builds
 project {
@@ -108,7 +107,14 @@ enum class GwConfigParams(val paramValue: String) {
 
     // TODO: Change croissant to docportal before merge to master
     DOC_PORTAL_APP_NAME("croissant"),
-    DOC_PORTAL_FRONTEND_APP_NAME("docportal-frontend")
+    DOC_PORTAL_FRONTEND_APP_NAME("docportal-frontend"),
+    DOC_PORTAL_KUBE_DEPLOYMENT_FILE("server/kube/deployment.yml"),
+
+    // TODO: Change the path to the gateway config file after merge to master
+    DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE("server/kube/gateway-config-croissant.yml"),
+    DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE_PROD("server/kube/gateway-config-croissant.yml"),
+    DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE("landing-pages/kube/deployment.yml"),
+    S3_KUBE_DEPLOYMENT_FILE("aws/s3/kube/service-gateway-config.yml")
 }
 
 enum class GwDockerImages(val imageUrl: String) {
@@ -1714,7 +1720,7 @@ object Content {
                         
                         echo ${'$'}(kubectl get pods --namespace=${GwAtmosLabels.POD_NAME.labelValue})
                         
-                        eval "echo \"${'$'}(cat aws/s3/kube/service-gateway-config.yml)\"" > ${'$'}TMP_DEPLOYMENT_FILE
+                        eval "echo \"${'$'}(cat ${GwConfigParams.S3_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
                                                 
                         kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}
                     """.trimIndent()
@@ -1727,7 +1733,7 @@ object Content {
             triggers {
                 vcs {
                     triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:aws/s3/kube/service-gateway-config.yml
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${GwConfigParams.S3_KUBE_DEPLOYMENT_FILE.paramValue}
                         -:user=doctools:**
                         """.trimIndent()
                 }
@@ -1852,6 +1858,12 @@ object Content {
 }
 
 object Frontend {
+    private val testKubernetesConfigFilesDev =
+        createTestReactLandingPagesKubernetesConfigFiles(GwDeployEnvs.DEV.envName)
+    private val testKubernetesConfigFilesStaging =
+        createTestReactLandingPagesKubernetesConfigFiles(GwDeployEnvs.STAGING.envName)
+    private val testKubernetesConfigFilesProd =
+        createTestReactLandingPagesKubernetesConfigFiles(GwDeployEnvs.PROD.envName)
     private val buildAndPublishDockerImageToDevEcrBuildType =
         GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
             GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
@@ -1918,9 +1930,12 @@ object Frontend {
             ).forEach {
                 buildType(createDeployReactLandingPagesBuildType(it.envName))
             }
+            buildType(TestReactLandingPagesBuildType)
+            buildType(testKubernetesConfigFilesDev)
+            buildType(testKubernetesConfigFilesStaging)
+            buildType(testKubernetesConfigFilesProd)
             buildType(buildAndPublishDockerImageToDevEcrBuildType)
             buildType(publishDockerImageToProdEcrBuildType)
-            buildType(TestReactLandingPagesBuildType)
         }
     }
 
@@ -1978,7 +1993,7 @@ object Frontend {
                         
                         echo ${'$'}(kubectl get pods --namespace=${GwAtmosLabels.POD_NAME.labelValue})
                         
-                        eval "echo \"${'$'}(cat landing-pages/kube/deployment.yml)\"" > ${'$'}TMP_DEPLOYMENT_FILE
+                        eval "echo \"${'$'}(cat ${GwConfigParams.DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
                                                 
                         sed -ie "s/BUILD_TIME/${'$'}(date)/g" ${'$'}TMP_DEPLOYMENT_FILE
                         kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}
@@ -2004,6 +2019,9 @@ object Frontend {
                 deployReactLandingPagesBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
+                deployReactLandingPagesBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
                 deployReactLandingPagesBuildType.triggers.vcs {
                     triggerRules = """
                         +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/**
@@ -2017,11 +2035,17 @@ object Frontend {
                 deployReactLandingPagesBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
+                deployReactLandingPagesBuildType.dependencies.snapshot(testKubernetesConfigFilesStaging) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
             }
 
             GwDeployEnvs.PROD.envName -> {
                 deployReactLandingPagesBuildType.vcs.branchFilter = "+:<default>"
                 deployReactLandingPagesBuildType.dependencies.snapshot(publishDockerImageToProdEcrBuildType) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+                deployReactLandingPagesBuildType.dependencies.snapshot(testKubernetesConfigFilesProd) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
             }
@@ -2065,6 +2089,57 @@ object Frontend {
             }
         }
     })
+
+    private fun createTestReactLandingPagesKubernetesConfigFiles(deployEnv: String): BuildType {
+        val reactLandingPagesDeployEnvVars =
+            Helpers.setReactLandingPagesDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL.tagValue)
+        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
+        return BuildType {
+            name = "Test Kubernetes config files for React landing pages on $deployEnv"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                cleanCheckout = true
+            }
+
+            steps {
+                script {
+                    name = "Create Kubernetes resources in dry run "
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                    #!/bin/bash 
+                    set -e
+                    
+                    $awsEnvVars
+                    $reactLandingPagesDeployEnvVars
+                    export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
+                    
+                    aws eks update-kubeconfig --name atmos-$atmosDeployEnv
+                    eval "echo \"${'$'}(cat ${GwConfigParams.DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
+                    
+                    kubectl create -f ${'$'}TMP_DEPLOYMENT_FILE --dry-run=client
+                """.trimIndent()
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                }
+            }
+
+            features {
+                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
+
+            triggers.vcs {
+                triggerRules = """
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/kube/**
+                -:user=doctools:**
+            """.trimIndent()
+            }
+        }
+    }
 
     private fun createPublishNpmPackageBuildType(packageHandle: String, packagePath: String): BuildType {
         return BuildType {
@@ -2171,17 +2246,22 @@ object Frontend {
     }
 }
 
-// TODO: Add a build for testing Kubernetes - similar to the test build in redirect server
 object Server {
     private val testConfigDocs = createTestConfigBuildType(GwConfigTypes.DOCS.typeName)
     private val testConfigSources = createTestConfigBuildType(GwConfigTypes.SOURCES.typeName)
     private val testConfigBuilds = createTestConfigBuildType(GwConfigTypes.BUILDS.typeName)
+    private val testKubernetesConfigFilesDev =
+        createTestServerKubernetesConfigFiles(GwDeployEnvs.DEV.envName)
+    private val testKubernetesConfigFilesStaging =
+        createTestServerKubernetesConfigFiles(GwDeployEnvs.STAGING.envName)
+    private val testKubernetesConfigFilesProd =
+        createTestServerKubernetesConfigFiles(GwDeployEnvs.PROD.envName)
     private val buildAndPublishDockerImageToDevEcrBuildType =
         GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
             GwDockerImageTags.DOC_PORTAL.tagValue,
             GwDockerImages.DOC_PORTAL.imageUrl,
             "%teamcity.build.checkoutDir%/server",
-            listOf(Checkmarx, TestDocSiteServerApp, testConfigDocs, testConfigSources, testConfigBuilds)
+            listOf(RunCheckmarxScan, TestDocSiteServerApp, testConfigDocs, testConfigSources, testConfigBuilds)
         )
     private val publishDockerImageToProdEcrBuildType = GwBuilds.createPublishDockerImageToProdEcrBuildType(
         GwDockerImageTags.DOC_PORTAL.tagValue,
@@ -2196,13 +2276,16 @@ object Server {
             name = "Server"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
-            buildType(Checkmarx)
+            buildType(RunCheckmarxScan)
             buildType(TestDocSiteServerApp)
             buildType(testConfigDocs)
             buildType(testConfigSources)
             buildType(testConfigBuilds)
             buildType(TestSettingsKts)
             buildType(TestHtml5Dependencies)
+            buildType(testKubernetesConfigFilesDev)
+            buildType(testKubernetesConfigFilesStaging)
+            buildType(testKubernetesConfigFilesProd)
 //            temporarily disabled
 //            buildType(AuditNpmPackages)
             arrayOf(
@@ -2215,7 +2298,7 @@ object Server {
         }
     }
 
-    private object Checkmarx : BuildType({
+    private object RunCheckmarxScan : BuildType({
         templates(AbsoluteId("CheckmarxSastScan"))
         name = "Run Checkmarx scan"
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
@@ -2406,6 +2489,60 @@ object Server {
         }
     })
 
+    private fun createTestServerKubernetesConfigFiles(deployEnv: String): BuildType {
+        val serverDeployEnvVars = Helpers.setServerDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL.tagValue)
+        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
+        val gatewayConfigFile = Helpers.getServerGatewayConfigFile(deployEnv)
+        return BuildType {
+            name = "Test Kubernetes config files for server on $deployEnv"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                cleanCheckout = true
+            }
+
+            steps {
+                script {
+                    name = "Create Kubernetes resources in dry run "
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                    #!/bin/bash 
+                    set -e
+                    
+                    $awsEnvVars
+                    $serverDeployEnvVars
+                    export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
+                    export TMP_GATEWAY_CONFIG_FILE="tmp-gateway-config.yml"
+                    
+                    aws eks update-kubeconfig --name atmos-$atmosDeployEnv
+                    eval "echo \"${'$'}(cat ${GwConfigParams.DOC_PORTAL_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
+                    eval "echo \"${'$'}(cat ${gatewayConfigFile})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
+                    
+                    kubectl create -f ${'$'}TMP_DEPLOYMENT_FILE --dry-run=client
+                    kubectl create -f ${'$'}TMP_GATEWAY_CONFIG_FILE --dry-run=client
+                """.trimIndent()
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                }
+            }
+
+            features {
+                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
+
+            triggers.vcs {
+                triggerRules = """
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/kube/**
+                -:user=doctools:**
+            """.trimIndent()
+            }
+        }
+    }
+
     private fun createTestConfigBuildType(configType: String): BuildType {
         val scriptStepContent = when (configType) {
             GwConfigTypes.DOCS.typeName -> """
@@ -2489,13 +2626,9 @@ object Server {
         }
     }
 
-    // TODO:Change GatewayConfig files to master files before merge to master
     private fun createDeployServerBuildType(deployEnv: String): BuildType {
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
-        val gatewayConfigFile = when (deployEnv) {
-            GwDeployEnvs.PROD.envName -> "gateway-config-croissant.yml"
-            else -> "gateway-config-croissant.yml"
-        }
+        val gatewayConfigFile = Helpers.getServerGatewayConfigFile(deployEnv)
 
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
         val serverDeployEnvVars = Helpers.setServerDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL.tagValue)
@@ -2530,8 +2663,8 @@ object Server {
                         
                         echo ${'$'}(kubectl get pods --namespace=${GwAtmosLabels.POD_NAME.labelValue})
                         
-                        eval "echo \"${'$'}(cat server/kube/deployment.yml)\"" > ${'$'}TMP_DEPLOYMENT_FILE
-                        eval "echo \"${'$'}(cat server/kube/${gatewayConfigFile})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
+                        eval "echo \"${'$'}(cat ${GwConfigParams.DOC_PORTAL_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
+                        eval "echo \"${'$'}(cat ${gatewayConfigFile})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
                                                 
                         sed -ie "s/BUILD_TIME/${'$'}(date)/g" ${'$'}TMP_DEPLOYMENT_FILE
                         kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}
@@ -2558,6 +2691,9 @@ object Server {
                 deployServerBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
+                deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
                 deployServerBuildType.triggers.vcs {
                     triggerRules = """
                         +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/**
@@ -2571,11 +2707,17 @@ object Server {
                 deployServerBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
+                deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesStaging) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
             }
 
             GwDeployEnvs.PROD.envName -> {
                 deployServerBuildType.vcs.branchFilter = "+:<default>"
                 deployServerBuildType.dependencies.snapshot(publishDockerImageToProdEcrBuildType) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+                deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesProd) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
             }
@@ -3464,6 +3606,13 @@ object Helpers {
         }
     }
 
+    fun getServerGatewayConfigFile(deployEnv: String): String {
+        return when (deployEnv) {
+            GwDeployEnvs.PROD.envName -> GwConfigParams.DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE_PROD.paramValue
+            else -> GwConfigParams.DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE.paramValue
+        }
+    }
+
     fun getAtmosDeployEnv(deployEnv: String): String {
         return when (deployEnv) {
             GwDeployEnvs.PROD.envName, GwDeployEnvs.PORTAL2.envName -> GwDeployEnvs.OMEGA2_ANDROMEDA.envName
@@ -3817,6 +3966,7 @@ object GwBuildSteps {
     })
 
     fun createCheckPodsStatusStep(envVars: String, deployEnv: String, appName: String): ScriptBuildStep {
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
         return ScriptBuildStep {
             name = "Check pods status"
             id = Helpers.createIdStringFromName(this.name)
@@ -3827,7 +3977,7 @@ object GwBuildSteps {
                 # Set AWS credentials
                 $envVars
                 
-                aws eks update-kubeconfig --name atmos-${deployEnv}
+                aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
                 sleep 10
                 TIME="0"
                 while true; do
@@ -5160,4 +5310,3 @@ object GwTemplates {
         id = Helpers.resolveRelativeIdFromIdString(this.name)
     })
 }
-
