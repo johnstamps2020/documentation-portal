@@ -26,7 +26,7 @@ project {
 //        vcsRoot(it)
 //    }
     vcsRoot(GwVcsRoots.DocumentationPortalGitVcsRoot)
-    vcsRoot(GwVcsRoots.DitaOtPluginsVcsRoot)
+//    vcsRoot(GwVcsRoots.DitaOtPluginsVcsRoot)
     subProject(Database.rootProject)
 //    subProject(Runners.rootProject)
 //    subProject(Docs.rootProject)
@@ -1873,8 +1873,8 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             subProject(createReactLandingPagesProject())
-            subProject(createNpmPackagesProject())
-            subProject(createHtml5DependenciesProject())
+//            subProject(createNpmPackagesProject())
+//            subProject(createHtml5DependenciesProject())
         }
     }
 
