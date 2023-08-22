@@ -37,6 +37,9 @@ project {
     subProject(Server.rootProject)
     subProject(Frontend.rootProject)
 //    subProject(Custom.rootProject)
+    listOf(GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD).forEach {
+        buildType(GwBuilds.createDeployDocPortalBuildType(it.envName))
+    }
 
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
     features.feature(GwProjectFeatures.GwAntennaHouseFormatterServerProjectFeature)
@@ -178,6 +181,9 @@ object Database {
     private val validateDbDeploymentBuildTypeStaging = createValidateDbDeploymentBuildType(GwDeployEnvs.STAGING.envName)
     private val validateDbDeploymentBuildTypeProd = createValidateDbDeploymentBuildType(GwDeployEnvs.PROD.envName)
     private val uploadLegacyConfigsToDb = createUploadLegacyConfigsToDb()
+    val deployDbBuildTypeDev = createDeployDbBuildType(GwDeployEnvs.DEV.envName)
+    val deployDbBuildTypeStaging = createDeployDbBuildType(GwDeployEnvs.STAGING.envName)
+    val deployDbBuildTypeProd = createDeployDbBuildType(GwDeployEnvs.PROD.envName)
     val rootProject = createRootProjectForDatabase()
 
     private fun createRootProjectForDatabase(): Project {
@@ -185,11 +191,9 @@ object Database {
             name = "Database"
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
-            arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
-            ).forEach {
-                buildType(createDeployDbBuildType(it.envName))
-            }
+            buildType(deployDbBuildTypeDev)
+            buildType(deployDbBuildTypeStaging)
+            buildType(deployDbBuildTypeProd)
             buildType(SyncDbDataBuildType)
             buildType(uploadLegacyConfigsToDb)
             buildType(validateDbDeploymentBuildTypeDev)
@@ -1884,6 +1888,9 @@ object Frontend {
         GwDockerImages.DOC_PORTAL_FRONTEND_PROD.imageUrl,
         listOf(buildAndPublishDockerImageToDevEcrBuildType)
     )
+    val deployReactLandingPagesBuildTypeDev = createDeployReactLandingPagesBuildType(GwDeployEnvs.DEV.envName)
+    val deployReactLandingPagesBuildTypeStaging = createDeployReactLandingPagesBuildType(GwDeployEnvs.STAGING.envName)
+    val deployReactLandingPagesBuildTypeProd = createDeployReactLandingPagesBuildType(GwDeployEnvs.PROD.envName)
     val rootProject = createRootProjectForFrontend()
 
     private fun createRootProjectForFrontend(): Project {
@@ -1932,11 +1939,9 @@ object Frontend {
             name = "React landing pages"
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
-            arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
-            ).forEach {
-                buildType(createDeployReactLandingPagesBuildType(it.envName))
-            }
+            buildType(deployReactLandingPagesBuildTypeDev)
+            buildType(deployReactLandingPagesBuildTypeStaging)
+            buildType(deployReactLandingPagesBuildTypeProd)
             buildType(TestReactLandingPagesBuildType)
             buildType(testKubernetesConfigFilesDev)
             buildType(testKubernetesConfigFilesStaging)
@@ -2279,13 +2284,18 @@ object Server {
         GwDockerImages.DOC_PORTAL_PROD.imageUrl,
         listOf(buildAndPublishDockerImageToDevEcrBuildType)
     )
-
+    val deployServerBuildTypeDev = createDeployServerBuildType(GwDeployEnvs.DEV.envName)
+    val deployServerBuildTypeStaging = createDeployServerBuildType(GwDeployEnvs.STAGING.envName)
+    val deployServerBuildTypeProd = createDeployServerBuildType(GwDeployEnvs.PROD.envName)
     val rootProject = createRootProjectForServer()
     private fun createRootProjectForServer(): Project {
         return Project {
             name = "Server"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
+            buildType(deployServerBuildTypeDev)
+            buildType(deployServerBuildTypeStaging)
+            buildType(deployServerBuildTypeProd)
             buildType(RunCheckmarxScan)
             buildType(TestDocSiteServerApp)
             buildType(testConfigDocs)
@@ -2296,15 +2306,10 @@ object Server {
             buildType(testKubernetesConfigFilesDev)
             buildType(testKubernetesConfigFilesStaging)
             buildType(testKubernetesConfigFilesProd)
-//            temporarily disabled
-//            buildType(AuditNpmPackages)
-            arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
-            ).forEach {
-                buildType(createDeployServerBuildType(it.envName))
-            }
             buildType(buildAndPublishDockerImageToDevEcrBuildType)
             buildType(publishDockerImageToProdEcrBuildType)
+//            temporarily disabled
+//            buildType(AuditNpmPackages)
         }
     }
 
@@ -3856,6 +3861,44 @@ object Helpers {
 }
 
 object GwBuilds {
+    fun createDeployDocPortalBuildType(deployEnv: String): BuildType {
+        val snapshotDependencies = when (deployEnv) {
+            GwDeployEnvs.DEV.envName -> listOf(
+                Database.deployDbBuildTypeDev,
+                Server.deployServerBuildTypeDev,
+                Frontend.deployReactLandingPagesBuildTypeDev
+            )
+
+            GwDeployEnvs.STAGING.envName -> listOf(
+                Database.deployDbBuildTypeStaging,
+                Server.deployServerBuildTypeStaging,
+                Frontend.deployReactLandingPagesBuildTypeStaging
+            )
+
+            GwDeployEnvs.PROD.envName -> listOf(
+                Database.deployDbBuildTypeProd,
+                Server.deployServerBuildTypeProd,
+                Frontend.deployReactLandingPagesBuildTypeProd
+            )
+
+            else -> listOf()
+        }
+        return BuildType {
+            name = "Deploy doc portal to $deployEnv"
+            description = "Deploys db, server and React landing pages to $deployEnv"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+            type = BuildTypeSettings.Type.COMPOSITE
+
+            dependencies {
+                snapshotDependencies.forEach {
+                    snapshot(it) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                }
+            }
+        }
+    }
+
     fun createBuildAndPublishDockerImageToDevEcrBuildType(
         tagVersion: String,
         devDockerImageUrl: String,
