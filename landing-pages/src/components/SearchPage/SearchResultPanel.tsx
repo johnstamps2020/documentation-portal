@@ -10,6 +10,7 @@ import Container from '@mui/material/Container';
 import { mainHeight } from 'components/Layout/Layout';
 import { useSearchLayoutContext } from './SearchLayoutContext';
 import { useTheme } from '@mui/material/styles';
+import ExactMatchHint from './ExactMatchHint';
 
 export default function SearchResultPanel() {
   const { helpWidth, isHelpExpanded } = useSearchLayoutContext();
@@ -38,6 +39,7 @@ export default function SearchResultPanel() {
         <Stack alignItems="center" sx={{ marginBottom: 3 }} spacing={2}>
           <NotLoggedInAlert />
           <SearchBox />
+          <ExactMatchHint />
           <AdvancedSearchHelpButton />
         </Stack>
         <Stack>
