@@ -248,12 +248,14 @@ object Database {
             }
         }
 
-        if (deployEnv == GwDeployEnvs.DEV.envName) {
-            validateDbDeploymentBuildType.triggers.vcs {
-                triggerRules = """
+        when (deployEnv) {
+            GwDeployEnvs.DEV.envName -> {
+                validateDbDeploymentBuildType.triggers.vcs {
+                    triggerRules = """
                         +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:db/**
                         -:user=doctools:**
                     """.trimIndent()
+                }
             }
         }
 
@@ -264,10 +266,10 @@ object Database {
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
         val tfstateKey = "docportal/db/terraform.tfstate"
-        var envLevel = ""
-        var starSystemName = ""
-        var quadrantName = ""
-        var s3Bucket = ""
+        val envLevel: String
+        val starSystemName: String
+        val quadrantName: String
+        val s3Bucket: String
         when (deployEnv) {
             GwDeployEnvs.DEV.envName -> {
                 envLevel = "Non-Prod"
@@ -288,6 +290,13 @@ object Database {
                 starSystemName = "andromeda"
                 quadrantName = "omega2"
                 s3Bucket = "tenant-doctools-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-terraform"
+            }
+
+            else -> {
+                envLevel = ""
+                starSystemName = ""
+                quadrantName = ""
+                s3Bucket = ""
             }
         }
         val deployDatabaseBuildType = BuildType {
@@ -354,7 +363,6 @@ object Database {
             }
 
             GwDeployEnvs.STAGING.envName -> {
-                deployDatabaseBuildType.vcs.branchFilter = "+:<default>"
                 deployDatabaseBuildType.dependencies.snapshot(
                     validateDbDeploymentBuildTypeStaging
                 ) {
@@ -363,7 +371,6 @@ object Database {
             }
 
             GwDeployEnvs.PROD.envName -> {
-                deployDatabaseBuildType.vcs.branchFilter = "+:<default>"
                 deployDatabaseBuildType.dependencies.snapshot(validateDbDeploymentBuildTypeProd) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
@@ -1950,6 +1957,7 @@ object Frontend {
 
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                branchFilter = "+:<default>"
                 cleanCheckout = true
             }
 
@@ -2031,7 +2039,6 @@ object Frontend {
             }
 
             GwDeployEnvs.STAGING.envName -> {
-                deployReactLandingPagesBuildType.vcs.branchFilter = "+:<default>"
                 deployReactLandingPagesBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
@@ -2041,7 +2048,6 @@ object Frontend {
             }
 
             GwDeployEnvs.PROD.envName -> {
-                deployReactLandingPagesBuildType.vcs.branchFilter = "+:<default>"
                 deployReactLandingPagesBuildType.dependencies.snapshot(publishDockerImageToProdEcrBuildType) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
@@ -2132,11 +2138,15 @@ object Frontend {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
             }
 
-            triggers.vcs {
-                triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/kube/**
-                -:user=doctools:**
-            """.trimIndent()
+            when (deployEnv) {
+                GwDeployEnvs.DEV.envName -> {
+                    triggers.vcs {
+                        triggerRules = """
+                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/kube/**
+                            -:user=doctools:**
+                        """.trimIndent()
+                    }
+                }
             }
         }
     }
@@ -2534,11 +2544,15 @@ object Server {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
             }
 
-            triggers.vcs {
-                triggerRules = """
+            when (deployEnv) {
+                GwDeployEnvs.DEV.envName -> {
+                    triggers.vcs {
+                        triggerRules = """
                 +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/kube/**
                 -:user=doctools:**
             """.trimIndent()
+                    }
+                }
             }
         }
     }
@@ -2638,6 +2652,7 @@ object Server {
 
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                branchFilter = "+:<default>"
                 cleanCheckout = true
             }
 
@@ -2703,7 +2718,6 @@ object Server {
             }
 
             GwDeployEnvs.STAGING.envName -> {
-                deployServerBuildType.vcs.branchFilter = "+:<default>"
                 deployServerBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
@@ -2713,7 +2727,6 @@ object Server {
             }
 
             GwDeployEnvs.PROD.envName -> {
-                deployServerBuildType.vcs.branchFilter = "+:<default>"
                 deployServerBuildType.dependencies.snapshot(publishDockerImageToProdEcrBuildType) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
@@ -3626,7 +3639,8 @@ object Helpers {
         when (deployEnv) {
             GwDeployEnvs.DEV.envName -> {
                 partnersLoginUrl = "https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
-                customersLoginUrl = "https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
+                customersLoginUrl =
+                    "https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
             }
 
             GwDeployEnvs.STAGING.envName -> {
