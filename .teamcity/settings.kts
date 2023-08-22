@@ -388,7 +388,7 @@ object Database {
 
     private fun createSyncDbDataBuildType(deployEnv: String): BuildType {
         val imageName = "alpine"
-        val podName = "postgresql-client-shell-teamcity"
+        val podName = "postgresql-client-shell-teamcity-$deployEnv"
         val dbDumpZipPackageName = "docportalconfig.zip"
         val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)
         val dbDumpAtmosDeployEnv = Helpers.getAtmosDeployEnv(GwDeployEnvs.STAGING.envName)
