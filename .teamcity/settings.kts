@@ -16,8 +16,6 @@ import java.math.BigInteger
 import java.security.MessageDigest
 
 version = "2022.04"
-// TODO: Create a build/chain for deploying all the services at once - server, db, landing pages, data???
-//  Idea: Use composite builds
 project {
 
 //    TODO: Uncomment these builds when the pipeline is ready to merge
@@ -386,6 +384,11 @@ object Database {
         return deployDatabaseBuildType
     }
 
+    // TODO: Idea:
+    //  - Extract the db dump step to a separate build
+    //  - Publish the db dump as an artifact
+    //  - Add an artifact dependency to the sync db data builds to get the db dump from the artifacts of the new build
+    //  - With this approach, we only dump data once and we don't need to create multiple pods in Kubernetes
     private fun createSyncDbDataBuildType(deployEnv: String): BuildType {
         val imageName = "alpine"
         val podName = "postgresql-client-shell-teamcity-$deployEnv"

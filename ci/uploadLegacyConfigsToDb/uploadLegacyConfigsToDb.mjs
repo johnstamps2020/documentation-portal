@@ -73,6 +73,7 @@ if (json.errorCode) {
 const accessToken = json.access_token;
 console.log('Get access token from Okta: OK');
 
+// TODO: Remove page after the initial load to db
 for (const entityType of ['page', 'source', 'doc', 'build']) {
   console.log(`Uploading entities for ${entityType}...`);
   const response = await fetch(
