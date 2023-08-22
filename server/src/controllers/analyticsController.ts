@@ -39,18 +39,25 @@ function installPendo(apiKey) {
 installPendo('f254cb71-32f1-4247-546f-fe9159040603');
 `;
 
-export function getPendoInitializeScript() {
+function getFileContents(filePath: string) {
   try {
-    const scriptPath = join(__dirname, 'utils', 'pendoInitializeScript.js');
-    const fileContents = readFileSync(scriptPath, {
+    return readFileSync(filePath, {
       encoding: 'utf8',
     });
-
-    return fileContents;
   } catch (err) {
     winstonLogger.error(
-      `Problem getting pendo initialize script:
+      `Problem getting script from file: ${filePath} in ANALYTICS CONTROLLER.
           ERROR: ${JSON.stringify(err)}`
     );
   }
+}
+
+export function getPendoInitializeScript() {
+  return getFileContents(join(__dirname, 'utils', 'pendoInitializeScript.js'));
+}
+
+export function getFullStoryIdentifyScript() {
+  return getFileContents(
+    join(__dirname, 'utils', 'fullStoryIdentifyScript.js')
+  );
 }
