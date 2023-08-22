@@ -8,6 +8,7 @@ import {
   pendoInstallScript,
   tagManagerBody,
   getPendoInitializeScript,
+  getFullStoryIdentifyScript,
 } from '../controllers/analyticsController';
 
 function appendToSelectedItem(node: any, str: string) {
@@ -30,11 +31,14 @@ function appendToSelectedItem(node: any, str: string) {
 }
 
 const pendoInitializeScript = getPendoInitializeScript();
-const pendoAndGoogleScripts = `
+const fullStoryIdentifyScript = getFullStoryIdentifyScript();
+const bodyScriptsForAnalytics = `
       <!-- Pendo initialize -->
       <script>${pendoInitializeScript}</script>
       <!-- Google tag manager no-script -->
-      <noscript>${tagManagerBody}</noscript>`;
+      <noscript>${tagManagerBody}</noscript>
+      <!-- FullStory identify -->
+      <script>${fullStoryIdentifyScript}</script>`;
 
 const responseSelectors = [
   {
@@ -59,7 +63,7 @@ const responseSelectors = [
       // Storybook -> div[style="position: static !important;"]
       'div.footerContents, header.wh_header, body.navigation-with-keyboard, div[style="position: static !important;"]',
     func: function (node: any) {
-      appendToSelectedItem(node, pendoAndGoogleScripts);
+      appendToSelectedItem(node, bodyScriptsForAnalytics);
     },
   },
 ];
