@@ -4,7 +4,7 @@ export abstract class GwEntity {
   @PrimaryGeneratedColumn('uuid')
   uuid: string;
 
-  @Column({ type: 'boolean', default: false })
+  @Column({ type: 'boolean', default: true })
   public: boolean;
 
   @Column({ type: 'boolean', default: false })
@@ -13,6 +13,6 @@ export abstract class GwEntity {
   @Column({ type: 'boolean', default: false })
   earlyAccess: boolean;
 
-  @Column({ type: 'boolean', default: false })
+  @Column({ type: 'boolean', default: true })
   isInProduction: boolean;
 }
