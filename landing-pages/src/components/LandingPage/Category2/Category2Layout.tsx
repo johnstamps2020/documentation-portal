@@ -106,7 +106,6 @@ export default function Category2Layout({
         <Grid {...rowContainerProps}>
           <Grid sx={leftSizing}>
             <WhatsNew {...whatsNew} />
-            Gr
           </Grid>
           <Stack marginRight="auto" gap="2rem" flexWrap="wrap">
             <Grid container direction="row" gap="56px">
