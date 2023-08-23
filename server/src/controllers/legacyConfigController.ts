@@ -482,6 +482,7 @@ async function createExternalLinkEntities(
   }
 }
 
+// TODO: Remove this function after the initial load to the database
 async function putPageConfigsInDatabase(): Promise<ApiResponse> {
   try {
     const isDevMode = runningInDevMode();
