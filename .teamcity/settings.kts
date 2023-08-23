@@ -345,7 +345,7 @@ object Database {
             GwDeployEnvs.DEV.envName -> {
                 validateDbDeploymentBuildType.triggers.vcs {
                     triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:db/**
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:/db/**
                         -:user=doctools:**
                     """.trimIndent()
                 }
@@ -449,7 +449,7 @@ object Database {
                 }
                 deployDatabaseBuildType.triggers.vcs {
                     triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:db/**
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:/db/**
                         -:user=doctools:**
                     """.trimIndent()
                 }
@@ -603,7 +603,7 @@ object Database {
             triggers {
                 vcs {
                     triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:/.teamcity/config/**
                         -:user=doctools:**
                         """.trimIndent()
                 }
@@ -2150,7 +2150,7 @@ object Frontend {
                 }
                 deployReactLandingPagesBuildType.triggers.vcs {
                     triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/**
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:/landing-pages/**
                         -:user=doctools:**
                     """.trimIndent()
                 }
@@ -2207,7 +2207,7 @@ object Frontend {
         triggers {
             vcs {
                 triggerRules = """
-                    +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/**
+                    +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:/landing-pages/**
                     -:user=doctools:**
                 """.trimIndent()
             }
@@ -2260,7 +2260,7 @@ object Frontend {
                 GwDeployEnvs.DEV.envName -> {
                     triggers.vcs {
                         triggerRules = """
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/kube/**
+                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:/landing-pages/kube/**
                             -:user=doctools:**
                         """.trimIndent()
                     }
@@ -2440,8 +2440,8 @@ object Server {
 
         triggers.vcs {
             triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/settings.kts
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:/.teamcity/settings.kts
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:/.teamcity/config/**
                 -:user=doctools:**
             """.trimIndent()
         }
@@ -2496,8 +2496,8 @@ object Server {
 
         triggers.vcs {
             triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/package.json
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/yarn.lock
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:/server/package.json
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:/server/yarn.lock
                 -:user=doctools:**
             """.trimIndent()
         }
@@ -2559,7 +2559,7 @@ object Server {
         triggers {
             vcs {
                 triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/**
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:/server/**
                 -:user=doctools:**
             """.trimIndent()
             }
@@ -2620,7 +2620,7 @@ object Server {
                 GwDeployEnvs.DEV.envName -> {
                     triggers.vcs {
                         triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/kube/**
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:/server/kube/**
                 -:user=doctools:**
             """.trimIndent()
                     }
@@ -2700,7 +2700,7 @@ object Server {
                 }
                 deployServerBuildType.triggers.vcs {
                     triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/**
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:/server/**
                         -:user=doctools:**
                     """.trimIndent()
                 }
@@ -3449,7 +3449,7 @@ object Apps {
         triggers {
             vcs {
                 triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:frontend/**
+                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:/frontend/**
                         -:user=doctools:**
                     """.trimIndent()
             }
