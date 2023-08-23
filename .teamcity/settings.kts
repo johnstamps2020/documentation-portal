@@ -18,6 +18,7 @@ import java.security.MessageDigest
 version = "2022.04"
 project {
 
+    // TODO: Review all VCS trigger rules - thay may use relative paths and not work as expected
 //    TODO: Uncomment these builds when the pipeline is ready to merge
 //    GwVcsRoots.createGitVcsRootsFromConfigFiles().forEach {
 //        vcsRoot(it)
@@ -105,6 +106,9 @@ enum class GwConfigParams(val paramValue: String) {
     CONFIG_DB_HOST_DEV("tenant-doctools-docportal-${GwDeployEnvs.DEV.envName}-1.crahnfhpsx5k.us-west-2.rds.amazonaws.com"),
     CONFIG_DB_HOST_STAGING("tenant-doctools-docportal-${GwDeployEnvs.STAGING.envName}-1.crahnfhpsx5k.us-west-2.rds.amazonaws.com"),
     CONFIG_DB_HOST_PROD("tenant-doctools-docportal-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-1.c3qnnou7xlkq.us-east-1.rds.amazonaws.com"),
+    DB_CLIENT_POD_NAME("postgresql-client-shell-teamcity"),
+    DB_CLIENT_IMAGE_NAME("alpine"),
+    DB_DUMP_ZIP_PACKAGE_NAME("docportalconfig.zip"),
 
     // TODO: Change croissant to docportal before merge to master
     DOC_PORTAL_APP_NAME("croissant"),
@@ -196,8 +200,9 @@ object Database {
             buildType(deployDbBuildTypeStaging)
             buildType(deployDbBuildTypeProd)
             buildType(uploadLegacyConfigsToDbBuildType)
+            buildType(DumpDbDataFromStaging)
             listOf(GwDeployEnvs.DEV, GwDeployEnvs.PROD).forEach {
-                buildType(createSyncDbDataBuildType(it.envName))
+                buildType(createRestoreDbDataBuildType(it.envName))
             }
             buildType(testConfigDocsBuildType)
             buildType(testConfigSourcesBuildType)
@@ -478,18 +483,73 @@ object Database {
     //  - Publish the db dump as an artifact
     //  - Add an artifact dependency to the sync db data builds to get the db dump from the artifacts of the new build
     //  - With this approach, we only dump data once and we don't need to create multiple pods in Kubernetes
-    private fun createSyncDbDataBuildType(deployEnv: String): BuildType {
-        val imageName = "alpine"
-        val podName = "postgresql-client-shell-teamcity-$deployEnv"
-        val dbDumpZipPackageName = "docportalconfig.zip"
-        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)
-        val dbDumpAtmosDeployEnv = Helpers.getAtmosDeployEnv(GwDeployEnvs.STAGING.envName)
+
+    private object DumpDbDataFromStaging : BuildType({
+        name = "Dump database data from staging"
+        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+        artifactRules = "${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME}"
+
+        steps {
+            script {
+                name = "Create a database dump"
+                id = Helpers.createIdStringFromName(this.name)
+                scriptContent = """
+                    #!/bin/bash 
+                    set -eu
+                                                    
+                    # Set env variables
+                    ${Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)}
+                    export AWS_SECRET=${'$'}(aws secretsmanager get-secret-value --secret-id tenant-doctools-docportal)
+                    export CONFIG_DB_NAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_name' <<< "${'$'}AWS_SECRET")
+                    export CONFIG_DB_USERNAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_username' <<< "${'$'}AWS_SECRET")
+                    export CONFIG_DB_PASSWORD=${'$'}(jq -r '.SecretString | fromjson | .config_db_password' <<< "${'$'}AWS_SECRET")
+                    export CONFIG_DB_HOST=${GwConfigParams.CONFIG_DB_HOST_STAGING.paramValue}
+                    
+                    
+                    EXIT_CODE=0
+                    aws eks update-kubeconfig --name atmos-${Helpers.getAtmosDeployEnv(GwDeployEnvs.STAGING.envName)} && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} --image=${GwConfigParams.DB_CLIENT_IMAGE_NAME.paramValue} --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
+                    
+                    if [ "${'$'}EXIT_CODE" -eq 0 ]; then
+                        SECONDS=0
+                        while [ ${'$'}SECONDS -le 30 ]; do
+                          status=${'$'}(kubectl get pods ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -o jsonpath='{.status.phase}')
+                          if [ "${'$'}status" == "Running" ]; then
+                            kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && pg_dump -Fd ${'$'}CONFIG_DB_NAME -j 5 -f ${'$'}CONFIG_DB_NAME && zip -r ${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME} ${'$'}CONFIG_DB_NAME" && kubectl cp ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME} ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME} || EXIT_CODE=${'$'}?
+                            break
+                          else
+                            echo "Waiting for the ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} pod to be ready"
+                            sleep 5
+                          fi
+                        done
+                    fi
+                    
+                    kubectl get pods | grep ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} && kubectl delete pod ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} || EXIT_CODE=${'$'}?
+                   
+                    exit ${'$'}EXIT_CODE
+                """.trimIndent()
+                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+            }
+        }
+
+        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+        dependencies {
+            snapshot(uploadLegacyConfigsToDbBuildType) {
+                onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+        }
+    })
+
+    private fun createRestoreDbDataBuildType(deployEnv: String): BuildType {
         val dbRestoreAwsEnvVars: String
         val dbRestoreAtmosDeployEnv: String
         val dbRestoreConfigDbHost: String
         when (deployEnv) {
             GwDeployEnvs.DEV.envName -> {
-                dbRestoreAwsEnvVars = awsEnvVars
+                dbRestoreAwsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
                 dbRestoreAtmosDeployEnv = Helpers.getAtmosDeployEnv(GwDeployEnvs.DEV.envName)
                 dbRestoreConfigDbHost = GwConfigParams.CONFIG_DB_HOST_DEV.paramValue
             }
@@ -508,51 +568,13 @@ object Database {
         }
 
         val syncDbDataBuildType = BuildType {
-            name = "Sync database data to $deployEnv"
+            name = "Restore database data on $deployEnv"
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
             steps {
                 script {
-                    name = "Create a db dump on staging"
-                    scriptContent = """
-                        #!/bin/bash 
-                        set -eu
-                                                        
-                        # Set env variables
-                        $awsEnvVars
-                        export AWS_SECRET=${'$'}(aws secretsmanager get-secret-value --secret-id tenant-doctools-docportal)
-                        export CONFIG_DB_NAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_name' <<< "${'$'}AWS_SECRET")
-                        export CONFIG_DB_USERNAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_username' <<< "${'$'}AWS_SECRET")
-                        export CONFIG_DB_PASSWORD=${'$'}(jq -r '.SecretString | fromjson | .config_db_password' <<< "${'$'}AWS_SECRET")
-                        export CONFIG_DB_HOST=${GwConfigParams.CONFIG_DB_HOST_STAGING.paramValue}
-                        
-                        EXIT_CODE=0
-                        aws eks update-kubeconfig --name atmos-$dbDumpAtmosDeployEnv && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run $podName --image=$imageName --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
-                        
-                        if [ "${'$'}EXIT_CODE" -eq 0 ]; then
-                            SECONDS=0
-                            while [ ${'$'}SECONDS -le 30 ]; do
-                              status=${'$'}(kubectl get pods $podName -o jsonpath='{.status.phase}')
-                              if [ "${'$'}status" == "Running" ]; then
-                                kubectl exec $podName -- sh -c "apk add --no-cache postgresql-client zip && pg_dump -Fd ${'$'}CONFIG_DB_NAME -j 5 -f ${'$'}CONFIG_DB_NAME && zip -r $dbDumpZipPackageName ${'$'}CONFIG_DB_NAME" && kubectl cp $podName:/$dbDumpZipPackageName ./$dbDumpZipPackageName || EXIT_CODE=${'$'}?
-                                break
-                              else
-                                echo "Waiting for the $podName pod to be ready"
-                                sleep 5
-                              fi
-                            done
-                        fi
-                        
-                        kubectl get pods | grep $podName && kubectl delete pod $podName || EXIT_CODE=${'$'}?
-                       
-                        exit ${'$'}EXIT_CODE
-                    """.trimIndent()
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
-                }
-                script {
                     name = "Restore the db dump from staging on $deployEnv"
+                    id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
                         #!/bin/bash 
                         set -eu
@@ -566,23 +588,23 @@ object Database {
                         export CONFIG_DB_HOST=$dbRestoreConfigDbHost
                         
                         EXIT_CODE=0
-                        aws eks update-kubeconfig --name atmos-$dbRestoreAtmosDeployEnv && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run $podName --image=$imageName --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
+                        aws eks update-kubeconfig --name atmos-$dbRestoreAtmosDeployEnv && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} --image=${GwConfigParams.DB_CLIENT_IMAGE_NAME.paramValue} --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
                         
                         if [ "${'$'}EXIT_CODE" -eq 0 ]; then
                             SECONDS=0
                             while [ ${'$'}SECONDS -le 30 ]; do
-                              status=${'$'}(kubectl get pods $podName -o jsonpath='{.status.phase}')
+                              status=${'$'}(kubectl get pods ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -o jsonpath='{.status.phase}')
                               if [ "${'$'}status" == "Running" ]; then
-                                kubectl cp ./$dbDumpZipPackageName $podName:/$dbDumpZipPackageName && kubectl exec $podName -- sh -c "apk add --no-cache postgresql-client zip && unzip ./$dbDumpZipPackageName && pg_restore --clean --if-exists -d ${'$'}CONFIG_DB_NAME ${'$'}CONFIG_DB_NAME" || EXIT_CODE=${'$'}?
+                                kubectl cp ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME} ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME} && kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && unzip ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME} && pg_restore --clean --if-exists -d ${'$'}CONFIG_DB_NAME ${'$'}CONFIG_DB_NAME" || EXIT_CODE=${'$'}?
                                 break
                               else
-                                echo "Waiting for the $podName pod to be ready"
+                                echo "Waiting for the ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} pod to be ready"
                                 sleep 5
                               fi
                             done
                         fi
                         
-                        kubectl get pods | grep $podName && kubectl delete pod $podName || EXIT_CODE=${'$'}?
+                        kubectl get pods | grep ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} && kubectl delete pod ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} || EXIT_CODE=${'$'}?
                        
                         exit ${'$'}EXIT_CODE
                     """.trimIndent()
@@ -595,8 +617,15 @@ object Database {
             features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 
             dependencies {
-                snapshot(uploadLegacyConfigsToDbBuildType) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
+                dependency(DumpDbDataFromStaging) {
+                    snapshot {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+
+                    artifacts {
+                        cleanDestination = true
+                        artifactRules = "${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME}"
+                    }
                 }
             }
 
