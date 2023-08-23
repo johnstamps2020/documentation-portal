@@ -1885,12 +1885,13 @@ object Frontend {
         createTestReactLandingPagesKubernetesConfigFiles(GwDeployEnvs.STAGING.envName)
     private val testKubernetesConfigFilesProd =
         createTestReactLandingPagesKubernetesConfigFiles(GwDeployEnvs.PROD.envName)
+    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScan("landing-pages")
     private val buildAndPublishDockerImageToDevEcrBuildType =
         GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
             GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
             GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl,
             "%teamcity.build.checkoutDir%",
-            listOf(TestReactLandingPagesBuildType)
+            listOf(runCheckmarxScan, TestReactLandingPagesBuildType)
         )
     private val publishDockerImageToProdEcrBuildType = GwBuilds.createPublishDockerImageToProdEcrBuildType(
         GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
@@ -1952,6 +1953,7 @@ object Frontend {
             buildType(deployReactLandingPagesBuildTypeDev)
             buildType(deployReactLandingPagesBuildTypeStaging)
             buildType(deployReactLandingPagesBuildTypeProd)
+            buildType(runCheckmarxScan)
             buildType(TestReactLandingPagesBuildType)
             buildType(testKubernetesConfigFilesDev)
             buildType(testKubernetesConfigFilesStaging)
@@ -2281,12 +2283,13 @@ object Server {
         createTestServerKubernetesConfigFiles(GwDeployEnvs.STAGING.envName)
     private val testKubernetesConfigFilesProd =
         createTestServerKubernetesConfigFiles(GwDeployEnvs.PROD.envName)
+    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScan("server")
     private val buildAndPublishDockerImageToDevEcrBuildType =
         GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
             GwDockerImageTags.DOC_PORTAL.tagValue,
             GwDockerImages.DOC_PORTAL.imageUrl,
             "%teamcity.build.checkoutDir%/server",
-            listOf(RunCheckmarxScan, TestDocSiteServerApp, testConfigDocs, testConfigSources, testConfigBuilds)
+            listOf(runCheckmarxScan, TestDocSiteServerApp, testConfigDocs, testConfigSources, testConfigBuilds)
         )
     private val publishDockerImageToProdEcrBuildType = GwBuilds.createPublishDockerImageToProdEcrBuildType(
         GwDockerImageTags.DOC_PORTAL.tagValue,
@@ -2306,7 +2309,7 @@ object Server {
             buildType(deployServerBuildTypeDev)
             buildType(deployServerBuildTypeStaging)
             buildType(deployServerBuildTypeProd)
-            buildType(RunCheckmarxScan)
+            buildType(runCheckmarxScan)
             buildType(TestDocSiteServerApp)
             buildType(testConfigDocs)
             buildType(testConfigSources)
@@ -2322,47 +2325,6 @@ object Server {
 //            buildType(AuditNpmPackages)
         }
     }
-
-    private object RunCheckmarxScan : BuildType({
-        templates(AbsoluteId("CheckmarxSastScan"))
-        name = "Run Checkmarx scan"
-        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-        params {
-            text("checkmarx.project.name", "doctools")
-            text("checkmarx.source.directory", "server")
-            text(
-                "checkmarx.location.files.exclude ", """
-                !**/_cvs/**/*, !**/.svn/**/*,   !**/.hg/**/*,   !**/.git/**/*,  !**/.bzr/**/*, !**/bin/**/*,
-                !**/obj/**/*,  !**/backup/**/*, !**/.idea/**/*, !**/*.DS_Store, !**/*.ipr,     !**/*.iws,
-                !**/*.bak,     !**/*.tmp,       !**/*.aac,      !**/*.aif,      !**/*.iff,     !**/*.m3u,   !**/*.mid, !**/*.mp3,
-                !**/*.mpa,     !**/*.ra,        !**/*.wav,      !**/*.wma,      !**/*.3g2,     !**/*.3gp,   !**/*.asf, !**/*.asx,
-                !**/*.avi,     !**/*.flv,       !**/*.mov,      !**/*.mp4,      !**/*.mpg,     !**/*.rm,    !**/*.swf, !**/*.vob,
-                !**/*.wmv,     !**/*.bmp,       !**/*.gif,      !**/*.jpg,      !**/*.png,     !**/*.psd,   !**/*.tif, !**/*.swf,
-                !**/*.jar,     !**/*.zip,       !**/*.rar,      !**/*.exe,      !**/*.dll,     !**/*.pdb,   !**/*.7z,  !**/*.gz,
-                !**/*.tar.gz,  !**/*.tar,       !**/*.gz,       !**/*.ahtm,     !**/*.ahtml,   !**/*.fhtml, !**/*.hdm,
-                !**/*.hdml,    !**/*.hsql,      !**/*.ht,       !**/*.hta,      !**/*.htc,     !**/*.htd,   !**/*.war, !**/*.ear,
-                !**/*.htmls,   !**/*.ihtml,     !**/*.mht,      !**/*.mhtm,     !**/*.mhtml,   !**/*.ssi,   !**/*.stm,
-                !**/*.stml,    !**/*.ttml,      !**/*.txn,      !**/*.xhtm,     !**/*.xhtml,   !**/*.class, !**/node_modules/**/*, !**/*.iml,
-                !**/tests/**/*,     !**/.teamcity/**/*,     !**/__tests__/**/*,     !**/images/**/*,        !**/fonts/**/*
-            """.trimIndent()
-            )
-        }
-
-        vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            cleanCheckout = true
-        }
-
-        triggers {
-            vcs {
-                triggerRules = """
-                    +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/**
-                    -:user=doctools:**
-                    """.trimIndent()
-            }
-        }
-    })
 
     private object TestSettingsKts : BuildType({
         name = "Test settings.kts"
@@ -4021,6 +3983,49 @@ object GwBuilds {
                     snapshot(it) {
                         onDependencyFailure = FailureAction.FAIL_TO_START
                     }
+                }
+            }
+        }
+    }
+
+    fun createRunCheckmarxScan(sourceDir: String): BuildType {
+        return BuildType {
+            templates(AbsoluteId("CheckmarxSastScan"))
+            name = "Run Checkmarx scan"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${sourceDir}"))
+
+            params {
+                text("checkmarx.project.name", "doctools")
+                text("checkmarx.source.directory", sourceDir)
+                text(
+                    "checkmarx.location.files.exclude ", """
+                !**/_cvs/**/*, !**/.svn/**/*,   !**/.hg/**/*,   !**/.git/**/*,  !**/.bzr/**/*, !**/bin/**/*,
+                !**/obj/**/*,  !**/backup/**/*, !**/.idea/**/*, !**/*.DS_Store, !**/*.ipr,     !**/*.iws,
+                !**/*.bak,     !**/*.tmp,       !**/*.aac,      !**/*.aif,      !**/*.iff,     !**/*.m3u,   !**/*.mid, !**/*.mp3,
+                !**/*.mpa,     !**/*.ra,        !**/*.wav,      !**/*.wma,      !**/*.3g2,     !**/*.3gp,   !**/*.asf, !**/*.asx,
+                !**/*.avi,     !**/*.flv,       !**/*.mov,      !**/*.mp4,      !**/*.mpg,     !**/*.rm,    !**/*.swf, !**/*.vob,
+                !**/*.wmv,     !**/*.bmp,       !**/*.gif,      !**/*.jpg,      !**/*.png,     !**/*.psd,   !**/*.tif, !**/*.swf,
+                !**/*.jar,     !**/*.zip,       !**/*.rar,      !**/*.exe,      !**/*.dll,     !**/*.pdb,   !**/*.7z,  !**/*.gz,
+                !**/*.tar.gz,  !**/*.tar,       !**/*.gz,       !**/*.ahtm,     !**/*.ahtml,   !**/*.fhtml, !**/*.hdm,
+                !**/*.hdml,    !**/*.hsql,      !**/*.ht,       !**/*.hta,      !**/*.htc,     !**/*.htd,   !**/*.war, !**/*.ear,
+                !**/*.htmls,   !**/*.ihtml,     !**/*.mht,      !**/*.mhtm,     !**/*.mhtml,   !**/*.ssi,   !**/*.stm,
+                !**/*.stml,    !**/*.ttml,      !**/*.txn,      !**/*.xhtm,     !**/*.xhtml,   !**/*.class, !**/node_modules/**/*, !**/*.iml,
+                !**/tests/**/*,     !**/.teamcity/**/*,     !**/__tests__/**/*,     !**/images/**/*,        !**/fonts/**/*
+            """.trimIndent()
+                )
+            }
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                cleanCheckout = true
+            }
+
+            triggers {
+                vcs {
+                    triggerRules = """
+                    +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:$sourceDir/**
+                    -:user=doctools:**
+                    """.trimIndent()
                 }
             }
         }
