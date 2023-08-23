@@ -488,7 +488,7 @@ object Database {
         name = "Dump database data from staging"
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
-        artifactRules = "${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME}"
+        artifactRules = GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue
 
         steps {
             script {
@@ -515,7 +515,7 @@ object Database {
                         while [ ${'$'}SECONDS -le 30 ]; do
                           status=${'$'}(kubectl get pods ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -o jsonpath='{.status.phase}')
                           if [ "${'$'}status" == "Running" ]; then
-                            kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && pg_dump -Fd ${'$'}CONFIG_DB_NAME -j 5 -f ${'$'}CONFIG_DB_NAME && zip -r ${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME} ${'$'}CONFIG_DB_NAME" && kubectl cp ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME} ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME} || EXIT_CODE=${'$'}?
+                            kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && pg_dump -Fd ${'$'}CONFIG_DB_NAME -j 5 -f ${'$'}CONFIG_DB_NAME && zip -r ${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${'$'}CONFIG_DB_NAME" && kubectl cp ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} || EXIT_CODE=${'$'}?
                             break
                           else
                             echo "Waiting for the ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} pod to be ready"
@@ -595,7 +595,7 @@ object Database {
                             while [ ${'$'}SECONDS -le 30 ]; do
                               status=${'$'}(kubectl get pods ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -o jsonpath='{.status.phase}')
                               if [ "${'$'}status" == "Running" ]; then
-                                kubectl cp ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME} ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME} && kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && unzip ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME} && pg_restore --clean --if-exists -d ${'$'}CONFIG_DB_NAME ${'$'}CONFIG_DB_NAME" || EXIT_CODE=${'$'}?
+                                kubectl cp ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && unzip ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && pg_restore --clean --if-exists -d ${'$'}CONFIG_DB_NAME ${'$'}CONFIG_DB_NAME" || EXIT_CODE=${'$'}?
                                 break
                               else
                                 echo "Waiting for the ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} pod to be ready"
@@ -624,7 +624,7 @@ object Database {
 
                     artifacts {
                         cleanDestination = true
-                        artifactRules = "${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME}"
+                        artifactRules = GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue
                     }
                 }
             }
