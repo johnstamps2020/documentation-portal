@@ -38,8 +38,6 @@ data "aws_secretsmanager_secret_version" "database_password" {
   secret_id = data.aws_secretsmanager_secret.config_db_password.id
 }
 
-# TODO: remove this comment, this is to test builds
-
 module "aurora_db" {
   source = "git::ssh://git@stash.guidewire.com/ccs/atmos-tfmodule-aurora.git?ref=v6.0.0"
 
