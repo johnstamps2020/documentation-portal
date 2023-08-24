@@ -24,8 +24,6 @@ export function LayoutContextProvider({
   const [backgroundColor, setBackgroundColor] = useState('');
   const [path, setPath] = useState('');
 
-  // TODO: please delete this comment, I'm just testing
-  
   return (
     <LayoutContext.Provider
       value={{
