@@ -39,7 +39,7 @@ project {
     listOf(GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD).forEach {
         buildType(GwBuilds.createDeployDocPortalBuildType(it.envName))
     }
-
+    buildType(GwBuilds.TestSettingsKts)
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
     features.feature(GwProjectFeatures.GwAntennaHouseFormatterServerProjectFeature)
     features.feature(GwProjectFeatures.GwBuildListenerLimitProjectFeature)
@@ -2438,7 +2438,6 @@ object Server {
             buildType(deployServerBuildTypeProd)
             buildType(runCheckmarxScan)
             buildType(TestDocSiteServerApp)
-            buildType(TestSettingsKts)
             buildType(TestHtml5Dependencies)
             buildType(testKubernetesConfigFilesDev)
             buildType(testKubernetesConfigFilesStaging)
@@ -2449,34 +2448,6 @@ object Server {
 //            buildType(AuditNpmPackages)
         }
     }
-
-    private object TestSettingsKts : BuildType({
-        name = "Test settings.kts"
-        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-        vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            cleanCheckout = true
-        }
-
-        steps {
-            maven {
-                goals = "teamcity-configs:generate"
-                pomLocation = ".teamcity/pom.xml"
-                workingDir = ""
-            }
-        }
-
-        triggers.vcs {
-            triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:/.teamcity/settings.kts
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:/.teamcity/config/**
-                -:user=doctools:**
-            """.trimIndent()
-        }
-
-        features.feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-    })
 
     private object TestHtml5Dependencies : BuildType({
         name = "Test HTML5 dependencies"
@@ -3874,6 +3845,34 @@ object Helpers {
 }
 
 object GwBuilds {
+    object TestSettingsKts : BuildType({
+        name = "Test settings.kts"
+        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+        vcs {
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            cleanCheckout = true
+        }
+
+        steps {
+            maven {
+                goals = "teamcity-configs:generate"
+                pomLocation = ".teamcity/pom.xml"
+                workingDir = ""
+            }
+        }
+
+        triggers.vcs {
+            triggerRules = """
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:/.teamcity/settings.kts
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:/.teamcity/config/**
+                -:user=doctools:**
+            """.trimIndent()
+        }
+
+        features.feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+    })
+
     fun createDeployDocPortalBuildType(deployEnv: String): BuildType {
         val snapshotDependencies = when (deployEnv) {
             GwDeployEnvs.DEV.envName -> listOf(
