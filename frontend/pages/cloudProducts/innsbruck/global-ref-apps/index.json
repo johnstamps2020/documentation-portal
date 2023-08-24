@@ -1,0 +1,67 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Global Content Reference Applications",
+  "template": "page",
+  "class": "blue-theme innsbruck threeCards",
+  "selector": {
+    "label": "Select cloud release",
+    "selectedItem": "Innsbruck (2023.10)",
+    "items": [
+      {
+        "label": "Hakuba (2023.06)",
+        "page": "../../hakuba/global-ref-apps"
+      },
+      {
+        "label": "Garmisch (2023.02)",
+        "page": "../../garmisch/global-ref-apps"
+      },
+      {
+        "label": "Flaine (2022.09)",
+        "page": "../../flaine/global-ref-apps"
+      }
+    ]
+  },
+  "items": [
+    {
+      "label": "London Market",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Release Notes",
+          "id": "londonrninnsbruck"
+        },
+        {
+          "label": "ClaimCenter for London Market Application Guide",
+          "id": "londonccappinnsbruck"
+        },
+        {
+          "label": "PolicyCenter for London Market Application Guide",
+          "id": "londonpcappinnsbruck"
+        },
+        {
+          "label": "Configuration",
+          "id": "londonconfiginnsbruck"
+        }
+      ]
+    },
+    {
+      "label": "US Standards-based Template Framework",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Standards-based Template Framework Guide",
+          "id": "sbtfwguide"
+        },
+        {
+          "label": "Standards-based Template Customization",
+          "id": "sbtfwcustomization"
+        }
+      ] 
+    }
+  ],
+  "search_filters": {
+    "platform": [
+      "Cloud"
+    ]
+  }
+}

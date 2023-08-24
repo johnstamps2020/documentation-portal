@@ -10,7 +10,6 @@
         "product": ["Predict"],
         "version": ["latest"],
         "release": [
-          "Banff",
           "Cortina",
           "Dobson",
           "Elysian",
@@ -54,8 +53,6 @@
         "product": ["Compare"],
         "version": ["latest"],
         "release": [
-          "Aspen",
-          "Banff",
           "Cortina",
           "Dobson",
           "Elysian",
@@ -98,8 +95,6 @@
         "product": ["Guidewire Cloud Home"],
         "version": ["latest"],
         "release": [
-          "Aspen",
-          "Banff",
           "Cortina",
           "Dobson",
           "Elysian",
@@ -195,8 +190,6 @@
         "product": ["Glossary"],
         "version": ["latest"],
         "release": [
-          "Aspen",
-          "Banff",
           "Cortina",
           "Dobson",
           "Elysian",

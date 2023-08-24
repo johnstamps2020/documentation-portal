@@ -1,0 +1,112 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Cloud Platform",
+  "template": "page",
+  "class": "threeCards version ja-JP l10n",
+  "items": [
+    {
+      "label": "2023.06",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guidewire Cloud Home ヘルプ",
+          "id": "gchjaJPhelprelease"
+        }
+      ]
+    },
+    {
+      "label": "2022.09",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "リリースノート",
+          "link": "/l10n/pdfs/ja-JP/cp/2022.09/GWCP-ReleaseNotes_ja-JP.pdf"
+        },
+        {
+          "label": "Guidewire Cloud Console ガイド",
+          "link": "/l10n/pdfs/ja-JP/cp/2022.09/guidewire_cloud_platform_guide_ja-JP.pdf"
+        },
+        {
+          "label": "Guidewire Cloud Platform の操作",
+          "link": "/l10n/pdfs/ja-JP/cp/2022.09/CloudPlatform_ja-JP.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2022.06",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud Standards",
+          "link": "/l10n/pdfs/ja-JP/cp/2022.06/CloudStandards(surepath)-JA.pdf"
+        }
+      ]
+    }
+  ],
+  "selector": {
+    "label": "製品を選択",
+    "selectedItem": "Cloud Platform",
+    "items": [
+      {
+        "label": "Garmisch (2023.02) の新機能",
+        "page": "../202302garmischwhatsnew"
+      },
+      {
+        "label": "BillingCenter",
+        "page": "../bc"
+      },
+      {
+        "label": "ClaimCenter",
+        "page": "../cc"
+      },
+      {
+        "label": "CustomerEngage Account Management",
+        "page": "../ce-am"
+      },
+      {
+        "label": "CustomerEngage Account Management for ClaimCenter",
+        "page": "../ce-claims"
+      },
+      {
+        "label": "CustomerEngage Quote and Buy",
+        "page": "../ce-qb"
+      },
+      {
+        "label": "InsuranceSuite Contact Management",
+        "page": "../cm"
+      },
+      {
+        "label": "Guidewire Testing",
+        "page": "../gtest"
+      },
+      {
+        "label": "Guidewire Identity Federation Hub",
+        "page": "../gwid"
+      },
+      {
+        "label": "Guidewire for Salesforce",
+        "page": "../gwsf"
+      },
+      {
+        "label": "InsuranceSuite Configuration Upgrade Tools",
+        "page": "../is-configupgradetools"
+      },
+      {
+        "label": "PolicyCenter",
+        "page": "../pc"
+      },
+      {
+        "label": "ProducerEngage",
+        "page": "../pe"
+      },
+      {
+        "label": "ServiceRepEngage",
+        "page": "../sre"
+      },
+      {
+        "label": "VendorEngage",
+        "page": "../ve"
+      }
+    ]
+  }
+}

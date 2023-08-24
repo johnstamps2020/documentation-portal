@@ -26,14 +26,6 @@
       {
         "label": "Cortina (2021.04)",
         "page": "../../../cortina/billingCenterCloud/bcGwCloud/2021.04"
-      },
-      {
-        "label": "Banff (2020.11)",
-        "page": "../../../banff/billingCenterCloud/bcGwCloud/2020.11"
-      },
-      {
-        "label": "Aspen (2020.05)",
-        "page": "../../../aspen/billingCenterCloud"
       }
     ]
   },
@@ -66,7 +58,7 @@
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools460"
+          "id": "isconfigupgradetools470"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools Compatibility",

@@ -31,14 +31,6 @@
       {
         "label": "Cortina",
         "page": "../cortina"
-      },
-      {
-        "label": "Banff",
-        "page": "../banff"
-      },
-      {
-        "label": "Aspen",
-        "page": "../aspen"
       }
     ]
   },

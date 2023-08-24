@@ -81,6 +81,15 @@
       "docId": "is202306access",
       "indexRedirect": true,
       "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "GT-Overview.ditamap",
+      "srcId": "testingframeworks202306src",
+      "docId": "testing202306overview",
+      "indexRedirect": true,
+      "disabled": false
     }
   ]
 }

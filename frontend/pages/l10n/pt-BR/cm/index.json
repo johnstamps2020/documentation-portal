@@ -1,0 +1,76 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "InsuranceSuite Contact Management",
+  "template": "page",
+  "class": "threeCards version pt-BR l10n",
+  "items": [
+    {
+      "label": "2021.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guia de gerenciamento de contatos da Guidewire",
+          "link": "/l10n/pdfs/pt-BR/cm/2021.11/ContactMgmtGuide_pt-BR.pdf"
+        }
+      ]
+    }
+  ],
+  "selector": {
+    "label": "Selecione o produto",
+    "selectedItem": "InsuranceSuite Contact Management",
+    "items": [
+      {
+        "label": "BillingCenter",
+        "page": "../bc"
+      },
+      {
+        "label": "ClaimCenter",
+        "page": "../cc"
+      },
+      {
+        "label": "Cloud Data Access",
+        "page": "../cda"
+      },
+      {
+        "label": "CustomerEngage Account Management",
+        "page": "../ce-am"
+      },
+      {
+        "label": "CustomerEngage Quote and Buy",
+        "page": "../ce-qb"
+      },
+      {
+        "label": "DataHub",
+        "page": "../dh"
+      },
+      {
+        "label": "Explore",
+        "page": "../explore"
+      },
+      {
+        "label": "Guidewire Cloud Console",
+        "page": "../gcc"
+      },
+      {
+        "label": "InfoCenter",
+        "page": "../ic"
+      },
+      {
+        "label": "PolicyCenter",
+        "page": "../pc"
+      },
+      {
+        "label": "ProducerEngage",
+        "page": "../pe"
+      },
+      {
+        "label": "ServiceRepEngage",
+        "page": "../sre"
+      },
+      {
+        "label": "VendorEngage",
+        "page": "../ve"
+      }
+    ]
+  }
+}

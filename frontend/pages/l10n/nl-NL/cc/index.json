@@ -1,0 +1,18 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "ClaimCenter",
+  "template": "page",
+  "class": "threeCards version nl-NL l10n",
+  "items": [
+    {
+      "label": "10.0.2",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guidewire Contact Management Guide",
+          "link": "/l10n/pdfs/nl-NL/cc/10.0.2/nl-CC-ContactMgmtGuide.pdf"
+        }
+      ]
+    }
+  ]
+}

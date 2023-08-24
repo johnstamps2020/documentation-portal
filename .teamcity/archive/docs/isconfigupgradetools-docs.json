@@ -1,0 +1,23 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "isconfigupgradetools310",
+      "title": "InsuranceSuite Configuration Upgrade Tools",
+      "url": "isconfigupgradetools/310",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": ["3.1.0"],
+        "release": ["Aspen", "Banff"],
+        "language": "en"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

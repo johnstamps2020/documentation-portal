@@ -1,0 +1,100 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "inexcelrating23",
+      "title": "Excel Designed Rating 2.3",
+      "url": "cloud/in/excelrating23",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2020.2", "2020.1"],
+        "subject": ["Features and functionality"],
+        "release": ["Aspen", "Banff"],
+        "language": "en"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20202studiorn",
+      "title": "Studio 2020.2 Release Notes",
+      "url": "cloud/in/20202/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2020.2"],
+        "subject": ["Release notes"],
+        "release": ["Banff"],
+        "language": "en"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20201studiorn",
+      "title": "Studio 2020.1 Release Notes",
+      "url": "cloud/in/20201/studiorn",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2020.1"],
+        "subject": ["Release notes"],
+        "release": ["Aspen"],
+        "language": "en"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20202rn",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20202/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2020.2"],
+        "subject": ["Release notes"],
+        "release": ["Banff"],
+        "language": "en"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "in20201rn",
+      "title": "Core Release Notes",
+      "url": "cloud/in/20201/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceNow"],
+        "version": ["2020.1"],
+        "subject": ["Release notes"],
+        "release": ["Aspen"],
+        "language": "en"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

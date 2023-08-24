@@ -6,16 +6,6 @@
   "class": "threeCards",
   "items": [
     {
-      "label": "Aspen",
-      "page": "aspen",
-      "env": ["staging", "prod"]
-    },
-    {
-      "label": "Banff",
-      "page": "banff",
-      "env": ["staging", "prod"]
-    },
-    {
       "label": "Cortina",
       "page": "cortina"
     },

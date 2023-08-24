@@ -2,6 +2,24 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
+      "id": "isconfigupgradetools470",
+      "title": "InsuranceSuite Configuration Upgrade Tools",
+      "url": "isconfigupgradetools/470",
+      "metadata": {
+        "platform": ["Cloud", "Self-managed"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": ["4.7.0"],
+        "release": ["Dobson", "Elysian", "Flaine", "Garmisch"],
+        "language": "en"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "isconfigupgradetools460",
       "title": "InsuranceSuite Configuration Upgrade Tools",
       "url": "isconfigupgradetools/460",
@@ -45,7 +63,7 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.4.0"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"],
+        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -63,7 +81,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.3.0"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"],
+        "release": ["Cortina", "Dobson", "Elysian"],
+        "subject": ["Installation"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -81,7 +100,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.2.0"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "release": ["Cortina", "Dobson"],
+        "subject": ["Installation"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -99,7 +119,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.1.0"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "release": ["Cortina", "Dobson"],
+        "subject": ["Installation"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -117,7 +138,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["4.0.0"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "release": ["Cortina", "Dobson"],
+        "subject": ["Installation"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -135,25 +157,8 @@
         "platform": ["Cloud", "Self-managed"],
         "product": ["InsuranceSuite Configuration Upgrade Tools"],
         "version": ["3.3.0"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
-        "language": "en"
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "isconfigupgradetools310",
-      "title": "InsuranceSuite Configuration Upgrade Tools",
-      "url": "isconfigupgradetools/310",
-      "metadata": {
-        "platform": ["Cloud", "Self-managed"],
-        "product": ["InsuranceSuite Configuration Upgrade Tools"],
-        "version": ["3.1.0"],
-        "release": ["Aspen", "Banff", "Cortina"],
+        "release": ["Cortina", "Dobson"],
+        "subject": ["Installation"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
