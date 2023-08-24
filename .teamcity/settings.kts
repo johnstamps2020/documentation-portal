@@ -408,7 +408,6 @@ object Database {
 
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot, "+:db")
-                branchFilter = "+:<default>"
                 cleanCheckout = true
             }
 
@@ -654,7 +653,6 @@ object Database {
 
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:<default>"
                 cleanCheckout = true
             }
 
@@ -1846,7 +1844,6 @@ object Content {
 
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:<default>"
                 cleanCheckout = true
             }
             steps {
@@ -1917,7 +1914,6 @@ object Content {
 
         vcs {
             root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            branchFilter = "+:<default>"
             cleanCheckout = true
         }
 
@@ -1984,7 +1980,6 @@ object Content {
 
         vcs {
             root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            branchFilter = "+:<default>"
             cleanCheckout = true
         }
 
@@ -2103,7 +2098,6 @@ object Frontend {
 
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:<default>"
                 cleanCheckout = true
             }
 
@@ -2305,7 +2299,6 @@ object Frontend {
 
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:<default>"
                 cleanCheckout = true
             }
 
@@ -2336,7 +2329,6 @@ object Frontend {
 
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:<default>"
                 cleanCheckout = true
             }
 
@@ -2376,8 +2368,6 @@ object Frontend {
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
                 root(GwVcsRoots.DitaOtPluginsVcsRoot, "+:.=>$ditaOutPluginsCheckoutDir")
-
-                branchFilter = "+:<default>"
                 cleanCheckout = true
             }
 
@@ -2650,7 +2640,6 @@ object Server {
 
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:<default>"
                 cleanCheckout = true
             }
 
@@ -3367,7 +3356,7 @@ object Apps {
             subProject(FlailSSGProject)
         }
     }
-
+    // TODO: Remove this project after switch to main
     object FlailSSGProject : Project({
         name = "Flail SSG"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
@@ -3384,7 +3373,6 @@ object Apps {
 
         vcs {
             root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            branchFilter = "+:<default>"
             cleanCheckout = true
         }
 
@@ -3467,6 +3455,7 @@ object Apps {
         features {
             feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
             feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
         }
     })
 }
@@ -3933,7 +3922,6 @@ object GwBuilds {
 
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                branchFilter = "+:<default>"
                 cleanCheckout = true
             }
 
@@ -5368,7 +5356,6 @@ object GwVcsRoots {
         Helpers.resolveRelativeIdFromIdString("Documentation Portal git repo"),
         "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
         "feature/typeorm",
-        listOf("(refs/heads/feature/typeorm*)")
     )
 
     val LocalizedPdfsGitVcsRoot = createGitVcsRoot(
