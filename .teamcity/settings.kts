@@ -294,6 +294,7 @@ object Database {
                 feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
                 feature(GwBuildFeatures.GwSshAgentBuildFeature)
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
             }
         }
     }
@@ -343,8 +344,10 @@ object Database {
             }
 
             features {
+                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
                 feature(GwBuildFeatures.GwSshAgentBuildFeature)
+                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
             }
         }
 
@@ -479,12 +482,6 @@ object Database {
 
         return deployDatabaseBuildType
     }
-
-    // TODO: Idea:
-    //  - Extract the db dump step to a separate build
-    //  - Publish the db dump as an artifact
-    //  - Add an artifact dependency to the sync db data builds to get the db dump from the artifacts of the new build
-    //  - With this approach, we only dump data once and we don't need to create multiple pods in Kubernetes
 
     private object DumpDbDataFromStaging : BuildType({
         name = "Dump database data from staging"
@@ -2231,8 +2228,8 @@ object Frontend {
         }
 
         features {
-            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(Helpers.createFullGitBranchName("feature/typeorm")))
             feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
         }
 
         triggers {
@@ -2285,6 +2282,7 @@ object Frontend {
             features {
                 feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
             }
 
             when (deployEnv) {
@@ -2473,7 +2471,10 @@ object Server {
             """.trimIndent()
         }
 
-        features.feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+        features {
+            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+        }
     })
 
     // Temporarily disabled
@@ -2496,6 +2497,11 @@ object Server {
             }
         }
 
+        features {
+            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+        }
+
         triggers.vcs {
             triggerRules = """
                 +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/package.json
@@ -2504,7 +2510,6 @@ object Server {
             """.trimIndent()
         }
 
-        features.feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
     })
 
     private object TestDocSiteServerApp : BuildType({
@@ -2558,6 +2563,12 @@ object Server {
             }
         }
 
+        features {
+            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+            feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+        }
+
         triggers {
             vcs {
                 triggerRules = """
@@ -2565,11 +2576,6 @@ object Server {
                 -:user=doctools:**
             """.trimIndent()
             }
-        }
-
-        features {
-            feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
         }
     })
 
@@ -2616,6 +2622,7 @@ object Server {
             features {
                 feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
             }
 
             when (deployEnv) {
@@ -4060,6 +4067,11 @@ object GwBuilds {
             vcs {
                 root(GwVcsRoots.DocumentationPortalGitVcsRoot)
                 cleanCheckout = true
+            }
+
+            features {
+                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
             }
 
             triggers {
