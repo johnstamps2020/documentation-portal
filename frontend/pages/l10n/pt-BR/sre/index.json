@@ -1,0 +1,102 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "ServiceRepEngage",
+  "template": "page",
+  "class": "threeCards version pt-BR l10n",
+  "items": [
+    {
+      "label": "11.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guia de instalação",
+          "link": "/l10n/pdfs/pt-BR/sre/11.1/pt-SRE-onprem_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guia de administração e segurança",
+          "link": "/l10n/pdfs/pt-BR/sre/10.0.1/pt-SRE_Admin-and-Security Guide.pdf"
+        },
+        {
+          "label": "Guia de instalação e configuração do Live Style Guide",
+          "link": "/l10n/pdfs/pt-BR/sre/10.0.1/pt-SRE_Live Style Guide Install and Config.pdf"
+        },
+        {
+          "label": "Guia de instalação",
+          "link": "/l10n/pdfs/pt-BR/sre/10.0.1/pt-SRE_InstallGuide.pdf"
+        },
+        {
+          "label": "Guia de configuração",
+          "link": "/l10n/pdfs/pt-BR/sre/10.0.1/pt-SRE_ConfigurationGuide.pdf"
+        },
+        {
+          "label": "Guia do aplicativo",
+          "link": "/l10n/pdfs/pt-BR/sre/10.0.1/pt-SRE_AppGuide.pdf"
+        }
+      ]
+    }
+  ],
+  "selector": {
+    "label": "Selecione o produto",
+    "selectedItem": "ServiceRepEngage",
+    "items": [
+      {
+        "label": "BillingCenter",
+        "page": "../bc"
+      },
+      {
+        "label": "ClaimCenter",
+        "page": "../cc"
+      },
+      {
+        "label": "Cloud Data Access",
+        "page": "../cda"
+      },
+      {
+        "label": "CustomerEngage Account Management",
+        "page": "../ce-am"
+      },
+      {
+        "label": "CustomerEngage Quote and Buy",
+        "page": "../ce-qb"
+      },
+      {
+        "label": "InsuranceSuite Contact Management",
+        "page": "../cm"
+      },
+      {
+        "label": "DataHub",
+        "page": "../dh"
+      },
+      {
+        "label": "Explore",
+        "page": "../explore"
+      },
+      {
+        "label": "Guidewire Cloud Console",
+        "page": "../gcc"
+      },
+      {
+        "label": "InfoCenter",
+        "page": "../ic"
+      },
+      {
+        "label": "PolicyCenter",
+        "page": "../pc"
+      },
+      {
+        "label": "ProducerEngage",
+        "page": "../pe"
+      },
+      {
+        "label": "VendorEngage",
+        "page": "../ve"
+      }
+    ]
+  }
+}

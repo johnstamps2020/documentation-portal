@@ -1,0 +1,122 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "日本語",
+  "template": "page",
+  "class": "threeCards product ja-JP l10n",
+  "items": [
+    {
+      "label": "Garmisch (2023.02) の新機能",
+      "class": "productFamily cardShadow",
+      "page": "202302garmischwhatsnew"
+    },
+    {
+      "label": "BillingCenter",
+      "class": "productFamily cardShadow",
+      "page": "bc"
+    },
+    {
+      "label": "ClaimCenter",
+      "class": "productFamily cardShadow",
+      "page": "cc"
+    },
+    {
+      "label": "CustomerEngage Account Management",
+      "class": "productFamily cardShadow",
+      "page": "ce-am"
+    },
+    {
+      "label": "CustomerEngage Account Management for ClaimCenter",
+      "class": "productFamily cardShadow",
+      "page": "ce-claims"
+    },
+    {
+      "label": "CustomerEngage Quote and Buy",
+      "class": "productFamily cardShadow",
+      "page": "ce-qb"
+    },
+    {
+      "label": "InsuranceSuite Contact Management",
+      "class": "productFamily cardShadow",
+      "page": "cm"
+    },
+    {
+      "label": "Cloud Platform",
+      "class": "productFamily cardShadow",
+      "page": "cp"
+    },
+    {
+      "label": "Guidewire Testing",
+      "class": "productFamily cardShadow",
+      "page": "gtest"
+    },
+    {
+      "label": "Guidewire Identity Federation Hub",
+      "class": "productFamily cardShadow",
+      "page": "gwid"
+    },
+    {
+      "label": "Guidewire for Salesforce",
+      "class": "productFamily cardShadow",
+      "page": "gwsf"
+    },
+    {
+      "label": "InsuranceSuite Configuration Upgrade Tools",
+      "class": "productFamily cardShadow",
+      "page": "is-configupgradetools"
+    },
+    {
+      "label": "PolicyCenter",
+      "class": "productFamily cardShadow",
+      "page": "pc"
+    },
+    {
+      "label": "ProducerEngage",
+      "class": "productFamily cardShadow",
+      "page": "pe"
+    },
+    {
+      "label": "ServiceRepEngage",
+      "class": "productFamily cardShadow",
+      "page": "sre"
+    },
+    {
+      "label": "VendorEngage",
+      "class": "productFamily cardShadow",
+      "page": "ve"
+    }
+  ],
+  "selector": {
+    "label": "言語を選択する",
+    "selectedItem": "日本語",
+    "items": [
+      {
+        "label": "Deutsch",
+        "page": "../de-DE"
+      },
+      {
+        "label": "Español (España)",
+        "page": "../es-ES"
+      },
+      {
+        "label": "Español",
+        "page": "../es-LA"
+      },
+      {
+        "label": "Français",
+        "page": "../fr-FR"
+      },
+      {
+        "label": "Italiano",
+        "page": "../it-IT"
+      },
+      {
+        "label": "Nederlands",
+        "page": "../nl-NL"
+      },
+      {
+        "label": "Português",
+        "page": "../pt-BR"
+      }
+    ]
+  }
+}

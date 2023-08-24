@@ -8,12 +8,6 @@
       "branch": "main"
     },
     {
-      "id": "srcjutro411",
-      "title": "Jutro Design System 4.1.1",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",
-      "branch": "release/4.1.1"
-    },
-    {
       "id": "srcjutro421",
       "title": "Jutro Design System 4.2.1",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/jutro-docs-external.git",

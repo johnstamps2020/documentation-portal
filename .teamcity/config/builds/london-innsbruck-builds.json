@@ -1,0 +1,41 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "CCLMAppGuide.ditamap",
+      "srcId": "lminnsbrucksrc",
+      "docId": "londonccappinnsbruck",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "PCLMAppGuide.ditamap",
+      "srcId": "lminnsbrucksrc",
+      "docId": "londonpcappinnsbruck",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "LMConfigGuide.ditamap",
+      "srcId": "lminnsbrucksrc",
+      "docId": "londonconfiginnsbruck",
+      "indexRedirect": true,
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "LMReleaseNotes.ditamap",
+      "srcId": "lminnsbrucksrc",
+      "docId": "londonrninnsbruck",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}

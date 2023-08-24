@@ -171,6 +171,25 @@
       "public": false,
       "internal": false,
       "earlyAccess": true
+    },
+    {
+      "id": "testing202306overview",
+      "title": "Overview of GT: Framework",
+      "url": "cloud/testing/202306/overview",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["BillingCenter", "ClaimCenter", "PolicyCenter"],
+        "version": ["2023.06"],
+        "release": ["Hakuba"],
+        "subject": ["Features and functionality"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
     }
   ]
 }

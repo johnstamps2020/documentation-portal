@@ -1,0 +1,156 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Garmisch (2023.02) の新機能",
+  "template": "page",
+  "class": "threeCards version ja-JP l10n",
+  "items": [
+    {
+      "label": "VendorEngage",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "リリースノート",
+          "link": "/l10n/pdfs/ja-JP/202302garmischwhatsnew/VendorEngage/Loc_ReleaseNotes_ve.pdf"
+        }
+      ]
+    },
+    {
+      "label": "ServiceRepEngage",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "リリースノート",
+          "link": "/l10n/pdfs/ja-JP/202302garmischwhatsnew/ServiceRepEngage/Loc_ReleaseNotes_sre.pdf"
+        }
+      ]
+    },
+    {
+      "label": "Guidewire Testing",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "リリースノート",
+          "link": "/l10n/pdfs/ja-JP/202302garmischwhatsnew/Guidewire Testing/Guidewire_Test_Automation202302_ReleaseNotes.pdf"
+        }
+      ]
+    },
+    {
+      "label": "Garmisch",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Garmisch の新機能",
+          "link": "/l10n/pdfs/ja-JP/202302garmischwhatsnew/Garmisch/whatsnew.pdf"
+        }
+      ]
+    },
+    {
+      "label": "CustomerEngage Account Management for ClaimCenter",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "リリースノート",
+          "link": "/l10n/pdfs/ja-JP/202302garmischwhatsnew/CustomerEngage Account Management for ClaimCenter/Loc_ReleaseNotes_ceclaims.pdf"
+        }
+      ]
+    },
+    {
+      "label": "Cloud Platform",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "リリースノート",
+          "link": "/l10n/pdfs/ja-JP/202302garmischwhatsnew/Cloud Platform/GWCP-ReleaseNotes.pdf"
+        }
+      ]
+    },
+    {
+      "label": "ClaimCenter",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "コンフィギュレーションアップグレードツールガイド",
+          "link": "/l10n/pdfs/ja-JP/202302garmischwhatsnew/ClaimCenter/InsuranceSuiteConfigurationUpgradeTools.pdf"
+        },
+        {
+          "label": "アップデートガイド",
+          "link": "/l10n/pdfs/ja-JP/202302garmischwhatsnew/ClaimCenter/UpdateGuide.pdf"
+        },
+        {
+          "label": "コンフィギュレーションアップグレードツールの互換性",
+          "link": "/l10n/pdfs/ja-JP/202302garmischwhatsnew/ClaimCenter/ISUpgradeCompatibility.pdf"
+        },
+        {
+          "label": "リリースノート",
+          "link": "/l10n/pdfs/ja-JP/202302garmischwhatsnew/ClaimCenter/ClaimCenter_ReleaseNotes.pdf"
+        }
+      ]
+    }
+  ],
+  "selector": {
+    "label": "製品を選択",
+    "selectedItem": "Garmisch (2023.02) の新機能",
+    "items": [
+      {
+        "label": "BillingCenter",
+        "page": "../bc"
+      },
+      {
+        "label": "ClaimCenter",
+        "page": "../cc"
+      },
+      {
+        "label": "CustomerEngage Account Management",
+        "page": "../ce-am"
+      },
+      {
+        "label": "CustomerEngage Account Management for ClaimCenter",
+        "page": "../ce-claims"
+      },
+      {
+        "label": "CustomerEngage Quote and Buy",
+        "page": "../ce-qb"
+      },
+      {
+        "label": "InsuranceSuite Contact Management",
+        "page": "../cm"
+      },
+      {
+        "label": "Cloud Platform",
+        "page": "../cp"
+      },
+      {
+        "label": "Guidewire Testing",
+        "page": "../gtest"
+      },
+      {
+        "label": "Guidewire Identity Federation Hub",
+        "page": "../gwid"
+      },
+      {
+        "label": "Guidewire for Salesforce",
+        "page": "../gwsf"
+      },
+      {
+        "label": "InsuranceSuite Configuration Upgrade Tools",
+        "page": "../is-configupgradetools"
+      },
+      {
+        "label": "PolicyCenter",
+        "page": "../pc"
+      },
+      {
+        "label": "ProducerEngage",
+        "page": "../pe"
+      },
+      {
+        "label": "ServiceRepEngage",
+        "page": "../sre"
+      },
+      {
+        "label": "VendorEngage",
+        "page": "../ve"
+      }
+    ]
+  }
+}

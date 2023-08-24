@@ -1,0 +1,166 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "PolicyCenter",
+  "template": "page",
+  "class": "threeCards version pt-BR l10n",
+  "items": [
+    {
+      "label": "2021.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guia do aplicativo",
+          "link": "/l10n/pdfs/pt-BR/pc/2021.11/PC-AppGuide_pt-BR.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guia de configuração",
+          "link": "/l10n/pdfs/pt-BR/pc/2020.11/PCCloud202011_pt-BR_ConfigGuide.pdf"
+        },
+        {
+          "label": "Guia do Advanced Product Designer",
+          "link": "/l10n/pdfs/pt-BR/pc/2020.11/Cloud202011_pt-BR_AdvancedProductDesigner.pdf"
+        },
+        {
+          "label": "Guia de instalação",
+          "link": "/l10n/pdfs/pt-BR/pc/2020.11/PCCloud202011_pt-BR_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guia do aplicativo",
+          "link": "/l10n/pdfs/pt-BR/pc/2020.05/IS_CL_202005_pt-BR_PC-AppGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.1.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guia de gerenciamento de contatos da Guidewire",
+          "link": "/l10n/pdfs/pt-BR/pc/10.1.1/PC-ContactMgmtGuide_PTBR.pdf"
+        },
+        {
+          "label": "Guia do Advanced Product Designer",
+          "link": "/l10n/pdfs/pt-BR/pc/10.1.1/AdvancedProductDesigner_PTBR.pdf"
+        },
+        {
+          "label": "Guia do aplicativo",
+          "link": "/l10n/pdfs/pt-BR/pc/10.1.1/PC-AppGuide_PTBR.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.2",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guia de regras",
+          "link": "/l10n/pdfs/pt-BR/pc/10.0.2/pt-PC-RulesGuide.pdf"
+        },
+        {
+          "label": "Guia do aplicativo",
+          "link": "/l10n/pdfs/pt-BR/pc/10.0.2/pt-PC-AppGuide.pdf"
+        },
+        {
+          "label": "Guia de configuração",
+          "link": "/l10n/pdfs/pt-BR/pc/10.0.2/pt-PC-ConfigGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guia de instalação",
+          "link": "/l10n/pdfs/pt-BR/pc/10.0.0/pt-PC-InstallGuide.pdf"
+        },
+        {
+          "label": "Guia de regras",
+          "link": "/l10n/pdfs/pt-BR/pc/10.0.0/pt-PC-RulesGuide.pdf"
+        },
+        {
+          "label": "Guia do aplicativo",
+          "link": "/l10n/pdfs/pt-BR/pc/10.0.0/pt-PC-AppGuide.pdf"
+        },
+        {
+          "label": "Guia de gerenciamento de contatos",
+          "link": "/l10n/pdfs/pt-BR/pc/10.0.0/pt-PC-ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "Guia de configuração",
+          "link": "/l10n/pdfs/pt-BR/pc/10.0.0/pt-PC-ConfigGuide.pdf"
+        }
+      ]
+    }
+  ],
+  "selector": {
+    "label": "Selecione o produto",
+    "selectedItem": "PolicyCenter",
+    "items": [
+      {
+        "label": "BillingCenter",
+        "page": "../bc"
+      },
+      {
+        "label": "ClaimCenter",
+        "page": "../cc"
+      },
+      {
+        "label": "Cloud Data Access",
+        "page": "../cda"
+      },
+      {
+        "label": "CustomerEngage Account Management",
+        "page": "../ce-am"
+      },
+      {
+        "label": "CustomerEngage Quote and Buy",
+        "page": "../ce-qb"
+      },
+      {
+        "label": "InsuranceSuite Contact Management",
+        "page": "../cm"
+      },
+      {
+        "label": "DataHub",
+        "page": "../dh"
+      },
+      {
+        "label": "Explore",
+        "page": "../explore"
+      },
+      {
+        "label": "Guidewire Cloud Console",
+        "page": "../gcc"
+      },
+      {
+        "label": "InfoCenter",
+        "page": "../ic"
+      },
+      {
+        "label": "ProducerEngage",
+        "page": "../pe"
+      },
+      {
+        "label": "ServiceRepEngage",
+        "page": "../sre"
+      },
+      {
+        "label": "VendorEngage",
+        "page": "../ve"
+      }
+    ]
+  }
+}

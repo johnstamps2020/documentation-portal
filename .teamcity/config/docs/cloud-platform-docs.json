@@ -10,8 +10,6 @@
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "release": [
-          "Aspen",
-          "Banff",
           "Cortina",
           "Dobson",
           "Elysian",
@@ -37,8 +35,6 @@
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "release": [
-          "Aspen",
-          "Banff",
           "Cortina",
           "Dobson",
           "Elysian",
@@ -64,8 +60,6 @@
         "product": ["Cloud Platform"],
         "version": ["latest"],
         "release": [
-          "Aspen",
-          "Banff",
           "Cortina",
           "Dobson",
           "Elysian",

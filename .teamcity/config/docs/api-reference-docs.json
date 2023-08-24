@@ -2,25 +2,6 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "cc202011apiref",
-      "title": "Cloud API Reference",
-      "url": "cloud/cc/202011/apiref",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["ClaimCenter"],
-        "version": ["2020.11"],
-        "release": ["Banff"],
-        "subject": ["Integration"],
-        "language": "en"
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": true,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "in20211apiref",
       "title": "API Reference",
       "url": "cloud/in/20211/apiref",

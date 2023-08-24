@@ -1,0 +1,208 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "ClaimCenter",
+  "template": "page",
+  "class": "threeCards version fr-FR l10n",
+  "items": [
+    {
+      "label": "2021.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de configuration et de flux opérationnels de l'API Cloud",
+          "link": "/l10n/pdfs/fr-FR/cc/2021.11/CC v.2021.11 fr-FR CloudAPIGuide-BusinessFlows.pdf"
+        },
+        {
+          "label": "French Documentation (fr-FR) Release Notes",
+          "link": "/l10n/pdfs/fr-FR/cc/2021.11/ReleaseNotes-2021.11-docs-fr.pdf"
+        },
+        {
+          "label": "Guide de l'application",
+          "link": "/l10n/pdfs/fr-FR/cc/2021.11/CC-AppGuide_FR.pdf"
+        },
+        {
+          "label": "Guide d'authentification de l'API Cloud",
+          "link": "/l10n/pdfs/fr-FR/cc/2021.11/CC v.2021.11 fr-FR CloudAPIGuide-Auth.pdf"
+        },
+        {
+          "label": "Guide de configuration",
+          "link": "/l10n/pdfs/fr-FR/cc/2021.11/CC-ConfigGuide_FR.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de configuration",
+          "link": "/l10n/pdfs/fr-FR/cc/2020.11/CC_CL202011_fr-FR_ConfigGuide.pdf"
+        },
+        {
+          "label": "Guide d'installation",
+          "link": "/l10n/pdfs/fr-FR/cc/2020.11/CC_CL202011_fr-FR_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de l'application",
+          "link": "/l10n/pdfs/fr-FR/cc/2020.05/ISCL_202005_fr_CC-AppGuide.pdf"
+        },
+        {
+          "label": "Guide des personnes-ressources de Guidewire",
+          "link": "/l10n/pdfs/fr-FR/cc/2020.05/ISCL_202005_fr_CC_ContactMgmtGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.2.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de l'application",
+          "link": "/l10n/pdfs/fr-FR/cc/10.2.0/CC-AppGuide_fr-FR.pdf"
+        },
+        {
+          "label": "Guide de configuration",
+          "link": "/l10n/pdfs/fr-FR/cc/10.2.0/CC-ConfigGuide_fr-FR.pdf"
+        },
+        {
+          "label": "Guide des personnes-ressources de Guidewire",
+          "link": "/l10n/pdfs/fr-FR/cc/10.2.0/CC-ContactMgmtGuide_fr-FR.pdf"
+        },
+        {
+          "label": "French Documentation (fr-FR) Release Notes",
+          "link": "/l10n/pdfs/fr-FR/cc/10.2.0/ReleaseNotes-10.2.0-docs-fr.pdf"
+        },
+        {
+          "label": "Guide d'installation",
+          "link": "/l10n/pdfs/fr-FR/cc/10.2.0/CC-InstallGuide_fr-FR.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.1.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de l'application",
+          "link": "/l10n/pdfs/fr-FR/cc/10.1.1/CC-AppGuide_FR.pdf"
+        },
+        {
+          "label": "Guide des personnes-ressources de Guidewire",
+          "link": "/l10n/pdfs/fr-FR/cc/10.1.1/CC-ContactMgmtGuide_FR.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.2",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide d'installation",
+          "link": "/l10n/pdfs/fr-FR/cc/10.0.2/InstallGuide.pdf"
+        },
+        {
+          "label": "Guide des règles",
+          "link": "/l10n/pdfs/fr-FR/cc/10.0.2/RulesGuide.pdf"
+        },
+        {
+          "label": "Guide de l'application",
+          "link": "/l10n/pdfs/fr-FR/cc/10.0.2/CC-AppGuide.pdf"
+        },
+        {
+          "label": "Guide des personnes-ressources de Guidewire",
+          "link": "/l10n/pdfs/fr-FR/cc/10.0.2/ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "Guide de configuration",
+          "link": "/l10n/pdfs/fr-FR/cc/10.0.2/ConfigGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guide de gestion des contacts",
+          "link": "/l10n/pdfs/fr-FR/cc/10.0.0/fr-CC-ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "Guide de configuration",
+          "link": "/l10n/pdfs/fr-FR/cc/10.0.0/fr-CC-ConfigGuide.pdf"
+        },
+        {
+          "label": "Guide d'installation",
+          "link": "/l10n/pdfs/fr-FR/cc/10.0.0/fr-CC-InstallGuide.pdf"
+        },
+        {
+          "label": "Guide de l'application",
+          "link": "/l10n/pdfs/fr-FR/cc/10.0.0/fr-CC-AppGuide.pdf"
+        },
+        {
+          "label": "Guide des règles",
+          "link": "/l10n/pdfs/fr-FR/cc/10.0.0/fr-CC-RulesGuide.pdf"
+        }
+      ]
+    }
+  ],
+  "selector": {
+    "label": "Choisissez un produit",
+    "selectedItem": "ClaimCenter",
+    "items": [
+      {
+        "label": "BillingCenter",
+        "page": "../bc"
+      },
+      {
+        "label": "CustomerEngage Account Management",
+        "page": "../ce-am"
+      },
+      {
+        "label": "CustomerEngage Account Management for ClaimCenter",
+        "page": "../ce-claims"
+      },
+      {
+        "label": "CustomerEngage Quote and Buy",
+        "page": "../ce-qb"
+      },
+      {
+        "label": "InsuranceSuite Contact Management",
+        "page": "../cm"
+      },
+      {
+        "label": "DataHub",
+        "page": "../dh"
+      },
+      {
+        "label": "InfoCenter",
+        "page": "../ic"
+      },
+      {
+        "label": "PolicyCenter",
+        "page": "../pc"
+      },
+      {
+        "label": "ProducerEngage",
+        "page": "../pe"
+      },
+      {
+        "label": "ProducerEngage for ClaimCenter",
+        "page": "../pe-claims"
+      },
+      {
+        "label": "ServiceRepEngage",
+        "page": "../sre"
+      },
+      {
+        "label": "VendorEngage",
+        "page": "../ve"
+      }
+    ]
+  }
+}

@@ -31,14 +31,6 @@
       {
         "label": "Dobson",
         "page": "../dobson"
-      },
-      {
-        "label": "Banff",
-        "page": "../banff"
-      },
-      {
-        "label": "Aspen",
-        "page": "../aspen"
       }
     ]
   },

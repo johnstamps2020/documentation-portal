@@ -1,0 +1,92 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "ServiceRepEngage",
+  "template": "page",
+  "class": "threeCards version es-ES l10n",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de la aplicación",
+          "link": "/l10n/pdfs/es-ES/sre/2022.05/es-ES v.2022.05  SRE_AppGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "11.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de instalación",
+          "link": "/l10n/pdfs/es-ES/sre/11.1/es-ES-SRE-onprem_InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de instalación",
+          "link": "/l10n/pdfs/es-ES/sre/10.0.1/es-ES_SRE_InstallGuide.pdf"
+        },
+        {
+          "label": "Guía de configuración",
+          "link": "/l10n/pdfs/es-ES/sre/10.0.1/es-ES_SRE_ConfigurationGuide.pdf"
+        },
+        {
+          "label": "Guía de la aplicación",
+          "link": "/l10n/pdfs/es-ES/sre/10.0.1/es-ES-SRE_AppGuide.pdf"
+        }
+      ]
+    }
+  ],
+  "selector": {
+    "label": "Seleccionar producto",
+    "selectedItem": "ServiceRepEngage",
+    "items": [
+      {
+        "label": "BillingCenter",
+        "page": "../bc"
+      },
+      {
+        "label": "ClaimCenter",
+        "page": "../cc"
+      },
+      {
+        "label": "CustomerEngage Account Management",
+        "page": "../ce-am"
+      },
+      {
+        "label": "CustomerEngage Account Management for ClaimCenter",
+        "page": "../ce-claims"
+      },
+      {
+        "label": "CustomerEngage Quote and Buy",
+        "page": "../ce-qb"
+      },
+      {
+        "label": "InsuranceSuite Contact Management",
+        "page": "../cm"
+      },
+      {
+        "label": "PolicyCenter",
+        "page": "../pc"
+      },
+      {
+        "label": "ProducerEngage",
+        "page": "../pe"
+      },
+      {
+        "label": "ProducerEngage for ClaimCenter",
+        "page": "../pe-claims"
+      },
+      {
+        "label": "VendorEngage",
+        "page": "../ve"
+      }
+    ]
+  }
+}

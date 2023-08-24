@@ -1,0 +1,140 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "CustomerEngage Account Management",
+  "template": "page",
+  "class": "threeCards version de-DE l10n",
+  "items": [
+    {
+      "label": "2023.02",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/l10n/pdfs/de-DE/ce-am/2023.02/CustomerEngage_AccountManagement_AppGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2021.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/l10n/pdfs/de-DE/ce-am/2021.11/de-DE Digital v.2021.11 CE-AM_AppGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "11.4.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Administrator- und Sicherheitshandbuch",
+          "link": "/l10n/pdfs/de-DE/ce-am/11.4.1/de-DE-Digital v11.4.1 CE-AM admin&security-guide.pdf"
+        },
+        {
+          "label": "Installationshandbuch",
+          "link": "/l10n/pdfs/de-DE/ce-am/11.4.1/de-DE-Digital v.11.4.1 CE-AM Installer-guide.pdf"
+        },
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/l10n/pdfs/de-DE/ce-am/11.4.1/de-DE-Digital v.11.4.1 CE-AM_AppGuide.pdf"
+        },
+        {
+          "label": "Entwicklerhandbuch",
+          "link": "/l10n/pdfs/de-DE/ce-am/11.4.1/de-DE-Digital v.11.4.1 CEAM Developers-guide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "11.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Installationshandbuch",
+          "link": "/l10n/pdfs/de-DE/ce-am/11.1/de-CE-AM-11.1_onprem_InstallGuides.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Konfigurationshandbuch",
+          "link": "/l10n/pdfs/de-DE/ce-am/10.0.1/de-CEAM_ConfigurationGuide.pdf"
+        },
+        {
+          "label": "Live Style Guide Installation and Configuration Guide",
+          "link": "/l10n/pdfs/de-DE/ce-am/10.0.1/de-CEAM_Life Style Guide Install and Config.pdf"
+        },
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/l10n/pdfs/de-DE/ce-am/10.0.1/de-CEAM_AppGuide.pdf"
+        },
+        {
+          "label": "Administrator- und Sicherheitshandbuch",
+          "link": "/l10n/pdfs/de-DE/ce-am/10.0.1/de-CEAM_admin-and-security-guide.pdf"
+        },
+        {
+          "label": "Installationshandbuch",
+          "link": "/l10n/pdfs/de-DE/ce-am/10.0.1/de-CEAM_InstallGuide.pdf"
+        }
+      ]
+    }
+  ],
+  "selector": {
+    "label": "Produkt auswählen",
+    "selectedItem": "CustomerEngage Account Management",
+    "items": [
+      {
+        "label": "BillingCenter",
+        "page": "../bc"
+      },
+      {
+        "label": "ClaimCenter",
+        "page": "../cc"
+      },
+      {
+        "label": "CustomerEngage Account Management for ClaimCenter",
+        "page": "../ce-claims"
+      },
+      {
+        "label": "CustomerEngage Quote and Buy",
+        "page": "../ce-qb"
+      },
+      {
+        "label": "InsuranceSuite Contact Management",
+        "page": "../cm"
+      },
+      {
+        "label": "DataHub",
+        "page": "../dh"
+      },
+      {
+        "label": "InfoCenter",
+        "page": "../ic"
+      },
+      {
+        "label": "PolicyCenter",
+        "page": "../pc"
+      },
+      {
+        "label": "ProducerEngage",
+        "page": "../pe"
+      },
+      {
+        "label": "ProducerEngage for ClaimCenter",
+        "page": "../pe-claims"
+      },
+      {
+        "label": "ServiceRepEngage",
+        "page": "../sre"
+      },
+      {
+        "label": "VendorEngage",
+        "page": "../ve"
+      }
+    ]
+  }
+}

@@ -11,8 +11,6 @@
         "version": [
           "10.2.1",
           "10.2.2",
-          "2020.05",
-          "2020.11",
           "2021.04",
           "2021.11",
           "2022.05",
@@ -22,8 +20,6 @@
         ],
         "subject": ["Development"],
         "release": [
-          "Aspen",
-          "Banff",
           "Cortina",
           "Dobson",
           "Elysian",

@@ -1,0 +1,80 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "Guidewire Cloud Console",
+  "template": "page",
+  "class": "threeCards version it-IT l10n",
+  "items": [
+    {
+      "label": "0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guidewire Cloud Console",
+          "link": "/l10n/pdfs/it-IT/gcc/0/IT-GuidewireCloudConsole.pdf"
+        }
+      ]
+    }
+  ],
+  "selector": {
+    "label": "Seleziona il prodotto",
+    "selectedItem": "Guidewire Cloud Console",
+    "items": [
+      {
+        "label": "BillingCenter",
+        "page": "../bc"
+      },
+      {
+        "label": "ClaimCenter",
+        "page": "../cc"
+      },
+      {
+        "label": "Cloud Data Access",
+        "page": "../cda"
+      },
+      {
+        "label": "CustomerEngage Account Management",
+        "page": "../ce-am"
+      },
+      {
+        "label": "CustomerEngage Account Management for ClaimCenter",
+        "page": "../ce-claims"
+      },
+      {
+        "label": "CustomerEngage Quote and Buy",
+        "page": "../ce-qb"
+      },
+      {
+        "label": "DataHub",
+        "page": "../dh"
+      },
+      {
+        "label": "Guidewire Identity Federation Hub",
+        "page": "../gwid"
+      },
+      {
+        "label": "InfoCenter",
+        "page": "../ic"
+      },
+      {
+        "label": "PolicyCenter",
+        "page": "../pc"
+      },
+      {
+        "label": "ProducerEngage",
+        "page": "../pe"
+      },
+      {
+        "label": "ProducerEngage for ClaimCenter",
+        "page": "../pe-claims"
+      },
+      {
+        "label": "ServiceRepEngage",
+        "page": "../sre"
+      },
+      {
+        "label": "VendorEngage",
+        "page": "../ve"
+      }
+    ]
+  }
+}

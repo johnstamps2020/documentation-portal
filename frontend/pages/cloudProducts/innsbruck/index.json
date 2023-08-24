@@ -30,14 +30,6 @@
       {
         "label": "Cortina",
         "page": "../cortina"
-      },
-      {
-        "label": "Banff",
-        "page": "../banff"
-      },
-      {
-        "label": "Aspen",
-        "page": "../aspen"
       }
     ]
   },
@@ -71,6 +63,10 @@
         {
           "label": "InsuranceNow",
           "page": "insuranceNow/2023.3"
+        },
+        {
+          "label": "Global Content Reference Applications",
+          "page": "global-ref-apps"
         }
       ]
     },
@@ -127,6 +123,10 @@
         {
           "label": "REST API Client",
           "id": "isrestapiclientguidenext"
+        },
+        {
+          "label": "Jutro Digital Platform (Early Access)",
+          "page": "jutroDigitalPlatform"
         },
         {
           "label": "Lifecycle Manager",
