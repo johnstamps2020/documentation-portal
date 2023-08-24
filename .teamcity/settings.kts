@@ -404,7 +404,7 @@ object Database {
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot, "+:db")
                 branchFilter = "+:<default>"
                 cleanCheckout = true
             }
