@@ -112,12 +112,12 @@ enum class GwConfigParams(val paramValue: String) {
     DB_CLIENT_IMAGE_NAME("alpine"),
     DB_DUMP_ZIP_PACKAGE_NAME("docportalconfig.zip"),
 
-    // TODO: Change croissant to docportal before merge to master
+    // TODO: Change croissant to docportal before switch to main
     DOC_PORTAL_APP_NAME("croissant"),
     DOC_PORTAL_FRONTEND_APP_NAME("docportal-frontend"),
     DOC_PORTAL_KUBE_DEPLOYMENT_FILE("server/kube/deployment.yml"),
 
-    // TODO: Change the path to the gateway config file after merge to master
+    // TODO: Change the paths to the gateway config files before switch to main
     DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE("server/kube/gateway-config-croissant.yml"),
     DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE_PROD("server/kube/gateway-config-croissant.yml"),
     DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE("landing-pages/kube/deployment.yml"),
@@ -175,7 +175,7 @@ enum class GwAtmosLabels(val labelValue: String) {
     POD_NAME("doctools"), DEPT_CODE("284"),
 }
 
-// TODO: Remove croissant from the image tag before merge to master
+// TODO: Remove croissant from the image tag before switch to main
 enum class GwDockerImageTags(val tagValue: String) {
     DOC_PORTAL("latest-croissant"), DOC_PORTAL_FRONTEND("latest")
 }
@@ -3578,7 +3578,7 @@ object Helpers {
         """.trimIndent()
     }
 
-    // TODO: Change URLs to doc site URLs before merge to master
+    // TODO: Change URLs to doc site URLs before switch to main
     fun getTargetUrl(deployEnv: String): String {
         return if (arrayOf(
                 GwDeployEnvs.PROD.envName, GwDeployEnvs.PORTAL2.envName
@@ -3860,6 +3860,11 @@ object GwBuilds {
             }
         }
 
+        features {
+            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+        }
+
         triggers.vcs {
             triggerRules = """
                 +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/settings.kts
@@ -3867,8 +3872,6 @@ object GwBuilds {
                 -:user=doctools:**
             """.trimIndent()
         }
-
-        features.feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
     })
 
     fun createDeployDocPortalBuildType(deployEnv: String): BuildType {
@@ -5349,9 +5352,7 @@ object GwBuildFeatures {
 }
 
 object GwVcsRoots {
-    // TODO:
-    //  - Switch this repo to the master branch after testing is done
-    //  - Change the branch filter to "(refs/heads/*)"
+    // TODO: Switch this repo to the main branch before switch to main
     val DocumentationPortalGitVcsRoot = createGitVcsRoot(
         Helpers.resolveRelativeIdFromIdString("Documentation Portal git repo"),
         "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
