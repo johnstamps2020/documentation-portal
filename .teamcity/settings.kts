@@ -407,7 +407,7 @@ object Database {
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot, "+:db")
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
                 cleanCheckout = true
             }
 
