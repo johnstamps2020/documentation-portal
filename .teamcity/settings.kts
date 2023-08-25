@@ -2153,7 +2153,12 @@ object Frontend {
                 deployReactLandingPagesBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                deployReactLandingPagesBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("landing-pages/**", true))
+                deployReactLandingPagesBuildType.triggers.trigger(
+                    GwVcsTriggers.createDocPortalVcsTrigger(
+                        "landing-pages/**",
+                        true
+                    )
+                )
             }
 
             GwDeployEnvs.STAGING.envName -> {
@@ -3286,6 +3291,7 @@ object Apps {
             subProject(FlailSSGProject)
         }
     }
+
     // TODO: Remove this project after switch to main
     object FlailSSGProject : Project({
         name = "Flail SSG"
@@ -5340,8 +5346,7 @@ object GwVcsTriggers {
     fun createDocPortalVcsTrigger(triggerPath: String, monitorDefaultBranch: Boolean = false): VcsTrigger {
         val docPortalVcsTrigger = VcsTrigger {
             triggerRules = """
-            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${triggerPath}
-            -:user=doctools;root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${triggerPath}
+                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${triggerPath}
             """.trimIndent()
             branchFilter = "-:<default>"
         }
@@ -5352,21 +5357,12 @@ object GwVcsTriggers {
     }
 
     fun createNonDitaVcsTrigger(workingDir: String): VcsTrigger {
-        val workingDirWithoutCheckoutDir = workingDir.replace("%teamcity.build.checkoutDir%/", "")
-        return VcsTrigger {
-            triggerRules = when (workingDir) {
-                "%teamcity.build.checkoutDir%" -> {
-                    """
-            -:user=doctools:**
-            """.trimIndent()
-                }
-
-                else -> {
-                    """
-            +:${workingDirWithoutCheckoutDir}/**
-            -:user=doctools:${workingDirWithoutCheckoutDir}/**
-            """.trimIndent()
-                }
+        return when (workingDir) {
+            "%teamcity.build.checkoutDir%" -> VcsTrigger()
+            else -> VcsTrigger {
+                triggerRules = """
+                    +:${workingDir.replace("%teamcity.build.checkoutDir%/", "")}/**
+                """.trimIndent()
             }
         }
     }
