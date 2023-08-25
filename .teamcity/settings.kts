@@ -449,7 +449,7 @@ object Database {
                 deployDatabaseBuildType.dependencies.snapshot(validateDbDeploymentBuildTypeDev) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                deployDatabaseBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("db/**", true))
+                deployDatabaseBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("db/**"))
             }
 
             GwDeployEnvs.STAGING.envName -> {
@@ -616,7 +616,7 @@ object Database {
             }
 
             triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(".teamcity/config/**", true))
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger(".teamcity/config/**"))
             }
         }
 
@@ -1861,8 +1861,7 @@ object Content {
             triggers {
                 trigger(
                     GwVcsTriggers.createDocPortalVcsTrigger(
-                        GwConfigParams.S3_KUBE_DEPLOYMENT_FILE.paramValue,
-                        true
+                        GwConfigParams.S3_KUBE_DEPLOYMENT_FILE.paramValue
                     )
                 )
             }
@@ -2155,8 +2154,7 @@ object Frontend {
                 }
                 deployReactLandingPagesBuildType.triggers.trigger(
                     GwVcsTriggers.createDocPortalVcsTrigger(
-                        "landing-pages/**",
-                        true
+                        "landing-pages/**"
                     )
                 )
             }
@@ -2280,7 +2278,7 @@ object Frontend {
             }
 
             triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger("${packagePath}/package.json", true))
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger("${packagePath}/package.json"))
             }
 
             features {
@@ -2313,7 +2311,7 @@ object Frontend {
             }
 
             triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger("html5/**", true))
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger("html5/**"))
             }
 
             features {
@@ -2340,7 +2338,7 @@ object Frontend {
             }
 
             triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger("html5/**", true))
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger("html5/**"))
             }
 
             features {
@@ -2638,7 +2636,7 @@ object Server {
                 deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                deployServerBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/**", true))
+                deployServerBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/**"))
             }
 
             GwDeployEnvs.STAGING.envName -> {
@@ -3336,7 +3334,7 @@ object Apps {
         }
 
         triggers {
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger("${appDir}/**", true))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("${appDir}/**"))
         }
     })
 
@@ -3778,8 +3776,8 @@ object GwBuilds {
         // This test build doesn't have an associated deployment build,
         // therefore we want to run it on changes in the default branch as well.
         triggers {
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger(".teamcity/settings.kts", true))
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger(".teamcity/config/**", true))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger(".teamcity/settings.kts"))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger(".teamcity/config/**"))
         }
     })
 
@@ -5343,25 +5341,25 @@ object GwTemplates {
 }
 
 object GwVcsTriggers {
-    fun createDocPortalVcsTrigger(triggerPath: String, monitorDefaultBranch: Boolean = false): VcsTrigger {
-        val docPortalVcsTrigger = VcsTrigger {
+    fun createDocPortalVcsTrigger(triggerPath: String): VcsTrigger {
+        return VcsTrigger {
             triggerRules = """
                 +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${triggerPath}
+                -:user=doctools;root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${triggerPath}
             """.trimIndent()
-            branchFilter = "-:<default>"
         }
-        if (monitorDefaultBranch) {
-            docPortalVcsTrigger.branchFilter = "+:*"
-        }
-        return docPortalVcsTrigger
     }
 
     fun createNonDitaVcsTrigger(workingDir: String): VcsTrigger {
+        val workingDirWithoutCheckoutDir = workingDir.replace("%teamcity.build.checkoutDir%/", "")
         return when (workingDir) {
-            "%teamcity.build.checkoutDir%" -> VcsTrigger()
+            "%teamcity.build.checkoutDir%" -> VcsTrigger {
+                triggerRules = "-:user=doctools:**"
+            }
             else -> VcsTrigger {
                 triggerRules = """
-                    +:${workingDir.replace("%teamcity.build.checkoutDir%/", "")}/**
+                    +:${workingDirWithoutCheckoutDir}/**
+                    -:user=doctools:${workingDirWithoutCheckoutDir}/**
                 """.trimIndent()
             }
         }
