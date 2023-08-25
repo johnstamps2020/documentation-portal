@@ -4,6 +4,7 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.DockerSupportFeature
 import jetbrains.buildServer.configs.kotlin.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.buildSteps.*
+import jetbrains.buildServer.configs.kotlin.triggers.VcsTrigger
 import jetbrains.buildServer.configs.kotlin.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.ui.add
@@ -283,11 +284,9 @@ object Database {
                 }
             }
 
-            triggers.vcs {
-                triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${vcsTriggerPath}
-                -:user=doctools:**
-            """.trimIndent()
+            triggers {
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger(vcsTriggerPath))
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger(vcsTriggerPath))
             }
 
             features {
@@ -353,12 +352,7 @@ object Database {
 
         when (deployEnv) {
             GwDeployEnvs.DEV.envName -> {
-                validateDbDeploymentBuildType.triggers.vcs {
-                    triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:db/**
-                        -:user=doctools:**
-                    """.trimIndent()
-                }
+                validateDbDeploymentBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("db/**"))
             }
         }
 
@@ -456,12 +450,7 @@ object Database {
                 deployDatabaseBuildType.dependencies.snapshot(validateDbDeploymentBuildTypeDev) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                deployDatabaseBuildType.triggers.vcs {
-                    triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:db/**
-                        -:user=doctools:**
-                    """.trimIndent()
-                }
+                deployDatabaseBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("db/**", true))
             }
 
             GwDeployEnvs.STAGING.envName -> {
@@ -628,12 +617,7 @@ object Database {
             }
 
             triggers {
-                vcs {
-                    triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
-                        -:user=doctools:**
-                        """.trimIndent()
-                }
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger(".teamcity/config/**", true))
             }
         }
 
@@ -1347,9 +1331,7 @@ object Docs {
                     }
 
                     else -> {
-                        triggers.vcs {
-                            triggerRules = Helpers.getNonDitaTriggerRules(workingDir)
-                        }
+                        triggers.trigger(GwVcsTriggers.createNonDitaVcsTrigger(workingDir))
                     }
                 }
             }
@@ -1839,7 +1821,7 @@ object Content {
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
         val contentStorageDeployEnvVars = Helpers.setContentStorageDeployEnvVars(deployEnv)
         return BuildType {
-            name = "Deploy $deployEnv content storage"
+            name = "Deploy content storage to $deployEnv"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
@@ -1878,15 +1860,17 @@ object Content {
             }
 
             triggers {
-                vcs {
-                    triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${GwConfigParams.S3_KUBE_DEPLOYMENT_FILE.paramValue}
-                        -:user=doctools:**
-                        """.trimIndent()
-                }
+                trigger(
+                    GwVcsTriggers.createDocPortalVcsTrigger(
+                        GwConfigParams.S3_KUBE_DEPLOYMENT_FILE.paramValue,
+                        true
+                    )
+                )
             }
 
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            features {
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
         }
     }
 
@@ -1988,11 +1972,11 @@ object Content {
                 name = "Reindex from staging to dev"
                 id = Helpers.createIdStringFromName(this.name)
                 shellScript = """
-                        #!/bin/sh
-                        set -e
-                        
-                        node ci/reindexFromStagingToDev.mjs
-                        """.trimIndent()
+                    #!/bin/sh
+                    set -e
+                    
+                    node ci/reindexFromStagingToDev.mjs
+                    """.trimIndent()
                 dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
             }
         }
@@ -2170,12 +2154,7 @@ object Frontend {
                 deployReactLandingPagesBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                deployReactLandingPagesBuildType.triggers.vcs {
-                    triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/**
-                        -:user=doctools:**
-                    """.trimIndent()
-                }
+                deployReactLandingPagesBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("landing-pages/**", true))
             }
 
             GwDeployEnvs.STAGING.envName -> {
@@ -2227,12 +2206,7 @@ object Frontend {
         }
 
         triggers {
-            vcs {
-                triggerRules = """
-                    +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/**
-                    -:user=doctools:**
-                """.trimIndent()
-            }
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("landing-pages/**"))
         }
     })
 
@@ -2255,18 +2229,18 @@ object Frontend {
                     name = "Create Kubernetes resources in dry run "
                     id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
-                    #!/bin/bash 
-                    set -e
-                    
-                    $awsEnvVars
-                    $reactLandingPagesDeployEnvVars
-                    export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
-                    
-                    aws eks update-kubeconfig --name atmos-$atmosDeployEnv
-                    eval "echo \"${'$'}(cat ${GwConfigParams.DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
-                    
-                    kubectl create -f ${'$'}TMP_DEPLOYMENT_FILE --dry-run=client
-                """.trimIndent()
+                        #!/bin/bash 
+                        set -e
+                        
+                        $awsEnvVars
+                        $reactLandingPagesDeployEnvVars
+                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
+                        
+                        aws eks update-kubeconfig --name atmos-$atmosDeployEnv
+                        eval "echo \"${'$'}(cat ${GwConfigParams.DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
+                        
+                        kubectl create -f ${'$'}TMP_DEPLOYMENT_FILE --dry-run=client
+                    """.trimIndent()
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -2281,12 +2255,7 @@ object Frontend {
 
             when (deployEnv) {
                 GwDeployEnvs.DEV.envName -> {
-                    triggers.vcs {
-                        triggerRules = """
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/kube/**
-                            -:user=doctools:**
-                        """.trimIndent()
-                    }
+                    triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("landing-pages/kube/**"))
                 }
             }
         }
@@ -2307,12 +2276,7 @@ object Frontend {
             }
 
             triggers {
-                vcs {
-                    triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${packagePath}/package.json
-                        -:user=doctools:**
-                    """.trimIndent()
-                }
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger("${packagePath}/package.json", true))
             }
 
             features {
@@ -2345,12 +2309,7 @@ object Frontend {
             }
 
             triggers {
-                vcs {
-                    triggerRules = """
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:html5/**
-                            -:user=doctools:**
-                            """.trimIndent()
-                }
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger("html5/**", true))
             }
 
             features {
@@ -2377,12 +2336,7 @@ object Frontend {
             }
 
             triggers {
-                vcs {
-                    triggerRules = """
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:html5/**
-                            -:user=doctools:**
-                            """.trimIndent()
-                }
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger("html5/**", true))
             }
 
             features {
@@ -2453,12 +2407,9 @@ object Server {
             step(GwBuildSteps.createBuildHtml5OfflineDependenciesStep())
         }
 
-        triggers.vcs {
-            triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:html5/**
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:docusaurus/themes/**
-                -:user=doctools:**
-            """.trimIndent()
+        triggers {
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("html5/**"))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("docusaurus/themes/**"))
         }
 
         features {
@@ -2492,12 +2443,9 @@ object Server {
             feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
         }
 
-        triggers.vcs {
-            triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/package.json
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/yarn.lock
-                -:user=doctools:**
-            """.trimIndent()
+        triggers {
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/package.json"))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/yarn.lock"))
         }
 
     })
@@ -2560,12 +2508,7 @@ object Server {
         }
 
         triggers {
-            vcs {
-                triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/**
-                -:user=doctools:**
-            """.trimIndent()
-            }
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/**"))
         }
     })
 
@@ -2588,21 +2531,21 @@ object Server {
                     name = "Create Kubernetes resources in dry run "
                     id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
-                    #!/bin/bash 
-                    set -e
-                    
-                    $awsEnvVars
-                    $serverDeployEnvVars
-                    export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
-                    export TMP_GATEWAY_CONFIG_FILE="tmp-gateway-config.yml"
-                    
-                    aws eks update-kubeconfig --name atmos-$atmosDeployEnv
-                    eval "echo \"${'$'}(cat ${GwConfigParams.DOC_PORTAL_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
-                    eval "echo \"${'$'}(cat ${gatewayConfigFile})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
-                    
-                    kubectl create -f ${'$'}TMP_DEPLOYMENT_FILE --dry-run=client
-                    kubectl create -f ${'$'}TMP_GATEWAY_CONFIG_FILE --dry-run=client
-                """.trimIndent()
+                        #!/bin/bash 
+                        set -e
+                        
+                        $awsEnvVars
+                        $serverDeployEnvVars
+                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
+                        export TMP_GATEWAY_CONFIG_FILE="tmp-gateway-config.yml"
+                        
+                        aws eks update-kubeconfig --name atmos-$atmosDeployEnv
+                        eval "echo \"${'$'}(cat ${GwConfigParams.DOC_PORTAL_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
+                        eval "echo \"${'$'}(cat ${gatewayConfigFile})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
+                        
+                        kubectl create -f ${'$'}TMP_DEPLOYMENT_FILE --dry-run=client
+                        kubectl create -f ${'$'}TMP_GATEWAY_CONFIG_FILE --dry-run=client
+                    """.trimIndent()
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -2617,12 +2560,7 @@ object Server {
 
             when (deployEnv) {
                 GwDeployEnvs.DEV.envName -> {
-                    triggers.vcs {
-                        triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/kube/**
-                -:user=doctools:**
-            """.trimIndent()
-                    }
+                    triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/kube/**"))
                 }
             }
         }
@@ -2696,12 +2634,7 @@ object Server {
                 deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                deployServerBuildType.triggers.vcs {
-                    triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/**
-                        -:user=doctools:**
-                    """.trimIndent()
-                }
+                deployServerBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/**", true))
             }
 
             GwDeployEnvs.STAGING.envName -> {
@@ -3183,9 +3116,7 @@ object Sources {
             }
 
             GwBuildTypes.YARN.buildTypeName -> {
-                validationBuildType.triggers.vcs {
-                    triggerRules = Helpers.getNonDitaTriggerRules(workingDir)
-                }
+                validationBuildType.triggers.trigger(GwVcsTriggers.createNonDitaVcsTrigger(workingDir))
             }
         }
 
@@ -3322,19 +3253,19 @@ object Recommendations {
                     name = "Run the recommendation engine"
                     id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
-                            #!/bin/bash
-                            set -xe
-                            
-                            export PLATFORM="$gwPlatform"
-                            export PRODUCT="$gwProduct"
-                            export VERSION="$gwVersion"
-                            export ELASTICSEARCH_URL="$elasticsearchUrl"
-                            export DOCS_INDEX_NAME="gw-docs"
-                            export RECOMMENDATIONS_INDEX_NAME="gw-recommendations"
-                            export PRETRAINED_MODEL_FILE="$pretrainedModelFile"
-                                                                    
-                            recommendation_engine
-                        """.trimIndent()
+                        #!/bin/bash
+                        set -xe
+                        
+                        export PLATFORM="$gwPlatform"
+                        export PRODUCT="$gwProduct"
+                        export VERSION="$gwVersion"
+                        export ELASTICSEARCH_URL="$elasticsearchUrl"
+                        export DOCS_INDEX_NAME="gw-docs"
+                        export RECOMMENDATIONS_INDEX_NAME="gw-recommendations"
+                        export PRETRAINED_MODEL_FILE="$pretrainedModelFile"
+                                                                
+                        recommendation_engine
+                    """.trimIndent()
                     dockerImage = GwDockerImages.RECOMMENDATION_ENGINE_LATEST.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 }
@@ -3381,21 +3312,12 @@ object Apps {
                 name = "Publish Docker image to Artifactory"
                 id = Helpers.createIdStringFromName(this.name)
                 scriptContent = """
-                        #!/bin/bash                        
-                        set -xe
-                        
-                        cd $appDir
-                        ./publish_docker.sh latest       
-                    """.trimIndent()
-            }
-        }
-
-        triggers {
-            vcs {
-                triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${appDir}/**
-                        -:user=doctools:**
-                    """.trimIndent()
+                    #!/bin/bash                        
+                    set -xe
+                    
+                    cd $appDir
+                    ./publish_docker.sh latest       
+                """.trimIndent()
             }
         }
 
@@ -3406,6 +3328,10 @@ object Apps {
                 reuseBuilds = ReuseBuilds.SUCCESSFUL
                 onDependencyFailure = FailureAction.FAIL_TO_START
             }
+        }
+
+        triggers {
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("${appDir}/**", true))
         }
     })
 
@@ -3432,23 +3358,14 @@ object Apps {
                 name = "Run tests"
                 id = Helpers.createIdStringFromName(this.name)
                 scriptContent = """
-                        #!/bin/bash
-                        set -xe
+                    #!/bin/bash
+                    set -xe
 
-                        cd frontend/flail_ssg
-                        ./run_tests.sh
-                    """.trimIndent()
+                    cd frontend/flail_ssg
+                    ./run_tests.sh
+                """.trimIndent()
                 dockerImage = GwDockerImages.PYTHON_3_9_SLIM_BUSTER.imageUrl
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            }
-        }
-
-        triggers {
-            vcs {
-                triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:frontend/**
-                        -:user=doctools:**
-                    """.trimIndent()
             }
         }
 
@@ -3456,6 +3373,10 @@ object Apps {
             feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
             feature(GwBuildFeatures.GwDockerSupportBuildFeature)
             feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+        }
+
+        triggers {
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("frontend/**"))
         }
     })
 }
@@ -3778,24 +3699,6 @@ object Helpers {
         }
     }
 
-    fun getNonDitaTriggerRules(workingDir: String): String {
-
-        return when (workingDir) {
-            "%teamcity.build.checkoutDir%" -> {
-                """
-                    -:user=doctools:**
-                """.trimIndent()
-            }
-
-            else -> {
-                """
-                    +:${workingDir.replace("%teamcity.build.checkoutDir%/", "")}/**
-                    -:user=doctools:**
-                """.trimIndent()
-            }
-        }
-    }
-
     fun getCommandString(command: String, params: List<Pair<String, String?>>): String {
         val commandStringBuilder = StringBuilder()
         commandStringBuilder.append(command)
@@ -3865,12 +3768,13 @@ object GwBuilds {
             feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
         }
 
-        triggers.vcs {
-            triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/settings.kts
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
-                -:user=doctools:**
-            """.trimIndent()
+        // The general rule is to trigger test builds only for pull requests branches and to trigger deploy builds
+        // for the default branch, which then trigger test builds as snapshot dependencies.
+        // This test build doesn't have an associated deployment build,
+        // therefore we want to run it on changes in the default branch as well.
+        triggers {
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger(".teamcity/settings.kts", true))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger(".teamcity/config/**", true))
         }
     })
 
@@ -4066,12 +3970,7 @@ object GwBuilds {
             }
 
             triggers {
-                vcs {
-                    triggerRules = """
-                    +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:$sourceDir/**
-                    -:user=doctools:**
-                    """.trimIndent()
-                }
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger(sourceDir))
             }
         }
     }
@@ -4082,13 +3981,13 @@ object GwBuildSteps {
         name = "Merge all config files"
         id = Helpers.createIdStringFromName(this.name)
         scriptContent = """
-                #!/bin/bash
-                set -xe
+            #!/bin/bash
+            set -xe
 
-                config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}"
-                config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}"
-                config_deployer merge "${GwConfigParams.BUILDS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}"
-            """.trimIndent()
+            config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}"
+            config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}"
+            config_deployer merge "${GwConfigParams.BUILDS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}"
+        """.trimIndent()
         dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.imageUrl
         dockerImagePlatform = ImagePlatform.Linux
     })
@@ -4513,15 +4412,15 @@ object GwBuildSteps {
             name = "Get document details"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                    
-                    cat << EOF | jq '. += {"gitBuildBranch": "$buildBranch", "gitSourceId": "$srcId"}' > "$docInfoFilePath" | jq .
-                    $docConfig
-                    EOF
-                 
-                    cat "$docInfoFilePath"
-                """.trimIndent()
+                #!/bin/bash
+                set -xe
+                
+                cat << EOF | jq '. += {"gitBuildBranch": "$buildBranch", "gitSourceId": "$srcId"}' > "$docInfoFilePath" | jq .
+                $docConfig
+                EOF
+             
+                cat "$docInfoFilePath"
+            """.trimIndent()
         }
     }
 
@@ -4532,21 +4431,21 @@ object GwBuildSteps {
             name = "Copy from S3 on staging to S3 on prod"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                    
-                    echo "Setting credentials to access staging"
-                    $awsEnvVarsStaging
-                    
-                    echo "Copying from staging to Teamcity"
-                    aws s3 sync s3://tenant-doctools-staging-builds/${publishPath} ${publishPath}/ --delete
-                    
-                    echo "Setting credentials to access prod"
-                    $awsEnvVarsProd
-                    
-                    echo "Uploading from Teamcity to prod"
-                    aws s3 sync ${publishPath}/ s3://tenant-doctools-omega2-andromeda-builds/${publishPath} --delete
-                """.trimIndent()
+                #!/bin/bash
+                set -xe
+                
+                echo "Setting credentials to access staging"
+                $awsEnvVarsStaging
+                
+                echo "Copying from staging to Teamcity"
+                aws s3 sync s3://tenant-doctools-staging-builds/${publishPath} ${publishPath}/ --delete
+                
+                echo "Setting credentials to access prod"
+                $awsEnvVarsProd
+                
+                echo "Uploading from Teamcity to prod"
+                aws s3 sync ${publishPath}/ s3://tenant-doctools-omega2-andromeda-builds/${publishPath} --delete
+            """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -4598,13 +4497,13 @@ object GwBuildSteps {
             name = "Upload content to the S3 bucket"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                    
-                    $awsEnvVars
-                    
-                    aws s3 sync "$outputPath" s3://tenant-doctools-${atmosDeployEnv}-builds/${publishPath} --delete
-                """.trimIndent()
+                #!/bin/bash
+                set -xe
+                
+                $awsEnvVars
+                
+                aws s3 sync "$outputPath" s3://tenant-doctools-${atmosDeployEnv}-builds/${publishPath} --delete
+            """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -5436,4 +5335,40 @@ object GwTemplates {
             "Empty template added to validation builds to make them discoverable by validation listener builds"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
     })
+}
+
+object GwVcsTriggers {
+    fun createDocPortalVcsTrigger(triggerPath: String, monitorDefaultBranch: Boolean = false): VcsTrigger {
+        val docPortalVcsTrigger = VcsTrigger {
+            triggerRules = """
+            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${triggerPath}
+            -:user=doctools;root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${triggerPath}
+            """.trimIndent()
+            branchFilter = "-:<default>"
+        }
+        if (monitorDefaultBranch) {
+            docPortalVcsTrigger.branchFilter = "+:*"
+        }
+        return docPortalVcsTrigger
+    }
+
+    fun createNonDitaVcsTrigger(workingDir: String): VcsTrigger {
+        val workingDirWithoutCheckoutDir = workingDir.replace("%teamcity.build.checkoutDir%/", "")
+        return VcsTrigger {
+            triggerRules = when (workingDir) {
+                "%teamcity.build.checkoutDir%" -> {
+                    """
+            -:user=doctools:**
+            """.trimIndent()
+                }
+
+                else -> {
+                    """
+            +:${workingDirWithoutCheckoutDir}/**
+            -:user=doctools:${workingDirWithoutCheckoutDir}/**
+            """.trimIndent()
+                }
+            }
+        }
+    }
 }
