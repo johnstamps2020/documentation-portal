@@ -8,6 +8,8 @@ locals {
   aws_secret_name = "tenant-doctools-docportal"
 }
 
+# this is a test 
+
 provider "aws" {
   alias = "primary"
   region = var.region
