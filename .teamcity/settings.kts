@@ -4,6 +4,7 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.DockerSupportFeature
 import jetbrains.buildServer.configs.kotlin.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.buildFeatures.SshAgent
 import jetbrains.buildServer.configs.kotlin.buildSteps.*
+import jetbrains.buildServer.configs.kotlin.triggers.VcsTrigger
 import jetbrains.buildServer.configs.kotlin.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.ui.add
@@ -283,11 +284,8 @@ object Database {
                 }
             }
 
-            triggers.vcs {
-                triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${vcsTriggerPath}
-                -:user=doctools:**
-            """.trimIndent()
+            triggers {
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger(vcsTriggerPath))
             }
 
             features {
@@ -322,20 +320,20 @@ object Database {
                     name = "Validate Terraform config for db"
                     id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
-                    #!/bin/bash
-                    set -eux
-                    
-                    $awsEnvVars
+                #!/ bin / bash
+                    set - eux
 
-                    cd db
+                $awsEnvVars
 
-                    terraform init \
-                        -backend-config="bucket=$s3Bucket" \
-                        -backend-config="region=${'$'}{AWS_DEFAULT_REGION}" \
-                        -backend-config="key=$tfstateKey" \
-                        -input=false
-                    terraform validate
-                    """.trimIndent()
+                cd db
+
+                        terraform init \
+                -backend - config = "bucket=$s3Bucket" \
+                -backend - config = "region=${'$'}{AWS_DEFAULT_REGION}" \
+                -backend - config = "key=$tfstateKey" \
+                -input = false
+                terraform validate
+                        """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -353,12 +351,7 @@ object Database {
 
         when (deployEnv) {
             GwDeployEnvs.DEV.envName -> {
-                validateDbDeploymentBuildType.triggers.vcs {
-                    triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:db/**
-                        -:user=doctools:**
-                    """.trimIndent()
-                }
+                validateDbDeploymentBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("db/**"))
             }
         }
 
@@ -416,29 +409,29 @@ object Database {
                     name = "Deploy db with Terraform"
                     id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
-                    #!/bin/bash
-                    set -eux
-                    
-                    $awsEnvVars
+            #!/bin/bash
+            set -eux
 
-                    cd db
+            $awsEnvVars
 
-                    terraform init \
-                        -backend-config="bucket=$s3Bucket" \
-                        -backend-config="region=${'$'}{AWS_DEFAULT_REGION}" \
-                        -backend-config="key=$tfstateKey" \
-                        -input=false
-                    terraform apply \
-                        -var="star_system_name=$starSystemName" \
-                        -var="quadrant_name=$quadrantName" \
-                        -var="deploy_env=$atmosDeployEnv" \
-                        -var="region=${'$'}{AWS_DEFAULT_REGION}" \
-                        -var="env_level=$envLevel" \
-                        -var="pod_name=${GwAtmosLabels.POD_NAME.labelValue}" \
-                        -var="dept_code=${GwAtmosLabels.DEPT_CODE.labelValue}" \
-                        -input=false \
-                        -auto-approve
-                    """.trimIndent()
+            cd db
+
+            terraform init \
+            -backend-config="bucket=$s3Bucket" \
+            -backend-config="region=${'$'}{AWS_DEFAULT_REGION}" \
+            -backend-config="key=$tfstateKey" \
+            -input=false
+            terraform apply \
+            -var="star_system_name=$starSystemName" \
+            -var="quadrant_name=$quadrantName" \
+            -var="deploy_env=$atmosDeployEnv" \
+            -var="region=${'$'}{AWS_DEFAULT_REGION}" \
+            -var="env_level=$envLevel" \
+            -var="pod_name=${GwAtmosLabels.POD_NAME.labelValue}" \
+            -var="dept_code=${GwAtmosLabels.DEPT_CODE.labelValue}" \
+            -input=false \
+            -auto-approve
+            """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -456,12 +449,7 @@ object Database {
                 deployDatabaseBuildType.dependencies.snapshot(validateDbDeploymentBuildTypeDev) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                deployDatabaseBuildType.triggers.vcs {
-                    triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:db/**
-                        -:user=doctools:**
-                    """.trimIndent()
-                }
+                deployDatabaseBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("db/**", true))
             }
 
             GwDeployEnvs.STAGING.envName -> {
@@ -493,39 +481,39 @@ object Database {
                 name = "Create a database dump"
                 id = Helpers.createIdStringFromName(this.name)
                 scriptContent = """
-                    #!/bin/bash 
-                    set -eu
-                                                    
-                    # Set env variables
-                    ${Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)}
-                    export AWS_SECRET=${'$'}(aws secretsmanager get-secret-value --secret-id tenant-doctools-docportal)
-                    export CONFIG_DB_NAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_name' <<< "${'$'}AWS_SECRET")
-                    export CONFIG_DB_USERNAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_username' <<< "${'$'}AWS_SECRET")
-                    export CONFIG_DB_PASSWORD=${'$'}(jq -r '.SecretString | fromjson | .config_db_password' <<< "${'$'}AWS_SECRET")
-                    export CONFIG_DB_HOST=${GwConfigParams.CONFIG_DB_HOST_STAGING.paramValue}
-                    
-                    
-                    EXIT_CODE=0
-                    aws eks update-kubeconfig --name atmos-${Helpers.getAtmosDeployEnv(GwDeployEnvs.STAGING.envName)} && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} --image=${GwConfigParams.DB_CLIENT_IMAGE_NAME.paramValue} --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
-                    
-                    if [ "${'$'}EXIT_CODE" -eq 0 ]; then
-                        SECONDS=0
-                        while [ ${'$'}SECONDS -le 30 ]; do
-                          status=${'$'}(kubectl get pods ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -o jsonpath='{.status.phase}')
-                          if [ "${'$'}status" == "Running" ]; then
-                            kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && pg_dump -Fd ${'$'}CONFIG_DB_NAME -j 5 -f ${'$'}CONFIG_DB_NAME && zip -r ${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${'$'}CONFIG_DB_NAME" && kubectl cp ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} || EXIT_CODE=${'$'}?
-                            break
-                          else
-                            echo "Waiting for the ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} pod to be ready"
-                            sleep 5
-                          fi
-                        done
-                    fi
-                    
-                    kubectl get pods | grep ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} && kubectl delete pod ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} || EXIT_CODE=${'$'}?
-                   
-                    exit ${'$'}EXIT_CODE
-                """.trimIndent()
+            #!/bin/bash
+            set -eu
+
+            # Set env variables
+            ${Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)}
+            export AWS_SECRET=${'$'}(aws secretsmanager get-secret-value --secret-id tenant-doctools-docportal)
+            export CONFIG_DB_NAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_name' <<< "${'$'}AWS_SECRET")
+            export CONFIG_DB_USERNAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_username' <<< "${'$'}AWS_SECRET")
+            export CONFIG_DB_PASSWORD=${'$'}(jq -r '.SecretString | fromjson | .config_db_password' <<< "${'$'}AWS_SECRET")
+            export CONFIG_DB_HOST=${GwConfigParams.CONFIG_DB_HOST_STAGING.paramValue}
+
+
+            EXIT_CODE=0
+            aws eks update-kubeconfig --name atmos-${Helpers.getAtmosDeployEnv(GwDeployEnvs.STAGING.envName)} && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} --image=${GwConfigParams.DB_CLIENT_IMAGE_NAME.paramValue} --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
+
+            if [ "${'$'}EXIT_CODE" -eq 0 ]; then
+            SECONDS=0
+            while [ ${'$'}SECONDS -le 30 ]; do
+            status=${'$'}(kubectl get pods ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -o jsonpath='{.status.phase}')
+            if [ "${'$'}status" == "Running" ]; then
+            kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && pg_dump -Fd ${'$'}CONFIG_DB_NAME -j 5 -f ${'$'}CONFIG_DB_NAME && zip -r ${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${'$'}CONFIG_DB_NAME" && kubectl cp ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} || EXIT_CODE=${'$'}?
+            break
+            else
+            echo "Waiting for the ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} pod to be ready"
+            sleep 5
+            fi
+            done
+            fi
+
+            kubectl get pods | grep ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} && kubectl delete pod ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} || EXIT_CODE=${'$'}?
+
+            exit ${'$'}EXIT_CODE
+            """.trimIndent()
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                 dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -574,37 +562,37 @@ object Database {
                     name = "Restore the db dump from staging on $deployEnv"
                     id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
-                        #!/bin/bash 
-                        set -eu
-                                                        
-                        # Set env variables
-                        $dbRestoreAwsEnvVars
-                        export AWS_SECRET=${'$'}(aws secretsmanager get-secret-value --secret-id tenant-doctools-docportal)
-                        export CONFIG_DB_NAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_name' <<< "${'$'}AWS_SECRET")
-                        export CONFIG_DB_USERNAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_username' <<< "${'$'}AWS_SECRET")
-                        export CONFIG_DB_PASSWORD=${'$'}(jq -r '.SecretString | fromjson | .config_db_password' <<< "${'$'}AWS_SECRET")
-                        export CONFIG_DB_HOST=$dbRestoreConfigDbHost
-                        
-                        EXIT_CODE=0
-                        aws eks update-kubeconfig --name atmos-$dbRestoreAtmosDeployEnv && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} --image=${GwConfigParams.DB_CLIENT_IMAGE_NAME.paramValue} --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
-                        
-                        if [ "${'$'}EXIT_CODE" -eq 0 ]; then
-                            SECONDS=0
-                            while [ ${'$'}SECONDS -le 30 ]; do
-                              status=${'$'}(kubectl get pods ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -o jsonpath='{.status.phase}')
-                              if [ "${'$'}status" == "Running" ]; then
-                                kubectl cp ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && unzip ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && pg_restore --clean --if-exists -d ${'$'}CONFIG_DB_NAME ${'$'}CONFIG_DB_NAME" || EXIT_CODE=${'$'}?
-                                break
-                              else
-                                echo "Waiting for the ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} pod to be ready"
-                                sleep 5
-                              fi
-                            done
-                        fi
-                        
-                        kubectl get pods | grep ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} && kubectl delete pod ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} || EXIT_CODE=${'$'}?
-                       
-                        exit ${'$'}EXIT_CODE
+                    #!/bin/bash
+                    set -eu
+        
+                    # Set env variables
+                    $dbRestoreAwsEnvVars
+                    export AWS_SECRET=${'$'}(aws secretsmanager get-secret-value --secret-id tenant-doctools-docportal)
+                    export CONFIG_DB_NAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_name' <<< "${'$'}AWS_SECRET")
+                    export CONFIG_DB_USERNAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_username' <<< "${'$'}AWS_SECRET")
+                    export CONFIG_DB_PASSWORD=${'$'}(jq -r '.SecretString | fromjson | .config_db_password' <<< "${'$'}AWS_SECRET")
+                    export CONFIG_DB_HOST=$dbRestoreConfigDbHost
+        
+                    EXIT_CODE=0
+                    aws eks update-kubeconfig --name atmos-$dbRestoreAtmosDeployEnv && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} --image=${GwConfigParams.DB_CLIENT_IMAGE_NAME.paramValue} --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
+        
+                    if [ "${'$'}EXIT_CODE" -eq 0 ]; then
+                    SECONDS=0
+                    while [ ${'$'}SECONDS -le 30 ]; do
+                    status=${'$'}(kubectl get pods ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -o jsonpath='{.status.phase}')
+                    if [ "${'$'}status" == "Running" ]; then
+                    kubectl cp ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && unzip ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && pg_restore --clean --if-exists -d ${'$'}CONFIG_DB_NAME ${'$'}CONFIG_DB_NAME" || EXIT_CODE=${'$'}?
+                    break
+                    else
+                    echo "Waiting for the ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} pod to be ready"
+                    sleep 5
+                    fi
+                    done
+                    fi
+        
+                    kubectl get pods | grep ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} && kubectl delete pod ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} || EXIT_CODE=${'$'}?
+        
+                    exit ${'$'}EXIT_CODE
                     """.trimIndent()
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
@@ -628,12 +616,7 @@ object Database {
             }
 
             triggers {
-                vcs {
-                    triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
-                        -:user=doctools:**
-                        """.trimIndent()
-                }
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger(".teamcity/config/**", true))
             }
         }
 
@@ -678,18 +661,18 @@ object Database {
                     name = "Call doc portal endpoints to trigger upload"
                     id = Helpers.createIdStringFromName(this.name)
                     shellScript = """
-                        #!/bin/sh
-                        set -e
-                        
-                        $awsEnvVars
-                        export APP_BASE_URL="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}"
-                        export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
-                        export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES.paramValue}"
-                        
-                        cd ci/uploadLegacyConfigsToDb
-                        yarn
-                        node uploadLegacyConfigsToDb.mjs
-                        """.trimIndent()
+            #!/bin/sh
+            set -e
+
+            $awsEnvVars
+            export APP_BASE_URL="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}"
+            export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
+            export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES.paramValue}"
+
+            cd ci/uploadLegacyConfigsToDb
+            yarn
+            node uploadLegacyConfigsToDb.mjs
+            """.trimIndent()
                     dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
                 }
             }
@@ -1254,8 +1237,8 @@ object Docs {
                 id = Helpers.resolveRelativeIdFromIdString("${this.name}${docId}")
 
                 artifactRules = """
-                    ${workingDir}/${outputDir} => /
-                """.trimIndent()
+            ${workingDir}/${outputDir} => /
+            """.trimIndent()
 
                 vcs {
                     root(teamcityGitRepoId)
@@ -1272,13 +1255,13 @@ object Docs {
                     script {
                         name = "Add build data"
                         scriptContent = """
-                            #!/bin/bash
-                            set -xe
+            #!/bin/bash
+            set -xe
 
-                            mkdir _builds
-                            jq -n '{"root": "$rootMap", "filter": "$buildFilter"}' > _builds/$docId.json
-                            zip -ur $workingDir/$outputDir/l10n_package.zip _builds 
-                        """.trimIndent()
+            mkdir _builds
+            jq -n '{"root": "$rootMap", "filter": "$buildFilter"}' > _builds/$docId.json
+            zip -ur $workingDir/$outputDir/l10n_package.zip _builds
+            """.trimIndent()
                         dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     }
                 }
@@ -1324,8 +1307,8 @@ object Docs {
 
             if (indexForSearch) {
                 artifactRules = """
-                    %teamcity.build.workingDir%/*.log => build_logs
-                """.trimIndent()
+            %teamcity.build.workingDir%/*.log => build_logs
+            """.trimIndent()
                 val configFile = "%teamcity.build.workingDir%/config.json"
                 val configFileStep = GwBuildSteps.createGetConfigFileStep(deployEnv, configFile)
                 steps.step(configFileStep)
@@ -1347,9 +1330,7 @@ object Docs {
                     }
 
                     else -> {
-                        triggers.vcs {
-                            triggerRules = Helpers.getNonDitaTriggerRules(workingDir)
-                        }
+                        triggers.trigger(GwVcsTriggers.createNonDitaVcsTrigger(workingDir))
                     }
                 }
             }
@@ -1561,84 +1542,84 @@ object Custom {
             script {
                 name = "Get the builds configuration"
                 scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                                      
-                    export FULL_REPO_NAME=${'$'}{GIT_URL##*/}
-                    export REPO_NAME=${'$'}{FULL_REPO_NAME%.*}
-                    export BUILDS_FILE="builds.json"
-                    export BUILDS_DIR="_builds"
-                    export GIT_CLONE_DIR="git_clone_dir"
-                    
-                    if [ -f ${'$'}BUILDS_FILE_PARSED ]; then rm -f ${'$'}BUILDS_FILE_PARSED 2> /dev/null || true; fi
-                    if [ -f %teamcity.build.workingDir%/*.zip ]; then rm -f %teamcity.build.workingDir%/*.zip 2> /dev/null || true; fi
-                    if [ -d %teamcity.build.workingDir%/$localOutputDir ]; then rm -rf %teamcity.build.workingDir%/$localOutputDir/* 2> /dev/null || true; fi
-                    if [ -d %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR ]; then rm -rf %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR/{*,.*} 2> /dev/null || true; fi
+            #!/bin/bash
+            set -xe
 
-                    git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% ${'$'}GIT_CLONE_DIR --recurse-submodules
+            export FULL_REPO_NAME=${'$'}{GIT_URL##*/}
+            export REPO_NAME=${'$'}{FULL_REPO_NAME%.*}
+            export BUILDS_FILE="builds.json"
+            export BUILDS_DIR="_builds"
+            export GIT_CLONE_DIR="git_clone_dir"
 
-                    if [ ! -z "%env.DOC_IDS%" ]
-                        then 
-                            echo "DOC_IDS specified. Checking for corresponding build files."
-                            IFS=' '
-                            for id in %env.DOC_IDS%; do
-                                FILE="${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR/${'$'}id.json"
-                                if [ -f ${'$'}FILE ]
-                                    then echo "Found build file ${'$'}FILE"
-                                        root=$(echo "${'$'}builds_json" | jq -r .root ${'$'}FILE);
-                                        filter=$(echo "${'$'}builds_json" | jq -r .filter ${'$'}FILE);
-                                        echo ${'$'}root:${'$'}filter >> %env.BUILDS_FILE_PARSED%
-                                    else echo "Could not locate build file ${'$'}FILE. Skipping Doc ID ${'$'}id"
-                                fi
-                            done
-                        else
-                            if [ -f ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_FILE ]
-                                then echo "${'$'}BUILDS_FILE found"
-                                    declare -a BUILDS
-                                    while IFS= read -r -d ${'$'}'\n' builds_json; do
-                                    root=${'$'}(echo "${'$'}builds_json" | jq -r .root)
-                                    filter=$(echo "${'$'}builds_json" | jq -r .filter)
-                                    echo "${'$'}root:${'$'}filter" >> %env.BUILDS_FILE_PARSED%
-                                    done < <(jq -c '.builds[]' ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_FILE)
-                                else
-                                    echo "${'$'}BUILDS_FILE not found, checking for ${'$'}BUILDS_DIR directory"
-                                    if [ -d "${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR" ]
-                                        then echo "${'$'}BUILDS_DIR found"
-                                            for FILE in ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR/*; do 
-                                            root=${'$'}(echo "${'$'}builds_json" | jq -r .root ${'$'}FILE);
-                                            filter=${'$'}(echo "${'$'}builds_json" | jq -r .filter ${'$'}FILE);
-                                            echo ${'$'}root:${'$'}filter >> %env.BUILDS_FILE_PARSED%
-                                            done;
-                                        else echo "ERROR: Did not find a ${'$'}BUILDS_FILE or ${'$'}BUILDS_DIR directory."
-                                    fi
-                            fi
-                    fi
-                """.trimIndent()
+            if [ -f ${'$'}BUILDS_FILE_PARSED ]; then rm -f ${'$'}BUILDS_FILE_PARSED 2> /dev/null || true; fi
+            if [ -f %teamcity.build.workingDir%/*.zip ]; then rm -f %teamcity.build.workingDir%/*.zip 2> /dev/null || true; fi
+            if [ -d %teamcity.build.workingDir%/$localOutputDir ]; then rm -rf %teamcity.build.workingDir%/$localOutputDir/* 2> /dev/null || true; fi
+            if [ -d %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR ]; then rm -rf %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR/{*,.*} 2> /dev/null || true; fi
+
+            git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% ${'$'}GIT_CLONE_DIR --recurse-submodules
+
+            if [ ! -z "%env.DOC_IDS%" ]
+            then
+            echo "DOC_IDS specified. Checking for corresponding build files."
+            IFS=' '
+            for id in %env.DOC_IDS%; do
+            FILE="${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR/${'$'}id.json"
+            if [ -f ${'$'}FILE ]
+            then echo "Found build file ${'$'}FILE"
+            root=$(echo "${'$'}builds_json" | jq -r .root ${'$'}FILE);
+            filter=$(echo "${'$'}builds_json" | jq -r .filter ${'$'}FILE);
+            echo ${'$'}root:${'$'}filter >> %env.BUILDS_FILE_PARSED%
+            else echo "Could not locate build file ${'$'}FILE. Skipping Doc ID ${'$'}id"
+            fi
+            done
+            else
+            if [ -f ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_FILE ]
+            then echo "${'$'}BUILDS_FILE found"
+            declare -a BUILDS
+            while IFS= read -r -d ${'$'}'\n' builds_json; do
+            root=${'$'}(echo "${'$'}builds_json" | jq -r .root)
+            filter=$(echo "${'$'}builds_json" | jq -r .filter)
+            echo "${'$'}root:${'$'}filter" >> %env.BUILDS_FILE_PARSED%
+            done < <(jq -c '.builds[]' ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_FILE)
+            else
+            echo "${'$'}BUILDS_FILE not found, checking for ${'$'}BUILDS_DIR directory"
+            if [ -d "${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR" ]
+            then echo "${'$'}BUILDS_DIR found"
+            for FILE in ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR/*; do
+            root=${'$'}(echo "${'$'}builds_json" | jq -r .root ${'$'}FILE);
+            filter=${'$'}(echo "${'$'}builds_json" | jq -r .filter ${'$'}FILE);
+            echo ${'$'}root:${'$'}filter >> %env.BUILDS_FILE_PARSED%
+            done;
+            else echo "ERROR: Did not find a ${'$'}BUILDS_FILE or ${'$'}BUILDS_DIR directory."
+            fi
+            fi
+            fi
+            """.trimIndent()
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             }
             script {
                 name = "Build custom DITA output"
                 id = Helpers.createIdStringFromName(this.name)
                 scriptContent = """
-                    #!/bin/bash
-                    set -xe
+            #!/bin/bash
+            set -xe
 
-                    export GIT_CLONE_DIR="git_clone_dir"
-                                                                                           
-                    declare -a BUILDS
-                    while read line; do
-                      IFS=':' read -r input filter <<< "${'$'}line"
-                      echo ${'$'}input ${'$'}filter
-                      INPUT_NAME=${'$'}{input%.*}
-                      FILTER_NAME=${'$'}{filter%.*}
-                      OUTPUT_SUBDIR="${'$'}{INPUT_NAME}_${'$'}FILTER_NAME"
-                      curl -O https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/common-gw/raw/ditavals/${'$'}filter \
-                        -H "Accept: application/json" \
-                        -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
-                      dita -i "${'$'}GIT_CLONE_DIR/${'$'}input" --filter "${'$'}filter" -f html5-Guidewire --gw-offline-webhelp yes --build.pdfs yes --create-index-redirect yes --args.rellinks nofamily -o "$localOutputDir/${'$'}OUTPUT_SUBDIR"
-                      n=${'$'}((n+1))
-                    done < %env.BUILDS_FILE_PARSED%
-                """.trimIndent()
+            export GIT_CLONE_DIR="git_clone_dir"
+
+            declare -a BUILDS
+            while read line; do
+            IFS=':' read -r input filter <<< "${'$'}line"
+            echo ${'$'}input ${'$'}filter
+            INPUT_NAME=${'$'}{input%.*}
+            FILTER_NAME=${'$'}{filter%.*}
+            OUTPUT_SUBDIR="${'$'}{INPUT_NAME}_${'$'}FILTER_NAME"
+            curl -O https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/common-gw/raw/ditavals/${'$'}filter \
+            -H "Accept: application/json" \
+            -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
+            dita -i "${'$'}GIT_CLONE_DIR/${'$'}input" --filter "${'$'}filter" -f html5-Guidewire --gw-offline-webhelp yes --build.pdfs yes --create-index-redirect yes --args.rellinks nofamily -o "$localOutputDir/${'$'}OUTPUT_SUBDIR"
+            n=${'$'}((n+1))
+            done < %env.BUILDS_FILE_PARSED%
+            """.trimIndent()
                 dockerImage = GwDockerImages.DITA_OT_LATEST.imageUrl
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             }
@@ -1650,15 +1631,15 @@ object Custom {
             script {
                 name = "Clean up agent"
                 scriptContent = """
-                    #!/bin/bash
-                    set -xe
+            #!/bin/bash
+            set -xe
 
-                    export GIT_CLONE_DIR="git_clone_dir"                                    
-                    
-                    if [ -f ${'$'}BUILDS_FILE_PARSED ]; then rm -f ${'$'}BUILDS_FILE_PARSED 2> /dev/null || true; fi
-                    if [ -d %teamcity.build.workingDir%/$localOutputDir ]; then rm -rf %teamcity.build.workingDir%/$localOutputDir/* 2> /dev/null || true; fi
-                    if [ -d %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR ]; then rm -rf %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR/{*,.*} 2> /dev/null || true; fi
-                """.trimIndent()
+            export GIT_CLONE_DIR="git_clone_dir"
+
+            if [ -f ${'$'}BUILDS_FILE_PARSED ]; then rm -f ${'$'}BUILDS_FILE_PARSED 2> /dev/null || true; fi
+            if [ -d %teamcity.build.workingDir%/$localOutputDir ]; then rm -rf %teamcity.build.workingDir%/$localOutputDir/* 2> /dev/null || true; fi
+            if [ -d %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR ]; then rm -rf %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR/{*,.*} 2> /dev/null || true; fi
+            """.trimIndent()
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             }
         }
@@ -1839,7 +1820,7 @@ object Content {
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
         val contentStorageDeployEnvVars = Helpers.setContentStorageDeployEnvVars(deployEnv)
         return BuildType {
-            name = "Deploy $deployEnv content storage"
+            name = "Deploy content storage to $deployEnv"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
@@ -1851,25 +1832,25 @@ object Content {
                     name = "Deploy to Kubernetes"
                     id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
-                        #!/bin/bash 
-                        set -eux
-                                              
-                        # Set AWS credentials
-                        $awsEnvVars
-                        
-                        # Set environment variables needed for Kubernetes config files
-                        $contentStorageDeployEnvVars
-                        
-                        # Set other envs
-                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
-                        
-                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
-                        
-                        echo ${'$'}(kubectl get pods --namespace=${GwAtmosLabels.POD_NAME.labelValue})
-                        
-                        eval "echo \"${'$'}(cat ${GwConfigParams.S3_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
-                                                
-                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}
+                    #!/bin/bash
+                    set -eux
+        
+                    # Set AWS credentials
+                    $awsEnvVars
+        
+                    # Set environment variables needed for Kubernetes config files
+                    $contentStorageDeployEnvVars
+        
+                    # Set other envs
+                    export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
+        
+                    aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
+        
+                    echo ${'$'}(kubectl get pods --namespace=${GwAtmosLabels.POD_NAME.labelValue})
+        
+                    eval "echo \"${'$'}(cat ${GwConfigParams.S3_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
+        
+                    kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}
                     """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -1878,15 +1859,17 @@ object Content {
             }
 
             triggers {
-                vcs {
-                    triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${GwConfigParams.S3_KUBE_DEPLOYMENT_FILE.paramValue}
-                        -:user=doctools:**
-                        """.trimIndent()
-                }
+                trigger(
+                    GwVcsTriggers.createDocPortalVcsTrigger(
+                        GwConfigParams.S3_KUBE_DEPLOYMENT_FILE.paramValue,
+                        true
+                    )
+                )
             }
 
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            features {
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
         }
     }
 
@@ -1927,18 +1910,18 @@ object Content {
                 name = "Download and zip PDF files"
                 id = Helpers.createIdStringFromName(this.name)
                 scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                    
-                    export TMP_DIR="$tmpDir"
-                    export ZIP_ARCHIVE_NAME="$zipArchiveName"
-                    
-                    echo "Setting credentials to access prod"
-                    $awsEnvVarsProd
-                    
-                    cd %teamcity.build.checkoutDir%/ci
-                    ./downloadPdfsForEscrow.sh
-                """.trimIndent()
+            #!/bin/bash
+            set -xe
+
+            export TMP_DIR="$tmpDir"
+            export ZIP_ARCHIVE_NAME="$zipArchiveName"
+
+            echo "Setting credentials to access prod"
+            $awsEnvVarsProd
+
+            cd %teamcity.build.checkoutDir%/ci
+            ./downloadPdfsForEscrow.sh
+            """.trimIndent()
                 dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -1947,14 +1930,14 @@ object Content {
                 name = "Upload the ZIP archive to S3"
                 id = Helpers.createIdStringFromName(this.name)
                 scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                    
-                    echo "Setting credentials to access int"
-                    $awsEnvVarsInt
-                    
-                    echo "Uploading the ZIP archive to the S3 bucket"
-                    aws s3 cp "${tmpDir}/${zipArchiveName}" s3://tenant-doctools-staging-builds/escrow/%env.RELEASE_NAME%/
+            #!/bin/bash
+            set -xe
+
+            echo "Setting credentials to access int"
+            $awsEnvVarsInt
+
+            echo "Uploading the ZIP archive to the S3 bucket"
+            aws s3 cp "${tmpDir}/${zipArchiveName}" s3://tenant-doctools-staging-builds/escrow/%env.RELEASE_NAME%/
             """.trimIndent()
                 dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -1988,11 +1971,11 @@ object Content {
                 name = "Reindex from staging to dev"
                 id = Helpers.createIdStringFromName(this.name)
                 shellScript = """
-                        #!/bin/sh
-                        set -e
-                        
-                        node ci/reindexFromStagingToDev.mjs
-                        """.trimIndent()
+            #!/bin/sh
+            set -e
+
+            node ci/reindexFromStagingToDev.mjs
+            """.trimIndent()
                 dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
             }
         }
@@ -2034,8 +2017,8 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             subProject(createReactLandingPagesProject())
-//            subProject(createNpmPackagesProject())
-//            subProject(createHtml5DependenciesProject())
+            //            subProject(createNpmPackagesProject())
+            //            subProject(createHtml5DependenciesProject())
         }
     }
 
@@ -2106,46 +2089,46 @@ object Frontend {
                     name = "Generate the root breadcrumbs file from React components"
                     id = Helpers.createIdStringFromName(this.name)
                     shellScript = """
-                        yarn --cwd scripts
-                        yarn --cwd scripts get-root-breadcrumbs
-                    """.trimIndent()
+            yarn --cwd scripts
+            yarn --cwd scripts get-root-breadcrumbs
+            """.trimIndent()
                     dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
                 }
                 script {
                     name = "Copy the root breadcrumbs file to landing pages"
                     id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
-                        #!/bin/bash 
-                        set -xe
-                        
-                        cp %teamcity.build.checkoutDir%/scripts/out/root-breadcrumbs.json %teamcity.build.checkoutDir%/landing-pages/public
-                    """.trimIndent()
+            #!/bin/bash
+            set -xe
+
+            cp %teamcity.build.checkoutDir%/scripts/out/root-breadcrumbs.json %teamcity.build.checkoutDir%/landing-pages/public
+            """.trimIndent()
                 }
                 script {
                     name = "Deploy to Kubernetes"
                     id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
-                        #!/bin/bash 
-                        set -eux
-                                
-                        # Set AWS credentials
-                        $awsEnvVars
-                        
-                        # Set environment variables needed for Kubernetes config files
-                        $reactLandingPagesDeployEnvVars
-                        
-                        # Set other envs
-                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
-                        
-                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
-                        
-                        echo ${'$'}(kubectl get pods --namespace=${GwAtmosLabels.POD_NAME.labelValue})
-                        
-                        eval "echo \"${'$'}(cat ${GwConfigParams.DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
-                                                
-                        sed -ie "s/BUILD_TIME/${'$'}(date)/g" ${'$'}TMP_DEPLOYMENT_FILE
-                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}
-                    """.trimIndent()
+            #!/bin/bash
+            set -eux
+
+            # Set AWS credentials
+            $awsEnvVars
+
+            # Set environment variables needed for Kubernetes config files
+            $reactLandingPagesDeployEnvVars
+
+            # Set other envs
+            export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
+
+            aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
+
+            echo ${'$'}(kubectl get pods --namespace=${GwAtmosLabels.POD_NAME.labelValue})
+
+            eval "echo \"${'$'}(cat ${GwConfigParams.DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
+
+            sed -ie "s/BUILD_TIME/${'$'}(date)/g" ${'$'}TMP_DEPLOYMENT_FILE
+            kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}
+            """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -2170,12 +2153,12 @@ object Frontend {
                 deployReactLandingPagesBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                deployReactLandingPagesBuildType.triggers.vcs {
-                    triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/**
-                        -:user=doctools:**
-                    """.trimIndent()
-                }
+                deployReactLandingPagesBuildType.triggers.trigger(
+                    GwVcsTriggers.createDocPortalVcsTrigger(
+                        "landing-pages/**",
+                        true
+                    )
+                )
             }
 
             GwDeployEnvs.STAGING.envName -> {
@@ -2213,10 +2196,10 @@ object Frontend {
             nodeJS {
                 id = "Build landing pages"
                 shellScript = """
-                    yarn
-                    CI=true yarn test:landing-pages
-                    yarn build
-                """.trimIndent()
+            yarn
+            CI=true yarn test:landing-pages
+            yarn build
+            """.trimIndent()
                 dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
             }
         }
@@ -2227,12 +2210,7 @@ object Frontend {
         }
 
         triggers {
-            vcs {
-                triggerRules = """
-                    +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/**
-                    -:user=doctools:**
-                """.trimIndent()
-            }
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("landing-pages/**"))
         }
     })
 
@@ -2255,18 +2233,18 @@ object Frontend {
                     name = "Create Kubernetes resources in dry run "
                     id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
-                    #!/bin/bash 
-                    set -e
-                    
-                    $awsEnvVars
-                    $reactLandingPagesDeployEnvVars
-                    export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
-                    
-                    aws eks update-kubeconfig --name atmos-$atmosDeployEnv
-                    eval "echo \"${'$'}(cat ${GwConfigParams.DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
-                    
-                    kubectl create -f ${'$'}TMP_DEPLOYMENT_FILE --dry-run=client
-                """.trimIndent()
+                        #!/bin/bash
+                        set -e
+            
+                        $awsEnvVars
+                        $reactLandingPagesDeployEnvVars
+                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
+            
+                        aws eks update-kubeconfig --name atmos-$atmosDeployEnv
+                        eval "echo \"${'$'}(cat ${GwConfigParams.DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
+            
+                        kubectl create -f ${'$'}TMP_DEPLOYMENT_FILE --dry-run=client
+                        """.trimIndent()
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -2281,12 +2259,7 @@ object Frontend {
 
             when (deployEnv) {
                 GwDeployEnvs.DEV.envName -> {
-                    triggers.vcs {
-                        triggerRules = """
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:landing-pages/kube/**
-                            -:user=doctools:**
-                        """.trimIndent()
-                    }
+                    triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("landing-pages/kube/**"))
                 }
             }
         }
@@ -2307,12 +2280,7 @@ object Frontend {
             }
 
             triggers {
-                vcs {
-                    triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${packagePath}/package.json
-                        -:user=doctools:**
-                    """.trimIndent()
-                }
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger("${packagePath}/package.json", true))
             }
 
             features {
@@ -2345,12 +2313,7 @@ object Frontend {
             }
 
             triggers {
-                vcs {
-                    triggerRules = """
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:html5/**
-                            -:user=doctools:**
-                            """.trimIndent()
-                }
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger("html5/**", true))
             }
 
             features {
@@ -2377,12 +2340,7 @@ object Frontend {
             }
 
             triggers {
-                vcs {
-                    triggerRules = """
-                            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:html5/**
-                            -:user=doctools:**
-                            """.trimIndent()
-                }
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger("html5/**", true))
             }
 
             features {
@@ -2434,8 +2392,8 @@ object Server {
             buildType(testKubernetesConfigFilesProd)
             buildType(buildAndPublishDockerImageToDevEcrBuildType)
             buildType(publishDockerImageToProdEcrBuildType)
-//            temporarily disabled
-//            buildType(AuditNpmPackages)
+            //            temporarily disabled
+            //            buildType(AuditNpmPackages)
         }
     }
 
@@ -2453,12 +2411,9 @@ object Server {
             step(GwBuildSteps.createBuildHtml5OfflineDependenciesStep())
         }
 
-        triggers.vcs {
-            triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:html5/**
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:docusaurus/themes/**
-                -:user=doctools:**
-            """.trimIndent()
+        triggers {
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("html5/**"))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("docusaurus/themes/**"))
         }
 
         features {
@@ -2481,8 +2436,8 @@ object Server {
             nodeJS {
                 id = "Run yarn npm audit"
                 shellScript = """
-                    yarn audit:server
-                """.trimIndent()
+            yarn audit:server
+            """.trimIndent()
                 dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
             }
         }
@@ -2492,12 +2447,9 @@ object Server {
             feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
         }
 
-        triggers.vcs {
-            triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/package.json
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/yarn.lock
-                -:user=doctools:**
-            """.trimIndent()
+        triggers {
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/package.json"))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/yarn.lock"))
         }
 
     })
@@ -2516,39 +2468,39 @@ object Server {
                 name = "Test the doc site server"
                 id = Helpers.createIdStringFromName(this.name)
                 scriptContent = """
-                    #!/bin/sh
-                    set -e
-                    export OKTA_CLIENT_ID=mock
-                    export OKTA_CLIENT_SECRET=mock
-                    export OKTA_IDP="${GwConfigParams.OKTA_IDP.paramValue}"
-                    export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
-                    export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP.paramValue}"
-                    export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
-                    export OKTA_ISSUER_APAC="issuerNotConfigured"
-                    export OKTA_ISSUER_EMEA="issuerNotConfigured"
-                    export OKTA_SCOPES=mock
-                    export OKTA_AUDIENCE=mock
-                    export APP_BASE_URL=http://localhost:8081
-                    export SESSION_KEY=mock
-                    export DOC_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.STAGING.envName)}"
-                    export PORTAL2_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)}"
-                    export ELASTIC_SEARCH_URL="${Helpers.getElasticsearchUrl(GwDeployEnvs.STAGING.envName)}"
-                    export DEPLOY_ENV="${GwDeployEnvs.STAGING.envName}"
-                    export LOCAL_CONFIG=yes
-                    export ENABLE_AUTH=no
-                    export PRETEND_TO_BE_EXTERNAL=no
-                    export ALLOW_PUBLIC_DOCS=yes
-                    export LOCALHOST_SESSION_SETTINGS=yes
-                    export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/partners-login"
-                    export PARTNERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
-                    export PARTNERS_LOGIN_CERT=mock
-                    export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/customers-login"
-                    export CUSTOMERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
-                    export CUSTOMERS_LOGIN_CERT=mock
-                    
-                    yarn
-                    yarn test:server
-                """.trimIndent()
+            #!/bin/sh
+            set -e
+            export OKTA_CLIENT_ID=mock
+            export OKTA_CLIENT_SECRET=mock
+            export OKTA_IDP="${GwConfigParams.OKTA_IDP.paramValue}"
+            export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
+            export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP.paramValue}"
+            export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
+            export OKTA_ISSUER_APAC="issuerNotConfigured"
+            export OKTA_ISSUER_EMEA="issuerNotConfigured"
+            export OKTA_SCOPES=mock
+            export OKTA_AUDIENCE=mock
+            export APP_BASE_URL=http://localhost:8081
+            export SESSION_KEY=mock
+            export DOC_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.STAGING.envName)}"
+            export PORTAL2_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)}"
+            export ELASTIC_SEARCH_URL="${Helpers.getElasticsearchUrl(GwDeployEnvs.STAGING.envName)}"
+            export DEPLOY_ENV="${GwDeployEnvs.STAGING.envName}"
+            export LOCAL_CONFIG=yes
+            export ENABLE_AUTH=no
+            export PRETEND_TO_BE_EXTERNAL=no
+            export ALLOW_PUBLIC_DOCS=yes
+            export LOCALHOST_SESSION_SETTINGS=yes
+            export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/partners-login"
+            export PARTNERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
+            export PARTNERS_LOGIN_CERT=mock
+            export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/customers-login"
+            export CUSTOMERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
+            export CUSTOMERS_LOGIN_CERT=mock
+
+            yarn
+            yarn test:server
+            """.trimIndent()
                 dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
             }
         }
@@ -2560,12 +2512,7 @@ object Server {
         }
 
         triggers {
-            vcs {
-                triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/**
-                -:user=doctools:**
-            """.trimIndent()
-            }
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/**"))
         }
     })
 
@@ -2588,21 +2535,21 @@ object Server {
                     name = "Create Kubernetes resources in dry run "
                     id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
-                    #!/bin/bash 
-                    set -e
-                    
-                    $awsEnvVars
-                    $serverDeployEnvVars
-                    export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
-                    export TMP_GATEWAY_CONFIG_FILE="tmp-gateway-config.yml"
-                    
-                    aws eks update-kubeconfig --name atmos-$atmosDeployEnv
-                    eval "echo \"${'$'}(cat ${GwConfigParams.DOC_PORTAL_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
-                    eval "echo \"${'$'}(cat ${gatewayConfigFile})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
-                    
-                    kubectl create -f ${'$'}TMP_DEPLOYMENT_FILE --dry-run=client
-                    kubectl create -f ${'$'}TMP_GATEWAY_CONFIG_FILE --dry-run=client
-                """.trimIndent()
+                        #!/bin/bash
+                        set -e
+            
+                        $awsEnvVars
+                        $serverDeployEnvVars
+                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
+                        export TMP_GATEWAY_CONFIG_FILE="tmp-gateway-config.yml"
+            
+                        aws eks update-kubeconfig --name atmos-$atmosDeployEnv
+                        eval "echo \"${'$'}(cat ${GwConfigParams.DOC_PORTAL_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
+                        eval "echo \"${'$'}(cat ${gatewayConfigFile})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
+            
+                        kubectl create -f ${'$'}TMP_DEPLOYMENT_FILE --dry-run=client
+                        kubectl create -f ${'$'}TMP_GATEWAY_CONFIG_FILE --dry-run=client
+                        """.trimIndent()
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -2617,12 +2564,7 @@ object Server {
 
             when (deployEnv) {
                 GwDeployEnvs.DEV.envName -> {
-                    triggers.vcs {
-                        triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/kube/**
-                -:user=doctools:**
-            """.trimIndent()
-                    }
+                    triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/kube/**"))
                 }
             }
         }
@@ -2648,30 +2590,30 @@ object Server {
                     name = "Deploy to Kubernetes"
                     id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
-                        #!/bin/bash 
+                        #!/bin/bash
                         set -eux
-                                
+            
                         # Set AWS credentials
                         $awsEnvVars
-                        
+            
                         # Set environment variables needed for Kubernetes config files
                         $serverDeployEnvVars
-                        
+            
                         # Set other envs
                         export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
                         export TMP_GATEWAY_CONFIG_FILE="tmp-gateway-config.yml"
-                        
+            
                         aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
-                        
+            
                         echo ${'$'}(kubectl get pods --namespace=${GwAtmosLabels.POD_NAME.labelValue})
-                        
+            
                         eval "echo \"${'$'}(cat ${GwConfigParams.DOC_PORTAL_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
                         eval "echo \"${'$'}(cat ${gatewayConfigFile})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
-                                                
+            
                         sed -ie "s/BUILD_TIME/${'$'}(date)/g" ${'$'}TMP_DEPLOYMENT_FILE
                         kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}
-                        kubectl apply -f ${'$'}TMP_GATEWAY_CONFIG_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}                    
-                    """.trimIndent()
+                        kubectl apply -f ${'$'}TMP_GATEWAY_CONFIG_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}
+                        """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -2696,12 +2638,7 @@ object Server {
                 deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                deployServerBuildType.triggers.vcs {
-                    triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:server/**
-                        -:user=doctools:**
-                    """.trimIndent()
-                }
+                deployServerBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/**", true))
             }
 
             GwDeployEnvs.STAGING.envName -> {
@@ -3026,10 +2963,10 @@ object Sources {
                 }
 
                 validationBuildType.artifactRules += """
-                    ${workingDir}/${docValidatorLogs} => $buildLogsDir
-                    ${workingDir}/${ditaOtLogsDir} => $adminLogsDir
-                    ${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}/${GwConfigParams.BUILD_DATA_FILE.paramValue} => ${GwConfigParams.BUILD_DATA_DIR.paramValue}
-                """.trimIndent()
+            ${workingDir}/${docValidatorLogs} => $buildLogsDir
+            ${workingDir}/${ditaOtLogsDir} => $adminLogsDir
+            ${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}/${GwConfigParams.BUILD_DATA_FILE.paramValue} => ${GwConfigParams.BUILD_DATA_DIR.paramValue}
+            """.trimIndent()
 
                 validationBuildType.steps {
                     step(
@@ -3123,8 +3060,8 @@ object Sources {
                 val customEnv = if (buildConfig.has("customEnv")) buildConfig.getJSONArray("customEnv") else null
 
                 validationBuildType.artifactRules += """
-                    ${workingDir}/*.log => $buildLogsDir
-                """.trimIndent()
+            ${workingDir}/*.log => $buildLogsDir
+            """.trimIndent()
 
 
                 validationBuildType.steps {
@@ -3183,9 +3120,7 @@ object Sources {
             }
 
             GwBuildTypes.YARN.buildTypeName -> {
-                validationBuildType.triggers.vcs {
-                    triggerRules = Helpers.getNonDitaTriggerRules(workingDir)
-                }
+                validationBuildType.triggers.trigger(GwVcsTriggers.createNonDitaVcsTrigger(workingDir))
             }
         }
 
@@ -3213,13 +3148,13 @@ object Sources {
                     id = Helpers.createIdStringFromName(this.name)
                     executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
                     scriptContent = """
-                        #!/bin/bash
-                        set -xe
-                        
-                        $awsEnvVars
-                        
-                        results_cleaner --elasticsearch-urls "$elasticsearchUrl"  --git-source-id "$srcId" --git-source-url "$gitUrl" --s3-bucket-name "tenant-doctools-staging-builds"
-                    """.trimIndent()
+            #!/bin/bash
+            set -xe
+
+            $awsEnvVars
+
+            results_cleaner --elasticsearch-urls "$elasticsearchUrl"  --git-source-id "$srcId" --git-source-url "$gitUrl" --s3-bucket-name "tenant-doctools-staging-builds"
+            """.trimIndent()
                     dockerImage = GwDockerImages.DOC_VALIDATOR_LATEST.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 }
@@ -3305,15 +3240,15 @@ object Recommendations {
                     name = "Download the pretrained model"
                     id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
-                            #!/bin/bash
-                            set -xe
-                            
-                            echo "Setting credentials to access int"
-                            $awsEnvVars
-                            
-                            echo "Downloading the pretrained model from the S3 bucket"
-                            aws s3 cp s3://tenant-doctools-${atmosDeployEnv}-builds/recommendation-engine/${pretrainedModelFile} %teamcity.build.workingDir%/
-                        """.trimIndent()
+            #!/bin/bash
+            set -xe
+
+            echo "Setting credentials to access int"
+            $awsEnvVars
+
+            echo "Downloading the pretrained model from the S3 bucket"
+            aws s3 cp s3://tenant-doctools-${atmosDeployEnv}-builds/recommendation-engine/${pretrainedModelFile} %teamcity.build.workingDir%/
+            """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -3322,19 +3257,19 @@ object Recommendations {
                     name = "Run the recommendation engine"
                     id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
-                            #!/bin/bash
-                            set -xe
-                            
-                            export PLATFORM="$gwPlatform"
-                            export PRODUCT="$gwProduct"
-                            export VERSION="$gwVersion"
-                            export ELASTICSEARCH_URL="$elasticsearchUrl"
-                            export DOCS_INDEX_NAME="gw-docs"
-                            export RECOMMENDATIONS_INDEX_NAME="gw-recommendations"
-                            export PRETRAINED_MODEL_FILE="$pretrainedModelFile"
-                                                                    
-                            recommendation_engine
-                        """.trimIndent()
+            #!/bin/bash
+            set -xe
+
+            export PLATFORM="$gwPlatform"
+            export PRODUCT="$gwProduct"
+            export VERSION="$gwVersion"
+            export ELASTICSEARCH_URL="$elasticsearchUrl"
+            export DOCS_INDEX_NAME="gw-docs"
+            export RECOMMENDATIONS_INDEX_NAME="gw-recommendations"
+            export PRETRAINED_MODEL_FILE="$pretrainedModelFile"
+
+            recommendation_engine
+            """.trimIndent()
                     dockerImage = GwDockerImages.RECOMMENDATION_ENGINE_LATEST.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                 }
@@ -3356,6 +3291,7 @@ object Apps {
             subProject(FlailSSGProject)
         }
     }
+
     // TODO: Remove this project after switch to main
     object FlailSSGProject : Project({
         name = "Flail SSG"
@@ -3381,21 +3317,12 @@ object Apps {
                 name = "Publish Docker image to Artifactory"
                 id = Helpers.createIdStringFromName(this.name)
                 scriptContent = """
-                        #!/bin/bash                        
-                        set -xe
-                        
-                        cd $appDir
-                        ./publish_docker.sh latest       
-                    """.trimIndent()
-            }
-        }
+            #!/bin/bash
+            set -xe
 
-        triggers {
-            vcs {
-                triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${appDir}/**
-                        -:user=doctools:**
-                    """.trimIndent()
+            cd $appDir
+            ./publish_docker.sh latest
+            """.trimIndent()
             }
         }
 
@@ -3406,6 +3333,10 @@ object Apps {
                 reuseBuilds = ReuseBuilds.SUCCESSFUL
                 onDependencyFailure = FailureAction.FAIL_TO_START
             }
+        }
+
+        triggers {
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("${appDir}/**", true))
         }
     })
 
@@ -3432,23 +3363,14 @@ object Apps {
                 name = "Run tests"
                 id = Helpers.createIdStringFromName(this.name)
                 scriptContent = """
-                        #!/bin/bash
-                        set -xe
-
-                        cd frontend/flail_ssg
-                        ./run_tests.sh
+                    #!/bin/bash
+                    set -xe
+        
+                    cd frontend/flail_ssg
+                    ./run_tests.sh
                     """.trimIndent()
                 dockerImage = GwDockerImages.PYTHON_3_9_SLIM_BUSTER.imageUrl
                 dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            }
-        }
-
-        triggers {
-            vcs {
-                triggerRules = """
-                        +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:frontend/**
-                        -:user=doctools:**
-                    """.trimIndent()
             }
         }
 
@@ -3456,6 +3378,10 @@ object Apps {
             feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
             feature(GwBuildFeatures.GwDockerSupportBuildFeature)
             feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+        }
+
+        triggers {
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("frontend/**"))
         }
     })
 }
@@ -3575,7 +3501,7 @@ object Helpers {
             export AWS_SECRET_ACCESS_KEY="$awsSecretAccessKey"
             export AWS_DEFAULT_REGION="$awsDefaultRegion"
             export AWS_REGION="$awsDefaultRegion"
-        """.trimIndent()
+            """.trimIndent()
     }
 
     // TODO: Change URLs to doc site URLs before switch to main
@@ -3655,26 +3581,26 @@ object Helpers {
             export POD_NAME="${GwAtmosLabels.POD_NAME.labelValue}"
             export DEPT_CODE="${GwAtmosLabels.DEPT_CODE.labelValue}"
             export TAG_VERSION=$tagVersion
-        """.trimIndent()
+            """.trimIndent()
         return when (deployEnv) {
             GwDeployEnvs.PROD.envName -> """
-                $commonEnvVars
-                export AWS_ROLE="${GwConfigParams.AWS_ROLE_PROD.paramValue}"
-                export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL_FRONTEND_PROD.imageUrl}"
-                export REQUESTS_MEMORY="1G"
-                export REQUESTS_CPU="200m"
-                export LIMITS_MEMORY="4G"
-                export LIMITS_CPU="2"
+            $commonEnvVars
+            export AWS_ROLE="${GwConfigParams.AWS_ROLE_PROD.paramValue}"
+            export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL_FRONTEND_PROD.imageUrl}"
+            export REQUESTS_MEMORY="1G"
+            export REQUESTS_CPU="200m"
+            export LIMITS_MEMORY="4G"
+            export LIMITS_CPU="2"
             """.trimIndent()
 
             else -> """
-                $commonEnvVars
-                export AWS_ROLE="${GwConfigParams.AWS_ROLE.paramValue}"
-                export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl}"
-                export REQUESTS_MEMORY="500M"
-                export REQUESTS_CPU="100m"
-                export LIMITS_MEMORY="2G"
-                export LIMITS_CPU="1"
+            $commonEnvVars
+            export AWS_ROLE="${GwConfigParams.AWS_ROLE.paramValue}"
+            export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl}"
+            export REQUESTS_MEMORY="500M"
+            export REQUESTS_CPU="100m"
+            export LIMITS_MEMORY="2G"
+            export LIMITS_CPU="1"
             """.trimIndent()
         }
     }
@@ -3701,52 +3627,52 @@ object Helpers {
             export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/customers-login"
             export PARTNERS_LOGIN_URL="$partnersLoginUrl"
             export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${appBaseUrl}/partners-login"
-        """.trimIndent()
+            """.trimIndent()
         return when (deployEnv) {
             GwDeployEnvs.PROD.envName -> """
-                $commonEnvVars
-                export AWS_ROLE="${GwConfigParams.AWS_ROLE_PROD.paramValue}"
-                export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL_PROD.imageUrl}"
-                export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP_PROD.paramValue}"
-                export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP_PROD.paramValue}"
-                export DEPLOY_ENV="${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}"
-                export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER_PROD.paramValue}"
-                export OKTA_ISSUER_APAC="${GwConfigParams.OKTA_ISSUER_APAC.paramValue}"
-                export OKTA_ISSUER_EMEA="${GwConfigParams.OKTA_ISSUER_EMEA.paramValue}"
-                export OKTA_IDP="${GwConfigParams.OKTA_IDP_PROD.paramValue}"
-                export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES_PROD.paramValue}"
-                export ELASTIC_SEARCH_URL="http://docsearch-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.doctools:9200"
-                export CONFIG_DB_HOST="${GwConfigParams.CONFIG_DB_HOST_PROD.paramValue}" 
-                export REQUESTS_MEMORY="1G"
-                export REQUESTS_CPU="200m"
-                export LIMITS_MEMORY="4G"
-                export LIMITS_CPU="2"
+            $commonEnvVars
+            export AWS_ROLE="${GwConfigParams.AWS_ROLE_PROD.paramValue}"
+            export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL_PROD.imageUrl}"
+            export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP_PROD.paramValue}"
+            export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP_PROD.paramValue}"
+            export DEPLOY_ENV="${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}"
+            export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER_PROD.paramValue}"
+            export OKTA_ISSUER_APAC="${GwConfigParams.OKTA_ISSUER_APAC.paramValue}"
+            export OKTA_ISSUER_EMEA="${GwConfigParams.OKTA_ISSUER_EMEA.paramValue}"
+            export OKTA_IDP="${GwConfigParams.OKTA_IDP_PROD.paramValue}"
+            export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES_PROD.paramValue}"
+            export ELASTIC_SEARCH_URL="http://docsearch-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}.doctools:9200"
+            export CONFIG_DB_HOST="${GwConfigParams.CONFIG_DB_HOST_PROD.paramValue}"
+            export REQUESTS_MEMORY="1G"
+            export REQUESTS_CPU="200m"
+            export LIMITS_MEMORY="4G"
+            export LIMITS_CPU="2"
             """.trimIndent()
 
             else -> """
-                $commonEnvVars
-                export AWS_ROLE="${GwConfigParams.AWS_ROLE.paramValue}"
-                export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL.imageUrl}"
-                export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
-                export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP.paramValue}"
-                export DEPLOY_ENV="$deployEnv"
-                export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
-                export OKTA_ISSUER_APAC="issuerNotConfigured"
-                export OKTA_ISSUER_EMEA="issuerNotConfigured"
-                export OKTA_IDP="${GwConfigParams.OKTA_IDP.paramValue}"
-                export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES.paramValue}"
-                export ELASTIC_SEARCH_URL="http://docsearch-${deployEnv}.doctools:9200"
-                export CONFIG_DB_HOST="${
+            $commonEnvVars
+            export AWS_ROLE="${GwConfigParams.AWS_ROLE.paramValue}"
+            export AWS_ECR_REPO="${GwDockerImages.DOC_PORTAL.imageUrl}"
+            export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
+            export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP.paramValue}"
+            export DEPLOY_ENV="$deployEnv"
+            export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
+            export OKTA_ISSUER_APAC="issuerNotConfigured"
+            export OKTA_ISSUER_EMEA="issuerNotConfigured"
+            export OKTA_IDP="${GwConfigParams.OKTA_IDP.paramValue}"
+            export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES.paramValue}"
+            export ELASTIC_SEARCH_URL="http://docsearch-${deployEnv}.doctools:9200"
+            export CONFIG_DB_HOST="${
                 when (deployEnv) {
                     GwDeployEnvs.STAGING.envName -> GwConfigParams.CONFIG_DB_HOST_STAGING.paramValue
                     GwDeployEnvs.DEV.envName -> GwConfigParams.CONFIG_DB_HOST_DEV.paramValue
                     else -> ""
                 }
             }"
-                export REQUESTS_MEMORY="500M"
-                export REQUESTS_CPU="100m"
-                export LIMITS_MEMORY="2G"
-                export LIMITS_CPU="1"
+            export REQUESTS_MEMORY="500M"
+            export REQUESTS_CPU="100m"
+            export LIMITS_MEMORY="2G"
+            export LIMITS_CPU="1"
             """.trimIndent()
         }
     }
@@ -3756,43 +3682,25 @@ object Helpers {
             export POD_NAME="${GwAtmosLabels.POD_NAME.labelValue}"
             export DEPT_CODE="${GwAtmosLabels.DEPT_CODE.labelValue}"
             export TAG_VERSION="0.0.0"
-        """.trimIndent()
+            """.trimIndent()
         return when (deployEnv) {
             GwDeployEnvs.PROD.envName -> """
-                $commonEnvVars
-                export APP_NAME="docportal-content"
-                export SERVICE_EXTERNAL_NAME="tenant-${GwAtmosLabels.POD_NAME.labelValue}-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-builds.s3-website-us-east-1.amazonaws.com"
+            $commonEnvVars
+            export APP_NAME="docportal-content"
+            export SERVICE_EXTERNAL_NAME="tenant-${GwAtmosLabels.POD_NAME.labelValue}-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-builds.s3-website-us-east-1.amazonaws.com"
             """.trimIndent()
 
             GwDeployEnvs.PORTAL2.envName -> """
-                $commonEnvVars
-                export APP_NAME="portal2-content"
-                export SERVICE_EXTERNAL_NAME="tenant-${GwAtmosLabels.POD_NAME.labelValue}-portal2-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-builds.s3-website-us-east-1.amazonaws.com"
+            $commonEnvVars
+            export APP_NAME="portal2-content"
+            export SERVICE_EXTERNAL_NAME="tenant-${GwAtmosLabels.POD_NAME.labelValue}-portal2-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-builds.s3-website-us-east-1.amazonaws.com"
             """.trimIndent()
 
             else -> """
-                $commonEnvVars
-                export APP_NAME="docportal-content"
-                export SERVICE_EXTERNAL_NAME="tenant-${GwAtmosLabels.POD_NAME.labelValue}-${deployEnv}-builds.s3-website.us-west-2.amazonaws.com"
+            $commonEnvVars
+            export APP_NAME="docportal-content"
+            export SERVICE_EXTERNAL_NAME="tenant-${GwAtmosLabels.POD_NAME.labelValue}-${deployEnv}-builds.s3-website.us-west-2.amazonaws.com"
             """.trimIndent()
-        }
-    }
-
-    fun getNonDitaTriggerRules(workingDir: String): String {
-
-        return when (workingDir) {
-            "%teamcity.build.checkoutDir%" -> {
-                """
-                    -:user=doctools:**
-                """.trimIndent()
-            }
-
-            else -> {
-                """
-                    +:${workingDir.replace("%teamcity.build.checkoutDir%/", "")}/**
-                    -:user=doctools:**
-                """.trimIndent()
-            }
         }
     }
 
@@ -3822,13 +3730,13 @@ object Helpers {
     ): String {
         return if (buildFilter != null) {
             """
-                echo "Downloading the ditaval file from common-gw submodule"
-                                    
-                export COMMON_GW_DITAVALS_DIR="${workingDir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.paramValue}"
-                mkdir -p ${'$'}COMMON_GW_DITAVALS_DIR && cd ${'$'}COMMON_GW_DITAVALS_DIR 
-                curl -O https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/common-gw/raw/ditavals/${buildFilter} \
-                    -H "Accept: application/json" \
-                    -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
+            echo "Downloading the ditaval file from common-gw submodule"
+
+            export COMMON_GW_DITAVALS_DIR="${workingDir}/${GwConfigParams.COMMON_GW_DITAVALS_DIR.paramValue}"
+            mkdir -p ${'$'}COMMON_GW_DITAVALS_DIR && cd ${'$'}COMMON_GW_DITAVALS_DIR
+            curl -O https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/common-gw/raw/ditavals/${buildFilter} \
+            -H "Accept: application/json" \
+            -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
             """.trimIndent()
         } else {
             "echo \"This build does not use a ditaval file. Skipping download from the common-gw submodule...\""
@@ -3865,12 +3773,13 @@ object GwBuilds {
             feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
         }
 
-        triggers.vcs {
-            triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/settings.kts
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:.teamcity/config/**
-                -:user=doctools:**
-            """.trimIndent()
+        // The general rule is to trigger test builds only for pull requests branches and to trigger deploy builds
+        // for the default branch, which then trigger test builds as snapshot dependencies.
+        // This test build doesn't have an associated deployment build,
+        // therefore we want to run it on changes in the default branch as well.
+        triggers {
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger(".teamcity/settings.kts", true))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger(".teamcity/config/**", true))
         }
     })
 
@@ -3934,26 +3843,26 @@ object GwBuilds {
                     id = Helpers.createIdStringFromName(this.name)
 
                     scriptContent = """
-                        #!/bin/bash 
-                        set -xe
-                        
-                        # Log into the dev ECR, build and push the image
-                        $awsEnvVars
-                        
-                        export TAG_VERSION=$tagVersion
-                        export DEPT_CODE=${GwAtmosLabels.DEPT_CODE.labelValue}
-                        export POD_NAME=${GwAtmosLabels.POD_NAME.labelValue}
-        
-                        set +x
-                        docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
-                        set -x
-                        docker build -t ${devDockerImageUrl}:${tagVersion} $dockerfilePath \
-                        --build-arg NPM_AUTH_TOKEN \
-                        --build-arg TAG_VERSION \
-                        --build-arg DEPT_CODE \
-                        --build-arg POD_NAME
-                        docker push ${devDockerImageUrl}:${tagVersion}
-                    """.trimIndent()
+            #!/bin/bash
+            set -xe
+
+            # Log into the dev ECR, build and push the image
+            $awsEnvVars
+
+            export TAG_VERSION=$tagVersion
+            export DEPT_CODE=${GwAtmosLabels.DEPT_CODE.labelValue}
+            export POD_NAME=${GwAtmosLabels.POD_NAME.labelValue}
+
+            set +x
+            docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
+            set -x
+            docker build -t ${devDockerImageUrl}:${tagVersion} $dockerfilePath \
+            --build-arg NPM_AUTH_TOKEN \
+            --build-arg TAG_VERSION \
+            --build-arg DEPT_CODE \
+            --build-arg POD_NAME
+            docker push ${devDockerImageUrl}:${tagVersion}
+            """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerRunParameters =
@@ -3990,25 +3899,25 @@ object GwBuilds {
                     name = "Download Docker Image from DEV ECR and push it to PROD ECR"
                     id = Helpers.createIdStringFromName(this.name)
                     scriptContent = """
-                        set -xe
-                        
-                        # Log into the dev ECR, download the image and tag it
-                        $awsEnvVarsDev
-        
-                        set +x
-                        docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
-                        set -x
-                        docker pull ${devDockerImageUrl}:${tagVersion}
-                        docker tag ${devDockerImageUrl}:${tagVersion} ${prodDockerImageUrl}:${tagVersion}
-                        
-                        # Log into the prod ECR and push the image
-                        $awsEnvVarsProd
-                        
-                        set +x
-                        docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST_PROD.paramValue}
-                        set -x
-                        docker push ${prodDockerImageUrl}:${tagVersion}
-                    """.trimIndent()
+            set -xe
+
+            # Log into the dev ECR, download the image and tag it
+            $awsEnvVarsDev
+
+            set +x
+            docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
+            set -x
+            docker pull ${devDockerImageUrl}:${tagVersion}
+            docker tag ${devDockerImageUrl}:${tagVersion} ${prodDockerImageUrl}:${tagVersion}
+
+            # Log into the prod ECR and push the image
+            $awsEnvVarsProd
+
+            set +x
+            docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST_PROD.paramValue}
+            set -x
+            docker push ${prodDockerImageUrl}:${tagVersion}
+            """.trimIndent()
                     dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
                     dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
                     dockerRunParameters =
@@ -4042,16 +3951,17 @@ object GwBuilds {
                 !**/_cvs/**/*, !**/.svn/**/*,   !**/.hg/**/*,   !**/.git/**/*,  !**/.bzr/**/*, !**/bin/**/*,
                 !**/obj/**/*,  !**/backup/**/*, !**/.idea/**/*, !**/*.DS_Store, !**/*.ipr,     !**/*.iws,
                 !**/*.bak,     !**/*.tmp,       !**/*.aac,      !**/*.aif,      !**/*.iff,     !**/*.m3u,   !**/*.mid, !**/*.mp3,
-                !**/*.mpa,     !**/*.ra,        !**/*.wav,      !**/*.wma,      !**/*.3g2,     !**/*.3gp,   !**/*.asf, !**/*.asx,
-                !**/*.avi,     !**/*.flv,       !**/*.mov,      !**/*.mp4,      !**/*.mpg,     !**/*.rm,    !**/*.swf, !**/*.vob,
-                !**/*.wmv,     !**/*.bmp,       !**/*.gif,      !**/*.jpg,      !**/*.png,     !**/*.psd,   !**/*.tif, !**/*.swf,
-                !**/*.jar,     !**/*.zip,       !**/*.rar,      !**/*.exe,      !**/*.dll,     !**/*.pdb,   !**/*.7z,  !**/*.gz,
-                !**/*.tar.gz,  !**/*.tar,       !**/*.gz,       !**/*.ahtm,     !**/*.ahtml,   !**/*.fhtml, !**/*.hdm,
-                !**/*.hdml,    !**/*.hsql,      !**/*.ht,       !**/*.hta,      !**/*.htc,     !**/*.htd,   !**/*.war, !**/*.ear,
-                !**/*.htmls,   !**/*.ihtml,     !**/*.mht,      !**/*.mhtm,     !**/*.mhtml,   !**/*.ssi,   !**/*.stm,
-                !**/*.stml,    !**/*.ttml,      !**/*.txn,      !**/*.xhtm,     !**/*.xhtml,   !**/*.class, !**/node_modules/**/*, !**/*.iml,
-                !**/tests/**/*,     !**/.teamcity/**/*,     !**/__tests__/**/*,     !**/images/**/*,        !**/fonts/**/*
-            """.trimIndent()
+                !**/*.mpa,     !**/*.ra,        !**/
+                *.wav, !**/*.wma,      !**/*.3g2, !**/*.3gp,   !**/*.asf, !**/*.asx,
+                !**/*.avi, !**/*.flv,       !**/*.mov, !**/*.mp4,      !**/*.mpg, !**/*.rm,    !**/*.swf, !**/*.vob,
+                !**/*.wmv, !**/*.bmp,       !**/*.gif, !**/*.jpg,      !**/*.png, !**/*.psd,   !**/*.tif, !**/*.swf,
+                !**/*.jar, !**/*.zip,       !**/*.rar, !**/*.exe,      !**/*.dll, !**/*.pdb,   !**/*.7z, !**/*.gz,
+                !**/*.tar.gz, !**/*.tar,       !**/*.gz, !**/*.ahtm,     !**/*.ahtml, !**/*.fhtml, !**/*.hdm,
+                !* */*.hdml,    !**/*.hsql, !**/*.ht,       !**/*.hta, !**/*.htc,     !**/*.htd, !**/*.war, !**/*.ear,
+                !* */*.htmls,   !**/*.ihtml, !**/*.mht,      !**/*.mhtm, !**/*.mhtml,   !**/*.ssi, !**/*.stm,
+                !**/*.stml, !**/*.ttml,      !**/*.txn, !**/*.xhtm,     !**/*.xhtml, !**/*.class, !**/node_modules/**/*, !**/*.iml,
+                !**/tests/**/*, !**/.teamcity/**/*, !**/__tests__/**/*, !**/images/**/*, !**/fonts/**/*
+                """.trimIndent()
                 )
             }
 
@@ -4066,12 +3976,7 @@ object GwBuilds {
             }
 
             triggers {
-                vcs {
-                    triggerRules = """
-                    +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:$sourceDir/**
-                    -:user=doctools:**
-                    """.trimIndent()
-                }
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger(sourceDir))
             }
         }
     }
@@ -4082,12 +3987,12 @@ object GwBuildSteps {
         name = "Merge all config files"
         id = Helpers.createIdStringFromName(this.name)
         scriptContent = """
-                #!/bin/bash
-                set -xe
+            #!/bin/bash
+            set -xe
 
-                config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}"
-                config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}"
-                config_deployer merge "${GwConfigParams.BUILDS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}"
+            config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}"
+            config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}"
+            config_deployer merge "${GwConfigParams.BUILDS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}"
             """.trimIndent()
         dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.imageUrl
         dockerImagePlatform = ImagePlatform.Linux
@@ -4099,27 +4004,27 @@ object GwBuildSteps {
             name = "Check pods status"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                #!/bin/bash
-                set -e
-                
-                # Set AWS credentials
-                $envVars
-                
-                aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
-                sleep 10
-                TIME="0"
-                while true; do
-                    if [[ "${'$'}TIME" == "10" ]]; then
-                        break
-                    fi
-                    FAIL_PODS=`kubectl get pods -l app=${appName} --namespace=${GwAtmosLabels.POD_NAME.labelValue} | grep CrashLoopBackOff | cut -d' ' -f1 | tail -n +2`
-                    if [[ ! -z "${'$'}FAIL_PODS" ]]; then
-                        echo "The following pods failed in last Deployment. Please check it in Kubernetes Dashboard."
-                        echo "${'$'}FAIL_PODS" && false
-                    fi
-                    sleep 10
-                    TIME=${'$'}[${'$'}TIME+1]
-                done
+            #!/bin/bash
+            set -e
+
+            # Set AWS credentials
+            $envVars
+
+            aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
+            sleep 10
+            TIME="0"
+            while true; do
+            if [[ "${'$'}TIME" == "10" ]]; then
+            break
+            fi
+            FAIL_PODS=`kubectl get pods -l app=${appName} --namespace=${GwAtmosLabels.POD_NAME.labelValue} | grep CrashLoopBackOff | cut -d' ' -f1 | tail -n +2`
+            if [[ ! -z "${'$'}FAIL_PODS" ]]; then
+            echo "The following pods failed in last Deployment. Please check it in Kubernetes Dashboard."
+            echo "${'$'}FAIL_PODS" && false
+            fi
+            sleep 10
+            TIME=${'$'}[${'$'}TIME+1]
+            done
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -4138,13 +4043,13 @@ object GwBuildSteps {
             name = "Add a pull request comment (${stepNameSuffix})"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                #!/bin/bash
-                    set -xe
-                curl -X POST https://stash.guidewire.com/rest/api/1.0/projects/${projectKey}/repos/${repoKey}/pull-requests/${pullRequestId}/comments \
-                        -H "Accept: application/json" \
-                        -H "Content-Type: application/json" \
-                        -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%" \
-                        -d '{ "text": "$commentText"}'
+            #!/bin/bash
+            set -xe
+            curl -X POST https://stash.guidewire.com/rest/api/1.0/projects/${projectKey}/repos/${repoKey}/pull-requests/${pullRequestId}/comments \
+            -H "Accept: application/json" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%" \
+            -d '{ "text": "$commentText"}'
             """.trimIndent()
         }
     }
@@ -4154,16 +4059,16 @@ object GwBuildSteps {
             name = "NPM publish $packageHandle"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                npm install -g npm-cli-login
-                npm-cli-login -u ${'$'}{ARTIFACTORY_SERVICE_ACCOUNT_USERNAME} -p ${'$'}{ARTIFACTORY_API_KEY} -e svc-doc-artifactory@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev
-                npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
-                npm config set always-auth true
-                npm config set unsafe-perm true
-                
-                yarn install
-                yarn build:$packageHandle
-                cd $packagePath
-                npm publish
+            npm install -g npm-cli-login
+            npm-cli-login -u ${'$'}{ARTIFACTORY_SERVICE_ACCOUNT_USERNAME} -p ${'$'}{ARTIFACTORY_API_KEY} -e svc-doc-artifactory@guidewire.com -r https://artifactory.guidewire.com/api/npm/doctools-npm-dev
+            npm config set @doctools:registry https://artifactory.guidewire.com/api/npm/doctools-npm-dev/
+            npm config set always-auth true
+            npm config set unsafe-perm true
+
+            yarn install
+            yarn build:$packageHandle
+            cd $packagePath
+            npm publish
             """.trimIndent()
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerImage = "artifactory.guidewire.com/hub-docker-remote/node:16.16.0"
@@ -4184,25 +4089,26 @@ object GwBuildSteps {
             name = "Upload legacy configs and legacy pages to the S3 bucket"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                $awsEnvVars
-                
-                mkdir -p "$localLegacyConfigsPublishPath"
-                                
-                mv "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localLegacyConfigsPublishPath/docs.json"
-                mv "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localLegacyConfigsPublishPath/sources.json"
-                mv "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localLegacyConfigsPublishPath/builds.json"
-                
-                rm -rf 
-                
-                # Copy merged legacy configs to the S3 bucket
-                aws s3 sync "$localLegacyConfigsPublishPath" "$s3LegacyConfigsPublishPath" --delete
-                
-                # Copy merged legacy pages to the S3 bucket
-                aws s3 sync "$localLegacyPagesPublishPath" "$s3LegacyPagesPublishPath" --delete --exclude "**/breadcrumbs.json" --exclude "**/versionSelectors.json"
-            """.trimIndent()
+            #!/bin/bash
+            set -xe
+
+            $awsEnvVars
+
+            mkdir -p "$localLegacyConfigsPublishPath"
+
+            mv "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localLegacyConfigsPublishPath/docs.json"
+            mv "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localLegacyConfigsPublishPath/sources.json"
+            mv "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}/merge-all.json" "$localLegacyConfigsPublishPath/builds.json"
+
+            rm -rf
+
+            # Copy merged legacy configs to the S3 bucket
+            aws s3 sync "$localLegacyConfigsPublishPath" "$s3LegacyConfigsPublishPath" --delete
+
+            # Copy merged legacy pages to the S3 bucket
+            aws s3 sync "$localLegacyPagesPublishPath" "$s3LegacyPagesPublishPath" --delete --exclude "**/
+            breadcrumbs.json" --exclude "**/versionSelectors.json"
+                """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -4213,11 +4119,11 @@ object GwBuildSteps {
         name = "Merge docs config files"
         id = Helpers.createIdStringFromName(this.name)
         scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}"
-            """.trimIndent()
+                #!/ bin / bash
+                    set - xe
+
+                config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" - o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}"
+                """.trimIndent()
         dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.imageUrl
         dockerImagePlatform = ImagePlatform.Linux
     })
@@ -4227,11 +4133,11 @@ object GwBuildSteps {
             name = "Generate config file for $deployEnv"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                config_deployer deploy "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}" --deploy-env $deployEnv
-            """.trimIndent()
+                #!/ bin / bash
+                    set - xe
+
+                config_deployer deploy "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" - o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}"--deploy-env $deployEnv
+                """.trimIndent()
             dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
@@ -4246,17 +4152,17 @@ object GwBuildSteps {
             name = "Run Flail SSG (${deployEnv})"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export PAGES_DIR="$pagesDir"
-                export OUTPUT_DIR="$outputDir"
-                export DOCS_CONFIG_FILE="${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}"
-                export DEPLOY_ENV="$deployEnv"
-                export SEND_BOUNCER_HOME="no"
-                                
+                #!/ bin / bash
+                    set - xe
+
+                export PAGES_DIR ="$pagesDir"
+                export OUTPUT_DIR ="$outputDir"
+                export DOCS_CONFIG_FILE ="${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}"
+                export DEPLOY_ENV ="$deployEnv"
+                export SEND_BOUNCER_HOME ="no"
+
                 flail_ssg
-            """.trimIndent()
+                """.trimIndent()
             dockerImage = GwDockerImages.FLAIL_SSG_LATEST.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
@@ -4268,11 +4174,11 @@ object GwBuildSteps {
             name = "Refresh config for $deployEnv"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                #!/bin/bash
-                set -xe
-                
+                #!/ bin / bash
+                    set - xe
+
                 curl $url/safeConfig/refreshConfig
-            """.trimIndent()
+                """.trimIndent()
         }
     }
 
@@ -4281,14 +4187,14 @@ object GwBuildSteps {
             name = "Run the lion page builder"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export LOC_DOCS_SRC="$locDocsSrc"
-                export LOC_DOCS_OUT="$locDocsOut"
-                
+                #!/ bin / bash
+                    set - xe
+
+                export LOC_DOCS_SRC ="$locDocsSrc"
+                export LOC_DOCS_OUT ="$locDocsOut"
+
                 lion_page_builder
-            """.trimIndent()
+                """.trimIndent()
             dockerImage = GwDockerImages.LION_PAGE_BUILDER_LATEST.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
@@ -4301,13 +4207,13 @@ object GwBuildSteps {
             name = "Copy localized PDFs to the S3 bucket"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                #!/bin/bash
-                set -xe
-                        
+                #!/ bin / bash
+                    set - xe
+
                 $awsEnvVars
-                        
+
                 aws s3 sync "$locDocsSrc" s3://tenant-doctools-${atmosDeployEnv}-builds/l10n --exclude ".git/*" --delete
-            """.trimIndent()
+                """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -4323,19 +4229,19 @@ object GwBuildSteps {
             name = "Run the lion pkg builder"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export TEAMCITY_API_ROOT_URL="https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/" 
-                export TEAMCITY_API_AUTH_TOKEN="%env.TEAMCITY_API_ACCESS_TOKEN%"
-                export TEAMCITY_RESOURCES_ARTIFACT_PATH="${GwConfigParams.BUILD_DATA_DIR.paramValue}/${GwConfigParams.BUILD_DATA_FILE.paramValue}"
-                export ZIP_SRC_DIR="zip"
-                export OUTPUT_PATH="$outputDir"
-                export WORKING_DIR="$workingDir"
-                export TC_BUILD_TYPE_ID="$tcBuildTypeId"
-                
+                #!/ bin / bash
+                    set - xe
+
+                export TEAMCITY_API_ROOT_URL ="https://gwre-devexp-ci-production-devci.gwre-devops.net/app/rest/"
+                export TEAMCITY_API_AUTH_TOKEN ="%env.TEAMCITY_API_ACCESS_TOKEN%"
+                export TEAMCITY_RESOURCES_ARTIFACT_PATH ="${GwConfigParams.BUILD_DATA_DIR.paramValue}/${GwConfigParams.BUILD_DATA_FILE.paramValue}"
+                export ZIP_SRC_DIR ="zip"
+                export OUTPUT_PATH ="$outputDir"
+                export WORKING_DIR ="$workingDir"
+                export TC_BUILD_TYPE_ID ="$tcBuildTypeId"
+
                 lion_pkg_builder
-            """.trimIndent()
+                """.trimIndent()
             dockerImage = GwDockerImages.LION_PKG_BUILDER_LATEST.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
@@ -4350,15 +4256,15 @@ object GwBuildSteps {
             name = "Run the upgrade diffs page builder"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export UPGRADEDIFFS_DOCS_SRC="$upgradeDiffsDocsSrc"
-                export UPGRADEDIFFS_DOCS_OUT="$upgradeDiffsDocsOut"
-                export DEPLOY_ENV="$deployEnv"
-                
+                #!/ bin / bash
+                    set - xe
+
+                export UPGRADEDIFFS_DOCS_SRC ="$upgradeDiffsDocsSrc"
+                export UPGRADEDIFFS_DOCS_OUT ="$upgradeDiffsDocsOut"
+                export DEPLOY_ENV ="$deployEnv"
+
                 upgradediffs_page_builder
-            """.trimIndent()
+                """.trimIndent()
             dockerImage = GwDockerImages.UPGRADE_DIFFS_PAGE_BUILDER_LATEST.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
@@ -4376,13 +4282,13 @@ object GwBuildSteps {
             name = "Copy upgrade diffs to the S3 bucket"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                #!/bin/bash
-                set -xe
-                        
+                #!/ bin / bash
+                    set - xe
+
                 $awsEnvVars
-                        
+
                 $awsS3SyncCommand
-            """.trimIndent()
+                """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
             dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
@@ -4396,15 +4302,15 @@ object GwBuildSteps {
             name = "Run the sitemap generator"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export OUTPUT_DIR="$outputDir"
-                export APP_BASE_URL="$appBaseUrl"
-                export ELASTICSEARCH_URLS="$elasticsearchUrls"
-                
+                #!/ bin / bash
+                    set - xe
+
+                export OUTPUT_DIR ="$outputDir"
+                export APP_BASE_URL ="$appBaseUrl"
+                export ELASTICSEARCH_URLS ="$elasticsearchUrls"
+
                 sitemap_generator
-            """.trimIndent()
+                """.trimIndent()
             dockerImage = GwDockerImages.SITEMAP_GENERATOR_LATEST.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
@@ -4421,17 +4327,17 @@ object GwBuildSteps {
             name = "Run the index cleaner"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export ELASTICSEARCH_URLS="$elasticsearchUrls"
-                export CONFIG_FILE_URL="$configFileUrl"
-                export CONFIG_FILE="%teamcity.build.workingDir%/config.json"                
-                
-                curl ${'$'}CONFIG_FILE_URL > ${'$'}CONFIG_FILE
+                #!/ bin / bash
+                    set - xe
 
-                index_cleaner
-            """.trimIndent()
+                export ELASTICSEARCH_URLS ="$elasticsearchUrls"
+                export CONFIG_FILE_URL ="$configFileUrl"
+                export CONFIG_FILE ="%teamcity.build.workingDir%/config.json"
+
+                curl ${'$'} CONFIG_FILE_URL > ${'$'} CONFIG_FILE
+
+                    index_cleaner
+                """.trimIndent()
             dockerImage = GwDockerImages.INDEX_CLEANER_LATEST.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
@@ -4447,27 +4353,27 @@ object GwBuildSteps {
             name = "Run the doc crawler"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export CONFIG_FILE="$configFile"
-                export DOC_ID="$docId"
-                export DOC_S3_URL="$docS3Url"
-                export ELASTICSEARCH_URLS="$elasticsearchUrls"
-                export APP_BASE_URL="$appBaseUrl"
-                export DOCS_INDEX_NAME="gw-docs"
-                export BROKEN_LINKS_INDEX_NAME="broken-links"
-                export SHORT_TOPICS_INDEX_NAME="short-topics"
-                export REPORT_BROKEN_LINKS="$reportBrokenLinks"
-                export REPORT_SHORT_TOPICS="$reportShortTopics"
-                
-                cat > scrapy.cfg <<- EOM
+                #!/ bin / bash
+                    set - xe
+
+                export CONFIG_FILE ="$configFile"
+                export DOC_ID ="$docId"
+                export DOC_S3_URL ="$docS3Url"
+                export ELASTICSEARCH_URLS ="$elasticsearchUrls"
+                export APP_BASE_URL ="$appBaseUrl"
+                export DOCS_INDEX_NAME ="gw-docs"
+                export BROKEN_LINKS_INDEX_NAME ="broken-links"
+                export SHORT_TOPICS_INDEX_NAME ="short-topics"
+                export REPORT_BROKEN_LINKS ="$reportBrokenLinks"
+                export REPORT_SHORT_TOPICS ="$reportShortTopics"
+
+                cat > scrapy.cfg < < - EOM
                 [settings]
                 default = doc_crawler.settings
                 EOM
 
                 doc_crawler
-            """.trimIndent()
+                """.trimIndent()
             dockerImage = GwDockerImages.DOC_CRAWLER_LATEST.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
         }
@@ -4481,23 +4387,23 @@ object GwBuildSteps {
             name = "Get config file"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                export CONFIG_FILE="$configFile"
-                export TMP_CONFIG_FILE="%teamcity.build.workingDir%/tmp_config.json"
-                export CONFIG_FILE_URL="$configFileUrl"
-                
-                curl ${'$'}CONFIG_FILE_URL > ${'$'}TMP_CONFIG_FILE
-                
-                if [[ "$deployEnv" == "${GwDeployEnvs.PROD.envName}" ]]; then
-                    cat ${'$'}TMP_CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc") | not)]}' > ${'$'}CONFIG_FILE                 
-                elif [[ "$deployEnv" == "${GwDeployEnvs.PORTAL2.envName}" ]]; then
-                    cat ${'$'}TMP_CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc"))]}' > ${'$'}CONFIG_FILE
+                #!/ bin / bash
+                    set - xe
+
+                export CONFIG_FILE ="$configFile"
+                export TMP_CONFIG_FILE ="%teamcity.build.workingDir%/tmp_config.json"
+                export CONFIG_FILE_URL ="$configFileUrl"
+
+                curl ${'$'} CONFIG_FILE_URL > ${'$'} TMP_CONFIG_FILE
+
+                    if [["$deployEnv" == "${GwDeployEnvs.PROD.envName}"]]; then
+                cat ${'$'} TMP_CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc") | not)]}' > ${'$'} CONFIG_FILE
+                    elif[["$deployEnv" == "${GwDeployEnvs.PORTAL2.envName}"]]; then
+                cat ${'$'} TMP_CONFIG_FILE | jq -r '{"docs": [.docs[] | select(.url | startswith("portal/secure/doc"))]}' > ${'$'} CONFIG_FILE
                 else
-                    cat ${'$'}TMP_CONFIG_FILE > ${'$'}CONFIG_FILE
-                fi
-            """.trimIndent()
+                cat ${'$'} TMP_CONFIG_FILE > ${'$'} CONFIG_FILE
+                    fi
+                """.trimIndent()
         }
     }
 
@@ -4513,14 +4419,14 @@ object GwBuildSteps {
             name = "Get document details"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                    
-                    cat << EOF | jq '. += {"gitBuildBranch": "$buildBranch", "gitSourceId": "$srcId"}' > "$docInfoFilePath" | jq .
-                    $docConfig
-                    EOF
-                 
-                    cat "$docInfoFilePath"
+                #!/ bin / bash
+                    set - xe
+
+                cat < < EOF | jq '. += {"gitBuildBranch": "$buildBranch", "gitSourceId": "$srcId"}' > "$docInfoFilePath" | jq .
+                $docConfig
+                EOF
+
+                cat "$docInfoFilePath"
                 """.trimIndent()
         }
     }
@@ -4532,20 +4438,20 @@ object GwBuildSteps {
             name = "Copy from S3 on staging to S3 on prod"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                    
-                    echo "Setting credentials to access staging"
-                    $awsEnvVarsStaging
-                    
-                    echo "Copying from staging to Teamcity"
-                    aws s3 sync s3://tenant-doctools-staging-builds/${publishPath} ${publishPath}/ --delete
-                    
-                    echo "Setting credentials to access prod"
-                    $awsEnvVarsProd
-                    
-                    echo "Uploading from Teamcity to prod"
-                    aws s3 sync ${publishPath}/ s3://tenant-doctools-omega2-andromeda-builds/${publishPath} --delete
+                #!/ bin / bash
+                    set - xe
+
+                echo "Setting credentials to access staging"
+                $awsEnvVarsStaging
+
+                echo "Copying from staging to Teamcity"
+                aws s3 sync s3 ://tenant-doctools-staging-builds/${publishPath} ${publishPath}/ --delete
+
+                echo "Setting credentials to access prod"
+                $awsEnvVarsProd
+
+                echo "Uploading from Teamcity to prod"
+                aws s3 sync ${publishPath} / s3://tenant-doctools-omega2-andromeda-builds/${publishPath} --delete
                 """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -4561,10 +4467,10 @@ object GwBuildSteps {
             name = "Copy PDF from online to offline output"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                #!/bin/bash
-                set -xe
-                
-                cp -avR "${onlineOutputPath}/pdf" "$offlineOutputPath" 2>/dev/null || :
+                #!/ bin / bash
+                    set - xe
+
+                cp - avR "${onlineOutputPath}/pdf" "$offlineOutputPath" 2>/dev/null || :
                 """.trimIndent()
         }
     }
@@ -4578,14 +4484,14 @@ object GwBuildSteps {
             name = "Build a ZIP package"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                #!/bin/bash
-                set -xe
-                
+                #!/ bin / bash
+                    set - xe
+
                 echo "Creating a ZIP package"
                 cd "$inputPath"
-                zip -r "${targetPath}/${zipPackageName}" * &&
-                rm -rf "$inputPath"
-            """.trimIndent()
+                zip - r "${targetPath}/${zipPackageName}" * &&
+                rm - rf "$inputPath"
+                """.trimIndent()
         }
     }
 
@@ -4598,12 +4504,12 @@ object GwBuildSteps {
             name = "Upload content to the S3 bucket"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                    
-                    $awsEnvVars
-                    
-                    aws s3 sync "$outputPath" s3://tenant-doctools-${atmosDeployEnv}-builds/${publishPath} --delete
+                #!/ bin / bash
+                    set - xe
+
+                $awsEnvVars
+
+                aws s3 sync "$outputPath" s3://tenant-doctools-${atmosDeployEnv}-builds/${publishPath} --delete
                 """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
@@ -4618,11 +4524,11 @@ object GwBuildSteps {
             name = "Create preview URL file"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                #!/bin/bash
-                set -xe
-                
+                #!/ bin / bash
+                    set - xe
+
                 echo "Output preview available at $previewUrl" > $previewUrlFile
-            """.trimIndent()
+                """.trimIndent()
         }
     }
 
@@ -4641,14 +4547,14 @@ object GwBuildSteps {
             name = "Copy resources from git to the doc output dir ($stepId)"
             id = Helpers.createIdStringFromName(this.name)
             scriptContent = """
-                #!/bin/bash
-                set -xe
-                        
-                git clone --single-branch --branch $resourceSrcBranch $resourceSrcUrl $resourcesRootDir
-                        
+                #!/ bin / bash
+                    set - xe
+
+                git clone --single - branch-- branch $resourceSrcBranch $resourceSrcUrl $resourcesRootDir
+
                 echo "Copying files to the doc output dir"
-                mkdir -p $fullTargetPath
-                cp -R ./${resourcesRootDir}/${resourceSrcDir}/* $fullTargetPath
+                mkdir - p $fullTargetPath
+                cp - R./${resourcesRootDir} / ${resourceSrcDir}/* $fullTargetPath
             """.trimIndent()
         }
     }
@@ -5436,4 +5342,40 @@ object GwTemplates {
             "Empty template added to validation builds to make them discoverable by validation listener builds"
         id = Helpers.resolveRelativeIdFromIdString(this.name)
     })
+}
+
+object GwVcsTriggers {
+    fun createDocPortalVcsTrigger(triggerPath: String, monitorDefaultBranch: Boolean = false): VcsTrigger {
+        val docPortalVcsTrigger = VcsTrigger {
+            triggerRules = """
+            +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${triggerPath}
+            -:user=doctools;root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${triggerPath}
+            """.trimIndent()
+            branchFilter = "-:<default>"
+        }
+        if (monitorDefaultBranch) {
+            docPortalVcsTrigger.branchFilter = "+:*"
+        }
+        return docPortalVcsTrigger
+    }
+
+    fun createNonDitaVcsTrigger(workingDir: String): VcsTrigger {
+        val workingDirWithoutCheckoutDir = workingDir.replace("%teamcity.build.checkoutDir%/", "")
+        return VcsTrigger {
+            triggerRules = when (workingDir) {
+                "%teamcity.build.checkoutDir%" -> {
+                    """
+            -:user=doctools:**
+            """.trimIndent()
+                }
+
+                else -> {
+                    """
+            +:${workingDirWithoutCheckoutDir}/**
+            -:user=doctools:${workingDirWithoutCheckoutDir}/**
+            """.trimIndent()
+                }
+            }
+        }
+    }
 }
