@@ -1,0 +1,172 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "BillingCenter",
+  "template": "page",
+  "class": "threeCards version de-DE l10n",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Konfigurationshandbuch",
+          "link": "/l10n/pdfs/de-DE/bc/2022.05/BC-ConfigGuide-DE.pdf"
+        },
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/l10n/pdfs/de-DE/bc/2022.05/BC-AppGuide-DE.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2021.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Cloud-API-Geschäftsabläufe- und Konfigurationshandbuch",
+          "link": "/l10n/pdfs/de-DE/bc/2021.11/BC v.2021.11 de-DE  CloudAPIGuide-BusinessFlows.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/l10n/pdfs/de-DE/bc/2020.05/ISCL_202005_de_BC-AppGuide.pdf"
+        },
+        {
+          "label": "Guidewire-Kontaktmanagementhandbuch",
+          "link": "/l10n/pdfs/de-DE/bc/2020.05/ISCL_202005_de_BC_ContactMgmtGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.2.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Installationshandbuch",
+          "link": "/l10n/pdfs/de-DE/bc/10.2.0/BC-InstallGuide_de-DE.pdf"
+        },
+        {
+          "label": "German Documentation (de-DE) Release Notes",
+          "link": "/l10n/pdfs/de-DE/bc/10.2.0/ReleaseNotes-10.2.0-docs-de.pdf"
+        },
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/l10n/pdfs/de-DE/bc/10.2.0/BC-AppGuide_de-DE.pdf"
+        },
+        {
+          "label": "Guidewire-Kontaktmanagementhandbuch",
+          "link": "/l10n/pdfs/de-DE/bc/10.2.0/BC-ContactMgmtGuide_de-DE.pdf"
+        },
+        {
+          "label": "Konfigurationshandbuch",
+          "link": "/l10n/pdfs/de-DE/bc/10.2.0/BC-ConfigGuide_de-DE.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.1.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guidewire-Kontaktmanagementhandbuch",
+          "link": "/l10n/pdfs/de-DE/bc/10.1.1/BC1011_de-DE_ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/l10n/pdfs/de-DE/bc/10.1.1/BC1011_de-DE_AppGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.2",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/l10n/pdfs/de-DE/bc/10.0.2/de-BC-AppGuide.pdf"
+        },
+        {
+          "label": "Guidewire-Kontaktmanagementhandbuch",
+          "link": "/l10n/pdfs/de-DE/bc/10.0.2/de-BC-ContactMgmtGuide.pdf"
+        },
+        {
+          "label": "Regelhandbuch",
+          "link": "/l10n/pdfs/de-DE/bc/10.0.2/de-BC-RulesGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Anwendungshandbuch",
+          "link": "/l10n/pdfs/de-DE/bc/10.0.0/de-BC-AppGuide.pdf"
+        },
+        {
+          "label": "Kontaktmanagementhandbuch",
+          "link": "/l10n/pdfs/de-DE/bc/10.0.0/de-BC-ContactMgmtGuide.pdf"
+        }
+      ]
+    }
+  ],
+  "selector": {
+    "label": "Produkt auswählen",
+    "selectedItem": "BillingCenter",
+    "items": [
+      {
+        "label": "ClaimCenter",
+        "page": "../cc"
+      },
+      {
+        "label": "CustomerEngage Account Management",
+        "page": "../ce-am"
+      },
+      {
+        "label": "CustomerEngage Account Management for ClaimCenter",
+        "page": "../ce-claims"
+      },
+      {
+        "label": "CustomerEngage Quote and Buy",
+        "page": "../ce-qb"
+      },
+      {
+        "label": "InsuranceSuite Contact Management",
+        "page": "../cm"
+      },
+      {
+        "label": "DataHub",
+        "page": "../dh"
+      },
+      {
+        "label": "InfoCenter",
+        "page": "../ic"
+      },
+      {
+        "label": "PolicyCenter",
+        "page": "../pc"
+      },
+      {
+        "label": "ProducerEngage",
+        "page": "../pe"
+      },
+      {
+        "label": "ProducerEngage for ClaimCenter",
+        "page": "../pe-claims"
+      },
+      {
+        "label": "ServiceRepEngage",
+        "page": "../sre"
+      },
+      {
+        "label": "VendorEngage",
+        "page": "../ve"
+      }
+    ]
+  }
+}

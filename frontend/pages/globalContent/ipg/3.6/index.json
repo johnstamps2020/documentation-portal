@@ -8,6 +8,10 @@
     "selectedItem": "3.6",
     "items": [
       {
+        "label": "3.8",
+        "page": "../3.8"
+      },
+      {
         "label": "3.7",
         "page": "../3.7"
       }

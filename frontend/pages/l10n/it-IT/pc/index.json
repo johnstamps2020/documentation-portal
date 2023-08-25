@@ -1,0 +1,146 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "PolicyCenter",
+  "template": "page",
+  "class": "threeCards version it-IT l10n",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guida ad Advanced Product Designer per PolicyCenter",
+          "link": "/l10n/pdfs/it-IT/pc/2022.05/AdvancedProductDesigner-IT.pdf"
+        },
+        {
+          "label": "Guida all'applicazione",
+          "link": "/l10n/pdfs/it-IT/pc/2022.05/PC-AppGuide-IT.pdf"
+        },
+        {
+          "label": "Guida alla configurazione",
+          "link": "/l10n/pdfs/it-IT/pc/2022.05/PC-ConfigGuide_it-IT.pdf"
+        },
+        {
+          "label": "Guida all'installazione per sviluppatori",
+          "link": "/l10n/pdfs/it-IT/pc/2022.05/PC-DeveloperSetupGuide-IT.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2021.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guida ai flussi aziendali delle API cloud e alla configurazione",
+          "link": "/l10n/pdfs/it-IT/pc/2021.11/PC v.2021.11 it-IT CloudAPIGuide-BusinessFlows.pdf"
+        },
+        {
+          "label": "Guida all'autenticazione per l'API cloud",
+          "link": "/l10n/pdfs/it-IT/pc/2021.11/PC v.2021.11 it-IT CloudAPIGuide-Auth.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guida all'applicazione",
+          "link": "/l10n/pdfs/it-IT/pc/2020.05/ISCL_202005_it_IT_PC-AppGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.1.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guida all'applicazione",
+          "link": "/l10n/pdfs/it-IT/pc/10.1.1/PC1011-it_IT-AppGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.2",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guida all'applicazione",
+          "link": "/l10n/pdfs/it-IT/pc/10.0.2/it-PC-AppGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guida all'applicazione",
+          "link": "/l10n/pdfs/it-IT/pc/10.0.0/it-PC-AppGuide.pdf"
+        }
+      ]
+    }
+  ],
+  "selector": {
+    "label": "Seleziona il prodotto",
+    "selectedItem": "PolicyCenter",
+    "items": [
+      {
+        "label": "BillingCenter",
+        "page": "../bc"
+      },
+      {
+        "label": "ClaimCenter",
+        "page": "../cc"
+      },
+      {
+        "label": "Cloud Data Access",
+        "page": "../cda"
+      },
+      {
+        "label": "CustomerEngage Account Management",
+        "page": "../ce-am"
+      },
+      {
+        "label": "CustomerEngage Account Management for ClaimCenter",
+        "page": "../ce-claims"
+      },
+      {
+        "label": "CustomerEngage Quote and Buy",
+        "page": "../ce-qb"
+      },
+      {
+        "label": "DataHub",
+        "page": "../dh"
+      },
+      {
+        "label": "Guidewire Cloud Console",
+        "page": "../gcc"
+      },
+      {
+        "label": "Guidewire Identity Federation Hub",
+        "page": "../gwid"
+      },
+      {
+        "label": "InfoCenter",
+        "page": "../ic"
+      },
+      {
+        "label": "ProducerEngage",
+        "page": "../pe"
+      },
+      {
+        "label": "ProducerEngage for ClaimCenter",
+        "page": "../pe-claims"
+      },
+      {
+        "label": "ServiceRepEngage",
+        "page": "../sre"
+      },
+      {
+        "label": "VendorEngage",
+        "page": "../ve"
+      }
+    ]
+  }
+}

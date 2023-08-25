@@ -1,0 +1,92 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "DataHub",
+  "template": "page",
+  "class": "threeCards version de-DE l10n",
+  "items": [
+    {
+      "label": "10.0.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Berichtshandbuch",
+          "link": "/l10n/pdfs/de-DE/dh/10.0.0/DH10-reports-de.pdf"
+        },
+        {
+          "label": "Upgrade-Handbuch",
+          "link": "/l10n/pdfs/de-DE/dh/10.0.0/DH10-upgrade-de.pdf"
+        },
+        {
+          "label": "Installationshandbuch",
+          "link": "/l10n/pdfs/de-DE/dh/10.0.0/DH10-install-de.pdf"
+        },
+        {
+          "label": "Leitfaden zur Datenspezifikation",
+          "link": "/l10n/pdfs/de-DE/dh/10.0.0/DH10-dataspec-de.pdf"
+        },
+        {
+          "label": "DataHub Konfigurationshandbuch",
+          "link": "/l10n/pdfs/de-DE/dh/10.0.0/DH10-config-de.pdf"
+        },
+        {
+          "label": "Administrationshandbuch",
+          "link": "/l10n/pdfs/de-DE/dh/10.0.0/DH10-admin-de.pdf"
+        }
+      ]
+    }
+  ],
+  "selector": {
+    "label": "Produkt auswählen",
+    "selectedItem": "DataHub",
+    "items": [
+      {
+        "label": "BillingCenter",
+        "page": "../bc"
+      },
+      {
+        "label": "ClaimCenter",
+        "page": "../cc"
+      },
+      {
+        "label": "CustomerEngage Account Management",
+        "page": "../ce-am"
+      },
+      {
+        "label": "CustomerEngage Account Management for ClaimCenter",
+        "page": "../ce-claims"
+      },
+      {
+        "label": "CustomerEngage Quote and Buy",
+        "page": "../ce-qb"
+      },
+      {
+        "label": "InsuranceSuite Contact Management",
+        "page": "../cm"
+      },
+      {
+        "label": "InfoCenter",
+        "page": "../ic"
+      },
+      {
+        "label": "PolicyCenter",
+        "page": "../pc"
+      },
+      {
+        "label": "ProducerEngage",
+        "page": "../pe"
+      },
+      {
+        "label": "ProducerEngage for ClaimCenter",
+        "page": "../pe-claims"
+      },
+      {
+        "label": "ServiceRepEngage",
+        "page": "../sre"
+      },
+      {
+        "label": "VendorEngage",
+        "page": "../ve"
+      }
+    ]
+  }
+}

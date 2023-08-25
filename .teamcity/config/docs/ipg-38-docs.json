@@ -1,0 +1,131 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "midipgimpl38",
+      "title": "Implementation",
+      "url": "self-managed/ipg/38/impl",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Germany"],
+        "platform": ["Self-managed"],
+        "version": ["3.8"],
+        "subject": ["Features and functionality"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipgapp38",
+      "title": "Application Guide",
+      "url": "self-managed/ipg/38/app",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Germany"],
+        "platform": ["Self-managed"],
+        "version": ["3.8"],
+        "subject": ["Features and functionality"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipginstall38",
+      "title": "Installation",
+      "url": "self-managed/ipg/38/install",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Germany"],
+        "platform": ["Self-managed"],
+        "version": ["3.8"],
+        "subject": ["Installation"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipgrnen38",
+      "title": "Release Notes",
+      "url": "self-managed/ipg/38/releasenotes",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Germany"],
+        "platform": ["Self-managed"],
+        "version": ["3.8"],
+        "subject": ["Release notes"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipgrnde38",
+      "title": "Release Notes (German)",
+      "url": "de/self-managed/ipg/38/releasenotes",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Germany"],
+        "platform": ["Self-managed"],
+        "version": ["3.8"],
+        "subject": ["Release notes"],
+        "language": "de"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipgglossary38",
+      "title": "Glossary",
+      "url": "self-managed/ipg/38/glossary",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Germany"],
+        "platform": ["Self-managed"],
+        "version": ["3.8"],
+        "subject": ["Glossary"],
+        "language": "en"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
+      "id": "midipgappde38",
+      "title": "Application Guide (German)",
+      "url": "de/self-managed/ipg/38/app",
+      "metadata": {
+        "product": ["InsuranceSuite Package for Germany"],
+        "platform": ["Self-managed"],
+        "version": ["3.8"],
+        "subject": ["Features and functionality"],
+        "language": "de"
+      },
+      "environments": ["staging"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

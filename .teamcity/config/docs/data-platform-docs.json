@@ -47,8 +47,6 @@
         "product": ["Data Platform"],
         "version": ["latest"],
         "release": [
-          "Aspen",
-          "Banff",
           "Cortina",
           "Dobson",
           "Elysian",
@@ -75,8 +73,6 @@
         "product": ["Data Platform"],
         "version": ["latest"],
         "release": [
-          "Aspen",
-          "Banff",
           "Cortina",
           "Dobson",
           "Elysian",
@@ -103,8 +99,6 @@
         "product": ["Data Platform"],
         "version": ["latest"],
         "release": [
-          "Aspen",
-          "Banff",
           "Cortina",
           "Dobson",
           "Elysian",

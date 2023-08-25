@@ -9,15 +9,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["latest"],
-        "release": [
-          "Aspen",
-          "Banff",
-          "Cortina",
-          "Dobson",
-          "Elysian",
-          "Flaine",
-          "Garmisch"
-        ],
+        "release": ["Cortina", "Dobson", "Elysian", "Flaine", "Garmisch"],
         "language": "en"
       },
       "displayOnLandingPages": true,
@@ -35,7 +27,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2023.08"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"],
+        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -53,7 +45,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2023.03"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"],
+        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -71,7 +63,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2023.02"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"],
+        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -89,7 +81,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2023.01"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"],
+        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -107,7 +99,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.11"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"],
+        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -125,7 +117,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.10"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"],
+        "release": ["Cortina", "Dobson", "Elysian", "Flaine"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -143,7 +135,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.09"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"],
+        "release": ["Cortina", "Dobson", "Elysian"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -161,7 +153,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.07"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"],
+        "release": ["Cortina", "Dobson", "Elysian"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -179,7 +171,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.06"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian"],
+        "release": ["Cortina", "Dobson", "Elysian"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -197,7 +189,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.05"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "release": ["Cortina", "Dobson"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -215,7 +207,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.04"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "release": ["Cortina", "Dobson"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -233,7 +225,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.03"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "release": ["Cortina", "Dobson"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -251,7 +243,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.02"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "release": ["Cortina", "Dobson"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -269,7 +261,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2022.01"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "release": ["Cortina", "Dobson"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -287,7 +279,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2021.11"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "release": ["Cortina", "Dobson"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -305,7 +297,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2021.10"],
-        "release": ["Aspen", "Banff", "Cortina"],
+        "release": ["Cortina"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -323,7 +315,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2021.09"],
-        "release": ["Aspen", "Banff", "Cortina"],
+        "release": ["Cortina"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -341,7 +333,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2021.08"],
-        "release": ["Aspen", "Banff", "Cortina"],
+        "release": ["Cortina"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -359,7 +351,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2021.07"],
-        "release": ["Aspen", "Banff", "Cortina"],
+        "release": ["Cortina"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -377,7 +369,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2021.06"],
-        "release": ["Aspen", "Banff", "Cortina"],
+        "release": ["Cortina"],
         "language": "en"
       },
       "environments": ["staging"],
@@ -395,7 +387,7 @@
         "product": ["Guidewire Cloud Standards"],
         "platform": ["Cloud"],
         "version": ["2021.05"],
-        "release": ["Aspen", "Banff", "Cortina"],
+        "release": ["Cortina"],
         "language": "en"
       },
       "environments": ["staging"],

@@ -320,13 +320,6 @@
     },
     {
       "buildType": "yarn",
-      "docId": "jutrosdkgarmisch",
-      "srcId": "srcjutrosdkgarmisch",
-      "nodeImageVersion": "17.6.0",
-      "disabled": true
-    },
-    {
-      "buildType": "yarn",
       "docId": "jutro660",
       "srcId": "srcjutro660",
       "workingDir": "website",

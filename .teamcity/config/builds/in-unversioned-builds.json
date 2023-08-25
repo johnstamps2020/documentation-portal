@@ -192,15 +192,6 @@
     },
     {
       "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "INowStudioReleaseNotes20202Banff.ditamap",
-      "srcId": "inunversionedsrc",
-      "docId": "in20202studiorn",
-      "indexRedirect": true,
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
       "filter": "GW-Generic-Draft.ditaval",
       "root": "InsuranceNow_InstallAssist_5.0.ditamap",
       "srcId": "inunversionedsrc",
@@ -273,22 +264,6 @@
         {
           "targetFolder": "ReleaseNotes/2021.1.x/ChangedFiles",
           "sourceFolder": "ChangedFiles/2021.1",
-          "srcId": "insurancenowextrassrc"
-        }
-      ],
-      "disabled": false
-    },
-    {
-      "buildType": "dita",
-      "filter": "GW-Generic-Release.ditaval",
-      "root": "INowCoreReleaseNotes20202Banff.ditamap",
-      "srcId": "inunversionedsrc",
-      "docId": "in20202rn",
-      "indexRedirect": true,
-      "resources": [
-        {
-          "targetFolder": "ReleaseNotes/2020.2.x/ChangedFiles",
-          "sourceFolder": "ChangedFiles/2020.2",
           "srcId": "insurancenowextrassrc"
         }
       ],

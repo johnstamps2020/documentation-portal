@@ -11,8 +11,6 @@
         "version": ["latest"],
         "subject": ["Release notes"],
         "release": [
-          "Aspen",
-          "Banff",
           "Cortina",
           "Dobson",
           "Elysian",
@@ -39,8 +37,6 @@
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "release": [
-          "Aspen",
-          "Banff",
           "Cortina",
           "Dobson",
           "Elysian",
@@ -67,8 +63,6 @@
         "version": ["latest"],
         "subject": ["Features and functionality"],
         "release": [
-          "Aspen",
-          "Banff",
           "Cortina",
           "Dobson",
           "Elysian",
@@ -95,8 +89,6 @@
         "version": ["latest"],
         "subject": ["Development"],
         "release": [
-          "Aspen",
-          "Banff",
           "Cortina",
           "Dobson",
           "Elysian",

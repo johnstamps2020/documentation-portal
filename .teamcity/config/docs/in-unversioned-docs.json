@@ -162,7 +162,7 @@
         "product": ["InsuranceNow Consumer Service Portal"],
         "version": ["3.26"],
         "subject": ["Release notes"],
-        "release": ["Aspen", "Banff", "Cortina"],
+        "release": ["Cortina"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -181,7 +181,7 @@
         "product": ["InsuranceNow Consumer Service Portal"],
         "version": ["3.25"],
         "subject": ["Release notes"],
-        "release": ["Aspen", "Banff", "Cortina"],
+        "release": ["Cortina"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -200,7 +200,7 @@
         "product": ["InsuranceNow Consumer Service Portal"],
         "version": ["3.24"],
         "subject": ["Release notes"],
-        "release": ["Aspen", "Banff", "Cortina"],
+        "release": ["Cortina"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -219,7 +219,7 @@
         "product": ["InsuranceNow Consumer Service Portal"],
         "version": ["3.23"],
         "subject": ["Release notes"],
-        "release": ["Aspen", "Banff", "Cortina"],
+        "release": ["Cortina"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -255,16 +255,7 @@
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": [
-          "2023.2",
-          "2023.1",
-          "2022.2",
-          "2022.1",
-          "2021.2",
-          "2021.1",
-          "2020.2",
-          "2020.1"
-        ],
+        "version": ["2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
         "subject": ["Installation"],
         "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
         "language": "en"
@@ -293,25 +284,6 @@
           "Garmisch",
           "Hakuba"
         ],
-        "language": "en"
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "inexcelrating23",
-      "title": "Excel Designed Rating 2.3",
-      "url": "cloud/in/excelrating23",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2", "2020.1"],
-        "subject": ["Features and functionality"],
-        "release": ["Aspen", "Banff"],
         "language": "en"
       },
       "environments": ["staging", "prod"],
@@ -436,64 +408,15 @@
       "earlyAccess": false
     },
     {
-      "id": "in20202studiorn",
-      "title": "Studio 2020.2 Release Notes",
-      "url": "cloud/in/20202/studiorn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Release notes"],
-        "release": ["Banff"],
-        "language": "en"
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20201studiorn",
-      "title": "Studio 2020.1 Release Notes",
-      "url": "cloud/in/20201/studiorn",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.1"],
-        "subject": ["Release notes"],
-        "release": ["Aspen"],
-        "language": "en"
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "ininstallassistdraft",
       "title": "Install Assist - Internal",
       "url": "cloud/in/installassist",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": [
-          "2023.2",
-          "2023.1",
-          "2022.2",
-          "2022.1",
-          "2021.2",
-          "2021.1",
-          "2020.2",
-          "2020.1"
-        ],
+        "version": ["2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
         "subject": ["Installation"],
         "release": [
-          "Aspen",
-          "Banff",
           "Cortina",
           "Dobson",
           "Elysian",
@@ -644,64 +567,15 @@
       "earlyAccess": false
     },
     {
-      "id": "in20202rn",
-      "title": "Core Release Notes",
-      "url": "cloud/in/20202/releasenotes",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.2"],
-        "subject": ["Release notes"],
-        "release": ["Banff"],
-        "language": "en"
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "in20201rn",
-      "title": "Core Release Notes",
-      "url": "cloud/in/20201/releasenotes",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["InsuranceNow"],
-        "version": ["2020.1"],
-        "subject": ["Release notes"],
-        "release": ["Aspen"],
-        "language": "en"
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "inupgradetoolsdraft",
       "title": "Upgrade Tools - Internal",
       "url": "cloud/in/upgrade",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["InsuranceNow"],
-        "version": [
-          "2023.2",
-          "2023.1",
-          "2022.2",
-          "2022.1",
-          "2021.2",
-          "2021.1",
-          "2020.2",
-          "2020.1"
-        ],
+        "version": ["2023.2", "2023.1", "2022.2", "2022.1", "2021.2", "2021.1"],
         "subject": ["Installation"],
         "release": [
-          "Aspen",
-          "Banff",
           "Cortina",
           "Dobson",
           "Elysian",

@@ -26,7 +26,7 @@
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools",
-          "id": "isconfigupgradetools460"
+          "id": "isconfigupgradetools470"
         },
         {
           "label": "InsuranceSuite Configuration Upgrade Tools Compatibility",
@@ -50,7 +50,13 @@
             },
             {
               "label": "Germany",
-              "page": "../globalContent/ipg/3.7"
+              "page": "../globalContent/ipg/3.7",
+              "env": ["prod"]
+            },
+            {
+              "label": "Germany",
+              "page": "../globalContent/ipg/3.8",
+              "env": ["staging"]
             },
             {
               "label": "Japan (0.1)",

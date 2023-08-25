@@ -2,25 +2,6 @@
   "$schema": "../config-schema.json",
   "docs": [
     {
-      "id": "jutro411",
-      "title": "Jutro Design System and UI Framework",
-      "url": "jutro/documentation/4.1.1",
-      "metadata": {
-        "product": ["Jutro Design System"],
-        "platform": ["Cloud", "Self-managed"],
-        "version": ["4.1.1"],
-        "release": ["Banff"],
-        "subject": ["Best practices"],
-        "language": "en"
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
       "id": "jutro421",
       "title": "Jutro Design System and UI Framework",
       "url": "jutro/documentation/4.2.1",
@@ -452,25 +433,6 @@
       "displayOnLandingPages": true,
       "indexForSearch": false,
       "public": true,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "storybook411",
-      "title": "Jutro Storybook",
-      "url": "jutro/storybook/4.1.1",
-      "metadata": {
-        "product": ["Jutro Design System"],
-        "platform": ["Cloud", "Self-managed"],
-        "version": ["4.1.1"],
-        "release": ["Banff"],
-        "subject": ["Development"],
-        "language": "en"
-      },
-      "environments": ["staging", "prod"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
       "internal": false,
       "earlyAccess": false
     },
@@ -1903,7 +1865,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["8.12.1 (latest)"],
+        "version": ["8.13.0 (latest)"],
         "subject": ["Best practices"],
         "language": "en"
       },
@@ -1921,7 +1883,7 @@
       "metadata": {
         "product": ["Jutro Design System"],
         "platform": ["Cloud"],
-        "version": ["8.12.1 (latest)"],
+        "version": ["8.13.0 (latest)"],
         "subject": ["Development"],
         "language": "en"
       },
@@ -1955,7 +1917,7 @@
       "title": "Jutro Digital Platform",
       "url": "jutro/docs/next",
       "metadata": {
-        "product": ["Jutro Digital Platform"],
+        "product": ["DocTools"],
         "platform": ["Cloud"],
         "version": ["latest"],
         "subject": ["Best practices"],
