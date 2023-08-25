@@ -286,7 +286,6 @@ object Database {
 
             triggers {
                 trigger(GwVcsTriggers.createDocPortalVcsTrigger(vcsTriggerPath))
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(vcsTriggerPath))
             }
 
             features {
