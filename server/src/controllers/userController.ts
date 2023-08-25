@@ -9,8 +9,6 @@ import { winstonLogger } from './loggerController';
 import { isLoggedInOrHasValidToken } from './authController';
 import { JwtPayload } from 'jsonwebtoken';
 
-// This is a test, delete me
-
 function belongsToGuidewire(email: string) {
   try {
     return !!email?.endsWith('@guidewire.com');
