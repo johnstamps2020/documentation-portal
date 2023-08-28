@@ -9,6 +9,7 @@ import {
   HeaderMenuLink,
   HeaderMenuTitle,
 } from 'components/Layout/StyledLayoutComponents';
+import HeaderTooltip from './HeaderTooltip';
 
 export default function TranslatedPages() {
   const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(
@@ -33,6 +34,8 @@ export default function TranslatedPages() {
     setAnchorElement(null);
   };
 
+  const headerAndTooltipText = 'Translated documentation';
+
   return (
     <div>
       <HeaderIconButton id="translated-documents" onClick={handleClick}>
@@ -45,12 +48,14 @@ export default function TranslatedPages() {
         onClose={handleClose}
         onClick={handleClose}
       >
-        <HeaderMenuTitle>Translated documentation</HeaderMenuTitle>
+        <HeaderMenuTitle>{headerAndTooltipText}</HeaderMenuTitle>
         <HeaderMenuDivider />
         {pages.map((p) => (
-          <MenuItem key={p.label}>
-            <HeaderMenuLink href={p.url}>{p.label}</HeaderMenuLink>
-          </MenuItem>
+          <HeaderTooltip title={headerAndTooltipText}>
+            <MenuItem key={p.label}>
+              <HeaderMenuLink href={p.url}>{p.label}</HeaderMenuLink>
+            </MenuItem>
+          </HeaderTooltip>
         ))}
       </HeaderMenu>
     </div>

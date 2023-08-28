@@ -7,6 +7,7 @@ import {
   HeaderMenu,
   HeaderMenuLink,
 } from 'components/Layout/StyledLayoutComponents';
+import HeaderTooltip from './HeaderTooltip';
 
 export default function Glossary() {
   const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(
@@ -18,6 +19,7 @@ export default function Glossary() {
   const handleClose = () => {
     setAnchorElement(null);
   };
+  const headerAndTooltipText = 'Guidewire glossary';
 
   return (
     <div>
@@ -31,11 +33,13 @@ export default function Glossary() {
         onClose={handleClose}
         onClick={handleClose}
       >
-        <MenuItem>
-          <HeaderMenuLink href="/glossary" disableReactRouter>
-            Guidewire Glossary
-          </HeaderMenuLink>
-        </MenuItem>
+        <HeaderTooltip title={headerAndTooltipText}>
+          <MenuItem>
+            <HeaderMenuLink href="/glossary" disableReactRouter>
+              {headerAndTooltipText}
+            </HeaderMenuLink>
+          </MenuItem>
+        </HeaderTooltip>
       </HeaderMenu>
     </div>
   );

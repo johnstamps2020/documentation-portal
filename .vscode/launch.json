@@ -13,7 +13,7 @@
     },
     {
       "name": "Server DEV",
-      "command": "yarn dev:server",
+      "command": "yarn server-dev",
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "type": "node-terminal",
