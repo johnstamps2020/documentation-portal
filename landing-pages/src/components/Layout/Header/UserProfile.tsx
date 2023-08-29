@@ -17,6 +17,7 @@ import LoginOptions from 'components/LoginPage/LoginOptions';
 import Stack from '@mui/material/Stack';
 import LogoutOption from './LogoutOption';
 import AdminPanelOption from './AdminPanelOption';
+import HeaderTooltip from './HeaderTooltip';
 
 type LoginButtonProps = {
   drawerOpen: boolean;
@@ -86,6 +87,19 @@ export default function UserProfile() {
     );
   }
 
+  const tooltipText = 'User information';
+  const tooltipItems = [
+    <HeaderMenuTitle>{userInfo.name}</HeaderMenuTitle>,
+    <HeaderMenuSubtitle>{userInfo.preferred_username}</HeaderMenuSubtitle>,
+    <HeaderMenuDivider />,
+    <div>
+      <LogoutOption />
+    </div>,
+    <div>
+      <AdminPanelOption />
+    </div>,
+  ];
+
   return (
     <div>
       <HeaderIconButton id="profile" onClick={handleClick}>
@@ -98,11 +112,11 @@ export default function UserProfile() {
         onClose={handleClose}
         onClick={handleClose}
       >
-        <HeaderMenuTitle>{userInfo.name}</HeaderMenuTitle>
-        <HeaderMenuSubtitle>{userInfo.preferred_username}</HeaderMenuSubtitle>
-        <HeaderMenuDivider />
-        <LogoutOption />
-        <AdminPanelOption />
+        {tooltipItems.map((item, index) => (
+          <HeaderTooltip key={index} title={tooltipText}>
+            {item}
+          </HeaderTooltip>
+        ))}
       </HeaderMenu>
     </div>
   );

@@ -9,11 +9,13 @@ import {
   HeaderMenuLink,
   HeaderMenuTitle,
 } from 'components/Layout/StyledLayoutComponents';
+import HeaderTooltip from './HeaderTooltip';
 
 export default function ExternalSites() {
   const [anchorElement, setAnchorElement] = React.useState<null | HTMLElement>(
     null
   );
+  const headerAndTooltipText = 'Guidewire sites';
 
   const sites = [
     {
@@ -59,12 +61,14 @@ export default function ExternalSites() {
         onClose={handleClose}
         onClick={handleClose}
       >
-        <HeaderMenuTitle>Guidewire sites</HeaderMenuTitle>
+        <HeaderMenuTitle>{headerAndTooltipText}</HeaderMenuTitle>
         <HeaderMenuDivider />
         {sites.map((s) => (
-          <MenuItem key={s.label}>
-            <HeaderMenuLink href={s.url}>{s.label}</HeaderMenuLink>
-          </MenuItem>
+          <HeaderTooltip title={headerAndTooltipText}>
+            <MenuItem key={s.label}>
+              <HeaderMenuLink href={s.url}>{s.label}</HeaderMenuLink>
+            </MenuItem>
+          </HeaderTooltip>
         ))}
       </HeaderMenu>
     </div>
