@@ -15,7 +15,7 @@ accordingly, and delete the patch script.
 changeBuildType(RelativeId("7a1e9b033ab9bbe4783c19164a3cd3ea")) {
     vcs {
         expectEntry(RelativeId("DocumentationPortalgitrepo"), "+:html5", "+:docusaurus/themes", "+:package.json")
-        root(RelativeId("DocumentationPortalgitrepo"), "+:html5", "+:docusaurus", "+:package.json")
+        root(RelativeId("DocumentationPortalgitrepo"), "+:html5", "+:docusaurus/themes", "+:package.json", "+:server")
     }
 
     features {
