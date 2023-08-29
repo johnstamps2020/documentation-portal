@@ -1,7 +1,7 @@
 import { Tooltip } from '@mui/material';
 import React from 'react';
 
-type TooltipWrapperProps = {
+type HeaderTooltipProps = {
   title: string;
   children: React.ReactElement<any>;
 };
@@ -9,7 +9,7 @@ type TooltipWrapperProps = {
 export default function HeaderTooltip({
   title,
   children,
-}: TooltipWrapperProps) {
+}: HeaderTooltipProps) {
   return (
     <Tooltip title={title} placement="bottom-end" enterDelay={500}>
       {children}

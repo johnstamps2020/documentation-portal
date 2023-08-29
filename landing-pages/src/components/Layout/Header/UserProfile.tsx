@@ -89,27 +89,15 @@ export default function UserProfile() {
 
   const tooltipText = 'User information';
   const tooltipItems = [
-    { content: <HeaderMenuTitle>{userInfo.name}</HeaderMenuTitle> },
-    {
-      content: (
-        <HeaderMenuSubtitle>{userInfo.preferred_username}</HeaderMenuSubtitle>
-      ),
-    },
-    { content: <HeaderMenuDivider /> },
-    {
-      content: (
-        <div>
-          <LogoutOption />
-        </div>
-      ),
-    },
-    {
-      content: (
-        <div>
-          <AdminPanelOption />
-        </div>
-      ),
-    },
+    <HeaderMenuTitle>{userInfo.name}</HeaderMenuTitle>,
+    <HeaderMenuSubtitle>{userInfo.preferred_username}</HeaderMenuSubtitle>,
+    <HeaderMenuDivider />,
+    <div>
+      <LogoutOption />
+    </div>,
+    <div>
+      <AdminPanelOption />
+    </div>,
   ];
 
   return (
@@ -126,7 +114,7 @@ export default function UserProfile() {
       >
         {tooltipItems.map((item, index) => (
           <HeaderTooltip key={index} title={tooltipText}>
-            {item.content}
+            {item}
           </HeaderTooltip>
         ))}
       </HeaderMenu>
