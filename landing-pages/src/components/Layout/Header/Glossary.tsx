@@ -19,7 +19,7 @@ export default function Glossary() {
   const handleClose = () => {
     setAnchorElement(null);
   };
-  const headerAndTooltipText = 'Guidewire glossary';
+  const headerAndTooltipText = 'Guidewire Glossary';
 
   return (
     <div>
