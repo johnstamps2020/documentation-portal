@@ -2207,10 +2207,7 @@ object Frontend {
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         vcs {
-            root(
-                GwVcsRoots.DocumentationPortalGitVcsRoot,
-                "${GwCheckoutRules.LANDING_PAGES.ruleValue}, ${GwCheckoutRules.ROOT_PACKAGE_JSON.ruleValue}"
-            )
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
             cleanCheckout = true
         }
 
@@ -2232,7 +2229,7 @@ object Frontend {
         }
 
         triggers {
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger())
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("landing-pages/**"))
         }
     })
 
@@ -2426,9 +2423,10 @@ object Server {
         vcs {
             root(
                 GwVcsRoots.DocumentationPortalGitVcsRoot,
-                "${GwCheckoutRules.HTML5.ruleValue}, ${GwCheckoutRules.DOCUSAURUS.ruleValue}/themes, ${GwCheckoutRules.ROOT_PACKAGE_JSON.ruleValue}",
-
-                )
+                GwCheckoutRules.HTML5.ruleValue,
+                "${GwCheckoutRules.DOCUSAURUS.ruleValue}/themes",
+                GwCheckoutRules.ROOT_PACKAGE_JSON.ruleValue,
+            )
             cleanCheckout = true
         }
 
@@ -2486,7 +2484,8 @@ object Server {
         vcs {
             root(
                 GwVcsRoots.DocumentationPortalGitVcsRoot,
-                "${GwCheckoutRules.SERVER.ruleValue}, ${GwCheckoutRules.ROOT_PACKAGE_JSON.ruleValue}"
+                GwCheckoutRules.SERVER.ruleValue,
+                GwCheckoutRules.ROOT_PACKAGE_JSON.ruleValue
             )
             cleanCheckout = true
         }
