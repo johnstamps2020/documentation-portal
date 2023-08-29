@@ -55,8 +55,6 @@ const PageSelectorInput = styled(InputBase)(({ theme }) => ({
     backgroundColor: 'white',
     '&:focus': {
       borderRadius: 4,
-      borderColor: '#80bdff',
-      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
       backgroundColor: 'white',
     },
   },
@@ -123,7 +121,14 @@ export default function LandingPageSelector({
     >
       <InputLabel
         id="page-selector-label"
-        sx={{ color: labelColor, fontSize: 20, fontWeight: 400 }}
+        sx={{
+          color: labelColor,
+          fontSize: 20,
+          fontWeight: 400,
+          '&.Mui-focused': {
+            color: 'white',
+          },
+        }}
       >
         {label}
       </InputLabel>
