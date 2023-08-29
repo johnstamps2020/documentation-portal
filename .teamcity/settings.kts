@@ -188,11 +188,10 @@ enum class GwCheckoutRules(val ruleValue: String) {
     LANDING_PAGES_KUBE("+:landing-pages/kube"),
     SERVER("+:server"),
     SERVER_KUBE("+:server/kube"),
-    TEAMCITY("+:.teamcity"),
+    TEAMCITY_SETTINGS_KTS("+:.teamcity/settings.kts"),
     TEAMCITY_CONFIG("+:.teamcity/config"),
     CI("+:ci"),
     HTML5("+:html5"),
-    DOCUSAURUS("+:docusaurus"),
     AWS_S3_KUBE("+:aws/s3/kube"),
 }
 
@@ -2421,12 +2420,7 @@ object Server {
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         vcs {
-            root(
-                GwVcsRoots.DocumentationPortalGitVcsRoot,
-                GwCheckoutRules.HTML5.ruleValue,
-                "${GwCheckoutRules.DOCUSAURUS.ruleValue}/themes",
-                GwCheckoutRules.ROOT_PACKAGE_JSON.ruleValue,
-            )
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
             cleanCheckout = true
         }
 
@@ -2436,7 +2430,8 @@ object Server {
         }
 
         triggers {
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger())
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("html5/**"))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("docusaurus/themes/**"))
         }
 
         features {
@@ -3783,7 +3778,11 @@ object GwBuilds {
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.TEAMCITY.ruleValue)
+            root(
+                GwVcsRoots.DocumentationPortalGitVcsRoot,
+                GwCheckoutRules.TEAMCITY_SETTINGS_KTS.ruleValue,
+                GwCheckoutRules.TEAMCITY_CONFIG.ruleValue
+            )
             cleanCheckout = true
         }
 
@@ -3805,8 +3804,7 @@ object GwBuilds {
         // This test build doesn't have an associated deployment build,
         // therefore we want to run it on changes in the default branch as well.
         triggers {
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger(".teamcity/settings.kts"))
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger(".teamcity/config/**"))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger())
         }
     })
 
