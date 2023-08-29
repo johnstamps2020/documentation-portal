@@ -182,6 +182,7 @@ enum class GwDockerImageTags(val tagValue: String) {
 }
 
 enum class GwCheckoutRules(val ruleValue: String) {
+    ROOT_PACKAGE_JSON("+:package.json"),
     DB("+:db"),
     LANDING_PAGES("+:landing-pages"),
     LANDING_PAGES_KUBE("+:landing-pages/kube"),
@@ -274,9 +275,9 @@ object Database {
 
             else -> "echo Nothing to test here"
         }
-        val vcsCheckoutRule = when (configType) {
-            GwConfigTypes.BUILDS.typeName -> GwCheckoutRules.TEAMCITY_CONFIG.ruleValue
-            else -> "${GwCheckoutRules.TEAMCITY_CONFIG.ruleValue}/${configType}"
+        val vscTriggerPath = when (configType) {
+            GwConfigTypes.BUILDS.typeName -> ".teamcity/config"
+            else -> ".teamcity/config/${configType}"
         }
         return BuildType {
             name = "Test $configType config files"
@@ -284,7 +285,7 @@ object Database {
 
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot, vcsCheckoutRule)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.TEAMCITY_CONFIG.ruleValue)
                 cleanCheckout = true
             }
 
@@ -300,7 +301,7 @@ object Database {
             }
 
             triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger())
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger(vscTriggerPath))
             }
 
             features {
@@ -2206,7 +2207,10 @@ object Frontend {
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.LANDING_PAGES.ruleValue)
+            root(
+                GwVcsRoots.DocumentationPortalGitVcsRoot,
+                "${GwCheckoutRules.LANDING_PAGES.ruleValue}, ${GwCheckoutRules.ROOT_PACKAGE_JSON.ruleValue}"
+            )
             cleanCheckout = true
         }
 
@@ -2422,8 +2426,9 @@ object Server {
         vcs {
             root(
                 GwVcsRoots.DocumentationPortalGitVcsRoot,
-                "${GwCheckoutRules.HTML5.ruleValue}, ${GwCheckoutRules.DOCUSAURUS.ruleValue}/themes"
-            )
+                "${GwCheckoutRules.HTML5.ruleValue}, ${GwCheckoutRules.DOCUSAURUS.ruleValue}/themes, ${GwCheckoutRules.ROOT_PACKAGE_JSON.ruleValue}",
+
+                )
             cleanCheckout = true
         }
 
@@ -2479,7 +2484,10 @@ object Server {
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.SERVER.ruleValue)
+            root(
+                GwVcsRoots.DocumentationPortalGitVcsRoot,
+                "${GwCheckoutRules.SERVER.ruleValue}, ${GwCheckoutRules.ROOT_PACKAGE_JSON.ruleValue}"
+            )
             cleanCheckout = true
         }
 
