@@ -192,7 +192,6 @@ enum class GwCheckoutRules(val ruleValue: String) {
     TEAMCITY_CONFIG("+:.teamcity/config"),
     CI("+:ci"),
     HTML5("+:html5"),
-    DOCUSAURUS("+:docusaurus"),
     AWS_S3_KUBE("+:aws/s3/kube"),
 }
 
@@ -2421,12 +2420,7 @@ object Server {
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         vcs {
-            root(
-                GwVcsRoots.DocumentationPortalGitVcsRoot,
-                GwCheckoutRules.HTML5.ruleValue,
-                "${GwCheckoutRules.DOCUSAURUS.ruleValue}/themes",
-                GwCheckoutRules.ROOT_PACKAGE_JSON.ruleValue,
-            )
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
             cleanCheckout = true
         }
 
@@ -2436,7 +2430,8 @@ object Server {
         }
 
         triggers {
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger())
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("html5/**"))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("docusaurus/themes/**"))
         }
 
         features {
