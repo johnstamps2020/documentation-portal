@@ -59,9 +59,9 @@ const responseSelectors = [
     query:
       // HTML5 -> div.footerContents
       // Webhelp -> header.wh_header
-      // Docusaurus -> body.navigation-with-keyboard
+      // Docusaurus -> div#__docusaurus
       // Storybook -> div[style="position: static !important;"]
-      'div.footerContents, header.wh_header, body.navigation-with-keyboard, div[style="position: static !important;"]',
+      'div.footerContents, header.wh_header, div#__docusaurus, div[style="position: static !important;"]',
     func: function (node: any) {
       appendToSelectedItem(node, bodyScriptsForAnalytics);
     },
