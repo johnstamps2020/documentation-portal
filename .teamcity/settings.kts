@@ -188,6 +188,7 @@ enum class GwCheckoutRules(val ruleValue: String) {
     LANDING_PAGES_KUBE("+:landing-pages/kube"),
     SERVER("+:server"),
     SERVER_KUBE("+:server/kube"),
+    TEAMCITY_POM_XML("+:.teamcity/pom.xml"),
     TEAMCITY_SETTINGS_KTS("+:.teamcity/settings.kts"),
     TEAMCITY_CONFIG("+:.teamcity/config"),
     CI("+:ci"),
@@ -3780,6 +3781,7 @@ object GwBuilds {
         vcs {
             root(
                 GwVcsRoots.DocumentationPortalGitVcsRoot,
+                GwCheckoutRules.TEAMCITY_POM_XML.ruleValue,
                 GwCheckoutRules.TEAMCITY_SETTINGS_KTS.ruleValue,
                 GwCheckoutRules.TEAMCITY_CONFIG.ruleValue
             )
