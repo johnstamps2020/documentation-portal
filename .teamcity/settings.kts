@@ -181,6 +181,20 @@ enum class GwDockerImageTags(val tagValue: String) {
     DOC_PORTAL("latest-croissant"), DOC_PORTAL_FRONTEND("latest")
 }
 
+enum class GwCheckoutRules(val ruleValue: String) {
+    DB("+:db"),
+    LANDING_PAGES("+:landing-pages"),
+    LANDING_PAGES_KUBE("+:landing-pages/kube"),
+    SERVER("+:server"),
+    SERVER_KUBE("+:server/kube"),
+    TEAMCITY("+:.teamcity"),
+    TEAMCITY_CONFIG("+:.teamcity/config"),
+    CI("+:ci"),
+    HTML5("+:html5"),
+    DOCUSAURUS("+:docusaurus"),
+    AWS_S3_KUBE("+:aws/s3/kube"),
+}
+
 object Database {
     private val testConfigDocsBuildType = createTestConfigBuildType(GwConfigTypes.DOCS.typeName)
     private val testConfigSourcesBuildType = createTestConfigBuildType(GwConfigTypes.SOURCES.typeName)
@@ -260,16 +274,17 @@ object Database {
 
             else -> "echo Nothing to test here"
         }
-        val vcsTriggerPath = when (configType) {
-            GwConfigTypes.BUILDS.typeName -> ".teamcity/config/**"
-            else -> ".teamcity/config/${configType}/**"
+        val vcsCheckoutRule = when (configType) {
+            GwConfigTypes.BUILDS.typeName -> GwCheckoutRules.TEAMCITY_CONFIG.ruleValue
+            else -> "${GwCheckoutRules.TEAMCITY_CONFIG.ruleValue}/${configType}"
         }
         return BuildType {
             name = "Test $configType config files"
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
+
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot, vcsCheckoutRule)
                 cleanCheckout = true
             }
 
@@ -285,7 +300,7 @@ object Database {
             }
 
             triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(vcsTriggerPath))
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger())
             }
 
             features {
@@ -311,7 +326,7 @@ object Database {
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.DB.ruleValue)
                 cleanCheckout = true
             }
 
@@ -351,7 +366,7 @@ object Database {
 
         when (deployEnv) {
             GwDeployEnvs.DEV.envName -> {
-                validateDbDeploymentBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("db/**"))
+                validateDbDeploymentBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger())
             }
         }
 
@@ -400,7 +415,7 @@ object Database {
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.DB.ruleValue)
                 cleanCheckout = true
             }
 
@@ -449,7 +464,7 @@ object Database {
                 deployDatabaseBuildType.dependencies.snapshot(validateDbDeploymentBuildTypeDev) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                deployDatabaseBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("db/**"))
+                deployDatabaseBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger())
             }
 
             GwDeployEnvs.STAGING.envName -> {
@@ -557,6 +572,11 @@ object Database {
             name = "Restore database data on $deployEnv"
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.TEAMCITY_CONFIG.ruleValue)
+                cleanCheckout = true
+            }
+
             steps {
                 script {
                     name = "Restore the db dump from staging on $deployEnv"
@@ -616,7 +636,7 @@ object Database {
             }
 
             triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(".teamcity/config/**"))
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger())
             }
         }
 
@@ -635,7 +655,10 @@ object Database {
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                root(
+                    GwVcsRoots.DocumentationPortalGitVcsRoot,
+                    "${GwCheckoutRules.CI.ruleValue}/uploadLegacyConfigsToDb"
+                )
                 cleanCheckout = true
             }
 
@@ -1824,9 +1847,10 @@ object Content {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.AWS_S3_KUBE.ruleValue)
                 cleanCheckout = true
             }
+
             steps {
                 script {
                     name = "Deploy to Kubernetes"
@@ -2079,7 +2103,7 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.LANDING_PAGES.ruleValue)
                 cleanCheckout = true
             }
 
@@ -2152,11 +2176,7 @@ object Frontend {
                 deployReactLandingPagesBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                deployReactLandingPagesBuildType.triggers.trigger(
-                    GwVcsTriggers.createDocPortalVcsTrigger(
-                        "landing-pages/**"
-                    )
-                )
+                deployReactLandingPagesBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger())
             }
 
             GwDeployEnvs.STAGING.envName -> {
@@ -2186,7 +2206,7 @@ object Frontend {
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.LANDING_PAGES.ruleValue)
             cleanCheckout = true
         }
 
@@ -2208,7 +2228,7 @@ object Frontend {
         }
 
         triggers {
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger("landing-pages/**"))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger())
         }
     })
 
@@ -2222,7 +2242,7 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.LANDING_PAGES_KUBE.ruleValue)
                 cleanCheckout = true
             }
 
@@ -2257,7 +2277,7 @@ object Frontend {
 
             when (deployEnv) {
                 GwDeployEnvs.DEV.envName -> {
-                    triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("landing-pages/kube/**"))
+                    triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger())
                 }
             }
         }
@@ -2269,7 +2289,7 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot, "+:${packagePath}")
                 cleanCheckout = true
             }
 
@@ -2294,7 +2314,7 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.HTML5.ruleValue)
                 cleanCheckout = true
             }
 
@@ -2311,7 +2331,7 @@ object Frontend {
             }
 
             triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger("html5/**"))
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger())
             }
 
             features {
@@ -2327,7 +2347,7 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.HTML5.ruleValue)
                 root(GwVcsRoots.DitaOtPluginsVcsRoot, "+:.=>$ditaOutPluginsCheckoutDir")
                 cleanCheckout = true
             }
@@ -2338,7 +2358,7 @@ object Frontend {
             }
 
             triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger("html5/**"))
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger())
             }
 
             features {
@@ -2400,7 +2420,10 @@ object Server {
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            root(
+                GwVcsRoots.DocumentationPortalGitVcsRoot,
+                "${GwCheckoutRules.HTML5.ruleValue}, ${GwCheckoutRules.DOCUSAURUS.ruleValue}/themes"
+            )
             cleanCheckout = true
         }
 
@@ -2410,8 +2433,7 @@ object Server {
         }
 
         triggers {
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger("html5/**"))
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger("docusaurus/themes/**"))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger())
         }
 
         features {
@@ -2426,7 +2448,7 @@ object Server {
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.SERVER.ruleValue)
             cleanCheckout = true
         }
 
@@ -2457,7 +2479,7 @@ object Server {
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.SERVER.ruleValue)
             cleanCheckout = true
         }
 
@@ -2510,7 +2532,7 @@ object Server {
         }
 
         triggers {
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/**"))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger())
         }
     })
 
@@ -2524,7 +2546,7 @@ object Server {
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.SERVER_KUBE.ruleValue)
                 cleanCheckout = true
             }
 
@@ -2562,7 +2584,7 @@ object Server {
 
             when (deployEnv) {
                 GwDeployEnvs.DEV.envName -> {
-                    triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/kube/**"))
+                    triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger())
                 }
             }
         }
@@ -2579,7 +2601,7 @@ object Server {
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.SERVER.ruleValue)
                 cleanCheckout = true
             }
 
@@ -2636,7 +2658,7 @@ object Server {
                 deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
                     onDependencyFailure = FailureAction.FAIL_TO_START
                 }
-                deployServerBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/**"))
+                deployServerBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger())
             }
 
             GwDeployEnvs.STAGING.envName -> {
@@ -3306,7 +3328,7 @@ object Apps {
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
         vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot, "+:${appDir}")
             cleanCheckout = true
         }
 
@@ -3334,7 +3356,7 @@ object Apps {
         }
 
         triggers {
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger("${appDir}/**"))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger())
         }
     })
 
@@ -3343,7 +3365,7 @@ object Apps {
         id = Helpers.resolveRelativeIdFromIdString(this.name)
 
         vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot, "+:frontend")
             cleanCheckout = true
         }
 
@@ -3379,7 +3401,7 @@ object Apps {
         }
 
         triggers {
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger("frontend/**"))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger())
         }
     })
 }
@@ -3754,7 +3776,7 @@ object GwBuilds {
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.TEAMCITY.ruleValue)
             cleanCheckout = true
         }
 
@@ -3963,7 +3985,7 @@ object GwBuilds {
             }
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot, "+:${sourceDir}")
                 cleanCheckout = true
             }
 
@@ -3973,7 +3995,7 @@ object GwBuilds {
             }
 
             triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(sourceDir))
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger())
             }
         }
     }
@@ -5341,13 +5363,18 @@ object GwTemplates {
 }
 
 object GwVcsTriggers {
-    fun createDocPortalVcsTrigger(triggerPath: String): VcsTrigger {
-        return VcsTrigger {
-            triggerRules = """
-                +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${triggerPath}
-                -:user=doctools;root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${triggerPath}
-            """.trimIndent()
+
+    fun createDocPortalVcsTrigger(triggerPath: String? = null): VcsTrigger {
+        return when (triggerPath) {
+            null -> VcsTrigger()
+            else -> VcsTrigger {
+                triggerRules = """
+                    +:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${triggerPath}
+                """.trimIndent()
+            }
         }
+
+
     }
 
     fun createNonDitaVcsTrigger(workingDir: String): VcsTrigger {
@@ -5356,6 +5383,7 @@ object GwVcsTriggers {
             "%teamcity.build.checkoutDir%" -> VcsTrigger {
                 triggerRules = "-:user=doctools:**"
             }
+
             else -> VcsTrigger {
                 triggerRules = """
                     +:${workingDirWithoutCheckoutDir}/**
