@@ -1,5 +1,3 @@
-# test comment
-
 variable "deploy_env" {
   type = string
 }
