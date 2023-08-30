@@ -133,8 +133,6 @@ const pageConfig: SectionLayoutProps = {
       ],
     },
   ],
-
-  searchFilters: { platform: ['Cloud'] },
 };
 
 export default function Whatsnew() {

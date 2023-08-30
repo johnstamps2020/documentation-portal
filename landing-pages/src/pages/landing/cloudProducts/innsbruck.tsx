@@ -16,7 +16,6 @@ const pageConfig: CategoryLayoutProps = {
     items: allSelectors.sb372c5e3c1cec5d40289c85a78eaef30,
     labelColor: 'white',
   },
-  searchFilters: { platform: ['Cloud'] },
   isRelease: true,
 
   cards: [

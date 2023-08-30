@@ -9,8 +9,6 @@ const pageConfig: CategoryLayoutProps = {
     backgroundColor: `hsl(0, 0%, 98%)`,
   },
 
-  searchFilters: { product: ['Lines of Business'] },
-
   cards: [
     {
       label: 'AU',

@@ -16,7 +16,6 @@ import LandingPageSelector, {
 } from 'components/LandingPage/LandingPageSelector';
 import EditPagePropsButton from '../EditPagePropsButton';
 import NotLoggedInInfo from 'components/NotLoggedInInfo';
-import { usePageSearchFilters } from 'hooks/usePageSearchFilters';
 
 export type ProductFamilyLayoutProps = LandingPageLayoutProps & {
   items: LandingPageItemProps[];
@@ -30,10 +29,8 @@ export default function ProductFamilyLayout({
   sidebar,
   selector,
   isRelease,
-  searchFilters,
 }: ProductFamilyLayoutProps) {
   const { pageData, isError, isLoading } = usePageData();
-  usePageSearchFilters(searchFilters);
 
   if (isError || isLoading || !pageData) {
     return null;

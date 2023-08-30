@@ -11,8 +11,6 @@ const pageConfig: CategoryLayoutProps = {
     backgroundColor: 'hsl(0, 0%, 98%)',
   },
 
-  searchFilters: { platform: ['Self-managed'] },
-
   description: (
     <Box padding="1rem 1rem 0rem 1rem">
       <Typography variant="body1" lineHeight={2}>

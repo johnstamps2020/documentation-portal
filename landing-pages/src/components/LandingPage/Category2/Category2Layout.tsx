@@ -15,7 +15,6 @@ import NotLoggedInInfo from 'components/NotLoggedInInfo';
 import LandingPageSelector, {
   LandingPageSelectorProps,
 } from 'components/LandingPage/LandingPageSelector';
-import { usePageSearchFilters } from 'hooks/usePageSearchFilters';
 
 export type Category2LayoutProps = LandingPageLayoutProps & {
   cards: Category2CardProps[];
@@ -31,10 +30,8 @@ export default function Category2Layout({
   selector,
   whatsNew,
   isRelease,
-  searchFilters,
 }: Category2LayoutProps) {
   const { pageData, isLoading, isError } = usePageData();
-  usePageSearchFilters(searchFilters);
 
   if (isLoading || isError || !pageData) {
     return null;

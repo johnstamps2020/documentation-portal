@@ -136,16 +136,6 @@ function getSelector(
   }`;
 }
 
-function getSearchFilters(flailConfig: FlailConfig): string | undefined {
-  const searchFilters = flailConfig.search_filters;
-
-  if (!searchFilters) {
-    return undefined;
-  }
-
-  return JSON.stringify(searchFilters);
-}
-
 function getSections(
   flailItems: FlailItem[] | undefined,
   targetFile: string
@@ -453,12 +443,10 @@ function mapToCategory2Layout(
     items: getItems(flail.items, targetFile),
   }));
   const selector = getSelector(flailConfig, targetFile);
-  const searchFilters = getSearchFilters(flailConfig);
   const isRelease = getIsRelease(targetFile);
   return `{
     backgroundProps: ${backgroundPropValue},
     ${selector ? `selector: ${selector},` : ''}
-    ${searchFilters ? `searchFilters: ${searchFilters},` : ''}
     ${isRelease ? 'isRelease: true,' : ''}
     cards: ${JSON.stringify(cards, null, 2)},
     whatsNew: ${getWhatsNew(flailConfig)},
@@ -500,11 +488,10 @@ function mapToCategoryLayout(
   const isSelfManaged = flailConfig.title === 'Self-managed';
   const isRelease = getIsRelease(targetFile);
   const selector = getSelector(flailConfig, targetFile);
-  const searchFilters = getSearchFilters(flailConfig);
+
   return `{
     backgroundProps: ${backgroundPropValue},
     ${!isSelfManaged && selector ? `selector: ${selector},` : ''}
-    ${searchFilters ? `searchFilters: ${searchFilters},` : ''}
     ${isRelease ? 'isRelease: true,' : ''}
     ${
       isSelfManaged
@@ -535,12 +522,10 @@ function mapToProductFamilyLayout(
   const { backgroundPropValue } = getBackgroundProps(flailConfig, targetFile);
   const items = getItems(flailConfig.items, targetFile);
   const selector = getSelector(flailConfig, targetFile);
-  const searchFilters = getSearchFilters(flailConfig);
   const isRelease = getIsRelease(targetFile);
   return `{
     backgroundProps: ${backgroundPropValue},
     ${selector ? `selector: ${selector},` : ''}
-    ${searchFilters ? `searchFilters: ${searchFilters},` : ''}
     ${isRelease ? `isRelease: ${isRelease},` : ''}
     items: ${JSON.stringify(items, null, 2)},
     sidebar: ${getSidebar(flailConfig)},
@@ -554,12 +539,11 @@ function mapToSectionLayout(
   const { backgroundPropValue } = getBackgroundProps(flailConfig, targetFile);
   const sections = getSections(flailConfig.items, targetFile);
   const selector = getSelector(flailConfig, targetFile, 'black');
-  const searchFilters = getSearchFilters(flailConfig);
+
   return `{
     backgroundProps: ${backgroundPropValue},
     sections: ${JSON.stringify(sections, null, 2)},
     ${selector ? `selector: ${selector}` : ''}
-    ${searchFilters ? `searchFilters: ${searchFilters},` : ''}
   }`;
 }
 
