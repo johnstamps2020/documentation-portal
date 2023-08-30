@@ -20,7 +20,7 @@
     "ci/uploadLegacyConfigsToDb"
   ],
   "scripts": {
-    "audit:all": "yarn npm audit --all --severity high --recursive --exclude @doctools/gw-theme-classic",
+    "audit:all": "yarn npm audit --all --severity high",
     "build:doc-site": "yarn build:theme && yarn workspace doc-site build",
     "build:html5": "yarn build:theme && yarn workspace html5 build",
     "build:html5-offline": "yarn build:theme && yarn workspace html5 build-offline",
