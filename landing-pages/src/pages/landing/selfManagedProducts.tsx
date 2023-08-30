@@ -19,7 +19,7 @@ const pageConfig: CategoryLayoutProps = {
       </Typography>
       <Typography variant="body1" lineHeight={2}>
         Access earlier releases by clicking a product and then selecting a
-        release from the <b>Select release</b> drop-down menu.
+        version from the <b>Select release</b> dropdown menu.
       </Typography>
     </Box>
   ),
@@ -46,7 +46,7 @@ const pageConfig: CategoryLayoutProps = {
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools',
-          docId: 'isconfigupgradetools460',
+          docId: 'isconfigupgradetools470',
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools Compatibility',
@@ -74,6 +74,10 @@ const pageConfig: CategoryLayoutProps = {
               pagePath: 'globalContent/ipg/3.7',
             },
             {
+              label: 'Germany',
+              pagePath: 'globalContent/ipg/3.8',
+            },
+            {
               label: 'Japan (0.1)',
               pagePath: 'globalContent/ipj/flaine',
             },
@@ -93,11 +97,11 @@ const pageConfig: CategoryLayoutProps = {
           pagePath: 'selfManagedProducts/ic/10.9.0',
         },
         {
-          label: 'DataHub 10.10.0',
+          label: 'DataHub',
           pagePath: 'selfManagedProducts/dh/10.10.0',
         },
         {
-          label: 'InfoCenter 10.10.0',
+          label: 'InfoCenter',
           pagePath: 'selfManagedProducts/ic/10.10.0',
         },
       ],

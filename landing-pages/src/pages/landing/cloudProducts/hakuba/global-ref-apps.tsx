@@ -20,7 +20,7 @@ const pageConfig: CategoryLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Hakuba (2023.06)',
-    items: allSelectors.sf75404ebcf8fdb6eb0c053a20d5f3feb,
+    items: allSelectors.sfc2c6edff3f08e7f4db564282c6812c7,
     labelColor: 'white',
   },
 

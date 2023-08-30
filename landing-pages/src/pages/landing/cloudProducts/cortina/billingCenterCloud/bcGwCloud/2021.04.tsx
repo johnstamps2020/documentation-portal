@@ -135,7 +135,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Cortina (2021.04)',
-    items: allSelectors.s025396a977568bf9d422073c55bbfd60,
+    items: allSelectors.s344cd6ac814e55dd2f6e1bddf2c969db,
     labelColor: 'black',
   },
 };

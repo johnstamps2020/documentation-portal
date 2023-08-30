@@ -51,8 +51,8 @@ export default function TranslatedPages() {
         <HeaderMenuTitle>{headerAndTooltipText}</HeaderMenuTitle>
         <HeaderMenuDivider />
         {pages.map((p) => (
-          <HeaderTooltip title={headerAndTooltipText}>
-            <MenuItem key={p.label}>
+          <HeaderTooltip title={headerAndTooltipText} key={p.label}>
+            <MenuItem>
               <HeaderMenuLink href={p.url}>{p.label}</HeaderMenuLink>
             </MenuItem>
           </HeaderTooltip>

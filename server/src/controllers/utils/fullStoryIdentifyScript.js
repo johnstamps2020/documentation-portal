@@ -16,4 +16,6 @@ async function identifyInFullStory() {
   }
 }
 
-identifyInFullStory();
+window.addEventListener('load', function () {
+  identifyInFullStory();
+});

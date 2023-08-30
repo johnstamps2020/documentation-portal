@@ -36,7 +36,7 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools',
-          docId: 'isconfigupgradetools460',
+          docId: 'isconfigupgradetools470',
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools Compatibility',
@@ -174,7 +174,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Flaine (2022.09)',
-    items: allSelectors.sf52094951e69dec5762dcfd8fa04bf1d,
+    items: allSelectors.seab31eee2944c2607a774b9dd9cda0ad,
     labelColor: 'black',
   },
 };

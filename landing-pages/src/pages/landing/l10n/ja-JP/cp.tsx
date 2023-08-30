@@ -1,0 +1,64 @@
+import CategoryLayout, {
+  CategoryLayoutProps,
+} from 'components/LandingPage/Category/CategoryLayout';
+import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
+import { allSelectors } from 'pages/landing/selectors/allSelectors';
+
+const pageConfig: CategoryLayoutProps = {
+  backgroundProps: {
+    ...baseBackgroundProps,
+    backgroundColor: `hsl(0, 0%, 98%)`,
+  },
+  selector: {
+    label: '製品を選択',
+    selectedItemLabel: 'Cloud Platform',
+    items: allSelectors.se8b84bf91d6fdc9fe9f57fab16d97983,
+    labelColor: 'white',
+  },
+
+  cards: [
+    {
+      label: '2023.06',
+      items: [
+        {
+          label: 'Guidewire Cloud Home ヘルプ',
+          docId: 'gchjaJPhelprelease',
+        },
+      ],
+    },
+    {
+      label: '2022.09',
+      items: [
+        {
+          label: 'リリースノート',
+          url: '/l10n/pdfs/ja-JP/cp/2022.09/GWCP-ReleaseNotes_ja-JP.pdf',
+          videoIcon: false,
+        },
+        {
+          label: 'Guidewire Cloud Console ガイド',
+          url: '/l10n/pdfs/ja-JP/cp/2022.09/guidewire_cloud_platform_guide_ja-JP.pdf',
+          videoIcon: false,
+        },
+        {
+          label: 'Guidewire Cloud Platform の操作',
+          url: '/l10n/pdfs/ja-JP/cp/2022.09/CloudPlatform_ja-JP.pdf',
+          videoIcon: false,
+        },
+      ],
+    },
+    {
+      label: '2022.06',
+      items: [
+        {
+          label: 'Cloud Standards',
+          url: '/l10n/pdfs/ja-JP/cp/2022.06/CloudStandards(surepath)-JA.pdf',
+          videoIcon: false,
+        },
+      ],
+    },
+  ],
+};
+
+export default function Cp() {
+  return <CategoryLayout {...pageConfig} />;
+}

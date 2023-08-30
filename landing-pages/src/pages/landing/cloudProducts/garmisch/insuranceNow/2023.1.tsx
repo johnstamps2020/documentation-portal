@@ -107,12 +107,28 @@ const pageConfig: SectionLayoutProps = {
       label: 'Configuration',
       items: [
         {
+          label: 'Core Configuration',
+          docId: 'in20231config',
+        },
+        {
+          label: 'Studio Configuration',
+          docId: 'in20231studio',
+        },
+        {
           label: 'Billing Configuration Reference',
           docId: 'in20231billref',
         },
         {
-          label: 'Core Configuration',
-          docId: 'in20231config',
+          label: 'Claims Configuration Reference',
+          docId: 'in20231claimsconfig',
+        },
+        {
+          label: 'Underwriting Configuration Reference',
+          docId: 'in20231uwconfig',
+        },
+        {
+          label: 'Product Attribute Reference',
+          docId: 'in20231prodattref',
         },
         {
           label: 'Common Functionality Configuration Reference',
@@ -127,28 +143,12 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20231xcservicepconfigdraft',
         },
         {
-          label: 'Claims Configuration Reference',
-          docId: 'in20231claimsconfig',
-        },
-        {
-          label: 'Studio Configuration',
-          docId: 'in20231studio',
-        },
-        {
-          label: 'Product Attribute Reference',
-          docId: 'in20231prodattref',
-        },
-        {
           label: 'Provisioning Portal',
           docId: 'in20231provportal',
         },
         {
           label: 'Provisioning Portal',
           docId: 'in20231provportalinternal',
-        },
-        {
-          label: 'Underwriting Configuration Reference',
-          docId: 'in20231uwconfig',
         },
       ],
     },
@@ -169,7 +169,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Garmisch (2023.1)',
-    items: allSelectors.sb93ea0f8d0fc172dd24c8ce25d379ff9,
+    items: allSelectors.s8f0ef4ce7f1a0e901c8b8c38ba2d3ca1,
     labelColor: 'black',
   },
 };

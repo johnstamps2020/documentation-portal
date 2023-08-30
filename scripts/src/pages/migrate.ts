@@ -488,6 +488,7 @@ function mapToCategoryLayout(
   const isSelfManaged = flailConfig.title === 'Self-managed';
   const isRelease = getIsRelease(targetFile);
   const selector = getSelector(flailConfig, targetFile);
+
   return `{
     backgroundProps: ${backgroundPropValue},
     ${!isSelfManaged && selector ? `selector: ${selector},` : ''}
@@ -538,6 +539,7 @@ function mapToSectionLayout(
   const { backgroundPropValue } = getBackgroundProps(flailConfig, targetFile);
   const sections = getSections(flailConfig.items, targetFile);
   const selector = getSelector(flailConfig, targetFile, 'black');
+
   return `{
     backgroundProps: ${backgroundPropValue},
     sections: ${JSON.stringify(sections, null, 2)},

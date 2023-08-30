@@ -17,7 +17,7 @@ const pageConfig: CategoryLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Dobson',
-    items: allSelectors.sde180aec65620690fc9f929603e08d2c,
+    items: allSelectors.sb372c5e3c1cec5d40289c85a78eaef30,
     labelColor: 'white',
   },
   isRelease: true,

@@ -19,7 +19,7 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'Release Video',
-          url: 'https://www.brainshark.com/guidewire/InsuranceNowGarmisch',
+          url: 'https://www.brainshark.com/1/player/guidewire?pi=zHjz8nvg0ziJoAz0&r3f1=&fb=0',
           videoIcon: true,
         },
         {
@@ -107,12 +107,28 @@ const pageConfig: SectionLayoutProps = {
       label: 'Configuration',
       items: [
         {
+          label: 'Core Configuration',
+          docId: 'in20232config',
+        },
+        {
+          label: 'Studio Configuration',
+          docId: 'in20232studio',
+        },
+        {
           label: 'Billing Configuration Reference',
           docId: 'in20232billref',
         },
         {
-          label: 'Core Configuration',
-          docId: 'in20232config',
+          label: 'Claims Configuration Reference',
+          docId: 'in20232claimsconfig',
+        },
+        {
+          label: 'Underwriting Configuration Reference',
+          docId: 'in20232uwconfig',
+        },
+        {
+          label: 'Product Attribute Reference',
+          docId: 'in20232prodattref',
         },
         {
           label: 'Consumer Sales Portal Configuration',
@@ -123,28 +139,12 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20232xcservicepconfigdraft',
         },
         {
-          label: 'Claims Configuration Reference',
-          docId: 'in20232claimsconfig',
-        },
-        {
-          label: 'Studio Configuration',
-          docId: 'in20232studio',
-        },
-        {
-          label: 'Product Attribute Reference',
-          docId: 'in20232prodattref',
-        },
-        {
           label: 'Provisioning Portal',
           docId: 'in20232provportal',
         },
         {
           label: 'Provisioning Portal',
           docId: 'in20232provportalinternal',
-        },
-        {
-          label: 'Underwriting Configuration Reference',
-          docId: 'in20232uwconfig',
         },
       ],
     },
@@ -165,7 +165,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Hakuba (2023.2)',
-    items: allSelectors.sb93ea0f8d0fc172dd24c8ce25d379ff9,
+    items: allSelectors.s8f0ef4ce7f1a0e901c8b8c38ba2d3ca1,
     labelColor: 'black',
   },
 };

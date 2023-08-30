@@ -98,20 +98,28 @@ const pageConfig: SectionLayoutProps = {
       label: 'Configuration',
       items: [
         {
-          label: 'Consumer Service Portal Configuration Guide',
-          docId: 'in20211xcservicepconfigdraft',
-        },
-        {
           label: 'Core Configuration Guide',
           docId: 'in20211config',
         },
         {
-          label: 'Common Functionality Configuration Reference',
-          docId: 'in20211xcommonconfigdraft',
-        },
-        {
           label: 'Studio Configuration Guide',
           docId: 'in20211studio',
+        },
+        {
+          label: 'Underwriting Configuration Reference',
+          docId: 'in20211uwconfig',
+        },
+        {
+          label: 'Product Attribute Reference',
+          docId: 'in20211prodattref',
+        },
+        {
+          label: 'Consumer Service Portal Configuration Guide',
+          docId: 'in20211xcservicepconfigdraft',
+        },
+        {
+          label: 'Common Functionality Configuration Reference',
+          docId: 'in20211xcommonconfigdraft',
         },
         {
           label: 'Provisioning Portal',
@@ -120,14 +128,6 @@ const pageConfig: SectionLayoutProps = {
         {
           label: 'Portal Development',
           docId: 'in20211portaldev',
-        },
-        {
-          label: 'Product Attribute Reference',
-          docId: 'in20211prodattref',
-        },
-        {
-          label: 'Underwriting Configuration Reference',
-          docId: 'in20211uwconfig',
         },
       ],
     },
@@ -156,7 +156,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Cortina (2021.1)',
-    items: allSelectors.sb93ea0f8d0fc172dd24c8ce25d379ff9,
+    items: allSelectors.s8f0ef4ce7f1a0e901c8b8c38ba2d3ca1,
     labelColor: 'black',
   },
 };

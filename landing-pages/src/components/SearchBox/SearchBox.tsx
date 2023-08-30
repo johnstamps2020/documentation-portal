@@ -41,7 +41,7 @@ export default function SearchBox({ showBigSize = true }: SearchBoxProps) {
   const { placeholder } = useLocaleParams();
   const { searchData } = useSearchData();
   const { isMobile } = useMobile();
-  const { setTitle } = useLayoutContext();
+  const { setTitle, headerOptions } = useLayoutContext();
   const [searchPhrase, setSearchPhrase] = useState<string>('');
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function SearchBox({ showBigSize = true }: SearchBoxProps) {
   const showBigSearchBox = isMobile ? false : showBigSize;
 
   const searchFilters: { [key: string]: string[] } = {};
-  if (searchData) {
+  if (showBigSize && searchData) {
     searchData.filters.forEach((f) => {
       const checkedValues = f.values.filter((v) => v.checked);
 
@@ -72,6 +72,12 @@ export default function SearchBox({ showBigSize = true }: SearchBoxProps) {
           .filter(Boolean)
           .map((v) => v.label);
       }
+    });
+  }
+
+  if (!showBigSize && headerOptions.searchFilters) {
+    Object.keys(headerOptions.searchFilters).forEach((k) => {
+      searchFilters[k] = headerOptions.searchFilters![k];
     });
   }
 

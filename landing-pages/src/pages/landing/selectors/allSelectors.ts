@@ -1,14 +1,5 @@
 export const allSelectors = {
-  s027a61c6afed86fb43842929cfca2775: [
-    { label: 'Banff', pagePath: 'apiReferences/banff' },
-    { label: 'Cortina', pagePath: 'apiReferences/cortina' },
-    { label: 'Dobson', pagePath: 'apiReferences/dobson' },
-    { label: 'Elysian', pagePath: 'apiReferences/elysian' },
-    { label: 'Flaine', pagePath: 'apiReferences/flaine' },
-    { label: 'Garmisch', pagePath: 'apiReferences/garmisch' },
-  ],
-  s31e2b6a3232cb4823c01c5dac0ffc01c: [
-    { label: 'Banff', pagePath: 'apiReferences/banff' },
+  s0f196c0b55cf55f2cdd1e05b1bf5e94e: [
     { label: 'Cortina', pagePath: 'apiReferences/cortina' },
     { label: 'Dobson', pagePath: 'apiReferences/dobson' },
     { label: 'Elysian', pagePath: 'apiReferences/elysian' },
@@ -16,95 +7,7 @@ export const allSelectors = {
     { label: 'Garmisch', pagePath: 'apiReferences/garmisch' },
     { label: 'Hakuba', pagePath: 'apiReferences/hakuba' },
   ],
-  sb6aa9605bf6e8cce4ae8b75d8d8a19b7: [
-    {
-      label: 'BillingCenter Cloud',
-      pagePath: 'cloudProducts/aspen/billingCenterCloud',
-    },
-    {
-      label: 'ClaimCenter Cloud',
-      pagePath: 'cloudProducts/aspen/claimCenterCloud',
-    },
-    {
-      label: 'PolicyCenter Cloud',
-      pagePath: 'cloudProducts/aspen/policyCenterCloud',
-    },
-  ],
-  sde180aec65620690fc9f929603e08d2c: [
-    { label: 'Aspen', pagePath: 'cloudProducts/aspen' },
-    { label: 'Banff', pagePath: 'cloudProducts/banff' },
-    { label: 'Cortina', pagePath: 'cloudProducts/cortina' },
-    { label: 'Dobson', pagePath: 'cloudProducts/dobson' },
-    { label: 'Elysian', pagePath: 'cloudProducts/elysian' },
-    { label: 'Flaine', pagePath: 'cloudProducts/flaine' },
-    { label: 'Garmisch', pagePath: 'cloudProducts/garmisch' },
-    { label: 'Hakuba', pagePath: 'cloudProducts/hakuba' },
-  ],
-  sb93ea0f8d0fc172dd24c8ce25d379ff9: [
-    {
-      label: 'Aspen (2020.1)',
-      pagePath: 'cloudProducts/aspen/insuranceNow/2020.1',
-    },
-    {
-      label: 'Banff (2020.2)',
-      pagePath: 'cloudProducts/banff/insuranceNow/2020.2',
-    },
-    {
-      label: 'Cortina (2021.1)',
-      pagePath: 'cloudProducts/cortina/insuranceNow/2021.1',
-    },
-    {
-      label: 'Dobson (2021.2)',
-      pagePath: 'cloudProducts/dobson/insuranceNow/2021.2',
-    },
-    {
-      label: 'Elysian (2022.1)',
-      pagePath: 'cloudProducts/elysian/insuranceNow/2022.1',
-    },
-    {
-      label: 'Flaine (2022.2)',
-      pagePath: 'cloudProducts/flaine/insuranceNow/2022.2',
-    },
-    {
-      label: 'Garmisch (2023.1)',
-      pagePath: 'cloudProducts/garmisch/insuranceNow/2023.1',
-    },
-    {
-      label: 'Hakuba (2023.2)',
-      pagePath: 'cloudProducts/hakuba/insuranceNow/2023.2',
-    },
-  ],
-  saf476edd868b80b4bcf23c54036f36b8: [
-    {
-      label: 'Businessowners Standards Based Template 2020.05',
-      pagePath:
-        'cloudProducts/aspen/policyCenterCloud/boStandardsBasedTemplate/2020.05',
-    },
-    {
-      label: 'Commercial Auto Standards Based Template 2020.05',
-      pagePath:
-        'cloudProducts/aspen/policyCenterCloud/caStandardsBasedTemplate/2020.05',
-    },
-    {
-      label: 'Crime Standards Based Template 2020.05',
-      pagePath:
-        'cloudProducts/aspen/policyCenterCloud/crimeStandardsBasedTemplate/2020.05',
-    },
-    {
-      label: 'General Liability Standards Based Template 2020.05',
-      pagePath:
-        'cloudProducts/aspen/policyCenterCloud/glStandardsBasedTemplate/2020.05',
-    },
-  ],
-  s025396a977568bf9d422073c55bbfd60: [
-    {
-      label: 'Aspen (2020.05)',
-      pagePath: 'cloudProducts/aspen/billingCenterCloud',
-    },
-    {
-      label: 'Banff (2020.11)',
-      pagePath: 'cloudProducts/banff/billingCenterCloud/bcGwCloud/2020.11',
-    },
+  s344cd6ac814e55dd2f6e1bddf2c969db: [
     {
       label: 'Cortina (2021.04)',
       pagePath: 'cloudProducts/cortina/billingCenterCloud/bcGwCloud/2021.04',
@@ -130,29 +33,21 @@ export const allSelectors = {
       pagePath: 'cloudProducts/hakuba/bcGwCloud/2023.06',
     },
   ],
-  s516deedcbe9a11db4e386860485ea15e: [
+  sb1572a4ac17ba705fdfb0f9ebe00d8e1: [
     {
       label: 'BillingCenter Cloud',
-      pagePath: 'cloudProducts/banff/billingCenterCloud',
+      pagePath: 'cloudProducts/cortina/billingCenterCloud',
     },
     {
       label: 'ClaimCenter Cloud',
-      pagePath: 'cloudProducts/banff/claimCenterCloud',
+      pagePath: 'cloudProducts/cortina/claimCenterCloud',
     },
     {
       label: 'PolicyCenter Cloud',
-      pagePath: 'cloudProducts/banff/policyCenterCloud',
+      pagePath: 'cloudProducts/cortina/policyCenterCloud',
     },
   ],
-  sf52094951e69dec5762dcfd8fa04bf1d: [
-    {
-      label: 'Aspen (2020.05)',
-      pagePath: 'cloudProducts/aspen/claimCenterCloud',
-    },
-    {
-      label: 'Banff (2020.11)',
-      pagePath: 'cloudProducts/banff/claimCenterCloud/ccGwCloud/2020.11',
-    },
+  seab31eee2944c2607a774b9dd9cda0ad: [
     {
       label: 'Cortina (2021.04)',
       pagePath: 'cloudProducts/cortina/claimCenterCloud/ccGwCloud/2021.04',
@@ -178,69 +73,52 @@ export const allSelectors = {
       pagePath: 'cloudProducts/hakuba/ccGwCloud/2023.06',
     },
   ],
-  sbb8893cab6b5c143572861725d4d04fc: [
+  sb8b6bf6e1344485406813caca67c4038: [
     {
-      label: 'Businessowners Standards Based Template 2020.11',
-      pagePath:
-        'cloudProducts/banff/policyCenterCloud/boStandardsBasedTemplate/2020.11',
+      label: 'DataHub for Guidewire Cloud 2021.04',
+      pagePath: 'cloudProducts/cortina/dhGwCloud/2021.04',
     },
     {
-      label: 'Commercial Auto Standards Based Template 2020.11',
-      pagePath:
-        'cloudProducts/banff/policyCenterCloud/caStandardsBasedTemplate/2020.11',
-    },
-    {
-      label: 'Crime Standards Based Template 2020.11',
-      pagePath:
-        'cloudProducts/banff/policyCenterCloud/crimeStandardsBasedTemplate/2020.11',
-    },
-    {
-      label: 'General Liability Standards Based Template 2020.11',
-      pagePath:
-        'cloudProducts/banff/policyCenterCloud/glStandardsBasedTemplate/2020.11',
-    },
-    {
-      label: 'Workers Compensation Standards Based Template 2020.11',
-      pagePath:
-        'cloudProducts/banff/policyCenterCloud/wcStandardsBasedTemplate/2020.11',
+      label: 'InfoCenter for Guidewire Cloud 2021.04',
+      pagePath: 'cloudProducts/cortina/icGwCloud/2021.04',
     },
   ],
-  s7efd5be99fd8b126b3e4b77f9d39542c: [
+  sb372c5e3c1cec5d40289c85a78eaef30: [
+    { label: 'Cortina', pagePath: 'cloudProducts/cortina' },
+    { label: 'Dobson', pagePath: 'cloudProducts/dobson' },
+    { label: 'Elysian', pagePath: 'cloudProducts/elysian' },
+    { label: 'Flaine', pagePath: 'cloudProducts/flaine' },
+    { label: 'Garmisch', pagePath: 'cloudProducts/garmisch' },
+    { label: 'Hakuba', pagePath: 'cloudProducts/hakuba' },
+    { label: 'Innsbruck', pagePath: 'cloudProducts/innsbruck' },
+  ],
+  s8f0ef4ce7f1a0e901c8b8c38ba2d3ca1: [
     {
-      label: 'Businessowners Standards Based Template 2020.11',
-      pagePath:
-        'cloudProducts/banff/policyCenterCloud/boStandardsBasedTemplate/2020.11',
+      label: 'Cortina (2021.1)',
+      pagePath: 'cloudProducts/cortina/insuranceNow/2021.1',
     },
     {
-      label: 'Commercial Auto Standards Based Template 2020.05',
-      pagePath:
-        'cloudProducts/banff/policyCenterCloud/caStandardsBasedTemplate/2020.11',
+      label: 'Dobson (2021.2)',
+      pagePath: 'cloudProducts/dobson/insuranceNow/2021.2',
     },
     {
-      label: 'Crime Standards Based Template 2020.11',
-      pagePath:
-        'cloudProducts/banff/policyCenterCloud/crimeStandardsBasedTemplate/2020.11',
+      label: 'Elysian (2022.1)',
+      pagePath: 'cloudProducts/elysian/insuranceNow/2022.1',
     },
     {
-      label: 'General Liability Standards Based Template 2020.11',
-      pagePath:
-        'cloudProducts/banff/policyCenterCloud/glStandardsBasedTemplate/2020.11',
+      label: 'Flaine (2022.2)',
+      pagePath: 'cloudProducts/flaine/insuranceNow/2022.2',
     },
     {
-      label: 'Workers Compensation Standards Based Template 2020.11',
-      pagePath:
-        'cloudProducts/banff/policyCenterCloud/wcStandardsBasedTemplate/2020.11',
+      label: 'Garmisch (2023.1)',
+      pagePath: 'cloudProducts/garmisch/insuranceNow/2023.1',
+    },
+    {
+      label: 'Hakuba (2023.2)',
+      pagePath: 'cloudProducts/hakuba/insuranceNow/2023.2',
     },
   ],
-  sd9a35f8d6c6966748440440ab5f1f654: [
-    {
-      label: 'Aspen (2020.05)',
-      pagePath: 'cloudProducts/aspen/policyCenterCloud',
-    },
-    {
-      label: 'Banff (2020.11)',
-      pagePath: 'cloudProducts/banff/policyCenterCloud/pcGwCloud/2020.11',
-    },
+  s1793805ac84baf801d4eb31b00ab1ddf: [
     {
       label: 'Cortina (2021.04)',
       pagePath: 'cloudProducts/cortina/policyCenterCloud/pcGwCloud/2021.04',
@@ -264,30 +142,6 @@ export const allSelectors = {
     {
       label: 'Hakuba (2023.06)',
       pagePath: 'cloudProducts/hakuba/pcGwCloud/2023.06',
-    },
-  ],
-  sb1572a4ac17ba705fdfb0f9ebe00d8e1: [
-    {
-      label: 'BillingCenter Cloud',
-      pagePath: 'cloudProducts/cortina/billingCenterCloud',
-    },
-    {
-      label: 'ClaimCenter Cloud',
-      pagePath: 'cloudProducts/cortina/claimCenterCloud',
-    },
-    {
-      label: 'PolicyCenter Cloud',
-      pagePath: 'cloudProducts/cortina/policyCenterCloud',
-    },
-  ],
-  sb8b6bf6e1344485406813caca67c4038: [
-    {
-      label: 'DataHub for Guidewire Cloud 2021.04',
-      pagePath: 'cloudProducts/cortina/dhGwCloud/2021.04',
-    },
-    {
-      label: 'InfoCenter for Guidewire Cloud 2021.04',
-      pagePath: 'cloudProducts/cortina/icGwCloud/2021.04',
     },
   ],
   se7d12fdd8fa65284de1403b37a585252: [
@@ -328,7 +182,7 @@ export const allSelectors = {
     },
     { label: 'Hakuba (2023.06)', pagePath: 'cloudProducts/hakuba/dx-ref-apps' },
   ],
-  sf75404ebcf8fdb6eb0c053a20d5f3feb: [
+  sfc2c6edff3f08e7f4db564282c6812c7: [
     {
       label: 'Flaine (2022.09)',
       pagePath: 'cloudProducts/flaine/global-ref-apps',
@@ -340,6 +194,10 @@ export const allSelectors = {
     {
       label: 'Hakuba (2023.06)',
       pagePath: 'cloudProducts/hakuba/global-ref-apps',
+    },
+    {
+      label: 'Innsbruck (2023.10)',
+      pagePath: 'cloudProducts/innsbruck/global-ref-apps',
     },
   ],
   s06dcd02c361b9539495548fd0bfb3ad2: [
@@ -362,9 +220,222 @@ export const allSelectors = {
       pagePath: 'cloudProducts/hakuba/icGwCloud/2023.06',
     },
   ],
-  sce510530da4e4c84641710b29d9f757f: [
+  s3d4a4aa793fe835d0387d5969693de6d: [
+    {
+      label: 'Cortina (2021.1)',
+      pagePath: 'cloudProducts/cortina/insuranceNow/2021.1',
+    },
+    {
+      label: 'Dobson (2021.2)',
+      pagePath: 'cloudProducts/dobson/insuranceNow/2021.2',
+    },
+    {
+      label: 'Elysian (2022.1)',
+      pagePath: 'cloudProducts/elysian/insuranceNow/2022.1',
+    },
+    {
+      label: 'Flaine (2022.2)',
+      pagePath: 'cloudProducts/flaine/insuranceNow/2022.2',
+    },
+    {
+      label: 'Garmisch (2023.1)',
+      pagePath: 'cloudProducts/garmisch/insuranceNow/2023.1',
+    },
+    {
+      label: 'Hakuba (2023.2)',
+      pagePath: 'cloudProducts/hakuba/insuranceNow/2023.2',
+    },
+    {
+      label: 'Hakuba (2023.2)',
+      pagePath: 'cloudProducts/innsbruck/insuranceNow/2023.3',
+    },
+  ],
+  scf866456342474178729593fa394b976: [
     { label: '3.6', pagePath: 'globalContent/ipg/3.6' },
     { label: '3.7', pagePath: 'globalContent/ipg/3.7' },
+    { label: '3.8', pagePath: 'globalContent/ipg/3.8' },
+  ],
+  sabc928e21c4c1dfb2a841b6b2331c9db: [
+    { label: 'BillingCenter', pagePath: 'l10n/de-DE/bc' },
+    { label: 'ClaimCenter', pagePath: 'l10n/de-DE/cc' },
+    {
+      label: 'CustomerEngage Account Management',
+      pagePath: 'l10n/de-DE/ce-am',
+    },
+    {
+      label: 'CustomerEngage Account Management for ClaimCenter',
+      pagePath: 'l10n/de-DE/ce-claims',
+    },
+    { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/de-DE/ce-qb' },
+    { label: 'DataHub', pagePath: 'l10n/de-DE/dh' },
+    { label: 'InfoCenter', pagePath: 'l10n/de-DE/ic' },
+    { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/de-DE/cm' },
+    { label: 'PolicyCenter', pagePath: 'l10n/de-DE/pc' },
+    { label: 'ProducerEngage', pagePath: 'l10n/de-DE/pe' },
+    {
+      label: 'ProducerEngage for ClaimCenter',
+      pagePath: 'l10n/de-DE/pe-claims',
+    },
+    { label: 'ServiceRepEngage', pagePath: 'l10n/de-DE/sre' },
+    { label: 'VendorEngage', pagePath: 'l10n/de-DE/ve' },
+  ],
+  s04276cabb68afefd84d353cd088adf27: [
+    { label: 'Deutsch', pagePath: 'l10n/de-DE' },
+    { label: 'Español', pagePath: 'l10n/es-LA' },
+    { label: 'Español (España)', pagePath: 'l10n/es-ES' },
+    { label: 'Français', pagePath: 'l10n/fr-FR' },
+    { label: 'Italiano', pagePath: 'l10n/it-IT' },
+    { label: 'Nederlands', pagePath: 'l10n/nl-NL' },
+    { label: 'Português', pagePath: 'l10n/pt-BR' },
+    { label: '日本語', pagePath: 'l10n/ja-JP' },
+  ],
+  s1e7e42f043fbc93c9128db9850dbcb2d: [
+    { label: 'BillingCenter', pagePath: 'l10n/es-ES/bc' },
+    { label: 'ClaimCenter', pagePath: 'l10n/es-ES/cc' },
+    {
+      label: 'CustomerEngage Account Management',
+      pagePath: 'l10n/es-ES/ce-am',
+    },
+    {
+      label: 'CustomerEngage Account Management for ClaimCenter',
+      pagePath: 'l10n/es-ES/ce-claims',
+    },
+    { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/es-ES/ce-qb' },
+    { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/es-ES/cm' },
+    { label: 'PolicyCenter', pagePath: 'l10n/es-ES/pc' },
+    { label: 'ProducerEngage', pagePath: 'l10n/es-ES/pe' },
+    {
+      label: 'ProducerEngage for ClaimCenter',
+      pagePath: 'l10n/es-ES/pe-claims',
+    },
+    { label: 'ServiceRepEngage', pagePath: 'l10n/es-ES/sre' },
+    { label: 'VendorEngage', pagePath: 'l10n/es-ES/ve' },
+  ],
+  s641a38c0db32b1509b9fabce309d960f: [
+    { label: 'BillingCenter', pagePath: 'l10n/es-LA/bc' },
+    { label: 'ClaimCenter', pagePath: 'l10n/es-LA/cc' },
+    { label: 'Cloud Data Access', pagePath: 'l10n/es-LA/cda' },
+    {
+      label: 'CustomerEngage Account Management',
+      pagePath: 'l10n/es-LA/ce-am',
+    },
+    {
+      label: 'CustomerEngage Account Management for ClaimCenter',
+      pagePath: 'l10n/es-LA/ce-claims',
+    },
+    { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/es-LA/ce-qb' },
+    { label: 'DataHub', pagePath: 'l10n/es-LA/dh' },
+    { label: 'Explore', pagePath: 'l10n/es-LA/explore' },
+    { label: 'Guidewire Cloud Console', pagePath: 'l10n/es-LA/gcc' },
+    { label: 'InfoCenter', pagePath: 'l10n/es-LA/ic' },
+    { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/es-LA/cm' },
+    { label: 'PolicyCenter', pagePath: 'l10n/es-LA/pc' },
+    { label: 'ProducerEngage', pagePath: 'l10n/es-LA/pe' },
+    {
+      label: 'ProducerEngage for ClaimCenter',
+      pagePath: 'l10n/es-LA/pe-claims',
+    },
+    { label: 'ServiceRepEngage', pagePath: 'l10n/es-LA/sre' },
+    { label: 'VendorEngage', pagePath: 'l10n/es-LA/ve' },
+  ],
+  sef23284b869fc03ddd79bc1738f4ad7d: [
+    { label: 'BillingCenter', pagePath: 'l10n/fr-FR/bc' },
+    { label: 'ClaimCenter', pagePath: 'l10n/fr-FR/cc' },
+    {
+      label: 'CustomerEngage Account Management',
+      pagePath: 'l10n/fr-FR/ce-am',
+    },
+    {
+      label: 'CustomerEngage Account Management for ClaimCenter',
+      pagePath: 'l10n/fr-FR/ce-claims',
+    },
+    { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/fr-FR/ce-qb' },
+    { label: 'DataHub', pagePath: 'l10n/fr-FR/dh' },
+    { label: 'InfoCenter', pagePath: 'l10n/fr-FR/ic' },
+    { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/fr-FR/cm' },
+    { label: 'PolicyCenter', pagePath: 'l10n/fr-FR/pc' },
+    { label: 'ProducerEngage', pagePath: 'l10n/fr-FR/pe' },
+    {
+      label: 'ProducerEngage for ClaimCenter',
+      pagePath: 'l10n/fr-FR/pe-claims',
+    },
+    { label: 'ServiceRepEngage', pagePath: 'l10n/fr-FR/sre' },
+    { label: 'VendorEngage', pagePath: 'l10n/fr-FR/ve' },
+  ],
+  sfe3981f25d5c58ed2a73f60e2c949230: [
+    { label: 'BillingCenter', pagePath: 'l10n/it-IT/bc' },
+    { label: 'ClaimCenter', pagePath: 'l10n/it-IT/cc' },
+    { label: 'Cloud Data Access', pagePath: 'l10n/it-IT/cda' },
+    {
+      label: 'CustomerEngage Account Management',
+      pagePath: 'l10n/it-IT/ce-am',
+    },
+    {
+      label: 'CustomerEngage Account Management for ClaimCenter',
+      pagePath: 'l10n/it-IT/ce-claims',
+    },
+    { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/it-IT/ce-qb' },
+    { label: 'DataHub', pagePath: 'l10n/it-IT/dh' },
+    { label: 'Guidewire Cloud Console', pagePath: 'l10n/it-IT/gcc' },
+    { label: 'Guidewire Identity Federation Hub', pagePath: 'l10n/it-IT/gwid' },
+    { label: 'InfoCenter', pagePath: 'l10n/it-IT/ic' },
+    { label: 'PolicyCenter', pagePath: 'l10n/it-IT/pc' },
+    { label: 'ProducerEngage', pagePath: 'l10n/it-IT/pe' },
+    {
+      label: 'ProducerEngage for ClaimCenter',
+      pagePath: 'l10n/it-IT/pe-claims',
+    },
+    { label: 'ServiceRepEngage', pagePath: 'l10n/it-IT/sre' },
+    { label: 'VendorEngage', pagePath: 'l10n/it-IT/ve' },
+  ],
+  se8b84bf91d6fdc9fe9f57fab16d97983: [
+    { label: 'BillingCenter', pagePath: 'l10n/ja-JP/bc' },
+    { label: 'ClaimCenter', pagePath: 'l10n/ja-JP/cc' },
+    { label: 'Cloud Platform', pagePath: 'l10n/ja-JP/cp' },
+    {
+      label: 'CustomerEngage Account Management',
+      pagePath: 'l10n/ja-JP/ce-am',
+    },
+    {
+      label: 'CustomerEngage Account Management for ClaimCenter',
+      pagePath: 'l10n/ja-JP/ce-claims',
+    },
+    { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/ja-JP/ce-qb' },
+    {
+      label: 'Garmisch (2023.02) の新機能',
+      pagePath: 'l10n/ja-JP/202302garmischwhatsnew',
+    },
+    { label: 'Guidewire Identity Federation Hub', pagePath: 'l10n/ja-JP/gwid' },
+    { label: 'Guidewire Testing', pagePath: 'l10n/ja-JP/gtest' },
+    { label: 'Guidewire for Salesforce', pagePath: 'l10n/ja-JP/gwsf' },
+    {
+      label: 'InsuranceSuite Configuration Upgrade Tools',
+      pagePath: 'l10n/ja-JP/is-configupgradetools',
+    },
+    { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/ja-JP/cm' },
+    { label: 'PolicyCenter', pagePath: 'l10n/ja-JP/pc' },
+    { label: 'ProducerEngage', pagePath: 'l10n/ja-JP/pe' },
+    { label: 'ServiceRepEngage', pagePath: 'l10n/ja-JP/sre' },
+    { label: 'VendorEngage', pagePath: 'l10n/ja-JP/ve' },
+  ],
+  s04aae4cce94a63b38358bb52ee3acace: [
+    { label: 'BillingCenter', pagePath: 'l10n/pt-BR/bc' },
+    { label: 'ClaimCenter', pagePath: 'l10n/pt-BR/cc' },
+    { label: 'Cloud Data Access', pagePath: 'l10n/pt-BR/cda' },
+    {
+      label: 'CustomerEngage Account Management',
+      pagePath: 'l10n/pt-BR/ce-am',
+    },
+    { label: 'CustomerEngage Quote and Buy', pagePath: 'l10n/pt-BR/ce-qb' },
+    { label: 'DataHub', pagePath: 'l10n/pt-BR/dh' },
+    { label: 'Explore', pagePath: 'l10n/pt-BR/explore' },
+    { label: 'Guidewire Cloud Console', pagePath: 'l10n/pt-BR/gcc' },
+    { label: 'InfoCenter', pagePath: 'l10n/pt-BR/ic' },
+    { label: 'InsuranceSuite Contact Management', pagePath: 'l10n/pt-BR/cm' },
+    { label: 'PolicyCenter', pagePath: 'l10n/pt-BR/pc' },
+    { label: 'ProducerEngage', pagePath: 'l10n/pt-BR/pe' },
+    { label: 'ServiceRepEngage', pagePath: 'l10n/pt-BR/sre' },
+    { label: 'VendorEngage', pagePath: 'l10n/pt-BR/ve' },
   ],
   s6b92fc418ffa288afcda2302a844bbce: [
     {

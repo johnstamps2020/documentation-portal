@@ -31,10 +31,6 @@ const pageConfig: SectionLayoutProps = {
           docId: 'isbc202306update',
         },
         {
-          label: 'InsuranceSuite Configuration Upgrade Tools',
-          docId: 'isconfigupgradetools460',
-        },
-        {
           label: 'InsuranceSuite Configuration Upgrade Tools Compatibility',
           docId: 'isupgradecompatibility',
         },
@@ -95,6 +91,10 @@ const pageConfig: SectionLayoutProps = {
           docId: 'is202306integoverview',
         },
         {
+          label: 'Cloud Integration Basics Course',
+          docId: 'cloudintegrationbasics',
+        },
+        {
           label: 'BillingCenter Cloud API Consumer Guide',
           docId: 'isbc202306apibf',
         },
@@ -150,7 +150,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Hakuba (2023.06)',
-    items: allSelectors.s025396a977568bf9d422073c55bbfd60,
+    items: allSelectors.s344cd6ac814e55dd2f6e1bddf2c969db,
     labelColor: 'black',
   },
 };

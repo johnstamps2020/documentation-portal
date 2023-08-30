@@ -64,8 +64,8 @@ export default function ExternalSites() {
         <HeaderMenuTitle>{headerAndTooltipText}</HeaderMenuTitle>
         <HeaderMenuDivider />
         {sites.map((s) => (
-          <HeaderTooltip title={headerAndTooltipText}>
-            <MenuItem key={s.label}>
+          <HeaderTooltip title={headerAndTooltipText} key={s.label}>
+            <MenuItem>
               <HeaderMenuLink href={s.url}>{s.label}</HeaderMenuLink>
             </MenuItem>
           </HeaderTooltip>
