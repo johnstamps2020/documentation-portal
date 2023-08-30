@@ -184,7 +184,6 @@ enum class GwDockerImageTags(val tagValue: String) {
 
 enum class GwTriggerPaths(val pathValue: String) {
     AWS_S3_KUBE("aws/s3/kube"),
-    CI_UPLOAD_LEGACY_CONFIGS_TO_DB("ci/uploadLegacyConfigsToDb"),
     DB("db"),
     DOCUSAURUS_THEMES("docusaurus/themes"),
     PACKAGE_JSON("package.json"),
