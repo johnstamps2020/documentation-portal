@@ -183,21 +183,21 @@ enum class GwDockerImageTags(val tagValue: String) {
 }
 
 enum class GwTriggerPaths(val pathValue: String) {
-    AWS_S3_KUBE("aws/s3/kube"),
-    DB("db"),
-    DOCUSAURUS_THEMES("docusaurus/themes"),
+    AWS_S3_KUBE("aws/s3/kube/**"),
+    DB("db/**"),
+    DOCUSAURUS_THEMES("docusaurus/themes/**"),
     PACKAGE_JSON("package.json"),
-    HTML5("html5"),
-    LANDING_PAGES("landing-pages"),
-    LANDING_PAGES_KUBE("landing-pages/kube"),
-    SERVER("server"),
-    SERVER_KUBE("server/kube"),
+    HTML5("html5/**"),
+    LANDING_PAGES("landing-pages/**"),
+    LANDING_PAGES_KUBE("landing-pages/kube/**"),
+    SERVER("server/**"),
+    SERVER_KUBE("server/kube/**"),
     SUBDIRS_PACKAGE_JSON("**/package.json"),
     SCRIPTS_PAGES_GET_ROOT_BREADCRUMBS("scripts/src/pages/getRootBreadcrumbs.ts"),
-    SHIMS("shims"),
+    SHIMS("shims/**"),
     TEAMCITY_POM_XML(".teamcity/pom.xml"),
     TEAMCITY_SETTINGS_KTS(".teamcity/settings.kts"),
-    TEAMCITY_CONFIG(".teamcity/config"),
+    TEAMCITY_CONFIG(".teamcity/config/**"),
     YARN_LOCK("yarn.lock"),
 }
 
@@ -2250,7 +2250,8 @@ object Frontend {
                         GwTriggerPaths.SERVER.pathValue,
                         GwTriggerPaths.SHIMS.pathValue,
                         GwTriggerPaths.SCRIPTS_PAGES_GET_ROOT_BREADCRUMBS.pathValue
-                    )
+                    ),
+                    listOf(GwTriggerPaths.LANDING_PAGES_KUBE.pathValue)
                 )
             )
         }
@@ -2528,7 +2529,12 @@ object Server {
         }
 
         triggers {
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.SERVER.pathValue)))
+            trigger(
+                GwVcsTriggers.createDocPortalVcsTrigger(
+                    listOf(GwTriggerPaths.SERVER.pathValue),
+                    listOf(GwTriggerPaths.SERVER_KUBE.pathValue)
+                )
+            )
         }
     })
 
@@ -4000,6 +4006,7 @@ object GwBuilds {
         }
     }
 
+    // TODO: Check if the sourceDir with the "**" wildcard works
     fun createRunCheckmarxScan(sourceDir: String): BuildType {
         return BuildType {
             templates(AbsoluteId("CheckmarxSastScan"))
@@ -5407,14 +5414,20 @@ object GwTemplates {
 
 object GwVcsTriggers {
 
-    fun createDocPortalVcsTrigger(triggerPaths: List<String>? = null): VcsTrigger {
+    fun createDocPortalVcsTrigger(
+        includedTriggerPaths: List<String>? = null,
+        excludedTriggerPaths: List<String>? = null,
+    ): VcsTrigger {
         val docPortalVcsTrigger = VcsTrigger {
             perCheckinTriggering = true
             enableQueueOptimization = false
             triggerRules = ""
         }
-        triggerPaths?.forEach {
+        includedTriggerPaths?.forEach {
             docPortalVcsTrigger.triggerRules += "+:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${it}\n"
+        }
+        excludedTriggerPaths?.forEach {
+            docPortalVcsTrigger.triggerRules += "-:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${it}\n"
         }
         return docPortalVcsTrigger
     }
