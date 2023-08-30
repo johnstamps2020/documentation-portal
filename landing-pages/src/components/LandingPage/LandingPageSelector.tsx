@@ -141,6 +141,11 @@ export default function LandingPageSelector({
         renderValue={(value) => {
           return value;
         }}
+        MenuProps={{
+          style: {
+            maxHeight: 400,
+          },
+        }}
         sx={{
           textAlign: 'left',
           marginLeft: 0,
