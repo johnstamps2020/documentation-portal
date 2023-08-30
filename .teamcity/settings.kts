@@ -182,18 +182,25 @@ enum class GwDockerImageTags(val tagValue: String) {
 }
 
 enum class GwCheckoutRules(val ruleValue: String) {
-    ROOT_PACKAGE_JSON("+:package.json"),
+    AWS_S3_KUBE("+:aws/s3/kube"),
+    CI("+:ci"),
     DB("+:db"),
+    DOCUSAURUS_THEMES("+:docusaurus/themes"),
+    PACKAGE_JSON("+:package.json"),
+    HTML5("+:html5"),
     LANDING_PAGES("+:landing-pages"),
     LANDING_PAGES_KUBE("+:landing-pages/kube"),
     SERVER("+:server"),
     SERVER_KUBE("+:server/kube"),
+    SERVER_PACKAGE_JSON("+:server/package.json"),
+    SCRIPTS_PAGES_GET_ROOT_BREADCRUMBS("+:scripts/src/pages/getRootBreadcrumbs.ts"),
+    SHIMS("+:shims"),
     TEAMCITY_POM_XML("+:.teamcity/pom.xml"),
     TEAMCITY_SETTINGS_KTS("+:.teamcity/settings.kts"),
     TEAMCITY_CONFIG("+:.teamcity/config"),
-    CI("+:ci"),
-    HTML5("+:html5"),
-    AWS_S3_KUBE("+:aws/s3/kube"),
+    YARN_LOCK("+:yarn.lock"),
+    YARNRC_YML("+:.yarnrc.yml"),
+    YARN_RELEASES_3_4_1("+:.yarn/releases/yarn-3.4.1.cjs"),
 }
 
 object Database {
@@ -275,10 +282,7 @@ object Database {
 
             else -> "echo Nothing to test here"
         }
-        val vscTriggerPath = when (configType) {
-            GwConfigTypes.BUILDS.typeName -> ".teamcity/config"
-            else -> ".teamcity/config/${configType}"
-        }
+
         return BuildType {
             name = "Test $configType config files"
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
@@ -301,7 +305,7 @@ object Database {
             }
 
             triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(vscTriggerPath))
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger())
             }
 
             features {
@@ -1884,11 +1888,7 @@ object Content {
             }
 
             triggers {
-                trigger(
-                    GwVcsTriggers.createDocPortalVcsTrigger(
-                        GwConfigParams.S3_KUBE_DEPLOYMENT_FILE.paramValue
-                    )
-                )
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger())
             }
 
             features {
@@ -2104,7 +2104,11 @@ object Frontend {
             id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
             vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.LANDING_PAGES.ruleValue)
+                root(
+                    GwVcsRoots.DocumentationPortalGitVcsRoot,
+                    GwCheckoutRules.LANDING_PAGES.ruleValue,
+                    GwCheckoutRules.SCRIPTS_PAGES_GET_ROOT_BREADCRUMBS.ruleValue
+                )
                 cleanCheckout = true
             }
 
@@ -2207,7 +2211,12 @@ object Frontend {
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            root(
+                GwVcsRoots.DocumentationPortalGitVcsRoot,
+                GwCheckoutRules.PACKAGE_JSON.ruleValue,
+                GwCheckoutRules.LANDING_PAGES.ruleValue,
+                GwCheckoutRules.SERVER.ruleValue
+            )
             cleanCheckout = true
         }
 
@@ -2229,7 +2238,7 @@ object Frontend {
         }
 
         triggers {
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger("landing-pages/**"))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger())
         }
     })
 
@@ -2298,6 +2307,8 @@ object Frontend {
                 step(GwBuildSteps.createPublishNpmPackageStep(packageHandle, packagePath))
             }
 
+            // Supposedly, the build is triggered only on changes in package.json to publish a new package
+            // only when its version changes, not on every change in the code.
             triggers {
                 trigger(GwVcsTriggers.createDocPortalVcsTrigger("${packagePath}/package.json"))
             }
@@ -2421,7 +2432,12 @@ object Server {
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot,
+                GwCheckoutRules.PACKAGE_JSON.ruleValue,
+                GwCheckoutRules.YARN_LOCK.ruleValue,
+                GwCheckoutRules.YARNRC_YML.ruleValue,
+                GwCheckoutRules.YARN_RELEASES_3_4_1.ruleValue,
+                GwCheckoutRules.DOCUSAURUS_THEMES.ruleValue)
             cleanCheckout = true
         }
 
@@ -2431,8 +2447,7 @@ object Server {
         }
 
         triggers {
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger("html5/**"))
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger("docusaurus/themes/**"))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger())
         }
 
         features {
@@ -2441,7 +2456,8 @@ object Server {
         }
     })
 
-    // Temporarily disabled
+    // FIXME: The recursive option breaks the command, the command is incorrect - should be yarn audit:all
+    // TODO: Move this build to the root level of the project
     private object AuditNpmPackages : BuildType({
         name = "Audit npm packages"
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
@@ -2470,7 +2486,6 @@ object Server {
             trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/package.json"))
             trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/yarn.lock"))
         }
-
     })
 
     private object TestDocSiteServerApp : BuildType({
@@ -2480,8 +2495,8 @@ object Server {
         vcs {
             root(
                 GwVcsRoots.DocumentationPortalGitVcsRoot,
-                GwCheckoutRules.SERVER.ruleValue,
-                GwCheckoutRules.ROOT_PACKAGE_JSON.ruleValue
+                GwCheckoutRules.PACKAGE_JSON.ruleValue,
+                GwCheckoutRules.SERVER.ruleValue
             )
             cleanCheckout = true
         }
