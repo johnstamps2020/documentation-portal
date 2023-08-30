@@ -15,7 +15,7 @@ accordingly, and delete the patch script.
 changeBuildType(RelativeId("730a144df684b889adffc9febec7846e")) {
     vcs {
         expectEntry(RelativeId("DocumentationPortalgitrepo"), "+:package.json", "+:landing-pages", "+:server", "+:shims")
-        root(RelativeId("DocumentationPortalgitrepo"), "+:package.json", "+:landing-pages", "+:server", "+:shims", "+:.yarn")
+        root(RelativeId("DocumentationPortalgitrepo"), "+:package.json", "+:landing-pages", "+:server", "+:shims", "+:yarn.lock")
     }
 
     features {
