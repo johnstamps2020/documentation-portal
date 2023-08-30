@@ -3776,7 +3776,7 @@ object GwBuilds {
             nodeJS {
                 id = "Run yarn npm audit"
                 shellScript = """
-                    yarn audit:all
+                    yarn && yarn audit:all
                 """.trimIndent()
                 dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
             }
