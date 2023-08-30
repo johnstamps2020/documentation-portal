@@ -2215,7 +2215,8 @@ object Frontend {
                 GwVcsRoots.DocumentationPortalGitVcsRoot,
                 GwCheckoutRules.PACKAGE_JSON.ruleValue,
                 GwCheckoutRules.LANDING_PAGES.ruleValue,
-                GwCheckoutRules.SERVER.ruleValue
+                GwCheckoutRules.SERVER.ruleValue,
+                GwCheckoutRules.SHIMS.ruleValue
             )
             cleanCheckout = true
         }
@@ -2432,12 +2433,14 @@ object Server {
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
         vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot,
+            root(
+                GwVcsRoots.DocumentationPortalGitVcsRoot,
                 GwCheckoutRules.PACKAGE_JSON.ruleValue,
                 GwCheckoutRules.YARN_LOCK.ruleValue,
                 GwCheckoutRules.YARNRC_YML.ruleValue,
                 GwCheckoutRules.YARN_RELEASES_3_4_1.ruleValue,
-                GwCheckoutRules.DOCUSAURUS_THEMES.ruleValue)
+                GwCheckoutRules.DOCUSAURUS_THEMES.ruleValue
+            )
             cleanCheckout = true
         }
 
