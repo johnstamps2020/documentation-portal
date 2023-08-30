@@ -23,7 +23,11 @@ changeBuildType(RelativeId("b80d9c0499b581dbdebee71746bfb5fc")) {
             }
         }
         trigger1.apply {
-            triggerRules = "+:root=DocumentationTools_Development_CroissantDev_DocumentationPortalgitrepo:package.json"
+            triggerRules = """
+                +:root=DocumentationTools_Development_CroissantDev_DocumentationPortalgitrepo:package.json
+                +:root=DocumentationTools_Development_CroissantDev_DocumentationPortalgitrepo:yarn.lock
+                +:root=DocumentationTools_Development_CroissantDev_DocumentationPortalgitrepo:**/package.json
+            """.trimIndent()
 
 
         }
