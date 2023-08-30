@@ -141,6 +141,11 @@ export default function LandingPageSelector({
         renderValue={(value) => {
           return value;
         }}
+        MenuProps={{
+          style: {
+            maxHeight: 400,
+          },
+        }}
         sx={{
           textAlign: 'left',
           marginLeft: 0,
@@ -152,10 +157,9 @@ export default function LandingPageSelector({
       >
         {sortedPageSelectorItems.map((item) => (
           <MenuItem
-            disabled={item.label === selectedItemLabel}
             value={item.label}
             key={item.label}
-            sx={{ fontSize: '0.875rem' }}
+            sx={{ fontSize: '0.875rem', p: "2px 13px" }}
           >
             {item.label}
           </MenuItem>
