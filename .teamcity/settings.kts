@@ -5410,6 +5410,8 @@ object GwVcsTriggers {
     fun createDocPortalVcsTrigger(triggerPaths: List<String>? = null): VcsTrigger {
         val docPortalVcsTrigger = VcsTrigger {
             perCheckinTriggering = true
+            enableQueueOptimization = false
+            triggerRules = ""
         }
         triggerPaths?.forEach {
             docPortalVcsTrigger.triggerRules += "+:root=${GwVcsRoots.DocumentationPortalGitVcsRoot.id}:${it}\n"

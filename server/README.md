@@ -12,11 +12,13 @@
 |_|   \___/|_|   \__\__,_|_|
 ```
 
-This is a simple Node.js app which enforces Okta authentication.
+> WARNING: This content is obsolete and requires update.
+
+This is a simple (not anymore) Node.js app which enforces Okta authentication.
 
 ## Setup
 
-1. Place documents on an S3 (include landing pages if necessary)
+1. Place documents on an S3 bucket (include landing pages if necessary)
 2. Configure the environment (locally, you can use a `.env` file)
    ```
    OKTA_DOMAIN=https://guidewire-hub.oktapreview.com
@@ -44,7 +46,7 @@ This is a simple Node.js app which enforces Okta authentication.
 
 ## Keti
 
-The attached `keti.json` contains application configuration. Use if if you want
+The attached `keti.json` contains application configuration. Use it if you want
 to make changes to Keti. Make sure you commit your changes to this repository.
 
 ## HTML5 webpack
