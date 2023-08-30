@@ -1,4 +1,5 @@
 import { mainHeight } from 'components/Layout/Layout';
+import { Page } from 'server/dist/model/entity/Page';
 
 export const baseBackgroundProps = {
   backgroundAttachment: 'fixed',
@@ -21,6 +22,7 @@ export type LandingPageLayoutProps = {
     minHeight: string;
   };
   sidebar?: SidebarProps;
+  searchFilters?: Page['searchFilters'];
 };
 
 export type LandingPageItemProps = {

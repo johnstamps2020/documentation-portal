@@ -10,6 +10,8 @@ const pageConfig: CategoryLayoutProps = {
     backgroundImage: `url(${gradientBackgroundImage})`,
   },
 
+  searchFilters: { platform: ['Cloud'] },
+
   cards: [
     {
       label: 'Cyence Cyber',

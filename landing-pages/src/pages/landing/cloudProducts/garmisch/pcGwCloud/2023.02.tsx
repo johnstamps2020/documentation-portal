@@ -36,7 +36,7 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools',
-          docId: 'isconfigupgradetools460',
+          docId: 'isconfigupgradetools470',
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools Compatibility',
@@ -127,6 +127,10 @@ const pageConfig: SectionLayoutProps = {
           docId: 'is202302integoverview',
         },
         {
+          label: 'Cloud Integration Basics Course',
+          docId: 'cloudintegrationbasics',
+        },
+        {
           label: 'App Events',
           docId: 'appeventsdev',
         },
@@ -190,7 +194,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Garmisch (2023.02)',
-    items: allSelectors.sd9a35f8d6c6966748440440ab5f1f654,
+    items: allSelectors.s1793805ac84baf801d4eb31b00ab1ddf,
     labelColor: 'black',
   },
 };

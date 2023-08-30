@@ -13,7 +13,7 @@ type LazyPageComponent = React.LazyExoticComponent<
 
 export default function LandingPage() {
   const navigate = useNavigate();
-  const { pageData, isError, isLoading } = usePageData();
+  const { pageData, isError } = usePageData();
   const { title, setTitle, setHeaderOptions, setPath } = useLayoutContext();
 
   useEffect(() => {

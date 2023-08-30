@@ -23,18 +23,19 @@ const pageConfig: CategoryLayoutProps = {
     items: allSelectors.s92475b0db6d6007931455ee967b8bcb8,
     labelColor: 'white',
   },
+  searchFilters: { platform: ['Cloud'] },
 
   cards: [
     {
-      label: 'Jutro Design System 8.3.0',
+      label: 'Jutro Design System 8.3.2',
       items: [
         {
           label: 'Jutro Design System and UI Framework',
-          docId: 'jutro830',
+          docId: 'jutro832',
         },
         {
           label: 'Jutro Storybook',
-          docId: 'storybook830',
+          docId: 'storybook832',
         },
       ],
     },

@@ -17,7 +17,7 @@ const pageConfig: ProductFamilyLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Dobson',
-    items: allSelectors.s027a61c6afed86fb43842929cfca2775,
+    items: allSelectors.s0f196c0b55cf55f2cdd1e05b1bf5e94e,
     labelColor: 'white',
   },
 

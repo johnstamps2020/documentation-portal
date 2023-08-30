@@ -103,12 +103,24 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20212config',
         },
         {
+          label: 'Studio Configuration',
+          docId: 'in20212studio',
+        },
+        {
           label: 'Billing Configuration Reference',
           docId: 'in20212billref',
         },
         {
           label: 'Claims Configuration Reference',
           docId: 'in20212claimsconfig',
+        },
+        {
+          label: 'Underwriting Configuration Reference',
+          docId: 'in20212uwconfig',
+        },
+        {
+          label: 'Product Attribute Reference',
+          docId: 'in20212prodattref',
         },
         {
           label: 'Common Functionality Configuration Reference',
@@ -123,20 +135,8 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20212xcservicepconfigdraft',
         },
         {
-          label: 'Product Attribute Reference',
-          docId: 'in20212prodattref',
-        },
-        {
           label: 'Provisioning Portal',
           docId: 'in20212provportalinternal',
-        },
-        {
-          label: 'Studio Configuration',
-          docId: 'in20212studio',
-        },
-        {
-          label: 'Underwriting Configuration Reference',
-          docId: 'in20212uwconfig',
         },
       ],
     },
@@ -157,7 +157,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Dobson (2021.2)',
-    items: allSelectors.sb93ea0f8d0fc172dd24c8ce25d379ff9,
+    items: allSelectors.s8f0ef4ce7f1a0e901c8b8c38ba2d3ca1,
     labelColor: 'black',
   },
 };

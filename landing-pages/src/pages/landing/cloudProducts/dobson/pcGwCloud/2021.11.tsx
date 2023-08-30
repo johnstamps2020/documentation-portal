@@ -27,7 +27,7 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools',
-          docId: 'isconfigupgradetools460',
+          docId: 'isconfigupgradetools470',
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools Compatibility',
@@ -174,7 +174,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Dobson (2021.11)',
-    items: allSelectors.sd9a35f8d6c6966748440440ab5f1f654,
+    items: allSelectors.s1793805ac84baf801d4eb31b00ab1ddf,
     labelColor: 'black',
   },
 };

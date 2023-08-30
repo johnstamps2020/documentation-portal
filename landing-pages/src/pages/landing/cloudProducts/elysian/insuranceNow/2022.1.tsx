@@ -111,12 +111,28 @@ const pageConfig: SectionLayoutProps = {
       label: 'Configuration',
       items: [
         {
+          label: 'Core Configuration',
+          docId: 'in20221config',
+        },
+        {
+          label: 'Studio Configuration',
+          docId: 'in20221studio',
+        },
+        {
           label: 'Billing Configuration Reference',
           docId: 'in20221billref',
         },
         {
-          label: 'Core Configuration',
-          docId: 'in20221config',
+          label: 'Claims Configuration Reference',
+          docId: 'in20221claimsconfig',
+        },
+        {
+          label: 'Underwriting Configuration Reference',
+          docId: 'in20221uwconfig',
+        },
+        {
+          label: 'Product Attribute Reference',
+          docId: 'in20221prodattref',
         },
         {
           label: 'Common Functionality Configuration Reference',
@@ -131,28 +147,12 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20221xcservicepconfigdraft',
         },
         {
-          label: 'Claims Configuration Reference',
-          docId: 'in20221claimsconfig',
-        },
-        {
-          label: 'Studio Configuration',
-          docId: 'in20221studio',
-        },
-        {
-          label: 'Product Attribute Reference',
-          docId: 'in20221prodattref',
-        },
-        {
           label: 'Provisioning Portal',
           docId: 'in20221provportal',
         },
         {
           label: 'Provisioning Portal',
           docId: 'in20221provportalinternal',
-        },
-        {
-          label: 'Underwriting Configuration Reference',
-          docId: 'in20221uwconfig',
         },
       ],
     },
@@ -173,7 +173,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Elysian (2022.1)',
-    items: allSelectors.sb93ea0f8d0fc172dd24c8ce25d379ff9,
+    items: allSelectors.s8f0ef4ce7f1a0e901c8b8c38ba2d3ca1,
     labelColor: 'black',
   },
 };

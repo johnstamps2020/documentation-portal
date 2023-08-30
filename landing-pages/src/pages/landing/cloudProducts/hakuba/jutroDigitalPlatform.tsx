@@ -15,7 +15,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Jutro Web Apps',
-          docId: 'jutroplatformnext',
+          docId: 'jutroplatformhakuba',
         },
         {
           label: 'Templates',
@@ -28,26 +28,26 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Jutro SDK (Early Access)',
-          url: '/jutro/sdk/next/docs/jutro-sdk-overview',
+          url: '/jutro/sdk/hakuba/docs/jutro-sdk-overview',
           videoIcon: false,
         },
         {
           label: 'APD toolkit (Early Access)',
-          url: '/jutro/sdk/next/docs/apd-toolkit-overview',
+          url: '/jutro/sdk/hakuba/docs/apd-toolkit-overview',
           videoIcon: false,
         },
       ],
     },
     {
-      label: 'Jutro Design System 8.6.1',
+      label: 'Jutro Design System 8.10.0',
       items: [
         {
           label: 'Jutro Design System and UI Framework',
-          docId: 'jutro861',
+          docId: 'jutro8100',
         },
         {
           label: 'Jutro Storybook',
-          docId: 'storybook861',
+          docId: 'storybook8100',
         },
       ],
     },

@@ -24,6 +24,15 @@ const pageConfig: SectionLayoutProps = {
       ],
     },
     {
+      label: 'Overview',
+      items: [
+        {
+          label: 'Overview of GT: Framework',
+          docId: 'testing202306overview',
+        },
+      ],
+    },
+    {
       label: 'Installation',
       items: [
         {

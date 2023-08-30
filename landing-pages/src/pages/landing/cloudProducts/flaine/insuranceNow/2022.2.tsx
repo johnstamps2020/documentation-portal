@@ -107,12 +107,28 @@ const pageConfig: SectionLayoutProps = {
       label: 'Configuration',
       items: [
         {
+          label: 'Core Configuration',
+          docId: 'in20222config',
+        },
+        {
+          label: 'Studio Configuration',
+          docId: 'in20222studio',
+        },
+        {
           label: 'Billing Configuration Reference',
           docId: 'in20222billref',
         },
         {
-          label: 'Core Configuration',
-          docId: 'in20222config',
+          label: 'Claims Configuration Reference',
+          docId: 'in20222claimsconfig',
+        },
+        {
+          label: 'Underwriting Configuration Reference',
+          docId: 'in20222uwconfig',
+        },
+        {
+          label: 'Product Attribute Reference',
+          docId: 'in20222prodattref',
         },
         {
           label: 'Common Functionality Configuration Reference',
@@ -127,28 +143,12 @@ const pageConfig: SectionLayoutProps = {
           docId: 'in20222xcservicepconfigdraft',
         },
         {
-          label: 'Claims Configuration Reference',
-          docId: 'in20222claimsconfig',
-        },
-        {
-          label: 'Studio Configuration',
-          docId: 'in20222studio',
-        },
-        {
-          label: 'Product Attribute Reference',
-          docId: 'in20222prodattref',
-        },
-        {
           label: 'Provisioning Portal',
           docId: 'in20222provportal',
         },
         {
           label: 'Provisioning Portal',
           docId: 'in20222provportalinternal',
-        },
-        {
-          label: 'Underwriting Configuration Reference',
-          docId: 'in20222uwconfig',
         },
       ],
     },
@@ -165,20 +165,11 @@ const pageConfig: SectionLayoutProps = {
         },
       ],
     },
-    {
-      label: 'Administration',
-      items: [
-        {
-          label: 'Datadog Log Access (Early Access)',
-          docId: 'in20222ddlogacc',
-        },
-      ],
-    },
   ],
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Flaine (2022.2)',
-    items: allSelectors.sb93ea0f8d0fc172dd24c8ce25d379ff9,
+    items: allSelectors.s8f0ef4ce7f1a0e901c8b8c38ba2d3ca1,
     labelColor: 'black',
   },
 };
