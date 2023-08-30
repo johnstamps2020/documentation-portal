@@ -43,6 +43,7 @@ project {
         buildType(GwBuilds.createDeployDocPortalBuildType(it.envName))
     }
     buildType(GwBuilds.TestSettingsKts)
+    buildType(GwBuilds.AuditNpmPackages)
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
     features.feature(GwProjectFeatures.GwAntennaHouseFormatterServerProjectFeature)
     features.feature(GwProjectFeatures.GwBuildListenerLimitProjectFeature)
@@ -2216,7 +2217,10 @@ object Frontend {
                 GwCheckoutRules.PACKAGE_JSON.ruleValue,
                 GwCheckoutRules.LANDING_PAGES.ruleValue,
                 GwCheckoutRules.SERVER.ruleValue,
-                GwCheckoutRules.SHIMS.ruleValue
+                GwCheckoutRules.SHIMS.ruleValue,
+                GwCheckoutRules.YARNRC_YML.ruleValue,
+                GwCheckoutRules.YARN_RELEASES_3_4_1.ruleValue,
+                GwCheckoutRules.YARN_LOCK.ruleValue
             )
             cleanCheckout = true
         }
@@ -2423,8 +2427,6 @@ object Server {
             buildType(testKubernetesConfigFilesProd)
             buildType(buildAndPublishDockerImageToDevEcrBuildType)
             buildType(publishDockerImageToProdEcrBuildType)
-//            temporarily disabled
-//            buildType(AuditNpmPackages)
         }
     }
 
@@ -2456,38 +2458,6 @@ object Server {
         features {
             feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
             feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-        }
-    })
-
-    // FIXME: The recursive option breaks the command, the command is incorrect - should be yarn audit:all
-    // TODO: Move this build to the root level of the project
-    private object AuditNpmPackages : BuildType({
-        name = "Audit npm packages"
-        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-        vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot, GwCheckoutRules.SERVER.ruleValue)
-            cleanCheckout = true
-        }
-
-        steps {
-            nodeJS {
-                id = "Run yarn npm audit"
-                shellScript = """
-                    yarn audit:server
-                """.trimIndent()
-                dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
-            }
-        }
-
-        features {
-            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-        }
-
-        triggers {
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/package.json"))
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/yarn.lock"))
         }
     })
 
@@ -3792,6 +3762,37 @@ object Helpers {
 }
 
 object GwBuilds {
+    // FIXME: The recursive option breaks the command
+    object AuditNpmPackages : BuildType({
+        name = "Audit npm packages"
+        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+        vcs {
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            cleanCheckout = true
+        }
+
+        steps {
+            nodeJS {
+                id = "Run yarn npm audit"
+                shellScript = """
+                    yarn audit:all
+                """.trimIndent()
+                dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
+            }
+        }
+
+        features {
+            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+        }
+
+        triggers {
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/package.json"))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/yarn.lock"))
+        }
+    })
+
     object TestSettingsKts : BuildType({
         name = "Test settings.kts"
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
