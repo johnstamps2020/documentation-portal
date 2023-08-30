@@ -126,7 +126,7 @@ export default function LandingPageSelector({
           fontSize: 20,
           fontWeight: 400,
           '&.Mui-focused': {
-            color: 'white',
+            color: labelColor,
           },
         }}
       >
