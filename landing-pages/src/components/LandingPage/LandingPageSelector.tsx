@@ -160,7 +160,7 @@ export default function LandingPageSelector({
             disabled={item.label === selectedItemLabel}
             value={item.label}
             key={item.label}
-            sx={{ fontSize: '0.875rem' }}
+            sx={{ fontSize: '0.875rem', p: "2px 13px" }}
           >
             {item.label}
           </MenuItem>
