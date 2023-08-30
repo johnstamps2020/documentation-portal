@@ -13,6 +13,7 @@ import LandingPageSelector, {
 import EditPagePropsButton from '../EditPagePropsButton';
 import { mainHeight } from 'components/Layout/Layout';
 import NotLoggedInInfo from 'components/NotLoggedInInfo';
+import { usePageSearchFilters } from 'hooks/usePageSearchFilters';
 
 export type SectionLayoutProps = LandingPageLayoutProps & {
   sections: SectionProps[];
@@ -22,8 +23,10 @@ export type SectionLayoutProps = LandingPageLayoutProps & {
 export default function SectionLayout({
   sections,
   selector,
+  searchFilters,
 }: SectionLayoutProps) {
   const { pageData, isLoading, isError } = usePageData();
+  usePageSearchFilters(searchFilters);
 
   if (isLoading || isError || !pageData) {
     return null;

@@ -16,6 +16,7 @@ import LandingPageSelector, {
 } from 'components/LandingPage/LandingPageSelector';
 import EditPagePropsButton from '../EditPagePropsButton';
 import NotLoggedInInfo from 'components/NotLoggedInInfo';
+import { usePageSearchFilters } from 'hooks/usePageSearchFilters';
 
 export type CategoryLayoutProps = LandingPageLayoutProps & {
   cards: CategoryCardProps[];
@@ -31,8 +32,10 @@ export default function CategoryLayout({
   isRelease,
   selector,
   description,
+  searchFilters,
 }: CategoryLayoutProps) {
   const { pageData, isLoading, isError } = usePageData();
+  usePageSearchFilters(searchFilters);
 
   if (isLoading || isError || !pageData) {
     return null;
