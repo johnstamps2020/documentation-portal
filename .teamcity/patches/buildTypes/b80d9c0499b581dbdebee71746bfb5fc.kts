@@ -13,11 +13,6 @@ To apply the patch, change the buildType with id = 'b80d9c0499b581dbdebee71746bf
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("b80d9c0499b581dbdebee71746bfb5fc")) {
-    vcs {
-        expectEntry(RelativeId("DocumentationPortalgitrepo"))
-        root(RelativeId("DocumentationPortalgitrepo"), "+:**/package.json")
-    }
-
     features {
         val feature1 = find<CommitStatusPublisher> {
             commitStatusPublisher {
