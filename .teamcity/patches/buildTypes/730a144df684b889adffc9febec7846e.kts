@@ -13,11 +13,6 @@ To apply the patch, change the buildType with id = '730a144df684b889adffc9febec7
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("730a144df684b889adffc9febec7846e")) {
-    vcs {
-        expectEntry(RelativeId("DocumentationPortalgitrepo"), "+:package.json", "+:landing-pages", "+:server", "+:shims", "+:.yarnrc.yml", "+:.yarn/releases/yarn-3.4.1.cjs", "+:yarn.lock")
-        root(RelativeId("DocumentationPortalgitrepo"), "+:package.json", "+:landing-pages", "+:server", "+:shims", "+:.yarnrc.yml", "+:.yarn/releases/yarn-3.4.1.cjs")
-    }
-
     features {
         val feature1 = find<CommitStatusPublisher> {
             commitStatusPublisher {
