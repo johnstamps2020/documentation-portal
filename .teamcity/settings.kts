@@ -2248,7 +2248,8 @@ object Frontend {
                     listOf(
                         GwTriggerPaths.LANDING_PAGES.pathValue,
                         GwTriggerPaths.SERVER.pathValue,
-                        GwTriggerPaths.SHIMS.pathValue
+                        GwTriggerPaths.SHIMS.pathValue,
+                        GwTriggerPaths.SCRIPTS_PAGES_GET_ROOT_BREADCRUMBS.pathValue
                     )
                 )
             )
