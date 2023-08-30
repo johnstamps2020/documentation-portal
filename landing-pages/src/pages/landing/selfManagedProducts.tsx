@@ -19,7 +19,7 @@ const pageConfig: CategoryLayoutProps = {
       </Typography>
       <Typography variant="body1" lineHeight={2}>
         Access earlier releases by clicking a product and then selecting a
-        version from the <b>Select release</b> dropdown menu.
+        release from the <b>Select release</b> drop-down menu.
       </Typography>
     </Box>
   ),
