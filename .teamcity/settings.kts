@@ -3788,8 +3788,7 @@ object GwBuilds {
         }
 
         triggers {
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/package.json"))
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger("server/yarn.lock"))
+            trigger(GwVcsTriggers.createDocPortalVcsTrigger("**/package.json"))
         }
     })
 
