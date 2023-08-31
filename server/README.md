@@ -12,7 +12,7 @@
 |_|   \___/|_|   \__\__,_|_|
 ```
 
-> WARNING: This content is obsolete and requires update.
+> WARNING: Out-of-date content!
 
 This is a simple (not anymore) Node.js app which enforces Okta authentication.
 
