@@ -2251,7 +2251,10 @@ object Frontend {
                         GwTriggerPaths.SHIMS.pathValue,
                         GwTriggerPaths.SCRIPTS_PAGES_GET_ROOT_BREADCRUMBS.pathValue
                     ),
-                    listOf(GwTriggerPaths.LANDING_PAGES_KUBE.pathValue)
+                    listOf(
+                        GwTriggerPaths.LANDING_PAGES_KUBE.pathValue,
+                        GwTriggerPaths.SERVER_KUBE.pathValue
+                    )
                 )
             )
         }
@@ -4006,8 +4009,26 @@ object GwBuilds {
         }
     }
 
-    // TODO: Check if the sourceDir with the "**" wildcard works
     fun createRunCheckmarxScan(sourceDir: String): BuildType {
+        val includedTriggerPaths: List<String>?
+        val excludedTriggerPaths: List<String>?
+        when (sourceDir) {
+            GwTriggerPaths.LANDING_PAGES.pathValue -> {
+                includedTriggerPaths = listOf(GwTriggerPaths.LANDING_PAGES.pathValue)
+                excludedTriggerPaths = listOf(GwTriggerPaths.LANDING_PAGES_KUBE.pathValue)
+            }
+
+            GwTriggerPaths.SERVER.pathValue -> {
+                includedTriggerPaths = listOf(GwTriggerPaths.SERVER.pathValue)
+                excludedTriggerPaths = listOf(GwTriggerPaths.SERVER_KUBE.pathValue)
+            }
+
+            else -> {
+                includedTriggerPaths = null
+                excludedTriggerPaths = null
+            }
+        }
+
         return BuildType {
             templates(AbsoluteId("CheckmarxSastScan"))
             name = "Run Checkmarx scan"
@@ -4045,7 +4066,7 @@ object GwBuilds {
             }
 
             triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(sourceDir)))
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger(includedTriggerPaths, excludedTriggerPaths))
             }
         }
     }
