@@ -5471,8 +5471,6 @@ object GwVcsTriggers {
         excludedTriggerPaths: List<String>? = null,
     ): VcsTrigger {
         val docPortalVcsTrigger = VcsTrigger {
-            perCheckinTriggering = true
-            enableQueueOptimization = false
             triggerRules = ""
         }
         includedTriggerPaths?.forEach {
