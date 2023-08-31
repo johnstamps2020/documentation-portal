@@ -8,6 +8,7 @@ import InputBase from '@mui/material/InputBase';
 import { useLandingPageItems } from 'hooks/useLandingPageItems';
 import { LandingPageItemProps } from 'pages/LandingPage/LandingPageTypes';
 import Skeleton from '@mui/material/Skeleton';
+import { useState, useEffect } from 'react';
 
 export type PageSelectorItem = {
   label: string;
@@ -68,6 +69,17 @@ export default function LandingPageSelector({
 }: LandingPageSelectorProps) {
   const navigate = useNavigate();
   const { landingPageItems, isError, isLoading } = useLandingPageItems(items);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const scrollHandler = () => {
+      setIsOpen(false);
+    };
+    window.addEventListener('scroll', scrollHandler);
+    return () => {
+      window.removeEventListener('scroll', scrollHandler);
+    };
+  }, []);
 
   if (isError) {
     return null;
@@ -135,6 +147,13 @@ export default function LandingPageSelector({
       <Select
         labelId="page-selector-label"
         id="page-selector"
+        open={isOpen}
+        onOpen={() => {
+          setIsOpen(true);
+        }}
+        onClose={() => {
+          setIsOpen(false);
+        }}
         value={items.length > 0 ? selectedItemLabel : ''}
         onChange={handleChange}
         input={<PageSelectorInput />}
@@ -145,6 +164,7 @@ export default function LandingPageSelector({
           style: {
             maxHeight: 400,
           },
+          disableScrollLock: true,
         }}
         sx={{
           textAlign: 'left',
@@ -159,7 +179,7 @@ export default function LandingPageSelector({
           <MenuItem
             value={item.label}
             key={item.label}
-            sx={{ fontSize: '0.875rem', p: "2px 13px" }}
+            sx={{ fontSize: '0.875rem', p: '2px 13px' }}
           >
             {item.label}
           </MenuItem>
