@@ -114,12 +114,14 @@ enum class GwConfigParams(val paramValue: String) {
     // TODO: Change croissant to docportal before switch to main
     DOC_PORTAL_APP_NAME("croissant"),
     DOC_PORTAL_FRONTEND_APP_NAME("docportal-frontend"),
-    DOC_PORTAL_KUBE_DEPLOYMENT_FILE("server/kube/deployment.yml"),
+    DOC_PORTAL_DIR("server"),
+    DOC_PORTAL_FRONTEND_DIR("landing-pages"),
+    DOC_PORTAL_KUBE_DEPLOYMENT_FILE("${DOC_PORTAL_DIR.paramValue}/kube/deployment.yml"),
 
     // TODO: Change the paths to the gateway config files before switch to main
-    DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE("server/kube/gateway-config-croissant.yml"),
-    DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE_PROD("server/kube/gateway-config-croissant.yml"),
-    DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE("landing-pages/kube/deployment.yml"),
+    DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE("${DOC_PORTAL_DIR.paramValue}/kube/gateway-config-croissant.yml"),
+    DOC_PORTAL_KUBE_GATEWAY_CONFIG_FILE_PROD("${DOC_PORTAL_DIR.paramValue}/kube/gateway-config-croissant.yml"),
+    DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE("${DOC_PORTAL_FRONTEND_DIR.paramValue}/kube/deployment.yml"),
     S3_KUBE_DEPLOYMENT_FILE("aws/s3/kube/service-gateway-config.yml")
 }
 
@@ -185,12 +187,12 @@ enum class GwTriggerPaths(val pathValue: String) {
     DOCUSAURUS_THEMES("docusaurus/themes/**"),
     PACKAGE_JSON("package.json"),
     HTML5("html5/**"),
-    LANDING_PAGES("landing-pages/**"),
-    LANDING_PAGES_KUBE("landing-pages/kube/**"),
-    SERVER("server/**"),
-    SERVER_KUBE("server/kube/**"),
-    SERVER_SRC_MODEL_ENTITY("server/src/model/entity/**"),
-    SERVER_SRC_TYPES("server/src/types/**"),
+    LANDING_PAGES("${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/**"),
+    LANDING_PAGES_KUBE("${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/kube/**"),
+    SERVER("${GwConfigParams.DOC_PORTAL_DIR.paramValue}/**"),
+    SERVER_KUBE("${GwConfigParams.DOC_PORTAL_DIR.paramValue}/kube/**"),
+    SERVER_SRC_MODEL_ENTITY("${GwConfigParams.DOC_PORTAL_DIR.paramValue}/src/model/entity/**"),
+    SERVER_SRC_TYPES("${GwConfigParams.DOC_PORTAL_DIR.paramValue}/src/types/**"),
     SUBDIRS_PACKAGE_JSON("**/package.json"),
     SCRIPTS_SRC_PAGES_GET_ROOT_BREADCRUMBS("scripts/src/pages/getRootBreadcrumbs.ts"),
     SHIMS("shims/**"),
@@ -2018,7 +2020,7 @@ object Frontend {
         createTestReactLandingPagesKubernetesConfigFiles(GwDeployEnvs.STAGING.envName)
     private val testKubernetesConfigFilesProd =
         createTestReactLandingPagesKubernetesConfigFiles(GwDeployEnvs.PROD.envName)
-    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScan("landing-pages")
+    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScan(GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue)
     private val buildAndPublishDockerImageToDevEcrBuildType =
         GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
             GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
@@ -2129,7 +2131,7 @@ object Frontend {
                         #!/bin/bash 
                         set -xe
                         
-                        cp %teamcity.build.checkoutDir%/scripts/out/root-breadcrumbs.json %teamcity.build.checkoutDir%/landing-pages/public
+                        cp %teamcity.build.checkoutDir%/scripts/out/root-breadcrumbs.json %teamcity.build.checkoutDir%/${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/public
                     """.trimIndent()
                 }
                 script {
@@ -2407,12 +2409,12 @@ object Server {
         createTestServerKubernetesConfigFiles(GwDeployEnvs.STAGING.envName)
     private val testKubernetesConfigFilesProd =
         createTestServerKubernetesConfigFiles(GwDeployEnvs.PROD.envName)
-    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScan("server")
+    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScan(GwConfigParams.DOC_PORTAL_DIR.paramValue)
     private val buildAndPublishDockerImageToDevEcrBuildType =
         GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
             GwDockerImageTags.DOC_PORTAL.tagValue,
             GwDockerImages.DOC_PORTAL.imageUrl,
-            "%teamcity.build.checkoutDir%/server",
+            "%teamcity.build.checkoutDir%/${GwConfigParams.DOC_PORTAL_DIR.paramValue}",
             listOf(runCheckmarxScan, TestDocSiteServerApp)
         )
     private val publishDockerImageToProdEcrBuildType = GwBuilds.createPublishDockerImageToProdEcrBuildType(
@@ -4015,12 +4017,12 @@ object GwBuilds {
         val includedTriggerPaths: List<String>?
         val excludedTriggerPaths: List<String>?
         when (sourceDir) {
-            GwTriggerPaths.LANDING_PAGES.pathValue -> {
+            GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue -> {
                 includedTriggerPaths = listOf(GwTriggerPaths.LANDING_PAGES.pathValue)
                 excludedTriggerPaths = listOf(GwTriggerPaths.LANDING_PAGES_KUBE.pathValue)
             }
 
-            GwTriggerPaths.SERVER.pathValue -> {
+            GwConfigParams.DOC_PORTAL_DIR.paramValue -> {
                 includedTriggerPaths = listOf(GwTriggerPaths.SERVER.pathValue)
                 excludedTriggerPaths = listOf(GwTriggerPaths.SERVER_KUBE.pathValue)
             }
@@ -4041,19 +4043,19 @@ object GwBuilds {
                 text("checkmarx.source.directory", sourceDir)
                 text(
                     "checkmarx.location.files.exclude ", """
-                !**/_cvs/**/*, !**/.svn/**/*, !**/.hg/**/*, !**/.git/**/*, !**/.bzr/**/*, !**/bin/**/*,
-                !**/obj/**/*, !**/backup/**/*, !**/.idea/**/*, !**/*.DS_Store, !**/*.ipr, !**/*.iws,
-                !**/*.bak, !**/*.tmp, !**/*.aac, !**/*.aif, !**/*.iff, !**/*.m3u, !**/*.mid, !**/*.mp3,
-                !**/*.mpa, !**/*.ra, !**/*.wav, !**/*.wma, !**/*.3g2, !**/*.3gp, !**/*.asf, !**/*.asx,
-                !**/*.avi, !**/*.flv, !**/*.mov, !**/*.mp4, !**/*.mpg, !**/*.rm, !**/*.swf, !**/*.vob,
-                !**/*.wmv, !**/*.bmp, !**/*.gif, !**/*.jpg, !**/*.png, !**/*.psd, !**/*.tif, !**/*.swf,
-                !**/*.jar, !**/*.zip, !**/*.rar, !**/*.exe, !**/*.dll, !**/*.pdb,   !**/*.7z,  !**/*.gz,
-                !**/*.tar.gz, !**/*.tar, !**/*.gz, !**/*.ahtm, !**/*.ahtml, !**/*.fhtml, !**/*.hdm,
-                !**/*.hdml, !**/*.hsql, !**/*.ht, !**/*.hta, !**/*.htc, !**/*.htd, !**/*.war, !**/*.ear,
-                !**/*.htmls, !**/*.ihtml, !**/*.mht, !**/*.mhtm, !**/*.mhtml, !**/*.ssi, !**/*.stm,
-                !**/*.stml, !**/*.ttml, !**/*.txn, !**/*.xhtm, !**/*.xhtml, !**/*.class, !**/node_modules/**/*, !**/*.iml,
-                !**/tests/**/*, !**/.teamcity/**/*, !**/__tests__/**/*, !**/images/**/*, !**/fonts/**/*
-            """.trimIndent()
+                        !**/_cvs/**/*, !**/.svn/**/*, !**/.hg/**/*, !**/.git/**/*, !**/.bzr/**/*, !**/bin/**/*,
+                        !**/obj/**/*, !**/backup/**/*, !**/.idea/**/*, !**/*.DS_Store, !**/*.ipr, !**/*.iws,
+                        !**/*.bak, !**/*.tmp, !**/*.aac, !**/*.aif, !**/*.iff, !**/*.m3u, !**/*.mid, !**/*.mp3,
+                        !**/*.mpa, !**/*.ra, !**/*.wav, !**/*.wma, !**/*.3g2, !**/*.3gp, !**/*.asf, !**/*.asx,
+                        !**/*.avi, !**/*.flv, !**/*.mov, !**/*.mp4, !**/*.mpg, !**/*.rm, !**/*.swf, !**/*.vob,
+                        !**/*.wmv, !**/*.bmp, !**/*.gif, !**/*.jpg, !**/*.png, !**/*.psd, !**/*.tif, !**/*.swf,
+                        !**/*.jar, !**/*.zip, !**/*.rar, !**/*.exe, !**/*.dll, !**/*.pdb,   !**/*.7z,  !**/*.gz,
+                        !**/*.tar.gz, !**/*.tar, !**/*.gz, !**/*.ahtm, !**/*.ahtml, !**/*.fhtml, !**/*.hdm,
+                        !**/*.hdml, !**/*.hsql, !**/*.ht, !**/*.hta, !**/*.htc, !**/*.htd, !**/*.war, !**/*.ear,
+                        !**/*.htmls, !**/*.ihtml, !**/*.mht, !**/*.mhtm, !**/*.mhtml, !**/*.ssi, !**/*.stm,
+                        !**/*.stml, !**/*.ttml, !**/*.txn, !**/*.xhtm, !**/*.xhtml, !**/*.class, !**/node_modules/**/*, !**/*.iml,
+                        !**/tests/**/*, !**/.teamcity/**/*, !**/__tests__/**/*, !**/images/**/*, !**/fonts/**/*
+                    """.trimIndent()
                 )
             }
 
