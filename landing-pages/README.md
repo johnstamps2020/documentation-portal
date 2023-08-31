@@ -1,3 +1,5 @@
+> WARNING: This information may be out of date.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with
