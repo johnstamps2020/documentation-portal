@@ -1697,13 +1697,13 @@ object Custom {
 
 object Content {
     private val testKubernetesConfigFilesDev =
-        GwBuilds.createTestKubernetesConfigFiles(GwDeployEnvs.DEV.envName, GwTriggerPaths.AWS_S3_KUBE.pathValue)
+        GwBuilds.createTestKubernetesConfigFilesBuildType(GwDeployEnvs.DEV.envName, GwTriggerPaths.AWS_S3_KUBE.pathValue)
     private val testKubernetesConfigFilesStaging =
-        GwBuilds.createTestKubernetesConfigFiles(GwDeployEnvs.STAGING.envName, GwTriggerPaths.AWS_S3_KUBE.pathValue)
+        GwBuilds.createTestKubernetesConfigFilesBuildType(GwDeployEnvs.STAGING.envName, GwTriggerPaths.AWS_S3_KUBE.pathValue)
     private val testKubernetesConfigFilesProd =
-        GwBuilds.createTestKubernetesConfigFiles(GwDeployEnvs.PROD.envName, GwTriggerPaths.AWS_S3_KUBE.pathValue)
+        GwBuilds.createTestKubernetesConfigFilesBuildType(GwDeployEnvs.PROD.envName, GwTriggerPaths.AWS_S3_KUBE.pathValue)
     private val testKubernetesConfigFilesPortal2 =
-        GwBuilds.createTestKubernetesConfigFiles(GwDeployEnvs.PORTAL2.envName, GwTriggerPaths.AWS_S3_KUBE.pathValue)
+        GwBuilds.createTestKubernetesConfigFilesBuildType(GwDeployEnvs.PORTAL2.envName, GwTriggerPaths.AWS_S3_KUBE.pathValue)
     val rootProject = createRootProjectForContent()
 
     private fun createRootProjectForContent(): Project {
@@ -2027,15 +2027,15 @@ object Content {
 
 object Frontend {
     private val testKubernetesConfigFilesDev =
-        GwBuilds.createTestKubernetesConfigFiles(GwDeployEnvs.DEV.envName, GwTriggerPaths.LANDING_PAGES_KUBE.pathValue)
+        GwBuilds.createTestKubernetesConfigFilesBuildType(GwDeployEnvs.DEV.envName, GwTriggerPaths.LANDING_PAGES_KUBE.pathValue)
     private val testKubernetesConfigFilesStaging =
-        GwBuilds.createTestKubernetesConfigFiles(
+        GwBuilds.createTestKubernetesConfigFilesBuildType(
             GwDeployEnvs.STAGING.envName,
             GwTriggerPaths.LANDING_PAGES_KUBE.pathValue
         )
     private val testKubernetesConfigFilesProd =
-        GwBuilds.createTestKubernetesConfigFiles(GwDeployEnvs.PROD.envName, GwTriggerPaths.LANDING_PAGES_KUBE.pathValue)
-    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScan(GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue)
+        GwBuilds.createTestKubernetesConfigFilesBuildType(GwDeployEnvs.PROD.envName, GwTriggerPaths.LANDING_PAGES_KUBE.pathValue)
+    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScanBuildType(GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue)
     private val buildAndPublishDockerImageToDevEcrBuildType =
         GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
             GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
@@ -2368,12 +2368,12 @@ object Frontend {
 
 object Server {
     private val testKubernetesConfigFilesDev =
-        GwBuilds.createTestKubernetesConfigFiles(GwDeployEnvs.DEV.envName, GwTriggerPaths.SERVER_KUBE.pathValue)
+        GwBuilds.createTestKubernetesConfigFilesBuildType(GwDeployEnvs.DEV.envName, GwTriggerPaths.SERVER_KUBE.pathValue)
     private val testKubernetesConfigFilesStaging =
-        GwBuilds.createTestKubernetesConfigFiles(GwDeployEnvs.STAGING.envName, GwTriggerPaths.SERVER_KUBE.pathValue)
+        GwBuilds.createTestKubernetesConfigFilesBuildType(GwDeployEnvs.STAGING.envName, GwTriggerPaths.SERVER_KUBE.pathValue)
     private val testKubernetesConfigFilesProd =
-        GwBuilds.createTestKubernetesConfigFiles(GwDeployEnvs.PROD.envName, GwTriggerPaths.SERVER_KUBE.pathValue)
-    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScan(GwConfigParams.DOC_PORTAL_DIR.paramValue)
+        GwBuilds.createTestKubernetesConfigFilesBuildType(GwDeployEnvs.PROD.envName, GwTriggerPaths.SERVER_KUBE.pathValue)
+    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScanBuildType(GwConfigParams.DOC_PORTAL_DIR.paramValue)
     private val buildAndPublishDockerImageToDevEcrBuildType =
         GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
             GwDockerImageTags.DOC_PORTAL.tagValue,
@@ -3923,7 +3923,7 @@ object GwBuilds {
         }
     }
 
-    fun createRunCheckmarxScan(sourceDir: String): BuildType {
+    fun createRunCheckmarxScanBuildType(sourceDir: String): BuildType {
         return BuildType {
             templates(AbsoluteId("CheckmarxSastScan"))
             name = "Run Checkmarx scan"
@@ -3961,7 +3961,7 @@ object GwBuilds {
         }
     }
 
-    fun createTestKubernetesConfigFiles(deployEnv: String, triggerPath: String): BuildType {
+    fun createTestKubernetesConfigFilesBuildType(deployEnv: String, triggerPath: String): BuildType {
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
         var deployEnvVars = ""
