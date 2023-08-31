@@ -192,7 +192,7 @@ enum class GwTriggerPaths(val pathValue: String) {
     SERVER_SRC_MODEL_ENTITY("server/src/model/entity/**"),
     SERVER_SRC_TYPES("server/src/types/**"),
     SUBDIRS_PACKAGE_JSON("**/package.json"),
-    SCRIPTS_PAGES_GET_ROOT_BREADCRUMBS("scripts/src/pages/getRootBreadcrumbs.ts"),
+    SCRIPTS_SRC_PAGES_GET_ROOT_BREADCRUMBS("scripts/src/pages/getRootBreadcrumbs.ts"),
     SHIMS("shims/**"),
     TEAMCITY_POM_XML(".teamcity/pom.xml"),
     TEAMCITY_SETTINGS_KTS(".teamcity/settings.kts"),
@@ -2018,7 +2018,7 @@ object Frontend {
         createTestReactLandingPagesKubernetesConfigFiles(GwDeployEnvs.STAGING.envName)
     private val testKubernetesConfigFilesProd =
         createTestReactLandingPagesKubernetesConfigFiles(GwDeployEnvs.PROD.envName)
-    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScan(GwTriggerPaths.LANDING_PAGES.pathValue)
+    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScan("landing-pages")
     private val buildAndPublishDockerImageToDevEcrBuildType =
         GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
             GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
@@ -2185,7 +2185,7 @@ object Frontend {
                     GwVcsTriggers.createDocPortalVcsTrigger(
                         listOf(
                             GwTriggerPaths.LANDING_PAGES.pathValue,
-                            GwTriggerPaths.SCRIPTS_PAGES_GET_ROOT_BREADCRUMBS.pathValue,
+                            GwTriggerPaths.SCRIPTS_SRC_PAGES_GET_ROOT_BREADCRUMBS.pathValue,
                             GwTriggerPaths.SERVER_SRC_MODEL_ENTITY.pathValue,
                             GwTriggerPaths.SERVER_SRC_TYPES.pathValue
                         )
@@ -2249,7 +2249,7 @@ object Frontend {
                     listOf(
                         GwTriggerPaths.LANDING_PAGES.pathValue,
                         GwTriggerPaths.SHIMS.pathValue,
-                        GwTriggerPaths.SCRIPTS_PAGES_GET_ROOT_BREADCRUMBS.pathValue,
+                        GwTriggerPaths.SCRIPTS_SRC_PAGES_GET_ROOT_BREADCRUMBS.pathValue,
                         GwTriggerPaths.SERVER_SRC_MODEL_ENTITY.pathValue,
                         GwTriggerPaths.SERVER_SRC_TYPES.pathValue
                     ),
@@ -2407,7 +2407,7 @@ object Server {
         createTestServerKubernetesConfigFiles(GwDeployEnvs.STAGING.envName)
     private val testKubernetesConfigFilesProd =
         createTestServerKubernetesConfigFiles(GwDeployEnvs.PROD.envName)
-    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScan(GwTriggerPaths.SERVER.pathValue)
+    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScan("server")
     private val buildAndPublishDockerImageToDevEcrBuildType =
         GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
             GwDockerImageTags.DOC_PORTAL.tagValue,
