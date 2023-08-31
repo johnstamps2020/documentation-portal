@@ -2018,7 +2018,7 @@ object Frontend {
         createTestReactLandingPagesKubernetesConfigFiles(GwDeployEnvs.STAGING.envName)
     private val testKubernetesConfigFilesProd =
         createTestReactLandingPagesKubernetesConfigFiles(GwDeployEnvs.PROD.envName)
-    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScan(GwTriggerPaths.LANDING_PAGES.pathValue)
+    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScan("landing-pages")
     private val buildAndPublishDockerImageToDevEcrBuildType =
         GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
             GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
@@ -2407,7 +2407,7 @@ object Server {
         createTestServerKubernetesConfigFiles(GwDeployEnvs.STAGING.envName)
     private val testKubernetesConfigFilesProd =
         createTestServerKubernetesConfigFiles(GwDeployEnvs.PROD.envName)
-    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScan(GwTriggerPaths.SERVER.pathValue)
+    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScan("server")
     private val buildAndPublishDockerImageToDevEcrBuildType =
         GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
             GwDockerImageTags.DOC_PORTAL.tagValue,
