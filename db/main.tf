@@ -1,3 +1,4 @@
+# Test comment
 locals {
   app_name = "docportal"
   aurora_db_name = "tenant-doctools-docportal-${var.deploy_env}"
