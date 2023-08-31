@@ -4014,25 +4014,6 @@ object GwBuilds {
     }
 
     fun createRunCheckmarxScan(sourceDir: String): BuildType {
-        val includedTriggerPaths: List<String>?
-        val excludedTriggerPaths: List<String>?
-        when (sourceDir) {
-            GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue -> {
-                includedTriggerPaths = listOf(GwTriggerPaths.LANDING_PAGES.pathValue)
-                excludedTriggerPaths = listOf(GwTriggerPaths.LANDING_PAGES_KUBE.pathValue)
-            }
-
-            GwConfigParams.DOC_PORTAL_DIR.paramValue -> {
-                includedTriggerPaths = listOf(GwTriggerPaths.SERVER.pathValue)
-                excludedTriggerPaths = listOf(GwTriggerPaths.SERVER_KUBE.pathValue)
-            }
-
-            else -> {
-                includedTriggerPaths = null
-                excludedTriggerPaths = null
-            }
-        }
-
         return BuildType {
             templates(AbsoluteId("CheckmarxSastScan"))
             name = "Run Checkmarx scan"
@@ -4066,10 +4047,6 @@ object GwBuilds {
 
             features {
                 feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            }
-
-            triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(includedTriggerPaths, excludedTriggerPaths))
             }
         }
     }
