@@ -1697,13 +1697,25 @@ object Custom {
 
 object Content {
     private val testKubernetesConfigFilesDev =
-        GwBuilds.createTestKubernetesConfigFilesBuildType(GwDeployEnvs.DEV.envName, GwTriggerPaths.AWS_S3_KUBE.pathValue)
+        GwBuilds.createTestKubernetesConfigFilesBuildType(
+            GwDeployEnvs.DEV.envName,
+            GwTriggerPaths.AWS_S3_KUBE.pathValue
+        )
     private val testKubernetesConfigFilesStaging =
-        GwBuilds.createTestKubernetesConfigFilesBuildType(GwDeployEnvs.STAGING.envName, GwTriggerPaths.AWS_S3_KUBE.pathValue)
+        GwBuilds.createTestKubernetesConfigFilesBuildType(
+            GwDeployEnvs.STAGING.envName,
+            GwTriggerPaths.AWS_S3_KUBE.pathValue
+        )
     private val testKubernetesConfigFilesProd =
-        GwBuilds.createTestKubernetesConfigFilesBuildType(GwDeployEnvs.PROD.envName, GwTriggerPaths.AWS_S3_KUBE.pathValue)
+        GwBuilds.createTestKubernetesConfigFilesBuildType(
+            GwDeployEnvs.PROD.envName,
+            GwTriggerPaths.AWS_S3_KUBE.pathValue
+        )
     private val testKubernetesConfigFilesPortal2 =
-        GwBuilds.createTestKubernetesConfigFilesBuildType(GwDeployEnvs.PORTAL2.envName, GwTriggerPaths.AWS_S3_KUBE.pathValue)
+        GwBuilds.createTestKubernetesConfigFilesBuildType(
+            GwDeployEnvs.PORTAL2.envName,
+            GwTriggerPaths.AWS_S3_KUBE.pathValue
+        )
     val rootProject = createRootProjectForContent()
 
     private fun createRootProjectForContent(): Project {
@@ -1863,7 +1875,7 @@ object Content {
         val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
         val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
         val contentStorageDeployEnvVars = Helpers.setContentStorageDeployEnvVars(deployEnv)
-        return BuildType {
+        val deployContentStorageBuildType = BuildType {
             name = "Deploy content storage to $deployEnv"
             id = Helpers.resolveRelativeIdFromIdString(this.name)
 
@@ -1903,14 +1915,42 @@ object Content {
                 }
             }
 
-            triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.AWS_S3_KUBE.pathValue)))
-            }
-
             features {
                 feature(GwBuildFeatures.GwDockerSupportBuildFeature)
             }
         }
+        when (deployEnv) {
+            GwDeployEnvs.DEV.envName -> {
+                deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+                deployContentStorageBuildType.triggers.trigger(
+                    GwVcsTriggers.createDocPortalVcsTrigger(
+                        listOf(GwTriggerPaths.AWS_S3_KUBE.pathValue)
+                    )
+                )
+            }
+
+            GwDeployEnvs.STAGING.envName -> {
+                deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesStaging) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+            }
+
+            GwDeployEnvs.PROD.envName -> {
+                deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesProd) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+            }
+
+            GwDeployEnvs.PORTAL2.envName -> {
+                deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesPortal2) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+            }
+        }
+
+        return deployContentStorageBuildType
     }
 
 
@@ -2027,15 +2067,22 @@ object Content {
 
 object Frontend {
     private val testKubernetesConfigFilesDev =
-        GwBuilds.createTestKubernetesConfigFilesBuildType(GwDeployEnvs.DEV.envName, GwTriggerPaths.LANDING_PAGES_KUBE.pathValue)
+        GwBuilds.createTestKubernetesConfigFilesBuildType(
+            GwDeployEnvs.DEV.envName,
+            GwTriggerPaths.LANDING_PAGES_KUBE.pathValue
+        )
     private val testKubernetesConfigFilesStaging =
         GwBuilds.createTestKubernetesConfigFilesBuildType(
             GwDeployEnvs.STAGING.envName,
             GwTriggerPaths.LANDING_PAGES_KUBE.pathValue
         )
     private val testKubernetesConfigFilesProd =
-        GwBuilds.createTestKubernetesConfigFilesBuildType(GwDeployEnvs.PROD.envName, GwTriggerPaths.LANDING_PAGES_KUBE.pathValue)
-    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScanBuildType(GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue)
+        GwBuilds.createTestKubernetesConfigFilesBuildType(
+            GwDeployEnvs.PROD.envName,
+            GwTriggerPaths.LANDING_PAGES_KUBE.pathValue
+        )
+    private val runCheckmarxScan =
+        GwBuilds.createRunCheckmarxScanBuildType(GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue)
     private val buildAndPublishDockerImageToDevEcrBuildType =
         GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
             GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
@@ -2368,11 +2415,20 @@ object Frontend {
 
 object Server {
     private val testKubernetesConfigFilesDev =
-        GwBuilds.createTestKubernetesConfigFilesBuildType(GwDeployEnvs.DEV.envName, GwTriggerPaths.SERVER_KUBE.pathValue)
+        GwBuilds.createTestKubernetesConfigFilesBuildType(
+            GwDeployEnvs.DEV.envName,
+            GwTriggerPaths.SERVER_KUBE.pathValue
+        )
     private val testKubernetesConfigFilesStaging =
-        GwBuilds.createTestKubernetesConfigFilesBuildType(GwDeployEnvs.STAGING.envName, GwTriggerPaths.SERVER_KUBE.pathValue)
+        GwBuilds.createTestKubernetesConfigFilesBuildType(
+            GwDeployEnvs.STAGING.envName,
+            GwTriggerPaths.SERVER_KUBE.pathValue
+        )
     private val testKubernetesConfigFilesProd =
-        GwBuilds.createTestKubernetesConfigFilesBuildType(GwDeployEnvs.PROD.envName, GwTriggerPaths.SERVER_KUBE.pathValue)
+        GwBuilds.createTestKubernetesConfigFilesBuildType(
+            GwDeployEnvs.PROD.envName,
+            GwTriggerPaths.SERVER_KUBE.pathValue
+        )
     private val runCheckmarxScan = GwBuilds.createRunCheckmarxScanBuildType(GwConfigParams.DOC_PORTAL_DIR.paramValue)
     private val buildAndPublishDockerImageToDevEcrBuildType =
         GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
