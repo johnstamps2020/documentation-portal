@@ -189,6 +189,8 @@ enum class GwTriggerPaths(val pathValue: String) {
     LANDING_PAGES_KUBE("landing-pages/kube/**"),
     SERVER("server/**"),
     SERVER_KUBE("server/kube/**"),
+    SERVER_SRC_MODEL_ENTITY("server/src/model/entity/**"),
+    SERVER_SRC_TYPES("server/src/types/**"),
     SUBDIRS_PACKAGE_JSON("**/package.json"),
     SCRIPTS_PAGES_GET_ROOT_BREADCRUMBS("scripts/src/pages/getRootBreadcrumbs.ts"),
     SHIMS("shims/**"),
@@ -2183,7 +2185,9 @@ object Frontend {
                     GwVcsTriggers.createDocPortalVcsTrigger(
                         listOf(
                             GwTriggerPaths.LANDING_PAGES.pathValue,
-                            GwTriggerPaths.SCRIPTS_PAGES_GET_ROOT_BREADCRUMBS.pathValue
+                            GwTriggerPaths.SCRIPTS_PAGES_GET_ROOT_BREADCRUMBS.pathValue,
+                            GwTriggerPaths.SERVER_SRC_MODEL_ENTITY.pathValue,
+                            GwTriggerPaths.SERVER_SRC_TYPES.pathValue
                         )
                     )
                 )
@@ -2244,13 +2248,13 @@ object Frontend {
                 GwVcsTriggers.createDocPortalVcsTrigger(
                     listOf(
                         GwTriggerPaths.LANDING_PAGES.pathValue,
-                        GwTriggerPaths.SERVER.pathValue,
                         GwTriggerPaths.SHIMS.pathValue,
-                        GwTriggerPaths.SCRIPTS_PAGES_GET_ROOT_BREADCRUMBS.pathValue
+                        GwTriggerPaths.SCRIPTS_PAGES_GET_ROOT_BREADCRUMBS.pathValue,
+                        GwTriggerPaths.SERVER_SRC_MODEL_ENTITY.pathValue,
+                        GwTriggerPaths.SERVER_SRC_TYPES.pathValue
                     ),
                     listOf(
                         GwTriggerPaths.LANDING_PAGES_KUBE.pathValue,
-                        GwTriggerPaths.SERVER_KUBE.pathValue
                     )
                 )
             )
