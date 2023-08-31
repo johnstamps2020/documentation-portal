@@ -2251,7 +2251,10 @@ object Frontend {
                         GwTriggerPaths.SHIMS.pathValue,
                         GwTriggerPaths.SCRIPTS_PAGES_GET_ROOT_BREADCRUMBS.pathValue
                     ),
-                    listOf(GwTriggerPaths.LANDING_PAGES_KUBE.pathValue)
+                    listOf(
+                        GwTriggerPaths.LANDING_PAGES_KUBE.pathValue,
+                        GwTriggerPaths.SERVER_KUBE.pathValue
+                    )
                 )
             )
         }
@@ -4006,8 +4009,26 @@ object GwBuilds {
         }
     }
 
-    // TODO: Check if the sourceDir with the "**" wildcard works
     fun createRunCheckmarxScan(sourceDir: String): BuildType {
+        val includedTriggerPaths: List<String>?
+        val excludedTriggerPaths: List<String>?
+        when (sourceDir) {
+            GwTriggerPaths.LANDING_PAGES.pathValue -> {
+                includedTriggerPaths = listOf(GwTriggerPaths.LANDING_PAGES.pathValue)
+                excludedTriggerPaths = listOf(GwTriggerPaths.LANDING_PAGES_KUBE.pathValue)
+            }
+
+            GwTriggerPaths.SERVER.pathValue -> {
+                includedTriggerPaths = listOf(GwTriggerPaths.SERVER.pathValue)
+                excludedTriggerPaths = listOf(GwTriggerPaths.SERVER_KUBE.pathValue)
+            }
+
+            else -> {
+                includedTriggerPaths = null
+                excludedTriggerPaths = null
+            }
+        }
+
         return BuildType {
             templates(AbsoluteId("CheckmarxSastScan"))
             name = "Run Checkmarx scan"
@@ -4018,18 +4039,18 @@ object GwBuilds {
                 text("checkmarx.source.directory", sourceDir)
                 text(
                     "checkmarx.location.files.exclude ", """
-                !**/_cvs/**/*, !**/.svn/**/*,   !**/.hg/**/*,   !**/.git/**/*,  !**/.bzr/**/*, !**/bin/**/*,
-                !**/obj/**/*,  !**/backup/**/*, !**/.idea/**/*, !**/*.DS_Store, !**/*.ipr,     !**/*.iws,
-                !**/*.bak,     !**/*.tmp,       !**/*.aac,      !**/*.aif,      !**/*.iff,     !**/*.m3u,   !**/*.mid, !**/*.mp3,
-                !**/*.mpa,     !**/*.ra,        !**/*.wav,      !**/*.wma,      !**/*.3g2,     !**/*.3gp,   !**/*.asf, !**/*.asx,
-                !**/*.avi,     !**/*.flv,       !**/*.mov,      !**/*.mp4,      !**/*.mpg,     !**/*.rm,    !**/*.swf, !**/*.vob,
-                !**/*.wmv,     !**/*.bmp,       !**/*.gif,      !**/*.jpg,      !**/*.png,     !**/*.psd,   !**/*.tif, !**/*.swf,
-                !**/*.jar,     !**/*.zip,       !**/*.rar,      !**/*.exe,      !**/*.dll,     !**/*.pdb,   !**/*.7z,  !**/*.gz,
-                !**/*.tar.gz,  !**/*.tar,       !**/*.gz,       !**/*.ahtm,     !**/*.ahtml,   !**/*.fhtml, !**/*.hdm,
-                !**/*.hdml,    !**/*.hsql,      !**/*.ht,       !**/*.hta,      !**/*.htc,     !**/*.htd,   !**/*.war, !**/*.ear,
-                !**/*.htmls,   !**/*.ihtml,     !**/*.mht,      !**/*.mhtm,     !**/*.mhtml,   !**/*.ssi,   !**/*.stm,
-                !**/*.stml,    !**/*.ttml,      !**/*.txn,      !**/*.xhtm,     !**/*.xhtml,   !**/*.class, !**/node_modules/**/*, !**/*.iml,
-                !**/tests/**/*,     !**/.teamcity/**/*,     !**/__tests__/**/*,     !**/images/**/*,        !**/fonts/**/*
+                !**/_cvs/**/*, !**/.svn/**/*, !**/.hg/**/*, !**/.git/**/*, !**/.bzr/**/*, !**/bin/**/*,
+                !**/obj/**/*, !**/backup/**/*, !**/.idea/**/*, !**/*.DS_Store, !**/*.ipr, !**/*.iws,
+                !**/*.bak, !**/*.tmp, !**/*.aac, !**/*.aif, !**/*.iff, !**/*.m3u, !**/*.mid, !**/*.mp3,
+                !**/*.mpa, !**/*.ra, !**/*.wav, !**/*.wma, !**/*.3g2, !**/*.3gp, !**/*.asf, !**/*.asx,
+                !**/*.avi, !**/*.flv, !**/*.mov, !**/*.mp4, !**/*.mpg, !**/*.rm, !**/*.swf, !**/*.vob,
+                !**/*.wmv, !**/*.bmp, !**/*.gif, !**/*.jpg, !**/*.png, !**/*.psd, !**/*.tif, !**/*.swf,
+                !**/*.jar, !**/*.zip, !**/*.rar, !**/*.exe, !**/*.dll, !**/*.pdb,   !**/*.7z,  !**/*.gz,
+                !**/*.tar.gz, !**/*.tar, !**/*.gz, !**/*.ahtm, !**/*.ahtml, !**/*.fhtml, !**/*.hdm,
+                !**/*.hdml, !**/*.hsql, !**/*.ht, !**/*.hta, !**/*.htc, !**/*.htd, !**/*.war, !**/*.ear,
+                !**/*.htmls, !**/*.ihtml, !**/*.mht, !**/*.mhtm, !**/*.mhtml, !**/*.ssi, !**/*.stm,
+                !**/*.stml, !**/*.ttml, !**/*.txn, !**/*.xhtm, !**/*.xhtml, !**/*.class, !**/node_modules/**/*, !**/*.iml,
+                !**/tests/**/*, !**/.teamcity/**/*, !**/__tests__/**/*, !**/images/**/*, !**/fonts/**/*
             """.trimIndent()
                 )
             }
@@ -4045,7 +4066,7 @@ object GwBuilds {
             }
 
             triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(sourceDir)))
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger(includedTriggerPaths, excludedTriggerPaths))
             }
         }
     }
