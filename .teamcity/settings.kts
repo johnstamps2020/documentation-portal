@@ -19,9 +19,6 @@ import java.security.MessageDigest
 version = "2022.04"
 project {
 
-    // FIXME: Fix the user exclusion rule in VCS trigger rules as described in the note here: https://www.jetbrains.com/help/teamcity/2022.04/configuring-vcs-triggers.html#trigger-rules-examples-1
-    // TODO: Use checkout rules for repos where we need to check out only part of the code, e.g. doc tools apps, db, frontend, server?
-    // TODO: Review all VCS trigger rules - thay may use relative paths and not work as expected
 //    TODO: Uncomment these builds when the pipeline is ready to merge
 //    GwVcsRoots.createGitVcsRootsFromConfigFiles().forEach {
 //        vcsRoot(it)
@@ -3776,8 +3773,9 @@ object Helpers {
 }
 
 object GwBuilds {
-    // FIXME: The recursive option breaks the command
     object AuditNpmPackages : BuildType({
+        // The --recursive option was removed from the yarn audit:all script in package.json because it causes the "400 bad request" error.
+        // It's a bug in yarn and we couldn't find a fix.
         name = "Audit npm packages"
         id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
@@ -4062,7 +4060,6 @@ object GwBuilds {
 
             features {
                 feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
             }
 
             triggers {
