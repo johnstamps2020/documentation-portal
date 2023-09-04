@@ -46,6 +46,92 @@ function optionsAreValid(options: {}): boolean {
     options && Object.keys(options)?.length > 0 && !(options instanceof Array)
   );
 }
+
+/* 
+Finds a doc URL based on product, version, title and language.
+ ** WARNING: This function is a bit fuzzy. It will find a match
+ ** if the doc title that is passed to it matches either exactly
+ ** or has ' Guide' appended to it. Many docs are in the config
+ ** as, for example, "Installation", but to avoid awkward human-speech
+ ** in prose, are defined in library keys as "Installation Guide", so
+ ** we allow that one exception. 
+ */
+export async function getDocUrlByMetadata(
+  products: string,
+  versions: string,
+  title: string,
+  language: string,
+  res: Response
+): Promise<ApiResponse> {
+  try {
+    if (!products || !versions || !title || !language) {
+      return {
+        status: 400,
+        body: {
+          message:
+            'Invalid request. Provide the following query parameters in the URL: products, versions, title, language',
+        },
+      };
+    }
+    const doc = await AppDataSource.getRepository(Doc)
+      .createQueryBuilder('doc')
+      .leftJoinAndSelect(
+        'doc.platformProductVersions',
+        'docPlatformProductVersions'
+      )
+      .leftJoinAndSelect('doc.language', 'docLanguage')
+      .leftJoinAndSelect(
+        'docPlatformProductVersions.product',
+        'docPlatformProductVersionsProduct'
+      )
+      .leftJoinAndSelect(
+        'docPlatformProductVersions.version',
+        'docPlatformProductVersionsVersion'
+      )
+      .where('title IN (:...titles)', { titles: [title, `${title} Guide`] })
+      .andWhere('docLanguage.code = :language', { language: language })
+      .andWhere(
+        'docPlatformProductVersionsProduct.name IN (:...productNames)',
+        {
+          productNames: products.split(','),
+        }
+      )
+      .andWhere(
+        'docPlatformProductVersionsVersion.name IN (:...productVersions)',
+        {
+          productVersions: versions.split(','),
+        }
+      )
+      .getOne();
+    if (!doc) {
+      return {
+        status: 404,
+        body: {
+          message: `Doc URL was not found for these properties: ${products}, ${versions}, ${title}, ${language}.`,
+        },
+      };
+    }
+    const isUserAllowedToAccessResourceResult = isUserAllowedToAccessResource(
+      res,
+      doc.public,
+      doc.internal,
+      doc.isInProduction
+    );
+    if (isUserAllowedToAccessResourceResult.status === 200) {
+      return {
+        status: 200,
+        body: { url: doc.url },
+      };
+    }
+    return isUserAllowedToAccessResourceResult;
+  } catch (err) {
+    return {
+      status: 500,
+      body: { message: `Operation failed: ${err}` },
+    };
+  }
+}
+
 /*
 The function looks for many entities in the db because sometimes the first match is not correct.
 For example, we have these two URLs:

@@ -4,6 +4,7 @@ import {
   getBreadcrumbs,
   getDocIdByUrl,
   getDocumentMetadataById,
+  getDocUrlByMetadata,
   getEntity,
   getPageItems,
   getRootBreadcrumb,
@@ -60,6 +61,18 @@ router.get('/entity/:repo/all', async function (req, res) {
 router.get('/entity/doc/metadata', async function (req, res) {
   const { id } = req.query;
   const { status, body } = await getDocumentMetadataById(id as string, res);
+  return res.status(status).json(body);
+});
+
+router.get('/docUrl', async function (req, res) {
+  const { products, versions, title, language } = req.query;
+  const { status, body } = await getDocUrlByMetadata(
+    products as string,
+    versions as string,
+    title as string,
+    language as string,
+    res
+  );
   return res.status(status).json(body);
 });
 
