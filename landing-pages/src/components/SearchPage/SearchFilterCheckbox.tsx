@@ -10,6 +10,50 @@ type SearchFilterCheckboxProps = {
   value: ServerSearchFilterValue;
 };
 
+const languageLabels = [
+  {
+    key: 'de',
+    label: 'Deutsch',
+  },
+  {
+    key: 'en',
+    label: 'English',
+  },
+  {
+    key: 'es',
+    label: 'Español',
+  },
+  {
+    key: 'es-ES',
+    label: 'Español (España)',
+  },
+  {
+    key: 'fr',
+    label: 'Francais',
+  },
+  {
+    key: 'it',
+    label: 'Italiano',
+  },
+  {
+    key: 'ja',
+    label: '日本語',
+  },
+  {
+    key: 'nl',
+    label: 'Nederlands',
+  },
+  {
+    key: 'pt',
+    label: 'Português',
+  },
+];
+
+export function findLanguageLabel(label: string) {
+  const matchingLanguage = languageLabels.find((lang) => lang.key === label);
+  return matchingLanguage ? matchingLanguage.label : label;
+}
+
 export default function SearchFilterCheckbox({
   name,
   value,
@@ -39,7 +83,7 @@ export default function SearchFilterCheckbox({
               }}
             />
           }
-          label={value.label}
+          label={findLanguageLabel(value.label)}
         />
       )}
       <Chip

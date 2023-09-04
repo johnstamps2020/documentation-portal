@@ -39,7 +39,7 @@
       "name": "Upload legacy configs to DB",
       "type": "node-terminal",
       "request": "launch",
-      "cwd": "${workspaceFolder}/ci",
+      "cwd": "${workspaceFolder}/ci/uploadLegacyConfigsToDb",
       "command": "node uploadLegacyConfigsToDb.mjs",
       "envFile": "${workspaceFolder}/server/.env"
     }
