@@ -24,6 +24,7 @@ declare global {
     docVersion: string;
     docSubject: string;
     docTitle: string;
+    docLanguage: string;
     userInformation: UserInformation;
   }
 }

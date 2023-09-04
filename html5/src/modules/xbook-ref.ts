@@ -9,6 +9,7 @@ export async function addBookLinks() {
 
 async function processKeyword(keyword: Element) {
   const docTitle = keyword.textContent;
+  const language = window.docLanguage;
   const citeClassName = keyword.parentElement.className;
   let product = window.docProduct;
   let version = window.docVersion;
@@ -30,7 +31,13 @@ async function processKeyword(keyword: Element) {
 
   // if the doc applies to multiple versions, look for matches with latest first
   const versionArray = version.split(',').sort().reverse();
-  const link = await findDocLink(product, versionArray, docTitle, contextid);
+  const link = await findDocLink(
+    product,
+    versionArray,
+    docTitle,
+    contextid,
+    language
+  );
 
   if (link) {
     keyword.textContent = '';
@@ -42,13 +49,14 @@ async function findDocLink(
   product: string,
   versionArray: string[],
   docTitle: string,
-  contextid: string
+  contextid: string,
+  language: string
 ) {
   let link = null;
   for (const version of versionArray) {
     try {
       const response = await fetch(
-        `/safeConfig/docUrl?products=${product}&versions=${version}&title=${docTitle}`
+        `/safeConfig/docUrl?products=${product}&versions=${version}&title=${docTitle}&language=${language}`
       );
       if (response.ok) {
         const docInfo = await response.json();
