@@ -17,4 +17,13 @@ changeBuildType(RelativeId("e9a72141ba54e2f2b857bd0928ec19a7")) {
             }
         }
     }
+
+    dependencies {
+        add(RelativeId("154fbecebd48530134f187ad1b4314ca")) {
+            snapshot {
+                onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+        }
+
+    }
 }
