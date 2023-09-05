@@ -4,15 +4,23 @@
     {
       "id": "guidewireidentityfederationhubjaJP",
       "title": "Authentication ja",
+      "displayTitle": "Guidewire Identity Federation Hub を使用した認証",
       "url": "ja/cloud/auth/latest",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Cloud Platform"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson", "Elysian", "Flaine"],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba"
+        ],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

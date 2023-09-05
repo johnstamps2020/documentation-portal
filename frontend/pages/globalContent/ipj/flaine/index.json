@@ -34,5 +34,8 @@
         }
       ]
     }
-  ]
+  ],
+  "search_filters": {
+    "language": ["en", "ja"]
+  }
 }

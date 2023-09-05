@@ -9,16 +9,16 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "開発者ガイド",
-          "link": "/l10n/pdfs/ja-JP/ve/2022.05/VendorEngage_DevelopersGuide_ja-JP.pdf"
+          "label": "インストールガイド",
+          "id": "dx202205jaJPveinstall"
         },
         {
-          "label": "インストールガイド",
-          "link": "/l10n/pdfs/ja-JP/ve/2022.05/ja-JP-2022.05-ve_InstallGuide.pdf"
-        },
+          "label": "開発者ガイド",
+          "id": "dx202205jaJPvedev"
+        },     
         {
           "label": "アプリケーションガイド",
-          "link": "/l10n/pdfs/ja-JP/ve/2022.05/VendorEngage_AppGuide_ja-JP.pdf"
+          "id": "dx202205jaJPveapp"
         }
       ]
     },
@@ -120,5 +120,8 @@
         "page": "../sre"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["ja"]
   }
 }

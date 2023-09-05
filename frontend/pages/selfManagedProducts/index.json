@@ -72,23 +72,11 @@
       "items": [
         {
           "label": "DataHub",
-          "page": "dh/10.9.0",
-          "env": ["prod"]
+          "page": "dh/10.10.0"
         },
         {
           "label": "InfoCenter",
-          "page": "ic/10.9.0",
-          "env": ["prod"]
-        },
-        {
-          "label": "DataHub",
-          "page": "dh/10.10.0",
-          "env": ["staging"]
-        },
-        {
-          "label": "InfoCenter",
-          "page": "ic/10.10.0",
-          "env": ["staging"]
+          "page": "ic/10.10.0"
         }
       ]
     },
@@ -132,6 +120,7 @@
     }
   ],
   "search_filters": {
-    "platform": ["Self-managed"]
+    "platform": ["Self-managed"],
+    "language": ["en"]
   }
 }

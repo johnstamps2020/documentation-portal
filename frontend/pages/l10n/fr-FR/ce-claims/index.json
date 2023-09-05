@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Guide de l'application",
-          "link": "/l10n/pdfs/fr-FR/ce-claims/2023.02/CustomerEngage_Claims_AppGuide.pdf"
+          "id": "dx202302frFRceclaimsapp"
         }
       ]
     },
@@ -100,5 +100,8 @@
         "page": "../ve"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["fr"]
   }
 }

@@ -4,6 +4,7 @@
     {
       "id": "dx202205itITceamapp",
       "title": "Application Guide it",
+      "displayTitle": "Guida all'applicazione",
       "url": "it/cloud/dx/ce-am/202205/app",
       "metadata": {
         "product": ["CustomerEngage Account Management"],
@@ -13,7 +14,7 @@
         "subject": ["Features and functionality"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -23,6 +24,7 @@
     {
       "id": "dx202205itITceaminstall",
       "title": "Installation Guide it",
+      "displayTitle": "Guida all'installazione",
       "url": "it/cloud/dx/ce-am/202205/install",
       "metadata": {
         "product": ["CustomerEngage Account Management"],
@@ -32,7 +34,7 @@
         "subject": ["Installation"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -42,6 +44,7 @@
     {
       "id": "dx202205itITceclaimsapp",
       "title": "Application Guide it",
+      "displayTitle": "Guida all'applicazione",
       "url": "it/cloud/dx/ce-claims/202205/app",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
@@ -51,7 +54,7 @@
         "subject": ["Features and functionality"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -61,6 +64,7 @@
     {
       "id": "dx202205itITceclaimsinstall",
       "title": "Installation Guide it",
+      "displayTitle": "Guida all'installazione",
       "url": "it/cloud/dx/ce-claims/202205/install",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
@@ -70,7 +74,7 @@
         "subject": ["Installation"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -80,6 +84,7 @@
     {
       "id": "dx202205itITceqbapp",
       "title": "Application Guide it",
+      "displayTitle": "Guida all'applicazione",
       "url": "it/cloud/dx/ce-qb/202205/app",
       "metadata": {
         "product": ["CustomerEngage Quote and Buy"],
@@ -89,7 +94,7 @@
         "subject": ["Features and functionality"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -99,6 +104,7 @@
     {
       "id": "dx202205itITceqbinstall",
       "title": "Installation Guide it",
+      "displayTitle": "Guida all'installazione",
       "url": "it/cloud/dx/ce-qb/202205/install",
       "metadata": {
         "product": ["CustomerEngage Quote and Buy"],
@@ -108,7 +114,7 @@
         "subject": ["Installation"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -118,6 +124,7 @@
     {
       "id": "dx202205itITpeapp",
       "title": "Application Guide it",
+      "displayTitle": "Guida all'applicazione",
       "url": "it/cloud/dx/pe/202205/app",
       "metadata": {
         "product": ["ProducerEngage"],
@@ -127,7 +134,7 @@
         "subject": ["Features and functionality"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -137,6 +144,7 @@
     {
       "id": "dx202205itITpeinstall",
       "title": "Installation Guide it",
+      "displayTitle": "Guida all'installazione",
       "url": "it/cloud/dx/pe/202205/install",
       "metadata": {
         "product": ["ProducerEngage"],
@@ -146,7 +154,7 @@
         "subject": ["Installation"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -156,6 +164,7 @@
     {
       "id": "dx202205itITpeclaimsapp",
       "title": "Application Guide it",
+      "displayTitle": "Guida all'applicazione",
       "url": "it/cloud/dx/pe-claims/202205/app",
       "metadata": {
         "product": ["ProducerEngage for ClaimCenter"],
@@ -165,7 +174,7 @@
         "subject": ["Features and functionality"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -175,6 +184,7 @@
     {
       "id": "dx202205itITpeclaimsinstall",
       "title": "Installation Guide it",
+      "displayTitle": "Guida all'installazione",
       "url": "it/cloud/dx/pe-claims/202205/install",
       "metadata": {
         "product": ["ProducerEngage for ClaimCenter"],
@@ -184,7 +194,7 @@
         "subject": ["Installation"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -194,6 +204,7 @@
     {
       "id": "dx202205itITsreapp",
       "title": "Application Guide it",
+      "displayTitle": "Guida all'applicazione",
       "url": "it/cloud/dx/sre/202205/app",
       "metadata": {
         "product": ["ServiceRepEngage"],
@@ -203,7 +214,7 @@
         "subject": ["Features and functionality"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -213,6 +224,7 @@
     {
       "id": "dx202205itITsreinstall",
       "title": "Installation Guide it",
+      "displayTitle": "Guida all'installazione",
       "url": "it/cloud/dx/sre/202205/install",
       "metadata": {
         "product": ["ServiceRepEngage"],
@@ -222,7 +234,7 @@
         "subject": ["Installation"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -232,6 +244,7 @@
     {
       "id": "dx202205itITveapp",
       "title": "Application Guide it",
+      "displayTitle": "Guida all'applicazione",
       "url": "it/cloud/dx/ve/202205/app",
       "metadata": {
         "product": ["VendorEngage"],
@@ -241,7 +254,7 @@
         "subject": ["Features and functionality"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -251,6 +264,7 @@
     {
       "id": "dx202205itITveinstall",
       "title": "Installation Guide it",
+      "displayTitle": "Guida all'installazione",
       "url": "it/cloud/dx/ve/202205/install",
       "metadata": {
         "product": ["VendorEngage"],
@@ -260,7 +274,7 @@
         "subject": ["Installation"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

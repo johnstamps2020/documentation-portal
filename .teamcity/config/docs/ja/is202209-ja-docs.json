@@ -4,6 +4,7 @@
     {
       "id": "iscc202209cloudapicajaJP",
       "title": "ClaimCenter Cloud API Developer Guide ja",
+      "displayTitle": "Cloud API 認証ガイド",
       "url": "ja/cloud/cc/202209/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
@@ -23,6 +24,7 @@
     {
       "id": "iscc202209cloudapibfjaJP",
       "title": "ClaimCenter Cloud API Consumer Guide ja",
+      "displayTitle": "Cloud API ビジネスフローとコンフィギュレーションガイド",
       "url": "ja/cloud/cc/202209/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
@@ -42,6 +44,7 @@
     {
       "id": "iscc202209apicmjaJP",
       "title": "ContactManager Cloud API Consumer Guide ja",
+      "displayTitle": "Cloud API ContactManager ガイド",
       "url": "ja/cloud/cc/202209/cloudapicm",
       "metadata": {
         "platform": ["Cloud"],

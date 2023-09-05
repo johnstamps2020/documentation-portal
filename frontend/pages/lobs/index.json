@@ -454,6 +454,7 @@
     }
   ],
   "search_filters": {
-    "product": ["Lines of Business"]
+    "product": ["Lines of Business"],
+    "language": ["en"]
   }
 }

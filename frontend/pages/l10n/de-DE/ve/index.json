@@ -10,7 +10,13 @@
       "items": [
         {
           "label": "Anwendungshandbuch",
-          "link": "/l10n/pdfs/de-DE/ve/2023.02/VendorEngage_AppGuide.pdf"
+          "link": "/l10n/pdfs/de-DE/ve/2023.02/VendorEngage_AppGuide.pdf",
+          "env": ["prod"]
+        },
+        {
+          "label": "Anwendungshandbuch",
+          "id": "dx202302deDEveapp",
+          "env": ["staging"]
         }
       ]
     },
@@ -132,5 +138,8 @@
         "page": "../sre"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["de"]
   }
 }

@@ -4,6 +4,7 @@
     {
       "id": "integgatewaydevlatestjaJP",
       "title": "Integration Gateway ja",
+      "displayTitle": "Integration Gateway",
       "url": "ja/cloud/is/integgateway",
       "metadata": {
         "product": ["ClaimCenter"],
@@ -13,7 +14,7 @@
         "subject": ["Integration"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,

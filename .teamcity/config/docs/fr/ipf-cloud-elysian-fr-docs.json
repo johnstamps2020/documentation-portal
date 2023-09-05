@@ -4,6 +4,7 @@
     {
       "id": "midipfelysianadjusterfrFR",
       "title": "Adjuster Guide - fr",
+      "displayTitle": "Guide du gestionnaire",
       "url": "fr/cloud/ipf/elysian/adjuster",
       "metadata": {
         "product": ["ClaimCenter Package for France"],
@@ -23,6 +24,7 @@
     {
       "id": "midipfelysianrnfrFR",
       "title": "Release Notes - fr",
+      "displayTitle": "Notes sur la version",
       "url": "fr/cloud/ipf/elysian/releasenotes",
       "metadata": {
         "product": ["ClaimCenter Package for France"],

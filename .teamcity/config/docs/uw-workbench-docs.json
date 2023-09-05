@@ -1,0 +1,24 @@
+{
+  "$schema": "../config-schema.json",
+  "docs": [
+    {
+      "id": "uwworkbench",
+      "title": "Underwriting Workbench",
+      "url": "cloud/underwriting-management",
+      "metadata": {
+        "product": ["Underwriting Workbench"],
+        "platform": ["Cloud"],
+        "version": ["latest"],
+        "release": ["Innsbruck"],
+        "subject": ["Features and functionality"],
+        "language": "en"
+      },
+      "displayOnLandingPages": true,
+      "indexForSearch": false,
+      "environments": ["staging"],
+      "public": false,
+      "internal": false,
+      "earlyAccess": true
+    }
+  ]
+}

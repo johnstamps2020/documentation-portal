@@ -5,12 +5,12 @@
   "class": "threeCards version pt-BR l10n",
   "items": [
     {
-      "label": "2021.11",
+      "label": "Explore",
       "class": "categoryCard cardShadow",
       "items": [
         {
           "label": "Guia do aplicativo",
-          "link": "/l10n/pdfs/pt-BR/explore/2021.11/pt-BR-CloudExplore.pdf"
+          "id": "exploreptBRusingrelease"
         }
       ]
     }
@@ -72,5 +72,8 @@
         "page": "../ve"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["pt"]
   }
 }

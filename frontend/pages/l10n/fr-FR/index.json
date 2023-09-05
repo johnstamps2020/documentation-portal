@@ -84,7 +84,7 @@
       },
       {
         "label": "Español",
-        "page": "../es-LA"
+        "page": "../es-419"
       },
       {
         "label": "Italiano",
@@ -103,5 +103,8 @@
         "page": "../pt-BR"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["fr"]
   }
 }

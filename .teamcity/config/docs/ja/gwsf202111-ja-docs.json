@@ -4,6 +4,7 @@
     {
       "id": "dxgwsfinstall202111jaJP",
       "title": "Installation Guide ja",
+      "displayTitle": "インストールガイド",
       "url": "ja/cloud/dx/gwsf/202111/install",
       "metadata": {
         "product": ["Guidewire for Salesforce"],
@@ -12,7 +13,7 @@
         "subject": ["Installation"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

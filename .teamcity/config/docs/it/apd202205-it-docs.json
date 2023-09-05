@@ -4,6 +4,7 @@
     {
       "id": "ispc202205apditIT",
       "title": "Advanced Product Designer in PolicyCenter it",
+      "displayTitle": "Guida ad Advanced Product Designer per PolicyCenter",
       "url": "it/cloud/pc/202205/apd",
       "metadata": {
         "platform": ["Cloud"],
@@ -13,7 +14,7 @@
         "subject": ["Configuration"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

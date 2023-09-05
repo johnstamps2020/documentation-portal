@@ -109,7 +109,7 @@
           "id": "indevguidejava11ext"
         },
         {
-          "label": "GWCP Operations for Self-led Customers",
+          "label": "GWCP Operations for InsuranceNow",
           "id": "ingwcpops"
         },
         {
@@ -178,5 +178,11 @@
         }
       ]
     }
-  ]
+  ],
+  "search_filters": {
+    "platform": [
+      "Cloud"
+    ],
+    "language": ["en"]
+  }
 }

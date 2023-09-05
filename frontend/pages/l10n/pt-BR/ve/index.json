@@ -94,5 +94,8 @@
         "page": "../sre"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["pt"]
   }
 }

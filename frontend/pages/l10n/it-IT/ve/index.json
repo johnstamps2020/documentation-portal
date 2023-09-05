@@ -9,12 +9,12 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Guida all'installazione",
-          "link": "/l10n/pdfs/it-IT/ve/2022.05/it-IT Digital v.2022.05 VE InstallGuide.pdf"
+          "label": "Guida all'applicazione",
+          "id": "dx202205itITveapp"
         },
         {
-          "label": "Guida all'applicazione",
-          "link": "/l10n/pdfs/it-IT/ve/2022.05/it-IT Digital ..2022.05 VE_AppGuide.pdf"
+          "label": "Guida all'installazione",
+          "id": "dx202205itITveinstall"
         }
       ]
     },
@@ -100,5 +100,8 @@
         "page": "../sre"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["it"]
   }
 }

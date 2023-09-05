@@ -1,0 +1,179 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "ClaimCenter",
+  "template": "page",
+  "class": "threeCards version es-419 l10n",
+  "items": [
+    {
+      "label": "2023.02",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de aplicaciones",
+          "id": "iscc202302appes419"
+        }
+      ]
+    },
+    {
+      "label": "2021.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de aplicaciones",
+          "link": "/l10n/pdfs/es-LA/cc/2021.11/CC-AppGuide-ESLA.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.11",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de instalación",
+          "link": "/l10n/pdfs/es-LA/cc/2020.11/CCCloud202011_es-419_InstallGuide.pdf"
+        },
+        {
+          "label": "Guía de configuración",
+          "link": "/l10n/pdfs/es-LA/cc/2020.11/CCCloud202011_es-419_ConfigGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "2020.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de aplicaciones",
+          "link": "/l10n/pdfs/es-LA/cc/2020.05/ISCL_202005_ESLA_CC-AppGuide.pdf"
+        },
+        {
+          "label": "Guía de administración de contactos de Guidewire",
+          "link": "/l10n/pdfs/es-LA/cc/2020.05/ISCL_202005_ESLA_CC_ContactMgmtGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.1.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de aplicaciones",
+          "link": "/l10n/pdfs/es-LA/cc/10.1.1/CC1011_es-419_AppGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.2",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de aplicaciones",
+          "link": "/l10n/pdfs/es-LA/cc/10.0.2/es-CC-AppGuide.pdf"
+        },
+        {
+          "label": "Guía de reglas",
+          "link": "/l10n/pdfs/es-LA/cc/10.0.2/es-CC-RulesGuide.pdf"
+        },
+        {
+          "label": "Guía de configuración",
+          "link": "/l10n/pdfs/es-LA/cc/10.0.2/es-CC-ConfigGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de instalación",
+          "link": "/l10n/pdfs/es-LA/cc/10.0.0/es-CC-InstallGuide.pdf"
+        },
+        {
+          "label": "Guía de aplicaciones",
+          "link": "/l10n/pdfs/es-LA/cc/10.0.0/es-CC-AppGuide.pdf"
+        },
+        {
+          "label": "Guía de reglas",
+          "link": "/l10n/pdfs/es-LA/cc/10.0.0/es-CC-RulesGuide.pdf"
+        },
+        {
+          "label": "Guía de configuración",
+          "link": "/l10n/pdfs/es-LA/cc/10.0.0/es-CC-ConfigGuide.pdf"
+        },
+        {
+          "label": "Guía de administración de contactos",
+          "link": "/l10n/pdfs/es-LA/cc/10.0.0/es-CC-ContactMgmtGuide.pdf"
+        }
+      ]
+    }
+  ],
+  "selector": {
+    "label": "Seleccionar producto",
+    "selectedItem": "ClaimCenter",
+    "items": [
+      {
+        "label": "BillingCenter",
+        "page": "../bc"
+      },
+      {
+        "label": "Cloud Data Access",
+        "page": "../cda"
+      },
+      {
+        "label": "CustomerEngage Account Management",
+        "page": "../ce-am"
+      },
+      {
+        "label": "CustomerEngage Account Management for ClaimCenter",
+        "page": "../ce-claims"
+      },
+      {
+        "label": "CustomerEngage Quote and Buy",
+        "page": "../ce-qb"
+      },
+      {
+        "label": "InsuranceSuite Contact Management",
+        "page": "../cm"
+      },
+      {
+        "label": "DataHub",
+        "page": "../dh"
+      },
+      {
+        "label": "Explore",
+        "page": "../explore"
+      },
+      {
+        "label": "Guidewire Cloud Console",
+        "page": "../gcc"
+      },
+      {
+        "label": "InfoCenter",
+        "page": "../ic"
+      },
+      {
+        "label": "PolicyCenter",
+        "page": "../pc"
+      },
+      {
+        "label": "ProducerEngage",
+        "page": "../pe"
+      },
+      {
+        "label": "ProducerEngage for ClaimCenter",
+        "page": "../pe-claims"
+      },
+      {
+        "label": "ServiceRepEngage",
+        "page": "../sre"
+      },
+      {
+        "label": "VendorEngage",
+        "page": "../ve"
+      }
+    ]
+  },
+  "search_filters": {
+    "language": ["es"]
+  }
+}

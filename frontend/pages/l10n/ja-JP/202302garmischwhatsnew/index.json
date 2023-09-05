@@ -152,5 +152,8 @@
         "page": "../ve"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["ja"]
   }
 }

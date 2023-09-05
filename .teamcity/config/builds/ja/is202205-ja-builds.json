@@ -4,6 +4,27 @@
     {
       "buildType": "dita",
       "filter": "IS-CC-Cloud-Release.ditaval",
+      "root": "ReleaseNotes.ditamap",
+      "srcId": "is2022052jaJPsrc",
+      "docId": "iscc202205releasenotesjaJP",
+      "indexRedirect": true,
+      "resources": [
+        {
+          "sourceFolder": "ReleaseNotes-files/cc/2022.05",
+          "targetFolder": "extras/ReleaseNotes-files/cc/2022.05",
+          "srcId": "insurancesuiteextrassrc"
+        },
+        {
+          "sourceFolder": "ReleaseNotes-files/cm/2022.05",
+          "targetFolder": "extras/ReleaseNotes-files/cm/2022.05",
+          "srcId": "insurancesuiteextrassrc"
+        }
+      ],
+      "disabled": false
+    },
+    {
+      "buildType": "dita",
+      "filter": "IS-CC-Cloud-Release.ditaval",
       "root": "DeveloperSetupGuide.ditamap",
       "srcId": "is202205jaJPsrc",
       "docId": "iscc202205devsetupjaJP",

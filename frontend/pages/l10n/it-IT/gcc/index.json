@@ -5,14 +5,9 @@
   "class": "threeCards version it-IT l10n",
   "items": [
     {
-      "label": "0",
+      "label": "Guidewire Cloud Console",
       "class": "categoryCard cardShadow",
-      "items": [
-        {
-          "label": "Guidewire Cloud Console",
-          "link": "/l10n/pdfs/it-IT/gcc/0/IT-GuidewireCloudConsole.pdf"
-        }
-      ]
+      "id": "guidewirecloudconsolerootinsurerdevitIT"
     }
   ],
   "selector": {
@@ -76,5 +71,8 @@
         "page": "../ve"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["it"]
   }
 }

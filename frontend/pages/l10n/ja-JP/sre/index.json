@@ -19,16 +19,16 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "開発者ガイド",
-          "link": "/l10n/pdfs/ja-JP/sre/2022.05/ServiceRepEngage_DevelopersGuide_ja-JP.pdf"
+          "label": "インストールガイド",
+          "id": "dx202205jaJPsreinstall"
         },
         {
-          "label": "インストールガイド",
-          "link": "/l10n/pdfs/ja-JP/sre/2022.05/ja-JP-2022.05-sre_InstallGuide.pdf"
+          "label": "開発者ガイド",
+          "id": "dx202205jaJPsredev"
         },
         {
           "label": "アプリケーションガイド",
-          "link": "/l10n/pdfs/ja-JP/sre/2022.05/ServiceRepEngage_AppGuide_ja-JP.pdf"
+          "id": "dx202205jaJPsreapp"
         }
       ]
     },
@@ -134,5 +134,8 @@
         "page": "../ve"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["ja"]
   }
 }

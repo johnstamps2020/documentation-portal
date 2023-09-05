@@ -4,6 +4,7 @@
     {
       "id": "isbc202205itITdevsetup",
       "title": "Developer Setup it",
+      "displayTitle": "Guida all'installazione per sviluppatori",
       "url": "it/cloud/bc/202205/devsetup",
       "metadata": {
         "platform": ["Cloud"],
@@ -13,7 +14,7 @@
         "subject": ["Installation"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -23,6 +24,7 @@
     {
       "id": "isbc202205itITapp",
       "title": "Application Guide it",
+      "displayTitle": "Guida all'applicazione",
       "url": "it/cloud/bc/202205/app",
       "metadata": {
         "platform": ["Cloud"],
@@ -32,7 +34,7 @@
         "subject": ["Features and functionality"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -42,6 +44,7 @@
     {
       "id": "isbc202205itITconfig",
       "title": "Configuration it",
+      "displayTitle": "Guida alla configurazione",
       "url": "it/cloud/bc/202205/config",
       "metadata": {
         "platform": ["Cloud"],
@@ -51,7 +54,7 @@
         "subject": ["Configuration"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -61,6 +64,7 @@
     {
       "id": "iscc202205itITdevsetup",
       "title": "Developer Setup it",
+      "displayTitle": "Guida all'installazione per sviluppatori",
       "url": "it/cloud/cc/202205/devsetup",
       "metadata": {
         "platform": ["Cloud"],
@@ -70,7 +74,7 @@
         "subject": ["Installation"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -80,6 +84,7 @@
     {
       "id": "iscc202205itITapp",
       "title": "Application Guide it",
+      "displayTitle": "Guida all'applicazione",
       "url": "it/cloud/cc/202205/app",
       "metadata": {
         "platform": ["Cloud"],
@@ -89,7 +94,7 @@
         "subject": ["Features and functionality"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -99,6 +104,7 @@
     {
       "id": "iscc202205itITconfig",
       "title": "Configuration it",
+      "displayTitle": "Guida alla configurazione",
       "url": "it/cloud/cc/202205/config",
       "metadata": {
         "platform": ["Cloud"],
@@ -108,7 +114,7 @@
         "subject": ["Configuration"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -118,6 +124,7 @@
     {
       "id": "ispc202205itITdevsetup",
       "title": "Developer Setup it",
+      "displayTitle": "Guida all'installazione per sviluppatori",
       "url": "it/cloud/pc/202205/devsetup",
       "metadata": {
         "platform": ["Cloud"],
@@ -127,7 +134,7 @@
         "subject": ["Installation"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -137,6 +144,7 @@
     {
       "id": "ispc202205itITapp",
       "title": "Application Guide it",
+      "displayTitle": "Guida all'applicazione",
       "url": "it/cloud/pc/202205/app",
       "metadata": {
         "platform": ["Cloud"],
@@ -146,7 +154,7 @@
         "subject": ["Features and functionality"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -156,6 +164,7 @@
     {
       "id": "ispc202205itITconfig",
       "title": "Configuration it",
+      "displayTitle": "Guida alla configurazione",
       "url": "it/cloud/pc/202205/config",
       "metadata": {
         "platform": ["Cloud"],
@@ -165,26 +174,7 @@
         "subject": ["Configuration"],
         "language": "it"
       },
-      "environments": ["staging"],
-      "displayOnLandingPages": true,
-      "indexForSearch": true,
-      "public": false,
-      "internal": false,
-      "earlyAccess": false
-    },
-    {
-      "id": "ispc202205itITapd",
-      "title": "Advanced Product Designer in PolicyCenter it",
-      "url": "it/cloud/pc/202205/apd",
-      "metadata": {
-        "platform": ["Cloud"],
-        "product": ["PolicyCenter"],
-        "version": ["2022.05"],
-        "release": ["Elysian"],
-        "subject": ["Configuration"],
-        "language": "it"
-      },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

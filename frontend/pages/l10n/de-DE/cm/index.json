@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Guidewire-Kontaktmanagementhandbuch",
-          "link": "/l10n/pdfs/de-DE/cm/2022.05/ContactMgmtGuide-DE.pdf"
+          "id": "is202205contactdeDE"
         }
       ]
     }
@@ -68,5 +68,8 @@
         "page": "../ve"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["de"]
   }
 }

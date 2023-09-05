@@ -4,16 +4,24 @@
     {
       "id": "clouddataaccessguidees419",
       "title": "Application Guide es",
+      "displayTitle": "Guía de la aplicación",
       "url": "es/cloud/cda/guide/latest",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["Data Platform"],
         "version": ["latest"],
-        "release": ["Aspen", "Banff", "Cortina", "Dobson"],
+        "release": [
+          "Cortina",
+          "Dobson",
+          "Elysian",
+          "Flaine",
+          "Garmisch",
+          "Hakuba"
+        ],
         "subject": ["Features and functionality"],
         "language": "es"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

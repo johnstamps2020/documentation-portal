@@ -4,16 +4,17 @@
     {
       "id": "isbc202302appes419",
       "title": "Application Guide es",
+      "displayTitle": "Guía de aplicaciones",
       "url": "es/cloud/bc/202302/app",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["BillingCenter"],
         "version": ["2023.02"],
-        "release": ["Dobson"],
+        "release": ["Garmisch"],
         "subject": ["Features and functionality"],
         "language": "es"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -23,16 +24,17 @@
     {
       "id": "iscc202302appes419",
       "title": "Application Guide es",
+      "displayTitle": "Guía de aplicaciones",
       "url": "es/cloud/cc/202302/app",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["ClaimCenter"],
         "version": ["2023.02"],
-        "release": ["Dobson"],
+        "release": ["Garmisch"],
         "subject": ["Features and functionality"],
         "language": "es"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -42,16 +44,17 @@
     {
       "id": "ispc202302appes419",
       "title": "Application Guide es",
+      "displayTitle": "Guía de aplicaciones",
       "url": "es/cloud/pc/202302/app",
       "metadata": {
         "platform": ["Cloud"],
         "product": ["PolicyCenter"],
         "version": ["2023.02"],
-        "release": ["Dobson"],
+        "release": ["Garmisch"],
         "subject": ["Features and functionality"],
         "language": "es"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

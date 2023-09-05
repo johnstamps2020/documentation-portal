@@ -5,14 +5,9 @@
   "class": "threeCards version it-IT l10n",
   "items": [
     {
-      "label": "2021.04",
+      "label": "Autenticazione con Guidewire Identity Federation Hub",
       "class": "categoryCard cardShadow",
-      "items": [
-        {
-          "label": "Autenticazione con Guidewire Identity Federation Hub",
-          "link": "/l10n/pdfs/it-IT/gwid/2021.04/IT-GW-FederationHub.pdf"
-        }
-      ]
+      "id": "guidewireidentityfederationhubitIT"
     }
   ],
   "selector": {
@@ -76,5 +71,8 @@
         "page": "../ve"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["it"]
   }
 }

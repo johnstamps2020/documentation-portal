@@ -5,12 +5,12 @@
   "class": "threeCards version ja-JP l10n",
   "items": [
     {
-      "label": "2022.05 Aspen",
+      "label": "2022.05 Elysian",
       "class": "categoryCard cardShadow",
       "items": [
         {
           "label": "Guidewire 連絡先管理ガイド",
-          "link": "/l10n/pdfs/ja-JP/cm/2022.05 Aspen/ja-JP-2022.05-IS-ContactMgmtGuide.pdf"
+          "id": "is202205contactjaJP"
         }
       ]
     }

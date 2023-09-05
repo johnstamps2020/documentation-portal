@@ -445,7 +445,7 @@
     {
       "buildType": "dita",
       "filter": "GW-Generic-Cloud-Release.ditaval",
-      "root": "ClaimsIntakeFNOLTemplate.ditamap",
+      "root": "PersonalAutoFNOLTemplate.ditamap",
       "srcId": "is202306src",
       "docId": "is202306fnoltemplate",
       "indexRedirect": true,

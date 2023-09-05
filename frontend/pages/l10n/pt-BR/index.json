@@ -17,7 +17,7 @@
     {
       "label": "Cloud Data Access",
       "class": "productFamily cardShadow",
-      "page": "cda"
+      "id": "clouddataaccessguideptBR"
     },
     {
       "label": "CustomerEngage Account Management",
@@ -42,12 +42,12 @@
     {
       "label": "Explore",
       "class": "productFamily cardShadow",
-      "page": "explore"
+      "id": "exploreptBRusingrelease"
     },
     {
       "label": "Guidewire Cloud Console",
       "class": "productFamily cardShadow",
-      "page": "gcc"
+      "id": "guidewirecloudconsolerootinsurerdevptBR"
     },
     {
       "label": "InfoCenter",
@@ -89,7 +89,7 @@
       },
       {
         "label": "Español",
-        "page": "../es-LA"
+        "page": "../es-419"
       },
       {
         "label": "Français",
@@ -108,5 +108,8 @@
         "page": "../nl-NL"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["pt"]
   }
 }

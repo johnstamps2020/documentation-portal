@@ -88,5 +88,8 @@
         "page": "../ve"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["es-ES"]
   }
 }

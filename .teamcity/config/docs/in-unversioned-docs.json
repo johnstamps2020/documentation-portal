@@ -594,7 +594,7 @@
     },
     {
       "id": "ingwcpops",
-      "title": "GWCP Operations for Self-led Customers",
+      "title": "GWCP Operations for InsuranceNow",
       "url": "cloud/in/gwcp-ops",
       "metadata": {
         "platform": ["Cloud"],
@@ -604,11 +604,11 @@
         "release": ["Dobson", "Elysian", "Flaine", "Garmisch", "Hakuba"],
         "language": "en"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
-      "internal": true,
+      "internal": false,
       "earlyAccess": false
     }
   ]
