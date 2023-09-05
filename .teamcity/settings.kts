@@ -3,7 +3,10 @@ import jetbrains.buildServer.configs.kotlin.buildFeatures.CommitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.buildFeatures.DockerSupportFeature
 import jetbrains.buildServer.configs.kotlin.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.buildFeatures.SshAgent
-import jetbrains.buildServer.configs.kotlin.buildSteps.*
+import jetbrains.buildServer.configs.kotlin.buildSteps.ScriptBuildStep
+import jetbrains.buildServer.configs.kotlin.buildSteps.maven
+import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.VcsTrigger
 import jetbrains.buildServer.configs.kotlin.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
@@ -12,9 +15,9 @@ import jetbrains.buildServer.configs.kotlin.vcs.GitVcsRoot
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
-import java.util.*
 import java.math.BigInteger
 import java.security.MessageDigest
+import java.util.*
 
 version = "2022.04"
 project {
@@ -209,7 +212,6 @@ object Database {
     private val validateDbDeploymentBuildTypeDev = createValidateDbDeploymentBuildType(GwDeployEnvs.DEV.envName)
     private val validateDbDeploymentBuildTypeStaging = createValidateDbDeploymentBuildType(GwDeployEnvs.STAGING.envName)
     private val validateDbDeploymentBuildTypeProd = createValidateDbDeploymentBuildType(GwDeployEnvs.PROD.envName)
-    private val uploadLegacyConfigsToDbBuildType = createUploadLegacyConfigsToDbBuildType()
     val deployDbBuildTypeDev = createDeployDbBuildType(GwDeployEnvs.DEV.envName)
     val deployDbBuildTypeStaging = createDeployDbBuildType(GwDeployEnvs.STAGING.envName)
     val deployDbBuildTypeProd = createDeployDbBuildType(GwDeployEnvs.PROD.envName)
@@ -223,7 +225,7 @@ object Database {
             buildType(deployDbBuildTypeDev)
             buildType(deployDbBuildTypeStaging)
             buildType(deployDbBuildTypeProd)
-            buildType(uploadLegacyConfigsToDbBuildType)
+            buildType(UploadLegacyConfigsToDbBuildType)
             buildType(DumpDbDataFromStaging)
             listOf(GwDeployEnvs.DEV, GwDeployEnvs.PROD).forEach {
                 buildType(createRestoreDbDataBuildType(it.envName))
@@ -548,7 +550,7 @@ object Database {
         features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
 
         dependencies {
-            snapshot(uploadLegacyConfigsToDbBuildType) {
+            snapshot(UploadLegacyConfigsToDbBuildType) {
                 onDependencyFailure = FailureAction.FAIL_TO_START
             }
         }
@@ -654,49 +656,46 @@ object Database {
     }
 
     // Legacy configs are uploaded only to the db on staging. Dev db and prod db sync data from staging.
-    private fun createUploadLegacyConfigsToDbBuildType(): BuildType {
-        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)
+    object UploadLegacyConfigsToDbBuildType : BuildType({
         val pagesDir = "%teamcity.build.checkoutDir%/frontend/pages"
         val outputDir = "%teamcity.build.checkoutDir%/output"
-        val outputDirStaging = "${outputDir}/staging/pages"
-        val outputDirProd = "${outputDir}/prod/pages"
-        return BuildType {
-            name = "Upload legacy configs to ${GwDeployEnvs.STAGING.envName} database"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
-            vcs {
-                root(
-                    GwVcsRoots.DocumentationPortalGitVcsRoot
-                )
-                cleanCheckout = true
-            }
+        name = "Upload legacy configs to ${GwDeployEnvs.STAGING.envName} database"
+        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
-            artifactRules = "response*.json => /"
-            steps {
-                step(GwBuildSteps.MergeAllLegacyConfigsStep)
-                step(
-                    GwBuildSteps.createRunFlailSsgStep(
-                        pagesDir,
-                        outputDirStaging,
-                        GwDeployEnvs.STAGING.envName
-                    )
+        vcs {
+            root(
+                GwVcsRoots.DocumentationPortalGitVcsRoot
+            )
+            cleanCheckout = true
+        }
+
+        artifactRules = "response*.json => /"
+        steps {
+            step(GwBuildSteps.MergeAllLegacyConfigsStep)
+            step(
+                GwBuildSteps.createRunFlailSsgStep(
+                    pagesDir,
+                    "${outputDir}/staging/pages",
+                    GwDeployEnvs.STAGING.envName
                 )
-                step(
-                    GwBuildSteps.createRunFlailSsgStep(
-                        pagesDir,
-                        outputDirProd,
-                        GwDeployEnvs.PROD.envName
-                    )
+            )
+            step(
+                GwBuildSteps.createRunFlailSsgStep(
+                    pagesDir,
+                    "${outputDir}/prod/pages",
+                    GwDeployEnvs.PROD.envName
                 )
-                step(GwBuildSteps.createUploadLegacyConfigsAndPagesToS3BucketStep(GwDeployEnvs.STAGING.envName))
-                nodeJS {
-                    name = "Call doc portal endpoints to trigger upload"
-                    id = Helpers.createIdStringFromName(this.name)
-                    shellScript = """
+            )
+            step(GwBuildSteps.createUploadLegacyConfigsAndPagesToS3BucketStep(GwDeployEnvs.STAGING.envName))
+            nodeJS {
+                name = "Call doc portal endpoints to trigger upload"
+                id = Helpers.createIdStringFromName(this.name)
+                shellScript = """
                         #!/bin/sh
                         set -e
                         
-                        $awsEnvVars
+                        ${Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)}
                         export APP_BASE_URL="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}"
                         export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
                         export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES.paramValue}"
@@ -705,25 +704,24 @@ object Database {
                         yarn
                         node uploadLegacyConfigsToDb.mjs
                         """.trimIndent()
-                    dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
-                }
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            dependencies {
-                snapshot(testConfigBuildsBuildType) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                snapshot(testConfigDocsBuildType) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                snapshot(testConfigSourcesBuildType) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
+                dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
             }
         }
-    }
+
+        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+        dependencies {
+            snapshot(testConfigBuildsBuildType) {
+                onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+            snapshot(testConfigDocsBuildType) {
+                onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+            snapshot(testConfigSourcesBuildType) {
+                onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+        }
+    })
 }
 
 object Runners {
