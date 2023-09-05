@@ -4150,7 +4150,7 @@ object GwBuildSteps {
                         break
                     fi
                     echo "Rolling update in progress. Pod status:"
-                    echo "${'$'}PODS
+                    echo "${'$'}PODS"
                     echo "Next check in 30 seconds"
                     sleep 30
                     TIME=${'$'}[${'$'}TIME+1]
