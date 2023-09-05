@@ -70,7 +70,7 @@
       },
       {
         "label": "Español",
-        "page": "../es-LA"
+        "page": "../es-419"
       },
       {
         "label": "Français",
@@ -93,5 +93,8 @@
         "page": "../pt-BR"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["es-ES"]
   }
 }

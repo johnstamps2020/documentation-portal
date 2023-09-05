@@ -8,6 +8,11 @@
     "selectedItem": "Flaine (2022.09)",
     "items": [
       {
+        "label": "Innsbruck (2023.10)",
+        "page": "../../innsbruck/dx-ref-apps",
+        "env": ["staging"]
+      },
+      {
         "label": "Hakuba (2023.06)",
         "page": "../../hakuba/dx-ref-apps"
       },
@@ -236,6 +241,7 @@
   "search_filters": {
     "platform": [
       "Cloud"
-    ]
+    ],
+    "language": ["en"]
   }
 }

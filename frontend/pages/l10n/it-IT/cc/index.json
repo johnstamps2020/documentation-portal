@@ -10,15 +10,15 @@
       "items": [
         {
           "label": "Guida all'applicazione",
-          "link": "/l10n/pdfs/it-IT/cc/2022.05/CC-AppGuide-IT.pdf"
-        },
-        {
-          "label": "Guida all'installazione per sviluppatori",
-          "link": "/l10n/pdfs/it-IT/cc/2022.05/CC-DeveloperSetupGuide-IT.pdf"
+          "id": "iscc202205itITapp"
         },
         {
           "label": "Guida alla configurazione",
-          "link": "/l10n/pdfs/it-IT/cc/2022.05/CC-ConfigGuide_it-IT.pdf"
+          "id": "iscc202205itITconfig"
+        },
+        {
+          "label": "Guida all'installazione per sviluppatori",
+          "id": "iscc202205itITdevsetup"
         }
       ]
     },
@@ -28,11 +28,11 @@
       "items": [
         {
           "label": "Guida ai flussi aziendali delle API cloud e alla configurazione",
-          "link": "/l10n/pdfs/it-IT/cc/2021.11/CC v.2021.11 it-IT CloudAPIGuide-BusinessFlows.pdf"
+          "id": "iscc202111apibfitIT"
         },
         {
           "label": "Guida all'autenticazione per l'API cloud",
-          "link": "/l10n/pdfs/it-IT/cc/2021.11/CC v.2021.11 it-IT CloudAPIGuide-Auth.pdf"
+          "id": "iscc202111apicaitIT"
         }
       ]
     },
@@ -138,5 +138,8 @@
         "page": "../ve"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["it"]
   }
 }

@@ -346,11 +346,11 @@
     },
     {
       "id": "cloudtickettemplates",
-      "title": "Cloud Ticket Templates",
+      "title": "Community Case Templates",
       "url": "cloud/requests/latest",
       "metadata": {
         "platform": ["Cloud"],
-        "product": ["Cloud Ticket Templates"],
+        "product": ["Community Case Templates"],
         "version": ["latest"],
         "language": "en"
       },

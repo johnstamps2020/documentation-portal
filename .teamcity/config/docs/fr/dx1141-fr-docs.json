@@ -4,6 +4,7 @@
     {
       "id": "dxceam1141frFR",
       "title": "CustomerEngage Account Management fr",
+      "displayTitle": "CustomerEngage Account Management",
       "url": "fr/self-managed/dx/ce-am/1141",
       "metadata": {
         "product": ["CustomerEngage Account Management"],
@@ -21,6 +22,7 @@
     {
       "id": "dxceclaims1141frFR",
       "title": "CustomerEngage Account Management for ClaimCenter fr",
+      "displayTitle": "CustomerEngage Account Management for ClaimCenter",
       "url": "fr/self-managed/dx/ce-claims/1141",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
@@ -38,6 +40,7 @@
     {
       "id": "dxceqb1141frFR",
       "title": "CustomerEngage Quote and Buy fr",
+      "displayTitle": "CustomerEngage Quote and Buy",
       "url": "fr/self-managed/dx/ce-qb/1141",
       "metadata": {
         "product": ["CustomerEngage Quote and Buy"],
@@ -55,6 +58,7 @@
     {
       "id": "dxpe1141frFR",
       "title": "ProducerEngage fr",
+      "displayTitle": "ProducerEngage",
       "url": "fr/self-managed/dx/pe/1141",
       "metadata": {
         "product": ["ProducerEngage"],
@@ -72,6 +76,7 @@
     {
       "id": "dxpeclaims1141frFR",
       "title": "ProducerEngage for ClaimCenter fr",
+      "displayTitle": "ProducerEngage for ClaimCenter",
       "url": "fr/self-managed/dx/pe-claims/1141",
       "metadata": {
         "product": ["ProducerEngage for ClaimCenter"],
@@ -89,6 +94,7 @@
     {
       "id": "dxsre1141frFR",
       "title": "ServiceRepEngage fr",
+      "displayTitle": "ServiceRepEngage",
       "url": "fr/self-managed/dx/sre/1141",
       "metadata": {
         "product": ["ServiceRepEngage"],
@@ -106,6 +112,7 @@
     {
       "id": "dxve1141frFR",
       "title": "VendorEngage fr",
+      "displayTitle": "VendorEngage",
       "url": "fr/self-managed/dx/ve/1141",
       "metadata": {
         "product": ["VendorEngage"],

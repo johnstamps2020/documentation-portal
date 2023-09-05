@@ -115,7 +115,7 @@
           "id": "apdclaimshakuba"
         },
         {
-          "label": "Claims Intake FNOL Template (Early Access)",
+          "label": "Personal Auto FNOL Template (Early Access)",
           "id": "is202306fnoltemplate"
         }
       ]
@@ -161,7 +161,7 @@
           "id": "integgatewaydevlatest"
         },
         {
-          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
+          "label": "Plugins, Prebuilt Integrations, and SOAP APIs",
           "id": "iscc202306integ"
         },
         {
@@ -202,5 +202,11 @@
         }
       ]
     }
-  ]
+  ],
+  "search_filters": {
+    "platform": [
+      "Cloud"
+    ],
+    "language": ["en"]
+  }
 }

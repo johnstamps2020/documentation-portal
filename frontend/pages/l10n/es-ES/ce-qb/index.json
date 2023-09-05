@@ -10,7 +10,7 @@
       "items": [
         {
           "label": "Guía de la aplicación",
-          "link": "/l10n/pdfs/es-ES/ce-qb/2022.05/es-ES v.2022.05 CE-QB_AppGuide.pdf"
+          "id": "dx202205esESceqbapp"
         }
       ]
     },
@@ -88,5 +88,8 @@
         "page": "../ve"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["es-ES"]
   }
 }

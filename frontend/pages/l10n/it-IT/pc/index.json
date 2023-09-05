@@ -10,19 +10,19 @@
       "items": [
         {
           "label": "Guida ad Advanced Product Designer per PolicyCenter",
-          "link": "/l10n/pdfs/it-IT/pc/2022.05/AdvancedProductDesigner-IT.pdf"
+          "id": "ispc202205apditIT"
         },
         {
           "label": "Guida all'applicazione",
-          "link": "/l10n/pdfs/it-IT/pc/2022.05/PC-AppGuide-IT.pdf"
+          "id": "ispc202205itITapp"
         },
         {
           "label": "Guida alla configurazione",
-          "link": "/l10n/pdfs/it-IT/pc/2022.05/PC-ConfigGuide_it-IT.pdf"
+          "id": "ispc202205itITconfig"
         },
         {
           "label": "Guida all'installazione per sviluppatori",
-          "link": "/l10n/pdfs/it-IT/pc/2022.05/PC-DeveloperSetupGuide-IT.pdf"
+          "id": "ispc202205itITdevsetup"
         }
       ]
     },
@@ -32,11 +32,11 @@
       "items": [
         {
           "label": "Guida ai flussi aziendali delle API cloud e alla configurazione",
-          "link": "/l10n/pdfs/it-IT/pc/2021.11/PC v.2021.11 it-IT CloudAPIGuide-BusinessFlows.pdf"
+          "id": "ispc202111apibfitIT"
         },
         {
           "label": "Guida all'autenticazione per l'API cloud",
-          "link": "/l10n/pdfs/it-IT/pc/2021.11/PC v.2021.11 it-IT CloudAPIGuide-Auth.pdf"
+          "id": "ispc202111apicaitIT"
         }
       ]
     },
@@ -142,5 +142,8 @@
         "page": "../ve"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["it"]
   }
 }

@@ -4,6 +4,7 @@
     {
       "id": "is202111contactes419",
       "title": "Contact Management es",
+      "displayTitle": "Guía de administración de contactos de Guidewire",
       "url": "es/cloud/is/202111/contact",
       "metadata": {
         "platform": ["Cloud"],
@@ -13,7 +14,7 @@
         "subject": ["Features and functionality"],
         "language": "es"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -23,6 +24,7 @@
     {
       "id": "isbc202111appes419",
       "title": "Application Guide es",
+      "displayTitle": "Guía de aplicaciones",
       "url": "es/cloud/bc/202111/app",
       "metadata": {
         "platform": ["Cloud"],
@@ -32,7 +34,7 @@
         "subject": ["Features and functionality"],
         "language": "es"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -42,6 +44,7 @@
     {
       "id": "iscc202111appes419",
       "title": "Application Guide es",
+      "displayTitle": "Guía de aplicaciones",
       "url": "es/cloud/cc/202111/app",
       "metadata": {
         "platform": ["Cloud"],
@@ -51,7 +54,7 @@
         "subject": ["Features and functionality"],
         "language": "es"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -61,6 +64,7 @@
     {
       "id": "ispc202111appes419",
       "title": "Application Guide es",
+      "displayTitle": "Guía de aplicaciones",
       "url": "es/cloud/pc/202111/app",
       "metadata": {
         "platform": ["Cloud"],
@@ -70,7 +74,7 @@
         "subject": ["Features and functionality"],
         "language": "es"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

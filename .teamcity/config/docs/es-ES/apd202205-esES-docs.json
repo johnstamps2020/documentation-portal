@@ -4,6 +4,7 @@
     {
       "id": "ispc202205apdesES",
       "title": "Advanced Product Designer in PolicyCenter es-ES",
+      "displayTitle": "Guía de Advanced Product Designer para PolicyCenter",
       "url": "es-ES/cloud/pc/202205/apd",
       "metadata": {
         "platform": ["Cloud"],
@@ -13,7 +14,7 @@
         "subject": ["Configuration"],
         "language": "es-ES"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

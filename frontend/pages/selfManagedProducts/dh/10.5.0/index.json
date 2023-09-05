@@ -8,6 +8,10 @@
     "selectedItem": "10.5.0",
     "items": [
       {
+        "label": "10.10.0",
+        "page": "../10.10.0"
+      },
+      {
         "label": "10.9.0",
         "page": "../10.9.0"
       },
@@ -146,5 +150,8 @@
         }
       ]
     }
-  ]
+  ],
+  "search_filters": {
+    "language": ["en"]
+  }
 }

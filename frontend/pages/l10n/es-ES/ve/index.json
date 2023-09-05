@@ -84,5 +84,8 @@
         "page": "../sre"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["es-ES"]
   }
 }

@@ -20,6 +20,11 @@
       "page": "cc"
     },
     {
+      "label": "Cloud Platform",
+      "class": "productFamily cardShadow",
+      "page": "cp"
+    },
+    {
       "label": "CustomerEngage Account Management",
       "class": "productFamily cardShadow",
       "page": "ce-am"
@@ -35,24 +40,9 @@
       "page": "ce-qb"
     },
     {
-      "label": "InsuranceSuite Contact Management",
+      "label": "Gosu リファレンスガイド",
       "class": "productFamily cardShadow",
-      "page": "cm"
-    },
-    {
-      "label": "Cloud Platform",
-      "class": "productFamily cardShadow",
-      "page": "cp"
-    },
-    {
-      "label": "Guidewire Testing",
-      "class": "productFamily cardShadow",
-      "page": "gtest"
-    },
-    {
-      "label": "Guidewire Identity Federation Hub",
-      "class": "productFamily cardShadow",
-      "page": "gwid"
+      "id": "gosureflatestjaJP"
     },
     {
       "label": "Guidewire for Salesforce",
@@ -60,9 +50,30 @@
       "page": "gwsf"
     },
     {
+      "label": "Guidewire Identity Federation Hub",
+      "class": "productFamily cardShadow",
+      "page": "gwid"
+    },
+    {
+      "label": "Guidewire Testing",
+      "class": "productFamily cardShadow",
+      "page": "gtest"
+    },
+    {
+      "label": "InsuranceSuite Contact Management",
+      "class": "productFamily cardShadow",
+      "page": "cm"
+    },
+    
+    {
       "label": "InsuranceSuite Configuration Upgrade Tools",
       "class": "productFamily cardShadow",
       "page": "is-configupgradetools"
+    },
+    {
+      "label": "Integration Gateway",
+      "class": "productFamily cardShadow",
+      "id": "integgatewaydevlatestjaJP"
     },
     {
       "label": "PolicyCenter",
@@ -99,7 +110,7 @@
       },
       {
         "label": "Español",
-        "page": "../es-LA"
+        "page": "../es-419"
       },
       {
         "label": "Français",
@@ -118,5 +129,8 @@
         "page": "../pt-BR"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["ja"]
   }
 }

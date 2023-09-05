@@ -5,14 +5,9 @@
   "class": "threeCards version ja-JP l10n",
   "items": [
     {
-      "label": "2021.04",
+      "label": "Guidewire Identity Federation Hub を使用した認証",
       "class": "categoryCard cardShadow",
-      "items": [
-        {
-          "label": "Guidewire Identity Federation Hub を使用した認証",
-          "link": "/l10n/pdfs/ja-JP/gwid/2021.04/ja-JP-2021.04-GuidewireHub.pdf"
-        }
-      ]
+      "id": "guidewireidentityfederationhubjaJP"
     }
   ],
   "selector": {
@@ -80,5 +75,8 @@
         "page": "../ve"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["ja"]
   }
 }

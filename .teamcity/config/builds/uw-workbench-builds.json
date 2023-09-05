@@ -1,0 +1,14 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "UnderwritingWorkbench.ditamap",
+      "srcId": "uwworkbenchsrc",
+      "docId": "uwworkbench",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}

@@ -2,8 +2,29 @@
   "$schema": "../../config-schema.json",
   "docs": [
     {
+      "id": "iscc202205releasenotesjaJP",
+      "title": "Release Notes ja",
+      "displayTitle": "リリースノート",
+      "url": "ja/cloud/cc/202205/releasenotes",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["ClaimCenter"],
+        "version": ["2022.05"],
+        "release": ["Elysian"],
+        "subject": ["Release notes"],
+        "language": "ja"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": true,
+      "internal": false,
+      "earlyAccess": false
+    },
+    {
       "id": "iscc202205devsetupjaJP",
       "title": "Developer Setup ja",
+      "displayTitle": "開発者設定ガイド",
       "url": "ja/cloud/cc/202205/devsetup",
       "metadata": {
         "platform": ["Cloud"],
@@ -13,7 +34,7 @@
         "subject": ["Installation"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -23,6 +44,7 @@
     {
       "id": "is202205contactjaJP",
       "title": "Contact Management ja",
+      "displayTitle": "Guidewire 連絡先管理ガイド",
       "url": "ja/cloud/is/202205/contact",
       "metadata": {
         "platform": ["Cloud"],
@@ -32,7 +54,7 @@
         "subject": ["Features and functionality"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -42,6 +64,7 @@
     {
       "id": "is202205integoverviewjaJP",
       "title": "Overview of Cloud Integration ja",
+      "displayTitle": "Cloud 連携の概要",
       "url": "ja/cloud/is/202205/integoverview",
       "metadata": {
         "platform": ["Cloud"],
@@ -51,7 +74,7 @@
         "subject": ["Integration"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -70,7 +93,7 @@
         "subject": ["Administration"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -80,6 +103,7 @@
     {
       "id": "iscc202205appjaJP",
       "title": "Application Guide ja",
+      "displayTitle": "アプリケーションガイド",
       "url": "ja/cloud/cc/202205/app",
       "metadata": {
         "platform": ["Cloud"],
@@ -89,7 +113,7 @@
         "subject": ["Features and functionality"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -99,6 +123,7 @@
     {
       "id": "iscc202205configjaJP",
       "title": "Configuration ja",
+      "displayTitle": "コンフィギュレーションガイド",
       "url": "ja/cloud/cc/202205/config",
       "metadata": {
         "platform": ["Cloud"],
@@ -108,7 +133,7 @@
         "subject": ["Configuration"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -118,6 +143,7 @@
     {
       "id": "iscc202205dataarchivingjaJP",
       "title": "Data Archiving ja",
+      "displayTitle": "データアーカイブ",
       "url": "ja/cloud/cc/202205/dataarchiving",
       "metadata": {
         "platform": ["Cloud"],
@@ -127,7 +153,7 @@
         "subject": ["Administration"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -137,6 +163,7 @@
     {
       "id": "iscc202205globaljaJP",
       "title": "Globalization ja",
+      "displayTitle": "グローバリゼーションガイド",
       "url": "ja/cloud/cc/202205/global",
       "metadata": {
         "platform": ["Cloud"],
@@ -146,7 +173,7 @@
         "subject": ["Configuration"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -156,6 +183,7 @@
     {
       "id": "iscc202205rulesjaJP",
       "title": "Gosu Rules ja",
+      "displayTitle": "Gosu ルール",
       "url": "ja/cloud/cc/202205/rules",
       "metadata": {
         "platform": ["Cloud"],
@@ -165,7 +193,7 @@
         "subject": ["Configuration"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

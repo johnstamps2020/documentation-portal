@@ -4,6 +4,7 @@
     {
       "id": "isbc202111apibfitIT",
       "title": "Cloud API Business Flows and Configuration it",
+      "displayTitle": "Guida ai flussi aziendali delle API cloud e alla configurazione",
       "url": "it/cloud/bc/202111/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
@@ -13,7 +14,7 @@
         "subject": ["Integration"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -23,6 +24,7 @@
     {
       "id": "iscc202111apibfitIT",
       "title": "Cloud API Business Flows and Configuration it",
+      "displayTitle": "Guida ai flussi aziendali delle API cloud e alla configurazione",
       "url": "it/cloud/cc/202111/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
@@ -32,7 +34,7 @@
         "subject": ["Integration"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -42,6 +44,7 @@
     {
       "id": "ispc202111apibfitIT",
       "title": "Cloud API Business Flows and Configuration it",
+      "displayTitle": "Guida ai flussi aziendali delle API cloud e alla configurazione",
       "url": "it/cloud/pc/202111/cloudapibf",
       "metadata": {
         "platform": ["Cloud"],
@@ -51,7 +54,7 @@
         "subject": ["Integration"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -61,6 +64,7 @@
     {
       "id": "iscc202111apicaitIT",
       "title": "Cloud API Authentication it",
+      "displayTitle": "Guida all'autenticazione per l'API cloud",
       "url": "it/cloud/cc/202111/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
@@ -70,7 +74,7 @@
         "subject": ["Integration"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,
@@ -80,6 +84,7 @@
     {
       "id": "ispc202111apicaitIT",
       "title": "Cloud API Authentication it",
+      "displayTitle": "Guida all'autenticazione per l'API cloud",
       "url": "it/cloud/pc/202111/cloudapica",
       "metadata": {
         "platform": ["Cloud"],
@@ -89,7 +94,7 @@
         "subject": ["Integration"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": true,

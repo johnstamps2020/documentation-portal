@@ -132,6 +132,12 @@
       "title": "Planet Service",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/gcc-internal-docs-template-planet-service.git",
       "branch": "main"
+    },
+    {
+      "id": "apigatewayconfigservicesrc",
+      "title": "API Gateway Configuration Service",
+      "gitUrl": "ssh://git@stash.guidewire.com/orange/api-gateway-configuration-service-docs.git",
+      "branch": "master"
     }
   ]
 }

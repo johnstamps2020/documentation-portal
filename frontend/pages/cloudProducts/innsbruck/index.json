@@ -65,8 +65,16 @@
           "page": "insuranceNow/2023.3"
         },
         {
+          "label": "Digital Reference Applications",
+          "page": "dx-ref-apps"
+        },
+        {
           "label": "Global Content Reference Applications",
           "page": "global-ref-apps"
+        },
+        {
+          "label": "Underwriting Workbench (Early Access)",
+          "id": "uwworkbench"
         }
       ]
     },
@@ -142,6 +150,7 @@
   "search_filters": {
     "platform": [
       "Cloud"
-    ]
+    ],
+    "language": ["en"]
   }
 }

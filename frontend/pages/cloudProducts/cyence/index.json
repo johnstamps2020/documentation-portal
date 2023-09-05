@@ -17,8 +17,8 @@
           "link": "/cyence/cyber/HelpCenterAccum"
         },
         {
-          "label": "Model 5 Technical Reference",
-          "link": "/cyence/cyber/Model5/CyenceCyberRiskModel5.pdf"
+          "label": "Risk Model Technical Reference",
+          "link": "/cyence/cyber/Model/RiskModelTechRef.pdf"
         },
         {
           "label": "Python SDK and REST API Reference",
@@ -40,6 +40,7 @@
   "search_filters": {
     "platform": [
       "Cloud"
-    ]
+    ],
+    "language": ["en"]
   }
 }

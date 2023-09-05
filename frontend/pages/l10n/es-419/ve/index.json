@@ -1,0 +1,119 @@
+{
+  "$schema": "/frontend/page-schema.json",
+  "title": "VendorEngage",
+  "template": "page",
+  "class": "threeCards version es-419 l10n",
+  "items": [
+    {
+      "label": "2022.05",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de la aplicación",
+          "id": "dx202205es419veapp"
+        }
+      ]
+    },
+    {
+      "label": "11.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de instalación",
+          "link": "/l10n/pdfs/es-LA/ve/11.1/es-419-VE-onprem-InstallGuide.pdf"
+        }
+      ]
+    },
+    {
+      "label": "10.0.1",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Guía de seguridad y administración",
+          "link": "/l10n/pdfs/es-LA/ve/10.0.1/es-VE_admin-and-security-guide.pdf"
+        },
+        {
+          "label": "Guía de la aplicación",
+          "link": "/l10n/pdfs/es-LA/ve/10.0.1/es-VE_AppGuide.pdf"
+        },
+        {
+          "label": "Guía de instalación",
+          "link": "/l10n/pdfs/es-LA/ve/10.0.1/es-VE_InstallGuide-es.pdf"
+        },
+        {
+          "label": "Guía de configuración e instalación de Live Style Guide",
+          "link": "/l10n/pdfs/es-LA/ve/10.0.1/es-VE_LiveStyleGuide.pdf"
+        }
+      ]
+    }
+  ],
+  "selector": {
+    "label": "Seleccionar producto",
+    "selectedItem": "VendorEngage",
+    "items": [
+      {
+        "label": "BillingCenter",
+        "page": "../bc"
+      },
+      {
+        "label": "ClaimCenter",
+        "page": "../cc"
+      },
+      {
+        "label": "Cloud Data Access",
+        "page": "../cda"
+      },
+      {
+        "label": "CustomerEngage Account Management",
+        "page": "../ce-am"
+      },
+      {
+        "label": "CustomerEngage Account Management for ClaimCenter",
+        "page": "../ce-claims"
+      },
+      {
+        "label": "CustomerEngage Quote and Buy",
+        "page": "../ce-qb"
+      },
+      {
+        "label": "InsuranceSuite Contact Management",
+        "page": "../cm"
+      },
+      {
+        "label": "DataHub",
+        "page": "../dh"
+      },
+      {
+        "label": "Explore",
+        "page": "../explore"
+      },
+      {
+        "label": "Guidewire Cloud Console",
+        "page": "../gcc"
+      },
+      {
+        "label": "InfoCenter",
+        "page": "../ic"
+      },
+      {
+        "label": "PolicyCenter",
+        "page": "../pc"
+      },
+      {
+        "label": "ProducerEngage",
+        "page": "../pe"
+      },
+      {
+        "label": "ProducerEngage for ClaimCenter",
+        "page": "../pe-claims"
+      },
+      {
+        "label": "ServiceRepEngage",
+        "page": "../sre"
+      }
+    ]
+  },
+  "search_filters": {
+    "language": ["es"]
+  }
+}

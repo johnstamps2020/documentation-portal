@@ -4,6 +4,7 @@
     {
       "id": "guidewirecloudconsolerootinsurerdevitIT",
       "title": "Cloud Console Guide Insurer Developer it",
+      "displayTitle": "Guidewire Cloud Console",
       "url": "it/cloud/gcc-guide/insurer-developer/latest",
       "displayOnLandingPages": false,
       "metadata": {
@@ -12,7 +13,7 @@
         "version": ["latest"],
         "language": "it"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "indexForSearch": true,
       "public": false,
       "internal": false,

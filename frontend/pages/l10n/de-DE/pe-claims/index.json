@@ -10,7 +10,13 @@
       "items": [
         {
           "label": "Anwendungshandbuch",
-          "link": "/l10n/pdfs/de-DE/pe-claims/2023.02/ProducerEngage_Claims_AppGuide.pdf"
+          "link": "/l10n/pdfs/de-DE/pe-claims/2023.02/ProducerEngage_Claims_AppGuide.pdf",
+          "env": ["prod"]
+        },
+        {
+          "label": "Anwendungshandbuch",
+          "id": "dx202302deDEpeclaimsapp",
+          "env": ["staging"]
         }
       ]
     },
@@ -100,5 +106,8 @@
         "page": "../ve"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["de"]
   }
 }

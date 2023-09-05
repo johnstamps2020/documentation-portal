@@ -45,5 +45,11 @@
       "class": "productFamily cardShadow",
       "id": "pc202104apiref"
     }
-  ]
+  ],
+  "search_filters": {
+    "platform": [
+      "Cloud"
+    ],
+    "language": ["en"]
+  }
 }

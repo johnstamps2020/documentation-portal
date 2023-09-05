@@ -10,7 +10,13 @@
       "items": [
         {
           "label": "Anwendungshandbuch",
-          "link": "/l10n/pdfs/de-DE/sre/2023.02/ServiceRepEngage_AppGuide.pdf"
+          "link": "/l10n/pdfs/de-DE/sre/2023.02/ServiceRepEngage_AppGuide.pdf",
+          "env": ["prod"]
+        },
+        {
+          "label": "Anwendungshandbuch",
+          "id": "dx202302deDEsreapp",
+          "env": ["staging"]
         }
       ]
     },
@@ -136,5 +142,8 @@
         "page": "../ve"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["de"]
   }
 }

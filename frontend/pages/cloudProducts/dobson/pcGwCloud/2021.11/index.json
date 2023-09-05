@@ -198,5 +198,11 @@
         }
       ]
     }
-  ]
+  ],
+  "search_filters": {
+    "platform": [
+      "Cloud"
+    ],
+    "language": ["en"]
+  }
 }

@@ -4,6 +4,7 @@
     {
       "id": "is202111contactptBR",
       "title": "Contact Management pt",
+      "displayTitle": "Guia de gerenciamento de contatos da Guidewire",
       "url": "pt/cloud/is/202111/contact",
       "metadata": {
         "platform": ["Cloud"],
@@ -23,6 +24,7 @@
     {
       "id": "isbc202111appptBR",
       "title": "Application Guide pt",
+      "displayTitle": "Guia do aplicativo",
       "url": "pt/cloud/bc/202111/app",
       "metadata": {
         "platform": ["Cloud"],
@@ -42,6 +44,7 @@
     {
       "id": "iscc202111appptBR",
       "title": "Application Guide pt",
+      "displayTitle": "Guia do aplicativo",
       "url": "pt/cloud/cc/202111/app",
       "metadata": {
         "platform": ["Cloud"],
@@ -61,6 +64,7 @@
     {
       "id": "ispc202111appptBR",
       "title": "Application Guide pt",
+      "displayTitle": "Guia do aplicativo",
       "url": "pt/cloud/pc/202111/app",
       "metadata": {
         "platform": ["Cloud"],

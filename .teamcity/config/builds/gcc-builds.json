@@ -149,6 +149,13 @@
       "srcId": "planetservicesrc",
       "nodeImageVersion": "18.0.0",
       "disabled": false
+    },
+    {
+      "buildType": "yarn",
+      "docId": "apigatewayconfigservice",
+      "srcId": "apigatewayconfigservicesrc",
+      "nodeImageVersion": "18.0.0",
+      "disabled": false
     }
   ]
 }

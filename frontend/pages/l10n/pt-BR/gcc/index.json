@@ -5,14 +5,9 @@
   "class": "threeCards version pt-BR l10n",
   "items": [
     {
-      "label": "0",
+      "label": "Guidewire Cloud Console",
       "class": "categoryCard cardShadow",
-      "items": [
-        {
-          "label": "Guidewire Cloud Console",
-          "link": "/l10n/pdfs/pt-BR/gcc/0/pt-BR-GuidewireCloudConsole.pdf"
-        }
-      ]
+      "id": "guidewirecloudconsolerootinsurerdevptBR"
     }
   ],
   "selector": {
@@ -72,5 +67,8 @@
         "page": "../ve"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["pt"]
   }
 }

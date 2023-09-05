@@ -181,7 +181,7 @@
           "id": "integgatewaydevlatest"
         },
         {
-          "label": "Plugins, Pre-built Integrations, and SOAP APIs",
+          "label": "Plugins, Prebuilt Integrations, and SOAP APIs",
           "id": "ispc202209integ"
         },
         {
@@ -218,5 +218,11 @@
         }
       ]
     }
-  ]
+  ],
+  "search_filters": {
+    "platform": [
+      "Cloud"
+    ],
+    "language": ["en"]
+  }
 }

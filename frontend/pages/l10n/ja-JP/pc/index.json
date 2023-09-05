@@ -5,6 +5,16 @@
   "class": "threeCards version ja-JP l10n",
   "items": [
     {
+      "label": "Gosu リファレンスガイド",
+      "class": "categoryCard cardShadow",
+      "id": "gosureflatestjaJP"
+    },
+    {
+      "label": "Integration Gateway",
+      "class": "categoryCard cardShadow",
+      "id": "integgatewaydevlatestjaJP"
+    },
+    {
       "label": "2021.04 Cortina",
       "class": "categoryCard cardShadow",
       "items": [
@@ -15,10 +25,6 @@
         {
           "label": "テストガイド",
           "link": "/l10n/pdfs/ja-JP/pc/2021.04 Cortina/PC_CL202104_ja-JP_TestingGuide.pdf"
-        },
-        {
-          "label": "Gosu リファレンスガイド",
-          "link": "/l10n/pdfs/ja-JP/pc/2021.04 Cortina/PC_CL202104_ja-JP_GosuRefGuide.pdf"
         }
       ]
     },
@@ -226,5 +232,8 @@
         "page": "../ve"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["ja"]
   }
 }

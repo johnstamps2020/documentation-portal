@@ -4,6 +4,7 @@
     {
       "id": "dx202205esESceamapp",
       "title": "Application Guide es-ES",
+      "displayTitle": "Guía de la aplicación",
       "url": "es-ES/cloud/dx/ce-am/202205/app",
       "metadata": {
         "product": ["CustomerEngage Account Management"],
@@ -13,7 +14,7 @@
         "subject": ["Features and functionality"],
         "language": "es-ES"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -23,6 +24,7 @@
     {
       "id": "dx202205esESceclaimsapp",
       "title": "Application Guide es-ES",
+      "displayTitle": "Guía de la aplicación",
       "url": "es-ES/cloud/dx/ce-claims/202205/app",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
@@ -32,7 +34,7 @@
         "subject": ["Features and functionality"],
         "language": "es-ES"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -42,6 +44,7 @@
     {
       "id": "dx202205esESceqbapp",
       "title": "Application Guide es-ES",
+      "displayTitle": "Guía de la aplicación",
       "url": "es-ES/cloud/dx/ce-qb/202205/app",
       "metadata": {
         "product": ["CustomerEngage Quote and Buy"],
@@ -51,7 +54,7 @@
         "subject": ["Features and functionality"],
         "language": "es-ES"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -61,6 +64,7 @@
     {
       "id": "dx202205esESpeapp",
       "title": "Application Guide es-ES",
+      "displayTitle": "Guía de la aplicación",
       "url": "es-ES/cloud/dx/pe/202205/app",
       "metadata": {
         "product": ["ProducerEngage"],
@@ -70,7 +74,7 @@
         "subject": ["Features and functionality"],
         "language": "es-ES"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -80,6 +84,7 @@
     {
       "id": "dx202205esESpeclaimsapp",
       "title": "Application Guide es-ES",
+      "displayTitle": "Guía de la aplicación",
       "url": "es-ES/cloud/dx/pe-claims/202205/app",
       "metadata": {
         "product": ["ProducerEngage for ClaimCenter"],
@@ -89,7 +94,7 @@
         "subject": ["Features and functionality"],
         "language": "es-ES"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -99,6 +104,7 @@
     {
       "id": "dx202205esESsreapp",
       "title": "Application Guide es-ES",
+      "displayTitle": "Guía de la aplicación",
       "url": "es-ES/cloud/dx/sre/202205/app",
       "metadata": {
         "product": ["ServiceRepEngage"],
@@ -108,7 +114,7 @@
         "subject": ["Features and functionality"],
         "language": "es-ES"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -118,6 +124,7 @@
     {
       "id": "dx202205esESveapp",
       "title": "Application Guide es-ES",
+      "displayTitle": "Guía de la aplicación",
       "url": "es-ES/cloud/dx/ve/202205/app",
       "metadata": {
         "product": ["VendorEngage"],
@@ -127,7 +134,7 @@
         "subject": ["Features and functionality"],
         "language": "es-ES"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

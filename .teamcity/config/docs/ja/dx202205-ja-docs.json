@@ -4,6 +4,7 @@
     {
       "id": "dx202205jaJPceclaimsinstall",
       "title": "Installation Guide ja",
+      "displayTitle": "インストールガイド",
       "url": "ja/cloud/dx/ce-claims/202205/install",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
@@ -13,7 +14,7 @@
         "subject": ["Installation"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -23,6 +24,7 @@
     {
       "id": "dx202205jaJPceclaimsapp",
       "title": "Application Guide ja",
+      "displayTitle": "アプリケーションガイド",
       "url": "ja/cloud/dx/ce-claims/202205/app",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
@@ -32,7 +34,7 @@
         "subject": ["Features and functionality"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -42,6 +44,7 @@
     {
       "id": "dx202205jaJPceclaimsdev",
       "title": "Development Guide ja",
+      "displayTitle": "開発者ガイド",
       "url": "ja/cloud/dx/ce-claims/202205/dev",
       "metadata": {
         "product": ["CustomerEngage Account Management for ClaimCenter"],
@@ -51,7 +54,7 @@
         "subject": ["Development"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -61,6 +64,7 @@
     {
       "id": "dx202205jaJPsreinstall",
       "title": "Installation Guide ja",
+      "displayTitle": "インストールガイド",
       "url": "ja/cloud/dx/sre/202205/install",
       "metadata": {
         "product": ["ServiceRepEngage"],
@@ -70,7 +74,7 @@
         "subject": ["Installation"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -80,6 +84,7 @@
     {
       "id": "dx202205jaJPsreapp",
       "title": "Application Guide ja",
+      "displayTitle": "アプリケーションガイド",
       "url": "ja/cloud/dx/sre/202205/app",
       "metadata": {
         "product": ["ServiceRepEngage"],
@@ -89,7 +94,7 @@
         "subject": ["Features and functionality"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -99,6 +104,7 @@
     {
       "id": "dx202205jaJPsredev",
       "title": "Development Guide ja",
+      "displayTitle": "開発者ガイド",
       "url": "ja/cloud/dx/sre/202205/dev",
       "metadata": {
         "product": ["ServiceRepEngage"],
@@ -108,7 +114,7 @@
         "subject": ["Development"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -118,6 +124,7 @@
     {
       "id": "dx202205jaJPveinstall",
       "title": "Installation Guide ja",
+      "displayTitle": "インストールガイド",
       "url": "ja/cloud/dx/ve/202205/install",
       "metadata": {
         "product": ["VendorEngage"],
@@ -127,7 +134,7 @@
         "subject": ["Installation"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -137,6 +144,7 @@
     {
       "id": "dx202205jaJPveapp",
       "title": "Application Guide ja",
+      "displayTitle": "アプリケーションガイド",
       "url": "ja/cloud/dx/ve/202205/app",
       "metadata": {
         "product": ["VendorEngage"],
@@ -146,7 +154,7 @@
         "subject": ["Features and functionality"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,
@@ -156,6 +164,7 @@
     {
       "id": "dx202205jaJPvedev",
       "title": "Development Guide ja",
+      "displayTitle": "開発者ガイド",
       "url": "ja/cloud/dx/ve/202205/dev",
       "metadata": {
         "product": ["VendorEngage"],
@@ -165,7 +174,7 @@
         "subject": ["Development"],
         "language": "ja"
       },
-      "environments": ["staging"],
+      "environments": ["staging", "prod"],
       "displayOnLandingPages": true,
       "indexForSearch": true,
       "public": false,

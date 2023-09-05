@@ -8,6 +8,11 @@
     "selectedItem": "Hakuba (2023.06)",
     "items": [
       {
+        "label": "Innsbruck (2023.10)",
+        "page": "../../innsbruck/dx-ref-apps",
+        "env": ["staging"]
+      },
+      {
         "label": "Garmisch (2023.02)",
         "page": "../../garmisch/dx-ref-apps"
       },
@@ -246,6 +251,7 @@
   "search_filters": {
     "platform": [
       "Cloud"
-    ]
+    ],
+    "language": ["en"]
   }
 }

@@ -244,5 +244,8 @@
         }
       ]
     }
-  ]
+  ],
+  "search_filters": {
+    "language": ["en"]
+  }
 }

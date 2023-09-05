@@ -9,16 +9,16 @@
       "class": "categoryCard cardShadow",
       "items": [
         {
-          "label": "Guida all'installazione per sviluppatori",
-          "link": "/l10n/pdfs/it-IT/bc/2022.05/BC-DeveloperSetupGuide-IT.pdf"
-        },
-        {
           "label": "Guida all'applicazione",
-          "link": "/l10n/pdfs/it-IT/bc/2022.05/BC-AppGuide-IT.pdf"
+          "id": "isbc202205itITapp"
         },
         {
           "label": "Guida alla configurazione",
-          "link": "/l10n/pdfs/it-IT/bc/2022.05/BC-ConfigGuide_it-IT.pdf"
+          "id": "isbc202205itITconfig"
+        },
+        {
+          "label": "Guida all'installazione per sviluppatori",
+          "id": "isbc202205itITdevsetup"
         }
       ]
     },
@@ -28,7 +28,7 @@
       "items": [
         {
           "label": "Guida ai flussi aziendali delle API cloud e alla configurazione",
-          "link": "/l10n/pdfs/it-IT/bc/2021.11/BC v.2021.11 it-IT CloudAPIGuide-BusinessFlows.pdf"
+          "id": "isbc202111apibfitIT"
         }
       ]
     },
@@ -134,5 +134,8 @@
         "page": "../ve"
       }
     ]
+  },
+  "search_filters": {
+    "language": ["it"]
   }
 }

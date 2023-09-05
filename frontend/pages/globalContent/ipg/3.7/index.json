@@ -70,5 +70,8 @@
         }
       ]
     }
-  ]
+  ],
+  "search_filters": {
+    "language": ["en", "de"]
+  }
 }
