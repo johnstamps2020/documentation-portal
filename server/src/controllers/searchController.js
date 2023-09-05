@@ -329,7 +329,7 @@ async function searchController(req, res, next) {
       ];
     }
 
-    const displayOrder = ['product', 'version', 'subject', 'platform'];
+    const displayOrder = ['product', 'version', 'subject', 'platform', 'language'];
 
     const filters = await getFilters(queryBody, mappings, filtersFromUrl);
 
