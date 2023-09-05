@@ -84,7 +84,7 @@ spec:
   selector:
     matchLabels:
       app: ${APP_NAME}
-  replicas: 2
+  replicas: 2 # If you change this number, you also have to update the step for checking pod status in settings.kts
   strategy:
     type: RollingUpdate
     rollingUpdate:

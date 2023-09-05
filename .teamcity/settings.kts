@@ -4135,15 +4135,24 @@ object GwBuildSteps {
                 sleep 10
                 TIME="0"
                 while true; do
-                    if [[ "${'$'}TIME" == "10" ]]; then
+                    if [[ "${'$'}TIME" == "20" ]]; then
                         break
                     fi
-                    FAIL_PODS=`kubectl get pods -l app=${appName} --namespace=${GwAtmosLabels.POD_NAME.labelValue} | grep CrashLoopBackOff | cut -d' ' -f1 | tail -n +2`
-                    if [[ ! -z "${'$'}FAIL_PODS" ]]; then
-                        echo "The following pods failed in last Deployment. Please check it in Kubernetes Dashboard."
-                        echo "${'$'}FAIL_PODS" && false
+                    PODS=`kubectl get pods -l app=${appName} --namespace=${GwAtmosLabels.POD_NAME.labelValue} | tail -n +2`
+                    FAILED_PODS=`echo ${'$'}PODS | grep CrashLoopBackOff | cut -d' ' -f1`
+                    if [[ ! -z "${'$'}FAILED_PODS" ]]; then
+                        echo "The following pods failed during the deployment. Check the details in Kubernetes."
+                        echo "${'$'}FAILED_PODS" && exit 1
                     fi
-                    sleep 10
+                    NUMBER_OF_PODS=`echo ${'$'}PODS | wc -l`
+                    NUMBER_OF_RUNNING_PODS=`echo ${'$'}PODS | grep Running | wc -l`
+                    if [[ "${'$'}NUMBER_OF_PODS" -eq 2 && "${'$'}NUMBER_OF_RUNNING_PODS" -eq 2 ]]; then
+                        break
+                    fi
+                    echo "Rolling update in progress. Pod status:"
+                    echo "${'$'}PODS
+                    echo "Next check in 30 seconds"
+                    sleep 30
                     TIME=${'$'}[${'$'}TIME+1]
                 done
             """.trimIndent()
