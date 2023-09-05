@@ -1,6 +1,6 @@
 import Chip from '@mui/material/Chip';
 import { useQueryParameters } from 'hooks/useQueryParameters';
-import { findLanguageLabel } from './SearchFilterCheckbox';
+import { getCheckboxLabel } from './SearchFilterCheckbox';
 
 type AppliedFilterControlProps = {
   name: string;
@@ -19,7 +19,7 @@ export default function AppliedFilterControl({
 
   return (
     <Chip
-      label={findLanguageLabel(value)}
+      label={getCheckboxLabel(value)}
       onDelete={handleDelete}
       color="primary"
       sx={{ borderRadius: 1 }}

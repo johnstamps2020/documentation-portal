@@ -49,9 +49,8 @@ const languageLabels = [
   },
 ];
 
-export function findLanguageLabel(label: string) {
-  const matchingLanguage = languageLabels.find((lang) => lang.key === label);
-  return matchingLanguage ? matchingLanguage.label : label;
+export function getCheckboxLabel(filterLabel: string) {
+  return languageLabels.find((lang) => lang.key === filterLabel)?.label || filterLabel;
 }
 
 export default function SearchFilterCheckbox({
@@ -83,7 +82,7 @@ export default function SearchFilterCheckbox({
               }}
             />
           }
-          label={findLanguageLabel(value.label)}
+          label={getCheckboxLabel(value.label)}
         />
       )}
       <Chip
