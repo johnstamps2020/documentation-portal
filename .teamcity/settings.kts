@@ -4135,25 +4135,27 @@ object GwBuildSteps {
                 sleep 10
                 TIME="0"
                 while true; do
-                    if [[ "${'$'}TIME" == "20" ]]; then
-                        break
-                    fi
-                    PODS=`kubectl get pods -l app=${appName} --namespace=${GwAtmosLabels.POD_NAME.labelValue} | tail -n +2`
-                    FAILED_PODS=`echo ${'$'}PODS | grep CrashLoopBackOff | cut -d' ' -f1`
-                    if [[ ! -z "${'$'}FAILED_PODS" ]]; then
-                        echo "The following pods failed during the deployment. Check the details in Kubernetes."
-                        echo "${'$'}FAILED_PODS" && exit 1
-                    fi
-                    NUMBER_OF_PODS=`echo ${'$'}PODS | wc -l`
-                    NUMBER_OF_RUNNING_PODS=`echo ${'$'}PODS | grep Running | wc -l`
-                    if [[ "${'$'}NUMBER_OF_PODS" -eq 2 && "${'$'}NUMBER_OF_RUNNING_PODS" -eq 2 ]]; then
-                        break
-                    fi
-                    echo "Rolling update in progress. Pod status:"
-                    echo "${'$'}PODS"
-                    echo "Next check in 30 seconds"
-                    sleep 30
-                    TIME=${'$'}[${'$'}TIME+1]
+                  if [[ "${'$'}TIME" == "20" ]]; then
+                    break
+                  fi
+                  PODS=${'$'}(kubectl get pods -l app=croissant --namespace=doctools | tail -n +2)
+                  FAILED_PODS=${'$'}(echo "${'$'}PODS" | grep CrashLoopBackOff | cut -d' ' -f1)
+                  if [[ ! -z "${'$'}FAILED_PODS" ]]; then
+                    echo "The following pods failed during the deployment. Check the details in Kubernetes."
+                    echo "${'$'}FAILED_PODS" && exit 1
+                  fi
+                  NUMBER_OF_PODS=${'$'}(echo "${'$'}PODS" | wc -l | tr -d " ")
+                  NUMBER_OF_RUNNING_PODS=${'$'}(echo "${'$'}PODS" | grep Running | wc -l | tr -d " ")
+                  if [[ "${'$'}NUMBER_OF_PODS" -eq 2 && "${'$'}NUMBER_OF_RUNNING_PODS" -eq 2 ]]; then
+                    echo "Rolling update completed."
+                    echo "Running pods: ${'$'}{NUMBER_OF_RUNNING_PODS}/${'$'}{NUMBER_OF_PODS}"
+                    break
+                  fi
+                  echo "Rolling update in progress. Pod status:"
+                  echo "${'$'}PODS"
+                  echo "Next check in 30 seconds"
+                  sleep 30
+                  TIME=${'$'}((${'$'}TIME + 1))
                 done
             """.trimIndent()
             dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
