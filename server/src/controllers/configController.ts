@@ -88,7 +88,14 @@ export async function getDocUrlByMetadata(
         'docPlatformProductVersions.version',
         'docPlatformProductVersionsVersion'
       )
-      .where('title IN (:...titles)', { titles: [title, `${title} Guide`] })
+      .where('title IN (:...titles)', {
+        titles: [
+          title,
+          title.includes('Guide')
+            ? title.replace('Guide', '').trim()
+            : `${title} Guide`,
+        ],
+      })
       .andWhere('docLanguage.code = :language', { language: language })
       .andWhere(
         'docPlatformProductVersionsProduct.name IN (:...productNames)',
