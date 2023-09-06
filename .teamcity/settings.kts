@@ -8,6 +8,7 @@ import jetbrains.buildServer.configs.kotlin.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.VcsTrigger
+import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.ui.add
@@ -21,7 +22,6 @@ import java.util.*
 
 version = "2022.04"
 project {
-
 //    TODO: Uncomment these builds when the pipeline is ready to merge
 //    GwVcsRoots.createGitVcsRootsFromConfigFiles().forEach {
 //        vcsRoot(it)
@@ -39,9 +39,9 @@ project {
     subProject(Server.rootProject)
     subProject(Frontend.rootProject)
 //    subProject(Custom.rootProject)
-    listOf(GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD).forEach {
-        buildType(GwBuilds.createDeployDocPortalBuildType(it.envName))
-    }
+    buildType(GwBuilds.deployDocPortalDev)
+    buildType(GwBuilds.deployDocPortalStaging)
+    buildType(GwBuilds.deployDocPortalProd)
     buildType(GwBuilds.TestSettingsKts)
     buildType(GwBuilds.AuditNpmPackages)
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
@@ -652,6 +652,28 @@ object Database {
             }
         }
 
+        when (deployEnv) {
+            GwDeployEnvs.DEV.envName -> {
+                syncDbDataBuildType.dependencies.snapshot(GwBuilds.deployDocPortalDev) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+                syncDbDataBuildType.triggers.finishBuildTrigger {
+                    buildType = GwBuilds.deployDocPortalDev.id.toString()
+                    successfulOnly = true
+                }
+            }
+
+            GwDeployEnvs.PROD.envName -> {
+                syncDbDataBuildType.dependencies.snapshot(GwBuilds.deployDocPortalProd) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+                syncDbDataBuildType.triggers.finishBuildTrigger {
+                    buildType = GwBuilds.deployDocPortalProd.id.toString()
+                    successfulOnly = true
+                }
+            }
+        }
+
         return syncDbDataBuildType
     }
 
@@ -719,6 +741,16 @@ object Database {
             }
             snapshot(testConfigSourcesBuildType) {
                 onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+            snapshot(GwBuilds.deployDocPortalStaging) {
+                onDependencyFailure = FailureAction.FAIL_TO_START
+            }
+        }
+
+        triggers {
+            finishBuildTrigger {
+                buildType = GwBuilds.deployDocPortalStaging.id.toString()
+                successfulOnly = true
             }
         }
     })
@@ -3743,6 +3775,10 @@ object Helpers {
 }
 
 object GwBuilds {
+    val deployDocPortalDev = createDeployDocPortalBuildType(GwDeployEnvs.DEV.envName)
+    val deployDocPortalStaging = createDeployDocPortalBuildType(GwDeployEnvs.STAGING.envName)
+    val deployDocPortalProd = createDeployDocPortalBuildType(GwDeployEnvs.PROD.envName)
+
     object AuditNpmPackages : BuildType({
         // The --recursive option was removed from the yarn audit:all script in package.json because it causes the "400 bad request" error.
         // It's a bug in yarn and we couldn't find a fix.
