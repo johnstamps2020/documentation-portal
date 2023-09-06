@@ -1,6 +1,7 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -9,6 +10,15 @@ To apply the patch, change the buildType with id = 'e9a72141ba54e2f2b857bd0928ec
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("e9a72141ba54e2f2b857bd0928ec19a7")) {
+    triggers {
+        add {
+            finishBuildTrigger {
+                buildType = "DocumentationTools_Development_CroissantDev_26bb0d234633d89b6604d4b7d9842891"
+                successfulOnly = true
+            }
+        }
+    }
+
     dependencies {
         add(RelativeId("154fbecebd48530134f187ad1b4314ca")) {
             snapshot {
