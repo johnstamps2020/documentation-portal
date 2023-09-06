@@ -17,6 +17,12 @@ changeBuildType(RelativeId("e9a72141ba54e2f2b857bd0928ec19a7")) {
                 successfulOnly = true
             }
         }
+        add {
+            finishBuildTrigger {
+                buildType = "DocumentationTools_Development_CroissantDev_2127ec5df30a17d44faac40ff783d906"
+                successfulOnly = true
+            }
+        }
     }
 
     dependencies {
