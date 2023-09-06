@@ -652,11 +652,24 @@ object Database {
             }
         }
 
+        /*
+        In TeamCity 2022.04.5, there's no easy way to create a sequence of builds to run.
+        In a composite build, you can only define snapshot dependencies, but you cannot control the order of triggering them.
+        We want to load data to the database after the entire doc portal is deployed successfully.
+        But we don't want to trigger the deployment of the entire doc portal every time we run a build for loading
+        data. Therefore, we use the following solution:
+         - A composite build that has snapshot dependencies on builds that deploy the database, server, and React landing
+         pages. All these builds can run in parallel so we don't need to control the order.
+         - A Finish Build Trigger without a snapshot dependency in the build for uploading legacy configs
+         to staging the database and in the builds for syncing data from the staging database to dev and prod.
+
+         The disadvantage of this solution is that you cannot see the progress of running the entire chain in one place.
+         When the composite build is complete, the build with the Finish Build Trigger starts and it isn't linked
+         in any way to the composite build.
+         */
+
         when (deployEnv) {
             GwDeployEnvs.DEV.envName -> {
-                syncDbDataBuildType.dependencies.snapshot(GwBuilds.deployDocPortalDev) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
                 syncDbDataBuildType.triggers.finishBuildTrigger {
                     buildType = GwBuilds.deployDocPortalDev.id.toString()
                     successfulOnly = true
@@ -664,9 +677,6 @@ object Database {
             }
 
             GwDeployEnvs.PROD.envName -> {
-                syncDbDataBuildType.dependencies.snapshot(GwBuilds.deployDocPortalProd) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
                 syncDbDataBuildType.triggers.finishBuildTrigger {
                     buildType = GwBuilds.deployDocPortalProd.id.toString()
                     successfulOnly = true
@@ -742,11 +752,23 @@ object Database {
             snapshot(testConfigSourcesBuildType) {
                 onDependencyFailure = FailureAction.FAIL_TO_START
             }
-            snapshot(GwBuilds.deployDocPortalStaging) {
-                onDependencyFailure = FailureAction.FAIL_TO_START
-            }
         }
 
+        /*
+        In TeamCity 2022.04.5, there's no easy way to create a sequence of builds to run.
+        In a composite build, you can only define snapshot dependencies, but you cannot control the order of triggering them.
+        We want to load data to the database after the entire doc portal is deployed successfully.
+        But we don't want to trigger the deployment of the entire doc portal every time we run a build for loading
+        data. Therefore, we use the following solution:
+         - A composite build that has snapshot dependencies on builds that deploy the database, server, and React landing
+         pages. All these builds can run in parallel so we don't need to control the order.
+         - A Finish Build Trigger without a snapshot dependency in the build for uploading legacy configs
+         to staging the database and in the builds for syncing data from the staging database to dev and prod.
+
+         The disadvantage of this solution is that you cannot see the progress of running the entire chain in one place.
+         When the composite build is complete, the build with the Finish Build Trigger starts and it isn't linked
+         in any way to the composite build.
+         */
         triggers {
             finishBuildTrigger {
                 buildType = GwBuilds.deployDocPortalStaging.id.toString()
