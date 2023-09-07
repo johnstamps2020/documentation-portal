@@ -23,27 +23,13 @@ import java.util.*
 version = "2022.04"
 project {
 //    TODO: Uncomment these builds when the pipeline is ready to merge
-//    GwVcsRoots.createGitVcsRootsFromConfigFiles().forEach {
-//        vcsRoot(it)
-//    }
+    GwVcsRoots.createGitVcsRootsFromConfigFiles().forEach {
+        vcsRoot(it)
+    }
     vcsRoot(GwVcsRoots.DocumentationPortalGitVcsRoot)
-//    vcsRoot(GwVcsRoots.DitaOtPluginsVcsRoot)
-    subProject(Database.rootProject)
-//    subProject(Runners.rootProject)
-//    subProject(Docs.rootProject)
-//    subProject(Sources.rootProject)
-//    subProject(Recommendations.rootProject)
-//    subProject(Content.rootProject)
-//    subProject(BuildListeners.rootProject)
-//    subProject(Apps.rootProject)
-    subProject(Server.rootProject)
-    subProject(Frontend.rootProject)
-//    subProject(Custom.rootProject)
-    buildType(GwBuilds.deployDocPortalDev)
-    buildType(GwBuilds.deployDocPortalStaging)
-    buildType(GwBuilds.deployDocPortalProd)
-    buildType(GwBuilds.TestSettingsKts)
-    buildType(GwBuilds.AuditNpmPackages)
+    vcsRoot(GwVcsRoots.DitaOtPluginsVcsRoot)
+//    subProject(User.rootProject)
+    subProject(Admin.rootProject)
     features.feature(GwProjectFeatures.GwOxygenWebhelpLicenseProjectFeature)
     features.feature(GwProjectFeatures.GwAntennaHouseFormatterServerProjectFeature)
     features.feature(GwProjectFeatures.GwBuildListenerLimitProjectFeature)
@@ -203,3233 +189,6 @@ enum class GwTriggerPaths(val pathValue: String) {
     TEAMCITY_SETTINGS_KTS(".teamcity/settings.kts"),
     TEAMCITY_CONFIG(".teamcity/config/**"),
     YARN_LOCK("yarn.lock"),
-}
-
-object Database {
-    private val testConfigDocsBuildType = createTestConfigBuildType(GwConfigTypes.DOCS.typeName)
-    private val testConfigSourcesBuildType = createTestConfigBuildType(GwConfigTypes.SOURCES.typeName)
-    private val testConfigBuildsBuildType = createTestConfigBuildType(GwConfigTypes.BUILDS.typeName)
-    private val validateDbDeploymentBuildTypeDev = createValidateDbDeploymentBuildType(GwDeployEnvs.DEV.envName)
-    private val validateDbDeploymentBuildTypeStaging = createValidateDbDeploymentBuildType(GwDeployEnvs.STAGING.envName)
-    private val validateDbDeploymentBuildTypeProd = createValidateDbDeploymentBuildType(GwDeployEnvs.PROD.envName)
-    val deployDbBuildTypeDev = createDeployDbBuildType(GwDeployEnvs.DEV.envName)
-    val deployDbBuildTypeStaging = createDeployDbBuildType(GwDeployEnvs.STAGING.envName)
-    val deployDbBuildTypeProd = createDeployDbBuildType(GwDeployEnvs.PROD.envName)
-    val rootProject = createRootProjectForDatabase()
-
-    private fun createRootProjectForDatabase(): Project {
-        return Project {
-            name = "Database"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-            buildType(deployDbBuildTypeDev)
-            buildType(deployDbBuildTypeStaging)
-            buildType(deployDbBuildTypeProd)
-            buildType(UploadLegacyConfigsToDbBuildType)
-            buildType(DumpDbDataFromStaging)
-            listOf(GwDeployEnvs.DEV, GwDeployEnvs.PROD).forEach {
-                buildType(createRestoreDbDataBuildType(it.envName))
-            }
-            buildType(testConfigDocsBuildType)
-            buildType(testConfigSourcesBuildType)
-            buildType(testConfigBuildsBuildType)
-            buildType(validateDbDeploymentBuildTypeDev)
-            buildType(validateDbDeploymentBuildTypeStaging)
-            buildType(validateDbDeploymentBuildTypeProd)
-        }
-    }
-
-    private fun createTestConfigBuildType(configType: String): BuildType {
-        val scriptStepContent = when (configType) {
-            GwConfigTypes.DOCS.typeName -> """
-                    #!/bin/bash
-                    set -xe
-                    
-                    # Merge config files
-                    config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}"
-                 
-                    # Test merged config files
-                    config_deployer test "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}" \
-                    --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.paramValue}"
-                """.trimIndent()
-
-            GwConfigTypes.SOURCES.typeName -> """
-                    #!/bin/bash
-                    set -xe
-                    
-                    # Merge config files
-                    config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}"
-                 
-                    # Test merged config files
-                    config_deployer test "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}" \
-                    --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.paramValue}"
-                """.trimIndent()
-
-            GwConfigTypes.BUILDS.typeName -> """
-                    #!/bin/bash
-                    set -xe
-                    
-                    # Merge config files
-                    config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}"
-                    config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}"
-                    config_deployer merge "${GwConfigParams.BUILDS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}"
-                 
-                    # Test merged config files                            
-                    config_deployer test "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}" \
-                    --sources-path "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}" \
-                    --docs-path "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}" \
-                    --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.paramValue}"  
-                """.trimIndent()
-
-            else -> "echo Nothing to test here"
-        }
-
-        return BuildType {
-            name = "Test $configType config files"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            steps {
-                script {
-                    name = "Run tests for config files"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = scriptStepContent
-
-                    dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                }
-            }
-
-            triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.TEAMCITY_CONFIG.pathValue)))
-            }
-
-            features {
-                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-                feature(GwBuildFeatures.GwSshAgentBuildFeature)
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-            }
-        }
-    }
-
-    private fun createValidateDbDeploymentBuildType(deployEnv: String): BuildType {
-        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
-        val tfstateKey = "docportal/db/terraform.tfstate"
-        val s3Bucket = when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> "tenant-doctools-${GwDeployEnvs.DEV.envName}-terraform"
-            GwDeployEnvs.STAGING.envName -> "tenant-doctools-${GwDeployEnvs.STAGING.envName}-terraform"
-            GwDeployEnvs.PROD.envName -> "tenant-doctools-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-terraform"
-            else -> ""
-        }
-        val validateDbDeploymentBuildType = BuildType {
-            name = "Validate database deployment to $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            steps {
-                script {
-                    name = "Validate Terraform config for db"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                    #!/bin/bash
-                    set -eux
-                    
-                    $awsEnvVars
-
-                    cd db
-
-                    terraform init \
-                        -backend-config="bucket=$s3Bucket" \
-                        -backend-config="region=${'$'}{AWS_DEFAULT_REGION}" \
-                        -backend-config="key=$tfstateKey" \
-                        -input=false
-                    terraform validate
-                    """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
-
-                }
-            }
-
-            features {
-                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                feature(GwBuildFeatures.GwSshAgentBuildFeature)
-                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-            }
-        }
-
-        when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> {
-                validateDbDeploymentBuildType.triggers.trigger(
-                    GwVcsTriggers.createDocPortalVcsTrigger(
-                        listOf(
-                            GwTriggerPaths.DB.pathValue
-                        )
-                    )
-                )
-            }
-        }
-
-        return validateDbDeploymentBuildType
-    }
-
-    private fun createDeployDbBuildType(deployEnv: String): BuildType {
-        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
-        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
-        val tfstateKey = "docportal/db/terraform.tfstate"
-        val envLevel: String
-        val starSystemName: String
-        val quadrantName: String
-        val s3Bucket: String
-        when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> {
-                envLevel = "Non-Prod"
-                starSystemName = "needle"
-                quadrantName = "pi7"
-                s3Bucket = "tenant-doctools-${GwDeployEnvs.DEV.envName}-terraform"
-            }
-
-            GwDeployEnvs.STAGING.envName -> {
-                envLevel = "Non-Prod"
-                starSystemName = "needle"
-                quadrantName = "pi11"
-                s3Bucket = "tenant-doctools-${GwDeployEnvs.STAGING.envName}-terraform"
-            }
-
-            GwDeployEnvs.PROD.envName -> {
-                envLevel = "Prod"
-                starSystemName = "andromeda"
-                quadrantName = "omega2"
-                s3Bucket = "tenant-doctools-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-terraform"
-            }
-
-            else -> {
-                envLevel = ""
-                starSystemName = ""
-                quadrantName = ""
-                s3Bucket = ""
-            }
-        }
-        val deployDatabaseBuildType = BuildType {
-            name = "Deploy database to $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            steps {
-                script {
-                    name = "Deploy db with Terraform"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                    #!/bin/bash
-                    set -eux
-                    
-                    $awsEnvVars
-
-                    cd db
-
-                    terraform init \
-                        -backend-config="bucket=$s3Bucket" \
-                        -backend-config="region=${'$'}{AWS_DEFAULT_REGION}" \
-                        -backend-config="key=$tfstateKey" \
-                        -input=false
-                    terraform apply \
-                        -var="star_system_name=$starSystemName" \
-                        -var="quadrant_name=$quadrantName" \
-                        -var="deploy_env=$atmosDeployEnv" \
-                        -var="region=${'$'}{AWS_DEFAULT_REGION}" \
-                        -var="env_level=$envLevel" \
-                        -var="pod_name=${GwAtmosLabels.POD_NAME.labelValue}" \
-                        -var="dept_code=${GwAtmosLabels.DEPT_CODE.labelValue}" \
-                        -input=false \
-                        -auto-approve
-                    """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
-                }
-            }
-
-            features {
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                feature(GwBuildFeatures.GwSshAgentBuildFeature)
-            }
-        }
-
-        when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> {
-                deployDatabaseBuildType.dependencies.snapshot(validateDbDeploymentBuildTypeDev) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                deployDatabaseBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.DB.pathValue)))
-            }
-
-            GwDeployEnvs.STAGING.envName -> {
-                deployDatabaseBuildType.dependencies.snapshot(
-                    validateDbDeploymentBuildTypeStaging
-                ) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-
-            GwDeployEnvs.PROD.envName -> {
-                deployDatabaseBuildType.dependencies.snapshot(validateDbDeploymentBuildTypeProd) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-        }
-
-        return deployDatabaseBuildType
-    }
-
-    private object DumpDbDataFromStaging : BuildType({
-        name = "Dump database data from staging"
-        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-        artifactRules = GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue
-
-        steps {
-            script {
-                name = "Create a database dump"
-                id = Helpers.createIdStringFromName(this.name)
-                scriptContent = """
-                    #!/bin/bash 
-                    set -eu
-                                                    
-                    # Set env variables
-                    ${Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)}
-                    export AWS_SECRET=${'$'}(aws secretsmanager get-secret-value --secret-id tenant-doctools-docportal)
-                    export CONFIG_DB_NAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_name' <<< "${'$'}AWS_SECRET")
-                    export CONFIG_DB_USERNAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_username' <<< "${'$'}AWS_SECRET")
-                    export CONFIG_DB_PASSWORD=${'$'}(jq -r '.SecretString | fromjson | .config_db_password' <<< "${'$'}AWS_SECRET")
-                    export CONFIG_DB_HOST=${GwConfigParams.CONFIG_DB_HOST_STAGING.paramValue}
-                    
-                    
-                    EXIT_CODE=0
-                    aws eks update-kubeconfig --name atmos-${Helpers.getAtmosDeployEnv(GwDeployEnvs.STAGING.envName)} && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} --image=${GwConfigParams.DB_CLIENT_IMAGE_NAME.paramValue} --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
-                    
-                    if [ "${'$'}EXIT_CODE" -eq 0 ]; then
-                        SECONDS=0
-                        while [ ${'$'}SECONDS -le 30 ]; do
-                          status=${'$'}(kubectl get pods ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -o jsonpath='{.status.phase}')
-                          if [ "${'$'}status" == "Running" ]; then
-                            kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && pg_dump -Fd ${'$'}CONFIG_DB_NAME -j 5 -f ${'$'}CONFIG_DB_NAME && zip -r ${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${'$'}CONFIG_DB_NAME" && kubectl cp ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} || EXIT_CODE=${'$'}?
-                            break
-                          else
-                            echo "Waiting for the ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} pod to be ready"
-                            sleep 5
-                          fi
-                        done
-                    fi
-                    
-                    kubectl get pods | grep ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} && kubectl delete pod ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} || EXIT_CODE=${'$'}?
-                   
-                    exit ${'$'}EXIT_CODE
-                """.trimIndent()
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
-            }
-        }
-
-        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-        dependencies {
-            snapshot(UploadLegacyConfigsToDbBuildType) {
-                onDependencyFailure = FailureAction.FAIL_TO_START
-            }
-        }
-    })
-
-    private fun createRestoreDbDataBuildType(deployEnv: String): BuildType {
-        val dbRestoreAwsEnvVars: String
-        val dbRestoreAtmosDeployEnv: String
-        val dbRestoreConfigDbHost: String
-        when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> {
-                dbRestoreAwsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
-                dbRestoreAtmosDeployEnv = Helpers.getAtmosDeployEnv(GwDeployEnvs.DEV.envName)
-                dbRestoreConfigDbHost = GwConfigParams.CONFIG_DB_HOST_DEV.paramValue
-            }
-
-            GwDeployEnvs.PROD.envName -> {
-                dbRestoreAwsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
-                dbRestoreAtmosDeployEnv = Helpers.getAtmosDeployEnv(GwDeployEnvs.PROD.envName)
-                dbRestoreConfigDbHost = GwConfigParams.CONFIG_DB_HOST_PROD.paramValue
-            }
-
-            else -> {
-                dbRestoreAwsEnvVars = ""
-                dbRestoreAtmosDeployEnv = ""
-                dbRestoreConfigDbHost = ""
-            }
-        }
-
-        val syncDbDataBuildType = BuildType {
-            name = "Restore database data on $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            steps {
-                script {
-                    name = "Restore the db dump from staging on $deployEnv"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                        #!/bin/bash 
-                        set -eu
-                                                        
-                        # Set env variables
-                        $dbRestoreAwsEnvVars
-                        export AWS_SECRET=${'$'}(aws secretsmanager get-secret-value --secret-id tenant-doctools-docportal)
-                        export CONFIG_DB_NAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_name' <<< "${'$'}AWS_SECRET")
-                        export CONFIG_DB_USERNAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_username' <<< "${'$'}AWS_SECRET")
-                        export CONFIG_DB_PASSWORD=${'$'}(jq -r '.SecretString | fromjson | .config_db_password' <<< "${'$'}AWS_SECRET")
-                        export CONFIG_DB_HOST=$dbRestoreConfigDbHost
-                        
-                        EXIT_CODE=0
-                        aws eks update-kubeconfig --name atmos-$dbRestoreAtmosDeployEnv && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} --image=${GwConfigParams.DB_CLIENT_IMAGE_NAME.paramValue} --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
-                        
-                        if [ "${'$'}EXIT_CODE" -eq 0 ]; then
-                            SECONDS=0
-                            while [ ${'$'}SECONDS -le 30 ]; do
-                              status=${'$'}(kubectl get pods ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -o jsonpath='{.status.phase}')
-                              if [ "${'$'}status" == "Running" ]; then
-                                kubectl cp ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && unzip ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && pg_restore --clean --if-exists -d ${'$'}CONFIG_DB_NAME ${'$'}CONFIG_DB_NAME" || EXIT_CODE=${'$'}?
-                                break
-                              else
-                                echo "Waiting for the ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} pod to be ready"
-                                sleep 5
-                              fi
-                            done
-                        fi
-                        
-                        kubectl get pods | grep ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} && kubectl delete pod ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} || EXIT_CODE=${'$'}?
-                       
-                        exit ${'$'}EXIT_CODE
-                    """.trimIndent()
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
-                }
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            dependencies {
-                dependency(DumpDbDataFromStaging) {
-                    snapshot {
-                        onDependencyFailure = FailureAction.FAIL_TO_START
-                    }
-
-                    artifacts {
-                        cleanDestination = true
-                        artifactRules = GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue
-                    }
-                }
-            }
-
-            triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.TEAMCITY_CONFIG.pathValue)))
-            }
-        }
-
-        /*
-        In TeamCity 2022.04.5, there's no easy way to create a sequence of builds to run.
-        In a composite build, you can only define snapshot dependencies, but you cannot control the order of triggering them.
-        We want to load data to the database after the entire doc portal is deployed successfully.
-        But we don't want to trigger the deployment of the entire doc portal every time we run a build for loading
-        data. Therefore, we use the following solution:
-         - A composite build that has snapshot dependencies on builds that deploy the database, server, and React landing
-         pages. All these builds can run in parallel so we don't need to control the order.
-         - A Finish Build Trigger without a snapshot dependency in the build for uploading legacy configs
-         to staging the database and in the builds for syncing data from the staging database to dev and prod.
-
-         The disadvantage of this solution is that you cannot see the progress of running the entire chain in one place.
-         When the composite build is complete, the build with the Finish Build Trigger starts and it isn't linked
-         in any way to the composite build.
-         */
-
-        when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> {
-                syncDbDataBuildType.triggers.finishBuildTrigger {
-                    buildType = GwBuilds.deployDocPortalDev.id.toString()
-                    successfulOnly = true
-                }
-            }
-
-            GwDeployEnvs.PROD.envName -> {
-                syncDbDataBuildType.triggers.finishBuildTrigger {
-                    buildType = GwBuilds.deployDocPortalProd.id.toString()
-                    successfulOnly = true
-                }
-            }
-        }
-
-        return syncDbDataBuildType
-    }
-
-    // Legacy configs are uploaded only to the db on staging. Dev db and prod db sync data from staging.
-    object UploadLegacyConfigsToDbBuildType : BuildType({
-        val pagesDir = "%teamcity.build.checkoutDir%/frontend/pages"
-        val outputDir = "%teamcity.build.checkoutDir%/output"
-
-        name = "Upload legacy configs to ${GwDeployEnvs.STAGING.envName} database"
-        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-        vcs {
-            root(
-                GwVcsRoots.DocumentationPortalGitVcsRoot
-            )
-            cleanCheckout = true
-        }
-
-        artifactRules = "response*.json => /"
-        steps {
-            step(GwBuildSteps.MergeAllLegacyConfigsStep)
-            step(
-                GwBuildSteps.createRunFlailSsgStep(
-                    pagesDir,
-                    "${outputDir}/staging/pages",
-                    GwDeployEnvs.STAGING.envName
-                )
-            )
-            step(
-                GwBuildSteps.createRunFlailSsgStep(
-                    pagesDir,
-                    "${outputDir}/prod/pages",
-                    GwDeployEnvs.PROD.envName
-                )
-            )
-            step(GwBuildSteps.createUploadLegacyConfigsAndPagesToS3BucketStep(GwDeployEnvs.STAGING.envName))
-            nodeJS {
-                name = "Call doc portal endpoints to trigger upload"
-                id = Helpers.createIdStringFromName(this.name)
-                shellScript = """
-                        #!/bin/sh
-                        set -e
-                        
-                        ${Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)}
-                        export APP_BASE_URL="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}"
-                        export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
-                        export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES.paramValue}"
-                        
-                        cd ci/uploadLegacyConfigsToDb
-                        yarn
-                        node uploadLegacyConfigsToDb.mjs
-                        """.trimIndent()
-                dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
-            }
-        }
-
-        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-        dependencies {
-            snapshot(testConfigBuildsBuildType) {
-                onDependencyFailure = FailureAction.FAIL_TO_START
-            }
-            snapshot(testConfigDocsBuildType) {
-                onDependencyFailure = FailureAction.FAIL_TO_START
-            }
-            snapshot(testConfigSourcesBuildType) {
-                onDependencyFailure = FailureAction.FAIL_TO_START
-            }
-        }
-
-        /*
-        In TeamCity 2022.04.5, there's no easy way to create a sequence of builds to run.
-        In a composite build, you can only define snapshot dependencies, but you cannot control the order of triggering them.
-        We want to load data to the database after the entire doc portal is deployed successfully.
-        But we don't want to trigger the deployment of the entire doc portal every time we run a build for loading
-        data. Therefore, we use the following solution:
-         - A composite build that has snapshot dependencies on builds that deploy the database, server, and React landing
-         pages. All these builds can run in parallel so we don't need to control the order.
-         - A Finish Build Trigger without a snapshot dependency in the build for uploading legacy configs
-         to staging the database and in the builds for syncing data from the staging database to dev and prod.
-
-         The disadvantage of this solution is that you cannot see the progress of running the entire chain in one place.
-         When the composite build is complete, the build with the Finish Build Trigger starts and it isn't linked
-         in any way to the composite build.
-         */
-        triggers {
-            finishBuildTrigger {
-                buildType = GwBuilds.deployDocPortalStaging.id.toString()
-                successfulOnly = true
-            }
-        }
-    })
-}
-
-object Runners {
-    val rootProject = createRootProjectForRunners()
-
-    private fun getDocConfigsFromBuildConfigsForEnv(deployEnv: String): List<JSONObject> {
-        val docConfigsForEnv = mutableListOf<JSONObject>()
-        Helpers.buildConfigs.forEach {
-            val docId = it.getString("docId")
-            val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
-            val docEnvironments = docConfig.getJSONArray("environments")
-            if (docEnvironments.contains(deployEnv)) {
-                docConfigsForEnv.add(docConfig)
-            }
-        }
-        return docConfigsForEnv
-    }
-
-    private fun getDocIdsForProductAndVersion(
-        docConfigs: List<JSONObject>,
-        gwProduct: String,
-        gwVersion: String,
-    ): List<String> {
-        val matchingDocIds = mutableListOf<String>()
-        docConfigs.forEach {
-            val docId = it.getString("id")
-            val metadata = it.getJSONObject("metadata")
-            val gwProducts = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("product"))
-            val gwVersions = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("version"))
-            val docConfigMatchesProductAndVersion =
-                gwProducts.any { p -> p == gwProduct } && gwVersions.any { v -> v == gwVersion }
-            if (docConfigMatchesProductAndVersion) {
-                matchingDocIds.add(docId)
-            }
-        }
-        return matchingDocIds
-    }
-
-
-    private fun createRootProjectForRunners(): Project {
-        return Project {
-            name = "Runners"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            arrayOf(
-                GwDeployEnvs.DEV.envName,
-                GwDeployEnvs.STAGING.envName,
-                GwDeployEnvs.PROD.envName
-            ).map {
-                subProject(createRunnersProjectForEnv(it))
-            }
-        }
-    }
-
-    private fun createRunnersProjectForEnv(deployEnv: String): Project {
-        val docConfigsForEnv = getDocConfigsFromBuildConfigsForEnv(deployEnv)
-        val productProjects = generateProductProjects(deployEnv, docConfigsForEnv)
-        return Project {
-            name = "Runners for $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            productProjects.forEach { pp ->
-                pp.subProjects.forEach { vp ->
-                    val gwProduct = pp.name
-                    val gwVersion = vp.name
-                    val matchingDocIds = getDocIdsForProductAndVersion(docConfigsForEnv, gwProduct, gwVersion)
-                    if (matchingDocIds.size > 1) {
-                        val publishAllDocsBuildType = createRunnerBuildType(
-                            deployEnv, matchingDocIds, "Publish all docs", gwProduct, gwVersion
-                        )
-                        vp.buildType(publishAllDocsBuildType)
-                    }
-                }
-                subProject(pp)
-            }
-        }
-    }
-
-    private fun generateProductProjects(deployEnv: String, docConfigs: List<JSONObject>): List<Project> {
-        val productProjects = mutableListOf<Project>()
-        for (docConfig in docConfigs) {
-            val docId = docConfig.getString("id")
-            val docTitle = docConfig.getString("title")
-            val metadata = docConfig.getJSONObject("metadata")
-            val gwProducts = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("product"))
-            val gwVersions = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("version"))
-            for (gwProduct in gwProducts) {
-                val existingProductProject = productProjects.find { it.name == gwProduct }
-                if (existingProductProject == null) {
-                    productProjects.add(Project {
-                        name = gwProduct
-                        id = Helpers.resolveRelativeIdFromIdString("${this.name}${deployEnv}")
-
-                        gwVersions.forEach {
-                            subProject {
-                                name = it
-                                id = Helpers.resolveRelativeIdFromIdString("${this.name}${gwProduct}${deployEnv}")
-
-                                buildType(createRunnerBuildType(deployEnv, listOf(docId), docTitle, gwProduct, it))
-                            }
-                        }
-                    })
-                } else {
-                    for (gwVersion in gwVersions) {
-                        val runnerBuildType =
-                            createRunnerBuildType(deployEnv, listOf(docId), docTitle, gwProduct, gwVersion)
-                        val existingVersionSubproject =
-                            existingProductProject.subProjects.find { it.name == gwVersion }
-                        if (existingVersionSubproject == null) {
-                            existingProductProject.subProject {
-                                name = gwVersion
-                                id = Helpers.resolveRelativeIdFromIdString("${this.name}${gwProduct}${deployEnv}")
-
-                                buildType(runnerBuildType)
-                            }
-                        } else {
-                            existingVersionSubproject.buildType(runnerBuildType)
-                        }
-                    }
-                }
-            }
-        }
-        return productProjects
-    }
-
-    private fun createRunnerBuildType(
-        deployEnv: String,
-        docIds: List<String>,
-        docTitle: String,
-        gwProduct: String,
-        gwVersion: String,
-    ): BuildType {
-        return BuildType {
-            val idHash = Helpers.md5("${this.name}${deployEnv}${gwProduct}${gwVersion}${docIds.joinToString()}")
-            name = "$docTitle ($idHash)"
-            id = Helpers.resolveRelativeIdFromIdString(idHash)
-
-            type = BuildTypeSettings.Type.COMPOSITE
-
-            dependencies {
-                docIds.forEach {
-                    snapshot(Helpers.resolveRelativeIdFromIdString("Publish to ${deployEnv}${it}")) {
-                        // Build runners reuse doc builds to avoid unnecessary build runs.
-                        // This feature can't be used in runners for prod doc builds because the prod doc builds
-                        // don’t use a VCS Root - they only copy from staging to prod.
-                        // Therefore, runners can’t discover any changes in the VCS Root from which the staging output
-                        // was built and as a result they don’t trigger the dependent doc build for prod.
-                        if (deployEnv == GwDeployEnvs.PROD.envName) {
-                            reuseBuilds = ReuseBuilds.NO
-                        }
-                        onDependencyFailure = FailureAction.FAIL_TO_START
-                    }
-                }
-            }
-        }
-    }
-
-}
-
-object Docs {
-    val rootProject = createRootProjectForDocs()
-
-    private fun createRootProjectForDocs(): Project {
-        return Project {
-            name = "Docs"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            template(GwTemplates.BuildListenerTemplate)
-
-            for (buildConfig in Helpers.buildConfigs) {
-                val srcId = buildConfig.getString("srcId")
-                val docProject = createDocProject(buildConfig, srcId)
-                subProject(docProject)
-            }
-        }
-    }
-
-    private fun createYarnBuildTypes(
-        envNames: List<String>,
-        docId: String,
-        srcId: String,
-        publishPath: String,
-        workingDir: String,
-        outputDir: String,
-        indexForSearch: Boolean,
-        buildCommand: String?,
-        nodeImageVersion: String?,
-        gwPlatforms: String,
-        gwProducts: String,
-        gwVersions: String,
-        customEnv: JSONArray?,
-    ): List<BuildType> {
-        val yarnBuildTypes = mutableListOf<BuildType>()
-        for (env in envNames) {
-            val docBuildType = createInitialDocBuildType(
-                GwBuildTypes.YARN.buildTypeName,
-                env,
-                docId,
-                srcId,
-                publishPath,
-                workingDir,
-                outputDir,
-                indexForSearch
-            )
-            if (env == GwDeployEnvs.PROD.envName) {
-                val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publishPath)
-                docBuildType.steps.step(copyFromStagingToProdStep)
-                docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
-            } else {
-                val yarnBuildStep = GwBuildSteps.createBuildYarnProjectStep(
-                    env,
-                    publishPath,
-                    buildCommand,
-                    nodeImageVersion,
-                    docId,
-                    gwProducts,
-                    gwPlatforms,
-                    gwVersions,
-                    workingDir,
-                    customEnv
-                )
-                docBuildType.steps.step(yarnBuildStep)
-                docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
-            }
-            yarnBuildTypes.add(docBuildType)
-        }
-        return yarnBuildTypes
-    }
-
-    private fun createStorybookBuildTypes(
-        envNames: List<String>,
-        docId: String,
-        srcId: String,
-        publishPath: String,
-        workingDir: String,
-        outputDir: String,
-        indexForSearch: Boolean,
-        gwPlatforms: String,
-        gwProducts: String,
-        gwVersions: String,
-        customEnv: JSONArray?,
-    ): List<BuildType> {
-        val storybookBuildTypes = mutableListOf<BuildType>()
-        for (env in envNames) {
-            val docBuildType = createInitialDocBuildType(
-                GwBuildTypes.STORYBOOK.buildTypeName,
-                env,
-                docId,
-                srcId,
-                publishPath,
-                workingDir,
-                outputDir,
-                indexForSearch
-            )
-            if (env == GwDeployEnvs.PROD.envName) {
-                val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publishPath)
-                docBuildType.steps.step(copyFromStagingToProdStep)
-                docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
-            } else {
-                val storybookBuildStep = GwBuildSteps.createBuildStorybookProjectStep(
-                    env, publishPath, docId, gwProducts, gwPlatforms, gwVersions, workingDir, customEnv
-                )
-                docBuildType.steps.step(storybookBuildStep)
-                docBuildType.steps.stepsOrder.add(0, storybookBuildStep.id.toString())
-            }
-            storybookBuildTypes.add(docBuildType)
-        }
-        return storybookBuildTypes
-    }
-
-    private fun createSourceZipBuildTypes(
-        envNames: List<String>,
-        docId: String,
-        srcId: String,
-        publishPath: String,
-        workingDir: String,
-        outputDir: String,
-        indexForSearch: Boolean,
-        zipFilename: String,
-    ): List<BuildType> {
-        val sourceZipBuildTypes = mutableListOf<BuildType>()
-        for (env in envNames) {
-            val docBuildType = createInitialDocBuildType(
-                GwBuildTypes.SOURCE_ZIP.buildTypeName,
-                env,
-                docId,
-                srcId,
-                publishPath,
-                workingDir,
-                outputDir,
-                indexForSearch
-            )
-
-            if (env == GwDeployEnvs.PROD.envName) {
-                val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publishPath)
-                docBuildType.steps.step(copyFromStagingToProdStep)
-                docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
-            } else {
-                val zipUpSourcesBuildStep = GwBuildSteps.createZipUpSourcesStep(
-                    workingDir, outputDir, zipFilename
-                )
-                docBuildType.steps.step(zipUpSourcesBuildStep)
-                docBuildType.steps.stepsOrder.add(0, zipUpSourcesBuildStep.id.toString())
-            }
-            sourceZipBuildTypes.add(docBuildType)
-        }
-        return sourceZipBuildTypes
-    }
-
-    private fun createJustCopyBuildTypes(
-        envNames: List<String>,
-        docId: String,
-        srcId: String,
-        publishPath: String,
-        workingDir: String,
-        outputDir: String,
-    ): List<BuildType> {
-        val justCopyBuildTypes = mutableListOf<BuildType>()
-        for (env in envNames) {
-            val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publishPath)
-            if (env == GwDeployEnvs.PROD.envName) {
-                val docBuildType = createInitialDocBuildType(
-                    GwBuildTypes.JUST_COPY.buildTypeName,
-                    env,
-                    docId,
-                    srcId,
-                    publishPath,
-                    workingDir,
-                    outputDir,
-                    false
-                )
-                docBuildType.steps.step(copyFromStagingToProdStep)
-                justCopyBuildTypes.add(docBuildType)
-            }
-        }
-
-        return justCopyBuildTypes
-    }
-
-
-    private fun createDitaBuildTypes(
-        envNames: List<String>,
-        docId: String,
-        srcId: String,
-        gitUrl: String,
-        gitBranch: String,
-        publishPath: String,
-        workingDir: String,
-        outputDir: String,
-        docTitle: String,
-        indexForSearch: Boolean,
-        rootMap: String,
-        indexRedirect: Boolean,
-        buildFilter: String?,
-        gwPlatforms: String,
-        resourcesToCopy: JSONArray,
-    ): List<BuildType> {
-        val ditaBuildTypes = mutableListOf<BuildType>()
-        val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(srcId)
-
-        for (env in envNames) {
-            val docBuildType = createInitialDocBuildType(
-                GwBuildTypes.DITA.buildTypeName,
-                env,
-                docId,
-                srcId,
-                publishPath,
-                workingDir,
-                outputDir,
-                indexForSearch
-            )
-            if (env == GwDeployEnvs.PROD.envName) {
-                val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publishPath)
-                docBuildType.steps.step(copyFromStagingToProdStep)
-                docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
-            } else {
-                docBuildType.artifactRules =
-                    "${workingDir}/${outputDir}/${GwConfigParams.BUILD_DATA_FILE.paramValue} => ${GwConfigParams.BUILD_DATA_DIR.paramValue}"
-                val buildDitaProjectStep: ScriptBuildStep
-                val buildPdfs = when (env) {
-                    GwDeployEnvs.STAGING.envName -> true
-                    else -> false
-                }
-                val buildOutputForOfflineUse =
-                    env == GwDeployEnvs.STAGING.envName && gwPlatforms.lowercase(Locale.getDefault())
-                        .contains("self-managed")
-                // Limit the number of HTML5 builds on staging not to overwhelm the PDF server
-                if (env == GwDeployEnvs.STAGING.envName) {
-                    docBuildType.features.feature(GwBuildFeatures.GwAntennaHouseFormatterServerBuildFeature)
-                }
-                buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
-                    GwDitaOutputFormats.HTML5.formatName,
-                    rootMap,
-                    indexRedirect,
-                    workingDir,
-                    outputDir,
-                    publishPath,
-                    buildFilter = buildFilter,
-                    docId = docId,
-                    docTitle = docTitle,
-                    gitUrl = gitUrl,
-                    gitBranch = gitBranch,
-                    buildPdfs = buildPdfs
-                )
-                if (buildOutputForOfflineUse) {
-                    docBuildType.features.feature(GwBuildFeatures.GwOxygenWebhelpLicenseBuildFeature)
-                    val localOutputDir = "${outputDir}/zip"
-                    val buildDitaProjectForOfflineUseStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
-                        GwDitaOutputFormats.WEBHELP.formatName,
-                        rootMap,
-                        indexRedirect,
-                        workingDir,
-                        localOutputDir,
-                        publishPath,
-                        buildFilter = buildFilter,
-                        forOfflineUse = true
-                    )
-                    docBuildType.steps.step(buildDitaProjectForOfflineUseStep)
-                    docBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
-                    val copyPdfToOfflineOutputStep = GwBuildSteps.createCopyPdfFromOnlineToOfflineOutputStep(
-                        "${workingDir}/${outputDir}", "${workingDir}/${localOutputDir}"
-                    )
-                    docBuildType.steps.step(copyPdfToOfflineOutputStep)
-                    docBuildType.steps.stepsOrder.add(1, copyPdfToOfflineOutputStep.id.toString())
-                    val zipPackageStep = GwBuildSteps.createZipPackageStep(
-                        "${workingDir}/${localOutputDir}", "${workingDir}/${outputDir}"
-                    )
-                    docBuildType.steps.step(zipPackageStep)
-                    docBuildType.steps.stepsOrder.add(2, zipPackageStep.id.toString())
-                }
-
-                docBuildType.steps.step(buildDitaProjectStep)
-                docBuildType.steps.stepsOrder.add(0, buildDitaProjectStep.id.toString())
-                if (!resourcesToCopy.isEmpty) {
-                    val copyResourcesSteps = mutableListOf<ScriptBuildStep>()
-                    for (stepId in 0 until resourcesToCopy.length()) {
-                        val resourceObject = resourcesToCopy.getJSONObject(stepId)
-                        val resourceSrcDir = resourceObject.getString("sourceFolder")
-                        val resourceSrcId = resourceObject.getString("srcId")
-                        val resourceSrcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", resourceSrcId)
-                        val resourceSrcUrl = resourceSrcConfig.getString("gitUrl")
-                        val resourceSrcBranch = resourceSrcConfig.getString("branch")
-
-                        val resourceTargetDir = resourceObject.getString("targetFolder")
-                        val copyResourcesStep = GwBuildSteps.createCopyResourcesStep(
-                            stepId,
-                            workingDir,
-                            outputDir,
-                            resourceSrcDir,
-                            resourceTargetDir,
-                            resourceSrcUrl,
-                            resourceSrcBranch
-                        )
-                        copyResourcesSteps.add(copyResourcesStep)
-                    }
-                    docBuildType.steps {
-                        copyResourcesSteps.forEach { step(it) }
-                        stepsOrder.addAll(stepsOrder.indexOf("UPLOAD_CONTENT_TO_THE_S3_BUCKET"),
-                            copyResourcesSteps.map { it.id.toString() })
-                    }
-                    docBuildType.features.feature(GwBuildFeatures.GwSshAgentBuildFeature)
-                }
-            }
-
-            ditaBuildTypes.add(docBuildType)
-        }
-
-        val localOutputDir = "${outputDir}/zip"
-        val downloadableOutputBuildType = BuildType {
-            name = "Build downloadable output"
-            id = Helpers.resolveRelativeIdFromIdString("${this.name}${docId}")
-
-            params {
-                select(
-                    "OUTPUT_FORMAT",
-                    "",
-                    "Output format",
-                    options = listOf(
-                        "HTML5" to GwDitaOutputFormats.HTML5.formatName,
-                        "HTML5 with PDF" to GwDitaOutputFormats.HTML5_WITH_PDF.formatName,
-                        "PDF" to GwDitaOutputFormats.PDF.formatName,
-                        "Webhelp (Deprecated)" to GwDitaOutputFormats.WEBHELP.formatName,
-                        "Webhelp with PDF (Deprecated)" to GwDitaOutputFormats.WEBHELP_WITH_PDF.formatName,
-                        "Single-page HTML" to GwDitaOutputFormats.SINGLEHTML.formatName
-                    ),
-                    display = ParameterDisplay.PROMPT,
-                )
-            }
-
-            artifactRules = "${workingDir}/${outputDir} => /"
-
-            vcs {
-                root(teamcityGitRepoId)
-                cleanCheckout = true
-            }
-
-            steps {
-                for (format in arrayListOf(
-                    GwDitaOutputFormats.WEBHELP.formatName,
-                    GwDitaOutputFormats.PDF.formatName,
-                    GwDitaOutputFormats.WEBHELP_WITH_PDF.formatName,
-                    GwDitaOutputFormats.SINGLEHTML.formatName,
-                    GwDitaOutputFormats.HTML5.formatName,
-                    GwDitaOutputFormats.HTML5_WITH_PDF.formatName
-                )) {
-                    val step = GwBuildSteps.createBuildDitaProjectForBuildsStep(
-                        format,
-                        rootMap,
-                        indexRedirect,
-                        workingDir,
-                        localOutputDir,
-                        publishPath = "",
-                        buildFilter = buildFilter,
-                        gitUrl = gitUrl,
-                        gitBranch = gitBranch,
-                        forOfflineUse = true
-                    )
-                    step.conditions {
-                        equals("OUTPUT_FORMAT", format)
-                    }
-                    step(step)
-                }
-                step(
-                    GwBuildSteps.createZipPackageStep(
-                        "${workingDir}/${localOutputDir}", "${workingDir}/${outputDir}"
-                    )
-                )
-            }
-
-            features {
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            }
-        }
-        ditaBuildTypes.add(downloadableOutputBuildType)
-
-
-        if (envNames.contains(GwDeployEnvs.STAGING.envName)) {
-            val stagingBuildTypeIdString =
-                Helpers.resolveRelativeIdFromIdString("Publish to ${GwDeployEnvs.STAGING.envName}${docId}")
-                    .toString()
-            val localizationPackageBuildType = BuildType {
-                name = "Build localization package"
-                id = Helpers.resolveRelativeIdFromIdString("${this.name}${docId}")
-
-                artifactRules = """
-                    ${workingDir}/${outputDir} => /
-                """.trimIndent()
-
-                vcs {
-                    root(teamcityGitRepoId)
-                    branchFilter = GwVcsSettings.createBranchFilter(listOf(gitBranch))
-                    cleanCheckout = true
-                }
-
-                steps {
-                    step(
-                        GwBuildSteps.createRunLionPkgBuilderStep(
-                            workingDir, outputDir, stagingBuildTypeIdString
-                        )
-                    )
-                    script {
-                        name = "Add build data"
-                        scriptContent = """
-                            #!/bin/bash
-                            set -xe
-
-                            mkdir _builds
-                            jq -n '{"root": "$rootMap", "filter": "$buildFilter"}' > _builds/$docId.json
-                            zip -ur $workingDir/$outputDir/l10n_package.zip _builds 
-                        """.trimIndent()
-                        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    }
-                }
-
-                features {
-                    feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                }
-            }
-            ditaBuildTypes.add(localizationPackageBuildType)
-        }
-        return ditaBuildTypes
-    }
-
-    private fun createInitialDocBuildType(
-        gwBuildType: String,
-        deployEnv: String,
-        docId: String,
-        srcId: String,
-        publishPath: String,
-        workingDir: String,
-        outputDir: String,
-        indexForSearch: Boolean,
-    ): BuildType {
-        return BuildType {
-            name = "Publish to $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString("${this.name}${docId}")
-            maxRunningBuilds = 1
-
-            if (arrayOf(GwDeployEnvs.STAGING.envName).contains(
-                    deployEnv
-                )
-            ) {
-                vcs {
-                    root(Helpers.resolveRelativeIdFromIdString(srcId))
-                    cleanCheckout = true
-                }
-                val uploadContentToS3BucketStep = GwBuildSteps.createUploadContentToS3BucketStep(
-                    deployEnv, "${workingDir}/${outputDir}", publishPath
-                )
-                steps.step(uploadContentToS3BucketStep)
-                steps.stepsOrder.add(uploadContentToS3BucketStep.id.toString())
-            }
-
-            if (indexForSearch) {
-                artifactRules = """
-                    %teamcity.build.workingDir%/*.log => build_logs
-                """.trimIndent()
-                val configFile = "%teamcity.build.workingDir%/config.json"
-                val configFileStep = GwBuildSteps.createGetConfigFileStep(deployEnv, configFile)
-                steps.step(configFileStep)
-                steps.stepsOrder.add(configFileStep.id.toString())
-                val crawlDocStep = GwBuildSteps.createRunDocCrawlerStep(deployEnv, docId, configFile)
-                steps.step(crawlDocStep)
-                steps.stepsOrder.add(crawlDocStep.id.toString())
-            }
-
-            // Publishing builds for STAGING are triggered automatically.
-            // DITA publishing builds are triggered by build listener builds.
-            // The reference to the build listener template is one of the criteria used by the build manager app
-            // to identify builds that must be triggered.
-            // Yarn validation builds are triggered by regular TeamCity VCS triggers.
-            if (arrayOf(GwDeployEnvs.STAGING.envName).contains(deployEnv)) {
-                when (gwBuildType) {
-                    GwBuildTypes.DITA.buildTypeName -> {
-                        templates(GwTemplates.BuildListenerTemplate)
-                    }
-
-                    else -> {
-                        triggers.trigger(GwVcsTriggers.createNonDitaVcsTrigger(workingDir))
-                    }
-                }
-            }
-
-            features {
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            }
-        }
-    }
-
-    private fun createDocProject(buildConfig: JSONObject, srcId: String): Project {
-        val gwBuildType = buildConfig.getString("buildType")
-        val docId = buildConfig.getString("docId")
-        val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
-        val docTitle = docConfig.getString("title")
-        val docEnvironments = docConfig.getJSONArray("environments")
-        val docEnvironmentsList = Helpers.convertJsonArrayWithStringsToList(docEnvironments)
-        val workingDir = Helpers.getWorkingDir(buildConfig)
-        val outputDir = when (buildConfig.has("outputPath")) {
-            true -> buildConfig.getString("outputPath")
-            false -> {
-                when (gwBuildType) {
-                    GwBuildTypes.YARN.buildTypeName -> GwConfigParams.YARN_BUILD_OUT_DIR.paramValue
-                    GwBuildTypes.STORYBOOK.buildTypeName -> GwConfigParams.STORYBOOK_BUILD_OUT_DIR.paramValue
-                    GwBuildTypes.SOURCE_ZIP.buildTypeName -> GwConfigParams.SOURCE_ZIP_BUILD_OUT_DIR.paramValue
-                    else -> GwConfigParams.DITA_BUILD_OUT_DIR.paramValue
-                }
-            }
-        }
-        val indexForSearch = if (docConfig.has("indexForSearch")) docConfig.getBoolean("indexForSearch") else true
-
-        val metadata = docConfig.getJSONObject("metadata")
-        val gwPlatforms = metadata.getJSONArray("platform")
-        val gwProducts = metadata.getJSONArray("product")
-        val gwVersions = metadata.getJSONArray("version")
-        val gwPlatformsString = gwPlatforms.joinToString(",")
-        val gwProductsString = gwProducts.joinToString(",")
-        val gwVersionsString = gwVersions.joinToString(",")
-
-        val publishPath = docConfig.getString("url")
-
-        val srcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", srcId)
-        val gitUrl = srcConfig.getString("gitUrl")
-        val gitBranch = srcConfig.getString("branch")
-
-        val docProjectBuildTypes = mutableListOf<BuildType>()
-        val customEnv = if (buildConfig.has("customEnv")) buildConfig.getJSONArray("customEnv") else null
-
-        val buildIsDisabled = buildConfig.getBoolean("disabled")
-        if (!buildIsDisabled) {
-            when (gwBuildType) {
-                GwBuildTypes.YARN.buildTypeName -> {
-                    val nodeImageVersion =
-                        if (buildConfig.has("nodeImageVersion")) buildConfig.getString("nodeImageVersion") else null
-                    val buildCommand =
-                        if (buildConfig.has("yarnBuildCustomCommand")) buildConfig.getString("yarnBuildCustomCommand") else null
-                    docProjectBuildTypes += createYarnBuildTypes(
-                        docEnvironmentsList,
-                        docId,
-                        srcId,
-                        publishPath,
-                        workingDir,
-                        outputDir,
-                        indexForSearch,
-                        buildCommand,
-                        nodeImageVersion,
-                        gwPlatformsString,
-                        gwProductsString,
-                        gwVersionsString,
-                        customEnv
-                    )
-                }
-
-                GwBuildTypes.STORYBOOK.buildTypeName -> {
-                    docProjectBuildTypes += createStorybookBuildTypes(
-                        docEnvironmentsList,
-                        docId,
-                        srcId,
-                        publishPath,
-                        workingDir,
-                        outputDir,
-                        indexForSearch,
-                        gwPlatformsString,
-                        gwProductsString,
-                        gwVersionsString,
-                        customEnv
-                    )
-                }
-
-                GwBuildTypes.DITA.buildTypeName -> {
-                    val rootMap = buildConfig.getString("root")
-                    val indexRedirect = when (buildConfig.has("indexRedirect")) {
-                        true -> {
-                            buildConfig.getBoolean("indexRedirect")
-                        }
-
-                        else -> {
-                            false
-                        }
-
-                    }
-                    val buildFilter = when (buildConfig.has("filter")) {
-                        true -> {
-                            buildConfig.getString("filter")
-                        }
-
-                        else -> {
-                            null
-                        }
-                    }
-                    val resourcesToCopy =
-                        if (buildConfig.has("resources")) buildConfig.getJSONArray("resources") else JSONArray()
-
-                    docProjectBuildTypes += createDitaBuildTypes(
-                        docEnvironmentsList,
-                        docId,
-                        srcId,
-                        gitUrl,
-                        gitBranch,
-                        publishPath,
-                        workingDir,
-                        outputDir,
-                        docTitle,
-                        indexForSearch,
-                        rootMap,
-                        indexRedirect,
-                        buildFilter,
-                        gwPlatformsString,
-                        resourcesToCopy
-                    )
-
-                }
-
-                GwBuildTypes.SOURCE_ZIP.buildTypeName -> {
-                    val zipFilename = buildConfig.getString("zipFilename")
-                    docProjectBuildTypes += createSourceZipBuildTypes(
-                        docEnvironmentsList,
-                        docId,
-                        srcId,
-                        publishPath,
-                        workingDir,
-                        outputDir,
-                        indexForSearch,
-                        zipFilename
-                    )
-                }
-
-                GwBuildTypes.JUST_COPY.buildTypeName -> {
-                    docProjectBuildTypes += createJustCopyBuildTypes(
-                        docEnvironmentsList, docId, srcId, publishPath, workingDir, outputDir
-                    )
-                }
-            }
-        }
-
-        return Project {
-            name = "$docTitle ($docId)"
-            id = Helpers.resolveRelativeIdFromIdString(docId)
-
-            docProjectBuildTypes.forEach {
-                buildType(it)
-            }
-        }
-    }
-
-}
-
-object Custom {
-    val rootProject = createRootProjectForCustom()
-
-    private fun createRootProjectForCustom(): Project {
-        return Project {
-            name = "Custom"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            buildType(BuildCustomDitaOutputBuildType)
-        }
-    }
-
-    object BuildCustomDitaOutputBuildType : BuildType({
-        name = "Build custom DITA output"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-        params {
-            text(
-                "env.GIT_URL", "", label = "Git repo URL", display = ParameterDisplay.PROMPT
-            )
-            text(
-                "env.GIT_BRANCH", "", label = "Git branch name", display = ParameterDisplay.PROMPT
-            )
-            text(
-                "env.DOC_IDS",
-                "",
-                label = "Document ids",
-                description = "An optional space-separated list of document ids. Each id must have a corresponding <docID>.json file in the __builds folder of the target repo and branch.",
-                display = ParameterDisplay.PROMPT,
-                allowEmpty = true
-            )
-            text(
-                "env.BUILDS_FILE_PARSED", "builds.txt", display = ParameterDisplay.HIDDEN
-            )
-        }
-
-        val localOutputDir = "out"
-
-        artifactRules = "*.zip => /"
-
-        steps {
-            script {
-                name = "Get the builds configuration"
-                scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                                      
-                    export FULL_REPO_NAME=${'$'}{GIT_URL##*/}
-                    export REPO_NAME=${'$'}{FULL_REPO_NAME%.*}
-                    export BUILDS_FILE="builds.json"
-                    export BUILDS_DIR="_builds"
-                    export GIT_CLONE_DIR="git_clone_dir"
-                    
-                    if [ -f ${'$'}BUILDS_FILE_PARSED ]; then rm -f ${'$'}BUILDS_FILE_PARSED 2> /dev/null || true; fi
-                    if [ -f %teamcity.build.workingDir%/*.zip ]; then rm -f %teamcity.build.workingDir%/*.zip 2> /dev/null || true; fi
-                    if [ -d %teamcity.build.workingDir%/$localOutputDir ]; then rm -rf %teamcity.build.workingDir%/$localOutputDir/* 2> /dev/null || true; fi
-                    if [ -d %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR ]; then rm -rf %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR/{*,.*} 2> /dev/null || true; fi
-
-                    git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% ${'$'}GIT_CLONE_DIR --recurse-submodules
-
-                    if [ ! -z "%env.DOC_IDS%" ]
-                        then 
-                            echo "DOC_IDS specified. Checking for corresponding build files."
-                            IFS=' '
-                            for id in %env.DOC_IDS%; do
-                                FILE="${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR/${'$'}id.json"
-                                if [ -f ${'$'}FILE ]
-                                    then echo "Found build file ${'$'}FILE"
-                                        root=$(echo "${'$'}builds_json" | jq -r .root ${'$'}FILE);
-                                        filter=$(echo "${'$'}builds_json" | jq -r .filter ${'$'}FILE);
-                                        echo ${'$'}root:${'$'}filter >> %env.BUILDS_FILE_PARSED%
-                                    else echo "Could not locate build file ${'$'}FILE. Skipping Doc ID ${'$'}id"
-                                fi
-                            done
-                        else
-                            if [ -f ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_FILE ]
-                                then echo "${'$'}BUILDS_FILE found"
-                                    declare -a BUILDS
-                                    while IFS= read -r -d ${'$'}'\n' builds_json; do
-                                    root=${'$'}(echo "${'$'}builds_json" | jq -r .root)
-                                    filter=$(echo "${'$'}builds_json" | jq -r .filter)
-                                    echo "${'$'}root:${'$'}filter" >> %env.BUILDS_FILE_PARSED%
-                                    done < <(jq -c '.builds[]' ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_FILE)
-                                else
-                                    echo "${'$'}BUILDS_FILE not found, checking for ${'$'}BUILDS_DIR directory"
-                                    if [ -d "${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR" ]
-                                        then echo "${'$'}BUILDS_DIR found"
-                                            for FILE in ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR/*; do 
-                                            root=${'$'}(echo "${'$'}builds_json" | jq -r .root ${'$'}FILE);
-                                            filter=${'$'}(echo "${'$'}builds_json" | jq -r .filter ${'$'}FILE);
-                                            echo ${'$'}root:${'$'}filter >> %env.BUILDS_FILE_PARSED%
-                                            done;
-                                        else echo "ERROR: Did not find a ${'$'}BUILDS_FILE or ${'$'}BUILDS_DIR directory."
-                                    fi
-                            fi
-                    fi
-                """.trimIndent()
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            }
-            script {
-                name = "Build custom DITA output"
-                id = Helpers.createIdStringFromName(this.name)
-                scriptContent = """
-                    #!/bin/bash
-                    set -xe
-
-                    export GIT_CLONE_DIR="git_clone_dir"
-                                                                                           
-                    declare -a BUILDS
-                    while read line; do
-                      IFS=':' read -r input filter <<< "${'$'}line"
-                      echo ${'$'}input ${'$'}filter
-                      INPUT_NAME=${'$'}{input%.*}
-                      FILTER_NAME=${'$'}{filter%.*}
-                      OUTPUT_SUBDIR="${'$'}{INPUT_NAME}_${'$'}FILTER_NAME"
-                      curl -O https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/common-gw/raw/ditavals/${'$'}filter \
-                        -H "Accept: application/json" \
-                        -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
-                      dita -i "${'$'}GIT_CLONE_DIR/${'$'}input" --filter "${'$'}filter" -f html5-Guidewire --gw-offline-webhelp yes --build.pdfs yes --create-index-redirect yes --args.rellinks nofamily -o "$localOutputDir/${'$'}OUTPUT_SUBDIR"
-                      n=${'$'}((n+1))
-                    done < %env.BUILDS_FILE_PARSED%
-                """.trimIndent()
-                dockerImage = GwDockerImages.DITA_OT_LATEST.imageUrl
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            }
-            step(
-                GwBuildSteps.createZipPackageStep(
-                    "%teamcity.build.workingDir%/$localOutputDir", "%teamcity.build.workingDir%"
-                )
-            )
-            script {
-                name = "Clean up agent"
-                scriptContent = """
-                    #!/bin/bash
-                    set -xe
-
-                    export GIT_CLONE_DIR="git_clone_dir"                                    
-                    
-                    if [ -f ${'$'}BUILDS_FILE_PARSED ]; then rm -f ${'$'}BUILDS_FILE_PARSED 2> /dev/null || true; fi
-                    if [ -d %teamcity.build.workingDir%/$localOutputDir ]; then rm -rf %teamcity.build.workingDir%/$localOutputDir/* 2> /dev/null || true; fi
-                    if [ -d %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR ]; then rm -rf %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR/{*,.*} 2> /dev/null || true; fi
-                """.trimIndent()
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            }
-        }
-
-        features {
-            feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            feature(GwBuildFeatures.GwSshAgentBuildFeature)
-        }
-
-        cleanup {
-            add {
-                keepRule {
-                    id = "KEEP_RULE_CUSTOM_DITA_BUILDS"
-                    keepAtLeast = builds(100)
-                    dataToKeep = everything()
-                    preserveArtifactsDependencies = true
-                }
-            }
-        }
-    })
-
-}
-
-object Content {
-    private val testKubernetesConfigFilesDev =
-        GwBuilds.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.DEV.envName,
-            GwTriggerPaths.AWS_S3_KUBE.pathValue
-        )
-    private val testKubernetesConfigFilesStaging =
-        GwBuilds.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.STAGING.envName,
-            GwTriggerPaths.AWS_S3_KUBE.pathValue
-        )
-    private val testKubernetesConfigFilesProd =
-        GwBuilds.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.PROD.envName,
-            GwTriggerPaths.AWS_S3_KUBE.pathValue
-        )
-    private val testKubernetesConfigFilesPortal2 =
-        GwBuilds.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.PORTAL2.envName,
-            GwTriggerPaths.AWS_S3_KUBE.pathValue
-        )
-    val rootProject = createRootProjectForContent()
-
-    private fun createRootProjectForContent(): Project {
-        return Project {
-            name = "Content"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            subProject(createUpdateSearchIndexProject())
-            subProject(createCleanUpSearchIndexProject())
-            subProject(createGenerateSitemapProject())
-            subProject(createDeployContentStorageProject())
-            buildType(UploadPdfsForEscrowBuildType)
-            buildType(SyncDocsFromStagingToDev)
-            buildType(SyncElasticsearchIndexFromStagingToDev)
-        }
-    }
-
-    private fun createGenerateSitemapProject(): Project {
-        return Project {
-            name = "Generate sitemap"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
-            ).forEach {
-                buildType(createGenerateSitemapBuildType(it.envName))
-            }
-        }
-    }
-
-    private fun createGenerateSitemapBuildType(deployEnv: String): BuildType {
-        val outputDir = "%teamcity.build.checkoutDir%/build"
-        return BuildType {
-            name = "Generate sitemap for $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            steps {
-                step(GwBuildSteps.createRunSitemapGeneratorStep(deployEnv, outputDir))
-                step(
-                    GwBuildSteps.createDeployStaticFilesStep(
-                        deployEnv, GwStaticFilesModes.SITEMAP.modeName, outputDir
-                    )
-                )
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            if (deployEnv == GwDeployEnvs.PROD.envName) {
-                triggers {
-                    schedule {
-                        schedulingPolicy = daily {
-                            hour = 1
-                            minute = 1
-                        }
-                        triggerBuild = always()
-                        withPendingChangesOnly = false
-                    }
-                }
-            }
-        }
-    }
-
-    private fun createCleanUpSearchIndexProject(): Project {
-        return Project {
-            name = "Clean up search index"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
-            ).forEach {
-                buildType(createCleanUpSearchIndexBuildType(it.envName))
-            }
-        }
-    }
-
-    private fun createCleanUpSearchIndexBuildType(deployEnv: String): BuildType {
-        return BuildType {
-            name = "Clean up search index on $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            steps {
-                step(GwBuildSteps.createRunIndexCleanerStep(deployEnv))
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            triggers {
-                schedule {
-                    schedulingPolicy = daily {
-                        hour = 1
-                        minute = 1
-                    }
-                    triggerBuild = always()
-                    withPendingChangesOnly = false
-                }
-            }
-        }
-    }
-
-    private fun createUpdateSearchIndexProject(): Project {
-        return Project {
-            name = "Update search index"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD, GwDeployEnvs.PORTAL2
-            ).forEach {
-                buildType(createUpdateSearchIndexBuildType(it.envName))
-            }
-        }
-    }
-
-    private fun createUpdateSearchIndexBuildType(deployEnv: String): BuildType {
-        val configFile = "%teamcity.build.workingDir%/config.json"
-        return BuildType {
-            name = "Update search index on $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            params {
-                text(
-                    "DOC_ID",
-                    "",
-                    label = "Doc ID",
-                    description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.",
-                    display = ParameterDisplay.PROMPT,
-                    allowEmpty = true
-                )
-            }
-
-            steps {
-                step(GwBuildSteps.createGetConfigFileStep(deployEnv, configFile))
-                step(GwBuildSteps.createRunDocCrawlerStep(deployEnv, "%DOC_ID%", configFile))
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-        }
-    }
-
-    private fun createDeployContentStorageProject(): Project {
-        return Project {
-            name = "Deploy content storage"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD, GwDeployEnvs.PORTAL2
-            ).forEach {
-                buildType(createDeployContentStorageBuildType(it.envName))
-            }
-            buildType(testKubernetesConfigFilesDev)
-            buildType(testKubernetesConfigFilesStaging)
-            buildType(testKubernetesConfigFilesProd)
-            buildType(testKubernetesConfigFilesPortal2)
-        }
-    }
-
-    private fun createDeployContentStorageBuildType(deployEnv: String): BuildType {
-        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
-        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
-        val contentStorageDeployEnvVars = Helpers.setContentStorageDeployEnvVars(deployEnv)
-        val deployContentStorageBuildType = BuildType {
-            name = "Deploy content storage to $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            steps {
-                script {
-                    name = "Deploy to Kubernetes"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                        #!/bin/bash 
-                        set -eux
-                                              
-                        # Set AWS credentials
-                        $awsEnvVars
-                        
-                        # Set environment variables needed for Kubernetes config files
-                        $contentStorageDeployEnvVars
-                        
-                        # Set other envs
-                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
-                        
-                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
-                        
-                        echo ${'$'}(kubectl get pods --namespace=${GwAtmosLabels.POD_NAME.labelValue})
-                        
-                        eval "echo \"${'$'}(cat ${GwConfigParams.S3_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
-                                                
-                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}
-                    """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
-                }
-            }
-
-            features {
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            }
-        }
-        when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> {
-                deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                deployContentStorageBuildType.triggers.trigger(
-                    GwVcsTriggers.createDocPortalVcsTrigger(
-                        listOf(GwTriggerPaths.AWS_S3_KUBE.pathValue)
-                    )
-                )
-            }
-
-            GwDeployEnvs.STAGING.envName -> {
-                deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesStaging) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-
-            GwDeployEnvs.PROD.envName -> {
-                deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesProd) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-
-            GwDeployEnvs.PORTAL2.envName -> {
-                deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesPortal2) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-        }
-
-        return deployContentStorageBuildType
-    }
-
-
-    object UploadPdfsForEscrowBuildType : BuildType({
-        name = "Upload PDFs for Escrow"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-        params {
-            text(
-                "env.RELEASE_NAME",
-                "",
-                label = "Release name",
-                description = "For example, Banff or Cortina",
-                display = ParameterDisplay.PROMPT
-            )
-            text(
-                "env.RELEASE_NUMBER",
-                "",
-                label = "Release number",
-                description = "Numeric representation of the release without dots or hyphens. For example, 202011 or 202104",
-                display = ParameterDisplay.PROMPT
-            )
-        }
-
-        vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            cleanCheckout = true
-        }
-
-        val tmpDir = "%teamcity.build.checkoutDir%/ci/pdfs"
-        val zipArchiveName = "%env.RELEASE_NAME%_pdfs.zip"
-        val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
-        val awsEnvVarsInt = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)
-
-        steps {
-            script {
-                name = "Download and zip PDF files"
-                id = Helpers.createIdStringFromName(this.name)
-                scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                    
-                    export TMP_DIR="$tmpDir"
-                    export ZIP_ARCHIVE_NAME="$zipArchiveName"
-                    
-                    echo "Setting credentials to access prod"
-                    $awsEnvVarsProd
-                    
-                    cd %teamcity.build.checkoutDir%/ci
-                    ./downloadPdfsForEscrow.sh
-                """.trimIndent()
-                dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
-            }
-            script {
-                name = "Upload the ZIP archive to S3"
-                id = Helpers.createIdStringFromName(this.name)
-                scriptContent = """
-                    #!/bin/bash
-                    set -xe
-                    
-                    echo "Setting credentials to access int"
-                    $awsEnvVarsInt
-                    
-                    echo "Uploading the ZIP archive to the S3 bucket"
-                    aws s3 cp "${tmpDir}/${zipArchiveName}" s3://tenant-doctools-staging-builds/escrow/%env.RELEASE_NAME%/
-            """.trimIndent()
-                dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
-            }
-        }
-    })
-
-    object SyncDocsFromStagingToDev : BuildType({
-        name = "Sync docs from staging to dev"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-        steps {
-            step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep())
-        }
-
-        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-    })
-
-    object SyncElasticsearchIndexFromStagingToDev : BuildType({
-        name = "Sync the Elasticsearch index from staging to dev"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-        vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            cleanCheckout = true
-        }
-
-        steps {
-            nodeJS {
-                name = "Reindex from staging to dev"
-                id = Helpers.createIdStringFromName(this.name)
-                shellScript = """
-                    #!/bin/sh
-                    set -e
-                    
-                    node ci/reindexFromStagingToDev.mjs
-                    """.trimIndent()
-                dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
-            }
-        }
-
-        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-    })
-
-}
-
-object Frontend {
-    private val testKubernetesConfigFilesDev =
-        GwBuilds.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.DEV.envName,
-            GwTriggerPaths.LANDING_PAGES_KUBE.pathValue
-        )
-    private val testKubernetesConfigFilesStaging =
-        GwBuilds.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.STAGING.envName,
-            GwTriggerPaths.LANDING_PAGES_KUBE.pathValue
-        )
-    private val testKubernetesConfigFilesProd =
-        GwBuilds.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.PROD.envName,
-            GwTriggerPaths.LANDING_PAGES_KUBE.pathValue
-        )
-    private val runCheckmarxScan =
-        GwBuilds.createRunCheckmarxScanBuildType(GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue)
-    private val buildAndPublishDockerImageToDevEcrBuildType =
-        GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
-            GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
-            GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl,
-            "%teamcity.build.checkoutDir%",
-            listOf(runCheckmarxScan, TestReactLandingPagesBuildType)
-        )
-    private val publishDockerImageToProdEcrBuildType = GwBuilds.createPublishDockerImageToProdEcrBuildType(
-        GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
-        GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl,
-        GwDockerImages.DOC_PORTAL_FRONTEND_PROD.imageUrl,
-        listOf(buildAndPublishDockerImageToDevEcrBuildType)
-    )
-    val deployReactLandingPagesBuildTypeDev = createDeployReactLandingPagesBuildType(GwDeployEnvs.DEV.envName)
-    val deployReactLandingPagesBuildTypeStaging = createDeployReactLandingPagesBuildType(GwDeployEnvs.STAGING.envName)
-    val deployReactLandingPagesBuildTypeProd = createDeployReactLandingPagesBuildType(GwDeployEnvs.PROD.envName)
-    val rootProject = createRootProjectForFrontend()
-
-    private fun createRootProjectForFrontend(): Project {
-        return Project {
-            name = "Frontend"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            subProject(createReactLandingPagesProject())
-//            subProject(createNpmPackagesProject())
-//            subProject(createHtml5DependenciesProject())
-        }
-    }
-
-    private fun createNpmPackagesProject(): Project {
-        return Project {
-            name = "NPM packages"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            arrayOf(
-                Pair("theme", "docusaurus/themes/gw-theme-classic"),
-                Pair("plugin", "docusaurus/plugins/gw-plugin-redoc")
-            ).forEach {
-                buildType(createPublishNpmPackageBuildType(it.first, it.second))
-            }
-        }
-    }
-
-
-    private fun createHtml5DependenciesProject(): Project {
-        return Project {
-            name = "HTML5 dependencies"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            arrayOf(
-                GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
-            ).forEach {
-                buildType(createDeployHtml5DependenciesBuildType(it.envName))
-            }
-
-            buildType(createDeployHtml5OfflineDependenciesBuildType())
-        }
-    }
-
-    private fun createReactLandingPagesProject(): Project {
-        return Project {
-            name = "React landing pages"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-            buildType(deployReactLandingPagesBuildTypeDev)
-            buildType(deployReactLandingPagesBuildTypeStaging)
-            buildType(deployReactLandingPagesBuildTypeProd)
-            buildType(runCheckmarxScan)
-            buildType(TestReactLandingPagesBuildType)
-            buildType(testKubernetesConfigFilesDev)
-            buildType(testKubernetesConfigFilesStaging)
-            buildType(testKubernetesConfigFilesProd)
-            buildType(buildAndPublishDockerImageToDevEcrBuildType)
-            buildType(publishDockerImageToProdEcrBuildType)
-        }
-    }
-
-    private fun createDeployReactLandingPagesBuildType(deployEnv: String): BuildType {
-        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
-        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
-        val reactLandingPagesDeployEnvVars =
-            Helpers.setReactLandingPagesDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue)
-        val deployReactLandingPagesBuildType = BuildType {
-            name = "Deploy React landing pages to $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-            vcs {
-                root(
-                    GwVcsRoots.DocumentationPortalGitVcsRoot,
-                )
-                cleanCheckout = true
-            }
-
-            steps {
-                nodeJS {
-                    name = "Generate the root breadcrumbs file from React components"
-                    id = Helpers.createIdStringFromName(this.name)
-                    shellScript = """
-                        yarn --cwd scripts
-                        yarn --cwd scripts get-root-breadcrumbs
-                    """.trimIndent()
-                    dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
-                }
-                script {
-                    name = "Copy the root breadcrumbs file to landing pages"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                        #!/bin/bash 
-                        set -xe
-                        
-                        cp %teamcity.build.checkoutDir%/scripts/out/root-breadcrumbs.json %teamcity.build.checkoutDir%/${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/public
-                    """.trimIndent()
-                }
-                script {
-                    name = "Deploy to Kubernetes"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                        #!/bin/bash 
-                        set -eux
-                                
-                        # Set AWS credentials
-                        $awsEnvVars
-                        
-                        # Set environment variables needed for Kubernetes config files
-                        $reactLandingPagesDeployEnvVars
-                        
-                        # Set other envs
-                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
-                        
-                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
-                        
-                        echo ${'$'}(kubectl get pods --namespace=${GwAtmosLabels.POD_NAME.labelValue})
-                        
-                        eval "echo \"${'$'}(cat ${GwConfigParams.DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
-                                                
-                        sed -ie "s/BUILD_TIME/${'$'}(date)/g" ${'$'}TMP_DEPLOYMENT_FILE
-                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}
-                    """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
-                }
-                step(
-                    GwBuildSteps.createCheckPodsStatusStep(
-                        awsEnvVars,
-                        atmosDeployEnv,
-                        GwConfigParams.DOC_PORTAL_FRONTEND_APP_NAME.paramValue
-                    )
-                )
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-        }
-
-        when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> {
-                deployReactLandingPagesBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                deployReactLandingPagesBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                deployReactLandingPagesBuildType.triggers.trigger(
-                    GwVcsTriggers.createDocPortalVcsTrigger(
-                        listOf(
-                            GwTriggerPaths.LANDING_PAGES.pathValue,
-                            GwTriggerPaths.SCRIPTS_SRC_PAGES_GET_ROOT_BREADCRUMBS.pathValue,
-                            GwTriggerPaths.SERVER_SRC_MODEL_ENTITY.pathValue,
-                            GwTriggerPaths.SERVER_SRC_TYPES.pathValue
-                        )
-                    )
-                )
-            }
-
-            GwDeployEnvs.STAGING.envName -> {
-                deployReactLandingPagesBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                deployReactLandingPagesBuildType.dependencies.snapshot(testKubernetesConfigFilesStaging) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-
-            GwDeployEnvs.PROD.envName -> {
-                deployReactLandingPagesBuildType.dependencies.snapshot(publishDockerImageToProdEcrBuildType) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                deployReactLandingPagesBuildType.dependencies.snapshot(testKubernetesConfigFilesProd) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-        }
-
-        return deployReactLandingPagesBuildType
-    }
-
-    private object TestReactLandingPagesBuildType : BuildType({
-        name = "Test React landing pages"
-        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-        vcs {
-            root(
-                GwVcsRoots.DocumentationPortalGitVcsRoot
-            )
-            cleanCheckout = true
-        }
-
-        steps {
-            nodeJS {
-                id = "Build landing pages"
-                shellScript = """
-                    yarn
-                    CI=true yarn test:landing-pages
-                    yarn build
-                """.trimIndent()
-                dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
-            }
-        }
-
-        features {
-            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-        }
-
-        triggers {
-            trigger(
-                GwVcsTriggers.createDocPortalVcsTrigger(
-                    listOf(
-                        GwTriggerPaths.LANDING_PAGES.pathValue,
-                        GwTriggerPaths.SHIMS.pathValue,
-                        GwTriggerPaths.SCRIPTS_SRC_PAGES_GET_ROOT_BREADCRUMBS.pathValue,
-                        GwTriggerPaths.SERVER_SRC_MODEL_ENTITY.pathValue,
-                        GwTriggerPaths.SERVER_SRC_TYPES.pathValue
-                    ),
-                    listOf(
-                        GwTriggerPaths.LANDING_PAGES_KUBE.pathValue,
-                    )
-                )
-            )
-        }
-    })
-
-    private fun createPublishNpmPackageBuildType(packageHandle: String, packagePath: String): BuildType {
-        return BuildType {
-            name = "Publish $packageHandle to Artifactory"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            steps {
-                step(GwBuildSteps.createPublishNpmPackageStep(packageHandle, packagePath))
-            }
-
-            // Supposedly, the build is triggered only on changes in package.json to publish a new package
-            // only when its version changes, not on every change in the code.
-            triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf("${packagePath}/package.json")))
-            }
-
-            features {
-                feature(GwBuildFeatures.GwSshAgentBuildFeature)
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            }
-        }
-    }
-
-    private fun createDeployHtml5DependenciesBuildType(deployEnv: String): BuildType {
-        return BuildType {
-            name = "Deploy HTML5 dependencies to $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            // It is the output path defined in webpack.config.js
-            val outputDir = "%teamcity.build.checkoutDir%/html5/static/html5"
-
-            steps {
-                step(GwBuildSteps.createBuildHtml5DependenciesStep())
-                step(
-                    GwBuildSteps.createDeployStaticFilesStep(
-                        deployEnv, GwStaticFilesModes.HTML5.modeName, outputDir
-                    )
-                )
-            }
-
-            triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.HTML5.pathValue)))
-            }
-
-            features {
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            }
-        }
-    }
-
-    private fun createDeployHtml5OfflineDependenciesBuildType(): BuildType {
-        val ditaOutPluginsCheckoutDir = "dita-ot-plugins"
-        return BuildType {
-            name = "Deploy HTML5 OFFLINE dependencies"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                root(GwVcsRoots.DitaOtPluginsVcsRoot, "+:.=>$ditaOutPluginsCheckoutDir")
-                cleanCheckout = true
-            }
-
-            steps {
-                step(GwBuildSteps.createBuildHtml5OfflineDependenciesStep())
-                step(GwBuildSteps.createDeployHtml5OfflineDependenciesStep("%teamcity.build.checkoutDir%/$ditaOutPluginsCheckoutDir"))
-            }
-
-            triggers {
-                trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.HTML5.pathValue)))
-            }
-
-            features {
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                feature(GwBuildFeatures.GwSshAgentBuildFeature)
-            }
-        }
-    }
-}
-
-object Server {
-    private val testKubernetesConfigFilesDev =
-        GwBuilds.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.DEV.envName,
-            GwTriggerPaths.SERVER_KUBE.pathValue
-        )
-    private val testKubernetesConfigFilesStaging =
-        GwBuilds.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.STAGING.envName,
-            GwTriggerPaths.SERVER_KUBE.pathValue
-        )
-    private val testKubernetesConfigFilesProd =
-        GwBuilds.createTestKubernetesConfigFilesBuildType(
-            GwDeployEnvs.PROD.envName,
-            GwTriggerPaths.SERVER_KUBE.pathValue
-        )
-    private val runCheckmarxScan = GwBuilds.createRunCheckmarxScanBuildType(GwConfigParams.DOC_PORTAL_DIR.paramValue)
-    private val buildAndPublishDockerImageToDevEcrBuildType =
-        GwBuilds.createBuildAndPublishDockerImageToDevEcrBuildType(
-            GwDockerImageTags.DOC_PORTAL.tagValue,
-            GwDockerImages.DOC_PORTAL.imageUrl,
-            "%teamcity.build.checkoutDir%/${GwConfigParams.DOC_PORTAL_DIR.paramValue}",
-            listOf(runCheckmarxScan, TestDocSiteServerApp)
-        )
-    private val publishDockerImageToProdEcrBuildType = GwBuilds.createPublishDockerImageToProdEcrBuildType(
-        GwDockerImageTags.DOC_PORTAL.tagValue,
-        GwDockerImages.DOC_PORTAL.imageUrl,
-        GwDockerImages.DOC_PORTAL_PROD.imageUrl,
-        listOf(buildAndPublishDockerImageToDevEcrBuildType)
-    )
-    val deployServerBuildTypeDev = createDeployServerBuildType(GwDeployEnvs.DEV.envName)
-    val deployServerBuildTypeStaging = createDeployServerBuildType(GwDeployEnvs.STAGING.envName)
-    val deployServerBuildTypeProd = createDeployServerBuildType(GwDeployEnvs.PROD.envName)
-    val rootProject = createRootProjectForServer()
-    private fun createRootProjectForServer(): Project {
-        return Project {
-            name = "Server"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            buildType(deployServerBuildTypeDev)
-            buildType(deployServerBuildTypeStaging)
-            buildType(deployServerBuildTypeProd)
-            buildType(runCheckmarxScan)
-            buildType(TestDocSiteServerApp)
-            buildType(TestHtml5Dependencies)
-            buildType(testKubernetesConfigFilesDev)
-            buildType(testKubernetesConfigFilesStaging)
-            buildType(testKubernetesConfigFilesProd)
-            buildType(buildAndPublishDockerImageToDevEcrBuildType)
-            buildType(publishDockerImageToProdEcrBuildType)
-        }
-    }
-
-    private object TestHtml5Dependencies : BuildType({
-        name = "Test HTML5 dependencies"
-        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-        vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            cleanCheckout = true
-        }
-
-        steps {
-            step(GwBuildSteps.createBuildHtml5DependenciesStep())
-            step(GwBuildSteps.createBuildHtml5OfflineDependenciesStep())
-        }
-
-        triggers {
-            trigger(
-                GwVcsTriggers.createDocPortalVcsTrigger(
-                    listOf(
-                        GwTriggerPaths.HTML5.pathValue,
-                        GwTriggerPaths.DOCUSAURUS_THEMES.pathValue
-                    )
-                )
-            )
-        }
-
-        features {
-            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-        }
-    })
-
-    private object TestDocSiteServerApp : BuildType({
-        name = "Test doc site server app"
-        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-        vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            cleanCheckout = true
-        }
-
-        steps {
-            script {
-                name = "Test the doc site server"
-                id = Helpers.createIdStringFromName(this.name)
-                scriptContent = """
-                    #!/bin/sh
-                    set -e
-                    export OKTA_CLIENT_ID=mock
-                    export OKTA_CLIENT_SECRET=mock
-                    export OKTA_IDP="${GwConfigParams.OKTA_IDP.paramValue}"
-                    export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
-                    export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP.paramValue}"
-                    export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
-                    export OKTA_ISSUER_APAC="issuerNotConfigured"
-                    export OKTA_ISSUER_EMEA="issuerNotConfigured"
-                    export OKTA_SCOPES=mock
-                    export OKTA_AUDIENCE=mock
-                    export APP_BASE_URL=http://localhost:8081
-                    export SESSION_KEY=mock
-                    export DOC_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.STAGING.envName)}"
-                    export PORTAL2_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)}"
-                    export ELASTIC_SEARCH_URL="${Helpers.getElasticsearchUrl(GwDeployEnvs.STAGING.envName)}"
-                    export DEPLOY_ENV="${GwDeployEnvs.STAGING.envName}"
-                    export LOCAL_CONFIG=yes
-                    export ENABLE_AUTH=no
-                    export PRETEND_TO_BE_EXTERNAL=no
-                    export ALLOW_PUBLIC_DOCS=yes
-                    export LOCALHOST_SESSION_SETTINGS=yes
-                    export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/partners-login"
-                    export PARTNERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
-                    export PARTNERS_LOGIN_CERT=mock
-                    export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/customers-login"
-                    export CUSTOMERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
-                    export CUSTOMERS_LOGIN_CERT=mock
-                    
-                    yarn
-                    yarn test:server
-                """.trimIndent()
-                dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
-            }
-        }
-
-        features {
-            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-        }
-
-        triggers {
-            trigger(
-                GwVcsTriggers.createDocPortalVcsTrigger(
-                    listOf(GwTriggerPaths.SERVER.pathValue),
-                    listOf(GwTriggerPaths.SERVER_KUBE.pathValue)
-                )
-            )
-        }
-    })
-
-    private fun createDeployServerBuildType(deployEnv: String): BuildType {
-        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
-        val gatewayConfigFile = Helpers.getServerGatewayConfigFile(deployEnv)
-
-        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
-        val serverDeployEnvVars = Helpers.setServerDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL.tagValue)
-        val deployServerBuildType = BuildType {
-            name = "Deploy server to $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            steps {
-                script {
-                    name = "Deploy to Kubernetes"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                        #!/bin/bash 
-                        set -eux
-                                
-                        # Set AWS credentials
-                        $awsEnvVars
-                        
-                        # Set environment variables needed for Kubernetes config files
-                        $serverDeployEnvVars
-                        
-                        # Set other envs
-                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
-                        export TMP_GATEWAY_CONFIG_FILE="tmp-gateway-config.yml"
-                        
-                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
-                        
-                        echo ${'$'}(kubectl get pods --namespace=${GwAtmosLabels.POD_NAME.labelValue})
-                        
-                        eval "echo \"${'$'}(cat ${GwConfigParams.DOC_PORTAL_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
-                        eval "echo \"${'$'}(cat ${gatewayConfigFile})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
-                                                
-                        sed -ie "s/BUILD_TIME/${'$'}(date)/g" ${'$'}TMP_DEPLOYMENT_FILE
-                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}
-                        kubectl apply -f ${'$'}TMP_GATEWAY_CONFIG_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}                    
-                    """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
-                }
-                step(
-                    GwBuildSteps.createCheckPodsStatusStep(
-                        awsEnvVars,
-                        atmosDeployEnv,
-                        GwConfigParams.DOC_PORTAL_APP_NAME.paramValue
-                    )
-                )
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-        }
-
-        when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> {
-                deployServerBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                deployServerBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.SERVER.pathValue)))
-            }
-
-            GwDeployEnvs.STAGING.envName -> {
-                deployServerBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesStaging) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-
-            GwDeployEnvs.PROD.envName -> {
-                deployServerBuildType.dependencies.snapshot(publishDockerImageToProdEcrBuildType) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-                deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesProd) {
-                    onDependencyFailure = FailureAction.FAIL_TO_START
-                }
-            }
-        }
-
-        return deployServerBuildType
-    }
-}
-
-object BuildListeners {
-    val rootProject = createRootProjectForBuildListeners()
-
-    private fun getSourcesForBuildListenerBuildTypes(): List<JSONObject> {
-        val sourcesRequiringListeners = mutableListOf<JSONObject>()
-        for (src in Helpers.gitSources) {
-            val srcId = src.getString("id")
-            val ditaBuildsRelatedToSrc = Helpers.buildConfigs.filter {
-                it.getString("srcId") == srcId && (it.getString("buildType") == GwBuildTypes.DITA.buildTypeName)
-            }
-            val uniqueEnvsFromAllDitaBuildsRelatedToSrc = ditaBuildsRelatedToSrc.map {
-                val buildDocId = it.getString("docId")
-                val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", buildDocId)
-                Helpers.convertJsonArrayWithStringsToLowercaseList(docConfig.getJSONArray("environments"))
-            }.flatten().distinct()
-
-            if (arrayListOf(
-                    GwDeployEnvs.STAGING.envName
-                ).any { uniqueEnvsFromAllDitaBuildsRelatedToSrc.contains(it) }
-            ) {
-                sourcesRequiringListeners.add(src)
-            }
-        }
-        return sourcesRequiringListeners
-    }
-
-    private fun createRootProjectForBuildListeners(): Project {
-        return Project {
-            name = "Build listeners"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            val buildListenerSources = getSourcesForBuildListenerBuildTypes()
-            buildListenerSources.forEach {
-                val srcId = it.getString("id")
-                val gitUrl = it.getString("gitUrl")
-                val gitBranch = Helpers.createFullGitBranchName(it.getString("branch"))
-                buildType {
-                    name = "$srcId builds listener"
-                    id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-                    vcs {
-                        root(Helpers.resolveRelativeIdFromIdString(srcId))
-                        cleanCheckout = true
-                    }
-                    steps.step(
-                        GwBuildSteps.createRunBuildManagerStep(
-                            Docs.rootProject.id.toString(),
-                            GwTemplates.BuildListenerTemplate.id.toString(),
-                            gitUrl,
-                            gitBranch = gitBranch,
-                            teamcityBuildBranch = gitBranch
-                        )
-                    )
-
-                    triggers.vcs {}
-
-                    features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                    features.feature(GwBuildFeatures.GwBuildListenerLimitBuildFeature)
-                }
-            }
-        }
-    }
-}
-
-object Sources {
-    val rootProject = createRootProjectForSources()
-
-    private fun createRootProjectForSources(): Project {
-        return Project {
-            name = "Sources"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            template(GwTemplates.ValidationListenerTemplate)
-            createValidationProjectsForSources().forEach {
-                subProject(it)
-            }
-        }
-    }
-
-    private fun createValidationProjectsForSources(): List<Project> {
-        val validationProjects = mutableListOf<Project>()
-        for (src in Helpers.gitSources) {
-            val srcId = src.getString("id")
-            val gitUrl = src.getString("gitUrl")
-            val buildsRelatedToSrc = Helpers.buildConfigs.filter { it.getString("srcId") == srcId }
-            if (buildsRelatedToSrc.isNotEmpty()) {
-                val gitBranch = src.getString("branch")
-                val validationProject = createValidationProject(
-                    srcId, gitUrl, gitBranch, buildsRelatedToSrc
-                )
-                validationProjects.add(validationProject)
-            }
-        }
-        return validationProjects
-    }
-
-    private fun createValidationProject(
-        srcId: String,
-        gitUrl: String,
-        gitBranch: String,
-        buildConfigs: List<JSONObject>,
-    ): Project {
-        val uniqueGwBuildTypesForAllBuilds = buildConfigs.map { it.getString("buildType") }.distinct()
-        return Project {
-            name = srcId
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            val validationBuildsSubProject = Project {
-                name = "Validation builds"
-                id = Helpers.resolveRelativeIdFromIdString("${srcId}${this.name}")
-            }
-
-            buildType(createCleanValidationResultsBuildType(srcId, gitUrl))
-
-            if (uniqueGwBuildTypesForAllBuilds.contains(GwBuildTypes.DITA.buildTypeName)) {
-                validationBuildsSubProject.buildType(
-                    createValidationListenerBuildType(
-                        srcId, gitUrl, gitBranch, this.id.toString()
-                    )
-                )
-            }
-            buildConfigs.forEach {
-                validationBuildsSubProject.buildType(
-                    createValidationBuildType(
-                        srcId, gitBranch, it, it.getString("buildType"), gitUrl
-                    )
-                )
-            }
-            subProject(validationBuildsSubProject)
-
-
-        }
-    }
-
-
-    private fun createValidationListenerBuildType(
-        srcId: String,
-        gitUrl: String,
-        gitBranch: String,
-        teamcityAffectedProjectId: String,
-    ): BuildType {
-        val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(srcId)
-        return BuildType {
-            name = "$srcId validation listener"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcs {
-                root(teamcityGitRepoId)
-                cleanCheckout = true
-            }
-            steps.step(
-                GwBuildSteps.createRunBuildManagerStep(
-                    teamcityAffectedProjectId,
-                    GwTemplates.ValidationListenerTemplate.id.toString(),
-                    gitUrl,
-                    Helpers.createFullGitBranchName(gitBranch),
-                    "%teamcity.build.branch%"
-                )
-            )
-
-            triggers.vcs {}
-
-            features {
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(Helpers.createFullGitBranchName(gitBranch)))
-                feature(GwBuildFeatures.GwBuildListenerLimitBuildFeature)
-            }
-        }
-    }
-
-    private fun createValidationBuildType(
-        srcId: String,
-        gitBranch: String,
-        buildConfig: JSONObject,
-        gwBuildType: String,
-        gitUrl: String,
-    ): BuildType {
-        val docId = buildConfig.getString("docId")
-        val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
-        val docTitle = docConfig.getString("title")
-
-        val workingDir = Helpers.getWorkingDir(buildConfig)
-        val outputDir = when (buildConfig.has("outputPath")) {
-            true -> buildConfig.getString("outputPath")
-            false -> {
-                when (gwBuildType) {
-                    GwBuildTypes.YARN.buildTypeName -> GwConfigParams.YARN_BUILD_OUT_DIR.paramValue
-                    GwBuildTypes.STORYBOOK.buildTypeName -> GwConfigParams.STORYBOOK_BUILD_OUT_DIR.paramValue
-                    GwBuildTypes.SOURCE_ZIP.buildTypeName -> GwConfigParams.SOURCE_ZIP_BUILD_OUT_DIR.paramValue
-                    else -> GwConfigParams.DITA_BUILD_OUT_DIR.paramValue
-                }
-            }
-        }
-
-        val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(srcId)
-        // For the preview URL and doc validator data uploaded to Elasticsearch, we cannot use the teamcity.build.branch
-        // variable because for the default branch it resolves to "<default>". We need the full branch name so we use
-        // the teamcity.build.vcs.branch.<VCS_root_ID> variable. For validation listeners and builds, we use
-        // the teamcity.build.branch variable because it's more flexible (we don't need to provide the VCS Root ID).
-        val teamcityBuildBranch = "%teamcity.build.vcs.branch.${teamcityGitRepoId}%"
-        val publishPath = "preview/${srcId}/${teamcityBuildBranch}/${docId}"
-        val previewUrl = "${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/$publishPath"
-        val previewUrlFile = "preview_url.txt"
-
-        val validationBuildType = BuildType {
-            name = "Validate $docTitle ($docId)"
-            id = Helpers.resolveRelativeIdFromIdString("${this.name}${srcId}")
-
-            artifactRules = "$previewUrlFile\n"
-
-            vcs {
-                root(teamcityGitRepoId)
-                cleanCheckout = true
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            features.feature(
-                GwBuildFeatures.createGwPullRequestsBuildFeature(
-                    Helpers.createFullGitBranchName(
-                        gitBranch
-                    )
-                )
-            )
-        }
-
-        val regex = "ssh://git@stash.guidewire.com/(.+)/(.+).git".toRegex()
-        val matchList = regex.find(gitUrl)?.groupValues
-        val projectKey = matchList!![1]
-        val repoKey = matchList!![2]
-        val pullRequestId = "%teamcity.pullRequest.branch.pullrequests%"
-
-        val uploadStepOuputPath = when (gwBuildType) {
-            GwBuildTypes.DITA.buildTypeName -> "${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}"
-            else -> "${workingDir}/${outputDir}"
-        }
-
-        val uploadStep = GwBuildSteps.createUploadContentToS3BucketStep(
-            GwDeployEnvs.STAGING.envName,
-            uploadStepOuputPath,
-            publishPath,
-        )
-        uploadStep.conditions { equals("teamcity.build.branch.is_default", "false") }
-
-        val previewFileStep = GwBuildSteps.createPreviewUrlFile(
-            previewUrl, previewUrlFile
-        )
-        previewFileStep.conditions { equals("teamcity.build.branch.is_default", "false") }
-
-        val pullRequestCommentStep = GwBuildSteps.createAddPullRequestCommentStep(
-            "preview link",
-            "Hi, I created a preview for validation build %build.number%: $previewUrl",
-            projectKey,
-            repoKey,
-            pullRequestId
-        )
-        pullRequestCommentStep.conditions { equals("teamcity.build.branch.is_default", "false") }
-
-        val buildLogsDir = "build_logs"
-        val adminLogsDir = "admin_logs"
-
-        when (gwBuildType) {
-            GwBuildTypes.DITA.buildTypeName -> {
-                val ditaOtLogsDir = "dita_ot_logs"
-                val docValidatorLogs = "doc_validator_logs"
-                val normalizedDitaDir = "normalized_dita_dir"
-                val schematronReportsDir = "schematron_reports_dir"
-                val docInfoFile = "doc-info.json"
-                val rootMap = buildConfig.getString("root")
-                val indexRedirect = when (buildConfig.has("indexRedirect")) {
-                    true -> {
-                        buildConfig.getBoolean("indexRedirect")
-                    }
-
-                    else -> {
-                        false
-                    }
-
-                }
-                val buildFilter = when (buildConfig.has("filter")) {
-                    true -> {
-                        buildConfig.getString("filter")
-                    }
-
-                    else -> {
-                        null
-                    }
-                }
-
-                validationBuildType.params {
-                    select(
-                        "env.ENABLE_DEBUG_MODE",
-                        "",
-                        label = "Enable debug mode",
-                        options = listOf("Yes" to "--debug", "No" to "")
-                    )
-                }
-
-                validationBuildType.artifactRules += """
-                    ${workingDir}/${docValidatorLogs} => $buildLogsDir
-                    ${workingDir}/${ditaOtLogsDir} => $adminLogsDir
-                    ${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}/${GwConfigParams.BUILD_DATA_FILE.paramValue} => ${GwConfigParams.BUILD_DATA_DIR.paramValue}
-                """.trimIndent()
-
-                validationBuildType.steps {
-                    step(
-                        GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                            GwDitaOutputFormats.HTML5.formatName,
-                            rootMap,
-                            workingDir,
-                            outputDir,
-                            publishPath,
-                            ditaOtLogsDir,
-                            normalizedDitaDir,
-                            schematronReportsDir,
-                            indexRedirect,
-                            buildFilter
-                        )
-                    )
-                    step(uploadStep)
-                    step(previewFileStep)
-                    step(pullRequestCommentStep)
-                    step(
-                        GwBuildSteps.createBuildDitaProjectForValidationsStep(
-                            GwDitaOutputFormats.DITA.formatName,
-                            rootMap,
-                            workingDir,
-                            outputDir,
-                            publishPath,
-                            ditaOtLogsDir,
-                            normalizedDitaDir,
-                            schematronReportsDir,
-                            indexRedirect,
-                            buildFilter
-                        )
-                    )
-                    step(
-                        GwBuildSteps.createGetDocumentDetailsStep(
-                            workingDir, teamcityBuildBranch, srcId, docInfoFile, docConfig
-                        )
-                    )
-                    // For now, image validations are disabled.
-                    // These validations need improvements.
-
-                    arrayOf(
-                        GwValidationModules.VALIDATORS_DITA.validationName,
-                        GwValidationModules.VALIDATORS_FILES.validationName,
-                        GwValidationModules.EXTRACTORS_DITA_OT_LOGS.validationName,
-                        GwValidationModules.EXTRACTORS_SCHEMATRON_REPORTS.validationName,
-                    ).forEach {
-                        val exitCodeEnvVarName = "env.${it.uppercase()}_EXIT_CODE"
-                        this.step(
-                            GwBuildSteps.createRunDocValidatorStep(
-                                it,
-                                workingDir,
-                                ditaOtLogsDir,
-                                normalizedDitaDir,
-                                schematronReportsDir,
-                                docInfoFile,
-                                exitCodeEnvVarName
-                            )
-                        )
-                        val pullRequestCommentForLogFileLinkStep = GwBuildSteps.createAddPullRequestCommentStep(
-                            "${it}.log link",
-                            "\u26D4 \uD83E\uDD16 Hi, $it here. I found some issues in validation build %build.number%: https://gwre-devexp-ci-production-devci.gwre-devops.net/repository/download/%system.teamcity.buildType.id%/%teamcity.build.id%:id/${buildLogsDir}/${it}.log",
-                            projectKey,
-                            repoKey,
-                            pullRequestId
-                        )
-                        pullRequestCommentForLogFileLinkStep.executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
-                        pullRequestCommentForLogFileLinkStep.conditions {
-                            equals("teamcity.build.branch.is_default", "false")
-                            equals(exitCodeEnvVarName, "1")
-                        }
-                        this.step(
-                            pullRequestCommentForLogFileLinkStep
-                        )
-                    }
-                }
-            }
-
-            GwBuildTypes.YARN.buildTypeName -> {
-                val metadata = docConfig.getJSONObject("metadata")
-                val gwPlatforms = metadata.getJSONArray("platform")
-                val gwProducts = metadata.getJSONArray("product")
-                val gwVersions = metadata.getJSONArray("version")
-                val gwPlatformsString = gwPlatforms.joinToString(",")
-                val gwProductsString = gwProducts.joinToString(",")
-                val gwVersionsString = gwVersions.joinToString(",")
-                val nodeImageVersion =
-                    if (buildConfig.has("nodeImageVersion")) buildConfig.getString("nodeImageVersion") else null
-                val buildCommand =
-                    if (buildConfig.has("yarnBuildCustomCommand")) buildConfig.getString("yarnBuildCustomCommand") else null
-                val customEnv = if (buildConfig.has("customEnv")) buildConfig.getJSONArray("customEnv") else null
-
-                validationBuildType.artifactRules += """
-                    ${workingDir}/*.log => $buildLogsDir
-                """.trimIndent()
-
-
-                validationBuildType.steps {
-                    val exitCodeEnvVarName = "env.YARN_BUILD_EXIT_CODE"
-                    step(
-                        GwBuildSteps.createBuildYarnProjectStep(
-                            GwDeployEnvs.STAGING.envName,
-                            publishPath,
-                            buildCommand,
-                            nodeImageVersion,
-                            docId,
-                            gwProductsString,
-                            gwPlatformsString,
-                            gwVersionsString,
-                            workingDir,
-                            customEnv,
-                            validationMode = true,
-                            exitCodeEnvVarName = exitCodeEnvVarName
-                        )
-                    )
-                    step(uploadStep)
-                    step(previewFileStep)
-                    step(pullRequestCommentStep)
-                    val buildLogFileName = "yarn_build.log"
-                    val pullRequestCommentForLogFileLinkStep = GwBuildSteps.createAddPullRequestCommentStep(
-                        "$buildLogFileName link",
-                        "\u26D4 \uD83E\uDD16 Hi, I found some issues in validation build %build.number%: https://gwre-devexp-ci-production-devci.gwre-devops.net/repository/download/%system.teamcity.buildType.id%/%teamcity.build.id%:id/${buildLogsDir}/${buildLogFileName}",
-                        projectKey,
-                        repoKey,
-                        pullRequestId
-                    )
-                    pullRequestCommentForLogFileLinkStep.executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
-                    pullRequestCommentForLogFileLinkStep.conditions {
-                        equals("teamcity.build.branch.is_default", "false")
-                        equals(exitCodeEnvVarName, "1")
-                    }
-                    this.step(
-                        pullRequestCommentForLogFileLinkStep
-                    )
-                }
-
-                validationBuildType.features {
-                    feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-                }
-
-            }
-        }
-
-        // DITA validation builds are triggered by validation listener builds.
-        // The reference to the validation listener template is one of the criteria used by the build manager app
-        // to identify builds that must be triggered.
-        // Yarn validation builds are triggered by regular TeamCity VCS triggers.
-        when (gwBuildType) {
-            GwBuildTypes.DITA.buildTypeName -> {
-                validationBuildType.templates(GwTemplates.ValidationListenerTemplate)
-            }
-
-            GwBuildTypes.YARN.buildTypeName -> {
-                validationBuildType.triggers.trigger(GwVcsTriggers.createNonDitaVcsTrigger(workingDir))
-            }
-        }
-
-        return validationBuildType
-    }
-
-    private fun createCleanValidationResultsBuildType(
-        srcId: String,
-        gitUrl: String,
-    ): BuildType {
-        val elasticsearchUrl = Helpers.getElasticsearchUrl(GwDeployEnvs.STAGING.envName)
-        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)
-        return BuildType {
-            name = "Clean validation results for $srcId"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            vcs {
-                root(Helpers.resolveRelativeIdFromIdString(srcId))
-                cleanCheckout = true
-            }
-
-            steps {
-                script {
-                    name = "Run the results cleaner"
-                    id = Helpers.createIdStringFromName(this.name)
-                    executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
-                    scriptContent = """
-                        #!/bin/bash
-                        set -xe
-                        
-                        $awsEnvVars
-                        
-                        results_cleaner --elasticsearch-urls "$elasticsearchUrl"  --git-source-id "$srcId" --git-source-url "$gitUrl" --s3-bucket-name "tenant-doctools-staging-builds"
-                    """.trimIndent()
-                    dockerImage = GwDockerImages.DOC_VALIDATOR_LATEST.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                }
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            triggers.vcs {}
-        }
-    }
-
-}
-
-object Recommendations {
-    val rootProject = createRootProjectForRecommendations()
-
-    private fun createRootProjectForRecommendations(): Project {
-        return Project {
-            name = "Recommendations"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            for (env in arrayOf(GwDeployEnvs.STAGING)) {
-                val recommendationProject = createRecommendationProject(env.envName)
-                subProject(recommendationProject)
-            }
-        }
-    }
-
-    private fun createRecommendationProject(deployEnv: String): Project {
-        val recommendationProjectBuildTypes = mutableListOf<BuildType>()
-        val allPlatformProductVersionCombinations = generatePlatformProductVersionCombinationsForAllDocs(deployEnv)
-        for (combination in allPlatformProductVersionCombinations) {
-            val (platform, product, version) = combination
-            val recommendationsForTopicsBuildTypeInt = createRecommendationsForTopicsBuildType(
-                GwDeployEnvs.STAGING.envName, platform, product, version
-
-            )
-            recommendationProjectBuildTypes.add(recommendationsForTopicsBuildTypeInt)
-        }
-        return Project {
-            name = "Recommendations for $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            recommendationProjectBuildTypes.forEach {
-                buildType(it)
-            }
-        }
-    }
-
-    private fun generatePlatformProductVersionCombinationsForAllDocs(deployEnv: String): List<Triple<String, String, String>> {
-        val result = mutableListOf<Triple<String, String, String>>()
-        for (docConfig in Helpers.docConfigs) {
-            val docEnvironmentsLowercaseList =
-                Helpers.convertJsonArrayWithStringsToLowercaseList(docConfig.getJSONArray("environments"))
-            if (docEnvironmentsLowercaseList.contains(deployEnv)) {
-                val docMetadata = docConfig.getJSONObject("metadata")
-                val docPlatforms = Helpers.convertJsonArrayWithStringsToList(docMetadata.getJSONArray("platform"))
-                val docProducts = Helpers.convertJsonArrayWithStringsToList(docMetadata.getJSONArray("product"))
-                val docVersions = Helpers.convertJsonArrayWithStringsToList(docMetadata.getJSONArray("version"))
-                result += Helpers.generatePlatformProductVersionCombinations(docPlatforms, docProducts, docVersions)
-            }
-        }
-        return result.distinct()
-    }
-
-    private fun createRecommendationsForTopicsBuildType(
-        deployEnv: String,
-        gwPlatform: String,
-        gwProduct: String,
-        gwVersion: String,
-    ): BuildType {
-        val pretrainedModelFile = "GoogleNews-vectors-negative300.bin"
-        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
-        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
-        val elasticsearchUrl = Helpers.getElasticsearchUrl(deployEnv)
-
-        return BuildType {
-            name = "Generate recommendations for $gwProduct, $gwPlatform, $gwVersion"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            steps {
-                script {
-                    name = "Download the pretrained model"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                            #!/bin/bash
-                            set -xe
-                            
-                            echo "Setting credentials to access int"
-                            $awsEnvVars
-                            
-                            echo "Downloading the pretrained model from the S3 bucket"
-                            aws s3 cp s3://tenant-doctools-${atmosDeployEnv}-builds/recommendation-engine/${pretrainedModelFile} %teamcity.build.workingDir%/
-                        """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
-                }
-                script {
-                    name = "Run the recommendation engine"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                        #!/bin/bash
-                        set -xe
-                        
-                        export PLATFORM="$gwPlatform"
-                        export PRODUCT="$gwProduct"
-                        export VERSION="$gwVersion"
-                        export ELASTICSEARCH_URL="$elasticsearchUrl"
-                        export DOCS_INDEX_NAME="gw-docs"
-                        export RECOMMENDATIONS_INDEX_NAME="gw-recommendations"
-                        export PRETRAINED_MODEL_FILE="$pretrainedModelFile"
-                                                                
-                        recommendation_engine
-                    """.trimIndent()
-                    dockerImage = GwDockerImages.RECOMMENDATION_ENGINE_LATEST.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                }
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-        }
-    }
-}
-
-object Apps {
-    val rootProject = createRootProjectForApps()
-
-    private fun createRootProjectForApps(): Project {
-        return Project {
-            name = "Apps"
-            id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-            subProject(FlailSSGProject)
-        }
-    }
-
-    // TODO: Remove this project after switch to main
-    object FlailSSGProject : Project({
-        name = "Flail SSG"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-        buildType(PublishFlailSSGDockerImageBuildType)
-        buildType(TestFlailSSGBuildType)
-
-    })
-
-    object PublishFlailSSGDockerImageBuildType : BuildType({
-        val appDir = "frontend/flail_ssg"
-        name = "Publish Docker image for Flail SSG"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-        vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            cleanCheckout = true
-        }
-
-        steps {
-            script {
-                name = "Publish Docker image to Artifactory"
-                id = Helpers.createIdStringFromName(this.name)
-                scriptContent = """
-                    #!/bin/bash                        
-                    set -xe
-                    
-                    cd $appDir
-                    ./publish_docker.sh latest       
-                """.trimIndent()
-            }
-        }
-
-        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-        dependencies {
-            snapshot(TestFlailSSGBuildType) {
-                reuseBuilds = ReuseBuilds.SUCCESSFUL
-                onDependencyFailure = FailureAction.FAIL_TO_START
-            }
-        }
-
-        triggers {
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(appDir)))
-        }
-    })
-
-    object TestFlailSSGBuildType : BuildType({
-        name = "Test Flail SSG"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
-
-        vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            cleanCheckout = true
-        }
-
-        params {
-            text(
-                "env.DOCS_CONFIG_FILE",
-                "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}",
-                display = ParameterDisplay.HIDDEN
-            )
-        }
-
-        steps {
-            step(GwBuildSteps.MergeDocsConfigFilesStep)
-            script {
-                name = "Run tests"
-                id = Helpers.createIdStringFromName(this.name)
-                scriptContent = """
-                    #!/bin/bash
-                    set -xe
-
-                    cd frontend/flail_ssg
-                    ./run_tests.sh
-                """.trimIndent()
-                dockerImage = GwDockerImages.PYTHON_3_9_SLIM_BUSTER.imageUrl
-                dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-            }
-        }
-
-        features {
-            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-        }
-
-        triggers {
-            trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf("frontend")))
-        }
-    })
 }
 
 object Helpers {
@@ -3796,369 +555,6 @@ object Helpers {
 
 }
 
-object GwBuilds {
-    val deployDocPortalDev = createDeployDocPortalBuildType(GwDeployEnvs.DEV.envName)
-    val deployDocPortalStaging = createDeployDocPortalBuildType(GwDeployEnvs.STAGING.envName)
-    val deployDocPortalProd = createDeployDocPortalBuildType(GwDeployEnvs.PROD.envName)
-
-    object AuditNpmPackages : BuildType({
-        // The --recursive option was removed from the yarn audit:all script in package.json because it causes the "400 bad request" error.
-        // It's a bug in yarn and we couldn't find a fix.
-        name = "Audit npm packages"
-        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-        vcs {
-            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-            cleanCheckout = true
-        }
-
-        steps {
-            nodeJS {
-                id = "Run yarn npm audit"
-                shellScript = """
-                    yarn && yarn audit:all
-                """.trimIndent()
-                dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
-            }
-        }
-
-        features {
-            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-        }
-
-        triggers {
-            trigger(
-                GwVcsTriggers.createDocPortalVcsTrigger(
-                    listOf(
-                        GwTriggerPaths.PACKAGE_JSON.pathValue,
-                        GwTriggerPaths.YARN_LOCK.pathValue,
-                        GwTriggerPaths.SUBDIRS_PACKAGE_JSON.pathValue
-                    )
-                )
-            )
-        }
-    })
-
-    object TestSettingsKts : BuildType({
-        name = "Test settings.kts"
-        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-        vcs {
-            root(
-                GwVcsRoots.DocumentationPortalGitVcsRoot
-            )
-            cleanCheckout = true
-        }
-
-        steps {
-            maven {
-                goals = "teamcity-configs:generate"
-                pomLocation = ".teamcity/pom.xml"
-                workingDir = ""
-            }
-        }
-
-        features {
-            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-        }
-
-        // The general rule is to trigger test builds only for pull requests branches and to trigger deploy builds
-        // for the default branch, which then trigger test builds as snapshot dependencies.
-        // This test build doesn't have an associated deployment build,
-        // therefore we want to run it on changes in the default branch as well.
-        triggers {
-            trigger(
-                GwVcsTriggers.createDocPortalVcsTrigger(
-                    listOf(
-                        GwTriggerPaths.TEAMCITY_POM_XML.pathValue,
-                        GwTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue,
-                        GwTriggerPaths.TEAMCITY_CONFIG.pathValue
-                    )
-                )
-            )
-        }
-    })
-
-    fun createDeployDocPortalBuildType(deployEnv: String): BuildType {
-        val snapshotDependencies = when (deployEnv) {
-            GwDeployEnvs.DEV.envName -> listOf(
-                Database.deployDbBuildTypeDev,
-                Server.deployServerBuildTypeDev,
-                Frontend.deployReactLandingPagesBuildTypeDev
-            )
-
-            GwDeployEnvs.STAGING.envName -> listOf(
-                Database.deployDbBuildTypeStaging,
-                Server.deployServerBuildTypeStaging,
-                Frontend.deployReactLandingPagesBuildTypeStaging
-            )
-
-            GwDeployEnvs.PROD.envName -> listOf(
-                Database.deployDbBuildTypeProd,
-                Server.deployServerBuildTypeProd,
-                Frontend.deployReactLandingPagesBuildTypeProd
-            )
-
-            else -> listOf()
-        }
-        return BuildType {
-            name = "Deploy doc portal to $deployEnv"
-            description = "Deploys db, server and React landing pages to $deployEnv"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-            type = BuildTypeSettings.Type.COMPOSITE
-
-            dependencies {
-                snapshotDependencies.forEach {
-                    snapshot(it) {
-                        onDependencyFailure = FailureAction.FAIL_TO_START
-                    }
-                }
-            }
-        }
-    }
-
-    fun createBuildAndPublishDockerImageToDevEcrBuildType(
-        tagVersion: String,
-        devDockerImageUrl: String,
-        dockerfilePath: String,
-        snapshotDependencies: List<BuildType>,
-    ): BuildType {
-        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
-        return BuildType {
-            name = "Build and publish Docker Image to DEV ECR"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${devDockerImageUrl}"))
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            steps {
-                script {
-                    name = "Build and publish Docker Image to DEV ECR"
-                    id = Helpers.createIdStringFromName(this.name)
-
-                    scriptContent = """
-                        #!/bin/bash 
-                        set -xe
-                        
-                        # Log into the dev ECR, build and push the image
-                        $awsEnvVars
-                        
-                        export TAG_VERSION=$tagVersion
-                        export DEPT_CODE=${GwAtmosLabels.DEPT_CODE.labelValue}
-                        export POD_NAME=${GwAtmosLabels.POD_NAME.labelValue}
-        
-                        set +x
-                        docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
-                        set -x
-                        docker build -t ${devDockerImageUrl}:${tagVersion} $dockerfilePath \
-                        --build-arg NPM_AUTH_TOKEN \
-                        --build-arg TAG_VERSION \
-                        --build-arg DEPT_CODE \
-                        --build-arg POD_NAME
-                        docker push ${devDockerImageUrl}:${tagVersion}
-                    """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters =
-                        "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
-                }
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            dependencies {
-                snapshotDependencies.forEach {
-                    snapshot(it) {
-                        onDependencyFailure = FailureAction.FAIL_TO_START
-                    }
-                }
-            }
-        }
-    }
-
-    fun createPublishDockerImageToProdEcrBuildType(
-        tagVersion: String,
-        devDockerImageUrl: String,
-        prodDockerImageUrl: String,
-        snapshotDependencies: List<BuildType>,
-    ): BuildType {
-        val awsEnvVarsDev = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
-        val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
-        return BuildType {
-            name = "Publish Docker Image to PROD ECR"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${devDockerImageUrl}"))
-
-            steps {
-                script {
-                    name = "Download Docker Image from DEV ECR and push it to PROD ECR"
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                        set -xe
-                        
-                        # Log into the dev ECR, download the image and tag it
-                        $awsEnvVarsDev
-        
-                        set +x
-                        docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
-                        set -x
-                        docker pull ${devDockerImageUrl}:${tagVersion}
-                        docker tag ${devDockerImageUrl}:${tagVersion} ${prodDockerImageUrl}:${tagVersion}
-                        
-                        # Log into the prod ECR and push the image
-                        $awsEnvVarsProd
-                        
-                        set +x
-                        docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST_PROD.paramValue}
-                        set -x
-                        docker push ${prodDockerImageUrl}:${tagVersion}
-                    """.trimIndent()
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerRunParameters =
-                        "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
-                }
-            }
-
-            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-
-            dependencies {
-                snapshotDependencies.forEach {
-                    snapshot(it) {
-                        onDependencyFailure = FailureAction.FAIL_TO_START
-                    }
-                }
-            }
-        }
-    }
-
-    fun createRunCheckmarxScanBuildType(sourceDir: String): BuildType {
-        return BuildType {
-            templates(AbsoluteId("CheckmarxSastScan"))
-            name = "Run Checkmarx scan"
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${sourceDir}"))
-
-            params {
-                text("checkmarx.project.name", "doctools")
-                text("checkmarx.source.directory", sourceDir)
-                text(
-                    "checkmarx.location.files.exclude ", """
-                        !**/_cvs/**/*, !**/.svn/**/*, !**/.hg/**/*, !**/.git/**/*, !**/.bzr/**/*, !**/bin/**/*,
-                        !**/obj/**/*, !**/backup/**/*, !**/.idea/**/*, !**/*.DS_Store, !**/*.ipr, !**/*.iws,
-                        !**/*.bak, !**/*.tmp, !**/*.aac, !**/*.aif, !**/*.iff, !**/*.m3u, !**/*.mid, !**/*.mp3,
-                        !**/*.mpa, !**/*.ra, !**/*.wav, !**/*.wma, !**/*.3g2, !**/*.3gp, !**/*.asf, !**/*.asx,
-                        !**/*.avi, !**/*.flv, !**/*.mov, !**/*.mp4, !**/*.mpg, !**/*.rm, !**/*.swf, !**/*.vob,
-                        !**/*.wmv, !**/*.bmp, !**/*.gif, !**/*.jpg, !**/*.png, !**/*.psd, !**/*.tif, !**/*.swf,
-                        !**/*.jar, !**/*.zip, !**/*.rar, !**/*.exe, !**/*.dll, !**/*.pdb,   !**/*.7z,  !**/*.gz,
-                        !**/*.tar.gz, !**/*.tar, !**/*.gz, !**/*.ahtm, !**/*.ahtml, !**/*.fhtml, !**/*.hdm,
-                        !**/*.hdml, !**/*.hsql, !**/*.ht, !**/*.hta, !**/*.htc, !**/*.htd, !**/*.war, !**/*.ear,
-                        !**/*.htmls, !**/*.ihtml, !**/*.mht, !**/*.mhtm, !**/*.mhtml, !**/*.ssi, !**/*.stm,
-                        !**/*.stml, !**/*.ttml, !**/*.txn, !**/*.xhtm, !**/*.xhtml, !**/*.class, !**/node_modules/**/*, !**/*.iml,
-                        !**/tests/**/*, !**/.teamcity/**/*, !**/__tests__/**/*, !**/images/**/*, !**/fonts/**/*
-                    """.trimIndent()
-                )
-            }
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            features {
-                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-            }
-        }
-    }
-
-    fun createTestKubernetesConfigFilesBuildType(deployEnv: String, triggerPath: String): BuildType {
-        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
-        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
-        var deployEnvVars = ""
-        var deploymentFile = ""
-        var testGatewayConfigScript = ""
-        var buildName = ""
-        when (triggerPath) {
-            GwTriggerPaths.AWS_S3_KUBE.pathValue -> {
-                deployEnvVars = Helpers.setContentStorageDeployEnvVars(deployEnv)
-                deploymentFile = GwConfigParams.S3_KUBE_DEPLOYMENT_FILE.paramValue
-                buildName = "Test Kubernetes config files for content storage on $deployEnv"
-            }
-
-            GwTriggerPaths.LANDING_PAGES_KUBE.pathValue -> {
-                deployEnvVars =
-                    Helpers.setReactLandingPagesDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL.tagValue)
-                deploymentFile = GwConfigParams.DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE.paramValue
-                buildName = "Test Kubernetes config files for React landing pages on $deployEnv"
-            }
-
-            GwTriggerPaths.SERVER_KUBE.pathValue -> {
-                deployEnvVars = Helpers.setServerDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL.tagValue)
-                deploymentFile = GwConfigParams.DOC_PORTAL_KUBE_DEPLOYMENT_FILE.paramValue
-                buildName = "Test Kubernetes config files for server on $deployEnv"
-                testGatewayConfigScript = """
-                    export TMP_GATEWAY_CONFIG_FILE="tmp-gateway-config.yml"
-                    eval "echo \"${'$'}(cat ${Helpers.getServerGatewayConfigFile(deployEnv)})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
-                    kubectl create -f ${'$'}TMP_GATEWAY_CONFIG_FILE --dry-run=client
-                """.trimIndent()
-            }
-        }
-        return BuildType {
-            name = buildName
-            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
-
-            vcs {
-                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
-                cleanCheckout = true
-            }
-
-            steps {
-                script {
-                    name = "Create Kubernetes resources in dry run "
-                    id = Helpers.createIdStringFromName(this.name)
-                    scriptContent = """
-                        #!/bin/bash 
-                        set -e
-                        
-                        # Set AWS credentials
-                        $awsEnvVars
-                        
-                        # Set environment variables needed for Kubernetes config files
-                        $deployEnvVars
-                        
-                        # Set other envs
-                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
-                        
-                        aws eks update-kubeconfig --name atmos-$atmosDeployEnv
-                        eval "echo \"${'$'}(cat ${deploymentFile})\"" > ${'$'}TMP_DEPLOYMENT_FILE
-                        kubectl create -f ${'$'}TMP_DEPLOYMENT_FILE --dry-run=client
-                        
-                        $testGatewayConfigScript
-                    """.trimIndent()
-                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
-                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
-                }
-            }
-
-            features {
-                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
-                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
-                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
-            }
-
-            when (deployEnv) {
-                GwDeployEnvs.DEV.envName -> {
-                    triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(triggerPath)))
-                }
-            }
-        }
-
-    }
-}
-
 object GwBuildSteps {
     object MergeAllLegacyConfigsStep : ScriptBuildStep({
         name = "Merge all config files"
@@ -4194,7 +590,7 @@ object GwBuildSteps {
                   if [[ "${'$'}TIME" == "20" ]]; then
                     break
                   fi
-                  PODS=${'$'}(kubectl get pods -l app=croissant --namespace=doctools | tail -n +2)
+                  PODS=${'$'}(kubectl get pods -l app=$appName --namespace=doctools | tail -n +2)
                   FAILED_PODS=${'$'}(echo "${'$'}PODS" | grep CrashLoopBackOff | cut -d' ' -f1)
                   if [[ ! -z "${'$'}FAILED_PODS" ]]; then
                     echo "The following pods failed during the deployment. Check the details in Kubernetes."
@@ -5447,25 +1843,25 @@ object GwBuildFeatures {
 object GwVcsRoots {
     // TODO: Switch this repo to the main branch before switch to main
     val DocumentationPortalGitVcsRoot = createGitVcsRoot(
-        Helpers.resolveRelativeIdFromIdString("Documentation Portal git repo"),
+        Helpers.resolveRelativeIdFromIdString(Helpers.md5("Documentation Portal git repo")),
         "ssh://git@stash.guidewire.com/doctools/documentation-portal.git",
         "feature/typeorm",
     )
 
     val LocalizedPdfsGitVcsRoot = createGitVcsRoot(
-        Helpers.resolveRelativeIdFromIdString("Localized PDFs git repo"),
+        Helpers.resolveRelativeIdFromIdString(Helpers.md5("Localized PDFs git repo")),
         "ssh://git@stash.guidewire.com/docsources/localization-pdfs.git",
         "main"
     )
 
     val UpgradeDiffsGitVcsRoot = createGitVcsRoot(
-        Helpers.resolveRelativeIdFromIdString("Upgrade diffs git repo"),
+        Helpers.resolveRelativeIdFromIdString(Helpers.md5("Upgrade diffs git repo")),
         "ssh://git@stash.guidewire.com/docsources/upgradediffs.git",
         "main",
     )
 
     val DitaOtPluginsVcsRoot = createGitVcsRoot(
-        Helpers.resolveRelativeIdFromIdString("DITA OT plugins repo"),
+        Helpers.resolveRelativeIdFromIdString(Helpers.md5("DITA OT plugins repo")),
         "ssh://git@stash.guidewire.com/doctools/dita-ot-plugins.git",
         "main",
     )
@@ -5499,7 +1895,7 @@ object GwVcsRoots {
         return Helpers.getBuildSourceConfigs().map {
             val gitUrl = it.getString("gitUrl")
             val defaultBranch = it.getString("branch")
-            val vcsRootId = Helpers.resolveRelativeIdFromIdString(it.getString("id"))
+            val vcsRootId = Helpers.resolveRelativeIdFromIdString(Helpers.md5(it.getString("id")))
             createGitVcsRoot(vcsRootId, gitUrl, defaultBranch)
         }
     }
@@ -5520,14 +1916,14 @@ object GwTemplates {
     object BuildListenerTemplate : Template({
         name = "Build listener"
         description = "Empty template added to doc builds to make them discoverable by build listener builds"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
+        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
     })
 
     object ValidationListenerTemplate : Template({
         name = "Validation listener"
         description =
             "Empty template added to validation builds to make them discoverable by validation listener builds"
-        id = Helpers.resolveRelativeIdFromIdString(this.name)
+        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
     })
 }
 
@@ -5562,6 +1958,3658 @@ object GwVcsTriggers {
                     -:user=doctools:${workingDirWithoutCheckoutDir}/**
                 """.trimIndent()
             }
+        }
+    }
+}
+
+object User {
+    val rootProject = createRootProjectForUser()
+
+    private fun createRootProjectForUser(): Project {
+        return Project {
+            name = "User"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            subProject(Runners.rootProject)
+            subProject(Docs.rootProject)
+            subProject(Sources.rootProject)
+            subProject(Recommendations.rootProject)
+            subProject(BuildListeners.rootProject)
+            subProject(Custom.rootProject)
+        }
+    }
+
+    object Runners {
+        val rootProject = createRootProjectForRunners()
+
+        private fun getDocConfigsFromBuildConfigsForEnv(deployEnv: String): List<JSONObject> {
+            val docConfigsForEnv = mutableListOf<JSONObject>()
+            Helpers.buildConfigs.forEach {
+                val docId = it.getString("docId")
+                val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
+                val docEnvironments = docConfig.getJSONArray("environments")
+                if (docEnvironments.contains(deployEnv)) {
+                    docConfigsForEnv.add(docConfig)
+                }
+            }
+            return docConfigsForEnv
+        }
+
+        private fun getDocIdsForProductAndVersion(
+            docConfigs: List<JSONObject>,
+            gwProduct: String,
+            gwVersion: String,
+        ): List<String> {
+            val matchingDocIds = mutableListOf<String>()
+            docConfigs.forEach {
+                val docId = it.getString("id")
+                val metadata = it.getJSONObject("metadata")
+                val gwProducts = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("product"))
+                val gwVersions = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("version"))
+                val docConfigMatchesProductAndVersion =
+                    gwProducts.any { p -> p == gwProduct } && gwVersions.any { v -> v == gwVersion }
+                if (docConfigMatchesProductAndVersion) {
+                    matchingDocIds.add(docId)
+                }
+            }
+            return matchingDocIds
+        }
+
+
+        private fun createRootProjectForRunners(): Project {
+            return Project {
+                name = "Runners"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                arrayOf(
+                    GwDeployEnvs.DEV.envName,
+                    GwDeployEnvs.STAGING.envName,
+                    GwDeployEnvs.PROD.envName
+                ).map {
+                    subProject(createRunnersProjectForEnv(it))
+                }
+            }
+        }
+
+        private fun createRunnersProjectForEnv(deployEnv: String): Project {
+            val docConfigsForEnv = getDocConfigsFromBuildConfigsForEnv(deployEnv)
+            val productProjects = generateProductProjects(deployEnv, docConfigsForEnv)
+            return Project {
+                name = "Runners for $deployEnv"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                productProjects.forEach { pp ->
+                    pp.subProjects.forEach { vp ->
+                        val gwProduct = pp.name
+                        val gwVersion = vp.name
+                        val matchingDocIds = getDocIdsForProductAndVersion(docConfigsForEnv, gwProduct, gwVersion)
+                        if (matchingDocIds.size > 1) {
+                            val publishAllDocsBuildType = createRunnerBuildType(
+                                deployEnv, matchingDocIds, "Publish all docs", gwProduct, gwVersion
+                            )
+                            vp.buildType(publishAllDocsBuildType)
+                        }
+                    }
+                    subProject(pp)
+                }
+            }
+        }
+
+        private fun generateProductProjects(deployEnv: String, docConfigs: List<JSONObject>): List<Project> {
+            val productProjects = mutableListOf<Project>()
+            for (docConfig in docConfigs) {
+                val docId = docConfig.getString("id")
+                val docTitle = docConfig.getString("title")
+                val metadata = docConfig.getJSONObject("metadata")
+                val gwProducts = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("product"))
+                val gwVersions = Helpers.convertJsonArrayWithStringsToList(metadata.getJSONArray("version"))
+                for (gwProduct in gwProducts) {
+                    val existingProductProject = productProjects.find { it.name == gwProduct }
+                    if (existingProductProject == null) {
+                        productProjects.add(Project {
+                            name = gwProduct
+                            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${deployEnv}"))
+
+                            gwVersions.forEach {
+                                subProject {
+                                    name = it
+                                    id =
+                                        Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${gwProduct}${deployEnv}"))
+
+                                    buildType(createRunnerBuildType(deployEnv, listOf(docId), docTitle, gwProduct, it))
+                                }
+                            }
+                        })
+                    } else {
+                        for (gwVersion in gwVersions) {
+                            val runnerBuildType =
+                                createRunnerBuildType(deployEnv, listOf(docId), docTitle, gwProduct, gwVersion)
+                            val existingVersionSubproject =
+                                existingProductProject.subProjects.find { it.name == gwVersion }
+                            if (existingVersionSubproject == null) {
+                                existingProductProject.subProject {
+                                    name = gwVersion
+                                    id =
+                                        Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${gwProduct}${deployEnv}"))
+
+                                    buildType(runnerBuildType)
+                                }
+                            } else {
+                                existingVersionSubproject.buildType(runnerBuildType)
+                            }
+                        }
+                    }
+                }
+            }
+            return productProjects
+        }
+
+        private fun createRunnerBuildType(
+            deployEnv: String,
+            docIds: List<String>,
+            docTitle: String,
+            gwProduct: String,
+            gwVersion: String,
+        ): BuildType {
+            return BuildType {
+                val uniqueId = Helpers.md5("${deployEnv}${gwProduct}${gwVersion}${docIds.joinToString()}")
+                name = "$docTitle (${uniqueId})"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                type = BuildTypeSettings.Type.COMPOSITE
+
+                dependencies {
+                    docIds.forEach {
+                        snapshot(Helpers.resolveRelativeIdFromIdString(Helpers.md5("Publish to ${deployEnv}${it}"))) {
+                            // Build runners reuse doc builds to avoid unnecessary build runs.
+                            // This feature can't be used in runners for prod doc builds because the prod doc builds
+                            // don’t use a VCS Root - they only copy from staging to prod.
+                            // Therefore, runners can’t discover any changes in the VCS Root from which the staging output
+                            // was built and as a result they don’t trigger the dependent doc build for prod.
+                            if (deployEnv == GwDeployEnvs.PROD.envName) {
+                                reuseBuilds = ReuseBuilds.NO
+                            }
+                            onDependencyFailure = FailureAction.FAIL_TO_START
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    object Docs {
+        val rootProject = createRootProjectForDocs()
+
+        private fun createRootProjectForDocs(): Project {
+            return Project {
+                name = "Docs"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                template(GwTemplates.BuildListenerTemplate)
+
+                for (buildConfig in Helpers.buildConfigs) {
+                    val srcId = buildConfig.getString("srcId")
+                    val docProject = createDocProject(buildConfig, srcId)
+                    subProject(docProject)
+                }
+            }
+        }
+
+        private fun createYarnBuildTypes(
+            envNames: List<String>,
+            docId: String,
+            srcId: String,
+            publishPath: String,
+            workingDir: String,
+            outputDir: String,
+            indexForSearch: Boolean,
+            buildCommand: String?,
+            nodeImageVersion: String?,
+            gwPlatforms: String,
+            gwProducts: String,
+            gwVersions: String,
+            customEnv: JSONArray?,
+        ): List<BuildType> {
+            val yarnBuildTypes = mutableListOf<BuildType>()
+            for (env in envNames) {
+                val docBuildType = createInitialDocBuildType(
+                    GwBuildTypes.YARN.buildTypeName,
+                    env,
+                    docId,
+                    srcId,
+                    publishPath,
+                    workingDir,
+                    outputDir,
+                    indexForSearch
+                )
+                if (env == GwDeployEnvs.PROD.envName) {
+                    val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publishPath)
+                    docBuildType.steps.step(copyFromStagingToProdStep)
+                    docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
+                } else {
+                    val yarnBuildStep = GwBuildSteps.createBuildYarnProjectStep(
+                        env,
+                        publishPath,
+                        buildCommand,
+                        nodeImageVersion,
+                        docId,
+                        gwProducts,
+                        gwPlatforms,
+                        gwVersions,
+                        workingDir,
+                        customEnv
+                    )
+                    docBuildType.steps.step(yarnBuildStep)
+                    docBuildType.steps.stepsOrder.add(0, yarnBuildStep.id.toString())
+                }
+                yarnBuildTypes.add(docBuildType)
+            }
+            return yarnBuildTypes
+        }
+
+        private fun createStorybookBuildTypes(
+            envNames: List<String>,
+            docId: String,
+            srcId: String,
+            publishPath: String,
+            workingDir: String,
+            outputDir: String,
+            indexForSearch: Boolean,
+            gwPlatforms: String,
+            gwProducts: String,
+            gwVersions: String,
+            customEnv: JSONArray?,
+        ): List<BuildType> {
+            val storybookBuildTypes = mutableListOf<BuildType>()
+            for (env in envNames) {
+                val docBuildType = createInitialDocBuildType(
+                    GwBuildTypes.STORYBOOK.buildTypeName,
+                    env,
+                    docId,
+                    srcId,
+                    publishPath,
+                    workingDir,
+                    outputDir,
+                    indexForSearch
+                )
+                if (env == GwDeployEnvs.PROD.envName) {
+                    val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publishPath)
+                    docBuildType.steps.step(copyFromStagingToProdStep)
+                    docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
+                } else {
+                    val storybookBuildStep = GwBuildSteps.createBuildStorybookProjectStep(
+                        env, publishPath, docId, gwProducts, gwPlatforms, gwVersions, workingDir, customEnv
+                    )
+                    docBuildType.steps.step(storybookBuildStep)
+                    docBuildType.steps.stepsOrder.add(0, storybookBuildStep.id.toString())
+                }
+                storybookBuildTypes.add(docBuildType)
+            }
+            return storybookBuildTypes
+        }
+
+        private fun createSourceZipBuildTypes(
+            envNames: List<String>,
+            docId: String,
+            srcId: String,
+            publishPath: String,
+            workingDir: String,
+            outputDir: String,
+            indexForSearch: Boolean,
+            zipFilename: String,
+        ): List<BuildType> {
+            val sourceZipBuildTypes = mutableListOf<BuildType>()
+            for (env in envNames) {
+                val docBuildType = createInitialDocBuildType(
+                    GwBuildTypes.SOURCE_ZIP.buildTypeName,
+                    env,
+                    docId,
+                    srcId,
+                    publishPath,
+                    workingDir,
+                    outputDir,
+                    indexForSearch
+                )
+
+                if (env == GwDeployEnvs.PROD.envName) {
+                    val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publishPath)
+                    docBuildType.steps.step(copyFromStagingToProdStep)
+                    docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
+                } else {
+                    val zipUpSourcesBuildStep = GwBuildSteps.createZipUpSourcesStep(
+                        workingDir, outputDir, zipFilename
+                    )
+                    docBuildType.steps.step(zipUpSourcesBuildStep)
+                    docBuildType.steps.stepsOrder.add(0, zipUpSourcesBuildStep.id.toString())
+                }
+                sourceZipBuildTypes.add(docBuildType)
+            }
+            return sourceZipBuildTypes
+        }
+
+        private fun createJustCopyBuildTypes(
+            envNames: List<String>,
+            docId: String,
+            srcId: String,
+            publishPath: String,
+            workingDir: String,
+            outputDir: String,
+        ): List<BuildType> {
+            val justCopyBuildTypes = mutableListOf<BuildType>()
+            for (env in envNames) {
+                val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publishPath)
+                if (env == GwDeployEnvs.PROD.envName) {
+                    val docBuildType = createInitialDocBuildType(
+                        GwBuildTypes.JUST_COPY.buildTypeName,
+                        env,
+                        docId,
+                        srcId,
+                        publishPath,
+                        workingDir,
+                        outputDir,
+                        false
+                    )
+                    docBuildType.steps.step(copyFromStagingToProdStep)
+                    justCopyBuildTypes.add(docBuildType)
+                }
+            }
+
+            return justCopyBuildTypes
+        }
+
+
+        private fun createDitaBuildTypes(
+            envNames: List<String>,
+            docId: String,
+            srcId: String,
+            gitUrl: String,
+            gitBranch: String,
+            publishPath: String,
+            workingDir: String,
+            outputDir: String,
+            docTitle: String,
+            indexForSearch: Boolean,
+            rootMap: String,
+            indexRedirect: Boolean,
+            buildFilter: String?,
+            gwPlatforms: String,
+            resourcesToCopy: JSONArray,
+        ): List<BuildType> {
+            val ditaBuildTypes = mutableListOf<BuildType>()
+            val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(Helpers.md5(srcId))
+
+            for (env in envNames) {
+                val docBuildType = createInitialDocBuildType(
+                    GwBuildTypes.DITA.buildTypeName,
+                    env,
+                    docId,
+                    srcId,
+                    publishPath,
+                    workingDir,
+                    outputDir,
+                    indexForSearch
+                )
+                if (env == GwDeployEnvs.PROD.envName) {
+                    val copyFromStagingToProdStep = GwBuildSteps.createCopyFromStagingToProdStep(publishPath)
+                    docBuildType.steps.step(copyFromStagingToProdStep)
+                    docBuildType.steps.stepsOrder.add(0, copyFromStagingToProdStep.id.toString())
+                } else {
+                    docBuildType.artifactRules =
+                        "${workingDir}/${outputDir}/${GwConfigParams.BUILD_DATA_FILE.paramValue} => ${GwConfigParams.BUILD_DATA_DIR.paramValue}"
+                    val buildDitaProjectStep: ScriptBuildStep
+                    val buildPdfs = when (env) {
+                        GwDeployEnvs.STAGING.envName -> true
+                        else -> false
+                    }
+                    val buildOutputForOfflineUse =
+                        env == GwDeployEnvs.STAGING.envName && gwPlatforms.lowercase(Locale.getDefault())
+                            .contains("self-managed")
+                    // Limit the number of HTML5 builds on staging not to overwhelm the PDF server
+                    if (env == GwDeployEnvs.STAGING.envName) {
+                        docBuildType.features.feature(GwBuildFeatures.GwAntennaHouseFormatterServerBuildFeature)
+                    }
+                    buildDitaProjectStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
+                        GwDitaOutputFormats.HTML5.formatName,
+                        rootMap,
+                        indexRedirect,
+                        workingDir,
+                        outputDir,
+                        publishPath,
+                        buildFilter = buildFilter,
+                        docId = docId,
+                        docTitle = docTitle,
+                        gitUrl = gitUrl,
+                        gitBranch = gitBranch,
+                        buildPdfs = buildPdfs
+                    )
+                    if (buildOutputForOfflineUse) {
+                        docBuildType.features.feature(GwBuildFeatures.GwOxygenWebhelpLicenseBuildFeature)
+                        val localOutputDir = "${outputDir}/zip"
+                        val buildDitaProjectForOfflineUseStep = GwBuildSteps.createBuildDitaProjectForBuildsStep(
+                            GwDitaOutputFormats.WEBHELP.formatName,
+                            rootMap,
+                            indexRedirect,
+                            workingDir,
+                            localOutputDir,
+                            publishPath,
+                            buildFilter = buildFilter,
+                            forOfflineUse = true
+                        )
+                        docBuildType.steps.step(buildDitaProjectForOfflineUseStep)
+                        docBuildType.steps.stepsOrder.add(0, buildDitaProjectForOfflineUseStep.id.toString())
+                        val copyPdfToOfflineOutputStep = GwBuildSteps.createCopyPdfFromOnlineToOfflineOutputStep(
+                            "${workingDir}/${outputDir}", "${workingDir}/${localOutputDir}"
+                        )
+                        docBuildType.steps.step(copyPdfToOfflineOutputStep)
+                        docBuildType.steps.stepsOrder.add(1, copyPdfToOfflineOutputStep.id.toString())
+                        val zipPackageStep = GwBuildSteps.createZipPackageStep(
+                            "${workingDir}/${localOutputDir}", "${workingDir}/${outputDir}"
+                        )
+                        docBuildType.steps.step(zipPackageStep)
+                        docBuildType.steps.stepsOrder.add(2, zipPackageStep.id.toString())
+                    }
+
+                    docBuildType.steps.step(buildDitaProjectStep)
+                    docBuildType.steps.stepsOrder.add(0, buildDitaProjectStep.id.toString())
+                    if (!resourcesToCopy.isEmpty) {
+                        val copyResourcesSteps = mutableListOf<ScriptBuildStep>()
+                        for (stepId in 0 until resourcesToCopy.length()) {
+                            val resourceObject = resourcesToCopy.getJSONObject(stepId)
+                            val resourceSrcDir = resourceObject.getString("sourceFolder")
+                            val resourceSrcId = resourceObject.getString("srcId")
+                            val resourceSrcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", resourceSrcId)
+                            val resourceSrcUrl = resourceSrcConfig.getString("gitUrl")
+                            val resourceSrcBranch = resourceSrcConfig.getString("branch")
+
+                            val resourceTargetDir = resourceObject.getString("targetFolder")
+                            val copyResourcesStep = GwBuildSteps.createCopyResourcesStep(
+                                stepId,
+                                workingDir,
+                                outputDir,
+                                resourceSrcDir,
+                                resourceTargetDir,
+                                resourceSrcUrl,
+                                resourceSrcBranch
+                            )
+                            copyResourcesSteps.add(copyResourcesStep)
+                        }
+                        docBuildType.steps {
+                            copyResourcesSteps.forEach { step(it) }
+                            stepsOrder.addAll(stepsOrder.indexOf("UPLOAD_CONTENT_TO_THE_S3_BUCKET"),
+                                copyResourcesSteps.map { it.id.toString() })
+                        }
+                        docBuildType.features.feature(GwBuildFeatures.GwSshAgentBuildFeature)
+                    }
+                }
+
+                ditaBuildTypes.add(docBuildType)
+            }
+
+            val localOutputDir = "${outputDir}/zip"
+            val downloadableOutputBuildType = BuildType {
+                name = "Build downloadable output"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${docId}"))
+
+                params {
+                    select(
+                        "OUTPUT_FORMAT",
+                        "",
+                        "Output format",
+                        options = listOf(
+                            "HTML5" to GwDitaOutputFormats.HTML5.formatName,
+                            "HTML5 with PDF" to GwDitaOutputFormats.HTML5_WITH_PDF.formatName,
+                            "PDF" to GwDitaOutputFormats.PDF.formatName,
+                            "Webhelp (Deprecated)" to GwDitaOutputFormats.WEBHELP.formatName,
+                            "Webhelp with PDF (Deprecated)" to GwDitaOutputFormats.WEBHELP_WITH_PDF.formatName,
+                            "Single-page HTML" to GwDitaOutputFormats.SINGLEHTML.formatName
+                        ),
+                        display = ParameterDisplay.PROMPT,
+                    )
+                }
+
+                artifactRules = "${workingDir}/${outputDir} => /"
+
+                vcs {
+                    root(teamcityGitRepoId)
+                    cleanCheckout = true
+                }
+
+                steps {
+                    for (format in arrayListOf(
+                        GwDitaOutputFormats.WEBHELP.formatName,
+                        GwDitaOutputFormats.PDF.formatName,
+                        GwDitaOutputFormats.WEBHELP_WITH_PDF.formatName,
+                        GwDitaOutputFormats.SINGLEHTML.formatName,
+                        GwDitaOutputFormats.HTML5.formatName,
+                        GwDitaOutputFormats.HTML5_WITH_PDF.formatName
+                    )) {
+                        val step = GwBuildSteps.createBuildDitaProjectForBuildsStep(
+                            format,
+                            rootMap,
+                            indexRedirect,
+                            workingDir,
+                            localOutputDir,
+                            publishPath = "",
+                            buildFilter = buildFilter,
+                            gitUrl = gitUrl,
+                            gitBranch = gitBranch,
+                            forOfflineUse = true
+                        )
+                        step.conditions {
+                            equals("OUTPUT_FORMAT", format)
+                        }
+                        step(step)
+                    }
+                    step(
+                        GwBuildSteps.createZipPackageStep(
+                            "${workingDir}/${localOutputDir}", "${workingDir}/${outputDir}"
+                        )
+                    )
+                }
+
+                features {
+                    feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                }
+            }
+            ditaBuildTypes.add(downloadableOutputBuildType)
+
+
+            if (envNames.contains(GwDeployEnvs.STAGING.envName)) {
+                val stagingBuildTypeIdString =
+                    Helpers.resolveRelativeIdFromIdString(Helpers.md5("Publish to ${GwDeployEnvs.STAGING.envName}${docId}"))
+                        .toString()
+                val localizationPackageBuildType = BuildType {
+                    name = "Build localization package"
+                    id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${docId}"))
+
+                    artifactRules = """
+                    ${workingDir}/${outputDir} => /
+                """.trimIndent()
+
+                    vcs {
+                        root(teamcityGitRepoId)
+                        branchFilter = GwVcsSettings.createBranchFilter(listOf(gitBranch))
+                        cleanCheckout = true
+                    }
+
+                    steps {
+                        step(
+                            GwBuildSteps.createRunLionPkgBuilderStep(
+                                workingDir, outputDir, stagingBuildTypeIdString
+                            )
+                        )
+                        script {
+                            name = "Add build data"
+                            scriptContent = """
+                            #!/bin/bash
+                            set -xe
+
+                            mkdir _builds
+                            jq -n '{"root": "$rootMap", "filter": "$buildFilter"}' > _builds/$docId.json
+                            zip -ur $workingDir/$outputDir/l10n_package.zip _builds 
+                        """.trimIndent()
+                            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                        }
+                    }
+
+                    features {
+                        feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                    }
+                }
+                ditaBuildTypes.add(localizationPackageBuildType)
+            }
+            return ditaBuildTypes
+        }
+
+        private fun createInitialDocBuildType(
+            gwBuildType: String,
+            deployEnv: String,
+            docId: String,
+            srcId: String,
+            publishPath: String,
+            workingDir: String,
+            outputDir: String,
+            indexForSearch: Boolean,
+        ): BuildType {
+            return BuildType {
+                name = "Publish to $deployEnv"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${docId}"))
+                maxRunningBuilds = 1
+
+                if (arrayOf(GwDeployEnvs.STAGING.envName).contains(
+                        deployEnv
+                    )
+                ) {
+                    vcs {
+                        root(Helpers.resolveRelativeIdFromIdString(Helpers.md5(srcId)))
+                        cleanCheckout = true
+                    }
+                    val uploadContentToS3BucketStep = GwBuildSteps.createUploadContentToS3BucketStep(
+                        deployEnv, "${workingDir}/${outputDir}", publishPath
+                    )
+                    steps.step(uploadContentToS3BucketStep)
+                    steps.stepsOrder.add(uploadContentToS3BucketStep.id.toString())
+                }
+
+                if (indexForSearch) {
+                    artifactRules = """
+                    %teamcity.build.workingDir%/*.log => build_logs
+                """.trimIndent()
+                    val configFile = "%teamcity.build.workingDir%/config.json"
+                    val configFileStep = GwBuildSteps.createGetConfigFileStep(deployEnv, configFile)
+                    steps.step(configFileStep)
+                    steps.stepsOrder.add(configFileStep.id.toString())
+                    val crawlDocStep = GwBuildSteps.createRunDocCrawlerStep(deployEnv, docId, configFile)
+                    steps.step(crawlDocStep)
+                    steps.stepsOrder.add(crawlDocStep.id.toString())
+                }
+
+                // Publishing builds for STAGING are triggered automatically.
+                // DITA publishing builds are triggered by build listener builds.
+                // The reference to the build listener template is one of the criteria used by the build manager app
+                // to identify builds that must be triggered.
+                // Yarn validation builds are triggered by regular TeamCity VCS triggers.
+                if (arrayOf(GwDeployEnvs.STAGING.envName).contains(deployEnv)) {
+                    when (gwBuildType) {
+                        GwBuildTypes.DITA.buildTypeName -> {
+                            templates(GwTemplates.BuildListenerTemplate)
+                        }
+
+                        else -> {
+                            triggers.trigger(GwVcsTriggers.createNonDitaVcsTrigger(workingDir))
+                        }
+                    }
+                }
+
+                features {
+                    feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                }
+            }
+        }
+
+        private fun createDocProject(buildConfig: JSONObject, srcId: String): Project {
+            val gwBuildType = buildConfig.getString("buildType")
+            val docId = buildConfig.getString("docId")
+            val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
+            val docTitle = docConfig.getString("title")
+            val docEnvironments = docConfig.getJSONArray("environments")
+            val docEnvironmentsList = Helpers.convertJsonArrayWithStringsToList(docEnvironments)
+            val workingDir = Helpers.getWorkingDir(buildConfig)
+            val outputDir = when (buildConfig.has("outputPath")) {
+                true -> buildConfig.getString("outputPath")
+                false -> {
+                    when (gwBuildType) {
+                        GwBuildTypes.YARN.buildTypeName -> GwConfigParams.YARN_BUILD_OUT_DIR.paramValue
+                        GwBuildTypes.STORYBOOK.buildTypeName -> GwConfigParams.STORYBOOK_BUILD_OUT_DIR.paramValue
+                        GwBuildTypes.SOURCE_ZIP.buildTypeName -> GwConfigParams.SOURCE_ZIP_BUILD_OUT_DIR.paramValue
+                        else -> GwConfigParams.DITA_BUILD_OUT_DIR.paramValue
+                    }
+                }
+            }
+            val indexForSearch = if (docConfig.has("indexForSearch")) docConfig.getBoolean("indexForSearch") else true
+
+            val metadata = docConfig.getJSONObject("metadata")
+            val gwPlatforms = metadata.getJSONArray("platform")
+            val gwProducts = metadata.getJSONArray("product")
+            val gwVersions = metadata.getJSONArray("version")
+            val gwPlatformsString = gwPlatforms.joinToString(",")
+            val gwProductsString = gwProducts.joinToString(",")
+            val gwVersionsString = gwVersions.joinToString(",")
+
+            val publishPath = docConfig.getString("url")
+
+            val srcConfig = Helpers.getObjectById(Helpers.sourceConfigs, "id", srcId)
+            val gitUrl = srcConfig.getString("gitUrl")
+            val gitBranch = srcConfig.getString("branch")
+
+            val docProjectBuildTypes = mutableListOf<BuildType>()
+            val customEnv = if (buildConfig.has("customEnv")) buildConfig.getJSONArray("customEnv") else null
+
+            val buildIsDisabled = buildConfig.getBoolean("disabled")
+            if (!buildIsDisabled) {
+                when (gwBuildType) {
+                    GwBuildTypes.YARN.buildTypeName -> {
+                        val nodeImageVersion =
+                            if (buildConfig.has("nodeImageVersion")) buildConfig.getString("nodeImageVersion") else null
+                        val buildCommand =
+                            if (buildConfig.has("yarnBuildCustomCommand")) buildConfig.getString("yarnBuildCustomCommand") else null
+                        docProjectBuildTypes += createYarnBuildTypes(
+                            docEnvironmentsList,
+                            docId,
+                            srcId,
+                            publishPath,
+                            workingDir,
+                            outputDir,
+                            indexForSearch,
+                            buildCommand,
+                            nodeImageVersion,
+                            gwPlatformsString,
+                            gwProductsString,
+                            gwVersionsString,
+                            customEnv
+                        )
+                    }
+
+                    GwBuildTypes.STORYBOOK.buildTypeName -> {
+                        docProjectBuildTypes += createStorybookBuildTypes(
+                            docEnvironmentsList,
+                            docId,
+                            srcId,
+                            publishPath,
+                            workingDir,
+                            outputDir,
+                            indexForSearch,
+                            gwPlatformsString,
+                            gwProductsString,
+                            gwVersionsString,
+                            customEnv
+                        )
+                    }
+
+                    GwBuildTypes.DITA.buildTypeName -> {
+                        val rootMap = buildConfig.getString("root")
+                        val indexRedirect = when (buildConfig.has("indexRedirect")) {
+                            true -> {
+                                buildConfig.getBoolean("indexRedirect")
+                            }
+
+                            else -> {
+                                false
+                            }
+
+                        }
+                        val buildFilter = when (buildConfig.has("filter")) {
+                            true -> {
+                                buildConfig.getString("filter")
+                            }
+
+                            else -> {
+                                null
+                            }
+                        }
+                        val resourcesToCopy =
+                            if (buildConfig.has("resources")) buildConfig.getJSONArray("resources") else JSONArray()
+
+                        docProjectBuildTypes += createDitaBuildTypes(
+                            docEnvironmentsList,
+                            docId,
+                            srcId,
+                            gitUrl,
+                            gitBranch,
+                            publishPath,
+                            workingDir,
+                            outputDir,
+                            docTitle,
+                            indexForSearch,
+                            rootMap,
+                            indexRedirect,
+                            buildFilter,
+                            gwPlatformsString,
+                            resourcesToCopy
+                        )
+
+                    }
+
+                    GwBuildTypes.SOURCE_ZIP.buildTypeName -> {
+                        val zipFilename = buildConfig.getString("zipFilename")
+                        docProjectBuildTypes += createSourceZipBuildTypes(
+                            docEnvironmentsList,
+                            docId,
+                            srcId,
+                            publishPath,
+                            workingDir,
+                            outputDir,
+                            indexForSearch,
+                            zipFilename
+                        )
+                    }
+
+                    GwBuildTypes.JUST_COPY.buildTypeName -> {
+                        docProjectBuildTypes += createJustCopyBuildTypes(
+                            docEnvironmentsList, docId, srcId, publishPath, workingDir, outputDir
+                        )
+                    }
+                }
+            }
+
+            return Project {
+                name = "$docTitle ($docId)"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(docId))
+
+                docProjectBuildTypes.forEach {
+                    buildType(it)
+                }
+            }
+        }
+
+    }
+
+    object Custom {
+        val rootProject = createRootProjectForCustom()
+
+        private fun createRootProjectForCustom(): Project {
+            return Project {
+                name = "Custom"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                buildType(BuildCustomDitaOutputBuildType)
+            }
+        }
+
+        object BuildCustomDitaOutputBuildType : BuildType({
+            name = "Build custom DITA output"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            params {
+                text(
+                    "env.GIT_URL", "", label = "Git repo URL", display = ParameterDisplay.PROMPT
+                )
+                text(
+                    "env.GIT_BRANCH", "", label = "Git branch name", display = ParameterDisplay.PROMPT
+                )
+                text(
+                    "env.DOC_IDS",
+                    "",
+                    label = "Document ids",
+                    description = "An optional space-separated list of document ids. Each id must have a corresponding <docID>.json file in the __builds folder of the target repo and branch.",
+                    display = ParameterDisplay.PROMPT,
+                    allowEmpty = true
+                )
+                text(
+                    "env.BUILDS_FILE_PARSED", "builds.txt", display = ParameterDisplay.HIDDEN
+                )
+            }
+
+            val localOutputDir = "out"
+
+            artifactRules = "*.zip => /"
+
+            steps {
+                script {
+                    name = "Get the builds configuration"
+                    scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                                      
+                    export FULL_REPO_NAME=${'$'}{GIT_URL##*/}
+                    export REPO_NAME=${'$'}{FULL_REPO_NAME%.*}
+                    export BUILDS_FILE="builds.json"
+                    export BUILDS_DIR="_builds"
+                    export GIT_CLONE_DIR="git_clone_dir"
+                    
+                    if [ -f ${'$'}BUILDS_FILE_PARSED ]; then rm -f ${'$'}BUILDS_FILE_PARSED 2> /dev/null || true; fi
+                    if [ -f %teamcity.build.workingDir%/*.zip ]; then rm -f %teamcity.build.workingDir%/*.zip 2> /dev/null || true; fi
+                    if [ -d %teamcity.build.workingDir%/$localOutputDir ]; then rm -rf %teamcity.build.workingDir%/$localOutputDir/* 2> /dev/null || true; fi
+                    if [ -d %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR ]; then rm -rf %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR/{*,.*} 2> /dev/null || true; fi
+
+                    git clone --single-branch --branch %env.GIT_BRANCH% %env.GIT_URL% ${'$'}GIT_CLONE_DIR --recurse-submodules
+
+                    if [ ! -z "%env.DOC_IDS%" ]
+                        then 
+                            echo "DOC_IDS specified. Checking for corresponding build files."
+                            IFS=' '
+                            for id in %env.DOC_IDS%; do
+                                FILE="${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR/${'$'}id.json"
+                                if [ -f ${'$'}FILE ]
+                                    then echo "Found build file ${'$'}FILE"
+                                        root=$(echo "${'$'}builds_json" | jq -r .root ${'$'}FILE);
+                                        filter=$(echo "${'$'}builds_json" | jq -r .filter ${'$'}FILE);
+                                        echo ${'$'}root:${'$'}filter >> %env.BUILDS_FILE_PARSED%
+                                    else echo "Could not locate build file ${'$'}FILE. Skipping Doc ID ${'$'}id"
+                                fi
+                            done
+                        else
+                            if [ -f ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_FILE ]
+                                then echo "${'$'}BUILDS_FILE found"
+                                    declare -a BUILDS
+                                    while IFS= read -r -d ${'$'}'\n' builds_json; do
+                                    root=${'$'}(echo "${'$'}builds_json" | jq -r .root)
+                                    filter=$(echo "${'$'}builds_json" | jq -r .filter)
+                                    echo "${'$'}root:${'$'}filter" >> %env.BUILDS_FILE_PARSED%
+                                    done < <(jq -c '.builds[]' ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_FILE)
+                                else
+                                    echo "${'$'}BUILDS_FILE not found, checking for ${'$'}BUILDS_DIR directory"
+                                    if [ -d "${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR" ]
+                                        then echo "${'$'}BUILDS_DIR found"
+                                            for FILE in ${'$'}GIT_CLONE_DIR/${'$'}BUILDS_DIR/*; do 
+                                            root=${'$'}(echo "${'$'}builds_json" | jq -r .root ${'$'}FILE);
+                                            filter=${'$'}(echo "${'$'}builds_json" | jq -r .filter ${'$'}FILE);
+                                            echo ${'$'}root:${'$'}filter >> %env.BUILDS_FILE_PARSED%
+                                            done;
+                                        else echo "ERROR: Did not find a ${'$'}BUILDS_FILE or ${'$'}BUILDS_DIR directory."
+                                    fi
+                            fi
+                    fi
+                """.trimIndent()
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                }
+                script {
+                    name = "Build custom DITA output"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                    #!/bin/bash
+                    set -xe
+
+                    export GIT_CLONE_DIR="git_clone_dir"
+                                                                                           
+                    declare -a BUILDS
+                    while read line; do
+                      IFS=':' read -r input filter <<< "${'$'}line"
+                      echo ${'$'}input ${'$'}filter
+                      INPUT_NAME=${'$'}{input%.*}
+                      FILTER_NAME=${'$'}{filter%.*}
+                      OUTPUT_SUBDIR="${'$'}{INPUT_NAME}_${'$'}FILTER_NAME"
+                      curl -O https://stash.guidewire.com/rest/api/1.0/projects/DOCSOURCES/repos/common-gw/raw/ditavals/${'$'}filter \
+                        -H "Accept: application/json" \
+                        -H "Authorization: Bearer %env.BITBUCKET_ACCESS_TOKEN%"
+                      dita -i "${'$'}GIT_CLONE_DIR/${'$'}input" --filter "${'$'}filter" -f html5-Guidewire --gw-offline-webhelp yes --build.pdfs yes --create-index-redirect yes --args.rellinks nofamily -o "$localOutputDir/${'$'}OUTPUT_SUBDIR"
+                      n=${'$'}((n+1))
+                    done < %env.BUILDS_FILE_PARSED%
+                """.trimIndent()
+                    dockerImage = GwDockerImages.DITA_OT_LATEST.imageUrl
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                }
+                step(
+                    GwBuildSteps.createZipPackageStep(
+                        "%teamcity.build.workingDir%/$localOutputDir", "%teamcity.build.workingDir%"
+                    )
+                )
+                script {
+                    name = "Clean up agent"
+                    scriptContent = """
+                    #!/bin/bash
+                    set -xe
+
+                    export GIT_CLONE_DIR="git_clone_dir"                                    
+                    
+                    if [ -f ${'$'}BUILDS_FILE_PARSED ]; then rm -f ${'$'}BUILDS_FILE_PARSED 2> /dev/null || true; fi
+                    if [ -d %teamcity.build.workingDir%/$localOutputDir ]; then rm -rf %teamcity.build.workingDir%/$localOutputDir/* 2> /dev/null || true; fi
+                    if [ -d %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR ]; then rm -rf %teamcity.build.workingDir%/${'$'}GIT_CLONE_DIR/{*,.*} 2> /dev/null || true; fi
+                """.trimIndent()
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                }
+            }
+
+            features {
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                feature(GwBuildFeatures.GwSshAgentBuildFeature)
+            }
+
+            cleanup {
+                add {
+                    keepRule {
+                        id = "KEEP_RULE_CUSTOM_DITA_BUILDS"
+                        keepAtLeast = builds(100)
+                        dataToKeep = everything()
+                        preserveArtifactsDependencies = true
+                    }
+                }
+            }
+        })
+
+    }
+
+
+    object BuildListeners {
+        val rootProject = createRootProjectForBuildListeners()
+
+        private fun getSourcesForBuildListenerBuildTypes(): List<JSONObject> {
+            val sourcesRequiringListeners = mutableListOf<JSONObject>()
+            for (src in Helpers.gitSources) {
+                val srcId = src.getString("id")
+                val ditaBuildsRelatedToSrc = Helpers.buildConfigs.filter {
+                    it.getString("srcId") == srcId && (it.getString("buildType") == GwBuildTypes.DITA.buildTypeName)
+                }
+                val uniqueEnvsFromAllDitaBuildsRelatedToSrc = ditaBuildsRelatedToSrc.map {
+                    val buildDocId = it.getString("docId")
+                    val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", buildDocId)
+                    Helpers.convertJsonArrayWithStringsToLowercaseList(docConfig.getJSONArray("environments"))
+                }.flatten().distinct()
+
+                if (arrayListOf(
+                        GwDeployEnvs.STAGING.envName
+                    ).any { uniqueEnvsFromAllDitaBuildsRelatedToSrc.contains(it) }
+                ) {
+                    sourcesRequiringListeners.add(src)
+                }
+            }
+            return sourcesRequiringListeners
+        }
+
+        private fun createRootProjectForBuildListeners(): Project {
+            return Project {
+                name = "Build listeners"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                val buildListenerSources = getSourcesForBuildListenerBuildTypes()
+                buildListenerSources.forEach {
+                    val srcId = it.getString("id")
+                    val gitUrl = it.getString("gitUrl")
+                    val gitBranch = Helpers.createFullGitBranchName(it.getString("branch"))
+                    buildType {
+                        name = "$srcId builds listener"
+                        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                        vcs {
+                            root(Helpers.resolveRelativeIdFromIdString(Helpers.md5(srcId)))
+                            cleanCheckout = true
+                        }
+                        steps.step(
+                            GwBuildSteps.createRunBuildManagerStep(
+                                Docs.rootProject.id.toString(),
+                                GwTemplates.BuildListenerTemplate.id.toString(),
+                                gitUrl,
+                                gitBranch = gitBranch,
+                                teamcityBuildBranch = gitBranch
+                            )
+                        )
+
+                        triggers.vcs {}
+
+                        features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                        features.feature(GwBuildFeatures.GwBuildListenerLimitBuildFeature)
+                    }
+                }
+            }
+        }
+    }
+
+    object Sources {
+        val rootProject = createRootProjectForSources()
+
+        private fun createRootProjectForSources(): Project {
+            return Project {
+                name = "Sources"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                template(GwTemplates.ValidationListenerTemplate)
+                createValidationProjectsForSources().forEach {
+                    subProject(it)
+                }
+            }
+        }
+
+        private fun createValidationProjectsForSources(): List<Project> {
+            val validationProjects = mutableListOf<Project>()
+            for (src in Helpers.gitSources) {
+                val srcId = src.getString("id")
+                val gitUrl = src.getString("gitUrl")
+                val buildsRelatedToSrc = Helpers.buildConfigs.filter { it.getString("srcId") == srcId }
+                if (buildsRelatedToSrc.isNotEmpty()) {
+                    val gitBranch = src.getString("branch")
+                    val validationProject = createValidationProject(
+                        srcId, gitUrl, gitBranch, buildsRelatedToSrc
+                    )
+                    validationProjects.add(validationProject)
+                }
+            }
+            return validationProjects
+        }
+
+        private fun createValidationProject(
+            srcId: String,
+            gitUrl: String,
+            gitBranch: String,
+            buildConfigs: List<JSONObject>,
+        ): Project {
+            val uniqueGwBuildTypesForAllBuilds = buildConfigs.map { it.getString("buildType") }.distinct()
+            return Project {
+                name = srcId
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                val validationBuildsSubProject = Project {
+                    name = "Validation builds"
+                    id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${srcId}${this.name}"))
+                }
+
+                buildType(createCleanValidationResultsBuildType(srcId, gitUrl))
+
+                if (uniqueGwBuildTypesForAllBuilds.contains(GwBuildTypes.DITA.buildTypeName)) {
+                    validationBuildsSubProject.buildType(
+                        createValidationListenerBuildType(
+                            srcId, gitUrl, gitBranch, this.id.toString()
+                        )
+                    )
+                }
+                buildConfigs.forEach {
+                    validationBuildsSubProject.buildType(
+                        createValidationBuildType(
+                            srcId, gitBranch, it, it.getString("buildType"), gitUrl
+                        )
+                    )
+                }
+                subProject(validationBuildsSubProject)
+
+
+            }
+        }
+
+
+        private fun createValidationListenerBuildType(
+            srcId: String,
+            gitUrl: String,
+            gitBranch: String,
+            teamcityAffectedProjectId: String,
+        ): BuildType {
+            val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(Helpers.md5(srcId))
+            return BuildType {
+                name = "$srcId validation listener"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                vcs {
+                    root(teamcityGitRepoId)
+                    cleanCheckout = true
+                }
+                steps.step(
+                    GwBuildSteps.createRunBuildManagerStep(
+                        teamcityAffectedProjectId,
+                        GwTemplates.ValidationListenerTemplate.id.toString(),
+                        gitUrl,
+                        Helpers.createFullGitBranchName(gitBranch),
+                        "%teamcity.build.branch%"
+                    )
+                )
+
+                triggers.vcs {}
+
+                features {
+                    feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                    feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+                    feature(GwBuildFeatures.createGwPullRequestsBuildFeature(Helpers.createFullGitBranchName(gitBranch)))
+                    feature(GwBuildFeatures.GwBuildListenerLimitBuildFeature)
+                }
+            }
+        }
+
+        private fun createValidationBuildType(
+            srcId: String,
+            gitBranch: String,
+            buildConfig: JSONObject,
+            gwBuildType: String,
+            gitUrl: String,
+        ): BuildType {
+            val docId = buildConfig.getString("docId")
+            val docConfig = Helpers.getObjectById(Helpers.docConfigs, "id", docId)
+            val docTitle = docConfig.getString("title")
+
+            val workingDir = Helpers.getWorkingDir(buildConfig)
+            val outputDir = when (buildConfig.has("outputPath")) {
+                true -> buildConfig.getString("outputPath")
+                false -> {
+                    when (gwBuildType) {
+                        GwBuildTypes.YARN.buildTypeName -> GwConfigParams.YARN_BUILD_OUT_DIR.paramValue
+                        GwBuildTypes.STORYBOOK.buildTypeName -> GwConfigParams.STORYBOOK_BUILD_OUT_DIR.paramValue
+                        GwBuildTypes.SOURCE_ZIP.buildTypeName -> GwConfigParams.SOURCE_ZIP_BUILD_OUT_DIR.paramValue
+                        else -> GwConfigParams.DITA_BUILD_OUT_DIR.paramValue
+                    }
+                }
+            }
+
+            val teamcityGitRepoId = Helpers.resolveRelativeIdFromIdString(Helpers.md5(srcId))
+            // For the preview URL and doc validator data uploaded to Elasticsearch, we cannot use the teamcity.build.branch
+            // variable because for the default branch it resolves to "<default>". We need the full branch name so we use
+            // the teamcity.build.vcs.branch.<VCS_root_ID> variable. For validation listeners and builds, we use
+            // the teamcity.build.branch variable because it's more flexible (we don't need to provide the VCS Root ID).
+            val teamcityBuildBranch = "%teamcity.build.vcs.branch.${teamcityGitRepoId}%"
+            val publishPath = "preview/${srcId}/${teamcityBuildBranch}/${docId}"
+            val previewUrl = "${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/$publishPath"
+            val previewUrlFile = "preview_url.txt"
+
+            val validationBuildType = BuildType {
+                name = "Validate $docTitle ($docId)"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${srcId}"))
+
+                artifactRules = "$previewUrlFile\n"
+
+                vcs {
+                    root(teamcityGitRepoId)
+                    cleanCheckout = true
+                }
+
+                features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                features.feature(
+                    GwBuildFeatures.createGwPullRequestsBuildFeature(
+                        Helpers.createFullGitBranchName(
+                            gitBranch
+                        )
+                    )
+                )
+            }
+
+            val regex = "ssh://git@stash.guidewire.com/(.+)/(.+).git".toRegex()
+            val matchList = regex.find(gitUrl)?.groupValues
+            val projectKey = matchList!![1]
+            val repoKey = matchList!![2]
+            val pullRequestId = "%teamcity.pullRequest.branch.pullrequests%"
+
+            val uploadStepOuputPath = when (gwBuildType) {
+                GwBuildTypes.DITA.buildTypeName -> "${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}"
+                else -> "${workingDir}/${outputDir}"
+            }
+
+            val uploadStep = GwBuildSteps.createUploadContentToS3BucketStep(
+                GwDeployEnvs.STAGING.envName,
+                uploadStepOuputPath,
+                publishPath,
+            )
+            uploadStep.conditions { equals("teamcity.build.branch.is_default", "false") }
+
+            val previewFileStep = GwBuildSteps.createPreviewUrlFile(
+                previewUrl, previewUrlFile
+            )
+            previewFileStep.conditions { equals("teamcity.build.branch.is_default", "false") }
+
+            val pullRequestCommentStep = GwBuildSteps.createAddPullRequestCommentStep(
+                "preview link",
+                "Hi, I created a preview for validation build %build.number%: $previewUrl",
+                projectKey,
+                repoKey,
+                pullRequestId
+            )
+            pullRequestCommentStep.conditions { equals("teamcity.build.branch.is_default", "false") }
+
+            val buildLogsDir = "build_logs"
+            val adminLogsDir = "admin_logs"
+
+            when (gwBuildType) {
+                GwBuildTypes.DITA.buildTypeName -> {
+                    val ditaOtLogsDir = "dita_ot_logs"
+                    val docValidatorLogs = "doc_validator_logs"
+                    val normalizedDitaDir = "normalized_dita_dir"
+                    val schematronReportsDir = "schematron_reports_dir"
+                    val docInfoFile = "doc-info.json"
+                    val rootMap = buildConfig.getString("root")
+                    val indexRedirect = when (buildConfig.has("indexRedirect")) {
+                        true -> {
+                            buildConfig.getBoolean("indexRedirect")
+                        }
+
+                        else -> {
+                            false
+                        }
+
+                    }
+                    val buildFilter = when (buildConfig.has("filter")) {
+                        true -> {
+                            buildConfig.getString("filter")
+                        }
+
+                        else -> {
+                            null
+                        }
+                    }
+
+                    validationBuildType.params {
+                        select(
+                            "env.ENABLE_DEBUG_MODE",
+                            "",
+                            label = "Enable debug mode",
+                            options = listOf("Yes" to "--debug", "No" to "")
+                        )
+                    }
+
+                    validationBuildType.artifactRules += """
+                    ${workingDir}/${docValidatorLogs} => $buildLogsDir
+                    ${workingDir}/${ditaOtLogsDir} => $adminLogsDir
+                    ${workingDir}/${outputDir}/${GwDitaOutputFormats.HTML5.formatName}/${GwConfigParams.BUILD_DATA_FILE.paramValue} => ${GwConfigParams.BUILD_DATA_DIR.paramValue}
+                """.trimIndent()
+
+                    validationBuildType.steps {
+                        step(
+                            GwBuildSteps.createBuildDitaProjectForValidationsStep(
+                                GwDitaOutputFormats.HTML5.formatName,
+                                rootMap,
+                                workingDir,
+                                outputDir,
+                                publishPath,
+                                ditaOtLogsDir,
+                                normalizedDitaDir,
+                                schematronReportsDir,
+                                indexRedirect,
+                                buildFilter
+                            )
+                        )
+                        step(uploadStep)
+                        step(previewFileStep)
+                        step(pullRequestCommentStep)
+                        step(
+                            GwBuildSteps.createBuildDitaProjectForValidationsStep(
+                                GwDitaOutputFormats.DITA.formatName,
+                                rootMap,
+                                workingDir,
+                                outputDir,
+                                publishPath,
+                                ditaOtLogsDir,
+                                normalizedDitaDir,
+                                schematronReportsDir,
+                                indexRedirect,
+                                buildFilter
+                            )
+                        )
+                        step(
+                            GwBuildSteps.createGetDocumentDetailsStep(
+                                workingDir, teamcityBuildBranch, srcId, docInfoFile, docConfig
+                            )
+                        )
+                        // For now, image validations are disabled.
+                        // These validations need improvements.
+
+                        arrayOf(
+                            GwValidationModules.VALIDATORS_DITA.validationName,
+                            GwValidationModules.VALIDATORS_FILES.validationName,
+                            GwValidationModules.EXTRACTORS_DITA_OT_LOGS.validationName,
+                            GwValidationModules.EXTRACTORS_SCHEMATRON_REPORTS.validationName,
+                        ).forEach {
+                            val exitCodeEnvVarName = "env.${it.uppercase()}_EXIT_CODE"
+                            this.step(
+                                GwBuildSteps.createRunDocValidatorStep(
+                                    it,
+                                    workingDir,
+                                    ditaOtLogsDir,
+                                    normalizedDitaDir,
+                                    schematronReportsDir,
+                                    docInfoFile,
+                                    exitCodeEnvVarName
+                                )
+                            )
+                            val pullRequestCommentForLogFileLinkStep = GwBuildSteps.createAddPullRequestCommentStep(
+                                "${it}.log link",
+                                "\u26D4 \uD83E\uDD16 Hi, $it here. I found some issues in validation build %build.number%: https://gwre-devexp-ci-production-devci.gwre-devops.net/repository/download/%system.teamcity.buildType.id%/%teamcity.build.id%:id/${buildLogsDir}/${it}.log",
+                                projectKey,
+                                repoKey,
+                                pullRequestId
+                            )
+                            pullRequestCommentForLogFileLinkStep.executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
+                            pullRequestCommentForLogFileLinkStep.conditions {
+                                equals("teamcity.build.branch.is_default", "false")
+                                equals(exitCodeEnvVarName, "1")
+                            }
+                            this.step(
+                                pullRequestCommentForLogFileLinkStep
+                            )
+                        }
+                    }
+                }
+
+                GwBuildTypes.YARN.buildTypeName -> {
+                    val metadata = docConfig.getJSONObject("metadata")
+                    val gwPlatforms = metadata.getJSONArray("platform")
+                    val gwProducts = metadata.getJSONArray("product")
+                    val gwVersions = metadata.getJSONArray("version")
+                    val gwPlatformsString = gwPlatforms.joinToString(",")
+                    val gwProductsString = gwProducts.joinToString(",")
+                    val gwVersionsString = gwVersions.joinToString(",")
+                    val nodeImageVersion =
+                        if (buildConfig.has("nodeImageVersion")) buildConfig.getString("nodeImageVersion") else null
+                    val buildCommand =
+                        if (buildConfig.has("yarnBuildCustomCommand")) buildConfig.getString("yarnBuildCustomCommand") else null
+                    val customEnv = if (buildConfig.has("customEnv")) buildConfig.getJSONArray("customEnv") else null
+
+                    validationBuildType.artifactRules += """
+                    ${workingDir}/*.log => $buildLogsDir
+                """.trimIndent()
+
+
+                    validationBuildType.steps {
+                        val exitCodeEnvVarName = "env.YARN_BUILD_EXIT_CODE"
+                        step(
+                            GwBuildSteps.createBuildYarnProjectStep(
+                                GwDeployEnvs.STAGING.envName,
+                                publishPath,
+                                buildCommand,
+                                nodeImageVersion,
+                                docId,
+                                gwProductsString,
+                                gwPlatformsString,
+                                gwVersionsString,
+                                workingDir,
+                                customEnv,
+                                validationMode = true,
+                                exitCodeEnvVarName = exitCodeEnvVarName
+                            )
+                        )
+                        step(uploadStep)
+                        step(previewFileStep)
+                        step(pullRequestCommentStep)
+                        val buildLogFileName = "yarn_build.log"
+                        val pullRequestCommentForLogFileLinkStep = GwBuildSteps.createAddPullRequestCommentStep(
+                            "$buildLogFileName link",
+                            "\u26D4 \uD83E\uDD16 Hi, I found some issues in validation build %build.number%: https://gwre-devexp-ci-production-devci.gwre-devops.net/repository/download/%system.teamcity.buildType.id%/%teamcity.build.id%:id/${buildLogsDir}/${buildLogFileName}",
+                            projectKey,
+                            repoKey,
+                            pullRequestId
+                        )
+                        pullRequestCommentForLogFileLinkStep.executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
+                        pullRequestCommentForLogFileLinkStep.conditions {
+                            equals("teamcity.build.branch.is_default", "false")
+                            equals(exitCodeEnvVarName, "1")
+                        }
+                        this.step(
+                            pullRequestCommentForLogFileLinkStep
+                        )
+                    }
+
+                    validationBuildType.features {
+                        feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+                    }
+
+                }
+            }
+
+            // DITA validation builds are triggered by validation listener builds.
+            // The reference to the validation listener template is one of the criteria used by the build manager app
+            // to identify builds that must be triggered.
+            // Yarn validation builds are triggered by regular TeamCity VCS triggers.
+            when (gwBuildType) {
+                GwBuildTypes.DITA.buildTypeName -> {
+                    validationBuildType.templates(GwTemplates.ValidationListenerTemplate)
+                }
+
+                GwBuildTypes.YARN.buildTypeName -> {
+                    validationBuildType.triggers.trigger(GwVcsTriggers.createNonDitaVcsTrigger(workingDir))
+                }
+            }
+
+            return validationBuildType
+        }
+
+        private fun createCleanValidationResultsBuildType(
+            srcId: String,
+            gitUrl: String,
+        ): BuildType {
+            val elasticsearchUrl = Helpers.getElasticsearchUrl(GwDeployEnvs.STAGING.envName)
+            val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)
+            return BuildType {
+                name = "Clean validation results for $srcId"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                vcs {
+                    root(Helpers.resolveRelativeIdFromIdString(Helpers.md5(srcId)))
+                    cleanCheckout = true
+                }
+
+                steps {
+                    script {
+                        name = "Run the results cleaner"
+                        id = Helpers.createIdStringFromName(this.name)
+                        executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
+                        scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                        
+                        $awsEnvVars
+                        
+                        results_cleaner --elasticsearch-urls "$elasticsearchUrl"  --git-source-id "$srcId" --git-source-url "$gitUrl" --s3-bucket-name "tenant-doctools-staging-builds"
+                    """.trimIndent()
+                        dockerImage = GwDockerImages.DOC_VALIDATOR_LATEST.imageUrl
+                        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    }
+                }
+
+                features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+                triggers.vcs {}
+            }
+        }
+
+    }
+
+    object Recommendations {
+        val rootProject = createRootProjectForRecommendations()
+
+        private fun createRootProjectForRecommendations(): Project {
+            return Project {
+                name = "Recommendations"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                for (env in arrayOf(GwDeployEnvs.STAGING)) {
+                    val recommendationProject = createRecommendationProject(env.envName)
+                    subProject(recommendationProject)
+                }
+            }
+        }
+
+        private fun createRecommendationProject(deployEnv: String): Project {
+            val recommendationProjectBuildTypes = mutableListOf<BuildType>()
+            val allPlatformProductVersionCombinations = generatePlatformProductVersionCombinationsForAllDocs(deployEnv)
+            for (combination in allPlatformProductVersionCombinations) {
+                val (platform, product, version) = combination
+                val recommendationsForTopicsBuildTypeInt = createRecommendationsForTopicsBuildType(
+                    GwDeployEnvs.STAGING.envName, platform, product, version
+
+                )
+                recommendationProjectBuildTypes.add(recommendationsForTopicsBuildTypeInt)
+            }
+            return Project {
+                name = "Recommendations for $deployEnv"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                recommendationProjectBuildTypes.forEach {
+                    buildType(it)
+                }
+            }
+        }
+
+        private fun generatePlatformProductVersionCombinationsForAllDocs(deployEnv: String): List<Triple<String, String, String>> {
+            val result = mutableListOf<Triple<String, String, String>>()
+            for (docConfig in Helpers.docConfigs) {
+                val docEnvironmentsLowercaseList =
+                    Helpers.convertJsonArrayWithStringsToLowercaseList(docConfig.getJSONArray("environments"))
+                if (docEnvironmentsLowercaseList.contains(deployEnv)) {
+                    val docMetadata = docConfig.getJSONObject("metadata")
+                    val docPlatforms = Helpers.convertJsonArrayWithStringsToList(docMetadata.getJSONArray("platform"))
+                    val docProducts = Helpers.convertJsonArrayWithStringsToList(docMetadata.getJSONArray("product"))
+                    val docVersions = Helpers.convertJsonArrayWithStringsToList(docMetadata.getJSONArray("version"))
+                    result += Helpers.generatePlatformProductVersionCombinations(docPlatforms, docProducts, docVersions)
+                }
+            }
+            return result.distinct()
+        }
+
+        private fun createRecommendationsForTopicsBuildType(
+            deployEnv: String,
+            gwPlatform: String,
+            gwProduct: String,
+            gwVersion: String,
+        ): BuildType {
+            val pretrainedModelFile = "GoogleNews-vectors-negative300.bin"
+            val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
+            val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
+            val elasticsearchUrl = Helpers.getElasticsearchUrl(deployEnv)
+
+            return BuildType {
+                name = "Generate recommendations for $gwProduct, $gwPlatform, $gwVersion"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                steps {
+                    script {
+                        name = "Download the pretrained model"
+                        id = Helpers.createIdStringFromName(this.name)
+                        scriptContent = """
+                            #!/bin/bash
+                            set -xe
+                            
+                            echo "Setting credentials to access int"
+                            $awsEnvVars
+                            
+                            echo "Downloading the pretrained model from the S3 bucket"
+                            aws s3 cp s3://tenant-doctools-${atmosDeployEnv}-builds/recommendation-engine/${pretrainedModelFile} %teamcity.build.workingDir%/
+                        """.trimIndent()
+                        dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                        dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                    }
+                    script {
+                        name = "Run the recommendation engine"
+                        id = Helpers.createIdStringFromName(this.name)
+                        scriptContent = """
+                        #!/bin/bash
+                        set -xe
+                        
+                        export PLATFORM="$gwPlatform"
+                        export PRODUCT="$gwProduct"
+                        export VERSION="$gwVersion"
+                        export ELASTICSEARCH_URL="$elasticsearchUrl"
+                        export DOCS_INDEX_NAME="gw-docs"
+                        export RECOMMENDATIONS_INDEX_NAME="gw-recommendations"
+                        export PRETRAINED_MODEL_FILE="$pretrainedModelFile"
+                                                                
+                        recommendation_engine
+                    """.trimIndent()
+                        dockerImage = GwDockerImages.RECOMMENDATION_ENGINE_LATEST.imageUrl
+                        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    }
+                }
+
+                features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
+        }
+    }
+}
+
+object Admin {
+    val rootProject = createRootProjectForAdmin()
+
+    private fun createRootProjectForAdmin(): Project {
+        return Project {
+            name = "Admin"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            buildType(TestSettingsKts)
+            buildType(AuditNpmPackages)
+            subProject(Database.rootProject)
+            subProject(DocPortal.rootProject)
+            subProject(Frontend.rootProject)
+            subProject(Server.rootProject)
+//            subProject(Content.rootProject)
+//            subProject(Apps.rootProject)
+        }
+    }
+
+    object AuditNpmPackages : BuildType({
+        // The --recursive option was removed from the yarn audit:all script in package.json because it causes the "400 bad request" error.
+        // It's a bug in yarn and we couldn't find a fix.
+        name = "Audit npm packages"
+        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+        vcs {
+            root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+            cleanCheckout = true
+        }
+
+        steps {
+            nodeJS {
+                id = "Run yarn npm audit"
+                shellScript = """
+                    yarn && yarn audit:all
+                """.trimIndent()
+                dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
+            }
+        }
+
+        features {
+            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+        }
+
+        triggers {
+            trigger(
+                GwVcsTriggers.createDocPortalVcsTrigger(
+                    listOf(
+                        GwTriggerPaths.PACKAGE_JSON.pathValue,
+                        GwTriggerPaths.YARN_LOCK.pathValue,
+                        GwTriggerPaths.SUBDIRS_PACKAGE_JSON.pathValue
+                    )
+                )
+            )
+        }
+    })
+
+    object TestSettingsKts : BuildType({
+        name = "Test settings.kts"
+        id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+        vcs {
+            root(
+                GwVcsRoots.DocumentationPortalGitVcsRoot
+            )
+            cleanCheckout = true
+        }
+
+        steps {
+            maven {
+                goals = "teamcity-configs:generate"
+                pomLocation = ".teamcity/pom.xml"
+                workingDir = ""
+            }
+        }
+
+        features {
+            feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+            feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+        }
+
+        // The general rule is to trigger test builds only for pull requests branches and to trigger deploy builds
+        // for the default branch, which then trigger test builds as snapshot dependencies.
+        // This test build doesn't have an associated deployment build,
+        // therefore we want to run it on changes in the default branch as well.
+        triggers {
+            trigger(
+                GwVcsTriggers.createDocPortalVcsTrigger(
+                    listOf(
+                        GwTriggerPaths.TEAMCITY_POM_XML.pathValue,
+                        GwTriggerPaths.TEAMCITY_SETTINGS_KTS.pathValue,
+                        GwTriggerPaths.TEAMCITY_CONFIG.pathValue
+                    )
+                )
+            )
+        }
+    })
+
+    fun createBuildAndPublishDockerImageToDevEcrBuildType(
+        tagVersion: String,
+        devDockerImageUrl: String,
+        dockerfilePath: String,
+        snapshotDependencies: List<BuildType>,
+    ): BuildType {
+        val awsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
+        return BuildType {
+            name = "Build and publish Docker Image to DEV ECR"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${devDockerImageUrl}"))
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                cleanCheckout = true
+            }
+
+            steps {
+                script {
+                    name = "Build and publish Docker Image to DEV ECR"
+                    id = Helpers.createIdStringFromName(this.name)
+
+                    scriptContent = """
+                        #!/bin/bash 
+                        set -xe
+                        
+                        # Log into the dev ECR, build and push the image
+                        $awsEnvVars
+                        
+                        export TAG_VERSION=$tagVersion
+                        export DEPT_CODE=${GwAtmosLabels.DEPT_CODE.labelValue}
+                        export POD_NAME=${GwAtmosLabels.POD_NAME.labelValue}
+        
+                        set +x
+                        docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
+                        set -x
+                        docker build -t ${devDockerImageUrl}:${tagVersion} $dockerfilePath \
+                        --build-arg NPM_AUTH_TOKEN \
+                        --build-arg TAG_VERSION \
+                        --build-arg DEPT_CODE \
+                        --build-arg POD_NAME
+                        docker push ${devDockerImageUrl}:${tagVersion}
+                    """.trimIndent()
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerRunParameters =
+                        "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
+                }
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+            dependencies {
+                snapshotDependencies.forEach {
+                    snapshot(it) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                }
+            }
+        }
+    }
+
+    fun createPublishDockerImageToProdEcrBuildType(
+        tagVersion: String,
+        devDockerImageUrl: String,
+        prodDockerImageUrl: String,
+        snapshotDependencies: List<BuildType>,
+    ): BuildType {
+        val awsEnvVarsDev = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
+        val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
+        return BuildType {
+            name = "Publish Docker Image to PROD ECR"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${devDockerImageUrl}"))
+
+            steps {
+                script {
+                    name = "Download Docker Image from DEV ECR and push it to PROD ECR"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                        set -xe
+                        
+                        # Log into the dev ECR, download the image and tag it
+                        $awsEnvVarsDev
+        
+                        set +x
+                        docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST.paramValue}
+                        set -x
+                        docker pull ${devDockerImageUrl}:${tagVersion}
+                        docker tag ${devDockerImageUrl}:${tagVersion} ${prodDockerImageUrl}:${tagVersion}
+                        
+                        # Log into the prod ECR and push the image
+                        $awsEnvVarsProd
+                        
+                        set +x
+                        docker login -u AWS -p ${'$'}(aws ecr get-login-password) ${GwConfigParams.ECR_HOST_PROD.paramValue}
+                        set -x
+                        docker push ${prodDockerImageUrl}:${tagVersion}
+                    """.trimIndent()
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerRunParameters =
+                        "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro -v ${'$'}HOME/.docker:/root/.docker"
+                }
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+            dependencies {
+                snapshotDependencies.forEach {
+                    snapshot(it) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                }
+            }
+        }
+    }
+
+    fun createRunCheckmarxScanBuildType(sourceDir: String): BuildType {
+        return BuildType {
+            templates(AbsoluteId("CheckmarxSastScan"))
+            name = "Run Checkmarx scan"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5("${this.name}${sourceDir}"))
+
+            params {
+                text("checkmarx.project.name", "doctools")
+                text("checkmarx.source.directory", sourceDir)
+                text(
+                    "checkmarx.location.files.exclude ", """
+                        !**/_cvs/**/*, !**/.svn/**/*, !**/.hg/**/*, !**/.git/**/*, !**/.bzr/**/*, !**/bin/**/*,
+                        !**/obj/**/*, !**/backup/**/*, !**/.idea/**/*, !**/*.DS_Store, !**/*.ipr, !**/*.iws,
+                        !**/*.bak, !**/*.tmp, !**/*.aac, !**/*.aif, !**/*.iff, !**/*.m3u, !**/*.mid, !**/*.mp3,
+                        !**/*.mpa, !**/*.ra, !**/*.wav, !**/*.wma, !**/*.3g2, !**/*.3gp, !**/*.asf, !**/*.asx,
+                        !**/*.avi, !**/*.flv, !**/*.mov, !**/*.mp4, !**/*.mpg, !**/*.rm, !**/*.swf, !**/*.vob,
+                        !**/*.wmv, !**/*.bmp, !**/*.gif, !**/*.jpg, !**/*.png, !**/*.psd, !**/*.tif, !**/*.swf,
+                        !**/*.jar, !**/*.zip, !**/*.rar, !**/*.exe, !**/*.dll, !**/*.pdb,   !**/*.7z,  !**/*.gz,
+                        !**/*.tar.gz, !**/*.tar, !**/*.gz, !**/*.ahtm, !**/*.ahtml, !**/*.fhtml, !**/*.hdm,
+                        !**/*.hdml, !**/*.hsql, !**/*.ht, !**/*.hta, !**/*.htc, !**/*.htd, !**/*.war, !**/*.ear,
+                        !**/*.htmls, !**/*.ihtml, !**/*.mht, !**/*.mhtm, !**/*.mhtml, !**/*.ssi, !**/*.stm,
+                        !**/*.stml, !**/*.ttml, !**/*.txn, !**/*.xhtm, !**/*.xhtml, !**/*.class, !**/node_modules/**/*, !**/*.iml,
+                        !**/tests/**/*, !**/.teamcity/**/*, !**/__tests__/**/*, !**/images/**/*, !**/fonts/**/*
+                    """.trimIndent()
+                )
+            }
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                cleanCheckout = true
+            }
+
+            features {
+                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+            }
+        }
+    }
+
+    fun createTestKubernetesConfigFilesBuildType(deployEnv: String, triggerPath: String): BuildType {
+        val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
+        val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
+        var deployEnvVars = ""
+        var deploymentFile = ""
+        var testGatewayConfigScript = ""
+        var buildName = ""
+        when (triggerPath) {
+            GwTriggerPaths.AWS_S3_KUBE.pathValue -> {
+                deployEnvVars = Helpers.setContentStorageDeployEnvVars(deployEnv)
+                deploymentFile = GwConfigParams.S3_KUBE_DEPLOYMENT_FILE.paramValue
+                buildName = "Test Kubernetes config files for content storage on $deployEnv"
+            }
+
+            GwTriggerPaths.LANDING_PAGES_KUBE.pathValue -> {
+                deployEnvVars =
+                    Helpers.setReactLandingPagesDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL.tagValue)
+                deploymentFile = GwConfigParams.DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE.paramValue
+                buildName = "Test Kubernetes config files for React landing pages on $deployEnv"
+            }
+
+            GwTriggerPaths.SERVER_KUBE.pathValue -> {
+                deployEnvVars = Helpers.setServerDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL.tagValue)
+                deploymentFile = GwConfigParams.DOC_PORTAL_KUBE_DEPLOYMENT_FILE.paramValue
+                buildName = "Test Kubernetes config files for server on $deployEnv"
+                testGatewayConfigScript = """
+                    export TMP_GATEWAY_CONFIG_FILE="tmp-gateway-config.yml"
+                    eval "echo \"${'$'}(cat ${Helpers.getServerGatewayConfigFile(deployEnv)})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
+                    kubectl create -f ${'$'}TMP_GATEWAY_CONFIG_FILE --dry-run=client
+                """.trimIndent()
+            }
+        }
+        return BuildType {
+            name = buildName
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                cleanCheckout = true
+            }
+
+            steps {
+                script {
+                    name = "Create Kubernetes resources in dry run "
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                        #!/bin/bash 
+                        set -e
+                        
+                        # Set AWS credentials
+                        $awsEnvVars
+                        
+                        # Set environment variables needed for Kubernetes config files
+                        $deployEnvVars
+                        
+                        # Set other envs
+                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
+                        
+                        aws eks update-kubeconfig --name atmos-$atmosDeployEnv
+                        eval "echo \"${'$'}(cat ${deploymentFile})\"" > ${'$'}TMP_DEPLOYMENT_FILE
+                        kubectl create -f ${'$'}TMP_DEPLOYMENT_FILE --dry-run=client
+                        
+                        $testGatewayConfigScript
+                    """.trimIndent()
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                }
+            }
+
+            features {
+                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+            }
+
+            when (deployEnv) {
+                GwDeployEnvs.DEV.envName -> {
+                    triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(triggerPath)))
+                }
+            }
+        }
+
+    }
+
+    object Apps {
+        val rootProject = createRootProjectForApps()
+
+        private fun createRootProjectForApps(): Project {
+            return Project {
+                name = "Apps"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                subProject(FlailSSGProject)
+            }
+        }
+
+        // TODO: Remove this project after switch to main
+        object FlailSSGProject : Project({
+            name = "Flail SSG"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            buildType(PublishFlailSSGDockerImageBuildType)
+            buildType(TestFlailSSGBuildType)
+
+        })
+
+        object PublishFlailSSGDockerImageBuildType : BuildType({
+            val appDir = "frontend/flail_ssg"
+            name = "Publish Docker image for Flail SSG"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                cleanCheckout = true
+            }
+
+            steps {
+                script {
+                    name = "Publish Docker image to Artifactory"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                    #!/bin/bash                        
+                    set -xe
+                    
+                    cd $appDir
+                    ./publish_docker.sh latest       
+                """.trimIndent()
+                }
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+            dependencies {
+                snapshot(TestFlailSSGBuildType) {
+                    reuseBuilds = ReuseBuilds.SUCCESSFUL
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+            }
+
+            triggers {
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(appDir)))
+            }
+        })
+
+        object TestFlailSSGBuildType : BuildType({
+            name = "Test Flail SSG"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                cleanCheckout = true
+            }
+
+            params {
+                text(
+                    "env.DOCS_CONFIG_FILE",
+                    "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}",
+                    display = ParameterDisplay.HIDDEN
+                )
+            }
+
+            steps {
+                step(GwBuildSteps.MergeDocsConfigFilesStep)
+                script {
+                    name = "Run tests"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                    #!/bin/bash
+                    set -xe
+
+                    cd frontend/flail_ssg
+                    ./run_tests.sh
+                """.trimIndent()
+                    dockerImage = GwDockerImages.PYTHON_3_9_SLIM_BUSTER.imageUrl
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                }
+            }
+
+            features {
+                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+            }
+
+            triggers {
+                trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf("frontend")))
+            }
+        })
+    }
+
+    object Content {
+        private val testKubernetesConfigFilesDev =
+            createTestKubernetesConfigFilesBuildType(
+                GwDeployEnvs.DEV.envName,
+                GwTriggerPaths.AWS_S3_KUBE.pathValue
+            )
+        private val testKubernetesConfigFilesStaging =
+            createTestKubernetesConfigFilesBuildType(
+                GwDeployEnvs.STAGING.envName,
+                GwTriggerPaths.AWS_S3_KUBE.pathValue
+            )
+        private val testKubernetesConfigFilesProd =
+            createTestKubernetesConfigFilesBuildType(
+                GwDeployEnvs.PROD.envName,
+                GwTriggerPaths.AWS_S3_KUBE.pathValue
+            )
+        private val testKubernetesConfigFilesPortal2 =
+            createTestKubernetesConfigFilesBuildType(
+                GwDeployEnvs.PORTAL2.envName,
+                GwTriggerPaths.AWS_S3_KUBE.pathValue
+            )
+        val rootProject = createRootProjectForContent()
+
+        private fun createRootProjectForContent(): Project {
+            return Project {
+                name = "Content"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                subProject(createUpdateSearchIndexProject())
+                subProject(createCleanUpSearchIndexProject())
+                subProject(createGenerateSitemapProject())
+                subProject(createDeployContentStorageProject())
+                buildType(UploadPdfsForEscrowBuildType)
+                buildType(SyncDocsFromStagingToDev)
+                buildType(SyncElasticsearchIndexFromStagingToDev)
+            }
+        }
+
+        private fun createGenerateSitemapProject(): Project {
+            return Project {
+                name = "Generate sitemap"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                arrayOf(
+                    GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
+                ).forEach {
+                    buildType(createGenerateSitemapBuildType(it.envName))
+                }
+            }
+        }
+
+        private fun createGenerateSitemapBuildType(deployEnv: String): BuildType {
+            val outputDir = "%teamcity.build.checkoutDir%/build"
+            return BuildType {
+                name = "Generate sitemap for $deployEnv"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                steps {
+                    step(GwBuildSteps.createRunSitemapGeneratorStep(deployEnv, outputDir))
+                    step(
+                        GwBuildSteps.createDeployStaticFilesStep(
+                            deployEnv, GwStaticFilesModes.SITEMAP.modeName, outputDir
+                        )
+                    )
+                }
+
+                features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+                if (deployEnv == GwDeployEnvs.PROD.envName) {
+                    triggers {
+                        schedule {
+                            schedulingPolicy = daily {
+                                hour = 1
+                                minute = 1
+                            }
+                            triggerBuild = always()
+                            withPendingChangesOnly = false
+                        }
+                    }
+                }
+            }
+        }
+
+        private fun createCleanUpSearchIndexProject(): Project {
+            return Project {
+                name = "Clean up search index"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                arrayOf(
+                    GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
+                ).forEach {
+                    buildType(createCleanUpSearchIndexBuildType(it.envName))
+                }
+            }
+        }
+
+        private fun createCleanUpSearchIndexBuildType(deployEnv: String): BuildType {
+            return BuildType {
+                name = "Clean up search index on $deployEnv"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                steps {
+                    step(GwBuildSteps.createRunIndexCleanerStep(deployEnv))
+                }
+
+                features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+                triggers {
+                    schedule {
+                        schedulingPolicy = daily {
+                            hour = 1
+                            minute = 1
+                        }
+                        triggerBuild = always()
+                        withPendingChangesOnly = false
+                    }
+                }
+            }
+        }
+
+        private fun createUpdateSearchIndexProject(): Project {
+            return Project {
+                name = "Update search index"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                arrayOf(
+                    GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD, GwDeployEnvs.PORTAL2
+                ).forEach {
+                    buildType(createUpdateSearchIndexBuildType(it.envName))
+                }
+            }
+        }
+
+        private fun createUpdateSearchIndexBuildType(deployEnv: String): BuildType {
+            val configFile = "%teamcity.build.workingDir%/config.json"
+            return BuildType {
+                name = "Update search index on $deployEnv"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                params {
+                    text(
+                        "DOC_ID",
+                        "",
+                        label = "Doc ID",
+                        description = "The ID of the document you want to reindex. Leave this field empty to reindex all documents included in the config file.",
+                        display = ParameterDisplay.PROMPT,
+                        allowEmpty = true
+                    )
+                }
+
+                steps {
+                    step(GwBuildSteps.createGetConfigFileStep(deployEnv, configFile))
+                    step(GwBuildSteps.createRunDocCrawlerStep(deployEnv, "%DOC_ID%", configFile))
+                }
+
+                features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
+        }
+
+        private fun createDeployContentStorageProject(): Project {
+            return Project {
+                name = "Deploy content storage"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                arrayOf(
+                    GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD, GwDeployEnvs.PORTAL2
+                ).forEach {
+                    buildType(createDeployContentStorageBuildType(it.envName))
+                }
+                buildType(testKubernetesConfigFilesDev)
+                buildType(testKubernetesConfigFilesStaging)
+                buildType(testKubernetesConfigFilesProd)
+                buildType(testKubernetesConfigFilesPortal2)
+            }
+        }
+
+        private fun createDeployContentStorageBuildType(deployEnv: String): BuildType {
+            val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
+            val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
+            val contentStorageDeployEnvVars = Helpers.setContentStorageDeployEnvVars(deployEnv)
+            val deployContentStorageBuildType = BuildType {
+                name = "Deploy content storage to $deployEnv"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                vcs {
+                    root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                    cleanCheckout = true
+                }
+
+                steps {
+                    script {
+                        name = "Deploy to Kubernetes"
+                        id = Helpers.createIdStringFromName(this.name)
+                        scriptContent = """
+                        #!/bin/bash 
+                        set -eux
+                                              
+                        # Set AWS credentials
+                        $awsEnvVars
+                        
+                        # Set environment variables needed for Kubernetes config files
+                        $contentStorageDeployEnvVars
+                        
+                        # Set other envs
+                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
+                        
+                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
+                        
+                        echo ${'$'}(kubectl get pods --namespace=${GwAtmosLabels.POD_NAME.labelValue})
+                        
+                        eval "echo \"${'$'}(cat ${GwConfigParams.S3_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
+                                                
+                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}
+                    """.trimIndent()
+                        dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                        dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                    }
+                }
+
+                features {
+                    feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                }
+            }
+            when (deployEnv) {
+                GwDeployEnvs.DEV.envName -> {
+                    deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                    deployContentStorageBuildType.triggers.trigger(
+                        GwVcsTriggers.createDocPortalVcsTrigger(
+                            listOf(GwTriggerPaths.AWS_S3_KUBE.pathValue)
+                        )
+                    )
+                }
+
+                GwDeployEnvs.STAGING.envName -> {
+                    deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesStaging) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                }
+
+                GwDeployEnvs.PROD.envName -> {
+                    deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesProd) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                }
+
+                GwDeployEnvs.PORTAL2.envName -> {
+                    deployContentStorageBuildType.dependencies.snapshot(testKubernetesConfigFilesPortal2) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                }
+            }
+
+            return deployContentStorageBuildType
+        }
+
+
+        object UploadPdfsForEscrowBuildType : BuildType({
+            name = "Upload PDFs for Escrow"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            params {
+                text(
+                    "env.RELEASE_NAME",
+                    "",
+                    label = "Release name",
+                    description = "For example, Banff or Cortina",
+                    display = ParameterDisplay.PROMPT
+                )
+                text(
+                    "env.RELEASE_NUMBER",
+                    "",
+                    label = "Release number",
+                    description = "Numeric representation of the release without dots or hyphens. For example, 202011 or 202104",
+                    display = ParameterDisplay.PROMPT
+                )
+            }
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                cleanCheckout = true
+            }
+
+            val tmpDir = "%teamcity.build.checkoutDir%/ci/pdfs"
+            val zipArchiveName = "%env.RELEASE_NAME%_pdfs.zip"
+            val awsEnvVarsProd = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
+            val awsEnvVarsInt = Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)
+
+            steps {
+                script {
+                    name = "Download and zip PDF files"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                    
+                    export TMP_DIR="$tmpDir"
+                    export ZIP_ARCHIVE_NAME="$zipArchiveName"
+                    
+                    echo "Setting credentials to access prod"
+                    $awsEnvVarsProd
+                    
+                    cd %teamcity.build.checkoutDir%/ci
+                    ./downloadPdfsForEscrow.sh
+                """.trimIndent()
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                }
+                script {
+                    name = "Upload the ZIP archive to S3"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                    #!/bin/bash
+                    set -xe
+                    
+                    echo "Setting credentials to access int"
+                    $awsEnvVarsInt
+                    
+                    echo "Uploading the ZIP archive to the S3 bucket"
+                    aws s3 cp "${tmpDir}/${zipArchiveName}" s3://tenant-doctools-staging-builds/escrow/%env.RELEASE_NAME%/
+            """.trimIndent()
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                }
+            }
+        })
+
+        object SyncDocsFromStagingToDev : BuildType({
+            name = "Sync docs from staging to dev"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            steps {
+                step(GwBuildSteps.createSyncDataFromStagingS3BucketToDevS3BucketStep())
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+        })
+
+        object SyncElasticsearchIndexFromStagingToDev : BuildType({
+            name = "Sync the Elasticsearch index from staging to dev"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                cleanCheckout = true
+            }
+
+            steps {
+                nodeJS {
+                    name = "Reindex from staging to dev"
+                    id = Helpers.createIdStringFromName(this.name)
+                    shellScript = """
+                    #!/bin/sh
+                    set -e
+                    
+                    node ci/reindexFromStagingToDev.mjs
+                    """.trimIndent()
+                    dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
+                }
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+        })
+
+    }
+
+    object Database {
+        private val testConfigDocsBuildType = createTestConfigBuildType(GwConfigTypes.DOCS.typeName)
+        private val testConfigSourcesBuildType = createTestConfigBuildType(GwConfigTypes.SOURCES.typeName)
+        private val testConfigBuildsBuildType = createTestConfigBuildType(GwConfigTypes.BUILDS.typeName)
+        private val validateDbDeploymentBuildTypeDev = createValidateDbDeploymentBuildType(GwDeployEnvs.DEV.envName)
+        private val validateDbDeploymentBuildTypeStaging =
+            createValidateDbDeploymentBuildType(GwDeployEnvs.STAGING.envName)
+        private val validateDbDeploymentBuildTypeProd = createValidateDbDeploymentBuildType(GwDeployEnvs.PROD.envName)
+        val deployDbBuildTypeDev = createDeployDbBuildType(GwDeployEnvs.DEV.envName)
+        val deployDbBuildTypeStaging = createDeployDbBuildType(GwDeployEnvs.STAGING.envName)
+        val deployDbBuildTypeProd = createDeployDbBuildType(GwDeployEnvs.PROD.envName)
+        val rootProject = createRootProjectForDatabase()
+
+        private fun createRootProjectForDatabase(): Project {
+            return Project {
+                name = "Database"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                buildType(deployDbBuildTypeDev)
+                buildType(deployDbBuildTypeStaging)
+                buildType(deployDbBuildTypeProd)
+                buildType(UploadLegacyConfigsToDbBuildType)
+                buildType(DumpDbDataFromStaging)
+                listOf(GwDeployEnvs.DEV, GwDeployEnvs.PROD).forEach {
+                    buildType(createRestoreDbDataBuildType(it.envName))
+                }
+                buildType(testConfigDocsBuildType)
+                buildType(testConfigSourcesBuildType)
+                buildType(testConfigBuildsBuildType)
+                buildType(validateDbDeploymentBuildTypeDev)
+                buildType(validateDbDeploymentBuildTypeStaging)
+                buildType(validateDbDeploymentBuildTypeProd)
+            }
+        }
+
+        private fun createTestConfigBuildType(configType: String): BuildType {
+            val scriptStepContent = when (configType) {
+                GwConfigTypes.DOCS.typeName -> """
+                    #!/bin/bash
+                    set -xe
+                    
+                    # Merge config files
+                    config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}"
+                 
+                    # Test merged config files
+                    config_deployer test "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}" \
+                    --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.paramValue}"
+                """.trimIndent()
+
+                GwConfigTypes.SOURCES.typeName -> """
+                    #!/bin/bash
+                    set -xe
+                    
+                    # Merge config files
+                    config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}"
+                 
+                    # Test merged config files
+                    config_deployer test "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}" \
+                    --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.paramValue}"
+                """.trimIndent()
+
+                GwConfigTypes.BUILDS.typeName -> """
+                    #!/bin/bash
+                    set -xe
+                    
+                    # Merge config files
+                    config_deployer merge "${GwConfigParams.DOCS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}"
+                    config_deployer merge "${GwConfigParams.SOURCES_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}"
+                    config_deployer merge "${GwConfigParams.BUILDS_CONFIG_FILES_DIR.paramValue}" -o "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}"
+                 
+                    # Test merged config files                            
+                    config_deployer test "${GwConfigParams.BUILDS_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}" \
+                    --sources-path "${GwConfigParams.SOURCES_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}" \
+                    --docs-path "${GwConfigParams.DOCS_CONFIG_FILES_OUT_DIR.paramValue}/${GwConfigParams.MERGED_CONFIG_FILE.paramValue}" \
+                    --schema-path "${GwConfigParams.CONFIG_SCHEMA_FILE_PATH.paramValue}"  
+                """.trimIndent()
+
+                else -> "echo Nothing to test here"
+            }
+
+            return BuildType {
+                name = "Test $configType config files"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+
+                vcs {
+                    root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                    cleanCheckout = true
+                }
+
+                steps {
+                    script {
+                        name = "Run tests for config files"
+                        id = Helpers.createIdStringFromName(this.name)
+                        scriptContent = scriptStepContent
+
+                        dockerImage = GwDockerImages.CONFIG_DEPLOYER_LATEST.imageUrl
+                        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    }
+                }
+
+                triggers {
+                    trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.TEAMCITY_CONFIG.pathValue)))
+                }
+
+                features {
+                    feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+                    feature(GwBuildFeatures.GwSshAgentBuildFeature)
+                    feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                    feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+                }
+            }
+        }
+
+        private fun createValidateDbDeploymentBuildType(deployEnv: String): BuildType {
+            val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
+            val tfstateKey = "docportal/db/terraform.tfstate"
+            val s3Bucket = when (deployEnv) {
+                GwDeployEnvs.DEV.envName -> "tenant-doctools-${GwDeployEnvs.DEV.envName}-terraform"
+                GwDeployEnvs.STAGING.envName -> "tenant-doctools-${GwDeployEnvs.STAGING.envName}-terraform"
+                GwDeployEnvs.PROD.envName -> "tenant-doctools-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-terraform"
+                else -> ""
+            }
+            val validateDbDeploymentBuildType = BuildType {
+                name = "Validate database deployment to $deployEnv"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                vcs {
+                    root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                    cleanCheckout = true
+                }
+
+                steps {
+                    script {
+                        name = "Validate Terraform config for db"
+                        id = Helpers.createIdStringFromName(this.name)
+                        scriptContent = """
+                    #!/bin/bash
+                    set -eux
+                    
+                    $awsEnvVars
+
+                    cd db
+
+                    terraform init \
+                        -backend-config="bucket=$s3Bucket" \
+                        -backend-config="region=${'$'}{AWS_DEFAULT_REGION}" \
+                        -backend-config="key=$tfstateKey" \
+                        -input=false
+                    terraform validate
+                    """.trimIndent()
+                        dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                        dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+
+                    }
+                }
+
+                features {
+                    feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+                    feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                    feature(GwBuildFeatures.GwSshAgentBuildFeature)
+                    feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+                }
+            }
+
+            when (deployEnv) {
+                GwDeployEnvs.DEV.envName -> {
+                    validateDbDeploymentBuildType.triggers.trigger(
+                        GwVcsTriggers.createDocPortalVcsTrigger(
+                            listOf(
+                                GwTriggerPaths.DB.pathValue
+                            )
+                        )
+                    )
+                }
+            }
+
+            return validateDbDeploymentBuildType
+        }
+
+        private fun createDeployDbBuildType(deployEnv: String): BuildType {
+            val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
+            val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
+            val tfstateKey = "docportal/db/terraform.tfstate"
+            val envLevel: String
+            val starSystemName: String
+            val quadrantName: String
+            val s3Bucket: String
+            when (deployEnv) {
+                GwDeployEnvs.DEV.envName -> {
+                    envLevel = "Non-Prod"
+                    starSystemName = "needle"
+                    quadrantName = "pi7"
+                    s3Bucket = "tenant-doctools-${GwDeployEnvs.DEV.envName}-terraform"
+                }
+
+                GwDeployEnvs.STAGING.envName -> {
+                    envLevel = "Non-Prod"
+                    starSystemName = "needle"
+                    quadrantName = "pi11"
+                    s3Bucket = "tenant-doctools-${GwDeployEnvs.STAGING.envName}-terraform"
+                }
+
+                GwDeployEnvs.PROD.envName -> {
+                    envLevel = "Prod"
+                    starSystemName = "andromeda"
+                    quadrantName = "omega2"
+                    s3Bucket = "tenant-doctools-${GwDeployEnvs.OMEGA2_ANDROMEDA.envName}-terraform"
+                }
+
+                else -> {
+                    envLevel = ""
+                    starSystemName = ""
+                    quadrantName = ""
+                    s3Bucket = ""
+                }
+            }
+            val deployDatabaseBuildType = BuildType {
+                name = "Deploy database to $deployEnv"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                vcs {
+                    root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                    cleanCheckout = true
+                }
+
+                steps {
+                    script {
+                        name = "Deploy db with Terraform"
+                        id = Helpers.createIdStringFromName(this.name)
+                        scriptContent = """
+                    #!/bin/bash
+                    set -eux
+                    
+                    $awsEnvVars
+
+                    cd db
+
+                    terraform init \
+                        -backend-config="bucket=$s3Bucket" \
+                        -backend-config="region=${'$'}{AWS_DEFAULT_REGION}" \
+                        -backend-config="key=$tfstateKey" \
+                        -input=false
+                    terraform apply \
+                        -var="star_system_name=$starSystemName" \
+                        -var="quadrant_name=$quadrantName" \
+                        -var="deploy_env=$atmosDeployEnv" \
+                        -var="region=${'$'}{AWS_DEFAULT_REGION}" \
+                        -var="env_level=$envLevel" \
+                        -var="pod_name=${GwAtmosLabels.POD_NAME.labelValue}" \
+                        -var="dept_code=${GwAtmosLabels.DEPT_CODE.labelValue}" \
+                        -input=false \
+                        -auto-approve
+                    """.trimIndent()
+                        dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                        dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                    }
+                }
+
+                features {
+                    feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                    feature(GwBuildFeatures.GwSshAgentBuildFeature)
+                }
+            }
+
+            when (deployEnv) {
+                GwDeployEnvs.DEV.envName -> {
+                    deployDatabaseBuildType.dependencies.snapshot(validateDbDeploymentBuildTypeDev) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                    deployDatabaseBuildType.triggers.trigger(
+                        GwVcsTriggers.createDocPortalVcsTrigger(
+                            listOf(
+                                GwTriggerPaths.DB.pathValue
+                            )
+                        )
+                    )
+                }
+
+                GwDeployEnvs.STAGING.envName -> {
+                    deployDatabaseBuildType.dependencies.snapshot(
+                        validateDbDeploymentBuildTypeStaging
+                    ) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                }
+
+                GwDeployEnvs.PROD.envName -> {
+                    deployDatabaseBuildType.dependencies.snapshot(validateDbDeploymentBuildTypeProd) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                }
+            }
+
+            return deployDatabaseBuildType
+        }
+
+        private object DumpDbDataFromStaging : BuildType({
+            name = "Dump database data from staging"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            artifactRules = GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue
+
+            steps {
+                script {
+                    name = "Create a database dump"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                    #!/bin/bash 
+                    set -eu
+                                                    
+                    # Set env variables
+                    ${Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)}
+                    export AWS_SECRET=${'$'}(aws secretsmanager get-secret-value --secret-id tenant-doctools-docportal)
+                    export CONFIG_DB_NAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_name' <<< "${'$'}AWS_SECRET")
+                    export CONFIG_DB_USERNAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_username' <<< "${'$'}AWS_SECRET")
+                    export CONFIG_DB_PASSWORD=${'$'}(jq -r '.SecretString | fromjson | .config_db_password' <<< "${'$'}AWS_SECRET")
+                    export CONFIG_DB_HOST=${GwConfigParams.CONFIG_DB_HOST_STAGING.paramValue}
+                    
+                    
+                    EXIT_CODE=0
+                    aws eks update-kubeconfig --name atmos-${Helpers.getAtmosDeployEnv(GwDeployEnvs.STAGING.envName)} && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} --image=${GwConfigParams.DB_CLIENT_IMAGE_NAME.paramValue} --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
+                    
+                    if [ "${'$'}EXIT_CODE" -eq 0 ]; then
+                        SECONDS=0
+                        while [ ${'$'}SECONDS -le 30 ]; do
+                          status=${'$'}(kubectl get pods ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -o jsonpath='{.status.phase}')
+                          if [ "${'$'}status" == "Running" ]; then
+                            kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && pg_dump -Fd ${'$'}CONFIG_DB_NAME -j 5 -f ${'$'}CONFIG_DB_NAME && zip -r ${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${'$'}CONFIG_DB_NAME" && kubectl cp ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} || EXIT_CODE=${'$'}?
+                            break
+                          else
+                            echo "Waiting for the ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} pod to be ready"
+                            sleep 5
+                          fi
+                        done
+                    fi
+                    
+                    kubectl get pods | grep ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} && kubectl delete pod ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} || EXIT_CODE=${'$'}?
+                   
+                    exit ${'$'}EXIT_CODE
+                """.trimIndent()
+                    dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                    dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                    dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                }
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+            dependencies {
+                snapshot(UploadLegacyConfigsToDbBuildType) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+            }
+        })
+
+        private fun createRestoreDbDataBuildType(deployEnv: String): BuildType {
+            val dbRestoreAwsEnvVars: String
+            val dbRestoreAtmosDeployEnv: String
+            val dbRestoreConfigDbHost: String
+            when (deployEnv) {
+                GwDeployEnvs.DEV.envName -> {
+                    dbRestoreAwsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.DEV.envName)
+                    dbRestoreAtmosDeployEnv = Helpers.getAtmosDeployEnv(GwDeployEnvs.DEV.envName)
+                    dbRestoreConfigDbHost = GwConfigParams.CONFIG_DB_HOST_DEV.paramValue
+                }
+
+                GwDeployEnvs.PROD.envName -> {
+                    dbRestoreAwsEnvVars = Helpers.setAwsEnvVars(GwDeployEnvs.PROD.envName)
+                    dbRestoreAtmosDeployEnv = Helpers.getAtmosDeployEnv(GwDeployEnvs.PROD.envName)
+                    dbRestoreConfigDbHost = GwConfigParams.CONFIG_DB_HOST_PROD.paramValue
+                }
+
+                else -> {
+                    dbRestoreAwsEnvVars = ""
+                    dbRestoreAtmosDeployEnv = ""
+                    dbRestoreConfigDbHost = ""
+                }
+            }
+
+            val syncDbDataBuildType = BuildType {
+                name = "Restore database data on $deployEnv"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                vcs {
+                    root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                    cleanCheckout = true
+                }
+
+                steps {
+                    script {
+                        name = "Restore the db dump from staging on $deployEnv"
+                        id = Helpers.createIdStringFromName(this.name)
+                        scriptContent = """
+                        #!/bin/bash 
+                        set -eu
+                                                        
+                        # Set env variables
+                        $dbRestoreAwsEnvVars
+                        export AWS_SECRET=${'$'}(aws secretsmanager get-secret-value --secret-id tenant-doctools-docportal)
+                        export CONFIG_DB_NAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_name' <<< "${'$'}AWS_SECRET")
+                        export CONFIG_DB_USERNAME=${'$'}(jq -r '.SecretString | fromjson | .config_db_username' <<< "${'$'}AWS_SECRET")
+                        export CONFIG_DB_PASSWORD=${'$'}(jq -r '.SecretString | fromjson | .config_db_password' <<< "${'$'}AWS_SECRET")
+                        export CONFIG_DB_HOST=$dbRestoreConfigDbHost
+                        
+                        EXIT_CODE=0
+                        aws eks update-kubeconfig --name atmos-$dbRestoreAtmosDeployEnv && kubectl config set-context --current --namespace=${GwAtmosLabels.POD_NAME.labelValue} && kubectl run ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} --image=${GwConfigParams.DB_CLIENT_IMAGE_NAME.paramValue} --env="PGPASSWORD=${'$'}CONFIG_DB_PASSWORD" --env="PGUSER=${'$'}CONFIG_DB_USERNAME" --env="PGHOST=${'$'}CONFIG_DB_HOST" --env="PGDATABASE=${'$'}CONFIG_DB_NAME" --command -- /bin/sleep "infinite" || EXIT_CODE=${'$'}?
+                        
+                        if [ "${'$'}EXIT_CODE" -eq 0 ]; then
+                            SECONDS=0
+                            while [ ${'$'}SECONDS -le 30 ]; do
+                              status=${'$'}(kubectl get pods ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -o jsonpath='{.status.phase}')
+                              if [ "${'$'}status" == "Running" ]; then
+                                kubectl cp ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue}:/${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && kubectl exec ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} -- sh -c "apk add --no-cache postgresql-client zip && unzip ./${GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue} && pg_restore --clean --if-exists -d ${'$'}CONFIG_DB_NAME ${'$'}CONFIG_DB_NAME" || EXIT_CODE=${'$'}?
+                                break
+                              else
+                                echo "Waiting for the ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} pod to be ready"
+                                sleep 5
+                              fi
+                            done
+                        fi
+                        
+                        kubectl get pods | grep ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} && kubectl delete pod ${GwConfigParams.DB_CLIENT_POD_NAME.paramValue} || EXIT_CODE=${'$'}?
+                       
+                        exit ${'$'}EXIT_CODE
+                    """.trimIndent()
+                        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                        dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                        dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                    }
+                }
+
+                features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+                dependencies {
+                    dependency(DumpDbDataFromStaging) {
+                        snapshot {
+                            onDependencyFailure = FailureAction.FAIL_TO_START
+                        }
+
+                        artifacts {
+                            cleanDestination = true
+                            artifactRules = GwConfigParams.DB_DUMP_ZIP_PACKAGE_NAME.paramValue
+                        }
+                    }
+                }
+
+                triggers {
+                    trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.TEAMCITY_CONFIG.pathValue)))
+                }
+            }
+
+            /*
+            In TeamCity 2022.04.5, there's no easy way to create a sequence of builds to run.
+            In a composite build, you can only define snapshot dependencies, but you cannot control the order of triggering them.
+            We want to load data to the database after the entire doc portal is deployed successfully.
+            But we don't want to trigger the deployment of the entire doc portal every time we run a build for loading
+            data. Therefore, we use the following solution:
+             - A composite build that has snapshot dependencies on builds that deploy the database, server, and React landing
+             pages. All these builds can run in parallel so we don't need to control the order.
+             - A Finish Build Trigger without a snapshot dependency in the build for uploading legacy configs
+             to staging the database and in the builds for syncing data from the staging database to dev and prod.
+
+             The disadvantage of this solution is that you cannot see the progress of running the entire chain in one place.
+             When the composite build is complete, the build with the Finish Build Trigger starts and it isn't linked
+             in any way to the composite build.
+             */
+
+            when (deployEnv) {
+                GwDeployEnvs.DEV.envName -> {
+                    syncDbDataBuildType.triggers.finishBuildTrigger {
+                        buildType = DocPortal.deployDocPortalDev.id.toString()
+                        successfulOnly = true
+                    }
+                }
+
+                GwDeployEnvs.PROD.envName -> {
+                    syncDbDataBuildType.triggers.finishBuildTrigger {
+                        buildType = DocPortal.deployDocPortalProd.id.toString()
+                        successfulOnly = true
+                    }
+                }
+            }
+
+            return syncDbDataBuildType
+        }
+
+        // Legacy configs are uploaded only to the db on staging. Dev db and prod db sync data from staging.
+        object UploadLegacyConfigsToDbBuildType : BuildType({
+            val pagesDir = "%teamcity.build.checkoutDir%/frontend/pages"
+            val outputDir = "%teamcity.build.checkoutDir%/output"
+
+            name = "Upload legacy configs to ${GwDeployEnvs.STAGING.envName} database"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            vcs {
+                root(
+                    GwVcsRoots.DocumentationPortalGitVcsRoot
+                )
+                cleanCheckout = true
+            }
+
+            artifactRules = "response*.json => /"
+            steps {
+                step(GwBuildSteps.MergeAllLegacyConfigsStep)
+                step(
+                    GwBuildSteps.createRunFlailSsgStep(
+                        pagesDir,
+                        "${outputDir}/staging/pages",
+                        GwDeployEnvs.STAGING.envName
+                    )
+                )
+                step(
+                    GwBuildSteps.createRunFlailSsgStep(
+                        pagesDir,
+                        "${outputDir}/prod/pages",
+                        GwDeployEnvs.PROD.envName
+                    )
+                )
+                step(GwBuildSteps.createUploadLegacyConfigsAndPagesToS3BucketStep(GwDeployEnvs.STAGING.envName))
+                nodeJS {
+                    name = "Call doc portal endpoints to trigger upload"
+                    id = Helpers.createIdStringFromName(this.name)
+                    shellScript = """
+                        #!/bin/sh
+                        set -e
+                        
+                        ${Helpers.setAwsEnvVars(GwDeployEnvs.STAGING.envName)}
+                        export APP_BASE_URL="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}"
+                        export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
+                        export OKTA_SCOPES="${GwConfigParams.OKTA_SCOPES.paramValue}"
+                        
+                        cd ci/uploadLegacyConfigsToDb
+                        yarn
+                        node uploadLegacyConfigsToDb.mjs
+                        """.trimIndent()
+                    dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
+                }
+            }
+
+            features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+
+            dependencies {
+                snapshot(testConfigBuildsBuildType) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+                snapshot(testConfigDocsBuildType) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+                snapshot(testConfigSourcesBuildType) {
+                    onDependencyFailure = FailureAction.FAIL_TO_START
+                }
+            }
+
+            /*
+            In TeamCity 2022.04.5, there's no easy way to create a sequence of builds to run.
+            In a composite build, you can only define snapshot dependencies, but you cannot control the order of triggering them.
+            We want to load data to the database after the entire doc portal is deployed successfully.
+            But we don't want to trigger the deployment of the entire doc portal every time we run a build for loading
+            data. Therefore, we use the following solution:
+             - A composite build that has snapshot dependencies on builds that deploy the database, server, and React landing
+             pages. All these builds can run in parallel so we don't need to control the order.
+             - A Finish Build Trigger without a snapshot dependency in the build for uploading legacy configs
+             to staging the database and in the builds for syncing data from the staging database to dev and prod.
+
+             The disadvantage of this solution is that you cannot see the progress of running the entire chain in one place.
+             When the composite build is complete, the build with the Finish Build Trigger starts and it isn't linked
+             in any way to the composite build.
+             */
+            triggers {
+                finishBuildTrigger {
+                    buildType = DocPortal.deployDocPortalStaging.id.toString()
+                    successfulOnly = true
+                }
+            }
+        })
+    }
+
+    object DocPortal {
+        val deployDocPortalDev = createDeployDocPortalBuildType(GwDeployEnvs.DEV.envName)
+        val deployDocPortalStaging = createDeployDocPortalBuildType(GwDeployEnvs.STAGING.envName)
+        val deployDocPortalProd = createDeployDocPortalBuildType(GwDeployEnvs.PROD.envName)
+
+        val rootProject = createDocPortalRootProject()
+
+        private fun createDocPortalRootProject(): Project {
+            return Project {
+                name = "Doc Portal"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                buildType(deployDocPortalDev)
+                buildType(deployDocPortalStaging)
+                buildType(deployDocPortalProd)
+            }
+        }
+
+        private fun createDeployDocPortalBuildType(deployEnv: String): BuildType {
+            val snapshotDependencies = when (deployEnv) {
+                GwDeployEnvs.DEV.envName -> listOf(
+                    Database.deployDbBuildTypeDev,
+                    Server.deployServerBuildTypeDev,
+                    Frontend.deployReactLandingPagesBuildTypeDev
+                )
+
+                GwDeployEnvs.STAGING.envName -> listOf(
+                    Database.deployDbBuildTypeStaging,
+                    Server.deployServerBuildTypeStaging,
+                    Frontend.deployReactLandingPagesBuildTypeStaging
+                )
+
+                GwDeployEnvs.PROD.envName -> listOf(
+                    Database.deployDbBuildTypeProd,
+                    Server.deployServerBuildTypeProd,
+                    Frontend.deployReactLandingPagesBuildTypeProd
+                )
+
+                else -> listOf()
+            }
+            return BuildType {
+                name = "Deploy doc portal to $deployEnv"
+                description = "Deploys db, server and React landing pages to $deployEnv"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+                type = BuildTypeSettings.Type.COMPOSITE
+
+                dependencies {
+                    snapshotDependencies.forEach {
+                        snapshot(it) {
+                            onDependencyFailure = FailureAction.FAIL_TO_START
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    object Frontend {
+        private val testKubernetesConfigFilesDev =
+            createTestKubernetesConfigFilesBuildType(
+                GwDeployEnvs.DEV.envName,
+                GwTriggerPaths.LANDING_PAGES_KUBE.pathValue
+            )
+        private val testKubernetesConfigFilesStaging =
+            createTestKubernetesConfigFilesBuildType(
+                GwDeployEnvs.STAGING.envName,
+                GwTriggerPaths.LANDING_PAGES_KUBE.pathValue
+            )
+        private val testKubernetesConfigFilesProd =
+            createTestKubernetesConfigFilesBuildType(
+                GwDeployEnvs.PROD.envName,
+                GwTriggerPaths.LANDING_PAGES_KUBE.pathValue
+            )
+        private val runCheckmarxScan =
+            createRunCheckmarxScanBuildType(GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue)
+        private val buildAndPublishDockerImageToDevEcrBuildType =
+            createBuildAndPublishDockerImageToDevEcrBuildType(
+                GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
+                GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl,
+                "%teamcity.build.checkoutDir%",
+                listOf(runCheckmarxScan, TestReactLandingPagesBuildType)
+            )
+        private val publishDockerImageToProdEcrBuildType = createPublishDockerImageToProdEcrBuildType(
+            GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue,
+            GwDockerImages.DOC_PORTAL_FRONTEND.imageUrl,
+            GwDockerImages.DOC_PORTAL_FRONTEND_PROD.imageUrl,
+            listOf(buildAndPublishDockerImageToDevEcrBuildType)
+        )
+        val deployReactLandingPagesBuildTypeDev = createDeployReactLandingPagesBuildType(GwDeployEnvs.DEV.envName)
+        val deployReactLandingPagesBuildTypeStaging =
+            createDeployReactLandingPagesBuildType(GwDeployEnvs.STAGING.envName)
+        val deployReactLandingPagesBuildTypeProd = createDeployReactLandingPagesBuildType(GwDeployEnvs.PROD.envName)
+        val rootProject = createRootProjectForFrontend()
+
+        private fun createRootProjectForFrontend(): Project {
+            return Project {
+                name = "Frontend"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                subProject(createReactLandingPagesProject())
+                subProject(createNpmPackagesProject())
+                subProject(createHtml5DependenciesProject())
+            }
+        }
+
+        private fun createNpmPackagesProject(): Project {
+            return Project {
+                name = "NPM packages"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                arrayOf(
+                    Pair("theme", "docusaurus/themes/gw-theme-classic"),
+                    Pair("plugin", "docusaurus/plugins/gw-plugin-redoc")
+                ).forEach {
+                    buildType(createPublishNpmPackageBuildType(it.first, it.second))
+                }
+            }
+        }
+
+
+        private fun createHtml5DependenciesProject(): Project {
+            return Project {
+                name = "HTML5 dependencies"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                arrayOf(
+                    GwDeployEnvs.DEV, GwDeployEnvs.STAGING, GwDeployEnvs.PROD
+                ).forEach {
+                    buildType(createDeployHtml5DependenciesBuildType(it.envName))
+                }
+
+                buildType(createDeployHtml5OfflineDependenciesBuildType())
+            }
+        }
+
+        private fun createReactLandingPagesProject(): Project {
+            return Project {
+                name = "React landing pages"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                buildType(deployReactLandingPagesBuildTypeDev)
+                buildType(deployReactLandingPagesBuildTypeStaging)
+                buildType(deployReactLandingPagesBuildTypeProd)
+                buildType(runCheckmarxScan)
+                buildType(TestReactLandingPagesBuildType)
+                buildType(testKubernetesConfigFilesDev)
+                buildType(testKubernetesConfigFilesStaging)
+                buildType(testKubernetesConfigFilesProd)
+                buildType(buildAndPublishDockerImageToDevEcrBuildType)
+                buildType(publishDockerImageToProdEcrBuildType)
+            }
+        }
+
+        private fun createDeployReactLandingPagesBuildType(deployEnv: String): BuildType {
+            val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
+            val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
+            val reactLandingPagesDeployEnvVars =
+                Helpers.setReactLandingPagesDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL_FRONTEND.tagValue)
+            val deployReactLandingPagesBuildType = BuildType {
+                name = "Deploy React landing pages to $deployEnv"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                vcs {
+                    root(
+                        GwVcsRoots.DocumentationPortalGitVcsRoot,
+                    )
+                    cleanCheckout = true
+                }
+
+                steps {
+                    nodeJS {
+                        name = "Generate the root breadcrumbs file from React components"
+                        id = Helpers.createIdStringFromName(this.name)
+                        shellScript = """
+                        yarn --cwd scripts
+                        yarn --cwd scripts get-root-breadcrumbs
+                    """.trimIndent()
+                        dockerImage = GwDockerImages.NODE_18_14_0.imageUrl
+                    }
+                    script {
+                        name = "Copy the root breadcrumbs file to landing pages"
+                        id = Helpers.createIdStringFromName(this.name)
+                        scriptContent = """
+                        #!/bin/bash 
+                        set -xe
+                        
+                        cp %teamcity.build.checkoutDir%/scripts/out/root-breadcrumbs.json %teamcity.build.checkoutDir%/${GwConfigParams.DOC_PORTAL_FRONTEND_DIR.paramValue}/public
+                    """.trimIndent()
+                    }
+                    script {
+                        name = "Deploy to Kubernetes"
+                        id = Helpers.createIdStringFromName(this.name)
+                        scriptContent = """
+                        #!/bin/bash 
+                        set -eux
+                                
+                        # Set AWS credentials
+                        $awsEnvVars
+                        
+                        # Set environment variables needed for Kubernetes config files
+                        $reactLandingPagesDeployEnvVars
+                        
+                        # Set other envs
+                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
+                        
+                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
+                        
+                        echo ${'$'}(kubectl get pods --namespace=${GwAtmosLabels.POD_NAME.labelValue})
+                        
+                        eval "echo \"${'$'}(cat ${GwConfigParams.DOC_PORTAL_FRONTEND_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
+                                                
+                        sed -ie "s/BUILD_TIME/${'$'}(date)/g" ${'$'}TMP_DEPLOYMENT_FILE
+                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}
+                    """.trimIndent()
+                        dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                        dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                    }
+                    step(
+                        GwBuildSteps.createCheckPodsStatusStep(
+                            awsEnvVars,
+                            atmosDeployEnv,
+                            GwConfigParams.DOC_PORTAL_FRONTEND_APP_NAME.paramValue
+                        )
+                    )
+                }
+
+                features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
+
+            when (deployEnv) {
+                GwDeployEnvs.DEV.envName -> {
+                    deployReactLandingPagesBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                    deployReactLandingPagesBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                    deployReactLandingPagesBuildType.triggers.trigger(
+                        GwVcsTriggers.createDocPortalVcsTrigger(
+                            listOf(
+                                GwTriggerPaths.LANDING_PAGES.pathValue,
+                                GwTriggerPaths.SCRIPTS_SRC_PAGES_GET_ROOT_BREADCRUMBS.pathValue,
+                                GwTriggerPaths.SERVER_SRC_MODEL_ENTITY.pathValue,
+                                GwTriggerPaths.SERVER_SRC_TYPES.pathValue
+                            )
+                        )
+                    )
+                }
+
+                GwDeployEnvs.STAGING.envName -> {
+                    deployReactLandingPagesBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                    deployReactLandingPagesBuildType.dependencies.snapshot(testKubernetesConfigFilesStaging) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                }
+
+                GwDeployEnvs.PROD.envName -> {
+                    deployReactLandingPagesBuildType.dependencies.snapshot(publishDockerImageToProdEcrBuildType) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                    deployReactLandingPagesBuildType.dependencies.snapshot(testKubernetesConfigFilesProd) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                }
+            }
+
+            return deployReactLandingPagesBuildType
+        }
+
+        private object TestReactLandingPagesBuildType : BuildType({
+            name = "Test React landing pages"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            vcs {
+                root(
+                    GwVcsRoots.DocumentationPortalGitVcsRoot
+                )
+                cleanCheckout = true
+            }
+
+            steps {
+                nodeJS {
+                    id = "Build landing pages"
+                    shellScript = """
+                    yarn
+                    CI=true yarn test:landing-pages
+                    yarn build
+                """.trimIndent()
+                    dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
+                }
+            }
+
+            features {
+                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+            }
+
+            triggers {
+                trigger(
+                    GwVcsTriggers.createDocPortalVcsTrigger(
+                        listOf(
+                            GwTriggerPaths.LANDING_PAGES.pathValue,
+                            GwTriggerPaths.SHIMS.pathValue,
+                            GwTriggerPaths.SCRIPTS_SRC_PAGES_GET_ROOT_BREADCRUMBS.pathValue,
+                            GwTriggerPaths.SERVER_SRC_MODEL_ENTITY.pathValue,
+                            GwTriggerPaths.SERVER_SRC_TYPES.pathValue
+                        ),
+                        listOf(
+                            GwTriggerPaths.LANDING_PAGES_KUBE.pathValue,
+                        )
+                    )
+                )
+            }
+        })
+
+        private fun createPublishNpmPackageBuildType(packageHandle: String, packagePath: String): BuildType {
+            return BuildType {
+                name = "Publish $packageHandle to Artifactory"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                vcs {
+                    root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                    cleanCheckout = true
+                }
+
+                steps {
+                    step(GwBuildSteps.createPublishNpmPackageStep(packageHandle, packagePath))
+                }
+
+                // Supposedly, the build is triggered only on changes in package.json to publish a new package
+                // only when its version changes, not on every change in the code.
+                triggers {
+                    trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf("${packagePath}/package.json")))
+                }
+
+                features {
+                    feature(GwBuildFeatures.GwSshAgentBuildFeature)
+                    feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                }
+            }
+        }
+
+        private fun createDeployHtml5DependenciesBuildType(deployEnv: String): BuildType {
+            return BuildType {
+                name = "Deploy HTML5 dependencies to $deployEnv"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                vcs {
+                    root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                    cleanCheckout = true
+                }
+
+                // It is the output path defined in webpack.config.js
+                val outputDir = "%teamcity.build.checkoutDir%/html5/static/html5"
+
+                steps {
+                    step(GwBuildSteps.createBuildHtml5DependenciesStep())
+                    step(
+                        GwBuildSteps.createDeployStaticFilesStep(
+                            deployEnv, GwStaticFilesModes.HTML5.modeName, outputDir
+                        )
+                    )
+                }
+
+                triggers {
+                    trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.HTML5.pathValue)))
+                }
+
+                features {
+                    feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                }
+            }
+        }
+
+        private fun createDeployHtml5OfflineDependenciesBuildType(): BuildType {
+            val ditaOutPluginsCheckoutDir = "dita-ot-plugins"
+            return BuildType {
+                name = "Deploy HTML5 OFFLINE dependencies"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                vcs {
+                    root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                    root(GwVcsRoots.DitaOtPluginsVcsRoot, "+:.=>$ditaOutPluginsCheckoutDir")
+                    cleanCheckout = true
+                }
+
+                steps {
+                    step(GwBuildSteps.createBuildHtml5OfflineDependenciesStep())
+                    step(GwBuildSteps.createDeployHtml5OfflineDependenciesStep("%teamcity.build.checkoutDir%/$ditaOutPluginsCheckoutDir"))
+                }
+
+                triggers {
+                    trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.HTML5.pathValue)))
+                }
+
+                features {
+                    feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                    feature(GwBuildFeatures.GwSshAgentBuildFeature)
+                }
+            }
+        }
+    }
+
+    object Server {
+        private val testKubernetesConfigFilesDev =
+            createTestKubernetesConfigFilesBuildType(
+                GwDeployEnvs.DEV.envName,
+                GwTriggerPaths.SERVER_KUBE.pathValue
+            )
+        private val testKubernetesConfigFilesStaging =
+            createTestKubernetesConfigFilesBuildType(
+                GwDeployEnvs.STAGING.envName,
+                GwTriggerPaths.SERVER_KUBE.pathValue
+            )
+        private val testKubernetesConfigFilesProd =
+            createTestKubernetesConfigFilesBuildType(
+                GwDeployEnvs.PROD.envName,
+                GwTriggerPaths.SERVER_KUBE.pathValue
+            )
+        private val runCheckmarxScan = createRunCheckmarxScanBuildType(GwConfigParams.DOC_PORTAL_DIR.paramValue)
+        private val buildAndPublishDockerImageToDevEcrBuildType =
+            createBuildAndPublishDockerImageToDevEcrBuildType(
+                GwDockerImageTags.DOC_PORTAL.tagValue,
+                GwDockerImages.DOC_PORTAL.imageUrl,
+                "%teamcity.build.checkoutDir%/${GwConfigParams.DOC_PORTAL_DIR.paramValue}",
+                listOf(runCheckmarxScan, TestDocSiteServerApp)
+            )
+        private val publishDockerImageToProdEcrBuildType = createPublishDockerImageToProdEcrBuildType(
+            GwDockerImageTags.DOC_PORTAL.tagValue,
+            GwDockerImages.DOC_PORTAL.imageUrl,
+            GwDockerImages.DOC_PORTAL_PROD.imageUrl,
+            listOf(buildAndPublishDockerImageToDevEcrBuildType)
+        )
+        val deployServerBuildTypeDev = createDeployServerBuildType(GwDeployEnvs.DEV.envName)
+        val deployServerBuildTypeStaging = createDeployServerBuildType(GwDeployEnvs.STAGING.envName)
+        val deployServerBuildTypeProd = createDeployServerBuildType(GwDeployEnvs.PROD.envName)
+        val rootProject = createRootProjectForServer()
+        private fun createRootProjectForServer(): Project {
+            return Project {
+                name = "Server"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                buildType(deployServerBuildTypeDev)
+                buildType(deployServerBuildTypeStaging)
+                buildType(deployServerBuildTypeProd)
+                buildType(runCheckmarxScan)
+                buildType(TestDocSiteServerApp)
+                buildType(TestHtml5Dependencies)
+                buildType(testKubernetesConfigFilesDev)
+                buildType(testKubernetesConfigFilesStaging)
+                buildType(testKubernetesConfigFilesProd)
+                buildType(buildAndPublishDockerImageToDevEcrBuildType)
+                buildType(publishDockerImageToProdEcrBuildType)
+            }
+        }
+
+        private object TestHtml5Dependencies : BuildType({
+            name = "Test HTML5 dependencies"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                cleanCheckout = true
+            }
+
+            steps {
+                step(GwBuildSteps.createBuildHtml5DependenciesStep())
+                step(GwBuildSteps.createBuildHtml5OfflineDependenciesStep())
+            }
+
+            triggers {
+                trigger(
+                    GwVcsTriggers.createDocPortalVcsTrigger(
+                        listOf(
+                            GwTriggerPaths.HTML5.pathValue,
+                            GwTriggerPaths.DOCUSAURUS_THEMES.pathValue
+                        )
+                    )
+                )
+            }
+
+            features {
+                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+            }
+        })
+
+        private object TestDocSiteServerApp : BuildType({
+            name = "Test doc site server app"
+            id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+            vcs {
+                root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                cleanCheckout = true
+            }
+
+            steps {
+                script {
+                    name = "Test the doc site server"
+                    id = Helpers.createIdStringFromName(this.name)
+                    scriptContent = """
+                    #!/bin/sh
+                    set -e
+                    export OKTA_CLIENT_ID=mock
+                    export OKTA_CLIENT_SECRET=mock
+                    export OKTA_IDP="${GwConfigParams.OKTA_IDP.paramValue}"
+                    export GW_COMMUNITY_PARTNER_IDP="${GwConfigParams.GW_COMMUNITY_PARTNER_IDP.paramValue}"
+                    export GW_COMMUNITY_CUSTOMER_IDP="${GwConfigParams.GW_COMMUNITY_CUSTOMER_IDP.paramValue}"
+                    export OKTA_ISSUER="${GwConfigParams.OKTA_ISSUER.paramValue}"
+                    export OKTA_ISSUER_APAC="issuerNotConfigured"
+                    export OKTA_ISSUER_EMEA="issuerNotConfigured"
+                    export OKTA_SCOPES=mock
+                    export OKTA_AUDIENCE=mock
+                    export APP_BASE_URL=http://localhost:8081
+                    export SESSION_KEY=mock
+                    export DOC_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.STAGING.envName)}"
+                    export PORTAL2_S3_URL="${Helpers.getS3BucketUrl(GwDeployEnvs.PORTAL2.envName)}"
+                    export ELASTIC_SEARCH_URL="${Helpers.getElasticsearchUrl(GwDeployEnvs.STAGING.envName)}"
+                    export DEPLOY_ENV="${GwDeployEnvs.STAGING.envName}"
+                    export LOCAL_CONFIG=yes
+                    export ENABLE_AUTH=no
+                    export PRETEND_TO_BE_EXTERNAL=no
+                    export ALLOW_PUBLIC_DOCS=yes
+                    export LOCALHOST_SESSION_SETTINGS=yes
+                    export PARTNERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/partners-login"
+                    export PARTNERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/partners/idp/endpoint/HttpRedirect"
+                    export PARTNERS_LOGIN_CERT=mock
+                    export CUSTOMERS_LOGIN_SERVICE_PROVIDER_ENTITY_ID="${Helpers.getTargetUrl(GwDeployEnvs.STAGING.envName)}/customers-login"
+                    export CUSTOMERS_LOGIN_URL="https://guidewire--qaint.sandbox.my.site.com/customers/idp/endpoint/HttpRedirect"
+                    export CUSTOMERS_LOGIN_CERT=mock
+                    
+                    yarn
+                    yarn test:server
+                """.trimIndent()
+                    dockerImage = GwDockerImages.NODE_16_16_0.imageUrl
+                }
+            }
+
+            features {
+                feature(GwBuildFeatures.GwCommitStatusPublisherBuildFeature)
+                feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+                feature(GwBuildFeatures.createGwPullRequestsBuildFeature(GwVcsRoots.DocumentationPortalGitVcsRoot.branch.toString()))
+            }
+
+            triggers {
+                trigger(
+                    GwVcsTriggers.createDocPortalVcsTrigger(
+                        listOf(GwTriggerPaths.SERVER.pathValue),
+                        listOf(GwTriggerPaths.SERVER_KUBE.pathValue)
+                    )
+                )
+            }
+        })
+
+        private fun createDeployServerBuildType(deployEnv: String): BuildType {
+            val awsEnvVars = Helpers.setAwsEnvVars(deployEnv)
+            val gatewayConfigFile = Helpers.getServerGatewayConfigFile(deployEnv)
+
+            val atmosDeployEnv = Helpers.getAtmosDeployEnv(deployEnv)
+            val serverDeployEnvVars = Helpers.setServerDeployEnvVars(deployEnv, GwDockerImageTags.DOC_PORTAL.tagValue)
+            val deployServerBuildType = BuildType {
+                name = "Deploy server to $deployEnv"
+                id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
+
+                vcs {
+                    root(GwVcsRoots.DocumentationPortalGitVcsRoot)
+                    cleanCheckout = true
+                }
+
+                steps {
+                    script {
+                        name = "Deploy to Kubernetes"
+                        id = Helpers.createIdStringFromName(this.name)
+                        scriptContent = """
+                        #!/bin/bash 
+                        set -eux
+                                
+                        # Set AWS credentials
+                        $awsEnvVars
+                        
+                        # Set environment variables needed for Kubernetes config files
+                        $serverDeployEnvVars
+                        
+                        # Set other envs
+                        export TMP_DEPLOYMENT_FILE="tmp-deployment.yml"
+                        export TMP_GATEWAY_CONFIG_FILE="tmp-gateway-config.yml"
+                        
+                        aws eks update-kubeconfig --name atmos-${atmosDeployEnv}
+                        
+                        echo ${'$'}(kubectl get pods --namespace=${GwAtmosLabels.POD_NAME.labelValue})
+                        
+                        eval "echo \"${'$'}(cat ${GwConfigParams.DOC_PORTAL_KUBE_DEPLOYMENT_FILE.paramValue})\"" > ${'$'}TMP_DEPLOYMENT_FILE
+                        eval "echo \"${'$'}(cat ${gatewayConfigFile})\"" > ${'$'}TMP_GATEWAY_CONFIG_FILE
+                                                
+                        sed -ie "s/BUILD_TIME/${'$'}(date)/g" ${'$'}TMP_DEPLOYMENT_FILE
+                        kubectl apply -f ${'$'}TMP_DEPLOYMENT_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}
+                        kubectl apply -f ${'$'}TMP_GATEWAY_CONFIG_FILE --namespace=${GwAtmosLabels.POD_NAME.labelValue}                    
+                    """.trimIndent()
+                        dockerImage = GwDockerImages.ATMOS_DEPLOY_2_6_0.imageUrl
+                        dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+                        dockerRunParameters = "-v /var/run/docker.sock:/var/run/docker.sock -v ${'$'}pwd:/app:ro"
+                    }
+                    step(
+                        GwBuildSteps.createCheckPodsStatusStep(
+                            awsEnvVars,
+                            atmosDeployEnv,
+                            GwConfigParams.DOC_PORTAL_APP_NAME.paramValue
+                        )
+                    )
+                }
+
+                features.feature(GwBuildFeatures.GwDockerSupportBuildFeature)
+            }
+
+            when (deployEnv) {
+                GwDeployEnvs.DEV.envName -> {
+                    deployServerBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                    deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesDev) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                    deployServerBuildType.triggers.trigger(GwVcsTriggers.createDocPortalVcsTrigger(listOf(GwTriggerPaths.SERVER.pathValue)))
+                }
+
+                GwDeployEnvs.STAGING.envName -> {
+                    deployServerBuildType.dependencies.snapshot(buildAndPublishDockerImageToDevEcrBuildType) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                    deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesStaging) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                }
+
+                GwDeployEnvs.PROD.envName -> {
+                    deployServerBuildType.dependencies.snapshot(publishDockerImageToProdEcrBuildType) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                    deployServerBuildType.dependencies.snapshot(testKubernetesConfigFilesProd) {
+                        onDependencyFailure = FailureAction.FAIL_TO_START
+                    }
+                }
+            }
+
+            return deployServerBuildType
         }
     }
 }
