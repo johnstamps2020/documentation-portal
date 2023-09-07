@@ -113,11 +113,6 @@ export default function FilterPanel() {
           value={filters.title}
           onChange={(event) => handleChange('title', event.target.value)}
         />
-        <TextField
-          label="Component"
-          value={filters.component}
-          onChange={(event) => handleChange('component', event.target.value)}
-        />
         <FormGroup row>
           {['internal', 'public', 'earlyAccess', 'isInProduction'].map(
             (key) => (
