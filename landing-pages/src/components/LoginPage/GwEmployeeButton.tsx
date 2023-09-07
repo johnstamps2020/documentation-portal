@@ -1,17 +1,18 @@
-import Button from '@mui/material/Button';
+import Button, { ButtonProps } from '@mui/material/Button';
 
 type GwEmployeeButtonProps = {
+  label?: string;
   redirectTo: string;
-  buttonStyle?: {};
+  buttonStyle?: ButtonProps['sx'];
   onClick?: () => void;
 };
 
 export default function GwEmployeeButton({
+  label = 'Guidewire employee',
   buttonStyle,
   redirectTo,
   onClick,
 }: GwEmployeeButtonProps) {
-  const buttonText = 'Guidewire Employee';
   return (
     <Button
       variant="outlined"
@@ -20,7 +21,7 @@ export default function GwEmployeeButton({
       sx={buttonStyle}
       onClick={onClick}
     >
-      {buttonText}
+      {label}
     </Button>
   );
 }
