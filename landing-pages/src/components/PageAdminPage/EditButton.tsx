@@ -30,7 +30,7 @@ export default function EditButton({ pagePath }: EditButtonProps) {
         <EditIcon color="primary" />
       </IconButton>
       <Dialog open={isOpen}>
-        <PagePropsController pagePath={pagePath} fullEditMode={true} />
+        <PagePropsController pagePath={pagePath} fullEditMode />
         <DialogActions>
           <Button onClick={handleCloseEditor}>Close</Button>
         </DialogActions>

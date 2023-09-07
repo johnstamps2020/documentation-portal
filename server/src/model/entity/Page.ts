@@ -10,9 +10,6 @@ export class Page extends GwEntity {
   @Column({ type: 'varchar' })
   title: string;
 
-  @Column({ type: 'varchar', nullable: true })
-  component: string | null;
-
   @Column({ type: 'jsonb', nullable: true })
   searchFilters: { [key: string]: string[] } | null;
 }
