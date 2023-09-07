@@ -22,7 +22,7 @@ import java.util.*
 
 version = "2022.04"
 project {
-//    TODO: Uncomment these builds when the pipeline is ready to merge
+//    TODO: Uncomment builds when the pipeline is ready to merge
     GwVcsRoots.createGitVcsRootsFromConfigFiles().forEach {
         vcsRoot(it)
     }
@@ -5062,8 +5062,8 @@ object Admin {
                 id = Helpers.resolveRelativeIdFromIdString(Helpers.md5(this.name))
 
                 subProject(createReactLandingPagesProject())
-                subProject(createNpmPackagesProject())
-                subProject(createHtml5DependenciesProject())
+//                subProject(createNpmPackagesProject())
+//                subProject(createHtml5DependenciesProject())
             }
         }
 
