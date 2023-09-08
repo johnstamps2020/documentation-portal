@@ -1,9 +1,9 @@
 import EditIcon from '@mui/icons-material/Edit';
-import { useState } from 'react';
 import Fab from '@mui/material/Fab';
+import PageSettingsDialog from 'components/PageAdminPage/PageSettingsDialog';
+import { useState } from 'react';
 import { useEnvInfo, useUserInfo } from '../../hooks/useApi';
 import { prodDeployEnv } from '../../vars';
-import PageSettingsDialog from 'components/PageAdminPage/PageSettingsDialog';
 
 type EditPagePropsButtonProps = {
   pagePath: string;

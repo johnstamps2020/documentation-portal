@@ -1,5 +1,5 @@
-import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
+import IconButton from '@mui/material/IconButton';
 import { useState } from 'react';
 import PageSettingsDialog from './PageSettingsDialog';
 

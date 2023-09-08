@@ -1,21 +1,19 @@
-import useSWRMutation from 'swr/mutation';
 import Alert, { AlertColor } from '@mui/material/Alert';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
+import CircularProgress from '@mui/material/CircularProgress';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
+import Snackbar from '@mui/material/Snackbar';
 import Stack from '@mui/material/Stack';
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
-import { usePageData } from '../../hooks/usePageData';
 import { Page } from 'server/dist/model/entity/Page';
-import Snackbar from '@mui/material/Snackbar';
-import CircularProgress from '@mui/material/CircularProgress';
-import Link from '@mui/material/Link';
-import { Link as RouterLink } from 'react-router-dom';
-import Box from '@mui/material/Box';
+import useSWRMutation from 'swr/mutation';
+import { usePageData } from '../../hooks/usePageData';
 
 type NewPage = Omit<Page, 'uuid'>;
 
@@ -125,22 +123,6 @@ export default function PageSettingsForm({
     setEditResultMessage(emptyEditMessage);
   }
 
-  async function pageExists() {
-    const response = await fetch(
-      `/safeConfig/entity/Page?path=${tmpPageData.path}`
-    );
-    const jsonData = await response.json();
-    if (
-      response.ok &&
-      jsonData.path === tmpPageData.path &&
-      pageData?.path !== tmpPageData.path
-    ) {
-      setPageAlreadyExists(true);
-    } else {
-      setPageAlreadyExists(false);
-    }
-  }
-
   function handleChange(field: string, value: string | boolean) {
     setTmpPageData({
       ...tmpPageData,
@@ -157,8 +139,35 @@ export default function PageSettingsForm({
     setPageAlreadyExists(false);
   }
 
+  async function checkIfPageExists(): Promise<boolean> {
+    const response = await fetch(
+      `/safeConfig/entity/Page?path=${tmpPageData.path}`
+    );
+
+    if (!response.ok) {
+      return false;
+    }
+
+    const jsonData = await response.json();
+
+    if (
+      jsonData.path === tmpPageData.path &&
+      pageData?.path !== tmpPageData.path
+    ) {
+      return true;
+    }
+
+    return false;
+  }
+
   async function handleSave() {
     try {
+      const pageExists = await checkIfPageExists();
+      if (pageExists) {
+        setPageAlreadyExists(true);
+        return;
+      }
+
       const response = await trigger(tmpPageData);
       if (response?.ok) {
         setEditResultMessage({
@@ -166,6 +175,7 @@ export default function PageSettingsForm({
           severity: 'success',
           isOpen: true,
         });
+        setDataChanged(false);
       } else if (response) {
         const jsonError = await response.json();
         setEditResultMessage({
@@ -207,7 +217,6 @@ export default function PageSettingsForm({
         label="Path"
         value={tmpPageData.path}
         onChange={(event) => handleChange('path', event.target.value)}
-        onBlur={pageExists}
         fullWidth
       />
       <TextField
