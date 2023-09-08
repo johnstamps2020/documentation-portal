@@ -144,7 +144,7 @@ export default function PageSettingsForm({
       `/safeConfig/entity/Page?path=${tmpPageData.path}`
     );
 
-    if (!response.ok) {
+    if (response.status === 404) {
       return false;
     }
 
