@@ -16,7 +16,7 @@ this repo
 yarn add @doctools/gw-theme-classic@<version here>
 ```
 
-Look up the latest version in `package.json` or in Artifactory.
+Look up the version latest version in `package.json` or in Artifactory.
 
 ## Set theme in docusaurus.config.js
 

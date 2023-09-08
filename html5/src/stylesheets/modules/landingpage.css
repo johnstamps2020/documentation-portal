@@ -1,4 +1,9 @@
-.landingpage {
+/* .landingpage is deprecated in favor of .cards
+  .cards is only for sections, so .p styles not included.
+  Intro content should now be in a parent topic with a .cards
+  topic nested within.  */
+.landingpage,
+.cards {
   margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(2, 288px);
@@ -12,7 +17,8 @@
   margin-block-end: -1rem;
 }
 
-.landingpage > section {
+.landingpage > section,
+.cards > section {
   padding: 24px 24px;
   display: flex;
   flex-direction: column;
@@ -27,32 +33,37 @@
   margin-bottom: 0;
 }
 
-.landingpage > section > .sectiontitle {
+.landingpage > section > .sectiontitle,
+.cards > section > .sectiontitle {
   font-size: 1.25rem;
   border-bottom: 1px solid #d1d9e2;
   padding-bottom: 0.5rem;
   margin-top: 0 !important;
 }
 
-.landingpage > section > * {
+.landingpage > section > *,
+.cards > section > * {
   margin: 0;
   font-size: 0.875rem;
   font-weight: 600;
 }
 
-article.nested1:has(.landingpage) > h2.topictitle2:first-child {
+article.nested1:has(.landingpage) > h2.topictitle2:first-child,
+article.nested1:has(.cards) > h2.topictitle2:first-child {
   display: none;
 }
 
-article.nested1 > .landingpage {
-  margin-top: 0;
+article.nested1 > .cards {
+  margin-top: 1rem;
 }
 
 @media screen and (max-width: 1200px) {
-  .landingpage {
+  .landingpage,
+  .cards {
     grid-template-columns: 288px;
   }
-  .landingpage .section {
+  .landingpage .section,
+  .cards .section {
     grid-column: 1/2;
   }
   .landingpage > .p {

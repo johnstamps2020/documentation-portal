@@ -8,6 +8,7 @@ export default function OnlineSearch() {
       <HiddenInput name="platform" value={window.docPlatform} />
       <HiddenInput name="product" value={window.docProduct} />
       <HiddenInput name="version" value={window.docVersion} />
+      <HiddenInput name="language" value={window.docLanguage || 'en'} />
     </SearchInput>
   );
 }

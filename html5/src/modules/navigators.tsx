@@ -6,40 +6,98 @@ import { render } from 'react-dom';
 import '../stylesheets/modules/minitoc.css';
 import { translate } from '@theme/Translate';
 
+async function getLanguageBreadcrumb() {
+  if (!window.docLanguage || window.docLanguage === 'en') {
+    return;
+  }
+  const languageData = [
+    {
+      key: 'de',
+      label: 'Deutsch',
+      href: '/l10n/de-DE',
+    },
+    {
+      key: 'es',
+      label: 'Español',
+      href: '/l10n/es-419',
+    },
+    {
+      key: 'es-es',
+      label: 'Español (España)',
+      href: '/l10n/es-ES',
+    },
+    {
+      key: 'fr',
+      label: 'Francais',
+      href: '/l10n/fr-FR',
+    },
+    {
+      key: 'it',
+      label: 'Italiano',
+      href: '/l10n/it-IT',
+    },
+    {
+      key: 'ja',
+      label: '日本語',
+      href: '/l10n/ja-JP',
+    },
+    {
+      key: 'nl',
+      label: 'Nederlands',
+      href: '/l10n/nl-NL',
+    },
+    {
+      key: 'pt',
+      label: 'Português',
+      href: '/l10n/pt-BR',
+    },
+  ];
+
+  const matchingLanguage = languageData.find(
+    (lang) => lang.key === window.docLanguage
+  );
+  if (!matchingLanguage) {
+    return;
+  }
+  return {
+    text: matchingLanguage.label,
+    href: matchingLanguage.href,
+  };
+}
+
 async function getPlatformBreadcrumb() {
-  const docId = document
-    .querySelector("meta[name='gw-doc-id']")
-    ?.getAttribute('content');
-  try {
-    const response = await fetch(`/safeConfig/docMetadata/${docId}`);
-    const jsonResponse = await response.json();
+  const valueSeparator = ',';
+  if (!window.docPlatform) {
+    return;
+  }
+  const platform = window.docPlatform.split(valueSeparator);
+  if (platform.length > 1) {
+    return;
+  }
 
-    if (jsonResponse.platform?.length > 1) {
-      return;
+  if (platform[0] === 'Cloud') {
+    if (
+      !window.docRelease ||
+      window.docRelease.split(valueSeparator).length > 1
+    ) {
+      return {
+        text: 'Cloud',
+        href: '/cloudProducts',
+      };
     }
-    let releaseLink;
-    let releaseText;
-    if (jsonResponse.platform[0] === 'Cloud') {
-      if (jsonResponse.release && jsonResponse.release.length === 1) {
-        releaseText = jsonResponse.release[0];
-        releaseLink = `/cloudProducts/${jsonResponse.release[0].toLowerCase()}`;
-      } else {
-        releaseText = 'Cloud';
-        releaseLink = '/cloudProducts';
-      }
-    }
-    if (jsonResponse.platform[0] === 'Self-managed') {
-      releaseText = 'Self-managed';
-      releaseLink = '/selfManagedProducts';
-    }
-    const platformBreadcrumb = {
-      text: releaseText,
-      href: releaseLink,
+
+    const release = window.docRelease.split(valueSeparator);
+
+    return {
+      text: release[0],
+      href: `/cloudProducts/${release[0].toLowerCase()}`,
     };
-
-    return platformBreadcrumb;
-  } catch (err) {
-    console.error(err);
+  }
+  if (window.docPlatform[0] === 'Self-managed') {
+    return {
+      text: 'Self-managed',
+      href: '/selfManagedProducts',
+    };
   }
 }
 
@@ -52,11 +110,10 @@ async function getTopBreadcrumb() {
     const jsonResponse = await response.json();
     const rootPageObject = jsonResponse.rootPage;
     if (Object.keys(rootPageObject).length !== 0) {
-      const topBreadcrumb = {
+      return {
         text: rootPageObject.label,
         href: rootPageObject.path,
       };
-      return topBreadcrumb;
     }
   } catch (err) {
     console.error(err);
@@ -84,15 +141,24 @@ function getParentNavItems(
 }
 
 function getCurrentLink() {
-  return document.querySelector('nav[role="toc"] a.current')
-    ? document.querySelector('nav[role="toc"] a.current')
-    : document.querySelector('nav.toc a.current');
+  return (
+    document.querySelector('nav[role="toc"] a.current') ||
+    document.querySelector('nav.toc a.current')
+  );
 }
 
 function getDocTitleBreadcrumb() {
-  const docTitle = document
-    .querySelector("meta[name='gw-doc-title']")
-    ?.getAttribute('content');
+  let docTitle =
+    window.docDisplayTitle?.length > 0
+      ? window.docDisplayTitle
+      : window.docTitle;
+
+  if (!docTitle) {
+    docTitle = document
+      .querySelector("meta[name='gw-doc-title']")
+      ?.getAttribute('content');
+  }
+
   const docBaseUrl = document
     .querySelector("meta[name='gw-base-url']")
     ?.getAttribute('content');
@@ -101,12 +167,14 @@ function getDocTitleBreadcrumb() {
     return;
   }
 
-  const docTitleBreadcrumb = {
+  if (docTitle.startsWith('"') && docTitle.endsWith('"')) {
+    docTitle = docTitle.replace(/"/g, '');
+  }
+
+  return {
     text: docTitle,
     href: docBaseUrl,
   };
-
-  return docTitleBreadcrumb;
 }
 
 async function addBreadCrumbs() {
@@ -123,9 +191,15 @@ async function addBreadCrumbs() {
       linkTrail.push(topBreadcrumb);
     }
 
-    const platformBreadcrumb = await getPlatformBreadcrumb();
-    if (platformBreadcrumb) {
-      linkTrail.push(platformBreadcrumb);
+    const languageBreadcrumb = await getLanguageBreadcrumb();
+
+    if (languageBreadcrumb) {
+      linkTrail.push(languageBreadcrumb);
+    } else {
+      const platformBreadcrumb = await getPlatformBreadcrumb();
+      if (platformBreadcrumb) {
+        linkTrail.push(platformBreadcrumb);
+      }
     }
 
     linkTrail.reverse();
@@ -191,9 +265,9 @@ function addNavigationLinks() {
 
   navigationLinks.addEventListener('click', (e) => {
     if ((e.target as Element).matches('a')) {
-      const toc = document.querySelector('nav[role="toc"]')
-        ? document.querySelector('nav[role="toc"]')
-        : document.querySelector('nav.toc');
+      const toc =
+        document.querySelector('nav[role="toc"]') ||
+        document.querySelector('nav.toc');
       sessionStorage.setItem('tocPos', toc.scrollTop.toString());
       const navUls = toc.querySelectorAll('li > ul');
       let expandedUls: string[] = [];
