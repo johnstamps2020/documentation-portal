@@ -58,7 +58,9 @@ export default function DeleteButton({ pagePath }: DeleteButtonProps) {
         <DeleteIcon color="error" />
       </IconButton>
       <Dialog open={isOpen} onClose={handleCloseConfirmationMessage}>
-        <DialogTitle>Delete page</DialogTitle>
+        <DialogTitle>
+          Delete page <strong>{pagePath}</strong>
+        </DialogTitle>
         <DialogContent>
           <Stack gap={2}>
             <Typography>

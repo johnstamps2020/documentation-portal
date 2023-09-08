@@ -1,4 +1,4 @@
-import Grid from '@mui/material/Unstable_Grid2';
+import Box from '@mui/material/Box';
 import { Page } from 'server/dist/model/entity/Page';
 import PageCard from './PageCard/PageCard';
 
@@ -8,12 +8,21 @@ type PageListProps = {
 
 export default function PageList({ pages }: PageListProps) {
   return (
-    <Grid container spacing={2} sx={{ margin: 2 }}>
+    <Box
+      sx={{
+        display: 'grid',
+        gridTemplateColumns: {
+          md: 'repeat(3, 1fr)',
+          sm: 'repeat(2, 1fr)',
+          xs: '1fr',
+        },
+        gap: 2,
+        py: 6,
+      }}
+    >
       {pages.map(({ path, title }) => (
-        <Grid key={path} xs={12} sm={6} md={3}>
-          <PageCard path={path} title={title} />
-        </Grid>
+        <PageCard path={path} title={title} key={path} />
       ))}
-    </Grid>
+    </Box>
   );
 }

@@ -1,5 +1,6 @@
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
+import PageSettingsForm from 'components/PageAdminPage/PageSettingsForm';
 import { useState } from 'react';
 import PageSettingsDialog from '../../PageSettingsDialog';
 
@@ -29,10 +30,12 @@ export default function AddButton() {
         Add page
       </Fab>
       <PageSettingsDialog
-        title="New page settings"
+        title="Create a new page"
         isOpen={isOpen}
         onClose={handleCloseEditor}
-      />
+      >
+        <PageSettingsForm />
+      </PageSettingsDialog>
     </>
   );
 }

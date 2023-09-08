@@ -1,24 +1,26 @@
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import PageSettingsForm from 'components/PageAdminPage/PageSettingsForm';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
 
 type PageSettingsDialogProps = {
   title: string;
   isOpen: boolean;
   onClose: () => void;
-  pagePath?: string;
+  children: React.ReactNode;
 };
 
 export default function PageSettingsDialog({
   title,
-  pagePath,
   isOpen,
   onClose,
+  children,
 }: PageSettingsDialogProps): JSX.Element {
   return (
     <Dialog open={isOpen} onClose={onClose}>
-      <PageSettingsForm pagePath={pagePath} title={title} />
+      <DialogTitle>{title}</DialogTitle>
+      <DialogContent>{children}</DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Close</Button>
       </DialogActions>

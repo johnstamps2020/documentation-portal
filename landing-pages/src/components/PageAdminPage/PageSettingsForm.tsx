@@ -28,7 +28,8 @@ export const emptyPage: NewPage = {
 
 type PageSettingsFormProps = {
   pagePath?: string;
-  title: string;
+  disabled?: boolean;
+  initialPageData?: NewPage;
 };
 
 async function sendRequest(url: string, { arg }: { arg: NewPage }) {
@@ -44,7 +45,8 @@ async function sendRequest(url: string, { arg }: { arg: NewPage }) {
 
 export default function PageSettingsForm({
   pagePath,
-  title,
+  disabled,
+  initialPageData,
 }: PageSettingsFormProps) {
   const { showMessage } = useNotification();
   const { pageData, isError, isLoading } = usePageData(pagePath);
@@ -52,7 +54,8 @@ export default function PageSettingsForm({
     '/admin/entity/Page',
     sendRequest
   );
-  const [tmpPageData, setTmpPageData] = useState(emptyPage);
+
+  const [tmpPageData, setTmpPageData] = useState(initialPageData || emptyPage);
   const [canSubmitData, setCanSubmitData] = useState(false);
   const [dataChanged, setDataChanged] = useState(false);
   const [pageAlreadyExists, setPageAlreadyExists] = useState<boolean>();
@@ -64,14 +67,15 @@ export default function PageSettingsForm({
   useEffect(() => {
     if (
       (!pagePath &&
-        JSON.stringify(tmpPageData) === JSON.stringify(emptyPage)) ||
+        (JSON.stringify(tmpPageData) === JSON.stringify(emptyPage) ||
+          JSON.stringify(tmpPageData) === JSON.stringify(initialPageData))) ||
       JSON.stringify(tmpPageData) === JSON.stringify(pageData)
     ) {
       setDataChanged(false);
     } else {
       setDataChanged(true);
     }
-  }, [tmpPageData, pageData, pagePath]);
+  }, [tmpPageData, pageData, pagePath, initialPageData]);
 
   useEffect(() => {
     if (
@@ -113,11 +117,7 @@ export default function PageSettingsForm({
   }
 
   function handleResetForm() {
-    if (pagePath && pageData) {
-      setTmpPageData(pageData);
-    } else {
-      setTmpPageData(emptyPage);
-    }
+    setTmpPageData(pageData || initialPageData || emptyPage);
     setPageAlreadyExists(false);
   }
 
@@ -170,21 +170,14 @@ export default function PageSettingsForm({
       sx={{
         alignItems: 'center',
         backgroundColor: 'white',
-        border: '1px solid black',
-        borderRadius: '4px',
-        padding: '12px',
-        margin: '16px',
-        maxWidth: 'fit-content',
+        py: 4,
       }}
     >
-      <Typography sx={{ fontSize: 18, fontWeight: 800 }} variant="h2">
-        {title}
-      </Typography>
       <TextField
         required
         error={pageAlreadyExists}
         helperText={pageAlreadyExists && 'Page with this path already exists'}
-        disabled={isMutating}
+        disabled={disabled || isMutating}
         label="Path"
         value={tmpPageData.path}
         onChange={(event) => handleChange('path', event.target.value)}
@@ -192,7 +185,7 @@ export default function PageSettingsForm({
       />
       <TextField
         required
-        disabled={isMutating}
+        disabled={disabled || isMutating}
         label="Title"
         onChange={(event) => handleChange('title', event.target.value)}
         value={tmpPageData.title}
@@ -208,7 +201,7 @@ export default function PageSettingsForm({
           {['internal', 'public', 'earlyAccess', 'isInProduction'].map(
             (key) => (
               <FormControlLabel
-                disabled={isMutating}
+                disabled={disabled || isMutating}
                 key={key}
                 control={
                   <Switch
@@ -229,7 +222,7 @@ export default function PageSettingsForm({
         </Box>
       </FormGroup>
       <Stack direction="row" spacing={1}>
-        <ButtonGroup disabled={!dataChanged}>
+        <ButtonGroup disabled={disabled || !dataChanged}>
           <Button
             disabled={!canSubmitData}
             variant="contained"

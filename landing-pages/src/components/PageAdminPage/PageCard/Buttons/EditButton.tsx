@@ -1,5 +1,6 @@
 import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
+import PageSettingsForm from 'components/PageAdminPage/PageSettingsForm';
 import { useState } from 'react';
 import PageSettingsDialog from '../../PageSettingsDialog';
 
@@ -27,11 +28,12 @@ export default function EditButton({ pagePath }: EditButtonProps) {
         <EditIcon color="primary" />
       </IconButton>
       <PageSettingsDialog
-        title="Page settings"
+        title="Edit page settings"
         onClose={handleCloseEditor}
         isOpen={isOpen}
-        pagePath={pagePath}
-      />
+      >
+        <PageSettingsForm pagePath={pagePath} />
+      </PageSettingsDialog>
     </>
   );
 }

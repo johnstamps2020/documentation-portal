@@ -5,8 +5,8 @@ import Stack from '@mui/material/Stack';
 import { useEffect, useState } from 'react';
 import { Page } from 'server/dist/model/entity/Page';
 import { usePages } from '../../hooks/useApi';
-import PageList from './PageList';
 import PageAdminFilters, { Filters } from './PageAdminFilters';
+import PageList from './PageList';
 
 const emptyFilters: Filters = {
   path: '',
