@@ -46,6 +46,31 @@
       "public": false,
       "internal": false,
       "earlyAccess": false
+    },
+    {
+      "id": "isupgradecompatibilityja",
+      "title": "InsuranceSuite Configuration Upgrade Tools Compatibility ja",
+      "displayTitle": "コンフィギュレーションアップグレードツールの互換性",
+      "url": "ja/isconfigupgradetools-compatibility",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["InsuranceSuite Configuration Upgrade Tools"],
+        "version": [
+          "latest"
+        ],
+        "subject": ["Installation"],
+        "release": [
+          "Hakuba"
+        ],
+        "language": "ja"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
     }
+
   ]
 }

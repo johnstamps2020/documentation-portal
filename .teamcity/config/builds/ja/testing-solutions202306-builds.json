@@ -1,0 +1,14 @@
+{
+  "$schema": "../../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "Guidewire_Test_Automation202306_ReleaseNotes.ditamap",
+      "srcId": "testingframeworksja202306src",
+      "docId": "testingframeworksjarnhakuba",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}

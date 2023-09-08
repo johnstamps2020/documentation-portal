@@ -1,0 +1,26 @@
+{
+  "$schema": "../../config-schema.json",
+  "docs": [
+    {
+      "id": "gwcpjareleasenotes",
+      "title": "Cloud Platform Release Notes ja",
+      "displayTitle": "Cloud Platform リリースノート",
+      "url": "ja/cloud/gwcprelnotes/latest",
+      "metadata": {
+        "platform": ["Cloud"],
+        "product": ["Cloud Platform"],
+        "version": ["latest"],
+        "release": [
+          "Hakuba"
+        ],
+        "language": "ja"
+      },
+      "environments": ["staging", "prod"],
+      "displayOnLandingPages": true,
+      "indexForSearch": true,
+      "public": false,
+      "internal": false,
+      "earlyAccess": false
+    }
+  ]
+}

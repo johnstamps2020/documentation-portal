@@ -20,12 +20,6 @@
       "branch": "main"
     },
     {
-      "id": "submissionintakelxdsrc",
-      "title": "Submission Intake LXD",
-      "gitUrl": "ssh://git@stash.guidewire.com/docsources/submission-intake.git",
-      "branch": "lxd-experiments"
-    },
-    {
       "id": "worksetmgrsrc",
       "title": "Workset Manager",
       "gitUrl": "ssh://git@stash.guidewire.com/docsources/workset-manager.git",

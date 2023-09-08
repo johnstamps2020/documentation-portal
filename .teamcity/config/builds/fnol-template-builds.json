@@ -1,0 +1,14 @@
+{
+  "$schema": "../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Cloud-Release.ditaval",
+      "root": "PersonalAutoFNOLTemplate.ditamap",
+      "srcId": "fnoltemplatemainsrc",
+      "docId": "fnoltemplatemain",
+      "indexRedirect": true,
+      "disabled": false
+    }
+  ]
+}

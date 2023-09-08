@@ -5,6 +5,20 @@
   "class": "threeCards version ja-JP l10n",
   "items": [
     {
+      "label": "4.6.0",
+      "class": "categoryCard cardShadow",
+      "items": [
+        {
+          "label": "Upgrade Tools ガイド",
+          "id": "isconfigupgradetoolsja460"
+        },
+        {
+          "label": "コンフィギュレーションアップグレードツールの互換性",
+          "id": "isupgradecompatibilityja"
+        }
+      ]
+    },
+    {
       "label": "3.2.0",
       "class": "categoryCard cardShadow",
       "items": [

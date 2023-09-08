@@ -1,0 +1,14 @@
+{
+  "$schema": "../../config-schema.json",
+  "builds": [
+    {
+      "buildType": "dita",
+      "filter": "GW-Generic-Release.ditaval",
+      "root": "InsuranceSuiteConfigurationUpgradeTools.ditamap",
+      "indexRedirect": true,
+      "srcId": "isconfigupgradetoolsja460src",
+      "docId": "isconfigupgradetoolsja460",
+      "disabled": false
+    }
+  ]
+}
