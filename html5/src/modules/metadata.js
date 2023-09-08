@@ -66,11 +66,12 @@ export async function setMetadata() {
           window.docSubject = wrapInQuotes(docInfo.subject)?.join(
             valueSeparator
           );
-          window.docLang = wrapInQuotes(docInfo.lang);
+          window.docLanguage = wrapInQuotes(docInfo.language);
           window.docRelease = wrapInQuotes(docInfo.release)?.join(
             valueSeparator
           );
           window.docTitle = wrapInQuotes(docInfo.docTitle);
+          window.docDisplayTitle = wrapInQuotes(docInfo.docDisplayTitle);
           window.docUrl = wrapInQuotes(docInfo.docUrl);
           window.docInternal = docInfo.docInternal;
           window.docEarlyAccess = docInfo.docEarlyAccess;

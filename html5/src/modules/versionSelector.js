@@ -8,6 +8,7 @@ async function findBestMatchingTopic(searchQuery, targetDocVersion) {
     searchUrl.searchParams.append('q', `${searchQuery}`);
     searchUrl.searchParams.append('product', `${window.docProduct}`);
     searchUrl.searchParams.append('version', `${targetDocVersion}`);
+    searchUrl.searchParams.append('language', `${window.docLanguage}`);
     if (window.docTitle) {
       searchUrl.searchParams.append('doc_title', `${window.docTitle}`);
     }
