@@ -18,12 +18,11 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2021.04',
+      label: '',
       items: [
         {
           label: 'Autenticazione con Guidewire Identity Federation Hub',
-          url: '/l10n/pdfs/it-IT/gwid/2021.04/IT-GW-FederationHub.pdf',
-          videoIcon: false,
+          docId: 'guidewireidentityfederationhubitIT',
         },
       ],
     },

@@ -22,8 +22,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'インストールガイド',
-          url: '/l10n/pdfs/ja-JP/gwsf/2021.11/ja-JP-2021.11-Guidewire_For_Salesforce_install-guide.pdf',
-          videoIcon: false,
+          docId: 'dxgwsfinstall202111jaJP',
         },
       ],
     },

@@ -18,6 +18,24 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '',
+      items: [
+        {
+          label: 'Gosu リファレンスガイド',
+          docId: 'gosureflatestjaJP',
+        },
+      ],
+    },
+    {
+      label: '',
+      items: [
+        {
+          label: 'Integration Gateway',
+          docId: 'integgatewaydevlatestjaJP',
+        },
+      ],
+    },
+    {
       label: '2021.04 Cortina',
       items: [
         {
@@ -28,11 +46,6 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'テストガイド',
           url: '/l10n/pdfs/ja-JP/pc/2021.04 Cortina/PC_CL202104_ja-JP_TestingGuide.pdf',
-          videoIcon: false,
-        },
-        {
-          label: 'Gosu リファレンスガイド',
-          url: '/l10n/pdfs/ja-JP/pc/2021.04 Cortina/PC_CL202104_ja-JP_GosuRefGuide.pdf',
           videoIcon: false,
         },
       ],

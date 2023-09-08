@@ -21,14 +21,12 @@ const pageConfig: CategoryLayoutProps = {
       label: '2022.05',
       items: [
         {
-          label: 'Konfigurationshandbuch',
-          url: '/l10n/pdfs/de-DE/bc/2022.05/BC-ConfigGuide-DE.pdf',
-          videoIcon: false,
+          label: 'Anwendungshandbuch',
+          docId: 'isbc202205appdeDE',
         },
         {
-          label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/bc/2022.05/BC-AppGuide-DE.pdf',
-          videoIcon: false,
+          label: 'Konfigurationshandbuch',
+          docId: 'isbc202205configdeDE',
         },
       ],
     },
@@ -37,8 +35,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Cloud-API-Geschäftsabläufe- und Konfigurationshandbuch',
-          url: '/l10n/pdfs/de-DE/bc/2021.11/BC v.2021.11 de-DE  CloudAPIGuide-BusinessFlows.pdf',
-          videoIcon: false,
+          docId: 'isbc202111apibfdeDE',
         },
       ],
     },

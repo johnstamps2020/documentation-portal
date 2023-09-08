@@ -18,6 +18,19 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '4.6.0',
+      items: [
+        {
+          label: 'Upgrade Tools ガイド',
+          docId: 'isconfigupgradetoolsja460',
+        },
+        {
+          label: 'コンフィギュレーションアップグレードツールの互換性',
+          docId: 'isupgradecompatibilityja',
+        },
+      ],
+    },
+    {
       label: '3.2.0',
       items: [
         {

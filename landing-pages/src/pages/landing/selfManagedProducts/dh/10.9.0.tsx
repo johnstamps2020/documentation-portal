@@ -76,7 +76,7 @@ const pageConfig: SectionLayoutProps = {
   selector: {
     label: 'Select release',
     selectedItemLabel: '10.9.0',
-    items: allSelectors.sb993b95f0270ffbe809967569ebeb73d,
+    items: allSelectors.sed0f6b3f0c92246ce605b08874712f8d,
     labelColor: 'black',
   },
 };

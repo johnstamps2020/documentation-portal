@@ -24,6 +24,10 @@ const pageConfig: CategoryLayoutProps = {
           label: 'Guidewire Cloud Home ヘルプ',
           docId: 'gchjaJPhelprelease',
         },
+        {
+          label: 'Guidewire Cloud Platform リリースノート',
+          docId: 'gwcpjareleasenotes',
+        },
       ],
     },
     {

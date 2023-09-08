@@ -18,12 +18,11 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2021.04',
+      label: '',
       items: [
         {
           label: 'Guidewire Identity Federation Hub を使用した認証',
-          url: '/l10n/pdfs/ja-JP/gwid/2021.04/ja-JP-2021.04-GuidewireHub.pdf',
-          videoIcon: false,
+          docId: 'guidewireidentityfederationhubjaJP',
         },
       ],
     },

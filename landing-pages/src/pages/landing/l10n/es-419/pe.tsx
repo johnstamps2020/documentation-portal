@@ -11,8 +11,8 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Seleccionar producto',
-    selectedItemLabel: 'CustomerEngage Quote and Buy',
-    items: allSelectors.s641a38c0db32b1509b9fabce309d960f,
+    selectedItemLabel: 'ProducerEngage',
+    items: allSelectors.sc63ff31ab2489ea7a914b16720221401,
     labelColor: 'white',
   },
 
@@ -22,8 +22,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de la aplicación',
-          url: '/l10n/pdfs/es-LA/ce-qb/2022.05/es-LA-v.2022.05 CE-QB_AppGuide.pdf',
-          videoIcon: false,
+          docId: 'dx202205es419peapp',
         },
       ],
     },
@@ -32,7 +31,12 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de instalación',
-          url: '/l10n/pdfs/es-LA/ce-qb/11.1/es-419-CE_QB-onprem_InstallGuide.pdf',
+          url: '/l10n/pdfs/es-LA/pe/11.1/es-419-PE-cloud_InstallGuide.pdf',
+          videoIcon: false,
+        },
+        {
+          label: 'Guía de instalación',
+          url: '/l10n/pdfs/es-LA/pe/11.1/es-419-PE-onprem_InstallGuide.pdf.pdf',
           videoIcon: false,
         },
       ],
@@ -42,27 +46,27 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de configuración e instalación de Live Style Guide',
-          url: '/l10n/pdfs/es-LA/ce-qb/10.0.1/es-CEQB_LiveStyleGuide.pdf',
+          url: '/l10n/pdfs/es-LA/pe/10.0.1/es-PE_LiveStyleGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de la aplicación',
-          url: '/l10n/pdfs/es-LA/ce-qb/10.0.1/es-CEQB_AppGuide.pdf',
-          videoIcon: false,
-        },
-        {
-          label: 'Guía de configuración',
-          url: '/l10n/pdfs/es-LA/ce-qb/10.0.1/es-CEQB_ConfigurationGuide.pdf',
-          videoIcon: false,
-        },
-        {
-          label: 'Guía de instalación',
-          url: '/l10n/pdfs/es-LA/ce-qb/10.0.1/es-CEQB_InstallGuide-es.pdf',
+          url: '/l10n/pdfs/es-LA/pe/10.0.1/es-PE_AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de seguridad y administración',
-          url: '/l10n/pdfs/es-LA/ce-qb/10.0.1/es-CEQB_admin-and-security-guide.pdf',
+          url: '/l10n/pdfs/es-LA/pe/10.0.1/es-PE_admin-and-security-guide.pdf',
+          videoIcon: false,
+        },
+        {
+          label: 'Guía de configuración',
+          url: '/l10n/pdfs/es-LA/pe/10.0.1/es-PE_ConfigurationGuide.pdf',
+          videoIcon: false,
+        },
+        {
+          label: 'Guía de instalación',
+          url: '/l10n/pdfs/es-LA/pe/10.0.1/es-PE_InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -70,6 +74,6 @@ const pageConfig: CategoryLayoutProps = {
   ],
 };
 
-export default function Ceqb() {
+export default function Pe() {
   return <CategoryLayout {...pageConfig} />;
 }

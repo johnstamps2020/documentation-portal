@@ -35,6 +35,10 @@ const pageConfig: SectionLayoutProps = {
           docId: 'ispc202306update',
         },
         {
+          label: 'InsuranceSuite Configuration Upgrade Tools',
+          docId: 'isconfigupgradetools500',
+        },
+        {
           label: 'InsuranceSuite Configuration Upgrade Tools Compatibility',
           docId: 'isupgradecompatibility',
         },
@@ -115,7 +119,8 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'Submission Intake Configuration',
-          docId: 'submissionintakeconfig',
+          url: '/cloud/subintake/?contextid=submissionIntakeConfiguration',
+          videoIcon: false,
         },
         {
           label: 'US Standards-based Template Framework',
@@ -163,7 +168,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'integgatewaydevlatest',
         },
         {
-          label: 'Plugins, Pre-built Integrations, and SOAP APIs',
+          label: 'Plugins, Prebuilt Integrations, and SOAP APIs',
           docId: 'ispc202306integ',
         },
         {

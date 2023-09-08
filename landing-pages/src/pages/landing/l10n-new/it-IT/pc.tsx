@@ -27,7 +27,7 @@ const pageConfig: CategoryLayoutProps = {
         },
         {
           label: 'Guida ad Advanced Product Designer per PolicyCenter',
-          docId: 'ispc202205itITapd',
+          docId: 'ispc202205apditIT',
         },
       ],
     },

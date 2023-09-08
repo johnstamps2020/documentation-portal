@@ -22,18 +22,15 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guida all'applicazione",
-          url: '/l10n/pdfs/it-IT/cc/2022.05/CC-AppGuide-IT.pdf',
-          videoIcon: false,
-        },
-        {
-          label: "Guida all'installazione per sviluppatori",
-          url: '/l10n/pdfs/it-IT/cc/2022.05/CC-DeveloperSetupGuide-IT.pdf',
-          videoIcon: false,
+          docId: 'iscc202205itITapp',
         },
         {
           label: 'Guida alla configurazione',
-          url: '/l10n/pdfs/it-IT/cc/2022.05/CC-ConfigGuide_it-IT.pdf',
-          videoIcon: false,
+          docId: 'iscc202205itITconfig',
+        },
+        {
+          label: "Guida all'installazione per sviluppatori",
+          docId: 'iscc202205itITdevsetup',
         },
       ],
     },
@@ -43,13 +40,11 @@ const pageConfig: CategoryLayoutProps = {
         {
           label:
             'Guida ai flussi aziendali delle API cloud e alla configurazione',
-          url: '/l10n/pdfs/it-IT/cc/2021.11/CC v.2021.11 it-IT CloudAPIGuide-BusinessFlows.pdf',
-          videoIcon: false,
+          docId: 'iscc202111apibfitIT',
         },
         {
           label: "Guida all'autenticazione per l'API cloud",
-          url: '/l10n/pdfs/it-IT/cc/2021.11/CC v.2021.11 it-IT CloudAPIGuide-Auth.pdf',
-          videoIcon: false,
+          docId: 'iscc202111apicaitIT',
         },
       ],
     },

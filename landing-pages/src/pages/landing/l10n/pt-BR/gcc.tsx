@@ -18,12 +18,11 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '0',
+      label: '',
       items: [
         {
           label: 'Guidewire Cloud Console',
-          url: '/l10n/pdfs/pt-BR/gcc/0/pt-BR-GuidewireCloudConsole.pdf',
-          videoIcon: false,
+          docId: 'guidewirecloudconsolerootinsurerdevptBR',
         },
       ],
     },

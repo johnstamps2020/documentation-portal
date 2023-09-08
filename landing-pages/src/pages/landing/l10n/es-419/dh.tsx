@@ -12,7 +12,7 @@ const pageConfig: CategoryLayoutProps = {
   selector: {
     label: 'Seleccionar producto',
     selectedItemLabel: 'DataHub',
-    items: allSelectors.s641a38c0db32b1509b9fabce309d960f,
+    items: allSelectors.sc63ff31ab2489ea7a914b16720221401,
     labelColor: 'white',
   },
 

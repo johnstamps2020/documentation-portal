@@ -11,25 +11,24 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Seleccionar producto',
-    selectedItemLabel: 'Explore',
-    items: allSelectors.s641a38c0db32b1509b9fabce309d960f,
+    selectedItemLabel: 'ProducerEngage for ClaimCenter',
+    items: allSelectors.sc63ff31ab2489ea7a914b16720221401,
     labelColor: 'white',
   },
 
   cards: [
     {
-      label: '2021.11',
+      label: '2022.05',
       items: [
         {
           label: 'Guía de la aplicación',
-          url: '/l10n/pdfs/es-LA/explore/2021.11/es-LA-CloudExplore.pdf',
-          videoIcon: false,
+          docId: 'dx202205es419peclaimsapp',
         },
       ],
     },
   ],
 };
 
-export default function Explore() {
+export default function Peclaims() {
   return <CategoryLayout {...pageConfig} />;
 }

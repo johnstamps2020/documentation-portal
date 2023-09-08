@@ -22,8 +22,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/ce-claims/2023.02/CustomerEngage_Claims_AppGuide.pdf',
-          videoIcon: false,
+          docId: 'dx202302frFRceclaimsapp',
         },
       ],
     },

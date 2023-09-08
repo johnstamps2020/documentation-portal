@@ -27,8 +27,7 @@ const pageConfig: CategoryLayoutProps = {
         },
         {
           label: 'Guía de la aplicación',
-          url: '/l10n/pdfs/es-ES/pe/2022.05/es-ES v.2022.05 PE_AppGuide.pdf',
-          videoIcon: false,
+          docId: 'dx202205esESpeapp',
         },
       ],
     },

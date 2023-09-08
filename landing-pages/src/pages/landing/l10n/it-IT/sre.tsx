@@ -22,13 +22,11 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guida all'applicazione",
-          url: '/l10n/pdfs/it-IT/sre/2022.05/it-IT Digital v.2022.05 SRE_AppGuide.pdf',
-          videoIcon: false,
+          docId: 'dx202205itITsreapp',
         },
         {
           label: "Guida all'installazione",
-          url: '/l10n/pdfs/it-IT/sre/2022.05/it-IT Digital v.2022.05 SRE InstallGuide.pdf',
-          videoIcon: false,
+          docId: 'dx202205itITsreinstall',
         },
       ],
     },

@@ -21,19 +21,16 @@ const pageConfig: CategoryLayoutProps = {
       label: '2022.05',
       items: [
         {
-          label: '開発者ガイド',
-          url: '/l10n/pdfs/ja-JP/ve/2022.05/VendorEngage_DevelopersGuide_ja-JP.pdf',
-          videoIcon: false,
+          label: 'インストールガイド',
+          docId: 'dx202205jaJPveinstall',
         },
         {
-          label: 'インストールガイド',
-          url: '/l10n/pdfs/ja-JP/ve/2022.05/ja-JP-2022.05-ve_InstallGuide.pdf',
-          videoIcon: false,
+          label: '開発者ガイド',
+          docId: 'dx202205jaJPvedev',
         },
         {
           label: 'アプリケーションガイド',
-          url: '/l10n/pdfs/ja-JP/ve/2022.05/VendorEngage_AppGuide_ja-JP.pdf',
-          videoIcon: false,
+          docId: 'dx202205jaJPveapp',
         },
       ],
     },

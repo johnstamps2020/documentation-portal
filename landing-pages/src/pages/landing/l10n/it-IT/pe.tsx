@@ -21,14 +21,12 @@ const pageConfig: CategoryLayoutProps = {
       label: '2022.05',
       items: [
         {
-          label: "Guida all'installazione",
-          url: '/l10n/pdfs/it-IT/pe/2022.05/it-IT Digital v.2022.05 PE InstallGuide.pdf',
-          videoIcon: false,
+          label: "Guida all'applicazione",
+          docId: 'dx202205itITpeapp',
         },
         {
-          label: "Guida all'applicazione",
-          url: '/l10n/pdfs/it-IT/pe/2022.05/it-IT Digital v.2022.05 PE_AppGuide.pdf',
-          videoIcon: false,
+          label: "Guida all'installazione",
+          docId: 'dx202205itITpeinstall',
         },
       ],
     },

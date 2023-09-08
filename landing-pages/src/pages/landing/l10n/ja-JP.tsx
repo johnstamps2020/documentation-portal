@@ -12,7 +12,7 @@ const pageConfig: ProductFamilyLayoutProps = {
   selector: {
     label: '言語を選択する',
     selectedItemLabel: '日本語',
-    items: allSelectors.s04276cabb68afefd84d353cd088adf27,
+    items: allSelectors.sfa48f3b641ce1ec0fe00a60fefbb4192,
     labelColor: 'white',
   },
 
@@ -30,6 +30,10 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/ja-JP/cc',
     },
     {
+      label: 'Cloud Platform',
+      pagePath: 'l10n/ja-JP/cp',
+    },
+    {
       label: 'CustomerEngage Account Management',
       pagePath: 'l10n/ja-JP/ce-am',
     },
@@ -42,28 +46,32 @@ const pageConfig: ProductFamilyLayoutProps = {
       pagePath: 'l10n/ja-JP/ce-qb',
     },
     {
-      label: 'InsuranceSuite Contact Management',
-      pagePath: 'l10n/ja-JP/cm',
-    },
-    {
-      label: 'Cloud Platform',
-      pagePath: 'l10n/ja-JP/cp',
-    },
-    {
-      label: 'Guidewire Testing',
-      pagePath: 'l10n/ja-JP/gtest',
-    },
-    {
-      label: 'Guidewire Identity Federation Hub',
-      pagePath: 'l10n/ja-JP/gwid',
+      label: 'Gosu リファレンスガイド',
+      docId: 'gosureflatestjaJP',
     },
     {
       label: 'Guidewire for Salesforce',
       pagePath: 'l10n/ja-JP/gwsf',
     },
     {
+      label: 'Guidewire Identity Federation Hub',
+      pagePath: 'l10n/ja-JP/gwid',
+    },
+    {
+      label: 'Guidewire Testing',
+      pagePath: 'l10n/ja-JP/gtest',
+    },
+    {
+      label: 'InsuranceSuite Contact Management',
+      pagePath: 'l10n/ja-JP/cm',
+    },
+    {
       label: 'InsuranceSuite Configuration Upgrade Tools',
       pagePath: 'l10n/ja-JP/is-configupgradetools',
+    },
+    {
+      label: 'Integration Gateway',
+      docId: 'integgatewaydevlatestjaJP',
     },
     {
       label: 'PolicyCenter',

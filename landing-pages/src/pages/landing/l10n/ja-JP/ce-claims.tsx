@@ -22,18 +22,15 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'インストールガイド',
-          url: '/l10n/pdfs/ja-JP/ce-claims/2022.05/ja-JP-2022.05-ceclaims_InstallGuide.pdf',
-          videoIcon: false,
+          docId: 'dx202205jaJPceclaimsinstall',
         },
         {
           label: 'アプリケーションガイド',
-          url: '/l10n/pdfs/ja-JP/ce-claims/2022.05/CustomerEngage_Claims_AppGuide_ja-JP.pdf',
-          videoIcon: false,
+          docId: 'dx202205jaJPceclaimsapp',
         },
         {
           label: '開発者ガイド',
-          url: '/l10n/pdfs/ja-JP/ce-claims/2022.05/CustomerEngage_Claims_DevelopersGuide_ja-JP.pdf',
-          videoIcon: false,
+          docId: 'dx202205jaJPceclaimsdev',
         },
       ],
     },

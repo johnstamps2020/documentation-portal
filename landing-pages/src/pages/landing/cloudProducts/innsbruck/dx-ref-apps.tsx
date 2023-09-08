@@ -2,39 +2,32 @@ import CategoryLayout, {
   CategoryLayoutProps,
 } from 'components/LandingPage/Category/CategoryLayout';
 import gradientBackgroundImage from 'images/background-gradient.svg';
-
-import flaineBackgroundImage from 'images/background-flaine.png';
 import { baseBackgroundProps } from 'pages/LandingPage/LandingPageTypes';
 import { allSelectors } from 'pages/landing/selectors/allSelectors';
 
 const pageConfig: CategoryLayoutProps = {
   backgroundProps: {
     ...baseBackgroundProps,
-    backgroundImage: {
-      xs: `url(${gradientBackgroundImage})`,
-      sm: `linear-gradient(hsla(200, 6%, 10%, .68), hsla(200, 6%, 10%, .68)),
-       url(${flaineBackgroundImage}), 
-       linear-gradient(152.93deg, #57709B 7.82%, #1E2B43 86.61%)`,
-    },
+    backgroundImage: `url(${gradientBackgroundImage})`,
   },
   selector: {
     label: 'Select cloud release',
-    selectedItemLabel: 'Flaine (2022.09)',
+    selectedItemLabel: 'Innsbruck (2023.10)',
     items: allSelectors.se7a828d04c0ebb25f464db6df66dcc54,
     labelColor: 'white',
   },
 
   cards: [
     {
-      label: 'Jutro Design System 8.3.2',
+      label: 'Jutro Design System (Next)',
       items: [
         {
           label: 'Jutro Design System and UI Framework',
-          docId: 'jutro832',
+          docId: 'jutronext',
         },
         {
           label: 'Jutro Storybook',
-          docId: 'storybook832',
+          docId: 'storybooknext',
         },
       ],
     },
@@ -43,23 +36,23 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'dx202209ceamrelnotes',
+          docId: 'dx202310ceamrelnotes',
         },
         {
           label: 'Installation Guide',
-          docId: 'dx202209ceaminstall',
+          docId: 'dx202310ceaminstall',
         },
         {
           label: 'Application Guide',
-          docId: 'dx202209ceamapp',
+          docId: 'dx202310ceamapp',
         },
         {
           label: "Developer's Guide",
-          docId: 'dx202209ceamdev',
+          docId: 'dx202310ceamdev',
         },
         {
           label: 'Digital Services Reference Guides',
-          docId: 'dx202209ceamrefguides',
+          docId: 'dx202310ceamrefguides',
         },
       ],
     },
@@ -68,23 +61,23 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'dx202209ceclaimsrelnotes',
+          docId: 'dx202310ceclaimsrelnotes',
         },
         {
           label: 'Installation Guide',
-          docId: 'dx202209ceclaimsinstall',
+          docId: 'dx202310ceclaimsinstall',
         },
         {
           label: 'Application Guide',
-          docId: 'dx202209ceclaimsapp',
+          docId: 'dx202310ceclaimsapp',
         },
         {
           label: "Developer's Guide",
-          docId: 'dx202209ceclaimsdev',
+          docId: 'dx202310ceclaimsdev',
         },
         {
           label: 'Digital Services Reference Guides',
-          docId: 'dx202209ceclaimsrefguides',
+          docId: 'dx202310ceclaimsrefguides',
         },
       ],
     },
@@ -93,23 +86,23 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'dx202209ceqbrelnotes',
+          docId: 'dx202310ceqbrelnotes',
         },
         {
           label: 'Installation Guide',
-          docId: 'dx202209ceqbinstall',
+          docId: 'dx202310ceqbinstall',
         },
         {
           label: 'Application Guide',
-          docId: 'dx202209ceqbapp',
+          docId: 'dx202310ceqbapp',
         },
         {
           label: "Developer's Guide",
-          docId: 'dx202209ceqbdev',
+          docId: 'dx202310ceqbdev',
         },
         {
           label: 'Digital Services Reference Guides',
-          docId: 'dx202209ceqbrefguides',
+          docId: 'dx202310ceqbrefguides',
         },
       ],
     },
@@ -118,23 +111,23 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'dx202209perelnotes',
+          docId: 'dx202310perelnotes',
         },
         {
           label: 'Installation Guide',
-          docId: 'dx202209peinstall',
+          docId: 'dx202310peinstall',
         },
         {
           label: 'Application Guide',
-          docId: 'dx202209peapp',
+          docId: 'dx202310peapp',
         },
         {
           label: "Developer's Guide",
-          docId: 'dx202209pedev',
+          docId: 'dx202310pedev',
         },
         {
           label: 'Digital Services Reference Guides',
-          docId: 'dx202209perefguides',
+          docId: 'dx202310perefguides',
         },
       ],
     },
@@ -143,23 +136,23 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'dx202209peclaimsrelnotes',
+          docId: 'dx202310peclaimsrelnotes',
         },
         {
           label: 'Installation Guide',
-          docId: 'dx202209peclaimsinstall',
+          docId: 'dx202310peclaimsinstall',
         },
         {
           label: 'Application Guide',
-          docId: 'dx202209peclaimsapp',
+          docId: 'dx202310peclaimsapp',
         },
         {
           label: "Developer's Guide",
-          docId: 'dx202209peclaimsdev',
+          docId: 'dx202310peclaimsdev',
         },
         {
           label: 'Digital Services Reference Guides',
-          docId: 'dx202209peclaimsrefguides',
+          docId: 'dx202310peclaimsrefguides',
         },
       ],
     },
@@ -168,23 +161,23 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'dx202209srerelnotes',
+          docId: 'dx202310srerelnotes',
         },
         {
           label: 'Installation Guide',
-          docId: 'dx202209sreinstall',
+          docId: 'dx202310sreinstall',
         },
         {
           label: 'Application Guide',
-          docId: 'dx202209sreapp',
+          docId: 'dx202310sreapp',
         },
         {
           label: "Developer's Guide",
-          docId: 'dx202209sredev',
+          docId: 'dx202310sredev',
         },
         {
           label: 'Digital Services Reference Guides',
-          docId: 'dx202209srerefguides',
+          docId: 'dx202310srerefguides',
         },
       ],
     },
@@ -193,23 +186,23 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Release Notes',
-          docId: 'dx202209verelnotes',
+          docId: 'dx202310verelnotes',
         },
         {
           label: 'Installation Guide',
-          docId: 'dx202209veinstall',
+          docId: 'dx202310veinstall',
         },
         {
           label: 'Application Guide',
-          docId: 'dx202209veapp',
+          docId: 'dx202310veapp',
         },
         {
           label: "Developer's Guide",
-          docId: 'dx202209vedev',
+          docId: 'dx202310vedev',
         },
         {
           label: 'Digital Services Reference Guides',
-          docId: 'dx202209verefguides',
+          docId: 'dx202310verefguides',
         },
       ],
     },
@@ -218,7 +211,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Digital Frontend API Documentation',
-          docId: 'dxjsdocs202209',
+          docId: 'dxjsdocs202310',
         },
       ],
     },

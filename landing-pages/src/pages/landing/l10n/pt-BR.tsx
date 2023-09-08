@@ -12,7 +12,7 @@ const pageConfig: ProductFamilyLayoutProps = {
   selector: {
     label: 'Selecione o idioma',
     selectedItemLabel: 'Português',
-    items: allSelectors.s04276cabb68afefd84d353cd088adf27,
+    items: allSelectors.sfa48f3b641ce1ec0fe00a60fefbb4192,
     labelColor: 'white',
   },
 
@@ -27,7 +27,7 @@ const pageConfig: ProductFamilyLayoutProps = {
     },
     {
       label: 'Cloud Data Access',
-      pagePath: 'l10n/pt-BR/cda',
+      docId: 'clouddataaccessguideptBR',
     },
     {
       label: 'CustomerEngage Account Management',
@@ -47,11 +47,11 @@ const pageConfig: ProductFamilyLayoutProps = {
     },
     {
       label: 'Explore',
-      pagePath: 'l10n/pt-BR/explore',
+      docId: 'exploreptBRusingrelease',
     },
     {
       label: 'Guidewire Cloud Console',
-      pagePath: 'l10n/pt-BR/gcc',
+      docId: 'guidewirecloudconsolerootinsurerdevptBR',
     },
     {
       label: 'InfoCenter',

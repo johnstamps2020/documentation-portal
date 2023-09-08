@@ -25,8 +25,8 @@ const pageConfig: CategoryLayoutProps = {
           videoIcon: false,
         },
         {
-          label: 'Model 5 Technical Reference',
-          url: '/cyence/cyber/Model5/CyenceCyberRiskModel5.pdf',
+          label: 'Risk Model Technical Reference',
+          url: '/cyence/cyber/Model/RiskModelTechRef.pdf',
           videoIcon: false,
         },
         {

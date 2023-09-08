@@ -31,6 +31,10 @@ const pageConfig: SectionLayoutProps = {
           docId: 'iscc202306update',
         },
         {
+          label: 'InsuranceSuite Configuration Upgrade Tools',
+          docId: 'isconfigupgradetools500',
+        },
+        {
           label: 'InsuranceSuite Configuration Upgrade Tools Compatibility',
           docId: 'isupgradecompatibility',
         },
@@ -90,8 +94,8 @@ const pageConfig: SectionLayoutProps = {
           docId: 'apdclaimshakuba',
         },
         {
-          label: 'Claims Intake FNOL Template (Early Access)',
-          docId: 'is202306fnoltemplate',
+          label: 'Personal Auto FNOL Template (Early Access)',
+          docId: 'fnoltemplatemain',
         },
       ],
     },
@@ -135,7 +139,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'integgatewaydevlatest',
         },
         {
-          label: 'Plugins, Pre-built Integrations, and SOAP APIs',
+          label: 'Plugins, Prebuilt Integrations, and SOAP APIs',
           docId: 'iscc202306integ',
         },
         {

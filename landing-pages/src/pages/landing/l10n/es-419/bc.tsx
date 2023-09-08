@@ -11,8 +11,8 @@ const pageConfig: CategoryLayoutProps = {
   },
   selector: {
     label: 'Seleccionar producto',
-    selectedItemLabel: 'PolicyCenter',
-    items: allSelectors.s641a38c0db32b1509b9fabce309d960f,
+    selectedItemLabel: 'BillingCenter',
+    items: allSelectors.sc63ff31ab2489ea7a914b16720221401,
     labelColor: 'white',
   },
 
@@ -22,8 +22,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de aplicaciones',
-          url: '/l10n/pdfs/es-LA/pc/2023.02/PC-AppGuide.pdf',
-          videoIcon: false,
+          docId: 'isbc202302appes419',
         },
       ],
     },
@@ -32,7 +31,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de aplicaciones',
-          url: '/l10n/pdfs/es-LA/pc/2021.11/PC-AppGuide-ESLA.pdf',
+          url: '/l10n/pdfs/es-LA/bc/2021.11/BC-AppGuide-ESLA.pdf',
           videoIcon: false,
         },
       ],
@@ -41,18 +40,13 @@ const pageConfig: CategoryLayoutProps = {
       label: '2020.11',
       items: [
         {
-          label: 'Guía de instalación',
-          url: '/l10n/pdfs/es-LA/pc/2020.11/PCCloud202011_es-419_InstallGuide.pdf',
-          videoIcon: false,
-        },
-        {
           label: 'Guía de configuración',
-          url: '/l10n/pdfs/es-LA/pc/2020.11/PCCloud202011_es-419_ConfigGuide.pdf',
+          url: '/l10n/pdfs/es-LA/bc/2020.11/BCCloud202011_es-419_ConfigGuide.pdf',
           videoIcon: false,
         },
         {
-          label: 'Guía de Advanced Product Designer',
-          url: '/l10n/pdfs/es-LA/pc/2020.11/Cloud202011_es-419_AdvancedProductDesigner.pdf',
+          label: 'Guía de instalación',
+          url: '/l10n/pdfs/es-LA/bc/2020.11/BCCloud202011_es-419_InstallGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -62,12 +56,12 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de administración de contactos de Guidewire',
-          url: '/l10n/pdfs/es-LA/pc/2020.05/ISCL_202005_ESLA_PC_ContactMgmtGuide.pdf',
+          url: '/l10n/pdfs/es-LA/bc/2020.05/ISCL_202005_ESLA_BC_ContactMgmtGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de aplicaciones',
-          url: '/l10n/pdfs/es-LA/pc/2020.05/ISCL_202005_ESLA_PC-AppGuide.pdf',
+          url: '/l10n/pdfs/es-LA/bc/2020.05/ISCL_202005_ESLA_BC-AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -76,13 +70,8 @@ const pageConfig: CategoryLayoutProps = {
       label: '10.1.1',
       items: [
         {
-          label: 'Guía de Advanced Product Designer',
-          url: '/l10n/pdfs/es-LA/pc/10.1.1/PC1011_es-419_AdvancedProductDesigner.pdf',
-          videoIcon: false,
-        },
-        {
           label: 'Guía de aplicaciones',
-          url: '/l10n/pdfs/es-LA/pc/10.1.1/PC1011_es-419_AppGuide.pdf',
+          url: '/l10n/pdfs/es-LA/bc/10.1.1/BC1011_es-419_AppGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -92,17 +81,17 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de reglas',
-          url: '/l10n/pdfs/es-LA/pc/10.0.2/es-PC-RulesGuide.pdf',
-          videoIcon: false,
-        },
-        {
-          label: 'Guía de configuración',
-          url: '/l10n/pdfs/es-LA/pc/10.0.2/es-PC-ConfigGuide.pdf',
+          url: '/l10n/pdfs/es-LA/bc/10.0.2/es-BC-RulesGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de aplicaciones',
-          url: '/l10n/pdfs/es-LA/pc/10.0.2/es-PC-AppGuide.pdf',
+          url: '/l10n/pdfs/es-LA/bc/10.0.2/es-BC-AppGuide.pdf',
+          videoIcon: false,
+        },
+        {
+          label: 'Guía de configuración',
+          url: '/l10n/pdfs/es-LA/bc/10.0.2/es-BC-ConfigGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -111,28 +100,28 @@ const pageConfig: CategoryLayoutProps = {
       label: '10.0.0',
       items: [
         {
+          label: 'Guía de instalación',
+          url: '/l10n/pdfs/es-LA/bc/10.0.0/es-BC-InstallGuide.pdf',
+          videoIcon: false,
+        },
+        {
           label: 'Guía de reglas',
-          url: '/l10n/pdfs/es-LA/pc/10.0.0/es-PC-RulesGuide.pdf',
+          url: '/l10n/pdfs/es-LA/bc/10.0.0/es-BC-RulesGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de aplicaciones',
-          url: '/l10n/pdfs/es-LA/pc/10.0.0/es-PC-AppGuide.pdf',
-          videoIcon: false,
-        },
-        {
-          label: 'Guía de instalación',
-          url: '/l10n/pdfs/es-LA/pc/10.0.0/es-PC-InstallGuide.pdf',
-          videoIcon: false,
-        },
-        {
-          label: 'Guía de configuración',
-          url: '/l10n/pdfs/es-LA/pc/10.0.0/es_PC-ConfigGuide.pdf',
+          url: '/l10n/pdfs/es-LA/bc/10.0.0/es-BC-AppGuide.pdf',
           videoIcon: false,
         },
         {
           label: 'Guía de administración de contactos',
-          url: '/l10n/pdfs/es-LA/pc/10.0.0/es-PC-ContactMgmtGuide.pdf',
+          url: '/l10n/pdfs/es-LA/bc/10.0.0/es-BC-ContactMgmtGuide.pdf',
+          videoIcon: false,
+        },
+        {
+          label: 'Guía de configuración',
+          url: '/l10n/pdfs/es-LA/bc/10.0.0/es-BC-ConfigGuide.pdf',
           videoIcon: false,
         },
       ],
@@ -140,6 +129,6 @@ const pageConfig: CategoryLayoutProps = {
   ],
 };
 
-export default function Pc() {
+export default function Bc() {
   return <CategoryLayout {...pageConfig} />;
 }

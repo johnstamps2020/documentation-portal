@@ -18,6 +18,24 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '',
+      items: [
+        {
+          label: 'Gosu リファレンスガイド',
+          docId: 'gosureflatestjaJP',
+        },
+      ],
+    },
+    {
+      label: '',
+      items: [
+        {
+          label: 'Integration Gateway',
+          docId: 'integgatewaydevlatestjaJP',
+        },
+      ],
+    },
+    {
       label: '2023.02-IPJ Japan Package',
       items: [
         {
@@ -39,16 +57,6 @@ const pageConfig: CategoryLayoutProps = {
       ],
     },
     {
-      label: '2023.02 Garmisch',
-      items: [
-        {
-          label: 'Guidewire Cloud Platform latest Integration Gateway',
-          url: '/l10n/pdfs/ja-JP/cc/2023.02 Garmisch/IntegrationGatewayForDevelopers_JA.pdf',
-          videoIcon: false,
-        },
-      ],
-    },
-    {
       label: '2022.09 Flaine',
       items: [
         {
@@ -58,8 +66,7 @@ const pageConfig: CategoryLayoutProps = {
         },
         {
           label: 'Cloud API ContactManager ガイド',
-          url: '/l10n/pdfs/ja-JP/cc/2022.09 Flaine/CloudAPIGuide-ContactManager_ja-JP.pdf',
-          videoIcon: false,
+          docId: 'iscc202209apicmjaJP',
         },
         {
           label: 'ClaimCenter Cloud API ドキュメント（Flaine）リリースノート',
@@ -73,8 +80,7 @@ const pageConfig: CategoryLayoutProps = {
         },
         {
           label: 'Cloud API 認証ガイド',
-          url: '/l10n/pdfs/ja-JP/cc/2022.09 Flaine/CloudAPIGuide-Auth_ja-JP.pdf',
-          videoIcon: false,
+          docId: 'iscc202209cloudapicajaJP',
         },
         {
           label: 'ClaimCenter Cloud API リファレンス（Flaine）リリースノート',
@@ -83,13 +89,7 @@ const pageConfig: CategoryLayoutProps = {
         },
         {
           label: 'Cloud API ビジネスフローとコンフィギュレーションガイド',
-          url: '/l10n/pdfs/ja-JP/cc/2022.09 Flaine/CloudAPIGuide-BusinessFlows_ja-JP.pdf',
-          videoIcon: false,
-        },
-        {
-          label: 'Integration Gateway',
-          url: '/l10n/pdfs/ja-JP/cc/2022.09 Flaine/IntegrationGatewayForDevelopers_ja-JP.pdf',
-          videoIcon: false,
+          docId: 'iscc202209cloudapibfjaJP',
         },
         {
           label: 'REST API フレームワーク',
@@ -103,64 +103,45 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'コンフィギュレーションガイド',
-          url: '/l10n/pdfs/ja-JP/cc/2022.05 Elysian/ja-JP-CC-2022.05-ConfigGuide.pdf',
-          videoIcon: false,
+          docId: 'iscc202205configjaJP',
         },
         {
           label: 'Cloud 連携の概要',
-          url: '/l10n/pdfs/ja-JP/cc/2022.05 Elysian/ja-JP-CC-2022.05-OverviewCloudIntegration.pdf',
-          videoIcon: false,
+          docId: 'is202205integoverviewjaJP',
         },
         {
           label: '用語集',
-          url: '/l10n/pdfs/ja-JP/cc/2022.05 Elysian/ja-JP-Glossary.pdf',
-          videoIcon: false,
+          docId: 'gwglossaryjaJP',
         },
         {
           label: 'アプリケーションガイド',
-          url: '/l10n/pdfs/ja-JP/cc/2022.05 Elysian/ja-JP-CC-2022.05-AppGuide.pdf',
-          videoIcon: false,
-        },
-        {
-          label: 'Gosu リファレンスガイド',
-          url: '/l10n/pdfs/ja-JP/cc/2022.05 Elysian/ja-JP-CC-2022.05-GosuRefGuide-JA-Final.pdf',
-          videoIcon: false,
+          docId: 'iscc202205appjaJP',
         },
         {
           label: '開発者設定ガイド',
-          url: '/l10n/pdfs/ja-JP/cc/2022.05 Elysian/ja-JP-CC-2022.05-DeveloperSetupGuide.pdf',
-          videoIcon: false,
+          docId: 'iscc202205devsetupjaJP',
         },
         {
           label: 'Gosu ルール',
-          url: '/l10n/pdfs/ja-JP/cc/2022.05 Elysian/ja-JP-CC-2022.05-GosuRules.pdf',
-          videoIcon: false,
+          docId: 'iscc202205rulesjaJP',
         },
         {
           label: 'データアーカイブ',
-          url: '/l10n/pdfs/ja-JP/cc/2022.05 Elysian/DataArchiving-ja.pdf',
-          videoIcon: false,
+          docId: 'iscc202205dataarchivingjaJP',
         },
         {
           label: 'グローバリゼーションガイド',
-          url: '/l10n/pdfs/ja-JP/cc/2022.05 Elysian/GlobalizationGuide-ja.pdf',
-          videoIcon: false,
+          docId: 'iscc202205globaljaJP',
         },
         {
           label: 'リリースノート',
-          url: '/l10n/pdfs/ja-JP/cc/2022.05 Elysian/CC_ReleaseNotes_ja-JP.pdf',
-          videoIcon: false,
+          docId: 'iscc202205releasenotesjaJP',
         },
       ],
     },
     {
       label: '2021.04 Cortina',
       items: [
-        {
-          label: 'Gosu リファレンスガイド',
-          url: '/l10n/pdfs/ja-JP/cc/2021.04 Cortina/CC_CL202104_ja-JP_GosuRefGuide.pdf',
-          videoIcon: false,
-        },
         {
           label: 'テストガイド',
           url: '/l10n/pdfs/ja-JP/cc/2021.04 Cortina/CC_CL202104_ja-JP_TestingGuide.pdf',
@@ -239,11 +220,6 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'インストールガイド',
           url: '/l10n/pdfs/ja-JP/cc/10.0.2/ja-CC-InstallGuide.pdf',
-          videoIcon: false,
-        },
-        {
-          label: 'Gosu リファレンスガイド',
-          url: '/l10n/pdfs/ja-JP/cc/10.0.2/ja-CC-GosuRefGuide.pdf',
           videoIcon: false,
         },
         {

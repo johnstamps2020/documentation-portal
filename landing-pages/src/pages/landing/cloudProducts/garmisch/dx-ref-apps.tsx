@@ -20,7 +20,7 @@ const pageConfig: CategoryLayoutProps = {
   selector: {
     label: 'Select cloud release',
     selectedItemLabel: 'Garmisch (2023.02)',
-    items: allSelectors.s92475b0db6d6007931455ee967b8bcb8,
+    items: allSelectors.se7a828d04c0ebb25f464db6df66dcc54,
     labelColor: 'white',
   },
 
@@ -117,10 +117,6 @@ const pageConfig: CategoryLayoutProps = {
           docId: 'dx202302ceqbdev',
         },
         {
-          label: 'Digital Code Generation Guide',
-          docId: 'dx202302dcg',
-        },
-        {
           label: 'Digital Services Reference Guides',
           docId: 'dx202302ceqbrefguides',
         },
@@ -144,10 +140,6 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: "Developer's Guide",
           docId: 'dx202302pedev',
-        },
-        {
-          label: 'Digital Code Generation Guide',
-          docId: 'dx202302dcg',
         },
         {
           label: 'Digital Services Reference Guides',

@@ -12,7 +12,7 @@ const pageConfig: ProductFamilyLayoutProps = {
   selector: {
     label: 'Selecteer taal',
     selectedItemLabel: 'Nederlands',
-    items: allSelectors.s04276cabb68afefd84d353cd088adf27,
+    items: allSelectors.sfa48f3b641ce1ec0fe00a60fefbb4192,
     labelColor: 'white',
   },
 

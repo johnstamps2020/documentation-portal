@@ -22,18 +22,15 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de Advanced Product Designer para PolicyCenter',
-          url: '/l10n/pdfs/es-ES/pc/2022.05/AdvancedProductDesigner_es-ES.pdf',
-          videoIcon: false,
-        },
-        {
-          label: 'Guía de configuración',
-          url: '/l10n/pdfs/es-ES/pc/2022.05/PC-ConfigGuide_es-ES.pdf',
-          videoIcon: false,
+          docId: 'ispc202205apdesES',
         },
         {
           label: 'Guía de la aplicación',
-          url: '/l10n/pdfs/es-ES/pc/2022.05/PC-AppGuide_es-ES.pdf',
-          videoIcon: false,
+          docId: 'ispc202205appesES',
+        },
+        {
+          label: 'Guía de configuración',
+          docId: 'ispc202205configesES',
         },
       ],
     },
@@ -43,13 +40,11 @@ const pageConfig: CategoryLayoutProps = {
         {
           label:
             'Guía de configuración y flujos de negocio de la API de la nube',
-          url: '/l10n/pdfs/es-ES/pc/2021.11/PC v.2021.11 es-ES CloudAPIGuide-BusinessFlows.pdf',
-          videoIcon: false,
+          docId: 'ispc202111apibfesES',
         },
         {
           label: 'Guía de autenticación de la API de la nube',
-          url: '/l10n/pdfs/es-ES/pc/2021.11/PC v.2021.11 es-ES CloudAPIGuide-Auth.pdf',
-          videoIcon: false,
+          docId: 'ispc202111apicaesES',
         },
       ],
     },

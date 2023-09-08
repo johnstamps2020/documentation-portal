@@ -22,23 +22,19 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guida ad Advanced Product Designer per PolicyCenter',
-          url: '/l10n/pdfs/it-IT/pc/2022.05/AdvancedProductDesigner-IT.pdf',
-          videoIcon: false,
+          docId: 'ispc202205apditIT',
         },
         {
           label: "Guida all'applicazione",
-          url: '/l10n/pdfs/it-IT/pc/2022.05/PC-AppGuide-IT.pdf',
-          videoIcon: false,
+          docId: 'ispc202205itITapp',
         },
         {
           label: 'Guida alla configurazione',
-          url: '/l10n/pdfs/it-IT/pc/2022.05/PC-ConfigGuide_it-IT.pdf',
-          videoIcon: false,
+          docId: 'ispc202205itITconfig',
         },
         {
           label: "Guida all'installazione per sviluppatori",
-          url: '/l10n/pdfs/it-IT/pc/2022.05/PC-DeveloperSetupGuide-IT.pdf',
-          videoIcon: false,
+          docId: 'ispc202205itITdevsetup',
         },
       ],
     },
@@ -48,13 +44,11 @@ const pageConfig: CategoryLayoutProps = {
         {
           label:
             'Guida ai flussi aziendali delle API cloud e alla configurazione',
-          url: '/l10n/pdfs/it-IT/pc/2021.11/PC v.2021.11 it-IT CloudAPIGuide-BusinessFlows.pdf',
-          videoIcon: false,
+          docId: 'ispc202111apibfitIT',
         },
         {
           label: "Guida all'autenticazione per l'API cloud",
-          url: '/l10n/pdfs/it-IT/pc/2021.11/PC v.2021.11 it-IT CloudAPIGuide-Auth.pdf',
-          videoIcon: false,
+          docId: 'ispc202111apicaitIT',
         },
       ],
     },

@@ -20,7 +20,7 @@ const pageConfig: ProductFamilyLayoutProps = {
     },
     {
       label: 'Español',
-      pagePath: 'l10n/es-LA',
+      pagePath: 'l10n/es-419',
     },
     {
       label: 'Français',
