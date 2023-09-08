@@ -131,7 +131,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'integgatewaydevlatest',
         },
         {
-          label: 'Plugins, Pre-built Integrations, and SOAP APIs',
+          label: 'Plugins, Prebuilt Integrations, and SOAP APIs',
           docId: 'iscc202302integ',
         },
         {

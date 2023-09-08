@@ -21,19 +21,16 @@ const pageConfig: CategoryLayoutProps = {
       label: '2022.05',
       items: [
         {
-          label: "Guida all'installazione per sviluppatori",
-          url: '/l10n/pdfs/it-IT/bc/2022.05/BC-DeveloperSetupGuide-IT.pdf',
-          videoIcon: false,
-        },
-        {
           label: "Guida all'applicazione",
-          url: '/l10n/pdfs/it-IT/bc/2022.05/BC-AppGuide-IT.pdf',
-          videoIcon: false,
+          docId: 'isbc202205itITapp',
         },
         {
           label: 'Guida alla configurazione',
-          url: '/l10n/pdfs/it-IT/bc/2022.05/BC-ConfigGuide_it-IT.pdf',
-          videoIcon: false,
+          docId: 'isbc202205itITconfig',
+        },
+        {
+          label: "Guida all'installazione per sviluppatori",
+          docId: 'isbc202205itITdevsetup',
         },
       ],
     },
@@ -43,8 +40,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label:
             'Guida ai flussi aziendali delle API cloud e alla configurazione',
-          url: '/l10n/pdfs/it-IT/bc/2021.11/BC v.2021.11 it-IT CloudAPIGuide-BusinessFlows.pdf',
-          videoIcon: false,
+          docId: 'isbc202111apibfitIT',
         },
       ],
     },

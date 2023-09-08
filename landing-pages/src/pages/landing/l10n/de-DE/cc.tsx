@@ -22,13 +22,11 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Anwendungshandbuch',
-          url: '/l10n/pdfs/de-DE/cc/2022.05/CC-AppGuide-DE.pdf',
-          videoIcon: false,
+          docId: 'iscc202205appdeDE',
         },
         {
           label: 'Konfigurationshandbuch',
-          url: '/l10n/pdfs/de-DE/cc/2022.05/CC-ConfigGuide-DE.pdf',
-          videoIcon: false,
+          docId: 'iscc202205configdeDE',
         },
       ],
     },
@@ -37,13 +35,11 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Cloud-API-Authentifizierungshandbuch',
-          url: '/l10n/pdfs/de-DE/cc/2021.11/CC v.2021.11 de-DE CloudAPIGuide-Auth.pdf',
-          videoIcon: false,
+          docId: 'iscc202111apicadeDE',
         },
         {
           label: 'Cloud-API-Geschäftsabläufe- und Konfigurationshandbuch',
-          url: '/l10n/pdfs/de-DE/cc/2021.11/CC v.2021.11  de-DE CloudAPIGuide-BusinessFlows.pdf',
-          videoIcon: false,
+          docId: 'iscc202111apibfdeDE',
         },
       ],
     },

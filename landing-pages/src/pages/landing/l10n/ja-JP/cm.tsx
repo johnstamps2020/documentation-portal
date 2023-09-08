@@ -18,12 +18,11 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2022.05 Aspen',
+      label: '2022.05 Elysian',
       items: [
         {
           label: 'Guidewire 連絡先管理ガイド',
-          url: '/l10n/pdfs/ja-JP/cm/2022.05 Aspen/ja-JP-2022.05-IS-ContactMgmtGuide.pdf',
-          videoIcon: false,
+          docId: 'is202205contactjaJP',
         },
       ],
     },

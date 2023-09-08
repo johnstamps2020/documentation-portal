@@ -22,8 +22,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guidewire-Kontaktmanagementhandbuch',
-          url: '/l10n/pdfs/de-DE/cm/2022.05/ContactMgmtGuide-DE.pdf',
-          videoIcon: false,
+          docId: 'is202205contactdeDE',
         },
       ],
     },

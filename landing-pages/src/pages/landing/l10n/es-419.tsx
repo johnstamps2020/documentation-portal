@@ -12,74 +12,74 @@ const pageConfig: ProductFamilyLayoutProps = {
   selector: {
     label: 'Seleccione el idioma',
     selectedItemLabel: 'Español',
-    items: allSelectors.s04276cabb68afefd84d353cd088adf27,
+    items: allSelectors.sfa48f3b641ce1ec0fe00a60fefbb4192,
     labelColor: 'white',
   },
 
   items: [
     {
       label: 'BillingCenter',
-      pagePath: 'l10n/es-LA/bc',
+      pagePath: 'l10n/es-419/bc',
     },
     {
       label: 'ClaimCenter',
-      pagePath: 'l10n/es-LA/cc',
+      pagePath: 'l10n/es-419/cc',
     },
     {
       label: 'Cloud Data Access',
-      pagePath: 'l10n/es-LA/cda',
+      pagePath: 'l10n/es-419/cda',
     },
     {
       label: 'CustomerEngage Account Management',
-      pagePath: 'l10n/es-LA/ce-am',
+      pagePath: 'l10n/es-419/ce-am',
     },
     {
       label: 'CustomerEngage Account Management for ClaimCenter',
-      pagePath: 'l10n/es-LA/ce-claims',
+      pagePath: 'l10n/es-419/ce-claims',
     },
     {
       label: 'CustomerEngage Quote and Buy',
-      pagePath: 'l10n/es-LA/ce-qb',
-    },
-    {
-      label: 'InsuranceSuite Contact Management',
-      pagePath: 'l10n/es-LA/cm',
+      pagePath: 'l10n/es-419/ce-qb',
     },
     {
       label: 'DataHub',
-      pagePath: 'l10n/es-LA/dh',
+      pagePath: 'l10n/es-419/dh',
     },
     {
       label: 'Explore',
-      pagePath: 'l10n/es-LA/explore',
+      docId: 'explorees419usingrelease',
     },
     {
       label: 'Guidewire Cloud Console',
-      pagePath: 'l10n/es-LA/gcc',
+      docId: 'guidewirecloudconsolerootinsurerdeves419',
     },
     {
       label: 'InfoCenter',
-      pagePath: 'l10n/es-LA/ic',
+      pagePath: 'l10n/es-419/ic',
+    },
+    {
+      label: 'InsuranceSuite Contact Management',
+      pagePath: 'l10n/es-419/cm',
     },
     {
       label: 'PolicyCenter',
-      pagePath: 'l10n/es-LA/pc',
+      pagePath: 'l10n/es-419/pc',
     },
     {
       label: 'ProducerEngage',
-      pagePath: 'l10n/es-LA/pe',
+      pagePath: 'l10n/es-419/pe',
     },
     {
       label: 'ProducerEngage for ClaimCenter',
-      pagePath: 'l10n/es-LA/pe-claims',
+      pagePath: 'l10n/es-419/pe-claims',
     },
     {
       label: 'ServiceRepEngage',
-      pagePath: 'l10n/es-LA/sre',
+      pagePath: 'l10n/es-419/sre',
     },
     {
       label: 'VendorEngage',
-      pagePath: 'l10n/es-LA/ve',
+      pagePath: 'l10n/es-419/ve',
     },
   ],
   sidebar: {
@@ -109,6 +109,6 @@ const pageConfig: ProductFamilyLayoutProps = {
   },
 };
 
-export default function EsLA() {
+export default function Es419() {
   return <ProductFamilyLayout {...pageConfig} />;
 }

@@ -25,6 +25,10 @@ const pageConfig: CategoryLayoutProps = {
           url: '/l10n/pdfs/de-DE/ce-claims/2023.02/CustomerEngage_Claims_AppGuide.pdf',
           videoIcon: false,
         },
+        {
+          label: 'Anwendungshandbuch',
+          docId: 'dx202302deDEceclaimsapp',
+        },
       ],
     },
     {

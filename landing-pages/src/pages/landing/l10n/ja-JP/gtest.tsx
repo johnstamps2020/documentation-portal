@@ -18,6 +18,15 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
+      label: '2023.06',
+      items: [
+        {
+          label: 'Testing Framework リリースノート',
+          docId: 'testingframeworksjarnhakuba',
+        },
+      ],
+    },
+    {
       label: '2022.05',
       items: [
         {

@@ -25,6 +25,10 @@ const pageConfig: CategoryLayoutProps = {
           url: '/l10n/pdfs/de-DE/sre/2023.02/ServiceRepEngage_AppGuide.pdf',
           videoIcon: false,
         },
+        {
+          label: 'Anwendungshandbuch',
+          docId: 'dx202302deDEsreapp',
+        },
       ],
     },
     {

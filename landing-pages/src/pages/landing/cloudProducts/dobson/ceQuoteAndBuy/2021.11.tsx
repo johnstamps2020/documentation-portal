@@ -28,15 +28,6 @@ const pageConfig: SectionLayoutProps = {
       ],
     },
     {
-      label: 'Configuration',
-      items: [
-        {
-          label: 'Digital Code Generation Guide',
-          docId: 'dx202111dcg',
-        },
-      ],
-    },
-    {
       label: 'Features and functionality',
       items: [
         {

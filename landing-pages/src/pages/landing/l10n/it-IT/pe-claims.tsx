@@ -22,13 +22,11 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guida all'applicazione",
-          url: '/l10n/pdfs/it-IT/pe-claims/2022.05/it-IT Digital v.2022.05 PE Claims_AppGuide.pdf',
-          videoIcon: false,
+          docId: 'dx202205itITpeclaimsapp',
         },
         {
           label: "Guida all'installazione",
-          url: '/l10n/pdfs/it-IT/pe-claims/2022.05/it-IT Digital v.2022.05 PE Claims InstallGuide.pdf',
-          videoIcon: false,
+          docId: 'dx202205itITpeclaimsinstall',
         },
       ],
     },

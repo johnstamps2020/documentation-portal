@@ -22,13 +22,11 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de la aplicación',
-          url: '/l10n/pdfs/es-ES/bc/2022.05/BC-AppGuide_es-ES.pdf',
-          videoIcon: false,
+          docId: 'isbc202205appesES',
         },
         {
           label: 'Guía de configuración',
-          url: '/l10n/pdfs/es-ES/bc/2022.05/BC-ConfigGuide_es-ES.pdf',
-          videoIcon: false,
+          docId: 'isbc202205configesES',
         },
       ],
     },
@@ -38,8 +36,7 @@ const pageConfig: CategoryLayoutProps = {
         {
           label:
             'Guía de configuración y flujos de negocio de la API de la nube',
-          url: '/l10n/pdfs/es-ES/bc/2021.11/BC v.2021.11 es-ES CloudAPIGuide-BusinessFlows.pdf',
-          videoIcon: false,
+          docId: 'isbc202111apibfesES',
         },
       ],
     },

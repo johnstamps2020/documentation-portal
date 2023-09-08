@@ -18,12 +18,11 @@ const pageConfig: CategoryLayoutProps = {
 
   cards: [
     {
-      label: '2021.11',
+      label: 'Explore',
       items: [
         {
           label: 'Guia do aplicativo',
-          url: '/l10n/pdfs/pt-BR/explore/2021.11/pt-BR-CloudExplore.pdf',
-          videoIcon: false,
+          docId: 'exploreptBRusingrelease',
         },
       ],
     },

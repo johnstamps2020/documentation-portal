@@ -12,7 +12,7 @@ const pageConfig: CategoryLayoutProps = {
   selector: {
     label: 'Seleccionar producto',
     selectedItemLabel: 'ServiceRepEngage',
-    items: allSelectors.s641a38c0db32b1509b9fabce309d960f,
+    items: allSelectors.sc63ff31ab2489ea7a914b16720221401,
     labelColor: 'white',
   },
 
@@ -22,8 +22,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de la aplicación',
-          url: '/l10n/pdfs/es-LA/sre/2022.05/es-LA-v.2022.05 SRE_AppGuide.pdf',
-          videoIcon: false,
+          docId: 'dx202205es419sreapp',
         },
       ],
     },

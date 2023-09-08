@@ -115,7 +115,8 @@ const pageConfig: SectionLayoutProps = {
         },
         {
           label: 'Submission Intake Configuration',
-          docId: 'submissionintakeconfig',
+          url: '/cloud/subintake/?contextid=submissionIntakeConfiguration',
+          videoIcon: false,
         },
         {
           label: 'US Standards-based Template Framework',
@@ -155,7 +156,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'integgatewaydevlatest',
         },
         {
-          label: 'Plugins, Pre-built Integrations, and SOAP APIs',
+          label: 'Plugins, Prebuilt Integrations, and SOAP APIs',
           docId: 'ispc202209integ',
         },
         {

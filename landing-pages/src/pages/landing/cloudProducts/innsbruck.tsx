@@ -48,8 +48,16 @@ const pageConfig: CategoryLayoutProps = {
           pagePath: 'cloudProducts/innsbruck/insuranceNow/2023.3',
         },
         {
+          label: 'Digital Reference Applications',
+          pagePath: 'cloudProducts/innsbruck/dx-ref-apps',
+        },
+        {
           label: 'Global Content Reference Applications',
           pagePath: 'cloudProducts/innsbruck/global-ref-apps',
+        },
+        {
+          label: 'Underwriting Workbench (Early Access)',
+          docId: 'uwworkbench',
         },
       ],
     },

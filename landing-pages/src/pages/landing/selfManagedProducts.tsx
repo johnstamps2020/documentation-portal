@@ -19,7 +19,7 @@ const pageConfig: CategoryLayoutProps = {
       </Typography>
       <Typography variant="body1" lineHeight={2}>
         Access earlier releases by clicking a product and then selecting a
-        release from the <b>Select release</b> drop-down menu.
+        version from the <b>Select release</b> dropdown menu.
       </Typography>
     </Box>
   ),
@@ -43,6 +43,10 @@ const pageConfig: CategoryLayoutProps = {
         {
           label: 'BillingCenter',
           pagePath: 'selfManagedProducts/bc/10.2.2',
+        },
+        {
+          label: 'InsuranceSuite Configuration Upgrade Tools',
+          docId: 'isconfigupgradetools500',
         },
         {
           label: 'InsuranceSuite Configuration Upgrade Tools',
@@ -88,14 +92,6 @@ const pageConfig: CategoryLayoutProps = {
     {
       label: 'Analytics',
       items: [
-        {
-          label: 'DataHub',
-          pagePath: 'selfManagedProducts/dh/10.9.0',
-        },
-        {
-          label: 'InfoCenter',
-          pagePath: 'selfManagedProducts/ic/10.9.0',
-        },
         {
           label: 'DataHub',
           pagePath: 'selfManagedProducts/dh/10.10.0',

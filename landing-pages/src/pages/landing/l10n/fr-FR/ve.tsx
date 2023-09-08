@@ -22,8 +22,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: "Guide de l'application",
-          url: '/l10n/pdfs/fr-FR/ve/2023.02/VendorEngage_AppGuide.pdf',
-          videoIcon: false,
+          docId: 'dx202302frFRveapp',
         },
       ],
     },

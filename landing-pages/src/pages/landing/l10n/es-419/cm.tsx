@@ -12,7 +12,7 @@ const pageConfig: CategoryLayoutProps = {
   selector: {
     label: 'Seleccionar producto',
     selectedItemLabel: 'InsuranceSuite Contact Management',
-    items: allSelectors.s641a38c0db32b1509b9fabce309d960f,
+    items: allSelectors.sc63ff31ab2489ea7a914b16720221401,
     labelColor: 'white',
   },
 
@@ -22,8 +22,7 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de administración de contactos de Guidewire',
-          url: '/l10n/pdfs/es-LA/cm/2021.11/ContactMgmtGuide-ESLA.pdf',
-          videoIcon: false,
+          docId: 'is202111contactes419',
         },
       ],
     },

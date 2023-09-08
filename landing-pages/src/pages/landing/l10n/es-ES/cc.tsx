@@ -22,13 +22,11 @@ const pageConfig: CategoryLayoutProps = {
       items: [
         {
           label: 'Guía de la aplicación',
-          url: '/l10n/pdfs/es-ES/cc/2022.05/CC-AppGuide_es-ES.pdf',
-          videoIcon: false,
+          docId: 'iscc202205appesES',
         },
         {
           label: 'Guía de configuración',
-          url: '/l10n/pdfs/es-ES/cc/2022.05/CC-ConfigGuide_es-ES.pdf',
-          videoIcon: false,
+          docId: 'iscc202205configesES',
         },
       ],
     },
@@ -38,13 +36,11 @@ const pageConfig: CategoryLayoutProps = {
         {
           label:
             'Guía de configuración y flujos de negocio de la API de la nube',
-          url: '/l10n/pdfs/es-ES/cc/2021.11/CC v.2021.11 es-ES CloudAPIGuide-BusinessFlows.pdf',
-          videoIcon: false,
+          docId: 'iscc202111apibfesES',
         },
         {
           label: 'Guía de autenticación de la API de la nube',
-          url: '/l10n/pdfs/es-ES/cc/2021.11/CC v.2021.11 es-ES CloudAPIGuide-Auth.pdf',
-          videoIcon: false,
+          docId: 'iscc202111apicaesES',
         },
       ],
     },

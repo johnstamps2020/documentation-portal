@@ -86,7 +86,7 @@ const pageConfig: SectionLayoutProps = {
           docId: 'indevguidejava11ext',
         },
         {
-          label: 'GWCP Operations for Self-led Customers',
+          label: 'GWCP Operations for InsuranceNow',
           docId: 'ingwcpops',
         },
         {
