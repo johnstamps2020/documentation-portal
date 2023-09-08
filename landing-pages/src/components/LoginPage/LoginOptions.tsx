@@ -113,17 +113,9 @@ export default function LoginOptions({ inDrawer = false }: LoginOptionsProps) {
           </Paper>
         ))}
       </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: 2,
-        }}
-      >
-        <Typography>Guidewire employee?</Typography>
+      <Box>
         <GwEmployeeButton
-          label="Click here to log in"
+          label="Click here to log in as an employee"
           buttonStyle={{
             ...cardButtonStyle,
             fontSize: '1rem',
